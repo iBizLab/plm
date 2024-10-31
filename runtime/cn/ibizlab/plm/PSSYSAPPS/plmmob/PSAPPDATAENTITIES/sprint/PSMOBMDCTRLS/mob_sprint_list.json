@@ -26,7 +26,7 @@
     "name" : "fetch",
     "getPSAppDEMethod" : {
       "modelref" : true,
-      "id" : "fetch_default"
+      "id" : "fetch_mob_project_sprint"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -55,8 +55,11 @@
       "id" : "title",
       "viewFieldName" : "name"
     }, {
-      "id" : "status",
-      "viewFieldName" : "STATUS"
+      "id" : "schedule",
+      "viewFieldName" : "schedule"
+    }, {
+      "id" : "assignee_name",
+      "viewFieldName" : "ASSIGNEE_ID"
     }, {
       "id" : "start_at",
       "viewFieldName" : "START_AT"
@@ -64,8 +67,8 @@
       "id" : "end_at",
       "viewFieldName" : "END_AT"
     }, {
-      "id" : "assignee_name",
-      "viewFieldName" : "ASSIGNEE_NAME"
+      "id" : "status",
+      "viewFieldName" : "STATUS"
     } ],
     "codeName" : "mob_sprint_list",
     "controlType" : "PANEL",
@@ -96,8 +99,8 @@
       "getPSLayoutPos" : {
         "colMD" : 24,
         "layout" : "TABLE_24COL",
-        "spacingLeft" : "OUTERSMALL",
-        "spacingRight" : "OUTERSMALL",
+        "spacingLeft" : "OUTERMEDIUM",
+        "spacingRight" : "OUTERMEDIUM",
         "spacingTop" : "OUTERSMALL"
       },
       "getPSPanelItems" : [ {
@@ -106,7 +109,10 @@
         "itemType" : "CONTAINER",
         "name" : "container",
         "getPSLayout" : {
-          "layout" : "FLEX"
+          "align" : "space-between",
+          "dir" : "row",
+          "layout" : "FLEX",
+          "vAlign" : "center"
         },
         "getPSLayoutPos" : {
           "grow" : -1,
@@ -129,6 +135,27 @@
             "layout" : "FLEX"
           },
           "viewFieldName" : "name"
+        }, {
+          "caption" : "文本(动态)",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "FIELD",
+          "name" : "schedule",
+          "getPSEditor" : {
+            "editorParams" : {
+              "showText" : "true",
+              "type" : "circle",
+              "textItem" : "schedule_text"
+            },
+            "editorType" : "SLIDER",
+            "name" : "schedule",
+            "predefinedType" : "FIELD_SLIDER",
+            "stepValue" : 1.0
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "viewFieldName" : "schedule"
         } ]
       }, {
         "caption" : "容器",
@@ -153,9 +180,9 @@
           "name" : "container4",
           "getPSLayout" : {
             "align" : "flex-start",
-            "dir" : "column",
+            "dir" : "row",
             "layout" : "FLEX",
-            "vAlign" : "flex-start"
+            "vAlign" : "center"
           },
           "getPSLayoutPos" : {
             "grow" : -1,
@@ -165,12 +192,17 @@
             "caption" : "容器",
             "itemStyle" : "DEFAULT",
             "itemType" : "CONTAINER",
-            "name" : "container2",
+            "name" : "container3",
+            "getPSControlLogics" : [ {
+              "itemName" : "CONTAINER3",
+              "logicTag" : "mdctrl_itempanel",
+              "logicType" : "SCRIPT",
+              "name" : "logic",
+              "scriptCode" : "data.assignee_name != null",
+              "triggerType" : "ITEMVISIBLE"
+            } ],
             "getPSLayout" : {
-              "align" : "flex-start",
-              "dir" : "row",
-              "layout" : "FLEX",
-              "vAlign" : "center"
+              "layout" : "FLEX"
             },
             "getPSLayoutPos" : {
               "grow" : -1,
@@ -180,13 +212,22 @@
               "caption" : "文本(动态)",
               "itemStyle" : "DEFAULT",
               "itemType" : "FIELD",
-              "name" : "status",
+              "name" : "assignee_name",
               "getPSEditor" : {
+                "editorParams" : {
+                  "SHOWNAMETEXT" : "false"
+                },
+                "editorStyle" : "PERSONNEL_INFO",
                 "editorType" : "SPAN",
-                "name" : "status",
+                "name" : "assignee_name",
                 "getPSAppCodeList" : {
                   "modelref" : true,
-                  "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__sprint_status.json"
+                  "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
+                },
+                "getPSSysPFPlugin" : {
+                  "pluginType" : "EDITOR_CUSTOMSTYLE",
+                  "pluginCode" : "PERSONNEL_INFO",
+                  "runtimeObject" : true
                 },
                 "predefinedType" : "FIELD_TEXT_DYNAMIC",
                 "renderMode" : "TEXT_DYNAMIC",
@@ -196,7 +237,7 @@
                 "grow" : -1,
                 "layout" : "FLEX"
               },
-              "viewFieldName" : "STATUS",
+              "viewFieldName" : "ASSIGNEE_ID",
               "convertToCodeItemText" : true
             } ]
           }, {
@@ -213,7 +254,7 @@
             "getPSLayoutPos" : {
               "grow" : -1,
               "layout" : "FLEX",
-              "spacingTop" : "OUTERSMALL"
+              "spacingLeft" : "OUTERSMALL"
             },
             "getPSPanelItems" : [ {
               "caption" : "文本(动态)",
@@ -256,9 +297,12 @@
           "caption" : "容器",
           "itemStyle" : "DEFAULT",
           "itemType" : "CONTAINER",
-          "name" : "container3",
+          "name" : "container2",
           "getPSLayout" : {
-            "layout" : "FLEX"
+            "align" : "flex-start",
+            "dir" : "row",
+            "layout" : "FLEX",
+            "vAlign" : "center"
           },
           "getPSLayoutPos" : {
             "grow" : -1,
@@ -268,22 +312,13 @@
             "caption" : "文本(动态)",
             "itemStyle" : "DEFAULT",
             "itemType" : "FIELD",
-            "name" : "assignee_name",
+            "name" : "status",
             "getPSEditor" : {
-              "editorParams" : {
-                "SHOWNAMETEXT" : "false"
-              },
-              "editorStyle" : "PERSONNEL_INFO",
               "editorType" : "SPAN",
-              "name" : "assignee_name",
+              "name" : "status",
               "getPSAppCodeList" : {
                 "modelref" : true,
-                "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
-              },
-              "getPSSysPFPlugin" : {
-                "pluginType" : "EDITOR_CUSTOMSTYLE",
-                "pluginCode" : "PERSONNEL_INFO",
-                "runtimeObject" : true
+                "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__mob_sprint_status.json"
               },
               "predefinedType" : "FIELD_TEXT_DYNAMIC",
               "renderMode" : "TEXT_DYNAMIC",
@@ -293,28 +328,10 @@
               "grow" : -1,
               "layout" : "FLEX"
             },
-            "viewFieldName" : "ASSIGNEE_NAME",
+            "viewFieldName" : "STATUS",
             "convertToCodeItemText" : true
           } ]
         } ]
-      }, {
-        "caption" : "标签",
-        "contentType" : "DIVIDER",
-        "itemStyle" : "DEFAULT",
-        "itemType" : "RAWITEM",
-        "name" : "static_label",
-        "getPSLayoutPos" : {
-          "grow" : -1,
-          "layout" : "FLEX"
-        },
-        "getPSRawItem" : {
-          "contentType" : "DIVIDER",
-          "name" : "static_label",
-          "predefinedType" : "STATIC_LABEL",
-          "rawContent" : "标签"
-        },
-        "rawContent" : "标签",
-        "showCaption" : true
       } ]
     } ],
     "name" : "mdctrl_itempanel",
@@ -328,6 +345,13 @@
     "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/sprint.json"
   },
   "getPSDEListDataItems" : [ {
+    "dataType" : 25,
+    "name" : "assignee_name",
+    "getPSAppDEField" : {
+      "name" : "ASSIGNEE_NAME",
+      "codeName" : "assignee_name"
+    }
+  }, {
     "dataType" : 25,
     "name" : "srfkey",
     "getPSAppDEField" : {

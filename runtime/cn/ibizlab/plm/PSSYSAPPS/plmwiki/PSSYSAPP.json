@@ -423,11 +423,11 @@
     "frontProcessType" : "OTHER",
     "fullCodeName" : "edit_filter",
     "name" : "过滤器编辑",
+    "scriptCode" : "if (ctrl) { const id = ctrl.model.id; ctrl.dashboard.openFilterDesignPage({id}) }",
     "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "edit_filter",
     "uIActionType" : "DEUIACTION",
-    "uILogicAttachMode" : "REPLACE",
     "globalUIAction" : true
   }, {
     "actionTarget" : "NONE",
@@ -436,11 +436,11 @@
     "frontProcessType" : "OTHER",
     "fullCodeName" : "hight_light_filter",
     "name" : "过滤器高亮",
+    "scriptCode" : "if (ctrl) { ctrl.showEffectiveCtrl() }",
     "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "hight_light_filter",
     "uIActionType" : "DEUIACTION",
-    "uILogicAttachMode" : "REPLACE",
     "globalUIAction" : true
   } ],
   "getAllPSAppDataEntities" : [ {
@@ -658,6 +658,20 @@
     "refTag" : "FRONT",
     "runtimeObject" : true
   }, {
+    "name" : "组装选中数据",
+    "getPSSysPFPlugin" : {
+      "pluginType" : "DEUIACTION",
+      "pluginCode" : "ASSEMBLE_SELECTED_DATA",
+      "runtimeObject" : true
+    },
+    "pluginCode" : "ASSEMBLE_SELECTED_DATA",
+    "pluginType" : "DEUIACTION",
+    "rTObjectName" : "MobAssembleSelectedData",
+    "rTObjectRepo" : "@ibiz-template-plmmob/mob-assemble-selected-data@0.0.3-alpha.90",
+    "refMode" : "UIACTION",
+    "refTag" : "FRONT",
+    "runtimeObject" : true
+  }, {
     "name" : "锚点富文本",
     "getPSSysPFPlugin" : {
       "pluginType" : "EDITOR_CUSTOMSTYLE",
@@ -667,7 +681,7 @@
     "pluginCode" : "ANCHO_HTML",
     "pluginType" : "EDITOR_CUSTOMSTYLE",
     "rTObjectName" : "AnchoHtml",
-    "rTObjectRepo" : "@ibiz-template-plm/ancho-html@0.0.3-alpha.52",
+    "rTObjectRepo" : "@ibiz-template-plm/ancho-html@0.0.3-alpha.76",
     "refMode" : "EDITORSTYPE",
     "runtimeObject" : true
   }, {
@@ -842,7 +856,7 @@
   "appMode" : "CLOUDHUBAPP",
   "appType" : "WEBAPP_HTML5",
   "appVersion" : "1.0.0.0",
-  "caption" : "产品生命周期管理系统",
+  "caption" : "软件生命周期管理系统",
   "codeName" : "plmwiki",
   "defaultFlag" : false,
   "getDefaultPSAppIndexView" : {
@@ -873,7 +887,7 @@
     "getPSAppViews" : [ {
       "accUserMode" : 3,
       "appSwitchMode" : 0,
-      "caption" : "产品生命周期管理系统",
+      "caption" : "软件生命周期管理系统",
       "codeName" : "app_index_view",
       "dynaModelFilePath" : "PSSYSAPPS/plmwiki/PSAPPINDEXVIEWS/app_index_view.json",
       "name" : "AppIndexView",
@@ -918,7 +932,7 @@
         "modelid" : "084AA253-AA6E-4BED-B06D-B796DD772AC2",
         "modeltype" : "PSAPPMENU"
       }, {
-        "caption" : "产品生命周期管理系统",
+        "caption" : "软件生命周期管理系统",
         "codeName" : "captionbar",
         "controlType" : "CAPTIONBAR",
         "name" : "captionbar",
@@ -3062,6 +3076,40 @@
         "builtinMethod" : false,
         "needResourceKey" : true
       }, {
+        "actionMode" : "CUSTOM",
+        "codeName" : "finish_add_attention",
+        "methodType" : "DEACTION",
+        "name" : "finish_add_attention",
+        "getPSAppDEMethodInput" : {
+          "name" : "输入对象",
+          "getPSAppDEMethodDTO" : {
+            "modelref" : true,
+            "id" : "article_page_dto"
+          },
+          "type" : "DTO"
+        },
+        "getPSAppDEMethodReturn" : {
+          "name" : "返回对象",
+          "type" : "VOID"
+        },
+        "getPSDEAction" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEACTIONS/finish_add_attention.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "UPDATE"
+        },
+        "getPSDEServiceAPIMethod" : {
+          "modelref" : true,
+          "id" : "finish_add_attention"
+        },
+        "requestMethod" : "POST",
+        "requestParamType" : "ENTITY",
+        "requestPath" : "/finish_add_attention",
+        "builtinMethod" : false,
+        "needResourceKey" : true
+      }, {
         "actionMode" : "READ",
         "actionTag" : "Get",
         "codeName" : "get",
@@ -4517,6 +4565,44 @@
         "requestMethod" : "POST",
         "requestParamType" : "ENTITY",
         "requestPath" : "/fetch_normal",
+        "builtinMethod" : false
+      }, {
+        "codeName" : "fetch_normal_tree_page",
+        "dataSetName" : "normal_tree_page",
+        "dataSetTag" : "normal_tree_page",
+        "methodType" : "FETCH",
+        "name" : "fetch_normal_tree_page",
+        "getPSAppDEMethodInput" : {
+          "name" : "输入对象",
+          "getPSAppDEMethodDTO" : {
+            "modelref" : true,
+            "id" : "article_page_filter_dto"
+          },
+          "type" : "DTO"
+        },
+        "getPSAppDEMethodReturn" : {
+          "name" : "返回对象",
+          "getPSAppDEMethodDTO" : {
+            "modelref" : true,
+            "id" : "article_page_dto"
+          },
+          "type" : "PAGE"
+        },
+        "getPSDEDataSet" : {
+          "modelref" : true,
+          "id" : "normal_tree_page"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "READ"
+        },
+        "getPSDEServiceAPIMethod" : {
+          "modelref" : true,
+          "id" : "fetch_normal_tree_page"
+        },
+        "requestMethod" : "POST",
+        "requestParamType" : "ENTITY",
+        "requestPath" : "/fetch_normal_tree_page",
         "builtinMethod" : false
       }, {
         "codeName" : "fetch_only_page",
@@ -5990,6 +6076,68 @@
         "valueFormat" : "YYYY-MM-DD HH:mm:ss"
       }, {
         "getAllPSAppDEFUIModes" : [ {
+          "codeName" : "Default",
+          "name" : "[ATTENTION_COUNT][关注数]",
+          "getPSDEFFormItem" : {
+            "codeName" : "Default",
+            "editorType" : "SPAN",
+            "name" : "[ATTENTION_COUNT][关注数]",
+            "stringLength" : 200,
+            "uIMode" : "DEFAULT"
+          },
+          "type" : "DEFAULT"
+        }, {
+          "codeName" : "MobileDefault",
+          "name" : "[ATTENTION_COUNT][关注数]移动端默认",
+          "getPSDEFFormItem" : {
+            "codeName" : "MobileDefault",
+            "editorType" : "SPAN",
+            "name" : "[ATTENTION_COUNT][关注数]移动端默认",
+            "stringLength" : 200,
+            "uIMode" : "MOBILEDEFAULT",
+            "mobileMode" : true
+          },
+          "type" : "MOBILEDEFAULT",
+          "mobileMode" : true
+        } ],
+        "codeName" : "attention_count",
+        "logicName" : "关注数",
+        "name" : "ATTENTION_COUNT",
+        "stdDataType" : 25,
+        "stringLength" : 200
+      }, {
+        "getAllPSAppDEFUIModes" : [ {
+          "codeName" : "MobileDefault",
+          "name" : "[COMMENT_COUNT][评论数]移动端默认",
+          "getPSDEFFormItem" : {
+            "codeName" : "MobileDefault",
+            "editorType" : "SPAN",
+            "name" : "[COMMENT_COUNT][评论数]移动端默认",
+            "stringLength" : 200,
+            "uIMode" : "MOBILEDEFAULT",
+            "mobileMode" : true
+          },
+          "type" : "MOBILEDEFAULT",
+          "mobileMode" : true
+        }, {
+          "codeName" : "Default",
+          "name" : "[COMMENT_COUNT][评论数]",
+          "getPSDEFFormItem" : {
+            "codeName" : "Default",
+            "editorType" : "SPAN",
+            "name" : "[COMMENT_COUNT][评论数]",
+            "stringLength" : 200,
+            "uIMode" : "DEFAULT"
+          },
+          "type" : "DEFAULT"
+        } ],
+        "codeName" : "comment_count",
+        "logicName" : "评论数",
+        "name" : "COMMENT_COUNT",
+        "stdDataType" : 25,
+        "stringLength" : 200
+      }, {
+        "getAllPSAppDEFUIModes" : [ {
           "codeName" : "MobileDefault",
           "name" : "[CHOOSE_VERSION_ID][选择版本标识]移动端默认",
           "getPSDEFFormItem" : {
@@ -7014,6 +7162,28 @@
           },
           "sourceType" : "DEFIELD",
           "stdDataType" : 5,
+          "type" : "SIMPLE"
+        }, {
+          "codeName" : "attention_count",
+          "logicName" : "关注数",
+          "name" : "attention_count",
+          "getPSAppDEField" : {
+            "name" : "ATTENTION_COUNT",
+            "codeName" : "attention_count"
+          },
+          "sourceType" : "DEFIELD",
+          "stdDataType" : 25,
+          "type" : "SIMPLE"
+        }, {
+          "codeName" : "comment_count",
+          "logicName" : "评论数",
+          "name" : "comment_count",
+          "getPSAppDEField" : {
+            "name" : "COMMENT_COUNT",
+            "codeName" : "comment_count"
+          },
+          "sourceType" : "DEFIELD",
+          "stdDataType" : 25,
           "type" : "SIMPLE"
         }, {
           "codeName" : "choose_version_id",
@@ -8194,6 +8364,40 @@
         "requestMethod" : "POST",
         "requestParamType" : "ENTITY",
         "requestPath" : "/favorite",
+        "builtinMethod" : false,
+        "needResourceKey" : true
+      }, {
+        "actionMode" : "CUSTOM",
+        "codeName" : "finish_add_attention",
+        "methodType" : "DEACTION",
+        "name" : "finish_add_attention",
+        "getPSAppDEMethodInput" : {
+          "name" : "输入对象",
+          "getPSAppDEMethodDTO" : {
+            "modelref" : true,
+            "id" : "article_page_dto"
+          },
+          "type" : "DTO"
+        },
+        "getPSAppDEMethodReturn" : {
+          "name" : "返回对象",
+          "type" : "VOID"
+        },
+        "getPSDEAction" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEACTIONS/finish_add_attention.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "UPDATE"
+        },
+        "getPSDEServiceAPIMethod" : {
+          "modelref" : true,
+          "id" : "finish_add_attention"
+        },
+        "requestMethod" : "POST",
+        "requestParamType" : "ENTITY",
+        "requestPath" : "/finish_add_attention",
         "builtinMethod" : false,
         "needResourceKey" : true
       }, {
@@ -9477,6 +9681,44 @@
         "requestMethod" : "POST",
         "requestParamType" : "ENTITY",
         "requestPath" : "/fetch_normal",
+        "builtinMethod" : false
+      }, {
+        "codeName" : "fetch_normal_tree_page",
+        "dataSetName" : "normal_tree_page",
+        "dataSetTag" : "normal_tree_page",
+        "methodType" : "FETCH",
+        "name" : "fetch_normal_tree_page",
+        "getPSAppDEMethodInput" : {
+          "name" : "输入对象",
+          "getPSAppDEMethodDTO" : {
+            "modelref" : true,
+            "id" : "article_page_filter_dto"
+          },
+          "type" : "DTO"
+        },
+        "getPSAppDEMethodReturn" : {
+          "name" : "返回对象",
+          "getPSAppDEMethodDTO" : {
+            "modelref" : true,
+            "id" : "article_page_dto"
+          },
+          "type" : "PAGE"
+        },
+        "getPSDEDataSet" : {
+          "modelref" : true,
+          "id" : "normal_tree_page"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "READ"
+        },
+        "getPSDEServiceAPIMethod" : {
+          "modelref" : true,
+          "id" : "fetch_normal_tree_page"
+        },
+        "requestMethod" : "POST",
+        "requestParamType" : "ENTITY",
+        "requestPath" : "/fetch_normal_tree_page",
         "builtinMethod" : false
       }, {
         "codeName" : "fetch_only_page",

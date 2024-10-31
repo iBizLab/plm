@@ -17,6 +17,7 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageget_shared_infodeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取共享页面"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageget_shared_inforawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="获取访问密码"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageget_shared_infodelogic1" id="delogic1" implementation="http://www.jboss.org/drools/rule" name="访问密码解密"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageget_shared_infodebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageget_shared_infoprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置结果参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageget_shared_infoend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
@@ -25,9 +26,11 @@
                     </sequenceFlow>
                     <sequenceFlow id="deaction1_rawsqlcall1" sourceRef="deaction1" targetRef="rawsqlcall1">
                     </sequenceFlow>
-                    <sequenceFlow id="rawsqlcall1_delogic1" sourceRef="rawsqlcall1" targetRef="delogic1">
+                    <sequenceFlow id="rawsqlcall1_debugparam1" sourceRef="rawsqlcall1" targetRef="debugparam1">
                     </sequenceFlow>
                     <sequenceFlow id="delogic1_prepareparam2" sourceRef="delogic1" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam1_delogic1" sourceRef="debugparam1" targetRef="delogic1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam2_end1" sourceRef="prepareparam2" targetRef="end1">
                     </sequenceFlow>

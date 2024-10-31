@@ -169,13 +169,6 @@
     },
     "getPSControlLogics" : [ {
       "eventNames" : "onClick",
-      "itemName" : "grouppanel1",
-      "logicTag" : "form",
-      "logicType" : "SCRIPT",
-      "name" : "move",
-      "scriptCode" : "console.log('AAA', '点击触发')"
-    }, {
-      "eventNames" : "onClick",
       "itemName" : "grouppanel2",
       "logicTag" : "form",
       "logicType" : "APPDEUIACTION",
@@ -209,11 +202,103 @@
       }
     }, {
       "eventNames" : "onClick",
+      "itemName" : "rawitem2",
+      "logicTag" : "form",
+      "logicType" : "APPDEUIACTION",
+      "name" : "archive_item",
+      "getPSAppDEUIAction" : {
+        "actionTarget" : "SINGLEKEY",
+        "caption" : "归档",
+        "codeName" : "archive",
+        "confirmMsg" : "确认归档该项目？",
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "project_archive",
+        "name" : "进行中_归档",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "archive"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+        },
+        "refreshMode" : 1,
+        "successMsg" : "归档成功",
+        "timeout" : 60000,
+        "tooltip" : "归档",
+        "uIActionMode" : "BACKEND",
+        "uIActionTag" : "archive",
+        "uIActionType" : "DEUIACTION",
+        "enableConfirm" : true,
+        "reloadData" : true,
+        "id" : "archive@project"
+      }
+    }, {
+      "eventNames" : "onClick",
       "itemName" : "rawitem3",
       "logicTag" : "form",
-      "logicType" : "SCRIPT",
+      "logicType" : "APPDEUIACTION",
       "name" : "delete",
-      "scriptCode" : "console.log('CCC', '点击触发')"
+      "getPSAppDEUIAction" : {
+        "actionTarget" : "SINGLEKEY",
+        "caption" : "删除",
+        "codeName" : "mob_in_progress_into_deleted",
+        "confirmMsg" : "确认删除该项目？",
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "project_mob_in_progress_into_deleted",
+        "name" : "进行中_删除（移动端）",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "delete"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+        },
+        "refreshMode" : 1,
+        "successMsg" : "删除成功",
+        "timeout" : 60000,
+        "tooltip" : "删除",
+        "uIActionMode" : "BACKEND",
+        "uIActionTag" : "mob_in_progress_into_deleted",
+        "uIActionType" : "DEUIACTION",
+        "enableConfirm" : true,
+        "reloadData" : true,
+        "id" : "mob_in_progress_into_deleted@project"
+      }
+    }, {
+      "eventNames" : "onClick",
+      "itemName" : "grouppanel3",
+      "logicTag" : "form",
+      "logicType" : "APPDEUIACTION",
+      "name" : "delete_group",
+      "getPSAppDEUIAction" : {
+        "actionTarget" : "SINGLEKEY",
+        "caption" : "删除",
+        "codeName" : "mob_in_progress_into_deleted",
+        "confirmMsg" : "确认删除该项目？",
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "project_mob_in_progress_into_deleted",
+        "name" : "进行中_删除（移动端）",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "delete"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+        },
+        "refreshMode" : 1,
+        "successMsg" : "删除成功",
+        "timeout" : 60000,
+        "tooltip" : "删除",
+        "uIActionMode" : "BACKEND",
+        "uIActionTag" : "mob_in_progress_into_deleted",
+        "uIActionType" : "DEUIACTION",
+        "enableConfirm" : true,
+        "reloadData" : true,
+        "id" : "mob_in_progress_into_deleted@project"
+      }
     } ],
     "getPSControlParam" : {
       "autoLoad" : true,
@@ -265,6 +350,21 @@
       "hidden" : true,
       "dataType" : 25
     }, {
+      "id" : "scope_type",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "SCOPE_TYPE",
+        "codeName" : "scope_type"
+      }
+    }, {
+      "id" : "scope_id",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "SCOPE_ID",
+        "codeName" : "scope_id"
+      }
+    }, {
       "id" : "id",
       "hidden" : true,
       "dataType" : 25,
@@ -286,6 +386,93 @@
         "detailType" : "GROUPPANEL",
         "name" : "group1",
         "getPSDEFormDetails" : [ {
+          "caption" : "所属",
+          "codeName" : "scope_type",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "scope_type",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "SCOPE_TYPE",
+            "codeName" : "scope_type"
+          },
+          "getPSEditor" : {
+            "editorParams" : {
+              "AC" : "TRUE",
+              "fillMap" : "{\"user\":\"user\",\"user_group\":\"user_group\",\"organization\":\"organization\"}",
+              "enablePerson" : "false",
+              "PICKUPVIEW" : "TRUE"
+            },
+            "editorStyle" : "MOB_TEAM_PICKER",
+            "editorType" : "MOBPICKER",
+            "handlerType" : "PickupText",
+            "name" : "scope_type",
+            "getPSAppDEACMode" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "getPSAppDEDataSet" : {
+              "modelref" : true,
+              "id" : "fetch_default"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/group.json"
+            },
+            "getPSEditorItems" : [ {
+              "name" : "scope_id"
+            } ],
+            "getPSSysPFPlugin" : {
+              "pluginType" : "EDITOR_CUSTOMSTYLE",
+              "pluginCode" : "MOB_TEAM_PICKER",
+              "runtimeObject" : true
+            },
+            "valueItemName" : "scope_id",
+            "enableAC" : true,
+            "enablePickupView" : true,
+            "forceSelection" : true,
+            "showTrigger" : true,
+            "singleSelect" : true
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "valueItemName" : "scope_id",
+          "allowEmpty" : false,
+          "showCaption" : true
+        }, {
+          "codeName" : "scope_id",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "NONE",
+          "labelWidth" : 0,
+          "name" : "scope_id",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "SCOPE_ID",
+            "codeName" : "scope_id"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "scope_id"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "emptyCaption" : true,
+          "hidden" : true
+        }, {
           "caption" : "移动项目",
           "codeName" : "grouppanel1",
           "detailStyle" : "DEFAULT",
@@ -323,6 +510,27 @@
             "layout" : "TABLE_24COL"
           },
           "infoGroupMode" : false,
+          "showCaption" : true
+        }, {
+          "codeName" : "rawitem4",
+          "contentType" : "DIVIDER",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "RAWITEM",
+          "name" : "rawitem4",
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSRawItem" : {
+            "contentType" : "DIVIDER",
+            "name" : "rawitem4",
+            "rawContent" : "{\"contentPosition\":\"center\",\"html\":\"\"}",
+            "rawItemHeight" : -1.0,
+            "rawItemWidth" : -1.0
+          },
+          "rawContent" : "{\"contentPosition\":\"center\",\"html\":\"\"}",
+          "rawItemHeight" : -1.0,
+          "rawItemWidth" : -1.0,
           "showCaption" : true
         }, {
           "caption" : "归档项目",
@@ -365,6 +573,27 @@
           "infoGroupMode" : false,
           "showCaption" : true
         }, {
+          "codeName" : "rawitem5",
+          "contentType" : "DIVIDER",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "RAWITEM",
+          "name" : "rawitem5",
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSRawItem" : {
+            "contentType" : "DIVIDER",
+            "name" : "rawitem5",
+            "rawContent" : "{\"contentPosition\":\"center\",\"html\":\"\"}",
+            "rawItemHeight" : -1.0,
+            "rawItemWidth" : -1.0
+          },
+          "rawContent" : "{\"contentPosition\":\"center\",\"html\":\"\"}",
+          "rawItemHeight" : -1.0,
+          "rawItemWidth" : -1.0,
+          "showCaption" : true
+        }, {
           "caption" : "删除项目",
           "codeName" : "grouppanel3",
           "detailStyle" : "DEFAULT",
@@ -372,22 +601,22 @@
           "name" : "grouppanel3",
           "getPSDEFormDetails" : [ {
             "codeName" : "rawitem3",
-            "contentType" : "RAW",
+            "contentType" : "HTML",
             "detailStyle" : "DEFAULT",
             "detailType" : "RAWITEM",
+            "htmlContent" : "<p>如果此项目已经不再需要了，你可以删除它。删除后如果想找回该项目，可以通过配置中心由管理员进行恢复。</p>",
             "name" : "rawitem3",
             "getPSLayoutPos" : {
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
             "getPSRawItem" : {
-              "caption" : "如果此项目已经不再需要了，你可以删除它。删除后如果想找回该项目，可以通过配置中心由管理员进行恢复。",
-              "contentType" : "RAW",
+              "content" : "<p>如果此项目已经不再需要了，你可以删除它。删除后如果想找回该项目，可以通过配置中心由管理员进行恢复。</p>",
+              "contentType" : "HTML",
               "name" : "rawitem3",
               "rawItemHeight" : -1.0,
               "rawItemWidth" : -1.0
             },
-            "rawContent" : "如果此项目已经不再需要了，你可以删除它。删除后如果想找回该项目，可以通过配置中心由管理员进行恢复。",
             "rawItemHeight" : -1.0,
             "rawItemWidth" : -1.0,
             "showCaption" : true
@@ -402,6 +631,27 @@
             "layout" : "TABLE_24COL"
           },
           "infoGroupMode" : false,
+          "showCaption" : true
+        }, {
+          "codeName" : "rawitem6",
+          "contentType" : "DIVIDER",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "RAWITEM",
+          "name" : "rawitem6",
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSRawItem" : {
+            "contentType" : "DIVIDER",
+            "name" : "rawitem6",
+            "rawContent" : "{\"contentPosition\":\"center\",\"html\":\"\"}",
+            "rawItemHeight" : -1.0,
+            "rawItemWidth" : -1.0
+          },
+          "rawContent" : "{\"contentPosition\":\"center\",\"html\":\"\"}",
+          "rawItemHeight" : -1.0,
+          "rawItemWidth" : -1.0,
           "showCaption" : true
         } ],
         "getPSLayout" : {
@@ -457,6 +707,9 @@
       "columnCount" : 24,
       "layout" : "TABLE_24COL"
     },
+    "getPSSysCss" : {
+      "cssName" : "mob-advanced-setting-style"
+    },
     "getRemovePSControlAction" : {
       "modelref" : true,
       "id" : "remove",
@@ -495,6 +748,73 @@
     "name" : "form",
     "modelid" : "976F4F45-A487-4BBE-9617-81C3CCFCAD31",
     "modeltype" : "PSDEFORM_EDITFORM"
+  }, {
+    "codeName" : "mob_advanced_setting_view_righttoolbar",
+    "controlType" : "TOOLBAR",
+    "logicName" : "工具栏模板（移动端编辑视图）",
+    "name" : "righttoolbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+    },
+    "getPSControlParam" : {
+      "id" : "RIGHTTOOLBAR"
+    },
+    "getPSDEToolbarItems" : [ {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "TBB.TEXT.EDITVIEW.SAVEANDCLOSE"
+      },
+      "caption" : "确定",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "tbitem1",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "righttoolbar_tbitem1"
+      },
+      "getPSSysCss" : {
+        "cssName" : "enter_button_style"
+      },
+      "getPSSysImage" : {
+        "cssClass" : "sx-tb-saveandclose"
+      },
+      "getPSUIAction" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "TBB.TEXT.EDITVIEW.SAVEANDCLOSE"
+        },
+        "caption" : "保存并关闭",
+        "codeName" : "SaveAndExit",
+        "dataAccessAction" : "SUBDATA",
+        "fullCodeName" : "SaveAndExit",
+        "name" : "编辑界面_保存并退出操作",
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "SUBDATA"
+        },
+        "getPSSysImage" : {
+          "cssClass" : "sx-tb-saveandclose"
+        },
+        "predefinedType" : "EDITVIEW_SAVEANDEXITACTION",
+        "timeout" : 60000,
+        "getTooltipPSLanguageRes" : {
+          "lanResTag" : "TBB.TOOLTIP.EDITVIEW.SAVEANDCLOSE"
+        },
+        "uIActionMode" : "SYS",
+        "uIActionTag" : "SaveAndExit",
+        "uIActionType" : "DEUIACTION"
+      },
+      "tooltip" : "确定",
+      "getTooltipPSLanguageRes" : {
+        "lanResTag" : "TBB.TOOLTIP.EDITVIEW.SAVEANDCLOSE"
+      },
+      "showCaption" : true,
+      "showIcon" : true
+    } ],
+    "toolbarStyle" : "MOBNAVRIGHTMENU",
+    "xDataControlName" : "form",
+    "modelid" : "6da8cce3f6df8a8eb5d94740f6350f74",
+    "modeltype" : "PSDETOOLBAR"
   }, {
     "codeName" : "mob_advanced_setting_view_datainfobar",
     "controlType" : "DATAINFOBAR",

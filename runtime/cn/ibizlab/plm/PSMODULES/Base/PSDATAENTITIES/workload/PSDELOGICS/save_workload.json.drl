@@ -210,12 +210,12 @@ package cn.ibizlab.plm.base.logic.workloadlogic.save_workload;
                         update(workloadsave_workloadwork_item);//更新fact中变量值
             end
 
-            //逻辑处理节点[工时为0时置为null]
-            rule "prepareparam6"
-            ruleflow-group "workloadsave_workloadprepareparam6"
+            //逻辑处理节点[更新实际工时]
+            rule "deaction7"
+            ruleflow-group "workloadsave_workloaddeaction7"
             when
             then
-                                workloadsave_workloadactual.set("decimalvalue",null);
+                        extend_storageservice.save(workloadsave_workloadactual);
                         update(workloadsave_workloaddefault);//更新fact中变量值
                         update(workloadsave_workloadactual);//更新fact中变量值
                         update(workloadsave_workloadidea);//更新fact中变量值
@@ -224,12 +224,12 @@ package cn.ibizlab.plm.base.logic.workloadlogic.save_workload;
                         update(workloadsave_workloadwork_item);//更新fact中变量值
             end
 
-            //逻辑处理节点[更新实际工时]
-            rule "deaction7"
-            ruleflow-group "workloadsave_workloaddeaction7"
+            //逻辑处理节点[工时为0时置为null]
+            rule "prepareparam6"
+            ruleflow-group "workloadsave_workloadprepareparam6"
             when
             then
-                        extend_storageservice.save(workloadsave_workloadactual);
+                                workloadsave_workloadactual.set("decimalvalue",null);
                         update(workloadsave_workloaddefault);//更新fact中变量值
                         update(workloadsave_workloadactual);//更新fact中变量值
                         update(workloadsave_workloadidea);//更新fact中变量值

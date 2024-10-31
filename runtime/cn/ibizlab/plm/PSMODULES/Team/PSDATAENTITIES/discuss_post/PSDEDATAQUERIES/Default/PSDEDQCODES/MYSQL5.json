@@ -23,6 +23,9 @@
     "expression" : "t1.`NAME`",
     "name" : "NAME"
   }, {
+    "expression" : "(SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`)",
+    "name" : "REPLIES"
+  }, {
     "expression" : "t1.`STATUS`",
     "name" : "STATUS"
   }, {
@@ -38,6 +41,6 @@
     "expression" : "t1.`UPDATE_TIME`",
     "name" : "UPDATE_TIME"
   } ],
-  "queryCode" : "SELECT\nt1.`CREATE_MAN`,\nt1.`CREATE_TIME`,\nt1.`HEAT`,\nt1.`ID`,\nt1.`IS_DELETED`,\nt1.`NAME`,\nt1.`STATUS`,\nt1.`TOPIC_ID`,\nt11.`NAME` AS `TOPIC_NAME`,\nt1.`UPDATE_MAN`,\nt1.`UPDATE_TIME`\nFROM `DISCUSS_POST` t1 \nLEFT JOIN `DISCUSS_TOPIC` t11 ON t1.`TOPIC_ID` = t11.`ID` \n",
+  "queryCode" : "SELECT\nt1.`CREATE_MAN`,\nt1.`CREATE_TIME`,\nt1.`HEAT`,\nt1.`ID`,\nt1.`IS_DELETED`,\nt1.`NAME`,\n(SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,\nt1.`STATUS`,\nt1.`TOPIC_ID`,\nt11.`NAME` AS `TOPIC_NAME`,\nt1.`UPDATE_MAN`,\nt1.`UPDATE_TIME`\nFROM `DISCUSS_POST` t1 \nLEFT JOIN `DISCUSS_TOPIC` t11 ON t1.`TOPIC_ID` = t11.`ID` \n",
   "id" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/Default/PSDEDQCODES/MYSQL5.json"
 }

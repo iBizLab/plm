@@ -1059,6 +1059,9 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEDRITEMS/UsrDRItem0919780154.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEDRITEMS/UsrDRItem1031253915.json"
   } ],
   "getAllPSDEDataQueries" : [ {
     "getAllPSDEDataQueryCodes" : [ {
@@ -1643,6 +1646,39 @@
       },
       "type" : "DTOS"
     }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEDATAQUERIES/mob_unfavorite/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "mob_unfavorite",
+    "logicName" : "移动端非星标空间",
+    "name" : "mob_unfavorite",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "SPACE"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Mob_unfavoriteInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "space_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Mob_unfavoriteResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "space_dto"
+      },
+      "type" : "DTOS"
+    },
+    "customCode" : true
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
@@ -2600,6 +2636,46 @@
     },
     "getPSDEDataSetReturn" : {
       "name" : "MainResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "space_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true,
+    "enableTempData" : true
+  }, {
+    "codeName" : "mob_main",
+    "logicName" : "移动端主表格查询",
+    "majorSortDir" : "DESC",
+    "getMajorSortPSDEField" : {
+      "name" : "IS_FAVORITE",
+      "codeName" : "is_favorite"
+    },
+    "minorSortDir" : "DESC",
+    "getMinorSortPSDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "update_time"
+    },
+    "name" : "mob_main",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "favorite"
+    }, {
+      "modelref" : true,
+      "id" : "unfavorite"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Mob_mainInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "space_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Mob_mainResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "space_dto"
@@ -10322,6 +10398,12 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_advanced_set_view",
+    "logicName" : "移动端空间高级设置视图",
+    "name" : "移动端空间高级设置视图",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "product_re_tree_exp_view",
     "logicName" : "产品关联空间树导航视图",
     "name" : "产品关联空间树导航视图",
@@ -10346,6 +10428,12 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_setting_view",
+    "logicName" : "移动端空间设置视图",
+    "name" : "移动端空间设置视图",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "info_view",
     "logicName" : "空间基础信息",
     "name" : "空间基础信息",
@@ -10358,10 +10446,22 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_create_space_view",
+    "logicName" : "移动端新建空间编辑视图",
+    "name" : "移动端新建空间编辑视图",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "team_grid_view",
     "logicName" : "空间表格视图（当前团队）",
     "name" : "空间表格视图（当前团队）",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "project_re_tree_exp_view",
+    "logicName" : "项目关联空间树导航视图",
+    "name" : "项目关联空间树导航视图",
+    "realModelSubType" : "DETREEEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "archived_grid_view",
@@ -10380,6 +10480,12 @@
     "logicName" : "空间新建向导视图",
     "name" : "空间新建向导视图",
     "realModelSubType" : "DEWIZARDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_move_edit_view",
+    "logicName" : "移动端空间移动编辑视图",
+    "name" : "移动端空间移动编辑视图",
+    "realModelSubType" : "DEMOBEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "base_info_edit_view",
@@ -10417,6 +10523,12 @@
     "logicName" : "空间分类树导航视图",
     "name" : "空间分类树导航视图",
     "realModelSubType" : "DETREEEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_list_form_view",
+    "logicName" : "空间移动端列表表单视图（移动端）",
+    "name" : "空间移动端列表表单视图（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "tree_exp_view",
@@ -10476,6 +10588,13 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
+    "codeName" : "mob_setting_view_Form",
+    "logicName" : "移动端空间设置视图_表单",
+    "modelTag2" : "1",
+    "name" : "移动端空间设置视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "wizard_member_bind",
     "logicName" : "成员绑定",
     "modelTag" : "WIZARDFORM",
@@ -10484,10 +10603,31 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
+    "codeName" : "mob_create_space_view_Form",
+    "logicName" : "移动端新建空间编辑视图_表单",
+    "modelTag2" : "1",
+    "name" : "移动端新建空间编辑视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_advanced_setting_form",
+    "logicName" : "移动端高级设置_表单",
+    "modelTag2" : "1",
+    "name" : "移动端高级设置_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "shared_form",
     "logicName" : "空间共享_表单",
     "modelTag2" : "0",
     "name" : "空间共享_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_move_form",
+    "logicName" : "移动端空间移动表单",
+    "modelTag2" : "1",
+    "name" : "移动端空间移动表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -10524,6 +10664,13 @@
     "modelTag" : "WIZARDFORM",
     "modelTag2" : "0",
     "name" : "新建表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_list_form_view_Form",
+    "logicName" : "空间移动端列表表单视图（移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "空间移动端列表表单视图（移动端）_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {

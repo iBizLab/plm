@@ -48,6 +48,11 @@
         "name" : "n_department_id_isnull",
         "value" : "department_id_isnull",
         "rawValue" : false
+      }, {
+        "key" : "n_status_eq",
+        "name" : "n_status_eq",
+        "value" : "1",
+        "rawValue" : true
       } ],
       "getPSControls" : [ {
         "aggMode" : "NONE",
@@ -805,11 +810,11 @@
         "srfparentmode" : "DER1N_USER_DEPARTMENT_DEPARTMENT_ID",
         "srfparentdefname" : "DEPARTMENT_ID"
       },
-      "realTitle" : "成员管理",
+      "realTitle" : "成员帐号",
       "getRefPSAppView" : {
         "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_grid_view.json",
-        "viewType" : "DEGRIDVIEW"
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_account_tab_exp_view.json",
+        "viewType" : "DETABEXPVIEW"
       }
     }, {
       "name" : "EXPITEM:node",
@@ -818,19 +823,19 @@
         "srfparentmode" : "DER1N_USER_DEPARTMENT_DEPARTMENT_ID",
         "srfparentdefname" : "DEPARTMENT_ID"
       },
-      "realTitle" : "成员管理",
+      "realTitle" : "成员帐号",
       "getRefPSAppView" : {
         "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_grid_view.json",
-        "viewType" : "DEGRIDVIEW"
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_account_tab_exp_view.json",
+        "viewType" : "DETABEXPVIEW"
       }
     }, {
       "name" : "EXPITEM:team",
-      "realTitle" : "成员管理",
+      "realTitle" : "成员帐号",
       "getRefPSAppView" : {
         "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_grid_view.json",
-        "viewType" : "DEGRIDVIEW"
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_account_tab_exp_view.json",
+        "viewType" : "DETABEXPVIEW"
       }
     }, {
       "name" : "EXPITEM:unassigned_dept",
@@ -852,6 +857,7 @@
     },
     "getPSControls" : [ {
       "codeName" : "main",
+      "controlStyle" : "GROUP_TREE",
       "controlType" : "TREEVIEW",
       "getCreatePSControlAction" : {
         "modelref" : true,
@@ -1103,18 +1109,6 @@
         },
         "parentValueLevel" : 1,
         "searchMode" : 3
-      }, {
-        "getChildPSDETreeNode" : {
-          "modelref" : true,
-          "id" : "unassigned_dept"
-        },
-        "name" : "默认根节点 - 未分配部门",
-        "getParentPSDETreeNode" : {
-          "modelref" : true,
-          "id" : "ROOT"
-        },
-        "parentValueLevel" : 1,
-        "searchMode" : 3
       } ],
       "getPSDETreeNodes" : [ {
         "counterMode" : 0,
@@ -1148,8 +1142,8 @@
         "name" : "根部门（动态）",
         "getNavPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_grid_view.json",
-          "viewType" : "DEGRIDVIEW"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_account_tab_exp_view.json",
+          "viewType" : "DETABEXPVIEW"
         },
         "getNavPSDER" : {
           "codeName" : "department",
@@ -1228,8 +1222,8 @@
         "name" : "子部门（动态）",
         "getNavPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_grid_view.json",
-          "viewType" : "DEGRIDVIEW"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_account_tab_exp_view.json",
+          "viewType" : "DETABEXPVIEW"
         },
         "getNavPSDER" : {
           "codeName" : "department",
@@ -1303,8 +1297,8 @@
         "name" : "企业成员",
         "getNavPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_grid_view.json",
-          "viewType" : "DEGRIDVIEW"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_account_tab_exp_view.json",
+          "viewType" : "DETABEXPVIEW"
         },
         "nodeType" : "team",
         "getPSSysImage" : {
@@ -1363,6 +1357,11 @@
         "selected" : false,
         "id" : "unassigned_dept"
       } ],
+      "getPSSysPFPlugin" : {
+        "pluginType" : "TREE_RENDER",
+        "pluginCode" : "GROUP_TREE",
+        "runtimeObject" : true
+      },
       "getRemovePSControlAction" : {
         "modelref" : true,
         "id" : "remove",

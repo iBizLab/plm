@@ -57,12 +57,16 @@
     }, {
       "id" : "role_id",
       "viewFieldName" : "ROLE_ID"
+    }, {
+      "id" : "id",
+      "hidden" : true,
+      "viewFieldName" : "id"
     } ],
     "codeName" : "usr0924088868",
     "controlType" : "PANEL",
     "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project_member/PSPANELS/usr0924088868.json",
     "layoutMode" : "TABLE_24COL",
-    "logicName" : "mob_list_列表项面板",
+    "logicName" : "mob_project_member_list_列表项面板",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project_member.json"
@@ -189,10 +193,21 @@
               "caption" : "设置角色",
               "detailType" : "DEUIACTION",
               "name" : "u9e9d9ca",
+              "getPSSysImage" : {
+                "glyph" : "xf185@FontAwesome",
+                "cssClass" : "fa fa-sun-o"
+              },
               "getPSUIAction" : {
                 "actionTarget" : "SINGLEKEY",
+                "noPrivDisplayMode" : 1,
                 "caption" : "设置角色",
                 "codeName" : "mob_setting_role",
+                "dataAccessAction" : "UPDATE",
+                "getFrontPSAppView" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_member_mob_role_option_view.json",
+                  "viewType" : "DEMOBOPTVIEW"
+                },
                 "frontProcessType" : "WIZARD",
                 "fullCodeName" : "project_member_mob_setting_role",
                 "name" : "设置角色（移动端）",
@@ -204,11 +219,22 @@
                   "modelref" : true,
                   "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project_member.json"
                 },
+                "getPSDEOPPriv" : {
+                  "modelref" : true,
+                  "id" : "project__UPDATE"
+                },
+                "getPSSysImage" : {
+                  "glyph" : "xf185@FontAwesome",
+                  "cssClass" : "fa fa-sun-o"
+                },
+                "refreshMode" : 1,
+                "successMsg" : "设置成功",
                 "timeout" : 60000,
                 "uIActionMode" : "BACKEND",
                 "uIActionTag" : "mob_setting_role",
                 "uIActionType" : "DEUIACTION",
                 "enableConfirm" : true,
+                "reloadData" : true,
                 "id" : "mob_setting_role@project_member"
               },
               "addSeparator" : false,
@@ -218,11 +244,17 @@
               "caption" : "移除成员",
               "detailType" : "DEUIACTION",
               "name" : "u4a4daf8",
+              "getPSSysImage" : {
+                "glyph" : "xf014@FontAwesome",
+                "cssClass" : "fa fa-trash-o"
+              },
               "getPSUIAction" : {
                 "actionTarget" : "SINGLEKEY",
+                "noPrivDisplayMode" : 1,
                 "caption" : "移除成员",
                 "codeName" : "remove_member",
                 "confirmMsg" : "确认删除该成员？",
+                "dataAccessAction" : "UPDATE",
                 "fullCodeName" : "project_member_remove_member",
                 "name" : "移除成员",
                 "getPSAppDEMethod" : {
@@ -232,6 +264,14 @@
                 "getPSAppDataEntity" : {
                   "modelref" : true,
                   "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project_member.json"
+                },
+                "getPSDEOPPriv" : {
+                  "modelref" : true,
+                  "id" : "project__UPDATE"
+                },
+                "getPSSysImage" : {
+                  "glyph" : "xf014@FontAwesome",
+                  "cssClass" : "fa fa-trash-o"
                 },
                 "refreshMode" : 1,
                 "successMsg" : "删除成功",
@@ -251,23 +291,20 @@
           }
         } ]
       }, {
-        "caption" : "标签",
-        "contentType" : "DIVIDER",
-        "itemStyle" : "DEFAULT",
-        "itemType" : "RAWITEM",
-        "name" : "static_label",
+        "caption" : "文本(动态)",
+        "itemType" : "FIELD",
+        "name" : "id",
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "id",
+          "predefinedType" : "FIELD_TEXT_DYNAMIC"
+        },
         "getPSLayoutPos" : {
           "grow" : -1,
           "layout" : "FLEX"
         },
-        "getPSRawItem" : {
-          "contentType" : "DIVIDER",
-          "name" : "static_label",
-          "predefinedType" : "STATIC_LABEL",
-          "rawContent" : "标签"
-        },
-        "rawContent" : "标签",
-        "showCaption" : true
+        "viewFieldName" : "id",
+        "hidden" : true
       } ]
     } ],
     "name" : "mdctrl_itempanel",
@@ -282,13 +319,6 @@
   },
   "getPSDEListDataItems" : [ {
     "dataType" : 25,
-    "name" : "name",
-    "getPSAppDEField" : {
-      "name" : "NAME",
-      "codeName" : "name"
-    }
-  }, {
-    "dataType" : 25,
     "getFrontPSCodeList" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/Base__role_type.json"
@@ -297,6 +327,20 @@
     "getPSAppDEField" : {
       "name" : "ROLE_ID",
       "codeName" : "role_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "id",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "name",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
     }
   }, {
     "dataType" : 25,

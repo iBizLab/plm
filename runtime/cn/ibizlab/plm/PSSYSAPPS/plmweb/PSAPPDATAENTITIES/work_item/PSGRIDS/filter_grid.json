@@ -167,37 +167,27 @@
       "codeName" : "ptitle"
     },
     "getPSDEUIAction" : {
-      "actionTarget" : "SINGLEKEY",
-      "caption" : "打开项目集下父工作项的链接视图",
-      "codeName" : "open_under_project_set_pview",
-      "getFrontPSAppView" : {
+      "actionTarget" : "SINGLEDATA",
+      "caption" : "项目集筛选器父工作项链接行为",
+      "codeName" : "project_set_filter_ptitle_link",
+      "frontProcessType" : "OTHER",
+      "fullCodeName" : "work_item_project_set_filter_ptitle_link",
+      "name" : "项目集筛选器父工作项链接行为",
+      "getPSAppDEUILogic" : {
         "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_main_view.json",
-        "viewType" : "DEEDITVIEW"
+        "id" : "open_parent_main_view"
       },
-      "frontProcessType" : "WIZARD",
-      "fullCodeName" : "work_item_open_under_project_set_pview",
-      "name" : "打开项目集下父工作项的链接视图",
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
       },
-      "getPSNavigateContexts" : [ {
-        "key" : "WORK_ITEM",
-        "name" : "WORK_ITEM",
-        "value" : "pid",
-        "rawValue" : false
-      }, {
-        "key" : "PROJECT",
-        "name" : "PROJECT",
-        "value" : "project_id",
-        "rawValue" : false
-      } ],
       "timeout" : 60000,
       "uIActionMode" : "FRONT",
-      "uIActionTag" : "open_under_project_set_pview",
+      "uIActionTag" : "project_set_filter_ptitle_link",
       "uIActionType" : "DEUIACTION",
-      "id" : "open_under_project_set_pview@work_item"
+      "uILogicAttachMode" : "REPLACE",
+      "globalUIAction" : true,
+      "id" : "project_set_filter_ptitle_link@work_item"
     },
     "width" : 150,
     "widthUnit" : "PX",
@@ -508,6 +498,13 @@
     "getPSAppDEField" : {
       "name" : "PID",
       "codeName" : "pid"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "p_work_item_type_id",
+    "getPSAppDEField" : {
+      "name" : "P_WORK_ITEM_TYPE_ID",
+      "codeName" : "p_work_item_type_id"
     }
   }, {
     "dataType" : 25,

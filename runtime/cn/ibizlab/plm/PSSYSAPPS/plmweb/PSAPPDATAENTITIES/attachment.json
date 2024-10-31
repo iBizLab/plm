@@ -247,6 +247,48 @@
     },
     "builtinMethod" : false
   }, {
+    "codeName" : "FetchMob_work_item_attachment",
+    "dataSetTag" : "mob_work_item_attachment",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCH",
+    "name" : "mob_work_item_attachment",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Mob_work_item_attachmentInput",
+      "name" : "Mob_work_item_attachmentInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "attachment_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Mob_work_item_attachmentResult",
+      "name" : "Mob_work_item_attachmentResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "attachment_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "work_item",
+        "fieldName" : "OWNER_ID",
+        "name" : "(OWNER_ID) 等于(=) 网页请求上下文 work_item",
+        "getPSVARTypeId" : "WEBCONTEXT"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "mob_work_item_attachment"
+    },
+    "builtinMethod" : false
+  }, {
     "codeName" : "FetchProject_deliverable",
     "dataSetTag" : "project_deliverable",
     "dataSetType" : "DATAQUERY",
@@ -1320,6 +1362,48 @@
     },
     "builtinMethod" : false
   }, {
+    "codeName" : "FetchMob_work_item_attachment",
+    "dataSetTag" : "mob_work_item_attachment",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCH",
+    "name" : "mob_work_item_attachment",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Mob_work_item_attachmentInput",
+      "name" : "Mob_work_item_attachmentInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "attachment_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Mob_work_item_attachmentResult",
+      "name" : "Mob_work_item_attachmentResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "attachment_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "work_item",
+        "fieldName" : "OWNER_ID",
+        "name" : "(OWNER_ID) 等于(=) 网页请求上下文 work_item",
+        "getPSVARTypeId" : "WEBCONTEXT"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "mob_work_item_attachment"
+    },
+    "builtinMethod" : false
+  }, {
     "codeName" : "FetchProject_deliverable",
     "dataSetTag" : "project_deliverable",
     "dataSetType" : "DATAQUERY",
@@ -1545,7 +1629,7 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/attachment.json"
     },
-    "scriptCode" : "const result = await ibiz.util.file.chooseFileAndUpload(context, params,data);\r\nif (result) {\r\n    const items = result.map(item => {\r\n        return {\r\n            uuid: item.id,\r\n            ...item,\r\n        };\r\n    });\r\n    Object.assign(data, items);\r\n}\r\nreturn { data: result };",
+    "scriptCode" : "const result = await ibiz.util.file.chooseFileAndUpload(context, params, data, { multiple: true });\r\nif (result) {\r\n    const items = result.map(item => {\r\n        return {\r\n            uuid: item.id,\r\n            ...item,\r\n        };\r\n    });\r\n    Object.assign(data, items);\r\n}\r\nreturn { data: result };",
     "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "upload_attachment",
@@ -2410,7 +2494,7 @@
   "dEAPICodeName2" : "attachments",
   "dEAPITag" : "ATTACHMENT",
   "dataAccCtrlArch" : 1,
-  "dataAccCtrlMode" : 1,
+  "dataAccCtrlMode" : 3,
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/attachment.json",
   "enableUIActions" : 15,
   "getKeyPSAppDEField" : {

@@ -1,0 +1,352 @@
+{
+  "codeName" : "mob_create_project_member",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/space_member/PSDELOGICS/mob_create_project_member.json",
+  "logicName" : "新建空间成员（移动端）",
+  "memo" : "新建空间成员（移动端）",
+  "name" : "新建空间成员（移动端）",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 400,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 50,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "BINDPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "selectdata"
+    },
+    "leftPos" : 360,
+    "logicNodeType" : "BINDPARAM",
+    "name" : "绑定选中成员参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "有勾选添加成员",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "GT",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "selectdata"
+          },
+          "logicType" : "SINGLE",
+          "name" : "selectdata[size] 大于(>) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "未勾选添加成员",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "selectdata"
+          },
+          "logicType" : "SINGLE",
+          "name" : "selectdata[size] 等于(=) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      }
+    } ],
+    "srcFieldName" : "srfactionparam",
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "topPos" : 284
+  }, {
+    "codeName" : "LOOPSUBCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_temp_obj"
+    },
+    "leftPos" : 679,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RENEWPARAM1"
+      },
+      "name" : "进入循环",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "结束循环",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      }
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "selectdata"
+    },
+    "topPos" : 284
+  }, {
+    "codeName" : "RENEWPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "member_obj"
+    },
+    "leftPos" : 989,
+    "logicNodeType" : "RENEWPARAM",
+    "name" : "重新建立成员参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RENEWPARAM1"
+      }
+    } ],
+    "topPos" : 284
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 989,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "填充空间成员属性",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "无USER_ID",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNULL",
+          "dstFieldName" : "USER_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "for_temp_obj"
+          },
+          "logicType" : "SINGLE",
+          "name" : "for_temp_obj[USER_ID] 值为空(Nil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "存在USER_ID",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "USER_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "for_temp_obj"
+          },
+          "logicType" : "SINGLE",
+          "name" : "for_temp_obj[USER_ID] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "USER_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "member_obj"
+      },
+      "name" : "for_temp_obj[user_id] ==> member_obj[USER_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "user_id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "member_obj"
+      },
+      "name" : "for_temp_obj[DISPLAY_NAME] ==> member_obj[NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "DISPLAY_NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "SPACE_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "member_obj"
+      },
+      "name" : "Default[SPACE_ID] ==> member_obj[SPACE_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "SPACE_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 430
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 1268,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "USER_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "member_obj"
+      },
+      "name" : "for_temp_obj[ID] ==> member_obj[USER_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 430
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space_member/PSDEACTIONS/Create.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "member_obj"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space_member.json"
+    },
+    "leftPos" : 989,
+    "logicNodeType" : "DEACTION",
+    "name" : "建立空间成员",
+    "topPos" : 575
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 400,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "topPos" : 597
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space_member.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "for_temp_obj",
+    "logicName" : "循环临时变量",
+    "name" : "循环临时变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "member_obj",
+    "logicName" : "关系对象",
+    "name" : "关系对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space_member.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "selectdata",
+    "logicName" : "用户列表",
+    "name" : "用户列表",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+    },
+    "entityListParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

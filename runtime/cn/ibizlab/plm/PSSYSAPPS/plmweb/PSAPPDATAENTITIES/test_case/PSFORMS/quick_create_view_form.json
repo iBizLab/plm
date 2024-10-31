@@ -121,14 +121,14 @@
     }
   }, {
     "id" : "precondition",
-    "dataType" : 25,
+    "dataType" : 21,
     "getPSAppDEField" : {
       "name" : "PRECONDITION",
       "codeName" : "precondition"
     }
   }, {
     "id" : "case_description",
-    "dataType" : 25,
+    "dataType" : 21,
     "getPSAppDEField" : {
       "name" : "DESCRIPTION",
       "codeName" : "description"
@@ -289,12 +289,11 @@
         "getPSDEFormDetails" : [ {
           "caption" : "前置条件",
           "codeName" : "precondition",
-          "dataType" : 25,
+          "dataType" : 21,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "itemHeight" : 450.0,
           "labelPos" : "NONE",
           "labelWidth" : 0,
           "name" : "precondition",
@@ -304,7 +303,6 @@
             "codeName" : "precondition"
           },
           "getPSEditor" : {
-            "editorHeight" : 450.0,
             "editorParams" : {
               "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
               "MAXHEIGHT" : "450",
@@ -327,15 +325,32 @@
               "pluginType" : "EDITOR_CUSTOMSTYLE",
               "pluginCode" : "COMMENT",
               "runtimeObject" : true
-            },
-            "placeHolder" : "输入前置条件"
+            }
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true
-        }, {
+        } ],
+        "getPSLayout" : {
+          "childColMD" : 24,
+          "columnCount" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "infoGroupMode" : false,
+        "showCaption" : true
+      }, {
+        "caption" : "用例步骤",
+        "codeName" : "grouppanel5",
+        "detailStyle" : "DEFAULT",
+        "detailType" : "GROUPPANEL",
+        "name" : "grouppanel5",
+        "getPSDEFormDetails" : [ {
           "buildInActions" : 7,
           "caption" : "用例步骤",
           "codeName" : "mdctrl1",
@@ -570,12 +585,11 @@
         "getPSDEFormDetails" : [ {
           "caption" : "描述",
           "codeName" : "case_description",
-          "dataType" : 25,
+          "dataType" : 21,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "itemHeight" : 200.0,
           "labelPos" : "NONE",
           "labelWidth" : 0,
           "name" : "case_description",
@@ -585,15 +599,29 @@
             "codeName" : "description"
           },
           "getPSEditor" : {
-            "editorHeight" : 200.0,
             "editorParams" : {
-              "HEIGHT" : "200"
+              "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
+              "MAXHEIGHT" : "450",
+              "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
+              "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"type\":\"owner_subtype\"}",
+              "QUOTEPARAMS" : "{\"page\":0,\"size\":20,\"sort\":\"update_time,desc\"}",
+              "MODE" : "default",
+              "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{\\\"id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\",\\\"identifier\\\":\\\"(.+?)\\\",\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, id, name, identifier, icon) => {return controller.getNodeInfo({ id, name, identifier, icon })}).replaceAll(/\\#\\{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)\\}/g,(x, id, name, identifier, icon) => {return controller.getNodeInfo({ id, name, identifier, icon })})",
+              "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
+              "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"icon\":\"${data.icon}\"}`",
+              "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
+              "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+              "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
+              "QUOTEURL" : "`recents/fetch_recent_access`"
             },
-            "editorType" : "TEXTAREA_10",
-            "maxLength" : 2000,
+            "editorStyle" : "COLLAPSE",
+            "editorType" : "HTMLEDITOR",
             "name" : "case_description",
-            "placeHolder" : "输入描述",
-            "showMaxLength" : true
+            "getPSSysPFPlugin" : {
+              "pluginType" : "EDITOR_CUSTOMSTYLE",
+              "pluginCode" : "COMMENT",
+              "runtimeObject" : true
+            }
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
@@ -1516,6 +1544,7 @@
           "editorParams" : {
             "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
             "AC" : "TRUE",
+            "SRFNAVPARAM.n_status_eq" : "1",
             "TRIGGER" : "TRUE",
             "URL" : "libraries/${context.library}/library_members/fetch_default",
             "PICKUPVIEW" : "FALSE",
@@ -1550,6 +1579,11 @@
             "name" : "n_department_id_eq",
             "value" : "srforgsectorid",
             "rawValue" : false
+          }, {
+            "key" : "n_status_eq",
+            "name" : "n_status_eq",
+            "value" : "1",
+            "rawValue" : true
           } ],
           "getPSSysPFPlugin" : {
             "pluginType" : "EDITOR_CUSTOMSTYLE",
@@ -1761,6 +1795,7 @@
               "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
               "AC" : "TRUE",
               "DEFAULTSELCURUSER" : "true",
+              "SRFNAVPARAM.n_status_eq" : "1",
               "TRIGGER" : "TRUE",
               "SELFFILLMAP" : "{\"user_id\":\"user_id\",\"user_name\":\"name\"}",
               "URL" : "libraries/${context.library}/library_members/fetch_default",
@@ -1782,6 +1817,11 @@
               "name" : "n_department_id_eq",
               "value" : "srforgsectorid",
               "rawValue" : false
+            }, {
+              "key" : "n_status_eq",
+              "name" : "n_status_eq",
+              "value" : "1",
+              "rawValue" : true
             } ],
             "getPSSysPFPlugin" : {
               "pluginType" : "EDITOR_CUSTOMSTYLE",

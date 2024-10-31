@@ -273,6 +273,9 @@
         "codeName" : "assignee_name"
       }
     }, {
+      "id" : "customer",
+      "dataType" : 25
+    }, {
       "id" : "attentions",
       "dataType" : 21,
       "getPSAppDEField" : {
@@ -1268,6 +1271,7 @@
             "editorParams" : {
               "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
               "AC" : "TRUE",
+              "SRFNAVPARAM.n_status_eq" : "1",
               "TRIGGER" : "TRUE",
               "SRFNAVCTX.product" : "%product_id%",
               "URL" : "products/${context.product}/product_members/fetch_default",
@@ -1309,6 +1313,11 @@
               "name" : "n_department_id_eq",
               "value" : "srforgsectorid",
               "rawValue" : false
+            }, {
+              "key" : "n_status_eq",
+              "name" : "n_status_eq",
+              "value" : "1",
+              "rawValue" : true
             }, {
               "key" : "n_product_id_eq",
               "name" : "n_product_id_eq",
@@ -1389,6 +1398,57 @@
           "allowEmpty" : true,
           "showCaption" : true
         }, {
+          "caption" : "客户",
+          "codeName" : "customer",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "fieldName" : "target_customer",
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "customer",
+          "noPrivDisplayMode" : 1,
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "ITEMENABLE",
+            "logicType" : "GROUP",
+            "name" : "表单成员[customer][表单项启用]逻辑",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "ISNOTNULL",
+              "dEFDName" : "product_name",
+              "logicType" : "SINGLE"
+            } ],
+            "relatedDetailNames" : [ "product_name" ],
+            "notMode" : false
+          } ],
+          "getPSEditor" : {
+            "editorParams" : {
+              "SRFNAVPARAM.n_product_id_eq" : "%product%"
+            },
+            "editorType" : "MDROPDOWNLIST",
+            "name" : "customer",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__product_customer.json"
+            },
+            "getPSNavigateParams" : [ {
+              "key" : "n_product_id_eq",
+              "name" : "n_product_id_eq",
+              "value" : "product",
+              "rawValue" : false
+            } ],
+            "singleSelect" : false
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "needCodeListConfig" : true,
+          "showCaption" : true
+        }, {
           "getCapPSLanguageRes" : {
             "lanResTag" : "CONTROL.DEFORM.IDEA.QUICK_CREATE.GROUPPANEL.GROUPPANEL4"
           },
@@ -1423,6 +1483,7 @@
                 "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
                 "AC" : "TRUE",
                 "DEFAULTSELCURUSER" : "true",
+                "SRFNAVPARAM.n_status_eq" : "1",
                 "TRIGGER" : "TRUE",
                 "SELFFILLMAP" : "{\"user_id\":\"user_id\",\"user_name\":\"name\"}",
                 "URL" : "products/${context.product}/product_members/fetch_default",
@@ -1444,6 +1505,11 @@
                 "name" : "n_department_id_eq",
                 "value" : "srforgsectorid",
                 "rawValue" : false
+              }, {
+                "key" : "n_status_eq",
+                "name" : "n_status_eq",
+                "value" : "1",
+                "rawValue" : true
               } ],
               "getPSSysPFPlugin" : {
                 "pluginType" : "EDITOR_CUSTOMSTYLE",

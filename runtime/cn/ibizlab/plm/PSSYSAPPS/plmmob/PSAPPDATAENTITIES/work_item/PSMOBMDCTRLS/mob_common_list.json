@@ -26,7 +26,7 @@
     "name" : "fetch",
     "getPSAppDEMethod" : {
       "modelref" : true,
-      "id" : "fetch_default"
+      "id" : "fetch_my_attention"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -71,13 +71,13 @@
       "viewFieldName" : "END_AT"
     }, {
       "id" : "assignee_name",
-      "viewFieldName" : "ASSIGNEE_NAME"
+      "viewFieldName" : "ASSIGNEE_ID"
     } ],
     "codeName" : "usr0920293613",
     "controlType" : "PANEL",
     "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item/PSPANELS/usr0920293613.json",
     "layoutMode" : "TABLE_24COL",
-    "logicName" : "mob_common_list_列表项面板",
+    "logicName" : "mob_recycle_list_列表项面板",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
@@ -335,12 +335,16 @@
               "editorParams" : {
                 "SHOWNAMETEXT" : "false"
               },
-              "editorStyle" : "PERSONNEL_INFO",
+              "editorStyle" : "MOB_PERSONNEL_INFO",
               "editorType" : "SPAN",
               "name" : "assignee_name",
+              "getPSAppCodeList" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
+              },
               "getPSSysPFPlugin" : {
                 "pluginType" : "EDITOR_CUSTOMSTYLE",
-                "pluginCode" : "PERSONNEL_INFO",
+                "pluginCode" : "MOB_PERSONNEL_INFO",
                 "runtimeObject" : true
               },
               "predefinedType" : "FIELD_TEXT_DYNAMIC",
@@ -351,27 +355,10 @@
               "grow" : -1,
               "layout" : "FLEX"
             },
-            "viewFieldName" : "ASSIGNEE_NAME"
+            "viewFieldName" : "ASSIGNEE_ID",
+            "convertToCodeItemText" : true
           } ]
         } ]
-      }, {
-        "caption" : "标签",
-        "contentType" : "DIVIDER",
-        "itemStyle" : "DEFAULT",
-        "itemType" : "RAWITEM",
-        "name" : "static_label",
-        "getPSLayoutPos" : {
-          "grow" : -1,
-          "layout" : "FLEX"
-        },
-        "getPSRawItem" : {
-          "contentType" : "DIVIDER",
-          "name" : "static_label",
-          "predefinedType" : "STATIC_LABEL",
-          "rawContent" : "标签"
-        },
-        "rawContent" : "标签",
-        "showCaption" : true
       } ]
     } ],
     "name" : "mdctrl_itempanel",
@@ -390,6 +377,65 @@
   },
   "getPSDEListDataItems" : [ {
     "dataType" : 25,
+    "getFrontPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_state2.json"
+    },
+    "name" : "state",
+    "getPSAppDEField" : {
+      "name" : "STATE",
+      "codeName" : "state"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "assignee_name",
+    "getPSAppDEField" : {
+      "name" : "ASSIGNEE_NAME",
+      "codeName" : "assignee_name"
+    }
+  }, {
+    "dataType" : 25,
+    "getFrontPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_priority.json"
+    },
+    "name" : "priority",
+    "getPSAppDEField" : {
+      "name" : "PRIORITY",
+      "codeName" : "priority"
+    }
+  }, {
+    "dataType" : 5,
+    "format" : "YYYY-MM-DD",
+    "name" : "start_at",
+    "getPSAppDEField" : {
+      "name" : "START_AT",
+      "codeName" : "start_at"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "show_identifier",
+    "getPSAppDEField" : {
+      "name" : "SHOW_IDENTIFIER",
+      "codeName" : "show_identifier"
+    }
+  }, {
+    "dataType" : 5,
+    "format" : "YYYY-MM-DD",
+    "name" : "end_at",
+    "getPSAppDEField" : {
+      "name" : "END_AT",
+      "codeName" : "end_at"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "title",
+    "getPSAppDEField" : {
+      "name" : "TITLE",
+      "codeName" : "title"
+    }
+  }, {
+    "dataType" : 25,
     "name" : "srfkey",
     "getPSAppDEField" : {
       "name" : "ID",
@@ -401,13 +447,6 @@
     "getPSAppDEField" : {
       "name" : "TITLE",
       "codeName" : "title"
-    }
-  }, {
-    "dataType" : 25,
-    "name" : "state",
-    "getPSAppDEField" : {
-      "name" : "STATE",
-      "codeName" : "state"
     }
   }, {
     "dataType" : 25,
@@ -498,7 +537,81 @@
     "dataType" : 25,
     "name" : "srfmstag"
   } ],
-  "pagingSize" : 1000,
+  "getPSDEListItems" : [ {
+    "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "caption" : "状态",
+    "dataItemName" : "state",
+    "itemType" : "TEXTITEM",
+    "name" : "STATE",
+    "width" : 150,
+    "widthString" : "150px",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "caption" : "负责人",
+    "dataItemName" : "assignee_name",
+    "itemType" : "TEXTITEM",
+    "name" : "ASSIGNEE_NAME",
+    "width" : 150,
+    "widthString" : "150px",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "caption" : "优先级",
+    "dataItemName" : "priority",
+    "itemType" : "TEXTITEM",
+    "name" : "PRIORITY",
+    "width" : 150,
+    "widthString" : "150px",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "caption" : "开始时间",
+    "dataItemName" : "start_at",
+    "itemType" : "TEXTITEM",
+    "name" : "START_AT",
+    "valueFormat" : "YYYY-MM-DD",
+    "width" : 150,
+    "widthString" : "150px",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "caption" : "编号",
+    "dataItemName" : "show_identifier",
+    "itemType" : "TEXTITEM",
+    "name" : "SHOW_IDENTIFIER",
+    "width" : 150,
+    "widthString" : "150px",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "caption" : "截止时间",
+    "dataItemName" : "end_at",
+    "itemType" : "TEXTITEM",
+    "name" : "END_AT",
+    "valueFormat" : "YYYY-MM-DD",
+    "width" : 150,
+    "widthString" : "150px",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "caption" : "标题",
+    "dataItemName" : "title",
+    "itemType" : "TEXTITEM",
+    "name" : "TITLE",
+    "width" : 150,
+    "widthString" : "150px",
+    "enableSort" : true
+  } ],
+  "getPSSysPFPlugin" : {
+    "pluginType" : "CUSTOM",
+    "pluginCode" : "MOB_MDCTRL_TREE",
+    "runtimeObject" : true
+  },
+  "pagingMode" : 2,
+  "pagingSize" : 20,
   "getRemovePSControlAction" : {
     "modelref" : true,
     "id" : "remove",

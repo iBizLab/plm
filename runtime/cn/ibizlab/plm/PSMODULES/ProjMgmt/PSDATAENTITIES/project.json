@@ -2943,6 +2943,49 @@
     "enableFront" : true,
     "enableTempData" : true
   }, {
+    "codeName" : "mob_main",
+    "logicName" : "主查询（移动端）",
+    "majorSortDir" : "DESC",
+    "getMajorSortPSDEField" : {
+      "name" : "IS_FAVORITE",
+      "codeName" : "is_favorite"
+    },
+    "minorSortDir" : "DESC",
+    "getMinorSortPSDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "update_time"
+    },
+    "name" : "mob_main",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "favorite"
+    }, {
+      "modelref" : true,
+      "id" : "unfavorite"
+    }, {
+      "modelref" : true,
+      "id" : "cur_project"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Mob_mainInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "project_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Mob_mainResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true,
+    "enableTempData" : true
+  }, {
     "codeName" : "normal",
     "logicName" : "正常状态",
     "majorSortDir" : "DESC",
@@ -7893,7 +7936,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "sql" : "update recent set IS_DELETED=1 where owner_id=? and owner_subtype='project'",
+      "sql" : "update recent set IS_DELETED=1 where owner_id=? and owner_type='project'",
       "topPos" : 585
     }, {
       "codeName" : "END1",
@@ -11937,6 +11980,12 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_move_edit_view",
+    "logicName" : "项目移动端移动编辑视图",
+    "name" : "项目移动端移动编辑视图",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "mpick_up_view",
     "logicName" : "项目实体数据多项选择视图",
     "modelTag" : "MPICKUPVIEW",
@@ -11960,6 +12009,12 @@
     "logicName" : "项目管理表格视图（已删除）",
     "name" : "项目管理表格视图（已删除）",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_waterfall_tree_exp_view",
+    "logicName" : "项目移动端树导航视图（waterfall）",
+    "name" : "项目移动端树导航视图（waterfall）",
+    "realModelSubType" : "DEMOBTREEEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "all_grid_view",
@@ -12078,10 +12133,22 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_tree_exp_view",
+    "logicName" : "项目移动端树导航视图",
+    "name" : "项目移动端树导航视图",
+    "realModelSubType" : "DEMOBTREEEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "scrum_main_view",
     "logicName" : "项目主视图（scrum）",
     "name" : "项目主视图（scrum）",
     "realModelSubType" : "DETABEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_scrum_tree_exp_view",
+    "logicName" : "项目移动端树导航视图（scrum）",
+    "name" : "项目移动端树导航视图（scrum）",
+    "realModelSubType" : "DEMOBTREEEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mob_scrum_tab_exp_view",
@@ -12121,6 +12188,12 @@
     "realModelSubType" : "DETABEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_create_view",
+    "logicName" : "项目移动端创建视图",
+    "name" : "项目移动端创建视图",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "mob_advanced_setting_view",
     "logicName" : "移动端项目高级设置",
     "name" : "移动端项目高级设置",
@@ -12131,6 +12204,12 @@
     "logicName" : "kanban项目流程全局配置分页视图",
     "name" : "kanban项目流程全局配置分页视图",
     "realModelSubType" : "DETABEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_edit_view",
+    "logicName" : "项目动态属性编辑视图（移动端）",
+    "name" : "项目动态属性编辑视图（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "drill_detail_grid_view",
@@ -12163,10 +12242,22 @@
     "realModelSubType" : "DEMOBLISTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_notice_show_view",
+    "logicName" : "项目公告展示视图（移动端）",
+    "name" : "项目公告展示视图（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "archived_grid_view",
     "logicName" : "项目管理表格视图（已归档）",
     "name" : "项目管理表格视图（已归档）",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_kanban_tree_exp_view",
+    "logicName" : "项目移动端树导航视图（kanban）",
+    "name" : "项目移动端树导航视图（kanban）",
+    "realModelSubType" : "DEMOBTREEEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView2",
@@ -12193,6 +12284,12 @@
     "realModelSubType" : "DETABEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_baseinfo_over_view",
+    "logicName" : "移动端项目概览视图（基本信息）",
+    "name" : "移动端项目概览视图（基本信息）",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "base_information_edit_view",
     "logicName" : "项目基本信息",
     "name" : "项目基本信息",
@@ -12209,6 +12306,12 @@
     "logicName" : "项目配置中心视图",
     "name" : "项目配置中心视图",
     "realModelSubType" : "DETREEEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_notice_edit_view",
+    "logicName" : "项目公告编辑视图（移动端）",
+    "name" : "项目公告编辑视图（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "create_wizard_view",
@@ -12240,6 +12343,13 @@
     "name" : "项目移动端分页导航视图（kanban）",
     "realModelSubType" : "DEMOBTABEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_notice_show_form",
+    "logicName" : "项目公告展示_表单（移动端）",
+    "modelTag2" : "1",
+    "name" : "项目公告展示_表单（移动端）",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
   }, {
     "codeName" : "Main",
     "logicName" : "主编辑表单",
@@ -12277,10 +12387,24 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
+    "codeName" : "mob_move_form",
+    "logicName" : "移动端项目移动表单",
+    "modelTag2" : "1",
+    "name" : "移动端项目移动表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "baseinfo",
     "logicName" : "项目概览_基本信息",
     "modelTag2" : "0",
     "name" : "项目概览_基本信息",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_baseinfo_over_view_Form",
+    "logicName" : "移动端项目概览视图（基本信息）_表单",
+    "modelTag2" : "1",
+    "name" : "移动端项目概览视图（基本信息）_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -12295,6 +12419,13 @@
     "logicName" : "项目动态属性编辑视图（呈现）_表单",
     "modelTag2" : "0",
     "name" : "项目动态属性编辑视图（呈现）_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_create_view_Form",
+    "logicName" : "项目移动端创建视图_表单",
+    "modelTag2" : "1",
+    "name" : "项目移动端创建视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -12326,6 +12457,13 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
+    "codeName" : "mob_edit_view_Form",
+    "logicName" : "项目动态属性编辑视图（移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "项目动态属性编辑视图（移动端）_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "move_option_view_Form",
     "logicName" : "项目移动视图_表单",
     "modelTag2" : "0",
@@ -12337,6 +12475,13 @@
     "logicName" : "BI报表配置_风险占比",
     "modelTag2" : "0",
     "name" : "BI报表配置_风险占比",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_notice_edit_form",
+    "logicName" : "项目公告编辑_表单（移动端）",
+    "modelTag2" : "1",
+    "name" : "项目公告编辑_表单（移动端）",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {

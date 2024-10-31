@@ -156,6 +156,17 @@
     "rawValue" : false
   } ],
   "getPSAppViewRefs" : [ {
+    "name" : "NEWDATA",
+    "realTitle" : "基线工作项编辑视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.BASELINE_WORK_ITEM.EDITVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_work_item_edit_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  }, {
     "name" : "EDITDATA",
     "openMode" : "POPUPMODAL",
     "getPSNavigateContexts" : [ {
@@ -200,17 +211,6 @@
     "getRefPSAppView" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_main_view.json",
-      "viewType" : "DEEDITVIEW"
-    }
-  }, {
-    "name" : "NEWDATA",
-    "realTitle" : "基线工作项编辑视图",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.BASELINE_WORK_ITEM.EDITVIEW"
-    },
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_work_item_edit_view.json",
       "viewType" : "DEEDITVIEW"
     }
   } ],
@@ -326,6 +326,9 @@
     "getPSControlParam" : {
       "autoLoad" : true,
       "showBusyIndicator" : true,
+      "ctrlParams" : {
+        "LOCATERECORDKEY" : "target_id"
+      },
       "id" : "GRID"
     },
     "getPSControls" : [ {
@@ -840,7 +843,7 @@
         "logicTag" : "tabtoolbar",
         "logicType" : "SCRIPT",
         "name" : "logic",
-        "scriptCode" : "context.baseline_status !== '2'",
+        "scriptCode" : "context.baseline_status !== '2'  && context.srfreadonly != true",
         "triggerType" : "ITEMVISIBLE"
       } ],
       "getPSSysImage" : {

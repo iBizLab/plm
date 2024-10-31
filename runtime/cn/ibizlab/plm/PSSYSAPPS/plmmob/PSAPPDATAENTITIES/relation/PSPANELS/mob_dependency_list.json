@@ -6,7 +6,7 @@
     "id" : "title",
     "viewFieldName" : "WORK_ITEM"
   }, {
-    "id" : "assignee_name",
+    "id" : "assignee_id",
     "viewFieldName" : "WORK_ITEM"
   }, {
     "id" : "show_identifier",
@@ -200,6 +200,14 @@
           "itemStyle" : "DEFAULT",
           "itemType" : "CONTAINER",
           "name" : "container3",
+          "getPSControlLogics" : [ {
+            "itemName" : "CONTAINER3",
+            "logicTag" : "mdctrl_itempanel",
+            "logicType" : "SCRIPT",
+            "name" : "logic",
+            "scriptCode" : "data.work_item.assignee_name != null",
+            "triggerType" : "ITEMVISIBLE"
+          } ],
           "getPSLayout" : {
             "layout" : "FLEX"
           },
@@ -211,24 +219,24 @@
             "caption" : "文本(动态)",
             "itemStyle" : "DEFAULT",
             "itemType" : "FIELD",
-            "name" : "assignee_name",
+            "name" : "assignee_id",
             "getPSEditor" : {
               "editorParams" : {
-                "OBJECTNAMEFIELD" : "assignee_name",
+                "OBJECTNAMEFIELD" : "assignee_id",
                 "SHOWNAMETEXT" : "false",
                 "VALUETYPE" : "OBJECT"
               },
-              "editorStyle" : "PERSONNEL_INFO",
+              "editorStyle" : "MOB_PERSONNEL_INFO",
               "editorType" : "SPAN",
-              "name" : "assignee_name",
-              "objectNameField" : "assignee_name",
+              "name" : "assignee_id",
+              "objectNameField" : "assignee_id",
               "getPSAppCodeList" : {
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
               },
               "getPSSysPFPlugin" : {
                 "pluginType" : "EDITOR_CUSTOMSTYLE",
-                "pluginCode" : "PERSONNEL_INFO",
+                "pluginCode" : "MOB_PERSONNEL_INFO",
                 "runtimeObject" : true
               },
               "predefinedType" : "FIELD_TEXT_DYNAMIC",
@@ -362,8 +370,7 @@
               },
               "getPSLayoutPos" : {
                 "grow" : -1,
-                "layout" : "FLEX",
-                "spacingLeft" : "OUTERSMALL"
+                "layout" : "FLEX"
               },
               "viewFieldName" : "WORK_ITEM"
             }, {
@@ -721,6 +728,14 @@
           "itemStyle" : "DEFAULT",
           "itemType" : "CONTAINER",
           "name" : "container9",
+          "getPSControlLogics" : [ {
+            "itemName" : "CONTAINER9",
+            "logicTag" : "mdctrl_itempanel",
+            "logicType" : "SCRIPT",
+            "name" : "logic2",
+            "scriptCode" : "data.PRINCIPAL_WORK_ITEM.assignee_name != null",
+            "triggerType" : "ITEMVISIBLE"
+          } ],
           "getPSLayout" : {
             "layout" : "FLEX"
           },
@@ -735,21 +750,21 @@
             "name" : "after_assignee_name",
             "getPSEditor" : {
               "editorParams" : {
-                "OBJECTNAMEFIELD" : "assignee_name",
+                "OBJECTNAMEFIELD" : "assignee_id",
                 "SHOWNAMETEXT" : "false",
                 "VALUETYPE" : "OBJECT"
               },
-              "editorStyle" : "PERSONNEL_INFO",
+              "editorStyle" : "MOB_PERSONNEL_INFO",
               "editorType" : "SPAN",
               "name" : "after_assignee_name",
-              "objectNameField" : "assignee_name",
+              "objectNameField" : "assignee_id",
               "getPSAppCodeList" : {
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
               },
               "getPSSysPFPlugin" : {
                 "pluginType" : "EDITOR_CUSTOMSTYLE",
-                "pluginCode" : "PERSONNEL_INFO",
+                "pluginCode" : "MOB_PERSONNEL_INFO",
                 "runtimeObject" : true
               },
               "predefinedType" : "FIELD_TEXT_DYNAMIC",
@@ -843,21 +858,6 @@
       },
       "viewFieldName" : "JOB_TYPE",
       "hidden" : true
-    }, {
-      "contentType" : "DIVIDER",
-      "itemStyle" : "DEFAULT",
-      "itemType" : "RAWITEM",
-      "getPSLayoutPos" : {
-        "grow" : -1,
-        "layout" : "FLEX"
-      },
-      "getPSRawItem" : {
-        "contentType" : "DIVIDER",
-        "predefinedType" : "STATIC_LABEL",
-        "rawContent" : "标签"
-      },
-      "rawContent" : "标签",
-      "id" : "7E9A9E5D-4876-40CA-B34D-198460A22121"
     } ]
   } ],
   "modelid" : "4aaa31e6663ccfa6b58eb3cadaf6fc4f",

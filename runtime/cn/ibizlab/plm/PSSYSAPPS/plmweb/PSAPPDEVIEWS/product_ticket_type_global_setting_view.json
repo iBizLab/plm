@@ -3,7 +3,7 @@
   "getCapPSLanguageRes" : {
     "lanResTag" : "DE.LNAME.PRODUCT_TICKET_TYPE"
   },
-  "caption" : "工单类型",
+  "caption" : "产品工单类型",
   "codeName" : "product_ticket_type_global_setting_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_ticket_type_global_setting_view.json",
   "gridRowActiveMode" : 0,
@@ -88,15 +88,6 @@
     "rawValue" : false
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "NEWDATA",
-    "realOpenMode" : "POPUPMODAL",
-    "realTitle" : "新建工单类型",
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_ticket_type_quick_create_view.json",
-      "viewType" : "DEOPTVIEW"
-    }
-  }, {
     "name" : "EDITDATA",
     "realOpenMode" : "POPUPMODAL",
     "realTitle" : "编辑工单类型",
@@ -105,18 +96,30 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_ticket_type_edit_view.json",
       "viewType" : "DEOPTVIEW"
     }
+  }, {
+    "name" : "NEWDATA",
+    "realOpenMode" : "POPUPMODAL",
+    "realTitle" : "新建工单类型",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_ticket_type_quick_create_view.json",
+      "viewType" : "DEOPTVIEW"
+    }
   } ],
   "getPSControls" : [ {
-    "codeName" : "global_setting_view_toolbar",
+    "codeName" : "global_setting_view_tabtoolbar",
     "controlType" : "TOOLBAR",
     "logicName" : "工具栏模板（只有一个实体界面行为组）",
-    "name" : "toolbar",
+    "name" : "tabtoolbar",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product_ticket_type.json"
     },
     "getPSControlParam" : {
-      "id" : "TOOLBAR"
+      "ctrlParams" : {
+        "TELEPORTFLAG" : "true"
+      },
+      "id" : "TABTOOLBAR"
     },
     "getPSDEToolbarItems" : [ {
       "caption" : "新建工单类型",
@@ -126,7 +129,7 @@
       "noPrivDisplayMode" : 2,
       "getPSAppViewUIAction" : {
         "modelref" : true,
-        "id" : "toolbar_deuiaction1_create_ticket_type"
+        "id" : "tabtoolbar_deuiaction1_create_ticket_type"
       },
       "getPSSysImage" : {
         "glyph" : "xf067@FontAwesome",
@@ -542,6 +545,31 @@
     "modelid" : "fb4bd667ebbdf5f4793021d3023b00eb",
     "modeltype" : "PSDEGRID"
   }, {
+    "codeName" : "quick_searchbar",
+    "controlType" : "SEARCHBAR",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product_ticket_type/PSSEARCHBARS/quick_searchbar.json",
+    "logicName" : "快速搜索栏",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product_ticket_type.json"
+    },
+    "getPSControlParam" : {
+      "ctrlParams" : {
+        "TELEPORTFLAG" : "true"
+      },
+      "id" : "TABSEARCHBAR"
+    },
+    "quickGroupCount" : -1,
+    "quickSearchMode" : 1,
+    "quickSearchWidth" : 0,
+    "enableFilter" : false,
+    "enableGroup" : false,
+    "enableQuickSearch" : true,
+    "mobileSearchBar" : false,
+    "name" : "tabsearchbar",
+    "modelid" : "40DB4D5E-9A32-4215-84B5-80F22D58179F",
+    "modeltype" : "PSSYSSEARCHBAR"
+  }, {
     "controlType" : "SEARCHBAR",
     "name" : "searchbar",
     "getPSAppDataEntity" : {
@@ -552,17 +580,17 @@
       "id" : "searchbar"
     },
     "quickGroupCount" : -1,
-    "quickSearchMode" : 1,
+    "quickSearchMode" : 0,
     "quickSearchWidth" : 0,
     "enableFilter" : false,
     "enableGroup" : false,
-    "enableQuickSearch" : true,
+    "enableQuickSearch" : false,
     "mobileSearchBar" : false
   }, {
     "getCapPSLanguageRes" : {
       "lanResTag" : "DE.LNAME.PRODUCT_TICKET_TYPE"
     },
-    "caption" : "工单类型",
+    "caption" : "产品工单类型",
     "codeName" : "global_setting_view_captionbar",
     "controlType" : "CAPTIONBAR",
     "name" : "captionbar",
@@ -596,10 +624,10 @@
   "enableExport" : true,
   "enableFilter" : true,
   "enableImport" : true,
-  "enableQuickSearch" : true,
   "enableRowEdit" : false,
   "enableSearch" : true,
   "rowEditDefault" : false,
+  "showCaptionBar" : false,
   "modelid" : "843295c3c4395f1afe369596dc2f32f7",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {

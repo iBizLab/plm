@@ -44,7 +44,7 @@ package cn.ibizlab.plm.team.logic.discuss_replylogic.del_reply;
             when
             then
     Map param =new HashMap();
-        param.put("param0",discuss_replydel_replydefault.get("comment_num"));
+        param.put("param0",discuss_replydel_replydefault.get("replycommentnum"));
         param.put("param1",discuss_replydel_replydefault.get("id"));
     String strSql="update discuss_post t1 set t1.heat = t1.heat - ((2 * #{et.param0}) + 5)   where exists(select 1 from discuss_reply t2 where t1.id = t2.post_id and t2.id = #{et.param1})";
                         iBzSysDiscuss_replyDefaultService.execute(strSql,param);//SQL调用

@@ -21,6 +21,9 @@
     "columnCount" : 24,
     "layout" : "TABLE_24COL"
   },
+  "getPSSysCss" : {
+    "cssName" : "mob_product_list_style"
+  },
   "getRootPSPanelItems" : [ {
     "itemStyle" : "DEFAULT",
     "itemType" : "CONTAINER",
@@ -32,8 +35,9 @@
     "getPSLayoutPos" : {
       "colMD" : 24,
       "layout" : "TABLE_24COL",
-      "spacingLeft" : "OUTERLARGE",
-      "spacingRight" : "OUTERLARGE"
+      "spacingLeft" : "OUTERMEDIUM",
+      "spacingRight" : "OUTERMEDIUM",
+      "spacingTop" : "OUTERSMALL"
     },
     "getPSPanelItems" : [ {
       "caption" : "容器",
@@ -52,9 +56,10 @@
       },
       "getPSPanelItems" : [ {
         "caption" : "容器",
+        "contentWidth" : 90.0,
         "itemStyle" : "DEFAULT",
         "itemType" : "CONTAINER",
-        "name" : "container1",
+        "name" : "container2",
         "getPSLayout" : {
           "align" : "flex-start",
           "dir" : "row",
@@ -63,7 +68,9 @@
         },
         "getPSLayoutPos" : {
           "grow" : -1,
-          "layout" : "FLEX"
+          "layout" : "FLEX",
+          "width" : 90,
+          "widthMode" : "PERCENTAGE"
         },
         "getPSPanelItems" : [ {
           "caption" : "图片",
@@ -104,12 +111,14 @@
             "layout" : "FLEX"
           },
           "viewFieldName" : "name"
-        } ]
+        } ],
+        "width" : 90.0
       }, {
         "caption" : "容器",
+        "contentWidth" : 10.0,
         "itemStyle" : "DEFAULT",
         "itemType" : "CONTAINER",
-        "name" : "container2",
+        "name" : "container1",
         "getPSLayout" : {
           "align" : "flex-start",
           "dir" : "row",
@@ -118,7 +127,9 @@
         },
         "getPSLayoutPos" : {
           "grow" : -1,
-          "layout" : "FLEX"
+          "layout" : "FLEX",
+          "width" : 10,
+          "widthMode" : "PERCENTAGE"
         },
         "getPSPanelItems" : [ {
           "caption" : "文本(动态)",
@@ -138,7 +149,7 @@
         }, {
           "actionType" : "UIACTION",
           "buttonStyle" : "DEFAULT",
-          "caption" : "取消星标",
+          "caption" : "设置星标",
           "itemStyle" : "DEFAULT",
           "itemType" : "BUTTON",
           "name" : "button_calluilogic",
@@ -199,15 +210,19 @@
             "reloadData" : true,
             "id" : "star@library"
           },
-          "tooltip" : "取消星标",
+          "tooltip" : "设置星标",
           "uIActionTarget" : "SINGLEKEY"
         }, {
-          "actionType" : "NONE",
+          "actionType" : "UIACTION",
           "buttonStyle" : "DEFAULT",
-          "caption" : "按钮",
+          "caption" : "取消星标",
           "itemStyle" : "DEFAULT",
           "itemType" : "BUTTON",
           "name" : "button_calluilogic1",
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "mdctrl_itempanel_button_calluilogic1"
+          },
           "getPSControlLogics" : [ {
             "itemName" : "BUTTON_CALLUILOGIC1",
             "logicTag" : "mdctrl_itempanel",
@@ -223,9 +238,48 @@
           "getPSSysImage" : {
             "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#FFB31A\" fill-rule=\"nonzero\"></path>\n</svg>"
           },
-          "tooltip" : "按钮",
-          "uIActionTarget" : "NONE"
-        } ]
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEKEY",
+            "caption" : "取消星标",
+            "codeName" : "unstar",
+            "fullCodeName" : "library_unstar",
+            "name" : "取消星标",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "un_favorite"
+            },
+            "getPSAppDEUILogic" : {
+              "modelref" : true,
+              "id" : "notify_refresh"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/library.json"
+            },
+            "getPSNavigateParams" : [ {
+              "key" : "owner_id",
+              "name" : "owner_id",
+              "value" : "library",
+              "rawValue" : false
+            } ],
+            "getPSSysImage" : {
+              "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#FFB31A\" fill-rule=\"nonzero\"></path>\n</svg>"
+            },
+            "refreshMode" : 2,
+            "timeout" : 60000,
+            "tooltip" : "取消星标",
+            "uIActionMode" : "BACKEND",
+            "uIActionTag" : "unstar",
+            "uIActionType" : "DEUIACTION",
+            "uILogicAttachMode" : "AFTER",
+            "enableConfirm" : true,
+            "reloadData" : true,
+            "id" : "unstar@library"
+          },
+          "tooltip" : "取消星标",
+          "uIActionTarget" : "SINGLEKEY"
+        } ],
+        "width" : 10.0
       } ]
     } ]
   } ],

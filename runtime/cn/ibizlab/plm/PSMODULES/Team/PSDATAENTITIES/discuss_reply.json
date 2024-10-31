@@ -337,6 +337,10 @@
     "modelref" : true,
     "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_reply/PSDEDRGROUPS/DRGroup.json"
   } ],
+  "getAllPSDEDRItems" : [ {
+    "modelref" : true,
+    "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_reply/PSDEDRITEMS/UsrDRItem1011832725.json"
+  } ],
   "getAllPSDEDataQueries" : [ {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
@@ -691,6 +695,274 @@
     "phisicalDEField" : false,
     "queryColumn" : false,
     "uIAssistDEField" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "COMMENT_NUM",
+      "dBType" : "MYSQL5",
+      "name" : "COMMENT_NUM",
+      "queryCodeExp" : "(SELECT COUNT( com.ID ) AS comment_count FROM DISCUSS_REPLY reply LEFT JOIN `COMMENT` com ON reply.ID = com.PRINCIPAL_ID WHERE reply.ID = t1.`ID`)",
+      "standardColumnName" : "`COMMENT_NUM`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[COMMENT_NUM][属性]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[COMMENT_NUM][属性]移动端默认",
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[COMMENT_NUM][属性]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[COMMENT_NUM][属性]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "COMMENT_NUM",
+          "maxValue" : 200,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[200]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[200]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[200]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "reply_comment_num",
+    "dEFType" : 2,
+    "dataType" : "TEXT",
+    "formulaColumns" : "id",
+    "formulaFormat" : "(SELECT COUNT( com.ID ) AS comment_count FROM DISCUSS_REPLY reply LEFT JOIN `COMMENT` com ON reply.ID = com.PRINCIPAL_ID WHERE reply.ID = %1$s)",
+    "importOrder" : 1000,
+    "length" : 200,
+    "logicName" : "回复评论数",
+    "name" : "COMMENT_NUM",
+    "serviceCodeName" : "reply_comment_num",
+    "stdDataType" : 25,
+    "stringLength" : 200,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "formulaDEField" : true,
+    "phisicalDEField" : false,
+    "queryColumn" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "DISCUSS_NAME",
+      "dBType" : "MYSQL5",
+      "name" : "DISCUSS_NAME",
+      "queryCodeExp" : "t11.`NAME`",
+      "standardColumnName" : "`DISCUSS_NAME`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[DISCUSS_NAME][属性]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBPICKER",
+        "name" : "[DISCUSS_NAME][属性]移动端默认",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "MPickupView",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post.json"
+        },
+        "refPickupPSDEViewCodeName" : "PickupView",
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[DISCUSS_NAME][属性]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "PICKER",
+        "name" : "[DISCUSS_NAME][属性]",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "MPickupView",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post.json"
+        },
+        "refPickupPSDEViewCodeName" : "PickupView",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "DISCUSS_NAME",
+          "maxValue" : 200,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[200]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[200]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[200]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "discuss_name",
+    "dEFType" : 3,
+    "dataType" : "PICKUPTEXT",
+    "importOrder" : 1000,
+    "length" : 200,
+    "logicName" : "讨论名称",
+    "name" : "DISCUSS_NAME",
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_reply/PSDERS/DER1N_DISCUSS_REPLY_DISCUSS_POST_POST_ID.json"
+    },
+    "getRealPSDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post.json"
+    },
+    "serviceCodeName" : "discuss_name",
+    "stdDataType" : 25,
+    "stringLength" : 200,
+    "valueFormat" : "%1$s",
+    "getValuePSDEField" : {
+      "name" : "POST_ID",
+      "codeName" : "Post_id"
+    },
+    "viewLevel" : 0,
+    "linkDEField" : true,
+    "phisicalDEField" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "COMMENT_COUNT",
+      "dBType" : "MYSQL5",
+      "name" : "COMMENT_COUNT",
+      "queryCodeExp" : "(SELECT COUNT( com.ID ) AS comment_count FROM DISCUSS_REPLY reply LEFT JOIN `COMMENT` com ON reply.ID = com.PRINCIPAL_ID WHERE reply.ID = t1.`ID`)",
+      "standardColumnName" : "`COMMENT_COUNT`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[COMMENT_COUNT][回复评论数]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[COMMENT_COUNT][回复评论数]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[COMMENT_COUNT][回复评论数]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[COMMENT_COUNT][回复评论数]移动端默认",
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "COMMENT_COUNT",
+          "maxValue" : 200,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[200]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[200]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[200]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "comment_count",
+    "dEFType" : 2,
+    "dataType" : "TEXT",
+    "formulaColumns" : "ID",
+    "formulaFormat" : "(SELECT COUNT( com.ID ) AS comment_count FROM DISCUSS_REPLY reply LEFT JOIN `COMMENT` com ON reply.ID = com.PRINCIPAL_ID WHERE reply.ID = %1$s)",
+    "importOrder" : 1000,
+    "length" : 200,
+    "logicName" : "回复评论数",
+    "name" : "COMMENT_COUNT",
+    "serviceCodeName" : "comment_count",
+    "stdDataType" : 25,
+    "stringLength" : 200,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "formulaDEField" : true,
+    "phisicalDEField" : false,
+    "queryColumn" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "CONTENT",
@@ -2113,6 +2385,39 @@
       "type" : "DTOS",
       "readOnly" : true
     }, {
+      "logicName" : "回复评论数",
+      "name" : "reply_comment_num",
+      "getPSDEField" : {
+        "name" : "COMMENT_NUM",
+        "codeName" : "reply_comment_num"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "讨论名称",
+      "name" : "discuss_name",
+      "getPSDEField" : {
+        "name" : "DISCUSS_NAME",
+        "codeName" : "discuss_name"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "回复评论数",
+      "name" : "comment_count",
+      "getPSDEField" : {
+        "name" : "COMMENT_COUNT",
+        "codeName" : "comment_count"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "回复内容",
       "name" : "content",
       "getPSDEField" : {
@@ -2370,16 +2675,34 @@
     "systemReserved" : true
   } ],
   "getAllPSModelDatas" : [ {
+    "codeName" : "dr_mob_edit_View",
+    "logicName" : "讨论回复编辑视图（移动端）",
+    "name" : "讨论回复编辑视图（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "PickupGridView",
     "logicName" : "讨论回复实体选择表格视图（部件视图）",
     "name" : "讨论回复实体选择表格视图（部件视图）",
     "realModelSubType" : "DEPICKUPGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "dr_mob_md_view",
+    "logicName" : "讨论回复多数据视图（移动端）",
+    "name" : "讨论回复多数据视图（移动端）",
+    "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "list_view",
     "logicName" : "讨论回复列表视图",
     "name" : "讨论回复列表视图",
     "realModelSubType" : "DELISTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_dr_create_view",
+    "logicName" : "讨论回复新建视图（移动端）",
+    "name" : "讨论回复新建视图（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView",
@@ -2435,10 +2758,24 @@
     "realModelSubType" : "DEMPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_dr_create_view_Form",
+    "logicName" : "讨论回复新建视图（移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "讨论回复新建视图（移动端）_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "Main",
     "logicName" : "主编辑表单",
     "modelTag2" : "0",
     "name" : "主编辑表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "dr_mob_Edit_View_Form",
+    "logicName" : "讨论回复编辑视图（移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "讨论回复编辑视图（移动端）_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   } ],
@@ -2544,6 +2881,10 @@
     "getPSPickupDEField" : {
       "name" : "POST_ID",
       "codeName" : "Post_id"
+    },
+    "getPSPickupTextDEField" : {
+      "name" : "DISCUSS_NAME",
+      "codeName" : "discuss_name"
     },
     "pickupDEFName" : "POST_ID",
     "removeActionType" : -1,

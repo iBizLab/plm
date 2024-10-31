@@ -49,7 +49,7 @@ package cn.ibizlab.plm.projmgmt.logic.projectlogic.delete;
             then
     Map param =new HashMap();
         param.put("param0",projectdeletedefault.get("id"));
-    String strSql="update recent set IS_DELETED=1 where owner_id=#{et.param0} and owner_subtype='project'";
+    String strSql="update recent set IS_DELETED=1 where owner_id=#{et.param0} and owner_type='project'";
                         iBzSysProjectDefaultService.execute(strSql,param);//SQL调用
                         update(projectdeletedefault);//更新fact中变量值
                         update(projectdeleteupdate_obj);//更新fact中变量值

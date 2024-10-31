@@ -53,7 +53,7 @@
         "rawValue" : false
       } ],
       "getPSControls" : [ {
-        "codeName" : "mob_common_list",
+        "codeName" : "mob_common_choose_list",
         "controlStyle" : "LISTVIEW",
         "controlType" : "MOBMDCTRL",
         "getCreatePSControlAction" : {
@@ -72,7 +72,7 @@
             "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
           }
         },
-        "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item/PSMOBMDCTRLS/mob_common_list.json",
+        "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item/PSMOBMDCTRLS/mob_common_choose_list.json",
         "getFetchPSControlAction" : {
           "modelref" : true,
           "id" : "fetch",
@@ -125,13 +125,13 @@
             "viewFieldName" : "END_AT"
           }, {
             "id" : "assignee_name",
-            "viewFieldName" : "ASSIGNEE_NAME"
+            "viewFieldName" : "ASSIGNEE_ID"
           } ],
           "codeName" : "usr0920293613",
           "controlType" : "PANEL",
           "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item/PSPANELS/usr0920293613.json",
           "layoutMode" : "TABLE_24COL",
-          "logicName" : "mob_common_list_列表项面板",
+          "logicName" : "mob_recycle_list_列表项面板",
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
@@ -389,12 +389,16 @@
                     "editorParams" : {
                       "SHOWNAMETEXT" : "false"
                     },
-                    "editorStyle" : "PERSONNEL_INFO",
+                    "editorStyle" : "MOB_PERSONNEL_INFO",
                     "editorType" : "SPAN",
                     "name" : "assignee_name",
+                    "getPSAppCodeList" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
+                    },
                     "getPSSysPFPlugin" : {
                       "pluginType" : "EDITOR_CUSTOMSTYLE",
-                      "pluginCode" : "PERSONNEL_INFO",
+                      "pluginCode" : "MOB_PERSONNEL_INFO",
                       "runtimeObject" : true
                     },
                     "predefinedType" : "FIELD_TEXT_DYNAMIC",
@@ -405,34 +409,17 @@
                     "grow" : -1,
                     "layout" : "FLEX"
                   },
-                  "viewFieldName" : "ASSIGNEE_NAME"
+                  "viewFieldName" : "ASSIGNEE_ID",
+                  "convertToCodeItemText" : true
                 } ]
               } ]
-            }, {
-              "caption" : "标签",
-              "contentType" : "DIVIDER",
-              "itemStyle" : "DEFAULT",
-              "itemType" : "RAWITEM",
-              "name" : "static_label",
-              "getPSLayoutPos" : {
-                "grow" : -1,
-                "layout" : "FLEX"
-              },
-              "getPSRawItem" : {
-                "contentType" : "DIVIDER",
-                "name" : "static_label",
-                "predefinedType" : "STATIC_LABEL",
-                "rawContent" : "标签"
-              },
-              "rawContent" : "标签",
-              "showCaption" : true
             } ]
           } ],
           "name" : "mdctrl_itempanel",
           "modelid" : "4F6DAA5F-52D7-4013-ACC2-96F18EF0A614",
           "modeltype" : "PSSYSVIEWPANEL"
         },
-        "logicName" : "mob_common_list",
+        "logicName" : "mob_common_choose_list",
         "mobListStyle" : "LISTVIEW",
         "getPSAppDataEntity" : {
           "modelref" : true,
@@ -626,7 +613,8 @@
           "dataType" : 25,
           "name" : "srfmstag"
         } ],
-        "pagingSize" : 1000,
+        "pagingMode" : 2,
+        "pagingSize" : 20,
         "getRemovePSControlAction" : {
           "modelref" : true,
           "id" : "remove",
@@ -669,7 +657,7 @@
         "showHeader" : true,
         "singleSelect" : false,
         "name" : "mdctrl",
-        "modelid" : "95108d3cd87f93c6cd08dfd2c1d16d06",
+        "modelid" : "5aa24610834791616a986bca5910a035",
         "modeltype" : "PSDELIST"
       }, {
         "controlType" : "SEARCHBAR",

@@ -16,17 +16,20 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runrun_re_countersend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runrun_re_countersdebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runrun_re_countersrawsqlcall3" id="rawsqlcall3" implementation="http://www.jboss.org/drools/rule" name="执行用例关联缺陷"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runrun_re_countersrawsqlcall5" id="rawsqlcall5" implementation="http://www.jboss.org/drools/rule" name="执行用例结果附件"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runrun_re_countersrawsqlcall4" id="rawsqlcall4" implementation="http://www.jboss.org/drools/rule" name="测试用例执行历史"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runrun_re_countersrawsqlcall6" id="rawsqlcall6" implementation="http://www.jboss.org/drools/rule" name="合并查询计数器"/>
                         <endEvent id="rawsqlcall6_end" name="end"/>
                         <sequenceFlow id="rawsqlcall6_end_line" sourceRef="rawsqlcall6" targetRef="rawsqlcall6_end"/>
-                    <sequenceFlow id="begin_rawsqlcall1" sourceRef="begin" targetRef="rawsqlcall1">
+                    <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
                     </sequenceFlow>
                     <sequenceFlow id="rawsqlcall1_rawsqlcall2" sourceRef="rawsqlcall1" targetRef="rawsqlcall2">
                     </sequenceFlow>
                     <sequenceFlow id="rawsqlcall2_rawsqlcall3" sourceRef="rawsqlcall2" targetRef="rawsqlcall3">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam1_rawsqlcall1" sourceRef="debugparam1" targetRef="rawsqlcall1">
                     </sequenceFlow>
                     <sequenceFlow id="rawsqlcall3_rawsqlcall5" sourceRef="rawsqlcall3" targetRef="rawsqlcall5">
                     </sequenceFlow>

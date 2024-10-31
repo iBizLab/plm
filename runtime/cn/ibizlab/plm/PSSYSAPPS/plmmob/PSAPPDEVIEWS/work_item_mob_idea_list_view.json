@@ -339,7 +339,7 @@
         "name" : "fetch",
         "getPSAppDEMethod" : {
           "modelref" : true,
-          "id" : "fetch_requirement"
+          "id" : "fetch_requirement_tree_or_tile"
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
@@ -384,13 +384,13 @@
           "viewFieldName" : "END_AT"
         }, {
           "id" : "assignee_name",
-          "viewFieldName" : "ASSIGNEE_NAME"
+          "viewFieldName" : "ASSIGNEE_ID"
         } ],
         "codeName" : "usr0920293613",
         "controlType" : "PANEL",
         "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item/PSPANELS/usr0920293613.json",
         "layoutMode" : "TABLE_24COL",
-        "logicName" : "mob_common_list_列表项面板",
+        "logicName" : "mob_recycle_list_列表项面板",
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
@@ -648,12 +648,16 @@
                   "editorParams" : {
                     "SHOWNAMETEXT" : "false"
                   },
-                  "editorStyle" : "PERSONNEL_INFO",
+                  "editorStyle" : "MOB_PERSONNEL_INFO",
                   "editorType" : "SPAN",
                   "name" : "assignee_name",
+                  "getPSAppCodeList" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
+                  },
                   "getPSSysPFPlugin" : {
                     "pluginType" : "EDITOR_CUSTOMSTYLE",
-                    "pluginCode" : "PERSONNEL_INFO",
+                    "pluginCode" : "MOB_PERSONNEL_INFO",
                     "runtimeObject" : true
                   },
                   "predefinedType" : "FIELD_TEXT_DYNAMIC",
@@ -664,27 +668,10 @@
                   "grow" : -1,
                   "layout" : "FLEX"
                 },
-                "viewFieldName" : "ASSIGNEE_NAME"
+                "viewFieldName" : "ASSIGNEE_ID",
+                "convertToCodeItemText" : true
               } ]
             } ]
-          }, {
-            "caption" : "标签",
-            "contentType" : "DIVIDER",
-            "itemStyle" : "DEFAULT",
-            "itemType" : "RAWITEM",
-            "name" : "static_label",
-            "getPSLayoutPos" : {
-              "grow" : -1,
-              "layout" : "FLEX"
-            },
-            "getPSRawItem" : {
-              "contentType" : "DIVIDER",
-              "name" : "static_label",
-              "predefinedType" : "STATIC_LABEL",
-              "rawContent" : "标签"
-            },
-            "rawContent" : "标签",
-            "showCaption" : true
           } ]
         } ],
         "name" : "mdctrl_itempanel",
@@ -755,7 +742,7 @@
           "name" : "fetch",
           "getPSAppDEMethod" : {
             "modelref" : true,
-            "id" : "fetch_requirement"
+            "id" : "fetch_requirement_tree_or_tile"
           },
           "getPSAppDataEntity" : {
             "modelref" : true,
@@ -777,6 +764,65 @@
       },
       "getPSDEListDataItems" : [ {
         "dataType" : 25,
+        "getFrontPSCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_state2.json"
+        },
+        "name" : "state",
+        "getPSAppDEField" : {
+          "name" : "STATE",
+          "codeName" : "state"
+        }
+      }, {
+        "dataType" : 25,
+        "name" : "assignee_name",
+        "getPSAppDEField" : {
+          "name" : "ASSIGNEE_NAME",
+          "codeName" : "assignee_name"
+        }
+      }, {
+        "dataType" : 25,
+        "getFrontPSCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_priority.json"
+        },
+        "name" : "priority",
+        "getPSAppDEField" : {
+          "name" : "PRIORITY",
+          "codeName" : "priority"
+        }
+      }, {
+        "dataType" : 5,
+        "format" : "YYYY-MM-DD",
+        "name" : "start_at",
+        "getPSAppDEField" : {
+          "name" : "START_AT",
+          "codeName" : "start_at"
+        }
+      }, {
+        "dataType" : 25,
+        "name" : "show_identifier",
+        "getPSAppDEField" : {
+          "name" : "SHOW_IDENTIFIER",
+          "codeName" : "show_identifier"
+        }
+      }, {
+        "dataType" : 5,
+        "format" : "YYYY-MM-DD",
+        "name" : "end_at",
+        "getPSAppDEField" : {
+          "name" : "END_AT",
+          "codeName" : "end_at"
+        }
+      }, {
+        "dataType" : 25,
+        "name" : "title",
+        "getPSAppDEField" : {
+          "name" : "TITLE",
+          "codeName" : "title"
+        }
+      }, {
+        "dataType" : 25,
         "name" : "srfkey",
         "getPSAppDEField" : {
           "name" : "ID",
@@ -788,13 +834,6 @@
         "getPSAppDEField" : {
           "name" : "TITLE",
           "codeName" : "title"
-        }
-      }, {
-        "dataType" : 25,
-        "name" : "state",
-        "getPSAppDEField" : {
-          "name" : "STATE",
-          "codeName" : "state"
         }
       }, {
         "dataType" : 25,
@@ -885,7 +924,81 @@
         "dataType" : 25,
         "name" : "srfmstag"
       } ],
-      "pagingSize" : 1000,
+      "getPSDEListItems" : [ {
+        "align" : "LEFT",
+        "cLConvertMode" : "FRONT",
+        "caption" : "状态",
+        "dataItemName" : "state",
+        "itemType" : "TEXTITEM",
+        "name" : "STATE",
+        "width" : 150,
+        "widthString" : "150px",
+        "enableSort" : true
+      }, {
+        "align" : "LEFT",
+        "caption" : "负责人",
+        "dataItemName" : "assignee_name",
+        "itemType" : "TEXTITEM",
+        "name" : "ASSIGNEE_NAME",
+        "width" : 150,
+        "widthString" : "150px",
+        "enableSort" : true
+      }, {
+        "align" : "LEFT",
+        "cLConvertMode" : "FRONT",
+        "caption" : "优先级",
+        "dataItemName" : "priority",
+        "itemType" : "TEXTITEM",
+        "name" : "PRIORITY",
+        "width" : 150,
+        "widthString" : "150px",
+        "enableSort" : true
+      }, {
+        "align" : "LEFT",
+        "caption" : "开始时间",
+        "dataItemName" : "start_at",
+        "itemType" : "TEXTITEM",
+        "name" : "START_AT",
+        "valueFormat" : "YYYY-MM-DD",
+        "width" : 150,
+        "widthString" : "150px",
+        "enableSort" : true
+      }, {
+        "align" : "LEFT",
+        "caption" : "编号",
+        "dataItemName" : "show_identifier",
+        "itemType" : "TEXTITEM",
+        "name" : "SHOW_IDENTIFIER",
+        "width" : 150,
+        "widthString" : "150px",
+        "enableSort" : true
+      }, {
+        "align" : "LEFT",
+        "caption" : "截止时间",
+        "dataItemName" : "end_at",
+        "itemType" : "TEXTITEM",
+        "name" : "END_AT",
+        "valueFormat" : "YYYY-MM-DD",
+        "width" : 150,
+        "widthString" : "150px",
+        "enableSort" : true
+      }, {
+        "align" : "LEFT",
+        "caption" : "标题",
+        "dataItemName" : "title",
+        "itemType" : "TEXTITEM",
+        "name" : "TITLE",
+        "width" : 150,
+        "widthString" : "150px",
+        "enableSort" : true
+      } ],
+      "getPSSysPFPlugin" : {
+        "pluginType" : "CUSTOM",
+        "pluginCode" : "MOB_MDCTRL_TREE",
+        "runtimeObject" : true
+      },
+      "pagingMode" : 2,
+      "pagingSize" : 20,
       "getRemovePSControlAction" : {
         "modelref" : true,
         "id" : "remove",
@@ -933,7 +1046,7 @@
     }, {
       "codeName" : "mob_idea_list_view_righttoolbar",
       "controlType" : "TOOLBAR",
-      "logicName" : "需求列表工具栏（scrum）",
+      "logicName" : "需求移动端列表工具栏",
       "name" : "righttoolbar",
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -951,8 +1064,16 @@
         "caption" : "新建",
         "itemType" : "ITEMS",
         "name" : "items1",
+        "getPSControlLogics" : [ {
+          "itemName" : "items1",
+          "logicTag" : "righttoolbar",
+          "logicType" : "SCRIPT",
+          "name" : "items1",
+          "scriptCode" : "context.srfreadonly != true",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
         "getPSDEToolbarItems" : [ {
-          "caption" : "新建史诗",
+          "caption" : "史诗",
           "groupExtractMode" : "ITEM",
           "itemType" : "DEUIACTION",
           "name" : "deuiaction1",
@@ -962,7 +1083,6 @@
             "id" : "righttoolbar_deuiaction1"
           },
           "getPSSysImage" : {
-            "cssClass" : "work-item-type-epic",
             "rawContent" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg width=\"20px\" height=\"20px\" viewBox=\"0 0 20 20\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n    <title>史诗</title>\n    <g id=\"页面-1\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\n        <g id=\"画板\" transform=\"translate(-474, -617)\">\n            <g id=\"史诗\" transform=\"translate(474, 617)\">\n                <rect id=\"矩形\" fill=\"#FF877B\" x=\"0\" y=\"0\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n                <path d=\"M14.87,9.92501466 L14.86625,9.91851511 C14.9487661,9.80270066 14.9954181,9.66350419 15,9.51944242 C15,9.08397222 14.6275,8.73169632 14.16625,8.73169632 L10,8.73169632 L10,4.78906613 C10,4.35359593 9.62625,4 9.16625,4 C8.81816569,3.99757056 8.50480227,4.2189591 8.37875,4.55638205 L5.13625,10.6815629 L5.14,10.6867625 C5.05411603,10.8051255 5.00524755,10.948056 5,11.0962345 C5,11.5317047 5.3725,11.8852805 5.83375,11.8852805 L9.99875,11.8852805 L9.99875,15.8279107 C9.82429026,16.1058792 9.85472809,16.4717685 10.0725,16.71445 C10.3036759,16.9695967 10.6553726,17.0636874 10.97625,16.9562335 C11.2902696,16.8648688 11.5128285,16.5747767 11.52875,16.2360828 L11.53375,16.2360828 L11.555,16.1970855 C11.57375,16.1632878 11.59375,16.1333898 11.6075,16.0995921 L14.87,9.92501466 L14.87,9.92501466 Z\" id=\"路径\" fill=\"#FFFFFF\" fill-rule=\"nonzero\"></path>\n            </g>\n        </g>\n    </g>\n</svg>"
           },
           "getPSUIAction" : {
@@ -987,13 +1107,112 @@
               "value" : "scrum_epic",
               "rawValue" : true
             } ],
+            "getPSSysImage" : {
+              "rawContent" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg width=\"20px\" height=\"20px\" viewBox=\"0 0 20 20\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n    <title>史诗</title>\n    <g id=\"页面-1\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\n        <g id=\"画板\" transform=\"translate(-474, -617)\">\n            <g id=\"史诗\" transform=\"translate(474, 617)\">\n                <rect id=\"矩形\" fill=\"#FF877B\" x=\"0\" y=\"0\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n                <path d=\"M14.87,9.92501466 L14.86625,9.91851511 C14.9487661,9.80270066 14.9954181,9.66350419 15,9.51944242 C15,9.08397222 14.6275,8.73169632 14.16625,8.73169632 L10,8.73169632 L10,4.78906613 C10,4.35359593 9.62625,4 9.16625,4 C8.81816569,3.99757056 8.50480227,4.2189591 8.37875,4.55638205 L5.13625,10.6815629 L5.14,10.6867625 C5.05411603,10.8051255 5.00524755,10.948056 5,11.0962345 C5,11.5317047 5.3725,11.8852805 5.83375,11.8852805 L9.99875,11.8852805 L9.99875,15.8279107 C9.82429026,16.1058792 9.85472809,16.4717685 10.0725,16.71445 C10.3036759,16.9695967 10.6553726,17.0636874 10.97625,16.9562335 C11.2902696,16.8648688 11.5128285,16.5747767 11.52875,16.2360828 L11.53375,16.2360828 L11.555,16.1970855 C11.57375,16.1632878 11.59375,16.1333898 11.6075,16.0995921 L14.87,9.92501466 L14.87,9.92501466 Z\" id=\"路径\" fill=\"#FFFFFF\" fill-rule=\"nonzero\"></path>\n            </g>\n        </g>\n    </g>\n</svg>"
+            },
             "timeout" : 60000,
             "uIActionMode" : "FRONT",
             "uIActionTag" : "mob_create_scrum_epic",
             "uIActionType" : "DEUIACTION",
             "id" : "mob_create_scrum_epic@work_item"
           },
-          "tooltip" : "新建史诗",
+          "tooltip" : "史诗",
+          "uIActionTarget" : "NONE",
+          "showCaption" : true,
+          "showIcon" : true
+        }, {
+          "caption" : "特性",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction2",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "righttoolbar_deuiaction2"
+          },
+          "getPSSysImage" : {
+            "rawContent" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg width=\"20px\" height=\"20px\" viewBox=\"0 0 20 20\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n    <title>特性</title>\n    <g id=\"页面-1\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\n        <g id=\"画板\" transform=\"translate(-522, -617)\">\n            <g id=\"特性\" transform=\"translate(522, 617)\">\n                <rect id=\"矩形\" fill=\"#9191F9\" x=\"0\" y=\"0\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n                <g id=\"read-fill\" transform=\"translate(2, 2)\" fill-rule=\"nonzero\">\n                    <rect id=\"矩形\" fill=\"#000000\" opacity=\"0\" x=\"0\" y=\"0\" width=\"16\" height=\"16\"></rect>\n                    <path d=\"M14.5,2.515625 L10.925,2.515625 C10.1578125,2.515625 9.4078125,2.7359375 8.7625,3.1515625 L8,3.640625 L7.2375,3.1515625 C6.59375,2.7359375 5.8421875,2.515625 5.075,2.515625 L1.5,2.515625 C1.2234375,2.515625 1,2.7390625 1,3.015625 L1,11.890625 C1,12.1671875 1.2234375,12.390625 1.5,12.390625 L5.075,12.390625 C5.8421875,12.390625 6.5921875,12.6109375 7.2375,13.0265625 L7.93125,13.4734375 C7.9515625,13.4859375 7.975,13.49375 7.9984375,13.49375 C8.021875,13.49375 8.0453125,13.4875 8.065625,13.4734375 L8.759375,13.0265625 C9.40625,12.6109375 10.1578125,12.390625 10.925,12.390625 L14.5,12.390625 C14.7765625,12.390625 15,12.1671875 15,11.890625 L15,3.015625 C15,2.7390625 14.7765625,2.515625 14.5,2.515625 Z M6.3125,8.6484375 C6.3125,8.7125 6.2625,8.765625 6.2015625,8.765625 L3.2984375,8.765625 C3.2375,8.765625 3.1875,8.7125 3.1875,8.6484375 L3.1875,7.9453125 C3.1875,7.88125 3.2375,7.828125 3.2984375,7.828125 L6.2,7.828125 C6.2609375,7.828125 6.3109375,7.88125 6.3109375,7.9453125 L6.3109375,8.6484375 L6.3125,8.6484375 Z M6.3125,6.4609375 C6.3125,6.525 6.2625,6.578125 6.2015625,6.578125 L3.2984375,6.578125 C3.2375,6.578125 3.1875,6.525 3.1875,6.4609375 L3.1875,5.7578125 C3.1875,5.69375 3.2375,5.640625 3.2984375,5.640625 L6.2,5.640625 C6.2609375,5.640625 6.3109375,5.69375 6.3109375,5.7578125 L6.3109375,6.4609375 L6.3125,6.4609375 Z M12.8125,8.6484375 C12.8125,8.7125 12.7625,8.765625 12.7015625,8.765625 L9.7984375,8.765625 C9.7375,8.765625 9.6875,8.7125 9.6875,8.6484375 L9.6875,7.9453125 C9.6875,7.88125 9.7375,7.828125 9.7984375,7.828125 L12.7,7.828125 C12.7609375,7.828125 12.8109375,7.88125 12.8109375,7.9453125 L12.8109375,8.6484375 L12.8125,8.6484375 Z M12.8125,6.4609375 C12.8125,6.525 12.7625,6.578125 12.7015625,6.578125 L9.7984375,6.578125 C9.7375,6.578125 9.6875,6.525 9.6875,6.4609375 L9.6875,5.7578125 C9.6875,5.69375 9.7375,5.640625 9.7984375,5.640625 L12.7,5.640625 C12.7609375,5.640625 12.8109375,5.69375 12.8109375,5.7578125 L12.8109375,6.4609375 L12.8125,6.4609375 Z\" id=\"形状\" fill=\"#FFFFFF\"></path>\n                </g>\n            </g>\n        </g>\n    </g>\n</svg>"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "NONE",
+            "caption" : "新建特性",
+            "codeName" : "mob_create_scrum_feature",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_create_view.json",
+              "viewType" : "DEMOBEDITVIEW"
+            },
+            "frontProcessType" : "WIZARD",
+            "fullCodeName" : "work_item_mob_create_scrum_feature",
+            "name" : "新建特性（移动端scrum）",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+            },
+            "getPSNavigateParams" : [ {
+              "key" : "work_item_type_id",
+              "name" : "work_item_type_id",
+              "value" : "scrum_feature",
+              "rawValue" : true
+            } ],
+            "getPSSysImage" : {
+              "rawContent" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg width=\"20px\" height=\"20px\" viewBox=\"0 0 20 20\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n    <title>特性</title>\n    <g id=\"页面-1\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\n        <g id=\"画板\" transform=\"translate(-522, -617)\">\n            <g id=\"特性\" transform=\"translate(522, 617)\">\n                <rect id=\"矩形\" fill=\"#9191F9\" x=\"0\" y=\"0\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n                <g id=\"read-fill\" transform=\"translate(2, 2)\" fill-rule=\"nonzero\">\n                    <rect id=\"矩形\" fill=\"#000000\" opacity=\"0\" x=\"0\" y=\"0\" width=\"16\" height=\"16\"></rect>\n                    <path d=\"M14.5,2.515625 L10.925,2.515625 C10.1578125,2.515625 9.4078125,2.7359375 8.7625,3.1515625 L8,3.640625 L7.2375,3.1515625 C6.59375,2.7359375 5.8421875,2.515625 5.075,2.515625 L1.5,2.515625 C1.2234375,2.515625 1,2.7390625 1,3.015625 L1,11.890625 C1,12.1671875 1.2234375,12.390625 1.5,12.390625 L5.075,12.390625 C5.8421875,12.390625 6.5921875,12.6109375 7.2375,13.0265625 L7.93125,13.4734375 C7.9515625,13.4859375 7.975,13.49375 7.9984375,13.49375 C8.021875,13.49375 8.0453125,13.4875 8.065625,13.4734375 L8.759375,13.0265625 C9.40625,12.6109375 10.1578125,12.390625 10.925,12.390625 L14.5,12.390625 C14.7765625,12.390625 15,12.1671875 15,11.890625 L15,3.015625 C15,2.7390625 14.7765625,2.515625 14.5,2.515625 Z M6.3125,8.6484375 C6.3125,8.7125 6.2625,8.765625 6.2015625,8.765625 L3.2984375,8.765625 C3.2375,8.765625 3.1875,8.7125 3.1875,8.6484375 L3.1875,7.9453125 C3.1875,7.88125 3.2375,7.828125 3.2984375,7.828125 L6.2,7.828125 C6.2609375,7.828125 6.3109375,7.88125 6.3109375,7.9453125 L6.3109375,8.6484375 L6.3125,8.6484375 Z M6.3125,6.4609375 C6.3125,6.525 6.2625,6.578125 6.2015625,6.578125 L3.2984375,6.578125 C3.2375,6.578125 3.1875,6.525 3.1875,6.4609375 L3.1875,5.7578125 C3.1875,5.69375 3.2375,5.640625 3.2984375,5.640625 L6.2,5.640625 C6.2609375,5.640625 6.3109375,5.69375 6.3109375,5.7578125 L6.3109375,6.4609375 L6.3125,6.4609375 Z M12.8125,8.6484375 C12.8125,8.7125 12.7625,8.765625 12.7015625,8.765625 L9.7984375,8.765625 C9.7375,8.765625 9.6875,8.7125 9.6875,8.6484375 L9.6875,7.9453125 C9.6875,7.88125 9.7375,7.828125 9.7984375,7.828125 L12.7,7.828125 C12.7609375,7.828125 12.8109375,7.88125 12.8109375,7.9453125 L12.8109375,8.6484375 L12.8125,8.6484375 Z M12.8125,6.4609375 C12.8125,6.525 12.7625,6.578125 12.7015625,6.578125 L9.7984375,6.578125 C9.7375,6.578125 9.6875,6.525 9.6875,6.4609375 L9.6875,5.7578125 C9.6875,5.69375 9.7375,5.640625 9.7984375,5.640625 L12.7,5.640625 C12.7609375,5.640625 12.8109375,5.69375 12.8109375,5.7578125 L12.8109375,6.4609375 L12.8125,6.4609375 Z\" id=\"形状\" fill=\"#FFFFFF\"></path>\n                </g>\n            </g>\n        </g>\n    </g>\n</svg>"
+            },
+            "timeout" : 60000,
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "mob_create_scrum_feature",
+            "uIActionType" : "DEUIACTION",
+            "id" : "mob_create_scrum_feature@work_item"
+          },
+          "tooltip" : "特性",
+          "uIActionTarget" : "NONE",
+          "showCaption" : true,
+          "showIcon" : true
+        }, {
+          "caption" : "用户故事",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction3",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "righttoolbar_deuiaction3"
+          },
+          "getPSSysImage" : {
+            "rawContent" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg width=\"20px\" height=\"20px\" viewBox=\"0 0 20 20\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n    <title>用户故事</title>\n    <g id=\"页面-1\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\n        <g id=\"画板\" transform=\"translate(-570, -617)\">\n            <g id=\"用户故事\" transform=\"translate(570, 617)\">\n                <rect id=\"矩形\" fill=\"#30D1FC\" x=\"0\" y=\"0\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n                <path d=\"M15,3.75 L13.3125,3.75 L13.3125,3.125 C13.3125,3.05625 13.25625,3 13.1875,3 L12.3125,3 C12.24375,3 12.1875,3.05625 12.1875,3.125 L12.1875,3.75 L9.8125,3.75 L9.8125,3.125 C9.8125,3.05625 9.75625,3 9.6875,3 L8.8125,3 C8.74375,3 8.6875,3.05625 8.6875,3.125 L8.6875,3.75 L7,3.75 C6.7234375,3.75 6.5,3.9734375 6.5,4.25 L6.5,6.125 L5,6.125 C4.7234375,6.125 4.5,6.3484375 4.5,6.625 L4.5,16.5 C4.5,16.7765625 4.7234375,17 5,17 L13,17 C13.2765625,17 13.5,16.7765625 13.5,16.5 L13.5,15 L15,15 C15.2765625,15 15.5,14.7765625 15.5,14.5 L15.5,4.25 C15.5,3.9734375 15.2765625,3.75 15,3.75 Z M12.375,9.59375 L10.03125,9.59375 L10.03125,7.25 L10.034375,7.25 L12.375,9.590625 L12.375,9.59375 Z M14.375,13.875 L13.5,13.875 L13.5,9.125 L10.5,6.125 L7.625,6.125 L7.625,4.875 L8.6875,4.875 L8.6875,5.375 C8.6875,5.44375 8.74375,5.5 8.8125,5.5 L9.6875,5.5 C9.75625,5.5 9.8125,5.44375 9.8125,5.375 L9.8125,4.875 L12.1875,4.875 L12.1875,5.375 C12.1875,5.44375 12.24375,5.5 12.3125,5.5 L13.1875,5.5 C13.25625,5.5 13.3125,5.44375 13.3125,5.375 L13.3125,4.875 L14.375,4.875 L14.375,13.875 Z\" id=\"形状\" fill=\"#FFFFFF\" fill-rule=\"nonzero\"></path>\n            </g>\n        </g>\n    </g>\n</svg>"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "NONE",
+            "caption" : "新建用户故事",
+            "codeName" : "mob_create_scrum_story",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_create_view.json",
+              "viewType" : "DEMOBEDITVIEW"
+            },
+            "frontProcessType" : "WIZARD",
+            "fullCodeName" : "work_item_mob_create_scrum_story",
+            "name" : "新建用户故事（移动端scrum）",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+            },
+            "getPSNavigateParams" : [ {
+              "key" : "work_item_type_id",
+              "name" : "work_item_type_id",
+              "value" : "scrum_story",
+              "rawValue" : true
+            } ],
+            "getPSSysImage" : {
+              "rawContent" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg width=\"20px\" height=\"20px\" viewBox=\"0 0 20 20\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n    <title>用户故事</title>\n    <g id=\"页面-1\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\n        <g id=\"画板\" transform=\"translate(-570, -617)\">\n            <g id=\"用户故事\" transform=\"translate(570, 617)\">\n                <rect id=\"矩形\" fill=\"#30D1FC\" x=\"0\" y=\"0\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n                <path d=\"M15,3.75 L13.3125,3.75 L13.3125,3.125 C13.3125,3.05625 13.25625,3 13.1875,3 L12.3125,3 C12.24375,3 12.1875,3.05625 12.1875,3.125 L12.1875,3.75 L9.8125,3.75 L9.8125,3.125 C9.8125,3.05625 9.75625,3 9.6875,3 L8.8125,3 C8.74375,3 8.6875,3.05625 8.6875,3.125 L8.6875,3.75 L7,3.75 C6.7234375,3.75 6.5,3.9734375 6.5,4.25 L6.5,6.125 L5,6.125 C4.7234375,6.125 4.5,6.3484375 4.5,6.625 L4.5,16.5 C4.5,16.7765625 4.7234375,17 5,17 L13,17 C13.2765625,17 13.5,16.7765625 13.5,16.5 L13.5,15 L15,15 C15.2765625,15 15.5,14.7765625 15.5,14.5 L15.5,4.25 C15.5,3.9734375 15.2765625,3.75 15,3.75 Z M12.375,9.59375 L10.03125,9.59375 L10.03125,7.25 L10.034375,7.25 L12.375,9.590625 L12.375,9.59375 Z M14.375,13.875 L13.5,13.875 L13.5,9.125 L10.5,6.125 L7.625,6.125 L7.625,4.875 L8.6875,4.875 L8.6875,5.375 C8.6875,5.44375 8.74375,5.5 8.8125,5.5 L9.6875,5.5 C9.75625,5.5 9.8125,5.44375 9.8125,5.375 L9.8125,4.875 L12.1875,4.875 L12.1875,5.375 C12.1875,5.44375 12.24375,5.5 12.3125,5.5 L13.1875,5.5 C13.25625,5.5 13.3125,5.44375 13.3125,5.375 L13.3125,4.875 L14.375,4.875 L14.375,13.875 Z\" id=\"形状\" fill=\"#FFFFFF\" fill-rule=\"nonzero\"></path>\n            </g>\n        </g>\n    </g>\n</svg>"
+            },
+            "timeout" : 60000,
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "mob_create_scrum_story",
+            "uIActionType" : "DEUIACTION",
+            "id" : "mob_create_scrum_story@work_item"
+          },
+          "tooltip" : "用户故事",
           "uIActionTarget" : "NONE",
           "showCaption" : true,
           "showIcon" : true
@@ -1224,6 +1443,7 @@
           "editorParams" : {
             "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
             "AC" : "TRUE",
+            "SRFNAVPARAM.n_status_eq" : "1",
             "TRIGGER" : "TRUE",
             "URL" : "projects/${context.project}/project_members/fetch_default",
             "PICKUPVIEW" : "FALSE",
@@ -1253,6 +1473,11 @@
             "name" : "n_department_id_eq",
             "value" : "srforgsectorid",
             "rawValue" : false
+          }, {
+            "key" : "n_status_eq",
+            "name" : "n_status_eq",
+            "value" : "1",
+            "rawValue" : true
           } ],
           "getPSSysPFPlugin" : {
             "pluginType" : "EDITOR_CUSTOMSTYLE",
@@ -1317,6 +1542,7 @@
           "editorParams" : {
             "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
             "AC" : "TRUE",
+            "SRFNAVPARAM.n_status_eq" : "1",
             "TRIGGER" : "TRUE",
             "URL" : "projects/${context.project}/project_members/fetch_default",
             "PICKUPVIEW" : "FALSE",
@@ -1334,6 +1560,11 @@
             "name" : "n_department_id_eq",
             "value" : "srforgsectorid",
             "rawValue" : false
+          }, {
+            "key" : "n_status_eq",
+            "name" : "n_status_eq",
+            "value" : "1",
+            "rawValue" : true
           } ],
           "getPSSysPFPlugin" : {
             "pluginType" : "EDITOR_CUSTOMSTYLE",
@@ -1410,6 +1641,7 @@
             "MULTIPLE" : "true",
             "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
             "AC" : "TRUE",
+            "SRFNAVPARAM.n_status_eq" : "1",
             "TRIGGER" : "TRUE",
             "URL" : "projects/${context.project}/project_members/fetch_default",
             "PICKUPVIEW" : "FALSE",
@@ -1439,6 +1671,11 @@
             "name" : "n_department_id_eq",
             "value" : "srforgsectorid",
             "rawValue" : false
+          }, {
+            "key" : "n_status_eq",
+            "name" : "n_status_eq",
+            "value" : "1",
+            "rawValue" : true
           } ],
           "getPSSysPFPlugin" : {
             "pluginType" : "EDITOR_CUSTOMSTYLE",
@@ -1481,6 +1718,7 @@
             "MULTIPLE" : "true",
             "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
             "AC" : "TRUE",
+            "SRFNAVPARAM.n_status_eq" : "1",
             "TRIGGER" : "TRUE",
             "URL" : "projects/${context.project}/project_members/fetch_default",
             "PICKUPVIEW" : "FALSE",
@@ -1510,6 +1748,11 @@
             "name" : "n_department_id_eq",
             "value" : "srforgsectorid",
             "rawValue" : false
+          }, {
+            "key" : "n_status_eq",
+            "name" : "n_status_eq",
+            "value" : "1",
+            "rawValue" : true
           } ],
           "getPSSysPFPlugin" : {
             "pluginType" : "EDITOR_CUSTOMSTYLE",
@@ -1552,6 +1795,7 @@
             "MULTIPLE" : "true",
             "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
             "AC" : "TRUE",
+            "SRFNAVPARAM.n_status_eq" : "1",
             "TRIGGER" : "TRUE",
             "URL" : "projects/${context.project}/project_members/fetch_default",
             "PICKUPVIEW" : "FALSE",
@@ -1569,6 +1813,11 @@
             "name" : "n_department_id_eq",
             "value" : "srforgsectorid",
             "rawValue" : false
+          }, {
+            "key" : "n_status_eq",
+            "name" : "n_status_eq",
+            "value" : "1",
+            "rawValue" : true
           } ],
           "getPSSysPFPlugin" : {
             "pluginType" : "EDITOR_CUSTOMSTYLE",
@@ -1611,6 +1860,7 @@
             "MULTIPLE" : "true",
             "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
             "AC" : "TRUE",
+            "SRFNAVPARAM.n_status_eq" : "1",
             "TRIGGER" : "TRUE",
             "URL" : "projects/${context.project}/project_members/fetch_default",
             "PICKUPVIEW" : "FALSE",
@@ -1628,6 +1878,11 @@
             "name" : "n_department_id_eq",
             "value" : "srforgsectorid",
             "rawValue" : false
+          }, {
+            "key" : "n_status_eq",
+            "name" : "n_status_eq",
+            "value" : "1",
+            "rawValue" : true
           } ],
           "getPSSysPFPlugin" : {
             "pluginType" : "EDITOR_CUSTOMSTYLE",

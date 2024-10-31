@@ -72,19 +72,11 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.others_relation_test_case;
                         update(test_caseothers_relation_test_caseselectdata);//更新fact中变量值
             end
 
-            //逻辑处理节点[填充需要的属性值]
-            rule "prepareparam1"
-            ruleflow-group "test_caseothers_relation_test_caseprepareparam1"
+            //逻辑处理节点[关联标识]
+            rule "rawsfcode1"
+            ruleflow-group "test_caseothers_relation_test_caserawsfcode1"
             when
             then
-                            test_caseothers_relation_test_caseforward_relation_obj.set("principalid",test_caseothers_relation_test_casedefault.get("principal_id"));
-                            test_caseothers_relation_test_casereverse_relation_obj.set("principalid",test_caseothers_relation_test_casefor_temp_obj.get("owner_id"));
-                            test_caseothers_relation_test_casereverse_relation_obj.set("targetid",test_caseothers_relation_test_casedefault.get("principal_id"));
-                            test_caseothers_relation_test_casereverse_relation_obj.set("principaltype",test_caseothers_relation_test_casedefault.get("target_type"));
-                            test_caseothers_relation_test_casereverse_relation_obj.set("targettype",test_caseothers_relation_test_casedefault.get("principal_type"));
-                            test_caseothers_relation_test_caseforward_relation_obj.set("principaltype",test_caseothers_relation_test_casedefault.get("principal_type"));
-                            test_caseothers_relation_test_caseforward_relation_obj.set("targettype",test_caseothers_relation_test_casedefault.get("target_type"));
-                            test_caseothers_relation_test_caseforward_relation_obj.set("targetid",test_caseothers_relation_test_casefor_temp_obj.get("owner_id"));
                         update(test_caseothers_relation_test_casedefault);//更新fact中变量值
                         update(test_caseothers_relation_test_casefor_temp_obj);//更新fact中变量值
                         update(test_caseothers_relation_test_caseforward_relation_obj);//更新fact中变量值
@@ -97,6 +89,24 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.others_relation_test_case;
             ruleflow-group "test_caseothers_relation_test_caseend1"
             when
             then
+                        update(test_caseothers_relation_test_casedefault);//更新fact中变量值
+                        update(test_caseothers_relation_test_casefor_temp_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_caseforward_relation_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_casereverse_relation_obj);//更新fact中变量值
+                        update(test_caseothers_relation_test_caseselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充需要的属性值]
+            rule "prepareparam1"
+            ruleflow-group "test_caseothers_relation_test_caseprepareparam1"
+            when
+            then
+                            test_caseothers_relation_test_caseforward_relation_obj.set("principalid",test_caseothers_relation_test_casedefault.get("principal_id"));
+                            test_caseothers_relation_test_casereverse_relation_obj.set("targetid",test_caseothers_relation_test_casedefault.get("principal_id"));
+                            test_caseothers_relation_test_casereverse_relation_obj.set("principaltype",test_caseothers_relation_test_casedefault.get("target_type"));
+                            test_caseothers_relation_test_casereverse_relation_obj.set("targettype",test_caseothers_relation_test_casedefault.get("principal_type"));
+                            test_caseothers_relation_test_caseforward_relation_obj.set("principaltype",test_caseothers_relation_test_casedefault.get("principal_type"));
+                            test_caseothers_relation_test_caseforward_relation_obj.set("targettype",test_caseothers_relation_test_casedefault.get("target_type"));
                         update(test_caseothers_relation_test_casedefault);//更新fact中变量值
                         update(test_caseothers_relation_test_casefor_temp_obj);//更新fact中变量值
                         update(test_caseothers_relation_test_caseforward_relation_obj);//更新fact中变量值

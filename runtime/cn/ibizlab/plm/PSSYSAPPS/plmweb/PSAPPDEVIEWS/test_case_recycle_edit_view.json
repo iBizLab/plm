@@ -340,14 +340,14 @@
       }
     }, {
       "id" : "precondition",
-      "dataType" : 25,
+      "dataType" : 21,
       "getPSAppDEField" : {
         "name" : "PRECONDITION",
         "codeName" : "precondition"
       }
     }, {
       "id" : "case_description",
-      "dataType" : 25,
+      "dataType" : 21,
       "getPSAppDEField" : {
         "name" : "DESCRIPTION",
         "codeName" : "description"
@@ -380,6 +380,15 @@
       "getPSAppDEField" : {
         "name" : "CUR_VERSION_ID",
         "codeName" : "cur_version_id"
+      }
+    }, {
+      "id" : "id",
+      "hidden" : true,
+      "dataType" : 25,
+      "createDVT" : "UNIQUEID",
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
       }
     }, {
       "id" : "cur_version_id",
@@ -472,14 +481,6 @@
         "name" : "TEST_LIBRARY_ID",
         "codeName" : "test_library_id"
       }
-    }, {
-      "id" : "id",
-      "hidden" : true,
-      "dataType" : 25,
-      "getPSAppDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      }
     } ],
     "getPSDEFormPages" : [ {
       "caption" : "基本信息",
@@ -492,6 +493,7 @@
         "codeName" : "left_grouppanel",
         "detailStyle" : "DEFAULT",
         "detailType" : "GROUPPANEL",
+        "modelState" : 16384,
         "name" : "left_grouppanel",
         "getPSDEFormDetails" : [ {
           "caption" : "标题",
@@ -535,6 +537,7 @@
           "ignoreInput" : 0,
           "labelPos" : "TOP",
           "labelWidth" : 130,
+          "modelState" : 540672,
           "name" : "maintenance_name",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
@@ -545,6 +548,7 @@
             "editorParams" : {
               "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
               "AC" : "TRUE",
+              "SRFNAVPARAM.n_status_eq" : "1",
               "TRIGGER" : "TRUE",
               "URL" : "libraries/${context.library}/library_members/fetch_default",
               "PICKUPVIEW" : "FALSE",
@@ -578,6 +582,11 @@
               "name" : "n_department_id_eq",
               "value" : "srforgsectorid",
               "rawValue" : false
+            }, {
+              "key" : "n_status_eq",
+              "name" : "n_status_eq",
+              "value" : "1",
+              "rawValue" : true
             } ],
             "getPSSysPFPlugin" : {
               "pluginType" : "EDITOR_CUSTOMSTYLE",
@@ -660,6 +669,7 @@
           "ignoreInput" : 0,
           "labelPos" : "TOP",
           "labelWidth" : 130,
+          "modelState" : 540672,
           "name" : "state",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
@@ -698,6 +708,7 @@
           "ignoreInput" : 0,
           "labelPos" : "TOP",
           "labelWidth" : 130,
+          "modelState" : 540672,
           "name" : "type",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
@@ -731,6 +742,7 @@
           "ignoreInput" : 0,
           "labelPos" : "TOP",
           "labelWidth" : 130,
+          "modelState" : 540672,
           "name" : "level",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
@@ -825,11 +837,12 @@
               "codeName" : "description_container",
               "detailStyle" : "DEFAULT",
               "detailType" : "GROUPPANEL",
+              "modelState" : 540672,
               "name" : "description_container",
               "getPSDEFormDetails" : [ {
                 "caption" : "前置条件",
                 "codeName" : "precondition",
-                "dataType" : 25,
+                "dataType" : 21,
                 "detailStyle" : "DEFAULT",
                 "detailType" : "FORMITEM",
                 "enableCond" : 3,
@@ -874,7 +887,26 @@
                   "layout" : "TABLE_24COL"
                 },
                 "allowEmpty" : true
-              }, {
+              } ],
+              "getPSLayout" : {
+                "childColMD" : 24,
+                "columnCount" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "infoGroupMode" : false,
+              "showCaption" : true
+            }, {
+              "caption" : "用例步骤",
+              "codeName" : "grouppanel7",
+              "detailStyle" : "DEFAULT",
+              "detailType" : "GROUPPANEL",
+              "modelState" : 540672,
+              "name" : "grouppanel7",
+              "getPSDEFormDetails" : [ {
                 "buildInActions" : 7,
                 "caption" : "用例步骤",
                 "codeName" : "mdctrl1",
@@ -1046,21 +1078,22 @@
                   "hidden" : true,
                   "repeatContent" : true
                 }, {
-                  "caption" : "标识",
-                  "codeName" : "id",
+                  "caption" : "步骤标识",
+                  "codeName" : "step_id",
                   "createDVT" : "UNIQUEID",
                   "dataType" : 25,
                   "detailStyle" : "DEFAULT",
                   "detailType" : "FORMITEM",
                   "enableCond" : 3,
+                  "fieldName" : "id",
                   "ignoreInput" : 0,
                   "labelPos" : "LEFT",
                   "labelWidth" : 130,
-                  "name" : "id",
+                  "name" : "step_id",
                   "noPrivDisplayMode" : 1,
                   "getPSEditor" : {
                     "editorType" : "HIDDEN",
-                    "name" : "id"
+                    "name" : "step_id"
                   },
                   "getPSLayoutPos" : {
                     "colMD" : 24,
@@ -1101,19 +1134,19 @@
               "showCaption" : true
             }, {
               "caption" : "描述",
-              "codeName" : "grouppanel7",
+              "codeName" : "description_container2",
               "detailStyle" : "DEFAULT",
               "detailType" : "GROUPPANEL",
-              "name" : "grouppanel7",
+              "modelState" : 540672,
+              "name" : "description_container2",
               "getPSDEFormDetails" : [ {
                 "caption" : "描述",
                 "codeName" : "case_description",
-                "dataType" : 25,
+                "dataType" : 21,
                 "detailStyle" : "DEFAULT",
                 "detailType" : "FORMITEM",
                 "enableCond" : 3,
                 "ignoreInput" : 0,
-                "itemHeight" : 200.0,
                 "labelPos" : "NONE",
                 "labelWidth" : 0,
                 "name" : "case_description",
@@ -1123,14 +1156,31 @@
                   "codeName" : "description"
                 },
                 "getPSEditor" : {
-                  "editorHeight" : 200.0,
                   "editorParams" : {
-                    "HEIGHT" : "200"
+                    "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
+                    "MAXHEIGHT" : "450",
+                    "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
+                    "enableEdit" : "true",
+                    "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"type\":\"owner_subtype\"}",
+                    "QUOTEPARAMS" : "{\"page\":0,\"size\":20,\"sort\":\"update_time,desc\"}",
+                    "enableFullScreen" : "true",
+                    "MODE" : "default",
+                    "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{\\\"id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\",\\\"identifier\\\":\\\"(.+?)\\\",\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, id, name, identifier, icon) => {return controller.getNodeInfo({ id, name, identifier, icon })}).replaceAll(/\\#\\{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)\\}/g,(x, id, name, identifier, icon) => {return controller.getNodeInfo({ id, name, identifier, icon })})",
+                    "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
+                    "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"icon\":\"${data.icon}\"}`",
+                    "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
+                    "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+                    "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
+                    "QUOTEURL" : "`recents/fetch_recent_access`"
                   },
-                  "editorType" : "TEXTAREA_10",
-                  "maxLength" : 2000,
+                  "editorStyle" : "COLLAPSE",
+                  "editorType" : "HTMLEDITOR",
                   "name" : "case_description",
-                  "showMaxLength" : true
+                  "getPSSysPFPlugin" : {
+                    "pluginType" : "EDITOR_CUSTOMSTYLE",
+                    "pluginCode" : "COMMENT",
+                    "runtimeObject" : true
+                  }
                 },
                 "getPSLayoutPos" : {
                   "colMD" : 24,
@@ -1155,6 +1205,7 @@
               "codeName" : "grouppanel6",
               "detailStyle" : "DEFAULT",
               "detailType" : "GROUPPANEL",
+              "modelState" : 540672,
               "name" : "grouppanel6",
               "getPSDEFormDetails" : [ {
                 "codeName" : "attachments",
@@ -1730,6 +1781,7 @@
               "codeName" : "tabpanel_tags",
               "detailStyle" : "DEFAULT",
               "detailType" : "TABPANEL",
+              "modelState" : 540672,
               "name" : "tabpanel_tags",
               "getPSDEFormTabPages" : [ {
                 "caption" : "评论",
@@ -2151,8 +2203,10 @@
                                 "itemType" : "CONTAINER",
                                 "name" : "container1",
                                 "getPSLayout" : {
+                                  "align" : "flex-start",
                                   "dir" : "row",
-                                  "layout" : "FLEX"
+                                  "layout" : "FLEX",
+                                  "vAlign" : "center"
                                 },
                                 "getPSLayoutPos" : {
                                   "grow" : -1,
@@ -2202,7 +2256,7 @@
                                   "getPSLayoutPos" : {
                                     "grow" : -1,
                                     "layout" : "FLEX",
-                                    "spacingLeft" : "OUTERSMALL"
+                                    "spacingLeft" : "OUTERMEDIUM"
                                   },
                                   "getPSSysCss" : {
                                     "cssName" : "transition-time"
@@ -2409,6 +2463,10 @@
                                       "modelref" : true,
                                       "id" : "delete"
                                     },
+                                    "getPSAppDEUILogic" : {
+                                      "modelref" : true,
+                                      "id" : "refresh_comment"
+                                    },
                                     "getPSAppDataEntity" : {
                                       "modelref" : true,
                                       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
@@ -2419,6 +2477,7 @@
                                     "uIActionMode" : "BACKEND",
                                     "uIActionTag" : "del_comment",
                                     "uIActionType" : "DEUIACTION",
+                                    "uILogicAttachMode" : "AFTER",
                                     "enableConfirm" : true,
                                     "reloadData" : true,
                                     "id" : "del_comment@comment"
@@ -2658,25 +2717,29 @@
                           "id" : "LIST"
                         },
                         "getPSDEListDataItems" : [ {
-                          "dataType" : 25,
-                          "name" : "pid",
-                          "getPSAppDEField" : {
-                            "name" : "PID",
-                            "codeName" : "pid"
-                          }
-                        }, {
-                          "dataType" : 21,
-                          "name" : "content",
-                          "getPSAppDEField" : {
-                            "name" : "CONTENT",
-                            "codeName" : "content"
-                          }
-                        }, {
                           "dataType" : 21,
                           "name" : "pcontent",
                           "getPSAppDEField" : {
                             "name" : "PCONTENT",
                             "codeName" : "pcontent"
+                          }
+                        }, {
+                          "dataType" : 25,
+                          "getFrontPSCodeList" : {
+                            "modelref" : true,
+                            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+                          },
+                          "name" : "pcreate_man",
+                          "getPSAppDEField" : {
+                            "name" : "PCREATE_MAN",
+                            "codeName" : "pcreate_man"
+                          }
+                        }, {
+                          "dataType" : 25,
+                          "name" : "pid",
+                          "getPSAppDEField" : {
+                            "name" : "PID",
+                            "codeName" : "pid"
                           }
                         }, {
                           "dataType" : 5,
@@ -2692,10 +2755,17 @@
                             "modelref" : true,
                             "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
                           },
-                          "name" : "pcreate_man",
+                          "name" : "create_man",
                           "getPSAppDEField" : {
-                            "name" : "PCREATE_MAN",
-                            "codeName" : "pcreate_man"
+                            "name" : "CREATE_MAN",
+                            "codeName" : "create_man"
+                          }
+                        }, {
+                          "dataType" : 21,
+                          "name" : "content",
+                          "getPSAppDEField" : {
+                            "name" : "CONTENT",
+                            "codeName" : "content"
                           }
                         }, {
                           "dataType" : 25,
@@ -2703,17 +2773,6 @@
                           "getPSAppDEField" : {
                             "name" : "ID",
                             "codeName" : "id"
-                          }
-                        }, {
-                          "dataType" : 25,
-                          "getFrontPSCodeList" : {
-                            "modelref" : true,
-                            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-                          },
-                          "name" : "create_man",
-                          "getPSAppDEField" : {
-                            "name" : "CREATE_MAN",
-                            "codeName" : "create_man"
                           }
                         }, {
                           "dataType" : 25,
@@ -11949,17 +12008,20 @@
         "codeName" : "right_grouppanel",
         "detailStyle" : "DEFAULT",
         "detailType" : "GROUPPANEL",
+        "modelState" : 16384,
         "name" : "right_grouppanel",
         "getPSDEFormDetails" : [ {
           "codeName" : "grouppanel8",
           "detailStyle" : "DEFAULT",
           "detailType" : "GROUPPANEL",
+          "modelState" : 16384,
           "name" : "grouppanel8",
           "getPSDEFormDetails" : [ {
             "caption" : "属性",
             "codeName" : "grouppanel2",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
+            "modelState" : 507904,
             "name" : "grouppanel2",
             "getPSDEFormDetails" : [ {
               "caption" : "测试类型",
@@ -12097,6 +12159,7 @@
             "codeName" : "grouppanel10",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
+            "modelState" : 540672,
             "name" : "grouppanel10",
             "getPSDEFormDetails" : [ {
               "caption" : "版本",
@@ -12139,6 +12202,36 @@
               "allowEmpty" : true,
               "convertToCodeItemText" : true,
               "showCaption" : true
+            }, {
+              "getCapPSLanguageRes" : {
+                "lanResTag" : "DEF.LNAME.ID"
+              },
+              "caption" : "标识",
+              "codeName" : "id",
+              "createDVT" : "UNIQUEID",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "LEFT",
+              "labelWidth" : 130,
+              "name" : "id",
+              "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "ID",
+                "codeName" : "id"
+              },
+              "getPSEditor" : {
+                "editorType" : "HIDDEN",
+                "name" : "id"
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true,
+              "hidden" : true
             }, {
               "caption" : "当前版本标识",
               "codeName" : "cur_version_id",
@@ -12365,6 +12458,7 @@
             "codeName" : "grouppanel3",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
+            "modelState" : 540672,
             "name" : "grouppanel3",
             "getPSDEFormDetails" : [ {
               "caption" : "最近执行",
@@ -12525,6 +12619,7 @@
             "codeName" : "grouppanel1",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
+            "modelState" : 540672,
             "name" : "grouppanel1",
             "getPSDEFormDetails" : [ {
               "caption" : "预估工时",
@@ -12843,6 +12938,7 @@
             "codeName" : "grouppanel4",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
+            "modelState" : 540672,
             "name" : "grouppanel4",
             "getPSDEFormDetails" : [ {
               "caption" : "所属测试库",
@@ -13057,6 +13153,7 @@
           "codeName" : "grouppanel9",
           "detailStyle" : "DEFAULT",
           "detailType" : "GROUPPANEL",
+          "modelState" : 540672,
           "name" : "grouppanel9",
           "getPSDEFDGroupLogics" : [ {
             "groupOP" : "AND",
@@ -13430,28 +13527,6 @@
                         "valueFormat" : "YYYY年MM月DD日",
                         "viewFieldName" : "REGISTER_DATE"
                       } ]
-                    }, {
-                      "contentType" : "DIVIDER",
-                      "contentWidth" : 100.0,
-                      "itemStyle" : "DEFAULT",
-                      "itemType" : "RAWITEM",
-                      "name" : "static_label",
-                      "getPSLayoutPos" : {
-                        "grow" : -1,
-                        "layout" : "FLEX",
-                        "width" : 100,
-                        "widthMode" : "FULL"
-                      },
-                      "getPSRawItem" : {
-                        "contentType" : "DIVIDER",
-                        "name" : "static_label",
-                        "predefinedType" : "STATIC_LABEL",
-                        "rawContent" : "标签",
-                        "rawItemWidth" : 100.0
-                      },
-                      "rawContent" : "标签",
-                      "rawItemWidth" : 100.0,
-                      "width" : 100.0
                     } ]
                   } ],
                   "name" : "list_itempanel",
@@ -13545,6 +13620,17 @@
                     "codeName" : "duration"
                   }
                 }, {
+                  "dataType" : 25,
+                  "getFrontPSCodeList" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+                  },
+                  "name" : "create_man",
+                  "getPSAppDEField" : {
+                    "name" : "CREATE_MAN",
+                    "codeName" : "create_man"
+                  }
+                }, {
                   "dataType" : 21,
                   "name" : "description",
                   "getPSAppDEField" : {
@@ -13558,17 +13644,6 @@
                   "getPSAppDEField" : {
                     "name" : "REGISTER_DATE",
                     "codeName" : "register_date"
-                  }
-                }, {
-                  "dataType" : 25,
-                  "getFrontPSCodeList" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-                  },
-                  "name" : "create_man",
-                  "getPSAppDEField" : {
-                    "name" : "CREATE_MAN",
-                    "codeName" : "create_man"
                   }
                 }, {
                   "dataType" : 25,
@@ -13898,6 +13973,7 @@
           "codeName" : "baseline",
           "detailStyle" : "DEFAULT",
           "detailType" : "GROUPPANEL",
+          "modelState" : 540672,
           "name" : "baseline",
           "getPSDEFDGroupLogics" : [ {
             "groupOP" : "AND",
@@ -14869,6 +14945,7 @@
           "codeName" : "grouppanel11",
           "detailStyle" : "DEFAULT",
           "detailType" : "GROUPPANEL",
+          "modelState" : 540672,
           "name" : "grouppanel11",
           "getPSDEFDGroupLogics" : [ {
             "groupOP" : "AND",
@@ -16179,35 +16256,6 @@
         },
         "infoGroupMode" : false,
         "showCaption" : false
-      }, {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.ID"
-        },
-        "caption" : "标识",
-        "codeName" : "id",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "id",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "ID",
-          "codeName" : "id"
-        },
-        "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "id"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "hidden" : true
       } ],
       "getPSLayout" : {
         "childColMD" : 24,

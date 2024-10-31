@@ -63,7 +63,8 @@
     }
   } ],
   "getPSControls" : [ {
-    "codeName" : "mob_list",
+    "codeName" : "mob_myfavorit_list",
+    "controlStyle" : "LISTVIEW",
     "controlType" : "MOBMDCTRL",
     "getCreatePSControlAction" : {
       "modelref" : true,
@@ -81,7 +82,7 @@
         "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
       }
     },
-    "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page/PSMOBMDCTRLS/mob_list.json",
+    "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page/PSMOBMDCTRLS/mob_myfavorit_list.json",
     "getFetchPSControlAction" : {
       "modelref" : true,
       "id" : "fetch",
@@ -89,7 +90,7 @@
       "name" : "fetch",
       "getPSAppDEMethod" : {
         "modelref" : true,
-        "id" : "fetch_default"
+        "id" : "fetch_shared_with_me"
       },
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -115,14 +116,20 @@
     "groupMode" : "NONE",
     "getItemPSLayoutPanel" : {
       "getAllPSPanelFields" : [ {
+        "id" : "icon",
+        "viewFieldName" : "icon"
+      }, {
+        "id" : "icon2",
+        "viewFieldName" : "icon"
+      }, {
         "id" : "name",
         "viewFieldName" : "name"
       } ],
-      "codeName" : "usr0919901164",
+      "codeName" : "usr0919911164",
       "controlType" : "PANEL",
-      "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page/PSPANELS/usr0919901164.json",
+      "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page/PSPANELS/usr0919911164.json",
       "layoutMode" : "TABLE_24COL",
-      "logicName" : "List_列表项面板",
+      "logicName" : "List_我的收藏列表项面板",
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
@@ -132,6 +139,9 @@
         "childColMD" : 24,
         "columnCount" : 24,
         "layout" : "TABLE_24COL"
+      },
+      "getPSSysCss" : {
+        "cssName" : "mob_product_list_style"
       },
       "getRootPSPanelItems" : [ {
         "itemStyle" : "DEFAULT",
@@ -144,10 +154,9 @@
         "getPSLayoutPos" : {
           "colMD" : 24,
           "layout" : "TABLE_24COL",
-          "spacingBottom" : "OUTERSMALL",
-          "spacingLeft" : "OUTERLARGE",
-          "spacingRight" : "OUTERLARGE",
-          "spacingTop" : "OUTERMEDIUM"
+          "spacingLeft" : "OUTERMEDIUM",
+          "spacingRight" : "OUTERMEDIUM",
+          "spacingTop" : "OUTERSMALL"
         },
         "getPSPanelItems" : [ {
           "caption" : "容器",
@@ -166,9 +175,10 @@
           },
           "getPSPanelItems" : [ {
             "caption" : "容器",
+            "contentWidth" : 100.0,
             "itemStyle" : "DEFAULT",
             "itemType" : "CONTAINER",
-            "name" : "container1",
+            "name" : "container2",
             "getPSLayout" : {
               "align" : "flex-start",
               "dir" : "row",
@@ -177,7 +187,9 @@
             },
             "getPSLayoutPos" : {
               "grow" : -1,
-              "layout" : "FLEX"
+              "layout" : "FLEX",
+              "width" : 100,
+              "widthMode" : "PERCENTAGE"
             },
             "getPSPanelItems" : [ {
               "caption" : "图片",
@@ -189,18 +201,98 @@
                 "grow" : -1,
                 "layout" : "FLEX"
               },
+              "getPSPanelItemGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "name" : "面板成员[static_image][面板显示]逻辑",
+                "getPSPanelItemLogics" : [ {
+                  "condOp" : "ISNULL",
+                  "dstModelField" : "icon",
+                  "logicType" : "SINGLE",
+                  "name" : "逻辑项"
+                } ],
+                "relatedItemNames" : [ "icon" ],
+                "notMode" : false
+              } ],
               "getPSRawItem" : {
                 "contentType" : "IMAGE",
                 "name" : "static_image",
                 "getPSSysImage" : {
-                  "rawContent" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAbJJREFUaEPtmL8vQ1Ecxc+3Lw2hEhVSHSS6+NX62cFgqcVUwWIgMdmNTSQGu//AgNnAKJEgISGqkzYWQ0exmAxF+xUJ0spTr+97b7XNfePLPZ97zznf4eYS6vyjOj8/jIH/btA0YBoQJtBYI8QHkRiIdwDqdRcMZ0G0S3PpTXf6ylUlDfBh5BRArHJMsYKzNJ8JyRjO1T8NsHNpmZWMaVpInylh/QHRY6Al+IixtRPlBgp8T92zG8VcPQaa/MBEQvn5P4H7FIgvfsHtDVgKJqlvCfD1qDVhtQPkeaBAPGhv4CjM8OdRszcksoDOlScKJTrsDVwOMlSkrzb3Upq3643Gz732Bq4GGB6duytgW60FiqYsY0BBlu4QZRu4Hmbg1R24WqqyBpIjBfBLbV/wjIFqjcpv+5gGTAPCBMwICQMUy00D4giFANOAMECx3DQgjlAIMA0IAxTLTQPiCIWAxm7gZpRRyAkj0iy32piiye/Hn9KnxczyBZ5TU5qPIMP7Jo9paG/G9l3o4yffra4jn+uX7aJJTc23FN7eKqbX9guEgxyMAQchaV1iGtAarwN43TfwDhT84zEvogfsAAAAAElFTkSuQmCC"
+                  "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" class=\"design-iconfont\" width=\"24\" height=\"24\">\n  <path d=\"M13.02375,4.213125 C13.13625,4.325625 13.2,4.4775 13.2,4.636875 L13.2,16.2 C13.2,16.531875 12.931875,16.8 12.6,16.8 L0.6,16.8 C0.268125,16.8 0,16.531875 0,16.2 L0,0.6 C0,0.268125 0.268125,0 0.6,0 L8.563125,0 C8.7225,0 8.87625,0.06375 8.98875,0.17625 L13.02375,4.213125 Z M11.81625,4.9125 L8.2875,1.38375 L8.2875,4.9125 L11.81625,4.9125 Z M3,7.8375 C2.91715729,7.8375 2.85,7.90465729 2.85,7.9875 L2.85,8.8875 C2.85,8.97034271 2.91715729,9.0375 3,9.0375 L10.2,9.0375 C10.2828427,9.0375 10.35,8.97034271 10.35,8.8875 L10.35,7.9875 C10.35,7.90465729 10.2828427,7.8375 10.2,7.8375 L3,7.8375 Z M3,10.3875 C2.91715729,10.3875 2.85,10.4546573 2.85,10.5375 L2.85,11.4375 C2.85,11.5203427 2.91715729,11.5875 3,11.5875 L6.45,11.5875 C6.53284271,11.5875 6.6,11.5203427 6.6,11.4375 L6.6,10.5375 C6.6,10.4546573 6.53284271,10.3875 6.45,10.3875 L3,10.3875 Z\" transform=\"translate(3.4 1.6)\" fill=\"#9A7EF4\" fill-rule=\"nonzero\"></path>\n</svg>"
                 },
                 "predefinedType" : "STATIC_IMAGE"
               },
               "getPSSysImage" : {
-                "rawContent" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAbJJREFUaEPtmL8vQ1Ecxc+3Lw2hEhVSHSS6+NX62cFgqcVUwWIgMdmNTSQGu//AgNnAKJEgISGqkzYWQ0exmAxF+xUJ0spTr+97b7XNfePLPZ97zznf4eYS6vyjOj8/jIH/btA0YBoQJtBYI8QHkRiIdwDqdRcMZ0G0S3PpTXf6ylUlDfBh5BRArHJMsYKzNJ8JyRjO1T8NsHNpmZWMaVpInylh/QHRY6Al+IixtRPlBgp8T92zG8VcPQaa/MBEQvn5P4H7FIgvfsHtDVgKJqlvCfD1qDVhtQPkeaBAPGhv4CjM8OdRszcksoDOlScKJTrsDVwOMlSkrzb3Upq3643Gz732Bq4GGB6duytgW60FiqYsY0BBlu4QZRu4Hmbg1R24WqqyBpIjBfBLbV/wjIFqjcpv+5gGTAPCBMwICQMUy00D4giFANOAMECx3DQgjlAIMA0IAxTLTQPiCIWAxm7gZpRRyAkj0iy32piiye/Hn9KnxczyBZ5TU5qPIMP7Jo9paG/G9l3o4yffra4jn+uX7aJJTc23FN7eKqbX9guEgxyMAQchaV1iGtAarwN43TfwDhT84zEvogfsAAAAAElFTkSuQmCC"
+                "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" class=\"design-iconfont\" width=\"24\" height=\"24\">\n  <path d=\"M13.02375,4.213125 C13.13625,4.325625 13.2,4.4775 13.2,4.636875 L13.2,16.2 C13.2,16.531875 12.931875,16.8 12.6,16.8 L0.6,16.8 C0.268125,16.8 0,16.531875 0,16.2 L0,0.6 C0,0.268125 0.268125,0 0.6,0 L8.563125,0 C8.7225,0 8.87625,0.06375 8.98875,0.17625 L13.02375,4.213125 Z M11.81625,4.9125 L8.2875,1.38375 L8.2875,4.9125 L11.81625,4.9125 Z M3,7.8375 C2.91715729,7.8375 2.85,7.90465729 2.85,7.9875 L2.85,8.8875 C2.85,8.97034271 2.91715729,9.0375 3,9.0375 L10.2,9.0375 C10.2828427,9.0375 10.35,8.97034271 10.35,8.8875 L10.35,7.9875 C10.35,7.90465729 10.2828427,7.8375 10.2,7.8375 L3,7.8375 Z M3,10.3875 C2.91715729,10.3875 2.85,10.4546573 2.85,10.5375 L2.85,11.4375 C2.85,11.5203427 2.91715729,11.5875 3,11.5875 L6.45,11.5875 C6.53284271,11.5875 6.6,11.5203427 6.6,11.4375 L6.6,10.5375 C6.6,10.4546573 6.53284271,10.3875 6.45,10.3875 L3,10.3875 Z\" transform=\"translate(3.4 1.6)\" fill=\"#9A7EF4\" fill-rule=\"nonzero\"></path>\n</svg>"
               },
               "showCaption" : true
+            }, {
+              "caption" : "图片(动态)",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "FIELD",
+              "name" : "icon",
+              "getPSEditor" : {
+                "editorParams" : {
+                  "MAXCOUNT" : "1"
+                },
+                "editorType" : "PICTURE_ONE",
+                "maxFileCount" : 1,
+                "maxFileSize" : -1,
+                "minFileCount" : 0,
+                "name" : "icon",
+                "predefinedType" : "FIELD_IMAGE"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSPanelItemGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "name" : "面板成员[icon][面板显示]逻辑",
+                "getPSPanelItemLogics" : [ {
+                  "condOp" : "ISNOTNULL",
+                  "dstModelField" : "icon",
+                  "logicType" : "SINGLE",
+                  "name" : "逻辑项"
+                } ],
+                "relatedItemNames" : [ "icon" ],
+                "notMode" : false
+              } ],
+              "viewFieldName" : "icon"
+            }, {
+              "caption" : "文本(动态)",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "FIELD",
+              "name" : "icon2",
+              "getPSEditor" : {
+                "editorType" : "SPAN",
+                "name" : "icon2",
+                "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                "renderMode" : "TEXT_DYNAMIC",
+                "enableLinkView" : false
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSPanelItemGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "name" : "面板成员[icon2][面板显示]逻辑",
+                "getPSPanelItemLogics" : [ {
+                  "condOp" : "ISNOTNULL",
+                  "dstModelField" : "icon",
+                  "logicType" : "SINGLE",
+                  "name" : "逻辑项"
+                } ],
+                "relatedItemNames" : [ "icon" ],
+                "notMode" : false
+              } ],
+              "viewFieldName" : "icon"
             }, {
               "caption" : "文本(动态)",
               "itemStyle" : "DEFAULT",
@@ -218,15 +310,36 @@
                 "layout" : "FLEX"
               },
               "viewFieldName" : "name"
-            } ]
+            } ],
+            "width" : 100.0
+          }, {
+            "caption" : "容器",
+            "contentWidth" : 10.0,
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CONTAINER",
+            "name" : "container1",
+            "getPSLayout" : {
+              "align" : "flex-start",
+              "dir" : "row",
+              "layout" : "FLEX",
+              "vAlign" : "center"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX",
+              "width" : 10,
+              "widthMode" : "PERCENTAGE"
+            },
+            "width" : 10.0
           } ]
         } ]
       } ],
       "name" : "mdctrl_itempanel",
-      "modelid" : "9E1420E4-C64F-4C10-9A63-AF2F5CB8C3D6",
+      "modelid" : "92e02f39843eda26b84637840b1bd2e6",
       "modeltype" : "PSSYSVIEWPANEL"
     },
-    "logicName" : "mob_list",
+    "logicName" : "mob_myfavorit_list",
+    "mobListStyle" : "LISTVIEW",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
@@ -289,7 +402,7 @@
         "name" : "fetch",
         "getPSAppDEMethod" : {
           "modelref" : true,
-          "id" : "fetch_default"
+          "id" : "fetch_shared_with_me"
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
@@ -334,7 +447,8 @@
         "codeName" : "parent_id"
       }
     } ],
-    "pagingSize" : 1000,
+    "pagingMode" : 2,
+    "pagingSize" : 20,
     "getRemovePSControlAction" : {
       "modelref" : true,
       "id" : "remove",
@@ -377,7 +491,7 @@
     "showHeader" : true,
     "singleSelect" : false,
     "name" : "mdctrl",
-    "modelid" : "8BCA10B0-C265-4C77-B66B-F734D875CD9A",
+    "modelid" : "c3964853a58923aaac30575ae3b911a3",
     "modeltype" : "PSDELIST"
   }, {
     "codeName" : "shared_mob_list_view_righttoolbar",

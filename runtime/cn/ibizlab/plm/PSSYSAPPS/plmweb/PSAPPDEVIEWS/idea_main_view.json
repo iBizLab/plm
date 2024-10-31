@@ -6,6 +6,7 @@
   "caption" : "需求",
   "codeName" : "idea_main_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_main_view.json",
+  "dynaSysMode" : 1,
   "height" : 90,
   "markOpenDataMode" : "OPENDATA;EDITDATA;DISPLAYOPPERSON;NOTICERELOAD",
   "name" : "ideamain_view",
@@ -37,6 +38,16 @@
     "key" : "n_owner_id_eq",
     "name" : "n_owner_id_eq",
     "value" : "idea",
+    "rawValue" : false
+  }, {
+    "key" : "srfparentdename",
+    "name" : "srfparentdename",
+    "value" : "product",
+    "rawValue" : true
+  }, {
+    "key" : "srfparentkey",
+    "name" : "srfparentkey",
+    "value" : "product",
     "rawValue" : false
   } ],
   "getPSDEViewCodeName" : "main_view",
@@ -1127,6 +1138,10 @@
               "modelref" : true,
               "id" : "archive"
             },
+            "getPSAppDEUILogic" : {
+              "modelref" : true,
+              "id" : "flush"
+            },
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
@@ -1135,14 +1150,17 @@
               "glyph" : "xf187@FontAwesome",
               "cssClass" : "fa fa-archive"
             },
+            "refreshMode" : 1,
             "successMsg" : "成功归档",
             "timeout" : 60000,
             "uIActionMode" : "BACKEND",
             "uIActionTag" : "toolbar_idea_archive",
             "uIActionType" : "DEUIACTION",
+            "uILogicAttachMode" : "AFTER",
             "closeEditView" : true,
             "closePopupView" : true,
             "enableConfirm" : true,
+            "reloadData" : true,
             "id" : "toolbar_idea_archive@idea"
           },
           "tooltip" : "归档",
@@ -1236,6 +1254,10 @@
               "modelref" : true,
               "id" : "delete"
             },
+            "getPSAppDEUILogic" : {
+              "modelref" : true,
+              "id" : "flush"
+            },
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
@@ -1244,14 +1266,17 @@
               "glyph" : "xf014@FontAwesome",
               "cssClass" : "fa fa-trash-o"
             },
+            "refreshMode" : 1,
             "successMsg" : "删除成功",
             "timeout" : 60000,
             "uIActionMode" : "BACKEND",
             "uIActionTag" : "toolbar_delete",
             "uIActionType" : "DEUIACTION",
+            "uILogicAttachMode" : "AFTER",
             "closeEditView" : true,
             "closePopupView" : true,
             "enableConfirm" : true,
+            "reloadData" : true,
             "id" : "toolbar_delete@idea"
           },
           "tooltip" : "删除",
@@ -1648,23 +1673,23 @@
         "id" : "FORM"
       },
       "getPSDEFormItemUpdates" : [ {
-        "codeName" : "estimated_update",
-        "name" : "预估工时表单项更新",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "workload_schedule"
-        }, {
-          "name" : "remaining_workload"
-        } ],
-        "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nvar remaining = 0; // 剩余工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n\tif(estimated_workload){\r\n\t\t// 计算剩余工时\r\n\t\tremaining = (estimated - actual) >= 0 ? (estimated - actual) : 0;\r\n\t\tform_data.remaining_workload = remaining;\r\n\t}\r\n} else {\r\n\tremaining = estimated;\r\n\tform_data.remaining_workload = estimated_workload;\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
-        "customCode" : true,
-        "showBusyIndicator" : false
-      }, {
         "codeName" : "remaining_update",
         "name" : "剩余工时表单项更新",
         "getPSDEFIUpdateDetails" : [ {
           "name" : "workload_schedule"
         } ],
         "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload; \r\nvar remaining_workload = form_data.remaining_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n}\r\nvar remaining = 0;\r\nif(remaining_workload){\r\n\tremaining = Number(remaining_workload);\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}\r\n",
+        "customCode" : true,
+        "showBusyIndicator" : false
+      }, {
+        "codeName" : "estimated_update",
+        "name" : "预估工时表单项更新",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "remaining_workload"
+        }, {
+          "name" : "workload_schedule"
+        } ],
+        "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nvar remaining = 0; // 剩余工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n\tif(estimated_workload){\r\n\t\t// 计算剩余工时\r\n\t\tremaining = (estimated - actual) >= 0 ? (estimated - actual) : 0;\r\n\t\tform_data.remaining_workload = remaining;\r\n\t}\r\n} else {\r\n\tremaining = estimated;\r\n\tform_data.remaining_workload = estimated_workload;\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
         "customCode" : true,
         "showBusyIndicator" : false
       } ],
@@ -1944,6 +1969,7 @@
           "codeName" : "left_grouppanel",
           "detailStyle" : "DEFAULT",
           "detailType" : "GROUPPANEL",
+          "modelState" : 16384,
           "name" : "left_grouppanel",
           "getPSDEFormDetails" : [ {
             "getCapPSLanguageRes" : {
@@ -1958,6 +1984,7 @@
             "ignoreInput" : 0,
             "labelPos" : "NONE",
             "labelWidth" : 0,
+            "modelState" : 540672,
             "name" : "title",
             "noPrivDisplayMode" : 1,
             "getPSAppDEField" : {
@@ -1993,6 +2020,7 @@
             "ignoreInput" : 0,
             "labelPos" : "TOP",
             "labelWidth" : 130,
+            "modelState" : 540672,
             "name" : "assignee_name",
             "noPrivDisplayMode" : 1,
             "getPSAppDEField" : {
@@ -2003,6 +2031,7 @@
               "editorParams" : {
                 "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
                 "AC" : "TRUE",
+                "SRFNAVPARAM.n_status_eq" : "1",
                 "TRIGGER" : "TRUE",
                 "URL" : "products/${context.product}/product_members/fetch_default",
                 "PICKUPVIEW" : "FALSE",
@@ -2033,6 +2062,11 @@
                 "name" : "n_department_id_eq",
                 "value" : "srforgsectorid",
                 "rawValue" : false
+              }, {
+                "key" : "n_status_eq",
+                "name" : "n_status_eq",
+                "value" : "1",
+                "rawValue" : true
               } ],
               "getPSSysPFPlugin" : {
                 "pluginType" : "EDITOR_CUSTOMSTYLE",
@@ -2118,6 +2152,7 @@
             "ignoreInput" : 0,
             "labelPos" : "TOP",
             "labelWidth" : 130,
+            "modelState" : 540672,
             "name" : "state",
             "noPrivDisplayMode" : 1,
             "getPSAppDEField" : {
@@ -2159,6 +2194,7 @@
             "ignoreInput" : 0,
             "labelPos" : "TOP",
             "labelWidth" : 130,
+            "modelState" : 540672,
             "name" : "priority",
             "noPrivDisplayMode" : 1,
             "getPSAppDEField" : {
@@ -2195,6 +2231,7 @@
             "ignoreInput" : 0,
             "labelPos" : "TOP",
             "labelWidth" : 130,
+            "modelState" : 540672,
             "name" : "plan_at",
             "noPrivDisplayMode" : 1,
             "getPSAppDEField" : {
@@ -2299,6 +2336,7 @@
                 "codeName" : "description_container",
                 "detailStyle" : "DEFAULT",
                 "detailType" : "GROUPPANEL",
+                "modelState" : 540672,
                 "name" : "description_container",
                 "getPSDEFormDetails" : [ {
                   "getCapPSLanguageRes" : {
@@ -2949,6 +2987,7 @@
                 "codeName" : "tabpanel_tags",
                 "detailStyle" : "DEFAULT",
                 "detailType" : "TABPANEL",
+                "modelState" : 540672,
                 "name" : "tabpanel_tags",
                 "getPSDEFormTabPages" : [ {
                   "getCapPSLanguageRes" : {
@@ -3373,8 +3412,10 @@
                                   "itemType" : "CONTAINER",
                                   "name" : "container1",
                                   "getPSLayout" : {
+                                    "align" : "flex-start",
                                     "dir" : "row",
-                                    "layout" : "FLEX"
+                                    "layout" : "FLEX",
+                                    "vAlign" : "center"
                                   },
                                   "getPSLayoutPos" : {
                                     "grow" : -1,
@@ -3424,7 +3465,7 @@
                                     "getPSLayoutPos" : {
                                       "grow" : -1,
                                       "layout" : "FLEX",
-                                      "spacingLeft" : "OUTERSMALL"
+                                      "spacingLeft" : "OUTERMEDIUM"
                                     },
                                     "getPSSysCss" : {
                                       "cssName" : "transition-time"
@@ -3631,6 +3672,10 @@
                                         "modelref" : true,
                                         "id" : "delete"
                                       },
+                                      "getPSAppDEUILogic" : {
+                                        "modelref" : true,
+                                        "id" : "refresh_comment"
+                                      },
                                       "getPSAppDataEntity" : {
                                         "modelref" : true,
                                         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
@@ -3641,6 +3686,7 @@
                                       "uIActionMode" : "BACKEND",
                                       "uIActionTag" : "del_comment",
                                       "uIActionType" : "DEUIACTION",
+                                      "uILogicAttachMode" : "AFTER",
                                       "enableConfirm" : true,
                                       "reloadData" : true,
                                       "id" : "del_comment@comment"
@@ -3880,25 +3926,29 @@
                             "id" : "LIST"
                           },
                           "getPSDEListDataItems" : [ {
-                            "dataType" : 25,
-                            "name" : "pid",
-                            "getPSAppDEField" : {
-                              "name" : "PID",
-                              "codeName" : "pid"
-                            }
-                          }, {
-                            "dataType" : 21,
-                            "name" : "content",
-                            "getPSAppDEField" : {
-                              "name" : "CONTENT",
-                              "codeName" : "content"
-                            }
-                          }, {
                             "dataType" : 21,
                             "name" : "pcontent",
                             "getPSAppDEField" : {
                               "name" : "PCONTENT",
                               "codeName" : "pcontent"
+                            }
+                          }, {
+                            "dataType" : 25,
+                            "getFrontPSCodeList" : {
+                              "modelref" : true,
+                              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+                            },
+                            "name" : "pcreate_man",
+                            "getPSAppDEField" : {
+                              "name" : "PCREATE_MAN",
+                              "codeName" : "pcreate_man"
+                            }
+                          }, {
+                            "dataType" : 25,
+                            "name" : "pid",
+                            "getPSAppDEField" : {
+                              "name" : "PID",
+                              "codeName" : "pid"
                             }
                           }, {
                             "dataType" : 5,
@@ -3914,10 +3964,17 @@
                               "modelref" : true,
                               "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
                             },
-                            "name" : "pcreate_man",
+                            "name" : "create_man",
                             "getPSAppDEField" : {
-                              "name" : "PCREATE_MAN",
-                              "codeName" : "pcreate_man"
+                              "name" : "CREATE_MAN",
+                              "codeName" : "create_man"
+                            }
+                          }, {
+                            "dataType" : 21,
+                            "name" : "content",
+                            "getPSAppDEField" : {
+                              "name" : "CONTENT",
+                              "codeName" : "content"
                             }
                           }, {
                             "dataType" : 25,
@@ -3925,17 +3982,6 @@
                             "getPSAppDEField" : {
                               "name" : "ID",
                               "codeName" : "id"
-                            }
-                          }, {
-                            "dataType" : 25,
-                            "getFrontPSCodeList" : {
-                              "modelref" : true,
-                              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-                            },
-                            "name" : "create_man",
-                            "getPSAppDEField" : {
-                              "name" : "CREATE_MAN",
-                              "codeName" : "create_man"
                             }
                           }, {
                             "dataType" : 25,
@@ -16080,11 +16126,13 @@
           "codeName" : "right_grouppanel",
           "detailStyle" : "DEFAULT",
           "detailType" : "GROUPPANEL",
+          "modelState" : 16384,
           "name" : "right_grouppanel",
           "getPSDEFormDetails" : [ {
             "codeName" : "grouppanel8",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
+            "modelState" : 16384,
             "name" : "grouppanel8",
             "getPSDEFormDetails" : [ {
               "getCapPSLanguageRes" : {
@@ -16094,6 +16142,7 @@
               "codeName" : "grouppanel1",
               "detailStyle" : "DEFAULT",
               "detailType" : "GROUPPANEL",
+              "modelState" : 507904,
               "name" : "grouppanel1",
               "getPSDEFormDetails" : [ {
                 "getCapPSLanguageRes" : {
@@ -16334,6 +16383,7 @@
               "codeName" : "grouppanel6",
               "detailStyle" : "DEFAULT",
               "detailType" : "GROUPPANEL",
+              "modelState" : 540672,
               "name" : "grouppanel6",
               "getPSDEFormDetails" : [ {
                 "caption" : "版本",
@@ -16565,6 +16615,7 @@
               "codeName" : "grouppanel2",
               "detailStyle" : "DEFAULT",
               "detailType" : "GROUPPANEL",
+              "modelState" : 540672,
               "name" : "grouppanel2",
               "getPSDEFormDetails" : [ {
                 "getCapPSLanguageRes" : {
@@ -16911,6 +16962,7 @@
               "codeName" : "grouppanel10",
               "detailStyle" : "DEFAULT",
               "detailType" : "GROUPPANEL",
+              "modelState" : 540672,
               "name" : "grouppanel10",
               "getPSDEFDGroupLogics" : [ {
                 "groupOP" : "AND",
@@ -17016,6 +17068,7 @@
               "codeName" : "grouppanel3",
               "detailStyle" : "DEFAULT",
               "detailType" : "GROUPPANEL",
+              "modelState" : 540672,
               "name" : "grouppanel3",
               "getPSDEFormDetails" : [ {
                 "getCapPSLanguageRes" : {
@@ -17249,6 +17302,7 @@
             "codeName" : "grouppanel9",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
+            "modelState" : 540672,
             "name" : "grouppanel9",
             "getPSDEFDGroupLogics" : [ {
               "groupOP" : "AND",
@@ -17622,28 +17676,6 @@
                           "valueFormat" : "YYYY年MM月DD日",
                           "viewFieldName" : "REGISTER_DATE"
                         } ]
-                      }, {
-                        "contentType" : "DIVIDER",
-                        "contentWidth" : 100.0,
-                        "itemStyle" : "DEFAULT",
-                        "itemType" : "RAWITEM",
-                        "name" : "static_label",
-                        "getPSLayoutPos" : {
-                          "grow" : -1,
-                          "layout" : "FLEX",
-                          "width" : 100,
-                          "widthMode" : "FULL"
-                        },
-                        "getPSRawItem" : {
-                          "contentType" : "DIVIDER",
-                          "name" : "static_label",
-                          "predefinedType" : "STATIC_LABEL",
-                          "rawContent" : "标签",
-                          "rawItemWidth" : 100.0
-                        },
-                        "rawContent" : "标签",
-                        "rawItemWidth" : 100.0,
-                        "width" : 100.0
                       } ]
                     } ],
                     "name" : "list_itempanel",
@@ -17737,6 +17769,17 @@
                       "codeName" : "duration"
                     }
                   }, {
+                    "dataType" : 25,
+                    "getFrontPSCodeList" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+                    },
+                    "name" : "create_man",
+                    "getPSAppDEField" : {
+                      "name" : "CREATE_MAN",
+                      "codeName" : "create_man"
+                    }
+                  }, {
                     "dataType" : 21,
                     "name" : "description",
                     "getPSAppDEField" : {
@@ -17750,17 +17793,6 @@
                     "getPSAppDEField" : {
                       "name" : "REGISTER_DATE",
                       "codeName" : "register_date"
-                    }
-                  }, {
-                    "dataType" : 25,
-                    "getFrontPSCodeList" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-                    },
-                    "name" : "create_man",
-                    "getPSAppDEField" : {
-                      "name" : "CREATE_MAN",
-                      "codeName" : "create_man"
                     }
                   }, {
                     "dataType" : 25,
@@ -18090,6 +18122,7 @@
             "codeName" : "baseline",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
+            "modelState" : 540672,
             "name" : "baseline",
             "getPSDEFDGroupLogics" : [ {
               "groupOP" : "AND",
@@ -19076,6 +19109,7 @@
             "codeName" : "grouppanel11",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
+            "modelState" : 540672,
             "name" : "grouppanel11",
             "getPSDEFDGroupLogics" : [ {
               "groupOP" : "AND",
@@ -20057,6 +20091,7 @@
             "codeName" : "grouppanel12",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
+            "modelState" : 540672,
             "name" : "grouppanel12",
             "getPSDEFDGroupLogics" : [ {
               "groupOP" : "AND",

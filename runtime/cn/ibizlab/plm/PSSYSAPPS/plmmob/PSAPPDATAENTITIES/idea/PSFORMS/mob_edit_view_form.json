@@ -64,11 +64,89 @@
       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/idea.json"
     }
   },
+  "hookEventNames" : [ "ONLOADSUCCESS" ],
   "logicName" : "移动端需求编辑视图_表单",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/idea.json"
   },
+  "getPSControlLogics" : [ {
+    "eventNames" : "onLoadSuccess",
+    "logicTag" : "form",
+    "logicType" : "APPDEUILOGIC",
+    "name" : "get_ticket_num",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "get_ticket_num"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/idea.json"
+    }
+  }, {
+    "eventNames" : "onLoadSuccess",
+    "logicTag" : "form",
+    "logicType" : "APPDEUILOGIC",
+    "name" : "get_customer_score",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "get_customer_score"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/idea.json"
+    }
+  }, {
+    "eventNames" : "onLoadSuccess",
+    "logicTag" : "form",
+    "logicType" : "APPDEUILOGIC",
+    "name" : "mob_get_actual_workload",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "get_workload_schedule"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/idea.json"
+    }
+  } ],
+  "getPSDEFormItemUpdates" : [ {
+    "codeName" : "mob_remaining_update",
+    "name" : "剩余工时表单项更新",
+    "getPSDEFIUpdateDetails" : [ {
+      "name" : "workload_schedule"
+    } ],
+    "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload; \r\nvar remaining_workload = form_data.remaining_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n}\r\nvar remaining = 0;\r\nif(remaining_workload){\r\n\tremaining = Number(remaining_workload);\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}\r\n",
+    "customCode" : true,
+    "showBusyIndicator" : false
+  }, {
+    "codeName" : "check_palntime",
+    "name" : "校验计划时间",
+    "getPSDEFIUpdateDetails" : [ {
+      "name" : "plan_at"
+    } ],
+    "scriptCode" : "console.log('进入计划时间的校验...');\r\nvar form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar plan_at = form_data.plan_at;\r\nconsole.log('plan_at:'+plan_at);\r\n\r\n//计划时间\r\nvar planAtArr=plan_at.split(',').map(dateStr => new Date(dateStr));\r\nif(planAtArr.length > 1){\r\n    var startTime=planAtArr[0];\r\n    var endTime=planAtArr[1];;\r\n    console.log('startTime:'+startTime);\r\n    console.log('endTime:'+endTime);\r\n    if(startTime > endTime){\r\n        form_data.plan_at='';\r\n        util.message.error('计划开始时间不能大于结束时间!');\r\n    }\r\n}",
+    "customCode" : true
+  }, {
+    "codeName" : "mob_estimated_update",
+    "name" : "预估工时表单项刷新",
+    "getPSDEFIUpdateDetails" : [ {
+      "name" : "workload_schedule"
+    }, {
+      "name" : "remaining_workload"
+    } ],
+    "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nvar remaining = 0; // 剩余工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n\tif(estimated_workload){\r\n\t\t// 计算剩余工时\r\n\t\tremaining = (estimated - actual) >= 0 ? (estimated - actual) : 0;\r\n\t\tform_data.remaining_workload = remaining;\r\n\t}\r\n} else {\r\n\tremaining = estimated;\r\n\tform_data.remaining_workload = estimated_workload;\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
+    "customCode" : true,
+    "showBusyIndicator" : false
+  }, {
+    "codeName" : "check_realTime",
+    "name" : "校验实际时间",
+    "getPSDEFIUpdateDetails" : [ {
+      "name" : "real_at"
+    } ],
+    "scriptCode" : "console.log('进入实际时间的校验...');\r\nvar form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar real_at = form_data.real_at;\r\nvar realAtArr=real_at.split(',').map(dateStr => new Date(dateStr));\r\nif(realAtArr.length > 1){\r\n    var startTime=realAtArr[0];\r\n    var endTime=realAtArr[1];;\r\n    console.log('startTime:'+startTime);\r\n    console.log('endTime:'+endTime);\r\n    if(startTime > endTime){\r\n        form_data.real_at='';\r\n        util.message.error('实际开始时间不能大于结束时间!');\r\n    }\r\n\r\n}\r\n",
+    "customCode" : true
+  } ],
   "getPSDEFormItems" : [ {
     "id" : "srfupdatedate",
     "hidden" : true,
@@ -126,6 +204,14 @@
     "getPSAppDEField" : {
       "name" : "ASSIGNEE_NAME",
       "codeName" : "assignee_name"
+    }
+  }, {
+    "id" : "assignee_id",
+    "hidden" : true,
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "ASSIGNEE_ID",
+      "codeName" : "assignee_id"
     }
   }, {
     "id" : "state",
@@ -197,15 +283,39 @@
     "id" : "cur_version_name",
     "dataType" : 25,
     "getPSAppDEField" : {
-      "name" : "CUR_VERSION_NAME",
-      "codeName" : "cur_version_name"
+      "name" : "CUR_VERSION_ID",
+      "codeName" : "cur_version_id"
     }
   }, {
-    "id" : "customer_score_precent",
-    "dataType" : 25
+    "id" : "estimated_workload",
+    "dataType" : 6,
+    "getPSAppDEField" : {
+      "name" : "ESTIMATED_WORKLOAD",
+      "codeName" : "estimated_workload"
+    }
   }, {
-    "id" : "ticket_num_percent",
-    "dataType" : 25
+    "id" : "actual_workload",
+    "dataType" : 6,
+    "getPSAppDEField" : {
+      "name" : "ACTUAL_WORKLOAD",
+      "codeName" : "actual_workload"
+    }
+  }, {
+    "id" : "remaining_workload",
+    "dataType" : 6,
+    "getPSAppDEField" : {
+      "name" : "REMAINING_WORKLOAD",
+      "codeName" : "remaining_workload"
+    }
+  }, {
+    "id" : "workload_schedule",
+    "dataType" : 6,
+    "createDV" : "0",
+    "updateDV" : "0",
+    "getPSAppDEField" : {
+      "name" : "WORKLOAD_SCHEDULE",
+      "codeName" : "workload_schedule"
+    }
   }, {
     "id" : "product_name",
     "dataType" : 25,
@@ -249,14 +359,6 @@
       "name" : "ID",
       "codeName" : "id"
     }
-  }, {
-    "id" : "assignee_id",
-    "hidden" : true,
-    "dataType" : 25,
-    "getPSAppDEField" : {
-      "name" : "ASSIGNEE_ID",
-      "codeName" : "assignee_id"
-    }
   } ],
   "getPSDEFormPages" : [ {
     "caption" : "基本信息",
@@ -271,10 +373,10 @@
       "detailType" : "GROUPPANEL",
       "name" : "group1",
       "getPSDEFormDetails" : [ {
-        "codeName" : "grouppanel1",
+        "codeName" : "grouppanel2",
         "detailStyle" : "DEFAULT",
         "detailType" : "GROUPPANEL",
-        "name" : "grouppanel1",
+        "name" : "grouppanel2",
         "getPSDEFormDetails" : [ {
           "getCapPSLanguageRes" : {
             "lanResTag" : "DEF.LNAME.TITLE"
@@ -299,29 +401,13 @@
             "name" : "title"
           },
           "getPSLayoutPos" : {
+            "colLG" : 24,
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : false,
           "emptyCaption" : true
-        } ],
-        "getPSLayout" : {
-          "childColMD" : 24,
-          "columnCount" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "infoGroupMode" : false,
-        "showCaption" : false
-      }, {
-        "codeName" : "grouppanel2",
-        "detailStyle" : "DEFAULT",
-        "detailType" : "GROUPPANEL",
-        "name" : "grouppanel2",
-        "getPSDEFormDetails" : [ {
+        }, {
           "getCapPSLanguageRes" : {
             "lanResTag" : "DEF.LNAME.ASSIGNEE_NAME"
           },
@@ -342,15 +428,16 @@
           },
           "getPSEditor" : {
             "editorParams" : {
+              "DROPDOWNVIEW" : "TRUE",
               "AC" : "TRUE",
               "PICKUPVIEW" : "TRUE"
             },
-            "editorType" : "MOBPICKER",
-            "handlerType" : "PickupText",
+            "editorStyle" : "MOB_PERSONEL_SELECT",
+            "editorType" : "MOBPICKER_DROPDOWNVIEW",
             "name" : "assignee_name",
             "getPSAppDEACMode" : {
               "modelref" : true,
-              "id" : "Default"
+              "id" : "mob_member_select"
             },
             "getPSAppDEDataSet" : {
               "modelref" : true,
@@ -358,12 +445,23 @@
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/user.json"
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/product_member.json"
             },
             "getPSEditorItems" : [ {
               "name" : "assignee_id"
             } ],
+            "getPSSysPFPlugin" : {
+              "pluginType" : "EDITOR_CUSTOMSTYLE",
+              "pluginCode" : "MOB_PERSONEL_SELECT",
+              "runtimeObject" : true
+            },
+            "getPickupPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/product_member_mob_product_member_selected.json",
+              "viewType" : "DEMOBPICKUPVIEW"
+            },
             "valueItemName" : "assignee_id",
+            "dropDownView" : true,
             "enableAC" : true,
             "enablePickupView" : true,
             "forceSelection" : true,
@@ -371,13 +469,43 @@
             "singleSelect" : true
           },
           "getPSLayoutPos" : {
-            "colLG" : 12,
-            "colMD" : 12,
+            "colLG" : 10,
+            "colMD" : 10,
             "layout" : "TABLE_24COL"
           },
           "valueItemName" : "assignee_id",
           "allowEmpty" : true,
           "showCaption" : true
+        }, {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "DEF.LNAME.ASSIGNEE_ID"
+          },
+          "caption" : "负责人",
+          "codeName" : "assignee_id",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "assignee_id",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "ASSIGNEE_ID",
+            "codeName" : "assignee_id"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "assignee_id"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 12,
+            "colMD" : 12,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true
         }, {
           "getCapPSLanguageRes" : {
             "lanResTag" : "DEF.LNAME.STATE"
@@ -398,17 +526,39 @@
             "codeName" : "state"
           },
           "getPSEditor" : {
+            "editorParams" : {
+              "srfnavparam.idea_type_id" : "%idea_type_id%",
+              "srfnavparam.product_id" : "%product_id%",
+              "srfnavparam.state" : "%state%",
+              "alwaysLoad" : "true"
+            },
             "editorType" : "MOBDROPDOWNLIST",
             "name" : "state",
             "getPSAppCodeList" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProdMgmt__idea_state.json"
             },
+            "getPSNavigateParams" : [ {
+              "key" : "idea_type_id",
+              "name" : "idea_type_id",
+              "value" : "idea_type_id",
+              "rawValue" : false
+            }, {
+              "key" : "product_id",
+              "name" : "product_id",
+              "value" : "product_id",
+              "rawValue" : false
+            }, {
+              "key" : "state",
+              "name" : "state",
+              "value" : "state",
+              "rawValue" : false
+            } ],
             "singleSelect" : true
           },
           "getPSLayoutPos" : {
-            "colLG" : 12,
-            "colMD" : 12,
+            "colLG" : 14,
+            "colMD" : 14,
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : false,
@@ -443,8 +593,8 @@
             "singleSelect" : true
           },
           "getPSLayoutPos" : {
-            "colLG" : 12,
-            "colMD" : 12,
+            "colLG" : 10,
+            "colMD" : 10,
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
@@ -469,17 +619,21 @@
             "name" : "PLAN_AT",
             "codeName" : "plan_at"
           },
+          "getPSDEFormItemUpdate" : {
+            "modelref" : true,
+            "id" : "check_palntime"
+          },
           "getPSEditor" : {
             "dateTimeFormat" : "YYYY-MM-DD",
             "editorParams" : {
               "TIMEFMT" : "YYYY-MM-DD"
             },
-            "editorType" : "MOBDATE_NOTIME",
+            "editorType" : "MOBDATERANGE_NOTIME",
             "name" : "plan_at"
           },
           "getPSLayoutPos" : {
-            "colLG" : 12,
-            "colMD" : 12,
+            "colLG" : 14,
+            "colMD" : 14,
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
@@ -542,7 +696,7 @@
           "getPSDEFormDetails" : [ {
             "caption" : "基本信息",
             "codeName" : "grouppanel3",
-            "detailStyle" : "DEFAULT",
+            "detailStyle" : "STYLE2",
             "detailType" : "GROUPPANEL",
             "name" : "grouppanel3",
             "getPSDEFormDetails" : [ {
@@ -565,14 +719,15 @@
                 "codeName" : "description"
               },
               "getPSEditor" : {
-                "editorType" : "MOBTEXTAREA",
-                "maxLength" : 1048576,
-                "name" : "description",
-                "showMaxLength" : true
+                "editorType" : "MOBHTMLTEXT",
+                "name" : "description"
               },
               "getPSLayoutPos" : {
                 "colMD" : 24,
                 "layout" : "TABLE_24COL"
+              },
+              "getPSSysCss" : {
+                "cssName" : "mob_descript_comment"
               },
               "allowEmpty" : true,
               "showCaption" : true
@@ -589,9 +744,1396 @@
             "infoGroupMode" : false,
             "showCaption" : true
           }, {
+            "caption" : "附件",
+            "codeName" : "grouppanel1",
+            "detailStyle" : "STYLE2",
+            "detailType" : "GROUPPANEL",
+            "name" : "grouppanel1",
+            "getPSDEFormDetails" : [ {
+              "codeName" : "druipart1",
+              "dRItemTag" : "UsrDRItem1021532951",
+              "detailStyle" : "DEFAULT",
+              "detailType" : "DRUIPART",
+              "name" : "druipart1",
+              "getPSAppView" : {
+                "accUserMode" : 2,
+                "caption" : "附件",
+                "codeName" : "attachment_mob_md_view",
+                "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/attachment_mob_md_view.json",
+                "name" : "attachmentmob_md_view",
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                },
+                "getPSAppModule" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPMODULES/Base.json"
+                },
+                "getPSDEViewCodeName" : "mob_md_view",
+                "getPSDEViewId" : "E04B77C7-33C8-4C36-8B17-0F81D6F826F4",
+                "getPSSysCss" : {
+                  "cssName" : "mob_work_item_attachment_style"
+                },
+                "getPSViewLayoutPanel" : {
+                  "codeName" : "usr1016756890",
+                  "controlType" : "VIEWLAYOUTPANEL",
+                  "layoutMode" : "FLEX",
+                  "logicName" : "mob_md_view实体移动端多数据视图布局面板",
+                  "name" : "layoutpanel",
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                  },
+                  "getPSControlParam" : { },
+                  "getPSLayout" : {
+                    "layout" : "FLEX"
+                  },
+                  "getRootPSPanelItems" : [ {
+                    "caption" : "容器",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "CONTAINER",
+                    "name" : "view_top",
+                    "getPSLayout" : {
+                      "dir" : "column",
+                      "layout" : "FLEX"
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX",
+                      "shrink" : 0
+                    },
+                    "getPSPanelItems" : [ {
+                      "caption" : "容器",
+                      "itemStyle" : "DEFAULT",
+                      "itemType" : "CONTAINER",
+                      "name" : "view_header",
+                      "getPSLayout" : {
+                        "dir" : "column",
+                        "layout" : "FLEX"
+                      },
+                      "getPSLayoutPos" : {
+                        "grow" : -1,
+                        "layout" : "FLEX",
+                        "shrink" : 0
+                      },
+                      "getPSPanelItems" : [ {
+                        "caption" : "容器",
+                        "itemStyle" : "DEFAULT",
+                        "itemType" : "CONTAINER",
+                        "name" : "view_toolbar",
+                        "getPSLayout" : {
+                          "dir" : "row",
+                          "layout" : "FLEX"
+                        },
+                        "getPSLayoutPos" : {
+                          "grow" : -1,
+                          "layout" : "FLEX"
+                        },
+                        "getPSPanelItems" : [ {
+                          "caption" : "容器",
+                          "contentWidth" : 100.0,
+                          "itemStyle" : "DEFAULT",
+                          "itemType" : "CONTAINER",
+                          "name" : "view_left_toolbar",
+                          "getPSLayout" : {
+                            "layout" : "FLEX"
+                          },
+                          "getPSLayoutPos" : {
+                            "basis" : 100,
+                            "grow" : -1,
+                            "layout" : "FLEX",
+                            "shrink" : 0,
+                            "width" : 100,
+                            "widthMode" : "PX"
+                          },
+                          "getPSPanelItems" : [ {
+                            "caption" : "左侧工具栏",
+                            "itemStyle" : "DEFAULT",
+                            "itemType" : "CTRLPOS",
+                            "name" : "lefttoolbar",
+                            "getPSLayoutPos" : {
+                              "grow" : 1,
+                              "heightMode" : "FULL",
+                              "layout" : "FLEX",
+                              "vAlignSelf" : "MIDDLE",
+                              "widthMode" : "FULL"
+                            },
+                            "showCaption" : true
+                          } ],
+                          "width" : 100.0
+                        }, {
+                          "caption" : "容器",
+                          "itemStyle" : "DEFAULT",
+                          "itemType" : "CONTAINER",
+                          "name" : "view_captionbar",
+                          "getPSLayout" : {
+                            "align" : "center",
+                            "dir" : "row",
+                            "layout" : "FLEX"
+                          },
+                          "getPSLayoutPos" : {
+                            "grow" : 1,
+                            "layout" : "FLEX"
+                          },
+                          "getPSPanelItems" : [ {
+                            "caption" : "标题栏",
+                            "itemStyle" : "DEFAULT",
+                            "itemType" : "CTRLPOS",
+                            "name" : "captionbar",
+                            "getPSLayoutPos" : {
+                              "grow" : -1,
+                              "heightMode" : "FULL",
+                              "layout" : "FLEX"
+                            },
+                            "showCaption" : true
+                          } ]
+                        }, {
+                          "caption" : "容器",
+                          "contentWidth" : 100.0,
+                          "itemStyle" : "DEFAULT",
+                          "itemType" : "CONTAINER",
+                          "name" : "view_right_toolbar",
+                          "getPSLayout" : {
+                            "layout" : "FLEX"
+                          },
+                          "getPSLayoutPos" : {
+                            "basis" : 100,
+                            "grow" : -1,
+                            "layout" : "FLEX",
+                            "shrink" : 0,
+                            "width" : 100,
+                            "widthMode" : "PX"
+                          },
+                          "getPSPanelItems" : [ {
+                            "caption" : "工具栏",
+                            "itemStyle" : "DEFAULT",
+                            "itemType" : "CTRLPOS",
+                            "name" : "righttoolbar",
+                            "getPSLayoutPos" : {
+                              "grow" : 1,
+                              "heightMode" : "FULL",
+                              "layout" : "FLEX",
+                              "vAlignSelf" : "MIDDLE",
+                              "widthMode" : "FULL"
+                            },
+                            "showCaption" : true
+                          } ],
+                          "width" : 100.0
+                        } ],
+                        "predefinedType" : "Toolbar"
+                      } ],
+                      "predefinedType" : "Header"
+                    }, {
+                      "caption" : "容器",
+                      "itemStyle" : "DEFAULT",
+                      "itemType" : "CONTAINER",
+                      "name" : "view_toolbar2",
+                      "getPSLayout" : {
+                        "layout" : "FLEX"
+                      },
+                      "getPSLayoutPos" : {
+                        "grow" : -1,
+                        "layout" : "FLEX"
+                      },
+                      "getPSPanelItems" : [ {
+                        "caption" : "搜索栏",
+                        "itemStyle" : "DEFAULT",
+                        "itemType" : "CTRLPOS",
+                        "name" : "searchbar",
+                        "getPSLayoutPos" : {
+                          "grow" : -1,
+                          "layout" : "FLEX"
+                        },
+                        "showCaption" : true
+                      } ],
+                      "predefinedType" : "Toolbar"
+                    }, {
+                      "caption" : "容器",
+                      "itemStyle" : "DEFAULT",
+                      "itemType" : "CONTAINER",
+                      "name" : "view_searchform",
+                      "getPSLayout" : {
+                        "layout" : "FLEX"
+                      },
+                      "getPSLayoutPos" : {
+                        "grow" : -1,
+                        "layout" : "FLEX"
+                      },
+                      "getPSPanelItems" : [ {
+                        "caption" : "搜索表单",
+                        "itemStyle" : "DEFAULT",
+                        "itemType" : "CTRLPOS",
+                        "name" : "searchform",
+                        "getPSLayoutPos" : {
+                          "grow" : -1,
+                          "layout" : "FLEX"
+                        },
+                        "showCaption" : true
+                      } ]
+                    } ]
+                  }, {
+                    "caption" : "容器",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "CONTAINER",
+                    "name" : "view_content",
+                    "getPSLayout" : {
+                      "layout" : "FLEX"
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : 1,
+                      "layout" : "FLEX",
+                      "spacingBottom" : "OUTERSMALL",
+                      "spacingLeft" : "OUTERSMALL",
+                      "spacingRight" : "OUTERSMALL"
+                    },
+                    "getPSPanelItems" : [ {
+                      "caption" : "容器",
+                      "itemStyle" : "DEFAULT",
+                      "itemType" : "CONTAINER",
+                      "name" : "upload_content",
+                      "getPSLayout" : {
+                        "layout" : "FLEX"
+                      },
+                      "getPSLayoutPos" : {
+                        "grow" : 0,
+                        "layout" : "FLEX"
+                      },
+                      "getPSPanelItems" : [ {
+                        "actionType" : "UIACTION",
+                        "buttonStyle" : "DEFAULT",
+                        "caption" : "添加附件",
+                        "itemStyle" : "DEFAULT",
+                        "itemType" : "BUTTON",
+                        "name" : "upload",
+                        "getPSAppViewUIAction" : {
+                          "modelref" : true,
+                          "id" : "layoutpanel_upload"
+                        },
+                        "getPSControlLogics" : [ {
+                          "itemName" : "upload",
+                          "logicTag" : "layoutpanel",
+                          "logicType" : "SCRIPT",
+                          "name" : "logic",
+                          "scriptCode" : "context.srfreadonly != true",
+                          "triggerType" : "ITEMVISIBLE"
+                        } ],
+                        "getPSLayoutPos" : {
+                          "grow" : -1,
+                          "layout" : "FLEX",
+                          "spacingLeft" : "OUTERSMALL"
+                        },
+                        "getPSSysImage" : {
+                          "glyph" : "xf067@FontAwesome",
+                          "cssClass" : "fa fa-plus"
+                        },
+                        "getPSUIAction" : {
+                          "actionTarget" : "SINGLEDATA",
+                          "caption" : "添加附件",
+                          "codeName" : "panel_usr1016756890_upload_click",
+                          "frontProcessType" : "OTHER",
+                          "fullCodeName" : "attachment_panel_usr1016756890_upload_click",
+                          "name" : "添加附件",
+                          "getPSAppDEUILogic" : {
+                            "modelref" : true,
+                            "id" : "mob_add_attachment"
+                          },
+                          "getPSAppDataEntity" : {
+                            "modelref" : true,
+                            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                          },
+                          "timeout" : 60000,
+                          "uIActionMode" : "FRONT",
+                          "uIActionTag" : "panel_usr1016756890_upload_click",
+                          "uIActionType" : "DEUIACTION",
+                          "uILogicAttachMode" : "REPLACE",
+                          "uILogicType" : "DELOGIC",
+                          "id" : "panel_usr1016756890_upload_click@attachment"
+                        },
+                        "tooltip" : "添加附件",
+                        "uIActionTarget" : "SINGLEDATA",
+                        "showCaption" : true
+                      } ]
+                    }, {
+                      "caption" : "多数据部件",
+                      "itemStyle" : "DEFAULT",
+                      "itemType" : "CTRLPOS",
+                      "name" : "mdctrl",
+                      "getPSLayoutPos" : {
+                        "grow" : 1,
+                        "layout" : "FLEX"
+                      },
+                      "showCaption" : true
+                    } ],
+                    "predefinedType" : "Content"
+                  }, {
+                    "caption" : "容器",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "CONTAINER",
+                    "name" : "view_footer",
+                    "getPSLayout" : {
+                      "layout" : "FLEX"
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX",
+                      "shrink" : 0
+                    },
+                    "getPSPanelItems" : [ {
+                      "caption" : "工具栏",
+                      "itemStyle" : "DEFAULT",
+                      "itemType" : "CTRLPOS",
+                      "name" : "footertoolbar",
+                      "getPSLayoutPos" : {
+                        "grow" : -1,
+                        "layout" : "FLEX"
+                      },
+                      "showCaption" : true
+                    } ],
+                    "predefinedType" : "Footer"
+                  } ],
+                  "layoutBodyOnly" : true,
+                  "layoutPanel" : true,
+                  "mobilePanel" : true,
+                  "useDefaultLayout" : false,
+                  "viewProxyMode" : true,
+                  "modelid" : "29D75146-A77E-4665-B1FC-6976A7FA860A",
+                  "modeltype" : "PSSYSVIEWLAYOUTPANEL",
+                  "getPSAppViewEngines" : [ {
+                    "engineCat" : "VIEW",
+                    "engineType" : "MobMDView",
+                    "name" : "engine"
+                  } ],
+                  "getPSAppViewLogics" : [ {
+                    "eventNames" : "onLoadSuccess",
+                    "logicTrigger" : "CTRLEVENT",
+                    "logicType" : "SCRIPT",
+                    "name" : "LOGIC",
+                    "getPSViewCtrlName" : "mdctrl",
+                    "scriptCode" : "console.log('附件上传', view)\r\nif(view.layoutPanel.panelItems.mdctrl.control.state.items.length == 0){\r\n\tview.layoutPanel.panelItems.mdctrl.state.keepAlive = true;\r\n    view.layoutPanel.panelItems.mdctrl.state.visible = false;\r\n} else {\r\n    view.layoutPanel.panelItems.mdctrl.state.visible = true;\r\n}"
+                  }, {
+                    "logicTrigger" : "CUSTOM",
+                    "logicType" : "APPUILOGIC",
+                    "name" : "newdata",
+                    "getPSAppUILogic" : {
+                      "actionAfterWizard" : "DEFAULT",
+                      "logicType" : "PREDEFINED",
+                      "name" : "新建数据",
+                      "viewLogicType" : "APP_NEWDATA",
+                      "batchAddOnly" : false,
+                      "enableBatchAdd" : false,
+                      "enableWizardAdd" : false
+                    }
+                  }, {
+                    "logicTrigger" : "CUSTOM",
+                    "logicType" : "APPUILOGIC",
+                    "name" : "opendata",
+                    "getPSAppUILogic" : {
+                      "logicType" : "PREDEFINED",
+                      "name" : "打开数据",
+                      "viewLogicType" : "APP_OPENDATA",
+                      "editMode" : true
+                    }
+                  } ],
+                  "getPSControls" : [ {
+                    "codeName" : "mob_attachment_list",
+                    "controlStyle" : "LISTVIEW",
+                    "controlType" : "MOBMDCTRL",
+                    "getCreatePSControlAction" : {
+                      "modelref" : true,
+                      "id" : "create",
+                      "actionName" : "Create",
+                      "actionType" : "DEACTION",
+                      "dataAccessAction" : "CREATE",
+                      "name" : "create",
+                      "getPSAppDEMethod" : {
+                        "modelref" : true,
+                        "id" : "Create"
+                      },
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                      }
+                    },
+                    "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment/PSMOBMDCTRLS/mob_attachment_list.json",
+                    "getFetchPSControlAction" : {
+                      "modelref" : true,
+                      "id" : "fetch",
+                      "actionType" : "DEDATASET",
+                      "name" : "fetch",
+                      "getPSAppDEMethod" : {
+                        "modelref" : true,
+                        "id" : "FetchDefault"
+                      },
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                      }
+                    },
+                    "getGetPSControlAction" : {
+                      "modelref" : true,
+                      "id" : "load",
+                      "actionName" : "Get",
+                      "actionType" : "DEACTION",
+                      "dataAccessAction" : "READ",
+                      "name" : "load",
+                      "getPSAppDEMethod" : {
+                        "modelref" : true,
+                        "id" : "Get"
+                      },
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                      }
+                    },
+                    "groupMode" : "NONE",
+                    "getItemPSLayoutPanel" : {
+                      "getAllPSPanelFields" : [ {
+                        "id" : "name",
+                        "viewFieldName" : "name"
+                      } ],
+                      "codeName" : "usr1016029556",
+                      "controlType" : "PANEL",
+                      "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment/PSPANELS/usr1016029556.json",
+                      "layoutMode" : "TABLE_24COL",
+                      "logicName" : "mob_attachment_list_列表项面板",
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                      },
+                      "getPSControlParam" : { },
+                      "getPSLayout" : {
+                        "childColMD" : 24,
+                        "columnCount" : 24,
+                        "layout" : "TABLE_24COL"
+                      },
+                      "getRootPSPanelItems" : [ {
+                        "itemStyle" : "DEFAULT",
+                        "itemType" : "CONTAINER",
+                        "name" : "page_container",
+                        "getPSLayout" : {
+                          "dir" : "column",
+                          "layout" : "FLEX"
+                        },
+                        "getPSLayoutPos" : {
+                          "colMD" : 24,
+                          "layout" : "TABLE_24COL"
+                        },
+                        "getPSPanelItems" : [ {
+                          "caption" : "容器",
+                          "itemStyle" : "DEFAULT",
+                          "itemType" : "CONTAINER",
+                          "name" : "container",
+                          "getPSLayout" : {
+                            "align" : "space-between",
+                            "dir" : "row",
+                            "layout" : "FLEX",
+                            "vAlign" : "center"
+                          },
+                          "getPSLayoutPos" : {
+                            "grow" : -1,
+                            "layout" : "FLEX"
+                          },
+                          "getPSPanelItems" : [ {
+                            "caption" : "容器",
+                            "itemStyle" : "DEFAULT",
+                            "itemType" : "CONTAINER",
+                            "name" : "container1",
+                            "getPSLayout" : {
+                              "align" : "flex-start",
+                              "dir" : "row",
+                              "layout" : "FLEX",
+                              "vAlign" : "center"
+                            },
+                            "getPSLayoutPos" : {
+                              "grow" : -1,
+                              "layout" : "FLEX"
+                            },
+                            "getPSPanelItems" : [ {
+                              "caption" : "图片",
+                              "contentType" : "IMAGE",
+                              "itemStyle" : "DEFAULT",
+                              "itemType" : "RAWITEM",
+                              "name" : "static_image",
+                              "getPSLayoutPos" : {
+                                "grow" : -1,
+                                "layout" : "FLEX",
+                                "spacingLeft" : "OUTERSMALL"
+                              },
+                              "getPSRawItem" : {
+                                "contentType" : "IMAGE",
+                                "name" : "static_image",
+                                "getPSSysImage" : {
+                                  "rawContent" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAWtJREFUSEtjZKAxYEQ232D6f4V/DP/iGRkYFAjZK8zJyCPNw9izOITxJD61KBboT/87n4GBMYGQ4SB5VmYGhkBlxl833jPY4bOEIguSdRgZ3n1nwGsJxRaAfIPPEqpYgM8Ssi3gYmVgiNNC0Y7VJ2RbAHK1ljADAycLapJgZmT4MDuQSRAmiteCaF0GBl52hAGffzIw7H/AwPDsM9509uBiJpMiQQvURRgYHLHkBpAlm24xMIBoViYGht//MCwjzgI7eQaGOnvUMMbm7lNPGRiq9v5HlqKuBSCTa/f/Zzj+GG4H9S1oOvif4dDDwWzBrrvYU42bMkScIh+8/MLAsPAiSiTCbSuzhiQCsiywlGVgaHYknIrIjmSQxjZnRgYzafyFN9nJFGYsjswElqYooxFT6eBQQ1w+oIkFetP/1jMyMDZQYDhI64GLmUyOWAs7UKUPVODwj+GfPLmWMDEwLbyQyfgAqwXkGopPHwBeZcoZ8t4xeAAAAABJRU5ErkJggg=="
+                                },
+                                "predefinedType" : "STATIC_IMAGE"
+                              },
+                              "getPSSysImage" : {
+                                "rawContent" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAWtJREFUSEtjZKAxYEQ232D6f4V/DP/iGRkYFAjZK8zJyCPNw9izOITxJD61KBboT/87n4GBMYGQ4SB5VmYGhkBlxl833jPY4bOEIguSdRgZ3n1nwGsJxRaAfIPPEqpYgM8Ssi3gYmVgiNNC0Y7VJ2RbAHK1ljADAycLapJgZmT4MDuQSRAmiteCaF0GBl52hAGffzIw7H/AwPDsM9509uBiJpMiQQvURRgYHLHkBpAlm24xMIBoViYGht//MCwjzgI7eQaGOnvUMMbm7lNPGRiq9v5HlqKuBSCTa/f/Zzj+GG4H9S1oOvif4dDDwWzBrrvYU42bMkScIh+8/MLAsPAiSiTCbSuzhiQCsiywlGVgaHYknIrIjmSQxjZnRgYzafyFN9nJFGYsjswElqYooxFT6eBQQ1w+oIkFetP/1jMyMDZQYDhI64GLmUyOWAs7UKUPVODwj+GfPLmWMDEwLbyQyfgAqwXkGopPHwBeZcoZ8t4xeAAAAABJRU5ErkJggg=="
+                              },
+                              "showCaption" : true
+                            }, {
+                              "caption" : "文本(动态)",
+                              "itemStyle" : "DEFAULT",
+                              "itemType" : "FIELD",
+                              "name" : "name",
+                              "getPSEditor" : {
+                                "editorType" : "SPAN",
+                                "name" : "name",
+                                "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                                "renderMode" : "TEXT_DYNAMIC",
+                                "enableLinkView" : false
+                              },
+                              "getPSLayoutPos" : {
+                                "grow" : -1,
+                                "layout" : "FLEX",
+                                "spacingLeft" : "OUTERSMALL"
+                              },
+                              "viewFieldName" : "name"
+                            } ]
+                          }, {
+                            "actionGroupExtractMode" : "ITEMS",
+                            "caption" : "按钮组",
+                            "itemStyle" : "DEFAULT",
+                            "itemType" : "BUTTONLIST",
+                            "name" : "buttonlist",
+                            "getPSLayoutPos" : {
+                              "grow" : -1,
+                              "layout" : "FLEX"
+                            },
+                            "getPSSysImage" : {
+                              "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1727164067633\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"2419\" width=\"14\" height=\"14\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><path d=\"M511 256.00000001m0-70.00000001a70 70 0 1 0 0 140 70 70 0 1 0 0-140Z\" p-id=\"2420\" fill=\"#2c2c2c\"></path><path d=\"M511 513.5m0-70a70 70 0 1 0-1e-8 140 70 70 0 1 0 1e-8-140Z\" p-id=\"2421\" fill=\"#2c2c2c\"></path><path d=\"M511 771m-1e-8-70a70 70 0 1 0 1e-8 140 70 70 0 1 0-1e-8-140Z\" p-id=\"2422\" fill=\"#2c2c2c\"></path></svg>"
+                            },
+                            "getPSUIActionGroup" : {
+                              "name" : "附件列表界面行为组（移动端）",
+                              "getPSAppDataEntity" : {
+                                "modelref" : true,
+                                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                              },
+                              "getPSUIActionGroupDetails" : [ {
+                                "actionLevel" : 250,
+                                "caption" : "下载",
+                                "detailType" : "DEUIACTION",
+                                "name" : "ubf65ea8",
+                                "getPSSysImage" : {
+                                  "glyph" : "xf019@FontAwesome",
+                                  "cssClass" : "fa fa-download"
+                                },
+                                "getPSUIAction" : {
+                                  "actionTarget" : "SINGLEDATA",
+                                  "caption" : "下载",
+                                  "codeName" : "download",
+                                  "frontProcessType" : "OTHER",
+                                  "fullCodeName" : "attachment_download",
+                                  "name" : "附件下载",
+                                  "getPSAppDataEntity" : {
+                                    "modelref" : true,
+                                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                                  },
+                                  "getPSNavigateParams" : [ {
+                                    "key" : "fileid",
+                                    "name" : "fileid",
+                                    "value" : "file_id",
+                                    "rawValue" : false
+                                  }, {
+                                    "key" : "filename",
+                                    "name" : "filename",
+                                    "value" : "name",
+                                    "rawValue" : false
+                                  } ],
+                                  "getPSSysImage" : {
+                                    "glyph" : "xf019@FontAwesome",
+                                    "cssClass" : "fa fa-download"
+                                  },
+                                  "getPSSysPFPlugin" : {
+                                    "pluginType" : "DEUIACTION",
+                                    "pluginCode" : "FILE_DOWNLOAD",
+                                    "runtimeObject" : true
+                                  },
+                                  "timeout" : 60000,
+                                  "tooltip" : "下载当前附件",
+                                  "uIActionMode" : "FRONT",
+                                  "uIActionTag" : "download",
+                                  "uIActionType" : "DEUIACTION",
+                                  "id" : "download@attachment"
+                                },
+                                "tooltip" : "下载当前附件",
+                                "addSeparator" : false,
+                                "showCaption" : true,
+                                "showIcon" : true
+                              }, {
+                                "caption" : "删除",
+                                "detailType" : "DEUIACTION",
+                                "name" : "u4e9feb6",
+                                "getPSSysImage" : {
+                                  "glyph" : "xf014@FontAwesome",
+                                  "cssClass" : "fa fa-trash-o"
+                                },
+                                "getPSUIAction" : {
+                                  "actionTarget" : "SINGLEKEY",
+                                  "noPrivDisplayMode" : 1,
+                                  "caption" : "删除",
+                                  "codeName" : "mob_attachment_delete",
+                                  "dataAccessAction" : "UPDATE",
+                                  "frontProcessType" : "OTHER",
+                                  "fullCodeName" : "attachment_mob_attachment_delete",
+                                  "name" : "附件删除（移动端）",
+                                  "getPSAppDEUILogic" : {
+                                    "modelref" : true,
+                                    "id" : "mob_remove_attachment"
+                                  },
+                                  "getPSAppDataEntity" : {
+                                    "modelref" : true,
+                                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                                  },
+                                  "getPSDEOPPriv" : {
+                                    "modelref" : true,
+                                    "id" : "UPDATE"
+                                  },
+                                  "getPSSysImage" : {
+                                    "glyph" : "xf014@FontAwesome",
+                                    "cssClass" : "fa fa-trash-o"
+                                  },
+                                  "refreshMode" : 1,
+                                  "timeout" : 60000,
+                                  "uIActionMode" : "FRONT",
+                                  "uIActionTag" : "mob_attachment_delete",
+                                  "uIActionType" : "DEUIACTION",
+                                  "uILogicAttachMode" : "REPLACE",
+                                  "reloadData" : true,
+                                  "id" : "mob_attachment_delete@attachment"
+                                },
+                                "addSeparator" : false,
+                                "showCaption" : true,
+                                "showIcon" : true
+                              } ]
+                            }
+                          } ]
+                        } ]
+                      } ],
+                      "name" : "mdctrl_itempanel",
+                      "modelid" : "15066CA7-327D-4979-BD46-35865363F3E4",
+                      "modeltype" : "PSSYSVIEWPANEL"
+                    },
+                    "logicName" : "mob_attachment_list",
+                    "mobListStyle" : "LISTVIEW",
+                    "getPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                    },
+                    "getPSControlHandler" : {
+                      "getPSHandlerActions" : [ {
+                        "actionName" : "Get",
+                        "actionType" : "DEACTION",
+                        "dataAccessAction" : "READ",
+                        "name" : "load",
+                        "getPSAppDEMethod" : {
+                          "modelref" : true,
+                          "id" : "Get"
+                        },
+                        "getPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                        }
+                      }, {
+                        "actionName" : "Create",
+                        "actionType" : "DEACTION",
+                        "dataAccessAction" : "CREATE",
+                        "name" : "create",
+                        "getPSAppDEMethod" : {
+                          "modelref" : true,
+                          "id" : "Create"
+                        },
+                        "getPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                        }
+                      }, {
+                        "actionName" : "Update",
+                        "actionType" : "DEACTION",
+                        "dataAccessAction" : "UPDATE",
+                        "name" : "update",
+                        "getPSAppDEMethod" : {
+                          "modelref" : true,
+                          "id" : "Update"
+                        },
+                        "getPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                        }
+                      }, {
+                        "actionName" : "Remove",
+                        "actionType" : "DEACTION",
+                        "dataAccessAction" : "DELETE",
+                        "name" : "remove",
+                        "getPSAppDEMethod" : {
+                          "modelref" : true,
+                          "id" : "Remove"
+                        },
+                        "getPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                        }
+                      }, {
+                        "actionType" : "DEDATASET",
+                        "name" : "fetch",
+                        "getPSAppDEMethod" : {
+                          "modelref" : true,
+                          "id" : "FetchDefault"
+                        },
+                        "getPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                        }
+                      } ],
+                      "userDRAction" : "READ",
+                      "enableDEFieldPrivilege" : false,
+                      "id" : "列表控件处理器"
+                    },
+                    "getPSControlParam" : {
+                      "autoLoad" : true,
+                      "showBusyIndicator" : true,
+                      "id" : "MDCTRL"
+                    },
+                    "getPSDEListDataItems" : [ {
+                      "dataType" : 25,
+                      "name" : "srfkey",
+                      "getPSAppDEField" : {
+                        "name" : "ID",
+                        "codeName" : "id"
+                      }
+                    }, {
+                      "dataType" : 25,
+                      "name" : "srfmajortext",
+                      "getPSAppDEField" : {
+                        "name" : "NAME",
+                        "codeName" : "name"
+                      }
+                    } ],
+                    "getPSSysPFPlugin" : {
+                      "pluginType" : "CUSTOM",
+                      "pluginCode" : "MOB_ATTACHMENT_LIST",
+                      "runtimeObject" : true
+                    },
+                    "pagingSize" : 1000,
+                    "getRemovePSControlAction" : {
+                      "modelref" : true,
+                      "id" : "remove",
+                      "actionName" : "Remove",
+                      "actionType" : "DEACTION",
+                      "dataAccessAction" : "DELETE",
+                      "name" : "remove",
+                      "getPSAppDEMethod" : {
+                        "modelref" : true,
+                        "id" : "Remove"
+                      },
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                      }
+                    },
+                    "getUpdatePSControlAction" : {
+                      "modelref" : true,
+                      "id" : "update",
+                      "actionName" : "Update",
+                      "actionType" : "DEACTION",
+                      "dataAccessAction" : "UPDATE",
+                      "name" : "update",
+                      "getPSAppDEMethod" : {
+                        "modelref" : true,
+                        "id" : "Update"
+                      },
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                      }
+                    },
+                    "hasWFDataItems" : false,
+                    "enableGroup" : false,
+                    "enableRowEdit" : false,
+                    "enableRowEditGroup" : false,
+                    "enableRowEditOrder" : false,
+                    "enableRowNew" : false,
+                    "noSort" : false,
+                    "showHeader" : true,
+                    "singleSelect" : false,
+                    "name" : "mdctrl",
+                    "modelid" : "3B1EA4C3-D766-44BF-9D5C-B0E003E488D0",
+                    "modeltype" : "PSDELIST"
+                  }, {
+                    "controlType" : "SEARCHBAR",
+                    "name" : "searchbar",
+                    "getPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                    },
+                    "getPSControlParam" : {
+                      "id" : "searchbar"
+                    },
+                    "quickGroupCount" : -1,
+                    "quickSearchMode" : 0,
+                    "quickSearchWidth" : 0,
+                    "enableFilter" : false,
+                    "enableGroup" : false,
+                    "enableQuickSearch" : false,
+                    "mobileSearchBar" : true
+                  }, {
+                    "caption" : "附件",
+                    "codeName" : "mob_md_view_captionbar",
+                    "controlType" : "CAPTIONBAR",
+                    "name" : "captionbar",
+                    "getPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                    },
+                    "getPSControlParam" : { }
+                  } ]
+                },
+                "title" : "附件",
+                "viewStyle" : "DEFAULT",
+                "viewType" : "DEMOBMDVIEW",
+                "xDataControlName" : "mdctrl",
+                "enableDP" : true,
+                "enableFilter" : true,
+                "enablePullDownRefresh" : false,
+                "enableSearch" : true,
+                "showCaptionBar" : false,
+                "modelid" : "bb0d068f52a1a9317851d3b22540e14e",
+                "modeltype" : "PSAPPDEVIEW",
+                "getPSAppDERSPaths" : [ [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "releases",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "project",
+                  "majorDEName" : "PROJECT",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+                  },
+                  "minorDECodeName" : "release",
+                  "minorDEName" : "RELEASE",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/release.json"
+                  },
+                  "name" : "DER1N_RELEASE_PROJECT_PROJECT_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "PROJECT_ID",
+                    "codeName" : "project_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "work_items",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "release",
+                  "majorDEName" : "RELEASE",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/release.json"
+                  },
+                  "minorDECodeName" : "work_item",
+                  "minorDEName" : "WORK_ITEM",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+                  },
+                  "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "RELEASE_ID",
+                    "codeName" : "release_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "attachments",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "work_item",
+                  "majorDEName" : "WORK_ITEM",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+                  },
+                  "minorDECodeName" : "attachment",
+                  "minorDEName" : "ATTACHMENT",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                  },
+                  "name" : "DERCUSTOM_WORK_ITEM_ATTACHMENT",
+                  "getParentPSAppDEField" : {
+                    "name" : "OWNER_ID",
+                    "codeName" : "owner_id"
+                  },
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "work_items",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "release",
+                  "majorDEName" : "RELEASE",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/release.json"
+                  },
+                  "minorDECodeName" : "work_item",
+                  "minorDEName" : "WORK_ITEM",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+                  },
+                  "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "RELEASE_ID",
+                    "codeName" : "release_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "attachments",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "work_item",
+                  "majorDEName" : "WORK_ITEM",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+                  },
+                  "minorDECodeName" : "attachment",
+                  "minorDEName" : "ATTACHMENT",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                  },
+                  "name" : "DERCUSTOM_WORK_ITEM_ATTACHMENT",
+                  "getParentPSAppDEField" : {
+                    "name" : "OWNER_ID",
+                    "codeName" : "owner_id"
+                  },
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "work_items",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "project",
+                  "majorDEName" : "PROJECT",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+                  },
+                  "minorDECodeName" : "work_item",
+                  "minorDEName" : "WORK_ITEM",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+                  },
+                  "name" : "DER1N_WORK_ITEM_PROJECT_PROJECT_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "PROJECT_ID",
+                    "codeName" : "project_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "attachments",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "work_item",
+                  "majorDEName" : "WORK_ITEM",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+                  },
+                  "minorDECodeName" : "attachment",
+                  "minorDEName" : "ATTACHMENT",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                  },
+                  "name" : "DERCUSTOM_WORK_ITEM_ATTACHMENT",
+                  "getParentPSAppDEField" : {
+                    "name" : "OWNER_ID",
+                    "codeName" : "owner_id"
+                  },
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "tickets",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "product",
+                  "majorDEName" : "PRODUCT",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/product.json"
+                  },
+                  "minorDECodeName" : "ticket",
+                  "minorDEName" : "TICKET",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/ticket.json"
+                  },
+                  "name" : "DER1N_TICKET_PRODUCT_PRODUCT_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "PRODUCT_ID",
+                    "codeName" : "product_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "attachments",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "ticket",
+                  "majorDEName" : "TICKET",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/ticket.json"
+                  },
+                  "minorDECodeName" : "attachment",
+                  "minorDEName" : "ATTACHMENT",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                  },
+                  "name" : "DERCUSTOM_TICKET_ATTACHMENT",
+                  "getParentPSAppDEField" : {
+                    "name" : "OWNER_ID",
+                    "codeName" : "owner_id"
+                  },
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "test_cases",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "library",
+                  "majorDEName" : "LIBRARY",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/library.json"
+                  },
+                  "minorDECodeName" : "test_case",
+                  "minorDEName" : "TEST_CASE",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/test_case.json"
+                  },
+                  "name" : "DER1N_TEST_CASE_LIBRARY_TEST_LIBRARY_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "TEST_LIBRARY_ID",
+                    "codeName" : "test_library_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "attachments",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "test_case",
+                  "majorDEName" : "TEST_CASE",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/test_case.json"
+                  },
+                  "minorDECodeName" : "attachment",
+                  "minorDEName" : "ATTACHMENT",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                  },
+                  "name" : "DERCUSTOM_TEST_CASE_ATTACHMENT",
+                  "getParentPSAppDEField" : {
+                    "name" : "OWNER_ID",
+                    "codeName" : "owner_id"
+                  },
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "pages",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "space",
+                  "majorDEName" : "SPACE",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space.json"
+                  },
+                  "minorDECodeName" : "article_page",
+                  "minorDEName" : "PAGE",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+                  },
+                  "name" : "DER1N_PAGE_SPACE_SPACE_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "SPACE_ID",
+                    "codeName" : "space_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "attachments",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "article_page",
+                  "majorDEName" : "PAGE",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+                  },
+                  "minorDECodeName" : "attachment",
+                  "minorDEName" : "ATTACHMENT",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                  },
+                  "name" : "DERCUSTOM_PAGE_ATTACHMENT",
+                  "getParentPSAppDEField" : {
+                    "name" : "OWNER_ID",
+                    "codeName" : "owner_id"
+                  },
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "ideas",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "product",
+                  "majorDEName" : "PRODUCT",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/product.json"
+                  },
+                  "minorDECodeName" : "idea",
+                  "minorDEName" : "IDEA",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/idea.json"
+                  },
+                  "name" : "DER1N_IDEA_PRODUCT_PRODUCT_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "PRODUCT_ID",
+                    "codeName" : "product_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "attachments",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "idea",
+                  "majorDEName" : "IDEA",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/idea.json"
+                  },
+                  "minorDECodeName" : "attachment",
+                  "minorDEName" : "ATTACHMENT",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                  },
+                  "name" : "DERCUSTOM_IDEA_ATTACHMENT",
+                  "getParentPSAppDEField" : {
+                    "name" : "OWNER_ID",
+                    "codeName" : "owner_id"
+                  },
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "discuss_posts",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "discuss_topic",
+                  "majorDEName" : "DISCUSS_TOPIC",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_topic.json"
+                  },
+                  "minorDECodeName" : "discuss_post",
+                  "minorDEName" : "DISCUSS_POST",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_post.json"
+                  },
+                  "name" : "DER1N_DISCUSS_POST_DISCUSS_TOPIC_TOPIC_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "TOPIC_ID",
+                    "codeName" : "topic_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "attachments",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "discuss_post",
+                  "majorDEName" : "DISCUSS_POST",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_post.json"
+                  },
+                  "minorDECodeName" : "attachment",
+                  "minorDEName" : "ATTACHMENT",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                  },
+                  "name" : "DERCUSTOM_DISCUSS_POST_ATTACHMENT",
+                  "getParentPSAppDEField" : {
+                    "name" : "OWNER_ID",
+                    "codeName" : "owner_id"
+                  },
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "attachments",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "work_item",
+                  "majorDEName" : "WORK_ITEM",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+                  },
+                  "minorDECodeName" : "attachment",
+                  "minorDEName" : "ATTACHMENT",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                  },
+                  "name" : "DERCUSTOM_WORK_ITEM_ATTACHMENT",
+                  "getParentPSAppDEField" : {
+                    "name" : "OWNER_ID",
+                    "codeName" : "owner_id"
+                  },
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "attachments",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "ticket",
+                  "majorDEName" : "TICKET",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/ticket.json"
+                  },
+                  "minorDECodeName" : "attachment",
+                  "minorDEName" : "ATTACHMENT",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                  },
+                  "name" : "DERCUSTOM_TICKET_ATTACHMENT",
+                  "getParentPSAppDEField" : {
+                    "name" : "OWNER_ID",
+                    "codeName" : "owner_id"
+                  },
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "attachments",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "test_case",
+                  "majorDEName" : "TEST_CASE",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/test_case.json"
+                  },
+                  "minorDECodeName" : "attachment",
+                  "minorDEName" : "ATTACHMENT",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                  },
+                  "name" : "DERCUSTOM_TEST_CASE_ATTACHMENT",
+                  "getParentPSAppDEField" : {
+                    "name" : "OWNER_ID",
+                    "codeName" : "owner_id"
+                  },
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "attachments",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "article_page",
+                  "majorDEName" : "PAGE",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+                  },
+                  "minorDECodeName" : "attachment",
+                  "minorDEName" : "ATTACHMENT",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                  },
+                  "name" : "DERCUSTOM_PAGE_ATTACHMENT",
+                  "getParentPSAppDEField" : {
+                    "name" : "OWNER_ID",
+                    "codeName" : "owner_id"
+                  },
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "attachments",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "idea",
+                  "majorDEName" : "IDEA",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/idea.json"
+                  },
+                  "minorDECodeName" : "attachment",
+                  "minorDEName" : "ATTACHMENT",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                  },
+                  "name" : "DERCUSTOM_IDEA_ATTACHMENT",
+                  "getParentPSAppDEField" : {
+                    "name" : "OWNER_ID",
+                    "codeName" : "owner_id"
+                  },
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "attachments",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "discuss_post",
+                  "majorDEName" : "DISCUSS_POST",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_post.json"
+                  },
+                  "minorDECodeName" : "attachment",
+                  "minorDEName" : "ATTACHMENT",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
+                  },
+                  "name" : "DERCUSTOM_DISCUSS_POST_ATTACHMENT",
+                  "getParentPSAppDEField" : {
+                    "name" : "OWNER_ID",
+                    "codeName" : "owner_id"
+                  },
+                  "rSMode" : 2
+                } ] ]
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "parentDataJO" : {
+                "srfparentdename" : "IDEA",
+                "SRFPARENTTYPE" : "CUSTOM"
+              },
+              "needSave" : false,
+              "refreshItemsSetParamOnly" : false,
+              "showCaption" : true
+            } ],
+            "getPSLayout" : {
+              "childColMD" : 24,
+              "columnCount" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "infoGroupMode" : false,
+            "showCaption" : true
+          }, {
             "caption" : "属性",
             "codeName" : "grouppanel4",
-            "detailStyle" : "DEFAULT",
+            "detailStyle" : "STYLE2",
             "detailType" : "GROUPPANEL",
             "name" : "grouppanel4",
             "getPSDEFormDetails" : [ {
@@ -668,7 +2210,7 @@
               "dataType" : 6,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
-              "enableCond" : 0,
+              "enableCond" : 3,
               "ignoreInput" : 0,
               "labelPos" : "LEFT",
               "labelWidth" : 130,
@@ -709,9 +2251,16 @@
                 "name" : "REAL_AT",
                 "codeName" : "real_at"
               },
+              "getPSDEFormItemUpdate" : {
+                "modelref" : true,
+                "id" : "check_realTime"
+              },
               "getPSEditor" : {
-                "editorType" : "MOBTEXT",
-                "maxLength" : 100,
+                "dateTimeFormat" : "YYYY-MM-DD",
+                "editorParams" : {
+                  "TIMEFMT" : "YYYY-MM-DD"
+                },
+                "editorType" : "MOBDATERANGE_NOTIME",
                 "name" : "real_at"
               },
               "getPSLayoutPos" : {
@@ -735,28 +2284,41 @@
           }, {
             "caption" : "变更",
             "codeName" : "grouppanel5",
-            "detailStyle" : "DEFAULT",
+            "detailStyle" : "STYLE2",
             "detailType" : "GROUPPANEL",
             "name" : "grouppanel5",
             "getPSDEFormDetails" : [ {
-              "caption" : "当前版本名称",
+              "caption" : "版本",
               "codeName" : "cur_version_name",
               "dataType" : 25,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
               "enableCond" : 3,
-              "ignoreInput" : 0,
+              "ignoreInput" : 3,
               "labelPos" : "LEFT",
               "labelWidth" : 130,
               "name" : "cur_version_name",
               "noPrivDisplayMode" : 1,
               "getPSAppDEField" : {
-                "name" : "CUR_VERSION_NAME",
-                "codeName" : "cur_version_name"
+                "name" : "CUR_VERSION_ID",
+                "codeName" : "cur_version_id"
               },
               "getPSEditor" : {
+                "editorParams" : {
+                  "SRFNAVPARAM.owner_id" : "%id%"
+                },
                 "editorType" : "SPAN",
                 "name" : "cur_version_name",
+                "getPSAppCodeList" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/Base__version.json"
+                },
+                "getPSNavigateParams" : [ {
+                  "key" : "owner_id",
+                  "name" : "owner_id",
+                  "value" : "id",
+                  "rawValue" : false
+                } ],
                 "enableLinkView" : false
               },
               "getPSLayoutPos" : {
@@ -764,6 +2326,7 @@
                 "layout" : "TABLE_24COL"
               },
               "allowEmpty" : true,
+              "convertToCodeItemText" : true,
               "showCaption" : true
             } ],
             "getPSLayout" : {
@@ -778,34 +2341,43 @@
             "infoGroupMode" : false,
             "showCaption" : true
           }, {
-            "caption" : "排期",
-            "codeName" : "grouppanel6",
-            "detailStyle" : "DEFAULT",
+            "caption" : "工时",
+            "codeName" : "grouppanel10",
+            "detailStyle" : "STYLE2",
             "detailType" : "GROUPPANEL",
-            "name" : "grouppanel6",
+            "name" : "grouppanel10",
             "getPSDEFormDetails" : [ {
-              "caption" : "客户",
-              "codeName" : "customer_score_precent",
-              "dataType" : 25,
+              "getCapPSLanguageRes" : {
+                "lanResTag" : "DEF.LNAME.ESTIMATED_WORKLOAD"
+              },
+              "caption" : "预估工时",
+              "codeName" : "estimated_workload",
+              "dataType" : 6,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
-              "enableCond" : 0,
+              "enableCond" : 3,
               "ignoreInput" : 0,
               "labelPos" : "LEFT",
               "labelWidth" : 130,
-              "name" : "customer_score_precent",
+              "name" : "estimated_workload",
               "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "ESTIMATED_WORKLOAD",
+                "codeName" : "estimated_workload"
+              },
+              "getPSDEFormItemUpdate" : {
+                "modelref" : true,
+                "id" : "mob_estimated_update"
+              },
               "getPSEditor" : {
                 "editorParams" : {
-                  "maxvalue" : "1",
-                  "showText" : "true",
-                  "format" : "0",
-                  "textItem" : "customer_score"
+                  "precision" : "1",
+                  "minvalue" : "0"
                 },
-                "editorType" : "MOBSLIDER",
-                "maxValue" : 1.0,
-                "name" : "customer_score_precent",
-                "stepValue" : 1.0
+                "editorType" : "MOBNUMBER",
+                "minValue" : 0.0,
+                "name" : "estimated_workload",
+                "precision" : 1
               },
               "getPSLayoutPos" : {
                 "colMD" : 24,
@@ -814,33 +2386,271 @@
               "allowEmpty" : true,
               "showCaption" : true
             }, {
-              "caption" : "工单",
-              "codeName" : "ticket_num_percent",
-              "dataType" : 25,
+              "getCapPSLanguageRes" : {
+                "lanResTag" : "DEF.LNAME.ACTUAL_WORKLOAD"
+              },
+              "caption" : "实际工时",
+              "codeName" : "actual_workload",
+              "dataType" : 6,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
               "enableCond" : 0,
               "ignoreInput" : 0,
               "labelPos" : "LEFT",
               "labelWidth" : 130,
-              "name" : "ticket_num_percent",
+              "name" : "actual_workload",
               "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "ACTUAL_WORKLOAD",
+                "codeName" : "actual_workload"
+              },
               "getPSEditor" : {
                 "editorParams" : {
-                  "maxvalue" : "1",
-                  "showText" : "true",
-                  "format" : "0",
-                  "textItem" : "ticket_num"
+                  "precision" : "1",
+                  "minvalue" : "0"
+                },
+                "editorType" : "MOBNUMBER",
+                "minValue" : 0.0,
+                "name" : "actual_workload",
+                "precision" : 1
+              },
+              "getPSLayoutPos" : {
+                "colLG" : 18,
+                "colMD" : 18,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true,
+              "showCaption" : true
+            }, {
+              "codeName" : "grouppanel9",
+              "detailStyle" : "DEFAULT",
+              "detailType" : "GROUPPANEL",
+              "name" : "grouppanel9",
+              "getPSDEFormDetails" : [ {
+                "actionType" : "UIACTION",
+                "caption" : "添加实际工时",
+                "codeName" : "button1",
+                "detailStyle" : "STYLE2",
+                "detailType" : "BUTTON",
+                "name" : "button1",
+                "getPSAppViewUIAction" : {
+                  "modelref" : true,
+                  "id" : "form_button1"
+                },
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "getPSSysImage" : {
+                  "glyph" : "xf067@FontAwesome",
+                  "cssClass" : "fa fa-plus"
+                },
+                "getPSUIAction" : {
+                  "actionTarget" : "SINGLEKEY",
+                  "caption" : "添加实际工时",
+                  "codeName" : "mob_add_actual_workload",
+                  "dataAccessAction" : "UPDATE",
+                  "getFrontPSAppView" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/workload_register_mob_edit_view.json",
+                    "viewType" : "DEMOBEDITVIEW"
+                  },
+                  "frontProcessType" : "WIZARD",
+                  "fullCodeName" : "idea_mob_add_actual_workload",
+                  "name" : "添加实际工时（移动端）",
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/idea.json"
+                  },
+                  "getPSDEOPPriv" : {
+                    "modelref" : true,
+                    "id" : "product__UPDATE"
+                  },
+                  "getPSNavigateParams" : [ {
+                    "key" : "estimated_workload",
+                    "name" : "estimated_workload",
+                    "value" : "estimated_workload",
+                    "rawValue" : false
+                  }, {
+                    "key" : "remaining_workload",
+                    "name" : "remaining_workload",
+                    "value" : "remaining_workload",
+                    "rawValue" : false
+                  }, {
+                    "key" : "name",
+                    "name" : "name",
+                    "value" : "title",
+                    "rawValue" : false
+                  }, {
+                    "key" : "principal_id",
+                    "name" : "principal_id",
+                    "value" : "principal_id",
+                    "rawValue" : false
+                  }, {
+                    "key" : "actual_workload",
+                    "name" : "actual_workload",
+                    "value" : "actual_workload",
+                    "rawValue" : false
+                  }, {
+                    "key" : "workload_kind",
+                    "name" : "workload_kind",
+                    "value" : "产品需求",
+                    "rawValue" : true
+                  } ],
+                  "getPSSysImage" : {
+                    "glyph" : "xf067@FontAwesome",
+                    "cssClass" : "fa fa-plus"
+                  },
+                  "refreshMode" : 1,
+                  "timeout" : 60000,
+                  "tooltip" : "添加实际工时",
+                  "uIActionMode" : "FRONT",
+                  "uIActionTag" : "mob_add_actual_workload",
+                  "uIActionType" : "DEUIACTION",
+                  "reloadData" : true,
+                  "id" : "mob_add_actual_workload@idea"
+                },
+                "tooltip" : "添加实际工时",
+                "uIActionTarget" : "SINGLEKEY",
+                "showCaption" : false
+              }, {
+                "actionType" : "UIACTION",
+                "caption" : "查看工时明细",
+                "codeName" : "button2",
+                "detailStyle" : "DEFAULT",
+                "detailType" : "BUTTON",
+                "name" : "button2",
+                "getPSAppViewUIAction" : {
+                  "modelref" : true,
+                  "id" : "form_button2"
+                },
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "getPSSysImage" : {
+                  "glyph" : "xf18e@FontAwesome",
+                  "cssClass" : "fa fa-arrow-circle-o-right"
+                },
+                "getPSUIAction" : {
+                  "actionTarget" : "NONE",
+                  "caption" : "查看工时明细",
+                  "codeName" : "mob_check_workload_detail",
+                  "getFrontPSAppView" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/workload_mob_detail_view.json",
+                    "viewType" : "DEMOBMDVIEW"
+                  },
+                  "frontProcessType" : "WIZARD",
+                  "fullCodeName" : "idea_mob_check_workload_detail",
+                  "name" : "查看工时明细（移动端）",
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/idea.json"
+                  },
+                  "getPSNavigateParams" : [ {
+                    "key" : "n_principal_id_eq",
+                    "name" : "n_principal_id_eq",
+                    "value" : "idea",
+                    "rawValue" : false
+                  } ],
+                  "timeout" : 60000,
+                  "tooltip" : "查看工时明细",
+                  "uIActionMode" : "FRONT",
+                  "uIActionTag" : "mob_check_workload_detail",
+                  "uIActionType" : "DEUIACTION",
+                  "id" : "mob_check_workload_detail@idea"
+                },
+                "tooltip" : "查看工时明细",
+                "uIActionTarget" : "NONE",
+                "showCaption" : false
+              } ],
+              "getPSLayout" : {
+                "align" : "center",
+                "dir" : "row",
+                "layout" : "FLEX",
+                "vAlign" : "center"
+              },
+              "getPSLayoutPos" : {
+                "colLG" : 6,
+                "colMD" : 6,
+                "layout" : "TABLE_24COL"
+              },
+              "infoGroupMode" : false,
+              "showCaption" : false
+            }, {
+              "getCapPSLanguageRes" : {
+                "lanResTag" : "DEF.LNAME.REMAINING_WORKLOAD"
+              },
+              "caption" : "剩余工时",
+              "codeName" : "remaining_workload",
+              "dataType" : 6,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "LEFT",
+              "labelWidth" : 130,
+              "name" : "remaining_workload",
+              "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "REMAINING_WORKLOAD",
+                "codeName" : "remaining_workload"
+              },
+              "getPSDEFormItemUpdate" : {
+                "modelref" : true,
+                "id" : "mob_remaining_update"
+              },
+              "getPSEditor" : {
+                "editorParams" : {
+                  "precision" : "1",
+                  "minvalue" : "0"
+                },
+                "editorType" : "MOBNUMBER",
+                "minValue" : 0.0,
+                "name" : "remaining_workload",
+                "precision" : 1
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true,
+              "showCaption" : true
+            }, {
+              "getCapPSLanguageRes" : {
+                "lanResTag" : "DEF.LNAME.WORKLOAD_SCHEDULE"
+              },
+              "caption" : "工时进度",
+              "codeName" : "workload_schedule",
+              "createDV" : "0",
+              "dataType" : 6,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 0,
+              "ignoreInput" : 0,
+              "labelPos" : "LEFT",
+              "labelWidth" : 130,
+              "name" : "workload_schedule",
+              "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "WORKLOAD_SCHEDULE",
+                "codeName" : "workload_schedule"
+              },
+              "getPSEditor" : {
+                "editorParams" : {
+                  "showText" : "true"
                 },
                 "editorType" : "MOBSLIDER",
-                "maxValue" : 1.0,
-                "name" : "ticket_num_percent",
+                "name" : "workload_schedule",
+                "precision" : 1,
                 "stepValue" : 1.0
               },
               "getPSLayoutPos" : {
                 "colMD" : 24,
                 "layout" : "TABLE_24COL"
               },
+              "updateDV" : "0",
               "allowEmpty" : true,
               "showCaption" : true
             } ],
@@ -858,7 +2668,7 @@
           }, {
             "caption" : "基础信息",
             "codeName" : "grouppanel7",
-            "detailStyle" : "DEFAULT",
+            "detailStyle" : "STYLE2",
             "detailType" : "GROUPPANEL",
             "name" : "grouppanel7",
             "getPSDEFormDetails" : [ {
@@ -911,11 +2721,17 @@
                 "codeName" : "create_man"
               },
               "getPSEditor" : {
+                "editorStyle" : "MOB_PERSONNEL_INFO",
                 "editorType" : "SPAN",
                 "name" : "create_man",
                 "getPSAppCodeList" : {
                   "modelref" : true,
                   "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
+                },
+                "getPSSysPFPlugin" : {
+                  "pluginType" : "EDITOR_CUSTOMSTYLE",
+                  "pluginCode" : "MOB_PERSONNEL_INFO",
+                  "runtimeObject" : true
                 },
                 "enableLinkView" : false
               },
@@ -977,11 +2793,17 @@
                 "codeName" : "update_man"
               },
               "getPSEditor" : {
+                "editorStyle" : "MOB_PERSONNEL_INFO",
                 "editorType" : "SPAN",
                 "name" : "update_man",
                 "getPSAppCodeList" : {
                   "modelref" : true,
                   "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
+                },
+                "getPSSysPFPlugin" : {
+                  "pluginType" : "EDITOR_CUSTOMSTYLE",
+                  "pluginCode" : "MOB_PERSONNEL_INFO",
+                  "runtimeObject" : true
                 },
                 "enableLinkView" : false
               },
@@ -1529,12 +3351,12 @@
                               "contentType" : "IMAGE",
                               "name" : "static_image",
                               "getPSSysImage" : {
-                                "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?>\r\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\r\n<svg t=\"1727426465911\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\"\r\n    xmlns=\"http://www.w3.org/2000/svg\" p-id=\"1796\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"\r\n    width=\"20\" height=\"20\">\r\n    <path\r\n        d=\"M575.35146667 59.07342222c0.12136297-12.50038518-12.74311111-21.11715555-25.00077037-16.86945185L148.76065185 186.26180741c-7.28177778 2.54862222-12.1362963 9.34494815-12.1362963 16.86945184v694.92432593h438.72711112V59.07342222zM327.28557037 759.94453333c0 14.92764445-12.37902222 27.06394075-27.91348148 27.06394075h-48.78791111c-15.4130963 0-27.91348148-12.01493333-27.91348148-27.06394075v-17.96171851c0-14.92764445 12.37902222-27.06394075 27.91348148-27.06394074h48.78791111c15.4130963 0 27.91348148 12.01493333 27.91348148 27.06394074v17.96171851z m0-105.34305185c0 14.92764445-12.37902222 27.06394075-27.91348148 27.06394074h-48.78791111c-15.4130963 0-27.91348148-12.01493333-27.91348148-27.06394074v-17.96171851c0-14.92764445 12.37902222-27.06394075 27.91348148-27.06394075h48.78791111c15.4130963 0 27.91348148 12.01493333 27.91348148 27.06394075v17.96171851z m0-110.80438518c0 14.92764445-12.37902222 27.06394075-27.91348148 27.06394073h-48.78791111c-15.4130963 0-27.91348148-12.01493333-27.91348148-27.06394073v-17.96171852c0-14.92764445 12.37902222-27.06394075 27.91348148-27.06394075h48.78791111c15.4130963 0 27.91348148 12.01493333 27.91348148 27.06394075v17.96171852z m0-108.61985185c0 14.92764445-12.37902222 27.06394075-27.91348148 27.06394073h-48.78791111c-15.4130963 0-27.91348148-12.01493333-27.91348148-27.06394073v-17.96171853c0-14.92764445 12.37902222-27.06394075 27.91348148-27.06394074h48.78791111c15.4130963 0 27.91348148 12.01493333 27.91348148 27.06394074v17.96171853z m0-108.4984889c0 14.92764445-12.37902222 27.06394075-27.91348148 27.06394075h-48.78791111c-15.4130963 0-27.91348148-12.01493333-27.91348148-27.06394075v-17.96171852c0-14.92764445 12.37902222-27.06394075 27.91348148-27.06394073h48.78791111c15.4130963 0 27.91348148 12.01493333 27.91348148 27.06394073v17.96171852z m164.81090371 433.26577778c0 14.92764445-12.37902222 27.06394075-27.91348149 27.06394075h-48.78791111c-15.4130963 0-27.91348148-12.01493333-27.91348148-27.06394075v-17.96171851c0-14.92764445 12.37902222-27.06394075 27.91348148-27.06394074h48.78791111c15.4130963 0 27.91348148 12.01493333 27.91348149 27.06394074v17.96171851z m0-105.34305185c0 14.92764445-12.37902222 27.06394075-27.91348149 27.06394074h-48.78791111c-15.4130963 0-27.91348148-12.01493333-27.91348148-27.06394074v-17.96171851c0-14.92764445 12.37902222-27.06394075 27.91348148-27.06394075h48.78791111c15.4130963 0 27.91348148 12.01493333 27.91348149 27.06394075v17.96171851z m0-110.80438518c0 14.92764445-12.37902222 27.06394075-27.91348149 27.06394073h-48.78791111c-15.4130963 0-27.91348148-12.01493333-27.91348148-27.06394073v-17.96171852c0-14.92764445 12.37902222-27.06394075 27.91348148-27.06394075h48.78791111c15.4130963 0 27.91348148 12.01493333 27.91348149 27.06394075v17.96171852z m0-108.61985185c0 14.92764445-12.37902222 27.06394075-27.91348149 27.06394073h-48.78791111c-15.4130963 0-27.91348148-12.01493333-27.91348148-27.06394073v-17.96171853c0-14.92764445 12.37902222-27.06394075 27.91348148-27.06394074h48.78791111c15.4130963 0 27.91348148 12.01493333 27.91348149 27.06394074v17.96171853z m0-108.4984889c0 14.92764445-12.37902222 27.06394075-27.91348149 27.06394075h-48.78791111c-15.4130963 0-27.91348148-12.01493333-27.91348148-27.06394075v-17.96171852c0-14.92764445 12.37902222-27.06394075 27.91348148-27.06394073h48.78791111c15.4130963 0 27.91348148 12.01493333 27.91348149 27.06394073v17.96171852z m0-105.94986666c0 14.92764445-12.37902222 27.06394075-27.91348149 27.06394074h-48.78791111c-15.4130963 0-27.91348148-12.01493333-27.91348148-27.06394074v-17.96171852c0-14.92764445 12.37902222-27.06394075 27.91348148-27.06394074h48.78791111c15.4130963 0 27.91348148 12.01493333 27.91348149 27.06394074V220.72888889zM907.88598518 301.19253333c0.12136297-6.67496297-3.64088889-12.74311111-9.58767407-15.89854815L635.06204445 147.42565925c-12.37902222-6.5536-27.42802963 2.3058963-27.42802963 15.89854816v734.85274074h300.25197036V301.19253333z m-101.45943703 458.752c0 14.92764445-12.37902222 27.06394075-27.91348148 27.06394075h-48.78791112c-15.4130963 0-27.91348148-12.01493333-27.91348147-27.06394075v-17.96171851c0-14.92764445 12.37902222-27.06394075 27.91348147-27.06394074h48.78791112c15.4130963 0 27.91348148 12.01493333 27.91348148 27.06394074v17.96171851z m0-105.34305185c0 14.92764445-12.37902222 27.06394075-27.91348148 27.06394074h-48.78791112c-15.4130963 0-27.91348148-12.01493333-27.91348147-27.06394074v-17.96171851c0-14.92764445 12.37902222-27.06394075 27.91348147-27.06394075h48.78791112c15.4130963 0 27.91348148 12.01493333 27.91348148 27.06394075v17.96171851z m0-110.80438518c0 14.92764445-12.37902222 27.06394075-27.91348148 27.06394073h-48.78791112c-15.4130963 0-27.91348148-12.01493333-27.91348147-27.06394073v-17.96171852c0-14.92764445 12.37902222-27.06394075 27.91348147-27.06394075h48.78791112c15.4130963 0 27.91348148 12.01493333 27.91348148 27.06394075v17.96171852z m0-108.61985185c0 14.92764445-12.37902222 27.06394075-27.91348148 27.06394073h-48.78791112c-15.4130963 0-27.91348148-12.01493333-27.91348147-27.06394073v-17.96171853c0-14.92764445 12.37902222-27.06394075 27.91348147-27.06394074h48.78791112c15.4130963 0 27.91348148 12.01493333 27.91348148 27.06394074v17.96171853z m0-108.4984889c0 14.92764445-12.37902222 27.06394075-27.91348148 27.06394075h-48.78791112c-15.4130963 0-27.91348148-12.01493333-27.91348147-27.06394075v-17.96171852c0-14.92764445 12.37902222-27.06394075 27.91348147-27.06394073h48.78791112c15.4130963 0 27.91348148 12.01493333 27.91348148 27.06394073v17.96171852z\"\r\n        fill=\"#66AFFF\" p-id=\"1797\"></path>\r\n    <path\r\n        d=\"M953.76118518 983.8592H69.26791111c-10.19448889 0-18.44717037-9.70903703-18.44717036-21.48124445v-42.84112592c0-11.77220741 8.25268148-21.48124445 18.44717036-21.48124445H953.76118518c10.19448889 0 18.44717037 9.70903703 18.44717037 21.48124445v42.84112592c0 11.89357037-8.25268148 21.48124445-18.44717037 21.48124445z\"\r\n        fill=\"#66AFFF\" p-id=\"1798\"></path>\r\n</svg>"
+                                "rawContent" : "data:image/png;base64,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"
                               },
                               "predefinedType" : "STATIC_IMAGE"
                             },
                             "getPSSysImage" : {
-                              "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?>\r\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\r\n<svg t=\"1727426465911\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\"\r\n    xmlns=\"http://www.w3.org/2000/svg\" p-id=\"1796\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"\r\n    width=\"20\" height=\"20\">\r\n    <path\r\n        d=\"M575.35146667 59.07342222c0.12136297-12.50038518-12.74311111-21.11715555-25.00077037-16.86945185L148.76065185 186.26180741c-7.28177778 2.54862222-12.1362963 9.34494815-12.1362963 16.86945184v694.92432593h438.72711112V59.07342222zM327.28557037 759.94453333c0 14.92764445-12.37902222 27.06394075-27.91348148 27.06394075h-48.78791111c-15.4130963 0-27.91348148-12.01493333-27.91348148-27.06394075v-17.96171851c0-14.92764445 12.37902222-27.06394075 27.91348148-27.06394074h48.78791111c15.4130963 0 27.91348148 12.01493333 27.91348148 27.06394074v17.96171851z m0-105.34305185c0 14.92764445-12.37902222 27.06394075-27.91348148 27.06394074h-48.78791111c-15.4130963 0-27.91348148-12.01493333-27.91348148-27.06394074v-17.96171851c0-14.92764445 12.37902222-27.06394075 27.91348148-27.06394075h48.78791111c15.4130963 0 27.91348148 12.01493333 27.91348148 27.06394075v17.96171851z m0-110.80438518c0 14.92764445-12.37902222 27.06394075-27.91348148 27.06394073h-48.78791111c-15.4130963 0-27.91348148-12.01493333-27.91348148-27.06394073v-17.96171852c0-14.92764445 12.37902222-27.06394075 27.91348148-27.06394075h48.78791111c15.4130963 0 27.91348148 12.01493333 27.91348148 27.06394075v17.96171852z m0-108.61985185c0 14.92764445-12.37902222 27.06394075-27.91348148 27.06394073h-48.78791111c-15.4130963 0-27.91348148-12.01493333-27.91348148-27.06394073v-17.96171853c0-14.92764445 12.37902222-27.06394075 27.91348148-27.06394074h48.78791111c15.4130963 0 27.91348148 12.01493333 27.91348148 27.06394074v17.96171853z m0-108.4984889c0 14.92764445-12.37902222 27.06394075-27.91348148 27.06394075h-48.78791111c-15.4130963 0-27.91348148-12.01493333-27.91348148-27.06394075v-17.96171852c0-14.92764445 12.37902222-27.06394075 27.91348148-27.06394073h48.78791111c15.4130963 0 27.91348148 12.01493333 27.91348148 27.06394073v17.96171852z m164.81090371 433.26577778c0 14.92764445-12.37902222 27.06394075-27.91348149 27.06394075h-48.78791111c-15.4130963 0-27.91348148-12.01493333-27.91348148-27.06394075v-17.96171851c0-14.92764445 12.37902222-27.06394075 27.91348148-27.06394074h48.78791111c15.4130963 0 27.91348148 12.01493333 27.91348149 27.06394074v17.96171851z m0-105.34305185c0 14.92764445-12.37902222 27.06394075-27.91348149 27.06394074h-48.78791111c-15.4130963 0-27.91348148-12.01493333-27.91348148-27.06394074v-17.96171851c0-14.92764445 12.37902222-27.06394075 27.91348148-27.06394075h48.78791111c15.4130963 0 27.91348148 12.01493333 27.91348149 27.06394075v17.96171851z m0-110.80438518c0 14.92764445-12.37902222 27.06394075-27.91348149 27.06394073h-48.78791111c-15.4130963 0-27.91348148-12.01493333-27.91348148-27.06394073v-17.96171852c0-14.92764445 12.37902222-27.06394075 27.91348148-27.06394075h48.78791111c15.4130963 0 27.91348148 12.01493333 27.91348149 27.06394075v17.96171852z m0-108.61985185c0 14.92764445-12.37902222 27.06394075-27.91348149 27.06394073h-48.78791111c-15.4130963 0-27.91348148-12.01493333-27.91348148-27.06394073v-17.96171853c0-14.92764445 12.37902222-27.06394075 27.91348148-27.06394074h48.78791111c15.4130963 0 27.91348148 12.01493333 27.91348149 27.06394074v17.96171853z m0-108.4984889c0 14.92764445-12.37902222 27.06394075-27.91348149 27.06394075h-48.78791111c-15.4130963 0-27.91348148-12.01493333-27.91348148-27.06394075v-17.96171852c0-14.92764445 12.37902222-27.06394075 27.91348148-27.06394073h48.78791111c15.4130963 0 27.91348148 12.01493333 27.91348149 27.06394073v17.96171852z m0-105.94986666c0 14.92764445-12.37902222 27.06394075-27.91348149 27.06394074h-48.78791111c-15.4130963 0-27.91348148-12.01493333-27.91348148-27.06394074v-17.96171852c0-14.92764445 12.37902222-27.06394075 27.91348148-27.06394074h48.78791111c15.4130963 0 27.91348148 12.01493333 27.91348149 27.06394074V220.72888889zM907.88598518 301.19253333c0.12136297-6.67496297-3.64088889-12.74311111-9.58767407-15.89854815L635.06204445 147.42565925c-12.37902222-6.5536-27.42802963 2.3058963-27.42802963 15.89854816v734.85274074h300.25197036V301.19253333z m-101.45943703 458.752c0 14.92764445-12.37902222 27.06394075-27.91348148 27.06394075h-48.78791112c-15.4130963 0-27.91348148-12.01493333-27.91348147-27.06394075v-17.96171851c0-14.92764445 12.37902222-27.06394075 27.91348147-27.06394074h48.78791112c15.4130963 0 27.91348148 12.01493333 27.91348148 27.06394074v17.96171851z m0-105.34305185c0 14.92764445-12.37902222 27.06394075-27.91348148 27.06394074h-48.78791112c-15.4130963 0-27.91348148-12.01493333-27.91348147-27.06394074v-17.96171851c0-14.92764445 12.37902222-27.06394075 27.91348147-27.06394075h48.78791112c15.4130963 0 27.91348148 12.01493333 27.91348148 27.06394075v17.96171851z m0-110.80438518c0 14.92764445-12.37902222 27.06394075-27.91348148 27.06394073h-48.78791112c-15.4130963 0-27.91348148-12.01493333-27.91348147-27.06394073v-17.96171852c0-14.92764445 12.37902222-27.06394075 27.91348147-27.06394075h48.78791112c15.4130963 0 27.91348148 12.01493333 27.91348148 27.06394075v17.96171852z m0-108.61985185c0 14.92764445-12.37902222 27.06394075-27.91348148 27.06394073h-48.78791112c-15.4130963 0-27.91348148-12.01493333-27.91348147-27.06394073v-17.96171853c0-14.92764445 12.37902222-27.06394075 27.91348147-27.06394074h48.78791112c15.4130963 0 27.91348148 12.01493333 27.91348148 27.06394074v17.96171853z m0-108.4984889c0 14.92764445-12.37902222 27.06394075-27.91348148 27.06394075h-48.78791112c-15.4130963 0-27.91348148-12.01493333-27.91348147-27.06394075v-17.96171852c0-14.92764445 12.37902222-27.06394075 27.91348147-27.06394073h48.78791112c15.4130963 0 27.91348148 12.01493333 27.91348148 27.06394073v17.96171852z\"\r\n        fill=\"#66AFFF\" p-id=\"1797\"></path>\r\n    <path\r\n        d=\"M953.76118518 983.8592H69.26791111c-10.19448889 0-18.44717037-9.70903703-18.44717036-21.48124445v-42.84112592c0-11.77220741 8.25268148-21.48124445 18.44717036-21.48124445H953.76118518c10.19448889 0 18.44717037 9.70903703 18.44717037 21.48124445v42.84112592c0 11.89357037-8.25268148 21.48124445-18.44717037 21.48124445z\"\r\n        fill=\"#66AFFF\" p-id=\"1798\"></path>\r\n</svg>"
+                              "rawContent" : "data:image/png;base64,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"
                             },
                             "showCaption" : true
                           }, {
@@ -1823,7 +3645,271 @@
                     "caption" : "添加客户",
                     "itemType" : "ITEMS",
                     "name" : "items1",
+                    "getPSControlLogics" : [ {
+                      "itemName" : "items1",
+                      "logicTag" : "righttoolbar",
+                      "logicType" : "SCRIPT",
+                      "name" : "items1",
+                      "scriptCode" : "context.srfreadonly != true",
+                      "triggerType" : "ITEMVISIBLE"
+                    } ],
                     "getPSDEToolbarItems" : [ {
+                      "caption" : "非常重要",
+                      "groupExtractMode" : "ITEM",
+                      "itemType" : "DEUIACTION",
+                      "name" : "deuiaction3",
+                      "noPrivDisplayMode" : 2,
+                      "getPSAppViewUIAction" : {
+                        "modelref" : true,
+                        "id" : "righttoolbar_deuiaction3"
+                      },
+                      "getPSUIAction" : {
+                        "actionTarget" : "NONE",
+                        "caption" : "关联客户非常重要",
+                        "codeName" : "mob_add_customer_very_important",
+                        "getFrontPSAppView" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/customer_mob_mpick_up_view.json",
+                          "viewType" : "DEMOBMPICKUPVIEW"
+                        },
+                        "fullCodeName" : "idea_mob_add_customer_very_important",
+                        "name" : "关联客户非常重要（移动端）",
+                        "getPSAppDEMethod" : {
+                          "modelref" : true,
+                          "id" : "others_relation_idea"
+                        },
+                        "getPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/idea.json"
+                        },
+                        "getPSNavigateParams" : [ {
+                          "key" : "target_type",
+                          "name" : "target_type",
+                          "value" : "target_type",
+                          "rawValue" : false
+                        }, {
+                          "key" : "principal_id",
+                          "name" : "principal_id",
+                          "value" : "principal_id",
+                          "rawValue" : false
+                        }, {
+                          "key" : "level",
+                          "name" : "level",
+                          "value" : "10",
+                          "rawValue" : true
+                        }, {
+                          "key" : "principal_type",
+                          "name" : "principal_type",
+                          "value" : "principal_type",
+                          "rawValue" : false
+                        } ],
+                        "refreshMode" : 1,
+                        "timeout" : 60000,
+                        "uIActionMode" : "BACKEND",
+                        "uIActionTag" : "mob_add_customer_very_important",
+                        "uIActionType" : "DEUIACTION",
+                        "enableConfirm" : true,
+                        "globalUIAction" : true,
+                        "reloadData" : true,
+                        "id" : "mob_add_customer_very_important@idea"
+                      },
+                      "tooltip" : "非常重要",
+                      "uIActionTarget" : "NONE",
+                      "showCaption" : true,
+                      "showIcon" : true
+                    }, {
+                      "caption" : "重要",
+                      "groupExtractMode" : "ITEM",
+                      "itemType" : "DEUIACTION",
+                      "name" : "deuiaction2",
+                      "noPrivDisplayMode" : 2,
+                      "getPSAppViewUIAction" : {
+                        "modelref" : true,
+                        "id" : "righttoolbar_deuiaction2"
+                      },
+                      "getPSUIAction" : {
+                        "actionTarget" : "NONE",
+                        "caption" : "关联客户重要",
+                        "codeName" : "mob_add_customer_important",
+                        "getFrontPSAppView" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/customer_mob_mpick_up_view.json",
+                          "viewType" : "DEMOBMPICKUPVIEW"
+                        },
+                        "fullCodeName" : "idea_mob_add_customer_important",
+                        "name" : "关联客户重要（移动端）",
+                        "getPSAppDEMethod" : {
+                          "modelref" : true,
+                          "id" : "others_relation_idea"
+                        },
+                        "getPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/idea.json"
+                        },
+                        "getPSNavigateParams" : [ {
+                          "key" : "target_type",
+                          "name" : "target_type",
+                          "value" : "target_type",
+                          "rawValue" : false
+                        }, {
+                          "key" : "principal_id",
+                          "name" : "principal_id",
+                          "value" : "principal_id",
+                          "rawValue" : false
+                        }, {
+                          "key" : "level",
+                          "name" : "level",
+                          "value" : "20",
+                          "rawValue" : true
+                        }, {
+                          "key" : "principal_type",
+                          "name" : "principal_type",
+                          "value" : "principal_type",
+                          "rawValue" : false
+                        } ],
+                        "refreshMode" : 1,
+                        "timeout" : 60000,
+                        "uIActionMode" : "BACKEND",
+                        "uIActionTag" : "mob_add_customer_important",
+                        "uIActionType" : "DEUIACTION",
+                        "enableConfirm" : true,
+                        "globalUIAction" : true,
+                        "reloadData" : true,
+                        "id" : "mob_add_customer_important@idea"
+                      },
+                      "tooltip" : "重要",
+                      "uIActionTarget" : "NONE",
+                      "showCaption" : true,
+                      "showIcon" : true
+                    }, {
+                      "caption" : "一般",
+                      "groupExtractMode" : "ITEM",
+                      "itemType" : "DEUIACTION",
+                      "name" : "deuiaction4",
+                      "noPrivDisplayMode" : 2,
+                      "getPSAppViewUIAction" : {
+                        "modelref" : true,
+                        "id" : "righttoolbar_deuiaction4"
+                      },
+                      "getPSUIAction" : {
+                        "actionTarget" : "NONE",
+                        "caption" : "关联客户一般",
+                        "codeName" : "mob_add_customer_normal",
+                        "getFrontPSAppView" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/customer_mob_mpick_up_view.json",
+                          "viewType" : "DEMOBMPICKUPVIEW"
+                        },
+                        "fullCodeName" : "idea_mob_add_customer_normal",
+                        "name" : "关联客户一般（移动端）",
+                        "getPSAppDEMethod" : {
+                          "modelref" : true,
+                          "id" : "others_relation_idea"
+                        },
+                        "getPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/idea.json"
+                        },
+                        "getPSNavigateParams" : [ {
+                          "key" : "target_type",
+                          "name" : "target_type",
+                          "value" : "target_type",
+                          "rawValue" : false
+                        }, {
+                          "key" : "principal_id",
+                          "name" : "principal_id",
+                          "value" : "principal_id",
+                          "rawValue" : false
+                        }, {
+                          "key" : "level",
+                          "name" : "level",
+                          "value" : "30",
+                          "rawValue" : true
+                        }, {
+                          "key" : "principal_type",
+                          "name" : "principal_type",
+                          "value" : "principal_type",
+                          "rawValue" : false
+                        } ],
+                        "refreshMode" : 1,
+                        "timeout" : 60000,
+                        "uIActionMode" : "BACKEND",
+                        "uIActionTag" : "mob_add_customer_normal",
+                        "uIActionType" : "DEUIACTION",
+                        "enableConfirm" : true,
+                        "globalUIAction" : true,
+                        "reloadData" : true,
+                        "id" : "mob_add_customer_normal@idea"
+                      },
+                      "tooltip" : "一般",
+                      "uIActionTarget" : "NONE",
+                      "showCaption" : true,
+                      "showIcon" : true
+                    }, {
+                      "caption" : "不重要",
+                      "groupExtractMode" : "ITEM",
+                      "itemType" : "DEUIACTION",
+                      "name" : "deuiaction5",
+                      "noPrivDisplayMode" : 2,
+                      "getPSAppViewUIAction" : {
+                        "modelref" : true,
+                        "id" : "righttoolbar_deuiaction5"
+                      },
+                      "getPSUIAction" : {
+                        "actionTarget" : "NONE",
+                        "caption" : "关联客户不重要",
+                        "codeName" : "mob_add_customer_un_important",
+                        "getFrontPSAppView" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/customer_mob_mpick_up_view.json",
+                          "viewType" : "DEMOBMPICKUPVIEW"
+                        },
+                        "fullCodeName" : "idea_mob_add_customer_un_important",
+                        "name" : "关联客户不重要（移动端）",
+                        "getPSAppDEMethod" : {
+                          "modelref" : true,
+                          "id" : "others_relation_idea"
+                        },
+                        "getPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/idea.json"
+                        },
+                        "getPSNavigateParams" : [ {
+                          "key" : "target_type",
+                          "name" : "target_type",
+                          "value" : "target_type",
+                          "rawValue" : false
+                        }, {
+                          "key" : "principal_id",
+                          "name" : "principal_id",
+                          "value" : "principal_id",
+                          "rawValue" : false
+                        }, {
+                          "key" : "level",
+                          "name" : "level",
+                          "value" : "40",
+                          "rawValue" : true
+                        }, {
+                          "key" : "principal_type",
+                          "name" : "principal_type",
+                          "value" : "principal_type",
+                          "rawValue" : false
+                        } ],
+                        "refreshMode" : 1,
+                        "timeout" : 60000,
+                        "uIActionMode" : "BACKEND",
+                        "uIActionTag" : "mob_add_customer_un_important",
+                        "uIActionType" : "DEUIACTION",
+                        "enableConfirm" : true,
+                        "globalUIAction" : true,
+                        "reloadData" : true,
+                        "id" : "mob_add_customer_un_important@idea"
+                      },
+                      "tooltip" : "不重要",
+                      "uIActionTarget" : "NONE",
+                      "showCaption" : true,
+                      "showIcon" : true
+                    }, {
                       "caption" : "未知",
                       "groupExtractMode" : "ITEM",
                       "itemType" : "DEUIACTION",
@@ -1888,6 +3974,10 @@
                       "showCaption" : true,
                       "showIcon" : true
                     } ],
+                    "getPSSysImage" : {
+                      "glyph" : "xf067@FontAwesome",
+                      "cssClass" : "fa fa-plus"
+                    },
                     "tooltip" : "添加客户",
                     "showCaption" : true,
                     "showIcon" : true
@@ -2661,8 +4751,64 @@
                   "getPSAppUILogic" : {
                     "logicType" : "PREDEFINED",
                     "name" : "打开数据",
+                    "getOpenDataPSAppView" : {
+                      "getPSNavigateContexts" : [ {
+                        "key" : "PRODUCT",
+                        "name" : "PRODUCT",
+                        "value" : "target_parent_id.product_id",
+                        "rawValue" : false
+                      }, {
+                        "key" : "IDEA",
+                        "name" : "IDEA",
+                        "value" : "target_id",
+                        "rawValue" : false
+                      } ],
+                      "getRefPSAppView" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/idea_mob_edit_view.json",
+                        "viewType" : "DEMOBEDITVIEW"
+                      }
+                    },
+                    "getPSAppUILogicRefViews" : [ {
+                      "getPSNavigateContexts" : [ {
+                        "key" : "PRODUCT",
+                        "name" : "PRODUCT",
+                        "value" : "target_parent_id.product_id",
+                        "rawValue" : false
+                      }, {
+                        "key" : "IDEA",
+                        "name" : "IDEA",
+                        "value" : "target_id",
+                        "rawValue" : false
+                      } ],
+                      "getRefPSAppView" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/idea_mob_edit_view.json",
+                        "viewType" : "DEMOBEDITVIEW"
+                      }
+                    } ],
                     "viewLogicType" : "APP_OPENDATA",
                     "editMode" : true
+                  }
+                } ],
+                "getPSAppViewRefs" : [ {
+                  "name" : "EDITDATA",
+                  "getPSNavigateContexts" : [ {
+                    "key" : "PRODUCT",
+                    "name" : "PRODUCT",
+                    "value" : "target_parent_id.product_id",
+                    "rawValue" : false
+                  }, {
+                    "key" : "IDEA",
+                    "name" : "IDEA",
+                    "value" : "target_id",
+                    "rawValue" : false
+                  } ],
+                  "realTitle" : "需求",
+                  "getRefPSAppView" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/idea_mob_edit_view.json",
+                    "viewType" : "DEMOBEDITVIEW"
                   }
                 } ],
                 "getPSControls" : [ {
@@ -2728,7 +4874,7 @@
                       "id" : "state",
                       "viewFieldName" : "IDEA"
                     }, {
-                      "id" : "assignee_name",
+                      "id" : "assignee_id",
                       "viewFieldName" : "IDEA"
                     } ],
                     "codeName" : "mob_work_item_re_idea",
@@ -2780,6 +4926,41 @@
                           "layout" : "FLEX"
                         },
                         "getPSPanelItems" : [ {
+                          "caption" : "图片",
+                          "contentHeight" : 24.0,
+                          "contentType" : "IMAGE",
+                          "contentWidth" : 24.0,
+                          "height" : 24.0,
+                          "itemStyle" : "DEFAULT",
+                          "itemType" : "RAWITEM",
+                          "name" : "static_image",
+                          "getPSLayoutPos" : {
+                            "grow" : -1,
+                            "height" : 24,
+                            "heightMode" : "PX",
+                            "layout" : "FLEX",
+                            "spacingRight" : "OUTERSMALL",
+                            "width" : 24,
+                            "widthMode" : "PX"
+                          },
+                          "getPSRawItem" : {
+                            "contentType" : "IMAGE",
+                            "name" : "static_image",
+                            "getPSSysImage" : {
+                              "rawContent" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAABaFBMVEVWq/tWq/tZpv9Srf9gn/9Vq/tXrPtWq/tWrPpXq/pWrPtAv/9WqvtVqv9Xq/tWq/tXrPpWrPtWq/tOsf9Wq/tXrPxWq/tVqvhYp/9XrPwAAABWq/xWrPxVqv9VqvtWq/tWq/tWrPpNs/9Wq/tSrf9VqvtWrPxYq/tWq/tXrvlWq/tXq/pWq/tWq/tWqvtXq/xWq/tWqvtWq/tXrPpWq/tbpP9Wq/tTrfhWq/tVq/tVqvtYq/tWq/tVqv9Wq/tWrPpVqvpXrfpWq/pWq/tJtv9Vq/tWq/tWq/sA//9WqvtXrPxVqv9Wq/qAgP9XrPtWq/tWq/tVq/tWq/tVqvlWrPxWrPxWq/tWq/tWq/tWqvtWq/tWq/tVqvxWq/tVqvtXrfpmmf9Yp/dRrv9Xq/tVqvpWrPtYrPpWq/tYp/9ZrPlVq/tWq/tXrPtXrfpXq/xWq/tWrPpWq/pXrPtVq/tVqv9WrPpapf9Wq/sHyvU6AAAAd3RSTlOxxhccCNGQ625q2QTTA9fVqNZ/Dcmc2CcanwDb3BI5+7RrCu4ZeFZDjCznZInwr0zoxPeigg71Ivyzcj39Ca5lYzXhhQfOz3wBtZMMqQKHw/K2+S3fX3mD5M3x/k7lSDIFIBPaaUc08x0urXOBON304qGEvwZiEQh2lUQAAAIbSURBVEjHpdf7VxJBFAfwqSx7KZqpNbWWolQgaJZK6aopgg9Es0gX3xq6WSyZ4v333V2EWJzhzsx+f+Bwzt7PYdizO/cOoW600qlVBKEUX56WtLIizoeeioJUoim9gs15kI5hlrG5AwrZMR2sG6AUQ7dxChSTokTLqeKoRkqgnBKJqeMYOVLHR+REHZ8Q7qXc4kA2n8/++LrGLeHh1dA+vc5+aFUKz25TT7ZnxXFsmdZleUoUL63QG1lZEsNtC5SVNhGcdF9Vmph5/X26FutJHE8W3NL8pv393PPThUkUn7mFobi93yweexd+huI9p2x8DOIfR+v/9R6GDbfsA8A0454ZCP7nFHWMwHvWDd9A8JBTtAsQYeEhBB84Rb8B3rHwAYIvnaK3sNXBwpcIvnCK3qylmQ/ZBYL7aYP0I/i4Ef6C4EgjPIPgdCOcRnCwj2/7gtiz3cvHveiLYSV4NmHhm0GGhzMCO8mrCbadiIvsYcFvLPsrKLZ7hntu2kJYdN9ez9bbyLp4x3hRj4cl2s3WM6/tlmp0nd52kZbrkk8zT6oZTEq2WGh/Xk1Atj+3ttSs+rEk7nr0H7cEZJf98LyaVtll2zPJ56yb+80gj+9VVv2Hj0d4V+7eKdvbt/ij1F8/Q9wnP+PjAz+D66Hy/JjTCJ3zMazTpoCPYwIdD6sfUGyt8NvzZuVQ1jRXlKM1hzI7hz+JJQiLVvU4eAWN8EcF7mIwlAAAAABJRU5ErkJggg=="
+                            },
+                            "predefinedType" : "STATIC_IMAGE",
+                            "rawItemHeight" : 24.0,
+                            "rawItemWidth" : 24.0
+                          },
+                          "getPSSysImage" : {
+                            "rawContent" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAABaFBMVEVWq/tWq/tZpv9Srf9gn/9Vq/tXrPtWq/tWrPpXq/pWrPtAv/9WqvtVqv9Xq/tWq/tXrPpWrPtWq/tOsf9Wq/tXrPxWq/tVqvhYp/9XrPwAAABWq/xWrPxVqv9VqvtWq/tWq/tWrPpNs/9Wq/tSrf9VqvtWrPxYq/tWq/tXrvlWq/tXq/pWq/tWq/tWqvtXq/xWq/tWqvtWq/tXrPpWq/tbpP9Wq/tTrfhWq/tVq/tVqvtYq/tWq/tVqv9Wq/tWrPpVqvpXrfpWq/pWq/tJtv9Vq/tWq/tWq/sA//9WqvtXrPxVqv9Wq/qAgP9XrPtWq/tWq/tVq/tWq/tVqvlWrPxWrPxWq/tWq/tWq/tWqvtWq/tWq/tVqvxWq/tVqvtXrfpmmf9Yp/dRrv9Xq/tVqvpWrPtYrPpWq/tYp/9ZrPlVq/tWq/tXrPtXrfpXq/xWq/tWrPpWq/pXrPtVq/tVqv9WrPpapf9Wq/sHyvU6AAAAd3RSTlOxxhccCNGQ625q2QTTA9fVqNZ/Dcmc2CcanwDb3BI5+7RrCu4ZeFZDjCznZInwr0zoxPeigg71Ivyzcj39Ca5lYzXhhQfOz3wBtZMMqQKHw/K2+S3fX3mD5M3x/k7lSDIFIBPaaUc08x0urXOBON304qGEvwZiEQh2lUQAAAIbSURBVEjHpdf7VxJBFAfwqSx7KZqpNbWWolQgaJZK6aopgg9Es0gX3xq6WSyZ4v333V2EWJzhzsx+f+Bwzt7PYdizO/cOoW600qlVBKEUX56WtLIizoeeioJUoim9gs15kI5hlrG5AwrZMR2sG6AUQ7dxChSTokTLqeKoRkqgnBKJqeMYOVLHR+REHZ8Q7qXc4kA2n8/++LrGLeHh1dA+vc5+aFUKz25TT7ZnxXFsmdZleUoUL63QG1lZEsNtC5SVNhGcdF9Vmph5/X26FutJHE8W3NL8pv393PPThUkUn7mFobi93yweexd+huI9p2x8DOIfR+v/9R6GDbfsA8A0454ZCP7nFHWMwHvWDd9A8JBTtAsQYeEhBB84Rb8B3rHwAYIvnaK3sNXBwpcIvnCK3qylmQ/ZBYL7aYP0I/i4Ef6C4EgjPIPgdCOcRnCwj2/7gtiz3cvHveiLYSV4NmHhm0GGhzMCO8mrCbadiIvsYcFvLPsrKLZ7hntu2kJYdN9ez9bbyLp4x3hRj4cl2s3WM6/tlmp0nd52kZbrkk8zT6oZTEq2WGh/Xk1Atj+3ttSs+rEk7nr0H7cEZJf98LyaVtll2zPJ56yb+80gj+9VVv2Hj0d4V+7eKdvbt/ij1F8/Q9wnP+PjAz+D66Hy/JjTCJ3zMazTpoCPYwIdD6sfUGyt8NvzZuVQ1jRXlKM1hzI7hz+JJQiLVvU4eAWN8EcF7mIwlAAAAABJRU5ErkJggg=="
+                          },
+                          "rawItemHeight" : 24.0,
+                          "rawItemWidth" : 24.0,
+                          "width" : 24.0,
+                          "showCaption" : true
+                        }, {
                           "caption" : "文本(动态)",
                           "itemStyle" : "DEFAULT",
                           "itemType" : "FIELD",
@@ -2902,19 +5083,32 @@
                             "caption" : "文本(动态)",
                             "itemStyle" : "DEFAULT",
                             "itemType" : "FIELD",
-                            "name" : "assignee_name",
+                            "name" : "assignee_id",
+                            "getPSControlLogics" : [ {
+                              "itemName" : "ASSIGNEE_ID",
+                              "logicTag" : "mdctrl_itempanel",
+                              "logicType" : "SCRIPT",
+                              "name" : "logic",
+                              "scriptCode" : "data.idea.assignee_name != null",
+                              "triggerType" : "ITEMVISIBLE"
+                            } ],
                             "getPSEditor" : {
                               "editorParams" : {
-                                "OBJECTNAMEFIELD" : "assignee_name",
+                                "OBJECTNAMEFIELD" : "assignee_id",
+                                "SHOWNAMETEXT" : "false",
                                 "VALUETYPE" : "OBJECT"
                               },
-                              "editorStyle" : "PERSONNEL_INFO",
+                              "editorStyle" : "MOB_PERSONNEL_INFO",
                               "editorType" : "SPAN",
-                              "name" : "assignee_name",
-                              "objectNameField" : "assignee_name",
+                              "name" : "assignee_id",
+                              "objectNameField" : "assignee_id",
+                              "getPSAppCodeList" : {
+                                "modelref" : true,
+                                "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
+                              },
                               "getPSSysPFPlugin" : {
                                 "pluginType" : "EDITOR_CUSTOMSTYLE",
-                                "pluginCode" : "PERSONNEL_INFO",
+                                "pluginCode" : "MOB_PERSONNEL_INFO",
                                 "runtimeObject" : true
                               },
                               "predefinedType" : "FIELD_TEXT_DYNAMIC",
@@ -2926,27 +5120,10 @@
                               "grow" : -1,
                               "layout" : "FLEX"
                             },
-                            "viewFieldName" : "IDEA"
+                            "viewFieldName" : "IDEA",
+                            "convertToCodeItemText" : true
                           } ]
                         } ]
-                      }, {
-                        "caption" : "标签",
-                        "contentType" : "DIVIDER",
-                        "itemStyle" : "DEFAULT",
-                        "itemType" : "RAWITEM",
-                        "name" : "static_label",
-                        "getPSLayoutPos" : {
-                          "grow" : -1,
-                          "layout" : "FLEX"
-                        },
-                        "getPSRawItem" : {
-                          "contentType" : "DIVIDER",
-                          "name" : "static_label",
-                          "predefinedType" : "STATIC_LABEL",
-                          "rawContent" : "标签"
-                        },
-                        "rawContent" : "标签",
-                        "showCaption" : true
                       } ]
                     } ],
                     "name" : "mdctrl_itempanel",
@@ -3179,8 +5356,87 @@
                     "caption" : "添加需求",
                     "itemType" : "ITEMS",
                     "name" : "items1",
+                    "getPSControlLogics" : [ {
+                      "itemName" : "items1",
+                      "logicTag" : "righttoolbar",
+                      "logicType" : "SCRIPT",
+                      "name" : "items1",
+                      "scriptCode" : "context.srfreadonly != true",
+                      "triggerType" : "ITEMVISIBLE"
+                    } ],
                     "getPSDEToolbarItems" : [ {
-                      "caption" : "关联需求",
+                      "caption" : "新建",
+                      "groupExtractMode" : "ITEM",
+                      "itemType" : "DEUIACTION",
+                      "name" : "deuiaction2",
+                      "noPrivDisplayMode" : 2,
+                      "getPSAppViewUIAction" : {
+                        "modelref" : true,
+                        "id" : "righttoolbar_deuiaction2"
+                      },
+                      "getPSSysImage" : {
+                        "glyph" : "xf067@FontAwesome",
+                        "cssClass" : "fa fa-plus"
+                      },
+                      "getPSUIAction" : {
+                        "actionTarget" : "NONE",
+                        "caption" : "新建",
+                        "codeName" : "mob_create_and_relation",
+                        "getFrontPSAppView" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/idea_mob_quick_create_view.json",
+                          "viewType" : "DEMOBOPTVIEW"
+                        },
+                        "frontProcessType" : "WIZARD",
+                        "fullCodeName" : "relation_mob_create_and_relation",
+                        "name" : "产品移动端新建需求（新建后关联）",
+                        "getNextPSUIAction" : {
+                          "getPSAppDataEntity" : {
+                            "modelref" : true,
+                            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
+                          },
+                          "modelref" : true,
+                          "id" : "after_creat_double_relation@relation"
+                        },
+                        "getPSAppDEUILogic" : {
+                          "modelref" : true,
+                          "id" : "notify_refresh"
+                        },
+                        "getPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
+                        },
+                        "getPSNavigateContexts" : [ {
+                          "key" : "IDEA",
+                          "name" : "IDEA",
+                          "rawValue" : true
+                        } ],
+                        "getPSNavigateParams" : [ {
+                          "key" : "product_id",
+                          "name" : "product_id",
+                          "value" : "product_id",
+                          "rawValue" : false
+                        } ],
+                        "getPSSysImage" : {
+                          "glyph" : "xf067@FontAwesome",
+                          "cssClass" : "fa fa-plus"
+                        },
+                        "refreshMode" : 1,
+                        "timeout" : 60000,
+                        "uIActionMode" : "FRONT",
+                        "uIActionTag" : "mob_create_and_relation",
+                        "uIActionType" : "DEUIACTION",
+                        "uILogicAttachMode" : "AFTER",
+                        "globalUIAction" : true,
+                        "reloadData" : true,
+                        "id" : "mob_create_and_relation@relation"
+                      },
+                      "tooltip" : "新建",
+                      "uIActionTarget" : "NONE",
+                      "showCaption" : true,
+                      "showIcon" : true
+                    }, {
+                      "caption" : "关联",
                       "groupExtractMode" : "ITEM",
                       "itemType" : "DEUIACTION",
                       "name" : "deuiaction1",
@@ -3188,6 +5444,9 @@
                       "getPSAppViewUIAction" : {
                         "modelref" : true,
                         "id" : "righttoolbar_deuiaction1"
+                      },
+                      "getPSSysImage" : {
+                        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\" fill=\"currentColor\">\n  <path d=\"M640 640H448V576h192V192H64v384h192v64H0V128h704v512h-64zM384 384h192v64H384v384h576V448h-192V384h256v512H320V384h64z\"></path>\n</svg>"
                       },
                       "getPSUIAction" : {
                         "actionTarget" : "NONE",
@@ -3235,11 +5494,15 @@
                         "reloadData" : true,
                         "id" : "mob_add_idea@idea"
                       },
-                      "tooltip" : "关联需求",
+                      "tooltip" : "关联",
                       "uIActionTarget" : "NONE",
                       "showCaption" : true,
                       "showIcon" : true
                     } ],
+                    "getPSSysImage" : {
+                      "glyph" : "xf067@FontAwesome",
+                      "cssClass" : "fa fa-plus"
+                    },
                     "tooltip" : "添加需求",
                     "showCaption" : true,
                     "showIcon" : true
@@ -3632,14 +5895,15 @@
               "layout" : "TABLE_24COL"
             },
             "getPSNavigateContexts" : [ {
-              "key" : "PRODUCT",
-              "name" : "PRODUCT",
-              "rawValue" : true
-            }, {
               "key" : "TARGET_TYPE",
               "name" : "TARGET_TYPE",
               "value" : "idea",
               "rawValue" : true
+            }, {
+              "key" : "PRODUCT_ID",
+              "name" : "PRODUCT_ID",
+              "value" : "product",
+              "rawValue" : false
             }, {
               "key" : "PRINCIPAL_TYPE",
               "name" : "PRINCIPAL_TYPE",
@@ -4023,8 +6287,64 @@
                   "getPSAppUILogic" : {
                     "logicType" : "PREDEFINED",
                     "name" : "打开数据",
+                    "getOpenDataPSAppView" : {
+                      "getPSNavigateContexts" : [ {
+                        "key" : "PRODUCT",
+                        "name" : "PRODUCT",
+                        "value" : "target_parent_id.product_id",
+                        "rawValue" : false
+                      }, {
+                        "key" : "TICKET",
+                        "name" : "TICKET",
+                        "value" : "target_id",
+                        "rawValue" : false
+                      } ],
+                      "getRefPSAppView" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/ticket_mob_edit_view.json",
+                        "viewType" : "DEMOBEDITVIEW"
+                      }
+                    },
+                    "getPSAppUILogicRefViews" : [ {
+                      "getPSNavigateContexts" : [ {
+                        "key" : "PRODUCT",
+                        "name" : "PRODUCT",
+                        "value" : "target_parent_id.product_id",
+                        "rawValue" : false
+                      }, {
+                        "key" : "TICKET",
+                        "name" : "TICKET",
+                        "value" : "target_id",
+                        "rawValue" : false
+                      } ],
+                      "getRefPSAppView" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/ticket_mob_edit_view.json",
+                        "viewType" : "DEMOBEDITVIEW"
+                      }
+                    } ],
                     "viewLogicType" : "APP_OPENDATA",
                     "editMode" : true
+                  }
+                } ],
+                "getPSAppViewRefs" : [ {
+                  "name" : "EDITDATA",
+                  "getPSNavigateContexts" : [ {
+                    "key" : "PRODUCT",
+                    "name" : "PRODUCT",
+                    "value" : "target_parent_id.product_id",
+                    "rawValue" : false
+                  }, {
+                    "key" : "TICKET",
+                    "name" : "TICKET",
+                    "value" : "target_id",
+                    "rawValue" : false
+                  } ],
+                  "realTitle" : "工单",
+                  "getRefPSAppView" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/ticket_mob_edit_view.json",
+                    "viewType" : "DEMOBEDITVIEW"
                   }
                 } ],
                 "getPSControls" : [ {
@@ -4084,19 +6404,13 @@
                       "id" : "title",
                       "viewFieldName" : "ticket"
                     }, {
-                      "id" : "assignee_name",
+                      "id" : "assignee_id",
                       "viewFieldName" : "ticket"
                     }, {
                       "id" : "show_identifier",
                       "viewFieldName" : "ticket"
                     }, {
                       "id" : "state",
-                      "viewFieldName" : "ticket"
-                    }, {
-                      "id" : "start_at",
-                      "viewFieldName" : "ticket"
-                    }, {
-                      "id" : "end_at",
                       "viewFieldName" : "ticket"
                     } ],
                     "codeName" : "mob_work_item_re_ticket",
@@ -4148,6 +6462,41 @@
                           "layout" : "FLEX"
                         },
                         "getPSPanelItems" : [ {
+                          "caption" : "图片",
+                          "contentHeight" : 24.0,
+                          "contentType" : "IMAGE",
+                          "contentWidth" : 24.0,
+                          "height" : 24.0,
+                          "itemStyle" : "DEFAULT",
+                          "itemType" : "RAWITEM",
+                          "name" : "static_image",
+                          "getPSLayoutPos" : {
+                            "grow" : -1,
+                            "height" : 24,
+                            "heightMode" : "PX",
+                            "layout" : "FLEX",
+                            "spacingRight" : "OUTERMEDIUM",
+                            "width" : 24,
+                            "widthMode" : "PX"
+                          },
+                          "getPSRawItem" : {
+                            "contentType" : "IMAGE",
+                            "name" : "static_image",
+                            "getPSSysImage" : {
+                              "rawContent" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAABc0lEQVR4XqWUv0rEQBDGt1W0UxC0EES0stHKSgTBRiwkmIlW4gvoi1gKllr4EILCkeyG4wqxUiwErbxG9C6b5O40zgSjYbO5yGbgg2xmvl82s38Yw+g0rMmQO6eSwz0qMdCLFHAhuTVNPJa4B+OS24+aQhO9dX1YYvhwoknWUYNJDx40iTrq00w/NQlSHAo4w4/uhMJe0ynwnG3s5bXqJagKIw0iHzbSpldEcmONYX3nH1DnXDXrIuawiPVPqF4lNBBwmBk/WjCBvzqbicZZjlZa9ZZCcYs5ZEpaW6M47iv5XsKtEQMowO9smtZUfqY0NpzpH3RYGENpMfLbKHL3F2pBf3oaK7n6PU0vm5LVD1x7ReOthg4LPE3HGm8RGvnOvGrWhfT3ZrD+VfVroXiamqEH6/lfzivwnWUp7COsbRe9GdSDZ/VlTX1RXy41CXMJuGW07wIO74WkmQZ4xFfTpkfe7hyCr2T53VqpkMNdl8Mm8b4Bqys799auj78AAAAASUVORK5CYII="
+                            },
+                            "predefinedType" : "STATIC_IMAGE",
+                            "rawItemHeight" : 24.0,
+                            "rawItemWidth" : 24.0
+                          },
+                          "getPSSysImage" : {
+                            "rawContent" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAABc0lEQVR4XqWUv0rEQBDGt1W0UxC0EES0stHKSgTBRiwkmIlW4gvoi1gKllr4EILCkeyG4wqxUiwErbxG9C6b5O40zgSjYbO5yGbgg2xmvl82s38Yw+g0rMmQO6eSwz0qMdCLFHAhuTVNPJa4B+OS24+aQhO9dX1YYvhwoknWUYNJDx40iTrq00w/NQlSHAo4w4/uhMJe0ynwnG3s5bXqJagKIw0iHzbSpldEcmONYX3nH1DnXDXrIuawiPVPqF4lNBBwmBk/WjCBvzqbicZZjlZa9ZZCcYs5ZEpaW6M47iv5XsKtEQMowO9smtZUfqY0NpzpH3RYGENpMfLbKHL3F2pBf3oaK7n6PU0vm5LVD1x7ReOthg4LPE3HGm8RGvnOvGrWhfT3ZrD+VfVroXiamqEH6/lfzivwnWUp7COsbRe9GdSDZ/VlTX1RXy41CXMJuGW07wIO74WkmQZ4xFfTpkfe7hyCr2T53VqpkMNdl8Mm8b4Bqys799auj78AAAAASUVORK5CYII="
+                          },
+                          "rawItemHeight" : 24.0,
+                          "rawItemWidth" : 24.0,
+                          "width" : 24.0,
+                          "showCaption" : true
+                        }, {
                           "caption" : "文本(动态)",
                           "itemStyle" : "DEFAULT",
                           "itemType" : "FIELD",
@@ -4189,7 +6538,6 @@
                         },
                         "getPSPanelItems" : [ {
                           "caption" : "容器",
-                          "contentWidth" : 10.0,
                           "itemStyle" : "DEFAULT",
                           "itemType" : "CONTAINER",
                           "name" : "container3",
@@ -4198,31 +6546,38 @@
                           },
                           "getPSLayoutPos" : {
                             "grow" : -1,
-                            "layout" : "FLEX",
-                            "width" : 10,
-                            "widthMode" : "PERCENTAGE"
+                            "layout" : "FLEX"
                           },
                           "getPSPanelItems" : [ {
                             "caption" : "文本(动态)",
                             "itemStyle" : "DEFAULT",
                             "itemType" : "FIELD",
-                            "name" : "assignee_name",
+                            "name" : "assignee_id",
+                            "getPSControlLogics" : [ {
+                              "itemName" : "ASSIGNEE_ID",
+                              "logicTag" : "mdctrl_itempanel",
+                              "logicType" : "SCRIPT",
+                              "name" : "logic",
+                              "scriptCode" : "data.ticket.assignee_name != null",
+                              "triggerType" : "ITEMVISIBLE"
+                            } ],
                             "getPSEditor" : {
                               "editorParams" : {
-                                "OBJECTNAMEFIELD" : "assignee_name",
+                                "OBJECTNAMEFIELD" : "assignee_id",
+                                "SHOWNAMETEXT" : "false",
                                 "VALUETYPE" : "OBJECT"
                               },
-                              "editorStyle" : "PERSONNEL_INFO",
+                              "editorStyle" : "MOB_PERSONNEL_INFO",
                               "editorType" : "SPAN",
-                              "name" : "assignee_name",
-                              "objectNameField" : "assignee_name",
+                              "name" : "assignee_id",
+                              "objectNameField" : "assignee_id",
                               "getPSAppCodeList" : {
                                 "modelref" : true,
                                 "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
                               },
                               "getPSSysPFPlugin" : {
                                 "pluginType" : "EDITOR_CUSTOMSTYLE",
-                                "pluginCode" : "PERSONNEL_INFO",
+                                "pluginCode" : "MOB_PERSONNEL_INFO",
                                 "runtimeObject" : true
                               },
                               "predefinedType" : "FIELD_TEXT_DYNAMIC",
@@ -4234,13 +6589,25 @@
                               "grow" : -1,
                               "layout" : "FLEX"
                             },
+                            "getPSPanelItemGroupLogics" : [ {
+                              "groupOP" : "AND",
+                              "logicCat" : "PANELVISIBLE",
+                              "logicType" : "GROUP",
+                              "name" : "面板成员[assignee_id][面板显示]逻辑",
+                              "getPSPanelItemLogics" : [ {
+                                "condOp" : "ISNOTNULL",
+                                "dstModelField" : "ASSIGNEE_ID",
+                                "logicType" : "SINGLE",
+                                "name" : "逻辑项"
+                              } ],
+                              "relatedItemNames" : [ "assignee_id" ],
+                              "notMode" : false
+                            } ],
                             "viewFieldName" : "ticket",
                             "convertToCodeItemText" : true
-                          } ],
-                          "width" : 10.0
+                          } ]
                         }, {
                           "caption" : "容器",
-                          "contentWidth" : 85.0,
                           "itemStyle" : "DEFAULT",
                           "itemType" : "CONTAINER",
                           "name" : "container2",
@@ -4252,9 +6619,7 @@
                           },
                           "getPSLayoutPos" : {
                             "grow" : -1,
-                            "layout" : "FLEX",
-                            "width" : 85,
-                            "widthMode" : "PERCENTAGE"
+                            "layout" : "FLEX"
                           },
                           "getPSPanelItems" : [ {
                             "caption" : "文本(动态)",
@@ -4308,72 +6673,8 @@
                             },
                             "viewFieldName" : "ticket",
                             "convertToCodeItemText" : true
-                          }, {
-                            "caption" : "文本(动态)",
-                            "itemStyle" : "DEFAULT",
-                            "itemType" : "FIELD",
-                            "name" : "start_at",
-                            "getPSEditor" : {
-                              "editorParams" : {
-                                "OBJECTNAMEFIELD" : "start_at",
-                                "VALUETYPE" : "OBJECT"
-                              },
-                              "editorType" : "SPAN",
-                              "name" : "start_at",
-                              "objectNameField" : "start_at",
-                              "predefinedType" : "FIELD_TEXT_DYNAMIC",
-                              "renderMode" : "TEXT_DYNAMIC",
-                              "valueType" : "OBJECT",
-                              "enableLinkView" : false
-                            },
-                            "getPSLayoutPos" : {
-                              "grow" : -1,
-                              "layout" : "FLEX",
-                              "spacingLeft" : "OUTERSMALL"
-                            },
-                            "viewFieldName" : "ticket"
-                          }, {
-                            "caption" : "文本(动态)",
-                            "itemStyle" : "DEFAULT",
-                            "itemType" : "FIELD",
-                            "name" : "end_at",
-                            "getPSEditor" : {
-                              "editorParams" : {
-                                "OBJECTNAMEFIELD" : "end_at",
-                                "VALUETYPE" : "OBJECT"
-                              },
-                              "editorType" : "SPAN",
-                              "name" : "end_at",
-                              "objectNameField" : "end_at",
-                              "predefinedType" : "FIELD_TEXT_DYNAMIC",
-                              "renderMode" : "TEXT_DYNAMIC",
-                              "valueType" : "OBJECT",
-                              "enableLinkView" : false
-                            },
-                            "getPSLayoutPos" : {
-                              "grow" : -1,
-                              "layout" : "FLEX",
-                              "spacingLeft" : "OUTERSMALL"
-                            },
-                            "viewFieldName" : "ticket"
-                          } ],
-                          "width" : 85.0
+                          } ]
                         } ]
-                      }, {
-                        "contentType" : "DIVIDER",
-                        "itemStyle" : "DEFAULT",
-                        "itemType" : "RAWITEM",
-                        "getPSLayoutPos" : {
-                          "grow" : -1,
-                          "layout" : "FLEX"
-                        },
-                        "getPSRawItem" : {
-                          "contentType" : "DIVIDER",
-                          "predefinedType" : "STATIC_LABEL",
-                          "rawContent" : "标签"
-                        },
-                        "rawContent" : "标签",
-                        "id" : "54E4ED9E-6C9D-4865-B43F-9D5C80E41B3D"
                       } ]
                     } ],
                     "name" : "mdctrl_itempanel",
@@ -4606,8 +6907,85 @@
                     "caption" : "添加工单",
                     "itemType" : "ITEMS",
                     "name" : "items1",
+                    "getPSControlLogics" : [ {
+                      "itemName" : "items1",
+                      "logicTag" : "righttoolbar",
+                      "logicType" : "SCRIPT",
+                      "name" : "items1",
+                      "scriptCode" : "context.srfreadonly != true",
+                      "triggerType" : "ITEMVISIBLE"
+                    } ],
                     "getPSDEToolbarItems" : [ {
-                      "caption" : "关联工单",
+                      "caption" : "新建",
+                      "groupExtractMode" : "ITEM",
+                      "itemType" : "DEUIACTION",
+                      "name" : "deuiaction2",
+                      "noPrivDisplayMode" : 2,
+                      "getPSAppViewUIAction" : {
+                        "modelref" : true,
+                        "id" : "righttoolbar_deuiaction2"
+                      },
+                      "getPSSysImage" : {
+                        "glyph" : "xf067@FontAwesome",
+                        "cssClass" : "fa fa-plus"
+                      },
+                      "getPSUIAction" : {
+                        "actionTarget" : "NONE",
+                        "caption" : "新建",
+                        "codeName" : "mob_create_and_relation_ticket",
+                        "dialogResult" : "OK",
+                        "getFrontPSAppView" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/ticket_mob_ticket_create_option_view.json",
+                          "viewType" : "DEMOBOPTVIEW"
+                        },
+                        "frontProcessType" : "WIZARD",
+                        "fullCodeName" : "relation_mob_create_and_relation_ticket",
+                        "name" : "产品移动端新建工单（新建后关联）",
+                        "getNextPSUIAction" : {
+                          "getPSAppDataEntity" : {
+                            "modelref" : true,
+                            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
+                          },
+                          "modelref" : true,
+                          "id" : "after_creat_double_relation@relation"
+                        },
+                        "getPSAppDEUILogic" : {
+                          "modelref" : true,
+                          "id" : "notify_refresh"
+                        },
+                        "getPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
+                        },
+                        "getPSNavigateContexts" : [ {
+                          "key" : "TICKET",
+                          "name" : "TICKET",
+                          "rawValue" : true
+                        } ],
+                        "getPSNavigateParams" : [ {
+                          "key" : "product_id",
+                          "name" : "product_id",
+                          "value" : "product_id",
+                          "rawValue" : false
+                        } ],
+                        "refreshMode" : 1,
+                        "timeout" : 60000,
+                        "uIActionMode" : "FRONT",
+                        "uIActionTag" : "mob_create_and_relation_ticket",
+                        "uIActionType" : "DEUIACTION",
+                        "uILogicAttachMode" : "AFTER",
+                        "closeEditView" : true,
+                        "closePopupView" : true,
+                        "reloadData" : true,
+                        "id" : "mob_create_and_relation_ticket@relation"
+                      },
+                      "tooltip" : "新建",
+                      "uIActionTarget" : "NONE",
+                      "showCaption" : true,
+                      "showIcon" : true
+                    }, {
+                      "caption" : "关联",
                       "groupExtractMode" : "ITEM",
                       "itemType" : "DEUIACTION",
                       "name" : "deuiaction1",
@@ -4615,6 +6993,9 @@
                       "getPSAppViewUIAction" : {
                         "modelref" : true,
                         "id" : "righttoolbar_deuiaction1"
+                      },
+                      "getPSSysImage" : {
+                        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\" fill=\"currentColor\">\n  <path d=\"M640 640H448V576h192V192H64v384h192v64H0V128h704v512h-64zM384 384h192v64H384v384h576V448h-192V384h256v512H320V384h64z\"></path>\n</svg>"
                       },
                       "getPSUIAction" : {
                         "actionTarget" : "NONE",
@@ -4662,11 +7043,15 @@
                         "reloadData" : true,
                         "id" : "mob_add_ticket@idea"
                       },
-                      "tooltip" : "关联工单",
+                      "tooltip" : "关联",
                       "uIActionTarget" : "NONE",
                       "showCaption" : true,
                       "showIcon" : true
                     } ],
+                    "getPSSysImage" : {
+                      "glyph" : "xf067@FontAwesome",
+                      "cssClass" : "fa fa-plus"
+                    },
                     "tooltip" : "添加工单",
                     "showCaption" : true,
                     "showIcon" : true
@@ -5137,10 +7522,10 @@
                   "id" : "total",
                   "viewFieldName" : "total"
                 } ],
-                "codeName" : "usr0924389181",
+                "codeName" : "usr0929017717",
                 "controlType" : "VIEWLAYOUTPANEL",
                 "layoutMode" : "FLEX",
-                "logicName" : "mob_idea_re_work_item_list_view实体移动端列表视图布局面板",
+                "logicName" : "mob_ticket_re_work_item_md_view实体移动端多数据视图布局面板",
                 "name" : "layoutpanel",
                 "getPSAppDataEntity" : {
                   "modelref" : true,
@@ -5384,7 +7769,7 @@
                     "layout" : "FLEX"
                   },
                   "getPSLayoutPos" : {
-                    "grow" : -1,
+                    "grow" : 1,
                     "layout" : "FLEX"
                   },
                   "getPSPanelItems" : [ {
@@ -5393,7 +7778,7 @@
                     "itemType" : "CTRLPOS",
                     "name" : "mdctrl",
                     "getPSLayoutPos" : {
-                      "grow" : -1,
+                      "grow" : 1,
                       "layout" : "FLEX"
                     },
                     "showCaption" : true
@@ -5405,7 +7790,7 @@
                 "mobilePanel" : true,
                 "useDefaultLayout" : false,
                 "viewProxyMode" : true,
-                "modelid" : "ff486907805e0403b04ac9bb914abd3c",
+                "modelid" : "E8E4C8E1-84D1-4C70-AE37-7D04EA7597FE",
                 "modeltype" : "PSSYSVIEWLAYOUTPANEL",
                 "getPSAppViewEngines" : [ {
                   "engineCat" : "VIEW",
@@ -5445,12 +7830,116 @@
                   "getPSAppUILogic" : {
                     "logicType" : "PREDEFINED",
                     "name" : "打开数据",
+                    "getOpenDataPSAppView" : {
+                      "getPSNavigateContexts" : [ {
+                        "key" : "SRFDATATYPE",
+                        "name" : "SRFDATATYPE",
+                        "value" : "work_item.work_item_type_id",
+                        "rawValue" : false
+                      }, {
+                        "key" : "WORK_ITEM",
+                        "name" : "WORK_ITEM",
+                        "value" : "target_id",
+                        "rawValue" : false
+                      }, {
+                        "key" : "PROJECT",
+                        "name" : "PROJECT",
+                        "value" : "work_item.project_id",
+                        "rawValue" : false
+                      }, {
+                        "key" : "WORK_ITEM_TYPE_ID",
+                        "name" : "WORK_ITEM_TYPE_ID",
+                        "value" : "work_item.work_item_type_id",
+                        "rawValue" : false
+                      } ],
+                      "getPSNavigateParams" : [ {
+                        "key" : "srfdatatype",
+                        "name" : "srfdatatype",
+                        "value" : "work_item.work_item_type_id",
+                        "rawValue" : false
+                      } ],
+                      "getRefPSAppView" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_common_edit_view.json",
+                        "viewType" : "DEMOBEDITVIEW"
+                      }
+                    },
+                    "getPSAppUILogicRefViews" : [ {
+                      "getPSNavigateContexts" : [ {
+                        "key" : "SRFDATATYPE",
+                        "name" : "SRFDATATYPE",
+                        "value" : "work_item.work_item_type_id",
+                        "rawValue" : false
+                      }, {
+                        "key" : "WORK_ITEM",
+                        "name" : "WORK_ITEM",
+                        "value" : "target_id",
+                        "rawValue" : false
+                      }, {
+                        "key" : "PROJECT",
+                        "name" : "PROJECT",
+                        "value" : "work_item.project_id",
+                        "rawValue" : false
+                      }, {
+                        "key" : "WORK_ITEM_TYPE_ID",
+                        "name" : "WORK_ITEM_TYPE_ID",
+                        "value" : "work_item.work_item_type_id",
+                        "rawValue" : false
+                      } ],
+                      "getPSNavigateParams" : [ {
+                        "key" : "srfdatatype",
+                        "name" : "srfdatatype",
+                        "value" : "work_item.work_item_type_id",
+                        "rawValue" : false
+                      } ],
+                      "getRefPSAppView" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_common_edit_view.json",
+                        "viewType" : "DEMOBEDITVIEW"
+                      }
+                    } ],
                     "viewLogicType" : "APP_OPENDATA",
                     "editMode" : true
                   }
                 } ],
+                "getPSAppViewRefs" : [ {
+                  "name" : "EDITDATA",
+                  "getPSNavigateContexts" : [ {
+                    "key" : "SRFDATATYPE",
+                    "name" : "SRFDATATYPE",
+                    "value" : "work_item.work_item_type_id",
+                    "rawValue" : false
+                  }, {
+                    "key" : "WORK_ITEM",
+                    "name" : "WORK_ITEM",
+                    "value" : "target_id",
+                    "rawValue" : false
+                  }, {
+                    "key" : "PROJECT",
+                    "name" : "PROJECT",
+                    "value" : "work_item.project_id",
+                    "rawValue" : false
+                  }, {
+                    "key" : "WORK_ITEM_TYPE_ID",
+                    "name" : "WORK_ITEM_TYPE_ID",
+                    "value" : "work_item.work_item_type_id",
+                    "rawValue" : false
+                  } ],
+                  "getPSNavigateParams" : [ {
+                    "key" : "srfdatatype",
+                    "name" : "srfdatatype",
+                    "value" : "work_item.work_item_type_id",
+                    "rawValue" : false
+                  } ],
+                  "realTitle" : "移动端通用编辑",
+                  "getRefPSAppView" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_common_edit_view.json",
+                    "viewType" : "DEMOBEDITVIEW"
+                  }
+                } ],
                 "getPSControls" : [ {
-                  "codeName" : "mob_work_item_relf_list",
+                  "codeName" : "mob_ticket_re_work_item_list",
                   "controlStyle" : "LISTVIEW",
                   "controlType" : "MOBMDCTRL",
                   "getCreatePSControlAction" : {
@@ -5469,7 +7958,7 @@
                       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
                     }
                   },
-                  "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation/PSMOBMDCTRLS/mob_work_item_relf_list.json",
+                  "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation/PSMOBMDCTRLS/mob_ticket_re_work_item_list.json",
                   "getFetchPSControlAction" : {
                     "modelref" : true,
                     "id" : "fetch",
@@ -5509,7 +7998,7 @@
                       "id" : "title",
                       "viewFieldName" : "WORK_ITEM"
                     }, {
-                      "id" : "assignee_name",
+                      "id" : "assignee_id",
                       "viewFieldName" : "WORK_ITEM"
                     }, {
                       "id" : "show_identifier",
@@ -5524,11 +8013,11 @@
                       "id" : "end_at",
                       "viewFieldName" : "WORK_ITEM"
                     } ],
-                    "codeName" : "usr0919035380",
+                    "codeName" : "mob_ticket_re_work_item",
                     "controlType" : "PANEL",
-                    "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation/PSPANELS/usr0919035380.json",
+                    "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation/PSPANELS/mob_ticket_re_work_item.json",
                     "layoutMode" : "TABLE_24COL",
-                    "logicName" : "移动端工作项关联工作项列表项面板",
+                    "logicName" : "移动端工单关联工作项列表项面板",
                     "getPSAppDataEntity" : {
                       "modelref" : true,
                       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
@@ -5658,23 +8147,32 @@
                             "caption" : "文本(动态)",
                             "itemStyle" : "DEFAULT",
                             "itemType" : "FIELD",
-                            "name" : "assignee_name",
+                            "name" : "assignee_id",
+                            "getPSControlLogics" : [ {
+                              "itemName" : "ASSIGNEE_ID",
+                              "logicTag" : "mdctrl_itempanel",
+                              "logicType" : "SCRIPT",
+                              "name" : "logic",
+                              "scriptCode" : "data.work_item.assignee_name != null",
+                              "triggerType" : "ITEMVISIBLE"
+                            } ],
                             "getPSEditor" : {
                               "editorParams" : {
-                                "OBJECTNAMEFIELD" : "assignee_name",
+                                "OBJECTNAMEFIELD" : "assignee_id",
+                                "SHOWNAMETEXT" : "false",
                                 "VALUETYPE" : "OBJECT"
                               },
-                              "editorStyle" : "PERSONNEL_INFO",
+                              "editorStyle" : "MOB_PERSONNEL_INFO",
                               "editorType" : "SPAN",
-                              "name" : "assignee_name",
-                              "objectNameField" : "assignee_name",
+                              "name" : "assignee_id",
+                              "objectNameField" : "assignee_id",
                               "getPSAppCodeList" : {
                                 "modelref" : true,
                                 "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
                               },
                               "getPSSysPFPlugin" : {
                                 "pluginType" : "EDITOR_CUSTOMSTYLE",
-                                "pluginCode" : "PERSONNEL_INFO",
+                                "pluginCode" : "MOB_PERSONNEL_INFO",
                                 "runtimeObject" : true
                               },
                               "predefinedType" : "FIELD_TEXT_DYNAMIC",
@@ -5686,6 +8184,20 @@
                               "grow" : -1,
                               "layout" : "FLEX"
                             },
+                            "getPSPanelItemGroupLogics" : [ {
+                              "groupOP" : "AND",
+                              "logicCat" : "PANELVISIBLE",
+                              "logicType" : "GROUP",
+                              "name" : "面板成员[assignee_id][面板显示]逻辑",
+                              "getPSPanelItemLogics" : [ {
+                                "condOp" : "ISNOTNULL",
+                                "dstModelField" : "ASSIGNEE_ID",
+                                "logicType" : "SINGLE",
+                                "name" : "逻辑项"
+                              } ],
+                              "relatedItemNames" : [ "assignee_id" ],
+                              "notMode" : false
+                            } ],
                             "viewFieldName" : "WORK_ITEM",
                             "convertToCodeItemText" : true
                           } ]
@@ -5838,28 +8350,13 @@
                             } ]
                           } ]
                         } ]
-                      }, {
-                        "contentType" : "DIVIDER",
-                        "itemStyle" : "DEFAULT",
-                        "itemType" : "RAWITEM",
-                        "getPSLayoutPos" : {
-                          "grow" : -1,
-                          "layout" : "FLEX"
-                        },
-                        "getPSRawItem" : {
-                          "contentType" : "DIVIDER",
-                          "predefinedType" : "STATIC_LABEL",
-                          "rawContent" : "标签"
-                        },
-                        "rawContent" : "标签",
-                        "id" : "7987020C-D544-4A8B-B8BD-A9FD9D9A7570"
                       } ]
                     } ],
                     "name" : "mdctrl_itempanel",
-                    "modelid" : "275BAF0E-01C5-469A-8D30-560D436E056F",
+                    "modelid" : "69C1D811-97EF-4ADE-8627-856B9BCAF9D9",
                     "modeltype" : "PSSYSVIEWPANEL"
                   },
-                  "logicName" : "mob_work_item_relf_list",
+                  "logicName" : "mob_ticket_re_work_item_list",
                   "mobListStyle" : "LISTVIEW",
                   "getPSAppDataEntity" : {
                     "modelref" : true,
@@ -6067,7 +8564,7 @@
                   "showHeader" : true,
                   "singleSelect" : false,
                   "name" : "mdctrl",
-                  "modelid" : "1C9DB13B-F330-4991-A92F-3EACF36AE493",
+                  "modelid" : "29fd5f1c2b4c835e1a6455d88275c416",
                   "modeltype" : "PSDELIST"
                 }, {
                   "codeName" : "mob_idea_re_work_item_md_view_righttoolbar",
@@ -6085,8 +8582,96 @@
                     "caption" : "添加工作项",
                     "itemType" : "ITEMS",
                     "name" : "items1",
+                    "getPSControlLogics" : [ {
+                      "itemName" : "items1",
+                      "logicTag" : "righttoolbar",
+                      "logicType" : "SCRIPT",
+                      "name" : "items1",
+                      "scriptCode" : "context.srfreadonly != true",
+                      "triggerType" : "ITEMVISIBLE"
+                    } ],
                     "getPSDEToolbarItems" : [ {
-                      "caption" : "关联工作项",
+                      "caption" : "新建",
+                      "groupExtractMode" : "ITEM",
+                      "itemType" : "DEUIACTION",
+                      "name" : "deuiaction2",
+                      "noPrivDisplayMode" : 2,
+                      "getPSAppViewUIAction" : {
+                        "modelref" : true,
+                        "id" : "righttoolbar_deuiaction2"
+                      },
+                      "getPSSysImage" : {
+                        "glyph" : "xf067@FontAwesome",
+                        "cssClass" : "fa fa-plus"
+                      },
+                      "getPSUIAction" : {
+                        "actionTarget" : "NONE",
+                        "caption" : "新建工作项",
+                        "codeName" : "product_create_work_item",
+                        "dialogResult" : "OK",
+                        "getFrontPSAppView" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_create_option_view.json",
+                          "viewType" : "DEMOBOPTVIEW"
+                        },
+                        "frontProcessType" : "WIZARD",
+                        "fullCodeName" : "relation_product_create_work_item",
+                        "name" : "产品移动端新建工作项（新建后关联）",
+                        "getNextPSUIAction" : {
+                          "getPSAppDataEntity" : {
+                            "modelref" : true,
+                            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
+                          },
+                          "modelref" : true,
+                          "id" : "after_creat_double_relation@relation"
+                        },
+                        "getPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
+                        },
+                        "getPSNavigateContexts" : [ {
+                          "key" : "WORK_ITEM",
+                          "name" : "WORK_ITEM",
+                          "rawValue" : true
+                        } ],
+                        "getPSNavigateParams" : [ {
+                          "key" : "target_type",
+                          "name" : "target_type",
+                          "value" : "target_type",
+                          "rawValue" : false
+                        }, {
+                          "key" : "product_id",
+                          "name" : "product_id",
+                          "value" : "product_id",
+                          "rawValue" : false
+                        }, {
+                          "key" : "principal_id",
+                          "name" : "principal_id",
+                          "value" : "principal_id",
+                          "rawValue" : false
+                        }, {
+                          "key" : "principal_type",
+                          "name" : "principal_type",
+                          "value" : "principal_type",
+                          "rawValue" : false
+                        } ],
+                        "refreshMode" : 1,
+                        "timeout" : 60000,
+                        "uIActionMode" : "FRONT",
+                        "uIActionTag" : "product_create_work_item",
+                        "uIActionType" : "DEUIACTION",
+                        "closeEditView" : true,
+                        "closePopupView" : true,
+                        "globalUIAction" : true,
+                        "reloadData" : true,
+                        "id" : "product_create_work_item@relation"
+                      },
+                      "tooltip" : "新建",
+                      "uIActionTarget" : "NONE",
+                      "showCaption" : true,
+                      "showIcon" : true
+                    }, {
+                      "caption" : "关联",
                       "groupExtractMode" : "ITEM",
                       "itemType" : "DEUIACTION",
                       "name" : "deuiaction1",
@@ -6094,6 +8679,9 @@
                       "getPSAppViewUIAction" : {
                         "modelref" : true,
                         "id" : "righttoolbar_deuiaction1"
+                      },
+                      "getPSSysImage" : {
+                        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\" fill=\"currentColor\">\n  <path d=\"M640 640H448V576h192V192H64v384h192v64H0V128h704v512h-64zM384 384h192v64H384v384h576V448h-192V384h256v512H320V384h64z\"></path>\n</svg>"
                       },
                       "getPSUIAction" : {
                         "actionTarget" : "NONE",
@@ -6141,11 +8729,15 @@
                         "reloadData" : true,
                         "id" : "mob_add_work_item@idea"
                       },
-                      "tooltip" : "关联工作项",
+                      "tooltip" : "关联",
                       "uIActionTarget" : "NONE",
                       "showCaption" : true,
                       "showIcon" : true
                     } ],
+                    "getPSSysImage" : {
+                      "glyph" : "xf067@FontAwesome",
+                      "cssClass" : "fa fa-plus"
+                    },
                     "tooltip" : "添加工作项",
                     "showCaption" : true,
                     "showIcon" : true
@@ -6620,35 +9212,6 @@
       },
       "allowEmpty" : true,
       "hidden" : true
-    }, {
-      "getCapPSLanguageRes" : {
-        "lanResTag" : "DEF.LNAME.ASSIGNEE_ID"
-      },
-      "caption" : "负责人",
-      "codeName" : "assignee_id",
-      "dataType" : 25,
-      "detailStyle" : "DEFAULT",
-      "detailType" : "FORMITEM",
-      "enableCond" : 3,
-      "ignoreInput" : 0,
-      "labelPos" : "LEFT",
-      "labelWidth" : 130,
-      "name" : "assignee_id",
-      "noPrivDisplayMode" : 1,
-      "getPSAppDEField" : {
-        "name" : "ASSIGNEE_ID",
-        "codeName" : "assignee_id"
-      },
-      "getPSEditor" : {
-        "editorType" : "HIDDEN",
-        "name" : "assignee_id"
-      },
-      "getPSLayoutPos" : {
-        "colMD" : 24,
-        "layout" : "TABLE_24COL"
-      },
-      "allowEmpty" : true,
-      "hidden" : true
     } ],
     "getPSLayout" : {
       "childColMD" : 24,
@@ -6696,6 +9259,7 @@
     }
   },
   "enableAutoSave" : true,
+  "enableItemPrivilege" : true,
   "mobileControl" : true,
   "noTabHeader" : true,
   "modelid" : "90A79565-BE13-485B-A681-62C221F2F0B1",

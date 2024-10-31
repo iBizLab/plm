@@ -7,13 +7,13 @@
   "name" : "执行用例关联分页计数器",
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
-    "leftPos" : -10,
+    "leftPos" : -260,
     "logicNodeType" : "BEGIN",
     "name" : "开始",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "RAWSQLCALL1"
+        "id" : "DEBUGPARAM1"
       },
       "name" : "开始获取数据",
       "getSrcPSDELogicNode" : {
@@ -21,7 +21,7 @@
         "id" : "Begin"
       }
     } ],
-    "topPos" : 200,
+    "topPos" : 254,
     "parallelOutput" : true
   }, {
     "codeName" : "RAWSQLCALL1",
@@ -100,6 +100,27 @@
     },
     "returnType" : "LOGICPARAM",
     "topPos" : 200
+  }, {
+    "codeName" : "DEBUGPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : -188,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "调试逻辑参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM1"
+      }
+    } ],
+    "topPos" : 208
   }, {
     "codeName" : "RAWSQLCALL3",
     "getDstPSDELogicParam" : {

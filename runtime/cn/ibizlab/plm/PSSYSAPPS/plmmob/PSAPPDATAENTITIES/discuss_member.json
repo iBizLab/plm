@@ -1,4 +1,35 @@
 {
+  "getAllPSAppDEACModes" : [ {
+    "codeName" : "mob_topic_member_select",
+    "logicName" : "话题人员选择自填模式（移动端）",
+    "name" : "mob_topic_member_select",
+    "getPSDEACModeDataItems" : [ {
+      "dataType" : 25,
+      "name" : "value",
+      "getPSAppDEField" : {
+        "name" : "USER_ID",
+        "codeName" : "user_id"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "text",
+      "getPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
+    } ],
+    "pagingSize" : 50,
+    "getTextPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "getValuePSAppDEField" : {
+      "name" : "USER_ID",
+      "codeName" : "user_id"
+    },
+    "defaultMode" : false,
+    "enablePagingBar" : false
+  } ],
   "getAllPSAppDEActions" : [ {
     "actionMode" : "CUSTOM",
     "codeName" : "change_role",
@@ -186,6 +217,43 @@
     "requestPath" : "/get_draft",
     "builtinMethod" : false
   }, {
+    "actionMode" : "GETDRAFT",
+    "codeName" : "mob_create_topic_member",
+    "methodType" : "DEACTION",
+    "name" : "mob_create_topic_member",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "discuss_member_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "discuss_member_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_member/PSDEACTIONS/mob_create_topic_member.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "CREATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "mob_create_topic_member"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/mob_create_topic_member",
+    "builtinMethod" : false
+  }, {
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "nothing",
@@ -253,6 +321,41 @@
     "needResourceKey" : true,
     "noServiceCodeName" : true
   }, {
+    "actionMode" : "CUSTOM",
+    "actionTag" : "Restart",
+    "codeName" : "restart",
+    "methodType" : "DEACTION",
+    "name" : "Restart",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "discuss_member_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_member/PSDEACTIONS/Restart.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "restart"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/restart",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "SAVE",
     "actionTag" : "Save",
     "codeName" : "save",
@@ -291,6 +394,41 @@
     "requestParamType" : "ENTITY",
     "requestPath" : "/save",
     "builtinMethod" : false
+  }, {
+    "actionMode" : "CUSTOM",
+    "actionTag" : "Stop",
+    "codeName" : "stop",
+    "methodType" : "DEACTION",
+    "name" : "Stop",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "discuss_member_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_member/PSDEACTIONS/Stop.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "stop"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/stop",
+    "builtinMethod" : false,
+    "needResourceKey" : true
   }, {
     "actionMode" : "UPDATE",
     "actionTag" : "Update",
@@ -1261,6 +1399,43 @@
     "requestPath" : "/get_draft",
     "builtinMethod" : false
   }, {
+    "actionMode" : "GETDRAFT",
+    "codeName" : "mob_create_topic_member",
+    "methodType" : "DEACTION",
+    "name" : "mob_create_topic_member",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "discuss_member_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "discuss_member_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_member/PSDEACTIONS/mob_create_topic_member.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "CREATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "mob_create_topic_member"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/mob_create_topic_member",
+    "builtinMethod" : false
+  }, {
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "nothing",
@@ -1328,6 +1503,41 @@
     "needResourceKey" : true,
     "noServiceCodeName" : true
   }, {
+    "actionMode" : "CUSTOM",
+    "actionTag" : "Restart",
+    "codeName" : "restart",
+    "methodType" : "DEACTION",
+    "name" : "Restart",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "discuss_member_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_member/PSDEACTIONS/Restart.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "restart"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/restart",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "SAVE",
     "actionTag" : "Save",
     "codeName" : "save",
@@ -1366,6 +1576,41 @@
     "requestParamType" : "ENTITY",
     "requestPath" : "/save",
     "builtinMethod" : false
+  }, {
+    "actionMode" : "CUSTOM",
+    "actionTag" : "Stop",
+    "codeName" : "stop",
+    "methodType" : "DEACTION",
+    "name" : "Stop",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "discuss_member_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_member/PSDEACTIONS/Stop.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "stop"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/stop",
+    "builtinMethod" : false,
+    "needResourceKey" : true
   }, {
     "actionMode" : "UPDATE",
     "actionTag" : "Update",
@@ -1479,6 +1724,120 @@
     "methodType" : "FILTERACTION",
     "name" : "FILTERUPDATE",
     "builtinMethod" : true
+  } ],
+  "getAllPSAppDEUIActions" : [ {
+    "actionTarget" : "NONE",
+    "caption" : "添加成员",
+    "codeName" : "mob_add_member",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/discuss_member_mob_more_mem_selected.json",
+      "viewType" : "DEMOBMPICKUPVIEW"
+    },
+    "fullCodeName" : "discuss_member_mob_add_member",
+    "name" : "话题添加成员（移动端）",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "mob_create_topic_member"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_member.json"
+    },
+    "getPSSysImage" : {
+      "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1727164707672\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"4257\" width=\"14\" height=\"14\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><path d=\"M517 531.3c-114.8 0-208.1-93.3-208.1-208.1S402.2 115.1 517 115.1s208.1 93.3 208.1 208.1S631.7 531.3 517 531.3z m0-366.3c-87.2 0-158.1 70.9-158.1 158.1S429.8 481.3 517 481.3s158.1-70.9 158.1-158.1S604.1 165 517 165z\" p-id=\"4258\" fill=\"#2c2c2c\"></path><path d=\"M139.3 908.9c-13.8 0-25-11.2-25-25 0-222 180.6-402.6 402.7-402.6 13.8 0 25 11.2 25 25s-11.2 25-25 25c-194.5 0-352.7 158.2-352.7 352.6 0 13.8-11.2 25-25 25zM884.7 759.4h-299c-13.8 0-25-11.2-25-25s11.2-25 25-25h299c13.8 0 25 11.2 25 25s-11.2 25-25 25z\" p-id=\"4259\" fill=\"#2c2c2c\"></path><path d=\"M735.2 908.9c-13.8 0-25-11.2-25-25v-299c0-13.8 11.2-25 25-25s25 11.2 25 25v299c0 13.8-11.2 25-25 25z\" p-id=\"4260\" fill=\"#2c2c2c\"></path></svg>"
+    },
+    "getPSSysPFPlugin" : {
+      "pluginType" : "DEUIACTION",
+      "pluginCode" : "ADD_TEST_MEMBER",
+      "runtimeObject" : true
+    },
+    "refreshMode" : 1,
+    "successMsg" : "添加成功",
+    "timeout" : 60000,
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "mob_add_member",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "mob_add_member@discuss_member"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "设置角色",
+    "codeName" : "mob_setting_role",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/discuss_member_mob_topic_role_option_view.json",
+      "viewType" : "DEMOBOPTVIEW"
+    },
+    "fullCodeName" : "discuss_member_mob_setting_role",
+    "name" : "设置角色（移动端）",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "change_role"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_member.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf185@FontAwesome",
+      "cssClass" : "fa fa-sun-o"
+    },
+    "refreshMode" : 1,
+    "successMsg" : "变更角色成功",
+    "timeout" : 60000,
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "mob_setting_role",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "mob_setting_role@discuss_member"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "移除成员",
+    "codeName" : "remove_member",
+    "confirmMsg" : "确认删除该成员？",
+    "fullCodeName" : "discuss_member_remove_member",
+    "name" : "移除成员",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_member.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf014@FontAwesome",
+      "cssClass" : "fa fa-trash-o"
+    },
+    "refreshMode" : 1,
+    "successMsg" : "删除成功",
+    "timeout" : 60000,
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "remove_member",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "remove_member@discuss_member"
+  } ],
+  "getAllPSAppViews" : [ {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/discuss_member_mob_topic_role_option_view.json",
+    "viewType" : "DEMOBOPTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/discuss_member_mob_more_mem_selected.json",
+    "viewType" : "DEMOBMPICKUPVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/discuss_member_mob_md_view.json",
+    "viewType" : "DEMOBMDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/discuss_member_mob_dpet_pickup_tree_view.json",
+    "viewType" : "DEMOBPICKUPTREEVIEW"
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "建立",
@@ -1650,5 +2009,53 @@
   "enableUIModify" : true,
   "enableUIRemove" : true,
   "enableWFActions" : false,
-  "major" : true
+  "major" : true,
+  "getAllPSAppDEUIActionGroups" : [ {
+    "codeName" : "Usr1024941951",
+    "name" : "话题成员列表按钮行为组（移动端）",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_member.json"
+    },
+    "uniqueTag" : "discuss_member__Usr1024941951",
+    "getPSUIActionGroupDetails" : [ {
+      "caption" : "设置角色",
+      "detailType" : "DEUIACTION",
+      "name" : "u7eab2e5",
+      "getPSSysImage" : {
+        "glyph" : "xf185@FontAwesome",
+        "cssClass" : "fa fa-sun-o"
+      },
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_member.json"
+        },
+        "modelref" : true,
+        "id" : "mob_setting_role@discuss_member"
+      }
+    }, {
+      "caption" : "移除成员",
+      "detailType" : "DEUIACTION",
+      "name" : "u6fc652b",
+      "getPSSysImage" : {
+        "glyph" : "xf014@FontAwesome",
+        "cssClass" : "fa fa-trash-o"
+      },
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_member.json"
+        },
+        "modelref" : true,
+        "id" : "remove_member@discuss_member"
+      }
+    } ]
+  } ]
 }

@@ -559,6 +559,9 @@
     "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint/PSDEDRITEMS/UsrDRItem0528379389.json"
   }, {
     "modelref" : true,
+    "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint/PSDEDRITEMS/UsrDRItem1024480121.json"
+  }, {
+    "modelref" : true,
     "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint/PSDEDRITEMS/UsrDRItem1214315391.json"
   }, {
     "modelref" : true,
@@ -1428,6 +1431,35 @@
     },
     "enableBackend" : true,
     "enableFront" : true
+  }, {
+    "actionHolder" : 1,
+    "codeName" : "mob_project_sprint",
+    "dataSetType" : "DELOGIC",
+    "logicName" : "项目下迭代（移动端）",
+    "name" : "mob_project_sprint",
+    "getPSDEDataSetInput" : {
+      "name" : "Mob_project_sprintInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "sprint_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Mob_project_sprintResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "sprint_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint/PSDELOGICS/mob_project_sprint.json"
+    },
+    "predefinedType" : "DELOGIC",
+    "enableBackend" : true,
+    "enableFront" : false
   }, {
     "codeName" : "not_finish",
     "logicName" : "未结束的迭代",
@@ -5164,6 +5196,162 @@
     "enableBackend" : true,
     "enableFront" : false
   }, {
+    "codeName" : "mob_project_sprint",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint/PSDELOGICS/mob_project_sprint.json",
+    "logicName" : "项目下迭代（移动端）",
+    "memo" : "设置进度条信息",
+    "name" : "项目下迭代（移动端）",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 210,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM1",
+      "leftPos" : 170,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置过滤器",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "N_PROJECT_ID_EQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "filter"
+        },
+        "name" : "Default[project] ==> filter[N_PROJECT_ID_EQ]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "project",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 327
+    }, {
+      "codeName" : "DEDATASET1",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint.json"
+      },
+      "leftPos" : 170,
+      "logicNodeType" : "DEDATASET",
+      "name" : "项目下迭代",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "sprint_page_result"
+      },
+      "topPos" : 433
+    }, {
+      "code" : "def sprint_page_result = logic.param('sprint_page_result').getReal()\r\nsprint_page_result.each { sprint ->\r\n    def all_work_items = sprint.get('all_work_items')\r\n    def completed_work_items = sprint.get('completed_work_items')\r\n    def schedule = 0\r\n    if (all_work_items != 0 && completed_work_items != 0) {\r\n        schedule = Math.round(completed_work_items / all_work_items * 100)\r\n    }\r\n    sprint.set('schedule', schedule)\r\n    sprint.set('schedule_text', \"${schedule}%\")\r\n}\r\n",
+      "codeName" : "RAWSFCODE1",
+      "codeType" : "Groovy",
+      "leftPos" : 170,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "填充进度信息",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        }
+      } ],
+      "topPos" : 554
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 210,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "sprint_page_result"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 680
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint.json"
+      },
+      "default" : true,
+      "filterParam" : true
+    }, {
+      "codeName" : "filter",
+      "logicName" : "过滤器",
+      "name" : "过滤器",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint.json"
+      },
+      "filterParam" : true
+    }, {
+      "codeName" : "sprint_page_result",
+      "logicName" : "迭代分页查询结果",
+      "name" : "迭代分页查询结果",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint.json"
+      },
+      "entityPageParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "nothing",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint/PSDELOGICS/nothing.json",
@@ -6988,6 +7176,12 @@
     "realModelSubType" : "DETABEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_edit_view",
+    "logicName" : "迭代移动端编辑视图",
+    "name" : "迭代移动端编辑视图",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "pick_up_grid_view",
     "logicName" : "迭代实体选择表格视图（部件视图）",
     "name" : "迭代实体选择表格视图（部件视图）",
@@ -7082,6 +7276,12 @@
     "realModelSubType" : "DEPICKUPTREEVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_work_item_view",
+    "logicName" : "移动端迭代下工作项视图",
+    "name" : "移动端迭代下工作项视图",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "EditView2",
     "logicName" : "迭代实体编辑视图（左右关系）",
     "name" : "迭代实体编辑视图（左右关系）",
@@ -7104,6 +7304,20 @@
     "logicName" : "迭代快速建立视图_表单",
     "modelTag2" : "0",
     "name" : "迭代快速建立视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_work_item_view_Form",
+    "logicName" : "移动端迭代下工作项视图_表单",
+    "modelTag2" : "1",
+    "name" : "移动端迭代下工作项视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_edit_view_Form",
+    "logicName" : "迭代移动端编辑视图_表单",
+    "modelTag2" : "1",
+    "name" : "迭代移动端编辑视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {

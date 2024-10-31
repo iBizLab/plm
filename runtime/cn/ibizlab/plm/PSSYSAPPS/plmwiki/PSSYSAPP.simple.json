@@ -2,7 +2,7 @@
   "name" : "PLMWiki",
   "simple" : "true",
   "title" : "PLM",
-  "caption" : "产品生命周期管理系统",
+  "caption" : "软件生命周期管理系统",
   "getAllPSAppPFPluginRefs" : [ {
     "name" : "LuckySheet编辑",
     "getPSSysPFPlugin" : {
@@ -100,6 +100,20 @@
     "refTag" : "FRONT",
     "runtimeObject" : true
   }, {
+    "name" : "组装选中数据",
+    "getPSSysPFPlugin" : {
+      "pluginType" : "DEUIACTION",
+      "pluginCode" : "ASSEMBLE_SELECTED_DATA",
+      "runtimeObject" : true
+    },
+    "pluginCode" : "ASSEMBLE_SELECTED_DATA",
+    "pluginType" : "DEUIACTION",
+    "rTObjectName" : "MobAssembleSelectedData",
+    "rTObjectRepo" : "@ibiz-template-plmmob/mob-assemble-selected-data@0.0.3-alpha.90",
+    "refMode" : "UIACTION",
+    "refTag" : "FRONT",
+    "runtimeObject" : true
+  }, {
     "name" : "锚点富文本",
     "getPSSysPFPlugin" : {
       "pluginType" : "EDITOR_CUSTOMSTYLE",
@@ -109,7 +123,7 @@
     "pluginCode" : "ANCHO_HTML",
     "pluginType" : "EDITOR_CUSTOMSTYLE",
     "rTObjectName" : "AnchoHtml",
-    "rTObjectRepo" : "@ibiz-template-plm/ancho-html@0.0.3-alpha.52",
+    "rTObjectRepo" : "@ibiz-template-plm/ancho-html@0.0.3-alpha.76",
     "refMode" : "EDITORSTYPE",
     "runtimeObject" : true
   }, {
@@ -382,11 +396,11 @@
     "frontProcessType" : "OTHER",
     "fullCodeName" : "edit_filter",
     "name" : "过滤器编辑",
+    "scriptCode" : "if (ctrl) { const id = ctrl.model.id; ctrl.dashboard.openFilterDesignPage({id}) }",
     "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "edit_filter",
     "uIActionType" : "DEUIACTION",
-    "uILogicAttachMode" : "REPLACE",
     "globalUIAction" : true
   }, {
     "actionTarget" : "NONE",
@@ -395,11 +409,11 @@
     "frontProcessType" : "OTHER",
     "fullCodeName" : "hight_light_filter",
     "name" : "过滤器高亮",
+    "scriptCode" : "if (ctrl) { ctrl.showEffectiveCtrl() }",
     "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "hight_light_filter",
     "uIActionType" : "DEUIACTION",
-    "uILogicAttachMode" : "REPLACE",
     "globalUIAction" : true
   } ],
   "cache" : {
@@ -2144,7 +2158,7 @@
     }, {
       "accUserMode" : 3,
       "appSwitchMode" : 0,
-      "caption" : "产品生命周期管理系统",
+      "caption" : "软件生命周期管理系统",
       "codeName" : "app_index_view",
       "dynaModelFilePath" : "PSSYSAPPS/plmwiki/PSAPPINDEXVIEWS/app_index_view.json",
       "name" : "AppIndexView",
@@ -2189,7 +2203,7 @@
         "modelid" : "084AA253-AA6E-4BED-B06D-B796DD772AC2",
         "modeltype" : "PSAPPMENU"
       }, {
-        "caption" : "产品生命周期管理系统",
+        "caption" : "软件生命周期管理系统",
         "codeName" : "captionbar",
         "controlType" : "CAPTIONBAR",
         "name" : "captionbar",

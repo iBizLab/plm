@@ -24,10 +24,11 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseothers_relation_test_caseloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseothers_relation_test_caserenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新建立正向关联参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseothers_relation_test_caserenewparam2" id="renewparam2" implementation="http://www.jboss.org/drools/rule" name="重新建立反向关联参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseothers_relation_test_caseprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充需要的属性值"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseothers_relation_test_caserawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="关联标识"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseothers_relation_test_caseend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseothers_relation_test_caseprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充需要的属性值"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseothers_relation_test_casedeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="生成正向关联数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseothers_relation_test_casedeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="生成反向关联数据"/>
                         <endEvent id="deaction2_end" name="end"/>
@@ -62,7 +63,9 @@
                     </sequenceFlow>
                     <sequenceFlow id="renewparam1_renewparam2" sourceRef="renewparam1" targetRef="renewparam2">
                     </sequenceFlow>
-                    <sequenceFlow id="renewparam2_prepareparam1" sourceRef="renewparam2" targetRef="prepareparam1">
+                    <sequenceFlow id="renewparam2_rawsfcode1" sourceRef="renewparam2" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_prepareparam1" sourceRef="rawsfcode1" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
                     </sequenceFlow>

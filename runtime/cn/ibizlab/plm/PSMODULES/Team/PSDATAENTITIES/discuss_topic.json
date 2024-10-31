@@ -262,6 +262,16 @@
   }, {
     "actionMode" : "READ",
     "actionType" : "BUILTIN",
+    "getAfterPSDEActionLogics" : [ {
+      "actionLogicType" : 1,
+      "attachMode" : "AFTER",
+      "name" : "附加逻辑",
+      "getPSDELogic" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic/PSDELOGICS/get_discuss_member_one.json"
+      },
+      "internalLogic" : true
+    } ],
     "codeName" : "Get",
     "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic/PSDEACTIONS/Get.json",
@@ -607,6 +617,32 @@
     "enableFront" : false
   }, {
     "actionHolder" : 1,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "mob_change_admin_role",
+    "dataAccessAction" : "NONE",
+    "dynaModelFilePath" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic/PSDEACTIONS/mob_change_admin_role.json",
+    "logicName" : "变更管理员角色（移动端）",
+    "name" : "mob_change_admin_role",
+    "getPSDEActionInput" : {
+      "name" : "Mob_change_admin_roleInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "discuss_topic_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Mob_change_admin_roleResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic/PSDELOGICS/mob_change_admin_role.json"
+    },
+    "enableFront" : false
+  }, {
+    "actionHolder" : 1,
     "actionMode" : "UPDATE",
     "actionType" : "DELOGIC",
     "codeName" : "move_discuss_topic",
@@ -810,6 +846,18 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic/PSDEDRITEMS/UsrDRItem0517976442.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic/PSDEDRITEMS/UsrDRItem1023326198.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic/PSDEDRITEMS/UsrDRItem1023547126.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic/PSDEDRITEMS/UsrDRItem1023821314.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic/PSDEDRITEMS/UsrDRItem1030454101.json"
   } ],
   "getAllPSDEDataQueries" : [ {
     "getAllPSDEDataQueryCodes" : [ {
@@ -2053,6 +2101,9 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic/PSDEDATARELATIONS/management_tab_exp_view_DR.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic/PSDEDATARELATIONS/mob_topic_tab_exp_view_DR.json"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic/PSDEDATARELATIONS/setting_view_DR.json"
@@ -4910,6 +4961,654 @@
     "enableBackend" : true,
     "enableFront" : false
   }, {
+    "codeName" : "get_discuss_member_one",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic/PSDELOGICS/get_discuss_member_one.json",
+    "logicName" : "获取话题成员",
+    "memo" : "获取话题成员信息，用于判断当前用户权限",
+    "name" : "获取话题成员",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : -60,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE3"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : -80,
+      "parallelOutput" : true
+    }, {
+      "code" : "def _usercontext = sys.user();\r\ndef srfreadonly = _usercontext.testSysUniRes(\"SYSTEM\");\r\ndef _default = logic.param(\"default\").real;\r\nif(srfreadonly == true){\r\n    _default.set(\"srfreadonly\",false);\r\n}",
+      "codeName" : "RAWSFCODE3",
+      "codeType" : "Groovy",
+      "leftPos" : 39,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "判断系统管理员身份",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        },
+        "name" : "非系统管理员",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNULL",
+            "dstFieldName" : "srfreadonly",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[srfreadonly] 值为空(Nil)"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE3"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END2"
+        },
+        "name" : "系统管理员",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "srfreadonly",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[srfreadonly] 等于(=) false",
+            "paramValue" : "false"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE3"
+        }
+      } ],
+      "topPos" : -72
+    }, {
+      "codeName" : "END2",
+      "leftPos" : 79,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 215
+    }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : 294,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "获取话题ID并设置过滤参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET3"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "N_OWNER_ID_EQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "filter"
+        },
+        "name" : "Default[ID] ==> filter[N_OWNER_ID_EQ]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "N_USER_ID_EQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "filter"
+        },
+        "name" : "用户全局对象[srfpersonid] ==> filter[N_USER_ID_EQ]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "srfpersonid",
+        "srcValueType" : "SESSION"
+      } ],
+      "topPos" : -72
+    }, {
+      "codeName" : "DEDATASET3",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_member.json"
+      },
+      "leftPos" : 492,
+      "logicNodeType" : "DEDATASET",
+      "name" : "查询当前用户是否为话题成员",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        },
+        "name" : "不在话题中的成员",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "size",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "members"
+            },
+            "logicType" : "SINGLE",
+            "name" : "members[size] 等于(=) 0",
+            "paramValue" : "0"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET3"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM5"
+        },
+        "name" : "当前用户为话题成员",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "size",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "members"
+            },
+            "logicType" : "SINGLE",
+            "name" : "members[size] 等于(=) 1",
+            "paramValue" : "1"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET3"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "members"
+      },
+      "topPos" : -72
+    }, {
+      "codeName" : "PREPAREPARAM5",
+      "leftPos" : 492,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "绑定用户数据到for_obj",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE2"
+        },
+        "name" : "非只读成员",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "NOTEQ",
+            "dstFieldName" : "role_id",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "for_obj"
+            },
+            "logicType" : "SINGLE",
+            "name" : "for_obj[role_id] 不等于(<>) reader",
+            "paramValue" : "reader"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM5"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        },
+        "name" : "只读成员",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "role_id",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "for_obj"
+            },
+            "logicType" : "SINGLE",
+            "name" : "for_obj[role_id] 等于(=) reader",
+            "paramValue" : "reader"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM5"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_obj"
+        },
+        "name" : "members[0] ==> for_obj",
+        "paramAction" : "BINDPARAM",
+        "srcFieldName" : "0",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "members"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : -336
+    }, {
+      "code" : "var defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);",
+      "codeName" : "RAWSFCODE1",
+      "leftPos" : 940,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "只读权限",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END6"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        }
+      } ],
+      "topPos" : -64
+    }, {
+      "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"srfreadonly\", false);",
+      "codeName" : "RAWSFCODE2",
+      "leftPos" : 940,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "非只读权限",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END6"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE2"
+        }
+      } ],
+      "topPos" : -330
+    }, {
+      "codeName" : "END6",
+      "leftPos" : 1240,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : -220
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "filter",
+      "logicName" : "过滤器",
+      "name" : "过滤器",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_member.json"
+      },
+      "filterParam" : true
+    }, {
+      "codeName" : "for_obj",
+      "logicName" : "循环临时变量",
+      "name" : "循环临时变量",
+      "entityParam" : true
+    }, {
+      "codeName" : "members",
+      "logicName" : "成员",
+      "name" : "成员",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_member.json"
+      },
+      "entityPageParam" : true
+    }, {
+      "codeName" : "user",
+      "logicName" : "当前登录人",
+      "name" : "当前登录人",
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
+    "codeName" : "mob_change_admin_role",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic/PSDELOGICS/mob_change_admin_role.json",
+    "logicName" : "变更管理员角色（移动端）",
+    "name" : "变更管理员角色（移动端）",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 400,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "BINDPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 50,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "BINDPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "selectdata"
+      },
+      "leftPos" : 360,
+      "logicNodeType" : "BINDPARAM",
+      "name" : "绑定参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "name" : "有勾选添加成员",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "GT",
+            "dstFieldName" : "size",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "selectdata"
+            },
+            "logicType" : "SINGLE",
+            "name" : "selectdata[size] 大于(>) 0",
+            "paramValue" : "0"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "BINDPARAM1"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "未勾选添加成员",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "size",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "selectdata"
+            },
+            "logicType" : "SINGLE",
+            "name" : "selectdata[size] 等于(=) 0",
+            "paramValue" : "0"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "BINDPARAM1"
+        }
+      } ],
+      "srcFieldName" : "srfactionparam",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "topPos" : 284
+    }, {
+      "codeName" : "LOOPSUBCALL1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "leftPos" : 679,
+      "logicNodeType" : "LOOPSUBCALL",
+      "name" : "循环子调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RENEWPARAM4"
+        },
+        "name" : "进入循环",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "subCallLink" : true
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "结束循环",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        }
+      } ],
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "selectdata"
+      },
+      "topPos" : 284
+    }, {
+      "codeName" : "RENEWPARAM4",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "update_member_info"
+      },
+      "leftPos" : 909,
+      "logicNodeType" : "RENEWPARAM",
+      "name" : "重新建立更新成员信息参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RENEWPARAM4"
+        }
+      } ],
+      "topPos" : 284
+    }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : 1139,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备更新管理员身份",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "USER_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "update_member_info"
+        },
+        "name" : "for_temp_obj[USER_ID] ==> update_member_info[USER_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "USER_ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_temp_obj"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "ROLE_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "update_member_info"
+        },
+        "name" : "直接值[admin] ==> update_member_info[ROLE_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "admin",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "OWNER_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "update_member_info"
+        },
+        "name" : "Default[ID] ==> update_member_info[OWNER_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 284
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_member/PSDEACTIONS/Save.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "update_member_info"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_member.json"
+      },
+      "leftPos" : 1339,
+      "logicNodeType" : "DEACTION",
+      "name" : "更新管理员身份",
+      "topPos" : 284
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 400,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 597
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "for_temp_obj",
+      "logicName" : "循环临时变量",
+      "name" : "循环临时变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "selectdata",
+      "logicName" : "用户列表",
+      "name" : "用户列表",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+      },
+      "entityListParam" : true
+    }, {
+      "codeName" : "update_member_info",
+      "logicName" : "更新成员信息",
+      "name" : "更新成员信息",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_member.json"
+      },
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "move_discuss_topic",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic/PSDELOGICS/move_discuss_topic.json",
@@ -6029,6 +6728,12 @@
     "realModelSubType" : "DEREDIRECTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_advanced_setting",
+    "logicName" : "话题高级设置编辑视图（移动端）",
+    "name" : "话题高级设置编辑视图（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "PickupView",
     "logicName" : "话题实体数据选择视图",
     "modelTag" : "PICKUPVIEW",
@@ -6054,6 +6759,18 @@
     "realModelSubType" : "DEWIZARDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_topic_dis_list",
+    "logicName" : "话题讨论列表编辑视图（移动端）",
+    "name" : "话题讨论列表编辑视图（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_deleted_md_view",
+    "logicName" : "话题多数据视图（已删除-移动端）",
+    "name" : "话题多数据视图（已删除-移动端）",
+    "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "move_discuss_topic_view",
     "logicName" : "话题移动视图",
     "name" : "话题移动视图",
@@ -6070,6 +6787,12 @@
     "logicName" : "协作空间表格视图（已归档）",
     "name" : "协作空间表格视图（已归档）",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_group_topic",
+    "logicName" : "话题多数据视图（团队话题-移动端）",
+    "name" : "话题多数据视图（团队话题-移动端）",
+    "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "base_information_edit_view",
@@ -6104,16 +6827,40 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_create_edit_view",
+    "logicName" : "新建话题编辑视图（移动端）",
+    "name" : "新建话题编辑视图（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "config_tree_exp_view",
     "logicName" : "协作空间配置中心视图",
     "name" : "协作空间配置中心视图",
     "realModelSubType" : "DETREEEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_ing_md_view",
+    "logicName" : "话题多数据视图（进行中-移动端）",
+    "name" : "话题多数据视图（进行中-移动端）",
+    "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_topic_tab_exp_view",
+    "logicName" : "话题管理分页导航视图（移动端）",
+    "name" : "话题管理分页导航视图（移动端）",
+    "realModelSubType" : "DEMOBTABEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "all_grid_view",
     "logicName" : "话题实体表格视图（全部话题）",
     "name" : "话题实体表格视图（全部话题）",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_topic_base_info",
+    "logicName" : "话题基本信息编辑视图（移动端）",
+    "name" : "话题基本信息编辑视图（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView2",
@@ -6132,6 +6879,18 @@
     "logicName" : "协作空间表格视图（进行中）",
     "name" : "协作空间表格视图（进行中）",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_move_discuss_topic",
+    "logicName" : "话题移动选项操作视图（移动端）",
+    "name" : "话题移动选项操作视图（移动端）",
+    "realModelSubType" : "DEMOBOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_org_topic",
+    "logicName" : "话题多数据视图（组织话题-移动端）",
+    "name" : "话题多数据视图（组织话题-移动端）",
+    "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "tab_exp_view",
@@ -6164,6 +6923,12 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_show_base_info",
+    "logicName" : "话题基本信息编辑视图（展示-移动端）",
+    "name" : "话题基本信息编辑视图（展示-移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "MPickupView",
     "logicName" : "话题实体数据多项选择视图",
     "modelTag" : "MPICKUPVIEW",
@@ -6175,6 +6940,12 @@
     "logicName" : "协作空间表格视图（已删除）",
     "name" : "协作空间表格视图（已删除）",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_filed_md_view",
+    "logicName" : "话题多数据视图（已归档-移动端）",
+    "name" : "话题多数据视图（已归档-移动端）",
+    "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "wizard_create",
@@ -6199,10 +6970,24 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
+    "codeName" : "mob_advanced_setting_Form",
+    "logicName" : "话题高级设置编辑视图（移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "话题高级设置编辑视图（移动端）_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "base_informatio",
     "logicName" : "基本信息_表单",
     "modelTag2" : "0",
     "name" : "基本信息_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_move_discuss_topic_Form",
+    "logicName" : "话题移动视图（移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "话题移动视图（移动端）_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -6214,10 +6999,31 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
+    "codeName" : "mob_topic_dis_list_Form",
+    "logicName" : "话题讨论列表编辑视图（移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "话题讨论列表编辑视图（移动端）_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "setting_view_Form",
     "logicName" : "话题配置视图_表单",
     "modelTag2" : "0",
     "name" : "话题配置视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_topic_base_info_Form",
+    "logicName" : "话题基本信息编辑视图（移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "话题基本信息编辑视图（移动端）_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_show_base_info_Form",
+    "logicName" : "话题基本信息编辑视图（展示-移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "话题基本信息编辑视图（展示-移动端）_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -6232,6 +7038,13 @@
     "logicName" : "信息展示_表单",
     "modelTag2" : "0",
     "name" : "信息展示_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_create_edit_view_Form",
+    "logicName" : "新建话题编辑视图（移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "新建话题编辑视图（移动端）_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {

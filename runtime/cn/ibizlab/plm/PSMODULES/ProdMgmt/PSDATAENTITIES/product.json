@@ -1036,6 +1036,33 @@
     "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRITEMS/UsrDRItem0929762903.json"
   }, {
     "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRITEMS/UsrDRItem0930397600.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRITEMS/UsrDRItem1018194774.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRITEMS/UsrDRItem1018373653.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRITEMS/UsrDRItem1021645636.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRITEMS/UsrDRItem1023226705.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRITEMS/UsrDRItem1023686111.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRITEMS/UsrDRItem1023721902.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRITEMS/UsrDRItem1023758965.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRITEMS/UsrDRItem1023899091.json"
+  }, {
+    "modelref" : true,
     "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRITEMS/UsrDRItem1211332658.json"
   }, {
     "modelref" : true,
@@ -1310,6 +1337,81 @@
     },
     "getPSDEDataQueryReturn" : {
       "name" : "Cur_productResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "product_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDATAQUERIES/customer_user/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "customer_user",
+    "logicName" : "特定用户",
+    "name" : "customer_user",
+    "getPSDEDQMain" : {
+      "getChildPSDEDQJoins" : [ {
+        "getDERPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_member.json"
+        },
+        "getJoinPSDER" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_member/PSDERS/DER1N_PRODUCT_MEMBER_PRODUCT_PRODUCT_ID.json"
+        },
+        "getJoinPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_member.json"
+        },
+        "joinType" : "1N",
+        "name" : "PRODUCT_MEMBER存在1:N（EXISTS (SELECT)）DER1N_PRODUCT_MEMBER_PRODUCT_PRODUCT_ID",
+        "getPSDEDQGroupCondition" : {
+          "condOp" : "AND",
+          "condType" : "GROUP",
+          "name" : "连接条件",
+          "getPSDEDQConditions" : [ {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "customer",
+            "fieldName" : "ROLE_ID",
+            "name" : "(ROLE_ID) 等于(=) customer",
+            "getPSDEField" : {
+              "name" : "ROLE_ID",
+              "codeName" : "role_id"
+            }
+          }, {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "srfpersonid",
+            "fieldName" : "USER_ID",
+            "name" : "(USER_ID) 等于(=) 用户上下文 srfpersonid",
+            "getPSDEField" : {
+              "name" : "USER_ID",
+              "codeName" : "user_id"
+            },
+            "getPSVARTypeId" : "SESSIONCONTEXT"
+          } ]
+        }
+      } ],
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "PRODUCT"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Customer_userInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "product_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Customer_userResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "product_dto"
@@ -1990,7 +2092,13 @@
     "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDATARELATIONS/filter_tab_exp_view_DR.json"
   }, {
     "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDATARELATIONS/idea_configuration_tab_exp_dr.json"
+  }, {
+    "modelref" : true,
     "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDATARELATIONS/mgr_setting_view_dr.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDATARELATIONS/mob_recycle_tab_view_DR.json"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDATARELATIONS/mob_tab_exp_view_DR.json"
@@ -2002,7 +2110,7 @@
     "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDATARELATIONS/setting_view_dr.json"
   }, {
     "modelref" : true,
-    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDATARELATIONS/test_mob_tab_exp_view_DR.json"
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDATARELATIONS/ticket_configuration_tab_exp_dr.json"
   } ],
   "getAllPSDEDataSets" : [ {
     "codeName" : "Default",
@@ -2114,6 +2222,33 @@
     "enableFront" : true,
     "enableTempData" : true
   }, {
+    "codeName" : "customer_user",
+    "logicName" : "特定用户",
+    "name" : "customer_user",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "customer_user"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Customer_userInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "product_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Customer_userResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "product_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true,
+    "enableTempData" : true
+  }, {
     "codeName" : "deleted",
     "logicName" : "已删除",
     "name" : "deleted",
@@ -2191,6 +2326,49 @@
     },
     "getPSDEDataSetReturn" : {
       "name" : "MainResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "product_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true,
+    "enableTempData" : true
+  }, {
+    "codeName" : "mob_main",
+    "logicName" : "主表格查询（移动端）",
+    "majorSortDir" : "DESC",
+    "getMajorSortPSDEField" : {
+      "name" : "IS_FAVORITE",
+      "codeName" : "is_favorite"
+    },
+    "minorSortDir" : "DESC",
+    "getMinorSortPSDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "update_time"
+    },
+    "name" : "mob_main",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "favorite"
+    }, {
+      "modelref" : true,
+      "id" : "unfavorite"
+    }, {
+      "modelref" : true,
+      "id" : "cur_product"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Mob_mainInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "product_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Mob_mainResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "product_dto"
@@ -8176,6 +8354,26 @@
     "allData" : true,
     "systemReserved" : true
   }, {
+    "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEUSERROLES/CUSTOMER_USER_R.json",
+    "name" : "特定用户（读）",
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "customer_user"
+    },
+    "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "READ",
+      "name" : "READ",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ"
+      }
+    } ],
+    "roleTag" : "CUSTOMER_USER_R",
+    "userCat" : "CAT1",
+    "userDRAction" : "READ",
+    "enableUserDR" : true,
+    "systemReserved" : true
+  }, {
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEUSERROLES/USER_R.json",
     "name" : "只读用户（读）",
     "getPSDEDataSet" : {
@@ -8241,6 +8439,12 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_ad_setting_view",
+    "logicName" : "产品高级设置编辑视图（移动端）",
+    "name" : "产品高级设置编辑视图（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "RedirectView",
     "logicName" : "产品实体数据重定向视图",
     "modelTag" : "REDIRECTVIEW",
@@ -8258,6 +8462,12 @@
     "logicName" : "产品主视图",
     "modelTag" : "MAINVIEW",
     "name" : "产品主视图",
+    "realModelSubType" : "DETABEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "ticket_configuration_tab_exp_view",
+    "logicName" : "工单事项配置分页导航视图",
+    "name" : "工单事项配置分页导航视图",
     "realModelSubType" : "DETABEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
@@ -8286,6 +8496,24 @@
     "realModelSubType" : "DEMOBTABEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_setting_view",
+    "logicName" : "产品设置编辑视图（移动端）",
+    "name" : "产品设置编辑视图（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_product_move",
+    "logicName" : "产品移动编辑视图（移动端）",
+    "name" : "产品移动编辑视图（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_create_view",
+    "logicName" : "产品新建编辑视图（移动端）",
+    "name" : "产品新建编辑视图（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "archived_grid_view",
     "logicName" : "产品管理表格视图（已归档）",
     "name" : "产品管理表格视图（已归档）",
@@ -8296,6 +8524,12 @@
     "logicName" : "产品导航视图",
     "name" : "产品导航视图",
     "realModelSubType" : "DETREEEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_recycle_tab_view",
+    "logicName" : "产品回收站分页导航视图（移动端）",
+    "name" : "产品回收站分页导航视图（移动端）",
+    "realModelSubType" : "DEMOBTABEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "management_tab_exp_view",
@@ -8338,6 +8572,12 @@
     "logicName" : "产品快速建立视图",
     "name" : "产品快速建立视图",
     "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_product_tree",
+    "logicName" : "产品树导航视图（移动端）",
+    "name" : "产品树导航视图（移动端）",
+    "realModelSubType" : "DEMOBTREEEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView",
@@ -8390,6 +8630,12 @@
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "idea_configuration_view",
+    "logicName" : "需求设置视图（产品中）",
+    "name" : "需求设置视图（产品中）",
+    "realModelSubType" : "DECUSTOMVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "is_archived_grid_view",
     "logicName" : "已归档产品表格视图",
     "name" : "已归档产品表格视图",
@@ -8433,6 +8679,19 @@
     "realModelSubType" : "DEMOBLISTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "idea_configuration_tab_exp_view",
+    "logicName" : "产品需求事项配置分页导航视图",
+    "name" : "产品需求事项配置分页导航视图",
+    "realModelSubType" : "DETABEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_create_view_Form",
+    "logicName" : "产品新建编辑视图（移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "产品新建编辑视图（移动端）_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "move_option_view_Form",
     "logicName" : "产品移动视图_表单",
     "modelTag2" : "0",
@@ -8462,10 +8721,31 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
+    "codeName" : "mob_setting_view_Form",
+    "logicName" : "产品设置编辑视图（移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "产品设置编辑视图（移动端）_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "advanced_setting",
     "logicName" : "高级设置",
     "modelTag2" : "0",
     "name" : "高级设置",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_product_move_Form",
+    "logicName" : "产品移动编辑视图（移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "产品移动编辑视图（移动端）_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_ad_setting_view_Form",
+    "logicName" : "产品高级设置编辑视图（移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "产品高级设置编辑视图（移动端）_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -8610,7 +8890,7 @@
       "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
     },
     "masterOrder" : 100,
-    "masterRS" : 5,
+    "masterRS" : 69,
     "minorCodeName" : "ideas",
     "getMinorPSDataEntity" : {
       "modelref" : true,
@@ -8804,7 +9084,7 @@
       "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
     },
     "masterOrder" : 100,
-    "masterRS" : 5,
+    "masterRS" : 69,
     "minorCodeName" : "tickets",
     "getMinorPSDataEntity" : {
       "modelref" : true,

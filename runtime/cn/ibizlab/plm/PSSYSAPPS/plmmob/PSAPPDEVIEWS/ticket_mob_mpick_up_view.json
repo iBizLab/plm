@@ -3,7 +3,7 @@
   "getCapPSLanguageRes" : {
     "lanResTag" : "DE.LNAME.TICKET"
   },
-  "caption" : "选择需求",
+  "caption" : "选择工单",
   "codeName" : "ticket_mob_mpick_up_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/ticket_mob_mpick_up_view.json",
   "name" : "ticketmob_mpick_up_view",
@@ -103,8 +103,8 @@
             "id" : "title",
             "viewFieldName" : "title"
           }, {
-            "id" : "assignee_name",
-            "viewFieldName" : "ASSIGNEE_NAME"
+            "id" : "assignee_id",
+            "viewFieldName" : "ASSIGNEE_ID"
           }, {
             "id" : "show_identifier",
             "viewFieldName" : "show_identifier"
@@ -246,14 +246,18 @@
                   "caption" : "文本(动态)",
                   "itemStyle" : "DEFAULT",
                   "itemType" : "FIELD",
-                  "name" : "assignee_name",
+                  "name" : "assignee_id",
                   "getPSEditor" : {
-                    "editorStyle" : "PERSONNEL_INFO",
+                    "editorStyle" : "MOB_PERSONNEL_INFO",
                     "editorType" : "SPAN",
-                    "name" : "assignee_name",
+                    "name" : "assignee_id",
+                    "getPSAppCodeList" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
+                    },
                     "getPSSysPFPlugin" : {
                       "pluginType" : "EDITOR_CUSTOMSTYLE",
-                      "pluginCode" : "PERSONNEL_INFO",
+                      "pluginCode" : "MOB_PERSONNEL_INFO",
                       "runtimeObject" : true
                     },
                     "predefinedType" : "FIELD_TEXT_DYNAMIC",
@@ -264,7 +268,22 @@
                     "grow" : -1,
                     "layout" : "FLEX"
                   },
-                  "viewFieldName" : "ASSIGNEE_NAME"
+                  "getPSPanelItemGroupLogics" : [ {
+                    "groupOP" : "AND",
+                    "logicCat" : "PANELVISIBLE",
+                    "logicType" : "GROUP",
+                    "name" : "面板成员[assignee_id][面板显示]逻辑",
+                    "getPSPanelItemLogics" : [ {
+                      "condOp" : "ISNOTNULL",
+                      "dstModelField" : "ASSIGNEE_ID",
+                      "logicType" : "SINGLE",
+                      "name" : "逻辑项"
+                    } ],
+                    "relatedItemNames" : [ "assignee_id" ],
+                    "notMode" : false
+                  } ],
+                  "viewFieldName" : "ASSIGNEE_ID",
+                  "convertToCodeItemText" : true
                 } ]
               }, {
                 "caption" : "容器",
@@ -323,24 +342,6 @@
                   "convertToCodeItemText" : true
                 } ]
               } ]
-            }, {
-              "caption" : "标签",
-              "contentType" : "DIVIDER",
-              "itemStyle" : "DEFAULT",
-              "itemType" : "RAWITEM",
-              "name" : "static_label",
-              "getPSLayoutPos" : {
-                "grow" : -1,
-                "layout" : "FLEX"
-              },
-              "getPSRawItem" : {
-                "contentType" : "DIVIDER",
-                "name" : "static_label",
-                "predefinedType" : "STATIC_LABEL",
-                "rawContent" : "标签"
-              },
-              "rawContent" : "标签",
-              "showCaption" : true
             } ]
           } ],
           "name" : "mdctrl_itempanel",
@@ -569,6 +570,7 @@
         "layoutPanel" : true,
         "useDefaultLayout" : true
       },
+      "refFlag" : false,
       "title" : "工单移动端多项选择视图_选择数据视图",
       "viewStyle" : "DEFAULT",
       "viewType" : "DEMOBPICKUPMDVIEW",
@@ -613,66 +615,6 @@
     "getPSControlParam" : {
       "id" : "PICKUPVIEWPANEL"
     }
-  }, {
-    "codeName" : "mob_mpick_up_view_lefttoolbar",
-    "controlType" : "TOOLBAR",
-    "logicName" : "移动端左侧返回工具栏",
-    "name" : "lefttoolbar",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/ticket.json"
-    },
-    "getPSControlParam" : {
-      "id" : "LEFTTOOLBAR"
-    },
-    "getPSDEToolbarItems" : [ {
-      "getCapPSLanguageRes" : {
-        "lanResTag" : "TBB.TEXT.EDITVIEW.CLOSE"
-      },
-      "caption" : "返回",
-      "groupExtractMode" : "ITEM",
-      "itemType" : "DEUIACTION",
-      "name" : "deuiaction1",
-      "noPrivDisplayMode" : 2,
-      "getPSAppViewUIAction" : {
-        "modelref" : true,
-        "id" : "lefttoolbar_deuiaction1"
-      },
-      "getPSSysImage" : {
-        "glyph" : "xf18e@FontAwesome",
-        "cssClass" : "fa fa-arrow-circle-o-right"
-      },
-      "getPSUIAction" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "TBB.TEXT.EDITVIEW.CLOSE"
-        },
-        "caption" : "关闭",
-        "codeName" : "Exit",
-        "fullCodeName" : "Exit",
-        "name" : "编辑界面_退出操作",
-        "getPSSysImage" : {
-          "glyph" : "xf08b@FontAwesome",
-          "cssClass" : "fa fa-sign-out"
-        },
-        "predefinedType" : "EDITVIEW_EXITACTION",
-        "timeout" : 60000,
-        "getTooltipPSLanguageRes" : {
-          "lanResTag" : "TBB.TOOLTIP.EDITVIEW.CLOSE"
-        },
-        "uIActionMode" : "SYS",
-        "uIActionTag" : "Exit",
-        "uIActionType" : "DEUIACTION"
-      },
-      "tooltip" : "返回",
-      "getTooltipPSLanguageRes" : {
-        "lanResTag" : "TBB.TOOLTIP.EDITVIEW.CLOSE"
-      },
-      "showCaption" : false,
-      "showIcon" : true
-    } ],
-    "toolbarStyle" : "MOBNAVLEFTMENU",
-    "modelid" : "38B1078D-AF9F-4E4F-91AB-55958281A4DE",
-    "modeltype" : "PSDETOOLBAR"
   }, {
     "codeName" : "simplelist",
     "controlStyle" : "LISTVIEW",
@@ -971,7 +913,7 @@
     "getCapPSLanguageRes" : {
       "lanResTag" : "DE.LNAME.TICKET"
     },
-    "caption" : "选择需求",
+    "caption" : "选择工单",
     "codeName" : "mob_mpick_up_view_captionbar",
     "controlType" : "CAPTIONBAR",
     "name" : "captionbar",
@@ -997,12 +939,12 @@
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
-  "title" : "选择需求",
+  "refFlag" : false,
+  "title" : "选择工单",
   "viewStyle" : "DEFAULT",
   "viewType" : "DEMOBMPICKUPVIEW",
   "enableDP" : true,
   "enablePullDownRefresh" : false,
-  "showCaptionBar" : false,
   "modelid" : "6003b2e8065089becc31346cba41e0f4",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {

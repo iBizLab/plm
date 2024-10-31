@@ -116,6 +116,14 @@
         "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_re_show_view.json",
         "viewType" : "DEEDITVIEW"
       }
+    }, {
+      "name" : "EXPITEM:node_6",
+      "realTitle" : "附件",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/search_attachment_cur_product_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      }
     } ],
     "getPSControlHandler" : {
       "enableDEFieldPrivilege" : false,
@@ -127,7 +135,7 @@
       "id" : "TREEEXPBAR"
     },
     "getPSControls" : [ {
-      "codeName" : "relation_tree_exp_view_tree_view",
+      "codeName" : "product_relation_tree_view",
       "controlStyle" : "GROUP_TREE",
       "controlType" : "TREEVIEW",
       "getCreatePSControlAction" : {
@@ -146,7 +154,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
         }
       },
-      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space/PSTREEVIEWS/relation_tree_exp_view_tree_view.json",
+      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space/PSTREEVIEWS/product_relation_tree_view.json",
       "getFetchPSControlAction" : {
         "modelref" : true,
         "id" : "fetch",
@@ -174,7 +182,7 @@
         }
       },
       "hookEventNames" : [ "SELECTIONCHANGE", "LOAD" ],
-      "logicName" : "关联空间树导航视图_树视图",
+      "logicName" : "产品关联空间树导航视图_树视图",
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
@@ -351,9 +359,9 @@
       "getPSDETreeNodeRSs" : [ {
         "getChildPSDETreeNode" : {
           "modelref" : true,
-          "id" : "node"
+          "id" : "node_6"
         },
-        "name" : "默认根节点 - 空间",
+        "name" : "默认根节点 - 全部附件",
         "getParentPSDETreeNode" : {
           "modelref" : true,
           "id" : "ROOT"
@@ -903,6 +911,18 @@
       }, {
         "getChildPSDETreeNode" : {
           "modelref" : true,
+          "id" : "node"
+        },
+        "name" : "默认根节点 - 空间",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "ROOT"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
           "id" : "node_2"
         },
         "name" : "次级分组 - 次级页面",
@@ -1166,7 +1186,7 @@
         "enableRemoveData" : false,
         "enableViewData" : false,
         "expandFirstOnly" : false,
-        "expanded" : true,
+        "expanded" : false,
         "rootNode" : false,
         "selectFirstOnly" : false,
         "selected" : false,
@@ -1561,6 +1581,43 @@
         "selectFirstOnly" : false,
         "selected" : false,
         "id" : "node_5"
+      }, {
+        "counterMode" : 0,
+        "name" : "全部附件",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/search_attachment_cur_product_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        },
+        "nodeType" : "node_6",
+        "getPSNavigateParams" : [ {
+          "key" : "product_id",
+          "name" : "product_id",
+          "value" : "product",
+          "rawValue" : false
+        } ],
+        "getPSSysImage" : {
+          "glyph" : "xf0c6@FontAwesome",
+          "cssClass" : "fa fa-paperclip"
+        },
+        "text" : "全部附件",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_6"
       } ],
       "getPSSysPFPlugin" : {
         "pluginType" : "TREE_RENDER",
@@ -1803,7 +1860,7 @@
       "modelid" : "10d840246fb90019a8633d265ec536d1",
       "modeltype" : "PSDETOOLBAR"
     } ],
-    "title" : "空间",
+    "title" : "文档",
     "xDataControlName" : "treeexpbar_tree",
     "enableCounter" : true,
     "enableSearch" : false,

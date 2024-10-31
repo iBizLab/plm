@@ -2,6 +2,12 @@
   "dBType" : "MYSQL5",
   "name" : "MySQL5",
   "getPSDEDataQueryCodeExps" : [ {
+    "expression" : "(SELECT COUNT( com.ID ) AS comment_count FROM DISCUSS_REPLY reply LEFT JOIN `COMMENT` com ON reply.ID = com.PRINCIPAL_ID WHERE reply.ID = t1.`ID`)",
+    "name" : "COMMENT_COUNT"
+  }, {
+    "expression" : "(SELECT COUNT( com.ID ) AS comment_count FROM DISCUSS_REPLY reply LEFT JOIN `COMMENT` com ON reply.ID = com.PRINCIPAL_ID WHERE reply.ID = t1.`ID`)",
+    "name" : "COMMENT_NUM"
+  }, {
     "expression" : "t1.`CONTENT`",
     "name" : "CONTENT"
   }, {
@@ -10,6 +16,9 @@
   }, {
     "expression" : "t1.`CREATE_TIME`",
     "name" : "CREATE_TIME"
+  }, {
+    "expression" : "t11.`NAME`",
+    "name" : "DISCUSS_NAME"
   }, {
     "expression" : "t1.`ID`",
     "name" : "ID"
@@ -26,6 +35,6 @@
     "expression" : "t1.`UPDATE_TIME`",
     "name" : "UPDATE_TIME"
   } ],
-  "queryCode" : "SELECT\nt1.`CONTENT`,\nt1.`CREATE_MAN`,\nt1.`CREATE_TIME`,\nt1.`ID`,\nt1.`NAME`,\nt1.`POST_ID`,\nt1.`UPDATE_MAN`,\nt1.`UPDATE_TIME`\nFROM `DISCUSS_REPLY` t1 \n",
+  "queryCode" : "SELECT\n(SELECT COUNT( com.ID ) AS comment_count FROM DISCUSS_REPLY reply LEFT JOIN `COMMENT` com ON reply.ID = com.PRINCIPAL_ID WHERE reply.ID = t1.`ID`) AS `COMMENT_COUNT`,\n(SELECT COUNT( com.ID ) AS comment_count FROM DISCUSS_REPLY reply LEFT JOIN `COMMENT` com ON reply.ID = com.PRINCIPAL_ID WHERE reply.ID = t1.`ID`) AS `COMMENT_NUM`,\nt1.`CONTENT`,\nt1.`CREATE_MAN`,\nt1.`CREATE_TIME`,\nt11.`NAME` AS `DISCUSS_NAME`,\nt1.`ID`,\nt1.`NAME`,\nt1.`POST_ID`,\nt1.`UPDATE_MAN`,\nt1.`UPDATE_TIME`\nFROM `DISCUSS_REPLY` t1 \nLEFT JOIN `DISCUSS_POST` t11 ON t1.`POST_ID` = t11.`ID` \n",
   "id" : "PSMODULES/Team/PSDATAENTITIES/discuss_reply/PSDEDATAQUERIES/Default/PSDEDQCODES/MYSQL5.json"
 }

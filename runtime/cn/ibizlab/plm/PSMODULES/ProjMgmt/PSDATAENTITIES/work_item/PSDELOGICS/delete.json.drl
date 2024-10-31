@@ -35,21 +35,6 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.delete;
                         update(work_itemdeletework_item_page);//更新fact中变量值
             end
 
-            //逻辑处理节点[删除最近访问]
-            rule "rawsqlcall1"
-            ruleflow-group "work_itemdeleterawsqlcall1"
-            when
-            then
-    Map param =new HashMap();
-        param.put("param0",work_itemdeletedefault.get("id"));
-    String strSql="update recent set IS_DELETED=1 where owner_id=#{et.param0} and owner_subtype='work_item'";
-                        iBzSysWork_itemDefaultService.execute(strSql,param);//SQL调用
-                        update(work_itemdeletedefault);//更新fact中变量值
-                        update(work_itemdeletefor_temp_obj);//更新fact中变量值
-                        update(work_itemdeletework_item_filter);//更新fact中变量值
-                        update(work_itemdeletework_item_page);//更新fact中变量值
-            end
-
             //逻辑处理节点[设置工作项过滤器参数]
             rule "prepareparam1"
             ruleflow-group "work_itemdeleteprepareparam1"
@@ -79,6 +64,21 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.delete;
             when
             then
                             work_itemdeletedefault.set("isdeleted","1");
+                        update(work_itemdeletedefault);//更新fact中变量值
+                        update(work_itemdeletefor_temp_obj);//更新fact中变量值
+                        update(work_itemdeletework_item_filter);//更新fact中变量值
+                        update(work_itemdeletework_item_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[删除最近访问]
+            rule "rawsqlcall1"
+            ruleflow-group "work_itemdeleterawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",work_itemdeletedefault.get("id"));
+    String strSql="update recent set IS_DELETED=1 where owner_id=#{et.param0} and owner_subtype='work_item'";
+                        iBzSysWork_itemDefaultService.execute(strSql,param);//SQL调用
                         update(work_itemdeletedefault);//更新fact中变量值
                         update(work_itemdeletefor_temp_obj);//更新fact中变量值
                         update(work_itemdeletework_item_filter);//更新fact中变量值

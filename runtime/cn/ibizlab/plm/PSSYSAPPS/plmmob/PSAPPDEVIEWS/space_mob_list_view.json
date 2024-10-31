@@ -36,17 +36,29 @@
       "logicType" : "PREDEFINED",
       "name" : "打开数据",
       "getOpenDataPSAppView" : {
+        "getPSNavigateParams" : [ {
+          "key" : "srfdataaccaction",
+          "name" : "srfdataaccaction",
+          "value" : "true",
+          "rawValue" : true
+        } ],
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/article_page_mob_list_view.json",
-          "viewType" : "DEMOBLISTVIEW"
+          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/space_mob_list_form_view.json",
+          "viewType" : "DEMOBEDITVIEW"
         }
       },
       "getPSAppUILogicRefViews" : [ {
+        "getPSNavigateParams" : [ {
+          "key" : "srfdataaccaction",
+          "name" : "srfdataaccaction",
+          "value" : "true",
+          "rawValue" : true
+        } ],
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/article_page_mob_list_view.json",
-          "viewType" : "DEMOBLISTVIEW"
+          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/space_mob_list_form_view.json",
+          "viewType" : "DEMOBEDITVIEW"
         }
       } ],
       "viewLogicType" : "APP_OPENDATA",
@@ -55,11 +67,17 @@
   } ],
   "getPSAppViewRefs" : [ {
     "name" : "EDITDATA",
-    "realTitle" : "页面",
+    "getPSNavigateParams" : [ {
+      "key" : "srfdataaccaction",
+      "name" : "srfdataaccaction",
+      "value" : "true",
+      "rawValue" : true
+    } ],
+    "realTitle" : "空间移动端列表表单",
     "getRefPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/article_page_mob_list_view.json",
-      "viewType" : "DEMOBLISTVIEW"
+      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/space_mob_list_form_view.json",
+      "viewType" : "DEMOBEDITVIEW"
     }
   } ],
   "getPSControls" : [ {
@@ -90,7 +108,7 @@
       "name" : "fetch",
       "getPSAppDEMethod" : {
         "modelref" : true,
-        "id" : "fetch_main"
+        "id" : "fetch_mob_main"
       },
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -139,7 +157,7 @@
         "layout" : "TABLE_24COL"
       },
       "getPSSysCss" : {
-        "cssName" : "mob_project_list_style"
+        "cssName" : "mob_product_list_style"
       },
       "getRootPSPanelItems" : [ {
         "itemStyle" : "DEFAULT",
@@ -152,9 +170,8 @@
         "getPSLayoutPos" : {
           "colMD" : 24,
           "layout" : "TABLE_24COL",
-          "spacingBottom" : "OUTERSMALL",
-          "spacingLeft" : "OUTERLARGE",
-          "spacingRight" : "OUTERLARGE",
+          "spacingLeft" : "OUTERMEDIUM",
+          "spacingRight" : "OUTERMEDIUM",
           "spacingTop" : "OUTERSMALL"
         },
         "getPSPanelItems" : [ {
@@ -174,6 +191,7 @@
           },
           "getPSPanelItems" : [ {
             "caption" : "容器",
+            "contentWidth" : 90.0,
             "itemStyle" : "DEFAULT",
             "itemType" : "CONTAINER",
             "name" : "container2",
@@ -185,7 +203,9 @@
             },
             "getPSLayoutPos" : {
               "grow" : -1,
-              "layout" : "FLEX"
+              "layout" : "FLEX",
+              "width" : 90,
+              "widthMode" : "PERCENTAGE"
             },
             "getPSPanelItems" : [ {
               "caption" : "图片",
@@ -201,12 +221,12 @@
                 "contentType" : "IMAGE",
                 "name" : "static_image",
                 "getPSSysImage" : {
-                  "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1727434049059\" class=\"icon\" viewBox=\"0 0 1170 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"6071\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"27.421875\" height=\"24\"><path d=\"M1014.245204 954.170681H247.075983a54.905774 54.905774 0 0 1-36.766388-13.555778 44.519513 44.519513 0 0 1-15.311202-33.011731c0-25.648701 23.405659-46.469985 52.07759-46.469984h546.132033V0H195.047155C151.990495 0 117.028293 31.256307 117.028293 69.826881v837.776291c0.097524 30.963736 13.848348 60.659665 38.229242 82.456185 24.380894 21.845281 57.441387 34.035728 91.818448 33.938205H1014.245204a41.203711 41.203711 0 0 0 27.501649-10.142452 33.401825 33.401825 0 0 0 11.507782-24.722227 33.353063 33.353063 0 0 0-11.45902-24.770989 41.203711 41.203711 0 0 0-27.550411-10.239975z\" fill=\"#20A0FF\" p-id=\"6072\"></path><path d=\"M952.902874 0H819.19805v861.864615h133.704824c55.442154 0 100.351761-31.305068 100.351761-69.924405V69.826881C1053.254635 31.305068 1008.345028 0 952.902874 0z\" fill=\"#20A0FF\" p-id=\"6073\"></path></svg>"
+                  "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" class=\"design-iconfont\" width=\"24\" height=\"24\">\n  <path d=\"M17.5,15 L5,15 C4.53976667,15 4.16666667,15.3730833 4.16666667,15.8333333 C4.16666667,16.2935833 4.53976667,16.6666667 5,16.6666667 L17.5,16.6666667 L17.5,18.3333333 L5,18.3333333 C3.61929167,18.3333333 2.5,17.2140833 2.5,15.8333333 L2.5,3.33333333 C2.5,2.41285833 3.24619167,1.66666667 4.16666667,1.66666667 L17.5,1.66666667 L17.5,15 Z M13.3333333,7.5 L13.3333333,5.83333333 L6.66666667,5.83333333 L6.66666667,7.5 L13.3333333,7.5 Z\" fill=\"#56ABFB\" fill-rule=\"nonzero\"></path>\n</svg>"
                 },
                 "predefinedType" : "STATIC_IMAGE"
               },
               "getPSSysImage" : {
-                "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1727434049059\" class=\"icon\" viewBox=\"0 0 1170 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"6071\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"27.421875\" height=\"24\"><path d=\"M1014.245204 954.170681H247.075983a54.905774 54.905774 0 0 1-36.766388-13.555778 44.519513 44.519513 0 0 1-15.311202-33.011731c0-25.648701 23.405659-46.469985 52.07759-46.469984h546.132033V0H195.047155C151.990495 0 117.028293 31.256307 117.028293 69.826881v837.776291c0.097524 30.963736 13.848348 60.659665 38.229242 82.456185 24.380894 21.845281 57.441387 34.035728 91.818448 33.938205H1014.245204a41.203711 41.203711 0 0 0 27.501649-10.142452 33.401825 33.401825 0 0 0 11.507782-24.722227 33.353063 33.353063 0 0 0-11.45902-24.770989 41.203711 41.203711 0 0 0-27.550411-10.239975z\" fill=\"#20A0FF\" p-id=\"6072\"></path><path d=\"M952.902874 0H819.19805v861.864615h133.704824c55.442154 0 100.351761-31.305068 100.351761-69.924405V69.826881C1053.254635 31.305068 1008.345028 0 952.902874 0z\" fill=\"#20A0FF\" p-id=\"6073\"></path></svg>"
+                "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" class=\"design-iconfont\" width=\"24\" height=\"24\">\n  <path d=\"M17.5,15 L5,15 C4.53976667,15 4.16666667,15.3730833 4.16666667,15.8333333 C4.16666667,16.2935833 4.53976667,16.6666667 5,16.6666667 L17.5,16.6666667 L17.5,18.3333333 L5,18.3333333 C3.61929167,18.3333333 2.5,17.2140833 2.5,15.8333333 L2.5,3.33333333 C2.5,2.41285833 3.24619167,1.66666667 4.16666667,1.66666667 L17.5,1.66666667 L17.5,15 Z M13.3333333,7.5 L13.3333333,5.83333333 L6.66666667,5.83333333 L6.66666667,7.5 L13.3333333,7.5 Z\" fill=\"#56ABFB\" fill-rule=\"nonzero\"></path>\n</svg>"
               },
               "showCaption" : true
             }, {
@@ -226,9 +246,11 @@
                 "layout" : "FLEX"
               },
               "viewFieldName" : "NAME"
-            } ]
+            } ],
+            "width" : 90.0
           }, {
             "caption" : "容器",
+            "contentWidth" : 10.0,
             "itemStyle" : "DEFAULT",
             "itemType" : "CONTAINER",
             "name" : "container1",
@@ -240,7 +262,9 @@
             },
             "getPSLayoutPos" : {
               "grow" : -1,
-              "layout" : "FLEX"
+              "layout" : "FLEX",
+              "width" : 10,
+              "widthMode" : "PERCENTAGE"
             },
             "getPSPanelItems" : [ {
               "caption" : "文本(动态)",
@@ -389,26 +413,9 @@
               },
               "tooltip" : "取消星标",
               "uIActionTarget" : "SINGLEKEY"
-            } ]
+            } ],
+            "width" : 10.0
           } ]
-        }, {
-          "caption" : "分割线",
-          "contentType" : "DIVIDER",
-          "itemStyle" : "DEFAULT",
-          "itemType" : "RAWITEM",
-          "name" : "static_label",
-          "getPSLayoutPos" : {
-            "grow" : -1,
-            "layout" : "FLEX"
-          },
-          "getPSRawItem" : {
-            "contentType" : "DIVIDER",
-            "name" : "static_label",
-            "predefinedType" : "STATIC_LABEL",
-            "rawContent" : "标签"
-          },
-          "rawContent" : "标签",
-          "showCaption" : true
         } ]
       } ],
       "name" : "mdctrl_itempanel",
@@ -479,7 +486,7 @@
         "name" : "fetch",
         "getPSAppDEMethod" : {
           "modelref" : true,
-          "id" : "fetch_main"
+          "id" : "fetch_mob_main"
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
@@ -535,7 +542,8 @@
         "codeName" : "category_id"
       }
     } ],
-    "pagingSize" : 1000,
+    "pagingMode" : 2,
+    "pagingSize" : 20,
     "getRemovePSControlAction" : {
       "modelref" : true,
       "id" : "remove",
@@ -581,6 +589,73 @@
     "modelid" : "31B6019C-66FC-4DD9-AAC4-81E24D756883",
     "modeltype" : "PSDELIST"
   }, {
+    "codeName" : "mob_list_view_righttoolbar",
+    "controlType" : "TOOLBAR",
+    "logicName" : "移动端新建空间工具栏",
+    "name" : "righttoolbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space.json"
+    },
+    "getPSControlParam" : {
+      "ctrlParams" : {
+        "PLACEMENT" : "left",
+        "DIRECTION" : "vertical"
+      },
+      "id" : "RIGHTTOOLBAR"
+    },
+    "getPSDEToolbarItems" : [ {
+      "buttonStyle" : "PRIMARY",
+      "caption" : "新建",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction1",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "righttoolbar_deuiaction1"
+      },
+      "getPSSysImage" : {
+        "glyph" : "xf067@FontAwesome",
+        "cssClass" : "fa fa-plus"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "NONE",
+        "caption" : "新建空间",
+        "codeName" : "mob_create_space",
+        "dataAccessAction" : "SRFUR__SPACE_M",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/space_mob_create_space_view.json",
+          "viewType" : "DEMOBEDITVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "space_mob_create_space",
+        "name" : "新建空间（移动端）",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "SRFUR__SPACE_M"
+        },
+        "timeout" : 60000,
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "mob_create_space",
+        "uIActionType" : "DEUIACTION",
+        "id" : "mob_create_space@space"
+      },
+      "tooltip" : "新建",
+      "uIActionTarget" : "NONE",
+      "showCaption" : false,
+      "showIcon" : true
+    } ],
+    "toolbarStyle" : "USER",
+    "xDataControlName" : "mdctrl",
+    "modelid" : "EC10E6AC-C290-46B6-92C2-82DCA092032A",
+    "modeltype" : "PSDETOOLBAR"
+  }, {
     "controlType" : "SEARCHBAR",
     "name" : "searchbar",
     "getPSAppDataEntity" : {
@@ -613,9 +688,6 @@
   } ],
   "getPSDEViewCodeName" : "mob_list_view",
   "getPSDEViewId" : "35039A43-5051-47F5-86AB-20FEC37756B4",
-  "getPSSysCss" : {
-    "cssName" : "space_main_list_syle"
-  },
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEMOBLISTVIEW",

@@ -355,6 +355,40 @@
     "builtinMethod" : false,
     "needResourceKey" : true
   }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "finish_add_attention",
+    "methodType" : "DEACTION",
+    "name" : "finish_add_attention",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "article_page_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEACTIONS/finish_add_attention.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "finish_add_attention"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/finish_add_attention",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "READ",
     "actionTag" : "Get",
     "codeName" : "get",
@@ -1810,6 +1844,44 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetch_normal",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_normal_tree_page",
+    "dataSetName" : "normal_tree_page",
+    "dataSetTag" : "normal_tree_page",
+    "methodType" : "FETCH",
+    "name" : "fetch_normal_tree_page",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "article_page_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "article_page_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "normal_tree_page"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_normal_tree_page"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_normal_tree_page",
     "builtinMethod" : false
   }, {
     "codeName" : "fetch_only_page",
@@ -3283,6 +3355,68 @@
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[ATTENTION_COUNT][关注数]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[ATTENTION_COUNT][关注数]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[ATTENTION_COUNT][关注数]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[ATTENTION_COUNT][关注数]移动端默认",
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "attention_count",
+    "logicName" : "关注数",
+    "name" : "ATTENTION_COUNT",
+    "stdDataType" : 25,
+    "stringLength" : 200
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[COMMENT_COUNT][评论数]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[COMMENT_COUNT][评论数]移动端默认",
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[COMMENT_COUNT][评论数]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[COMMENT_COUNT][评论数]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "codeName" : "comment_count",
+    "logicName" : "评论数",
+    "name" : "COMMENT_COUNT",
+    "stdDataType" : 25,
+    "stringLength" : 200
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
       "codeName" : "MobileDefault",
       "name" : "[CHOOSE_VERSION_ID][选择版本标识]移动端默认",
       "getPSDEFFormItem" : {
@@ -4307,6 +4441,28 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "attention_count",
+      "logicName" : "关注数",
+      "name" : "attention_count",
+      "getPSAppDEField" : {
+        "name" : "ATTENTION_COUNT",
+        "codeName" : "attention_count"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "comment_count",
+      "logicName" : "评论数",
+      "name" : "comment_count",
+      "getPSAppDEField" : {
+        "name" : "COMMENT_COUNT",
+        "codeName" : "comment_count"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
       "codeName" : "choose_version_id",
@@ -5487,6 +5643,40 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/favorite",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "finish_add_attention",
+    "methodType" : "DEACTION",
+    "name" : "finish_add_attention",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "article_page_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEACTIONS/finish_add_attention.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "finish_add_attention"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/finish_add_attention",
     "builtinMethod" : false,
     "needResourceKey" : true
   }, {
@@ -6772,6 +6962,44 @@
     "requestPath" : "/fetch_normal",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_normal_tree_page",
+    "dataSetName" : "normal_tree_page",
+    "dataSetTag" : "normal_tree_page",
+    "methodType" : "FETCH",
+    "name" : "fetch_normal_tree_page",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "article_page_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "article_page_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "normal_tree_page"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_normal_tree_page"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_normal_tree_page",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_only_page",
     "dataSetName" : "only_page",
     "dataSetTag" : "only_page",
@@ -7263,14 +7491,1220 @@
     "name" : "FILTERUPDATE",
     "builtinMethod" : true
   } ],
+  "getAllPSAppDEUIActions" : [ {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "收藏",
+    "codeName" : "add_favorite",
+    "fullCodeName" : "article_page_add_favorite",
+    "name" : "收藏",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "favorite"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+    },
+    "getPSNavigateParams" : [ {
+      "key" : "owner_id",
+      "name" : "owner_id",
+      "value" : "article_page",
+      "rawValue" : false
+    } ],
+    "getPSSysImage" : {
+      "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M9.54013,6.48742551 L8,3.36677551 L6.45987,6.48742551 L3.01604,6.98784551 L5.50802,9.41692551 L4.91975,12.8468255 L8,11.2274255 L11.08025,12.8468255 L10.49195,9.41692551 L12.98395,6.98784551 L9.54013,6.48742551 Z M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#557DA5\" fill-rule=\"nonzero\"></path>\n</svg>"
+    },
+    "refreshMode" : 1,
+    "timeout" : 60000,
+    "tooltip" : "收藏",
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "add_favorite",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "add_favorite@article_page"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "取消收藏",
+    "codeName" : "cancel_favorite",
+    "fullCodeName" : "article_page_cancel_favorite",
+    "name" : "取消收藏",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "un_favorite"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+    },
+    "getPSNavigateParams" : [ {
+      "key" : "owner_id",
+      "name" : "owner_id",
+      "value" : "article_page",
+      "rawValue" : false
+    } ],
+    "getPSSysImage" : {
+      "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#FFB31A\" fill-rule=\"nonzero\"></path>\n</svg>"
+    },
+    "refreshMode" : 1,
+    "timeout" : 60000,
+    "tooltip" : "取消收藏",
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "cancel_favorite",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "cancel_favorite@article_page"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "关闭共享",
+    "codeName" : "closed_shared_mob",
+    "dataAccessAction" : "SHARED",
+    "fullCodeName" : "article_page_closed_shared_mob",
+    "name" : "关闭共享（移动端）",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "closed_shared"
+    },
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "refresh"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "space__SHARED"
+    },
+    "getPSNavigateContexts" : [ {
+      "key" : "SPACE",
+      "name" : "SPACE",
+      "value" : "space_id",
+      "rawValue" : false
+    } ],
+    "getPSSysImage" : {
+      "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"15\" height=\"15\" fill=\"currentColor\">\n  <path d=\"M823.14043 167.852074c16.375812 35.822089 4.093953 78.808596-28.657671 97.231384L224.3998 568.035982c-32.751624 18.422789-72.667666 4.093953-90.066966-30.704648-16.375812-35.822089-4.093953-78.808596 28.657671-97.231384l570.082958-302.952524c32.751624-18.422789 73.691154-5.117441 90.066967 30.704648z\"></path>\n  <path d=\"M135.356322 485.133433c-16.375812 35.822089-4.093953 79.832084 28.657671 98.254873l315.234383 176.03998c32.751624 18.422789 72.667666 4.093953 90.066966-31.728136 16.375812-35.822089 4.093953-79.832084-28.657671-98.254873L225.423288 454.428786c-32.751624-18.422789-72.667666-4.093953-90.066966 30.704647zM659.382309 657.07946c-25.587206 26.610695-25.587206 68.573713 0 95.184408l249.731134 251.778111c25.587206 26.610695 68.573713 26.610695 94.16092 0 25.587206-26.610695 25.587206-68.573713 0-95.184408L754.566717 657.07946c-26.610695-25.587206-68.573713-25.587206-95.184408 0z\"></path>\n  <path d=\"M1002.250875 659.126437c25.587206 26.610695 25.587206 68.573713 0 94.160919L752.51974 1004.041979c-25.587206 25.587206-68.573713 25.587206-94.160919 0-25.587206-26.610695-25.587206-68.573713 0-94.16092l249.731134-249.731134c25.587206-26.610695 67.550225-26.610695 94.16092-1.023488zM191.648176 319.328336c105.41929 0 191.392304 85.973013 191.392304 191.392304 0 106.442779-85.973013 192.415792-191.392304 192.415792C86.228886 703.136432 0.255872 618.186907 0.255872 511.744128c0-106.442779 85.973013-192.415792 191.392304-192.415792zM831.328336 0c105.41929 0 191.392304 85.973013 191.392304 192.415792s-85.973013 192.415792-191.392304 192.415792c-105.41929 0-191.392304-85.973013-191.392304-192.415792C638.912544 85.973013 724.885557 0 831.328336 0z\"></path>\n</svg>"
+    },
+    "refreshMode" : 1,
+    "timeout" : 60000,
+    "tooltip" : "关闭共享",
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "closed_shared_mob",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "AFTER",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "closed_shared_mob@article_page"
+  }, {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "复制链接",
+    "codeName" : "copy_shared_url",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "article_page_copy_shared_url",
+    "name" : "复制共享页面链接",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "copy_shared_url"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+    },
+    "timeout" : 60000,
+    "tooltip" : "复制链接",
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "copy_shared_url",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "id" : "copy_shared_url@article_page"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "收藏",
+    "codeName" : "mob_add_favorite",
+    "fullCodeName" : "article_page_mob_add_favorite",
+    "name" : "移动端收藏",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "favorite"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+    },
+    "getPSNavigateParams" : [ {
+      "key" : "owner_id",
+      "name" : "owner_id",
+      "value" : "article_page",
+      "rawValue" : false
+    } ],
+    "getPSSysImage" : {
+      "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M9.54013,6.48742551 L8,3.36677551 L6.45987,6.48742551 L3.01604,6.98784551 L5.50802,9.41692551 L4.91975,12.8468255 L8,11.2274255 L11.08025,12.8468255 L10.49195,9.41692551 L12.98395,6.98784551 L9.54013,6.48742551 Z M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#557DA5\" fill-rule=\"nonzero\"></path>\n</svg>"
+    },
+    "refreshMode" : 1,
+    "timeout" : 60000,
+    "tooltip" : "收藏",
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "mob_add_favorite",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "mob_add_favorite@article_page"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "新建子页面",
+    "codeName" : "mob_create_child_document",
+    "dataAccessAction" : "SUBDATA",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/article_page_mob_create_view.json",
+      "viewType" : "DEMOBEDITVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "article_page_mob_create_child_document",
+    "name" : "移动端新建子页面（文档）",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "change_tree_state"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "SUBDATA"
+    },
+    "getPSNavigateContexts" : [ {
+      "key" : "ARTICLE_PAGE",
+      "name" : "ARTICLE_PAGE",
+      "rawValue" : true
+    } ],
+    "getPSNavigateParams" : [ {
+      "key" : "parent_id",
+      "name" : "parent_id",
+      "value" : "id",
+      "rawValue" : false
+    } ],
+    "getPSSysImage" : {
+      "glyph" : "xf196@FontAwesome",
+      "cssClass" : "fa fa-plus-square-o"
+    },
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "mob_create_child_document",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "AFTER",
+    "id" : "mob_create_child_document@article_page"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "新建页面",
+    "codeName" : "mob_create_page",
+    "dataAccessAction" : "SUBDATA",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/article_page_mob_create_view.json",
+      "viewType" : "DEMOBEDITVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "article_page_mob_create_page",
+    "name" : "新建页面（移动端）",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "SUBDATA"
+    },
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "mob_create_page",
+    "uIActionType" : "DEUIACTION",
+    "id" : "mob_create_page@article_page"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "删除",
+    "codeName" : "mob_delete",
+    "confirmMsg" : "确定删除该页面吗？",
+    "dataAccessAction" : "SUBDATA",
+    "fullCodeName" : "article_page_mob_delete",
+    "name" : "移动端删除",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "delete"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "SUBDATA"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf014@FontAwesome",
+      "cssClass" : "fa fa-trash-o"
+    },
+    "refreshMode" : 1,
+    "successMsg" : "删除成功",
+    "timeout" : 60000,
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "mob_delete",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "mob_delete@article_page"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "草稿箱",
+    "codeName" : "mob_draft",
+    "dataAccessAction" : "SUBDATA",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/article_page_mob_draft_list_view.json",
+      "viewType" : "DEMOBLISTVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "article_page_mob_draft",
+    "name" : "草稿箱(移动端)",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "SUBDATA"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf0ea@FontAwesome",
+      "cssClass" : "fa fa-clipboard"
+    },
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "mob_draft",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true,
+    "id" : "mob_draft@article_page"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "新建子分组",
+    "codeName" : "mob_new_section",
+    "dataAccessAction" : "SUBDATA",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/article_page_mob_add_childgroup_view.json",
+      "viewType" : "DEMOBEDITVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "article_page_mob_new_section",
+    "name" : "移动端新建子分组",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "create"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "SUBDATA"
+    },
+    "getPSNavigateParams" : [ {
+      "key" : "type",
+      "name" : "type",
+      "value" : "2",
+      "rawValue" : true
+    }, {
+      "key" : "is_published",
+      "name" : "is_published",
+      "value" : "1",
+      "rawValue" : true
+    }, {
+      "key" : "format_type",
+      "name" : "format_type",
+      "value" : "HTML",
+      "rawValue" : true
+    }, {
+      "key" : "parent_id",
+      "name" : "parent_id",
+      "value" : "id",
+      "rawValue" : false
+    } ],
+    "getPSSysImage" : {
+      "glyph" : "xf07c@FontAwesome",
+      "cssClass" : "fa fa-folder-open"
+    },
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "mob_new_section",
+    "uIActionType" : "DEUIACTION",
+    "id" : "mob_new_section@article_page"
+  }, {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "打开评论列表",
+    "codeName" : "mob_open_comment_list",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/comment_mob_comment_md_view.json",
+      "viewType" : "DEMOBMDVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "article_page_mob_open_comment_list",
+    "name" : "打开评论列表（移动端）",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+    },
+    "refreshMode" : 1,
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "mob_open_comment_list",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true,
+    "reloadData" : true,
+    "id" : "mob_open_comment_list@article_page"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "编辑",
+    "codeName" : "mob_open_page_edit_view",
+    "dataAccessAction" : "UPDATE",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/article_page_mob_document_edit_view.json",
+      "viewType" : "DEMOBEDITVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "article_page_mob_open_page_edit_view",
+    "name" : "打开界面编辑页（移动端）",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "refreshMode" : 1,
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "mob_open_page_edit_view",
+    "uIActionType" : "DEUIACTION",
+    "reloadData" : true,
+    "id" : "mob_open_page_edit_view@article_page"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "开启页面共享",
+    "codeName" : "mob_open_shared",
+    "dataAccessAction" : "SHARED",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/article_page_mob_option_view.json",
+      "viewType" : "DEMOBOPTVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "article_page_mob_open_shared",
+    "name" : "开启页面共享（移动端）",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "space__SHARED"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf1e0@FontAwesome",
+      "cssClass" : "fa fa-share-alt"
+    },
+    "refreshMode" : 1,
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "mob_open_shared",
+    "uIActionType" : "DEUIACTION",
+    "reloadData" : true,
+    "id" : "mob_open_shared@article_page"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "重命名",
+    "codeName" : "mob_rename",
+    "dataAccessAction" : "SUBDATA",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/article_page_mob_rename_view.json",
+      "viewType" : "DEMOBEDITVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "article_page_mob_rename",
+    "name" : "移动端重命名",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "update"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "SUBDATA"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf0ec@FontAwesome",
+      "cssClass" : "fa fa-exchange"
+    },
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "mob_rename",
+    "uIActionType" : "DEUIACTION",
+    "id" : "mob_rename@article_page"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "页面共享",
+    "codeName" : "mob_shared_setting",
+    "dataAccessAction" : "SHARED",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/article_page_mob_option_view.json",
+      "viewType" : "DEMOBOPTVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "article_page_mob_shared_setting",
+    "name" : "页面共享设置（移动端）",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "space__SHARED"
+    },
+    "getPSNavigateContexts" : [ {
+      "key" : "SPACE",
+      "name" : "SPACE",
+      "value" : "space_id",
+      "rawValue" : false
+    } ],
+    "getPSSysImage" : {
+      "glyph" : "xf044@FontAwesome",
+      "cssClass" : "fa fa-edit"
+    },
+    "refreshMode" : 1,
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "mob_shared_setting",
+    "uIActionType" : "DEUIACTION",
+    "reloadData" : true,
+    "id" : "mob_shared_setting@article_page"
+  }, {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "打开关注列表",
+    "codeName" : "open_attention_list",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/attention_mob_page_md_view.json",
+      "viewType" : "DEMOBMDVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "article_page_open_attention_list",
+    "name" : "打开关注列表（移动端）",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+    },
+    "refreshMode" : 1,
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "open_attention_list",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true,
+    "reloadData" : true,
+    "id" : "open_attention_list@article_page"
+  }, {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "发布",
+    "codeName" : "release",
+    "dialogResult" : "OK",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "article_page_release",
+    "name" : "发布",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "save_notify_refresh"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf1d9@FontAwesome",
+      "cssClass" : "fa fa-paper-plane-o"
+    },
+    "refreshMode" : 1,
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "release",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "closeEditView" : true,
+    "closePopupView" : true,
+    "reloadData" : true,
+    "id" : "release@article_page"
+  } ],
+  "getAllPSAppDEUILogics" : [ {
+    "codeName" : "change_tree_state",
+    "defaultParamName" : "Default",
+    "logicName" : "切换导航树显示状态",
+    "memo" : "切换页面导航树显示状态",
+    "name" : "切换导航树显示状态",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : -520,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        },
+        "linkMode" : 0,
+        "name" : "未发布状态",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "is_published",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[is_published] 等于(=) false",
+            "paramValue" : "false",
+            "value" : "false"
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      }, {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM3"
+        },
+        "linkMode" : 0,
+        "name" : "发布状态",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "is_published",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[is_published] 等于(=) true",
+            "paramValue" : "true",
+            "value" : "true"
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 360,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "VIEWCTRLINVOKE2",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "treeexpbar_tree"
+      },
+      "invokeMethod" : "changeTreeState",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "eventArgs"
+      },
+      "leftPos" : 264,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "切换树正常状态",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE2"
+        }
+      } ],
+      "topPos" : 560
+    }, {
+      "codeName" : "PREPAREJSPARAM3",
+      "leftPos" : -100,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "设置eventArgs",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM3"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "eventArgs"
+        },
+        "name" : "直接值[no_draft] ==> eventArgs",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "no_draft",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 560
+    }, {
+      "codeName" : "PREPAREJSPARAM2",
+      "leftPos" : -100,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "设置eventArgs",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "eventArgs"
+        },
+        "name" : "直接值[draft] ==> eventArgs",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "draft",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 260
+    }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "treeexpbar_tree"
+      },
+      "invokeMethod" : "changeTreeState",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "eventArgs"
+      },
+      "leftPos" : 250,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "切换草稿状态",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        }
+      } ],
+      "topPos" : 260
+    }, {
+      "codeName" : "END2",
+      "leftPos" : 580,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 380
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "视图",
+      "name" : "视图",
+      "activeViewParam" : true
+    }, {
+      "codeName" : "treeexpbar_tree",
+      "logicName" : "树",
+      "name" : "树",
+      "ctrlParam" : true
+    }, {
+      "codeName" : "eventArgs",
+      "logicName" : "事件参数",
+      "name" : "事件参数",
+      "stdDataType" : 25,
+      "simpleParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "copy_shared_url",
+    "defaultParamName" : "Default",
+    "logicName" : "复制共享链接",
+    "memo" : "复制共享页面链接",
+    "name" : "复制共享链接",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "code" : "var _default = uiLogic.default;\r\nvar shared_url = _default.shared_page_url;\r\nif(shared_url !== null && shared_url !== undefined){\r\n    var textArea = document.createElement(\"textarea\");\r\n    // 在 textarea 中放入需要复制的文本\r\n    textArea.value = shared_url;\r\n    // 将 textarea 添加到 DOM 中\r\n    document.body.appendChild(textArea);\r\n    // 选中 textarea 中的文本\r\n    textArea.select();\r\n    // 执行复制命令\r\n    var successful = document.execCommand('copy');\r\n    var msg = successful ? '' : '复制失败';\r\n    if(successful){\r\n        util.message.success('复制共享链接成功');\r\n    } else {\r\n        util.message.error('复制共享链接失败!');\r\n    }\r\n} else {\r\n    util.message.error('复制共享链接失败!');\r\n}\r\n",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "复制共享链接",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 370
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 557
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "refresh",
+    "defaultParamName" : "Default",
+    "logicName" : "后续刷新",
+    "memo" : "后续刷新页面共享视图",
+    "name" : "后续刷新",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "code" : "ibiz.mc.command.update.send({ srfdecodename: 'space', srfkey: uiLogic.default.id});",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "topPos" : 347
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "save_notify_refresh",
+    "defaultParamName" : "Default",
+    "logicName" : "新建发布并通知刷新",
+    "memo" : "保存当前页面内容并刷新页面，点击发布按钮，触发保存非草稿页面",
+    "name" : "新建发布并通知刷新",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 60,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "publish_page"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "page_info"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEACTION",
+      "name" : "发布页面",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "getRetPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "page_info"
+      },
+      "topPos" : 302
+    }, {
+      "code" : "ibiz.mc.command.send({srfdecodename: 'article_page'}, 'OBJECTCREATED');",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 161,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "通知刷新",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 680
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 771
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "页面信息",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "page_info"
+        },
+        "name" : "Default ==> page_info",
+        "paramAction" : "COPYPARAM",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 170
+    }, {
+      "codeName" : "DEUIACTION2",
+      "getDstPSAppDEUIAction" : {
+        "modelref" : true,
+        "id" : "Exit"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "page_info"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "退出",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION2"
+        }
+      } ],
+      "topPos" : 548
+    }, {
+      "codeName" : "PREPAREJSPARAM2",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "设置发布状态到当前视图",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "is_published",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "name" : "page_info[is_published] ==> view[is_published]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "is_published",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "page_info"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 420
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "view",
+      "logicName" : "当前视图",
+      "name" : "当前视图",
+      "activeViewParam" : true
+    }, {
+      "codeName" : "page_info",
+      "logicName" : "页面信息",
+      "name" : "页面信息",
+      "entityParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "shared_form_data",
+    "defaultParamName" : "Default",
+    "logicName" : "共享设置表单加载数据",
+    "memo" : "共享设置表单加载数据",
+    "name" : "共享设置表单加载数据",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 150,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 555
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "shared_url"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEACTION",
+      "name" : "获取共享链接",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "getRetPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "topPos" : 300
+    }, {
+      "code" : "\r\nvar form = view.layoutPanel.panelItems.form.control.details\r\nvar shared_scope = form.shared_scope;\r\nvar enable_password = form.enable_password;\r\nvar enable_expiration = form.enable_expiration;\r\nvar access_password = form.access_password;\r\nvar expiration_date = form.expiration_date;\r\nvar _url = uiLogic.default.shared_page_url;\r\nif(_url !== null && _url !== undefined) {\r\n    var shared_url = form.shared_page_url;\r\n    shared_url.setDataValue(_url);\r\n}\r\nif(expiration_date.value !== null && expiration_date.value !== undefined) {\r\n    enable_expiration.setDataValue(1);\r\n} else {\r\n    enable_expiration.setDataValue(0);\r\n    var today = new Date();  // 获取当前日期\r\n    // 获取 30 天后的日期\r\n    var nextDate = new Date();\r\n    nextDate.setDate(today.getDate() + 30);\r\n\r\n    // 获取年、月、日\r\n    var nextYear = nextDate.getFullYear();\r\n    var nextMonth = ('0' + (nextDate.getMonth() + 1)).slice(-2);\r\n    var nextDay = ('0' + nextDate.getDate()).slice(-2);\r\n    // 格式化成 YYYY-MM-DD 的字符串\r\n    var _date = nextYear + '-' + nextMonth + '-' + nextDay;\r\n    expiration_date.setDataValue(_date);\r\n}\r\nif(access_password.value !== null && access_password.value !== undefined) {\r\n    enable_password.setDataValue(1);\r\n} else {\r\n    enable_password.setDataValue(0);\r\n    // 生成4位随机数\r\n    var randomNumber = Math.floor(Math.random() * 9000) + 1000;\r\n    access_password.setDataValue(randomNumber);\r\n}\r\n",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "设置共享页面默认参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 413
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  } ],
   "getAllPSAppViews" : [ {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/article_page_mob_option_view.json",
+    "viewType" : "DEMOBOPTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/article_page_mob_add_childgroup_view.json",
+    "viewType" : "DEMOBEDITVIEW"
+  }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/article_page_shared_mob_list_view.json",
     "viewType" : "DEMOBLISTVIEW"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/article_page_mob_rename_view.json",
+    "viewType" : "DEMOBEDITVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/article_page_mob_document_edit_view.json",
+    "viewType" : "DEMOBEDITVIEW"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/article_page_mob_list_view.json",
     "viewType" : "DEMOBLISTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/article_page_mob_draft_list_view.json",
+    "viewType" : "DEMOBLISTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/article_page_mob_create_view.json",
+    "viewType" : "DEMOBEDITVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/article_page_favorite_mob_list_view.json",
@@ -7453,5 +8887,138 @@
   "enableUIModify" : true,
   "enableUIRemove" : true,
   "enableWFActions" : false,
-  "major" : true
+  "major" : true,
+  "getAllPSAppDEUIActionGroups" : [ {
+    "codeName" : "Usr1017223437",
+    "name" : "移动端页面草稿箱列表操作",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+    },
+    "uniqueTag" : "article_page__Usr1017223437",
+    "getPSUIActionGroupDetails" : [ {
+      "caption" : "删除",
+      "detailType" : "DEUIACTION",
+      "name" : "u731331d",
+      "getPSSysImage" : {
+        "glyph" : "xf014@FontAwesome",
+        "cssClass" : "fa fa-trash-o"
+      },
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+        },
+        "modelref" : true,
+        "id" : "mob_delete@article_page"
+      }
+    } ]
+  }, {
+    "codeName" : "Usr1017923437",
+    "name" : "移动端页面列表操作",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+    },
+    "uniqueTag" : "article_page__Usr1017923437",
+    "getPSUIActionGroupDetails" : [ {
+      "caption" : "新建子页面",
+      "detailType" : "DEUIACTION",
+      "name" : "u088c695",
+      "getPSSysImage" : {
+        "glyph" : "xf196@FontAwesome",
+        "cssClass" : "fa fa-plus-square-o"
+      },
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+        },
+        "modelref" : true,
+        "id" : "mob_create_child_document@article_page"
+      }
+    }, {
+      "caption" : "新建子分组",
+      "detailType" : "DEUIACTION",
+      "name" : "udcffd61",
+      "getPSSysImage" : {
+        "glyph" : "xf07c@FontAwesome",
+        "cssClass" : "fa fa-folder-open"
+      },
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+        },
+        "modelref" : true,
+        "id" : "mob_new_section@article_page"
+      }
+    }, {
+      "caption" : "收藏",
+      "detailType" : "DEUIACTION",
+      "name" : "u0a9872f",
+      "getPSSysImage" : {
+        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M9.54013,6.48742551 L8,3.36677551 L6.45987,6.48742551 L3.01604,6.98784551 L5.50802,9.41692551 L4.91975,12.8468255 L8,11.2274255 L11.08025,12.8468255 L10.49195,9.41692551 L12.98395,6.98784551 L9.54013,6.48742551 Z M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#557DA5\" fill-rule=\"nonzero\"></path>\n</svg>"
+      },
+      "tooltip" : "收藏",
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+        },
+        "modelref" : true,
+        "id" : "mob_add_favorite@article_page"
+      }
+    }, {
+      "caption" : "重命名",
+      "detailType" : "DEUIACTION",
+      "name" : "u6399404",
+      "getPSSysImage" : {
+        "glyph" : "xf0ec@FontAwesome",
+        "cssClass" : "fa fa-exchange"
+      },
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+        },
+        "modelref" : true,
+        "id" : "mob_rename@article_page"
+      }
+    }, {
+      "caption" : "删除",
+      "detailType" : "DEUIACTION",
+      "name" : "u2324922",
+      "getPSSysImage" : {
+        "glyph" : "xf014@FontAwesome",
+        "cssClass" : "fa fa-trash-o"
+      },
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
+        },
+        "modelref" : true,
+        "id" : "mob_delete@article_page"
+      }
+    } ]
+  } ]
 }

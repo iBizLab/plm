@@ -15,8 +15,8 @@
     "id" : "end_at",
     "viewFieldName" : "END_AT"
   }, {
-    "id" : "assignee_name",
-    "viewFieldName" : "ASSIGNEE_NAME"
+    "id" : "assignee_id",
+    "viewFieldName" : "ASSIGNEE_ID"
   } ],
   "codeName" : "usr0927689318",
   "controlType" : "PANEL",
@@ -43,8 +43,9 @@
     "getPSLayoutPos" : {
       "colMD" : 24,
       "layout" : "TABLE_24COL",
-      "spacingLeft" : "OUTERLARGE",
-      "spacingRight" : "OUTERLARGE"
+      "spacingLeft" : "OUTERMEDIUM",
+      "spacingRight" : "OUTERMEDIUM",
+      "spacingTop" : "OUTERSMALL"
     },
     "getPSPanelItems" : [ {
       "caption" : "容器",
@@ -127,8 +128,7 @@
         },
         "getPSLayoutPos" : {
           "grow" : -1,
-          "layout" : "FLEX",
-          "spacingTop" : "OUTERSMALL"
+          "layout" : "FLEX"
         },
         "getPSPanelItems" : [ {
           "caption" : "容器",
@@ -263,17 +263,21 @@
           "caption" : "文本(动态)",
           "itemStyle" : "DEFAULT",
           "itemType" : "FIELD",
-          "name" : "assignee_name",
+          "name" : "assignee_id",
           "getPSEditor" : {
             "editorParams" : {
               "SHOWNAMETEXT" : "false"
             },
-            "editorStyle" : "PERSONNEL_INFO",
+            "editorStyle" : "MOB_PERSONNEL_INFO",
             "editorType" : "SPAN",
-            "name" : "assignee_name",
+            "name" : "assignee_id",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
+            },
             "getPSSysPFPlugin" : {
               "pluginType" : "EDITOR_CUSTOMSTYLE",
-              "pluginCode" : "PERSONNEL_INFO",
+              "pluginCode" : "MOB_PERSONNEL_INFO",
               "runtimeObject" : true
             },
             "predefinedType" : "FIELD_TEXT_DYNAMIC",
@@ -284,7 +288,8 @@
             "grow" : -1,
             "layout" : "FLEX"
           },
-          "viewFieldName" : "ASSIGNEE_NAME"
+          "viewFieldName" : "ASSIGNEE_ID",
+          "convertToCodeItemText" : true
         } ]
       } ]
     } ]

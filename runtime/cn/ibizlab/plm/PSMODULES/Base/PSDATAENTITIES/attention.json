@@ -191,6 +191,132 @@
       "type" : "VOID"
     },
     "builtinAction" : true
+  }, {
+    "actionHolder" : 2,
+    "actionMode" : "CUSTOM",
+    "actionType" : "USERCUSTOM",
+    "codeName" : "add_attention_test_case",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDEACTIONS/add_attention_test_case.json",
+    "logicName" : "添加关注_测试用例",
+    "name" : "add_attention_test_case",
+    "getPSDEActionInput" : {
+      "name" : "Add_attention_test_caseInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "attention_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Add_attention_test_caseResult",
+      "type" : "VOID"
+    },
+    "enableBackend" : false
+  }, {
+    "actionHolder" : 2,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "mob_add_attention_discuss_post",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDEACTIONS/mob_add_attention_discuss_post.json",
+    "logicName" : "添加关注_讨论",
+    "name" : "mob_add_attention_discuss_post",
+    "getPSDEActionInput" : {
+      "name" : "Mob_add_attention_discuss_postInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "attention_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Mob_add_attention_discuss_postResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDELOGICS/mob_add_attention_discuss.json"
+    },
+    "enableBackend" : false
+  }, {
+    "actionHolder" : 2,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "mob_add_attention_idea",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDEACTIONS/mob_add_attention_idea.json",
+    "logicName" : "添加关注_需求",
+    "name" : "mob_add_attention_idea",
+    "getPSDEActionInput" : {
+      "name" : "Mob_add_attention_ideaInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "attention_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Mob_add_attention_ideaResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDELOGICS/mob_add_attention_idea.json"
+    },
+    "enableBackend" : false
+  }, {
+    "actionHolder" : 2,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "mob_add_attention_ticket",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDEACTIONS/mob_add_attention_ticket.json",
+    "logicName" : "添加关注_工单",
+    "name" : "mob_add_attention_ticket",
+    "getPSDEActionInput" : {
+      "name" : "Mob_add_attention_ticketInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "attention_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Mob_add_attention_ticketResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDELOGICS/mob_add_attention_ticket.json"
+    },
+    "enableBackend" : false
+  }, {
+    "actionHolder" : 1,
+    "actionMode" : "GETDRAFT",
+    "actionType" : "DELOGIC",
+    "codeName" : "un_attention",
+    "dataAccessAction" : "CREATE",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDEACTIONS/un_attention.json",
+    "logicName" : "取消关注",
+    "name" : "un_attention",
+    "getPSDEActionInput" : {
+      "name" : "Un_attentionInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "attention_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Un_attentionResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "attention_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDELOGICS/un_attention.json"
+    },
+    "enableFront" : false
   } ],
   "getAllPSDEDBConfigs" : [ {
     "dBType" : "MYSQL5",
@@ -1717,6 +1843,341 @@
     "systemReserver" : true
   } ],
   "getAllPSDELogics" : [ {
+    "codeName" : "add_attention_test_case",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDELOGICS/add_attention_test_case.json",
+    "logicName" : "添加关注(测试用例)",
+    "name" : "添加关注(测试用例)",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/finish_add_attention.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+      },
+      "leftPos" : 752,
+      "logicNodeType" : "DEACTION",
+      "name" : "测试用例关注",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "DEACTION2",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEACTIONS/mob_discuss_post_attention.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post.json"
+      },
+      "leftPos" : 752,
+      "logicNodeType" : "DEACTION",
+      "name" : "讨论关注",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION2"
+        }
+      } ],
+      "topPos" : 328
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 1257,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 438
+    }, {
+      "codeName" : "PREPAREPARAM1",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "空，承载条件",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "测试用例",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "principal_type",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "ctx"
+            },
+            "logicType" : "SINGLE",
+            "name" : "ctx[principal_type] 等于(=) test_case",
+            "paramValue" : "test_case"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION2"
+        },
+        "name" : "讨论",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "principal_type",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "ctx"
+            },
+            "logicType" : "SINGLE",
+            "name" : "ctx[principal_type] 等于(=) discuss_post",
+            "paramValue" : "discuss_post"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION3"
+        },
+        "name" : "页面",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "principal_type",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "ctx"
+            },
+            "logicType" : "SINGLE",
+            "name" : "ctx[principal_type] 等于(=) page",
+            "paramValue" : "page"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION4"
+        },
+        "name" : "需求",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "principal_type",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "ctx"
+            },
+            "logicType" : "SINGLE",
+            "name" : "ctx[principal_type] 等于(=) idea",
+            "paramValue" : "idea"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION5"
+        },
+        "name" : "工单",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "principal_type",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "ctx"
+            },
+            "logicType" : "SINGLE",
+            "name" : "ctx[principal_type] 等于(=) ticket",
+            "paramValue" : "ticket"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        }
+      } ],
+      "topPos" : 446
+    }, {
+      "codeName" : "DEACTION3",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEACTIONS/finish_add_attention.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+      },
+      "leftPos" : 752,
+      "logicNodeType" : "DEACTION",
+      "name" : "页面关注",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION3"
+        }
+      } ],
+      "topPos" : 460
+    }, {
+      "codeName" : "DEACTION4",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEACTIONS/mob_idea_attention.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+      },
+      "leftPos" : 752,
+      "logicNodeType" : "DEACTION",
+      "name" : "需求关注",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION4"
+        }
+      } ],
+      "topPos" : 564
+    }, {
+      "codeName" : "DEACTION5",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEACTIONS/mob_ticket_attention.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
+      },
+      "leftPos" : 752,
+      "logicNodeType" : "DEACTION",
+      "name" : "工单关注",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION5"
+        }
+      } ],
+      "topPos" : 681
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/attention.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "ctx",
+      "logicName" : "导航上下文",
+      "name" : "导航上下文",
+      "appContextParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : false,
+    "enableFront" : true
+  }, {
     "codeName" : "after_create_notify",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDELOGICS/after_create_notify.json",
@@ -2144,6 +2605,335 @@
       "logicNodeType" : "DENOTIFY",
       "name" : "提醒关注执行用例通知",
       "topPos" : 380
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/attention.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
+    "codeName" : "mob_add_attention_discuss",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDELOGICS/mob_add_attention_discuss.json",
+    "logicName" : "添加讨论关注(移动端)",
+    "name" : "添加讨论关注(移动端)",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 220,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 570,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 220
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEACTIONS/mob_discuss_post_attention.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post.json"
+      },
+      "leftPos" : 331,
+      "logicNodeType" : "DEACTION",
+      "name" : "实体行为",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "topPos" : 228
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/attention.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : false,
+    "enableFront" : true
+  }, {
+    "codeName" : "mob_add_attention_idea",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDELOGICS/mob_add_attention_idea.json",
+    "logicName" : "添加关注（需求-移动端）",
+    "name" : "添加关注（需求-移动端）",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 512,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEACTIONS/mob_idea_attention.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+      },
+      "leftPos" : 315,
+      "logicNodeType" : "DEACTION",
+      "name" : "实体行为",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "topPos" : 208
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/attention.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : false,
+    "enableFront" : true
+  }, {
+    "codeName" : "mob_add_attention_ticket",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDELOGICS/mob_add_attention_ticket.json",
+    "logicName" : "添加关注（工单-移动端）",
+    "name" : "添加关注（工单-移动端）",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 603,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEACTIONS/mob_ticket_attention.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
+      },
+      "leftPos" : 358,
+      "logicNodeType" : "DEACTION",
+      "name" : "实体行为",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "topPos" : 208
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/attention.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : false,
+    "enableFront" : true
+  }, {
+    "codeName" : "un_attention",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDELOGICS/un_attention.json",
+    "logicName" : "取消关注",
+    "name" : "取消关注",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 813,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 276,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDEACTIONS/Remove.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/attention.json"
+      },
+      "leftPos" : 601,
+      "logicNodeType" : "DEACTION",
+      "name" : "实体行为",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "topPos" : 208
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",
@@ -2675,11 +3465,29 @@
     "realModelSubType" : "DEREDIRECTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_work_item_md_view",
+    "logicName" : "工作项关注多数据视图（移动端）",
+    "name" : "工作项关注多数据视图（移动端）",
+    "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "GridView",
     "logicName" : "关注实体表格视图",
     "modelTag" : "MDATAVIEW",
     "name" : "关注实体表格视图",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_md_view",
+    "logicName" : "关注多数据视图（移动端）",
+    "name" : "关注多数据视图（移动端）",
+    "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_idea_md_view",
+    "logicName" : "需求关注多数据视图（移动端）",
+    "name" : "需求关注多数据视图（移动端）",
+    "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "pick_up_view",
@@ -2693,6 +3501,12 @@
     "logicName" : "关注实体选择表格视图（部件视图）",
     "name" : "关注实体选择表格视图（部件视图）",
     "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_ticket_md_view",
+    "logicName" : "工单关注多数据视图（移动端）",
+    "name" : "工单关注多数据视图（移动端）",
+    "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView2",
@@ -2712,6 +3526,18 @@
     "logicName" : "我关注的事项",
     "name" : "我关注的事项",
     "realModelSubType" : "DETABEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_discuss_md_view",
+    "logicName" : "讨论关注多数据视图（移动端）",
+    "name" : "讨论关注多数据视图（移动端）",
+    "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_page_md_view",
+    "logicName" : "页面关注多数据视图（移动端）",
+    "name" : "页面关注多数据视图（移动端）",
+    "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "Main",

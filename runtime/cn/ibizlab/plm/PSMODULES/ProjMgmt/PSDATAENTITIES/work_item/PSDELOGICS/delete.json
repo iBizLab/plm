@@ -52,34 +52,6 @@
     } ],
     "topPos" : 70
   }, {
-    "codeName" : "RAWSQLCALL1",
-    "leftPos" : 170,
-    "logicNodeType" : "RAWSQLCALL",
-    "name" : "删除最近访问",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSQLCALL1"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "name" : "Default[ID]",
-      "paramAction" : "SQLPARAM",
-      "srcFieldName" : "ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    } ],
-    "sql" : "update recent set IS_DELETED=1 where owner_id=? and owner_subtype='work_item'",
-    "topPos" : 170
-  }, {
     "codeName" : "PREPAREPARAM1",
     "leftPos" : 170,
     "logicNodeType" : "PREPAREPARAM",
@@ -215,6 +187,34 @@
     } ],
     "topPos" : -40
   }, {
+    "codeName" : "RAWSQLCALL1",
+    "leftPos" : 170,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "删除最近访问",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "update recent set IS_DELETED=1 where owner_id=? and owner_subtype='work_item'",
+    "topPos" : 170
+  }, {
     "codeName" : "LOOPSUBCALL1",
     "getDstPSDELogicParam" : {
       "modelref" : true,
@@ -273,6 +273,11 @@
     "leftPos" : 210,
     "logicNodeType" : "END",
     "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
     "topPos" : 711
   } ],
   "getPSDELogicParams" : [ {

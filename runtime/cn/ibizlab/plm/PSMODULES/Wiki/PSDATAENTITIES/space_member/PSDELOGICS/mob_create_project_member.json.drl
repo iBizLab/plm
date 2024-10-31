@@ -1,0 +1,106 @@
+package cn.ibizlab.plm.wiki.logic.space_memberlogic.mob_create_project_member;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.wiki.domain.space_member space_membermob_create_project_memberdefault;
+                global cn.ibizlab.plm.core.base.domain.user space_membermob_create_project_memberfor_temp_obj;
+                global cn.ibizlab.plm.core.wiki.domain.space_member space_membermob_create_project_membermember_obj;
+                global cn.ibizlab.plm.core.base.domain.user space_membermob_create_project_memberselectdata;
+                    global cn.ibizlab.plm.core.wiki.service.Ispace_memberService space_memberservice;
+        global cn.ibizlab.plm.core.wiki.service.Ispace_memberService iBzSysSpace_memberDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "space_membermob_create_project_memberbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定选中成员参数]
+            rule "bindparam1"
+            ruleflow-group "space_membermob_create_project_memberbindparam1"
+            when
+            then
+                        update(space_membermob_create_project_memberdefault);//更新fact中变量值
+                        update(space_membermob_create_project_memberfor_temp_obj);//更新fact中变量值
+                        update(space_membermob_create_project_membermember_obj);//更新fact中变量值
+                        update(space_membermob_create_project_memberselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "space_membermob_create_project_memberloopsubcall1"
+            when
+            then
+                        update(space_membermob_create_project_memberdefault);//更新fact中变量值
+                        update(space_membermob_create_project_memberfor_temp_obj);//更新fact中变量值
+                        update(space_membermob_create_project_membermember_obj);//更新fact中变量值
+                        update(space_membermob_create_project_memberselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新建立成员参数]
+            rule "renewparam1"
+            ruleflow-group "space_membermob_create_project_memberrenewparam1"
+            when
+            then
+                        update(space_membermob_create_project_memberdefault);//更新fact中变量值
+                        update(space_membermob_create_project_memberfor_temp_obj);//更新fact中变量值
+                        update(space_membermob_create_project_membermember_obj);//更新fact中变量值
+                        update(space_membermob_create_project_memberselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充空间成员属性]
+            rule "prepareparam1"
+            ruleflow-group "space_membermob_create_project_memberprepareparam1"
+            when
+            then
+                            space_membermob_create_project_membermember_obj.set("userid",space_membermob_create_project_memberfor_temp_obj.get("userid"));
+                            space_membermob_create_project_membermember_obj.set("name",space_membermob_create_project_memberfor_temp_obj.get("displayname"));
+                            space_membermob_create_project_membermember_obj.set("spaceid",space_membermob_create_project_memberdefault.get("spaceid"));
+                        update(space_membermob_create_project_memberdefault);//更新fact中变量值
+                        update(space_membermob_create_project_memberfor_temp_obj);//更新fact中变量值
+                        update(space_membermob_create_project_membermember_obj);//更新fact中变量值
+                        update(space_membermob_create_project_memberselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam2"
+            ruleflow-group "space_membermob_create_project_memberprepareparam2"
+            when
+            then
+                            space_membermob_create_project_membermember_obj.set("userid",space_membermob_create_project_memberfor_temp_obj.get("id"));
+                        update(space_membermob_create_project_memberdefault);//更新fact中变量值
+                        update(space_membermob_create_project_memberfor_temp_obj);//更新fact中变量值
+                        update(space_membermob_create_project_membermember_obj);//更新fact中变量值
+                        update(space_membermob_create_project_memberselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[建立空间成员]
+            rule "deaction1"
+            ruleflow-group "space_membermob_create_project_memberdeaction1"
+            when
+            then
+                        space_memberservice.create(space_membermob_create_project_membermember_obj);
+                        update(space_membermob_create_project_memberdefault);//更新fact中变量值
+                        update(space_membermob_create_project_memberfor_temp_obj);//更新fact中变量值
+                        update(space_membermob_create_project_membermember_obj);//更新fact中变量值
+                        update(space_membermob_create_project_memberselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "space_membermob_create_project_memberend1"
+            when
+            then
+                        update(space_membermob_create_project_memberdefault);//更新fact中变量值
+                        update(space_membermob_create_project_memberfor_temp_obj);//更新fact中变量值
+                        update(space_membermob_create_project_membermember_obj);//更新fact中变量值
+                        update(space_membermob_create_project_memberselectdata);//更新fact中变量值
+            end

@@ -29,6 +29,25 @@
     "defaultMode" : false,
     "enablePagingBar" : false,
     "id" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDEACMODES/member_select.json"
+  }, {
+    "codeName" : "mob_member_select",
+    "logicName" : "移动端人员选择",
+    "name" : "mob_member_select",
+    "getPSDEACModeDataItems" : [ {
+      "dataType" : 25,
+      "name" : "value"
+    }, {
+      "dataType" : 25,
+      "name" : "text"
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "pagingSize" : 50,
+    "defaultMode" : false,
+    "enablePagingBar" : false,
+    "id" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDEACMODES/mob_member_select.json"
   } ],
   "getAllPSDEActions" : [ {
     "actionMode" : "CREATE",
@@ -499,6 +518,80 @@
       },
       "type" : "DTOS"
     }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDEDATAQUERIES/mob_cur_member/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "mob_cur_member",
+    "logicName" : "移动端当前测试库成员",
+    "name" : "mob_cur_member",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "LIBRARY_MEMBER"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Mob_cur_memberInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "library_member_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Mob_cur_memberResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "library_member_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDEDATAQUERIES/no_attention/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "no_attention",
+    "logicName" : "未关注用户(测试用例)",
+    "name" : "no_attention",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "LIBRARY_MEMBER",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condType" : "CUSTOM",
+          "condition" : "( USER_ID NOT IN (SELECT user_id from attention t2 where t2.OWNER_ID = #{ctx.webcontext.test_case} ))",
+          "name" : "未关注"
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "No_attentionInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "library_member_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "No_attentionResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "library_member_dto"
+      },
+      "type" : "DTOS"
+    }
   } ],
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
@@ -549,6 +642,58 @@
     },
     "getPSDEDataSetReturn" : {
       "name" : "Cur_library_memberResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "library_member_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "mob_cur_member",
+    "logicName" : "移动端当前测试库成员",
+    "name" : "mob_cur_member",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "mob_cur_member"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Mob_cur_memberInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "library_member_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Mob_cur_memberResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "library_member_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "no_attention",
+    "logicName" : "未关注用户(测试用例)",
+    "name" : "no_attention",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "no_attention"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "No_attentionInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "library_member_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "No_attentionResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "library_member_dto"
@@ -1887,7 +2032,7 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 50,
+      "topPos" : 10,
       "parallelOutput" : true
     }, {
       "codeName" : "BINDPARAM1",
@@ -2036,9 +2181,9 @@
           "modelref" : true,
           "id" : "member_obj"
         },
-        "name" : "for_temp_obj[ID] ==> member_obj[USER_ID]",
+        "name" : "for_temp_obj[USER_ID] ==> member_obj[USER_ID]",
         "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "ID",
+        "srcFieldName" : "USER_ID",
         "getSrcPSDELogicParam" : {
           "modelref" : true,
           "id" : "for_temp_obj"
@@ -2722,6 +2867,12 @@
     "utilType" : "NOTIFYSETTING"
   } ],
   "getAllPSModelDatas" : [ {
+    "codeName" : "mob_attention_tree_view",
+    "logicName" : "测试库关注人员树选择视图（移动端）",
+    "name" : "测试库关注人员树选择视图（移动端）",
+    "realModelSubType" : "DEMOBPICKUPTREEVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "mpick_up_view",
     "logicName" : "测试库成员实体数据多项选择视图",
     "modelTag" : "MPICKUPVIEW",
@@ -2734,6 +2885,30 @@
     "modelTag" : "MDATAVIEW",
     "name" : "测试库成员实体表格视图",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_attention_mdpickup_view",
+    "logicName" : "测试库关注人员选择视图（移动端）（多选）",
+    "name" : "测试库关注人员选择视图（移动端）（多选）",
+    "realModelSubType" : "DEMOBMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_role_option_view",
+    "logicName" : "测试库成员角色操作视图（移动端）",
+    "name" : "测试库成员角色操作视图（移动端）",
+    "realModelSubType" : "DEMOBOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_dept_mdpickup_view",
+    "logicName" : "测试库部门人员选择视图（移动端）（多选）",
+    "name" : "测试库部门人员选择视图（移动端）（多选）",
+    "realModelSubType" : "DEMOBMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_pick_up_md_view",
+    "logicName" : "多选视图（部件视图）（测试）",
+    "name" : "多选视图（部件视图）（测试）",
+    "realModelSubType" : "DEMOBPICKUPMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "config_grid_view",
@@ -2767,10 +2942,22 @@
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_list_view",
+    "logicName" : "测试库成员多数据视图(移动端)",
+    "name" : "测试库成员多数据视图(移动端)",
+    "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "pick_up_grid_view",
     "logicName" : "测试库成员实体选择表格视图（部件视图）",
     "name" : "测试库成员实体选择表格视图（部件视图）",
     "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_dept_tree_view",
+    "logicName" : "测试库部门人员树选择视图（移动端）",
+    "name" : "测试库部门人员树选择视图（移动端）",
+    "realModelSubType" : "DEMOBPICKUPTREEVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "pick_up_view",
@@ -2778,6 +2965,12 @@
     "modelTag" : "PICKUPVIEW",
     "name" : "测试库成员实体数据选择视图",
     "realModelSubType" : "DEPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_pickup_view",
+    "logicName" : "测试库人员选择视图（移动端）（单选）",
+    "name" : "测试库人员选择视图（移动端）（单选）",
+    "realModelSubType" : "DEMOBPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "RedirectView",
@@ -2791,6 +2984,13 @@
     "logicName" : "测试库成员实体选项操作视图（设置角色）_表单",
     "modelTag2" : "0",
     "name" : "测试库成员实体选项操作视图（设置角色）_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_role_option_view_Form",
+    "logicName" : "测试库成员角色操作视图（移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "测试库成员角色操作视图（移动端）_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {

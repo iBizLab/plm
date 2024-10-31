@@ -1,0 +1,209 @@
+{
+  "getAllPSPanelFields" : [ {
+    "id" : "create_man",
+    "viewFieldName" : "CREATE_MAN"
+  }, {
+    "id" : "create_time",
+    "viewFieldName" : "CREATE_TIME"
+  }, {
+    "id" : "content",
+    "viewFieldName" : "CONTENT"
+  } ],
+  "codeName" : "usr1010621599",
+  "controlType" : "PANEL",
+  "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/comment/PSPANELS/usr1010621599.json",
+  "layoutMode" : "TABLE_24COL",
+  "logicName" : "discuss_post_list_列表项面板",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/comment.json"
+  },
+  "getPSLayout" : {
+    "childColMD" : 24,
+    "columnCount" : 24,
+    "layout" : "TABLE_24COL"
+  },
+  "getRootPSPanelItems" : [ {
+    "itemStyle" : "DEFAULT",
+    "itemType" : "CONTAINER",
+    "name" : "page_container",
+    "getPSLayout" : {
+      "dir" : "column",
+      "layout" : "FLEX"
+    },
+    "getPSLayoutPos" : {
+      "colMD" : 24,
+      "layout" : "TABLE_24COL",
+      "spacingLeft" : "OUTERMEDIUM",
+      "spacingRight" : "OUTERMEDIUM",
+      "spacingTop" : "OUTERSMALL"
+    },
+    "getPSPanelItems" : [ {
+      "caption" : "容器",
+      "itemStyle" : "DEFAULT",
+      "itemType" : "CONTAINER",
+      "name" : "container2",
+      "getPSLayout" : {
+        "align" : "space-between",
+        "dir" : "row",
+        "layout" : "FLEX",
+        "vAlign" : "center"
+      },
+      "getPSLayoutPos" : {
+        "grow" : -1,
+        "layout" : "FLEX",
+        "spacingBottom" : "OUTERSMALL"
+      },
+      "getPSPanelItems" : [ {
+        "caption" : "容器",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "container1",
+        "getPSLayout" : {
+          "layout" : "FLEX"
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "layout" : "FLEX"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "文本(动态)",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "FIELD",
+          "name" : "create_man",
+          "getPSEditor" : {
+            "editorStyle" : "MOB_PERSONNEL_INFO",
+            "editorType" : "SPAN",
+            "name" : "create_man",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
+            },
+            "getPSSysPFPlugin" : {
+              "pluginType" : "EDITOR_CUSTOMSTYLE",
+              "pluginCode" : "MOB_PERSONNEL_INFO",
+              "runtimeObject" : true
+            },
+            "predefinedType" : "FIELD_TEXT_DYNAMIC",
+            "renderMode" : "TEXT_DYNAMIC",
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "viewFieldName" : "CREATE_MAN",
+          "convertToCodeItemText" : true
+        }, {
+          "caption" : "文本(动态)",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "FIELD",
+          "name" : "create_time",
+          "getPSEditor" : {
+            "editorType" : "SPAN",
+            "name" : "create_time",
+            "predefinedType" : "FIELD_TEXT_DYNAMIC",
+            "renderMode" : "TEXT_DYNAMIC",
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "viewFieldName" : "CREATE_TIME"
+        } ]
+      }, {
+        "actionType" : "UIACTION",
+        "buttonStyle" : "DEFAULT",
+        "caption" : "按钮",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "BUTTON",
+        "name" : "button_calluilogic",
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "mdctrl_itempanel_button_calluilogic"
+        },
+        "getPSControlLogics" : [ {
+          "itemName" : "BUTTON_CALLUILOGIC",
+          "logicTag" : "mdctrl_itempanel",
+          "logicType" : "SCRIPT",
+          "name" : "logic",
+          "scriptCode" : "data?.create_man === context?.srfuserid",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "layout" : "FLEX"
+        },
+        "getPSSysImage" : {
+          "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1728544519535\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"1477\" width=\"32\" height=\"32\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><path d=\"M647.72092 65.871345c46.236694 0 85.804413 33.00354 94.206004 78.336l0.244522 1.37731L757.844834 237.536062H866.307992v3.992203h60.881092c17.63855 0 31.937622 14.299072 31.937622 31.937622 0 17.63855-14.299072 31.937622-31.937622 31.937622h-60.881092v493.037037c0 89.494207-71.823719 162.213177-160.973598 163.658355L702.62768 962.120858H321.37232c-89.494207 0-162.213177-71.823719-163.658355-160.973599L157.692008 798.440546V305.403509H96.810916c-17.63855 0-31.937622-14.299072-31.937622-31.937622 0-17.63855 14.299072-31.937622 31.937622-31.937622h60.881092v-3.992203h108.46216l15.674386-91.951407c7.768827-45.578979 46.952296-79.038628 93.051259-79.703329l1.399267-0.009981h271.44184zM794.448343 309.395712H229.551657v489.044834c0 49.702924 39.489871 90.180865 88.804554 91.771758l1.497076 0.036928L321.37232 890.261209h381.25536c50.203945 0 90.997271-40.291306 91.808686-90.302628L794.448343 798.440546V309.395712z m-442.136452 95.812865c17.63855 0 31.937622 14.299072 31.937622 31.937622v298.417154c0 17.63855-14.299072 31.937622-31.937622 31.937622-17.63855 0-31.937622-14.299072-31.937622-31.937622V437.146199c0-17.63855 14.299072-31.937622 31.937622-31.937622z m159.688109 66.869396c17.63855 0 31.937622 14.299072 31.937622 31.937622v231.547758c0 17.63855-14.299072 31.937622-31.937622 31.937622-17.63855 0-31.937622-14.299072-31.937622-31.937622V504.015595c0-17.63855 14.299072-31.937622 31.937622-31.937622z m159.688109 0c17.63855 0 31.937622 14.299072 31.937622 31.937622v231.547758c0 17.63855-14.299072 31.937622-31.937622 31.937622-17.63855 0-31.937622-14.299072-31.937622-31.937622V504.015595c0-17.63855 14.299072-31.937622 31.937622-31.937622z m-23.967189-342.331384H376.27908c-15.411899 0-28.601138 11.001513-31.401669 26.112l-0.08184 0.459103L330.95161 237.536062h362.095782l-13.842963-81.21837c-2.563992-15.040624-15.389942-26.122979-30.557318-26.558129l-0.459103-0.00998-0.467088-0.002994z\" fill=\"#bfbfbf\" p-id=\"1478\"></path></svg>"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEKEY",
+          "caption" : "删除评论",
+          "codeName" : "mob_del_comment",
+          "confirmMsg" : "确认删除该评论？",
+          "fullCodeName" : "discuss_post_mob_del_comment",
+          "name" : "删除评论（移动端）",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "del_comment"
+          },
+          "getPSAppDEUILogic" : {
+            "modelref" : true,
+            "id" : "refresh"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_post.json"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "del_comment_id",
+            "name" : "del_comment_id",
+            "value" : "id",
+            "rawValue" : false
+          } ],
+          "successMsg" : "删除成功",
+          "timeout" : 60000,
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "mob_del_comment",
+          "uIActionType" : "DEUIACTION",
+          "uILogicAttachMode" : "AFTER",
+          "enableConfirm" : true,
+          "globalUIAction" : true,
+          "id" : "mob_del_comment@discuss_post"
+        },
+        "tooltip" : "按钮",
+        "uIActionTarget" : "SINGLEKEY"
+      } ]
+    }, {
+      "caption" : "文本(动态)",
+      "itemStyle" : "DEFAULT",
+      "itemType" : "FIELD",
+      "name" : "content",
+      "getPSEditor" : {
+        "contentType" : "HTML",
+        "editorParams" : {
+          "contenttype" : "HTML",
+          "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replace(/#{\"id\":\"(.+?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"}/g, \"<span class='comment-tag'>$4 $3 $2</span>\").replace(/#{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)}/g, \"<span class='comment-tag'>$4 $3 $2</span>\").replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
+        },
+        "editorStyle" : "COMMENT_ITEM",
+        "editorType" : "RAW",
+        "name" : "content",
+        "getPSSysPFPlugin" : {
+          "pluginType" : "EDITOR_CUSTOMSTYLE",
+          "pluginCode" : "COMMENT_ITEM",
+          "runtimeObject" : true
+        },
+        "predefinedType" : "FIELD_TEXT_DYNAMIC"
+      },
+      "getPSLayoutPos" : {
+        "grow" : -1,
+        "layout" : "FLEX"
+      },
+      "viewFieldName" : "CONTENT"
+    } ]
+  } ],
+  "modelid" : "99696425-8083-40DB-BEB5-723FBB898F51",
+  "modeltype" : "PSSYSVIEWPANEL"
+}

@@ -1,25 +1,29 @@
 {
   "getAllPSPanelFields" : [ {
     "id" : "work_item_type_id",
-    "viewFieldName" : "WORK_ITEM"
+    "viewFieldName" : "work_item"
   }, {
     "id" : "title",
-    "viewFieldName" : "WORK_ITEM"
+    "viewFieldName" : "work_item"
   }, {
-    "id" : "assignee_name",
-    "viewFieldName" : "WORK_ITEM"
+    "id" : "assignee_id",
+    "viewFieldName" : "work_item"
   }, {
     "id" : "show_identifier",
-    "viewFieldName" : "WORK_ITEM"
+    "viewFieldName" : "work_item"
   }, {
     "id" : "state",
-    "viewFieldName" : "WORK_ITEM"
+    "viewFieldName" : "work_item"
   }, {
     "id" : "start_at",
-    "viewFieldName" : "WORK_ITEM"
+    "viewFieldName" : "work_item"
   }, {
     "id" : "end_at",
-    "viewFieldName" : "WORK_ITEM"
+    "viewFieldName" : "work_item"
+  }, {
+    "id" : "relation_type",
+    "hidden" : true,
+    "viewFieldName" : "RELATION_TYPE"
   } ],
   "codeName" : "usr0919035380",
   "controlType" : "PANEL",
@@ -94,7 +98,7 @@
           "grow" : -1,
           "layout" : "FLEX"
         },
-        "viewFieldName" : "WORK_ITEM",
+        "viewFieldName" : "work_item",
         "convertToCodeItemText" : true
       }, {
         "caption" : "文本(动态)",
@@ -119,7 +123,7 @@
           "layout" : "FLEX",
           "spacingLeft" : "OUTERSMALL"
         },
-        "viewFieldName" : "WORK_ITEM"
+        "viewFieldName" : "work_item"
       } ]
     }, {
       "caption" : "容器",
@@ -154,23 +158,32 @@
           "caption" : "文本(动态)",
           "itemStyle" : "DEFAULT",
           "itemType" : "FIELD",
-          "name" : "assignee_name",
+          "name" : "assignee_id",
+          "getPSControlLogics" : [ {
+            "itemName" : "ASSIGNEE_ID",
+            "logicTag" : "mdctrl_itempanel",
+            "logicType" : "SCRIPT",
+            "name" : "logic",
+            "scriptCode" : "data.work_item.assignee_name != null",
+            "triggerType" : "ITEMVISIBLE"
+          } ],
           "getPSEditor" : {
             "editorParams" : {
-              "OBJECTNAMEFIELD" : "assignee_name",
+              "OBJECTNAMEFIELD" : "assignee_id",
+              "SHOWNAMETEXT" : "false",
               "VALUETYPE" : "OBJECT"
             },
-            "editorStyle" : "PERSONNEL_INFO",
+            "editorStyle" : "MOB_PERSONNEL_INFO",
             "editorType" : "SPAN",
-            "name" : "assignee_name",
-            "objectNameField" : "assignee_name",
+            "name" : "assignee_id",
+            "objectNameField" : "assignee_id",
             "getPSAppCodeList" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
             },
             "getPSSysPFPlugin" : {
               "pluginType" : "EDITOR_CUSTOMSTYLE",
-              "pluginCode" : "PERSONNEL_INFO",
+              "pluginCode" : "MOB_PERSONNEL_INFO",
               "runtimeObject" : true
             },
             "predefinedType" : "FIELD_TEXT_DYNAMIC",
@@ -182,7 +195,7 @@
             "grow" : -1,
             "layout" : "FLEX"
           },
-          "viewFieldName" : "WORK_ITEM",
+          "viewFieldName" : "work_item",
           "convertToCodeItemText" : true
         } ]
       }, {
@@ -237,7 +250,7 @@
               "grow" : -1,
               "layout" : "FLEX"
             },
-            "viewFieldName" : "WORK_ITEM"
+            "viewFieldName" : "work_item"
           }, {
             "caption" : "文本(动态)",
             "itemStyle" : "DEFAULT",
@@ -265,7 +278,7 @@
               "layout" : "FLEX",
               "spacingLeft" : "OUTERSMALL"
             },
-            "viewFieldName" : "WORK_ITEM",
+            "viewFieldName" : "work_item",
             "convertToCodeItemText" : true
           } ]
         }, {
@@ -306,7 +319,7 @@
               "grow" : -1,
               "layout" : "FLEX"
             },
-            "viewFieldName" : "WORK_ITEM"
+            "viewFieldName" : "work_item"
           }, {
             "caption" : "文本(动态)",
             "itemStyle" : "DEFAULT",
@@ -330,25 +343,25 @@
               "layout" : "FLEX",
               "spacingLeft" : "OUTERSMALL"
             },
-            "viewFieldName" : "WORK_ITEM"
+            "viewFieldName" : "work_item"
           } ]
         } ]
       } ]
     }, {
-      "contentType" : "DIVIDER",
-      "itemStyle" : "DEFAULT",
-      "itemType" : "RAWITEM",
+      "caption" : "文本(动态)",
+      "itemType" : "FIELD",
+      "name" : "relation_type",
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "relation_type",
+        "predefinedType" : "FIELD_TEXT_DYNAMIC"
+      },
       "getPSLayoutPos" : {
         "grow" : -1,
         "layout" : "FLEX"
       },
-      "getPSRawItem" : {
-        "contentType" : "DIVIDER",
-        "predefinedType" : "STATIC_LABEL",
-        "rawContent" : "标签"
-      },
-      "rawContent" : "标签",
-      "id" : "7987020C-D544-4A8B-B8BD-A9FD9D9A7570"
+      "viewFieldName" : "RELATION_TYPE",
+      "hidden" : true
     } ]
   } ],
   "modelid" : "275BAF0E-01C5-469A-8D30-560D436E056F",

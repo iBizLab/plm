@@ -1,0 +1,465 @@
+{
+  "accUserMode" : 2,
+  "getCapPSLanguageRes" : {
+    "lanResTag" : "DE.LNAME.WORK_ITEM"
+  },
+  "caption" : "工作项完成趋势",
+  "codeName" : "work_item_mob_complete_trend_chart_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_complete_trend_chart_view.json",
+  "name" : "work_itemmob_complete_trend_chart_view",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+  },
+  "getPSAppModule" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPMODULES/ProjMgmt.json"
+  },
+  "getPSAppViewEngines" : [ {
+    "engineCat" : "VIEW",
+    "engineType" : "MobChartView",
+    "name" : "engine"
+  } ],
+  "getPSControls" : [ {
+    "codeName" : "complete_trend",
+    "controlType" : "CHART",
+    "coordinateSystem" : "XY",
+    "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item/PSCHARTS/complete_trend.json",
+    "getFetchPSControlAction" : {
+      "modelref" : true,
+      "id" : "fetch",
+      "actionType" : "DEDATASET",
+      "name" : "fetch",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "fetch_complete_trend"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+      }
+    },
+    "logicName" : "complete_trend",
+    "memo" : "工作项完成趋势",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+    },
+    "getPSChartCoordinateSystems" : [ {
+      "eChartsType" : "cartesian2d",
+      "index" : 0,
+      "name" : "[line_0]直角坐标系[0]",
+      "getPSChartGrid" : {
+        "index" : 0,
+        "name" : "[line_0]直角坐标系[0]",
+        "getPSChartCoordinateSystem" : {
+          "modelref" : true,
+          "id" : "0"
+        },
+        "getPSChartGridXAxis0" : {
+          "modelref" : true,
+          "id" : "0"
+        },
+        "getPSChartGridYAxis0" : {
+          "modelref" : true,
+          "id" : "0"
+        },
+        "type" : "grid",
+        "id" : "0"
+      },
+      "type" : "XY",
+      "id" : "0"
+    } ],
+    "getPSChartDataSetGroups" : [ {
+      "index" : 0,
+      "name" : "complete_trend",
+      "getPSAppDEDataSet" : {
+        "modelref" : true,
+        "id" : "fetch_complete_trend"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+      },
+      "id" : "0"
+    } ],
+    "getPSChartDataSets" : [ {
+      "index" : 0,
+      "name" : "line_0-complete_trend",
+      "getPSChartDataSetFields" : [ {
+        "groupMode" : "DAY",
+        "index" : 0,
+        "name" : "REP_DATE",
+        "groupField" : true,
+        "id" : "0"
+      }, {
+        "index" : 1,
+        "name" : "REP_VALUE_1",
+        "groupField" : false,
+        "id" : "1"
+      } ],
+      "id" : "0"
+    }, {
+      "index" : 1,
+      "name" : "line_1-complete_trend",
+      "getPSChartDataSetFields" : [ {
+        "groupMode" : "DAY",
+        "index" : 0,
+        "name" : "REP_DATE",
+        "groupField" : true,
+        "id" : "0"
+      }, {
+        "index" : 1,
+        "name" : "REP_VALUE_2",
+        "groupField" : false,
+        "id" : "1"
+      } ],
+      "id" : "1"
+    } ],
+    "getPSChartGrids" : [ {
+      "index" : 0,
+      "name" : "[line_0]直角坐标系[0]",
+      "getPSChartCoordinateSystem" : {
+        "modelref" : true,
+        "id" : "0"
+      },
+      "getPSChartGridXAxis0" : {
+        "modelref" : true,
+        "id" : "0"
+      },
+      "getPSChartGridYAxis0" : {
+        "modelref" : true,
+        "id" : "0"
+      },
+      "type" : "grid",
+      "id" : "0"
+    } ],
+    "getPSChartXAxises" : [ {
+      "eChartsPos" : "xAxis",
+      "eChartsType" : "category",
+      "index" : 0,
+      "name" : "axis_xAxis_0",
+      "position" : "bottom",
+      "type" : "category",
+      "id" : "0"
+    } ],
+    "getPSChartYAxises" : [ {
+      "eChartsPos" : "yAxis",
+      "eChartsType" : "value",
+      "index" : 0,
+      "name" : "axis_yAxis_0",
+      "position" : "left",
+      "type" : "numeric",
+      "id" : "0"
+    } ],
+    "getPSControlHandler" : {
+      "getPSHandlerActions" : [ {
+        "actionName" : "Get",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "READ",
+        "name" : "load",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "get"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+        }
+      }, {
+        "actionName" : "Create",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "CREATE",
+        "name" : "create",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "create"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+        }
+      }, {
+        "actionName" : "Update",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "UPDATE",
+        "name" : "update",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "update"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+        }
+      }, {
+        "actionName" : "Remove",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "DELETE",
+        "name" : "remove",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "remove"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+        }
+      }, {
+        "actionType" : "DEDATASET",
+        "name" : "fetch",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "fetch_complete_trend"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+        }
+      } ],
+      "userDRAction" : "READ",
+      "enableDEFieldPrivilege" : false,
+      "id" : "图形控件处理器"
+    },
+    "getPSControlParam" : {
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "id" : "CHART"
+    },
+    "getPSDEChartDataGrid" : {
+      "index" : 0,
+      "id" : "0"
+    },
+    "getPSDEChartLegend" : {
+      "index" : 0,
+      "showLegend" : true,
+      "id" : "0"
+    },
+    "getPSDEChartSerieses" : [ {
+      "caption" : "未完成",
+      "catalogField" : "REP_DATE",
+      "eChartsType" : "line",
+      "groupMode" : "DAY",
+      "index" : 0,
+      "name" : "line_0",
+      "getPSChartCoordinateSystem" : {
+        "modelref" : true,
+        "id" : "0"
+      },
+      "getPSChartDataSet" : {
+        "modelref" : true,
+        "id" : "0"
+      },
+      "getPSChartSeriesEncode" : {
+        "index" : 0,
+        "name" : "坐标系编码",
+        "getPSChartXAxis" : {
+          "modelref" : true,
+          "id" : "0"
+        },
+        "getPSChartYAxis" : {
+          "modelref" : true,
+          "id" : "0"
+        },
+        "type" : "XY",
+        "x" : [ "REP_DATE" ],
+        "y" : [ "REP_VALUE_1" ],
+        "id" : "0"
+      },
+      "seriesLayoutBy" : "column",
+      "seriesType" : "line",
+      "valueField" : "REP_VALUE_1",
+      "enableChartDataSet" : true,
+      "stack" : false,
+      "getUserParam" : {
+        "EC.label" : "{\"show\":0}",
+        "EC.lineStyle" : "{\"color\":\"#AAD5FD\"}",
+        "EC.areaStyle" : "\"#AAD5FD\""
+      }
+    }, {
+      "caption" : "已完成",
+      "catalogField" : "REP_DATE",
+      "eChartsType" : "line",
+      "groupMode" : "DAY",
+      "index" : 1,
+      "name" : "line_1",
+      "getPSChartCoordinateSystem" : {
+        "modelref" : true,
+        "id" : "0"
+      },
+      "getPSChartDataSet" : {
+        "modelref" : true,
+        "id" : "1"
+      },
+      "getPSChartSeriesEncode" : {
+        "index" : 0,
+        "name" : "坐标系编码",
+        "getPSChartXAxis" : {
+          "modelref" : true,
+          "id" : "0"
+        },
+        "getPSChartYAxis" : {
+          "modelref" : true,
+          "id" : "0"
+        },
+        "type" : "XY",
+        "x" : [ "REP_DATE" ],
+        "y" : [ "REP_VALUE_2" ],
+        "id" : "0"
+      },
+      "seriesLayoutBy" : "column",
+      "seriesType" : "line",
+      "valueField" : "REP_VALUE_2",
+      "enableChartDataSet" : true,
+      "stack" : false,
+      "getUserParam" : {
+        "EC.label" : "{\"show\":0}",
+        "EC.lineStyle" : "{\"color\":\"#B9EBCB\"}",
+        "EC.areaStyle" : "\"#B9EBCB\""
+      }
+    } ],
+    "getPSDEChartTitle" : {
+      "index" : 0,
+      "showTitle" : true,
+      "id" : "0"
+    },
+    "readOnly" : true,
+    "name" : "chart",
+    "modelid" : "1CF3D420-5042-43F2-AD34-4316F432D908",
+    "modeltype" : "PSDECHART",
+    "getUserParam" : {
+      "EC.color" : "[\"#5470c6\",\"#91cc75\",\"#fac858\",\"#ee6666\",\"#73c0de\",\"#3ba272\",\"#fc8452\",\"#9a60b4\",\"#ea7ccc\",\"#5470c6\",\"#91cc75\",\"#AAD5FD\",\"#B9EBCB\"]"
+    }
+  }, {
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DE.LNAME.WORK_ITEM"
+    },
+    "caption" : "工作项完成趋势",
+    "codeName" : "mob_complete_trend_chart_view_captionbar",
+    "controlType" : "CAPTIONBAR",
+    "name" : "captionbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+    },
+    "getPSControlParam" : { }
+  } ],
+  "getPSDEViewCodeName" : "mob_complete_trend_chart_view",
+  "getPSDEViewId" : "2B679696-47F7-4491-AEA5-7B0ABABB2A4E",
+  "getPSViewLayoutPanel" : {
+    "codeName" : "layoutpanel",
+    "controlStyle" : "APPDEMOBCHARTVIEW",
+    "controlType" : "VIEWLAYOUTPANEL",
+    "name" : "layoutpanel",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+    },
+    "getPSControlParam" : { },
+    "layoutBodyOnly" : true,
+    "layoutPanel" : true,
+    "useDefaultLayout" : true
+  },
+  "title" : "工作项完成趋势",
+  "viewStyle" : "DEFAULT",
+  "viewType" : "DEMOBCHARTVIEW",
+  "enableDP" : true,
+  "enablePullDownRefresh" : false,
+  "enableQuickGroup" : false,
+  "enableQuickSearch" : false,
+  "enableSearch" : false,
+  "expandSearchForm" : false,
+  "loadDefault" : true,
+  "showCaptionBar" : false,
+  "modelid" : "e62b4c3285f6d7147a1a2875f7ef5bc3",
+  "modeltype" : "PSAPPDEVIEW",
+  "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "releases",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "project",
+    "majorDEName" : "PROJECT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+    },
+    "minorDECodeName" : "release",
+    "minorDEName" : "RELEASE",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/release.json"
+    },
+    "name" : "DER1N_RELEASE_PROJECT_PROJECT_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PROJECT_ID",
+      "codeName" : "project_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "work_items",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "release",
+    "majorDEName" : "RELEASE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/release.json"
+    },
+    "minorDECodeName" : "work_item",
+    "minorDEName" : "WORK_ITEM",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+    },
+    "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
+    "getParentPSAppDEField" : {
+      "name" : "RELEASE_ID",
+      "codeName" : "release_id"
+    },
+    "rSMode" : 2
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "work_items",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "release",
+    "majorDEName" : "RELEASE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/release.json"
+    },
+    "minorDECodeName" : "work_item",
+    "minorDEName" : "WORK_ITEM",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+    },
+    "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
+    "getParentPSAppDEField" : {
+      "name" : "RELEASE_ID",
+      "codeName" : "release_id"
+    },
+    "rSMode" : 2
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "work_items",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "project",
+    "majorDEName" : "PROJECT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+    },
+    "minorDECodeName" : "work_item",
+    "minorDEName" : "WORK_ITEM",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+    },
+    "name" : "DER1N_WORK_ITEM_PROJECT_PROJECT_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PROJECT_ID",
+      "codeName" : "project_id"
+    },
+    "rSMode" : 2
+  } ] ]
+}

@@ -29,6 +29,25 @@
     "defaultMode" : false,
     "enablePagingBar" : false,
     "id" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member/PSDEACMODES/member_select.json"
+  }, {
+    "codeName" : "mob_member_select",
+    "logicName" : "移动端人员选择",
+    "name" : "mob_member_select",
+    "getPSDEACModeDataItems" : [ {
+      "dataType" : 25,
+      "name" : "value"
+    }, {
+      "dataType" : 25,
+      "name" : "text"
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "pagingSize" : 50,
+    "defaultMode" : false,
+    "enablePagingBar" : false,
+    "id" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member/PSDEACMODES/mob_member_select.json"
   } ],
   "getAllPSDEActions" : [ {
     "actionMode" : "CREATE",
@@ -270,6 +289,36 @@
     },
     "enableBackend" : false
   }, {
+    "actionHolder" : 1,
+    "actionMode" : "GETDRAFT",
+    "actionType" : "DELOGIC",
+    "codeName" : "mob_create_project_member",
+    "dataAccessAction" : "CREATE",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member/PSDEACTIONS/mob_create_project_member.json",
+    "logicName" : "新建项目成员（移动端）",
+    "name" : "mob_create_project_member",
+    "getPSDEActionInput" : {
+      "name" : "Mob_create_project_memberInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_member_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Mob_create_project_memberResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_member_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member/PSDELOGICS/mob_create_project_member.json"
+    },
+    "enableFront" : false
+  }, {
     "actionHolder" : 2,
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
@@ -349,6 +398,16 @@
   "getAllPSDEDRGroups" : [ {
     "modelref" : true,
     "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member/PSDEDRGROUPS/DRGroup.json"
+  } ],
+  "getAllPSDEDRItems" : [ {
+    "modelref" : true,
+    "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member/PSDEDRITEMS/UsrDRItem1008478024.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member/PSDEDRITEMS/UsrDRItem1008649105.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member/PSDEDRITEMS/UsrDRItem1014383606.json"
   } ],
   "getAllPSDEDataQueries" : [ {
     "getAllPSDEDataQueryCodes" : [ {
@@ -488,10 +547,55 @@
       },
       "type" : "DTOS"
     }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member/PSDEDATAQUERIES/no_attention/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "no_attention",
+    "logicName" : "未关注用户(工作项)",
+    "name" : "no_attention",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "LIBRARY_MEMBER",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condType" : "CUSTOM",
+          "condition" : "( USER_ID NOT IN (SELECT user_id from attention t2 where t2.OWNER_ID = #{ctx.webcontext.work_item} ))",
+          "name" : "未关注"
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "No_attentionInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "project_member_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "No_attentionResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_member_dto"
+      },
+      "type" : "DTOS"
+    }
   } ],
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
     "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member/PSDEDATARELATIONS/Default.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member/PSDEDATARELATIONS/mob_member_select_view_DR.json"
   } ],
   "getAllPSDEDataSets" : [ {
     "codeName" : "Default",
@@ -538,6 +642,32 @@
     },
     "getPSDEDataSetReturn" : {
       "name" : "Cur_projectResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_member_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "no_attention",
+    "logicName" : "未关注用户(工作项)",
+    "name" : "no_attention",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "no_attention"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "No_attentionInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "project_member_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "No_attentionResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "project_member_dto"
@@ -2407,6 +2537,357 @@
     "enableBackend" : true,
     "enableFront" : true
   }, {
+    "codeName" : "mob_create_project_member",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member/PSDELOGICS/mob_create_project_member.json",
+    "logicName" : "新建项目成员（移动端）",
+    "memo" : "新建项目成员（移动端）",
+    "name" : "新建项目成员（移动端）",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 400,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "BINDPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 50,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "BINDPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "selectdata"
+      },
+      "leftPos" : 360,
+      "logicNodeType" : "BINDPARAM",
+      "name" : "绑定选中成员参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "name" : "有勾选添加成员",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "GT",
+            "dstFieldName" : "size",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "selectdata"
+            },
+            "logicType" : "SINGLE",
+            "name" : "selectdata[size] 大于(>) 0",
+            "paramValue" : "0"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "BINDPARAM1"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "未勾选添加成员",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "size",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "selectdata"
+            },
+            "logicType" : "SINGLE",
+            "name" : "selectdata[size] 等于(=) 0",
+            "paramValue" : "0"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "BINDPARAM1"
+        }
+      } ],
+      "srcFieldName" : "srfactionparam",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "topPos" : 284
+    }, {
+      "codeName" : "LOOPSUBCALL1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "leftPos" : 679,
+      "logicNodeType" : "LOOPSUBCALL",
+      "name" : "循环子调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RENEWPARAM1"
+        },
+        "name" : "进入循环",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "subCallLink" : true
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "结束循环",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        }
+      } ],
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "selectdata"
+      },
+      "topPos" : 284
+    }, {
+      "codeName" : "RENEWPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "member_obj"
+      },
+      "leftPos" : 989,
+      "logicNodeType" : "RENEWPARAM",
+      "name" : "重新建立成员参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RENEWPARAM1"
+        }
+      } ],
+      "topPos" : 284
+    }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : 1280,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "无USER_ID",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "USER_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "member_obj"
+        },
+        "name" : "for_temp_obj[ID] ==> member_obj[USER_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_temp_obj"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 480
+    }, {
+      "codeName" : "PREPAREPARAM1",
+      "leftPos" : 989,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "填充项目成员属性",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        },
+        "name" : "无USER_ID",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNULL",
+            "dstFieldName" : "USER_ID",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "for_temp_obj"
+            },
+            "logicType" : "SINGLE",
+            "name" : "for_temp_obj[USER_ID] 值为空(Nil)"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "存在USER_ID",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "USER_ID",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "for_temp_obj"
+            },
+            "logicType" : "SINGLE",
+            "name" : "for_temp_obj[USER_ID] 值不为空(NotNil)"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "USER_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "member_obj"
+        },
+        "name" : "for_temp_obj[user_id] ==> member_obj[USER_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "user_id",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_temp_obj"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "NAME",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "member_obj"
+        },
+        "name" : "for_temp_obj[DISPLAY_NAME] ==> member_obj[NAME]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "DISPLAY_NAME",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_temp_obj"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "PROJECT_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "member_obj"
+        },
+        "name" : "Default[PROJECT_ID] ==> member_obj[PROJECT_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "PROJECT_ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 490
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 400,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 597
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member/PSDEACTIONS/Save.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "member_obj"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member.json"
+      },
+      "leftPos" : 989,
+      "logicNodeType" : "DEACTION",
+      "name" : "建立项目成员",
+      "topPos" : 705
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "for_temp_obj",
+      "logicName" : "循环临时变量",
+      "name" : "循环临时变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "member_obj",
+      "logicName" : "关系对象",
+      "name" : "关系对象",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "selectdata",
+      "logicName" : "用户列表",
+      "name" : "用户列表",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+      },
+      "entityListParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "nothing",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member/PSDELOGICS/nothing.json",
@@ -3052,6 +3533,18 @@
     "utilType" : "NOTIFYSETTING"
   } ],
   "getAllPSModelDatas" : [ {
+    "codeName" : "mob_mpickup_View",
+    "logicName" : "人员选择视图（多选）（移动端）（测试使用）",
+    "name" : "人员选择视图（多选）（移动端）（测试使用）",
+    "realModelSubType" : "DEMOBMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_pickup_tree_view",
+    "logicName" : "人员树选择视图（移动端）",
+    "name" : "人员树选择视图（移动端）",
+    "realModelSubType" : "DEMOBPICKUPTREEVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "test_list_view",
     "logicName" : "测试项布局面板",
     "name" : "测试项布局面板",
@@ -3071,6 +3564,12 @@
     "realModelSubType" : "DEPICKUPGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_group_pickup_tree_view",
+    "logicName" : "团队成员选择树视图（移动端）",
+    "name" : "团队成员选择树视图（移动端）",
+    "realModelSubType" : "DEMOBPICKUPTREEVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "role_edit_view",
     "logicName" : "项目成员实体选项操作视图（设置角色）",
     "name" : "项目成员实体选项操作视图（设置角色）",
@@ -3083,11 +3582,47 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_mpickup_View_PickupMDView",
+    "logicName" : "人员选择视图（多选）（移动端）（测试使用）_选择数据视图",
+    "name" : "人员选择视图（多选）（移动端）（测试使用）_选择数据视图",
+    "realModelSubType" : "DEMOBPICKUPMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_pickup_view",
+    "logicName" : "人员选择视图（移动端）",
+    "name" : "人员选择视图（移动端）",
+    "realModelSubType" : "DEMOBPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_attention_mpickup_view",
+    "logicName" : "关注选择视图（多选）（移动端）",
+    "name" : "关注选择视图（多选）（移动端）",
+    "realModelSubType" : "DEMOBMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "GridView",
     "logicName" : "项目成员实体表格视图",
     "modelTag" : "MDATAVIEW",
     "name" : "项目成员实体表格视图",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_select_tap_exp_view",
+    "logicName" : "人员选择导航视图（移动端）",
+    "name" : "人员选择导航视图（移动端）",
+    "realModelSubType" : "DEMOBTABEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_add_mpickup_view",
+    "logicName" : "项目成员选择视图（多选）（移动端）",
+    "name" : "项目成员选择视图（多选）（移动端）",
+    "realModelSubType" : "DEMOBMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_member_mpickup_view",
+    "logicName" : "人员选择视图（多选）（移动端）",
+    "name" : "人员选择视图（多选）（移动端）",
+    "realModelSubType" : "DEMOBMPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView2",
@@ -3096,10 +3631,34 @@
     "realModelSubType" : "DEEDITVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_role_option_view",
+    "logicName" : "项目成员角色操作视图（移动端）",
+    "name" : "项目成员角色操作视图（移动端）",
+    "realModelSubType" : "DEMOBOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "assigned_grid_view",
     "logicName" : "项目成员绑定表格视图（嵌入）",
     "name" : "项目成员绑定表格视图（嵌入）",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_member_pickup_tree_view",
+    "logicName" : "成员选择树视图（移动端）",
+    "name" : "成员选择树视图（移动端）",
+    "realModelSubType" : "DEMOBPICKUPTREEVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_add_pickup_tree_view",
+    "logicName" : "项目成员树选择视图（移动端）",
+    "name" : "项目成员树选择视图（移动端）",
+    "realModelSubType" : "DEMOBPICKUPTREEVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_attention_pickup_tree_view",
+    "logicName" : "关注树选择视图（移动端）",
+    "name" : "关注树选择视图（移动端）",
+    "realModelSubType" : "DEMOBPICKUPTREEVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mpick_up_view",
@@ -3140,6 +3699,13 @@
     "logicName" : "项目成员实体选项操作视图（设置角色）_表单",
     "modelTag2" : "0",
     "name" : "项目成员实体选项操作视图（设置角色）_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_role_form",
+    "logicName" : "设置角色（移动端）",
+    "modelTag2" : "1",
+    "name" : "设置角色（移动端）",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   } ],

@@ -478,6 +478,9 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDEDRITEMS/UsrDRItem0612686865.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDEDRITEMS/UsrDRItem1024794409.json"
   } ],
   "getAllPSDEDataQueries" : [ {
     "getAllPSDEDataQueryCodes" : [ {
@@ -1069,6 +1072,35 @@
     },
     "enableBackend" : true,
     "enableFront" : true
+  }, {
+    "actionHolder" : 1,
+    "codeName" : "mob_project_release",
+    "dataSetType" : "DELOGIC",
+    "logicName" : "项目下发布（移动端）",
+    "name" : "mob_project_release",
+    "getPSDEDataSetInput" : {
+      "name" : "Mob_project_releaseInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "release_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Mob_project_releaseResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "release_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDELOGICS/mob_project_release.json"
+    },
+    "predefinedType" : "DELOGIC",
+    "enableBackend" : true,
+    "enableFront" : false
   }, {
     "codeName" : "not_published",
     "logicName" : "未已发布",
@@ -4703,6 +4735,161 @@
     "enableBackend" : true,
     "enableFront" : false
   }, {
+    "codeName" : "mob_project_release",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDELOGICS/mob_project_release.json",
+    "logicName" : "项目下发布（移动端）",
+    "name" : "项目下发布（移动端）",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 490,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM1",
+      "leftPos" : 450,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置过滤器",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "N_PROJECT_ID_EQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "filter"
+        },
+        "name" : "Default[project] ==> filter[N_PROJECT_ID_EQ]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "project",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 360
+    }, {
+      "codeName" : "DEDATASET1",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
+      },
+      "leftPos" : 450,
+      "logicNodeType" : "DEDATASET",
+      "name" : "项目下发布",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "release_page_result"
+      },
+      "topPos" : 490
+    }, {
+      "code" : "def release_page_result = logic.param('release_page_result').getReal()\r\nrelease_page_result.each { release ->\r\n    def all_work_items = release.get('all_work_items')\r\n    def completed_work_items = release.get('completed_work_items')\r\n    def schedule = 0\r\n    if (all_work_items != 0 && completed_work_items != 0) {\r\n        schedule = Math.round(completed_work_items / all_work_items * 100)\r\n    }\r\n    release.set('schedule', schedule)\r\n    release.set('schedule_text', schedule + \"%\")\r\n}\r\n",
+      "codeName" : "RAWSFCODE1",
+      "codeType" : "Groovy",
+      "leftPos" : 450,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "设置进度",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        }
+      } ],
+      "topPos" : 610
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 490,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "release_page_result"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 770
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
+      },
+      "default" : true,
+      "filterParam" : true
+    }, {
+      "codeName" : "filter",
+      "logicName" : "过滤器",
+      "name" : "过滤器",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
+      },
+      "filterParam" : true
+    }, {
+      "codeName" : "release_page_result",
+      "logicName" : "发布分页结果",
+      "name" : "发布分页结果",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
+      },
+      "entityPageParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "plan_work_item",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDELOGICS/plan_work_item.json",
@@ -6330,6 +6517,12 @@
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_create_view",
+    "logicName" : "移动端新建发布编辑视图",
+    "name" : "移动端新建发布编辑视图",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "sprint_relation_grid_view",
     "logicName" : "迭代关联发布表格视图",
     "name" : "迭代关联发布表格视图",
@@ -6394,6 +6587,12 @@
     "realModelSubType" : "DEPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_work_item_view",
+    "logicName" : "移动端发布下工作项视图",
+    "name" : "移动端发布下工作项视图",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "mob_list_view",
     "logicName" : "发布移动端列表视图",
     "name" : "发布移动端列表视图",
@@ -6413,13 +6612,6 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "release_mob_edit_view_Form",
-    "logicName" : "发布移动端编辑视图_表单",
-    "modelTag2" : "1",
-    "name" : "发布移动端编辑视图_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
     "codeName" : "change_stage_view_Form",
     "logicName" : "修改阶段选项操作视图_表单",
     "modelTag2" : "0",
@@ -6434,10 +6626,24 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
+    "codeName" : "mob_work_item_view_Form",
+    "logicName" : "移动端发布下工作项视图_表单",
+    "modelTag2" : "1",
+    "name" : "移动端发布下工作项视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "creat_release_form",
     "logicName" : "新建项目发布表单",
     "modelTag2" : "0",
     "name" : "新建项目发布表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_create_view_Form",
+    "logicName" : "移动端新建发布编辑视图_表单",
+    "modelTag2" : "1",
+    "name" : "移动端新建发布编辑视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   } ],

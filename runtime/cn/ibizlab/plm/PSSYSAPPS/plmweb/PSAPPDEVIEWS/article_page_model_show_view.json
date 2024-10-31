@@ -1738,11 +1738,11 @@
         "caption" : "上一条",
         "groupExtractMode" : "ITEM",
         "itemType" : "DEUIACTION",
-        "name" : "deuiaction18",
+        "name" : "deuiaction17",
         "noPrivDisplayMode" : 2,
         "getPSAppViewUIAction" : {
           "modelref" : true,
-          "id" : "toolbar_deuiaction18"
+          "id" : "toolbar_deuiaction17"
         },
         "getPSSysImage" : {
           "glyph" : "xf077@FontAwesome",
@@ -1772,11 +1772,11 @@
         "caption" : "下一条",
         "groupExtractMode" : "ITEM",
         "itemType" : "DEUIACTION",
-        "name" : "deuiaction19",
+        "name" : "deuiaction18",
         "noPrivDisplayMode" : 2,
         "getPSAppViewUIAction" : {
           "modelref" : true,
-          "id" : "toolbar_deuiaction19"
+          "id" : "toolbar_deuiaction18"
         },
         "getPSSysImage" : {
           "glyph" : "xf078@FontAwesome",
@@ -3462,6 +3462,21 @@
                 "grow" : -1,
                 "layout" : "FLEX"
               },
+              "getPSPanelItemGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "name" : "面板成员[container2][面板显示]逻辑",
+                "getPSPanelItemLogics" : [ {
+                  "condOp" : "NOTEQ",
+                  "dstModelField" : "FIELD_TEXT_DYNAMIC1",
+                  "logicType" : "SINGLE",
+                  "name" : "逻辑项",
+                  "value" : "<p><del>该评论已删除</del></p>"
+                } ],
+                "relatedItemNames" : [ "field_text_dynamic1" ],
+                "notMode" : false
+              } ],
               "getPSPanelItems" : [ {
                 "actionType" : "UIACTION",
                 "buttonStyle" : "STYLE2",
@@ -3492,10 +3507,18 @@
                 "getPSUIAction" : {
                   "actionTarget" : "SINGLEKEY",
                   "caption" : "删除评论",
-                  "codeName" : "del_comment",
+                  "codeName" : "delete_comment_space",
                   "confirmMsg" : "确认删除该评论？",
-                  "fullCodeName" : "comment_del_comment",
-                  "name" : "删除评论",
+                  "fullCodeName" : "comment_delete_comment_space",
+                  "name" : "删除评论（知识库）",
+                  "getNextPSUIAction" : {
+                    "getPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
+                    },
+                    "modelref" : true,
+                    "id" : "refresh_comment_list@comment"
+                  },
                   "getPSAppDEMethod" : {
                     "modelref" : true,
                     "id" : "delete"
@@ -3504,15 +3527,13 @@
                     "modelref" : true,
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
                   },
-                  "refreshMode" : 1,
-                  "successMsg" : "删除成功",
+                  "successMsg" : "删除成功！",
                   "timeout" : 60000,
                   "uIActionMode" : "BACKEND",
-                  "uIActionTag" : "del_comment",
+                  "uIActionTag" : "delete_comment_space",
                   "uIActionType" : "DEUIACTION",
                   "enableConfirm" : true,
-                  "reloadData" : true,
-                  "id" : "del_comment@comment"
+                  "id" : "delete_comment_space@comment"
                 },
                 "tooltip" : "删除",
                 "uIActionTarget" : "SINGLEKEY"
@@ -3854,6 +3875,13 @@
         "id" : "LIST"
       },
       "getPSDEListDataItems" : [ {
+        "dataType" : 25,
+        "name" : "pid",
+        "getPSAppDEField" : {
+          "name" : "PID",
+          "codeName" : "pid"
+        }
+      }, {
         "dataType" : 21,
         "name" : "content",
         "getPSAppDEField" : {
@@ -3861,11 +3889,12 @@
           "codeName" : "content"
         }
       }, {
-        "dataType" : 25,
-        "name" : "id",
+        "dataType" : 5,
+        "format" : "YYYY-MM-DD HH:mm:ss",
+        "name" : "create_time",
         "getPSAppDEField" : {
-          "name" : "ID",
-          "codeName" : "id"
+          "name" : "CREATE_TIME",
+          "codeName" : "create_time"
         }
       }, {
         "dataType" : 21,
@@ -3875,12 +3904,11 @@
           "codeName" : "pcontent"
         }
       }, {
-        "dataType" : 5,
-        "format" : "YYYY-MM-DD HH:mm:ss",
-        "name" : "create_time",
+        "dataType" : 25,
+        "name" : "id",
         "getPSAppDEField" : {
-          "name" : "CREATE_TIME",
-          "codeName" : "create_time"
+          "name" : "ID",
+          "codeName" : "id"
         }
       }, {
         "dataType" : 25,
@@ -3903,13 +3931,6 @@
         "getPSAppDEField" : {
           "name" : "PCREATE_MAN",
           "codeName" : "pcreate_man"
-        }
-      }, {
-        "dataType" : 25,
-        "name" : "pid",
-        "getPSAppDEField" : {
-          "name" : "PID",
-          "codeName" : "pid"
         }
       }, {
         "dataType" : 25,

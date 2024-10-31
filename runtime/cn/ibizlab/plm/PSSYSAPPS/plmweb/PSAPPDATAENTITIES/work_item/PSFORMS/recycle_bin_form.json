@@ -404,6 +404,7 @@
           "editorParams" : {
             "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
             "AC" : "TRUE",
+            "SRFNAVPARAM.n_status_eq" : "1",
             "TRIGGER" : "TRUE",
             "URL" : "projects/${context.project}/project_members/fetch_default",
             "PICKUPVIEW" : "FALSE",
@@ -437,6 +438,11 @@
             "name" : "n_department_id_eq",
             "value" : "srforgsectorid",
             "rawValue" : false
+          }, {
+            "key" : "n_status_eq",
+            "name" : "n_status_eq",
+            "value" : "1",
+            "rawValue" : true
           } ],
           "getPSSysPFPlugin" : {
             "pluginType" : "EDITOR_CUSTOMSTYLE",
@@ -1714,8 +1720,10 @@
                               "itemType" : "CONTAINER",
                               "name" : "container1",
                               "getPSLayout" : {
+                                "align" : "flex-start",
                                 "dir" : "row",
-                                "layout" : "FLEX"
+                                "layout" : "FLEX",
+                                "vAlign" : "center"
                               },
                               "getPSLayoutPos" : {
                                 "grow" : -1,
@@ -1765,7 +1773,7 @@
                                 "getPSLayoutPos" : {
                                   "grow" : -1,
                                   "layout" : "FLEX",
-                                  "spacingLeft" : "OUTERSMALL"
+                                  "spacingLeft" : "OUTERMEDIUM"
                                 },
                                 "getPSSysCss" : {
                                   "cssName" : "transition-time"
@@ -1972,6 +1980,10 @@
                                     "modelref" : true,
                                     "id" : "delete"
                                   },
+                                  "getPSAppDEUILogic" : {
+                                    "modelref" : true,
+                                    "id" : "refresh_comment"
+                                  },
                                   "getPSAppDataEntity" : {
                                     "modelref" : true,
                                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
@@ -1982,6 +1994,7 @@
                                   "uIActionMode" : "BACKEND",
                                   "uIActionTag" : "del_comment",
                                   "uIActionType" : "DEUIACTION",
+                                  "uILogicAttachMode" : "AFTER",
                                   "enableConfirm" : true,
                                   "reloadData" : true,
                                   "id" : "del_comment@comment"
@@ -2221,25 +2234,29 @@
                         "id" : "LIST"
                       },
                       "getPSDEListDataItems" : [ {
-                        "dataType" : 25,
-                        "name" : "pid",
-                        "getPSAppDEField" : {
-                          "name" : "PID",
-                          "codeName" : "pid"
-                        }
-                      }, {
-                        "dataType" : 21,
-                        "name" : "content",
-                        "getPSAppDEField" : {
-                          "name" : "CONTENT",
-                          "codeName" : "content"
-                        }
-                      }, {
                         "dataType" : 21,
                         "name" : "pcontent",
                         "getPSAppDEField" : {
                           "name" : "PCONTENT",
                           "codeName" : "pcontent"
+                        }
+                      }, {
+                        "dataType" : 25,
+                        "getFrontPSCodeList" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+                        },
+                        "name" : "pcreate_man",
+                        "getPSAppDEField" : {
+                          "name" : "PCREATE_MAN",
+                          "codeName" : "pcreate_man"
+                        }
+                      }, {
+                        "dataType" : 25,
+                        "name" : "pid",
+                        "getPSAppDEField" : {
+                          "name" : "PID",
+                          "codeName" : "pid"
                         }
                       }, {
                         "dataType" : 5,
@@ -2255,10 +2272,17 @@
                           "modelref" : true,
                           "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
                         },
-                        "name" : "pcreate_man",
+                        "name" : "create_man",
                         "getPSAppDEField" : {
-                          "name" : "PCREATE_MAN",
-                          "codeName" : "pcreate_man"
+                          "name" : "CREATE_MAN",
+                          "codeName" : "create_man"
+                        }
+                      }, {
+                        "dataType" : 21,
+                        "name" : "content",
+                        "getPSAppDEField" : {
+                          "name" : "CONTENT",
+                          "codeName" : "content"
                         }
                       }, {
                         "dataType" : 25,
@@ -2266,17 +2290,6 @@
                         "getPSAppDEField" : {
                           "name" : "ID",
                           "codeName" : "id"
-                        }
-                      }, {
-                        "dataType" : 25,
-                        "getFrontPSCodeList" : {
-                          "modelref" : true,
-                          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-                        },
-                        "name" : "create_man",
-                        "getPSAppDEField" : {
-                          "name" : "CREATE_MAN",
-                          "codeName" : "create_man"
                         }
                       }, {
                         "dataType" : 25,
@@ -9998,28 +10011,6 @@
                       "valueFormat" : "YYYY年MM月DD日",
                       "viewFieldName" : "REGISTER_DATE"
                     } ]
-                  }, {
-                    "contentType" : "DIVIDER",
-                    "contentWidth" : 100.0,
-                    "itemStyle" : "DEFAULT",
-                    "itemType" : "RAWITEM",
-                    "name" : "static_label",
-                    "getPSLayoutPos" : {
-                      "grow" : -1,
-                      "layout" : "FLEX",
-                      "width" : 100,
-                      "widthMode" : "FULL"
-                    },
-                    "getPSRawItem" : {
-                      "contentType" : "DIVIDER",
-                      "name" : "static_label",
-                      "predefinedType" : "STATIC_LABEL",
-                      "rawContent" : "标签",
-                      "rawItemWidth" : 100.0
-                    },
-                    "rawContent" : "标签",
-                    "rawItemWidth" : 100.0,
-                    "width" : 100.0
                   } ]
                 } ],
                 "name" : "list_itempanel",
@@ -10113,6 +10104,17 @@
                   "codeName" : "duration"
                 }
               }, {
+                "dataType" : 25,
+                "getFrontPSCodeList" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+                },
+                "name" : "create_man",
+                "getPSAppDEField" : {
+                  "name" : "CREATE_MAN",
+                  "codeName" : "create_man"
+                }
+              }, {
                 "dataType" : 21,
                 "name" : "description",
                 "getPSAppDEField" : {
@@ -10126,17 +10128,6 @@
                 "getPSAppDEField" : {
                   "name" : "REGISTER_DATE",
                   "codeName" : "register_date"
-                }
-              }, {
-                "dataType" : 25,
-                "getFrontPSCodeList" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-                },
-                "name" : "create_man",
-                "getPSAppDEField" : {
-                  "name" : "CREATE_MAN",
-                  "codeName" : "create_man"
                 }
               }, {
                 "dataType" : 25,

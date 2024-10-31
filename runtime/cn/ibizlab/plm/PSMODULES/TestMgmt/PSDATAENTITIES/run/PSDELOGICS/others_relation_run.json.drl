@@ -72,19 +72,41 @@ package cn.ibizlab.plm.testmgmt.logic.runlogic.others_relation_run;
                         update(runothers_relation_runselectdata);//更新fact中变量值
             end
 
+            //逻辑处理节点[关联标识]
+            rule "rawsfcode1"
+            ruleflow-group "runothers_relation_runrawsfcode1"
+            when
+            then
+                        update(runothers_relation_rundefault);//更新fact中变量值
+                        update(runothers_relation_runfor_temp_obj);//更新fact中变量值
+                        update(runothers_relation_runforward_relation_obj);//更新fact中变量值
+                        update(runothers_relation_runreverse_relation_obj);//更新fact中变量值
+                        update(runothers_relation_runselectdata);//更新fact中变量值
+            end
+
             //逻辑处理节点[填充需要的属性值]
             rule "prepareparam1"
             ruleflow-group "runothers_relation_runprepareparam1"
             when
             then
                             runothers_relation_runforward_relation_obj.set("principalid",runothers_relation_rundefault.get("principal_id"));
-                            runothers_relation_runreverse_relation_obj.set("principalid",runothers_relation_runfor_temp_obj.get("owner_id"));
                             runothers_relation_runreverse_relation_obj.set("targetid",runothers_relation_rundefault.get("principal_id"));
                             runothers_relation_runreverse_relation_obj.set("principaltype",runothers_relation_rundefault.get("target_type"));
                             runothers_relation_runreverse_relation_obj.set("targettype",runothers_relation_rundefault.get("principal_type"));
                             runothers_relation_runforward_relation_obj.set("principaltype",runothers_relation_rundefault.get("principal_type"));
                             runothers_relation_runforward_relation_obj.set("targettype",runothers_relation_rundefault.get("target_type"));
-                            runothers_relation_runforward_relation_obj.set("targetid",runothers_relation_runfor_temp_obj.get("owner_id"));
+                        update(runothers_relation_rundefault);//更新fact中变量值
+                        update(runothers_relation_runfor_temp_obj);//更新fact中变量值
+                        update(runothers_relation_runforward_relation_obj);//更新fact中变量值
+                        update(runothers_relation_runreverse_relation_obj);//更新fact中变量值
+                        update(runothers_relation_runselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "runothers_relation_runend1"
+            when
+            then
                         update(runothers_relation_rundefault);//更新fact中变量值
                         update(runothers_relation_runfor_temp_obj);//更新fact中变量值
                         update(runothers_relation_runforward_relation_obj);//更新fact中变量值
@@ -98,18 +120,6 @@ package cn.ibizlab.plm.testmgmt.logic.runlogic.others_relation_run;
             when
             then
                         relationservice.save(runothers_relation_runforward_relation_obj);
-                        update(runothers_relation_rundefault);//更新fact中变量值
-                        update(runothers_relation_runfor_temp_obj);//更新fact中变量值
-                        update(runothers_relation_runforward_relation_obj);//更新fact中变量值
-                        update(runothers_relation_runreverse_relation_obj);//更新fact中变量值
-                        update(runothers_relation_runselectdata);//更新fact中变量值
-            end
-
-            //逻辑处理节点[结束]
-            rule "end1"
-            ruleflow-group "runothers_relation_runend1"
-            when
-            then
                         update(runothers_relation_rundefault);//更新fact中变量值
                         update(runothers_relation_runfor_temp_obj);//更新fact中变量值
                         update(runothers_relation_runforward_relation_obj);//更新fact中变量值

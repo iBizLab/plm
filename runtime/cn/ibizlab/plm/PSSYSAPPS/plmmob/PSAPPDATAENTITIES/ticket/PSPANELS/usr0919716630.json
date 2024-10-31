@@ -3,8 +3,8 @@
     "id" : "title",
     "viewFieldName" : "title"
   }, {
-    "id" : "assignee_name",
-    "viewFieldName" : "ASSIGNEE_NAME"
+    "id" : "assignee_id",
+    "viewFieldName" : "ASSIGNEE_ID"
   }, {
     "id" : "show_identifier",
     "viewFieldName" : "show_identifier"
@@ -145,14 +145,21 @@
           "caption" : "文本(动态)",
           "itemStyle" : "DEFAULT",
           "itemType" : "FIELD",
-          "name" : "assignee_name",
+          "name" : "assignee_id",
           "getPSEditor" : {
-            "editorStyle" : "PERSONNEL_INFO",
+            "editorParams" : {
+              "SHOWNAMETEXT" : "false"
+            },
+            "editorStyle" : "MOB_PERSONNEL_INFO",
             "editorType" : "SPAN",
-            "name" : "assignee_name",
+            "name" : "assignee_id",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
+            },
             "getPSSysPFPlugin" : {
               "pluginType" : "EDITOR_CUSTOMSTYLE",
-              "pluginCode" : "PERSONNEL_INFO",
+              "pluginCode" : "MOB_PERSONNEL_INFO",
               "runtimeObject" : true
             },
             "predefinedType" : "FIELD_TEXT_DYNAMIC",
@@ -163,7 +170,22 @@
             "grow" : -1,
             "layout" : "FLEX"
           },
-          "viewFieldName" : "ASSIGNEE_NAME"
+          "getPSPanelItemGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "name" : "面板成员[assignee_id][面板显示]逻辑",
+            "getPSPanelItemLogics" : [ {
+              "condOp" : "ISNOTNULL",
+              "dstModelField" : "ASSIGNEE_NAME",
+              "logicType" : "SINGLE",
+              "name" : "逻辑项"
+            } ],
+            "relatedItemNames" : [ "assignee_name" ],
+            "notMode" : false
+          } ],
+          "viewFieldName" : "ASSIGNEE_ID",
+          "convertToCodeItemText" : true
         } ]
       }, {
         "caption" : "容器",
@@ -203,6 +225,9 @@
           "itemType" : "FIELD",
           "name" : "state",
           "getPSEditor" : {
+            "editorParams" : {
+              "REVERSECOLOR" : "true"
+            },
             "editorType" : "SPAN",
             "name" : "state",
             "getPSAppCodeList" : {
@@ -222,24 +247,6 @@
           "convertToCodeItemText" : true
         } ]
       } ]
-    }, {
-      "caption" : "标签",
-      "contentType" : "DIVIDER",
-      "itemStyle" : "DEFAULT",
-      "itemType" : "RAWITEM",
-      "name" : "static_label",
-      "getPSLayoutPos" : {
-        "grow" : -1,
-        "layout" : "FLEX"
-      },
-      "getPSRawItem" : {
-        "contentType" : "DIVIDER",
-        "name" : "static_label",
-        "predefinedType" : "STATIC_LABEL",
-        "rawContent" : "标签"
-      },
-      "rawContent" : "标签",
-      "showCaption" : true
     } ]
   } ],
   "modelid" : "B6992253-21B7-44C8-8A0B-37F61ADBFB47",

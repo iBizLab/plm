@@ -4,6 +4,7 @@
   "codeName" : "project_mob_setting_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_setting_view.json",
   "name" : "projectmob_setting_view",
+  "openMode" : "POPUPMODAL",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
@@ -213,7 +214,7 @@
         "getCapPSLanguageRes" : {
           "lanResTag" : "TBB.TEXT.EDITVIEW.SAVEANDCLOSE"
         },
-        "caption" : "保存",
+        "caption" : "确定",
         "groupExtractMode" : "ITEM",
         "itemType" : "DEUIACTION",
         "name" : "tbitem1",
@@ -221,6 +222,9 @@
         "getPSAppViewUIAction" : {
           "modelref" : true,
           "id" : "righttoolbar_tbitem1"
+        },
+        "getPSSysCss" : {
+          "cssName" : "enter_button_style"
         },
         "getPSSysImage" : {
           "cssClass" : "sx-tb-saveandclose"
@@ -250,7 +254,7 @@
           "uIActionTag" : "SaveAndExit",
           "uIActionType" : "DEUIACTION"
         },
-        "tooltip" : "保存",
+        "tooltip" : "确定",
         "getTooltipPSLanguageRes" : {
           "lanResTag" : "TBB.TOOLTIP.EDITVIEW.SAVEANDCLOSE"
         },
@@ -544,8 +548,10 @@
                 "AC" : "TRUE",
                 "fillMap" : "{\"user\":\"user\",\"user_group\":\"user_group\",\"organization\":\"organization\"}",
                 "enablePerson" : "false",
-                "PICKUPVIEW" : "TRUE"
+                "PICKUPVIEW" : "TRUE",
+                "MOBSHOWEDITORBORDER" : "true"
               },
+              "editorStyle" : "MOB_TEAM_PICKER",
               "editorType" : "MOBPICKER",
               "handlerType" : "PickupText",
               "name" : "scope_type",
@@ -564,6 +570,11 @@
               "getPSEditorItems" : [ {
                 "name" : "scope_id"
               } ],
+              "getPSSysPFPlugin" : {
+                "pluginType" : "EDITOR_CUSTOMSTYLE",
+                "pluginCode" : "MOB_TEAM_PICKER",
+                "runtimeObject" : true
+              },
               "valueItemName" : "scope_id",
               "enableAC" : true,
               "enablePickupView" : true,
@@ -598,6 +609,9 @@
               "codeName" : "name"
             },
             "getPSEditor" : {
+              "editorParams" : {
+                "MOBSHOWEDITORBORDER" : "true"
+              },
               "editorType" : "MOBTEXT",
               "maxLength" : 200,
               "name" : "name"
@@ -628,6 +642,9 @@
               "codeName" : "identifier"
             },
             "getPSEditor" : {
+              "editorParams" : {
+                "MOBSHOWEDITORBORDER" : "true"
+              },
               "editorType" : "MOBTEXT",
               "maxLength" : 15,
               "name" : "identifier",
@@ -665,6 +682,9 @@
               "codeName" : "visibility"
             },
             "getPSEditor" : {
+              "editorParams" : {
+                "MOBSHOWEDITORBORDER" : "true"
+              },
               "editorType" : "MOBDROPDOWNLIST",
               "name" : "visibility",
               "getPSAppCodeList" : {
@@ -700,6 +720,9 @@
               "codeName" : "description"
             },
             "getPSEditor" : {
+              "editorParams" : {
+                "MOBSHOWEDITORBORDER" : "true"
+              },
               "editorType" : "MOBTEXTAREA",
               "maxLength" : 2000,
               "name" : "description",

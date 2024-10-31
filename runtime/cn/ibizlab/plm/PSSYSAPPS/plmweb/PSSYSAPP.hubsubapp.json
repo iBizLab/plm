@@ -1584,6 +1584,10 @@
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_member.json"
         },
+        "getPSSysImage" : {
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
+        },
         "refreshMode" : 1,
         "successMsg" : "删除成功",
         "timeout" : 60000,
@@ -5464,9 +5468,11 @@
       },
       "getPSUIAction" : {
         "actionTarget" : "SINGLEKEY",
+        "noPrivDisplayMode" : 1,
         "caption" : "移除成员",
         "codeName" : "remove_member",
         "confirmMsg" : "确认删除该成员？",
+        "dataAccessAction" : "UPDATE",
         "fullCodeName" : "project_member_remove_member",
         "name" : "移除成员",
         "getPSAppDEMethod" : {
@@ -5476,6 +5482,14 @@
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "project__UPDATE"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
         },
         "refreshMode" : 1,
         "successMsg" : "删除成功",
@@ -6167,11 +6181,11 @@
         "frontProcessType" : "OTHER",
         "fullCodeName" : "edit_filter",
         "name" : "过滤器编辑",
+        "scriptCode" : "if (ctrl) { const id = ctrl.model.id; ctrl.dashboard.openFilterDesignPage({id}) }",
         "timeout" : 60000,
         "uIActionMode" : "FRONT",
         "uIActionTag" : "edit_filter",
         "uIActionType" : "DEUIACTION",
-        "uILogicAttachMode" : "REPLACE",
         "globalUIAction" : true
       },
       "addSeparator" : false,
@@ -6188,11 +6202,11 @@
         "frontProcessType" : "OTHER",
         "fullCodeName" : "hight_light_filter",
         "name" : "过滤器高亮",
+        "scriptCode" : "if (ctrl) { ctrl.showEffectiveCtrl() }",
         "timeout" : 60000,
         "uIActionMode" : "FRONT",
         "uIActionTag" : "hight_light_filter",
         "uIActionType" : "DEUIACTION",
-        "uILogicAttachMode" : "REPLACE",
         "globalUIAction" : true
       },
       "addSeparator" : false,
@@ -9377,6 +9391,7 @@
                   "editorParams" : {
                     "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
                     "AC" : "TRUE",
+                    "SRFNAVPARAM.n_status_eq" : "1",
                     "TRIGGER" : "TRUE",
                     "URL" : "projects/${context.project}/project_members/fetch_default",
                     "PICKUPVIEW" : "FALSE",
@@ -9407,6 +9422,11 @@
                     "name" : "n_department_id_eq",
                     "value" : "srforgsectorid",
                     "rawValue" : false
+                  }, {
+                    "key" : "n_status_eq",
+                    "name" : "n_status_eq",
+                    "value" : "1",
+                    "rawValue" : true
                   } ],
                   "getPSSysPFPlugin" : {
                     "pluginType" : "EDITOR_CUSTOMSTYLE",
@@ -16774,9 +16794,11 @@
       },
       "getPSUIAction" : {
         "actionTarget" : "SINGLEKEY",
+        "noPrivDisplayMode" : 1,
         "caption" : "移除成员",
         "codeName" : "remove_member",
         "confirmMsg" : "确认删除该成员？",
+        "dataAccessAction" : "UPDATE",
         "fullCodeName" : "product_member_remove_member",
         "name" : "移除成员",
         "getPSAppDEMethod" : {
@@ -16786,6 +16808,14 @@
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product_member.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "UPDATE"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
         },
         "refreshMode" : 1,
         "successMsg" : "删除成功",
@@ -19046,6 +19076,65 @@
     } ],
     "uniqueTag" : "ticket_type__Usr0418746430"
   }, {
+    "codeName" : "Usr1024633944",
+    "name" : "附件下载",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/search_attachment.json"
+    },
+    "getPSUIActionGroupDetails" : [ {
+      "actionLevel" : 250,
+      "detailType" : "DEUIACTION",
+      "name" : "ud599dea",
+      "getPSSysImage" : {
+        "glyph" : "xf019@FontAwesome",
+        "cssClass" : "fa fa-download"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "SINGLEDATA",
+        "caption" : "下载",
+        "codeName" : "download",
+        "frontProcessType" : "OTHER",
+        "fullCodeName" : "search_attachment_download",
+        "name" : "附件下载",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/search_attachment.json"
+        },
+        "getPSNavigateParams" : [ {
+          "key" : "fileid",
+          "name" : "fileid",
+          "value" : "file_id",
+          "rawValue" : false
+        }, {
+          "key" : "filename",
+          "name" : "filename",
+          "value" : "name",
+          "rawValue" : false
+        } ],
+        "getPSSysImage" : {
+          "glyph" : "xf019@FontAwesome",
+          "cssClass" : "fa fa-download"
+        },
+        "getPSSysPFPlugin" : {
+          "pluginType" : "DEUIACTION",
+          "pluginCode" : "FILE_DOWNLOAD",
+          "runtimeObject" : true
+        },
+        "timeout" : 60000,
+        "tooltip" : "下载当前附件",
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "download",
+        "uIActionType" : "DEUIACTION",
+        "id" : "download@search_attachment"
+      },
+      "tooltip" : "下载当前附件",
+      "addSeparator" : false,
+      "showCaption" : false,
+      "showIcon" : true
+    } ],
+    "uniqueTag" : "search_attachment__Usr1024633944"
+  }, {
     "codeName" : "Usr0417326119",
     "name" : "删除&&修改角色",
     "getPSAppDataEntity" : {
@@ -19863,7 +19952,7 @@
         "noPrivDisplayMode" : 1,
         "caption" : "新建仪表盘",
         "codeName" : "new_dynadashboard",
-        "dataAccessAction" : "SRFUR__INSIGHT_M",
+        "dataAccessAction" : "UPDATE",
         "getFrontPSAppView" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dyna_dashboard_list_exp_view2.json",
@@ -19886,7 +19975,7 @@
         },
         "getPSDEOPPriv" : {
           "modelref" : true,
-          "id" : "SRFUR__INSIGHT_M"
+          "id" : "INSIGHT_VIEW__UPDATE"
         },
         "getPSSysImage" : {
           "glyph" : "xf067@FontAwesome",
@@ -19916,7 +20005,7 @@
         "noPrivDisplayMode" : 1,
         "caption" : "仪表盘管理",
         "codeName" : "board_management",
-        "dataAccessAction" : "SRFUR__INSIGHT_M",
+        "dataAccessAction" : "UPDATE",
         "getFrontPSAppView" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dyna_dashboard_insight_view_grid_view.json",
@@ -19931,7 +20020,7 @@
         },
         "getPSDEOPPriv" : {
           "modelref" : true,
-          "id" : "SRFUR__INSIGHT_M"
+          "id" : "INSIGHT_VIEW__UPDATE"
         },
         "getPSSysImage" : {
           "glyph" : "xf013@FontAwesome",

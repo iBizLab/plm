@@ -975,6 +975,9 @@
     "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEDRITEMS/UsrDRItem0927632246.json"
   }, {
     "modelref" : true,
+    "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEDRITEMS/UsrDRItem1022889709.json"
+  }, {
+    "modelref" : true,
     "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEDRITEMS/UsrDRItem1212205451.json"
   }, {
     "modelref" : true,
@@ -2148,6 +2151,49 @@
     },
     "getPSDEDataSetReturn" : {
       "name" : "MainResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "library_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true,
+    "enableTempData" : true
+  }, {
+    "codeName" : "mob_main",
+    "logicName" : "主列表查询",
+    "majorSortDir" : "DESC",
+    "getMajorSortPSDEField" : {
+      "name" : "IS_FAVORITE",
+      "codeName" : "is_favorite"
+    },
+    "minorSortDir" : "DESC",
+    "getMinorSortPSDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "update_time"
+    },
+    "name" : "mob_main",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "cur_library"
+    }, {
+      "modelref" : true,
+      "id" : "unfavorite"
+    }, {
+      "modelref" : true,
+      "id" : "favorite"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Mob_mainInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "library_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Mob_mainResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "library_dto"
@@ -7954,10 +8000,22 @@
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_move_edit_view",
+    "logicName" : "测试库移动编辑视图（移动端）",
+    "name" : "测试库移动编辑视图（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "setting_view",
     "logicName" : "测试库配置视图",
     "name" : "测试库配置视图",
     "realModelSubType" : "DEEDITVIEW2",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_setting_view",
+    "logicName" : "测试库设置视图（移动端）",
+    "name" : "测试库设置视图（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "filter_tab_exp_view",
@@ -8009,6 +8067,12 @@
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_create_view",
+    "logicName" : "测试库移动端创建视图",
+    "name" : "测试库移动端创建视图",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "test_mob_tab_exp_view",
     "logicName" : "测试移动端分页导航视图",
     "name" : "测试移动端分页导航视图",
@@ -8025,6 +8089,12 @@
     "logicName" : "测试库表格视图（团队测试库）",
     "name" : "测试库表格视图（团队测试库）",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_advanced_setting_view",
+    "logicName" : "高级设置（移动端）",
+    "name" : "高级设置（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "base_info_edit_view",
@@ -8088,6 +8158,20 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_create_view_Form",
+    "logicName" : "测试库移动端创建视图_表单",
+    "modelTag2" : "1",
+    "name" : "测试库移动端创建视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_advanced_setting_Form",
+    "logicName" : "高级设置（移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "高级设置（移动端）_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "setting_member_view_form",
     "logicName" : "设置测试库成员视图_表单",
     "modelTag2" : "0",
@@ -8139,6 +8223,13 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
+    "codeName" : "mob_setting_view_Form",
+    "logicName" : "测试库设置视图（移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "测试库设置视图（移动端）_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "show_edit_view_form",
     "logicName" : "测试库展示信息视图_表单",
     "modelTag2" : "0",
@@ -8150,6 +8241,13 @@
     "logicName" : "高级设置",
     "modelTag2" : "0",
     "name" : "高级设置",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_move_edit_view_Form",
+    "logicName" : "测试库移动编辑视图（移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "测试库移动编辑视图（移动端）_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -8316,7 +8414,7 @@
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
     },
     "masterOrder" : 100,
-    "masterRS" : 5,
+    "masterRS" : 69,
     "minorCodeName" : "test_cases",
     "getMinorPSDataEntity" : {
       "modelref" : true,

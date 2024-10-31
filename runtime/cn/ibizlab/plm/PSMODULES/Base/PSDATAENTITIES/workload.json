@@ -245,6 +245,32 @@
     "enableBackend" : false
   }, {
     "actionHolder" : 1,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "fill_workload_data",
+    "dataAccessAction" : "READ",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEACTIONS/fill_workload_data.json",
+    "logicName" : "填充工时数据",
+    "name" : "fill_workload_data",
+    "getPSDEActionInput" : {
+      "name" : "Fill_workload_dataInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "workload_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Fill_workload_dataResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDELOGICS/fill_workload_data.json"
+    },
+    "enableFront" : false
+  }, {
+    "actionHolder" : 1,
     "actionMode" : "READ",
     "actionType" : "DELOGIC",
     "codeName" : "get_register_workload",
@@ -509,6 +535,12 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEDRITEMS/UsrDRItem0618645191.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEDRITEMS/UsrDRItem1017085985.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEDRITEMS/UsrDRItem1017816857.json"
   } ],
   "getAllPSDEDataQueries" : [ {
     "getAllPSDEDataQueryCodes" : [ {
@@ -918,6 +950,56 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEDATAQUERIES/my_mob_log/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "my_mob_log",
+    "logicName" : "工时日志",
+    "memo" : "移动端我的工时日志",
+    "name" : "my_mob_log",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/workload.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "WORKLOAD",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "srfpersonid",
+          "fieldName" : "CREATE_MAN",
+          "name" : "(CREATE_MAN) 等于(=) 用户上下文 srfpersonid",
+          "getPSDEField" : {
+            "name" : "CREATE_MAN",
+            "codeName" : "create_man"
+          },
+          "getPSVARTypeId" : "SESSIONCONTEXT"
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "My_mob_logInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "workload_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "My_mob_logResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "workload_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEDATAQUERIES/my_test_case_workload/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "my_test_case_workload",
@@ -1308,6 +1390,9 @@
     "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEDATARELATIONS/management_tab_search_view_DR.json"
   }, {
     "modelref" : true,
+    "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEDATARELATIONS/mob_workload_exp_view_DR.json"
+  }, {
+    "modelref" : true,
     "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEDATARELATIONS/tab_exp_view_DR.json"
   }, {
     "modelref" : true,
@@ -1603,6 +1688,110 @@
     "enableBackend" : true,
     "enableFront" : true
   }, {
+    "codeName" : "mob_calendar",
+    "groupMode" : 1,
+    "logicName" : "工时日历移动端",
+    "majorSortDir" : "DESC",
+    "getMajorSortPSDEField" : {
+      "name" : "REGISTER_DATE",
+      "codeName" : "register_date"
+    },
+    "minorSortDir" : "DESC",
+    "getMinorSortPSDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "update_time"
+    },
+    "name" : "mob_calendar",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "my_calendar"
+    } ],
+    "getPSDEDataSetGroupParams" : [ {
+      "alias" : "DURATION",
+      "groupCode" : "SUM(DURATION)",
+      "name" : "DURATION",
+      "getPSDEField" : {
+        "name" : "DURATION",
+        "codeName" : "duration"
+      },
+      "stdDataType" : 6
+    }, {
+      "name" : "ID",
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "stdDataType" : 25
+    }, {
+      "name" : "NAME",
+      "getPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      },
+      "stdDataType" : 25
+    }, {
+      "name" : "PRINCIPAL_ID",
+      "getPSDEField" : {
+        "name" : "PRINCIPAL_ID",
+        "codeName" : "principal_id"
+      },
+      "stdDataType" : 25,
+      "enableGroup" : true
+    }, {
+      "name" : "PRINCIPAL_TYPE",
+      "getPSDEField" : {
+        "name" : "PRINCIPAL_TYPE",
+        "codeName" : "principal_type"
+      },
+      "stdDataType" : 25
+    }, {
+      "name" : "REGISTER_DATE",
+      "getPSDEField" : {
+        "name" : "REGISTER_DATE",
+        "codeName" : "register_date"
+      },
+      "stdDataType" : 5,
+      "enableGroup" : true
+    }, {
+      "name" : "SHOW_IDENTIFIER",
+      "getPSDEField" : {
+        "name" : "SHOW_IDENTIFIER",
+        "codeName" : "show_identifier"
+      },
+      "stdDataType" : 25
+    }, {
+      "name" : "UPDATE_TIME",
+      "getPSDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
+      "stdDataType" : 5
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Mob_calendarInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "workload_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Mob_calendarResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "workload_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSSysSFPlugin" : {
+      "modelref" : true,
+      "path" : "PSSYSSFPLUGINS/UsrSFPlugin1018391929.json"
+    },
+    "viewLevel" : 0,
+    "enableBackend" : true,
+    "enableFront" : true,
+    "enableGroup" : true
+  }, {
     "codeName" : "my_calendar",
     "logicName" : "我的工时日历",
     "majorSortDir" : "ASC",
@@ -1688,6 +1877,44 @@
       },
       "type" : "PAGE"
     },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "my_mob_log",
+    "logicName" : "工时日志",
+    "majorSortDir" : "DESC",
+    "getMajorSortPSDEField" : {
+      "name" : "REGISTER_DATE",
+      "codeName" : "register_date"
+    },
+    "memo" : "移动端我的工时日志",
+    "minorSortDir" : "DESC",
+    "getMinorSortPSDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "update_time"
+    },
+    "name" : "my_mob_log",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "my_mob_log"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "My_mob_logInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "workload_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "My_mob_logResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "workload_dto"
+      },
+      "type" : "PAGE"
+    },
+    "viewLevel" : 0,
     "enableBackend" : true,
     "enableFront" : true
   }, {
@@ -2312,8 +2539,8 @@
         "codeName" : "work_item"
       },
       "stringLength" : 1048576,
-      "enableUserInsert" : true,
-      "enableUserUpdate" : true
+      "enableUserInsert" : false,
+      "enableUserUpdate" : false
     }, {
       "codeName" : "test_case",
       "logicName" : "用例",
@@ -2613,7 +2840,6 @@
       "modelref" : true,
       "id" : "PRINCIPAL_TYPE"
     },
-    "predefinedType" : "PARENTSUBTYPE",
     "serviceCodeName" : "principal_type",
     "stdDataType" : 25,
     "stringLength" : 100,
@@ -2691,7 +2917,6 @@
       "modelref" : true,
       "id" : "OWNER_TYPE"
     },
-    "predefinedType" : "PARENTTYPE",
     "serviceCodeName" : "owner_type",
     "stdDataType" : 25,
     "stringLength" : 100,
@@ -3506,6 +3731,8 @@
     "stringLength" : 1048576,
     "valueFormat" : "%1$s",
     "viewLevel" : 0,
+    "enableUICreate" : false,
+    "enableUIModify" : false,
     "phisicalDEField" : false,
     "queryColumn" : false,
     "uIAssistDEField" : true
@@ -3767,7 +3994,7 @@
         "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
       },
       "name" : "N_TEST_CASE_EXISTS__N_DESCRIPTION_LIKE",
-      "stdDataType" : 25,
+      "stdDataType" : 21,
       "valueOP" : "EXISTS"
     }, {
       "codeName" : "N_TEST_CASE_EXISTS__N_IDENTIFIER_EQ",
@@ -5450,6 +5677,139 @@
     "enableBackend" : false,
     "enableFront" : true
   }, {
+    "codeName" : "fill_workload_data",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDELOGICS/fill_workload_data.json",
+    "logicName" : "填充工时数据",
+    "memo" : "移动端，工时日历详情使用",
+    "name" : "填充工时数据",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 250,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM1",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置工时principal_id",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "PRINCIPAL_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "obj"
+        },
+        "name" : "Default[n_principal_id_eq] ==> obj[PRINCIPAL_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "n_principal_id_eq",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 430
+    }, {
+      "codeName" : "RAWSQLCALL1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "获取工时信息外加work_item_type_id",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "name" : "obj[principal_id]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "principal_id",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "obj"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "sql" : "SELECT t1.PRINCIPAL_ID,\r\n       t1.PRINCIPAL_TYPE,\r\n       t1.DURATION,\r\n       t2.WORK_ITEM_TYPE_ID,\r\n       t1.`ID`,\r\n       t1.`NAME`,\r\n       t1.`PRINCIPAL_TYPE`,\r\n       concat(t1.`RECENT_PARENT_IDENTIFIER`, '-', t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`\r\nFROM workload t1\r\n         LEFT JOIN `work_item` t2 ON t1.PRINCIPAL_ID = t2.ID\r\nwhere t1.PRINCIPAL_ID = ? limit 1",
+      "topPos" : 540,
+      "fillDstLogicParam" : true
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 650
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/workload.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "obj",
+      "logicName" : "工时",
+      "name" : "工时",
+      "entityParam" : true
+    }, {
+      "codeName" : "result",
+      "logicName" : "结果",
+      "name" : "结果",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/workload.json"
+      },
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "get_register_workload",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDELOGICS/get_register_workload.json",
@@ -6201,7 +6561,7 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 40
+      "topPos" : -100
     }, {
       "codeName" : "PREPAREPARAM2",
       "leftPos" : 160,
@@ -7026,6 +7386,28 @@
       "topPos" : 833,
       "fillDstLogicParam" : true
     }, {
+      "codeName" : "DEACTION7",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage/PSDEACTIONS/Save.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "actual"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage.json"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEACTION",
+      "name" : "更新实际工时",
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "actual"
+      },
+      "topPos" : 1070
+    }, {
       "codeName" : "PREPAREPARAM6",
       "leftPos" : 370,
       "logicNodeType" : "PREPAREPARAM",
@@ -7052,28 +7434,6 @@
         "srcValueType" : "NULLVALUE"
       } ],
       "topPos" : 950
-    }, {
-      "codeName" : "DEACTION7",
-      "getDstPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage/PSDEACTIONS/Save.json"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "actual"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage.json"
-      },
-      "leftPos" : 160,
-      "logicNodeType" : "DEACTION",
-      "name" : "更新实际工时",
-      "getRetPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "actual"
-      },
-      "topPos" : 1070
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",
@@ -8348,7 +8708,8 @@
       },
       "sourceType" : "DEFGROUPDETAIL",
       "stringLength" : 1048576,
-      "type" : "DTO"
+      "type" : "DTO",
+      "readOnly" : true
     }, {
       "logicName" : "用例",
       "name" : "test_case",
@@ -8553,7 +8914,8 @@
       },
       "sourceType" : "DEFIELD",
       "stringLength" : 1048576,
-      "type" : "DTO"
+      "type" : "DTO",
+      "readOnly" : true
     }, {
       "logicName" : "需求",
       "name" : "idea",
@@ -9017,7 +9379,7 @@
         "codeName" : "test_case"
       },
       "sourceType" : "DEFSEARCHMODE",
-      "stdDataType" : 25,
+      "stdDataType" : 21,
       "type" : "SIMPLE"
     }, {
       "logicName" : "用例",
@@ -9461,6 +9823,12 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_workload_exp_view",
+    "logicName" : "移动端工作台工时分页导航视图",
+    "name" : "移动端工作台工时分页导航视图",
+    "realModelSubType" : "DEMOBTABEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "quick_create_view",
     "logicName" : "工时快速建立视图",
     "name" : "工时快速建立视图",
@@ -9471,6 +9839,18 @@
     "logicName" : "工时日历表格视图（管理）",
     "name" : "工时日历表格视图（管理）",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_redirect_view",
+    "logicName" : "工时移动端数据重定向视图",
+    "name" : "工时移动端数据重定向视图",
+    "realModelSubType" : "DEMOBREDIRECTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_detail_view",
+    "logicName" : "工时记录多数据视图（移动端）",
+    "name" : "工时记录多数据视图（移动端）",
+    "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "detail_list_view",
@@ -9515,10 +9895,22 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_calender_detail_view",
+    "logicName" : "工时日历详情移动端多数据视图",
+    "name" : "工时日历详情移动端多数据视图",
+    "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "group_duration_link_grid_view",
     "logicName" : "团队总登记时长链接表格视图",
     "name" : "团队总登记时长链接表格视图",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_calendar_view",
+    "logicName" : "工时日历移动端多数据视图",
+    "name" : "工时日历移动端多数据视图",
+    "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "library_gird_view",
@@ -9568,6 +9960,12 @@
     "logicName" : "工时明细列表视图（执行用例）",
     "name" : "工时明细列表视图（执行用例）",
     "realModelSubType" : "DELISTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_list_view",
+    "logicName" : "工时日志移动端多数据视图",
+    "name" : "工时日志移动端多数据视图",
+    "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "list_view",
@@ -9622,6 +10020,12 @@
     "logicName" : "团队日工时链接表格视图",
     "name" : "团队日工时链接表格视图",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "register_mob_edit_view",
+    "logicName" : "登记工时编辑视图（移动端）",
+    "name" : "登记工时编辑视图（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "type_of_link_grid_view",
@@ -9691,6 +10095,13 @@
     "logicName" : "主编辑表单",
     "modelTag2" : "0",
     "name" : "主编辑表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "register_mob_edit_view_Form",
+    "logicName" : "登记工时编辑视图（移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "登记工时编辑视图（移动端）_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {

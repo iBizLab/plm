@@ -146,9 +146,6 @@
       "id" : "TOOLBAR"
     },
     "getPSDEToolbarItems" : [ {
-      "getCapPSLanguageRes" : {
-        "lanResTag" : "TBB.TEXT.*.NEW"
-      },
       "caption" : "添加成员",
       "groupExtractMode" : "ITEM",
       "itemType" : "DEUIACTION",
@@ -158,35 +155,48 @@
         "modelref" : true,
         "id" : "toolbar_deuiaction1"
       },
+      "getPSControlLogics" : [ {
+        "itemName" : "deuiaction1",
+        "logicTag" : "toolbar",
+        "logicType" : "SCRIPT",
+        "name" : "deuiaction1",
+        "scriptCode" : "context.srfreadonly != true",
+        "triggerType" : "ITEMVISIBLE"
+      } ],
       "getPSSysImage" : {
         "glyph" : "xf067@FontAwesome",
         "cssClass" : "fa fa-plus"
       },
       "getPSUIAction" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "TBB.TEXT.*.NEW"
+        "actionTarget" : "NONE",
+        "caption" : "添加成员",
+        "codeName" : "add_insight_view_member",
+        "dataAccessAction" : "UPDATE",
+        "fullCodeName" : "add_insight_view_member",
+        "name" : "添加效能度量成员",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
         },
-        "caption" : "新建",
-        "codeName" : "New",
-        "fullCodeName" : "New",
-        "name" : "表格界面_新建操作",
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "UPDATE"
+        },
         "getPSSysImage" : {
           "glyph" : "xf0f6@FontAwesome",
           "cssClass" : "fa fa-file-text-o"
         },
         "predefinedType" : "GRIDVIEW_NEWACTION",
+        "refreshMode" : 1,
         "timeout" : 60000,
-        "getTooltipPSLanguageRes" : {
-          "lanResTag" : "TBB.TOOLTIP.*.NEW"
-        },
         "uIActionMode" : "SYS",
-        "uIActionTag" : "New",
-        "uIActionType" : "DEUIACTION"
+        "uIActionTag" : "add_insight_view_member",
+        "uIActionType" : "DEUIACTION",
+        "globalUIAction" : true,
+        "reloadData" : true
       },
       "tooltip" : "添加成员",
-      "getTooltipPSLanguageRes" : {
-        "lanResTag" : "TBB.TOOLTIP.*.NEW"
-      },
+      "uIActionTarget" : "NONE",
       "showCaption" : true,
       "showIcon" : true
     } ],
@@ -324,7 +334,7 @@
         "groupExtractMode" : "ITEM",
         "itemType" : "DEUIACTION",
         "name" : "deuiaction1",
-        "noPrivDisplayMode" : 2,
+        "noPrivDisplayMode" : 1,
         "getPSAppViewUIAction" : {
           "modelref" : true,
           "id" : "grid_batchtoolbar_deuiaction1"
@@ -335,8 +345,10 @@
         },
         "getPSUIAction" : {
           "actionTarget" : "MULTIKEY",
+          "noPrivDisplayMode" : 1,
           "caption" : "设置角色",
           "codeName" : "setting_role",
+          "dataAccessAction" : "UPDATE",
           "getFrontPSAppView" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/insight_member_role_edit_view.json",
@@ -351,6 +363,10 @@
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "UPDATE"
           },
           "getPSSysImage" : {
             "glyph" : "xf185@FontAwesome",

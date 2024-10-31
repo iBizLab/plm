@@ -575,6 +575,12 @@
     "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer/PSDEDRITEMS/UsrDRItem0104327190.json"
   }, {
     "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer/PSDEDRITEMS/UsrDRItem1016211568.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer/PSDEDRITEMS/UsrDRItem1016251028.json"
+  }, {
+    "modelref" : true,
     "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer/PSDEDRITEMS/UsrDRItem1226522523.json"
   } ],
   "getAllPSDEDataImports" : [ {
@@ -995,7 +1001,23 @@
         "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer.json"
       },
       "joinType" : "MAIN",
-      "name" : "CUSTOMER"
+      "name" : "CUSTOMER",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "0",
+          "fieldName" : "IS_DELETED",
+          "name" : "(IS_DELETED) 等于(=) 0",
+          "getPSDEField" : {
+            "name" : "IS_DELETED",
+            "codeName" : "is_deleted"
+          }
+        } ]
+      }
     },
     "getPSDEDataQueryInput" : {
       "name" : "NormalInput",
@@ -1083,6 +1105,9 @@
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
     "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer/PSDEDATARELATIONS/Default.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer/PSDEDATARELATIONS/mob_customer_relation.json"
   } ],
   "getAllPSDEDataSets" : [ {
     "codeName" : "Default",
@@ -6563,6 +6588,12 @@
     "utilType" : "NOTIFYSETTING"
   } ],
   "getAllPSModelDatas" : [ {
+    "codeName" : "mob_edit_view",
+    "logicName" : "移动端客户编辑视图",
+    "name" : "移动端客户编辑视图",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "set_category_option_view",
     "logicName" : "客户设置类别视图",
     "name" : "客户设置类别视图",
@@ -6626,6 +6657,12 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_md_view",
+    "logicName" : "移动端客户多数据视图",
+    "name" : "移动端客户多数据视图",
+    "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "main_view",
     "logicName" : "客户实体主视图",
     "name" : "客户实体主视图",
@@ -6663,6 +6700,12 @@
     "realModelSubType" : "DEMOBPICKUPMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_info_view",
+    "logicName" : "客户信息详情编辑视图（移动端）",
+    "name" : "客户信息详情编辑视图（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "pick_up_view",
     "logicName" : "客户实体数据选择视图",
     "modelTag" : "PICKUPVIEW",
@@ -6687,6 +6730,13 @@
     "name" : "全部客户表格视图",
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_edit_view_Form",
+    "logicName" : "移动端客户编辑视图_表单",
+    "modelTag2" : "1",
+    "name" : "移动端客户编辑视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
   }, {
     "codeName" : "quick_create",
     "logicName" : "客户快速建立视图_表单",
@@ -6727,6 +6777,13 @@
     "logicName" : "主编辑表单",
     "modelTag2" : "0",
     "name" : "主编辑表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_info_view_Form",
+    "logicName" : "客户信息详情编辑视图（移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "客户信息详情编辑视图（移动端）_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
