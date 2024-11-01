@@ -1,0 +1,127 @@
+@include b('mob-personel-select') {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  margin: -6px 0;
+}
+@include b('mob-personel-select-personel') {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  @include e('info') {
+    display: flex;
+    flex: 1;
+    gap: getCssVar(spacing, base);
+    align-items: center;
+    line-height: getCssVar(form-item,line-height);
+  }
+  @include e('avatar') {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: getCssVar(spacing, extra-loose);
+    height: getCssVar(spacing, extra-loose);
+    color: white;
+    border-radius: 50%;
+
+    img {
+      width: getCssVar(spacing, extra-loose);
+      height: getCssVar(spacing, extra-loose);
+      object-fit: contain;
+    }
+  }
+  @include e('close') {
+    flex-shrink: 0;
+    font-size: getCssVar(font-size, header, 3);
+    color: getCssVar(color,tertiary);
+  }
+  @include e('username'){
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+@include b('mob-personel-select-no-select-value') {
+  display: flex;
+  gap: getCssVar(spacing, base, tight);
+  align-items: center;
+  justify-content: getCssVar(form-item-container, editor-align);
+  width: 100%;
+
+  @include e('text'){
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  img {
+    width: getCssVar(spacing, extra-loose);
+    height: getCssVar(spacing, extra-loose);
+    border-radius: 50%;
+  }
+}
+@include b('mob-personel-select-personel__info'){
+  justify-content: getCssVar(form-item-container, editor-align);
+}
+
+@include b('mob-personel-select-mul-ponsel') {
+  display: flex;
+  flex-flow: row wrap;
+  gap: getCssVar(spacing, base);
+  align-items: center;
+  justify-content: getCssVar(form-item-container, editor-align);
+  width: 100%;
+  @include e('item') {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: getCssVar(spacing, super-loose);
+
+    @include m('avatar') {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: getCssVar(spacing, extra-loose);
+      height: getCssVar(spacing, extra-loose);
+      color: white;
+      border-radius: 50%;
+
+      img{
+        width: getCssVar(spacing, extra-loose);
+        height: getCssVar(spacing, extra-loose);
+        object-fit: contain;
+      }
+    }
+    @include m('name') {
+      width: 100%;
+      overflow: hidden;
+      text-align: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    @include m('close') {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      width: getCssVar(spacing, base);
+      height: getCssVar(spacing, base);
+      font-size: 18px;
+      line-height: getCssVar(spacing, base);
+    }
+  }
+  @include e('add-icon') {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: getCssVar(spacing, extra-loose);
+    height: getCssVar(spacing, extra-loose);
+    border: 2px solid getCssVar(color, border);
+    border-radius: 50%;
+  }
+}

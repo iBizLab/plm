@@ -6,7 +6,7 @@ import { EditorController as X, ButtonContainerState as $, ControllerEvent as H,
 import { getDataPickerProps as ee, getEditorEmits as te, useNamespace as ie, withInstall as ae } from "@ibiz-template/vue3-util";
 import { RuntimeModelError as P } from "@ibiz-template/core";
 import { mergeDeepLeft as oe, clone as D } from "ramda";
-import { defineComponent as se, ref as g, watch as M, computed as ne, onMounted as le, createVNode as h, resolveComponent as N, createTextVNode as S } from "vue";
+import { defineComponent as se, ref as g, watch as S, computed as ne, onMounted as le, createVNode as h, resolveComponent as N, createTextVNode as M } from "vue";
 class re extends X {
   constructor() {
     super(...arguments);
@@ -105,7 +105,7 @@ class re extends X {
     ];
     if (this.model.editorType && o.includes(this.model.editorType) && this.initPickupViewParams(), this.objectIdField = (m = this.model.objectIdField) == null ? void 0 : m.toLowerCase(), this.objectNameField = (n = this.model.objectNameField) == null ? void 0 : n.toLowerCase(), this.objectValueField = (c = this.model.objectValueField) == null ? void 0 : c.toLowerCase(), this.model.uiactionGroup) {
       const v = this.model.uiactionGroup.uiactionGroupDetails || [];
-      v.length > 0 && v.forEach((f) => {
+      v.length > 0 && (v.forEach((f) => {
         const b = f.uiactionId;
         if (b) {
           const k = new Y(
@@ -115,7 +115,7 @@ class re extends X {
           );
           this.groupActionState.addState(f.id, k);
         }
-      });
+      }), await this.groupActionState.init());
     }
     const e = this.getView();
     e && e.evt.on("onDataChange", (v) => {
@@ -350,7 +350,7 @@ const E = /* @__PURE__ */ se({
         });
       }
     };
-    M(() => l.value, (i) => {
+    S(() => l.value, (i) => {
       C(i);
     }, {
       immediate: !0,
@@ -422,7 +422,7 @@ const E = /* @__PURE__ */ se({
     }, U = () => {
       u("change", y);
     }, O = ne(() => c.value.map((i) => i[e.textName]).join(","));
-    M(O, (i, t) => {
+    S(O, (i, t) => {
       i !== t && u("infoTextChange", i);
     }, {
       immediate: !0
@@ -548,11 +548,11 @@ const E = /* @__PURE__ */ se({
       text: !0,
       onClick: this.handleCancel
     }, {
-      default: () => [S("取消")]
+      default: () => [M("取消")]
     }), h(N("el-button"), {
       onClick: this.onConfirm
     }, {
-      default: () => [S("确认")]
+      default: () => [M("确认")]
     })])]);
   }
 }), ce = ae(E, function(l) {

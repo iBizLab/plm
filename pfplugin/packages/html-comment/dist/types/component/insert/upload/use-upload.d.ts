@@ -1,4 +1,4 @@
-import { UploadRawFile } from 'element-plus';
+import { UploadFile, UploadRawFile } from 'element-plus';
 import { ComputedRef, Ref } from 'vue';
 /**
  * iview的Upload适配逻辑
@@ -20,10 +20,13 @@ export declare function useUpload(props: IParams): {
     }[]>;
     limit: ComputedRef<1 | 9999>;
     filesCount: ComputedRef<number>;
+    uploadRef: Ref<any>;
     onError: (...args: IData[]) => never;
     onRemove: (file: IData) => void;
-    onSuccess: (response: IData) => void;
+    onItemRemove: (file: IData) => void;
+    onSuccess: (response: IData, uploadFile: UploadFile) => void;
     beforeUpload: (rawFile: UploadRawFile) => boolean;
     onConfirm: () => void;
     onCancel: () => void;
+    getUploadMessage: (type: string) => string;
 };

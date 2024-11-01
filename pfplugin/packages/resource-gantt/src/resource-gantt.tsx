@@ -4,7 +4,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-restricted-syntax */
-import { useControlController, useNamespace } from '@ibiz-template/vue3-util';
+import {
+  useControlController,
+  useNamespace,
+  useUIStore,
+} from '@ibiz-template/vue3-util';
 import {
   computed,
   defineComponent,
@@ -187,17 +191,25 @@ export const ResourceGanttControl = defineComponent({
       return getComputedStyle(root).getPropertyValue(varName);
     };
 
-    const ganttStyle = computed(() => {
-      const style = {
+
+    const { UIStore } = useUIStore();
+    const ganttStyle = ref<IData>({});
+    const sliderColor = ref<IData>({});
+
+    const calcGanttStyle = () => {
+      return {
         primaryColor:
           c.state.ganttStyle?.primaryColor || getVarValue('--ibiz-color-bg-0'),
         textColor:
           c.state.ganttStyle?.textColor || getVarValue('--ibiz-color-text-2'),
+        bgColor: getVarValue('--ibiz-color-bg-1'),
+        weekendColor: getVarValue('--ibiz-color-fill-2'),
+        todayColor: getVarValue('--ibiz-color-primary-light-active'),
+        borderColor: getVarValue('--ibiz-color-border'),
       };
-      return style;
-    });
+    };
 
-    const sliderColor = computed(() => {
+    const calcSliderColor = () => {
       const nodeColor: IData = {};
       c.model.detreeNodes?.forEach((node, index) => {
         const colorIndex = index % color.length;
@@ -206,7 +218,17 @@ export const ResourceGanttControl = defineComponent({
         )}, 1)`;
       });
       return nodeColor;
-    });
+    };
+
+
+    watch(
+      () => UIStore.theme,
+      () => {
+        ganttStyle.value = calcGanttStyle();
+        sliderColor.value = calcSliderColor();
+      },
+      { immediate: true },
+    );
 
     /**
      * 处理仅顶部节点显示
@@ -825,6 +847,13 @@ export const ResourceGanttControl = defineComponent({
           onVirtualTableChange={this.onVirtualTableChange}
           primaryColor={this.ganttStyle.primaryColor}
           headerStyle={{ textColor: this.ganttStyle.textColor }}
+          borderColor={this.ganttStyle.borderColor}
+          bodyStyle={{
+            todayColor: this.ganttStyle.todayColor,
+            weekendColor: this.ganttStyle.weekendColor,
+            bgColor: this.ganttStyle.bgColor,
+            selectColor: this.ganttStyle.weekendColor,
+          }}
         >
           {{
             default: () => {

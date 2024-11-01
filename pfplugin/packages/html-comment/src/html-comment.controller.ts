@@ -488,6 +488,24 @@ export class HtmlCommentController extends EditorController<IHtml> {
   }
 
   /**
+   * @description 聚焦
+   * @memberof HtmlCommentController
+   */
+  public focus() {
+    this.evt.emit('focus', undefined);
+    this.collapsed.value = false;
+  }
+
+  /**
+   * @description 失焦
+   * @memberof HtmlCommentController
+   */
+  public blur() {
+    this.evt.emit('blur', undefined);
+    this.collapsed.value = true;
+  }
+
+  /**
    * 请求url获取文件流，并用JS触发文件下载
    *
    * @author lxm

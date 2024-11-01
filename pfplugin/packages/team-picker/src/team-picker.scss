@@ -43,39 +43,8 @@
       }
     }
     @include m('list') {
-      position: absolute;
-      top: 42px;
-      z-index: 999;
-      width: 100%;
-      height: auto;
-      max-height: 0;
-      padding: 8px 0;
-      overflow: auto;
-      visibility: hidden;
-      background-color: getCssVar(color, bg, 1);
-      border-radius: 4px;
-      box-shadow: 0 0 12px rgb(0 0 0 / 12%);
-      opacity: 1;
-      transition: all 0.2s linear;
-      @include when('visible') {
-        max-height: 300px;
-        visibility: visible;
-      }
-
-      &::before{
-        position: absolute;
-        top: -6px;
-        left: 50%;
-        width: 0;
-        height: 0;
-        content: "";
-        border-top: 0 solid transparent;
-        border-right: 6px solid transparent;
-        border-bottom: 6px solid getCssVar(color, bg, 1);
-        border-left: 6px solid transparent;
-        transform: translate(-50%);
-      }
-
+      max-height: 288px;
+      overflow-y: auto;
     }
   }
   @include e('item') {
@@ -83,7 +52,7 @@
     align-items: center;
     justify-content: left;
     height: 32px;
-    padding: 0 32px 0 20px;
+    padding: 0 20px;
     cursor: pointer;
 
     &:hover{
@@ -93,12 +62,14 @@
       width: 24px;
       height: 24px;
       margin-right: 10px;
+      flex-shrink: 0;
       color: var(--ibiz-color-primary);
     }
     @include m('team-icon') {
       width: 24px;
       height: 24px;
       margin-right: 10px;
+      flex-shrink: 0;
       color: var(--ibiz-color-primary);
     }
     @include m('text-icon') {
@@ -112,6 +83,7 @@
       overflow: hidden;
       font-size: 12px;
       color: white;
+      flex-shrink: 0;
       border: 0.5px solid lightgray;
       border-radius: 50%;
     }

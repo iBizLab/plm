@@ -221,6 +221,16 @@ export declare class HtmlCommentController extends EditorController<IHtml> {
      */
     clear(): void;
     /**
+     * @description 聚焦
+     * @memberof HtmlCommentController
+     */
+    focus(): void;
+    /**
+     * @description 失焦
+     * @memberof HtmlCommentController
+     */
+    blur(): void;
+    /**
      * 请求url获取文件流，并用JS触发文件下载
      *
      * @author lxm

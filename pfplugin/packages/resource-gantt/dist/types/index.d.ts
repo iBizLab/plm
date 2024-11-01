@@ -41,10 +41,7 @@ export declare const IBizResourceGanttControl: import("@ibiz-template/vue3-util"
     columns: import("vue").ComputedRef<import("@ibiz/model-core").IDETreeColumn[]>;
     onCheck: (state: boolean, item: import("@ibiz-template/runtime").IGanttNodeData) => void;
     loading: import("vue").ComputedRef<boolean>;
-    ganttStyle: import("vue").ComputedRef<{
-        primaryColor: string;
-        textColor: string;
-    }>;
+    ganttStyle: import("vue").Ref<IData>;
     isGanttWidthEq: import("vue").Ref<boolean>;
     onNodeClick: (nodeData: import("@ibiz-template/runtime").IGanttNodeData, evt: MouseEvent) => void;
     onNodeDbClick: (nodeData: import("@ibiz-template/runtime").IGanttNodeData) => void;

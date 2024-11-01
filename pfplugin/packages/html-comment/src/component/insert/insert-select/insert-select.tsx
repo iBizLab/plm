@@ -53,8 +53,9 @@ export const InsertSelect = defineComponent({
       });
     };
 
-    // 处音频上传
-    const handleAudioUpload = async (item: IData): Promise<void> => {
+    // 处理本地文件上传
+    const handleLocalFiles = async (item: IData): Promise<void> => {
+      const accept = item.type === 'audio' ? 'audio/*' : '';
       const modalData: IModalData = {
         ok: true,
         data: [],
@@ -66,6 +67,7 @@ export const InsertSelect = defineComponent({
             context: props.context,
             viewParams: props.viewParams,
             actionParams: props.actionParams,
+            accept,
           });
         },
         undefined,
@@ -96,7 +98,8 @@ export const InsertSelect = defineComponent({
     const onSelectItem = async (item: IData): Promise<void> => {
       switch (item.type) {
         case 'audio':
-          await handleAudioUpload(item);
+        case 'files':
+          await handleLocalFiles(item);
           break;
         default:
           handleDefault(item);

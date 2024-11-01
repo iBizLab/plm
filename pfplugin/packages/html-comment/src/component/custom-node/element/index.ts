@@ -6,3 +6,4 @@ export * from './audio-elem';
 export * from './formula-elem';
 export * from './layout-elem';
 export * from './layout-column-elem';
+export * from './files-elem';

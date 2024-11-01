@@ -1,4 +1,3 @@
-import { Ref } from 'vue';
 import { TeamPickerController } from './team-picker.controller';
 export declare const TeamPicker: import("vue").DefineComponent<{
     value: (ObjectConstructor | ArrayConstructor | StringConstructor | NumberConstructor)[];
@@ -23,15 +22,10 @@ export declare const TeamPicker: import("vue").DefineComponent<{
         required: boolean;
     };
 }, {
-    ns: import("@ibiz-template/core").Namespace;
     c: TeamPickerController;
-    curValue: Ref<string | null>;
-    items: Ref<IData[]>;
-    renderItem: (item: IData) => JSX.Element;
-    renderSelectItem: () => JSX.Element | undefined;
-    onChange: () => void;
-    renderReadOnlyState: () => JSX.Element | null;
+    ns: import("@ibiz-template/core").Namespace;
     renderSelect: () => JSX.Element;
+    renderReadOnlyState: () => JSX.Element | null;
     showFormDefaultContent: import("vue").ComputedRef<boolean>;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     change: (_value: unknown, _name?: string | undefined) => boolean;

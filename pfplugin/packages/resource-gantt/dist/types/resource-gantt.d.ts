@@ -44,10 +44,7 @@ export declare const ResourceGanttControl: import("vue").DefineComponent<{
     columns: import("vue").ComputedRef<IDETreeColumn[]>;
     onCheck: (state: boolean, item: IGanttNodeData) => void;
     loading: import("vue").ComputedRef<boolean>;
-    ganttStyle: import("vue").ComputedRef<{
-        primaryColor: string;
-        textColor: string;
-    }>;
+    ganttStyle: Ref<IData>;
     isGanttWidthEq: Ref<boolean>;
     onNodeClick: (nodeData: IGanttNodeData, evt: MouseEvent) => void;
     onNodeDbClick: (nodeData: IGanttNodeData) => void;

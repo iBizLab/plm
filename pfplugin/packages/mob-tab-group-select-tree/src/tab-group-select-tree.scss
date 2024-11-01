@@ -1,0 +1,88 @@
+/* stylelint-disable selector-class-pattern */
+@include b('tab-group-select-tree') {
+  width: 100%;
+  padding: getCssVar(spacing, tight);
+  margin-left: 0.5rem;
+  background-color: getCssVar(color, bg, 1);
+  border-bottom: 1px solid getCssVar(color, border);
+}
+@include b('tab-group-select-tree-tabs') {
+  display: flex;
+  width: 100%;
+  font-size: getCssVar(font-size, header, 6);
+  white-space: nowrap;
+  @include e('item') {
+    display: flex;
+    align-items: center;
+    padding: getCssVar(spacing, extra-tight) getCssVar(spacing, base);
+    @include when('selected') {
+      background-color: getCssVar(color, primary, light, hover);
+      border-radius: 2rem;
+    }
+  }
+
+  // 默认样式
+  @include m('default'){
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      height: 0;
+      background-color: transparent;
+    }
+  }
+
+  // 等分样式
+  @include m('equally'){
+    justify-content: space-around;
+    overflow: hidden;
+  }
+}
+
+@include b('tab-group-select-tree-select-list') {
+  margin-left: getCssVar(spacing, tight);
+
+  .van-dropdown-menu__bar {
+    height: 100%;
+    font-size: getCssVar(font-size, header, 6);
+    background: unset;
+    box-shadow: unset;
+
+    .van-dropdown-menu__title {
+      position: relative;
+      font-size: getCssVar(font-size, header, 6);
+      line-height: normal;
+      color: getCssVar(color, primary);
+
+      &::before {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 1.5px;
+        height: getCssVar(font-size, header, 6);
+        content: '';
+        background-color: getCssVar(color, primary);
+        transform: translateY(-50%);
+        scale: 0.5 1;
+      }
+    }
+  }
+
+  .van-dropdown-item {
+    margin-top: getCssVar(spacing, base);
+
+    .van-dropdown-item__option {
+      padding: getCssVar(spacing, tight) getCssVar(spacing, base);
+    }
+
+    .van-cell__title {
+      flex: 1;
+    }
+
+    .van-cell__value {
+      flex: 0;
+      min-width: getCssVar(spacing, extra-loose);
+    }
+  }
+}

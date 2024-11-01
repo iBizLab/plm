@@ -11,6 +11,7 @@ import {
   IDomEditor,
 } from '@wangeditor/editor';
 import { DOMElement } from '@wangeditor/editor/dist/editor/src/utils/dom';
+import { FilesButtonMenu } from './files-node-module';
 
 /**
  * 空值节点
@@ -268,6 +269,16 @@ const InsertMenu = {
 };
 
 /**
+ * 插入菜单
+ */
+const FilesMenu = {
+  key: 'files',
+  factory(): FilesButtonMenu {
+    return new FilesButtonMenu();
+  },
+};
+
+/**
  * 插入模块
  * - 插入节点定义
  * - 插入菜单
@@ -288,7 +299,7 @@ export const InsertModule: Partial<IModuleConf> = {
     parseLayoutHtmlConf,
     parseLayoutColumnHtmlConf,
   ],
-  menus: [InsertMenu],
+  menus: [InsertMenu, FilesMenu],
 };
 
 export default InsertModule;

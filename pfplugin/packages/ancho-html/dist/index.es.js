@@ -640,10 +640,10 @@ var le = { exports: {} };
               N.pattern = RegExp(N.pattern.source, X + "g");
             }
             for (var Y = N.pattern || N, C = i.next, R = l; C !== n.tail && !(E && R >= E.reach); R += C.value.length, C = C.next) {
-              var D = C.value;
+              var P = C.value;
               if (n.length > t.length)
                 return;
-              if (!(D instanceof g)) {
+              if (!(P instanceof g)) {
                 var z = 1, M;
                 if (W) {
                   if (M = m(Y, R, t, G), !M || M.index >= t.length)
@@ -655,18 +655,18 @@ var le = { exports: {} };
                     continue;
                   for (var p = C; p !== n.tail && (H < J || typeof p.value == "string"); p = p.next)
                     z++, H += p.value.length;
-                  z--, D = t.slice(R, H), M.index -= R;
-                } else if (M = m(Y, 0, D, G), !M)
+                  z--, P = t.slice(R, H), M.index -= R;
+                } else if (M = m(Y, 0, P, G), !M)
                   continue;
-                var d = M.index, v = M[0], L = D.slice(0, d), B = D.slice(d + v.length), P = R + D.length;
-                E && P > E.reach && (E.reach = P);
+                var d = M.index, v = M[0], L = P.slice(0, d), B = P.slice(d + v.length), D = R + P.length;
+                E && D > E.reach && (E.reach = D);
                 var j = C.prev;
                 L && (j = b(n, j, L), R += L.length), A(n, j, z);
                 var Z = new g(_, U ? o.tokenize(v, U) : v, K, v);
                 if (C = b(n, j, Z), B && b(n, C, B), z > 1) {
                   var q = {
                     cause: _ + "," + F,
-                    reach: P
+                    reach: D
                   };
                   h(t, n, s, C.prev, R, q), E && q.reach > E.reach && (E.reach = q.reach);
                 }
@@ -2221,16 +2221,16 @@ delete Prism.languages.c.boolean;
   }, e.languages.cpp["base-clause"]);
 })(Prism);
 (function(e) {
-  function r(R, D) {
+  function r(R, P) {
     return R.replace(/<<(\d+)>>/g, function(z, M) {
-      return "(?:" + D[+M] + ")";
+      return "(?:" + P[+M] + ")";
     });
   }
-  function a(R, D, z) {
-    return RegExp(r(R, D), z || "");
+  function a(R, P, z) {
+    return RegExp(r(R, P), z || "");
   }
-  function u(R, D) {
-    for (var z = 0; z < D; z++)
+  function u(R, P) {
+    for (var z = 0; z < P; z++)
       R = R.replace(/<<self>>/g, function() {
         return "(?:" + R + ")";
       });
@@ -2458,14 +2458,14 @@ delete Prism.languages.c.boolean;
     }
   });
   var G = /:[^}\r\n]+/.source, W = u(r(/[^"'/()]|<<0>>|\(<<self>>*\)/.source, [y]), 2), K = r(/\{(?!\{)(?:(?![}:])<<0>>)*<<1>>?\}/.source, [W, G]), X = u(r(/[^"'/()]|\/(?!\*)|\/\*(?:[^*]|\*(?!\/))*\*\/|<<0>>|\(<<self>>*\)/.source, [_]), 2), Y = r(/\{(?!\{)(?:(?![}:])<<0>>)*<<1>>?\}/.source, [X, G]);
-  function C(R, D) {
+  function C(R, P) {
     return {
       interpolation: {
         pattern: a(/((?:^|[^{])(?:\{\{)*)<<0>>/.source, [R]),
         lookbehind: !0,
         inside: {
           "format-string": {
-            pattern: a(/(^\{(?:(?![}:])<<0>>)*)<<1>>(?=\}$)/.source, [D, G]),
+            pattern: a(/(^\{(?:(?![}:])<<0>>)*)<<1>>(?=\}$)/.source, [P, G]),
             lookbehind: !0,
             inside: {
               punctuation: /^:/
@@ -3297,12 +3297,12 @@ const te = /* @__PURE__ */ se({
     }, e.parseScript, {
       singleRowReturn: !0,
       isAsync: !1
-    }) : p.replace(/@{[^,]*,"name":"(.*?)"}/g, "<span class='comment-tag'>@$1</span>").replace(/@{[^,]*,name=(.*?)}/g, "<span class='comment-tag'>@$1</span>").replace(/#{"id":"(.+?)","name":"(.+?)","identifier":"(.+?)","type":"(.+?)","icon":"((.|[\t\r\f\n\s])+?)"}/g, (d, v, L, B, P, j) => {
+    }) : p.replace(/@{[^,]*,"name":"(.*?)"}/g, "<span class='comment-tag'>@$1</span>").replace(/@{[^,]*,name=(.*?)}/g, "<span class='comment-tag'>@$1</span>").replace(/#{"id":"(.+?)","name":"(.+?)","identifier":"(.+?)","type":"(.+?)","icon":"((.|[\t\r\f\n\s])+?)"}/g, (d, v, L, B, D, j) => {
       const Z = j.trim(), q = JSON.stringify({
         id: v,
         name: L,
         identifier: B,
-        type: P
+        type: D
       });
       return "<span markerClick='marker' params='".concat(q, "' class='comment-tag is-click'>").concat(Z, " ").concat(B, " ").concat(L, "</span>");
     }).replace(/#{"id":"(.+?)","name":"(.+?)","identifier":"(.+?)","icon":"((.|[\t\r\f\n\s])+?)"}/g, "<span class='comment-tag'>$4 $3 $2</span>").replace(/#{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\t\r\f\n\s])+?)}/g, "<span class='comment-tag'>$4 $3 $2</span>"), E = (p) => p.replaceAll(/{"emoji":"(.+?)"}/g, (d, v) => {
@@ -3311,7 +3311,7 @@ const te = /* @__PURE__ */ se({
     }).replaceAll(/<span\sdata-w-e-type="emoji"\sclass=['"]emoji['"]>(.+?)<\/span>/g, (d, v) => {
       const L = decodeURIComponent(atob(v));
       return "<span data-w-e-type=\"emoji\" class='emoji'>".concat(L, "</span>");
-    }), _ = (p) => p.replaceAll(/<span data-w-e-type="insert" class='insert'>(.+?)<\/span>/g, (d, v) => {
+    }), _ = (p) => p.replaceAll(/<span\sdata-w-e-type="insert"\sclass=['"]insert['"]>(.+?)<\/span>/g, (d, v) => {
       if (v) {
         const L = JSON.parse(v);
         Object.assign(L, {
@@ -3320,31 +3320,34 @@ const te = /* @__PURE__ */ se({
           }
         });
         const B = JSON.stringify(L);
-        let P = "";
+        let D = "";
         switch (L.type) {
           case "date":
-            P = '<span data-slate-inline="true"><date-elem data-value=\''.concat(B, "'></date-elem></span>");
+            D = '<span data-slate-inline="true"><date-elem data-value=\''.concat(B, "'></date-elem></span>");
             break;
           case "label":
-            P = '<span data-slate-inline="true"><label-elem data-value=\''.concat(B, "'></label-elem></span>");
+            D = '<span data-slate-inline="true"><label-elem data-value=\''.concat(B, "'></label-elem></span>");
             break;
           case "prompt-box":
-            P = "<p><prompt-box-elem data-value='".concat(B, "'></prompt-box-elem></p>");
+            D = "<p><prompt-box-elem data-value='".concat(B, "'></prompt-box-elem></p>");
             break;
           case "mind-map":
-            P = "<p><mind-map-elem data-value='".concat(B, "'></mind-map-elem></p>");
+            D = "<p><mind-map-elem data-value='".concat(B, "'></mind-map-elem></p>");
             break;
           case "audio":
-            P = "<p><audio-elem data-value='".concat(B, "'></audio-elem></p>");
+            D = "<p><audio-elem data-value='".concat(B, "'></audio-elem></p>");
             break;
           case "formula":
-            P = '<span data-slate-inline="true"><formula-elem data-value=\''.concat(B, "'></formula-elem></span>");
+            D = '<span data-slate-inline="true"><formula-elem data-value=\''.concat(B, "'></formula-elem></span>");
+            break;
+          case "files":
+            D = '<span data-slate-inline="true"><files-elem data-value=\''.concat(B, "'></files-elem></span>");
             break;
           default:
-            P = "";
+            D = "";
             break;
         }
-        return P;
+        return D;
       }
       return "";
     }).replaceAll(/<layout-elem data-w-e-type="layout" class='layout'>(.+?)<\/layout-elem>/g, (d, v) => {
@@ -3411,15 +3414,15 @@ const te = /* @__PURE__ */ se({
     }), U = (p, d = 1) => {
       if (d > 6)
         return [p];
-      const v = [], L = new RegExp("<h".concat(d, "[\\s\\S]*?>[\\s\\S]*?<\\/h").concat(d, ">"), "g"), B = new RegExp("<h".concat(d, "[\\s\\S]*?>([\\s\\S]*?)<\\/h").concat(d, ">"), "g"), P = p.split(L), j = p.match(B) || [];
+      const v = [], L = new RegExp("<h".concat(d, "[\\s\\S]*?>[\\s\\S]*?<\\/h").concat(d, ">"), "g"), B = new RegExp("<h".concat(d, "[\\s\\S]*?>([\\s\\S]*?)<\\/h").concat(d, ">"), "g"), D = p.split(L), j = p.match(B) || [];
       j.length > 0 && (i.value = !0);
-      for (let Z = 0; Z < P.length; Z++) {
+      for (let Z = 0; Z < D.length; Z++) {
         const q = "title_".concat(ne());
         n.push(q), v.push({
           id: q,
           title: j[Z - 1],
           level: d,
-          children: U(P[Z], d + 1)
+          children: U(D[Z], d + 1)
         });
       }
       return v;
@@ -3442,7 +3445,7 @@ const te = /* @__PURE__ */ se({
       innerHTML: d.title
     }, null) : null, d.children && d.children.length > 0 ? X(d.children) : I("p", {
       innerHTML: d,
-      onClick: D
+      onClick: P
     }, null)]), Y = (p) => {
       const d = />(.*?)</g;
       return (p.match(d) || []).map((L) => L.slice(1, -1)).join("");
@@ -3455,7 +3458,7 @@ const te = /* @__PURE__ */ se({
       onClick: () => W(d.id)
     }, null) : null, d.children && d.children.length > 0 ? C(d.children) : null])), R = (p) => {
       (p.key === "Escape" || p.keyCode === 27) && (t.value = !1, p.stopPropagation(), p.preventDefault());
-    }, D = async (p) => {
+    }, P = async (p) => {
       if (p && p.target instanceof HTMLElement && p.target.tagName === "IMG") {
         p.stopPropagation(), p.preventDefault();
         const d = p.target.getAttribute("src") || "";
@@ -3504,7 +3507,7 @@ const te = /* @__PURE__ */ se({
       renderHTMLContent: X,
       renderAnchoList: C,
       closeImgPreview: z,
-      imgClick: D,
+      imgClick: P,
       handleClick: M
     };
   },

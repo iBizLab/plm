@@ -35,6 +35,7 @@ import {
   isSelectionWrap,
   isSelectionEmpty,
 } from './insert-utils';
+import { UploadCustom } from '../component/insert/upload/upload';
 
 /**
  * 用户列表适配器
@@ -420,6 +421,8 @@ export class InsertController {
     container.addEventListener('mouseup', this.handleMouseup.bind(this));
     // 监听菜单抛值
     this.wangEditor.on('openInsertSelect', () => this.openInsertSelect());
+    // 监听文件上传抛值
+    this.wangEditor.on('openFilesUpload', () => this.openFilesUpload());
     // 时间改变
     container.addEventListener(
       'dateElemEvent',
@@ -443,6 +446,11 @@ export class InsertController {
     // 音频文件改变
     container.addEventListener(
       'audioElemEvent',
+      this.handleInsertChange.bind(this),
+    );
+    // 本地文件改变
+    container.addEventListener(
+      'filesElemEvent',
       this.handleInsertChange.bind(this),
     );
     // 公式改变
@@ -588,6 +596,40 @@ export class InsertController {
   }
 
   /**
+   * 打开文件上传
+   *
+   * @memberof InsertController
+   */
+  async openFilesUpload(): Promise<void> {
+    const res: IModalData = await ibiz.overlay.modal(
+      (modal: IModal): VNode => {
+        return h(UploadCustom, {
+          modal,
+          context: this.context,
+          viewParams: this.params,
+          actionParams: this.editorParams,
+        });
+      },
+      undefined,
+      { width: 'auto', height: 'auto' },
+    );
+    if (res.ok && res.data && res.data.length > 0) {
+      this.wangEditor.focus();
+      res.data.forEach((item2: IData, index: number) => {
+        const tempItem = {
+          type: 'files',
+          value: item2,
+          params: { isAdd: true },
+        };
+        // 处理插入多个时如果下一行有内容样式异常
+        setTimeout(() => {
+          this.addNode(tempItem, 'insert');
+        }, 200 * index);
+      });
+    }
+  }
+
+  /**
    * 添加节点
    *
    * @param {IData} data
@@ -726,6 +768,11 @@ export class InsertController {
       // 音频文件改变
       this.container.removeEventListener(
         'audioElemEvent',
+        this.handleInsertChange.bind(this),
+      );
+      // 本地文件改变
+      this.container.removeEventListener(
+        'filesElemEvent',
         this.handleInsertChange.bind(this),
       );
       // 公式改变

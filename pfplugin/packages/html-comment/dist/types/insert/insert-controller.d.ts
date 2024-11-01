@@ -157,6 +157,12 @@ export declare class InsertController {
      */
     openInsertSelect(): Promise<void>;
     /**
+     * 打开文件上传
+     *
+     * @memberof InsertController
+     */
+    openFilesUpload(): Promise<void>;
+    /**
      * 添加节点
      *
      * @param {IData} data

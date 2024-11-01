@@ -153,10 +153,7 @@ const _ = (t) => {
   t.stopPropagation();
 }, J = async (t, e, n, o) => {
   n.grid.setSelection([o.data]), await n.onActionClick(t, o, e);
-}, Z = Math.min, G = Math.max, F = Math.round, N = (t) => ({
-  x: t,
-  y: t
-});
+};
 function st(t) {
   return t.split("-")[0];
 }
@@ -176,15 +173,24 @@ function zt(t) {
   return Gt(rt(t));
 }
 function lt(t) {
+  const {
+    x: e,
+    y: n,
+    width: o,
+    height: i
+  } = t;
   return {
-    ...t,
-    top: t.y,
-    left: t.x,
-    right: t.x + t.width,
-    bottom: t.y + t.height
+    width: o,
+    height: i,
+    top: n,
+    left: e,
+    right: e + o,
+    bottom: n + i,
+    x: e,
+    y: n
   };
 }
-function tt(t, e, n) {
+function Z(t, e, n) {
   let {
     reference: o,
     floating: i
@@ -246,7 +252,7 @@ const _t = async (t, e, n) => {
   }), {
     x: d,
     y: u
-  } = tt(r, o, a), h = o, f = {}, m = 0;
+  } = Z(r, o, a), h = o, f = {}, m = 0;
   for (let p = 0; p < l.length; p++) {
     const {
       name: R,
@@ -270,23 +276,20 @@ const _t = async (t, e, n) => {
         floating: e
       }
     });
-    if (d = E != null ? E : d, u = T != null ? T : u, f = {
+    d = E != null ? E : d, u = T != null ? T : u, f = {
       ...f,
       [R]: {
         ...f[R],
         ...O
       }
-    }, w && m <= 50) {
-      m++, typeof w == "object" && (w.placement && (h = w.placement), w.rects && (r = w.rects === !0 ? await s.getElementRects({
-        reference: t,
-        floating: e,
-        strategy: i
-      }) : w.rects), {
-        x: d,
-        y: u
-      } = tt(r, h, a)), p = -1;
-      continue;
-    }
+    }, w && m <= 50 && (m++, typeof w == "object" && (w.placement && (h = w.placement), w.rects && (r = w.rects === !0 ? await s.getElementRects({
+      reference: t,
+      floating: e,
+      strategy: i
+    }) : w.rects), {
+      x: d,
+      y: u
+    } = Z(r, h, a)), p = -1);
   }
   return {
     x: d,
@@ -295,7 +298,10 @@ const _t = async (t, e, n) => {
     strategy: i,
     middlewareData: f
   };
-};
+}, tt = Math.min, G = Math.max, F = Math.round, N = (t) => ({
+  x: t,
+  y: t
+});
 function A(t) {
   return at(t) ? (t.nodeName || "").toLowerCase() : "#document";
 }
@@ -555,7 +561,7 @@ function Yt(t) {
   } = t;
   const s = [...n === "clippingAncestors" ? Xt(e, this._c) : [].concat(n), o], l = s[0], a = s.reduce((r, d) => {
     const u = nt(e, d, i);
-    return r.top = G(u.top, r.top), r.right = Z(u.right, r.right), r.bottom = Z(u.bottom, r.bottom), r.left = G(u.left, r.left), r;
+    return r.top = G(u.top, r.top), r.right = tt(u.right, r.right), r.bottom = tt(u.bottom, r.bottom), r.left = G(u.left, r.left), r;
   }, nt(e, l, i));
   return {
     width: a.right - a.left,

@@ -11,6 +11,7 @@ import {
   PromptBoxElem,
   MindMapElem,
   AudioElem,
+  FilesElem,
   FormulaElem,
   LayoutElem,
   LayoutColumnElem,
@@ -37,6 +38,9 @@ export const IBizHtmlComment = withInstall(HtmlComment, function (v: App) {
   }
   if (!window.customElements.get('audio-elem')) {
     window.customElements.define('audio-elem', AudioElem);
+  }
+  if (!window.customElements.get('files-elem')) {
+    window.customElements.define('files-elem', FilesElem);
   }
   if (!window.customElements.get('formula-elem')) {
     window.customElements.define('formula-elem', FormulaElem);

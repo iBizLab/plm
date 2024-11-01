@@ -3,12 +3,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Ref,
-  computed,
-  defineComponent,
   ref,
-  onMounted,
   watch,
+  VNodeRef,
+  computed,
+  onMounted,
   onBeforeUnmount,
+  defineComponent,
 } from 'vue';
 import {
   getDataPickerProps,
@@ -39,6 +40,8 @@ export const TeamPicker = defineComponent({
     const uuid = createUUID(); // 输入框id
 
     let isHover = false; // 鼠标是否进入下拉选择列表
+
+    const inputWrapper = ref();
 
     // 是否显示表单默认内容
     const showFormDefaultContent = computed(() => {
@@ -372,11 +375,6 @@ export const TeamPicker = defineComponent({
       );
     };
 
-    // 显示隐藏下拉框
-    const showList = () => {
-      visible.value = !visible.value;
-    };
-
     // 记录鼠标状态
     const recordHoverState = (tag: boolean) => {
       isHover = tag;
@@ -399,34 +397,56 @@ export const TeamPicker = defineComponent({
     const renderSelect = () => {
       return (
         <div class={ns.e('select')}>
-          <div
-            id={uuid}
-            class={[ns.em('select', 'input'), ns.is('focus', visible.value)]}
-            onClick={showList}
+          <el-popover
+            trigger='click'
+            v-model:visible={visible.value}
+            width={inputWrapper.value?.offsetWidth}
           >
-            <div class={ns.em('select', 'input-content')}>
-              {renderSelectItem()}
-            </div>
-            <div class={ns.em('select', 'input-icon')}>
-              <el-icon class={ns.is('reverse', visible.value)}>
-                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'>
-                  <path
-                    fill='currentColor'
-                    d='M831.872 340.864 512 652.672 192.128 340.864a30.592 30.592 0 0 0-42.752 0 29.12 29.12 0 0 0 0 41.6L489.664 714.24a32 32 0 0 0 44.672 0l340.288-331.712a29.12 29.12 0 0 0 0-41.728 30.592 30.592 0 0 0-42.752 0z'
-                  ></path>
-                </svg>
-              </el-icon>
-            </div>
-          </div>
-          <div
-            class={[ns.em('select', 'list'), ns.is('visible', visible.value)]}
-            onMouseenter={() => recordHoverState(true)}
-            onMouseleave={() => recordHoverState(false)}
-          >
-            {items.value.map((item: IData) => {
-              return renderItem(item);
-            })}
-          </div>
+            {{
+              reference: () => {
+                return (
+                  <div
+                    id={uuid}
+                    class={[
+                      ns.em('select', 'input'),
+                      ns.is('focus', visible.value),
+                    ]}
+                    ref={inputWrapper}
+                  >
+                    <div class={ns.em('select', 'input-content')}>
+                      {renderSelectItem()}
+                    </div>
+                    <div class={ns.em('select', 'input-icon')}>
+                      <el-icon class={ns.is('reverse', visible.value)}>
+                        <svg
+                          xmlns='http://www.w3.org/2000/svg'
+                          viewBox='0 0 1024 1024'
+                        >
+                          <path
+                            fill='currentColor'
+                            d='M831.872 340.864 512 652.672 192.128 340.864a30.592 30.592 0 0 0-42.752 0 29.12 29.12 0 0 0 0 41.6L489.664 714.24a32 32 0 0 0 44.672 0l340.288-331.712a29.12 29.12 0 0 0 0-41.728 30.592 30.592 0 0 0-42.752 0z'
+                          ></path>
+                        </svg>
+                      </el-icon>
+                    </div>
+                  </div>
+                );
+              },
+              default: () => {
+                return (
+                  <div
+                    class={ns.em('select', 'list')}
+                    onMouseenter={() => recordHoverState(true)}
+                    onMouseleave={() => recordHoverState(false)}
+                  >
+                    {items.value.map((item: IData) => {
+                      return renderItem(item);
+                    })}
+                  </div>
+                );
+              },
+            }}
+          </el-popover>
         </div>
       );
     };
@@ -487,7 +507,6 @@ export const TeamPicker = defineComponent({
         }
         onChange();
       }
-
       window.addEventListener('pointerdown', closeList);
     });
 
@@ -496,15 +515,10 @@ export const TeamPicker = defineComponent({
     });
 
     return {
-      ns,
       c,
-      curValue,
-      items,
-      renderItem,
-      renderSelectItem,
-      onChange,
-      renderReadOnlyState,
+      ns,
       renderSelect,
+      renderReadOnlyState,
       showFormDefaultContent,
     };
   },

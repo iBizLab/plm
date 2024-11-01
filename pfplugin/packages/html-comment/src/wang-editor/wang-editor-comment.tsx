@@ -151,9 +151,25 @@ const IBizHtmlContent = defineComponent({
       emit('focus');
     };
 
+    const handleCustomFocus = () => {
+      if (!editorRef.value) {
+        return;
+      }
+      editorRef.value.focus(true);
+    }
+
+    const handleCustomBlur = () => {
+      if (!editorRef.value) {
+        return;
+      }
+      editorRef.value.focus(false);
+    }
+
     c.evt.on('setHtml', handleSetHtml);
     c.evt.on('clear', handleClear);
     c.evt.on('onSetReply', handleSetReply);
+    c.evt.on('focus', handleCustomFocus);
+    c.evt.on('blur', handleCustomBlur);
 
     // data响应式变更基础路径
     watch(
@@ -584,6 +600,8 @@ const IBizHtmlContent = defineComponent({
       c.evt.off('setHtml', handleSetHtml);
       c.evt.off('clear', handleClear);
       c.evt.off('onSetReply', handleSetReply);
+      c.evt.off('focus', handleCustomFocus);
+      c.evt.off('blur', handleCustomBlur);
     };
     // 编辑器 focus 时的回调函数
     const handleFocus = () => {

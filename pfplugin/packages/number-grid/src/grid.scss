@@ -53,11 +53,18 @@
     // 表格列头样式
     .el-table__header-wrapper {
       .el-table__header thead > tr th:first-child {
-        padding-right: 0;
+        padding-right: getCssVar(spacing, base-loose);
       }
     }
-    @include b(control-grid-setting-box) {
-      z-index: 2;
+    @include b(number-grid-setting-box){
+      @include flex(row, flex-start, center);
+      top: 0;
+      right: 0;
+      z-index: 1;
+      position: absolute;
+      height: getCssVar(control-grid, now-header-height);
+      padding-right: getCssVar(spacing, extra-tight);
+      background-color: getCssVar(control-grid, header, bg-color);
     }
   }
 

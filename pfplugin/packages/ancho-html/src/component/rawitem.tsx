@@ -201,7 +201,7 @@ export const AnchoHtmlNavBar = defineComponent({
     const getInsertCustomHtml = (value: string): string => {
       return value
         .replaceAll(
-          /<span data-w-e-type="insert" class='insert'>(.+?)<\/span>/g,
+          /<span\sdata-w-e-type="insert"\sclass=['"]insert['"]>(.+?)<\/span>/g,
           (x, insert) => {
             if (insert) {
               const data = JSON.parse(insert) as IData;
@@ -230,6 +230,9 @@ export const AnchoHtmlNavBar = defineComponent({
                   break;
                 case 'formula':
                   content = `<span data-slate-inline="true"><formula-elem data-value='${dataValue}'></formula-elem></span>`;
+                  break;
+                case 'files':
+                  content = `<span data-slate-inline="true"><files-elem data-value='${dataValue}'></files-elem></span>`;
                   break;
                 default:
                   content = '';

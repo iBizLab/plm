@@ -28,4 +28,12 @@ export interface commentEvent extends IComponentEvent {
         event: EventBase;
         emitArgs: IData;
     };
+    focus: {
+        event: EventBase;
+        emitArgs: undefined;
+    };
+    blur: {
+        event: EventBase;
+        emitArgs: undefined;
+    };
 }

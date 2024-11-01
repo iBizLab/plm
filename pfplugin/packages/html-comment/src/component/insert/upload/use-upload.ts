@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-param-reassign */
 import { CoreConst, HttpError } from '@ibiz-template/core';
-import { UploadRawFile } from 'element-plus';
+import { UploadFile, UploadRawFile } from 'element-plus';
 import { getCookie } from 'qx-util';
 import { computed, ComputedRef, Ref, ref } from 'vue';
 
@@ -27,12 +27,15 @@ export function useUpload(props: IParams): {
   >;
   limit: ComputedRef<1 | 9999>;
   filesCount: ComputedRef<number>;
+  uploadRef: Ref<any>;
   onError: (...args: IData[]) => never;
   onRemove: (file: IData) => void;
-  onSuccess: (response: IData) => void;
+  onItemRemove: (file: IData) => void;
+  onSuccess: (response: IData, uploadFile: UploadFile) => void;
   beforeUpload: (rawFile: UploadRawFile) => boolean;
   onConfirm: () => void;
   onCancel: () => void;
+  getUploadMessage: (type: string) => string;
 } {
   // 文件列表
   const files: Ref<
@@ -42,6 +45,17 @@ export function useUpload(props: IParams): {
       url?: string;
     }[]
   > = ref([]);
+
+  // 定义上传文件提示信息映射关系
+  const uploadMessageMap: IData = {
+    'audio/*': '音频',
+    // 可以根据需求继续添加其他类型
+  };
+
+  const getUploadMessage = (type: string): string => {
+    const message = uploadMessageMap[type] || '';
+    return `点击上传${message}文件`;
+  };
 
   // 请求头
   const headers: Ref<IData> = ref({
@@ -102,7 +116,7 @@ export function useUpload(props: IParams): {
   };
 
   // 上传成功回调
-  const onSuccess = (response: IData): void => {
+  const onSuccess = (response: IData, uploadFile: UploadFile): void => {
     if (!response) {
       return;
     }
@@ -112,6 +126,7 @@ export function useUpload(props: IParams): {
       ext: response.ext,
       folder: response.folder,
       size: response.size,
+      type: uploadFile.raw?.type || '',
       url:
         response.rul || downloadUrl.value.replace('%fileId%', response.fileid),
     });
@@ -146,6 +161,15 @@ export function useUpload(props: IParams): {
     }
   };
 
+  const uploadRef = ref();
+
+  // 项删除点击事件
+  const onItemRemove = (file: IData): void => {
+    if (uploadRef.value) {
+      uploadRef.value.handleRemove(file);
+    }
+  };
+
   // 允许上传文件的最大数量
   const limit = computed(() => {
     return props.multiple ? 9999 : 1;
@@ -170,11 +194,14 @@ export function useUpload(props: IParams): {
     files,
     limit,
     filesCount,
+    uploadRef,
     onError,
     onRemove,
+    onItemRemove,
     onSuccess,
     beforeUpload,
     onConfirm,
     onCancel,
+    getUploadMessage,
   };
 }

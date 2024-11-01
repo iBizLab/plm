@@ -11,6 +11,33 @@ $control-resource-gantt: (
   height: 100%;
 
   .xg-root {
+    // 背景
+    --gantt-bg: var(--ibiz-color-bg-1);
+    --gantt-bg-hover: var(--ibiz-color-disabled-border);
+    --gantt-bg-active: var(--ibiz-color-disabled-border);
+    --gantt-bg-checkmark: transparent;
+
+    // 阴影
+    --gantt-shadow: var(--ibiz-color-shadow);
+    --gantt-shadow-toolbar-item: var(--ibiz-color-shadow);
+
+    // 边框
+    --gantt-border: var(--ibiz-color-border);
+    --gantt-border-hover: var(--ibiz-color-disabled-border);
+    --gantt-border-dashed: var(--ibiz-color-disabled-border);
+    --gantt-border-toolbar-item: var(--ibiz-color-border);
+
+    // 文本
+    --gantt-text-0: var(--ibiz-color-text-0);
+    --gantt-text-3: var(--ibiz-color-text-3);
+
+    // 主要颜色
+    --gantt-white: var(--ibiz-color-white);
+    --gantt-black: var(--ibiz-color-black);
+
+    // 警示色
+    --gantt-warning: var(--ibiz-color-warning);
+
     &>.xg-view-toolbar {
       display: none;
     }
@@ -76,7 +103,7 @@ $control-resource-gantt: (
       }
 
       .xg-gantt-table-cell {
-        border-right: 1px solid rgb(229 229 229);
+        border-right: 1px solid var(--ibiz-color-border);
 
         &:last-child {
           border-right: none;
@@ -181,6 +208,19 @@ $control-resource-gantt: (
   @include when('gantt-width-eq') {
     .xg-gantt-container.xg-scroll-container {
       overflow: hidden auto;
+    }
+  }
+}
+
+.dark {
+  .xg-root {
+    .#{bem(control-resource-gantt__slider--caption)} {
+      color: var(--ibiz-color-text-0);
+    }
+
+    .xg-scroll-container.xg-table-container {
+      z-index: 100;
+      box-shadow: 12px 0 16px -10px var(--ibiz-color-text-3);
     }
   }
 }

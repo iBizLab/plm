@@ -101,7 +101,7 @@ export class WebsocketProvider extends Observable<string> {
     _exitHandler: () => void;
     _checkInterval: any;
     get url(): string;
-    set synced(state: boolean);
+    set synced(arg: boolean);
     /**
      * @type {boolean}
      */
@@ -114,5 +114,3 @@ export class WebsocketProvider extends Observable<string> {
 import { Observable } from 'lib0/observable';
 import * as Y from 'yjs';
 import * as awarenessProtocol from 'y-protocols/awareness';
-import * as encoding from 'lib0/encoding';
-import * as decoding from 'lib0/decoding';
