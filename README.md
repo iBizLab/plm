@@ -39,7 +39,7 @@ iBizPLM划分为7大模块：
 ### 在线体验
 
 - PC端-演示地址：[http://plm.ibizlab.cn/ibizplm-plmweb/](http://plm.ibizlab.cn/ibizplm-plmweb/)
-- 移动端-演示地址：[http://mob.plm.ibizlab.cn/ibizplm-plmmob/](http://mob.plm.ibizlab.cn/ibizplm-plmmob/)
+- 移动端-演示地址（Demo版）：[http://mob.plm.ibizlab.cn/ibizplm-plmmob/](http://mob.plm.ibizlab.cn/ibizplm-plmmob/)
 - 演示管理员账号/密码：demo_admin/123456
 - 演示普通用户账号/密码：demo_user/123456
 - 欢迎加入iBizPLM交流QQ群：1067434627
