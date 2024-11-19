@@ -19,11 +19,12 @@
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="discuss_postmovebindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定界面数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="discuss_postmoveend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="discuss_postmoveloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="discuss_postmoveprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充移动到的话题标识"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="discuss_postmovedeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="执行更新"/>
-                        <endEvent id="deaction1_end" name="end"/>
-                        <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
                     <sequenceFlow id="begin_bindparam1" sourceRef="begin" targetRef="bindparam1">
                     </sequenceFlow>
                     <sequenceFlow id="bindparam1_loopsubcall1" sourceRef="bindparam1" targetRef="loopsubcall1">
@@ -40,6 +41,8 @@
                                 eval((RuleUtils.test($discuss_postmoveupdate_obj.get("topicId"),"ISNOTNULL","")))
                                 ]]>
                             </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_end1" sourceRef="deaction1" targetRef="end1">
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-prepareparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam1_end_line"></exclusiveGateway>
                             <sequenceFlow id="prepareparam1_gateway-prepareparam1_gatewayline" sourceRef="prepareparam1" targetRef="gateway-prepareparam1"></sequenceFlow>

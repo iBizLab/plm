@@ -48,7 +48,18 @@
       "modelref" : true,
       "id" : "Default"
     },
-    "topPos" : 320
+    "topPos" : 330
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 1061,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "update_obj"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 446
   }, {
     "codeName" : "LOOPSUBCALL1",
     "getDstPSDELogicParam" : {
@@ -77,7 +88,7 @@
     "topPos" : 454
   }, {
     "codeName" : "PREPAREPARAM1",
-    "leftPos" : 408,
+    "leftPos" : 440,
     "logicNodeType" : "PREPAREPARAM",
     "name" : "填充移动到的话题标识",
     "getPSDELogicLinks" : [ {
@@ -150,9 +161,20 @@
       "modelref" : true,
       "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post.json"
     },
-    "leftPos" : 785,
+    "leftPos" : 865,
     "logicNodeType" : "DEACTION",
     "name" : "执行更新",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
     "topPos" : 454
   } ],
   "getPSDELogicParams" : [ {

@@ -17,6 +17,9 @@
     "path" : "PSCODELISTS/CodeList64.json"
   }, {
     "modelref" : true,
+    "path" : "PSMODULES/ProjMgmt/PSCODELISTS/dyna_project_state.json"
+  }, {
+    "modelref" : true,
     "path" : "PSMODULES/extension/PSCODELISTS/auto_flow_type.json"
   }, {
     "modelref" : true,
@@ -111,6 +114,9 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ProdMgmt/PSCODELISTS/product_customer.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProjMgmt/PSCODELISTS/multiple_people.json"
   }, {
     "modelref" : true,
     "path" : "PSCODELISTS/CodeList30.json"
@@ -261,6 +267,9 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/Insight/PSCODELISTS/bi_form_ticket.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/Base/PSCODELISTS/background_style.json"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ProjMgmt/PSCODELISTS/risk.json"
@@ -573,6 +582,9 @@
   }, {
     "modelref" : true,
     "path" : "PSCODELISTS/CodeList103.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/Base/PSCODELISTS/product_role_type.json"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/extension/PSCODELISTS/BIReportItemType.json"
@@ -942,6 +954,9 @@
   }, {
     "modelref" : true,
     "path" : "PSCODELISTS/CodeList78.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProjMgmt/PSCODELISTS/project_state_type.json"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ProdMgmt/PSCODELISTS/customer_level.json"
@@ -1341,6 +1356,10 @@
     "name" : "ENTRY"
   }, {
     "modelref" : true,
+    "path" : "PSMODULES/Base/PSDATAENTITIES/executor.json",
+    "name" : "EXECUTOR"
+  }, {
+    "modelref" : true,
     "path" : "PSMODULES/Base/PSDATAENTITIES/extend_log.json",
     "name" : "EXTEND_LOG"
   }, {
@@ -1483,6 +1502,10 @@
     "modelref" : true,
     "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member.json",
     "name" : "PROJECT_MEMBER"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state.json",
+    "name" : "PROJECT_STATE"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_tag.json",
@@ -1776,6 +1799,20 @@
     "timer" : 60000,
     "uniqueTag" : "WFExpBar"
   }, {
+    "codeName" : "product_test_counter",
+    "counterType" : "DEDR",
+    "dynaModelFilePath" : "PSSYSCOUNTERS/product_test_counter.json",
+    "name" : "测试产品计数器",
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEACTIONS/test_counter.json"
+    },
+    "getPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+    },
+    "uniqueTag" : "product_test_counter"
+  }, {
     "codeName" : "run_re_counters",
     "counterType" : "DEDR",
     "dynaModelFilePath" : "PSSYSCOUNTERS/run_re_counters.json",
@@ -1979,6 +2016,21 @@
     "timer" : 60000,
     "uniqueTag" : "work_item_re_counters"
   }, {
+    "codeName" : "count_my_todo",
+    "counterType" : "DEDR",
+    "dynaModelFilePath" : "PSSYSCOUNTERS/count_my_todo.json",
+    "memo" : "首页待完成项计数器",
+    "name" : "首页待完成项计数器",
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/count_my_todo.json"
+    },
+    "getPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "uniqueTag" : "count_my_todo"
+  }, {
     "codeName" : "product_add_on_counters",
     "counterType" : "DEDR",
     "dynaModelFilePath" : "PSSYSCOUNTERS/product_add_on_counters.json",
@@ -2063,7 +2115,11 @@
         "modelref" : true,
         "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/app_view_theme.json"
       }
-    } ]
+    } ],
+    "getPSSystemModule" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base.json"
+    }
   } ],
   "getAllPSSysDynaModels" : [ {
     "modelref" : true,
@@ -2137,6 +2193,20 @@
     "editorWidth" : -1.0,
     "name" : "电话号码",
     "styleCode" : "A8e25807ee9795aff94",
+    "replaceDefault" : false
+  }, {
+    "codeName" : "REPLY_COMMENT",
+    "dynaModelFilePath" : "PSSYSEDITORSTYLES/REPLY_COMMENT.json",
+    "editorHeight" : -1.0,
+    "editorType" : "MOBHTMLTEXT",
+    "editorWidth" : -1.0,
+    "name" : "移动端回复评论框",
+    "getPSSysPFPlugin" : {
+      "pluginType" : "EDITOR_CUSTOMSTYLE",
+      "pluginCode" : "MOBCOMMENT",
+      "runtimeObject" : true
+    },
+    "styleCode" : "REPLY_COMMENT",
     "replaceDefault" : false
   }, {
     "codeName" : "COMMENT_LIBARAY",
@@ -2310,7 +2380,8 @@
     "name" : "移动端锚点富文本",
     "getPSSysPFPlugin" : {
       "pluginType" : "EDITOR_CUSTOMSTYLE",
-      "pluginCode" : "MOB_ANCHO_HTML"
+      "pluginCode" : "MOB_ANCHO_HTML",
+      "runtimeObject" : true
     },
     "styleCode" : "MOB_ANCHO_HTML",
     "replaceDefault" : false
@@ -3006,6 +3077,27 @@
       "codeName" : "user_id"
     }
   }, {
+    "codeName" : "comment_work_item_executor",
+    "dynaModelFilePath" : "PSMODULES/Base/PSSYSMSGTARGETS/comment_work_item_executor.json",
+    "msgTargetType" : "DE",
+    "name" : "评论通知工作项执行人",
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "comment_work_item_executor"
+    },
+    "getPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/executor.json"
+    },
+    "getPSSystemModule" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base.json"
+    },
+    "getTargetPSDEField" : {
+      "name" : "USER_ID",
+      "codeName" : "user_id"
+    }
+  }, {
     "codeName" : "comment_test_case_maintenance",
     "dynaModelFilePath" : "PSMODULES/Base/PSSYSMSGTARGETS/comment_test_case_maintenance.json",
     "msgTargetType" : "DE",
@@ -3110,6 +3202,27 @@
     "getTargetPSDEField" : {
       "name" : "ASSIGNEE_ID",
       "codeName" : "assignee_id"
+    }
+  }, {
+    "codeName" : "executor_by_ownerid",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSSYSMSGTARGETS/executor_by_ownerid.json",
+    "msgTargetType" : "DE",
+    "name" : "工作项执行人（通过主数据标识）",
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "executor_by_ownerid"
+    },
+    "getPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/executor.json"
+    },
+    "getPSSystemModule" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt.json"
+    },
+    "getTargetPSDEField" : {
+      "name" : "USER_ID",
+      "codeName" : "user_id"
     }
   }, {
     "codeName" : "comment_ticket_assignee",
@@ -3388,6 +3501,20 @@
     "taskUrl" : "<#if data.project_type == 'scrum'>route://-/index/project=${data.project_id}/project_scrum_index_view/srfnav=usrdrgroup1225572368/project_over_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D<#elseif data.project_type == 'kanban'>route://-/index/project=${data.project_id}/project_kanban_index_view/srfnav=usrdrgroup1225572368/project_over_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D<#elseif data.project_type == 'waterfall'>route://-/index/project=${data.project_id}/project_waterfall_index_view/srfnav=usrdrgroup1225572368/project_over_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D</#if>",
     "mailGroupSend" : false
   }, {
+    "codeName" : "cancel_executor_work_item",
+    "content" : "<div class=\"notice-card\" style=\"display: flex; align-items: flex-start;\">\n\t\t\t    <div class=\"notice-card__avatar\" style=\"flex-shrink: 0;\">\n\t\t\t        <span class=\"notice-card__avatar-icon\" style=\"background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;\">${data.update_mantext?substring(0,2)!}</span>\n\t\t\t    </div>\n\t\t\t    <div class=\"notice-card__content\" style=\"flex-grow: 1;width: calc(100% - 46px);\">\n\t\t\t        <div class=\"notice-card__event\">\n\t\t\t            <div class=\"notice-card__event-title\" style=\"font-size: 14px; color: #000;\">\n\t<span class=\"notice-card__event-name\" style=\"color: #999; font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\">${data.update_mantext}</span> \n<span class=\"notice-card__event-name\" style=\"font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\">取消分配执行<#if data.owner_type == 'WORK_ITEM'>${data.parent(\"owner_id\").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type== 'TICKET'>工单<#elseif data.owner_type== 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例<#elseif data.owner_type == 'PAGE'>页面</#if></span></div>\n        </div>\n<#if data.parent(\"owner_id\")??>\n<#assign parent= data.parent(\"owner_id\")>\n        <div class=\"notice-card-object\" style=\"display: inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;width: 100%;\">\n<span class=\"notice-card__object-id\" style=\"color: #999; font-size: 14px;\"><#if parent.show_identifier??>${parent.show_identifier}</#if></span>\n<#if data.owner_type == 'CUSTOMER' || data.owner_type == 'PAGE'>\n<span class=\"object-name\" title=\"${parent.name}\"> ${parent.name}</span>\n<#else>\n<span class=\"object-name\" title=\"${parent.title}\"> ${parent.title}</span></#if>\n\n        </div>\n    <#if parent.parent(\"project_id\")??>\n    <#assign project= parent.parent(\"project_id\")>\n        <div class=\"notice-card-pilot\" style=\"font-size: 12px;color: #999;text-transform: lowercase;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;\"><span class=\"notice-time\">${data.update_time?string(\"yyyy-MM-dd HH:mm:ss\")}</span><span class=\"notice-pilot-info\">· 项目管理 · ${project.name}</span></div>\n    <#elseif parent.parent(\"product_id\")??>\n        <#assign product= parent.parent(\"product_id\")>\n  <div class=\"notice-card-pilot\" style=\"font-size: 12px;color: #999;text-transform: lowercase;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;\"><span class=\"notice-time\">${data.update_time?string(\"yyyy-MM-dd HH:mm:ss\")}</span><span class=\"notice-pilot-info\">· 产品管理 · ${product.name}</span></div>\n    <#elseif parent.parent(\"plan_id\")??>\n        <#assign plan = parent.parent(\"plan_id\")>\n  <div class=\"notice-card-pilot\" style=\"font-size: 12px;color: #999;text-transform: lowercase;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;\"><span class=\"notice-time\">${data.update_time?string(\"yyyy-MM-dd HH:mm:ss\")}</span><span class=\"notice-pilot-info\">· 测试管理 · ${plan.library_name}</span></div>\n    <#elseif parent.parent(\"test_library_id\")??>\n        <#assign library= parent.parent(\"test_library_id\")>\n  <div class=\"notice-card-pilot\" style=\"font-size: 12px;color: #999;text-transform: lowercase;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;\"><span class=\"notice-time\">${data.update_time?string(\"yyyy-MM-dd HH:mm:ss\")}</span><span class=\"notice-pilot-info\">· 测试管理 · ${library.name}</span></div>\n    </#if>\n    </div>\n    </#if>\n</div>",
+    "contentType" : "HTML",
+    "dDContent" : "${data.update_mantext}取消分配执行<#if data.owner_type == 'WORK_ITEM'>${data.parent(\"owner_id\").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type == 'TICKET'>工单<#elseif data.owner_type == 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例</#if>：\n<#if data.owner_type == 'CUSTOMER'>${data.parent(\"owner_id\").name}<#else>${data.parent(\"owner_id\").title}</#if>",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSSYSMSGTEMPLS/cancel_executor_work_item.json",
+    "mobTaskUrl" : "<#if data.parent(\"owner_id\")??>\nview://work_item_mob_common_edit_view?\nsrfnavctx={\"work_item\":\"${data.parent(\"owner_id\").id}\",\"project\":\"${data.parent(\"owner_id\").project_id}\",\"srfdatatype\" : \"${data.parent(\"owner_id\").work_item_type_id}\",\n\"space\": null, \"article_page\": null, \"product\": null,\"idea\": null, \"customer\": null, \"ticket\": null, \"library\": null, \"test_case\": null, \"run\": null }&srfdatatype=${data.parent(\"owner_id\").work_item_type_id}</#if>",
+    "name" : "取消分配执行工作项通知模板",
+    "getPSSystemModule" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt.json"
+    },
+    "taskUrl" : "<#if data.parent(\"owner_id\")??>\nview://work_item_dyna_main_view?\nsrfnavctx={\"work_item\":\"${data.parent(\"owner_id\").id}\",\"project\":\"${data.parent(\"owner_id\").project_id}\",\"srfdatatype\" : \"${data.parent(\"owner_id\").work_item_type_id}\",\n\"space\": null, \"article_page\": null, \"product\": null,\"idea\": null, \"customer\": null, \"ticket\": null, \"library\": null, \"test_case\": null, \"run\": null }&srfdatatype=${data.parent(\"owner_id\").work_item_type_id}</#if>",
+    "mailGroupSend" : false
+  }, {
     "codeName" : "test_plan_assignee_cancel",
     "content" : "<div class=\"notice-card\" style=\"display: flex; align-items: flex-start;\">\n    <div class=\"notice-card__avatar\" style=\"flex-shrink: 0;\">\n        <span class=\"notice-card__avatar-icon\" style=\"background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;\">${data.update_mantext?substring(0,2)!}</span>\n    </div>\n    <div class=\"notice-card__content\" style=\"flex-grow: 1;width: calc(100% - 46px);\">\n        <div class=\"notice-card__event\">\n            <div class=\"notice-card__event-title\" style=\"font-size: 14px; color: #000;\">\n                <span class=\"notice-card__event-name\" style=\"color: #999; font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\">${data.update_mantext}</span> \n                <span class=\"notice-card__event-desc\" style=\"font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\">取消分配了测试计划</span>\n            </div>\n        </div>\n        <div class=\"notice-card-object\" style=\"display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;\">\n            <span class=\"notice-card__object-name\" title=\"${data.name}\">${data.name}</span>\n        </div>\n\t\t\n        <div class=\"notice-card-pilot\" style=\"font-size: 12px; color: #999; text-transform: lowercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;\">\n            <span class=\"notice-pilot-time\">${data.update_time?string(\"yyyy-MM-dd HH:mm:ss\")}</span>\n            <span class=\"notice-pilot-info\"> · 测试管理 · ${data.library_name}</span>\n        </div>\n    </div>\n</div>",
     "contentType" : "HTML",
@@ -3645,6 +3772,20 @@
       "path" : "PSMODULES/ProdMgmt.json"
     },
     "taskUrl" : "view://idea_main_view?srfnavctx={\"idea\":\"${data.id}\",\"product\":\"${data.product_id}\", \"space\": null, \"article_page\": null, \"project\": null,\"work_item\": null, \"customer\": null, \"ticket\": null, \"library\": null, \"test_case\": null, \"run\": null}",
+    "mailGroupSend" : false
+  }, {
+    "codeName" : "notice_executor_work_item",
+    "content" : "<div class=\"notice-card\" style=\"display: flex; align-items: flex-start;\">\n\t\t\t    <div class=\"notice-card__avatar\" style=\"flex-shrink: 0;\">\n\t\t\t        <span class=\"notice-card__avatar-icon\" style=\"background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;\">${data.update_mantext?substring(0,2)!}</span>\n\t\t\t    </div>\n\t\t\t    <div class=\"notice-card__content\" style=\"flex-grow: 1;width: calc(100% - 46px);\">\n\t\t\t        <div class=\"notice-card__event\">\n\t\t\t            <div class=\"notice-card__event-title\" style=\"font-size: 14px; color: #000;\">\n\t<span class=\"notice-card__event-name\" style=\"color: #999; font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\">${data.update_mantext}</span> \n<span class=\"notice-card__event-name\" style=\"font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\">给你分配执行<#if data.owner_type == 'WORK_ITEM'>${data.parent(\"owner_id\").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type== 'TICKET'>工单<#elseif data.owner_type== 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例<#elseif data.owner_type == 'PAGE'>页面</#if></span></div>\n        </div>\n<#if data.parent(\"owner_id\")??>\n<#assign parent= data.parent(\"owner_id\")>\n        <div class=\"notice-card-object\" style=\"display: inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;width: 100%;\">\n<span class=\"notice-card__object-id\" style=\"color: #999; font-size: 14px;\"><#if parent.show_identifier??>${parent.show_identifier}</#if></span>\n<#if data.owner_type == 'CUSTOMER' || data.owner_type == 'PAGE'>\n<span class=\"object-name\" title=\"${parent.name}\"> ${parent.name}</span>\n<#else>\n<span class=\"object-name\" title=\"${parent.title}\"> ${parent.title}</span></#if>\n\n        </div>\n    <#if parent.parent(\"project_id\")??>\n    <#assign project= parent.parent(\"project_id\")>\n        <div class=\"notice-card-pilot\" style=\"font-size: 12px;color: #999;text-transform: lowercase;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;\"><span class=\"notice-time\">${data.update_time?string(\"yyyy-MM-dd HH:mm:ss\")}</span><span class=\"notice-pilot-info\">· 项目管理 · ${project.name}</span></div>\n    <#elseif parent.parent(\"product_id\")??>\n        <#assign product= parent.parent(\"product_id\")>\n  <div class=\"notice-card-pilot\" style=\"font-size: 12px;color: #999;text-transform: lowercase;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;\"><span class=\"notice-time\">${data.update_time?string(\"yyyy-MM-dd HH:mm:ss\")}</span><span class=\"notice-pilot-info\">· 产品管理 · ${product.name}</span></div>\n    <#elseif parent.parent(\"plan_id\")??>\n        <#assign plan = parent.parent(\"plan_id\")>\n  <div class=\"notice-card-pilot\" style=\"font-size: 12px;color: #999;text-transform: lowercase;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;\"><span class=\"notice-time\">${data.update_time?string(\"yyyy-MM-dd HH:mm:ss\")}</span><span class=\"notice-pilot-info\">· 测试管理 · ${plan.library_name}</span></div>\n    <#elseif parent.parent(\"test_library_id\")??>\n        <#assign library= parent.parent(\"test_library_id\")>\n  <div class=\"notice-card-pilot\" style=\"font-size: 12px;color: #999;text-transform: lowercase;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;\"><span class=\"notice-time\">${data.update_time?string(\"yyyy-MM-dd HH:mm:ss\")}</span><span class=\"notice-pilot-info\">· 测试管理 · ${library.name}</span></div>\n    </#if>\n    </div>\n    </#if>\n</div>",
+    "contentType" : "HTML",
+    "dDContent" : "${data.update_mantext}给你分配执行<#if data.owner_type == 'WORK_ITEM'>${data.parent(\"owner_id\").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type == 'TICKET'>工单<#elseif data.owner_type == 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例</#if>：\n<#if data.owner_type == 'CUSTOMER'>${data.parent(\"owner_id\").name}<#else>${data.parent(\"owner_id\").title}</#if>",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSSYSMSGTEMPLS/notice_executor_work_item.json",
+    "mobTaskUrl" : "<#if data.parent(\"owner_id\")??>\nview://work_item_mob_common_edit_view?\nsrfnavctx={\"work_item\":\"${data.parent(\"owner_id\").id}\",\"project\":\"${data.parent(\"owner_id\").project_id}\",\"srfdatatype\" : \"${data.parent(\"owner_id\").work_item_type_id}\",\n\"space\": null, \"article_page\": null, \"product\": null,\"idea\": null, \"customer\": null, \"ticket\": null, \"library\": null, \"test_case\": null, \"run\": null }&srfdatatype=${data.parent(\"owner_id\").work_item_type_id}</#if>",
+    "name" : "分配执行工作项通知模板",
+    "getPSSystemModule" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt.json"
+    },
+    "taskUrl" : "<#if data.parent(\"owner_id\")??>\nview://work_item_dyna_main_view?\nsrfnavctx={\"work_item\":\"${data.parent(\"owner_id\").id}\",\"project\":\"${data.parent(\"owner_id\").project_id}\",\"srfdatatype\" : \"${data.parent(\"owner_id\").work_item_type_id}\",\n\"space\": null, \"article_page\": null, \"product\": null,\"idea\": null, \"customer\": null, \"ticket\": null, \"library\": null, \"test_case\": null, \"run\": null }&srfdatatype=${data.parent(\"owner_id\").work_item_type_id}</#if>",
     "mailGroupSend" : false
   }, {
     "codeName" : "work_item_create",
@@ -4685,7 +4826,7 @@
     "pluginType" : "USER",
     "rTObjectName" : "cn.ibizlab.plm.user.plugin.groovy.sysutil.addin.PSDESearchBarSyncTool",
     "rTObjectSource" : 1,
-    "templCode" : "package net.ibizsys.central.plugin.extension.sysutil.addin\r\n\r\nimport com.fasterxml.jackson.databind.JsonNode;\r\nimport net.ibizsys.model.app.IPSApplication;\r\nimport net.ibizsys.model.app.dataentity.IPSAppDataEntity;\r\nimport net.ibizsys.model.app.view.IPSAppDEGridView\r\nimport net.ibizsys.model.app.view.IPSAppDETreeGridView;\r\nimport net.ibizsys.model.app.view.IPSAppView;\r\nimport net.ibizsys.model.control.searchbar.IPSSearchBar;\r\nimport net.ibizsys.model.control.searchbar.IPSSearchBarGroup\r\nimport net.ibizsys.runtime.util.JsonUtils;\r\nimport org.apache.commons.logging.LogFactory;\r\nimport org.springframework.util.ObjectUtils;\r\nimport net.ibizsys.central.dataentity.IDataEntityRuntime;\r\nimport net.ibizsys.central.util.IEntityDTO;\r\nimport net.ibizsys.central.util.ISearchContextDTO;\r\nimport net.ibizsys.model.dataentity.IPSDataEntity;\r\nimport net.ibizsys.model.dataentity.der.IPSDERBase;\r\nimport net.ibizsys.model.dataentity.der.IPSDERCustom;\r\nimport net.ibizsys.model.dataentity.ds.IPSDEDataSet;\r\n\r\npublic class PSDESearchBarSyncTool extends PSDEModelSyncToolBase {\r\n\r\n\tprivate static final org.apache.commons.logging.Log log = LogFactory.getLog(PSDESearchBarSyncTool.class);\r\n\r\n\t@Override\r\n\tprotected void onSync(IPSDataEntity iPSDataEntity, Object param) throws Throwable {\r\n\r\n// \t\tMap<String, Object> params = null;\r\n// \t\tif(param instanceof Map) {\r\n// \t\t\tparams = (Map)param;\r\n// \t\t}\r\n// \t\tIDataEntityRuntime iDataEntityRuntime = this.getSystemRuntime().getDataEntityRuntime(iPSDataEntity.getId());\r\n\r\n// \t\tList<Map> mapList = new ArrayList<Map>();\r\n\r\n// \t\tList<IPSDERBase> psDERBaseList = iPSDataEntity.getMinorPSDERs();\r\n// \t\tif(!ObjectUtils.isEmpty(psDERBaseList)) {\r\n// \t\t\tfor(IPSDERBase iPSDERBase : psDERBaseList) {\r\n\r\n// \t\t\t\tif(!(iPSDERBase instanceof IPSDERCustom)) {\r\n// \t\t\t\t\tcontinue;\r\n// \t\t\t\t}\r\n\r\n// \t\t\t\tIPSDERCustom iPSDERCustom = (IPSDERCustom)iPSDERBase;\r\n\r\n// \t\t\t\t//获取相应的视图\r\n// \t\t\t\tIPSDataEntity majorPSDataEntity = iPSDERCustom.getMajorPSDataEntityMust();\r\n// \t\t\t\tSet<String> viewCache = new HashSet<>();\r\n// \t\t\t\tfor(IPSApplication application : getSystemRuntime().getPSSystem().getAllPSApps()){\r\n// \t\t\t\t\tIPSAppDataEntity majorPSAppDataEntity;\r\n// \t\t\t\t\tfor(IPSAppDataEntity appDataEntity: application.getAllPSAppDataEntities()){\r\n// \t\t\t\t\t\tif(appDataEntity.getName().equals(majorPSDataEntity.getName())){\r\n// \t\t\t\t\t\t\tmajorPSAppDataEntity = appDataEntity;\r\n// \t\t\t\t\t\t\tbreak;\r\n// \t\t\t\t\t\t}\r\n// \t\t\t\t\t}\r\n// \t\t\t\t\tif (majorPSAppDataEntity == null){\r\n// \t\t\t\t\t\tbreak;\r\n// \t\t\t\t\t}\r\n// \t\t\t\t\tfor (IPSAppView appView : majorPSAppDataEntity.getAllPSAppViews()){\r\n// \t\t\t\t\t\t//仅支持表格视图中绑定的搜索栏\r\n// \t\t\t\t\t\tif(appView instanceof IPSAppDEGridView || appView instanceof IPSAppDETreeGridView){\r\n// \t\t\t\t\t\t\t//避免重复添加\r\n// \t\t\t\t\t\t\tif(viewCache.contains(appView.getCodeName())){\r\n// \t\t\t\t\t\t\t\tcontinue;\r\n// \t\t\t\t\t\t\t}\r\n// \t\t\t\t\t\t\tviewCache.add(appView.getCodeName());\r\n// \t\t\t\t\t\t\tIPSSearchBar searchbar = (IPSSearchBar)appView.getPSControl(\"searchbar\",true);\r\n// \t\t\t\t\t\t\tif(searchbar == null){\r\n// \t\t\t\t\t\t\t\tsearchbar = appView.getPSViewLayoutPanel().getPSControl(\"searchbar\",true);\r\n// \t\t\t\t\t\t\t}\r\n// \t\t\t\t\t\t\tif(searchbar != null){\r\n// \t\t\t\t\t\t\t\tint ordervalueindex = 1;\r\n// \t\t\t\t\t\t\t\tfor (IPSSearchBarGroup group : searchbar.getPSSearchBarGroups()) {\r\n\r\n// \t\t\t\t\t\t\t\t\tMap<String, Object> obj = new LinkedHashMap<String, Object>();\r\n// \t\t\t\t\t\t\t\t\tobj.put(\"APP_VIEW_TAG\", appView.getCodeName());\r\n// //\t\t\t\t\t\t\t\t\tobj.put(\"APP_TAG\", application.getCodeName());\r\n// \t\t\t\t\t\t\t\t\tobj.put(\"NAME\", group.getName());\r\n// \t\t\t\t\t\t\t\t\tobj.put(\"OWNER_TYPE\", \"SYSTEM\");\r\n// \t\t\t\t\t\t\t\t\tif (!ObjectUtils.isEmpty(group.getData())){\r\n// \t\t\t\t\t\t\t\t\t\ttry {\r\n// \t\t\t\t\t\t\t\t\t\t\tJsonNode jsonNode = JsonUtils.MAPPER.readTree(group.getData())\r\n// \t\t\t\t\t\t\t\t\t\t\tobj.put(\"THEME_MODEL\",jsonNode.get(\"theme_model\").toString());\r\n// \t\t\t\t\t\t\t\t\t\t} catch (Exception e) {\r\n// \t\t\t\t\t\t\t\t\t\t\tcontinue;\r\n// \t\t\t\t\t\t\t\t\t\t}\r\n// \t\t\t\t\t\t\t\t\t}\r\n// \t\t\t\t\t\t\t\t\tobj.put(\"SYSTEM_TAG\", getSystemRuntime().getDeploySystemId());\r\n// \t\t\t\t\t\t\t\t\tobj.put(\"VALID_FLAG\", 1);\r\n// \t\t\t\t\t\t\t\t\tobj.put(\"ORDER_VALUE\", ordervalueindex * 100);\r\n// \t\t\t\t\t\t\t\t\tobj.put(\"CAPTION\",  group.getCaption());\r\n// \t\t\t\t\t\t\t\t\tmapList.add(obj);\r\n// \t\t\t\t\t\t\t\t\tordervalueindex = ordervalueindex+1;\r\n// \t\t\t\t\t\t\t\t}\r\n// \t\t\t\t\t\t\t}\r\n// \t\t\t\t\t\t}\r\n// \t\t\t\t\t}\r\n// \t\t\t\t}\r\n// \t\t\t}\r\n// \t\t}\r\n\r\n// \t\t//查询历史数据\r\n// \t\tMap<String, IEntityDTO> lastEntityDTOMap = null;\r\n\r\n// \t\tIPSDEDataSet iPSDEDataSet = iDataEntityRuntime.getPSDEDataSetByTag(PSMODELSYNC_PREDEFINEDDATASET_PSMODELSYNC, true);\r\n// \t\tif(iPSDEDataSet != null) {\r\n\r\n// \t\t\tlastEntityDTOMap = new HashMap<String, IEntityDTO>();\r\n// \t\t\tISearchContextDTO iSearchContextDTO = iDataEntityRuntime.createSearchContext();\r\n// \t\t\tiSearchContextDTO.all().count(false);\r\n// \t\t\tiSearchContextDTO.eq(\"SYSTEM_TAG\",getSystemRuntime().getDeploySystemId());\r\n// \t\t\tList<IEntityDTO> list = iDataEntityRuntime.selectDataSet(iPSDEDataSet, iSearchContextDTO);\r\n// \t\t\tfor(IEntityDTO item : list) {\r\n// \t\t\t\tString unionTag = String.format(\"%s|%s\", item.get(\"APP_VIEW_TAG\"),item.get(\"NAME\"));\r\n// \t\t\t\tlastEntityDTOMap.put(unionTag, item);\r\n// \t\t\t}\r\n// \t\t}\r\n\r\n\r\n// \t\t//执行批保存\r\n// \t\tList<IEntityDTO> updateentityList = new ArrayList<IEntityDTO>();\r\n// \t\tList<IEntityDTO> createentityList = new ArrayList<IEntityDTO>();\r\n// \t\tfor(Map<String, Object> item : mapList) {\r\n// \t\t\tIEntityDTO iEntityDTO = iDataEntityRuntime.createEntity(item);\r\n// \t\t\tString unionTag = String.format(\"%s|%s\", item.get(\"APP_VIEW_TAG\"),item.get(\"NAME\"));\r\n// \t\t\tif(lastEntityDTOMap != null && lastEntityDTOMap.containsKey(unionTag)) {\r\n// \t\t\t\tIEntityDTO lastEntity = lastEntityDTOMap.get(unionTag);\r\n// \t\t\t\tiEntityDTO.set(iDataEntityRuntime.getKeyPSDEField().getLowerCaseName(),lastEntity.get(iDataEntityRuntime.getKeyPSDEField().getLowerCaseName(),null));\r\n// \t\t\t\tif(lastEntity.get(\"CAPTION\").equals(item.get(\"CAPTION\")) &&lastEntity.get(\"THEME_MODEL\").equals(item.get(\"THEME_MODEL\"))){\r\n// \t\t\t\t\tcontinue;\r\n// \t\t\t\t}\r\n// \t\t\t\tupdateentityList.add(iEntityDTO);\r\n// \t\t\t}else {\r\n// \t\t\t\tcreateentityList.add(iEntityDTO);\r\n// \t\t\t}\r\n// \t\t}\r\n\r\n\r\n// \t\tfor(IEntityDTO iEntityDTO : createentityList) {\r\n// \t\t\tiDataEntityRuntime.fillEntityKeyValue(iEntityDTO);\r\n// \t\t}\r\n\r\n// \t\tif(ObjectUtils.isEmpty(createentityList)&& ObjectUtils.isEmpty(updateentityList)){\r\n// \t\t\treturn;\r\n// \t\t}\r\n\r\n// \t\ttry {\r\n// \t\t\tif(!ObjectUtils.isEmpty(createentityList) ) {\r\n// \t\t\t\tiDataEntityRuntime.rawCreate(createentityList, true);\r\n// \t\t\t}\r\n// \t\t\tif(!ObjectUtils.isEmpty(updateentityList) ) {\r\n// \t\t\t\tiDataEntityRuntime.rawUpdate(updateentityList, true);\r\n// \t\t\t}\r\n// \t\t}\r\n// \t\tcatch (Throwable ex) {\r\n// \t\t\tlog.error(String.format(\"同步搜索栏发生异常，%s\", ex.getMessage()), ex);\r\n// \t\t}\r\n\t}\r\n\r\n}\r\n",
+    "templCode" : "package net.ibizsys.central.plugin.extension.sysutil.addin\r\n\r\nimport com.fasterxml.jackson.databind.JsonNode;\r\nimport net.ibizsys.model.app.IPSApplication;\r\nimport net.ibizsys.model.app.dataentity.IPSAppDataEntity;\r\nimport net.ibizsys.model.app.view.IPSAppDEGridView\r\nimport net.ibizsys.model.app.view.IPSAppDETreeGridView;\r\nimport net.ibizsys.model.app.view.IPSAppView;\r\nimport net.ibizsys.model.control.searchbar.IPSSearchBar;\r\nimport net.ibizsys.model.control.searchbar.IPSSearchBarGroup\r\nimport net.ibizsys.runtime.util.JsonUtils;\r\nimport org.apache.commons.logging.LogFactory;\r\nimport org.springframework.util.ObjectUtils;\r\nimport net.ibizsys.central.dataentity.IDataEntityRuntime;\r\nimport net.ibizsys.central.util.IEntityDTO;\r\nimport net.ibizsys.central.util.ISearchContextDTO;\r\nimport net.ibizsys.model.dataentity.IPSDataEntity;\r\nimport net.ibizsys.model.dataentity.der.IPSDERBase;\r\nimport net.ibizsys.model.dataentity.der.IPSDERCustom;\r\nimport net.ibizsys.model.dataentity.ds.IPSDEDataSet;\r\n\r\npublic class PSDESearchBarSyncTool extends PSDEModelSyncToolBase {\r\n\r\n\tprivate static final org.apache.commons.logging.Log log = LogFactory.getLog(PSDESearchBarSyncTool.class);\r\n\r\n\t@Override\r\n\tprotected void onSync(IPSDataEntity iPSDataEntity, Object param) throws Throwable {\r\n\r\n\t\tMap<String, Object> params = null;\r\n\t\tif(param instanceof Map) {\r\n\t\t\tparams = (Map)param;\r\n\t\t}\r\n\t\tIDataEntityRuntime iDataEntityRuntime = this.getSystemRuntime().getDataEntityRuntime(iPSDataEntity.getId());\r\n\r\n\t\tList<Map> mapList = new ArrayList<Map>();\r\n\r\n\t\tList<IPSDERBase> psDERBaseList = iPSDataEntity.getMinorPSDERs();\r\n\t\tif(!ObjectUtils.isEmpty(psDERBaseList)) {\r\n\t\t\tfor(IPSDERBase iPSDERBase : psDERBaseList) {\r\n\r\n\t\t\t\tif(!(iPSDERBase instanceof IPSDERCustom)) {\r\n\t\t\t\t\tcontinue;\r\n\t\t\t\t}\r\n\r\n\t\t\t\tIPSDERCustom iPSDERCustom = (IPSDERCustom)iPSDERBase;\r\n\r\n\t\t\t\t//获取相应的视图\r\n\t\t\t\tIPSDataEntity majorPSDataEntity = iPSDERCustom.getMajorPSDataEntityMust();\r\n\t\t\t\tSet<String> viewCache = new HashSet<>();\r\n\t\t\t\tfor(IPSApplication application : getSystemRuntime().getPSSystem().getAllPSApps()){\r\n\t\t\t\t\tIPSAppDataEntity majorPSAppDataEntity;\r\n\t\t\t\t\tfor(IPSAppDataEntity appDataEntity: application.getAllPSAppDataEntities()){\r\n\t\t\t\t\t\tif(appDataEntity.getName().equals(majorPSDataEntity.getName())){\r\n\t\t\t\t\t\t\tmajorPSAppDataEntity = appDataEntity;\r\n\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (majorPSAppDataEntity == null){\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tfor (IPSAppView appView : majorPSAppDataEntity.getAllPSAppViews()){\r\n\t\t\t\t\t\t//仅支持表格视图中绑定的搜索栏\r\n\t\t\t\t\t\tif(appView instanceof IPSAppDEGridView || appView instanceof IPSAppDETreeGridView){\r\n\t\t\t\t\t\t\t//避免重复添加\r\n\t\t\t\t\t\t\tif(viewCache.contains(appView.getCodeName())){\r\n\t\t\t\t\t\t\t\tcontinue;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tviewCache.add(appView.getCodeName());\r\n\t\t\t\t\t\t\tIPSSearchBar searchbar = (IPSSearchBar)appView.getPSControl(\"searchbar\",true);\r\n\t\t\t\t\t\t\tif(searchbar == null){\r\n\t\t\t\t\t\t\t\tsearchbar = appView.getPSViewLayoutPanel().getPSControl(\"searchbar\",true);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tif(searchbar != null){\r\n\t\t\t\t\t\t\t\tint ordervalueindex = 1;\r\n\t\t\t\t\t\t\t\tfor (IPSSearchBarGroup group : searchbar.getPSSearchBarGroups()) {\r\n\r\n\t\t\t\t\t\t\t\t\tMap<String, Object> obj = new LinkedHashMap<String, Object>();\r\n\t\t\t\t\t\t\t\t\tobj.put(\"APP_VIEW_TAG\", appView.getCodeName());\r\n//\t\t\t\t\t\t\t\t\tobj.put(\"APP_TAG\", application.getCodeName());\r\n\t\t\t\t\t\t\t\t\tobj.put(\"NAME\", group.getName());\r\n\t\t\t\t\t\t\t\t\tobj.put(\"OWNER_TYPE\", \"SYSTEM\");\r\n\t\t\t\t\t\t\t\t\tif (!ObjectUtils.isEmpty(group.getData())){\r\n\t\t\t\t\t\t\t\t\t\ttry {\r\n\t\t\t\t\t\t\t\t\t\t\tJsonNode jsonNode = JsonUtils.MAPPER.readTree(group.getData())\r\n\t\t\t\t\t\t\t\t\t\t\tobj.put(\"THEME_MODEL\",jsonNode.get(\"theme_model\").toString());\r\n\t\t\t\t\t\t\t\t\t\t} catch (Exception e) {\r\n\t\t\t\t\t\t\t\t\t\t\tcontinue;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tobj.put(\"SYSTEM_TAG\", getSystemRuntime().getDeploySystemId());\r\n\t\t\t\t\t\t\t\t\tobj.put(\"VALID_FLAG\", 1);\r\n\t\t\t\t\t\t\t\t\tobj.put(\"ORDER_VALUE\", ordervalueindex * 100);\r\n\t\t\t\t\t\t\t\t\tobj.put(\"CAPTION\",  group.getCaption());\r\n\t\t\t\t\t\t\t\t\tmapList.add(obj);\r\n\t\t\t\t\t\t\t\t\tordervalueindex = ordervalueindex+1;\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}\r\n\r\n\t\t//查询历史数据\r\n\t\tMap<String, IEntityDTO> lastEntityDTOMap = null;\r\n\r\n\t\tIPSDEDataSet iPSDEDataSet = iDataEntityRuntime.getPSDEDataSetByTag(PSMODELSYNC_PREDEFINEDDATASET_PSMODELSYNC, true);\r\n\t\tif(iPSDEDataSet != null) {\r\n\r\n\t\t\tlastEntityDTOMap = new HashMap<String, IEntityDTO>();\r\n\t\t\tISearchContextDTO iSearchContextDTO = iDataEntityRuntime.createSearchContext();\r\n\t\t\tiSearchContextDTO.all().count(false);\r\n\t\t\tiSearchContextDTO.eq(\"SYSTEM_TAG\",getSystemRuntime().getDeploySystemId());\r\n\t\t\tList<IEntityDTO> list = iDataEntityRuntime.selectDataSet(iPSDEDataSet, iSearchContextDTO);\r\n\t\t\tfor(IEntityDTO item : list) {\r\n\t\t\t\tString unionTag = String.format(\"%s|%s\", item.get(\"APP_VIEW_TAG\"),item.get(\"NAME\"));\r\n\t\t\t\tlastEntityDTOMap.put(unionTag, item);\r\n\t\t\t}\r\n\t\t}\r\n\r\n\r\n\t\t//执行批保存\r\n\t\tList<IEntityDTO> updateentityList = new ArrayList<IEntityDTO>();\r\n\t\tList<IEntityDTO> createentityList = new ArrayList<IEntityDTO>();\r\n\t\tfor(Map<String, Object> item : mapList) {\r\n\t\t\tIEntityDTO iEntityDTO = iDataEntityRuntime.createEntity(item);\r\n\t\t\tString unionTag = String.format(\"%s|%s\", item.get(\"APP_VIEW_TAG\"),item.get(\"NAME\"));\r\n\t\t\tif(lastEntityDTOMap != null && lastEntityDTOMap.containsKey(unionTag)) {\r\n\t\t\t\tIEntityDTO lastEntity = lastEntityDTOMap.get(unionTag);\r\n\t\t\t\tiEntityDTO.set(iDataEntityRuntime.getKeyPSDEField().getLowerCaseName(),lastEntity.get(iDataEntityRuntime.getKeyPSDEField().getLowerCaseName(),null));\r\n\t\t\t\tif(lastEntity.get(\"CAPTION\").equals(item.get(\"CAPTION\")) &&lastEntity.get(\"THEME_MODEL\").equals(item.get(\"THEME_MODEL\"))){\r\n\t\t\t\t\tcontinue;\r\n\t\t\t\t}\r\n\t\t\t\tupdateentityList.add(iEntityDTO);\r\n\t\t\t}else {\r\n\t\t\t\tcreateentityList.add(iEntityDTO);\r\n\t\t\t}\r\n\t\t}\r\n\r\n\r\n\t\tfor(IEntityDTO iEntityDTO : createentityList) {\r\n\t\t\tiDataEntityRuntime.fillEntityKeyValue(iEntityDTO);\r\n\t\t}\r\n\r\n\t\tif(ObjectUtils.isEmpty(createentityList)&& ObjectUtils.isEmpty(updateentityList)){\r\n\t\t\treturn;\r\n\t\t}\r\n\r\n\t\ttry {\r\n\t\t\tif(!ObjectUtils.isEmpty(createentityList) ) {\r\n\t\t\t\tiDataEntityRuntime.rawCreate(createentityList, true);\r\n\t\t\t}\r\n\t\t\tif(!ObjectUtils.isEmpty(updateentityList) ) {\r\n\t\t\t\tiDataEntityRuntime.rawUpdate(updateentityList, true);\r\n\t\t\t}\r\n\t\t}\r\n\t\tcatch (Throwable ex) {\r\n\t\t\tlog.error(String.format(\"同步搜索栏发生异常，%s\", ex.getMessage()), ex);\r\n\t\t}\r\n\t}\r\n\r\n}\r\n",
     "runtimeObject" : true
   }, {
     "codeName" : "sysextension",
@@ -4881,44 +5022,14 @@
         "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio.json"
       }
     }, {
-      "name" : "访问管理员-PRODUCT[全部数据（读写）]",
+      "name" : "访问管理员-PAGE[全部数据（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEUSERROLES/ALL_RW.json"
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEUSERROLES/ALL_RW.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
-      }
-    }, {
-      "name" : "访问管理员-RELEASE[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
-      }
-    }, {
-      "name" : "访问管理员-INSIGHT[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/insight/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/insight.json"
-      }
-    }, {
-      "name" : "访问管理员-PSSYSBICUBEMEASURE[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICubeMeasure/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICubeMeasure.json"
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
       }
     }, {
       "name" : "访问管理员-PROJECT_TAG[全部数据（读写）]",
@@ -4931,14 +5042,24 @@
         "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_tag.json"
       }
     }, {
-      "name" : "访问管理员-SYS_PERSON[全部数据（读写）]",
+      "name" : "访问管理员-PRODUCT[全部数据（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person/PSDEUSERROLES/ALL_RW.json"
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEUSERROLES/ALL_RW.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person.json"
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+      }
+    }, {
+      "name" : "访问管理员-MEMBER[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/member/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/member.json"
       }
     }, {
       "name" : "访问管理员-DISCUSS_POST[全部数据（读写）]",
@@ -4951,154 +5072,14 @@
         "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post.json"
       }
     }, {
-      "name" : "访问管理员-PSSYSBICUBE[全部数据（读写）]",
+      "name" : "访问管理员-USER[全部数据（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICube/PSDEUSERROLES/ALL_RW.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEUSERROLES/ALL_RW.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICube.json"
-      }
-    }, {
-      "name" : "访问管理员-TICKET_TYPE[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket_type/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket_type.json"
-      }
-    }, {
-      "name" : "访问管理员-INSIGHT_VIEW[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view.json"
-      }
-    }, {
-      "name" : "访问管理员-TEST_CASE[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
-      }
-    }, {
-      "name" : "访问管理员-TICKET[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
-      }
-    }, {
-      "name" : "访问管理员-WORK_ITEM_STATE[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_state/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_state.json"
-      }
-    }, {
-      "name" : "访问管理员-PSSYSBICUBEDIMENSION[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICubeDimension/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICubeDimension.json"
-      }
-    }, {
-      "name" : "访问管理员-SYS_EMP[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee.json"
-      }
-    }, {
-      "name" : "访问管理员-DYNADASHBOARD[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/dyna_dashboard/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/dyna_dashboard.json"
-      }
-    }, {
-      "name" : "访问管理员-GROUP[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/group/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/group.json"
-      }
-    }, {
-      "name" : "访问管理员-PSDENOTIFY[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDENotify/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDENotify.json"
-      }
-    }, {
-      "name" : "访问管理员-SHARED_SPACE[管理员（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/shared_space/PSDEUSERROLES/ADMIN_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/shared_space.json"
-      }
-    }, {
-      "name" : "访问管理员-ADDON_ROLE_MEMBER[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/addon_role_member/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/addon_role_member.json"
-      }
-    }, {
-      "name" : "访问管理员-STAGE[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/stage/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/stage.json"
-      }
-    }, {
-      "name" : "访问管理员-WORK_ITEM_TYPE[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
       }
     }, {
       "name" : "访问管理员-WORKLOAD_TYPE[全部数据（读写）]",
@@ -5109,16 +5090,6 @@
       "getPSDataEntity" : {
         "modelref" : true,
         "path" : "PSMODULES/Base/PSDATAENTITIES/workload_type.json"
-      }
-    }, {
-      "name" : "访问管理员-GUIDELINE[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline.json"
       }
     }, {
       "name" : "访问管理员-ADDON_RESOURCE[全部数据（读写）]",
@@ -5141,14 +5112,34 @@
         "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
       }
     }, {
-      "name" : "访问管理员-SPACE[全部数据（读写）]",
+      "name" : "访问管理员-WORK_ITEM_STATE[全部数据（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEUSERROLES/ALL_RW.json"
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_state/PSDEUSERROLES/ALL_RW.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space.json"
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_state.json"
+      }
+    }, {
+      "name" : "访问管理员-RELEASE[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
+      }
+    }, {
+      "name" : "访问管理员-PSSYSBICUBEMEASURE[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICubeMeasure/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICubeMeasure.json"
       }
     }, {
       "name" : "访问管理员-INSIGHT_REPORT[全部数据（读写）]",
@@ -5161,84 +5152,14 @@
         "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_report.json"
       }
     }, {
-      "name" : "访问管理员-IDEA[全部数据（读写）]",
+      "name" : "访问管理员-GROUP[全部数据（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEUSERROLES/ALL_RW.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/group/PSDEUSERROLES/ALL_RW.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
-      }
-    }, {
-      "name" : "访问管理员-DISCUSS_TOPIC[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic.json"
-      }
-    }, {
-      "name" : "访问管理员-PAGE[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
-      }
-    }, {
-      "name" : "访问管理员-RUN[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
-      }
-    }, {
-      "name" : "访问管理员-DICTIONARY[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
-      }
-    }, {
-      "name" : "访问管理员-MEMBER[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/member/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/member.json"
-      }
-    }, {
-      "name" : "访问管理员-PRODUCT_TICKET_TYPE[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_ticket_type/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_ticket_type.json"
-      }
-    }, {
-      "name" : "访问管理员-PSDEFIELD[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEField/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEField.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/group.json"
       }
     }, {
       "name" : "访问管理员-ADDON[全部数据（读写）]",
@@ -5249,6 +5170,16 @@
       "getPSDataEntity" : {
         "modelref" : true,
         "path" : "PSMODULES/Base/PSDATAENTITIES/addon.json"
+      }
+    }, {
+      "name" : "访问管理员-IDEA[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
       }
     }, {
       "name" : "访问管理员-LIBRARY[全部数据（读写）]",
@@ -5271,6 +5202,56 @@
         "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
       }
     }, {
+      "name" : "访问管理员-PSSYSBICUBEDIMENSION[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICubeDimension/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICubeDimension.json"
+      }
+    }, {
+      "name" : "访问管理员-PSSYSBICUBE[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICube/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICube.json"
+      }
+    }, {
+      "name" : "访问管理员-GUIDELINE[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline.json"
+      }
+    }, {
+      "name" : "访问管理员-PSDEFIELD[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEField/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEField.json"
+      }
+    }, {
+      "name" : "访问管理员-SYS_PERSON[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person.json"
+      }
+    }, {
       "name" : "访问管理员-STENCIL[全部数据（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
@@ -5281,14 +5262,184 @@
         "path" : "PSMODULES/Wiki/PSDATAENTITIES/stencil.json"
       }
     }, {
-      "name" : "访问管理员-USER[全部数据（读写）]",
+      "name" : "访问管理员-PRODUCT_TICKET_TYPE[全部数据（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEUSERROLES/ALL_RW.json"
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_ticket_type/PSDEUSERROLES/ALL_RW.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_ticket_type.json"
+      }
+    }, {
+      "name" : "访问管理员-DYNADASHBOARD[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dyna_dashboard/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dyna_dashboard.json"
+      }
+    }, {
+      "name" : "访问管理员-TEST_CASE[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+      }
+    }, {
+      "name" : "访问管理员-DISCUSS_TOPIC[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic.json"
+      }
+    }, {
+      "name" : "访问管理员-INSIGHT_VIEW[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view.json"
+      }
+    }, {
+      "name" : "访问管理员-SYS_EMP[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee.json"
+      }
+    }, {
+      "name" : "访问管理员-RUN[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
+      }
+    }, {
+      "name" : "访问管理员-INSIGHT[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/insight/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/insight.json"
+      }
+    }, {
+      "name" : "访问管理员-PSDENOTIFY[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDENotify/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDENotify.json"
+      }
+    }, {
+      "name" : "访问管理员-TICKET[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
+      }
+    }, {
+      "name" : "访问管理员-SPACE[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space.json"
+      }
+    }, {
+      "name" : "访问管理员-TICKET_TYPE[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket_type/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket_type.json"
+      }
+    }, {
+      "name" : "访问管理员-SHARED_SPACE[管理员（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/shared_space/PSDEUSERROLES/ADMIN_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/shared_space.json"
+      }
+    }, {
+      "name" : "访问管理员-PROJECT_STATE[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state.json"
+      }
+    }, {
+      "name" : "访问管理员-WORK_ITEM_TYPE[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type.json"
+      }
+    }, {
+      "name" : "访问管理员-ADDON_ROLE_MEMBER[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/addon_role_member/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/addon_role_member.json"
+      }
+    }, {
+      "name" : "访问管理员-DICTIONARY[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+      }
+    }, {
+      "name" : "访问管理员-STAGE[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/stage/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/stage.json"
       }
     } ],
     "getPSSysUserRoleReses" : [ {
@@ -5579,24 +5730,14 @@
     "dynaModelFilePath" : "PSSYSUSERROLES/AUTHOR_USERS.json",
     "name" : "访问用户",
     "getPSSysUserRoleDatas" : [ {
-      "name" : "访问用户-VIEW_THEME_SETTING[全部数据（读写）]",
+      "name" : "访问用户-BASELINE[操作用户(写)]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/view_theme_setting/PSDEUSERROLES/ALL_RW.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/baseline/PSDEUSERROLES/USER_W.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/view_theme_setting.json"
-      }
-    }, {
-      "name" : "访问用户-INSIGHT_REPORT[操作用户(写)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_report/PSDEUSERROLES/USER_W.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_report.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/baseline.json"
       }
     }, {
       "name" : "访问用户-WORK_ITEM[操作用户(写)]",
@@ -5609,24 +5750,14 @@
         "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
       }
     }, {
-      "name" : "访问用户-TEST_CASE[操作用户(写)]",
+      "name" : "访问用户-WORK[操作用户(写)]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEUSERROLES/USER_W.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/work/PSDEUSERROLES/USER_W.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
-      }
-    }, {
-      "name" : "访问用户-IDEA[操作用户(写)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEUSERROLES/USER_W.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/work.json"
       }
     }, {
       "name" : "访问用户-CUSTOMER[操作用户(写)]",
@@ -5637,6 +5768,46 @@
       "getPSDataEntity" : {
         "modelref" : true,
         "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer.json"
+      }
+    }, {
+      "name" : "访问用户-VIEW_THEME_SETTING[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/view_theme_setting/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/view_theme_setting.json"
+      }
+    }, {
+      "name" : "访问用户-SYS_EMP[普通用户（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee.json"
+      }
+    }, {
+      "name" : "访问用户-INSIGHT_REPORT[操作用户(写)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_report/PSDEUSERROLES/USER_W.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_report.json"
+      }
+    }, {
+      "name" : "访问用户-TEST_CASE[操作用户(写)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEUSERROLES/USER_W.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
       }
     }, {
       "name" : "访问用户-TICKET[操作用户(写)]",
@@ -5659,36 +5830,6 @@
         "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post.json"
       }
     }, {
-      "name" : "访问用户-SYS_EMP[普通用户（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee/PSDEUSERROLES/USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee.json"
-      }
-    }, {
-      "name" : "访问用户-WORK[操作用户(写)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/work/PSDEUSERROLES/USER_W.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/work.json"
-      }
-    }, {
-      "name" : "访问用户-BASELINE[操作用户(写)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/baseline/PSDEUSERROLES/USER_W.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/baseline.json"
-      }
-    }, {
       "name" : "访问用户-SYS_PERSON[普通用户（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
@@ -5697,6 +5838,16 @@
       "getPSDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person.json"
+      }
+    }, {
+      "name" : "访问用户-IDEA[操作用户(写)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEUSERROLES/USER_W.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
       }
     } ],
     "getPSSysUserRoleReses" : [ {
@@ -5794,316 +5945,6 @@
     "dynaModelFilePath" : "PSSYSUSERROLES/ROLE_USERS.json",
     "name" : "默认用户权限",
     "getPSSysUserRoleDatas" : [ {
-      "name" : "默认用户权限-VIEW_THEME_SETTING[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/view_theme_setting/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/view_theme_setting.json"
-      }
-    }, {
-      "name" : "默认用户权限-USER[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
-      }
-    }, {
-      "name" : "默认用户权限-TEST_CASE[操作角色(读)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
-      }
-    }, {
-      "name" : "默认用户权限-BASELINE[操作用户(写)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/baseline/PSDEUSERROLES/USER_W.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/baseline.json"
-      }
-    }, {
-      "name" : "默认用户权限-TICKET[只读用户(读)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
-      }
-    }, {
-      "name" : "默认用户权限-TICKET[操作用户(写)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEUSERROLES/USER_W.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
-      }
-    }, {
-      "name" : "默认用户权限-PSSYSBICUBE[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICube/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICube.json"
-      }
-    }, {
-      "name" : "默认用户权限-PRODUCT[特定用户（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEUSERROLES/CUSTOMER_USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
-      }
-    }, {
-      "name" : "默认用户权限-SHARED_SPACE[管理员（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/shared_space/PSDEUSERROLES/ADMIN_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/shared_space.json"
-      }
-    }, {
-      "name" : "默认用户权限-WORKLOAD_TYPE[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/workload_type/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/workload_type.json"
-      }
-    }, {
-      "name" : "默认用户权限-TICKET[特定用户（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEUSERROLES/CUSTOMER_USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
-      }
-    }, {
-      "name" : "默认用户权限-INSIGHT_VIEW[普通用户（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view/PSDEUSERROLES/USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view.json"
-      }
-    }, {
-      "name" : "默认用户权限-IDEA[操作用户(写)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEUSERROLES/USER_W.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
-      }
-    }, {
-      "name" : "默认用户权限-LIBRARY[只读用户（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
-      }
-    }, {
-      "name" : "默认用户权限-SYS_EMP[普通用户（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee/PSDEUSERROLES/USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee.json"
-      }
-    }, {
-      "name" : "默认用户权限-INSIGHT_REPORT[操作用户(写)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_report/PSDEUSERROLES/USER_W.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_report.json"
-      }
-    }, {
-      "name" : "默认用户权限-PRODUCT[只读用户（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
-      }
-    }, {
-      "name" : "默认用户权限-REVIEW_CONTENT[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_content/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_content.json"
-      }
-    }, {
-      "name" : "默认用户权限-TICKET[普通用户（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEUSERROLES/USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
-      }
-    }, {
-      "name" : "默认用户权限-PSSYSBICUBEDIMENSION[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICubeDimension/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICubeDimension.json"
-      }
-    }, {
-      "name" : "默认用户权限-IDEA[管理员（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEUSERROLES/ADMIN_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
-      }
-    }, {
-      "name" : "默认用户权限-VERSION[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/version/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/version.json"
-      }
-    }, {
-      "name" : "默认用户权限-USER[当前用户（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEUSERROLES/USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
-      }
-    }, {
-      "name" : "默认用户权限-MSVALUEPROXY[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/MSValueProxy/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/MSValueProxy.json"
-      }
-    }, {
-      "name" : "默认用户权限-RUN[操作角色(读)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
-      }
-    }, {
-      "name" : "默认用户权限-PROJECT[只读用户（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
-      }
-    }, {
-      "name" : "默认用户权限-RELEASE[操作用户(写)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDEUSERROLES/USER_W.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
-      }
-    }, {
-      "name" : "默认用户权限-TICKET_TYPE[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket_type/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket_type.json"
-      }
-    }, {
-      "name" : "默认用户权限-GROUP[团队成员（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/group/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/group.json"
-      }
-    }, {
-      "name" : "默认用户权限-PAGE[操作用户(读)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
-      }
-    }, {
-      "name" : "默认用户权限-ACTIVITY[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/activity/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/activity.json"
-      }
-    }, {
       "name" : "默认用户权限-PORTFOLIO[只读用户（读）]",
       "getPSDEUserRole" : {
         "modelref" : true,
@@ -6122,6 +5963,146 @@
       "getPSDataEntity" : {
         "modelref" : true,
         "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      }
+    }, {
+      "name" : "默认用户权限-RELEASE[操作用户(读)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
+      }
+    }, {
+      "name" : "默认用户权限-INSIGHT_VIEW[普通用户（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view.json"
+      }
+    }, {
+      "name" : "默认用户权限-MSVALUEPROXY[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/MSValueProxy/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/MSValueProxy.json"
+      }
+    }, {
+      "name" : "默认用户权限-PAGE[操作用户(写)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEUSERROLES/USER_W.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+      }
+    }, {
+      "name" : "默认用户权限-INSIGHT_REPORT[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_report/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_report.json"
+      }
+    }, {
+      "name" : "默认用户权限-PSDEFIELD[操作用户（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEField/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEField.json"
+      }
+    }, {
+      "name" : "默认用户权限-DEPARTMENT[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/department/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/department.json"
+      }
+    }, {
+      "name" : "默认用户权限-SYS_PERSON[普通用户（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person.json"
+      }
+    }, {
+      "name" : "默认用户权限-RELATION[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+      }
+    }, {
+      "name" : "默认用户权限-TRANSITION_HISTORY[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/transition_history/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/transition_history.json"
+      }
+    }, {
+      "name" : "默认用户权限-DICTIONARY[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+      }
+    }, {
+      "name" : "默认用户权限-VIEW_THEME_SETTING[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/view_theme_setting/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/view_theme_setting.json"
+      }
+    }, {
+      "name" : "默认用户权限-PORTFOLIO[管理员（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio/PSDEUSERROLES/ADMIN_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio.json"
+      }
+    }, {
+      "name" : "默认用户权限-PORTFOLIO[普通用户（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio.json"
       }
     }, {
       "name" : "默认用户权限-DISCUSS_TOPIC[管理员（读写）]",
@@ -6144,144 +6125,24 @@
         "path" : "PSMODULES/Wiki/PSDATAENTITIES/stencil.json"
       }
     }, {
-      "name" : "默认用户权限-BOARD[操作用户(读)]",
+      "name" : "默认用户权限-RUN[操作角色(读)]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/board/PSDEUSERROLES/USER_R.json"
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDEUSERROLES/USER_R.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/board.json"
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
       }
     }, {
-      "name" : "默认用户权限-LOGIN_LOG[当前用户（读）]",
+      "name" : "默认用户权限-RECENT[普通用户（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/login_log/PSDEUSERROLES/USER_R.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/recent/PSDEUSERROLES/USER_RW.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/login_log.json"
-      }
-    }, {
-      "name" : "默认用户权限-RELATION[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
-      }
-    }, {
-      "name" : "默认用户权限-SPACE[管理员（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEUSERROLES/ADMIN_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space.json"
-      }
-    }, {
-      "name" : "默认用户权限-INSIGHT_VIEW[只读用户（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view.json"
-      }
-    }, {
-      "name" : "默认用户权限-PAGE[只读共享(读)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEUSERROLES/SHARED_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
-      }
-    }, {
-      "name" : "默认用户权限-SYS_PERSON[普通用户（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person/PSDEUSERROLES/USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person.json"
-      }
-    }, {
-      "name" : "默认用户权限-WORKLOAD[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/workload.json"
-      }
-    }, {
-      "name" : "默认用户权限-DISCUSS_TOPIC[只读用户（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic.json"
-      }
-    }, {
-      "name" : "默认用户权限-RELEASE[操作用户(读)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
-      }
-    }, {
-      "name" : "默认用户权限-PAGE[操作用户(写)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEUSERROLES/USER_W.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
-      }
-    }, {
-      "name" : "默认用户权限-DISCUSS_POST[只读用户（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post.json"
-      }
-    }, {
-      "name" : "默认用户权限-PROJECT[普通用户（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEUSERROLES/USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
-      }
-    }, {
-      "name" : "默认用户权限-WORK_ITEM[操作用户(读)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/recent.json"
       }
     }, {
       "name" : "默认用户权限-PSDENOTIFY[操作角色（读）]",
@@ -6294,64 +6155,34 @@
         "path" : "PSMODULES/extension/PSDATAENTITIES/PSDENotify.json"
       }
     }, {
-      "name" : "默认用户权限-PRODUCT[管理员（读写）]",
+      "name" : "默认用户权限-WORK_ITEM[操作用户(写)]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEUSERROLES/ADMIN_RW.json"
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEUSERROLES/USER_W.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
       }
     }, {
-      "name" : "默认用户权限-PROJECT_TAG[全部数据（读）]",
+      "name" : "默认用户权限-ACTIVITY[全部数据（读）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_tag/PSDEUSERROLES/ALL_R.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/activity/PSDEUSERROLES/ALL_R.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_tag.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/activity.json"
       }
     }, {
-      "name" : "默认用户权限-SPACE[普通用户（读写）]",
+      "name" : "默认用户权限-VERSION[全部数据（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEUSERROLES/USER_RW.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/version/PSDEUSERROLES/ALL_RW.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space.json"
-      }
-    }, {
-      "name" : "默认用户权限-PRODUCT[普通用户（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEUSERROLES/USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
-      }
-    }, {
-      "name" : "默认用户权限-FAVORITE[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/favorite/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/favorite.json"
-      }
-    }, {
-      "name" : "默认用户权限-INSIGHT[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/insight/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/insight.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/version.json"
       }
     }, {
       "name" : "默认用户权限-IDEA[普通用户（读写）]",
@@ -6364,16 +6195,6 @@
         "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
       }
     }, {
-      "name" : "默认用户权限-DISCUSS_TOPIC[普通用户（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic/PSDEUSERROLES/USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic.json"
-      }
-    }, {
       "name" : "默认用户权限-WORK_ITEM_TYPE[全部数据（读）]",
       "getPSDEUserRole" : {
         "modelref" : true,
@@ -6382,6 +6203,56 @@
       "getPSDataEntity" : {
         "modelref" : true,
         "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type.json"
+      }
+    }, {
+      "name" : "默认用户权限-DISCUSS_POST[只读用户（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post.json"
+      }
+    }, {
+      "name" : "默认用户权限-PRODUCT[特定用户（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEUSERROLES/CUSTOMER_USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+      }
+    }, {
+      "name" : "默认用户权限-PROJECT[普通用户（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      }
+    }, {
+      "name" : "默认用户权限-WORKLOAD_TYPE[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/workload_type/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/workload_type.json"
+      }
+    }, {
+      "name" : "默认用户权限-INSIGHT_VIEW[只读用户（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view.json"
       }
     }, {
       "name" : "默认用户权限-IDEA[只读用户(读)]",
@@ -6394,134 +6265,24 @@
         "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
       }
     }, {
-      "name" : "默认用户权限-DICTIONARY[全部数据（读）]",
+      "name" : "默认用户权限-SPACE[普通用户（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEUSERROLES/ALL_R.json"
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEUSERROLES/USER_RW.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space.json"
       }
     }, {
-      "name" : "默认用户权限-WORK_ITEM_STATE[全部数据（读）]",
+      "name" : "默认用户权限-SPACE[只读用户（读）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_state/PSDEUSERROLES/ALL_R.json"
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEUSERROLES/USER_R.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_state.json"
-      }
-    }, {
-      "name" : "默认用户权限-PSDEFIELD[操作用户（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEField/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEField.json"
-      }
-    }, {
-      "name" : "默认用户权限-TRANSITION_HISTORY[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/transition_history/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/transition_history.json"
-      }
-    }, {
-      "name" : "默认用户权限-SECTION[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/section/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/section.json"
-      }
-    }, {
-      "name" : "默认用户权限-IDEA[特定用户（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEUSERROLES/CUSTOMER_USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
-      }
-    }, {
-      "name" : "默认用户权限-DYNADASHBOARD[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/dyna_dashboard/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/dyna_dashboard.json"
-      }
-    }, {
-      "name" : "默认用户权限-PAGE[与我共享(写)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEUSERROLES/SHAERD_W.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
-      }
-    }, {
-      "name" : "默认用户权限-INSIGHT_VIEW[管理员（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view/PSDEUSERROLES/ADMIN_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view.json"
-      }
-    }, {
-      "name" : "默认用户权限-INSIGHT_REPORT[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_report/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_report.json"
-      }
-    }, {
-      "name" : "默认用户权限-TICKET[管理员（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEUSERROLES/ADMIN_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
-      }
-    }, {
-      "name" : "默认用户权限-LIBRARY[普通用户（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEUSERROLES/USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
-      }
-    }, {
-      "name" : "默认用户权限-WORK_ITEM_WIZARD_DETAIL[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_wizard_detail/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_wizard_detail.json"
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space.json"
       }
     }, {
       "name" : "默认用户权限-LIBRARY[管理员（读写）]",
@@ -6534,14 +6295,284 @@
         "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
       }
     }, {
-      "name" : "默认用户权限-PORTFOLIO[普通用户（读写）]",
+      "name" : "默认用户权限-LOGIN_LOG[当前用户（读）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio/PSDEUSERROLES/USER_RW.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/login_log/PSDEUSERROLES/USER_R.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/login_log.json"
+      }
+    }, {
+      "name" : "默认用户权限-GROUP[团队成员（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/group/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/group.json"
+      }
+    }, {
+      "name" : "默认用户权限-TICKET_TYPE[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket_type/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket_type.json"
+      }
+    }, {
+      "name" : "默认用户权限-PROJECT_TAG[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_tag/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_tag.json"
+      }
+    }, {
+      "name" : "默认用户权限-PSSYSBICUBE[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICube/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICube.json"
+      }
+    }, {
+      "name" : "默认用户权限-REVIEW_CONTENT[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_content/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_content.json"
+      }
+    }, {
+      "name" : "默认用户权限-SHARED_SPACE[管理员（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/shared_space/PSDEUSERROLES/ADMIN_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/shared_space.json"
+      }
+    }, {
+      "name" : "默认用户权限-SPRINT[操作用户(读)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint.json"
+      }
+    }, {
+      "name" : "默认用户权限-BASELINE[操作用户(写)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/baseline/PSDEUSERROLES/USER_W.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/baseline.json"
+      }
+    }, {
+      "name" : "默认用户权限-PSSYSBICUBEMEASURE[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICubeMeasure/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICubeMeasure.json"
+      }
+    }, {
+      "name" : "默认用户权限-PROJECT_STATE[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state.json"
+      }
+    }, {
+      "name" : "默认用户权限-PSSYSBICUBEDIMENSION[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICubeDimension/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICubeDimension.json"
+      }
+    }, {
+      "name" : "默认用户权限-USER[当前用户（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+      }
+    }, {
+      "name" : "默认用户权限-LIBRARY[普通用户（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
+      }
+    }, {
+      "name" : "默认用户权限-PAGE[与我共享(写)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEUSERROLES/SHAERD_W.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+      }
+    }, {
+      "name" : "默认用户权限-SECTION[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/section/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/section.json"
+      }
+    }, {
+      "name" : "默认用户权限-INSIGHT_REPORT[操作用户(写)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_report/PSDEUSERROLES/USER_W.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_report.json"
+      }
+    }, {
+      "name" : "默认用户权限-IDEA[特定用户（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEUSERROLES/CUSTOMER_USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+      }
+    }, {
+      "name" : "默认用户权限-WORK_ITEM_WIZARD_DETAIL[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_wizard_detail/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_wizard_detail.json"
+      }
+    }, {
+      "name" : "默认用户权限-LIBRARY[只读用户（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
+      }
+    }, {
+      "name" : "默认用户权限-TICKET[管理员（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEUSERROLES/ADMIN_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
+      }
+    }, {
+      "name" : "默认用户权限-TICKET[普通用户（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
+      }
+    }, {
+      "name" : "默认用户权限-DISCUSS_TOPIC[只读用户（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic.json"
+      }
+    }, {
+      "name" : "默认用户权限-TICKET[特定用户（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEUSERROLES/CUSTOMER_USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
+      }
+    }, {
+      "name" : "默认用户权限-IDEA[操作用户(写)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEUSERROLES/USER_W.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+      }
+    }, {
+      "name" : "默认用户权限-RELEASE[操作用户(写)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDEUSERROLES/USER_W.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
+      }
+    }, {
+      "name" : "默认用户权限-SYS_EMP[普通用户（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee.json"
+      }
+    }, {
+      "name" : "默认用户权限-PAGE[操作用户(读)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
       }
     }, {
       "name" : "默认用户权限-PRODUCT_TICKET_TYPE[全部数据（读写）]",
@@ -6554,10 +6585,10 @@
         "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_ticket_type.json"
       }
     }, {
-      "name" : "默认用户权限-SPACE[只读用户（读）]",
+      "name" : "默认用户权限-SPACE[管理员（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEUSERROLES/USER_R.json"
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEUSERROLES/ADMIN_RW.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
@@ -6574,14 +6605,44 @@
         "path" : "PSMODULES/Base/PSDATAENTITIES/notify_setting.json"
       }
     }, {
-      "name" : "默认用户权限-DEPARTMENT[全部数据（读）]",
+      "name" : "默认用户权限-FAVORITE[全部数据（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/department/PSDEUSERROLES/ALL_R.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/favorite/PSDEUSERROLES/ALL_RW.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/department.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/favorite.json"
+      }
+    }, {
+      "name" : "默认用户权限-WORK_ITEM[操作用户(读)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+      }
+    }, {
+      "name" : "默认用户权限-DISCUSS_TOPIC[普通用户（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic.json"
+      }
+    }, {
+      "name" : "默认用户权限-TEST_CASE[操作角色(读)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
       }
     }, {
       "name" : "默认用户权限-TEST_CASE[操作用户(写)]",
@@ -6594,24 +6655,14 @@
         "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
       }
     }, {
-      "name" : "默认用户权限-RECENT[普通用户（读写）]",
+      "name" : "默认用户权限-WORKLOAD[全部数据（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/recent/PSDEUSERROLES/USER_RW.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEUSERROLES/ALL_RW.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/recent.json"
-      }
-    }, {
-      "name" : "默认用户权限-SPRINT[操作用户(读)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/workload.json"
       }
     }, {
       "name" : "默认用户权限-CATEGORY[全部数据（读写）]",
@@ -6624,34 +6675,144 @@
         "path" : "PSMODULES/Base/PSDATAENTITIES/category.json"
       }
     }, {
-      "name" : "默认用户权限-WORK_ITEM[操作用户(写)]",
+      "name" : "默认用户权限-WORK_ITEM_STATE[全部数据（读）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEUSERROLES/USER_W.json"
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_state/PSDEUSERROLES/ALL_R.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_state.json"
       }
     }, {
-      "name" : "默认用户权限-PSSYSBICUBEMEASURE[全部数据（读写）]",
+      "name" : "默认用户权限-INSIGHT[全部数据（读）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICubeMeasure/PSDEUSERROLES/ALL_RW.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/insight/PSDEUSERROLES/ALL_R.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICubeMeasure.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/insight.json"
       }
     }, {
-      "name" : "默认用户权限-PORTFOLIO[管理员（读写）]",
+      "name" : "默认用户权限-PROJECT[只读用户（读）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio/PSDEUSERROLES/ADMIN_RW.json"
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEUSERROLES/USER_R.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio.json"
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      }
+    }, {
+      "name" : "默认用户权限-PRODUCT[只读用户（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+      }
+    }, {
+      "name" : "默认用户权限-DYNADASHBOARD[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dyna_dashboard/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dyna_dashboard.json"
+      }
+    }, {
+      "name" : "默认用户权限-TICKET[操作用户(写)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEUSERROLES/USER_W.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
+      }
+    }, {
+      "name" : "默认用户权限-PRODUCT[普通用户（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+      }
+    }, {
+      "name" : "默认用户权限-TICKET[只读用户(读)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
+      }
+    }, {
+      "name" : "默认用户权限-BOARD[操作用户(读)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/board/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/board.json"
+      }
+    }, {
+      "name" : "默认用户权限-INSIGHT_VIEW[管理员（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view/PSDEUSERROLES/ADMIN_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view.json"
+      }
+    }, {
+      "name" : "默认用户权限-USER[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+      }
+    }, {
+      "name" : "默认用户权限-IDEA[管理员（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEUSERROLES/ADMIN_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+      }
+    }, {
+      "name" : "默认用户权限-PAGE[只读共享(读)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEUSERROLES/SHARED_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+      }
+    }, {
+      "name" : "默认用户权限-PRODUCT[管理员（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEUSERROLES/ADMIN_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
       }
     } ],
     "getPSSysUserRoleReses" : [ {
@@ -6766,6 +6927,9 @@
       "path" : "PSMODULES/Base/PSCODELISTS/principal_type.json"
     }, {
       "modelref" : true,
+      "path" : "PSMODULES/Base/PSCODELISTS/background_style.json"
+    }, {
+      "modelref" : true,
       "path" : "PSMODULES/Base/PSCODELISTS/user_report_flag.json"
     }, {
       "modelref" : true,
@@ -6797,6 +6961,9 @@
     }, {
       "modelref" : true,
       "path" : "PSMODULES/Base/PSCODELISTS/workload_type.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSCODELISTS/product_role_type.json"
     }, {
       "modelref" : true,
       "path" : "PSMODULES/Base/PSCODELISTS/version.json"
@@ -6906,6 +7073,9 @@
     }, {
       "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/dyna_portlet_setting.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/executor.json"
     }, {
       "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/extend_log.json"
@@ -7134,6 +7304,9 @@
   }, {
     "getAllPSCodeLists" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSCODELISTS/dyna_project_state.json"
+    }, {
+      "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSCODELISTS/state_type.json"
     }, {
       "modelref" : true,
@@ -7156,6 +7329,9 @@
     }, {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSCODELISTS/work_item_group_field.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSCODELISTS/multiple_people.json"
     }, {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSCODELISTS/release_stage.json"
@@ -7284,6 +7460,9 @@
       "path" : "PSMODULES/ProjMgmt/PSCODELISTS/kanban_work_item_type.json"
     }, {
       "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSCODELISTS/project_state_type.json"
+    }, {
+      "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSCODELISTS/scrum_state.json"
     } ],
     "getAllPSDataEntities" : [ {
@@ -7307,6 +7486,9 @@
     }, {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state.json"
     }, {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_tag.json"

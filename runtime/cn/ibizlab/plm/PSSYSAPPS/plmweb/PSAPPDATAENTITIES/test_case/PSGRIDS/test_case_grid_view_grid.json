@@ -1,0 +1,234 @@
+{
+  "aggMode" : "NONE",
+  "codeName" : "test_case_grid_view_grid",
+  "columnEnableFilter" : 2,
+  "columnEnableLink" : 2,
+  "controlType" : "GRID",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case/PSGRIDS/test_case_grid_view_grid.json",
+  "getFetchPSControlAction" : {
+    "modelref" : true,
+    "id" : "fetch",
+    "actionType" : "DEDATASET",
+    "name" : "fetch",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "fetch_default"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+    }
+  },
+  "groupMode" : "NONE",
+  "logicName" : "用例表格视图（仪表盘部件）_表格",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+  },
+  "getPSDEDataImport" : {
+    "modelref" : true,
+    "id" : "import_test_case"
+  },
+  "getPSDEGridColumns" : [ {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "编号",
+    "codeName" : "show_identifier",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "show_identifier",
+    "excelCaption" : "编号",
+    "name" : "show_identifier",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "SHOW_IDENTIFIER",
+      "codeName" : "show_identifier"
+    },
+    "width" : 150,
+    "widthUnit" : "STAR",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "标题",
+    "codeName" : "title",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "title",
+    "excelCaption" : "标题",
+    "name" : "title",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "TITLE",
+      "codeName" : "title"
+    },
+    "width" : 150,
+    "widthUnit" : "STAR",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "caption" : "状态",
+    "codeName" : "state",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "state",
+    "excelCaption" : "状态",
+    "name" : "state",
+    "noPrivDisplayMode" : 1,
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__case_state.json"
+    },
+    "getPSAppDEField" : {
+      "name" : "STATE",
+      "codeName" : "state"
+    },
+    "width" : 100,
+    "widthUnit" : "STAR",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "所属测试库",
+    "codeName" : "test_library_name",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "test_library_name",
+    "excelCaption" : "所属测试库",
+    "getLinkPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_redirect_view.json",
+      "viewType" : "DEREDIRECTVIEW"
+    },
+    "linkValueItem" : "test_library_id",
+    "name" : "test_library_name",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "TEST_LIBRARY_NAME",
+      "codeName" : "test_library_name"
+    },
+    "width" : 100,
+    "widthUnit" : "STAR",
+    "enableLinkView" : true,
+    "enableSort" : true
+  } ],
+  "getPSDEGridDataItems" : [ {
+    "dataType" : 25,
+    "name" : "show_identifier",
+    "getPSAppDEField" : {
+      "name" : "SHOW_IDENTIFIER",
+      "codeName" : "show_identifier"
+    },
+    "scriptCode" : "var svgIcon = `<span title=\"测试用例\" style=\"display: flex;align-items: center;\"><?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1731568581104\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"7114\" width=\"24\" height=\"24\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><path d=\"M512 1024c399.2 0 512-112.8 512-512S911.2 0 512 0 0 112.8 0 512s112.8 512 512 512z\" fill=\"#5AD8A6\" p-id=\"7115\"></path><path d=\"M731.488 715.04L570.101333 448v-96h-126.933333v96l-161.386667 267.04a35.904 35.904 0 0 0 0.437334 35.392A35.306667 35.306667 0 0 0 312.693333 768h387.914667a35.306667 35.306667 0 0 0 30.506667-17.557333 35.904 35.904 0 0 0 0.426666-35.402667h-0.053333zM473.408 555.552l-74.869333 130.656a15.754667 15.754667 0 0 1-21.706667 5.856l-3.936-2.272a16.074667 16.074667 0 0 1-5.802667-21.856l74.858667-130.656a15.754667 15.754667 0 0 1 21.706667-5.856l3.946666 2.272a16.106667 16.106667 0 0 1 5.834667 21.856h-0.032z\" fill=\"#FFFFFF\" p-id=\"7116\"></path><path d=\"M559.445333 256h-105.621333a10.666667 10.666667 0 0 0-10.666667 10.666667v53.333333h126.954667v-53.333333a10.666667 10.666667 0 0 0-10.666667-10.666667z\" fill=\"#FFFFFF\" opacity=\".6\" p-id=\"7117\"></path></svg></span>`;\r\nreturn `<span style=\"display: flex; align-items: center;\">` + svgIcon + `&nbsp;` + data.show_identifier + `</span>`;",
+    "customCode" : true
+  }, {
+    "dataType" : 25,
+    "name" : "title",
+    "getPSAppDEField" : {
+      "name" : "TITLE",
+      "codeName" : "title"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "state",
+    "getPSAppDEField" : {
+      "name" : "STATE",
+      "codeName" : "state"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "test_library_name",
+    "getPSAppDEField" : {
+      "name" : "TEST_LIBRARY_NAME",
+      "codeName" : "test_library_name"
+    },
+    "scriptCode" : "var svgIcon = `<span title=\"测试库\" style=\"display: flex;align-items: center;\"><svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 24 24\" class=\"design-iconfont\" width=\"24\" height=\"24\">\r\n  <defs>\r\n    <path d=\"M9.01651185,3.27273154 C9.31543831,3.27189848 9.60227033,3.39300127 9.81307558,3.60905148 L12.1206744,5.96139483 C12.1627802,6.00466067 12.2201457,6.02891007 12.2799308,6.02871536 L21.2371542,6.02871536 C21.8590036,6.02942731 22.362938,6.54313302 22.3636364,7.17704017 L22.3636364,19.5789479 C22.362938,20.2128551 21.8590036,20.7265608 21.2371542,20.7272727 L2.76284584,20.7272727 C2.14099642,20.7265608 1.63706204,20.2128551 1.63636364,19.5789479 L1.63636364,4.42106066 C1.63706203,3.78715352 2.14099641,3.2734478 2.76284584,3.27273154 L9.01651185,3.27273154 Z M15.59375,9.09375 L8.40625,9.09375 C8.23339844,9.09375 8.09375,9.23339844 8.09375,9.40625 L8.09375,16.59375 C8.09375,16.7666016 8.23339844,16.90625 8.40625,16.90625 L15.59375,16.90625 C15.7666016,16.90625 15.90625,16.7666016 15.90625,16.59375 L15.90625,9.40625 C15.90625,9.23339844 15.7666016,9.09375 15.59375,9.09375 Z M15.203125,9.796875 L15.203125,16.203125 L8.796875,16.203125 L8.796875,9.796875 L15.203125,9.796875 Z M10.5269345,14.015625 C10.3111983,14.015625 10.1363095,14.1905138 10.1363095,14.40625 C10.1363095,14.6219862 10.3111983,14.796875 10.5269345,14.796875 C10.7426707,14.796875 10.9175595,14.6219862 10.9175595,14.40625 C10.9175595,14.1905138 10.7426707,14.015625 10.5269345,14.015625 Z M13.7385725,14.09375 L11.815997,14.09375 C11.7730282,14.09375 11.737872,14.1289063 11.737872,14.171875 L11.737872,14.640625 C11.737872,14.6835938 11.7730282,14.71875 11.815997,14.71875 L13.7385725,14.71875 C13.7815413,14.71875 13.8166975,14.6835938 13.8166975,14.640625 L13.8166975,14.171875 C13.8166975,14.1289063 13.7815413,14.09375 13.7385725,14.09375 Z M11.4557772,12.2446536 L11.272574,12.2446536 C11.216407,12.2446536 11.1634381,12.2717332 11.1307155,12.3175448 L10.5171659,13.1689369 L10.3201696,12.7829992 C10.2872103,12.7374055 10.2345871,12.7102786 10.1784334,12.7102786 L9.9952303,12.7102786 C9.92909044,12.7102786 9.89066344,12.7852672 9.92920487,12.8390224 L10.4160022,13.5141317 C10.4854914,13.6109791 10.6295786,13.6109791 10.6991361,13.5140367 L11.5217208,12.3735112 C11.560344,12.3196422 11.521917,12.2446536 11.4557772,12.2446536 Z M13.7385725,12.6875 L11.815997,12.6875 C11.7730282,12.6875 11.737872,12.7226563 11.737872,12.765625 L11.737872,13.234375 C11.737872,13.2773438 11.7730282,13.3125 11.815997,13.3125 L13.7385725,13.3125 C13.7815413,13.3125 13.8166975,13.2773438 13.8166975,13.234375 L13.8166975,12.765625 C13.8166975,12.7226563 13.7815413,12.6875 13.7385725,12.6875 Z M13.7385725,11.28125 L10.2635598,11.28125 C10.2205911,11.28125 10.1854348,11.3164063 10.1854348,11.359375 L10.1854348,11.828125 C10.1854348,11.8710938 10.2205911,11.90625 10.2635598,11.90625 L13.7385725,11.90625 C13.7815413,11.90625 13.8166975,11.8710937 13.8166975,11.828125 L13.8166975,11.359375 C13.8166975,11.3164062 13.7815413,11.28125 13.7385725,11.28125 Z\" id=\"ybm2uil0m__0io7o8c6ia\"></path>\r\n  </defs>\r\n  <use fill=\"#56AAFC\" fill-rule=\"nonzero\" xlink:href=\"#ybm2uil0m__0io7o8c6ia\"></use>\r\n</svg></span>`;\r\nreturn `<span style=\"display: flex; align-items: center;\">` + svgIcon + `&nbsp;` + data.test_library_name + `</span>`;",
+    "customCode" : true
+  }, {
+    "dataType" : 25,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfdataaccaction",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "dataAccessAction" : true
+  }, {
+    "dataType" : 25,
+    "name" : "maintenance_id",
+    "getPSAppDEField" : {
+      "name" : "MAINTENANCE_ID",
+      "codeName" : "maintenance_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "test_library_id",
+    "getPSAppDEField" : {
+      "name" : "TEST_LIBRARY_ID",
+      "codeName" : "test_library_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "suite_id",
+    "getPSAppDEField" : {
+      "name" : "SUITE_ID",
+      "codeName" : "suite_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfmajortext",
+    "getPSAppDEField" : {
+      "name" : "TITLE",
+      "codeName" : "title"
+    }
+  } ],
+  "getPSDEGridEditItems" : [ {
+    "caption" : "标识",
+    "codeName" : "srfkey",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getPSEditor" : {
+      "editorType" : "HIDDEN",
+      "name" : "srfkey"
+    },
+    "allowEmpty" : true
+  } ],
+  "pagingSize" : 10,
+  "getRemovePSControlAction" : {
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+    }
+  },
+  "sortMode" : "REMOTE",
+  "hasWFDataItems" : false,
+  "enableColFilter" : false,
+  "enableCustomized" : true,
+  "enableGroup" : false,
+  "enablePagingBar" : false,
+  "enableRowEdit" : false,
+  "enableRowEditOrder" : false,
+  "enableRowNew" : false,
+  "forceFit" : true,
+  "hideHeader" : true,
+  "noSort" : false,
+  "singleSelect" : true,
+  "modelid" : "FB9A3AB2-F6D0-45AF-9977-25F262512BDE",
+  "modeltype" : "PSDEGRID"
+}

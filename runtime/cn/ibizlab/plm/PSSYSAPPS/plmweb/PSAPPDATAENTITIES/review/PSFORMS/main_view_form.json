@@ -4386,7 +4386,7 @@
                   }
                 },
                 "groupMode" : "NONE",
-                "hookEventNames" : [ "ONLOADSUCCESS" ],
+                "hookEventNames" : [ "ONLOADSUCCESS", "ONCLICK" ],
                 "logicName" : "附件表格",
                 "getPSAppDataEntity" : {
                   "modelref" : true,
@@ -4482,6 +4482,19 @@
                   "getPSAppDEUILogic" : {
                     "modelref" : true,
                     "id" : "calc_attachment_hidden"
+                  },
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/attachment.json"
+                  }
+                }, {
+                  "eventNames" : "onClick",
+                  "logicTag" : "attachments_grid",
+                  "logicType" : "APPDEUILOGIC",
+                  "name" : "open_att",
+                  "getPSAppDEUILogic" : {
+                    "modelref" : true,
+                    "id" : "attachment_preview"
                   },
                   "getPSAppDataEntity" : {
                     "modelref" : true,
@@ -6124,72 +6137,6 @@
                     "rSMode" : 2
                   } ], [ {
                     "actionRSMode" : 1,
-                    "codeName" : "releases",
-                    "dataRSMode" : 0,
-                    "majorDECodeName" : "project",
-                    "majorDEName" : "PROJECT",
-                    "getMajorPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                    },
-                    "minorDECodeName" : "release",
-                    "minorDEName" : "RELEASE",
-                    "getMinorPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-                    },
-                    "name" : "DER1N_RELEASE_PROJECT_PROJECT_ID",
-                    "getParentPSAppDEField" : {
-                      "name" : "PROJECT_ID",
-                      "codeName" : "project_id"
-                    },
-                    "rSMode" : 2
-                  }, {
-                    "actionRSMode" : 1,
-                    "codeName" : "work_items",
-                    "dataRSMode" : 0,
-                    "majorDECodeName" : "release",
-                    "majorDEName" : "RELEASE",
-                    "getMajorPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-                    },
-                    "minorDECodeName" : "work_item",
-                    "minorDEName" : "WORK_ITEM",
-                    "getMinorPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-                    },
-                    "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-                    "getParentPSAppDEField" : {
-                      "name" : "RELEASE_ID",
-                      "codeName" : "release_id"
-                    },
-                    "rSMode" : 2
-                  }, {
-                    "actionRSMode" : 1,
-                    "codeName" : "comments",
-                    "dataRSMode" : 0,
-                    "majorDECodeName" : "work_item",
-                    "majorDEName" : "WORK_ITEM",
-                    "getMajorPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-                    },
-                    "minorDECodeName" : "comment",
-                    "minorDEName" : "COMMENT",
-                    "getMinorPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
-                    },
-                    "name" : "DERCUSTOM_COMMENT_WORK_ITEM_PRINCIPAL_ID",
-                    "getParentPSAppDEField" : {
-                      "name" : "PRINCIPAL_ID",
-                      "codeName" : "principal_id"
-                    },
-                    "rSMode" : 2
-                  } ], [ {
-                    "actionRSMode" : 1,
                     "codeName" : "discuss_posts",
                     "dataRSMode" : 0,
                     "majorDECodeName" : "discuss_topic",
@@ -6293,50 +6240,6 @@
                       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
                     },
                     "name" : "DERCOSTOM_COMMENT_PAGE_PRINCIPAL_ID",
-                    "getParentPSAppDEField" : {
-                      "name" : "PRINCIPAL_ID",
-                      "codeName" : "principal_id"
-                    },
-                    "rSMode" : 2
-                  } ], [ {
-                    "actionRSMode" : 1,
-                    "codeName" : "work_items",
-                    "dataRSMode" : 0,
-                    "majorDECodeName" : "release",
-                    "majorDEName" : "RELEASE",
-                    "getMajorPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-                    },
-                    "minorDECodeName" : "work_item",
-                    "minorDEName" : "WORK_ITEM",
-                    "getMinorPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-                    },
-                    "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-                    "getParentPSAppDEField" : {
-                      "name" : "RELEASE_ID",
-                      "codeName" : "release_id"
-                    },
-                    "rSMode" : 2
-                  }, {
-                    "actionRSMode" : 1,
-                    "codeName" : "comments",
-                    "dataRSMode" : 0,
-                    "majorDECodeName" : "work_item",
-                    "majorDEName" : "WORK_ITEM",
-                    "getMajorPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-                    },
-                    "minorDECodeName" : "comment",
-                    "minorDEName" : "COMMENT",
-                    "getMinorPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
-                    },
-                    "name" : "DERCUSTOM_COMMENT_WORK_ITEM_PRINCIPAL_ID",
                     "getParentPSAppDEField" : {
                       "name" : "PRINCIPAL_ID",
                       "codeName" : "principal_id"
@@ -9332,6 +9235,10 @@
                               "frontProcessType" : "OTHER",
                               "fullCodeName" : "review_result_pass",
                               "name" : "通过（单条）",
+                              "getNextPSUIAction" : {
+                                "modelref" : true,
+                                "id" : "Refresh"
+                              },
                               "getPSAppDEUILogic" : {
                                 "modelref" : true,
                                 "id" : "pass"

@@ -1274,7 +1274,7 @@
                     }
                   },
                   "groupMode" : "NONE",
-                  "hookEventNames" : [ "ONLOADSUCCESS" ],
+                  "hookEventNames" : [ "ONLOADSUCCESS", "ONCLICK" ],
                   "logicName" : "附件表格",
                   "getPSAppDataEntity" : {
                     "modelref" : true,
@@ -1370,6 +1370,19 @@
                     "getPSAppDEUILogic" : {
                       "modelref" : true,
                       "id" : "calc_attachment_hidden"
+                    },
+                    "getPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/attachment.json"
+                    }
+                  }, {
+                    "eventNames" : "onClick",
+                    "logicTag" : "attachments_grid",
+                    "logicType" : "APPDEUILOGIC",
+                    "name" : "open_att",
+                    "getPSAppDEUILogic" : {
+                      "modelref" : true,
+                      "id" : "attachment_preview"
                     },
                     "getPSAppDataEntity" : {
                       "modelref" : true,
@@ -3013,72 +3026,6 @@
                       "rSMode" : 2
                     } ], [ {
                       "actionRSMode" : 1,
-                      "codeName" : "releases",
-                      "dataRSMode" : 0,
-                      "majorDECodeName" : "project",
-                      "majorDEName" : "PROJECT",
-                      "getMajorPSAppDataEntity" : {
-                        "modelref" : true,
-                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                      },
-                      "minorDECodeName" : "release",
-                      "minorDEName" : "RELEASE",
-                      "getMinorPSAppDataEntity" : {
-                        "modelref" : true,
-                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-                      },
-                      "name" : "DER1N_RELEASE_PROJECT_PROJECT_ID",
-                      "getParentPSAppDEField" : {
-                        "name" : "PROJECT_ID",
-                        "codeName" : "project_id"
-                      },
-                      "rSMode" : 2
-                    }, {
-                      "actionRSMode" : 1,
-                      "codeName" : "work_items",
-                      "dataRSMode" : 0,
-                      "majorDECodeName" : "release",
-                      "majorDEName" : "RELEASE",
-                      "getMajorPSAppDataEntity" : {
-                        "modelref" : true,
-                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-                      },
-                      "minorDECodeName" : "work_item",
-                      "minorDEName" : "WORK_ITEM",
-                      "getMinorPSAppDataEntity" : {
-                        "modelref" : true,
-                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-                      },
-                      "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-                      "getParentPSAppDEField" : {
-                        "name" : "RELEASE_ID",
-                        "codeName" : "release_id"
-                      },
-                      "rSMode" : 2
-                    }, {
-                      "actionRSMode" : 1,
-                      "codeName" : "comments",
-                      "dataRSMode" : 0,
-                      "majorDECodeName" : "work_item",
-                      "majorDEName" : "WORK_ITEM",
-                      "getMajorPSAppDataEntity" : {
-                        "modelref" : true,
-                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-                      },
-                      "minorDECodeName" : "comment",
-                      "minorDEName" : "COMMENT",
-                      "getMinorPSAppDataEntity" : {
-                        "modelref" : true,
-                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
-                      },
-                      "name" : "DERCUSTOM_COMMENT_WORK_ITEM_PRINCIPAL_ID",
-                      "getParentPSAppDEField" : {
-                        "name" : "PRINCIPAL_ID",
-                        "codeName" : "principal_id"
-                      },
-                      "rSMode" : 2
-                    } ], [ {
-                      "actionRSMode" : 1,
                       "codeName" : "discuss_posts",
                       "dataRSMode" : 0,
                       "majorDECodeName" : "discuss_topic",
@@ -3182,50 +3129,6 @@
                         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
                       },
                       "name" : "DERCOSTOM_COMMENT_PAGE_PRINCIPAL_ID",
-                      "getParentPSAppDEField" : {
-                        "name" : "PRINCIPAL_ID",
-                        "codeName" : "principal_id"
-                      },
-                      "rSMode" : 2
-                    } ], [ {
-                      "actionRSMode" : 1,
-                      "codeName" : "work_items",
-                      "dataRSMode" : 0,
-                      "majorDECodeName" : "release",
-                      "majorDEName" : "RELEASE",
-                      "getMajorPSAppDataEntity" : {
-                        "modelref" : true,
-                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-                      },
-                      "minorDECodeName" : "work_item",
-                      "minorDEName" : "WORK_ITEM",
-                      "getMinorPSAppDataEntity" : {
-                        "modelref" : true,
-                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-                      },
-                      "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-                      "getParentPSAppDEField" : {
-                        "name" : "RELEASE_ID",
-                        "codeName" : "release_id"
-                      },
-                      "rSMode" : 2
-                    }, {
-                      "actionRSMode" : 1,
-                      "codeName" : "comments",
-                      "dataRSMode" : 0,
-                      "majorDECodeName" : "work_item",
-                      "majorDEName" : "WORK_ITEM",
-                      "getMajorPSAppDataEntity" : {
-                        "modelref" : true,
-                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-                      },
-                      "minorDECodeName" : "comment",
-                      "minorDEName" : "COMMENT",
-                      "getMinorPSAppDataEntity" : {
-                        "modelref" : true,
-                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
-                      },
-                      "name" : "DERCUSTOM_COMMENT_WORK_ITEM_PRINCIPAL_ID",
                       "getParentPSAppDEField" : {
                         "name" : "PRINCIPAL_ID",
                         "codeName" : "principal_id"
@@ -5680,11 +5583,11 @@
                     }, {
                       "align" : "LEFT",
                       "cLConvertMode" : "NONE",
-                      "caption" : "关联目标标识",
+                      "caption" : "目标主体标识",
                       "codeName" : "target_id",
                       "columnType" : "DEFGRIDCOLUMN",
                       "dataItemName" : "target_id",
-                      "excelCaption" : "关联目标标识",
+                      "excelCaption" : "目标主体标识",
                       "hideMode" : 1,
                       "name" : "target_id",
                       "noPrivDisplayMode" : 1,
@@ -5963,57 +5866,57 @@
                 "modeltype" : "PSAPPDEVIEW",
                 "getPSAppDERSPaths" : [ [ {
                   "actionRSMode" : 1,
-                  "codeName" : "releases",
+                  "codeName" : "test_plans",
                   "dataRSMode" : 0,
-                  "majorDECodeName" : "project",
-                  "majorDEName" : "PROJECT",
+                  "majorDECodeName" : "library",
+                  "majorDEName" : "LIBRARY",
                   "getMajorPSAppDataEntity" : {
                     "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
                   },
-                  "minorDECodeName" : "release",
-                  "minorDEName" : "RELEASE",
+                  "minorDECodeName" : "test_plan",
+                  "minorDEName" : "TEST_PLAN",
                   "getMinorPSAppDataEntity" : {
                     "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
                   },
-                  "name" : "DER1N_RELEASE_PROJECT_PROJECT_ID",
+                  "name" : "DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID",
                   "getParentPSAppDEField" : {
-                    "name" : "PROJECT_ID",
-                    "codeName" : "project_id"
+                    "name" : "LIBRARY_ID",
+                    "codeName" : "library_id"
                   },
                   "rSMode" : 2
                 }, {
                   "actionRSMode" : 1,
-                  "codeName" : "work_items",
+                  "codeName" : "runs",
                   "dataRSMode" : 0,
-                  "majorDECodeName" : "release",
-                  "majorDEName" : "RELEASE",
+                  "majorDECodeName" : "test_plan",
+                  "majorDEName" : "TEST_PLAN",
                   "getMajorPSAppDataEntity" : {
                     "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
                   },
-                  "minorDECodeName" : "work_item",
-                  "minorDEName" : "WORK_ITEM",
+                  "minorDECodeName" : "run",
+                  "minorDEName" : "RUN",
                   "getMinorPSAppDataEntity" : {
                     "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
                   },
-                  "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
+                  "name" : "DER1N_RUN_TEST_PLAN_PLAN_ID",
                   "getParentPSAppDEField" : {
-                    "name" : "RELEASE_ID",
-                    "codeName" : "release_id"
+                    "name" : "PLAN_ID",
+                    "codeName" : "plan_id"
                   },
                   "rSMode" : 2
                 }, {
                   "actionRSMode" : 1,
                   "codeName" : "relations",
                   "dataRSMode" : 0,
-                  "majorDECodeName" : "work_item",
-                  "majorDEName" : "WORK_ITEM",
+                  "majorDECodeName" : "run",
+                  "majorDEName" : "RUN",
                   "getMajorPSAppDataEntity" : {
                     "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
                   },
                   "minorDECodeName" : "relation",
                   "minorDEName" : "RELATION",
@@ -6021,7 +5924,69 @@
                     "modelref" : true,
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
                   },
-                  "name" : "工作项-关联",
+                  "name" : "执行用例-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "test_cases",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "library",
+                  "majorDEName" : "LIBRARY",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
+                  },
+                  "minorDECodeName" : "test_case",
+                  "minorDEName" : "TEST_CASE",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+                  },
+                  "name" : "DER1N_TEST_CASE_LIBRARY_TEST_LIBRARY_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "TEST_LIBRARY_ID",
+                    "codeName" : "test_library_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "runs",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "test_case",
+                  "majorDEName" : "TEST_CASE",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+                  },
+                  "minorDECodeName" : "run",
+                  "minorDEName" : "RUN",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                  },
+                  "name" : "DER1N_RUN_TEST_CASE_CASE_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "CASE_ID",
+                    "codeName" : "case_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "run",
+                  "majorDEName" : "RUN",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "执行用例-关联",
                   "rSMode" : 2
                 } ], [ {
                   "actionRSMode" : 1,
@@ -6067,46 +6032,6 @@
                   "actionRSMode" : 1,
                   "codeName" : "work_items",
                   "dataRSMode" : 0,
-                  "majorDECodeName" : "release",
-                  "majorDEName" : "RELEASE",
-                  "getMajorPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-                  },
-                  "minorDECodeName" : "work_item",
-                  "minorDEName" : "WORK_ITEM",
-                  "getMinorPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-                  },
-                  "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-                  "getParentPSAppDEField" : {
-                    "name" : "RELEASE_ID",
-                    "codeName" : "release_id"
-                  },
-                  "rSMode" : 2
-                }, {
-                  "actionRSMode" : 1,
-                  "codeName" : "relations",
-                  "dataRSMode" : 0,
-                  "majorDECodeName" : "work_item",
-                  "majorDEName" : "WORK_ITEM",
-                  "getMajorPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-                  },
-                  "minorDECodeName" : "relation",
-                  "minorDEName" : "RELATION",
-                  "getMinorPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
-                  },
-                  "name" : "工作项-关联",
-                  "rSMode" : 2
-                } ], [ {
-                  "actionRSMode" : 1,
-                  "codeName" : "work_items",
-                  "dataRSMode" : 0,
                   "majorDECodeName" : "project",
                   "majorDEName" : "PROJECT",
                   "getMajorPSAppDataEntity" : {
@@ -6142,6 +6067,46 @@
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
                   },
                   "name" : "工作项-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "tickets",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "product",
+                  "majorDEName" : "PRODUCT",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+                  },
+                  "minorDECodeName" : "ticket",
+                  "minorDEName" : "TICKET",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
+                  },
+                  "name" : "DER1N_TICKET_PRODUCT_PRODUCT_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "PRODUCT_ID",
+                    "codeName" : "product_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "ticket",
+                  "majorDEName" : "TICKET",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "工单-关联",
                   "rSMode" : 2
                 } ], [ {
                   "actionRSMode" : 1,
@@ -6182,6 +6147,86 @@
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
                   },
                   "name" : "用例-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "runs",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "test_plan",
+                  "majorDEName" : "TEST_PLAN",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+                  },
+                  "minorDECodeName" : "run",
+                  "minorDEName" : "RUN",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                  },
+                  "name" : "DER1N_RUN_TEST_PLAN_PLAN_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "PLAN_ID",
+                    "codeName" : "plan_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "run",
+                  "majorDEName" : "RUN",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "执行用例-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "runs",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "test_case",
+                  "majorDEName" : "TEST_CASE",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+                  },
+                  "minorDECodeName" : "run",
+                  "minorDEName" : "RUN",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                  },
+                  "name" : "DER1N_RUN_TEST_CASE_CASE_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "CASE_ID",
+                    "codeName" : "case_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "run",
+                  "majorDEName" : "RUN",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "执行用例-关联",
                   "rSMode" : 2
                 } ], [ {
                   "actionRSMode" : 1,
@@ -6316,6 +6361,42 @@
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
                   },
                   "name" : "用例-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "run",
+                  "majorDEName" : "RUN",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "执行用例-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "ticket",
+                  "majorDEName" : "TICKET",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "工单-关联",
                   "rSMode" : 2
                 } ], [ {
                   "actionRSMode" : 1,
@@ -7314,11 +7395,11 @@
                     }, {
                       "align" : "LEFT",
                       "cLConvertMode" : "NONE",
-                      "caption" : "关联目标标识",
+                      "caption" : "目标主体标识",
                       "codeName" : "target_id",
                       "columnType" : "DEFGRIDCOLUMN",
                       "dataItemName" : "target_id",
-                      "excelCaption" : "关联目标标识",
+                      "excelCaption" : "目标主体标识",
                       "hideMode" : 1,
                       "name" : "target_id",
                       "noPrivDisplayMode" : 1,
@@ -7598,57 +7679,57 @@
                 "modeltype" : "PSAPPDEVIEW",
                 "getPSAppDERSPaths" : [ [ {
                   "actionRSMode" : 1,
-                  "codeName" : "releases",
+                  "codeName" : "test_plans",
                   "dataRSMode" : 0,
-                  "majorDECodeName" : "project",
-                  "majorDEName" : "PROJECT",
+                  "majorDECodeName" : "library",
+                  "majorDEName" : "LIBRARY",
                   "getMajorPSAppDataEntity" : {
                     "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
                   },
-                  "minorDECodeName" : "release",
-                  "minorDEName" : "RELEASE",
+                  "minorDECodeName" : "test_plan",
+                  "minorDEName" : "TEST_PLAN",
                   "getMinorPSAppDataEntity" : {
                     "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
                   },
-                  "name" : "DER1N_RELEASE_PROJECT_PROJECT_ID",
+                  "name" : "DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID",
                   "getParentPSAppDEField" : {
-                    "name" : "PROJECT_ID",
-                    "codeName" : "project_id"
+                    "name" : "LIBRARY_ID",
+                    "codeName" : "library_id"
                   },
                   "rSMode" : 2
                 }, {
                   "actionRSMode" : 1,
-                  "codeName" : "work_items",
+                  "codeName" : "runs",
                   "dataRSMode" : 0,
-                  "majorDECodeName" : "release",
-                  "majorDEName" : "RELEASE",
+                  "majorDECodeName" : "test_plan",
+                  "majorDEName" : "TEST_PLAN",
                   "getMajorPSAppDataEntity" : {
                     "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
                   },
-                  "minorDECodeName" : "work_item",
-                  "minorDEName" : "WORK_ITEM",
+                  "minorDECodeName" : "run",
+                  "minorDEName" : "RUN",
                   "getMinorPSAppDataEntity" : {
                     "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
                   },
-                  "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
+                  "name" : "DER1N_RUN_TEST_PLAN_PLAN_ID",
                   "getParentPSAppDEField" : {
-                    "name" : "RELEASE_ID",
-                    "codeName" : "release_id"
+                    "name" : "PLAN_ID",
+                    "codeName" : "plan_id"
                   },
                   "rSMode" : 2
                 }, {
                   "actionRSMode" : 1,
                   "codeName" : "relations",
                   "dataRSMode" : 0,
-                  "majorDECodeName" : "work_item",
-                  "majorDEName" : "WORK_ITEM",
+                  "majorDECodeName" : "run",
+                  "majorDEName" : "RUN",
                   "getMajorPSAppDataEntity" : {
                     "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
                   },
                   "minorDECodeName" : "relation",
                   "minorDEName" : "RELATION",
@@ -7656,7 +7737,69 @@
                     "modelref" : true,
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
                   },
-                  "name" : "工作项-关联",
+                  "name" : "执行用例-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "test_cases",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "library",
+                  "majorDEName" : "LIBRARY",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
+                  },
+                  "minorDECodeName" : "test_case",
+                  "minorDEName" : "TEST_CASE",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+                  },
+                  "name" : "DER1N_TEST_CASE_LIBRARY_TEST_LIBRARY_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "TEST_LIBRARY_ID",
+                    "codeName" : "test_library_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "runs",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "test_case",
+                  "majorDEName" : "TEST_CASE",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+                  },
+                  "minorDECodeName" : "run",
+                  "minorDEName" : "RUN",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                  },
+                  "name" : "DER1N_RUN_TEST_CASE_CASE_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "CASE_ID",
+                    "codeName" : "case_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "run",
+                  "majorDEName" : "RUN",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "执行用例-关联",
                   "rSMode" : 2
                 } ], [ {
                   "actionRSMode" : 1,
@@ -7702,46 +7845,6 @@
                   "actionRSMode" : 1,
                   "codeName" : "work_items",
                   "dataRSMode" : 0,
-                  "majorDECodeName" : "release",
-                  "majorDEName" : "RELEASE",
-                  "getMajorPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-                  },
-                  "minorDECodeName" : "work_item",
-                  "minorDEName" : "WORK_ITEM",
-                  "getMinorPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-                  },
-                  "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-                  "getParentPSAppDEField" : {
-                    "name" : "RELEASE_ID",
-                    "codeName" : "release_id"
-                  },
-                  "rSMode" : 2
-                }, {
-                  "actionRSMode" : 1,
-                  "codeName" : "relations",
-                  "dataRSMode" : 0,
-                  "majorDECodeName" : "work_item",
-                  "majorDEName" : "WORK_ITEM",
-                  "getMajorPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-                  },
-                  "minorDECodeName" : "relation",
-                  "minorDEName" : "RELATION",
-                  "getMinorPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
-                  },
-                  "name" : "工作项-关联",
-                  "rSMode" : 2
-                } ], [ {
-                  "actionRSMode" : 1,
-                  "codeName" : "work_items",
-                  "dataRSMode" : 0,
                   "majorDECodeName" : "project",
                   "majorDEName" : "PROJECT",
                   "getMajorPSAppDataEntity" : {
@@ -7777,6 +7880,46 @@
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
                   },
                   "name" : "工作项-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "tickets",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "product",
+                  "majorDEName" : "PRODUCT",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+                  },
+                  "minorDECodeName" : "ticket",
+                  "minorDEName" : "TICKET",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
+                  },
+                  "name" : "DER1N_TICKET_PRODUCT_PRODUCT_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "PRODUCT_ID",
+                    "codeName" : "product_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "ticket",
+                  "majorDEName" : "TICKET",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "工单-关联",
                   "rSMode" : 2
                 } ], [ {
                   "actionRSMode" : 1,
@@ -7817,6 +7960,86 @@
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
                   },
                   "name" : "用例-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "runs",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "test_plan",
+                  "majorDEName" : "TEST_PLAN",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+                  },
+                  "minorDECodeName" : "run",
+                  "minorDEName" : "RUN",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                  },
+                  "name" : "DER1N_RUN_TEST_PLAN_PLAN_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "PLAN_ID",
+                    "codeName" : "plan_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "run",
+                  "majorDEName" : "RUN",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "执行用例-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "runs",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "test_case",
+                  "majorDEName" : "TEST_CASE",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+                  },
+                  "minorDECodeName" : "run",
+                  "minorDEName" : "RUN",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                  },
+                  "name" : "DER1N_RUN_TEST_CASE_CASE_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "CASE_ID",
+                    "codeName" : "case_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "run",
+                  "majorDEName" : "RUN",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "执行用例-关联",
                   "rSMode" : 2
                 } ], [ {
                   "actionRSMode" : 1,
@@ -7951,6 +8174,42 @@
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
                   },
                   "name" : "用例-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "run",
+                  "majorDEName" : "RUN",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "执行用例-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "ticket",
+                  "majorDEName" : "TICKET",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "工单-关联",
                   "rSMode" : 2
                 } ], [ {
                   "actionRSMode" : 1,
@@ -9210,57 +9469,57 @@
                 "modeltype" : "PSAPPDEVIEW",
                 "getPSAppDERSPaths" : [ [ {
                   "actionRSMode" : 1,
-                  "codeName" : "releases",
+                  "codeName" : "test_plans",
                   "dataRSMode" : 0,
-                  "majorDECodeName" : "project",
-                  "majorDEName" : "PROJECT",
+                  "majorDECodeName" : "library",
+                  "majorDEName" : "LIBRARY",
                   "getMajorPSAppDataEntity" : {
                     "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
                   },
-                  "minorDECodeName" : "release",
-                  "minorDEName" : "RELEASE",
+                  "minorDECodeName" : "test_plan",
+                  "minorDEName" : "TEST_PLAN",
                   "getMinorPSAppDataEntity" : {
                     "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
                   },
-                  "name" : "DER1N_RELEASE_PROJECT_PROJECT_ID",
+                  "name" : "DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID",
                   "getParentPSAppDEField" : {
-                    "name" : "PROJECT_ID",
-                    "codeName" : "project_id"
+                    "name" : "LIBRARY_ID",
+                    "codeName" : "library_id"
                   },
                   "rSMode" : 2
                 }, {
                   "actionRSMode" : 1,
-                  "codeName" : "work_items",
+                  "codeName" : "runs",
                   "dataRSMode" : 0,
-                  "majorDECodeName" : "release",
-                  "majorDEName" : "RELEASE",
+                  "majorDECodeName" : "test_plan",
+                  "majorDEName" : "TEST_PLAN",
                   "getMajorPSAppDataEntity" : {
                     "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
                   },
-                  "minorDECodeName" : "work_item",
-                  "minorDEName" : "WORK_ITEM",
+                  "minorDECodeName" : "run",
+                  "minorDEName" : "RUN",
                   "getMinorPSAppDataEntity" : {
                     "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
                   },
-                  "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
+                  "name" : "DER1N_RUN_TEST_PLAN_PLAN_ID",
                   "getParentPSAppDEField" : {
-                    "name" : "RELEASE_ID",
-                    "codeName" : "release_id"
+                    "name" : "PLAN_ID",
+                    "codeName" : "plan_id"
                   },
                   "rSMode" : 2
                 }, {
                   "actionRSMode" : 1,
                   "codeName" : "relations",
                   "dataRSMode" : 0,
-                  "majorDECodeName" : "work_item",
-                  "majorDEName" : "WORK_ITEM",
+                  "majorDECodeName" : "run",
+                  "majorDEName" : "RUN",
                   "getMajorPSAppDataEntity" : {
                     "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
                   },
                   "minorDECodeName" : "relation",
                   "minorDEName" : "RELATION",
@@ -9268,7 +9527,69 @@
                     "modelref" : true,
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
                   },
-                  "name" : "工作项-关联",
+                  "name" : "执行用例-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "test_cases",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "library",
+                  "majorDEName" : "LIBRARY",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
+                  },
+                  "minorDECodeName" : "test_case",
+                  "minorDEName" : "TEST_CASE",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+                  },
+                  "name" : "DER1N_TEST_CASE_LIBRARY_TEST_LIBRARY_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "TEST_LIBRARY_ID",
+                    "codeName" : "test_library_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "runs",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "test_case",
+                  "majorDEName" : "TEST_CASE",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+                  },
+                  "minorDECodeName" : "run",
+                  "minorDEName" : "RUN",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                  },
+                  "name" : "DER1N_RUN_TEST_CASE_CASE_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "CASE_ID",
+                    "codeName" : "case_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "run",
+                  "majorDEName" : "RUN",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "执行用例-关联",
                   "rSMode" : 2
                 } ], [ {
                   "actionRSMode" : 1,
@@ -9314,46 +9635,6 @@
                   "actionRSMode" : 1,
                   "codeName" : "work_items",
                   "dataRSMode" : 0,
-                  "majorDECodeName" : "release",
-                  "majorDEName" : "RELEASE",
-                  "getMajorPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-                  },
-                  "minorDECodeName" : "work_item",
-                  "minorDEName" : "WORK_ITEM",
-                  "getMinorPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-                  },
-                  "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-                  "getParentPSAppDEField" : {
-                    "name" : "RELEASE_ID",
-                    "codeName" : "release_id"
-                  },
-                  "rSMode" : 2
-                }, {
-                  "actionRSMode" : 1,
-                  "codeName" : "relations",
-                  "dataRSMode" : 0,
-                  "majorDECodeName" : "work_item",
-                  "majorDEName" : "WORK_ITEM",
-                  "getMajorPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-                  },
-                  "minorDECodeName" : "relation",
-                  "minorDEName" : "RELATION",
-                  "getMinorPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
-                  },
-                  "name" : "工作项-关联",
-                  "rSMode" : 2
-                } ], [ {
-                  "actionRSMode" : 1,
-                  "codeName" : "work_items",
-                  "dataRSMode" : 0,
                   "majorDECodeName" : "project",
                   "majorDEName" : "PROJECT",
                   "getMajorPSAppDataEntity" : {
@@ -9389,6 +9670,46 @@
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
                   },
                   "name" : "工作项-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "tickets",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "product",
+                  "majorDEName" : "PRODUCT",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+                  },
+                  "minorDECodeName" : "ticket",
+                  "minorDEName" : "TICKET",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
+                  },
+                  "name" : "DER1N_TICKET_PRODUCT_PRODUCT_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "PRODUCT_ID",
+                    "codeName" : "product_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "ticket",
+                  "majorDEName" : "TICKET",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "工单-关联",
                   "rSMode" : 2
                 } ], [ {
                   "actionRSMode" : 1,
@@ -9429,6 +9750,86 @@
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
                   },
                   "name" : "用例-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "runs",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "test_plan",
+                  "majorDEName" : "TEST_PLAN",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+                  },
+                  "minorDECodeName" : "run",
+                  "minorDEName" : "RUN",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                  },
+                  "name" : "DER1N_RUN_TEST_PLAN_PLAN_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "PLAN_ID",
+                    "codeName" : "plan_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "run",
+                  "majorDEName" : "RUN",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "执行用例-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "runs",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "test_case",
+                  "majorDEName" : "TEST_CASE",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+                  },
+                  "minorDECodeName" : "run",
+                  "minorDEName" : "RUN",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                  },
+                  "name" : "DER1N_RUN_TEST_CASE_CASE_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "CASE_ID",
+                    "codeName" : "case_id"
+                  },
+                  "rSMode" : 2
+                }, {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "run",
+                  "majorDEName" : "RUN",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "执行用例-关联",
                   "rSMode" : 2
                 } ], [ {
                   "actionRSMode" : 1,
@@ -9563,6 +9964,42 @@
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
                   },
                   "name" : "用例-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "run",
+                  "majorDEName" : "RUN",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "执行用例-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "ticket",
+                  "majorDEName" : "TICKET",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "工单-关联",
                   "rSMode" : 2
                 } ], [ {
                   "actionRSMode" : 1,
@@ -11569,68 +12006,6 @@
                 "modeltype" : "PSAPPDEVIEW",
                 "getPSAppDERSPaths" : [ [ {
                   "actionRSMode" : 1,
-                  "codeName" : "releases",
-                  "dataRSMode" : 0,
-                  "majorDECodeName" : "project",
-                  "majorDEName" : "PROJECT",
-                  "getMajorPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                  },
-                  "minorDECodeName" : "release",
-                  "minorDEName" : "RELEASE",
-                  "getMinorPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-                  },
-                  "name" : "DER1N_RELEASE_PROJECT_PROJECT_ID",
-                  "getParentPSAppDEField" : {
-                    "name" : "PROJECT_ID",
-                    "codeName" : "project_id"
-                  },
-                  "rSMode" : 2
-                }, {
-                  "actionRSMode" : 1,
-                  "codeName" : "work_items",
-                  "dataRSMode" : 0,
-                  "majorDECodeName" : "release",
-                  "majorDEName" : "RELEASE",
-                  "getMajorPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-                  },
-                  "minorDECodeName" : "work_item",
-                  "minorDEName" : "WORK_ITEM",
-                  "getMinorPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-                  },
-                  "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-                  "getParentPSAppDEField" : {
-                    "name" : "RELEASE_ID",
-                    "codeName" : "release_id"
-                  },
-                  "rSMode" : 2
-                }, {
-                  "actionRSMode" : 1,
-                  "codeName" : "versions",
-                  "dataRSMode" : 0,
-                  "majorDECodeName" : "work_item",
-                  "majorDEName" : "WORK_ITEM",
-                  "getMajorPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-                  },
-                  "minorDECodeName" : "version",
-                  "minorDEName" : "VERSION",
-                  "getMinorPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
-                  },
-                  "name" : "工作项-版本",
-                  "rSMode" : 2
-                } ], [ {
-                  "actionRSMode" : 1,
                   "codeName" : "article_pages",
                   "dataRSMode" : 0,
                   "majorDECodeName" : "shared_space",
@@ -11668,46 +12043,6 @@
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
                   },
                   "name" : "页面-版本",
-                  "rSMode" : 2
-                } ], [ {
-                  "actionRSMode" : 1,
-                  "codeName" : "work_items",
-                  "dataRSMode" : 0,
-                  "majorDECodeName" : "release",
-                  "majorDEName" : "RELEASE",
-                  "getMajorPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-                  },
-                  "minorDECodeName" : "work_item",
-                  "minorDEName" : "WORK_ITEM",
-                  "getMinorPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-                  },
-                  "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-                  "getParentPSAppDEField" : {
-                    "name" : "RELEASE_ID",
-                    "codeName" : "release_id"
-                  },
-                  "rSMode" : 2
-                }, {
-                  "actionRSMode" : 1,
-                  "codeName" : "versions",
-                  "dataRSMode" : 0,
-                  "majorDECodeName" : "work_item",
-                  "majorDEName" : "WORK_ITEM",
-                  "getMajorPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-                  },
-                  "minorDECodeName" : "version",
-                  "minorDEName" : "VERSION",
-                  "getMinorPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
-                  },
-                  "name" : "工作项-版本",
                   "rSMode" : 2
                 } ], [ {
                   "actionRSMode" : 1,

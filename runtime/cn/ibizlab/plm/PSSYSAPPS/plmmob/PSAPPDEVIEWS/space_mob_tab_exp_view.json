@@ -101,8 +101,10 @@
           "itemType" : "CONTAINER",
           "name" : "view_toolbar",
           "getPSLayout" : {
+            "align" : "space-between",
             "dir" : "row",
-            "layout" : "FLEX"
+            "layout" : "FLEX",
+            "vAlign" : "center"
           },
           "getPSLayoutPos" : {
             "grow" : -1,
@@ -112,7 +114,6 @@
           },
           "getPSPanelItems" : [ {
             "caption" : "容器",
-            "contentWidth" : 100.0,
             "itemStyle" : "DEFAULT",
             "itemType" : "CONTAINER",
             "name" : "view_left_toolbar",
@@ -120,12 +121,9 @@
               "layout" : "FLEX"
             },
             "getPSLayoutPos" : {
-              "basis" : 100,
               "grow" : -1,
               "layout" : "FLEX",
-              "shrink" : 0,
-              "width" : 100,
-              "widthMode" : "PX"
+              "shrink" : 0
             },
             "getPSPanelItems" : [ {
               "caption" : "单项数据容器",
@@ -177,8 +175,7 @@
                 "convertToCodeItemText" : true
               } ],
               "predefinedType" : "CONTAINER_SINGLEDATA"
-            } ],
-            "width" : 100.0
+            } ]
           }, {
             "caption" : "容器",
             "itemStyle" : "DEFAULT",
@@ -207,7 +204,6 @@
             } ]
           }, {
             "caption" : "容器",
-            "contentWidth" : 100.0,
             "itemStyle" : "DEFAULT",
             "itemType" : "CONTAINER",
             "name" : "view_right_toolbar",
@@ -215,12 +211,9 @@
               "layout" : "FLEX"
             },
             "getPSLayoutPos" : {
-              "basis" : 100,
               "grow" : -1,
               "layout" : "FLEX",
-              "shrink" : 0,
-              "width" : 100,
-              "widthMode" : "PX"
+              "shrink" : 0
             },
             "getPSPanelItems" : [ {
               "caption" : "工具栏",
@@ -235,8 +228,7 @@
                 "widthMode" : "FULL"
               },
               "showCaption" : true
-            } ],
-            "width" : 100.0
+            } ]
           } ],
           "predefinedType" : "Toolbar"
         } ],
@@ -376,6 +368,71 @@
       "hideEditItem" : true,
       "modelid" : "151FA454-70FC-4F30-AD36-E06CA16FDDDE",
       "modeltype" : "PSDEDRTAB"
+    }, {
+      "codeName" : "mob_tab_exp_view_righttoolbar",
+      "controlType" : "TOOLBAR",
+      "logicName" : "移动端右侧搜索工具栏",
+      "name" : "righttoolbar",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space.json"
+      },
+      "getPSControlParam" : {
+        "id" : "RIGHTTOOLBAR"
+      },
+      "getPSDEToolbarItems" : [ {
+        "borderStyle" : "NONE",
+        "caption" : "搜索",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction1",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "righttoolbar_deuiaction1"
+        },
+        "getPSSysCss" : {
+          "cssName" : "mob_magnify_no_border_button"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf002@FontAwesome",
+          "cssClass" : "fa fa-search"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "打开搜索页",
+          "codeName" : "open_search_view",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/search_hub_mob_tab_search_view.json",
+            "viewType" : "DEMOBTABSEARCHVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "search_hub_open_search_view",
+          "name" : "打开搜索页",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/search_hub.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf002@FontAwesome",
+            "cssClass" : "fa fa-search"
+          },
+          "timeout" : 60000,
+          "tooltip" : "搜索",
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "open_search_view",
+          "uIActionType" : "DEUIACTION",
+          "globalUIAction" : true,
+          "id" : "open_search_view@search_hub"
+        },
+        "tooltip" : "搜索",
+        "uIActionTarget" : "NONE",
+        "showCaption" : false,
+        "showIcon" : true
+      } ],
+      "modelid" : "482CF0CB-58AC-48C0-AA5E-159FA92A56AF",
+      "modeltype" : "PSDETOOLBAR"
     }, {
       "getCapPSLanguageRes" : {
         "lanResTag" : "DE.LNAME.SPACE"

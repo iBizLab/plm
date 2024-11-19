@@ -5718,32 +5718,6 @@
     "id" : "cancel_favorite@space"
   }, {
     "actionTarget" : "SINGLEKEY",
-    "caption" : "归档",
-    "codeName" : "in_progress_into_archived",
-    "confirmMsg" : "确认归档该空间？",
-    "frontProcessType" : "WIZARD",
-    "fullCodeName" : "space_in_progress_into_archived",
-    "name" : "进行中_归档",
-    "getPSAppDEMethod" : {
-      "modelref" : true,
-      "id" : "archive"
-    },
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space.json"
-    },
-    "refreshMode" : 1,
-    "successMsg" : "归档成功",
-    "timeout" : 60000,
-    "tooltip" : "归档",
-    "uIActionMode" : "BACKEND",
-    "uIActionTag" : "in_progress_into_archived",
-    "uIActionType" : "DEUIACTION",
-    "enableConfirm" : true,
-    "reloadData" : true,
-    "id" : "in_progress_into_archived@space"
-  }, {
-    "actionTarget" : "SINGLEKEY",
     "caption" : "高级设置",
     "codeName" : "mob_advanced_setting",
     "dataAccessAction" : "UPDATE",
@@ -5800,12 +5774,51 @@
     "id" : "mob_create_space@space"
   }, {
     "actionTarget" : "SINGLEKEY",
+    "caption" : "归档",
+    "codeName" : "mob_in_progress_into_archived",
+    "confirmMsg" : "确认归档该空间？",
+    "fullCodeName" : "space_mob_in_progress_into_archived",
+    "name" : "移动端进行中_归档",
+    "getNextPSUIAction" : {
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space.json"
+      },
+      "modelref" : true,
+      "id" : "mob_open_space_list@space"
+    },
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "archive"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space.json"
+    },
+    "successMsg" : "归档成功",
+    "timeout" : 60000,
+    "tooltip" : "归档",
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "mob_in_progress_into_archived",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "id" : "mob_in_progress_into_archived@space"
+  }, {
+    "actionTarget" : "SINGLEKEY",
     "caption" : "删除",
     "codeName" : "mob_in_progress_into_deleted",
     "confirmMsg" : "确认删除该空间？",
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "space_mob_in_progress_into_deleted",
     "name" : "移动端进行中_删除",
+    "getNextPSUIAction" : {
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space.json"
+      },
+      "modelref" : true,
+      "id" : "mob_open_space_list@space"
+    },
     "getPSAppDEMethod" : {
       "modelref" : true,
       "id" : "delete"
@@ -5814,7 +5827,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space.json"
     },
-    "refreshMode" : 1,
     "successMsg" : "删除成功",
     "timeout" : 60000,
     "tooltip" : "删除",
@@ -5822,7 +5834,6 @@
     "uIActionTag" : "mob_in_progress_into_deleted",
     "uIActionType" : "DEUIACTION",
     "enableConfirm" : true,
-    "reloadData" : true,
     "id" : "mob_in_progress_into_deleted@space"
   }, {
     "actionTarget" : "SINGLEKEY",
@@ -5850,6 +5861,27 @@
     "uIActionType" : "DEUIACTION",
     "enableConfirm" : true,
     "id" : "mob_move_space@space"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "打开空间列表",
+    "codeName" : "mob_open_space_list",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/space_mob_tab_exp_view.json",
+      "viewType" : "DEMOBTABEXPVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "space_mob_open_space_list",
+    "name" : "打开空间分页导航视图（移动端）",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space.json"
+    },
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "mob_open_space_list",
+    "uIActionType" : "DEUIACTION",
+    "id" : "mob_open_space_list@space"
   }, {
     "actionTarget" : "SINGLEKEY",
     "caption" : "空间设置",

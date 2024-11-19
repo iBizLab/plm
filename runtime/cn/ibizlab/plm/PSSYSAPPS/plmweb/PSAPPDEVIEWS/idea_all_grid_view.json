@@ -308,9 +308,6 @@
         "id" : "TOOLBAR"
       },
       "getPSDEToolbarItems" : [ {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "TBB.TEXT.*.NEW"
-        },
         "caption" : "新建需求",
         "groupExtractMode" : "ITEM",
         "itemType" : "DEUIACTION",
@@ -333,37 +330,34 @@
           "cssClass" : "fa fa-plus"
         },
         "getPSUIAction" : {
-          "getCapPSLanguageRes" : {
-            "lanResTag" : "TBB.TEXT.*.NEW"
-          },
-          "caption" : "新建",
-          "codeName" : "new_subdata",
-          "dataAccessAction" : "SUBDATA",
-          "fullCodeName" : "new_subdata",
-          "name" : "表格界面_新建操作_子数据",
-          "getPSDEOPPriv" : {
+          "actionTarget" : "NONE",
+          "caption" : "新建需求（测试）",
+          "codeName" : "create_idea_and_relation_customer",
+          "getFrontPSAppView" : {
             "modelref" : true,
-            "id" : "SUBDATA"
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_quick_create_view.json",
+            "viewType" : "DEOPTVIEW"
           },
-          "getPSSysImage" : {
-            "glyph" : "xf0f6@FontAwesome",
-            "cssClass" : "fa fa-file-text-o"
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "idea_create_idea_and_relation_customer",
+          "name" : "新建需求并关联客户",
+          "getPSAppDEUILogic" : {
+            "modelref" : true,
+            "id" : "create_and_relation_customer"
           },
-          "predefinedType" : "GRIDVIEW_NEWACTION",
-          "refreshMode" : 1,
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
+          },
           "timeout" : 60000,
-          "getTooltipPSLanguageRes" : {
-            "lanResTag" : "TBB.TOOLTIP.*.NEW"
-          },
-          "uIActionMode" : "SYS",
-          "uIActionTag" : "new_subdata",
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "create_idea_and_relation_customer",
           "uIActionType" : "DEUIACTION",
-          "reloadData" : true
+          "uILogicAttachMode" : "AFTER",
+          "id" : "create_idea_and_relation_customer@idea"
         },
         "tooltip" : "新建需求",
-        "getTooltipPSLanguageRes" : {
-          "lanResTag" : "TBB.TOOLTIP.*.NEW"
-        },
+        "uIActionTarget" : "NONE",
         "showCaption" : true,
         "showIcon" : true
       }, {

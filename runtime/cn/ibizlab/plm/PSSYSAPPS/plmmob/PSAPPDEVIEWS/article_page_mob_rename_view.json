@@ -208,13 +208,13 @@
           "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
         }
       }, {
-        "actionName" : "Update",
+        "actionName" : "publish_page",
         "actionType" : "DEACTION",
         "dataAccessAction" : "UPDATE",
         "name" : "update",
         "getPSAppDEMethod" : {
           "modelref" : true,
-          "id" : "update"
+          "id" : "publish_page"
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
@@ -294,6 +294,24 @@
         "codeName" : "name"
       }
     }, {
+      "id" : "is_published",
+      "hidden" : true,
+      "dataType" : 9,
+      "createDV" : "1",
+      "updateDV" : "1",
+      "getPSAppDEField" : {
+        "name" : "IS_PUBLISHED",
+        "codeName" : "is_published"
+      }
+    }, {
+      "id" : "publish_name",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "PUBLISH_NAME",
+        "codeName" : "publish_name"
+      }
+    }, {
       "id" : "id",
       "hidden" : true,
       "dataType" : 25,
@@ -337,14 +355,46 @@
             "editorType" : "MOBTEXT",
             "maxLength" : 200,
             "name" : "name",
+            "getPSEditorItems" : [ {
+              "name" : "publish_name"
+            } ],
             "placeHolder" : "请输入分组名称"
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
+          "valueItemName" : "publish_name",
           "allowEmpty" : false,
           "showCaption" : true
+        }, {
+          "caption" : "是否发布",
+          "codeName" : "is_published",
+          "createDV" : "1",
+          "dataType" : 9,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "is_published",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "IS_PUBLISHED",
+            "codeName" : "is_published"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "is_published"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "updateDV" : "1",
+          "allowEmpty" : true,
+          "hidden" : true
         } ],
         "getPSLayout" : {
           "childColMD" : 24,
@@ -357,6 +407,32 @@
         },
         "infoGroupMode" : false,
         "showCaption" : false
+      }, {
+        "caption" : "发布主题",
+        "codeName" : "publish_name",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "publish_name",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "PUBLISH_NAME",
+          "codeName" : "publish_name"
+        },
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "publish_name"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
       }, {
         "getCapPSLanguageRes" : {
           "lanResTag" : "DEF.LNAME.ID"
@@ -419,13 +495,13 @@
     "getUpdatePSControlAction" : {
       "modelref" : true,
       "id" : "update",
-      "actionName" : "Update",
+      "actionName" : "publish_page",
       "actionType" : "DEACTION",
       "dataAccessAction" : "UPDATE",
       "name" : "update",
       "getPSAppDEMethod" : {
         "modelref" : true,
-        "id" : "update"
+        "id" : "publish_page"
       },
       "getPSAppDataEntity" : {
         "modelref" : true,

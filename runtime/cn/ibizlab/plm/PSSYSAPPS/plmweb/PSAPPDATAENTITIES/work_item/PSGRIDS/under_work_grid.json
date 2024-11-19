@@ -161,64 +161,29 @@
     "columnType" : "DEFGRIDCOLUMN",
     "dataItemName" : "ptitle",
     "excelCaption" : "父工作项",
+    "getLinkPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_main_view.json",
+      "viewType" : "DEEDITVIEW"
+    },
+    "linkValueItem" : "pid",
     "name" : "ptitle",
     "noPrivDisplayMode" : 1,
     "getPSAppDEField" : {
       "name" : "PTITLE",
       "codeName" : "ptitle"
     },
-    "getPSDEUIAction" : {
-      "actionTarget" : "SINGLEKEY",
-      "caption" : "打开项目集下父工作项的链接视图",
-      "codeName" : "open_under_project_set_pview",
-      "getFrontPSAppView" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_main_view.json",
-        "viewType" : "DEEDITVIEW"
-      },
-      "frontProcessType" : "WIZARD",
-      "fullCodeName" : "work_item_open_under_project_set_pview",
-      "name" : "打开项目集下父工作项的链接视图",
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-      },
-      "getPSNavigateContexts" : [ {
-        "key" : "SRFDATATYPE",
-        "name" : "SRFDATATYPE",
-        "value" : "p_work_item_type_id",
-        "rawValue" : false
-      }, {
-        "key" : "WORK_ITEM",
-        "name" : "WORK_ITEM",
-        "value" : "pid",
-        "rawValue" : false
-      }, {
-        "key" : "PROJECT",
-        "name" : "PROJECT",
-        "value" : "project_id",
-        "rawValue" : false
-      }, {
-        "key" : "WORK_ITEM_TYPE_ID",
-        "name" : "WORK_ITEM_TYPE_ID",
-        "value" : "p_work_item_type_id",
-        "rawValue" : false
-      } ],
-      "getPSNavigateParams" : [ {
-        "key" : "srfdatatype",
-        "name" : "srfdatatype",
-        "value" : "p_work_item_type_id",
-        "rawValue" : false
-      } ],
-      "timeout" : 60000,
-      "uIActionMode" : "FRONT",
-      "uIActionTag" : "open_under_project_set_pview",
-      "uIActionType" : "DEUIACTION",
-      "id" : "open_under_project_set_pview@work_item"
-    },
     "width" : 150,
     "widthUnit" : "PX",
-    "enableSort" : true
+    "enableLinkView" : true,
+    "enableSort" : true,
+    "getUserParam" : {
+      "SRFNAVCTX.project" : "%project_id%",
+      "SRFNAVCTX.work_item" : "%pid%",
+      "SRFNAVCTX.srfdatatype" : "%p_work_item_type_id%",
+      "SRFNAVPARAM.srfdatatype" : "%p_work_item_type_id%",
+      "SRFNAVCTX.work_item_type_id" : "%p_work_item_type_id%"
+    }
   }, {
     "align" : "LEFT",
     "cLConvertMode" : "NONE",
@@ -512,6 +477,13 @@
     "getPSAppDEField" : {
       "name" : "PID",
       "codeName" : "pid"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "p_work_item_type_id",
+    "getPSAppDEField" : {
+      "name" : "P_WORK_ITEM_TYPE_ID",
+      "codeName" : "p_work_item_type_id"
     }
   }, {
     "dataType" : 25,

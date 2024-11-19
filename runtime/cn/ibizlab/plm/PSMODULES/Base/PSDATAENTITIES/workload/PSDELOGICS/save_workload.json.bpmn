@@ -10,6 +10,7 @@
                                 <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.idea()" name="workloadsave_workloadidea" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.extend_storage()" name="workloadsave_workloadremaining" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.test_case()" name="workloadsave_workloadtest_case" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.workload()" name="workloadsave_workloadu_workload" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="workloadsave_workloadwork_item" type="refentity"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IideaService))" name="ideaservice" type="service"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="work_itemservice" type="service"/>
@@ -23,6 +24,7 @@
                             <tns:global identifier="workloadsave_workloadidea" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
                             <tns:global identifier="workloadsave_workloadremaining" type="cn.ibizlab.plm.core.base.domain.extend_storage" />
                             <tns:global identifier="workloadsave_workloadtest_case" type="cn.ibizlab.plm.core.testmgmt.domain.test_case" />
+                            <tns:global identifier="workloadsave_workloadu_workload" type="cn.ibizlab.plm.core.base.domain.workload" />
                             <tns:global identifier="workloadsave_workloadwork_item" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
@@ -36,10 +38,12 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadsave_workloaddeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="保存工时"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadsave_workloaddeaction6" id="deaction6" implementation="http://www.jboss.org/drools/rule" name="更新剩余工时"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadsave_workloadrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="合计已登记工时"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadsave_workloaddeaction7" id="deaction7" implementation="http://www.jboss.org/drools/rule" name="更新实际工时"/>
-                        <endEvent id="deaction7_end" name="end"/>
-                        <sequenceFlow id="deaction7_end_line" sourceRef="deaction7" targetRef="deaction7_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadsave_workloadprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadsave_workloadprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="工时为0时置为NULL"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadsave_workloaddeaction7" id="deaction7" implementation="http://www.jboss.org/drools/rule" name="更新实际工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadsave_workloaddelogic1" id="delogic1" implementation="http://www.jboss.org/drools/rule" name="自动计算父工时"/>
+                        <endEvent id="delogic1_end" name="end"/>
+                        <sequenceFlow id="delogic1_end_line" sourceRef="delogic1" targetRef="delogic1_end"/>
                     <sequenceFlow id="begin_prepareparam2" sourceRef="begin" targetRef="prepareparam2">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-prepareparam2_deaction3" sourceRef="gateway-prepareparam2" targetRef="deaction3">
@@ -49,8 +53,9 @@
                                             $workloadsave_workloadidea:idea();
                                             $workloadsave_workloadremaining:extend_storage();
                                             $workloadsave_workloadtest_case:test_case();
+                                            $workloadsave_workloadu_workload:workload();
                                             $workloadsave_workloadwork_item:work_item();
-                                    eval($workloadsave_workloaddefault==workloadsave_workloaddefault && $workloadsave_workloadactual==workloadsave_workloadactual && $workloadsave_workloadidea==workloadsave_workloadidea && $workloadsave_workloadremaining==workloadsave_workloadremaining && $workloadsave_workloadtest_case==workloadsave_workloadtest_case && $workloadsave_workloadwork_item==workloadsave_workloadwork_item);
+                                    eval($workloadsave_workloaddefault==workloadsave_workloaddefault && $workloadsave_workloadactual==workloadsave_workloadactual && $workloadsave_workloadidea==workloadsave_workloadidea && $workloadsave_workloadremaining==workloadsave_workloadremaining && $workloadsave_workloadtest_case==workloadsave_workloadtest_case && $workloadsave_workloadu_workload==workloadsave_workloadu_workload && $workloadsave_workloadwork_item==workloadsave_workloadwork_item);
                                 eval((RuleUtils.test($workloadsave_workloaddefault.get("workload_kind"),"EQ","产品需求")))
                                 ]]>
                             </conditionExpression>
@@ -62,8 +67,9 @@
                                             $workloadsave_workloadidea:idea();
                                             $workloadsave_workloadremaining:extend_storage();
                                             $workloadsave_workloadtest_case:test_case();
+                                            $workloadsave_workloadu_workload:workload();
                                             $workloadsave_workloadwork_item:work_item();
-                                    eval($workloadsave_workloaddefault==workloadsave_workloaddefault && $workloadsave_workloadactual==workloadsave_workloadactual && $workloadsave_workloadidea==workloadsave_workloadidea && $workloadsave_workloadremaining==workloadsave_workloadremaining && $workloadsave_workloadtest_case==workloadsave_workloadtest_case && $workloadsave_workloadwork_item==workloadsave_workloadwork_item);
+                                    eval($workloadsave_workloaddefault==workloadsave_workloaddefault && $workloadsave_workloadactual==workloadsave_workloadactual && $workloadsave_workloadidea==workloadsave_workloadidea && $workloadsave_workloadremaining==workloadsave_workloadremaining && $workloadsave_workloadtest_case==workloadsave_workloadtest_case && $workloadsave_workloadu_workload==workloadsave_workloadu_workload && $workloadsave_workloadwork_item==workloadsave_workloadwork_item);
                                 eval((RuleUtils.test($workloadsave_workloaddefault.get("workload_kind"),"EQ","工作项")))
                                 ]]>
                             </conditionExpression>
@@ -75,8 +81,9 @@
                                             $workloadsave_workloadidea:idea();
                                             $workloadsave_workloadremaining:extend_storage();
                                             $workloadsave_workloadtest_case:test_case();
+                                            $workloadsave_workloadu_workload:workload();
                                             $workloadsave_workloadwork_item:work_item();
-                                    eval($workloadsave_workloaddefault==workloadsave_workloaddefault && $workloadsave_workloadactual==workloadsave_workloadactual && $workloadsave_workloadidea==workloadsave_workloadidea && $workloadsave_workloadremaining==workloadsave_workloadremaining && $workloadsave_workloadtest_case==workloadsave_workloadtest_case && $workloadsave_workloadwork_item==workloadsave_workloadwork_item);
+                                    eval($workloadsave_workloaddefault==workloadsave_workloaddefault && $workloadsave_workloadactual==workloadsave_workloadactual && $workloadsave_workloadidea==workloadsave_workloadidea && $workloadsave_workloadremaining==workloadsave_workloadremaining && $workloadsave_workloadtest_case==workloadsave_workloadtest_case && $workloadsave_workloadu_workload==workloadsave_workloadu_workload && $workloadsave_workloadwork_item==workloadsave_workloadwork_item);
                                 eval((RuleUtils.test($workloadsave_workloaddefault.get("workload_kind"),"EQ","测试用例")))
                                 ]]>
                             </conditionExpression>
@@ -95,7 +102,33 @@
                     </sequenceFlow>
                     <sequenceFlow id="deaction2_deaction6" sourceRef="deaction2" targetRef="deaction6">
                     </sequenceFlow>
-                    <sequenceFlow id="deaction6_rawsqlcall1" sourceRef="deaction6" targetRef="rawsqlcall1">
+                    <sequenceFlow id="gateway-deaction6_prepareparam7" sourceRef="gateway-deaction6" targetRef="prepareparam7">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $workloadsave_workloaddefault:workload();
+                                            $workloadsave_workloadactual:extend_storage();
+                                            $workloadsave_workloadidea:idea();
+                                            $workloadsave_workloadremaining:extend_storage();
+                                            $workloadsave_workloadtest_case:test_case();
+                                            $workloadsave_workloadu_workload:workload();
+                                            $workloadsave_workloadwork_item:work_item();
+                                    eval($workloadsave_workloaddefault==workloadsave_workloaddefault && $workloadsave_workloadactual==workloadsave_workloadactual && $workloadsave_workloadidea==workloadsave_workloadidea && $workloadsave_workloadremaining==workloadsave_workloadremaining && $workloadsave_workloadtest_case==workloadsave_workloadtest_case && $workloadsave_workloadu_workload==workloadsave_workloadu_workload && $workloadsave_workloadwork_item==workloadsave_workloadwork_item);
+                                eval((RuleUtils.test($workloadsave_workloadu_workload.get("u_workload"),"EQ","false")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-deaction6_rawsqlcall1" sourceRef="gateway-deaction6" targetRef="rawsqlcall1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $workloadsave_workloaddefault:workload();
+                                            $workloadsave_workloadactual:extend_storage();
+                                            $workloadsave_workloadidea:idea();
+                                            $workloadsave_workloadremaining:extend_storage();
+                                            $workloadsave_workloadtest_case:test_case();
+                                            $workloadsave_workloadu_workload:workload();
+                                            $workloadsave_workloadwork_item:work_item();
+                                    eval($workloadsave_workloaddefault==workloadsave_workloaddefault && $workloadsave_workloadactual==workloadsave_workloadactual && $workloadsave_workloadidea==workloadsave_workloadidea && $workloadsave_workloadremaining==workloadsave_workloadremaining && $workloadsave_workloadtest_case==workloadsave_workloadtest_case && $workloadsave_workloadu_workload==workloadsave_workloadu_workload && $workloadsave_workloadwork_item==workloadsave_workloadwork_item);
+                                eval((RuleUtils.test($workloadsave_workloadu_workload.get("u_workload"),"NOTEQ","false")))
+                                ]]>
+                            </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="gateway-rawsqlcall1_deaction7" sourceRef="gateway-rawsqlcall1" targetRef="deaction7">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
@@ -104,8 +137,9 @@
                                             $workloadsave_workloadidea:idea();
                                             $workloadsave_workloadremaining:extend_storage();
                                             $workloadsave_workloadtest_case:test_case();
+                                            $workloadsave_workloadu_workload:workload();
                                             $workloadsave_workloadwork_item:work_item();
-                                    eval($workloadsave_workloaddefault==workloadsave_workloaddefault && $workloadsave_workloadactual==workloadsave_workloadactual && $workloadsave_workloadidea==workloadsave_workloadidea && $workloadsave_workloadremaining==workloadsave_workloadremaining && $workloadsave_workloadtest_case==workloadsave_workloadtest_case && $workloadsave_workloadwork_item==workloadsave_workloadwork_item);
+                                    eval($workloadsave_workloaddefault==workloadsave_workloaddefault && $workloadsave_workloadactual==workloadsave_workloadactual && $workloadsave_workloadidea==workloadsave_workloadidea && $workloadsave_workloadremaining==workloadsave_workloadremaining && $workloadsave_workloadtest_case==workloadsave_workloadtest_case && $workloadsave_workloadu_workload==workloadsave_workloadu_workload && $workloadsave_workloadwork_item==workloadsave_workloadwork_item);
                                 eval((RuleUtils.test($workloadsave_workloadactual.get("decimalValue"),"NOTEQ","0")))
                                 ]]>
                             </conditionExpression>
@@ -117,18 +151,27 @@
                                             $workloadsave_workloadidea:idea();
                                             $workloadsave_workloadremaining:extend_storage();
                                             $workloadsave_workloadtest_case:test_case();
+                                            $workloadsave_workloadu_workload:workload();
                                             $workloadsave_workloadwork_item:work_item();
-                                    eval($workloadsave_workloaddefault==workloadsave_workloaddefault && $workloadsave_workloadactual==workloadsave_workloadactual && $workloadsave_workloadidea==workloadsave_workloadidea && $workloadsave_workloadremaining==workloadsave_workloadremaining && $workloadsave_workloadtest_case==workloadsave_workloadtest_case && $workloadsave_workloadwork_item==workloadsave_workloadwork_item);
+                                    eval($workloadsave_workloaddefault==workloadsave_workloaddefault && $workloadsave_workloadactual==workloadsave_workloadactual && $workloadsave_workloadidea==workloadsave_workloadidea && $workloadsave_workloadremaining==workloadsave_workloadremaining && $workloadsave_workloadtest_case==workloadsave_workloadtest_case && $workloadsave_workloadu_workload==workloadsave_workloadu_workload && $workloadsave_workloadwork_item==workloadsave_workloadwork_item);
                                 eval((RuleUtils.test($workloadsave_workloadactual.get("datetimeValue"),"EQ","0")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
+                    <sequenceFlow id="prepareparam7_deaction7" sourceRef="prepareparam7" targetRef="deaction7">
+                    </sequenceFlow>
                     <sequenceFlow id="prepareparam6_deaction7" sourceRef="prepareparam6" targetRef="deaction7">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction7_delogic1" sourceRef="deaction7" targetRef="delogic1">
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-prepareparam2" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam2_end_line"></exclusiveGateway>
                             <sequenceFlow id="prepareparam2_gateway-prepareparam2_gatewayline" sourceRef="prepareparam2" targetRef="gateway-prepareparam2"></sequenceFlow>
                             <sequenceFlow id="gateway-prepareparam2_end_line" sourceRef="gateway-prepareparam2" targetRef="gateway-prepareparam2_end"/>
                             <endEvent id="gateway-prepareparam2_end" name="end"/>
+                            <exclusiveGateway id="gateway-deaction6" name="Gateway" gatewayDirection="Diverging" default="gateway-deaction6_end_line"></exclusiveGateway>
+                            <sequenceFlow id="deaction6_gateway-deaction6_gatewayline" sourceRef="deaction6" targetRef="gateway-deaction6"></sequenceFlow>
+                            <sequenceFlow id="gateway-deaction6_end_line" sourceRef="gateway-deaction6" targetRef="gateway-deaction6_end"/>
+                            <endEvent id="gateway-deaction6_end" name="end"/>
                             <exclusiveGateway id="gateway-rawsqlcall1" name="Gateway" gatewayDirection="Diverging" default="gateway-rawsqlcall1_end_line"></exclusiveGateway>
                             <sequenceFlow id="rawsqlcall1_gateway-rawsqlcall1_gatewayline" sourceRef="rawsqlcall1" targetRef="gateway-rawsqlcall1"></sequenceFlow>
                             <sequenceFlow id="gateway-rawsqlcall1_end_line" sourceRef="gateway-rawsqlcall1" targetRef="gateway-rawsqlcall1_end"/>

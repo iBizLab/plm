@@ -195,6 +195,16 @@
           "layout" : "FLEX"
         },
         "getPSPanelItems" : [ {
+          "caption" : "搜索栏",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CTRLPOS",
+          "name" : "searchbar",
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "showCaption" : true
+        }, {
           "caption" : "搜索表单",
           "itemStyle" : "DEFAULT",
           "itemType" : "CTRLPOS",
@@ -1173,22 +1183,221 @@
       "modelid" : "E3A4341E-DF01-4B8C-B71A-753DC956C921",
       "modeltype" : "PSDEFORM_SEARCHFORM"
     }, {
+      "codeName" : "mob_calendar_searchbar",
       "controlType" : "SEARCHBAR",
-      "name" : "searchbar",
+      "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/workload/PSSEARCHBARS/mob_calendar_searchbar.json",
+      "logicName" : "移动端工时日历_搜索栏",
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/workload.json"
       },
       "getPSControlParam" : {
-        "id" : "searchbar"
+        "id" : "SEARCHBAR"
       },
-      "quickGroupCount" : -1,
-      "quickSearchMode" : 0,
+      "getPSSearchBarFilters" : [ {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "CONTROL.DEFSFITEM.WORKLOAD.N_NAME_LIKE"
+        },
+        "caption" : "事项名称",
+        "dataType" : 25,
+        "itemType" : "FILTER",
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "name",
+        "getPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        },
+        "getPSDEFSearchMode" : {
+          "codeName" : "N_NAME_LIKE",
+          "name" : "N_NAME_LIKE",
+          "stdDataType" : 25,
+          "valueOP" : "LIKE"
+        },
+        "getPSEditor" : {
+          "editorType" : "MOBTEXT",
+          "name" : "name"
+        },
+        "allowEmpty" : true,
+        "emptyCaption" : false,
+        "hidden" : false,
+        "showCaption" : false
+      }, {
+        "caption" : "类别",
+        "dataType" : 25,
+        "itemType" : "FILTER",
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "type_name",
+        "getPSAppDEField" : {
+          "name" : "TYPE_NAME",
+          "codeName" : "type_name"
+        },
+        "getPSDEFSearchMode" : {
+          "codeName" : "N_TYPE_NAME_EQ",
+          "name" : "N_TYPE_NAME_EQ",
+          "stdDataType" : 25,
+          "valueOP" : "EQ"
+        },
+        "getPSEditor" : {
+          "editorType" : "MOBDROPDOWNLIST",
+          "name" : "type_name",
+          "getPSAppCodeList" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/Base__workload_type.json"
+          },
+          "singleSelect" : true
+        },
+        "allowEmpty" : true,
+        "emptyCaption" : false,
+        "hidden" : false,
+        "needCodeListConfig" : true,
+        "showCaption" : false
+      }, {
+        "caption" : "总登记工时",
+        "dataType" : 6,
+        "itemType" : "FILTER",
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "N_DURATION_EQ",
+        "getPSAppDEField" : {
+          "name" : "DURATION",
+          "codeName" : "duration"
+        },
+        "getPSDEFSearchMode" : {
+          "codeName" : "N_DURATION_EQ",
+          "name" : "N_DURATION_EQ",
+          "stdDataType" : 6,
+          "valueOP" : "EQ"
+        },
+        "getPSEditor" : {
+          "editorType" : "MOBNUMBER",
+          "name" : "N_DURATION_EQ"
+        },
+        "allowEmpty" : true,
+        "emptyCaption" : false,
+        "hidden" : false,
+        "showCaption" : false
+      }, {
+        "caption" : "总登记工时",
+        "dataType" : 6,
+        "itemType" : "FILTER",
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "N_DURATION_GT",
+        "getPSAppDEField" : {
+          "name" : "DURATION",
+          "codeName" : "duration"
+        },
+        "getPSDEFSearchMode" : {
+          "codeName" : "N_DURATION_GT",
+          "name" : "N_DURATION_GT",
+          "stdDataType" : 6,
+          "valueOP" : "GT"
+        },
+        "getPSEditor" : {
+          "editorType" : "MOBNUMBER",
+          "name" : "N_DURATION_GT"
+        },
+        "allowEmpty" : true,
+        "emptyCaption" : false,
+        "hidden" : false,
+        "showCaption" : false
+      }, {
+        "caption" : "总登记工时",
+        "dataType" : 6,
+        "itemType" : "FILTER",
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "N_DURATION_GTANDEQ",
+        "getPSAppDEField" : {
+          "name" : "DURATION",
+          "codeName" : "duration"
+        },
+        "getPSDEFSearchMode" : {
+          "codeName" : "N_DURATION_GTANDEQ",
+          "name" : "N_DURATION_GTANDEQ",
+          "stdDataType" : 6,
+          "valueOP" : "GTANDEQ"
+        },
+        "getPSEditor" : {
+          "editorType" : "MOBNUMBER",
+          "name" : "N_DURATION_GTANDEQ"
+        },
+        "allowEmpty" : true,
+        "emptyCaption" : false,
+        "hidden" : false,
+        "showCaption" : false
+      }, {
+        "caption" : "总登记工时",
+        "dataType" : 6,
+        "itemType" : "FILTER",
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "N_DURATION_LT",
+        "getPSAppDEField" : {
+          "name" : "DURATION",
+          "codeName" : "duration"
+        },
+        "getPSDEFSearchMode" : {
+          "codeName" : "N_DURATION_LT",
+          "name" : "N_DURATION_LT",
+          "stdDataType" : 6,
+          "valueOP" : "LT"
+        },
+        "getPSEditor" : {
+          "editorType" : "MOBNUMBER",
+          "name" : "N_DURATION_LT"
+        },
+        "allowEmpty" : true,
+        "emptyCaption" : false,
+        "hidden" : false,
+        "showCaption" : false
+      }, {
+        "caption" : "总登记工时",
+        "dataType" : 6,
+        "itemType" : "FILTER",
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "N_DURATION_LTANDEQ",
+        "getPSAppDEField" : {
+          "name" : "DURATION",
+          "codeName" : "duration"
+        },
+        "getPSDEFSearchMode" : {
+          "codeName" : "N_DURATION_LTANDEQ",
+          "name" : "N_DURATION_LTANDEQ",
+          "stdDataType" : 6,
+          "valueOP" : "LTANDEQ"
+        },
+        "getPSEditor" : {
+          "editorType" : "MOBNUMBER",
+          "name" : "N_DURATION_LTANDEQ"
+        },
+        "allowEmpty" : true,
+        "emptyCaption" : false,
+        "hidden" : false,
+        "showCaption" : false
+      } ],
+      "getPSSearchBarGroups" : [ {
+        "caption" : "全部工时",
+        "itemType" : "GROUP",
+        "name" : "all",
+        "width" : 0.0,
+        "addSeparator" : false,
+        "defaultGroup" : true
+      } ],
+      "quickGroupCount" : 4,
+      "quickSearchMode" : 1,
       "quickSearchWidth" : 0,
-      "enableFilter" : false,
-      "enableGroup" : false,
-      "enableQuickSearch" : false,
-      "mobileSearchBar" : true
+      "searchBarStyle" : "MOBSEARCHBAR2",
+      "enableFilter" : true,
+      "enableGroup" : true,
+      "enableQuickSearch" : true,
+      "mobileSearchBar" : true,
+      "name" : "searchbar",
+      "modelid" : "9876c5cf489340522e13a60c477f03c0",
+      "modeltype" : "PSSYSSEARCHBAR"
     }, {
       "getCapPSLanguageRes" : {
         "lanResTag" : "DE.LNAME.WORKLOAD"

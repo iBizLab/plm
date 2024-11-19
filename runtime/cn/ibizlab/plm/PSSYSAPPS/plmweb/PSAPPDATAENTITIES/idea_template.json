@@ -307,6 +307,44 @@
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetch_default",
     "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_global",
+    "dataSetName" : "global",
+    "dataSetTag" : "global",
+    "methodType" : "FETCH",
+    "name" : "fetch_global",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "idea_template_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "idea_template_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "global"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_global"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_global",
+    "builtinMethod" : false
   } ],
   "getAllPSAppDEFields" : [ {
     "getAllPSAppDEFUIModes" : [ {
@@ -341,8 +379,37 @@
     "name" : "TITLE",
     "stdDataType" : 25,
     "stringLength" : 500,
-    "enableQuickSearch" : true,
     "majorField" : true
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[IS_GLOBAL][全局模板]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "[IS_GLOBAL][全局模板]",
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[IS_GLOBAL][全局模板]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBSWITCH",
+        "name" : "[IS_GLOBAL][全局模板]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "is_global",
+    "logicName" : "全局模板",
+    "name" : "IS_GLOBAL",
+    "stdDataType" : 9
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -848,7 +915,8 @@
     "logicName" : "名称",
     "name" : "NAME",
     "stdDataType" : 25,
-    "stringLength" : 200
+    "stringLength" : 200,
+    "enableQuickSearch" : true
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "Default",
@@ -1034,6 +1102,42 @@
     "stdDataType" : 25,
     "stringLength" : 200
   } ],
+  "getAllPSAppDELogics" : [ {
+    "codeName" : "nothing",
+    "defaultParamName" : "Default",
+    "logicName" : "无操作",
+    "memo" : "无操作逻辑，用于替换表单的获取数据行为",
+    "name" : "无操作",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "topPos" : 200,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea_template.json"
+      },
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea_template.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : false,
+    "enableFront" : true
+  } ],
   "getAllPSAppDEMethodDTOs" : [ {
     "codeName" : "idea_template_dto",
     "name" : "idea_template_dto",
@@ -1049,6 +1153,17 @@
       "stdDataType" : 25,
       "type" : "SIMPLE",
       "allowEmpty" : false
+    }, {
+      "codeName" : "is_global",
+      "logicName" : "全局模板",
+      "name" : "is_global",
+      "getPSAppDEField" : {
+        "name" : "IS_GLOBAL",
+        "codeName" : "is_global"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
     }, {
       "codeName" : "product_identifier",
       "logicName" : "产品标识",
@@ -1270,6 +1385,17 @@
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "n_is_global_eq",
+      "logicName" : "全局模板",
+      "name" : "n_is_global_eq",
+      "getPSAppDEField" : {
+        "name" : "IS_GLOBAL",
+        "codeName" : "is_global"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 9,
       "type" : "SIMPLE"
     }, {
       "codeName" : "n_name_like",
@@ -1638,6 +1764,44 @@
     "requestPath" : "/fetch_default",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_global",
+    "dataSetName" : "global",
+    "dataSetTag" : "global",
+    "methodType" : "FETCH",
+    "name" : "fetch_global",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "idea_template_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "idea_template_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "global"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_global"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_global",
+    "builtinMethod" : false
+  }, {
     "codeName" : "FilterCreate",
     "methodType" : "FILTERACTION",
     "name" : "FILTERCREATE",
@@ -1728,10 +1892,44 @@
     "uIActionTag" : "template_edit",
     "uIActionType" : "DEUIACTION",
     "id" : "template_edit@idea_template"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "编辑",
+    "codeName" : "template_global_edit",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_template_global_edit_view.json",
+      "viewType" : "DEEDITVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "idea_template_template_global_edit",
+    "name" : "打开需求模板编辑",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea_template.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf044@FontAwesome",
+      "cssClass" : "fa fa-edit"
+    },
+    "timeout" : 60000,
+    "tooltip" : "编辑模板",
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "template_global_edit",
+    "uIActionType" : "DEUIACTION",
+    "id" : "template_global_edit@idea_template"
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_template_all_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_template_global_create_edit_view.json",
+    "viewType" : "DEEDITVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_template_global_all_grid_view.json",
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
@@ -1745,6 +1943,10 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_template_redirect_view.json",
     "viewType" : "DEREDIRECTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_template_global_edit_view.json",
+    "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_template_pick_up_tree_view.json",
@@ -1877,8 +2079,8 @@
     "path" : "PSSYSSERVICEAPIS/ServiceAPI.json"
   },
   "getQuickSearchPSAppDEFields" : [ {
-    "name" : "TITLE",
-    "codeName" : "title"
+    "name" : "NAME",
+    "codeName" : "name"
   } ],
   "storageMode" : 0,
   "sysAPITag" : "ServiceAPI",
@@ -1921,6 +2123,53 @@
       "actionLevel" : 200,
       "detailType" : "DEUIACTION",
       "name" : "u140bf07",
+      "getPSSysImage" : {
+        "glyph" : "xf014@FontAwesome",
+        "cssClass" : "fa fa-trash-o"
+      },
+      "tooltip" : "删除模板",
+      "addSeparator" : false,
+      "showCaption" : false,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea_template.json"
+        },
+        "modelref" : true,
+        "id" : "template_delete@idea_template"
+      }
+    } ]
+  }, {
+    "codeName" : "Usr1108756957",
+    "name" : "全局需求模板表格行为组(编辑、删除)",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea_template.json"
+    },
+    "uniqueTag" : "idea_template__Usr1108756957",
+    "getPSUIActionGroupDetails" : [ {
+      "detailType" : "DEUIACTION",
+      "name" : "u6650703",
+      "getPSSysImage" : {
+        "glyph" : "xf044@FontAwesome",
+        "cssClass" : "fa fa-edit"
+      },
+      "tooltip" : "编辑模板",
+      "addSeparator" : false,
+      "showCaption" : false,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea_template.json"
+        },
+        "modelref" : true,
+        "id" : "template_global_edit@idea_template"
+      }
+    }, {
+      "detailType" : "DEUIACTION",
+      "name" : "udf33177",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
         "cssClass" : "fa fa-trash-o"

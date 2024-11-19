@@ -123,7 +123,24 @@
       "editMode" : true
     }
   } ],
+  "getPSAppViewNavParams" : [ {
+    "key" : "n_release_id_eq",
+    "name" : "n_release_id_eq",
+    "value" : "release",
+    "rawValue" : false
+  } ],
   "getPSAppViewRefs" : [ {
+    "name" : "NEWDATA",
+    "realTitle" : "工作项编辑视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.WORK_ITEM.EDITVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_edit_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  }, {
     "name" : "EDITDATA",
     "openMode" : "INDEXVIEWTAB_POPUPMODAL",
     "getPSNavigateContexts" : [ {
@@ -150,23 +167,13 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_main_view.json",
       "viewType" : "DEEDITVIEW"
     }
-  }, {
-    "name" : "NEWDATA",
-    "realTitle" : "工作项编辑视图",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.WORK_ITEM.EDITVIEW"
-    },
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_edit_view.json",
-      "viewType" : "DEEDITVIEW"
-    }
   } ],
   "getPSControls" : [ {
     "aggMode" : "NONE",
     "codeName" : "release_work_item_grid",
     "columnEnableFilter" : 2,
     "columnEnableLink" : 2,
+    "controlStyle" : "NUMBER_GRID",
     "controlType" : "GRID",
     "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item/PSGRIDS/release_work_item_grid.json",
     "getFetchPSControlAction" : {
@@ -1864,6 +1871,11 @@
       },
       "allowEmpty" : true
     } ],
+    "getPSSysPFPlugin" : {
+      "pluginType" : "GRID_RENDER",
+      "pluginCode" : "NUMBER_GRID",
+      "runtimeObject" : true
+    },
     "pagingMode" : 1,
     "pagingSize" : 20,
     "getRemovePSControlAction" : {
@@ -1978,6 +1990,64 @@
       "uIActionTarget" : "NONE",
       "showCaption" : true,
       "showIcon" : true
+    }, {
+      "itemType" : "SEPERATOR",
+      "name" : "seperator1"
+    }, {
+      "buttonStyle" : "STYLE2",
+      "itemType" : "ITEMS",
+      "name" : "items1",
+      "getPSDEToolbarItems" : [ {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "TBB.TEXT.*.EXPORT"
+        },
+        "caption" : "导出工作项",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction2",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "tabtoolbar_deuiaction2"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf1c3@FontAwesome",
+          "cssClass" : "fa fa-file-excel-o"
+        },
+        "getPSUIAction" : {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "TBB.TEXT.*.EXPORT"
+          },
+          "caption" : "导出",
+          "codeName" : "ExportExcel",
+          "fullCodeName" : "ExportExcel",
+          "name" : "表格界面_导出操作（Excel）",
+          "getPSSysImage" : {
+            "glyph" : "xf1c3@FontAwesome",
+            "cssClass" : "fa fa-file-excel-o"
+          },
+          "predefinedType" : "GRIDVIEW_EXPORTACTION",
+          "timeout" : 60000,
+          "getTooltipPSLanguageRes" : {
+            "lanResTag" : "TBB.TOOLTIP.*.EXPORT"
+          },
+          "uIActionMode" : "SYS",
+          "uIActionTag" : "ExportExcel",
+          "uIActionType" : "DEUIACTION"
+        },
+        "tooltip" : "导出工作项",
+        "getTooltipPSLanguageRes" : {
+          "lanResTag" : "TBB.TOOLTIP.*.EXPORT"
+        },
+        "showCaption" : true,
+        "showIcon" : true
+      } ],
+      "getPSSysImage" : {
+        "glyph" : "xf0ca@FontAwesome",
+        "cssClass" : "fa fa-list-ul"
+      },
+      "showCaption" : true,
+      "showIcon" : true
     } ],
     "xDataControlName" : "grid",
     "modelid" : "8ffc9ab17d8e8c38b457325e6d749647",
@@ -2069,72 +2139,6 @@
   "modelid" : "b935aabc70b126c03f4fdf064d0bd712",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
-    "actionRSMode" : 1,
-    "codeName" : "releases",
-    "dataRSMode" : 0,
-    "majorDECodeName" : "project",
-    "majorDEName" : "PROJECT",
-    "getMajorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-    },
-    "minorDECodeName" : "release",
-    "minorDEName" : "RELEASE",
-    "getMinorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-    },
-    "name" : "DER1N_RELEASE_PROJECT_PROJECT_ID",
-    "getParentPSAppDEField" : {
-      "name" : "PROJECT_ID",
-      "codeName" : "project_id"
-    },
-    "rSMode" : 2
-  }, {
-    "actionRSMode" : 1,
-    "codeName" : "work_items",
-    "dataRSMode" : 0,
-    "majorDECodeName" : "release",
-    "majorDEName" : "RELEASE",
-    "getMajorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-    },
-    "minorDECodeName" : "work_item",
-    "minorDEName" : "WORK_ITEM",
-    "getMinorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-    },
-    "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-    "getParentPSAppDEField" : {
-      "name" : "RELEASE_ID",
-      "codeName" : "release_id"
-    },
-    "rSMode" : 2
-  } ], [ {
-    "actionRSMode" : 1,
-    "codeName" : "work_items",
-    "dataRSMode" : 0,
-    "majorDECodeName" : "release",
-    "majorDEName" : "RELEASE",
-    "getMajorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-    },
-    "minorDECodeName" : "work_item",
-    "minorDEName" : "WORK_ITEM",
-    "getMinorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-    },
-    "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-    "getParentPSAppDEField" : {
-      "name" : "RELEASE_ID",
-      "codeName" : "release_id"
-    },
-    "rSMode" : 2
-  } ], [ {
     "actionRSMode" : 1,
     "codeName" : "work_items",
     "dataRSMode" : 0,

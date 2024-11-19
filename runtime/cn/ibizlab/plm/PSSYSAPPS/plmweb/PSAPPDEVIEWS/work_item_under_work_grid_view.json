@@ -432,64 +432,29 @@
       "columnType" : "DEFGRIDCOLUMN",
       "dataItemName" : "ptitle",
       "excelCaption" : "父工作项",
+      "getLinkPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_main_view.json",
+        "viewType" : "DEEDITVIEW"
+      },
+      "linkValueItem" : "pid",
       "name" : "ptitle",
       "noPrivDisplayMode" : 1,
       "getPSAppDEField" : {
         "name" : "PTITLE",
         "codeName" : "ptitle"
       },
-      "getPSDEUIAction" : {
-        "actionTarget" : "SINGLEKEY",
-        "caption" : "打开项目集下父工作项的链接视图",
-        "codeName" : "open_under_project_set_pview",
-        "getFrontPSAppView" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_main_view.json",
-          "viewType" : "DEEDITVIEW"
-        },
-        "frontProcessType" : "WIZARD",
-        "fullCodeName" : "work_item_open_under_project_set_pview",
-        "name" : "打开项目集下父工作项的链接视图",
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-        },
-        "getPSNavigateContexts" : [ {
-          "key" : "SRFDATATYPE",
-          "name" : "SRFDATATYPE",
-          "value" : "p_work_item_type_id",
-          "rawValue" : false
-        }, {
-          "key" : "WORK_ITEM",
-          "name" : "WORK_ITEM",
-          "value" : "pid",
-          "rawValue" : false
-        }, {
-          "key" : "PROJECT",
-          "name" : "PROJECT",
-          "value" : "project_id",
-          "rawValue" : false
-        }, {
-          "key" : "WORK_ITEM_TYPE_ID",
-          "name" : "WORK_ITEM_TYPE_ID",
-          "value" : "p_work_item_type_id",
-          "rawValue" : false
-        } ],
-        "getPSNavigateParams" : [ {
-          "key" : "srfdatatype",
-          "name" : "srfdatatype",
-          "value" : "p_work_item_type_id",
-          "rawValue" : false
-        } ],
-        "timeout" : 60000,
-        "uIActionMode" : "FRONT",
-        "uIActionTag" : "open_under_project_set_pview",
-        "uIActionType" : "DEUIACTION",
-        "id" : "open_under_project_set_pview@work_item"
-      },
       "width" : 150,
       "widthUnit" : "PX",
-      "enableSort" : true
+      "enableLinkView" : true,
+      "enableSort" : true,
+      "getUserParam" : {
+        "SRFNAVCTX.project" : "%project_id%",
+        "SRFNAVCTX.work_item" : "%pid%",
+        "SRFNAVCTX.srfdatatype" : "%p_work_item_type_id%",
+        "SRFNAVPARAM.srfdatatype" : "%p_work_item_type_id%",
+        "SRFNAVCTX.work_item_type_id" : "%p_work_item_type_id%"
+      }
     }, {
       "align" : "LEFT",
       "cLConvertMode" : "NONE",
@@ -783,6 +748,13 @@
       "getPSAppDEField" : {
         "name" : "PID",
         "codeName" : "pid"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "p_work_item_type_id",
+      "getPSAppDEField" : {
+        "name" : "P_WORK_ITEM_TYPE_ID",
+        "codeName" : "p_work_item_type_id"
       }
     }, {
       "dataType" : 25,
@@ -1988,7 +1960,7 @@
       "addSeparator" : false
     }, {
       "caption" : "我负责的工作项",
-      "data" : "{\"theme_model\": {\"searchconds\": [{\"condtype\":\"GROUP\", \"condop\":\"AND\", \"bnotmode\":false, \"searchconds\": [{\"condtype\":\"DEFIELD\",\"fieldname\":\"assignee_id\",\"condop\":\"EQ\",\"value\":\"${context.srfpersonid}\"},{\"condtype\":\"DEFIELD\",\"fieldname\":\"is_archived\",\"condop\":\"EQ\",\"value\":\"0\"}]}]}}",
+      "data" : "{\n  \"theme_model\": {\n    \"searchconds\": [\n      {\n        \"condtype\": \"GROUP\",\n        \"condop\": \"AND\",\n        \"bnotmode\": false,\n        \"searchconds\": [\n          {\n            \"condtype\": \"DEFIELD\",\n            \"fieldname\": \"is_archived\",\n            \"condop\": \"EQ\",\n            \"value\": \"0\"\n          },\n          {\n            \"condtype\": \"GROUP\",\n            \"condop\": \"OR\",\n            \"bnotmode\": false,\n            \"searchconds\": [\n              {\n                \"condtype\": \"DEFIELD\",\n                \"fieldname\": \"assignee_id\",\n                \"condop\": \"EQ\",\n                \"value\": \"${context.srfpersonid}\"\n              },\n              {\n\t\t\t\t\t\t\t\t\"condtype\": \"ITEMS\",\n\t\t\t\t\t\t\t\t\"fieldname\": \"executors\",\n\t\t\t\t\t\t\t\t\"condop\": \"EXISTS\",\n\t\t\t\t\t\t\t\t\"simple\": true,\n\t\t\t\t\t\t\t\t\"searchconds\": [\n\t\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\t\"condtype\": \"DEFIELD\",\n\t\t\t\t\t\t\t\t\t\t\"fieldname\": \"USER_ID\",\n\t\t\t\t\t\t\t\t\t\t\"condop\": \"EQ\",\n\t\t\t\t\t\t\t\t\t\t\"value\": \"${context.srfpersonid}\"\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t]\n\t\t\t\t\t\t\t}\n            ]\n          }\n        ]\n      }\n    ]\n  }\n}",
       "itemType" : "GROUP",
       "name" : "my_assignee",
       "width" : 0.0,
@@ -2064,72 +2036,6 @@
   "modelid" : "dcf2a1faf2d59ae548ab790b1b4324db",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
-    "actionRSMode" : 1,
-    "codeName" : "releases",
-    "dataRSMode" : 0,
-    "majorDECodeName" : "project",
-    "majorDEName" : "PROJECT",
-    "getMajorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-    },
-    "minorDECodeName" : "release",
-    "minorDEName" : "RELEASE",
-    "getMinorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-    },
-    "name" : "DER1N_RELEASE_PROJECT_PROJECT_ID",
-    "getParentPSAppDEField" : {
-      "name" : "PROJECT_ID",
-      "codeName" : "project_id"
-    },
-    "rSMode" : 2
-  }, {
-    "actionRSMode" : 1,
-    "codeName" : "work_items",
-    "dataRSMode" : 0,
-    "majorDECodeName" : "release",
-    "majorDEName" : "RELEASE",
-    "getMajorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-    },
-    "minorDECodeName" : "work_item",
-    "minorDEName" : "WORK_ITEM",
-    "getMinorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-    },
-    "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-    "getParentPSAppDEField" : {
-      "name" : "RELEASE_ID",
-      "codeName" : "release_id"
-    },
-    "rSMode" : 2
-  } ], [ {
-    "actionRSMode" : 1,
-    "codeName" : "work_items",
-    "dataRSMode" : 0,
-    "majorDECodeName" : "release",
-    "majorDEName" : "RELEASE",
-    "getMajorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-    },
-    "minorDECodeName" : "work_item",
-    "minorDEName" : "WORK_ITEM",
-    "getMinorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-    },
-    "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-    "getParentPSAppDEField" : {
-      "name" : "RELEASE_ID",
-      "codeName" : "release_id"
-    },
-    "rSMode" : 2
-  } ], [ {
     "actionRSMode" : 1,
     "codeName" : "work_items",
     "dataRSMode" : 0,

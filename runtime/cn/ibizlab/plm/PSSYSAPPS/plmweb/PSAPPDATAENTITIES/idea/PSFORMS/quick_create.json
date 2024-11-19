@@ -68,6 +68,18 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
   },
+  "getPSCtrlMsg" : {
+    "codeName" : "UsrCtrlMsg0228593610",
+    "dynaModelFilePath" : "PSCTRLMSGS/UsrCtrlMsg0228593610.json",
+    "name" : "编辑表单自定义消息(隐藏)",
+    "getPSCtrlMsgItems" : [ {
+      "name" : "BEFOREREMOVE_HIDDEN"
+    }, {
+      "name" : "CREATESUCCESS_HIDDEN"
+    }, {
+      "name" : "UPDATESUCCESS_HIDDEN"
+    } ]
+  },
   "getPSDEFormItems" : [ {
     "id" : "srfupdatedate",
     "hidden" : true,
@@ -191,6 +203,10 @@
     }
   }, {
     "id" : "idea_template",
+    "hidden" : true,
+    "dataType" : 25
+  }, {
+    "id" : "customer_id",
     "hidden" : true,
     "dataType" : 25
   }, {
@@ -402,7 +418,7 @@
               }
             },
             "groupMode" : "NONE",
-            "hookEventNames" : [ "ONLOADSUCCESS" ],
+            "hookEventNames" : [ "ONLOADSUCCESS", "ONCLICK" ],
             "logicName" : "附件表格",
             "getPSAppDataEntity" : {
               "modelref" : true,
@@ -498,6 +514,19 @@
               "getPSAppDEUILogic" : {
                 "modelref" : true,
                 "id" : "calc_attachment_hidden"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/attachment.json"
+              }
+            }, {
+              "eventNames" : "onClick",
+              "logicTag" : "attachments_grid",
+              "logicType" : "APPDEUILOGIC",
+              "name" : "open_att",
+              "getPSAppDEUILogic" : {
+                "modelref" : true,
+                "id" : "attachment_preview"
               },
               "getPSAppDataEntity" : {
                 "modelref" : true,
@@ -1303,9 +1332,28 @@
           } ],
           "relatedDetailNames" : [ "product_name" ],
           "notMode" : false
+        }, {
+          "groupOP" : "AND",
+          "logicCat" : "SCRIPTCODE_CHANGE",
+          "logicType" : "GROUP",
+          "name" : "表单成员[customer][表单项值变更（脚本处理）]逻辑",
+          "getPSDEFDLogics" : [ {
+            "logicType" : "SINGLE"
+          } ],
+          "notMode" : false
+        }, {
+          "groupOP" : "AND",
+          "logicCat" : "SCRIPTCODE_CLICK",
+          "logicType" : "GROUP",
+          "name" : "表单成员[customer][表单项点击（脚本处理）]逻辑",
+          "getPSDEFDLogics" : [ {
+            "logicType" : "SINGLE"
+          } ],
+          "notMode" : false
         } ],
         "getPSEditor" : {
           "editorParams" : {
+            "multiple" : "true",
             "SRFNAVPARAM.n_product_id_eq" : "%product%"
           },
           "editorType" : "MDROPDOWNLIST",
@@ -1314,18 +1362,23 @@
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__product_customer.json"
           },
+          "getPSEditorItems" : [ {
+            "name" : "customer_id"
+          } ],
           "getPSNavigateParams" : [ {
             "key" : "n_product_id_eq",
             "name" : "n_product_id_eq",
             "value" : "product",
             "rawValue" : false
           } ],
+          "placeHolder" : "选择客户",
           "singleSelect" : false
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
+        "valueItemName" : "customer_id",
         "allowEmpty" : true,
         "needCodeListConfig" : true,
         "showCaption" : true
@@ -1526,6 +1579,29 @@
         "getPSEditor" : {
           "editorType" : "HIDDEN",
           "name" : "idea_template"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
+      }, {
+        "caption" : "客户id",
+        "codeName" : "customer_id",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "fieldName" : "customer_id",
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "customer_id",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "customer_id"
         },
         "getPSLayoutPos" : {
           "colMD" : 24,

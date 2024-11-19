@@ -198,6 +198,14 @@
       "codeName" : "work_item_type_id"
     }
   }, {
+    "id" : "pid",
+    "hidden" : true,
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "PID",
+      "codeName" : "pid"
+    }
+  }, {
     "id" : "project_id",
     "hidden" : true,
     "dataType" : 25,
@@ -919,7 +927,6 @@
                             },
                             "getPSUIAction" : {
                               "actionTarget" : "SINGLEKEY",
-                              "noPrivDisplayMode" : 1,
                               "caption" : "删除",
                               "codeName" : "mob_attachment_delete",
                               "dataAccessAction" : "UPDATE",
@@ -1149,116 +1156,6 @@
             "modelid" : "bb0d068f52a1a9317851d3b22540e14e",
             "modeltype" : "PSAPPDEVIEW",
             "getPSAppDERSPaths" : [ [ {
-              "actionRSMode" : 1,
-              "codeName" : "releases",
-              "dataRSMode" : 0,
-              "majorDECodeName" : "project",
-              "majorDEName" : "PROJECT",
-              "getMajorPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
-              },
-              "minorDECodeName" : "release",
-              "minorDEName" : "RELEASE",
-              "getMinorPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/release.json"
-              },
-              "name" : "DER1N_RELEASE_PROJECT_PROJECT_ID",
-              "getParentPSAppDEField" : {
-                "name" : "PROJECT_ID",
-                "codeName" : "project_id"
-              },
-              "rSMode" : 2
-            }, {
-              "actionRSMode" : 1,
-              "codeName" : "work_items",
-              "dataRSMode" : 0,
-              "majorDECodeName" : "release",
-              "majorDEName" : "RELEASE",
-              "getMajorPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/release.json"
-              },
-              "minorDECodeName" : "work_item",
-              "minorDEName" : "WORK_ITEM",
-              "getMinorPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-              },
-              "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-              "getParentPSAppDEField" : {
-                "name" : "RELEASE_ID",
-                "codeName" : "release_id"
-              },
-              "rSMode" : 2
-            }, {
-              "actionRSMode" : 1,
-              "codeName" : "attachments",
-              "dataRSMode" : 0,
-              "majorDECodeName" : "work_item",
-              "majorDEName" : "WORK_ITEM",
-              "getMajorPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-              },
-              "minorDECodeName" : "attachment",
-              "minorDEName" : "ATTACHMENT",
-              "getMinorPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
-              },
-              "name" : "DERCUSTOM_WORK_ITEM_ATTACHMENT",
-              "getParentPSAppDEField" : {
-                "name" : "OWNER_ID",
-                "codeName" : "owner_id"
-              },
-              "rSMode" : 2
-            } ], [ {
-              "actionRSMode" : 1,
-              "codeName" : "work_items",
-              "dataRSMode" : 0,
-              "majorDECodeName" : "release",
-              "majorDEName" : "RELEASE",
-              "getMajorPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/release.json"
-              },
-              "minorDECodeName" : "work_item",
-              "minorDEName" : "WORK_ITEM",
-              "getMinorPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-              },
-              "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-              "getParentPSAppDEField" : {
-                "name" : "RELEASE_ID",
-                "codeName" : "release_id"
-              },
-              "rSMode" : 2
-            }, {
-              "actionRSMode" : 1,
-              "codeName" : "attachments",
-              "dataRSMode" : 0,
-              "majorDECodeName" : "work_item",
-              "majorDEName" : "WORK_ITEM",
-              "getMajorPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-              },
-              "minorDECodeName" : "attachment",
-              "minorDEName" : "ATTACHMENT",
-              "getMinorPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
-              },
-              "name" : "DERCUSTOM_WORK_ITEM_ATTACHMENT",
-              "getParentPSAppDEField" : {
-                "name" : "OWNER_ID",
-                "codeName" : "owner_id"
-              },
-              "rSMode" : 2
-            } ], [ {
               "actionRSMode" : 1,
               "codeName" : "work_items",
               "dataRSMode" : 0,
@@ -1695,15 +1592,28 @@
           "name" : "PROJECT_NAME",
           "codeName" : "project_name"
         },
+        "getPSDEFDGroupLogics" : [ {
+          "groupOP" : "AND",
+          "logicCat" : "ITEMENABLE",
+          "logicType" : "GROUP",
+          "name" : "表单成员[project_name][表单项启用]逻辑",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "ISNULL",
+            "dEFDName" : "checkid",
+            "logicType" : "SINGLE"
+          } ],
+          "relatedDetailNames" : [ "checkid" ],
+          "notMode" : false
+        } ],
         "getPSEditor" : {
           "editorParams" : {
+            "DROPDOWNVIEW" : "TRUE",
             "overflowMode" : "ellipsis",
             "AC" : "TRUE",
             "MOBSHOWUNDERLINE" : "true",
             "PICKUPVIEW" : "TRUE"
           },
-          "editorType" : "MOBPICKER",
-          "handlerType" : "PickupText",
+          "editorType" : "MOBPICKER_DROPDOWNVIEW",
           "name" : "project_name",
           "getPSAppDEACMode" : {
             "modelref" : true,
@@ -1755,8 +1665,14 @@
             } ],
             "uniqueTag" : "project__Usr1221520658"
           },
+          "getPickupPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_project_pickup_view.json",
+            "viewType" : "DEMOBPICKUPVIEW"
+          },
           "placeHolder" : "选择所属项目",
           "valueItemName" : "project_id",
+          "dropDownView" : true,
           "enableAC" : true,
           "enablePickupView" : true,
           "forceSelection" : true,
@@ -2058,8 +1974,11 @@
         },
         "getPSEditor" : {
           "editorParams" : {
+            "multiple" : "true",
+            "srfnavparam.product_id" : "%product_id%",
             "DROPDOWNVIEW" : "TRUE",
             "AC" : "TRUE",
+            "MOBFORMITEMALIGNMODE" : "right",
             "MOBSHOWUNDERLINE" : "true",
             "PICKUPVIEW" : "TRUE"
           },
@@ -2080,6 +1999,12 @@
             "modelref" : true,
             "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project_member.json"
           },
+          "getPSNavigateParams" : [ {
+            "key" : "product_id",
+            "name" : "product_id",
+            "value" : "product_id",
+            "rawValue" : false
+          } ],
           "getPSSysPFPlugin" : {
             "pluginType" : "EDITOR_CUSTOMSTYLE",
             "pluginCode" : "MOB_PERSONEL_SELECT",
@@ -2189,6 +2114,58 @@
         },
         "allowEmpty" : true,
         "hidden" : true
+      }, {
+        "caption" : "父标识",
+        "codeName" : "pid",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "pid",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "PID",
+          "codeName" : "pid"
+        },
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "pid"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
+      }, {
+        "caption" : "项目标识",
+        "codeName" : "project_id",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "project_id",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "PROJECT_ID",
+          "codeName" : "project_id"
+        },
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "project_id"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
       } ],
       "getPSLayout" : {
         "childColMD" : 24,
@@ -2201,32 +2178,6 @@
       },
       "infoGroupMode" : false,
       "showCaption" : false
-    }, {
-      "caption" : "项目",
-      "codeName" : "project_id",
-      "dataType" : 25,
-      "detailStyle" : "DEFAULT",
-      "detailType" : "FORMITEM",
-      "enableCond" : 3,
-      "ignoreInput" : 0,
-      "labelPos" : "LEFT",
-      "labelWidth" : 130,
-      "name" : "project_id",
-      "noPrivDisplayMode" : 1,
-      "getPSAppDEField" : {
-        "name" : "PROJECT_ID",
-        "codeName" : "project_id"
-      },
-      "getPSEditor" : {
-        "editorType" : "HIDDEN",
-        "name" : "project_id"
-      },
-      "getPSLayoutPos" : {
-        "colMD" : 24,
-        "layout" : "TABLE_24COL"
-      },
-      "allowEmpty" : true,
-      "hidden" : true
     }, {
       "getCapPSLanguageRes" : {
         "lanResTag" : "DEF.LNAME.ID"

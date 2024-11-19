@@ -1312,6 +1312,7 @@
     "actionTarget" : "SINGLEKEY",
     "caption" : "删除",
     "codeName" : "mob_attachment_delete",
+    "dataAccessAction" : "UPDATE",
     "frontProcessType" : "OTHER",
     "fullCodeName" : "run_attachment_mob_attachment_delete",
     "name" : "附件删除（移动端）",
@@ -1322,6 +1323,10 @@
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/run_attachment.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
     },
     "getPSSysImage" : {
       "glyph" : "xf014@FontAwesome",
@@ -1451,58 +1456,37 @@
       "topPos" : 50,
       "parallelOutput" : true
     }, {
-      "code" : "view.layoutPanel.panelItems.mdctrl.state.visible = true",
-      "codeName" : "RAWJSCODE2",
-      "leftPos" : 766,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "显示",
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 660,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "END1"
+          "id" : "VIEWCTRLINVOKE2"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE2"
+          "id" : "PREPAREJSPARAM1"
         }
       } ],
-      "topPos" : 58
-    }, {
-      "codeName" : "DEUIACTION1",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/run_attachment.json"
+          "id" : "form"
         },
-        "modelref" : true,
-        "id" : "upload_attachment@run_attachment"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/run_attachment.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "files"
-      },
-      "leftPos" : -1,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "上传附件",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
+        "name" : "view[parentView.layoutPanel.panelItems.form.control] ==> form",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "parentView.layoutPanel.panelItems.form.control",
+        "getSrcPSDEUILogicParam" : {
           "modelref" : true,
-          "id" : "RAWJSCODE1"
+          "id" : "view"
         },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION1"
-        }
+        "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 58
+      "topPos" : 190
     }, {
       "code" : "uiLogic.attach = uiLogic.files.map(item =>{\r\n\treturn {\r\n\t  name: item.name,\r\n\t  file_id: item.id,\r\n\t  id: item.uuid,\r\n\t}\r\n})",
       "codeName" : "RAWJSCODE1",
@@ -1555,11 +1539,106 @@
       "logicNodeType" : "END",
       "name" : "结束",
       "topPos" : 50
+    }, {
+      "codeName" : "DEUIACTION1",
+      "getDstPSAppDEUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/run_attachment.json"
+        },
+        "modelref" : true,
+        "id" : "upload_attachment@run_attachment"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/run_attachment.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "files"
+      },
+      "leftPos" : -11,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "上传附件",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION1"
+        }
+      } ],
+      "topPos" : 58
+    }, {
+      "codeName" : "VIEWCTRLINVOKE2",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "form"
+      },
+      "invokeMethod" : "save",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "form"
+      },
+      "leftPos" : 840,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "视图部件调用",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE2"
+        }
+      } ],
+      "topPos" : 190
+    }, {
+      "code" : "view.layoutPanel.panelItems.mdctrl.state.visible = true",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 766,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "显示",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      } ],
+      "topPos" : 58
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "attach",
       "logicName" : "附件列表",
       "name" : "附件列表",
+      "entityListParam" : true
+    }, {
+      "codeName" : "form",
+      "logicName" : "form",
+      "name" : "form",
+      "ctrlParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "view",
+      "name" : "view",
+      "activeViewParam" : true
+    }, {
+      "codeName" : "files",
+      "logicName" : "文件列表",
+      "name" : "文件列表",
       "entityListParam" : true
     }, {
       "codeName" : "mdctrl",
@@ -1572,11 +1651,6 @@
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
-    }, {
-      "codeName" : "files",
-      "logicName" : "文件列表",
-      "name" : "文件列表",
-      "entityListParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -1917,6 +1991,25 @@
     "name" : "NAME",
     "codeName" : "name"
   },
+  "getMinorPSAppDERSs" : [ {
+    "actionRSMode" : 1,
+    "codeName" : "run_attachments",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "run",
+    "majorDEName" : "RUN",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/run.json"
+    },
+    "minorDECodeName" : "run_attachment",
+    "minorDEName" : "RUN_ATTACHMENT",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/run_attachment.json"
+    },
+    "name" : "执行用例-执行用例附件",
+    "rSMode" : 2
+  } ],
   "name" : "RUN_ATTACHMENT",
   "getPSDEName" : "RUN_ATTACHMENT",
   "getPSDEServiceAPI" : {

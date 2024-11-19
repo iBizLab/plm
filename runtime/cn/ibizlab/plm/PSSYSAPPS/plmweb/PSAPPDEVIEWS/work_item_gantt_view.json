@@ -16,6 +16,12 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProjMgmt.json"
   },
+  "getPSAppViewNavContexts" : [ {
+    "key" : "PROJECT_TYPE",
+    "name" : "PROJECT_TYPE",
+    "value" : "project_type",
+    "rawValue" : false
+  } ],
   "getPSControls" : [ {
     "beginDataItemName" : "begin",
     "codeName" : "gantt_view_gantt",
@@ -560,6 +566,18 @@
           },
           "mapType" : "NOTEXISTS",
           "name" : "是否叶子节点"
+        }, {
+          "codeName" : "Usr1113695239",
+          "getMajorPSDEField" : {
+            "name" : "ACTUAL_START_AT",
+            "codeName" : "actual_start_at"
+          },
+          "mapType" : "MIN",
+          "getMinorPSDEField" : {
+            "name" : "ACTUAL_START_AT",
+            "codeName" : "actual_start_at"
+          },
+          "name" : "父获取实际开始时间"
         } ],
         "getPSPickupDEField" : {
           "name" : "PID",
@@ -620,6 +638,18 @@
           },
           "mapType" : "NOTEXISTS",
           "name" : "是否叶子节点"
+        }, {
+          "codeName" : "Usr1113695239",
+          "getMajorPSDEField" : {
+            "name" : "ACTUAL_START_AT",
+            "codeName" : "actual_start_at"
+          },
+          "mapType" : "MIN",
+          "getMinorPSDEField" : {
+            "name" : "ACTUAL_START_AT",
+            "codeName" : "actual_start_at"
+          },
+          "name" : "父获取实际开始时间"
         } ],
         "getPSPickupDEField" : {
           "name" : "PID",
@@ -2306,7 +2336,7 @@
     },
     "getPSDEToolbarItems" : [ {
       "buttonStyle" : "STYLE3",
-      "caption" : "新建计划",
+      "caption" : "新建",
       "itemType" : "ITEMS",
       "name" : "items1",
       "getPSControlLogics" : [ {
@@ -2318,15 +2348,707 @@
         "triggerType" : "ITEMVISIBLE"
       } ],
       "getPSDEToolbarItems" : [ {
-        "caption" : "新建阶段",
+        "caption" : "新建史诗",
         "groupExtractMode" : "ITEM",
         "itemType" : "DEUIACTION",
-        "name" : "deuiaction1",
+        "name" : "scrum_epic",
         "noPrivDisplayMode" : 2,
         "getPSAppViewUIAction" : {
           "modelref" : true,
-          "id" : "toolbar_deuiaction1"
+          "id" : "toolbar_scrum_epic"
         },
+        "getPSControlLogics" : [ {
+          "itemName" : "scrum_epic",
+          "logicTag" : "toolbar",
+          "logicType" : "SCRIPT",
+          "name" : "scrum_epic",
+          "scriptCode" : "context.project_type == 'scrum'",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "新建史诗",
+          "codeName" : "new_scrum_epic",
+          "dataAccessAction" : "SUBDATA",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "work_item_new_scrum_epic",
+          "name" : "新建史诗（scrum）",
+          "getNextPSUIAction" : {
+            "modelref" : true,
+            "id" : "Refresh"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "SUBDATA"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "work_item_type_id",
+            "name" : "work_item_type_id",
+            "value" : "scrum_epic",
+            "rawValue" : true
+          } ],
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "new_scrum_epic",
+          "uIActionType" : "DEUIACTION",
+          "id" : "new_scrum_epic@work_item"
+        },
+        "tooltip" : "新建史诗",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "新建特性",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "scrum_feature",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "toolbar_scrum_feature"
+        },
+        "getPSControlLogics" : [ {
+          "itemName" : "scrum_feature",
+          "logicTag" : "toolbar",
+          "logicType" : "SCRIPT",
+          "name" : "scrum_feature",
+          "scriptCode" : "context.project_type == 'scrum'",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "新建特性",
+          "codeName" : "new_scrum_feature",
+          "dataAccessAction" : "SUBDATA",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "work_item_new_scrum_feature",
+          "name" : "新建特性（scrum）",
+          "getNextPSUIAction" : {
+            "modelref" : true,
+            "id" : "Refresh"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "SUBDATA"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "work_item_type_id",
+            "name" : "work_item_type_id",
+            "value" : "scrum_feature",
+            "rawValue" : true
+          } ],
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "new_scrum_feature",
+          "uIActionType" : "DEUIACTION",
+          "id" : "new_scrum_feature@work_item"
+        },
+        "tooltip" : "新建特性",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "新建用户故事",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "scrum_story",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "toolbar_scrum_story"
+        },
+        "getPSControlLogics" : [ {
+          "itemName" : "scrum_story",
+          "logicTag" : "toolbar",
+          "logicType" : "SCRIPT",
+          "name" : "scrum_story",
+          "scriptCode" : "context.project_type == 'scrum'",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "新建用户故事",
+          "codeName" : "new_scrum_story",
+          "dataAccessAction" : "SUBDATA",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "work_item_new_scrum_story",
+          "name" : "新建用户故事（scrum）",
+          "getNextPSUIAction" : {
+            "modelref" : true,
+            "id" : "Refresh"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "SUBDATA"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "work_item_type_id",
+            "name" : "work_item_type_id",
+            "value" : "scrum_story",
+            "rawValue" : true
+          } ],
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "new_scrum_story",
+          "uIActionType" : "DEUIACTION",
+          "id" : "new_scrum_story@work_item"
+        },
+        "tooltip" : "新建用户故事",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "新建任务",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "scrum_task",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "toolbar_scrum_task"
+        },
+        "getPSControlLogics" : [ {
+          "itemName" : "scrum_task",
+          "logicTag" : "toolbar",
+          "logicType" : "SCRIPT",
+          "name" : "scrum_task",
+          "scriptCode" : "context.project_type == 'scrum'",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "新建任务",
+          "codeName" : "new_scrum_task",
+          "dataAccessAction" : "SUBDATA",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "work_item_new_scrum_task",
+          "name" : "新建任务（scrum）",
+          "getNextPSUIAction" : {
+            "modelref" : true,
+            "id" : "Refresh"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "SUBDATA"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "work_item_type_id",
+            "name" : "work_item_type_id",
+            "value" : "scrum_task",
+            "rawValue" : true
+          } ],
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "new_scrum_task",
+          "uIActionType" : "DEUIACTION",
+          "id" : "new_scrum_task@work_item"
+        },
+        "tooltip" : "新建任务",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "新建缺陷",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "scrum_bug",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "toolbar_scrum_bug"
+        },
+        "getPSControlLogics" : [ {
+          "itemName" : "scrum_bug",
+          "logicTag" : "toolbar",
+          "logicType" : "SCRIPT",
+          "name" : "scrum_bug",
+          "scriptCode" : "context.project_type == 'scrum'",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "新建缺陷",
+          "codeName" : "new_scrum_bug",
+          "dataAccessAction" : "SUBDATA",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "work_item_new_scrum_bug",
+          "name" : "新建缺陷（scrum）",
+          "getNextPSUIAction" : {
+            "modelref" : true,
+            "id" : "Refresh"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "SUBDATA"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "work_item_type_group_bug",
+            "name" : "work_item_type_group_bug",
+            "value" : "bug",
+            "rawValue" : true
+          }, {
+            "key" : "work_item_type_id",
+            "name" : "work_item_type_id",
+            "value" : "scrum_bug",
+            "rawValue" : true
+          } ],
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "new_scrum_bug",
+          "uIActionType" : "DEUIACTION",
+          "id" : "new_scrum_bug@work_item"
+        },
+        "tooltip" : "新建缺陷",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "新建史诗",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "kanban_epic",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "toolbar_kanban_epic"
+        },
+        "getPSControlLogics" : [ {
+          "itemName" : "kanban_epic",
+          "logicTag" : "toolbar",
+          "logicType" : "SCRIPT",
+          "name" : "kanban_epic",
+          "scriptCode" : "context.project_type == 'kanban'",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "新建史诗",
+          "codeName" : "new_kanban_epic",
+          "dataAccessAction" : "SUBDATA",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "work_item_new_kanban_epic",
+          "name" : "新建史诗（kanban）",
+          "getNextPSUIAction" : {
+            "modelref" : true,
+            "id" : "Refresh"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "SUBDATA"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "work_item_type_id",
+            "name" : "work_item_type_id",
+            "value" : "kanban_epic",
+            "rawValue" : true
+          }, {
+            "key" : "entry_id",
+            "name" : "entry_id",
+            "value" : "srfgroup",
+            "rawValue" : false
+          } ],
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "new_kanban_epic",
+          "uIActionType" : "DEUIACTION",
+          "id" : "new_kanban_epic@work_item"
+        },
+        "tooltip" : "新建史诗",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "新建特性",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "kanban_feature",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "toolbar_kanban_feature"
+        },
+        "getPSControlLogics" : [ {
+          "itemName" : "kanban_feature",
+          "logicTag" : "toolbar",
+          "logicType" : "SCRIPT",
+          "name" : "kanban_feature",
+          "scriptCode" : "context.project_type == 'kanban'",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "新建特性",
+          "codeName" : "new_kanban_feature",
+          "dataAccessAction" : "SUBDATA",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "work_item_new_kanban_feature",
+          "name" : "新建特性（kanban）",
+          "getNextPSUIAction" : {
+            "modelref" : true,
+            "id" : "Refresh"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "SUBDATA"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "work_item_type_id",
+            "name" : "work_item_type_id",
+            "value" : "kanban_feature",
+            "rawValue" : true
+          }, {
+            "key" : "entry_id",
+            "name" : "entry_id",
+            "value" : "srfgroup",
+            "rawValue" : false
+          } ],
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "new_kanban_feature",
+          "uIActionType" : "DEUIACTION",
+          "id" : "new_kanban_feature@work_item"
+        },
+        "tooltip" : "新建特性",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "新建用户故事",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "kanban_story",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "toolbar_kanban_story"
+        },
+        "getPSControlLogics" : [ {
+          "itemName" : "kanban_story",
+          "logicTag" : "toolbar",
+          "logicType" : "SCRIPT",
+          "name" : "kanban_story",
+          "scriptCode" : "context.project_type == 'kanban'",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "新建用户故事",
+          "codeName" : "new_kanban_story",
+          "dataAccessAction" : "SUBDATA",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "work_item_new_kanban_story",
+          "name" : "新建用户故事（kanban）",
+          "getNextPSUIAction" : {
+            "modelref" : true,
+            "id" : "Refresh"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "SUBDATA"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "work_item_type_id",
+            "name" : "work_item_type_id",
+            "value" : "kanban_story",
+            "rawValue" : true
+          }, {
+            "key" : "entry_id",
+            "name" : "entry_id",
+            "value" : "srfgroup",
+            "rawValue" : false
+          } ],
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "new_kanban_story",
+          "uIActionType" : "DEUIACTION",
+          "id" : "new_kanban_story@work_item"
+        },
+        "tooltip" : "新建用户故事",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "新建任务",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "kanban_task",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "toolbar_kanban_task"
+        },
+        "getPSControlLogics" : [ {
+          "itemName" : "kanban_task",
+          "logicTag" : "toolbar",
+          "logicType" : "SCRIPT",
+          "name" : "kanban_task",
+          "scriptCode" : "context.project_type == 'kanban'",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "新建任务",
+          "codeName" : "new_kanban_task",
+          "dataAccessAction" : "SUBDATA",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "work_item_new_kanban_task",
+          "name" : "新建任务（kanban）",
+          "getNextPSUIAction" : {
+            "modelref" : true,
+            "id" : "Refresh"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "SUBDATA"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "work_item_type_id",
+            "name" : "work_item_type_id",
+            "value" : "kanban_task",
+            "rawValue" : true
+          }, {
+            "key" : "entry_id",
+            "name" : "entry_id",
+            "value" : "srfgroup",
+            "rawValue" : false
+          } ],
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "new_kanban_task",
+          "uIActionType" : "DEUIACTION",
+          "id" : "new_kanban_task@work_item"
+        },
+        "tooltip" : "新建任务",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "新建缺陷",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "kanban_bug",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "toolbar_kanban_bug"
+        },
+        "getPSControlLogics" : [ {
+          "itemName" : "kanban_bug",
+          "logicTag" : "toolbar",
+          "logicType" : "SCRIPT",
+          "name" : "kanban_bug",
+          "scriptCode" : "context.project_type == 'kanban'",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "新建缺陷",
+          "codeName" : "new_kanban_bug",
+          "dataAccessAction" : "SUBDATA",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "work_item_new_kanban_bug",
+          "name" : "新建缺陷（kanban）",
+          "getNextPSUIAction" : {
+            "modelref" : true,
+            "id" : "Refresh"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "SUBDATA"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "work_item_type_id",
+            "name" : "work_item_type_id",
+            "value" : "kanban_bug",
+            "rawValue" : true
+          }, {
+            "key" : "entry_id",
+            "name" : "entry_id",
+            "value" : "srfgroup",
+            "rawValue" : false
+          } ],
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "new_kanban_bug",
+          "uIActionType" : "DEUIACTION",
+          "id" : "new_kanban_bug@work_item"
+        },
+        "tooltip" : "新建缺陷",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "新建事务",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "kanban_issue",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "toolbar_kanban_issue"
+        },
+        "getPSControlLogics" : [ {
+          "itemName" : "kanban_issue",
+          "logicTag" : "toolbar",
+          "logicType" : "SCRIPT",
+          "name" : "kanban_issue",
+          "scriptCode" : "context.project_type == 'kanban'",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "新建事务",
+          "codeName" : "new_kanban_issue",
+          "dataAccessAction" : "SUBDATA",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "work_item_new_kanban_issue",
+          "name" : "新建事务（kanban）",
+          "getNextPSUIAction" : {
+            "modelref" : true,
+            "id" : "Refresh"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "SUBDATA"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "work_item_type_id",
+            "name" : "work_item_type_id",
+            "value" : "kanban_issue",
+            "rawValue" : true
+          }, {
+            "key" : "entry_id",
+            "name" : "entry_id",
+            "value" : "srfgroup",
+            "rawValue" : false
+          } ],
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "new_kanban_issue",
+          "uIActionType" : "DEUIACTION",
+          "id" : "new_kanban_issue@work_item"
+        },
+        "tooltip" : "新建事务",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "新建阶段",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "waterfall_stage",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "toolbar_waterfall_stage"
+        },
+        "getPSControlLogics" : [ {
+          "itemName" : "waterfall_stage",
+          "logicTag" : "toolbar",
+          "logicType" : "SCRIPT",
+          "name" : "waterfall_stage",
+          "scriptCode" : "context.project_type == 'waterfall'",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
         "getPSUIAction" : {
           "actionTarget" : "NONE",
           "caption" : "新建阶段",
@@ -2372,12 +3094,20 @@
         "caption" : "新建里程碑",
         "groupExtractMode" : "ITEM",
         "itemType" : "DEUIACTION",
-        "name" : "deuiaction2",
+        "name" : "waterfall_milestone",
         "noPrivDisplayMode" : 2,
         "getPSAppViewUIAction" : {
           "modelref" : true,
-          "id" : "toolbar_deuiaction2"
+          "id" : "toolbar_waterfall_milestone"
         },
+        "getPSControlLogics" : [ {
+          "itemName" : "waterfall_milestone",
+          "logicTag" : "toolbar",
+          "logicType" : "SCRIPT",
+          "name" : "waterfall_milestone",
+          "scriptCode" : "context.project_type == 'waterfall'",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
         "getPSUIAction" : {
           "actionTarget" : "NONE",
           "caption" : "新建里程碑",
@@ -2419,12 +3149,194 @@
         "uIActionTarget" : "NONE",
         "showCaption" : true,
         "showIcon" : true
+      }, {
+        "caption" : "新建需求",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "waterfall_requirement",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "toolbar_waterfall_requirement"
+        },
+        "getPSControlLogics" : [ {
+          "itemName" : "waterfall_requirement",
+          "logicTag" : "toolbar",
+          "logicType" : "SCRIPT",
+          "name" : "waterfall_requirement",
+          "scriptCode" : "context.project_type == 'waterfall'",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "新建需求",
+          "codeName" : "new_waterfall_requirement",
+          "dataAccessAction" : "SUBDATA",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "work_item_new_waterfall_requirement",
+          "name" : "新建需求（waterfall）",
+          "getNextPSUIAction" : {
+            "modelref" : true,
+            "id" : "Refresh"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "SUBDATA"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "work_item_type_id",
+            "name" : "work_item_type_id",
+            "value" : "waterfall_requirement",
+            "rawValue" : true
+          } ],
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "new_waterfall_requirement",
+          "uIActionType" : "DEUIACTION",
+          "id" : "new_waterfall_requirement@work_item"
+        },
+        "tooltip" : "新建需求",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "新建任务",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "waterfall_task",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "toolbar_waterfall_task"
+        },
+        "getPSControlLogics" : [ {
+          "itemName" : "waterfall_task",
+          "logicTag" : "toolbar",
+          "logicType" : "SCRIPT",
+          "name" : "waterfall_task",
+          "scriptCode" : "context.project_type == 'waterfall'",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "新建任务",
+          "codeName" : "new_waterfall_task",
+          "dataAccessAction" : "SUBDATA",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "work_item_new_waterfall_task",
+          "name" : "新建任务（waterfall）",
+          "getNextPSUIAction" : {
+            "modelref" : true,
+            "id" : "Refresh"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "SUBDATA"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "work_item_type_id",
+            "name" : "work_item_type_id",
+            "value" : "waterfall_task",
+            "rawValue" : true
+          } ],
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "new_waterfall_task",
+          "uIActionType" : "DEUIACTION",
+          "id" : "new_waterfall_task@work_item"
+        },
+        "tooltip" : "新建任务",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "新建缺陷",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "waterfall_bug",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "toolbar_waterfall_bug"
+        },
+        "getPSControlLogics" : [ {
+          "itemName" : "waterfall_bug",
+          "logicTag" : "toolbar",
+          "logicType" : "SCRIPT",
+          "name" : "waterfall_bug",
+          "scriptCode" : "context.project_type == 'waterfall'",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "新建缺陷",
+          "codeName" : "new_waterfall_bug",
+          "dataAccessAction" : "SUBDATA",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "work_item_new_waterfall_bug",
+          "name" : "新建缺陷（waterfall）",
+          "getNextPSUIAction" : {
+            "modelref" : true,
+            "id" : "Refresh"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "SUBDATA"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "work_item_type_group_bug",
+            "name" : "work_item_type_group_bug",
+            "value" : "bug",
+            "rawValue" : true
+          }, {
+            "key" : "work_item_type_id",
+            "name" : "work_item_type_id",
+            "value" : "waterfall_bug",
+            "rawValue" : true
+          } ],
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "new_waterfall_bug",
+          "uIActionType" : "DEUIACTION",
+          "id" : "new_waterfall_bug@work_item"
+        },
+        "tooltip" : "新建缺陷",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
       } ],
       "getPSSysImage" : {
         "glyph" : "xf067@FontAwesome",
         "cssClass" : "fa fa-plus"
       },
-      "tooltip" : "新建计划",
+      "tooltip" : "新建",
       "showCaption" : true,
       "showIcon" : true
     }, {
@@ -2529,11 +3441,13 @@
           "getPSSysImage" : {
             "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"dydnnkk8m__design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M8.00016594,11 C6.34331179,11 5.00016594,9.65685463 5.00016594,8 C5.00016594,6.34314585 6.34331179,5 8.00016594,5 C9.65702009,5 11.0001659,6.34314585 11.0001659,8 C11.0001659,9.65685463 9.65702009,11 8.00016594,11 Z M8.00016594,10 C6.8955965,10 6.00016594,9.10456944 6.00016594,8 C6.00016594,6.89543056 6.8955965,6 8.00016594,6 C9.10473537,6 10.0001659,6.89543056 10.0001659,8 C10.0001659,9.10456944 9.10473537,10 8.00016594,10 Z M14.0623436,4.625 L14.0623436,11.375 L8.00016594,14.75 L1.93798828,11.375 L1.93798828,4.625 L8.00016594,1.25 L14.0623436,4.625 Z M8.00016594,2.39453006 L13.0623436,5.21279955 L13.0623436,10.7872009 L8.00016594,13.6054697 L2.93798828,10.7872009 L2.93798828,5.21279955 L8.00016594,2.39453006 Z\" fill-opacity=\".9\" fill-rule=\"evenodd\" fill=\"#FFFFFF\"></path>\n</svg>"
           },
+          "refreshMode" : 1,
           "timeout" : 60000,
           "uIActionMode" : "FRONT",
           "uIActionTag" : "snapshot_management",
           "uIActionType" : "DEUIACTION",
           "globalUIAction" : true,
+          "reloadData" : true,
           "id" : "snapshot_management@baseline"
         },
         "tooltip" : "快照管理",
@@ -2609,72 +3523,6 @@
   "modelid" : "e5a049249fac2c0a2c8270b254df668e",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
-    "actionRSMode" : 1,
-    "codeName" : "releases",
-    "dataRSMode" : 0,
-    "majorDECodeName" : "project",
-    "majorDEName" : "PROJECT",
-    "getMajorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-    },
-    "minorDECodeName" : "release",
-    "minorDEName" : "RELEASE",
-    "getMinorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-    },
-    "name" : "DER1N_RELEASE_PROJECT_PROJECT_ID",
-    "getParentPSAppDEField" : {
-      "name" : "PROJECT_ID",
-      "codeName" : "project_id"
-    },
-    "rSMode" : 2
-  }, {
-    "actionRSMode" : 1,
-    "codeName" : "work_items",
-    "dataRSMode" : 0,
-    "majorDECodeName" : "release",
-    "majorDEName" : "RELEASE",
-    "getMajorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-    },
-    "minorDECodeName" : "work_item",
-    "minorDEName" : "WORK_ITEM",
-    "getMinorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-    },
-    "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-    "getParentPSAppDEField" : {
-      "name" : "RELEASE_ID",
-      "codeName" : "release_id"
-    },
-    "rSMode" : 2
-  } ], [ {
-    "actionRSMode" : 1,
-    "codeName" : "work_items",
-    "dataRSMode" : 0,
-    "majorDECodeName" : "release",
-    "majorDEName" : "RELEASE",
-    "getMajorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-    },
-    "minorDECodeName" : "work_item",
-    "minorDEName" : "WORK_ITEM",
-    "getMinorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-    },
-    "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-    "getParentPSAppDEField" : {
-      "name" : "RELEASE_ID",
-      "codeName" : "release_id"
-    },
-    "rSMode" : 2
-  } ], [ {
     "actionRSMode" : 1,
     "codeName" : "work_items",
     "dataRSMode" : 0,

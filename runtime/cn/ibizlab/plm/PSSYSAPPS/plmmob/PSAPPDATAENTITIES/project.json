@@ -883,6 +883,40 @@
     "builtinMethod" : false,
     "needResourceKey" : true
   }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "project_automatic_change_state",
+    "methodType" : "DEACTION",
+    "name" : "project_automatic_change_state",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/project_automatic_change_state.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "project_automatic_change_state"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/project_automatic_change_state",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "UPDATE",
     "codeName" : "project_move",
     "methodType" : "DEACTION",
@@ -1178,6 +1212,40 @@
     "builtinMethod" : false,
     "needResourceKey" : true,
     "noServiceCodeName" : true
+  }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "warning_count_logic",
+    "methodType" : "DEACTION",
+    "name" : "warning_count_logic",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/warning_count_logic.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "warning_count_logic"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/warning_count_logic",
+    "builtinMethod" : false,
+    "needResourceKey" : true
   }, {
     "actionMode" : "CUSTOM",
     "codeName" : "waterfall_index_addon_counter",
@@ -1977,11 +2045,14 @@
       "name" : "[STATE][状态]",
       "getPSDEFFormItem" : {
         "codeName" : "Default",
-        "editorType" : "DROPDOWNLIST",
+        "editorType" : "HIDDEN",
         "name" : "[STATE][状态]",
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT",
-        "needCodeListConfig" : true
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
     }, {
@@ -1989,21 +2060,24 @@
       "name" : "[STATE][状态]移动端默认",
       "getPSDEFFormItem" : {
         "codeName" : "MobileDefault",
-        "editorType" : "MOBDROPDOWNLIST",
+        "editorType" : "HIDDEN",
         "name" : "[STATE][状态]移动端默认",
-        "stringLength" : 60,
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state.json"
+        },
+        "stringLength" : 100,
         "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true,
-        "needCodeListConfig" : true
+        "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
     } ],
     "codeName" : "state",
-    "logicName" : "状态",
+    "logicName" : "项目状态",
     "name" : "STATE",
     "stdDataType" : 25,
-    "stringLength" : 60
+    "stringLength" : 100
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -2659,6 +2733,177 @@
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "MobileDefault",
+      "name" : "[ACTUAL_START_AT][实际开始时间]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBDATE",
+        "name" : "[ACTUAL_START_AT][实际开始时间]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[ACTUAL_START_AT][实际开始时间]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DATEPICKEREX_NOTIME",
+        "name" : "[ACTUAL_START_AT][实际开始时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "codeName" : "actual_start_at",
+    "logicName" : "实际开始时间",
+    "name" : "ACTUAL_START_AT",
+    "stdDataType" : 5,
+    "valueFormat" : "YYYY-MM-DD"
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[ACTUAL_END_AT][实际结束时间]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBDATE",
+        "name" : "[ACTUAL_END_AT][实际结束时间]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[ACTUAL_END_AT][实际结束时间]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DATEPICKEREX_NOTIME",
+        "name" : "[ACTUAL_END_AT][实际结束时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "codeName" : "actual_end_at",
+    "logicName" : "实际结束时间",
+    "name" : "ACTUAL_END_AT",
+    "stdDataType" : 5,
+    "valueFormat" : "YYYY-MM-DD"
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[EXPECTED_TIME][预计时间]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[EXPECTED_TIME][预计时间]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[EXPECTED_TIME][预计时间]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[EXPECTED_TIME][预计时间]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "codeName" : "expected_time",
+    "logicName" : "预计工时",
+    "name" : "EXPECTED_TIME",
+    "stdDataType" : 25,
+    "stringLength" : 100
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[CONSUME_TIME][消耗时间]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[CONSUME_TIME][消耗时间]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[CONSUME_TIME][消耗时间]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[CONSUME_TIME][消耗时间]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "consume_time",
+    "logicName" : "消耗工时",
+    "name" : "CONSUME_TIME",
+    "stdDataType" : 25,
+    "stringLength" : 100
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[STATE_TYPE][状态类型]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[STATE_TYPE][状态类型]移动端默认",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state.json"
+        },
+        "stringLength" : 60,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[STATE_TYPE][状态类型]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[STATE_TYPE][状态类型]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state.json"
+        },
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "codeName" : "state_type",
+    "logicName" : "状态类型",
+    "name" : "STATE_TYPE",
+    "stdDataType" : 25,
+    "stringLength" : 60
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
       "name" : "[ID][标识]移动端默认",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
@@ -3184,7 +3429,7 @@
       "type" : "SIMPLE"
     }, {
       "codeName" : "state",
-      "logicName" : "状态",
+      "logicName" : "项目状态",
       "name" : "state",
       "getPSAppDEField" : {
         "name" : "STATE",
@@ -3225,7 +3470,7 @@
       "allowEmpty" : false
     }, {
       "codeName" : "state",
-      "logicName" : "状态",
+      "logicName" : "项目状态",
       "name" : "state",
       "getPSAppDEField" : {
         "name" : "STATE",
@@ -3469,6 +3714,63 @@
       "stdDataType" : 6,
       "type" : "SIMPLE"
     }, {
+      "codeName" : "actual_start_at",
+      "jsonFormat" : "yyyy-MM-dd",
+      "logicName" : "实际开始时间",
+      "name" : "actual_start_at",
+      "getPSAppDEField" : {
+        "name" : "ACTUAL_START_AT",
+        "codeName" : "actual_start_at"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "actual_end_at",
+      "jsonFormat" : "yyyy-MM-dd",
+      "logicName" : "实际结束时间",
+      "name" : "actual_end_at",
+      "getPSAppDEField" : {
+        "name" : "ACTUAL_END_AT",
+        "codeName" : "actual_end_at"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "expected_time",
+      "logicName" : "预计工时",
+      "name" : "expected_time",
+      "getPSAppDEField" : {
+        "name" : "EXPECTED_TIME",
+        "codeName" : "expected_time"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "consume_time",
+      "logicName" : "消耗工时",
+      "name" : "consume_time",
+      "getPSAppDEField" : {
+        "name" : "CONSUME_TIME",
+        "codeName" : "consume_time"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "state_type",
+      "logicName" : "状态类型",
+      "name" : "state_type",
+      "getPSAppDEField" : {
+        "name" : "STATE_TYPE",
+        "codeName" : "state_type"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "codeName" : "create_man",
       "logicName" : "建立人",
       "name" : "create_man",
@@ -3549,6 +3851,28 @@
     "codeName" : "project_filter_dto",
     "name" : "project_filter_dto",
     "getPSAppDEMethodDTOFields" : [ {
+      "codeName" : "f_end_at_datediffnow2_ltandeq",
+      "logicName" : "结束时间",
+      "name" : "f_end_at_datediffnow2_ltandeq",
+      "getPSAppDEField" : {
+        "name" : "END_AT",
+        "codeName" : "end_at"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "f_end_at_datediffnow_gtandeq",
+      "logicName" : "结束时间",
+      "name" : "f_end_at_datediffnow_gtandeq",
+      "getPSAppDEField" : {
+        "name" : "END_AT",
+        "codeName" : "end_at"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
       "codeName" : "n_id_eq",
       "logicName" : "标识",
       "name" : "n_id_eq",
@@ -3638,11 +3962,22 @@
       "type" : "SIMPLE"
     }, {
       "codeName" : "n_state_eq",
-      "logicName" : "状态",
+      "logicName" : "项目状态",
       "name" : "n_state_eq",
       "getPSAppDEField" : {
         "name" : "STATE",
         "codeName" : "state"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "n_state_type_noteq",
+      "logicName" : "状态类型",
+      "name" : "n_state_type_noteq",
+      "getPSAppDEField" : {
+        "name" : "STATE_TYPE",
+        "codeName" : "state_type"
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
@@ -3700,7 +4035,7 @@
       "type" : "SIMPLE"
     }, {
       "codeName" : "state",
-      "logicName" : "状态",
+      "logicName" : "项目状态",
       "name" : "state",
       "getPSAppDEField" : {
         "name" : "STATE",
@@ -4728,6 +5063,40 @@
     "builtinMethod" : false,
     "needResourceKey" : true
   }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "project_automatic_change_state",
+    "methodType" : "DEACTION",
+    "name" : "project_automatic_change_state",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/project_automatic_change_state.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "project_automatic_change_state"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/project_automatic_change_state",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "UPDATE",
     "codeName" : "project_move",
     "methodType" : "DEACTION",
@@ -5023,6 +5392,40 @@
     "builtinMethod" : false,
     "needResourceKey" : true,
     "noServiceCodeName" : true
+  }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "warning_count_logic",
+    "methodType" : "DEACTION",
+    "name" : "warning_count_logic",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/warning_count_logic.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "warning_count_logic"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/warning_count_logic",
+    "builtinMethod" : false,
+    "needResourceKey" : true
   }, {
     "actionMode" : "CUSTOM",
     "codeName" : "waterfall_index_addon_counter",
@@ -6745,32 +7148,6 @@
     "id" : "add_favorite@project"
   }, {
     "actionTarget" : "SINGLEKEY",
-    "caption" : "归档",
-    "codeName" : "archive",
-    "confirmMsg" : "确认归档该项目？",
-    "frontProcessType" : "WIZARD",
-    "fullCodeName" : "project_archive",
-    "name" : "进行中_归档",
-    "getPSAppDEMethod" : {
-      "modelref" : true,
-      "id" : "archive"
-    },
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
-    },
-    "refreshMode" : 1,
-    "successMsg" : "归档成功",
-    "timeout" : 60000,
-    "tooltip" : "归档",
-    "uIActionMode" : "BACKEND",
-    "uIActionTag" : "archive",
-    "uIActionType" : "DEUIACTION",
-    "enableConfirm" : true,
-    "reloadData" : true,
-    "id" : "archive@project"
-  }, {
-    "actionTarget" : "SINGLEKEY",
     "caption" : "取消星标",
     "codeName" : "cancel_favorite",
     "fullCodeName" : "project_cancel_favorite",
@@ -6862,6 +7239,40 @@
     "uIActionType" : "DEUIACTION",
     "id" : "mob_advanced_setting@project"
   }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "归档",
+    "codeName" : "mob_archive",
+    "confirmMsg" : "确认归档该项目？",
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "project_mob_archive",
+    "name" : "进行中_归档（移动端）",
+    "getNextPSUIAction" : {
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+      },
+      "modelref" : true,
+      "id" : "open_mob_list_view@project"
+    },
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "archive"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+    },
+    "refreshMode" : 1,
+    "successMsg" : "归档成功",
+    "timeout" : 60000,
+    "tooltip" : "归档",
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "mob_archive",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "mob_archive@project"
+  }, {
     "actionTarget" : "NONE",
     "caption" : "创建项目",
     "codeName" : "mob_create_project",
@@ -6899,6 +7310,14 @@
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "project_mob_in_progress_into_deleted",
     "name" : "进行中_删除（移动端）",
+    "getNextPSUIAction" : {
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+      },
+      "modelref" : true,
+      "id" : "open_mob_list_view@project"
+    },
     "getPSAppDEMethod" : {
       "modelref" : true,
       "id" : "delete"
@@ -7024,6 +7443,27 @@
     "uIActionTag" : "open_global_setting",
     "uIActionType" : "DEUIACTION",
     "id" : "open_global_setting@project"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "打开项目移动端列表",
+    "codeName" : "open_mob_list_view",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_list_view.json",
+      "viewType" : "DEMOBLISTVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "project_open_mob_list_view",
+    "name" : "打开项目移动端列表视图",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+    },
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "open_mob_list_view",
+    "uIActionType" : "DEUIACTION",
+    "id" : "open_mob_list_view@project"
   } ],
   "getAllPSAppDEUILogics" : [ {
     "codeName" : "mob_full_screen",
@@ -7284,6 +7724,10 @@
     "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_project_pickup_view.json",
+    "viewType" : "DEMOBPICKUPVIEW"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_create_view.json",
     "viewType" : "DEMOBEDITVIEW"
   }, {
@@ -7306,6 +7750,10 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_move_edit_view.json",
     "viewType" : "DEMOBEDITVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_project_pickup_view_pickup_md_view.json",
+    "viewType" : "DEMOBPICKUPMDVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_notice_show_view.json",

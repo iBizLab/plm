@@ -195,6 +195,9 @@
       "name" : "TITLE",
       "codeName" : "TITLE"
     }, {
+      "name" : "IS_GLOBAL",
+      "codeName" : "is_global"
+    }, {
       "name" : "DESCRIPTION",
       "codeName" : "description"
     }, {
@@ -300,6 +303,70 @@
       "type" : "DTOS"
     },
     "viewLevel" : 0
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea_template/PSDEDATAQUERIES/global/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "global",
+    "logicName" : "全局需求模板",
+    "name" : "global",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea_template.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "IDEA_TEMPLATE",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "OR",
+          "condType" : "GROUP",
+          "name" : "OR",
+          "getPSDEDQConditions" : [ {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "1",
+            "fieldName" : "IS_GLOBAL",
+            "name" : "(IS_GLOBAL) 等于(=) 1",
+            "getPSDEField" : {
+              "name" : "IS_GLOBAL",
+              "codeName" : "is_global"
+            }
+          }, {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "product_id",
+            "fieldName" : "PRODUCT_ID",
+            "name" : "(PRODUCT_ID) 等于(=) 网页请求上下文 product_id",
+            "getPSDEField" : {
+              "name" : "PRODUCT_ID",
+              "codeName" : "product_id"
+            },
+            "getPSVARTypeId" : "WEBCONTEXT"
+          } ]
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "GlobalInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "idea_template_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "GlobalResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "idea_template_dto"
+      },
+      "type" : "DTOS"
+    }
   } ],
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
@@ -330,6 +397,42 @@
       "type" : "PAGE"
     },
     "defaultMode" : true,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "global",
+    "logicName" : "全局需求模板",
+    "majorSortDir" : "ASC",
+    "getMajorSortPSDEField" : {
+      "name" : "IS_GLOBAL",
+      "codeName" : "is_global"
+    },
+    "minorSortDir" : "DESC",
+    "getMinorSortPSDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "update_time"
+    },
+    "name" : "global",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "global"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "GlobalInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "idea_template_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "GlobalResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "idea_template_dto"
+      },
+      "type" : "PAGE"
+    },
     "enableBackend" : true,
     "enableFront" : true
   } ],
@@ -418,9 +521,84 @@
     "stringLength" : 500,
     "valueFormat" : "%1$s",
     "allowEmpty" : false,
-    "enableQuickSearch" : true,
     "majorDEField" : true,
     "serviceCodeName" : "title"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "IS_GLOBAL",
+      "dBType" : "MYSQL5",
+      "name" : "IS_GLOBAL",
+      "queryCodeExp" : "t1.`IS_GLOBAL`",
+      "standardColumnName" : "`IS_GLOBAL`",
+      "valueAutoGen" : true
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_IS_GLOBAL_EQ",
+      "name" : "N_IS_GLOBAL_EQ",
+      "stdDataType" : 9,
+      "valueOP" : "EQ"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[IS_GLOBAL][全局模板]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "[IS_GLOBAL][全局模板]",
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[IS_GLOBAL][全局模板]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBSWITCH",
+        "name" : "[IS_GLOBAL][全局模板]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "is_global",
+    "dEFType" : 1,
+    "dataType" : "YESNO",
+    "defaultValue" : "0",
+    "importOrder" : 1000,
+    "logicName" : "全局模板",
+    "name" : "IS_GLOBAL",
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSCODELISTS/YesNo.json"
+    },
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "IS_GLOBAL"
+    },
+    "serviceCodeName" : "is_global",
+    "stdDataType" : 9,
+    "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "PRODUCT_IDENTIFIER",
@@ -1503,7 +1681,8 @@
     "serviceCodeName" : "name",
     "stdDataType" : 25,
     "stringLength" : 200,
-    "valueFormat" : "%1$s"
+    "valueFormat" : "%1$s",
+    "enableQuickSearch" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "PRODUCT_ID",
@@ -1987,6 +2166,39 @@
     "phisicalDEField" : false,
     "serviceCodeName" : "category_name"
   } ],
+  "getAllPSDELogics" : [ {
+    "codeName" : "nothing",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea_template/PSDELOGICS/nothing.json",
+    "logicName" : "无操作",
+    "memo" : "无操作逻辑，用于替换表单的获取数据行为",
+    "name" : "无操作",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "topPos" : 200,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea_template.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : false,
+    "enableFront" : true
+  } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "idea_template_dto",
     "getPSDEMethodDTOFields" : [ {
@@ -2001,6 +2213,17 @@
       "stringLength" : 500,
       "type" : "SIMPLE",
       "allowEmpty" : false
+    }, {
+      "defaultValue" : "0",
+      "logicName" : "全局模板",
+      "name" : "is_global",
+      "getPSDEField" : {
+        "name" : "IS_GLOBAL",
+        "codeName" : "is_global"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
     }, {
       "logicName" : "产品标识",
       "name" : "product_identifier",
@@ -2238,6 +2461,21 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "defaultValue" : "0",
+      "logicName" : "全局模板",
+      "name" : "n_is_global_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_IS_GLOBAL_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "IS_GLOBAL",
+        "codeName" : "is_global"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "名称",
       "name" : "n_name_like",
       "getPSDEFSearchMode" : {
@@ -2382,6 +2620,12 @@
     "name" : "UPDATE"
   } ],
   "getAllPSModelDatas" : [ {
+    "codeName" : "global_create_edit_view",
+    "logicName" : "全局需求模板新建编辑视图",
+    "name" : "全局需求模板新建编辑视图",
+    "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "EditView2",
     "logicName" : "需求模板实体编辑视图（左右关系）",
     "name" : "需求模板实体编辑视图（左右关系）",
@@ -2405,6 +2649,12 @@
     "codeName" : "all_grid_view",
     "logicName" : "全部需求模板表格视图",
     "name" : "全部需求模板表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "global_all_grid_view",
+    "logicName" : "全部的全局需求模板表格视图",
+    "name" : "全部的全局需求模板表格视图",
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
@@ -2441,6 +2691,12 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "global_edit_view",
+    "logicName" : "全局需求模板实体编辑视图",
+    "name" : "全局需求模板实体编辑视图",
+    "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "pick_up_tree_view",
     "logicName" : "需求选择树视图",
     "name" : "需求选择树视图",
@@ -2465,6 +2721,20 @@
     "logicName" : "需求模版新建编辑选项视图_表单",
     "modelTag2" : "0",
     "name" : "需求模版新建编辑选项视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "global_edit_view_Form",
+    "logicName" : "全局需求模版实体编辑视图_表单",
+    "modelTag2" : "0",
+    "name" : "全局需求模版实体编辑视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "global_create_edit_view_Form",
+    "logicName" : "全局需求模版新建编辑视图_表单",
+    "modelTag2" : "0",
+    "name" : "全局需求模版新建编辑视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {

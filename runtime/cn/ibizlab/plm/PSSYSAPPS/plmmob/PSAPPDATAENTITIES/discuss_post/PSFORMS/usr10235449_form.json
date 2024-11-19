@@ -4,13 +4,13 @@
   "getCreatePSControlAction" : {
     "modelref" : true,
     "id" : "create",
-    "actionName" : "Create",
+    "actionName" : "nothing",
     "actionType" : "DEACTION",
     "dataAccessAction" : "CREATE",
     "name" : "create",
     "getPSAppDEMethod" : {
       "modelref" : true,
-      "id" : "create"
+      "id" : "nothing"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -113,16 +113,12 @@
     "hidden" : true,
     "dataType" : 25
   }, {
-    "id" : "topic_name",
+    "id" : "target_topic_id",
     "dataType" : 25,
-    "getPSAppDEField" : {
-      "name" : "TOPIC_NAME",
-      "codeName" : "topic_name"
-    }
-  }, {
-    "id" : "topic_id",
-    "hidden" : true,
-    "dataType" : 25,
+    "createDVT" : "APPDATA",
+    "createDV" : "discuss_topic",
+    "updateDVT" : "APPDATA",
+    "updateDV" : "discuss_topic",
     "getPSAppDEField" : {
       "name" : "TOPIC_ID",
       "codeName" : "topic_id"
@@ -150,78 +146,41 @@
       "name" : "group1",
       "getPSDEFormDetails" : [ {
         "caption" : "移动至话题",
-        "codeName" : "topic_name",
+        "codeName" : "target_topic_id",
+        "createDV" : "discuss_topic",
+        "createDVT" : "APPDATA",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
         "enableCond" : 3,
+        "fieldName" : "target_topic_id",
         "ignoreInput" : 0,
         "labelPos" : "TOP",
         "labelWidth" : 130,
-        "name" : "topic_name",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "TOPIC_NAME",
-          "codeName" : "topic_name"
-        },
-        "getPSEditor" : {
-          "editorType" : "MOBDROPDOWNLIST",
-          "name" : "topic_name",
-          "getPSAppCodeList" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/Team__topic_list.json"
-          },
-          "getPSEditorItems" : [ {
-            "name" : "topic_id",
-            "getPSAppDEACMode" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "getPSAppDEDataSet" : {
-              "modelref" : true,
-              "id" : "fetch_default"
-            },
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_topic.json"
-            }
-          } ],
-          "singleSelect" : true
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "valueItemName" : "topic_id",
-        "allowEmpty" : false,
-        "needCodeListConfig" : true,
-        "showCaption" : true
-      }, {
-        "caption" : "话题标识",
-        "codeName" : "topic_id",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "topic_id",
+        "name" : "target_topic_id",
         "noPrivDisplayMode" : 1,
         "getPSAppDEField" : {
           "name" : "TOPIC_ID",
           "codeName" : "topic_id"
         },
         "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "topic_id"
+          "editorType" : "MOBDROPDOWNLIST",
+          "name" : "target_topic_id",
+          "getPSAppCodeList" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/Team__topic_list.json"
+          },
+          "singleSelect" : true
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "allowEmpty" : true,
-        "hidden" : true
+        "updateDV" : "discuss_topic",
+        "updateDVT" : "APPDATA",
+        "allowEmpty" : false,
+        "needCodeListConfig" : true,
+        "showCaption" : true
       } ],
       "getPSLayout" : {
         "childColMD" : 24,
@@ -296,13 +255,13 @@
   "getUpdatePSControlAction" : {
     "modelref" : true,
     "id" : "update",
-    "actionName" : "Update",
+    "actionName" : "nothing",
     "actionType" : "DEACTION",
     "dataAccessAction" : "UPDATE",
     "name" : "update",
     "getPSAppDEMethod" : {
       "modelref" : true,
-      "id" : "update"
+      "id" : "nothing"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,

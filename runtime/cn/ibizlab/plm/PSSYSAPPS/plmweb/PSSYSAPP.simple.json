@@ -184,7 +184,7 @@
     "pluginCode" : "PERSON_SELECT",
     "pluginType" : "EDITOR_CUSTOMSTYLE",
     "rTObjectName" : "IBizPersonelSelect",
-    "rTObjectRepo" : "@ibiz-template-plm/person-select@0.0.3-dev.246",
+    "rTObjectRepo" : "@ibiz-template-plm/person-select@0.0.3-alpha.110",
     "refMode" : "EDITORSTYPE",
     "runtimeObject" : true
   }, {
@@ -211,7 +211,7 @@
     "pluginCode" : "ATTENTION",
     "pluginType" : "EDITOR_CUSTOMSTYLE",
     "rTObjectName" : "IBizAttention",
-    "rTObjectRepo" : "@ibiz-template-plm/attention@0.0.3-dev.96",
+    "rTObjectRepo" : "@ibiz-template-plm/attention@0.0.3-alpha.109",
     "refMode" : "EDITORSTYPE",
     "runtimeObject" : true
   }, {
@@ -350,7 +350,7 @@
     "pluginCode" : "CHECKBOX_GRID",
     "pluginType" : "GRID_RENDER",
     "rTObjectName" : "IBizCheckboxGrid",
-    "rTObjectRepo" : "@ibiz-template-plugin/checkbox-grid@0.1.8-alpha.8",
+    "rTObjectRepo" : "@ibiz-template-plugin/checkbox-grid@0.0.3-alpha.111",
     "refMode" : "CONTROL",
     "refTag" : "GRID",
     "runtimeObject" : true
@@ -378,7 +378,7 @@
     "pluginCode" : "NUMBER_GRID",
     "pluginType" : "GRID_RENDER",
     "rTObjectName" : "IBizNumberGridControl",
-    "rTObjectRepo" : "@ibiz-template-plugin/number-grid@0.0.3-alpha.97",
+    "rTObjectRepo" : "@ibiz-template-plugin/number-grid@0.0.3-alpha.104",
     "refMode" : "CONTROL",
     "refTag" : "GRID",
     "runtimeObject" : true
@@ -392,7 +392,7 @@
     "pluginCode" : "NUMBER_GRID",
     "pluginType" : "GRID_RENDER",
     "rTObjectName" : "IBizNumberGridControl",
-    "rTObjectRepo" : "@ibiz-template-plugin/number-grid@0.0.3-alpha.97",
+    "rTObjectRepo" : "@ibiz-template-plugin/number-grid@0.0.3-alpha.104",
     "refMode" : "CONTROL",
     "refTag" : "TREEGRID",
     "runtimeObject" : true
@@ -445,7 +445,7 @@
     "pluginCode" : "FILE_DOWNLOAD",
     "pluginType" : "DEUIACTION",
     "rTObjectName" : "registerFileDownloadProvider",
-    "rTObjectRepo" : "@ibiz-template-plugin/file-download@0.0.3-dev.122",
+    "rTObjectRepo" : "@ibiz-template-plugin/file-download@0.0.3-alpha.107",
     "refMode" : "UIACTION",
     "refTag" : "FRONT",
     "runtimeObject" : true
@@ -572,7 +572,7 @@
     "pluginCode" : "RAW_ACTIVITY",
     "pluginType" : "EDITOR_CUSTOMSTYLE",
     "rTObjectName" : "IBizRawActivity",
-    "rTObjectRepo" : "@ibiz-template-plm/raw-activity@0.0.2-dev.136",
+    "rTObjectRepo" : "@ibiz-template-plm/raw-activity@0.0.3-dev.1",
     "refMode" : "EDITORSTYPE",
     "runtimeObject" : true
   }, {
@@ -920,6 +920,21 @@
     "rTObjectName" : "IBizCheckboxListExtend",
     "rTObjectRepo" : "@ibiz-template-plugin/checkbox-list-extend@0.1.2-alpha.0",
     "refMode" : "EDITORSTYPE",
+    "runtimeObject" : true
+  }, {
+    "name" : "重复器表单",
+    "getPSSysPFPlugin" : {
+      "pluginType" : "FORM_USERCONTROL",
+      "pluginCode" : "REPEATER_FORM",
+      "runtimeObject" : true
+    },
+    "pluginCode" : "REPEATER_FORM",
+    "pluginType" : "FORM_USERCONTROL",
+    "rTObjectName" : "REPEATER_FORM",
+    "rTObjectRepo" : "@ibiz-template-pamweb/repeater-form@0.1.8-y.4",
+    "refMode" : "CONTROLITEM",
+    "refTag" : "FORM",
+    "refTag2" : "MDCTRL",
     "runtimeObject" : true
   }, {
     "name" : "锚点富文本",
@@ -1947,6 +1962,138 @@
     "id" : "open_complete_review@review"
   }, {
     "actionTarget" : "NONE",
+    "caption" : "缺陷",
+    "codeName" : "open_summary_bug",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_summary_bug_grid_view.json",
+      "viewType" : "DEGRIDVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "work_item_open_summary_bug",
+    "name" : "打开我的事项缺陷",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+    },
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "open_summary_bug",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true,
+    "id" : "open_summary_bug@work_item"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "测试用例",
+    "codeName" : "open_summary_case",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_summary_case_grid_view.json",
+      "viewType" : "DEGRIDVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "test_case_open_summary_case",
+    "name" : "打开我的事项用例表格视图",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+    },
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "open_summary_case",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true,
+    "id" : "open_summary_case@test_case"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "需求",
+    "codeName" : "open_summary_idea",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_summary_idea_grid_view.json",
+      "viewType" : "DEGRIDVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "idea_open_summary_idea",
+    "name" : "打开我的事项需求",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
+    },
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "open_summary_idea",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true,
+    "id" : "open_summary_idea@idea"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "其他工作项",
+    "codeName" : "open_summary_other_item",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_summary_other_grid_view.json",
+      "viewType" : "DEGRIDVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "work_item_open_summary_other_item",
+    "name" : "打开我的事项其他工作项",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+    },
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "open_summary_other_item",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true,
+    "id" : "open_summary_other_item@work_item"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "任务",
+    "codeName" : "open_summary_task",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_summary_task_grid_view.json",
+      "viewType" : "DEGRIDVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "work_item_open_summary_task",
+    "name" : "打开我的事项任务",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+    },
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "open_summary_task",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true,
+    "id" : "open_summary_task@work_item"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "工单",
+    "codeName" : "open_summary_ticket",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_summary_ticket_grid_view.json",
+      "viewType" : "DEGRIDVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "ticket_open_summary_ticket",
+    "name" : "打开我的事项工单",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
+    },
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "open_summary_ticket",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true,
+    "id" : "open_summary_ticket@ticket"
+  }, {
+    "actionTarget" : "NONE",
     "caption" : "规划工作项",
     "codeName" : "plan_work_item",
     "dataAccessAction" : "SUBDATA",
@@ -2170,11 +2317,13 @@
     "getPSSysImage" : {
       "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"dydnnkk8m__design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M8.00016594,11 C6.34331179,11 5.00016594,9.65685463 5.00016594,8 C5.00016594,6.34314585 6.34331179,5 8.00016594,5 C9.65702009,5 11.0001659,6.34314585 11.0001659,8 C11.0001659,9.65685463 9.65702009,11 8.00016594,11 Z M8.00016594,10 C6.8955965,10 6.00016594,9.10456944 6.00016594,8 C6.00016594,6.89543056 6.8955965,6 8.00016594,6 C9.10473537,6 10.0001659,6.89543056 10.0001659,8 C10.0001659,9.10456944 9.10473537,10 8.00016594,10 Z M14.0623436,4.625 L14.0623436,11.375 L8.00016594,14.75 L1.93798828,11.375 L1.93798828,4.625 L8.00016594,1.25 L14.0623436,4.625 Z M8.00016594,2.39453006 L13.0623436,5.21279955 L13.0623436,10.7872009 L8.00016594,13.6054697 L2.93798828,10.7872009 L2.93798828,5.21279955 L8.00016594,2.39453006 Z\" fill-opacity=\".9\" fill-rule=\"evenodd\" fill=\"#FFFFFF\"></path>\n</svg>"
     },
+    "refreshMode" : 1,
     "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "snapshot_management",
     "uIActionType" : "DEUIACTION",
     "globalUIAction" : true,
+    "reloadData" : true,
     "id" : "snapshot_management@baseline"
   }, {
     "caption" : "实体界面行为组1",
@@ -2300,7 +2449,6 @@
               },
               "getPSPanelItems" : [ {
                 "caption" : "容器",
-                "contentWidth" : 38.0,
                 "itemStyle" : "DEFAULT",
                 "itemType" : "CONTAINER",
                 "name" : "container1",
@@ -2309,9 +2457,7 @@
                 },
                 "getPSLayoutPos" : {
                   "grow" : -1,
-                  "layout" : "FLEX",
-                  "width" : 38,
-                  "widthMode" : "PERCENTAGE"
+                  "layout" : "FLEX"
                 },
                 "getPSPanelItems" : [ {
                   "caption" : "容器",
@@ -2479,8 +2625,7 @@
                       "showCaption" : true
                     } ]
                   } ]
-                } ],
-                "width" : 38.0
+                } ]
               } ],
               "width" : 100.0
             } ],

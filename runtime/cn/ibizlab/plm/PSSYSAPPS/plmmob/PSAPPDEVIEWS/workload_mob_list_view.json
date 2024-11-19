@@ -800,18 +800,19 @@
         "id" : "MDCTRL"
       },
       "getPSDEListDataItems" : [ {
-        "dataType" : 25,
-        "name" : "name",
-        "getPSAppDEField" : {
-          "name" : "NAME",
-          "codeName" : "name"
-        }
-      }, {
         "dataType" : 6,
         "name" : "duration",
         "getPSAppDEField" : {
           "name" : "DURATION",
           "codeName" : "duration"
+        }
+      }, {
+        "dataType" : 5,
+        "format" : "YYYY-MM-DD",
+        "name" : "register_date",
+        "getPSAppDEField" : {
+          "name" : "REGISTER_DATE",
+          "codeName" : "register_date"
         }
       }, {
         "dataType" : 25,
@@ -821,12 +822,11 @@
           "codeName" : "type_id"
         }
       }, {
-        "dataType" : 5,
-        "format" : "YYYY-MM-DD",
-        "name" : "register_date",
+        "dataType" : 25,
+        "name" : "name",
         "getPSAppDEField" : {
-          "name" : "REGISTER_DATE",
-          "codeName" : "register_date"
+          "name" : "NAME",
+          "codeName" : "name"
         }
       }, {
         "dataType" : 25,
@@ -845,22 +845,20 @@
       } ],
       "getPSDEListItems" : [ {
         "align" : "LEFT",
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.NAME"
-        },
-        "caption" : "事项名称",
-        "dataItemName" : "name",
+        "caption" : "时长",
+        "dataItemName" : "duration",
         "itemType" : "TEXTITEM",
-        "name" : "NAME",
+        "name" : "DURATION",
         "width" : 150,
         "widthString" : "150px",
         "enableSort" : true
       }, {
         "align" : "LEFT",
-        "caption" : "时长",
-        "dataItemName" : "duration",
+        "caption" : "登记日期",
+        "dataItemName" : "register_date",
         "itemType" : "TEXTITEM",
-        "name" : "DURATION",
+        "name" : "REGISTER_DATE",
+        "valueFormat" : "YYYY-MM-DD",
         "width" : 150,
         "widthString" : "150px",
         "enableSort" : true
@@ -875,11 +873,13 @@
         "enableSort" : true
       }, {
         "align" : "LEFT",
-        "caption" : "登记日期",
-        "dataItemName" : "register_date",
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.NAME"
+        },
+        "caption" : "事项名称",
+        "dataItemName" : "name",
         "itemType" : "TEXTITEM",
-        "name" : "REGISTER_DATE",
-        "valueFormat" : "YYYY-MM-DD",
+        "name" : "NAME",
         "width" : 150,
         "widthString" : "150px",
         "enableSort" : true
@@ -1186,7 +1186,7 @@
       "searchButtonStyle" : "DEFAULT",
       "tabHeaderPos" : "TOP",
       "enableAdvanceSearch" : false,
-      "enableAutoSearch" : false,
+      "enableAutoSearch" : true,
       "enableFilterSave" : false,
       "mobileControl" : true,
       "noTabHeader" : true,

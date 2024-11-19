@@ -21,6 +21,7 @@
     "name" : "engine"
   } ],
   "getPSControls" : [ {
+    "autoSaveMode" : 1,
     "codeName" : "mob_advanced_setting_form",
     "controlType" : "FORM",
     "getCreatePSControlAction" : {
@@ -179,11 +180,18 @@
       "getPSAppDEUIAction" : {
         "actionTarget" : "SINGLEKEY",
         "caption" : "归档",
-        "codeName" : "in_progress_into_archived",
+        "codeName" : "mob_in_progress_into_archived",
         "confirmMsg" : "确认归档该空间？",
-        "frontProcessType" : "WIZARD",
-        "fullCodeName" : "space_in_progress_into_archived",
-        "name" : "进行中_归档",
+        "fullCodeName" : "space_mob_in_progress_into_archived",
+        "name" : "移动端进行中_归档",
+        "getNextPSUIAction" : {
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space.json"
+          },
+          "modelref" : true,
+          "id" : "mob_open_space_list@space"
+        },
         "getPSAppDEMethod" : {
           "modelref" : true,
           "id" : "archive"
@@ -192,16 +200,14 @@
           "modelref" : true,
           "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space.json"
         },
-        "refreshMode" : 1,
         "successMsg" : "归档成功",
         "timeout" : 60000,
         "tooltip" : "归档",
         "uIActionMode" : "BACKEND",
-        "uIActionTag" : "in_progress_into_archived",
+        "uIActionTag" : "mob_in_progress_into_archived",
         "uIActionType" : "DEUIACTION",
         "enableConfirm" : true,
-        "reloadData" : true,
-        "id" : "in_progress_into_archived@space"
+        "id" : "mob_in_progress_into_archived@space"
       }
     }, {
       "eventNames" : "onClick",
@@ -212,11 +218,18 @@
       "getPSAppDEUIAction" : {
         "actionTarget" : "SINGLEKEY",
         "caption" : "归档",
-        "codeName" : "in_progress_into_archived",
+        "codeName" : "mob_in_progress_into_archived",
         "confirmMsg" : "确认归档该空间？",
-        "frontProcessType" : "WIZARD",
-        "fullCodeName" : "space_in_progress_into_archived",
-        "name" : "进行中_归档",
+        "fullCodeName" : "space_mob_in_progress_into_archived",
+        "name" : "移动端进行中_归档",
+        "getNextPSUIAction" : {
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space.json"
+          },
+          "modelref" : true,
+          "id" : "mob_open_space_list@space"
+        },
         "getPSAppDEMethod" : {
           "modelref" : true,
           "id" : "archive"
@@ -225,16 +238,14 @@
           "modelref" : true,
           "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space.json"
         },
-        "refreshMode" : 1,
         "successMsg" : "归档成功",
         "timeout" : 60000,
         "tooltip" : "归档",
         "uIActionMode" : "BACKEND",
-        "uIActionTag" : "in_progress_into_archived",
+        "uIActionTag" : "mob_in_progress_into_archived",
         "uIActionType" : "DEUIACTION",
         "enableConfirm" : true,
-        "reloadData" : true,
-        "id" : "in_progress_into_archived@space"
+        "id" : "mob_in_progress_into_archived@space"
       }
     }, {
       "eventNames" : "onClick",
@@ -250,6 +261,14 @@
         "frontProcessType" : "WIZARD",
         "fullCodeName" : "space_mob_in_progress_into_deleted",
         "name" : "移动端进行中_删除",
+        "getNextPSUIAction" : {
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space.json"
+          },
+          "modelref" : true,
+          "id" : "mob_open_space_list@space"
+        },
         "getPSAppDEMethod" : {
           "modelref" : true,
           "id" : "delete"
@@ -258,7 +277,6 @@
           "modelref" : true,
           "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space.json"
         },
-        "refreshMode" : 1,
         "successMsg" : "删除成功",
         "timeout" : 60000,
         "tooltip" : "删除",
@@ -266,7 +284,6 @@
         "uIActionTag" : "mob_in_progress_into_deleted",
         "uIActionType" : "DEUIACTION",
         "enableConfirm" : true,
-        "reloadData" : true,
         "id" : "mob_in_progress_into_deleted@space"
       }
     }, {
@@ -283,6 +300,14 @@
         "frontProcessType" : "WIZARD",
         "fullCodeName" : "space_mob_in_progress_into_deleted",
         "name" : "移动端进行中_删除",
+        "getNextPSUIAction" : {
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space.json"
+          },
+          "modelref" : true,
+          "id" : "mob_open_space_list@space"
+        },
         "getPSAppDEMethod" : {
           "modelref" : true,
           "id" : "delete"
@@ -291,7 +316,6 @@
           "modelref" : true,
           "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space.json"
         },
-        "refreshMode" : 1,
         "successMsg" : "删除成功",
         "timeout" : 60000,
         "tooltip" : "删除",
@@ -299,7 +323,6 @@
         "uIActionTag" : "mob_in_progress_into_deleted",
         "uIActionType" : "DEUIACTION",
         "enableConfirm" : true,
-        "reloadData" : true,
         "id" : "mob_in_progress_into_deleted@space"
       }
     }, {
@@ -812,6 +835,7 @@
         "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space.json"
       }
     },
+    "enableAutoSave" : true,
     "mobileControl" : true,
     "noTabHeader" : true,
     "name" : "form",
@@ -829,57 +853,6 @@
     "getPSControlParam" : {
       "id" : "RIGHTTOOLBAR"
     },
-    "getPSDEToolbarItems" : [ {
-      "getCapPSLanguageRes" : {
-        "lanResTag" : "TBB.TEXT.EDITVIEW.SAVEANDCLOSE"
-      },
-      "caption" : "确定",
-      "groupExtractMode" : "ITEM",
-      "itemType" : "DEUIACTION",
-      "name" : "tbitem1",
-      "noPrivDisplayMode" : 2,
-      "getPSAppViewUIAction" : {
-        "modelref" : true,
-        "id" : "righttoolbar_tbitem1"
-      },
-      "getPSSysCss" : {
-        "cssName" : "enter_button_style"
-      },
-      "getPSSysImage" : {
-        "cssClass" : "sx-tb-saveandclose"
-      },
-      "getPSUIAction" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "TBB.TEXT.EDITVIEW.SAVEANDCLOSE"
-        },
-        "caption" : "保存并关闭",
-        "codeName" : "SaveAndExit",
-        "dataAccessAction" : "SUBDATA",
-        "fullCodeName" : "SaveAndExit",
-        "name" : "编辑界面_保存并退出操作",
-        "getPSDEOPPriv" : {
-          "modelref" : true,
-          "id" : "SUBDATA"
-        },
-        "getPSSysImage" : {
-          "cssClass" : "sx-tb-saveandclose"
-        },
-        "predefinedType" : "EDITVIEW_SAVEANDEXITACTION",
-        "timeout" : 60000,
-        "getTooltipPSLanguageRes" : {
-          "lanResTag" : "TBB.TOOLTIP.EDITVIEW.SAVEANDCLOSE"
-        },
-        "uIActionMode" : "SYS",
-        "uIActionTag" : "SaveAndExit",
-        "uIActionType" : "DEUIACTION"
-      },
-      "tooltip" : "确定",
-      "getTooltipPSLanguageRes" : {
-        "lanResTag" : "TBB.TOOLTIP.EDITVIEW.SAVEANDCLOSE"
-      },
-      "showCaption" : true,
-      "showIcon" : true
-    } ],
     "toolbarStyle" : "MOBNAVRIGHTMENU",
     "xDataControlName" : "form",
     "modelid" : "6da8cce3f6df8a8eb5d94740f6350f74",

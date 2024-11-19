@@ -29,6 +29,7 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="执行结果数据准备"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="执行用例数据准备"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction7" id="deaction7" implementation="http://www.jboss.org/drools/rule" name="更新执行用例"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                     <sequenceFlow id="gateway-begin_prepareparam3" sourceRef="gateway-begin" targetRef="prepareparam3">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $runcreate_resultdefault:run();
@@ -85,9 +86,11 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam6_deaction7" sourceRef="prepareparam6" targetRef="deaction7">
+                    <sequenceFlow id="prepareparam6_debugparam1" sourceRef="prepareparam6" targetRef="debugparam1">
                     </sequenceFlow>
                     <sequenceFlow id="deaction7_end3" sourceRef="deaction7" targetRef="end3">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam1_deaction7" sourceRef="debugparam1" targetRef="deaction7">
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-begin" name="Gateway" gatewayDirection="Diverging" default="gateway-begin_end_line"></exclusiveGateway>
                             <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>

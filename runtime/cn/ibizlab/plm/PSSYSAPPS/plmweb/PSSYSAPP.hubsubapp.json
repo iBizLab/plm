@@ -3989,6 +3989,62 @@
     } ],
     "uniqueTag" : "project__Usr0719516089"
   }, {
+    "codeName" : "Usr1117993004",
+    "name" : "概览基本信息界面行为组",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "getPSUIActionGroupDetails" : [ {
+      "actionLevel" : 50,
+      "caption" : "刷新",
+      "detailType" : "DEUIACTION",
+      "name" : "u59ad771",
+      "getPSSysImage" : {
+        "glyph" : "xf021@FontAwesome",
+        "cssClass" : "fa fa-refresh"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "SINGLEDATA",
+        "caption" : "刷新",
+        "codeName" : "refresh_project_state",
+        "frontProcessType" : "OTHER",
+        "fullCodeName" : "project_refresh_project_state",
+        "name" : "调用自动化刷新项目逾期状态",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "project_automatic_change_state"
+        },
+        "getPSAppDEUILogic" : {
+          "modelref" : true,
+          "id" : "refresh_project_state"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf021@FontAwesome",
+          "cssClass" : "fa fa-refresh"
+        },
+        "refreshMode" : 1,
+        "successMsg" : "已刷新项目状态",
+        "timeout" : 60000,
+        "tooltip" : "调用自动化刷新项目状态",
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "refresh_project_state",
+        "uIActionType" : "DEUIACTION",
+        "uILogicAttachMode" : "REPLACE",
+        "reloadData" : true,
+        "id" : "refresh_project_state@project"
+      },
+      "tooltip" : "调用自动化刷新项目状态",
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true
+    } ],
+    "uniqueTag" : "project__Usr1117993004"
+  }, {
     "codeName" : "Usr1219101638",
     "name" : "已归档",
     "getPSAppDataEntity" : {
@@ -5494,6 +5550,7 @@
         "refreshMode" : 1,
         "successMsg" : "删除成功",
         "timeout" : 60000,
+        "tooltip" : "移除成员",
         "uIActionMode" : "BACKEND",
         "uIActionTag" : "remove_member",
         "uIActionType" : "DEUIACTION",
@@ -5501,6 +5558,7 @@
         "reloadData" : true,
         "id" : "remove_member@project_member"
       },
+      "tooltip" : "移除成员",
       "addSeparator" : false,
       "showCaption" : false,
       "showIcon" : true
@@ -5681,6 +5739,94 @@
       "showIcon" : true
     } ],
     "uniqueTag" : "idea_template__Usr0530376677"
+  }, {
+    "codeName" : "Usr1108756957",
+    "name" : "全局需求模板表格行为组(编辑、删除)",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea_template.json"
+    },
+    "getPSUIActionGroupDetails" : [ {
+      "detailType" : "DEUIACTION",
+      "name" : "u6650703",
+      "getPSSysImage" : {
+        "glyph" : "xf044@FontAwesome",
+        "cssClass" : "fa fa-edit"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "SINGLEKEY",
+        "caption" : "编辑",
+        "codeName" : "template_global_edit",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_template_global_edit_view.json",
+          "viewType" : "DEEDITVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "idea_template_template_global_edit",
+        "name" : "打开需求模板编辑",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea_template.json"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf044@FontAwesome",
+          "cssClass" : "fa fa-edit"
+        },
+        "timeout" : 60000,
+        "tooltip" : "编辑模板",
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "template_global_edit",
+        "uIActionType" : "DEUIACTION",
+        "id" : "template_global_edit@idea_template"
+      },
+      "tooltip" : "编辑模板",
+      "addSeparator" : false,
+      "showCaption" : false,
+      "showIcon" : true
+    }, {
+      "detailType" : "DEUIACTION",
+      "name" : "udf33177",
+      "getPSSysImage" : {
+        "glyph" : "xf014@FontAwesome",
+        "cssClass" : "fa fa-trash-o"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "SINGLEKEY",
+        "caption" : "删除",
+        "codeName" : "template_delete",
+        "confirmMsg" : "确认删除选中模板吗？（无法恢复）",
+        "fullCodeName" : "idea_template_template_delete",
+        "name" : "删除模板",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "remove"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea_template.json"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
+        },
+        "refreshMode" : 1,
+        "successMsg" : "删除成功",
+        "timeout" : 60000,
+        "tooltip" : "删除模板",
+        "uIActionMode" : "BACKEND",
+        "uIActionTag" : "template_delete",
+        "uIActionType" : "DEUIACTION",
+        "enableConfirm" : true,
+        "reloadData" : true,
+        "id" : "template_delete@idea_template"
+      },
+      "tooltip" : "删除模板",
+      "addSeparator" : false,
+      "showCaption" : false,
+      "showIcon" : true
+    } ],
+    "uniqueTag" : "idea_template__Usr1108756957"
   }, {
     "codeName" : "Usr0516415258",
     "name" : "主表格操作列",
@@ -7865,6 +8011,7 @@
         "actionTarget" : "SINGLEKEY",
         "caption" : "取消关联",
         "codeName" : "child_del_relation",
+        "dataAccessAction" : "UPDATE",
         "fullCodeName" : "work_item_child_del_relation",
         "name" : "取消关联（子工作项）",
         "getPSAppDEMethod" : {
@@ -7878,6 +8025,10 @@
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "UPDATE"
         },
         "getPSNavigateContexts" : [ {
           "key" : "DEL_CHILD_RELATION",
@@ -14280,6 +14431,10 @@
         "frontProcessType" : "WIZARD",
         "fullCodeName" : "work_item_new_scrum_epic",
         "name" : "新建史诗（scrum）",
+        "getNextPSUIAction" : {
+          "modelref" : true,
+          "id" : "Refresh"
+        },
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -14320,6 +14475,10 @@
         "frontProcessType" : "WIZARD",
         "fullCodeName" : "work_item_new_scrum_feature",
         "name" : "新建特性（scrum）",
+        "getNextPSUIAction" : {
+          "modelref" : true,
+          "id" : "Refresh"
+        },
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -14360,6 +14519,10 @@
         "frontProcessType" : "WIZARD",
         "fullCodeName" : "work_item_new_scrum_story",
         "name" : "新建用户故事（scrum）",
+        "getNextPSUIAction" : {
+          "modelref" : true,
+          "id" : "Refresh"
+        },
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -14409,6 +14572,10 @@
         "frontProcessType" : "WIZARD",
         "fullCodeName" : "work_item_new_scrum_epic",
         "name" : "新建史诗（scrum）",
+        "getNextPSUIAction" : {
+          "modelref" : true,
+          "id" : "Refresh"
+        },
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -14449,6 +14616,10 @@
         "frontProcessType" : "WIZARD",
         "fullCodeName" : "work_item_new_scrum_feature",
         "name" : "新建特性（scrum）",
+        "getNextPSUIAction" : {
+          "modelref" : true,
+          "id" : "Refresh"
+        },
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -14489,6 +14660,10 @@
         "frontProcessType" : "WIZARD",
         "fullCodeName" : "work_item_new_scrum_story",
         "name" : "新建用户故事（scrum）",
+        "getNextPSUIAction" : {
+          "modelref" : true,
+          "id" : "Refresh"
+        },
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -14529,6 +14704,10 @@
         "frontProcessType" : "WIZARD",
         "fullCodeName" : "work_item_new_scrum_task",
         "name" : "新建任务（scrum）",
+        "getNextPSUIAction" : {
+          "modelref" : true,
+          "id" : "Refresh"
+        },
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -14569,6 +14748,10 @@
         "frontProcessType" : "WIZARD",
         "fullCodeName" : "work_item_new_scrum_bug",
         "name" : "新建缺陷（scrum）",
+        "getNextPSUIAction" : {
+          "modelref" : true,
+          "id" : "Refresh"
+        },
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -15317,6 +15500,10 @@
         "frontProcessType" : "WIZARD",
         "fullCodeName" : "work_item_new_waterfall_requirement",
         "name" : "新建需求（waterfall）",
+        "getNextPSUIAction" : {
+          "modelref" : true,
+          "id" : "Refresh"
+        },
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -15357,6 +15544,10 @@
         "frontProcessType" : "WIZARD",
         "fullCodeName" : "work_item_new_waterfall_task",
         "name" : "新建任务（waterfall）",
+        "getNextPSUIAction" : {
+          "modelref" : true,
+          "id" : "Refresh"
+        },
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -15397,6 +15588,10 @@
         "frontProcessType" : "WIZARD",
         "fullCodeName" : "work_item_new_waterfall_bug",
         "name" : "新建缺陷（waterfall）",
+        "getNextPSUIAction" : {
+          "modelref" : true,
+          "id" : "Refresh"
+        },
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -17858,6 +18053,94 @@
       "showIcon" : true
     } ],
     "uniqueTag" : "space_member__Usr0227475921"
+  }, {
+    "codeName" : "Usr1107051333",
+    "name" : "项目状态编辑或删除",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_state.json"
+    },
+    "getPSUIActionGroupDetails" : [ {
+      "detailType" : "DEUIACTION",
+      "name" : "u8247bb2",
+      "getPSSysImage" : {
+        "glyph" : "xf044@FontAwesome",
+        "cssClass" : "fa fa-edit"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "SINGLEKEY",
+        "caption" : "编辑",
+        "codeName" : "edit_pro_state",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_state_quick_create_option_view.json",
+          "viewType" : "DEOPTVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "project_state_edit_pro_state",
+        "name" : "编辑项目状态",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_state.json"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf044@FontAwesome",
+          "cssClass" : "fa fa-edit"
+        },
+        "timeout" : 60000,
+        "tooltip" : "编辑",
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "edit_pro_state",
+        "uIActionType" : "DEUIACTION",
+        "id" : "edit_pro_state@project_state"
+      },
+      "tooltip" : "编辑",
+      "addSeparator" : false,
+      "showCaption" : false,
+      "showIcon" : true
+    }, {
+      "detailType" : "DEUIACTION",
+      "name" : "u2cc9dd2",
+      "getPSSysImage" : {
+        "glyph" : "xf014@FontAwesome",
+        "cssClass" : "fa fa-trash-o"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "SINGLEKEY",
+        "caption" : "删除",
+        "codeName" : "remove_pro_state",
+        "confirmMsg" : "确认删除该状态?",
+        "fullCodeName" : "project_state_remove_pro_state",
+        "name" : "删除项目状态",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "remove"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_state.json"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
+        },
+        "refreshMode" : 1,
+        "successMsg" : "删除成功",
+        "timeout" : 60000,
+        "tooltip" : "删除",
+        "uIActionMode" : "BACKEND",
+        "uIActionTag" : "remove_pro_state",
+        "uIActionType" : "DEUIACTION",
+        "enableConfirm" : true,
+        "reloadData" : true,
+        "id" : "remove_pro_state@project_state"
+      },
+      "tooltip" : "删除",
+      "addSeparator" : false,
+      "showCaption" : false,
+      "showIcon" : true
+    } ],
+    "uniqueTag" : "project_state__Usr1107051333"
   }, {
     "codeName" : "Usr0704527637",
     "name" : "共享中",
@@ -23018,6 +23301,52 @@
   } ],
   "getAllPSDEDRControls" : [ ],
   "getAllPSControls" : [ ],
+  "getAllPSAppViewRefs" : [ {
+    "name" : "EDITDATA:PSDELOGIC",
+    "realTitle" : "属性视图",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/psdemslogicdesigneditview_ms.json",
+      "viewType" : "DEEDITVIEW"
+    },
+    "ownerTag" : "PSDEMSLogicMSLogicDesign_Custom"
+  }, {
+    "name" : "EDITDATA:PSDELOGICNODE",
+    "realTitle" : "主状态逻辑节点(设计)",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/psdelogicnodedesignview_msnode2.json",
+      "viewType" : "DEEDITVIEW"
+    },
+    "ownerTag" : "PSDEMSLogicMSLogicDesign_Custom"
+  }, {
+    "name" : "EDITDATA:PSDELOGICNODE:MAINSTATE",
+    "realTitle" : "主状态逻辑节点(设计)",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/psdelogicnodedesignview_msnode2.json",
+      "viewType" : "DEEDITVIEW"
+    },
+    "ownerTag" : "PSDEMSLogicMSLogicDesign_Custom"
+  }, {
+    "name" : "EDITDATA:PSDELOGICLINK",
+    "realTitle" : "主状态处理逻辑节点连接(设计)",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/psdelogiclinkdesigneditview_ms.json",
+      "viewType" : "DEEDITVIEW"
+    },
+    "ownerTag" : "PSDEMSLogicMSLogicDesign_Custom"
+  }, {
+    "name" : "EDITDATA:PSDEMSLOGIC",
+    "realTitle" : "属性视图",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/psdemslogicdesigneditview_ms.json",
+      "viewType" : "DEEDITVIEW"
+    },
+    "ownerTag" : "PSDEMSLogicMSLogicDesign_Custom"
+  } ],
   "getUserParam" : {
     "enableMqtt" : "true",
     "DefaultOSSCat" : "plm",

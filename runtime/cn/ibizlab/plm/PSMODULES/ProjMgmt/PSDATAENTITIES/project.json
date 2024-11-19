@@ -825,6 +825,32 @@
     "enableFront" : false
   }, {
     "actionHolder" : 1,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "project_automatic_change_state",
+    "dataAccessAction" : "READ",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/project_automatic_change_state.json",
+    "logicName" : "刷新项目状态",
+    "name" : "project_automatic_change_state",
+    "getPSDEActionInput" : {
+      "name" : "Project_automatic_change_stateInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Project_automatic_change_stateResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDELOGICS/project_automatic_change_state.json"
+    },
+    "enableFront" : false
+  }, {
+    "actionHolder" : 1,
     "actionMode" : "UPDATE",
     "actionType" : "DELOGIC",
     "codeName" : "project_move",
@@ -962,6 +988,32 @@
     "actionHolder" : 1,
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
+    "codeName" : "warning_count_logic",
+    "dataAccessAction" : "READ",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/warning_count_logic.json",
+    "logicName" : "预警计数",
+    "name" : "warning_count_logic",
+    "getPSDEActionInput" : {
+      "name" : "Warning_count_logicInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Warning_count_logicResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDELOGICS/warning_count_logic.json"
+    },
+    "enableFront" : false
+  }, {
+    "actionHolder" : 1,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
     "codeName" : "waterfall_index_addon_counter",
     "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/waterfall_index_addon_counter.json",
@@ -1042,6 +1094,18 @@
     }, {
       "name" : "NOTICE",
       "codeName" : "notice"
+    }, {
+      "name" : "ACTUAL_START_AT",
+      "codeName" : "actual_start_at"
+    }, {
+      "name" : "ACTUAL_END_AT",
+      "codeName" : "actual_end_at"
+    }, {
+      "name" : "EXPECTED_TIME",
+      "codeName" : "expected_time"
+    }, {
+      "name" : "CONSUME_TIME",
+      "codeName" : "consume_time"
     }, {
       "name" : "ID",
       "codeName" : "id"
@@ -1262,6 +1326,9 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEDRITEMS/UsrDRItem0925920832.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEDRITEMS/UsrDRItem1107153272.json"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEDRITEMS/UsrDRItem1208400957.json"
@@ -2912,6 +2979,16 @@
   }, {
     "codeName" : "main",
     "logicName" : "主表格查询",
+    "majorSortDir" : "DESC",
+    "getMajorSortPSDEField" : {
+      "name" : "IS_FAVORITE",
+      "codeName" : "is_favorite"
+    },
+    "minorSortDir" : "DESC",
+    "getMinorSortPSDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "update_time"
+    },
     "name" : "main",
     "getPSDEDataQueries" : [ {
       "modelref" : true,
@@ -3507,18 +3584,18 @@
       "enableUserUpdate" : true
     }, {
       "codeName" : "state",
-      "logicName" : "状态",
+      "logicName" : "项目状态",
       "name" : "STATE",
       "orderValue" : 290,
       "getPSCodeList" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/project_state.json"
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/dyna_project_state.json"
       },
       "getPSDEField" : {
         "name" : "STATE",
         "codeName" : "state"
       },
-      "stringLength" : 60,
+      "stringLength" : 100,
       "enableUserInsert" : true,
       "enableUserUpdate" : true
     }, {
@@ -3580,18 +3657,18 @@
       "enableUserUpdate" : true
     }, {
       "codeName" : "state",
-      "logicName" : "状态",
+      "logicName" : "项目状态",
       "name" : "STATE",
       "orderValue" : 120,
       "getPSCodeList" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/project_state.json"
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/dyna_project_state.json"
       },
       "getPSDEField" : {
         "name" : "STATE",
         "codeName" : "state"
       },
-      "stringLength" : 60,
+      "stringLength" : 100,
       "enableUserInsert" : true,
       "enableUserUpdate" : true
     }, {
@@ -3951,7 +4028,8 @@
       "dBType" : "MYSQL5",
       "name" : "STATE",
       "queryCodeExp" : "t1.`STATE`",
-      "standardColumnName" : "`STATE`"
+      "standardColumnName" : "`STATE`",
+      "valueAutoGen" : true
     } ],
     "getAllPSDEFSearchModes" : [ {
       "codeName" : "N_STATE_EQ",
@@ -3964,11 +4042,14 @@
       "name" : "[STATE][状态]",
       "getPSDEFFormItem" : {
         "codeName" : "Default",
-        "editorType" : "DROPDOWNLIST",
+        "editorType" : "HIDDEN",
         "name" : "[STATE][状态]",
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT",
-        "needCodeListConfig" : true
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
     }, {
@@ -3976,12 +4057,15 @@
       "name" : "[STATE][状态]移动端默认",
       "getPSDEFFormItem" : {
         "codeName" : "MobileDefault",
-        "editorType" : "MOBDROPDOWNLIST",
+        "editorType" : "HIDDEN",
         "name" : "[STATE][状态]移动端默认",
-        "stringLength" : 60,
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state.json"
+        },
+        "stringLength" : 100,
         "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true,
-        "needCodeListConfig" : true
+        "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
@@ -3996,16 +4080,16 @@
         "getPSDEFVRConditions" : [ {
           "condType" : "STRINGLENGTH",
           "dEFName" : "STATE",
-          "maxValue" : 60,
+          "maxValue" : 100,
           "name" : "默认字符串长度",
-          "ruleInfo" : "内容长度必须小于等于[60]",
+          "ruleInfo" : "内容长度必须小于等于[100]",
           "includeMaxValue" : true,
           "includeMinValue" : false,
           "keyCond" : true
         } ],
-        "ruleInfo" : "内容长度必须小于等于[60]"
+        "ruleInfo" : "内容长度必须小于等于[100]"
       },
-      "ruleInfo" : "内容长度必须小于等于[60]",
+      "ruleInfo" : "内容长度必须小于等于[100]",
       "checkDefault" : true,
       "defaultMode" : true,
       "enableBackend" : true,
@@ -4013,10 +4097,11 @@
     } ],
     "codeName" : "state",
     "dEFType" : 1,
-    "dataType" : "SSCODELIST",
+    "dataType" : "PICKUP",
+    "defaultValue" : "pending",
     "importOrder" : 1000,
-    "length" : 60,
-    "logicName" : "状态",
+    "length" : 100,
+    "logicName" : "项目状态",
     "name" : "STATE",
     "getOnChangePSDEFLogic" : {
       "modelref" : true,
@@ -4024,20 +4109,41 @@
     },
     "getPSCodeList" : {
       "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSCODELISTS/project_state.json"
+      "path" : "PSMODULES/ProjMgmt/PSCODELISTS/dyna_project_state.json"
     },
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
     },
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDERS/DER1N_PROJECT_PROJECT_STATE_STATE.json"
+    },
     "getPSSysDBColumn" : {
       "modelref" : true,
       "id" : "STATE"
     },
+    "getRealPSDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state.json"
+    },
     "serviceCodeName" : "state",
     "stdDataType" : 25,
-    "stringLength" : 60,
-    "valueFormat" : "%1$s"
+    "stringLength" : 100,
+    "valueFormat" : "%1$s",
+    "linkDEField" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "START_AT",
@@ -4155,6 +4261,19 @@
       "name" : "END_AT",
       "queryCodeExp" : "t1.`END_AT`",
       "standardColumnName" : "`END_AT`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "F_END_AT_DATEDIFFNOW2_LTANDEQ",
+      "name" : "F_END_AT_DATEDIFFNOW2_LTANDEQ",
+      "stdDataType" : 9,
+      "valueFunc" : "DATEDIFFNOW2",
+      "valueOP" : "LTANDEQ"
+    }, {
+      "codeName" : "F_END_AT_DATEDIFFNOW_GTANDEQ",
+      "name" : "F_END_AT_DATEDIFFNOW_GTANDEQ",
+      "stdDataType" : 9,
+      "valueFunc" : "DATEDIFFNOW",
+      "valueOP" : "GTANDEQ"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
@@ -5543,6 +5662,7 @@
       "columnName" : "NOTICE",
       "dBType" : "MYSQL5",
       "name" : "NOTICE",
+      "queryCodeExp" : "t1.`NOTICE`",
       "standardColumnName" : "`NOTICE`"
     } ],
     "getAllPSDEFUIModes" : [ {
@@ -5665,6 +5785,408 @@
     "viewLevel" : 0,
     "phisicalDEField" : false,
     "uIAssistDEField" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "ACTUAL_START_AT",
+      "dBType" : "MYSQL5",
+      "name" : "ACTUAL_START_AT",
+      "queryCodeExp" : "t1.`ACTUAL_START_AT`",
+      "standardColumnName" : "`ACTUAL_START_AT`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[ACTUAL_START_AT][实际开始时间]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBDATE",
+        "name" : "[ACTUAL_START_AT][实际开始时间]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[ACTUAL_START_AT][实际开始时间]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DATEPICKEREX_NOTIME",
+        "name" : "[ACTUAL_START_AT][实际开始时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "actual_start_at",
+    "dEFType" : 1,
+    "dataType" : "DATE",
+    "importOrder" : 1000,
+    "jsonFormat" : "yyyy-MM-dd",
+    "logicName" : "实际开始时间",
+    "name" : "ACTUAL_START_AT",
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "ACTUAL_START_AT"
+    },
+    "serviceCodeName" : "actual_start_at",
+    "stdDataType" : 5,
+    "valueFormat" : "%1$tY-%1$tm-%1$td"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "ACTUAL_END_AT",
+      "dBType" : "MYSQL5",
+      "name" : "ACTUAL_END_AT",
+      "queryCodeExp" : "t1.`ACTUAL_END_AT`",
+      "standardColumnName" : "`ACTUAL_END_AT`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[ACTUAL_END_AT][实际结束时间]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBDATE",
+        "name" : "[ACTUAL_END_AT][实际结束时间]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[ACTUAL_END_AT][实际结束时间]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DATEPICKEREX_NOTIME",
+        "name" : "[ACTUAL_END_AT][实际结束时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "actual_end_at",
+    "dEFType" : 1,
+    "dataType" : "DATE",
+    "importOrder" : 1000,
+    "jsonFormat" : "yyyy-MM-dd",
+    "logicName" : "实际结束时间",
+    "name" : "ACTUAL_END_AT",
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "ACTUAL_END_AT"
+    },
+    "serviceCodeName" : "actual_end_at",
+    "stdDataType" : 5,
+    "valueFormat" : "%1$tY-%1$tm-%1$td"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "EXPECTED_TIME",
+      "dBType" : "MYSQL5",
+      "name" : "EXPECTED_TIME",
+      "queryCodeExp" : "t1.`EXPECTED_TIME`",
+      "standardColumnName" : "`EXPECTED_TIME`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[EXPECTED_TIME][预计时间]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[EXPECTED_TIME][预计时间]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[EXPECTED_TIME][预计时间]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[EXPECTED_TIME][预计时间]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "EXPECTED_TIME",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "expected_time",
+    "dEFType" : 1,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "预计工时",
+    "name" : "EXPECTED_TIME",
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "EXPECTED_TIME"
+    },
+    "serviceCodeName" : "expected_time",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "CONSUME_TIME",
+      "dBType" : "MYSQL5",
+      "name" : "CONSUME_TIME",
+      "queryCodeExp" : "t1.`CONSUME_TIME`",
+      "standardColumnName" : "`CONSUME_TIME`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[CONSUME_TIME][消耗时间]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[CONSUME_TIME][消耗时间]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[CONSUME_TIME][消耗时间]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[CONSUME_TIME][消耗时间]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "CONSUME_TIME",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "consume_time",
+    "dEFType" : 1,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "消耗工时",
+    "name" : "CONSUME_TIME",
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "CONSUME_TIME"
+    },
+    "serviceCodeName" : "consume_time",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "STATE_TYPE",
+      "dBType" : "MYSQL5",
+      "name" : "STATE_TYPE",
+      "queryCodeExp" : "t11.`TYPE`",
+      "standardColumnName" : "`STATE_TYPE`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_STATE_TYPE_NOTEQ",
+      "name" : "N_STATE_TYPE_NOTEQ",
+      "stdDataType" : 25,
+      "valueOP" : "NOTEQ"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[STATE_TYPE][状态类型]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[STATE_TYPE][状态类型]移动端默认",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state.json"
+        },
+        "stringLength" : 60,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[STATE_TYPE][状态类型]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[STATE_TYPE][状态类型]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state.json"
+        },
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "STATE_TYPE",
+          "maxValue" : 60,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[60]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[60]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[60]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "state_type",
+    "dEFType" : 3,
+    "dataType" : "PICKUPDATA",
+    "importOrder" : 1000,
+    "length" : 60,
+    "logicName" : "状态类型",
+    "name" : "STATE_TYPE",
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSCODELISTS/project_state_type.json"
+    },
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDERS/DER1N_PROJECT_PROJECT_STATE_STATE.json"
+    },
+    "getRealPSDEField" : {
+      "name" : "TYPE",
+      "codeName" : "type"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "TYPE",
+      "codeName" : "type"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state.json"
+    },
+    "serviceCodeName" : "state_type",
+    "stdDataType" : 25,
+    "stringLength" : 60,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "linkDEField" : true,
+    "phisicalDEField" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "ID",
@@ -9253,6 +9775,673 @@
     "enableBackend" : true,
     "enableFront" : false
   }, {
+    "codeName" : "project_automatic_change_state",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDELOGICS/project_automatic_change_state.json",
+    "logicName" : "项目自动变更状态",
+    "memo" : "定时执行，当项目的结束时间小于当前日期时，自动将项目状态变更为延期；\n当项目的结束时间距今不足五天时，自动将项目状态变更为预警；",
+    "name" : "项目自动变更状态",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM1",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置逾期项目过滤条件",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "N_IS_DELETED_EQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "project_filter"
+        },
+        "name" : "直接值[0] ==> project_filter[N_IS_DELETED_EQ]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "0",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "N_ID_EQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "project_filter"
+        },
+        "name" : "Default[ID] ==> project_filter[N_ID_EQ]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "N_IS_ARCHIVED_EQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "project_filter"
+        },
+        "name" : "直接值[0] ==> project_filter[N_IS_ARCHIVED_EQ]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "0",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "N_STATE_TYPE_NOTEQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "project_filter"
+        },
+        "name" : "直接值[completed] ==> project_filter[N_STATE_TYPE_NOTEQ]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "completed",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "size",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "project_filter"
+        },
+        "name" : "直接值[1000] ==> project_filter[size]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "1000",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 216
+    }, {
+      "codeName" : "DEDATASET1",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "project_filter"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEDATASET",
+      "name" : "获取符合条件的逾期项目",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "name" : "存在符合条件的逾期项目",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "GT",
+            "dstFieldName" : "size",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "projects"
+            },
+            "logicType" : "SINGLE",
+            "name" : "projects[size] 大于(>) 0",
+            "paramValue" : "0"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END2"
+        },
+        "name" : "不存在符合条件的项目",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "size",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "projects"
+            },
+            "logicType" : "SINGLE",
+            "name" : "projects[size] 等于(=) 0",
+            "paramValue" : "0"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "projects"
+      },
+      "topPos" : 310
+    }, {
+      "codeName" : "END2",
+      "leftPos" : -230,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 526
+    }, {
+      "codeName" : "LOOPSUBCALL1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "project_temp"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "LOOPSUBCALL",
+      "name" : "循环执行",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM3"
+        },
+        "name" : "设置状态",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "subCallLink" : true
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END2"
+        },
+        "name" : "结束循环",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        }
+      } ],
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "projects"
+      },
+      "topPos" : 534,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM3",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "空节点，承载判断",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        },
+        "name" : "超出当前时间",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "LT",
+            "dstFieldName" : "END_AT",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "project_temp"
+            },
+            "logicType" : "SINGLE",
+            "name" : "project_temp 小于(<) 0",
+            "paramType" : "CURTIME",
+            "paramValue" : "0"
+          }, {
+            "condOP" : "NOTEQ",
+            "dstFieldName" : "state",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "project_temp"
+            },
+            "logicType" : "SINGLE",
+            "name" : "project_temp[state] 不等于(<>) pending",
+            "paramValue" : "pending"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM3"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM4"
+        },
+        "name" : "距今小于五天",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "GT",
+            "dstFieldName" : "END_AT",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "project_temp"
+            },
+            "logicType" : "SINGLE",
+            "name" : "project_temp 大于(>) 5",
+            "paramType" : "CURTIME",
+            "paramValue" : "5"
+          }, {
+            "condOP" : "NOTEQ",
+            "dstFieldName" : "state",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "project_temp"
+            },
+            "logicType" : "SINGLE",
+            "name" : "project_temp[state] 不等于(<>) pending",
+            "paramValue" : "pending"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM3"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL1"
+        },
+        "name" : "未开始",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "STATE",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "project_temp"
+            },
+            "logicType" : "SINGLE",
+            "name" : "project_temp[STATE] 等于(=) pending",
+            "paramValue" : "pending"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM3"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL2"
+        },
+        "name" : "直接执行",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM3"
+        }
+      } ],
+      "topPos" : 685
+    }, {
+      "codeName" : "RAWSQLCALL1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "has_child_data"
+      },
+      "leftPos" : 530,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "判断当前项目是否存在工作项",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM5"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "GT",
+            "dstFieldName" : "work_item_data",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "has_child_data"
+            },
+            "logicType" : "SINGLE",
+            "name" : "has_child_data[work_item_data] 大于(>) 0",
+            "paramValue" : "0"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "name" : "Default[ID]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "sql" : "SELECT count(1) as work_item_data FROM work_item WHERE PROJECT_ID = ?",
+      "topPos" : 685,
+      "fillDstLogicParam" : true
+    }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : -10,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置状态为延期",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "STATE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "project_temp"
+        },
+        "name" : "直接值[delay] ==> project_temp[STATE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "delay",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 830
+    }, {
+      "codeName" : "PREPAREPARAM4",
+      "leftPos" : 322,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置状态为预警",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM4"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "STATE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "project_temp"
+        },
+        "name" : "直接值[warning] ==> project_temp[STATE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "warning",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 830
+    }, {
+      "codeName" : "RAWSQLCALL2",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "select_result"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "汇聚预计、消耗工时",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL3"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL2"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "name" : "project_temp[ID]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "project_temp"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "sql" : "SELECT\r\n    SUM(CASE WHEN es.name = 'estimated_workload' THEN es.DECIMAL_VALUE ELSE 0 END) AS estimated_workload,\r\n    SUM(CASE WHEN es.name = 'actual_workload' THEN es.DECIMAL_VALUE ELSE 0 END) AS actual_workload\r\nFROM\r\n    project p\r\nJOIN\r\n    work_item wi ON p.id = wi.project_id\r\nJOIN\r\n    extend_storage es ON wi.id = es.owner_id\r\nWHERE\r\n    p.id = ?\r\n    AND es.owner_type = 'work_item'\r\n    AND (es.name = 'estimated_workload' OR es.name = 'actual_workload')\r\n    AND wi.pid is null;",
+      "topPos" : 927,
+      "fillDstLogicParam" : true
+    }, {
+      "codeName" : "PREPAREPARAM5",
+      "leftPos" : 530,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置状态为正常",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM5"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "STATE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "project_temp"
+        },
+        "name" : "直接值[normal] ==> project_temp[STATE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "normal",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 927
+    }, {
+      "codeName" : "RAWSQLCALL3",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "select_result"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "直接SQL调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM6"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL3"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "name" : "project_temp[ID]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "project_temp"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "sql" : "SELECT\r\n    MIN(wi.ACTUAL_START_AT) AS ACTUAL_START_AT\r\nFROM\r\n    project p\r\nJOIN\r\n    work_item wi ON p.id = wi.project_id\r\nWHERE\r\n    p.id = ?\r\n",
+      "topPos" : 1033,
+      "fillDstLogicParam" : true
+    }, {
+      "codeName" : "PREPAREPARAM6",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM6"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "EXPECTED_TIME",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "project_temp"
+        },
+        "name" : "select_result[estimated_workload] ==> project_temp[EXPECTED_TIME]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "estimated_workload",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "select_result"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "CONSUME_TIME",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "project_temp"
+        },
+        "name" : "select_result[actual_workload] ==> project_temp[CONSUME_TIME]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "actual_workload",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "select_result"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "ACTUAL_START_AT",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "project_temp"
+        },
+        "name" : "select_result[ACTUAL_START_AT] ==> project_temp[ACTUAL_START_AT]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ACTUAL_START_AT",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "select_result"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 1160
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/Update.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "project_temp"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEACTION",
+      "name" : "更新项目状态",
+      "topPos" : 1270
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "has_child_data",
+      "logicName" : "存在子数据",
+      "name" : "存在子数据",
+      "entityParam" : true
+    }, {
+      "codeName" : "project_filter",
+      "logicName" : "项目过滤器",
+      "name" : "项目过滤器",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "filterParam" : true
+    }, {
+      "codeName" : "project_temp",
+      "logicName" : "循环项目",
+      "name" : "循环项目",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "projects",
+      "logicName" : "项目集合",
+      "name" : "项目集合",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "entityPageParam" : true
+    }, {
+      "codeName" : "select_result",
+      "logicName" : "查询结果",
+      "name" : "查询结果",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "project_move",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDELOGICS/project_move.json",
@@ -10417,6 +11606,189 @@
     "enableBackend" : true,
     "enableFront" : false
   }, {
+    "codeName" : "warning_count_logic",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDELOGICS/warning_count_logic.json",
+    "logicName" : "逾期工作项计数",
+    "name" : "逾期工作项计数",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "RAWSQLCALL1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "leftPos" : 340,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "统计逾期、预警、当前预警",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "name" : "Default[ID]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "name" : "Default[ID]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "name" : "Default[ID]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "sql" : "SELECT\r\n    COUNT(CASE WHEN t1.IS_DELETED = 0\r\n                AND t1.IS_ARCHIVED = 0\r\n                AND (IFNULL((TIMESTAMPDIFF(DAY, t1.`END_AT`, IFNULL(t1.`ACTUAL_END_AT`, CURDATE()))), NULL) IS NOT NULL)\r\n                AND t1.project_id =?\r\n                AND TIMESTAMPDIFF(DAY, t1.`END_AT`, IFNULL(t1.`ACTUAL_END_AT`, CURDATE())) BETWEEN -3 AND -1\r\n                AND t1.state = w.id\r\n                AND w.type <> 'completed'\r\n            THEN 1 END) AS upcoming_warning_count,\r\n    COUNT(CASE WHEN t1.IS_DELETED = 0\r\n                AND t1.IS_ARCHIVED = 0\r\n                AND (IFNULL((TIMESTAMPDIFF(DAY, t1.`END_AT`, IFNULL(t1.`ACTUAL_END_AT`, CURDATE()))), NULL) IS NOT NULL)\r\n                AND t1.project_id =?\r\n                AND TIMESTAMPDIFF(DAY, t1.`END_AT`, IFNULL(t1.`ACTUAL_END_AT`, CURDATE())) = 0\r\n                AND t1.state = w.id\r\n                AND w.type <> 'completed'\r\n            THEN 1 END) AS daily_warning_count,\r\n    COUNT(CASE WHEN t1.IS_DELETED = 0\r\n                AND t1.IS_ARCHIVED = 0\r\n                AND (IFNULL((TIMESTAMPDIFF(DAY, t1.`END_AT`, IFNULL(t1.`ACTUAL_END_AT`, CURDATE()))), NULL) IS NOT NULL)\r\n                AND t1.project_id =?\r\n                AND TIMESTAMPDIFF(DAY, t1.`END_AT`, IFNULL(t1.`ACTUAL_END_AT`, CURDATE())) > 0\r\n                AND t1.state = w.id\r\n                AND w.type <> 'completed'\r\n            THEN 1 END) AS overdue_count\r\nFROM\r\n    `WORK_ITEM` t1\r\nJOIN\r\n    `work_item_state` w ON t1.state = w.id;",
+      "topPos" : 208,
+      "fillDstLogicParam" : true
+    }, {
+      "codeName" : "RAWSQLCALL2",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "leftPos" : 537,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "总计条数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL2"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "name" : "Default[ID]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "sql" : "SELECT\r\n    COUNT(1) AS total_work_item_count\r\nFROM\r\n    work_item w \r\n    LEFT JOIN project p on w.PROJECT_ID = p.ID\r\n    LEFT JOIN work_item_state s on s.ID = w.state\r\nWHERE\r\n    p.IS_DELETED = 0\r\n    AND p.IS_ARCHIVED = 0\r\n    AND W.IS_DELETED = 0\r\n    AND W.IS_ARCHIVED = 0\r\n    AND s.type <> 'completed'\r\n    AND p.ID = ?;",
+      "topPos" : 208,
+      "fillDstLogicParam" : true
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 762,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 314
+    }, {
+      "code" : "var result = logic.getParam(\"result\");\r\nvar totalWorkItemCount = result.get(\"total_work_item_count\");\r\nvar daily_warning_count = result.get(\"daily_warning_count\");\r\nvar upcoming_warning_count = result.get(\"upcoming_warning_count\");\r\nvar overdueCount = result.get(\"overdue_count\");\r\nvar overdue_ratio = 0;\r\nif (typeof overdueCount === \"undefined\" && daily_warning_count === \"undefined\" && upcoming_warning_count === \"undefined\" || overdueCount === null || daily_warning_count === null || upcoming_warning_count === null) {\r\n    overdue_ratio = 0;\r\n} else if (overdueCount === 0 && daily_warning_count === 0 && upcoming_warning_count === 0) {\r\n    overdue_ratio = 0;\r\n} else {\r\n    overdue_ratio = ((overdueCount + daily_warning_count + upcoming_warning_count) / totalWorkItemCount) * 100;\r\n    overdue_ratio = Math.round(overdue_ratio * 100) / 100;\r\n\r\n}\r\nif(overdue_ratio){\r\n    result.set(\"overdue_ratio\", Math.round(overdue_ratio) + \"%\");\r\n}else{\r\n    result.set(\"overdue_ratio\", \"0%\");\r\n}\r\n",
+      "codeName" : "RAWSFCODE1",
+      "codeType" : "JavaScript",
+      "leftPos" : 537,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "计算逾期比例",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        }
+      } ],
+      "topPos" : 330
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "result",
+      "logicName" : "结果",
+      "name" : "结果",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "work_item_filter",
+      "logicName" : "工作项过滤器",
+      "name" : "工作项过滤器",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+      },
+      "filterParam" : true
+    }, {
+      "codeName" : "work_item_page",
+      "logicName" : "工作项分页结果",
+      "name" : "工作项分页结果",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+      },
+      "entityPageParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "waterfall_project_addon_authority",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDELOGICS/waterfall_project_addon_authority.json",
@@ -10832,7 +12204,8 @@
       "stringLength" : 60,
       "type" : "SIMPLE"
     }, {
-      "logicName" : "状态",
+      "defaultValue" : "pending",
+      "logicName" : "项目状态",
       "name" : "state",
       "getPSDEField" : {
         "name" : "STATE",
@@ -10840,7 +12213,7 @@
       },
       "sourceType" : "DEFGROUPDETAIL",
       "stdDataType" : 25,
-      "stringLength" : 60,
+      "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
       "logicName" : "标识",
@@ -10872,7 +12245,8 @@
       "type" : "SIMPLE",
       "allowEmpty" : false
     }, {
-      "logicName" : "状态",
+      "defaultValue" : "pending",
+      "logicName" : "项目状态",
       "name" : "state",
       "getPSDEField" : {
         "name" : "STATE",
@@ -10880,7 +12254,7 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
-      "stringLength" : 60,
+      "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
       "jsonFormat" : "yyyy-MM-dd",
@@ -11111,6 +12485,61 @@
       "stdDataType" : 6,
       "type" : "SIMPLE"
     }, {
+      "jsonFormat" : "yyyy-MM-dd",
+      "logicName" : "实际开始时间",
+      "name" : "actual_start_at",
+      "getPSDEField" : {
+        "name" : "ACTUAL_START_AT",
+        "codeName" : "actual_start_at"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "jsonFormat" : "yyyy-MM-dd",
+      "logicName" : "实际结束时间",
+      "name" : "actual_end_at",
+      "getPSDEField" : {
+        "name" : "ACTUAL_END_AT",
+        "codeName" : "actual_end_at"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "预计工时",
+      "name" : "expected_time",
+      "getPSDEField" : {
+        "name" : "EXPECTED_TIME",
+        "codeName" : "expected_time"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "消耗工时",
+      "name" : "consume_time",
+      "getPSDEField" : {
+        "name" : "CONSUME_TIME",
+        "codeName" : "consume_time"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "状态类型",
+      "name" : "state_type",
+      "getPSDEField" : {
+        "name" : "STATE_TYPE",
+        "codeName" : "state_type"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "建立人",
       "name" : "create_man",
       "getPSDEField" : {
@@ -11193,6 +12622,34 @@
   }, {
     "name" : "project_filter_dto",
     "getPSDEFilterDTOFields" : [ {
+      "logicName" : "结束时间",
+      "name" : "f_end_at_datediffnow2_ltandeq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "F_END_AT_DATEDIFFNOW2_LTANDEQ"
+      },
+      "getPSDEField" : {
+        "name" : "END_AT",
+        "codeName" : "end_at"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "结束时间",
+      "name" : "f_end_at_datediffnow_gtandeq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "F_END_AT_DATEDIFFNOW_GTANDEQ"
+      },
+      "getPSDEField" : {
+        "name" : "END_AT",
+        "codeName" : "end_at"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "标识",
       "name" : "n_id_eq",
       "getPSDEFSearchMode" : {
@@ -11307,7 +12764,8 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "logicName" : "状态",
+      "defaultValue" : "pending",
+      "logicName" : "项目状态",
       "name" : "n_state_eq",
       "getPSDEFSearchMode" : {
         "modelref" : true,
@@ -11316,6 +12774,20 @@
       "getPSDEField" : {
         "name" : "STATE",
         "codeName" : "state"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "状态类型",
+      "name" : "n_state_type_noteq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_STATE_TYPE_NOTEQ"
+      },
+      "getPSDEField" : {
+        "name" : "STATE_TYPE",
+        "codeName" : "state_type"
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
@@ -11378,7 +12850,8 @@
       "stringLength" : 60,
       "type" : "SIMPLE"
     }, {
-      "logicName" : "状态",
+      "defaultValue" : "pending",
+      "logicName" : "项目状态",
       "name" : "state",
       "getPSDEField" : {
         "name" : "STATE",
@@ -11386,7 +12859,7 @@
       },
       "sourceType" : "DEFGROUPDETAIL",
       "stdDataType" : 25,
-      "stringLength" : 60,
+      "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
       "logicName" : "可见范围",
@@ -12011,6 +13484,12 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "project_grid_parts",
+    "logicName" : "项目表格视图（仪表盘部件）",
+    "name" : "项目表格视图（仪表盘部件）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "mob_waterfall_tree_exp_view",
     "logicName" : "项目移动端树导航视图（waterfall）",
     "name" : "项目移动端树导航视图（waterfall）",
@@ -12224,10 +13703,22 @@
     "realModelSubType" : "DETABEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_project_pickup_view_PickupMDView",
+    "logicName" : "项目数据选择视图（移动端）_选择数据视图",
+    "name" : "项目数据选择视图（移动端）_选择数据视图",
+    "realModelSubType" : "DEMOBPICKUPMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "mob_waterfall_tab_exp_view",
     "logicName" : "项目移动端分页导航视图（waterfall）",
     "name" : "项目移动端分页导航视图（waterfall）",
     "realModelSubType" : "DEMOBTABEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_project_pickup_view",
+    "logicName" : "项目数据选择视图（移动端）",
+    "name" : "项目数据选择视图（移动端）",
+    "realModelSubType" : "DEMOBPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mob_over_view",
@@ -12240,6 +13731,12 @@
     "logicName" : "项目移动端列表视图",
     "name" : "项目移动端列表视图",
     "realModelSubType" : "DEMOBLISTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "waring_custom_view",
+    "logicName" : "项目预警自定义视图",
+    "name" : "项目预警自定义视图",
+    "realModelSubType" : "DECUSTOMVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mob_notice_show_view",
@@ -13060,6 +14557,35 @@
   } ],
   "memo" : "PLM系统的核心业务实体，代表一个项目整体，包含项目的基本信息、状态、时间线等。",
   "getMinorPSDERs" : [ {
+    "codeName" : "project_state",
+    "dERType" : "DER1N",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDERS/DER1N_PROJECT_PROJECT_STATE_STATE.json",
+    "fKeyName" : "FC3FD425BA2182D214",
+    "logicName" : "名称",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state.json"
+    },
+    "masterOrder" : -1,
+    "masterRS" : 0,
+    "minorCodeName" : "projects",
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+    },
+    "minorServiceCodeName" : "projects",
+    "name" : "DER1N_PROJECT_PROJECT_STATE_STATE",
+    "orderValue" : 100,
+    "getPSPickupDEField" : {
+      "name" : "STATE",
+      "codeName" : "state"
+    },
+    "pickupDEFName" : "STATE",
+    "removeActionType" : -1,
+    "removeOrder" : 0,
+    "serviceCodeName" : "project_state",
+    "enableFKey" : true
+  }, {
     "codeName" : "PROJECT",
     "dERSubType" : "DER1N",
     "dERType" : "DERCUSTOM",

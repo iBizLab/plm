@@ -33,7 +33,7 @@
   },
   "getPSViewLayoutPanel" : {
     "getAllPSPanelFields" : [ {
-      "id" : "comment_textbox"
+      "id" : "field_textbox1"
     }, {
       "id" : "field_textbox"
     }, {
@@ -69,7 +69,7 @@
       "scriptCode" : "console.log(\"聚焦事件view\", view)\r\nview.layoutPanel.panelItems.send_comment_container.state.visible=true;\r\nview.layoutPanel.panelItems.comment_container.state.visible=false;\r\nview.layoutPanel.panelItems.field_textbox.editor.focus();"
     }, {
       "eventNames" : "onBlur",
-      "itemName" : "COMMENT_TEXTBOX",
+      "itemName" : "FIELD_TEXTBOX1",
       "logicTag" : "layoutpanel",
       "logicType" : "SCRIPT",
       "name" : "onBlur",
@@ -256,7 +256,7 @@
         "caption" : "文本框",
         "itemStyle" : "DEFAULT",
         "itemType" : "FIELD",
-        "name" : "comment_textbox",
+        "name" : "field_textbox1",
         "getPSEditor" : {
           "editorParams" : {
             "REPLYSCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class=\\'mob-comment-tag\\'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class=\\'mob-comment-tag\\'>@$1</span>\").replace(/#{\"id\":\"(.+?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"}/g, \"<span class=\\'mob-comment-tag\\'>$4 $3 $2</span>\").replace(/#{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)}/g, \"<span class=\\'mob-comment-tag\\'>$4 $3 $2</span>\")",
@@ -266,7 +266,7 @@
           },
           "editorStyle" : "COMMENT",
           "editorType" : "MOBHTMLTEXT",
-          "name" : "comment_textbox",
+          "name" : "field_textbox1",
           "getPSSysPFPlugin" : {
             "pluginType" : "EDITOR_CUSTOMSTYLE",
             "pluginCode" : "MOBCOMMENT",
@@ -736,7 +736,7 @@
       "logicType" : "SCRIPT",
       "name" : "LOGIC",
       "getPSViewCtrlName" : "form",
-      "scriptCode" : "console.log(\"控制评论容器显隐\"+view);\r\nconst form = view.getController('form');\r\nif (form) {\r\n    form.evt.on('onFormDetailEvent', event =>{\r\n        const panelItems = view.layoutPanel.panelItems;\r\n        if (!panelItems.comment_container) {\r\n            return;\r\n        }\r\n        if (form.details.tabpanel1) {\r\n            const activeTab = form.details.tabpanel1.state.activeTab;\r\n            panelItems.comment_container.state.visible = activeTab === 'detailpage';\r\n        }\r\n    });\r\n}"
+      "scriptCode" : "console.log(\"控制评论容器显隐\"+view);\r\nconst form = view.getController('form');\r\nif (form) {\r\n    form.evt.on('onFormDetailEvent', event =>{\r\n        const panelItems = view.layoutPanel.panelItems;\r\n        panelItems.send_comment_container.state.visible = false;\r\n        if (!panelItems.comment_container) {\r\n            return;\r\n        }\r\n        if (form.details.tabpanel1) {\r\n            const activeTab = form.details.tabpanel1.state.activeTab;\r\n            panelItems.comment_container.state.visible = activeTab === 'detailpage';\r\n        }\r\n    });\r\n}"
     }, {
       "eventNames" : "onLoadSuccess",
       "logicTrigger" : "VIEWEVENT",
@@ -1263,14 +1263,17 @@
                     "colMD" : 24,
                     "layout" : "TABLE_24COL"
                   },
+                  "getPSSysCss" : {
+                    "cssName" : "mob_descript_comment"
+                  },
                   "allowEmpty" : true,
                   "showCaption" : true
                 }, {
                   "caption" : "附件",
-                  "codeName" : "grouppanel4",
+                  "codeName" : "grouppanel_attachment_create",
                   "detailStyle" : "DEFAULT",
                   "detailType" : "GROUPPANEL",
-                  "name" : "grouppanel4",
+                  "name" : "grouppanel_attachment_create",
                   "getPSDEFormDetails" : [ {
                     "codeName" : "druipart3",
                     "dRItemTag" : "UsrDRItem1021247844",
@@ -1892,7 +1895,6 @@
                                       },
                                       "getPSUIAction" : {
                                         "actionTarget" : "SINGLEKEY",
-                                        "noPrivDisplayMode" : 1,
                                         "caption" : "删除",
                                         "codeName" : "mob_attachment_delete",
                                         "dataAccessAction" : "UPDATE",
@@ -2122,116 +2124,6 @@
                       "modelid" : "bb0d068f52a1a9317851d3b22540e14e",
                       "modeltype" : "PSAPPDEVIEW",
                       "getPSAppDERSPaths" : [ [ {
-                        "actionRSMode" : 1,
-                        "codeName" : "releases",
-                        "dataRSMode" : 0,
-                        "majorDECodeName" : "project",
-                        "majorDEName" : "PROJECT",
-                        "getMajorPSAppDataEntity" : {
-                          "modelref" : true,
-                          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
-                        },
-                        "minorDECodeName" : "release",
-                        "minorDEName" : "RELEASE",
-                        "getMinorPSAppDataEntity" : {
-                          "modelref" : true,
-                          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/release.json"
-                        },
-                        "name" : "DER1N_RELEASE_PROJECT_PROJECT_ID",
-                        "getParentPSAppDEField" : {
-                          "name" : "PROJECT_ID",
-                          "codeName" : "project_id"
-                        },
-                        "rSMode" : 2
-                      }, {
-                        "actionRSMode" : 1,
-                        "codeName" : "work_items",
-                        "dataRSMode" : 0,
-                        "majorDECodeName" : "release",
-                        "majorDEName" : "RELEASE",
-                        "getMajorPSAppDataEntity" : {
-                          "modelref" : true,
-                          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/release.json"
-                        },
-                        "minorDECodeName" : "work_item",
-                        "minorDEName" : "WORK_ITEM",
-                        "getMinorPSAppDataEntity" : {
-                          "modelref" : true,
-                          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-                        },
-                        "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-                        "getParentPSAppDEField" : {
-                          "name" : "RELEASE_ID",
-                          "codeName" : "release_id"
-                        },
-                        "rSMode" : 2
-                      }, {
-                        "actionRSMode" : 1,
-                        "codeName" : "attachments",
-                        "dataRSMode" : 0,
-                        "majorDECodeName" : "work_item",
-                        "majorDEName" : "WORK_ITEM",
-                        "getMajorPSAppDataEntity" : {
-                          "modelref" : true,
-                          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-                        },
-                        "minorDECodeName" : "attachment",
-                        "minorDEName" : "ATTACHMENT",
-                        "getMinorPSAppDataEntity" : {
-                          "modelref" : true,
-                          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
-                        },
-                        "name" : "DERCUSTOM_WORK_ITEM_ATTACHMENT",
-                        "getParentPSAppDEField" : {
-                          "name" : "OWNER_ID",
-                          "codeName" : "owner_id"
-                        },
-                        "rSMode" : 2
-                      } ], [ {
-                        "actionRSMode" : 1,
-                        "codeName" : "work_items",
-                        "dataRSMode" : 0,
-                        "majorDECodeName" : "release",
-                        "majorDEName" : "RELEASE",
-                        "getMajorPSAppDataEntity" : {
-                          "modelref" : true,
-                          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/release.json"
-                        },
-                        "minorDECodeName" : "work_item",
-                        "minorDEName" : "WORK_ITEM",
-                        "getMinorPSAppDataEntity" : {
-                          "modelref" : true,
-                          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-                        },
-                        "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-                        "getParentPSAppDEField" : {
-                          "name" : "RELEASE_ID",
-                          "codeName" : "release_id"
-                        },
-                        "rSMode" : 2
-                      }, {
-                        "actionRSMode" : 1,
-                        "codeName" : "attachments",
-                        "dataRSMode" : 0,
-                        "majorDECodeName" : "work_item",
-                        "majorDEName" : "WORK_ITEM",
-                        "getMajorPSAppDataEntity" : {
-                          "modelref" : true,
-                          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-                        },
-                        "minorDECodeName" : "attachment",
-                        "minorDEName" : "ATTACHMENT",
-                        "getMinorPSAppDataEntity" : {
-                          "modelref" : true,
-                          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
-                        },
-                        "name" : "DERCUSTOM_WORK_ITEM_ATTACHMENT",
-                        "getParentPSAppDEField" : {
-                          "name" : "OWNER_ID",
-                          "codeName" : "owner_id"
-                        },
-                        "rSMode" : 2
-                      } ], [ {
                         "actionRSMode" : 1,
                         "codeName" : "work_items",
                         "dataRSMode" : 0,
@@ -3668,72 +3560,6 @@
                     "rSMode" : 2
                   } ], [ {
                     "actionRSMode" : 1,
-                    "codeName" : "releases",
-                    "dataRSMode" : 0,
-                    "majorDECodeName" : "project",
-                    "majorDEName" : "PROJECT",
-                    "getMajorPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
-                    },
-                    "minorDECodeName" : "release",
-                    "minorDEName" : "RELEASE",
-                    "getMinorPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/release.json"
-                    },
-                    "name" : "DER1N_RELEASE_PROJECT_PROJECT_ID",
-                    "getParentPSAppDEField" : {
-                      "name" : "PROJECT_ID",
-                      "codeName" : "project_id"
-                    },
-                    "rSMode" : 2
-                  }, {
-                    "actionRSMode" : 1,
-                    "codeName" : "work_items",
-                    "dataRSMode" : 0,
-                    "majorDECodeName" : "release",
-                    "majorDEName" : "RELEASE",
-                    "getMajorPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/release.json"
-                    },
-                    "minorDECodeName" : "work_item",
-                    "minorDEName" : "WORK_ITEM",
-                    "getMinorPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-                    },
-                    "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-                    "getParentPSAppDEField" : {
-                      "name" : "RELEASE_ID",
-                      "codeName" : "release_id"
-                    },
-                    "rSMode" : 2
-                  }, {
-                    "actionRSMode" : 1,
-                    "codeName" : "comments",
-                    "dataRSMode" : 0,
-                    "majorDECodeName" : "work_item",
-                    "majorDEName" : "WORK_ITEM",
-                    "getMajorPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-                    },
-                    "minorDECodeName" : "comment",
-                    "minorDEName" : "COMMENT",
-                    "getMinorPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/comment.json"
-                    },
-                    "name" : "DERCUSTOM_COMMENT_WORK_ITEM_PRINCIPAL_ID",
-                    "getParentPSAppDEField" : {
-                      "name" : "PRINCIPAL_ID",
-                      "codeName" : "principal_id"
-                    },
-                    "rSMode" : 2
-                  } ], [ {
-                    "actionRSMode" : 1,
                     "codeName" : "discuss_posts",
                     "dataRSMode" : 0,
                     "majorDECodeName" : "discuss_topic",
@@ -3793,50 +3619,6 @@
                       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/comment.json"
                     },
                     "name" : "DERCUSTOM_COMMENT_DISCUSS_REPLY",
-                    "getParentPSAppDEField" : {
-                      "name" : "PRINCIPAL_ID",
-                      "codeName" : "principal_id"
-                    },
-                    "rSMode" : 2
-                  } ], [ {
-                    "actionRSMode" : 1,
-                    "codeName" : "work_items",
-                    "dataRSMode" : 0,
-                    "majorDECodeName" : "release",
-                    "majorDEName" : "RELEASE",
-                    "getMajorPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/release.json"
-                    },
-                    "minorDECodeName" : "work_item",
-                    "minorDEName" : "WORK_ITEM",
-                    "getMinorPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-                    },
-                    "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-                    "getParentPSAppDEField" : {
-                      "name" : "RELEASE_ID",
-                      "codeName" : "release_id"
-                    },
-                    "rSMode" : 2
-                  }, {
-                    "actionRSMode" : 1,
-                    "codeName" : "comments",
-                    "dataRSMode" : 0,
-                    "majorDECodeName" : "work_item",
-                    "majorDEName" : "WORK_ITEM",
-                    "getMajorPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-                    },
-                    "minorDECodeName" : "comment",
-                    "minorDEName" : "COMMENT",
-                    "getMinorPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/comment.json"
-                    },
-                    "name" : "DERCUSTOM_COMMENT_WORK_ITEM_PRINCIPAL_ID",
                     "getParentPSAppDEField" : {
                       "name" : "PRINCIPAL_ID",
                       "codeName" : "principal_id"
@@ -5723,7 +5505,6 @@
             "actionTarget" : "SINGLEDATA",
             "caption" : "移动",
             "codeName" : "mob_move",
-            "dialogResult" : "OK",
             "getFrontPSAppView" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/discuss_post_mob_discuss_move_option_view.json",
@@ -5737,11 +5518,15 @@
                 "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_post.json"
               },
               "modelref" : true,
-              "id" : "mob_open_topic_dis_list@discuss_post"
+              "id" : "mob_open_discuss_tree@discuss_post"
             },
             "getPSAppDEMethod" : {
               "modelref" : true,
               "id" : "move"
+            },
+            "getPSAppDEUILogic" : {
+              "modelref" : true,
+              "id" : "mob_refresh"
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
@@ -5756,8 +5541,7 @@
             "uIActionMode" : "BACKEND",
             "uIActionTag" : "mob_move",
             "uIActionType" : "DEUIACTION",
-            "closeEditView" : true,
-            "closePopupView" : true,
+            "uILogicAttachMode" : "AFTER",
             "enableConfirm" : true,
             "id" : "mob_move@discuss_post"
           },

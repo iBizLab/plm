@@ -7701,7 +7701,6 @@
     "actionTarget" : "NONE",
     "caption" : "新建页面",
     "codeName" : "mob_create_page",
-    "dataAccessAction" : "SUBDATA",
     "getFrontPSAppView" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/article_page_mob_create_view.json",
@@ -7713,10 +7712,6 @@
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
-    },
-    "getPSDEOPPriv" : {
-      "modelref" : true,
-      "id" : "SUBDATA"
     },
     "timeout" : 60000,
     "uIActionMode" : "FRONT",
@@ -7939,10 +7934,6 @@
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "article_page_mob_rename",
     "name" : "移动端重命名",
-    "getPSAppDEMethod" : {
-      "modelref" : true,
-      "id" : "update"
-    },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
@@ -8291,7 +8282,13 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "code" : "var _default = uiLogic.default;\r\nvar shared_url = _default.shared_page_url;\r\nif(shared_url !== null && shared_url !== undefined){\r\n    var textArea = document.createElement(\"textarea\");\r\n    // 在 textarea 中放入需要复制的文本\r\n    textArea.value = shared_url;\r\n    // 将 textarea 添加到 DOM 中\r\n    document.body.appendChild(textArea);\r\n    // 选中 textarea 中的文本\r\n    textArea.select();\r\n    // 执行复制命令\r\n    var successful = document.execCommand('copy');\r\n    var msg = successful ? '' : '复制失败';\r\n    if(successful){\r\n        util.message.success('复制共享链接成功');\r\n    } else {\r\n        util.message.error('复制共享链接失败!');\r\n    }\r\n} else {\r\n    util.message.error('复制共享链接失败!');\r\n}\r\n",
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 557
+    }, {
+      "code" : "var _default = uiLogic.default;\r\nvar shared_url = _default.shared_page_url;\r\nif(shared_url !== null && shared_url !== undefined){\r\n    var textArea = document.createElement(\"textarea\");\r\n    // 在 textarea 中放入需要复制的文本\r\n    textArea.readOnly = true;\r\n    textArea.value = shared_url;\r\n    // 将 textarea 添加到 DOM 中\r\n    document.body.appendChild(textArea);\r\n    // 选中 textarea 中的文本\r\n    textArea.select();\r\n    // 执行复制命令\r\n    var successful = document.execCommand('copy');\r\n    var msg = successful ? '' : '复制失败';\r\n    if(successful){\r\n        util.message.success('复制共享链接成功');\r\n    } else {\r\n        util.message.error('复制共享链接失败!');\r\n    }\r\n} else {\r\n    util.message.error('复制共享链接失败!');\r\n}\r\n",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
@@ -8309,12 +8306,6 @@
         }
       } ],
       "topPos" : 370
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 200,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 557
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
@@ -8691,6 +8682,10 @@
     "viewType" : "DEMOBEDITVIEW"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/article_page_search_mob_md_view.json",
+    "viewType" : "DEMOBMDVIEW"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/article_page_mob_document_edit_view.json",
     "viewType" : "DEMOBEDITVIEW"
   }, {
@@ -8970,6 +8965,7 @@
         "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M9.54013,6.48742551 L8,3.36677551 L6.45987,6.48742551 L3.01604,6.98784551 L5.50802,9.41692551 L4.91975,12.8468255 L8,11.2274255 L11.08025,12.8468255 L10.49195,9.41692551 L12.98395,6.98784551 L9.54013,6.48742551 Z M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#557DA5\" fill-rule=\"nonzero\"></path>\n</svg>"
       },
       "tooltip" : "收藏",
+      "visibleScriptCode" : "data.is_favorite==0",
       "addSeparator" : false,
       "showCaption" : true,
       "showIcon" : true,

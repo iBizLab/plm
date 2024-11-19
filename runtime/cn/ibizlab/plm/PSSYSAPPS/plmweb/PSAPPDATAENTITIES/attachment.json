@@ -1780,6 +1780,68 @@
       "id" : "Begin"
     }
   }, {
+    "codeName" : "attachment_preview",
+    "defaultParamName" : "Default",
+    "logicName" : "附件预览",
+    "name" : "附件预览",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "code" : "var file_name = uiLogic.default.name;\r\nvar file_id = uiLogic.default.id;\r\n\r\nvar filedownloadurl='http://172.16.220.130:30510/api/ibizplm__plmweb/ibizutil/download/plm/'+file_id+'?fullfilename='+file_name;\r\n\r\nconsole.log(\"文件下载路径\"+filedownloadurl);\r\nvar script = document.createElement('script');\r\nscript.src = 'https://cdn.jsdelivr.net/npm/js-base64@3.7.2/base64.min.js';\r\nscript.onload = function() {\r\n    var b64Encoded = Base64.encode(filedownloadurl);\r\n    var url = 'http://172.16.121.242:28012/onlinePreview?url='+encodeURIComponent(b64Encoded);\r\n    console.log(\"最终目标地址\"+url);\r\n    window.open(url);\r\n};\r\ndocument.head.appendChild(script);\r\n",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 507,
+      "logicNodeType" : "RAWJSCODE",
+      "memo" : "var file_name = uiLogic.default.name;\nvar file_id = uiLogic.default.id;\n\nvar filedownloadurl='http://172.16.220.130:30510/api/ibizplm__plmweb/ibizutil/download/plm/'+file_id+'?fullfilename='+file_name;\nconsole.log(\"文件下载路径\"+filedownloadurl);\nvar url = 'http://172.16.100.243:8012/onlinePreview?url='+btoa(encodeURIComponent(filedownloadurl));\nconsole.log(\"最终目标地址\"+url);\nwindow.open(url);\nvar originalUrl = \"http://172.16.220.130:30510/api/ibizplm__plmweb/ibizutil/download/plm/c61c1798554842fcad4062789afc5588?fullfilename=预警相关流程.txt\";\n",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 942,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
     "codeName" : "calc_attachment_hidden",
     "defaultParamName" : "Default",
     "logicName" : "计算附件是否隐藏逻辑",

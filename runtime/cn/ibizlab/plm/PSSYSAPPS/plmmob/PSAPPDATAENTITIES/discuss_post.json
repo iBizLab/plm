@@ -3149,7 +3149,6 @@
     "actionTarget" : "SINGLEDATA",
     "caption" : "移动",
     "codeName" : "mob_move",
-    "dialogResult" : "OK",
     "getFrontPSAppView" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/discuss_post_mob_discuss_move_option_view.json",
@@ -3163,11 +3162,15 @@
         "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_post.json"
       },
       "modelref" : true,
-      "id" : "mob_open_topic_dis_list@discuss_post"
+      "id" : "mob_open_discuss_tree@discuss_post"
     },
     "getPSAppDEMethod" : {
       "modelref" : true,
       "id" : "move"
+    },
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "mob_refresh"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -3182,8 +3185,7 @@
     "uIActionMode" : "BACKEND",
     "uIActionTag" : "mob_move",
     "uIActionType" : "DEUIACTION",
-    "closeEditView" : true,
-    "closePopupView" : true,
+    "uILogicAttachMode" : "AFTER",
     "enableConfirm" : true,
     "id" : "mob_move@discuss_post"
   }, {
@@ -3213,26 +3215,26 @@
     "reloadData" : true,
     "id" : "mob_open_attention_list@discuss_post"
   }, {
-    "actionTarget" : "SINGLEDATA",
-    "caption" : "打开话题讨论列表",
-    "codeName" : "mob_open_topic_dis_list",
+    "actionTarget" : "NONE",
+    "caption" : "打开讨论树导航视图",
+    "codeName" : "mob_open_discuss_tree",
     "getFrontPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/discuss_post_topic_mob_list_view.json",
-      "viewType" : "DEMOBLISTVIEW"
+      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/discuss_post_mob_discuss_post_tree.json",
+      "viewType" : "DEMOBTREEEXPVIEW"
     },
     "frontProcessType" : "WIZARD",
-    "fullCodeName" : "discuss_post_mob_open_topic_dis_list",
-    "name" : "打开话题讨论列表（移动端）",
+    "fullCodeName" : "discuss_post_mob_open_discuss_tree",
+    "name" : "打开讨论树导航视图（移动端）",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_post.json"
     },
     "timeout" : 60000,
     "uIActionMode" : "FRONT",
-    "uIActionTag" : "mob_open_topic_dis_list",
+    "uIActionTag" : "mob_open_discuss_tree",
     "uIActionType" : "DEUIACTION",
-    "id" : "mob_open_topic_dis_list@discuss_post"
+    "id" : "mob_open_discuss_tree@discuss_post"
   }, {
     "actionTarget" : "SINGLEKEY",
     "caption" : "打开",
@@ -3357,6 +3359,67 @@
     "id" : "recover@discuss_post"
   } ],
   "getAllPSAppDEUILogics" : [ {
+    "codeName" : "mob_refresh",
+    "defaultParamName" : "Default",
+    "logicName" : "刷新（移动端）",
+    "name" : "刷新（移动端）",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "code" : "ibiz.mc.command.update.send({ srfdecodename: 'discuss_post', srfkey: context.discuss_post});",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "通知刷新",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 337
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 460
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
     "codeName" : "refresh",
     "defaultParamName" : "Default",
     "logicName" : "刷新",
@@ -3979,6 +4042,10 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/discuss_post_mob_list_view.json",
     "viewType" : "DEMOBLISTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/discuss_post_mob_search_md_view.json",
+    "viewType" : "DEMOBMDVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/discuss_post_mob_discuss_post_tree.json",

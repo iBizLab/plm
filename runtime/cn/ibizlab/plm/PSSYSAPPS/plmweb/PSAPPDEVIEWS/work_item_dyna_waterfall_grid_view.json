@@ -311,6 +311,10 @@
           "frontProcessType" : "WIZARD",
           "fullCodeName" : "work_item_new_waterfall_requirement",
           "name" : "新建需求（waterfall）",
+          "getNextPSUIAction" : {
+            "modelref" : true,
+            "id" : "Refresh"
+          },
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -358,6 +362,10 @@
           "frontProcessType" : "WIZARD",
           "fullCodeName" : "work_item_new_waterfall_task",
           "name" : "新建任务（waterfall）",
+          "getNextPSUIAction" : {
+            "modelref" : true,
+            "id" : "Refresh"
+          },
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -405,6 +413,10 @@
           "frontProcessType" : "WIZARD",
           "fullCodeName" : "work_item_new_waterfall_bug",
           "name" : "新建缺陷（waterfall）",
+          "getNextPSUIAction" : {
+            "modelref" : true,
+            "id" : "Refresh"
+          },
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -1744,6 +1756,67 @@
       "widthUnit" : "PX",
       "enableRowEdit" : true,
       "enableSort" : true
+    }, {
+      "align" : "LEFT",
+      "cLConvertMode" : "NONE",
+      "caption" : "实际开始时间",
+      "codeName" : "actual_start_at",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "actual_start_at",
+      "excelCaption" : "实际开始时间",
+      "hideMode" : 1,
+      "name" : "actual_start_at",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "ACTUAL_START_AT",
+        "codeName" : "actual_start_at"
+      },
+      "valueFormat" : "YYYY-MM-DD HH:mm:ss",
+      "width" : 160,
+      "widthUnit" : "PX",
+      "enableSort" : true,
+      "hideDefault" : true
+    }, {
+      "align" : "LEFT",
+      "cLConvertMode" : "NONE",
+      "caption" : "实际结束时间",
+      "codeName" : "actual_end_at",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "actual_end_at",
+      "excelCaption" : "实际结束时间",
+      "hideMode" : 1,
+      "name" : "actual_end_at",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "ACTUAL_END_AT",
+        "codeName" : "actual_end_at"
+      },
+      "valueFormat" : "YYYY-MM-DD HH:mm:ss",
+      "width" : 160,
+      "widthUnit" : "PX",
+      "enableSort" : true,
+      "hideDefault" : true
+    }, {
+      "align" : "RIGHT",
+      "cLConvertMode" : "NONE",
+      "caption" : "逾期天数",
+      "codeName" : "overdue_time",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "overdue_time",
+      "excelCaption" : "逾期天数",
+      "hideMode" : 1,
+      "name" : "overdue_time",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "OVERDUE_TIME",
+        "codeName" : "overdue_time"
+      },
+      "unitName" : "天",
+      "width" : 110,
+      "widthUnit" : "PX",
+      "enableSort" : true,
+      "enableUnitName" : true,
+      "hideDefault" : true
     } ],
     "getPSDEGridDataItems" : [ {
       "dataType" : 25,
@@ -1819,6 +1892,31 @@
         "name" : "END_AT",
         "codeName" : "end_at"
       }
+    }, {
+      "format" : "YYYY-MM-DD HH:mm:ss",
+      "dataType" : 5,
+      "name" : "actual_start_at",
+      "getPSAppDEField" : {
+        "name" : "ACTUAL_START_AT",
+        "codeName" : "actual_start_at"
+      }
+    }, {
+      "format" : "YYYY-MM-DD HH:mm:ss",
+      "dataType" : 5,
+      "name" : "actual_end_at",
+      "getPSAppDEField" : {
+        "name" : "ACTUAL_END_AT",
+        "codeName" : "actual_end_at"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "overdue_time",
+      "getPSAppDEField" : {
+        "name" : "OVERDUE_TIME",
+        "codeName" : "overdue_time"
+      },
+      "scriptCode" : "let str = data.overdue_time;\r\nlet num = Number(str);\r\nif (num > 0){\r\n    return  str + \"天\";\r\n}else {\r\n    return  \"\";\r\n}\r\n",
+      "customCode" : true
     }, {
       "dataType" : 25,
       "name" : "tags",
@@ -2666,72 +2764,6 @@
   "modelid" : "8a5a2f02f504db3111149f01f058c375",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
-    "actionRSMode" : 1,
-    "codeName" : "releases",
-    "dataRSMode" : 0,
-    "majorDECodeName" : "project",
-    "majorDEName" : "PROJECT",
-    "getMajorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-    },
-    "minorDECodeName" : "release",
-    "minorDEName" : "RELEASE",
-    "getMinorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-    },
-    "name" : "DER1N_RELEASE_PROJECT_PROJECT_ID",
-    "getParentPSAppDEField" : {
-      "name" : "PROJECT_ID",
-      "codeName" : "project_id"
-    },
-    "rSMode" : 2
-  }, {
-    "actionRSMode" : 1,
-    "codeName" : "work_items",
-    "dataRSMode" : 0,
-    "majorDECodeName" : "release",
-    "majorDEName" : "RELEASE",
-    "getMajorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-    },
-    "minorDECodeName" : "work_item",
-    "minorDEName" : "WORK_ITEM",
-    "getMinorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-    },
-    "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-    "getParentPSAppDEField" : {
-      "name" : "RELEASE_ID",
-      "codeName" : "release_id"
-    },
-    "rSMode" : 2
-  } ], [ {
-    "actionRSMode" : 1,
-    "codeName" : "work_items",
-    "dataRSMode" : 0,
-    "majorDECodeName" : "release",
-    "majorDEName" : "RELEASE",
-    "getMajorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-    },
-    "minorDECodeName" : "work_item",
-    "minorDEName" : "WORK_ITEM",
-    "getMinorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-    },
-    "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-    "getParentPSAppDEField" : {
-      "name" : "RELEASE_ID",
-      "codeName" : "release_id"
-    },
-    "rSMode" : 2
-  } ], [ {
     "actionRSMode" : 1,
     "codeName" : "work_items",
     "dataRSMode" : 0,

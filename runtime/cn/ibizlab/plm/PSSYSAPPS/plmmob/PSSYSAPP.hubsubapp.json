@@ -634,6 +634,7 @@
         "actionTarget" : "SINGLEKEY",
         "caption" : "删除",
         "codeName" : "mob_attachment_delete",
+        "dataAccessAction" : "UPDATE",
         "frontProcessType" : "OTHER",
         "fullCodeName" : "run_attachment_mob_attachment_delete",
         "name" : "附件删除（移动端）",
@@ -644,6 +645,10 @@
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/run_attachment.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "UPDATE"
         },
         "getPSSysImage" : {
           "glyph" : "xf014@FontAwesome",
@@ -1105,6 +1110,7 @@
         "refreshMode" : 1,
         "successMsg" : "删除成功",
         "timeout" : 60000,
+        "tooltip" : "移除成员",
         "uIActionMode" : "BACKEND",
         "uIActionTag" : "remove_member",
         "uIActionType" : "DEUIACTION",
@@ -1112,6 +1118,7 @@
         "reloadData" : true,
         "id" : "remove_member@project_member"
       },
+      "tooltip" : "移除成员",
       "addSeparator" : false,
       "showCaption" : true,
       "showIcon" : true
@@ -1344,6 +1351,7 @@
         "id" : "mob_add_favorite@article_page"
       },
       "tooltip" : "收藏",
+      "visibleScriptCode" : "data.is_favorite==0",
       "addSeparator" : false,
       "showCaption" : true,
       "showIcon" : true
@@ -1368,10 +1376,6 @@
         "frontProcessType" : "WIZARD",
         "fullCodeName" : "article_page_mob_rename",
         "name" : "移动端重命名",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "update"
-        },
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
@@ -1503,6 +1507,63 @@
     } ],
     "uniqueTag" : "relation__Usr0417741727"
   }, {
+    "codeName" : "Usr1104494129",
+    "name" : "取消依赖",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
+    },
+    "getPSUIActionGroupDetails" : [ {
+      "caption" : "取消依赖",
+      "detailType" : "DEUIACTION",
+      "name" : "u3c718ce",
+      "getPSSysImage" : {
+        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\" fill=\"currentColor\">\n  <path d=\"M640 640H448V576h192V192H64v384h192v64H0V128h704v512h-64zM384 384h192v64H384v384h576V448h-192V384h256v512H320V384h64z\"></path>\n</svg>"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "SINGLEKEY",
+        "caption" : "取消依赖",
+        "codeName" : "del_dependency",
+        "confirmMsg" : "确认取消依赖?",
+        "dataAccessAction" : "UPDATE",
+        "fullCodeName" : "relation_del_dependency",
+        "name" : "取消依赖",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "remove"
+        },
+        "getPSAppDEUILogic" : {
+          "modelref" : true,
+          "id" : "refresh_counter"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "UPDATE"
+        },
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\" fill=\"currentColor\">\n  <path d=\"M640 640H448V576h192V192H64v384h192v64H0V128h704v512h-64zM384 384h192v64H384v384h576V448h-192V384h256v512H320V384h64z\"></path>\n</svg>"
+        },
+        "refreshMode" : 1,
+        "successMsg" : "取消依赖成功",
+        "timeout" : 60000,
+        "uIActionMode" : "BACKEND",
+        "uIActionTag" : "del_dependency",
+        "uIActionType" : "DEUIACTION",
+        "uILogicAttachMode" : "AFTER",
+        "enableConfirm" : true,
+        "reloadData" : true,
+        "id" : "del_dependency@relation"
+      },
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true
+    } ],
+    "uniqueTag" : "relation__Usr1104494129"
+  }, {
     "codeName" : "Usr1229641605",
     "name" : "恢复",
     "getPSAppDataEntity" : {
@@ -1573,6 +1634,7 @@
         "actionTarget" : "SINGLEKEY",
         "caption" : "取消关联",
         "codeName" : "child_del_relation",
+        "dataAccessAction" : "UPDATE",
         "fullCodeName" : "work_item_child_del_relation",
         "name" : "取消关联（子工作项）",
         "getPSAppDEMethod" : {
@@ -1586,6 +1648,10 @@
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "UPDATE"
         },
         "getPSNavigateContexts" : [ {
           "key" : "DEL_CHILD_RELATION",
@@ -1868,6 +1934,7 @@
   } ],
   "getAllPSDEDRControls" : [ ],
   "getAllPSControls" : [ ],
+  "getAllPSAppViewRefs" : [ ],
   "getUserParam" : {
     "globalConfig.view.mobShowPresetBack" : "false",
     "DefaultOSSCat" : "plm",

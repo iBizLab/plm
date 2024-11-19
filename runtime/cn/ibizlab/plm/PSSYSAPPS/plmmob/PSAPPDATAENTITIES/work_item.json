@@ -1,5 +1,39 @@
 {
   "getAllPSAppDEActions" : [ {
+    "actionMode" : "READ",
+    "actionType" : "BUILTIN",
+    "codeName" : "GetTemp",
+    "methodType" : "DEACTION",
+    "name" : "GetTemp",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "GetTempInput",
+      "getKeyPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "name" : "GetTempInput",
+      "type" : "KEYFIELD"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "GetTempResult",
+      "name" : "GetTempResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/GetTemp.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : true
+  }, {
     "actionMode" : "CUSTOM",
     "codeName" : "activate",
     "methodType" : "DEACTION",
@@ -384,6 +418,43 @@
     "builtinMethod" : false,
     "needResourceKey" : true
   }, {
+    "actionMode" : "GETDRAFT",
+    "codeName" : "count_my_todo",
+    "methodType" : "DEACTION",
+    "name" : "count_my_todo",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/count_my_todo.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "count_my_todo"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/count_my_todo",
+    "builtinMethod" : false
+  }, {
     "actionMode" : "CREATE",
     "actionTag" : "Create",
     "codeName" : "create",
@@ -458,6 +529,43 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/create_plan_snapshot",
+    "builtinMethod" : false
+  }, {
+    "actionMode" : "GETDRAFT",
+    "codeName" : "custom_draft",
+    "methodType" : "DEACTION",
+    "name" : "custom_draft",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/custom_draft.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "custom_draft"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/custom_draft",
     "builtinMethod" : false
   }, {
     "actionMode" : "CUSTOM",
@@ -4099,6 +4207,44 @@
     "requestPath" : "/fetch_child",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_choose",
+    "dataSetName" : "choose",
+    "dataSetTag" : "choose",
+    "methodType" : "FETCH",
+    "name" : "fetch_choose",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "choose"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_choose"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_choose",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_choose_child",
     "dataSetName" : "choose_child",
     "dataSetTag" : "choose_child",
@@ -4829,6 +4975,120 @@
     "requestPath" : "/fetch_my_filter",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_my_summary_bug",
+    "dataSetName" : "my_summary_bug",
+    "dataSetTag" : "my_summary_bug",
+    "methodType" : "FETCH",
+    "name" : "fetch_my_summary_bug",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "my_summary_bug"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_my_summary_bug"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_my_summary_bug",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_my_summary_other",
+    "dataSetName" : "my_summary_other",
+    "dataSetTag" : "my_summary_other",
+    "methodType" : "FETCH",
+    "name" : "fetch_my_summary_other",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "my_summary_other"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_my_summary_other"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_my_summary_other",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_my_summary_task",
+    "dataSetName" : "my_summary_task",
+    "dataSetTag" : "my_summary_task",
+    "methodType" : "FETCH",
+    "name" : "fetch_my_summary_task",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "my_summary_task"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_my_summary_task"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_my_summary_task",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_my_todo",
     "dataSetName" : "my_todo",
     "dataSetTag" : "my_todo",
@@ -4903,6 +5163,44 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetch_no_bug_work_item",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_no_completed",
+    "dataSetName" : "no_completed",
+    "dataSetTag" : "no_completed",
+    "methodType" : "FETCH",
+    "name" : "fetch_no_completed",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "no_completed"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_no_completed"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_no_completed",
     "builtinMethod" : false
   }, {
     "codeName" : "fetch_normal",
@@ -5093,6 +5391,44 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetch_notify_assignee",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_overdue_work_item",
+    "dataSetName" : "overdue_work_item",
+    "dataSetTag" : "overdue_work_item",
+    "methodType" : "FETCH",
+    "name" : "fetch_overdue_work_item",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "overdue_work_item"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_overdue_work_item"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_overdue_work_item",
     "builtinMethod" : false
   }, {
     "codeName" : "fetch_overview_chart",
@@ -8389,6 +8725,191 @@
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "Default",
+      "name" : "[EXECUTORS][执行人]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[EXECUTORS][执行人]",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[EXECUTORS][执行人]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "HIDDEN",
+        "name" : "[EXECUTORS][执行人]移动端默认",
+        "stringLength" : 1048576,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "executors",
+    "logicName" : "执行人",
+    "name" : "EXECUTORS",
+    "stdDataType" : 21,
+    "stringLength" : 1048576
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[MULTIPLE_PEOPLE][多人任务]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBSWITCH",
+        "name" : "[MULTIPLE_PEOPLE][多人任务]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[MULTIPLE_PEOPLE][多人任务]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "[MULTIPLE_PEOPLE][多人任务]",
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    } ],
+    "codeName" : "multiple_people",
+    "logicName" : "多人任务",
+    "name" : "MULTIPLE_PEOPLE",
+    "stdDataType" : 9
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[ACTUAL_START_AT][实际开始时间]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBDATE",
+        "name" : "[ACTUAL_START_AT][实际开始时间]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[ACTUAL_START_AT][实际开始时间]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DATEPICKER",
+        "name" : "[ACTUAL_START_AT][实际开始时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "codeName" : "actual_start_at",
+    "logicName" : "实际开始时间",
+    "name" : "ACTUAL_START_AT",
+    "stdDataType" : 5,
+    "valueFormat" : "YYYY-MM-DD HH:mm:ss"
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[ACTUAL_END_AT][实际结束时间]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBDATE",
+        "name" : "[ACTUAL_END_AT][实际结束时间]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[ACTUAL_END_AT][实际结束时间]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DATEPICKER",
+        "name" : "[ACTUAL_END_AT][实际结束时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "codeName" : "actual_end_at",
+    "logicName" : "实际结束时间",
+    "name" : "ACTUAL_END_AT",
+    "stdDataType" : 5,
+    "valueFormat" : "YYYY-MM-DD HH:mm:ss"
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[FINISHER][完成人]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[FINISHER][完成人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[FINISHER][完成人]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[FINISHER][完成人]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "finisher",
+    "logicName" : "完成人",
+    "name" : "FINISHER",
+    "stdDataType" : 25,
+    "stringLength" : 100
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[OVERDUE_TIME][逾期时间]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[OVERDUE_TIME][逾期时间]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[OVERDUE_TIME][逾期时间]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[OVERDUE_TIME][逾期时间]移动端默认",
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "overdue_time",
+    "logicName" : "逾期天数",
+    "name" : "OVERDUE_TIME",
+    "stdDataType" : 25,
+    "stringLength" : 200
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
       "name" : "[ID][标识]",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
@@ -9437,8 +9958,30 @@
       "leftPos" : 200,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
       "topPos" : 200,
       "parallelOutput" : true
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 460
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",
@@ -11021,6 +11564,85 @@
       "stdDataType" : 9,
       "type" : "SIMPLE"
     }, {
+      "codeName" : "executors",
+      "logicName" : "执行人",
+      "name" : "executors",
+      "getPSAppDEField" : {
+        "name" : "EXECUTORS",
+        "codeName" : "executors"
+      },
+      "getRefPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "executor_dto"
+      },
+      "getRefPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/executor.json"
+      },
+      "getRefPickupPSAppDEField" : {
+        "name" : "OWNER_ID",
+        "codeName" : "owner_id"
+      },
+      "sourceType" : "DEFIELD",
+      "type" : "DTOS"
+    }, {
+      "codeName" : "multiple_people",
+      "logicName" : "多人任务",
+      "name" : "multiple_people",
+      "getPSAppDEField" : {
+        "name" : "MULTIPLE_PEOPLE",
+        "codeName" : "multiple_people"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "actual_start_at",
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "实际开始时间",
+      "name" : "actual_start_at",
+      "getPSAppDEField" : {
+        "name" : "ACTUAL_START_AT",
+        "codeName" : "actual_start_at"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "actual_end_at",
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "实际结束时间",
+      "name" : "actual_end_at",
+      "getPSAppDEField" : {
+        "name" : "ACTUAL_END_AT",
+        "codeName" : "actual_end_at"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "finisher",
+      "logicName" : "完成人",
+      "name" : "finisher",
+      "getPSAppDEField" : {
+        "name" : "FINISHER",
+        "codeName" : "finisher"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "overdue_time",
+      "logicName" : "逾期天数",
+      "name" : "overdue_time",
+      "getPSAppDEField" : {
+        "name" : "OVERDUE_TIME",
+        "codeName" : "overdue_time"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "codeName" : "board_id",
       "logicName" : "看板标识",
       "name" : "board_id",
@@ -11567,6 +12189,17 @@
       "stdDataType" : 5,
       "type" : "SIMPLE"
     }, {
+      "codeName" : "n_description_eq",
+      "logicName" : "描述",
+      "name" : "n_description_eq",
+      "getPSAppDEField" : {
+        "name" : "DESCRIPTION",
+        "codeName" : "description"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 21,
+      "type" : "SIMPLE"
+    }, {
       "codeName" : "n_description_like",
       "logicName" : "描述",
       "name" : "n_description_like",
@@ -11630,6 +12263,17 @@
       "getPSAppDEField" : {
         "name" : "ENTRY_NAME",
         "codeName" : "entry_name"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "n_executors_exists_n_user_id_eq",
+      "logicName" : "执行人",
+      "name" : "n_executors_exists_n_user_id_eq",
+      "getPSAppDEField" : {
+        "name" : "EXECUTORS",
+        "codeName" : "executors"
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
@@ -11762,6 +12406,50 @@
       "getPSAppDEField" : {
         "name" : "JOB_TYPE",
         "codeName" : "job_type"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "n_overdue_time_eq",
+      "logicName" : "逾期天数",
+      "name" : "n_overdue_time_eq",
+      "getPSAppDEField" : {
+        "name" : "OVERDUE_TIME",
+        "codeName" : "overdue_time"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "n_overdue_time_gt",
+      "logicName" : "逾期天数",
+      "name" : "n_overdue_time_gt",
+      "getPSAppDEField" : {
+        "name" : "OVERDUE_TIME",
+        "codeName" : "overdue_time"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "n_overdue_time_gtandeq",
+      "logicName" : "逾期天数",
+      "name" : "n_overdue_time_gtandeq",
+      "getPSAppDEField" : {
+        "name" : "OVERDUE_TIME",
+        "codeName" : "overdue_time"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "n_overdue_time_lt",
+      "logicName" : "逾期天数",
+      "name" : "n_overdue_time_lt",
+      "getPSAppDEField" : {
+        "name" : "OVERDUE_TIME",
+        "codeName" : "overdue_time"
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
@@ -12826,6 +13514,63 @@
       "sourceType" : "DEFGROUPDETAIL",
       "stdDataType" : 9,
       "type" : "SIMPLE"
+    }, {
+      "codeName" : "multiple_people",
+      "logicName" : "多人任务",
+      "name" : "multiple_people",
+      "getPSAppDEField" : {
+        "name" : "MULTIPLE_PEOPLE",
+        "codeName" : "multiple_people"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "overdue_time",
+      "logicName" : "逾期天数",
+      "name" : "overdue_time",
+      "getPSAppDEField" : {
+        "name" : "OVERDUE_TIME",
+        "codeName" : "overdue_time"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "finisher",
+      "logicName" : "完成人",
+      "name" : "finisher",
+      "getPSAppDEField" : {
+        "name" : "FINISHER",
+        "codeName" : "finisher"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "actual_end_at",
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "实际结束时间",
+      "name" : "actual_end_at",
+      "getPSAppDEField" : {
+        "name" : "ACTUAL_END_AT",
+        "codeName" : "actual_end_at"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "actual_start_at",
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "实际开始时间",
+      "name" : "actual_start_at",
+      "getPSAppDEField" : {
+        "name" : "ACTUAL_START_AT",
+        "codeName" : "actual_start_at"
+      },
+      "sourceType" : "DEFGROUPDETAIL",
+      "stdDataType" : 5,
+      "type" : "SIMPLE"
     } ],
     "sourceType" : "DE",
     "type" : "DEFAULT"
@@ -12861,6 +13606,40 @@
     "type" : "DEFAULT"
   } ],
   "getAllPSAppDEMethods" : [ {
+    "actionMode" : "READ",
+    "actionType" : "BUILTIN",
+    "codeName" : "GetTemp",
+    "methodType" : "DEACTION",
+    "name" : "GetTemp",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "GetTempInput",
+      "getKeyPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "name" : "GetTempInput",
+      "type" : "KEYFIELD"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "GetTempResult",
+      "name" : "GetTempResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/GetTemp.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : true
+  }, {
     "actionMode" : "CUSTOM",
     "codeName" : "activate",
     "methodType" : "DEACTION",
@@ -13245,6 +14024,43 @@
     "builtinMethod" : false,
     "needResourceKey" : true
   }, {
+    "actionMode" : "GETDRAFT",
+    "codeName" : "count_my_todo",
+    "methodType" : "DEACTION",
+    "name" : "count_my_todo",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/count_my_todo.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "count_my_todo"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/count_my_todo",
+    "builtinMethod" : false
+  }, {
     "actionMode" : "CREATE",
     "actionTag" : "Create",
     "codeName" : "create",
@@ -13319,6 +14135,43 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/create_plan_snapshot",
+    "builtinMethod" : false
+  }, {
+    "actionMode" : "GETDRAFT",
+    "codeName" : "custom_draft",
+    "methodType" : "DEACTION",
+    "name" : "custom_draft",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/custom_draft.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "custom_draft"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/custom_draft",
     "builtinMethod" : false
   }, {
     "actionMode" : "CUSTOM",
@@ -15081,6 +15934,44 @@
     "requestPath" : "/fetch_child",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_choose",
+    "dataSetName" : "choose",
+    "dataSetTag" : "choose",
+    "methodType" : "FETCH",
+    "name" : "fetch_choose",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "choose"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_choose"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_choose",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_choose_child",
     "dataSetName" : "choose_child",
     "dataSetTag" : "choose_child",
@@ -15811,6 +16702,120 @@
     "requestPath" : "/fetch_my_filter",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_my_summary_bug",
+    "dataSetName" : "my_summary_bug",
+    "dataSetTag" : "my_summary_bug",
+    "methodType" : "FETCH",
+    "name" : "fetch_my_summary_bug",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "my_summary_bug"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_my_summary_bug"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_my_summary_bug",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_my_summary_other",
+    "dataSetName" : "my_summary_other",
+    "dataSetTag" : "my_summary_other",
+    "methodType" : "FETCH",
+    "name" : "fetch_my_summary_other",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "my_summary_other"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_my_summary_other"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_my_summary_other",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_my_summary_task",
+    "dataSetName" : "my_summary_task",
+    "dataSetTag" : "my_summary_task",
+    "methodType" : "FETCH",
+    "name" : "fetch_my_summary_task",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "my_summary_task"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_my_summary_task"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_my_summary_task",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_my_todo",
     "dataSetName" : "my_todo",
     "dataSetTag" : "my_todo",
@@ -15885,6 +16890,44 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetch_no_bug_work_item",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_no_completed",
+    "dataSetName" : "no_completed",
+    "dataSetTag" : "no_completed",
+    "methodType" : "FETCH",
+    "name" : "fetch_no_completed",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "no_completed"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_no_completed"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_no_completed",
     "builtinMethod" : false
   }, {
     "codeName" : "fetch_normal",
@@ -16075,6 +17118,44 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetch_notify_assignee",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_overdue_work_item",
+    "dataSetName" : "overdue_work_item",
+    "dataSetTag" : "overdue_work_item",
+    "methodType" : "FETCH",
+    "name" : "fetch_overdue_work_item",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "overdue_work_item"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_overdue_work_item"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_overdue_work_item",
     "builtinMethod" : false
   }, {
     "codeName" : "fetch_overview_chart",
@@ -17179,6 +18260,3200 @@
     "requestPath" : "/fetch_work_item_type",
     "builtinMethod" : false
   }, {
+    "codeName" : "FetchTempAdvanced_search",
+    "dataSetTag" : "advanced_search",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "advanced_search",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Advanced_searchInput",
+      "name" : "Advanced_searchInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Advanced_searchResult",
+      "name" : "Advanced_searchResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condType" : "CUSTOM",
+        "condition" : "exists(select 1 from project t2, project_member t3 where t1.project_id = t2.id and t2.id = t3.project_id and t3.user_id = #{ctx.sessioncontext.srfpersonid})",
+        "name" : "所属项目内"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "advanced_search"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempArchived",
+    "dataSetTag" : "archived",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "archived",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "ArchivedInput",
+      "name" : "ArchivedInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "ArchivedResult",
+      "name" : "ArchivedResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "1",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 1"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "archived"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempBacklog_property_distribution",
+    "dataSetTag" : "backlog_property_distribution",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "backlog_property_distribution",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Backlog_property_distributionInput",
+      "name" : "Backlog_property_distributionInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Backlog_property_distributionResult",
+      "name" : "Backlog_property_distributionResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "requirement",
+        "fieldName" : "WORK_ITEM_TYPE_GROUP",
+        "name" : "(WORK_ITEM_TYPE_GROUP) 等于(=) requirement"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "backlog_property_distribution"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempBacklog_state_distribution",
+    "dataSetTag" : "backlog_state_distribution",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "backlog_state_distribution",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Backlog_state_distributionInput",
+      "name" : "Backlog_state_distributionInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Backlog_state_distributionResult",
+      "name" : "Backlog_state_distributionResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "requirement",
+        "fieldName" : "WORK_ITEM_TYPE_GROUP",
+        "name" : "(WORK_ITEM_TYPE_GROUP) 等于(=) requirement"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "backlog_state_distribution"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempBaseline_choose_work_item",
+    "dataSetTag" : "baseline_choose_work_item",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "baseline_choose_work_item",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Baseline_choose_work_itemInput",
+      "name" : "Baseline_choose_work_itemInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Baseline_choose_work_itemResult",
+      "name" : "Baseline_choose_work_itemResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_baseline_choose_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condType" : "CUSTOM",
+        "condition" : "( <choose><when test=\"ctx.webcontext.query_recent !=null \">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )",
+        "name" : "最近浏览"
+      }, {
+        "condType" : "CUSTOM",
+        "condition" : "( <choose><when test=\"ctx.webcontext.query_attention !=null \">  exists(select 1 from attention t2 where t1.ID = t2.owner_id and t2.user_id =#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )",
+        "name" : "我关注的"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "baseline_choose_work_item"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempBi_detail",
+    "dataSetTag" : "bi_detail",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "bi_detail",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Bi_detailInput",
+      "name" : "Bi_detailInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Bi_detailResult",
+      "name" : "Bi_detailResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "bi_detail"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempBi_search",
+    "dataSetTag" : "bi_search",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "bi_search",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Bi_searchInput",
+      "name" : "Bi_searchInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Bi_searchResult",
+      "name" : "Bi_searchResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_bi_search_group_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "bi_search"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempBug",
+    "dataSetTag" : "bug",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "bug",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "BugInput",
+      "name" : "BugInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "BugResult",
+      "name" : "BugResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "bug",
+        "fieldName" : "WORK_ITEM_TYPE_GROUP",
+        "name" : "(WORK_ITEM_TYPE_GROUP) 等于(=) bug"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "bug"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempBug_state_group_grid",
+    "dataSetTag" : "bug_state_group_grid",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "bug_state_group_grid",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Bug_state_group_gridInput",
+      "name" : "Bug_state_group_gridInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Bug_state_group_gridResult",
+      "name" : "Bug_state_group_gridResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "bug",
+        "fieldName" : "WORK_ITEM_TYPE_GROUP",
+        "name" : "(WORK_ITEM_TYPE_GROUP) 等于(=) bug"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "bug_state_group_grid"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempChange_parent",
+    "dataSetTag" : "change_parent",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "change_parent",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Change_parentInput",
+      "name" : "Change_parentInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Change_parentResult",
+      "name" : "Change_parentResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condType" : "CUSTOM",
+        "condition" : "( <choose><when test=\"ctx.webcontext.query_recent !=null \">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> ) \n\n",
+        "name" : "最近浏览"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condType" : "CUSTOM",
+        "condition" : "( <choose><when test=\"ctx.webcontext.query_attention !=null \">  exists(select 1 from attention t2 where t1.ID = t2.owner_id and t2.user_id =#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> ) \n",
+        "name" : "我关注的"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "change_parent"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempChild",
+    "dataSetTag" : "child",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "child",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "ChildInput",
+      "name" : "ChildInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "ChildResult",
+      "name" : "ChildResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_child_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "child"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempChoose",
+    "dataSetTag" : "choose",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "choose",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "ChooseInput",
+      "name" : "ChooseInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "ChooseResult",
+      "name" : "ChooseResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "project_id",
+        "fieldName" : "PROJECT_ID",
+        "name" : "(PROJECT_ID) 等于(=) 网页请求上下文 project_id",
+        "getPSVARTypeId" : "WEBCONTEXT"
+      }, {
+        "condType" : "CUSTOM",
+        "condition" : "( <choose><when test=\"ctx.webcontext.query_recent !=null \">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )",
+        "name" : "最近浏览"
+      }, {
+        "condType" : "CUSTOM",
+        "condition" : "( <choose><when test=\"ctx.webcontext.query_attention !=null \">  exists(select 1 from attention t2 where t1.ID = t2.owner_id and t2.user_id =#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )",
+        "name" : "我关注的"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "choose"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempChoose_child",
+    "dataSetTag" : "choose_child",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "choose_child",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Choose_childInput",
+      "name" : "Choose_childInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Choose_childResult",
+      "name" : "Choose_childResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "NOTEQ",
+        "condType" : "SINGLE",
+        "condValue" : "principal_id",
+        "fieldName" : "ID",
+        "name" : "(ID) 不等于(<>) 网页请求上下文 principal_id",
+        "getPSVARTypeId" : "WEBCONTEXT"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "project_id",
+        "fieldName" : "PROJECT_ID",
+        "name" : "(PROJECT_ID) 等于(=) 网页请求上下文 project_id",
+        "getPSVARTypeId" : "WEBCONTEXT"
+      }, {
+        "condType" : "CUSTOM",
+        "condition" : "( <choose><when test=\"ctx.webcontext.query_recent !=null \">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )",
+        "name" : "最近浏览"
+      }, {
+        "condType" : "CUSTOM",
+        "condition" : "( <choose><when test=\"ctx.webcontext.query_attention !=null \">  exists(select 1 from attention t2 where t1.ID = t2.owner_id and t2.user_id =#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )",
+        "name" : "我关注的"
+      }, {
+        "condOp" : "OR",
+        "condType" : "GROUP",
+        "name" : "OR",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "NOTEQ",
+          "condType" : "SINGLE",
+          "condValue" : "principal_id",
+          "fieldName" : "PID",
+          "name" : "(PID) 不等于(<>) 网页请求上下文 principal_id",
+          "getPSVARTypeId" : "WEBCONTEXT"
+        }, {
+          "condOp" : "ISNULL",
+          "condType" : "SINGLE",
+          "fieldName" : "PID",
+          "name" : "(PID) 值为空(Nil)"
+        } ]
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "choose_child"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempChoose_dependency",
+    "dataSetTag" : "choose_dependency",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "choose_dependency",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Choose_dependencyInput",
+      "name" : "Choose_dependencyInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Choose_dependencyResult",
+      "name" : "Choose_dependencyResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "NOTEQ",
+        "condType" : "SINGLE",
+        "condValue" : "principal_id",
+        "fieldName" : "ID",
+        "name" : "(ID) 不等于(<>) 网页请求上下文 principal_id",
+        "getPSVARTypeId" : "WEBCONTEXT"
+      }, {
+        "condType" : "CUSTOM",
+        "condition" : "( <choose><when test=\"ctx.webcontext.query_recent !=null \">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )",
+        "name" : "最近浏览"
+      }, {
+        "condType" : "CUSTOM",
+        "condition" : "( <choose><when test=\"ctx.webcontext.query_attention !=null \">  exists(select 1 from attention t2 where t1.ID = t2.owner_id and t2.user_id =#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )",
+        "name" : "我关注的"
+      }, {
+        "condType" : "CUSTOM",
+        "condition" : "not exists(select 1 from `relation` t2 where (t1.id = t2.principal_id or t1.id = t2.target_id) and t2.principal_type = 'dependency')",
+        "name" : "未依赖"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "choose_dependency"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempComment_notify_assignee",
+    "dataSetTag" : "comment_notify_assignee",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "comment_notify_assignee",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Comment_notify_assigneeInput",
+      "name" : "Comment_notify_assigneeInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Comment_notify_assigneeResult",
+      "name" : "Comment_notify_assigneeResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_assignee_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condType" : "CUSTOM",
+        "condition" : "exists (select 1 from comment t2 where t1.ID = t2.PRINCIPAL_ID and t2.ID = #{ctx.webcontext.id}  and t2.create_man != t1.assignee_id)",
+        "name" : "关联评论"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "comment_notify_assignee"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempCommon",
+    "dataSetTag" : "common",
+    "dataSetType" : "DATAQUERY",
+    "memo" : "未删除",
+    "methodType" : "FETCHTEMP",
+    "name" : "common",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "CommonInput",
+      "name" : "CommonInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "CommonResult",
+      "name" : "CommonResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "common"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempCommon_bug",
+    "dataSetTag" : "common_bug",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "common_bug",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Common_bugInput",
+      "name" : "Common_bugInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Common_bugResult",
+      "name" : "Common_bugResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "bug",
+        "fieldName" : "WORK_ITEM_TYPE_GROUP",
+        "name" : "(WORK_ITEM_TYPE_GROUP) 等于(=) bug"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "common_bug"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempDefault",
+    "dataSetTag" : "Default",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "DEFAULT",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "DefaultInput",
+      "name" : "DefaultInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "DefaultResult",
+      "name" : "DefaultResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempDefect_property_distribution",
+    "dataSetTag" : "defect_property_distribution",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "defect_property_distribution",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Defect_property_distributionInput",
+      "name" : "Defect_property_distributionInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Defect_property_distributionResult",
+      "name" : "Defect_property_distributionResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "bug",
+        "fieldName" : "WORK_ITEM_TYPE_GROUP",
+        "name" : "(WORK_ITEM_TYPE_GROUP) 等于(=) bug"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "defect_property_distribution"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempDeleted",
+    "dataSetTag" : "deleted",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "deleted",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "DeletedInput",
+      "name" : "DeletedInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "DeletedResult",
+      "name" : "DeletedResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "1",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 1"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "deleted"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempKanban_user_stat",
+    "dataSetTag" : "kanban_user_stat",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "kanban_user_stat",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Kanban_user_statInput",
+      "name" : "Kanban_user_statInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Kanban_user_statResult",
+      "name" : "Kanban_user_statResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "ISNOTNULL",
+        "condType" : "SINGLE",
+        "fieldName" : "BOARD_ID",
+        "name" : "(BOARD_ID) 值不为空(NotNil)"
+      }, {
+        "condOp" : "ISNOTNULL",
+        "condType" : "SINGLE",
+        "fieldName" : "ENTRY_ID",
+        "name" : "(ENTRY_ID) 值不为空(NotNil)"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "kanban_user_stat"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempMilestone",
+    "dataSetTag" : "milestone",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "milestone",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "MilestoneInput",
+      "name" : "MilestoneInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "MilestoneResult",
+      "name" : "MilestoneResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "waterfall_milestone",
+        "fieldName" : "WORK_ITEM_TYPE_ID",
+        "name" : "(WORK_ITEM_TYPE_ID) 等于(=) waterfall_milestone"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "milestone"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "getADPSDEDQConditions" : [ {
+      "condOp" : "EQ",
+      "condType" : "SINGLE",
+      "condValue" : "project_id",
+      "fieldName" : "PROJECT_ID",
+      "name" : "(PROJECT_ID) 等于(=) 数据上下文 project_id",
+      "getPSVARTypeId" : "DATACONTEXT"
+    } ],
+    "codeName" : "FetchTempMove_work_item",
+    "dataSetTag" : "move_work_item",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "move_work_item",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Move_work_itemInput",
+      "name" : "Move_work_itemInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Move_work_itemResult",
+      "name" : "Move_work_itemResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "project_id",
+        "fieldName" : "PROJECT_ID",
+        "name" : "(PROJECT_ID) 等于(=) 数据上下文 project_id",
+        "getPSVARTypeId" : "DATACONTEXT"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "move_work_item"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempMy_assignee",
+    "dataSetTag" : "my_assignee",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "my_assignee",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "My_assigneeInput",
+      "name" : "My_assigneeInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "My_assigneeResult",
+      "name" : "My_assigneeResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "OR",
+        "condType" : "GROUP",
+        "name" : "OR",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "srfpersonid",
+          "fieldName" : "ASSIGNEE_ID",
+          "name" : "(ASSIGNEE_ID) 等于(=) 用户上下文 srfpersonid",
+          "getPSVARTypeId" : "SESSIONCONTEXT"
+        }, {
+          "condType" : "CUSTOM",
+          "condition" : "exists(select 1 from executor t2 where t1.id = t2.owner_id and t2.owner_type = 'WORK_ITEM' and t2.owner_subtype = 'WORK_ITEM' and t2.user_id = #{ctx.sessioncontext.srfpersonid})",
+          "name" : "执行人"
+        } ]
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "my_assignee"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempMy_assignee_count",
+    "dataSetTag" : "my_assignee_count",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "my_assignee_count",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "My_assignee_countInput",
+      "name" : "My_assignee_countInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "My_assignee_countResult",
+      "name" : "My_assignee_countResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "OR",
+        "condType" : "GROUP",
+        "name" : "OR",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "srfpersonid",
+          "fieldName" : "ASSIGNEE_ID",
+          "name" : "(ASSIGNEE_ID) 等于(=) 用户上下文 srfpersonid",
+          "getPSVARTypeId" : "SESSIONCONTEXT"
+        }, {
+          "condType" : "CUSTOM",
+          "condition" : "exists(select 1 from executor t2 where t1.id = t2.owner_id and t2.owner_type = 'WORK_ITEM' and t2.owner_subtype = 'WORK_ITEM' and t2.user_id = #{ctx.sessioncontext.srfpersonid})",
+          "name" : "执行人"
+        } ]
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "my_assignee_count"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempMy_attention",
+    "dataSetTag" : "my_attention",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "my_attention",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "My_attentionInput",
+      "name" : "My_attentionInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "My_attentionResult",
+      "name" : "My_attentionResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condType" : "CUSTOM",
+        "condition" : "exists(select 1 from `attention` t2 where t2.owner_id = t1.id and t2.`type` in ('20', '30', '40') and t2.user_id = #{ctx.sessioncontext.srfpersonid})",
+        "name" : "关注"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "my_attention"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempMy_created",
+    "dataSetTag" : "my_created",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "my_created",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "My_createdInput",
+      "name" : "My_createdInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "My_createdResult",
+      "name" : "My_createdResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "srfpersonid",
+        "fieldName" : "CREATE_MAN",
+        "name" : "(CREATE_MAN) 等于(=) 用户上下文 srfpersonid",
+        "getPSVARTypeId" : "SESSIONCONTEXT"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "my_created"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempMy_filter",
+    "dataSetTag" : "my_filter",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "my_filter",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "My_filterInput",
+      "name" : "My_filterInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "My_filterResult",
+      "name" : "My_filterResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "my_filter"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempMy_summary_bug",
+    "dataSetTag" : "my_summary_bug",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "my_summary_bug",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "My_summary_bugInput",
+      "name" : "My_summary_bugInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "My_summary_bugResult",
+      "name" : "My_summary_bugResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "OR",
+        "condType" : "GROUP",
+        "name" : "OR",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "srfpersonid",
+          "fieldName" : "ASSIGNEE_ID",
+          "name" : "(ASSIGNEE_ID) 等于(=) 用户上下文 srfpersonid",
+          "getPSVARTypeId" : "SESSIONCONTEXT"
+        }, {
+          "condType" : "CUSTOM",
+          "condition" : "exists(select 1 from executor t2 where t1.id = t2.owner_id and t2.owner_type = 'WORK_ITEM' and t2.owner_subtype = 'WORK_ITEM' and t2.user_id = #{ctx.sessioncontext.srfpersonid})",
+          "name" : "执行人"
+        } ]
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "bug",
+        "fieldName" : "WORK_ITEM_TYPE_GROUP",
+        "name" : "(WORK_ITEM_TYPE_GROUP) 等于(=) bug"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "in_progress",
+        "fieldName" : "STATE_TYPE",
+        "name" : "(STATE_TYPE) 等于(=) in_progress"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "my_summary_bug"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempMy_summary_other",
+    "dataSetTag" : "my_summary_other",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "my_summary_other",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "My_summary_otherInput",
+      "name" : "My_summary_otherInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "My_summary_otherResult",
+      "name" : "My_summary_otherResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "OR",
+        "condType" : "GROUP",
+        "name" : "OR",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "srfpersonid",
+          "fieldName" : "ASSIGNEE_ID",
+          "name" : "(ASSIGNEE_ID) 等于(=) 用户上下文 srfpersonid",
+          "getPSVARTypeId" : "SESSIONCONTEXT"
+        }, {
+          "condType" : "CUSTOM",
+          "condition" : "exists(select 1 from executor t2 where t1.id = t2.owner_id and t2.owner_type = 'WORK_ITEM' and t2.owner_subtype = 'WORK_ITEM' and t2.user_id = #{ctx.sessioncontext.srfpersonid})",
+          "name" : "执行人"
+        } ]
+      }, {
+        "condOp" : "NOTEQ",
+        "condType" : "SINGLE",
+        "condValue" : "bug",
+        "fieldName" : "WORK_ITEM_TYPE_GROUP",
+        "name" : "(WORK_ITEM_TYPE_GROUP) 不等于(<>) bug"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "NOTEQ",
+        "condType" : "SINGLE",
+        "condValue" : "task",
+        "fieldName" : "WORK_ITEM_TYPE_GROUP",
+        "name" : "(WORK_ITEM_TYPE_GROUP) 不等于(<>) task"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "in_progress",
+        "fieldName" : "STATE_TYPE",
+        "name" : "(STATE_TYPE) 等于(=) in_progress"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "my_summary_other"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempMy_summary_task",
+    "dataSetTag" : "my_summary_task",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "my_summary_task",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "My_summary_taskInput",
+      "name" : "My_summary_taskInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "My_summary_taskResult",
+      "name" : "My_summary_taskResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "OR",
+        "condType" : "GROUP",
+        "name" : "OR",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "srfpersonid",
+          "fieldName" : "ASSIGNEE_ID",
+          "name" : "(ASSIGNEE_ID) 等于(=) 用户上下文 srfpersonid",
+          "getPSVARTypeId" : "SESSIONCONTEXT"
+        }, {
+          "condType" : "CUSTOM",
+          "condition" : "exists(select 1 from executor t2 where t1.id = t2.owner_id and t2.owner_type = 'WORK_ITEM' and t2.owner_subtype = 'WORK_ITEM' and t2.user_id = #{ctx.sessioncontext.srfpersonid})",
+          "name" : "执行人"
+        } ]
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "task",
+        "fieldName" : "WORK_ITEM_TYPE_GROUP",
+        "name" : "(WORK_ITEM_TYPE_GROUP) 等于(=) task"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "in_progress",
+        "fieldName" : "STATE_TYPE",
+        "name" : "(STATE_TYPE) 等于(=) in_progress"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "my_summary_task"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempMy_todo",
+    "dataSetTag" : "my_todo",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "my_todo",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "My_todoInput",
+      "name" : "My_todoInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "My_todoResult",
+      "name" : "My_todoResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "OR",
+        "condType" : "GROUP",
+        "name" : "OR",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "srfpersonid",
+          "fieldName" : "ASSIGNEE_ID",
+          "name" : "(ASSIGNEE_ID) 等于(=) 用户上下文 srfpersonid",
+          "getPSVARTypeId" : "SESSIONCONTEXT"
+        }, {
+          "condType" : "CUSTOM",
+          "condition" : "exists(select 1 from executor t2 where t1.id = t2.owner_id and t2.owner_type = 'WORK_ITEM' and t2.owner_subtype = 'WORK_ITEM' and t2.user_id = #{ctx.sessioncontext.srfpersonid})",
+          "name" : "执行人"
+        } ]
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "NOTEQ",
+        "condType" : "SINGLE",
+        "condValue" : "completed",
+        "fieldName" : "STATE_TYPE",
+        "name" : "(STATE_TYPE) 不等于(<>) completed"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "my_todo"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempNo_bug_work_item",
+    "dataSetTag" : "no_bug_work_item",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "no_bug_work_item",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "No_bug_work_itemInput",
+      "name" : "No_bug_work_itemInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "No_bug_work_itemResult",
+      "name" : "No_bug_work_itemResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condType" : "CUSTOM",
+        "condition" : "( <choose><when test=\"ctx.webcontext.query_recent !=null \">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )",
+        "name" : "recent"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "NOTEQ",
+        "condType" : "SINGLE",
+        "condValue" : "bug",
+        "fieldName" : "WORK_ITEM_TYPE_GROUP",
+        "name" : "(WORK_ITEM_TYPE_GROUP) 不等于(<>) bug"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "no_bug_work_item"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempNo_completed",
+    "dataSetTag" : "no_completed",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "no_completed",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "No_completedInput",
+      "name" : "No_completedInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "No_completedResult",
+      "name" : "No_completedResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "NOTEQ",
+        "condType" : "SINGLE",
+        "condValue" : "completed",
+        "fieldName" : "STATE_TYPE",
+        "name" : "(STATE_TYPE) 不等于(<>) completed"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "no_completed"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempNormal",
+    "dataSetTag" : "normal",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "normal",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "NormalInput",
+      "name" : "NormalInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "NormalResult",
+      "name" : "NormalResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "normal"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempNot_exsists_bug_relation",
+    "dataSetTag" : "not_exsists_bug_relation",
+    "dataSetType" : "DATAQUERY",
+    "memo" : "仅缺陷",
+    "methodType" : "FETCHTEMP",
+    "name" : "not_exsists_bug_relation",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Not_exsists_bug_relationInput",
+      "name" : "Not_exsists_bug_relationInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Not_exsists_bug_relationResult",
+      "name" : "Not_exsists_bug_relationResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condType" : "CUSTOM",
+        "condition" : "( <choose><when test=\"ctx.webcontext.query_recent !=null \">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )",
+        "name" : "recent"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "bug",
+        "fieldName" : "WORK_ITEM_TYPE_GROUP",
+        "name" : "(WORK_ITEM_TYPE_GROUP) 等于(=) bug"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "not_exsists_bug_relation"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempNot_exsists_relation",
+    "dataSetTag" : "not_exsists_relation",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "not_exsists_relation",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Not_exsists_relationInput",
+      "name" : "Not_exsists_relationInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Not_exsists_relationResult",
+      "name" : "Not_exsists_relationResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condType" : "CUSTOM",
+        "condition" : "( <choose><when test=\"ctx.webcontext.query_recent !=null \">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )",
+        "memo" : "最近浏览",
+        "name" : "recent"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "NOTEQ",
+        "condType" : "SINGLE",
+        "condValue" : "principal_id",
+        "fieldName" : "ID",
+        "name" : "(ID) 不等于(<>) 网页请求上下文 principal_id",
+        "getPSVARTypeId" : "WEBCONTEXT",
+        "ignoreEmpty" : true
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "not_exsists_relation"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempNotbug_exsists_relation",
+    "dataSetTag" : "notbug_exsists_relation",
+    "dataSetType" : "DATAQUERY",
+    "memo" : "未关联且不为缺陷工作项",
+    "methodType" : "FETCHTEMP",
+    "name" : "notbug_exsists_relation",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Notbug_exsists_relationInput",
+      "name" : "Notbug_exsists_relationInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Notbug_exsists_relationResult",
+      "name" : "Notbug_exsists_relationResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condType" : "CUSTOM",
+        "condition" : "( <choose><when test=\"ctx.webcontext.query_recent !=null \">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )",
+        "memo" : "最近浏览",
+        "name" : "recent"
+      }, {
+        "condOp" : "NOTEQ",
+        "condType" : "SINGLE",
+        "condValue" : "kanban_bug",
+        "fieldName" : "WORK_ITEM_TYPE_ID",
+        "name" : "(WORK_ITEM_TYPE_ID) 不等于(<>) kanban_bug"
+      }, {
+        "condOp" : "NOTEQ",
+        "condType" : "SINGLE",
+        "condValue" : "scrum_bug",
+        "fieldName" : "WORK_ITEM_TYPE_ID",
+        "name" : "(WORK_ITEM_TYPE_ID) 不等于(<>) scrum_bug"
+      }, {
+        "condOp" : "NOTEQ",
+        "condType" : "SINGLE",
+        "condValue" : "waterfall_bug",
+        "fieldName" : "WORK_ITEM_TYPE_ID",
+        "name" : "(WORK_ITEM_TYPE_ID) 不等于(<>) waterfall_bug"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "NOTEQ",
+        "condType" : "SINGLE",
+        "condValue" : "principal_id",
+        "fieldName" : "ID",
+        "name" : "(ID) 不等于(<>) 网页请求上下文 principal_id",
+        "getPSVARTypeId" : "WEBCONTEXT",
+        "ignoreEmpty" : true
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "notbug_exsists_relation"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempNotify_assignee",
+    "dataSetTag" : "notify_assignee",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "notify_assignee",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Notify_assigneeInput",
+      "name" : "Notify_assigneeInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Notify_assigneeResult",
+      "name" : "Notify_assigneeResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_assignee_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "id",
+        "fieldName" : "ID",
+        "name" : "(ID) 等于(=) 网页请求上下文 id",
+        "getPSVARTypeId" : "WEBCONTEXT"
+      }, {
+        "condOp" : "NOTEQ",
+        "condType" : "SINGLE",
+        "condValue" : "srfpersonid",
+        "fieldName" : "ASSIGNEE_ID",
+        "name" : "(ASSIGNEE_ID) 不等于(<>) 用户上下文 srfpersonid",
+        "getPSVARTypeId" : "SESSIONCONTEXT"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "notify_assignee"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempOverdue_work_item",
+    "dataSetTag" : "overdue_work_item",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "overdue_work_item",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Overdue_work_itemInput",
+      "name" : "Overdue_work_itemInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Overdue_work_itemResult",
+      "name" : "Overdue_work_itemResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "ISNOTNULL",
+        "condType" : "SINGLE",
+        "fieldName" : "OVERDUE_TIME",
+        "name" : "(OVERDUE_TIME) 值不为空(NotNil)"
+      }, {
+        "condOp" : "GT",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "OVERDUE_TIME",
+        "name" : "(OVERDUE_TIME) 大于(>) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "overdue_work_item"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempOverview_chart",
+    "dataSetTag" : "overview_chart",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "overview_chart",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Overview_chartInput",
+      "name" : "Overview_chartInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Overview_chartResult",
+      "name" : "Overview_chartResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "overview_chart"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempPlan_snapshot",
+    "dataSetTag" : "plan_snapshot",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "plan_snapshot",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Plan_snapshotInput",
+      "name" : "Plan_snapshotInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Plan_snapshotResult",
+      "name" : "Plan_snapshotResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_create_plan_snapshot_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "plan_snapshot"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempProject_resource",
+    "dataSetTag" : "project_resource",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "project_resource",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Project_resourceInput",
+      "name" : "Project_resourceInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Project_resourceResult",
+      "name" : "Project_resourceResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_resource_assignment_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "OR",
+        "condType" : "GROUP",
+        "name" : "OR",
+        "getPSDEDQConditions" : [ {
+          "condType" : "CUSTOM",
+          "condition" : "t1.START_AT BETWEEN #{ctx.webcontext.n_date_scope_gtandeq}\nAND #{ctx.webcontext.n_date_scope_ltandeq}",
+          "name" : "开始日期"
+        }, {
+          "condType" : "CUSTOM",
+          "condition" : "t1.END_AT BETWEEN #{ctx.webcontext.n_date_scope_gtandeq}\nAND #{ctx.webcontext.n_date_scope_ltandeq}",
+          "name" : "截止日期"
+        }, {
+          "condType" : "CUSTOM",
+          "condition" : "(t1.start_at <= #{ctx.webcontext.n_date_scope_gtandeq}\nand t1.end_at >= #{ctx.webcontext.n_date_scope_ltandeq})",
+          "name" : "日期比较"
+        } ]
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "project_resource"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempProperty_distribution",
+    "dataSetTag" : "property_distribution",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "property_distribution",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Property_distributionInput",
+      "name" : "Property_distributionInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Property_distributionResult",
+      "name" : "Property_distributionResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "requirement",
+        "fieldName" : "WORK_ITEM_TYPE_GROUP",
+        "name" : "(WORK_ITEM_TYPE_GROUP) 等于(=) requirement"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "property_distribution"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempReader",
+    "dataSetTag" : "reader",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "reader",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "ReaderInput",
+      "name" : "ReaderInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "ReaderResult",
+      "name" : "ReaderResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "reader"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempRecent_work_item",
+    "dataSetTag" : "recent_work_item",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "recent_work_item",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Recent_work_itemInput",
+      "name" : "Recent_work_itemInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Recent_work_itemResult",
+      "name" : "Recent_work_itemResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condType" : "CUSTOM",
+        "condition" : "exists(select 1 from recent t2 where t1.id=t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )",
+        "name" : "最近浏览"
+      }, {
+        "condType" : "CUSTOM",
+        "condition" : "NOT EXISTS(SELECT 1 FROM `RELATION` t3 WHERE t1.`ID` = t3.`TARGET_ID` AND  t3.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}   )",
+        "name" : "未关联"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "recent_work_item"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempRelease",
+    "dataSetTag" : "release",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "release",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "ReleaseInput",
+      "name" : "ReleaseInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "ReleaseResult",
+      "name" : "ReleaseResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "release"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempRelease_plan",
+    "dataSetTag" : "release_plan",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "release_plan",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Release_planInput",
+      "name" : "Release_planInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Release_planResult",
+      "name" : "Release_planResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condType" : "CUSTOM",
+        "condition" : "( <choose><when test=\"ctx.webcontext.query_recent !=null \">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )",
+        "name" : "recent"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "OR",
+        "condType" : "GROUP",
+        "name" : "OR",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "NOTEQ",
+          "condType" : "SINGLE",
+          "condValue" : "release_id",
+          "fieldName" : "RELEASE_ID",
+          "name" : "(RELEASE_ID) 不等于(<>) 网页请求上下文 release_id",
+          "getPSVARTypeId" : "WEBCONTEXT"
+        }, {
+          "condOp" : "ISNULL",
+          "condType" : "SINGLE",
+          "fieldName" : "RELEASE_ID",
+          "name" : "(RELEASE_ID) 值为空(Nil)"
+        } ]
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "release_plan"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempRelease_work_item_chart",
+    "dataSetTag" : "release_work_item_chart",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "release_work_item_chart",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Release_work_item_chartInput",
+      "name" : "Release_work_item_chartInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Release_work_item_chartResult",
+      "name" : "Release_work_item_chartResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "release",
+        "fieldName" : "RELEASE_ID",
+        "name" : "(RELEASE_ID) 等于(=) 网页请求上下文 release",
+        "getPSVARTypeId" : "WEBCONTEXT"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "release_work_item_chart"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempRequirement",
+    "dataSetTag" : "requirement",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "requirement",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "RequirementInput",
+      "name" : "RequirementInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "RequirementResult",
+      "name" : "RequirementResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "requirement",
+        "fieldName" : "WORK_ITEM_TYPE_GROUP",
+        "name" : "(WORK_ITEM_TYPE_GROUP) 等于(=) requirement"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "requirement"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempRequirement_tree",
+    "dataSetTag" : "requirement_tree",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "requirement_tree",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Requirement_treeInput",
+      "name" : "Requirement_treeInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Requirement_treeResult",
+      "name" : "Requirement_treeResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "requirement",
+        "fieldName" : "WORK_ITEM_TYPE_GROUP",
+        "name" : "(WORK_ITEM_TYPE_GROUP) 等于(=) requirement"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "requirement_tree"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempResource",
+    "dataSetTag" : "resource",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "resource",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "ResourceInput",
+      "name" : "ResourceInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "ResourceResult",
+      "name" : "ResourceResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "OR",
+        "condType" : "GROUP",
+        "name" : "OR",
+        "getPSDEDQConditions" : [ {
+          "condType" : "CUSTOM",
+          "condition" : "t1.START_AT BETWEEN #{ctx.webcontext.n_date_scope_gtandeq}\nAND #{ctx.webcontext.n_date_scope_ltandeq}",
+          "name" : "开始日期"
+        }, {
+          "condType" : "CUSTOM",
+          "condition" : "t1.END_AT BETWEEN #{ctx.webcontext.n_date_scope_gtandeq}\nAND #{ctx.webcontext.n_date_scope_ltandeq}",
+          "name" : "截止日期"
+        }, {
+          "condType" : "CUSTOM",
+          "condition" : "(t1.start_at <= #{ctx.webcontext.n_date_scope_gtandeq}\nand t1.end_at >= #{ctx.webcontext.n_date_scope_ltandeq})\n\n",
+          "name" : "日期比较"
+        } ]
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "resource"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempSeven_days",
+    "dataSetTag" : "seven_days",
+    "dataSetType" : "DATAQUERY",
+    "memo" : "工作项完成趋势逻辑中使用",
+    "methodType" : "FETCHTEMP",
+    "name" : "seven_days",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Seven_daysInput",
+      "name" : "Seven_daysInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Seven_daysResult",
+      "name" : "Seven_daysResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "OR",
+        "condType" : "GROUP",
+        "name" : "OR",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "LT",
+          "condType" : "SINGLE",
+          "condValue" : "7",
+          "fieldName" : "CREATE_TIME",
+          "name" : "过去天数(CREATE_TIME) 小于(<) 7",
+          "valueFunc" : "DATEDIFFNOW"
+        }, {
+          "condOp" : "LT",
+          "condType" : "SINGLE",
+          "condValue" : "7",
+          "fieldName" : "COMPLETED_AT",
+          "name" : "过去天数(COMPLETED_AT) 小于(<) 7",
+          "valueFunc" : "DATEDIFFNOW"
+        } ]
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "seven_days"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempSprint_completed",
+    "dataSetTag" : "sprint_completed",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "sprint_completed",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Sprint_completedInput",
+      "name" : "Sprint_completedInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Sprint_completedResult",
+      "name" : "Sprint_completedResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "ISNOTNULL",
+        "condType" : "SINGLE",
+        "fieldName" : "COMPLETED_AT",
+        "name" : "(COMPLETED_AT) 值不为空(NotNil)"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "completed",
+        "fieldName" : "STATE_TYPE",
+        "name" : "(STATE_TYPE) 等于(=) completed"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "sprint_completed"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempSprint_work_item_chart",
+    "dataSetTag" : "sprint_work_item_chart",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "sprint_work_item_chart",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Sprint_work_item_chartInput",
+      "name" : "Sprint_work_item_chartInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Sprint_work_item_chartResult",
+      "name" : "Sprint_work_item_chartResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "sprint",
+        "fieldName" : "SPRINT_ID",
+        "name" : "(SPRINT_ID) 等于(=) 网页请求上下文 sprint",
+        "getPSVARTypeId" : "WEBCONTEXT"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "sprint_work_item_chart"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempTest_plan_relation_bug",
+    "dataSetTag" : "test_plan_relation_bug",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "test_plan_relation_bug",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Test_plan_relation_bugInput",
+      "name" : "Test_plan_relation_bugInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Test_plan_relation_bugResult",
+      "name" : "Test_plan_relation_bugResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "bug",
+        "fieldName" : "WORK_ITEM_TYPE_GROUP",
+        "name" : "(WORK_ITEM_TYPE_GROUP) 等于(=) bug"
+      }, {
+        "condType" : "CUSTOM",
+        "condition" : "(\n            EXISTS (\n                    SELECT 1\n                    FROM `relation` rel\n                             INNER JOIN `RUN` ru ON ru.`ID` = rel.`PRINCIPAL_ID`\n                    WHERE\n                            rel.`TARGET_ID` = t1.`ID`\n                      AND ru.`PLAN_ID` = #{ctx.webcontext.principal_id}\n                      AND rel.`TARGET_TYPE` = 'work_item'\n                      AND rel.`PRINCIPAL_TYPE` = 'run'\n                )\n            OR EXISTS (\n                    SELECT 1\n                    FROM `relation` r\n                    WHERE\n                            r.`TARGET_ID` = t1.`ID`\n                      AND r.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}\n                      AND r.`TARGET_TYPE` = 'work_item'\n                      AND r.`PRINCIPAL_TYPE` = 'test_plan'\n                )\n        )",
+        "name" : "直接关联或与RUN关联"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "test_plan_relation_bug"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempTop",
+    "dataSetTag" : "top",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "top",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "TopInput",
+      "name" : "TopInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "TopResult",
+      "name" : "TopResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "ISNULL",
+        "condType" : "SINGLE",
+        "fieldName" : "PID",
+        "name" : "(PID) 值为空(Nil)"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "top"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempTree",
+    "dataSetTag" : "tree",
+    "dataSetType" : "DATAQUERY",
+    "memo" : "未删除",
+    "methodType" : "FETCHTEMP",
+    "name" : "tree",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "TreeInput",
+      "name" : "TreeInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "TreeResult",
+      "name" : "TreeResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_usually_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "tree"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempUnder_work",
+    "dataSetTag" : "under_work",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "under_work",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Under_workInput",
+      "name" : "Under_workInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Under_workResult",
+      "name" : "Under_workResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "OR",
+        "condType" : "GROUP",
+        "name" : "OR",
+        "getPSDEDQConditions" : [ {
+          "condType" : "CUSTOM",
+          "condition" : "exists (select 1 from `work` t2, project t3 where t1.PROJECT_ID = t3.id and t2.PRINCIPAL_ID = t3.id \nand t2.PRINCIPAL_TYPE = 'project' and t2.PORTFOLIO_ID =#{ctx.webcontext.portfolio_id})",
+          "name" : "项目"
+        }, {
+          "condType" : "CUSTOM",
+          "condition" : "exists (select 1 from project t2 where t1.PROJECT_ID = t2.id and t2.IS_ARCHIVED = 0 and t2.IS_DELETED  = 0)\nand exists (select 1 from `work` a1, `work` a2 where a1.PORTFOLIO_ID  = a2.PRINCIPAL_ID   and a1.PRINCIPAL_ID = t1.project_id and a2.PORTFOLIO_ID = #{ctx.webcontext.portfolio_id})",
+          "name" : "项目集"
+        } ]
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "under_work"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempUnder_work_resource",
+    "dataSetTag" : "under_work_resource",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "under_work_resource",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Under_work_resourceInput",
+      "name" : "Under_work_resourceInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Under_work_resourceResult",
+      "name" : "Under_work_resourceResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_resource_assignment_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "OR",
+        "condType" : "GROUP",
+        "name" : "OR",
+        "getPSDEDQConditions" : [ {
+          "condType" : "CUSTOM",
+          "condition" : "exists (select 1 from `work` t2, project t3 where t1.PROJECT_ID = t3.id and t2.PRINCIPAL_ID = t3.id \nand t2.PRINCIPAL_TYPE = 'project' and t2.PORTFOLIO_ID =#{ctx.webcontext.portfolio_id})",
+          "name" : "项目"
+        }, {
+          "condType" : "CUSTOM",
+          "condition" : "exists (select 1 from project t2 where t1.PROJECT_ID = t2.id and t2.IS_ARCHIVED = 0 and t2.IS_DELETED  = 0)\nand exists (select 1 from `work` a1, `work` a2 where a1.PORTFOLIO_ID  = a2.PRINCIPAL_ID   and a1.PRINCIPAL_ID = t1.project_id and a2.PORTFOLIO_ID = #{ctx.webcontext.portfolio_id})",
+          "name" : "项目集"
+        } ]
+      }, {
+        "condOp" : "OR",
+        "condType" : "GROUP",
+        "name" : "OR",
+        "getPSDEDQConditions" : [ {
+          "condType" : "CUSTOM",
+          "condition" : "t1.START_AT BETWEEN #{ctx.webcontext.n_date_scope_gtandeq}\nAND #{ctx.webcontext.n_date_scope_ltandeq}",
+          "name" : "开始日期"
+        }, {
+          "condType" : "CUSTOM",
+          "condition" : "t1.END_AT BETWEEN #{ctx.webcontext.n_date_scope_gtandeq}\nAND #{ctx.webcontext.n_date_scope_ltandeq}",
+          "name" : "截止日期"
+        }, {
+          "condType" : "CUSTOM",
+          "condition" : "(t1.start_at <= #{ctx.webcontext.n_date_scope_gtandeq}\nand t1.end_at >= #{ctx.webcontext.n_date_scope_ltandeq})",
+          "name" : "日期比较"
+        } ]
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "under_work_resource"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempWork_item_type",
+    "dataSetTag" : "work_item_type",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "work_item_type",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Work_item_typeInput",
+      "name" : "Work_item_typeInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Work_item_typeResult",
+      "name" : "Work_item_typeResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_work_item_type_id_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "work_item_type"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
     "codeName" : "FilterCreate",
     "methodType" : "FILTERACTION",
     "name" : "FILTERCREATE",
@@ -17218,6 +21493,7 @@
     "actionTarget" : "SINGLEKEY",
     "caption" : "取消关联",
     "codeName" : "child_del_relation",
+    "dataAccessAction" : "UPDATE",
     "fullCodeName" : "work_item_child_del_relation",
     "name" : "取消关联（子工作项）",
     "getPSAppDEMethod" : {
@@ -17231,6 +21507,10 @@
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
     },
     "getPSNavigateContexts" : [ {
       "key" : "DEL_CHILD_RELATION",
@@ -17252,6 +21532,65 @@
     "enableConfirm" : true,
     "reloadData" : true,
     "id" : "child_del_relation@work_item"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "新建子工作项",
+    "codeName" : "create_and_child_work_item",
+    "dialogResult" : "OK",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_create_option_view.json",
+      "viewType" : "DEMOBOPTVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "work_item_create_and_child_work_item",
+    "name" : "新建并添加子工作项（移动端）",
+    "getNextPSUIAction" : {
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+      },
+      "modelref" : true,
+      "id" : "mob_refresh_work_item@work_item"
+    },
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "choose_child"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+    },
+    "getPSNavigateContexts" : [ {
+      "key" : "WORK_ITEM",
+      "name" : "WORK_ITEM",
+      "rawValue" : true
+    }, {
+      "key" : "CHILDREN_WORK_ITEM_TYPE_ID",
+      "name" : "CHILDREN_WORK_ITEM_TYPE_ID",
+      "value" : "work_item_sub_type",
+      "rawValue" : false
+    } ],
+    "getPSNavigateParams" : [ {
+      "key" : "work_item_type_id",
+      "name" : "work_item_type_id",
+      "value" : "work_item_sub_type",
+      "rawValue" : false
+    }, {
+      "key" : "pid",
+      "name" : "pid",
+      "value" : "principal_id",
+      "rawValue" : false
+    } ],
+    "refreshMode" : 1,
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "create_and_child_work_item",
+    "uIActionType" : "DEUIACTION",
+    "closeEditView" : true,
+    "closePopupView" : true,
+    "reloadData" : true,
+    "id" : "create_and_child_work_item@work_item"
   }, {
     "actionTarget" : "NONE",
     "caption" : "全屏",
@@ -17281,6 +21620,7 @@
     "actionTarget" : "SINGLEKEY",
     "caption" : "添加实际工时",
     "codeName" : "mob_add_actual_workload",
+    "dataAccessAction" : "UPDATE",
     "getFrontPSAppView" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/workload_register_mob_edit_view.json",
@@ -17300,6 +21640,10 @@
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
     },
     "getPSNavigateParams" : [ {
       "key" : "estimated_workload",
@@ -18060,6 +22404,27 @@
     "id" : "mob_create_waterfall_stage@work_item"
   }, {
     "actionTarget" : "NONE",
+    "caption" : "刷新子工作项列表（移动端）",
+    "codeName" : "mob_refresh_work_item",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "work_item_mob_refresh_work_item",
+    "name" : "刷新子工作项列表（移动端）",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "mob_refresh_child_list"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+    },
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "mob_refresh_work_item",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "id" : "mob_refresh_work_item@work_item"
+  }, {
+    "actionTarget" : "NONE",
     "caption" : "添加关联",
     "codeName" : "mob_relation_idea",
     "getFrontPSAppView" : {
@@ -18767,6 +23132,163 @@
       "id" : "Begin"
     }
   }, {
+    "codeName" : "mob_refresh_child_list",
+    "defaultParamName" : "Default",
+    "logicName" : "刷新关联子工作项列表（移动端）",
+    "name" : "刷新关联子工作项列表（移动端）",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 350,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE3"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 110,
+      "parallelOutput" : true
+    }, {
+      "code" : "const panel = view.layoutPanel.panelItems.choose_data;\r\nif (panel) {\r\n    panel.state.visible = false;\r\n}",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 1070,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "隐藏下拉框",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      } ],
+      "topPos" : 910
+    }, {
+      "codeName" : "PREPAREJSPARAM2",
+      "leftPos" : 1150,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "绑定表格部件",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "grid"
+        },
+        "name" : "view[layoutPanel.panelItems.grid.control] ==> grid",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "layoutPanel.panelItems.grid.control",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 810
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 350,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "p_work_item"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 902
+    }, {
+      "code" : "ibiz.mc.command.update.send({ srfdecodename: context.principal_type})\r\nibiz.mc.command.create.send({ srfdecodename: 'work_item'})",
+      "codeName" : "RAWJSCODE3",
+      "leftPos" : 310,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "更新srfdecodename",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE3"
+        }
+      } ],
+      "topPos" : 710
+    }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "grid"
+      },
+      "invokeMethod" : "refresh",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "grid"
+      },
+      "leftPos" : 934,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "表格刷新",
+      "topPos" : 1030
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "p_work_item",
+      "logicName" : "父工作项",
+      "name" : "父工作项",
+      "entityParam" : true
+    }, {
+      "codeName" : "grid",
+      "logicName" : "表格对象",
+      "name" : "表格对象",
+      "ctrlParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
+    }, {
+      "codeName" : "i_work_item",
+      "logicName" : "子工作项",
+      "name" : "子工作项",
+      "entityParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "ctx",
+      "logicName" : "ctx",
+      "name" : "ctx",
+      "navContextParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
     "codeName" : "notify_refresh",
     "defaultParamName" : "Default",
     "logicName" : "通知刷新（移动端）",
@@ -18873,6 +23395,10 @@
     }
   } ],
   "getAllPSAppViews" : [ {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_search_mob_md_view.json",
+    "viewType" : "DEMOBMDVIEW"
+  }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_my_attention_md_view.json",
     "viewType" : "DEMOBMDVIEW"
@@ -19152,11 +23678,11 @@
     "actionRSMode" : 1,
     "codeName" : "work_items",
     "dataRSMode" : 0,
-    "majorDECodeName" : "release",
-    "majorDEName" : "RELEASE",
+    "majorDECodeName" : "work_item",
+    "majorDEName" : "WORK_ITEM",
     "getMajorPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/release.json"
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
     },
     "minorDECodeName" : "work_item",
     "minorDEName" : "WORK_ITEM",
@@ -19164,11 +23690,7 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
     },
-    "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-    "getParentPSAppDEField" : {
-      "name" : "RELEASE_ID",
-      "codeName" : "release_id"
-    },
+    "name" : "工作项-工作项",
     "rSMode" : 2
   } ],
   "name" : "WORK_ITEM",
@@ -19197,6 +23719,7 @@
   "defaultMode" : true,
   "enableDEMainState" : true,
   "enableFilterActions" : true,
+  "enableTempData" : true,
   "enableUICreate" : true,
   "enableUIModify" : true,
   "enableUIRemove" : true,

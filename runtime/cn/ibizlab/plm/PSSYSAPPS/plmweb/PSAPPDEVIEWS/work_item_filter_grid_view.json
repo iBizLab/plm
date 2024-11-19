@@ -617,38 +617,29 @@
         "columnType" : "DEFGRIDCOLUMN",
         "dataItemName" : "ptitle",
         "excelCaption" : "父工作项",
+        "getLinkPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_main_view.json",
+          "viewType" : "DEEDITVIEW"
+        },
+        "linkValueItem" : "pid",
         "name" : "ptitle",
         "noPrivDisplayMode" : 1,
         "getPSAppDEField" : {
           "name" : "PTITLE",
           "codeName" : "ptitle"
         },
-        "getPSDEUIAction" : {
-          "actionTarget" : "SINGLEDATA",
-          "caption" : "项目集筛选器父工作项链接行为",
-          "codeName" : "project_set_filter_ptitle_link",
-          "frontProcessType" : "OTHER",
-          "fullCodeName" : "work_item_project_set_filter_ptitle_link",
-          "name" : "项目集筛选器父工作项链接行为",
-          "getPSAppDEUILogic" : {
-            "modelref" : true,
-            "id" : "open_parent_main_view"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-          },
-          "timeout" : 60000,
-          "uIActionMode" : "FRONT",
-          "uIActionTag" : "project_set_filter_ptitle_link",
-          "uIActionType" : "DEUIACTION",
-          "uILogicAttachMode" : "REPLACE",
-          "globalUIAction" : true,
-          "id" : "project_set_filter_ptitle_link@work_item"
-        },
         "width" : 150,
         "widthUnit" : "PX",
-        "enableSort" : true
+        "enableLinkView" : true,
+        "enableSort" : true,
+        "getUserParam" : {
+          "SRFNAVCTX.project" : "%project_id%",
+          "SRFNAVCTX.work_item" : "%pid%",
+          "SRFNAVCTX.srfdatatype" : "%p_work_item_type_id%",
+          "SRFNAVPARAM.srfdatatype" : "%p_work_item_type_id%",
+          "SRFNAVCTX.work_item_type_id" : "%p_work_item_type_id%"
+        }
       }, {
         "align" : "LEFT",
         "cLConvertMode" : "NONE",
@@ -2279,72 +2270,6 @@
   "modelid" : "0aafcea086394afab17a6f7ac6adef84",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
-    "actionRSMode" : 1,
-    "codeName" : "releases",
-    "dataRSMode" : 0,
-    "majorDECodeName" : "project",
-    "majorDEName" : "PROJECT",
-    "getMajorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-    },
-    "minorDECodeName" : "release",
-    "minorDEName" : "RELEASE",
-    "getMinorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-    },
-    "name" : "DER1N_RELEASE_PROJECT_PROJECT_ID",
-    "getParentPSAppDEField" : {
-      "name" : "PROJECT_ID",
-      "codeName" : "project_id"
-    },
-    "rSMode" : 2
-  }, {
-    "actionRSMode" : 1,
-    "codeName" : "work_items",
-    "dataRSMode" : 0,
-    "majorDECodeName" : "release",
-    "majorDEName" : "RELEASE",
-    "getMajorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-    },
-    "minorDECodeName" : "work_item",
-    "minorDEName" : "WORK_ITEM",
-    "getMinorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-    },
-    "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-    "getParentPSAppDEField" : {
-      "name" : "RELEASE_ID",
-      "codeName" : "release_id"
-    },
-    "rSMode" : 2
-  } ], [ {
-    "actionRSMode" : 1,
-    "codeName" : "work_items",
-    "dataRSMode" : 0,
-    "majorDECodeName" : "release",
-    "majorDEName" : "RELEASE",
-    "getMajorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-    },
-    "minorDECodeName" : "work_item",
-    "minorDEName" : "WORK_ITEM",
-    "getMinorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-    },
-    "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-    "getParentPSAppDEField" : {
-      "name" : "RELEASE_ID",
-      "codeName" : "release_id"
-    },
-    "rSMode" : 2
-  } ], [ {
     "actionRSMode" : 1,
     "codeName" : "work_items",
     "dataRSMode" : 0,

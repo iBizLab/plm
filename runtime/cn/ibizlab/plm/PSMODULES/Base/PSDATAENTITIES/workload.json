@@ -1750,8 +1750,7 @@
         "name" : "REGISTER_DATE",
         "codeName" : "register_date"
       },
-      "stdDataType" : 5,
-      "enableGroup" : true
+      "stdDataType" : 5
     }, {
       "name" : "SHOW_IDENTIFIER",
       "getPSDEField" : {
@@ -2928,6 +2927,32 @@
       "name" : "DURATION",
       "queryCodeExp" : "t1.`DURATION`",
       "standardColumnName" : "`DURATION`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_DURATION_EQ",
+      "name" : "N_DURATION_EQ",
+      "stdDataType" : 6,
+      "valueOP" : "EQ"
+    }, {
+      "codeName" : "N_DURATION_GT",
+      "name" : "N_DURATION_GT",
+      "stdDataType" : 6,
+      "valueOP" : "GT"
+    }, {
+      "codeName" : "N_DURATION_GTANDEQ",
+      "name" : "N_DURATION_GTANDEQ",
+      "stdDataType" : 6,
+      "valueOP" : "GTANDEQ"
+    }, {
+      "codeName" : "N_DURATION_LT",
+      "name" : "N_DURATION_LT",
+      "stdDataType" : 6,
+      "valueOP" : "LT"
+    }, {
+      "codeName" : "N_DURATION_LTANDEQ",
+      "name" : "N_DURATION_LTANDEQ",
+      "stdDataType" : 6,
+      "valueOP" : "LTANDEQ"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -6661,6 +6686,34 @@
         },
         "srcValueType" : "SRCDLPARAM"
       }, {
+        "dstFieldName" : "DURATION",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "u_workload"
+        },
+        "name" : "Default[u_actual_workload] ==> u_workload[DURATION]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "u_actual_workload",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "u_workload",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "u_workload"
+        },
+        "name" : "Default[u_workload] ==> u_workload[u_workload]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "u_workload",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
         "dstFieldName" : "OWNER_ID",
         "getDstPSDELogicParam" : {
           "modelref" : true,
@@ -7292,15 +7345,57 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
+          "id" : "PREPAREPARAM7"
+        },
+        "name" : "判断是否需要合计",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "u_workload",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "u_workload"
+            },
+            "logicType" : "SINGLE",
+            "name" : "u_workload[u_workload] 等于(=) false",
+            "paramValue" : "false"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION6"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
           "id" : "RAWSQLCALL1"
         },
         "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "NOTEQ",
+            "dstFieldName" : "u_workload",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "u_workload"
+            },
+            "logicType" : "SINGLE",
+            "name" : "u_workload[u_workload] 不等于(<>) false",
+            "paramValue" : "false"
+          } ]
+        },
         "getSrcPSDELogicNode" : {
           "modelref" : true,
           "id" : "DEACTION6"
         }
       } ],
-      "topPos" : 710
+      "topPos" : 730
     }, {
       "codeName" : "RAWSQLCALL1",
       "getDstPSDELogicParam" : {
@@ -7383,33 +7478,43 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "sql" : "select sum(DURATION) as `DECIMAL_VALUE` from `workload` where PRINCIPAL_ID = ? and PRINCIPAL_TYPE = ?",
-      "topPos" : 833,
+      "topPos" : 890,
       "fillDstLogicParam" : true
     }, {
-      "codeName" : "DEACTION7",
-      "getDstPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage/PSDEACTIONS/Save.json"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "actual"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage.json"
-      },
-      "leftPos" : 160,
-      "logicNodeType" : "DEACTION",
-      "name" : "更新实际工时",
-      "getRetPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "actual"
-      },
-      "topPos" : 1070
+      "codeName" : "PREPAREPARAM7",
+      "leftPos" : -100,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION7"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM7"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "DECIMAL_VALUE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "actual"
+        },
+        "name" : "u_workload[DURATION] ==> actual[DECIMAL_VALUE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "DURATION",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "u_workload"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 920
     }, {
       "codeName" : "PREPAREPARAM6",
-      "leftPos" : 370,
+      "leftPos" : 433,
       "logicNodeType" : "PREPAREPARAM",
       "name" : "工时为0时置为NULL",
       "getPSDELogicLinks" : [ {
@@ -7434,6 +7539,57 @@
         "srcValueType" : "NULLVALUE"
       } ],
       "topPos" : 950
+    }, {
+      "codeName" : "DEACTION7",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage/PSDEACTIONS/Save.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "actual"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage.json"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEACTION",
+      "name" : "更新实际工时",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DELOGIC1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION7"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "actual"
+      },
+      "topPos" : 1070
+    }, {
+      "codeName" : "DELOGIC1",
+      "getDstPSDELogic" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage/PSDELOGICS/workload_auto_cal.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "actual"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage.json"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DELOGIC",
+      "name" : "自动计算父工时",
+      "topPos" : 1179
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",
@@ -7479,6 +7635,15 @@
       "getParamPSDataEntity" : {
         "modelref" : true,
         "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "u_workload",
+      "logicName" : "是否更新工时",
+      "name" : "是否更新工时",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/workload.json"
       },
       "entityParam" : true
     }, {
@@ -9084,6 +9249,76 @@
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLES"
+    }, {
+      "logicName" : "时长",
+      "name" : "n_duration_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_DURATION_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "DURATION",
+        "codeName" : "duration"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 6,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "时长",
+      "name" : "n_duration_gt",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_DURATION_GT"
+      },
+      "getPSDEField" : {
+        "name" : "DURATION",
+        "codeName" : "duration"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 6,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "时长",
+      "name" : "n_duration_gtandeq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_DURATION_GTANDEQ"
+      },
+      "getPSDEField" : {
+        "name" : "DURATION",
+        "codeName" : "duration"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 6,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "时长",
+      "name" : "n_duration_lt",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_DURATION_LT"
+      },
+      "getPSDEField" : {
+        "name" : "DURATION",
+        "codeName" : "duration"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 6,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "时长",
+      "name" : "n_duration_ltandeq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_DURATION_LTANDEQ"
+      },
+      "getPSDEField" : {
+        "name" : "DURATION",
+        "codeName" : "duration"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 6,
+      "type" : "SIMPLE"
     }, {
       "logicName" : "标识",
       "name" : "n_id_eq",

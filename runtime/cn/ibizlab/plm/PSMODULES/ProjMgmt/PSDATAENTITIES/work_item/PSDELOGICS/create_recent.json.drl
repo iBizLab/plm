@@ -6,6 +6,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.create_recent;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemcreate_recentdefault;
+                global cn.ibizlab.plm.core.base.domain.extend_storage work_itemcreate_recentextend_storage;
                 global cn.ibizlab.plm.core.base.domain.recent work_itemcreate_recentrecent;
                     global cn.ibizlab.plm.core.base.service.IrecentService recentservice;
         global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService iBzSysWork_itemDefaultService;
@@ -37,6 +38,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.create_recent;
                             work_itemcreate_recentrecent.set("ownertype","project");
                             work_itemcreate_recentrecent.set("ownersubtype","work_item");
                         update(work_itemcreate_recentdefault);//更新fact中变量值
+                        update(work_itemcreate_recentextend_storage);//更新fact中变量值
                         update(work_itemcreate_recentrecent);//更新fact中变量值
             end
 
@@ -47,6 +49,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.create_recent;
             then
                         recentservice.save(work_itemcreate_recentrecent);
                         update(work_itemcreate_recentdefault);//更新fact中变量值
+                        update(work_itemcreate_recentextend_storage);//更新fact中变量值
                         update(work_itemcreate_recentrecent);//更新fact中变量值
             end
 
@@ -65,6 +68,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.create_recent;
     String strSql="UPDATE `WORKLOAD` SET IDENTIFIER = #{et.param0}, RECENT_PARENT = #{et.param1}, RECENT_PARENT_IDENTIFIER = #{et.param2}, RECENT_PARENT_NAME= #{et.param3}, `NAME` = #{et.param4} WHERE PRINCIPAL_ID = #{et.param5} and PRINCIPAL_TYPE = 'WORK_ITEM'";
                         iBzSysWork_itemDefaultService.execute(strSql,param);//SQL调用
                         update(work_itemcreate_recentdefault);//更新fact中变量值
+                        update(work_itemcreate_recentextend_storage);//更新fact中变量值
                         update(work_itemcreate_recentrecent);//更新fact中变量值
             end
 
@@ -74,5 +78,6 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.create_recent;
             when
             then
                         update(work_itemcreate_recentdefault);//更新fact中变量值
+                        update(work_itemcreate_recentextend_storage);//更新fact中变量值
                         update(work_itemcreate_recentrecent);//更新fact中变量值
             end

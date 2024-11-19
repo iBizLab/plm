@@ -425,6 +425,10 @@
             "frontProcessType" : "WIZARD",
             "fullCodeName" : "work_item_new_scrum_epic",
             "name" : "新建史诗（scrum）",
+            "getNextPSUIAction" : {
+              "modelref" : true,
+              "id" : "Refresh"
+            },
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -472,6 +476,10 @@
             "frontProcessType" : "WIZARD",
             "fullCodeName" : "work_item_new_scrum_feature",
             "name" : "新建特性（scrum）",
+            "getNextPSUIAction" : {
+              "modelref" : true,
+              "id" : "Refresh"
+            },
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -519,6 +527,10 @@
             "frontProcessType" : "WIZARD",
             "fullCodeName" : "work_item_new_scrum_story",
             "name" : "新建用户故事（scrum）",
+            "getNextPSUIAction" : {
+              "modelref" : true,
+              "id" : "Refresh"
+            },
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -566,6 +578,10 @@
             "frontProcessType" : "WIZARD",
             "fullCodeName" : "work_item_new_scrum_task",
             "name" : "新建任务（scrum）",
+            "getNextPSUIAction" : {
+              "modelref" : true,
+              "id" : "Refresh"
+            },
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -613,6 +629,10 @@
             "frontProcessType" : "WIZARD",
             "fullCodeName" : "work_item_new_scrum_bug",
             "name" : "新建缺陷（scrum）",
+            "getNextPSUIAction" : {
+              "modelref" : true,
+              "id" : "Refresh"
+            },
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -2179,6 +2199,67 @@
         "enableSort" : true
       }, {
         "align" : "LEFT",
+        "cLConvertMode" : "NONE",
+        "caption" : "实际开始时间",
+        "codeName" : "actual_start_at",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "actual_start_at",
+        "excelCaption" : "实际开始时间",
+        "hideMode" : 1,
+        "name" : "actual_start_at",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "ACTUAL_START_AT",
+          "codeName" : "actual_start_at"
+        },
+        "valueFormat" : "YYYY-MM-DD HH:mm:ss",
+        "width" : 160,
+        "widthUnit" : "PX",
+        "enableSort" : true,
+        "hideDefault" : true
+      }, {
+        "align" : "LEFT",
+        "cLConvertMode" : "NONE",
+        "caption" : "实际结束时间",
+        "codeName" : "actual_end_at",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "actual_end_at",
+        "excelCaption" : "实际结束时间",
+        "hideMode" : 1,
+        "name" : "actual_end_at",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "ACTUAL_END_AT",
+          "codeName" : "actual_end_at"
+        },
+        "valueFormat" : "YYYY-MM-DD HH:mm:ss",
+        "width" : 160,
+        "widthUnit" : "PX",
+        "enableSort" : true,
+        "hideDefault" : true
+      }, {
+        "align" : "RIGHT",
+        "cLConvertMode" : "NONE",
+        "caption" : "逾期天数",
+        "codeName" : "overdue_time",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "overdue_time",
+        "excelCaption" : "逾期天数",
+        "hideMode" : 1,
+        "name" : "overdue_time",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "OVERDUE_TIME",
+          "codeName" : "overdue_time"
+        },
+        "unitName" : "天",
+        "width" : 110,
+        "widthUnit" : "PX",
+        "enableSort" : true,
+        "enableUnitName" : true,
+        "hideDefault" : true
+      }, {
+        "align" : "LEFT",
         "cLConvertMode" : "FRONT",
         "getCapPSLanguageRes" : {
           "lanResTag" : "DEF.LNAME.UPDATE_MAN"
@@ -2384,7 +2465,7 @@
           "name" : "IDENTIFIER",
           "codeName" : "identifier"
         },
-        "scriptCode" : "var identifier = data.identifier;\r\nvar is_overtime = data.is_overtime;\r\nif(is_overtime == '1'){\r\n    var svgIcon = `<span title=\"超时提醒\" style=\"display: flex;align-items: center;\"><?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1729499164696\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"4536\" width=\"16\" height=\"16\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><path d=\"M561.593458 104.448a227.555556 227.555556 0 1 1 319.715555 319.715556 416.995556 416.995556 0 1 1-319.715555-319.715556z m-38.343111 70.087111a341.333333 341.333333 0 1 0 287.971555 287.971556 227.555556 227.555556 0 0 1-287.857778-287.971556z m-11.719111 375.466667l-173.738667 46.648889a37.888 37.888 0 1 1-19.683556-73.272889l117.646223-31.402667V360.448a37.888 37.888 0 1 1 75.776 0v189.553778zM736.58368 67.584a37.888 37.888 0 0 0-37.888 37.888V257.137778a37.888 37.888 0 0 0 75.776 0V105.358222a37.888 37.888 0 0 0-37.888-37.888z m0 256.796444a37.888 37.888 0 1 0 0 75.889778 37.888 37.888 0 0 0 0-75.889778z\" fill=\"#DE5A55\" p-id=\"4537\"></path></svg></span>`;\r\n    return  `<span style=\"display: flex; align-items: center;\">` + identifier + `&nbsp;` + svgIcon + `</span>`;\r\n} else {\r\n    return identifier;\r\n}",
+        "scriptCode" : "var identifier = data.identifier;\r\nvar is_overtime = data.is_overtime;\r\nvar multiple_people = data.multiple_people;\r\nvar end_at = new Date(data.end_at);\r\nvar now = new Date();\r\nvar overtime_days = 0;\r\nvar svgIcon_man = `<span title=\"多人任务\" style=\"display: flex;align-items: center;\"><svg t=\"1731495942342\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"1493\" width=\"16\" height=\"16\"><path d=\"M647.157029 465.073371c51.210971-40.213943 84.245943-102.496914 84.245943-172.494629 0-120.994743-98.424686-219.421257-219.421257-219.421257-120.996571 0-219.421257 98.424686-219.421257 219.421257 0 69.997714 33.069714 132.280686 84.247771 172.494629-134.853486 53.891657-230.528 185.636571-230.528 339.487086l0 73.1392c0 20.214857 16.356571 36.571429 36.571429 36.571429l658.261943 0c20.214857 0 36.5696-16.356571 36.5696-36.571429l0-73.1392C877.685029 650.673371 782.045257 518.965029 647.157029 465.073371zM511.983543 146.298514c80.676571 0 146.282057 65.603657 146.282057 146.280229s-65.605486 146.282057-146.282057 146.282057-146.282057-65.605486-146.282057-146.282057S431.306971 146.298514 511.983543 146.298514zM804.544 841.131886 219.421257 841.131886l0-36.571429C219.421257 643.245714 350.666971 512 512.018286 512c161.314743 0 292.523886 131.245714 292.523886 292.560457L804.542171 841.131886z\" fill=\"#707070\" p-id=\"1494\"></path><path d=\"M267.170743 477.787429c1.000229-2.2144 1.000229-4.571429 1.499429-6.857143 0.356571-1.393371 0.749714-2.7136 0.928914-4.178286 0.285257-2.8928 0.107886-5.641143-0.285257-8.462629-0.142629-1.499429 0.213943-2.929371-0.142629-4.4288-0.213943-0.8576-0.821029-1.464686-1.071543-2.322286-0.570514-1.642057-1.3568-3.106743-2.143086-4.642743-1.499429-3.143314-3.143314-5.999543-5.392457-8.533943-0.321829-0.356571-0.714971-0.607086-1.071543-0.963657-3.320686-3.465143-7.1424-6.107429-11.499886-8-39.570286-17.642057-65.141029-56.927086-65.141029-100.2112 0-50.927543 34.497829-94.782171 83.924114-106.6752 19.642514-4.750629 31.712914-24.4992 26.998857-44.141714-4.785371-19.642514-24.607086-31.570286-44.141714-26.998857-82.389943 19.856457-139.924114 92.995657-139.924114 177.815771 0 46.2848 17.607314 89.674971 47.535543 122.673371C62.070857 501.178514 0.001829 599.817143 0.001829 711.422171l0 56.570514c0 20.213029 16.356571 36.5696 36.5696 36.5696s36.571429-16.356571 36.571429-36.5696l0-56.570514c0-101.140114 67.997257-187.922286 165.564343-212.4928C250.848914 497.214171 261.884343 489.823086 267.170743 477.787429z\" fill=\"#707070\" p-id=\"1495\"></path><path d=\"M866.578286 451.858286c29.9264-32.9984 47.531886-76.3904 47.531886-122.673371 0-82.603886-55.639771-155.243886-135.316114-176.636343-19.463314-5.215086-39.533714 6.321371-44.820114 25.821257-5.249829 19.534629 6.321371 39.570286 25.821257 44.820114 47.7824 12.820114 81.175771 56.426057 81.175771 105.9968 0 43.284114-25.536 82.497829-65.069714 100.174629-4.426971 1.929143-8.32 4.608-11.677257 8.107886-0.285257 0.321829-0.643657 0.535771-0.928914 0.8576-2.285714 2.5344-3.927771 5.463771-5.463771 8.641829-0.749714 1.536-1.570743 2.964114-2.106514 4.571429-0.250514 0.821029-0.8576 1.464686-1.071543 2.322286-0.356571 1.499429 0 2.929371-0.142629 4.4288-0.393143 2.821486-0.570514 5.571657-0.285257 8.462629 0.1792 1.464686 0.570514 2.784914 0.928914 4.178286 0.4992 2.285714 0.4992 4.642743 1.499429 6.857143 5.2864 12.035657 16.32 19.428571 28.461714 21.141943 97.567086 24.572343 165.566171 111.352686 165.566171 212.4928l0 56.570514c0 20.213029 16.356571 36.5696 36.5696 36.5696s36.5696-16.356571 36.5696-36.5696l0-56.570514C1023.822629 599.817143 961.7536 501.178514 866.578286 451.858286z\" fill=\"#707070\" p-id=\"1496\"></path></svg></span>`;\r\nvar svgIcon = `<span title=\"逾期提醒\" style=\"display: flex;align-items: center;\"><?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1729499164696\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"4536\" width=\"16\" height=\"16\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><path d=\"M561.593458 104.448a227.555556 227.555556 0 1 1 319.715555 319.715556 416.995556 416.995556 0 1 1-319.715555-319.715556z m-38.343111 70.087111a341.333333 341.333333 0 1 0 287.971555 287.971556 227.555556 227.555556 0 0 1-287.857778-287.971556z m-11.719111 375.466667l-173.738667 46.648889a37.888 37.888 0 1 1-19.683556-73.272889l117.646223-31.402667V360.448a37.888 37.888 0 1 1 75.776 0v189.553778zM736.58368 67.584a37.888 37.888 0 0 0-37.888 37.888V257.137778a37.888 37.888 0 0 0 75.776 0V105.358222a37.888 37.888 0 0 0-37.888-37.888z m0 256.796444a37.888 37.888 0 1 0 0 75.889778 37.888 37.888 0 0 0 0-75.889778z\" fill=\"#DE5A55\" p-id=\"4537\"></path></svg></span>`;\r\nif(multiple_people == '1'||is_overtime == '1'){\r\n    if(multiple_people == '1' && is_overtime == '1' ){\r\n        return `<span style=\"display: flex; align-items: center;\">` + identifier + `&nbsp;`+ svgIcon + svgIcon_man + `</span>`;\r\n    }else if(multiple_people == '1'){\r\n        return `<span style=\"display: flex; align-items: center;\">` + identifier + `&nbsp;` + svgIcon_man + `</span>`;\r\n    }else if(is_overtime == '1'){\r\n        return `<span style=\"display: flex; align-items: center;\">` + identifier + `&nbsp;` + svgIcon + `</span>`;\r\n    }\r\n}else{\r\n    return identifier;\r\n}",
         "customCode" : true
       }, {
         "dataType" : 25,
@@ -2451,6 +2532,31 @@
           "name" : "END_AT",
           "codeName" : "end_at"
         }
+      }, {
+        "format" : "YYYY-MM-DD HH:mm:ss",
+        "dataType" : 5,
+        "name" : "actual_start_at",
+        "getPSAppDEField" : {
+          "name" : "ACTUAL_START_AT",
+          "codeName" : "actual_start_at"
+        }
+      }, {
+        "format" : "YYYY-MM-DD HH:mm:ss",
+        "dataType" : 5,
+        "name" : "actual_end_at",
+        "getPSAppDEField" : {
+          "name" : "ACTUAL_END_AT",
+          "codeName" : "actual_end_at"
+        }
+      }, {
+        "dataType" : 25,
+        "name" : "overdue_time",
+        "getPSAppDEField" : {
+          "name" : "OVERDUE_TIME",
+          "codeName" : "overdue_time"
+        },
+        "scriptCode" : "let str = data.overdue_time;\r\nlet num = Number(str);\r\nif (num > 0){\r\n    return  str + \"天\";\r\n}else {\r\n    return  \"\";\r\n}\r\n",
+        "customCode" : true
       }, {
         "dataType" : 25,
         "name" : "update_man",
@@ -3933,7 +4039,7 @@
         "addSeparator" : false
       }, {
         "caption" : "我负责的工作项",
-        "data" : "{\"theme_model\": {\"searchconds\": [{\"condtype\":\"GROUP\", \"condop\":\"AND\", \"bnotmode\":false, \"searchconds\": [{\"condtype\":\"DEFIELD\",\"fieldname\":\"assignee_id\",\"condop\":\"EQ\",\"value\":\"${context.srfpersonid}\"},{\"condtype\":\"DEFIELD\",\"fieldname\":\"is_archived\",\"condop\":\"EQ\",\"value\":\"0\"}]}]}}",
+        "data" : "{\n  \"theme_model\": {\n    \"searchconds\": [\n      {\n        \"condtype\": \"GROUP\",\n        \"condop\": \"AND\",\n        \"bnotmode\": false,\n        \"searchconds\": [\n          {\n            \"condtype\": \"DEFIELD\",\n            \"fieldname\": \"is_archived\",\n            \"condop\": \"EQ\",\n            \"value\": \"0\"\n          },\n          {\n            \"condtype\": \"GROUP\",\n            \"condop\": \"OR\",\n            \"bnotmode\": false,\n            \"searchconds\": [\n              {\n                \"condtype\": \"DEFIELD\",\n                \"fieldname\": \"assignee_id\",\n                \"condop\": \"EQ\",\n                \"value\": \"${context.srfpersonid}\"\n              },\n              {\n\t\t\t\t\t\t\t\t\"condtype\": \"ITEMS\",\n\t\t\t\t\t\t\t\t\"fieldname\": \"executors\",\n\t\t\t\t\t\t\t\t\"condop\": \"EXISTS\",\n\t\t\t\t\t\t\t\t\"simple\": true,\n\t\t\t\t\t\t\t\t\"searchconds\": [\n\t\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\t\"condtype\": \"DEFIELD\",\n\t\t\t\t\t\t\t\t\t\t\"fieldname\": \"USER_ID\",\n\t\t\t\t\t\t\t\t\t\t\"condop\": \"EQ\",\n\t\t\t\t\t\t\t\t\t\t\"value\": \"${context.srfpersonid}\"\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t]\n\t\t\t\t\t\t\t}\n            ]\n          }\n        ]\n      }\n    ]\n  }\n}",
         "itemType" : "GROUP",
         "name" : "my_assignee",
         "width" : 0.0,
@@ -3991,72 +4097,6 @@
   "modelid" : "bef30dfff362e6e78558e55366f6d7a0",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
-    "actionRSMode" : 1,
-    "codeName" : "releases",
-    "dataRSMode" : 0,
-    "majorDECodeName" : "project",
-    "majorDEName" : "PROJECT",
-    "getMajorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-    },
-    "minorDECodeName" : "release",
-    "minorDEName" : "RELEASE",
-    "getMinorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-    },
-    "name" : "DER1N_RELEASE_PROJECT_PROJECT_ID",
-    "getParentPSAppDEField" : {
-      "name" : "PROJECT_ID",
-      "codeName" : "project_id"
-    },
-    "rSMode" : 2
-  }, {
-    "actionRSMode" : 1,
-    "codeName" : "work_items",
-    "dataRSMode" : 0,
-    "majorDECodeName" : "release",
-    "majorDEName" : "RELEASE",
-    "getMajorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-    },
-    "minorDECodeName" : "work_item",
-    "minorDEName" : "WORK_ITEM",
-    "getMinorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-    },
-    "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-    "getParentPSAppDEField" : {
-      "name" : "RELEASE_ID",
-      "codeName" : "release_id"
-    },
-    "rSMode" : 2
-  } ], [ {
-    "actionRSMode" : 1,
-    "codeName" : "work_items",
-    "dataRSMode" : 0,
-    "majorDECodeName" : "release",
-    "majorDEName" : "RELEASE",
-    "getMajorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-    },
-    "minorDECodeName" : "work_item",
-    "minorDEName" : "WORK_ITEM",
-    "getMinorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-    },
-    "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-    "getParentPSAppDEField" : {
-      "name" : "RELEASE_ID",
-      "codeName" : "release_id"
-    },
-    "rSMode" : 2
-  } ], [ {
     "actionRSMode" : 1,
     "codeName" : "work_items",
     "dataRSMode" : 0,

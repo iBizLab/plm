@@ -13,7 +13,7 @@
   },
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
-    "leftPos" : 200,
+    "leftPos" : 400,
     "logicNodeType" : "BEGIN",
     "name" : "开始",
     "getPSDELogicLinks" : [ {
@@ -27,7 +27,7 @@
         "id" : "Begin"
       }
     } ],
-    "topPos" : 200,
+    "topPos" : 270,
     "parallelOutput" : true
   }, {
     "codeName" : "DENOTIFY1",
@@ -60,7 +60,7 @@
     "topPos" : 420
   }, {
     "codeName" : "PREPAREPARAM1",
-    "leftPos" : 480,
+    "leftPos" : 360,
     "logicNodeType" : "PREPAREPARAM",
     "name" : "填充流转记录属性",
     "getPSDELogicLinks" : [ {
@@ -151,7 +151,7 @@
       "srcValue" : "work_item",
       "srcValueType" : "SRCVALUE"
     } ],
-    "topPos" : 530
+    "topPos" : 550
   }, {
     "codeName" : "DEACTION1",
     "getDstPSDEAction" : {
@@ -166,9 +166,57 @@
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/transition_history.json"
     },
-    "leftPos" : 630,
+    "leftPos" : 360,
     "logicNodeType" : "DEACTION",
     "name" : "创建流转历史",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "topPos" : 680
+  }, {
+    "code" : "var updated_data = logic.getParam(\"default\");\r\nif (updated_data.get('state_type') == 'in_progress' && updated_data.get('actual_start_at') == null) {\r\n    updated_data.set(\"actual_start_at\", new Date());\r\n}\r\nif (updated_data.get('state_type') == 'completed') {\r\n    updated_data.set('actual_end_at', new Date());\r\n}",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "JavaScript",
+    "leftPos" : 360,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "生成实际完成时间",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 786
+  }, {
+    "codeName" : "DEACTION2",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/Save.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "leftPos" : 360,
+    "logicNodeType" : "DEACTION",
+    "name" : "保存工作项",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -177,16 +225,16 @@
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEACTION1"
+        "id" : "DEACTION2"
       }
     } ],
-    "topPos" : 660
+    "topPos" : 900
   }, {
     "codeName" : "END1",
-    "leftPos" : 880,
+    "leftPos" : 400,
     "logicNodeType" : "END",
     "name" : "结束",
-    "topPos" : 850
+    "topPos" : 1010
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",

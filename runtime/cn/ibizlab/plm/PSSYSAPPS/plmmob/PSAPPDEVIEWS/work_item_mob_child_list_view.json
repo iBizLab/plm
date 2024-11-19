@@ -153,7 +153,6 @@
             "width" : 100.0
           }, {
             "caption" : "容器",
-            "contentWidth" : 100.0,
             "itemStyle" : "DEFAULT",
             "itemType" : "CONTAINER",
             "name" : "view_right_toolbar",
@@ -161,12 +160,8 @@
               "layout" : "FLEX"
             },
             "getPSLayoutPos" : {
-              "basis" : 100,
               "grow" : -1,
-              "layout" : "FLEX",
-              "shrink" : 0,
-              "width" : 100,
-              "widthMode" : "PX"
+              "layout" : "FLEX"
             },
             "getPSPanelItems" : [ {
               "caption" : "工具栏",
@@ -181,8 +176,7 @@
                 "widthMode" : "FULL"
               },
               "showCaption" : true
-            } ],
-            "width" : 100.0
+            } ]
           } ],
           "predefinedType" : "Toolbar"
         } ],
@@ -907,6 +901,7 @@
             "actionTarget" : "SINGLEKEY",
             "caption" : "取消关联",
             "codeName" : "child_del_relation",
+            "dataAccessAction" : "UPDATE",
             "fullCodeName" : "work_item_child_del_relation",
             "name" : "取消关联（子工作项）",
             "getPSAppDEMethod" : {
@@ -920,6 +915,10 @@
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "UPDATE"
             },
             "getPSNavigateContexts" : [ {
               "key" : "DEL_CHILD_RELATION",
@@ -1008,74 +1007,163 @@
       },
       "getPSDEToolbarItems" : [ {
         "caption" : "添加子工作项",
-        "groupExtractMode" : "ITEM",
-        "itemType" : "DEUIACTION",
-        "name" : "deuiaction1",
-        "noPrivDisplayMode" : 2,
-        "getPSAppViewUIAction" : {
-          "modelref" : true,
-          "id" : "righttoolbar_deuiaction1"
-        },
+        "itemType" : "ITEMS",
+        "name" : "items1",
         "getPSControlLogics" : [ {
-          "itemName" : "deuiaction1",
+          "itemName" : "items1",
           "logicTag" : "righttoolbar",
           "logicType" : "SCRIPT",
-          "name" : "deuiaction1",
+          "name" : "items1",
           "scriptCode" : "context.srfreadonly != true",
           "triggerType" : "ITEMVISIBLE"
+        } ],
+        "getPSDEToolbarItems" : [ {
+          "caption" : "新建",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction2",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "righttoolbar_deuiaction2"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf067@FontAwesome",
+            "cssClass" : "fa fa-plus"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "NONE",
+            "caption" : "新建子工作项",
+            "codeName" : "create_and_child_work_item",
+            "dialogResult" : "OK",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_create_option_view.json",
+              "viewType" : "DEMOBOPTVIEW"
+            },
+            "frontProcessType" : "WIZARD",
+            "fullCodeName" : "work_item_create_and_child_work_item",
+            "name" : "新建并添加子工作项（移动端）",
+            "getNextPSUIAction" : {
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+              },
+              "modelref" : true,
+              "id" : "mob_refresh_work_item@work_item"
+            },
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "choose_child"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+            },
+            "getPSNavigateContexts" : [ {
+              "key" : "WORK_ITEM",
+              "name" : "WORK_ITEM",
+              "rawValue" : true
+            }, {
+              "key" : "CHILDREN_WORK_ITEM_TYPE_ID",
+              "name" : "CHILDREN_WORK_ITEM_TYPE_ID",
+              "value" : "work_item_sub_type",
+              "rawValue" : false
+            } ],
+            "getPSNavigateParams" : [ {
+              "key" : "work_item_type_id",
+              "name" : "work_item_type_id",
+              "value" : "work_item_sub_type",
+              "rawValue" : false
+            }, {
+              "key" : "pid",
+              "name" : "pid",
+              "value" : "principal_id",
+              "rawValue" : false
+            } ],
+            "refreshMode" : 1,
+            "timeout" : 60000,
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "create_and_child_work_item",
+            "uIActionType" : "DEUIACTION",
+            "closeEditView" : true,
+            "closePopupView" : true,
+            "reloadData" : true,
+            "id" : "create_and_child_work_item@work_item"
+          },
+          "tooltip" : "新建",
+          "uIActionTarget" : "NONE",
+          "showCaption" : true,
+          "showIcon" : true
+        }, {
+          "caption" : "添加",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction1",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "righttoolbar_deuiaction1"
+          },
+          "getPSSysImage" : {
+            "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\" fill=\"currentColor\">\n  <path d=\"M640 640H448V576h192V192H64v384h192v64H0V128h704v512h-64zM384 384h192v64H384v384h576V448h-192V384h256v512H320V384h64z\"></path>\n</svg>"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "NONE",
+            "caption" : "添加子工作项",
+            "codeName" : "mob_add_child",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_child_mpick_up_view.json",
+              "viewType" : "DEMOBMPICKUPVIEW"
+            },
+            "frontProcessType" : "WIZARD",
+            "fullCodeName" : "work_item_mob_add_child",
+            "name" : "添加子工作项（移动端）",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "choose_child"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+            },
+            "getPSNavigateParams" : [ {
+              "key" : "work_item_type_id",
+              "name" : "work_item_type_id",
+              "value" : "work_item_type_id",
+              "rawValue" : false
+            }, {
+              "key" : "pid",
+              "name" : "pid",
+              "value" : "principal_id",
+              "rawValue" : false
+            } ],
+            "getPSSysImage" : {
+              "glyph" : "xf067@FontAwesome",
+              "cssClass" : "fa fa-plus"
+            },
+            "refreshMode" : 1,
+            "successMsg" : "添加子工作项成功",
+            "timeout" : 60000,
+            "tooltip" : "添加子工作项",
+            "uIActionMode" : "BACKEND",
+            "uIActionTag" : "mob_add_child",
+            "uIActionType" : "DEUIACTION",
+            "enableConfirm" : true,
+            "reloadData" : true,
+            "id" : "mob_add_child@work_item"
+          },
+          "tooltip" : "添加子工作项",
+          "uIActionTarget" : "NONE",
+          "showCaption" : true,
+          "showIcon" : true
         } ],
         "getPSSysImage" : {
           "glyph" : "xf067@FontAwesome",
           "cssClass" : "fa fa-plus"
         },
-        "getPSUIAction" : {
-          "actionTarget" : "NONE",
-          "caption" : "添加子工作项",
-          "codeName" : "mob_add_child",
-          "getFrontPSAppView" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_child_mpick_up_view.json",
-            "viewType" : "DEMOBMPICKUPVIEW"
-          },
-          "frontProcessType" : "WIZARD",
-          "fullCodeName" : "work_item_mob_add_child",
-          "name" : "添加子工作项（移动端）",
-          "getPSAppDEMethod" : {
-            "modelref" : true,
-            "id" : "choose_child"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-          },
-          "getPSNavigateParams" : [ {
-            "key" : "work_item_type_id",
-            "name" : "work_item_type_id",
-            "value" : "work_item_type_id",
-            "rawValue" : false
-          }, {
-            "key" : "pid",
-            "name" : "pid",
-            "value" : "principal_id",
-            "rawValue" : false
-          } ],
-          "getPSSysImage" : {
-            "glyph" : "xf067@FontAwesome",
-            "cssClass" : "fa fa-plus"
-          },
-          "refreshMode" : 1,
-          "successMsg" : "添加子工作项成功",
-          "timeout" : 60000,
-          "tooltip" : "添加子工作项",
-          "uIActionMode" : "BACKEND",
-          "uIActionTag" : "mob_add_child",
-          "uIActionType" : "DEUIACTION",
-          "enableConfirm" : true,
-          "reloadData" : true,
-          "id" : "mob_add_child@work_item"
-        },
         "tooltip" : "添加子工作项",
-        "uIActionTarget" : "NONE",
         "showCaption" : true,
         "showIcon" : true
       } ],
@@ -1126,72 +1214,6 @@
   "modelid" : "f08c342a5e6157a7c9faec873451ff0c",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
-    "actionRSMode" : 1,
-    "codeName" : "releases",
-    "dataRSMode" : 0,
-    "majorDECodeName" : "project",
-    "majorDEName" : "PROJECT",
-    "getMajorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
-    },
-    "minorDECodeName" : "release",
-    "minorDEName" : "RELEASE",
-    "getMinorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/release.json"
-    },
-    "name" : "DER1N_RELEASE_PROJECT_PROJECT_ID",
-    "getParentPSAppDEField" : {
-      "name" : "PROJECT_ID",
-      "codeName" : "project_id"
-    },
-    "rSMode" : 2
-  }, {
-    "actionRSMode" : 1,
-    "codeName" : "work_items",
-    "dataRSMode" : 0,
-    "majorDECodeName" : "release",
-    "majorDEName" : "RELEASE",
-    "getMajorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/release.json"
-    },
-    "minorDECodeName" : "work_item",
-    "minorDEName" : "WORK_ITEM",
-    "getMinorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-    },
-    "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-    "getParentPSAppDEField" : {
-      "name" : "RELEASE_ID",
-      "codeName" : "release_id"
-    },
-    "rSMode" : 2
-  } ], [ {
-    "actionRSMode" : 1,
-    "codeName" : "work_items",
-    "dataRSMode" : 0,
-    "majorDECodeName" : "release",
-    "majorDEName" : "RELEASE",
-    "getMajorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/release.json"
-    },
-    "minorDECodeName" : "work_item",
-    "minorDEName" : "WORK_ITEM",
-    "getMinorPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
-    },
-    "name" : "DER1N_WORK_ITEM_RELEASE_RELEASE_ID",
-    "getParentPSAppDEField" : {
-      "name" : "RELEASE_ID",
-      "codeName" : "release_id"
-    },
-    "rSMode" : 2
-  } ], [ {
     "actionRSMode" : 1,
     "codeName" : "work_items",
     "dataRSMode" : 0,

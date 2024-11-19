@@ -2273,6 +2273,121 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEDATAQUERIES/my_summary_ticket/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "my_summary_ticket",
+    "logicName" : "我的事项工单",
+    "name" : "my_summary_ticket",
+    "getPSDEDQMain" : {
+      "getChildPSDEDQJoins" : [ {
+        "getDERPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
+        },
+        "getJoinPSDER" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDERS/DER1N_TICKET_PRODUCT_PRODUCT_ID.json"
+        },
+        "getJoinPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+        },
+        "joinType" : "N1",
+        "name" : "PRODUCT相关N:1（INNER JOIN）DER1N_TICKET_PRODUCT_PRODUCT_ID",
+        "getPSDEDQGroupCondition" : {
+          "condOp" : "AND",
+          "condType" : "GROUP",
+          "name" : "连接条件",
+          "getPSDEDQConditions" : [ {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "0",
+            "fieldName" : "IS_ARCHIVED",
+            "name" : "(IS_ARCHIVED) 等于(=) 0",
+            "getPSDEField" : {
+              "name" : "IS_ARCHIVED",
+              "codeName" : "is_archived"
+            }
+          }, {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "0",
+            "fieldName" : "IS_DELETED",
+            "name" : "(IS_DELETED) 等于(=) 0",
+            "getPSDEField" : {
+              "name" : "IS_DELETED",
+              "codeName" : "is_deleted"
+            }
+          } ]
+        }
+      } ],
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "TICKET",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "srfpersonid",
+          "fieldName" : "ASSIGNEE_ID",
+          "name" : "(ASSIGNEE_ID) 等于(=) 用户上下文 srfpersonid",
+          "getPSDEField" : {
+            "name" : "ASSIGNEE_ID",
+            "codeName" : "assignee_id"
+          },
+          "getPSVARTypeId" : "SESSIONCONTEXT"
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "0",
+          "fieldName" : "IS_ARCHIVED",
+          "name" : "(IS_ARCHIVED) 等于(=) 0",
+          "getPSDEField" : {
+            "name" : "IS_ARCHIVED",
+            "codeName" : "is_archived"
+          }
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "0",
+          "fieldName" : "IS_DELETED",
+          "name" : "(IS_DELETED) 等于(=) 0",
+          "getPSDEField" : {
+            "name" : "IS_DELETED",
+            "codeName" : "is_deleted"
+          }
+        }, {
+          "condType" : "CUSTOM",
+          "condition" : "t1.state in ( select val from dictionary where CATALOG = 'ticket_state' and type = 'in_progress')",
+          "name" : "state_type"
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "My_summary_ticketInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ticket_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "My_summary_ticketResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEDATAQUERIES/normal/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "normal",
@@ -2612,16 +2727,6 @@
                 "codeName" : "user_id"
               },
               "getPSVARTypeId" : "SESSIONCONTEXT"
-            }, {
-              "condOp" : "NOTEQ",
-              "condType" : "SINGLE",
-              "condValue" : "customer",
-              "fieldName" : "ROLE_ID",
-              "name" : "(ROLE_ID) 不等于(<>) customer",
-              "getPSDEField" : {
-                "name" : "ROLE_ID",
-                "codeName" : "role_id"
-              }
             } ]
           }
         } ],
@@ -3789,6 +3894,32 @@
     "enableBackend" : true,
     "enableFront" : true
   }, {
+    "codeName" : "my_summary_ticket",
+    "logicName" : "我的事项工单",
+    "name" : "my_summary_ticket",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "my_summary_ticket"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "My_summary_ticketInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ticket_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "My_summary_ticketResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
     "codeName" : "normal",
     "logicName" : "正常状态",
     "majorSortDir" : "DESC",
@@ -4621,10 +4752,6 @@
       "logicName" : "标签",
       "name" : "TAGS",
       "orderValue" : 360,
-      "getPSCodeList" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSCODELISTS/product_tag.json"
-      },
       "getPSDEField" : {
         "name" : "TAGS",
         "codeName" : "tags"
@@ -5742,10 +5869,6 @@
     "length" : 2000,
     "logicName" : "标签",
     "name" : "TAGS",
-    "getPSCodeList" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProdMgmt/PSCODELISTS/product_tag.json"
-    },
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -13730,6 +13853,12 @@
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_search_md_view",
+    "logicName" : "移动端工单搜索多数据视图",
+    "name" : "移动端工单搜索多数据视图",
+    "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "others_re_ticket_mpick_up_grid_view",
     "logicName" : "其他实体联工单多项选择视图_选择数据视图",
     "name" : "其他实体联工单多项选择视图_选择数据视图",
@@ -13747,6 +13876,12 @@
     "logicName" : "客户关联工单选择视图（移动端）",
     "name" : "客户关联工单选择视图（移动端）",
     "realModelSubType" : "DEMOBMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "ticket_grid_parts",
+    "logicName" : "工单表格视图（仪表盘部件）",
+    "name" : "工单表格视图（仪表盘部件）",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mob_md_view",
@@ -13894,6 +14029,12 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "search_mob_md_view",
+    "logicName" : "移动端工单搜索多数据视图",
+    "name" : "移动端工单搜索多数据视图",
+    "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "mob_ticket_recycle",
     "logicName" : "工单回收站多数据视图（移动端）",
     "name" : "工单回收站多数据视图（移动端）",
@@ -14008,6 +14149,12 @@
     "logicName" : "工单主视图",
     "name" : "工单主视图",
     "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "summary_ticket_grid_view",
+    "logicName" : "我的事项工单表格视图",
+    "name" : "我的事项工单表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "test_ai_main_view",

@@ -1542,6 +1542,11 @@
   }, {
     "codeName" : "mob_discuss_post_list",
     "logicName" : "讨论集合",
+    "majorSortDir" : "DESC",
+    "getMajorSortPSDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "update_time"
+    },
     "name" : "mob_discuss_post_list",
     "getPSDEDataQueries" : [ {
       "modelref" : true,
@@ -4562,7 +4567,18 @@
         "modelref" : true,
         "id" : "Default"
       },
-      "topPos" : 320
+      "topPos" : 330
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 1061,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "update_obj"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 446
     }, {
       "codeName" : "LOOPSUBCALL1",
       "getDstPSDELogicParam" : {
@@ -4591,7 +4607,7 @@
       "topPos" : 454
     }, {
       "codeName" : "PREPAREPARAM1",
-      "leftPos" : 408,
+      "leftPos" : 440,
       "logicNodeType" : "PREPAREPARAM",
       "name" : "填充移动到的话题标识",
       "getPSDELogicLinks" : [ {
@@ -4664,9 +4680,20 @@
         "modelref" : true,
         "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post.json"
       },
-      "leftPos" : 785,
+      "leftPos" : 865,
       "logicNodeType" : "DEACTION",
       "name" : "执行更新",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
       "topPos" : 454
     } ],
     "getPSDELogicParams" : [ {
@@ -5759,6 +5786,12 @@
     "realModelSubType" : "DEMOBLISTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_search_md_view",
+    "logicName" : "移动端讨论搜索多数据视图",
+    "name" : "移动端讨论搜索多数据视图",
+    "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "my_create_grid_view",
     "logicName" : "讨论实体表格视图 （我发起的）",
     "name" : "讨论实体表格视图 （我发起的）",
@@ -5829,6 +5862,12 @@
     "codeName" : "recycle_bin_grid_view",
     "logicName" : "讨论回收站表格视图",
     "name" : "讨论回收站表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "discuss_post_grid_view",
+    "logicName" : "讨论表格视图（仪表盘部件）",
+    "name" : "讨论表格视图（仪表盘部件）",
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {

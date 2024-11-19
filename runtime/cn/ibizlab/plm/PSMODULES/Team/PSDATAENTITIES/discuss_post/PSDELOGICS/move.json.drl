@@ -34,6 +34,17 @@ package cn.ibizlab.plm.team.logic.discuss_postlogic.move;
                         update(discuss_postmoveupdate_obj);//更新fact中变量值
             end
 
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "discuss_postmoveend1"
+            when
+            then
+                        update(discuss_postmovedefault);//更新fact中变量值
+                        update(discuss_postmovefor_temp_obj);//更新fact中变量值
+                        update(discuss_postmovesrfactionparam);//更新fact中变量值
+                        update(discuss_postmoveupdate_obj);//更新fact中变量值
+            end
+
             //逻辑处理节点[循环子调用]
             rule "loopsubcall1"
             ruleflow-group "discuss_postmoveloopsubcall1"

@@ -7,6 +7,15 @@
     "name" : "查询条件"
   } ],
   "getPSDEDataQueryCodeExps" : [ {
+    "expression" : "t1.`NOTICE`",
+    "name" : "NOTICE"
+  }, {
+    "expression" : "t1.`ACTUAL_END_AT`",
+    "name" : "ACTUAL_END_AT"
+  }, {
+    "expression" : "t1.`ACTUAL_START_AT`",
+    "name" : "ACTUAL_START_AT"
+  }, {
     "expression" : "t1.`ASSIGNEE_ID`",
     "name" : "ASSIGNEE_ID"
   }, {
@@ -15,6 +24,9 @@
   }, {
     "expression" : "t1.`COLOR`",
     "name" : "COLOR"
+  }, {
+    "expression" : "t1.`CONSUME_TIME`",
+    "name" : "CONSUME_TIME"
   }, {
     "expression" : "t1.`CREATE_MAN`",
     "name" : "CREATE_MAN"
@@ -27,6 +39,9 @@
   }, {
     "expression" : "t1.`END_AT`",
     "name" : "END_AT"
+  }, {
+    "expression" : "t1.`EXPECTED_TIME`",
+    "name" : "EXPECTED_TIME"
   }, {
     "expression" : "t1.`ID`",
     "name" : "ID"
@@ -61,6 +76,9 @@
     "expression" : "t1.`STATE`",
     "name" : "STATE"
   }, {
+    "expression" : "t11.`TYPE`",
+    "name" : "STATE_TYPE"
+  }, {
     "expression" : "t1.`TYPE`",
     "name" : "TYPE"
   }, {
@@ -73,6 +91,6 @@
     "expression" : "t1.`VISIBILITY`",
     "name" : "VISIBILITY"
   } ],
-  "queryCode" : "SELECT\nt1.`ASSIGNEE_ID`,\nt1.`ASSIGNEE_NAME`,\nt1.`COLOR`,\nt1.`CREATE_MAN`,\nt1.`CREATE_TIME`,\nt1.`DESCRIPTION`,\nt1.`END_AT`,\nt1.`ID`,\nt1.`IDENTIFIER`,\nt1.`IS_ARCHIVED`,\nt1.`IS_DELETED`,\n(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,\nt1.`IS_LOCAL_CONFIGURE`,\nt1.`NAME`,\nt1.`SCOPE_ID`,\nt1.`SCOPE_TYPE`,\nt1.`START_AT`,\nt1.`STATE`,\nt1.`TYPE`,\nt1.`UPDATE_MAN`,\nt1.`UPDATE_TIME`,\nt1.`VISIBILITY`\nFROM `PROJECT` t1 \n",
+  "queryCode" : "SELECT\nt1.`ACTUAL_END_AT`,\nt1.`ACTUAL_START_AT`,\nt1.`ASSIGNEE_ID`,\nt1.`ASSIGNEE_NAME`,\nt1.`COLOR`,\nt1.`CONSUME_TIME`,\nt1.`CREATE_MAN`,\nt1.`CREATE_TIME`,\nt1.`DESCRIPTION`,\nt1.`END_AT`,\nt1.`EXPECTED_TIME`,\nt1.`ID`,\nt1.`IDENTIFIER`,\nt1.`IS_ARCHIVED`,\nt1.`IS_DELETED`,\n(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,\nt1.`IS_LOCAL_CONFIGURE`,\nt1.`NAME`,\nt1.`SCOPE_ID`,\nt1.`SCOPE_TYPE`,\nt1.`START_AT`,\nt1.`STATE`,\nt11.`TYPE` AS `STATE_TYPE`,\nt1.`TYPE`,\nt1.`UPDATE_MAN`,\nt1.`UPDATE_TIME`,\nt1.`VISIBILITY`\nFROM `PROJECT` t1 \nLEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` \n",
   "id" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEDATAQUERIES/under_project_portfolio/PSDEDQCODES/MYSQL5.json"
 }

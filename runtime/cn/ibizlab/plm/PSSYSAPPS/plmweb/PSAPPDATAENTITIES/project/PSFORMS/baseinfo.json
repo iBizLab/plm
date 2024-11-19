@@ -237,6 +237,20 @@
       "codeName" : "end_at"
     }
   }, {
+    "id" : "actual_start_at",
+    "dataType" : 5,
+    "getPSAppDEField" : {
+      "name" : "ACTUAL_START_AT",
+      "codeName" : "actual_start_at"
+    }
+  }, {
+    "id" : "actual_end_at",
+    "dataType" : 5,
+    "getPSAppDEField" : {
+      "name" : "ACTUAL_END_AT",
+      "codeName" : "actual_end_at"
+    }
+  }, {
     "id" : "schedule",
     "dataType" : 6,
     "getPSAppDEField" : {
@@ -250,6 +264,14 @@
     "getPSAppDEField" : {
       "name" : "ASSIGNEE_ID",
       "codeName" : "assignee_id"
+    }
+  }, {
+    "id" : "state_type",
+    "hidden" : true,
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "STATE_TYPE",
+      "codeName" : "state_type"
     }
   }, {
     "id" : "id",
@@ -293,7 +315,7 @@
           "name" : "state",
           "getPSAppCodeList" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__project_state.json"
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__dyna_project_state.json"
           },
           "singleSelect" : true
         },
@@ -452,6 +474,83 @@
         "allowEmpty" : true,
         "showCaption" : true
       }, {
+        "caption" : "实际开始时间",
+        "codeName" : "actual_start_at",
+        "dataType" : 5,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "actual_start_at",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "ACTUAL_START_AT",
+          "codeName" : "actual_start_at"
+        },
+        "getPSEditor" : {
+          "editorType" : "SPAN",
+          "name" : "actual_start_at",
+          "enableLinkView" : false
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 12,
+          "colMD" : 12,
+          "layout" : "TABLE_24COL"
+        },
+        "valueFormat" : "YYYY-MM-DD",
+        "allowEmpty" : true,
+        "showCaption" : true
+      }, {
+        "caption" : "实际结束时间",
+        "codeName" : "actual_end_at",
+        "dataType" : 5,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "itemWidth" : 230.0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "actual_end_at",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "ACTUAL_END_AT",
+          "codeName" : "actual_end_at"
+        },
+        "getPSDEFDGroupLogics" : [ {
+          "groupOP" : "AND",
+          "logicCat" : "ITEMENABLE",
+          "logicType" : "GROUP",
+          "name" : "表单成员[actual_end_at][表单项启用]逻辑",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "EQ",
+            "dEFDName" : "state_type",
+            "logicType" : "SINGLE",
+            "value" : "in_progress"
+          } ],
+          "relatedDetailNames" : [ "state_type" ],
+          "notMode" : false
+        } ],
+        "getPSEditor" : {
+          "dateTimeFormat" : "YYYY-MM-DD",
+          "editorParams" : {
+            "TIMEFMT" : "YYYY-MM-DD"
+          },
+          "editorType" : "DATEPICKEREX_NOTIME",
+          "editorWidth" : 100.0,
+          "name" : "actual_end_at"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 12,
+          "colMD" : 12,
+          "layout" : "TABLE_24COL"
+        },
+        "valueFormat" : "YYYY-MM-DD",
+        "allowEmpty" : true,
+        "showCaption" : true
+      }, {
         "caption" : "进度",
         "codeName" : "schedule",
         "dataType" : 6,
@@ -503,6 +602,53 @@
         "getPSEditor" : {
           "editorType" : "HIDDEN",
           "name" : "assignee_id"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 12,
+          "colMD" : 12,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
+      }, {
+        "codeName" : "rawitem1",
+        "contentType" : "PLACEHOLDER",
+        "detailStyle" : "DEFAULT",
+        "detailType" : "RAWITEM",
+        "name" : "rawitem1",
+        "getPSLayoutPos" : {
+          "colLG" : 12,
+          "colMD" : 12,
+          "layout" : "TABLE_24COL"
+        },
+        "getPSRawItem" : {
+          "contentType" : "PLACEHOLDER",
+          "name" : "rawitem1",
+          "rawItemHeight" : -1.0,
+          "rawItemWidth" : -1.0
+        },
+        "rawItemHeight" : -1.0,
+        "rawItemWidth" : -1.0,
+        "showCaption" : true
+      }, {
+        "caption" : "状态类型",
+        "codeName" : "state_type",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "state_type",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "STATE_TYPE",
+          "codeName" : "state_type"
+        },
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "state_type"
         },
         "getPSLayoutPos" : {
           "colLG" : 12,
