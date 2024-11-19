@@ -33,6 +33,7 @@ entity "PROGRESS\n项目进度" as PROGRESS [[$../module/ProjMgmt/progress {项�
 entity "PROJECT\n项目" as PROJECT [[$../module/ProjMgmt/project {项目}]] {
         <&key> ID - 标识
         --
+        <&link-intact> STATE - 项目状态
 }
 entity "PROJECT_MEMBER\n项目成员" as PROJECT_MEMBER [[$../module/ProjMgmt/project_member {项目成员}]] {
         <&key> ID - 标识

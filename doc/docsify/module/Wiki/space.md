@@ -237,6 +237,7 @@
 
 * `SUBDATA`
 * `READ`
+* `CREATE`
 
 
 
@@ -276,6 +277,7 @@
 | 项目关联空间 | project_relation_space | 添加关联空间 |无数据|<details><summary>打开视图或向导（模态）</summary>[关联空间](app/view/space_choose_option_view)</details>||
 | 进行中_归档 | in_progress_into_archived | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 | 新建空间（移动端） | mob_create_space | 新建空间 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/space_mob_create_space_view)</details>||
+| 打开空间分页导航视图（移动端） | mob_open_space_list | 打开空间列表 |无数据|<details><summary>打开视图或向导（模态）</summary>[知识](app/view/space_mob_tab_exp_view)</details>||
 | 开启共享 | open_shared | 开启共享 |单项数据（主键）|<details><summary>后台调用</summary>[open_shared](#行为)||
 | 空间共享设置 | space_shared_setting | 共享设置 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[共享空间](app/view/shared_space_setting_view)</details>||
 | 新开窗口（空间） | open_new | 新窗口打开 |单项数据（主键）|<details><summary>打开HTML页面</summary>*./#/-/index/space=${data.id}/space_index_view/srfnav=drgroup/article_page_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;*</details>||
@@ -297,6 +299,7 @@
 | 已归档_激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
 | 高级设置（移动端） | mob_advanced_setting | 高级设置 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[高级设置](app/view/space_mob_advanced_set_view)</details>||
 | 添加空间成员 | add_space_member | 添加成员 |无数据|系统预定义||
+| 移动端进行中_归档 | mob_in_progress_into_archived | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |

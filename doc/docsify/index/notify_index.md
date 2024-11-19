@@ -29,6 +29,8 @@
 |[客户(CUSTOMER)](module/ProdMgmt/customer)|[客户分配负责人通知(assignee_notify)](module/ProdMgmt/customer/notify/assignee_notify)|[客户通知模板(分配负责人)](#customer_assignee)|[变更负责人附加逻辑(assignee_onchage)](module/ProdMgmt/customer/logic/assignee_onchage)||
 |[客户(CUSTOMER)](module/ProdMgmt/customer)|[客户变更负责人通知(assignee_onchange_notify)](module/ProdMgmt/customer/notify/assignee_onchange_notify)|[客户通知模板(变更负责人)](#customer_assignee_onchange)|[变更负责人附加逻辑(assignee_onchage)](module/ProdMgmt/customer/logic/assignee_onchage)||
 |[客户(CUSTOMER)](module/ProdMgmt/customer)|[客户删除通知(remove_notify)](module/ProdMgmt/customer/notify/remove_notify)|[客户通知模板(删除客户)](#customer_remove)|[删除客户发送通知(remove_customer_notify)](module/ProdMgmt/customer/logic/remove_customer_notify)||
+|[执行人(EXECUTOR)](module/Base/executor)|[通知取消工作项分配执行人(cancel_work_item_executor)](module/Base/executor/notify/cancel_work_item_executor)|[取消分配执行工作项通知模板](#cancel_executor_work_item)|[删除执行人时发送通知(del_notice)](module/Base/executor/logic/del_notice)<br>[执行人变更附加逻辑(user_id_onchange)](module/Base/executor/logic/user_id_onchange)||
+|[执行人(EXECUTOR)](module/Base/executor)|[通知工作项执行人(work_item_executor)](module/Base/executor/notify/work_item_executor)|[分配执行工作项通知模板](#notice_executor_work_item)|[执行人变更附加逻辑(user_id_onchange)](module/Base/executor/logic/user_id_onchange)<br>[添加执行人时发送通知(after_create_notice)](module/Base/executor/logic/after_create_notice)||
 |[需求(IDEA)](module/ProdMgmt/idea)|[产品需求归档/激活通知(archive_notify)](module/ProdMgmt/idea/notify/archive_notify)|[需求通知模板(归档/激活需求)](#idea_archived_or_activate)|[是否归档变更附加逻辑(is_archived_onchange)](module/ProdMgmt/idea/logic/is_archived_onchange)||
 |[需求(IDEA)](module/ProdMgmt/idea)|[产品需求取消分配负责人通知(assignee_cancel_notify)](module/ProdMgmt/idea/notify/assignee_cancel_notify)|[需求通知模板(取消分配负责人)](#idea_assignee_cancel)|[负责人变更附加逻辑(assignee_onchange)](module/ProdMgmt/idea/logic/assignee_onchange)||
 |[需求(IDEA)](module/ProdMgmt/idea)|[产品需求分配负责人通知(assignee_notify)](module/ProdMgmt/idea/notify/assignee_notify)|[需求通知模板(分配负责人)](#idea_assignee)|[负责人变更附加逻辑(assignee_onchange)](module/ProdMgmt/idea/logic/assignee_onchange)||
@@ -88,11 +90,13 @@
 |评论通知需求负责人|comment_idea_assignee|实体数据集|[评论通知负责人(comment_notify_assignee)](module/ProdMgmt/idea/dataset/comment_notify_assignee)||
 |当前项目成员|cur_project_member|实体数据集|[当前项目成员(CUR_PROJECT)](module/ProjMgmt/project_member/dataset/cur_project)||
 |当前产品成员|cur_product_member|实体数据集|[当前产品成员(cur_product)](module/ProdMgmt/product_member/dataset/cur_product)||
+|评论通知工作项执行人|comment_work_item_executor|实体数据集|[评论通知工作项执行人(comment_work_item_executor)](module/Base/executor/dataset/comment_work_item_executor)||
 |评论通知测试用例维护人|comment_test_case_maintenance|实体数据集|[评论通知维护人(comment_notify_maintenance)](module/TestMgmt/test_case/dataset/comment_notify_maintenance)||
 |当前项目集成员|cur_projecct_set_member|实体数据集|[当前项目集下成员(cur_project_set)](module/Base/portfolio_member/dataset/cur_project_set)||
 |评论通知执行用例执行人|comment_run_executor|实体数据集|[评论通知执行人(comment_notify_executor)](module/TestMgmt/run/dataset/comment_notify_executor)||
 |关注对象(通过主数据标识)|attention_by_ownerid|实体数据集|[通过主数据标识查询通知对象(attention_by_ownerid)](module/Base/attention/dataset/attention_by_ownerid)|关注type in (30,40)|
 |工单通知负责人|ticket_notify_assignee|实体数据集|[工单通知负责人(notify_assignee)](module/ProdMgmt/ticket/dataset/notify_assignee)||
+|工作项执行人（通过主数据标识）|executor_by_ownerid|实体数据集|[通过主数据标识查询通知对象(executor_by_ownerid)](module/Base/executor/dataset/executor_by_ownerid)||
 |评论通知工单负责人|comment_ticket_assignee|实体数据集|[评论通知负责人(comment_notify_assignee)](module/ProdMgmt/ticket/dataset/comment_notify_assignee)||
 |当前测试库成员|cur_library_member|实体数据集|[当前测试库成员(cur_library_member)](module/TestMgmt/library_member/dataset/cur_library_member)||
 |评论通知工作项负责人|comment_work_item_assignee|实体数据集|[评论通知负责人(comment_notify_assignee)](module/ProjMgmt/work_item/dataset/comment_notify_assignee)||
@@ -579,6 +583,70 @@ ${data.update_mantext}变更了工单：${data.title}的负责人
 钉钉内容：
 ```
 ${data.create_mantext}把你加入了项目：${data.project_name}
+```
+#### 取消分配执行工作项通知模板(cancel_executor_work_item) :id=cancel_executor_work_item
+
+
+模板类型：`静态`
+
+模板引擎：`FreeMarker`
+
+内容类型：`HTML网页`
+
+超链接：`<#if data.parent("owner_id")??>
+view://work_item_dyna_main_view?
+srfnavctx={"work_item":"${data.parent("owner_id").id}","project":"${data.parent("owner_id").project_id}","srfdatatype" : "${data.parent("owner_id").work_item_type_id}",
+"space": null, "article_page": null, "product": null,"idea": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null }&srfdatatype=${data.parent("owner_id").work_item_type_id}</#if>`
+
+移动端超链接：`<#if data.parent("owner_id")??>
+view://work_item_mob_common_edit_view?
+srfnavctx={"work_item":"${data.parent("owner_id").id}","project":"${data.parent("owner_id").project_id}","srfdatatype" : "${data.parent("owner_id").work_item_type_id}",
+"space": null, "article_page": null, "product": null,"idea": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null }&srfdatatype=${data.parent("owner_id").work_item_type_id}</#if>`
+
+内容：
+```
+<div class="notice-card" style="display: flex; align-items: flex-start;">
+			    <div class="notice-card__avatar" style="flex-shrink: 0;">
+			        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+			    </div>
+			    <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
+			        <div class="notice-card__event">
+			            <div class="notice-card__event-title" style="font-size: 14px; color: #000;">
+	<span class="notice-card__event-name" style="color: #999; font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${data.update_mantext}</span> 
+<span class="notice-card__event-name" style="font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">取消分配执行<#if data.owner_type == 'WORK_ITEM'>${data.parent("owner_id").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type== 'TICKET'>工单<#elseif data.owner_type== 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例<#elseif data.owner_type == 'PAGE'>页面</#if></span></div>
+        </div>
+<#if data.parent("owner_id")??>
+<#assign parent= data.parent("owner_id")>
+        <div class="notice-card-object" style="display: inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;width: 100%;">
+<span class="notice-card__object-id" style="color: #999; font-size: 14px;"><#if parent.show_identifier??>${parent.show_identifier}</#if></span>
+<#if data.owner_type == 'CUSTOMER' || data.owner_type == 'PAGE'>
+<span class="object-name" title="${parent.name}"> ${parent.name}</span>
+<#else>
+<span class="object-name" title="${parent.title}"> ${parent.title}</span></#if>
+
+        </div>
+    <#if parent.parent("project_id")??>
+    <#assign project= parent.parent("project_id")>
+        <div class="notice-card-pilot" style="font-size: 12px;color: #999;text-transform: lowercase;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"><span class="notice-time">${data.update_time?string("yyyy-MM-dd HH:mm:ss")}</span><span class="notice-pilot-info">· 项目管理 · ${project.name}</span></div>
+    <#elseif parent.parent("product_id")??>
+        <#assign product= parent.parent("product_id")>
+  <div class="notice-card-pilot" style="font-size: 12px;color: #999;text-transform: lowercase;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"><span class="notice-time">${data.update_time?string("yyyy-MM-dd HH:mm:ss")}</span><span class="notice-pilot-info">· 产品管理 · ${product.name}</span></div>
+    <#elseif parent.parent("plan_id")??>
+        <#assign plan = parent.parent("plan_id")>
+  <div class="notice-card-pilot" style="font-size: 12px;color: #999;text-transform: lowercase;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"><span class="notice-time">${data.update_time?string("yyyy-MM-dd HH:mm:ss")}</span><span class="notice-pilot-info">· 测试管理 · ${plan.library_name}</span></div>
+    <#elseif parent.parent("test_library_id")??>
+        <#assign library= parent.parent("test_library_id")>
+  <div class="notice-card-pilot" style="font-size: 12px;color: #999;text-transform: lowercase;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"><span class="notice-time">${data.update_time?string("yyyy-MM-dd HH:mm:ss")}</span><span class="notice-pilot-info">· 测试管理 · ${library.name}</span></div>
+    </#if>
+    </div>
+    </#if>
+</div>
+```
+
+钉钉内容：
+```
+${data.update_mantext}取消分配执行<#if data.owner_type == 'WORK_ITEM'>${data.parent("owner_id").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type == 'TICKET'>工单<#elseif data.owner_type == 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例</#if>：
+<#if data.owner_type == 'CUSTOMER'>${data.parent("owner_id").name}<#else>${data.parent("owner_id").title}</#if>
 ```
 #### 测试计划通知模板(取消分配负责人)(test_plan_assignee_cancel) :id=test_plan_assignee_cancel
 
@@ -1581,6 +1649,70 @@ ${data.update_mantext}取消分配了${data.work_item_type_name}：${data.title}
 钉钉内容：
 ```
 ${data.update_mantext}给你分配了需求：${data.title}
+```
+#### 分配执行工作项通知模板(notice_executor_work_item) :id=notice_executor_work_item
+
+
+模板类型：`静态`
+
+模板引擎：`FreeMarker`
+
+内容类型：`HTML网页`
+
+超链接：`<#if data.parent("owner_id")??>
+view://work_item_dyna_main_view?
+srfnavctx={"work_item":"${data.parent("owner_id").id}","project":"${data.parent("owner_id").project_id}","srfdatatype" : "${data.parent("owner_id").work_item_type_id}",
+"space": null, "article_page": null, "product": null,"idea": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null }&srfdatatype=${data.parent("owner_id").work_item_type_id}</#if>`
+
+移动端超链接：`<#if data.parent("owner_id")??>
+view://work_item_mob_common_edit_view?
+srfnavctx={"work_item":"${data.parent("owner_id").id}","project":"${data.parent("owner_id").project_id}","srfdatatype" : "${data.parent("owner_id").work_item_type_id}",
+"space": null, "article_page": null, "product": null,"idea": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null }&srfdatatype=${data.parent("owner_id").work_item_type_id}</#if>`
+
+内容：
+```
+<div class="notice-card" style="display: flex; align-items: flex-start;">
+			    <div class="notice-card__avatar" style="flex-shrink: 0;">
+			        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+			    </div>
+			    <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
+			        <div class="notice-card__event">
+			            <div class="notice-card__event-title" style="font-size: 14px; color: #000;">
+	<span class="notice-card__event-name" style="color: #999; font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${data.update_mantext}</span> 
+<span class="notice-card__event-name" style="font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">给你分配执行<#if data.owner_type == 'WORK_ITEM'>${data.parent("owner_id").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type== 'TICKET'>工单<#elseif data.owner_type== 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例<#elseif data.owner_type == 'PAGE'>页面</#if></span></div>
+        </div>
+<#if data.parent("owner_id")??>
+<#assign parent= data.parent("owner_id")>
+        <div class="notice-card-object" style="display: inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;width: 100%;">
+<span class="notice-card__object-id" style="color: #999; font-size: 14px;"><#if parent.show_identifier??>${parent.show_identifier}</#if></span>
+<#if data.owner_type == 'CUSTOMER' || data.owner_type == 'PAGE'>
+<span class="object-name" title="${parent.name}"> ${parent.name}</span>
+<#else>
+<span class="object-name" title="${parent.title}"> ${parent.title}</span></#if>
+
+        </div>
+    <#if parent.parent("project_id")??>
+    <#assign project= parent.parent("project_id")>
+        <div class="notice-card-pilot" style="font-size: 12px;color: #999;text-transform: lowercase;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"><span class="notice-time">${data.update_time?string("yyyy-MM-dd HH:mm:ss")}</span><span class="notice-pilot-info">· 项目管理 · ${project.name}</span></div>
+    <#elseif parent.parent("product_id")??>
+        <#assign product= parent.parent("product_id")>
+  <div class="notice-card-pilot" style="font-size: 12px;color: #999;text-transform: lowercase;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"><span class="notice-time">${data.update_time?string("yyyy-MM-dd HH:mm:ss")}</span><span class="notice-pilot-info">· 产品管理 · ${product.name}</span></div>
+    <#elseif parent.parent("plan_id")??>
+        <#assign plan = parent.parent("plan_id")>
+  <div class="notice-card-pilot" style="font-size: 12px;color: #999;text-transform: lowercase;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"><span class="notice-time">${data.update_time?string("yyyy-MM-dd HH:mm:ss")}</span><span class="notice-pilot-info">· 测试管理 · ${plan.library_name}</span></div>
+    <#elseif parent.parent("test_library_id")??>
+        <#assign library= parent.parent("test_library_id")>
+  <div class="notice-card-pilot" style="font-size: 12px;color: #999;text-transform: lowercase;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"><span class="notice-time">${data.update_time?string("yyyy-MM-dd HH:mm:ss")}</span><span class="notice-pilot-info">· 测试管理 · ${library.name}</span></div>
+    </#if>
+    </div>
+    </#if>
+</div>
+```
+
+钉钉内容：
+```
+${data.update_mantext}给你分配执行<#if data.owner_type == 'WORK_ITEM'>${data.parent("owner_id").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type == 'TICKET'>工单<#elseif data.owner_type == 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例</#if>：
+<#if data.owner_type == 'CUSTOMER'>${data.parent("owner_id").name}<#else>${data.parent("owner_id").title}</#if>
 ```
 #### 工作项通知模板（创建工作项）(work_item_create) :id=work_item_create
 

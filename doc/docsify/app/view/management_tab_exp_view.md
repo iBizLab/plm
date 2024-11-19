@@ -8,17 +8,17 @@
 
 
 ### 关联界面行为
-  * [团队(GROUP)](module/Base/group) : [编辑](module/Base/group#界面行为)
   * [团队(GROUP)](module/Base/group) : [新建团队](module/Base/group#界面行为)
-  * [产品(PRODUCT)](module/ProdMgmt/product) : [返回](module/ProdMgmt/product#界面行为)
-  * [团队(GROUP)](module/Base/group) : [新建分组](module/Base/group#界面行为)
+  * [团队(GROUP)](module/Base/group) : [树界面_刷新全部操作](module/Base/group#界面行为)
   * [团队(GROUP)](module/Base/group) : [编辑](module/Base/group#界面行为)
   * [团队(GROUP)](module/Base/group) : [编辑](module/Base/group#界面行为)
   * [团队(GROUP)](module/Base/group) : [删除](module/Base/group#界面行为)
+  * [团队(GROUP)](module/Base/group) : [新建分组](module/Base/group#界面行为)
+  * [产品(PRODUCT)](module/ProdMgmt/product) : [返回](module/ProdMgmt/product#界面行为)
   * [团队(GROUP)](module/Base/group) : [删除](module/Base/group#界面行为)
   * [工单(TICKET)](module/ProdMgmt/ticket) : [配置](module/ProdMgmt/ticket#界面行为)
   * [团队(GROUP)](module/Base/group) : [删除](module/Base/group#界面行为)
-  * [团队(GROUP)](module/Base/group) : [树界面_刷新全部操作](module/Base/group#界面行为)
+  * [团队(GROUP)](module/Base/group) : [编辑](module/Base/group#界面行为)
 
 ### 关联视图
   * [组件设置(addon_setting_grid_view)](app/view/addon_setting_grid_view)
@@ -38,6 +38,7 @@
   * [评审配置(guideline_all_grid_view)](app/view/guideline_all_grid_view)
   * [需求配置(idea_config_tab_exp_view)](app/view/idea_config_tab_exp_view)
   * [需求(idea_global_setting_view)](app/view/idea_global_setting_view)
+  * [需求模板(idea_template_global_all_grid_view)](app/view/idea_template_global_all_grid_view)
   * [系统预置报表(insight_report_system_report_grid_view)](app/view/insight_report_system_report_grid_view)
   * [效能度量(insight_view_config_tree_exp_view)](app/view/insight_view_config_tree_exp_view)
   * [效能度量(insight_view_deleted_grid_view)](app/view/insight_view_deleted_grid_view)

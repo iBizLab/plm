@@ -20,6 +20,7 @@
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [获取工作项工时进度（移动端）](module/ProjMgmt/work_item/uilogic/mob_get_workload_schedule)
 
 ### 关联视图
+  * [活动(activity_mob_list_view)](app/view/activity_mob_list_view)
   * [附件(attachment_mob_md_view)](app/view/attachment_mob_md_view)
   * [项目成员(project_member_mob_pickup_view)](app/view/project_member_mob_pickup_view)
   * [关联(relation_mob_depend_on_list_view)](app/view/relation_mob_depend_on_list_view)

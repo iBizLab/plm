@@ -139,7 +139,7 @@ default_obj.set("submitted_at", new Date());
 
 
 
-1. 将`for_reltion(循环中的关联对象).TARGET_ID(关联目标标识)` 设置给  `test_case(测试用例).ID(标识)`
+1. 将`for_reltion(循环中的关联对象).TARGET_ID(目标主体标识)` 设置给  `test_case(测试用例).ID(标识)`
 
 #### 获取测试用例详情 :id=DEACTION2<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 

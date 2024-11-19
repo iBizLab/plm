@@ -315,6 +315,11 @@
 |CONTROL.DEFORM.ENTRY.MAIN.FORMPAGE.FORMPAGE2|其它| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.ENTRY.MAIN.GROUPPANEL.GROUP1|看板栏基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.ENTRY.MAIN.GROUPPANEL.GROUP2|操作信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.EXECUTOR.DEFAULT.FORMPAGE.FORMPAGE1|常规条件| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.EXECUTOR.MAIN.FORMPAGE.FORMPAGE1|基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.EXECUTOR.MAIN.FORMPAGE.FORMPAGE2|其它| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.EXECUTOR.MAIN.GROUPPANEL.GROUP1|执行人基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.EXECUTOR.MAIN.GROUPPANEL.GROUP2|操作信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.EXTEND_LOG.DEFAULT.FORMPAGE.FORMPAGE1|常规条件| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.EXTEND_LOG.MAIN.FORMPAGE.FORMPAGE1|基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.EXTEND_LOG.MAIN.FORMPAGE.FORMPAGE2|其它| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
@@ -639,6 +644,11 @@
 |CONTROL.DEFORM.PROJECT_MEMBER.MAIN.FORMPAGE.FORMPAGE2|其它| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.PROJECT_MEMBER.MAIN.GROUPPANEL.GROUP1|产品成员基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.PROJECT_MEMBER.MAIN.GROUPPANEL.GROUP2|操作信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.PROJECT_STATE.DEFAULT.FORMPAGE.FORMPAGE1|常规条件| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.PROJECT_STATE.MAIN.FORMPAGE.FORMPAGE1|基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.PROJECT_STATE.MAIN.FORMPAGE.FORMPAGE2|其它| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.PROJECT_STATE.MAIN.GROUPPANEL.GROUP1|项目状态基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.PROJECT_STATE.MAIN.GROUPPANEL.GROUP2|操作信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.PROJECT_TAG.DEFAULT.FORMPAGE.FORMPAGE1|常规条件| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.PROJECT_TAG.MAIN.FORMPAGE.FORMPAGE1|基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.PROJECT_TAG.MAIN.FORMPAGE.FORMPAGE2|其它| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
@@ -1189,6 +1199,7 @@
 |CONTROL.DEFSFITEM.DYNA_APPMENU.N_NAME_LIKE|| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFSFITEM.DYNA_PORTLET_SETTING.N_NAME_LIKE|| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFSFITEM.ENTRY.N_NAME_LIKE|| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFSFITEM.EXECUTOR.N_NAME_LIKE|| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFSFITEM.EXTEND_LOG.N_NAME_LIKE|| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFSFITEM.EXTEND_STORAGE.N_NAME_LIKE|| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFSFITEM.FAVORITE.N_NAME_LIKE|| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
@@ -1265,6 +1276,7 @@
 |CONTROL.DEFSFITEM.PROJECT.N_PROJECTNAME_LIKE|| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFSFITEM.PROJECT.N_TYPE_EQ|| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFSFITEM.PROJECT_MEMBER.N_NAME_LIKE|| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFSFITEM.PROJECT_STATE.N_NAME_LIKE|| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFSFITEM.PROJECT_TAG.N_NAME_LIKE|| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFSFITEM.PROPERTY.N_NAME_LIKE|| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFSFITEM.PSDELOGICLINK.N_DSTPSDELOGICNODEID_EQ|| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
@@ -1503,6 +1515,7 @@
 |DE.LNAME.DYNA_APPMENU|动态应用菜单| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.DYNA_PORTLET_SETTING|动态看板部件配置| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.ENTRY|看板栏| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|DE.LNAME.EXECUTOR|执行人| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.EXTEND_LOG|扩展日志| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.EXTEND_STORAGE|扩展存储| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.FAVORITE|收藏| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
@@ -1542,6 +1555,7 @@
 |DE.LNAME.PROGRESS|项目进度| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.PROJECT|项目| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.PROJECT_MEMBER|产品成员| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|DE.LNAME.PROJECT_STATE|项目状态| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.PROJECT_TAG|项目标签| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.PROPERTY|扩展属性| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.PSAPPPORTLET|应用门户部件| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
@@ -2214,6 +2228,13 @@
 |PAGE.TITLE.ENTRY.PICKUPGRIDVIEW|看板栏选择表格视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |PAGE.TITLE.ENTRY.PICKUPVIEW|看板栏数据选择视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |PAGE.TITLE.ENTRY.REDIRECTVIEW|看板栏数据重定向视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|PAGE.TITLE.EXECUTOR.EDITVIEW|执行人编辑视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|PAGE.TITLE.EXECUTOR.EDITVIEW2|执行人编辑视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|PAGE.TITLE.EXECUTOR.GRIDVIEW|执行人表格视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|PAGE.TITLE.EXECUTOR.MPICKUPVIEW|执行人数据多项选择视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|PAGE.TITLE.EXECUTOR.PICKUPGRIDVIEW|执行人选择表格视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|PAGE.TITLE.EXECUTOR.PICKUPVIEW|执行人数据选择视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|PAGE.TITLE.EXECUTOR.REDIRECTVIEW|执行人数据重定向视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |PAGE.TITLE.EXTEND_LOG.EDITVIEW|扩展日志编辑视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |PAGE.TITLE.EXTEND_LOG.EDITVIEW2|扩展日志编辑视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |PAGE.TITLE.EXTEND_LOG.GRIDVIEW|扩展日志表格视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
@@ -2538,6 +2559,13 @@
 |PAGE.TITLE.PROJECT_MEMBER.PICKUPGRIDVIEW|产品成员选择表格视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |PAGE.TITLE.PROJECT_MEMBER.PICKUPVIEW|产品成员数据选择视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |PAGE.TITLE.PROJECT_MEMBER.REDIRECTVIEW|产品成员数据重定向视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|PAGE.TITLE.PROJECT_STATE.EDITVIEW|项目状态编辑视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|PAGE.TITLE.PROJECT_STATE.EDITVIEW2|项目状态编辑视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|PAGE.TITLE.PROJECT_STATE.GRIDVIEW|项目状态表格视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|PAGE.TITLE.PROJECT_STATE.MPICKUPVIEW|项目状态数据多项选择视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|PAGE.TITLE.PROJECT_STATE.PICKUPGRIDVIEW|项目状态选择表格视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|PAGE.TITLE.PROJECT_STATE.PICKUPVIEW|项目状态数据选择视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|PAGE.TITLE.PROJECT_STATE.REDIRECTVIEW|项目状态数据重定向视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |PAGE.TITLE.PROJECT_TAG.EDITVIEW|项目标签编辑视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |PAGE.TITLE.PROJECT_TAG.EDITVIEW2|项目标签编辑视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |PAGE.TITLE.PROJECT_TAG.GRIDVIEW|项目标签表格视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |

@@ -99,7 +99,7 @@
 
 运行对象：`IBizPersonelSelect`
 
-远程仓库：`@ibiz-template-plm/person-select@0.0.3-dev.246`
+远程仓库：`@ibiz-template-plm/person-select@0.0.3-alpha.110`
 
 ### 人员选择（移动端） :id=MOB_PERSONEL_SELECT
 
@@ -108,7 +108,7 @@
 
 运行对象：`MobPersonelSelect`
 
-远程仓库：`@ibiz-template-plmmob/mob-personel-select@0.0.3-alpha.93`
+远程仓库：`@ibiz-template-plmmob/mob-personel-select@0.0.3-alpha.102`
 
 ### 修改密码 :id=CHANGE_PASSWORD
 
@@ -135,7 +135,7 @@
 
 运行对象：`IBizAttention`
 
-远程仓库：`@ibiz-template-plm/attention@0.0.3-dev.96`
+远程仓库：`@ibiz-template-plm/attention@0.0.3-alpha.109`
 
 ### 分组树 :id=GROUP_TREE
 
@@ -153,7 +153,7 @@
 
 运行对象：`TabGroupSelect`
 
-远程仓库：`@ibiz-template-plmmob/tab-group-select-tree@0.0.3-alpha.92`
+远程仓库：`@ibiz-template-plmmob/tab-group-select-tree@0.0.3-alpha.100`
 
 ### 分页导航下拉 :id=TAB_EXP_SELECT
 
@@ -239,7 +239,7 @@
 
 运行对象：`IBizMDCtrlTreeControl`
 
-远程仓库：`@ibiz-template-plmmob/mob-mdctrl-tree@0.0.3-alpha.92`
+远程仓库：`@ibiz-template-plmmob/mob-mdctrl-tree@0.0.3-alpha.105`
 
 ### 多选视图右侧列表插件 :id=SAMPLE_LIST
 
@@ -257,7 +257,7 @@
 
 运行对象：`IBizCheckboxGrid`
 
-远程仓库：`@ibiz-template-plugin/checkbox-grid@0.1.8-alpha.8`
+远程仓库：`@ibiz-template-plugin/checkbox-grid@0.0.3-alpha.111`
 
 ### 工时表格 :id=WORKLOAD_TABLE
 
@@ -275,7 +275,7 @@
 
 运行对象：`IBizNumberGridControl`
 
-远程仓库：`@ibiz-template-plugin/number-grid@0.0.3-alpha.97`
+远程仓库：`@ibiz-template-plugin/number-grid@0.0.3-alpha.104`
 
 ### 搜索栏过滤条件编辑器 :id=SEARCH_BAR_FILTER_CONDITION
 
@@ -311,7 +311,7 @@
 
 运行对象：`registerFileDownloadProvider`
 
-远程仓库：`@ibiz-template-plugin/file-download@0.0.3-dev.122`
+远程仓库：`@ibiz-template-plugin/file-download@0.0.3-alpha.107`
 
 ### 显示模式工具栏项 :id=SHOW_MODE_TOOLBAR_ITEM
 
@@ -392,7 +392,7 @@
 
 运行对象：`IBizRawActivity`
 
-远程仓库：`@ibiz-template-plm/raw-activity@0.0.2-dev.136`
+远程仓库：`@ibiz-template-plm/raw-activity@0.0.3-dev.1`
 
 ### 看板快捷操作 :id=KANBAN_OPERATE
 
@@ -410,7 +410,7 @@
 
 运行对象：`IBizMobPersonalPickerTree`
 
-远程仓库：`@ibiz-template-plmmob/mob-personal-picker-tree@0.0.3-alpha.99`
+远程仓库：`@ibiz-template-plmmob/mob-personal-picker-tree@0.0.3-alpha.108`
 
 ### 移动端树视图增强 :id=MOB_TREE_VIEW_EX
 
@@ -419,7 +419,7 @@
 
 运行对象：`IBizMobTreeViewEx`
 
-远程仓库：`@ibiz-template-plmmob/mob-tree-view-ex@0.0.3-alpha.99`
+远程仓库：`@ibiz-template-plmmob/mob-tree-view-ex@0.0.3-alpha.100`
 
 ### 移动端用例步骤 :id=MOB_CASE_STEPS
 
@@ -464,12 +464,16 @@
 
 运行对象：`IBizMobHtmlComment`
 
-远程仓库：`@ibiz-template-plmmob/mob-html-comment@0.0.3-alpha.95`
+远程仓库：`@ibiz-template-plmmob/mob-html-comment@0.0.3-alpha.103`
 
 ### 移动端锚点富文本 :id=MOB_ANCHO_HTML
 
 
 插件标识：`MOB_ANCHO_HTML`
+
+运行对象：`MobAnchoHtml`
+
+远程仓库：`@ibiz-template-plm/mob-ancho-html@0.0.3-alpha.103`
 
 ### 组装选中数据 :id=ASSEMBLE_SELECTED_DATA
 
@@ -660,6 +664,15 @@
 运行对象：`IBizCheckboxListExtend`
 
 远程仓库：`@ibiz-template-plugin/checkbox-list-extend@0.1.2-alpha.0`
+
+### 重复器表单 :id=REPEATER_FORM
+
+
+插件标识：`REPEATER_FORM`
+
+运行对象：`REPEATER_FORM`
+
+远程仓库：`@ibiz-template-pamweb/repeater-form@0.1.8-y.4`
 
 ### 锚点富文本 :id=ANCHO_HTML
 

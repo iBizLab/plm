@@ -139,6 +139,7 @@
 |[附件删除](module/Base/attachment/uilogic/remove_attachment)|remove_attachment|自动判断为表格或表单附件，按类别删除|
 |[附件删除（移动端）](module/Base/attachment/uilogic/mob_remove_attachment)|mob_remove_attachment|自动判断为列表或表单附件，按类别删除|
 |[附件删除（表格）](module/Base/attachment/uilogic/remove_attachment_grid)|remove_attachment_grid|调用表格的行删除方法，删除指定行附件|
+|[附件预览](module/Base/attachment/uilogic/attachment_preview)|attachment_preview||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

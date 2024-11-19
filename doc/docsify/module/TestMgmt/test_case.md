@@ -210,6 +210,7 @@
 |[恢复](module/TestMgmt/test_case/logic/recover)|recover|无||恢复已删除状态测试用例数据，修改测试用例的是否删除属性值，并恢复访问记录|
 |[无操作](module/TestMgmt/test_case/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[是否删除变更附加逻辑](module/TestMgmt/test_case/logic/is_deleted_onchange)|is_deleted_onchange|属性逻辑||测试用例删除或恢复时触发相应的通知消息|
+|[检查更新数据](module/TestMgmt/test_case/logic/check_refresh_data)|check_refresh_data|无|||
 |[测试用例关联分页计数器](module/TestMgmt/test_case/logic/test_case_re_counters)|test_case_re_counters|无||计算分页下关联事项的条数|
 |[测试用例活动情况](module/TestMgmt/test_case/logic/test_case_maneuver_context)|test_case_maneuver_context|无||报表测试用例活动情况数据源|
 |[测试用例规划分析](module/TestMgmt/test_case/logic/program_analyze)|program_analyze|无||报表测试用例规划分析数据源|
@@ -261,6 +262,7 @@
 |[我关注的测试用例(my_attention)](module/TestMgmt/test_case/query/my_attention)|my_attention|否|否 |否 ||
 |[我创建的测试用例(my_created)](module/TestMgmt/test_case/query/my_created)|my_created|否|否 |否 ||
 |[过滤器默认查询(my_filter)](module/TestMgmt/test_case/query/my_filter)|my_filter|否|否 |否 ||
+|[我的事项测试用例(my_summary_case)](module/TestMgmt/test_case/query/my_summary_case)|my_summary_case|否|否 |否 ||
 |[正常状态(normal)](module/TestMgmt/test_case/query/normal)|normal|否|否 |否 ||
 |[无模块用例(nosuite_test_case)](module/TestMgmt/test_case/query/nosuite_test_case)|nosuite_test_case|否|否 |否 ||
 |[未添加过的用例(not_add_case)](module/TestMgmt/test_case/query/not_add_case)|not_add_case|否|否 |否 ||
@@ -289,6 +291,7 @@
 |[BI查询(bi_search)](module/TestMgmt/test_case/dataset/bi_search)|bi_search|数据查询|否|||
 |[用例成员分布(casePerson)](module/TestMgmt/test_case/dataset/casePerson)|casePerson|数据查询|否|||
 |[用例类型分布(caseType)](module/TestMgmt/test_case/dataset/caseType)|caseType|数据查询|否|||
+|[检查更新数据(check_refresh_data)](module/TestMgmt/test_case/dataset/check_refresh_data)|check_refresh_data|[实体逻辑](module/TestMgmt/test_case/logic/check_refresh_data)|否|||
 |[评论通知维护人(comment_notify_maintenance)](module/TestMgmt/test_case/dataset/comment_notify_maintenance)|comment_notify_maintenance|数据查询|否|||
 |[每日执行用例趋势(dailyTendencies)](module/TestMgmt/test_case/dataset/dailyTendencies)|dailyTendencies|数据查询|否|||
 |[测试用例重要程度分布(degreeImportance)](module/TestMgmt/test_case/dataset/degreeImportance)|degreeImportance|数据查询|否|||
@@ -300,6 +303,7 @@
 |[我关注的测试用例(my_attention)](module/TestMgmt/test_case/dataset/my_attention)|my_attention|数据查询|否|||
 |[我创建的测试用例(my_created)](module/TestMgmt/test_case/dataset/my_created)|my_created|数据查询|否|||
 |[过滤器默认查询(my_filter)](module/TestMgmt/test_case/dataset/my_filter)|my_filter|数据查询|否|||
+|[我的事项测试用例(my_summary_case)](module/TestMgmt/test_case/dataset/my_summary_case)|my_summary_case|数据查询|否|||
 |[正常状态(normal)](module/TestMgmt/test_case/dataset/normal)|normal|数据查询|否|||
 |[无模块用例(nosuite_test_case)](module/TestMgmt/test_case/dataset/nosuite_test_case)|nosuite_test_case|数据查询|否|||
 |[未添加过的用例(not_add_case)](module/TestMgmt/test_case/dataset/not_add_case)|not_add_case|数据查询|否|||
@@ -433,6 +437,7 @@
 | 关联缺陷（工具栏） | toolbar_link_bug | 关联缺陷 |无数据|用户自定义||
 | 工具栏上传附件 | toolbar_update_file | 工具栏上传附件 |无数据|用户自定义||
 | BI刷新 | bi_refresh | 刷新 |无数据|用户自定义||
+| 打开我的事项用例表格视图 | open_summary_case | 测试用例 |无数据|<details><summary>打开视图或向导（模态）</summary>[测试用例](app/view/test_case_summary_case_grid_view)</details>||
 | 测试用例关联需求（移动端） | mob_add_idea | 测试用例关联需求 |无数据|<details><summary>后台调用</summary>[others_relation_case](#行为)||
 | 配置 | panel_usr1022211556_button_calluilogic_click | 表单设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[表单设计](app/view/psdeformdesign_modal)</details>||
 | 删除（工具栏） | toolbar_delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||

@@ -14,7 +14,7 @@
 |产品标识|PRODUCT_ID|外键值|100|是||
 |产品编号|PRODUCT_IDENTIFIER|外键值附加数据|15|是||
 |产品名称|PRODUCT_NAME|外键值文本|200|是||
-|角色|ROLE_ID|[单项选择(文本值)](index/dictionary_index#role_type "角色类型")|60|是||
+|角色|ROLE_ID|[单项选择(文本值)](index/dictionary_index#product_role_type "产品角色类型")|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 |登录名|USER_ID|外键值|100|是||

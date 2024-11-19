@@ -58,6 +58,11 @@
   * `UPDATE_TIME(更新时间)`
   * `UPDATE_MAN(更新人)`
   * `IS_OVERTIME(是否超时)`
+  * `MULTIPLE_PEOPLE(多人任务)`
+  * `OVERDUE_TIME(逾期天数)`
+  * `FINISHER(完成人)`
+  * `ACTUAL_END_AT(实际结束时间)`
+  * `ACTUAL_START_AT(实际开始时间)`
 
 
 
@@ -73,6 +78,8 @@
 
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -81,11 +88,14 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (CASE WHEN t21.`TYPE` <> 'completed' and t21.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,

@@ -57,11 +57,11 @@ DEACTION1 --> DEACTION2
 
 1. 将`Default(传入变量).ID(标识)` 设置给  `relationobj(关系对象).PRINCIPAL_ID(关联主体标识)`
 2. 将`idea` 设置给  `relationobj(关系对象).PRINCIPAL_TYPE(关联主体类型)`
-3. 将`for_temp_obj(循环临时变量).target_plan_id` 设置给  `relationobj(关系对象).TARGET_ID(关联目标标识)`
+3. 将`for_temp_obj(循环临时变量).target_plan_id` 设置给  `relationobj(关系对象).TARGET_ID(目标主体标识)`
 4. 将`product_plan` 设置给  `relationobj(关系对象).TARGET_TYPE(关联目标类型)`
 5. 将`for_temp_obj(循环临时变量).target_plan_id` 设置给  `relationobj2(反向关系对象).PRINCIPAL_ID(关联主体标识)`
 6. 将`product_plan` 设置给  `relationobj2(反向关系对象).PRINCIPAL_TYPE(关联主体类型)`
-7. 将`Default(传入变量).ID(标识)` 设置给  `relationobj2(反向关系对象).TARGET_ID(关联目标标识)`
+7. 将`Default(传入变量).ID(标识)` 设置给  `relationobj2(反向关系对象).TARGET_ID(目标主体标识)`
 8. 将`idea` 设置给  `relationobj2(反向关系对象).TARGET_TYPE(关联目标类型)`
 
 #### 生成正向关联数据 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>

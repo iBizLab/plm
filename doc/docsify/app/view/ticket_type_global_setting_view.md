@@ -15,8 +15,8 @@
 
 
 ### 关联界面行为
-  * [工单类型(TICKET_TYPE)](module/ProdMgmt/ticket_type) : [表格界面_编辑操作](module/ProdMgmt/ticket_type#界面行为)
   * [工单类型(TICKET_TYPE)](module/ProdMgmt/ticket_type) : [删除](module/ProdMgmt/ticket_type#界面行为)
+  * [工单类型(TICKET_TYPE)](module/ProdMgmt/ticket_type) : [表格界面_编辑操作](module/ProdMgmt/ticket_type#界面行为)
   * [工单类型(TICKET_TYPE)](module/ProdMgmt/ticket_type) : [新建工单类型](module/ProdMgmt/ticket_type#界面行为)
 
 ### 关联视图

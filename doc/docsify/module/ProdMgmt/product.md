@@ -90,11 +90,13 @@
 |产品移动|product_move|[实体处理逻辑](module/ProdMgmt/product/logic/product_move "产品移动")|默认|不支持||||
 |产品只读用户判断|product_readonly_recognize|[实体处理逻辑](module/ProdMgmt/product/logic/get_product_member_one "获取产品成员")|默认|不支持||||
 |恢复|recover|[实体处理逻辑](module/ProdMgmt/product/logic/recover "恢复")|默认|不支持||||
+|test_counter|test_counter|[实体处理逻辑](module/ProdMgmt/product/logic/test_counters "test_counters")|默认|不支持||||
 |取消星标|un_favorite|[实体处理逻辑](module/ProdMgmt/product/logic/un_favorite "取消星标")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
+|[test_counters](module/ProdMgmt/product/logic/test_counters)|test_counters|无|||
 |[产品关联分页计数器](module/ProdMgmt/product/logic/product_counters)|product_counters|无||计算关系分页下事件的条数|
 |[产品关联空间](module/ProdMgmt/product/logic/product_re_space)|product_re_space|无||产品关联空间操作，生成正反向关联数据|
 |[产品移动](module/ProdMgmt/product/logic/product_move)|product_move|无||产品更多设置中移动产品|
@@ -299,6 +301,7 @@
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
 |[批量删除产品成员临时数据](module/ProdMgmt/product/uilogic/remove_batch_temp)|remove_batch_temp|获取产品内所有临时成员数据并删除|
+|[获取表格当前页大小](module/ProdMgmt/product/uilogic/get_table_size)|get_table_size||
 |[计算表格列行为状态(product)](module/ProdMgmt/product/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|
 |[通知刷新](module/ProdMgmt/product/uilogic/notify_refresh)|notify_refresh|通知页面刷新|
 

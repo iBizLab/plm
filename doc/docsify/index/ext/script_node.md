@@ -1,5 +1,5 @@
 
-## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[196]</font></sup>
+## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[210]</font></sup>
 
 #### [组件(ADDON)](module/Base/addon)的处理逻辑[组件权限计数器(addon_authority)](module/Base/addon/logic/addon_authority)
 
@@ -487,6 +487,58 @@ for(var j=0; j<modeljArray.length; j++){
   }
 }
 _default.set("model",JSON.stringify(modeljO));
+```
+#### [执行人(EXECUTOR)](module/Base/executor)的处理逻辑[删除执行人时发送通知(del_notice)](module/Base/executor/logic/del_notice)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+//获取当前用户
+def user = sys.user()
+def _default = logic.param('Default').getReal()
+if(_default.get('user_id') == user.getUserid()){
+    _default.set('is_current_user', '1')
+}
+```
+#### [扩展存储(EXTEND_STORAGE)](module/Base/extend_storage)的处理逻辑[工时自动计算(workload_auto_cal)](module/Base/extend_storage/logic/workload_auto_cal)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var workload_data = logic.getParam("workload_data");
+var actual_workload = workload_data.get("actual_workload");
+var estimated_workload =workload_data.get("estimated_workload");
+var remaining_workload = null;
+if(estimated_workload){
+    if(actual_workload){
+        remaining_workload = estimated_workload-actual_workload;
+        if(remaining_workload>0){
+            workload_data.set("remaining_workload",remaining_workload);
+        }
+    }else{
+        workload_data.set("remaining_workload",estimated_workload);
+    }
+}
+
+
+```
+#### [扩展存储(EXTEND_STORAGE)](module/Base/extend_storage)的处理逻辑[工时自动计算(workload_auto_cal)](module/Base/extend_storage/logic/workload_auto_cal)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var work_item_temp = logic.getParam("cur_work_item_temp");
+var p_work_item = logic.getParam("p_work_item");
+var workload_data = logic.getParam("workload_data");
+var cur_estimated_workload = parseFloat(work_item_temp && work_item_temp.get("estimated_workload")) || 0;
+var cur_actual_workload = parseFloat(work_item_temp && work_item_temp.get("actual_workload")) || 0;
+
+workload_data.set("estimated_workload", cur_estimated_workload + workload_data.get("estimated_workload"));
+workload_data.set("actual_workload",cur_actual_workload + workload_data.get("actual_workload")) ;
+
 ```
 #### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[基线规划需求数据查询(baseline_plan_idea)](module/ProdMgmt/idea/logic/baseline_plan_idea)
 
@@ -1546,6 +1598,16 @@ addon_resource.set('members', insert_members)
 var defaultObj = logic.getParam("default");
 defaultObj.set("update_time", new Date());
 ```
+#### [产品(PRODUCT)](module/ProdMgmt/product)的处理逻辑[test_counters](module/ProdMgmt/product/logic/test_counters)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+_default.set('flag1', 0)
+_default.set('flag2', 1)
+```
 #### [产品(PRODUCT)](module/ProdMgmt/product)的处理逻辑[产品组件权限计数器(product_addon_authority)](module/ProdMgmt/product/logic/product_addon_authority)
 
 节点：构建计数器结果
@@ -1978,6 +2040,34 @@ if(dividend != 0 && divisor != 0){
 } else {
     project.set("schedule",  0);
 }
+```
+#### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[逾期工作项计数(warning_count_logic)](module/ProjMgmt/project/logic/warning_count_logic)
+
+节点：计算逾期比例
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var result = logic.getParam("result");
+var totalWorkItemCount = result.get("total_work_item_count");
+var daily_warning_count = result.get("daily_warning_count");
+var upcoming_warning_count = result.get("upcoming_warning_count");
+var overdueCount = result.get("overdue_count");
+var overdue_ratio = 0;
+if (typeof overdueCount === "undefined" && daily_warning_count === "undefined" && upcoming_warning_count === "undefined" || overdueCount === null || daily_warning_count === null || upcoming_warning_count === null) {
+    overdue_ratio = 0;
+} else if (overdueCount === 0 && daily_warning_count === 0 && upcoming_warning_count === 0) {
+    overdue_ratio = 0;
+} else {
+    overdue_ratio = ((overdueCount + daily_warning_count + upcoming_warning_count) / totalWorkItemCount) * 100;
+    overdue_ratio = Math.round(overdue_ratio * 100) / 100;
+
+}
+if(overdue_ratio){
+    result.set("overdue_ratio", Math.round(overdue_ratio) + "%");
+}else{
+    result.set("overdue_ratio", "0%");
+}
+
 ```
 #### [项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member)的处理逻辑[移除项目成员通知(remove_project_member_notify)](module/ProjMgmt/project_member/logic/remove_project_member_notify)
 
@@ -3408,6 +3498,20 @@ if(for_temp_obj.get("cur_version_id")){
     work_item_versions.set("version_id_in", version_id_in);
 }
 ```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[填充实际开始/完成时间(fill_actual_time)](module/ProjMgmt/work_item/logic/fill_actual_time)
+
+节点：填充开始或结束时间
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var updated_data = logic.getParam("default");
+if (updated_data.get('state_type') == 'in_progress' && updated_data.get('actual_start_at') == null) {
+    updated_data.set("actual_start_at", new Date());
+}
+if (updated_data.get('state_type') == 'completed' && updated_data.get('actual_end_at') == null) {
+    updated_data.set('actual_end_at', new Date());
+}
+```
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[工作项完成趋势(complete_trend)](module/ProjMgmt/work_item/logic/complete_trend)
 
 节点：统计七天内的完成/未完成数量
@@ -3468,6 +3572,20 @@ result_list.each { it ->
 
 
 ```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[工作项状态变更附加逻辑(state_onchange)](module/ProjMgmt/work_item/logic/state_onchange)
+
+节点：生成实际完成时间
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var updated_data = logic.getParam("default");
+if (updated_data.get('state_type') == 'in_progress' && updated_data.get('actual_start_at') == null) {
+    updated_data.set("actual_start_at", new Date());
+}
+if (updated_data.get('state_type') == 'completed') {
+    updated_data.set('actual_end_at', new Date());
+}
+```
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[新建工作项前校验父子工作项类型(before_create_check_type)](module/ProjMgmt/work_item/logic/before_create_check_type)
 
 节点：判断父子工作项类型是否正确
@@ -3486,6 +3604,151 @@ if(work_item_sub_type != null && child_type != null){
         _default.set('check_type', 1)
     }
 }
+
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[汇聚实际工时(aggregate_actual_workload)](module/ProjMgmt/work_item/logic/aggregate_actual_workload)
+
+节点：获取当前级的工时，赋值给父
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var work_item_temp = logic.getParam("cur_work_item_temp");
+var p_work_item = logic.getParam("p_work_item");
+var workload_data = logic.getParam("workload_data");
+var cur_estimated_workload = parseFloat(work_item_temp && work_item_temp.get("estimated_workload")) || 0;
+var cur_actual_workload = parseFloat(work_item_temp && work_item_temp.get("actual_workload")) || 0;
+
+workload_data.set("estimated_workload", cur_estimated_workload + workload_data.get("estimated_workload"));
+sys.info("当前工作项实际工时"+cur_actual_workload);
+workload_data.set("actual_workload",cur_actual_workload + workload_data.get("actual_workload")) ;
+
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[汇聚实际开始时间(aggregate_actual_start_at)](module/ProjMgmt/work_item/logic/aggregate_actual_start_at)
+
+节点：获取当前级的最小开始时间，赋值给父
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var work_item_temp = logic.getParam("cur_work_item_temp");
+var p_work_item = logic.getParam("p_work_item");
+var work_item_data = logic.getParam("work_item_data");
+var p_actual_start_time = work_item_data.get("actual_start_at");
+var c_actual_start_time = work_item_temp.get("actual_start_at");
+if (c_actual_start_time) {
+    if (p_actual_start_time) {
+        if (p_actual_start_time > c_actual_start_time) {
+            work_item_data.set("actual_start_at", c_actual_start_time);
+        }
+    } else {
+        work_item_data.set("actual_start_at", c_actual_start_time);
+    }
+}
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[汇聚实际结束时间(aggregate_actual_end_at)](module/ProjMgmt/work_item/logic/aggregate_actual_end_at)
+
+节点：获取当前级的最小开始时间，赋值给父
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var work_item_temp = logic.getParam("cur_work_item_temp");
+var p_work_item = logic.getParam("p_work_item");
+var work_item_data = logic.getParam("work_item_data");
+var p_actual_end_time = work_item_data.get("actual_end_at");
+var c_actual_end_time = work_item_temp.get("actual_end_at");
+
+if (c_actual_end_time) {
+    if (p_actual_end_time) {
+        if (p_actual_end_time < c_actual_end_time) {
+            work_item_data.set("actual_end_at", c_actual_end_time);
+        }
+    } else {
+        work_item_data.set("actual_end_at", c_actual_end_time);
+    }
+}
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[汇聚开始时间(aggregate_start_at)](module/ProjMgmt/work_item/logic/aggregate_start_at)
+
+节点：获取当前级的最小开始时间，赋值给父
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var work_item_temp = logic.getParam("cur_work_item_temp");
+var p_work_item = logic.getParam("p_work_item");
+var work_item_data = logic.getParam("work_item_data");
+var p_start_time = work_item_data.get("start_at");
+var c_start_time = work_item_temp.get("start_at");
+
+if (c_start_time) {
+    if (p_start_time) {
+        if (p_start_time > c_start_time) {
+            work_item_data.set("start_at", c_start_time);
+        }
+    } else {
+        work_item_data.set("start_at", c_start_time);
+    }
+}
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[汇聚结束时间(aggregate_end_at)](module/ProjMgmt/work_item/logic/aggregate_end_at)
+
+节点：获取当前级的最小开始时间，赋值给父
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var work_item_temp = logic.getParam("cur_work_item_temp");
+var p_work_item = logic.getParam("p_work_item");
+var work_item_data = logic.getParam("work_item_data");
+
+var p_end_time = work_item_data.get("end_at");
+var c_end_time = work_item_temp.get("end_at");
+if (c_end_time) {
+    if (p_end_time) {
+        if (p_end_time < c_end_time) {
+            work_item_data.set("end_at", c_end_time);
+        }
+    } else {
+        work_item_data.set("end_at", c_end_time);
+    }
+}
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[汇聚预估工时(aggregate_estimated_work_load)](module/ProjMgmt/work_item/logic/aggregate_estimated_work_load)
+
+节点：获取当前级的工时，赋值给父
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var work_item_temp = logic.getParam("cur_work_item_temp");
+var p_work_item = logic.getParam("p_work_item");
+var workload_data = logic.getParam("workload_data");
+var cur_estimated_workload = parseFloat(work_item_temp && work_item_temp.get("estimated_workload")) || 0;
+var cur_actual_workload = parseFloat(work_item_temp && work_item_temp.get("actual_workload")) || 0;
+
+workload_data.set("estimated_workload", cur_estimated_workload + workload_data.get("estimated_workload"));
+
+workload_data.set("actual_workload",cur_actual_workload + workload_data.get("actual_workload")) ;
+
+
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[汇聚预估工时(aggregate_estimated_work_load)](module/ProjMgmt/work_item/logic/aggregate_estimated_work_load)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var workload_data = logic.getParam("workload_data");
+var actual_workload = workload_data.get("actual_workload");
+var estimated_workload =workload_data.get("estimated_workload");
+var remaining_workload = null;
+if(estimated_workload){
+    if(actual_workload){
+        remaining_workload = estimated_workload-actual_workload;
+        if(remaining_workload>0){
+            workload_data.set("remaining_workload",remaining_workload);
+        }
+    }else{
+        workload_data.set("remaining_workload",estimated_workload);
+    }
+}
+
 
 ```
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[状态类型变更附加逻辑(state_type_onchange)](module/ProjMgmt/work_item/logic/state_type_onchange)

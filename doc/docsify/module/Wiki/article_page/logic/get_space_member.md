@@ -92,7 +92,7 @@ if(srfreadonly == true){
 
 
 
-1. 将`Default(传入变量).product_id` 设置给  `filter(过滤器).N_SPACE_ID_EQ`
+1. 将`Default(传入变量).SPACE_ID(空间标识)` 设置给  `filter(过滤器).N_SPACE_ID_EQ`
 2. 将`用户全局对象.srfpersonid` 设置给  `filter(过滤器).N_USER_ID_EQ`
 
 #### 查询当前用户是否为知识空间成员 :id=DEDATASET3<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>

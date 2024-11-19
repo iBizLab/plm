@@ -15,10 +15,10 @@
 
 
 ### 关联界面行为
-  * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [打开视图导航页](module/Insight/insight_view#界面行为)
-  * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [打开视图首页视图](module/Insight/insight_view#界面行为)
-  * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [取消星标](module/Insight/insight_view#界面行为)
   * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [进行中_删除](module/Insight/insight_view#界面行为)
+  * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [打开视图首页视图](module/Insight/insight_view#界面行为)
+  * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [打开视图导航页](module/Insight/insight_view#界面行为)
+  * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [取消星标](module/Insight/insight_view#界面行为)
   * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [打开视图配置](module/Insight/insight_view#界面行为)
   * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [设置管理员](module/Insight/insight_view#界面行为)
 

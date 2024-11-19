@@ -54,7 +54,7 @@ LOOPSUBCALL1 --> END1
 
 
 1. 将`after` 设置给  `for_obj(循环临时变量对象).JOB_TYPE(前后置任务)`
-2. 将`for_obj(循环临时变量对象).TARGET_ID(关联目标标识)` 设置给  `for_obj(循环临时变量对象).link_id`
+2. 将`for_obj(循环临时变量对象).TARGET_ID(目标主体标识)` 设置给  `for_obj(循环临时变量对象).link_id`
 
 #### 循环子调用 :id=LOOPSUBCALL1<sup class="footnote-symbol"> <font color=gray size=1>[循环子调用]</font></sup>
 

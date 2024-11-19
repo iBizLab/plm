@@ -236,6 +236,21 @@
 
 
 
+## [执行人(EXECUTOR)](module/Base/executor.md) :id=executor
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[删除执行人时发送通知](module/Base/executor/logic/del_notice)|del_notice|无||删除执行人时发送通知|
+|[执行人变更附加逻辑](module/Base/executor/logic/user_id_onchange)|user_id_onchange|属性逻辑||执行人变更附加逻辑|
+|[添加执行人时发送通知](module/Base/executor/logic/after_create_notice)|after_create_notice|无||添加执行人时发送通知|
+
+
+
+## [扩展存储(EXTEND_STORAGE)](module/Base/extend_storage.md) :id=extend_storage
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[工时自动计算](module/Base/extend_storage/logic/workload_auto_cal)|workload_auto_cal|无|||
 
 
 
@@ -259,10 +274,10 @@
 |[填充BI报表默认值](module/ProdMgmt/idea/logic/fill_bi_form_default)|fill_bi_form_default|无||填充BI报表默认值|
 |[归档](module/ProdMgmt/idea/logic/archive)|archive|无||未归档需求数据的归档处理，修改需求的归档状态为归档|
 |[恢复](module/ProdMgmt/idea/logic/recover)|recover|无||已删除状态需求数据的恢复，修改需求的是否删除属性值，并恢复访问记录|
-|[新建后关联客户](module/ProdMgmt/idea/logic/after_create_relation)|after_create_relation|无||新建后关联客户|
 |[无操作](module/ProdMgmt/idea/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[是否删除变更附加逻辑](module/ProdMgmt/idea/logic/is_deleted_onchange)|is_deleted_onchange|属性逻辑||产品需求删除或恢复时触发相应的通知消息|
 |[是否归档变更附加逻辑](module/ProdMgmt/idea/logic/is_archived_onchange)|is_archived_onchange|属性逻辑||产品需求归档或激活数据时触发相应的通知消息|
+|[更新需求进度](module/ProdMgmt/idea/logic/update_idea_progress)|update_idea_progress|无||根据id更新需求的进度|
 |[激活](module/ProdMgmt/idea/logic/activate)|activate|无||激活已归档状态需求，修改需求的归档属性|
 |[状态变更附加逻辑](module/ProdMgmt/idea/logic/state_onchange)|state_onchange|属性逻辑||需求数据状态变更时触发相应的通知消息，同时生成流转记录|
 |[生成最近访问](module/ProdMgmt/idea/logic/create_recent)|create_recent|无||在用户对需求数据进行了get或update操作时生成相应的访问记录|
@@ -279,6 +294,12 @@
 |[需求排期](module/ProdMgmt/idea/logic/idea_re_plan)|idea_re_plan|无||需求排期，用户在排期内关联相应需求，生成正反向关联关系|
 |[需求移动](module/ProdMgmt/idea/logic/idea_move)|idea_move|无||移动需求至其他位置（修改需求的所属产品，重新生成编号）|
 
+
+## [需求模板(IDEA_TEMPLATE)](module/ProdMgmt/idea_template.md) :id=idea_template
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[无操作](module/ProdMgmt/idea_template/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 
 
 
@@ -478,6 +499,7 @@
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
+|[test_counters](module/ProdMgmt/product/logic/test_counters)|test_counters|无|||
 |[产品关联分页计数器](module/ProdMgmt/product/logic/product_counters)|product_counters|无||计算关系分页下事件的条数|
 |[产品关联空间](module/ProdMgmt/product/logic/product_re_space)|product_re_space|无||产品关联空间操作，生成正反向关联数据|
 |[产品移动](module/ProdMgmt/product/logic/product_move)|product_move|无||产品更多设置中移动产品|
@@ -565,7 +587,9 @@
 |[获取项目进度](module/ProjMgmt/project/logic/get_schedule)|get_schedule|无||通过已完成工作项数量/所有工作项数量，计算出此项目进度|
 |[设置星标](module/ProjMgmt/project/logic/favorite)|favorite|无||设置为星标项目|
 |[负责人变更附加逻辑](module/ProjMgmt/project/logic/assignee_id_onchange)|assignee_id_onchange|属性逻辑||项目负责人变更时触发相应的通知消息|
+|[逾期工作项计数](module/ProjMgmt/project/logic/warning_count_logic)|warning_count_logic|无|||
 |[项目状态变更通知](module/ProjMgmt/project/logic/state_notify)|state_notify|属性逻辑||项目状态变更时触发相应的通知消息|
+|[项目自动变更状态](module/ProjMgmt/project/logic/project_automatic_change_state)|project_automatic_change_state|无||定时执行，当项目的结束时间小于当前日期时，自动将项目状态变更为延期；<br>当项目的结束时间距今不足五天时，自动将项目状态变更为预警；|
 
 
 ## [项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member.md) :id=project_member
@@ -577,6 +601,13 @@
 |[新建项目成员（移动端）](module/ProjMgmt/project_member/logic/mob_create_project_member)|mob_create_project_member|无||新建项目成员（移动端）|
 |[无操作](module/ProjMgmt/project_member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[移除项目成员通知](module/ProjMgmt/project_member/logic/remove_project_member_notify)|remove_project_member_notify|无||移除项目成员时向对应用户发送通知消息|
+
+
+## [项目状态(PROJECT_STATE)](module/ProjMgmt/project_state.md) :id=project_state
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[无操作](module/ProjMgmt/project_state/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 
 
 ## [项目标签(PROJECT_TAG)](module/ProjMgmt/project_tag.md) :id=project_tag
@@ -650,6 +681,7 @@
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
 |[我创建的事项](module/Base/recent/logic/my_created_entry)|my_created_entry|无||查询当前用户创建的事项|
+|[我的任务总结](module/Base/recent/logic/my_summary)|my_summary|无||获取我的任务总结数据|
 |[我负责的事项](module/Base/recent/logic/my_charge_entry)|my_charge_entry|无||查询我负责的事项，工作台的计数器使用|
 |[最近使用](module/Base/recent/logic/recent_use)|recent_use|无||查询最近使用数据(项目/产品/空间)，仅查询10条|
 |[最近访问](module/Base/recent/logic/recent_access)|recent_access|无||查询最近访问数据，并获取他们的父级|
@@ -770,6 +802,9 @@
 |[规划计划](module/TestMgmt/run/logic/program_plan)|program_plan|无||规划当前计划内用例（添加用例至测试计划内）|
 |[记录执行结果](module/TestMgmt/run/logic/create_result)|create_result|无||记录当前执行用例的执行结果|
 |[设置执行人](module/TestMgmt/run/logic/set_executor)|set_executor|无||设置当前执行用例执行人|
+|[通过发布规划计划](module/TestMgmt/run/logic/program_plan_by_release)|program_plan_by_release|无||通过发布规划计划|
+|[通过工作项规划计划](module/TestMgmt/run/logic/program_plan_by_workitem)|program_plan_by_workitem|无||通过工作项规划计划|
+|[通过迭代规划计划](module/TestMgmt/run/logic/program_plan_by_sprint)|program_plan_by_sprint|无||通过迭代规划计划|
 |[重置为未测](module/TestMgmt/run/logic/reset_not_test)|reset_not_test|无||重置当前执行用例的执行状态为初始未测状态|
 |[附加用例步骤](module/TestMgmt/run/logic/add_steps)|add_steps|无||获取用例步骤，并返回|
 
@@ -926,6 +961,7 @@
 |[自动将新团队成员加入团队项目](module/Base/template_flow/logic/auto_add_member_to_project)|auto_add_member_to_project|事件处理（运行时支持）||新成员加入团队后，自动加入到该团队的项目。|
 |[自动设置工作项负责人](module/Base/template_flow/logic/auto_fill_assign_man)|auto_fill_assign_man|事件处理（运行时支持）||自动化，自动设置工作项负责人|
 |[自动设置测试计划的启动和完成状态](module/Base/template_flow/logic/test_plan_auto_set_state)|test_plan_auto_set_state|事件处理（运行时支持）||<br>自动设置测试计划的启动和完成状态|
+|[项目自动变更状态](module/Base/template_flow/logic/project_automatic_change_state)|project_automatic_change_state|定时作业（运行时支持）||定时执行，当项目的结束时间小于当前日期时，自动将项目状态变更为延期；<br>当项目的结束时间距今不足五天时，自动将项目状态变更为预警；|
 
 
 ## [用例(TEST_CASE)](module/TestMgmt/test_case.md) :id=test_case
@@ -942,6 +978,7 @@
 |[恢复](module/TestMgmt/test_case/logic/recover)|recover|无||恢复已删除状态测试用例数据，修改测试用例的是否删除属性值，并恢复访问记录|
 |[无操作](module/TestMgmt/test_case/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[是否删除变更附加逻辑](module/TestMgmt/test_case/logic/is_deleted_onchange)|is_deleted_onchange|属性逻辑||测试用例删除或恢复时触发相应的通知消息|
+|[检查更新数据](module/TestMgmt/test_case/logic/check_refresh_data)|check_refresh_data|无|||
 |[测试用例关联分页计数器](module/TestMgmt/test_case/logic/test_case_re_counters)|test_case_re_counters|无||计算分页下关联事项的条数|
 |[测试用例活动情况](module/TestMgmt/test_case/logic/test_case_maneuver_context)|test_case_maneuver_context|无||报表测试用例活动情况数据源|
 |[测试用例规划分析](module/TestMgmt/test_case/logic/program_analyze)|program_analyze|无||报表测试用例规划分析数据源|
@@ -1099,6 +1136,7 @@
 |[团队速度](module/ProjMgmt/work_item/logic/project_team_speed)|project_team_speed|无||团队速度报表数据源|
 |[基线规划工作项数据查询](module/ProjMgmt/work_item/logic/baseline_plan_work_item)|baseline_plan_work_item|无||基线规划工作项时，填充工作项当前版本名称|
 |[填充BI报表默认值](module/ProjMgmt/work_item/logic/fill_bi_form_default)|fill_bi_form_default|无||填充BI报表默认值|
+|[填充实际开始/完成时间](module/ProjMgmt/work_item/logic/fill_actual_time)|fill_actual_time|无|||
 |[填充待完成事项数量](module/ProjMgmt/work_item/logic/fill_not_completed_num)|fill_not_completed_num|无||移动端工作台首页：获取待完成事项数量|
 |[填充状态的类型](module/ProjMgmt/work_item/logic/fill_type_of_state)|fill_type_of_state|无||根据工作项状态的id获取对应的type值|
 |[复制子工作项](module/ProjMgmt/work_item/logic/copy_child_work_item)|copy_child_work_item|无||复制工作项时，同时复制子工作项|
@@ -1119,6 +1157,12 @@
 |[新建工作项前校验父子工作项类型](module/ProjMgmt/work_item/logic/before_create_check_type)|before_create_check_type|无||新建工作项前校验父子工作项类型|
 |[新建规划快照](module/ProjMgmt/work_item/logic/create_plan_snapshot)|create_plan_snapshot|无||新建规划快照|
 |[无操作](module/ProjMgmt/work_item/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
+|[汇聚实际工时](module/ProjMgmt/work_item/logic/aggregate_actual_workload)|aggregate_actual_workload|无||实际工时属性变更触发，未使用，暂时废弃|
+|[汇聚实际开始时间](module/ProjMgmt/work_item/logic/aggregate_actual_start_at)|aggregate_actual_start_at|属性逻辑||实际开始时间变更时触发|
+|[汇聚实际结束时间](module/ProjMgmt/work_item/logic/aggregate_actual_end_at)|aggregate_actual_end_at|属性逻辑||实际结束时间变更时触发|
+|[汇聚开始时间](module/ProjMgmt/work_item/logic/aggregate_start_at)|aggregate_start_at|属性逻辑||开始时间变更时触发|
+|[汇聚结束时间](module/ProjMgmt/work_item/logic/aggregate_end_at)|aggregate_end_at|属性逻辑||结束时间变更时触发|
+|[汇聚预估工时](module/ProjMgmt/work_item/logic/aggregate_estimated_work_load)|aggregate_estimated_work_load|属性逻辑||预估工时属性变更触发|
 |[激活](module/ProjMgmt/work_item/logic/activate)|activate|无||激活已归档状态工作项，工作项存在子工作项，递归激活所有下级工作项|
 |[状态类型变更附加逻辑](module/ProjMgmt/work_item/logic/state_type_onchange)|state_type_onchange|属性逻辑||已完成时，填充完成时间|
 |[生成最近访问](module/ProjMgmt/work_item/logic/create_recent)|create_recent|无||在用户对工作项数据进行了get或update操作时生成相应的访问记录|
@@ -1135,9 +1179,11 @@
 |[获取基线名称](module/ProjMgmt/work_item/logic/get_baseline_name)|get_baseline_name|无||工作项主视图获取所属基线|
 |[获取工作项类型](module/ProjMgmt/work_item/logic/get_work_item_type)|get_work_item_type|无||链接跳转工作项主视图前，获取工作项类型|
 |[获取测试计划对应项目](module/ProjMgmt/work_item/logic/work_item_test_plan_project)|work_item_test_plan_project|无||获取测试计划对应项目|
+|[获取草稿](module/ProjMgmt/work_item/logic/custom_draft)|custom_draft|无|||
 |[获取项目成员](module/ProjMgmt/work_item/logic/get_project_member)|get_project_member|无||获取项目成员信息，用于判断当前用户权限|
 |[规划工作项](module/ProjMgmt/work_item/logic/plan_work_item)|plan_work_item|无||规划选中工作项至指定发布|
 |[设置初始排序值](module/ProjMgmt/work_item/logic/set_sequence)|set_sequence|无||设置初始排序值|
+|[设置执行人](module/ProjMgmt/work_item/logic/setting_executors)|setting_executors|无||设置执行人|
 |[设置缺陷类型](module/ProjMgmt/work_item/logic/set_type_bug)|set_type_bug|无||设置当前工作项为缺陷类型|
 |[设置默认看板栏](module/ProjMgmt/work_item/logic/set_default_entry)|set_default_entry|无||选择看板后，自动填充所属看板下的的首个看板栏|
 |[资源分配](module/ProjMgmt/work_item/logic/resource_assignment)|resource_assignment|无||资源分配下的工作项|
@@ -1152,6 +1198,7 @@
 |[需求每日趋势](module/ProjMgmt/work_item/logic/backlog_daily_trend)|backlog_daily_trend|无||报表需求每日趋势数据源|
 |[需求累计流图](module/ProjMgmt/work_item/logic/backlog_accumulate_flow)|backlog_accumulate_flow|无||报表需求累计流图数据源|
 |[项目资源成员设置](module/ProjMgmt/work_item/logic/project_resource_setting)|project_resource_setting|无||项目资源成员设置，默认设置容量/工作日|
+|[首页待完成项计数器](module/ProjMgmt/work_item/logic/count_my_todo)|count_my_todo|无||首页待完成项计数器|
 
 
 ## [工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state.md) :id=work_item_state

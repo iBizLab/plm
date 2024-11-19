@@ -24,6 +24,7 @@
 |[动态应用菜单(DYNA_APPMENU)](module/Base/dyna_appmenu)|dyna_appmenu|主实体|SQL|DYNA_APPMENU|否|否|自控制|否|配置动态菜单功能必备。|
 |[动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard)|dyna_dashboard|主实体|SQL|DYNADASHBOARD|否|否|附属主实体控制（未映射自控）|否|配置动态数据看板功能必备。|
 |[动态看板部件配置(DYNA_PORTLET_SETTING)](module/Base/dyna_portlet_setting)|dyna_portlet_setting|主实体|无存储||否|否|自控制|否|动态看板部件配置信息|
+|[执行人(EXECUTOR)](module/Base/executor)|executor|主实体|SQL|EXECUTOR|是|否|附属主实体控制|否||
 |[扩展日志(EXTEND_LOG)](module/Base/extend_log)|extend_log|主实体|SQL|EXTEND_LOG|否|否|自控制|否|记录扩展日志|
 |[扩展存储(EXTEND_STORAGE)](module/Base/extend_storage)|extend_storage|主实体|SQL|EXTEND_STORAGE|是|否|自控制|否|记录扩展存储|
 |[收藏(FAVORITE)](module/Base/favorite)|favorite|主实体|SQL|FAVORITE|是|否|自控制|否|用户自定义的收藏记录，方便快速访问常用的实体或页面。|

@@ -80,7 +80,7 @@ BINDPARAM1 --> END1 : [[$./mob_create_project_member#bindparam1-end1{未勾选�
 
 
 
-调用实体 [空间成员(SPACE_MEMBER)](module/Wiki/space_member.md) 行为 [Create](module/Wiki/space_member#行为) ，行为参数为`member_obj(关系对象)`
+调用实体 [空间成员(SPACE_MEMBER)](module/Wiki/space_member.md) 行为 [Save](module/Wiki/space_member#行为) ，行为参数为`member_obj(关系对象)`
 
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 

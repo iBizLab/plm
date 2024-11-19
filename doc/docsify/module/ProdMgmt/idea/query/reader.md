@@ -36,7 +36,7 @@
     * **PRODUCT_MEMBER存在1:N（EXISTS (SELECT)）DER1N_PRODUCT_MEMBER_PRODUCT_PRODUCT_ID**<br>
 连接关系：[DER1N_PRODUCT_MEMBER_PRODUCT_PRODUCT_ID](der/DER1N_PRODUCT_MEMBER_PRODUCT_PRODUCT_ID)<br>
 连接实体：[产品](module/ProdMgmt/product)<br>
-连接条件：(`USER_ID(登录名)` EQ `用户上下文.srfpersonid` AND `ROLE_ID(角色)` NOTEQ `'customer'`)<br>
+连接条件：(`USER_ID(登录名)` EQ `用户上下文.srfpersonid`)<br>
 
 
 
@@ -90,7 +90,7 @@ LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID`
 
 WHERE EXISTS(SELECT * FROM `PRODUCT_MEMBER` t41 
  WHERE 
- t11.`ID` = t41.`PRODUCT_ID`  AND  ( t41.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t41.`ROLE_ID` <> 'customer' ) )
+ t11.`ID` = t41.`PRODUCT_ID`  AND  ( t41.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )
 ```
 
 </el-dialog>

@@ -93,4 +93,5 @@ WHERE PRINCIPAL_ID = ? and PRINCIPAL_TYPE = 'WORK_ITEM'
 |    中文名   |    代码名    |  数据类型    |  实体   |备注 |
 | --------| --------| -------- | -------- | --------   |
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象|[工作项(WORK_ITEM)](module/ProjMgmt/work_item.md)||
+|预估工时动态存储对象|extend_storage|数据对象|[扩展存储(EXTEND_STORAGE)](module/Base/extend_storage.md)||
 |recent|recent|数据对象|[最近访问(RECENT)](module/Base/recent.md)||

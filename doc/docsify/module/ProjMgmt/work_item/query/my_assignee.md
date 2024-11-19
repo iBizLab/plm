@@ -30,7 +30,7 @@
 
 ### 查询条件
 
-(`ASSIGNEE_ID(负责人)` EQ `用户上下文.srfpersonid` AND `IS_ARCHIVED(是否已归档)` EQ `'0'` AND `IS_DELETED(是否已删除)` EQ `'0'`)
+((`ASSIGNEE_ID(负责人)` EQ `用户上下文.srfpersonid` OR `exists(select 1 from executor t2 where t1.id = t2.owner_id and t2.owner_type = 'WORK_ITEM' and t2.owner_subtype = 'WORK_ITEM' and t2.user_id = #{ctx.sessioncontext.srfpersonid})`) AND `IS_ARCHIVED(是否已归档)` EQ `'0'` AND `IS_DELETED(是否已删除)` EQ `'0'`)
 
 
 
@@ -40,6 +40,8 @@
 
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -55,6 +57,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -62,6 +65,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -111,7 +116,7 @@ LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID`
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
-WHERE ( t1.`ASSIGNEE_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0 )
+WHERE ( ( t1.`ASSIGNEE_ID` = #{ctx.sessioncontext.srfpersonid}  OR  exists(select 1 from executor t2 where t1.id = t2.owner_id and t2.owner_type = 'WORK_ITEM' and t2.owner_subtype = 'WORK_ITEM' and t2.user_id = #{ctx.sessioncontext.srfpersonid}) )  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0 )
 ```
 
 </el-dialog>

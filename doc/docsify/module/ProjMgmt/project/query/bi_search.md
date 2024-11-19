@@ -45,7 +45,7 @@
   * `VISIBILITY(可见范围)`
   * `SCOPE_TYPE(所属)`
   * `TYPE(类型)`
-  * `STATE(状态)`
+  * `STATE(项目状态)`
   * `ID(标识)`
 
 

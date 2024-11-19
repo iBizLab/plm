@@ -36,6 +36,7 @@
 |[自动将新团队成员加入团队项目](module/Base/template_flow/logic/auto_add_member_to_project)|auto_add_member_to_project|事件处理（运行时支持）||新成员加入团队后，自动加入到该团队的项目。|
 |[自动设置工作项负责人](module/Base/template_flow/logic/auto_fill_assign_man)|auto_fill_assign_man|事件处理（运行时支持）||自动化，自动设置工作项负责人|
 |[自动设置测试计划的启动和完成状态](module/Base/template_flow/logic/test_plan_auto_set_state)|test_plan_auto_set_state|事件处理（运行时支持）||<br>自动设置测试计划的启动和完成状态|
+|[项目自动变更状态](module/Base/template_flow/logic/project_automatic_change_state)|project_automatic_change_state|定时作业（运行时支持）||定时执行，当项目的结束时间小于当前日期时，自动将项目状态变更为延期；<br>当项目的结束时间距今不足五天时，自动将项目状态变更为预警；|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|

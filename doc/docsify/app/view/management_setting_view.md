@@ -26,6 +26,7 @@
   * [评审配置(guideline_all_grid_view)](app/view/guideline_all_grid_view)
   * [需求配置(idea_config_tab_exp_view)](app/view/idea_config_tab_exp_view)
   * [需求(idea_global_setting_view)](app/view/idea_global_setting_view)
+  * [需求模板(idea_template_global_all_grid_view)](app/view/idea_template_global_all_grid_view)
   * [系统预置报表(insight_report_system_report_grid_view)](app/view/insight_report_system_report_grid_view)
   * [效能度量(insight_view_config_tree_exp_view)](app/view/insight_view_config_tree_exp_view)
   * [效能度量(insight_view_deleted_grid_view)](app/view/insight_view_deleted_grid_view)

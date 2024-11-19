@@ -1,5 +1,5 @@
 
-## 存在直接SQL调用的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[194]</font></sup>
+## 存在直接SQL调用的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[213]</font></sup>
 
 #### [基线(BASELINE)](module/Base/baseline)的处理逻辑[删除基线前附加逻辑(before_remove)](module/Base/baseline/logic/before_remove)
 
@@ -647,6 +647,27 @@ update recent set IS_DELETED=0 where owner_id=? and owner_subtype='idea'
 
 1. `Default(传入变量).ID(标识)`
 
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[更新需求进度(update_idea_progress)](module/ProdMgmt/idea/logic/update_idea_progress)
+
+节点：获取进度
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+select cast((sum(if(t2.TYPE = 'completed', 1, 0)) * 100) / count(1) as decimal(10, 2)) progress
+from work_item t1
+         inner join work_item_state t2 on t1.STATE = t2.ID
+where t1.id in (select target_id
+                from relation
+                where PRINCIPAL_ID = ?
+                  and PRINCIPAL_TYPE = 'idea'
+                  and TARGET_TYPE = 'work_item')
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+
+将执行sql结果赋值给参数`idea(idea)`
 #### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[生成最近访问(create_recent)](module/ProdMgmt/idea/logic/create_recent)
 
 节点：更新登记工时中的业务信息
@@ -1216,6 +1237,139 @@ update recent set RECENT_PARENT_IDENTIFIER = ? where RECENT_PARENT=?
 1. `Default(传入变量).IDENTIFIER(项目标识)`
 2. `Default(传入变量).ID(标识)`
 
+#### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[逾期工作项计数(warning_count_logic)](module/ProjMgmt/project/logic/warning_count_logic)
+
+节点：统计逾期、预警、当前预警
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+    COUNT(CASE WHEN t1.IS_DELETED = 0
+                AND t1.IS_ARCHIVED = 0
+                AND (IFNULL((TIMESTAMPDIFF(DAY, t1.`END_AT`, IFNULL(t1.`ACTUAL_END_AT`, CURDATE()))), NULL) IS NOT NULL)
+                AND t1.project_id =?
+                AND TIMESTAMPDIFF(DAY, t1.`END_AT`, IFNULL(t1.`ACTUAL_END_AT`, CURDATE())) BETWEEN -3 AND -1
+                AND t1.state = w.id
+                AND w.type <> 'completed'
+            THEN 1 END) AS upcoming_warning_count,
+    COUNT(CASE WHEN t1.IS_DELETED = 0
+                AND t1.IS_ARCHIVED = 0
+                AND (IFNULL((TIMESTAMPDIFF(DAY, t1.`END_AT`, IFNULL(t1.`ACTUAL_END_AT`, CURDATE()))), NULL) IS NOT NULL)
+                AND t1.project_id =?
+                AND TIMESTAMPDIFF(DAY, t1.`END_AT`, IFNULL(t1.`ACTUAL_END_AT`, CURDATE())) = 0
+                AND t1.state = w.id
+                AND w.type <> 'completed'
+            THEN 1 END) AS daily_warning_count,
+    COUNT(CASE WHEN t1.IS_DELETED = 0
+                AND t1.IS_ARCHIVED = 0
+                AND (IFNULL((TIMESTAMPDIFF(DAY, t1.`END_AT`, IFNULL(t1.`ACTUAL_END_AT`, CURDATE()))), NULL) IS NOT NULL)
+                AND t1.project_id =?
+                AND TIMESTAMPDIFF(DAY, t1.`END_AT`, IFNULL(t1.`ACTUAL_END_AT`, CURDATE())) > 0
+                AND t1.state = w.id
+                AND w.type <> 'completed'
+            THEN 1 END) AS overdue_count
+FROM
+    `WORK_ITEM` t1
+JOIN
+    `work_item_state` w ON t1.state = w.id;
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+2. `Default(传入变量).ID(标识)`
+3. `Default(传入变量).ID(标识)`
+
+重置参数`result(结果)`，并将执行sql结果赋值给参数`result(结果)`
+#### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[逾期工作项计数(warning_count_logic)](module/ProjMgmt/project/logic/warning_count_logic)
+
+节点：总计条数
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+    COUNT(1) AS total_work_item_count
+FROM
+    work_item w 
+    LEFT JOIN project p on w.PROJECT_ID = p.ID
+    LEFT JOIN work_item_state s on s.ID = w.state
+WHERE
+    p.IS_DELETED = 0
+    AND p.IS_ARCHIVED = 0
+    AND W.IS_DELETED = 0
+    AND W.IS_ARCHIVED = 0
+    AND s.type <> 'completed'
+    AND p.ID = ?;
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+
+重置参数`result(结果)`，并将执行sql结果赋值给参数`result(结果)`
+#### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[项目自动变更状态(project_automatic_change_state)](module/ProjMgmt/project/logic/project_automatic_change_state)
+
+节点：判断当前项目是否存在工作项
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT count(1) as work_item_data FROM work_item WHERE PROJECT_ID = ?
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+
+重置参数`has_child_data(存在子数据)`，并将执行sql结果赋值给参数`has_child_data(存在子数据)`
+#### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[项目自动变更状态(project_automatic_change_state)](module/ProjMgmt/project/logic/project_automatic_change_state)
+
+节点：汇聚预计、消耗工时
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+    SUM(CASE WHEN es.name = 'estimated_workload' THEN es.DECIMAL_VALUE ELSE 0 END) AS estimated_workload,
+    SUM(CASE WHEN es.name = 'actual_workload' THEN es.DECIMAL_VALUE ELSE 0 END) AS actual_workload
+FROM
+    project p
+JOIN
+    work_item wi ON p.id = wi.project_id
+JOIN
+    extend_storage es ON wi.id = es.owner_id
+WHERE
+    p.id = ?
+    AND es.owner_type = 'work_item'
+    AND (es.name = 'estimated_workload' OR es.name = 'actual_workload')
+    AND wi.pid is null;
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `project_temp(循环项目).ID(标识)`
+
+重置参数`select_result(查询结果)`，并将执行sql结果赋值给参数`select_result(查询结果)`
+#### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[项目自动变更状态(project_automatic_change_state)](module/ProjMgmt/project/logic/project_automatic_change_state)
+
+节点：直接SQL调用
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+    MIN(wi.ACTUAL_START_AT) AS ACTUAL_START_AT
+FROM
+    project p
+JOIN
+    work_item wi ON p.id = wi.project_id
+WHERE
+    p.id = ?
+
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `project_temp(循环项目).ID(标识)`
+
+重置参数`select_result(查询结果)`，并将执行sql结果赋值给参数`select_result(查询结果)`
 #### [项目标签(PROJECT_TAG)](module/ProjMgmt/project_tag)的处理逻辑[删除标签(delete_tag)](module/ProjMgmt/project_tag/logic/delete_tag)
 
 节点：更新标签属性
@@ -1326,6 +1480,96 @@ SELECT (
 4. `用户全局对象.srfpersonid`
 
 重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+#### [最近访问(RECENT)](module/Base/recent)的处理逻辑[我的任务总结(my_summary)](module/Base/recent/logic/my_summary)
+
+节点：获取工作项数、任务数、bug数
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+select sum(if(t4.`GROUP` <> 'task' and t4.`GROUP` <> 'bug', 1, 0)) other_item_num,
+       sum(if(t4.`GROUP` = 'task', 1, 0))                          task_num,
+       sum(if(t4.`GROUP` = 'bug', 1, 0))                           bug_num
+from work_item t1
+         inner join work_item_state t2 on t1.STATE = t2.ID and t2.TYPE = 'in_progress'
+         inner join project t3 on t1.PROJECT_ID = t3.ID and t3.IS_DELETED = 0 and t3.IS_ARCHIVED = 0
+         inner join work_item_type t4 on t4.ID = t1.WORK_ITEM_TYPE_ID
+where (t1.IS_ARCHIVED = 0
+    and t1.IS_DELETED = 0)
+  and (t1.ASSIGNEE_ID = ?
+    or exists (select 1
+               from executor t5
+               where t1.id = t5.owner_id
+                 and t5.owner_type = 'WORK_ITEM'
+                 and t5.owner_subtype = 'WORK_ITEM'
+                 and t5.user_id = ?))
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `用户全局对象.srfpersonid`
+2. `用户全局对象.srfpersonid`
+
+重置参数`result(result)`，并将执行sql结果赋值给参数`result(result)`
+#### [最近访问(RECENT)](module/Base/recent)的处理逻辑[我的任务总结(my_summary)](module/Base/recent/logic/my_summary)
+
+节点：获取产品需求数
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+select count(1) idea_num
+from idea t1
+         inner join dictionary t2 on t1.STATE = t2.VAL and t2.CATALOG = 'idea_state' and t2.type = 'in_progress'
+         inner join product t3 on t1.PRODUCT_ID = t3.ID and t3.IS_ARCHIVED = 0 and t3.IS_DELETED = 0
+where t1.ASSIGNEE_ID = ?
+  and t1.IS_DELETED = 0
+  and t1.IS_ARCHIVED = 0
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `用户全局对象.srfpersonid`
+
+重置参数`result(result)`，并将执行sql结果赋值给参数`result(result)`
+#### [最近访问(RECENT)](module/Base/recent)的处理逻辑[我的任务总结(my_summary)](module/Base/recent/logic/my_summary)
+
+节点：获取产品工单数
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+select count(1) ticket_num
+from ticket t1
+         inner join dictionary t2 on t1.STATE = t2.VAL and t2.CATALOG = 'ticket_state' and t2.type = 'in_progress'
+         inner join product t3 on t1.PRODUCT_ID = t3.ID and t3.IS_ARCHIVED = 0 and t3.IS_DELETED = 0
+where t1.ASSIGNEE_ID = ?
+  and t1.IS_ARCHIVED = 0
+  and t1.IS_DELETED = 0
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `用户全局对象.srfpersonid`
+
+重置参数`result(result)`，并将执行sql结果赋值给参数`result(result)`
+#### [最近访问(RECENT)](module/Base/recent)的处理逻辑[我的任务总结(my_summary)](module/Base/recent/logic/my_summary)
+
+节点：获取测试用例数
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+select count(1) case_num
+from test_case t1
+         inner join library t2 on t1.TEST_LIBRARY_ID = t2.ID and t2.IS_DELETED = 0 and t2.IS_ARCHIVED = 0
+where t1.MAINTENANCE_ID = ?
+  and t1.IS_DELETED = 0
+  and t1.IS_ARCHIVED = 0
+  and t1.STATE = '10'
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `用户全局对象.srfpersonid`
+
+重置参数`result(result)`，并将执行sql结果赋值给参数`result(result)`
 #### [最近访问(RECENT)](module/Base/recent)的处理逻辑[我负责的事项(my_charge_entry)](module/Base/recent/logic/my_charge_entry)
 
 节点：我负责的工作项
@@ -2089,6 +2333,145 @@ ORDER BY
 1. `Default(传入变量).CASE_ID(测试用例标识)`
 
 重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+#### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[通过发布规划计划(program_plan_by_release)](module/TestMgmt/run/logic/program_plan_by_release)
+
+节点：查询发布下工作项
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+select
+*
+from
+work_item
+where
+RELEASE_ID  = ?
+and IS_DELETED = 0
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `release(循环发布对象).ID(标识)`
+
+将执行sql结果赋值给参数`items(选中工作项)`
+#### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[通过发布规划计划(program_plan_by_release)](module/TestMgmt/run/logic/program_plan_by_release)
+
+节点：直接SQL调用
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+
+SELECT
+t11.*
+FROM `RELATION` t1 
+LEFT JOIN `TEST_CASE` t11 ON t1.`TARGET_ID` = t11.`ID` 
+LEFT JOIN  `LIBRARY` t12 ON t11.TEST_LIBRARY_ID = t12.ID 
+WHERE 
+( t11.`IS_DELETED` = 0 ) 
+AND
+( t1.`PRINCIPAL_TYPE` = 'work_item'  AND  t1.`PRINCIPAL_ID` = ?  AND  t1.`TARGET_TYPE` = 'test_case' ) 
+AND
+t12.ID = ?
+AND
+ not exists(select 1 from run t2 
+where 
+t11.ID= t2.CASE_ID 
+AND
+t2.PLAN_ID = ?  AND  t11.`IS_DELETED` = 0 )
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `work_item(工作项).id(标识)`
+2. `Default(传入变量).library`
+3. `Default(传入变量).principal_id`
+
+重置参数`relations(关联用例列表)`，并将执行sql结果赋值给参数`relations(关联用例列表)`
+#### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[通过工作项规划计划(program_plan_by_workitem)](module/TestMgmt/run/logic/program_plan_by_workitem)
+
+节点：直接SQL调用
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+
+SELECT
+t11.*
+FROM `RELATION` t1 
+LEFT JOIN `TEST_CASE` t11 ON t1.`TARGET_ID` = t11.`ID` 
+LEFT JOIN  `LIBRARY` t12 ON t11.TEST_LIBRARY_ID = t12.ID 
+WHERE 
+( t11.`IS_DELETED` = 0 ) 
+AND
+( t1.`PRINCIPAL_TYPE` = 'work_item'  AND  t1.`PRINCIPAL_ID` = ?  AND  t1.`TARGET_TYPE` = 'test_case' ) 
+AND
+t12.ID = ?
+AND
+ not exists(select 1 from run t2 
+where 
+t11.ID= t2.CASE_ID 
+AND
+t2.PLAN_ID = ?  AND  t11.`IS_DELETED` = 0 )
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `work_item(工作项).id(标识)`
+2. `Default(传入变量).library`
+3. `Default(传入变量).principal_id`
+
+重置参数`relations(关联用例列表)`，并将执行sql结果赋值给参数`relations(关联用例列表)`
+#### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[通过迭代规划计划(program_plan_by_sprint)](module/TestMgmt/run/logic/program_plan_by_sprint)
+
+节点：查询迭代下工作项
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+select
+	*
+from
+	work_item
+where
+	SPRINT_ID = ?
+	and IS_DELETED = 0
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `sprint(循环迭代对象).ID(标识)`
+
+将执行sql结果赋值给参数`items(选中工作项)`
+#### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[通过迭代规划计划(program_plan_by_sprint)](module/TestMgmt/run/logic/program_plan_by_sprint)
+
+节点：直接SQL调用
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+
+SELECT
+t11.*
+FROM `RELATION` t1 
+LEFT JOIN `TEST_CASE` t11 ON t1.`TARGET_ID` = t11.`ID` 
+LEFT JOIN  `LIBRARY` t12 ON t11.TEST_LIBRARY_ID = t12.ID 
+WHERE 
+( t11.`IS_DELETED` = 0 ) 
+AND
+( t1.`PRINCIPAL_TYPE` = 'work_item'  AND  t1.`PRINCIPAL_ID` = ?  AND  t1.`TARGET_TYPE` = 'test_case' ) 
+AND
+t12.ID = ?
+AND
+ not exists(select 1 from run t2 
+where 
+t11.ID= t2.CASE_ID 
+AND
+t2.PLAN_ID = ?  AND  t11.`IS_DELETED` = 0 )
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `work_item(工作项).id(标识)`
+2. `Default(传入变量).library`
+3. `Default(传入变量).principal_id`
+
+重置参数`relations(关联用例列表)`，并将执行sql结果赋值给参数`relations(关联用例列表)`
 #### [执行结果(RUN_HISTORY)](module/TestMgmt/run_history)的处理逻辑[执行结果获取(run_history_get)](module/TestMgmt/run_history/logic/run_history_get)
 
 节点：执行结果获取
@@ -2388,6 +2771,69 @@ select uuid(), ?, ?, ?, id, 0, ?, ?, ?, ? from project_release
 6. `Default(传入变量).TYPE(阶段类型)`
 7. `Default(传入变量).SEQUENCE(排序)`
 
+#### [规则模板(TEMPLATE_FLOW)](module/Base/template_flow)的处理逻辑[项目自动变更状态(project_automatic_change_state)](module/Base/template_flow/logic/project_automatic_change_state)
+
+节点：判断当前项目是否存在工作项
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT count(1) as work_item_data FROM work_item WHERE PROJECT_ID = ?
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+
+重置参数`has_child_data(存在子数据)`，并将执行sql结果赋值给参数`has_child_data(存在子数据)`
+#### [规则模板(TEMPLATE_FLOW)](module/Base/template_flow)的处理逻辑[项目自动变更状态(project_automatic_change_state)](module/Base/template_flow/logic/project_automatic_change_state)
+
+节点：汇聚预计、消耗工时
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+    SUM(CASE WHEN es.name = 'estimated_workload' THEN es.DECIMAL_VALUE ELSE 0 END) AS estimated_workload,
+    SUM(CASE WHEN es.name = 'actual_workload' THEN es.DECIMAL_VALUE ELSE 0 END) AS actual_workload
+FROM
+    project p
+JOIN
+    work_item wi ON p.id = wi.project_id
+JOIN
+    extend_storage es ON wi.id = es.owner_id
+WHERE
+    p.id = ?
+    AND es.owner_type = 'work_item'
+    AND (es.name = 'estimated_workload' OR es.name = 'actual_workload')
+    AND wi.pid is null;
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `project_temp(循环项目).ID(标识)`
+
+重置参数`select_result(查询结果)`，并将执行sql结果赋值给参数`select_result(查询结果)`
+#### [规则模板(TEMPLATE_FLOW)](module/Base/template_flow)的处理逻辑[项目自动变更状态(project_automatic_change_state)](module/Base/template_flow/logic/project_automatic_change_state)
+
+节点：直接SQL调用
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+    MIN(wi.ACTUAL_START_AT) AS ACTUAL_START_AT
+FROM
+    project p
+JOIN
+    work_item wi ON p.id = wi.project_id
+WHERE
+    p.id = ?
+
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `project_temp(循环项目).ID(标识)`
+
+重置参数`select_result(查询结果)`，并将执行sql结果赋值给参数`select_result(查询结果)`
 #### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[删除(delete)](module/TestMgmt/test_case/logic/delete)
 
 节点：删除最近访问
@@ -4292,6 +4738,30 @@ ORDER BY
 10. `Default(传入变量).n_is_archived_in`
 11. `Default(传入变量).n_is_archived_in`
 12. `Default(传入变量).n_is_archived_in`
+
+重置参数`result(result)`，并将执行sql结果赋值给参数`result(result)`
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[首页待完成项计数器(count_my_todo)](module/ProjMgmt/work_item/logic/count_my_todo)
+
+节点：查询我的待完成
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT count(1) my_todo_count
+FROM `WORK_ITEM` t1
+         LEFT JOIN `WORK_ITEM_STATE` t3 ON t1.`STATE` = t3.`ID`
+WHERE ((t1.`ASSIGNEE_ID` = ? OR exists(select 1
+                                       from executor t2
+                                       where t1.id = t2.owner_id
+                                         and t2.owner_type = 'WORK_ITEM'
+                                         and t2.owner_subtype = 'WORK_ITEM'
+                                         and t2.user_id = ?)) AND t1.`IS_ARCHIVED` = 0 AND t1.`IS_DELETED` = 0 AND
+       t3.`TYPE` <> 'completed')
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `用户全局对象.srfpersonid`
+2. `用户全局对象.srfpersonid`
 
 重置参数`result(result)`，并将执行sql结果赋值给参数`result(result)`
 

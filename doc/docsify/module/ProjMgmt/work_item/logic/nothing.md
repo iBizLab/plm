@@ -15,8 +15,10 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./nothing#begin {"开始"}]]
+state "结束" as END1 <<end>> [[$./nothing#end1 {"结束"}]]
 
 
+Begin --> END1
 
 
 @enduml
@@ -30,6 +32,12 @@ state "开始" as Begin <<start>> [[$./nothing#begin {"开始"}]]
 
 
 *- N/A*
+#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
+
+
+
+返回 `Default(传入变量)`
+
 
 
 ### 实体逻辑参数

@@ -60,7 +60,7 @@ LOOPSUBCALL1 --> END1
 
 
 1. 将`dependency` 设置给  `dependency(依赖).PRINCIPAL_TYPE(关联主体类型)`
-2. 将`Default(传入变量).PRINCIPAL_ID(关联主体标识)` 设置给  `dependency(依赖).TARGET_ID(关联目标标识)`
+2. 将`Default(传入变量).PRINCIPAL_ID(关联主体标识)` 设置给  `dependency(依赖).TARGET_ID(目标主体标识)`
 3. 将`1` 设置给  `dependency(依赖).RELATION_TYPE(关联类型)`
 
 #### 填充principal_id :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>

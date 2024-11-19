@@ -75,7 +75,7 @@ LOOPSUBCALL1 --> END1
 2. 将`for_temp_obj(循环临时变量).change_type` 设置给  `forward_relation_obj(正向关系对象).CHANGE_TYPE(变更类型)`
 3. 将`for_temp_obj(循环临时变量).change_version` 设置给  `forward_relation_obj(正向关系对象).change_version(变更版本)`
 4. 将`for_temp_obj(循环临时变量).id(标识)` 设置给  `reverse_relation_obj(反向关系对象).PRINCIPAL_ID(关联主体标识)`
-5. 将`Default(传入变量).id(标识)` 设置给  `reverse_relation_obj(反向关系对象).TARGET_ID(关联目标标识)`
+5. 将`Default(传入变量).id(标识)` 设置给  `reverse_relation_obj(反向关系对象).TARGET_ID(目标主体标识)`
 6. 将`REVIEW` 设置给  `forward_relation_obj(正向关系对象).PRINCIPAL_TYPE(关联主体类型)`
 7. 将`TEST_CASE` 设置给  `forward_relation_obj(正向关系对象).TARGET_TYPE(关联目标类型)`
 8. 将`TEST_CASE` 设置给  `reverse_relation_obj(反向关系对象).PRINCIPAL_TYPE(关联主体类型)`

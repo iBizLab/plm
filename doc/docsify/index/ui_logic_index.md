@@ -29,6 +29,7 @@
 |[附件删除](module/Base/attachment/uilogic/remove_attachment)|remove_attachment|自动判断为表格或表单附件，按类别删除|
 |[附件删除（移动端）](module/Base/attachment/uilogic/mob_remove_attachment)|mob_remove_attachment|自动判断为列表或表单附件，按类别删除|
 |[附件删除（表格）](module/Base/attachment/uilogic/remove_attachment_grid)|remove_attachment_grid|调用表格的行删除方法，删除指定行附件|
+|[附件预览](module/Base/attachment/uilogic/attachment_preview)|attachment_preview||
 
 
 ## [关注(ATTENTION)](module/Base/attention.md) :id=attention
@@ -177,6 +178,7 @@
 | --------|--------|------|
 |[删除评论](module/Team/discuss_post/uilogic/del_comment)|del_comment|删除评论|
 |[刷新](module/Team/discuss_post/uilogic/refresh)|refresh|刷新主视图|
+|[刷新（移动端）](module/Team/discuss_post/uilogic/mob_refresh)|mob_refresh||
 |[发送评论](module/Team/discuss_post/uilogic/send_comment)|send_comment|发送评论|
 |[发送评论（移动端讨论）](module/Team/discuss_post/uilogic/send_comment_mob)|send_comment_mob|发送评论，并关闭评论输入框|
 |[添加回复](module/Team/discuss_post/uilogic/add_reply)|add_reply|添加回复，并关闭回复输入框|
@@ -224,6 +226,7 @@
 
 
 
+
 ## [团队(GROUP)](module/Base/group.md) :id=group
 
 |  中文名col200 | 代码名col200 | 备注col500 |
@@ -252,6 +255,7 @@
 |[新建子产品](module/ProdMgmt/idea/uilogic/create_section)|create_section|产品需求页左侧树的新建子产品逻辑|
 |[新建子模块](module/ProdMgmt/idea/uilogic/create_children_category)|create_children_category|调用树节点新建方法，新建子模块|
 |[新建模块](module/ProdMgmt/idea/uilogic/create_category)|create_category|产品需求页左侧树的新建模块逻辑|
+|[新建需求并关联客户](module/ProdMgmt/idea/uilogic/create_and_relation_customer)|create_and_relation_customer||
 |[显示下拉并展开选项（嵌入视图）](module/ProdMgmt/idea/uilogic/toolbar_show_dorpdown_data)|toolbar_show_dorpdown_data|显示下拉区域并展开选项(工具栏)|
 |[显示表单侧边栏](module/ProdMgmt/idea/uilogic/show_form_sidebar)|show_form_sidebar|每次需求主表单刷新时，将右侧侧边栏默认显示出来。|
 |[显示评论区](module/ProdMgmt/idea/uilogic/show_commnet)|show_commnet|打开评论区，同时隐藏评论按钮|
@@ -409,6 +413,7 @@
 |  中文名col200 | 代码名col200 | 备注col500 |
 | --------|--------|------|
 |[批量删除产品成员临时数据](module/ProdMgmt/product/uilogic/remove_batch_temp)|remove_batch_temp|获取产品内所有临时成员数据并删除|
+|[获取表格当前页大小](module/ProdMgmt/product/uilogic/get_table_size)|get_table_size||
 |[计算表格列行为状态(product)](module/ProdMgmt/product/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|
 |[通知刷新](module/ProdMgmt/product/uilogic/notify_refresh)|notify_refresh|通知页面刷新|
 
@@ -440,6 +445,7 @@
 |  中文名col200 | 代码名col200 | 备注col500 |
 | --------|--------|------|
 |[刷新当前表格](module/ProjMgmt/project/uilogic/refresh_current_grid)|refresh_current_grid|刷新当前视图的表格|
+|[刷新项目状态](module/ProjMgmt/project/uilogic/refresh_project_state)|refresh_project_state||
 |[图表全屏（移动端）](module/ProjMgmt/project/uilogic/mob_full_screen)|mob_full_screen||
 |[批量删除项目成员临时数据](module/ProjMgmt/project/uilogic/remove_batch_temp)|remove_batch_temp|获取项目内所有临时成员数据并删除|
 |[计算表格列行为状态(project)](module/ProjMgmt/project/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|
@@ -456,6 +462,13 @@
 | --------|--------|------|
 |[新建项目默认临时成员](module/ProjMgmt/project_member/uilogic/create_default_temp_members)|create_default_temp_members|创建临时数据，并将当前用户加入到项目临时成员内|
 |[跳转至成员设置](module/ProjMgmt/project_member/uilogic/jump_to_member_set)|jump_to_member_set|通过路由跳转至项目成员设置|
+
+
+## [项目状态(PROJECT_STATE)](module/ProjMgmt/project_state.md) :id=project_state
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[系统工作项状态隐藏操作列](module/ProjMgmt/project_state/uilogic/cal_is_system)|cal_is_system|系统工作项状态隐藏操作列|
 
 
 
@@ -847,6 +860,7 @@
 |[关联需求（工具栏）](module/ProjMgmt/work_item/uilogic/toolbar_link_idea)|toolbar_link_idea|主视图工具栏上点击触发，切换分页，打开下拉菜单|
 |[切换显示模式](module/ProjMgmt/work_item/uilogic/switch_show_mode)|switch_show_mode|切换表格的显示模式|
 |[刷新](module/ProjMgmt/work_item/uilogic/refresh)|refresh||
+|[刷新关联子工作项列表（移动端）](module/ProjMgmt/work_item/uilogic/mob_refresh_child_list)|mob_refresh_child_list||
 |[图表全屏（移动端）](module/ProjMgmt/work_item/uilogic/mob_full_screen)|mob_full_screen||
 |[图表显示总数](module/ProjMgmt/work_item/uilogic/chart_show_count)|chart_show_count|仪表盘图表显示总数<br>|
 |[子工作项刷新计数器](module/ProjMgmt/work_item/uilogic/child_refresh_counter)|child_refresh_counter|关联数据变更后，触发计数器刷新|
@@ -879,6 +893,7 @@
 |[计算资源成员（全局）](module/ProjMgmt/work_item/uilogic/calc_resouce_member)|calc_resouce_member|计算资源甘特部件当前人员，打开选择视图时回显simplelist|
 |[计算面板项行为状态](module/ProjMgmt/work_item/uilogic/calc_kanban_item_action_state)|calc_kanban_item_action_state|看板中工作项的归档或激活按钮的禁用判定|
 |[计算项目资源成员](module/ProjMgmt/work_item/uilogic/calc_project_resouce_member)|calc_project_resouce_member|计算资源甘特部件当前人员，打开选择视图时回显simplelist|
+|[设置执行人](module/ProjMgmt/work_item/uilogic/setting_executors)|setting_executors|设置执行人|
 |[设置默认关注人](module/ProjMgmt/work_item/uilogic/set_default_attention)|set_default_attention|新建工作项时，默认将创建人添加到此工作项的关注列表|
 |[选择下拉框区域展示](module/ProjMgmt/work_item/uilogic/show_choose_area)|show_choose_area|逻辑控制关联表格下方选项区域动态显示|
 |[通知刷新（移动端）](module/ProjMgmt/work_item/uilogic/notify_refresh)|notify_refresh|通知页面刷新|
@@ -886,7 +901,6 @@
 |[门户刷新](module/ProjMgmt/work_item/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户编辑](module/ProjMgmt/work_item/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|
 |[需求关联工作项](module/ProjMgmt/work_item/uilogic/idea_relation_work_item)|idea_relation_work_item|需求关联工作项，生成关联数据|
-|[项目集打开父工作项](module/ProjMgmt/work_item/uilogic/open_parent_main_view)|open_parent_main_view|项目集中父工作项列触发逻辑：打开父工作项主视图|
 
 
 ## [工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state.md) :id=work_item_state

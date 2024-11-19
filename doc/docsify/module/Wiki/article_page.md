@@ -509,6 +509,7 @@
 | 回收站 | open_deleted_view | 回收站 |无数据|用户自定义||
 | 重命名 | toolbar_tree_exp_view_node2_cm_deuiaction2_click | 重命名 |单项数据|用户自定义||
 | 重命名 | toolbar_tree_exp_view_draft_cm_deuiaction2_click | 重命名 |单项数据|用户自定义||
+| 打开页面信息 | open_page_info | 打开页面信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[页面信息](app/view/article_page_page_detail_edit_view)</details>||
 | 查看空间成员 | open_space_member | 空间成员 |无数据|用户自定义||
 | 恢复_视图消息 | recover_message | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
 | 快速新建文档 | quick_create_page_document | 新建页面 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建页面](app/view/article_page_qucik_create_view)</details>||

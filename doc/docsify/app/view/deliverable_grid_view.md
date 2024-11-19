@@ -15,8 +15,8 @@
 
 
 ### 关联界面行为
-  * [交付物(DELIVERABLE)](module/Base/deliverable) : [提交](module/Base/deliverable#界面行为)
   * [交付物(DELIVERABLE)](module/Base/deliverable) : [删除](module/Base/deliverable#界面行为)
+  * [交付物(DELIVERABLE)](module/Base/deliverable) : [提交](module/Base/deliverable#界面行为)
   * [交付物(DELIVERABLE)](module/Base/deliverable) : [编辑](module/Base/deliverable#界面行为)
 
 ### 关联视图

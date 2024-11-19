@@ -32,6 +32,7 @@ entity "LIBRARY_MEMBER\n测试库成员" as LIBRARY_MEMBER [[$../module/TestMgmt
 entity "PROJECT\n项目" as PROJECT [[$../module/ProjMgmt/project {项目}]] {
         <&key> ID - 标识
         --
+        <&link-intact> STATE - 项目状态
 }
 entity "RELEASE\n项目发布" as RELEASE [[$../module/ProjMgmt/release {项目发布}]] {
         <&key> ID - 标识

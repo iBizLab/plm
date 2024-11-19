@@ -37,6 +37,7 @@ entity "PRODUCT\n产品" as PRODUCT [[$../module/ProdMgmt/product {产品}]] {
 entity "PROJECT\n项目" as PROJECT [[$../module/ProjMgmt/project {项目}]] {
         <&key> ID - 标识
         --
+        <&link-intact> STATE - 项目状态
 }
 entity "REFERENCES_INDEX\n引用索引" as REFERENCES_INDEX [[$../module/Base/references_index {引用索引}]] {
         <&key> ID - 标识

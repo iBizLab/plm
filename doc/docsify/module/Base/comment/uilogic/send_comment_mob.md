@@ -15,26 +15,27 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./send_comment_mob#begin {开始}]]
-state "修改评论" as DEACTION3  [[$./send_comment_mob#deaction3 {修改评论}]]
-state "为评论重新赋值参数" as PREPAREJSPARAM6  [[$./send_comment_mob#preparejsparam6 {为评论重新赋值参数}]]
-state "准备参数" as PREPAREJSPARAM10  [[$./send_comment_mob#preparejsparam10 {准备参数}]]
-state "准备参数" as PREPAREJSPARAM9  [[$./send_comment_mob#preparejsparam9 {准备参数}]]
-state "发送评论（讨论）" as DEACTION4  [[$./send_comment_mob#deaction4 {发送评论（讨论）}]]
-state "通知刷新主表单" as RAWJSCODE5  [[$./send_comment_mob#rawjscode5 {通知刷新主表单}]]
-state "设置评论principal_id与principal_type" as PREPAREJSPARAM1  [[$./send_comment_mob#preparejsparam1 {设置评论principal_id与principal_type}]]
-state "清空评论框与评论id" as RAWJSCODE2  [[$./send_comment_mob#rawjscode2 {清空评论框与评论id}]]
-state "暂时承载" as PREPAREJSPARAM7  [[$./send_comment_mob#preparejsparam7 {暂时承载}]]
-state "设置评论id" as PREPAREJSPARAM3  [[$./send_comment_mob#preparejsparam3 {设置评论id}]]
-state "结束" as END1 <<end>> [[$./send_comment_mob#end1 {结束}]]
-state "暂时承载" as PREPAREJSPARAM8  [[$./send_comment_mob#preparejsparam8 {暂时承载}]]
-state "获取评论框内容" as RAWJSCODE1  [[$./send_comment_mob#rawjscode1 {获取评论框内容}]]
-state "创建评论" as DEACTION2  [[$./send_comment_mob#deaction2 {创建评论}]]
-state "填入临时数据" as RAWJSCODE4  [[$./send_comment_mob#rawjscode4 {填入临时数据}]]
-state "回复标识" as PREPAREJSPARAM2  [[$./send_comment_mob#preparejsparam2 {回复标识}]]
-state "无操作（仅用于连接）" as PREPAREJSPARAM5  [[$./send_comment_mob#preparejsparam5 {无操作（仅用于连接）}]]
-state "空，用于条件分支" as PREPAREJSPARAM4  [[$./send_comment_mob#preparejsparam4 {空，用于条件分支}]]
-state "视图部件调用" as VIEWCTRLINVOKE1  [[$./send_comment_mob#viewctrlinvoke1 {视图部件调用}]]
 state "发送评论（回复）" as DEACTION5  [[$./send_comment_mob#deaction5 {发送评论（回复）}]]
+state "无操作（仅用于连接）" as PREPAREJSPARAM5  [[$./send_comment_mob#preparejsparam5 {无操作（仅用于连接）}]]
+state "暂时承载" as PREPAREJSPARAM7  [[$./send_comment_mob#preparejsparam7 {暂时承载}]]
+state "回复标识" as PREPAREJSPARAM2  [[$./send_comment_mob#preparejsparam2 {回复标识}]]
+state "设置评论principal_id与principal_type" as PREPAREJSPARAM1  [[$./send_comment_mob#preparejsparam1 {设置评论principal_id与principal_type}]]
+state "为评论重新赋值参数" as PREPAREJSPARAM6  [[$./send_comment_mob#preparejsparam6 {为评论重新赋值参数}]]
+state "准备参数" as PREPAREJSPARAM9  [[$./send_comment_mob#preparejsparam9 {准备参数}]]
+state "注入脚本代码" as RAWJSCODE6  [[$./send_comment_mob#rawjscode6 {注入脚本代码}]]
+state "通知刷新主表单" as RAWJSCODE5  [[$./send_comment_mob#rawjscode5 {通知刷新主表单}]]
+state "视图部件调用" as VIEWCTRLINVOKE1  [[$./send_comment_mob#viewctrlinvoke1 {视图部件调用}]]
+state "获取评论框内容" as RAWJSCODE1  [[$./send_comment_mob#rawjscode1 {获取评论框内容}]]
+state "清空评论框与评论id" as RAWJSCODE2  [[$./send_comment_mob#rawjscode2 {清空评论框与评论id}]]
+state "空，用于条件分支" as PREPAREJSPARAM4  [[$./send_comment_mob#preparejsparam4 {空，用于条件分支}]]
+state "创建评论" as DEACTION2  [[$./send_comment_mob#deaction2 {创建评论}]]
+state "准备参数" as PREPAREJSPARAM10  [[$./send_comment_mob#preparejsparam10 {准备参数}]]
+state "设置评论id" as PREPAREJSPARAM3  [[$./send_comment_mob#preparejsparam3 {设置评论id}]]
+state "暂时承载" as PREPAREJSPARAM8  [[$./send_comment_mob#preparejsparam8 {暂时承载}]]
+state "发送评论（讨论）" as DEACTION4  [[$./send_comment_mob#deaction4 {发送评论（讨论）}]]
+state "修改评论" as DEACTION3  [[$./send_comment_mob#deaction3 {修改评论}]]
+state "填入临时数据" as RAWJSCODE4  [[$./send_comment_mob#rawjscode4 {填入临时数据}]]
+state "结束" as END1 <<end>> [[$./send_comment_mob#end1 {结束}]]
 
 
 Begin --> RAWJSCODE1
@@ -46,9 +47,11 @@ PREPAREJSPARAM7 --> PREPAREJSPARAM4 : [[$./send_comment_mob#preparejsparam7-prep
 PREPAREJSPARAM4 --> PREPAREJSPARAM8 : [[$./send_comment_mob#preparejsparam4-preparejsparam8{无存在评论id} 无存在评论id]]
 PREPAREJSPARAM8 --> DEACTION2 : [[$./send_comment_mob#preparejsparam8-deaction2{连接名称} 连接名称]]
 DEACTION2 --> RAWJSCODE2
+RAWJSCODE2 --> RAWJSCODE6 : [[$./send_comment_mob#rawjscode2-rawjscode6{page} page]]
+RAWJSCODE6 --> VIEWCTRLINVOKE1
+VIEWCTRLINVOKE1 --> END1
 RAWJSCODE2 --> RAWJSCODE5
 RAWJSCODE5 --> VIEWCTRLINVOKE1
-VIEWCTRLINVOKE1 --> END1
 PREPAREJSPARAM8 --> PREPAREJSPARAM9 : [[$./send_comment_mob#preparejsparam8-preparejsparam9{连接名称} 连接名称]]
 PREPAREJSPARAM9 --> DEACTION4 : [[$./send_comment_mob#preparejsparam9-deaction4{连接名称} 连接名称]]
 DEACTION4 --> PREPAREJSPARAM10
@@ -228,6 +231,16 @@ ibiz.hub.getApp(context.srfappid).deService.exec(
 ibiz.mc.command.update.send({ srfdecodename: context.principal_type,srfkey: context.principal_id})
 ```
 
+#### 注入脚本代码 :id=RAWJSCODE6<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+
+
+
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+ibiz.mc.command.update.send({ srfdecodename: "article_page",srfkey:context.principal_id})
+```
+
 #### 视图部件调用 :id=VIEWCTRLINVOKE1<sup class="footnote-symbol"> <font color=gray size=1>[视图部件调用]</font></sup>
 
 
@@ -254,6 +267,9 @@ ibiz.mc.command.update.send({ srfdecodename: context.principal_type,srfkey: cont
 #### 连接名称 :id=PREPAREJSPARAM8-DEACTION2
 
 ```ctx(应用上下文变量).principal_type``` NOTEQ ```discuss_post``` AND ```ctx(应用上下文变量).principal_type``` NOTEQ ```discuss_reply```
+#### page :id=RAWJSCODE2-RAWJSCODE6
+
+```ctx(应用上下文变量).principal_type``` EQ ```PAGE```
 #### 连接名称 :id=PREPAREJSPARAM8-PREPAREJSPARAM9
 
 (```ctx(应用上下文变量).principal_type``` EQ ```discuss_post``` OR ```ctx(应用上下文变量).principal_type``` EQ ```discuss_reply```)
@@ -278,9 +294,9 @@ ibiz.mc.command.update.send({ srfdecodename: context.principal_type,srfkey: cont
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|应用上下文变量|ctx|导航视图参数绑定参数||
 |当前视图对象|view|当前视图对象||
 |编辑器|editor|数据对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|MDCTRL|MDCTRL|部件对象||
 |评论对象|comment|数据对象||
+|MDCTRL|MDCTRL|部件对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|应用上下文变量|ctx|导航视图参数绑定参数||

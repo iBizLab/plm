@@ -38,5 +38,5 @@ LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID`
 
 WHERE EXISTS(SELECT * FROM `PRODUCT_MEMBER` t31 
  WHERE 
- t11.`ID` = t31.`PRODUCT_ID`  AND  ( t31.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t31.`ROLE_ID` <> 'customer' ) )
+ t11.`ID` = t31.`PRODUCT_ID`  AND  ( t31.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )
 ```

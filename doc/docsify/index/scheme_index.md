@@ -336,6 +336,23 @@
 |SHOWORDER|排序|INT|是||||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
+#### 执行人(EXECUTOR)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CREATE_MAN|建立人|VARCHAR|是|100|||
+|CREATE_TIME|建立时间|DATETIME|是||||
+|ESTIMATED_WORKLOAD|预估工时|DECIMAL|是||1||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|IS_ASSIGNEE|是否负责人|INT|是||||
+|NAME|名称|VARCHAR|是|200|||
+|OWNER_ID|所属数据标识|VARCHAR|是|100|||
+|OWNER_SUBTYPE|所属对象子类型|VARCHAR|是|100|||
+|OWNER_TYPE|所属数据对象|VARCHAR|是|100|||
+|SEQUENCE|序号|DECIMAL|是||||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+|USER_ID|关注人|VARCHAR|是|100|||
+|USER_NAME|执行人名称|VARCHAR|是|200|||
 #### 扩展日志(EXTEND_LOG)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
@@ -446,6 +463,7 @@
 |DESCRIPTION|描述|TEXT|是|1048576|||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |ID2|标识2|VARCHAR|是|100|||
+|IS_GLOBAL|全局模板|INT|是||||
 |NAME|名称|VARCHAR|是|200|||
 |PRODUCT_ID|产品|VARCHAR|是|100|||
 |SUITE|模块|VARCHAR|是|100|||
@@ -758,13 +776,17 @@
 #### 项目(PROJECT)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|ACTUAL_END_AT|实际结束时间|DATETIME|是||||
+|ACTUAL_START_AT|实际开始时间|DATETIME|是||||
 |ASSIGNEE_ID|负责人标识|VARCHAR|是|100|||
 |ASSIGNEE_NAME|负责人|VARCHAR|是|100|||
 |COLOR|主题色|VARCHAR|是|100|||
+|CONSUME_TIME|消耗时间|VARCHAR|是|100|||
 |CREATE_MAN|建立人|VARCHAR|是|100|||
 |CREATE_TIME|建立时间|DATETIME|是||||
 |DESCRIPTION|描述|VARCHAR|是|2000|||
 |END_AT|结束时间|DATETIME|是||||
+|EXPECTED_TIME|预计时间|VARCHAR|是|100|||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |IDENTIFIER|项目标识|VARCHAR|是|100|||
 |IS_ARCHIVED|是否已归档|INT|是||||
@@ -809,6 +831,20 @@
 |PROJECT_ID|项目标识|VARCHAR|是|100|||
 |START_AT|开始时间|DATETIME|是||||
 |STATUS|状态|VARCHAR|是|60|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+#### 项目状态(PROJECT_STATE)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|COLOR|颜色|VARCHAR|是|100|||
+|CREATE_MAN|建立人|VARCHAR|是|100|||
+|CREATE_TIME|建立时间|DATETIME|是||||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|IS_SYSTEM|是否系统类型|INT|是||||
+|NAME|名称|VARCHAR|是|200|||
+|SEQUENCE|序号|DECIMAL|是||||
+|STYLE|样式表|VARCHAR|是|100|||
+|TYPE|状态类别|VARCHAR|是|60|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
 #### 项目标签(PROJECT_TAG)
@@ -1352,6 +1388,8 @@
 #### 工作项(WORK_ITEM)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|ACTUAL_END_AT|实际结束时间|DATETIME|是||||
+|ACTUAL_START_AT|实际开始时间|DATETIME|是||||
 |ASSIGNEE_ID|负责人标识|VARCHAR|是|100|||
 |ASSIGNEE_NAME|负责人|VARCHAR|是|100|||
 |BACKLOG_FROM|需求来源|VARCHAR|是|60|||
@@ -1366,12 +1404,14 @@
 |ENTRY_ID|看板栏标识|VARCHAR|是|100|||
 |ENTRY_POSITION|所在看板栏位置|INT|是||||
 |ENTRY_STATUS|看板栏状态|VARCHAR|是|100|||
+|FINISHER|完成人|VARCHAR|是|100|||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |IDENTIFIER|编号|VARCHAR|是|100|||
 |IS_ARCHIVED|是否已归档|INT|是||||
 |IS_DELETED|是否已删除|INT|是||||
 |IS_LEAF|是否叶子节点|INT|是||||
 |JOB_TYPE|任务类别|VARCHAR|是|60|||
+|MULTIPLE_PEOPLE|多人任务|INT|是||||
 |PID|父标识|VARCHAR|是|100|||
 |PRIORITY|优先级|VARCHAR|是|100|||
 |PROJECT_ID|项目标识|VARCHAR|是|100|||

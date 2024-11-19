@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./copy_shared_url#begin {开始}]]
-state "复制共享链接" as RAWJSCODE1  [[$./copy_shared_url#rawjscode1 {复制共享链接}]]
 state "结束" as END1 <<end>> [[$./copy_shared_url#end1 {结束}]]
+state "复制共享链接" as RAWJSCODE1  [[$./copy_shared_url#rawjscode1 {复制共享链接}]]
 
 
 Begin --> RAWJSCODE1
@@ -46,6 +46,7 @@ var shared_url = _default.shared_page_url;
 if(shared_url !== null && shared_url !== undefined){
     var textArea = document.createElement("textarea");
     // 在 textarea 中放入需要复制的文本
+    textArea.readOnly = true;
     textArea.value = shared_url;
     // 将 textarea 添加到 DOM 中
     document.body.appendChild(textArea);

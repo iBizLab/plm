@@ -14,9 +14,9 @@
 
 
 ### 关联界面行为
-  * [最近访问(RECENT)](module/Base/recent) : [打开移动端事项分页导航视图(待完成事项)](module/Base/recent#界面行为)
-  * [最近访问(RECENT)](module/Base/recent) : [打开移动端事项分页导航视图(我负责的事项)](module/Base/recent#界面行为)
   * [最近访问(RECENT)](module/Base/recent) : [打开移动端事项分页导航视图(我创建的事项)](module/Base/recent#界面行为)
+  * [最近访问(RECENT)](module/Base/recent) : [打开移动端事项分页导航视图(我负责的事项)](module/Base/recent#界面行为)
+  * [最近访问(RECENT)](module/Base/recent) : [打开移动端事项分页导航视图(待完成事项)](module/Base/recent#界面行为)
   * [最近访问(RECENT)](module/Base/recent) : [打开移动端事项分页导航视图(我关注的事项)](module/Base/recent#界面行为)
   * [最近访问(RECENT)](module/Base/recent) : [打开最近访问（移动端）](module/Base/recent#界面行为)
 
@@ -31,7 +31,7 @@
   * [最近访问的用例(recent_recent_access_case_mobbash)](app/view/recent_recent_access_case_mobbash)
   * [最近访问的项目(recent_recent_access_project_mobbash)](app/view/recent_recent_access_project_mobbash)
   * [工作日历(work_item_mob_calendar_exp_view)](app/view/work_item_mob_calendar_exp_view)
-  * [我负责的工作项(work_item_mob_my_assignee_chart)](app/view/work_item_mob_my_assignee_chart)
+  * [个人工作项统计(work_item_mob_my_assignee_chart)](app/view/work_item_mob_my_assignee_chart)
   * [待完成事项(work_item_mob_not_completed_md_view)](app/view/work_item_mob_not_completed_md_view)
   * [我负责的工作项(work_item_my_assignee_mobboard)](app/view/work_item_my_assignee_mobboard)
   * [我创建的工作项(work_item_my_created_mobdash)](app/view/work_item_my_created_mobdash)

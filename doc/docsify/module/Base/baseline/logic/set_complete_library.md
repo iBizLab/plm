@@ -103,7 +103,7 @@ PREPAREPARAM4 --> DEACTION3
 
 
 
-1. 将`for_temp_obj(循环临时变量).TARGET_ID(关联目标标识)` 设置给  `test_case(用例).ID(标识)`
+1. 将`for_temp_obj(循环临时变量).TARGET_ID(目标主体标识)` 设置给  `test_case(用例).ID(标识)`
 
 #### 获取用例 :id=DEACTION2<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
@@ -117,7 +117,7 @@ PREPAREPARAM4 --> DEACTION3
 
 
 
-1. 将`for_temp_obj(循环临时变量).TARGET_ID(关联目标标识)` 设置给  `version(版本).OWNER_ID(所属数据标识)`
+1. 将`for_temp_obj(循环临时变量).TARGET_ID(目标主体标识)` 设置给  `version(版本).OWNER_ID(所属数据标识)`
 2. 将`TEST_CASE` 设置给  `version(版本).OWNER_TYPE(所属数据对象)`
 3. 将`设立基线创建版本` 设置给  `version(版本).DESCRIPTION(描述)`
 

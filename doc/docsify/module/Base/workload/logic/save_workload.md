@@ -25,8 +25,10 @@ state "测试用例和测试库信息属性" as PREPAREPARAM5  [[$./save_workloa
 state "保存工时" as DEACTION2  [[$./save_workload#deaction2 {"保存工时"}]]
 state "更新剩余工时" as DEACTION6  [[$./save_workload#deaction6 {"更新剩余工时"}]]
 state "合计已登记工时" as RAWSQLCALL1  [[$./save_workload#rawsqlcall1 {"合计已登记工时"}]]
-state "更新实际工时" as DEACTION7  [[$./save_workload#deaction7 {"更新实际工时"}]]
+state "准备参数" as PREPAREPARAM7  [[$./save_workload#prepareparam7 {"准备参数"}]]
 state "工时为0时置为NULL" as PREPAREPARAM6  [[$./save_workload#prepareparam6 {"工时为0时置为NULL"}]]
+state "更新实际工时" as DEACTION7  [[$./save_workload#deaction7 {"更新实际工时"}]]
+state "自动计算父工时" as DELOGIC1  [[$./save_workload#delogic1 {"自动计算父工时"}]]
 
 
 Begin --> PREPAREPARAM2
@@ -34,7 +36,10 @@ PREPAREPARAM2 --> DEACTION3 : [[$./save_workload#prepareparam2-deaction3{产品�
 DEACTION3 --> PREPAREPARAM4
 PREPAREPARAM4 --> DEACTION2
 DEACTION2 --> DEACTION6
-DEACTION6 --> RAWSQLCALL1
+DEACTION6 --> PREPAREPARAM7 : [[$./save_workload#deaction6-prepareparam7{判断是否需要合计} 判断是否需要合计]]
+PREPAREPARAM7 --> DEACTION7
+DEACTION7 --> DELOGIC1
+DEACTION6 --> RAWSQLCALL1 : [[$./save_workload#deaction6-rawsqlcall1{连接名称} 连接名称]]
 RAWSQLCALL1 --> DEACTION7 : [[$./save_workload#rawsqlcall1-deaction7{合计已登记工时大于0} 合计已登记工时大于0]]
 RAWSQLCALL1 --> PREPAREPARAM6 : [[$./save_workload#rawsqlcall1-prepareparam6{合计已登记工时为0} 合计已登记工时为0]]
 PREPAREPARAM6 --> DEACTION7
@@ -62,13 +67,15 @@ PREPAREPARAM5 --> DEACTION2
 
 
 1. 将`Default(传入变量).PRINCIPAL_ID(工时主体标识)` 设置给  `test_case(测试用例).ID(标识)`
-2. 将`Default(传入变量).PRINCIPAL_ID(工时主体标识)` 设置给  `actual(实际工时).OWNER_ID(所属数据标识)`
-3. 将`Default(传入变量).PRINCIPAL_ID(工时主体标识)` 设置给  `actual(实际工时).OWNER_ID(所属数据标识)`
-4. 将`REMAINING_WORKLOAD` 设置给  `remaining(剩余工时).NAME(名称)`
-5. 将`Default(传入变量).PRINCIPAL_ID(工时主体标识)` 设置给  `remaining(剩余工时).OWNER_ID(所属数据标识)`
-6. 将`Default(传入变量).REMAINING_WORKLOAD` 设置给  `remaining(剩余工时).DECIMAL_VALUE(数值值)`
-7. 将`Default(传入变量).PRINCIPAL_ID(工时主体标识)` 设置给  `work_item(工作项).ID(标识)`
-8. 将`Default(传入变量).PRINCIPAL_ID(工时主体标识)` 设置给  `idea(产品需求).ID(标识)`
+2. 将`Default(传入变量).u_actual_workload` 设置给  `u_workload(是否更新工时).DURATION(时长)`
+3. 将`Default(传入变量).u_workload` 设置给  `u_workload(是否更新工时).u_workload`
+4. 将`Default(传入变量).PRINCIPAL_ID(工时主体标识)` 设置给  `actual(实际工时).OWNER_ID(所属数据标识)`
+5. 将`Default(传入变量).PRINCIPAL_ID(工时主体标识)` 设置给  `actual(实际工时).OWNER_ID(所属数据标识)`
+6. 将`REMAINING_WORKLOAD` 设置给  `remaining(剩余工时).NAME(名称)`
+7. 将`Default(传入变量).PRINCIPAL_ID(工时主体标识)` 设置给  `remaining(剩余工时).OWNER_ID(所属数据标识)`
+8. 将`Default(传入变量).REMAINING_WORKLOAD` 设置给  `remaining(剩余工时).DECIMAL_VALUE(数值值)`
+9. 将`Default(传入变量).PRINCIPAL_ID(工时主体标识)` 设置给  `work_item(工作项).ID(标识)`
+10. 将`Default(传入变量).PRINCIPAL_ID(工时主体标识)` 设置给  `idea(产品需求).ID(标识)`
 
 #### 获取需求 :id=DEACTION3<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
@@ -167,6 +174,12 @@ select sum(DURATION) as `DECIMAL_VALUE` from `workload` where PRINCIPAL_ID = ? a
 
 重置参数`actual(实际工时)`，并将执行sql结果赋值给参数`actual(实际工时)`
 
+#### 准备参数 :id=PREPAREPARAM7<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`u_workload(是否更新工时).DURATION(时长)` 设置给  `actual(实际工时).DECIMAL_VALUE(数值值)`
+
 #### 工时为0时置为NULL :id=PREPAREPARAM6<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -181,11 +194,23 @@ select sum(DURATION) as `DECIMAL_VALUE` from `workload` where PRINCIPAL_ID = ? a
 
 将执行结果返回给参数`actual(实际工时)`
 
+#### 自动计算父工时 :id=DELOGIC1<sup class="footnote-symbol"> <font color=gray size=1>[实体逻辑]</font></sup>
+
+
+
+调用实体 [扩展存储(EXTEND_STORAGE)](module/Base/extend_storage.md) 处理逻辑 [工时自动计算]((module/Base/extend_storage/logic/workload_auto_cal.md)) ，行为参数为`actual(实际工时)`
+
 
 ### 连接条件说明
 #### 产品需求登记工时 :id=PREPAREPARAM2-DEACTION3
 
 `Default(传入变量).workload_kind` EQ `产品需求`
+#### 判断是否需要合计 :id=DEACTION6-PREPAREPARAM7
+
+`u_workload(是否更新工时).u_workload` EQ `false`
+#### 连接名称 :id=DEACTION6-RAWSQLCALL1
+
+`u_workload(是否更新工时).u_workload` NOTEQ `false`
 #### 合计已登记工时大于0 :id=RAWSQLCALL1-DEACTION7
 
 `actual(实际工时).DECIMAL_VALUE(数值值)` NOTEQ `0`
@@ -209,4 +234,5 @@ select sum(DURATION) as `DECIMAL_VALUE` from `workload` where PRINCIPAL_ID = ? a
 |产品需求|idea|数据对象|[需求(IDEA)](module/ProdMgmt/idea.md)||
 |剩余工时|remaining|数据对象|[扩展存储(EXTEND_STORAGE)](module/Base/extend_storage.md)||
 |测试用例|test_case|数据对象|[用例(TEST_CASE)](module/TestMgmt/test_case.md)||
+|是否更新工时|u_workload|数据对象|[工时(WORKLOAD)](module/Base/workload.md)||
 |工作项|work_item|数据对象|[工作项(WORK_ITEM)](module/ProjMgmt/work_item.md)||

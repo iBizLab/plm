@@ -9,9 +9,6 @@
 #### 工具栏(righttoolbar)
 
 
-### 关联界面行为
-  * [空间(SPACE)](module/Wiki/space) : [编辑界面_保存并退出操作](module/Wiki/space#界面行为)
-
 <script>
  const { createApp } = Vue
   createApp({

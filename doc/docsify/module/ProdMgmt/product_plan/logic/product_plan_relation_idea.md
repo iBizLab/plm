@@ -76,19 +76,19 @@ LOOPSUBCALL1 --> END1
 
 1. 将`Default(传入变量).principal_id` 设置给  `relationobj(关系对象).PRINCIPAL_ID(关联主体标识)`
 2. 将`for_temp_obj(循环临时变量).id(标识)` 设置给  `relationobj2(反向关系对象).PRINCIPAL_ID(关联主体标识)`
-3. 将`Default(传入变量).principal_id` 设置给  `relationobj2(反向关系对象).TARGET_ID(关联目标标识)`
+3. 将`Default(传入变量).principal_id` 设置给  `relationobj2(反向关系对象).TARGET_ID(目标主体标识)`
 4. 将`Default(传入变量).target_type` 设置给  `relationobj2(反向关系对象).PRINCIPAL_TYPE(关联主体类型)`
 5. 将`Default(传入变量).principal_type` 设置给  `relationobj2(反向关系对象).TARGET_TYPE(关联目标类型)`
 6. 将`Default(传入变量).principal_type` 设置给  `relationobj(关系对象).PRINCIPAL_TYPE(关联主体类型)`
 7. 将`Default(传入变量).target_type` 设置给  `relationobj(关系对象).TARGET_TYPE(关联目标类型)`
-8. 将`for_temp_obj(循环临时变量).id(标识)` 设置给  `relationobj(关系对象).TARGET_ID(关联目标标识)`
+8. 将`for_temp_obj(循环临时变量).id(标识)` 设置给  `relationobj(关系对象).TARGET_ID(目标主体标识)`
 
 #### 设置关联参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`for_temp_obj(循环临时变量).owner_id` 设置给  `relationobj2(反向关系对象).PRINCIPAL_ID(关联主体标识)`
-2. 将`for_temp_obj(循环临时变量).owner_id` 设置给  `relationobj(关系对象).TARGET_ID(关联目标标识)`
+2. 将`for_temp_obj(循环临时变量).owner_id` 设置给  `relationobj(关系对象).TARGET_ID(目标主体标识)`
 
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 

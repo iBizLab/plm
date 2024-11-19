@@ -40,7 +40,6 @@
 <p class="panel-title"><b>分组参数</b></p>
 
 * `PRINCIPAL_ID(工时主体标识)` 
-* `REGISTER_DATE(工作日期)` 
 
 <p class="panel-title"><b>聚合参数</b></p>
 
@@ -48,5 +47,6 @@
 * `ID` 
 * `NAME` 
 * `PRINCIPAL_TYPE` 
+* `REGISTER_DATE` 
 * `SHOW_IDENTIFIER` 
 * `UPDATE_TIME` 

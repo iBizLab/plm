@@ -23,7 +23,7 @@
 |成员|w_members|成员(MEMBERS)||
 |更新人|w_update_man|更新人(UPDATE_MAN)||
 |更新时间|w_update_time|更新时间(UPDATE_TIME)||
-|状态|w_state|状态(STATE)||
+|状态|w_state|项目状态(STATE)||
 |结束时间|w_end_at|结束时间(END_AT)||
 |负责人|w_assignee_id|负责人标识(ASSIGNEE_ID)||
 |项目类型|w_type|类型(TYPE)||

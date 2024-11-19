@@ -10,8 +10,8 @@
 
 
 ### 关联界面行为
-  * [页面(PAGE)](module/Wiki/article_page) : [打开界面编辑页](module/Wiki/article_page#界面行为)
   * [页面(PAGE)](module/Wiki/article_page) : [删除数据](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [打开界面编辑页](module/Wiki/article_page#界面行为)
   * [页面(PAGE)](module/Wiki/article_page) : [发布](module/Wiki/article_page#界面行为)
 
 ### 关联视图

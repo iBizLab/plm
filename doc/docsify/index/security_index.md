@@ -866,6 +866,7 @@
 
 
 
+
   <tr>
 
 <td rowspan="1"><a href ="#/module/Base/extend_log">扩展日志(EXTEND_LOG)</a></td>
@@ -2051,6 +2052,57 @@
 
 </tr>
 
+
+  <tr>
+
+<td rowspan="2"><a href ="#/module/ProjMgmt/project_state">项目状态(PROJECT_STATE)</a></td>
+
+<td><a href ="#/module/ProjMgmt/project_state#project_state-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ProjMgmt/project_state#project_state-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
 
   <tr>
 

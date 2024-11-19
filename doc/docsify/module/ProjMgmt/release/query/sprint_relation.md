@@ -33,7 +33,7 @@
 * **RELATION存在1:N（EXISTS (SELECT)）DERCUSTOM_RELATION_RELEASE**<br>
 连接关系：[DERCUSTOM_RELATION_RELEASE](der/DERCUSTOM_RELATION_RELEASE)<br>
 连接实体：[项目发布](module/ProjMgmt/release)<br>
-连接条件：(`TARGET_ID(关联目标标识)` EQ `网页请求上下文.sprint` AND `TARGET_TYPE(关联目标类型)` EQ `'sprint'` AND `PRINCIPAL_TYPE(关联主体类型)` EQ `'release'`)<br>
+连接条件：(`TARGET_TYPE(关联目标类型)` EQ `'sprint'` AND `PRINCIPAL_TYPE(关联主体类型)` EQ `'release'` AND `TARGET_ID(目标主体标识)` EQ `网页请求上下文.sprint`)<br>
 
 
 
@@ -64,7 +64,7 @@ LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID`
 
 WHERE EXISTS(SELECT * FROM `RELATION` t21 
  WHERE 
- t1.`ID` = t21.`PRINCIPAL_ID`  AND  ( t21.`TARGET_ID` = #{ctx.webcontext.sprint}  AND  t21.`TARGET_TYPE` = 'sprint'  AND  t21.`PRINCIPAL_TYPE` = 'release' ) )
+ t1.`ID` = t21.`PRINCIPAL_ID`  AND  ( t21.`TARGET_TYPE` = 'sprint'  AND  t21.`PRINCIPAL_TYPE` = 'release'  AND  t21.`TARGET_ID` = #{ctx.webcontext.sprint} ) )
 ```
 
 </el-dialog>

@@ -14,6 +14,7 @@
 |建立时间|CREATE_TIME|日期时间型||否||
 |描述|DESCRIPTION|长文本，没有长度限制|1048576|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|全局模板|IS_GLOBAL|是否逻辑||是||
 |名称|NAME|文本，可指定长度|200|是||
 |产品|PRODUCT_ID|外键值|100|是||
 |产品标识|PRODUCT_IDENTIFIER|外键值附加数据|15|是||
@@ -51,16 +52,23 @@
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
 
+## 处理逻辑
+| 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
+| -------- |---------- |----------- |------------|----------|
+|[无操作](module/ProdMgmt/idea_template/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
+
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[数据查询(DEFAULT)](module/ProdMgmt/idea_template/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/ProdMgmt/idea_template/query/View)|VIEW|否|否 |否 ||
+|[全局需求模板(global)](module/ProdMgmt/idea_template/query/global)|global|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/ProdMgmt/idea_template/dataset/Default)|DEFAULT|数据查询|是|||
+|[全局需求模板(global)](module/ProdMgmt/idea_template/dataset/global)|global|数据查询|否|||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -69,6 +77,7 @@
 |N_CATEGORY_NAME_EQ|名称|EQ||
 |N_CATEGORY_NAME_LIKE|名称|LIKE||
 |N_ID_EQ|标识|EQ||
+|N_IS_GLOBAL_EQ|全局模板|EQ||
 |N_NAME_LIKE|名称|LIKE||
 |N_PRODUCT_ID_EQ|产品|EQ||
 |N_PRODUCT_NAME_EQ|产品名称|EQ||
@@ -79,6 +88,7 @@
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
 | 编辑模板 | template_edit | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[模板](app/view/idea_template_edit_view)</details>||
+| 打开需求模板编辑 | template_global_edit | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[模板](app/view/idea_template_global_edit_view)</details>||
 | 删除模板 | template_delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
@@ -93,6 +103,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProdMgmt/idea_template?id=行为`">
   行为
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProdMgmt/idea_template?id=处理逻辑`">
+  处理逻辑
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProdMgmt/idea_template?id=数据查询`">
   数据查询

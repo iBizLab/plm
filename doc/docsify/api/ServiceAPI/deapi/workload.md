@@ -875,6 +875,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -928,6 +933,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -1021,6 +1031,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -1074,6 +1089,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -1164,6 +1184,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -1217,6 +1242,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -1310,6 +1340,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -1363,6 +1398,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -1456,6 +1496,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -1509,6 +1554,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -1602,6 +1652,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -1655,6 +1710,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -1748,6 +1808,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -1801,6 +1866,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -1894,6 +1964,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -1947,6 +2022,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -2040,6 +2120,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -2093,6 +2178,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -2186,6 +2276,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -2239,6 +2334,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -2332,6 +2432,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -2385,6 +2490,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -2478,6 +2588,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -2531,6 +2646,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -2624,6 +2744,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -2677,6 +2802,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -2770,6 +2900,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -2823,6 +2958,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -2917,6 +3057,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -2970,6 +3115,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -3063,6 +3213,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -3116,6 +3271,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -3209,6 +3369,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -3262,6 +3427,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -3355,6 +3525,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -3408,6 +3583,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -3501,6 +3681,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -3554,6 +3739,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -3647,6 +3837,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -3700,6 +3895,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -3793,6 +3993,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -3846,6 +4051,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -3939,6 +4149,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -3992,6 +4207,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -4085,6 +4305,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -4138,6 +4363,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -4231,6 +4461,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -4284,6 +4519,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -4377,6 +4617,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -4430,6 +4675,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -4523,6 +4773,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -4576,6 +4831,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -4669,6 +4929,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -4722,6 +4987,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -4815,6 +5085,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -4868,6 +5143,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -4961,6 +5241,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -5014,6 +5299,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -5107,6 +5397,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -5160,6 +5455,11 @@ Integer
   "sort" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
+  "n_duration_eq" : null,
+  "n_duration_gt" : null,
+  "n_duration_gtandeq" : null,
+  "n_duration_lt" : null,
+  "n_duration_ltandeq" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -5839,6 +6139,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -5907,6 +6212,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -5975,6 +6285,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -6043,6 +6358,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -6111,6 +6431,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -6179,6 +6504,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -6247,6 +6577,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -6315,6 +6650,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -6383,6 +6723,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -6451,6 +6796,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -6519,6 +6869,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -6587,6 +6942,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -6655,6 +7015,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -6723,6 +7088,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -6791,6 +7161,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -6859,6 +7234,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -6927,6 +7307,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -6995,6 +7380,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -7063,6 +7453,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -7131,6 +7526,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -7199,6 +7599,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -7267,6 +7672,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -7335,6 +7745,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -7403,6 +7818,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -7471,6 +7891,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -7539,6 +7964,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -7607,6 +8037,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -7675,6 +8110,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -7743,6 +8183,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
@@ -7811,6 +8256,11 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_lt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
+|<el-row justify="space-between"><el-col :span="20">n_duration_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|
 |<el-row justify="space-between"><el-col :span="20">n_idea_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求|

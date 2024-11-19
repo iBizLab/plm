@@ -12,9 +12,6 @@
   * opendata(预置打开数据逻辑)
 
 
-### 关联界面行为
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [打开项目集下父工作项的链接视图](module/ProjMgmt/work_item#界面行为)
-
 ### 关联视图
   * [工作项(work_item_dyna_main_view)](app/view/work_item_dyna_main_view)
   * [工作项(work_item_edit_view)](app/view/work_item_edit_view)

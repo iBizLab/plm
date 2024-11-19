@@ -290,6 +290,7 @@
 |[我关注的工单(my_attention)](module/ProdMgmt/ticket/query/my_attention)|my_attention|否|否 |否 ||
 |[我创建的(my_created)](module/ProdMgmt/ticket/query/my_created)|my_created|否|否 |否 ||
 |[过滤器默认查询(my_filter)](module/ProdMgmt/ticket/query/my_filter)|my_filter|否|否 |否 ||
+|[我的事项工单(my_summary_ticket)](module/ProdMgmt/ticket/query/my_summary_ticket)|my_summary_ticket|否|否 |否 ||
 |[正常状态(normal)](module/ProdMgmt/ticket/query/normal)|normal|否|否 |否 |非归档，非删除数据|
 |[未关联的工单(not_exsists_relation)](module/ProdMgmt/ticket/query/not_exsists_relation)|not_exsists_relation|否|否 |否 ||
 |[工单通知负责人(notify_assignee)](module/ProdMgmt/ticket/query/notify_assignee)|notify_assignee|否|否 |否 ||
@@ -324,6 +325,7 @@
 |[我关注的工单(my_attention)](module/ProdMgmt/ticket/dataset/my_attention)|my_attention|数据查询|否|||
 |[我创建的(my_created)](module/ProdMgmt/ticket/dataset/my_created)|my_created|数据查询|否|||
 |[过滤器默认查询(my_filter)](module/ProdMgmt/ticket/dataset/my_filter)|my_filter|数据查询|否|||
+|[我的事项工单(my_summary_ticket)](module/ProdMgmt/ticket/dataset/my_summary_ticket)|my_summary_ticket|数据查询|否|||
 |[正常状态(normal)](module/ProdMgmt/ticket/dataset/normal)|normal|数据查询|否||非归档，非删除数据|
 |[未关联的工单(not_exsists_relation)](module/ProdMgmt/ticket/dataset/not_exsists_relation)|not_exsists_relation|数据查询|否|||
 |[工单通知负责人(notify_assignee)](module/ProdMgmt/ticket/dataset/notify_assignee)|notify_assignee|数据查询|否|||
@@ -512,6 +514,7 @@
 | 上传附件 | upload_attachment | 上传 |无数据|用户自定义||
 | 关联工单（移动端） | mob_add_ticket | 关联工单 |无数据|<details><summary>后台调用</summary>[others_relation_ticket](#行为)||
 | 工单归档 | ticket_archive | 归档 |多项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
+| 打开我的事项工单 | open_summary_ticket | 工单 |无数据|<details><summary>打开视图或向导（模态）</summary>[工单](app/view/ticket_summary_ticket_grid_view)</details>||
 | 激活 | activate | 激活 |多项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)|批操作工具栏上按钮调用；|
 | 打开工单关注列表（移动端） | mob_open_attention_list | 打开关注列表 |单项数据|<details><summary>打开视图或向导（模态）</summary>[工单关注](app/view/attention_mob_ticket_md_view)</details>||
 | 新建执行后（建立双向关联数据) | after_creat_double_relation | 新建执行后（建立双向关联数据) |单项数据（主键）|用户自定义||

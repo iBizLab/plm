@@ -100,7 +100,7 @@ LOOPSUBCALL1 --> END1
 
 1. 将`Default(传入变量).baseline_id` 设置给  `relation(关联对象).PRINCIPAL_ID(关联主体标识)`
 2. 将`for_temp_obj(循环临时变量).CHOOSE_VERSION_ID(选择版本标识)` 设置给  `relation(关联对象).TARGET_VERSION_ID(目标对象版本标识)`
-3. 将`for_temp_obj(循环临时变量).ID(标识)` 设置给  `relation(关联对象).TARGET_ID(关联目标标识)`
+3. 将`for_temp_obj(循环临时变量).ID(标识)` 设置给  `relation(关联对象).TARGET_ID(目标主体标识)`
 4. 将`idea` 设置给  `relation(关联对象).TARGET_TYPE(关联目标类型)`
 5. 将`baseline` 设置给  `relation(关联对象).PRINCIPAL_TYPE(关联主体类型)`
 

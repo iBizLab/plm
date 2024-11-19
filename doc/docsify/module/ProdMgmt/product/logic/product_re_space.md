@@ -50,11 +50,11 @@ Begin --> THROWEXCEPTION1 : [[$./product_re_space#begin-throwexception1{无值} 
 
 
 
-1. 将`Default(传入变量).space_id` 设置给  `relationobj2(反向关系对象).TARGET_ID(关联目标标识)`
+1. 将`Default(传入变量).space_id` 设置给  `relationobj2(反向关系对象).TARGET_ID(目标主体标识)`
 2. 将`Default(传入变量).target_type` 设置给  `relationobj2(反向关系对象).TARGET_TYPE(关联目标类型)`
 3. 将`Default(传入变量).target_id` 设置给  `relationobj2(反向关系对象).PRINCIPAL_ID(关联主体标识)`
 4. 将`Default(传入变量).principal_type` 设置给  `relationobj2(反向关系对象).PRINCIPAL_TYPE(关联主体类型)`
-5. 将`Default(传入变量).target_id` 设置给  `relationobj(关系对象).TARGET_ID(关联目标标识)`
+5. 将`Default(传入变量).target_id` 设置给  `relationobj(关系对象).TARGET_ID(目标主体标识)`
 6. 将`Default(传入变量).principal_type` 设置给  `relationobj(关系对象).TARGET_TYPE(关联目标类型)`
 7. 将`Default(传入变量).space_id` 设置给  `relationobj(关系对象).PRINCIPAL_ID(关联主体标识)`
 8. 将`Default(传入变量).target_type` 设置给  `relationobj(关系对象).PRINCIPAL_TYPE(关联主体类型)`

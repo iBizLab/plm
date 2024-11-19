@@ -118,7 +118,7 @@ PREPAREPARAM2 --> DEACTION1
 
 
 
-1. 将`for_temp_obj(工作项循环临时变量).ID(标识)` 设置给  `relation(关联对象).TARGET_ID(关联目标标识)`
+1. 将`for_temp_obj(工作项循环临时变量).ID(标识)` 设置给  `relation(关联对象).TARGET_ID(目标主体标识)`
 2. 将`Default(传入变量).ID(标识)` 设置给  `relation(关联对象).PRINCIPAL_ID(关联主体标识)`
 3. 将`work_item` 设置给  `relation(关联对象).TARGET_TYPE(关联目标类型)`
 4. 将`baseline` 设置给  `relation(关联对象).PRINCIPAL_TYPE(关联主体类型)`

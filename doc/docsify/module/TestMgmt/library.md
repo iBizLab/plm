@@ -267,7 +267,6 @@
 | 进行中_删除（移动端） | mob_in_progress_into_deleted | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 进行中_归档 | archive | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 | 回收站（移动端） | mob_recycle_bin | 回收站 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[回收站](app/view/test_case_mob_recycle_md_view)</details>||
-| 创建测试库（移动端） | mob_create_library | 创建测试库 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建测试库](app/view/library_mob_create_view)</details>||
 | 已归档_激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
 | 编辑基本信息 | setting_base_info | 编辑基本信息 |单项数据（主键）|用户自定义||
 | 高级设置（移动端） | mob_advanced_setting | 高级设置 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[高级设置](app/view/library_mob_advanced_setting_view)</details>||

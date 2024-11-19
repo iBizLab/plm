@@ -123,6 +123,7 @@
 |[项目(PROJECT)](module/ProjMgmt/project)|[工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type)|[DER1N_WORK_ITEM_TYPE_PROJECT_PROJECT_ID](der/DER1N_WORK_ITEM_TYPE_PROJECT_PROJECT_ID)|1:N关系||
 |[项目(PROJECT)](module/ProjMgmt/project)|[工作(WORK)](module/Base/work)|[DERCUSTOM_WORK_PROJECT_PILOT_ID](der/DERCUSTOM_WORK_PROJECT_PILOT_ID)|自定义关系||
 |[项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member)|[日容量(DAY_CAPACITY)](module/ProjMgmt/day_capacity)|[DERCUSTOM_DAY_CAPACITY_PROJECT_MEMBER](der/DERCUSTOM_DAY_CAPACITY_PROJECT_MEMBER)|自定义关系||
+|[项目状态(PROJECT_STATE)](module/ProjMgmt/project_state)|[项目(PROJECT)](module/ProjMgmt/project)|[DER1N_PROJECT_PROJECT_STATE_STATE](der/DER1N_PROJECT_PROJECT_STATE_STATE)|1:N关系||
 |[实体处理逻辑(PSDELOGIC)](module/extension/PSDELogic)|[实体处理逻辑链接(PSDELOGICLINK)](module/extension/PSDELogicLink)|[DER1N_PSDELOGICLINK_PSDELOGIC_PSDELOGICID](der/DER1N_PSDELOGICLINK_PSDELOGIC_PSDELOGICID)|1:N关系|嵌套操作、|
 |[实体处理逻辑(PSDELOGIC)](module/extension/PSDELogic)|[实体处理逻辑节点(PSDELOGICNODE)](module/extension/PSDELogicNode)|[DER1N_PSDELOGICNODE_PSDELOGIC_PSDELOGICID](der/DER1N_PSDELOGICNODE_PSDELOGIC_PSDELOGICID)|1:N关系|嵌套操作、|
 |[实体处理逻辑节点(PSDELOGICNODE)](module/extension/PSDELogicNode)|[实体处理逻辑链接(PSDELOGICLINK)](module/extension/PSDELogicLink)|[DER1N_PSDELOGICLINK_PSDELOGICNODE_SRCPSDELOGICNODEID](der/DER1N_PSDELOGICLINK_PSDELOGICNODE_SRCPSDELOGICNODEID)|1:N关系||
@@ -166,6 +167,7 @@
 |[执行用例(RUN)](module/TestMgmt/run)|[用例步骤(STEP)](module/TestMgmt/step)|[DER1N_STEP_RUN_RUN_ID](der/DER1N_STEP_RUN_RUN_ID)|1:N关系|附属关系、嵌套操作、|
 |[执行用例(RUN)](module/TestMgmt/run)|[执行结果(RUN_HISTORY)](module/TestMgmt/run_history)|[DER1N_RUN_HISTORY_RUN_RUN_ID](der/DER1N_RUN_HISTORY_RUN_RUN_ID)|1:N关系|附属关系、|
 |[执行用例(RUN)](module/TestMgmt/run)|[执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment)|[DERCUSTOM_RUN_RUN_ATTACHMENT](der/DERCUSTOM_RUN_RUN_ATTACHMENT)|自定义关系||
+|[执行用例(RUN)](module/TestMgmt/run)|[关联(RELATION)](module/Base/relation)|[DERCUSTOM_RELATION_TARGET_RUN](der/DERCUSTOM_RELATION_TARGET_RUN)|自定义关系||
 |[执行用例(RUN)](module/TestMgmt/run)|[关注(ATTENTION)](module/Base/attention)|[DERCUSTOM_ATTENTION_RUN_OWNER_ID](der/DERCUSTOM_ATTENTION_RUN_OWNER_ID)|自定义关系|附属关系、数据访问控制、|
 |[执行用例(RUN)](module/TestMgmt/run)|[评论搜索(SEARCH_COMMENT)](module/Base/search_comment)|[DERCUSTOM_RUN_SEARCH_COMMENT](der/DERCUSTOM_RUN_SEARCH_COMMENT)|自定义关系||
 |[执行结果(RUN_HISTORY)](module/TestMgmt/run_history)|[用例步骤(STEP)](module/TestMgmt/step)|[run_history_re_step](der/run_history_re_step)|自定义关系||
@@ -224,6 +226,7 @@
 |[企业用户(USER)](module/Base/user)|[工单(TICKET)](module/ProdMgmt/ticket)|[DER1N_TICKET_USER_ASSIGNEE_ID](der/DER1N_TICKET_USER_ASSIGNEE_ID)|1:N关系||
 |[企业用户(USER)](module/Base/user)|[用例(TEST_CASE)](module/TestMgmt/test_case)|[DER1N_TEST_CASE_USER_MAINTENANCE_ID](der/DER1N_TEST_CASE_USER_MAINTENANCE_ID)|1:N关系||
 |[企业用户(USER)](module/Base/user)|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[DER1N_WORK_ITEM_USER_ASSIGNEE_ID](der/DER1N_WORK_ITEM_USER_ASSIGNEE_ID)|1:N关系||
+|[企业用户(USER)](module/Base/user)|[执行人(EXECUTOR)](module/Base/executor)|[DER1N_EXECUTOR_USER_USER_ID](der/DER1N_EXECUTOR_USER_USER_ID)|1:N关系||
 |[企业用户(USER)](module/Base/user)|[需求(IDEA)](module/ProdMgmt/idea)|[DER1N_IDEA_USER_ASSIGNEE_ID](der/DER1N_IDEA_USER_ASSIGNEE_ID)|1:N关系||
 |[企业用户(USER)](module/Base/user)|[测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member)|[DER1N_LIBRARY_MEMBER_USER_USER_ID](der/DER1N_LIBRARY_MEMBER_USER_USER_ID)|1:N关系|附属关系、附属关系(N:N连接)、|
 |[企业用户(USER)](module/Base/user)|[产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member)|[DER1N_PRODUCT_MEMBER_USER_USER_ID](der/DER1N_PRODUCT_MEMBER_USER_USER_ID)|1:N关系|附属关系、附属关系(N:N连接)、|
@@ -246,6 +249,7 @@
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[迭代变更(SPRINT_ALTERATION)](module/ProjMgmt/sprint_alteration)|[DER1N_SPRINT_ALTERATION_WORK_ITEM_WORK_ITEM_ID](der/DER1N_SPRINT_ALTERATION_WORK_ITEM_WORK_ITEM_ID)|1:N关系||
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[附件(ATTACHMENT)](module/Base/attachment)|[DERCUSTOM_WORK_ITEM_ATTACHMENT](der/DERCUSTOM_WORK_ITEM_ATTACHMENT)|自定义关系|附属关系、嵌套操作、|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[流转记录(TRANSITION_HISTORY)](module/ProjMgmt/transition_history)|[DERCUSTOM_TRANSITION_HISTORY_WORK_ITEM](der/DERCUSTOM_TRANSITION_HISTORY_WORK_ITEM)|自定义关系||
+|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[执行人(EXECUTOR)](module/Base/executor)|[DERCUSTOM_EXECUTOR_WORK_ITEM_OWNER_ID](der/DERCUSTOM_EXECUTOR_WORK_ITEM_OWNER_ID)|自定义关系|附属关系、数据访问控制、|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[版本(VERSION)](module/Base/version)|[DERCUSTOM_VERSION_WORK_ITEM](der/DERCUSTOM_VERSION_WORK_ITEM)|自定义关系||
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[关注(ATTENTION)](module/Base/attention)|[DERCUSTOM_ATTENTION_WORK_ITEM_OWNER_ID](der/DERCUSTOM_ATTENTION_WORK_ITEM_OWNER_ID)|自定义关系|附属关系、数据访问控制、|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[关联(RELATION)](module/Base/relation)|[DERCUSTOM_RELATION_WORK_ITEM](der/DERCUSTOM_RELATION_WORK_ITEM)|自定义关系||

@@ -23,7 +23,7 @@
 |源工作项|PRINCIPAL_WORK_ITEM|外键值对象|1048576|是||
 |关联类型|RELATION_TYPE|文本，可指定长度|100|是||
 |目标对象负责人|TARGET_ASSIGNEE|文本，可指定长度|100|是||
-|关联目标标识|TARGET_ID|文本，可指定长度|100|否||
+|目标主体标识|TARGET_ID|文本，可指定长度|100|是||
 |目标对象编号|TARGET_IDENTIFIER|文本，可指定长度|100|是||
 |目标对象父标识|TARGET_PARENT_ID|文本，可指定长度|100|是||
 |目标对象优先级|TARGET_PRIORITY|文本，可指定长度|100|是||
@@ -40,7 +40,7 @@
 <p class="panel-title"><b>联合主键</b></p>
 
   * `关联主体标识(PRINCIPAL_ID)`
-  * `关联目标标识(TARGET_ID)`
+  * `目标主体标识(TARGET_ID)`
   * `关联主体类型(PRINCIPAL_TYPE)`
 
 ###### 索引
@@ -54,7 +54,7 @@
 | --------   |------------| -----  | -----  | :----: | -------- |
 |关联主体标识|PRINCIPAL_ID|false|升序|-1||
 |关联主体类型|PRINCIPAL_TYPE|false|升序|-1||
-|关联目标标识|TARGET_ID|false|升序|-1||
+|目标主体标识|TARGET_ID|false|升序|-1||
 |关联目标类型|TARGET_TYPE|false|升序|-1||
 
 </el-tab-pane>
@@ -92,6 +92,7 @@
 |[DERCUSTOM_RELATION_TARGET_IDEA](der/DERCUSTOM_RELATION_TARGET_IDEA)|[需求(IDEA)](module/ProdMgmt/idea)|自定义关系||
 |[DERCUSTOM_RELATION_TARGET_PAGE](der/DERCUSTOM_RELATION_TARGET_PAGE)|[页面(PAGE)](module/Wiki/article_page)|自定义关系||
 |[DERCUSTOM_RELATION_TARGET_PRODUCT_PLAN](der/DERCUSTOM_RELATION_TARGET_PRODUCT_PLAN)|[排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan)|自定义关系||
+|[DERCUSTOM_RELATION_TARGET_RUN](der/DERCUSTOM_RELATION_TARGET_RUN)|[执行用例(RUN)](module/TestMgmt/run)|自定义关系||
 |[DERCUSTOM_RELATION_TARGET_SPACE](der/DERCUSTOM_RELATION_TARGET_SPACE)|[空间(SPACE)](module/Wiki/space)|自定义关系||
 |[DERCUSTOM_RELATION_TARGET_TEST_CASE](der/DERCUSTOM_RELATION_TARGET_TEST_CASE)|[用例(TEST_CASE)](module/TestMgmt/test_case)|自定义关系||
 |[DERCUSTOM_RELATION_TARGET_TICKET](der/DERCUSTOM_RELATION_TARGET_TICKET)|[工单(TICKET)](module/ProdMgmt/ticket)|自定义关系||
@@ -228,7 +229,7 @@
 |N_NAME_LIKE|名称|LIKE||
 |N_PRINCIPAL_ID_EQ|关联主体标识|EQ||
 |N_PRINCIPAL_TYPE_EQ|关联主体类型|EQ||
-|N_TARGET_ID_EQ|关联目标标识|EQ||
+|N_TARGET_ID_EQ|目标主体标识|EQ||
 |N_TARGET_TYPE_EQ|关联目标类型|EQ||
 |N_TARGET_VERSION_ID_EQ|目标对象版本标识|EQ||
 
@@ -241,8 +242,8 @@
 | 取消关联 | del_relation | 取消关联 |单项数据|<details><summary>后台调用</summary>[del_relation](#行为)||
 | 产品移动端新建工单（新建后关联） | mob_create_and_relation_ticket | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工单](app/view/ticket_mob_ticket_create_option_view)</details>||
 | 依赖类型变更 | dependency_change | 依赖类型变更 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary></details>||
-| 产品移动端新建需求（新建后关联） | mob_create_and_relation | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建需求](app/view/idea_mob_quick_create_view)</details>||
 | 取消依赖 | del_dependency | 取消依赖 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 产品移动端新建需求（新建后关联） | mob_create_and_relation | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建需求](app/view/idea_mob_quick_create_view)</details>||
 | 移动端新建缺陷（新建后关联） | product_create_bug | 新建缺陷 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_mob_create_option_view)</details>||
 | 添加关联 | add_relation | 添加关联 |无数据|用户自定义||
 | 工作项取消关联测试用例 | work_item_del_relation_test_case | 取消关联 |单项数据|<details><summary>后台调用</summary>[work_item_del_relation_case](#行为)||

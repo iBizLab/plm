@@ -18,14 +18,14 @@
 
 
 ### 关联界面行为
-  * [空间(SPACE)](module/Wiki/space) : [查看空间信息](module/Wiki/space#界面行为)
-  * [空间(SPACE)](module/Wiki/space) : [编辑空间基本信息](module/Wiki/space#界面行为)
-  * [空间(SPACE)](module/Wiki/space) : [设置星标](module/Wiki/space#界面行为)
-  * [空间(SPACE)](module/Wiki/space) : [新开窗口（空间）](module/Wiki/space#界面行为)
-  * [空间(SPACE)](module/Wiki/space) : [更多设置](module/Wiki/space#界面行为)
-  * [空间(SPACE)](module/Wiki/space) : [回收站](module/Wiki/space#界面行为)
-  * [空间(SPACE)](module/Wiki/space) : [查看空间成员](module/Wiki/space#界面行为)
   * [空间(SPACE)](module/Wiki/space) : [取消星标](module/Wiki/space#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [设置星标](module/Wiki/space#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [回收站](module/Wiki/space#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [更多设置](module/Wiki/space#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [新开窗口（空间）](module/Wiki/space#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [查看空间信息](module/Wiki/space#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [查看空间成员](module/Wiki/space#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [编辑空间基本信息](module/Wiki/space#界面行为)
 
 ### 关联界面逻辑
   * [空间(SPACE)](module/Wiki/space) : [计算表格列行为状态(space)](module/Wiki/space/uilogic/calc_column_action_state)

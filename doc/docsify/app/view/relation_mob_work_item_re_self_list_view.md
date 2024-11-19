@@ -16,10 +16,10 @@
 
 ### 关联界面行为
   * [关联(RELATION)](module/Base/relation) : [添加工作项原因关系（移动端）](module/Base/relation#界面行为)
-  * [关联(RELATION)](module/Base/relation) : [添加工作项阻塞关系（移动端）](module/Base/relation#界面行为)
+  * [关联(RELATION)](module/Base/relation) : [添加工作项结果关系（移动端）](module/Base/relation#界面行为)
   * [关联(RELATION)](module/Base/relation) : [添加工作项被阻塞关系（移动端）](module/Base/relation#界面行为)
   * [关联(RELATION)](module/Base/relation) : [添加工作项重复关系（移动端）](module/Base/relation#界面行为)
-  * [关联(RELATION)](module/Base/relation) : [添加工作项结果关系（移动端）](module/Base/relation#界面行为)
+  * [关联(RELATION)](module/Base/relation) : [添加工作项阻塞关系（移动端）](module/Base/relation#界面行为)
   * [关联(RELATION)](module/Base/relation) : [添加工作项关联关系（移动端）](module/Base/relation#界面行为)
 
 ### 关联视图

@@ -35,21 +35,21 @@ if (form) {
 
 
 ### 关联界面行为
-  * [执行用例(RUN)](module/TestMgmt/run) : [编辑界面_上一个记录](module/TestMgmt/run#界面行为)
   * [执行用例(RUN)](module/TestMgmt/run) : [清空评论](module/TestMgmt/run#界面行为)
-  * [执行用例(RUN)](module/TestMgmt/run) : [重置为未测](module/TestMgmt/run#界面行为)
-  * [执行用例(RUN)](module/TestMgmt/run) : [最小化](module/TestMgmt/run#界面行为)
   * [执行用例(RUN)](module/TestMgmt/run) : [移出](module/TestMgmt/run#界面行为)
-  * [执行用例(RUN)](module/TestMgmt/run) : [发送评论](module/TestMgmt/run#界面行为)
+  * [执行用例(RUN)](module/TestMgmt/run) : [重置为未测](module/TestMgmt/run#界面行为)
+  * [执行用例(RUN)](module/TestMgmt/run) : [编辑界面_上一个记录](module/TestMgmt/run#界面行为)
+  * [执行用例(RUN)](module/TestMgmt/run) : [最小化](module/TestMgmt/run#界面行为)
   * [执行用例(RUN)](module/TestMgmt/run) : [打开关联用例](module/TestMgmt/run#界面行为)
+  * [执行用例(RUN)](module/TestMgmt/run) : [发送评论](module/TestMgmt/run#界面行为)
   * [执行用例(RUN)](module/TestMgmt/run) : [编辑界面_下一个记录](module/TestMgmt/run#界面行为)
 
 ### 关联界面逻辑
+  * [执行用例(RUN)](module/TestMgmt/run) : [打开关联用例](module/TestMgmt/run/uilogic/open_re_run)
+  * [执行用例(RUN)](module/TestMgmt/run) : [获取实际工时](module/TestMgmt/run/uilogic/get_actual_workload)
   * [评论(COMMENT)](module/Base/comment) : [控制评论按钮隐藏](module/Base/comment/uilogic/comment_icon_hidden)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关注人员更新](module/ProjMgmt/work_item/uilogic/attention_personnel_update)
   * [评论(COMMENT)](module/Base/comment) : [控制评论按钮显示](module/Base/comment/uilogic/comment_icon_show)
-  * [执行用例(RUN)](module/TestMgmt/run) : [打开关联用例](module/TestMgmt/run/uilogic/open_re_run)
-  * [执行用例(RUN)](module/TestMgmt/run) : [获取实际工时](module/TestMgmt/run/uilogic/get_actual_workload)
 
 ### 关联视图
   * [活动历史列表(activity_history_list_view)](app/view/activity_history_list_view)

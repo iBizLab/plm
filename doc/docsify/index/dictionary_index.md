@@ -211,6 +211,17 @@
 |TOOLBAR|工具栏|toolbar||
 |CUSTOM|自定义|custom||
 
+##### 产品角色类型 :id=product_role_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|admin|管理员|admin|业务对象的管理员，可维护该业务对象全部数据|
+|user|普通成员|user|业务对象的普通成员，可维护该业务对象的子数据|
+|reader|只读成员|reader|业务对象的只读用户，只能查看该业务对象基本信息及其子数据|
+|customer|特定成员|customer|业务对象的特定用户，只能查看该业务对象基本信息及维护本人创建的子数据|
+
 ##### 产品需求高级搜索属性 :id=idea_advanced_search_field
 
 
@@ -418,6 +429,14 @@
 |20|大概率复现|item_20||
 |30|小概率复现|item_30||
 |40|仅出现一次|item_40||
+
+##### 多人任务 :id=multiple_people
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|1|多人任务|item_1||
 
 ##### 多维分析指标类别 :id=BIMeasureType
 
@@ -1128,6 +1147,19 @@
 |sprint_id|迭代|sprint_id||
 |REAPPEAR_PROBABILITY|复现概率|reappear_probability||
 
+##### 背景样式 :id=background_style
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|blue-span|蓝色|blue_SUB_span||
+|green-span|绿色|green_SUB_span||
+|orange-span|橙色|orange_SUB_span||
+|grey-span|灰色|grey_SUB_span||
+|purple-span|紫色|purple_SUB_span||
+|red-span|红色|red_SUB_span||
+
 ##### 自动化规则类型 :id=auto_flow_type
 
 
@@ -1157,7 +1189,6 @@
 |admin|管理员|admin|业务对象的管理员，可维护该业务对象全部数据|
 |user|普通成员|user|业务对象的普通成员，可维护该业务对象的子数据|
 |reader|只读成员|reader|业务对象的只读用户，只能查看该业务对象基本信息及其子数据|
-|customer|特定成员|customer|业务对象的特定用户，只能查看该业务对象基本信息及维护本人创建的子数据|
 
 ##### 讨论状态 :id=discuss_status
 
@@ -1478,17 +1509,15 @@
 |n_name_like|主题|n_name_like||
 |n_content_like|页面内容|n_content_like||
 
-##### 项目状态 :id=project_state
+##### 项目状态类型 :id=project_state_type
 
 
 
 | 值col150        |    文本col150    |   代码名col150    |  备注col800     |
 | --------   |------------|------------|------------|
 |pending|未开始|pending||
-|normal|正常|normal||
-|warning|预警|warning||
-|delay|延期|delay||
-|end|结束|end||
+|in_progress|进行中|in_progress||
+|completed|已完成|completed||
 
 ##### 项目状态（移动端） :id=mob_project_state
 

@@ -3519,6 +3519,71 @@ FROM `ENTRY` t1
 ```
 
 
+## [执行人(EXECUTOR)](module/Base/executor.md) :id=executor
+
+#### 数据查询(DEFAULT) :id=executor-Default
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ESTIMATED_WORKLOAD`,
+t1.`ID`,
+t1.`IS_ASSIGNEE`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`SEQUENCE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_ID`,
+t1.`USER_NAME`
+FROM `EXECUTOR` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=executor-View
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ESTIMATED_WORKLOAD`,
+t1.`ID`,
+t1.`IS_ASSIGNEE`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`SEQUENCE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_ID`,
+t1.`USER_NAME`
+FROM `EXECUTOR` t1 
+
+```
+
+#### 评论通知工作项执行人(comment_work_item_executor) :id=executor-comment_work_item_executor
+```sql
+SELECT
+t1.`ID`,
+t1.`USER_ID`
+FROM `EXECUTOR` t1 
+
+WHERE ( exists (select 1 from comment t2 where t1.OWNER_ID = t2.PRINCIPAL_ID and t2.ID = #{ctx.webcontext.id})  AND  t1.`USER_ID` <> #{ctx.sessioncontext.srfpersonid} )
+```
+
+#### 通过主数据标识查询通知对象(executor_by_ownerid) :id=executor-executor_by_ownerid
+```sql
+SELECT
+t1.`ID`,
+t1.`USER_ID`
+FROM `EXECUTOR` t1 
+
+WHERE ( t1.`USER_ID` <> #{ctx.sessioncontext.srfpersonid}  AND  t1.`OWNER_ID` = #{ctx.webcontext.id} )
+```
+
+
 ## [扩展日志(EXTEND_LOG)](module/Base/extend_log.md) :id=extend_log
 
 #### 数据查询(DEFAULT) :id=extend_log-Default
@@ -4703,6 +4768,55 @@ LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID`
 WHERE ( t11.`IS_DELETED` = 0 ) AND ( t1.`IS_DELETED` = 0 )
 ```
 
+#### 我的事项需求(my_summary_idea) :id=idea-my_summary_idea
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t21.`CATEGORIES`,
+t1.`CATEGORY_ID`,
+t21.`NAME` AS `CATEGORY_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`ID`,
+t1.`IDEA_FROM`,
+t1.`IDEA_TYPE`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PLAN_AT`,
+t1.`PLAN_AT_FROM`,
+t1.`PLAN_AT_GRANULARITY`,
+t1.`PLAN_AT_TO`,
+t1.`PRIORITY`,
+t1.`PRODUCT_ID`,
+t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
+t11.`NAME` AS `PRODUCT_NAME`,
+t1.`PROGRESS`,
+t1.`REAL_AT`,
+t1.`REAL_AT_FROM`,
+t1.`REAL_AT_GRANULARITY`,
+t1.`REAL_AT_TO`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t21.`SECTION_ID`,
+t31.`NAME` AS `SECTION_NAME`,
+t1.`SEQUENCE`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STATE`,
+t1.`SUITE`,
+t1.`TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `IDEA` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
+LEFT JOIN `CATEGORY` t21 ON t1.`CATEGORY_ID` = t21.`ID` 
+LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID` 
+
+WHERE ( t11.`IS_ARCHIVED` = 0  AND  t11.`IS_DELETED` = 0 ) AND ( t1.`ASSIGNEE_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  t1.state in ( select val from dictionary where CATALOG = 'idea_state' and type = 'in_progress') )
+```
+
 #### 正常状态(normal) :id=idea-normal
 ```sql
 SELECT
@@ -4962,7 +5076,7 @@ LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID`
 
 WHERE EXISTS(SELECT * FROM `PRODUCT_MEMBER` t41 
  WHERE 
- t11.`ID` = t41.`PRODUCT_ID`  AND  ( t41.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t41.`ROLE_ID` <> 'customer' ) )
+ t11.`ID` = t41.`PRODUCT_ID`  AND  ( t41.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )
 ```
 
 #### 最近浏览(recent_idea) :id=idea-recent_idea
@@ -5077,6 +5191,7 @@ t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
+t1.`IS_GLOBAL`,
 t1.`NAME`,
 t1.`PRODUCT_ID`,
 t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
@@ -5103,6 +5218,7 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`ID`,
+t1.`IS_GLOBAL`,
 t1.`NAME`,
 t1.`PRODUCT_ID`,
 t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
@@ -5117,6 +5233,33 @@ LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID`
 LEFT JOIN `CATEGORY` t21 ON t1.`CATEGORY_ID` = t21.`ID` 
 LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID` 
 
+```
+
+#### 全局需求模板(global) :id=idea_template-global
+```sql
+SELECT
+t21.`CATEGORIES`,
+t1.`CATEGORY_ID`,
+t21.`NAME` AS `CATEGORY_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_GLOBAL`,
+t1.`NAME`,
+t1.`PRODUCT_ID`,
+t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
+t11.`NAME` AS `PRODUCT_NAME`,
+t21.`SECTION_ID`,
+t31.`NAME` AS `SECTION_NAME`,
+t1.`TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `IDEA_TEMPLATE` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
+LEFT JOIN `CATEGORY` t21 ON t1.`CATEGORY_ID` = t21.`ID` 
+LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID` 
+
+WHERE ( ( t1.`IS_GLOBAL` = 1  OR  t1.`PRODUCT_ID` = #{ctx.webcontext.product_id} ) )
 ```
 
 
@@ -7298,13 +7441,17 @@ FROM `PROGRESS` t1
 #### 数据查询(DEFAULT) :id=project-Default
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`COLOR`,
+t1.`CONSUME_TIME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+t1.`EXPECTED_TIME`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -7316,26 +7463,32 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`START_AT`,
 t1.`STATE`,
+t11.`TYPE` AS `STATE_TYPE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
 FROM `PROJECT` t1 
+LEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` 
 
 ```
 
 #### 默认（全部数据）(VIEW) :id=project-View
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 (SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND PROJECT_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`COLOR`,
 (SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND PROJECT_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
+t1.`CONSUME_TIME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+t1.`EXPECTED_TIME`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -7348,24 +7501,30 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`START_AT`,
 t1.`STATE`,
+t11.`TYPE` AS `STATE_TYPE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
 FROM `PROJECT` t1 
+LEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` 
 
 ```
 
 #### 管理员(admin) :id=project-admin
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`COLOR`,
+t1.`CONSUME_TIME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+t1.`EXPECTED_TIME`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -7377,27 +7536,33 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`START_AT`,
 t1.`STATE`,
+t11.`TYPE` AS `STATE_TYPE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
 FROM `PROJECT` t1 
+LEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` 
 
-WHERE EXISTS(SELECT * FROM `PROJECT_MEMBER` t11 
+WHERE EXISTS(SELECT * FROM `PROJECT_MEMBER` t21 
  WHERE 
- t1.`ID` = t11.`PROJECT_ID`  AND  ( t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t11.`ROLE_ID` = 'admin' ) )
+ t1.`ID` = t21.`PROJECT_ID`  AND  ( t21.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t21.`ROLE_ID` = 'admin' ) )
 ```
 
 #### 已归档(archived) :id=project-archived
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`COLOR`,
+t1.`CONSUME_TIME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+t1.`EXPECTED_TIME`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -7409,11 +7574,13 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`START_AT`,
 t1.`STATE`,
+t11.`TYPE` AS `STATE_TYPE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
 FROM `PROJECT` t1 
+LEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` 
 
 WHERE ( t1.`IS_ARCHIVED` = 1  AND  t1.`IS_DELETED` = 0 )
 ```
@@ -7421,13 +7588,17 @@ WHERE ( t1.`IS_ARCHIVED` = 1  AND  t1.`IS_DELETED` = 0 )
 #### BI反查(bi_detail) :id=project-bi_detail
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`COLOR`,
+t1.`CONSUME_TIME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+t1.`EXPECTED_TIME`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -7439,11 +7610,13 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`START_AT`,
 t1.`STATE`,
+t11.`TYPE` AS `STATE_TYPE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
 FROM `PROJECT` t1 
+LEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` 
 
 ```
 
@@ -7477,13 +7650,17 @@ FROM `PROJECT` t1
 #### 选择项目(choose_project) :id=project-choose_project
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`COLOR`,
+t1.`CONSUME_TIME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+t1.`EXPECTED_TIME`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -7495,11 +7672,13 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`START_AT`,
 t1.`STATE`,
+t11.`TYPE` AS `STATE_TYPE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
 FROM `PROJECT` t1 
+LEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  not exists(select 1 from `work` t2 where t1.id = t2.principal_id and t2.portfolio_id = #{ctx.webcontext.portfolio_id}) )
 ```
@@ -7507,13 +7686,17 @@ WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  not exists(select 1
 #### 当前项目(cur_project) :id=project-cur_project
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`COLOR`,
+t1.`CONSUME_TIME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+t1.`EXPECTED_TIME`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -7525,11 +7708,13 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`START_AT`,
 t1.`STATE`,
+t11.`TYPE` AS `STATE_TYPE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
 FROM `PROJECT` t1 
+LEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` 
 
 WHERE ( t1.`ID` = #{ctx.webcontext.project} )
 ```
@@ -7537,13 +7722,17 @@ WHERE ( t1.`ID` = #{ctx.webcontext.project} )
 #### 当前项目(current) :id=project-current
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`COLOR`,
+t1.`CONSUME_TIME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+t1.`EXPECTED_TIME`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -7555,11 +7744,13 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`START_AT`,
 t1.`STATE`,
+t11.`TYPE` AS `STATE_TYPE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
 FROM `PROJECT` t1 
+LEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` 
 
 WHERE ( <choose><when test="ctx.webcontext.project !=null ">  t1.`ID` = #{ctx.webcontext.project}  </when><otherwise>1=1</otherwise></choose> )
 ```
@@ -7567,13 +7758,17 @@ WHERE ( <choose><when test="ctx.webcontext.project !=null ">  t1.`ID` = #{ctx.we
 #### 已删除(deleted) :id=project-deleted
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`COLOR`,
+t1.`CONSUME_TIME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+t1.`EXPECTED_TIME`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -7585,11 +7780,13 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`START_AT`,
 t1.`STATE`,
+t11.`TYPE` AS `STATE_TYPE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
 FROM `PROJECT` t1 
+LEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 1 )
 ```
@@ -7597,13 +7794,17 @@ WHERE ( t1.`IS_DELETED` = 1 )
 #### 查询星标(favorite) :id=project-favorite
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`COLOR`,
+t1.`CONSUME_TIME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+t1.`EXPECTED_TIME`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -7615,11 +7816,13 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`START_AT`,
 t1.`STATE`,
+t11.`TYPE` AS `STATE_TYPE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
 FROM `PROJECT` t1 
+LEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` 
 
 WHERE ( (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '1'  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0 )
 ```
@@ -7627,13 +7830,17 @@ WHERE ( (select count(1) from favorite where create_man=#{ctx.sessioncontext.srf
 #### 查询星标（管理用户）(favorite_user) :id=project-favorite_user
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`COLOR`,
+t1.`CONSUME_TIME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+t1.`EXPECTED_TIME`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -7645,27 +7852,33 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`START_AT`,
 t1.`STATE`,
+t11.`TYPE` AS `STATE_TYPE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
 FROM `PROJECT` t1 
+LEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` 
 
-WHERE EXISTS(SELECT * FROM `PROJECT_MEMBER` t11 
+WHERE EXISTS(SELECT * FROM `PROJECT_MEMBER` t21 
  WHERE 
- t1.`ID` = t11.`PROJECT_ID`  AND  ( t11.`ROLE_ID` <> 'reader'  AND  t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) ) AND ( (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '1'  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0 )
+ t1.`ID` = t21.`PROJECT_ID`  AND  ( t21.`ROLE_ID` <> 'reader'  AND  t21.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) ) AND ( (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '1'  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0 )
 ```
 
 #### 正常状态(normal) :id=project-normal
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`COLOR`,
+t1.`CONSUME_TIME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+t1.`EXPECTED_TIME`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -7677,11 +7890,13 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`START_AT`,
 t1.`STATE`,
+t11.`TYPE` AS `STATE_TYPE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
 FROM `PROJECT` t1 
+LEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0 )
 ```
@@ -7689,13 +7904,17 @@ WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0 )
 #### 公开(public) :id=project-public
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`COLOR`,
+t1.`CONSUME_TIME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+t1.`EXPECTED_TIME`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -7707,11 +7926,13 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`START_AT`,
 t1.`STATE`,
+t11.`TYPE` AS `STATE_TYPE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
 FROM `PROJECT` t1 
+LEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` 
 
 WHERE ( t1.`VISIBILITY` = 'public' )
 ```
@@ -7719,13 +7940,17 @@ WHERE ( t1.`VISIBILITY` = 'public' )
 #### 只读用户(reader) :id=project-reader
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`COLOR`,
+t1.`CONSUME_TIME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+t1.`EXPECTED_TIME`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -7737,27 +7962,33 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`START_AT`,
 t1.`STATE`,
+t11.`TYPE` AS `STATE_TYPE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
 FROM `PROJECT` t1 
+LEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` 
 
-WHERE EXISTS(SELECT * FROM `PROJECT_MEMBER` t11 
+WHERE EXISTS(SELECT * FROM `PROJECT_MEMBER` t21 
  WHERE 
- t1.`ID` = t11.`PROJECT_ID`  AND  ( t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t11.`ROLE_ID` = 'reader' ) )
+ t1.`ID` = t21.`PROJECT_ID`  AND  ( t21.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t21.`ROLE_ID` = 'reader' ) )
 ```
 
 #### 相同类型项目(same_type) :id=project-same_type
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`COLOR`,
+t1.`CONSUME_TIME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+t1.`EXPECTED_TIME`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -7769,11 +8000,13 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`START_AT`,
 t1.`STATE`,
+t11.`TYPE` AS `STATE_TYPE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
 FROM `PROJECT` t1 
+LEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  exists(select 1 from project t2 where  t1.`type` = t2.`type` and t2.id = #{ctx.webcontext.project}) )
 ```
@@ -7781,13 +8014,17 @@ WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  exists(select 1 fro
 #### 项目集下的项目(under_project_portfolio) :id=project-under_project_portfolio
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`COLOR`,
+t1.`CONSUME_TIME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+t1.`EXPECTED_TIME`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -7799,11 +8036,13 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`START_AT`,
 t1.`STATE`,
+t11.`TYPE` AS `STATE_TYPE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
 FROM `PROJECT` t1 
+LEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  exists(select 1 from `work` t2 where t2.principal_id = t1.id and t2.portfolio_id = #{ctx.webcontext.n_portfolio_id_eq
 }) )
@@ -7812,13 +8051,17 @@ WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  exists(select 1 fro
 #### 非星标项目(unfavorite) :id=project-unfavorite
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`COLOR`,
+t1.`CONSUME_TIME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+t1.`EXPECTED_TIME`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -7830,11 +8073,13 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`START_AT`,
 t1.`STATE`,
+t11.`TYPE` AS `STATE_TYPE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
 FROM `PROJECT` t1 
+LEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '0' )
 ```
@@ -7842,13 +8087,17 @@ WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  (select count(1) fr
 #### 非星标项目（管理用户）(unfavorite_user) :id=project-unfavorite_user
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`COLOR`,
+t1.`CONSUME_TIME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+t1.`EXPECTED_TIME`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -7860,27 +8109,33 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`START_AT`,
 t1.`STATE`,
+t11.`TYPE` AS `STATE_TYPE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
 FROM `PROJECT` t1 
+LEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` 
 
-WHERE EXISTS(SELECT * FROM `PROJECT_MEMBER` t11 
+WHERE EXISTS(SELECT * FROM `PROJECT_MEMBER` t21 
  WHERE 
- t1.`ID` = t11.`PROJECT_ID`  AND  ( t11.`ROLE_ID` <> 'reader'  AND  t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) ) AND ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '0' )
+ t1.`ID` = t21.`PROJECT_ID`  AND  ( t21.`ROLE_ID` <> 'reader'  AND  t21.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) ) AND ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '0' )
 ```
 
 #### 操作用户(user) :id=project-user
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`COLOR`,
+t1.`CONSUME_TIME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+t1.`EXPECTED_TIME`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -7892,27 +8147,33 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`START_AT`,
 t1.`STATE`,
+t11.`TYPE` AS `STATE_TYPE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
 FROM `PROJECT` t1 
+LEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` 
 
-WHERE EXISTS(SELECT * FROM `PROJECT_MEMBER` t11 
+WHERE EXISTS(SELECT * FROM `PROJECT_MEMBER` t21 
  WHERE 
- t1.`ID` = t11.`PROJECT_ID`  AND  ( t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t11.`ROLE_ID` = 'user' ) )
+ t1.`ID` = t21.`PROJECT_ID`  AND  ( t21.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t21.`ROLE_ID` = 'user' ) )
 ```
 
 #### 项目集工作下的项目(work_project) :id=project-work_project
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`COLOR`,
+t1.`CONSUME_TIME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+t1.`EXPECTED_TIME`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -7924,11 +8185,13 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`START_AT`,
 t1.`STATE`,
+t11.`TYPE` AS `STATE_TYPE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
 FROM `PROJECT` t1 
+LEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  exists(select 1 from `work` t2 where t2.principal_id = t1.id and t2.portfolio_id = #{ctx.webcontext.project_portfolio}) )
 ```
@@ -8021,6 +8284,45 @@ FROM `PROJECT_MEMBER` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 
 WHERE ( ( USER_ID NOT IN (SELECT user_id from attention t2 where t2.OWNER_ID = #{ctx.webcontext.work_item} )) )
+```
+
+
+## [项目状态(PROJECT_STATE)](module/ProjMgmt/project_state.md) :id=project_state
+
+#### 数据查询(DEFAULT) :id=project_state-Default
+```sql
+SELECT
+t1.`COLOR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_SYSTEM`,
+t1.`NAME`,
+t1.`SEQUENCE`,
+t1.`STYLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `PROJECT_STATE` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=project_state-View
+```sql
+SELECT
+t1.`COLOR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_SYSTEM`,
+t1.`NAME`,
+t1.`SEQUENCE`,
+t1.`STYLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `PROJECT_STATE` t1 
+
 ```
 
 
@@ -8684,7 +8986,7 @@ t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `RELATION` t1 
 
-WHERE ( t1.`TARGET_TYPE` = 'work_item'  AND  t1.`PRINCIPAL_TYPE` = 'run'  AND  t1.`TARGET_ID` = #{ctx.datacontext.target_id}  AND  exists(select 1 from run t2 where t1.principal_id = t2.id and t2.case_id = #{ctx.datacontext.principal_id}) )
+WHERE ( t1.`TARGET_TYPE` = 'work_item'  AND  t1.`PRINCIPAL_TYPE` = 'run'  AND  exists(select 1 from run t2 where t1.principal_id = t2.id and t2.case_id = #{ctx.datacontext.principal_id})  AND  t1.`TARGET_ID` = #{ctx.datacontext.target_id} )
 ```
 
 #### 需求关联客户(idea_re_customer) :id=relation-idea_re_customer
@@ -9387,7 +9689,7 @@ LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID`
 
 WHERE NOT(EXISTS(SELECT * FROM `RELATION` t21 
  WHERE 
- t1.`ID` = t21.`PRINCIPAL_ID`  AND  ( t21.`TARGET_TYPE` = 'sprint'  AND  t21.`TARGET_ID` = #{ctx.webcontext.sprint}  AND  t21.`PRINCIPAL_TYPE` = 'release' ) ))
+ t1.`ID` = t21.`PRINCIPAL_ID`  AND  ( t21.`TARGET_TYPE` = 'sprint'  AND  t21.`PRINCIPAL_TYPE` = 'release'  AND  t21.`TARGET_ID` = #{ctx.webcontext.sprint} ) ))
 ```
 
 #### 未已发布(not_published) :id=release-not_published
@@ -9471,7 +9773,7 @@ LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID`
 
 WHERE EXISTS(SELECT * FROM `RELATION` t21 
  WHERE 
- t1.`ID` = t21.`PRINCIPAL_ID`  AND  ( t21.`TARGET_ID` = #{ctx.webcontext.sprint}  AND  t21.`TARGET_TYPE` = 'sprint'  AND  t21.`PRINCIPAL_TYPE` = 'release' ) )
+ t1.`ID` = t21.`PRINCIPAL_ID`  AND  ( t21.`TARGET_TYPE` = 'sprint'  AND  t21.`PRINCIPAL_TYPE` = 'release'  AND  t21.`TARGET_ID` = #{ctx.webcontext.sprint} ) )
 ```
 
 
@@ -13044,6 +13346,42 @@ LEFT JOIN `LIBRARY` t21 ON t1.`TEST_LIBRARY_ID` = t21.`ID`
 WHERE ( t21.`IS_DELETED` = 0 ) AND ( t1.`IS_DELETED` = 0 )
 ```
 
+#### 我的事项测试用例(my_summary_case) :id=test_case-my_summary_case
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`LEVEL`,
+t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
+t1.`MAINTENANCE_ID`,
+t1.`MAINTENANCE_NAME`,
+t1.`NAME`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t1.`REVIEW_RESULT_STATE`,
+concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STATE`,
+t11.`SUITES`,
+t1.`SUITE_ID`,
+t11.`NAME` AS `SUITE_NAME`,
+t1.`TEST_LIBRARY_ID`,
+t21.`NAME` AS `TEST_LIBRARY_NAME`,
+t1.`TEST_TYPE`,
+t1.`TITLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `TEST_CASE` t1 
+LEFT JOIN `TEST_SUITE` t11 ON t1.`SUITE_ID` = t11.`ID` 
+LEFT JOIN `LIBRARY` t21 ON t1.`TEST_LIBRARY_ID` = t21.`ID` 
+
+WHERE ( t21.`IS_ARCHIVED` = 0  AND  t21.`IS_DELETED` = 0 ) AND ( t1.`MAINTENANCE_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`STATE` = '10' )
+```
+
 #### 正常状态(normal) :id=test_case-normal
 ```sql
 SELECT
@@ -14820,6 +15158,48 @@ LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID`
 WHERE ( t11.`IS_DELETED` = 0 ) AND ( t1.`IS_DELETED` = 0 )
 ```
 
+#### 我的事项工单(my_summary_ticket) :id=ticket-my_summary_ticket
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CHANNEL`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUSTOMER_ID`,
+t21.`NAME` AS `CUSTOMER_NAME`,
+t1.`DESCRIPTION`,
+t1.`ESTIMATED_AT`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PRIORITY`,
+t1.`PRODUCT_ID`,
+t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
+t11.`NAME` AS `PRODUCT_NAME`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+1 AS `REP_NUM`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
+t1.`STATE`,
+t1.`SUBMITTED_AT`,
+t1.`SUBMITTER_ID`,
+t1.`SUBMITTER_NAME`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `TICKET` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
+LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID` 
+
+WHERE ( t11.`IS_ARCHIVED` = 0  AND  t11.`IS_DELETED` = 0 ) AND ( t1.`ASSIGNEE_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  t1.state in ( select val from dictionary where CATALOG = 'ticket_state' and type = 'in_progress') )
+```
+
 #### 正常状态(normal) :id=ticket-normal
 ```sql
 SELECT
@@ -15000,7 +15380,7 @@ LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID`
 
 WHERE EXISTS(SELECT * FROM `PRODUCT_MEMBER` t31 
  WHERE 
- t11.`ID` = t31.`PRODUCT_ID`  AND  ( t31.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t31.`ROLE_ID` <> 'customer' ) )
+ t11.`ID` = t31.`PRODUCT_ID`  AND  ( t31.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )
 ```
 
 #### 最近浏览(recent_ticket) :id=ticket-recent_ticket
@@ -15577,6 +15957,8 @@ FROM `WORK` t1
 #### 数据查询(DEFAULT) :id=work_item-Default
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -15592,6 +15974,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -15599,6 +15982,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -15653,6 +16038,8 @@ LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID`
 #### 默认（全部数据）(VIEW) :id=work_item-View
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 (SELECT COUNT( att.ID ) AS attention_count FROM work_item w LEFT JOIN `attention` att ON w.ID = att.OWNER_ID WHERE w.ID = t1.`ID`) AS `ATTENTION_COUNT`,
@@ -15671,6 +16058,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -15678,6 +16066,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -15736,6 +16126,8 @@ LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID`
 #### 高级搜索(advanced_search) :id=work_item-advanced_search
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -15751,6 +16143,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -15758,6 +16151,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -15813,6 +16208,8 @@ WHERE ( t1.`IS_DELETED` = 0  AND  exists(select 1 from project t2, project_membe
 #### 已归档(archived) :id=work_item-archived
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -15828,6 +16225,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -15835,6 +16233,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -15912,6 +16312,8 @@ WHERE NOT(EXISTS(SELECT * FROM `RELATION` t21
 #### BI反查(bi_detail) :id=work_item-bi_detail
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -15927,6 +16329,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -15934,6 +16337,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -16047,6 +16452,8 @@ WHERE ( t11.`IS_DELETED` = 0 )
 #### 缺陷工作项(bug) :id=work_item-bug
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -16062,6 +16469,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -16069,6 +16477,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -16124,6 +16534,8 @@ WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  t21.`GROUP` = 'bug'
 #### 缺陷工作项(bug_work_item) :id=work_item-bug_work_item
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -16139,6 +16551,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -16146,6 +16559,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -16201,6 +16616,8 @@ WHERE ( t1.`IS_DELETED` = 0  AND  t21.`GROUP` = 'bug' )
 #### 变更父工作项(change_parent) :id=work_item-change_parent
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -16216,6 +16633,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -16223,6 +16641,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -16286,9 +16706,11 @@ FROM `WORK_ITEM` t1
 
 ```
 
-#### 选择子工作项(choose_child) :id=work_item-choose_child
+#### 选择工作项(choose) :id=work_item-choose
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -16304,6 +16726,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -16311,6 +16734,90 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
+t1.`PID`,
+t1.`PRIORITY`,
+t1.`PROJECT_ID`,
+t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
+t11.`NAME` AS `PROJECT_NAME`,
+t11.`TYPE` AS `PROJECT_TYPE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
+t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t1.`RELEASE_ID`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
+1 AS `REP_NUM`,
+t1.`RISK`,
+t1.`SEQUENCE`,
+t1.`SEVERITY`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
+t1.`SPRINT_ID`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
+t1.`START_AT`,
+t1.`STATE`,
+t41.`TYPE` AS `STATE_TYPE`,
+t1.`SWIMLANE_ID`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TOP_ID`,
+t91.`TITLE` AS `TOP_TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
+t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
+t1.`WORK_ITEM_TYPE_ID`,
+t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
+t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
+FROM `WORK_ITEM` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
+
+WHERE ( t1.`IS_DELETED` = 0  AND  t1.`PROJECT_ID` = #{ctx.webcontext.project_id}  AND  ( <choose><when test="ctx.webcontext.query_recent !=null ">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  ( <choose><when test="ctx.webcontext.query_attention !=null ">  exists(select 1 from attention t2 where t1.ID = t2.owner_id and t2.user_id =#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> ) )
+```
+
+#### 选择子工作项(choose_child) :id=work_item-choose_child
+```sql
+SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`BACKLOG_FROM`,
+t1.`BACKLOG_TYPE`,
+t1.`BOARD_ID`,
+t81.`NAME` AS `BOARD_NAME`,
+t1.`COMPLETED_AT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`END_AT`,
+t1.`ENTRY_ID`,
+t71.`NAME` AS `ENTRY_NAME`,
+t1.`ENTRY_POSITION`,
+t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
+t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -16366,6 +16873,8 @@ WHERE ( t1.`IS_DELETED` = 0  AND  t1.`ID` <> #{ctx.webcontext.principal_id}  AND
 #### 选择依赖(choose_dependency) :id=work_item-choose_dependency
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -16381,6 +16890,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -16388,6 +16898,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -16454,6 +16966,8 @@ WHERE ( exists (select 1 from comment t2 where t1.ID = t2.PRINCIPAL_ID and t2.ID
 #### 普通工作项(common) :id=work_item-common
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -16462,11 +16976,14 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (CASE WHEN t21.`TYPE` <> 'completed' and t21.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -16498,6 +17015,8 @@ WHERE ( t1.`IS_DELETED` = 0 )
 #### 普通状态缺陷(common_bug) :id=work_item-common_bug
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -16506,11 +17025,14 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (CASE WHEN t21.`TYPE` <> 'completed' and t21.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -16543,6 +17065,8 @@ WHERE ( t1.`IS_DELETED` = 0  AND  t51.`GROUP` = 'bug' )
 #### 已删除(deleted) :id=work_item-deleted
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -16558,6 +17082,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -16565,6 +17090,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -16620,6 +17147,8 @@ WHERE ( t1.`IS_DELETED` = 1 )
 #### 看板工作项(kanban_work_item) :id=work_item-kanban_work_item
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -16635,6 +17164,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -16642,6 +17172,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -16697,6 +17229,8 @@ WHERE ( t1.`IS_DELETED` = 0  AND  t1.`BOARD_ID` IS NOT NULL  AND  t1.`ENTRY_ID` 
 #### 里程碑(milestone) :id=work_item-milestone
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -16712,6 +17246,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -16719,6 +17254,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -16774,6 +17311,8 @@ WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`WORK_ITEM_TYPE_
 #### 移动工作项(move_work_item) :id=work_item-move_work_item
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -16789,6 +17328,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -16796,6 +17336,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -16851,6 +17393,8 @@ WHERE ( t1.`PROJECT_ID` = #{ctx.datacontext.project_id} )
 #### 我负责的(my_assignee) :id=work_item-my_assignee
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -16866,6 +17410,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -16873,6 +17418,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -16922,12 +17469,14 @@ LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID`
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
-WHERE ( t1.`ASSIGNEE_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0 )
+WHERE ( ( t1.`ASSIGNEE_ID` = #{ctx.sessioncontext.srfpersonid}  OR  exists(select 1 from executor t2 where t1.id = t2.owner_id and t2.owner_type = 'WORK_ITEM' and t2.owner_subtype = 'WORK_ITEM' and t2.user_id = #{ctx.sessioncontext.srfpersonid}) )  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0 )
 ```
 
 #### 我关注的(my_attention) :id=work_item-my_attention
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -16943,6 +17492,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -16950,6 +17500,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -17005,6 +17557,8 @@ WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  exists(select 1 fro
 #### 我创建的(my_created) :id=work_item-my_created
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -17020,6 +17574,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -17027,6 +17582,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -17082,6 +17639,8 @@ WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`IS_ARCHIVE
 #### 过滤器默认查询(my_filter) :id=work_item-my_filter
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -17097,6 +17656,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -17104,6 +17664,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -17156,9 +17718,11 @@ LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID`
 WHERE ( t11.`IS_DELETED` = 0 ) AND ( t1.`IS_DELETED` = 0 )
 ```
 
-#### 我待完成的(my_todo) :id=work_item-my_todo
+#### 我的事项_缺陷数(my_summary_bug) :id=work_item-my_summary_bug
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -17174,6 +17738,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -17181,6 +17746,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -17230,12 +17797,14 @@ LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID`
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
-WHERE ( t1.`ASSIGNEE_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  t41.`TYPE` <> 'completed' )
+WHERE ( t11.`IS_DELETED` = 0  AND  t11.`IS_ARCHIVED` = 0 ) AND ( ( t1.`ASSIGNEE_ID` = #{ctx.sessioncontext.srfpersonid}  OR  exists(select 1 from executor t2 where t1.id = t2.owner_id and t2.owner_type = 'WORK_ITEM' and t2.owner_subtype = 'WORK_ITEM' and t2.user_id = #{ctx.sessioncontext.srfpersonid}) )  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  t21.`GROUP` = 'bug'  AND  t41.`TYPE` = 'in_progress' )
 ```
 
-#### 排除缺陷类型的工作项(no_bug_work_item) :id=work_item-no_bug_work_item
+#### 我的事项_其他工作项数(my_summary_other) :id=work_item-my_summary_other
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -17251,6 +17820,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -17258,6 +17828,254 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
+t1.`PID`,
+t1.`PRIORITY`,
+t1.`PROJECT_ID`,
+t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
+t11.`NAME` AS `PROJECT_NAME`,
+t11.`TYPE` AS `PROJECT_TYPE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
+t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t1.`RELEASE_ID`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
+1 AS `REP_NUM`,
+t1.`RISK`,
+t1.`SEQUENCE`,
+t1.`SEVERITY`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
+t1.`SPRINT_ID`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
+t1.`START_AT`,
+t1.`STATE`,
+t41.`TYPE` AS `STATE_TYPE`,
+t1.`SWIMLANE_ID`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TOP_ID`,
+t91.`TITLE` AS `TOP_TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
+t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
+t1.`WORK_ITEM_TYPE_ID`,
+t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
+t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
+FROM `WORK_ITEM` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
+
+WHERE ( t11.`IS_DELETED` = 0  AND  t11.`IS_ARCHIVED` = 0 ) AND ( ( t1.`ASSIGNEE_ID` = #{ctx.sessioncontext.srfpersonid}  OR  exists(select 1 from executor t2 where t1.id = t2.owner_id and t2.owner_type = 'WORK_ITEM' and t2.owner_subtype = 'WORK_ITEM' and t2.user_id = #{ctx.sessioncontext.srfpersonid}) )  AND  t21.`GROUP` <> 'bug'  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  t21.`GROUP` <> 'task'  AND  t41.`TYPE` = 'in_progress' )
+```
+
+#### 我的事项_任务数(my_summary_task) :id=work_item-my_summary_task
+```sql
+SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`BACKLOG_FROM`,
+t1.`BACKLOG_TYPE`,
+t1.`BOARD_ID`,
+t81.`NAME` AS `BOARD_NAME`,
+t1.`COMPLETED_AT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`END_AT`,
+t1.`ENTRY_ID`,
+t71.`NAME` AS `ENTRY_NAME`,
+t1.`ENTRY_POSITION`,
+t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
+t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
+t1.`PID`,
+t1.`PRIORITY`,
+t1.`PROJECT_ID`,
+t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
+t11.`NAME` AS `PROJECT_NAME`,
+t11.`TYPE` AS `PROJECT_TYPE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
+t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t1.`RELEASE_ID`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
+1 AS `REP_NUM`,
+t1.`RISK`,
+t1.`SEQUENCE`,
+t1.`SEVERITY`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
+t1.`SPRINT_ID`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
+t1.`START_AT`,
+t1.`STATE`,
+t41.`TYPE` AS `STATE_TYPE`,
+t1.`SWIMLANE_ID`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TOP_ID`,
+t91.`TITLE` AS `TOP_TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
+t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
+t1.`WORK_ITEM_TYPE_ID`,
+t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
+t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
+FROM `WORK_ITEM` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
+
+WHERE ( t11.`IS_DELETED` = 0  AND  t11.`IS_ARCHIVED` = 0 ) AND ( ( t1.`ASSIGNEE_ID` = #{ctx.sessioncontext.srfpersonid}  OR  exists(select 1 from executor t2 where t1.id = t2.owner_id and t2.owner_type = 'WORK_ITEM' and t2.owner_subtype = 'WORK_ITEM' and t2.user_id = #{ctx.sessioncontext.srfpersonid}) )  AND  t21.`GROUP` = 'task'  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  t41.`TYPE` = 'in_progress' )
+```
+
+#### 我待完成的(my_todo) :id=work_item-my_todo
+```sql
+SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`BACKLOG_FROM`,
+t1.`BACKLOG_TYPE`,
+t1.`BOARD_ID`,
+t81.`NAME` AS `BOARD_NAME`,
+t1.`COMPLETED_AT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`END_AT`,
+t1.`ENTRY_ID`,
+t71.`NAME` AS `ENTRY_NAME`,
+t1.`ENTRY_POSITION`,
+t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
+t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
+t1.`PID`,
+t1.`PRIORITY`,
+t1.`PROJECT_ID`,
+t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
+t11.`NAME` AS `PROJECT_NAME`,
+t11.`TYPE` AS `PROJECT_TYPE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
+t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t1.`RELEASE_ID`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
+1 AS `REP_NUM`,
+t1.`RISK`,
+t1.`SEQUENCE`,
+t1.`SEVERITY`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
+t1.`SPRINT_ID`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
+t1.`START_AT`,
+t1.`STATE`,
+t41.`TYPE` AS `STATE_TYPE`,
+t1.`SWIMLANE_ID`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TOP_ID`,
+t91.`TITLE` AS `TOP_TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
+t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
+t1.`WORK_ITEM_TYPE_ID`,
+t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
+t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
+FROM `WORK_ITEM` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
+
+WHERE ( ( t1.`ASSIGNEE_ID` = #{ctx.sessioncontext.srfpersonid}  OR  exists(select 1 from executor t2 where t1.id = t2.owner_id and t2.owner_type = 'WORK_ITEM' and t2.owner_subtype = 'WORK_ITEM' and t2.user_id = #{ctx.sessioncontext.srfpersonid}) )  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  t41.`TYPE` <> 'completed' )
+```
+
+#### 排除缺陷类型的工作项(no_bug_work_item) :id=work_item-no_bug_work_item
+```sql
+SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`BACKLOG_FROM`,
+t1.`BACKLOG_TYPE`,
+t1.`BOARD_ID`,
+t81.`NAME` AS `BOARD_NAME`,
+t1.`COMPLETED_AT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`END_AT`,
+t1.`ENTRY_ID`,
+t71.`NAME` AS `ENTRY_NAME`,
+t1.`ENTRY_POSITION`,
+t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
+t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -17312,9 +18130,60 @@ WHERE NOT(EXISTS(SELECT * FROM `RELATION` t101
  t1.`ID` = t101.`TARGET_ID`  AND  ( t101.`PRINCIPAL_TYPE` = 'test_case'  AND  t101.`TARGET_TYPE` = 'work_item'  AND  t101.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id} ) )) AND ( ( <choose><when test="ctx.webcontext.query_recent !=null ">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  t21.`GROUP` <> 'bug' )
 ```
 
+#### 未完成(no_completed) :id=work_item-no_completed
+```sql
+SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`BACKLOG_FROM`,
+t1.`BACKLOG_TYPE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`END_AT`,
+t1.`FINISHER`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(CASE WHEN t21.`TYPE` <> 'completed' and t21.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
+t1.`PID`,
+t1.`PRIORITY`,
+t1.`PROJECT_ID`,
+t11.`NAME` AS `PROJECT_NAME`,
+t31.`TITLE` AS `PTITLE`,
+t1.`REAPPEAR_PROBABILITY`,
+t1.`RISK`,
+t1.`SEVERITY`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SPRINT_ID`,
+t41.`NAME` AS `SPRINT_NAME`,
+t1.`START_AT`,
+t1.`STATE`,
+t21.`TYPE` AS `STATE_TYPE`,
+t1.`TITLE`,
+t1.`TOP_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`WORK_ITEM_TYPE_ID`
+FROM `WORK_ITEM` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t21 ON t1.`STATE` = t21.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+
+WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  t21.`TYPE` <> 'completed' )
+```
+
 #### 正常状态(normal) :id=work_item-normal
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -17330,6 +18199,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -17337,6 +18207,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -17392,6 +18264,8 @@ WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0 )
 #### 未关联的缺陷(not_exsists_bug_relation) :id=work_item-not_exsists_bug_relation
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -17407,6 +18281,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -17414,6 +18289,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -17471,6 +18348,8 @@ WHERE NOT(EXISTS(SELECT * FROM `RELATION` t101
 #### 未关联的工作项(not_exsists_relation) :id=work_item-not_exsists_relation
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -17486,6 +18365,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -17493,6 +18373,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -17550,6 +18432,8 @@ WHERE NOT(EXISTS(SELECT * FROM `RELATION` t101
 #### 未关联且不为缺陷工作项(notbug_exsists_relation) :id=work_item-notbug_exsists_relation
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -17565,6 +18449,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -17572,6 +18457,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -17637,9 +18524,60 @@ FROM `WORK_ITEM` t1
 WHERE ( t1.`ID` = #{ctx.webcontext.id}  AND  t1.`ASSIGNEE_ID` <> #{ctx.sessioncontext.srfpersonid} )
 ```
 
+#### 逾期工作项(overdue_work_item) :id=work_item-overdue_work_item
+```sql
+SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`BACKLOG_FROM`,
+t1.`BACKLOG_TYPE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`END_AT`,
+t1.`FINISHER`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(CASE WHEN t21.`TYPE` <> 'completed' and t21.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
+t1.`PID`,
+t1.`PRIORITY`,
+t1.`PROJECT_ID`,
+t11.`NAME` AS `PROJECT_NAME`,
+t31.`TITLE` AS `PTITLE`,
+t1.`REAPPEAR_PROBABILITY`,
+t1.`RISK`,
+t1.`SEVERITY`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SPRINT_ID`,
+t41.`NAME` AS `SPRINT_NAME`,
+t1.`START_AT`,
+t1.`STATE`,
+t21.`TYPE` AS `STATE_TYPE`,
+t1.`TITLE`,
+t1.`TOP_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`WORK_ITEM_TYPE_ID`
+FROM `WORK_ITEM` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t21 ON t1.`STATE` = t21.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+
+WHERE ( IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) IS NOT NULL  AND  IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) > '0' )
+```
+
 #### 项目概览-工作项统计(overview_chart) :id=work_item-overview_chart
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -17655,6 +18593,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -17662,6 +18601,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -17755,6 +18696,8 @@ and t1.end_at >= #{ctx.webcontext.n_date_scope_ltandeq}) ) )
 #### 公开(public) :id=work_item-public
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -17770,6 +18713,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -17777,6 +18721,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -17832,6 +18778,8 @@ WHERE ( t11.`VISIBILITY` = 'public' )
 #### 只读用户(reader) :id=work_item-reader
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -17847,6 +18795,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -17854,6 +18803,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -17911,6 +18862,8 @@ WHERE EXISTS(SELECT * FROM `PROJECT_MEMBER` t101
 #### 最近浏览(recent_work_item) :id=work_item-recent_work_item
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -17926,6 +18879,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -17933,6 +18887,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -17988,6 +18944,8 @@ WHERE ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  exists(select 1 fro
 #### 项目发布下工作项(release) :id=work_item-release
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -17996,11 +18954,14 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (CASE WHEN t21.`TYPE` <> 'completed' and t21.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -18032,6 +18993,8 @@ WHERE ( t1.`IS_DELETED` = 0 )
 #### 项目发布规划工作项(release_plan) :id=work_item-release_plan
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -18047,6 +19010,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -18054,6 +19018,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -18109,6 +19075,8 @@ WHERE ( ( <choose><when test="ctx.webcontext.query_recent !=null ">  exists(sele
 #### 发布工作项统计(release_work_item_chart) :id=work_item-release_work_item_chart
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -18124,6 +19092,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -18131,6 +19100,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -18186,6 +19157,8 @@ WHERE ( t1.`IS_DELETED` = 0  AND  t1.`RELEASE_ID` = #{ctx.webcontext.release} )
 #### 需求工作项(requirement) :id=work_item-requirement
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -18194,11 +19167,14 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (CASE WHEN t21.`TYPE` <> 'completed' and t21.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -18231,6 +19207,8 @@ WHERE ( t51.`GROUP` = 'requirement'  AND  t1.`IS_DELETED` = 0 )
 #### 资源分配(resource) :id=work_item-resource
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -18246,6 +19224,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -18253,6 +19232,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -18311,6 +19292,8 @@ and t1.end_at >= #{ctx.webcontext.n_date_scope_ltandeq}) ) )
 #### 用户故事（normal）(scrum_story_normal) :id=work_item-scrum_story_normal
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -18326,6 +19309,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -18333,6 +19317,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -18388,6 +19374,8 @@ WHERE ( t1.`WORK_ITEM_TYPE_ID` LIKE '%story%' )
 #### 七天内创建或完成的工作项(seven_days) :id=work_item-seven_days
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -18403,6 +19391,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -18410,6 +19399,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -18465,6 +19456,8 @@ WHERE ( ( DATEDIFF(sysdate(),t1.`CREATE_TIME`) < 7  OR  DATEDIFF(sysdate(),t1.`C
 #### 迭代下完成的工作项(sprint_completed) :id=work_item-sprint_completed
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -18480,6 +19473,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -18487,6 +19481,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -18542,6 +19538,8 @@ WHERE ( t1.`COMPLETED_AT` IS NOT NULL  AND  t41.`TYPE` = 'completed' )
 #### 迭代工作项统计(sprint_work_item_chart) :id=work_item-sprint_work_item_chart
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -18557,6 +19555,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -18564,6 +19563,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -18619,6 +19620,8 @@ WHERE ( t1.`IS_DELETED` = 0  AND  t1.`SPRINT_ID` = #{ctx.webcontext.sprint} )
 #### 测试计划关联缺陷(test_plan_relation_bug) :id=work_item-test_plan_relation_bug
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -18634,6 +19637,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -18641,6 +19645,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -18716,6 +19722,8 @@ WHERE ( t1.`IS_DELETED` = 0  AND  t21.`GROUP` = 'bug'  AND  (
 #### 顶层数据查询(top) :id=work_item-top
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -18731,6 +19739,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -18738,6 +19747,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -18793,6 +19804,8 @@ WHERE ( t1.`PID` IS NULL  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0 )
 #### 未删除的(un_deletd) :id=work_item-un_deletd
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -18808,6 +19821,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -18815,6 +19829,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -18870,6 +19886,8 @@ WHERE ( t1.`IS_DELETED` = 0 )
 #### 项目集工作下的工作项(under_work) :id=work_item-under_work
 ```sql
 SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
@@ -18885,6 +19903,7 @@ t1.`ENTRY_ID`,
 t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -18892,6 +19911,8 @@ t1.`IS_DELETED`,
 t1.`IS_LEAF`,
 (CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,

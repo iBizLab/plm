@@ -9,11 +9,12 @@
 
 
 ### 关联视图
-  * [页面(article_page_mob_list_view)](app/view/article_page_mob_list_view)
-  * [需求(idea_mob_md_view)](app/view/idea_mob_md_view)
-  * [用例(test_case_mob_md_view)](app/view/test_case_mob_md_view)
-  * [工单(ticket_mob_md_view)](app/view/ticket_mob_md_view)
-  * [工作项(work_item_mob_list_view)](app/view/work_item_mob_list_view)
+  * [页面(article_page_search_mob_md_view)](app/view/article_page_search_mob_md_view)
+  * [移动端讨论搜索(discuss_post_mob_search_md_view)](app/view/discuss_post_mob_search_md_view)
+  * [需求(idea_search_mob_md_view)](app/view/idea_search_mob_md_view)
+  * [移动端用例搜索(test_case_mob_search_md_view)](app/view/test_case_mob_search_md_view)
+  * [移动端页面搜索(ticket_mob_search_md_view)](app/view/ticket_mob_search_md_view)
+  * [工作项(work_item_search_mob_md_view)](app/view/work_item_search_mob_md_view)
 
 <script>
  const { createApp } = Vue

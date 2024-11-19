@@ -14,6 +14,12 @@
 * `end_at` : [结束时间](index/value_rule_index)
 
 ##### 属性注入
+* `负责人` 注入属性 `teleported`
+
+```javascript
+false
+```
+
 * `状态` 注入属性 `clearable`
 
 ```javascript
@@ -35,6 +41,12 @@ false
 }
 ```
 
+* `开始时间` 注入属性 `teleported`
+
+```javascript
+false
+```
+
 * `结束时间` 注入属性 `disabledDate`
 
 ```javascript
@@ -48,6 +60,12 @@ false
     time.setHours(0, 0, 0, 0);
     return time.getTime() < start_at.getTime();
 }
+```
+
+* `结束时间` 注入属性 `teleported`
+
+```javascript
+false
 ```
 
 

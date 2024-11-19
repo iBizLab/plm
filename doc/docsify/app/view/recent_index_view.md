@@ -9,10 +9,10 @@
 
 
 ### 关联界面行为
-  * [产品(PRODUCT)](module/ProdMgmt/product) : [打开产品首页视图](module/ProdMgmt/product#界面行为)
   * [产品(PRODUCT)](module/ProdMgmt/product) : [打开产品配置](module/ProdMgmt/product#界面行为)
-  * [产品(PRODUCT)](module/ProdMgmt/product) : [取消星标](module/ProdMgmt/product#界面行为)
   * [最近访问(RECENT)](module/Base/recent) : [首页](module/Base/recent#界面行为)
+  * [产品(PRODUCT)](module/ProdMgmt/product) : [取消星标](module/ProdMgmt/product#界面行为)
+  * [产品(PRODUCT)](module/ProdMgmt/product) : [打开产品首页视图](module/ProdMgmt/product#界面行为)
 
 ### 关联视图
   * [关注(attention_tab_exp_view)](app/view/attention_tab_exp_view)

@@ -15,6 +15,7 @@
 ### 关联视图
   * [附件(attachment_mob_md_view)](app/view/attachment_mob_md_view)
   * [人员选择(discuss_member_mob_more_mem_selected)](app/view/discuss_member_mob_more_mem_selected)
+  * [选择话题(discuss_topic_mob_topic_pickup_view)](app/view/discuss_topic_mob_topic_pickup_view)
 
 <script>
  const { createApp } = Vue

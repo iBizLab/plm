@@ -21,13 +21,15 @@ state "结束" as END3 <<end>> [[$./create_result#end3 {"结束"}]]
 state "执行结果数据准备" as PREPAREPARAM5  [[$./create_result#prepareparam5 {"执行结果数据准备"}]]
 state "执行用例数据准备" as PREPAREPARAM6  [[$./create_result#prepareparam6 {"执行用例数据准备"}]]
 state "更新执行用例" as DEACTION7  [[$./create_result#deaction7 {"更新执行用例"}]]
+state "调试逻辑参数" as DEBUGPARAM1  [[$./create_result#debugparam1 {"调试逻辑参数"}]]
 
 
 Begin --> PREPAREPARAM3 : [[$./create_result#begin-prepareparam3{连接名称} 连接名称]]
 PREPAREPARAM3 --> PREPAREPARAM5
 PREPAREPARAM5 --> DEACTION6 : [[$./create_result#prepareparam5-deaction6{如果执行结果不为空} 如果执行结果不为空]]
 DEACTION6 --> PREPAREPARAM6
-PREPAREPARAM6 --> DEACTION7
+PREPAREPARAM6 --> DEBUGPARAM1
+DEBUGPARAM1 --> DEACTION7
 DEACTION7 --> END3
 PREPAREPARAM5 --> PREPAREPARAM6 : [[$./create_result#prepareparam5-prepareparam6{执行结果为空，只更新执行用例} 执行结果为空，只更新执行用例]]
 Begin --> PREPAREPARAM5 : [[$./create_result#begin-prepareparam5{连接名称} 连接名称]]
@@ -95,6 +97,14 @@ Begin --> PREPAREPARAM5 : [[$./create_result#begin-prepareparam5{连接名称} �
 
 
 调用实体 [执行用例(RUN)](module/TestMgmt/run.md) 行为 [Update](module/TestMgmt/run#行为) ，行为参数为`temp_obj(临时变量)`
+
+#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
+
+
+
+> [!NOTE|label:调试信息|icon:fa fa-bug]
+> 调试输出参数`temp_obj(临时变量)`的详细信息
+
 
 
 ### 连接条件说明

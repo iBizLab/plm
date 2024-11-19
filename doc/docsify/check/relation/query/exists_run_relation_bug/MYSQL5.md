@@ -18,5 +18,5 @@ t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `RELATION` t1 
 
-WHERE ( t1.`TARGET_TYPE` = 'work_item'  AND  t1.`PRINCIPAL_TYPE` = 'run'  AND  t1.`TARGET_ID` = #{ctx.datacontext.target_id}  AND  exists(select 1 from run t2 where t1.principal_id = t2.id and t2.case_id = #{ctx.datacontext.principal_id}) )
+WHERE ( t1.`TARGET_TYPE` = 'work_item'  AND  t1.`PRINCIPAL_TYPE` = 'run'  AND  exists(select 1 from run t2 where t1.principal_id = t2.id and t2.case_id = #{ctx.datacontext.principal_id})  AND  t1.`TARGET_ID` = #{ctx.datacontext.target_id} )
 ```

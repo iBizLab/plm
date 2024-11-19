@@ -41,9 +41,9 @@ view.layoutPanel.panelItems.button_calluilogic.state.visible = false
 
 
 ### 关联界面行为
+  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [查看客户统计信息](module/ProdMgmt/customer#界面行为)
   * [客户(CUSTOMER)](module/ProdMgmt/customer) : [添加客户（其他实体关联）](module/ProdMgmt/customer#界面行为)
   * [客户(CUSTOMER)](module/ProdMgmt/customer) : [取消关联](module/ProdMgmt/customer#界面行为)
-  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [查看客户统计信息](module/ProdMgmt/customer#界面行为)
 
 ### 关联界面逻辑
   * [关联(RELATION)](module/Base/relation) : [触发计数器刷新及表格刷新](module/Base/relation/uilogic/refresh_counter)

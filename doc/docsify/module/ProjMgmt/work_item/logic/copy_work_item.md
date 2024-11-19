@@ -123,8 +123,8 @@ LOOPSUBCALL1 --> END1
 3. 将`WORK_ITEM` 设置给  `reverse_relation_obj(反向关联对象).TARGET_TYPE(关联目标类型)`
 4. 将`WORK_ITEM` 设置给  `reverse_relation_obj(反向关联对象).PRINCIPAL_TYPE(关联主体类型)`
 5. 将`temp_obj(临时变量).ID(标识)` 设置给  `forward_relation_obj(正向关联对象).PRINCIPAL_ID(关联主体标识)`
-6. 将`new_work_item(新建工作项).ID(标识)` 设置给  `forward_relation_obj(正向关联对象).TARGET_ID(关联目标标识)`
-7. 将`temp_obj(临时变量).ID(标识)` 设置给  `reverse_relation_obj(反向关联对象).TARGET_ID(关联目标标识)`
+6. 将`new_work_item(新建工作项).ID(标识)` 设置给  `forward_relation_obj(正向关联对象).TARGET_ID(目标主体标识)`
+7. 将`temp_obj(临时变量).ID(标识)` 设置给  `reverse_relation_obj(反向关联对象).TARGET_ID(目标主体标识)`
 8. 将`new_work_item(新建工作项).ID(标识)` 设置给  `reverse_relation_obj(反向关联对象).PRINCIPAL_ID(关联主体标识)`
 9. 将`replica` 设置给  `forward_relation_obj(正向关联对象).RELATION_TYPE(关联类型)`
 10. 将`copy` 设置给  `reverse_relation_obj(反向关联对象).RELATION_TYPE(关联类型)`

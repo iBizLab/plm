@@ -19,6 +19,7 @@
 
 |  中文名     |   代码名  |  视图标题 | 视图类型   |   备注  |
 |  --------   |------------| -----------|  -----   |  -----   |
+|[活动](app/view/activity_mob_list_view)|activity_mob_list_view|活动|实体移动端列表视图||
 |[PLM](app/view/app_index_view)|app_index_view|软件生命周期管理系统|应用首页视图||
 |[移动端登录页](app/view/apploginview)|apploginview||应用登录视图||
 |[页面](app/view/article_page_favorite_mob_list_view)|article_page_favorite_mob_list_view|页面|实体移动端列表视图||
@@ -31,6 +32,7 @@
 |[共享设置](app/view/article_page_mob_option_view)|article_page_mob_option_view|页面|实体移动端选项操作视图||
 |[重命名](app/view/article_page_mob_rename_view)|article_page_mob_rename_view|页面|实体移动端编辑视图||
 |[页面](app/view/article_page_recent_mob_list_view)|article_page_recent_mob_list_view|页面|实体移动端列表视图||
+|[页面搜索结果](app/view/article_page_search_mob_md_view)|article_page_search_mob_md_view|页面|实体移动端多数据视图||
 |[页面](app/view/article_page_shared_mob_list_view)|article_page_shared_mob_list_view|页面|实体移动端列表视图||
 |[附件](app/view/attachment_mob_md_view)|attachment_mob_md_view|附件|实体移动端多数据视图||
 |[附件](app/view/attachment_mob_page_md_view)|attachment_mob_page_md_view|附件|实体移动端多数据视图||
@@ -63,11 +65,12 @@
 |[讨论树导航视图](app/view/discuss_post_mob_discuss_post_tree)|discuss_post_mob_discuss_post_tree|讨论|实体移动端树导航视图||
 |[讨论](app/view/discuss_post_mob_edit_view)|discuss_post_mob_edit_view|讨论|实体移动端编辑视图||
 |[讨论多数据视图](app/view/discuss_post_mob_latest_discuss)|discuss_post_mob_latest_discuss|最新讨论|实体移动端多数据视图||
-|[讨论](app/view/discuss_post_mob_list_view)|discuss_post_mob_list_view|讨论|实体移动端列表视图|、|
+|[讨论](app/view/discuss_post_mob_list_view)|discuss_post_mob_list_view|讨论|实体移动端列表视图||
 |[讨论多数据视图](app/view/discuss_post_mob_my_attention)|discuss_post_mob_my_attention|我关注的|实体移动端多数据视图||
 |[讨论多数据视图](app/view/discuss_post_mob_my_create_discuss)|discuss_post_mob_my_create_discuss|我发起的|实体移动端多数据视图||
 |[讨论多数据视图](app/view/discuss_post_mob_my_reply_discuss)|discuss_post_mob_my_reply_discuss|我回复的|实体移动端多数据视图||
 |[讨论回收站多数据视图](app/view/discuss_post_mob_recycle_md_view)|discuss_post_mob_recycle_md_view|回收站|实体移动端多数据视图||
+|[移动端讨论搜索](app/view/discuss_post_mob_search_md_view)|discuss_post_mob_search_md_view|移动端讨论搜索|实体移动端多数据视图||
 |[讨论](app/view/discuss_post_mob_tab_exp_view)|discuss_post_mob_tab_exp_view|讨论|实体移动端分页导航视图||
 |[讨论](app/view/discuss_post_topic_mob_list_view)|discuss_post_topic_mob_list_view|话题|实体移动端列表视图||
 |[讨论回复编辑视图](app/view/discuss_reply_dr_mob_edit_view)|discuss_reply_dr_mob_edit_view|回复评论|实体移动端编辑视图||
@@ -85,8 +88,10 @@
 |[话题基本信息编辑视图](app/view/discuss_topic_mob_show_base_info)|discuss_topic_mob_show_base_info|基本信息|实体移动端编辑视图||
 |[话题基本信息编辑视图](app/view/discuss_topic_mob_topic_base_info)|discuss_topic_mob_topic_base_info|基本信息|实体移动端编辑视图||
 |[话题讨论列表编辑视图](app/view/discuss_topic_mob_topic_dis_list)|discuss_topic_mob_topic_dis_list|话题|实体移动端编辑视图||
+|[选择话题](app/view/discuss_topic_mob_topic_pickup_view)|discuss_topic_mob_topic_pickup_view|选择话题|实体移动端数据选择视图||
+|[话题数据选择视图（移动端）_选择数据视图](app/view/discuss_topic_mob_topic_pickup_view_pickup_md_view)|discuss_topic_mob_topic_pickup_view_pickup_md_view|话题|实体移动端选择多数据视图（部件视图）||
 |[话题管理分页导航视图](app/view/discuss_topic_mob_topic_tab_exp_view)|discuss_topic_mob_topic_tab_exp_view|话题管理|实体移动端分页导航视图||
-|[新建](app/view/idea_mob_create_view)|idea_mob_create_view|新建|实体移动端编辑视图||
+|[新建需求](app/view/idea_mob_create_view)|idea_mob_create_view|新建|实体移动端编辑视图||
 |[需求](app/view/idea_mob_edit_view)|idea_mob_edit_view|需求|实体移动端编辑视图||
 |[需求模块数据选择视图](app/view/idea_mob_idea_module_view)|idea_mob_idea_module_view|选择模块|实体移动端数据选择视图||
 |[需求回收站多数据视图](app/view/idea_mob_idea_recycle)|idea_mob_idea_recycle|需求|实体移动端多数据视图||
@@ -99,6 +104,7 @@
 |[需求选择树视图](app/view/idea_mob_pickup_tree_view)|idea_mob_pickup_tree_view|需求选择|实体移动端选择树视图（部件视图）||
 |[计划内容](app/view/idea_mob_plan_idea_md_view)|idea_mob_plan_idea_md_view|计划内容|实体移动端多数据视图||
 |[新建需求](app/view/idea_mob_quick_create_view)|idea_mob_quick_create_view|新建需求|实体移动端选项操作视图||
+|[移动端需求搜索多数据视图](app/view/idea_search_mob_md_view)|idea_search_mob_md_view|需求|实体移动端多数据视图||
 |[测试库成员](app/view/library_member_mob_attention_mdpickup_view)|library_member_mob_attention_mdpickup_view|测试库成员|实体移动端多数据选择视图|多选，树视图为“测试库关注人树选择视图”|
 |[关注](app/view/library_member_mob_attention_tree_view)|library_member_mob_attention_tree_view|测试库成员|实体移动端选择树视图（部件视图）|含有当前测试库成员、部门、团队分类|
 |[人员选择](app/view/library_member_mob_dept_mdpickup_view)|library_member_mob_dept_mdpickup_view|测试库成员|实体移动端多数据选择视图|多选，树视图为“测试库部门人员树选择视图”|
@@ -133,6 +139,8 @@
 |[产品移动端列表视图](app/view/product_mob_list_view)|product_mob_list_view|产品|实体移动端列表视图||
 |[产品列表-移动端](app/view/product_mob_md_view)|product_mob_md_view|产品|实体移动端多数据视图||
 |[产品移动编辑视图](app/view/product_mob_product_move)|product_mob_product_move|移动产品|实体移动端编辑视图||
+|[选择产品](app/view/product_mob_product_pickup_view)|product_mob_product_pickup_view|选择产品|实体移动端数据选择视图||
+|[产品数据选择视图（移动端）_选择数据视图](app/view/product_mob_product_pickup_view_pickup_md_view)|product_mob_product_pickup_view_pickup_md_view|产品|实体移动端选择多数据视图（部件视图）||
 |[产品树导航视图](app/view/product_mob_product_tree)|product_mob_product_tree|产品|实体移动端树导航视图||
 |[产品回收站分页导航视图](app/view/product_mob_recycle_tab_view)|product_mob_recycle_tab_view|回收站|实体移动端分页导航视图||
 |[产品设置](app/view/product_mob_setting_view)|product_mob_setting_view|产品设置|实体移动端编辑视图||
@@ -164,6 +172,8 @@
 |[编辑公告](app/view/project_mob_notice_edit_view)|project_mob_notice_edit_view|编辑公告|实体移动端编辑视图||
 |[公告](app/view/project_mob_notice_show_view)|project_mob_notice_show_view|公告|实体移动端编辑视图||
 |[概览](app/view/project_mob_over_view)|project_mob_over_view|项目|实体移动端数据看板视图||
+|[选择项目](app/view/project_mob_project_pickup_view)|project_mob_project_pickup_view|选择项目|实体移动端数据选择视图||
+|[项目数据选择视图（移动端）_选择数据视图](app/view/project_mob_project_pickup_view_pickup_md_view)|project_mob_project_pickup_view_pickup_md_view|项目|实体移动端选择多数据视图（部件视图）||
 |[项目](app/view/project_mob_redirect_view)|project_mob_redirect_view|项目|实体移动端数据重定向视图||
 |[项目](app/view/project_mob_scrum_tab_exp_view)|project_mob_scrum_tab_exp_view|项目|实体移动端分页导航视图|_|
 |[项目](app/view/project_mob_scrum_tree_exp_view)|project_mob_scrum_tree_exp_view|项目|实体移动端树导航视图||
@@ -244,6 +254,7 @@
 |[其他实体关联测试用例选择视图（移动端）_选择数据视图](app/view/test_case_mob_other_re_case_pickup_md_view)|test_case_mob_other_re_case_pickup_md_view|用例|实体移动端选择多数据视图（部件视图）||
 |[用例快速新建选项操作视图](app/view/test_case_mob_quick_create)|test_case_mob_quick_create|新建用例|实体移动端选项操作视图||
 |[测试用例回收站（移动端）](app/view/test_case_mob_recycle_md_view)|test_case_mob_recycle_md_view|回收站|实体移动端多数据视图||
+|[移动端用例搜索](app/view/test_case_mob_search_md_view)|test_case_mob_search_md_view|移动端用例搜索|实体移动端多数据视图||
 |[计划移动端多数据](app/view/test_plan_plan_mob_md_view)|test_plan_plan_mob_md_view|计划|实体移动端多数据视图||
 |[新建](app/view/ticket_mob_create_view)|ticket_mob_create_view|新建|实体移动端编辑视图||
 |[客户关联工单多数据视图](app/view/ticket_mob_cus_re_ticket)|ticket_mob_cus_re_ticket|客户关联工单|实体移动端多数据视图||
@@ -256,8 +267,10 @@
 |[我负责的工单](app/view/ticket_mob_my_assignee_md_view)|ticket_mob_my_assignee_md_view|工单|实体移动端多数据视图||
 |[我关注的工单](app/view/ticket_mob_my_attention_md_view)|ticket_mob_my_attention_md_view|工单|实体移动端多数据视图||
 |[我创建的工单](app/view/ticket_mob_my_created_md_view)|ticket_mob_my_created_md_view|工单|实体移动端多数据视图||
+|[移动端工单搜索](app/view/ticket_mob_search_md_view)|ticket_mob_search_md_view|移动端页面搜索|实体移动端多数据视图||
 |[工单快速新建选项操作视图](app/view/ticket_mob_ticket_create_option_view)|ticket_mob_ticket_create_option_view|新建工单|实体移动端选项操作视图||
 |[工单回收站多数据视图](app/view/ticket_mob_ticket_recycle)|ticket_mob_ticket_recycle|工单|实体移动端多数据视图||
+|[移动端工单搜索多数据视图](app/view/ticket_search_mob_md_view)|ticket_search_mob_md_view|工单|实体移动端多数据视图||
 |[修改密码页（移动端）](app/view/user_change_password_view)|user_change_password_view|修改密码|实体移动端编辑视图||
 |[用户设置页](app/view/user_custom_setting_view)|user_custom_setting_view|企业用户|实体移动端自定义视图||
 |[用户基本信息](app/view/user_mob_user_info_view)|user_mob_user_info_view|企业用户|实体移动端编辑视图||
@@ -281,7 +294,7 @@
 |[工作项](app/view/work_item_mob_milestone_list_view)|work_item_mob_milestone_list_view|工作项|实体移动端列表视图|EDITDATA 未配置|
 |[选择工作项](app/view/work_item_mob_mpick_up_view)|work_item_mob_mpick_up_view|选择工作项|实体移动端多数据选择视图||
 |[其他实体关联工作项选择视图（移动端）_选择数据视图](app/view/work_item_mob_mpick_up_view_pickup_md_view)|work_item_mob_mpick_up_view_pickup_md_view|工作项|实体移动端选择多数据视图（部件视图）||
-|[我负责的工作项](app/view/work_item_mob_my_assignee_chart)|work_item_mob_my_assignee_chart|我负责的工作项|实体移动端图表视图||
+|[个人工作项统计](app/view/work_item_mob_my_assignee_chart)|work_item_mob_my_assignee_chart|个人工作项统计|实体移动端图表视图||
 |[我负责的工作项](app/view/work_item_mob_my_assignee_md_view)|work_item_mob_my_assignee_md_view|工作项|实体移动端多数据视图||
 |[我关注的工作项](app/view/work_item_mob_my_attention_md_view)|work_item_mob_my_attention_md_view|工作项|实体移动端多数据视图||
 |[我创建的工作项](app/view/work_item_mob_my_created_md_view)|work_item_mob_my_created_md_view|工作项|实体移动端多数据视图||
@@ -297,6 +310,7 @@
 |[工作项统计](app/view/work_item_mob_work_item_statistic_chart_view)|work_item_mob_work_item_statistic_chart_view|工作项统计|实体移动端图表视图||
 |[我负责的工作项](app/view/work_item_my_assignee_mobboard)|work_item_my_assignee_mobboard|我负责的工作项|实体移动端多数据视图||
 |[我创建的工作项](app/view/work_item_my_created_mobdash)|work_item_my_created_mobdash|我创建的工作项|实体移动端多数据视图||
+|[工作项-查询结果](app/view/work_item_search_mob_md_view)|work_item_search_mob_md_view|工作项|实体移动端多数据视图||
 |[工时日历](app/view/workload_mob_calendar_view)|workload_mob_calendar_view|工时|实体移动端多数据视图||
 |[工时日历详情](app/view/workload_mob_calender_detail_view)|workload_mob_calender_detail_view|工时|实体移动端多数据视图||
 |[工时记录](app/view/workload_mob_detail_view)|workload_mob_detail_view|工时记录|实体移动端多数据视图||

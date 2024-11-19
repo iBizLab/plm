@@ -17,8 +17,8 @@
 
 
 ### 关联界面行为
-  * [工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state) : [编辑状态](module/ProjMgmt/work_item_state#界面行为)
   * [工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state) : [删除状态](module/ProjMgmt/work_item_state#界面行为)
+  * [工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state) : [编辑状态](module/ProjMgmt/work_item_state#界面行为)
   * [工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state) : [表格界面_新建操作](module/ProjMgmt/work_item_state#界面行为)
 
 ### 关联界面逻辑

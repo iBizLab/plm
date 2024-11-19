@@ -16,6 +16,10 @@
 * `全部数据`
 
 
+<p class="panel-title"><b>主排序属性</b></p>
+
+* `UPDATE_TIME(更新时间)` `DESC`
+
 
 
 ### 数据查询

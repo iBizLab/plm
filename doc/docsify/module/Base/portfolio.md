@@ -20,7 +20,7 @@
 |项目集成员|MEMBERS|一对多关系数据集合|1048576|是||
 |项目集名称|NAME|文本，可指定长度|200|否||
 |开始时间|START_AT|日期型||是||
-|状态|STATE|[单项选择(文本值)](index/dictionary_index#project_state "项目状态")|60|是||
+|状态|STATE|单项选择(文本值)|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 

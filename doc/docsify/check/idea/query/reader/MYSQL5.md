@@ -45,5 +45,5 @@ LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID`
 
 WHERE EXISTS(SELECT * FROM `PRODUCT_MEMBER` t41 
  WHERE 
- t11.`ID` = t41.`PRODUCT_ID`  AND  ( t41.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t41.`ROLE_ID` <> 'customer' ) )
+ t11.`ID` = t41.`PRODUCT_ID`  AND  ( t41.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )
 ```

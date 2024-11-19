@@ -71,7 +71,7 @@ BINDPARAM1 --> END1 : [[$./create_library_member#bindparam1-end1{未勾选添加
 
 
 
-调用实体 [测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member.md) 行为 [Create](module/TestMgmt/library_member#行为) ，行为参数为`member_obj(关系对象)`
+调用实体 [测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member.md) 行为 [Save](module/TestMgmt/library_member#行为) ，行为参数为`member_obj(关系对象)`
 
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 

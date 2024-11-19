@@ -45,9 +45,9 @@ DEACTION3 --> END1
 
 
 1. 将`Default(传入变量).PRINCIPAL_ID` 设置给  `forward_relation_obj(正向关联对象).PRINCIPAL_ID(关联主体标识)`
-2. 将`Default(传入变量).PRINCIPAL_ID` 设置给  `reverse_relation_obj(反向关联对象).TARGET_ID(关联目标标识)`
+2. 将`Default(传入变量).PRINCIPAL_ID` 设置给  `reverse_relation_obj(反向关联对象).TARGET_ID(目标主体标识)`
 3. 将`Default(传入变量).ID(标识)` 设置给  `reverse_relation_obj(反向关联对象).PRINCIPAL_ID(关联主体标识)`
-4. 将`Default(传入变量).ID(标识)` 设置给  `forward_relation_obj(正向关联对象).TARGET_ID(关联目标标识)`
+4. 将`Default(传入变量).ID(标识)` 设置给  `forward_relation_obj(正向关联对象).TARGET_ID(目标主体标识)`
 
 #### 拼接关联对象的主键 :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 

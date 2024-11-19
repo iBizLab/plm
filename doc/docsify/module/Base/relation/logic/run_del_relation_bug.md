@@ -60,9 +60,9 @@ DEACTION4 --> DEACTION5
 
 
 1. 将`Default(传入变量).PRINCIPAL_ID(关联主体标识)` 设置给  `forward_relation_obj(正向关联对象).PRINCIPAL_ID(关联主体标识)`
-2. 将`Default(传入变量).PRINCIPAL_ID(关联主体标识)` 设置给  `reverse_relation_obj(反向关联对象).TARGET_ID(关联目标标识)`
-3. 将`Default(传入变量).TARGET_ID(关联目标标识)` 设置给  `reverse_relation_obj(反向关联对象).PRINCIPAL_ID(关联主体标识)`
-4. 将`Default(传入变量).TARGET_ID(关联目标标识)` 设置给  `forward_relation_obj(正向关联对象).TARGET_ID(关联目标标识)`
+2. 将`Default(传入变量).PRINCIPAL_ID(关联主体标识)` 设置给  `reverse_relation_obj(反向关联对象).TARGET_ID(目标主体标识)`
+3. 将`Default(传入变量).TARGET_ID(目标主体标识)` 设置给  `reverse_relation_obj(反向关联对象).PRINCIPAL_ID(关联主体标识)`
+4. 将`Default(传入变量).TARGET_ID(目标主体标识)` 设置给  `forward_relation_obj(正向关联对象).TARGET_ID(目标主体标识)`
 
 #### 拼接关联对象的主键 :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
@@ -113,7 +113,7 @@ if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get(
 
 
 
-1. 将`Default(传入变量).TARGET_ID(关联目标标识)` 设置给  `relation_filter(关联数据查询过滤器).n_target_id_eq`
+1. 将`Default(传入变量).TARGET_ID(目标主体标识)` 设置给  `relation_filter(关联数据查询过滤器).n_target_id_eq`
 2. 将`work_item` 设置给  `relation_filter(关联数据查询过滤器).n_target_type_eq`
 3. 将`run(执行用例).CASE_ID(测试用例标识)` 设置给  `relation_filter(关联数据查询过滤器).n_principal_id_eq`
 4. 将`test_case` 设置给  `relation_filter(关联数据查询过滤器).n_principal_type_eq`

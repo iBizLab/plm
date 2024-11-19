@@ -33,7 +33,7 @@
 * **RELATION不存在1:N（NOT EXISTS (SELECT)）DERCUSTOM_RELATION_SPRINT**<br>
 连接关系：[DERCUSTOM_RELATION_SPRINT](der/DERCUSTOM_RELATION_SPRINT)<br>
 连接实体：[迭代](module/ProjMgmt/sprint)<br>
-连接条件：(`TARGET_TYPE(关联目标类型)` EQ `'release'` AND `PRINCIPAL_TYPE(关联主体类型)` EQ `'sprint'` AND `TARGET_ID(关联目标标识)` EQ `网页请求上下文.release`)<br>
+连接条件：(`TARGET_TYPE(关联目标类型)` EQ `'release'` AND `PRINCIPAL_TYPE(关联主体类型)` EQ `'sprint'` AND `TARGET_ID(目标主体标识)` EQ `网页请求上下文.release`)<br>
 
 
 

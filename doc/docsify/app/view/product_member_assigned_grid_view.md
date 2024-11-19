@@ -19,8 +19,8 @@
 
 
 ### 关联界面行为
-  * [产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member) : [表格界面_新建操作](module/ProdMgmt/product_member#界面行为)
   * [产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member) : [移除成员](module/ProdMgmt/product_member#界面行为)
+  * [产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member) : [表格界面_新建操作](module/ProdMgmt/product_member#界面行为)
 
 ### 关联界面逻辑
   * [产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member) : [新建产品默认临时成员](module/ProdMgmt/product_member/uilogic/create_default_temp_members)

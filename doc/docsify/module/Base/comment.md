@@ -133,7 +133,7 @@
 |[执行用例评论通知](module/Base/comment/notify/run_notify)|run_notify|[默认消息队列](index/notify_index)|[评论执行用例通知模板](index/notify_index#comment_run)|执行人 关注人员 ||
 |[测试用例评论通知](module/Base/comment/notify/test_case_notify)|test_case_notify|[默认消息队列](index/notify_index)|[评论测试用例通知模板](index/notify_index#comment_test_case)|关注人员 维护人 ||
 |[工单评论通知](module/Base/comment/notify/ticket_notify)|ticket_notify|[默认消息队列](index/notify_index)|[评论工单通知模板](index/notify_index#comment_ticket)|关注人员 负责人 ||
-|[工作项评论通知](module/Base/comment/notify/work_item_notify)|work_item_notify|[默认消息队列](index/notify_index)|[评论工作项通知模板](index/notify_index#comment_work_item)|负责人 关注人 ||
+|[工作项评论通知](module/Base/comment/notify/work_item_notify)|work_item_notify|[默认消息队列](index/notify_index)|[评论工作项通知模板](index/notify_index#comment_work_item)|关注人 工作项执行人 负责人 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |

@@ -175,7 +175,6 @@
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
 | 编辑 | panel_usr0516087018_button_calluilogic1_click | 编辑 |单项数据|用户自定义||
-| 打开话题讨论列表（移动端） | mob_open_topic_dis_list | 打开话题讨论列表 |单项数据|<details><summary>打开视图或向导（模态）</summary>[话题](app/view/discuss_post_topic_mob_list_view)</details>||
 | 移动 | move | 移动 |单项数据|<details><summary>后台调用</summary>[move](#行为)||
 | 删除评论（移动端） | mob_del_comment | 删除评论 |单项数据（主键）|<details><summary>后台调用</summary>[del_comment](#行为)||
 | 恢复 | recover | 恢复 |多项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)|回收站批操作按钮调用；|
@@ -194,6 +193,7 @@
 | 显示评论列表 | show_comment_list | 发送评论 |无数据|用户自定义||
 | 删除评论 | delete_comment | 删除评论 |单项数据（主键）|用户自定义||
 | 打开讨论关注列表（移动端） | mob_open_attention_list | 打开关注列表 |单项数据|<details><summary>打开视图或向导（模态）</summary>[讨论关注](app/view/attention_mob_discuss_md_view)</details>||
+| 打开讨论树导航视图（移动端） | mob_open_discuss_tree | 打开讨论树导航视图 |无数据|<details><summary>打开视图或向导（模态）</summary>[讨论](app/view/discuss_post_mob_discuss_post_tree)</details>||
 | 收起评论列表 | hidden_comment_list | 收起评论 |无数据|用户自定义||
 | 关闭 | close | 关闭 |单项数据（主键）|<details><summary>后台调用</summary>[close](#行为)||
 | 发送 | panel_usr1018539994_button_calluilogic_send_click | 发送 |单项数据|用户自定义||
@@ -204,6 +204,7 @@
 | --------|--------|--------|
 |[删除评论](module/Team/discuss_post/uilogic/del_comment)|del_comment|删除评论|
 |[刷新](module/Team/discuss_post/uilogic/refresh)|refresh|刷新主视图|
+|[刷新（移动端）](module/Team/discuss_post/uilogic/mob_refresh)|mob_refresh||
 |[发送评论](module/Team/discuss_post/uilogic/send_comment)|send_comment|发送评论|
 |[发送评论（移动端讨论）](module/Team/discuss_post/uilogic/send_comment_mob)|send_comment_mob|发送评论，并关闭评论输入框|
 |[添加回复](module/Team/discuss_post/uilogic/add_reply)|add_reply|添加回复，并关闭回复输入框|

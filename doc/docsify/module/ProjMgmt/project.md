@@ -7,15 +7,19 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 ## 属性
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
+|实际结束时间|ACTUAL_END_AT|日期型||是||
+|实际开始时间|ACTUAL_START_AT|日期型||是||
 |全部工作项数|ALL_WORK_ITEMS|数值||是||
 |负责人标识|ASSIGNEE_ID|文本，可指定长度|100|是||
 |负责人|ASSIGNEE_NAME|文本，可指定长度|100|是||
 |主题色|COLOR|文本，可指定长度|100|是||
 |已完成工作项数|COMPLETED_WORK_ITEMS|数值||是||
+|消耗工时|CONSUME_TIME|文本，可指定长度|100|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
 |描述|DESCRIPTION|长文本，长度1000|2000|是||
 |结束时间|END_AT|日期型||是||
+|预计工时|EXPECTED_TIME|文本，可指定长度|100|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |项目标识|IDENTIFIER|文本，可指定长度|100|否||
 |是否已归档|IS_ARCHIVED|是否逻辑||是||
@@ -29,7 +33,8 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |所属对象|SCOPE_ID|文本，可指定长度|100|是||
 |所属|SCOPE_TYPE|[单项选择(文本值)](index/dictionary_index#scope_type "所属类型（通用）")|60|是||
 |开始时间|START_AT|日期型||是||
-|状态|STATE|[单项选择(文本值)](index/dictionary_index#project_state "项目状态")|60|是||
+|项目状态|STATE|外键值|100|是||
+|状态类型|STATE_TYPE|[外键值附加数据](index/dictionary_index#project_state_type "项目状态类型")|60|是||
 |临时|TEMP|文本，可指定长度|100|是||
 |类型|TYPE|[单项选择(文本值)](index/dictionary_index#project_type "项目类型")|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
@@ -65,7 +70,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |可见范围|VISIBILITY|单项选择(文本值)|60|否||
 |所属|SCOPE_TYPE|[单项选择(文本值)](index/dictionary_index#scope_type "所属类型（通用）")|60|是||
 |类型|TYPE|[单项选择(文本值)](index/dictionary_index#project_type "项目类型")|60|是||
-|状态|STATE|[单项选择(文本值)](index/dictionary_index#project_state "项目状态")|60|是||
+|项目状态|STATE|外键值|100|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 
 </el-tab-pane>
@@ -75,7 +80,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 | --------   |------------| -----  | -----  | :----: | -------- |
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |类型|TYPE|[单项选择(文本值)](index/dictionary_index#project_type "项目类型")|60|是||
-|状态|STATE|[单项选择(文本值)](index/dictionary_index#project_state "项目状态")|60|是||
+|项目状态|STATE|外键值|100|是||
 |可见范围|VISIBILITY|单项选择(文本值)|60|否||
 |项目名称|NAME|文本，可指定长度|200|否||
 |项目标识|IDENTIFIER|文本，可指定长度|100|否||
@@ -131,6 +136,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 
 |  名称col350   | 主实体col200   | 关系类型col200   |    备注col500  |
 | -------- |---------- |-----------|----- |
+|[DER1N_PROJECT_PROJECT_STATE_STATE](der/DER1N_PROJECT_PROJECT_STATE_STATE)|[项目状态(PROJECT_STATE)](module/ProjMgmt/project_state)|1:N关系||
 |[DERCUSTOM_PROJECT_COMMON_FLOW](der/DERCUSTOM_PROJECT_COMMON_FLOW)|[通用规则(COMMON_FLOW)](module/Base/common_flow)|自定义关系||
 |[DERINDEX_PROJECT_REFERENCES_INDEX](der/DERINDEX_PROJECT_REFERENCES_INDEX)|[引用索引(REFERENCES_INDEX)](module/Base/references_index)|索引关系||
 
@@ -168,11 +174,13 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |看板项目首页组件计数|kanban_index_addon_counter|[实体处理逻辑](module/ProjMgmt/project/logic/kanban_project_addon_authority "看板项目组件权限计数器")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/ProjMgmt/project/logic/nothing "无操作")|默认|不支持||||
 |其他实体关联空间|other_re_space|[实体处理逻辑](module/ProjMgmt/project/logic/other_re_space "其他实体关联空间")|默认|不支持||||
+|刷新项目状态|project_automatic_change_state|[实体处理逻辑](module/ProjMgmt/project/logic/project_automatic_change_state "项目自动变更状态")|默认|不支持||||
 |移动项目|project_move|[实体处理逻辑](module/ProjMgmt/project/logic/project_move "移动项目")|默认|不支持||||
 |恢复|recover|[实体处理逻辑](module/ProjMgmt/project/logic/recover "恢复")|默认|不支持||||
 |从项目集中移除|remove_from_project_set|[实体处理逻辑](module/ProjMgmt/project/logic/remove_from_project_set "从项目集中移除")|默认|不支持||||
 |敏捷项目首页组件计数|scrum_index_addon_counter|[实体处理逻辑](module/ProjMgmt/project/logic/scrum_project_addon_authority "scrum项目组件权限计数器")|默认|不支持||||
 |取消星标|un_favorite|[实体处理逻辑](module/ProjMgmt/project/logic/un_favorite "取消星标")|默认|不支持||||
+|预警计数|warning_count_logic|[实体处理逻辑](module/ProjMgmt/project/logic/warning_count_logic "逾期工作项计数")|默认|不支持||||
 |瀑布项目首页组件计数|waterfall_index_addon_counter|[实体处理逻辑](module/ProjMgmt/project/logic/waterfall_project_addon_authority "waterfall项目组件权限计数器")|默认|不支持||||
 
 ## 处理逻辑
@@ -205,7 +213,9 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[获取项目进度](module/ProjMgmt/project/logic/get_schedule)|get_schedule|无||通过已完成工作项数量/所有工作项数量，计算出此项目进度|
 |[设置星标](module/ProjMgmt/project/logic/favorite)|favorite|无||设置为星标项目|
 |[负责人变更附加逻辑](module/ProjMgmt/project/logic/assignee_id_onchange)|assignee_id_onchange|属性逻辑||项目负责人变更时触发相应的通知消息|
+|[逾期工作项计数](module/ProjMgmt/project/logic/warning_count_logic)|warning_count_logic|无|||
 |[项目状态变更通知](module/ProjMgmt/project/logic/state_notify)|state_notify|属性逻辑||项目状态变更时触发相应的通知消息|
+|[项目自动变更状态](module/ProjMgmt/project/logic/project_automatic_change_state)|project_automatic_change_state|无||定时执行，当项目的结束时间小于当前日期时，自动将项目状态变更为延期；<br>当项目的结束时间距今不足五天时，自动将项目状态变更为预警；|
 
 ## 功能配置
 | 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
@@ -351,6 +361,8 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
+|F_END_AT_DATEDIFFNOW2_LTANDEQ|结束时间|LTANDEQ||
+|F_END_AT_DATEDIFFNOW_GTANDEQ|结束时间|GTANDEQ||
 |N_ID_EQ|标识|EQ||
 |N_ID_NOTEQ|标识|NOTEQ||
 |N_IDENTIFIER_EQ|项目标识|EQ||
@@ -359,7 +371,8 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |N_IS_DELETED_EQ|是否已删除|EQ||
 |N_NAME_LIKE|项目名称|LIKE||
 |N_SCOPE_TYPE_EQ|所属|EQ||
-|N_STATE_EQ|状态|EQ||
+|N_STATE_EQ|项目状态|EQ||
+|N_STATE_TYPE_NOTEQ|状态类型|NOTEQ||
 |N_TYPE_EQ|类型|EQ||
 |N_VISIBILITY_EQ|可见范围|EQ||
 
@@ -384,6 +397,9 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 | 项目信息 | open_show_view | 项目信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[项目信息](app/view/project_show_edit_view)</details>||
 | 已归档_删除 | archived_delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 新开窗口（项目） | open_new | 新窗口打开 |单项数据（主键）|<details><summary>打开HTML页面</summary>*./#/-/index/project=${data.id}/project_redirect_view/project=${data.id}*</details>||
+| 查看三日到期预警 | open_three_day_warning | 查看三日到期预警 |无数据|<details><summary>打开视图或向导（模态）</summary>[三日到期预警](app/view/work_item_three_day_warning_grid_view)</details>||
+| 调用自动化刷新项目逾期状态 | refresh_project_state | 刷新 |单项数据|用户自定义||
+| 进行中_归档（移动端） | mob_archive | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 | 打开新建项目 | open_new_project | 打开新建项目 |单项数据|<details><summary>打开顶级视图</summary>[项目](app/view/project_redirect_view)</details>||
 | 取消星标 | cancel_favorite | 取消星标 |单项数据（主键）|<details><summary>后台调用</summary>[un_favorite](#行为)||
 | 已删除_恢复 | recover | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
@@ -391,14 +407,18 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 | 设置星标 | add_favorite | 设置星标 |单项数据（主键）|<details><summary>后台调用</summary>[favorite](#行为)||
 | 进行中_删除（移动端） | mob_in_progress_into_deleted | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 进行中_归档 | archive | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
+| 查看全部工作项 | open_all_work_item | 查看全部工作项 |无数据|<details><summary>打开视图或向导（模态）</summary>[未完成工作项](app/view/work_item_work_item_grid_view)</details>||
 | 移动项目 | move_project | 移动项目 |单项数据（主键）|<details><summary>后台调用</summary>[project_move](#行为)||
 | 回收站（移动端） | mob_recycle_bin | 回收站 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[回收站](app/view/work_item_mob_recycle_bin_md_view)</details>||
+| 打开项目移动端列表视图 | open_mob_list_view | 打开项目移动端列表 |无数据|<details><summary>打开视图或向导（模态）</summary>[项目](app/view/project_mob_list_view)</details>||
+| 查看已逾期工作项 | open_overdue_work | 查看已逾期工作项 |无数据|<details><summary>打开视图或向导（模态）</summary>[逾期工作项](app/view/work_item_overdue_grid_view)</details>||
 | 打开BI报表配置表单_项目_风险占比 | open_bi_form_project_risk_ratio | 配置 |无数据|<details><summary>打开快捷编辑</summary></details>||
 | 反查打开项目 | bi_open_project | 打开项目 |单项数据|用户自定义||
 | 已归档_激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
 | 从项目集中移除 | remove_from_project_set | 移除 |单项数据（主键）|<details><summary>后台调用</summary>[remove_from_project_set](#行为)||
 | 根据类型打开项目主视图 | open_project_main_view | 打开项目主视图 |单项数据（主键）|<details><summary>打开顶级视图</summary>[项目](app/view/project_redirect_view)</details>||
 | 高级设置（移动端） | mob_advanced_setting | 高级设置 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[高级设置](app/view/project_mob_advanced_setting_view)</details>||
+| 查看当日到期预警 | open_cur_waring | 查看当日到期预警 |无数据|<details><summary>打开视图或向导（模态）</summary>[今日到期预警](app/view/work_item_cur_warning_grid_view)</details>||
 | 全屏展示（移动端） | full_screen | 全屏 |无数据|用户自定义||
 | 创建项目（移动端） | mob_create_project | 创建项目 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建项目](app/view/project_mob_create_view)</details>||
 
@@ -406,6 +426,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
 |[刷新当前表格](module/ProjMgmt/project/uilogic/refresh_current_grid)|refresh_current_grid|刷新当前视图的表格|
+|[刷新项目状态](module/ProjMgmt/project/uilogic/refresh_project_state)|refresh_project_state||
 |[图表全屏（移动端）](module/ProjMgmt/project/uilogic/mob_full_screen)|mob_full_screen||
 |[批量删除项目成员临时数据](module/ProjMgmt/project/uilogic/remove_batch_temp)|remove_batch_temp|获取项目内所有临时成员数据并删除|
 |[计算表格列行为状态(project)](module/ProjMgmt/project/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|

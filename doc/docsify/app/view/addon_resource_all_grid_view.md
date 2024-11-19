@@ -14,8 +14,8 @@
 
 
 ### 关联界面行为
-  * [资源组件(ADDON_RESOURCE)](module/Base/addon_resource) : [删除资源](module/Base/addon_resource#界面行为)
   * [资源组件(ADDON_RESOURCE)](module/Base/addon_resource) : [编辑资源](module/Base/addon_resource#界面行为)
+  * [资源组件(ADDON_RESOURCE)](module/Base/addon_resource) : [删除资源](module/Base/addon_resource#界面行为)
 
 ### 关联视图
   * [资源组件(addon_resource_edit_view)](app/view/addon_resource_edit_view)

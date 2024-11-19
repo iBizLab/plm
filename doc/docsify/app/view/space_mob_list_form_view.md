@@ -10,8 +10,8 @@
 
 
 ### 关联界面行为
-  * [空间(SPACE)](module/Wiki/space) : [草稿箱(移动端)](module/Wiki/space#界面行为)
   * [空间(SPACE)](module/Wiki/space) : [高级设置（移动端）](module/Wiki/space#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [草稿箱(移动端)](module/Wiki/space#界面行为)
   * [空间(SPACE)](module/Wiki/space) : [空间设置（移动端）](module/Wiki/space#界面行为)
   * [空间(SPACE)](module/Wiki/space) : [空间成员(移动端)](module/Wiki/space#界面行为)
 

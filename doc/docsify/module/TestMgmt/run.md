@@ -131,6 +131,7 @@
 |[DER1N_STEP_RUN_RUN_ID](der/DER1N_STEP_RUN_RUN_ID)|[用例步骤(STEP)](module/TestMgmt/step)|1:N关系||
 |[DERCOSTOM_COMMENT_RUN_PRINCIPAL_ID](der/DERCOSTOM_COMMENT_RUN_PRINCIPAL_ID)|[评论(COMMENT)](module/Base/comment)|自定义关系||
 |[DERCUSTOM_ATTENTION_RUN_OWNER_ID](der/DERCUSTOM_ATTENTION_RUN_OWNER_ID)|[关注(ATTENTION)](module/Base/attention)|自定义关系||
+|[DERCUSTOM_RELATION_TARGET_RUN](der/DERCUSTOM_RELATION_TARGET_RUN)|[关联(RELATION)](module/Base/relation)|自定义关系||
 |[DERCUSTOM_RUN_RUN_ATTACHMENT](der/DERCUSTOM_RUN_RUN_ATTACHMENT)|[执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment)|自定义关系||
 |[DERCUSTOM_RUN_SEARCH_COMMENT](der/DERCUSTOM_RUN_SEARCH_COMMENT)|[评论搜索(SEARCH_COMMENT)](module/Base/search_comment)|自定义关系||
 
@@ -163,6 +164,9 @@
 |无操作|nothing|[实体处理逻辑](module/TestMgmt/run/logic/nothing "无操作")|默认|不支持||||
 |其他实体关联执行用例|other_relation_run|[实体处理逻辑](module/TestMgmt/run/logic/others_relation_run "其他实体关联执行用例")|默认|不支持||||
 |规划计划|program_plan|[实体处理逻辑](module/TestMgmt/run/logic/program_plan "规划计划")|默认|不支持||||
+|通过发布规划计划|program_plan_by_release|[实体处理逻辑](module/TestMgmt/run/logic/program_plan_by_release "通过发布规划计划")|默认|不支持||||
+|通过迭代规划计划|program_plan_by_sprint|[实体处理逻辑](module/TestMgmt/run/logic/program_plan_by_sprint "通过迭代规划计划")|默认|不支持||||
+|通过工作项规划计划|program_plan_by_workitem|[实体处理逻辑](module/TestMgmt/run/logic/program_plan_by_workitem "通过工作项规划计划")|默认|不支持||||
 |重置为未测|reset_not_test|[实体处理逻辑](module/TestMgmt/run/logic/reset_not_test "重置为未测")|默认|不支持||||
 |执行结果获取|run_history_get|[实体处理逻辑](module/TestMgmt/run/logic/run_history_get "执行结果获取")|默认|不支持||||
 |执行用例关联分页计数器|run_re_counters|[实体处理逻辑](module/TestMgmt/run/logic/run_re_counters "执行用例关联分页计数器")|默认|不支持||||
@@ -191,6 +195,9 @@
 |[规划计划](module/TestMgmt/run/logic/program_plan)|program_plan|无||规划当前计划内用例（添加用例至测试计划内）|
 |[记录执行结果](module/TestMgmt/run/logic/create_result)|create_result|无||记录当前执行用例的执行结果|
 |[设置执行人](module/TestMgmt/run/logic/set_executor)|set_executor|无||设置当前执行用例执行人|
+|[通过发布规划计划](module/TestMgmt/run/logic/program_plan_by_release)|program_plan_by_release|无||通过发布规划计划|
+|[通过工作项规划计划](module/TestMgmt/run/logic/program_plan_by_workitem)|program_plan_by_workitem|无||通过工作项规划计划|
+|[通过迭代规划计划](module/TestMgmt/run/logic/program_plan_by_sprint)|program_plan_by_sprint|无||通过迭代规划计划|
 |[重置为未测](module/TestMgmt/run/logic/reset_not_test)|reset_not_test|无||重置当前执行用例的执行状态为初始未测状态|
 |[附加用例步骤](module/TestMgmt/run/logic/add_steps)|add_steps|无||获取用例步骤，并返回|
 
@@ -324,6 +331,7 @@
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
 | 全部通过 | all_pass | 全部通过 |无数据|用户自定义||
+| 选择用例（发布） | program_plan_by_release | 选择发布 |无数据|<details><summary>后台调用</summary>[program_plan_by_release](#行为)||
 | 移出 | delete_run | 移出 |多项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 | 移出（移动端） | mob_delete_run | 移出(移动端) |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 | BI编辑 | bi_report_view | 编辑 |无数据|用户自定义||
@@ -337,11 +345,13 @@
 | 打开关联用例 | open_re_run | 打开关联用例 |无数据|<details><summary>打开视图或向导（模态）</summary>[用例](app/view/test_case_re_run_main_view)</details>||
 | 打开选项操作视图（门户）（每日执行用例趋势） | open_optview_portlet_daily_tendencies | 编辑 |无数据|<details><summary>打开视图或向导（模态）</summary>[编辑部件](app/view/run_daily_tendencies_option_view)</details>|打开选项操作视图（门户）（每日执行用例趋势）|
 | 选择用例 | choose_test_case | 选择用例 |无数据|<details><summary>后台调用</summary>[program_plan](#行为)||
+| 选择用例（迭代） | sprint_choose_case | 选择迭代 |无数据|<details><summary>后台调用</summary>[program_plan_by_sprint](#行为)||
 | 打开选项操作视图（门户）（成员执行） | open_optview_members_distribution | 编辑 |无数据|<details><summary>打开视图或向导（模态）</summary>[编辑部件](app/view/run_members_distribution_option_view)</details>||
 | 记录执行结果 | save_run_history | 保存执行结果 |单项数据|<details><summary>后台调用</summary>[save_run_history](#行为)||
 | 设置执行结果 | update_run_status | 设置执行结果 |多项数据（主键）|<details><summary>后台调用</summary>[batch_save_run_history](#行为)||
 | 执行用例关联缺陷（移动端） | mob_add_bug | 执行用例关联缺陷 |无数据|<details><summary>后台调用</summary>[other_relation_run](#行为)||
 | 记录执行结果并开启下一条 | save_run_history_and_next | 保存执行结果 |单项数据|<details><summary>后台调用</summary>[save_run_history](#行为)||
+| 选择用例（工作项） | work_item_choose_case | 选择工作项 |无数据|<details><summary>后台调用</summary>[program_plan_by_workitem](#行为)||
 | 查看工时明细 | check_workload_detail | 查看工时明细 |无数据|用户自定义||
 
 ## 界面逻辑

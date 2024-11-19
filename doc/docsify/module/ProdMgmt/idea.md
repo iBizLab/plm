@@ -236,6 +236,7 @@
 |计划内批删除|plan_delete_idea|[实体处理逻辑](module/ProdMgmt/idea/logic/plan_delete_idea "计划内需求批删除")|默认|不支持||||
 |产品需求关联分页计数器|product_idea_re_counters|[实体处理逻辑](module/ProdMgmt/idea/logic/product_idea_re_counters "产品需求关联分页计数器")|默认|不支持||||
 |恢复|recover|[实体处理逻辑](module/ProdMgmt/idea/logic/recover "恢复")|默认|不支持||||
+|更新需求进度|update_idea_progress|[实体处理逻辑](module/ProdMgmt/idea/logic/update_idea_progress "更新需求进度")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
@@ -248,10 +249,10 @@
 |[填充BI报表默认值](module/ProdMgmt/idea/logic/fill_bi_form_default)|fill_bi_form_default|无||填充BI报表默认值|
 |[归档](module/ProdMgmt/idea/logic/archive)|archive|无||未归档需求数据的归档处理，修改需求的归档状态为归档|
 |[恢复](module/ProdMgmt/idea/logic/recover)|recover|无||已删除状态需求数据的恢复，修改需求的是否删除属性值，并恢复访问记录|
-|[新建后关联客户](module/ProdMgmt/idea/logic/after_create_relation)|after_create_relation|无||新建后关联客户|
 |[无操作](module/ProdMgmt/idea/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[是否删除变更附加逻辑](module/ProdMgmt/idea/logic/is_deleted_onchange)|is_deleted_onchange|属性逻辑||产品需求删除或恢复时触发相应的通知消息|
 |[是否归档变更附加逻辑](module/ProdMgmt/idea/logic/is_archived_onchange)|is_archived_onchange|属性逻辑||产品需求归档或激活数据时触发相应的通知消息|
+|[更新需求进度](module/ProdMgmt/idea/logic/update_idea_progress)|update_idea_progress|无||根据id更新需求的进度|
 |[激活](module/ProdMgmt/idea/logic/activate)|activate|无||激活已归档状态需求，修改需求的归档属性|
 |[状态变更附加逻辑](module/ProdMgmt/idea/logic/state_onchange)|state_onchange|属性逻辑||需求数据状态变更时触发相应的通知消息，同时生成流转记录|
 |[生成最近访问](module/ProdMgmt/idea/logic/create_recent)|create_recent|无||在用户对需求数据进行了get或update操作时生成相应的访问记录|
@@ -367,6 +368,7 @@
 |[我关注的需求(my_attention)](module/ProdMgmt/idea/query/my_attention)|my_attention|否|否 |否 |查询我关注的需求（未归档、未删除）|
 |[我创建的(my_created)](module/ProdMgmt/idea/query/my_created)|my_created|否|否 |否 |首页我创建的需求表格调用|
 |[过滤器默认查询(my_filter)](module/ProdMgmt/idea/query/my_filter)|my_filter|否|否 |否 ||
+|[我的事项需求(my_summary_idea)](module/ProdMgmt/idea/query/my_summary_idea)|my_summary_idea|否|否 |否 ||
 |[正常状态(normal)](module/ProdMgmt/idea/query/normal)|normal|否|否 |否 |状态非删除，如果上下文传递了子产品参数，查询当前子产品下的需求|
 |[未关联的需求(not_exsists_relation)](module/ProdMgmt/idea/query/not_exsists_relation)|not_exsists_relation|否|否 |否 |多项选择视图中右侧表格的数据来源；查询了未与当前主体关联的数据。|
 |[需求通知负责人(notify_assignee)](module/ProdMgmt/idea/query/notify_assignee)|notify_assignee|否|否 |否 |查询指定属性组（负责人相关）|
@@ -398,6 +400,7 @@
 |[我关注的需求(my_attention)](module/ProdMgmt/idea/dataset/my_attention)|my_attention|数据查询|否||查询我关注的需求（未归档、未删除）|
 |[我创建的(my_created)](module/ProdMgmt/idea/dataset/my_created)|my_created|数据查询|否||首页我创建的需求表格调用|
 |[过滤器默认查询(my_filter)](module/ProdMgmt/idea/dataset/my_filter)|my_filter|数据查询|否|||
+|[我的事项需求(my_summary_idea)](module/ProdMgmt/idea/dataset/my_summary_idea)|my_summary_idea|数据查询|否|||
 |[正常状态(normal)](module/ProdMgmt/idea/dataset/normal)|normal|数据查询|否||状态非删除，如果上下文传递了子产品参数，查询当前子产品下的需求|
 |[未关联的需求(not_exsists_relation)](module/ProdMgmt/idea/dataset/not_exsists_relation)|not_exsists_relation|数据查询|否||多项选择视图中右侧表格的数据来源；查询了未与当前主体关联的数据。|
 |[需求通知负责人(notify_assignee)](module/ProdMgmt/idea/dataset/notify_assignee)|notify_assignee|数据查询|否||查询指定属性组（负责人相关）|
@@ -577,6 +580,7 @@
 | 关联客户非常重要（移动端） | mob_add_customer_very_important | 关联客户非常重要 |无数据|<details><summary>后台调用</summary>[others_relation_idea](#行为)||
 | 关联工作项（移动端） | mob_add_work_item | 关联工作项 |无数据|<details><summary>后台调用</summary>[others_relation_idea](#行为)||
 | 查看工时明细 | check_workload_detail | 查看工时明细 |无数据|用户自定义||
+| 打开我的事项需求 | open_summary_idea | 需求 |无数据|<details><summary>打开视图或向导（模态）</summary>[需求](app/view/idea_summary_idea_grid_view)</details>||
 | 新建子模块 | toolbar_tree_exp_view_node3_cm_deuiaction3_click | 新建子模块 |单项数据|用户自定义||
 | 删除 | toolbar_tree_exp_view_node4_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 需求归档（工具栏） | toolbar_idea_archive | 需求归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)|主视图工具栏上按钮调用|
@@ -604,6 +608,7 @@
 | 编辑 | toolbar_tree_exp_view_node1_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 关联测试用例（工具栏） | toolbar_link_test_case | 关联测试用例 |无数据|用户自定义||
 | 新建子产品 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建子产品 |单项数据|用户自定义||
+| 新建需求并关联客户 | create_idea_and_relation_customer | 新建需求（测试） |无数据|<details><summary>打开视图或向导（模态）</summary>[新建需求](app/view/idea_quick_create_view)</details>||
 | 取消关联（计划批操作） | del_relation_more | 取消关联 |多项数据（主键）|<details><summary>后台调用</summary>[plan_delete_idea](#行为)|批操作工具栏上按钮调用|
 | 关联客户不重要（移动端） | mob_add_customer_un_important | 关联客户不重要 |无数据|<details><summary>后台调用</summary>[others_relation_idea](#行为)||
 | 编辑 | toolbar_tree_exp_view_node3_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
@@ -641,6 +646,7 @@
 |[新建子产品](module/ProdMgmt/idea/uilogic/create_section)|create_section|产品需求页左侧树的新建子产品逻辑|
 |[新建子模块](module/ProdMgmt/idea/uilogic/create_children_category)|create_children_category|调用树节点新建方法，新建子模块|
 |[新建模块](module/ProdMgmt/idea/uilogic/create_category)|create_category|产品需求页左侧树的新建模块逻辑|
+|[新建需求并关联客户](module/ProdMgmt/idea/uilogic/create_and_relation_customer)|create_and_relation_customer||
 |[显示下拉并展开选项（嵌入视图）](module/ProdMgmt/idea/uilogic/toolbar_show_dorpdown_data)|toolbar_show_dorpdown_data|显示下拉区域并展开选项(工具栏)|
 |[显示表单侧边栏](module/ProdMgmt/idea/uilogic/show_form_sidebar)|show_form_sidebar|每次需求主表单刷新时，将右侧侧边栏默认显示出来。|
 |[显示评论区](module/ProdMgmt/idea/uilogic/show_commnet)|show_commnet|打开评论区，同时隐藏评论按钮|

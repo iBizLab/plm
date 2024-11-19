@@ -189,6 +189,34 @@
 
 
 
+## [执行人(EXECUTOR)](module/Base/executor.md)  :id=executor
+
+#### [Create](module/Base/executor#行为) :id=executor_Create
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [添加执行人时发送通知(after_create_notice)](module/Base/executor/logic/after_create_notice.md)
+
+
+#### [Remove](module/Base/executor#行为) :id=executor_Remove
+
+
+
+<p class="panel-title"><b>操作之前</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [删除执行人时发送通知(del_notice)](module/Base/executor/logic/del_notice.md)
+
+
+
+
+
 ## [流程准则(GUIDELINE)](module/TestMgmt/guideline.md)  :id=guideline
 
 #### [Update](module/TestMgmt/guideline#行为) :id=guideline_Update
@@ -214,9 +242,6 @@
 
 <p class="panel-title"><b>操作之后</b></p>
 <br>
-
-> [!NOTE|label:内部逻辑]
-> 执行处理逻辑 [新建后关联客户(after_create_relation)](module/ProdMgmt/idea/logic/after_create_relation.md)
 
 > [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [生成最近访问(create_recent)](module/ProdMgmt/idea/logic/create_recent.md)

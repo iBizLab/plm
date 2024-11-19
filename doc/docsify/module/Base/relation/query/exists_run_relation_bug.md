@@ -30,7 +30,7 @@
 
 ### 查询条件
 
-(`TARGET_TYPE(关联目标类型)` EQ `'work_item'` AND `PRINCIPAL_TYPE(关联主体类型)` EQ `'run'` AND `TARGET_ID(关联目标标识)` EQ `数据上下文.target_id` AND `exists(select 1 from run t2 where t1.principal_id = t2.id and t2.case_id = #{ctx.datacontext.principal_id})`)
+(`TARGET_TYPE(关联目标类型)` EQ `'work_item'` AND `PRINCIPAL_TYPE(关联主体类型)` EQ `'run'` AND `exists(select 1 from run t2 where t1.principal_id = t2.id and t2.case_id = #{ctx.datacontext.principal_id})` AND `TARGET_ID(目标主体标识)` EQ `数据上下文.target_id`)
 
 
 
@@ -58,7 +58,7 @@ t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `RELATION` t1 
 
-WHERE ( t1.`TARGET_TYPE` = 'work_item'  AND  t1.`PRINCIPAL_TYPE` = 'run'  AND  t1.`TARGET_ID` = #{ctx.datacontext.target_id}  AND  exists(select 1 from run t2 where t1.principal_id = t2.id and t2.case_id = #{ctx.datacontext.principal_id}) )
+WHERE ( t1.`TARGET_TYPE` = 'work_item'  AND  t1.`PRINCIPAL_TYPE` = 'run'  AND  exists(select 1 from run t2 where t1.principal_id = t2.id and t2.case_id = #{ctx.datacontext.principal_id})  AND  t1.`TARGET_ID` = #{ctx.datacontext.target_id} )
 ```
 
 </el-dialog>

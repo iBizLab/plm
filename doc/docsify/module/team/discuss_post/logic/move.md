@@ -16,6 +16,7 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./move#begin {"开始"}]]
 state "绑定界面数据" as BINDPARAM1  [[$./move#bindparam1 {"绑定界面数据"}]]
+state "结束" as END1 <<end>> [[$./move#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./move#loopsubcall1 {"循环子调用"}]] #green {
 state "填充移动到的话题标识" as PREPAREPARAM1  [[$./move#prepareparam1 {"填充移动到的话题标识"}]]
 state "执行更新" as DEACTION1  [[$./move#deaction1 {"执行更新"}]]
@@ -26,6 +27,7 @@ Begin --> BINDPARAM1
 BINDPARAM1 --> LOOPSUBCALL1
 LOOPSUBCALL1 --> PREPAREPARAM1
 PREPAREPARAM1 --> DEACTION1 : [[$./move#prepareparam1-deaction1{存在移动至话题标识} 存在移动至话题标识]]
+DEACTION1 --> END1
 
 
 @enduml
@@ -44,6 +46,12 @@ PREPAREPARAM1 --> DEACTION1 : [[$./move#prepareparam1-deaction1{存在移动至�
 
 
 绑定参数`Default(传入变量)` 到 `srfactionparam(选中数据列表对象)`
+#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
+
+
+
+返回 `update_obj(更新对象)`
+
 #### 循环子调用 :id=LOOPSUBCALL1<sup class="footnote-symbol"> <font color=gray size=1>[循环子调用]</font></sup>
 
 

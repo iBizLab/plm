@@ -15,14 +15,14 @@
 
 
 ### 关联界面行为
-  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [清空回复](module/Team/discuss_post#界面行为)
   * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [打开](module/Team/discuss_post#界面行为)
-  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [关闭](module/Team/discuss_post#界面行为)
-  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [添加回复](module/Team/discuss_post#界面行为)
-  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [移动](module/Team/discuss_post#界面行为)
   * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [发表评论](module/Team/discuss_post#界面行为)
-  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [删除评论](module/Team/discuss_post#界面行为)
+  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [清空回复](module/Team/discuss_post#界面行为)
+  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [移动](module/Team/discuss_post#界面行为)
   * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [删除](module/Team/discuss_post#界面行为)
+  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [删除评论](module/Team/discuss_post#界面行为)
+  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [添加回复](module/Team/discuss_post#界面行为)
+  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [关闭](module/Team/discuss_post#界面行为)
 
 ### 关联界面逻辑
   * [评论(COMMENT)](module/Base/comment) : [控制评论按钮隐藏](module/Base/comment/uilogic/comment_icon_hidden)

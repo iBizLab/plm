@@ -22,5 +22,5 @@ LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID`
 
 WHERE EXISTS(SELECT * FROM `RELATION` t21 
  WHERE 
- t1.`ID` = t21.`PRINCIPAL_ID`  AND  ( t21.`TARGET_ID` = #{ctx.webcontext.sprint}  AND  t21.`TARGET_TYPE` = 'sprint'  AND  t21.`PRINCIPAL_TYPE` = 'release' ) )
+ t1.`ID` = t21.`PRINCIPAL_ID`  AND  ( t21.`TARGET_TYPE` = 'sprint'  AND  t21.`PRINCIPAL_TYPE` = 'release'  AND  t21.`TARGET_ID` = #{ctx.webcontext.sprint} ) )
 ```

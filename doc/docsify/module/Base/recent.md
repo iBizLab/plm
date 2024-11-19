@@ -74,11 +74,13 @@
 |Update|Update|内置方法|默认|不支持||||
 |我负责的事项|my_charge_entry|[实体处理逻辑](module/Base/recent/logic/my_charge_entry "我负责的事项")|默认|不支持||||
 |我创建的事项|my_created_entry|[实体处理逻辑](module/Base/recent/logic/my_created_entry "我创建的事项")|默认|不支持||||
+|我的任务总结|my_summary|[实体处理逻辑](module/Base/recent/logic/my_summary "我的任务总结")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
 |[我创建的事项](module/Base/recent/logic/my_created_entry)|my_created_entry|无||查询当前用户创建的事项|
+|[我的任务总结](module/Base/recent/logic/my_summary)|my_summary|无||获取我的任务总结数据|
 |[我负责的事项](module/Base/recent/logic/my_charge_entry)|my_charge_entry|无||查询我负责的事项，工作台的计数器使用|
 |[最近使用](module/Base/recent/logic/recent_use)|recent_use|无||查询最近使用数据(项目/产品/空间)，仅查询10条|
 |[最近访问](module/Base/recent/logic/recent_access)|recent_access|无||查询最近访问数据，并获取他们的父级|

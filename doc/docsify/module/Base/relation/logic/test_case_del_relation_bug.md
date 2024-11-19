@@ -60,9 +60,9 @@ DEACTION4 --> DEACTION5
 
 
 1. 将`Default(传入变量).PRINCIPAL_ID(关联主体标识)` 设置给  `forward_relation_obj(正向关联对象).PRINCIPAL_ID(关联主体标识)`
-2. 将`Default(传入变量).PRINCIPAL_ID(关联主体标识)` 设置给  `reverse_relation_obj(反向关联对象).TARGET_ID(关联目标标识)`
-3. 将`Default(传入变量).TARGET_ID(关联目标标识)` 设置给  `reverse_relation_obj(反向关联对象).PRINCIPAL_ID(关联主体标识)`
-4. 将`Default(传入变量).TARGET_ID(关联目标标识)` 设置给  `forward_relation_obj(正向关联对象).TARGET_ID(关联目标标识)`
+2. 将`Default(传入变量).PRINCIPAL_ID(关联主体标识)` 设置给  `reverse_relation_obj(反向关联对象).TARGET_ID(目标主体标识)`
+3. 将`Default(传入变量).TARGET_ID(目标主体标识)` 设置给  `reverse_relation_obj(反向关联对象).PRINCIPAL_ID(关联主体标识)`
+4. 将`Default(传入变量).TARGET_ID(目标主体标识)` 设置给  `forward_relation_obj(正向关联对象).TARGET_ID(目标主体标识)`
 
 #### 拼接关联对象的主键 :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
@@ -99,7 +99,7 @@ if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get(
 
 
 
-1. 将`Default(传入变量).TARGET_ID(关联目标标识)` 设置给  `run_relation_filter(执行用例关联缺陷查询过滤器).target_id(关联目标标识)`
+1. 将`Default(传入变量).TARGET_ID(目标主体标识)` 设置给  `run_relation_filter(执行用例关联缺陷查询过滤器).target_id(目标主体标识)`
 2. 将`Default(传入变量).PRINCIPAL_ID(关联主体标识)` 设置给  `run_relation_filter(执行用例关联缺陷查询过滤器).principal_id(关联主体标识)`
 
 #### 查询对应的执行用例存在关联此缺陷 :id=DEDATASET1<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
