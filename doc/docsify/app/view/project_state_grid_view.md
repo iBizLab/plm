@@ -16,8 +16,8 @@
 
 
 ### 关联界面行为
-  * [项目状态(PROJECT_STATE)](module/ProjMgmt/project_state) : [删除项目状态](module/ProjMgmt/project_state#界面行为)
   * [项目状态(PROJECT_STATE)](module/ProjMgmt/project_state) : [表格界面_新建操作](module/ProjMgmt/project_state#界面行为)
+  * [项目状态(PROJECT_STATE)](module/ProjMgmt/project_state) : [删除项目状态](module/ProjMgmt/project_state#界面行为)
   * [项目状态(PROJECT_STATE)](module/ProjMgmt/project_state) : [编辑项目状态](module/ProjMgmt/project_state#界面行为)
 
 ### 关联界面逻辑

@@ -14,6 +14,7 @@
   * [状态管理(dictionary_data_ticket_state_grid_view)](app/view/dictionary_data_ticket_state_grid_view)
   * [实体属性(psde_field_global_ticket_grid_view)](app/view/psde_field_global_ticket_grid_view)
   * [表单设计(psdeformdesign_modal)](app/view/psdeformdesign_modal)
+  * [工单设计(ticket_dyna_tab_exp_view)](app/view/ticket_dyna_tab_exp_view)
   * [工单(ticket_global_setting_view)](app/view/ticket_global_setting_view)
   * [工单类型(ticket_type_global_setting_view)](app/view/ticket_type_global_setting_view)
 

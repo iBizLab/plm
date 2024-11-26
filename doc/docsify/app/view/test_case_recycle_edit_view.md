@@ -9,6 +9,17 @@
 
 ##### 部件逻辑
 * `onLoadSuccess` : [获取用例工时进度](module/TestMgmt/test_case/uilogic/get_workload_schedule)
+* `onClick`
+```
+const tempContext = context.clone();
+tempContext.srfkey = data[0].id;
+ibiz.commands.execute(
+    'ibiz.app-view.open',
+    'plmweb.work_item_main_view',
+    tempContext,
+    viewParam,
+);
+```
 
 ##### 属性注入
 * `状态` 注入属性 `clearable`

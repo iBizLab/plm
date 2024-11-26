@@ -18,8 +18,8 @@
 
 
 ### 关联界面行为
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [null](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建工作项（测试）](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [null](module/ProjMgmt/work_item#界面行为)
 
 ### 关联视图
   * [工作项(work_item_edit_view)](app/view/work_item_edit_view)

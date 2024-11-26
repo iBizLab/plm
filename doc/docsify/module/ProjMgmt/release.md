@@ -20,6 +20,7 @@
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |名称|NAME|文本，可指定长度|200|否||
 |项目标识|PROJECT_ID|外键值|100|否||
+|项目是否删除|PROJECT_IS_DELETED|外键值附加数据||是||
 |项目名称|PROJECT_NAME|外键值文本|200|是||
 |进度|SCHEDULE|数值||是||
 |发布阶段|STAGE_TRANSITIONS|一对多关系数据集合|1048576|是||
@@ -56,6 +57,7 @@
 |项目标识|PROJECT_ID|外键值|100|否||
 |阶段|STATUS|单项选择(文本值)|60|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|项目是否删除|PROJECT_IS_DELETED|外键值附加数据||是||
 
 </el-tab-pane>
 

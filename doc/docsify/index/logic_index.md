@@ -246,12 +246,6 @@
 
 
 
-## [扩展存储(EXTEND_STORAGE)](module/Base/extend_storage.md) :id=extend_storage
-
-| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
-| -------- |---------- |----------- |------------|----------|
-|[工时自动计算](module/Base/extend_storage/logic/workload_auto_cal)|workload_auto_cal|无|||
-
 
 
 
@@ -560,6 +554,7 @@
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
+|[hybrid项目组件权限计数器](module/ProjMgmt/project/logic/hybrid_project_addon_authority)|hybrid_project_addon_authority|无||获取hybrid项目组件权限|
 |[scrum项目组件权限计数器](module/ProjMgmt/project/logic/scrum_project_addon_authority)|scrum_project_addon_authority|无||获取scrum项目组件权限|
 |[waterfall项目组件权限计数器](module/ProjMgmt/project/logic/waterfall_project_addon_authority)|waterfall_project_addon_authority|无||获取waterfall项目组件权限|
 |[从项目集中移除](module/ProjMgmt/project/logic/remove_from_project_set)|remove_from_project_set|无||从项目集中移除某个指定子项目|
@@ -1108,6 +1103,7 @@
 |[工作类别维度管理工时日历查询](module/Base/workload/logic/type_of_management_dimension)|type_of_management_dimension|无||工时管理菜单中工时日历：工作类型维度查询数据使用|
 |[工作项维度工时日历查询](module/Base/workload/logic/work_item_dimension)|work_item_dimension|无||首页工作台工时日历：项目/工作项维度查询数据使用|
 |[工作项维度管理工时日历查询](module/Base/workload/logic/work_item_management_dimension)|work_item_management_dimension|无||工时管理菜单中工时日历：项目/工作项维度查询数据使用|
+|[工时自动计算](module/Base/workload/logic/workload_auto_cal)|workload_auto_cal|无||修改当前逻辑，在当前逻辑内进行递归调用，调用别的逻辑，不去调用原保存变更逻辑了。|
 |[测试用例维度工时日历查询](module/Base/workload/logic/test_case_dimension)|test_case_dimension|无||首页工作台工时日历：测试库/测试用例维度查询数据使用|
 |[测试用例维度管理工时日历查询](module/Base/workload/logic/test_case_management_dimension)|test_case_management_dimension|无||工时管理菜单中工时日历：测试库/测试用例维度查询数据使用|
 |[登记工时并更新剩余工时](module/Base/workload/logic/save_workload)|save_workload|无||保存实际登记工时记录，并计算重置剩余工时属性|
@@ -1144,14 +1140,14 @@
 |[子工作项取消关联](module/ProjMgmt/work_item/logic/child_del_relation)|child_del_relation|无||工作项取消关联子工作项|
 |[工作项关联分页计数器](module/ProjMgmt/work_item/logic/work_item_re_counters)|work_item_re_counters|无||计算分页下关联事项的条数|
 |[工作项分布](module/ProjMgmt/work_item/logic/kanban_work_item_distribution)|kanban_work_item_distribution|无||工作项分布数据源|
-|[工作项删除变更附加逻辑](module/ProjMgmt/work_item/logic/is_deleted_onchange)|is_deleted_onchange|属性逻辑||工作项删除或恢复时触发相应的通知消息|
+|[工作项删除变更附加逻辑](module/ProjMgmt/work_item/logic/is_deleted_onchange)|is_deleted_onchange|属性逻辑||工作项删除或恢复时触发相应的通知消息，判断并标记上级是否为叶子节点|
 |[工作项完成趋势](module/ProjMgmt/work_item/logic/complete_trend)|complete_trend|无||工作项完成趋势|
-|[工作项归档变更附加逻辑](module/ProjMgmt/work_item/logic/is_archived_onchange)|is_archived_onchange|属性逻辑||工作项归档或激活时触发相应的通知消息|
+|[工作项归档变更附加逻辑](module/ProjMgmt/work_item/logic/is_archived_onchange)|is_archived_onchange|属性逻辑||工作项归档或激活时触发相应的通知消息，判断并标记上级是否为叶子节点|
 |[工作项树状或平铺表格查询](module/ProjMgmt/work_item/logic/tree_or_tile_query)|tree_or_tile_query|无||工作项树状或平铺表格查询|
 |[工作项状态变更附加逻辑](module/ProjMgmt/work_item/logic/state_onchange)|state_onchange|属性逻辑||工作项状态变更时触发相应的通知消息，同时生成流转记录|
 |[工作项负责人变更附加逻辑](module/ProjMgmt/work_item/logic/assignee_onchange)|assignee_onchange|属性逻辑||工作项负责人变更时触发相应的通知消息|
 |[归档](module/ProjMgmt/work_item/logic/archive)|archive|无||未归档工作项数据的归档处理，修改工作项的归档状态为已归档，递归所有下级工作项|
-|[恢复](module/ProjMgmt/work_item/logic/recover)|recover|无||递归所有下级工作项，恢复已删除状态工作项数据，修改工作项的是否删除属性值，并恢复访问记录|
+|[恢复](module/ProjMgmt/work_item/logic/recover)|recover|无||递归所有下级工作项，恢复已删除状态工作项数据，修改工作项的是否删除属性值，并恢复访问记录，标记上级为非叶子节点|
 |[恢复历史版本](module/ProjMgmt/work_item/logic/restore_version)|restore_version|无||恢复工作项版本至某一指定历史版本|
 |[成员负荷报告](module/ProjMgmt/work_item/logic/sprint_user_stat)|sprint_user_stat|无||成员负荷报告数据源|
 |[新建工作项前校验父子工作项类型](module/ProjMgmt/work_item/logic/before_create_check_type)|before_create_check_type|无||新建工作项前校验父子工作项类型|
@@ -1163,7 +1159,7 @@
 |[汇聚开始时间](module/ProjMgmt/work_item/logic/aggregate_start_at)|aggregate_start_at|属性逻辑||开始时间变更时触发|
 |[汇聚结束时间](module/ProjMgmt/work_item/logic/aggregate_end_at)|aggregate_end_at|属性逻辑||结束时间变更时触发|
 |[汇聚预估工时](module/ProjMgmt/work_item/logic/aggregate_estimated_work_load)|aggregate_estimated_work_load|属性逻辑||预估工时属性变更触发|
-|[激活](module/ProjMgmt/work_item/logic/activate)|activate|无||激活已归档状态工作项，工作项存在子工作项，递归激活所有下级工作项|
+|[激活](module/ProjMgmt/work_item/logic/activate)|activate|无||激活已归档状态工作项，工作项存在子工作项，递归激活所有下级工作项，标记上级为非叶子节点|
 |[状态类型变更附加逻辑](module/ProjMgmt/work_item/logic/state_type_onchange)|state_type_onchange|属性逻辑||已完成时，填充完成时间|
 |[生成最近访问](module/ProjMgmt/work_item/logic/create_recent)|create_recent|无||在用户对工作项数据进行了get或update操作时生成相应的访问记录|
 |[移入发布](module/ProjMgmt/work_item/logic/shift_in_release)|shift_in_release|无||将工作项移入对应发布|

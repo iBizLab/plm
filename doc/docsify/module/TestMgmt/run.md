@@ -28,6 +28,7 @@
 |重要程度|LEVEL|[外键值附加数据](index/dictionary_index#test_case_level "用例重要程度")|60|是||
 |测试库标识|LIBRARY_ID|外键值附加数据|100|是||
 |测试库编号|LIBRARY_IDENTIFIER|外键值附加数据|15|是||
+|测试库是否删除|LIBRARY_IS_DELETED|外键值附加数据||是||
 |所属测试库|LIBRARY_NAME|外键值附加数据|200|是||
 |维护人|MAINTENANCE_NAME|外键值附加数据|200|是||
 |名称|NAME|文本，可指定长度|200|是||
@@ -104,6 +105,7 @@
 |优先级|PRIORITY|[单项选择(文本值)](index/dictionary_index#work_item_priority "优先级")|60|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |bi测试计划名称|BI_PLAN_NAME|文本，可指定长度|200|是||
+|测试库是否删除|LIBRARY_IS_DELETED|外键值附加数据||是||
 
 </el-tab-pane>
 <el-tab-pane label="执行人" name="field_group_executor">
@@ -343,6 +345,7 @@
 | BI刷新 | bi_refresh | 刷新 |无数据|用户自定义||
 | 查看工时明细（移动端） | mob_check_workload_detail | 查看工时明细 |无数据|<details><summary>打开视图或向导（模态）</summary>[工时记录](app/view/workload_mob_detail_view)</details>||
 | 打开关联用例 | open_re_run | 打开关联用例 |无数据|<details><summary>打开视图或向导（模态）</summary>[用例](app/view/test_case_re_run_main_view)</details>||
+| 移出（主视图） | delete_run_main | 移出 |多项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 | 打开选项操作视图（门户）（每日执行用例趋势） | open_optview_portlet_daily_tendencies | 编辑 |无数据|<details><summary>打开视图或向导（模态）</summary>[编辑部件](app/view/run_daily_tendencies_option_view)</details>|打开选项操作视图（门户）（每日执行用例趋势）|
 | 选择用例 | choose_test_case | 选择用例 |无数据|<details><summary>后台调用</summary>[program_plan](#行为)||
 | 选择用例（迭代） | sprint_choose_case | 选择迭代 |无数据|<details><summary>后台调用</summary>[program_plan_by_sprint](#行为)||

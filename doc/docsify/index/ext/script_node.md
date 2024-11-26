@@ -1,5 +1,5 @@
 
-## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[210]</font></sup>
+## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[212]</font></sup>
 
 #### [组件(ADDON)](module/Base/addon)的处理逻辑[组件权限计数器(addon_authority)](module/Base/addon/logic/addon_authority)
 
@@ -500,45 +500,6 @@ def _default = logic.param('Default').getReal()
 if(_default.get('user_id') == user.getUserid()){
     _default.set('is_current_user', '1')
 }
-```
-#### [扩展存储(EXTEND_STORAGE)](module/Base/extend_storage)的处理逻辑[工时自动计算(workload_auto_cal)](module/Base/extend_storage/logic/workload_auto_cal)
-
-节点：执行脚本代码
-<p class="panel-title"><b>执行代码[JavaScript]</b></p>
-
-```javascript
-var workload_data = logic.getParam("workload_data");
-var actual_workload = workload_data.get("actual_workload");
-var estimated_workload =workload_data.get("estimated_workload");
-var remaining_workload = null;
-if(estimated_workload){
-    if(actual_workload){
-        remaining_workload = estimated_workload-actual_workload;
-        if(remaining_workload>0){
-            workload_data.set("remaining_workload",remaining_workload);
-        }
-    }else{
-        workload_data.set("remaining_workload",estimated_workload);
-    }
-}
-
-
-```
-#### [扩展存储(EXTEND_STORAGE)](module/Base/extend_storage)的处理逻辑[工时自动计算(workload_auto_cal)](module/Base/extend_storage/logic/workload_auto_cal)
-
-节点：执行脚本代码
-<p class="panel-title"><b>执行代码[JavaScript]</b></p>
-
-```javascript
-var work_item_temp = logic.getParam("cur_work_item_temp");
-var p_work_item = logic.getParam("p_work_item");
-var workload_data = logic.getParam("workload_data");
-var cur_estimated_workload = parseFloat(work_item_temp && work_item_temp.get("estimated_workload")) || 0;
-var cur_actual_workload = parseFloat(work_item_temp && work_item_temp.get("actual_workload")) || 0;
-
-workload_data.set("estimated_workload", cur_estimated_workload + workload_data.get("estimated_workload"));
-workload_data.set("actual_workload",cur_actual_workload + workload_data.get("actual_workload")) ;
-
 ```
 #### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[基线规划需求数据查询(baseline_plan_idea)](module/ProdMgmt/idea/logic/baseline_plan_idea)
 
@@ -1426,6 +1387,16 @@ defaultObj.set("srfreadonly", false);
 ```
 #### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[获取知识空间成员(get_space_member)](module/Wiki/article_page/logic/get_space_member)
 
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
+```
+#### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[获取知识空间成员(get_space_member)](module/Wiki/article_page/logic/get_space_member)
+
 节点：判断系统管理员身份
 <p class="panel-title"><b>执行代码[Groovy]</b></p>
 
@@ -1440,16 +1411,6 @@ if(srfreadonly == true){
 #### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[获取知识空间成员(get_space_member)](module/Wiki/article_page/logic/get_space_member)
 
 节点：只读权限
-<p class="panel-title"><b>执行代码[JavaScript]</b></p>
-
-```javascript
-var defaultObj = logic.getParam("default");
-
-defaultObj.set("srfreadonly", true);
-```
-#### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[获取知识空间成员(get_space_member)](module/Wiki/article_page/logic/get_space_member)
-
-节点：执行脚本代码
 <p class="panel-title"><b>执行代码[JavaScript]</b></p>
 
 ```javascript
@@ -1750,6 +1711,83 @@ var num = tag.get("num");
 tag.set("remind", "标签删除后不可恢复。共 " + num + " 个工单正在使用此标签，删除后会从对应事项中移除。");
 
 ```
+#### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[hybrid项目组件权限计数器(hybrid_project_addon_authority)](module/ProjMgmt/project/logic/hybrid_project_addon_authority)
+
+节点：构建计数器结果
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var _default = logic.getParam('Default');
+var addons = logic.getParam('addons');
+var result = logic.getParam('result');
+var cur_owner_addons = [];
+var predefine_addons = [];
+for (var i = 0; i < addons.getLength(); i++) {
+  var addon = addons.get(i);
+  if(addon.get("is_enabled") != 0){
+      addon.set("is_enabled",1);
+  }
+  if (addon.get("owner_id") != null) {
+    cur_owner_addons.push(addon);
+  } else {
+    predefine_addons.push(addon);
+  }
+}
+//初始化预置组件
+if (cur_owner_addons.length == 0) {
+  for (var i = 0; i < predefine_addons.length; i++) {
+    var predefine_addon = predefine_addons[i];
+    predefine_addon.reset("id");
+    predefine_addon.set("owner_id", _default.get("id"));
+    predefine_addon.create();
+    if (predefine_addon.get('is_enabled') == 0) {
+      result.set(predefine_addon.get('addon_type'),-1);
+    } else {
+      result.set(predefine_addon.get('addon_type'),0);
+    }
+  }
+} else {
+  for (var i = 0; i < predefine_addons.length; i++) {
+    var create_flag = true;
+    var predefine_addon = predefine_addons[i];
+    var predefine_addon_type = predefine_addon.get("addon_type");
+    for (var j = 0; j < cur_owner_addons.length; j++) {
+      var cur_owner_addon = cur_owner_addons[j];
+      var cur_owner_addon_type = cur_owner_addon.get("addon_type");
+      if (predefine_addon_type == cur_owner_addon_type) {
+        create_flag = false;
+      }
+    }
+    if (create_flag) {
+      predefine_addon.reset("id");
+      predefine_addon.set("owner_id", _default.get("id"));
+      predefine_addon.create();
+      cur_owner_addons.push(predefine_addon);
+    }
+  }
+  for (var i = 0; i < cur_owner_addons.length; i++) {
+    var delete_flag = true;
+    var cur_owner_addon = cur_owner_addons[i];
+    var cur_owner_addon_type = cur_owner_addon.get("addon_type");
+    for (var j = 0; j < predefine_addons.length; j++) {
+      var predefine_addon = predefine_addons[j];
+      var predefine_addon_type = predefine_addon.get("addon_type");
+      if (predefine_addon_type == cur_owner_addon_type) {
+        delete_flag = false;
+      }
+    }
+    if (cur_owner_addon.get('is_enabled') == 0) {
+      result.set(cur_owner_addon_type,-1);
+    } else {
+      result.set(cur_owner_addon_type,0);
+    }
+    if (delete_flag) {
+      cur_owner_addon.remove();
+      result.set(cur_owner_addon_type,-1);
+    }
+  }
+}
+```
 #### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[scrum项目组件权限计数器(scrum_project_addon_authority)](module/ProjMgmt/project/logic/scrum_project_addon_authority)
 
 节点：构建计数器结果
@@ -2026,6 +2064,16 @@ var defaultObj = logic.getParam("default");
 
 defaultObj.set("srfreadonly", true);
 ```
+#### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[获取项目成员(get_project_member_one)](module/ProjMgmt/project/logic/get_project_member_one)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
+```
 #### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[获取项目进度(get_schedule)](module/ProjMgmt/project/logic/get_schedule)
 
 节点：计算项目进度
@@ -2068,6 +2116,25 @@ if(overdue_ratio){
     result.set("overdue_ratio", "0%");
 }
 
+```
+#### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[项目自动变更状态(project_automatic_change_state)](module/ProjMgmt/project/logic/project_automatic_change_state)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var project_temp = logic.getParam("project_temp");
+var end_at = project_temp.get("END_AT");
+var overdue_time = new Date();
+
+if (project_temp && end_at) {
+    sys.info("好歹进来了")
+    var endTimeDate = new Date(end_at);
+    var timeDiff = overdue_time - endTimeDate;
+    var daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    project_temp.set("daysDiff",daysDiff); 
+
+}
 ```
 #### [项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member)的处理逻辑[移除项目成员通知(remove_project_member_notify)](module/ProjMgmt/project_member/logic/remove_project_member_notify)
 
@@ -3405,6 +3472,29 @@ remainingObj.set("decimal_value", remaining);
 // 计算实际工时
 var actual = (actual_workload - duration) <= 0 ? 0 : actual_workload - duration;
 actualObj.set("decimal_value", actual);
+
+```
+#### [工时(WORKLOAD)](module/Base/workload)的处理逻辑[工时自动计算(workload_auto_cal)](module/Base/workload/logic/workload_auto_cal)
+
+节点：计算剩余工时
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var workload_data = logic.getParam("workload_data");
+var actual_workload = workload_data.get("actual_workload");
+var estimated_workload =workload_data.get("estimated_workload");
+var remaining_workload = null;
+if(estimated_workload){
+    if(actual_workload){
+        remaining_workload = estimated_workload-actual_workload;
+        if(remaining_workload>0){
+            workload_data.set("remaining_workload",remaining_workload);
+        }
+    }else{
+        workload_data.set("remaining_workload",estimated_workload);
+    }
+}
+
 
 ```
 #### [工时(WORKLOAD)](module/Base/workload)的处理逻辑[获取已登记工时(get_register_workload)](module/Base/workload/logic/get_register_workload)

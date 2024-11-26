@@ -16,8 +16,8 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./new_kanban_story_toolbar#begin {开始}]]
 state "结束" as END1 <<end>> [[$./new_kanban_story_toolbar#end1 {结束}]]
-state "新建看板用户故事" as DEUIACTION1  [[$./new_kanban_story_toolbar#deuiaction1 {新建看板用户故事}]]
 state "获取首个分组代码表标识" as PREPAREJSPARAM1  [[$./new_kanban_story_toolbar#preparejsparam1 {获取首个分组代码表标识}]]
+state "新建看板用户故事" as DEUIACTION1  [[$./new_kanban_story_toolbar#deuiaction1 {新建看板用户故事}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -51,7 +51,7 @@ DEUIACTION1 --> END1
 
 
 
-调用实体 [工作项(WORK_ITEM)](module/ProjMgmt/work_item.md) 界面行为 [新建用户故事（kanban）](module/ProjMgmt/work_item#界面行为) ，行为参数为`Default(传入变量)`
+调用实体 [工作项(WORK_ITEM)](module/ProjMgmt/work_item.md) 界面行为 [新建用户故事（kanban动态）](module/ProjMgmt/work_item#界面行为) ，行为参数为`Default(传入变量)`
 
 
 

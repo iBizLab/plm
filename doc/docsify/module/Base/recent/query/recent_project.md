@@ -30,7 +30,7 @@
 
 ### 查询条件
 
-(`UPDATE_MAN(更新人)` EQ `用户上下文.srfpersonid` AND `OWNER_TYPE(所属数据对象)` EQ `'project'` AND (`OWNER_SUBTYPE(所属对象子类型)` EQ `'scrum'` OR `OWNER_SUBTYPE(所属对象子类型)` EQ `'kanban'` OR `OWNER_SUBTYPE(所属对象子类型)` EQ `'waterfall'`))
+(`UPDATE_MAN(更新人)` EQ `用户上下文.srfpersonid` AND `OWNER_TYPE(所属数据对象)` EQ `'project'` AND (`OWNER_SUBTYPE(所属对象子类型)` EQ `'scrum'` OR `OWNER_SUBTYPE(所属对象子类型)` EQ `'kanban'` OR `OWNER_SUBTYPE(所属对象子类型)` EQ `'waterfall'` OR `OWNER_SUBTYPE(所属对象子类型)` EQ `'hybrid'`))
 
 
 
@@ -58,7 +58,7 @@ t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `RECENT` t1 
 
-WHERE ( t1.`UPDATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`OWNER_TYPE` = 'project'  AND  ( t1.`OWNER_SUBTYPE` = 'scrum'  OR  t1.`OWNER_SUBTYPE` = 'kanban'  OR  t1.`OWNER_SUBTYPE` = 'waterfall' ) )
+WHERE ( t1.`UPDATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`OWNER_TYPE` = 'project'  AND  ( t1.`OWNER_SUBTYPE` = 'scrum'  OR  t1.`OWNER_SUBTYPE` = 'kanban'  OR  t1.`OWNER_SUBTYPE` = 'waterfall'  OR  t1.`OWNER_SUBTYPE` = 'hybrid' ) )
 ```
 
 </el-dialog>

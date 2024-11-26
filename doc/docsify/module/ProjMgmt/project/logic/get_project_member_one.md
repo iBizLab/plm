@@ -23,8 +23,11 @@ state "绑定用户数据到for_obj" as PREPAREPARAM5  [[$./get_project_member_o
 state "只读权限" as RAWSFCODE1  [[$./get_project_member_one#rawsfcode1 {"只读权限"}]]
 state "非只读权限" as RAWSFCODE2  [[$./get_project_member_one#rawsfcode2 {"非只读权限"}]]
 state "结束" as END6 <<end>> [[$./get_project_member_one#end6 {"结束"}]]
+state "执行脚本代码" as RAWSFCODE4  [[$./get_project_member_one#rawsfcode4 {"执行脚本代码"}]]
 
 
+Begin --> RAWSFCODE4 : [[$./get_project_member_one#begin-rawsfcode4{已删除、已归档} 已删除、已归档]]
+RAWSFCODE4 --> END2
 Begin --> RAWSFCODE3
 RAWSFCODE3 --> PREPAREPARAM2 : [[$./get_project_member_one#rawsfcode3-prepareparam2{非系统管理员} 非系统管理员]]
 PREPAREPARAM2 --> DEDATASET3
@@ -119,8 +122,23 @@ defaultObj.set("srfreadonly", true);
 
 返回 `Default(传入变量)`
 
+#### 执行脚本代码 :id=RAWSFCODE4<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
+
+
+
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
+```
+
 
 ### 连接条件说明
+#### 已删除、已归档 :id=Begin-RAWSFCODE4
+
+(`Default(传入变量).IS_ARCHIVED(是否已归档)` EQ `1` OR `Default(传入变量).IS_DELETED(是否已删除)` EQ `1`)
 #### 非系统管理员 :id=RAWSFCODE3-PREPAREPARAM2
 
 `Default(传入变量).srfreadonly` ISNULL

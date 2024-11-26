@@ -9,10 +9,10 @@
 
 
 ### 关联界面行为
-  * [产品(PRODUCT)](module/ProdMgmt/product) : [产品成员（移动端）](module/ProdMgmt/product#界面行为)
-  * [产品(PRODUCT)](module/ProdMgmt/product) : [产品高级设置（移动端）](module/ProdMgmt/product#界面行为)
   * [产品(PRODUCT)](module/ProdMgmt/product) : [产品设置（移动端）](module/ProdMgmt/product#界面行为)
   * [产品(PRODUCT)](module/ProdMgmt/product) : [产品回收站（移动端）](module/ProdMgmt/product#界面行为)
+  * [产品(PRODUCT)](module/ProdMgmt/product) : [产品高级设置（移动端）](module/ProdMgmt/product#界面行为)
+  * [产品(PRODUCT)](module/ProdMgmt/product) : [产品成员（移动端）](module/ProdMgmt/product#界面行为)
 
 ### 关联视图
   * [需求(idea_mob_md_view)](app/view/idea_mob_md_view)

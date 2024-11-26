@@ -6,6 +6,13 @@
 #### CAPTIONBAR(captionbar)
 #### DATAINFOBAR(datainfobar)
 #### 编辑表单(form)
+
+##### 属性注入
+* `产品名称` 注入属性 `type`
+
+```javascript
+'search'
+```
 #### 工具栏(righttoolbar)
 
 

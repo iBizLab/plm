@@ -1,20 +1,35 @@
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
+const url = window.location;
 var file_name = uiLogic.default.name;
 var file_id = uiLogic.default.id;
+var file_preview_address = ibiz.env.customParams.file_preview_address;
 
-var filedownloadurl='http://172.16.220.130:30510/api/ibizplm__plmweb/ibizutil/download/plm/'+file_id+'?fullfilename='+file_name;
+const windowInfo = getCurrentWindowInfo(url);
 
-console.log("文件下载路径"+filedownloadurl);
-var script = document.createElement('script');
-script.src = 'https://cdn.jsdelivr.net/npm/js-base64@3.7.2/base64.min.js';
-script.onload = function() {
-    var b64Encoded = Base64.encode(filedownloadurl);
-    var url = 'http://172.16.121.242:28012/onlinePreview?url='+encodeURIComponent(b64Encoded);
-    console.log("最终目标地址"+url);
-    window.open(url);
-};
-document.head.appendChild(script);
+let uploadUrl = `${ibiz.env.baseUrl}/${ibiz.env.appId}${ibiz.env.downloadFileUrl}`;
+const app = ibiz.hub.getApp(context.srfappid);
+const OSSCat = app.model.userParam?.DefaultOSSCat;
+uploadUrl = uploadUrl.replace('/{cat}', OSSCat ? `/${OSSCat}` : '');
 
+var filedownloadurl = windowInfo + uploadUrl + '/'+file_id+'?fullfilename='+file_name;
+
+var b64Encoded = ibiz.util.base64.encode(filedownloadurl);
+var previewUrl = file_preview_address + '/onlinePreview?url='+encodeURIComponent(b64Encoded);
+
+window.open(previewUrl);
+
+
+function getCurrentWindowInfo(url) {
+    const protocol = url.protocol;
+    const host = url.hostname; 
+    const port = url.port || (protocol === "https:" ? "443" : "80"); 
+    const isIPAddress = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(host);
+    if (isIPAddress) {
+        return  protocol +"//" + host + ":" + port ;
+    } else {
+        return  protocol +"//" + host + ":" + port ;
+    }
+}
 ```

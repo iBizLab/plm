@@ -15,9 +15,9 @@
 
 
 ### 关联界面行为
+  * [基线工作项(BASELINE_WORK_ITEM)](module/ProjMgmt/baseline_work_item) : [表格界面_导出操作（Excel）](module/ProjMgmt/baseline_work_item#界面行为)
   * [基线工作项(BASELINE_WORK_ITEM)](module/ProjMgmt/baseline_work_item) : [移出基线](module/ProjMgmt/baseline_work_item#界面行为)
   * [基线工作项(BASELINE_WORK_ITEM)](module/ProjMgmt/baseline_work_item) : [基线规划工作项](module/ProjMgmt/baseline_work_item#界面行为)
-  * [基线工作项(BASELINE_WORK_ITEM)](module/ProjMgmt/baseline_work_item) : [表格界面_导出操作（Excel）](module/ProjMgmt/baseline_work_item#界面行为)
 
 ### 关联视图
   * [基线工作项(baseline_work_item_edit_view)](app/view/baseline_work_item_edit_view)

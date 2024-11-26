@@ -9,8 +9,8 @@
 
 
 ### 关联界面行为
-  * [迭代(SPRINT)](module/ProjMgmt/sprint) : [视图_确定](module/ProjMgmt/sprint#界面行为)
   * [迭代(SPRINT)](module/ProjMgmt/sprint) : [视图_取消](module/ProjMgmt/sprint#界面行为)
+  * [迭代(SPRINT)](module/ProjMgmt/sprint) : [视图_确定](module/ProjMgmt/sprint#界面行为)
 
 ### 关联视图
   * [全部迭代(sprint_all_grid_view)](app/view/sprint_all_grid_view)

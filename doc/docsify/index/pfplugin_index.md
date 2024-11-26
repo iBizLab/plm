@@ -17,7 +17,7 @@
 
 运行对象：`IBizHtmlComment`
 
-远程仓库：`@ibiz-template-plm/html-comment@0.0.3-alpha.80`
+远程仓库：`@ibiz-template-plm/html-comment@0.0.3-alpha.116`
 
 ### LuckySheet编辑 :id=LUCKYSHEET
 
@@ -212,7 +212,7 @@
 
 运行对象：`ChartGrid`
 
-远程仓库：`@ibiz-template-plm/chart-grid@0.0.3-alpha.12`
+远程仓库：`@ibiz-template-plm/chart-grid@0.0.3-alpha.117`
 
 ### 基线比对表格插件 :id=BASELINECOMPARE
 
@@ -275,7 +275,7 @@
 
 运行对象：`IBizNumberGridControl`
 
-远程仓库：`@ibiz-template-plugin/number-grid@0.0.3-alpha.104`
+远程仓库：`@ibiz-template-plugin/number-grid@0.0.3-alpha.118`
 
 ### 搜索栏过滤条件编辑器 :id=SEARCH_BAR_FILTER_CONDITION
 
@@ -590,7 +590,7 @@
 
 运行对象：`IBizCommentItemRawItem`
 
-远程仓库：`@ibiz-template-plm/comment-item@0.0.3-alpha.47`
+远程仓库：`@ibiz-template-plm/comment-item@0.0.3-alpha.114`
 
 ### 评论回复列表 :id=COMMENT_LIST
 
@@ -681,7 +681,7 @@
 
 运行对象：`AnchoHtml`
 
-远程仓库：`@ibiz-template-plm/ancho-html@0.0.3-alpha.76`
+远程仓库：`@ibiz-template-plm/ancho-html@0.0.3-alpha.116`
 
 ### 阶段进度条 :id=STAGE_PROGRESS_BAR
 

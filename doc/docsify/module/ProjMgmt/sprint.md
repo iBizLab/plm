@@ -23,6 +23,7 @@
 |父标识|PID|外键值|100|是||
 |父名称|PNAME|外键值文本|200|是||
 |项目标识|PROJECT_ID|外键值|100|否||
+|项目是否删除|PROJECT_IS_DELETED|外键值附加数据||是||
 |项目名称|PROJECT_NAME|外键值文本|200|是||
 |进度|SCHEDULE|数值||是||
 |开始时间|START_AT|日期型||否||
@@ -58,6 +59,7 @@
 |项目标识|PROJECT_ID|外键值|100|否||
 |状态|STATUS|[单项选择(文本值)](index/dictionary_index#sprint_status "迭代状态")|60|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|项目是否删除|PROJECT_IS_DELETED|外键值附加数据||是||
 
 </el-tab-pane>
 

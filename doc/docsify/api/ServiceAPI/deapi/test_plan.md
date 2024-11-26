@@ -28,6 +28,7 @@
 |<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
 |<el-row justify="space-between"><el-col :span="20">library_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库名称|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">library_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|测试库标识|
 |<el-row justify="space-between"><el-col :span="20">library_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属测试库|
@@ -56,6 +57,7 @@
   "assignee_id" : null,
   "project_type" : null,
   "library_identifier" : null,
+  "library_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -90,6 +92,7 @@
   "assignee_id" : null,
   "project_type" : null,
   "library_identifier" : null,
+  "library_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -144,6 +147,7 @@
   "assignee_id" : null,
   "project_type" : null,
   "library_identifier" : null,
+  "library_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -217,6 +221,7 @@
 |<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
 |<el-row justify="space-between"><el-col :span="20">library_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库名称|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">library_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|测试库标识|
 |<el-row justify="space-between"><el-col :span="20">library_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属测试库|
@@ -245,6 +250,7 @@
   "assignee_id" : null,
   "project_type" : null,
   "library_identifier" : null,
+  "library_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -279,6 +285,7 @@
   "assignee_id" : null,
   "project_type" : null,
   "library_identifier" : null,
+  "library_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -326,6 +333,7 @@
 |<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
 |<el-row justify="space-between"><el-col :span="20">library_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库名称|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">library_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|测试库标识|
 |<el-row justify="space-between"><el-col :span="20">library_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属测试库|
@@ -354,6 +362,7 @@
   "assignee_id" : null,
   "project_type" : null,
   "library_identifier" : null,
+  "library_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -411,6 +420,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
 |<el-row justify="space-between"><el-col :span="20">library_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库名称|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">library_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|测试库标识|
 |<el-row justify="space-between"><el-col :span="20">library_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属测试库|
@@ -439,6 +449,7 @@ Integer
   "assignee_id" : null,
   "project_type" : null,
   "library_identifier" : null,
+  "library_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -492,6 +503,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
 |<el-row justify="space-between"><el-col :span="20">library_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库名称|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">library_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|测试库标识|
 |<el-row justify="space-between"><el-col :span="20">library_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属测试库|
@@ -520,6 +532,7 @@ Integer
   "assignee_id" : null,
   "project_type" : null,
   "library_identifier" : null,
+  "library_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -568,6 +581,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
 |<el-row justify="space-between"><el-col :span="20">library_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库名称|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">library_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|测试库标识|
 |<el-row justify="space-between"><el-col :span="20">library_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属测试库|
@@ -596,6 +610,7 @@ Integer
   "assignee_id" : null,
   "project_type" : null,
   "library_identifier" : null,
+  "library_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -630,6 +645,7 @@ Integer
   "assignee_id" : null,
   "project_type" : null,
   "library_identifier" : null,
+  "library_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -677,6 +693,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
 |<el-row justify="space-between"><el-col :span="20">library_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库名称|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">library_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|测试库标识|
 |<el-row justify="space-between"><el-col :span="20">library_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属测试库|
@@ -705,6 +722,7 @@ Integer
   "assignee_id" : null,
   "project_type" : null,
   "library_identifier" : null,
+  "library_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -739,6 +757,7 @@ Integer
   "assignee_id" : null,
   "project_type" : null,
   "library_identifier" : null,
+  "library_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -791,6 +810,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
 |<el-row justify="space-between"><el-col :span="20">library_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库名称|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">library_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|测试库标识|
 |<el-row justify="space-between"><el-col :span="20">library_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属测试库|
@@ -819,6 +839,7 @@ Integer
   "assignee_id" : null,
   "project_type" : null,
   "library_identifier" : null,
+  "library_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -874,6 +895,7 @@ Integer
   "assignee_id" : null,
   "project_type" : null,
   "library_identifier" : null,
+  "library_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -993,6 +1015,7 @@ Integer
     "assignee_id" : null,
     "project_type" : null,
     "library_identifier" : null,
+    "library_is_deleted" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1124,6 +1147,7 @@ Integer
     "type" : null,
     "status" : null,
     "id" : null,
+    "library_is_deleted" : null,
   }
 ]
 ```
@@ -1229,6 +1253,7 @@ Integer
     "assignee_id" : null,
     "project_type" : null,
     "library_identifier" : null,
+    "library_is_deleted" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1348,6 +1373,7 @@ Integer
     "assignee_id" : null,
     "project_type" : null,
     "library_identifier" : null,
+    "library_is_deleted" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1467,6 +1493,7 @@ Integer
     "assignee_id" : null,
     "project_type" : null,
     "library_identifier" : null,
+    "library_is_deleted" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1586,6 +1613,7 @@ Integer
     "assignee_id" : null,
     "project_type" : null,
     "library_identifier" : null,
+    "library_is_deleted" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1705,6 +1733,7 @@ Integer
     "assignee_id" : null,
     "project_type" : null,
     "library_identifier" : null,
+    "library_is_deleted" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1824,6 +1853,7 @@ Integer
     "assignee_id" : null,
     "project_type" : null,
     "library_identifier" : null,
+    "library_is_deleted" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1943,6 +1973,7 @@ Integer
     "assignee_id" : null,
     "project_type" : null,
     "library_identifier" : null,
+    "library_is_deleted" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -2158,6 +2189,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
 |<el-row justify="space-between"><el-col :span="20">library_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库名称|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">library_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|测试库标识|
 |<el-row justify="space-between"><el-col :span="20">library_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属测试库|
@@ -2249,6 +2281,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
 |<el-row justify="space-between"><el-col :span="20">library_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库名称|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">library_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|测试库标识|
 |<el-row justify="space-between"><el-col :span="20">library_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属测试库|
@@ -2297,6 +2330,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
 |<el-row justify="space-between"><el-col :span="20">library_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库名称|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">library_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|测试库标识|
 |<el-row justify="space-between"><el-col :span="20">library_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属测试库|
@@ -2346,6 +2380,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
 |<el-row justify="space-between"><el-col :span="20">library_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库名称|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">library_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|测试库标识|
 |<el-row justify="space-between"><el-col :span="20">library_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属测试库|
@@ -2395,6 +2430,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
 |<el-row justify="space-between"><el-col :span="20">library_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库名称|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">library_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|测试库标识|
 |<el-row justify="space-between"><el-col :span="20">library_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属测试库|
@@ -2443,6 +2479,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
 |<el-row justify="space-between"><el-col :span="20">library_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库名称|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">library_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|测试库标识|
 |<el-row justify="space-between"><el-col :span="20">library_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属测试库|
@@ -2491,6 +2528,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
 |<el-row justify="space-between"><el-col :span="20">library_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库名称|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">library_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|测试库标识|
 |<el-row justify="space-between"><el-col :span="20">library_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属测试库|
@@ -2540,6 +2578,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
 |<el-row justify="space-between"><el-col :span="20">library_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库名称|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">library_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|测试库标识|
 |<el-row justify="space-between"><el-col :span="20">library_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属测试库|

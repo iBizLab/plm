@@ -10,7 +10,7 @@
   * [需求(IDEA)](module/ProdMgmt/idea) : [配置](module/ProdMgmt/idea#界面行为)
 
 ### 关联视图
-  * [表单设计(psdeformdesign_modal)](app/view/psdeformdesign_modal)
+  * [需求表单设计(idea_dyna_tab_exp_view)](app/view/idea_dyna_tab_exp_view)
 
 <script>
  const { createApp } = Vue

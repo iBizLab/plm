@@ -27,10 +27,10 @@
 ##### 计算式指标
 |    名称col200   | 代码名col150  |  计算公式col500   |  备注col500  |
 | --------  |------------| -----   |  --------|
-|执行用例数量|run_number|count(id)|统计测试计划下的执行用例数量。<br>|
-|测试执行率|test_run_rate|countif(relation_total_history > 0) / if(count(id) = 0, 1, count(id))|统计测试计划下被执行过的用例占比，反映测试团队的测试进度。<br>|
-|测试执行通过率|test_run_pass_rate|countif(status = 10) / if(count(id) = 0, 1, count(id))|统计测试计划下，执行通过的用例占比，反映测试团队的执行情况。	<br>|
-|缺陷数|bug_number|sum(relation_total_bug)|统计关联了执行用例的缺陷数。<br>|
+|执行用例数量|run_number|countif(library_is_deleted = 0)|统计测试计划下的执行用例数量。<br>|
+|测试执行率|test_run_rate|countif(relation_total_history > 0 and library_is_deleted = 0) / if(countif(library_is_deleted = 0) = 0, 1, countif(library_is_deleted = 0))|统计测试计划下被执行过的用例占比，反映测试团队的测试进度。<br>|
+|测试执行通过率|test_run_pass_rate|countif(status = 10 and library_is_deleted = 0) / if(countif(library_is_deleted = 0) = 0, 1, countif(library_is_deleted = 0))|统计测试计划下，执行通过的用例占比，反映测试团队的执行情况。	<br>|
+|缺陷数|bug_number|sumif(relation_total_bug, library_is_deleted = 0)|统计关联了执行用例的缺陷数。<br>|
 
 <script>
  const { createApp } = Vue

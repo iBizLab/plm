@@ -50,6 +50,7 @@
   * `TYPE(测试分类)`
   * `STATUS(状态)`
   * `ID(标识)`
+  * `LIBRARY_IS_DELETED(测试库是否删除)`
 
 
 
@@ -69,6 +70,7 @@ t1.`END_AT`,
 t1.`ID`,
 t1.`LIBRARY_ID`,
 t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
+t21.`IS_DELETED` AS `LIBRARY_IS_DELETED`,
 t21.`NAME` AS `LIBRARY_NAME`,
 t1.`NAME`,
 t1.`PROJECT_ID`,

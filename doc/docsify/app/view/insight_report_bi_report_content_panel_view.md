@@ -4,7 +4,6 @@
 
 ## 控件
 #### CAPTIONBAR(captionbar)
-#### 面板部件(panel)
 #### 工具栏(toolbar)
 
 

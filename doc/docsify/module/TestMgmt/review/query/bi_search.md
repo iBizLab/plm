@@ -46,6 +46,7 @@
   * `STATE(评审状态)`
   * `TYPE(评审类型)`
   * `ID(标识)`
+  * `LIBRARY_IS_DELETED(测试库是否删除)`
 
 
 
@@ -64,6 +65,7 @@ t1.`GUIDELINE_ID`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`LIBRARY_ID`,
+t11.`IS_DELETED` AS `LIBRARY_IS_DELETED`,
 t11.`NAME` AS `LIBRARY_NAME`,
 t1.`NAME`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,

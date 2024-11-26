@@ -21,10 +21,10 @@
 
 ### 关联界面行为
   * [测试计划(TEST_PLAN)](module/TestMgmt/test_plan) : [表格界面_新建操作_子数据](module/TestMgmt/test_plan#界面行为)
-  * [测试计划(TEST_PLAN)](module/TestMgmt/test_plan) : [开始测试](module/TestMgmt/test_plan#界面行为)
   * [测试计划(TEST_PLAN)](module/TestMgmt/test_plan) : [编辑](module/TestMgmt/test_plan#界面行为)
-  * [测试计划(TEST_PLAN)](module/TestMgmt/test_plan) : [结束测试](module/TestMgmt/test_plan#界面行为)
   * [测试计划(TEST_PLAN)](module/TestMgmt/test_plan) : [删除](module/TestMgmt/test_plan#界面行为)
+  * [测试计划(TEST_PLAN)](module/TestMgmt/test_plan) : [结束测试](module/TestMgmt/test_plan#界面行为)
+  * [测试计划(TEST_PLAN)](module/TestMgmt/test_plan) : [开始测试](module/TestMgmt/test_plan#界面行为)
 
 ### 关联界面逻辑
   * [测试计划(TEST_PLAN)](module/TestMgmt/test_plan) : [设置门户默认搜索时间](module/TestMgmt/test_plan/uilogic/set_portlet_search_date)

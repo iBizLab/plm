@@ -17,6 +17,7 @@
 
 ### 关联视图
   * [项目(project_edit_view)](app/view/project_edit_view)
+  * [项目(project_hybrid_index_view)](app/view/project_hybrid_index_view)
   * [项目(project_kanban_index_view)](app/view/project_kanban_index_view)
   * [项目(project_redirect_view)](app/view/project_redirect_view)
   * [项目(project_scrum_index_view)](app/view/project_scrum_index_view)

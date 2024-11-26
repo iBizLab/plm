@@ -1,5 +1,5 @@
 
-## 存在直接SQL调用的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[213]</font></sup>
+## 存在直接SQL调用的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[214]</font></sup>
 
 #### [基线(BASELINE)](module/Base/baseline)的处理逻辑[删除基线前附加逻辑(before_remove)](module/Base/baseline/logic/before_remove)
 
@@ -3735,6 +3735,23 @@ where t1.PRINCIPAL_ID = ? limit 1
 1. `obj(工时).principal_id`
 
 重置参数`result(结果)`，并将执行sql结果赋值给参数`result(结果)`
+#### [工时(WORKLOAD)](module/Base/workload)的处理逻辑[工时自动计算(workload_auto_cal)](module/Base/workload/logic/workload_auto_cal)
+
+节点：计算父工作项汇聚工时
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+select 
+IFNULL(sum(case when name='ACTUAL_WORKLOAD' then DECIMAL_VALUE else 0 end),0) as 'actual_workload',
+IFNULL(sum(case when name='ESTIMATED_WORKLOAD' then DECIMAL_VALUE else 0 end),0) as 'estimated_workload'
+ from extend_storage t where   exists (select 1 from work_item a where PID=? and t.owner_id=a.id)
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).PRINCIPAL_ID(工时主体标识)`
+
+将执行sql结果赋值给参数`workload_data(工时数据)`
 #### [工时(WORKLOAD)](module/Base/workload)的处理逻辑[登记工时并更新剩余工时(save_workload)](module/Base/workload/logic/save_workload)
 
 节点：合计已登记工时

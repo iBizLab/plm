@@ -16,6 +16,7 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./get_space_member#begin {"开始"}]]
 state "结束" as END2 <<end>> [[$./get_space_member#end2 {"结束"}]]
+state "执行脚本代码" as RAWSFCODE4  [[$./get_space_member#rawsfcode4 {"执行脚本代码"}]]
 state "获取知识空间ID并设置过滤参数" as PREPAREPARAM2  [[$./get_space_member#prepareparam2 {"获取知识空间ID并设置过滤参数"}]]
 state "查询当前用户是否为知识空间成员" as DEDATASET3  [[$./get_space_member#dedataset3 {"查询当前用户是否为知识空间成员"}]]
 state "绑定用户数据到for_obj" as PREPAREPARAM5  [[$./get_space_member#prepareparam5 {"绑定用户数据到for_obj"}]]
@@ -23,7 +24,6 @@ state "只读权限" as RAWSFCODE1  [[$./get_space_member#rawsfcode1 {"只读权
 state "非只读权限" as RAWSFCODE2  [[$./get_space_member#rawsfcode2 {"非只读权限"}]]
 state "结束" as END6 <<end>> [[$./get_space_member#end6 {"结束"}]]
 state "判断系统管理员身份" as RAWSFCODE3  [[$./get_space_member#rawsfcode3 {"判断系统管理员身份"}]]
-state "执行脚本代码" as RAWSFCODE4  [[$./get_space_member#rawsfcode4 {"执行脚本代码"}]]
 
 
 Begin --> RAWSFCODE3 : [[$./get_space_member#begin-rawsfcode3{连接名称} 连接名称]]
@@ -37,6 +37,7 @@ RAWSFCODE2 --> END6
 PREPAREPARAM5 --> RAWSFCODE1 : [[$./get_space_member#prepareparam5-rawsfcode1{只读成员} 只读成员]]
 RAWSFCODE3 --> END2 : [[$./get_space_member#rawsfcode3-end2{系统管理员} 系统管理员]]
 Begin --> RAWSFCODE4 : [[$./get_space_member#begin-rawsfcode4{连接名称} 连接名称]]
+RAWSFCODE4 --> END6
 
 
 @enduml
@@ -60,6 +61,18 @@ Begin --> RAWSFCODE4 : [[$./get_space_member#begin-rawsfcode4{连接名称} 连�
 ```javascript
 var defaultObj = logic.getParam("default");
 defaultObj.set("srfreadonly", false);
+```
+
+#### 执行脚本代码 :id=RAWSFCODE4<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
+
+
+
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
 ```
 
 #### 结束 :id=END6<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
@@ -121,18 +134,6 @@ defaultObj.set("srfreadonly", true);
 
 *- N/A*
 
-#### 执行脚本代码 :id=RAWSFCODE4<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
-
-
-
-<p class="panel-title"><b>执行代码[JavaScript]</b></p>
-
-```javascript
-var defaultObj = logic.getParam("default");
-
-defaultObj.set("srfreadonly", true);
-```
-
 
 ### 连接条件说明
 #### 连接名称 :id=Begin-RAWSFCODE3
@@ -158,7 +159,7 @@ defaultObj.set("srfreadonly", true);
 `Default(传入变量).srfreadonly` EQ `false`
 #### 连接名称 :id=Begin-RAWSFCODE4
 
-(`Default(传入变量).IS_DELETED(是否已删除)` EQ `1` OR `Default(传入变量).IS_ARCHIVED(是否已归档)` EQ `null`)
+(`Default(传入变量).IS_DELETED(是否已删除)` EQ `1` OR `Default(传入变量).IS_ARCHIVED(是否已归档)` EQ `1`)
 
 
 ### 实体逻辑参数

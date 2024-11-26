@@ -24,6 +24,7 @@
   * [通知配置(psde_notify_tab_exp_view)](app/view/psde_notify_tab_exp_view)
   * [表单设计(psdeformdesign_modal)](app/view/psdeformdesign_modal)
   * [设计(psdemslogicmslogicdesign_modal)](app/view/psdemslogicmslogicdesign_modal)
+  * [动态设计(work_item_dyna_tab_exp_view)](app/view/work_item_dyna_tab_exp_view)
   * [工作项类型(work_item_type_edit_view)](app/view/work_item_type_edit_view)
 
 <script>

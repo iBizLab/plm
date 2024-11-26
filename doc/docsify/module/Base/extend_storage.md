@@ -58,11 +58,6 @@
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
 
-## 处理逻辑
-| 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
-| -------- |---------- |----------- |------------|----------|
-|[工时自动计算](module/Base/extend_storage/logic/workload_auto_cal)|workload_auto_cal|无|||
-
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
@@ -102,9 +97,6 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/extend_storage?id=行为`">
   行为
-</el-anchor-link>
-<el-anchor-link :href="`#/module/Base/extend_storage?id=处理逻辑`">
-  处理逻辑
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/extend_storage?id=数据查询`">
   数据查询

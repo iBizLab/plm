@@ -1,5 +1,5 @@
 
-## 使用脚本的界面逻辑节点<sup class="footnote-symbol"> <font color=orange>[427]</font></sup>
+## 使用脚本的界面逻辑节点<sup class="footnote-symbol"> <font color=orange>[431]</font></sup>
 
 #### [资源组件(ADDON_RESOURCE)](module/Base/addon_resource)的处理逻辑[资源删除逻辑(resource_del)](module/Base/addon_resource/uilogic/resource_del)
 
@@ -91,22 +91,37 @@ console.log("附件数据",uiLogic.attach)
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
+const url = window.location;
 var file_name = uiLogic.default.name;
 var file_id = uiLogic.default.id;
+var file_preview_address = ibiz.env.customParams.file_preview_address;
 
-var filedownloadurl='http://172.16.220.130:30510/api/ibizplm__plmweb/ibizutil/download/plm/'+file_id+'?fullfilename='+file_name;
+const windowInfo = getCurrentWindowInfo(url);
 
-console.log("文件下载路径"+filedownloadurl);
-var script = document.createElement('script');
-script.src = 'https://cdn.jsdelivr.net/npm/js-base64@3.7.2/base64.min.js';
-script.onload = function() {
-    var b64Encoded = Base64.encode(filedownloadurl);
-    var url = 'http://172.16.121.242:28012/onlinePreview?url='+encodeURIComponent(b64Encoded);
-    console.log("最终目标地址"+url);
-    window.open(url);
-};
-document.head.appendChild(script);
+let uploadUrl = `${ibiz.env.baseUrl}/${ibiz.env.appId}${ibiz.env.downloadFileUrl}`;
+const app = ibiz.hub.getApp(context.srfappid);
+const OSSCat = app.model.userParam?.DefaultOSSCat;
+uploadUrl = uploadUrl.replace('/{cat}', OSSCat ? `/${OSSCat}` : '');
 
+var filedownloadurl = windowInfo + uploadUrl + '/'+file_id+'?fullfilename='+file_name;
+
+var b64Encoded = ibiz.util.base64.encode(filedownloadurl);
+var previewUrl = file_preview_address + '/onlinePreview?url='+encodeURIComponent(b64Encoded);
+
+window.open(previewUrl);
+
+
+function getCurrentWindowInfo(url) {
+    const protocol = url.protocol;
+    const host = url.hostname; 
+    const port = url.port || (protocol === "https:" ? "443" : "80"); 
+    const isIPAddress = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(host);
+    if (isIPAddress) {
+        return  protocol +"//" + host + ":" + port ;
+    } else {
+        return  protocol +"//" + host + ":" + port ;
+    }
+}
 ```
 #### [附件(ATTACHMENT)](module/Base/attachment)的处理逻辑[计算附件是否隐藏逻辑(calc_attachment_hidden)](module/Base/attachment/uilogic/calc_attachment_hidden)
 
@@ -1690,6 +1705,16 @@ ibiz.hub.getApp(context.srfappid).deService.exec(
     uiLogic.user,
 );
 ```
+#### [效能报表(INSIGHT_REPORT)](module/Insight/insight_report)的处理逻辑[导出表格(export_excel)](module/Insight/insight_report/uilogic/export_excel)
+
+节点：整合表格数据并导出
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+if (uiLogic.grid) {
+    uiLogic.grid.exportData({params: {}});
+}
+```
 #### [效能报表(INSIGHT_REPORT)](module/Insight/insight_report)的处理逻辑[使用此模板(use_cur_template)](module/Insight/insight_report/uilogic/use_cur_template)
 
 节点：获取卡片视图选中数据
@@ -1731,6 +1756,19 @@ view.closeView();
 
 ```javascript
 ibiz.mc.command.create.send({ srfdecodename: 'insight_report'})
+```
+#### [效能报表(INSIGHT_REPORT)](module/Insight/insight_report)的处理逻辑[导出为pdf(export_pdf)](module/Insight/insight_report/uilogic/export_pdf)
+
+节点：导出图片脚本
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+const viewDom = document.getElementById(view.id);
+if (viewDom) {
+    const content = viewDom.querySelector('.ibiz-bi-report-panel-content>.el-collapse');
+    const fileName = view.model.caption;
+    ibiz.util.html2canvas.exportCanvas(content, { fileName });
+}
 ```
 #### [效能视图(INSIGHT_VIEW)](module/Insight/insight_view)的处理逻辑[计算表格列行为状态(insight)(calc_column_action_state)](module/Insight/insight_view/uilogic/calc_column_action_state)
 
@@ -2201,7 +2239,7 @@ return (async function() {
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
-const total = uiLogic.ctrl.state.size;
+const total = uiLogic.ctrl.state.items.length;
 uiLogic.view.layoutPanel.state.data.total = total;
 ```
 #### [产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member)的处理逻辑[新建产品默认临时成员(create_default_temp_members)](module/ProdMgmt/product_member/uilogic/create_default_temp_members)
@@ -3225,7 +3263,7 @@ uiLogic.ctrl.refresh();
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
-ibiz.mc.command.update.send({ srfdecodename: 'run',srfkey: context.run})
+ibiz.mc.command.update.send({ srfdecodename: 'run'})
 ```
 #### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[获取实际工时(get_actual_workload)](module/TestMgmt/run/uilogic/get_actual_workload)
 
@@ -5052,6 +5090,40 @@ if (uiLogic.ctrl) {
     uiLogic.ctrl.refresh();
 }
 ```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[状态变更前逻辑——表格(before_state_change_grid)](module/ProjMgmt/work_item/uilogic/before_state_change_grid)
+
+节点：判断类型是否匹配
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+const selectedData = uiLogic.selecteddata;
+let needDisable = true;
+if (selectedData && selectedData.length > 0) {
+    const firstData = selectedData[0];
+    for (let i = 0; i < selectedData.length; i++) {
+        const curData = selectedData[i];
+        const dataType = curData.work_item_type_id;
+        if (firstData.work_item_type_id !== dataType) {
+            needDisable = true;
+            break; 
+        } else {
+            needDisable = false;
+        }
+    }
+    if(needDisable === true){
+        const cur_grid = uiLogic.cur_grid;
+        let detoolbar = uiLogic.detoolbar;
+        detoolbar = cur_grid.ctx.controllersMap.get("grid").batchToolbarController.state;
+        const detoolbarbutton = detoolbar.buttonsState.children;
+        for(let j = 0; j <detoolbarbutton.length;j++){
+            const toolitem = detoolbarbutton[j];
+            if (toolitem.uiActionId == "change_state@work_item"){
+                toolitem.disabled = true;
+            }
+        }
+    }
+}
+```
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[执行用例关联工作项(缺陷)(run_relation_work_item_bug)](module/ProjMgmt/work_item/uilogic/run_relation_work_item_bug)
 
 节点：获取选中列表
@@ -5228,6 +5300,14 @@ uiLogic.form.details.tabpanel1.state.activeTab = 'tabpanel1_relation'
 
 ```javascript
 uiLogic.druipart.navContext.srfshowchoose = true;
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[导出为图片（甘特图）(export_gantt_image)](module/ProjMgmt/work_item/uilogic/export_gantt_image)
+
+节点：导出图片
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+console.log(111);
 ```
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[设置执行人(setting_executors)](module/ProjMgmt/work_item/uilogic/setting_executors)
 

@@ -23,6 +23,7 @@
 |编号<sup class="footnote-symbol">[[序列]](index/sequence_index#seq_review_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
 |测试库标识|LIBRARY_ID|外键值|100|是||
 |测试库标识|LIBRARY_IDENTIFIER|外键值附加数据|15|是||
+|测试库是否删除|LIBRARY_IS_DELETED|外键值附加数据||是||
 |测试库名称|LIBRARY_NAME|外键值文本|200|是||
 |名称|NAME|文本，可指定长度|200|是||
 |规则|RULE|一对多关系数据集合|1048576|是||
@@ -97,6 +98,7 @@
 |评审状态|STATE|[单项选择(文本值)](index/dictionary_index#test_case_state "用例评审状态")|60|是||
 |评审类型|TYPE|[单项选择(文本值)](index/dictionary_index#review_type "评审类型")|60|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|测试库是否删除|LIBRARY_IS_DELETED|外键值附加数据||是||
 
 </el-tab-pane>
 

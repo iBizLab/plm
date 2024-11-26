@@ -30,6 +30,7 @@
 |最新执行结果|LATEST_EXECUTED|一对多动态对象|1048576|是||
 |重要程度|LEVEL|[单项选择(文本值)](index/dictionary_index#test_case_level "用例重要程度")|60|是||
 |测试库标识|LIBRARY_IDENTIFIER|外键值附加数据|15|是||
+|测试库是否删除|LIBRARY_IS_DELETED|外键值附加数据||是||
 |维护人|MAINTENANCE_ID|外键值|100|是||
 |维护人|MAINTENANCE_NAME|外键值文本|100|是||
 |名称|NAME|文本，可指定长度|200|是||
@@ -42,6 +43,8 @@
 |状态|STATE|[单项选择(文本值)](index/dictionary_index#case_state "用例状态")|60|否||
 |步骤|STEPS|一对多关系数据集合|1048576|是||
 |步骤|STEPS_IMP|文本，可指定长度|100|是||
+|步骤描述|STEP_DESC_IMP|文本，可指定长度|100|是||
+|预期结果|STEP_VALUE_IMP|文本，可指定长度|100|是||
 |模块路径|SUITES|外键值附加数据|500|是||
 |用例模块标识|SUITE_ID|外键值|100|是||
 |所属模块|SUITE_NAME|外键值文本|200|是||
@@ -106,6 +109,7 @@
 |是否已删除|IS_DELETED|是否逻辑||是||
 |建立时间|CREATE_TIME|日期时间型||否||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
+|测试库是否删除|LIBRARY_IS_DELETED|外键值附加数据||是||
 
 </el-tab-pane>
 <el-tab-pane label="维护人" name="field_group_maintenance">
@@ -427,7 +431,7 @@
 | 添加实际工时 | add_actual_workload | 添加实际工时 |无数据|<details><summary>打开视图或向导（模态）</summary>[登记工时](app/view/workload_quick_create_view)</details>||
 | 删除 | delete | 删除 |多项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 打开评论列表 | open_comment_list | 打开评论列表 |单项数据|<details><summary>打开视图或向导（模态）</summary>[评论](app/view/comment_mob_comment_md_view)</details>||
-| 配置 | panel_usr1022245764_button_calluilogic_click | 表单设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[表单设计](app/view/psdeformdesign_modal)</details>||
+| 配置 | panel_usr1022245764_button_calluilogic_click | 测试用例表单动态设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[测试用例表单动态设计](app/view/test_case_library_dyna_tab_exp_view)</details>||
 | 删除（移动端工具栏） | mob_toolbar_delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 查看已规划基线 | check_baseline_version | 已规划基线 |单项数据|用户自定义||
 | 移动用例 | move_idea | 移动 |多项数据（主键）|<details><summary>后台调用</summary>[move_case](#行为)||
@@ -439,7 +443,7 @@
 | BI刷新 | bi_refresh | 刷新 |无数据|用户自定义||
 | 打开我的事项用例表格视图 | open_summary_case | 测试用例 |无数据|<details><summary>打开视图或向导（模态）</summary>[测试用例](app/view/test_case_summary_case_grid_view)</details>||
 | 测试用例关联需求（移动端） | mob_add_idea | 测试用例关联需求 |无数据|<details><summary>后台调用</summary>[others_relation_case](#行为)||
-| 配置 | panel_usr1022211556_button_calluilogic_click | 表单设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[表单设计](app/view/psdeformdesign_modal)</details>||
+| 配置 | panel_usr1022211556_button_calluilogic_click | 测试用例表单设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[测试用例表单设计](app/view/test_case_dyna_tab_exp_view)</details>||
 | 删除（工具栏） | toolbar_delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 测试用例关联缺陷（移动端） | mob_add_bug | 测试用例关联缺陷 |无数据|<details><summary>后台调用</summary>[others_relation_case](#行为)||
 | 测试用例关联工作项（移动端） | mob_add_work_item | 测试用例关联工作项 |无数据|<details><summary>后台调用</summary>[others_relation_case](#行为)||
@@ -493,7 +497,7 @@
 具体描述测试操作步骤、预期结果的文档。
 
 
-<el-descriptions direction="vertical" :column="11" :size="size" border>
+<el-descriptions direction="vertical" :column="12" :size="size" border>
 <el-descriptions-item label="模块">-</el-descriptions-item>
 <el-descriptions-item label="标题">-</el-descriptions-item>
 <el-descriptions-item label="维护人">-</el-descriptions-item>
@@ -503,7 +507,8 @@
 <el-descriptions-item label="预估工时">-</el-descriptions-item>
 <el-descriptions-item label="剩余工时">-</el-descriptions-item>
 <el-descriptions-item label="前置条件">-</el-descriptions-item>
-<el-descriptions-item label="步骤">-</el-descriptions-item>
+<el-descriptions-item label="步骤描述">-</el-descriptions-item>
+<el-descriptions-item label="预期结果">-</el-descriptions-item>
 <el-descriptions-item label="关注人">-</el-descriptions-item>
 </el-descriptions>
 

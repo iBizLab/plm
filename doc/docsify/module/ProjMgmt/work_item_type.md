@@ -129,9 +129,9 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 配置 | panel_usr1229905828_button_link1_click | 表单设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[表单设计](app/view/psdeformdesign_modal)</details>||
+| 配置 | panel_usr1229905828_button_link1_click | 动态设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[动态设计](app/view/work_item_dyna_tab_exp_view)</details>||
 | 配置 | panel_usr12299058218_button_link3_click | 通知配置 |单项数据|<details><summary>打开视图或向导（模态）</summary>[通知配置](app/view/psde_notify_tab_exp_view)</details>||
-| 配置 | panel_usr12299058218_form_cfg_click | 表单设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[表单设计](app/view/psdeformdesign_modal)</details>||
+| 配置 | panel_usr12299058218_form_cfg_click | 工作项 |单项数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_project_dyna_tab_exp_view)</details>||
 | 配置 | panel_usr1229905828_button_link_click | 设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[设计](app/view/psdemslogicmslogicdesign_modal)</details>||
 | 配置 | panel_usr12299058218_button_link_click | 设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[设计](app/view/psdemslogicmslogicdesign_modal)</details>||
 | 新建工作项类型 | create_type | 新建工作项类型 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项类型](app/view/work_item_type_global_create_view)</details>||

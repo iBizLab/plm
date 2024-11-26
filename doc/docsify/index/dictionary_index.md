@@ -883,6 +883,7 @@
 |library|library|library||
 |product|product|product||
 |space|space|space||
+|hybrid|hybrid|hybrid||
 
 ##### 最近访问 :id=recent_visite
 
@@ -898,6 +899,7 @@
 |kanban|kanban项目|kanban||
 |waterfall|瀑布项目|waterfall||
 |page|页面|page||
+|hybrid|hybrid项目|hybrid||
 
 ##### 最近访问对象 :id=recent_type
 
@@ -1540,6 +1542,7 @@
 |scrum|Scrum项目|scrum||
 |kanban|Kanban项目|kanban||
 |waterfall|瀑布项目|waterfall||
+|hybrid|混合项目|hybrid||
 
 ##### 风险 :id=risk
 

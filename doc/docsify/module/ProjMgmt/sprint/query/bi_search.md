@@ -44,6 +44,7 @@
   * `PROJECT_ID(项目标识)`
   * `STATUS(状态)`
   * `ID(标识)`
+  * `PROJECT_IS_DELETED(项目是否删除)`
 
 
 
@@ -65,6 +66,7 @@ t1.`END_AT`,
 t1.`ID`,
 t1.`NAME`,
 t1.`PROJECT_ID`,
+t11.`IS_DELETED` AS `PROJECT_IS_DELETED`,
 t11.`NAME` AS `PROJECT_NAME`,
 t1.`START_AT`,
 t1.`STATUS`,

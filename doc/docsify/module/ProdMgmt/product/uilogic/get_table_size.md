@@ -46,7 +46,7 @@ RAWJSCODE1 --> END1
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
-const total = uiLogic.ctrl.state.size;
+const total = uiLogic.ctrl.state.items.length;
 uiLogic.view.layoutPanel.state.data.total = total;
 ```
 
@@ -56,6 +56,6 @@ uiLogic.view.layoutPanel.state.data.total = total;
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |当前视图对象|VIEW|当前视图对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |当前部件对象|CTRL|当前部件对象||

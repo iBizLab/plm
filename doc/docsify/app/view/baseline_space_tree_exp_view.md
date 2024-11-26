@@ -13,14 +13,14 @@
 
 
 ### 关联界面行为
-  * [基线(BASELINE)](module/Base/baseline) : [编辑](module/Base/baseline#界面行为)
-  * [基线(BASELINE)](module/Base/baseline) : [编辑](module/Base/baseline#界面行为)
-  * [基线(BASELINE)](module/Base/baseline) : [删除](module/Base/baseline#界面行为)
-  * [基线(BASELINE)](module/Base/baseline) : [树界面_刷新全部操作](module/Base/baseline#界面行为)
   * [基线(BASELINE)](module/Base/baseline) : [新建分组](module/Base/baseline#界面行为)
   * [基线(BASELINE)](module/Base/baseline) : [编辑](module/Base/baseline#界面行为)
-  * [基线(BASELINE)](module/Base/baseline) : [新建类别](module/Base/baseline#界面行为)
+  * [基线(BASELINE)](module/Base/baseline) : [编辑](module/Base/baseline#界面行为)
+  * [基线(BASELINE)](module/Base/baseline) : [树界面_刷新全部操作](module/Base/baseline#界面行为)
   * [基线(BASELINE)](module/Base/baseline) : [删除](module/Base/baseline#界面行为)
+  * [基线(BASELINE)](module/Base/baseline) : [编辑](module/Base/baseline#界面行为)
+  * [基线(BASELINE)](module/Base/baseline) : [删除](module/Base/baseline#界面行为)
+  * [基线(BASELINE)](module/Base/baseline) : [新建类别](module/Base/baseline#界面行为)
   * [基线(BASELINE)](module/Base/baseline) : [删除](module/Base/baseline#界面行为)
 
 ### 关联视图

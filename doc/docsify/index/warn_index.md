@@ -1,7 +1,7 @@
 # 模型预警 <!-- {docsify-ignore-all} -->
 
 
-### 处理逻辑中使用脚本<sup class="footnote-symbol"> <font color=orange>[153]</font></sup>
+### 处理逻辑中使用脚本<sup class="footnote-symbol"> <font color=orange>[155]</font></sup>
 | 实体col200   | 处理逻辑col300  | 脚本模式col100  |
 | --------   |------------|----------|
 |[组件(ADDON)](module/Base/addon#处理逻辑)|[组件权限计数器(addon_authority)](module/Base/addon/logic/addon_authority.md)|否|
@@ -21,7 +21,6 @@
 |[动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard#处理逻辑)|[使用此模板(use_cur_template)](module/Base/dyna_dashboard/logic/use_cur_template.md)|否|
 |[动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard#处理逻辑)|[更新看板部件模型(sync_portlet_model)](module/Base/dyna_dashboard/logic/sync_portlet_model.md)|否|
 |[执行人(EXECUTOR)](module/Base/executor#处理逻辑)|[删除执行人时发送通知(del_notice)](module/Base/executor/logic/del_notice.md)|否|
-|[扩展存储(EXTEND_STORAGE)](module/Base/extend_storage#处理逻辑)|[工时自动计算(workload_auto_cal)](module/Base/extend_storage/logic/workload_auto_cal.md)|否|
 |[需求(IDEA)](module/ProdMgmt/idea#处理逻辑)|[基线规划需求数据查询(baseline_plan_idea)](module/ProdMgmt/idea/logic/baseline_plan_idea.md)|否|
 |[需求(IDEA)](module/ProdMgmt/idea#处理逻辑)|[填充BI报表默认值(fill_bi_form_default)](module/ProdMgmt/idea/logic/fill_bi_form_default.md)|是|
 |[需求(IDEA)](module/ProdMgmt/idea#处理逻辑)|[获取产品成员(get_product_member)](module/ProdMgmt/idea/logic/get_product_member.md)|否|
@@ -65,6 +64,7 @@
 |[产品(PRODUCT)](module/ProdMgmt/product#处理逻辑)|[获取快速新建产品集合(quick_create)](module/ProdMgmt/product/logic/quick_create.md)|否|
 |[产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member#处理逻辑)|[移除产品成员通知(remove_product_member_notify)](module/ProdMgmt/product_member/logic/remove_product_member_notify.md)|否|
 |[产品标签(PRODUCT_TAG)](module/ProdMgmt/product_tag#处理逻辑)|[获取关联的工单数量(get_con_product_tag)](module/ProdMgmt/product_tag/logic/get_con_product_tag.md)|否|
+|[项目(PROJECT)](module/ProjMgmt/project#处理逻辑)|[hybrid项目组件权限计数器(hybrid_project_addon_authority)](module/ProjMgmt/project/logic/hybrid_project_addon_authority.md)|否|
 |[项目(PROJECT)](module/ProjMgmt/project#处理逻辑)|[scrum项目组件权限计数器(scrum_project_addon_authority)](module/ProjMgmt/project/logic/scrum_project_addon_authority.md)|否|
 |[项目(PROJECT)](module/ProjMgmt/project#处理逻辑)|[waterfall项目组件权限计数器(waterfall_project_addon_authority)](module/ProjMgmt/project/logic/waterfall_project_addon_authority.md)|否|
 |[项目(PROJECT)](module/ProjMgmt/project#处理逻辑)|[填充BI报表默认值(fill_bi_form_default)](module/ProjMgmt/project/logic/fill_bi_form_default.md)|是|
@@ -73,6 +73,7 @@
 |[项目(PROJECT)](module/ProjMgmt/project#处理逻辑)|[获取项目成员(get_project_member_one)](module/ProjMgmt/project/logic/get_project_member_one.md)|否|
 |[项目(PROJECT)](module/ProjMgmt/project#处理逻辑)|[获取项目进度(get_schedule)](module/ProjMgmt/project/logic/get_schedule.md)|否|
 |[项目(PROJECT)](module/ProjMgmt/project#处理逻辑)|[逾期工作项计数(warning_count_logic)](module/ProjMgmt/project/logic/warning_count_logic.md)|否|
+|[项目(PROJECT)](module/ProjMgmt/project#处理逻辑)|[项目自动变更状态(project_automatic_change_state)](module/ProjMgmt/project/logic/project_automatic_change_state.md)|否|
 |[项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member#处理逻辑)|[移除项目成员通知(remove_project_member_notify)](module/ProjMgmt/project_member/logic/remove_project_member_notify.md)|否|
 |[项目标签(PROJECT_TAG)](module/ProjMgmt/project_tag#处理逻辑)|[获取关联的工作项(get_con_project_tag)](module/ProjMgmt/project_tag/logic/get_con_project_tag.md)|否|
 |[实体处理逻辑(PSDELOGIC)](module/extension/PSDELogic#处理逻辑)|[WebHook地址(WebHook)](module/extension/PSDELogic/logic/WebHook.md)|是|
@@ -128,6 +129,7 @@
 |[视图主题设置(VIEW_THEME_SETTING)](module/Base/view_theme_setting#处理逻辑)|[获取过滤条件(fill_search_conds)](module/Base/view_theme_setting/logic/fill_search_conds.md)|否|
 |[工时(WORKLOAD)](module/Base/workload#处理逻辑)|[删除工时记录前附加逻辑(before_remove)](module/Base/workload/logic/before_remove.md)|否|
 |[工时(WORKLOAD)](module/Base/workload#处理逻辑)|[填充BI报表默认值(fill_bi_form_default)](module/Base/workload/logic/fill_bi_form_default.md)|是|
+|[工时(WORKLOAD)](module/Base/workload#处理逻辑)|[工时自动计算(workload_auto_cal)](module/Base/workload/logic/workload_auto_cal.md)|否|
 |[工时(WORKLOAD)](module/Base/workload#处理逻辑)|[获取已登记工时(get_register_workload)](module/Base/workload/logic/get_register_workload.md)|否|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#处理逻辑)|[其他实体关联工作项(others_relation_work_item)](module/ProjMgmt/work_item/logic/others_relation_work_item.md)|否|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#处理逻辑)|[变更状态(change_state)](module/ProjMgmt/work_item/logic/change_state.md)|否|
@@ -158,7 +160,7 @@
 |[工作项操作向导(WORK_ITEM_WIZARD)](module/ProjMgmt/work_item_wizard#处理逻辑)|[变更工作项类型(change)](module/ProjMgmt/work_item_wizard/logic/change.md)|否|
 |[工作项操作向导(WORK_ITEM_WIZARD)](module/ProjMgmt/work_item_wizard#处理逻辑)|[填充操作明细属性(fill_details)](module/ProjMgmt/work_item_wizard/logic/fill_details.md)|否|
 
-### 处理逻辑中使用SQL调用<sup class="footnote-symbol"> <font color=orange>[130]</font></sup>
+### 处理逻辑中使用SQL调用<sup class="footnote-symbol"> <font color=orange>[131]</font></sup>
 | 实体col200   | 处理逻辑col300  |
 | --------   |------------|
 |[基线(BASELINE)#处理逻辑](module/Base/baseline)|[删除基线前附加逻辑(before_remove)](module/Base/baseline/logic/before_remove.md)|
@@ -271,6 +273,7 @@
 |[版本(VERSION)#处理逻辑](module/Base/version)|[新建版本时填充默认版本名称(fill_default_name)](module/Base/version/logic/fill_default_name.md)|
 |[工时(WORKLOAD)#处理逻辑](module/Base/workload)|[删除工时记录前附加逻辑(before_remove)](module/Base/workload/logic/before_remove.md)|
 |[工时(WORKLOAD)#处理逻辑](module/Base/workload)|[填充工时数据(fill_workload_data)](module/Base/workload/logic/fill_workload_data.md)|
+|[工时(WORKLOAD)#处理逻辑](module/Base/workload)|[工时自动计算(workload_auto_cal)](module/Base/workload/logic/workload_auto_cal.md)|
 |[工时(WORKLOAD)#处理逻辑](module/Base/workload)|[登记工时并更新剩余工时(save_workload)](module/Base/workload/logic/save_workload.md)|
 |[工时(WORKLOAD)#处理逻辑](module/Base/workload)|[获取已登记工时(get_register_workload)](module/Base/workload/logic/get_register_workload.md)|
 |[工作项(WORK_ITEM)#处理逻辑](module/ProjMgmt/work_item)|[删除(delete)](module/ProjMgmt/work_item/logic/delete.md)|
@@ -292,7 +295,7 @@
 |[工作项(WORK_ITEM)#处理逻辑](module/ProjMgmt/work_item)|[需求累计流图(backlog_accumulate_flow)](module/ProjMgmt/work_item/logic/backlog_accumulate_flow.md)|
 |[工作项(WORK_ITEM)#处理逻辑](module/ProjMgmt/work_item)|[首页待完成项计数器(count_my_todo)](module/ProjMgmt/work_item/logic/count_my_todo.md)|
 
-### 界面逻辑中使用脚本<sup class="footnote-symbol"> <font color=orange>[301]</font></sup>
+### 界面逻辑中使用脚本<sup class="footnote-symbol"> <font color=orange>[305]</font></sup>
 | 实体col200   | 界面逻辑col300  |
 | --------   |------------|
 |[资源组件(ADDON_RESOURCE)](module/Base/addon_resource#界面逻辑)|[资源删除逻辑](module/Base/addon_resource/uilogic/resource_del)|
@@ -386,7 +389,9 @@
 |[需求(IDEA)](module/ProdMgmt/idea#界面逻辑)|[显示下拉并展开选项（嵌入视图）](module/ProdMgmt/idea/uilogic/toolbar_show_dorpdown_data)|
 |[需求(IDEA)](module/ProdMgmt/idea#界面逻辑)|[关联产品需求（工具栏）](module/ProdMgmt/idea/uilogic/toolbar_link_idea)|
 |[效能成员(INSIGHT_MEMBER)](module/Insight/insight_member#界面逻辑)|[新建视图默认临时成员](module/Insight/insight_member/uilogic/create_default_temp_members)|
+|[效能报表(INSIGHT_REPORT)](module/Insight/insight_report#界面逻辑)|[导出表格](module/Insight/insight_report/uilogic/export_excel)|
 |[效能报表(INSIGHT_REPORT)](module/Insight/insight_report#界面逻辑)|[使用此模板](module/Insight/insight_report/uilogic/use_cur_template)|
+|[效能报表(INSIGHT_REPORT)](module/Insight/insight_report#界面逻辑)|[导出为pdf](module/Insight/insight_report/uilogic/export_pdf)|
 |[效能视图(INSIGHT_VIEW)](module/Insight/insight_view#界面逻辑)|[计算表格列行为状态(insight)](module/Insight/insight_view/uilogic/calc_column_action_state)|
 |[效能视图(INSIGHT_VIEW)](module/Insight/insight_view#界面逻辑)|[通知刷新](module/Insight/insight_view/uilogic/notify_refresh)|
 |[效能视图(INSIGHT_VIEW)](module/Insight/insight_view#界面逻辑)|[批量删除视图成员临时数据](module/Insight/insight_view/uilogic/remove_batch_temp)|
@@ -565,6 +570,7 @@
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#界面逻辑)|[需求关联工作项](module/ProjMgmt/work_item/uilogic/idea_relation_work_item)|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#界面逻辑)|[通知刷新（移动端）](module/ProjMgmt/work_item/uilogic/notify_refresh)|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#界面逻辑)|[门户刷新](module/ProjMgmt/work_item/uilogic/portlet_refresh)|
+|[工作项(WORK_ITEM)](module/ProjMgmt/work_item#界面逻辑)|[状态变更前逻辑——表格](module/ProjMgmt/work_item/uilogic/before_state_change_grid)|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#界面逻辑)|[执行用例关联工作项(缺陷)](module/ProjMgmt/work_item/uilogic/run_relation_work_item_bug)|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#界面逻辑)|[状态变更前逻辑](module/ProjMgmt/work_item/uilogic/before_state_change)|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#界面逻辑)|[计算子工作项类型(上下文)](module/ProjMgmt/work_item/uilogic/calc_children_work_item_type_context)|
@@ -573,6 +579,7 @@
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#界面逻辑)|[关联工单（工具栏）](module/ProjMgmt/work_item/uilogic/toolbar_link_ticket)|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#界面逻辑)|[上传附件（工具栏）](module/ProjMgmt/work_item/uilogic/toolbar_add_attachment)|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#界面逻辑)|[关联工作项（工具栏）](module/ProjMgmt/work_item/uilogic/toolbar_link_work_item)|
+|[工作项(WORK_ITEM)](module/ProjMgmt/work_item#界面逻辑)|[导出为图片（甘特图）](module/ProjMgmt/work_item/uilogic/export_gantt_image)|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#界面逻辑)|[设置执行人](module/ProjMgmt/work_item/uilogic/setting_executors)|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#界面逻辑)|[图表显示总数](module/ProjMgmt/work_item/uilogic/chart_show_count)|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#界面逻辑)|[计算项目资源成员](module/ProjMgmt/work_item/uilogic/calc_project_resouce_member)|
@@ -888,12 +895,12 @@
 ### 操作标识未配置映射<sup class="footnote-symbol"> <font color=orange>[6]</font></sup>
 | 实体col200   | 操作标识col300  |
 | --------   |------------|
-|[迭代变更(SPRINT_ALTERATION)](module/ProjMgmt/sprint_alteration.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
-|[执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
 |[评论(COMMENT)](module/Base/comment.md)|READ<br>DELETE<br>UPDATE|
-|[页面版本(PAGE_VERSION)](module/Wiki/page_version.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
+|[迭代变更(SPRINT_ALTERATION)](module/ProjMgmt/sprint_alteration.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
 |[关注(ATTENTION)](module/Base/attention.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
+|[执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
 |[执行人(EXECUTOR)](module/Base/executor.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
+|[页面版本(PAGE_VERSION)](module/Wiki/page_version.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
 
 ### 除主键、主信息、预置属性外，不包含其他配置的表格<sup class="footnote-symbol"> <font color=orange>[28]</font></sup>
 | 实体col200   |   视图col400 | 表格col400  |
@@ -1000,7 +1007,7 @@
 |[工时(WORKLOAD)](module/Base/workload)|工时反查表格视图_搜索表单(usr07173798_search_form)|[工时反查(workload_drill_detail_grid_view)](app/view/workload_drill_detail_grid_view)|
 |[工时类别(WORKLOAD_TYPE)](module/Base/workload_type)|默认搜索表单(default)|[工时类别(workload_type_pick_up_grid_view)](app/view/workload_type_pick_up_grid_view)|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|工时反查表格视图_搜索表单(usr07223309_search_form)|[工作项完成率(work_item_completed_drill_detail_grid_view)](app/view/work_item_completed_drill_detail_grid_view)|
-|[工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type)|默认搜索表单(default)|[工作项配置(work_item_type_global_setting_view_kanban)](app/view/work_item_type_global_setting_view_kanban)|
+|[工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type)|默认搜索表单(default)|[工作项配置(work_item_type_global_setting_mixed)](app/view/work_item_type_global_setting_mixed)|
 
 ### 除主键、主信息、预置属性外，不包含其他配置的表单<sup class="footnote-symbol"> <font color=orange>[64]</font></sup>
 | 实体col200   |   视图col400 |表单col400  |

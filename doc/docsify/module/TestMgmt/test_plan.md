@@ -17,6 +17,7 @@
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |测试库标识|LIBRARY_ID|外键值|100|否||
 |测试库名称|LIBRARY_IDENTIFIER|外键值附加数据|15|是||
+|测试库是否删除|LIBRARY_IS_DELETED|外键值附加数据||是||
 |所属测试库|LIBRARY_NAME|外键值文本|200|是||
 |计划名称|NAME|文本，可指定长度|200|否||
 |关联项目|PROJECT_ID|外键值|100|是||
@@ -68,6 +69,7 @@
 |测试分类|TYPE|[单项选择(文本值)](index/dictionary_index#test_plan_type "测试分类")|60|否||
 |状态|STATUS|[单项选择(文本值)](index/dictionary_index#test_plan_status "测试计划状态")|60|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|测试库是否删除|LIBRARY_IS_DELETED|外键值附加数据||是||
 
 </el-tab-pane>
 

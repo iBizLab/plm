@@ -68,6 +68,7 @@
   * `ID(标识)`
   * `SECTION_NAME(子产品名称)`
   * `SECTION_ID(子产品标识)`
+  * `PRODUCT_IS_DELETED(产品是否删除)`
 
 
 
@@ -95,6 +96,7 @@ t1.`PLAN_AT_FROM`,
 t1.`PLAN_AT_TO`,
 t1.`PRIORITY`,
 t1.`PRODUCT_ID`,
+t31.`IS_DELETED` AS `PRODUCT_IS_DELETED`,
 t31.`NAME` AS `PRODUCT_NAME`,
 t1.`PROGRESS`,
 t1.`REAL_AT`,

@@ -14,6 +14,7 @@
   * [产品工单类型(product_ticket_type_global_setting_view)](app/view/product_ticket_type_global_setting_view)
   * [实体属性(psde_field_idea_extend_transmit_grid_view)](app/view/psde_field_idea_extend_transmit_grid_view)
   * [表单设计(psdeformdesign_modal)](app/view/psdeformdesign_modal)
+  * [工单(ticket_product_dyna_tab_exp_view)](app/view/ticket_product_dyna_tab_exp_view)
   * [工单(ticket_setting_view)](app/view/ticket_setting_view)
 
 <script>

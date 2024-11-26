@@ -50,6 +50,9 @@
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -101,6 +104,9 @@
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -158,6 +164,9 @@
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -235,6 +244,9 @@
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -331,6 +343,9 @@
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -382,6 +397,9 @@
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -439,6 +457,9 @@
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -514,6 +535,9 @@
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -565,6 +589,9 @@
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -636,6 +663,9 @@
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -687,6 +717,9 @@
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -762,6 +795,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -813,6 +849,9 @@ Integer
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -870,6 +909,9 @@ Integer
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -945,6 +987,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -996,6 +1041,9 @@ Integer
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -1072,6 +1120,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -1123,6 +1174,9 @@ Integer
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -1199,6 +1253,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -1250,6 +1307,9 @@ Integer
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -1328,6 +1388,9 @@ Integer
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -1405,6 +1468,9 @@ Integer
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -1475,6 +1541,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -1526,6 +1595,9 @@ Integer
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -1583,6 +1655,9 @@ Integer
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -1658,6 +1733,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -1709,6 +1787,9 @@ Integer
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -1787,6 +1868,9 @@ Integer
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -1862,6 +1946,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -1913,6 +2000,9 @@ Integer
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -1970,6 +2060,9 @@ Integer
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -2045,6 +2138,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -2096,6 +2192,9 @@ Integer
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -2172,6 +2271,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -2223,6 +2325,9 @@ Integer
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -2294,6 +2399,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -2345,6 +2453,9 @@ Integer
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -2402,6 +2513,9 @@ Integer
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -2477,6 +2591,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -2528,6 +2645,9 @@ Integer
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -2604,6 +2724,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -2655,6 +2778,9 @@ Integer
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -2731,6 +2857,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -2782,6 +2911,9 @@ Integer
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -2858,6 +2990,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -2909,6 +3044,9 @@ Integer
   "steps_imp" : null,
   "attention_count" : null,
   "comment_count" : null,
+  "step_desc_imp" : null,
+  "step_value_imp" : null,
+  "library_is_deleted" : null,
   "cur_version_name" : null,
   "choose_version_id" : null,
   "choose_version_name" : null,
@@ -3079,6 +3217,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -3248,6 +3389,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -3418,6 +3562,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -3587,6 +3734,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -3756,6 +3906,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -3918,6 +4071,7 @@ Integer
     "is_deleted" : null,
     "create_time" : null,
     "create_man" : null,
+    "library_is_deleted" : null,
   }
 ]
 ```
@@ -4072,6 +4226,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -4241,6 +4398,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -4410,6 +4570,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -4702,6 +4865,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -4871,6 +5037,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -5040,6 +5209,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -5209,6 +5381,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -5378,6 +5553,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -5547,6 +5725,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -5716,6 +5897,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -5885,6 +6069,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -6054,6 +6241,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -6223,6 +6413,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -6392,6 +6585,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -6561,6 +6757,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -6730,6 +6929,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -6899,6 +7101,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -7068,6 +7273,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -7237,6 +7445,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -7406,6 +7617,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -7575,6 +7789,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -7744,6 +7961,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -7913,6 +8133,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -8082,6 +8305,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -8251,6 +8477,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -8420,6 +8649,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -8589,6 +8821,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -8758,6 +8993,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -8927,6 +9165,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -9096,6 +9337,9 @@ Integer
     "steps_imp" : null,
     "attention_count" : null,
     "comment_count" : null,
+    "step_desc_imp" : null,
+    "step_value_imp" : null,
+    "library_is_deleted" : null,
     "cur_version_name" : null,
     "choose_version_id" : null,
     "choose_version_name" : null,
@@ -9334,6 +9578,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -9448,6 +9695,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -9520,6 +9770,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -9591,6 +9844,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -9662,6 +9918,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -9734,6 +9993,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -9806,6 +10068,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -9878,6 +10143,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -9991,6 +10259,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -10063,6 +10334,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -10156,6 +10430,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -10228,6 +10505,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -10300,6 +10580,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -10371,6 +10654,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -10443,6 +10729,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -10515,6 +10804,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -10587,6 +10879,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
@@ -10659,6 +10954,9 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">steps_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤|
 |<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
 |<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">step_desc_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|步骤描述|
+|<el-row justify="space-between"><el-col :span="20">step_value_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|预期结果|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|

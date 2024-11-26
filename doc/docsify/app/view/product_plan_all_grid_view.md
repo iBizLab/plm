@@ -17,8 +17,8 @@
 ### 关联界面行为
   * [排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan) : [表格界面_新建操作_子数据](module/ProdMgmt/product_plan#界面行为)
   * [排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan) : [删除](module/ProdMgmt/product_plan#界面行为)
-  * [排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan) : [切换显示模式](module/ProdMgmt/product_plan#界面行为)
   * [排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan) : [编辑](module/ProdMgmt/product_plan#界面行为)
+  * [排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan) : [切换显示模式](module/ProdMgmt/product_plan#界面行为)
 
 ### 关联视图
   * [计划内容(idea_plan_count_grid_view)](app/view/idea_plan_count_grid_view)

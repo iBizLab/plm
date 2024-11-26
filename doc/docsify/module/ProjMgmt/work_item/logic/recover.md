@@ -1,6 +1,6 @@
 ## 恢复 <!-- {docsify-ignore-all} -->
 
-   递归所有下级工作项，恢复已删除状态工作项数据，修改工作项的是否删除属性值，并恢复访问记录
+   递归所有下级工作项，恢复已删除状态工作项数据，修改工作项的是否删除属性值，并恢复访问记录，标记上级为非叶子节点
 
 ### 处理过程
 
@@ -17,6 +17,8 @@ hide empty description
 state "开始" as Begin <<start>> [[$./recover#begin {"开始"}]]
 state "设置删除状态" as PREPAREPARAM2  [[$./recover#prepareparam2 {"设置删除状态"}]]
 state "更新删除状态" as DEACTION1  [[$./recover#deaction1 {"更新删除状态"}]]
+state "设置父工作项非叶子节点" as PREPAREPARAM3  [[$./recover#prepareparam3 {"设置父工作项非叶子节点"}]]
+state "更新父工作项非叶子节点" as DEACTION2  [[$./recover#deaction2 {"更新父工作项非叶子节点"}]]
 state "恢复最近访问" as RAWSQLCALL1  [[$./recover#rawsqlcall1 {"恢复最近访问"}]]
 state "设置工作项过滤器参数" as PREPAREPARAM1  [[$./recover#prepareparam1 {"设置工作项过滤器参数"}]]
 state "查询下级工作项" as DEDATASET1  [[$./recover#dedataset1 {"查询下级工作项"}]]
@@ -35,6 +37,8 @@ DEDATASET1 --> LOOPSUBCALL1 : [[$./recover#dedataset1-loopsubcall1{若存在子�
 LOOPSUBCALL1 --> DELOGIC1
 LOOPSUBCALL1 --> END1
 DEDATASET1 --> END1 : [[$./recover#dedataset1-end1{不存在子级工作项} 不存在子级工作项]]
+DEACTION1 --> PREPAREPARAM3 : [[$./recover#deaction1-prepareparam3{连接名称} 连接名称]]
+PREPAREPARAM3 --> DEACTION2
 
 
 @enduml
@@ -59,6 +63,19 @@ DEDATASET1 --> END1 : [[$./recover#dedataset1-end1{不存在子级工作项} 不
 
 
 调用实体 [工作项(WORK_ITEM)](module/ProjMgmt/work_item.md) 行为 [Update](module/ProjMgmt/work_item#行为) ，行为参数为`Default(传入变量)`
+
+#### 设置父工作项非叶子节点 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`Default(传入变量).PID(父标识)` 设置给  `p_work_item.ID(标识)`
+2. 将`0` 设置给  `p_work_item.IS_LEAF(是否叶子节点)`
+
+#### 更新父工作项非叶子节点 :id=DEACTION2<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+
+
+
+调用实体 [工作项(WORK_ITEM)](module/ProjMgmt/work_item.md) 行为 [Update](module/ProjMgmt/work_item#行为) ，行为参数为`p_work_item`
 
 #### 恢复最近访问 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
@@ -114,6 +131,9 @@ update recent set IS_DELETED=0 where owner_id=? and owner_subtype='work_item'
 #### 不存在子级工作项 :id=DEDATASET1-END1
 
 `work_item_page(工作项分页结果对象).size` EQ `0`
+#### 连接名称 :id=DEACTION1-PREPAREPARAM3
+
+`Default(传入变量).PID(父标识)` ISNOTNULL
 
 
 ### 实体逻辑参数
@@ -122,5 +142,6 @@ update recent set IS_DELETED=0 where owner_id=? and owner_subtype='work_item'
 | --------| --------| -------- | -------- | --------   |
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象|[工作项(WORK_ITEM)](module/ProjMgmt/work_item.md)||
 |循环临时变量|for_temp_obj|数据对象|[工作项(WORK_ITEM)](module/ProjMgmt/work_item.md)||
+|p_work_item|p_work_item|数据对象|[工作项(WORK_ITEM)](module/ProjMgmt/work_item.md)||
 |工作项查询过滤器|work_item_filter|过滤器|||
 |工作项分页结果对象|work_item_page|分页查询|||

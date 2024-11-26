@@ -20,11 +20,14 @@ state "设置逾期项目过滤条件" as PREPAREPARAM1  [[$./project_automatic_
 state "获取符合条件的逾期项目" as DEDATASET1  [[$./project_automatic_change_state#dedataset1 {"获取符合条件的逾期项目"}]]
 state "结束" as END2 <<end>> [[$./project_automatic_change_state#end2 {"结束"}]]
 state "循环执行" as LOOPSUBCALL1  [[$./project_automatic_change_state#loopsubcall1 {"循环执行"}]] #green {
+state "执行脚本代码" as RAWSFCODE1  [[$./project_automatic_change_state#rawsfcode1 {"执行脚本代码"}]]
+state "调试逻辑参数" as DEBUGPARAM1  [[$./project_automatic_change_state#debugparam1 {"调试逻辑参数"}]]
 state "空节点，承载判断" as PREPAREPARAM3  [[$./project_automatic_change_state#prepareparam3 {"空节点，承载判断"}]]
 state "设置状态为延期" as PREPAREPARAM2  [[$./project_automatic_change_state#prepareparam2 {"设置状态为延期"}]]
 state "设置状态为预警" as PREPAREPARAM4  [[$./project_automatic_change_state#prepareparam4 {"设置状态为预警"}]]
 state "判断当前项目是否存在工作项" as RAWSQLCALL1  [[$./project_automatic_change_state#rawsqlcall1 {"判断当前项目是否存在工作项"}]]
 state "设置状态为正常" as PREPAREPARAM5  [[$./project_automatic_change_state#prepareparam5 {"设置状态为正常"}]]
+state "设置状态为正常" as PREPAREPARAM7  [[$./project_automatic_change_state#prepareparam7 {"设置状态为正常"}]]
 state "汇聚预计、消耗工时" as RAWSQLCALL2  [[$./project_automatic_change_state#rawsqlcall2 {"汇聚预计、消耗工时"}]]
 state "直接SQL调用" as RAWSQLCALL3  [[$./project_automatic_change_state#rawsqlcall3 {"直接SQL调用"}]]
 state "准备参数" as PREPAREPARAM6  [[$./project_automatic_change_state#prepareparam6 {"准备参数"}]]
@@ -35,7 +38,9 @@ state "更新项目状态" as DEACTION1  [[$./project_automatic_change_state#dea
 Begin --> PREPAREPARAM1
 PREPAREPARAM1 --> DEDATASET1
 DEDATASET1 --> LOOPSUBCALL1 : [[$./project_automatic_change_state#dedataset1-loopsubcall1{存在符合条件的逾期项目} 存在符合条件的逾期项目]]
-LOOPSUBCALL1 --> PREPAREPARAM3
+LOOPSUBCALL1 --> RAWSFCODE1
+RAWSFCODE1 --> DEBUGPARAM1
+DEBUGPARAM1 --> PREPAREPARAM3
 PREPAREPARAM3 --> PREPAREPARAM2 : [[$./project_automatic_change_state#prepareparam3-prepareparam2{超出当前时间} 超出当前时间]]
 PREPAREPARAM2 --> RAWSQLCALL2
 RAWSQLCALL2 --> RAWSQLCALL3
@@ -46,7 +51,8 @@ PREPAREPARAM4 --> RAWSQLCALL2
 PREPAREPARAM3 --> RAWSQLCALL1 : [[$./project_automatic_change_state#prepareparam3-rawsqlcall1{未开始} 未开始]]
 RAWSQLCALL1 --> PREPAREPARAM5 : [[$./project_automatic_change_state#rawsqlcall1-prepareparam5{连接名称} 连接名称]]
 PREPAREPARAM5 --> RAWSQLCALL2
-PREPAREPARAM3 --> RAWSQLCALL2
+PREPAREPARAM3 --> PREPAREPARAM7
+PREPAREPARAM7 --> RAWSQLCALL2
 LOOPSUBCALL1 --> END2
 DEDATASET1 --> END2 : [[$./project_automatic_change_state#dedataset1-end2{不存在符合条件的项目} 不存在符合条件的项目]]
 
@@ -91,6 +97,35 @@ DEDATASET1 --> END2 : [[$./project_automatic_change_state#dedataset1-end2{不存
 
 
 循环参数`projects(项目集合)`，子循环参数使用`project_temp(循环项目)`
+#### 执行脚本代码 :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
+
+
+
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var project_temp = logic.getParam("project_temp");
+var end_at = project_temp.get("END_AT");
+var overdue_time = new Date();
+
+if (project_temp && end_at) {
+    sys.info("好歹进来了")
+    var endTimeDate = new Date(end_at);
+    var timeDiff = overdue_time - endTimeDate;
+    var daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    project_temp.set("daysDiff",daysDiff); 
+
+}
+```
+
+#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
+
+
+
+> [!NOTE|label:调试信息|icon:fa fa-bug]
+> 调试输出参数`project_temp(循环项目)`的详细信息
+
+
 #### 空节点，承载判断 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -126,6 +161,18 @@ SELECT count(1) as work_item_data FROM work_item WHERE PROJECT_ID = ?
 
 1. 将`warning` 设置给  `project_temp(循环项目).STATE(项目状态)`
 
+#### 设置状态为正常 :id=PREPAREPARAM7<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`normal` 设置给  `project_temp(循环项目).STATE(项目状态)`
+
+#### 设置状态为正常 :id=PREPAREPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`normal` 设置给  `project_temp(循环项目).STATE(项目状态)`
+
 #### 汇聚预计、消耗工时 :id=RAWSQLCALL2<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
 
@@ -154,12 +201,6 @@ WHERE
 1. `project_temp(循环项目).ID(标识)`
 
 重置参数`select_result(查询结果)`，并将执行sql结果赋值给参数`select_result(查询结果)`
-
-#### 设置状态为正常 :id=PREPAREPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
-
-
-
-1. 将`normal` 设置给  `project_temp(循环项目).STATE(项目状态)`
 
 #### 直接SQL调用 :id=RAWSQLCALL3<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
@@ -206,10 +247,10 @@ WHERE
 `projects(项目集合).size` GT `0`
 #### 超出当前时间 :id=PREPAREPARAM3-PREPAREPARAM2
 
-`project_temp(循环项目).END_AT(结束时间)` LT `当前时间` AND `project_temp(循环项目).state(项目状态)` NOTEQ `pending`
+`project_temp(循环项目).daysDiff` GT `0` AND `project_temp(循环项目).state(项目状态)` NOTEQ `pending`
 #### 距今小于五天 :id=PREPAREPARAM3-PREPAREPARAM4
 
-`project_temp(循环项目).END_AT(结束时间)` GT `当前时间` AND `project_temp(循环项目).state(项目状态)` NOTEQ `pending`
+`project_temp(循环项目).daysDiff` GTANDEQ `-5` AND `project_temp(循环项目).daysDiff` LTANDEQ `0` AND `project_temp(循环项目).state(项目状态)` NOTEQ `pending`
 #### 未开始 :id=PREPAREPARAM3-RAWSQLCALL1
 
 `project_temp(循环项目).STATE(项目状态)` EQ `pending`

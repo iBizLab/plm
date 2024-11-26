@@ -20,7 +20,7 @@ state "建立默认看板" as DEACTION1  [[$./create_default_board#deaction1 {"�
 state "结束" as END1 <<end>> [[$./create_default_board#end1 {"结束"}]]
 
 
-Begin --> PREPAREPARAM1 : [[$./create_default_board#begin-prepareparam1{如果新建看板项目} 如果新建看板项目]]
+Begin --> PREPAREPARAM1 : [[$./create_default_board#begin-prepareparam1{如果新建看板项目或混合项目} 如果新建看板项目或混合项目]]
 PREPAREPARAM1 --> DEACTION1
 DEACTION1 --> END1
 
@@ -60,9 +60,9 @@ DEACTION1 --> END1
 
 
 ### 连接条件说明
-#### 如果新建看板项目 :id=Begin-PREPAREPARAM1
+#### 如果新建看板项目或混合项目 :id=Begin-PREPAREPARAM1
 
-`Default(传入变量).TYPE(类型)` EQ `kanban`
+(`Default(传入变量).TYPE(类型)` EQ `kanban` OR `Default(传入变量).TYPE(类型)` EQ `hybrid`)
 
 
 ### 实体逻辑参数

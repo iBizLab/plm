@@ -32,8 +32,8 @@
 ##### 计算式指标
 |    名称col200   | 代码名col150  |  计算公式col500   |  备注col500  |
 | --------  |------------| -----   |  --------|
-|项目平均进度|average_project_progress|sum(if(ALL_WORK_ITEMS = 0, 0, COMPLETED_WORK_ITEMS / ALL_WORK_ITEMS)) / if(count(id) = 0, 1, count(id))|统计项目的进展情况。|
-|项目数量|project_number|count(id)|统计不同维度下项目的数量。<br>|
+|项目平均进度|average_project_progress|sum(if(ALL_WORK_ITEMS = 0, 0, COMPLETED_WORK_ITEMS / ALL_WORK_ITEMS)) / if(countif(is_deleted = 0) = 0, 1, countif(is_deleted = 0))|统计项目的进展情况。|
+|项目数量|project_number|countif(is_deleted=0)|统计不同维度下项目的数量。<br>|
 |项目风险占比|project_risk_rate|countif(state in (params(state,('delay'))) and is_deleted = 0) / if(countif(is_deleted = 0) = 0, 1, countif(is_deleted = 0))|统计不同风险项目的占比，反映项目的进度风险情况。<br>|
 
 <script>

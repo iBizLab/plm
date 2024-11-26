@@ -30,7 +30,7 @@
 
 ### 查询条件
 
-(`IS_DELETED(是否已删除)` EQ `'0'` AND `IS_ARCHIVED(是否已归档)` EQ `'0'` AND `WORK_ITEM_TYPE_ID(工作项类型)` EQ `'waterfall_milestone'`)
+(`IS_DELETED(是否已删除)` EQ `'0'` AND `IS_ARCHIVED(是否已归档)` EQ `'0'` AND (`WORK_ITEM_TYPE_ID(工作项类型)` EQ `'waterfall_milestone'` OR `WORK_ITEM_TYPE_ID(工作项类型)` EQ `'hybrid_milestone'`))
 
 
 
@@ -71,6 +71,7 @@ t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
+t11.`IS_DELETED` AS `PROJECT_IS_DELETED`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
 t31.`TITLE` AS `PTITLE`,
@@ -116,7 +117,7 @@ LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID`
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
-WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`WORK_ITEM_TYPE_ID` = 'waterfall_milestone' )
+WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  ( t1.`WORK_ITEM_TYPE_ID` = 'waterfall_milestone'  OR  t1.`WORK_ITEM_TYPE_ID` = 'hybrid_milestone' ) )
 ```
 
 </el-dialog>

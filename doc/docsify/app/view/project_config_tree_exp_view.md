@@ -23,6 +23,7 @@
   * [项目管理(project_archived_grid_view)](app/view/project_archived_grid_view)
   * [项目管理(project_deleted_grid_view)](app/view/project_deleted_grid_view)
   * [项目配置(project_global_setting_view)](app/view/project_global_setting_view)
+  * [混合项目(project_hybrid_flow_setting_tab_view)](app/view/project_hybrid_flow_setting_tab_view)
   * [项目管理(project_in_progress_grid_view)](app/view/project_in_progress_grid_view)
   * [kanban项目(project_kanban_flow_setting_tab_view)](app/view/project_kanban_flow_setting_tab_view)
   * [项目管理(project_management_tab_exp_view)](app/view/project_management_tab_exp_view)

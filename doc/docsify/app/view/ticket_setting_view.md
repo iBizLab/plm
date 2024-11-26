@@ -11,6 +11,7 @@
 
 ### 关联视图
   * [表单设计(psdeformdesign_modal)](app/view/psdeformdesign_modal)
+  * [工单(ticket_product_dyna_tab_exp_view)](app/view/ticket_product_dyna_tab_exp_view)
 
 <script>
  const { createApp } = Vue

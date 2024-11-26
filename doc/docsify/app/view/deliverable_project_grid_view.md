@@ -15,11 +15,11 @@
 
 
 ### 关联界面行为
-  * [交付物(DELIVERABLE)](module/Base/deliverable) : [删除](module/Base/deliverable#界面行为)
-  * [交付物(DELIVERABLE)](module/Base/deliverable) : [编辑](module/Base/deliverable#界面行为)
-  * [交付物(DELIVERABLE)](module/Base/deliverable) : [新建交付目标](module/Base/deliverable#界面行为)
   * [交付物(DELIVERABLE)](module/Base/deliverable) : [提交](module/Base/deliverable#界面行为)
+  * [交付物(DELIVERABLE)](module/Base/deliverable) : [新建交付目标](module/Base/deliverable#界面行为)
   * [交付物(DELIVERABLE)](module/Base/deliverable) : [交付物下载](module/Base/deliverable#界面行为)
+  * [交付物(DELIVERABLE)](module/Base/deliverable) : [编辑](module/Base/deliverable#界面行为)
+  * [交付物(DELIVERABLE)](module/Base/deliverable) : [删除](module/Base/deliverable#界面行为)
 
 ### 关联视图
   * [交付物(deliverable_edit_view)](app/view/deliverable_edit_view)

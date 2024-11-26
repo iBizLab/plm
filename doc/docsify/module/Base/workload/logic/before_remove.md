@@ -27,6 +27,10 @@ state "计算剩余工时" as RAWSFCODE1  [[$./before_remove#rawsfcode1 {"计算
 state "更新剩余工时" as DEACTION2  [[$./before_remove#deaction2 {"更新剩余工时"}]]
 state "置空实际工时" as PREPAREPARAM3  [[$./before_remove#prepareparam3 {"置空实际工时"}]]
 state "更新实际工时" as DEACTION3  [[$./before_remove#deaction3 {"更新实际工时"}]]
+state "设置工作项标识" as PREPAREPARAM4  [[$./before_remove#prepareparam4 {"设置工作项标识"}]]
+state "获取工作项" as DEACTION4  [[$./before_remove#deaction4 {"获取工作项"}]]
+state "填充父工作项标识" as PREPAREPARAM5  [[$./before_remove#prepareparam5 {"填充父工作项标识"}]]
+state "自动计算父工时" as DELOGIC1  [[$./before_remove#delogic1 {"自动计算父工时"}]]
 
 
 Begin --> DEACTION1
@@ -40,6 +44,10 @@ BINDPARAM2 --> RAWSFCODE1
 RAWSFCODE1 --> DEACTION2
 DEACTION2 --> PREPAREPARAM3 : [[$./before_remove#deaction2-prepareparam3{实际登记工时为0是置为NULL} 实际登记工时为0是置为NULL]]
 PREPAREPARAM3 --> DEACTION3
+DEACTION3 --> PREPAREPARAM4 : [[$./before_remove#deaction3-prepareparam4{连接名称} 连接名称]]
+PREPAREPARAM4 --> DEACTION4
+DEACTION4 --> PREPAREPARAM5 : [[$./before_remove#deaction4-prepareparam5{连接名称} 连接名称]]
+PREPAREPARAM5 --> DELOGIC1
 DEACTION2 --> DEACTION3 : [[$./before_remove#deaction2-deaction3{实际登记工时不等于0} 实际登记工时不等于0]]
 DEDATASET2 --> RAWSFCODE1 : [[$./before_remove#dedataset2-rawsfcode1{不存在剩余工时} 不存在剩余工时]]
 DEDATASET1 --> BINDPARAM1 : [[$./before_remove#dedataset1-bindparam1{存在预估工时} 存在预估工时]]
@@ -178,6 +186,32 @@ actualObj.set("decimal_value", actual);
 
 将执行结果返回给参数`actual(实际工时)`
 
+#### 设置工作项标识 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`Default(传入变量).PRINCIPAL_ID(工时主体标识)` 设置给  `work_item.ID(标识)`
+
+#### 获取工作项 :id=DEACTION4<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+
+
+
+调用实体 [工作项(WORK_ITEM)](module/ProjMgmt/work_item.md) 行为 [Get](module/ProjMgmt/work_item#行为) ，行为参数为`work_item`
+
+将执行结果返回给参数`work_item`
+
+#### 填充父工作项标识 :id=PREPAREPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`work_item.PID(父标识)` 设置给  `workload.PRINCIPAL_ID(工时主体标识)`
+
+#### 自动计算父工时 :id=DELOGIC1<sup class="footnote-symbol"> <font color=gray size=1>[实体逻辑]</font></sup>
+
+
+
+调用实体 [工时(WORKLOAD)](module/Base/workload.md) 处理逻辑 [工时自动计算]((module/Base/workload/logic/workload_auto_cal.md)) ，行为参数为`workload(workload)`
+
 
 ### 连接条件说明
 #### 不存在预估工时 :id=DEDATASET1-PREPAREPARAM2
@@ -189,6 +223,12 @@ actualObj.set("decimal_value", actual);
 #### 实际登记工时为0是置为NULL :id=DEACTION2-PREPAREPARAM3
 
 `actual(实际工时).DECIMAL_VALUE(数值值)` EQ `0`
+#### 连接名称 :id=DEACTION3-PREPAREPARAM4
+
+`Default(传入变量).PRINCIPAL_TYPE(工时主体类型)` EQ `WORK_ITEM`
+#### 连接名称 :id=DEACTION4-PREPAREPARAM5
+
+`work_item(work_item).PID(父标识)` ISNOTNULL
 #### 实际登记工时不等于0 :id=DEACTION2-DEACTION3
 
 `actual(实际工时).DECIMAL_VALUE(数值值)` NOTEQ `0`
@@ -212,3 +252,5 @@ actualObj.set("decimal_value", actual);
 |剩余工时|remaining|数据对象|[扩展存储(EXTEND_STORAGE)](module/Base/extend_storage.md)||
 |剩余工时查询结果对象|remaining_page|分页查询|||
 |已登记总工时|total_register|数据对象|[工时(WORKLOAD)](module/Base/workload.md)||
+|work_item|work_item|数据对象|[工作项(WORK_ITEM)](module/ProjMgmt/work_item.md)||
+|workload|workload|数据对象|[工时(WORKLOAD)](module/Base/workload.md)||

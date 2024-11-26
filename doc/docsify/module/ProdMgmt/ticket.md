@@ -29,6 +29,7 @@
 |优先级|PRIORITY|[单项选择(文本值)](index/dictionary_index#ticket_priority "工单优先级")|60|是||
 |产品标识|PRODUCT_ID|外键值|100|否||
 |产品标识|PRODUCT_IDENTIFIER|外键值附加数据|15|是||
+|产品是否删除|PRODUCT_IS_DELETED|外键值附加数据||是||
 |所属产品|PRODUCT_NAME|外键值文本|200|是||
 |最近创建日期|RECENT_CREATE_DAYS|整型||是||
 |工单数|REP_NUM|文本，可指定长度|200|是||
@@ -103,6 +104,7 @@
 |所属产品|PRODUCT_NAME|外键值文本|200|是||
 |提交人标识|SUBMITTER_ID|文本，可指定长度|100|是||
 |标签|TAGS|长文本，长度1000|2000|是||
+|产品是否删除|PRODUCT_IS_DELETED|外键值附加数据||是||
 
 </el-tab-pane>
 
@@ -509,7 +511,7 @@
 | 客户关联工单（移动端） | mob_customer_add_ticket | 关联工单 |无数据|<details><summary>后台调用</summary>[customer_choose_ticket](#行为)||
 | 分配负责人 | allocate_person | 分配负责人 |多项数据（主键）|<details><summary>后台调用</summary>[allocate_person](#行为)||
 | 工单恢复 | ticket_recover | 恢复 |多项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
-| 配置 | panel_usr1022695769_button_calluilogic1_click | 表单设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[表单设计](app/view/psdeformdesign_modal)</details>||
+| 配置 | panel_usr1022695769_button_calluilogic1_click | 工单设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[工单设计](app/view/ticket_dyna_tab_exp_view)</details>||
 | 关联产品需求（工具栏） | toolbar_link_product | 关联产品需求 |无数据|用户自定义||
 | 上传附件 | upload_attachment | 上传 |无数据|用户自定义||
 | 关联工单（移动端） | mob_add_ticket | 关联工单 |无数据|<details><summary>后台调用</summary>[others_relation_ticket](#行为)||
@@ -520,7 +522,7 @@
 | 新建执行后（建立双向关联数据) | after_creat_double_relation | 新建执行后（建立双向关联数据) |单项数据（主键）|用户自定义||
 | 显示下拉并展开数据（嵌入视图） | show_dorpdown_data | 显示下拉并展开数据 |无数据|用户自定义||
 | 客户取消关联工单 | customer_del_ticket | 取消关联 |单项数据|<details><summary>后台调用</summary>[customer_del_ticket](#行为)||
-| 配置 | panel_usr1023088817_button_calluilogic1_click | 表单设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[表单设计](app/view/psdeformdesign_modal)</details>||
+| 配置 | panel_usr1023088817_button_calluilogic1_click | 工单 |单项数据|<details><summary>打开视图或向导（模态）</summary>[工单](app/view/ticket_product_dyna_tab_exp_view)</details>||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |

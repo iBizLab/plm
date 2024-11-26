@@ -171,6 +171,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |设置星标|favorite|[实体处理逻辑](module/ProjMgmt/project/logic/favorite "设置星标")|默认|不支持||||
 |填充BI报表默认值|fill_bi_form_default|[实体处理逻辑](module/ProjMgmt/project/logic/fill_bi_form_default "填充BI报表默认值")|默认|不支持||||
 |获取主数据|get_major_data|用户自定义|默认|不支持|[附加操作](index/action_logic_index#project_get_major_data)|||
+|混合项目组件计数器|hybrid_index_addon_counter|[实体处理逻辑](module/ProjMgmt/project/logic/hybrid_project_addon_authority "hybrid项目组件权限计数器")|默认|不支持||||
 |看板项目首页组件计数|kanban_index_addon_counter|[实体处理逻辑](module/ProjMgmt/project/logic/kanban_project_addon_authority "看板项目组件权限计数器")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/ProjMgmt/project/logic/nothing "无操作")|默认|不支持||||
 |其他实体关联空间|other_re_space|[实体处理逻辑](module/ProjMgmt/project/logic/other_re_space "其他实体关联空间")|默认|不支持||||
@@ -186,6 +187,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
+|[hybrid项目组件权限计数器](module/ProjMgmt/project/logic/hybrid_project_addon_authority)|hybrid_project_addon_authority|无||获取hybrid项目组件权限|
 |[scrum项目组件权限计数器](module/ProjMgmt/project/logic/scrum_project_addon_authority)|scrum_project_addon_authority|无||获取scrum项目组件权限|
 |[waterfall项目组件权限计数器](module/ProjMgmt/project/logic/waterfall_project_addon_authority)|waterfall_project_addon_authority|无||获取waterfall项目组件权限|
 |[从项目集中移除](module/ProjMgmt/project/logic/remove_from_project_set)|remove_from_project_set|无||从项目集中移除某个指定子项目|

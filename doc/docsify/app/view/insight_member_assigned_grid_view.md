@@ -16,8 +16,8 @@
 
 
 ### 关联界面行为
-  * [效能成员(INSIGHT_MEMBER)](module/Insight/insight_member) : [表格界面_新建操作](module/Insight/insight_member#界面行为)
   * [效能成员(INSIGHT_MEMBER)](module/Insight/insight_member) : [移除成员](module/Insight/insight_member#界面行为)
+  * [效能成员(INSIGHT_MEMBER)](module/Insight/insight_member) : [表格界面_新建操作](module/Insight/insight_member#界面行为)
 
 ### 关联界面逻辑
   * [效能成员(INSIGHT_MEMBER)](module/Insight/insight_member) : [新建视图默认临时成员](module/Insight/insight_member/uilogic/create_default_temp_members)

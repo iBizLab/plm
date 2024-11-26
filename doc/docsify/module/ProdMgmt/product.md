@@ -274,7 +274,7 @@
 | 产品设置（移动端） | mob_product_setting | 产品设置 |单项数据|<details><summary>打开视图或向导（模态）</summary>[产品设置](app/view/product_mob_setting_view)</details>||
 | 已归档_删除 | delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 产品成员（移动端） | mob_project_member | 产品成员 |无数据|<details><summary>打开视图或向导（模态）</summary>[产品成员](app/view/product_member_mob_list_view)</details>||
-| 配置 | panel_usr1021297820_button_calluilogic_click | 表单设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[表单设计](app/view/psdeformdesign_modal)</details>||
+| 配置 | panel_usr1021297820_button_calluilogic_click | 需求动态设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[需求动态设计](app/view/idea_product_dyna_tab_exp_view)</details>||
 | 更多设置 | opne_setting_view | 更多设置 |单项数据（主键）|用户自定义||
 | 移动产品 | product_move | 移动产品 |单项数据（主键）|<details><summary>后台调用</summary>[product_move](#行为)||
 | 产品信息 | open_show_view | 产品信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[产品信息](app/view/product_show_edit_view)</details>||

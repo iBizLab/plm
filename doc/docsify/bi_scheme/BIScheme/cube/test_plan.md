@@ -30,8 +30,8 @@
 ##### 计算式指标
 |    名称col200   | 代码名col150  |  计算公式col500   |  备注col500  |
 | --------  |------------| -----   |  --------|
-|测试交付周期|plan_cycle|sumif(dateDiff(end_at, start_at, 'day'), status='completed')  / if(count(id) = 0, 1, count(id))|统计测试计划从开始到交付的耗时，反映测试团队的交付效率。|
-|计划数量|plans|count(id)|统计不同维度下测试计划的数量。|
+|测试交付周期|plan_cycle|sumif(dateDiff(end_at, start_at, 'day'), status='completed' and library_is_deleted = 0)  / if(countif(library_is_deleted = 0) = 0, 1, countif(library_is_deleted = 0))|统计测试计划从开始到交付的耗时，反映测试团队的交付效率。|
+|计划数量|plans|countif(library_is_deleted = 0)|统计不同维度下测试计划的数量。|
 
 <script>
  const { createApp } = Vue

@@ -33,6 +33,7 @@
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|
@@ -63,6 +64,7 @@
   "rule" : null,
   "stage" : null,
   "action_rule" : null,
+  "library_is_deleted" : null,
   "show_identifier" : null,
   "attentions_imp" : null,
   "create_man" : null,
@@ -99,6 +101,7 @@
   "rule" : null,
   "stage" : null,
   "action_rule" : null,
+  "library_is_deleted" : null,
   "show_identifier" : null,
   "attentions_imp" : null,
   "create_man" : null,
@@ -227,6 +230,7 @@
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|
@@ -257,6 +261,7 @@
   "rule" : null,
   "stage" : null,
   "action_rule" : null,
+  "library_is_deleted" : null,
   "show_identifier" : null,
   "attentions_imp" : null,
   "create_man" : null,
@@ -293,6 +298,7 @@
   "rule" : null,
   "stage" : null,
   "action_rule" : null,
+  "library_is_deleted" : null,
   "show_identifier" : null,
   "attentions_imp" : null,
   "create_man" : null,
@@ -347,6 +353,7 @@
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|
@@ -377,6 +384,7 @@
   "rule" : null,
   "stage" : null,
   "action_rule" : null,
+  "library_is_deleted" : null,
   "show_identifier" : null,
   "attentions_imp" : null,
   "create_man" : null,
@@ -432,6 +440,7 @@
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|
@@ -462,6 +471,7 @@
   "rule" : null,
   "stage" : null,
   "action_rule" : null,
+  "library_is_deleted" : null,
   "show_identifier" : null,
   "attentions_imp" : null,
   "create_man" : null,
@@ -512,6 +522,7 @@
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|
@@ -542,6 +553,7 @@
   "rule" : null,
   "stage" : null,
   "action_rule" : null,
+  "library_is_deleted" : null,
   "show_identifier" : null,
   "attentions_imp" : null,
   "create_man" : null,
@@ -601,6 +613,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|
@@ -631,6 +644,7 @@ Integer
   "rule" : null,
   "stage" : null,
   "action_rule" : null,
+  "library_is_deleted" : null,
   "show_identifier" : null,
   "attentions_imp" : null,
   "create_man" : null,
@@ -667,6 +681,7 @@ Integer
   "rule" : null,
   "stage" : null,
   "action_rule" : null,
+  "library_is_deleted" : null,
   "show_identifier" : null,
   "attentions_imp" : null,
   "create_man" : null,
@@ -716,6 +731,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|
@@ -746,6 +762,7 @@ Integer
   "rule" : null,
   "stage" : null,
   "action_rule" : null,
+  "library_is_deleted" : null,
   "show_identifier" : null,
   "attentions_imp" : null,
   "create_man" : null,
@@ -782,6 +799,7 @@ Integer
   "rule" : null,
   "stage" : null,
   "action_rule" : null,
+  "library_is_deleted" : null,
   "show_identifier" : null,
   "attentions_imp" : null,
   "create_man" : null,
@@ -831,6 +849,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|
@@ -861,6 +880,7 @@ Integer
   "rule" : null,
   "stage" : null,
   "action_rule" : null,
+  "library_is_deleted" : null,
   "show_identifier" : null,
   "attentions_imp" : null,
   "create_man" : null,
@@ -897,6 +917,7 @@ Integer
   "rule" : null,
   "stage" : null,
   "action_rule" : null,
+  "library_is_deleted" : null,
   "show_identifier" : null,
   "attentions_imp" : null,
   "create_man" : null,
@@ -951,6 +972,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|
@@ -981,6 +1003,7 @@ Integer
   "rule" : null,
   "stage" : null,
   "action_rule" : null,
+  "library_is_deleted" : null,
   "show_identifier" : null,
   "attentions_imp" : null,
   "create_man" : null,
@@ -1038,6 +1061,7 @@ Integer
   "rule" : null,
   "stage" : null,
   "action_rule" : null,
+  "library_is_deleted" : null,
   "show_identifier" : null,
   "attentions_imp" : null,
   "create_man" : null,
@@ -1087,6 +1111,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|
@@ -1117,6 +1142,7 @@ Integer
   "rule" : null,
   "stage" : null,
   "action_rule" : null,
+  "library_is_deleted" : null,
   "show_identifier" : null,
   "attentions_imp" : null,
   "create_man" : null,
@@ -1204,6 +1230,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|
@@ -1234,6 +1261,7 @@ Integer
   "rule" : null,
   "stage" : null,
   "action_rule" : null,
+  "library_is_deleted" : null,
   "show_identifier" : null,
   "attentions_imp" : null,
   "create_man" : null,
@@ -1284,6 +1312,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|
@@ -1314,6 +1343,7 @@ Integer
   "rule" : null,
   "stage" : null,
   "action_rule" : null,
+  "library_is_deleted" : null,
   "show_identifier" : null,
   "attentions_imp" : null,
   "create_man" : null,
@@ -1350,6 +1380,7 @@ Integer
   "rule" : null,
   "stage" : null,
   "action_rule" : null,
+  "library_is_deleted" : null,
   "show_identifier" : null,
   "attentions_imp" : null,
   "create_man" : null,
@@ -1404,6 +1435,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|
@@ -1434,6 +1466,7 @@ Integer
   "rule" : null,
   "stage" : null,
   "action_rule" : null,
+  "library_is_deleted" : null,
   "show_identifier" : null,
   "attentions_imp" : null,
   "create_man" : null,
@@ -1523,6 +1556,7 @@ Integer
     "state" : null,
     "type" : null,
     "id" : null,
+    "library_is_deleted" : null,
   }
 ]
 ```
@@ -1597,6 +1631,7 @@ Integer
     "rule" : null,
     "stage" : null,
     "action_rule" : null,
+    "library_is_deleted" : null,
     "show_identifier" : null,
     "attentions_imp" : null,
     "create_man" : null,
@@ -1683,6 +1718,7 @@ Integer
     "rule" : null,
     "stage" : null,
     "action_rule" : null,
+    "library_is_deleted" : null,
     "show_identifier" : null,
     "attentions_imp" : null,
     "create_man" : null,
@@ -1768,6 +1804,7 @@ Integer
     "rule" : null,
     "stage" : null,
     "action_rule" : null,
+    "library_is_deleted" : null,
     "show_identifier" : null,
     "attentions_imp" : null,
     "create_man" : null,
@@ -1853,6 +1890,7 @@ Integer
     "rule" : null,
     "stage" : null,
     "action_rule" : null,
+    "library_is_deleted" : null,
     "show_identifier" : null,
     "attentions_imp" : null,
     "create_man" : null,
@@ -2070,6 +2108,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|
@@ -2163,6 +2202,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|
@@ -2214,6 +2254,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|
@@ -2265,6 +2306,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|
@@ -2315,6 +2357,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|
@@ -2366,6 +2409,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|
@@ -2416,6 +2460,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|
@@ -2466,6 +2511,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|
@@ -2517,6 +2563,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|
@@ -2588,6 +2635,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|
@@ -2639,6 +2687,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|
@@ -2689,6 +2738,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|
@@ -2740,6 +2790,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|规则|
 |<el-row justify="space-between"><el-col :span="20">stage</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|阶段|
 |<el-row justify="space-between"><el-col :span="20">action_rule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|后置动作|
+|<el-row justify="space-between"><el-col :span="20">library_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|测试库是否删除|
 |<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|流程准则标识|

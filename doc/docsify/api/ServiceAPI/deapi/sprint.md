@@ -30,6 +30,7 @@
 |<el-row justify="space-between"><el-col :span="20">completed_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|已完成工作项数|
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">past_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|迭代已过天数|
+|<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">pid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
@@ -54,6 +55,7 @@
   "completed_work_items" : null,
   "all_work_items" : null,
   "past_days" : null,
+  "project_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -84,6 +86,7 @@
   "completed_work_items" : null,
   "all_work_items" : null,
   "past_days" : null,
+  "project_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -134,6 +137,7 @@
   "completed_work_items" : null,
   "all_work_items" : null,
   "past_days" : null,
+  "project_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -203,6 +207,7 @@
 |<el-row justify="space-between"><el-col :span="20">completed_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|已完成工作项数|
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">past_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|迭代已过天数|
+|<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">pid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
@@ -227,6 +232,7 @@
   "completed_work_items" : null,
   "all_work_items" : null,
   "past_days" : null,
+  "project_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -257,6 +263,7 @@
   "completed_work_items" : null,
   "all_work_items" : null,
   "past_days" : null,
+  "project_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -307,6 +314,7 @@
   "completed_work_items" : null,
   "all_work_items" : null,
   "past_days" : null,
+  "project_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -350,6 +358,7 @@
 |<el-row justify="space-between"><el-col :span="20">completed_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|已完成工作项数|
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">past_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|迭代已过天数|
+|<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">pid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
@@ -374,6 +383,7 @@
   "completed_work_items" : null,
   "all_work_items" : null,
   "past_days" : null,
+  "project_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -427,6 +437,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">completed_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|已完成工作项数|
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">past_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|迭代已过天数|
+|<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">pid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
@@ -451,6 +462,7 @@ Integer
   "completed_work_items" : null,
   "all_work_items" : null,
   "past_days" : null,
+  "project_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -500,6 +512,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">completed_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|已完成工作项数|
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">past_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|迭代已过天数|
+|<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">pid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
@@ -524,6 +537,7 @@ Integer
   "completed_work_items" : null,
   "all_work_items" : null,
   "past_days" : null,
+  "project_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -573,6 +587,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">completed_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|已完成工作项数|
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">past_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|迭代已过天数|
+|<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">pid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
@@ -597,6 +612,7 @@ Integer
   "completed_work_items" : null,
   "all_work_items" : null,
   "past_days" : null,
+  "project_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -641,6 +657,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">completed_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|已完成工作项数|
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">past_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|迭代已过天数|
+|<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">pid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
@@ -665,6 +682,7 @@ Integer
   "completed_work_items" : null,
   "all_work_items" : null,
   "past_days" : null,
+  "project_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -695,6 +713,7 @@ Integer
   "completed_work_items" : null,
   "all_work_items" : null,
   "past_days" : null,
+  "project_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -745,6 +764,7 @@ Integer
   "completed_work_items" : null,
   "all_work_items" : null,
   "past_days" : null,
+  "project_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -795,6 +815,7 @@ Integer
   "completed_work_items" : null,
   "all_work_items" : null,
   "past_days" : null,
+  "project_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -838,6 +859,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">completed_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|已完成工作项数|
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">past_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|迭代已过天数|
+|<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">pid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
@@ -862,6 +884,7 @@ Integer
   "completed_work_items" : null,
   "all_work_items" : null,
   "past_days" : null,
+  "project_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -892,6 +915,7 @@ Integer
   "completed_work_items" : null,
   "all_work_items" : null,
   "past_days" : null,
+  "project_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -935,6 +959,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">completed_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|已完成工作项数|
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">past_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|迭代已过天数|
+|<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">pid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
@@ -959,6 +984,7 @@ Integer
   "completed_work_items" : null,
   "all_work_items" : null,
   "past_days" : null,
+  "project_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -989,6 +1015,7 @@ Integer
   "completed_work_items" : null,
   "all_work_items" : null,
   "past_days" : null,
+  "project_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -1037,6 +1064,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">completed_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|已完成工作项数|
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">past_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|迭代已过天数|
+|<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">pid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
@@ -1061,6 +1089,7 @@ Integer
   "completed_work_items" : null,
   "all_work_items" : null,
   "past_days" : null,
+  "project_is_deleted" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -1159,6 +1188,7 @@ Integer
     "completed_work_items" : null,
     "all_work_items" : null,
     "past_days" : null,
+    "project_is_deleted" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1256,6 +1286,7 @@ Integer
     "completed_work_items" : null,
     "all_work_items" : null,
     "past_days" : null,
+    "project_is_deleted" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1357,6 +1388,7 @@ Integer
     "project_id" : null,
     "status" : null,
     "id" : null,
+    "project_is_deleted" : null,
   }
 ]
 ```
@@ -1447,6 +1479,7 @@ Integer
     "completed_work_items" : null,
     "all_work_items" : null,
     "past_days" : null,
+    "project_is_deleted" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1544,6 +1577,7 @@ Integer
     "completed_work_items" : null,
     "all_work_items" : null,
     "past_days" : null,
+    "project_is_deleted" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1641,6 +1675,7 @@ Integer
     "completed_work_items" : null,
     "all_work_items" : null,
     "past_days" : null,
+    "project_is_deleted" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1738,6 +1773,7 @@ Integer
     "completed_work_items" : null,
     "all_work_items" : null,
     "past_days" : null,
+    "project_is_deleted" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1835,6 +1871,7 @@ Integer
     "completed_work_items" : null,
     "all_work_items" : null,
     "past_days" : null,
+    "project_is_deleted" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1932,6 +1969,7 @@ Integer
     "completed_work_items" : null,
     "all_work_items" : null,
     "past_days" : null,
+    "project_is_deleted" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -2029,6 +2067,7 @@ Integer
     "completed_work_items" : null,
     "all_work_items" : null,
     "past_days" : null,
+    "project_is_deleted" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -2126,6 +2165,7 @@ Integer
     "completed_work_items" : null,
     "all_work_items" : null,
     "past_days" : null,
+    "project_is_deleted" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -2337,6 +2377,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">completed_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|已完成工作项数|
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">past_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|迭代已过天数|
+|<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">pid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
@@ -2424,6 +2465,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">completed_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|已完成工作项数|
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">past_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|迭代已过天数|
+|<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">pid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
@@ -2489,6 +2531,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">completed_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|已完成工作项数|
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">past_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|迭代已过天数|
+|<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">pid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
@@ -2534,6 +2577,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">completed_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|已完成工作项数|
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">past_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|迭代已过天数|
+|<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">pid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
@@ -2579,6 +2623,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">completed_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|已完成工作项数|
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">past_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|迭代已过天数|
+|<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">pid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
@@ -2624,6 +2669,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">completed_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|已完成工作项数|
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">past_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|迭代已过天数|
+|<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">pid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
@@ -2668,6 +2714,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">completed_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|已完成工作项数|
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">past_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|迭代已过天数|
+|<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">pid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
@@ -2754,6 +2801,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">completed_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|已完成工作项数|
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">past_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|迭代已过天数|
+|<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">pid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
@@ -2798,6 +2846,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">completed_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|已完成工作项数|
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">past_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|迭代已过天数|
+|<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">pid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
@@ -2843,6 +2892,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">completed_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|已完成工作项数|
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">past_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|迭代已过天数|
+|<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">pid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
