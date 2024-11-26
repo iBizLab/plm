@@ -1,0 +1,584 @@
+{
+  "accUserMode" : 2,
+  "getCapPSLanguageRes" : {
+    "lanResTag" : "DE.LNAME.CUSTOMER"
+  },
+  "caption" : "客户",
+  "codeName" : "customer_mob_md_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/customer_mob_md_view.json",
+  "name" : "customermob_md_view",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer.json"
+  },
+  "getPSAppModule" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPMODULES/ProdMgmt.json"
+  },
+  "getPSAppViewEngines" : [ {
+    "engineCat" : "VIEW",
+    "engineType" : "MobMDView",
+    "name" : "engine"
+  } ],
+  "getPSAppViewLogics" : [ {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "newdata",
+    "getPSAppUILogic" : {
+      "actionAfterWizard" : "DEFAULT",
+      "logicType" : "PREDEFINED",
+      "name" : "新建数据",
+      "viewLogicType" : "APP_NEWDATA",
+      "batchAddOnly" : false,
+      "enableBatchAdd" : false,
+      "enableWizardAdd" : false
+    }
+  }, {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "opendata",
+    "getPSAppUILogic" : {
+      "logicType" : "PREDEFINED",
+      "name" : "打开数据",
+      "getOpenDataPSAppView" : {
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/customer_mob_info_view.json",
+          "viewType" : "DEMOBEDITVIEW"
+        }
+      },
+      "getPSAppUILogicRefViews" : [ {
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/customer_mob_info_view.json",
+          "viewType" : "DEMOBEDITVIEW"
+        }
+      } ],
+      "viewLogicType" : "APP_OPENDATA",
+      "editMode" : true
+    }
+  } ],
+  "getPSAppViewNavParams" : [ {
+    "key" : "product",
+    "name" : "product",
+    "value" : "product",
+    "rawValue" : false
+  } ],
+  "getPSAppViewRefs" : [ {
+    "name" : "EDITDATA",
+    "realTitle" : "客户信息详情",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/customer_mob_info_view.json",
+      "viewType" : "DEMOBEDITVIEW"
+    }
+  } ],
+  "getPSControls" : [ {
+    "codeName" : "mob_customer_display_list",
+    "controlStyle" : "LISTVIEW",
+    "controlType" : "MOBMDCTRL",
+    "getCreatePSControlAction" : {
+      "modelref" : true,
+      "id" : "create",
+      "actionName" : "Create",
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "CREATE",
+      "name" : "create",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "create"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer.json"
+      }
+    },
+    "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer/PSMOBMDCTRLS/mob_customer_display_list.json",
+    "getFetchPSControlAction" : {
+      "modelref" : true,
+      "id" : "fetch",
+      "actionType" : "DEDATASET",
+      "name" : "fetch",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "fetch_normal"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer.json"
+      }
+    },
+    "getGetPSControlAction" : {
+      "modelref" : true,
+      "id" : "load",
+      "actionName" : "Get",
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "READ",
+      "name" : "load",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "get"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer.json"
+      }
+    },
+    "groupMode" : "NONE",
+    "getItemPSLayoutPanel" : {
+      "getAllPSPanelFields" : [ {
+        "id" : "name",
+        "viewFieldName" : "name"
+      }, {
+        "id" : "grade_id",
+        "hidden" : true,
+        "viewFieldName" : "grade_id"
+      } ],
+      "codeName" : "usr0930021834",
+      "controlType" : "PANEL",
+      "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer/PSPANELS/usr0930021834.json",
+      "layoutMode" : "TABLE_24COL",
+      "logicName" : "mob_customer_display_list_列表项面板",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer.json"
+      },
+      "getPSControlParam" : { },
+      "getPSLayout" : {
+        "childColMD" : 24,
+        "columnCount" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "getPSSysCss" : {
+        "cssName" : "mob_customer_list_style"
+      },
+      "getRootPSPanelItems" : [ {
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "page_container",
+        "getPSLayout" : {
+          "dir" : "column",
+          "layout" : "FLEX"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL",
+          "spacingLeft" : "OUTERMEDIUM",
+          "spacingRight" : "OUTERMEDIUM",
+          "spacingTop" : "OUTERSMALL"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "容器",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "container",
+          "getPSLayout" : {
+            "align" : "space-between",
+            "dir" : "row",
+            "layout" : "FLEX",
+            "vAlign" : "center"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "getPSPanelItems" : [ {
+            "caption" : "容器",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CONTAINER",
+            "name" : "container1",
+            "getPSLayout" : {
+              "align" : "flex-start",
+              "dir" : "row",
+              "layout" : "FLEX",
+              "vAlign" : "center"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "getPSPanelItems" : [ {
+              "caption" : "图片",
+              "contentType" : "IMAGE",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "RAWITEM",
+              "name" : "static_image",
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSRawItem" : {
+                "contentType" : "IMAGE",
+                "name" : "static_image",
+                "getPSSysImage" : {
+                  "rawContent" : "data:image/png;base64,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"
+                },
+                "predefinedType" : "STATIC_IMAGE"
+              },
+              "getPSSysImage" : {
+                "rawContent" : "data:image/png;base64,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"
+              },
+              "showCaption" : true
+            }, {
+              "caption" : "文本(动态)",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "FIELD",
+              "name" : "name",
+              "getPSEditor" : {
+                "editorType" : "SPAN",
+                "name" : "name",
+                "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                "renderMode" : "TEXT_DYNAMIC",
+                "enableLinkView" : false
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX",
+                "spacingLeft" : "OUTERSMALL"
+              },
+              "viewFieldName" : "name"
+            } ]
+          }, {
+            "caption" : "容器",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CONTAINER",
+            "name" : "container2",
+            "getPSLayout" : {
+              "layout" : "FLEX"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "getPSPanelItems" : [ {
+              "caption" : "文本(动态)",
+              "itemType" : "FIELD",
+              "name" : "grade_id",
+              "getPSEditor" : {
+                "editorType" : "HIDDEN",
+                "name" : "grade_id",
+                "predefinedType" : "FIELD_TEXT_DYNAMIC"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "viewFieldName" : "grade_id",
+              "hidden" : true
+            } ]
+          } ]
+        } ]
+      } ],
+      "name" : "mdctrl_itempanel",
+      "modelid" : "9367A12F-DB04-4217-AF28-6B9BAC65CE13",
+      "modeltype" : "PSSYSVIEWPANEL"
+    },
+    "logicName" : "mob_customer_display_list",
+    "mobListStyle" : "LISTVIEW",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer.json"
+    },
+    "getPSControlHandler" : {
+      "getPSHandlerActions" : [ {
+        "actionName" : "Get",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "READ",
+        "name" : "load",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "get"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer.json"
+        }
+      }, {
+        "actionName" : "Create",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "CREATE",
+        "name" : "create",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "create"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer.json"
+        }
+      }, {
+        "actionName" : "Update",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "UPDATE",
+        "name" : "update",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "update"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer.json"
+        }
+      }, {
+        "actionName" : "Remove",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "DELETE",
+        "name" : "remove",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "remove"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer.json"
+        }
+      }, {
+        "actionType" : "DEDATASET",
+        "name" : "fetch",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "fetch_normal"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer.json"
+        }
+      } ],
+      "userDRAction" : "READ",
+      "enableDEFieldPrivilege" : false,
+      "id" : "列表控件处理器"
+    },
+    "getPSControlParam" : {
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "id" : "MDCTRL"
+    },
+    "getPSDEDataImport" : {
+      "modelref" : true,
+      "id" : "import_customer"
+    },
+    "getPSDEListDataItems" : [ {
+      "dataType" : 25,
+      "name" : "srfkey",
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "srfmajortext",
+      "getPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "assignee_id",
+      "getPSAppDEField" : {
+        "name" : "ASSIGNEE_ID",
+        "codeName" : "assignee_id"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "product_id",
+      "getPSAppDEField" : {
+        "name" : "PRODUCT_ID",
+        "codeName" : "product_id"
+      }
+    } ],
+    "pagingMode" : 2,
+    "pagingSize" : 20,
+    "getRemovePSControlAction" : {
+      "modelref" : true,
+      "id" : "remove",
+      "actionName" : "Remove",
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "DELETE",
+      "name" : "remove",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "remove"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer.json"
+      }
+    },
+    "getUpdatePSControlAction" : {
+      "modelref" : true,
+      "id" : "update",
+      "actionName" : "Update",
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "UPDATE",
+      "name" : "update",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "update"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer.json"
+      }
+    },
+    "hasWFDataItems" : false,
+    "enableGroup" : false,
+    "enableRowEdit" : false,
+    "enableRowEditGroup" : false,
+    "enableRowEditOrder" : false,
+    "enableRowNew" : false,
+    "noSort" : false,
+    "showHeader" : true,
+    "singleSelect" : false,
+    "name" : "mdctrl",
+    "modelid" : "60219018-D17B-444A-B08C-7B9DA2BB5CE4",
+    "modeltype" : "PSDELIST"
+  }, {
+    "codeName" : "mob_md_view_righttoolbar",
+    "controlType" : "TOOLBAR",
+    "logicName" : "移动端客户编辑工具栏",
+    "name" : "righttoolbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer.json"
+    },
+    "getPSControlParam" : {
+      "ctrlParams" : {
+        "PLACEMENT" : "left",
+        "DIRECTION" : "vertical"
+      },
+      "id" : "RIGHTTOOLBAR"
+    },
+    "getPSDEToolbarItems" : [ {
+      "buttonStyle" : "PRIMARY",
+      "caption" : "新建客户",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction1",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "righttoolbar_deuiaction1"
+      },
+      "getPSSysImage" : {
+        "glyph" : "xf067@FontAwesome",
+        "cssClass" : "fa fa-plus"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "NONE",
+        "caption" : "新建",
+        "codeName" : "mob_add_customer",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/customer_mob_edit_view.json",
+          "viewType" : "DEMOBEDITVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "customer_mob_add_customer",
+        "name" : "新建客户（移动端）",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer.json"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf067@FontAwesome",
+          "cssClass" : "fa fa-plus"
+        },
+        "timeout" : 60000,
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "mob_add_customer",
+        "uIActionType" : "DEUIACTION",
+        "id" : "mob_add_customer@customer"
+      },
+      "tooltip" : "新建客户",
+      "uIActionTarget" : "NONE",
+      "showCaption" : false,
+      "showIcon" : true
+    } ],
+    "toolbarStyle" : "USER",
+    "xDataControlName" : "mdctrl",
+    "modelid" : "9B27C4BE-F9DD-450E-8C59-2F74B52C9485",
+    "modeltype" : "PSDETOOLBAR"
+  }, {
+    "controlType" : "SEARCHBAR",
+    "name" : "searchbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer.json"
+    },
+    "getPSControlParam" : {
+      "id" : "searchbar"
+    },
+    "quickGroupCount" : -1,
+    "quickSearchMode" : 1,
+    "quickSearchWidth" : 0,
+    "enableFilter" : false,
+    "enableGroup" : false,
+    "enableQuickSearch" : true,
+    "mobileSearchBar" : true
+  }, {
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DE.LNAME.CUSTOMER"
+    },
+    "caption" : "客户",
+    "codeName" : "mob_md_view_captionbar",
+    "controlType" : "CAPTIONBAR",
+    "name" : "captionbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer.json"
+    },
+    "getPSControlParam" : { }
+  } ],
+  "getPSDEViewCodeName" : "mob_md_view",
+  "getPSDEViewId" : "77FCA89E-FFFD-4203-9AE8-11BB1915CB6D",
+  "getPSViewLayoutPanel" : {
+    "codeName" : "layoutpanel",
+    "controlStyle" : "APPDEMOBMDVIEW",
+    "controlType" : "VIEWLAYOUTPANEL",
+    "name" : "layoutpanel",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer.json"
+    },
+    "getPSControlParam" : { },
+    "layoutBodyOnly" : true,
+    "layoutPanel" : true,
+    "useDefaultLayout" : true
+  },
+  "refFlag" : false,
+  "title" : "客户",
+  "viewStyle" : "DEFAULT",
+  "viewType" : "DEMOBMDVIEW",
+  "xDataControlName" : "mdctrl",
+  "enableDP" : true,
+  "enableFilter" : true,
+  "enablePullDownRefresh" : false,
+  "enableQuickSearch" : true,
+  "enableSearch" : true,
+  "showCaptionBar" : false,
+  "modelid" : "16c09f8e383cc2ab40c399a005a3b6e6",
+  "modeltype" : "PSAPPDEVIEW",
+  "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "customers",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "product",
+    "majorDEName" : "PRODUCT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/product.json"
+    },
+    "minorDECodeName" : "customer",
+    "minorDEName" : "CUSTOMER",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/customer.json"
+    },
+    "name" : "DER1N_CUSTOMER_PRODUCT_PRODUCT_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PRODUCT_ID",
+      "codeName" : "product_id"
+    },
+    "rSMode" : 2
+  } ] ]
+}

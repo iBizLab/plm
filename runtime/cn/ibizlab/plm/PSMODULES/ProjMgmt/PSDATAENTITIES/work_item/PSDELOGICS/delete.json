@@ -1,0 +1,327 @@
+{
+  "codeName" : "delete",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDELOGICS/delete.json",
+  "logicName" : "删除",
+  "memo" : "工作项数据的逻辑删除，修改产品的是否删除属性值；并递归删除所有下级工作项",
+  "name" : "删除",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 210,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : -170
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/Update.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "leftPos" : 170,
+    "logicNodeType" : "DEACTION",
+    "name" : "更新删除状态",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "topPos" : 70
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 170,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置工作项过滤器参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "n_pid_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "work_item_filter"
+      },
+      "name" : "Default[ID] ==> work_item_filter[n_pid_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 290
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "work_item_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "leftPos" : 170,
+    "logicNodeType" : "DEDATASET",
+    "name" : "查询下级工作项",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "若存在子级工作项",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "GT",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "work_item_page"
+          },
+          "logicType" : "SINGLE",
+          "name" : "work_item_page[size] 大于(>) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "不存在子级工作项",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "work_item_page"
+          },
+          "logicType" : "SINGLE",
+          "name" : "work_item_page[size] 等于(=) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "work_item_page"
+    },
+    "topPos" : 440
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 170,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置删除状态",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "IS_DELETED",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "直接值[1] ==> Default[IS_DELETED]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "1",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : -40
+  }, {
+    "codeName" : "RAWSQLCALL1",
+    "leftPos" : 170,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "删除最近访问",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "update recent set IS_DELETED=1 where owner_id=? and owner_subtype='work_item'",
+    "topPos" : 170
+  }, {
+    "codeName" : "LOOPSUBCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_temp_obj"
+    },
+    "leftPos" : 430,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DELOGIC1"
+      },
+      "name" : "进入循环",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "循环结束",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      }
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "work_item_page"
+    },
+    "topPos" : 440
+  }, {
+    "codeName" : "DELOGIC1",
+    "getDstPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDELOGICS/delete.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_temp_obj"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "leftPos" : 770,
+    "logicNodeType" : "DELOGIC",
+    "name" : "递归删除子工作项",
+    "topPos" : 440
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 210,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 711
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "for_temp_obj",
+    "logicName" : "循环临时变量",
+    "name" : "循环临时变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "work_item_filter",
+    "logicName" : "工作项查询过滤器",
+    "name" : "工作项查询过滤器",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "work_item_page",
+    "logicName" : "工作项分页结果对象",
+    "name" : "工作项分页结果对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "entityPageParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

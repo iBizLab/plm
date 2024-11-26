@@ -1,0 +1,307 @@
+{
+  "aggMode" : "NONE",
+  "codeName" : "management_table",
+  "columnEnableFilter" : 2,
+  "columnEnableLink" : 2,
+  "controlType" : "GRID",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product_tag/PSGRIDS/management_table.json",
+  "getFetchPSControlAction" : {
+    "modelref" : true,
+    "id" : "fetch",
+    "actionType" : "DEDATASET",
+    "name" : "fetch",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "fetch_default"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product_tag.json"
+    }
+  },
+  "groupMode" : "NONE",
+  "logicName" : "标签管理表格",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product_tag.json"
+  },
+  "getPSDEGridColumns" : [ {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.NAME"
+    },
+    "caption" : "标签名",
+    "codeName" : "name",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "name",
+    "excelCaption" : "标签名",
+    "name" : "name",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "width" : 200,
+    "widthUnit" : "STAR",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.CREATE_MAN"
+    },
+    "caption" : "创建人",
+    "codeName" : "create_man",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "create_man",
+    "excelCaption" : "创建人",
+    "name" : "create_man",
+    "noPrivDisplayMode" : 1,
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+    },
+    "getPSAppDEField" : {
+      "name" : "CREATE_MAN",
+      "codeName" : "create_man"
+    },
+    "width" : 150,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.CREATE_TIME"
+    },
+    "caption" : "创建时间",
+    "codeName" : "create_time",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "create_time",
+    "excelCaption" : "创建时间",
+    "name" : "create_time",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "CREATE_TIME",
+      "codeName" : "create_time"
+    },
+    "valueFormat" : "YYYY-MM-DD HH:mm:ss",
+    "width" : 200,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  }, {
+    "align" : "CENTER",
+    "caption" : "操作",
+    "codeName" : "uagridcolumn1",
+    "columnType" : "UAGRIDCOLUMN",
+    "name" : "uagridcolumn1",
+    "noPrivDisplayMode" : 1,
+    "getPSDEUIActionGroup" : {
+      "codeName" : "Usr1220692267",
+      "name" : "标签编辑或删除",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product_tag.json"
+      },
+      "getPSUIActionGroupDetails" : [ {
+        "detailType" : "DEUIACTION",
+        "name" : "ud38e74b",
+        "getPSSysImage" : {
+          "glyph" : "xf044@FontAwesome",
+          "cssClass" : "fa fa-edit"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEKEY",
+          "noPrivDisplayMode" : 1,
+          "caption" : "编辑标签",
+          "codeName" : "edit_tag",
+          "dataAccessAction" : "UPDATE",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_tag_edit_option_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "product_tag_edit_tag",
+          "name" : "编辑标签",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product_tag.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "UPDATE"
+          },
+          "timeout" : 60000,
+          "tooltip" : "编辑标签",
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "edit_tag",
+          "uIActionType" : "DEUIACTION",
+          "id" : "edit_tag@product_tag"
+        },
+        "tooltip" : "编辑标签",
+        "addSeparator" : false,
+        "showCaption" : false,
+        "showIcon" : true
+      }, {
+        "detailType" : "DEUIACTION",
+        "name" : "ub539582",
+        "getPSSysImage" : {
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEKEY",
+          "noPrivDisplayMode" : 1,
+          "caption" : "删除标签",
+          "codeName" : "delete_tag",
+          "dataAccessAction" : "DELETE",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_tag_product_tag_confirm_remove_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "product_tag_delete_tag",
+          "name" : "删除标签",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "delete_tag"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product_tag.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "DELETE"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "name",
+            "name" : "name",
+            "value" : "name",
+            "rawValue" : false
+          } ],
+          "refreshMode" : 1,
+          "successMsg" : "删除成功",
+          "timeout" : 60000,
+          "tooltip" : "删除标签",
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "delete_tag",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "delete_tag@product_tag"
+        },
+        "tooltip" : "删除标签",
+        "addSeparator" : false,
+        "showCaption" : false,
+        "showIcon" : true
+      } ],
+      "uniqueTag" : "product_tag__Usr1220692267"
+    },
+    "width" : 200,
+    "widthUnit" : "PX",
+    "enableSort" : false
+  } ],
+  "getPSDEGridDataItems" : [ {
+    "dataType" : 25,
+    "name" : "name",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "create_man",
+    "getPSAppDEField" : {
+      "name" : "CREATE_MAN",
+      "codeName" : "create_man"
+    }
+  }, {
+    "format" : "YYYY-MM-DD HH:mm:ss",
+    "dataType" : 5,
+    "name" : "create_time",
+    "getPSAppDEField" : {
+      "name" : "CREATE_TIME",
+      "codeName" : "create_time"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfdataaccaction",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "dataAccessAction" : true
+  }, {
+    "dataType" : 25,
+    "name" : "product_id",
+    "getPSAppDEField" : {
+      "name" : "PRODUCT_ID",
+      "codeName" : "product_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfmajortext",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  } ],
+  "getPSDEGridEditItems" : [ {
+    "caption" : "标识",
+    "codeName" : "srfkey",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getPSEditor" : {
+      "editorType" : "HIDDEN",
+      "name" : "srfkey"
+    },
+    "allowEmpty" : true
+  } ],
+  "pagingMode" : 1,
+  "pagingSize" : 20,
+  "getRemovePSControlAction" : {
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product_tag.json"
+    }
+  },
+  "sortMode" : "REMOTE",
+  "hasWFDataItems" : false,
+  "enableColFilter" : false,
+  "enableCustomized" : true,
+  "enableGroup" : false,
+  "enablePagingBar" : true,
+  "enableRowEdit" : false,
+  "enableRowEditOrder" : false,
+  "enableRowNew" : false,
+  "forceFit" : false,
+  "hideHeader" : false,
+  "noSort" : false,
+  "singleSelect" : true,
+  "modelid" : "d7574d308a30ebe11f73f83e211c78a1",
+  "modeltype" : "PSDEGRID"
+}

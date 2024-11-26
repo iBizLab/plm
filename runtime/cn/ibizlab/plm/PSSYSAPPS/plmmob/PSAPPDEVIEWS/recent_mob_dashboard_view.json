@@ -1,0 +1,5062 @@
+{
+  "accUserMode" : 2,
+  "getCapPSLanguageRes" : {
+    "lanResTag" : "DE.LNAME.RECENT"
+  },
+  "caption" : "仪表盘",
+  "codeName" : "recent_mob_dashboard_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/recent_mob_dashboard_view.json",
+  "name" : "recentmob_dashboard_view",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+  },
+  "getPSAppModule" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPMODULES/Base.json"
+  },
+  "getPSAppViewEngines" : [ {
+    "engineCat" : "VIEW",
+    "engineType" : "MobPortalView",
+    "name" : "engine"
+  } ],
+  "getPSControls" : [ {
+    "codeName" : "mob_dashboard_view2_dashboard",
+    "controlType" : "DASHBOARD",
+    "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent/PSDASHBOARDS/mob_dashboard_view2_dashboard.json",
+    "logicName" : "仪表盘移动端数据看板视图_数据看板",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+    },
+    "getPSControlHandler" : {
+      "enableDEFieldPrivilege" : false,
+      "id" : "dashboard"
+    },
+    "getPSControlParam" : {
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "id" : "DASHBOARD"
+    },
+    "getPSLayout" : {
+      "childColMD" : 24,
+      "columnCount" : 24,
+      "layout" : "TABLE_24COL"
+    },
+    "getPSControls" : [ {
+      "codeName" : "my_calendar",
+      "controlType" : "PORTLET",
+      "height" : 1.0,
+      "name" : "dashboard_sysportlet1",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+      },
+      "getPSControlHandler" : {
+        "enableDEFieldPrivilege" : false,
+        "id" : "dashboard_sysportlet1"
+      },
+      "getPSControlParam" : {
+        "height" : 1.0,
+        "autoLoad" : true,
+        "showBusyIndicator" : true
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "height" : 1,
+        "heightMode" : "PX",
+        "layout" : "TABLE_24COL"
+      },
+      "getPortletPSAppView" : {
+        "accUserMode" : 2,
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DE.LNAME.WORK_ITEM"
+        },
+        "caption" : "工作日历",
+        "codeName" : "work_item_mob_calendar_exp_view",
+        "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_calendar_exp_view.json",
+        "mDCtrlActiveMode" : 2,
+        "name" : "work_itemmob_calendar_exp_view",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+        },
+        "getPSAppModule" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPMODULES/ProjMgmt.json"
+        },
+        "getPSAppViewEngines" : [ {
+          "engineCat" : "VIEW",
+          "engineType" : "MobCalendarView",
+          "name" : "engine"
+        } ],
+        "getPSAppViewLogics" : [ {
+          "logicTrigger" : "CUSTOM",
+          "logicType" : "APPUILOGIC",
+          "name" : "newdata",
+          "getPSAppUILogic" : {
+            "actionAfterWizard" : "DEFAULT",
+            "logicType" : "PREDEFINED",
+            "name" : "新建数据",
+            "viewLogicType" : "APP_NEWDATA",
+            "batchAddOnly" : false,
+            "enableBatchAdd" : false,
+            "enableWizardAdd" : true
+          }
+        }, {
+          "logicTrigger" : "CUSTOM",
+          "logicType" : "APPUILOGIC",
+          "name" : "opendata",
+          "getPSAppUILogic" : {
+            "logicType" : "PREDEFINED",
+            "name" : "打开数据",
+            "viewLogicType" : "APP_OPENDATA",
+            "editMode" : true
+          }
+        } ],
+        "getPSAppViewRefs" : [ {
+          "name" : "opendata@my_work_item_mob",
+          "realTitle" : "移动端通用编辑",
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_common_edit_view.json",
+            "viewType" : "DEMOBEDITVIEW"
+          }
+        } ],
+        "getPSControls" : [ {
+          "calendarStyle" : "MONTH",
+          "codeName" : "mob_calendar_exp_view_calendar",
+          "controlType" : "CALENDAR",
+          "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item/PSCALENDARS/mob_calendar_exp_view_calendar.json",
+          "groupMode" : "NONE",
+          "legendPos" : "NONE",
+          "logicName" : "工作项移动端日历视图_日历部件",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSAppViewLogics" : [ {
+            "logicTrigger" : "CUSTOM",
+            "logicType" : "APPUILOGIC",
+            "name" : "my_work_item_mob_newdata",
+            "getPSAppUILogic" : {
+              "actionAfterWizard" : "DEFAULT",
+              "logicType" : "PREDEFINED",
+              "name" : "新建数据",
+              "viewLogicType" : "APP_NEWDATA",
+              "batchAddOnly" : false,
+              "enableBatchAdd" : false,
+              "enableWizardAdd" : false
+            }
+          }, {
+            "logicTrigger" : "CUSTOM",
+            "logicType" : "APPUILOGIC",
+            "name" : "my_work_item_mob_editdata",
+            "getPSAppUILogic" : {
+              "logicType" : "PREDEFINED",
+              "name" : "编辑数据",
+              "viewLogicType" : "APP_OPENDATA",
+              "editMode" : true
+            }
+          }, {
+            "logicTrigger" : "CUSTOM",
+            "logicType" : "APPUILOGIC",
+            "name" : "my_work_item_mob_opendata",
+            "getPSAppUILogic" : {
+              "logicType" : "PREDEFINED",
+              "name" : "打开数据",
+              "getOpenDataPSAppView" : {
+                "getPSNavigateContexts" : [ {
+                  "key" : "SRFDATATYPE",
+                  "name" : "SRFDATATYPE",
+                  "value" : "work_item_type_id",
+                  "rawValue" : false
+                }, {
+                  "key" : "PROJECT",
+                  "name" : "PROJECT",
+                  "value" : "project_id",
+                  "rawValue" : false
+                }, {
+                  "key" : "WORK_ITEM_TYPE_ID",
+                  "name" : "WORK_ITEM_TYPE_ID",
+                  "value" : "work_item_type_id",
+                  "rawValue" : false
+                } ],
+                "getPSNavigateParams" : [ {
+                  "key" : "srfdatatype",
+                  "name" : "srfdatatype",
+                  "value" : "work_item_type_id",
+                  "rawValue" : false
+                } ],
+                "getRefPSAppView" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_common_edit_view.json",
+                  "viewType" : "DEMOBEDITVIEW"
+                }
+              },
+              "getPSAppUILogicRefViews" : [ {
+                "getPSNavigateContexts" : [ {
+                  "key" : "SRFDATATYPE",
+                  "name" : "SRFDATATYPE",
+                  "value" : "work_item_type_id",
+                  "rawValue" : false
+                }, {
+                  "key" : "PROJECT",
+                  "name" : "PROJECT",
+                  "value" : "project_id",
+                  "rawValue" : false
+                }, {
+                  "key" : "WORK_ITEM_TYPE_ID",
+                  "name" : "WORK_ITEM_TYPE_ID",
+                  "value" : "work_item_type_id",
+                  "rawValue" : false
+                } ],
+                "getPSNavigateParams" : [ {
+                  "key" : "srfdatatype",
+                  "name" : "srfdatatype",
+                  "value" : "work_item_type_id",
+                  "rawValue" : false
+                } ],
+                "getRefPSAppView" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_common_edit_view.json",
+                  "viewType" : "DEMOBEDITVIEW"
+                }
+              } ],
+              "viewLogicType" : "APP_OPENDATA",
+              "editMode" : false
+            }
+          } ],
+          "getPSControlHandler" : {
+            "enableDEFieldPrivilege" : false,
+            "id" : "calendar"
+          },
+          "getPSControlParam" : {
+            "autoLoad" : true,
+            "showBusyIndicator" : true,
+            "id" : "CALENDAR"
+          },
+          "getPSSysCalendarItems" : [ {
+            "bKColor" : "#71bbf6",
+            "getBeginTimePSAppDEField" : {
+              "name" : "START_AT",
+              "codeName" : "start_at"
+            },
+            "color" : "white",
+            "getEndTimePSAppDEField" : {
+              "name" : "START_AT",
+              "codeName" : "start_at"
+            },
+            "getIdPSAppDEField" : {
+              "name" : "ID",
+              "codeName" : "id"
+            },
+            "itemStyle" : "DEFAULT",
+            "itemType" : "my_work_item_mob",
+            "maxSize" : -1,
+            "name" : "我的工作项",
+            "getNavPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_common_edit_view.json",
+              "viewType" : "DEMOBEDITVIEW"
+            },
+            "getPSAppDEDataSet" : {
+              "modelref" : true,
+              "id" : "fetch_my_assignee"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+            },
+            "getTextPSAppDEField" : {
+              "name" : "TITLE",
+              "codeName" : "title"
+            },
+            "enableQuickCreate" : false,
+            "id" : "my_work_item_mob"
+          } ],
+          "enableGroup" : false,
+          "name" : "calendar",
+          "modelid" : "DDE893FF-77DE-4BDF-A3B1-E9C9674AFC3E",
+          "modeltype" : "PSSYSCALENDAR"
+        }, {
+          "controlType" : "SEARCHBAR",
+          "name" : "searchbar",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSControlParam" : {
+            "id" : "searchbar"
+          },
+          "quickGroupCount" : -1,
+          "quickSearchMode" : 0,
+          "quickSearchWidth" : 0,
+          "enableFilter" : false,
+          "enableGroup" : false,
+          "enableQuickSearch" : false,
+          "mobileSearchBar" : true
+        }, {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "DE.LNAME.WORK_ITEM"
+          },
+          "caption" : "工作日历",
+          "codeName" : "mob_calendar_exp_view_captionbar",
+          "controlType" : "CAPTIONBAR",
+          "name" : "captionbar",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSControlParam" : { }
+        } ],
+        "getPSDEViewCodeName" : "mob_calendar_exp_view",
+        "getPSDEViewId" : "7D7BB953-397A-41C9-9999-F21BC302C15D",
+        "getPSViewLayoutPanel" : {
+          "codeName" : "layoutpanel",
+          "controlStyle" : "APPDEMOBCALENDARVIEW",
+          "controlType" : "VIEWLAYOUTPANEL",
+          "name" : "layoutpanel",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSControlParam" : { },
+          "layoutBodyOnly" : true,
+          "layoutPanel" : true,
+          "useDefaultLayout" : true
+        },
+        "title" : "工作项日历",
+        "viewStyle" : "DEFAULT",
+        "viewType" : "DEMOBCALENDARVIEW",
+        "xDataControlName" : "calendar",
+        "enableDP" : true,
+        "enableFilter" : true,
+        "enablePullDownRefresh" : false,
+        "enableSearch" : true,
+        "modelid" : "d54b6cf37236b9cf12c63cbee16faa02",
+        "modeltype" : "PSAPPDEVIEW",
+        "getPSAppDERSPaths" : [ [ {
+          "actionRSMode" : 1,
+          "codeName" : "work_items",
+          "dataRSMode" : 0,
+          "majorDECodeName" : "project",
+          "majorDEName" : "PROJECT",
+          "getMajorPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+          },
+          "minorDECodeName" : "work_item",
+          "minorDEName" : "WORK_ITEM",
+          "getMinorPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+          },
+          "name" : "DER1N_WORK_ITEM_PROJECT_PROJECT_ID",
+          "getParentPSAppDEField" : {
+            "name" : "PROJECT_ID",
+            "codeName" : "project_id"
+          },
+          "rSMode" : 2
+        } ] ]
+      },
+      "portletType" : "VIEW",
+      "title" : "我的日历",
+      "showTitleBar" : false,
+      "modelid" : "917E3F99-2EB4-4789-9246-434079ECE40E",
+      "modeltype" : "PSSYSDBPART"
+    }, {
+      "codeName" : "mob_my_assignee_chart",
+      "controlType" : "PORTLET",
+      "height" : 300.0,
+      "name" : "dashboard_sysportlet6",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+      },
+      "getPSControlHandler" : {
+        "enableDEFieldPrivilege" : false,
+        "id" : "dashboard_sysportlet6"
+      },
+      "getPSControlParam" : {
+        "autoLoad" : true,
+        "showBusyIndicator" : true
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "getPortletPSAppView" : {
+        "accUserMode" : 2,
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DE.LNAME.WORK_ITEM"
+        },
+        "caption" : "个人工作项统计",
+        "codeName" : "work_item_mob_my_assignee_chart",
+        "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_my_assignee_chart.json",
+        "name" : "work_itemmob_my_assignee_chart",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+        },
+        "getPSAppModule" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPMODULES/ProjMgmt.json"
+        },
+        "getPSAppViewEngines" : [ {
+          "engineCat" : "VIEW",
+          "engineType" : "MobChartView",
+          "name" : "engine"
+        } ],
+        "getPSControls" : [ {
+          "codeName" : "my_work_item_count",
+          "controlType" : "CHART",
+          "coordinateSystem" : "NONE",
+          "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item/PSCHARTS/my_work_item_count.json",
+          "getFetchPSControlAction" : {
+            "modelref" : true,
+            "id" : "fetch",
+            "actionType" : "DEDATASET",
+            "name" : "fetch",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "fetch_my_assignee"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+            }
+          },
+          "hookEventNames" : [ "ONLOADSUCCESS" ],
+          "logicName" : "my_work_item_count",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSChartCoordinateSystems" : [ {
+            "eChartsType" : "none",
+            "index" : 0,
+            "name" : "[pie_0]无坐标系[0]",
+            "type" : "NONE",
+            "id" : "0"
+          } ],
+          "getPSChartDataSetGroups" : [ {
+            "index" : 0,
+            "name" : "my_assignee",
+            "getPSAppDEDataSet" : {
+              "modelref" : true,
+              "id" : "fetch_my_assignee"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+            },
+            "id" : "0"
+          } ],
+          "getPSChartDataSets" : [ {
+            "index" : 0,
+            "name" : "pie_0-my_assignee",
+            "getPSChartDataSetFields" : [ {
+              "index" : 0,
+              "name" : "STATE_TYPE",
+              "getPSCodeList" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__state_type.json"
+              },
+              "groupField" : true,
+              "id" : "0"
+            }, {
+              "index" : 1,
+              "name" : "REP_NUM",
+              "groupField" : false,
+              "id" : "1"
+            } ],
+            "id" : "0"
+          } ],
+          "getPSControlHandler" : {
+            "getPSHandlerActions" : [ {
+              "actionName" : "Get",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "READ",
+              "name" : "load",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "get"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+              }
+            }, {
+              "actionName" : "Create",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "CREATE",
+              "name" : "create",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "create"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+              }
+            }, {
+              "actionName" : "Update",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "UPDATE",
+              "name" : "update",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "update"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+              }
+            }, {
+              "actionName" : "Remove",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "DELETE",
+              "name" : "remove",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "remove"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+              }
+            }, {
+              "actionType" : "DEDATASET",
+              "name" : "fetch",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "fetch_my_assignee"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+              }
+            } ],
+            "userDRAction" : "READ",
+            "enableDEFieldPrivilege" : false,
+            "id" : "图形控件处理器"
+          },
+          "getPSControlLogics" : [ {
+            "eventNames" : "onLoadSuccess",
+            "logicTag" : "chart",
+            "logicType" : "APPDEUILOGIC",
+            "name" : "logic_custom_params",
+            "getPSAppDEUILogic" : {
+              "modelref" : true,
+              "id" : "chart_show_count"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+            }
+          } ],
+          "getPSControlParam" : {
+            "autoLoad" : true,
+            "showBusyIndicator" : true,
+            "id" : "CHART"
+          },
+          "getPSDEChartDataGrid" : {
+            "index" : 0,
+            "id" : "0"
+          },
+          "getPSDEChartLegend" : {
+            "index" : 0,
+            "legendPos" : "BOTTOM",
+            "showLegend" : true,
+            "id" : "0"
+          },
+          "getPSDEChartSerieses" : [ {
+            "caption" : "状态",
+            "catalogField" : "STATE_TYPE",
+            "getCatalogPSCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__state_type.json"
+            },
+            "eChartsType" : "pie",
+            "index" : 0,
+            "name" : "pie_0",
+            "getPSChartCoordinateSystem" : {
+              "modelref" : true,
+              "id" : "0"
+            },
+            "getPSChartDataSet" : {
+              "modelref" : true,
+              "id" : "0"
+            },
+            "getPSChartSeriesEncode" : {
+              "category" : "STATE_TYPE",
+              "index" : 0,
+              "name" : "坐标系编码",
+              "type" : "NONE",
+              "value" : "REP_NUM",
+              "id" : "0"
+            },
+            "seriesLayoutBy" : "column",
+            "seriesType" : "pie",
+            "valueField" : "REP_NUM",
+            "enableChartDataSet" : true,
+            "getUserParam" : {
+              "EC.itemStyle" : "{\"borderRadius\":10,\"borderWidth\":5,\"borderColor\":\"white\"}",
+              "EC.radius" : "[\"40%\",\"60%\"]"
+            }
+          } ],
+          "getPSDEChartTitle" : {
+            "index" : 0,
+            "title" : "个人工作项统计",
+            "showTitle" : false,
+            "id" : "0"
+          },
+          "readOnly" : true,
+          "name" : "chart",
+          "modelid" : "c1171b62713874c9abc534ca1a13df2a",
+          "modeltype" : "PSDECHART",
+          "getUserParam" : {
+            "EC.emphasis" : "{\"show\":true,\"itemStyle\":{\"opacity\":0.8,\"borderWidth\":6,\"borderColor\":\"\"},\"focus\":\"self\",\"scale\":true,\"shadowBlur\":10,\"shadowOffsetX\":0,\"shadowColor\":\"rgba(0,0,0,0.5)\"}",
+            "EC.title" : "{\"text\":\"\",\"left\":\"center\",\"top\":\"center\",\"textStyle\":{\"fontSize\":\"18px\"}}",
+            "EC.legend" : "{\"left\":\"center\",\"bottom\":0,\"orient\":\"horizontal\",\"icon\":\"circle\",\"type\":\"plain\"}",
+            "EC.color" : "[\"#5470c6\",\"#91cc75\",\"#fac858\",\"#ee6666\",\"#73c0de\",\"#3ba272\",\"#fc8452\",\"#9a60b4\",\"#ea7ccc\",\"#5470c6\",\"#91cc75\"]"
+          }
+        }, {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "DE.LNAME.WORK_ITEM"
+          },
+          "caption" : "个人工作项统计",
+          "codeName" : "mob_my_assignee_chart_captionbar",
+          "controlType" : "CAPTIONBAR",
+          "name" : "captionbar",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSControlParam" : { }
+        } ],
+        "getPSDEViewCodeName" : "mob_my_assignee_chart",
+        "getPSDEViewId" : "8348C192-5B2B-45B7-AC29-9F2697E68BA2",
+        "getPSViewLayoutPanel" : {
+          "codeName" : "layoutpanel",
+          "controlStyle" : "APPDEMOBCHARTVIEW",
+          "controlType" : "VIEWLAYOUTPANEL",
+          "name" : "layoutpanel",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSControlParam" : { },
+          "layoutBodyOnly" : true,
+          "layoutPanel" : true,
+          "useDefaultLayout" : true
+        },
+        "title" : "个人工作项统计",
+        "viewStyle" : "DEFAULT",
+        "viewType" : "DEMOBCHARTVIEW",
+        "enableDP" : true,
+        "enablePullDownRefresh" : false,
+        "enableQuickGroup" : false,
+        "enableQuickSearch" : false,
+        "enableSearch" : false,
+        "expandSearchForm" : false,
+        "loadDefault" : true,
+        "modelid" : "7dc88ab7eada4f1844e237c0013db225",
+        "modeltype" : "PSAPPDEVIEW",
+        "getPSAppDERSPaths" : [ [ {
+          "actionRSMode" : 1,
+          "codeName" : "work_items",
+          "dataRSMode" : 0,
+          "majorDECodeName" : "project",
+          "majorDEName" : "PROJECT",
+          "getMajorPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+          },
+          "minorDECodeName" : "work_item",
+          "minorDEName" : "WORK_ITEM",
+          "getMinorPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+          },
+          "name" : "DER1N_WORK_ITEM_PROJECT_PROJECT_ID",
+          "getParentPSAppDEField" : {
+            "name" : "PROJECT_ID",
+            "codeName" : "project_id"
+          },
+          "rSMode" : 2
+        } ] ]
+      },
+      "portletType" : "VIEW",
+      "title" : "个人工作项统计",
+      "showTitleBar" : false,
+      "modelid" : "60FE6B1F-A96B-4563-A4BE-73223D9955FA",
+      "modeltype" : "PSSYSDBPART"
+    }, {
+      "codeName" : "my_assignee_work_item",
+      "controlType" : "PORTLET",
+      "height" : 1.0,
+      "name" : "dashboard_sysportlet2",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+      },
+      "getPSControlHandler" : {
+        "enableDEFieldPrivilege" : false,
+        "id" : "dashboard_sysportlet2"
+      },
+      "getPSControlParam" : {
+        "height" : 1.0,
+        "autoLoad" : true,
+        "showBusyIndicator" : true
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "height" : 1,
+        "heightMode" : "PX",
+        "layout" : "TABLE_24COL"
+      },
+      "getPortletPSAppView" : {
+        "accUserMode" : 2,
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DE.LNAME.WORK_ITEM"
+        },
+        "caption" : "我负责的工作项",
+        "codeName" : "work_item_my_assignee_mobboard",
+        "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_my_assignee_mobboard.json",
+        "name" : "work_itemmy_assignee_mobboard",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+        },
+        "getPSAppModule" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPMODULES/ProjMgmt.json"
+        },
+        "getPSDEViewCodeName" : "my_assignee_mobboard",
+        "getPSDEViewId" : "58B225AC-C5B6-4F5F-8E7E-EFCE69A37946",
+        "getPSSysCss" : {
+          "cssName" : "mob_recent_item_style"
+        },
+        "getPSViewLayoutPanel" : {
+          "getAllPSPanelFields" : [ {
+            "id" : "show_more",
+            "hidden" : true,
+            "viewFieldName" : "show_more"
+          } ],
+          "codeName" : "usr1024174993",
+          "controlType" : "VIEWLAYOUTPANEL",
+          "layoutMode" : "FLEX",
+          "logicName" : "my_assignee_mobboard实体移动端多数据视图布局面板",
+          "name" : "layoutpanel",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSControlParam" : { },
+          "getPSLayout" : {
+            "layout" : "FLEX"
+          },
+          "getRootPSPanelItems" : [ {
+            "caption" : "容器",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CONTAINER",
+            "name" : "view_top",
+            "getPSLayout" : {
+              "dir" : "column",
+              "layout" : "FLEX"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX",
+              "shrink" : 0
+            },
+            "getPSPanelItems" : [ {
+              "caption" : "容器",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "CONTAINER",
+              "name" : "view_header",
+              "getPSLayout" : {
+                "dir" : "column",
+                "layout" : "FLEX"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX",
+                "shrink" : 0
+              },
+              "getPSPanelItems" : [ {
+                "caption" : "容器",
+                "itemStyle" : "DEFAULT",
+                "itemType" : "CONTAINER",
+                "name" : "view_toolbar",
+                "getPSLayout" : {
+                  "dir" : "row",
+                  "layout" : "FLEX"
+                },
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "getPSPanelItems" : [ {
+                  "caption" : "容器",
+                  "contentWidth" : 100.0,
+                  "itemStyle" : "DEFAULT",
+                  "itemType" : "CONTAINER",
+                  "name" : "view_left_toolbar",
+                  "getPSLayout" : {
+                    "layout" : "FLEX"
+                  },
+                  "getPSLayoutPos" : {
+                    "basis" : 100,
+                    "grow" : -1,
+                    "layout" : "FLEX",
+                    "shrink" : 0,
+                    "width" : 100,
+                    "widthMode" : "PX"
+                  },
+                  "getPSPanelItems" : [ {
+                    "caption" : "左侧工具栏",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "CTRLPOS",
+                    "name" : "lefttoolbar",
+                    "getPSLayoutPos" : {
+                      "grow" : 1,
+                      "heightMode" : "FULL",
+                      "layout" : "FLEX",
+                      "vAlignSelf" : "MIDDLE",
+                      "widthMode" : "FULL"
+                    },
+                    "showCaption" : true
+                  } ],
+                  "width" : 100.0
+                }, {
+                  "caption" : "容器",
+                  "itemStyle" : "DEFAULT",
+                  "itemType" : "CONTAINER",
+                  "name" : "view_captionbar",
+                  "getPSLayout" : {
+                    "align" : "center",
+                    "dir" : "row",
+                    "layout" : "FLEX"
+                  },
+                  "getPSLayoutPos" : {
+                    "grow" : 1,
+                    "layout" : "FLEX"
+                  },
+                  "getPSPanelItems" : [ {
+                    "caption" : "标题栏",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "CTRLPOS",
+                    "name" : "captionbar",
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "heightMode" : "FULL",
+                      "layout" : "FLEX"
+                    },
+                    "showCaption" : true
+                  } ]
+                }, {
+                  "caption" : "容器",
+                  "contentWidth" : 100.0,
+                  "itemStyle" : "DEFAULT",
+                  "itemType" : "CONTAINER",
+                  "name" : "view_right_toolbar",
+                  "getPSLayout" : {
+                    "layout" : "FLEX"
+                  },
+                  "getPSLayoutPos" : {
+                    "basis" : 100,
+                    "grow" : -1,
+                    "layout" : "FLEX",
+                    "shrink" : 0,
+                    "width" : 100,
+                    "widthMode" : "PX"
+                  },
+                  "width" : 100.0
+                } ],
+                "predefinedType" : "Toolbar"
+              } ],
+              "predefinedType" : "Header"
+            }, {
+              "caption" : "容器",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "CONTAINER",
+              "name" : "view_toolbar2",
+              "getPSLayout" : {
+                "layout" : "FLEX"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSPanelItems" : [ {
+                "caption" : "搜索栏",
+                "itemStyle" : "DEFAULT",
+                "itemType" : "CTRLPOS",
+                "name" : "searchbar",
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "showCaption" : true
+              } ],
+              "predefinedType" : "Toolbar"
+            }, {
+              "caption" : "容器",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "CONTAINER",
+              "name" : "view_searchform",
+              "getPSLayout" : {
+                "layout" : "FLEX"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSPanelItems" : [ {
+                "caption" : "搜索表单",
+                "itemStyle" : "DEFAULT",
+                "itemType" : "CTRLPOS",
+                "name" : "searchform",
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "getPSPanelItemGroupLogics" : [ {
+                  "groupOP" : "AND",
+                  "logicCat" : "PANELVISIBLE",
+                  "logicType" : "GROUP",
+                  "name" : "面板成员[searchform][面板显示]逻辑",
+                  "getPSPanelItemLogics" : [ {
+                    "condOp" : "EQ",
+                    "dstModelField" : "show_more",
+                    "logicType" : "SINGLE",
+                    "name" : "逻辑项",
+                    "value" : "false"
+                  } ],
+                  "relatedItemNames" : [ "show_more" ],
+                  "notMode" : false
+                } ],
+                "showCaption" : true
+              } ]
+            } ]
+          }, {
+            "caption" : "容器",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CONTAINER",
+            "name" : "view_content",
+            "getPSLayout" : {
+              "layout" : "FLEX"
+            },
+            "getPSLayoutPos" : {
+              "grow" : 1,
+              "layout" : "FLEX"
+            },
+            "getPSPanelItems" : [ {
+              "caption" : "多数据部件",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "CTRLPOS",
+              "name" : "mdctrl",
+              "getPSLayoutPos" : {
+                "grow" : 1,
+                "layout" : "FLEX"
+              },
+              "showCaption" : true
+            }, {
+              "actionType" : "UIACTION",
+              "buttonStyle" : "DEFAULT",
+              "caption" : "显示更多",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "BUTTON",
+              "name" : "button_calluilogic",
+              "getPSAppViewUIAction" : {
+                "modelref" : true,
+                "id" : "layoutpanel_button_calluilogic"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSPanelItemGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "name" : "面板成员[button_calluilogic][面板显示]逻辑",
+                "getPSPanelItemLogics" : [ {
+                  "condOp" : "NOTEQ",
+                  "dstModelField" : "show_more",
+                  "logicType" : "SINGLE",
+                  "name" : "逻辑项",
+                  "value" : "false"
+                } ],
+                "relatedItemNames" : [ "show_more" ],
+                "notMode" : false
+              } ],
+              "getPSUIAction" : {
+                "actionTarget" : "NONE",
+                "caption" : "显示更多",
+                "codeName" : "show_more_assignee_item",
+                "getFrontPSAppView" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_my_assignee_mobboard.json",
+                  "viewType" : "DEMOBMDVIEW"
+                },
+                "frontProcessType" : "WIZARD",
+                "fullCodeName" : "work_item_show_more_assignee_item",
+                "name" : "显示更多_我负责的工作项(移动端仪表盘)",
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+                },
+                "timeout" : 60000,
+                "uIActionMode" : "FRONT",
+                "uIActionTag" : "show_more_assignee_item",
+                "uIActionType" : "DEUIACTION",
+                "id" : "show_more_assignee_item@work_item"
+              },
+              "tooltip" : "显示更多",
+              "uIActionTarget" : "NONE",
+              "showCaption" : true
+            }, {
+              "caption" : "文本(动态)",
+              "itemType" : "FIELD",
+              "name" : "show_more",
+              "getPSEditor" : {
+                "editorType" : "HIDDEN",
+                "name" : "show_more",
+                "predefinedType" : "FIELD_TEXT_DYNAMIC"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "viewFieldName" : "show_more",
+              "hidden" : true
+            } ],
+            "predefinedType" : "Content"
+          }, {
+            "caption" : "容器",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CONTAINER",
+            "name" : "view_footer",
+            "getPSLayout" : {
+              "layout" : "FLEX"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX",
+              "shrink" : 0
+            },
+            "getPSPanelItems" : [ {
+              "caption" : "工具栏",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "CTRLPOS",
+              "name" : "footertoolbar",
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "showCaption" : true
+            } ],
+            "predefinedType" : "Footer"
+          } ],
+          "layoutBodyOnly" : true,
+          "layoutPanel" : true,
+          "mobilePanel" : true,
+          "useDefaultLayout" : false,
+          "viewProxyMode" : true,
+          "modelid" : "1972A89A-9058-4F99-98C5-72B93A41EC1C",
+          "modeltype" : "PSSYSVIEWLAYOUTPANEL",
+          "getPSAppViewEngines" : [ {
+            "engineCat" : "VIEW",
+            "engineType" : "MobMDView",
+            "name" : "engine"
+          } ],
+          "getPSAppViewLogics" : [ {
+            "logicTrigger" : "CUSTOM",
+            "logicType" : "APPUILOGIC",
+            "name" : "newdata",
+            "getPSAppUILogic" : {
+              "actionAfterWizard" : "DEFAULT",
+              "logicType" : "PREDEFINED",
+              "name" : "新建数据",
+              "viewLogicType" : "APP_NEWDATA",
+              "batchAddOnly" : false,
+              "enableBatchAdd" : false,
+              "enableWizardAdd" : true
+            }
+          }, {
+            "logicTrigger" : "CUSTOM",
+            "logicType" : "APPUILOGIC",
+            "name" : "opendata",
+            "getPSAppUILogic" : {
+              "logicType" : "PREDEFINED",
+              "name" : "打开数据",
+              "getOpenDataPSAppView" : {
+                "getRefPSAppView" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_common_edit_view.json",
+                  "viewType" : "DEMOBEDITVIEW"
+                }
+              },
+              "getPSAppUILogicRefViews" : [ {
+                "getRefPSAppView" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_common_edit_view.json",
+                  "viewType" : "DEMOBEDITVIEW"
+                }
+              } ],
+              "viewLogicType" : "APP_OPENDATA",
+              "editMode" : true
+            }
+          } ],
+          "getPSAppViewRefs" : [ {
+            "name" : "EDITDATA",
+            "realTitle" : "移动端通用编辑",
+            "getRefPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_common_edit_view.json",
+              "viewType" : "DEMOBEDITVIEW"
+            }
+          } ],
+          "getPSControls" : [ {
+            "codeName" : "mob_common_list",
+            "controlStyle" : "LISTVIEW",
+            "controlType" : "MOBMDCTRL",
+            "getCreatePSControlAction" : {
+              "modelref" : true,
+              "id" : "create",
+              "actionName" : "Create",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "CREATE",
+              "name" : "create",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "create"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+              }
+            },
+            "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item/PSMOBMDCTRLS/mob_common_list.json",
+            "getFetchPSControlAction" : {
+              "modelref" : true,
+              "id" : "fetch",
+              "actionType" : "DEDATASET",
+              "name" : "fetch",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "fetch_my_assignee"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+              }
+            },
+            "getGetPSControlAction" : {
+              "modelref" : true,
+              "id" : "load",
+              "actionName" : "Get",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "READ",
+              "name" : "load",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "get"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+              }
+            },
+            "groupMode" : "NONE",
+            "getItemPSLayoutPanel" : {
+              "getAllPSPanelFields" : [ {
+                "id" : "work_item_type_id",
+                "viewFieldName" : "WORK_ITEM_TYPE_ID"
+              }, {
+                "id" : "title",
+                "viewFieldName" : "TITLE"
+              }, {
+                "id" : "show_identifier",
+                "viewFieldName" : "SHOW_IDENTIFIER"
+              }, {
+                "id" : "state",
+                "viewFieldName" : "STATE"
+              }, {
+                "id" : "start_at",
+                "viewFieldName" : "START_AT"
+              }, {
+                "id" : "end_at",
+                "viewFieldName" : "END_AT"
+              }, {
+                "id" : "assignee_name",
+                "viewFieldName" : "ASSIGNEE_ID"
+              } ],
+              "codeName" : "usr0920293613",
+              "controlType" : "PANEL",
+              "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item/PSPANELS/usr0920293613.json",
+              "layoutMode" : "TABLE_24COL",
+              "logicName" : "mob_recycle_list_列表项面板",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+              },
+              "getPSControlParam" : { },
+              "getPSLayout" : {
+                "childColMD" : 24,
+                "columnCount" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "getPSSysCss" : {
+                "cssName" : "mob_common_list_style"
+              },
+              "getRootPSPanelItems" : [ {
+                "itemStyle" : "DEFAULT",
+                "itemType" : "CONTAINER",
+                "name" : "page_container",
+                "getPSLayout" : {
+                  "dir" : "column",
+                  "layout" : "FLEX"
+                },
+                "getPSLayoutPos" : {
+                  "colMD" : 24,
+                  "layout" : "TABLE_24COL",
+                  "spacingLeft" : "OUTERMEDIUM",
+                  "spacingRight" : "OUTERMEDIUM",
+                  "spacingTop" : "OUTERSMALL"
+                },
+                "getPSPanelItems" : [ {
+                  "caption" : "容器",
+                  "itemStyle" : "DEFAULT",
+                  "itemType" : "CONTAINER",
+                  "name" : "container",
+                  "getPSLayout" : {
+                    "dir" : "row",
+                    "layout" : "FLEX"
+                  },
+                  "getPSLayoutPos" : {
+                    "grow" : -1,
+                    "layout" : "FLEX"
+                  },
+                  "getPSPanelItems" : [ {
+                    "caption" : "文本(动态)",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "FIELD",
+                    "name" : "work_item_type_id",
+                    "getPSEditor" : {
+                      "editorParams" : {
+                        "SHOWMODE" : "ICON"
+                      },
+                      "editorType" : "SPAN",
+                      "name" : "work_item_type_id",
+                      "getPSAppCodeList" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_type.json"
+                      },
+                      "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                      "renderMode" : "TEXT_DYNAMIC",
+                      "enableLinkView" : false
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX"
+                    },
+                    "viewFieldName" : "WORK_ITEM_TYPE_ID",
+                    "convertToCodeItemText" : true
+                  }, {
+                    "caption" : "文本(动态)",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "FIELD",
+                    "name" : "title",
+                    "getPSEditor" : {
+                      "editorType" : "SPAN",
+                      "name" : "title",
+                      "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                      "renderMode" : "TEXT_DYNAMIC",
+                      "enableLinkView" : false
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX",
+                      "spacingLeft" : "OUTERSMALL"
+                    },
+                    "viewFieldName" : "TITLE"
+                  } ]
+                }, {
+                  "caption" : "容器",
+                  "itemStyle" : "DEFAULT",
+                  "itemType" : "CONTAINER",
+                  "name" : "container1",
+                  "getPSLayout" : {
+                    "align" : "space-between",
+                    "dir" : "row",
+                    "layout" : "FLEX",
+                    "vAlign" : "center"
+                  },
+                  "getPSLayoutPos" : {
+                    "grow" : -1,
+                    "layout" : "FLEX",
+                    "spacingTop" : "OUTERSMALL"
+                  },
+                  "getPSPanelItems" : [ {
+                    "caption" : "容器",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "CONTAINER",
+                    "name" : "container4",
+                    "getPSLayout" : {
+                      "align" : "center",
+                      "dir" : "column",
+                      "layout" : "FLEX",
+                      "vAlign" : "flex-start"
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX"
+                    },
+                    "getPSPanelItems" : [ {
+                      "caption" : "容器",
+                      "itemStyle" : "DEFAULT",
+                      "itemType" : "CONTAINER",
+                      "name" : "container2",
+                      "getPSLayout" : {
+                        "align" : "flex-start",
+                        "dir" : "row",
+                        "layout" : "FLEX",
+                        "vAlign" : "center"
+                      },
+                      "getPSLayoutPos" : {
+                        "grow" : -1,
+                        "layout" : "FLEX"
+                      },
+                      "getPSPanelItems" : [ {
+                        "caption" : "文本(动态)",
+                        "itemStyle" : "DEFAULT",
+                        "itemType" : "FIELD",
+                        "name" : "show_identifier",
+                        "getPSEditor" : {
+                          "editorType" : "SPAN",
+                          "name" : "show_identifier",
+                          "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                          "renderMode" : "TEXT_DYNAMIC",
+                          "enableLinkView" : false
+                        },
+                        "getPSLayoutPos" : {
+                          "grow" : -1,
+                          "layout" : "FLEX"
+                        },
+                        "viewFieldName" : "SHOW_IDENTIFIER"
+                      }, {
+                        "caption" : "文本(动态)",
+                        "itemStyle" : "DEFAULT",
+                        "itemType" : "FIELD",
+                        "name" : "state",
+                        "getPSEditor" : {
+                          "editorParams" : {
+                            "REVERSECOLOR" : "true"
+                          },
+                          "editorType" : "SPAN",
+                          "name" : "state",
+                          "getPSAppCodeList" : {
+                            "modelref" : true,
+                            "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_state.json"
+                          },
+                          "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                          "renderMode" : "TEXT_DYNAMIC",
+                          "enableLinkView" : false
+                        },
+                        "getPSLayoutPos" : {
+                          "grow" : -1,
+                          "layout" : "FLEX",
+                          "spacingLeft" : "OUTERSMALL"
+                        },
+                        "viewFieldName" : "STATE",
+                        "convertToCodeItemText" : true
+                      } ]
+                    }, {
+                      "caption" : "容器",
+                      "itemStyle" : "DEFAULT",
+                      "itemType" : "CONTAINER",
+                      "name" : "container5",
+                      "getPSLayout" : {
+                        "align" : "flex-start",
+                        "dir" : "row",
+                        "layout" : "FLEX",
+                        "vAlign" : "center"
+                      },
+                      "getPSLayoutPos" : {
+                        "grow" : -1,
+                        "layout" : "FLEX",
+                        "spacingTop" : "OUTERSMALL"
+                      },
+                      "getPSPanelItems" : [ {
+                        "caption" : "文本(动态)",
+                        "itemStyle" : "DEFAULT",
+                        "itemType" : "FIELD",
+                        "name" : "start_at",
+                        "getPSEditor" : {
+                          "editorType" : "SPAN",
+                          "name" : "start_at",
+                          "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                          "renderMode" : "TEXT_DYNAMIC",
+                          "enableLinkView" : false
+                        },
+                        "getPSLayoutPos" : {
+                          "grow" : -1,
+                          "layout" : "FLEX"
+                        },
+                        "viewFieldName" : "START_AT"
+                      }, {
+                        "caption" : "文本(动态)",
+                        "itemStyle" : "DEFAULT",
+                        "itemType" : "FIELD",
+                        "name" : "end_at",
+                        "getPSEditor" : {
+                          "editorType" : "SPAN",
+                          "name" : "end_at",
+                          "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                          "renderMode" : "TEXT_DYNAMIC",
+                          "enableLinkView" : false
+                        },
+                        "getPSLayoutPos" : {
+                          "grow" : -1,
+                          "layout" : "FLEX",
+                          "spacingLeft" : "OUTERSMALL"
+                        },
+                        "viewFieldName" : "END_AT"
+                      } ]
+                    } ]
+                  }, {
+                    "caption" : "容器",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "CONTAINER",
+                    "name" : "container3",
+                    "getPSControlLogics" : [ {
+                      "itemName" : "CONTAINER3",
+                      "logicTag" : "mdctrl_itempanel",
+                      "logicType" : "SCRIPT",
+                      "name" : "logic",
+                      "scriptCode" : "data.assignee_name != null",
+                      "triggerType" : "ITEMVISIBLE"
+                    } ],
+                    "getPSLayout" : {
+                      "layout" : "FLEX"
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX"
+                    },
+                    "getPSPanelItems" : [ {
+                      "caption" : "文本(动态)",
+                      "itemStyle" : "DEFAULT",
+                      "itemType" : "FIELD",
+                      "name" : "assignee_name",
+                      "getPSEditor" : {
+                        "editorParams" : {
+                          "SHOWNAMETEXT" : "false"
+                        },
+                        "editorStyle" : "MOB_PERSONNEL_INFO",
+                        "editorType" : "SPAN",
+                        "name" : "assignee_name",
+                        "getPSAppCodeList" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
+                        },
+                        "getPSSysPFPlugin" : {
+                          "pluginType" : "EDITOR_CUSTOMSTYLE",
+                          "pluginCode" : "MOB_PERSONNEL_INFO",
+                          "runtimeObject" : true
+                        },
+                        "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                        "renderMode" : "TEXT_DYNAMIC",
+                        "enableLinkView" : false
+                      },
+                      "getPSLayoutPos" : {
+                        "grow" : -1,
+                        "layout" : "FLEX"
+                      },
+                      "viewFieldName" : "ASSIGNEE_ID",
+                      "convertToCodeItemText" : true
+                    } ]
+                  } ]
+                } ]
+              } ],
+              "name" : "mdctrl_itempanel",
+              "modelid" : "4F6DAA5F-52D7-4013-ACC2-96F18EF0A614",
+              "modeltype" : "PSSYSVIEWPANEL"
+            },
+            "logicName" : "mob_common_list",
+            "mobListStyle" : "LISTVIEW",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+            },
+            "getPSControlHandler" : {
+              "getPSHandlerActions" : [ {
+                "actionName" : "Get",
+                "actionType" : "DEACTION",
+                "dataAccessAction" : "READ",
+                "name" : "load",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "get"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+                }
+              }, {
+                "actionName" : "Create",
+                "actionType" : "DEACTION",
+                "dataAccessAction" : "CREATE",
+                "name" : "create",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "create"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+                }
+              }, {
+                "actionName" : "Update",
+                "actionType" : "DEACTION",
+                "dataAccessAction" : "UPDATE",
+                "name" : "update",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "update"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+                }
+              }, {
+                "actionName" : "Remove",
+                "actionType" : "DEACTION",
+                "dataAccessAction" : "DELETE",
+                "name" : "remove",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "remove"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+                }
+              }, {
+                "actionType" : "DEDATASET",
+                "name" : "fetch",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "fetch_my_assignee"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+                }
+              } ],
+              "userDRAction" : "READ",
+              "enableDEFieldPrivilege" : false,
+              "id" : "列表控件处理器"
+            },
+            "getPSControlParam" : {
+              "autoLoad" : true,
+              "showBusyIndicator" : true,
+              "id" : "MDCTRL"
+            },
+            "getPSDEDataImport" : {
+              "modelref" : true,
+              "id" : "import_work_item_waterfall"
+            },
+            "getPSDEListDataItems" : [ {
+              "dataType" : 25,
+              "getFrontPSCodeList" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_state2.json"
+              },
+              "name" : "state",
+              "getPSAppDEField" : {
+                "name" : "STATE",
+                "codeName" : "state"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "assignee_name",
+              "getPSAppDEField" : {
+                "name" : "ASSIGNEE_NAME",
+                "codeName" : "assignee_name"
+              }
+            }, {
+              "dataType" : 25,
+              "getFrontPSCodeList" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_priority.json"
+              },
+              "name" : "priority",
+              "getPSAppDEField" : {
+                "name" : "PRIORITY",
+                "codeName" : "priority"
+              }
+            }, {
+              "dataType" : 5,
+              "format" : "YYYY-MM-DD",
+              "name" : "start_at",
+              "getPSAppDEField" : {
+                "name" : "START_AT",
+                "codeName" : "start_at"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "show_identifier",
+              "getPSAppDEField" : {
+                "name" : "SHOW_IDENTIFIER",
+                "codeName" : "show_identifier"
+              }
+            }, {
+              "dataType" : 5,
+              "format" : "YYYY-MM-DD",
+              "name" : "end_at",
+              "getPSAppDEField" : {
+                "name" : "END_AT",
+                "codeName" : "end_at"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "title",
+              "getPSAppDEField" : {
+                "name" : "TITLE",
+                "codeName" : "title"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "srfkey",
+              "getPSAppDEField" : {
+                "name" : "ID",
+                "codeName" : "id"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "srfmajortext",
+              "getPSAppDEField" : {
+                "name" : "TITLE",
+                "codeName" : "title"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "assignee_id",
+              "getPSAppDEField" : {
+                "name" : "ASSIGNEE_ID",
+                "codeName" : "assignee_id"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "project_id",
+              "getPSAppDEField" : {
+                "name" : "PROJECT_ID",
+                "codeName" : "project_id"
+              }
+            }, {
+              "dataType" : 25,
+              "getFrontPSCodeList" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_type.json"
+              },
+              "name" : "srfdatatype",
+              "getPSAppDEField" : {
+                "name" : "WORK_ITEM_TYPE_ID",
+                "codeName" : "work_item_type_id"
+              }
+            }, {
+              "dataType" : 25,
+              "getFrontPSCodeList" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_type.json"
+              },
+              "name" : "work_item_type_id",
+              "getPSAppDEField" : {
+                "name" : "WORK_ITEM_TYPE_ID",
+                "codeName" : "work_item_type_id"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "pid",
+              "getPSAppDEField" : {
+                "name" : "PID",
+                "codeName" : "pid"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "sprint_id",
+              "getPSAppDEField" : {
+                "name" : "SPRINT_ID",
+                "codeName" : "sprint_id"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "board_id",
+              "getPSAppDEField" : {
+                "name" : "BOARD_ID",
+                "codeName" : "board_id"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "entry_id",
+              "getPSAppDEField" : {
+                "name" : "ENTRY_ID",
+                "codeName" : "entry_id"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "swimlane_id",
+              "getPSAppDEField" : {
+                "name" : "SWIMLANE_ID",
+                "codeName" : "swimlane_id"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "top_id",
+              "getPSAppDEField" : {
+                "name" : "TOP_ID",
+                "codeName" : "top_id"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "release_id",
+              "getPSAppDEField" : {
+                "name" : "RELEASE_ID",
+                "codeName" : "release_id"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "srfmstag"
+            } ],
+            "getPSDEListItems" : [ {
+              "align" : "LEFT",
+              "cLConvertMode" : "FRONT",
+              "caption" : "状态",
+              "dataItemName" : "state",
+              "itemType" : "TEXTITEM",
+              "name" : "STATE",
+              "width" : 150,
+              "widthString" : "150px",
+              "enableSort" : true
+            }, {
+              "align" : "LEFT",
+              "caption" : "负责人",
+              "dataItemName" : "assignee_name",
+              "itemType" : "TEXTITEM",
+              "name" : "ASSIGNEE_NAME",
+              "width" : 150,
+              "widthString" : "150px",
+              "enableSort" : true
+            }, {
+              "align" : "LEFT",
+              "cLConvertMode" : "FRONT",
+              "caption" : "优先级",
+              "dataItemName" : "priority",
+              "itemType" : "TEXTITEM",
+              "name" : "PRIORITY",
+              "width" : 150,
+              "widthString" : "150px",
+              "enableSort" : true
+            }, {
+              "align" : "LEFT",
+              "caption" : "开始时间",
+              "dataItemName" : "start_at",
+              "itemType" : "TEXTITEM",
+              "name" : "START_AT",
+              "valueFormat" : "YYYY-MM-DD",
+              "width" : 150,
+              "widthString" : "150px",
+              "enableSort" : true
+            }, {
+              "align" : "LEFT",
+              "caption" : "编号",
+              "dataItemName" : "show_identifier",
+              "itemType" : "TEXTITEM",
+              "name" : "SHOW_IDENTIFIER",
+              "width" : 150,
+              "widthString" : "150px",
+              "enableSort" : true
+            }, {
+              "align" : "LEFT",
+              "caption" : "截止时间",
+              "dataItemName" : "end_at",
+              "itemType" : "TEXTITEM",
+              "name" : "END_AT",
+              "valueFormat" : "YYYY-MM-DD",
+              "width" : 150,
+              "widthString" : "150px",
+              "enableSort" : true
+            }, {
+              "align" : "LEFT",
+              "caption" : "标题",
+              "dataItemName" : "title",
+              "itemType" : "TEXTITEM",
+              "name" : "TITLE",
+              "width" : 150,
+              "widthString" : "150px",
+              "enableSort" : true
+            } ],
+            "getPSSysPFPlugin" : {
+              "pluginType" : "CUSTOM",
+              "pluginCode" : "MOB_MDCTRL_TREE",
+              "runtimeObject" : true
+            },
+            "pagingMode" : 2,
+            "pagingSize" : 20,
+            "getRemovePSControlAction" : {
+              "modelref" : true,
+              "id" : "remove",
+              "actionName" : "Remove",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "DELETE",
+              "name" : "remove",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "remove"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+              }
+            },
+            "getUpdatePSControlAction" : {
+              "modelref" : true,
+              "id" : "update",
+              "actionName" : "Update",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "UPDATE",
+              "name" : "update",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "update"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+              }
+            },
+            "hasWFDataItems" : false,
+            "enableGroup" : false,
+            "enableRowEdit" : false,
+            "enableRowEditGroup" : false,
+            "enableRowEditOrder" : false,
+            "enableRowNew" : false,
+            "noSort" : false,
+            "showHeader" : true,
+            "singleSelect" : false,
+            "name" : "mdctrl",
+            "modelid" : "95108d3cd87f93c6cd08dfd2c1d16d06",
+            "modeltype" : "PSDELIST"
+          }, {
+            "controlType" : "SEARCHBAR",
+            "name" : "searchbar",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+            },
+            "getPSControlParam" : {
+              "id" : "searchbar"
+            },
+            "quickGroupCount" : -1,
+            "quickSearchMode" : 1,
+            "quickSearchWidth" : 0,
+            "enableFilter" : false,
+            "enableGroup" : false,
+            "enableQuickSearch" : true,
+            "mobileSearchBar" : true
+          }, {
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "DE.LNAME.WORK_ITEM"
+            },
+            "caption" : "我负责的工作项",
+            "codeName" : "my_assignee_mobboard_captionbar",
+            "controlType" : "CAPTIONBAR",
+            "name" : "captionbar",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+            },
+            "getPSControlParam" : { }
+          } ]
+        },
+        "title" : "我负责的工作项",
+        "viewStyle" : "DEFAULT",
+        "viewType" : "DEMOBMDVIEW",
+        "xDataControlName" : "mdctrl",
+        "enableDP" : true,
+        "enableFilter" : true,
+        "enablePullDownRefresh" : false,
+        "enableQuickSearch" : true,
+        "enableSearch" : true,
+        "modelid" : "4ed5c0df1eb863f833702707b17f8964",
+        "modeltype" : "PSAPPDEVIEW",
+        "getPSAppDERSPaths" : [ [ {
+          "actionRSMode" : 1,
+          "codeName" : "work_items",
+          "dataRSMode" : 0,
+          "majorDECodeName" : "project",
+          "majorDEName" : "PROJECT",
+          "getMajorPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+          },
+          "minorDECodeName" : "work_item",
+          "minorDEName" : "WORK_ITEM",
+          "getMinorPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+          },
+          "name" : "DER1N_WORK_ITEM_PROJECT_PROJECT_ID",
+          "getParentPSAppDEField" : {
+            "name" : "PROJECT_ID",
+            "codeName" : "project_id"
+          },
+          "rSMode" : 2
+        } ] ]
+      },
+      "portletType" : "VIEW",
+      "title" : "我负责的工作项",
+      "showTitleBar" : false,
+      "modelid" : "0CA2AEC4-6FCA-43CF-925A-FA4266F97D34",
+      "modeltype" : "PSSYSDBPART"
+    }, {
+      "codeName" : "my_created",
+      "controlType" : "PORTLET",
+      "height" : 1.0,
+      "name" : "dashboard_sysportlet3",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+      },
+      "getPSControlHandler" : {
+        "enableDEFieldPrivilege" : false,
+        "id" : "dashboard_sysportlet3"
+      },
+      "getPSControlParam" : {
+        "height" : 1.0,
+        "autoLoad" : true,
+        "showBusyIndicator" : true
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "height" : 1,
+        "heightMode" : "PX",
+        "layout" : "TABLE_24COL"
+      },
+      "getPortletPSAppView" : {
+        "accUserMode" : 2,
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DE.LNAME.WORK_ITEM"
+        },
+        "caption" : "我创建的工作项",
+        "codeName" : "work_item_my_created_mobdash",
+        "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_my_created_mobdash.json",
+        "name" : "work_itemmy_created_mobdash",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+        },
+        "getPSAppModule" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPMODULES/ProjMgmt.json"
+        },
+        "getPSDEViewCodeName" : "my_created_mobdash",
+        "getPSDEViewId" : "D0E39D98-4D35-44BD-A867-0D374820BDC6",
+        "getPSSysCss" : {
+          "cssName" : "mob_recent_item_style"
+        },
+        "getPSViewLayoutPanel" : {
+          "getAllPSPanelFields" : [ {
+            "id" : "show_more",
+            "hidden" : true,
+            "viewFieldName" : "show_more"
+          } ],
+          "codeName" : "usr1024530121",
+          "controlType" : "VIEWLAYOUTPANEL",
+          "layoutMode" : "FLEX",
+          "logicName" : "my_created_mobdash实体移动端多数据视图布局面板",
+          "name" : "layoutpanel",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSControlParam" : { },
+          "getPSLayout" : {
+            "layout" : "FLEX"
+          },
+          "getRootPSPanelItems" : [ {
+            "caption" : "容器",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CONTAINER",
+            "name" : "view_top",
+            "getPSLayout" : {
+              "dir" : "column",
+              "layout" : "FLEX"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX",
+              "shrink" : 0
+            },
+            "getPSPanelItems" : [ {
+              "caption" : "容器",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "CONTAINER",
+              "name" : "view_header",
+              "getPSLayout" : {
+                "dir" : "column",
+                "layout" : "FLEX"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX",
+                "shrink" : 0
+              },
+              "getPSPanelItems" : [ {
+                "caption" : "容器",
+                "itemStyle" : "DEFAULT",
+                "itemType" : "CONTAINER",
+                "name" : "view_toolbar",
+                "getPSLayout" : {
+                  "dir" : "row",
+                  "layout" : "FLEX"
+                },
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "getPSPanelItems" : [ {
+                  "caption" : "容器",
+                  "contentWidth" : 100.0,
+                  "itemStyle" : "DEFAULT",
+                  "itemType" : "CONTAINER",
+                  "name" : "view_left_toolbar",
+                  "getPSLayout" : {
+                    "layout" : "FLEX"
+                  },
+                  "getPSLayoutPos" : {
+                    "basis" : 100,
+                    "grow" : -1,
+                    "layout" : "FLEX",
+                    "shrink" : 0,
+                    "width" : 100,
+                    "widthMode" : "PX"
+                  },
+                  "getPSPanelItems" : [ {
+                    "caption" : "左侧工具栏",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "CTRLPOS",
+                    "name" : "lefttoolbar",
+                    "getPSLayoutPos" : {
+                      "grow" : 1,
+                      "heightMode" : "FULL",
+                      "layout" : "FLEX",
+                      "vAlignSelf" : "MIDDLE",
+                      "widthMode" : "FULL"
+                    },
+                    "showCaption" : true
+                  } ],
+                  "width" : 100.0
+                }, {
+                  "caption" : "容器",
+                  "itemStyle" : "DEFAULT",
+                  "itemType" : "CONTAINER",
+                  "name" : "view_captionbar",
+                  "getPSLayout" : {
+                    "align" : "center",
+                    "dir" : "row",
+                    "layout" : "FLEX"
+                  },
+                  "getPSLayoutPos" : {
+                    "grow" : 1,
+                    "layout" : "FLEX"
+                  },
+                  "getPSPanelItems" : [ {
+                    "caption" : "标题栏",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "CTRLPOS",
+                    "name" : "captionbar",
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "heightMode" : "FULL",
+                      "layout" : "FLEX"
+                    },
+                    "showCaption" : true
+                  } ]
+                }, {
+                  "caption" : "容器",
+                  "contentWidth" : 100.0,
+                  "itemStyle" : "DEFAULT",
+                  "itemType" : "CONTAINER",
+                  "name" : "view_right_toolbar",
+                  "getPSLayout" : {
+                    "layout" : "FLEX"
+                  },
+                  "getPSLayoutPos" : {
+                    "basis" : 100,
+                    "grow" : -1,
+                    "layout" : "FLEX",
+                    "shrink" : 0,
+                    "width" : 100,
+                    "widthMode" : "PX"
+                  },
+                  "getPSPanelItems" : [ {
+                    "caption" : "工具栏",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "CTRLPOS",
+                    "name" : "righttoolbar",
+                    "getPSLayoutPos" : {
+                      "grow" : 1,
+                      "heightMode" : "FULL",
+                      "layout" : "FLEX",
+                      "vAlignSelf" : "MIDDLE",
+                      "widthMode" : "FULL"
+                    },
+                    "showCaption" : true
+                  } ],
+                  "width" : 100.0
+                } ],
+                "predefinedType" : "Toolbar"
+              } ],
+              "predefinedType" : "Header"
+            }, {
+              "caption" : "容器",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "CONTAINER",
+              "name" : "view_toolbar2",
+              "getPSLayout" : {
+                "layout" : "FLEX"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSPanelItems" : [ {
+                "caption" : "搜索栏",
+                "itemStyle" : "DEFAULT",
+                "itemType" : "CTRLPOS",
+                "name" : "searchbar",
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "showCaption" : true
+              } ],
+              "predefinedType" : "Toolbar"
+            }, {
+              "caption" : "容器",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "CONTAINER",
+              "name" : "view_searchform",
+              "getPSLayout" : {
+                "layout" : "FLEX"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSPanelItems" : [ {
+                "caption" : "搜索表单",
+                "itemStyle" : "DEFAULT",
+                "itemType" : "CTRLPOS",
+                "name" : "searchform",
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "getPSPanelItemGroupLogics" : [ {
+                  "groupOP" : "AND",
+                  "logicCat" : "PANELVISIBLE",
+                  "logicType" : "GROUP",
+                  "name" : "面板成员[searchform][面板显示]逻辑",
+                  "getPSPanelItemLogics" : [ {
+                    "condOp" : "EQ",
+                    "dstModelField" : "show_more",
+                    "logicType" : "SINGLE",
+                    "name" : "逻辑项",
+                    "value" : "false"
+                  } ],
+                  "relatedItemNames" : [ "show_more" ],
+                  "notMode" : false
+                } ],
+                "showCaption" : true
+              } ]
+            } ]
+          }, {
+            "caption" : "容器",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CONTAINER",
+            "name" : "view_content",
+            "getPSLayout" : {
+              "layout" : "FLEX"
+            },
+            "getPSLayoutPos" : {
+              "grow" : 1,
+              "layout" : "FLEX"
+            },
+            "getPSPanelItems" : [ {
+              "caption" : "多数据部件",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "CTRLPOS",
+              "name" : "mdctrl",
+              "getPSLayoutPos" : {
+                "grow" : 1,
+                "layout" : "FLEX"
+              },
+              "showCaption" : true
+            }, {
+              "actionType" : "UIACTION",
+              "buttonStyle" : "DEFAULT",
+              "caption" : "显示更多",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "BUTTON",
+              "name" : "button_calluilogic",
+              "getPSAppViewUIAction" : {
+                "modelref" : true,
+                "id" : "layoutpanel_button_calluilogic"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSPanelItemGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "name" : "面板成员[button_calluilogic][面板显示]逻辑",
+                "getPSPanelItemLogics" : [ {
+                  "condOp" : "NOTEQ",
+                  "dstModelField" : "show_more",
+                  "logicType" : "SINGLE",
+                  "name" : "逻辑项",
+                  "value" : "false"
+                } ],
+                "relatedItemNames" : [ "show_more" ],
+                "notMode" : false
+              } ],
+              "getPSUIAction" : {
+                "actionTarget" : "NONE",
+                "caption" : "显示更多",
+                "codeName" : "show_more_created_item",
+                "getFrontPSAppView" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_my_created_mobdash.json",
+                  "viewType" : "DEMOBMDVIEW"
+                },
+                "frontProcessType" : "WIZARD",
+                "fullCodeName" : "work_item_show_more_created_item",
+                "name" : "显示更多_我创建的工作项(移动端仪表盘)",
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+                },
+                "timeout" : 60000,
+                "uIActionMode" : "FRONT",
+                "uIActionTag" : "show_more_created_item",
+                "uIActionType" : "DEUIACTION",
+                "id" : "show_more_created_item@work_item"
+              },
+              "tooltip" : "显示更多",
+              "uIActionTarget" : "NONE",
+              "showCaption" : true
+            }, {
+              "caption" : "文本(动态)",
+              "itemType" : "FIELD",
+              "name" : "show_more",
+              "getPSEditor" : {
+                "editorType" : "HIDDEN",
+                "name" : "show_more",
+                "predefinedType" : "FIELD_TEXT_DYNAMIC"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "viewFieldName" : "show_more",
+              "hidden" : true
+            } ],
+            "predefinedType" : "Content"
+          }, {
+            "caption" : "容器",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CONTAINER",
+            "name" : "view_footer",
+            "getPSLayout" : {
+              "layout" : "FLEX"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX",
+              "shrink" : 0
+            },
+            "getPSPanelItems" : [ {
+              "caption" : "工具栏",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "CTRLPOS",
+              "name" : "footertoolbar",
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "showCaption" : true
+            } ],
+            "predefinedType" : "Footer"
+          } ],
+          "layoutBodyOnly" : true,
+          "layoutPanel" : true,
+          "mobilePanel" : true,
+          "useDefaultLayout" : false,
+          "viewProxyMode" : true,
+          "modelid" : "3B6EF0B9-7432-41D0-9117-557DB337B8D5",
+          "modeltype" : "PSSYSVIEWLAYOUTPANEL",
+          "getPSAppViewEngines" : [ {
+            "engineCat" : "VIEW",
+            "engineType" : "MobMDView",
+            "name" : "engine"
+          } ],
+          "getPSAppViewLogics" : [ {
+            "logicTrigger" : "CUSTOM",
+            "logicType" : "APPUILOGIC",
+            "name" : "newdata",
+            "getPSAppUILogic" : {
+              "actionAfterWizard" : "DEFAULT",
+              "logicType" : "PREDEFINED",
+              "name" : "新建数据",
+              "viewLogicType" : "APP_NEWDATA",
+              "batchAddOnly" : false,
+              "enableBatchAdd" : false,
+              "enableWizardAdd" : true
+            }
+          }, {
+            "logicTrigger" : "CUSTOM",
+            "logicType" : "APPUILOGIC",
+            "name" : "opendata",
+            "getPSAppUILogic" : {
+              "logicType" : "PREDEFINED",
+              "name" : "打开数据",
+              "getOpenDataPSAppView" : {
+                "getRefPSAppView" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_common_edit_view.json",
+                  "viewType" : "DEMOBEDITVIEW"
+                }
+              },
+              "getPSAppUILogicRefViews" : [ {
+                "getRefPSAppView" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_common_edit_view.json",
+                  "viewType" : "DEMOBEDITVIEW"
+                }
+              } ],
+              "viewLogicType" : "APP_OPENDATA",
+              "editMode" : true
+            }
+          } ],
+          "getPSAppViewRefs" : [ {
+            "name" : "EDITDATA",
+            "realTitle" : "移动端通用编辑",
+            "getRefPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_common_edit_view.json",
+              "viewType" : "DEMOBEDITVIEW"
+            }
+          } ],
+          "getPSControls" : [ {
+            "codeName" : "mob_common_list",
+            "controlStyle" : "LISTVIEW",
+            "controlType" : "MOBMDCTRL",
+            "getCreatePSControlAction" : {
+              "modelref" : true,
+              "id" : "create",
+              "actionName" : "Create",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "CREATE",
+              "name" : "create",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "create"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+              }
+            },
+            "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item/PSMOBMDCTRLS/mob_common_list.json",
+            "getFetchPSControlAction" : {
+              "modelref" : true,
+              "id" : "fetch",
+              "actionType" : "DEDATASET",
+              "name" : "fetch",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "fetch_my_created"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+              }
+            },
+            "getGetPSControlAction" : {
+              "modelref" : true,
+              "id" : "load",
+              "actionName" : "Get",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "READ",
+              "name" : "load",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "get"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+              }
+            },
+            "groupMode" : "NONE",
+            "getItemPSLayoutPanel" : {
+              "getAllPSPanelFields" : [ {
+                "id" : "work_item_type_id",
+                "viewFieldName" : "WORK_ITEM_TYPE_ID"
+              }, {
+                "id" : "title",
+                "viewFieldName" : "TITLE"
+              }, {
+                "id" : "show_identifier",
+                "viewFieldName" : "SHOW_IDENTIFIER"
+              }, {
+                "id" : "state",
+                "viewFieldName" : "STATE"
+              }, {
+                "id" : "start_at",
+                "viewFieldName" : "START_AT"
+              }, {
+                "id" : "end_at",
+                "viewFieldName" : "END_AT"
+              }, {
+                "id" : "assignee_name",
+                "viewFieldName" : "ASSIGNEE_ID"
+              } ],
+              "codeName" : "usr0920293613",
+              "controlType" : "PANEL",
+              "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item/PSPANELS/usr0920293613.json",
+              "layoutMode" : "TABLE_24COL",
+              "logicName" : "mob_recycle_list_列表项面板",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+              },
+              "getPSControlParam" : { },
+              "getPSLayout" : {
+                "childColMD" : 24,
+                "columnCount" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "getPSSysCss" : {
+                "cssName" : "mob_common_list_style"
+              },
+              "getRootPSPanelItems" : [ {
+                "itemStyle" : "DEFAULT",
+                "itemType" : "CONTAINER",
+                "name" : "page_container",
+                "getPSLayout" : {
+                  "dir" : "column",
+                  "layout" : "FLEX"
+                },
+                "getPSLayoutPos" : {
+                  "colMD" : 24,
+                  "layout" : "TABLE_24COL",
+                  "spacingLeft" : "OUTERMEDIUM",
+                  "spacingRight" : "OUTERMEDIUM",
+                  "spacingTop" : "OUTERSMALL"
+                },
+                "getPSPanelItems" : [ {
+                  "caption" : "容器",
+                  "itemStyle" : "DEFAULT",
+                  "itemType" : "CONTAINER",
+                  "name" : "container",
+                  "getPSLayout" : {
+                    "dir" : "row",
+                    "layout" : "FLEX"
+                  },
+                  "getPSLayoutPos" : {
+                    "grow" : -1,
+                    "layout" : "FLEX"
+                  },
+                  "getPSPanelItems" : [ {
+                    "caption" : "文本(动态)",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "FIELD",
+                    "name" : "work_item_type_id",
+                    "getPSEditor" : {
+                      "editorParams" : {
+                        "SHOWMODE" : "ICON"
+                      },
+                      "editorType" : "SPAN",
+                      "name" : "work_item_type_id",
+                      "getPSAppCodeList" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_type.json"
+                      },
+                      "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                      "renderMode" : "TEXT_DYNAMIC",
+                      "enableLinkView" : false
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX"
+                    },
+                    "viewFieldName" : "WORK_ITEM_TYPE_ID",
+                    "convertToCodeItemText" : true
+                  }, {
+                    "caption" : "文本(动态)",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "FIELD",
+                    "name" : "title",
+                    "getPSEditor" : {
+                      "editorType" : "SPAN",
+                      "name" : "title",
+                      "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                      "renderMode" : "TEXT_DYNAMIC",
+                      "enableLinkView" : false
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX",
+                      "spacingLeft" : "OUTERSMALL"
+                    },
+                    "viewFieldName" : "TITLE"
+                  } ]
+                }, {
+                  "caption" : "容器",
+                  "itemStyle" : "DEFAULT",
+                  "itemType" : "CONTAINER",
+                  "name" : "container1",
+                  "getPSLayout" : {
+                    "align" : "space-between",
+                    "dir" : "row",
+                    "layout" : "FLEX",
+                    "vAlign" : "center"
+                  },
+                  "getPSLayoutPos" : {
+                    "grow" : -1,
+                    "layout" : "FLEX",
+                    "spacingTop" : "OUTERSMALL"
+                  },
+                  "getPSPanelItems" : [ {
+                    "caption" : "容器",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "CONTAINER",
+                    "name" : "container4",
+                    "getPSLayout" : {
+                      "align" : "center",
+                      "dir" : "column",
+                      "layout" : "FLEX",
+                      "vAlign" : "flex-start"
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX"
+                    },
+                    "getPSPanelItems" : [ {
+                      "caption" : "容器",
+                      "itemStyle" : "DEFAULT",
+                      "itemType" : "CONTAINER",
+                      "name" : "container2",
+                      "getPSLayout" : {
+                        "align" : "flex-start",
+                        "dir" : "row",
+                        "layout" : "FLEX",
+                        "vAlign" : "center"
+                      },
+                      "getPSLayoutPos" : {
+                        "grow" : -1,
+                        "layout" : "FLEX"
+                      },
+                      "getPSPanelItems" : [ {
+                        "caption" : "文本(动态)",
+                        "itemStyle" : "DEFAULT",
+                        "itemType" : "FIELD",
+                        "name" : "show_identifier",
+                        "getPSEditor" : {
+                          "editorType" : "SPAN",
+                          "name" : "show_identifier",
+                          "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                          "renderMode" : "TEXT_DYNAMIC",
+                          "enableLinkView" : false
+                        },
+                        "getPSLayoutPos" : {
+                          "grow" : -1,
+                          "layout" : "FLEX"
+                        },
+                        "viewFieldName" : "SHOW_IDENTIFIER"
+                      }, {
+                        "caption" : "文本(动态)",
+                        "itemStyle" : "DEFAULT",
+                        "itemType" : "FIELD",
+                        "name" : "state",
+                        "getPSEditor" : {
+                          "editorParams" : {
+                            "REVERSECOLOR" : "true"
+                          },
+                          "editorType" : "SPAN",
+                          "name" : "state",
+                          "getPSAppCodeList" : {
+                            "modelref" : true,
+                            "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_state.json"
+                          },
+                          "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                          "renderMode" : "TEXT_DYNAMIC",
+                          "enableLinkView" : false
+                        },
+                        "getPSLayoutPos" : {
+                          "grow" : -1,
+                          "layout" : "FLEX",
+                          "spacingLeft" : "OUTERSMALL"
+                        },
+                        "viewFieldName" : "STATE",
+                        "convertToCodeItemText" : true
+                      } ]
+                    }, {
+                      "caption" : "容器",
+                      "itemStyle" : "DEFAULT",
+                      "itemType" : "CONTAINER",
+                      "name" : "container5",
+                      "getPSLayout" : {
+                        "align" : "flex-start",
+                        "dir" : "row",
+                        "layout" : "FLEX",
+                        "vAlign" : "center"
+                      },
+                      "getPSLayoutPos" : {
+                        "grow" : -1,
+                        "layout" : "FLEX",
+                        "spacingTop" : "OUTERSMALL"
+                      },
+                      "getPSPanelItems" : [ {
+                        "caption" : "文本(动态)",
+                        "itemStyle" : "DEFAULT",
+                        "itemType" : "FIELD",
+                        "name" : "start_at",
+                        "getPSEditor" : {
+                          "editorType" : "SPAN",
+                          "name" : "start_at",
+                          "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                          "renderMode" : "TEXT_DYNAMIC",
+                          "enableLinkView" : false
+                        },
+                        "getPSLayoutPos" : {
+                          "grow" : -1,
+                          "layout" : "FLEX"
+                        },
+                        "viewFieldName" : "START_AT"
+                      }, {
+                        "caption" : "文本(动态)",
+                        "itemStyle" : "DEFAULT",
+                        "itemType" : "FIELD",
+                        "name" : "end_at",
+                        "getPSEditor" : {
+                          "editorType" : "SPAN",
+                          "name" : "end_at",
+                          "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                          "renderMode" : "TEXT_DYNAMIC",
+                          "enableLinkView" : false
+                        },
+                        "getPSLayoutPos" : {
+                          "grow" : -1,
+                          "layout" : "FLEX",
+                          "spacingLeft" : "OUTERSMALL"
+                        },
+                        "viewFieldName" : "END_AT"
+                      } ]
+                    } ]
+                  }, {
+                    "caption" : "容器",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "CONTAINER",
+                    "name" : "container3",
+                    "getPSControlLogics" : [ {
+                      "itemName" : "CONTAINER3",
+                      "logicTag" : "mdctrl_itempanel",
+                      "logicType" : "SCRIPT",
+                      "name" : "logic",
+                      "scriptCode" : "data.assignee_name != null",
+                      "triggerType" : "ITEMVISIBLE"
+                    } ],
+                    "getPSLayout" : {
+                      "layout" : "FLEX"
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX"
+                    },
+                    "getPSPanelItems" : [ {
+                      "caption" : "文本(动态)",
+                      "itemStyle" : "DEFAULT",
+                      "itemType" : "FIELD",
+                      "name" : "assignee_name",
+                      "getPSEditor" : {
+                        "editorParams" : {
+                          "SHOWNAMETEXT" : "false"
+                        },
+                        "editorStyle" : "MOB_PERSONNEL_INFO",
+                        "editorType" : "SPAN",
+                        "name" : "assignee_name",
+                        "getPSAppCodeList" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
+                        },
+                        "getPSSysPFPlugin" : {
+                          "pluginType" : "EDITOR_CUSTOMSTYLE",
+                          "pluginCode" : "MOB_PERSONNEL_INFO",
+                          "runtimeObject" : true
+                        },
+                        "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                        "renderMode" : "TEXT_DYNAMIC",
+                        "enableLinkView" : false
+                      },
+                      "getPSLayoutPos" : {
+                        "grow" : -1,
+                        "layout" : "FLEX"
+                      },
+                      "viewFieldName" : "ASSIGNEE_ID",
+                      "convertToCodeItemText" : true
+                    } ]
+                  } ]
+                } ]
+              } ],
+              "name" : "mdctrl_itempanel",
+              "modelid" : "4F6DAA5F-52D7-4013-ACC2-96F18EF0A614",
+              "modeltype" : "PSSYSVIEWPANEL"
+            },
+            "logicName" : "mob_common_list",
+            "mobListStyle" : "LISTVIEW",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+            },
+            "getPSControlHandler" : {
+              "getPSHandlerActions" : [ {
+                "actionName" : "Get",
+                "actionType" : "DEACTION",
+                "dataAccessAction" : "READ",
+                "name" : "load",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "get"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+                }
+              }, {
+                "actionName" : "Create",
+                "actionType" : "DEACTION",
+                "dataAccessAction" : "CREATE",
+                "name" : "create",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "create"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+                }
+              }, {
+                "actionName" : "Update",
+                "actionType" : "DEACTION",
+                "dataAccessAction" : "UPDATE",
+                "name" : "update",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "update"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+                }
+              }, {
+                "actionName" : "Remove",
+                "actionType" : "DEACTION",
+                "dataAccessAction" : "DELETE",
+                "name" : "remove",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "remove"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+                }
+              }, {
+                "actionType" : "DEDATASET",
+                "name" : "fetch",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "fetch_my_created"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+                }
+              } ],
+              "userDRAction" : "READ",
+              "enableDEFieldPrivilege" : false,
+              "id" : "列表控件处理器"
+            },
+            "getPSControlParam" : {
+              "autoLoad" : true,
+              "showBusyIndicator" : true,
+              "id" : "MDCTRL"
+            },
+            "getPSDEDataImport" : {
+              "modelref" : true,
+              "id" : "import_work_item_waterfall"
+            },
+            "getPSDEListDataItems" : [ {
+              "dataType" : 25,
+              "getFrontPSCodeList" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_state2.json"
+              },
+              "name" : "state",
+              "getPSAppDEField" : {
+                "name" : "STATE",
+                "codeName" : "state"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "assignee_name",
+              "getPSAppDEField" : {
+                "name" : "ASSIGNEE_NAME",
+                "codeName" : "assignee_name"
+              }
+            }, {
+              "dataType" : 25,
+              "getFrontPSCodeList" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_priority.json"
+              },
+              "name" : "priority",
+              "getPSAppDEField" : {
+                "name" : "PRIORITY",
+                "codeName" : "priority"
+              }
+            }, {
+              "dataType" : 5,
+              "format" : "YYYY-MM-DD",
+              "name" : "start_at",
+              "getPSAppDEField" : {
+                "name" : "START_AT",
+                "codeName" : "start_at"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "show_identifier",
+              "getPSAppDEField" : {
+                "name" : "SHOW_IDENTIFIER",
+                "codeName" : "show_identifier"
+              }
+            }, {
+              "dataType" : 5,
+              "format" : "YYYY-MM-DD",
+              "name" : "end_at",
+              "getPSAppDEField" : {
+                "name" : "END_AT",
+                "codeName" : "end_at"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "title",
+              "getPSAppDEField" : {
+                "name" : "TITLE",
+                "codeName" : "title"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "srfkey",
+              "getPSAppDEField" : {
+                "name" : "ID",
+                "codeName" : "id"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "srfmajortext",
+              "getPSAppDEField" : {
+                "name" : "TITLE",
+                "codeName" : "title"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "assignee_id",
+              "getPSAppDEField" : {
+                "name" : "ASSIGNEE_ID",
+                "codeName" : "assignee_id"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "project_id",
+              "getPSAppDEField" : {
+                "name" : "PROJECT_ID",
+                "codeName" : "project_id"
+              }
+            }, {
+              "dataType" : 25,
+              "getFrontPSCodeList" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_type.json"
+              },
+              "name" : "srfdatatype",
+              "getPSAppDEField" : {
+                "name" : "WORK_ITEM_TYPE_ID",
+                "codeName" : "work_item_type_id"
+              }
+            }, {
+              "dataType" : 25,
+              "getFrontPSCodeList" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_type.json"
+              },
+              "name" : "work_item_type_id",
+              "getPSAppDEField" : {
+                "name" : "WORK_ITEM_TYPE_ID",
+                "codeName" : "work_item_type_id"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "pid",
+              "getPSAppDEField" : {
+                "name" : "PID",
+                "codeName" : "pid"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "sprint_id",
+              "getPSAppDEField" : {
+                "name" : "SPRINT_ID",
+                "codeName" : "sprint_id"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "board_id",
+              "getPSAppDEField" : {
+                "name" : "BOARD_ID",
+                "codeName" : "board_id"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "entry_id",
+              "getPSAppDEField" : {
+                "name" : "ENTRY_ID",
+                "codeName" : "entry_id"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "swimlane_id",
+              "getPSAppDEField" : {
+                "name" : "SWIMLANE_ID",
+                "codeName" : "swimlane_id"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "top_id",
+              "getPSAppDEField" : {
+                "name" : "TOP_ID",
+                "codeName" : "top_id"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "release_id",
+              "getPSAppDEField" : {
+                "name" : "RELEASE_ID",
+                "codeName" : "release_id"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "srfmstag"
+            } ],
+            "getPSDEListItems" : [ {
+              "align" : "LEFT",
+              "cLConvertMode" : "FRONT",
+              "caption" : "状态",
+              "dataItemName" : "state",
+              "itemType" : "TEXTITEM",
+              "name" : "STATE",
+              "width" : 150,
+              "widthString" : "150px",
+              "enableSort" : true
+            }, {
+              "align" : "LEFT",
+              "caption" : "负责人",
+              "dataItemName" : "assignee_name",
+              "itemType" : "TEXTITEM",
+              "name" : "ASSIGNEE_NAME",
+              "width" : 150,
+              "widthString" : "150px",
+              "enableSort" : true
+            }, {
+              "align" : "LEFT",
+              "cLConvertMode" : "FRONT",
+              "caption" : "优先级",
+              "dataItemName" : "priority",
+              "itemType" : "TEXTITEM",
+              "name" : "PRIORITY",
+              "width" : 150,
+              "widthString" : "150px",
+              "enableSort" : true
+            }, {
+              "align" : "LEFT",
+              "caption" : "开始时间",
+              "dataItemName" : "start_at",
+              "itemType" : "TEXTITEM",
+              "name" : "START_AT",
+              "valueFormat" : "YYYY-MM-DD",
+              "width" : 150,
+              "widthString" : "150px",
+              "enableSort" : true
+            }, {
+              "align" : "LEFT",
+              "caption" : "编号",
+              "dataItemName" : "show_identifier",
+              "itemType" : "TEXTITEM",
+              "name" : "SHOW_IDENTIFIER",
+              "width" : 150,
+              "widthString" : "150px",
+              "enableSort" : true
+            }, {
+              "align" : "LEFT",
+              "caption" : "截止时间",
+              "dataItemName" : "end_at",
+              "itemType" : "TEXTITEM",
+              "name" : "END_AT",
+              "valueFormat" : "YYYY-MM-DD",
+              "width" : 150,
+              "widthString" : "150px",
+              "enableSort" : true
+            }, {
+              "align" : "LEFT",
+              "caption" : "标题",
+              "dataItemName" : "title",
+              "itemType" : "TEXTITEM",
+              "name" : "TITLE",
+              "width" : 150,
+              "widthString" : "150px",
+              "enableSort" : true
+            } ],
+            "getPSSysPFPlugin" : {
+              "pluginType" : "CUSTOM",
+              "pluginCode" : "MOB_MDCTRL_TREE",
+              "runtimeObject" : true
+            },
+            "pagingMode" : 2,
+            "pagingSize" : 20,
+            "getRemovePSControlAction" : {
+              "modelref" : true,
+              "id" : "remove",
+              "actionName" : "Remove",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "DELETE",
+              "name" : "remove",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "remove"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+              }
+            },
+            "getUpdatePSControlAction" : {
+              "modelref" : true,
+              "id" : "update",
+              "actionName" : "Update",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "UPDATE",
+              "name" : "update",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "update"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+              }
+            },
+            "hasWFDataItems" : false,
+            "enableGroup" : false,
+            "enableRowEdit" : false,
+            "enableRowEditGroup" : false,
+            "enableRowEditOrder" : false,
+            "enableRowNew" : false,
+            "noSort" : false,
+            "showHeader" : true,
+            "singleSelect" : false,
+            "name" : "mdctrl",
+            "modelid" : "95108d3cd87f93c6cd08dfd2c1d16d06",
+            "modeltype" : "PSDELIST"
+          }, {
+            "controlType" : "SEARCHBAR",
+            "name" : "searchbar",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+            },
+            "getPSControlParam" : {
+              "id" : "searchbar"
+            },
+            "quickGroupCount" : -1,
+            "quickSearchMode" : 1,
+            "quickSearchWidth" : 0,
+            "enableFilter" : false,
+            "enableGroup" : false,
+            "enableQuickSearch" : true,
+            "mobileSearchBar" : true
+          }, {
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "DE.LNAME.WORK_ITEM"
+            },
+            "caption" : "我创建的工作项",
+            "codeName" : "my_created_mobdash_captionbar",
+            "controlType" : "CAPTIONBAR",
+            "name" : "captionbar",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+            },
+            "getPSControlParam" : { }
+          } ]
+        },
+        "title" : "我创建的工作项",
+        "viewStyle" : "DEFAULT",
+        "viewType" : "DEMOBMDVIEW",
+        "xDataControlName" : "mdctrl",
+        "enableDP" : true,
+        "enableFilter" : true,
+        "enablePullDownRefresh" : false,
+        "enableQuickSearch" : true,
+        "enableSearch" : true,
+        "modelid" : "0fa62b0dd2616d4ede83217cc756a7ac",
+        "modeltype" : "PSAPPDEVIEW",
+        "getPSAppDERSPaths" : [ [ {
+          "actionRSMode" : 1,
+          "codeName" : "work_items",
+          "dataRSMode" : 0,
+          "majorDECodeName" : "project",
+          "majorDEName" : "PROJECT",
+          "getMajorPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+          },
+          "minorDECodeName" : "work_item",
+          "minorDEName" : "WORK_ITEM",
+          "getMinorPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+          },
+          "name" : "DER1N_WORK_ITEM_PROJECT_PROJECT_ID",
+          "getParentPSAppDEField" : {
+            "name" : "PROJECT_ID",
+            "codeName" : "project_id"
+          },
+          "rSMode" : 2
+        } ] ]
+      },
+      "portletType" : "VIEW",
+      "title" : "我创建的工作项",
+      "showTitleBar" : false,
+      "modelid" : "A67A49E3-C6BA-4E13-94BB-A8E792BE9D58",
+      "modeltype" : "PSSYSDBPART"
+    }, {
+      "codeName" : "mob_recent_project",
+      "controlType" : "PORTLET",
+      "height" : 1.0,
+      "name" : "dashboard_sysportlet4",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+      },
+      "getPSControlHandler" : {
+        "enableDEFieldPrivilege" : false,
+        "id" : "dashboard_sysportlet4"
+      },
+      "getPSControlParam" : {
+        "height" : 1.0,
+        "autoLoad" : true,
+        "showBusyIndicator" : true
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "height" : 1,
+        "heightMode" : "PX",
+        "layout" : "TABLE_24COL"
+      },
+      "getPortletPSAppView" : {
+        "accUserMode" : 2,
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DE.LNAME.RECENT"
+        },
+        "caption" : "最近访问的项目",
+        "codeName" : "recent_recent_access_project_mobbash",
+        "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/recent_recent_access_project_mobbash.json",
+        "name" : "recentrecent_access_project_mobbash",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+        },
+        "getPSAppModule" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPMODULES/Base.json"
+        },
+        "getPSDEViewCodeName" : "recent_access_project_mobbash",
+        "getPSDEViewId" : "40CCA861-E22A-410C-8021-A8A1FC5C63F3",
+        "getPSSysCss" : {
+          "cssName" : "mob_recent_access_project_style"
+        },
+        "getPSViewLayoutPanel" : {
+          "codeName" : "usr1024498761",
+          "controlType" : "VIEWLAYOUTPANEL",
+          "layoutMode" : "FLEX",
+          "logicName" : "recent_access_project_mobbash实体移动端多数据视图布局面板",
+          "name" : "layoutpanel",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+          },
+          "getPSControlParam" : { },
+          "getPSLayout" : {
+            "layout" : "FLEX"
+          },
+          "getRootPSPanelItems" : [ {
+            "caption" : "容器",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CONTAINER",
+            "name" : "view_top",
+            "getPSLayout" : {
+              "dir" : "column",
+              "layout" : "FLEX"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX",
+              "shrink" : 0
+            },
+            "getPSPanelItems" : [ {
+              "caption" : "容器",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "CONTAINER",
+              "name" : "view_header",
+              "getPSLayout" : {
+                "dir" : "column",
+                "layout" : "FLEX"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX",
+                "shrink" : 0
+              },
+              "getPSPanelItems" : [ {
+                "caption" : "容器",
+                "itemStyle" : "DEFAULT",
+                "itemType" : "CONTAINER",
+                "name" : "view_toolbar",
+                "getPSLayout" : {
+                  "dir" : "row",
+                  "layout" : "FLEX"
+                },
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "getPSPanelItems" : [ {
+                  "caption" : "容器",
+                  "contentWidth" : 100.0,
+                  "itemStyle" : "DEFAULT",
+                  "itemType" : "CONTAINER",
+                  "name" : "view_left_toolbar",
+                  "getPSLayout" : {
+                    "layout" : "FLEX"
+                  },
+                  "getPSLayoutPos" : {
+                    "basis" : 100,
+                    "grow" : -1,
+                    "layout" : "FLEX",
+                    "shrink" : 0,
+                    "width" : 100,
+                    "widthMode" : "PX"
+                  },
+                  "getPSPanelItems" : [ {
+                    "caption" : "左侧工具栏",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "CTRLPOS",
+                    "name" : "lefttoolbar",
+                    "getPSLayoutPos" : {
+                      "grow" : 1,
+                      "heightMode" : "FULL",
+                      "layout" : "FLEX",
+                      "vAlignSelf" : "MIDDLE",
+                      "widthMode" : "FULL"
+                    },
+                    "showCaption" : true
+                  } ],
+                  "width" : 100.0
+                }, {
+                  "caption" : "容器",
+                  "itemStyle" : "DEFAULT",
+                  "itemType" : "CONTAINER",
+                  "name" : "view_captionbar",
+                  "getPSLayout" : {
+                    "align" : "center",
+                    "dir" : "row",
+                    "layout" : "FLEX"
+                  },
+                  "getPSLayoutPos" : {
+                    "grow" : 1,
+                    "layout" : "FLEX"
+                  },
+                  "getPSPanelItems" : [ {
+                    "caption" : "标题栏",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "CTRLPOS",
+                    "name" : "captionbar",
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "heightMode" : "FULL",
+                      "layout" : "FLEX"
+                    },
+                    "showCaption" : true
+                  } ]
+                }, {
+                  "caption" : "容器",
+                  "contentWidth" : 100.0,
+                  "itemStyle" : "DEFAULT",
+                  "itemType" : "CONTAINER",
+                  "name" : "view_right_toolbar",
+                  "getPSLayout" : {
+                    "layout" : "FLEX"
+                  },
+                  "getPSLayoutPos" : {
+                    "basis" : 100,
+                    "grow" : -1,
+                    "layout" : "FLEX",
+                    "shrink" : 0,
+                    "width" : 100,
+                    "widthMode" : "PX"
+                  },
+                  "getPSPanelItems" : [ {
+                    "caption" : "工具栏",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "CTRLPOS",
+                    "name" : "righttoolbar",
+                    "getPSLayoutPos" : {
+                      "grow" : 1,
+                      "heightMode" : "FULL",
+                      "layout" : "FLEX",
+                      "vAlignSelf" : "MIDDLE",
+                      "widthMode" : "FULL"
+                    },
+                    "showCaption" : true
+                  } ],
+                  "width" : 100.0
+                } ],
+                "predefinedType" : "Toolbar"
+              } ],
+              "predefinedType" : "Header"
+            }, {
+              "caption" : "容器",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "CONTAINER",
+              "name" : "view_toolbar2",
+              "getPSLayout" : {
+                "layout" : "FLEX"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSPanelItems" : [ {
+                "caption" : "搜索栏",
+                "itemStyle" : "DEFAULT",
+                "itemType" : "CTRLPOS",
+                "name" : "searchbar",
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "showCaption" : true
+              } ],
+              "predefinedType" : "Toolbar"
+            }, {
+              "caption" : "容器",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "CONTAINER",
+              "name" : "view_searchform",
+              "getPSLayout" : {
+                "layout" : "FLEX"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSPanelItems" : [ {
+                "caption" : "搜索表单",
+                "itemStyle" : "DEFAULT",
+                "itemType" : "CTRLPOS",
+                "name" : "searchform",
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "showCaption" : true
+              } ]
+            } ]
+          }, {
+            "caption" : "容器",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CONTAINER",
+            "name" : "view_content",
+            "getPSLayout" : {
+              "layout" : "FLEX"
+            },
+            "getPSLayoutPos" : {
+              "grow" : 1,
+              "layout" : "FLEX"
+            },
+            "getPSPanelItems" : [ {
+              "caption" : "多数据部件",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "CTRLPOS",
+              "name" : "mdctrl",
+              "getPSLayoutPos" : {
+                "grow" : 1,
+                "layout" : "FLEX"
+              },
+              "showCaption" : true
+            }, {
+              "caption" : "分割线",
+              "contentType" : "DIVIDER",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "RAWITEM",
+              "name" : "divider",
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSRawItem" : {
+                "contentType" : "DIVIDER",
+                "name" : "divider",
+                "predefinedType" : "DIVIDER"
+              },
+              "showCaption" : true
+            }, {
+              "actionType" : "UIACTION",
+              "buttonStyle" : "DEFAULT",
+              "caption" : "显示更多",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "BUTTON",
+              "name" : "button_calluilogic",
+              "getPSAppViewUIAction" : {
+                "modelref" : true,
+                "id" : "layoutpanel_button_calluilogic"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSUIAction" : {
+                "actionTarget" : "NONE",
+                "caption" : "显示更多",
+                "codeName" : "show_more_access_project",
+                "getFrontPSAppView" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/recent_recent_access_project_mobbash.json",
+                  "viewType" : "DEMOBMDVIEW"
+                },
+                "frontProcessType" : "WIZARD",
+                "fullCodeName" : "recent_show_more_access_project",
+                "name" : "显示更多_最近访问的项目（移动端仪表盘）",
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+                },
+                "timeout" : 60000,
+                "uIActionMode" : "FRONT",
+                "uIActionTag" : "show_more_access_project",
+                "uIActionType" : "DEUIACTION",
+                "id" : "show_more_access_project@recent"
+              },
+              "tooltip" : "显示更多",
+              "uIActionTarget" : "NONE",
+              "showCaption" : true
+            } ],
+            "predefinedType" : "Content"
+          }, {
+            "caption" : "容器",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CONTAINER",
+            "name" : "view_footer",
+            "getPSLayout" : {
+              "layout" : "FLEX"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX",
+              "shrink" : 0
+            },
+            "getPSPanelItems" : [ {
+              "caption" : "工具栏",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "CTRLPOS",
+              "name" : "footertoolbar",
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "showCaption" : true
+            } ],
+            "predefinedType" : "Footer"
+          } ],
+          "layoutBodyOnly" : true,
+          "layoutPanel" : true,
+          "mobilePanel" : true,
+          "useDefaultLayout" : false,
+          "viewProxyMode" : true,
+          "modelid" : "b21a5a95f71a7237c238572f3bd29987",
+          "modeltype" : "PSSYSVIEWLAYOUTPANEL",
+          "getPSAppViewEngines" : [ {
+            "engineCat" : "VIEW",
+            "engineType" : "MobMDView",
+            "name" : "engine"
+          } ],
+          "getPSAppViewLogics" : [ {
+            "eventNames" : "onSelectionChange",
+            "logicTrigger" : "VIEWEVENT",
+            "logicType" : "APPDEUILOGIC",
+            "name" : "LOGIC",
+            "getPSAppDEUILogic" : {
+              "modelref" : true,
+              "id" : "mob_recent_jump_other_view"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+            },
+            "getPSViewCtrlName" : "mdctrl"
+          }, {
+            "logicTrigger" : "CUSTOM",
+            "logicType" : "APPUILOGIC",
+            "name" : "newdata",
+            "getPSAppUILogic" : {
+              "actionAfterWizard" : "DEFAULT",
+              "logicType" : "PREDEFINED",
+              "name" : "新建数据",
+              "viewLogicType" : "APP_NEWDATA",
+              "batchAddOnly" : false,
+              "enableBatchAdd" : false,
+              "enableWizardAdd" : false
+            }
+          }, {
+            "logicTrigger" : "CUSTOM",
+            "logicType" : "APPUILOGIC",
+            "name" : "opendata",
+            "getPSAppUILogic" : {
+              "logicType" : "PREDEFINED",
+              "name" : "打开数据",
+              "viewLogicType" : "APP_OPENDATA",
+              "editMode" : true
+            }
+          } ],
+          "getPSControls" : [ {
+            "codeName" : "mob_recent_project",
+            "controlStyle" : "LISTVIEW",
+            "controlType" : "MOBMDCTRL",
+            "getCreatePSControlAction" : {
+              "modelref" : true,
+              "id" : "create",
+              "actionName" : "Create",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "CREATE",
+              "name" : "create",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "create"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+              }
+            },
+            "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent/PSMOBMDCTRLS/mob_recent_project.json",
+            "getFetchPSControlAction" : {
+              "modelref" : true,
+              "id" : "fetch",
+              "actionType" : "DEDATASET",
+              "name" : "fetch",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "fetch_recent_project"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+              }
+            },
+            "getGetPSControlAction" : {
+              "modelref" : true,
+              "id" : "load",
+              "actionName" : "Get",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "READ",
+              "name" : "load",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "get"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+              }
+            },
+            "groupMode" : "NONE",
+            "getItemPSLayoutPanel" : {
+              "getAllPSPanelFields" : [ {
+                "id" : "owner_subtype",
+                "viewFieldName" : "owner_subtype"
+              }, {
+                "id" : "recent_parent_identifier",
+                "viewFieldName" : "RECENT_PARENT_IDENTIFIER"
+              }, {
+                "id" : "name",
+                "viewFieldName" : "NAME"
+              } ],
+              "codeName" : "usr1024914966",
+              "controlType" : "PANEL",
+              "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent/PSPANELS/usr1024914966.json",
+              "layoutMode" : "TABLE_24COL",
+              "logicName" : "mob_recent_project_列表项面板",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+              },
+              "getPSControlParam" : { },
+              "getPSLayout" : {
+                "childColMD" : 24,
+                "columnCount" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "getPSSysCss" : {
+                "cssName" : "mob_common_list_style"
+              },
+              "getRootPSPanelItems" : [ {
+                "itemStyle" : "DEFAULT",
+                "itemType" : "CONTAINER",
+                "name" : "page_container",
+                "getPSLayout" : {
+                  "dir" : "column",
+                  "layout" : "FLEX"
+                },
+                "getPSLayoutPos" : {
+                  "colMD" : 24,
+                  "layout" : "TABLE_24COL",
+                  "spacingLeft" : "OUTERMEDIUM",
+                  "spacingRight" : "OUTERMEDIUM",
+                  "spacingTop" : "OUTERSMALL"
+                },
+                "getPSPanelItems" : [ {
+                  "caption" : "容器",
+                  "itemStyle" : "DEFAULT",
+                  "itemType" : "CONTAINER",
+                  "name" : "container2",
+                  "getPSLayout" : {
+                    "align" : "space-between",
+                    "dir" : "row",
+                    "layout" : "FLEX",
+                    "vAlign" : "center"
+                  },
+                  "getPSLayoutPos" : {
+                    "grow" : -1,
+                    "layout" : "FLEX"
+                  },
+                  "getPSPanelItems" : [ {
+                    "caption" : "容器",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "CONTAINER",
+                    "name" : "container",
+                    "getPSLayout" : {
+                      "align" : "flex-start",
+                      "dir" : "row",
+                      "layout" : "FLEX",
+                      "vAlign" : "center"
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX"
+                    },
+                    "getPSPanelItems" : [ {
+                      "caption" : "文本(动态)",
+                      "itemStyle" : "DEFAULT",
+                      "itemType" : "FIELD",
+                      "name" : "owner_subtype",
+                      "getPSEditor" : {
+                        "editorParams" : {
+                          "SHOWMODE" : "ICON"
+                        },
+                        "editorType" : "SPAN",
+                        "name" : "owner_subtype",
+                        "getPSAppCodeList" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/Base__recent_visite.json"
+                        },
+                        "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                        "renderMode" : "TEXT_DYNAMIC",
+                        "enableLinkView" : false
+                      },
+                      "getPSLayoutPos" : {
+                        "grow" : -1,
+                        "layout" : "FLEX"
+                      },
+                      "viewFieldName" : "owner_subtype",
+                      "convertToCodeItemText" : true
+                    }, {
+                      "caption" : "文本(动态)",
+                      "itemStyle" : "DEFAULT",
+                      "itemType" : "FIELD",
+                      "name" : "recent_parent_identifier",
+                      "getPSEditor" : {
+                        "editorType" : "SPAN",
+                        "name" : "recent_parent_identifier",
+                        "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                        "renderMode" : "TEXT_DYNAMIC",
+                        "enableLinkView" : false
+                      },
+                      "getPSLayoutPos" : {
+                        "grow" : -1,
+                        "layout" : "FLEX"
+                      },
+                      "viewFieldName" : "RECENT_PARENT_IDENTIFIER"
+                    } ]
+                  }, {
+                    "caption" : "容器",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "CONTAINER",
+                    "name" : "container1",
+                    "getPSLayout" : {
+                      "align" : "flex-start",
+                      "dir" : "row",
+                      "layout" : "FLEX",
+                      "vAlign" : "center"
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX"
+                    },
+                    "getPSPanelItems" : [ {
+                      "caption" : "文本(动态)",
+                      "itemStyle" : "DEFAULT",
+                      "itemType" : "FIELD",
+                      "name" : "name",
+                      "getPSEditor" : {
+                        "editorType" : "SPAN",
+                        "name" : "name",
+                        "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                        "renderMode" : "TEXT_DYNAMIC",
+                        "enableLinkView" : false
+                      },
+                      "getPSLayoutPos" : {
+                        "grow" : -1,
+                        "layout" : "FLEX"
+                      },
+                      "viewFieldName" : "NAME"
+                    } ]
+                  } ]
+                } ]
+              } ],
+              "name" : "mdctrl_itempanel",
+              "modelid" : "67142EFC-6EB8-49B4-8E7F-82A215423A7F",
+              "modeltype" : "PSSYSVIEWPANEL"
+            },
+            "logicName" : "mob_recent_project",
+            "mobListStyle" : "LISTVIEW",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+            },
+            "getPSControlHandler" : {
+              "getPSHandlerActions" : [ {
+                "actionName" : "Get",
+                "actionType" : "DEACTION",
+                "dataAccessAction" : "READ",
+                "name" : "load",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "get"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+                }
+              }, {
+                "actionName" : "Create",
+                "actionType" : "DEACTION",
+                "dataAccessAction" : "CREATE",
+                "name" : "create",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "create"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+                }
+              }, {
+                "actionName" : "Update",
+                "actionType" : "DEACTION",
+                "dataAccessAction" : "UPDATE",
+                "name" : "update",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "update"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+                }
+              }, {
+                "actionName" : "Remove",
+                "actionType" : "DEACTION",
+                "dataAccessAction" : "DELETE",
+                "name" : "remove",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "remove"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+                }
+              }, {
+                "actionType" : "DEDATASET",
+                "name" : "fetch",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "fetch_recent_project"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+                }
+              } ],
+              "userDRAction" : "READ",
+              "enableDEFieldPrivilege" : false,
+              "id" : "列表控件处理器"
+            },
+            "getPSControlParam" : {
+              "autoLoad" : true,
+              "showBusyIndicator" : true,
+              "id" : "MDCTRL"
+            },
+            "getPSDEListDataItems" : [ {
+              "dataType" : 25,
+              "name" : "srfkey",
+              "getPSAppDEField" : {
+                "name" : "ID",
+                "codeName" : "id"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "srfmajortext",
+              "getPSAppDEField" : {
+                "name" : "NAME",
+                "codeName" : "name"
+              }
+            } ],
+            "pagingMode" : 2,
+            "pagingSize" : 20,
+            "getRemovePSControlAction" : {
+              "modelref" : true,
+              "id" : "remove",
+              "actionName" : "Remove",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "DELETE",
+              "name" : "remove",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "remove"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+              }
+            },
+            "getUpdatePSControlAction" : {
+              "modelref" : true,
+              "id" : "update",
+              "actionName" : "Update",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "UPDATE",
+              "name" : "update",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "update"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+              }
+            },
+            "hasWFDataItems" : false,
+            "enableGroup" : false,
+            "enableRowEdit" : false,
+            "enableRowEditGroup" : false,
+            "enableRowEditOrder" : false,
+            "enableRowNew" : false,
+            "noSort" : false,
+            "showHeader" : true,
+            "singleSelect" : false,
+            "name" : "mdctrl",
+            "modelid" : "507B3049-33EF-4DEF-A62A-DB39AC3919D1",
+            "modeltype" : "PSDELIST"
+          }, {
+            "controlType" : "SEARCHBAR",
+            "name" : "searchbar",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+            },
+            "getPSControlParam" : {
+              "id" : "searchbar"
+            },
+            "quickGroupCount" : -1,
+            "quickSearchMode" : 1,
+            "quickSearchWidth" : 0,
+            "enableFilter" : false,
+            "enableGroup" : false,
+            "enableQuickSearch" : true,
+            "mobileSearchBar" : true
+          }, {
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "DE.LNAME.RECENT"
+            },
+            "caption" : "最近访问的项目",
+            "codeName" : "recent_access_project_mobbash_captionbar",
+            "controlType" : "CAPTIONBAR",
+            "name" : "captionbar",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+            },
+            "getPSControlParam" : { }
+          } ]
+        },
+        "title" : "最近访问的项目",
+        "viewStyle" : "DEFAULT",
+        "viewType" : "DEMOBMDVIEW",
+        "xDataControlName" : "mdctrl",
+        "enableDP" : true,
+        "enableFilter" : true,
+        "enablePullDownRefresh" : false,
+        "enableQuickSearch" : true,
+        "enableSearch" : true,
+        "modelid" : "8ebbb8fcb5afd18d97ba3833fa520322",
+        "modeltype" : "PSAPPDEVIEW"
+      },
+      "portletType" : "VIEW",
+      "title" : "最近访问的项目",
+      "showTitleBar" : false,
+      "modelid" : "2341E00D-3501-4D4D-AD77-9E5D0E919379",
+      "modeltype" : "PSSYSDBPART"
+    }, {
+      "codeName" : "recent_case",
+      "controlType" : "PORTLET",
+      "height" : 1.0,
+      "name" : "dashboard_sysportlet5",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+      },
+      "getPSControlHandler" : {
+        "enableDEFieldPrivilege" : false,
+        "id" : "dashboard_sysportlet5"
+      },
+      "getPSControlParam" : {
+        "height" : 1.0,
+        "autoLoad" : true,
+        "showBusyIndicator" : true
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "height" : 1,
+        "heightMode" : "PX",
+        "layout" : "TABLE_24COL"
+      },
+      "getPortletPSAppView" : {
+        "accUserMode" : 2,
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DE.LNAME.RECENT"
+        },
+        "caption" : "最近访问的用例",
+        "codeName" : "recent_recent_access_case_mobbash",
+        "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/recent_recent_access_case_mobbash.json",
+        "name" : "recentrecent_access_case_mobbash",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+        },
+        "getPSAppModule" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPMODULES/Base.json"
+        },
+        "getPSDEViewCodeName" : "recent_access_case_mobbash",
+        "getPSDEViewId" : "d0b6f533bc3d1cad0d9dcd5d85cdd798",
+        "getPSSysCss" : {
+          "cssName" : "mob_recent_access_case_style"
+        },
+        "getPSViewLayoutPanel" : {
+          "codeName" : "usr1024498760",
+          "controlType" : "VIEWLAYOUTPANEL",
+          "layoutMode" : "FLEX",
+          "logicName" : "recent_access_mobbash实体移动端多数据视图布局面板",
+          "name" : "layoutpanel",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+          },
+          "getPSControlParam" : { },
+          "getPSLayout" : {
+            "layout" : "FLEX"
+          },
+          "getRootPSPanelItems" : [ {
+            "caption" : "容器",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CONTAINER",
+            "name" : "view_top",
+            "getPSLayout" : {
+              "dir" : "column",
+              "layout" : "FLEX"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX",
+              "shrink" : 0
+            },
+            "getPSPanelItems" : [ {
+              "caption" : "容器",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "CONTAINER",
+              "name" : "view_header",
+              "getPSLayout" : {
+                "dir" : "column",
+                "layout" : "FLEX"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX",
+                "shrink" : 0
+              },
+              "getPSPanelItems" : [ {
+                "caption" : "容器",
+                "itemStyle" : "DEFAULT",
+                "itemType" : "CONTAINER",
+                "name" : "view_toolbar",
+                "getPSLayout" : {
+                  "dir" : "row",
+                  "layout" : "FLEX"
+                },
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "getPSPanelItems" : [ {
+                  "caption" : "容器",
+                  "contentWidth" : 100.0,
+                  "itemStyle" : "DEFAULT",
+                  "itemType" : "CONTAINER",
+                  "name" : "view_left_toolbar",
+                  "getPSLayout" : {
+                    "layout" : "FLEX"
+                  },
+                  "getPSLayoutPos" : {
+                    "basis" : 100,
+                    "grow" : -1,
+                    "layout" : "FLEX",
+                    "shrink" : 0,
+                    "width" : 100,
+                    "widthMode" : "PX"
+                  },
+                  "getPSPanelItems" : [ {
+                    "caption" : "左侧工具栏",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "CTRLPOS",
+                    "name" : "lefttoolbar",
+                    "getPSLayoutPos" : {
+                      "grow" : 1,
+                      "heightMode" : "FULL",
+                      "layout" : "FLEX",
+                      "vAlignSelf" : "MIDDLE",
+                      "widthMode" : "FULL"
+                    },
+                    "showCaption" : true
+                  } ],
+                  "width" : 100.0
+                }, {
+                  "caption" : "容器",
+                  "itemStyle" : "DEFAULT",
+                  "itemType" : "CONTAINER",
+                  "name" : "view_captionbar",
+                  "getPSLayout" : {
+                    "align" : "center",
+                    "dir" : "row",
+                    "layout" : "FLEX"
+                  },
+                  "getPSLayoutPos" : {
+                    "grow" : 1,
+                    "layout" : "FLEX"
+                  },
+                  "getPSPanelItems" : [ {
+                    "caption" : "标题栏",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "CTRLPOS",
+                    "name" : "captionbar",
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "heightMode" : "FULL",
+                      "layout" : "FLEX"
+                    },
+                    "showCaption" : true
+                  } ]
+                }, {
+                  "caption" : "容器",
+                  "contentWidth" : 100.0,
+                  "itemStyle" : "DEFAULT",
+                  "itemType" : "CONTAINER",
+                  "name" : "view_right_toolbar",
+                  "getPSLayout" : {
+                    "layout" : "FLEX"
+                  },
+                  "getPSLayoutPos" : {
+                    "basis" : 100,
+                    "grow" : -1,
+                    "layout" : "FLEX",
+                    "shrink" : 0,
+                    "width" : 100,
+                    "widthMode" : "PX"
+                  },
+                  "getPSPanelItems" : [ {
+                    "caption" : "工具栏",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "CTRLPOS",
+                    "name" : "righttoolbar",
+                    "getPSLayoutPos" : {
+                      "grow" : 1,
+                      "heightMode" : "FULL",
+                      "layout" : "FLEX",
+                      "vAlignSelf" : "MIDDLE",
+                      "widthMode" : "FULL"
+                    },
+                    "showCaption" : true
+                  } ],
+                  "width" : 100.0
+                } ],
+                "predefinedType" : "Toolbar"
+              } ],
+              "predefinedType" : "Header"
+            }, {
+              "caption" : "容器",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "CONTAINER",
+              "name" : "view_toolbar2",
+              "getPSLayout" : {
+                "layout" : "FLEX"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSPanelItems" : [ {
+                "caption" : "搜索栏",
+                "itemStyle" : "DEFAULT",
+                "itemType" : "CTRLPOS",
+                "name" : "searchbar",
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "showCaption" : true
+              } ],
+              "predefinedType" : "Toolbar"
+            }, {
+              "caption" : "容器",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "CONTAINER",
+              "name" : "view_searchform",
+              "getPSLayout" : {
+                "layout" : "FLEX"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSPanelItems" : [ {
+                "caption" : "搜索表单",
+                "itemStyle" : "DEFAULT",
+                "itemType" : "CTRLPOS",
+                "name" : "searchform",
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "showCaption" : true
+              } ]
+            } ]
+          }, {
+            "caption" : "容器",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CONTAINER",
+            "name" : "view_content",
+            "getPSLayout" : {
+              "layout" : "FLEX"
+            },
+            "getPSLayoutPos" : {
+              "grow" : 1,
+              "layout" : "FLEX"
+            },
+            "getPSPanelItems" : [ {
+              "caption" : "多数据部件",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "CTRLPOS",
+              "name" : "mdctrl",
+              "getPSLayoutPos" : {
+                "grow" : 1,
+                "layout" : "FLEX"
+              },
+              "showCaption" : true
+            }, {
+              "caption" : "分割线",
+              "contentType" : "DIVIDER",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "RAWITEM",
+              "name" : "divider",
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSRawItem" : {
+                "contentType" : "DIVIDER",
+                "name" : "divider",
+                "predefinedType" : "DIVIDER"
+              },
+              "showCaption" : true
+            }, {
+              "actionType" : "UIACTION",
+              "buttonStyle" : "DEFAULT",
+              "caption" : "显示更多",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "BUTTON",
+              "name" : "button_calluilogic",
+              "getPSAppViewUIAction" : {
+                "modelref" : true,
+                "id" : "layoutpanel_button_calluilogic"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSUIAction" : {
+                "actionTarget" : "NONE",
+                "caption" : "显示更多",
+                "codeName" : "show_more_access_case",
+                "getFrontPSAppView" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/recent_recent_access_case_mobbash.json",
+                  "viewType" : "DEMOBMDVIEW"
+                },
+                "frontProcessType" : "WIZARD",
+                "fullCodeName" : "recent_show_more_access_case",
+                "name" : "显示更多_最近访问的用例（移动端仪表盘）",
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+                },
+                "timeout" : 60000,
+                "uIActionMode" : "FRONT",
+                "uIActionTag" : "show_more_access_case",
+                "uIActionType" : "DEUIACTION",
+                "id" : "show_more_access_case@recent"
+              },
+              "tooltip" : "显示更多",
+              "uIActionTarget" : "NONE",
+              "showCaption" : true
+            } ],
+            "predefinedType" : "Content"
+          }, {
+            "caption" : "容器",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CONTAINER",
+            "name" : "view_footer",
+            "getPSLayout" : {
+              "layout" : "FLEX"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX",
+              "shrink" : 0
+            },
+            "getPSPanelItems" : [ {
+              "caption" : "工具栏",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "CTRLPOS",
+              "name" : "footertoolbar",
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "showCaption" : true
+            } ],
+            "predefinedType" : "Footer"
+          } ],
+          "layoutBodyOnly" : true,
+          "layoutPanel" : true,
+          "mobilePanel" : true,
+          "useDefaultLayout" : false,
+          "viewProxyMode" : true,
+          "modelid" : "4169BCD7-4F49-44B4-8448-3DF2DB8FABA9",
+          "modeltype" : "PSSYSVIEWLAYOUTPANEL",
+          "getPSAppViewEngines" : [ {
+            "engineCat" : "VIEW",
+            "engineType" : "MobMDView",
+            "name" : "engine"
+          } ],
+          "getPSAppViewLogics" : [ {
+            "eventNames" : "onSelectionChange",
+            "logicTrigger" : "VIEWEVENT",
+            "logicType" : "APPDEUILOGIC",
+            "name" : "LOGIC",
+            "getPSAppDEUILogic" : {
+              "modelref" : true,
+              "id" : "mob_recent_jump_other_view"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+            },
+            "getPSViewCtrlName" : "mdctrl"
+          }, {
+            "logicTrigger" : "CUSTOM",
+            "logicType" : "APPUILOGIC",
+            "name" : "newdata",
+            "getPSAppUILogic" : {
+              "actionAfterWizard" : "DEFAULT",
+              "logicType" : "PREDEFINED",
+              "name" : "新建数据",
+              "viewLogicType" : "APP_NEWDATA",
+              "batchAddOnly" : false,
+              "enableBatchAdd" : false,
+              "enableWizardAdd" : false
+            }
+          }, {
+            "logicTrigger" : "CUSTOM",
+            "logicType" : "APPUILOGIC",
+            "name" : "opendata",
+            "getPSAppUILogic" : {
+              "logicType" : "PREDEFINED",
+              "name" : "打开数据",
+              "viewLogicType" : "APP_OPENDATA",
+              "editMode" : true
+            }
+          } ],
+          "getPSControls" : [ {
+            "codeName" : "mob_access_list",
+            "controlStyle" : "LISTVIEW",
+            "controlType" : "MOBMDCTRL",
+            "getCreatePSControlAction" : {
+              "modelref" : true,
+              "id" : "create",
+              "actionName" : "Create",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "CREATE",
+              "name" : "create",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "create"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+              }
+            },
+            "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent/PSMOBMDCTRLS/mob_access_list.json",
+            "getFetchPSControlAction" : {
+              "modelref" : true,
+              "id" : "fetch",
+              "actionType" : "DEDATASET",
+              "name" : "fetch",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "fetch_recent_test_case_index"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+              }
+            },
+            "getGetPSControlAction" : {
+              "modelref" : true,
+              "id" : "load",
+              "actionName" : "Get",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "READ",
+              "name" : "load",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "get"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+              }
+            },
+            "groupMode" : "NONE",
+            "getItemPSLayoutPanel" : {
+              "getAllPSPanelFields" : [ {
+                "id" : "owner_subtype",
+                "viewFieldName" : "OWNER_SUBTYPE"
+              }, {
+                "id" : "name",
+                "viewFieldName" : "NAME"
+              }, {
+                "id" : "show_identifier",
+                "viewFieldName" : "SHOW_IDENTIFIER"
+              }, {
+                "id" : "recent_parent_name",
+                "viewFieldName" : "RECENT_PARENT_NAME"
+              } ],
+              "codeName" : "usr1011197807",
+              "controlType" : "PANEL",
+              "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent/PSPANELS/usr1011197807.json",
+              "layoutMode" : "TABLE_24COL",
+              "logicName" : "mob_access_list_列表项面板",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+              },
+              "getPSControlParam" : { },
+              "getPSLayout" : {
+                "childColMD" : 24,
+                "columnCount" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "getRootPSPanelItems" : [ {
+                "itemStyle" : "DEFAULT",
+                "itemType" : "CONTAINER",
+                "name" : "page_container",
+                "getPSLayout" : {
+                  "dir" : "column",
+                  "layout" : "FLEX"
+                },
+                "getPSLayoutPos" : {
+                  "colMD" : 24,
+                  "layout" : "TABLE_24COL",
+                  "spacingLeft" : "OUTERMEDIUM",
+                  "spacingRight" : "OUTERMEDIUM",
+                  "spacingTop" : "OUTERSMALL"
+                },
+                "getPSPanelItems" : [ {
+                  "caption" : "容器",
+                  "itemStyle" : "DEFAULT",
+                  "itemType" : "CONTAINER",
+                  "name" : "container1",
+                  "getPSLayout" : {
+                    "align" : "flex-start",
+                    "dir" : "row",
+                    "layout" : "FLEX",
+                    "vAlign" : "center"
+                  },
+                  "getPSLayoutPos" : {
+                    "grow" : -1,
+                    "layout" : "FLEX",
+                    "spacingBottom" : "OUTERSMALL"
+                  },
+                  "getPSPanelItems" : [ {
+                    "caption" : "文本(动态)",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "FIELD",
+                    "name" : "owner_subtype",
+                    "getPSEditor" : {
+                      "editorParams" : {
+                        "SHOWMODE" : "ICON"
+                      },
+                      "editorType" : "SPAN",
+                      "name" : "owner_subtype",
+                      "getPSAppCodeList" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/Base__recent_visite.json"
+                      },
+                      "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                      "renderMode" : "TEXT_DYNAMIC",
+                      "enableLinkView" : false
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX"
+                    },
+                    "viewFieldName" : "OWNER_SUBTYPE",
+                    "convertToCodeItemText" : true
+                  }, {
+                    "caption" : "文本(动态)",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "FIELD",
+                    "name" : "name",
+                    "getPSEditor" : {
+                      "editorType" : "SPAN",
+                      "name" : "name",
+                      "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                      "renderMode" : "TEXT_DYNAMIC",
+                      "enableLinkView" : false
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX",
+                      "spacingRight" : "OUTERMEDIUM"
+                    },
+                    "viewFieldName" : "NAME"
+                  } ]
+                }, {
+                  "caption" : "容器",
+                  "itemStyle" : "DEFAULT",
+                  "itemType" : "CONTAINER",
+                  "name" : "container",
+                  "getPSLayout" : {
+                    "align" : "flex-start",
+                    "dir" : "row",
+                    "layout" : "FLEX",
+                    "vAlign" : "center"
+                  },
+                  "getPSLayoutPos" : {
+                    "grow" : -1,
+                    "layout" : "FLEX"
+                  },
+                  "getPSPanelItems" : [ {
+                    "caption" : "文本(动态)",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "FIELD",
+                    "name" : "show_identifier",
+                    "getPSEditor" : {
+                      "editorType" : "SPAN",
+                      "name" : "show_identifier",
+                      "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                      "renderMode" : "TEXT_DYNAMIC",
+                      "enableLinkView" : false
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX"
+                    },
+                    "viewFieldName" : "SHOW_IDENTIFIER"
+                  }, {
+                    "caption" : "文本(动态)",
+                    "itemStyle" : "DEFAULT",
+                    "itemType" : "FIELD",
+                    "name" : "recent_parent_name",
+                    "getPSEditor" : {
+                      "editorType" : "SPAN",
+                      "name" : "recent_parent_name",
+                      "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                      "renderMode" : "TEXT_DYNAMIC",
+                      "enableLinkView" : false
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX",
+                      "spacingLeft" : "OUTERMEDIUM"
+                    },
+                    "viewFieldName" : "RECENT_PARENT_NAME"
+                  } ]
+                } ]
+              } ],
+              "name" : "mdctrl_itempanel",
+              "modelid" : "C7949FF2-DFE6-4DD8-888F-0A52EF90497C",
+              "modeltype" : "PSSYSVIEWPANEL"
+            },
+            "logicName" : "mob_access_list",
+            "mobListStyle" : "LISTVIEW",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+            },
+            "getPSControlHandler" : {
+              "getPSHandlerActions" : [ {
+                "actionName" : "Get",
+                "actionType" : "DEACTION",
+                "dataAccessAction" : "READ",
+                "name" : "load",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "get"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+                }
+              }, {
+                "actionName" : "Create",
+                "actionType" : "DEACTION",
+                "dataAccessAction" : "CREATE",
+                "name" : "create",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "create"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+                }
+              }, {
+                "actionName" : "Update",
+                "actionType" : "DEACTION",
+                "dataAccessAction" : "UPDATE",
+                "name" : "update",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "update"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+                }
+              }, {
+                "actionName" : "Remove",
+                "actionType" : "DEACTION",
+                "dataAccessAction" : "DELETE",
+                "name" : "remove",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "remove"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+                }
+              }, {
+                "actionType" : "DEDATASET",
+                "name" : "fetch",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "fetch_recent_test_case_index"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+                }
+              } ],
+              "userDRAction" : "READ",
+              "enableDEFieldPrivilege" : false,
+              "id" : "列表控件处理器"
+            },
+            "getPSControlParam" : {
+              "autoLoad" : true,
+              "showBusyIndicator" : true,
+              "id" : "MDCTRL"
+            },
+            "getPSDEListDataItems" : [ {
+              "dataType" : 25,
+              "name" : "name",
+              "getPSAppDEField" : {
+                "name" : "NAME",
+                "codeName" : "name"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "recent_parent_name",
+              "getPSAppDEField" : {
+                "name" : "RECENT_PARENT_NAME",
+                "codeName" : "recent_parent_name"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "owner_id",
+              "getPSAppDEField" : {
+                "name" : "OWNER_ID",
+                "codeName" : "owner_id"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "show_identifier",
+              "getPSAppDEField" : {
+                "name" : "SHOW_IDENTIFIER",
+                "codeName" : "show_identifier"
+              }
+            }, {
+              "dataType" : 25,
+              "getFrontPSCodeList" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/Base__recent_visite.json"
+              },
+              "name" : "owner_subtype",
+              "getPSAppDEField" : {
+                "name" : "OWNER_SUBTYPE",
+                "codeName" : "owner_subtype"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "srfkey",
+              "getPSAppDEField" : {
+                "name" : "ID",
+                "codeName" : "id"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "srfmajortext",
+              "getPSAppDEField" : {
+                "name" : "NAME",
+                "codeName" : "name"
+              }
+            } ],
+            "pagingMode" : 2,
+            "pagingSize" : 20,
+            "getRemovePSControlAction" : {
+              "modelref" : true,
+              "id" : "remove",
+              "actionName" : "Remove",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "DELETE",
+              "name" : "remove",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "remove"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+              }
+            },
+            "getUpdatePSControlAction" : {
+              "modelref" : true,
+              "id" : "update",
+              "actionName" : "Update",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "UPDATE",
+              "name" : "update",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "update"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+              }
+            },
+            "hasWFDataItems" : false,
+            "enableGroup" : false,
+            "enableRowEdit" : false,
+            "enableRowEditGroup" : false,
+            "enableRowEditOrder" : false,
+            "enableRowNew" : false,
+            "noSort" : false,
+            "showHeader" : true,
+            "singleSelect" : false,
+            "name" : "mdctrl",
+            "modelid" : "B7D0C432-4F6F-42C9-A73B-82E01C3176DC",
+            "modeltype" : "PSDELIST"
+          }, {
+            "codeName" : "default",
+            "controlType" : "SEARCHFORM",
+            "defaultLabelWidth" : 130,
+            "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent/PSSEARCHFORMS/default.json",
+            "logicName" : "默认搜索表单",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+            },
+            "getPSControlHandler" : {
+              "getPSHandlerActions" : [ {
+                "actionType" : "FILTERACTION",
+                "name" : "load",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "FilterGet"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+                }
+              }, {
+                "actionType" : "FILTERACTION",
+                "name" : "loaddraft",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "FilterGetDraft"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+                }
+              }, {
+                "actionType" : "FILTERACTION",
+                "name" : "search",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "FilterSearch"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+                }
+              } ],
+              "enableDEFieldPrivilege" : false,
+              "id" : "搜索表单处理器"
+            },
+            "getPSControlParam" : {
+              "autoLoad" : true,
+              "showBusyIndicator" : true,
+              "id" : "SEARCHFORM"
+            },
+            "getPSDEFormItems" : [ {
+              "id" : "n_show_identifier_like",
+              "dataType" : 25,
+              "getPSAppDEField" : {
+                "name" : "SHOW_IDENTIFIER",
+                "codeName" : "show_identifier"
+              }
+            }, {
+              "id" : "n_name_like",
+              "dataType" : 25,
+              "getPSAppDEField" : {
+                "name" : "NAME",
+                "codeName" : "name"
+              }
+            }, {
+              "id" : "n_owner_subtype_eq",
+              "dataType" : 25,
+              "getPSAppDEField" : {
+                "name" : "OWNER_SUBTYPE",
+                "codeName" : "owner_subtype"
+              }
+            } ],
+            "getPSDEFormPages" : [ {
+              "getCapPSLanguageRes" : {
+                "lanResTag" : "CONTROL.DEFORM.RECENT.DEFAULT.FORMPAGE.FORMPAGE1"
+              },
+              "caption" : "常规条件",
+              "codeName" : "formpage1",
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMPAGE",
+              "name" : "formpage1",
+              "getPSDEFormDetails" : [ {
+                "caption" : "编号",
+                "codeName" : "n_show_identifier_like",
+                "dataType" : 25,
+                "detailStyle" : "DEFAULT",
+                "detailType" : "FORMITEM",
+                "enableCond" : 3,
+                "ignoreInput" : 0,
+                "labelPos" : "NONE",
+                "labelWidth" : 0,
+                "name" : "n_show_identifier_like",
+                "noPrivDisplayMode" : 1,
+                "getPSAppDEField" : {
+                  "name" : "SHOW_IDENTIFIER",
+                  "codeName" : "show_identifier"
+                },
+                "getPSEditor" : {
+                  "editorType" : "TEXTBOX",
+                  "name" : "n_show_identifier_like",
+                  "placeHolder" : "编号"
+                },
+                "getPSLayoutPos" : {
+                  "colLG" : 4,
+                  "colMD" : 4,
+                  "layout" : "TABLE_24COL"
+                },
+                "allowEmpty" : true
+              }, {
+                "getCapPSLanguageRes" : {
+                  "lanResTag" : "CONTROL.DEFSFITEM.RECENT.N_NAME_LIKE"
+                },
+                "codeName" : "n_name_like",
+                "dataType" : 25,
+                "detailStyle" : "DEFAULT",
+                "detailType" : "FORMITEM",
+                "enableCond" : 3,
+                "ignoreInput" : 0,
+                "labelPos" : "NONE",
+                "labelWidth" : 0,
+                "name" : "n_name_like",
+                "noPrivDisplayMode" : 1,
+                "getPSAppDEField" : {
+                  "name" : "NAME",
+                  "codeName" : "name"
+                },
+                "getPSEditor" : {
+                  "editorType" : "MOBTEXT",
+                  "name" : "n_name_like",
+                  "placeHolder" : "标题"
+                },
+                "getPSLayoutPos" : {
+                  "colLG" : 4,
+                  "colMD" : 4,
+                  "layout" : "TABLE_24COL"
+                },
+                "allowEmpty" : true,
+                "emptyCaption" : true
+              }, {
+                "codeName" : "n_owner_subtype_eq",
+                "dataType" : 25,
+                "detailStyle" : "DEFAULT",
+                "detailType" : "FORMITEM",
+                "enableCond" : 3,
+                "ignoreInput" : 0,
+                "labelPos" : "NONE",
+                "labelWidth" : 0,
+                "name" : "n_owner_subtype_eq",
+                "noPrivDisplayMode" : 1,
+                "getPSAppDEField" : {
+                  "name" : "OWNER_SUBTYPE",
+                  "codeName" : "owner_subtype"
+                },
+                "getPSEditor" : {
+                  "editorType" : "DROPDOWNLIST",
+                  "name" : "n_owner_subtype_eq",
+                  "getPSAppCodeList" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/Base__recent_index.json"
+                  },
+                  "placeHolder" : "选择类型",
+                  "singleSelect" : true
+                },
+                "getPSLayoutPos" : {
+                  "colLG" : 4,
+                  "colMD" : 4,
+                  "layout" : "TABLE_24COL"
+                },
+                "allowEmpty" : true,
+                "emptyCaption" : true,
+                "needCodeListConfig" : true
+              } ],
+              "getPSLayout" : {
+                "childColLG" : 4,
+                "childColMD" : 4,
+                "columnCount" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "infoGroupMode" : false
+            } ],
+            "getPSLayout" : {
+              "childColMD" : 24,
+              "columnCount" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "searchButtonStyle" : "NONE",
+            "tabHeaderPos" : "TOP",
+            "enableAdvanceSearch" : false,
+            "enableAutoSearch" : true,
+            "enableFilterSave" : false,
+            "noTabHeader" : true,
+            "name" : "searchform",
+            "modelid" : "e0daefea3163d35c58b1f48a00f0fc03",
+            "modeltype" : "PSDEFORM_SEARCHFORM"
+          }, {
+            "controlType" : "SEARCHBAR",
+            "name" : "searchbar",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+            },
+            "getPSControlParam" : {
+              "id" : "searchbar"
+            },
+            "quickGroupCount" : -1,
+            "quickSearchMode" : 1,
+            "quickSearchWidth" : 0,
+            "enableFilter" : false,
+            "enableGroup" : false,
+            "enableQuickSearch" : true,
+            "mobileSearchBar" : true
+          }, {
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "DE.LNAME.RECENT"
+            },
+            "caption" : "最近访问的用例",
+            "codeName" : "recent_access_case_mobbash_captionbar",
+            "controlType" : "CAPTIONBAR",
+            "name" : "captionbar",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+            },
+            "getPSControlParam" : { }
+          } ]
+        },
+        "title" : "最近访问的用例",
+        "viewStyle" : "DEFAULT",
+        "viewType" : "DEMOBMDVIEW",
+        "xDataControlName" : "mdctrl",
+        "enableDP" : true,
+        "enableFilter" : true,
+        "enablePullDownRefresh" : false,
+        "enableQuickSearch" : true,
+        "enableSearch" : true,
+        "modelid" : "19deba3737b52db9629419683731ab6a",
+        "modeltype" : "PSAPPDEVIEW"
+      },
+      "portletType" : "VIEW",
+      "title" : "最近访问的用例",
+      "showTitleBar" : false,
+      "modelid" : "2E591F91-F96C-4BB5-B0B3-6758032ADE73",
+      "modeltype" : "PSSYSDBPART"
+    } ],
+    "enableCustomized" : false,
+    "name" : "dashboard",
+    "modelid" : "a27e6145842ac83f2282c804cd312a5c",
+    "modeltype" : "PSSYSDASHBOARD"
+  }, {
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DE.LNAME.RECENT"
+    },
+    "caption" : "仪表盘",
+    "codeName" : "mob_dashboard_view_captionbar",
+    "controlType" : "CAPTIONBAR",
+    "name" : "captionbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+    },
+    "getPSControlParam" : { }
+  } ],
+  "getPSDEViewCodeName" : "mob_dashboard_view",
+  "getPSDEViewId" : "AC5901C0-E01B-4835-899E-102DD7745302",
+  "getPSSysCss" : {
+    "cssName" : "mob_dashboard_style"
+  },
+  "getPSViewLayoutPanel" : {
+    "codeName" : "layoutpanel",
+    "controlStyle" : "APPDEMOBPORTALVIEW",
+    "controlType" : "VIEWLAYOUTPANEL",
+    "name" : "layoutpanel",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+    },
+    "getPSControlParam" : { },
+    "layoutBodyOnly" : true,
+    "layoutPanel" : true,
+    "useDefaultLayout" : true
+  },
+  "title" : "仪表盘移动端数据看板视图",
+  "viewStyle" : "DEFAULT",
+  "viewType" : "DEMOBPORTALVIEW",
+  "enableDP" : true,
+  "enablePullDownRefresh" : false,
+  "enableQuickGroup" : false,
+  "enableQuickSearch" : false,
+  "enableSearch" : false,
+  "expandSearchForm" : true,
+  "loadDefault" : true,
+  "showCaptionBar" : false,
+  "showDataInfoBar" : true,
+  "modelid" : "a27e6145842ac83f2282c804cd312a5c",
+  "modeltype" : "PSAPPDEVIEW"
+}

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.extend_storageworkload_auto_cal" isClosed="false" isExecutable="true" name="base_extend_storage_workload_auto_cal_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.extend_storageworkload_auto_cal">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="extend_storageworkload_auto_caldefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="extend_storageworkload_auto_calcur_work_item_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="extend_storageworkload_auto_calcur_work_item_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="extend_storageworkload_auto_calcur_work_item_temp" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.workload()" name="extend_storageworkload_auto_calnext_work_load" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="extend_storageworkload_auto_calp_work_item" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="extend_storageworkload_auto_calp_work_item_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="extend_storageworkload_auto_calp_work_item_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="extend_storageworkload_auto_caltarget_work_item" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="extend_storageworkload_auto_calworkload_data" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="work_itemservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IworkloadService))" name="workloadservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Iextend_storageService))" name="iBzSysExtend_storageDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="extend_storageworkload_auto_caldefault" type="cn.ibizlab.plm.core.base.domain.extend_storage" />
+                            <tns:global identifier="extend_storageworkload_auto_calcur_work_item_filter" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="extend_storageworkload_auto_calcur_work_item_page" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="extend_storageworkload_auto_calcur_work_item_temp" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="extend_storageworkload_auto_calnext_work_load" type="cn.ibizlab.plm.core.base.domain.workload" />
+                            <tns:global identifier="extend_storageworkload_auto_calp_work_item" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="extend_storageworkload_auto_calp_work_item_filter" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="extend_storageworkload_auto_calp_work_item_page" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="extend_storageworkload_auto_caltarget_work_item" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="extend_storageworkload_auto_calworkload_data" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_storageworkload_auto_caldebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="我的逻辑的传入是啥"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_storageworkload_auto_calprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="获取工作项标识"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_storageworkload_auto_caldeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="根据标识获取工作项详情"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_storageworkload_auto_calprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置父工作项过滤器"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_storageworkload_auto_caldedataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="获取同级数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_storageworkload_auto_calprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="设置当前同级工作项过滤器"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_storageworkload_auto_calprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="绑定父数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_storageworkload_auto_caldedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取父工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_storageworkload_auto_calloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_storageworkload_auto_calrawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_storageworkload_auto_calprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_storageworkload_auto_calrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
+                        <endEvent id="rawsfcode1_end" name="end"/>
+                        <sequenceFlow id="rawsfcode1_end_line" sourceRef="rawsfcode1" targetRef="rawsfcode1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_storageworkload_auto_caldebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_storageworkload_auto_caldebugparam3" id="debugparam3" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_storageworkload_auto_caldeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="更新父工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_storageworkload_auto_calend2" id="end2" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end2_end" name="end"/>
+                        <sequenceFlow id="end2_end_line" sourceRef="end2" targetRef="end2_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_storageworkload_auto_calprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_storageworkload_auto_caldelogic1" id="delogic1" implementation="http://www.jboss.org/drools/rule" name="实体处理逻辑"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="extend_storageworkload_auto_calend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="gateway-begin_debugparam1" sourceRef="gateway-begin" targetRef="debugparam1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $extend_storageworkload_auto_caldefault:extend_storage();
+                                            $extend_storageworkload_auto_calcur_work_item_filter:work_item();
+                                            $extend_storageworkload_auto_calcur_work_item_page:work_item();
+                                            $extend_storageworkload_auto_calcur_work_item_temp:work_item();
+                                            $extend_storageworkload_auto_calnext_work_load:workload();
+                                            $extend_storageworkload_auto_calp_work_item:work_item();
+                                            $extend_storageworkload_auto_calp_work_item_filter:work_item();
+                                            $extend_storageworkload_auto_calp_work_item_page:work_item();
+                                            $extend_storageworkload_auto_caltarget_work_item:work_item();
+                                            $extend_storageworkload_auto_calworkload_data:work_item();
+                                    eval($extend_storageworkload_auto_caldefault==extend_storageworkload_auto_caldefault && $extend_storageworkload_auto_calcur_work_item_filter==extend_storageworkload_auto_calcur_work_item_filter && $extend_storageworkload_auto_calcur_work_item_page==extend_storageworkload_auto_calcur_work_item_page && $extend_storageworkload_auto_calcur_work_item_temp==extend_storageworkload_auto_calcur_work_item_temp && $extend_storageworkload_auto_calnext_work_load==extend_storageworkload_auto_calnext_work_load && $extend_storageworkload_auto_calp_work_item==extend_storageworkload_auto_calp_work_item && $extend_storageworkload_auto_calp_work_item_filter==extend_storageworkload_auto_calp_work_item_filter && $extend_storageworkload_auto_calp_work_item_page==extend_storageworkload_auto_calp_work_item_page && $extend_storageworkload_auto_caltarget_work_item==extend_storageworkload_auto_caltarget_work_item && $extend_storageworkload_auto_calworkload_data==extend_storageworkload_auto_calworkload_data);
+                                eval((RuleUtils.test($extend_storageworkload_auto_caldefault.get("ownerType"),"EQ","WORK_ITEM")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam1_prepareparam1" sourceRef="debugparam1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-deaction1_prepareparam2" sourceRef="gateway-deaction1" targetRef="prepareparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $extend_storageworkload_auto_caldefault:extend_storage();
+                                            $extend_storageworkload_auto_calcur_work_item_filter:work_item();
+                                            $extend_storageworkload_auto_calcur_work_item_page:work_item();
+                                            $extend_storageworkload_auto_calcur_work_item_temp:work_item();
+                                            $extend_storageworkload_auto_calnext_work_load:workload();
+                                            $extend_storageworkload_auto_calp_work_item:work_item();
+                                            $extend_storageworkload_auto_calp_work_item_filter:work_item();
+                                            $extend_storageworkload_auto_calp_work_item_page:work_item();
+                                            $extend_storageworkload_auto_caltarget_work_item:work_item();
+                                            $extend_storageworkload_auto_calworkload_data:work_item();
+                                    eval($extend_storageworkload_auto_caldefault==extend_storageworkload_auto_caldefault && $extend_storageworkload_auto_calcur_work_item_filter==extend_storageworkload_auto_calcur_work_item_filter && $extend_storageworkload_auto_calcur_work_item_page==extend_storageworkload_auto_calcur_work_item_page && $extend_storageworkload_auto_calcur_work_item_temp==extend_storageworkload_auto_calcur_work_item_temp && $extend_storageworkload_auto_calnext_work_load==extend_storageworkload_auto_calnext_work_load && $extend_storageworkload_auto_calp_work_item==extend_storageworkload_auto_calp_work_item && $extend_storageworkload_auto_calp_work_item_filter==extend_storageworkload_auto_calp_work_item_filter && $extend_storageworkload_auto_calp_work_item_page==extend_storageworkload_auto_calp_work_item_page && $extend_storageworkload_auto_caltarget_work_item==extend_storageworkload_auto_caltarget_work_item && $extend_storageworkload_auto_calworkload_data==extend_storageworkload_auto_calworkload_data);
+                                eval((RuleUtils.test($extend_storageworkload_auto_caltarget_work_item.get("pid"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_dedataset1" sourceRef="prepareparam2" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset2_loopsubcall1" sourceRef="dedataset2" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam4_dedataset2" sourceRef="prepareparam4" targetRef="dedataset2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_prepareparam4" sourceRef="prepareparam3" targetRef="prepareparam4">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset1_prepareparam3" sourceRef="dedataset1" targetRef="prepareparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_rawsfcode1" sourceRef="loopsubcall1" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_rawsfcode2" sourceRef="loopsubcall1" targetRef="rawsfcode2">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode2_prepareparam5" sourceRef="rawsfcode2" targetRef="prepareparam5">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam5_debugparam2" sourceRef="prepareparam5" targetRef="debugparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam2_debugparam3" sourceRef="debugparam2" targetRef="debugparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam3_deaction2" sourceRef="debugparam3" targetRef="deaction2">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction2_prepareparam6" sourceRef="deaction2" targetRef="prepareparam6">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam6_delogic1" sourceRef="prepareparam6" targetRef="delogic1">
+                    </sequenceFlow>
+                    <sequenceFlow id="delogic1_end1" sourceRef="delogic1" targetRef="end1">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-begin" name="Gateway" gatewayDirection="Diverging" default="gateway-begin_end_line"></exclusiveGateway>
+                            <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>
+                            <sequenceFlow id="gateway-begin_end_line" sourceRef="gateway-begin" targetRef="gateway-begin_end"/>
+                            <endEvent id="gateway-begin_end" name="end"/>
+                            <exclusiveGateway id="gateway-deaction1" name="Gateway" gatewayDirection="Diverging" default="gateway-deaction1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="deaction1_gateway-deaction1_gatewayline" sourceRef="deaction1" targetRef="gateway-deaction1"></sequenceFlow>
+                            <sequenceFlow id="gateway-deaction1_end_line" sourceRef="gateway-deaction1" targetRef="gateway-deaction1_end"/>
+                            <endEvent id="gateway-deaction1_end" name="end"/>
+        </process>
+    </definitions>

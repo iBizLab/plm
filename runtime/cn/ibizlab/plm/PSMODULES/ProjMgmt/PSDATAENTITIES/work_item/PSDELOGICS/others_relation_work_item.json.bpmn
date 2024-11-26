@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.projmgmt.service.logic.work_itemothers_relation_work_item" isClosed="false" isExecutable="true" name="projmgmt_work_item_others_relation_work_item_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.projmgmt.service.logic.work_itemothers_relation_work_item">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="work_itemothers_relation_work_itemdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_itemothers_relation_work_itemfor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="work_itemothers_relation_work_itemforward_relation_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="work_itemothers_relation_work_itemreverse_relation_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_itemothers_relation_work_itemselectdata" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IrelationService))" name="relationservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="iBzSysWork_itemDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="work_itemothers_relation_work_itemdefault" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="work_itemothers_relation_work_itemfor_temp_obj" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="work_itemothers_relation_work_itemforward_relation_obj" type="cn.ibizlab.plm.core.base.domain.relation" />
+                            <tns:global identifier="work_itemothers_relation_work_itemreverse_relation_obj" type="cn.ibizlab.plm.core.base.domain.relation" />
+                            <tns:global identifier="work_itemothers_relation_work_itemselectdata" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemothers_relation_work_itembindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemothers_relation_work_itemloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemothers_relation_work_itemrenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新建立参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemothers_relation_work_itemrenewparam2" id="renewparam2" implementation="http://www.jboss.org/drools/rule" name="重新建立参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemothers_relation_work_itemrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="关联标识"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemothers_relation_work_itemprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充需要的属性值"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemothers_relation_work_itemprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="存在关联类型"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemothers_relation_work_itemprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="重复或关联"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemothers_relation_work_itemprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="结果"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemothers_relation_work_itemprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="原因"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemothers_relation_work_itemprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="被阻塞"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemothers_relation_work_itemprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="阻塞"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemothers_relation_work_itemend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemothers_relation_work_itemdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="生成正向关联数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemothers_relation_work_itemdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="生成反向关联数据"/>
+                        <endEvent id="deaction2_end" name="end"/>
+                        <sequenceFlow id="deaction2_end_line" sourceRef="deaction2" targetRef="deaction2_end"/>
+                    <sequenceFlow id="gateway-begin_bindparam1" sourceRef="gateway-begin" targetRef="bindparam1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_itemothers_relation_work_itemdefault:work_item();
+                                            $work_itemothers_relation_work_itemfor_temp_obj:work_item();
+                                            $work_itemothers_relation_work_itemforward_relation_obj:relation();
+                                            $work_itemothers_relation_work_itemreverse_relation_obj:relation();
+                                            $work_itemothers_relation_work_itemselectdata:work_item();
+                                    eval($work_itemothers_relation_work_itemdefault==work_itemothers_relation_work_itemdefault && $work_itemothers_relation_work_itemfor_temp_obj==work_itemothers_relation_work_itemfor_temp_obj && $work_itemothers_relation_work_itemforward_relation_obj==work_itemothers_relation_work_itemforward_relation_obj && $work_itemothers_relation_work_itemreverse_relation_obj==work_itemothers_relation_work_itemreverse_relation_obj && $work_itemothers_relation_work_itemselectdata==work_itemothers_relation_work_itemselectdata);
+                                eval((RuleUtils.test($work_itemothers_relation_work_itemdefault.get("principal_id"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-bindparam1_loopsubcall1" sourceRef="gateway-bindparam1" targetRef="loopsubcall1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_itemothers_relation_work_itemdefault:work_item();
+                                            $work_itemothers_relation_work_itemfor_temp_obj:work_item();
+                                            $work_itemothers_relation_work_itemforward_relation_obj:relation();
+                                            $work_itemothers_relation_work_itemreverse_relation_obj:relation();
+                                            $work_itemothers_relation_work_itemselectdata:work_item();
+                                    eval($work_itemothers_relation_work_itemdefault==work_itemothers_relation_work_itemdefault && $work_itemothers_relation_work_itemfor_temp_obj==work_itemothers_relation_work_itemfor_temp_obj && $work_itemothers_relation_work_itemforward_relation_obj==work_itemothers_relation_work_itemforward_relation_obj && $work_itemothers_relation_work_itemreverse_relation_obj==work_itemothers_relation_work_itemreverse_relation_obj && $work_itemothers_relation_work_itemselectdata==work_itemothers_relation_work_itemselectdata);
+                                eval((RuleUtils.test($work_itemothers_relation_work_itemselectdata.get("size"),"GT","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_renewparam1" sourceRef="loopsubcall1" targetRef="renewparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="renewparam1_renewparam2" sourceRef="renewparam1" targetRef="renewparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="renewparam2_rawsfcode1" sourceRef="renewparam2" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_prepareparam1" sourceRef="rawsfcode1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam1_prepareparam2" sourceRef="gateway-prepareparam1" targetRef="prepareparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_itemothers_relation_work_itemdefault:work_item();
+                                            $work_itemothers_relation_work_itemfor_temp_obj:work_item();
+                                            $work_itemothers_relation_work_itemforward_relation_obj:relation();
+                                            $work_itemothers_relation_work_itemreverse_relation_obj:relation();
+                                            $work_itemothers_relation_work_itemselectdata:work_item();
+                                    eval($work_itemothers_relation_work_itemdefault==work_itemothers_relation_work_itemdefault && $work_itemothers_relation_work_itemfor_temp_obj==work_itemothers_relation_work_itemfor_temp_obj && $work_itemothers_relation_work_itemforward_relation_obj==work_itemothers_relation_work_itemforward_relation_obj && $work_itemothers_relation_work_itemreverse_relation_obj==work_itemothers_relation_work_itemreverse_relation_obj && $work_itemothers_relation_work_itemselectdata==work_itemothers_relation_work_itemselectdata);
+                                eval((RuleUtils.test($work_itemothers_relation_work_itemdefault.get("relation_type"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam1_deaction1" sourceRef="gateway-prepareparam1" targetRef="deaction1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_itemothers_relation_work_itemdefault:work_item();
+                                            $work_itemothers_relation_work_itemfor_temp_obj:work_item();
+                                            $work_itemothers_relation_work_itemforward_relation_obj:relation();
+                                            $work_itemothers_relation_work_itemreverse_relation_obj:relation();
+                                            $work_itemothers_relation_work_itemselectdata:work_item();
+                                    eval($work_itemothers_relation_work_itemdefault==work_itemothers_relation_work_itemdefault && $work_itemothers_relation_work_itemfor_temp_obj==work_itemothers_relation_work_itemfor_temp_obj && $work_itemothers_relation_work_itemforward_relation_obj==work_itemothers_relation_work_itemforward_relation_obj && $work_itemothers_relation_work_itemreverse_relation_obj==work_itemothers_relation_work_itemreverse_relation_obj && $work_itemothers_relation_work_itemselectdata==work_itemothers_relation_work_itemselectdata);
+                                eval((RuleUtils.test($work_itemothers_relation_work_itemdefault.get("relation_type"),"ISNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam2_prepareparam3" sourceRef="gateway-prepareparam2" targetRef="prepareparam3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_itemothers_relation_work_itemdefault:work_item();
+                                            $work_itemothers_relation_work_itemfor_temp_obj:work_item();
+                                            $work_itemothers_relation_work_itemforward_relation_obj:relation();
+                                            $work_itemothers_relation_work_itemreverse_relation_obj:relation();
+                                            $work_itemothers_relation_work_itemselectdata:work_item();
+                                    eval($work_itemothers_relation_work_itemdefault==work_itemothers_relation_work_itemdefault && $work_itemothers_relation_work_itemfor_temp_obj==work_itemothers_relation_work_itemfor_temp_obj && $work_itemothers_relation_work_itemforward_relation_obj==work_itemothers_relation_work_itemforward_relation_obj && $work_itemothers_relation_work_itemreverse_relation_obj==work_itemothers_relation_work_itemreverse_relation_obj && $work_itemothers_relation_work_itemselectdata==work_itemothers_relation_work_itemselectdata);
+                                eval(((RuleUtils.test($work_itemothers_relation_work_itemforward_relation_obj.get("relationType"),"EQ","duplicates"))||(RuleUtils.test($work_itemothers_relation_work_itemforward_relation_obj.get("relationType"),"EQ","relates"))))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam2_prepareparam4" sourceRef="gateway-prepareparam2" targetRef="prepareparam4">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_itemothers_relation_work_itemdefault:work_item();
+                                            $work_itemothers_relation_work_itemfor_temp_obj:work_item();
+                                            $work_itemothers_relation_work_itemforward_relation_obj:relation();
+                                            $work_itemothers_relation_work_itemreverse_relation_obj:relation();
+                                            $work_itemothers_relation_work_itemselectdata:work_item();
+                                    eval($work_itemothers_relation_work_itemdefault==work_itemothers_relation_work_itemdefault && $work_itemothers_relation_work_itemfor_temp_obj==work_itemothers_relation_work_itemfor_temp_obj && $work_itemothers_relation_work_itemforward_relation_obj==work_itemothers_relation_work_itemforward_relation_obj && $work_itemothers_relation_work_itemreverse_relation_obj==work_itemothers_relation_work_itemreverse_relation_obj && $work_itemothers_relation_work_itemselectdata==work_itemothers_relation_work_itemselectdata);
+                                eval((RuleUtils.test($work_itemothers_relation_work_itemforward_relation_obj.get("relationType"),"EQ","causes")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam2_prepareparam5" sourceRef="gateway-prepareparam2" targetRef="prepareparam5">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_itemothers_relation_work_itemdefault:work_item();
+                                            $work_itemothers_relation_work_itemfor_temp_obj:work_item();
+                                            $work_itemothers_relation_work_itemforward_relation_obj:relation();
+                                            $work_itemothers_relation_work_itemreverse_relation_obj:relation();
+                                            $work_itemothers_relation_work_itemselectdata:work_item();
+                                    eval($work_itemothers_relation_work_itemdefault==work_itemothers_relation_work_itemdefault && $work_itemothers_relation_work_itemfor_temp_obj==work_itemothers_relation_work_itemfor_temp_obj && $work_itemothers_relation_work_itemforward_relation_obj==work_itemothers_relation_work_itemforward_relation_obj && $work_itemothers_relation_work_itemreverse_relation_obj==work_itemothers_relation_work_itemreverse_relation_obj && $work_itemothers_relation_work_itemselectdata==work_itemothers_relation_work_itemselectdata);
+                                eval((RuleUtils.test($work_itemothers_relation_work_itemforward_relation_obj.get("relationType"),"EQ","is_caused_by")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam2_prepareparam6" sourceRef="gateway-prepareparam2" targetRef="prepareparam6">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_itemothers_relation_work_itemdefault:work_item();
+                                            $work_itemothers_relation_work_itemfor_temp_obj:work_item();
+                                            $work_itemothers_relation_work_itemforward_relation_obj:relation();
+                                            $work_itemothers_relation_work_itemreverse_relation_obj:relation();
+                                            $work_itemothers_relation_work_itemselectdata:work_item();
+                                    eval($work_itemothers_relation_work_itemdefault==work_itemothers_relation_work_itemdefault && $work_itemothers_relation_work_itemfor_temp_obj==work_itemothers_relation_work_itemfor_temp_obj && $work_itemothers_relation_work_itemforward_relation_obj==work_itemothers_relation_work_itemforward_relation_obj && $work_itemothers_relation_work_itemreverse_relation_obj==work_itemothers_relation_work_itemreverse_relation_obj && $work_itemothers_relation_work_itemselectdata==work_itemothers_relation_work_itemselectdata);
+                                eval((RuleUtils.test($work_itemothers_relation_work_itemforward_relation_obj.get("relationType"),"EQ","blocks")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam2_prepareparam7" sourceRef="gateway-prepareparam2" targetRef="prepareparam7">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_itemothers_relation_work_itemdefault:work_item();
+                                            $work_itemothers_relation_work_itemfor_temp_obj:work_item();
+                                            $work_itemothers_relation_work_itemforward_relation_obj:relation();
+                                            $work_itemothers_relation_work_itemreverse_relation_obj:relation();
+                                            $work_itemothers_relation_work_itemselectdata:work_item();
+                                    eval($work_itemothers_relation_work_itemdefault==work_itemothers_relation_work_itemdefault && $work_itemothers_relation_work_itemfor_temp_obj==work_itemothers_relation_work_itemfor_temp_obj && $work_itemothers_relation_work_itemforward_relation_obj==work_itemothers_relation_work_itemforward_relation_obj && $work_itemothers_relation_work_itemreverse_relation_obj==work_itemothers_relation_work_itemreverse_relation_obj && $work_itemothers_relation_work_itemselectdata==work_itemothers_relation_work_itemselectdata);
+                                eval((RuleUtils.test($work_itemothers_relation_work_itemforward_relation_obj.get("relationType"),"EQ","is_blocked_by")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_deaction1" sourceRef="prepareparam3" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam4_deaction1" sourceRef="prepareparam4" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam5_deaction1" sourceRef="prepareparam5" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam6_deaction1" sourceRef="prepareparam6" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam7_deaction1" sourceRef="prepareparam7" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_deaction2" sourceRef="deaction1" targetRef="deaction2">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-begin" name="Gateway" gatewayDirection="Diverging" default="gateway-begin_end_line"></exclusiveGateway>
+                            <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>
+                            <sequenceFlow id="gateway-begin_end_line" sourceRef="gateway-begin" targetRef="gateway-begin_end"/>
+                            <endEvent id="gateway-begin_end" name="end"/>
+                            <exclusiveGateway id="gateway-bindparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-bindparam1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="bindparam1_gateway-bindparam1_gatewayline" sourceRef="bindparam1" targetRef="gateway-bindparam1"></sequenceFlow>
+                            <sequenceFlow id="gateway-bindparam1_end_line" sourceRef="gateway-bindparam1" targetRef="gateway-bindparam1_end"/>
+                            <endEvent id="gateway-bindparam1_end" name="end"/>
+                            <exclusiveGateway id="gateway-prepareparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam1_gateway-prepareparam1_gatewayline" sourceRef="prepareparam1" targetRef="gateway-prepareparam1"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam1_end_line" sourceRef="gateway-prepareparam1" targetRef="gateway-prepareparam1_end"/>
+                            <endEvent id="gateway-prepareparam1_end" name="end"/>
+                            <exclusiveGateway id="gateway-prepareparam2" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam2_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam2_gateway-prepareparam2_gatewayline" sourceRef="prepareparam2" targetRef="gateway-prepareparam2"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam2_end_line" sourceRef="gateway-prepareparam2" targetRef="gateway-prepareparam2_end"/>
+                            <endEvent id="gateway-prepareparam2_end" name="end"/>
+        </process>
+    </definitions>

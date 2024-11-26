@@ -1,0 +1,121 @@
+{
+  "codeName" : "this_run_details",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDELOGICS/this_run_details.json",
+  "logicName" : "获取当前用例详情",
+  "memo" : "获取当前执行用例详情信息",
+  "name" : "获取当前用例详情",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 120,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEACTION",
+    "name" : "获取run信息",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "topPos" : 320
+  }, {
+    "codeName" : "RAWSQLCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "获取最近执行的一条数据",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[CASE_ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "CASE_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "-- 最近执行\t\r\nSELECT\r\n\tt2.NAME AS RECENT_TEST_PLAN,\r\n\tt.EXECUTOR_NAME AS RECENT_EXECUTOR_NAME,\r\n\tt.EXECUTED_AT AS RECENT_EXECUTED_AT,\r\n\tt.`STATUS` AS RECENT_RUN_HISTORY\r\nFROM\r\n\trun t,\r\n\ttest_plan t2\r\nWHERE\r\n\tt.CASE_ID = ?\r\n\tAND t.`STATUS` IS NOT NULL \r\n\tAND t.PLAN_ID = t2.id \r\nORDER BY\r\n\tEXECUTED_AT DESC \r\n\tLIMIT 1",
+    "topPos" : 460,
+    "fillDstLogicParam" : true
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 200,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 621
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

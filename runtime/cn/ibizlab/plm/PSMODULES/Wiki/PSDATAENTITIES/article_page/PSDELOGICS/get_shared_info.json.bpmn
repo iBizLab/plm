@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.wiki.service.logic.article_pageget_shared_info" isClosed="false" isExecutable="true" name="wiki_article_page_get_shared_info_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.wiki.service.logic.article_pageget_shared_info">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="article_pageget_shared_infodefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.article_page()" name="article_pageget_shared_inforesult" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.Iarticle_pageService))" name="article_pageservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.Iarticle_pageService))" name="iBzSysArticle_pageDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="article_pageget_shared_infodefault" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
+                            <tns:global identifier="article_pageget_shared_inforesult" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageget_shared_infodeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取共享页面"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageget_shared_inforawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="获取访问密码"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageget_shared_infodelogic1" id="delogic1" implementation="http://www.jboss.org/drools/rule" name="访问密码解密"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageget_shared_infodebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageget_shared_infoprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置结果参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageget_shared_infoend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="begin_deaction1" sourceRef="begin" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_rawsqlcall1" sourceRef="deaction1" targetRef="rawsqlcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall1_debugparam1" sourceRef="rawsqlcall1" targetRef="debugparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="delogic1_prepareparam2" sourceRef="delogic1" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam1_delogic1" sourceRef="debugparam1" targetRef="delogic1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_end1" sourceRef="prepareparam2" targetRef="end1">
+                    </sequenceFlow>
+        </process>
+    </definitions>

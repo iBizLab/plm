@@ -1,0 +1,1103 @@
+{
+  "accUserMode" : 2,
+  "getCapPSLanguageRes" : {
+    "lanResTag" : "DE.LNAME.WORK"
+  },
+  "caption" : "工作",
+  "codeName" : "work_tree_grid_ex_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_tree_grid_ex_view.json",
+  "mDCtrlActiveMode" : 1,
+  "name" : "worktree_grid_ex_view",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work.json"
+  },
+  "getPSAppModule" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/Base.json"
+  },
+  "getPSAppViewEngines" : [ {
+    "engineCat" : "VIEW",
+    "engineType" : "TreeGridExView",
+    "name" : "engine"
+  } ],
+  "getPSAppViewNavContexts" : [ {
+    "key" : "SRFDEFAULTTOROUTEDEPTH",
+    "name" : "SRFDEFAULTTOROUTEDEPTH",
+    "value" : "2",
+    "rawValue" : true
+  } ],
+  "getPSAppViewNavParams" : [ {
+    "key" : "project_portfolio",
+    "name" : "project_portfolio",
+    "value" : "portfolio",
+    "rawValue" : false
+  } ],
+  "getPSAppViewRefs" : [ {
+    "name" : "EDITDATA",
+    "realTitle" : "工作数据重定向视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.WORK.REDIRECTVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_redirect_view.json",
+      "viewType" : "DEREDIRECTVIEW"
+    }
+  }, {
+    "name" : "NEWDATA",
+    "realTitle" : "工作编辑视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.WORK.EDITVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_edit_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  } ],
+  "getPSControls" : [ {
+    "codeName" : "tree_grid_ex_view_toolbar",
+    "controlType" : "TOOLBAR",
+    "logicName" : "添加",
+    "name" : "toolbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work.json"
+    },
+    "getPSControlParam" : {
+      "id" : "TOOLBAR"
+    },
+    "getPSDEToolbarItems" : [ {
+      "caption" : "选择项目",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction1",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "toolbar_deuiaction1"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "NONE",
+        "caption" : "选择项目",
+        "codeName" : "choose_project",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_mpick_up_view.json",
+          "viewType" : "DEMPICKUPVIEW"
+        },
+        "fullCodeName" : "work_choose_project",
+        "name" : "选择项目",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "add_project"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work.json"
+        },
+        "getPSNavigateParams" : [ {
+          "key" : "portfolio_id",
+          "name" : "portfolio_id",
+          "value" : "portfolio",
+          "rawValue" : false
+        } ],
+        "refreshMode" : 1,
+        "timeout" : 60000,
+        "uIActionMode" : "BACKEND",
+        "uIActionTag" : "choose_project",
+        "uIActionType" : "DEUIACTION",
+        "enableConfirm" : true,
+        "reloadData" : true,
+        "id" : "choose_project@work"
+      },
+      "tooltip" : "选择项目",
+      "uIActionTarget" : "NONE",
+      "showCaption" : true,
+      "showIcon" : true
+    }, {
+      "caption" : "选择项目集",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction2",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "toolbar_deuiaction2"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "NONE",
+        "caption" : "选择项目集",
+        "codeName" : "choose_item_set",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/portfolio_mpick_up_view.json",
+          "viewType" : "DEMPICKUPVIEW"
+        },
+        "fullCodeName" : "work_choose_item_set",
+        "name" : "选择项目集",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "add_project_portfolio"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work.json"
+        },
+        "getPSNavigateParams" : [ {
+          "key" : "portfolio",
+          "name" : "portfolio",
+          "value" : "portfolio",
+          "rawValue" : false
+        } ],
+        "refreshMode" : 1,
+        "timeout" : 60000,
+        "uIActionMode" : "BACKEND",
+        "uIActionTag" : "choose_item_set",
+        "uIActionType" : "DEUIACTION",
+        "enableConfirm" : true,
+        "reloadData" : true,
+        "id" : "choose_item_set@work"
+      },
+      "tooltip" : "选择项目集",
+      "uIActionTarget" : "NONE",
+      "showCaption" : true,
+      "showIcon" : true
+    } ],
+    "xDataControlName" : "treegridex",
+    "modelid" : "454a290d0783bdc78098cd01581564a9",
+    "modeltype" : "PSDETOOLBAR"
+  }, {
+    "codeName" : "tree_grid_ex_view_tree_grid",
+    "controlType" : "TREEGRIDEX",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work/PSTREEGRIDICES/tree_grid_ex_view_tree_grid.json",
+    "logicName" : "工作实体树表格视图_树表格",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work.json"
+    },
+    "getPSControlHandler" : {
+      "enableDEFieldPrivilege" : false,
+      "id" : "treegridex"
+    },
+    "getPSControlParam" : {
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "id" : "TREEGRIDEX"
+    },
+    "getPSDETreeColumns" : [ {
+      "align" : "LEFT",
+      "caption" : "名称",
+      "codeName" : "name",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "name",
+      "name" : "name",
+      "width" : 200,
+      "widthUnit" : "STAR",
+      "enableExpand" : false,
+      "enableSort" : false
+    }, {
+      "caption" : "状态",
+      "codeName" : "state",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "state",
+      "name" : "state",
+      "width" : 150,
+      "widthUnit" : "PX",
+      "enableExpand" : false,
+      "enableSort" : false
+    }, {
+      "caption" : "负责人",
+      "codeName" : "assignee_name",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "assignee_name",
+      "name" : "assignee_name",
+      "width" : 200,
+      "widthUnit" : "PX",
+      "enableExpand" : false,
+      "enableSort" : false
+    }, {
+      "caption" : "开始时间",
+      "codeName" : "start_at",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "start_at",
+      "name" : "start_at",
+      "width" : 200,
+      "widthUnit" : "PX",
+      "enableExpand" : false,
+      "enableSort" : false
+    }, {
+      "caption" : "结束时间",
+      "codeName" : "end_at",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "end_at",
+      "name" : "end_at",
+      "width" : 200,
+      "widthUnit" : "PX",
+      "enableExpand" : false,
+      "enableSort" : false
+    } ],
+    "getPSDETreeNodeRSs" : [ {
+      "getChildPSDETreeNode" : {
+        "modelref" : true,
+        "id" : "node_1"
+      },
+      "name" : "项目集 - 项目集下的项目",
+      "parentFilter" : "portfolio_id",
+      "getParentPSDETreeNode" : {
+        "modelref" : true,
+        "id" : "node"
+      },
+      "parentValueLevel" : 1,
+      "searchMode" : 3
+    }, {
+      "getChildPSDETreeNode" : {
+        "modelref" : true,
+        "id" : "node"
+      },
+      "name" : "默认根节点 - 项目集",
+      "getParentPSDETreeNode" : {
+        "modelref" : true,
+        "id" : "ROOT"
+      },
+      "parentValueLevel" : 1,
+      "searchMode" : 3
+    }, {
+      "getChildPSDETreeNode" : {
+        "modelref" : true,
+        "id" : "node_2"
+      },
+      "name" : "默认根节点 - 项目",
+      "getParentPSDETreeNode" : {
+        "modelref" : true,
+        "id" : "ROOT"
+      },
+      "parentValueLevel" : 1,
+      "searchMode" : 3
+    } ],
+    "getPSDETreeNodes" : [ {
+      "counterMode" : 0,
+      "name" : "默认根节点",
+      "nodeType" : "ROOT",
+      "nodeValue" : "root",
+      "text" : "默认根节点",
+      "treeNodeType" : "STATIC",
+      "hasPSDETreeNodeRSs" : true,
+      "appendPNodeId" : false,
+      "disableSelect" : false,
+      "enableCheck" : false,
+      "enableEditData" : false,
+      "enableNewData" : false,
+      "enableQuickCreate" : false,
+      "enableQuickSearch" : false,
+      "enableRemoveData" : false,
+      "enableViewData" : false,
+      "expandFirstOnly" : false,
+      "expanded" : false,
+      "rootNode" : true,
+      "selectFirstOnly" : false,
+      "selected" : false,
+      "id" : "ROOT"
+    }, {
+      "counterMode" : 0,
+      "getIdPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "maxSize" : -1,
+      "name" : "项目集",
+      "nodeType" : "node",
+      "getPSAppDEDataSet" : {
+        "modelref" : true,
+        "id" : "fetch_work_project_portfolio"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
+      },
+      "getPSDETreeNodeColumns" : [ {
+        "cLConvertMode" : "NONE",
+        "codeName" : "assignee_name",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "assignee_name",
+        "name" : "assignee_name",
+        "getPSAppDEField" : {
+          "name" : "ASSIGNEE_NAME",
+          "codeName" : "assignee_name"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "assignee_name"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "codeName" : "end_at",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "end_at",
+        "name" : "end_at",
+        "getPSAppDEField" : {
+          "name" : "END_AT",
+          "codeName" : "end_at"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "end_at"
+        },
+        "valueFormat" : "YYYY-MM-DD"
+      }, {
+        "cLConvertMode" : "NONE",
+        "codeName" : "name",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "name",
+        "name" : "name",
+        "getPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "name"
+        },
+        "getPSDEUIActionGroup" : {
+          "codeName" : "Usr0305508371",
+          "name" : "从项目集中移除",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
+          },
+          "getPSUIActionGroupDetails" : [ {
+            "actionLevel" : 200,
+            "detailType" : "DEUIACTION",
+            "name" : "uda81f5e",
+            "getPSSysImage" : {
+              "glyph" : "xf014@FontAwesome",
+              "cssClass" : "fa fa-trash-o"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "SINGLEKEY",
+              "caption" : "移除",
+              "codeName" : "remove_from_project_set",
+              "confirmMsg" : "确认从项目集中移除?",
+              "fullCodeName" : "portfolio_remove_from_project_set",
+              "name" : "从项目集中移除",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "remove_from_project_set"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
+              },
+              "getPSNavigateParams" : [ {
+                "key" : "portfolio_id",
+                "name" : "portfolio_id",
+                "value" : "project_portfolio",
+                "rawValue" : false
+              } ],
+              "getPSSysImage" : {
+                "glyph" : "xf014@FontAwesome",
+                "cssClass" : "fa fa-trash-o"
+              },
+              "refreshMode" : 1,
+              "successMsg" : "移除成功",
+              "timeout" : 60000,
+              "uIActionMode" : "BACKEND",
+              "uIActionTag" : "remove_from_project_set",
+              "uIActionType" : "DEUIACTION",
+              "enableConfirm" : true,
+              "reloadData" : true,
+              "id" : "remove_from_project_set@portfolio"
+            },
+            "addSeparator" : false,
+            "showCaption" : false,
+            "showIcon" : true
+          } ],
+          "uniqueTag" : "portfolio__Usr0305508371"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "codeName" : "start_at",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "start_at",
+        "name" : "start_at",
+        "getPSAppDEField" : {
+          "name" : "START_AT",
+          "codeName" : "start_at"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "start_at"
+        },
+        "valueFormat" : "YYYY-MM-DD"
+      }, {
+        "cLConvertMode" : "FRONT",
+        "codeName" : "state",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "state",
+        "name" : "state",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__project_state.json"
+        },
+        "getPSAppDEField" : {
+          "name" : "STATE",
+          "codeName" : "state"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "state"
+        }
+      } ],
+      "getPSDETreeNodeDataItems" : [ {
+        "cLConvertMode" : "NONE",
+        "dataType" : 25,
+        "name" : "assignee_name",
+        "getPSAppDEField" : {
+          "name" : "ASSIGNEE_NAME",
+          "codeName" : "assignee_name"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "assignee_name"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "dataType" : 5,
+        "name" : "end_at",
+        "getPSAppDEField" : {
+          "name" : "END_AT",
+          "codeName" : "end_at"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "end_at"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "dataType" : 25,
+        "name" : "name",
+        "getPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "name"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "dataType" : 5,
+        "name" : "start_at",
+        "getPSAppDEField" : {
+          "name" : "START_AT",
+          "codeName" : "start_at"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "start_at"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "dataType" : 25,
+        "name" : "state",
+        "getPSAppDEField" : {
+          "name" : "STATE",
+          "codeName" : "state"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "state"
+        }
+      } ],
+      "getTextPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      },
+      "treeNodeType" : "DE",
+      "hasPSDETreeNodeRSs" : true,
+      "appendPNodeId" : false,
+      "disableSelect" : false,
+      "enableCheck" : false,
+      "enableEditData" : false,
+      "enableNewData" : false,
+      "enableQuickCreate" : false,
+      "enableQuickSearch" : false,
+      "enableRemoveData" : false,
+      "enableViewData" : false,
+      "expandFirstOnly" : false,
+      "expanded" : true,
+      "rootNode" : false,
+      "selectFirstOnly" : false,
+      "selected" : false,
+      "id" : "node"
+    }, {
+      "counterMode" : 0,
+      "getIdPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "maxSize" : -1,
+      "name" : "项目集下的项目",
+      "nodeType" : "node_1",
+      "getPSAppDEDataSet" : {
+        "modelref" : true,
+        "id" : "fetch_under_project_portfolio"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      },
+      "getPSDETreeNodeColumns" : [ {
+        "cLConvertMode" : "NONE",
+        "codeName" : "assignee_name",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "assignee_name",
+        "name" : "assignee_name",
+        "getPSAppDEField" : {
+          "name" : "ASSIGNEE_NAME",
+          "codeName" : "assignee_name"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "assignee_name"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "codeName" : "end_at",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "end_at",
+        "name" : "end_at",
+        "getPSAppDEField" : {
+          "name" : "END_AT",
+          "codeName" : "end_at"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "end_at"
+        },
+        "valueFormat" : "YYYY-MM-DD"
+      }, {
+        "cLConvertMode" : "NONE",
+        "codeName" : "name",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "name",
+        "getLinkPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_redirect_view.json",
+          "viewType" : "DEREDIRECTVIEW"
+        },
+        "linkValueItem" : "srfkey",
+        "name" : "name",
+        "getPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "name"
+        },
+        "getPSDEUIActionGroup" : {
+          "codeName" : "Usr0305093607",
+          "name" : "从项目集中移除",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+          },
+          "getPSUIActionGroupDetails" : [ {
+            "actionLevel" : 200,
+            "detailType" : "DEUIACTION",
+            "name" : "u33e263f",
+            "getPSSysImage" : {
+              "glyph" : "xf014@FontAwesome",
+              "cssClass" : "fa fa-trash-o"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "SINGLEKEY",
+              "caption" : "移除",
+              "codeName" : "remove_from_project_set",
+              "confirmMsg" : "确认从项目集中移除?",
+              "fullCodeName" : "project_remove_from_project_set",
+              "name" : "从项目集中移除",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "remove_from_project_set"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+              },
+              "getPSNavigateParams" : [ {
+                "key" : "portfolio_id",
+                "name" : "portfolio_id",
+                "value" : "portfolio",
+                "rawValue" : false
+              } ],
+              "getPSSysImage" : {
+                "glyph" : "xf014@FontAwesome",
+                "cssClass" : "fa fa-trash-o"
+              },
+              "refreshMode" : 2,
+              "successMsg" : "移除成功",
+              "timeout" : 60000,
+              "tooltip" : "移除",
+              "uIActionMode" : "BACKEND",
+              "uIActionTag" : "remove_from_project_set",
+              "uIActionType" : "DEUIACTION",
+              "enableConfirm" : true,
+              "reloadData" : true,
+              "id" : "remove_from_project_set@project"
+            },
+            "tooltip" : "移除",
+            "addSeparator" : false,
+            "showCaption" : false,
+            "showIcon" : true
+          } ],
+          "uniqueTag" : "project__Usr0305093607"
+        },
+        "enableLinkView" : true
+      }, {
+        "cLConvertMode" : "NONE",
+        "codeName" : "start_at",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "start_at",
+        "name" : "start_at",
+        "getPSAppDEField" : {
+          "name" : "START_AT",
+          "codeName" : "start_at"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "start_at"
+        },
+        "valueFormat" : "YYYY-MM-DD"
+      }, {
+        "cLConvertMode" : "FRONT",
+        "codeName" : "state",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "state",
+        "name" : "state",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__dyna_project_state.json"
+        },
+        "getPSAppDEField" : {
+          "name" : "STATE",
+          "codeName" : "state"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "state"
+        }
+      } ],
+      "getPSDETreeNodeDataItems" : [ {
+        "cLConvertMode" : "NONE",
+        "dataType" : 25,
+        "name" : "assignee_name",
+        "getPSAppDEField" : {
+          "name" : "ASSIGNEE_NAME",
+          "codeName" : "assignee_name"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "assignee_name"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "dataType" : 5,
+        "name" : "end_at",
+        "getPSAppDEField" : {
+          "name" : "END_AT",
+          "codeName" : "end_at"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "end_at"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "dataType" : 25,
+        "name" : "name",
+        "getPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "name"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "dataType" : 5,
+        "name" : "start_at",
+        "getPSAppDEField" : {
+          "name" : "START_AT",
+          "codeName" : "start_at"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "start_at"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "dataType" : 25,
+        "name" : "state",
+        "getPSAppDEField" : {
+          "name" : "STATE",
+          "codeName" : "state"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "state"
+        }
+      } ],
+      "getTextPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      },
+      "treeNodeType" : "DE",
+      "hasPSDETreeNodeRSs" : false,
+      "appendPNodeId" : false,
+      "disableSelect" : false,
+      "enableCheck" : false,
+      "enableEditData" : false,
+      "enableNewData" : false,
+      "enableQuickCreate" : false,
+      "enableQuickSearch" : false,
+      "enableRemoveData" : false,
+      "enableViewData" : false,
+      "expandFirstOnly" : false,
+      "expanded" : false,
+      "rootNode" : false,
+      "selectFirstOnly" : false,
+      "selected" : false,
+      "id" : "node_1"
+    }, {
+      "counterMode" : 0,
+      "getIdPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "maxSize" : -1,
+      "name" : "项目",
+      "nodeType" : "node_2",
+      "getPSAppDEDataSet" : {
+        "modelref" : true,
+        "id" : "fetch_work_project"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      },
+      "getPSDETreeNodeColumns" : [ {
+        "cLConvertMode" : "NONE",
+        "codeName" : "assignee_name",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "assignee_name",
+        "name" : "assignee_name",
+        "getPSAppDEField" : {
+          "name" : "ASSIGNEE_NAME",
+          "codeName" : "assignee_name"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "assignee_name"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "codeName" : "end_at",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "end_at",
+        "name" : "end_at",
+        "getPSAppDEField" : {
+          "name" : "END_AT",
+          "codeName" : "end_at"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "end_at"
+        },
+        "valueFormat" : "YYYY-MM-DD"
+      }, {
+        "cLConvertMode" : "NONE",
+        "codeName" : "name",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "name",
+        "getLinkPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_redirect_view.json",
+          "viewType" : "DEREDIRECTVIEW"
+        },
+        "linkValueItem" : "srfkey",
+        "name" : "name",
+        "getPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "name"
+        },
+        "getPSDEUIActionGroup" : {
+          "codeName" : "Usr0305093607",
+          "name" : "从项目集中移除",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+          },
+          "getPSUIActionGroupDetails" : [ {
+            "actionLevel" : 200,
+            "detailType" : "DEUIACTION",
+            "name" : "u33e263f",
+            "getPSSysImage" : {
+              "glyph" : "xf014@FontAwesome",
+              "cssClass" : "fa fa-trash-o"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "SINGLEKEY",
+              "caption" : "移除",
+              "codeName" : "remove_from_project_set",
+              "confirmMsg" : "确认从项目集中移除?",
+              "fullCodeName" : "project_remove_from_project_set",
+              "name" : "从项目集中移除",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "remove_from_project_set"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+              },
+              "getPSNavigateParams" : [ {
+                "key" : "portfolio_id",
+                "name" : "portfolio_id",
+                "value" : "portfolio",
+                "rawValue" : false
+              } ],
+              "getPSSysImage" : {
+                "glyph" : "xf014@FontAwesome",
+                "cssClass" : "fa fa-trash-o"
+              },
+              "refreshMode" : 2,
+              "successMsg" : "移除成功",
+              "timeout" : 60000,
+              "tooltip" : "移除",
+              "uIActionMode" : "BACKEND",
+              "uIActionTag" : "remove_from_project_set",
+              "uIActionType" : "DEUIACTION",
+              "enableConfirm" : true,
+              "reloadData" : true,
+              "id" : "remove_from_project_set@project"
+            },
+            "tooltip" : "移除",
+            "addSeparator" : false,
+            "showCaption" : false,
+            "showIcon" : true
+          } ],
+          "uniqueTag" : "project__Usr0305093607"
+        },
+        "enableLinkView" : true
+      }, {
+        "cLConvertMode" : "NONE",
+        "codeName" : "start_at",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "start_at",
+        "name" : "start_at",
+        "getPSAppDEField" : {
+          "name" : "START_AT",
+          "codeName" : "start_at"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "start_at"
+        },
+        "valueFormat" : "YYYY-MM-DD"
+      }, {
+        "cLConvertMode" : "FRONT",
+        "codeName" : "state",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "state",
+        "name" : "state",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__dyna_project_state.json"
+        },
+        "getPSAppDEField" : {
+          "name" : "STATE",
+          "codeName" : "state"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "state"
+        }
+      } ],
+      "getPSDETreeNodeDataItems" : [ {
+        "cLConvertMode" : "NONE",
+        "dataType" : 25,
+        "name" : "assignee_name",
+        "getPSAppDEField" : {
+          "name" : "ASSIGNEE_NAME",
+          "codeName" : "assignee_name"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "assignee_name"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "dataType" : 5,
+        "name" : "end_at",
+        "getPSAppDEField" : {
+          "name" : "END_AT",
+          "codeName" : "end_at"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "end_at"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "dataType" : 25,
+        "name" : "name",
+        "getPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "name"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "dataType" : 5,
+        "name" : "start_at",
+        "getPSAppDEField" : {
+          "name" : "START_AT",
+          "codeName" : "start_at"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "start_at"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "dataType" : 25,
+        "name" : "state",
+        "getPSAppDEField" : {
+          "name" : "STATE",
+          "codeName" : "state"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "state"
+        }
+      } ],
+      "getTextPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      },
+      "treeNodeType" : "DE",
+      "hasPSDETreeNodeRSs" : false,
+      "appendPNodeId" : false,
+      "disableSelect" : false,
+      "enableCheck" : false,
+      "enableEditData" : false,
+      "enableNewData" : false,
+      "enableQuickCreate" : false,
+      "enableQuickSearch" : false,
+      "enableRemoveData" : false,
+      "enableViewData" : false,
+      "expandFirstOnly" : false,
+      "expanded" : false,
+      "rootNode" : false,
+      "selectFirstOnly" : false,
+      "selected" : false,
+      "id" : "node_2"
+    } ],
+    "treeGridMode" : 1,
+    "enableRootSelect" : false,
+    "outputIconDefault" : true,
+    "rootVisible" : false,
+    "name" : "treegridex",
+    "modelid" : "f720a521cc496bc1e9b7a63678e19d64",
+    "modeltype" : "PSDETREEGRIDEX"
+  }, {
+    "controlType" : "SEARCHBAR",
+    "name" : "searchbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work.json"
+    },
+    "getPSControlParam" : {
+      "id" : "searchbar"
+    },
+    "quickGroupCount" : -1,
+    "quickSearchMode" : 0,
+    "quickSearchWidth" : 0,
+    "enableFilter" : false,
+    "enableGroup" : false,
+    "enableQuickSearch" : false,
+    "mobileSearchBar" : false
+  }, {
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DE.LNAME.WORK"
+    },
+    "caption" : "工作",
+    "codeName" : "tree_grid_ex_view_captionbar",
+    "controlType" : "CAPTIONBAR",
+    "name" : "captionbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work.json"
+    },
+    "getPSControlParam" : { }
+  } ],
+  "getPSDEViewCodeName" : "tree_grid_ex_view",
+  "getPSDEViewId" : "f9d01b56fe894bc7b07202d661fbf9e8",
+  "getPSViewLayoutPanel" : {
+    "codeName" : "layoutpanel",
+    "controlStyle" : "APPDETREEGRIDEXVIEW",
+    "controlType" : "VIEWLAYOUTPANEL",
+    "name" : "layoutpanel",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work.json"
+    },
+    "getPSControlParam" : { },
+    "layoutBodyOnly" : true,
+    "layoutPanel" : true,
+    "useDefaultLayout" : true
+  },
+  "title" : "工作实体树表格视图",
+  "viewStyle" : "DEFAULT",
+  "viewType" : "DETREEGRIDEXVIEW",
+  "xDataControlName" : "treegridex",
+  "enableDP" : true,
+  "enableFilter" : true,
+  "enableSearch" : true,
+  "modelid" : "1ceccb8debea89c59d963504096335a5",
+  "modeltype" : "PSAPPDEVIEW",
+  "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "works",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "portfolio",
+    "majorDEName" : "PORTFOLIO",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
+    },
+    "minorDECodeName" : "work",
+    "minorDEName" : "WORK",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work.json"
+    },
+    "name" : "DER1N_WORK_PORTFOLIO_PORTFOLIO_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PORTFOLIO_ID",
+      "codeName" : "portfolio_id"
+    },
+    "rSMode" : 2
+  } ] ]
+}

@@ -1,0 +1,1005 @@
+{
+  "accUserMode" : 2,
+  "getCapPSLanguageRes" : {
+    "lanResTag" : "DE.LNAME.BASELINE_IDEA"
+  },
+  "caption" : "基线对比",
+  "codeName" : "baseline_idea_comparison_grid_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_idea_comparison_grid_view.json",
+  "gridRowActiveMode" : 1,
+  "name" : "baseline_ideacomparison_grid_view",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+  },
+  "getPSAppModule" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProdMgmt.json"
+  },
+  "getPSAppViewEngines" : [ {
+    "engineCat" : "VIEW",
+    "engineType" : "GridView",
+    "name" : "engine"
+  } ],
+  "getPSAppViewLogics" : [ {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "newdata",
+    "getPSAppUILogic" : {
+      "actionAfterWizard" : "DEFAULT",
+      "logicType" : "PREDEFINED",
+      "name" : "新建数据",
+      "getNewDataPSAppView" : {
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_idea_edit_view.json",
+          "viewType" : "DEEDITVIEW"
+        }
+      },
+      "getPSAppUILogicRefViews" : [ {
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_idea_edit_view.json",
+          "viewType" : "DEEDITVIEW"
+        }
+      } ],
+      "viewLogicType" : "APP_NEWDATA",
+      "batchAddOnly" : false,
+      "enableBatchAdd" : false,
+      "enableWizardAdd" : false
+    }
+  }, {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "opendata",
+    "getPSAppUILogic" : {
+      "logicType" : "PREDEFINED",
+      "name" : "打开数据",
+      "getOpenDataPSAppView" : {
+        "openMode" : "POPUPMODAL",
+        "getPSNavigateContexts" : [ {
+          "key" : "PRODUCT",
+          "name" : "PRODUCT",
+          "value" : "product_id",
+          "rawValue" : false
+        }, {
+          "key" : "IDEA",
+          "name" : "IDEA",
+          "value" : "target_id",
+          "rawValue" : false
+        }, {
+          "key" : "SRFREADONLY",
+          "name" : "SRFREADONLY",
+          "value" : "true",
+          "rawValue" : true
+        } ],
+        "getPSNavigateParams" : [ {
+          "key" : "srfversionid",
+          "name" : "srfversionid",
+          "value" : "target_version_id",
+          "rawValue" : false
+        } ],
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_main_view.json",
+          "viewType" : "DEEDITVIEW"
+        }
+      },
+      "getPSAppUILogicRefViews" : [ {
+        "openMode" : "POPUPMODAL",
+        "getPSNavigateContexts" : [ {
+          "key" : "PRODUCT",
+          "name" : "PRODUCT",
+          "value" : "product_id",
+          "rawValue" : false
+        }, {
+          "key" : "IDEA",
+          "name" : "IDEA",
+          "value" : "target_id",
+          "rawValue" : false
+        }, {
+          "key" : "SRFREADONLY",
+          "name" : "SRFREADONLY",
+          "value" : "true",
+          "rawValue" : true
+        } ],
+        "getPSNavigateParams" : [ {
+          "key" : "srfversionid",
+          "name" : "srfversionid",
+          "value" : "target_version_id",
+          "rawValue" : false
+        } ],
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_main_view.json",
+          "viewType" : "DEEDITVIEW"
+        }
+      } ],
+      "viewLogicType" : "APP_OPENDATA",
+      "editMode" : true
+    }
+  } ],
+  "getPSAppViewNavParams" : [ {
+    "key" : "baseline",
+    "name" : "baseline",
+    "value" : "baseline",
+    "rawValue" : false
+  } ],
+  "getPSAppViewRefs" : [ {
+    "name" : "NEWDATA",
+    "realTitle" : "基线工需求编辑视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.BASELINE_IDEA.EDITVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_idea_edit_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  }, {
+    "name" : "EDITDATA",
+    "openMode" : "POPUPMODAL",
+    "getPSNavigateContexts" : [ {
+      "key" : "PRODUCT",
+      "name" : "PRODUCT",
+      "value" : "product_id",
+      "rawValue" : false
+    }, {
+      "key" : "IDEA",
+      "name" : "IDEA",
+      "value" : "target_id",
+      "rawValue" : false
+    }, {
+      "key" : "SRFREADONLY",
+      "name" : "SRFREADONLY",
+      "value" : "true",
+      "rawValue" : true
+    } ],
+    "getPSNavigateParams" : [ {
+      "key" : "srfversionid",
+      "name" : "srfversionid",
+      "value" : "target_version_id",
+      "rawValue" : false
+    } ],
+    "realOpenMode" : "POPUPMODAL",
+    "realTitle" : "需求",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.IDEA.MAIN_VIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_main_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  } ],
+  "getPSControls" : [ {
+    "aggMode" : "NONE",
+    "codeName" : "baseline_comparison_gird",
+    "columnEnableFilter" : 2,
+    "columnEnableLink" : 2,
+    "controlStyle" : "BASELINECOMPARE",
+    "controlType" : "GRID",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea/PSGRIDS/baseline_comparison_gird.json",
+    "getFetchPSControlAction" : {
+      "modelref" : true,
+      "id" : "fetch",
+      "actionType" : "DEDATASET",
+      "name" : "fetch",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "fetch_baseline_comparison"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+      }
+    },
+    "groupMode" : "NONE",
+    "logicName" : "基线对比_表格",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+    },
+    "getPSControlHandler" : {
+      "getPSHandlerActions" : [ {
+        "actionName" : "Get",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "READ",
+        "name" : "load",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "get"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+        }
+      }, {
+        "actionName" : "Create",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "CREATE",
+        "name" : "create",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "create"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+        }
+      }, {
+        "actionName" : "Update",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "UPDATE",
+        "name" : "update",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "update"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+        }
+      }, {
+        "actionName" : "Remove",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "DELETE",
+        "name" : "remove",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "remove"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+        }
+      }, {
+        "actionName" : "GetDraft",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "CREATE",
+        "name" : "loaddraft",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "get_draft"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+        }
+      }, {
+        "actionType" : "DEDATASET",
+        "name" : "fetch",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "fetch_baseline_comparison"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+        }
+      } ],
+      "userDRAction" : "READ",
+      "enableDEFieldPrivilege" : false,
+      "id" : "数据表格处理器"
+    },
+    "getPSControlParam" : {
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "ctrlParams" : {
+        "N_OWNER_ID_EQ" : "`${context.product}`",
+        "RESPONSEMAP" : "{\"id\":\"id\",\"name\":\"name\"}",
+        "REQUESTURL" : "`products/${context.product}/baselines/fetch_baseline`",
+        "REQUESTMETHOD" : "post",
+        "N_OWNER_TYPE_EQ" : "'product'"
+      },
+      "id" : "GRID"
+    },
+    "getPSDEGridColumns" : [ {
+      "align" : "LEFT",
+      "cLConvertMode" : "NONE",
+      "caption" : "编号",
+      "codeName" : "show_identifier",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "show_identifier",
+      "excelCaption" : "编号",
+      "name" : "show_identifier",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "SHOW_IDENTIFIER",
+        "codeName" : "show_identifier"
+      },
+      "width" : 150,
+      "widthUnit" : "PX",
+      "enableSort" : false
+    }, {
+      "align" : "LEFT",
+      "cLConvertMode" : "NONE",
+      "caption" : "标题",
+      "codeName" : "title",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "title",
+      "excelCaption" : "标题",
+      "name" : "title",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "width" : 200,
+      "widthUnit" : "STAR",
+      "enableSort" : false
+    }, {
+      "align" : "LEFT",
+      "cLConvertMode" : "FRONT",
+      "caption" : "状态",
+      "codeName" : "state",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "state",
+      "excelCaption" : "状态",
+      "hideMode" : 1,
+      "name" : "state",
+      "noPrivDisplayMode" : 1,
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__idea_state.json"
+      },
+      "getPSAppDEField" : {
+        "name" : "STATE",
+        "codeName" : "state"
+      },
+      "width" : 150,
+      "widthUnit" : "PX",
+      "enableSort" : false,
+      "hideDefault" : true
+    }, {
+      "align" : "LEFT",
+      "cLConvertMode" : "NONE",
+      "caption" : "负责人",
+      "codeName" : "assignee_name",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "assignee_name",
+      "excelCaption" : "负责人",
+      "hideMode" : 1,
+      "name" : "assignee_name",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "ASSIGNEE_NAME",
+        "codeName" : "assignee_name"
+      },
+      "width" : 150,
+      "widthUnit" : "PX",
+      "enableSort" : false,
+      "hideDefault" : true
+    }, {
+      "align" : "LEFT",
+      "cLConvertMode" : "FRONT",
+      "caption" : "优先级",
+      "codeName" : "priority",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "priority",
+      "excelCaption" : "优先级",
+      "hideMode" : 1,
+      "name" : "priority",
+      "noPrivDisplayMode" : 1,
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__idea_priority.json"
+      },
+      "getPSAppDEField" : {
+        "name" : "PRIORITY",
+        "codeName" : "priority"
+      },
+      "width" : 150,
+      "widthUnit" : "PX",
+      "enableSort" : false,
+      "hideDefault" : true
+    }, {
+      "align" : "LEFT",
+      "cLConvertMode" : "NONE",
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.CREATE_TIME"
+      },
+      "caption" : "建立时间",
+      "codeName" : "create_time",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "create_time",
+      "excelCaption" : "建立时间",
+      "hideMode" : 1,
+      "name" : "create_time",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      },
+      "valueFormat" : "YYYY-MM-DD",
+      "width" : 180,
+      "widthUnit" : "PX",
+      "enableSort" : true,
+      "hideDefault" : true
+    }, {
+      "align" : "LEFT",
+      "cLConvertMode" : "NONE",
+      "caption" : "版本",
+      "codeName" : "target_version_name",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "target_version",
+      "excelCaption" : "版本",
+      "name" : "target_version_name",
+      "noPrivDisplayMode" : 1,
+      "objectNameField" : "name",
+      "getPSAppDEField" : {
+        "name" : "TARGET_VERSION",
+        "codeName" : "target_version"
+      },
+      "valueType" : "OBJECT",
+      "width" : 100,
+      "widthUnit" : "PX",
+      "enableSort" : false
+    }, {
+      "align" : "CENTER",
+      "caption" : "操作",
+      "codeName" : "uagridcolumn1",
+      "columnType" : "UAGRIDCOLUMN",
+      "name" : "uagridcolumn1",
+      "noPrivDisplayMode" : 1,
+      "getPSDEUIActionGroup" : {
+        "codeName" : "Usr0430612537",
+        "name" : "基线对比表格操作列",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+        },
+        "getPSUIActionGroupDetails" : [ {
+          "detailType" : "DEUIACTION",
+          "name" : "u45e3ed2",
+          "getPSSysImage" : {
+            "glyph" : "xf0ec@FontAwesome",
+            "cssClass" : "fa fa-exchange"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEDATA",
+            "caption" : "版本对比",
+            "codeName" : "idea_version_comparison",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_version_comparison_view.json",
+              "viewType" : "DEEDITVIEW"
+            },
+            "frontProcessType" : "WIZARD",
+            "fullCodeName" : "baseline_idea_idea_version_comparison",
+            "name" : "需求版本对比",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+            },
+            "getPSNavigateContexts" : [ {
+              "key" : "PRODUCT",
+              "name" : "PRODUCT",
+              "value" : "product_id",
+              "rawValue" : false
+            }, {
+              "key" : "IDEA",
+              "name" : "IDEA",
+              "value" : "target_id",
+              "rawValue" : false
+            } ],
+            "getPSNavigateParams" : [ {
+              "key" : "base_version",
+              "name" : "base_version",
+              "value" : "base_target_version_id",
+              "rawValue" : false
+            }, {
+              "key" : "compare_version",
+              "name" : "compare_version",
+              "value" : "compare_target_version_id",
+              "rawValue" : false
+            } ],
+            "getPSSysImage" : {
+              "glyph" : "xf0ec@FontAwesome",
+              "cssClass" : "fa fa-exchange"
+            },
+            "timeout" : 60000,
+            "tooltip" : "版本对比",
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "idea_version_comparison",
+            "uIActionType" : "DEUIACTION",
+            "id" : "idea_version_comparison@baseline_idea"
+          },
+          "tooltip" : "版本对比",
+          "addSeparator" : false,
+          "showCaption" : false,
+          "showIcon" : true
+        } ],
+        "uniqueTag" : "baseline_idea__Usr0430612537"
+      },
+      "width" : 150,
+      "widthUnit" : "PX",
+      "enableSort" : false
+    } ],
+    "getPSDEGridDataItems" : [ {
+      "dataType" : 25,
+      "name" : "show_identifier",
+      "getPSAppDEField" : {
+        "name" : "SHOW_IDENTIFIER",
+        "codeName" : "show_identifier"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "title",
+      "getPSAppDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "state",
+      "getPSAppDEField" : {
+        "name" : "STATE",
+        "codeName" : "state"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "assignee_name",
+      "getPSAppDEField" : {
+        "name" : "ASSIGNEE_NAME",
+        "codeName" : "assignee_name"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "priority",
+      "getPSAppDEField" : {
+        "name" : "PRIORITY",
+        "codeName" : "priority"
+      }
+    }, {
+      "format" : "YYYY-MM-DD",
+      "dataType" : 5,
+      "name" : "create_time",
+      "getPSAppDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      }
+    }, {
+      "dataType" : 21,
+      "name" : "target_version",
+      "getPSAppDEField" : {
+        "name" : "TARGET_VERSION",
+        "codeName" : "target_version"
+      },
+      "valueType" : "OBJECT"
+    }, {
+      "dataType" : 25,
+      "name" : "target_version_id",
+      "getPSAppDEField" : {
+        "name" : "TARGET_VERSION_ID",
+        "codeName" : "target_version_id"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "target_id",
+      "getPSAppDEField" : {
+        "name" : "TARGET_ID",
+        "codeName" : "target_id"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "principal_id",
+      "getPSAppDEField" : {
+        "name" : "PRINCIPAL_ID",
+        "codeName" : "principal_id"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "product_id",
+      "getPSAppDEField" : {
+        "name" : "PRODUCT_ID",
+        "codeName" : "product_id"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "id",
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "srfkey",
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "srfdataaccaction",
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "dataAccessAction" : true
+    }, {
+      "dataType" : 25,
+      "name" : "srfmajortext",
+      "getPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
+    } ],
+    "getPSDEGridEditItems" : [ {
+      "caption" : "标识",
+      "codeName" : "srfkey",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "name" : "srfkey",
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "srfkey"
+      },
+      "allowEmpty" : true
+    } ],
+    "getPSSysPFPlugin" : {
+      "pluginType" : "GRID_RENDER",
+      "pluginCode" : "BASELINECOMPARE",
+      "runtimeObject" : true
+    },
+    "pagingSize" : 500,
+    "getRemovePSControlAction" : {
+      "actionName" : "Remove",
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "DELETE",
+      "name" : "remove",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "remove"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+      }
+    },
+    "sortMode" : "REMOTE",
+    "hasWFDataItems" : false,
+    "enableColFilter" : false,
+    "enableCustomized" : true,
+    "enableGroup" : false,
+    "enablePagingBar" : false,
+    "enableRowEdit" : false,
+    "enableRowEditOrder" : false,
+    "enableRowNew" : false,
+    "forceFit" : false,
+    "hideHeader" : false,
+    "noSort" : false,
+    "singleSelect" : true,
+    "name" : "grid",
+    "modelid" : "F73C230F-B1E0-47BB-B33D-FF1AB941FEEE",
+    "modeltype" : "PSDEGRID"
+  }, {
+    "codeName" : "default",
+    "controlType" : "SEARCHFORM",
+    "defaultLabelWidth" : 130,
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea/PSSEARCHFORMS/default.json",
+    "logicName" : "默认搜索表单",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+    },
+    "getPSControlHandler" : {
+      "getPSHandlerActions" : [ {
+        "actionType" : "FILTERACTION",
+        "name" : "load",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "FilterGet"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+        }
+      }, {
+        "actionType" : "FILTERACTION",
+        "name" : "loaddraft",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "FilterGetDraft"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+        }
+      }, {
+        "actionType" : "FILTERACTION",
+        "name" : "search",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "FilterSearch"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+        }
+      } ],
+      "enableDEFieldPrivilege" : false,
+      "id" : "搜索表单处理器"
+    },
+    "getPSControlParam" : {
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "id" : "SEARCHFORM"
+    },
+    "getPSDEFormPages" : [ {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "CONTROL.DEFORM.BASELINE_IDEA.DEFAULT.FORMPAGE.FORMPAGE1"
+      },
+      "caption" : "常规条件",
+      "codeName" : "formpage1",
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMPAGE",
+      "name" : "formpage1",
+      "getPSLayout" : {
+        "childColMD" : 24,
+        "columnCount" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "infoGroupMode" : false
+    } ],
+    "getPSLayout" : {
+      "childColMD" : 24,
+      "columnCount" : 24,
+      "layout" : "TABLE_24COL"
+    },
+    "searchButtonStyle" : "DEFAULT",
+    "tabHeaderPos" : "TOP",
+    "enableAdvanceSearch" : false,
+    "enableAutoSearch" : false,
+    "enableFilterSave" : false,
+    "noTabHeader" : true,
+    "name" : "searchform",
+    "modelid" : "fd122cd5ef963ce45b46dc09bea6472b",
+    "modeltype" : "PSDEFORM_SEARCHFORM"
+  }, {
+    "controlType" : "SEARCHBAR",
+    "name" : "searchbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+    },
+    "getPSControlParam" : {
+      "id" : "searchbar"
+    },
+    "quickGroupCount" : -1,
+    "quickSearchMode" : 0,
+    "quickSearchWidth" : 0,
+    "enableFilter" : false,
+    "enableGroup" : false,
+    "enableQuickSearch" : false,
+    "mobileSearchBar" : false
+  }, {
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DE.LNAME.BASELINE_IDEA"
+    },
+    "caption" : "基线对比",
+    "codeName" : "comparison_grid_view_captionbar",
+    "controlType" : "CAPTIONBAR",
+    "name" : "captionbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+    },
+    "getPSControlParam" : { }
+  } ],
+  "getPSDEViewCodeName" : "comparison_grid_view",
+  "getPSDEViewId" : "EB882731-E071-4A4C-AFA7-F8944AE18F66",
+  "getPSViewLayoutPanel" : {
+    "codeName" : "layoutpanel",
+    "controlStyle" : "APPDEGRIDVIEW",
+    "controlType" : "VIEWLAYOUTPANEL",
+    "name" : "layoutpanel",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+    },
+    "getPSControlParam" : { },
+    "layoutBodyOnly" : true,
+    "layoutPanel" : true,
+    "useDefaultLayout" : true
+  },
+  "title" : "产品基线对比表格视图",
+  "viewStyle" : "DEFAULT",
+  "viewType" : "DEGRIDVIEW",
+  "xDataControlName" : "grid",
+  "enableDP" : true,
+  "enableExport" : true,
+  "enableFilter" : true,
+  "enableImport" : true,
+  "enableRowEdit" : false,
+  "enableSearch" : true,
+  "rowEditDefault" : false,
+  "showCaptionBar" : false,
+  "modelid" : "569be790ebe42848189ed0f567ac8f48",
+  "modeltype" : "PSAPPDEVIEW",
+  "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "baselines",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "space",
+    "majorDEName" : "SPACE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+    },
+    "minorDECodeName" : "baseline",
+    "minorDEName" : "BASELINE",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_SPACE_OWNER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "baseline_ideas",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "baseline",
+    "majorDEName" : "BASELINE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "minorDECodeName" : "baseline_idea",
+    "minorDEName" : "BASELINE_IDEA",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_IDEA_BASELINE",
+    "getParentPSAppDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "rSMode" : 2,
+    "majorDEMajor" : false
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "baselines",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "project",
+    "majorDEName" : "PROJECT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "minorDECodeName" : "baseline",
+    "minorDEName" : "BASELINE",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_PROJECT_OWNER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "baseline_ideas",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "baseline",
+    "majorDEName" : "BASELINE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "minorDECodeName" : "baseline_idea",
+    "minorDEName" : "BASELINE_IDEA",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_IDEA_BASELINE",
+    "getParentPSAppDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "rSMode" : 2,
+    "majorDEMajor" : false
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "baselines",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "product",
+    "majorDEName" : "PRODUCT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+    },
+    "minorDECodeName" : "baseline",
+    "minorDEName" : "BASELINE",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_PRODUCT_OWNER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "baseline_ideas",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "baseline",
+    "majorDEName" : "BASELINE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "minorDECodeName" : "baseline_idea",
+    "minorDEName" : "BASELINE_IDEA",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_IDEA_BASELINE",
+    "getParentPSAppDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "rSMode" : 2,
+    "majorDEMajor" : false
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "baselines",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "library",
+    "majorDEName" : "LIBRARY",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
+    },
+    "minorDECodeName" : "baseline",
+    "minorDEName" : "BASELINE",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_LIBRARY_OWNER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "baseline_ideas",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "baseline",
+    "majorDEName" : "BASELINE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "minorDECodeName" : "baseline_idea",
+    "minorDEName" : "BASELINE_IDEA",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_IDEA_BASELINE",
+    "getParentPSAppDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "rSMode" : 2,
+    "majorDEMajor" : false
+  } ] ]
+}

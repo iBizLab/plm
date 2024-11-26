@@ -1,0 +1,251 @@
+{
+  "codeName" : "start_at_onchange",
+  "dEFLogicMode" : "ONCHANGE",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDEFLOGICS/start_at_onchange.json",
+  "logicName" : "开始时间变更附加逻辑",
+  "logicSubType" : "DEFIELD",
+  "memo" : "更新首个发布阶段的时间",
+  "name" : "开始时间变更附加逻辑",
+  "getPSDEField" : {
+    "name" : "START_AT",
+    "codeName" : "start_at"
+  },
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 130,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 160,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "填充更新发布标识",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "update_obj"
+      },
+      "name" : "Default[ID] ==> update_obj[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 270
+  }, {
+    "codeName" : "RAWSQLCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "first_stage"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "获取首个阶段标识",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "select  t1.`id`\r\nfrom `stage` t1, `stage` t2 \r\nwhere  t1.`RELEASE_ID` = ?\r\nand t1.`pid` = t2.`id` \r\norder by t2.`SEQUENCE` asc limit 1",
+    "topPos" : 400,
+    "fillDstLogicParam" : true,
+    "ignoreResetDstLogicParam" : false
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/stage/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "first_stage"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/stage.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEACTION",
+    "name" : "过去首阶段对象",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "开始时间和首阶段时间不一致",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "START_AT",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[START_AT] 不等于(<>) operated_time",
+          "paramType" : "SRCENTITYFIELD",
+          "paramValue" : "operated_time",
+          "getSrcLogicParam" : {
+            "modelref" : true,
+            "id" : "first_stage"
+          }
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "topPos" : 552
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 160,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "同步开始时间",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "OPERATED_TIME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "first_stage"
+      },
+      "name" : "Default[START_AT] ==> first_stage[OPERATED_TIME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "START_AT",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 694
+  }, {
+    "codeName" : "DEACTION2",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/stage/PSDEACTIONS/Update.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "first_stage"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/stage.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEACTION",
+    "name" : "将开始时间同步更新至首阶段时间",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      }
+    } ],
+    "topPos" : 782
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 200,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "topPos" : 930
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "first_stage",
+    "logicName" : "首发布阶段",
+    "name" : "首发布阶段",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/stage.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "update_obj",
+    "logicName" : "更新发布对象",
+    "name" : "更新发布对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

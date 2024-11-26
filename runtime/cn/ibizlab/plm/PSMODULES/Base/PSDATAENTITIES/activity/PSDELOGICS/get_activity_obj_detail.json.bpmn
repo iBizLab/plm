@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.activityget_activity_obj_detail" isClosed="false" isExecutable="true" name="base_activity_get_activity_obj_detail_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.activityget_activity_obj_detail">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="activityget_activity_obj_detaildefault" type="entity"/>
+                                <tns:metaData express="new HashMap()" name="activityget_activity_obj_detailobject_id" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.activity()" name="activityget_activity_obj_detaildetail_info" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="activityget_activity_obj_detailoption_info" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IideaService))" name="ideaservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="work_itemservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IticketService))" name="ticketservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IcustomerService))" name="customerservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Itest_caseService))" name="test_caseservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IrunService))" name="runservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.Iarticle_pageService))" name="article_pageservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IactivityService))" name="iBzSysActivityDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="activityget_activity_obj_detaildefault" type="cn.ibizlab.plm.core.base.domain.activity" />
+                            <tns:global identifier="activityget_activity_obj_detaildetail_info" type="cn.ibizlab.plm.core.base.domain.activity" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detaildeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="获取详情类详情"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detaildeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取工作项类详情"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detailprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置选中ID"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detaildeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="获取工单类详情"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detaildeaction4" id="deaction4" implementation="http://www.jboss.org/drools/rule" name="获取客户类详情"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detaildeaction5" id="deaction5" implementation="http://www.jboss.org/drools/rule" name="获取测试用例类需求"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detailprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置项目信息"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detailprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置产品信息"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detailend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detailprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="设置测试库信息"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detaildeaction6" id="deaction6" implementation="http://www.jboss.org/drools/rule" name="获取执行用例类数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detaildeaction7" id="deaction7" implementation="http://www.jboss.org/drools/rule" name="获取页面类数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detailprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="设置空间信息"/>
+                    <sequenceFlow id="begin_prepareparam1" sourceRef="begin" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction2_prepareparam3" sourceRef="deaction2" targetRef="prepareparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_prepareparam2" sourceRef="deaction1" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam1_deaction1" sourceRef="gateway-prepareparam1" targetRef="deaction1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $activityget_activity_obj_detaildefault:activity();
+                                            $activityget_activity_obj_detailobject_id:Map();
+                                            $activityget_activity_obj_detaildetail_info:activity();
+                                            $activityget_activity_obj_detailoption_info:Map();
+                                    eval($activityget_activity_obj_detaildefault==activityget_activity_obj_detaildefault && $activityget_activity_obj_detaildetail_info==activityget_activity_obj_detaildetail_info && );
+                                eval((RuleUtils.test($activityget_activity_obj_detaildefault.get("object_type"),"EQ","WORK_ITEM")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam1_deaction2" sourceRef="gateway-prepareparam1" targetRef="deaction2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $activityget_activity_obj_detaildefault:activity();
+                                            $activityget_activity_obj_detailobject_id:Map();
+                                            $activityget_activity_obj_detaildetail_info:activity();
+                                            $activityget_activity_obj_detailoption_info:Map();
+                                    eval($activityget_activity_obj_detaildefault==activityget_activity_obj_detaildefault && $activityget_activity_obj_detaildetail_info==activityget_activity_obj_detaildetail_info && );
+                                eval((RuleUtils.test($activityget_activity_obj_detaildefault.get("object_type"),"EQ","IDEA")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam1_deaction3" sourceRef="gateway-prepareparam1" targetRef="deaction3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $activityget_activity_obj_detaildefault:activity();
+                                            $activityget_activity_obj_detailobject_id:Map();
+                                            $activityget_activity_obj_detaildetail_info:activity();
+                                            $activityget_activity_obj_detailoption_info:Map();
+                                    eval($activityget_activity_obj_detaildefault==activityget_activity_obj_detaildefault && $activityget_activity_obj_detaildetail_info==activityget_activity_obj_detaildetail_info && );
+                                eval((RuleUtils.test($activityget_activity_obj_detaildefault.get("object_type"),"EQ","TICKET")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam1_deaction4" sourceRef="gateway-prepareparam1" targetRef="deaction4">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $activityget_activity_obj_detaildefault:activity();
+                                            $activityget_activity_obj_detailobject_id:Map();
+                                            $activityget_activity_obj_detaildetail_info:activity();
+                                            $activityget_activity_obj_detailoption_info:Map();
+                                    eval($activityget_activity_obj_detaildefault==activityget_activity_obj_detaildefault && $activityget_activity_obj_detaildetail_info==activityget_activity_obj_detaildetail_info && );
+                                eval((RuleUtils.test($activityget_activity_obj_detaildefault.get("object_type"),"EQ","CUSTOMER")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam1_deaction5" sourceRef="gateway-prepareparam1" targetRef="deaction5">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $activityget_activity_obj_detaildefault:activity();
+                                            $activityget_activity_obj_detailobject_id:Map();
+                                            $activityget_activity_obj_detaildetail_info:activity();
+                                            $activityget_activity_obj_detailoption_info:Map();
+                                    eval($activityget_activity_obj_detaildefault==activityget_activity_obj_detaildefault && $activityget_activity_obj_detaildetail_info==activityget_activity_obj_detaildetail_info && );
+                                eval((RuleUtils.test($activityget_activity_obj_detaildefault.get("object_type"),"EQ","TEST_CASE")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam1_deaction6" sourceRef="gateway-prepareparam1" targetRef="deaction6">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $activityget_activity_obj_detaildefault:activity();
+                                            $activityget_activity_obj_detailobject_id:Map();
+                                            $activityget_activity_obj_detaildetail_info:activity();
+                                            $activityget_activity_obj_detailoption_info:Map();
+                                    eval($activityget_activity_obj_detaildefault==activityget_activity_obj_detaildefault && $activityget_activity_obj_detaildetail_info==activityget_activity_obj_detaildetail_info && );
+                                eval((RuleUtils.test($activityget_activity_obj_detaildefault.get("object_type"),"EQ","RUN")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam1_deaction7" sourceRef="gateway-prepareparam1" targetRef="deaction7">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $activityget_activity_obj_detaildefault:activity();
+                                            $activityget_activity_obj_detailobject_id:Map();
+                                            $activityget_activity_obj_detaildetail_info:activity();
+                                            $activityget_activity_obj_detailoption_info:Map();
+                                    eval($activityget_activity_obj_detaildefault==activityget_activity_obj_detaildefault && $activityget_activity_obj_detaildetail_info==activityget_activity_obj_detaildetail_info && );
+                                eval((RuleUtils.test($activityget_activity_obj_detaildefault.get("object_type"),"EQ","PAGE")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction3_prepareparam3" sourceRef="deaction3" targetRef="prepareparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction4_prepareparam3" sourceRef="deaction4" targetRef="prepareparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction5_prepareparam4" sourceRef="deaction5" targetRef="prepareparam4">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_end1" sourceRef="prepareparam2" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_end1" sourceRef="prepareparam3" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam4_end1" sourceRef="prepareparam4" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction6_prepareparam4" sourceRef="deaction6" targetRef="prepareparam4">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction7_prepareparam5" sourceRef="deaction7" targetRef="prepareparam5">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam5_end1" sourceRef="prepareparam5" targetRef="end1">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-prepareparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam1_gateway-prepareparam1_gatewayline" sourceRef="prepareparam1" targetRef="gateway-prepareparam1"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam1_end_line" sourceRef="gateway-prepareparam1" targetRef="gateway-prepareparam1_end"/>
+                            <endEvent id="gateway-prepareparam1_end" name="end"/>
+        </process>
+    </definitions>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.testmgmt.service.logic.review_contentstart_review" isClosed="false" isExecutable="true" name="testmgmt_review_content_start_review_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.testmgmt.service.logic.review_contentstart_review">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="review_contentstart_reviewdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_stage()" name="review_contentstart_reviewend_stage" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_stage()" name="review_contentstart_reviewfor_stage" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review()" name="review_contentstart_reviewreview_detail" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_stage()" name="review_contentstart_reviewstage_arr" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_stage()" name="review_contentstart_reviewstage_list" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IreviewService))" name="reviewservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Ireview_contentService))" name="iBzSysReview_contentDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="review_contentstart_reviewdefault" type="cn.ibizlab.plm.core.testmgmt.domain.review_content" />
+                            <tns:global identifier="review_contentstart_reviewend_stage" type="cn.ibizlab.plm.core.testmgmt.domain.review_stage" />
+                            <tns:global identifier="review_contentstart_reviewfor_stage" type="cn.ibizlab.plm.core.testmgmt.domain.review_stage" />
+                            <tns:global identifier="review_contentstart_reviewreview_detail" type="cn.ibizlab.plm.core.testmgmt.domain.review" />
+                            <tns:global identifier="review_contentstart_reviewstage_arr" type="cn.ibizlab.plm.core.testmgmt.domain.review_stage" />
+                            <tns:global identifier="review_contentstart_reviewstage_list" type="cn.ibizlab.plm.core.testmgmt.domain.review_stage" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="获取评审详情ID"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取评审详情"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="获取阶段信息"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewsortparam1" id="sortparam1" implementation="http://www.jboss.org/drools/rule" name="排序数组参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="绑定阶段数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewdebugparam3" id="debugparam3" implementation="http://www.jboss.org/drools/rule" name="最后评审详情"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="获取评审详情"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewdebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="当前阶段数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置阶段完成"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="设置阶段数据参数"/>
+                        <endEvent id="prepareparam4_end" name="end"/>
+                        <sequenceFlow id="prepareparam4_end_line" sourceRef="prepareparam4" targetRef="prepareparam4_end"/>
+                    <sequenceFlow id="begin_prepareparam1" sourceRef="begin" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_prepareparam2" sourceRef="deaction1" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_loopsubcall1" sourceRef="prepareparam2" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_sortparam1" sourceRef="loopsubcall1" targetRef="sortparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_debugparam2" sourceRef="loopsubcall1" targetRef="debugparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="sortparam1_prepareparam5" sourceRef="sortparam1" targetRef="prepareparam5">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam5_debugparam3" sourceRef="prepareparam5" targetRef="debugparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam3_deaction2" sourceRef="debugparam3" targetRef="deaction2">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction2_end1" sourceRef="deaction2" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam2_prepareparam3" sourceRef="gateway-debugparam2" targetRef="prepareparam3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $review_contentstart_reviewdefault:review_content();
+                                            $review_contentstart_reviewend_stage:review_stage();
+                                            $review_contentstart_reviewfor_stage:review_stage();
+                                            $review_contentstart_reviewreview_detail:review();
+                                            $review_contentstart_reviewstage_arr:review_stage();
+                                            $review_contentstart_reviewstage_list:review_stage();
+                                    eval($review_contentstart_reviewdefault==review_contentstart_reviewdefault && $review_contentstart_reviewend_stage==review_contentstart_reviewend_stage && $review_contentstart_reviewfor_stage==review_contentstart_reviewfor_stage && $review_contentstart_reviewreview_detail==review_contentstart_reviewreview_detail && $review_contentstart_reviewstage_arr==review_contentstart_reviewstage_arr && $review_contentstart_reviewstage_list==review_contentstart_reviewstage_list);
+                                eval((RuleUtils.test($review_contentstart_reviewfor_stage.get("id"),"EQ","curstage_id")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam2_prepareparam4" sourceRef="gateway-debugparam2" targetRef="prepareparam4">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $review_contentstart_reviewdefault:review_content();
+                                            $review_contentstart_reviewend_stage:review_stage();
+                                            $review_contentstart_reviewfor_stage:review_stage();
+                                            $review_contentstart_reviewreview_detail:review();
+                                            $review_contentstart_reviewstage_arr:review_stage();
+                                            $review_contentstart_reviewstage_list:review_stage();
+                                    eval($review_contentstart_reviewdefault==review_contentstart_reviewdefault && $review_contentstart_reviewend_stage==review_contentstart_reviewend_stage && $review_contentstart_reviewfor_stage==review_contentstart_reviewfor_stage && $review_contentstart_reviewreview_detail==review_contentstart_reviewreview_detail && $review_contentstart_reviewstage_arr==review_contentstart_reviewstage_arr && $review_contentstart_reviewstage_list==review_contentstart_reviewstage_list);
+                                eval((RuleUtils.test($review_contentstart_reviewfor_stage.get("id"),"NOTEQ","curstage_id")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_prepareparam4" sourceRef="prepareparam3" targetRef="prepareparam4">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-debugparam2" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam2_end_line"></exclusiveGateway>
+                            <sequenceFlow id="debugparam2_gateway-debugparam2_gatewayline" sourceRef="debugparam2" targetRef="gateway-debugparam2"></sequenceFlow>
+                            <sequenceFlow id="gateway-debugparam2_end_line" sourceRef="gateway-debugparam2" targetRef="gateway-debugparam2_end"/>
+                            <endEvent id="gateway-debugparam2_end" name="end"/>
+        </process>
+    </definitions>

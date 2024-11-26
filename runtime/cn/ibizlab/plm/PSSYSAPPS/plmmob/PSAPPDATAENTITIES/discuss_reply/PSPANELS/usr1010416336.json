@@ -1,0 +1,156 @@
+{
+  "getAllPSPanelFields" : [ {
+    "id" : "create_man",
+    "viewFieldName" : "CREATE_MAN"
+  }, {
+    "id" : "content",
+    "viewFieldName" : "CONTENT"
+  }, {
+    "id" : "reply_comment_num",
+    "viewFieldName" : "reply_comment_num"
+  } ],
+  "codeName" : "usr1010416336",
+  "controlType" : "PANEL",
+  "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_reply/PSPANELS/usr1010416336.json",
+  "layoutMode" : "TABLE_24COL",
+  "logicName" : "List2_列表项面板",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_reply.json"
+  },
+  "getPSLayout" : {
+    "childColMD" : 24,
+    "columnCount" : 24,
+    "layout" : "TABLE_24COL"
+  },
+  "getRootPSPanelItems" : [ {
+    "itemStyle" : "DEFAULT",
+    "itemType" : "CONTAINER",
+    "name" : "page_container",
+    "getPSLayout" : {
+      "dir" : "column",
+      "layout" : "FLEX"
+    },
+    "getPSLayoutPos" : {
+      "colMD" : 24,
+      "layout" : "TABLE_24COL",
+      "spacingLeft" : "OUTERMEDIUM",
+      "spacingRight" : "OUTERMEDIUM",
+      "spacingTop" : "OUTERSMALL"
+    },
+    "getPSPanelItems" : [ {
+      "caption" : "文本(动态)",
+      "itemStyle" : "DEFAULT",
+      "itemType" : "FIELD",
+      "name" : "create_man",
+      "getPSEditor" : {
+        "editorStyle" : "MOB_PERSONNEL_INFO",
+        "editorType" : "SPAN",
+        "name" : "create_man",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
+        },
+        "getPSSysPFPlugin" : {
+          "pluginType" : "EDITOR_CUSTOMSTYLE",
+          "pluginCode" : "MOB_PERSONNEL_INFO",
+          "runtimeObject" : true
+        },
+        "predefinedType" : "FIELD_TEXT_DYNAMIC",
+        "renderMode" : "TEXT_DYNAMIC",
+        "enableLinkView" : false
+      },
+      "getPSLayoutPos" : {
+        "grow" : -1,
+        "layout" : "FLEX"
+      },
+      "viewFieldName" : "CREATE_MAN",
+      "convertToCodeItemText" : true
+    }, {
+      "caption" : "文本(动态)",
+      "itemStyle" : "DEFAULT",
+      "itemType" : "FIELD",
+      "name" : "content",
+      "getPSEditor" : {
+        "contentType" : "HTML",
+        "editorParams" : {
+          "contenttype" : "HTML",
+          "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replace(/#{\"id\":\"(.+?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"}/g, \"<span class='comment-tag' data-id='$1'>$4 $3 $2</span>\").replace(/#{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)}/g, \"<span class='comment-tag'>$4 $3 $2</span>\").replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
+        },
+        "editorStyle" : "COMMENT_ITEM",
+        "editorType" : "RAW",
+        "name" : "content",
+        "getPSSysPFPlugin" : {
+          "pluginType" : "EDITOR_CUSTOMSTYLE",
+          "pluginCode" : "COMMENT_ITEM",
+          "runtimeObject" : true
+        },
+        "predefinedType" : "FIELD_TEXT_DYNAMIC"
+      },
+      "getPSLayoutPos" : {
+        "grow" : -1,
+        "layout" : "FLEX"
+      },
+      "viewFieldName" : "CONTENT"
+    }, {
+      "caption" : "容器",
+      "itemStyle" : "DEFAULT",
+      "itemType" : "CONTAINER",
+      "name" : "container",
+      "getPSLayout" : {
+        "align" : "flex-start",
+        "dir" : "row",
+        "layout" : "FLEX",
+        "vAlign" : "center"
+      },
+      "getPSLayoutPos" : {
+        "grow" : -1,
+        "layout" : "FLEX",
+        "spacingTop" : "OUTERSMALL"
+      },
+      "getPSPanelItems" : [ {
+        "caption" : "图片",
+        "contentType" : "IMAGE",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "RAWITEM",
+        "name" : "static_image",
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "layout" : "FLEX"
+        },
+        "getPSRawItem" : {
+          "contentType" : "IMAGE",
+          "name" : "static_image",
+          "getPSSysImage" : {
+            "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1728544670970\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"11289\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"32\" height=\"32\"><path d=\"M853.333333 192a21.333333 21.333333 0 0 1 21.333334 21.333333v512a21.333333 21.333333 0 0 1-21.333334 21.333334h-196.266666a106.24 106.24 0 0 0-74.666667 30.72L512 848.213333l-68.693333-69.546666a105.386667 105.386667 0 0 0-75.946667-32H170.666667a21.333333 21.333333 0 0 1-21.333334-21.333334V213.333333a21.333333 21.333333 0 0 1 21.333334-21.333333h682.666666M853.333333 128H170.666667a85.333333 85.333333 0 0 0-85.333334 85.333333v512a85.333333 85.333333 0 0 0 85.333334 85.333334h195.413333a42.666667 42.666667 0 0 1 30.293333 12.8l85.333334 85.333333a42.666667 42.666667 0 0 0 30.293333 12.373333 42.666667 42.666667 0 0 0 29.866667-11.946666l85.333333-85.333334a42.666667 42.666667 0 0 1 29.866667-12.373333H853.333333a85.333333 85.333333 0 0 0 85.333334-85.333333V213.333333a85.333333 85.333333 0 0 0-85.333334-85.333333z\" fill=\"#999999\" p-id=\"11290\"></path><path d=\"M298.666667 341.333333m32 0l362.666666 0q32 0 32 32l0 0q0 32-32 32l-362.666666 0q-32 0-32-32l0 0q0-32 32-32Z\" fill=\"#999999\" p-id=\"11291\"></path><path d=\"M298.666667 533.333333m32 0l192 0q32 0 32 32l0 0q0 32-32 32l-192 0q-32 0-32-32l0 0q0-32 32-32Z\" fill=\"#999999\" p-id=\"11292\"></path></svg>"
+          },
+          "predefinedType" : "STATIC_IMAGE"
+        },
+        "getPSSysImage" : {
+          "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1728544670970\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"11289\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"32\" height=\"32\"><path d=\"M853.333333 192a21.333333 21.333333 0 0 1 21.333334 21.333333v512a21.333333 21.333333 0 0 1-21.333334 21.333334h-196.266666a106.24 106.24 0 0 0-74.666667 30.72L512 848.213333l-68.693333-69.546666a105.386667 105.386667 0 0 0-75.946667-32H170.666667a21.333333 21.333333 0 0 1-21.333334-21.333334V213.333333a21.333333 21.333333 0 0 1 21.333334-21.333333h682.666666M853.333333 128H170.666667a85.333333 85.333333 0 0 0-85.333334 85.333333v512a85.333333 85.333333 0 0 0 85.333334 85.333334h195.413333a42.666667 42.666667 0 0 1 30.293333 12.8l85.333334 85.333333a42.666667 42.666667 0 0 0 30.293333 12.373333 42.666667 42.666667 0 0 0 29.866667-11.946666l85.333333-85.333334a42.666667 42.666667 0 0 1 29.866667-12.373333H853.333333a85.333333 85.333333 0 0 0 85.333334-85.333333V213.333333a85.333333 85.333333 0 0 0-85.333334-85.333333z\" fill=\"#999999\" p-id=\"11290\"></path><path d=\"M298.666667 341.333333m32 0l362.666666 0q32 0 32 32l0 0q0 32-32 32l-362.666666 0q-32 0-32-32l0 0q0-32 32-32Z\" fill=\"#999999\" p-id=\"11291\"></path><path d=\"M298.666667 533.333333m32 0l192 0q32 0 32 32l0 0q0 32-32 32l-192 0q-32 0-32-32l0 0q0-32 32-32Z\" fill=\"#999999\" p-id=\"11292\"></path></svg>"
+        },
+        "showCaption" : true
+      }, {
+        "caption" : "文本(动态)",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "FIELD",
+        "name" : "reply_comment_num",
+        "getPSEditor" : {
+          "editorType" : "SPAN",
+          "name" : "reply_comment_num",
+          "predefinedType" : "FIELD_TEXT_DYNAMIC",
+          "renderMode" : "TEXT_DYNAMIC",
+          "enableLinkView" : false
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "layout" : "FLEX",
+          "spacingLeft" : "OUTERSMALL"
+        },
+        "viewFieldName" : "reply_comment_num"
+      } ]
+    } ]
+  } ],
+  "modelid" : "0FC3F946-BCD0-4236-81D5-84517E93FC14",
+  "modeltype" : "PSSYSVIEWPANEL"
+}

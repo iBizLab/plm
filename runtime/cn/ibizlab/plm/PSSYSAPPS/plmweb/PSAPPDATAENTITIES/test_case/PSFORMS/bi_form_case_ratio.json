@@ -1,0 +1,448 @@
+{
+  "codeName" : "bi_form_case_ratio",
+  "controlType" : "FORM",
+  "getCreatePSControlAction" : {
+    "modelref" : true,
+    "id" : "create",
+    "actionName" : "Create",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "CREATE",
+    "name" : "create",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "create"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+    }
+  },
+  "defaultLabelWidth" : 130,
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case/PSFORMS/bi_form_case_ratio.json",
+  "getGetDraftFromPSControlAction" : {
+    "modelref" : true,
+    "id" : "loaddraftfrom",
+    "actionName" : "GETDRAFTFROM",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "CREATE",
+    "name" : "loaddraftfrom",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+    }
+  },
+  "getGetDraftPSControlAction" : {
+    "modelref" : true,
+    "id" : "loaddraft",
+    "actionName" : "fill_bi_form_default",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "CREATE",
+    "name" : "loaddraft",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "fill_bi_form_default"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+    }
+  },
+  "getGetPSControlAction" : {
+    "modelref" : true,
+    "id" : "load",
+    "actionName" : "fill_bi_form_default",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "READ",
+    "name" : "load",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "fill_bi_form_default"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+    }
+  },
+  "logicName" : "BI报表配置_用例占比",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+  },
+  "getPSDEFormItems" : [ {
+    "id" : "srfupdatedate",
+    "hidden" : true,
+    "dataType" : 5,
+    "getPSAppDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "update_time"
+    }
+  }, {
+    "id" : "srforikey",
+    "hidden" : true,
+    "dataType" : 25
+  }, {
+    "id" : "srfkey",
+    "hidden" : true,
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    }
+  }, {
+    "id" : "srfmajortext",
+    "hidden" : true,
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "TITLE",
+      "codeName" : "title"
+    }
+  }, {
+    "id" : "srftempmode",
+    "hidden" : true,
+    "dataType" : 25
+  }, {
+    "id" : "srfuf",
+    "hidden" : true,
+    "dataType" : 25
+  }, {
+    "id" : "srfdeid",
+    "hidden" : true,
+    "dataType" : 25
+  }, {
+    "id" : "srfsourcekey",
+    "hidden" : true,
+    "dataType" : 25
+  }, {
+    "id" : "code_type",
+    "dataType" : 25,
+    "createDV" : "10",
+    "updateDV" : "10"
+  }, {
+    "id" : "level",
+    "dataType" : 25,
+    "createDV" : "P0",
+    "updateDV" : "P0"
+  }, {
+    "id" : "state",
+    "dataType" : 25,
+    "createDV" : "10",
+    "updateDV" : "10"
+  }, {
+    "id" : "case_type",
+    "dataType" : 25,
+    "createDV" : "10",
+    "updateDV" : "10"
+  }, {
+    "id" : "id",
+    "hidden" : true,
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    }
+  } ],
+  "getPSDEFormPages" : [ {
+    "caption" : "基本信息",
+    "codeName" : "formpage1",
+    "detailStyle" : "DEFAULT",
+    "detailType" : "FORMPAGE",
+    "name" : "formpage1",
+    "getPSDEFormDetails" : [ {
+      "caption" : "配置",
+      "codeName" : "group1",
+      "detailStyle" : "DEFAULT",
+      "detailType" : "GROUPPANEL",
+      "name" : "group1",
+      "getPSDEFormDetails" : [ {
+        "caption" : "指标配置",
+        "codeName" : "code_type",
+        "createDV" : "10",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "fieldName" : "code_type",
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "code_type",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "editorType" : "DROPDOWNLIST",
+          "name" : "code_type",
+          "getPSAppCodeList" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Insight__bi_form_case.json"
+          },
+          "singleSelect" : true
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "updateDV" : "10",
+        "allowEmpty" : false,
+        "needCodeListConfig" : true,
+        "showCaption" : true
+      }, {
+        "caption" : "重要程度",
+        "codeName" : "level",
+        "createDV" : "P0",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "fieldName" : "level",
+        "ignoreInput" : 0,
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "level",
+        "noPrivDisplayMode" : 1,
+        "getPSDEFDGroupLogics" : [ {
+          "groupOP" : "AND",
+          "logicCat" : "PANELVISIBLE",
+          "logicType" : "GROUP",
+          "name" : "表单成员[level][面板显示]逻辑",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "EQ",
+            "dEFDName" : "code_type",
+            "logicType" : "SINGLE",
+            "value" : "10"
+          } ],
+          "relatedDetailNames" : [ "code_type" ],
+          "notMode" : false
+        }, {
+          "groupOP" : "AND",
+          "logicCat" : "ITEMENABLE",
+          "logicType" : "GROUP",
+          "name" : "表单成员[level][表单项启用]逻辑",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "EQ",
+            "dEFDName" : "code_type",
+            "logicType" : "SINGLE",
+            "value" : "10"
+          } ],
+          "relatedDetailNames" : [ "code_type" ],
+          "notMode" : false
+        } ],
+        "getPSEditor" : {
+          "editorType" : "MDROPDOWNLIST",
+          "name" : "level",
+          "getPSAppCodeList" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__test_case_level.json"
+          },
+          "singleSelect" : false
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "updateDV" : "P0",
+        "allowEmpty" : false,
+        "needCodeListConfig" : true
+      }, {
+        "caption" : "用例状态",
+        "codeName" : "state",
+        "createDV" : "10",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "fieldName" : "state",
+        "ignoreInput" : 0,
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "state",
+        "noPrivDisplayMode" : 1,
+        "getPSDEFDGroupLogics" : [ {
+          "groupOP" : "AND",
+          "logicCat" : "PANELVISIBLE",
+          "logicType" : "GROUP",
+          "name" : "表单成员[state][面板显示]逻辑",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "EQ",
+            "dEFDName" : "code_type",
+            "logicType" : "SINGLE",
+            "value" : "20"
+          } ],
+          "relatedDetailNames" : [ "code_type" ],
+          "notMode" : false
+        }, {
+          "groupOP" : "AND",
+          "logicCat" : "ITEMENABLE",
+          "logicType" : "GROUP",
+          "name" : "表单成员[state][表单项启用]逻辑",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "EQ",
+            "dEFDName" : "code_type",
+            "logicType" : "SINGLE",
+            "value" : "20"
+          } ],
+          "relatedDetailNames" : [ "code_type" ],
+          "notMode" : false
+        } ],
+        "getPSEditor" : {
+          "editorType" : "MDROPDOWNLIST",
+          "name" : "state",
+          "getPSAppCodeList" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__case_state.json"
+          },
+          "singleSelect" : false
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "updateDV" : "10",
+        "allowEmpty" : false,
+        "needCodeListConfig" : true
+      }, {
+        "caption" : "用例类型",
+        "codeName" : "case_type",
+        "createDV" : "10",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "fieldName" : "case_type",
+        "ignoreInput" : 0,
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "case_type",
+        "noPrivDisplayMode" : 1,
+        "getPSDEFDGroupLogics" : [ {
+          "groupOP" : "AND",
+          "logicCat" : "PANELVISIBLE",
+          "logicType" : "GROUP",
+          "name" : "表单成员[case_type][面板显示]逻辑",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "EQ",
+            "dEFDName" : "code_type",
+            "logicType" : "SINGLE",
+            "value" : "30"
+          } ],
+          "relatedDetailNames" : [ "code_type" ],
+          "notMode" : false
+        }, {
+          "groupOP" : "AND",
+          "logicCat" : "ITEMENABLE",
+          "logicType" : "GROUP",
+          "name" : "表单成员[case_type][表单项启用]逻辑",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "EQ",
+            "dEFDName" : "code_type",
+            "logicType" : "SINGLE",
+            "value" : "30"
+          } ],
+          "relatedDetailNames" : [ "code_type" ],
+          "notMode" : false
+        } ],
+        "getPSEditor" : {
+          "editorType" : "MDROPDOWNLIST",
+          "name" : "case_type",
+          "getPSAppCodeList" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__test_case_type.json"
+          },
+          "singleSelect" : false
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "updateDV" : "10",
+        "allowEmpty" : false,
+        "needCodeListConfig" : true
+      } ],
+      "getPSLayout" : {
+        "childColMD" : 24,
+        "columnCount" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "infoGroupMode" : false,
+      "showCaption" : true
+    }, {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.ID"
+      },
+      "caption" : "标识",
+      "codeName" : "id",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "LEFT",
+      "labelWidth" : 130,
+      "name" : "id",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "id"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "allowEmpty" : true,
+      "hidden" : true
+    } ],
+    "getPSLayout" : {
+      "childColMD" : 24,
+      "columnCount" : 24,
+      "layout" : "TABLE_24COL"
+    },
+    "infoGroupMode" : false
+  } ],
+  "getPSLayout" : {
+    "childColMD" : 24,
+    "columnCount" : 24,
+    "layout" : "TABLE_24COL"
+  },
+  "getRemovePSControlAction" : {
+    "modelref" : true,
+    "id" : "remove",
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+    }
+  },
+  "tabHeaderPos" : "TOP",
+  "getUpdatePSControlAction" : {
+    "modelref" : true,
+    "id" : "update",
+    "actionName" : "Update",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "UPDATE",
+    "name" : "update",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "update"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+    }
+  },
+  "noTabHeader" : true,
+  "modelid" : "EC904712-BC07-4E12-A4FF-0EA22898F9D0",
+  "modeltype" : "PSDEFORM_EDITFORM"
+}

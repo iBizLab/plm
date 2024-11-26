@@ -1,0 +1,61 @@
+{
+  "codeName" : "fix_nested_data",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_wizard/PSDELOGICS/fix_nested_data.json",
+  "logicName" : "创建后修改附加数据归属",
+  "memo" : "创建后修改附加数据归属",
+  "name" : "创建后修改附加数据归属",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "RAWSQLCALL1",
+    "leftPos" : 360,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "创建后修改附加数据归属",
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "update attention set OWNER_TYPE = 'REVIEW' where OWNER_TYPE ='REVIEW_WIZARD' AND OWNER_ID = ?\r\n",
+    "topPos" : 330
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_wizard.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

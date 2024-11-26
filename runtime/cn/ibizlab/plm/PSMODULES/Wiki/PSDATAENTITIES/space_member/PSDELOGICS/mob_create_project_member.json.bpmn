@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.wiki.service.logic.space_membermob_create_project_member" isClosed="false" isExecutable="true" name="wiki_space_member_mob_create_project_member_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.wiki.service.logic.space_membermob_create_project_member">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="space_membermob_create_project_memberdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.user()" name="space_membermob_create_project_memberfor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.space_member()" name="space_membermob_create_project_membermember_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.user()" name="space_membermob_create_project_memberselectdata" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.Ispace_memberService))" name="space_memberservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.Ispace_memberService))" name="iBzSysSpace_memberDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="space_membermob_create_project_memberdefault" type="cn.ibizlab.plm.core.wiki.domain.space_member" />
+                            <tns:global identifier="space_membermob_create_project_memberfor_temp_obj" type="cn.ibizlab.plm.core.base.domain.user" />
+                            <tns:global identifier="space_membermob_create_project_membermember_obj" type="cn.ibizlab.plm.core.wiki.domain.space_member" />
+                            <tns:global identifier="space_membermob_create_project_memberselectdata" type="cn.ibizlab.plm.core.base.domain.user" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="space_membermob_create_project_memberbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定选中成员参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="space_membermob_create_project_memberloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="space_membermob_create_project_memberrenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新建立成员参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="space_membermob_create_project_memberprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充空间成员属性"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="space_membermob_create_project_memberprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="space_membermob_create_project_memberdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="建立空间成员"/>
+                        <endEvent id="deaction1_end" name="end"/>
+                        <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="space_membermob_create_project_memberend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="begin_bindparam1" sourceRef="begin" targetRef="bindparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-bindparam1_loopsubcall1" sourceRef="gateway-bindparam1" targetRef="loopsubcall1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $space_membermob_create_project_memberdefault:space_member();
+                                            $space_membermob_create_project_memberfor_temp_obj:user();
+                                            $space_membermob_create_project_membermember_obj:space_member();
+                                            $space_membermob_create_project_memberselectdata:user();
+                                    eval($space_membermob_create_project_memberdefault==space_membermob_create_project_memberdefault && $space_membermob_create_project_memberfor_temp_obj==space_membermob_create_project_memberfor_temp_obj && $space_membermob_create_project_membermember_obj==space_membermob_create_project_membermember_obj && $space_membermob_create_project_memberselectdata==space_membermob_create_project_memberselectdata);
+                                eval((RuleUtils.test($space_membermob_create_project_memberselectdata.get("size"),"GT","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-bindparam1_end1" sourceRef="gateway-bindparam1" targetRef="end1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $space_membermob_create_project_memberdefault:space_member();
+                                            $space_membermob_create_project_memberfor_temp_obj:user();
+                                            $space_membermob_create_project_membermember_obj:space_member();
+                                            $space_membermob_create_project_memberselectdata:user();
+                                    eval($space_membermob_create_project_memberdefault==space_membermob_create_project_memberdefault && $space_membermob_create_project_memberfor_temp_obj==space_membermob_create_project_memberfor_temp_obj && $space_membermob_create_project_membermember_obj==space_membermob_create_project_membermember_obj && $space_membermob_create_project_memberselectdata==space_membermob_create_project_memberselectdata);
+                                eval((RuleUtils.test($space_membermob_create_project_memberselectdata.get("size"),"EQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_renewparam1" sourceRef="loopsubcall1" targetRef="renewparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="renewparam1_prepareparam1" sourceRef="renewparam1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam1_prepareparam2" sourceRef="gateway-prepareparam1" targetRef="prepareparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $space_membermob_create_project_memberdefault:space_member();
+                                            $space_membermob_create_project_memberfor_temp_obj:user();
+                                            $space_membermob_create_project_membermember_obj:space_member();
+                                            $space_membermob_create_project_memberselectdata:user();
+                                    eval($space_membermob_create_project_memberdefault==space_membermob_create_project_memberdefault && $space_membermob_create_project_memberfor_temp_obj==space_membermob_create_project_memberfor_temp_obj && $space_membermob_create_project_membermember_obj==space_membermob_create_project_membermember_obj && $space_membermob_create_project_memberselectdata==space_membermob_create_project_memberselectdata);
+                                eval((RuleUtils.test($space_membermob_create_project_memberfor_temp_obj.get("userId"),"ISNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam1_deaction1" sourceRef="gateway-prepareparam1" targetRef="deaction1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $space_membermob_create_project_memberdefault:space_member();
+                                            $space_membermob_create_project_memberfor_temp_obj:user();
+                                            $space_membermob_create_project_membermember_obj:space_member();
+                                            $space_membermob_create_project_memberselectdata:user();
+                                    eval($space_membermob_create_project_memberdefault==space_membermob_create_project_memberdefault && $space_membermob_create_project_memberfor_temp_obj==space_membermob_create_project_memberfor_temp_obj && $space_membermob_create_project_membermember_obj==space_membermob_create_project_membermember_obj && $space_membermob_create_project_memberselectdata==space_membermob_create_project_memberselectdata);
+                                eval((RuleUtils.test($space_membermob_create_project_memberfor_temp_obj.get("userId"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-bindparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-bindparam1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="bindparam1_gateway-bindparam1_gatewayline" sourceRef="bindparam1" targetRef="gateway-bindparam1"></sequenceFlow>
+                            <sequenceFlow id="gateway-bindparam1_end_line" sourceRef="gateway-bindparam1" targetRef="gateway-bindparam1_end"/>
+                            <endEvent id="gateway-bindparam1_end" name="end"/>
+                            <exclusiveGateway id="gateway-prepareparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam1_gateway-prepareparam1_gatewayline" sourceRef="prepareparam1" targetRef="gateway-prepareparam1"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam1_end_line" sourceRef="gateway-prepareparam1" targetRef="gateway-prepareparam1_end"/>
+                            <endEvent id="gateway-prepareparam1_end" name="end"/>
+        </process>
+    </definitions>

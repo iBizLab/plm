@@ -1,0 +1,50 @@
+package cn.ibizlab.plm.base.logic.recentlogic.recent_use;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.recent recentrecent_usedefault;
+                global cn.ibizlab.plm.core.base.domain.recent recentrecent_useresult_page;
+                    global cn.ibizlab.plm.core.base.service.IrecentService recentservice;
+        global cn.ibizlab.plm.core.base.service.IrecentService iBzSysRecentDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "recentrecent_usebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设置分页参数]
+            rule "prepareparam1"
+            ruleflow-group "recentrecent_useprepareparam1"
+            when
+            then
+                            recentrecent_usedefault.set("size","10");
+                        update(recentrecent_usedefault);//更新fact中变量值
+                        update(recentrecent_useresult_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[最近使用]
+            rule "dedataset1"
+            ruleflow-group "recentrecent_usededataset1"
+            when
+            then
+                        update(recentrecent_usedefault);//更新fact中变量值
+                        update(recentrecent_useresult_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "recentrecent_useend1"
+            when
+            then
+                        update(recentrecent_usedefault);//更新fact中变量值
+                        update(recentrecent_useresult_page);//更新fact中变量值
+            end

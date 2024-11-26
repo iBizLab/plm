@@ -1,0 +1,205 @@
+{
+  "aggMode" : "NONE",
+  "codeName" : "binding",
+  "columnEnableFilter" : 2,
+  "columnEnableLink" : 2,
+  "controlType" : "GRID",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_member/PSGRIDS/binding.json",
+  "getFetchPSControlAction" : {
+    "modelref" : true,
+    "id" : "fetch",
+    "actionType" : "DEDATASET",
+    "name" : "fetch",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "fetch_default"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_member.json"
+    }
+  },
+  "groupMode" : "NONE",
+  "logicName" : "协作成员绑定表格",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_member.json"
+  },
+  "getPSDEGridColumns" : [ {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.NAME"
+    },
+    "caption" : "姓名",
+    "codeName" : "name",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "name",
+    "excelCaption" : "姓名",
+    "getLinkPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_redirect_view.json",
+      "viewType" : "DEREDIRECTVIEW"
+    },
+    "linkValueItem" : "user_id",
+    "name" : "name",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "width" : 200,
+    "widthUnit" : "STAR",
+    "enableLinkView" : true,
+    "enableSort" : true
+  }, {
+    "align" : "CENTER",
+    "caption" : "操作",
+    "codeName" : "uagridcolumn1",
+    "columnType" : "UAGRIDCOLUMN",
+    "name" : "uagridcolumn1",
+    "noPrivDisplayMode" : 1,
+    "getPSDEUIActionGroup" : {
+      "codeName" : "Usr0514283014",
+      "name" : "协作成员配置",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_member.json"
+      },
+      "getPSUIActionGroupDetails" : [ {
+        "detailType" : "DEUIACTION",
+        "name" : "uac12646",
+        "getPSSysImage" : {
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEKEY",
+          "caption" : "移除成员",
+          "codeName" : "remove_member",
+          "confirmMsg" : "确认删除该成员？",
+          "fullCodeName" : "discuss_member_remove_member",
+          "name" : "移除成员",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "remove"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_member.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf014@FontAwesome",
+            "cssClass" : "fa fa-trash-o"
+          },
+          "refreshMode" : 1,
+          "successMsg" : "删除成功",
+          "timeout" : 60000,
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "remove_member",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "remove_member@discuss_member"
+        },
+        "addSeparator" : false,
+        "showCaption" : false,
+        "showIcon" : true
+      } ],
+      "uniqueTag" : "discuss_member__Usr0514283014"
+    },
+    "width" : 100,
+    "widthUnit" : "PX",
+    "enableSort" : false
+  } ],
+  "getPSDEGridDataItems" : [ {
+    "dataType" : 25,
+    "name" : "name",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfdataaccaction",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "dataAccessAction" : true
+  }, {
+    "dataType" : 25,
+    "name" : "owner_id",
+    "getPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "user_id",
+    "getPSAppDEField" : {
+      "name" : "USER_ID",
+      "codeName" : "user_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfmajortext",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  } ],
+  "getPSDEGridEditItems" : [ {
+    "caption" : "标识",
+    "codeName" : "srfkey",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getPSEditor" : {
+      "editorType" : "HIDDEN",
+      "name" : "srfkey"
+    },
+    "allowEmpty" : true
+  } ],
+  "pagingSize" : 20,
+  "getRemovePSControlAction" : {
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_member.json"
+    }
+  },
+  "sortMode" : "REMOTE",
+  "hasWFDataItems" : false,
+  "enableColFilter" : false,
+  "enableCustomized" : false,
+  "enableGroup" : false,
+  "enablePagingBar" : false,
+  "enableRowEdit" : false,
+  "enableRowEditOrder" : false,
+  "enableRowNew" : false,
+  "forceFit" : false,
+  "hideHeader" : false,
+  "noSort" : false,
+  "singleSelect" : true,
+  "modelid" : "0284850b992c53bc9ff48a1f19e15043",
+  "modeltype" : "PSDEGRID"
+}

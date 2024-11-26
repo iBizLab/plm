@@ -1,0 +1,167 @@
+{
+  "codeName" : "update_report",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/extension/PSDATAENTITIES/PSSysBIReport/PSDELOGICS/update_report.json",
+  "logicName" : "更新报表",
+  "memo" : "更新报表",
+  "name" : "更新报表",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 80,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 332,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 1190,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "topPos" : 332
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 360,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "回填数据",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "GROUP",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "insight_report"
+      },
+      "name" : "Default[PSSYSBICUBEID] ==> insight_report[GROUP]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PSSYSBICUBEID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "insight_report"
+      },
+      "name" : "Default[pssysbireportname] ==> insight_report[NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "pssysbireportname",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "insight_report"
+      },
+      "name" : "Default[PSSYSBIREPORTID] ==> insight_report[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PSSYSBIREPORTID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 340
+  }, {
+    "code" : "var _default = logic.getParam(\"Default\");\r\nvar insight_report = logic.getParam(\"insight_report\");\r\nvar str_uimodel = _default.get(\"bireportuimodel\");\r\nvar uimodel = JSON.parse(str_uimodel);\r\nvar chart_type = uimodel.selectChartType;\r\ninsight_report.set(\"chart_type\",chart_type);\r\ninsight_report.set(\"template_model\",_default.dump());",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "JavaScript",
+    "leftPos" : 595,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "回写图表类型",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 340
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_report/PSDEACTIONS/Update.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "insight_report"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_report.json"
+    },
+    "leftPos" : 842,
+    "logicNodeType" : "DEACTION",
+    "name" : "更新业务报表",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "topPos" : 340
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBIReport.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "insight_report",
+    "logicName" : "效能报表",
+    "name" : "效能报表",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_report.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

@@ -1,0 +1,214 @@
+{
+  "name" : "PLMWiki",
+  "getAllPSAppDEUIActionGroups" : [ {
+    "codeName" : "Usr0229502203",
+    "name" : "附件表格操作列（仅下载）",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmwiki/PSAPPDATAENTITIES/attachment.json"
+    },
+    "getPSUIActionGroupDetails" : [ {
+      "actionLevel" : 200,
+      "caption" : "下载",
+      "detailType" : "DEUIACTION",
+      "name" : "u5832788",
+      "getPSSysImage" : {
+        "glyph" : "xf019@FontAwesome",
+        "cssClass" : "fa fa-download"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "SINGLEDATA",
+        "caption" : "下载",
+        "codeName" : "download",
+        "frontProcessType" : "OTHER",
+        "fullCodeName" : "attachment_download",
+        "name" : "附件下载",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmwiki/PSAPPDATAENTITIES/attachment.json"
+        },
+        "getPSNavigateParams" : [ {
+          "key" : "fileid",
+          "name" : "fileid",
+          "value" : "file_id",
+          "rawValue" : false
+        }, {
+          "key" : "filename",
+          "name" : "filename",
+          "value" : "name",
+          "rawValue" : false
+        } ],
+        "getPSSysImage" : {
+          "glyph" : "xf019@FontAwesome",
+          "cssClass" : "fa fa-download"
+        },
+        "getPSSysPFPlugin" : {
+          "pluginType" : "DEUIACTION",
+          "pluginCode" : "FILE_DOWNLOAD",
+          "runtimeObject" : true
+        },
+        "timeout" : 60000,
+        "tooltip" : "下载当前附件",
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "download",
+        "uIActionType" : "DEUIACTION",
+        "id" : "download@attachment"
+      },
+      "tooltip" : "下载当前附件",
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true
+    } ],
+    "uniqueTag" : "attachment__Usr0229502203"
+  } ],
+  "getAllPSDEDRControls" : [ ],
+  "getAllPSControls" : [ ],
+  "getAllPSAppViewRefs" : [ ],
+  "getAllPSAppPFPluginRefs" : [ {
+    "name" : "LuckySheet编辑",
+    "getPSSysPFPlugin" : {
+      "pluginType" : "EDITOR_CUSTOMSTYLE",
+      "pluginCode" : "LUCKYSHEET",
+      "runtimeObject" : true
+    },
+    "pluginCode" : "LUCKYSHEET",
+    "pluginType" : "EDITOR_CUSTOMSTYLE",
+    "rTObjectName" : "IBizLuckySheet",
+    "rTObjectRepo" : "@ibiz-template-plm/lucky-sheet-editor@0.0.3-dev.125",
+    "refMode" : "EDITORSTYPE",
+    "runtimeObject" : true
+  }, {
+    "name" : "人员信息",
+    "getPSSysPFPlugin" : {
+      "pluginType" : "EDITOR_CUSTOMSTYLE",
+      "pluginCode" : "PERSONNEL_INFO",
+      "runtimeObject" : true
+    },
+    "pluginCode" : "PERSONNEL_INFO",
+    "pluginType" : "EDITOR_CUSTOMSTYLE",
+    "rTObjectName" : "IBizPersonalInfo",
+    "rTObjectRepo" : "@ibiz-template-plm/personal-info@0.0.3-dev.119",
+    "refMode" : "EDITORSTYPE",
+    "runtimeObject" : true
+  }, {
+    "name" : "修改密码",
+    "getPSSysPFPlugin" : {
+      "pluginType" : "DEUIACTION",
+      "pluginCode" : "CHANGE_PASSWORD",
+      "runtimeObject" : true
+    },
+    "pluginCode" : "CHANGE_PASSWORD",
+    "pluginType" : "DEUIACTION",
+    "rTObjectName" : "registerChangePasswordProvider",
+    "rTObjectRepo" : "@ibiz-template-plugin/change-password@0.0.3-dev.60",
+    "refMode" : "UIACTION",
+    "refTag" : "FRONT",
+    "runtimeObject" : true
+  }, {
+    "name" : "共享校验页面",
+    "getPSSysPFPlugin" : {
+      "pluginType" : "VIEW_CUSTOM",
+      "pluginCode" : "SHARED_CHECK_PAGE",
+      "runtimeObject" : true
+    },
+    "pluginCode" : "SHARED_CHECK_PAGE",
+    "pluginType" : "VIEW_CUSTOM",
+    "rTObjectName" : "SharedCheckPage",
+    "rTObjectRepo" : "@ibiz-template-plm/shared-check-page@0.0.3-dev.278",
+    "refMode" : "APPVIEW",
+    "refTag" : "DEEDITVIEW",
+    "runtimeObject" : true
+  }, {
+    "name" : "共享校验页面",
+    "getPSSysPFPlugin" : {
+      "pluginType" : "VIEW_CUSTOM",
+      "pluginCode" : "SHARED_CHECK_PAGE",
+      "runtimeObject" : true
+    },
+    "pluginCode" : "SHARED_CHECK_PAGE",
+    "pluginType" : "VIEW_CUSTOM",
+    "rTObjectName" : "SharedCheckPage",
+    "rTObjectRepo" : "@ibiz-template-plm/shared-check-page@0.0.3-dev.278",
+    "refMode" : "APPVIEW",
+    "refTag" : "DETREEEXPVIEW",
+    "runtimeObject" : true
+  }, {
+    "name" : "分组树",
+    "getPSSysPFPlugin" : {
+      "pluginType" : "TREE_RENDER",
+      "pluginCode" : "GROUP_TREE",
+      "runtimeObject" : true
+    },
+    "pluginCode" : "GROUP_TREE",
+    "pluginType" : "TREE_RENDER",
+    "rTObjectName" : "IBizGroupTreeControl",
+    "rTObjectRepo" : "@ibiz-template-plm/group-tree@0.0.3-alpha.22",
+    "refMode" : "CONTROL",
+    "refTag" : "TREEVIEW",
+    "runtimeObject" : true
+  }, {
+    "name" : "文件下载",
+    "getPSSysPFPlugin" : {
+      "pluginType" : "DEUIACTION",
+      "pluginCode" : "FILE_DOWNLOAD",
+      "runtimeObject" : true
+    },
+    "pluginCode" : "FILE_DOWNLOAD",
+    "pluginType" : "DEUIACTION",
+    "rTObjectName" : "registerFileDownloadProvider",
+    "rTObjectRepo" : "@ibiz-template-plugin/file-download@0.0.3-alpha.107",
+    "refMode" : "UIACTION",
+    "refTag" : "FRONT",
+    "runtimeObject" : true
+  }, {
+    "name" : "组装选中数据",
+    "getPSSysPFPlugin" : {
+      "pluginType" : "DEUIACTION",
+      "pluginCode" : "ASSEMBLE_SELECTED_DATA",
+      "runtimeObject" : true
+    },
+    "pluginCode" : "ASSEMBLE_SELECTED_DATA",
+    "pluginType" : "DEUIACTION",
+    "rTObjectName" : "MobAssembleSelectedData",
+    "rTObjectRepo" : "@ibiz-template-plmmob/mob-assemble-selected-data@0.0.3-alpha.90",
+    "refMode" : "UIACTION",
+    "refTag" : "FRONT",
+    "runtimeObject" : true
+  }, {
+    "name" : "锚点富文本",
+    "getPSSysPFPlugin" : {
+      "pluginType" : "EDITOR_CUSTOMSTYLE",
+      "pluginCode" : "ANCHO_HTML",
+      "runtimeObject" : true
+    },
+    "pluginCode" : "ANCHO_HTML",
+    "pluginType" : "EDITOR_CUSTOMSTYLE",
+    "rTObjectName" : "AnchoHtml",
+    "rTObjectRepo" : "@ibiz-template-plm/ancho-html@0.0.3-alpha.116",
+    "refMode" : "EDITORSTYPE",
+    "runtimeObject" : true
+  }, {
+    "name" : "面包屑导航",
+    "getPSSysPFPlugin" : {
+      "pluginType" : "CUSTOM",
+      "pluginCode" : "BREADCRUMB_EXP",
+      "runtimeObject" : true
+    },
+    "pluginCode" : "BREADCRUMB_EXP",
+    "pluginType" : "CUSTOM",
+    "rTObjectName" : "BREADCRUMB_EXP",
+    "rTObjectRepo" : "@ibiz-template-plm/breadcrumb-exp@0.0.3-dev.268",
+    "refMode" : "CONTROLITEM",
+    "refTag" : "VIEWLAYOUTPANEL",
+    "refTag2" : "FIELD",
+    "runtimeObject" : true
+  } ],
+  "getUserParam" : {
+    "enableMqtt" : "true",
+    "DefaultOSSCat" : "plm",
+    "globalConfig.grid.editShowMode" : "cell",
+    "globalConfig.view.disableHomeTabs" : "true",
+    "globalConfig.grid.overflowMode" : "ellipsis"
+  },
+  "id" : "PSSYSAPPS/plmwiki/PSSYSAPP.json"
+}

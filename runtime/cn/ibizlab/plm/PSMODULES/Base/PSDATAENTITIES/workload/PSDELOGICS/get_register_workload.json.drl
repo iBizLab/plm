@@ -1,0 +1,103 @@
+package cn.ibizlab.plm.base.logic.workloadlogic.get_register_workload;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.workload workloadget_register_workloaddefault;
+                    global cn.ibizlab.plm.core.base.service.IworkloadService workloadservice;
+        global cn.ibizlab.plm.core.base.service.IworkloadService iBzSysWorkloadDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "workloadget_register_workloadbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[获取工时明细]
+            rule "deaction1"
+            ruleflow-group "workloadget_register_workloaddeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(workloadservice.get(workloadget_register_workloaddefault.getId()),workloadget_register_workloaddefault);
+                        update(workloadget_register_workloaddefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取已登记工时]
+            rule "rawsqlcall1"
+            ruleflow-group "workloadget_register_workloadrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",workloadget_register_workloaddefault.get("principaltype"));
+        param.put("param1",workloadget_register_workloaddefault.get("principalid"));
+    String strSql="select sum(DURATION) as `ACTUAL_WORKLOAD` from workload where  PRINCIPAL_TYPE = #{et.param0} and PRINCIPAL_ID = #{et.param1}";
+                        java.util.List<JSONObject> entities=iBzSysWorkloadDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    workloadget_register_workloaddefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(workloadget_register_workloaddefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取剩余工时]
+            rule "rawsqlcall2"
+            ruleflow-group "workloadget_register_workloadrawsqlcall2"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",workloadget_register_workloaddefault.get("principalid"));
+        param.put("param1",workloadget_register_workloaddefault.get("principaltype"));
+    String strSql="select DECIMAL_VALUE as `REMAINING_WORKLOAD` from `extend_storage` where  OWNER_ID = #{et.param0} and OWNER_TYPE = #{et.param1} and `NAME` = 'REMAINING_WORKLOAD'";
+                        java.util.List<JSONObject> entities=iBzSysWorkloadDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    workloadget_register_workloaddefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(workloadget_register_workloaddefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取预估工时]
+            rule "rawsqlcall3"
+            ruleflow-group "workloadget_register_workloadrawsqlcall3"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",workloadget_register_workloaddefault.get("principalid"));
+        param.put("param1",workloadget_register_workloaddefault.get("principaltype"));
+    String strSql="select DECIMAL_VALUE as `ESTIMATED_WORKLOAD` from `extend_storage` where  OWNER_ID = #{et.param0} and OWNER_TYPE = #{et.param1} and `NAME` = 'ESTIMATED_WORKLOAD'";
+                        java.util.List<JSONObject> entities=iBzSysWorkloadDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    workloadget_register_workloaddefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(workloadget_register_workloaddefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[计算进度]
+            rule "rawsfcode1"
+            ruleflow-group "workloadget_register_workloadrawsfcode1"
+            when
+            then
+                        update(workloadget_register_workloaddefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "workloadget_register_workloadend1"
+            when
+            then
+                        update(workloadget_register_workloaddefault);//更新fact中变量值
+            end

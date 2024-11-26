@@ -1,0 +1,258 @@
+{
+  "aggMode" : "NONE",
+  "codeName" : "sprint_grid_parts_grid",
+  "columnEnableFilter" : 2,
+  "columnEnableLink" : 2,
+  "controlType" : "GRID",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/sprint/PSGRIDS/sprint_grid_parts_grid.json",
+  "getFetchPSControlAction" : {
+    "modelref" : true,
+    "id" : "fetch",
+    "actionType" : "DEDATASET",
+    "name" : "fetch",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "fetch_all"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/sprint.json"
+    }
+  },
+  "groupMode" : "NONE",
+  "logicName" : "迭代表格视图（仪表盘部件）_表格",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/sprint.json"
+  },
+  "getPSDEGridColumns" : [ {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.NAME"
+    },
+    "caption" : "名称",
+    "codeName" : "name",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "name",
+    "excelCaption" : "名称",
+    "name" : "name",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "width" : 150,
+    "widthUnit" : "STAR",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "caption" : "状态",
+    "codeName" : "status",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "status",
+    "excelCaption" : "状态",
+    "memo" : "允许值: pending, in_progress, completed",
+    "name" : "status",
+    "noPrivDisplayMode" : 1,
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__sprint_status.json"
+    },
+    "getPSAppDEField" : {
+      "name" : "STATUS",
+      "codeName" : "status"
+    },
+    "width" : 100,
+    "widthUnit" : "STAR",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "负责人",
+    "codeName" : "assignee_name",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "assignee_name",
+    "excelCaption" : "负责人",
+    "name" : "assignee_name",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "ASSIGNEE_NAME",
+      "codeName" : "assignee_name"
+    },
+    "width" : 100,
+    "widthUnit" : "STAR",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.CREATE_TIME"
+    },
+    "caption" : "建立时间",
+    "codeName" : "create_time",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "create_time",
+    "excelCaption" : "建立时间",
+    "name" : "create_time",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "CREATE_TIME",
+      "codeName" : "create_time"
+    },
+    "valueFormat" : "YYYY-MM-DD HH:mm:ss",
+    "width" : 100,
+    "widthUnit" : "STAR",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "项目名称",
+    "codeName" : "project_name",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "project_name",
+    "excelCaption" : "项目名称",
+    "getLinkPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_redirect_view.json",
+      "viewType" : "DEREDIRECTVIEW"
+    },
+    "linkValueItem" : "project_id",
+    "name" : "project_name",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "PROJECT_NAME",
+      "codeName" : "project_name"
+    },
+    "width" : 100,
+    "widthUnit" : "STAR",
+    "enableLinkView" : true,
+    "enableSort" : true
+  } ],
+  "getPSDEGridDataItems" : [ {
+    "dataType" : 25,
+    "name" : "name",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "scriptCode" : "var svgIcon = `<span title=\"需求\" style=\"display: flex;align-items: center;\"><?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1731634518635\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"10398\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"24\" height=\"24\"><path d=\"M789.263059 58.428235a180.705882 180.705882 0 0 1 180.705882 180.705883v602.352941a180.705882 180.705882 0 0 1-180.705882 180.705882h-602.352941a180.705882 180.705882 0 0 1-180.705883-180.705882v-602.352941a180.705882 180.705882 0 0 1 180.705883-180.705883h602.352941z m-106.134588 470.618353h-47.706353a6.384941 6.384941 0 0 0-6.384942 6.445177v74.209882a33.430588 33.430588 0 0 1-33.430588 33.551059H402.070588v-50.296471a6.324706 6.324706 0 0 0-10.24-4.939294L289.129412 668.611765a6.204235 6.204235 0 0 0 0 9.878588l102.701176 80.655059c4.156235 3.252706 10.24 0.240941 10.24-4.99953v-50.236235H595.727059c51.862588 0 93.846588-42.164706 93.846588-94.268235V535.491765a6.384941 6.384941 0 0 0-6.384941-6.445177zM574.223059 326.234353v50.296471H380.566588c-51.862588 0-93.846588 42.164706-93.846588 94.208v74.209882c0 3.794824 2.831059 6.625882 6.384941 6.625882h47.706353a6.384941 6.384941 0 0 0 6.384941-6.384941V470.919529c0-18.552471 14.998588-33.490824 33.430589-33.490823h193.596235v50.236235c0 5.360941 6.144 8.252235 10.24 4.99953l102.701176-80.715295a6.384941 6.384941 0 0 0 0-10.059294L584.463059 321.234824a6.324706 6.324706 0 0 0-10.24 4.999529z\" fill=\"#61C4FF\" p-id=\"10399\"></path></svg></span>`;\r\nreturn `<span style=\"display: flex; align-items: center;\">` + svgIcon + `&nbsp;` + data.name + `</span>`;",
+    "customCode" : true
+  }, {
+    "dataType" : 25,
+    "name" : "status",
+    "getPSAppDEField" : {
+      "name" : "STATUS",
+      "codeName" : "status"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "assignee_name",
+    "getPSAppDEField" : {
+      "name" : "ASSIGNEE_NAME",
+      "codeName" : "assignee_name"
+    }
+  }, {
+    "format" : "YYYY-MM-DD HH:mm:ss",
+    "dataType" : 5,
+    "name" : "create_time",
+    "getPSAppDEField" : {
+      "name" : "CREATE_TIME",
+      "codeName" : "create_time"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "project_name",
+    "getPSAppDEField" : {
+      "name" : "PROJECT_NAME",
+      "codeName" : "project_name"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfdataaccaction",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "dataAccessAction" : true
+  }, {
+    "dataType" : 25,
+    "name" : "project_id",
+    "getPSAppDEField" : {
+      "name" : "PROJECT_ID",
+      "codeName" : "project_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "pid",
+    "getPSAppDEField" : {
+      "name" : "PID",
+      "codeName" : "pid"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfmajortext",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfmstag"
+  } ],
+  "getPSDEGridEditItems" : [ {
+    "caption" : "标识",
+    "codeName" : "srfkey",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getPSEditor" : {
+      "editorType" : "HIDDEN",
+      "name" : "srfkey"
+    },
+    "allowEmpty" : true
+  } ],
+  "pagingMode" : 2,
+  "pagingSize" : 20,
+  "getRemovePSControlAction" : {
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/sprint.json"
+    }
+  },
+  "sortMode" : "REMOTE",
+  "hasWFDataItems" : false,
+  "enableColFilter" : false,
+  "enableCustomized" : true,
+  "enableGroup" : false,
+  "enablePagingBar" : false,
+  "enableRowEdit" : false,
+  "enableRowEditOrder" : false,
+  "enableRowNew" : false,
+  "forceFit" : true,
+  "hideHeader" : true,
+  "noSort" : false,
+  "singleSelect" : true,
+  "modelid" : "4189E348-111C-4045-A070-557F8DF4161F",
+  "modeltype" : "PSDEGRID"
+}

@@ -1,0 +1,76 @@
+{
+  "codeName" : "recent_parent_name",
+  "dEFLogicMode" : "ONCHANGE",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEFLOGICS/recent_parent_name.json",
+  "logicName" : "批量更新最近访问父名称",
+  "logicSubType" : "DEFIELD",
+  "memo" : "当测试库名称变更时，触发此逻辑，批量对最近访问的父标识进行更新",
+  "name" : "批量更新最近访问父名称",
+  "getPSDEField" : {
+    "name" : "NAME",
+    "codeName" : "name"
+  },
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 510,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 160,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "RAWSQLCALL1",
+    "leftPos" : 470,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "批量更新最近访问父级名称",
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[NAME]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "update recent set RECENT_PARENT_NAME=? where RECENT_PARENT=?",
+    "topPos" : 309
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

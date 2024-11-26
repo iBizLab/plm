@@ -1,0 +1,654 @@
+{
+  "codeName" : "create_default_entry",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/board/PSDELOGICS/create_default_entry.json",
+  "logicName" : "生成默认看板栏和泳道",
+  "memo" : "新建看板项目后，会附加生成出默认看板栏和泳道",
+  "name" : "生成默认看板栏和泳道",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 210,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 460
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 170,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "默认泳道名称",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "swimlane"
+      },
+      "name" : "直接值[默认泳道] ==> swimlane[NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "默认泳道",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "swimlane"
+      },
+      "name" : "Default[ID] ==> swimlane[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "BOARD_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "swimlane"
+      },
+      "name" : "Default[ID] ==> swimlane[BOARD_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 610
+  }, {
+    "codeName" : "DEACTION2",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/swimlane/PSDEACTIONS/Create.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "swimlane"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/swimlane.json"
+    },
+    "leftPos" : 170,
+    "logicNodeType" : "DEACTION",
+    "name" : "建立默认泳道",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "swimlane"
+    },
+    "topPos" : 705
+  }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : 170,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "默认看板栏名称",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "IS_SPLIT",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "idea_pool_entry"
+      },
+      "name" : "直接值[0] ==> idea_pool_entry[IS_SPLIT]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "0",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "SHOWORDER",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "idea_pool_entry"
+      },
+      "name" : "直接值[1] ==> idea_pool_entry[SHOWORDER]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "1",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "SHOWORDER",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "design_entry"
+      },
+      "name" : "直接值[2] ==> design_entry[SHOWORDER]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "2",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "SHOWORDER",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "rd_entry"
+      },
+      "name" : "直接值[3] ==> rd_entry[SHOWORDER]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "3",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "SHOWORDER",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "test_entry"
+      },
+      "name" : "直接值[4] ==> test_entry[SHOWORDER]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "4",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "SHOWORDER",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "issue_entry"
+      },
+      "name" : "直接值[5] ==> issue_entry[SHOWORDER]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "5",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "IS_SYSTEM",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "idea_pool_entry"
+      },
+      "name" : "直接值[1] ==> idea_pool_entry[IS_SYSTEM]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "1",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "IS_SPLIT",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "design_entry"
+      },
+      "name" : "直接值[0] ==> design_entry[IS_SPLIT]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "0",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "IS_SYSTEM",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "design_entry"
+      },
+      "name" : "直接值[0] ==> design_entry[IS_SYSTEM]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "0",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "IS_SPLIT",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "rd_entry"
+      },
+      "name" : "直接值[1] ==> rd_entry[IS_SPLIT]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "1",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "IS_SYSTEM",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "rd_entry"
+      },
+      "name" : "直接值[0] ==> rd_entry[IS_SYSTEM]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "0",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "IS_SPLIT",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "test_entry"
+      },
+      "name" : "直接值[0] ==> test_entry[IS_SPLIT]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "0",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "IS_SPLIT",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "test_entry"
+      },
+      "name" : "直接值[0] ==> test_entry[IS_SPLIT]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "0",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "IS_SPLIT",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "issue_entry"
+      },
+      "name" : "直接值[0] ==> issue_entry[IS_SPLIT]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "0",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "IS_SYSTEM",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "issue_entry"
+      },
+      "name" : "直接值[0] ==> issue_entry[IS_SYSTEM]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "0",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "BOARD_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "idea_pool_entry"
+      },
+      "name" : "Default[ID] ==> idea_pool_entry[BOARD_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "BOARD_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "design_entry"
+      },
+      "name" : "Default[ID] ==> design_entry[BOARD_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "BOARD_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "rd_entry"
+      },
+      "name" : "Default[ID] ==> rd_entry[BOARD_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "BOARD_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "test_entry"
+      },
+      "name" : "Default[ID] ==> test_entry[BOARD_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "BOARD_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "issue_entry"
+      },
+      "name" : "Default[ID] ==> issue_entry[BOARD_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "idea_pool_entry"
+      },
+      "name" : "直接值[需求池] ==> idea_pool_entry[NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "需求池",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "design_entry"
+      },
+      "name" : "直接值[设计] ==> design_entry[NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "设计",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "rd_entry"
+      },
+      "name" : "直接值[研发] ==> rd_entry[NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "研发",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "test_entry"
+      },
+      "name" : "直接值[测试] ==> test_entry[NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "测试",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "issue_entry"
+      },
+      "name" : "直接值[发布] ==> issue_entry[NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "发布",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 818
+  }, {
+    "codeName" : "DEACTION3",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/entry/PSDEACTIONS/Create.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "idea_pool_entry"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/entry.json"
+    },
+    "leftPos" : 171,
+    "logicNodeType" : "DEACTION",
+    "name" : "建立默认需求池看板栏",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION4"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION3"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "idea_pool_entry"
+    },
+    "topPos" : 920
+  }, {
+    "codeName" : "DEACTION4",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/entry/PSDEACTIONS/Create.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "design_entry"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/entry.json"
+    },
+    "leftPos" : 171,
+    "logicNodeType" : "DEACTION",
+    "name" : "建立默认设计看板栏",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION5"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION4"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "design_entry"
+    },
+    "topPos" : 1015
+  }, {
+    "codeName" : "DEACTION5",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/entry/PSDEACTIONS/Create.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "rd_entry"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/entry.json"
+    },
+    "leftPos" : 170,
+    "logicNodeType" : "DEACTION",
+    "name" : "建立默认研发看板栏",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION6"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION5"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "rd_entry"
+    },
+    "topPos" : 1096
+  }, {
+    "codeName" : "DEACTION6",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/entry/PSDEACTIONS/Create.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "test_entry"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/entry.json"
+    },
+    "leftPos" : 170,
+    "logicNodeType" : "DEACTION",
+    "name" : "建立默认测试看板栏",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION7"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION6"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "test_entry"
+    },
+    "topPos" : 1200
+  }, {
+    "codeName" : "DEACTION7",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/entry/PSDEACTIONS/Create.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "issue_entry"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/entry.json"
+    },
+    "leftPos" : 171,
+    "logicNodeType" : "DEACTION",
+    "name" : "建立默认发布看板栏",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION7"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "issue_entry"
+    },
+    "topPos" : 1290
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 210,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "topPos" : 1410
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/board.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "board",
+    "logicName" : "默认看板",
+    "name" : "默认看板",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/board.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "design_entry",
+    "logicName" : "设计看板栏",
+    "name" : "设计看板栏",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/entry.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "idea_pool_entry",
+    "logicName" : "需求池看板栏",
+    "name" : "需求池看板栏",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/entry.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "issue_entry",
+    "logicName" : "发布看板栏",
+    "name" : "发布看板栏",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/entry.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "rd_entry",
+    "logicName" : "研发看板栏",
+    "name" : "研发看板栏",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/entry.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "swimlane",
+    "logicName" : "默认泳道",
+    "name" : "默认泳道",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/swimlane.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "test_entry",
+    "logicName" : "测试看板栏",
+    "name" : "测试看板栏",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/entry.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}
