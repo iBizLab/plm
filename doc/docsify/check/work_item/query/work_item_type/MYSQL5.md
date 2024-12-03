@@ -1,8 +1,0 @@
-```sql
-SELECT
-t1.`ID`,
-t1.`WORK_ITEM_TYPE_ID`
-FROM `WORK_ITEM` t1 
-
-
-```
