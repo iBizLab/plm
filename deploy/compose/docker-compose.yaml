@@ -7,7 +7,7 @@ networks:
 services:
   #mysql
   mysql:
-    image: ibizlab/mysql:5.7.plm.20241031
+    image: dockerhub.qingcloud.com/ibizlab/mysql:5.7.plm.20241031
     ports:
     - "30006:3306"  
     environment:
@@ -29,7 +29,7 @@ services:
     - agent_network
   #nacos
   nacos:
-    image: ibizlab/nacos-server:v2.0.3
+    image: dockerhub.qingcloud.com/ibizlab/nacos-server:v2.0.3
     environment:
     - PREFER_HOST_MODE=hostname
     - MODE=standalone
@@ -50,7 +50,7 @@ services:
     command: mysql:3306
   #redis
   redis:
-    image: ibizlab/redis:6.2.6
+    image: dockerhub.qingcloud.com/ibizlab/redis:6.2.6
     ports:
     - "6379:6379"
     environment:
@@ -62,7 +62,7 @@ services:
     - agent_network   
   #zookeeper
   zoo1:
-    image: ibizlab/zookeeper:3.7.0
+    image: dockerhub.qingcloud.com/ibizlab/zookeeper:3.7.0
     ports:
     - "2181:2181"
     networks:
@@ -72,14 +72,14 @@ services:
     - ZOO_SERVERS=server.1=0.0.0.0:2888:3888;2181
   #emqx
   emqx:
-    image: ibizlab/emqx:4.4
+    image: dockerhub.qingcloud.com/ibizlab/emqx:4.4
     ports:
     - "30083:8083"
     networks:
     - agent_network
   #ibizlab-uaa-api
   ibizlab-uaa-api:
-    image: ibizlab/uaa-api:2.0.12
+    image: dockerhub.qingcloud.com/ibizlab/uaa-api:2.0.12
     ports:
     - "32666:32666"
     networks:
@@ -120,7 +120,7 @@ services:
     - "nacos.ibizcloud.cn:${IPADDR}"
   #ibiz-ebsx-allinone
   ibiz-ebsx-allinone:
-    image: ibizlab/ibiz-ebsx-allinone-rt:8.1.0.547.241126
+    image: dockerhub.qingcloud.com/ibizlab/ibiz-ebsx-allinone-rt:8.1.0.547.241203
     environment:
     - SPRING_CLOUD_NACOS_DISCOVERY_IP=nacos.ibizcloud.cn
     - SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR=nacos.ibizcloud.cn:30048          
@@ -142,7 +142,7 @@ services:
     - "nacos.ibizcloud.cn:${IPADDR}"
   #ibiz-ebsx-gateway
   ibiz-ebsx-gateway:
-    image: ibizlab/ibiz-ebsx-gateway:8.1.0.377
+    image: dockerhub.qingcloud.com/ibizlab/ibiz-ebsx-gateway:8.1.0.377
     ports:
     - "30086:30086"
     environment:
@@ -158,7 +158,7 @@ services:
     - "nacos.ibizcloud.cn:${IPADDR}"    
   #cloudmgrweb
   cloudmgrweb:
-    image: ibizlab/ibiz-cloud-web-runner:9.0.6.3
+    image: dockerhub.qingcloud.com/ibizlab/ibiz-cloud-web-runner:9.0.6.3
     ports:
     - "30101:80"
     networks:
@@ -178,7 +178,7 @@ services:
     - "nacos.ibizcloud.cn:${IPADDR}"
   #cloudmgrapi
   cloudmgrapi:
-    image: ibizlab/ibiz-service-runner:8.1.0.532.1
+    image: dockerhub.qingcloud.com/ibizlab/ibiz-service-runner:8.1.0.532.1
     ports:
     - "30100:30100"
     networks:
@@ -202,14 +202,13 @@ services:
     - "nacos.ibizcloud.cn:${IPADDR}"
   #plmweb
   plmweb:
-    image: ibizlab/ibiz-cloud-web-runner:9.0.7.38-alpha.29.plm.241126
+    image: dockerhub.qingcloud.com/ibizlab/ibiz-cloud-web-runner:9.0.7.38-alpha.31.plm.241203
     ports:
     - 30250:80
     networks:
     - agent_network
     environment:
-    - MOCKDCSYSTEMID=preview-ibizplm
-    - APPCODE=web
+    - FILE_PREVIEW_ADDRESS=http://${IPADDR}:30012
     entrypoint: /entrypoint-waitfor.sh
     command: nacos:8848
     extra_hosts:
@@ -217,14 +216,11 @@ services:
     - "nacos.ibizcloud.cn:${IPADDR}"
   #plmmob
   plmmob:
-    image: ibizlab/ibiz-cloud-mob-runner:9.0.0.31.plm.241126
+    image: dockerhub.qingcloud.com/ibizlab/ibiz-cloud-mob-runner:9.0.0.32.plm.241203
     ports:
     - 30260:80
     networks:
     - agent_network
-    environment:
-    - MOCKDCSYSTEMID=ibizplm
-    - APPCODE=plmmob
     entrypoint: /entrypoint-waitfor.sh
     command: nacos:8848
     extra_hosts:
@@ -232,7 +228,7 @@ services:
     - "nacos.ibizcloud.cn:${IPADDR}"
   #plmservice
   plmservice:
-    image: ibizlab/ibiz-service-runner:8.1.0.565.36
+    image: dockerhub.qingcloud.com/ibizlab/ibiz-service-runner:8.1.0.565.47
     ports:
     - "30251:30251"
     networks:
@@ -258,3 +254,7 @@ services:
     extra_hosts:
     - "gateway.ibizcloud.cn:${IPADDR}"    
     - "nacos.ibizcloud.cn:${IPADDR}"
+  kkfileview:
+    image: dockerhub.qingcloud.com/ibizlab/kkfileview:4.1.0
+    ports:
+    - 30012:8012
