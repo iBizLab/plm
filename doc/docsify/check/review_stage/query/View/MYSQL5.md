@@ -1,0 +1,18 @@
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`GUIDELINE_ID`,
+t1.`ID`,
+t1.`NAME`,
+t1.`ORDER`,
+t1.`REVIEWER`,
+t1.`REVIEWER_NAME`,
+t1.`REVIEWER_TYPE`,
+t1.`STAGE_STATE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `` t1 
+
+
+```

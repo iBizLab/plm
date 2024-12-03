@@ -1,0 +1,23 @@
+```sql
+SELECT
+t1.`CATEGORY`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DEBUG_INFO`,
+t1.`ELAPSED_TIME`,
+t1.`END_AT`,
+t1.`ID`,
+t1.`INFO`,
+t1.`LEVEL`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`START_AT`,
+t1.`STATE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `EXTEND_LOG` t1 
+
+
+```
