@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.prodmgmt.service.logic.product_tagdelete_tag" isClosed="false" isExecutable="true" name="prodmgmt_product_tag_delete_tag_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.prodmgmt.service.logic.product_tagdelete_tag">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="product_tagdelete_tagdefault" type="entity"/>
+                                <tns:metaData express="new HashMap()" name="product_tagdelete_tagfilter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.product_tag()" name="product_tagdelete_tagplan_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.product_tag()" name="product_tagdelete_tagproduct_plan_pages" type="refentity"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.Iproduct_tagService))" name="iBzSysProduct_tagDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="product_tagdelete_tagdefault" type="cn.ibizlab.plm.core.prodmgmt.domain.product_tag" />
+                            <tns:global identifier="product_tagdelete_tagplan_filter" type="cn.ibizlab.plm.core.prodmgmt.domain.product_tag" />
+                            <tns:global identifier="product_tagdelete_tagproduct_plan_pages" type="cn.ibizlab.plm.core.prodmgmt.domain.product_tag" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="product_tagdelete_tagend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="product_tagdelete_tagrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="更新标签属性"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="product_tagdelete_tagrawsqlcall2" id="rawsqlcall2" implementation="http://www.jboss.org/drools/rule" name="删除标签"/>
+                    <sequenceFlow id="begin_rawsqlcall1" sourceRef="begin" targetRef="rawsqlcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall1_rawsqlcall2" sourceRef="rawsqlcall1" targetRef="rawsqlcall2">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall2_end1" sourceRef="rawsqlcall2" targetRef="end1">
+                    </sequenceFlow>
+        </process>
+    </definitions>

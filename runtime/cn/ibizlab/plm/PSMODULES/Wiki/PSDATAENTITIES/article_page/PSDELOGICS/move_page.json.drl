@@ -1,0 +1,210 @@
+package cn.ibizlab.plm.wiki.logic.article_pagelogic.move_page;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pagemove_pagedefault;
+                global cn.ibizlab.plm.core.base.domain.attachment article_pagemove_pageattachment;
+                global cn.ibizlab.plm.core.base.domain.attachment article_pagemove_pageattachments;
+                global java.util.Map article_pagemove_pagechild_data;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pagemove_pagefor_tmp_obj;
+                global java.util.Map article_pagemove_pagepage_id;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pagemove_pagepage_obj;
+                global java.util.Map article_pagemove_pagesrfactionparam;
+                global java.util.Map article_pagemove_pagetarget_page_id;
+                global java.util.Map article_pagemove_pagetarget_space_id;
+                    global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService article_pageservice;
+        global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService iBzSysArticle_pageDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "article_pagemove_pagebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设置待移动页面id]
+            rule "prepareparam1"
+            ruleflow-group "article_pagemove_pageprepareparam1"
+            when
+            then
+                            article_pagemove_pagepage_id.set("",article_pagemove_pagedefault.get("id"));
+                        update(article_pagemove_pagedefault);//更新fact中变量值
+                        update(article_pagemove_pageattachment);//更新fact中变量值
+                        update(article_pagemove_pageattachments);//更新fact中变量值
+                        update(article_pagemove_pagechild_data);//更新fact中变量值
+                        update(article_pagemove_pagefor_tmp_obj);//更新fact中变量值
+                        update(article_pagemove_pagepage_id);//更新fact中变量值
+                        update(article_pagemove_pagepage_obj);//更新fact中变量值
+                        update(article_pagemove_pagesrfactionparam);//更新fact中变量值
+                        update(article_pagemove_pagetarget_page_id);//更新fact中变量值
+                        update(article_pagemove_pagetarget_space_id);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定视图数据]
+            rule "bindparam1"
+            ruleflow-group "article_pagemove_pagebindparam1"
+            when
+            then
+                        update(article_pagemove_pagedefault);//更新fact中变量值
+                        update(article_pagemove_pageattachment);//更新fact中变量值
+                        update(article_pagemove_pageattachments);//更新fact中变量值
+                        update(article_pagemove_pagechild_data);//更新fact中变量值
+                        update(article_pagemove_pagefor_tmp_obj);//更新fact中变量值
+                        update(article_pagemove_pagepage_id);//更新fact中变量值
+                        update(article_pagemove_pagepage_obj);//更新fact中变量值
+                        update(article_pagemove_pagesrfactionparam);//更新fact中变量值
+                        update(article_pagemove_pagetarget_page_id);//更新fact中变量值
+                        update(article_pagemove_pagetarget_space_id);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "article_pagemove_pageloopsubcall1"
+            when
+            then
+                        update(article_pagemove_pagedefault);//更新fact中变量值
+                        update(article_pagemove_pageattachment);//更新fact中变量值
+                        update(article_pagemove_pageattachments);//更新fact中变量值
+                        update(article_pagemove_pagechild_data);//更新fact中变量值
+                        update(article_pagemove_pagefor_tmp_obj);//更新fact中变量值
+                        update(article_pagemove_pagepage_id);//更新fact中变量值
+                        update(article_pagemove_pagepage_obj);//更新fact中变量值
+                        update(article_pagemove_pagesrfactionparam);//更新fact中变量值
+                        update(article_pagemove_pagetarget_page_id);//更新fact中变量值
+                        update(article_pagemove_pagetarget_space_id);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置待移动页面数据]
+            rule "prepareparam2"
+            ruleflow-group "article_pagemove_pageprepareparam2"
+            when
+            then
+                            article_pagemove_pagetarget_page_id.set("",article_pagemove_pagefor_tmp_obj.get("parentid"));
+                            article_pagemove_pagetarget_space_id.set("",article_pagemove_pagefor_tmp_obj.get("spaceid"));
+                        update(article_pagemove_pagedefault);//更新fact中变量值
+                        update(article_pagemove_pageattachment);//更新fact中变量值
+                        update(article_pagemove_pageattachments);//更新fact中变量值
+                        update(article_pagemove_pagechild_data);//更新fact中变量值
+                        update(article_pagemove_pagefor_tmp_obj);//更新fact中变量值
+                        update(article_pagemove_pagepage_id);//更新fact中变量值
+                        update(article_pagemove_pagepage_obj);//更新fact中变量值
+                        update(article_pagemove_pagesrfactionparam);//更新fact中变量值
+                        update(article_pagemove_pagetarget_page_id);//更新fact中变量值
+                        update(article_pagemove_pagetarget_space_id);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取待移动的页面]
+            rule "deaction1"
+            ruleflow-group "article_pagemove_pagedeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(article_pageservice.get(article_pagemove_pagepage_id.getId()),article_pagemove_pagepage_id);
+                        update(article_pagemove_pagedefault);//更新fact中变量值
+                        update(article_pagemove_pageattachment);//更新fact中变量值
+                        update(article_pagemove_pageattachments);//更新fact中变量值
+                        update(article_pagemove_pagechild_data);//更新fact中变量值
+                        update(article_pagemove_pagefor_tmp_obj);//更新fact中变量值
+                        update(article_pagemove_pagepage_id);//更新fact中变量值
+                        update(article_pagemove_pagepage_obj);//更新fact中变量值
+                        update(article_pagemove_pagesrfactionparam);//更新fact中变量值
+                        update(article_pagemove_pagetarget_page_id);//更新fact中变量值
+                        update(article_pagemove_pagetarget_space_id);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置待更新的页面]
+            rule "prepareparam3"
+            ruleflow-group "article_pagemove_pageprepareparam3"
+            when
+            then
+                            article_pagemove_pagepage_obj.set("spaceid",article_pagemove_pagetarget_space_id.get(""));
+                                article_pagemove_pagepage_obj.set("categories",null);
+                            article_pagemove_pagepage_obj.set("parentid",article_pagemove_pagetarget_page_id.get(""));
+                        update(article_pagemove_pagedefault);//更新fact中变量值
+                        update(article_pagemove_pageattachment);//更新fact中变量值
+                        update(article_pagemove_pageattachments);//更新fact中变量值
+                        update(article_pagemove_pagechild_data);//更新fact中变量值
+                        update(article_pagemove_pagefor_tmp_obj);//更新fact中变量值
+                        update(article_pagemove_pagepage_id);//更新fact中变量值
+                        update(article_pagemove_pagepage_obj);//更新fact中变量值
+                        update(article_pagemove_pagesrfactionparam);//更新fact中变量值
+                        update(article_pagemove_pagetarget_page_id);//更新fact中变量值
+                        update(article_pagemove_pagetarget_space_id);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新页面]
+            rule "deaction2"
+            ruleflow-group "article_pagemove_pagedeaction2"
+            when
+            then
+                        article_pageservice.save(article_pagemove_pagepage_obj);
+                        update(article_pagemove_pagedefault);//更新fact中变量值
+                        update(article_pagemove_pageattachment);//更新fact中变量值
+                        update(article_pagemove_pageattachments);//更新fact中变量值
+                        update(article_pagemove_pagechild_data);//更新fact中变量值
+                        update(article_pagemove_pagefor_tmp_obj);//更新fact中变量值
+                        update(article_pagemove_pagepage_id);//更新fact中变量值
+                        update(article_pagemove_pagepage_obj);//更新fact中变量值
+                        update(article_pagemove_pagesrfactionparam);//更新fact中变量值
+                        update(article_pagemove_pagetarget_page_id);//更新fact中变量值
+                        update(article_pagemove_pagetarget_space_id);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备移动子页面的数据]
+            rule "prepareparam4"
+            ruleflow-group "article_pagemove_pageprepareparam4"
+            when
+            then
+                            article_pagemove_pagechild_data.set("parent_id",article_pagemove_pagepage_obj.get("id"));
+                            article_pagemove_pagechild_data.set("space_id",article_pagemove_pagetarget_space_id.get(""));
+                        update(article_pagemove_pagedefault);//更新fact中变量值
+                        update(article_pagemove_pageattachment);//更新fact中变量值
+                        update(article_pagemove_pageattachments);//更新fact中变量值
+                        update(article_pagemove_pagechild_data);//更新fact中变量值
+                        update(article_pagemove_pagefor_tmp_obj);//更新fact中变量值
+                        update(article_pagemove_pagepage_id);//更新fact中变量值
+                        update(article_pagemove_pagepage_obj);//更新fact中变量值
+                        update(article_pagemove_pagesrfactionparam);//更新fact中变量值
+                        update(article_pagemove_pagetarget_page_id);//更新fact中变量值
+                        update(article_pagemove_pagetarget_space_id);//更新fact中变量值
+            end
+
+            //逻辑处理节点[移动子页面]
+            rule "delogic1"
+            ruleflow-group "article_pagemove_pagedelogic1"
+            when
+            then
+                        update(article_pagemove_pagedefault);//更新fact中变量值
+                        update(article_pagemove_pageattachment);//更新fact中变量值
+                        update(article_pagemove_pageattachments);//更新fact中变量值
+                        update(article_pagemove_pagechild_data);//更新fact中变量值
+                        update(article_pagemove_pagefor_tmp_obj);//更新fact中变量值
+                        update(article_pagemove_pagepage_id);//更新fact中变量值
+                        update(article_pagemove_pagepage_obj);//更新fact中变量值
+                        update(article_pagemove_pagesrfactionparam);//更新fact中变量值
+                        update(article_pagemove_pagetarget_page_id);//更新fact中变量值
+                        update(article_pagemove_pagetarget_space_id);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "article_pagemove_pageend1"
+            when
+            then
+                        update(article_pagemove_pagedefault);//更新fact中变量值
+                        update(article_pagemove_pageattachment);//更新fact中变量值
+                        update(article_pagemove_pageattachments);//更新fact中变量值
+                        update(article_pagemove_pagechild_data);//更新fact中变量值
+                        update(article_pagemove_pagefor_tmp_obj);//更新fact中变量值
+                        update(article_pagemove_pagepage_id);//更新fact中变量值
+                        update(article_pagemove_pagepage_obj);//更新fact中变量值
+                        update(article_pagemove_pagesrfactionparam);//更新fact中变量值
+                        update(article_pagemove_pagetarget_page_id);//更新fact中变量值
+                        update(article_pagemove_pagetarget_space_id);//更新fact中变量值
+            end

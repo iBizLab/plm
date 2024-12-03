@@ -1,0 +1,302 @@
+package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.submit_review;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_content review_contentsubmit_reviewdefault;
+                global cn.ibizlab.plm.core.base.domain.relation review_contentsubmit_reviewfor_reltion;
+                global cn.ibizlab.plm.core.base.domain.relation review_contentsubmit_reviewrelation_page;
+                global cn.ibizlab.plm.core.base.domain.relation review_contentsubmit_reviewreltion_filter;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_content review_contentsubmit_reviewreview_content;
+                global cn.ibizlab.plm.core.testmgmt.domain.review review_contentsubmit_reviewreview_detail;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_stage review_contentsubmit_reviewstage;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_stage review_contentsubmit_reviewstages;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case review_contentsubmit_reviewtest_case;
+                    global cn.ibizlab.plm.core.testmgmt.service.IreviewService reviewservice;
+                    global cn.ibizlab.plm.core.base.service.IrelationService relationservice;
+                    global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService test_caseservice;
+        global cn.ibizlab.plm.core.testmgmt.service.Ireview_contentService iBzSysReview_contentDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "review_contentsubmit_reviewbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[获取评审详情]
+            rule "deaction4"
+            ruleflow-group "review_contentsubmit_reviewdeaction4"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(reviewservice.get(review_contentsubmit_reviewreview_detail.getId()),review_contentsubmit_reviewreview_detail);
+                        update(review_contentsubmit_reviewdefault);//更新fact中变量值
+                        update(review_contentsubmit_reviewfor_reltion);//更新fact中变量值
+                        update(review_contentsubmit_reviewrelation_page);//更新fact中变量值
+                        update(review_contentsubmit_reviewreltion_filter);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_content);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_detail);//更新fact中变量值
+                        update(review_contentsubmit_reviewstage);//更新fact中变量值
+                        update(review_contentsubmit_reviewstages);//更新fact中变量值
+                        update(review_contentsubmit_reviewtest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置提交时间]
+            rule "rawsfcode1"
+            ruleflow-group "review_contentsubmit_reviewrawsfcode1"
+            when
+            then
+                        update(review_contentsubmit_reviewdefault);//更新fact中变量值
+                        update(review_contentsubmit_reviewfor_reltion);//更新fact中变量值
+                        update(review_contentsubmit_reviewrelation_page);//更新fact中变量值
+                        update(review_contentsubmit_reviewreltion_filter);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_content);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_detail);//更新fact中变量值
+                        update(review_contentsubmit_reviewstage);//更新fact中变量值
+                        update(review_contentsubmit_reviewstages);//更新fact中变量值
+                        update(review_contentsubmit_reviewtest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置提交人、状态]
+            rule "prepareparam1"
+            ruleflow-group "review_contentsubmit_reviewprepareparam1"
+            when
+            then
+                                review_contentsubmit_reviewreview_detail.set("submittername",curuser.getSessionParams().get("srfpersonname"));
+                                review_contentsubmit_reviewreview_detail.set("submitterid",curuser.getSessionParams().get("srfpersonid"));
+                            review_contentsubmit_reviewreview_detail.set("state","20");
+                        update(review_contentsubmit_reviewdefault);//更新fact中变量值
+                        update(review_contentsubmit_reviewfor_reltion);//更新fact中变量值
+                        update(review_contentsubmit_reviewrelation_page);//更新fact中变量值
+                        update(review_contentsubmit_reviewreltion_filter);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_content);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_detail);//更新fact中变量值
+                        update(review_contentsubmit_reviewstage);//更新fact中变量值
+                        update(review_contentsubmit_reviewstages);//更新fact中变量值
+                        update(review_contentsubmit_reviewtest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置阶段的状态]
+            rule "prepareparam2"
+            ruleflow-group "review_contentsubmit_reviewprepareparam2"
+            when
+            then
+                            review_contentsubmit_reviewstages.set("",review_contentsubmit_reviewreview_detail.get("stage"));
+                            review_contentsubmit_reviewstage.set("",review_contentsubmit_reviewstages.get("0"));
+                            review_contentsubmit_reviewstage.set("stagestate","20");
+                        update(review_contentsubmit_reviewdefault);//更新fact中变量值
+                        update(review_contentsubmit_reviewfor_reltion);//更新fact中变量值
+                        update(review_contentsubmit_reviewrelation_page);//更新fact中变量值
+                        update(review_contentsubmit_reviewreltion_filter);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_content);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_detail);//更新fact中变量值
+                        update(review_contentsubmit_reviewstage);//更新fact中变量值
+                        update(review_contentsubmit_reviewstages);//更新fact中变量值
+                        update(review_contentsubmit_reviewtest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置关系过滤器参数]
+            rule "prepareparam3"
+            ruleflow-group "review_contentsubmit_reviewprepareparam3"
+            when
+            then
+                            review_contentsubmit_reviewreltion_filter.set("n_principal_id_eq",review_contentsubmit_reviewdefault.get("principalid"));
+                            review_contentsubmit_reviewreltion_filter.set("n_principal_type_eq","REVIEW");
+                        update(review_contentsubmit_reviewdefault);//更新fact中变量值
+                        update(review_contentsubmit_reviewfor_reltion);//更新fact中变量值
+                        update(review_contentsubmit_reviewrelation_page);//更新fact中变量值
+                        update(review_contentsubmit_reviewreltion_filter);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_content);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_detail);//更新fact中变量值
+                        update(review_contentsubmit_reviewstage);//更新fact中变量值
+                        update(review_contentsubmit_reviewstages);//更新fact中变量值
+                        update(review_contentsubmit_reviewtest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新评审]
+            rule "deaction1"
+            ruleflow-group "review_contentsubmit_reviewdeaction1"
+            when
+            then
+                        reviewservice.update(review_contentsubmit_reviewreview_detail);
+                        update(review_contentsubmit_reviewdefault);//更新fact中变量值
+                        update(review_contentsubmit_reviewfor_reltion);//更新fact中变量值
+                        update(review_contentsubmit_reviewrelation_page);//更新fact中变量值
+                        update(review_contentsubmit_reviewreltion_filter);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_content);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_detail);//更新fact中变量值
+                        update(review_contentsubmit_reviewstage);//更新fact中变量值
+                        update(review_contentsubmit_reviewstages);//更新fact中变量值
+                        update(review_contentsubmit_reviewtest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取关系数据集]
+            rule "dedataset1"
+            ruleflow-group "review_contentsubmit_reviewdedataset1"
+            when
+            then
+                        update(review_contentsubmit_reviewdefault);//更新fact中变量值
+                        update(review_contentsubmit_reviewfor_reltion);//更新fact中变量值
+                        update(review_contentsubmit_reviewrelation_page);//更新fact中变量值
+                        update(review_contentsubmit_reviewreltion_filter);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_content);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_detail);//更新fact中变量值
+                        update(review_contentsubmit_reviewstage);//更新fact中变量值
+                        update(review_contentsubmit_reviewstages);//更新fact中变量值
+                        update(review_contentsubmit_reviewtest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取评审id]
+            rule "prepareparam6"
+            ruleflow-group "review_contentsubmit_reviewprepareparam6"
+            when
+            then
+                            review_contentsubmit_reviewreview_detail.set("id",review_contentsubmit_reviewdefault.get("principalid"));
+                        update(review_contentsubmit_reviewdefault);//更新fact中变量值
+                        update(review_contentsubmit_reviewfor_reltion);//更新fact中变量值
+                        update(review_contentsubmit_reviewrelation_page);//更新fact中变量值
+                        update(review_contentsubmit_reviewreltion_filter);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_content);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_detail);//更新fact中变量值
+                        update(review_contentsubmit_reviewstage);//更新fact中变量值
+                        update(review_contentsubmit_reviewstages);//更新fact中变量值
+                        update(review_contentsubmit_reviewtest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "review_contentsubmit_reviewend1"
+            when
+            then
+                        update(review_contentsubmit_reviewdefault);//更新fact中变量值
+                        update(review_contentsubmit_reviewfor_reltion);//更新fact中变量值
+                        update(review_contentsubmit_reviewrelation_page);//更新fact中变量值
+                        update(review_contentsubmit_reviewreltion_filter);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_content);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_detail);//更新fact中变量值
+                        update(review_contentsubmit_reviewstage);//更新fact中变量值
+                        update(review_contentsubmit_reviewstages);//更新fact中变量值
+                        update(review_contentsubmit_reviewtest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "review_contentsubmit_reviewloopsubcall1"
+            when
+            then
+                        update(review_contentsubmit_reviewdefault);//更新fact中变量值
+                        update(review_contentsubmit_reviewfor_reltion);//更新fact中变量值
+                        update(review_contentsubmit_reviewrelation_page);//更新fact中变量值
+                        update(review_contentsubmit_reviewreltion_filter);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_content);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_detail);//更新fact中变量值
+                        update(review_contentsubmit_reviewstage);//更新fact中变量值
+                        update(review_contentsubmit_reviewstages);//更新fact中变量值
+                        update(review_contentsubmit_reviewtest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[评审内容为空]
+            rule "throwexception1"
+            ruleflow-group "review_contentsubmit_reviewthrowexception1"
+            when
+            then
+                        update(review_contentsubmit_reviewdefault);//更新fact中变量值
+                        update(review_contentsubmit_reviewfor_reltion);//更新fact中变量值
+                        update(review_contentsubmit_reviewrelation_page);//更新fact中变量值
+                        update(review_contentsubmit_reviewreltion_filter);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_content);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_detail);//更新fact中变量值
+                        update(review_contentsubmit_reviewstage);//更新fact中变量值
+                        update(review_contentsubmit_reviewstages);//更新fact中变量值
+                        update(review_contentsubmit_reviewtest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取测试用例id]
+            rule "prepareparam4"
+            ruleflow-group "review_contentsubmit_reviewprepareparam4"
+            when
+            then
+                            review_contentsubmit_reviewtest_case.set("id",review_contentsubmit_reviewfor_reltion.get("targetid"));
+                        update(review_contentsubmit_reviewdefault);//更新fact中变量值
+                        update(review_contentsubmit_reviewfor_reltion);//更新fact中变量值
+                        update(review_contentsubmit_reviewrelation_page);//更新fact中变量值
+                        update(review_contentsubmit_reviewreltion_filter);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_content);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_detail);//更新fact中变量值
+                        update(review_contentsubmit_reviewstage);//更新fact中变量值
+                        update(review_contentsubmit_reviewstages);//更新fact中变量值
+                        update(review_contentsubmit_reviewtest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取测试用例详情]
+            rule "deaction2"
+            ruleflow-group "review_contentsubmit_reviewdeaction2"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(test_caseservice.get(review_contentsubmit_reviewtest_case.getId()),review_contentsubmit_reviewtest_case);
+                        update(review_contentsubmit_reviewdefault);//更新fact中变量值
+                        update(review_contentsubmit_reviewfor_reltion);//更新fact中变量值
+                        update(review_contentsubmit_reviewrelation_page);//更新fact中变量值
+                        update(review_contentsubmit_reviewreltion_filter);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_content);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_detail);//更新fact中变量值
+                        update(review_contentsubmit_reviewstage);//更新fact中变量值
+                        update(review_contentsubmit_reviewstages);//更新fact中变量值
+                        update(review_contentsubmit_reviewtest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置测试用例评审状态]
+            rule "prepareparam5"
+            ruleflow-group "review_contentsubmit_reviewprepareparam5"
+            when
+            then
+                            review_contentsubmit_reviewtest_case.set("reviewresultstate","2");
+                        update(review_contentsubmit_reviewdefault);//更新fact中变量值
+                        update(review_contentsubmit_reviewfor_reltion);//更新fact中变量值
+                        update(review_contentsubmit_reviewrelation_page);//更新fact中变量值
+                        update(review_contentsubmit_reviewreltion_filter);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_content);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_detail);//更新fact中变量值
+                        update(review_contentsubmit_reviewstage);//更新fact中变量值
+                        update(review_contentsubmit_reviewstages);//更新fact中变量值
+                        update(review_contentsubmit_reviewtest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新测试用例]
+            rule "deaction3"
+            ruleflow-group "review_contentsubmit_reviewdeaction3"
+            when
+            then
+                        test_caseservice.update(review_contentsubmit_reviewtest_case);
+                        update(review_contentsubmit_reviewdefault);//更新fact中变量值
+                        update(review_contentsubmit_reviewfor_reltion);//更新fact中变量值
+                        update(review_contentsubmit_reviewrelation_page);//更新fact中变量值
+                        update(review_contentsubmit_reviewreltion_filter);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_content);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_detail);//更新fact中变量值
+                        update(review_contentsubmit_reviewstage);//更新fact中变量值
+                        update(review_contentsubmit_reviewstages);//更新fact中变量值
+                        update(review_contentsubmit_reviewtest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重置测试用例参数]
+            rule "resetparam1"
+            ruleflow-group "review_contentsubmit_reviewresetparam1"
+            when
+            then
+                        update(review_contentsubmit_reviewdefault);//更新fact中变量值
+                        update(review_contentsubmit_reviewfor_reltion);//更新fact中变量值
+                        update(review_contentsubmit_reviewrelation_page);//更新fact中变量值
+                        update(review_contentsubmit_reviewreltion_filter);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_content);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_detail);//更新fact中变量值
+                        update(review_contentsubmit_reviewstage);//更新fact中变量值
+                        update(review_contentsubmit_reviewstages);//更新fact中变量值
+                        update(review_contentsubmit_reviewtest_case);//更新fact中变量值
+            end

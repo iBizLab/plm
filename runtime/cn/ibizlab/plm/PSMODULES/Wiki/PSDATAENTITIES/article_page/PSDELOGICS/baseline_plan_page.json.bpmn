@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.wiki.service.logic.article_pagebaseline_plan_page" isClosed="false" isExecutable="true" name="wiki_article_page_baseline_plan_page_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.wiki.service.logic.article_pagebaseline_plan_page">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="article_pagebaseline_plan_pagedefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.article_page()" name="article_pagebaseline_plan_pagefor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.version()" name="article_pagebaseline_plan_pagefor_temp_version_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.article_page()" name="article_pagebaseline_plan_pagepage" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.article_page()" name="article_pagebaseline_plan_pagepage_versions" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.version()" name="article_pagebaseline_plan_pageversion_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.version()" name="article_pagebaseline_plan_pageversion_page" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.Iarticle_pageService))" name="article_pageservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IversionService))" name="versionservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.Iarticle_pageService))" name="iBzSysArticle_pageDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="article_pagebaseline_plan_pagedefault" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
+                            <tns:global identifier="article_pagebaseline_plan_pagefor_temp_obj" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
+                            <tns:global identifier="article_pagebaseline_plan_pagefor_temp_version_obj" type="cn.ibizlab.plm.core.base.domain.version" />
+                            <tns:global identifier="article_pagebaseline_plan_pagepage" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
+                            <tns:global identifier="article_pagebaseline_plan_pagepage_versions" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
+                            <tns:global identifier="article_pagebaseline_plan_pageversion_filter" type="cn.ibizlab.plm.core.base.domain.version" />
+                            <tns:global identifier="article_pagebaseline_plan_pageversion_page" type="cn.ibizlab.plm.core.base.domain.version" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagebaseline_plan_pagededataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="选择页面数据集"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagebaseline_plan_pageloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagebaseline_plan_pagerawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagebaseline_plan_pageprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="设置当前版本"/>
+                        <endEvent id="prepareparam4_end" name="end"/>
+                        <sequenceFlow id="prepareparam4_end_line" sourceRef="prepareparam4" targetRef="prepareparam4_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagebaseline_plan_pageprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备版本过滤器"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagebaseline_plan_pagededataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="获取版本数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagebaseline_plan_pageloopsubcall2" id="loopsubcall2" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagebaseline_plan_pageloopsubcall3" id="loopsubcall3" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagebaseline_plan_pageprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="填充当前版本名称"/>
+                        <endEvent id="prepareparam2_end" name="end"/>
+                        <sequenceFlow id="prepareparam2_end_line" sourceRef="prepareparam2" targetRef="prepareparam2_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagebaseline_plan_pageloopsubcall4" id="loopsubcall4" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagebaseline_plan_pageprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置当前版本"/>
+                        <endEvent id="prepareparam3_end" name="end"/>
+                        <sequenceFlow id="prepareparam3_end_line" sourceRef="prepareparam3" targetRef="prepareparam3_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagebaseline_plan_pageend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="begin_dedataset1" sourceRef="begin" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset1_loopsubcall1" sourceRef="gateway-dedataset1" targetRef="loopsubcall1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $article_pagebaseline_plan_pagedefault:article_page();
+                                            $article_pagebaseline_plan_pagefor_temp_obj:article_page();
+                                            $article_pagebaseline_plan_pagefor_temp_version_obj:version();
+                                            $article_pagebaseline_plan_pagepage:article_page();
+                                            $article_pagebaseline_plan_pagepage_versions:article_page();
+                                            $article_pagebaseline_plan_pageversion_filter:version();
+                                            $article_pagebaseline_plan_pageversion_page:version();
+                                    eval($article_pagebaseline_plan_pagedefault==article_pagebaseline_plan_pagedefault && $article_pagebaseline_plan_pagefor_temp_obj==article_pagebaseline_plan_pagefor_temp_obj && $article_pagebaseline_plan_pagefor_temp_version_obj==article_pagebaseline_plan_pagefor_temp_version_obj && $article_pagebaseline_plan_pagepage==article_pagebaseline_plan_pagepage && $article_pagebaseline_plan_pagepage_versions==article_pagebaseline_plan_pagepage_versions && $article_pagebaseline_plan_pageversion_filter==article_pagebaseline_plan_pageversion_filter && $article_pagebaseline_plan_pageversion_page==article_pagebaseline_plan_pageversion_page);
+                                eval((RuleUtils.test($article_pagebaseline_plan_pagepage.get(""),"GT","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_rawsfcode1" sourceRef="loopsubcall1" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall1_prepareparam1" sourceRef="gateway-loopsubcall1" targetRef="prepareparam1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $article_pagebaseline_plan_pagedefault:article_page();
+                                            $article_pagebaseline_plan_pagefor_temp_obj:article_page();
+                                            $article_pagebaseline_plan_pagefor_temp_version_obj:version();
+                                            $article_pagebaseline_plan_pagepage:article_page();
+                                            $article_pagebaseline_plan_pagepage_versions:article_page();
+                                            $article_pagebaseline_plan_pageversion_filter:version();
+                                            $article_pagebaseline_plan_pageversion_page:version();
+                                    eval($article_pagebaseline_plan_pagedefault==article_pagebaseline_plan_pagedefault && $article_pagebaseline_plan_pagefor_temp_obj==article_pagebaseline_plan_pagefor_temp_obj && $article_pagebaseline_plan_pagefor_temp_version_obj==article_pagebaseline_plan_pagefor_temp_version_obj && $article_pagebaseline_plan_pagepage==article_pagebaseline_plan_pagepage && $article_pagebaseline_plan_pagepage_versions==article_pagebaseline_plan_pagepage_versions && $article_pagebaseline_plan_pageversion_filter==article_pagebaseline_plan_pageversion_filter && $article_pagebaseline_plan_pageversion_page==article_pagebaseline_plan_pageversion_page);
+                                eval((RuleUtils.test($article_pagebaseline_plan_pagepage_versions.get("version_id_in"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall1_loopsubcall4" sourceRef="gateway-loopsubcall1" targetRef="loopsubcall4">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $article_pagebaseline_plan_pagedefault:article_page();
+                                            $article_pagebaseline_plan_pagefor_temp_obj:article_page();
+                                            $article_pagebaseline_plan_pagefor_temp_version_obj:version();
+                                            $article_pagebaseline_plan_pagepage:article_page();
+                                            $article_pagebaseline_plan_pagepage_versions:article_page();
+                                            $article_pagebaseline_plan_pageversion_filter:version();
+                                            $article_pagebaseline_plan_pageversion_page:version();
+                                    eval($article_pagebaseline_plan_pagedefault==article_pagebaseline_plan_pagedefault && $article_pagebaseline_plan_pagefor_temp_obj==article_pagebaseline_plan_pagefor_temp_obj && $article_pagebaseline_plan_pagefor_temp_version_obj==article_pagebaseline_plan_pagefor_temp_version_obj && $article_pagebaseline_plan_pagepage==article_pagebaseline_plan_pagepage && $article_pagebaseline_plan_pagepage_versions==article_pagebaseline_plan_pagepage_versions && $article_pagebaseline_plan_pageversion_filter==article_pagebaseline_plan_pageversion_filter && $article_pagebaseline_plan_pageversion_page==article_pagebaseline_plan_pageversion_page);
+                                eval((RuleUtils.test($article_pagebaseline_plan_pagepage_versions.get("version_id_in"),"ISNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_prepareparam4" sourceRef="rawsfcode1" targetRef="prepareparam4">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_dedataset2" sourceRef="prepareparam1" targetRef="dedataset2">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset2_loopsubcall2" sourceRef="dedataset2" targetRef="loopsubcall2">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall2_loopsubcall3" sourceRef="loopsubcall2" targetRef="loopsubcall3">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall2_loopsubcall4" sourceRef="loopsubcall2" targetRef="loopsubcall4">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall3_prepareparam2" sourceRef="gateway-loopsubcall3" targetRef="prepareparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $article_pagebaseline_plan_pagedefault:article_page();
+                                            $article_pagebaseline_plan_pagefor_temp_obj:article_page();
+                                            $article_pagebaseline_plan_pagefor_temp_version_obj:version();
+                                            $article_pagebaseline_plan_pagepage:article_page();
+                                            $article_pagebaseline_plan_pagepage_versions:article_page();
+                                            $article_pagebaseline_plan_pageversion_filter:version();
+                                            $article_pagebaseline_plan_pageversion_page:version();
+                                    eval($article_pagebaseline_plan_pagedefault==article_pagebaseline_plan_pagedefault && $article_pagebaseline_plan_pagefor_temp_obj==article_pagebaseline_plan_pagefor_temp_obj && $article_pagebaseline_plan_pagefor_temp_version_obj==article_pagebaseline_plan_pagefor_temp_version_obj && $article_pagebaseline_plan_pagepage==article_pagebaseline_plan_pagepage && $article_pagebaseline_plan_pagepage_versions==article_pagebaseline_plan_pagepage_versions && $article_pagebaseline_plan_pageversion_filter==article_pagebaseline_plan_pageversion_filter && $article_pagebaseline_plan_pageversion_page==article_pagebaseline_plan_pageversion_page);
+                                eval((RuleUtils.test($article_pagebaseline_plan_pagefor_temp_version_obj.get("id"),"EQ","cur_version_id")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall4_end1" sourceRef="loopsubcall4" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall4_prepareparam3" sourceRef="gateway-loopsubcall4" targetRef="prepareparam3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $article_pagebaseline_plan_pagedefault:article_page();
+                                            $article_pagebaseline_plan_pagefor_temp_obj:article_page();
+                                            $article_pagebaseline_plan_pagefor_temp_version_obj:version();
+                                            $article_pagebaseline_plan_pagepage:article_page();
+                                            $article_pagebaseline_plan_pagepage_versions:article_page();
+                                            $article_pagebaseline_plan_pageversion_filter:version();
+                                            $article_pagebaseline_plan_pageversion_page:version();
+                                    eval($article_pagebaseline_plan_pagedefault==article_pagebaseline_plan_pagedefault && $article_pagebaseline_plan_pagefor_temp_obj==article_pagebaseline_plan_pagefor_temp_obj && $article_pagebaseline_plan_pagefor_temp_version_obj==article_pagebaseline_plan_pagefor_temp_version_obj && $article_pagebaseline_plan_pagepage==article_pagebaseline_plan_pagepage && $article_pagebaseline_plan_pagepage_versions==article_pagebaseline_plan_pagepage_versions && $article_pagebaseline_plan_pageversion_filter==article_pagebaseline_plan_pageversion_filter && $article_pagebaseline_plan_pageversion_page==article_pagebaseline_plan_pageversion_page);
+                                eval((RuleUtils.test($article_pagebaseline_plan_pagefor_temp_obj.get("curVersionName"),"ISNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-dedataset1" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="dedataset1_gateway-dedataset1_gatewayline" sourceRef="dedataset1" targetRef="gateway-dedataset1"></sequenceFlow>
+                            <sequenceFlow id="gateway-dedataset1_end_line" sourceRef="gateway-dedataset1" targetRef="gateway-dedataset1_end"/>
+                            <endEvent id="gateway-dedataset1_end" name="end"/>
+                            <exclusiveGateway id="gateway-loopsubcall1" name="Gateway" gatewayDirection="Diverging" default="gateway-loopsubcall1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="loopsubcall1_gateway-loopsubcall1_gatewayline" sourceRef="loopsubcall1" targetRef="gateway-loopsubcall1"></sequenceFlow>
+                            <sequenceFlow id="gateway-loopsubcall1_end_line" sourceRef="gateway-loopsubcall1" targetRef="gateway-loopsubcall1_end"/>
+                            <endEvent id="gateway-loopsubcall1_end" name="end"/>
+                            <exclusiveGateway id="gateway-loopsubcall3" name="Gateway" gatewayDirection="Diverging" default="gateway-loopsubcall3_end_line"></exclusiveGateway>
+                            <sequenceFlow id="loopsubcall3_gateway-loopsubcall3_gatewayline" sourceRef="loopsubcall3" targetRef="gateway-loopsubcall3"></sequenceFlow>
+                            <sequenceFlow id="gateway-loopsubcall3_end_line" sourceRef="gateway-loopsubcall3" targetRef="gateway-loopsubcall3_end"/>
+                            <endEvent id="gateway-loopsubcall3_end" name="end"/>
+                            <exclusiveGateway id="gateway-loopsubcall4" name="Gateway" gatewayDirection="Diverging" default="gateway-loopsubcall4_end_line"></exclusiveGateway>
+                            <sequenceFlow id="loopsubcall4_gateway-loopsubcall4_gatewayline" sourceRef="loopsubcall4" targetRef="gateway-loopsubcall4"></sequenceFlow>
+                            <sequenceFlow id="gateway-loopsubcall4_end_line" sourceRef="gateway-loopsubcall4" targetRef="gateway-loopsubcall4_end"/>
+                            <endEvent id="gateway-loopsubcall4_end" name="end"/>
+        </process>
+    </definitions>

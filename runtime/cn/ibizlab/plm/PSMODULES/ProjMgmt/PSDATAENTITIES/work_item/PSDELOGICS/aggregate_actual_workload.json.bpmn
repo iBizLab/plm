@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.projmgmt.service.logic.work_itemaggregate_actual_workload" isClosed="false" isExecutable="true" name="projmgmt_work_item_aggregate_actual_workload_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.projmgmt.service.logic.work_itemaggregate_actual_workload">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="work_itemaggregate_actual_workloaddefault" type="entity"/>
+                                <tns:metaData express="new HashMap()" name="work_itemaggregate_actual_workloadactual_workload" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_itemaggregate_actual_workloadcur_child_work_item_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_itemaggregate_actual_workloadcur_child_work_item_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_itemaggregate_actual_workloadcur_work_item_temp" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="work_itemaggregate_actual_workloadestimated_workload" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_itemaggregate_actual_workloadp_work_item" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_itemaggregate_actual_workloadp_work_item_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_itemaggregate_actual_workloadp_work_item_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_itemaggregate_actual_workloadworkload_data" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="work_itemservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="iBzSysWork_itemDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="work_itemaggregate_actual_workloaddefault" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="work_itemaggregate_actual_workloadcur_child_work_item_filter" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="work_itemaggregate_actual_workloadcur_child_work_item_page" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="work_itemaggregate_actual_workloadcur_work_item_temp" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="work_itemaggregate_actual_workloadp_work_item" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="work_itemaggregate_actual_workloadp_work_item_filter" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="work_itemaggregate_actual_workloadp_work_item_page" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="work_itemaggregate_actual_workloadworkload_data" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemaggregate_actual_workloaddebugparam5" id="debugparam5" implementation="http://www.jboss.org/drools/rule" name="本次更新数据111"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemaggregate_actual_workloadprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置父工作项过滤条件"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemaggregate_actual_workloaddedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取父工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemaggregate_actual_workloadprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置父工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemaggregate_actual_workloadprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置当前同级工作项过滤条件"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemaggregate_actual_workloaddedataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="获取同级数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemaggregate_actual_workloadloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemaggregate_actual_workloaddebugparam3" id="debugparam3" implementation="http://www.jboss.org/drools/rule" name="待更新父工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemaggregate_actual_workloaddeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="更新父工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemaggregate_actual_workloaddebugparam4" id="debugparam4" implementation="http://www.jboss.org/drools/rule" name="调试当前级子数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemaggregate_actual_workloadprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemaggregate_actual_workloadrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="获取当前级的工时，赋值给父"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemaggregate_actual_workloadend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemaggregate_actual_workloaddebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试工时数据"/>
+                        <endEvent id="debugparam2_end" name="end"/>
+                        <sequenceFlow id="debugparam2_end_line" sourceRef="debugparam2" targetRef="debugparam2_end"/>
+                    <sequenceFlow id="gateway-begin_debugparam5" sourceRef="gateway-begin" targetRef="debugparam5">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_itemaggregate_actual_workloaddefault:work_item();
+                                            $work_itemaggregate_actual_workloadactual_workload:Map();
+                                            $work_itemaggregate_actual_workloadcur_child_work_item_filter:work_item();
+                                            $work_itemaggregate_actual_workloadcur_child_work_item_page:work_item();
+                                            $work_itemaggregate_actual_workloadcur_work_item_temp:work_item();
+                                            $work_itemaggregate_actual_workloadestimated_workload:Map();
+                                            $work_itemaggregate_actual_workloadp_work_item:work_item();
+                                            $work_itemaggregate_actual_workloadp_work_item_filter:work_item();
+                                            $work_itemaggregate_actual_workloadp_work_item_page:work_item();
+                                            $work_itemaggregate_actual_workloadworkload_data:work_item();
+                                    eval($work_itemaggregate_actual_workloaddefault==work_itemaggregate_actual_workloaddefault && $work_itemaggregate_actual_workloadcur_child_work_item_filter==work_itemaggregate_actual_workloadcur_child_work_item_filter && $work_itemaggregate_actual_workloadcur_child_work_item_page==work_itemaggregate_actual_workloadcur_child_work_item_page && $work_itemaggregate_actual_workloadcur_work_item_temp==work_itemaggregate_actual_workloadcur_work_item_temp && $work_itemaggregate_actual_workloadp_work_item==work_itemaggregate_actual_workloadp_work_item && $work_itemaggregate_actual_workloadp_work_item_filter==work_itemaggregate_actual_workloadp_work_item_filter && $work_itemaggregate_actual_workloadp_work_item_page==work_itemaggregate_actual_workloadp_work_item_page && $work_itemaggregate_actual_workloadworkload_data==work_itemaggregate_actual_workloadworkload_data);
+                                eval((RuleUtils.test($work_itemaggregate_actual_workloaddefault.get("pid"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam5_prepareparam1" sourceRef="debugparam5" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_dedataset1" sourceRef="prepareparam1" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset1_prepareparam2" sourceRef="gateway-dedataset1" targetRef="prepareparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_itemaggregate_actual_workloaddefault:work_item();
+                                            $work_itemaggregate_actual_workloadactual_workload:Map();
+                                            $work_itemaggregate_actual_workloadcur_child_work_item_filter:work_item();
+                                            $work_itemaggregate_actual_workloadcur_child_work_item_page:work_item();
+                                            $work_itemaggregate_actual_workloadcur_work_item_temp:work_item();
+                                            $work_itemaggregate_actual_workloadestimated_workload:Map();
+                                            $work_itemaggregate_actual_workloadp_work_item:work_item();
+                                            $work_itemaggregate_actual_workloadp_work_item_filter:work_item();
+                                            $work_itemaggregate_actual_workloadp_work_item_page:work_item();
+                                            $work_itemaggregate_actual_workloadworkload_data:work_item();
+                                    eval($work_itemaggregate_actual_workloaddefault==work_itemaggregate_actual_workloaddefault && $work_itemaggregate_actual_workloadcur_child_work_item_filter==work_itemaggregate_actual_workloadcur_child_work_item_filter && $work_itemaggregate_actual_workloadcur_child_work_item_page==work_itemaggregate_actual_workloadcur_child_work_item_page && $work_itemaggregate_actual_workloadcur_work_item_temp==work_itemaggregate_actual_workloadcur_work_item_temp && $work_itemaggregate_actual_workloadp_work_item==work_itemaggregate_actual_workloadp_work_item && $work_itemaggregate_actual_workloadp_work_item_filter==work_itemaggregate_actual_workloadp_work_item_filter && $work_itemaggregate_actual_workloadp_work_item_page==work_itemaggregate_actual_workloadp_work_item_page && $work_itemaggregate_actual_workloadworkload_data==work_itemaggregate_actual_workloadworkload_data);
+                                eval((RuleUtils.test($work_itemaggregate_actual_workloadp_work_item_page.get("size"),"GT","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_prepareparam3" sourceRef="prepareparam2" targetRef="prepareparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_dedataset2" sourceRef="prepareparam3" targetRef="dedataset2">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset2_loopsubcall1" sourceRef="dedataset2" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_debugparam4" sourceRef="loopsubcall1" targetRef="debugparam4">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_prepareparam4" sourceRef="loopsubcall1" targetRef="prepareparam4">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam3_deaction1" sourceRef="debugparam3" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_end1" sourceRef="deaction1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam4_rawsfcode1" sourceRef="debugparam4" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam4_debugparam3" sourceRef="prepareparam4" targetRef="debugparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_debugparam2" sourceRef="rawsfcode1" targetRef="debugparam2">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-begin" name="Gateway" gatewayDirection="Diverging" default="gateway-begin_end_line"></exclusiveGateway>
+                            <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>
+                            <sequenceFlow id="gateway-begin_end_line" sourceRef="gateway-begin" targetRef="gateway-begin_end"/>
+                            <endEvent id="gateway-begin_end" name="end"/>
+                            <exclusiveGateway id="gateway-dedataset1" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="dedataset1_gateway-dedataset1_gatewayline" sourceRef="dedataset1" targetRef="gateway-dedataset1"></sequenceFlow>
+                            <sequenceFlow id="gateway-dedataset1_end_line" sourceRef="gateway-dedataset1" targetRef="gateway-dedataset1_end"/>
+                            <endEvent id="gateway-dedataset1_end" name="end"/>
+        </process>
+    </definitions>

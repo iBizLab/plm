@@ -1,0 +1,177 @@
+package cn.ibizlab.plm.testmgmt.logic.reviewlogic.change_review_stage;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.review reviewchange_review_stagedefault;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_stage reviewchange_review_stagecur_stage;
+                global cn.ibizlab.plm.core.testmgmt.domain.review reviewchange_review_stagereview_info;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_stage reviewchange_review_stagestage_list;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_stage reviewchange_review_stagestage_page;
+                    global cn.ibizlab.plm.core.testmgmt.service.IreviewService reviewservice;
+        global cn.ibizlab.plm.core.testmgmt.service.IreviewService iBzSysReviewDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "reviewchange_review_stagebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "reviewchange_review_stageend1"
+            when
+            then
+                        update(reviewchange_review_stagedefault);//更新fact中变量值
+                        update(reviewchange_review_stagecur_stage);//更新fact中变量值
+                        update(reviewchange_review_stagereview_info);//更新fact中变量值
+                        update(reviewchange_review_stagestage_list);//更新fact中变量值
+                        update(reviewchange_review_stagestage_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[传入参数]
+            rule "debugparam1"
+            ruleflow-group "reviewchange_review_stagedebugparam1"
+            when
+            then
+                        update(reviewchange_review_stagedefault);//更新fact中变量值
+                        update(reviewchange_review_stagecur_stage);//更新fact中变量值
+                        update(reviewchange_review_stagereview_info);//更新fact中变量值
+                        update(reviewchange_review_stagestage_list);//更新fact中变量值
+                        update(reviewchange_review_stagestage_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取评审id]
+            rule "prepareparam1"
+            ruleflow-group "reviewchange_review_stageprepareparam1"
+            when
+            then
+                            reviewchange_review_stagereview_info.set("id",reviewchange_review_stagedefault.get("review_id"));
+                        update(reviewchange_review_stagedefault);//更新fact中变量值
+                        update(reviewchange_review_stagecur_stage);//更新fact中变量值
+                        update(reviewchange_review_stagereview_info);//更新fact中变量值
+                        update(reviewchange_review_stagestage_list);//更新fact中变量值
+                        update(reviewchange_review_stagestage_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取评审]
+            rule "deaction1"
+            ruleflow-group "reviewchange_review_stagedeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(reviewservice.get(reviewchange_review_stagereview_info.getId()),reviewchange_review_stagereview_info);
+                        update(reviewchange_review_stagedefault);//更新fact中变量值
+                        update(reviewchange_review_stagecur_stage);//更新fact中变量值
+                        update(reviewchange_review_stagereview_info);//更新fact中变量值
+                        update(reviewchange_review_stagestage_list);//更新fact中变量值
+                        update(reviewchange_review_stagestage_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置阶段集合参数]
+            rule "prepareparam5"
+            ruleflow-group "reviewchange_review_stageprepareparam5"
+            when
+            then
+                            reviewchange_review_stagestage_page.set("",reviewchange_review_stagereview_info.get("stage"));
+                        update(reviewchange_review_stagedefault);//更新fact中变量值
+                        update(reviewchange_review_stagecur_stage);//更新fact中变量值
+                        update(reviewchange_review_stagereview_info);//更新fact中变量值
+                        update(reviewchange_review_stagestage_list);//更新fact中变量值
+                        update(reviewchange_review_stagestage_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环评审阶段]
+            rule "loopsubcall1"
+            ruleflow-group "reviewchange_review_stageloopsubcall1"
+            when
+            then
+                        update(reviewchange_review_stagedefault);//更新fact中变量值
+                        update(reviewchange_review_stagecur_stage);//更新fact中变量值
+                        update(reviewchange_review_stagereview_info);//更新fact中变量值
+                        update(reviewchange_review_stagestage_list);//更新fact中变量值
+                        update(reviewchange_review_stagestage_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[评审列表返回评审]
+            rule "prepareparam4"
+            ruleflow-group "reviewchange_review_stageprepareparam4"
+            when
+            then
+                            reviewchange_review_stagereview_info.set("stage",reviewchange_review_stagestage_list.get(""));
+                        update(reviewchange_review_stagedefault);//更新fact中变量值
+                        update(reviewchange_review_stagecur_stage);//更新fact中变量值
+                        update(reviewchange_review_stagereview_info);//更新fact中变量值
+                        update(reviewchange_review_stagestage_list);//更新fact中变量值
+                        update(reviewchange_review_stagestage_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新前评审数据]
+            rule "debugparam3"
+            ruleflow-group "reviewchange_review_stagedebugparam3"
+            when
+            then
+                        update(reviewchange_review_stagedefault);//更新fact中变量值
+                        update(reviewchange_review_stagecur_stage);//更新fact中变量值
+                        update(reviewchange_review_stagereview_info);//更新fact中变量值
+                        update(reviewchange_review_stagestage_list);//更新fact中变量值
+                        update(reviewchange_review_stagestage_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[保存评审]
+            rule "deaction2"
+            ruleflow-group "reviewchange_review_stagedeaction2"
+            when
+            then
+                        reviewservice.save(reviewchange_review_stagereview_info);
+                        update(reviewchange_review_stagedefault);//更新fact中变量值
+                        update(reviewchange_review_stagecur_stage);//更新fact中变量值
+                        update(reviewchange_review_stagereview_info);//更新fact中变量值
+                        update(reviewchange_review_stagestage_list);//更新fact中变量值
+                        update(reviewchange_review_stagestage_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置评审人]
+            rule "prepareparam2"
+            ruleflow-group "reviewchange_review_stageprepareparam2"
+            when
+            then
+                            reviewchange_review_stagecur_stage.set("reviewer",reviewchange_review_stagedefault.get("reviewer"));
+                            reviewchange_review_stagecur_stage.set("reviewername",reviewchange_review_stagedefault.get("reviewer_name"));
+                        update(reviewchange_review_stagedefault);//更新fact中变量值
+                        update(reviewchange_review_stagecur_stage);//更新fact中变量值
+                        update(reviewchange_review_stagereview_info);//更新fact中变量值
+                        update(reviewchange_review_stagestage_list);//更新fact中变量值
+                        update(reviewchange_review_stagestage_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[当前循环阶段]
+            rule "debugparam2"
+            ruleflow-group "reviewchange_review_stagedebugparam2"
+            when
+            then
+                        update(reviewchange_review_stagedefault);//更新fact中变量值
+                        update(reviewchange_review_stagecur_stage);//更新fact中变量值
+                        update(reviewchange_review_stagereview_info);//更新fact中变量值
+                        update(reviewchange_review_stagestage_list);//更新fact中变量值
+                        update(reviewchange_review_stagestage_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[附加到评审列表]
+            rule "prepareparam3"
+            ruleflow-group "reviewchange_review_stageprepareparam3"
+            when
+            then
+                            reviewchange_review_stagestage_list.set("",reviewchange_review_stagecur_stage.get(""));
+                        update(reviewchange_review_stagedefault);//更新fact中变量值
+                        update(reviewchange_review_stagecur_stage);//更新fact中变量值
+                        update(reviewchange_review_stagereview_info);//更新fact中变量值
+                        update(reviewchange_review_stagestage_list);//更新fact中变量值
+                        update(reviewchange_review_stagestage_page);//更新fact中变量值
+            end

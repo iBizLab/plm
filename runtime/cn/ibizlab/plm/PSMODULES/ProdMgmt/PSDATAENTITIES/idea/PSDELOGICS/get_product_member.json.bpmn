@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.prodmgmt.service.logic.ideaget_product_member" isClosed="false" isExecutable="true" name="prodmgmt_idea_get_product_member_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.prodmgmt.service.logic.ideaget_product_member">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="ideaget_product_memberdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.product_member()" name="ideaget_product_memberfilter" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="ideaget_product_memberfor_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.product_member()" name="ideaget_product_membermembers" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="ideaget_product_memberuser" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.Iproduct_memberService))" name="product_memberservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IideaService))" name="iBzSysIdeaDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="ideaget_product_memberdefault" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
+                            <tns:global identifier="ideaget_product_memberfilter" type="cn.ibizlab.plm.core.prodmgmt.domain.product_member" />
+                            <tns:global identifier="ideaget_product_membermembers" type="cn.ibizlab.plm.core.prodmgmt.domain.product_member" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaget_product_memberdebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaget_product_memberrawsfcode3" id="rawsfcode3" implementation="http://www.jboss.org/drools/rule" name="判断系统管理员身份"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaget_product_memberend2" id="end2" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end2_end" name="end"/>
+                        <sequenceFlow id="end2_end_line" sourceRef="end2" targetRef="end2_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaget_product_memberprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="获取产品ID并设置过滤参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaget_product_memberdedataset3" id="dedataset3" implementation="http://www.jboss.org/drools/rule" name="查询当前用户是否为产品成员"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaget_product_memberprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="绑定用户数据到for_obj"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaget_product_memberrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="只读权限"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaget_product_memberrawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="非只读权限"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaget_product_memberend6" id="end6" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end6_end" name="end"/>
+                        <sequenceFlow id="end6_end_line" sourceRef="end6" targetRef="end6_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaget_product_memberrawsfcode4" id="rawsfcode4" implementation="http://www.jboss.org/drools/rule" name="只读权限"/>
+                    <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam1_rawsfcode4" sourceRef="gateway-debugparam1" targetRef="rawsfcode4">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ideaget_product_memberdefault:idea();
+                                            $ideaget_product_memberfilter:product_member();
+                                            $ideaget_product_memberfor_obj:Map();
+                                            $ideaget_product_membermembers:product_member();
+                                            $ideaget_product_memberuser:Map();
+                                    eval($ideaget_product_memberdefault==ideaget_product_memberdefault && $ideaget_product_memberfilter==ideaget_product_memberfilter && $ideaget_product_membermembers==ideaget_product_membermembers && );
+                                eval(((RuleUtils.test($ideaget_product_memberdefault.get("isArchived"),"EQ","1"))||(RuleUtils.test($ideaget_product_memberdefault.get("isDeleted"),"EQ","1"))||(RuleUtils.test($ideaget_product_memberdefault.get("productIsArchived"),"EQ","1"))))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam1_rawsfcode3" sourceRef="gateway-debugparam1" targetRef="rawsfcode3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ideaget_product_memberdefault:idea();
+                                            $ideaget_product_memberfilter:product_member();
+                                            $ideaget_product_memberfor_obj:Map();
+                                            $ideaget_product_membermembers:product_member();
+                                            $ideaget_product_memberuser:Map();
+                                    eval($ideaget_product_memberdefault==ideaget_product_memberdefault && $ideaget_product_memberfilter==ideaget_product_memberfilter && $ideaget_product_membermembers==ideaget_product_membermembers && );
+                                eval((RuleUtils.test($ideaget_product_memberdefault.get("isArchived"),"EQ","0"))&&(RuleUtils.test($ideaget_product_memberdefault.get("isDeleted"),"EQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-rawsfcode3_prepareparam2" sourceRef="gateway-rawsfcode3" targetRef="prepareparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ideaget_product_memberdefault:idea();
+                                            $ideaget_product_memberfilter:product_member();
+                                            $ideaget_product_memberfor_obj:Map();
+                                            $ideaget_product_membermembers:product_member();
+                                            $ideaget_product_memberuser:Map();
+                                    eval($ideaget_product_memberdefault==ideaget_product_memberdefault && $ideaget_product_memberfilter==ideaget_product_memberfilter && $ideaget_product_membermembers==ideaget_product_membermembers && );
+                                eval((RuleUtils.test($ideaget_product_memberdefault.get("srfreadonly"),"ISNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-rawsfcode3_end2" sourceRef="gateway-rawsfcode3" targetRef="end2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ideaget_product_memberdefault:idea();
+                                            $ideaget_product_memberfilter:product_member();
+                                            $ideaget_product_memberfor_obj:Map();
+                                            $ideaget_product_membermembers:product_member();
+                                            $ideaget_product_memberuser:Map();
+                                    eval($ideaget_product_memberdefault==ideaget_product_memberdefault && $ideaget_product_memberfilter==ideaget_product_memberfilter && $ideaget_product_membermembers==ideaget_product_membermembers && );
+                                eval((RuleUtils.test($ideaget_product_memberdefault.get("srfreadonly"),"EQ","false")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_dedataset3" sourceRef="prepareparam2" targetRef="dedataset3">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset3_rawsfcode1" sourceRef="gateway-dedataset3" targetRef="rawsfcode1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ideaget_product_memberdefault:idea();
+                                            $ideaget_product_memberfilter:product_member();
+                                            $ideaget_product_memberfor_obj:Map();
+                                            $ideaget_product_membermembers:product_member();
+                                            $ideaget_product_memberuser:Map();
+                                    eval($ideaget_product_memberdefault==ideaget_product_memberdefault && $ideaget_product_memberfilter==ideaget_product_memberfilter && $ideaget_product_membermembers==ideaget_product_membermembers && );
+                                eval((RuleUtils.test($ideaget_product_membermembers.get("size"),"EQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset3_prepareparam5" sourceRef="gateway-dedataset3" targetRef="prepareparam5">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ideaget_product_memberdefault:idea();
+                                            $ideaget_product_memberfilter:product_member();
+                                            $ideaget_product_memberfor_obj:Map();
+                                            $ideaget_product_membermembers:product_member();
+                                            $ideaget_product_memberuser:Map();
+                                    eval($ideaget_product_memberdefault==ideaget_product_memberdefault && $ideaget_product_memberfilter==ideaget_product_memberfilter && $ideaget_product_membermembers==ideaget_product_membermembers && );
+                                eval((RuleUtils.test($ideaget_product_membermembers.get("size"),"EQ","1")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam5_rawsfcode2" sourceRef="gateway-prepareparam5" targetRef="rawsfcode2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ideaget_product_memberdefault:idea();
+                                            $ideaget_product_memberfilter:product_member();
+                                            $ideaget_product_memberfor_obj:Map();
+                                            $ideaget_product_membermembers:product_member();
+                                            $ideaget_product_memberuser:Map();
+                                    eval($ideaget_product_memberdefault==ideaget_product_memberdefault && $ideaget_product_memberfilter==ideaget_product_memberfilter && $ideaget_product_membermembers==ideaget_product_membermembers && );
+                                eval((RuleUtils.test($ideaget_product_memberfor_obj.get("role_id"),"NOTEQ","reader")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam5_rawsfcode1" sourceRef="gateway-prepareparam5" targetRef="rawsfcode1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ideaget_product_memberdefault:idea();
+                                            $ideaget_product_memberfilter:product_member();
+                                            $ideaget_product_memberfor_obj:Map();
+                                            $ideaget_product_membermembers:product_member();
+                                            $ideaget_product_memberuser:Map();
+                                    eval($ideaget_product_memberdefault==ideaget_product_memberdefault && $ideaget_product_memberfilter==ideaget_product_memberfilter && $ideaget_product_membermembers==ideaget_product_membermembers && );
+                                eval((RuleUtils.test($ideaget_product_memberfor_obj.get("role_id"),"EQ","reader")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_end6" sourceRef="rawsfcode1" targetRef="end6">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode2_end6" sourceRef="rawsfcode2" targetRef="end6">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode4_end2" sourceRef="rawsfcode4" targetRef="end2">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-debugparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="debugparam1_gateway-debugparam1_gatewayline" sourceRef="debugparam1" targetRef="gateway-debugparam1"></sequenceFlow>
+                            <sequenceFlow id="gateway-debugparam1_end_line" sourceRef="gateway-debugparam1" targetRef="gateway-debugparam1_end"/>
+                            <endEvent id="gateway-debugparam1_end" name="end"/>
+                            <exclusiveGateway id="gateway-rawsfcode3" name="Gateway" gatewayDirection="Diverging" default="gateway-rawsfcode3_end_line"></exclusiveGateway>
+                            <sequenceFlow id="rawsfcode3_gateway-rawsfcode3_gatewayline" sourceRef="rawsfcode3" targetRef="gateway-rawsfcode3"></sequenceFlow>
+                            <sequenceFlow id="gateway-rawsfcode3_end_line" sourceRef="gateway-rawsfcode3" targetRef="gateway-rawsfcode3_end"/>
+                            <endEvent id="gateway-rawsfcode3_end" name="end"/>
+                            <exclusiveGateway id="gateway-dedataset3" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset3_end_line"></exclusiveGateway>
+                            <sequenceFlow id="dedataset3_gateway-dedataset3_gatewayline" sourceRef="dedataset3" targetRef="gateway-dedataset3"></sequenceFlow>
+                            <sequenceFlow id="gateway-dedataset3_end_line" sourceRef="gateway-dedataset3" targetRef="gateway-dedataset3_end"/>
+                            <endEvent id="gateway-dedataset3_end" name="end"/>
+                            <exclusiveGateway id="gateway-prepareparam5" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam5_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam5_gateway-prepareparam5_gatewayline" sourceRef="prepareparam5" targetRef="gateway-prepareparam5"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam5_end_line" sourceRef="gateway-prepareparam5" targetRef="gateway-prepareparam5_end"/>
+                            <endEvent id="gateway-prepareparam5_end" name="end"/>
+        </process>
+    </definitions>

@@ -1,0 +1,77 @@
+package cn.ibizlab.plm.wiki.logic.article_pagelogic.space_shared_search;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pagespace_shared_searchdefault;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pagespace_shared_searchresult_page;
+                global cn.ibizlab.plm.core.wiki.domain.shared_space article_pagespace_shared_searchshared_space;
+                    global cn.ibizlab.plm.core.wiki.service.Ishared_spaceService shared_spaceservice;
+                    global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService article_pageservice;
+        global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService iBzSysArticle_pageDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "article_pagespace_shared_searchbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[填充共享空间标识]
+            rule "prepareparam1"
+            ruleflow-group "article_pagespace_shared_searchprepareparam1"
+            when
+            then
+                            article_pagespace_shared_searchshared_space.set("id",article_pagespace_shared_searchdefault.get("shared_space"));
+                        update(article_pagespace_shared_searchdefault);//更新fact中变量值
+                        update(article_pagespace_shared_searchresult_page);//更新fact中变量值
+                        update(article_pagespace_shared_searchshared_space);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取共享空间]
+            rule "deaction1"
+            ruleflow-group "article_pagespace_shared_searchdeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(shared_spaceservice.get(article_pagespace_shared_searchshared_space.getId()),article_pagespace_shared_searchshared_space);
+                        update(article_pagespace_shared_searchdefault);//更新fact中变量值
+                        update(article_pagespace_shared_searchresult_page);//更新fact中变量值
+                        update(article_pagespace_shared_searchshared_space);//更新fact中变量值
+            end
+
+            //逻辑处理节点[页面标识需存在共享空间的shared_pages属性中]
+            rule "prepareparam2"
+            ruleflow-group "article_pagespace_shared_searchprepareparam2"
+            when
+            then
+                            article_pagespace_shared_searchdefault.set("n_id_in",article_pagespace_shared_searchshared_space.get("sharedpages"));
+                        update(article_pagespace_shared_searchdefault);//更新fact中变量值
+                        update(article_pagespace_shared_searchresult_page);//更新fact中变量值
+                        update(article_pagespace_shared_searchshared_space);//更新fact中变量值
+            end
+
+            //逻辑处理节点[搜索页面]
+            rule "dedataset1"
+            ruleflow-group "article_pagespace_shared_searchdedataset1"
+            when
+            then
+                        update(article_pagespace_shared_searchdefault);//更新fact中变量值
+                        update(article_pagespace_shared_searchresult_page);//更新fact中变量值
+                        update(article_pagespace_shared_searchshared_space);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "article_pagespace_shared_searchend1"
+            when
+            then
+                        update(article_pagespace_shared_searchdefault);//更新fact中变量值
+                        update(article_pagespace_shared_searchresult_page);//更新fact中变量值
+                        update(article_pagespace_shared_searchshared_space);//更新fact中变量值
+            end

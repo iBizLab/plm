@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.login_logcalc_active_chart_datas" isClosed="false" isExecutable="true" name="base_login_log_calc_active_chart_datas_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.login_logcalc_active_chart_datas">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="login_logcalc_active_chart_datasdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.login_log()" name="login_logcalc_active_chart_datasechart_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.login_log()" name="login_logcalc_active_chart_datasechart_page" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="login_logcalc_active_chart_datasendtime" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="login_logcalc_active_chart_datasstarttime" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.user()" name="login_logcalc_active_chart_datasuser_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.user()" name="login_logcalc_active_chart_datasuser_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.user()" name="login_logcalc_active_chart_datasuser_total" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IuserService))" name="userservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Ilogin_logService))" name="login_logservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Ilogin_logService))" name="iBzSysLogin_logDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="login_logcalc_active_chart_datasdefault" type="cn.ibizlab.plm.core.base.domain.login_log" />
+                            <tns:global identifier="login_logcalc_active_chart_datasechart_obj" type="cn.ibizlab.plm.core.base.domain.login_log" />
+                            <tns:global identifier="login_logcalc_active_chart_datasechart_page" type="cn.ibizlab.plm.core.base.domain.login_log" />
+                            <tns:global identifier="login_logcalc_active_chart_datasuser_filter" type="cn.ibizlab.plm.core.base.domain.user" />
+                            <tns:global identifier="login_logcalc_active_chart_datasuser_page" type="cn.ibizlab.plm.core.base.domain.user" />
+                            <tns:global identifier="login_logcalc_active_chart_datasuser_total" type="cn.ibizlab.plm.core.base.domain.user" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_chart_datasrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="计算前15天和今天的日期"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_chart_datasprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备日期过滤参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_chart_datasdedataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="查询活跃总人数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_chart_datasprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="赋值活跃总人数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_chart_datasdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取图表默认数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_chart_datasloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_chart_datasrawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="计算图表所需数据"/>
+                        <endEvent id="rawsfcode2_end" name="end"/>
+                        <sequenceFlow id="rawsfcode2_end_line" sourceRef="rawsfcode2" targetRef="rawsfcode2_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_chart_datasend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="begin_rawsfcode1" sourceRef="begin" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_prepareparam1" sourceRef="rawsfcode1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_dedataset2" sourceRef="prepareparam1" targetRef="dedataset2">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset2_prepareparam2" sourceRef="dedataset2" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_dedataset1" sourceRef="prepareparam2" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset1_loopsubcall1" sourceRef="dedataset1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_rawsfcode2" sourceRef="loopsubcall1" targetRef="rawsfcode2">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
+                    </sequenceFlow>
+        </process>
+    </definitions>

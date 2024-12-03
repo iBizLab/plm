@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.insight.service.logic.insight_viewrecognize_choose_template" isClosed="false" isExecutable="true" name="insight_insight_view_recognize_choose_template_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.insight.service.logic.insight_viewrecognize_choose_template">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="insight_viewrecognize_choose_templatedefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.dyna_dashboard()" name="insight_viewrecognize_choose_templateboard_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.dyna_dashboard()" name="insight_viewrecognize_choose_templatefilter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.dyna_dashboard()" name="insight_viewrecognize_choose_templatefirst_board" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Idyna_dashboardService))" name="dyna_dashboardservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.insight.service.Iinsight_viewService))" name="iBzSysInsight_viewDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="insight_viewrecognize_choose_templatedefault" type="cn.ibizlab.plm.core.insight.domain.insight_view" />
+                            <tns:global identifier="insight_viewrecognize_choose_templateboard_page" type="cn.ibizlab.plm.core.base.domain.dyna_dashboard" />
+                            <tns:global identifier="insight_viewrecognize_choose_templatefilter" type="cn.ibizlab.plm.core.base.domain.dyna_dashboard" />
+                            <tns:global identifier="insight_viewrecognize_choose_templatefirst_board" type="cn.ibizlab.plm.core.base.domain.dyna_dashboard" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="insight_viewrecognize_choose_templateend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="insight_viewrecognize_choose_templateprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="insight_viewrecognize_choose_templatededataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="insight_viewrecognize_choose_templatedebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="insight_viewrecognize_choose_templateprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="返回无仪表盘"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="insight_viewrecognize_choose_templateprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="insight_viewrecognize_choose_templateend2" id="end2" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end2_end" name="end"/>
+                        <sequenceFlow id="end2_end_line" sourceRef="end2" targetRef="end2_end"/>
+                    <sequenceFlow id="begin_prepareparam1" sourceRef="begin" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_dedataset1" sourceRef="prepareparam1" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset1_debugparam1" sourceRef="dedataset1" targetRef="debugparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam1_prepareparam2" sourceRef="gateway-debugparam1" targetRef="prepareparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $insight_viewrecognize_choose_templatedefault:insight_view();
+                                            $insight_viewrecognize_choose_templateboard_page:dyna_dashboard();
+                                            $insight_viewrecognize_choose_templatefilter:dyna_dashboard();
+                                            $insight_viewrecognize_choose_templatefirst_board:dyna_dashboard();
+                                    eval($insight_viewrecognize_choose_templatedefault==insight_viewrecognize_choose_templatedefault && $insight_viewrecognize_choose_templateboard_page==insight_viewrecognize_choose_templateboard_page && $insight_viewrecognize_choose_templatefilter==insight_viewrecognize_choose_templatefilter && $insight_viewrecognize_choose_templatefirst_board==insight_viewrecognize_choose_templatefirst_board);
+                                eval((RuleUtils.test($insight_viewrecognize_choose_templateboard_page.get("size"),"EQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam1_prepareparam3" sourceRef="gateway-debugparam1" targetRef="prepareparam3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $insight_viewrecognize_choose_templatedefault:insight_view();
+                                            $insight_viewrecognize_choose_templateboard_page:dyna_dashboard();
+                                            $insight_viewrecognize_choose_templatefilter:dyna_dashboard();
+                                            $insight_viewrecognize_choose_templatefirst_board:dyna_dashboard();
+                                    eval($insight_viewrecognize_choose_templatedefault==insight_viewrecognize_choose_templatedefault && $insight_viewrecognize_choose_templateboard_page==insight_viewrecognize_choose_templateboard_page && $insight_viewrecognize_choose_templatefilter==insight_viewrecognize_choose_templatefilter && $insight_viewrecognize_choose_templatefirst_board==insight_viewrecognize_choose_templatefirst_board);
+                                eval((RuleUtils.test($insight_viewrecognize_choose_templateboard_page.get("size"),"NOTEQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_end1" sourceRef="prepareparam2" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_end2" sourceRef="prepareparam3" targetRef="end2">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-debugparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="debugparam1_gateway-debugparam1_gatewayline" sourceRef="debugparam1" targetRef="gateway-debugparam1"></sequenceFlow>
+                            <sequenceFlow id="gateway-debugparam1_end_line" sourceRef="gateway-debugparam1" targetRef="gateway-debugparam1_end"/>
+                            <endEvent id="gateway-debugparam1_end" name="end"/>
+        </process>
+    </definitions>

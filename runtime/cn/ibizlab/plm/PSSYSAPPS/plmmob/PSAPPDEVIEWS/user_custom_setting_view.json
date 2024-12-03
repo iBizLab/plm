@@ -1,0 +1,432 @@
+{
+  "accUserMode" : 2,
+  "getCapPSLanguageRes" : {
+    "lanResTag" : "DE.LNAME.USER"
+  },
+  "caption" : "企业用户",
+  "codeName" : "user_custom_setting_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/user_custom_setting_view.json",
+  "height" : 100,
+  "name" : "usercustom_setting_view",
+  "openMode" : "DRAWER_LEFT",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/user.json"
+  },
+  "getPSAppModule" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPMODULES/Base.json"
+  },
+  "getPSDEViewCodeName" : "custom_setting_view",
+  "getPSDEViewId" : "6D6742A8-2981-4564-A708-6A5EA7C9153A",
+  "getPSViewLayoutPanel" : {
+    "getAllPSPanelFields" : [ {
+      "id" : "user_name",
+      "viewFieldName" : "srfuserid"
+    }, {
+      "id" : "field_text_dynamic",
+      "viewFieldName" : "srfusername"
+    }, {
+      "id" : "field_text_dynamic1",
+      "viewFieldName" : "loginname"
+    } ],
+    "codeName" : "usr1016277310",
+    "controlType" : "VIEWLAYOUTPANEL",
+    "hookEventNames" : [ "ONCLICK" ],
+    "layoutMode" : "FLEX",
+    "logicName" : "用户设置页布局面板",
+    "name" : "layoutpanel",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/user.json"
+    },
+    "getPSControlLogics" : [ {
+      "eventNames" : "onClick",
+      "itemName" : "CONTAINER1",
+      "logicTag" : "layoutpanel",
+      "logicType" : "APPDEUIACTION",
+      "name" : "logic",
+      "getPSAppDEUIAction" : {
+        "actionTarget" : "NONE",
+        "caption" : "打开用户基本信息",
+        "codeName" : "open_user_info",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/user_mob_user_info_view.json",
+          "viewType" : "DEMOBEDITVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "user_open_user_info",
+        "name" : "打开用户基本信息",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/user.json"
+        },
+        "timeout" : 60000,
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "open_user_info",
+        "uIActionType" : "DEUIACTION",
+        "id" : "open_user_info@user"
+      }
+    }, {
+      "eventNames" : "onClick",
+      "itemName" : "CONTAINER2",
+      "logicTag" : "layoutpanel",
+      "logicType" : "APPDEUIACTION",
+      "name" : "logic2",
+      "getPSAppDEUIAction" : {
+        "actionTarget" : "SINGLEDATA",
+        "caption" : "打开密码修改页",
+        "codeName" : "open_change_password",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/user_change_password_view.json",
+          "viewType" : "DEMOBEDITVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "user_open_change_password",
+        "name" : "打开密码修改页",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/user.json"
+        },
+        "timeout" : 60000,
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "open_change_password",
+        "uIActionType" : "DEUIACTION",
+        "id" : "open_change_password@user"
+      }
+    } ],
+    "getPSControlParam" : { },
+    "getPSLayout" : {
+      "layout" : "FLEX"
+    },
+    "getPSSysCss" : {
+      "cssName" : "user_setting_view_style"
+    },
+    "getRootPSPanelItems" : [ {
+      "itemStyle" : "DEFAULT",
+      "itemType" : "CONTAINER",
+      "name" : "page_container",
+      "getPSLayout" : {
+        "dir" : "column",
+        "layout" : "FLEX"
+      },
+      "getPSLayoutPos" : {
+        "grow" : -1,
+        "layout" : "FLEX"
+      },
+      "getPSPanelItems" : [ {
+        "caption" : "单项数据容器",
+        "dataName" : "context",
+        "dataRegionType" : "SINGLEDATA",
+        "dataSourceType" : "APPGLOBALPARAM",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "container_singledata",
+        "getPSLayout" : {
+          "layout" : "FLEX"
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "layout" : "FLEX"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "文本(动态)",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "FIELD",
+          "name" : "user_name",
+          "getPSEditor" : {
+            "editorParams" : {
+              "SHOWNAMETEXT" : "false"
+            },
+            "editorStyle" : "MOB_PERSONNEL_INFO",
+            "editorType" : "SPAN",
+            "name" : "user_name",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
+            },
+            "getPSSysPFPlugin" : {
+              "pluginType" : "EDITOR_CUSTOMSTYLE",
+              "pluginCode" : "MOB_PERSONNEL_INFO",
+              "runtimeObject" : true
+            },
+            "predefinedType" : "FIELD_TEXT_DYNAMIC",
+            "renderMode" : "TEXT_DYNAMIC",
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "viewFieldName" : "srfuserid",
+          "convertToCodeItemText" : true
+        }, {
+          "caption" : "容器",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "container",
+          "getPSLayout" : {
+            "align" : "space-between",
+            "dir" : "row",
+            "layout" : "FLEX",
+            "vAlign" : "center"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "getPSPanelItems" : [ {
+            "caption" : "文本(动态)",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "FIELD",
+            "name" : "field_text_dynamic",
+            "getPSEditor" : {
+              "editorType" : "SPAN",
+              "name" : "field_text_dynamic",
+              "predefinedType" : "FIELD_TEXT_DYNAMIC",
+              "renderMode" : "TEXT_DYNAMIC",
+              "enableLinkView" : false
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "viewFieldName" : "srfusername"
+          } ]
+        }, {
+          "caption" : "文本(动态)",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "FIELD",
+          "name" : "field_text_dynamic1",
+          "getPSEditor" : {
+            "editorType" : "SPAN",
+            "name" : "field_text_dynamic1",
+            "predefinedType" : "FIELD_TEXT_DYNAMIC",
+            "renderMode" : "TEXT_DYNAMIC",
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "viewFieldName" : "loginname"
+        } ],
+        "predefinedType" : "CONTAINER_SINGLEDATA"
+      }, {
+        "caption" : "用户设置",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "container_group",
+        "getPSLayout" : {
+          "align" : "center",
+          "layout" : "FLEX"
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "layout" : "FLEX",
+          "spacingBottom" : "OUTERMEDIUM"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "容器",
+          "contentHeight" : 20.0,
+          "height" : 20.0,
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "container1",
+          "getPSLayout" : {
+            "align" : "space-between",
+            "dir" : "row",
+            "layout" : "FLEX",
+            "vAlign" : "center"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "height" : 20,
+            "heightMode" : "PX",
+            "layout" : "FLEX"
+          },
+          "getPSPanelItems" : [ {
+            "caption" : "文本",
+            "contentType" : "RAW",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "RAWITEM",
+            "name" : "static_text2",
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "getPSRawItem" : {
+              "caption" : "账号信息",
+              "contentType" : "RAW",
+              "name" : "static_text2",
+              "predefinedType" : "STATIC_TEXT",
+              "renderMode" : "TEXT"
+            },
+            "rawContent" : "账号信息",
+            "showCaption" : true
+          }, {
+            "caption" : "图片",
+            "contentType" : "IMAGE",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "RAWITEM",
+            "name" : "static_image",
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "getPSRawItem" : {
+              "contentType" : "IMAGE",
+              "name" : "static_image",
+              "getPSSysImage" : {
+                "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1729494619952\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"4275\" width=\"20\" height=\"20\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><path d=\"M609.28 512l-271.36 271.36 35.84 35.84 312.32-302.08L373.76 204.8l-35.84 35.84L609.28 512z\" fill=\"#8a8a8a\" p-id=\"4276\"></path></svg>"
+              },
+              "predefinedType" : "STATIC_IMAGE"
+            },
+            "getPSSysImage" : {
+              "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1729494619952\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"4275\" width=\"20\" height=\"20\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><path d=\"M609.28 512l-271.36 271.36 35.84 35.84 312.32-302.08L373.76 204.8l-35.84 35.84L609.28 512z\" fill=\"#8a8a8a\" p-id=\"4276\"></path></svg>"
+            },
+            "showCaption" : true
+          } ]
+        }, {
+          "caption" : "分割线",
+          "contentType" : "DIVIDER",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "RAWITEM",
+          "name" : "divider",
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "getPSRawItem" : {
+            "contentType" : "DIVIDER",
+            "name" : "divider",
+            "predefinedType" : "DIVIDER"
+          },
+          "showCaption" : true
+        }, {
+          "caption" : "容器",
+          "contentHeight" : 20.0,
+          "height" : 20.0,
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "container2",
+          "getPSLayout" : {
+            "align" : "space-between",
+            "dir" : "row",
+            "layout" : "FLEX",
+            "vAlign" : "center"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "height" : 20,
+            "heightMode" : "PX",
+            "layout" : "FLEX"
+          },
+          "getPSPanelItems" : [ {
+            "caption" : "文本",
+            "contentType" : "RAW",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "RAWITEM",
+            "name" : "static_text3",
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "getPSRawItem" : {
+              "caption" : "修改密码",
+              "contentType" : "RAW",
+              "name" : "static_text3",
+              "predefinedType" : "STATIC_TEXT",
+              "renderMode" : "TEXT"
+            },
+            "rawContent" : "修改密码",
+            "showCaption" : true
+          }, {
+            "caption" : "图片",
+            "contentType" : "IMAGE",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "RAWITEM",
+            "name" : "static_image1",
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "getPSRawItem" : {
+              "contentType" : "IMAGE",
+              "name" : "static_image1",
+              "getPSSysImage" : {
+                "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1729494619952\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"4275\" width=\"20\" height=\"20\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><path d=\"M609.28 512l-271.36 271.36 35.84 35.84 312.32-302.08L373.76 204.8l-35.84 35.84L609.28 512z\" fill=\"#8a8a8a\" p-id=\"4276\"></path></svg>"
+              },
+              "predefinedType" : "STATIC_IMAGE"
+            },
+            "getPSSysImage" : {
+              "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1729494619952\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"4275\" width=\"20\" height=\"20\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><path d=\"M609.28 512l-271.36 271.36 35.84 35.84 312.32-302.08L373.76 204.8l-35.84 35.84L609.28 512z\" fill=\"#8a8a8a\" p-id=\"4276\"></path></svg>"
+            },
+            "showCaption" : true
+          } ]
+        } ],
+        "predefinedType" : "CONTAINER_GROUP",
+        "showCaption" : true
+      }, {
+        "actionType" : "UIACTION",
+        "buttonStyle" : "PRIMARY",
+        "caption" : "退出登录",
+        "itemStyle" : "PRIMARY",
+        "itemType" : "BUTTON",
+        "name" : "button_calluilogic",
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "layoutpanel_button_calluilogic"
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "layout" : "FLEX"
+        },
+        "getPSUIAction" : {
+          "caption" : "登出",
+          "codeName" : "Logout",
+          "fullCodeName" : "Logout",
+          "name" : "应用登出",
+          "predefinedType" : "APP_LOGOUT",
+          "timeout" : 60000,
+          "uIActionMode" : "SYS",
+          "uIActionTag" : "Logout",
+          "uIActionType" : "DEUIACTION"
+        },
+        "tooltip" : "退出登录",
+        "showCaption" : true
+      } ]
+    } ],
+    "layoutBodyOnly" : false,
+    "layoutPanel" : true,
+    "useDefaultLayout" : false,
+    "viewProxyMode" : true,
+    "modelid" : "07299AC9-E480-467D-8F97-F2B67D52A9DB",
+    "modeltype" : "PSSYSVIEWLAYOUTPANEL",
+    "getPSControls" : [ {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "DE.LNAME.USER"
+      },
+      "caption" : "企业用户",
+      "codeName" : "custom_setting_view_captionbar",
+      "controlType" : "CAPTIONBAR",
+      "name" : "captionbar",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/user.json"
+      },
+      "getPSControlParam" : { }
+    } ]
+  },
+  "refFlag" : false,
+  "title" : "用户设置页",
+  "viewStyle" : "DEFAULT",
+  "viewType" : "DEMOBCUSTOMVIEW",
+  "width" : 80,
+  "enableDP" : true,
+  "enablePullDownRefresh" : false,
+  "modelid" : "0790d6d82329504bc6c963f6caee7afc",
+  "modeltype" : "PSAPPDEVIEW"
+}

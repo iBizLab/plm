@@ -1,0 +1,95 @@
+package cn.ibizlab.plm.prodmgmt.logic.idealogic.idea_re_plan;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea ideaidea_re_plandefault;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea ideaidea_re_planfor_temp_obj;
+                global cn.ibizlab.plm.core.base.domain.relation ideaidea_re_planrelationobj;
+                global cn.ibizlab.plm.core.base.domain.relation ideaidea_re_planrelationobj2;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea ideaidea_re_plansrfactionparam;
+                    global cn.ibizlab.plm.core.base.service.IrelationService relationservice;
+        global cn.ibizlab.plm.core.prodmgmt.service.IideaService iBzSysIdeaDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ideaidea_re_planbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定需求参数列表]
+            rule "bindparam1"
+            ruleflow-group "ideaidea_re_planbindparam1"
+            when
+            then
+                        update(ideaidea_re_plandefault);//更新fact中变量值
+                        update(ideaidea_re_planfor_temp_obj);//更新fact中变量值
+                        update(ideaidea_re_planrelationobj);//更新fact中变量值
+                        update(ideaidea_re_planrelationobj2);//更新fact中变量值
+                        update(ideaidea_re_plansrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充需要的属性]
+            rule "prepareparam1"
+            ruleflow-group "ideaidea_re_planprepareparam1"
+            when
+            then
+                            ideaidea_re_planrelationobj.set("principalid",ideaidea_re_plandefault.get("id"));
+                            ideaidea_re_planrelationobj.set("principaltype","idea");
+                            ideaidea_re_planrelationobj.set("targetid",ideaidea_re_planfor_temp_obj.get("target_plan_id"));
+                            ideaidea_re_planrelationobj.set("targettype","product_plan");
+                            ideaidea_re_planrelationobj2.set("principalid",ideaidea_re_planfor_temp_obj.get("target_plan_id"));
+                            ideaidea_re_planrelationobj2.set("principaltype","product_plan");
+                            ideaidea_re_planrelationobj2.set("targetid",ideaidea_re_plandefault.get("id"));
+                            ideaidea_re_planrelationobj2.set("targettype","idea");
+                        update(ideaidea_re_plandefault);//更新fact中变量值
+                        update(ideaidea_re_planfor_temp_obj);//更新fact中变量值
+                        update(ideaidea_re_planrelationobj);//更新fact中变量值
+                        update(ideaidea_re_planrelationobj2);//更新fact中变量值
+                        update(ideaidea_re_plansrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成正向关联数据]
+            rule "deaction1"
+            ruleflow-group "ideaidea_re_plandeaction1"
+            when
+            then
+                        relationservice.save(ideaidea_re_planrelationobj);
+                        update(ideaidea_re_plandefault);//更新fact中变量值
+                        update(ideaidea_re_planfor_temp_obj);//更新fact中变量值
+                        update(ideaidea_re_planrelationobj);//更新fact中变量值
+                        update(ideaidea_re_planrelationobj2);//更新fact中变量值
+                        update(ideaidea_re_plansrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成反向关联数据]
+            rule "deaction2"
+            ruleflow-group "ideaidea_re_plandeaction2"
+            when
+            then
+                        relationservice.save(ideaidea_re_planrelationobj2);
+                        update(ideaidea_re_plandefault);//更新fact中变量值
+                        update(ideaidea_re_planfor_temp_obj);//更新fact中变量值
+                        update(ideaidea_re_planrelationobj);//更新fact中变量值
+                        update(ideaidea_re_planrelationobj2);//更新fact中变量值
+                        update(ideaidea_re_plansrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "ideaidea_re_planloopsubcall1"
+            when
+            then
+                        update(ideaidea_re_plandefault);//更新fact中变量值
+                        update(ideaidea_re_planfor_temp_obj);//更新fact中变量值
+                        update(ideaidea_re_planrelationobj);//更新fact中变量值
+                        update(ideaidea_re_planrelationobj2);//更新fact中变量值
+                        update(ideaidea_re_plansrfactionparam);//更新fact中变量值
+            end

@@ -1,0 +1,287 @@
+package cn.ibizlab.plm.testmgmt.logic.reviewlogic.tododata;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.review reviewtododatadefault;
+                global cn.ibizlab.plm.core.ebsx.domain.SysTodo reviewtododataall_sq_data_page;
+                global java.util.Map reviewtododatacheck_key_ret;
+                global cn.ibizlab.plm.core.testmgmt.domain.review reviewtododatasq_data;
+                global cn.ibizlab.plm.core.testmgmt.domain.review reviewtododatasq_data_page;
+                global cn.ibizlab.plm.core.ebsx.domain.SysTodo reviewtododatasq_todo_data;
+                global cn.ibizlab.plm.core.testmgmt.domain.review reviewtododatatemp_sq_obj;
+                global java.util.Map reviewtododatatemp_todo_filter;
+                global cn.ibizlab.plm.core.ebsx.domain.SysTodo reviewtododatatemp_todo_obj;
+                    global cn.ibizlab.plm.core.ebsx.service.ISysTodoService systodoservice;
+                    global cn.ibizlab.plm.core.testmgmt.service.IreviewService reviewservice;
+        global cn.ibizlab.plm.core.testmgmt.service.IreviewService iBzSysReviewDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "reviewtododatabegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设置过滤器参数]
+            rule "prepareparam5"
+            ruleflow-group "reviewtododataprepareparam5"
+            when
+            then
+                                reviewtododatadefault.set("searchconds",null);
+                            reviewtododatadefault.set("n_biztype_eq","review");
+                        update(reviewtododatadefault);//更新fact中变量值
+                        update(reviewtododataall_sq_data_page);//更新fact中变量值
+                        update(reviewtododatacheck_key_ret);//更新fact中变量值
+                        update(reviewtododatasq_data);//更新fact中变量值
+                        update(reviewtododatasq_data_page);//更新fact中变量值
+                        update(reviewtododatasq_todo_data);//更新fact中变量值
+                        update(reviewtododatatemp_sq_obj);//更新fact中变量值
+                        update(reviewtododatatemp_todo_filter);//更新fact中变量值
+                        update(reviewtododatatemp_todo_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询待办数据]
+            rule "dedataset1"
+            ruleflow-group "reviewtododatadedataset1"
+            when
+            then
+                        update(reviewtododatadefault);//更新fact中变量值
+                        update(reviewtododataall_sq_data_page);//更新fact中变量值
+                        update(reviewtododatacheck_key_ret);//更新fact中变量值
+                        update(reviewtododatasq_data);//更新fact中变量值
+                        update(reviewtododatasq_data_page);//更新fact中变量值
+                        update(reviewtododatasq_todo_data);//更新fact中变量值
+                        update(reviewtododatatemp_sq_obj);//更新fact中变量值
+                        update(reviewtododatatemp_todo_filter);//更新fact中变量值
+                        update(reviewtododatatemp_todo_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "reviewtododataloopsubcall1"
+            when
+            then
+                        update(reviewtododatadefault);//更新fact中变量值
+                        update(reviewtododataall_sq_data_page);//更新fact中变量值
+                        update(reviewtododatacheck_key_ret);//更新fact中变量值
+                        update(reviewtododatasq_data);//更新fact中变量值
+                        update(reviewtododatasq_data_page);//更新fact中变量值
+                        update(reviewtododatasq_todo_data);//更新fact中变量值
+                        update(reviewtododatatemp_sq_obj);//更新fact中变量值
+                        update(reviewtododatatemp_todo_filter);//更新fact中变量值
+                        update(reviewtododatatemp_todo_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新建立临时待办对象]
+            rule "renewparam1"
+            ruleflow-group "reviewtododatarenewparam1"
+            when
+            then
+                        update(reviewtododatadefault);//更新fact中变量值
+                        update(reviewtododataall_sq_data_page);//更新fact中变量值
+                        update(reviewtododatacheck_key_ret);//更新fact中变量值
+                        update(reviewtododatasq_data);//更新fact中变量值
+                        update(reviewtododatasq_data_page);//更新fact中变量值
+                        update(reviewtododatasq_todo_data);//更新fact中变量值
+                        update(reviewtododatatemp_sq_obj);//更新fact中变量值
+                        update(reviewtododatatemp_todo_filter);//更新fact中变量值
+                        update(reviewtododatatemp_todo_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置分页查询结果]
+            rule "bindparam1"
+            ruleflow-group "reviewtododatabindparam1"
+            when
+            then
+                        update(reviewtododatadefault);//更新fact中变量值
+                        update(reviewtododataall_sq_data_page);//更新fact中变量值
+                        update(reviewtododatacheck_key_ret);//更新fact中变量值
+                        update(reviewtododatasq_data);//更新fact中变量值
+                        update(reviewtododatasq_data_page);//更新fact中变量值
+                        update(reviewtododatasq_todo_data);//更新fact中变量值
+                        update(reviewtododatatemp_sq_obj);//更新fact中变量值
+                        update(reviewtododatatemp_todo_filter);//更新fact中变量值
+                        update(reviewtododatatemp_todo_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备查询参数]
+            rule "prepareparam1"
+            ruleflow-group "reviewtododataprepareparam1"
+            when
+            then
+                            reviewtododatatemp_sq_obj.set("id",reviewtododatatemp_todo_obj.get("bizkey"));
+                        update(reviewtododatadefault);//更新fact中变量值
+                        update(reviewtododataall_sq_data_page);//更新fact中变量值
+                        update(reviewtododatacheck_key_ret);//更新fact中变量值
+                        update(reviewtododatasq_data);//更新fact中变量值
+                        update(reviewtododatasq_data_page);//更新fact中变量值
+                        update(reviewtododatasq_todo_data);//更新fact中变量值
+                        update(reviewtododatatemp_sq_obj);//更新fact中变量值
+                        update(reviewtododatatemp_todo_filter);//更新fact中变量值
+                        update(reviewtododatatemp_todo_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "reviewtododataend1"
+            when
+            then
+                        update(reviewtododatadefault);//更新fact中变量值
+                        update(reviewtododataall_sq_data_page);//更新fact中变量值
+                        update(reviewtododatacheck_key_ret);//更新fact中变量值
+                        update(reviewtododatasq_data);//更新fact中变量值
+                        update(reviewtododatasq_data_page);//更新fact中变量值
+                        update(reviewtododatasq_todo_data);//更新fact中变量值
+                        update(reviewtododatatemp_sq_obj);//更新fact中变量值
+                        update(reviewtododatatemp_todo_filter);//更新fact中变量值
+                        update(reviewtododatatemp_todo_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[拷贝查询参数]
+            rule "prepareparam4"
+            ruleflow-group "reviewtododataprepareparam4"
+            when
+            then
+                            reviewtododatatemp_todo_filter.set("",reviewtododatadefault.get(""));
+                            reviewtododatatemp_todo_filter.set("page","0");
+                            reviewtododatatemp_todo_filter.set("size","100000000");
+                        update(reviewtododatadefault);//更新fact中变量值
+                        update(reviewtododataall_sq_data_page);//更新fact中变量值
+                        update(reviewtododatacheck_key_ret);//更新fact中变量值
+                        update(reviewtododatasq_data);//更新fact中变量值
+                        update(reviewtododatasq_data_page);//更新fact中变量值
+                        update(reviewtododatasq_todo_data);//更新fact中变量值
+                        update(reviewtododatatemp_sq_obj);//更新fact中变量值
+                        update(reviewtododatatemp_todo_filter);//更新fact中变量值
+                        update(reviewtododatatemp_todo_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[判断业务数据是否存在]
+            rule "deaction2"
+            ruleflow-group "reviewtododatadeaction2"
+            when
+            then
+                        reviewservice.checkKey(reviewtododatatemp_sq_obj);
+                        update(reviewtododatadefault);//更新fact中变量值
+                        update(reviewtododataall_sq_data_page);//更新fact中变量值
+                        update(reviewtododatacheck_key_ret);//更新fact中变量值
+                        update(reviewtododatasq_data);//更新fact中变量值
+                        update(reviewtododatasq_data_page);//更新fact中变量值
+                        update(reviewtododatasq_todo_data);//更新fact中变量值
+                        update(reviewtododatatemp_sq_obj);//更新fact中变量值
+                        update(reviewtododatatemp_todo_filter);//更新fact中变量值
+                        update(reviewtododatatemp_todo_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询全部待办数据]
+            rule "dedataset2"
+            ruleflow-group "reviewtododatadedataset2"
+            when
+            then
+                        update(reviewtododatadefault);//更新fact中变量值
+                        update(reviewtododataall_sq_data_page);//更新fact中变量值
+                        update(reviewtododatacheck_key_ret);//更新fact中变量值
+                        update(reviewtododatasq_data);//更新fact中变量值
+                        update(reviewtododatasq_data_page);//更新fact中变量值
+                        update(reviewtododatasq_todo_data);//更新fact中变量值
+                        update(reviewtododatatemp_sq_obj);//更新fact中变量值
+                        update(reviewtododatatemp_todo_filter);//更新fact中变量值
+                        update(reviewtododatatemp_todo_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询申请对象]
+            rule "deaction1"
+            ruleflow-group "reviewtododatadeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(reviewservice.get(reviewtododatatemp_sq_obj.getId()),reviewtododatatemp_sq_obj);
+                        update(reviewtododatadefault);//更新fact中变量值
+                        update(reviewtododataall_sq_data_page);//更新fact中变量值
+                        update(reviewtododatacheck_key_ret);//更新fact中变量值
+                        update(reviewtododatasq_data);//更新fact中变量值
+                        update(reviewtododatasq_data_page);//更新fact中变量值
+                        update(reviewtododatasq_todo_data);//更新fact中变量值
+                        update(reviewtododatatemp_sq_obj);//更新fact中变量值
+                        update(reviewtododatatemp_todo_filter);//更新fact中变量值
+                        update(reviewtododatatemp_todo_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end2"
+            ruleflow-group "reviewtododataend2"
+            when
+            then
+                        update(reviewtododatadefault);//更新fact中变量值
+                        update(reviewtododataall_sq_data_page);//更新fact中变量值
+                        update(reviewtododatacheck_key_ret);//更新fact中变量值
+                        update(reviewtododatasq_data);//更新fact中变量值
+                        update(reviewtododatasq_data_page);//更新fact中变量值
+                        update(reviewtododatasq_todo_data);//更新fact中变量值
+                        update(reviewtododatatemp_sq_obj);//更新fact中变量值
+                        update(reviewtododatatemp_todo_filter);//更新fact中变量值
+                        update(reviewtododatatemp_todo_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置分页参数]
+            rule "prepareparam3"
+            ruleflow-group "reviewtododataprepareparam3"
+            when
+            then
+                            reviewtododatasq_data_page.set("total",reviewtododataall_sq_data_page.get("total"));
+                        update(reviewtododatadefault);//更新fact中变量值
+                        update(reviewtododataall_sq_data_page);//更新fact中变量值
+                        update(reviewtododatacheck_key_ret);//更新fact中变量值
+                        update(reviewtododatasq_data);//更新fact中变量值
+                        update(reviewtododatasq_data_page);//更新fact中变量值
+                        update(reviewtododatasq_todo_data);//更新fact中变量值
+                        update(reviewtododatatemp_sq_obj);//更新fact中变量值
+                        update(reviewtododatatemp_todo_filter);//更新fact中变量值
+                        update(reviewtododatatemp_todo_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置申请对象参数]
+            rule "prepareparam2"
+            ruleflow-group "reviewtododataprepareparam2"
+            when
+            then
+                            reviewtododatatemp_sq_obj.set("param01",reviewtododatatemp_todo_obj.get("param01"));
+                            reviewtododatatemp_sq_obj.set("param02",reviewtododatatemp_todo_obj.get("param02"));
+                            reviewtododatatemp_sq_obj.set("param03",reviewtododatatemp_todo_obj.get("param03"));
+                            reviewtododatatemp_sq_obj.set("param04",reviewtododatatemp_todo_obj.get("param04"));
+                            reviewtododatatemp_sq_obj.set("param05",reviewtododatatemp_todo_obj.get("param05"));
+                            reviewtododatatemp_sq_obj.set("bizkey",reviewtododatatemp_todo_obj.get("bizkey"));
+                            reviewtododatatemp_sq_obj.set("biztype",reviewtododatatemp_todo_obj.get("biztype"));
+                            reviewtododatatemp_sq_obj.set("todoid",reviewtododatatemp_todo_obj.get("todoid"));
+                        update(reviewtododatadefault);//更新fact中变量值
+                        update(reviewtododataall_sq_data_page);//更新fact中变量值
+                        update(reviewtododatacheck_key_ret);//更新fact中变量值
+                        update(reviewtododatasq_data);//更新fact中变量值
+                        update(reviewtododatasq_data_page);//更新fact中变量值
+                        update(reviewtododatasq_todo_data);//更新fact中变量值
+                        update(reviewtododatatemp_sq_obj);//更新fact中变量值
+                        update(reviewtododatatemp_todo_filter);//更新fact中变量值
+                        update(reviewtododatatemp_todo_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[附加到数组参数]
+            rule "appendparam1"
+            ruleflow-group "reviewtododataappendparam1"
+            when
+            then
+                        update(reviewtododatadefault);//更新fact中变量值
+                        update(reviewtododataall_sq_data_page);//更新fact中变量值
+                        update(reviewtododatacheck_key_ret);//更新fact中变量值
+                        update(reviewtododatasq_data);//更新fact中变量值
+                        update(reviewtododatasq_data_page);//更新fact中变量值
+                        update(reviewtododatasq_todo_data);//更新fact中变量值
+                        update(reviewtododatatemp_sq_obj);//更新fact中变量值
+                        update(reviewtododatatemp_todo_filter);//更新fact中变量值
+                        update(reviewtododatatemp_todo_obj);//更新fact中变量值
+            end

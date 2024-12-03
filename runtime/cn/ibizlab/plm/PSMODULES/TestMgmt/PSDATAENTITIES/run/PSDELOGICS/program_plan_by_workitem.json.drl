@@ -1,0 +1,227 @@
+package cn.ibizlab.plm.testmgmt.logic.runlogic.program_plan_by_workitem;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.run runprogram_plan_by_workitemdefault;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case runprogram_plan_by_workitemtest_case_info;
+                global cn.ibizlab.plm.core.testmgmt.domain.run runprogram_plan_by_workitemfor_temp_obj;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item runprogram_plan_by_workitemitems;
+                global cn.ibizlab.plm.core.base.domain.relation runprogram_plan_by_workitemrelationobj;
+                global cn.ibizlab.plm.core.base.domain.relation runprogram_plan_by_workitemrelationobj2;
+                global cn.ibizlab.plm.core.testmgmt.domain.run runprogram_plan_by_workitemrelations;
+                global cn.ibizlab.plm.core.testmgmt.domain.run runprogram_plan_by_workitemselect_create_data;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item runprogram_plan_by_workitemwork_item;
+                    global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService test_caseservice;
+                    global cn.ibizlab.plm.core.testmgmt.service.IrunService runservice;
+        global cn.ibizlab.plm.core.testmgmt.service.IrunService iBzSysRunDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "runprogram_plan_by_workitembegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定关联列表参数]
+            rule "bindparam1"
+            ruleflow-group "runprogram_plan_by_workitembindparam1"
+            when
+            then
+                        update(runprogram_plan_by_workitemdefault);//更新fact中变量值
+                        update(runprogram_plan_by_workitemtest_case_info);//更新fact中变量值
+                        update(runprogram_plan_by_workitemfor_temp_obj);//更新fact中变量值
+                        update(runprogram_plan_by_workitemitems);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelationobj);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelationobj2);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelations);//更新fact中变量值
+                        update(runprogram_plan_by_workitemselect_create_data);//更新fact中变量值
+                        update(runprogram_plan_by_workitemwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall2"
+            ruleflow-group "runprogram_plan_by_workitemloopsubcall2"
+            when
+            then
+                        update(runprogram_plan_by_workitemdefault);//更新fact中变量值
+                        update(runprogram_plan_by_workitemtest_case_info);//更新fact中变量值
+                        update(runprogram_plan_by_workitemfor_temp_obj);//更新fact中变量值
+                        update(runprogram_plan_by_workitemitems);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelationobj);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelationobj2);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelations);//更新fact中变量值
+                        update(runprogram_plan_by_workitemselect_create_data);//更新fact中变量值
+                        update(runprogram_plan_by_workitemwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[直接sql调用]
+            rule "rawsqlcall1"
+            ruleflow-group "runprogram_plan_by_workitemrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",runprogram_plan_by_workitemwork_item.get("id"));
+        param.put("param1",runprogram_plan_by_workitemdefault.get("library"));
+        param.put("param2",runprogram_plan_by_workitemdefault.get("principal_id"));
+    String strSql=" SELECT t11.* FROM `RELATION` t1  LEFT JOIN `TEST_CASE` t11 ON t1.`TARGET_ID` = t11.`ID`  LEFT JOIN  `LIBRARY` t12 ON t11.TEST_LIBRARY_ID = t12.ID  WHERE  ( t11.`IS_DELETED` = 0 )  AND ( t1.`PRINCIPAL_TYPE` = 'work_item'  AND  t1.`PRINCIPAL_ID` = #{et.param0}  AND  t1.`TARGET_TYPE` = 'test_case' )  AND t12.ID = #{et.param1} AND  not exists(select 1 from run t2  where  t11.ID= t2.CASE_ID  AND t2.PLAN_ID = #{et.param2}  AND  t11.`IS_DELETED` = 0 )";
+                        java.util.List<JSONObject> entities=iBzSysRunDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    runprogram_plan_by_workitemrelations.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(runprogram_plan_by_workitemdefault);//更新fact中变量值
+                        update(runprogram_plan_by_workitemtest_case_info);//更新fact中变量值
+                        update(runprogram_plan_by_workitemfor_temp_obj);//更新fact中变量值
+                        update(runprogram_plan_by_workitemitems);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelationobj);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelationobj2);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelations);//更新fact中变量值
+                        update(runprogram_plan_by_workitemselect_create_data);//更新fact中变量值
+                        update(runprogram_plan_by_workitemwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[返回未规划数据]
+            rule "debugparam1"
+            ruleflow-group "runprogram_plan_by_workitemdebugparam1"
+            when
+            then
+                        update(runprogram_plan_by_workitemdefault);//更新fact中变量值
+                        update(runprogram_plan_by_workitemtest_case_info);//更新fact中变量值
+                        update(runprogram_plan_by_workitemfor_temp_obj);//更新fact中变量值
+                        update(runprogram_plan_by_workitemitems);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelationobj);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelationobj2);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelations);//更新fact中变量值
+                        update(runprogram_plan_by_workitemselect_create_data);//更新fact中变量值
+                        update(runprogram_plan_by_workitemwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "runprogram_plan_by_workitemloopsubcall1"
+            when
+            then
+                        update(runprogram_plan_by_workitemdefault);//更新fact中变量值
+                        update(runprogram_plan_by_workitemtest_case_info);//更新fact中变量值
+                        update(runprogram_plan_by_workitemfor_temp_obj);//更新fact中变量值
+                        update(runprogram_plan_by_workitemitems);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelationobj);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelationobj2);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelations);//更新fact中变量值
+                        update(runprogram_plan_by_workitemselect_create_data);//更新fact中变量值
+                        update(runprogram_plan_by_workitemwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "runprogram_plan_by_workitemend1"
+            when
+            then
+                        update(runprogram_plan_by_workitemdefault);//更新fact中变量值
+                        update(runprogram_plan_by_workitemtest_case_info);//更新fact中变量值
+                        update(runprogram_plan_by_workitemfor_temp_obj);//更新fact中变量值
+                        update(runprogram_plan_by_workitemitems);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelationobj);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelationobj2);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelations);//更新fact中变量值
+                        update(runprogram_plan_by_workitemselect_create_data);//更新fact中变量值
+                        update(runprogram_plan_by_workitemwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置测试用例id]
+            rule "prepareparam3"
+            ruleflow-group "runprogram_plan_by_workitemprepareparam3"
+            when
+            then
+                            runprogram_plan_by_workitemtest_case_info.set("id",runprogram_plan_by_workitemfor_temp_obj.get("id"));
+                        update(runprogram_plan_by_workitemdefault);//更新fact中变量值
+                        update(runprogram_plan_by_workitemtest_case_info);//更新fact中变量值
+                        update(runprogram_plan_by_workitemfor_temp_obj);//更新fact中变量值
+                        update(runprogram_plan_by_workitemitems);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelationobj);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelationobj2);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelations);//更新fact中变量值
+                        update(runprogram_plan_by_workitemselect_create_data);//更新fact中变量值
+                        update(runprogram_plan_by_workitemwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[拷贝创建参数]
+            rule "copyparam1"
+            ruleflow-group "runprogram_plan_by_workitemcopyparam1"
+            when
+            then
+                        update(runprogram_plan_by_workitemdefault);//更新fact中变量值
+                        update(runprogram_plan_by_workitemtest_case_info);//更新fact中变量值
+                        update(runprogram_plan_by_workitemfor_temp_obj);//更新fact中变量值
+                        update(runprogram_plan_by_workitemitems);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelationobj);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelationobj2);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelations);//更新fact中变量值
+                        update(runprogram_plan_by_workitemselect_create_data);//更新fact中变量值
+                        update(runprogram_plan_by_workitemwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取测试用例详情]
+            rule "deaction2"
+            ruleflow-group "runprogram_plan_by_workitemdeaction2"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(test_caseservice.get(runprogram_plan_by_workitemtest_case_info.getId()),runprogram_plan_by_workitemtest_case_info);
+                        update(runprogram_plan_by_workitemdefault);//更新fact中变量值
+                        update(runprogram_plan_by_workitemtest_case_info);//更新fact中变量值
+                        update(runprogram_plan_by_workitemfor_temp_obj);//更新fact中变量值
+                        update(runprogram_plan_by_workitemitems);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelationobj);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelationobj2);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelations);//更新fact中变量值
+                        update(runprogram_plan_by_workitemselect_create_data);//更新fact中变量值
+                        update(runprogram_plan_by_workitemwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备执行用例数据]
+            rule "prepareparam2"
+            ruleflow-group "runprogram_plan_by_workitemprepareparam2"
+            when
+            then
+                            runprogram_plan_by_workitemselect_create_data.set("caseid",runprogram_plan_by_workitemfor_temp_obj.get("id"));
+                            runprogram_plan_by_workitemselect_create_data.set("steps",runprogram_plan_by_workitemtest_case_info.get("steps"));
+                                runprogram_plan_by_workitemselect_create_data.set("createman",curuser.getSessionParams().get("srfpersonid"));
+                                runprogram_plan_by_workitemselect_create_data.set("updateman",curuser.getSessionParams().get("srfpersonid"));
+                                runprogram_plan_by_workitemselect_create_data.set("id",null);
+                            runprogram_plan_by_workitemselect_create_data.set("planid",runprogram_plan_by_workitemdefault.get("principal_id"));
+                        update(runprogram_plan_by_workitemdefault);//更新fact中变量值
+                        update(runprogram_plan_by_workitemtest_case_info);//更新fact中变量值
+                        update(runprogram_plan_by_workitemfor_temp_obj);//更新fact中变量值
+                        update(runprogram_plan_by_workitemitems);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelationobj);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelationobj2);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelations);//更新fact中变量值
+                        update(runprogram_plan_by_workitemselect_create_data);//更新fact中变量值
+                        update(runprogram_plan_by_workitemwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建执行用例]
+            rule "deaction1"
+            ruleflow-group "runprogram_plan_by_workitemdeaction1"
+            when
+            then
+                        runservice.save(runprogram_plan_by_workitemselect_create_data);
+                        update(runprogram_plan_by_workitemdefault);//更新fact中变量值
+                        update(runprogram_plan_by_workitemtest_case_info);//更新fact中变量值
+                        update(runprogram_plan_by_workitemfor_temp_obj);//更新fact中变量值
+                        update(runprogram_plan_by_workitemitems);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelationobj);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelationobj2);//更新fact中变量值
+                        update(runprogram_plan_by_workitemrelations);//更新fact中变量值
+                        update(runprogram_plan_by_workitemselect_create_data);//更新fact中变量值
+                        update(runprogram_plan_by_workitemwork_item);//更新fact中变量值
+            end

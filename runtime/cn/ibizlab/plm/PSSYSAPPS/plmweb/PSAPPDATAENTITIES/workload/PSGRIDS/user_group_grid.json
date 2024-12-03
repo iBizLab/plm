@@ -1,0 +1,213 @@
+{
+  "aggMode" : "NONE",
+  "codeName" : "user_group_grid",
+  "columnEnableFilter" : 2,
+  "columnEnableLink" : 2,
+  "controlStyle" : "WORKLOAD_TABLE",
+  "controlType" : "GRID",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload/PSGRIDS/user_group_grid.json",
+  "getFetchPSControlAction" : {
+    "modelref" : true,
+    "id" : "fetch",
+    "actionType" : "DEDATASET",
+    "name" : "fetch",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "fetch_user_group_dimension"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+    }
+  },
+  "groupMode" : "AUTO",
+  "getGroupPSAppDEField" : {
+    "name" : "PRINCIPAL_ID",
+    "codeName" : "principal_id"
+  },
+  "getGroupPSDEField" : {
+    "name" : "PRINCIPAL_ID",
+    "codeName" : "principal_id"
+  },
+  "logicName" : "团队工时日历_表格",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+  },
+  "getPSControlNavParams" : [ {
+    "key" : "user_group_id",
+    "name" : "user_group_id",
+    "value" : "principal_id",
+    "rawValue" : false
+  }, {
+    "key" : "n_register_date_eq",
+    "name" : "n_register_date_eq",
+    "value" : "date",
+    "rawValue" : false
+  } ],
+  "getPSDEGridColumns" : [ {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.NAME"
+    },
+    "caption" : "团队",
+    "codeName" : "name",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "name",
+    "excelCaption" : "团队",
+    "name" : "name",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "width" : 150,
+    "widthUnit" : "STAR",
+    "enableSort" : false
+  }, {
+    "align" : "RIGHT",
+    "cLConvertMode" : "NONE",
+    "caption" : "总登记时长",
+    "codeName" : "duration",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "duration",
+    "excelCaption" : "总登记时长",
+    "name" : "duration",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "DURATION",
+      "codeName" : "duration"
+    },
+    "getPSDEUIAction" : {
+      "actionTarget" : "SINGLEDATA",
+      "caption" : "团队维度表格列行为",
+      "codeName" : "group_dimension",
+      "frontProcessType" : "OTHER",
+      "fullCodeName" : "workload_group_dimension",
+      "memo" : "工时管理->工时日历->团队维度->时长表格列->绑定行为",
+      "name" : "团队维度表格列行为",
+      "getPSAppDEUILogic" : {
+        "modelref" : true,
+        "id" : "open_group_duration_link"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+      },
+      "timeout" : 60000,
+      "uIActionMode" : "FRONT",
+      "uIActionTag" : "group_dimension",
+      "uIActionType" : "DEUIACTION",
+      "uILogicAttachMode" : "REPLACE",
+      "id" : "group_dimension@workload"
+    },
+    "valueFormat" : "#0.0",
+    "width" : 150,
+    "widthUnit" : "PX",
+    "enableSort" : false
+  } ],
+  "getPSDEGridDataItems" : [ {
+    "dataType" : 25,
+    "name" : "name",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  }, {
+    "format" : "#0.0",
+    "dataType" : 6,
+    "name" : "duration",
+    "getPSAppDEField" : {
+      "name" : "DURATION",
+      "codeName" : "duration"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "principal_id",
+    "getPSAppDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfdataaccaction",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "dataAccessAction" : true
+  }, {
+    "dataType" : 25,
+    "name" : "type_id",
+    "getPSAppDEField" : {
+      "name" : "TYPE_ID",
+      "codeName" : "type_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfmajortext",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  } ],
+  "getPSDEGridEditItems" : [ {
+    "caption" : "标识",
+    "codeName" : "srfkey",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getPSEditor" : {
+      "editorType" : "HIDDEN",
+      "name" : "srfkey"
+    },
+    "allowEmpty" : true
+  } ],
+  "getPSSysPFPlugin" : {
+    "pluginType" : "GRID_RENDER",
+    "pluginCode" : "WORKLOAD_TABLE",
+    "runtimeObject" : true
+  },
+  "pagingSize" : 20,
+  "getRemovePSControlAction" : {
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+    }
+  },
+  "sortMode" : "REMOTE",
+  "hasWFDataItems" : false,
+  "enableColFilter" : false,
+  "enableCustomized" : false,
+  "enableGroup" : true,
+  "enablePagingBar" : false,
+  "enableRowEdit" : false,
+  "enableRowEditOrder" : false,
+  "enableRowNew" : false,
+  "forceFit" : false,
+  "hideHeader" : false,
+  "noSort" : true,
+  "singleSelect" : true,
+  "modelid" : "CC35A3F4-EE63-4A05-81B3-4A12E97FC211",
+  "modeltype" : "PSDEGRID"
+}

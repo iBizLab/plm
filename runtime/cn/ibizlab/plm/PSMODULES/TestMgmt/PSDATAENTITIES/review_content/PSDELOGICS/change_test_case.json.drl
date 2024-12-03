@@ -1,0 +1,71 @@
+package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.change_test_case;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_content review_contentchange_test_casedefault;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case review_contentchange_test_casetest_case;
+                    global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService test_caseservice;
+        global cn.ibizlab.plm.core.testmgmt.service.Ireview_contentService iBzSysReview_contentDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "review_contentchange_test_casebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设置评审状态为通过]
+            rule "prepareparam2"
+            ruleflow-group "review_contentchange_test_caseprepareparam2"
+            when
+            then
+                            review_contentchange_test_casetest_case.set("reviewresultstate","3");
+                        update(review_contentchange_test_casedefault);//更新fact中变量值
+                        update(review_contentchange_test_casetest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "review_contentchange_test_caseend1"
+            when
+            then
+                        update(review_contentchange_test_casedefault);//更新fact中变量值
+                        update(review_contentchange_test_casetest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新测试用例]
+            rule "deaction1"
+            ruleflow-group "review_contentchange_test_casedeaction1"
+            when
+            then
+                        test_caseservice.update(review_contentchange_test_casetest_case);
+                        update(review_contentchange_test_casedefault);//更新fact中变量值
+                        update(review_contentchange_test_casetest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取测试用例id]
+            rule "prepareparam1"
+            ruleflow-group "review_contentchange_test_caseprepareparam1"
+            when
+            then
+                            review_contentchange_test_casetest_case.set("id",review_contentchange_test_casedefault.get("targetid"));
+                        update(review_contentchange_test_casedefault);//更新fact中变量值
+                        update(review_contentchange_test_casetest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置评审状态为拒绝]
+            rule "prepareparam3"
+            ruleflow-group "review_contentchange_test_caseprepareparam3"
+            when
+            then
+                            review_contentchange_test_casetest_case.set("reviewresultstate","4");
+                        update(review_contentchange_test_casedefault);//更新fact中变量值
+                        update(review_contentchange_test_casetest_case);//更新fact中变量值
+            end

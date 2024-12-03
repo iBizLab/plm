@@ -1,0 +1,1150 @@
+{
+  "accUserMode" : 2,
+  "caption" : "产品管理",
+  "codeName" : "product_tree_exp_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_tree_exp_view.json",
+  "name" : "producttree_exp_view",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+  },
+  "getPSAppModule" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProdMgmt.json"
+  },
+  "getPSAppViewEngines" : [ {
+    "engineCat" : "VIEW",
+    "engineType" : "TreeExpView",
+    "name" : "engine"
+  } ],
+  "getPSAppViewLogics" : [ {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "newdata",
+    "getPSAppUILogic" : {
+      "actionAfterWizard" : "DEFAULT",
+      "logicType" : "PREDEFINED",
+      "name" : "新建数据",
+      "viewLogicType" : "APP_NEWDATA",
+      "batchAddOnly" : false,
+      "enableBatchAdd" : false,
+      "enableWizardAdd" : false
+    }
+  }, {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "opendata",
+    "getPSAppUILogic" : {
+      "logicType" : "PREDEFINED",
+      "name" : "打开数据",
+      "viewLogicType" : "APP_OPENDATA",
+      "editMode" : true
+    }
+  } ],
+  "getPSAppViewRefs" : [ {
+    "name" : "NEWDATA@node_6",
+    "realTitle" : "产品编辑视图",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_edit_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  }, {
+    "name" : "EDITDATA@node_6",
+    "realTitle" : "产品编辑视图",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_edit_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  } ],
+  "getPSControls" : [ {
+    "codeName" : "tree_exp_view_treeexpbar",
+    "controlType" : "TREEEXPBAR",
+    "name" : "treeexpbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+    },
+    "getPSAppViewRefs" : [ {
+      "name" : "EXPITEM:filter",
+      "realTitle" : "筛选器",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_filter_tab_exp_view.json",
+        "viewType" : "DETABEXPVIEW"
+      }
+    }, {
+      "name" : "EXPITEM:node_2",
+      "realTitle" : "全部产品",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_all_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      }
+    }, {
+      "name" : "EXPITEM:node_3",
+      "realTitle" : "组织产品",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_org_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      }
+    }, {
+      "name" : "EXPITEM:node_4",
+      "realTitle" : "团队产品",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_team_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      }
+    }, {
+      "name" : "EXPITEM:node_7",
+      "realTitle" : "已归档产品表格",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_is_archived_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      }
+    } ],
+    "getPSControlHandler" : {
+      "enableDEFieldPrivilege" : false,
+      "id" : "treeexpbar"
+    },
+    "getPSControlParam" : {
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "id" : "TREEEXPBAR"
+    },
+    "getPSControls" : [ {
+      "codeName" : "tree_exp_view_tree_view",
+      "controlStyle" : "LIST_TREE",
+      "controlType" : "TREEVIEW",
+      "getCreatePSControlAction" : {
+        "modelref" : true,
+        "id" : "create",
+        "actionName" : "Create",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "CREATE",
+        "name" : "create",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "create"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+        }
+      },
+      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product/PSTREEVIEWS/tree_exp_view_tree_view.json",
+      "getFetchPSControlAction" : {
+        "modelref" : true,
+        "id" : "fetch",
+        "actionType" : "DEDATASET",
+        "name" : "fetch",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+        }
+      },
+      "getGetPSControlAction" : {
+        "modelref" : true,
+        "id" : "load",
+        "actionName" : "Get",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "READ",
+        "name" : "load",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "get"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+        }
+      },
+      "hookEventNames" : [ "SELECTIONCHANGE", "LOAD" ],
+      "logicName" : "产品导航视图_树视图",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+      },
+      "getPSControlHandler" : {
+        "getPSHandlerActions" : [ {
+          "actionName" : "Get",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "READ",
+          "name" : "load",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "get"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+          }
+        }, {
+          "actionName" : "Create",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "CREATE",
+          "name" : "create",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "create"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+          }
+        }, {
+          "actionName" : "Update",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "UPDATE",
+          "name" : "update",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "update"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+          }
+        }, {
+          "actionName" : "Remove",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "DELETE",
+          "name" : "remove",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "remove"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+          }
+        }, {
+          "actionType" : "DEDATASET",
+          "name" : "fetch",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+          }
+        } ],
+        "userDRAction" : "READ",
+        "enableDEFieldPrivilege" : false,
+        "id" : "树视图处理器"
+      },
+      "getPSControlLogics" : [ {
+        "eventNames" : "SELECTIONCHANGE",
+        "logicTag" : "treeexpbar_tree",
+        "logicType" : "CUSTOM",
+        "name" : "treeexpbar_selectionchange"
+      }, {
+        "eventNames" : "LOAD",
+        "logicTag" : "treeexpbar_tree",
+        "logicType" : "CUSTOM",
+        "name" : "treeexpbar_load"
+      } ],
+      "getPSControlParam" : {
+        "autoLoad" : true,
+        "showBusyIndicator" : true,
+        "id" : "treeexpbar_tree"
+      },
+      "getPSControls" : [ {
+        "codeName" : "tree_exp_view_node1_cm",
+        "controlType" : "CONTEXTMENU",
+        "logicName" : "产品配置树节点菜单",
+        "name" : "node_1_cm",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+        },
+        "getPSControlParam" : {
+          "id" : "node_1_cm"
+        },
+        "getPSDEToolbarItems" : [ {
+          "actionLevel" : 200,
+          "caption" : "产品配置",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction1",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "node_1_cm_deuiaction1"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "NONE",
+            "caption" : "产品配置",
+            "codeName" : "open_global_setting",
+            "dataAccessAction" : "UPDATE",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_config_tree_exp_view.json",
+              "viewType" : "DETREEEXPVIEW"
+            },
+            "frontProcessType" : "OTHER",
+            "fullCodeName" : "product_open_global_setting",
+            "name" : "打开产品配置",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "UPDATE"
+            },
+            "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/product_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_5%3Anode/product_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/product_in_progress_grid_view/-`",
+            "timeout" : 60000,
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "open_global_setting",
+            "uIActionType" : "DEUIACTION",
+            "id" : "open_global_setting@product"
+          },
+          "tooltip" : "产品配置",
+          "uIActionTarget" : "NONE",
+          "showCaption" : true,
+          "showIcon" : true
+        } ],
+        "modelid" : "80136b8bdeb0711c612a52f71d5c6980",
+        "modeltype" : "PSDETOOLBAR"
+      }, {
+        "codeName" : "tree_exp_view_node6_cm",
+        "controlType" : "CONTEXTMENU",
+        "logicName" : "星标产品树节点菜单",
+        "name" : "node_6_cm",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+        },
+        "getPSControlParam" : {
+          "id" : "node_6_cm"
+        },
+        "getPSDEToolbarItems" : [ {
+          "actionLevel" : 200,
+          "caption" : "打开星标产品",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction1",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "node_6_cm_deuiaction1"
+          },
+          "getPSSysImage" : { },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEKEY",
+            "caption" : "打开产品首页视图",
+            "codeName" : "open_index_view",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_index_view.json",
+              "viewType" : "DEINDEXVIEW"
+            },
+            "frontProcessType" : "WIZARD",
+            "fullCodeName" : "product_open_index_view",
+            "name" : "打开产品首页视图",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+            },
+            "getPSSysImage" : { },
+            "timeout" : 60000,
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "open_index_view",
+            "uIActionType" : "DEUIACTION",
+            "id" : "open_index_view@product"
+          },
+          "tooltip" : "打开星标产品",
+          "uIActionTarget" : "SINGLEKEY",
+          "showCaption" : false,
+          "showIcon" : true
+        }, {
+          "actionLevel" : 250,
+          "caption" : "取消星标",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction2",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "node_6_cm_deuiaction2"
+          },
+          "getPSSysImage" : {
+            "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#FFB31A\" fill-rule=\"nonzero\"></path>\n</svg>"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEKEY",
+            "caption" : "取消星标",
+            "codeName" : "cancel_favorite",
+            "fullCodeName" : "product_cancel_favorite",
+            "name" : "取消星标",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "un_favorite"
+            },
+            "getPSAppDEUILogic" : {
+              "modelref" : true,
+              "id" : "notify_refresh"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+            },
+            "getPSNavigateParams" : [ {
+              "key" : "owner_id",
+              "name" : "owner_id",
+              "value" : "product",
+              "rawValue" : false
+            } ],
+            "getPSSysImage" : {
+              "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#FFB31A\" fill-rule=\"nonzero\"></path>\n</svg>"
+            },
+            "refreshMode" : 2,
+            "timeout" : 60000,
+            "tooltip" : "取消星标",
+            "uIActionMode" : "BACKEND",
+            "uIActionTag" : "cancel_favorite",
+            "uIActionType" : "DEUIACTION",
+            "uILogicAttachMode" : "AFTER",
+            "enableConfirm" : true,
+            "reloadData" : true,
+            "id" : "cancel_favorite@product"
+          },
+          "tooltip" : "取消星标",
+          "uIActionTarget" : "SINGLEKEY",
+          "showCaption" : false,
+          "showIcon" : true
+        } ],
+        "modelid" : "00f4b816e2735ad19fa5ea1e39cc454a",
+        "modeltype" : "PSDETOOLBAR"
+      } ],
+      "getPSDETreeNodeRSs" : [ {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_2"
+        },
+        "name" : "产品 - 全部产品",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "filter"
+        },
+        "name" : "工作 - 筛选器",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "work"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node"
+        },
+        "name" : "默认根节点 - 产品",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "ROOT"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_6"
+        },
+        "name" : "星标 - 星标_产品",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_5"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_3"
+        },
+        "name" : "产品 - 组织产品",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_4"
+        },
+        "name" : "产品 - 团队产品",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "work"
+        },
+        "name" : "默认根节点 - 工作",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "ROOT"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_5"
+        },
+        "name" : "默认根节点 - 星标",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "ROOT"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_7"
+        },
+        "name" : "默认根节点 - 归档产品",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "ROOT"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_1"
+        },
+        "name" : "默认根节点 - 配置中心",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "ROOT"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      } ],
+      "getPSDETreeNodes" : [ {
+        "counterMode" : 0,
+        "name" : "默认根节点",
+        "nodeType" : "ROOT",
+        "nodeValue" : "root",
+        "text" : "默认根节点",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : true,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : true,
+        "rootNode" : true,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "ROOT"
+      }, {
+        "counterMode" : 0,
+        "name" : "筛选器",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_filter_tab_exp_view.json",
+          "viewType" : "DETABEXPVIEW"
+        },
+        "nodeType" : "filter",
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"18\" height=\"18\">\n  <path d=\"M5.70161537,6.83314599 C5.63755287,6.83314599 5.58442787,6.88158349 5.58442787,6.94252099 L5.58442787,7.59877099 C5.58442787,7.65814599 5.63755287,7.70814599 5.70161537,7.70814599 L10.0793816,7.70814599 C10.1434441,7.70814599 10.1965691,7.65814599 10.1965691,7.59877099 L10.1965691,6.94252099 C10.1965691,6.88158349 10.1434441,6.83314599 10.0793816,6.83314599 L5.70161537,6.83314599 Z M6.14124547,8.46714621 C6.07718297,8.46714621 6.02405797,8.51558371 6.02405797,8.57652121 L6.02405797,9.23277121 C6.02405797,9.29214621 6.07718297,9.34214621 6.14124547,9.34214621 L9.60335754,9.34214621 C9.66742004,9.34214621 9.72054504,9.29214621 9.72054504,9.23277121 L9.72054504,8.57652121 C9.72054504,8.51558371 9.66742004,8.46714621 9.60335754,8.46714621 L6.14124547,8.46714621 Z M6.61654715,10.1181998 C6.55248465,10.1181998 6.49935965,10.1666373 6.49935965,10.2275748 L6.49935965,10.8838248 C6.49935965,10.9431998 6.55248465,10.9931998 6.61654715,10.9931998 L9.12782868,10.9931998 C9.19189118,10.9931998 9.24501618,10.9431998 9.24501618,10.8838248 L9.24501618,10.2275748 C9.24501618,10.1666373 9.19189118,10.1181998 9.12782868,10.1181998 L6.61654715,10.1181998 Z M13.75,4.6625 L8.140625,4.6625 L6.3078125,2.909375 C6.284375,2.8875 6.253125,2.875 6.221875,2.875 L2.25,2.875 C1.9734375,2.875 1.75,3.0984375 1.75,3.375 L1.75,12.625 C1.75,12.9015625 1.9734375,13.125 2.25,13.125 L13.75,13.125 C14.0265625,13.125 14.25,12.9015625 14.25,12.625 L14.25,5.1625 C14.25,4.8859375 14.0265625,4.6625 13.75,4.6625 Z M13.125,12 L2.875,12 L2.875,4 L5.8203125,4 L7.6890625,5.7875 L13.125,5.7875 L13.125,12 Z\" fill=\"#F6C659\" fill-rule=\"nonzero\"></path>\n</svg>"
+        },
+        "text" : "筛选器",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "filter"
+      }, {
+        "counterMode" : 0,
+        "name" : "产品",
+        "nodeType" : "node",
+        "text" : "产品",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : true,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : true,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node"
+      }, {
+        "accUserMode" : 4,
+        "accessKey" : "BASE",
+        "counterMode" : 0,
+        "name" : "配置中心",
+        "nodeType" : "node_1",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+        },
+        "getPSDEContextMenu" : {
+          "codeName" : "tree_exp_view_node1_cm",
+          "controlType" : "CONTEXTMENU",
+          "logicName" : "产品配置树节点菜单",
+          "name" : "node_1_cm",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+          },
+          "getPSControlParam" : {
+            "id" : "node_1_cm"
+          },
+          "getPSDEToolbarItems" : [ {
+            "actionLevel" : 200,
+            "caption" : "产品配置",
+            "groupExtractMode" : "ITEM",
+            "itemType" : "DEUIACTION",
+            "name" : "deuiaction1",
+            "noPrivDisplayMode" : 2,
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "node_1_cm_deuiaction1"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "NONE",
+              "caption" : "产品配置",
+              "codeName" : "open_global_setting",
+              "dataAccessAction" : "UPDATE",
+              "getFrontPSAppView" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_config_tree_exp_view.json",
+                "viewType" : "DETREEEXPVIEW"
+              },
+              "frontProcessType" : "OTHER",
+              "fullCodeName" : "product_open_global_setting",
+              "name" : "打开产品配置",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+              },
+              "getPSDEOPPriv" : {
+                "modelref" : true,
+                "id" : "UPDATE"
+              },
+              "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/product_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_5%3Anode/product_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/product_in_progress_grid_view/-`",
+              "timeout" : 60000,
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "open_global_setting",
+              "uIActionType" : "DEUIACTION",
+              "id" : "open_global_setting@product"
+            },
+            "tooltip" : "产品配置",
+            "uIActionTarget" : "NONE",
+            "showCaption" : true,
+            "showIcon" : true
+          } ],
+          "modelid" : "80136b8bdeb0711c612a52f71d5c6980",
+          "modeltype" : "PSDETOOLBAR"
+        },
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"dydnnkk8m__design-iconfont\" width=\"18\" height=\"18\">\n  <path d=\"M8.00016594,11 C6.34331179,11 5.00016594,9.65685463 5.00016594,8 C5.00016594,6.34314585 6.34331179,5 8.00016594,5 C9.65702009,5 11.0001659,6.34314585 11.0001659,8 C11.0001659,9.65685463 9.65702009,11 8.00016594,11 Z M8.00016594,10 C6.8955965,10 6.00016594,9.10456944 6.00016594,8 C6.00016594,6.89543056 6.8955965,6 8.00016594,6 C9.10473537,6 10.0001659,6.89543056 10.0001659,8 C10.0001659,9.10456944 9.10473537,10 8.00016594,10 Z M14.0623436,4.625 L14.0623436,11.375 L8.00016594,14.75 L1.93798828,11.375 L1.93798828,4.625 L8.00016594,1.25 L14.0623436,4.625 Z M8.00016594,2.39453006 L13.0623436,5.21279955 L13.0623436,10.7872009 L8.00016594,13.6054697 L2.93798828,10.7872009 L2.93798828,5.21279955 L8.00016594,2.39453006 Z\" fill-opacity=\".9\" fill-rule=\"evenodd\" fill=\"#56AAFC\"></path>\n</svg>"
+        },
+        "text" : "配置中心",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_1"
+      }, {
+        "counterMode" : 0,
+        "name" : "全部产品",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_all_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        },
+        "nodeType" : "node_2",
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"zfaoqr8zf__design-iconfont\" width=\"18\" height=\"18\">\n  <path d=\"M8.25,4.75 C8.25,6.40685415 9.59314585,7.75 11.25,7.75 C12.9068546,7.75 14.25,6.40685415 14.25,4.75 C14.25,3.09314585 12.9068546,1.75 11.25,1.75 C9.59314585,1.75 8.25,3.09314585 8.25,4.75 Z M11.25,6.75 C12.3545694,6.75 13.25,5.85456944 13.25,4.75 C13.25,3.64543068 12.3545694,2.75 11.25,2.75 C10.1454306,2.75 9.25,3.64543068 9.25,4.75 C9.25,5.85456944 10.1454306,6.75 11.25,6.75 Z M3,2 L6.5,2 C7.05228472,2 7.5,2.44771528 7.5,3 L7.5,6.5 C7.5,7.05228472 7.05228472,7.5 6.5,7.5 L3,7.5 C2.44771528,7.5 2,7.05228472 2,6.5 L2,3 C2,2.44771528 2.44771528,2 3,2 Z M6.5,3 L6.5,6.5 L3,6.5 L3,3 L6.5,3 Z M3,8.5 L6.5,8.5 C7.05228472,8.5 7.5,8.94771528 7.5,9.5 L7.5,13 C7.5,13.5522842 7.05228472,14 6.5,14 L3,14 C2.44771528,14 2,13.5522842 2,13 L2,9.5 C2,8.94771528 2.44771528,8.5 3,8.5 Z M6.5,9.5 L6.5,13 L3,13 L3,9.5 L6.5,9.5 Z M9.5,8.5 L13,8.5 C13.5522842,8.5 14,8.94771528 14,9.5 L14,13 C14,13.5522842 13.5522842,14 13,14 L9.5,14 C8.94771528,14 8.5,13.5522842 8.5,13 L8.5,9.5 C8.5,8.94771528 8.94771528,8.5 9.5,8.5 Z M9.5,9.5 L13,9.5 L13,13 L9.5,13 L9.5,9.5 Z\" fill-opacity=\".89999998\" fill-rule=\"evenodd\" fill=\"#56AAFC\"></path>\n</svg>",
+          "height" : 20,
+          "width" : 20
+        },
+        "text" : "全部产品",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_2"
+      }, {
+        "counterMode" : 0,
+        "name" : "组织产品",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_org_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        },
+        "nodeType" : "node_3",
+        "getPSNavigateContexts" : [ {
+          "key" : "SCOPE_TYPE",
+          "name" : "SCOPE_TYPE",
+          "value" : "organization",
+          "rawValue" : true
+        } ],
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"18\" height=\"18\">\n  <path d=\"M14.1875,10 L12.5625,10 L12.5625,7.625 C12.5625,7.55625 12.50625,7.5 12.4375,7.5 L8.5625,7.5 L8.5625,6 L10.25,6 C10.3875,6 10.5,5.8875 10.5,5.75 L10.5,1.25 C10.5,1.1125 10.3875,1 10.25,1 L5.75,1 C5.6125,1 5.5,1.1125 5.5,1.25 L5.5,5.75 C5.5,5.8875 5.6125,6 5.75,6 L7.4375,6 L7.4375,7.5 L3.5625,7.5 C3.49375,7.5 3.4375,7.55625 3.4375,7.625 L3.4375,10 L1.8125,10 C1.675,10 1.5625,10.1125 1.5625,10.25 L1.5625,14.75 C1.5625,14.8875 1.675,15 1.8125,15 L6.3125,15 C6.45,15 6.5625,14.8875 6.5625,14.75 L6.5625,10.25 C6.5625,10.1125 6.45,10 6.3125,10 L4.5625,10 L4.5625,8.625 L11.4375,8.625 L11.4375,10 L9.6875,10 C9.55,10 9.4375,10.1125 9.4375,10.25 L9.4375,14.75 C9.4375,14.8875 9.55,15 9.6875,15 L14.1875,15 C14.325,15 14.4375,14.8875 14.4375,14.75 L14.4375,10.25 C14.4375,10.1125 14.325,10 14.1875,10 Z M5.375,11.1875 L5.375,13.8125 L2.75,13.8125 L2.75,11.1875 L5.375,11.1875 Z M6.6875,4.8125 L6.6875,2.1875 L9.3125,2.1875 L9.3125,4.8125 L6.6875,4.8125 Z M13.25,13.8125 L10.625,13.8125 L10.625,11.1875 L13.25,11.1875 L13.25,13.8125 Z\" fill=\"#FCC430\" fill-rule=\"nonzero\"></path>\n</svg>"
+        },
+        "text" : "组织产品",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_3"
+      }, {
+        "counterMode" : 0,
+        "name" : "团队产品",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_team_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        },
+        "nodeType" : "node_4",
+        "getPSNavigateContexts" : [ {
+          "key" : "SCOPE_TYPE",
+          "name" : "SCOPE_TYPE",
+          "value" : "user_group",
+          "rawValue" : true
+        } ],
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"18\" height=\"18\">\n  <path d=\"M12.878125,10.9359375 C12.48125,10.5390625 12.0234375,10.221875 11.528125,9.9921875 C12.2359375,9.41875 12.6875,8.54375 12.6875,7.5625 C12.6875,5.83125 11.24375,4.4109375 9.5125,4.4375 C7.8078125,4.4640625 6.434375,5.853125 6.434375,7.5625 C6.434375,8.54375 6.8875,9.41875 7.59375,9.9921875 C7.0984375,10.221875 6.6421875,10.5375 6.24375,10.9359375 C5.390625,11.790625 4.90625,12.91875 4.87496822,14.121875 C4.8734375,14.1921875 4.9296875,14.25 5,14.25 L5.875,14.25 C5.9421875,14.25 5.9984375,14.196875 6,14.1296875 C6.0296875,13.2234375 6.396875,12.375 7.0421875,11.73125 C7.715625,11.0578125 8.6109375,10.6875 9.5625,10.6875 C10.5140625,10.6875 11.409375,11.0578125 12.0828125,11.73125 C12.7265625,12.375 13.09375,13.2234375 13.125,14.1296875 C13.1265625,14.196875 13.1828125,14.25 13.25,14.25 L14.125,14.25 C14.1953125,14.25 14.2515625,14.1921875 14.2500318,14.121875 C14.21875,12.91875 13.734375,11.790625 12.878125,10.9359375 Z M9.5625,9.5625 C9.028125,9.5625 8.525,9.3546875 8.1484375,8.9765625 C7.765625,8.59375 7.55625,8.084375 7.5625,7.5421875 C7.5671875,7.0296875 7.771875,6.534375 8.1296875,6.1671875 C8.5046875,5.7828125 9.00625,5.56875 9.5421875,5.5625 C10.071875,5.5578125 10.5859375,5.7640625 10.9640625,6.134375 C11.3515625,6.5140625 11.5640625,7.021875 11.5640625,7.5625 C11.5640625,8.096875 11.35625,8.5984375 10.978125,8.9765625 C10.6,9.3546875 10.096875,9.5625 9.5625,9.5625 L9.5625,9.5625 Z M5.6484375,7.975 C5.634375,7.8390625 5.6265625,7.7015625 5.6265625,7.5625 C5.6265625,7.3140625 5.65,7.071875 5.69375,6.8359375 C5.7046875,6.7796875 5.675,6.721875 5.6234375,6.6984375 C5.4109375,6.603125 5.215625,6.471875 5.046875,6.30625 C4.64375,5.9125 4.4265625,5.3796875 4.4421875,4.815625 C4.45625,4.3140625 4.6578125,3.8375 5.009375,3.478125 C5.3953125,3.0828125 5.9140625,2.8671875 6.465625,2.8734375 C6.9640625,2.878125 7.4453125,3.0703125 7.809375,3.4109375 C7.9328125,3.5265625 8.0390625,3.6546875 8.128125,3.7921875 C8.159375,3.840625 8.2203125,3.8609375 8.2734375,3.8421875 C8.5484375,3.746875 8.8390625,3.6796875 9.1375,3.6484375 C9.225,3.6390625 9.275,3.5453125 9.2359375,3.4671875 C8.728125,2.4625 7.690625,1.76875 6.490625,1.75 C4.7578125,1.7234375 3.3140625,3.14375 3.3140625,4.8734375 C3.3140625,5.8546875 3.765625,6.7296875 4.4734375,7.303125 C3.9765625,7.5328125 3.51875,7.85 3.121875,8.246875 C2.265625,9.1015625 1.78125,10.2296875 1.74996822,11.434375 C1.7484375,11.5046875 1.8046875,11.5625 1.875,11.5625 L2.7515625,11.5625 C2.81875,11.5625 2.875,11.509375 2.8765625,11.4421875 C2.90625,10.5359375 3.2734375,9.6875 3.91875,9.04375 C4.378125,8.584375 4.940625,8.265625 5.5546875,8.1109375 C5.615625,8.0953125 5.65625,8.0375 5.6484375,7.975 L5.6484375,7.975 Z\" fill=\"#42D175\" fill-rule=\"nonzero\"></path>\n</svg>"
+        },
+        "text" : "团队产品",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_4"
+      }, {
+        "counterMode" : 0,
+        "name" : "星标",
+        "nodeType" : "node_5",
+        "text" : "星标",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : true,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : true,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_5"
+      }, {
+        "counterMode" : 0,
+        "getIdPSAppDEField" : {
+          "name" : "ID",
+          "codeName" : "id"
+        },
+        "maxSize" : -1,
+        "name" : "星标_产品",
+        "nodeType" : "node_6",
+        "getPSAppDEDataSet" : {
+          "modelref" : true,
+          "id" : "fetch_favorite"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+        },
+        "getPSDEContextMenu" : {
+          "codeName" : "tree_exp_view_node6_cm",
+          "controlType" : "CONTEXTMENU",
+          "logicName" : "星标产品树节点菜单",
+          "name" : "node_6_cm",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+          },
+          "getPSControlParam" : {
+            "id" : "node_6_cm"
+          },
+          "getPSDEToolbarItems" : [ {
+            "actionLevel" : 200,
+            "caption" : "打开星标产品",
+            "groupExtractMode" : "ITEM",
+            "itemType" : "DEUIACTION",
+            "name" : "deuiaction1",
+            "noPrivDisplayMode" : 2,
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "node_6_cm_deuiaction1"
+            },
+            "getPSSysImage" : { },
+            "getPSUIAction" : {
+              "actionTarget" : "SINGLEKEY",
+              "caption" : "打开产品首页视图",
+              "codeName" : "open_index_view",
+              "getFrontPSAppView" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_index_view.json",
+                "viewType" : "DEINDEXVIEW"
+              },
+              "frontProcessType" : "WIZARD",
+              "fullCodeName" : "product_open_index_view",
+              "name" : "打开产品首页视图",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+              },
+              "getPSSysImage" : { },
+              "timeout" : 60000,
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "open_index_view",
+              "uIActionType" : "DEUIACTION",
+              "id" : "open_index_view@product"
+            },
+            "tooltip" : "打开星标产品",
+            "uIActionTarget" : "SINGLEKEY",
+            "showCaption" : false,
+            "showIcon" : true
+          }, {
+            "actionLevel" : 250,
+            "caption" : "取消星标",
+            "groupExtractMode" : "ITEM",
+            "itemType" : "DEUIACTION",
+            "name" : "deuiaction2",
+            "noPrivDisplayMode" : 2,
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "node_6_cm_deuiaction2"
+            },
+            "getPSSysImage" : {
+              "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#FFB31A\" fill-rule=\"nonzero\"></path>\n</svg>"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "SINGLEKEY",
+              "caption" : "取消星标",
+              "codeName" : "cancel_favorite",
+              "fullCodeName" : "product_cancel_favorite",
+              "name" : "取消星标",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "un_favorite"
+              },
+              "getPSAppDEUILogic" : {
+                "modelref" : true,
+                "id" : "notify_refresh"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+              },
+              "getPSNavigateParams" : [ {
+                "key" : "owner_id",
+                "name" : "owner_id",
+                "value" : "product",
+                "rawValue" : false
+              } ],
+              "getPSSysImage" : {
+                "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#FFB31A\" fill-rule=\"nonzero\"></path>\n</svg>"
+              },
+              "refreshMode" : 2,
+              "timeout" : 60000,
+              "tooltip" : "取消星标",
+              "uIActionMode" : "BACKEND",
+              "uIActionTag" : "cancel_favorite",
+              "uIActionType" : "DEUIACTION",
+              "uILogicAttachMode" : "AFTER",
+              "enableConfirm" : true,
+              "reloadData" : true,
+              "id" : "cancel_favorite@product"
+            },
+            "tooltip" : "取消星标",
+            "uIActionTarget" : "SINGLEKEY",
+            "showCaption" : false,
+            "showIcon" : true
+          } ],
+          "modelid" : "00f4b816e2735ad19fa5ea1e39cc454a",
+          "modeltype" : "PSDETOOLBAR"
+        },
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 24 24\" class=\"design-iconfont\" width=\"18\" height=\"18\">\n  <defs>\n    <path d=\"M7.38014822,4.26970473e-06 C7.67907467,-0.000828796 7.96590669,0.120273995 8.17671195,0.336324208 L10.4843108,2.68866756 C10.5264166,2.73193339 10.5837821,2.7561828 10.6435672,2.75598809 L19.6007905,2.75598809 C20.22264,2.75670003 20.7265743,3.27040575 20.7272727,3.9043129 L20.7272727,16.3062207 C20.7265743,16.9401278 20.2226399,17.4538335 19.6007905,17.4545455 L1.12648221,17.4545455 C0.504632781,17.4538335 0.000698402716,16.9401278 0,16.3062207 L0,1.14833339 C0.000698391078,0.514426247 0.504632772,0.00072052842 1.12648221,4.26970473e-06 L7.38014822,4.26970473e-06 Z M9.58629261,5.41965554 L9.55992543,5.42453835 C9.43199574,5.44797585 9.3314098,5.54758523 9.3079723,5.67551491 L9.15367543,6.50949929 C8.80308949,6.64231179 8.47789418,6.83078835 8.18687855,7.07004616 L7.38707386,6.78586648 C7.26500355,6.74289773 7.1282848,6.77903054 7.04430043,6.87863991 L7.0267223,6.89914773 C6.68687855,7.30051491 6.4251598,7.75363991 6.24840199,8.24582741 L6.23961293,8.27121804 C6.19566761,8.39328835 6.23180043,8.5300071 6.33043324,8.61496804 L6.97789418,9.16770241 C6.94762074,9.35129616 6.9329723,9.53879616 6.9329723,9.7253196 C6.9329723,9.9128196 6.94762074,10.1003196 6.97789418,10.2829368 L6.33043324,10.8356712 C6.23180043,10.9196555 6.19566761,11.0563743 6.23961293,11.1794212 L6.24840199,11.2048118 C6.4251598,11.6969993 6.68687855,12.1511009 7.0267223,12.5514915 L7.04430043,12.5719993 C7.1282848,12.6706321 7.26402699,12.7077415 7.38707386,12.6647727 L8.18687855,12.380593 C8.47789418,12.6198509 8.80308949,12.809304 9.15367543,12.9411399 L9.3079723,13.7751243 C9.3314098,13.903054 9.43199574,14.0026634 9.55992543,14.0261009 L9.58629261,14.0309837 C9.84117543,14.0768821 10.1019176,14.1003196 10.3626598,14.1003196 C10.623402,14.1003196 10.8851207,14.0768821 11.139027,14.0309837 L11.1653942,14.0261009 C11.2933239,14.0026634 11.3939098,13.903054 11.4173473,13.7751243 L11.5706676,12.9450462 C11.9241832,12.8122337 12.2513317,12.6237571 12.5443004,12.3825462 L13.3382457,12.6647727 C13.4603161,12.7077415 13.5970348,12.6716087 13.6810192,12.5719993 L13.6985973,12.5514915 C14.0384411,12.1501243 14.3001598,11.6969993 14.4769176,11.2048118 L14.4857067,11.1794212 C14.529652,11.059304 14.4935192,10.9225852 14.3948864,10.8376243 L13.7552379,10.2907493 C13.7855114,10.1052024 13.8011364,9.91574929 13.8011364,9.72629616 C13.8011364,9.53684304 13.7855114,9.34738991 13.7552379,9.16184304 L14.3948864,8.61496804 C14.4935192,8.53098366 14.529652,8.39426491 14.4857067,8.27121804 L14.4769176,8.24582741 C14.3001598,7.75266335 14.0384411,7.29953835 13.6985973,6.89914773 L13.6810192,6.87863991 C13.5970348,6.7800071 13.4612926,6.74289773 13.3382457,6.78586648 L12.5443004,7.06809304 C12.2513317,6.82785866 11.9241832,6.63840554 11.5706676,6.50559304 L11.4173473,5.67551491 C11.3939098,5.54758523 11.2933239,5.44797585 11.1653942,5.42453835 L11.139027,5.41965554 C10.6302379,5.32785866 10.0950817,5.32785866 9.58629261,5.41965554 Z M10.7776989,6.07981179 L10.9525036,7.02707741 L11.3245739,7.16672585 C11.6048473,7.2721946 11.8655895,7.42258523 12.0989879,7.61399148 L12.4056286,7.8659446 L13.3118786,7.54465554 C13.4778942,7.76828835 13.6165661,8.00949929 13.7278942,8.26340554 L12.998402,8.88742898 L13.0618786,9.27707741 C13.0862926,9.42453835 13.0989879,9.57590554 13.0989879,9.72727273 C13.0989879,9.87863991 13.0862926,10.0300071 13.0618786,10.177468 L12.9974254,10.5690696 L13.7269176,11.193093 C13.6165661,11.4479759 13.4769176,11.6882102 13.310902,11.911843 L12.404652,11.590554 L12.0980114,11.8425071 C11.8646129,12.0339134 11.6048473,12.184304 11.3235973,12.2897727 L10.951527,12.4294212 L10.7767223,13.3766868 C10.5023082,13.4079368 10.2220348,13.4079368 9.94664418,13.3766868 L9.77183949,12.427468 L9.40269886,12.2858665 C9.12437855,12.1803977 8.86558949,12.0300071 8.63414418,11.8395774 L8.32750355,11.5866477 L7.41539418,11.9108665 C7.24937855,11.6872337 7.11070668,11.4460227 6.99937855,11.1921165 L7.73668324,10.5622337 L7.67320668,10.1716087 C7.64976918,10.0261009 7.63707386,9.87571023 7.63707386,9.72727273 C7.63707386,9.57785866 7.64879261,9.4284446 7.67320668,9.28293679 L7.73668324,8.89231179 L6.99937855,8.26242898 C7.10973011,8.00754616 7.24937855,7.76731179 7.41539418,7.54367898 L8.32750355,7.86789773 L8.63414418,7.61496804 C8.86558949,7.42453835 9.12437855,7.27414773 9.40269886,7.16867898 L9.77281605,7.02903054 L9.94762074,6.07981179 C10.2220348,6.04856179 10.5023082,6.04856179 10.7776989,6.07981179 Z M10.3636364,7.91086648 C9.41441761,7.91086648 8.64488636,8.68039773 8.64488636,9.62961648 C8.64488636,10.5788352 9.41441761,11.3483665 10.3636364,11.3483665 C11.3128551,11.3483665 12.0823864,10.5788352 12.0823864,9.62961648 C12.0823864,8.68039773 11.3128551,7.91086648 10.3636364,7.91086648 Z M10.3636364,8.53586648 C10.6556286,8.53586648 10.9300426,8.64914773 11.1370739,8.85617898 C11.3431286,9.06321023 11.4573864,9.33762429 11.4573864,9.62961648 C11.4573864,9.92160866 11.3431286,10.1960227 11.1370739,10.403054 C10.9300426,10.6091087 10.6556286,10.7233665 10.3636364,10.7233665 C10.0716442,10.7233665 9.79723011,10.6091087 9.59019886,10.403054 C9.38414418,10.1960227 9.26988636,9.92160866 9.26988636,9.62961648 C9.26988636,9.33762429 9.38414418,9.06321023 9.59019886,8.85617898 C9.79723011,8.64914773 10.0716442,8.53586648 10.3636364,8.53586648 Z\" id=\"g5qm67ur8__8jp2bspmga\"></path>\n  </defs>\n  <use fill=\"#56AAFC\" fill-rule=\"nonzero\" xlink:href=\"#g5qm67ur8__8jp2bspmga\" transform=\"translate(1.6364 3.2727)\"></use>\n</svg>"
+        },
+        "getTextPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        },
+        "treeNodeType" : "DE",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : true,
+        "enableNewData" : true,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : true,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_6"
+      }, {
+        "counterMode" : 0,
+        "name" : "归档产品",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_is_archived_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        },
+        "nodeType" : "node_7",
+        "getPSNavigateParams" : [ {
+          "key" : "n_is_archived_eq",
+          "name" : "n_is_archived_eq",
+          "value" : "1",
+          "rawValue" : true
+        } ],
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"128\" height=\"128\">\n  <path d=\"M820 120.016C815.888 98.784 794.928 64 764 64H232c-30.928 0-50.768 35.536-56 56.016L64 596.272V876A84 84 0 0 0 148 960h728A84 84 0 0 0 960 876V596.272L820 120.016zM271.344 144h456.16c14.832 0 26.832 11.584 26.832 25.904L864.016 544H673.84c-28.288 0-26.832 40.384-26.832 40.384v77.712c0 14.32-12 25.904-26.832 25.904H405.504c-14.816 0-26.832-11.584-26.832-25.904v-77.712S378.672 544 351.84 544H160l84.512-374.096c0-14.32 12-25.904 26.832-25.904z m44.64 480v84c0 30.896 25.088 60 56.016 60h280c30.928 0 56-29.104 56-60V624H880v208c0 30.896-33.072 48-64 48H208c-30.928 0-64-17.104-64-48V624h172zM512 199.2a36.72 36.72 0 0 1 36.736 36.72l-0.016 224.064 80.96-80.944a36.736 36.736 0 0 1 49.824-1.952l2.112 1.952c14.336 14.352 14.336 37.6 0 51.936l-143.648 143.632a36.704 36.704 0 0 1-51.936 0L342.4 430.976a36.72 36.72 0 1 1 51.936-51.936l80.928 80.928V235.92c0-19.44 15.12-35.344 34.24-36.64z\" fill=\"#F6C659\"></path>\n</svg>"
+        },
+        "text" : "归档产品",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_7"
+      }, {
+        "counterMode" : 0,
+        "name" : "工作",
+        "nodeType" : "work",
+        "text" : "工作",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : true,
+        "appendPNodeId" : false,
+        "disableSelect" : true,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : true,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "work"
+      } ],
+      "getPSSysPFPlugin" : {
+        "pluginType" : "TREE_RENDER",
+        "pluginCode" : "LIST_TREE",
+        "runtimeObject" : true
+      },
+      "getRemovePSControlAction" : {
+        "modelref" : true,
+        "id" : "remove",
+        "actionName" : "Remove",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "DELETE",
+        "name" : "remove",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "remove"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+        }
+      },
+      "treeGridMode" : 0,
+      "getUpdatePSControlAction" : {
+        "modelref" : true,
+        "id" : "update",
+        "actionName" : "Update",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "UPDATE",
+        "name" : "update",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "update"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+        }
+      },
+      "enableRootSelect" : false,
+      "outputIconDefault" : true,
+      "rootVisible" : false,
+      "name" : "treeexpbar_tree",
+      "modelid" : "54ac31ecbe3d3e1214b4b352125115ac",
+      "modeltype" : "PSDETREEVIEW"
+    } ],
+    "xDataControlName" : "treeexpbar_tree",
+    "enableCounter" : true,
+    "enableSearch" : false,
+    "showTitleBar" : true,
+    "modelid" : "14a6fede1677027bc02b5df6e085e52c_treeexpbar",
+    "modeltype" : "PSEXPBAR"
+  }, {
+    "controlType" : "SEARCHBAR",
+    "name" : "searchbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+    },
+    "getPSControlParam" : {
+      "id" : "searchbar"
+    },
+    "quickGroupCount" : -1,
+    "quickSearchMode" : 1,
+    "quickSearchWidth" : 0,
+    "enableFilter" : false,
+    "enableGroup" : false,
+    "enableQuickSearch" : true,
+    "mobileSearchBar" : false
+  }, {
+    "caption" : "产品管理",
+    "codeName" : "tree_exp_view_captionbar",
+    "controlType" : "CAPTIONBAR",
+    "name" : "captionbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+    },
+    "getPSControlParam" : { }
+  } ],
+  "getPSDEViewCodeName" : "tree_exp_view",
+  "getPSDEViewId" : "5a1fd966bf3ee5c6a095192547b67cb3",
+  "getPSViewLayoutPanel" : {
+    "codeName" : "layoutpanel",
+    "controlStyle" : "APPDETREEEXPVIEW",
+    "controlType" : "VIEWLAYOUTPANEL",
+    "name" : "layoutpanel",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+    },
+    "getPSControlParam" : { },
+    "layoutBodyOnly" : true,
+    "layoutPanel" : true,
+    "useDefaultLayout" : true
+  },
+  "title" : "产品管理",
+  "viewStyle" : "DEFAULT",
+  "viewType" : "DETREEEXPVIEW",
+  "enableDP" : true,
+  "enableFilter" : true,
+  "enableQuickSearch" : true,
+  "enableSearch" : true,
+  "showDataInfoBar" : true,
+  "modelid" : "14a6fede1677027bc02b5df6e085e52c",
+  "modeltype" : "PSAPPDEVIEW"
+}

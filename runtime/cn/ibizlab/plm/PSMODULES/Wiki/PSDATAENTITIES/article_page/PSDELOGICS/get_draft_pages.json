@@ -1,0 +1,107 @@
+{
+  "codeName" : "get_draft_pages",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDELOGICS/get_draft_pages.json",
+  "logicName" : "获取草稿页面",
+  "memo" : "查询并返回草稿数据",
+  "name" : "获取草稿页面",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 210,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 362,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 661,
+    "logicNodeType" : "END",
+    "name" : "返回查询结果",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "page_list"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 362
+  }, {
+    "codeName" : "RAWSQLCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "page_list"
+    },
+    "leftPos" : 359,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "查询草稿数据",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[space_id]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "space_id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "select * from page where page.SPACE_ID = ? and page.IS_PUBLISHED = 0;",
+    "topPos" : 370,
+    "fillDstLogicParam" : true
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "filter",
+    "logicName" : "过滤器",
+    "name" : "过滤器",
+    "filterParam" : true
+  }, {
+    "codeName" : "page_list",
+    "logicName" : "页面列表",
+    "name" : "页面列表",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "entityListParam" : true
+  }, {
+    "codeName" : "pages",
+    "logicName" : "页面分页结果",
+    "name" : "页面分页结果",
+    "entityPageParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

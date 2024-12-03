@@ -1,0 +1,80 @@
+package cn.ibizlab.plm.wiki.logic.article_pagelogic.get_form_stencil;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pageget_form_stencildefault;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pageget_form_stencilpage_info;
+                global cn.ibizlab.plm.core.wiki.domain.stencil article_pageget_form_stencilstencil_info;
+                    global cn.ibizlab.plm.core.wiki.service.IstencilService stencilservice;
+                    global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService article_pageservice;
+        global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService iBzSysArticle_pageDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "article_pageget_form_stencilbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "article_pageget_form_stencilend1"
+            when
+            then
+                        update(article_pageget_form_stencildefault);//更新fact中变量值
+                        update(article_pageget_form_stencilpage_info);//更新fact中变量值
+                        update(article_pageget_form_stencilstencil_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取模板id]
+            rule "prepareparam2"
+            ruleflow-group "article_pageget_form_stencilprepareparam2"
+            when
+            then
+                            article_pageget_form_stencilstencil_info.set("id",article_pageget_form_stencildefault.get("id"));
+                        update(article_pageget_form_stencildefault);//更新fact中变量值
+                        update(article_pageget_form_stencilpage_info);//更新fact中变量值
+                        update(article_pageget_form_stencilstencil_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[根据模板id获取模板信息]
+            rule "deaction1"
+            ruleflow-group "article_pageget_form_stencildeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(stencilservice.get(article_pageget_form_stencilstencil_info.getId()),article_pageget_form_stencilstencil_info);
+                        update(article_pageget_form_stencildefault);//更新fact中变量值
+                        update(article_pageget_form_stencilpage_info);//更新fact中变量值
+                        update(article_pageget_form_stencilstencil_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置返回数据]
+            rule "prepareparam1"
+            ruleflow-group "article_pageget_form_stencilprepareparam1"
+            when
+            then
+                            article_pageget_form_stencilpage_info.set("content",article_pageget_form_stencilstencil_info.get("content"));
+                            article_pageget_form_stencilpage_info.set("type","1");
+                            article_pageget_form_stencilpage_info.set("name",article_pageget_form_stencilstencil_info.get("name"));
+                        update(article_pageget_form_stencildefault);//更新fact中变量值
+                        update(article_pageget_form_stencilpage_info);//更新fact中变量值
+                        update(article_pageget_form_stencilstencil_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建草稿页面]
+            rule "deaction2"
+            ruleflow-group "article_pageget_form_stencildeaction2"
+            when
+            then
+                        article_pageservice.create(article_pageget_form_stencilpage_info);
+                        update(article_pageget_form_stencildefault);//更新fact中变量值
+                        update(article_pageget_form_stencilpage_info);//更新fact中变量值
+                        update(article_pageget_form_stencilstencil_info);//更新fact中变量值
+            end

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.prodmgmt.ticket.update.afterLogic" isClosed="false" isExecutable="true" name="prodmgmt_ticket_update_afterLogic" processType="Private" tns:packageName="cn.ibizlab.plm.core.prodmgmt.ticket.update.afterLogic">
+            <extensionElements>
+                <tns:import name="java.util.Map"/>
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                <tns:import name="cn.ibizlab.plm.core.prodmgmt.domain.ticket"/>
+            </extensionElements>
+                <startEvent id="begin" isInterrupting="true"/>
+                <endEvent id="prepareparam1_end" name="end"/>
+                            <callActivity activiti:exclusive="true" calledElement="cn.ibizlab.plm.core.prodmgmt.service.logic.ticketcreate_recent" id="d26922b25d216c29d9bc921431085aeb" name="create_recent.json.bpmn"/>
+                        <sequenceFlow id="begin_d26922b25d216c29d9bc921431085aeb" sourceRef="begin" targetRef="d26922b25d216c29d9bc921431085aeb"/>
+                            <sequenceFlow id="d26922b25d216c29d9bc921431085aeb_prepareparam1_end" sourceRef="d26922b25d216c29d9bc921431085aeb" targetRef="prepareparam1_end"/>
+        </process>
+    </definitions>

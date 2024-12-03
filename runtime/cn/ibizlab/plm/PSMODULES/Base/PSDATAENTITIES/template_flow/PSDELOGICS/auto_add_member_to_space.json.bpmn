@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.template_flowauto_add_member_to_space" isClosed="false" isExecutable="true" name="base_template_flow_auto_add_member_to_space_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.template_flowauto_add_member_to_space">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="template_flowauto_add_member_to_spacedefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.space()" name="template_flowauto_add_member_to_spacespace_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.space_member()" name="template_flowauto_add_member_to_spacespace_member" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.space()" name="template_flowauto_add_member_to_spacespace_temp" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.space()" name="template_flowauto_add_member_to_spacespaces" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.ImemberService))" name="memberservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.IspaceService))" name="spaceservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.Ispace_memberService))" name="space_memberservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Itemplate_flowService))" name="iBzSysTemplate_flowDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="template_flowauto_add_member_to_spacedefault" type="cn.ibizlab.plm.core.base.domain.template_flow" />
+                            <tns:global identifier="template_flowauto_add_member_to_spacespace_filter" type="cn.ibizlab.plm.core.wiki.domain.space" />
+                            <tns:global identifier="template_flowauto_add_member_to_spacespace_member" type="cn.ibizlab.plm.core.wiki.domain.space_member" />
+                            <tns:global identifier="template_flowauto_add_member_to_spacespace_temp" type="cn.ibizlab.plm.core.wiki.domain.space" />
+                            <tns:global identifier="template_flowauto_add_member_to_spacespaces" type="cn.ibizlab.plm.core.wiki.domain.space" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="template_flowauto_add_member_to_spacedeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="获取团队成员"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="template_flowauto_add_member_to_spaceprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置空间过滤条件"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="template_flowauto_add_member_to_spacededataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取符合条件的空间"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="template_flowauto_add_member_to_spaceend2" id="end2" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end2_end" name="end"/>
+                        <sequenceFlow id="end2_end_line" sourceRef="end2" targetRef="end2_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="template_flowauto_add_member_to_spacedebugparam3" id="debugparam3" implementation="http://www.jboss.org/drools/rule" name="查看OK空间"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="template_flowauto_add_member_to_spaceloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="逐空间执行"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="template_flowauto_add_member_to_spaceresetparam1" id="resetparam1" implementation="http://www.jboss.org/drools/rule" name="重置空间成员"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="template_flowauto_add_member_to_spaceprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置空间成员属性"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="template_flowauto_add_member_to_spacedebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="查看空间成员"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="template_flowauto_add_member_to_spacedeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="添加空间成员"/>
+                        <endEvent id="deaction1_end" name="end"/>
+                        <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
+                    <sequenceFlow id="begin_deaction2" sourceRef="begin" targetRef="deaction2">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction2_prepareparam2" sourceRef="deaction2" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_dedataset1" sourceRef="prepareparam2" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset1_debugparam3" sourceRef="gateway-dedataset1" targetRef="debugparam3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $template_flowauto_add_member_to_spacedefault:template_flow();
+                                            $template_flowauto_add_member_to_spacespace_filter:space();
+                                            $template_flowauto_add_member_to_spacespace_member:space_member();
+                                            $template_flowauto_add_member_to_spacespace_temp:space();
+                                            $template_flowauto_add_member_to_spacespaces:space();
+                                    eval($template_flowauto_add_member_to_spacedefault==template_flowauto_add_member_to_spacedefault && $template_flowauto_add_member_to_spacespace_filter==template_flowauto_add_member_to_spacespace_filter && $template_flowauto_add_member_to_spacespace_member==template_flowauto_add_member_to_spacespace_member && $template_flowauto_add_member_to_spacespace_temp==template_flowauto_add_member_to_spacespace_temp && $template_flowauto_add_member_to_spacespaces==template_flowauto_add_member_to_spacespaces);
+                                eval((RuleUtils.test($template_flowauto_add_member_to_spacespaces.get("size"),"GT","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset1_end2" sourceRef="gateway-dedataset1" targetRef="end2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $template_flowauto_add_member_to_spacedefault:template_flow();
+                                            $template_flowauto_add_member_to_spacespace_filter:space();
+                                            $template_flowauto_add_member_to_spacespace_member:space_member();
+                                            $template_flowauto_add_member_to_spacespace_temp:space();
+                                            $template_flowauto_add_member_to_spacespaces:space();
+                                    eval($template_flowauto_add_member_to_spacedefault==template_flowauto_add_member_to_spacedefault && $template_flowauto_add_member_to_spacespace_filter==template_flowauto_add_member_to_spacespace_filter && $template_flowauto_add_member_to_spacespace_member==template_flowauto_add_member_to_spacespace_member && $template_flowauto_add_member_to_spacespace_temp==template_flowauto_add_member_to_spacespace_temp && $template_flowauto_add_member_to_spacespaces==template_flowauto_add_member_to_spacespaces);
+                                eval((RuleUtils.test($template_flowauto_add_member_to_spacespaces.get("size"),"EQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam3_loopsubcall1" sourceRef="debugparam3" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_resetparam1" sourceRef="loopsubcall1" targetRef="resetparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_end2" sourceRef="loopsubcall1" targetRef="end2">
+                    </sequenceFlow>
+                    <sequenceFlow id="resetparam1_prepareparam1" sourceRef="resetparam1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_debugparam2" sourceRef="prepareparam1" targetRef="debugparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam2_deaction1" sourceRef="debugparam2" targetRef="deaction1">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-dedataset1" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="dedataset1_gateway-dedataset1_gatewayline" sourceRef="dedataset1" targetRef="gateway-dedataset1"></sequenceFlow>
+                            <sequenceFlow id="gateway-dedataset1_end_line" sourceRef="gateway-dedataset1" targetRef="gateway-dedataset1_end"/>
+                            <endEvent id="gateway-dedataset1_end" name="end"/>
+        </process>
+    </definitions>
