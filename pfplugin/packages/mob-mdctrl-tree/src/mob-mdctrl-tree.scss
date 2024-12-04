@@ -1,0 +1,177 @@
+/* stylelint-disable length-zero-no-unit */
+/* stylelint-disable order/properties-order */
+/* stylelint-disable selector-class-pattern */
+$control-mobmdctrl: (
+  text-color: getCssVar(color, text, 0),
+  hover-bg-color: getCssVar(color, primary),
+  active-bg-color: #d1d1d5,
+  active-color: getCssVar(color, bg, 1),
+  img-width: getCssVar(width-icon, extra-large),
+  img-radius: getCssVar(border-radius, extra-small),
+  padding: getCssVar(spacing, base) 0 getCssVar(spacing, base)
+    getCssVar(spacing, base),
+  group-padding: getCssVar(spacing, tight) getCssVar(spacing, base),
+  group-font: getCssVar(font-size, regular),
+  icon-color: #a0a5aa,
+  group-caption-color: #9a9b9f,
+  load-more-font-size: getCssVar(font-size, small),
+  font-size: getCssVar(font-size, header-5),
+  right-icon-margin-right: rem(21px),
+  simplelist-height: 250px,
+  select-item-padding-bottom: getCssVar(spacing, tight),
+  select-item-margin: getCssVar(spacing, tight) 0 0 getCssVar(spacing, tight),
+  select-item-check-padding: getCssVar(spacing, extra-tight),
+  select-item-gap: getCssVar(spacing, tight),
+  pagination-height: var(--van-pagination-height),
+);
+
+@include b(mob-mdctrl-tree) {
+  @include set-component-css-var(control-mobmdctrl, $control-mobmdctrl);
+
+  --van-cell-font-size: #{getCssVar(control-mobmdctrl, font-size)};
+
+  height: 100%;
+  overflow: getCssVar(control, overflow);
+
+  @include e(content) {
+    width: 100%;
+    height: 99%;
+
+    > .#{bem(mob-mdctrl-tree, node)} {
+      padding-left: 0px;
+    }
+
+    .van-cell {
+      padding: getCssVar(control-mobmdctrl, padding);
+    }
+
+    @include when(show-underLine) {
+      .#{bem(mob-mdctrl-tree-item, content)}::after {
+        left: 1rem;
+        content: '';
+        display: block;
+        height: rem(1px);
+        bottom: -0.875rem;
+        position: relative;
+        width: calc(100% - 2rem);
+        background-color: getCssVar(color, border);
+      }
+    }
+  }
+
+  @include e(setting) {
+    position: absolute;
+    right: getCssVar('spacing', 'tight');
+    z-index: 1;
+  }
+
+  @include when(enable-page) {
+    .#{bem(mob-mdctrl-tree, content)} {
+      height: calc(100% - getCssVar(control-mobmdctrl, pagination-height));
+    }
+  }
+
+  .van-cell__right-icon {
+    margin-right: getCssVar(control-mobmdctrl, right-icon-margin-right);
+    color: getCssVar(control-mobmdctrl, icon-color);
+  }
+
+  .van-cell--clickable:active {
+    color: inherit;
+  }
+
+  .van-cell::after {
+    width: 100%;
+  }
+
+  @include e(node) {
+    padding-left: getCssVar(spacing, extra-loose);
+  }
+}
+
+@include b(mob-mdctrl-tree-item) {
+  display: flex;
+  position: relative;
+  @include set-component-css-var(control-mobmdctrl, $control-mobmdctrl);
+
+  @include when(active) {
+    // background-color: getCssVar(control-mobmdctrl, active-bg-color);
+  }
+
+  @include m(right) {
+    margin-right: getCssVar(control-mobmdctrl, right-icon-margin-right);
+  }
+
+  @include e(expand-icon) {
+    position: absolute;
+    font-size: rem(24px);
+    color: getCssVar(color, disabled-text);
+    padding: getCssVar(spacing, base-loose) 0 0 rem(6px);
+  }
+
+  @include e(content) {
+    flex-grow: 1;
+    padding: 0.875rem getCssVar(spacing, base);
+
+    .#{bem(control-panel)} {
+      height: auto;
+    }
+  }
+}
+
+@include b(mob-mdctrl-tree-image) {
+  @include set-component-css-var(control-mobmdctrl, $control-mobmdctrl);
+
+  width: getCssVar(control-mobmdctrl, img-width);
+  margin-right: getCssVar(control-mobmdctrl, padding);
+  border-radius: getCssVar(control-mobmdctrl, img-radius);
+}
+
+@include b(mob-mdctrl-tree-group-caption) {
+  @include set-component-css-var(control-mobmdctrl, $control-mobmdctrl);
+
+  padding: getCssVar(control-mobmdctrl, group-padding);
+  font-size: getCssVar(control-mobmdctrl, group-font);
+  color: getCssVar(control-mobmdctrl, group-caption-color);
+}
+
+@include b(cmob-mdctrl-tree-load-more) {
+  display: flex;
+  justify-content: center;
+  padding: getCssVar(spacing, tight);
+  font-size: getCssVar(control-mobmdctrl, load-more-font-size);
+  color: getCssVar(color, text, 2);
+
+  span {
+    padding: getCssVar(spacing, extra, tight) getCssVar(spacing, base);
+    cursor: pointer;
+    border: 1px solid getCssVar(color, border);
+    border-radius: getCssVar(border, radius, full);
+  }
+}
+
+@include b(mob-mdctrl-tree-select-item) {
+  display: flex;
+  gap: getCssVar(control-mobmdctrl, select-item-gap);
+  padding-bottom: getCssVar(control-mobmdctrl, select-item-padding-bottom);
+  margin: getCssVar(control-mobmdctrl, select-item-margin);
+  border-bottom: 1px solid getCssVar(color, border);
+
+  > .van-checkbox {
+    padding: getCssVar(control-mobmdctrl, select-item-check-padding);
+  }
+}
+
+@include b('mob-mdctrl-tree-slider-item'){
+  .van-swipe-cell__right{
+    >.van-button{
+      height: 100%;
+    }
+  }
+
+  .van-swipe-cell__left{
+    >.van-button{
+      height: 100%;
+    }
+  }
+}

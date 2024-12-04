@@ -1,0 +1,98 @@
+/* stylelint-disable selector-class-pattern */
+/* stylelint-disable rule-empty-line-before */
+/* stylelint-disable block-no-empty */
+@include b(control-kanban-split) {
+    @include flex;
+
+    column-gap: getCssVar(spacing, base);
+    height: 100%;
+    @include e(header) {
+        padding-top: getCssVar(spacing, base);
+        color: getCssVar(color, primary);
+    }
+    .#{bem(control-kanban-group, draggable)} {
+        min-height: calc(100% - 53px);
+    }
+    @include e(left) {
+        position: relative;
+        flex: auto;
+        width: 50%;
+        @include flex(column);
+
+        &::after {
+            position: absolute;
+            top: 0;
+            right: -8px;
+            height: 100%;
+            content: '';
+            border-right: 1px solid var(--ibiz-color-border);
+        }
+    }
+    @include e(right) {
+        position: relative;
+        flex: auto;
+        width: 50%;
+        @include flex(column);
+    }
+
+    .#{bem(control-kanban-group, list)}{
+        @include when(empty) {
+            height: auto;
+        }
+    }
+}
+
+@include b(control-kanban-group) {
+    @include e(list) {
+        @include when(empty) {
+            .#{bem(control-kanban-split)}{
+                .#{bem(control-kanban, quicktoolbar)}{
+                    transform: translateY(110px) !important;
+                }
+            }
+        }
+    }
+}
+
+
+.is-plugin {
+  .#{bem(control-kanban-group)} {
+    // 工具栏按钮样式
+    .#{bem(control-kanban-group__header-right)} {
+
+      .#{bem(control-kanban-group__header-actions)} {
+        color: var(--ibiz-color-text-2);
+
+        &:hover {
+          color: var(--ibiz-color-primary);
+          background-color: var(--ibiz-color-primary-light-default);
+        }
+      }
+
+      .el-popper{
+        &.el-dropdown__popper {
+          .el-scrollbar__view {
+            &.el-dropdown__list {
+              background-color: var(--ibiz-color-white);
+            }
+          }
+          .el-button {
+            color: var(--ibiz-color-text-3);
+
+            --el-button-bg-color: var(--ibiz-color-white);
+            --el-button-hover-bg-color: var(--ibiz-color-fill-0);
+            --el-button-active-bg-color: var(--ibiz-color-fill-0);
+            --el-button-text-color: var(--ibiz-color-text-3);
+            --el-button-hover-text-color: var(--el-color-primary);
+            --el-button-active-text-color: var(--el-color-primary);
+
+            border: none;
+          }
+        }
+      }
+    }
+  }
+  .#{bem(control-kanban-group, list)} {
+    overflow: unset;
+  }
+}

@@ -1,0 +1,474 @@
+/* stylelint-disable selector-class-pattern */
+/* stylelint-disable no-descending-specificity */
+@include b(html-comment) {
+  @include flex(row, center, center);
+
+  @include when(collapse) {
+    .#{bem(html-toolbar)} {
+      display: none;
+    }
+
+    .w-e-text-container [data-slate-editor] p {
+      margin: 4px 0 0;
+    }
+
+    .#{bem(html-reply)} {
+      display: none;
+    }
+  }
+
+  width: 100%;
+  padding: 8px;
+  transition: all 0.2s;
+
+  .ibiz-html-editor {
+    flex: auto;
+  }
+
+  .ibiz-html {
+    width: calc(100% - 36px);
+
+    .table-container {
+      table {
+        width: 100%;
+      }
+    }
+  }
+
+  @include e(avatar) {
+    align-self: flex-start;
+    width: 28px;
+    height: 28px;
+    margin-right: 8px;
+    cursor: pointer;
+  }
+
+  @include e(avatar-name) {
+    flex: none;
+    align-self: flex-start;
+    width: 28px;
+    height: 28px;
+    margin-right: 8px;
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 28px;
+    color: getCssVar(color, white);
+    text-align: center;
+    cursor: pointer;
+    background: getCssVar(color, primary);
+    border-radius: 50%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .w-e-bar-item-group {
+    padding: 0;
+  }
+
+  .w-e-bar-item {
+    padding: 0;
+
+    button::before {
+      top: -24px;
+    }
+
+    button::after {
+      top: 4px;
+      transform: rotate(180deg);
+    }
+
+    button[data-menu-key='emotion'] {
+      svg:last-child {
+        display: none;
+      }
+
+      & + .w-e-drop-panel {
+        right: unset !important;
+        max-height: 200px;
+        margin: 0;
+        overflow: auto;
+        transform: translateY(-100%);
+      }
+    }
+
+    button[data-menu-key='attachments'],
+    button[data-menu-key='codesnippet'],
+    button[data-menu-key='page'] {
+      svg {
+        width: 28px;
+        height: 28px;
+        margin-right: 8px;
+        border: 1px solid var(--ibiz-color-border);
+        border-radius: 4px;
+        fill: var(--ibiz-color-primary);
+      }
+    }
+  }
+
+  .w-e-bar-item-group:hover
+    > button[data-menu-key='group-inline-style']
+    + .w-e-bar-item-menus-container {
+    display: flex;
+    margin-top: -40px;
+
+    button {
+      &::after,
+      &::before {
+        display: none;
+      }
+
+      .title {
+        display: none;
+      }
+
+      &:hover .title {
+        position: absolute;
+        top: 36px;
+        display: block;
+      }
+    }
+  }
+
+  .w-e-bar-item-group > button {
+    svg:last-child {
+      display: none;
+    }
+  }
+
+  button[data-menu-key='group-add-style'] {
+    svg {
+      fill: getCssVar(color, primary);
+    }
+  }
+
+  .w-e-bar-item-group:hover {
+    button[data-menu-key='group-add-style'] {
+      & + .w-e-bar-item-menus-container {
+        display: block;
+        min-width: 200px;
+        padding: 10px 0;
+        margin-top: -140px;
+
+        .w-e-bar-item {
+          justify-content: flex-start;
+          padding: 0 20px;
+
+          &:hover,
+          button:hover {
+            background-color: var(--ibiz-color-bg-0);
+          }
+        }
+      }
+    }
+  }
+
+  a span {
+    display: contents;
+  }
+
+  .#{bem(html-toolbar)} {
+    display: flex;
+    background-color: var(--ibiz-color-bg-1);
+
+    ion-icon {
+      width: 28px;
+      height: 40px;
+      padding: 0 4px;
+      cursor: pointer;
+    }
+
+    @include when(disabled) {
+      ion-icon {
+        color: var(--w-e-toolbar-disabled-color);
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .w-e-text-container .w-e-scroll > div {
+    overflow: hidden;
+  }
+
+  .w-e-bar-bottom .w-e-select-list {
+    max-height: 265px;
+  }
+
+  // 回复样式
+
+  .#{bem(html-content)} {
+    position: relative;
+  }
+  .#{bem(html-reply)} {
+    position: absolute;
+    bottom: 50px;
+    left: 20px;
+    display: flex;
+    column-gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+    width: calc(100% - 40px);
+    height: 40px;
+    padding: 0 12px;
+    line-height: 40px;
+    background-color: var(--ibiz-color-bg-0);
+
+    .#{bem(html-reply, content)} {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    p {
+      width: 100%;
+      margin: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    img {
+      display: inline-block;
+      height: 32px;
+      margin: 4px 4px 4px 8px;
+      box-shadow: 0 0 2px 1px rgb(0 0 0 / 10%);
+    }
+
+    ion-icon {
+      flex: none;
+      cursor: pointer;
+    }
+
+    mention-elem {
+      height: 24px;
+      margin: 0 8px;
+    }
+  }
+}
+
+@include b('html-editor-readonly') {
+  @include when(allow-collapse) {
+    @include b('html-editor') {
+      height: auto !important;
+      overflow: hidden;
+    }
+
+    .#{bem(html, toggle)} {
+      display: flex;
+      align-items: center;
+      margin-top: getCssVar(spacing, tight);
+      color: getCssVar(color, primary);
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      ion-icon {
+        margin-left: 4px;
+      }
+    }
+    .#{bem(html, preview)} {
+      height: 0;
+    }
+  }
+}
+
+// 图片预览样式
+@include b('html') {
+  @include when(allow-collapse) {
+    @include b('html-editor') {
+      img {
+        cursor: zoom-in;
+      }
+    }
+  }
+  .#{bem(html, preview)} {
+    position: absolute;
+    height: 0;
+
+    .el-image-viewer__wrapper {
+      width: 90%;
+      height: 90%;
+      margin: auto;
+    }
+
+    .el-image-viewer__mask {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      cursor: zoom-out;
+      opacity: 0.7;
+    }
+
+    .el-image-viewer__close {
+      top: -32px;
+      right: -36px;
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
+
+// 图片预览样式
+@include b('html-comment') {
+  @include b('html-editor') {
+    img {
+      cursor: zoom-in !important;
+    }
+  }
+}
+
+// 格式刷样式
+@include b(html) {
+  .w-e-text-container.is-paint-format {
+    cursor:
+      url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAUCAYAAACTQC2+AAAABGdBTUEAALGPC/xhBQAAATtJREFUSA3dlTFLA0EQhU+jlSkEG63EYGdlZZFG7QUbSyG/QP/C/Q0rqzQWQX+BwUKwtrexEFRQtFSI35NZWDa3soOHhQ8eM/v2zWw2N9xVVVUdwXUYoFxaq5il2wa8hvtG5dJaxYx16xFvLN8i3lmehiFC6Y94wbsTGsxZosajKA/7aewjrKZiyTocJO9DSYHT82r+YXyQs0eRfYBrD/Y1DB58OMyfeM/hrWq8N9qlZkmFBXiPPd6D7ikWUxwjrKWirTeJkzDeNYttKIxhDUuxiFGjfAnfMkUX3hs19emYqFt9P48mU6zVLEQPFjCfwgk8gyuwEd6pS5t0EQYmHhCXLZ8Kvz1oqmFO+H8HxVOXfZC5vwNd46y3xbx5ni1mQ4+dJ6NyDw4xX0GN9484YfcRhg+fcmmt408+5V99wSyVTWN94gAAAABJRU5ErkJggg==')
+        5 10,
+      text;
+  }
+
+  .w-e-bar-item button[data-menu-key='paintformat'].active {
+    background-color: getCssVar(color, primary, light, default);
+    border-radius: getCssVar(spacing, extra, tight);
+  }
+}
+
+// 工具栏样式
+@include b(html-toolbar) {
+  .w-e-bar-item {
+    &:nth-child(1) {
+      svg {
+        fill: var(--ibiz-color-primary);
+      }
+
+      .disabled {
+        svg {
+          stroke: transparent !important;
+        }
+      }
+    }
+
+    .disabled {
+      svg {
+        fill: var(--w-e-toolbar-disabled-color);
+        stroke: var(--w-e-toolbar-disabled-color) !important;
+      }
+    }
+  }
+}
+
+mention-elem {
+  padding: 3px !important;
+  margin: 0 4px !important;
+  color: var(--ibiz-editor-default-text-color);
+  white-space: nowrap;
+  cursor: pointer;
+  background-color: var(--ibiz-color-fill-0);
+  border-radius: 4px;
+}
+
+mention-elem::part(svg) {
+  margin: 0 4px;
+  vertical-align: middle;
+}
+
+mention-elem::part(identifier) {
+  margin: 0 4px;
+  color: var(--ibiz-color-disabled-text);
+}
+
+mention-elem::part(name) {
+  margin: 0 4px;
+}
+
+// 文字颜色配置弹框
+@include b('html') {
+  .w-e-drop-panel {
+    z-index: 100;
+    width: 252px;
+    height: 242px;
+  }
+  @include b('html-editor') {
+    .w-e-drop-panel {
+      margin: 0;
+    }
+
+    table {
+      width: 100% !important;
+      border-collapse: collapse;
+
+      th {
+        height: getCssVar('height-control', 'large');
+        min-height: getCssVar('height-control', 'large');
+        padding: getCssVar('spacing', 'tight');
+        border: 1px solid getCssVar(color, border);
+      }
+
+      td {
+        height: getCssVar('height-control', 'large');
+        min-height: getCssVar('height-control', 'large');
+        padding: getCssVar('spacing', 'tight');
+        empty-cells: show;
+        border: 1px solid getCssVar(color, border);
+      }
+    }
+  }
+}
+
+// 编辑人员标记样式
+personnel-marker-elem {
+  position: relative;
+  display: inline;
+  width: auto;
+  height: 100%;
+}
+
+personnel-marker-elem::part(box) {
+  z-index: 9999;
+  display: inline;
+  width: 1px;
+  color: #fff;
+}
+
+personnel-marker-elem::part(name) {
+  position: absolute;
+  top: -100%;
+  left: -2px;
+  display: inline-block;
+  width: auto;
+  padding: 2px 5px;
+  font-size: 12px;
+  line-height: normal;
+  white-space: nowrap;
+  border-radius: 2px;
+}
+
+personnel-marker-elem::part(line) {
+  position: absolute;
+  top: -4px;
+  display: inline-block;
+  width: 2px;
+  height: 20px;
+}
+
+div.ibiz-html {
+  .w-e-scroll > div {
+    background-color: var(--ibiz-color-bg-1);
+  }
+
+  .ibiz-html-content {
+    background-color: var(--ibiz-color-bg-1);
+  }
+}
+
+
+// 表情
+emoji-elem {
+margin: 0 1px !important;
+}

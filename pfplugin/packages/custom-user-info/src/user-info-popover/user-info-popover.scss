@@ -1,0 +1,91 @@
+/* stylelint-disable rule-empty-line-before */
+/* stylelint-disable color-function-notation */
+/* stylelint-disable alpha-value-notation */
+/* stylelint-disable length-zero-no-unit */
+@include b(user-info-popover) {
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 16px 0px;
+  @include e(header) {
+    width: 100%;
+    overflow: hidden;
+    background: #ccf;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+
+    &>img {
+      display: block;
+      width: 100%;
+      height: 120px;
+      user-select: none;
+    }
+  }
+
+  @include e(content) {
+    position: relative;
+    padding-bottom: 36px;
+
+    @include m(avatar-container) {
+      height: 34px;
+    }
+
+    @include m(avatar) {
+      position: absolute;
+      top: -34px;
+      right: calc(50% - 34px);
+      z-index: 1;
+      display: block;
+      width: 68px;
+      height: 68px;
+      line-height: 60px;
+      user-select: none;
+      border: 4px solid #fff;
+
+      .#{bem('custom-avatar', 'upload')} {
+        font-size: 34px;
+      }
+    }
+
+    @include m(info) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 auto;
+      margin-top: 24px;
+      text-align: center;
+      .user-name {
+        font-weight: 400;
+      }
+      .description {
+        margin-top: 10px;
+        font-size: var(--ibiz-font-size-small);
+        color: getCssVar(color, text, 3);
+      }
+    }
+  }
+
+  @include e(divider) {
+    width: calc(100% - 64px);
+    margin: var(--ibiz-spacing-extra-tight) auto;
+  }
+
+  @include e(footer) {
+    padding-bottom: 16px;
+  }
+
+  @include e(log-out) {
+    justify-content: flex-start;
+    width: 100%;
+    height: 40px;
+    min-height: 40px;
+    padding: 8px 32px;
+    text-align: left;
+    cursor: pointer;
+
+    @include m(icon) {
+      min-width: 18px;
+      font-size: 16px;
+    }
+    @include m(text) {
+      margin-left: 8px;
+    }
+  }
+}

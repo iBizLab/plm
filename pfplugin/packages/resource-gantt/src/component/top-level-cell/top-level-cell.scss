@@ -1,0 +1,60 @@
+@include b(top-level-cell) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+
+  @include e(caption) {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: var(--ibiz-color-text-2);
+
+    @include m(text) {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    @include m(exceed) {
+      color: getCssVar(color, white);
+      .#{bem(top-level-cell__caption--bkg)} {
+        background-color: var(--ibiz-color-danger);
+      }
+    }
+
+
+    @include m(saturation) {
+      color: getCssVar(color, white);
+      .#{bem(top-level-cell__caption--bkg)} {
+        background-color: var(--ibiz-color-success);
+      }
+    }
+
+    @include m(standard) {
+      .#{bem(top-level-cell__caption--bkg)} {
+        background-color: var(--ibiz-color-success);
+        opacity: 0.1;
+      }
+    }
+
+    @include m(bkg) {
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+
+  @include e(empty) {
+    color: transparent;
+    cursor: default;
+    opacity: 0;
+  }
+}

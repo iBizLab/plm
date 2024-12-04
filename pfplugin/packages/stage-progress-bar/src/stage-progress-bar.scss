@@ -1,0 +1,156 @@
+/* stylelint-disable selector-class-pattern */
+@mixin vertical-center {
+  display: flex;
+  align-items: center;
+}
+
+$stage-progress-bar: (
+  item-center-width: 10px,
+  item-center-height: 10px,
+  item-width: rem(110px),
+  operate-item-width: rem(220px),
+  operate-date-width: rem(170px),
+  operate-scroll-space: rem(30px),
+);
+
+@include b('stage-progress-bar') {
+  width: 100%;
+  height: 100%;
+
+  @include set-component-css-var(stage-progress-bar, $stage-progress-bar);
+
+  @include e('scroll') {
+    width: 100%;
+    height: 100%;
+    @include vertical-center;
+  }
+
+  @include e('item-box') {
+    position: relative;
+    display: flex;
+    align-items: start;
+    width: 100%;
+
+    &:last-child {
+      width: auto;
+    }
+
+    @include m('line') {
+      position: absolute;
+      top: calc(var(--ibiz-height-control-small) + var(--ibiz-spacing-extra-tight) + var(--ibiz-spacing-tight) + var(--ibiz-stage-progress-bar-item-center-height) / 2);
+      left: calc(var(--ibiz-stage-progress-bar-item-width) / 2 + var(--ibiz-stage-progress-bar-item-center-width) / 2);
+      width: calc(100% - var(--ibiz-stage-progress-bar-item-center-width));
+      height: 1px;
+      border-bottom: 1px dashed getCssVar(color, disabled, text);
+      border-bottom-color: getCssVar(color, disabled, text);
+    }
+
+    &.is-no-date {
+      .#{bem(stage-progress-bar__item-box--line)} {
+        top: calc(100% - 5px);
+      }
+    }
+  }
+
+  @include e('item') {
+    flex-direction: column;
+    gap: getCssVar('spacing', 'tight');
+    width: 100%;
+    min-width: getCssVar('stage-progress-bar', 'item-width');
+    max-width: getCssVar('stage-progress-bar', 'item-width');
+    font-size: getCssVar('font-size', 'regular');
+    @include vertical-center;
+
+    @include m('state') {
+      height: getCssVar('height-control', 'small');
+      padding: 0 getCssVar('spacing', 'base-tight');
+      margin-bottom: getCssVar('spacing', 'extra-tight');
+      line-height: getCssVar('height-control', 'small');
+      color: getCssVar('color', 'white');
+      white-space: nowrap;
+      cursor: pointer;
+      background-color: getCssVar(color, disabled, text);
+      border-radius: getCssVar('height-control', 'small');
+      @include vertical-center;
+    }
+
+    @include m('date') {
+      height: getCssVar('font-size', 'regular');
+      margin-top: getCssVar('spacing', 'extra-tight');
+      line-height: getCssVar('font-size', 'regular');
+      color: getCssVar(color, disabled, text);
+      @include vertical-center;
+    }
+
+    @include m('center') {
+      width: getCssVar('stage-progress-bar', 'item-center-width');
+      height: getCssVar('stage-progress-bar', 'item-center-height');
+      border: 2px solid getCssVar(color, disabled, text);
+      border-color: getCssVar(color, disabled, text);
+      border-radius: 50%;
+    }
+  }
+
+  @include e('operate') {
+    .#{bem(stage-progress-bar__item)} {
+      min-width: getCssVar('stage-progress-bar', 'operate-item-width');
+      max-width: getCssVar('stage-progress-bar', 'operate-item-width');
+    }
+
+    .#{bem(stage-progress-bar__item-box--line)} {
+      top: calc(var(--ibiz-height-control-default) + var(--ibiz-spacing-extra-tight) + var(--ibiz-spacing-tight) + var(--ibiz-stage-progress-bar-item-center-height) / 2);
+      left: calc(var(--ibiz-stage-progress-bar-operate-item-width) / 2 + var(--ibiz-stage-progress-bar-item-center-width) / 2);
+      width: calc(100% - var(--ibiz-stage-progress-bar-operate-item-width) / 2 + var(--ibiz-stage-progress-bar-operate-item-width) / 2 - var(--ibiz-stage-progress-bar-item-center-width));
+    }
+
+    .#{bem(stage-progress-bar__item--date)} {
+      height: auto;
+      color: var(--ibiz-color-text-0);
+    }
+
+    .#{bem(stage-progress-bar__scroll)} {
+      padding-right: getCssVar('stage-progress-bar', 'operate-scroll-space');
+    }
+
+    .#{bem(stage-progress-bar__item--state)} {
+      height: getCssVar('height-control', 'default');
+      line-height: getCssVar('height-control', 'default');
+      color: getCssVar(color, disabled, text);
+      background-color: transparent;
+      border: 1px solid getCssVar(color, disabled, text);
+      border-radius: getCssVar('border-radius', 'small');
+    }
+
+    &.#{bem(stage-progress-bar__left-operate)} {
+      .#{bem(stage-progress-bar__scroll)} {
+        padding-right: 0;
+        padding-left: getCssVar('stage-progress-bar', 'operate-scroll-space');
+      }
+    }
+  }
+}
+
+@include b('stage-progress-bar-date') {
+  height: auto;
+
+  @include e(caption) {
+    margin-bottom: getCssVar('spacing', 'tight');
+    line-height: getCssVar('height-control', 'small');
+    text-align: center;
+  }
+
+  @include e(time) {
+    max-width: getCssVar('stage-progress-bar', 'operate-date-width');
+    min-height: getCssVar('height-control', 'default');
+    line-height: getCssVar('height-control', 'default');
+  }
+}
+
+@include b('stage-progress-bar-date__popper') {
+  &.button-disable1 .el-picker-panel__sidebar .el-picker-panel__shortcut:nth-child(1),
+  &.button-disable2 .el-picker-panel__sidebar .el-picker-panel__shortcut:nth-child(2),
+  &.button-disable3 .el-picker-panel__sidebar .el-picker-panel__shortcut:nth-child(3){
+    color: getCssVar(color, disabled, text);
+    pointer-events: none;
+  }
+}

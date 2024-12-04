@@ -1,0 +1,127 @@
+/* stylelint-disable selector-class-pattern */
+@include b(route-picker) {
+  .#{bem(route-picker, dropdown)} {
+    margin: 0 4px;
+    line-height: 24px;
+    cursor: pointer;
+
+    .el-dropdown {
+      max-width: 302px;
+      font-size: getCssVar('font-size', 'header-5');
+
+      &:hover {
+        color: getCssVar(color, primary);
+      }
+
+      .el-tooltip__trigger {
+        @include flex;
+
+        align-items: center;
+        overflow: hidden;
+        white-space: nowrap;
+
+        .#{bem(route-picker, dropdown, cur-text)} {
+          flex: 1;
+          @include utils-ellipsis;
+        }
+      }
+    }
+
+    ion-icon {
+      margin-left: 8px;
+      font-size: 1.3em;
+    }
+  }
+  .#{bem(route-picker, transfer-item)} {
+    padding: 5px 25px;
+  }
+}
+@include b(route-picker) {
+  @include e(dropdown-item) {
+    max-width: 236px;
+    overflow: hidden;
+    @include m(text) {
+      @include utils-ellipsis;
+    }
+    @include when(hover) {
+      background-color: var(--ibiz-color-fill-0) !important;
+    }
+
+    @include e(no-data) {
+      padding-top: 0;
+      padding-bottom: 0;
+      .#{bem(no-data)} {
+        display: flex;
+        flex-wrap: wrap;
+        height: 100%;
+        padding: 0;
+
+        .el-empty__image {
+          width: 32px;
+          height: 32px;
+        }
+      }
+    }
+  }
+  @include e(dropdown) {
+    @include m(transfer) {
+      min-width: 240px;
+      @include flex(column);
+
+      .#{bem(route-picker, dropdown-list)} {
+        max-height: 26vh;
+        overflow: auto;
+      }
+      .#{bem(route-picker, dropdown-item)} {
+        @include when(active) {
+          background-color: var(--ibiz-color-fill-0) !important;
+        }
+      }
+      .#{bem(route-picker, group-action)} {
+        border-top: 1px solid getCssVar(color, border);
+        .#{bem(action-toolbar)} {
+          @include flex(column);
+        }
+
+        .el-button {
+          --el-button-size: #{getCssVar(height-control, large)};
+
+          justify-content: flex-start;
+          width: 100%;
+          padding: getCssVar(spacing, tight) getCssVar(spacing, base);
+          margin: 0;
+          font-size: getCssVar('font-size', 'regular');
+          color: var(--ibiz-color-text-0);
+
+          ion-icon {
+            margin-right: getCssVar(spacing, extra, tight);
+          }
+        }
+
+        .el-button.is-text:not(.is-disabled) {
+          &:hover {
+            background-color: var(--ibiz-color-fill-0);
+          }
+        }
+      }
+
+      .el-input {
+        padding: 8px 16px;
+      }
+
+      &.el-popper.el-dropdown__popper .el-scrollbar .el-dropdown__list {
+        background-color: transparent;
+
+        .el-dropdown-menu__item {
+          min-height: 38px;
+          color: var(--ibiz-color-text-0);
+          background-color: transparent;
+
+          &:hover {
+            background-color: var(--ibiz-color-fill-0);
+          }
+        }
+      }
+    }
+  }
+}

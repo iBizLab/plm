@@ -1,0 +1,167 @@
+.math-editor {
+  --me-theme: transparent;
+  --me-hover: var(--ibiz-color-primary-light-default);
+  --me-border: var(--ibiz-color-border);
+  --me-color: var(--ibiz-color-primary);
+  --me-gray: insert;
+  --drop-list-bcg: #FFF;
+  --drop-list-box-shadow: 0 0 16px rgb(0 0 0 / 4%);
+
+  overflow: hidden;
+  font-size: 18px;
+  text-align: left;
+
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  div {
+    box-sizing: border-box;
+  }
+
+  .me-menu {
+    width: 100%;
+    background: var(--me-theme);
+
+    &-item {
+      position: relative;
+      float: left;
+      text-align: center;
+      cursor: pointer;
+
+      .icon {
+        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        height: 40px;
+        padding: 0 4px;
+        margin: 0 4px;
+        border-radius: 4px;
+
+        &::before {
+          content: '';
+        }
+      }
+
+      &:nth-child(1) {
+        .icon {
+          margin-left: 0;
+        }
+      }
+
+      &:last-child {
+        .icon {
+          margin-right: 0;
+        }
+      }
+
+      &.active {
+        .icon {
+          color: var(--me-color);
+          background: var(--me-hover);
+        }
+      }
+    }
+  }
+
+  .me-latex,
+  .me-svg {
+    float: left;
+    width: 100%;
+    height: calc(100% - 1px);
+    padding: 10px 0;
+  }
+
+  .me-latex {
+    overflow-y: auto;
+    font-size: 14px;
+    letter-spacing: 1px;
+
+    &.is-no-data {
+      position: relative;
+
+      &::before {
+        position: absolute;
+        display: block;
+        color: var(--ibiz-color-disabled-text);
+        content: '输入 LaTex 公式';
+      }
+    }
+  }
+
+  .me-svg {
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    background: transparent;
+  }
+
+  .me-droplist {
+    position: absolute;
+    left: 0;
+    text-align: left;
+    background: var(--drop-list-bcg);
+    border: 1px solid rgb(0 0 0 / 4%);
+    border-radius: 3px;
+    box-shadow: var(--drop-list-box-shadow);
+
+    .me-dp-title {
+      height: 32px;
+      padding-left: 12px;
+      font-size: 14px;
+      line-height: 32px;
+      border-bottom: 1px solid var(--me-border);
+    }
+
+    .me-item:hover {
+      color: var(--me-color);
+      background: var(--me-hover);
+    }
+
+    .me-list {
+      padding: 4px 0;
+      list-style: none;
+      background: #fff;
+
+      .me-item {
+        padding: 5px 12px;
+        margin-bottom: 8px;
+        font-size: 14px;
+
+        .title {
+          margin-bottom: 4px;
+          font-size: 12px;
+          color: var(--me-gray);
+        }
+      }
+    }
+
+    .me-block {
+      padding: 5px;
+      list-style: none;
+
+      .me-item {
+        box-sizing: border-box;
+        display: inline-block;
+        min-width: 32px;
+        min-height: 32px;
+        padding: 2px;
+        margin: 5px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 3px;
+      }
+    }
+  }
+
+  .clearfix::after {
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    content: '';
+  }
+}

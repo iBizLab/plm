@@ -1,0 +1,68 @@
+/* stylelint-disable selector-class-pattern */
+@include b(mpicker) {
+    @include when(work-item) {
+        position: relative;
+        flex-direction: column;
+        @include e(bottom) {
+            @include flex(row, right);
+
+            margin-top: 12px;
+        }
+        @include e(actions) {
+            position: absolute;
+            top: 4px;
+            right: 10px;
+            z-index: 99;
+            cursor: pointer;
+        }
+    }
+    @include b('mpicker-group'){
+        @include e('header-actions'){
+            button.is-text.ibiz-action-toolbar__item{
+                color: var(--ibiz-color-text-2);
+            }
+        }
+    }
+}
+@include b(mpicker-work-item__popper) {
+    position: relative;
+    @include when(hidden) {
+        display: none;
+    }
+
+    .el-select-dropdown__list {
+        margin-bottom: 0 !important;
+    }
+    .#{bem(mpicker, more)} {
+        @include flex(column);
+
+        position: sticky;
+        bottom: 0;
+        width: 100%;
+        padding: 0;
+        background-color: getCssVar(color, bg, 0) !important;
+        border-top: 1px solid getCssVar(color, border);
+
+        .el-button {
+            justify-content: left;
+            width: 100%;
+            height: 34px;
+
+            ion-icon {
+                margin-right: 8px;
+            }
+        }
+    }
+
+    &.el-popper.is-light .el-select-dropdown__item.#{bem(mpicker, recent)} {
+      @include flex(column);
+
+      color: getCssVar(color, disabled, text);
+      cursor: default;
+      background: transparent;
+
+      &:hover {
+        background: transparent;
+      }
+    }
+}

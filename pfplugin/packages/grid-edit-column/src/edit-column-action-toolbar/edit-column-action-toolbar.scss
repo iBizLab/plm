@@ -1,0 +1,137 @@
+@mixin action-icon {
+  display: flex;
+  align-items: center;
+  width: getCssVar('spacing', 'base');
+  height: getCssVar('spacing', 'base');
+}
+
+/* edit-column-action-toolbar 界面行为组工具栏 end */
+@include b(edit-column-action-toolbar) {
+  display: flex;
+  flex-wrap: wrap;
+
+  @include e(item) {
+    padding: getCssVar('spacing', 'extra-tight') getCssVar('spacing', 'none');
+    margin: getCssVar(spacing, none) getCssVar(spacing, tight) getCssVar(spacing, none) getCssVar(spacing, none);
+
+    @include m(icon) {
+      @include when('has-icon') {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: getCssVar('width-icon', 'medium');
+        font-size: getCssVar('width-icon', 'medium');
+      }
+    }
+
+    &+& {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    // 平铺项 常规操作级按钮隐藏
+    // @include when('level-200') {
+    //   opacity: 0;
+    // }
+
+    @include when('group-button') {
+      --el-button-outline-color: transparent;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+
+      .el-icon {
+        @include action-icon;
+      }
+
+      ion-icon {
+        @include action-icon;
+      }
+    }
+  }
+
+  @include e('separator') {
+    height: auto;
+  }
+}
+
+
+@include b('edit-column-action-toolbar-popper') {
+  @include e('action-group') {
+
+    @include m('edit-column') {
+      display: flex;
+      align-items: center;
+      height: getCssVar('height-control', 'default');
+      padding: getCssVar('spacing', 'tight') rem(10px);
+      line-height: getCssVar('height-control', 'default');
+      cursor: pointer;
+
+      &:hover {
+        color: var(--ibiz-color-primary);
+        background-color: var(--ibiz-color-fill-0);
+      }
+    }
+
+    @include m('icon') {
+      @include action-icon;
+
+      margin: 0 rem(6px) 0 0;
+    }
+
+
+    .el-button {
+      display: block;
+      width: 100%;
+      height: getCssVar('height-control', 'default');
+      padding: getCssVar('spacing', 'tight') rem(10px);
+      margin: 0;
+      font-size: rem(14px);
+      color: var(--ibiz-color-text-2);
+      text-align: left;
+      border-radius: 0;
+
+      &:hover {
+        background-color: var(--ibiz-color-fill-0);
+
+        &:not(.is-disabled) {
+          color: var(--ibiz-color-primary);
+        }
+      }
+    }
+  }
+
+  @include e('edit-group') {
+    margin-bottom: rem(10px);
+    border-bottom: 1px solid getCssVar('color', 'border');
+  }
+
+  .#{bem('icon')} {
+    @include action-icon;
+  }
+
+  .#{bem('edit-column-action-toolbar__item')}.is-level-200 {
+    opacity: 1;
+  }
+
+  .#{bem('edit-column-action-toolbar__item--icon')} {
+    width: getCssVar('width-icon', 'medium');
+    margin: 0 rem(6px) 0 0;
+  }
+
+  .#{bem('edit-column-action-toolbar__separator')} {
+    margin: getCssVar('spacing', 'none');
+  }
+
+  .#{bem('grid-edit-column-action', 'icon')} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 rem(6px) 0 0;
+  }
+}

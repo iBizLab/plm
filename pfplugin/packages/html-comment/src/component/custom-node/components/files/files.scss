@@ -1,0 +1,122 @@
+@include b('files') {
+  width: 100%;
+
+  @include e('reference') {
+    position: relative;
+    line-height: getCssVar('height-control', 'default');
+    cursor: pointer;
+    border-radius: getCssVar('border-radius', 'small');
+
+    @include m('file-type') {
+      position: absolute;
+      top: 50%;
+      left: getCssVar('spacing', 'tight');
+      display: flex;
+      align-items: center;
+      min-width: getCssVar('font-size', 'header-6');
+      font-size: getCssVar('font-size', 'header-6');
+      transform: translateY(-50%);
+    }
+
+    @include m('file-name') {
+      &.#{bem(files__reference--file-name)} {
+        margin-left: getCssVar('spacing', 'extra-tight');
+      }
+    }
+
+    &::before {
+      display: inline-block;
+      width: getCssVar('font-size', 'header-6');
+      content: '';
+    }
+
+    &.#{bem(files__reference)} {
+      padding: 0 getCssVar('spacing', 'tight');
+    }
+  }
+
+  @include e('popover') {
+    &.el-popover.el-popper {
+      min-width: 0;
+      padding: var(--ibiz-spacing-extra-tight);
+      line-height: getCssVar('font-size', 'regular');
+    }
+  }
+
+  @include m(readonly) {
+    pointer-events: none;
+  }
+
+  @include when('hover-tool-bar-item') {
+    @include e('reference') {
+      background-color: getCssVar('color', 'primary', light, default);
+    }
+  }
+
+  @include when('delete') {
+    @include e('reference') {
+      background-color: getCssVar(color, danger, light, default);
+    }
+  }
+
+  &:hover {
+    @include e('reference') {
+      background-color: getCssVar('color', 'primary', light, default);
+    }
+  }
+}
+
+@include b('files-popover') {
+  @include e('content') {
+    display: flex;
+    align-items: center;
+  }
+
+  @include e('tool-item') {
+    max-height: getCssVar('height-control', 'default');
+    padding: getCssVar('spacing', 'tight');
+    margin-right: getCssVar('spacing', 'extra-tight');
+    font-size: getCssVar('font-size', 'header-6');
+    cursor: pointer;
+    border-radius: getCssVar('border-radius', 'small');
+
+    @include when('separator') {
+      width: 1px;
+      min-height: getCssVar('font-size', 'header-6');
+      padding: 0;
+      margin: 0 getCssVar('spacing', 'tight') 0 getCssVar('spacing', 'extra-tight');
+      font-size: 0;
+      cursor: default;
+      border-left: 1px solid getCssVar('color', 'text', 0);
+    }
+
+    @include when('delete') {
+      &:hover {
+        background-color: getCssVar(color, danger, light, default);
+
+        svg {
+          fill: getCssVar(color, danger);
+        }
+      }
+    }
+
+    &:last-child {
+      margin-right: getCssVar('spacing', 'none');
+    }
+
+    &:hover {
+      background-color: getCssVar('color', 'primary', light, default);
+
+      svg {
+        fill: getCssVar('color', 'primary');
+      }
+    }
+  }
+}
+
+
+files-elem {
+  display: inline-block;
+  width: auto;
+  margin: 0 1px !important;
+}

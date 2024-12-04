@@ -1,0 +1,35 @@
+@include b(layout-toolbar) {
+  @include e('content') {
+    display: flex;
+    align-items: center;
+    padding: getCssVar('spacing', 'extra-tight');
+    box-shadow: 0 0 getCssVar('spacing', 'base') getCssVar(color, shadow);
+  }
+
+  @include e('tool-item') {
+    padding: getCssVar('spacing', 'tight');
+    margin-right: getCssVar('spacing', 'extra-tight');
+    font-size: getCssVar('font-size', 'header-6');
+    cursor: pointer;
+    border-radius: getCssVar('border-radius', 'small');
+
+    @include m('content') {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: getCssVar('font-size', 'header-6');
+    }
+
+    &:last-child {
+      margin-right: getCssVar('spacing', 'none');
+    }
+
+    &:hover {
+      background-color: getCssVar('color', 'primary', light, default);
+
+      svg {
+        fill: getCssVar('color', 'primary');
+      }
+    }
+  }
+}

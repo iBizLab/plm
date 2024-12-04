@@ -1,0 +1,98 @@
+@include b('comment-list'){
+    padding: 16px;
+    background-color: #FAFAFA;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    @include e('item'){
+        margin-top: 24px;
+        @include m('header'){
+            display: flex;
+            align-items: center;
+        }
+        @include m('avatar'){
+            display: flex;
+            align-items: center;
+            margin-right: 8px;
+        }
+        @include m('img'){
+            width: 24px;
+            height: 24px;
+            margin-right: 16px;
+            overflow: hidden;
+            font-size: 12px;
+            line-height: 24px;
+            color: white;
+            text-align: center;
+            border-radius: 50%;
+
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        @include m('delicon'){
+            margin-left: 16px;
+            visibility: hidden;
+            
+
+            &:hover{
+                color: red;
+            }
+        }
+
+        &:hover{
+            .#{bem('comment-list','item','delicon')}{
+                cursor: pointer;
+                visibility: visible;
+            }
+        }
+        @include m('content'){
+            padding-top: 10px;
+            padding-left: 40px;
+        }
+
+    }
+    @include e('input'){
+        display: flex;
+        width: 50%;
+        @include m('left'){
+            display: flex;
+            display: inline-block;
+            align-items: start;
+            width: 24px;
+            min-width: 24px;
+            height: 100%;
+            margin-top: 2px;
+            margin-right: 16px;
+        }
+        @include m('avatar'){
+            width: 24px;
+            min-width: 24px;
+            height: 24px;
+            overflow: hidden;
+            border-radius: 50%;
+
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        @include m('input'){
+            display: inline-block;
+            margin-right: 16px;
+        }
+        @include m('right'){
+            display: inline-block;
+            display: flex;
+            align-items: end;
+        }
+        @include m('current-label'){
+            font-size: 12px;
+            line-height: 24px;
+            color: white;
+            text-align: center;
+        }
+    }
+}

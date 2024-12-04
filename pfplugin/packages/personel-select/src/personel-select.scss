@@ -1,0 +1,390 @@
+/* stylelint-disable selector-class-pattern */
+/* stylelint-disable no-descending-specificity */
+/* stylelint-disable rule-empty-line-before */
+/* stylelint-disable selector-type-no-unknown */
+@include b('picker-dropdown') {
+
+  @include b('picker-dropdown-select-value') {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    height: #{getCssVar(height, control, default)};
+    cursor: pointer;
+    @include when('readonly'){
+      cursor: unset;
+    }
+
+    @include e('textimg') {
+      width: #{getCssVar(height, control, default)};
+      min-width: #{getCssVar(height, control, default)};
+      height: #{getCssVar(height, control, default)};
+      overflow: hidden;
+      font-size: 12px;
+      line-height: #{getCssVar(height, control, default)};
+      color: #{getCssVar(color, primary, active, text)};
+      text-align: center;
+      background-color: #{getCssVar(color, primary, active)};
+      border-radius: 50%;
+    }
+
+    @include e('text') {
+      display: flex;
+      align-items: center;
+      justify-content: left;
+      height: var(--ibiz-height-control-default);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      @include m('label') {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    @include e('close') {
+      padding-left: 20px;
+      line-height: #{getCssVar(height, control, default)};
+      cursor: pointer;
+      visibility: hidden;
+    }
+
+    @include e('grid-img') {
+      display: none;
+    }
+
+    &:hover {
+      @include e('close') {
+        visibility: visible;
+      }
+    }
+  }
+
+  @include b('picker-dropdown-select-value-multiple') {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    @include when('readonly'){
+      cursor: unset;
+    }
+
+    @include e('item') {
+      display: flex;
+      gap: 5px;
+
+      @include m('textimg') {
+        position: relative;
+        width: 28px;
+        min-width: 28px;
+        height: 28px;
+        line-height: 28px;
+        cursor: pointer;
+      }
+
+      @include m('close') {
+        position: absolute;
+        top: -1px;
+        right: -8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 16px;
+        height: 16px;
+        color: white;
+        visibility: hidden;
+        background-color: lightgray;
+        border-radius: 50%;
+      }
+
+      &:hover {
+        .#{bem('picker-dropdown-select-value-multiple','item','close')} {
+          visibility: visible;
+        }
+      }
+    }
+  }
+
+  @include b('picker-dropdown-no-select-value') {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: left;
+    height: 32px;
+    cursor: pointer;
+    @include when('readonly'){
+      cursor: unset;
+
+      &:hover {
+        color: unset;
+
+        img {
+          border: 1px dashed #{getCssVar(color, border)};
+        }
+      }
+    }
+
+    &:hover {
+      color: #{getCssVar(color, primary)};
+
+      img {
+        border: 1px dashed #{getCssVar(color, primary)};
+      }
+    }
+
+    img {
+      width: 30px;
+      height: 30px;
+      border: 1px dashed #{getCssVar(color, border)};
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+
+  @include b('picker-dropdown-person-select') {
+    height: 418px;
+  }
+
+  @include b('picker-dropdown-select-modal') {
+    @include e('search-input') {
+      .el-input__suffix img {
+        width: 14px;
+        height: 14px;
+        font-size: 14px;
+      }
+    }
+
+    @include e('select') {
+      display: flex;
+      gap: 8px;
+      height: 32px;
+      margin-top: 16px;
+
+      @include when('no-solider-tab') {
+        justify-content: end;
+        margin-top: 0;
+      }
+    }
+
+    @include e('select-state') {
+      position: relative;
+      display: flex;
+      flex: auto;
+      flex-grow: 1;
+      align-items: center;
+      background-color: #{getCssVar(color, fill, 1)};
+
+      @include m('select-slider') {
+        position: absolute;
+        top: 2px;
+        z-index: 1;
+        width: 50%;
+        height: 28px;
+        background-color: #{getCssVar(color, bg, 1)};
+        transition: all 0.8s ease;
+
+        &.is-left {
+          left: 1px;
+        }
+
+        &.is-right {
+          left: calc(50% - 2px);
+        }
+      }
+
+      @include m('select-personel') {
+        position: relative;
+        z-index: 2;
+        width: 50%;
+        height: 100%;
+        line-height: 32px;
+        text-align: center;
+        cursor: pointer;
+        background-color: transparent;
+      }
+
+      @include m('select-department') {
+        z-index: 2;
+        width: 50%;
+        height: 100%;
+        line-height: 32px;
+        text-align: center;
+        cursor: pointer;
+        background-color: transparent;
+      }
+    }
+
+    @include e('actions') {
+      flex: auto;
+      flex-grow: 0;
+      line-height: 32px;
+      cursor: pointer;
+    }
+
+    @include e('personel-list') {
+      overflow: auto;
+
+      @include m('item') {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 36px;
+        padding: 0 10px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #{getCssVar(color, bg, 0)};
+        }
+
+        &.is-selected {
+          background-color: #{getCssVar(color, bg, 0)};
+        }
+      }
+
+      @include m('icon') {
+        color: #{getCssVar(color, primary, active)};
+      }
+
+      @include m('text') {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        justify-content: left;
+      }
+
+      @include m('text-img') {
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+        line-height: 24px;
+        color: #{getCssVar(color, primary, active, text)};
+        text-align: center;
+        background-color: #{getCssVar(color, primary, active)};
+        border-radius: 50%;
+      }
+
+      @include m('avatar'){
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      @include m('myself') {
+        padding: 0 5px;
+        font-size: 0.8em;
+        background-color: #{getCssVar(color, border)};
+        border-radius: 16px;
+      }
+    }
+
+    @include e('personel-list-user') {
+      height: 295px;
+      margin-top: 16px;
+
+      @include when('no-solider-tab') {
+        margin-top: 0;
+      }
+    }
+
+    @include e('loadmore') {
+      width: 100%;
+      height: 32px;
+      line-height: 32px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    @include e('deptpersonel') {
+      height: 295px;
+      margin-top: 16px;
+      overflow: hidden;
+
+      @include m('dept') {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        height: 40px;
+
+        .collapse-icon {
+          display: inline-block;
+          width: 14px;
+          text-align: center;
+          cursor: pointer;
+        }
+      }
+
+      @include m('dept-person') {
+        height: 255px;
+        overflow: hidden;
+      }
+    }
+
+    @include e('personel-list-department') {
+      height: 240px;
+    }
+  }
+}
+
+@include b('picker-dropdown-person-value') {
+  width: max-content;
+  padding: 0 11px;
+  &.#{bem('picker-dropdown', '', 'readonly')} {
+    padding: 0;
+  }
+}
+
+.#{bem('grid-edit-item')} {
+  @include b('picker-dropdown') {
+    @include when('show-default') {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+
+      @include b('picker-dropdown-no-select-value') {
+        visibility: hidden;
+      }
+
+      &:hover {
+        @include b('picker-dropdown-no-select-value') {
+          visibility: visible;
+        }
+      }
+    }
+  }
+}
+
+// 搜索栏内多选样式
+.ibiz-filter-tree-item {
+  align-items: flex-start;
+}
+
+// 关注样式
+.#{bem('picker-dropdown')} {
+  .#{bem('picker-dropdown-select-value-multiple')}.#{bem('picker-dropdown-select-value-multiple__hidden')} {
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+}
+
+// 只显示图片 不显示文字
+.#{bem('picker-dropdown')}.#{bem('picker-dropdown--only-icon')} {
+  padding: 0;
+  .#{bem('picker-dropdown-select-value')} {
+    cursor: pointer;
+    .#{bem('picker-dropdown-select-value__text')} {
+      display: none;
+    }
+  }
+  .#{bem('picker-dropdown-select-value__close')} {
+    display: none;
+  }
+  .#{bem('picker-dropdown-no-select-value')} {
+    span {
+      display: none;
+    }
+  }
+}

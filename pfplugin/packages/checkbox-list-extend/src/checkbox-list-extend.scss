@@ -1,0 +1,149 @@
+/* stylelint-disable no-descending-specificity */
+/* stylelint-disable rule-empty-line-before */
+/* stylelint-disable selector-class-pattern */
+@include b(checkbox-list-extend) {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  @include e(check-group) {
+    display: flex;
+    column-gap: 30px;
+  }
+  @include e(check-item) {
+    .el-checkbox__label {
+      display: flex;
+      align-items: center;
+    }
+    
+    .ibiz-icon {
+      margin-right: 8px;
+    }
+  }
+  @include e(collapse) {
+    display: flex;
+    flex-direction: column;
+    & > .el-collapse {
+      & > .el-collapse-item {
+        .el-checkbox-group,
+        .el-radio-group {
+          padding: 8px 6px 8px 0;
+        }
+      }
+      .el-collapse-item__content {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+      }
+    }
+    & > .el-checkbox-group,
+    & > .el-radio-group {
+      padding: 0 6px 6px 0;
+    }
+  }
+  @include e(dropdown) {
+    display: flex;
+    flex-wrap: wrap;
+    & > .el-checkbox-group,
+    & > .el-radio-group {
+      padding: 0 6px 6px 0;
+    }
+    & > .el-dropdown {
+      padding: 8px 12px;
+    }
+  }
+  @include e(dropdown-caption) {
+    color: getCssVar(color, primary);
+    @include m(icon-right) {
+      margin-left: 6px;
+    }
+  }
+  @include e(dropdown-menu) {
+    @include m(popper) {
+      &
+        > .el-scrollbar
+        .el-scrollbar__wrap
+        .el-scrollbar__view.el-dropdown__list {
+        padding: 8px 0;
+        background-color: getCssVar(color, bg-3);
+        .el-dropdown-menu__item,
+        .el-dropdown-menu {
+          padding: 0;
+          background-color: getCssVar(color, bg-3);
+          .el-checkbox-button,
+          .el-radio-button {
+            padding: 8px 16px;
+          }
+          .el-checkbox-button.is-checked,
+          .el-radio-button.is-active {
+            background-color: getCssVar(color, primary);
+          }
+        }
+        .el-dropdown-menu__item:hover {
+          background-color: getCssVar(color, bg-3);
+          .el-checkbox-button,
+          .el-radio-button {
+            background-color: getCssVar(color, primary, disabled);
+            .el-checkbox-button__original + .el-checkbox-button__inner,
+            .el-radio-button__original-radio + .el-radio-button__inner {
+              color: getCssVar(color, white);
+            }
+          }
+        }
+      }
+      .el-checkbox-button.is-checked
+        .el-checkbox-button__original
+        + .el-checkbox-button__inner,
+      .el-radio-button.is-active
+        .el-radio-button__original-radio
+        + .el-radio-button__inner {
+        color: getCssVar(color, white);
+        background: transparent;
+        border-color: transparent;
+      }
+      .el-checkbox-button
+        .el-checkbox-button__original
+        + .el-checkbox-button__inner,
+      .el-radio-button
+        .el-radio-button__original-radio
+        + .el-radio-button__inner {
+        color: getCssVar(color, primary);
+        background: transparent;
+        border-color: transparent;
+      }
+    }
+  }
+  @include e(dropdown-item) {
+    @include m(group) {
+      padding: 0 0 16px;
+      border-top: 1px solid getCssVar(color, border);
+      border-bottom: 1px solid getCssVar(color, border);
+    }
+  }
+  @include e(button) {
+    & > .el-collapse {
+      border: none;
+    }
+    .el-collapse {
+      margin: 8px 0;
+    }
+    .el-checkbox-button.is-checked .el-checkbox-button__inner,
+    .el-radio-button.is-active .el-radio-button__inner {
+      background: getCssVar(color, primary);
+      border-color: getCssVar(color, primary);
+    }
+    .el-checkbox-button .el-checkbox-button__inner,
+    .el-radio-button .el-radio-button__inner {
+      display: inline-block;
+      min-width: 86px;
+      overflow: hidden;
+      color: getCssVar(color, white);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      background: getCssVar(color, primary, disabled);
+      border-color: getCssVar(color, primary, disabled);
+      .ibiz-icon {
+        margin-right: 8px;
+      }
+    }
+  }
+}

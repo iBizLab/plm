@@ -1,0 +1,158 @@
+/* stylelint-disable selector-class-pattern */
+@include b('grid-edit-column') {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  @include m(ellipsis) {
+    @include e(editor) {
+      @include utils-ellipsis;
+    }
+  }
+
+  @include m(wrap) {
+    @include e(editor) {
+      @include overflow-wrap;
+    }
+  }
+
+  // 常规操作级按钮隐藏
+  .#{bem('edit-column-action-toolbar__item')} {
+
+    @include when('level-200') {
+      opacity: 0;
+    }
+
+    @include when('group-button') {
+      opacity: 0;
+
+    }
+  }
+
+  .hover-action {
+    opacity: 0;
+  }
+
+  @include m(edit-item) {
+    flex-grow: 1;
+    width: 0;
+  }
+
+  @include b('grid-edit-column-edit-container') {
+    display: flex;
+    width: 100%;
+  }
+
+  @include b('grid-edit-column-text-container') {
+    flex-grow: 1;
+    width: 0;
+    padding: getCssVar('spacing', 'tight');
+    @include utils-ellipsis;
+  }
+
+  @include b('grid-edit-column-toolbar-container') {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    text-align: center;
+
+    .hover-action {
+      padding: getCssVar('spacing', 'extra-tight') 0;
+      margin-right: getCssVar('spacing', 'tight');
+      font-size: rem(16px);
+      color: var(--ibiz-color-primary);
+      cursor: pointer;
+
+      svg {
+        fill: var(--ibiz-color-primary);
+      }
+
+      .el-icon {
+        color: var(--ibiz-color-primary);
+      }
+    }
+  }
+
+  .ibiz-grid-edit-item--show-mask:hover {
+    cursor: pointer;
+    background-color: initial;
+  }
+}
+
+@include b('grid-edit-column-actions-popper') {
+
+  .#{bem('grid-edit-column-action', 'icon')} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: rem(14px);
+    margin-right: rem(6px);
+  }
+
+  @include e('action-group') {
+    .el-button {
+      display: block;
+      width: 100%;
+      height: rem(32px);
+      padding: rem(8px) rem(10px);
+      margin: 0;
+      font-size: rem(14px);
+      color: var(--ibiz-color-text-2);
+      text-align: left;
+      border-radius: 0;
+
+      &:hover {
+        background-color: var(--ibiz-color-fill-0);
+
+        &:not(.is-disabled) {
+          color: var(--ibiz-color-primary);
+        }
+      }
+    }
+
+    @include m('edit-column') {
+      display: flex;
+      align-items: center;
+      height: rem(32px);
+      padding: rem(8px) rem(10px);
+      line-height: rem(32px);
+      cursor: pointer;
+
+      .ibiz-icon,
+      i {
+        min-width: rem(14px);
+        margin-right: rem(5px);
+      }
+
+      &:hover {
+        color: var(--ibiz-color-primary);
+        background-color: var(--ibiz-color-fill-0);
+      }
+    }
+  }
+
+  @include e('edit-group') {
+    margin-bottom: rem(10px);
+    border-bottom: 1px solid getVarCss(color, border);
+  }
+}
+
+.el-table__row:hover {
+  // 常规操作级按钮显示
+  .#{bem('edit-column-action-toolbar__item')} {
+
+    @include when('level-200') {
+      opacity: 1;
+    }
+
+    @include when('group-button') {
+      opacity: 1;
+
+    }
+  }
+
+  .hover-action {
+    opacity: 1;
+  }
+}

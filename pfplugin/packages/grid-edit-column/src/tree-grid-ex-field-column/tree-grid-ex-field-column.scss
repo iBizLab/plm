@@ -1,0 +1,76 @@
+/* stylelint-disable selector-class-pattern */
+@include b(tree-grid-ex-field-edit-column) {
+  .#{bem('tree-grid-ex-field-column-text-container')} {
+    width: auto;
+    min-width: 0;
+  }
+  .#{bem('tree-grid-ex-field-column-toolbar-container')} {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+  }
+
+  // 常规操作级按钮隐藏
+  .#{bem('edit-column-action-toolbar__item')} {
+
+    @include when('level-200') {
+      opacity: 0;
+    }
+
+    @include when('group-button') {
+      opacity: 0;
+
+    }
+  }
+
+  .el-button {
+    .ibiz-icon {
+      font-size: getCssVar('font-size', 'header-6');
+    }
+  }
+
+  .hover-action {
+    padding: getCssVar('spacing', 'extra-tight') 0;
+    margin-right: getCssVar('spacing', 'tight');
+    font-size: getCssVar('font-size', 'header-6');
+    opacity: 0;
+
+    svg {
+      fill: var(--ibiz-color-primary);
+    }
+  }
+  @include when(editable) {
+    height: calc(100% - 2px);
+    padding: 0;
+    border: 1px solid var(--ibiz-color-primary);
+    .#{bem('grid-edit-item','tooltip')} {
+      padding: 0;
+    }
+
+    .el-input__wrapper,
+    .el-input__wrapper:hover,
+    .el-input__wrapper:focus {
+      box-shadow: none
+    }
+  }
+}
+
+.xg-table-row:hover,
+.el-table__row:hover {
+  // 常规操作级按钮显示
+  .#{bem('edit-column-action-toolbar__item')} {
+
+    @include when('level-200') {
+      opacity: 1;
+    }
+
+    @include when('group-button') {
+      opacity: 1;
+
+    }
+  }
+
+  .hover-action {
+    opacity: 1;
+  }
+}

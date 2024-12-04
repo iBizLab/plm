@@ -1,0 +1,189 @@
+@include b('diagram-board') {
+  position: relative;
+  border: 1px solid getCssVar('color', 'border');
+  border-radius: getCssVar('border-radius', 'small');
+
+  &.is-activated {
+    border: 1px solid getCssVar('color', 'primary');
+  }
+
+  &.#{bem(diagram-board)} {
+    width: 100%;
+    height: 420px;
+  }
+
+  &:focus {
+    border: 1px solid getCssVar('color', 'primary');
+  }
+
+}
+
+@include b('diagram-board-custom-html-node') {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-size: getCssVar('font-size', 'regular');
+  text-align: center;
+
+  @include e('readonly-node') {
+    box-sizing: border-box;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: getCssVar('border-radius', 'medium');
+    box-shadow: 0 0 0 2px getCssVar('color', 'primary') inset;
+
+    &.#{bem(diagram-board-custom-html-node__readonly-node)} {
+      padding: 0 getCssVar('spacing', 'base');
+    }
+  }
+
+  @include e('edit-node') {
+    box-sizing: border-box;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border: none;
+    border-radius: getCssVar('border-radius', 'medium');
+    ;
+    box-shadow: 0 0 0 3px getCssVar('color', 'primary') inset;
+  }
+
+  @include e('add-item-icon-box') {
+    position: absolute;
+    top: 50%;
+    right: -18px;
+    display: flex;
+    align-items: center;
+    width: getCssVar('font-size', 'small');
+    height: getCssVar('font-size', 'small');
+    font-size: getCssVar('font-size', 'small');
+    cursor: pointer;
+    background-color: getCssVar('color', 'primary');
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(0, -50%);
+
+    .add-node-icon {
+      fill: getCssVar('color', 'white');
+    }
+
+    &::after {
+      position: absolute;
+      left: -6px;
+      display: block;
+      width: calc(var(--ibiz-font-size-small) / 2);
+      height: 2px;
+      content: '';
+      background-color: getCssVar('color', 'primary');
+    }
+  }
+
+  &.is-activated {
+    .#{bem(diagram-board-custom-html-node__readonly-node)} {
+      box-shadow: 0 0 0 3px getCssVar('color', 'primary') inset;
+    }
+  }
+
+  &:hover .#{bem(diagram-board-custom-html-node__add-item-icon-box)} {
+    opacity: 1;
+  }
+
+  .#{bem(diagram-board-custom-html-node__readonly-node)} {
+    white-space: nowrap;
+  }
+}
+
+@include b('diagram-board-top-tool-bar') {
+  &.#{bem(diagram-board-top-tool-bar)} {
+    position: absolute;
+    top: getCssVar('spacing', 'tight');
+    left: getCssVar('spacing', 'tight');
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    padding: getCssVar('spacing', 'extra-tight');
+    background-color: getCssVar('color', 'white');
+    border: 1px solid getCssVar(color, border);
+    box-shadow: 0 0 getCssVar('spacing', 'base') getCssVar(color, shadow);
+
+    .#{bem(diagram-board-top-tool-bar__item)} {
+      padding: getCssVar('spacing', 'tight');
+      margin-right: getCssVar('spacing', 'extra-tight');
+      font-size: getCssVar('font-size', 'header-6');
+      cursor: pointer;
+      border-radius: getCssVar('border-radius', 'small');
+
+      .#{bem(diagram-board-top-tool-bar__item--content)} {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: getCssVar('font-size', 'header-6');
+      }
+
+      &:last-child {
+        margin-right: getCssVar('spacing', 'none');
+      }
+
+      &:hover {
+        background-color: getCssVar('color', 'primary', light, default);
+
+        svg {
+          fill: getCssVar('color', 'primary');
+        }
+      }
+    }
+
+    .#{bem(diagram-board-top-tool-bar__item-separator)} {
+      width: 1px;
+      height: getCssVar('font-size', 'header-6');
+      padding: 0;
+      margin: 0 getCssVar('spacing', 'tight') 0 getCssVar('spacing', 'extra-tight');
+      font-size: 0;
+      cursor: default;
+      border-left: 1px solid getCssVar('color', 'text', 0);
+    }
+
+    .#{bem(diagram-board-top-tool-bar__item-delete)} {
+      &:hover {
+        background-color: getCssVar(color, danger, light, default);
+
+        svg {
+          fill: getCssVar(color, danger);
+        }
+      }
+    }
+  }
+}
+
+// 修复独占一行元素焦点获取焦点异常
+.w-e-text-container {
+  .#{bem(diagram-board)} {
+    position: relative;
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: 0;
+      display: block;
+      width: 12px;
+      height: 100%;
+      content: '';
+    }
+
+    &::after {
+      left: -12px;
+    }
+
+    &::before {
+      right: -12px;
+    }
+  }
+}
+
+mind-map-elem {
+  display: inline-block;
+  width: calc(100% - 2px);
+}
