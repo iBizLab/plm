@@ -4,7 +4,7 @@
 ##### 克隆此存储库：
 
 ```
-git clone https://github.com/ibizlab/plm.git
+git clone https://gitee.com/ibizlab/plm.git
 ```
 
 ##### 切换到此目录：
