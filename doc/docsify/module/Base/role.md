@@ -7,13 +7,21 @@
 ## 属性
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
+|角色代码标记|AUTHORITY|文本，可指定长度|300|否||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
+|租户系统标识|DCSYSTEMID|文本，可指定长度|100|是||
+|全局标记|GLOBALFLAG|是否逻辑|100|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |名称|NAME|文本，可指定长度|200|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 
+
+## 映射
+| 名称col150    | 映射实体col200   | 备注col900  |
+| -------- |----------  |----- |
+|[ebsx角色映射](module/Base/role/demap/DEMap)|[系统角色(SYS_ROLE)](module/ebsx/Role)||
 
 ## 行为
 | 中文名col200    | 代码名col150    | 类型col150    | 事务col100   | 批处理col100   | 附加操作col100  | 插件col150    |  备注col300  |

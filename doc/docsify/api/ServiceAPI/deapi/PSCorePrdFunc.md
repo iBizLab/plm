@@ -17,6 +17,11 @@
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">functype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|功能类型|
+|<el-row justify="space-between"><el-col :span="20">settings</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置|
+|<el-row justify="space-between"><el-col :span="20">vers</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可用版本|
+|<el-row justify="space-between"><el-col :span="20">info</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|详细信息|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品分类|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更日志|
 |<el-row justify="space-between"><el-col :span="20">avatarurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|图标路径|
 |<el-row justify="space-between"><el-col :span="20">currentversion</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本|
 |<el-row justify="space-between"><el-col :span="20">fullname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|完全名称|
@@ -30,10 +35,11 @@
 |<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
 |<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|排序值|
 |<el-row justify="space-between"><el-col :span="20">pscoreprdfuncid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|核心产品功能标识|
-|<el-row justify="space-between"><el-col :span="20">pscoreprdfuncname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|核心产品功能名称|
+|<el-row justify="space-between"><el-col :span="20">pscoreprdfuncname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用名称|
 |<el-row justify="space-between"><el-col :span="20">pscoreprdid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|核心产品|
 |<el-row justify="space-between"><el-col :span="20">pscoreprdname</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|核心产品|
 |<el-row justify="space-between"><el-col :span="20">path</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|路径|
+|<el-row justify="space-between"><el-col :span="20">settingurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置地址|
 
 
 
@@ -41,6 +47,11 @@
 ```json
 {
   "functype" : null,
+  "settings" : null,
+  "vers" : null,
+  "info" : null,
+  "category" : null,
+  "changelog" : null,
   "avatarurl" : null,
   "createdate" : null,
   "createman" : null,
@@ -60,6 +71,7 @@
   "pscoreprdid" : null,
   "pscoreprdname" : null,
   "path" : null,
+  "settingurl" : null,
   "updatedate" : null,
   "updateman" : null,
 }
@@ -71,6 +83,11 @@
 
 {
   "functype" : null,
+  "settings" : null,
+  "vers" : null,
+  "info" : null,
+  "category" : null,
+  "changelog" : null,
   "avatarurl" : null,
   "createdate" : null,
   "createman" : null,
@@ -90,6 +107,7 @@
   "pscoreprdid" : null,
   "pscoreprdname" : null,
   "path" : null,
+  "settingurl" : null,
   "updatedate" : null,
   "updateman" : null,
 }
@@ -121,6 +139,11 @@
 
 {
   "functype" : null,
+  "settings" : null,
+  "vers" : null,
+  "info" : null,
+  "category" : null,
+  "changelog" : null,
   "avatarurl" : null,
   "createdate" : null,
   "createman" : null,
@@ -140,6 +163,7 @@
   "pscoreprdid" : null,
   "pscoreprdname" : null,
   "path" : null,
+  "settingurl" : null,
   "updatedate" : null,
   "updateman" : null,
 }
@@ -190,6 +214,11 @@
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">functype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|功能类型|
+|<el-row justify="space-between"><el-col :span="20">settings</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置|
+|<el-row justify="space-between"><el-col :span="20">vers</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可用版本|
+|<el-row justify="space-between"><el-col :span="20">info</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|详细信息|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品分类|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更日志|
 |<el-row justify="space-between"><el-col :span="20">avatarurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|图标路径|
 |<el-row justify="space-between"><el-col :span="20">currentversion</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本|
 |<el-row justify="space-between"><el-col :span="20">fullname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|完全名称|
@@ -203,10 +232,11 @@
 |<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
 |<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|排序值|
 |<el-row justify="space-between"><el-col :span="20">pscoreprdfuncid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|核心产品功能标识|
-|<el-row justify="space-between"><el-col :span="20">pscoreprdfuncname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|核心产品功能名称|
+|<el-row justify="space-between"><el-col :span="20">pscoreprdfuncname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用名称|
 |<el-row justify="space-between"><el-col :span="20">pscoreprdid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|核心产品|
 |<el-row justify="space-between"><el-col :span="20">pscoreprdname</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|核心产品|
 |<el-row justify="space-between"><el-col :span="20">path</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|路径|
+|<el-row justify="space-between"><el-col :span="20">settingurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置地址|
 
 
 
@@ -214,6 +244,11 @@
 ```json
 {
   "functype" : null,
+  "settings" : null,
+  "vers" : null,
+  "info" : null,
+  "category" : null,
+  "changelog" : null,
   "avatarurl" : null,
   "createdate" : null,
   "createman" : null,
@@ -233,6 +268,7 @@
   "pscoreprdid" : null,
   "pscoreprdname" : null,
   "path" : null,
+  "settingurl" : null,
   "updatedate" : null,
   "updateman" : null,
 }
@@ -244,6 +280,11 @@
 
 {
   "functype" : null,
+  "settings" : null,
+  "vers" : null,
+  "info" : null,
+  "category" : null,
+  "changelog" : null,
   "avatarurl" : null,
   "createdate" : null,
   "createman" : null,
@@ -263,6 +304,7 @@
   "pscoreprdid" : null,
   "pscoreprdname" : null,
   "path" : null,
+  "settingurl" : null,
   "updatedate" : null,
   "updateman" : null,
 }
@@ -287,6 +329,11 @@
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">functype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|功能类型|
+|<el-row justify="space-between"><el-col :span="20">settings</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置|
+|<el-row justify="space-between"><el-col :span="20">vers</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可用版本|
+|<el-row justify="space-between"><el-col :span="20">info</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|详细信息|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品分类|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更日志|
 |<el-row justify="space-between"><el-col :span="20">avatarurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|图标路径|
 |<el-row justify="space-between"><el-col :span="20">currentversion</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本|
 |<el-row justify="space-between"><el-col :span="20">fullname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|完全名称|
@@ -300,10 +347,11 @@
 |<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
 |<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|排序值|
 |<el-row justify="space-between"><el-col :span="20">pscoreprdfuncid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|核心产品功能标识|
-|<el-row justify="space-between"><el-col :span="20">pscoreprdfuncname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|核心产品功能名称|
+|<el-row justify="space-between"><el-col :span="20">pscoreprdfuncname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用名称|
 |<el-row justify="space-between"><el-col :span="20">pscoreprdid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|核心产品|
 |<el-row justify="space-between"><el-col :span="20">pscoreprdname</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|核心产品|
 |<el-row justify="space-between"><el-col :span="20">path</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|路径|
+|<el-row justify="space-between"><el-col :span="20">settingurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置地址|
 
 
 
@@ -311,6 +359,11 @@
 ```json
 {
   "functype" : null,
+  "settings" : null,
+  "vers" : null,
+  "info" : null,
+  "category" : null,
+  "changelog" : null,
   "avatarurl" : null,
   "createdate" : null,
   "createman" : null,
@@ -330,6 +383,7 @@
   "pscoreprdid" : null,
   "pscoreprdname" : null,
   "path" : null,
+  "settingurl" : null,
   "updatedate" : null,
   "updateman" : null,
 }
@@ -359,6 +413,11 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">functype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|功能类型|
+|<el-row justify="space-between"><el-col :span="20">settings</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置|
+|<el-row justify="space-between"><el-col :span="20">vers</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可用版本|
+|<el-row justify="space-between"><el-col :span="20">info</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|详细信息|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品分类|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更日志|
 |<el-row justify="space-between"><el-col :span="20">avatarurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|图标路径|
 |<el-row justify="space-between"><el-col :span="20">currentversion</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本|
 |<el-row justify="space-between"><el-col :span="20">fullname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|完全名称|
@@ -372,10 +431,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
 |<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|排序值|
 |<el-row justify="space-between"><el-col :span="20">pscoreprdfuncid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|核心产品功能标识|
-|<el-row justify="space-between"><el-col :span="20">pscoreprdfuncname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|核心产品功能名称|
+|<el-row justify="space-between"><el-col :span="20">pscoreprdfuncname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用名称|
 |<el-row justify="space-between"><el-col :span="20">pscoreprdid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|核心产品|
 |<el-row justify="space-between"><el-col :span="20">pscoreprdname</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|核心产品|
 |<el-row justify="space-between"><el-col :span="20">path</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|路径|
+|<el-row justify="space-between"><el-col :span="20">settingurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置地址|
 
 
 
@@ -383,6 +443,11 @@ Integer
 ```json
 {
   "functype" : null,
+  "settings" : null,
+  "vers" : null,
+  "info" : null,
+  "category" : null,
+  "changelog" : null,
   "avatarurl" : null,
   "createdate" : null,
   "createman" : null,
@@ -402,6 +467,7 @@ Integer
   "pscoreprdid" : null,
   "pscoreprdname" : null,
   "path" : null,
+  "settingurl" : null,
   "updatedate" : null,
   "updateman" : null,
 }
@@ -413,6 +479,11 @@ Integer
 
 {
   "functype" : null,
+  "settings" : null,
+  "vers" : null,
+  "info" : null,
+  "category" : null,
+  "changelog" : null,
   "avatarurl" : null,
   "createdate" : null,
   "createman" : null,
@@ -432,6 +503,7 @@ Integer
   "pscoreprdid" : null,
   "pscoreprdname" : null,
   "path" : null,
+  "settingurl" : null,
   "updatedate" : null,
   "updateman" : null,
 }
@@ -456,6 +528,11 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">functype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|功能类型|
+|<el-row justify="space-between"><el-col :span="20">settings</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置|
+|<el-row justify="space-between"><el-col :span="20">vers</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可用版本|
+|<el-row justify="space-between"><el-col :span="20">info</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|详细信息|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品分类|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更日志|
 |<el-row justify="space-between"><el-col :span="20">avatarurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|图标路径|
 |<el-row justify="space-between"><el-col :span="20">currentversion</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本|
 |<el-row justify="space-between"><el-col :span="20">fullname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|完全名称|
@@ -469,10 +546,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
 |<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|排序值|
 |<el-row justify="space-between"><el-col :span="20">pscoreprdfuncid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|核心产品功能标识|
-|<el-row justify="space-between"><el-col :span="20">pscoreprdfuncname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|核心产品功能名称|
+|<el-row justify="space-between"><el-col :span="20">pscoreprdfuncname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用名称|
 |<el-row justify="space-between"><el-col :span="20">pscoreprdid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|核心产品|
 |<el-row justify="space-between"><el-col :span="20">pscoreprdname</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|核心产品|
 |<el-row justify="space-between"><el-col :span="20">path</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|路径|
+|<el-row justify="space-between"><el-col :span="20">settingurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置地址|
 
 
 
@@ -480,6 +558,11 @@ Integer
 ```json
 {
   "functype" : null,
+  "settings" : null,
+  "vers" : null,
+  "info" : null,
+  "category" : null,
+  "changelog" : null,
   "avatarurl" : null,
   "createdate" : null,
   "createman" : null,
@@ -499,6 +582,7 @@ Integer
   "pscoreprdid" : null,
   "pscoreprdname" : null,
   "path" : null,
+  "settingurl" : null,
   "updatedate" : null,
   "updateman" : null,
 }
@@ -510,6 +594,11 @@ Integer
 
 {
   "functype" : null,
+  "settings" : null,
+  "vers" : null,
+  "info" : null,
+  "category" : null,
+  "changelog" : null,
   "avatarurl" : null,
   "createdate" : null,
   "createman" : null,
@@ -529,6 +618,7 @@ Integer
   "pscoreprdid" : null,
   "pscoreprdname" : null,
   "path" : null,
+  "settingurl" : null,
   "updatedate" : null,
   "updateman" : null,
 }
@@ -558,6 +648,11 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">functype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|功能类型|
+|<el-row justify="space-between"><el-col :span="20">settings</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置|
+|<el-row justify="space-between"><el-col :span="20">vers</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可用版本|
+|<el-row justify="space-between"><el-col :span="20">info</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|详细信息|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品分类|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更日志|
 |<el-row justify="space-between"><el-col :span="20">avatarurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|图标路径|
 |<el-row justify="space-between"><el-col :span="20">currentversion</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本|
 |<el-row justify="space-between"><el-col :span="20">fullname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|完全名称|
@@ -571,10 +666,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
 |<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|排序值|
 |<el-row justify="space-between"><el-col :span="20">pscoreprdfuncid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|核心产品功能标识|
-|<el-row justify="space-between"><el-col :span="20">pscoreprdfuncname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|核心产品功能名称|
+|<el-row justify="space-between"><el-col :span="20">pscoreprdfuncname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用名称|
 |<el-row justify="space-between"><el-col :span="20">pscoreprdid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|核心产品|
 |<el-row justify="space-between"><el-col :span="20">pscoreprdname</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|核心产品|
 |<el-row justify="space-between"><el-col :span="20">path</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|路径|
+|<el-row justify="space-between"><el-col :span="20">settingurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置地址|
 
 
 
@@ -582,6 +678,11 @@ Integer
 ```json
 {
   "functype" : null,
+  "settings" : null,
+  "vers" : null,
+  "info" : null,
+  "category" : null,
+  "changelog" : null,
   "avatarurl" : null,
   "createdate" : null,
   "createman" : null,
@@ -601,6 +702,7 @@ Integer
   "pscoreprdid" : null,
   "pscoreprdname" : null,
   "path" : null,
+  "settingurl" : null,
   "updatedate" : null,
   "updateman" : null,
 }
@@ -631,6 +733,11 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">functype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|功能类型|
+|<el-row justify="space-between"><el-col :span="20">settings</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置|
+|<el-row justify="space-between"><el-col :span="20">vers</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可用版本|
+|<el-row justify="space-between"><el-col :span="20">info</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|详细信息|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品分类|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更日志|
 |<el-row justify="space-between"><el-col :span="20">avatarurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|图标路径|
 |<el-row justify="space-between"><el-col :span="20">currentversion</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本|
 |<el-row justify="space-between"><el-col :span="20">fullname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|完全名称|
@@ -644,10 +751,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
 |<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|排序值|
 |<el-row justify="space-between"><el-col :span="20">pscoreprdfuncid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|核心产品功能标识|
-|<el-row justify="space-between"><el-col :span="20">pscoreprdfuncname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|核心产品功能名称|
+|<el-row justify="space-between"><el-col :span="20">pscoreprdfuncname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用名称|
 |<el-row justify="space-between"><el-col :span="20">pscoreprdid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|核心产品|
 |<el-row justify="space-between"><el-col :span="20">pscoreprdname</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|核心产品|
 |<el-row justify="space-between"><el-col :span="20">path</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|路径|
+|<el-row justify="space-between"><el-col :span="20">settingurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置地址|
 
 
 
@@ -655,6 +763,11 @@ Integer
 ```json
 {
   "functype" : null,
+  "settings" : null,
+  "vers" : null,
+  "info" : null,
+  "category" : null,
+  "changelog" : null,
   "avatarurl" : null,
   "createdate" : null,
   "createman" : null,
@@ -674,6 +787,7 @@ Integer
   "pscoreprdid" : null,
   "pscoreprdname" : null,
   "path" : null,
+  "settingurl" : null,
   "updatedate" : null,
   "updateman" : null,
 }
@@ -701,7 +815,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_funcstate_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|功能状态|
 |<el-row justify="space-between"><el-col :span="20">n_funcstate_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|功能状态|
 |<el-row justify="space-between"><el-col :span="20">n_pscoreprdfuncid_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|核心产品功能标识|
-|<el-row justify="space-between"><el-col :span="20">n_pscoreprdfuncname_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|核心产品功能名称|
+|<el-row justify="space-between"><el-col :span="20">n_pscoreprdfuncname_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用名称|
 |<el-row justify="space-between"><el-col :span="20">n_pscoreprdid_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|核心产品|
 
 
@@ -726,6 +840,11 @@ Integer
 [
   {
     "functype" : null,
+    "settings" : null,
+    "vers" : null,
+    "info" : null,
+    "category" : null,
+    "changelog" : null,
     "avatarurl" : null,
     "createdate" : null,
     "createman" : null,
@@ -745,6 +864,7 @@ Integer
     "pscoreprdid" : null,
     "pscoreprdname" : null,
     "path" : null,
+    "settingurl" : null,
     "updatedate" : null,
     "updateman" : null,
   }

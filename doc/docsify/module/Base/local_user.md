@@ -18,6 +18,7 @@
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |手机号|MOBILE|文本，可指定长度|100|是||
 |名称|NAME|文本，可指定长度|200|是||
+|组织标识|ORGANIZATION_ID|文本，可指定长度|100|是||
 |密码|PASSWORD|文本，可指定长度|200|是||
 |统计|REPORT_FLAG|[是否逻辑](index/dictionary_index#user_report_flag "启停状态")||是||
 |状态|STATUS|文本，可指定长度|100|是||

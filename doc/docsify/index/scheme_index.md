@@ -91,6 +91,7 @@
 |OWNER_ID|所属数据标识|VARCHAR|是|100|||
 |OWNER_SUBTYPE|所属对象子类型|VARCHAR|是|100|||
 |OWNER_TYPE|所属数据对象|VARCHAR|是|100|||
+|TITLE|职位|VARCHAR|是|100|||
 |TYPE|关注类型|VARCHAR|是|60|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
@@ -164,6 +165,7 @@
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |IS_LEAF|是否叶子节点|INT|是||||
 |IS_LEAF2|是否叶子节点2|INT|是||||
+|IS_LEAF3|是否叶子节点3|INT|是||||
 |NAME|名称|VARCHAR|是|200|||
 |OWNER_ID|所属数据标识|VARCHAR|是|100|||
 |OWNER_SUBTYPE|所属对象子类型|VARCHAR|是|100|||
@@ -553,6 +555,7 @@
 |LIBRARY_ID|测试库标识|VARCHAR|是|100|||
 |NAME|名称|VARCHAR|是|200|||
 |ROLE_ID|角色|VARCHAR|是|60|||
+|TITLE|职位|VARCHAR|是|100|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
 |USER_ID|用户标识|VARCHAR|是|100|||
@@ -580,6 +583,7 @@
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |MOBILE|手机号|VARCHAR|是|100|||
 |NAME|名称|VARCHAR|是|200|||
+|ORGANIZATION_ID|组织标识|VARCHAR|是|100|||
 |PASSWORD|密码|VARCHAR|是|200|||
 |STATUS|状态|VARCHAR|是|100|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
@@ -594,7 +598,9 @@
 |OWNER_ID|所属数据标识|VARCHAR|是|100|||
 |OWNER_SUBTYPE|所属对象子类型|VARCHAR|是|100|||
 |OWNER_TYPE|所属数据对象|VARCHAR|是|100|||
+|POSITION_ID|职位标识|VARCHAR|是|100|||
 |ROLE_ID|角色|VARCHAR|是|60|||
+|TITLE|职位|VARCHAR|是|100|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
 |USER_ID|登录名|VARCHAR|是|100|||
@@ -645,6 +651,8 @@
 |TYPE|类型|VARCHAR|是|60|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
+|USER_TAG|用户标记|VARCHAR|是|200|||
+|USER_TAG2|用户标记2|VARCHAR|是|200|||
 #### 系统参数(PARAMETER)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
@@ -692,6 +700,19 @@
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
 |USER_ID|用户标识|VARCHAR|是|100|||
+#### 职位(POSITION)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CATEGORY_ID|分组标识|VARCHAR|是|100|||
+|CREATE_MAN|建立人|VARCHAR|是|100|||
+|CREATE_TIME|建立时间|DATETIME|是||||
+|ENABLE|逻辑有效标志|INT|是|8|||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|IS_LEAF|是否叶子节点|INT|是||||
+|NAME|名称|VARCHAR|是|200|||
+|SEQUENCE|序号|DECIMAL|是||||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
 #### 产品(PRODUCT)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
@@ -718,6 +739,7 @@
 |NAME|姓名|VARCHAR|是|200|||
 |PRODUCT_ID|产品标识|VARCHAR|是|100|||
 |ROLE_ID|角色|VARCHAR|是|60|||
+|TITLE|职位|VARCHAR|是|100|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
 |USER_ID|用户标识|VARCHAR|是|100|||
@@ -812,6 +834,7 @@
 |NAME|姓名|VARCHAR|是|200|||
 |PROJECT_ID|项目标识|VARCHAR|是|100|||
 |ROLE_ID|角色|VARCHAR|是|60|||
+|TITLE|职位|VARCHAR|是|100|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
 |USER_ID|用户标识|VARCHAR|是|100|||
@@ -822,6 +845,7 @@
 |ASSIGNEE_ID|负责人标识|VARCHAR|是|100|||
 |ASSIGNEE_NAME|负责人|VARCHAR|是|100|||
 |CATEGORIES|类别|VARCHAR|是|2000|||
+|CHANGELOG|发布日志|TEXT|是|1048576|||
 |CREATE_MAN|建立人|VARCHAR|是|100|||
 |CREATE_TIME|建立时间|DATETIME|是||||
 |DESCRIPTION|描述|VARCHAR|是|2000|||
@@ -1056,6 +1080,8 @@
 |SHOW_TITLE|共享展示标题|VARCHAR|是|100|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
+|USER_TAG|用户标记|VARCHAR|是|200|||
+|USER_TAG2|用户标记2|VARCHAR|是|200|||
 |VISIBILITY|可见范围|VARCHAR|是|60|||
 #### 空间成员(SPACE_MEMBER)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
@@ -1066,6 +1092,7 @@
 |NAME|名称|VARCHAR|是|200|||
 |ROLE_ID|角色|VARCHAR|是|60|||
 |SPACE_ID|空间标识|VARCHAR|是|100|||
+|TITLE|职位|VARCHAR|是|100|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
 |USER_ID|用户标识|VARCHAR|是|100|||

@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./default_project_member#begin {开始}]]
-state "获取当前用户数据" as PREPAREJSPARAM1  [[$./default_project_member#preparejsparam1 {获取当前用户数据}]]
 state "创建临时数据" as RAWJSCODE1  [[$./default_project_member#rawjscode1 {创建临时数据}]]
+state "获取当前用户数据" as PREPAREJSPARAM1  [[$./default_project_member#preparejsparam1 {获取当前用户数据}]]
 state "结束" as END1 <<end>> [[$./default_project_member#end1 {结束}]]
 
 
@@ -43,7 +43,6 @@ RAWJSCODE1 --> END1
 1. 将`数据上下文[srfusername] ==> user[name]` 设置给  `user(当前人员).name`
 2. 将`admin` 设置给  `user(当前人员).role_id`
 3. 将`数据上下文[srfuserid] ==> user[user_id]` 设置给  `user(当前人员).user_id`
-4. 将`数据上下文[portfolio] ==> user[portfolio_id]` 设置给  `user(当前人员).portfolio_id`
 
 #### 创建临时数据 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
@@ -71,5 +70,5 @@ ibiz.hub.getApp(context.srfappid).deService.exec(
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|当前人员|user|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|当前人员|user|数据对象||

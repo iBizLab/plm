@@ -10,6 +10,13 @@
 #### DATAINFOBAR(datainfobar)
 #### 编辑表单(form)
 
+##### 属性注入
+* `图标路径` 注入属性 `preview-src-list`
+
+```javascript
+[]
+```
+
 
 <script>
  const { createApp } = Vue

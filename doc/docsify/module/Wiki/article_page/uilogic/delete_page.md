@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./delete_page#begin {开始}]]
-state "界面行为" as DEUIACTION1  [[$./delete_page#deuiaction1 {界面行为}]]
 state "视图部件调用" as VIEWCTRLINVOKE1  [[$./delete_page#viewctrlinvoke1 {视图部件调用}]]
+state "界面行为" as DEUIACTION1  [[$./delete_page#deuiaction1 {界面行为}]]
 
 
 Begin --> DEUIACTION1
@@ -52,5 +52,6 @@ DEUIACTION1 --> VIEWCTRLINVOKE1
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |节点参数|node_param|简单数据||
+|当前视图|view|当前视图对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |树部件|treeexpbar_tree|部件对象||

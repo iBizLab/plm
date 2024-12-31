@@ -57,6 +57,8 @@
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -108,6 +110,8 @@
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -161,6 +165,8 @@
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -234,6 +240,8 @@
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -322,6 +330,8 @@
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -373,6 +383,8 @@
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -426,6 +438,8 @@
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -493,6 +507,8 @@
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -544,6 +560,8 @@
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -607,6 +625,8 @@
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -658,6 +678,8 @@
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -736,6 +758,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -803,6 +827,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -854,6 +880,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -907,6 +935,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -974,6 +1004,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -1025,6 +1057,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -1093,6 +1127,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -1144,6 +1180,131 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
+}
+```
+
+
+
+## 统计评论
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/article_pages/{key}/count_comment" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|标识|
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">is_shared</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
+|<el-row justify="space-between"><el-col :span="20">expiration_date</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|共享有效期|
+|<el-row justify="space-between"><el-col :span="20">access_password</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问密码|
+|<el-row justify="space-between"><el-col :span="20">format_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|正文格式|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
+|<el-row justify="space-between"><el-col :span="20">content</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|正文|
+|<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
+|<el-row justify="space-between"><el-col :span="20">is_leaf</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否叶子节点|
+|<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
+|<el-row justify="space-between"><el-col :span="20">space_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间编号|
+|<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
+|<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">attentions</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|关注|
+|<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
+|<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
+|<el-row justify="space-between"><el-col :span="20">publish_time</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|发布时间|
+|<el-row justify="space-between"><el-col :span="20">is_published</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否发布|
+|<el-row justify="space-between"><el-col :span="20">publish_man</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布人|
+|<el-row justify="space-between"><el-col :span="20">publish_content</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布正文|
+|<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">publish_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布主题|
+|<el-row justify="space-between"><el-col :span="20">published</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|发布状态|
+|<el-row justify="space-between"><el-col :span="20">is_lock</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否锁定|
+|<el-row justify="space-between"><el-col :span="20">icon</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|图标|
+|<el-row justify="space-between"><el-col :span="20">is_shared_subset</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否同时共享子页面|
+|<el-row justify="space-between"><el-col :span="20">read_shared</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|共享只读能力|
+|<el-row justify="space-between"><el-col :span="20">shared_by</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|共享人|
+|<el-row justify="space-between"><el-col :span="20">shared_time</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|共享时间|
+|<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
+|<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
+|<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|主题|
+|<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
+|<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
+|<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "identifier" : null,
+  "is_shared" : null,
+  "expiration_date" : null,
+  "access_password" : null,
+  "format_type" : null,
+  "sequence" : null,
+  "content" : null,
+  "type" : null,
+  "is_favorite" : null,
+  "is_leaf" : null,
+  "categories" : null,
+  "space_identifier" : null,
+  "attachments" : null,
+  "is_archived" : null,
+  "is_deleted" : null,
+  "attentions" : null,
+  "cur_version_id" : null,
+  "cur_version_name" : null,
+  "publish_time" : null,
+  "is_published" : null,
+  "publish_man" : null,
+  "publish_content" : null,
+  "show_identifier" : null,
+  "publish_name" : null,
+  "published" : null,
+  "is_lock" : null,
+  "icon" : null,
+  "is_shared_subset" : null,
+  "read_shared" : null,
+  "shared_by" : null,
+  "shared_time" : null,
+  "attention_count" : null,
+  "comment_count" : null,
+  "choose_version_id" : null,
+  "choose_version_name" : null,
+  "recent_create_days" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "parent_id" : null,
+  "space_id" : null,
+  "space_name" : null,
+  "update_man" : null,
+  "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -1212,6 +1373,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -1263,6 +1426,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -1331,6 +1496,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -1382,6 +1549,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -1453,6 +1622,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -1504,6 +1675,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -1572,6 +1745,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -1623,6 +1798,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -1686,6 +1863,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -1737,6 +1916,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -1790,6 +1971,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -1852,6 +2035,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -1903,6 +2088,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -1956,6 +2143,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -2023,6 +2212,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -2074,6 +2265,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -2142,6 +2335,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -2193,6 +2388,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -2246,6 +2443,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -2313,6 +2512,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -2364,6 +2565,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -2432,6 +2635,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -2483,6 +2688,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -2546,6 +2753,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -2597,6 +2806,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -2650,6 +2861,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -2712,6 +2925,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -2763,6 +2978,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -2816,6 +3033,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -2883,6 +3102,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -2934,6 +3155,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -3002,6 +3225,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -3053,6 +3278,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -3121,6 +3348,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -3172,6 +3401,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -3235,6 +3466,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -3286,6 +3519,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -3339,6 +3574,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -3406,6 +3643,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -3457,6 +3696,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -3531,6 +3772,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -3598,6 +3841,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -3649,6 +3894,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -3717,6 +3964,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -3768,6 +4017,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -3836,6 +4087,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -3887,6 +4140,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -3955,6 +4210,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -4006,6 +4263,8 @@ Integer
   "space_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -4055,6 +4314,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -4102,6 +4365,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -4155,6 +4422,8 @@ Integer
     "space_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -4203,6 +4472,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -4250,6 +4523,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -4317,6 +4594,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -4364,6 +4645,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -4417,6 +4702,8 @@ Integer
     "space_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -4465,6 +4752,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -4512,6 +4803,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -4565,6 +4860,8 @@ Integer
     "space_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -4613,6 +4910,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -4660,6 +4961,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -4722,6 +5027,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -4769,6 +5078,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -4822,6 +5135,8 @@ Integer
     "space_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -4870,6 +5185,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -4917,6 +5236,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -4970,6 +5293,8 @@ Integer
     "space_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -5018,6 +5343,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -5065,6 +5394,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -5118,6 +5451,8 @@ Integer
     "space_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -5166,6 +5501,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -5213,6 +5552,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -5266,6 +5609,8 @@ Integer
     "space_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -5314,6 +5659,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -5361,6 +5710,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -5414,6 +5767,8 @@ Integer
     "space_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -5462,6 +5817,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -5509,6 +5868,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -5562,6 +5925,8 @@ Integer
     "space_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -5610,6 +5975,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -5657,6 +6026,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -5710,6 +6083,8 @@ Integer
     "space_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -5758,6 +6133,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -5805,6 +6184,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -5858,6 +6241,8 @@ Integer
     "space_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -5906,6 +6291,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -5953,6 +6342,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -6006,6 +6399,8 @@ Integer
     "space_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -6055,6 +6450,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -6102,6 +6501,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -6155,6 +6558,8 @@ Integer
     "space_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -6203,6 +6608,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -6250,6 +6659,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -6303,6 +6716,8 @@ Integer
     "space_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -6351,6 +6766,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -6398,6 +6817,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -6451,6 +6874,8 @@ Integer
     "space_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -6499,6 +6924,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -6546,6 +6975,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -6605,6 +7038,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -6652,6 +7089,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -6705,6 +7146,8 @@ Integer
     "space_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -6753,6 +7196,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -6800,6 +7247,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -6853,6 +7304,8 @@ Integer
     "space_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -6901,6 +7354,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -6948,6 +7405,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -7015,6 +7476,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -7062,6 +7527,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -7115,6 +7584,8 @@ Integer
     "space_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -7163,6 +7634,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -7210,6 +7685,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -7263,6 +7742,8 @@ Integer
     "space_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -7311,6 +7792,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -7358,6 +7843,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -7411,6 +7900,8 @@ Integer
     "space_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -7459,6 +7950,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -7506,6 +8001,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -7559,6 +8058,8 @@ Integer
     "space_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -7607,6 +8108,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -7654,6 +8159,10 @@ Integer
   "n_type_eq" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag2_like" : null,
+  "n_user_tag_eq" : null,
+  "n_user_tag_like" : null,
 }
 ```
 
@@ -7707,6 +8216,8 @@ Integer
     "space_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -7937,6 +8448,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -8047,6 +8560,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -8115,6 +8630,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -8182,6 +8699,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -8271,6 +8790,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -8339,6 +8860,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -8407,6 +8930,78 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+
+
+
+## 根据共享空间统计评论
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/shared_spaces/{pkey}/article_pages/{key}/count_comment" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|共享空间主键|
+|key|String|标识|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">is_shared</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
+|<el-row justify="space-between"><el-col :span="20">expiration_date</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|共享有效期|
+|<el-row justify="space-between"><el-col :span="20">access_password</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问密码|
+|<el-row justify="space-between"><el-col :span="20">format_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|正文格式|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
+|<el-row justify="space-between"><el-col :span="20">content</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|正文|
+|<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
+|<el-row justify="space-between"><el-col :span="20">is_leaf</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否叶子节点|
+|<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
+|<el-row justify="space-between"><el-col :span="20">space_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间编号|
+|<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
+|<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">attentions</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|关注|
+|<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
+|<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
+|<el-row justify="space-between"><el-col :span="20">publish_time</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|发布时间|
+|<el-row justify="space-between"><el-col :span="20">is_published</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否发布|
+|<el-row justify="space-between"><el-col :span="20">publish_man</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布人|
+|<el-row justify="space-between"><el-col :span="20">publish_content</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布正文|
+|<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">publish_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布主题|
+|<el-row justify="space-between"><el-col :span="20">published</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|发布状态|
+|<el-row justify="space-between"><el-col :span="20">is_lock</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否锁定|
+|<el-row justify="space-between"><el-col :span="20">icon</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|图标|
+|<el-row justify="space-between"><el-col :span="20">is_shared_subset</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否同时共享子页面|
+|<el-row justify="space-between"><el-col :span="20">read_shared</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|共享只读能力|
+|<el-row justify="space-between"><el-col :span="20">shared_by</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|共享人|
+|<el-row justify="space-between"><el-col :span="20">shared_time</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|共享时间|
+|<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
+|<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
+|<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|主题|
+|<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
+|<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
+|<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -8475,6 +9070,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -8543,6 +9140,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -8611,6 +9210,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -8679,6 +9280,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -8746,6 +9349,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -8813,6 +9418,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -8881,6 +9488,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -8949,6 +9558,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -9017,6 +9628,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -9085,6 +9698,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -9152,6 +9767,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -9219,6 +9836,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -9287,6 +9906,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -9355,6 +9976,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -9423,6 +10046,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -9490,6 +10115,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -9558,6 +10185,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -9647,6 +10276,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -9715,6 +10346,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -9783,6 +10416,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -9851,6 +10486,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -9904,6 +10541,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -9957,6 +10598,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -10010,6 +10655,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -10063,6 +10712,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -10116,6 +10769,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -10169,6 +10826,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -10222,6 +10883,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -10275,6 +10940,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -10328,6 +10997,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -10381,6 +11054,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -10434,6 +11111,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -10487,6 +11168,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -10540,6 +11225,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -10593,6 +11282,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -10646,6 +11339,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -10699,6 +11396,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -10752,6 +11453,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -10805,6 +11510,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -10858,6 +11567,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -10911,6 +11624,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -10964,6 +11681,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -11017,6 +11738,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -11070,6 +11795,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -11123,6 +11852,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -11176,6 +11909,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -11229,6 +11966,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -11484,6 +12225,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -11594,6 +12337,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -11662,6 +12407,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -11729,6 +12476,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -11818,6 +12567,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -11886,6 +12637,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -11954,6 +12707,78 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+
+
+
+## 根据空间统计评论
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/spaces/{pkey}/article_pages/{key}/count_comment" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|空间主键|
+|key|String|标识|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">is_shared</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
+|<el-row justify="space-between"><el-col :span="20">expiration_date</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|共享有效期|
+|<el-row justify="space-between"><el-col :span="20">access_password</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问密码|
+|<el-row justify="space-between"><el-col :span="20">format_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|正文格式|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
+|<el-row justify="space-between"><el-col :span="20">content</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|正文|
+|<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
+|<el-row justify="space-between"><el-col :span="20">is_leaf</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否叶子节点|
+|<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
+|<el-row justify="space-between"><el-col :span="20">space_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间编号|
+|<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
+|<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">attentions</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|关注|
+|<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
+|<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
+|<el-row justify="space-between"><el-col :span="20">publish_time</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|发布时间|
+|<el-row justify="space-between"><el-col :span="20">is_published</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否发布|
+|<el-row justify="space-between"><el-col :span="20">publish_man</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布人|
+|<el-row justify="space-between"><el-col :span="20">publish_content</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布正文|
+|<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">publish_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布主题|
+|<el-row justify="space-between"><el-col :span="20">published</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|发布状态|
+|<el-row justify="space-between"><el-col :span="20">is_lock</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否锁定|
+|<el-row justify="space-between"><el-col :span="20">icon</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|图标|
+|<el-row justify="space-between"><el-col :span="20">is_shared_subset</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否同时共享子页面|
+|<el-row justify="space-between"><el-col :span="20">read_shared</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|共享只读能力|
+|<el-row justify="space-between"><el-col :span="20">shared_by</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|共享人|
+|<el-row justify="space-between"><el-col :span="20">shared_time</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|共享时间|
+|<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
+|<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
+|<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|主题|
+|<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
+|<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
+|<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -12022,6 +12847,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -12090,6 +12917,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -12158,6 +12987,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -12226,6 +13057,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -12293,6 +13126,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -12360,6 +13195,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -12428,6 +13265,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -12496,6 +13335,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -12564,6 +13405,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -12632,6 +13475,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -12699,6 +13544,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -12766,6 +13613,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -12834,6 +13683,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -12902,6 +13753,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -12970,6 +13823,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -13037,6 +13892,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -13105,6 +13962,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -13194,6 +14053,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -13262,6 +14123,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -13330,6 +14193,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -13398,6 +14263,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父页面标识|
 |<el-row justify="space-between"><el-col :span="20">space_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
 |<el-row justify="space-between"><el-col :span="20">space_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -13451,6 +14318,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -13504,6 +14375,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -13557,6 +14432,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -13610,6 +14489,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -13663,6 +14546,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -13716,6 +14603,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -13769,6 +14660,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -13822,6 +14717,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -13875,6 +14774,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -13928,6 +14831,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -13981,6 +14888,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -14034,6 +14945,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -14087,6 +15002,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -14140,6 +15059,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -14193,6 +15116,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -14246,6 +15173,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -14299,6 +15230,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -14352,6 +15287,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -14405,6 +15344,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -14458,6 +15401,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -14511,6 +15458,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -14564,6 +15515,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -14617,6 +15572,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -14670,6 +15629,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -14723,6 +15686,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -14776,6 +15743,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_space_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_space_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 

@@ -13,7 +13,7 @@
 |[项目进度(PROGRESS)](module/ProjMgmt/progress)|progress|主实体|SQL|PROGRESS|否|否|自控制|否|跟踪项目的完成度。|
 |[项目(PROJECT)](module/ProjMgmt/project)|project|主实体|SQL|PROJECT|否|否|自控制|否|PLM系统的核心业务实体，代表一个项目整体，包含项目的基本信息、状态、时间线等。|
 |[项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member)|project_member|关系实体|SQL|PROJECT_MEMBER|是|否|附属主实体控制（未映射自控）|否|记录项目的团队成员及其角色设置。|
-|[项目状态(PROJECT_STATE)](module/ProjMgmt/project_state)|project_state|主实体|SQL|PROJECT_STATE|否|否|自控制|否||
+|[项目状态(PROJECT_STATE)](module/ProjMgmt/project_state)|project_state|主实体|SQL|PROJECT_STATE|否|否|自控制|否|管理项目状态信息|
 |[项目标签(PROJECT_TAG)](module/ProjMgmt/project_tag)|project_tag|主实体|SQL|PROJECT_TAG|否|否|自控制|否|用于分类和识别不同项目的标签系统，便于管理和检索；所有项目共用。|
 |[项目发布(RELEASE)](module/ProjMgmt/release)|release|主实体|SQL|PROJECT_RELEASE|否|否|附属主实体控制（未映射自控）|否|跟踪和管理项目的发布。|
 |[迭代(SPRINT)](module/ProjMgmt/sprint)|sprint|主实体|SQL|SPRINT|否|是|附属主实体控制（未映射自控）|否|产品开发过程中的一次迭代或冲刺，用于规划和跟踪一段时间内的开发任务。|

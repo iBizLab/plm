@@ -12,17 +12,6 @@ main
 
 ##### 部件逻辑
 * `onLoadSuccess` : [获取用例工时进度](module/TestMgmt/test_case/uilogic/get_workload_schedule)
-* `onClick`
-```
-const tempContext = context.clone();
-tempContext.srfkey = data[0].id;
-ibiz.commands.execute(
-    'ibiz.app-view.open',
-    'plmweb.work_item_main_view',
-    tempContext,
-    viewParam,
-);
-```
 
 ##### 属性注入
 * `状态` 注入属性 `clearable`
@@ -54,26 +43,26 @@ if (form) {
 
 
 ### 关联界面行为
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [移动（工具栏）](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [编辑界面_下一个记录](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [添加实际工时](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [复制用例](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [关联工作项（工具栏）](module/TestMgmt/test_case#界面行为)
   * [用例(TEST_CASE)](module/TestMgmt/test_case) : [清空评论](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [移入计划（气泡）](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [关联需求（工具栏）](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [编辑界面_上一个记录](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [发送评论](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [删除（工具栏）](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [工具栏上传附件](module/TestMgmt/test_case#界面行为)
   * [用例(TEST_CASE)](module/TestMgmt/test_case) : [关联缺陷（工具栏）](module/TestMgmt/test_case#界面行为)
   * [用例(TEST_CASE)](module/TestMgmt/test_case) : [最小化](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [发送评论](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [移入计划（气泡）](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [编辑界面_下一个记录](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [编辑界面_上一个记录](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [关联工作项（工具栏）](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [工具栏上传附件](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [添加实际工时](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [移动（工具栏）](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [删除（工具栏）](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [复制用例](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [关联需求（工具栏）](module/TestMgmt/test_case#界面行为)
 
 ### 关联界面逻辑
   * [评论(COMMENT)](module/Base/comment) : [控制评论按钮隐藏](module/Base/comment/uilogic/comment_icon_hidden)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关注人员更新](module/ProjMgmt/work_item/uilogic/attention_personnel_update)
   * [评论(COMMENT)](module/Base/comment) : [控制评论按钮显示](module/Base/comment/uilogic/comment_icon_show)
   * [用例(TEST_CASE)](module/TestMgmt/test_case) : [获取用例工时进度](module/TestMgmt/test_case/uilogic/get_workload_schedule)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关注人员更新](module/ProjMgmt/work_item/uilogic/attention_personnel_update)
 
 ### 关联视图
   * [活动历史列表(activity_history_list_view)](app/view/activity_history_list_view)
@@ -84,7 +73,7 @@ if (form) {
   * [关联(relation_test_case_re_work_item_grid_view)](app/view/relation_test_case_re_work_item_grid_view)
   * [评审历史(review_content_list_view)](app/view/review_content_list_view)
   * [执行用例(run_history_grid_view)](app/view/run_history_grid_view)
-  * [用例(test_case_case_move_plan_option_view)](app/view/test_case_case_move_plan_option_view)
+  * [移入计划(test_case_case_move_plan_option_view)](app/view/test_case_case_move_plan_option_view)
   * [复制用例(test_case_copy_test_case_option_view)](app/view/test_case_copy_test_case_option_view)
   * [移动用例(test_case_move_test_case_view)](app/view/test_case_move_test_case_view)
   * [用例选择树视图(test_case_pick_up_tree_view)](app/view/test_case_pick_up_tree_view)

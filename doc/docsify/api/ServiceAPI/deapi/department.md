@@ -16,6 +16,7 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识/编号|
 |<el-row justify="space-between"><el-col :span="20">head_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门负责人标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -26,6 +27,7 @@
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "identifier" : null,
   "create_man" : null,
   "create_time" : null,
   "head_id" : null,
@@ -42,6 +44,7 @@
 ```json
 
 {
+  "identifier" : null,
   "create_man" : null,
   "create_time" : null,
   "head_id" : null,
@@ -78,6 +81,7 @@
 ```json
 
 {
+  "identifier" : null,
   "create_man" : null,
   "create_time" : null,
   "head_id" : null,
@@ -133,6 +137,7 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识/编号|
 |<el-row justify="space-between"><el-col :span="20">head_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门负责人标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -143,6 +148,7 @@
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "identifier" : null,
   "create_man" : null,
   "create_time" : null,
   "head_id" : null,
@@ -159,6 +165,7 @@
 ```json
 
 {
+  "identifier" : null,
   "create_man" : null,
   "create_time" : null,
   "head_id" : null,
@@ -188,6 +195,7 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识/编号|
 |<el-row justify="space-between"><el-col :span="20">head_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门负责人标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -198,6 +206,7 @@
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "identifier" : null,
   "create_man" : null,
   "create_time" : null,
   "head_id" : null,
@@ -232,6 +241,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识/编号|
 |<el-row justify="space-between"><el-col :span="20">head_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门负责人标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -242,6 +252,7 @@ Integer
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "identifier" : null,
   "create_man" : null,
   "create_time" : null,
   "head_id" : null,
@@ -258,6 +269,7 @@ Integer
 ```json
 
 {
+  "identifier" : null,
   "create_man" : null,
   "create_time" : null,
   "head_id" : null,
@@ -287,6 +299,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识/编号|
 |<el-row justify="space-between"><el-col :span="20">head_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门负责人标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -297,6 +310,7 @@ Integer
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "identifier" : null,
   "create_man" : null,
   "create_time" : null,
   "head_id" : null,
@@ -313,6 +327,7 @@ Integer
 ```json
 
 {
+  "identifier" : null,
   "create_man" : null,
   "create_time" : null,
   "head_id" : null,
@@ -367,6 +382,7 @@ Integer
 ```json
 [
   {
+    "identifier" : null,
     "create_man" : null,
     "create_time" : null,
     "head_id" : null,
@@ -421,6 +437,7 @@ Integer
 ```json
 [
   {
+    "identifier" : null,
     "create_man" : null,
     "create_time" : null,
     "head_id" : null,

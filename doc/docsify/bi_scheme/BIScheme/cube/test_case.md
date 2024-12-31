@@ -29,7 +29,7 @@
 
 ### 指标
 ##### 计算式指标
-|    名称col200   | 代码名col150  |  计算公式col500   |  备注col500  |
+|    名称col200   | 代码名col150  |  计算公式col501   |  备注col500  |
 | --------  |------------| -----   |  --------|
 |用例占比|case_rate|countif(multiif(param(code_type, '-1') = '10', level in (params(level, ('P1'))), param(code_type, '-1') = '20', state in (params(state, ('-1'))), param(code_type, '-1') = '30', type in (params(case_type, ('-1'))), level in (params(level, ('P1')))) and is_deleted = 0 and library_is_deleted = 0) / if(countif(is_deleted = 0 and library_is_deleted = 0) = 0, 1, countif(is_deleted = 0 and library_is_deleted = 0))|统计不同用例类型的占比，反映测试用例的类型分布情况。|
 |用例数量|case_number|countif(is_deleted=0 and library_is_deleted = 0)|统计测试团队编写的用例数量，反映测试团队的产出及需求复杂度、产品质量等。<br>|

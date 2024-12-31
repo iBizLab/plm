@@ -17,6 +17,7 @@
 |项目名称|PROJECT_NAME|外键值文本|200|是||
 |项目类型|PROJECT_TYPE|[外键值附加数据](index/dictionary_index#project_type "项目类型")|60|是||
 |角色|ROLE_ID|[单项选择(文本值)](index/dictionary_index#role_type "角色类型")|60|是||
+|职位|TITLE|外键值附加数据|100|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 |登录名|USER_ID|外键值|100|是||
@@ -60,6 +61,7 @@
 |Remove|Remove|内置方法|默认|支持|[附加操作](index/action_logic_index#project_member_Remove)|||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|变更职位|change_position|[实体处理逻辑](module/ProjMgmt/project_member/logic/change_position "变更职位")|默认|不支持||||
 |变更角色|change_role|[实体处理逻辑](module/ProjMgmt/project_member/logic/change_role "变更角色")|默认|不支持||||
 |新建项目成员|create_project_member|[实体处理逻辑](module/ProjMgmt/project_member/logic/create_project_member "新建项目成员")|默认|不支持||||
 |新建项目成员（移动端）|mob_create_project_member|[实体处理逻辑](module/ProjMgmt/project_member/logic/mob_create_project_member "新建项目成员（移动端）")|默认|不支持||||
@@ -68,6 +70,7 @@
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
+|[变更职位](module/ProjMgmt/project_member/logic/change_position)|change_position|无||批量设置角色身份（position_id）|
 |[变更角色](module/ProjMgmt/project_member/logic/change_role)|change_role|无||批量设置角色身份（role_id）|
 |[新建项目成员](module/ProjMgmt/project_member/logic/create_project_member)|create_project_member|无||新建项目成员|
 |[新建项目成员（移动端）](module/ProjMgmt/project_member/logic/mob_create_project_member)|mob_create_project_member|无||新建项目成员（移动端）|
@@ -134,6 +137,7 @@
 | 添加成员（移动端） | mob_add_member | 添加成员 |无数据|<details><summary>后台调用</summary>[mob_create_project_member](#行为)||
 | 设置角色（移动端） | mob_setting_role | 设置角色 |单项数据（主键）|<details><summary>后台调用</summary>[change_role](#行为)||
 | 设置角色 | setting_role | 设置角色 |多项数据（主键）|<details><summary>后台调用</summary>[change_role](#行为)||
+| 职位变更 | choose_position | 职位变更 |多项数据（主键）|<details><summary>后台调用</summary>[change_position](#行为)||
 | 跳转至成员设置 | jump_to_member_set | 跳转至成员设置 |无数据|用户自定义||
 | 移除成员 | remove_member | 移除成员 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 

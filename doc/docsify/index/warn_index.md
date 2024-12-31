@@ -160,7 +160,7 @@
 |[工作项操作向导(WORK_ITEM_WIZARD)](module/ProjMgmt/work_item_wizard#处理逻辑)|[变更工作项类型(change)](module/ProjMgmt/work_item_wizard/logic/change.md)|否|
 |[工作项操作向导(WORK_ITEM_WIZARD)](module/ProjMgmt/work_item_wizard#处理逻辑)|[填充操作明细属性(fill_details)](module/ProjMgmt/work_item_wizard/logic/fill_details.md)|否|
 
-### 处理逻辑中使用SQL调用<sup class="footnote-symbol"> <font color=orange>[132]</font></sup>
+### 处理逻辑中使用SQL调用<sup class="footnote-symbol"> <font color=orange>[134]</font></sup>
 | 实体col200   | 处理逻辑col300  |
 | --------   |------------|
 |[基线(BASELINE)#处理逻辑](module/Base/baseline)|[删除基线前附加逻辑(before_remove)](module/Base/baseline/logic/before_remove.md)|
@@ -173,6 +173,7 @@
 |[讨论(DISCUSS_POST)#处理逻辑](module/Team/discuss_post)|[删除评论(del_comment)](module/Team/discuss_post/logic/del_comment.md)|
 |[讨论(DISCUSS_POST)#处理逻辑](module/Team/discuss_post)|[填充附加数据(fill_addition)](module/Team/discuss_post/logic/fill_addition.md)|
 |[讨论(DISCUSS_POST)#处理逻辑](module/Team/discuss_post)|[恢复(recover)](module/Team/discuss_post/logic/recover.md)|
+|[讨论(DISCUSS_POST)#处理逻辑](module/Team/discuss_post)|[讨论中评论数计数器(discuss_post_count)](module/Team/discuss_post/logic/discuss_post_count.md)|
 |[讨论回复(DISCUSS_REPLY)#处理逻辑](module/Team/discuss_reply)|[删除回复(del_reply)](module/Team/discuss_reply/logic/del_reply.md)|
 |[讨论回复(DISCUSS_REPLY)#处理逻辑](module/Team/discuss_reply)|[回复下删除评论(del_comment)](module/Team/discuss_reply/logic/del_comment.md)|
 |[讨论回复(DISCUSS_REPLY)#处理逻辑](module/Team/discuss_reply)|[回复下添加评论(send_comment)](module/Team/discuss_reply/logic/send_comment.md)|
@@ -197,6 +198,7 @@
 |[页面(PAGE)#处理逻辑](module/Wiki/article_page)|[发布页面（测试）(publish_page_test)](module/Wiki/article_page/logic/publish_page_test.md)|
 |[页面(PAGE)#处理逻辑](module/Wiki/article_page)|[取消星标(un_favorite)](module/Wiki/article_page/logic/un_favorite.md)|
 |[页面(PAGE)#处理逻辑](module/Wiki/article_page)|[恢复(recover)](module/Wiki/article_page/logic/recover.md)|
+|[页面(PAGE)#处理逻辑](module/Wiki/article_page)|[统计页面评论数(count_comment)](module/Wiki/article_page/logic/count_comment.md)|
 |[页面(PAGE)#处理逻辑](module/Wiki/article_page)|[获取共享信息(get_shared_info)](module/Wiki/article_page/logic/get_shared_info.md)|
 |[页面(PAGE)#处理逻辑](module/Wiki/article_page)|[获取草稿页面(get_draft_pages)](module/Wiki/article_page/logic/get_draft_pages.md)|
 |[文件夹(PORTFOLIO)#处理逻辑](module/Base/portfolio)|[从项目集中移除(remove_from_project_set)](module/Base/portfolio/logic/remove_from_project_set.md)|
@@ -296,7 +298,7 @@
 |[工作项(WORK_ITEM)#处理逻辑](module/ProjMgmt/work_item)|[需求累计流图(backlog_accumulate_flow)](module/ProjMgmt/work_item/logic/backlog_accumulate_flow.md)|
 |[工作项(WORK_ITEM)#处理逻辑](module/ProjMgmt/work_item)|[首页待完成项计数器(count_my_todo)](module/ProjMgmt/work_item/logic/count_my_todo.md)|
 
-### 界面逻辑中使用脚本<sup class="footnote-symbol"> <font color=orange>[309]</font></sup>
+### 界面逻辑中使用脚本<sup class="footnote-symbol"> <font color=orange>[317]</font></sup>
 | 实体col200   | 界面逻辑col300  |
 | --------   |------------|
 |[资源组件(ADDON_RESOURCE)](module/Base/addon_resource#界面逻辑)|[资源删除逻辑](module/Base/addon_resource/uilogic/resource_del)|
@@ -410,12 +412,14 @@
 |[成员(MEMBER)](module/Base/member#界面逻辑)|[添加页面共享成员](module/Base/member/uilogic/add_shared_member)|
 |[成员(MEMBER)](module/Base/member#界面逻辑)|[成员权限值变更](module/Base/member/uilogic/member_role_change)|
 |[通知事件(NOTIFY_EVENT)](module/extension/notify_event#界面逻辑)|[保存列表多数据部件](module/extension/notify_event/uilogic/save_list_mdctrl)|
+|[页面(PAGE)](module/Wiki/article_page#界面逻辑)|[关闭评论区](module/Wiki/article_page/uilogic/close_comment)|
 |[页面(PAGE)](module/Wiki/article_page#界面逻辑)|[恢复历史版本并通知刷新](module/Wiki/article_page/uilogic/page_refresh)|
 |[页面(PAGE)](module/Wiki/article_page#界面逻辑)|[复制共享链接](module/Wiki/article_page/uilogic/copy_shared_url)|
 |[页面(PAGE)](module/Wiki/article_page#界面逻辑)|[后续刷新](module/Wiki/article_page/uilogic/refresh)|
 |[页面(PAGE)](module/Wiki/article_page#界面逻辑)|[添加附件数据](module/Wiki/article_page/uilogic/add_attachment)|
 |[页面(PAGE)](module/Wiki/article_page#界面逻辑)|[新建发布并通知刷新](module/Wiki/article_page/uilogic/save_notify_refresh)|
 |[页面(PAGE)](module/Wiki/article_page#界面逻辑)|[共享设置表单加载数据](module/Wiki/article_page/uilogic/shared_form_data)|
+|[页面(PAGE)](module/Wiki/article_page#界面逻辑)|[显示评论区](module/Wiki/article_page/uilogic/show_commnet)|
 |[文件夹(PORTFOLIO)](module/Base/portfolio#界面逻辑)|[计算表格列行为状态(portfolio)](module/Base/portfolio/uilogic/calc_column_action_state)|
 |[文件夹(PORTFOLIO)](module/Base/portfolio#界面逻辑)|[通知刷新](module/Base/portfolio/uilogic/notify_refresh)|
 |[文件夹(PORTFOLIO)](module/Base/portfolio#界面逻辑)|[批量删除项目集成员临时数据](module/Base/portfolio/uilogic/remove_batch_temp)|
@@ -439,6 +443,12 @@
 |[项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member#界面逻辑)|[新建项目默认临时成员](module/ProjMgmt/project_member/uilogic/create_default_temp_members)|
 |[项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member#界面逻辑)|[跳转至成员设置](module/ProjMgmt/project_member/uilogic/jump_to_member_set)|
 |[项目状态(PROJECT_STATE)](module/ProjMgmt/project_state#界面逻辑)|[系统工作项状态隐藏操作列](module/ProjMgmt/project_state/uilogic/cal_is_system)|
+|[核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc#界面逻辑)|[跳转设置页面](module/extension/PSCorePrdFunc/uilogic/skip_setting)|
+|[核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc#界面逻辑)|[clone此应用](module/extension/PSCorePrdFunc/uilogic/clone_git)|
+|[核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc#界面逻辑)|[初始化插件信息](module/extension/PSCorePrdFunc/uilogic/init_plugin_info)|
+|[核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc#界面逻辑)|[跳转应用详情页面](module/extension/PSCorePrdFunc/uilogic/open_app_info)|
+|[核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc#界面逻辑)|[跳转gitlab](module/extension/PSCorePrdFunc/uilogic/skip_gitlab)|
+|[核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc#界面逻辑)|[更新插件设置](module/extension/PSCorePrdFunc/uilogic/update_plugin_setting)|
 |[实体属性(PSDEFIELD)](module/extension/PSDEField#界面逻辑)|[判断操作列是否禁用](module/extension/PSDEField/uilogic/judge_column_state)|
 |[最近访问(RECENT)](module/Base/recent#界面逻辑)|[移动端最近访问跳转其他视图](module/Base/recent/uilogic/mob_recent_jump_other_view)|
 |[最近访问(RECENT)](module/Base/recent#界面逻辑)|[最近访问跳转其他视图](module/Base/recent/uilogic/recent_jump_other_view)|
@@ -763,7 +773,7 @@
 |[项目(PROJECT)](module/ProjMgmt/project.md)|/projects/remove_from_project_set|POST|[从项目集中移除(remove_from_project_set)](module/ProjMgmt/project#行为)|
 |[项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member.md)|/project_members/{key}/change_role|POST|[变更角色(change_role)](module/ProjMgmt/project_member#行为)|
 |[项目标签(PROJECT_TAG)](module/ProjMgmt/project_tag.md)|/project_tags/{key}/delete_tag|POST|[删除标签(delete_tag)](module/ProjMgmt/project_tag#行为)|
-|[最近访问(RECENT)](module/Base/recent.md)|/recents/{key}/custom_get|GET|[自定义get(custom_get)](module/Base/recent#行为)|
+|[智能报表(PSSYSBIREPORT)](module/extension/PSSysBIReport.md)|/pssysbireports/{key}/compileappbireport|POST|[编译报表模型(COMPILEAPPBIREPORT)](module/extension/PSSysBIReport#行为)|
 |[最近访问(RECENT)](module/Base/recent.md)|/recents/{key}/my_charge_entry|POST|[我负责的事项(my_charge_entry)](module/Base/recent#行为)|
 |[最近访问(RECENT)](module/Base/recent.md)|/recents/{key}/my_created_entry|POST|[我创建的事项(my_created_entry)](module/Base/recent#行为)|
 |[最近访问(RECENT)](module/Base/recent.md)|/recents/my_summary|POST|[我的任务总结(my_summary)](module/Base/recent#行为)|
@@ -903,10 +913,10 @@
 | --------   |------------|
 |[评论(COMMENT)](module/Base/comment.md)|READ<br>DELETE<br>UPDATE|
 |[关注(ATTENTION)](module/Base/attention.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
-|[执行人(EXECUTOR)](module/Base/executor.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
-|[页面版本(PAGE_VERSION)](module/Wiki/page_version.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
 |[执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
 |[迭代变更(SPRINT_ALTERATION)](module/ProjMgmt/sprint_alteration.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
+|[执行人(EXECUTOR)](module/Base/executor.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
+|[页面版本(PAGE_VERSION)](module/Wiki/page_version.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
 
 ### 除主键、主信息、预置属性外，不包含其他配置的表格<sup class="footnote-symbol"> <font color=orange>[28]</font></sup>
 | 实体col200   |   视图col400 | 表格col400  |
@@ -940,7 +950,7 @@
 |[工时类别(WORKLOAD_TYPE)](module/Base/workload_type)|主表格(main)|[工时类别(workload_type_pick_up_grid_view)](app/view/workload_type_pick_up_grid_view)|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|回收站_表格(recycle_bin_grid)|[工作项(work_item_case_re_bug_mpick_up_grid_view)](app/view/work_item_case_re_bug_mpick_up_grid_view)|
 
-### 无搜索项的搜索表单<sup class="footnote-symbol"> <font color=orange>[71]</font></sup>
+### 无搜索项的搜索表单<sup class="footnote-symbol"> <font color=orange>[70]</font></sup>
 | 实体col200   |   视图col400 | 搜索表单col400  |
 | --------   |------------|-----------|
 |[活动(ACTIVITY)](module/Base/activity)|全部活动列表（测试）_搜索表单(test_all_list_view_search_form)|[活动(activity_pick_up_grid_view)](app/view/activity_pick_up_grid_view)|
@@ -971,17 +981,16 @@
 |[测试库(LIBRARY)](module/TestMgmt/library)|默认搜索表单(default)|[全部测试库(library_all_grid_view)](app/view/library_all_grid_view)|
 |[测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member)|默认搜索表单(default)|[测试库成员(library_member_assigned_grid_view)](app/view/library_member_assigned_grid_view)|
 |[登录日志(LOGIN_LOG)](module/Base/login_log)|默认搜索表单(default)|[登录日志(login_log_grid_view)](app/view/login_log_grid_view)|
-|[成员(MEMBER)](module/Base/member)|默认搜索表单(default)|[成员(member_grid_view)](app/view/member_grid_view)|
+|[成员(MEMBER)](module/Base/member)|成员职位表格视图_搜索表单(position_grid_view_search_form)|[成员(member_grid_view)](app/view/member_grid_view)|
 |[页面(PAGE)](module/Wiki/article_page)|默认搜索表单(default)|[我的收藏(article_page_my_favorite_page_grid_view)](app/view/article_page_my_favorite_page_grid_view)|
 |[系统参数(PARAMETER)](module/Base/parameter)|默认搜索表单(default)|[系统参数(parameter_grid_view)](app/view/parameter_grid_view)|
 |[文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member)|默认搜索表单(default)|[文件夹成员(portfolio_member_project_bind_member_grid_view)](app/view/portfolio_member_project_bind_member_grid_view)|
 |[产品(PRODUCT)](module/ProdMgmt/product)|默认搜索表单(default)|[全部产品(product_all_grid_view)](app/view/product_all_grid_view)|
 |[产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member)|默认搜索表单(default)|[成员(product_member_assigned_grid_view)](app/view/product_member_assigned_grid_view)|
 |[产品标签(PRODUCT_TAG)](module/ProdMgmt/product_tag)|默认搜索表单(default)|[产品标签(product_tag_grid_view)](app/view/product_tag_grid_view)|
-|[项目(PROJECT)](module/ProjMgmt/project)|项目看板视图_搜索表单(kanban_view_search_form)|[项目管理(project_archived_grid_view)](app/view/project_archived_grid_view)|
+|[项目(PROJECT)](module/ProjMgmt/project)|产品关联项目表格视图_搜索表单(usr12030053_search_form)|[项目管理(project_archived_grid_view)](app/view/project_archived_grid_view)|
 |[项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member)|默认搜索表单(default)|[项目成员(project_member_assigned_grid_view)](app/view/project_member_assigned_grid_view)|
 |[项目标签(PROJECT_TAG)](module/ProjMgmt/project_tag)|默认搜索表单(default)|[项目标签(project_tag_grid_view)](app/view/project_tag_grid_view)|
-|[核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc)|应用市场_搜索表单(usr07158833_search_form)|[已安装应用(ps_core_prd_func_installed_grid_view)](app/view/ps_core_prd_func_installed_grid_view)|
 |[实体属性(PSDEFIELD)](module/extension/PSDEField)|默认搜索表单(default)|[属性管理(psde_field_data_extend_grid_view)](app/view/psde_field_data_extend_grid_view)|
 |[实体处理逻辑(PSDELOGIC)](module/extension/PSDELogic)|自动化规则逻辑表格视图_搜索表单(flow_grid_view_search_form)|[实体处理逻辑(psde_logic_test_auto_rules_grid_view)](app/view/psde_logic_test_auto_rules_grid_view)|
 |[实体通知(PSDENOTIFY)](module/extension/PSDENotify)|默认搜索表单(default)|[事件通知(psde_notify_event_hook_grid_view)](app/view/psde_notify_event_hook_grid_view)|
@@ -1015,7 +1024,7 @@
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|工时反查表格视图_搜索表单(usr07223309_search_form)|[工作项完成率(work_item_completed_drill_detail_grid_view)](app/view/work_item_completed_drill_detail_grid_view)|
 |[工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type)|默认搜索表单(default)|[工作项配置(work_item_type_global_setting_mixed)](app/view/work_item_type_global_setting_mixed)|
 
-### 除主键、主信息、预置属性外，不包含其他配置的表单<sup class="footnote-symbol"> <font color=orange>[64]</font></sup>
+### 除主键、主信息、预置属性外，不包含其他配置的表单<sup class="footnote-symbol"> <font color=orange>[68]</font></sup>
 | 实体col200   |   视图col400 |表单col400  |
 | --------   |------------|------------|
 |[资源组件(ADDON_RESOURCE)](module/Base/addon_resource)|容量设置表单(capacity_form)|[容量设置(addon_resource_all_capacity_view)](app/view/addon_resource_all_capacity_view)|
@@ -1030,26 +1039,29 @@
 |[客户(CUSTOMER)](module/ProdMgmt/customer)|需求客户信息视图_表单(info_view_form)|[客户(customer_edit_view)](app/view/customer_edit_view)|
 |[交付物(DELIVERABLE)](module/Base/deliverable)|主编辑表单(main)|[交付物(deliverable_edit_view)](app/view/deliverable_edit_view)|
 |[数据字典(DICTIONARY)](module/Base/dictionary_data)|工单配置状态管理确认删除_表单(ticket_remove_view_form)|[数据字典(dictionary_data_edit_view)](app/view/dictionary_data_edit_view)|
-|[协作成员(DISCUSS_MEMBER)](module/Team/discuss_member)|主编辑表单(main)|[协作成员(discuss_member_edit_view)](app/view/discuss_member_edit_view)|
+|[协作成员(DISCUSS_MEMBER)](module/Team/discuss_member)|主编辑表单(main)|[职位选择(discuss_member_choose_position_option_view)](app/view/discuss_member_choose_position_option_view)|
 |[话题(DISCUSS_TOPIC)](module/Team/discuss_topic)|话题配置视图_表单(setting_view_form)|[话题(discuss_topic_mob_topic_dis_list)](app/view/discuss_topic_mob_topic_dis_list)|
 |[动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard)|主编辑表单(main)|[动态数据看板(dyna_dashboard_edit_view)](app/view/dyna_dashboard_edit_view)|
 |[收藏(FAVORITE)](module/Base/favorite)|主编辑表单(main)|[收藏(favorite_edit_view)](app/view/favorite_edit_view)|
 |[流程准则(GUIDELINE)](module/TestMgmt/guideline)|主编辑表单(main)|[流程配置(guideline_config_option_view)](app/view/guideline_config_option_view)|
 |[需求(IDEA)](module/ProdMgmt/idea)|需求排期表单(idea_re_plan)|[需求(idea_bi_form_idea_ratio)](app/view/idea_bi_form_idea_ratio)|
-|[效能成员(INSIGHT_MEMBER)](module/Insight/insight_member)|主编辑表单(main)|[效能成员(insight_member_edit_view)](app/view/insight_member_edit_view)|
+|[效能成员(INSIGHT_MEMBER)](module/Insight/insight_member)|主编辑表单(main)|[职位选择(insight_member_choose_position_option_view)](app/view/insight_member_choose_position_option_view)|
 |[效能报表(INSIGHT_REPORT)](module/Insight/insight_report)|设置仪表盘选项操作视图_表单(set_board_option_view_form)|[新建报表(insight_report_quick_create_view)](app/view/insight_report_quick_create_view)|
 |[效能视图(INSIGHT_VIEW)](module/Insight/insight_view)|视图配置视图_表单(setting_view_form)|[视图信息(insight_view_advanced_setting_edit_view)](app/view/insight_view_advanced_setting_edit_view)|
 |[测试库(LIBRARY)](module/TestMgmt/library)|测试库首页视图_表单(overview)|[高级设置(library_advanced_setting_edit_view)](app/view/library_advanced_setting_edit_view)|
+|[测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member)|测试库成员选择职位选项操作视图_表单(usr12129613_form)|[职位选择(library_member_choose_position_option_view)](app/view/library_member_choose_position_option_view)|
 |[登录日志(LOGIN_LOG)](module/Base/login_log)|主编辑表单(main)|[登录日志(login_log_edit_view)](app/view/login_log_edit_view)|
 |[后台管理(MANAGEMENT)](module/Base/management)|主编辑表单(main)|[配置中心(management_test_setting_view)](app/view/management_test_setting_view)|
 |[通知设置(NOTIFY_SETTING)](module/Base/notify_setting)|config_view_表单(测试)(config_view_test_form)|[通知设置(notify_setting_config_view)](app/view/notify_setting_config_view)|
-|[页面(PAGE)](module/Wiki/article_page)|保存命名版本选项操作视图_表单(usr06110734_form)|[页面(article_page_edit_view)](app/view/article_page_edit_view)|
+|[页面(PAGE)](module/Wiki/article_page)|引用代码表_表单(test_view_form)|[页面(article_page_edit_view)](app/view/article_page_edit_view)|
 |[系统参数(PARAMETER)](module/Base/parameter)|主编辑表单(main)|[系统参数(parameter_edit_view)](app/view/parameter_edit_view)|
 |[文件夹(PORTFOLIO)](module/Base/portfolio)|项目集首页视图_表单(project_index_view_form)|[高级设置(portfolio_project_set_advanced_view)](app/view/portfolio_project_set_advanced_view)|
 |[产品(PRODUCT)](module/ProdMgmt/product)|产品首页视图_表单(index_view_form)|[高级设置(product_advanced_setting_edit_view)](app/view/product_advanced_setting_edit_view)|
+|[产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member)|产品成员选择职位选项操作视图_表单(usr12111337_form)|[选择职位(product_member_choose_position_option_view)](app/view/product_member_choose_position_option_view)|
 |[排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan)|主编辑表单(main)|[排期(product_plan_edit_view)](app/view/product_plan_edit_view)|
 |[产品标签(PRODUCT_TAG)](module/ProdMgmt/product_tag)|产品标签确认删除_表单(product_tag_remove_view_form)|[编辑标签(product_tag_edit_option_view)](app/view/product_tag_edit_option_view)|
 |[项目(PROJECT)](module/ProjMgmt/project)|项目概览_表单(overview)|[高级设置(project_advanced_setting_edit_view)](app/view/project_advanced_setting_edit_view)|
+|[项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member)|项目成员选择职位选项操作视图_表单(usr12128076_form)|[选择职位(project_member_choose_position_option_view)](app/view/project_member_choose_position_option_view)|
 |[项目状态(PROJECT_STATE)](module/ProjMgmt/project_state)|主编辑表单(main)|[项目状态(project_state_edit_view)](app/view/project_state_edit_view)|
 |[项目标签(PROJECT_TAG)](module/ProjMgmt/project_tag)|项目标签确认删除_表单(project_tag_remove_view_form)|[项目标签(project_tag_edit_view)](app/view/project_tag_edit_view)|
 |[应用门户部件(PSAPPPORTLET)](module/extension/PSAppPortlet)|主编辑表单(main)|[应用门户部件(ps_app_portlet_edit_view)](app/view/ps_app_portlet_edit_view)|
@@ -1066,6 +1078,7 @@
 |[附件搜索(SEARCH_ATTACHMENT)](module/Base/search_attachment)|主编辑表单(main)|[附件搜索(search_attachment_edit_view)](app/view/search_attachment_edit_view)|
 |[评论搜索(SEARCH_COMMENT)](module/Base/search_comment)|主编辑表单(main)|[评论搜索(search_comment_edit_view)](app/view/search_comment_edit_view)|
 |[空间(SPACE)](module/Wiki/space)|空间首页视图_表单(index_view_form)|[空间(space_mob_list_form_view)](app/view/space_mob_list_form_view)|
+|[空间成员(SPACE_MEMBER)](module/Wiki/space_member)|空间成员选择职位选项操作视图_表单(usr12128313_form)|[职位选择(space_member_choose_position_option_view)](app/view/space_member_choose_position_option_view)|
 |[迭代(SPRINT)](module/ProjMgmt/sprint)|主编辑表单(main)|[迭代(sprint_mob_work_item_view)](app/view/sprint_mob_work_item_view)|
 |[迭代变更(SPRINT_ALTERATION)](module/ProjMgmt/sprint_alteration)|主编辑表单(main)|[迭代变更(sprint_alteration_edit_view)](app/view/sprint_alteration_edit_view)|
 |[发布阶段(STAGE)](module/ProjMgmt/stage)|主编辑表单(main)|[确认删除(stage_del_confirm_view)](app/view/stage_del_confirm_view)|

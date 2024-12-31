@@ -12,10 +12,10 @@ _
 
 
 ### 关联界面行为
+  * [项目(PROJECT)](module/ProjMgmt/project) : [项目设置（移动端）](module/ProjMgmt/project#界面行为)
+  * [项目(PROJECT)](module/ProjMgmt/project) : [回收站（移动端）](module/ProjMgmt/project#界面行为)
   * [项目(PROJECT)](module/ProjMgmt/project) : [项目成员（移动端）](module/ProjMgmt/project#界面行为)
   * [项目(PROJECT)](module/ProjMgmt/project) : [高级设置（移动端）](module/ProjMgmt/project#界面行为)
-  * [项目(PROJECT)](module/ProjMgmt/project) : [回收站（移动端）](module/ProjMgmt/project#界面行为)
-  * [项目(PROJECT)](module/ProjMgmt/project) : [项目设置（移动端）](module/ProjMgmt/project#界面行为)
 
 ### 关联视图
   * [项目成员(project_member_mob_list_view)](app/view/project_member_mob_list_view)

@@ -7,12 +7,12 @@
 
 
 ### 关联界面行为
-  * [最近访问(RECENT)](module/Base/recent) : [打开我的事项工单](module/Base/recent#界面行为)
   * [最近访问(RECENT)](module/Base/recent) : [打开我的事项用例表格视图](module/Base/recent#界面行为)
   * [最近访问(RECENT)](module/Base/recent) : [打开我的事项缺陷](module/Base/recent#界面行为)
-  * [最近访问(RECENT)](module/Base/recent) : [打开我的事项任务](module/Base/recent#界面行为)
-  * [最近访问(RECENT)](module/Base/recent) : [打开我的事项需求](module/Base/recent#界面行为)
   * [最近访问(RECENT)](module/Base/recent) : [打开我的事项其他工作项](module/Base/recent#界面行为)
+  * [最近访问(RECENT)](module/Base/recent) : [打开我的事项需求](module/Base/recent#界面行为)
+  * [最近访问(RECENT)](module/Base/recent) : [打开我的事项工单](module/Base/recent#界面行为)
+  * [最近访问(RECENT)](module/Base/recent) : [打开我的事项任务](module/Base/recent#界面行为)
 
 ### 关联视图
   * [需求(idea_summary_idea_grid_view)](app/view/idea_summary_idea_grid_view)

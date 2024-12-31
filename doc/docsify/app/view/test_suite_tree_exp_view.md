@@ -13,11 +13,11 @@
 
 
 ### 关联界面行为
+  * [用例模块(TEST_SUITE)](module/TestMgmt/test_suite) : [编辑](module/TestMgmt/test_suite#界面行为)
+  * [用例模块(TEST_SUITE)](module/TestMgmt/test_suite) : [删除](module/TestMgmt/test_suite#界面行为)
+  * [用例模块(TEST_SUITE)](module/TestMgmt/test_suite) : [编辑](module/TestMgmt/test_suite#界面行为)
   * [用例模块(TEST_SUITE)](module/TestMgmt/test_suite) : [树界面_刷新全部操作](module/TestMgmt/test_suite#界面行为)
-  * [用例模块(TEST_SUITE)](module/TestMgmt/test_suite) : [编辑](module/TestMgmt/test_suite#界面行为)
   * [用例模块(TEST_SUITE)](module/TestMgmt/test_suite) : [删除](module/TestMgmt/test_suite#界面行为)
-  * [用例模块(TEST_SUITE)](module/TestMgmt/test_suite) : [删除](module/TestMgmt/test_suite#界面行为)
-  * [用例模块(TEST_SUITE)](module/TestMgmt/test_suite) : [编辑](module/TestMgmt/test_suite#界面行为)
   * [用例模块(TEST_SUITE)](module/TestMgmt/test_suite) : [新建模块](module/TestMgmt/test_suite#界面行为)
 
 ### 关联视图

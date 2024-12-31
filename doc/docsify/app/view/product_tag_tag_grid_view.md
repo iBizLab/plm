@@ -16,8 +16,8 @@
 
 ### 关联界面行为
   * [产品标签(PRODUCT_TAG)](module/ProdMgmt/product_tag) : [编辑标签](module/ProdMgmt/product_tag#界面行为)
-  * [产品标签(PRODUCT_TAG)](module/ProdMgmt/product_tag) : [删除标签](module/ProdMgmt/product_tag#界面行为)
   * [产品标签(PRODUCT_TAG)](module/ProdMgmt/product_tag) : [表格界面_新建操作_通用](module/ProdMgmt/product_tag#界面行为)
+  * [产品标签(PRODUCT_TAG)](module/ProdMgmt/product_tag) : [删除标签](module/ProdMgmt/product_tag#界面行为)
 
 ### 关联视图
   * [编辑标签(product_tag_edit_option_view)](app/view/product_tag_edit_option_view)

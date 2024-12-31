@@ -20,9 +20,12 @@
 |职位名称|JOB_NAME|外键值文本|200|是||
 |手机号|MOBILE|文本，可指定长度|100|是||
 |登录名|NAME|文本，可指定长度|200|是||
+|组织标识|ORGANIZATION_ID|外键值|100|是||
+|组织名称|ORGANIZATION_NAME|外键值文本|200|是||
 |密码|PASSWORD|文本，可指定长度|200|是||
 |统计|REPORT_FLAG|[是否逻辑](index/dictionary_index#user_report_flag "启停状态")||是||
 |状态|STATUS|文本，可指定长度|100|是||
+|职位|TITLE|文本，可指定长度|100|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 |用户ID|USER_ID|文本，可指定长度|100|是||
@@ -61,6 +64,7 @@
 | -------- |---------- |-----------|----- |
 |[DER1N_USER_DEPARTMENT_DEPARTMENT_ID](der/DER1N_USER_DEPARTMENT_DEPARTMENT_ID)|[部门(DEPARTMENT)](module/Base/department)|1:N关系||
 |[DER1N_USER_JOB_JOB_ID](der/DER1N_USER_JOB_JOB_ID)|[岗位(JOB)](module/Base/job)|1:N关系||
+|[DER1N_USER_ORGANIZATION_ORGANIZATION_ID](der/DER1N_USER_ORGANIZATION_ORGANIZATION_ID)|[组织(ORGANIZATION)](module/Base/organization)|1:N关系||
 
 </el-tab-pane>
 </el-tabs>
@@ -169,7 +173,11 @@
 |N_JOB_NAME_EQ|职位名称|EQ||
 |N_JOB_NAME_LIKE|职位名称|LIKE||
 |N_NAME_LIKE|登录名|LIKE||
+|N_ORGANIZATION_ID_EQ|组织标识|EQ||
+|N_ORGANIZATION_NAME_EQ|组织名称|EQ||
+|N_ORGANIZATION_NAME_LIKE|组织名称|LIKE||
 |N_STATUS_EQ|状态|EQ||
+|N_TITLE_EQ|职位|EQ||
 
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |

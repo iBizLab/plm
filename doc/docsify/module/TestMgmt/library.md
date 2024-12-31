@@ -162,10 +162,20 @@
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `READ`
+* `MANAGE_PSDEFORM`
+* `MANAGE_PSDEMSLOGIC`
 * `DELETE`
-* `UPDATE`
+* `MANAGE_PSDELOGIC`
 * `SUBDATA`
+* `UPDATE`
+* `MANAGE_PSDEFIELD`
+* `READ_PSDELOGIC`
+* `READ_PSDEMSLOGIC`
+* `READ_PSDENOTIFY`
+* `MANAGE_PSDENOTIFY`
+* `READ`
+* `READ_PSDEFIELD`
+* `READ_PSDEFORM`
 
 
 
@@ -217,8 +227,13 @@
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `READ`
+* `READ_PSDEFIELD`
+* `READ_PSDENOTIFY`
+* `READ_PSDEFORM`
 * `SUBDATA`
+* `READ_PSDELOGIC`
+* `READ_PSDEMSLOGIC`
+* `READ`
 
 
 

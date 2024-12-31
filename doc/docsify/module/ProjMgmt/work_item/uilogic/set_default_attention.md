@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./set_default_attention#begin {开始}]]
+state "绑定关注人" as RAWJSCODE1  [[$./set_default_attention#rawjscode1 {绑定关注人}]]
 state "准备关注人数据" as PREPAREJSPARAM1  [[$./set_default_attention#preparejsparam1 {准备关注人数据}]]
 state "结束" as END1 <<end>> [[$./set_default_attention#end1 {结束}]]
-state "绑定关注人" as RAWJSCODE1  [[$./set_default_attention#rawjscode1 {绑定关注人}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -56,6 +56,11 @@ RAWJSCODE1 --> END1
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
+const attentions = uiLogic.form.state.data.attentions;
+if (attentions && attentions[0]) {
+  uiLogic.form.state.data.attentions = [{ ...attentions[0], ...uiLogic.attention }]
+  return;
+}
 uiLogic.form.state.data.attentions = [uiLogic.attention];
 ```
 
@@ -65,6 +70,6 @@ uiLogic.form.state.data.attentions = [uiLogic.attention];
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|关注数据|attention|数据对象||
 |表单|form|当前部件对象||
+|关注数据|attention|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

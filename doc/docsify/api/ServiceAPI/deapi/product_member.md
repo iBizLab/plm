@@ -20,6 +20,7 @@
 |<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
@@ -33,6 +34,7 @@
   "role_id" : null,
   "product_name" : null,
   "product_identifier" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -52,6 +54,7 @@
   "role_id" : null,
   "product_name" : null,
   "product_identifier" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -91,6 +94,7 @@
   "role_id" : null,
   "product_name" : null,
   "product_identifier" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -149,6 +153,7 @@
 |<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
@@ -162,6 +167,7 @@
   "role_id" : null,
   "product_name" : null,
   "product_identifier" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -181,6 +187,7 @@
   "role_id" : null,
   "product_name" : null,
   "product_identifier" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -191,6 +198,59 @@
 }
 
 ```
+
+## 变更职位
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/product_members/{key}/change_position" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`UPDATE`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|标识|
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
+|<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
+|<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "user_id" : null,
+  "role_id" : null,
+  "product_name" : null,
+  "product_identifier" : null,
+  "title" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "product_id" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+```
+
+
 
 ## 变更角色
 
@@ -218,6 +278,7 @@
 |<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
@@ -231,6 +292,7 @@
   "role_id" : null,
   "product_name" : null,
   "product_identifier" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -264,6 +326,7 @@
 |<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
@@ -277,6 +340,7 @@
   "role_id" : null,
   "product_name" : null,
   "product_identifier" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -314,6 +378,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
@@ -327,6 +392,7 @@ Integer
   "role_id" : null,
   "product_name" : null,
   "product_identifier" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -346,6 +412,7 @@ Integer
   "role_id" : null,
   "product_name" : null,
   "product_identifier" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -378,6 +445,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
@@ -391,6 +459,7 @@ Integer
   "role_id" : null,
   "product_name" : null,
   "product_identifier" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -410,6 +479,7 @@ Integer
   "role_id" : null,
   "product_name" : null,
   "product_identifier" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -442,6 +512,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
@@ -455,6 +526,7 @@ Integer
   "role_id" : null,
   "product_name" : null,
   "product_identifier" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -474,6 +546,7 @@ Integer
   "role_id" : null,
   "product_name" : null,
   "product_identifier" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -506,6 +579,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
@@ -519,6 +593,7 @@ Integer
   "role_id" : null,
   "product_name" : null,
   "product_identifier" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -538,6 +613,7 @@ Integer
   "role_id" : null,
   "product_name" : null,
   "product_identifier" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -601,6 +677,7 @@ Integer
     "role_id" : null,
     "product_name" : null,
     "product_identifier" : null,
+    "title" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -664,6 +741,7 @@ Integer
     "role_id" : null,
     "product_name" : null,
     "product_identifier" : null,
+    "title" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -727,6 +805,7 @@ Integer
     "role_id" : null,
     "product_name" : null,
     "product_identifier" : null,
+    "title" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -927,6 +1006,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
@@ -1003,6 +1083,42 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
+
+
+
+## 根据产品变更职位
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/products/{pkey}/product_members/{key}/change_position" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|产品主键|
+|key|String|标识|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
+|<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
+|<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
@@ -1037,6 +1153,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
@@ -1070,6 +1187,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
@@ -1103,6 +1221,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
@@ -1136,6 +1255,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
@@ -1169,6 +1289,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
@@ -1202,6 +1323,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
@@ -1522,6 +1644,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
@@ -1598,6 +1721,42 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
+
+
+
+## 根据企业用户变更职位
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/users/{pkey}/product_members/{key}/change_position" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|企业用户主键|
+|key|String|标识|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
+|<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
+|<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
@@ -1632,6 +1791,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
@@ -1665,6 +1825,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
@@ -1698,6 +1859,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
@@ -1731,6 +1893,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
@@ -1764,6 +1927,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
@@ -1797,6 +1961,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|

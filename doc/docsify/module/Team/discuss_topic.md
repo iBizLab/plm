@@ -232,7 +232,6 @@
 | 编辑基本信息 | open_edit_view | 编辑基本信息 |单项数据（主键）|用户自定义||
 | 设置星标 | add_favorite | 设置星标 |单项数据（主键）|<details><summary>后台调用</summary>[favorite](#行为)||
 | 进行中_归档 | archive | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
-| 添加话题成员 | add_discuss_topic_member | 添加成员 |无数据|系统预定义||
 | 删除话题（移动端） | mob_delete | 删除话题 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 已归档_激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
 | 移动话题 | move_discuss_topic | 移动话题 |单项数据（主键）|<details><summary>后台调用</summary>[move_discuss_topic](#行为)||

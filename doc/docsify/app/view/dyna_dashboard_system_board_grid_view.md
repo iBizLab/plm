@@ -15,8 +15,8 @@
 
 
 ### 关联界面行为
-  * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [表格界面_编辑操作](module/Base/dyna_dashboard#界面行为)
   * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [删除仪表盘](module/Base/dyna_dashboard#界面行为)
+  * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [表格界面_编辑操作](module/Base/dyna_dashboard#界面行为)
 
 ### 关联视图
   * [动态数据看板(dyna_dashboard_edit_view)](app/view/dyna_dashboard_edit_view)

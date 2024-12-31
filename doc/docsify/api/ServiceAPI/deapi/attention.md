@@ -21,6 +21,7 @@
 |<el-row justify="space-between"><el-col :span="20">owner_subtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -34,6 +35,7 @@
   "owner_subtype" : null,
   "user_id" : null,
   "type" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -53,6 +55,7 @@
   "owner_subtype" : null,
   "user_id" : null,
   "type" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -92,6 +95,7 @@
   "owner_subtype" : null,
   "user_id" : null,
   "type" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -150,6 +154,7 @@
 |<el-row justify="space-between"><el-col :span="20">owner_subtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -163,6 +168,7 @@
   "owner_subtype" : null,
   "user_id" : null,
   "type" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -182,6 +188,7 @@
   "owner_subtype" : null,
   "user_id" : null,
   "type" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -214,6 +221,7 @@
 |<el-row justify="space-between"><el-col :span="20">owner_subtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -227,6 +235,7 @@
   "owner_subtype" : null,
   "user_id" : null,
   "type" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -264,6 +273,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">owner_subtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -277,6 +287,7 @@ Integer
   "owner_subtype" : null,
   "user_id" : null,
   "type" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -296,6 +307,7 @@ Integer
   "owner_subtype" : null,
   "user_id" : null,
   "type" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -328,6 +340,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">owner_subtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -341,6 +354,7 @@ Integer
   "owner_subtype" : null,
   "user_id" : null,
   "type" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -360,6 +374,7 @@ Integer
   "owner_subtype" : null,
   "user_id" : null,
   "type" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -392,6 +407,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">owner_subtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -405,6 +421,7 @@ Integer
   "owner_subtype" : null,
   "user_id" : null,
   "type" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -424,6 +441,7 @@ Integer
   "owner_subtype" : null,
   "user_id" : null,
   "type" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -599,6 +617,7 @@ Integer
     "owner_subtype" : null,
     "user_id" : null,
     "type" : null,
+    "title" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -664,6 +683,7 @@ Integer
     "owner_subtype" : null,
     "user_id" : null,
     "type" : null,
+    "title" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,

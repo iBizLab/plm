@@ -1,5 +1,5 @@
 
-## 使用脚本的界面逻辑节点<sup class="footnote-symbol"> <font color=orange>[436]</font></sup>
+## 使用脚本的界面逻辑节点<sup class="footnote-symbol"> <font color=orange>[445]</font></sup>
 
 #### [资源组件(ADDON_RESOURCE)](module/Base/addon_resource)的处理逻辑[资源删除逻辑(resource_del)](module/Base/addon_resource/uilogic/resource_del)
 
@@ -96,20 +96,23 @@ var file_name = uiLogic.default.name;
 var file_id = uiLogic.default.id;
 var file_preview_address = ibiz.env.customParams.file_preview_address;
 
-const windowInfo = getCurrentWindowInfo(url);
+if (file_preview_address !== null && file_preview_address !== undefined && file_preview_address !== '') {
+    const windowInfo = getCurrentWindowInfo(url);
 
-let uploadUrl = `${ibiz.env.baseUrl}/${ibiz.env.appId}${ibiz.env.downloadFileUrl}`;
-const app = ibiz.hub.getApp(context.srfappid);
-const OSSCat = app.model.userParam?.DefaultOSSCat;
-uploadUrl = uploadUrl.replace('/{cat}', OSSCat ? `/${OSSCat}` : '');
+    let uploadUrl = `${ibiz.env.baseUrl}/${ibiz.env.appId}${ibiz.env.downloadFileUrl}`;
+    const app = ibiz.hub.getApp(context.srfappid);
+    const OSSCat = app.model.userParam?.DefaultOSSCat;
+    uploadUrl = uploadUrl.replace('/{cat}', OSSCat ? `/${OSSCat}` : '');
 
-var filedownloadurl = windowInfo + uploadUrl + '/'+file_id+'?fullfilename='+file_name;
+    var filedownloadurl = windowInfo + uploadUrl + '/'+file_id+'?fullfilename='+file_name;
 
-var b64Encoded = ibiz.util.base64.encode(filedownloadurl);
-var previewUrl = file_preview_address + '/onlinePreview?url='+encodeURIComponent(b64Encoded);
+    var b64Encoded = ibiz.util.base64.encode(filedownloadurl);
+    var previewUrl = file_preview_address + '/onlinePreview?url='+encodeURIComponent(b64Encoded);
 
-window.open(previewUrl);
-
+    window.open(previewUrl);
+} else {
+  util.message.error('无附件预览服务，请联系管理员添加!');
+}
 
 function getCurrentWindowInfo(url) {
     const protocol = url.protocol;
@@ -2083,6 +2086,24 @@ if (uiLogic.listservice) {
     })
 }
 ```
+#### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[关闭评论区(close_comment)](module/Wiki/article_page/uilogic/close_comment)
+
+节点：记录评论状态
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+const operator = context.loginname;
+
+localStorage.removeItem(operator);
+```
+#### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[关闭评论区(close_comment)](module/Wiki/article_page/uilogic/close_comment)
+
+节点：通知刷新
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+ibiz.mc.command.create.send({ srfdecodename: 'article_page'})
+```
 #### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[恢复历史版本并通知刷新(page_refresh)](module/Wiki/article_page/uilogic/page_refresh)
 
 节点：通知刷新
@@ -2202,6 +2223,16 @@ if(access_password.value !== null && access_password.value !== undefined) {
     access_password.setDataValue(randomNumber);
 }
 
+```
+#### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[显示评论区(show_commnet)](module/Wiki/article_page/uilogic/show_commnet)
+
+节点：记录评论状态
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+const operator = context.loginname;
+
+localStorage.setItem(operator, 'true');
 ```
 #### [文件夹(PORTFOLIO)](module/Base/portfolio)的处理逻辑[计算表格列行为状态(portfolio)(calc_column_action_state)](module/Base/portfolio/uilogic/calc_column_action_state)
 
@@ -2557,6 +2588,81 @@ if (rows && rows.length > 0) {
         }
     })
 }
+```
+#### [核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc)的处理逻辑[跳转设置页面(skip_setting)](module/extension/PSCorePrdFunc/uilogic/skip_setting)
+
+节点：跳转
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+const { settingurl } = uiLogic.default;
+
+window.open(settingurl, '_self');
+
+```
+#### [核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc)的处理逻辑[clone此应用(clone_git)](module/extension/PSCorePrdFunc/uilogic/clone_git)
+
+节点：注入脚本代码
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+var { httpurltorepo } = uiLogic.default;
+
+var aux = document.createElement("textarea");
+// aux.setAttribute("value", info); 
+aux.value='git clone ' + httpurltorepo;
+document.body.appendChild(aux); 
+aux.select(); 
+document.execCommand("copy"); 
+document.body.removeChild(aux); 
+
+util.message.success('复制成功!');
+```
+#### [核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc)的处理逻辑[初始化插件信息(init_plugin_info)](module/extension/PSCorePrdFunc/uilogic/init_plugin_info)
+
+节点：初始化
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+var data = uiLogic.form.state.data;
+var setting_json = JSON.parse(data.settings, null, 4);
+data.rt_object_repo = setting_json.rTObjectRepo || "";
+data.plugin_code = setting_json.pluginCode || "";
+```
+#### [核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc)的处理逻辑[跳转应用详情页面(open_app_info)](module/extension/PSCorePrdFunc/uilogic/open_app_info)
+
+节点：刷新导航占位
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+setTimeout(() => {
+  parentView.layoutPanel.panelItems.nav_pos.openView({
+    key: uiLogic.default.pscoreprdfuncid,
+    viewId: 'plmweb.ps_core_prd_func_info_view',
+    isRoutePushed: true,
+  });
+}, 0);
+```
+#### [核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc)的处理逻辑[跳转gitlab(skip_gitlab)](module/extension/PSCorePrdFunc/uilogic/skip_gitlab)
+
+节点：跳转
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+const { httpurltorepo } = uiLogic.default;
+window.open(httpurltorepo, '_blank');
+```
+#### [核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc)的处理逻辑[更新插件设置(update_plugin_setting)](module/extension/PSCorePrdFunc/uilogic/update_plugin_setting)
+
+节点：更新settings字段
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+var rt_object_repo = uiLogic.default.rt_object_repo;
+var data = uiLogic.form.state.data;
+var setting_json = JSON.parse(data.settings);
+setting_json.rTObjectRepo = rt_object_repo;
+data.settings = JSON.stringify(setting_json, null, 4);
 ```
 #### [实体属性(PSDEFIELD)](module/extension/PSDEField)的处理逻辑[判断操作列是否禁用(judge_column_state)](module/extension/PSDEField/uilogic/judge_column_state)
 
@@ -5576,6 +5682,11 @@ if(uiLogic.reportpanel){
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
+const attentions = uiLogic.form.state.data.attentions;
+if (attentions && attentions[0]) {
+  uiLogic.form.state.data.attentions = [{ ...attentions[0], ...uiLogic.attention }]
+  return;
+}
 uiLogic.form.state.data.attentions = [uiLogic.attention];
 ```
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[刷新(refresh)](module/ProjMgmt/work_item/uilogic/refresh)

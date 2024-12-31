@@ -52,6 +52,8 @@
 |类型|TYPE|[单项选择(文本值)](index/dictionary_index#page_type "页面类型")|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
+|用户标记|USER_TAG|文本，可指定长度|200|是||
+|用户标记2|USER_TAG2|文本，可指定长度|200|是||
 
 
 ###### 属性组
@@ -203,6 +205,7 @@
 |关闭共享|closed_shared|[实体处理逻辑](module/Wiki/article_page/logic/closed_shared "关闭共享")|默认|不支持||||
 |生成版本|commit_version|[实体处理逻辑](module/Wiki/article_page/logic/commit_version "生成版本")|默认|不支持||||
 |复制页面|copy_page|[实体处理逻辑](module/Wiki/article_page/logic/copy_page "复制页面")|默认|不支持||||
+|统计评论|count_comment|[实体处理逻辑](module/Wiki/article_page/logic/count_comment "统计页面评论数")|默认|不支持||||
 |删除|delete|[实体处理逻辑](module/Wiki/article_page/logic/delete "删除")|默认|不支持||||
 |导出页面为PDF|export_to_pdf|[实体处理逻辑](module/Wiki/article_page/logic/export_to_pdf "导出页面为pdf")|默认|不支持||||
 |设置星标|favorite|[实体处理逻辑](module/Wiki/article_page/logic/favorite "设置星标")|默认|不支持||||
@@ -255,6 +258,7 @@
 |[生成版本](module/Wiki/article_page/logic/commit_version)|commit_version|无||生成页面版本|
 |[移动子页面](module/Wiki/article_page/logic/move_child_page)|move_child_page|无||移动子页面至知识空间|
 |[移动页面](module/Wiki/article_page/logic/move_page)|move_page|无||移动页面至知识空间|
+|[统计页面评论数](module/Wiki/article_page/logic/count_comment)|count_comment|无||统计页面评论数|
 |[置空共享访问密码](module/Wiki/article_page/logic/reset_shared_pwd)|reset_shared_pwd|无||默认Get行为Reset共享访问密码|
 |[获取共享信息](module/Wiki/article_page/logic/get_shared_info)|get_shared_info|无||页面共享设置表单，获取逻辑|
 |[获取共享页面标题](module/Wiki/article_page/logic/get_shared_title)|get_shared_title|无||获取共享页面顶部标题|
@@ -439,6 +443,10 @@
 |N_TYPE_EQ|类型|EQ||
 |N_UPDATE_TIME_GTANDEQ|更新时间|GTANDEQ||
 |N_UPDATE_TIME_LTANDEQ|更新时间|LTANDEQ||
+|N_USER_TAG_EQ|用户标记|EQ||
+|N_USER_TAG_LIKE|用户标记|LIKE||
+|N_USER_TAG2_EQ|用户标记2|EQ||
+|N_USER_TAG2_LIKE|用户标记2|LIKE||
 
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
@@ -446,7 +454,6 @@
 | 移动端重命名 | mob_rename | 重命名 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_mob_rename_view)</details>||
 | 上传图标 | upload_icon | 上传图标 |单项数据|<details><summary>打开视图或向导（模态）</summary>[上传图标](app/view/article_page_upload_icon_option_view)</details>||
 | 页面导入 | page_upload | 导入页面 |无数据|<details><summary>打开数据导入视图</summary>[多类型页面数据导入]()</details>||
-| 删除 | toolbar_tree_exp_view_draft_cm_deuiaction1_click | 删除 |单项数据|用户自定义||
 | 删除 | toolbar_tree_exp_view_node4_cm_deuiaction1_click | 删除 |单项数据|用户自定义||
 | 发布 | release | 发布 |单项数据|用户自定义||
 | 新建页面（移动端） | mob_create_page | 新建页面 |无数据|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_mob_create_view)</details>||
@@ -458,7 +465,6 @@
 | 切换草稿 | draft | 草稿 |无数据|用户自定义||
 | 草稿箱(移动端) | mob_draft | 草稿箱 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[草稿箱](app/view/article_page_mob_draft_list_view)</details>||
 | 保存命名版本 | set_name_version | 保存命名版本 |单项数据|<details><summary>后台调用</summary>[name_version_save](#行为)||
-| 新建子分组 | toolbar_tree_exp_view_draft_cm_deuiaction4_click | 新建子分组 |单项数据|用户自定义||
 | 评论 | toolbar_model_show_view_noupdown_toolbar_deuiaction2_click | 评论 |单项数据|用户自定义||
 | 关闭 | toolbar_show_custom_view_toolbar_deuiaction3_click | 关闭 |单项数据|用户自定义||
 | 打开界面编辑页 | open_page_edit_view | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_document_edit_view)</details>||
@@ -472,6 +478,7 @@
 | 关闭 | toolbar_re_show_view_toolbar_deuiaction3_click | 关闭 |单项数据|用户自定义||
 | 关闭共享（管理表格操作列） | closed_shared_management | 关闭共享 |单项数据（主键）|<details><summary>后台调用</summary>[closed_shared](#行为)||
 | 锁定页面 | lock_page | 锁定页面 |单项数据（主键）|<details><summary>后台调用</summary>[lock_page](#行为)||
+| 删除页面（草稿） | remove_this_page | 删除页面 |单项数据|<details><summary>后台调用</summary>[delete](#行为)||
 | 删除 | toolbar_tree_exp_view_node5_cm_deuiaction1_click | 删除 |单项数据|用户自定义||
 | 重命名 | toolbar_tree_exp_view_node4_cm_deuiaction2_click | 重命名 |单项数据|用户自定义||
 | 上传附件 | upload_attachment | 上传 |无数据|用户自定义||
@@ -509,7 +516,6 @@
 | 恢复 | recover | 恢复 |多项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
 | 回收站 | open_deleted_view | 回收站 |无数据|用户自定义||
 | 重命名 | toolbar_tree_exp_view_node2_cm_deuiaction2_click | 重命名 |单项数据|用户自定义||
-| 重命名 | toolbar_tree_exp_view_draft_cm_deuiaction2_click | 重命名 |单项数据|用户自定义||
 | 打开页面信息 | open_page_info | 打开页面信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[页面信息](app/view/article_page_page_detail_edit_view)</details>||
 | 查看空间成员 | open_space_member | 空间成员 |无数据|用户自定义||
 | 恢复_视图消息 | recover_message | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||

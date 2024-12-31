@@ -23,6 +23,8 @@
 |主部门|MDEPARTMENT_ID|文本，可指定长度|100|是||
 |主部门|MDEPARTMENT_NAME|文本，可指定长度|100|是||
 |移动电话|MOBILE|文本，可指定长度|100|是||
+|组织标识|ORGANIZATION_ID|文本，可指定长度|100|是||
+|组织名称|ORGANIZATION_NAME|文本，可指定长度|100|是||
 |地址|POSTAL_ADDRESS|文本，可指定长度|500|是||
 |统计|REPORT_FLAG|是否逻辑||是||
 |状态|STATUS|文本，可指定长度|100|是||

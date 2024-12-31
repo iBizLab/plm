@@ -253,6 +253,7 @@
 |[填充表单](module/ProdMgmt/idea/logic/fill_idea_form)|fill_idea_form|无|||
 |[归档](module/ProdMgmt/idea/logic/archive)|archive|无||未归档需求数据的归档处理，修改需求的归档状态为归档|
 |[恢复](module/ProdMgmt/idea/logic/recover)|recover|无||已删除状态需求数据的恢复，修改需求的是否删除属性值，并恢复访问记录|
+|[排期跟踪数据](module/ProdMgmt/idea/logic/plan_track_data)|plan_track_data|无||返回该排期中所有的需求以及需求的关联数据|
 |[无操作](module/ProdMgmt/idea/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[是否删除变更附加逻辑](module/ProdMgmt/idea/logic/is_deleted_onchange)|is_deleted_onchange|属性逻辑||产品需求删除或恢复时触发相应的通知消息|
 |[是否归档变更附加逻辑](module/ProdMgmt/idea/logic/is_archived_onchange)|is_archived_onchange|属性逻辑||产品需求归档或激活数据时触发相应的通知消息|
@@ -380,6 +381,7 @@
 |[公开(public)](module/ProdMgmt/idea/query/public)|public|否|否 |否 ||
 |[只读用户(reader)](module/ProdMgmt/idea/query/reader)|reader|否|否 |否 ||
 |[最近浏览(recent_idea)](module/ProdMgmt/idea/query/recent_idea)|recent_idea|否|否 |否 |最近浏览的且未关联当前主体且非归档非删除的数据|
+|[关联需求(relation_idea)](module/ProdMgmt/idea/query/relation_idea)|relation_idea|否|否 |否 ||
 |[普通用户(user)](module/ProdMgmt/idea/query/user)|user|否|否 |否 ||
 
 ## 数据集合
@@ -409,8 +411,10 @@
 |[未关联的需求(not_exsists_relation)](module/ProdMgmt/idea/dataset/not_exsists_relation)|not_exsists_relation|数据查询|否||多项选择视图中右侧表格的数据来源；查询了未与当前主体关联的数据。|
 |[需求通知负责人(notify_assignee)](module/ProdMgmt/idea/dataset/notify_assignee)|notify_assignee|数据查询|否||查询指定属性组（负责人相关）|
 |[计划关联需求(plan_relation_idea)](module/ProdMgmt/idea/dataset/plan_relation_idea)|plan_relation_idea|数据查询|否||计划关联需求表格调用|
+|[排期跟踪数据(plan_track_data)](module/ProdMgmt/idea/dataset/plan_track_data)|plan_track_data|[实体逻辑](module/ProdMgmt/idea/logic/plan_track_data)|否||一个数据集合直接返回该排期中所有的需求以及需求的关联数据|
 |[只读用户(reader)](module/ProdMgmt/idea/dataset/reader)|reader|数据查询|否|||
 |[最近浏览(recent_idea)](module/ProdMgmt/idea/dataset/recent_idea)|recent_idea|数据查询|否||最近浏览的且未关联当前主体且非归档非删除的数据|
+|[关联需求(relation_idea)](module/ProdMgmt/idea/dataset/relation_idea)|relation_idea|数据查询|否|||
 |[普通用户(user)](module/ProdMgmt/idea/dataset/user)|user|数据查询|否|||
 
 ## 数据权限
@@ -599,6 +603,7 @@
 | 编辑 | toolbar_tree_exp_view_node2_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 打开需求编辑页 | open_idea_edit_view | 编辑 |单项数据|<details><summary>打开视图或向导（模态）</summary>[编辑需求](app/view/idea_update_view)</details>||
 | 删除 | toolbar_tree_exp_view_node1_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 打开动态需求 | open_dyna_idea | 打开动态需求 |单项数据|<details><summary>打开视图或向导（模态）</summary>[需求](app/view/idea_main_view)</details>||
 | 关联测试用例（移动端） | mob_re_case | 关联测试用例 |无数据|<details><summary>后台调用</summary>[others_relation_idea](#行为)||
 | 恢复（工具栏） | recover_toolbar | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)|已删除需求详情页恢复按钮调用；恢复已删除的需求|
 | 关联工单（工具栏） | toolbar_link_ticket | 关联工单 |无数据|用户自定义||

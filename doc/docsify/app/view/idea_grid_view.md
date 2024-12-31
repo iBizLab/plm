@@ -20,12 +20,12 @@
 
 
 ### 关联界面行为
-  * [需求(IDEA)](module/ProdMgmt/idea) : [需求归档](module/ProdMgmt/idea#界面行为)
-  * [需求(IDEA)](module/ProdMgmt/idea) : [删除](module/ProdMgmt/idea#界面行为)
-  * [需求(IDEA)](module/ProdMgmt/idea) : [变更需求状态](module/ProdMgmt/idea#界面行为)
-  * [需求(IDEA)](module/ProdMgmt/idea) : [需求排期](module/ProdMgmt/idea#界面行为)
-  * [需求(IDEA)](module/ProdMgmt/idea) : [需求复制](module/ProdMgmt/idea#界面行为)
   * [需求(IDEA)](module/ProdMgmt/idea) : [需求移动](module/ProdMgmt/idea#界面行为)
+  * [需求(IDEA)](module/ProdMgmt/idea) : [需求排期](module/ProdMgmt/idea#界面行为)
+  * [需求(IDEA)](module/ProdMgmt/idea) : [需求归档](module/ProdMgmt/idea#界面行为)
+  * [需求(IDEA)](module/ProdMgmt/idea) : [变更需求状态](module/ProdMgmt/idea#界面行为)
+  * [需求(IDEA)](module/ProdMgmt/idea) : [需求复制](module/ProdMgmt/idea#界面行为)
+  * [需求(IDEA)](module/ProdMgmt/idea) : [删除](module/ProdMgmt/idea#界面行为)
   * [需求(IDEA)](module/ProdMgmt/idea) : [激活](module/ProdMgmt/idea#界面行为)
 
 ### 关联界面逻辑

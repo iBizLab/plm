@@ -301,6 +301,7 @@
 |[公开(public)](module/ProdMgmt/ticket/query/public)|public|否|否 |否 ||
 |[只读用户(reader)](module/ProdMgmt/ticket/query/reader)|reader|否|否 |否 ||
 |[最近浏览(recent_ticket)](module/ProdMgmt/ticket/query/recent_ticket)|recent_ticket|否|否 |否 ||
+|[关联工单(relation_ticket)](module/ProdMgmt/ticket/query/relation_ticket)|relation_ticket|否|否 |否 ||
 |[当前标签下工单(ticket_re_product_tag)](module/ProdMgmt/ticket/query/ticket_re_product_tag)|ticket_re_product_tag|否|否 |否 |当前标签下工单表格视图调用|
 |[工单关联工单(ticket_relation_ticket)](module/ProdMgmt/ticket/query/ticket_relation_ticket)|ticket_relation_ticket|否|否 |否 ||
 |[工单统计(ticket_statistics)](module/ProdMgmt/ticket/query/ticket_statistics)|ticket_statistics|否|否 |否 |工单图表使用|
@@ -335,6 +336,7 @@
 |[工单通知负责人(notify_assignee)](module/ProdMgmt/ticket/dataset/notify_assignee)|notify_assignee|数据查询|否|||
 |[只读用户(reader)](module/ProdMgmt/ticket/dataset/reader)|reader|数据查询|否|||
 |[最近浏览(recent_ticket)](module/ProdMgmt/ticket/dataset/recent_ticket)|recent_ticket|数据查询|否|||
+|[关联工单(relation_ticket)](module/ProdMgmt/ticket/dataset/relation_ticket)|relation_ticket|数据查询|否|||
 |[当前标签下工单(ticket_re_product_tag)](module/ProdMgmt/ticket/dataset/ticket_re_product_tag)|ticket_re_product_tag|数据查询|否||当前标签下工单表格视图调用|
 |[工单关联工单(ticket_relation_ticket)](module/ProdMgmt/ticket/dataset/ticket_relation_ticket)|ticket_relation_ticket|数据查询|否|||
 |[工单状态饼图数据(ticket_state_pie_chart)](module/ProdMgmt/ticket/dataset/ticket_state_pie_chart)|ticket_state_pie_chart|数据查询|否||工单状态饼图数据<br>在需求关联工单统计视图中使用|
@@ -431,12 +433,12 @@
 
 |    中文名col200   | 代码名col150       |  消息队列col200   |  消息模板col200 |  通知目标col150     |  备注col350  |
 |------------| -----   |  -------- | -------- |-------- |-------- |
-|[工单归档/激活通知](module/ProdMgmt/ticket/notify/archive_notify)|archive_notify|[默认消息队列](index/notify_index)|[工单通知模板(归档/激活工单)](index/notify_index#ticket_archived_or_activate)|负责人 关注人员 ||
+|[工单归档/激活通知](module/ProdMgmt/ticket/notify/archive_notify)|archive_notify|[默认消息队列](index/notify_index)|[工单通知模板(归档/激活工单)](index/notify_index#ticket_archived_or_activate)|关注人员 负责人 ||
 |[工单取消分配负责人通知](module/ProdMgmt/ticket/notify/assignee_cancel_notify)|assignee_cancel_notify|[默认消息队列](index/notify_index)|[工单通知模板(取消分配负责人)](index/notify_index#ticket_assignee_cancel)|负责人 ||
 |[工单分配负责人通知](module/ProdMgmt/ticket/notify/assignee_notify)|assignee_notify|[默认消息队列](index/notify_index)|[工单通知模板(分配负责人)](index/notify_index#ticket_assignee)|负责人 ||
 |[工单负责人变更通知](module/ProdMgmt/ticket/notify/assignee_onchange_notify)|assignee_onchange_notify|[默认消息队列](index/notify_index)|[工单通知模板(负责人变更)](index/notify_index#ticket_assignee_onchange)|负责人 关注人员 ||
-|[工单删除/恢复工单通知](module/ProdMgmt/ticket/notify/remove_notify)|remove_notify|[默认消息队列](index/notify_index)|[工单通知模板(删除/恢复工单)](index/notify_index#ticket_remove_or_recover)|负责人 关注人员 ||
-|[工单状态变更通知](module/ProdMgmt/ticket/notify/state_onchage_notify)|state_onchage_notify|[默认消息队列](index/notify_index)|[工单通知模板(状态变更)](index/notify_index#ticket_state_onchange)|负责人 关注人员 ||
+|[工单删除/恢复工单通知](module/ProdMgmt/ticket/notify/remove_notify)|remove_notify|[默认消息队列](index/notify_index)|[工单通知模板(删除/恢复工单)](index/notify_index#ticket_remove_or_recover)|关注人员 负责人 ||
+|[工单状态变更通知](module/ProdMgmt/ticket/notify/state_onchage_notify)|state_onchage_notify|[默认消息队列](index/notify_index)|[工单通知模板(状态变更)](index/notify_index#ticket_state_onchange)|关注人员 负责人 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -525,6 +527,7 @@
 | 打开工单关注列表（移动端） | mob_open_attention_list | 打开关注列表 |单项数据|<details><summary>打开视图或向导（模态）</summary>[工单关注](app/view/attention_mob_ticket_md_view)</details>||
 | 新建执行后（建立双向关联数据) | after_creat_double_relation | 新建执行后（建立双向关联数据) |单项数据（主键）|用户自定义||
 | 显示下拉并展开数据（嵌入视图） | show_dorpdown_data | 显示下拉并展开数据 |无数据|用户自定义||
+| 打开动态工单 | open_dyna_ticket | 打开动态工单 |单项数据|<details><summary>打开视图或向导（模态）</summary>[工单](app/view/ticket_main_view)</details>||
 | 客户取消关联工单 | customer_del_ticket | 取消关联 |单项数据|<details><summary>后台调用</summary>[customer_del_ticket](#行为)||
 | 配置 | panel_usr1023088817_button_calluilogic1_click | 工单 |单项数据|<details><summary>打开视图或向导（模态）</summary>[工单](app/view/ticket_product_dyna_tab_exp_view)</details>||
 | 全屏 | toolbar_ticket_grid_parts_toolbar_deuiaction1_click | 全屏 |单项数据|用户自定义||

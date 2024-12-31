@@ -34,7 +34,7 @@
 
 ### 指标
 ##### 计算式指标
-|    名称col200   | 代码名col150  |  计算公式col500   |  备注col500  |
+|    名称col200   | 代码名col150  |  计算公式col501   |  备注col500  |
 | --------  |------------| -----   |  --------|
 |工单占比|ticket_ratio|countif(multiif(param(code_type, '-1') = '10', priority in (params(priority, ('P0'))), param(code_type, '-1') = '20', state in (params(state, ('10'))), param(code_type, '-1') = '30', type in (params(type, ('10'))), param(code_type, '-1') = '40', channel in (params(channel, ('10'))), param(code_type, '-1') = '50', solution in (params(solution, ('10'))), priority in (params(priority, ('P0')))) and is_deleted = 0 and product_is_deleted = 0) / if(countif(is_deleted = 0 and product_is_deleted = 0) = 0, 1, countif(is_deleted = 0 and product_is_deleted = 0))|统计不同属性工单的占比情况。	|
 |工单数量|tickets|countif(is_deleted=0 and product_is_deleted = 0)|统计不同维度下的工单数量。|

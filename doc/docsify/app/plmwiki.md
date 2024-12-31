@@ -18,6 +18,7 @@
 |[共享空间](app/view/article_page_shared_tree_exp_view)|article_page_shared_tree_exp_view|页面|实体树导航视图||
 |[共享](app/view/article_page_shared_view)|article_page_shared_view|页面|实体编辑视图||
 |[共享](app/view/article_page_shared_with_sub_view)|article_page_shared_with_sub_view|页面|实体树导航视图||
+|[测试页面-引用代码表](app/view/article_page_test_view)|article_page_test_view|页面|实体编辑视图||
 |[评论列表视图](app/view/comment_wiki_list_view)|comment_wiki_list_view|评论|实体列表视图|系统自动添加|
 
 <script>

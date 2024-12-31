@@ -21,7 +21,10 @@
 |关联主体标识|PRINCIPAL_ID|文本，可指定长度|100|否||
 |关联主体类型|PRINCIPAL_TYPE|文本，可指定长度|100|否||
 |源工作项|PRINCIPAL_WORK_ITEM|外键值对象|1048576|是||
+|产品|PRODUCT|外键值对象|1048576|是||
+|项目对象|PROJECT_OBJ|外键值对象|1048576|是||
 |关联类型|RELATION_TYPE|文本，可指定长度|100|是||
+|排序|SEQUENCE|整型||是||
 |目标对象负责人|TARGET_ASSIGNEE|文本，可指定长度|100|是||
 |目标主体标识|TARGET_ID|文本，可指定长度|100|是||
 |目标对象编号|TARGET_IDENTIFIER|文本，可指定长度|100|是||
@@ -84,6 +87,8 @@
 | -------- |---------- |-----------|----- |
 |[DERCUSTOM_RELATION_BASELINE](der/DERCUSTOM_RELATION_BASELINE)|[基线(BASELINE)](module/Base/baseline)|自定义关系||
 |[DERCUSTOM_RELATION_IDEA](der/DERCUSTOM_RELATION_IDEA)|[需求(IDEA)](module/ProdMgmt/idea)|自定义关系||
+|[DERCUSTOM_RELATION_PRODUCT](der/DERCUSTOM_RELATION_PRODUCT)|[产品(PRODUCT)](module/ProdMgmt/product)|自定义关系||
+|[DERCUSTOM_RELATION_PROJECT](der/DERCUSTOM_RELATION_PROJECT)|[项目(PROJECT)](module/ProjMgmt/project)|自定义关系||
 |[DERCUSTOM_RELATION_RELEASE](der/DERCUSTOM_RELATION_RELEASE)|[项目发布(RELEASE)](module/ProjMgmt/release)|自定义关系||
 |[DERCUSTOM_RELATION_REVIEW](der/DERCUSTOM_RELATION_REVIEW)|[评审(REVIEW)](module/TestMgmt/review)|自定义关系||
 |[DERCUSTOM_RELATION_REVIEW_CONTENT_EXTEND](der/DERCUSTOM_RELATION_REVIEW_CONTENT_EXTEND)|[评审内容扩展(REVIEW_CONTENT_EXTEND)](module/TestMgmt/review_content_extend)|自定义关系||
@@ -91,7 +96,9 @@
 |[DERCUSTOM_RELATION_TARGET_CUSTOMER](der/DERCUSTOM_RELATION_TARGET_CUSTOMER)|[客户(CUSTOMER)](module/ProdMgmt/customer)|自定义关系||
 |[DERCUSTOM_RELATION_TARGET_IDEA](der/DERCUSTOM_RELATION_TARGET_IDEA)|[需求(IDEA)](module/ProdMgmt/idea)|自定义关系||
 |[DERCUSTOM_RELATION_TARGET_PAGE](der/DERCUSTOM_RELATION_TARGET_PAGE)|[页面(PAGE)](module/Wiki/article_page)|自定义关系||
+|[DERCUSTOM_RELATION_TARGET_PRODUCT](der/DERCUSTOM_RELATION_TARGET_PRODUCT)|[产品(PRODUCT)](module/ProdMgmt/product)|自定义关系||
 |[DERCUSTOM_RELATION_TARGET_PRODUCT_PLAN](der/DERCUSTOM_RELATION_TARGET_PRODUCT_PLAN)|[排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan)|自定义关系||
+|[DERCUSTOM_RELATION_TARGET_PROJECT](der/DERCUSTOM_RELATION_TARGET_PROJECT)|[项目(PROJECT)](module/ProjMgmt/project)|自定义关系||
 |[DERCUSTOM_RELATION_TARGET_RUN](der/DERCUSTOM_RELATION_TARGET_RUN)|[执行用例(RUN)](module/TestMgmt/run)|自定义关系||
 |[DERCUSTOM_RELATION_TARGET_SPACE](der/DERCUSTOM_RELATION_TARGET_SPACE)|[空间(SPACE)](module/Wiki/space)|自定义关系||
 |[DERCUSTOM_RELATION_TARGET_TEST_CASE](der/DERCUSTOM_RELATION_TARGET_TEST_CASE)|[用例(TEST_CASE)](module/TestMgmt/test_case)|自定义关系||
@@ -154,6 +161,9 @@
 |[需求关联工单(idea_re_ticket)](module/Base/relation/query/idea_re_ticket)|idea_re_ticket|否|否 |否 ||
 |[需求关联工作项(idea_re_work_item)](module/Base/relation/query/idea_re_work_item)|idea_re_work_item|否|否 |否 ||
 |[版本需求关联数据(idea_version_relation)](module/Base/relation/query/idea_version_relation)|idea_version_relation|否|否 |否 |主实体版本创建时，查询关联principal_type为需求的数据存入version_data|
+|[排期下需求(product_plan_idea)](module/Base/relation/query/product_plan_idea)|product_plan_idea|否|否 |否 ||
+|[产品关联项目(product_re_project)](module/Base/relation/query/product_re_project)|product_re_project|否|否 |否 ||
+|[项目关联产品(project_re_product)](module/Base/relation/query/project_re_product)|project_re_product|否|否 |否 ||
 |[评审关联测试用例(review_re_test_case)](module/Base/relation/query/review_re_test_case)|review_re_test_case|否|否 |否 ||
 |[执行用例关联缺陷(run_re_bug)](module/Base/relation/query/run_re_bug)|run_re_bug|否|否 |否 ||
 |[执行用例关联需求(run_re_idea)](module/Base/relation/query/run_re_idea)|run_re_idea|否|否 |否 ||
@@ -185,6 +195,9 @@
 |[需求关联工单(idea_re_ticket)](module/Base/relation/dataset/idea_re_ticket)|idea_re_ticket|数据查询|否|||
 |[需求关联工作项(idea_re_work_item)](module/Base/relation/dataset/idea_re_work_item)|idea_re_work_item|数据查询|否|||
 |[版本需求关联数据(idea_version_relation)](module/Base/relation/dataset/idea_version_relation)|idea_version_relation|数据查询|否||主实体版本创建时，查询关联principal_type为需求的数据存入version_data|
+|[产品排期计划内关联事项(product_plan_idea)](module/Base/relation/dataset/product_plan_idea)|product_plan_idea|数据查询|否|||
+|[产品关联项目(product_re_project)](module/Base/relation/dataset/product_re_project)|product_re_project|数据查询|否|||
+|[项目关联产品(project_re_product)](module/Base/relation/dataset/project_re_product)|project_re_product|数据查询|否|||
 |[评审关联测试用例(review_re_test_case)](module/Base/relation/dataset/review_re_test_case)|review_re_test_case|数据查询|否|||
 |[执行用例关联缺陷(run_re_bug)](module/Base/relation/dataset/run_re_bug)|run_re_bug|数据查询|否|||
 |[执行用例关联需求(run_re_idea)](module/Base/relation/dataset/run_re_idea)|run_re_idea|数据查询|否|||
@@ -244,13 +257,17 @@
 | 依赖类型变更 | dependency_change | 依赖类型变更 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary></details>||
 | 取消依赖 | del_dependency | 取消依赖 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 | 产品移动端新建需求（新建后关联） | mob_create_and_relation | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建需求](app/view/idea_mob_quick_create_view)</details>||
+| 跳转对应视图（排期跟踪） | jump_corresponding_view | 跳转 |单项数据|用户自定义||
 | 移动端新建缺陷（新建后关联） | product_create_bug | 新建缺陷 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_mob_create_option_view)</details>||
+| 打开关联项目 | open_relation_project | 打开关联项目 |单项数据|<details><summary>打开HTML页面</summary>*./#/-/index/project=${data.target_id}/project_redirect_view/-*</details>||
 | 添加关联 | add_relation | 添加关联 |无数据|用户自定义||
 | 工作项取消关联测试用例 | work_item_del_relation_test_case | 取消关联 |单项数据|<details><summary>后台调用</summary>[work_item_del_relation_case](#行为)||
 | 产品移动端新建工作项（新建后关联） | product_create_work_item | 新建工作项 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_mob_create_option_view)</details>||
+| 打开关联产品 | open_relation_product | 打开关联产品 |单项数据|<details><summary>打开HTML页面</summary>*./#/-/index/product=${data.target_id}/product_index_view/-*</details>||
 | 新建执行后（建立双向关联数据) | after_creat_double_relation | 新建执行后（建立双向关联数据) |单项数据（主键）|用户自定义||
 | 执行用例取消关联缺陷 | run_del_relation_bug | 取消关联 |单项数据|<details><summary>后台调用</summary>[run_del_relation_bug](#行为)||
 | 添加依赖后置任务（移动端） | mob_add_after_dependency | 添加后置任务 |无数据|<details><summary>后台调用</summary>[add_dependency](#行为)||
+| 打开路线图视图（产品）_关联 | open_roadmap | 路线图 |无数据|<details><summary>打开视图或向导（模态）</summary>[路线图](app/view/release_road_map_product_view)</details>||
 | 产品移动端新建用例（新建后关联） | mob_create_and_relation_case | 新建用例 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建用例](app/view/test_case_mob_quick_create)</details>||
 | 打开依赖工作项主视图 | open_dependency | 打开依赖工作项主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_main_view)</details>||
 
@@ -263,8 +280,10 @@
 |[工作项添加依赖关系](module/Base/relation/uilogic/add_dependency)|add_dependency|工作项添加依赖关系|
 |[建立双向关联数据（移动端）](module/Base/relation/uilogic/create_double_relation)|create_double_relation|移动端建立双向关联数据|
 |[打开依赖工作项](module/Base/relation/uilogic/open_dependency)|open_dependency|打开依赖工作项主视图|
+|[打开需求（跟踪）](module/Base/relation/uilogic/open_idea_view)|open_idea_view||
 |[获取关联列表总条数](module/Base/relation/uilogic/get_list_total)|get_list_total|获取关联列表的总条数信息|
 |[触发计数器刷新及表格刷新](module/Base/relation/uilogic/refresh_counter)|refresh_counter|关联数据变更后，触发计数器刷新<br>并且刷新表单|
+|[跳转对应视图（排期跟踪）](module/Base/relation/uilogic/jump_corresponding_view)|jump_corresponding_view||
 |[选择下拉框区域展示](module/Base/relation/uilogic/show_choose_area)|show_choose_area|逻辑控制关联表格下方选项区域动态显示|
 |[通知刷新产品需求（移动端）](module/Base/relation/uilogic/notify_refresh)|notify_refresh|通知页面刷新|
 

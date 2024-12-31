@@ -173,6 +173,7 @@
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
+|[变更职位](module/Team/discuss_member/logic/change_position)|change_position|无||批量设置角色身份（position_id）|
 |[变更角色](module/Team/discuss_member/logic/change_role)|change_role|无||批量设置角色身份（role_id）|
 |[新建话题成员（移动端）](module/Team/discuss_member/logic/mob_create_topic_member)|mob_create_topic_member|无|||
 |[无操作](module/Team/discuss_member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
@@ -192,6 +193,7 @@
 |[添加评论](module/Team/discuss_post/logic/send_comment)|send_comment|无||添加讨论中的评论信息|
 |[移动](module/Team/discuss_post/logic/move)|move|无||移动讨论至话题|
 |[获取话题成员（移动端）](module/Team/discuss_post/logic/mob_get_topic_member)|mob_get_topic_member|无|||
+|[讨论中评论数计数器](module/Team/discuss_post/logic/discuss_post_count)|discuss_post_count|无|||
 |[讨论关注（移动端）](module/Team/discuss_post/logic/mob_discuss_post_attention)|mob_discuss_post_attention|无|||
 
 
@@ -270,6 +272,7 @@
 |[填充表单](module/ProdMgmt/idea/logic/fill_idea_form)|fill_idea_form|无|||
 |[归档](module/ProdMgmt/idea/logic/archive)|archive|无||未归档需求数据的归档处理，修改需求的归档状态为归档|
 |[恢复](module/ProdMgmt/idea/logic/recover)|recover|无||已删除状态需求数据的恢复，修改需求的是否删除属性值，并恢复访问记录|
+|[排期跟踪数据](module/ProdMgmt/idea/logic/plan_track_data)|plan_track_data|无||返回该排期中所有的需求以及需求的关联数据|
 |[无操作](module/ProdMgmt/idea/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[是否删除变更附加逻辑](module/ProdMgmt/idea/logic/is_deleted_onchange)|is_deleted_onchange|属性逻辑||产品需求删除或恢复时触发相应的通知消息|
 |[是否归档变更附加逻辑](module/ProdMgmt/idea/logic/is_archived_onchange)|is_archived_onchange|属性逻辑||产品需求归档或激活数据时触发相应的通知消息|
@@ -303,6 +306,7 @@
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
+|[变更职位](module/Insight/insight_member/logic/change_position)|change_position|无||批量设置角色身份（position_id）|
 |[变更角色](module/Insight/insight_member/logic/change_role)|change_role|无||批量设置角色身份（role_id）|
 |[无操作](module/Insight/insight_member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 
@@ -372,6 +376,7 @@
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
+|[变更职位](module/TestMgmt/library_member/logic/change_position)|change_position|无||批量设置角色身份（position_id）|
 |[变更角色](module/TestMgmt/library_member/logic/change_role)|change_role|无||批量设置角色身份（role_id）|
 |[新建测试库成员](module/TestMgmt/library_member/logic/create_library_member)|create_library_member|无||新建测试库成员|
 |[无操作](module/TestMgmt/library_member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
@@ -398,6 +403,7 @@
 |[无操作](module/Base/member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[添加共享页面非空间下成员](module/Base/member/logic/add_shared_page_member)|add_shared_page_member|无||添加共享页面非空间下成员|
 |[添加共享页面非空间下成员（移动端）](module/Base/member/logic/mob_add_shared_page_member)|mob_add_shared_page_member|无||添加共享页面非空间下成员（移动端）|
+|[添加成员（职位）](module/Base/member/logic/add_member_position)|add_member_position|无|||
 |[获取当前项目下资源成员](module/Base/member/logic/cur_project_resource)|cur_project_resource|无||获取当前项目下资源成员|
 |[获取当前项目集下资源成员](module/Base/member/logic/cur_portfolio_resource)|cur_portfolio_resource|无||获取当前项目集下资源成员|
 |[获取资源成员（全局）](module/Base/member/logic/resource_member)|resource_member|无||获取资源成员（全局）|
@@ -416,6 +422,7 @@
 |[保存设置](module/Base/notify_setting/logic/save_setting)|save_setting|无||保存通知设置|
 |[无操作](module/Base/notify_setting/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[获取用户通知设置](module/Base/notify_setting/logic/get_by_user)|get_by_user|无||获取用户通知设置|
+
 
 
 
@@ -450,6 +457,7 @@
 |[生成版本](module/Wiki/article_page/logic/commit_version)|commit_version|无||生成页面版本|
 |[移动子页面](module/Wiki/article_page/logic/move_child_page)|move_child_page|无||移动子页面至知识空间|
 |[移动页面](module/Wiki/article_page/logic/move_page)|move_page|无||移动页面至知识空间|
+|[统计页面评论数](module/Wiki/article_page/logic/count_comment)|count_comment|无||统计页面评论数|
 |[置空共享访问密码](module/Wiki/article_page/logic/reset_shared_pwd)|reset_shared_pwd|无||默认Get行为Reset共享访问密码|
 |[获取共享信息](module/Wiki/article_page/logic/get_shared_info)|get_shared_info|无||页面共享设置表单，获取逻辑|
 |[获取共享页面标题](module/Wiki/article_page/logic/get_shared_title)|get_shared_title|无||获取共享页面顶部标题|
@@ -491,6 +499,7 @@
 |[移除项目集成员通知](module/Base/portfolio_member/logic/remove_project_set_member_notify)|remove_project_set_member_notify|无||移除项目集成员时向对应用户发送通知消息|
 
 
+
 ## [产品(PRODUCT)](module/ProdMgmt/product.md) :id=product
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
@@ -500,6 +509,7 @@
 |[产品关联空间](module/ProdMgmt/product/logic/product_re_space)|product_re_space|无||产品关联空间操作，生成正反向关联数据|
 |[产品移动](module/ProdMgmt/product/logic/product_move)|product_move|无||产品更多设置中移动产品|
 |[产品组件权限计数器](module/ProdMgmt/product/logic/product_addon_authority)|product_addon_authority|无||获取产品组件权限|
+|[其他实体关联产品](module/ProdMgmt/product/logic/other_re_product)|other_re_product|无||产品实体关联操作，生成正向，反向关联数据|
 |[创建之前](module/ProdMgmt/product/logic/before_create)|before_create|无||创建产品之前，对添加的产品成员进行处理|
 |[删除](module/ProdMgmt/product/logic/delete)|delete|无||产品数据的逻辑删除，修改产品的是否删除属性值|
 |[取消星标](module/ProdMgmt/product/logic/un_favorite)|un_favorite|无||产品取消星标|
@@ -524,6 +534,7 @@
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
+|[变更职位](module/ProdMgmt/product_member/logic/change_position)|change_position|无||批量设置角色身份（position_id）|
 |[变更角色](module/ProdMgmt/product_member/logic/change_role)|change_role|无||批量设置角色身份（role_id）|
 |[新建产品成员](module/ProdMgmt/product_member/logic/create_product_member)|create_product_member|无||新建产品成员|
 |[新建产品成员（移动端）](module/ProdMgmt/product_member/logic/mob_create_product_member)|mob_create_product_member|无|||
@@ -561,6 +572,7 @@
 |[waterfall项目组件权限计数器](module/ProjMgmt/project/logic/waterfall_project_addon_authority)|waterfall_project_addon_authority|无||获取waterfall项目组件权限|
 |[从项目集中移除](module/ProjMgmt/project/logic/remove_from_project_set)|remove_from_project_set|无||从项目集中移除某个指定子项目|
 |[其他实体关联空间](module/ProjMgmt/project/logic/other_re_space)|other_re_space|无||空间实体关联操作，生成正向，反向关联数据|
+|[其他实体关联项目](module/ProjMgmt/project/logic/other_re_project)|other_re_project|无||项目实体关联操作，生成正向，反向关联数据|
 |[创建之前](module/ProjMgmt/project/logic/before_create)|before_create|无||创建项目之前，对添加的项目成员进行处理|
 |[删除](module/ProjMgmt/project/logic/delete)|delete|无||项目数据的逻辑删除，修改产品的是否删除属性值|
 |[取消星标](module/ProjMgmt/project/logic/un_favorite)|un_favorite|无||项目取消星标|
@@ -593,6 +605,7 @@
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
+|[变更职位](module/ProjMgmt/project_member/logic/change_position)|change_position|无||批量设置角色身份（position_id）|
 |[变更角色](module/ProjMgmt/project_member/logic/change_role)|change_role|无||批量设置角色身份（role_id）|
 |[新建项目成员](module/ProjMgmt/project_member/logic/create_project_member)|create_project_member|无||新建项目成员|
 |[新建项目成员（移动端）](module/ProjMgmt/project_member/logic/mob_create_project_member)|mob_create_project_member|无||新建项目成员（移动端）|
@@ -683,6 +696,7 @@
 |[最近使用](module/Base/recent/logic/recent_use)|recent_use|无||查询最近使用数据(项目/产品/空间)，仅查询10条|
 |[最近访问](module/Base/recent/logic/recent_access)|recent_access|无||查询最近访问数据，并获取他们的父级|
 |[移动端首页_最近访问](module/Base/recent/logic/mob_home_recent_access)|mob_home_recent_access|无||仅查询最近5条访问|
+|[跳转对应视图](module/Base/recent/logic/jump_corresponding_view)|jump_corresponding_view|无|||
 
 
 
@@ -774,6 +788,7 @@
 |[创建后修改附加数据归属](module/TestMgmt/review_wizard/logic/fix_nested_data)|fix_nested_data|无||创建后修改附加数据归属|
 |[创建后附加评审规则](module/TestMgmt/review_wizard/logic/add_guideline_after_created)|add_guideline_after_created|无|| 进行中|
 |[填充评审规则](module/TestMgmt/review_wizard/logic/fill_guideline)|fill_guideline|无||获取评审规则并返回|
+
 
 
 
@@ -889,6 +904,7 @@
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
+|[变更职位](module/Wiki/space_member/logic/change_position)|change_position|无||批量设置角色身份（position_id）|
 |[变更角色](module/Wiki/space_member/logic/change_role)|change_role|无||批量设置角色身份（role_id）|
 |[新建空间成员（移动端）](module/Wiki/space_member/logic/mob_create_project_member)|mob_create_project_member|无||新建空间成员（移动端）|
 |[无操作](module/Wiki/space_member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
@@ -935,6 +951,12 @@
 | -------- |---------- |----------- |------------|----------|
 |[无操作](module/Wiki/stencil/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[根据模板建立页面草稿](module/Wiki/stencil/logic/new_draft_form_stencil)|new_draft_form_stencil|无||获取页面的模板数据，并返回|
+
+
+
+
+
+
 
 
 

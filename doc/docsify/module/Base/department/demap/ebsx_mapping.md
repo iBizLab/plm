@@ -16,9 +16,11 @@
 <p class="panel-title"><b>属性映射</b></p>
 
 * `属性等价`
-`NAME(名称)` <i class="fa fa-angle-double-right"/></i> `DEPTNAME(部门名称)`
+`IDENTIFIER(部门标识/编号)` <i class="fa fa-angle-double-right"/></i> `DEPTCODE(部门代码)`
 * `属性等价`
 `HEAD_ID(部门负责人标识)` <i class="fa fa-angle-double-right"/></i> `DEPTLEADER(部门领导)`
+* `属性等价`
+`NAME(名称)` <i class="fa fa-angle-double-right"/></i> `DEPTNAME(部门名称)`
 * `属性等价`
 `ID(标识)` <i class="fa fa-angle-double-right"/></i> `DEPTID(部门标识)`
 * `属性等价`

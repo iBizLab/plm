@@ -13,6 +13,7 @@
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |是否叶子节点|IS_LEAF|是否逻辑||是||
 |是否叶子节点2|IS_LEAF2|是否逻辑||是||
+|是否叶子节点3|IS_LEAF3|是否逻辑||是||
 |叶子节点标识|LEAF_FLAG|整型||是||
 |名称|NAME|文本，可指定长度|200|是||
 |所属数据标识|OWNER_ID|文本，可指定长度|100|是||
@@ -37,6 +38,7 @@
 |[DER1N_CATEGORY_CATEGORY_PID](der/DER1N_CATEGORY_CATEGORY_PID)|[类别(CATEGORY)](module/Base/category)|1:N关系||
 |[DER1N_IDEA_CATEGORY_CATEGORY_ID](der/DER1N_IDEA_CATEGORY_CATEGORY_ID)|[需求(IDEA)](module/ProdMgmt/idea)|1:N关系||
 |[DER1N_IDEA_TEMPLATE_CATEGORY_CATEGORY_ID](der/DER1N_IDEA_TEMPLATE_CATEGORY_CATEGORY_ID)|[需求模板(IDEA_TEMPLATE)](module/ProdMgmt/idea_template)|1:N关系||
+|[DER1N_POSITION_CATEGORY_CATEGORY_ID](der/DER1N_POSITION_CATEGORY_CATEGORY_ID)|[职位(POSITION)](module/Base/position)|1:N关系||
 |[DER1N_SPACE_CATEGORY_CATEGORY_ID](der/DER1N_SPACE_CATEGORY_CATEGORY_ID)|[空间(SPACE)](module/Wiki/space)|1:N关系||
 
 
@@ -83,6 +85,7 @@
 |[当前产品需求类别(cur_product_idea_category)](module/Base/category/query/cur_product_idea_category)|cur_product_idea_category|否|否 |否 ||
 |[无父类(no_parent)](module/Base/category/query/no_parent)|no_parent|否|否 |否 ||
 |[无分组的类别（且父标识不为空）(no_section)](module/Base/category/query/no_section)|no_section|否|否 |否 ||
+|[职位类别(position_category)](module/Base/category/query/position_category)|position_category|否|否 |否 ||
 |[主模块(product_idea_category)](module/Base/category/query/product_idea_category)|product_idea_category|否|否 |否 |需求下子产品中父标识为空的模块|
 |[排期计划类别(product_plan)](module/Base/category/query/product_plan)|product_plan|否|否 |否 ||
 |[空间目录(space_category)](module/Base/category/query/space_category)|space_category|否|否 |否 ||
@@ -97,6 +100,7 @@
 |[当前产品需求类别(cur_product_idea_category)](module/Base/category/dataset/cur_product_idea_category)|cur_product_idea_category|数据查询|否|||
 |[无父类(no_parent)](module/Base/category/dataset/no_parent)|no_parent|数据查询|否|||
 |[无分组的类别(no_section)](module/Base/category/dataset/no_section)|no_section|数据查询|否|||
+|[职位类别(position_category)](module/Base/category/dataset/position_category)|position_category|数据查询|否|||
 |[主模块(product_idea_category)](module/Base/category/dataset/product_idea_category)|product_idea_category|数据查询|否||需求下子产品中父标识为空的模块|
 |[排期计划类别(product_plan)](module/Base/category/dataset/product_plan)|product_plan|数据查询|否|||
 |[空间目录(space_category)](module/Base/category/dataset/space_category)|space_category|数据查询|否|||
@@ -138,13 +142,16 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 编辑 | toolbar_tree_exp_view_node_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 删除 | toolbar_category_tree_exp_view_node_cm_deuiaction1_click | 删除 |单项数据|用户自定义||
 | 删除 | toolbar_category_tree_exp_view_node1_cm_deuiaction1_click | 删除 |单项数据|用户自定义||
+| 删除 | toolbar_tree_exp_view_node_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
 |[删除类别或分组](module/Base/category/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
+|[编辑类别或分组](module/Base/category/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

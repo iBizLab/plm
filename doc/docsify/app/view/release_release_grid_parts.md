@@ -16,8 +16,8 @@
 
 
 ### 关联界面行为
-  * [项目发布(RELEASE)](module/ProjMgmt/release) : [全屏](module/ProjMgmt/release#界面行为)
   * [项目发布(RELEASE)](module/ProjMgmt/release) : [刷新](module/ProjMgmt/release#界面行为)
+  * [项目发布(RELEASE)](module/ProjMgmt/release) : [全屏](module/ProjMgmt/release#界面行为)
   * [项目发布(RELEASE)](module/ProjMgmt/release) : [打开发布](module/ProjMgmt/release#界面行为)
 
 ### 关联视图

@@ -35,7 +35,9 @@
 |dn|String|dn|
 |mdepartment_id|String|Mdepartment_id|
 |uid|String|uid|
+|organization_id|String|organization_id|
 |avatar|String|avatar|
+|organization_name|String|organization_name|
 |create_time|Timestamp|create_time|
 |id|String|id|
 |update_time|Timestamp|update_time|
@@ -65,7 +67,9 @@
   "dn" : null,
   "mdepartment_id" : null,
   "uid" : null,
+  "organization_id" : null,
   "avatar" : null,
+  "organization_name" : null,
   "create_time" : null,
   "id" : null,
   "update_time" : null,
@@ -109,7 +113,9 @@
 |dn|String|dn|
 |mdepartment_id|String|Mdepartment_id|
 |uid|String|uid|
+|organization_id|String|organization_id|
 |avatar|String|avatar|
+|organization_name|String|organization_name|
 |create_time|Timestamp|create_time|
 |id|String|id|
 |update_time|Timestamp|update_time|
@@ -139,7 +145,9 @@
   "dn" : null,
   "mdepartment_id" : null,
   "uid" : null,
+  "organization_id" : null,
   "avatar" : null,
+  "organization_name" : null,
   "create_time" : null,
   "id" : null,
   "update_time" : null,
@@ -202,7 +210,9 @@
 |dn|String|dn|
 |mdepartment_id|String|Mdepartment_id|
 |uid|String|uid|
+|organization_id|String|organization_id|
 |avatar|String|avatar|
+|organization_name|String|organization_name|
 |create_time|Timestamp|create_time|
 |id|String|id|
 |update_time|Timestamp|update_time|
@@ -232,7 +242,9 @@
   "dn" : null,
   "mdepartment_id" : null,
   "uid" : null,
+  "organization_id" : null,
   "avatar" : null,
+  "organization_name" : null,
   "create_time" : null,
   "id" : null,
   "update_time" : null,
@@ -295,7 +307,9 @@
 |dn|String|dn|
 |mdepartment_id|String|Mdepartment_id|
 |uid|String|uid|
+|organization_id|String|organization_id|
 |avatar|String|avatar|
+|organization_name|String|organization_name|
 |create_time|Timestamp|create_time|
 |id|String|id|
 |update_time|Timestamp|update_time|
@@ -325,7 +339,9 @@
   "dn" : null,
   "mdepartment_id" : null,
   "uid" : null,
+  "organization_id" : null,
   "avatar" : null,
+  "organization_name" : null,
   "create_time" : null,
   "id" : null,
   "update_time" : null,
@@ -374,7 +390,9 @@
 |dn|String|dn|
 |mdepartment_id|String|Mdepartment_id|
 |uid|String|uid|
+|organization_id|String|organization_id|
 |avatar|String|avatar|
+|organization_name|String|organization_name|
 |create_time|Timestamp|create_time|
 |id|String|id|
 |update_time|Timestamp|update_time|
@@ -404,7 +422,9 @@
   "dn" : null,
   "mdepartment_id" : null,
   "uid" : null,
+  "organization_id" : null,
   "avatar" : null,
+  "organization_name" : null,
   "create_time" : null,
   "id" : null,
   "update_time" : null,

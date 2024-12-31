@@ -25,6 +25,8 @@
 |所属|SCOPE_TYPE|[单项选择(文本值)](index/dictionary_index#user_scope_type "所属类型（包含个人）")|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
+|用户标记|USER_TAG|文本，可指定长度|200|是||
+|用户标记2|USER_TAG2|文本，可指定长度|200|是||
 |可见范围|VISIBILITY|单项选择(文本值)|60|否||
 
 
@@ -259,6 +261,10 @@
 |N_NAME_LIKE|空间名称|LIKE||
 |N_SCOPE_ID_EQ|所属对象|EQ||
 |N_SCOPE_TYPE_EQ|所属|EQ||
+|N_USER_TAG_EQ|用户标记|EQ||
+|N_USER_TAG_LIKE|用户标记|LIKE||
+|N_USER_TAG2_EQ|用户标记2|EQ||
+|N_USER_TAG2_LIKE|用户标记2|LIKE||
 |N_VISIBILITY_EQ|可见范围|EQ||
 
 ## 界面行为

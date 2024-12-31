@@ -17,9 +17,14 @@
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">deploy_system_code</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部署应用名|
+|<el-row justify="space-between"><el-col :span="20">settings</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置|
 |<el-row justify="space-between"><el-col :span="20">deploy_service_hub_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部署节点|
+|<el-row justify="space-between"><el-col :span="20">vers</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可用版本|
 |<el-row justify="space-between"><el-col :span="20">deploy_data_source_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部署数据源|
 |<el-row justify="space-between"><el-col :span="20">deploy_prdver_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部署版本|
+|<el-row justify="space-between"><el-col :span="20">info</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|详细信息|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标签|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更日志|
 |<el-row justify="space-between"><el-col :span="20">avatarurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|图标路径|
 |<el-row justify="space-between"><el-col :span="20">currentversion</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本|
 |<el-row justify="space-between"><el-col :span="20">fullname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|完全名称|
@@ -36,6 +41,7 @@
 |<el-row justify="space-between"><el-col :span="20">prdsn</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
 |<el-row justify="space-between"><el-col :span="20">prdtag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标记|
 |<el-row justify="space-between"><el-col :span="20">prdtag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标记2|
+|<el-row justify="space-between"><el-col :span="20">settingurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置地址|
 
 
 
@@ -43,9 +49,14 @@
 ```json
 {
   "deploy_system_code" : null,
+  "settings" : null,
   "deploy_service_hub_id" : null,
+  "vers" : null,
   "deploy_data_source_id" : null,
   "deploy_prdver_id" : null,
+  "info" : null,
+  "category" : null,
+  "changelog" : null,
   "avatarurl" : null,
   "createdate" : null,
   "createman" : null,
@@ -64,6 +75,7 @@
   "prdsn" : null,
   "prdtag" : null,
   "prdtag2" : null,
+  "settingurl" : null,
   "updatedate" : null,
   "updateman" : null,
 }
@@ -75,9 +87,14 @@
 
 {
   "deploy_system_code" : null,
+  "settings" : null,
   "deploy_service_hub_id" : null,
+  "vers" : null,
   "deploy_data_source_id" : null,
   "deploy_prdver_id" : null,
+  "info" : null,
+  "category" : null,
+  "changelog" : null,
   "avatarurl" : null,
   "createdate" : null,
   "createman" : null,
@@ -96,6 +113,7 @@
   "prdsn" : null,
   "prdtag" : null,
   "prdtag2" : null,
+  "settingurl" : null,
   "updatedate" : null,
   "updateman" : null,
 }
@@ -127,9 +145,14 @@
 
 {
   "deploy_system_code" : null,
+  "settings" : null,
   "deploy_service_hub_id" : null,
+  "vers" : null,
   "deploy_data_source_id" : null,
   "deploy_prdver_id" : null,
+  "info" : null,
+  "category" : null,
+  "changelog" : null,
   "avatarurl" : null,
   "createdate" : null,
   "createman" : null,
@@ -148,6 +171,7 @@
   "prdsn" : null,
   "prdtag" : null,
   "prdtag2" : null,
+  "settingurl" : null,
   "updatedate" : null,
   "updateman" : null,
 }
@@ -198,9 +222,14 @@
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">deploy_system_code</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部署应用名|
+|<el-row justify="space-between"><el-col :span="20">settings</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置|
 |<el-row justify="space-between"><el-col :span="20">deploy_service_hub_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部署节点|
+|<el-row justify="space-between"><el-col :span="20">vers</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可用版本|
 |<el-row justify="space-between"><el-col :span="20">deploy_data_source_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部署数据源|
 |<el-row justify="space-between"><el-col :span="20">deploy_prdver_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部署版本|
+|<el-row justify="space-between"><el-col :span="20">info</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|详细信息|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标签|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更日志|
 |<el-row justify="space-between"><el-col :span="20">avatarurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|图标路径|
 |<el-row justify="space-between"><el-col :span="20">currentversion</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本|
 |<el-row justify="space-between"><el-col :span="20">fullname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|完全名称|
@@ -217,6 +246,7 @@
 |<el-row justify="space-between"><el-col :span="20">prdsn</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
 |<el-row justify="space-between"><el-col :span="20">prdtag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标记|
 |<el-row justify="space-between"><el-col :span="20">prdtag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标记2|
+|<el-row justify="space-between"><el-col :span="20">settingurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置地址|
 
 
 
@@ -224,9 +254,14 @@
 ```json
 {
   "deploy_system_code" : null,
+  "settings" : null,
   "deploy_service_hub_id" : null,
+  "vers" : null,
   "deploy_data_source_id" : null,
   "deploy_prdver_id" : null,
+  "info" : null,
+  "category" : null,
+  "changelog" : null,
   "avatarurl" : null,
   "createdate" : null,
   "createman" : null,
@@ -245,6 +280,7 @@
   "prdsn" : null,
   "prdtag" : null,
   "prdtag2" : null,
+  "settingurl" : null,
   "updatedate" : null,
   "updateman" : null,
 }
@@ -256,9 +292,14 @@
 
 {
   "deploy_system_code" : null,
+  "settings" : null,
   "deploy_service_hub_id" : null,
+  "vers" : null,
   "deploy_data_source_id" : null,
   "deploy_prdver_id" : null,
+  "info" : null,
+  "category" : null,
+  "changelog" : null,
   "avatarurl" : null,
   "createdate" : null,
   "createman" : null,
@@ -277,6 +318,7 @@
   "prdsn" : null,
   "prdtag" : null,
   "prdtag2" : null,
+  "settingurl" : null,
   "updatedate" : null,
   "updateman" : null,
 }
@@ -301,9 +343,14 @@
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">deploy_system_code</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部署应用名|
+|<el-row justify="space-between"><el-col :span="20">settings</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置|
 |<el-row justify="space-between"><el-col :span="20">deploy_service_hub_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部署节点|
+|<el-row justify="space-between"><el-col :span="20">vers</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可用版本|
 |<el-row justify="space-between"><el-col :span="20">deploy_data_source_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部署数据源|
 |<el-row justify="space-between"><el-col :span="20">deploy_prdver_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部署版本|
+|<el-row justify="space-between"><el-col :span="20">info</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|详细信息|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标签|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更日志|
 |<el-row justify="space-between"><el-col :span="20">avatarurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|图标路径|
 |<el-row justify="space-between"><el-col :span="20">currentversion</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本|
 |<el-row justify="space-between"><el-col :span="20">fullname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|完全名称|
@@ -320,6 +367,7 @@
 |<el-row justify="space-between"><el-col :span="20">prdsn</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
 |<el-row justify="space-between"><el-col :span="20">prdtag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标记|
 |<el-row justify="space-between"><el-col :span="20">prdtag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标记2|
+|<el-row justify="space-between"><el-col :span="20">settingurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置地址|
 
 
 
@@ -327,9 +375,14 @@
 ```json
 {
   "deploy_system_code" : null,
+  "settings" : null,
   "deploy_service_hub_id" : null,
+  "vers" : null,
   "deploy_data_source_id" : null,
   "deploy_prdver_id" : null,
+  "info" : null,
+  "category" : null,
+  "changelog" : null,
   "avatarurl" : null,
   "createdate" : null,
   "createman" : null,
@@ -348,6 +401,7 @@
   "prdsn" : null,
   "prdtag" : null,
   "prdtag2" : null,
+  "settingurl" : null,
   "updatedate" : null,
   "updateman" : null,
 }
@@ -377,9 +431,14 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">deploy_system_code</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部署应用名|
+|<el-row justify="space-between"><el-col :span="20">settings</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置|
 |<el-row justify="space-between"><el-col :span="20">deploy_service_hub_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部署节点|
+|<el-row justify="space-between"><el-col :span="20">vers</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可用版本|
 |<el-row justify="space-between"><el-col :span="20">deploy_data_source_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部署数据源|
 |<el-row justify="space-between"><el-col :span="20">deploy_prdver_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部署版本|
+|<el-row justify="space-between"><el-col :span="20">info</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|详细信息|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标签|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更日志|
 |<el-row justify="space-between"><el-col :span="20">avatarurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|图标路径|
 |<el-row justify="space-between"><el-col :span="20">currentversion</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本|
 |<el-row justify="space-between"><el-col :span="20">fullname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|完全名称|
@@ -396,6 +455,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">prdsn</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
 |<el-row justify="space-between"><el-col :span="20">prdtag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标记|
 |<el-row justify="space-between"><el-col :span="20">prdtag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标记2|
+|<el-row justify="space-between"><el-col :span="20">settingurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置地址|
 
 
 
@@ -403,9 +463,14 @@ Integer
 ```json
 {
   "deploy_system_code" : null,
+  "settings" : null,
   "deploy_service_hub_id" : null,
+  "vers" : null,
   "deploy_data_source_id" : null,
   "deploy_prdver_id" : null,
+  "info" : null,
+  "category" : null,
+  "changelog" : null,
   "avatarurl" : null,
   "createdate" : null,
   "createman" : null,
@@ -424,6 +489,7 @@ Integer
   "prdsn" : null,
   "prdtag" : null,
   "prdtag2" : null,
+  "settingurl" : null,
   "updatedate" : null,
   "updateman" : null,
 }
@@ -435,9 +501,14 @@ Integer
 
 {
   "deploy_system_code" : null,
+  "settings" : null,
   "deploy_service_hub_id" : null,
+  "vers" : null,
   "deploy_data_source_id" : null,
   "deploy_prdver_id" : null,
+  "info" : null,
+  "category" : null,
+  "changelog" : null,
   "avatarurl" : null,
   "createdate" : null,
   "createman" : null,
@@ -456,6 +527,7 @@ Integer
   "prdsn" : null,
   "prdtag" : null,
   "prdtag2" : null,
+  "settingurl" : null,
   "updatedate" : null,
   "updateman" : null,
 }
@@ -480,9 +552,14 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">deploy_system_code</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部署应用名|
+|<el-row justify="space-between"><el-col :span="20">settings</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置|
 |<el-row justify="space-between"><el-col :span="20">deploy_service_hub_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部署节点|
+|<el-row justify="space-between"><el-col :span="20">vers</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可用版本|
 |<el-row justify="space-between"><el-col :span="20">deploy_data_source_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部署数据源|
 |<el-row justify="space-between"><el-col :span="20">deploy_prdver_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部署版本|
+|<el-row justify="space-between"><el-col :span="20">info</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|详细信息|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标签|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更日志|
 |<el-row justify="space-between"><el-col :span="20">avatarurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|图标路径|
 |<el-row justify="space-between"><el-col :span="20">currentversion</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本|
 |<el-row justify="space-between"><el-col :span="20">fullname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|完全名称|
@@ -499,6 +576,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">prdsn</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品编号|
 |<el-row justify="space-between"><el-col :span="20">prdtag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标记|
 |<el-row justify="space-between"><el-col :span="20">prdtag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标记2|
+|<el-row justify="space-between"><el-col :span="20">settingurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|设置地址|
 
 
 
@@ -506,9 +584,14 @@ Integer
 ```json
 {
   "deploy_system_code" : null,
+  "settings" : null,
   "deploy_service_hub_id" : null,
+  "vers" : null,
   "deploy_data_source_id" : null,
   "deploy_prdver_id" : null,
+  "info" : null,
+  "category" : null,
+  "changelog" : null,
   "avatarurl" : null,
   "createdate" : null,
   "createman" : null,
@@ -527,6 +610,7 @@ Integer
   "prdsn" : null,
   "prdtag" : null,
   "prdtag2" : null,
+  "settingurl" : null,
   "updatedate" : null,
   "updateman" : null,
 }
@@ -538,9 +622,14 @@ Integer
 
 {
   "deploy_system_code" : null,
+  "settings" : null,
   "deploy_service_hub_id" : null,
+  "vers" : null,
   "deploy_data_source_id" : null,
   "deploy_prdver_id" : null,
+  "info" : null,
+  "category" : null,
+  "changelog" : null,
   "avatarurl" : null,
   "createdate" : null,
   "createman" : null,
@@ -559,6 +648,7 @@ Integer
   "prdsn" : null,
   "prdtag" : null,
   "prdtag2" : null,
+  "settingurl" : null,
   "updatedate" : null,
   "updateman" : null,
 }
@@ -608,9 +698,14 @@ Integer
 [
   {
     "deploy_system_code" : null,
+    "settings" : null,
     "deploy_service_hub_id" : null,
+    "vers" : null,
     "deploy_data_source_id" : null,
     "deploy_prdver_id" : null,
+    "info" : null,
+    "category" : null,
+    "changelog" : null,
     "avatarurl" : null,
     "createdate" : null,
     "createman" : null,
@@ -629,6 +724,7 @@ Integer
     "prdsn" : null,
     "prdtag" : null,
     "prdtag2" : null,
+    "settingurl" : null,
     "updatedate" : null,
     "updateman" : null,
   }

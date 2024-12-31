@@ -30,7 +30,7 @@
 
 ### 指标
 ##### 计算式指标
-|    名称col200   | 代码名col150  |  计算公式col500   |  备注col500  |
+|    名称col200   | 代码名col150  |  计算公式col501   |  备注col500  |
 | --------  |------------| -----   |  --------|
 |项目平均进度|average_project_progress|sum(if(ALL_WORK_ITEMS = 0, 0, COMPLETED_WORK_ITEMS / ALL_WORK_ITEMS)) / if(countif(is_deleted = 0) = 0, 1, countif(is_deleted = 0))|统计项目的进展情况。|
 |项目数量|project_number|countif(is_deleted=0)|统计不同维度下项目的数量。<br>|

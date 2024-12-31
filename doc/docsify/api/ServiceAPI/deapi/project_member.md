@@ -23,6 +23,7 @@
 |<el-row justify="space-between"><el-col :span="20">weekday</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 |<el-row justify="space-between"><el-col :span="20">day_capacities</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|日容量|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
@@ -39,6 +40,7 @@
   "weekday" : null,
   "day_capacities" : null,
   "project_type" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -61,6 +63,7 @@
   "weekday" : null,
   "day_capacities" : null,
   "project_type" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -103,6 +106,7 @@
   "weekday" : null,
   "day_capacities" : null,
   "project_type" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -164,6 +168,7 @@
 |<el-row justify="space-between"><el-col :span="20">weekday</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 |<el-row justify="space-between"><el-col :span="20">day_capacities</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|日容量|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
@@ -180,6 +185,7 @@
   "weekday" : null,
   "day_capacities" : null,
   "project_type" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -202,6 +208,7 @@
   "weekday" : null,
   "day_capacities" : null,
   "project_type" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -212,6 +219,65 @@
 }
 
 ```
+
+## 变更职位
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/project_members/{key}/change_position" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`UPDATE`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|标识|
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
+|<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
+|<el-row justify="space-between"><el-col :span="20">project_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
+|<el-row justify="space-between"><el-col :span="20">project_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识（编号）|
+|<el-row justify="space-between"><el-col :span="20">weekday</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
+|<el-row justify="space-between"><el-col :span="20">day_capacities</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|日容量|
+|<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
+|<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "user_id" : null,
+  "role_id" : null,
+  "project_name" : null,
+  "project_identifier" : null,
+  "weekday" : null,
+  "day_capacities" : null,
+  "project_type" : null,
+  "title" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "project_id" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+```
+
+
 
 ## 变更角色
 
@@ -242,6 +308,7 @@
 |<el-row justify="space-between"><el-col :span="20">weekday</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 |<el-row justify="space-between"><el-col :span="20">day_capacities</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|日容量|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
@@ -258,6 +325,7 @@
   "weekday" : null,
   "day_capacities" : null,
   "project_type" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -294,6 +362,7 @@
 |<el-row justify="space-between"><el-col :span="20">weekday</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 |<el-row justify="space-between"><el-col :span="20">day_capacities</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|日容量|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
@@ -310,6 +379,7 @@
   "weekday" : null,
   "day_capacities" : null,
   "project_type" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -350,6 +420,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">weekday</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 |<el-row justify="space-between"><el-col :span="20">day_capacities</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|日容量|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
@@ -366,6 +437,7 @@ Integer
   "weekday" : null,
   "day_capacities" : null,
   "project_type" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -388,6 +460,7 @@ Integer
   "weekday" : null,
   "day_capacities" : null,
   "project_type" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -423,6 +496,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">weekday</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 |<el-row justify="space-between"><el-col :span="20">day_capacities</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|日容量|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
@@ -439,6 +513,7 @@ Integer
   "weekday" : null,
   "day_capacities" : null,
   "project_type" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -461,6 +536,7 @@ Integer
   "weekday" : null,
   "day_capacities" : null,
   "project_type" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -496,6 +572,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">weekday</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 |<el-row justify="space-between"><el-col :span="20">day_capacities</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|日容量|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
@@ -512,6 +589,7 @@ Integer
   "weekday" : null,
   "day_capacities" : null,
   "project_type" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -534,6 +612,7 @@ Integer
   "weekday" : null,
   "day_capacities" : null,
   "project_type" : null,
+  "title" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -604,6 +683,7 @@ Integer
     "weekday" : null,
     "day_capacities" : null,
     "project_type" : null,
+    "title" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -674,6 +754,7 @@ Integer
     "weekday" : null,
     "day_capacities" : null,
     "project_type" : null,
+    "title" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -744,6 +825,7 @@ Integer
     "weekday" : null,
     "day_capacities" : null,
     "project_type" : null,
+    "title" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -947,6 +1029,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">weekday</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 |<el-row justify="space-between"><el-col :span="20">day_capacities</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|日容量|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
@@ -1026,6 +1109,45 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">weekday</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 |<el-row justify="space-between"><el-col :span="20">day_capacities</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|日容量|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
+|<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
+
+
+
+## 根据项目变更职位
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/projects/{pkey}/project_members/{key}/change_position" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|项目主键|
+|key|String|标识|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
+|<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
+|<el-row justify="space-between"><el-col :span="20">project_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
+|<el-row justify="space-between"><el-col :span="20">project_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识（编号）|
+|<el-row justify="space-between"><el-col :span="20">weekday</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
+|<el-row justify="space-between"><el-col :span="20">day_capacities</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|日容量|
+|<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
@@ -1063,6 +1185,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">weekday</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 |<el-row justify="space-between"><el-col :span="20">day_capacities</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|日容量|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
@@ -1099,6 +1222,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">weekday</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 |<el-row justify="space-between"><el-col :span="20">day_capacities</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|日容量|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
@@ -1135,6 +1259,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">weekday</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 |<el-row justify="space-between"><el-col :span="20">day_capacities</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|日容量|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
@@ -1171,6 +1296,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">weekday</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 |<el-row justify="space-between"><el-col :span="20">day_capacities</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|日容量|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
@@ -1207,6 +1333,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">weekday</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 |<el-row justify="space-between"><el-col :span="20">day_capacities</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|日容量|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
@@ -1536,6 +1663,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">weekday</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 |<el-row justify="space-between"><el-col :span="20">day_capacities</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|日容量|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
@@ -1615,6 +1743,45 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">weekday</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 |<el-row justify="space-between"><el-col :span="20">day_capacities</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|日容量|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
+|<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
+
+
+
+## 根据企业用户变更职位
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/users/{pkey}/project_members/{key}/change_position" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|企业用户主键|
+|key|String|标识|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
+|<el-row justify="space-between"><el-col :span="20">role_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
+|<el-row justify="space-between"><el-col :span="20">project_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
+|<el-row justify="space-between"><el-col :span="20">project_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识（编号）|
+|<el-row justify="space-between"><el-col :span="20">weekday</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
+|<el-row justify="space-between"><el-col :span="20">day_capacities</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|日容量|
+|<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
@@ -1652,6 +1819,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">weekday</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 |<el-row justify="space-between"><el-col :span="20">day_capacities</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|日容量|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
@@ -1688,6 +1856,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">weekday</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 |<el-row justify="space-between"><el-col :span="20">day_capacities</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|日容量|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
@@ -1724,6 +1893,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">weekday</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 |<el-row justify="space-between"><el-col :span="20">day_capacities</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|日容量|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
@@ -1760,6 +1930,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">weekday</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 |<el-row justify="space-between"><el-col :span="20">day_capacities</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|日容量|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
@@ -1796,6 +1967,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">weekday</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 |<el-row justify="space-between"><el-col :span="20">day_capacities</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|日容量|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|姓名|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|

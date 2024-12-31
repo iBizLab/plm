@@ -500,6 +500,71 @@ Integer
 
 
 
+## 讨论评论数计数器
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/discuss_posts/{key}/discuss_post_count" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|标识|
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">attentions</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|关注|
+|<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
+|<el-row justify="space-between"><el-col :span="20">status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">comments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评论|
+|<el-row justify="space-between"><el-col :span="20">heat</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|热度|
+|<el-row justify="space-between"><el-col :span="20">replies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|讨论回复数|
+|<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
+|<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">content</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|讨论内容|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|讨论名称|
+|<el-row justify="space-between"><el-col :span="20">topic_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|话题标识|
+|<el-row justify="space-between"><el-col :span="20">topic_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|话题|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "is_deleted" : null,
+  "attentions" : null,
+  "attachments" : null,
+  "status" : null,
+  "comments" : null,
+  "heat" : null,
+  "replies" : null,
+  "attention_count" : null,
+  "comment_count" : null,
+  "content" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "topic_id" : null,
+  "topic_name" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+```
+
+
+
 ## 填充附加数据
 
 <el-row>
@@ -2143,6 +2208,47 @@ Integer
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
 <el-alert title="/discuss_topics/{pkey}/discuss_posts/{key}/delete" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|话题主键|
+|key|String|标识|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">attentions</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|关注|
+|<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
+|<el-row justify="space-between"><el-col :span="20">status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">comments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评论|
+|<el-row justify="space-between"><el-col :span="20">heat</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|热度|
+|<el-row justify="space-between"><el-col :span="20">replies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|讨论回复数|
+|<el-row justify="space-between"><el-col :span="20">attention_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注数|
+|<el-row justify="space-between"><el-col :span="20">comment_count</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评论数|
+|<el-row justify="space-between"><el-col :span="20">content</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|讨论内容|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|讨论名称|
+|<el-row justify="space-between"><el-col :span="20">topic_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|话题标识|
+|<el-row justify="space-between"><el-col :span="20">topic_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|话题|
+
+
+
+## 根据话题讨论评论数计数器
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/discuss_topics/{pkey}/discuss_posts/{key}/discuss_post_count" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 

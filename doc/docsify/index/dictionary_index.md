@@ -258,15 +258,6 @@
 |20|中|item_20||
 |10|低|item_10||
 
-##### 关注状态 :id=attention_state
-
-
-
-| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
-| --------   |------------|------------|------------|
-|10|不关注|item_10||
-|20|关注|item_20||
-
 ##### 关注类型 :id=attention_type
 
 
@@ -632,6 +623,16 @@
 |n_title_like|标题|n_title_like||
 |n_identifier_like|编号|n_identifier_like||
 |n_description_like|描述|n_description_like||
+
+##### 应用模型类型 :id=pscoreprdfunc_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|BASE|基础|base||
+|EXTENSION|扩展|extension||
+|COMPONENT|组件|component||
 
 ##### 成员类型 :id=member_type
 
@@ -1278,6 +1279,17 @@
 |work_item|工作项|work_item||
 |idea|需求|idea||
 |test_case|用例|test_case||
+
+##### 跟踪看板 :id=product_plan_relation_track
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|idea|需求|idea||
+|ticket|工单|ticket||
+|test_case|测试|test_case||
+|work_item|工作项|work_item||
 
 ##### 迭代变更类型 :id=sprint_alteration_type
 

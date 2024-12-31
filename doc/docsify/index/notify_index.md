@@ -151,6 +151,11 @@
 ```
 ${data.update_mantext}给你分配了工单：${data.title}
 ```
+
+微信消息内容：
+```
+${data.update_mantext}给你分配了工单：${data.title}
+```
 #### 提醒关注执行用例通知模板(notice_attention_run) :id=notice_attention_run
 
 
@@ -217,6 +222,12 @@ srfnavctx={"run":"${parent.id}","test_case": "${parent.parent("case_id").id}", "
 ${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.parent("owner_id").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type == 'TICKET'>工单<#elseif data.owner_type == 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例</#if>：
 <#if data.owner_type == 'CUSTOMER'>${data.parent("owner_id").name}<#else>${data.parent("owner_id").title}</#if>
 ```
+
+微信消息内容：
+```
+${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.parent("owner_id").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type == 'TICKET'>工单<#elseif data.owner_type == 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例</#if>：
+<#if data.owner_type == 'CUSTOMER'>${data.parent("owner_id").name}<#else>${data.parent("owner_id").title}</#if>
+```
 #### 产品通知模板(加入产品成员)(product_member_create) :id=product_member_create
 
 
@@ -266,6 +277,11 @@ ${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.
 ```
 ${data.create_mantext}把你加入了产品：${data.product_name}
 ```
+
+微信消息内容：
+```
+${data.create_mantext}把你加入了产品：${data.product_name}
+```
 #### 需求通知模板(取消分配负责人)(idea_assignee_cancel) :id=idea_assignee_cancel
 
 
@@ -307,6 +323,11 @@ ${data.create_mantext}把你加入了产品：${data.product_name}
 ```
 
 钉钉内容：
+```
+${data.update_mantext}取消分配了需求：${data.title}
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}取消分配了需求：${data.title}
 ```
@@ -355,6 +376,11 @@ ${data.update_mantext}取消分配了需求：${data.title}
 ```
 ${data.update_mantext}把你移除了测试库：${data.library_name}
 ```
+
+微信消息内容：
+```
+${data.update_mantext}把你移除了测试库：${data.library_name}
+```
 #### 产品通知模板(移除产品成员)(product_member_remove) :id=product_member_remove
 
 
@@ -397,6 +423,11 @@ ${data.update_mantext}把你移除了测试库：${data.library_name}
 ```
 
 钉钉内容：
+```
+${data.update_mantext}把你移除了产品：${data.product_name}
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}把你移除了产品：${data.product_name}
 ```
@@ -457,10 +488,10 @@ view://work_item_mob_common_edit_view?srfnavctx={"work_item":"${data.parent("pri
 									<#assign content = content?replace(jsonStr, "<span class='comment-tag'>@" + name + "</span>")>
 							</#if>
 				</#list>
-			<#assign regex = "\\#\\{\"id\":\"(.*?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"owner_id\":\"(.*?)\",\"owner_type\":\"(.*?)\",\"owner_subtype\":\"(.*?)\",\"recent_parent\":\"(.*?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"\\}">
+			<#assign regex = "\\#\\{\"id\":\"(.*?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"owner_id\":\"(.*?)\",\"owner_type\":\"(.*?)\",\"owner_subtype\":\"(.*?)\",\"recent_parent\":\"(.*?)\"\\}">
 				<#list content?matches(regex) as match>
 					<#assign jsonStr = match>
-                                                     <#assign content = content?replace(jsonStr,"<span class='comment-tag'>"+ "提及："+match?groups[8] + match?groups[3]+ match?groups[2] + "</span>")>
+                                                     <#assign content = content?replace(jsonStr,"<span class='comment-tag'>"+ "提及："+ match?groups[3]+ match?groups[2] + "</span>")>
 				</#list>
 			<div class="notice-card-object" style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;max-height: 50px;">
 				<span class="notice-card__object-name">${content}</span>
@@ -487,6 +518,12 @@ view://work_item_mob_common_edit_view?srfnavctx={"work_item":"${data.parent("pri
 ```
 
 钉钉内容：
+```
+${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.parent("principal_id").work_item_type_name}<#elseif data.principal_type == 'IDEA'>需求<#elseif data.principal_type == 'TICKET'>工单<#elseif data.principal_type == 'TEST_CASE'>测试用例<#elseif data.principal_type == 'CUSTOMER'>客户<#elseif data.principal_type == 'RUN'>执行用例</#if>：
+<#if data.owner_type == 'CUSTOMER'>${data.parent("principal_id").name}<#else>${data.parent("principal_id").title}</#if>
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.parent("principal_id").work_item_type_name}<#elseif data.principal_type == 'IDEA'>需求<#elseif data.principal_type == 'TICKET'>工单<#elseif data.principal_type == 'TEST_CASE'>测试用例<#elseif data.principal_type == 'CUSTOMER'>客户<#elseif data.principal_type == 'RUN'>执行用例</#if>：
 <#if data.owner_type == 'CUSTOMER'>${data.parent("principal_id").name}<#else>${data.parent("principal_id").title}</#if>
@@ -532,6 +569,11 @@ ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.pa
 ```
 
 钉钉内容：
+```
+${data.update_mantext}变更了工单：${data.title}的负责人
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}变更了工单：${data.title}的负责人
 ```
@@ -581,6 +623,11 @@ ${data.update_mantext}变更了工单：${data.title}的负责人
 ```
 
 钉钉内容：
+```
+${data.create_mantext}把你加入了项目：${data.project_name}
+```
+
+微信消息内容：
 ```
 ${data.create_mantext}把你加入了项目：${data.project_name}
 ```
@@ -648,6 +695,12 @@ srfnavctx={"work_item":"${data.parent("owner_id").id}","project":"${data.parent(
 ${data.update_mantext}取消分配执行<#if data.owner_type == 'WORK_ITEM'>${data.parent("owner_id").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type == 'TICKET'>工单<#elseif data.owner_type == 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例</#if>：
 <#if data.owner_type == 'CUSTOMER'>${data.parent("owner_id").name}<#else>${data.parent("owner_id").title}</#if>
 ```
+
+微信消息内容：
+```
+${data.update_mantext}取消分配执行<#if data.owner_type == 'WORK_ITEM'>${data.parent("owner_id").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type == 'TICKET'>工单<#elseif data.owner_type == 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例</#if>：
+<#if data.owner_type == 'CUSTOMER'>${data.parent("owner_id").name}<#else>${data.parent("owner_id").title}</#if>
+```
 #### 测试计划通知模板(取消分配负责人)(test_plan_assignee_cancel) :id=test_plan_assignee_cancel
 
 
@@ -687,6 +740,11 @@ ${data.update_mantext}取消分配执行<#if data.owner_type == 'WORK_ITEM'>${da
 ```
 
 钉钉内容：
+```
+${data.update_mantext}取消分配了测试计划：${data.name}
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}取消分配了测试计划：${data.name}
 ```
@@ -751,10 +809,10 @@ srfnavctx={"run":"${parent.id}","test_case": "${parent.parent("case_id").id}", "
 									<#assign content = content?replace(jsonStr, "<span class='comment-tag'>@" + name + "</span>")>
 							</#if>
 				</#list>
-			<#assign regex = "\\#\\{\"id\":\"(.*?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"owner_id\":\"(.*?)\",\"owner_type\":\"(.*?)\",\"owner_subtype\":\"(.*?)\",\"recent_parent\":\"(.*?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"\\}">
+			<#assign regex = "\\#\\{\"id\":\"(.*?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"owner_id\":\"(.*?)\",\"owner_type\":\"(.*?)\",\"owner_subtype\":\"(.*?)\",\"recent_parent\":\"(.*?)\"\\}">
 				<#list content?matches(regex) as match>
 					<#assign jsonStr = match>
-                                                     <#assign content = content?replace(jsonStr,"<span class='comment-tag'>"+ "提及："+match?groups[8] + match?groups[3]+ match?groups[2] + "</span>")>
+                                                     <#assign content = content?replace(jsonStr,"<span class='comment-tag'>"+ "提及："+ match?groups[3]+ match?groups[2] + "</span>")>
 				</#list>
 			<div class="notice-card-object" style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;max-height: 50px;">
 				<span class="notice-card__object-name">${content}</span>
@@ -781,6 +839,12 @@ srfnavctx={"run":"${parent.id}","test_case": "${parent.parent("case_id").id}", "
 ```
 
 钉钉内容：
+```
+${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.parent("principal_id").work_item_type_name}<#elseif data.principal_type == 'IDEA'>需求<#elseif data.principal_type == 'TICKET'>工单<#elseif data.principal_type == 'TEST_CASE'>测试用例<#elseif data.principal_type == 'CUSTOMER'>客户<#elseif data.principal_type == 'RUN'>执行用例</#if>：
+<#if data.owner_type == 'CUSTOMER'>${data.parent("principal_id").name}<#else>${data.parent("principal_id").title}</#if>
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.parent("principal_id").work_item_type_name}<#elseif data.principal_type == 'IDEA'>需求<#elseif data.principal_type == 'TICKET'>工单<#elseif data.principal_type == 'TEST_CASE'>测试用例<#elseif data.principal_type == 'CUSTOMER'>客户<#elseif data.principal_type == 'RUN'>执行用例</#if>：
 <#if data.owner_type == 'CUSTOMER'>${data.parent("principal_id").name}<#else>${data.parent("principal_id").title}</#if>
@@ -826,6 +890,11 @@ ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.pa
 ```
 ${data.create_mantext}把你加入了空间：${data.space_name}
 ```
+
+微信消息内容：
+```
+${data.create_mantext}把你加入了空间：${data.space_name}
+```
 #### 测试用例通知模板(维护人变更)(test_case_maintainer_onchange) :id=test_case_maintainer_onchange
 
 
@@ -868,6 +937,11 @@ ${data.create_mantext}把你加入了空间：${data.space_name}
 ```
 
 钉钉内容：
+```
+${data.update_mantext}变更了测试用例：${data.title}的维护人
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}变更了测试用例：${data.title}的维护人
 ```
@@ -930,7 +1004,19 @@ srfnavctx={"ticket":"${data.parent("owner_id").id}","product":"${data.parent("ow
 </div>
 ```
 
+即时消息内容：
+```
+${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.parent("owner_id").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type == 'TICKET'>工单<#elseif data.owner_type == 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例</#if>：
+<#if data.owner_type == 'CUSTOMER'>${data.parent("owner_id").name}<#else>${data.parent("owner_id").title}</#if>
+```
+
 钉钉内容：
+```
+${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.parent("owner_id").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type == 'TICKET'>工单<#elseif data.owner_type == 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例</#if>：
+<#if data.owner_type == 'CUSTOMER'>${data.parent("owner_id").name}<#else>${data.parent("owner_id").title}</#if>
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.parent("owner_id").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type == 'TICKET'>工单<#elseif data.owner_type == 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例</#if>：
 <#if data.owner_type == 'CUSTOMER'>${data.parent("owner_id").name}<#else>${data.parent("owner_id").title}</#if>
@@ -994,7 +1080,25 @@ srfnavctx={"work_item":"${data.parent("owner_id").id}","project":"${data.parent(
 </div>
 ```
 
+即时消息内容：
+```
+${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.parent("owner_id").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type == 'TICKET'>工单<#elseif data.owner_type == 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例</#if>：
+<#if data.owner_type == 'CUSTOMER'>${data.parent("owner_id").name}<#else>${data.parent("owner_id").title}</#if>
+```
+
+短信内容：
+```
+${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.parent("owner_id").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type == 'TICKET'>工单<#elseif data.owner_type == 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例</#if>：
+<#if data.owner_type == 'CUSTOMER'>${data.parent("owner_id").name}<#else>${data.parent("owner_id").title}</#if>
+```
+
 钉钉内容：
+```
+${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.parent("owner_id").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type == 'TICKET'>工单<#elseif data.owner_type == 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例</#if>：
+<#if data.owner_type == 'CUSTOMER'>${data.parent("owner_id").name}<#else>${data.parent("owner_id").title}</#if>
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.parent("owner_id").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type == 'TICKET'>工单<#elseif data.owner_type == 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例</#if>：
 <#if data.owner_type == 'CUSTOMER'>${data.parent("owner_id").name}<#else>${data.parent("owner_id").title}</#if>
@@ -1039,6 +1143,11 @@ ${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.
 ```
 ${data.create_mantext}把你移除了项目集：${data.portfolio_name}
 ```
+
+微信消息内容：
+```
+${data.create_mantext}把你移除了项目集：${data.portfolio_name}
+```
 #### 客户通知模板(取消分配负责人)(customer_assignee_cancel) :id=customer_assignee_cancel
 
 
@@ -1078,6 +1187,11 @@ ${data.create_mantext}把你移除了项目集：${data.portfolio_name}
 ```
 
 钉钉内容：
+```
+${data.update_mantext}取消分配了客户：${data.name}
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}取消分配了客户：${data.name}
 ```
@@ -1132,6 +1246,11 @@ route://-/home/library=${data.id}/library_test_mob_tab_exp_view/srfnavctx=%257B%
 ```
 ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了测试库：${data.name}
 ```
+
+微信消息内容：
+```
+${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了测试库：${data.name}
+```
 #### 工作项通知模板(删除/恢复工作项)(work_item_remove_or_recover) :id=work_item_remove_or_recover
 
 
@@ -1173,6 +1292,11 @@ ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了测试
 ```
 
 钉钉内容：
+```
+${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了${data.work_item_type_name}：${data.title}
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了${data.work_item_type_name}：${data.title}
 ```
@@ -1220,6 +1344,11 @@ ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了${data
 ```
 ${data.update_mantext}变更了需求：${data.title}的负责人
 ```
+
+微信消息内容：
+```
+${data.update_mantext}变更了需求：${data.title}的负责人
+```
 #### 客户通知模板(分配负责人)(customer_assignee) :id=customer_assignee
 
 
@@ -1259,6 +1388,11 @@ ${data.update_mantext}变更了需求：${data.title}的负责人
 ```
 
 钉钉内容：
+```
+${data.update_mantext}给你分配了客户：${data.name}
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}给你分配了客户：${data.name}
 ```
@@ -1319,10 +1453,10 @@ ${data.update_mantext}给你分配了客户：${data.name}
 									<#assign content = content?replace(jsonStr, "<span class='comment-tag'>@" + name + "</span>")>
 							</#if>
 				</#list>
-			<#assign regex = "\\#\\{\"id\":\"(.*?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"owner_id\":\"(.*?)\",\"owner_type\":\"(.*?)\",\"owner_subtype\":\"(.*?)\",\"recent_parent\":\"(.*?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"\\}">
+			<#assign regex = "\\#\\{\"id\":\"(.*?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"owner_id\":\"(.*?)\",\"owner_type\":\"(.*?)\",\"owner_subtype\":\"(.*?)\",\"recent_parent\":\"(.*?)\"\\}">
 				<#list content?matches(regex) as match>
 					<#assign jsonStr = match>
-                                                     <#assign content = content?replace(jsonStr,"<span class='comment-tag'>"+ "提及："+match?groups[8] + match?groups[3]+ match?groups[2] + "</span>")>
+                                                     <#assign content = content?replace(jsonStr,"<span class='comment-tag'>"+ "提及："+ match?groups[3]+ match?groups[2] + "</span>")>
 				</#list>
 			<div class="notice-card-object" style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;max-height: 50px;">
 				<span class="notice-card__object-name">${content}</span>
@@ -1349,6 +1483,12 @@ ${data.update_mantext}给你分配了客户：${data.name}
 ```
 
 钉钉内容：
+```
+${data.update_mantext}在<#if data.principal_type == 'WORK_ITEM'>${data.parent("principal_id").work_item_type_name}<#elseif data.principal_type == 'IDEA'>需求<#elseif data.principal_type == 'TICKET'>工单<#elseif data.principal_type == 'TEST_CASE'>测试用例<#elseif data.principal_type == 'CUSTOMER'>客户<#elseif data.principal_type == 'RUN'>执行用例<#elseif data.principal_type == 'PAGE'>页面</#if>：
+<#if data.owner_type == 'CUSTOMER' || data.owner_type == 'PAGE'>${data.parent("principal_id").name}<#else>${data.parent("principal_id").title}</#if>的评论中提及了你
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}在<#if data.principal_type == 'WORK_ITEM'>${data.parent("principal_id").work_item_type_name}<#elseif data.principal_type == 'IDEA'>需求<#elseif data.principal_type == 'TICKET'>工单<#elseif data.principal_type == 'TEST_CASE'>测试用例<#elseif data.principal_type == 'CUSTOMER'>客户<#elseif data.principal_type == 'RUN'>执行用例<#elseif data.principal_type == 'PAGE'>页面</#if>：
 <#if data.owner_type == 'CUSTOMER' || data.owner_type == 'PAGE'>${data.parent("principal_id").name}<#else>${data.parent("principal_id").title}</#if>的评论中提及了你
@@ -1423,7 +1563,12 @@ ${data.update_mantext}在<#if data.principal_type == 'WORK_ITEM'>${data.parent("
 
 钉钉内容：
 ```
-${data.update_mantext}}更改了工单 ${data.title}状态：<#if last.codeitem("STATE")??>${last.codeitem("STATE").text}<#else>无</#if>  → <#if data.codeitem("STATE")??>${data.codeitem("STATE").text}<#else>无</#if>
+${data.update_mantext}更改了工单 ${data.title}状态：<#if last.codeitem("STATE")??>${last.codeitem("STATE").text}<#else>无</#if>  → <#if data.codeitem("STATE")??>${data.codeitem("STATE").text}<#else>无</#if>
+```
+
+微信消息内容：
+```
+${data.update_mantext}更改了工单 ${data.title}状态：<#if last.codeitem("STATE")??>${last.codeitem("STATE").text}<#else>无</#if>  → <#if data.codeitem("STATE")??>${data.codeitem("STATE").text}<#else>无</#if>
 ```
 #### 评论产品需求通知模板(comment_idea) :id=comment_idea
 
@@ -1484,10 +1629,10 @@ srfnavctx={"idea":"${data.parent("principal_id").id}","product":"${data.parent("
 									<#assign content = content?replace(jsonStr, "<span class='comment-tag'>@" + name + "</span>")>
 							</#if>
 				</#list>
-			<#assign regex = "\\#\\{\"id\":\"(.*?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"owner_id\":\"(.*?)\",\"owner_type\":\"(.*?)\",\"owner_subtype\":\"(.*?)\",\"recent_parent\":\"(.*?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"\\}">
+			<#assign regex = "\\#\\{\"id\":\"(.*?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"owner_id\":\"(.*?)\",\"owner_type\":\"(.*?)\",\"owner_subtype\":\"(.*?)\",\"recent_parent\":\"(.*?)\"\\}">
 				<#list content?matches(regex) as match>
 					<#assign jsonStr = match>
-                                                     <#assign content = content?replace(jsonStr,"<span class='comment-tag'>"+ "提及："+match?groups[8] + match?groups[3]+ match?groups[2] + "</span>")>
+                                                     <#assign content = content?replace(jsonStr,"<span class='comment-tag'>"+ "提及："+ match?groups[3]+ match?groups[2] + "</span>")>
 				</#list>
 			<div class="notice-card-object" style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;max-height: 50px;">
 				<span class="notice-card__object-name">${content}</span>
@@ -1514,6 +1659,12 @@ srfnavctx={"idea":"${data.parent("principal_id").id}","product":"${data.parent("
 ```
 
 钉钉内容：
+```
+${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.parent("principal_id").work_item_type_name}<#elseif data.principal_type == 'IDEA'>需求<#elseif data.principal_type == 'TICKET'>工单<#elseif data.principal_type == 'TEST_CASE'>测试用例<#elseif data.principal_type == 'CUSTOMER'>客户<#elseif data.principal_type == 'RUN'>执行用例</#if>：
+<#if data.owner_type == 'CUSTOMER'>${data.parent("principal_id").name}<#else>${data.parent("principal_id").title}</#if>
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.parent("principal_id").work_item_type_name}<#elseif data.principal_type == 'IDEA'>需求<#elseif data.principal_type == 'TICKET'>工单<#elseif data.principal_type == 'TEST_CASE'>测试用例<#elseif data.principal_type == 'CUSTOMER'>客户<#elseif data.principal_type == 'RUN'>执行用例</#if>：
 <#if data.owner_type == 'CUSTOMER'>${data.parent("principal_id").name}<#else>${data.parent("principal_id").title}</#if>
@@ -1606,6 +1757,11 @@ ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.pa
 ```
 ${data.update_mantext}取消分配了${data.work_item_type_name}：${data.title}
 ```
+
+微信消息内容：
+```
+${data.update_mantext}取消分配了${data.work_item_type_name}：${data.title}
+```
 #### 需求通知模板(分配负责人)(idea_assignee) :id=idea_assignee
 
 
@@ -1647,6 +1803,11 @@ ${data.update_mantext}取消分配了${data.work_item_type_name}：${data.title}
 ```
 
 钉钉内容：
+```
+${data.update_mantext}给你分配了需求：${data.title}
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}给你分配了需求：${data.title}
 ```
@@ -1710,6 +1871,12 @@ srfnavctx={"work_item":"${data.parent("owner_id").id}","project":"${data.parent(
 ```
 
 钉钉内容：
+```
+${data.update_mantext}给你分配执行<#if data.owner_type == 'WORK_ITEM'>${data.parent("owner_id").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type == 'TICKET'>工单<#elseif data.owner_type == 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例</#if>：
+<#if data.owner_type == 'CUSTOMER'>${data.parent("owner_id").name}<#else>${data.parent("owner_id").title}</#if>
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}给你分配执行<#if data.owner_type == 'WORK_ITEM'>${data.parent("owner_id").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type == 'TICKET'>工单<#elseif data.owner_type == 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例</#if>：
 <#if data.owner_type == 'CUSTOMER'>${data.parent("owner_id").name}<#else>${data.parent("owner_id").title}</#if>
@@ -1802,6 +1969,11 @@ ${data.update_mantext}给你分配执行<#if data.owner_type == 'WORK_ITEM'>${da
 ```
 ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了${data.work_item_type_name}：${data.title}
 ```
+
+微信消息内容：
+```
+${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了${data.work_item_type_name}：${data.title}
+```
 #### 空间通知模板(删除/恢复空间)(space_remove_or_recover) :id=space_remove_or_recover
 
 
@@ -1845,6 +2017,11 @@ route://-/home/space=${data.id}/article_page_mob_list_view/srfnavctx=%257B%2522s
 ```
 
 钉钉内容：
+```
+${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了空间：${data.name}
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了空间：${data.name}
 ```
@@ -1892,6 +2069,11 @@ ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了空间
 ```
 ${data.update_mantext}给你分配了项目：${data.name}
 ```
+
+微信消息内容：
+```
+${data.update_mantext}给你分配了项目：${data.name}
+```
 #### 项目事件通知(project_event_hook) :id=project_event_hook
 
 
@@ -1914,7 +2096,7 @@ ${data.update_mantext}给你分配了项目：${data.name}
 
 内容类型：`HTML网页`
 
-超链接：`<#if data.parent("principal_id")??>view://article_page_model_show_view?srfnavctx={"article_page":"${data.parent("principal_id").id}","space":"${data.parent("principal_id").space_id}"}</#if>`
+超链接：`<#if data.parent("principal_id")??>view://article_page_model_show_view_noupdown?srfnavctx={"article_page":"${data.parent("principal_id").id}","space":"${data.parent("principal_id").space_id}"}</#if>`
 
 移动端超链接：`<#if data.parent("principal_id")??>view://article_page_mob_edit_view?srfnavctx={"article_page":"${data.parent("principal_id").id}","space":"${data.parent("principal_id").space_id}"}</#if>`
 
@@ -1954,10 +2136,10 @@ ${data.update_mantext}给你分配了项目：${data.name}
 									<#assign content = content?replace(jsonStr, "<span class='comment-tag'>@" + name + "</span>")>
 							</#if>
 				</#list>
-			<#assign regex = "\\#\\{\"id\":\"(.*?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"owner_id\":\"(.*?)\",\"owner_type\":\"(.*?)\",\"owner_subtype\":\"(.*?)\",\"recent_parent\":\"(.*?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"\\}">
+			<#assign regex = "\\#\\{\"id\":\"(.*?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"owner_id\":\"(.*?)\",\"owner_type\":\"(.*?)\",\"owner_subtype\":\"(.*?)\",\"recent_parent\":\"(.*?)\"\\}">
 				<#list content?matches(regex) as match>
 					<#assign jsonStr = match>
-                                                     <#assign content = content?replace(jsonStr,"<span class='comment-tag'>"+ "提及："+match?groups[8] + match?groups[3]+ match?groups[2] + "</span>")>
+                                                     <#assign content = content?replace(jsonStr,"<span class='comment-tag'>"+ "提及："+ match?groups[3]+ match?groups[2] + "</span>")>
 				</#list>
 			<div class="notice-card-object" style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;max-height: 50px;">
 				<span class="notice-card__object-name">${content}</span>
@@ -1972,6 +2154,11 @@ ${data.update_mantext}给你分配了项目：${data.name}
 ```
 
 钉钉内容：
+```
+${data.update_mantext}评论了页面：${data.parent("principal_id").name}
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}评论了页面：${data.parent("principal_id").name}
 ```
@@ -2019,6 +2206,11 @@ ${data.update_mantext}评论了页面：${data.parent("principal_id").name}
 ```
 ${data.update_mantext}取消分配了工单：${data.title}
 ```
+
+微信消息内容：
+```
+${data.update_mantext}取消分配了工单：${data.title}
+```
 #### 项目集通知模板(加入成员)(project_set_member_create) :id=project_set_member_create
 
 
@@ -2058,6 +2250,11 @@ ${data.update_mantext}取消分配了工单：${data.title}
 ```
 
 钉钉内容：
+```
+${data.create_mantext}把你加入了项目集：${data.portfolio_name}
+```
+
+微信消息内容：
 ```
 ${data.create_mantext}把你加入了项目集：${data.portfolio_name}
 ```
@@ -2102,6 +2299,11 @@ ${data.create_mantext}把你加入了项目集：${data.portfolio_name}
 ```
 
 钉钉内容：
+```
+${data.update_mantext}给你分配了${data.work_item_type_name}：${data.title}
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}给你分配了${data.work_item_type_name}：${data.title}
 ```
@@ -2164,10 +2366,10 @@ srfnavctx={"customer":"${data.parent("principal_id").id}","product":"${data.pare
 									<#assign content = content?replace(jsonStr, "<span class='comment-tag'>@" + name + "</span>")>
 							</#if>
 				</#list>
-			<#assign regex = "\\#\\{\"id\":\"(.*?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"owner_id\":\"(.*?)\",\"owner_type\":\"(.*?)\",\"owner_subtype\":\"(.*?)\",\"recent_parent\":\"(.*?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"\\}">
+			<#assign regex = "\\#\\{\"id\":\"(.*?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"owner_id\":\"(.*?)\",\"owner_type\":\"(.*?)\",\"owner_subtype\":\"(.*?)\",\"recent_parent\":\"(.*?)\"\\}">
 				<#list content?matches(regex) as match>
 					<#assign jsonStr = match>
-                                                     <#assign content = content?replace(jsonStr,"<span class='comment-tag'>"+ "提及："+match?groups[8] + match?groups[3]+ match?groups[2] + "</span>")>
+                                                     <#assign content = content?replace(jsonStr,"<span class='comment-tag'>"+ "提及："+match?groups[3]+ match?groups[2] + "</span>")>
 				</#list>
 			<div class="notice-card-object" style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;max-height: 50px;">
 				<span class="notice-card__object-name">${content}</span>
@@ -2194,6 +2396,12 @@ srfnavctx={"customer":"${data.parent("principal_id").id}","product":"${data.pare
 ```
 
 钉钉内容：
+```
+${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.parent("principal_id").work_item_type_name}<#elseif data.principal_type == 'IDEA'>需求<#elseif data.principal_type == 'TICKET'>工单<#elseif data.principal_type == 'TEST_CASE'>测试用例<#elseif data.principal_type == 'CUSTOMER'>客户<#elseif data.principal_type == 'RUN'>执行用例</#if>：
+<#if data.owner_type == 'CUSTOMER'>${data.parent("principal_id").name}<#else>${data.parent("principal_id").title}</#if>
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.parent("principal_id").work_item_type_name}<#elseif data.principal_type == 'IDEA'>需求<#elseif data.principal_type == 'TICKET'>工单<#elseif data.principal_type == 'TEST_CASE'>测试用例<#elseif data.principal_type == 'CUSTOMER'>客户<#elseif data.principal_type == 'RUN'>执行用例</#if>：
 <#if data.owner_type == 'CUSTOMER'>${data.parent("principal_id").name}<#else>${data.parent("principal_id").title}</#if>
@@ -2275,6 +2483,11 @@ ${data.update_mantext}更改了${data.work_item_type_name} ${data.title}状态�
 ```
 ${data.update_mantext}更改了${data.work_item_type_name} ${data.title}状态：<#if last.codeitem("STATE")??>${last.codeitem("STATE").text}<#else>无</#if>  → <#if data.codeitem("STATE")??>${data.codeitem("STATE").text}<#else>无</#if>
 ```
+
+微信消息内容：
+```
+${data.update_mantext}更改了${data.work_item_type_name} ${data.title}状态：<#if last.codeitem("STATE")??>${last.codeitem("STATE").text}<#else>无</#if>  → <#if data.codeitem("STATE")??>${data.codeitem("STATE").text}<#else>无</#if>
+```
 #### 项目通知模板(归档/激活项目)(project_archived_or_activate) :id=project_archived_or_activate
 
 
@@ -2321,6 +2534,11 @@ route://-/home/project=${data.id}/project_mob_${data.type}_tree_exp_view/srfnavc
 ```
 ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了项目：${data.name}
 ```
+
+微信消息内容：
+```
+${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了项目：${data.name}
+```
 #### 测试用例通知模板(分配维护人)(test_case_maintainer) :id=test_case_maintainer
 
 
@@ -2363,6 +2581,11 @@ ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了项�
 ```
 
 钉钉内容：
+```
+${data.update_mantext}给你分配了测试用例：${data.title}
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}给你分配了测试用例：${data.title}
 ```
@@ -2412,6 +2635,11 @@ route://-/home/space=${data.id}/article_page_mob_list_view/srfnavctx=%257B%2522s
 ```
 ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了空间：${data.name}
 ```
+
+微信消息内容：
+```
+${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了空间：${data.name}
+```
 #### 产品通知模板(归档/激活产品)(product_archived_or_activate) :id=product_archived_or_activate
 
 
@@ -2455,6 +2683,11 @@ route://-/home/product=${data.id}/product_mob_product_tree/srfnavctx=%257B%2522s
 ```
 
 钉钉内容：
+```
+${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了产品：${data.name}
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了产品：${data.name}
 ```
@@ -2507,6 +2740,11 @@ ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了产�
 ```
 ${data.create_mantext}把你加入了测试库：${data.library_name}
 ```
+
+微信消息内容：
+```
+${data.create_mantext}把你加入了测试库：${data.library_name}
+```
 #### 产品通知模板(删除/恢复产品)(product_remove_or_recover) :id=product_remove_or_recover
 
 
@@ -2553,6 +2791,11 @@ route://-/home/product=${data.id}/product_mob_product_tree/srfnavctx=%257B%2522s
 ```
 ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了产品：${data.name}
 ```
+
+微信消息内容：
+```
+${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了产品：${data.name}
+```
 #### 工单通知模板(归档/激活工单)(ticket_archived_or_activate) :id=ticket_archived_or_activate
 
 
@@ -2594,6 +2837,11 @@ ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了产品
 ```
 
 钉钉内容：
+```
+${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了工单：${data.title}
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了工单：${data.title}
 ```
@@ -2656,10 +2904,10 @@ srfnavctx={"ticket":"${data.parent("principal_id").id}","product":"${data.parent
 									<#assign content = content?replace(jsonStr, "<span class='comment-tag'>@" + name + "</span>")>
 							</#if>
 				</#list>
-			<#assign regex = "\\#\\{\"id\":\"(.*?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"owner_id\":\"(.*?)\",\"owner_type\":\"(.*?)\",\"owner_subtype\":\"(.*?)\",\"recent_parent\":\"(.*?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"\\}">
+			<#assign regex = "\\#\\{\"id\":\"(.*?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"owner_id\":\"(.*?)\",\"owner_type\":\"(.*?)\",\"owner_subtype\":\"(.*?)\",\"recent_parent\":\"(.*?)\"\\}">
 				<#list content?matches(regex) as match>
 					<#assign jsonStr = match>
-                                                     <#assign content = content?replace(jsonStr,"<span class='comment-tag'>"+ "提及："+match?groups[8] + match?groups[3]+ match?groups[2] + "</span>")>
+                                                     <#assign content = content?replace(jsonStr,"<span class='comment-tag'>"+ "提及："+ match?groups[3]+ match?groups[2] + "</span>")>
 				</#list>
 			<div class="notice-card-object" style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;max-height: 50px;">
 				<span class="notice-card__object-name">${content}</span>
@@ -2686,6 +2934,12 @@ srfnavctx={"ticket":"${data.parent("principal_id").id}","product":"${data.parent
 ```
 
 钉钉内容：
+```
+${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.parent("principal_id").work_item_type_name}<#elseif data.principal_type == 'IDEA'>需求<#elseif data.principal_type == 'TICKET'>工单<#elseif data.principal_type == 'TEST_CASE'>测试用例<#elseif data.principal_type == 'CUSTOMER'>客户<#elseif data.principal_type == 'RUN'>执行用例</#if>：
+<#if data.owner_type == 'CUSTOMER'>${data.parent("principal_id").name}<#else>${data.parent("principal_id").title}</#if>
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.parent("principal_id").work_item_type_name}<#elseif data.principal_type == 'IDEA'>需求<#elseif data.principal_type == 'TICKET'>工单<#elseif data.principal_type == 'TEST_CASE'>测试用例<#elseif data.principal_type == 'CUSTOMER'>客户<#elseif data.principal_type == 'RUN'>执行用例</#if>：
 <#if data.owner_type == 'CUSTOMER'>${data.parent("principal_id").name}<#else>${data.parent("principal_id").title}</#if>
@@ -2737,6 +2991,11 @@ ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.pa
 ```
 ${data.update_mantext}变更了客户：${data.name}的负责人
 ```
+
+微信消息内容：
+```
+${data.update_mantext}变更了客户：${data.name}的负责人
+```
 #### 工单通知模板(删除/恢复工单)(ticket_remove_or_recover) :id=ticket_remove_or_recover
 
 
@@ -2778,6 +3037,11 @@ ${data.update_mantext}变更了客户：${data.name}的负责人
 ```
 
 钉钉内容：
+```
+${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了测工单：${data.title}
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了测工单：${data.title}
 ```
@@ -2825,6 +3089,11 @@ ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了测工
 ```
 ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了需求：${data.title}
 ```
+
+微信消息内容：
+```
+${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了需求：${data.title}
+```
 #### 项目通知模板(变更负责人)(project_change_assignee) :id=project_change_assignee
 
 
@@ -2866,6 +3135,11 @@ ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了需求
 ```
 
 钉钉内容：
+```
+${data.update_mantext}变更了项目${data.name}的负责人
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}变更了项目${data.name}的负责人
 ```
@@ -2913,6 +3187,11 @@ ${data.update_mantext}变更了项目${data.name}的负责人
 ```
 ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了需求：${data.title}
 ```
+
+微信消息内容：
+```
+${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了需求：${data.title}
+```
 #### 项目通知模板(删除/恢复项目)(project_remove_or_recover) :id=project_remove_or_recover
 
 
@@ -2956,6 +3235,11 @@ route://-/home/project=${data.id}/project_mob_${data.type}_tree_exp_view/srfnavc
 ```
 
 钉钉内容：
+```
+${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了项目：${data.name}
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了项目：${data.name}
 ```
@@ -3066,6 +3350,12 @@ srfnavctx={"idea":"${data.parent("owner_id").id}","product":"${data.parent("owne
 ${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.parent("owner_id").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type == 'TICKET'>工单<#elseif data.owner_type == 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例</#if>：
 <#if data.owner_type == 'CUSTOMER'>${data.parent("owner_id").name}<#else>${data.parent("owner_id").title}</#if>
 ```
+
+微信消息内容：
+```
+${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.parent("owner_id").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type == 'TICKET'>工单<#elseif data.owner_type == 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例</#if>：
+<#if data.owner_type == 'CUSTOMER'>${data.parent("owner_id").name}<#else>${data.parent("owner_id").title}</#if>
+```
 #### 测试库通知模板(归档/激活测试库)(library_archived_or_activate) :id=library_archived_or_activate
 
 
@@ -3114,6 +3404,11 @@ route://-/home/library=${data.id}/library_test_mob_tab_exp_view/srfnavctx=%257B%
 ```
 
 钉钉内容：
+```
+${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了测试库：${data.name}
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了测试库：${data.name}
 ```
@@ -3176,10 +3471,10 @@ srfnavctx={"test_case":"${data.parent("principal_id").id}","library":"${data.par
 									<#assign content = content?replace(jsonStr, "<span class='comment-tag'>@" + name + "</span>")>
 							</#if>
 				</#list>
-			<#assign regex = "\\#\\{\"id\":\"(.*?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"owner_id\":\"(.*?)\",\"owner_type\":\"(.*?)\",\"owner_subtype\":\"(.*?)\",\"recent_parent\":\"(.*?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"\\}">
+			<#assign regex = "\\#\\{\"id\":\"(.*?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"owner_id\":\"(.*?)\",\"owner_type\":\"(.*?)\",\"owner_subtype\":\"(.*?)\",\"recent_parent\":\"(.*?)\"\\}">
 				<#list content?matches(regex) as match>
 					<#assign jsonStr = match>
-                                                     <#assign content = content?replace(jsonStr,"<span class='comment-tag'>"+ "提及："+match?groups[8] + match?groups[3]+ match?groups[2] + "</span>")>
+                                                     <#assign content = content?replace(jsonStr,"<span class='comment-tag'>"+ "提及："+match?groups[3]+ match?groups[2] + "</span>")>
 				</#list>
 			<div class="notice-card-object" style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;max-height: 50px;">
 				<span class="notice-card__object-name">${content}</span>
@@ -3206,6 +3501,12 @@ srfnavctx={"test_case":"${data.parent("principal_id").id}","library":"${data.par
 ```
 
 钉钉内容：
+```
+${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.parent("principal_id").work_item_type_name}<#elseif data.principal_type == 'IDEA'>需求<#elseif data.principal_type == 'TICKET'>工单<#elseif data.principal_type == 'TEST_CASE'>测试用例<#elseif data.principal_type == 'CUSTOMER'>客户<#elseif data.principal_type == 'RUN'>执行用例</#if>：
+<#if data.owner_type == 'CUSTOMER'>${data.parent("principal_id").name}<#else>${data.parent("principal_id").title}</#if>
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.parent("principal_id").work_item_type_name}<#elseif data.principal_type == 'IDEA'>需求<#elseif data.principal_type == 'TICKET'>工单<#elseif data.principal_type == 'TEST_CASE'>测试用例<#elseif data.principal_type == 'CUSTOMER'>客户<#elseif data.principal_type == 'RUN'>执行用例</#if>：
 <#if data.owner_type == 'CUSTOMER'>${data.parent("principal_id").name}<#else>${data.parent("principal_id").title}</#if>
@@ -3252,6 +3553,11 @@ ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.pa
 ```
 
 钉钉内容：
+```
+${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了测试用例：${data.title}
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了测试用例：${data.title}
 ```
@@ -3319,6 +3625,12 @@ srfnavctx={"test_case":"${data.parent("owner_id").id}","library":"${data.parent(
 ${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.parent("owner_id").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type == 'TICKET'>工单<#elseif data.owner_type == 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例</#if>：
 <#if data.owner_type == 'CUSTOMER'>${data.parent("owner_id").name}<#else>${data.parent("owner_id").title}</#if>
 ```
+
+微信消息内容：
+```
+${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.parent("owner_id").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type == 'TICKET'>工单<#elseif data.owner_type == 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例</#if>：
+<#if data.owner_type == 'CUSTOMER'>${data.parent("owner_id").name}<#else>${data.parent("owner_id").title}</#if>
+```
 #### 测试计划通知模板(分配负责人)(test_plan_assignee) :id=test_plan_assignee
 
 
@@ -3358,6 +3670,11 @@ ${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.
 ```
 
 钉钉内容：
+```
+${data.update_mantext}给你分配了测试计划：${data.name}
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}给你分配了测试计划：${data.name}
 ```
@@ -3406,6 +3723,11 @@ ${data.update_mantext}给你分配了测试计划：${data.name}
 ```
 ${data.update_mantext}取消分配了测试用例：${data.title}
 ```
+
+微信消息内容：
+```
+${data.update_mantext}取消分配了测试用例：${data.title}
+```
 #### 知识库通知模板(移除空间成员)(space_member_remove) :id=space_member_remove
 
 
@@ -3440,6 +3762,11 @@ ${data.update_mantext}取消分配了测试用例：${data.title}
 ```
 
 钉钉内容：
+```
+${data.update_mantext}把你移除了空间：${data.space_name}
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}把你移除了空间：${data.space_name}
 ```
@@ -3515,6 +3842,11 @@ ${data.update_mantext}把你移除了空间：${data.space_name}
 ```
 ${data.update_mantext}更改了需求 ${data.title}状态：<#if last.codeitem("STATE")??>${last.codeitem("STATE").text}<#else>无</#if>  → <#if data.codeitem("STATE")??>${data.codeitem("STATE").text}<#else>无</#if>
 ```
+
+微信消息内容：
+```
+${data.update_mantext}更改了需求 ${data.title}状态：<#if last.codeitem("STATE")??>${last.codeitem("STATE").text}<#else>无</#if>  → <#if data.codeitem("STATE")??>${data.codeitem("STATE").text}<#else>无</#if>
+```
 #### 执行用例通知模板(设置执行人)(run_executor) :id=run_executor
 
 
@@ -3556,6 +3888,11 @@ ${data.update_mantext}更改了需求 ${data.title}状态：<#if last.codeitem("
 ```
 
 钉钉内容：
+```
+${data.update_mantext}给你分配了执行用例：${data.title}
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}给你分配了执行用例：${data.title}
 ```
@@ -3601,6 +3938,11 @@ ${data.update_mantext}给你分配了执行用例：${data.title}
 ```
 
 钉钉内容：
+```
+${data.update_mantext}把你移除了项目：${data.project_name}
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}把你移除了项目：${data.project_name}
 ```
@@ -3676,6 +4018,11 @@ ${data.update_mantext}把你移除了项目：${data.project_name}
 ```
 ${data.update_mantext}更改了项目 ${data.name}状态：<#if last.codeitem("STATE")??>${last.codeitem("STATE").text}<#else>无</#if>  → <#if data.codeitem("STATE")??>${data.codeitem("STATE").text}<#else>无</#if>
 ```
+
+微信消息内容：
+```
+${data.update_mantext}更改了项目 ${data.name}状态：<#if last.codeitem("STATE")??>${last.codeitem("STATE").text}<#else>无</#if>  → <#if data.codeitem("STATE")??>${data.codeitem("STATE").text}<#else>无</#if>
+```
 #### 提醒关注页面通知模板(notice_attention_page) :id=notice_attention_page
 
 
@@ -3717,6 +4064,11 @@ ${data.update_mantext}更改了项目 ${data.name}状态：<#if last.codeitem("S
 ```
 
 钉钉内容：
+```
+<#if data.parent("owner_id")??>${data.update_mantext}提醒你关注页面：${data.parent("owner_id").name}</#if>
+```
+
+微信消息内容：
 ```
 <#if data.parent("owner_id")??>${data.update_mantext}提醒你关注页面：${data.parent("owner_id").name}</#if>
 ```
@@ -3784,6 +4136,12 @@ srfnavctx={"customer":"${data.parent("owner_id").id}","product":"${data.parent("
 ${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.parent("owner_id").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type == 'TICKET'>工单<#elseif data.owner_type == 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例</#if>：
 <#if data.owner_type == 'CUSTOMER'>${data.parent("owner_id").name}<#else>${data.parent("owner_id").title}</#if>
 ```
+
+微信消息内容：
+```
+${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.parent("owner_id").work_item_type_name}<#elseif data.owner_type == 'IDEA'>需求<#elseif data.owner_type == 'TICKET'>工单<#elseif data.owner_type == 'TEST_CASE'>测试用例<#elseif data.owner_type == 'CUSTOMER'>客户<#elseif data.owner_type == 'RUN'>执行用例</#if>：
+<#if data.owner_type == 'CUSTOMER'>${data.parent("owner_id").name}<#else>${data.parent("owner_id").title}</#if>
+```
 #### 项目集删除/恢复通知模板(project_set_remove_recover) :id=project_set_remove_recover
 
 
@@ -3825,6 +4183,11 @@ route://-/index/portfolio=${data.id}/portfolio_project_index_view/srfnavctx=%257
 ```
 
 钉钉内容：
+```
+${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了项目集：${data.name}
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了项目集：${data.name}
 ```
@@ -3930,6 +4293,11 @@ ${it.get("content", "")}
 ```
 
 钉钉内容：
+```
+${data.update_mantext}变更了${data.work_item_type_name}：${data.title}的负责人
+```
+
+微信消息内容：
 ```
 ${data.update_mantext}变更了${data.work_item_type_name}：${data.title}的负责人
 ```

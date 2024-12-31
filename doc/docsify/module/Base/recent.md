@@ -72,7 +72,7 @@
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
-|自定义get|custom_get|用户自定义|默认|不支持||||
+|跳转对应视图|jump_corresponding_view|[实体处理逻辑](module/Base/recent/logic/jump_corresponding_view "跳转对应视图")|默认|不支持||||
 |我负责的事项|my_charge_entry|[实体处理逻辑](module/Base/recent/logic/my_charge_entry "我负责的事项")|默认|不支持||||
 |我创建的事项|my_created_entry|[实体处理逻辑](module/Base/recent/logic/my_created_entry "我创建的事项")|默认|不支持||||
 |我的任务总结|my_summary|[实体处理逻辑](module/Base/recent/logic/my_summary "我的任务总结")|默认|不支持||||
@@ -86,6 +86,7 @@
 |[最近使用](module/Base/recent/logic/recent_use)|recent_use|无||查询最近使用数据(项目/产品/空间)，仅查询10条|
 |[最近访问](module/Base/recent/logic/recent_access)|recent_access|无||查询最近访问数据，并获取他们的父级|
 |[移动端首页_最近访问](module/Base/recent/logic/mob_home_recent_access)|mob_home_recent_access|无||仅查询最近5条访问|
+|[跳转对应视图](module/Base/recent/logic/jump_corresponding_view)|jump_corresponding_view|无|||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|

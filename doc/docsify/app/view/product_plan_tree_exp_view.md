@@ -13,15 +13,15 @@
 
 
 ### 关联界面行为
-  * [排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan) : [编辑](module/ProdMgmt/product_plan#界面行为)
   * [排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan) : [新建分组](module/ProdMgmt/product_plan#界面行为)
-  * [排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan) : [编辑](module/ProdMgmt/product_plan#界面行为)
-  * [排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan) : [新建类别](module/ProdMgmt/product_plan#界面行为)
   * [排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan) : [树界面_刷新全部操作](module/ProdMgmt/product_plan#界面行为)
+  * [排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan) : [删除](module/ProdMgmt/product_plan#界面行为)
+  * [排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan) : [新建类别](module/ProdMgmt/product_plan#界面行为)
   * [排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan) : [编辑](module/ProdMgmt/product_plan#界面行为)
   * [排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan) : [删除](module/ProdMgmt/product_plan#界面行为)
+  * [排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan) : [编辑](module/ProdMgmt/product_plan#界面行为)
   * [排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan) : [删除](module/ProdMgmt/product_plan#界面行为)
-  * [排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan) : [删除](module/ProdMgmt/product_plan#界面行为)
+  * [排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan) : [编辑](module/ProdMgmt/product_plan#界面行为)
 
 ### 关联视图
   * [全部计划(product_plan_all_grid_view)](app/view/product_plan_all_grid_view)

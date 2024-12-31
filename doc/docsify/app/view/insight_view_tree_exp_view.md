@@ -13,9 +13,9 @@
 
 
 ### 关联界面行为
+  * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [打开视图首页视图](module/Insight/insight_view#界面行为)
   * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [打开视图配置](module/Insight/insight_view#界面行为)
   * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [取消星标](module/Insight/insight_view#界面行为)
-  * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [打开视图首页视图](module/Insight/insight_view#界面行为)
 
 ### 关联视图
   * [全部视图(insight_view_all_grid_view)](app/view/insight_view_all_grid_view)

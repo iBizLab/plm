@@ -11,6 +11,7 @@
   * [项目发布(RELEASE)](module/ProjMgmt/release) : [控制关联迭代](module/ProjMgmt/release/uilogic/control_relation_sprint)
 
 ### 关联视图
+  * [发布日志(release_change_log_show_view)](app/view/release_change_log_show_view)
   * [项目发布(release_overview_base_view)](app/view/release_overview_base_view)
   * [项目发布(release_overview_dashboard_view)](app/view/release_overview_dashboard_view)
   * [迭代(sprint_release_relation_grid_view)](app/view/sprint_release_relation_grid_view)

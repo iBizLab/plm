@@ -37,14 +37,17 @@
 |[后台管理(MANAGEMENT)](module/Base/management)|management|主实体|无存储||否|否|自控制|否|用于后台管理界面展示。|
 |[成员(MEMBER)](module/Base/member)|member|主实体|SQL|MEMBER|是|否|附属主实体控制（未映射自控）|否|公共成员实体。|
 |[通知设置(NOTIFY_SETTING)](module/Base/notify_setting)|notify_setting|主实体|无存储||否|否|自控制|否|记录个人通知设置信息|
+|[组织(ORGANIZATION)](module/Base/organization)|organization|主实体|无存储||否|否|自控制|否|用于查看和管理企业的组织信息。|
 |[系统参数(PARAMETER)](module/Base/parameter)|parameter|主实体|SQL|PARAMETER|否|否|自控制|否|用于记录系统默认参数。|
 |[文件夹(PORTFOLIO)](module/Base/portfolio)|portfolio|主实体|SQL|PORTFOLIO|否|否|自控制|否|用于项目集查看及管理，可以统一协调项目工作，把控整体进度。|
 |[文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member)|portfolio_member|关系实体|SQL|PORTFOLIO_MEMBER|是|否|附属主实体控制（未映射自控）|否|记录项目集团队中各个成员的角色·，方便管理和协作。|
+|[职位(POSITION)](module/Base/position)|position|主实体|SQL|POSITION|否|否|自控制|否|管理人员职位信息|
 |[最近访问(RECENT)](module/Base/recent)|recent|主实体|SQL|RECENT|是|否|自控制|否|记录用户最近访问过的实体记录，便于快速回溯和提高工作效率。|
 |[引用索引(REFERENCES_INDEX)](module/Base/references_index)|references_index|主实体|无存储||否|否|自控制|否|引用索引|
 |[关联(RELATION)](module/Base/relation)|relation|主实体|SQL|RELATION|是|否|附属主实体控制（未映射自控）|否|用于记录不同实体间的关系，如需求与工单、工作项与缺陷等。|
 |[资源组件成员(RESOURCE_MEMBER)](module/Base/resource_member)|resource_member|主实体|无存储||否|否|自控制|否|存储不同资源组件所包含的成员|
 |[角色(ROLE)](module/Base/role)|role|主实体|无存储||否|否|自控制|否|用于系统角色管理。|
+|[系统角色成员(ROLE_MEMBER)](module/Base/role_member)|role_member|主实体|无存储||否|否|自控制|否|用于系统角色成员管理|
 |[附件搜索(SEARCH_ATTACHMENT)](module/Base/search_attachment)|search_attachment|主实体|SQL|ATTACHMENT|否|否|自控制|否|高级搜索中的附件搜索。|
 |[评论搜索(SEARCH_COMMENT)](module/Base/search_comment)|search_comment|主实体|SQL|COMMENT|否|否|自控制|否|高级搜索中的评论搜索。|
 |[分组(SECTION)](module/Base/section)|section|主实体|SQL|SECTION|否|否|自控制|否|用于结构化管理需求、工单等。|

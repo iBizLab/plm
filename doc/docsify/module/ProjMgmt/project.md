@@ -36,7 +36,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |项目状态|STATE|外键值|100|是||
 |状态类型|STATE_TYPE|[外键值附加数据](index/dictionary_index#project_state_type "项目状态类型")|60|是||
 |临时|TEMP|文本，可指定长度|100|是||
-|类型|TYPE|[单项选择(文本值)](index/dictionary_index#project_type "项目类型")|60|是||
+|类型|TYPE|[单项选择(文本值)](index/dictionary_index#project_type "项目类型")|60|否||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 |可见范围|VISIBILITY|单项选择(文本值)|60|否||
@@ -69,7 +69,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |进度|SCHEDULE|数值||是||
 |可见范围|VISIBILITY|单项选择(文本值)|60|否||
 |所属|SCOPE_TYPE|[单项选择(文本值)](index/dictionary_index#scope_type "所属类型（通用）")|60|是||
-|类型|TYPE|[单项选择(文本值)](index/dictionary_index#project_type "项目类型")|60|是||
+|类型|TYPE|[单项选择(文本值)](index/dictionary_index#project_type "项目类型")|60|否||
 |项目状态|STATE|外键值|100|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 
@@ -79,7 +79,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
-|类型|TYPE|[单项选择(文本值)](index/dictionary_index#project_type "项目类型")|60|是||
+|类型|TYPE|[单项选择(文本值)](index/dictionary_index#project_type "项目类型")|60|否||
 |项目状态|STATE|外键值|100|是||
 |可见范围|VISIBILITY|单项选择(文本值)|60|否||
 |项目名称|NAME|文本，可指定长度|200|否||
@@ -128,6 +128,8 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[DERCUSTOM_ADDON_RESOURCE_PROJECT_OWNER_ID](der/DERCUSTOM_ADDON_RESOURCE_PROJECT_OWNER_ID)|[资源组件(ADDON_RESOURCE)](module/Base/addon_resource)|自定义关系||
 |[DERCUSTOM_BASELINE_PROJECT_OWNER_ID](der/DERCUSTOM_BASELINE_PROJECT_OWNER_ID)|[基线(BASELINE)](module/Base/baseline)|自定义关系||
 |[DERCUSTOM_MEMBER_PROJECT_OWNER_ID](der/DERCUSTOM_MEMBER_PROJECT_OWNER_ID)|[成员(MEMBER)](module/Base/member)|自定义关系||
+|[DERCUSTOM_RELATION_PROJECT](der/DERCUSTOM_RELATION_PROJECT)|[关联(RELATION)](module/Base/relation)|自定义关系||
+|[DERCUSTOM_RELATION_TARGET_PROJECT](der/DERCUSTOM_RELATION_TARGET_PROJECT)|[关联(RELATION)](module/Base/relation)|自定义关系||
 |[DERCUSTOM_WORK_PROJECT_PILOT_ID](der/DERCUSTOM_WORK_PROJECT_PILOT_ID)|[工作(WORK)](module/Base/work)|自定义关系||
 
 
@@ -174,6 +176,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |混合项目组件计数器|hybrid_index_addon_counter|[实体处理逻辑](module/ProjMgmt/project/logic/hybrid_project_addon_authority "hybrid项目组件权限计数器")|默认|不支持||||
 |看板项目首页组件计数|kanban_index_addon_counter|[实体处理逻辑](module/ProjMgmt/project/logic/kanban_project_addon_authority "看板项目组件权限计数器")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/ProjMgmt/project/logic/nothing "无操作")|默认|不支持||||
+|关联项目|other_re_project|[实体处理逻辑](module/ProjMgmt/project/logic/other_re_project "其他实体关联项目")|默认|不支持||||
 |其他实体关联空间|other_re_space|[实体处理逻辑](module/ProjMgmt/project/logic/other_re_space "其他实体关联空间")|默认|不支持||||
 |刷新项目状态|project_automatic_change_state|[实体处理逻辑](module/ProjMgmt/project/logic/project_automatic_change_state "项目自动变更状态")|默认|不支持||||
 |移动项目|project_move|[实体处理逻辑](module/ProjMgmt/project/logic/project_move "移动项目")|默认|不支持||||
@@ -192,6 +195,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[waterfall项目组件权限计数器](module/ProjMgmt/project/logic/waterfall_project_addon_authority)|waterfall_project_addon_authority|无||获取waterfall项目组件权限|
 |[从项目集中移除](module/ProjMgmt/project/logic/remove_from_project_set)|remove_from_project_set|无||从项目集中移除某个指定子项目|
 |[其他实体关联空间](module/ProjMgmt/project/logic/other_re_space)|other_re_space|无||空间实体关联操作，生成正向，反向关联数据|
+|[其他实体关联项目](module/ProjMgmt/project/logic/other_re_project)|other_re_project|无||项目实体关联操作，生成正向，反向关联数据|
 |[创建之前](module/ProjMgmt/project/logic/before_create)|before_create|无||创建项目之前，对添加的项目成员进行处理|
 |[删除](module/ProjMgmt/project/logic/delete)|delete|无||项目数据的逻辑删除，修改产品的是否删除属性值|
 |[取消星标](module/ProjMgmt/project/logic/un_favorite)|un_favorite|无||项目取消星标|
@@ -241,7 +245,9 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[已删除(deleted)](module/ProjMgmt/project/query/deleted)|deleted|否|否 |否 ||
 |[查询星标(favorite)](module/ProjMgmt/project/query/favorite)|favorite|否|否 |否 ||
 |[查询星标（管理用户）(favorite_user)](module/ProjMgmt/project/query/favorite_user)|favorite_user|否|否 |否 ||
+|[未关联的项目(no_relation)](module/ProjMgmt/project/query/no_relation)|no_relation|否|否 |否 ||
 |[正常状态(normal)](module/ProjMgmt/project/query/normal)|normal|否|否 |否 ||
+|[产品关联项目(product_re_project)](module/ProjMgmt/project/query/product_re_project)|product_re_project|否|否 |否 ||
 |[公开(public)](module/ProjMgmt/project/query/public)|public|否|否 |否 ||
 |[只读用户(reader)](module/ProjMgmt/project/query/reader)|reader|否|否 |否 ||
 |[相同类型项目(same_type)](module/ProjMgmt/project/query/same_type)|same_type|否|否 |否 ||
@@ -265,7 +271,9 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[查询星标(favorite)](module/ProjMgmt/project/dataset/favorite)|favorite|数据查询|否|||
 |[主表格查询(main)](module/ProjMgmt/project/dataset/main)|main|数据查询|否|||
 |[主查询（移动端）(mob_main)](module/ProjMgmt/project/dataset/mob_main)|mob_main|数据查询|否|||
+|[未关联的项目(no_relation)](module/ProjMgmt/project/dataset/no_relation)|no_relation|数据查询|否|||
 |[正常状态(normal)](module/ProjMgmt/project/dataset/normal)|normal|数据查询|否|||
+|[产品关联项目(product_re_project)](module/ProjMgmt/project/dataset/product_re_project)|product_re_project|数据查询|否|||
 |[快速新建查询(quick)](module/ProjMgmt/project/dataset/quick)|quick|[实体逻辑](module/ProjMgmt/project/logic/quick_create)|否|||
 |[快速新建查询（管理用户）(quick_user)](module/ProjMgmt/project/dataset/quick_user)|quick_user|数据查询|否|||
 |[只读用户(reader)](module/ProjMgmt/project/dataset/reader)|reader|数据查询|否|||
@@ -284,12 +292,22 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 
 <p class="panel-title"><b>数据能力</b></p>
 
+* `READ_PSDEFORM`
 * `DELETE`
+* `MANAGE_PSDEFORM`
 * `BEGIN`
-* `SUBDATA`
-* `UPDATE`
-* `READ`
 * `END`
+* `READ`
+* `MANAGE_PSDELOGIC`
+* `MANAGE_PSDEFIELD`
+* `SUBDATA`
+* `READ_PSDEFIELD`
+* `UPDATE`
+* `READ_PSDENOTIFY`
+* `READ_PSDEMSLOGIC`
+* `MANAGE_PSDENOTIFY`
+* `READ_PSDELOGIC`
+* `MANAGE_PSDEMSLOGIC`
 
 
 
@@ -344,8 +362,13 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 <p class="panel-title"><b>数据能力</b></p>
 
 * `END`
-* `READ`
+* `READ_PSDENOTIFY`
+* `READ_PSDEFORM`
+* `READ_PSDELOGIC`
 * `SUBDATA`
+* `READ`
+* `READ_PSDEMSLOGIC`
+* `READ_PSDEFIELD`
 * `BEGIN`
 
 
@@ -387,6 +410,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 | BI编辑 | bi_report_view | 编辑 |无数据|用户自定义||
 | 设置管理员 | change_admin_role | 设置管理员 |单项数据（主键）|<details><summary>后台调用</summary>[change_admin_role](#行为)||
 | 项目设置（移动端） | mob_setting | 项目设置 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[项目设置](app/view/project_mob_setting_view)</details>||
+| 项目关联产品 | relation_product | 项目关联产品 |无数据|<details><summary>打开视图或向导（模态）</summary>[关联产品](app/view/product_choose_product_option_view)</details>||
 | 打开项目导航页 | open_project_exp_view | 打开项目导航页 |无数据|<details><summary>打开顶级视图</summary>[项目管理](app/view/project_tree_exp_view)</details>||
 | 更多设置 | open_setting_view | 更多设置 |单项数据（主键）|用户自定义||
 | BI全屏 | bi_full_screen | 全屏 |无数据|用户自定义||
@@ -398,7 +422,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 | 新建项目 | create_project | 新建项目 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建项目](app/view/project_create_wizard_view)</details>||
 | 项目信息 | open_show_view | 项目信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[项目信息](app/view/project_show_edit_view)</details>||
 | 已归档_删除 | archived_delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
-| 新开窗口（项目） | open_new | 新窗口打开 |单项数据（主键）|<details><summary>打开HTML页面</summary>*./#/-/index/project=${data.id}/project_redirect_view/project=${data.id}*</details>||
+| 新开窗口（项目） | open_new | 新窗口打开 |单项数据（主键）|<details><summary>打开HTML页面</summary>*./#/-/index/project=${data.id}/project_redirect_view/-*</details>||
 | 查看三日到期预警 | open_three_day_warning | 查看三日到期预警 |无数据|<details><summary>打开视图或向导（模态）</summary>[三日到期预警](app/view/work_item_three_day_warning_grid_view)</details>||
 | 调用自动化刷新项目逾期状态 | refresh_project_state | 刷新 |单项数据|用户自定义||
 | 进行中_归档（移动端） | mob_archive | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
@@ -427,6 +451,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
+|[产品关联项目](module/ProjMgmt/project/uilogic/product_re_project)|product_re_project||
 |[刷新当前表格](module/ProjMgmt/project/uilogic/refresh_current_grid)|refresh_current_grid|刷新当前视图的表格|
 |[刷新项目状态](module/ProjMgmt/project/uilogic/refresh_project_state)|refresh_project_state||
 |[图表全屏（移动端）](module/ProjMgmt/project/uilogic/mob_full_screen)|mob_full_screen||

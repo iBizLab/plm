@@ -15,11 +15,13 @@
 
 
 ### 关联界面行为
+  * [测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member) : [变更职位](module/TestMgmt/library_member#界面行为)
+  * [测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member) : [设置角色](module/TestMgmt/library_member#界面行为)
   * [测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member) : [表格界面_删除操作](module/TestMgmt/library_member#界面行为)
   * [测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member) : [添加测试库成员](module/TestMgmt/library_member#界面行为)
-  * [测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member) : [设置角色](module/TestMgmt/library_member#界面行为)
 
 ### 关联视图
+  * [职位选择(library_member_choose_position_option_view)](app/view/library_member_choose_position_option_view)
   * [测试库成员(library_member_edit_view)](app/view/library_member_edit_view)
   * [测试库成员(library_member_redirect_view)](app/view/library_member_redirect_view)
   * [设置角色(library_member_role_edit_view)](app/view/library_member_role_edit_view)

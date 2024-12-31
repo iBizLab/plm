@@ -30,7 +30,7 @@
 
 ### 查询条件
 
-(`IS_DELETED(是否已删除)` EQ `'0'` AND `TYPE(类型)` EQ `'1'`)
+(`IS_DELETED(是否已删除)` EQ `'0'` AND `TYPE(类型)` EQ `'1'` AND `IS_ARCHIVED(是否已归档)` EQ `'0'` AND `IS_PUBLISHED(是否发布)` EQ `'1'`)
 
 
 
@@ -78,11 +78,13 @@ t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
 t11.`NAME` AS `SPACE_NAME`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
-WHERE ( t11.`IS_DELETED` = 0 ) AND ( t1.`IS_DELETED` = 0  AND  t1.`TYPE` = '1' )
+WHERE ( t11.`IS_DELETED` = 0 ) AND ( t1.`IS_DELETED` = 0  AND  t1.`TYPE` = '1'  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_PUBLISHED` = 1 )
 ```
 
 </el-dialog>

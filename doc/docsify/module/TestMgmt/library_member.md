@@ -15,6 +15,7 @@
 |测试库名称|LIBRARY_NAME|外键值文本|200|是||
 |姓名|NAME|外键值文本|200|是||
 |角色|ROLE_ID|[单项选择(文本值)](index/dictionary_index#role_type "角色类型")|60|是||
+|职位|TITLE|外键值附加数据|100|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 |登录名|USER_ID|外键值|100|是||
@@ -50,6 +51,7 @@
 |Remove|Remove|内置方法|默认|支持|[附加操作](index/action_logic_index#library_member_Remove)|||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|职位变更|change_position|[实体处理逻辑](module/TestMgmt/library_member/logic/change_position "变更职位")|默认|不支持||||
 |变更角色|change_role|[实体处理逻辑](module/TestMgmt/library_member/logic/change_role "变更角色")|默认|不支持||||
 |新建测试库成员|create_library_member|[实体处理逻辑](module/TestMgmt/library_member/logic/create_library_member "新建测试库成员")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/TestMgmt/library_member/logic/nothing "无操作")|默认|不支持||||
@@ -57,6 +59,7 @@
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
+|[变更职位](module/TestMgmt/library_member/logic/change_position)|change_position|无||批量设置角色身份（position_id）|
 |[变更角色](module/TestMgmt/library_member/logic/change_role)|change_role|无||批量设置角色身份（role_id）|
 |[新建测试库成员](module/TestMgmt/library_member/logic/create_library_member)|create_library_member|无||新建测试库成员|
 |[无操作](module/TestMgmt/library_member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
@@ -124,6 +127,7 @@
 | 设置角色 | setting_role | 设置角色 |多项数据（主键）|<details><summary>后台调用</summary>[change_role](#行为)||
 | 跳转至成员设置 | jump_to_member_set | 跳转至成员设置 |无数据|用户自定义||
 | 删除成员（移动端） | mob_delete_member | 删除成员 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 变更职位 | change_position | 变更职位 |多项数据（主键）|<details><summary>后台调用</summary>[change_position](#行为)||
 | 删除成员 | delete_member | 删除成员 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 
 ## 界面逻辑

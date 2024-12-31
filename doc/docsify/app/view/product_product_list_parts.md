@@ -16,9 +16,9 @@
 
 
 ### 关联界面行为
-  * [产品(PRODUCT)](module/ProdMgmt/product) : [取消星标](module/ProdMgmt/product#界面行为)
-  * [产品(PRODUCT)](module/ProdMgmt/product) : [打开产品导航页](module/ProdMgmt/product#界面行为)
   * [产品(PRODUCT)](module/ProdMgmt/product) : [打开产品配置](module/ProdMgmt/product#界面行为)
+  * [产品(PRODUCT)](module/ProdMgmt/product) : [打开产品导航页](module/ProdMgmt/product#界面行为)
+  * [产品(PRODUCT)](module/ProdMgmt/product) : [取消星标](module/ProdMgmt/product#界面行为)
   * [产品(PRODUCT)](module/ProdMgmt/product) : [打开产品首页视图](module/ProdMgmt/product#界面行为)
 
 ### 关联视图

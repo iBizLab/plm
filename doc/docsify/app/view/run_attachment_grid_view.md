@@ -23,8 +23,8 @@ view.layoutPanel.panelItems.grid.state.visible = false;
 
 
 ### 关联界面行为
-  * [执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment) : [附件下载](module/TestMgmt/run_attachment#界面行为)
   * [执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment) : [添加附件](module/TestMgmt/run_attachment#界面行为)
+  * [执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment) : [附件下载](module/TestMgmt/run_attachment#界面行为)
   * [执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment) : [删除](module/TestMgmt/run_attachment#界面行为)
 
 <script>

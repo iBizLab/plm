@@ -1775,7 +1775,7 @@ class GroupNestedFieldsDEDataSetRuntime extends DEDataSetRuntimeBase {
     @Override
     protected Page<IEntityDTO> translatePageAfterProceed(Page<?> ret, ISearchContextDTO iSearchContextDTO) throws Throwable{
         Page<IEntityDTO> page = this.getDataEntityRuntime().getEntityDTOPage(ret, this.getPSDEDataSet(), iSearchContextDTO.getPageable());
-        if(isFillEntityDTOPageNestedFields() && iSearchContextDTO.isFillNestedField()) {
+        if(isFillEntityDTOPageNestedFields() && iSearchContextDTO.isFillNestedFields()) {
             // this.getDataEntityRuntime().fillEntityDTOPageNestedFields(page, this.getPSDEDataSet());
             if(this.getPSDEDataSet().getViewLevel() == PSModelEnums.DEDataQueryViewLevel.ALL.value) {
                 this.getDataEntityRuntime().fillEntityDTONestedFields(page.getContent(), (IPSDEFGroup)null);

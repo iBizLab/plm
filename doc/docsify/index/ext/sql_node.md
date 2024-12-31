@@ -1,5 +1,5 @@
 
-## 存在直接SQL调用的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[215]</font></sup>
+## 存在直接SQL调用的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[217]</font></sup>
 
 #### [基线(BASELINE)](module/Base/baseline)的处理逻辑[删除基线前附加逻辑(before_remove)](module/Base/baseline/logic/before_remove)
 
@@ -174,6 +174,20 @@ update recent set IS_DELETED=0 where owner_id=? and owner_subtype='idea'
 
 1. `Default(传入变量).ID(标识)`
 
+#### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[讨论中评论数计数器(discuss_post_count)](module/Team/discuss_post/logic/discuss_post_count)
+
+节点：直接SQL调用
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT count(1) as discuss_post_count FROM `comment` where OWNER_TYPE = 'DISCUSS_POST' AND PRINCIPAL_ID = ?
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+
+重置参数`result(结果)`，并将执行sql结果赋值给参数`result(结果)`
 #### [讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply)的处理逻辑[删除回复(del_reply)](module/Team/discuss_reply/logic/del_reply)
 
 节点：计算此回复下的评论条数
@@ -910,6 +924,20 @@ update recent set IS_DELETED=0 where owner_id=? and owner_subtype='page'
 
 1. `Default(传入变量).ID(标识)`
 
+#### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[统计页面评论数(count_comment)](module/Wiki/article_page/logic/count_comment)
+
+节点：统计页面评论数
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT COUNT(*) AS total FROM `comment` WHERE PRINCIPAL_TYPE = 'PAGE' AND CONTENT <> '<p><del>该评论已删除</del></p>' AND PRINCIPAL_ID = ?
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).article_page`
+
+将执行sql结果赋值给参数`comment_num(评论数)`
 #### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[获取共享信息(get_shared_info)](module/Wiki/article_page/logic/get_shared_info)
 
 节点：获取访问密码

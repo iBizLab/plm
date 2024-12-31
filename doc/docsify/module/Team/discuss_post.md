@@ -65,6 +65,7 @@
 |关闭|close|[实体处理逻辑](module/Team/discuss_post/logic/close "关闭")|默认|不支持||||
 |删除评论|del_comment|[实体处理逻辑](module/Team/discuss_post/logic/del_comment "删除评论")|默认|不支持||||
 |删除|delete|[实体处理逻辑](module/Team/discuss_post/logic/delete "删除")|默认|不支持||||
+|讨论评论数计数器|discuss_post_count|[实体处理逻辑](module/Team/discuss_post/logic/discuss_post_count "讨论中评论数计数器")|默认|不支持||||
 |填充附加数据|fill_addition|[实体处理逻辑](module/Team/discuss_post/logic/fill_addition "填充附加数据")|默认|不支持||||
 |获取关注人|get_attention|内置方法|默认|不支持||||
 |讨论关注（移动端）|mob_discuss_post_attention|[实体处理逻辑](module/Team/discuss_post/logic/mob_discuss_post_attention "讨论关注（移动端）")|默认|不支持||||
@@ -87,6 +88,7 @@
 |[添加评论](module/Team/discuss_post/logic/send_comment)|send_comment|无||添加讨论中的评论信息|
 |[移动](module/Team/discuss_post/logic/move)|move|无||移动讨论至话题|
 |[获取话题成员（移动端）](module/Team/discuss_post/logic/mob_get_topic_member)|mob_get_topic_member|无|||
+|[讨论中评论数计数器](module/Team/discuss_post/logic/discuss_post_count)|discuss_post_count|无|||
 |[讨论关注（移动端）](module/Team/discuss_post/logic/mob_discuss_post_attention)|mob_discuss_post_attention|无|||
 
 ## 数据查询

@@ -3,6 +3,7 @@
 
 ```plantuml
 @startuml
+skinparam svgLinkTarget _blank
 <style>
 root {
   HyperlinkColor #42b983
@@ -42,6 +43,7 @@ entity "USER\n企业用户" as USER [[$../module/Base/user {企业用户}]] {
         --
         <&link-intact> DEPARTMENT_ID - 部门标识
         <&link-intact> JOB_ID - 岗位标识
+        <&link-intact> ORGANIZATION_ID - 组织标识
 }
 
 CATEGORY--> CATEGORY : [[$../der/DER1N_CATEGORY_CATEGORY_PID{DER1N_CATEGORY_CATEGORY_PID} 1:N关系]]

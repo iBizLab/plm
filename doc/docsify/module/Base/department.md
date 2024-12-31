@@ -11,6 +11,7 @@
 |建立时间|CREATE_TIME|日期时间型||否||
 |部门负责人标识|HEAD_ID|外键值|100|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|部门标识/编号|IDENTIFIER|文本，可指定长度|100|是||
 |名称|NAME|文本，可指定长度|200|是||
 |父部门标识|PARENT_ID|外键值|100|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||

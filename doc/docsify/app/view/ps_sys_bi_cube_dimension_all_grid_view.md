@@ -15,8 +15,8 @@
 
 
 ### 关联界面行为
-  * [智能报表立方体维度(PSSYSBICUBEDIMENSION)](module/extension/PSSysBICubeDimension) : [删除维度](module/extension/PSSysBICubeDimension#界面行为)
   * [智能报表立方体维度(PSSYSBICUBEDIMENSION)](module/extension/PSSysBICubeDimension) : [编辑维度](module/extension/PSSysBICubeDimension#界面行为)
+  * [智能报表立方体维度(PSSYSBICUBEDIMENSION)](module/extension/PSSysBICubeDimension) : [删除维度](module/extension/PSSysBICubeDimension#界面行为)
   * [智能报表立方体维度(PSSYSBICUBEDIMENSION)](module/extension/PSSysBICubeDimension) : [表格界面_新建操作](module/extension/PSSysBICubeDimension#界面行为)
 
 ### 关联视图

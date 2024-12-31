@@ -287,50 +287,6 @@
 Integer
 ```
 
-## 自定义get
-
-<el-row>
-<div style="width: 80px">
-<el-alert center title="GET" type="success" :closable="false" ></el-alert>
-</div>
-<div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/recents/{key}/custom_get" type="info" :closable="false" ></el-alert>
-</div>
-</el-row>
-权限标识：`NONE`
-
-##### 路径参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|key|String|标识|
-
-
-
-
-##### 响应示例： {docsify-ignore}
-```json
-
-{
-  "identifier" : null,
-  "owner_id" : null,
-  "owner_type" : null,
-  "owner_subtype" : null,
-  "type" : null,
-  "is_deleted" : null,
-  "recent_parent_name" : null,
-  "recent_parent" : null,
-  "show_identifier" : null,
-  "recent_parent_identifier" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
-}
-
-```
-
 ## 获取最近访问草稿
 
 <el-row>
