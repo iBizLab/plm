@@ -2859,6 +2859,91 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEDATAQUERIES/relation_ticket/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "relation_ticket",
+    "logicName" : "关联工单",
+    "name" : "relation_ticket",
+    "getPSDEDQMain" : {
+      "getChildPSDEDQJoins" : [ {
+        "getDERPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+        },
+        "getJoinPSDER" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDERS/DERCUSTOM_RELATION_TARGET_TICKET.json"
+        },
+        "getJoinPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+        },
+        "joinType" : "1N",
+        "name" : "RELATION存在1:N（EXISTS (SELECT)）DERCUSTOM_RELATION_TARGET_TICKET",
+        "getPSDEDQGroupCondition" : {
+          "condOp" : "AND",
+          "condType" : "GROUP",
+          "name" : "连接条件",
+          "getPSDEDQConditions" : [ {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "ticket",
+            "fieldName" : "TARGET_TYPE",
+            "name" : "(TARGET_TYPE) 等于(=) ticket",
+            "getPSDEField" : {
+              "name" : "TARGET_TYPE",
+              "codeName" : "target_type"
+            }
+          }, {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "idea",
+            "fieldName" : "PRINCIPAL_TYPE",
+            "name" : "(PRINCIPAL_TYPE) 等于(=) idea",
+            "getPSDEField" : {
+              "name" : "PRINCIPAL_TYPE",
+              "codeName" : "principal_type"
+            }
+          }, {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "principal_id",
+            "fieldName" : "PRINCIPAL_ID",
+            "name" : "(PRINCIPAL_ID) 等于(=) 网页请求上下文 principal_id",
+            "getPSDEField" : {
+              "name" : "PRINCIPAL_ID",
+              "codeName" : "principal_id"
+            },
+            "getPSVARTypeId" : "WEBCONTEXT"
+          } ]
+        }
+      } ],
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "TICKET"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Relation_ticketInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ticket_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Relation_ticketResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEDATAQUERIES/ticket_re_product_tag/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "ticket_re_product_tag",
@@ -4093,6 +4178,32 @@
     },
     "getPSDEDataSetReturn" : {
       "name" : "Recent_ticketResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "relation_ticket",
+    "logicName" : "关联工单",
+    "name" : "relation_ticket",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "relation_ticket"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Relation_ticketInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ticket_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Relation_ticketResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "ticket_dto"
@@ -13807,27 +13918,27 @@
   "getAllPSDENotifies" : [ {
     "codeName" : "archive_notify",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDENOTIFIES/archive_notify.json",
-    "msgType" : 65,
+    "msgType" : 225,
     "name" : "工单归档/激活通知",
     "notifyTag2" : "产品管理",
     "getPSDENotifyTargets" : [ {
-      "name" : "负责人",
-      "getPSSysMsgTarget" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSSYSMSGTARGETS/ticket_notify_assignee.json"
-      },
-      "targetType" : "SYSMSGTARGET"
-    }, {
       "name" : "关注人员",
       "getPSSysMsgTarget" : {
         "modelref" : true,
         "path" : "PSMODULES/ProjMgmt/PSSYSMSGTARGETS/attention_by_ownerid.json"
       },
       "targetType" : "SYSMSGTARGET"
+    }, {
+      "name" : "负责人",
+      "getPSSysMsgTarget" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSSYSMSGTARGETS/ticket_notify_assignee.json"
+      },
+      "targetType" : "SYSMSGTARGET"
     } ],
     "getPSSysMsgQueue" : {
       "modelref" : true,
-      "path" : "PSSYSMSGQUEUES/Default.json"
+      "path" : "PSMODULES/Base/PSSYSMSGQUEUES/Default.json"
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
@@ -13837,7 +13948,7 @@
   }, {
     "codeName" : "assignee_cancel_notify",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDENOTIFIES/assignee_cancel_notify.json",
-    "msgType" : 65,
+    "msgType" : 225,
     "name" : "工单取消分配负责人通知",
     "notifyTag2" : "产品管理",
     "getPSDENotifyTargets" : [ {
@@ -13850,7 +13961,7 @@
     } ],
     "getPSSysMsgQueue" : {
       "modelref" : true,
-      "path" : "PSSYSMSGQUEUES/Default.json"
+      "path" : "PSMODULES/Base/PSSYSMSGQUEUES/Default.json"
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
@@ -13860,7 +13971,7 @@
   }, {
     "codeName" : "assignee_notify",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDENOTIFIES/assignee_notify.json",
-    "msgType" : 65,
+    "msgType" : 225,
     "name" : "工单分配负责人通知",
     "notifyTag2" : "产品管理",
     "getPSDENotifyTargets" : [ {
@@ -13873,7 +13984,7 @@
     } ],
     "getPSSysMsgQueue" : {
       "modelref" : true,
-      "path" : "PSSYSMSGQUEUES/Default.json"
+      "path" : "PSMODULES/Base/PSSYSMSGQUEUES/Default.json"
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
@@ -13883,7 +13994,7 @@
   }, {
     "codeName" : "assignee_onchange_notify",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDENOTIFIES/assignee_onchange_notify.json",
-    "msgType" : 65,
+    "msgType" : 225,
     "name" : "工单负责人变更通知",
     "notifyTag2" : "产品管理",
     "getPSDENotifyTargets" : [ {
@@ -13903,7 +14014,7 @@
     } ],
     "getPSSysMsgQueue" : {
       "modelref" : true,
-      "path" : "PSSYSMSGQUEUES/Default.json"
+      "path" : "PSMODULES/Base/PSSYSMSGQUEUES/Default.json"
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
@@ -13913,27 +14024,27 @@
   }, {
     "codeName" : "remove_notify",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDENOTIFIES/remove_notify.json",
-    "msgType" : 65,
+    "msgType" : 225,
     "name" : "工单删除/恢复工单通知",
     "notifyTag2" : "产品管理",
     "getPSDENotifyTargets" : [ {
-      "name" : "负责人",
-      "getPSSysMsgTarget" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSSYSMSGTARGETS/ticket_notify_assignee.json"
-      },
-      "targetType" : "SYSMSGTARGET"
-    }, {
       "name" : "关注人员",
       "getPSSysMsgTarget" : {
         "modelref" : true,
         "path" : "PSMODULES/ProjMgmt/PSSYSMSGTARGETS/attention_by_ownerid.json"
       },
       "targetType" : "SYSMSGTARGET"
+    }, {
+      "name" : "负责人",
+      "getPSSysMsgTarget" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSSYSMSGTARGETS/ticket_notify_assignee.json"
+      },
+      "targetType" : "SYSMSGTARGET"
     } ],
     "getPSSysMsgQueue" : {
       "modelref" : true,
-      "path" : "PSSYSMSGQUEUES/Default.json"
+      "path" : "PSMODULES/Base/PSSYSMSGQUEUES/Default.json"
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
@@ -13943,27 +14054,27 @@
   }, {
     "codeName" : "state_onchage_notify",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDENOTIFIES/state_onchage_notify.json",
-    "msgType" : 65,
+    "msgType" : 225,
     "name" : "工单状态变更通知",
     "notifyTag2" : "产品管理",
     "getPSDENotifyTargets" : [ {
-      "name" : "负责人",
-      "getPSSysMsgTarget" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSSYSMSGTARGETS/ticket_notify_assignee.json"
-      },
-      "targetType" : "SYSMSGTARGET"
-    }, {
       "name" : "关注人员",
       "getPSSysMsgTarget" : {
         "modelref" : true,
         "path" : "PSMODULES/ProjMgmt/PSSYSMSGTARGETS/attention_by_ownerid.json"
       },
       "targetType" : "SYSMSGTARGET"
+    }, {
+      "name" : "负责人",
+      "getPSSysMsgTarget" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSSYSMSGTARGETS/ticket_notify_assignee.json"
+      },
+      "targetType" : "SYSMSGTARGET"
     } ],
     "getPSSysMsgQueue" : {
       "modelref" : true,
-      "path" : "PSSYSMSGQUEUES/Default.json"
+      "path" : "PSMODULES/Base/PSSYSMSGQUEUES/Default.json"
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,

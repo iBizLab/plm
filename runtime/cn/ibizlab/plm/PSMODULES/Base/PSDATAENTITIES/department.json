@@ -366,6 +366,75 @@
   } ],
   "getAllPSDEFields" : [ {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "IDENTIFIER",
+      "dBType" : "MYSQL5",
+      "name" : "IDENTIFIER",
+      "queryCodeExp" : "t1.`IDENTIFIER`",
+      "standardColumnName" : "`IDENTIFIER`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[IDENTIFIER][部门标识/编号]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[IDENTIFIER][部门标识/编号]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[IDENTIFIER][部门标识/编号]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[IDENTIFIER][部门标识/编号]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "IDENTIFIER",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "identifier",
+    "dEFType" : 1,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "部门标识/编号",
+    "name" : "IDENTIFIER",
+    "serviceCodeName" : "identifier",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "ID",
       "dBType" : "MYSQL5",
       "name" : "ID",
@@ -1204,16 +1273,16 @@
       "enableDQCond" : true
     } ],
     "getPSDEMapFields" : [ {
-      "dstFieldName" : "DEPTNAME",
+      "dstFieldName" : "DEPTCODE",
       "getDstPSDEField" : {
-        "name" : "DEPTNAME",
-        "codeName" : "DeptName"
+        "name" : "DEPTCODE",
+        "codeName" : "DeptCode"
       },
       "mapType" : "FIELD",
-      "srcFieldName" : "NAME",
+      "srcFieldName" : "IDENTIFIER",
       "getSrcPSDEField" : {
-        "name" : "NAME",
-        "codeName" : "name"
+        "name" : "IDENTIFIER",
+        "codeName" : "identifier"
       }
     }, {
       "dstFieldName" : "DEPTLEADER",
@@ -1226,6 +1295,18 @@
       "getSrcPSDEField" : {
         "name" : "HEAD_ID",
         "codeName" : "Head_id"
+      }
+    }, {
+      "dstFieldName" : "DEPTNAME",
+      "getDstPSDEField" : {
+        "name" : "DEPTNAME",
+        "codeName" : "DeptName"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "NAME",
+      "getSrcPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
       }
     }, {
       "dstFieldName" : "DEPTID",
@@ -1479,6 +1560,17 @@
   "getAllPSDEMethodDTOs" : [ {
     "name" : "department_dto",
     "getPSDEMethodDTOFields" : [ {
+      "logicName" : "部门标识/编号",
+      "name" : "identifier",
+      "getPSDEField" : {
+        "name" : "IDENTIFIER",
+        "codeName" : "identifier"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "建立人",
       "name" : "create_man",
       "getPSDEField" : {

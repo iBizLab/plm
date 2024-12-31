@@ -64,25 +64,7 @@
     "widthUnit" : "STAR",
     "enableSort" : true
   }, {
-    "align" : "LEFT",
-    "cLConvertMode" : "NONE",
-    "caption" : "最后操作时间",
-    "codeName" : "updatedate",
-    "columnType" : "DEFGRIDCOLUMN",
-    "dataItemName" : "updatedate",
-    "excelCaption" : "最后操作时间",
-    "name" : "updatedate",
-    "noPrivDisplayMode" : 1,
-    "getPSAppDEField" : {
-      "name" : "UPDATEDATE",
-      "codeName" : "UpdateDate"
-    },
-    "valueFormat" : "YYYY-MM-DD HH:mm:ss",
-    "width" : 160,
-    "widthUnit" : "PX",
-    "enableSort" : true
-  }, {
-    "align" : "RIGHT",
+    "align" : "CENTER",
     "caption" : "操作",
     "codeName" : "uagridcolumn1",
     "columnType" : "UAGRIDCOLUMN",
@@ -96,52 +78,16 @@
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
       },
       "getPSUIActionGroupDetails" : [ {
-        "caption" : "启用",
-        "detailType" : "DEUIACTION",
-        "name" : "u3f3f6fa",
-        "getPSUIAction" : {
-          "actionTarget" : "MULTIKEY",
-          "caption" : "启用",
-          "codeName" : "Install",
-          "dataAccessAction" : "ENABLE",
-          "fullCodeName" : "PSCorePrdFunc_Install",
-          "name" : "启用",
-          "getPSAppDEMethod" : {
-            "modelref" : true,
-            "id" : "install"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
-          },
-          "getPSDEOPPriv" : {
-            "modelref" : true,
-            "id" : "ENABLE"
-          },
-          "refreshMode" : 1,
-          "timeout" : 60000,
-          "uIActionMode" : "BACKEND",
-          "uIActionTag" : "Install",
-          "uIActionType" : "DEUIACTION",
-          "enableConfirm" : true,
-          "reloadData" : true,
-          "id" : "Install@PSCorePrdFunc"
-        },
-        "addSeparator" : false,
-        "showCaption" : true,
-        "showIcon" : true
-      }, {
-        "caption" : "禁用",
+        "caption" : "卸载",
         "detailType" : "DEUIACTION",
         "name" : "u6a7b09a",
         "getPSSysCss" : {
           "cssName" : "red-span"
         },
         "getPSUIAction" : {
-          "actionTarget" : "MULTIKEY",
-          "caption" : "禁用",
+          "actionTarget" : "SINGLEKEY",
+          "caption" : "卸载",
           "codeName" : "Uninstall",
-          "dataAccessAction" : "DISABLE",
           "fullCodeName" : "PSCorePrdFunc_Uninstall",
           "name" : "禁用",
           "getPSAppDEMethod" : {
@@ -152,11 +98,20 @@
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
           },
-          "getPSDEOPPriv" : {
-            "modelref" : true,
-            "id" : "DISABLE"
-          },
+          "getPSNavigateContexts" : [ {
+            "key" : "PSCOREPRDFUNC",
+            "name" : "PSCOREPRDFUNC",
+            "value" : "pscoreprdfuncid",
+            "rawValue" : false
+          } ],
+          "getPSNavigateParams" : [ {
+            "key" : "n_pscoreprdid_eq",
+            "name" : "n_pscoreprdid_eq",
+            "value" : "srfv2systemid",
+            "rawValue" : false
+          } ],
           "refreshMode" : 1,
+          "successMsg" : "卸载成功！",
           "timeout" : 60000,
           "uIActionMode" : "BACKEND",
           "uIActionTag" : "Uninstall",
@@ -168,10 +123,38 @@
         "addSeparator" : false,
         "showCaption" : true,
         "showIcon" : true
+      }, {
+        "caption" : "详情",
+        "detailType" : "DEUIACTION",
+        "name" : "u5ab15e8",
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "详情",
+          "codeName" : "open_app_detail_view_logic",
+          "frontProcessType" : "OTHER",
+          "fullCodeName" : "PSCorePrdFunc_open_app_detail_view_logic",
+          "name" : "打开卡片详情页面_界面逻辑",
+          "getPSAppDEUILogic" : {
+            "modelref" : true,
+            "id" : "open_app_info"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+          },
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "open_app_detail_view_logic",
+          "uIActionType" : "DEUIACTION",
+          "uILogicAttachMode" : "REPLACE",
+          "id" : "open_app_detail_view_logic@PSCorePrdFunc"
+        },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
       } ],
       "uniqueTag" : "PSCorePrdFunc__Usr0728525275"
     },
-    "width" : 160,
+    "width" : 150,
     "widthUnit" : "PX",
     "enableSort" : false
   } ],
@@ -188,14 +171,6 @@
     "getPSAppDEField" : {
       "name" : "MEMO",
       "codeName" : "Memo"
-    }
-  }, {
-    "format" : "YYYY-MM-DD HH:mm:ss",
-    "dataType" : 5,
-    "name" : "updatedate",
-    "getPSAppDEField" : {
-      "name" : "UPDATEDATE",
-      "codeName" : "UpdateDate"
     }
   }, {
     "dataType" : 25,
@@ -217,6 +192,13 @@
     "getPSAppDEField" : {
       "name" : "FUNCSTATE",
       "codeName" : "FuncState"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "pscoreprdfuncid",
+    "getPSAppDEField" : {
+      "name" : "PSCOREPRDFUNCID",
+      "codeName" : "PSCorePrdFuncId"
     }
   }, {
     "dataType" : 25,
@@ -288,7 +270,7 @@
   "forceFit" : false,
   "hideHeader" : false,
   "noSort" : false,
-  "singleSelect" : false,
+  "singleSelect" : true,
   "modelid" : "29e89aed359f5f091e50b85612dae59d",
   "modeltype" : "PSDEGRID"
 }

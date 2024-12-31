@@ -305,13 +305,14 @@
                   "getPSEditor" : {
                     "editorParams" : {
                       "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
+                      "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
                       "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
-                      "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"type\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
-                      "QUOTEPARAMS" : "{\"page\":0,\"size\":20,\"sort\":\"update_time,desc\"}",
-                      "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); return controller.getNodeInfo({ icon, ...item })})",
+                      "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
+                      "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
+                      "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
                       "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
-                      "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.type}\",\"recent_parent\":\"${data.recent_parent}\",\"icon\":\"${data.icon}\"}`",
-                      "REPLYSCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); const tempIcon = icon.trim(); return `<span class='comment-tag' data-value='${JSON.stringify(item)}'>${tempIcon} ${item.identifier} ${item.name}</span>`;})",
+                      "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
+                      "REPLYSCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.markerController.parseCommentTag({icon, ...item});})",
                       "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
                       "USERURL" : "`libraries/${context.library}/library_members/fetch_default`",
                       "QUOTEURL" : "`recents/fetch_recent_access`"
@@ -377,7 +378,6 @@
                       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
                     },
                     "scriptCode" : "console.log('清空评论')",
-                    "timeout" : 60000,
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "clear_comment",
                     "uIActionType" : "DEUIACTION",
@@ -435,7 +435,6 @@
                       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
                     },
                     "refreshMode" : 1,
-                    "timeout" : 60000,
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "send_comment",
                     "uIActionType" : "DEUIACTION",
@@ -1213,7 +1212,7 @@
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
             "enableCond" : 3,
-            "ignoreInput" : 3,
+            "ignoreInput" : 0,
             "labelPos" : "TOP",
             "labelWidth" : 130,
             "name" : "submitter_name",
@@ -1224,25 +1223,49 @@
             },
             "getPSEditor" : {
               "editorParams" : {
-                "readonly" : "true"
+                "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+                "AC" : "TRUE",
+                "readonly" : "true",
+                "SRFNAVPARAM.n_status_eq" : "1",
+                "TRIGGER" : "TRUE",
+                "URL" : "projects/${context.project}/project_members/fetch_default",
+                "PICKUPVIEW" : "FALSE",
+                "USERMETHOD" : "post",
+                "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+                "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+                "DEPTMETHOD" : "get",
+                "DEPTURL" : "/users/fetch_default"
               },
-              "editorStyle" : "PERSONNEL_INFO",
-              "editorType" : "SPAN",
+              "editorStyle" : "PERSONEL_SELECT_PROJECT",
+              "editorType" : "PICKEREX_TRIGGER",
+              "handlerType" : "PickupText",
               "name" : "submitter_name",
-              "getPSAppCodeList" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-              },
               "getPSEditorItems" : [ {
                 "name" : "submitter_id"
               } ],
+              "getPSNavigateParams" : [ {
+                "key" : "n_department_id_eq",
+                "name" : "n_department_id_eq",
+                "value" : "srforgsectorid",
+                "rawValue" : false
+              }, {
+                "key" : "n_status_eq",
+                "name" : "n_status_eq",
+                "value" : "1",
+                "rawValue" : true
+              } ],
               "getPSSysPFPlugin" : {
                 "pluginType" : "EDITOR_CUSTOMSTYLE",
-                "pluginCode" : "PERSONNEL_INFO",
+                "pluginCode" : "PERSON_SELECT",
                 "runtimeObject" : true
               },
-              "enableLinkView" : false,
-              "readOnly" : true
+              "valueItemName" : "submitter_id",
+              "enableAC" : true,
+              "enablePickupView" : false,
+              "forceSelection" : true,
+              "readOnly" : true,
+              "showTrigger" : true,
+              "singleSelect" : true
             },
             "getPSLayoutPos" : {
               "colLG" : 6,
@@ -1251,7 +1274,6 @@
             },
             "valueItemName" : "submitter_id",
             "allowEmpty" : true,
-            "convertToCodeItemText" : true,
             "showCaption" : true
           }, {
             "getCapPSLanguageRes" : {
@@ -2113,7 +2135,6 @@
                           } ],
                           "paramItem" : "review",
                           "refreshMode" : 2,
-                          "timeout" : 60000,
                           "uIActionMode" : "FRONT",
                           "uIActionTag" : "submit_review",
                           "uIActionType" : "DEUIACTION",
@@ -2561,7 +2582,6 @@
                                 "glyph" : "xf0ec@FontAwesome",
                                 "cssClass" : "fa fa-exchange"
                               },
-                              "timeout" : 60000,
                               "tooltip" : "版本比对",
                               "uIActionMode" : "FRONT",
                               "uIActionTag" : "review_content_version_comparison",
@@ -2688,7 +2708,6 @@
                             "id" : "SUBDATA"
                           },
                           "successMsg" : "评审结果已设置",
-                          "timeout" : 60000,
                           "uIActionMode" : "FRONT",
                           "uIActionTag" : "set_review_result",
                           "uIActionType" : "DEUIACTION",
@@ -3172,7 +3191,6 @@
                   "groupOP" : "AND",
                   "logicCat" : "PANELVISIBLE",
                   "logicType" : "GROUP",
-                  "name" : "表单成员[druipart4][面板显示]逻辑",
                   "getPSDEFDLogics" : [ {
                     "groupOP" : "AND",
                     "logicType" : "GROUP",
@@ -3735,7 +3753,6 @@
                             "modelref" : true,
                             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
                           },
-                          "timeout" : 60000,
                           "uIActionMode" : "FRONT",
                           "uIActionTag" : "complete_review",
                           "uIActionType" : "DEUIACTION",
@@ -3790,7 +3807,6 @@
                           },
                           "refreshMode" : 1,
                           "successMsg" : "已开启",
-                          "timeout" : 60000,
                           "uIActionMode" : "FRONT",
                           "uIActionTag" : "start_cur_stage_review",
                           "uIActionType" : "DEUIACTION",
@@ -3858,7 +3874,6 @@
                           } ],
                           "paramItem" : "review",
                           "refreshMode" : 2,
-                          "timeout" : 60000,
                           "uIActionMode" : "FRONT",
                           "uIActionTag" : "submit_review",
                           "uIActionType" : "DEUIACTION",
@@ -4306,7 +4321,6 @@
                                 "glyph" : "xf0ec@FontAwesome",
                                 "cssClass" : "fa fa-exchange"
                               },
-                              "timeout" : 60000,
                               "tooltip" : "版本比对",
                               "uIActionMode" : "FRONT",
                               "uIActionTag" : "review_content_version_comparison",
@@ -4433,7 +4447,6 @@
                             "id" : "SUBDATA"
                           },
                           "successMsg" : "评审结果已设置",
-                          "timeout" : 60000,
                           "uIActionMode" : "FRONT",
                           "uIActionTag" : "set_review_result",
                           "uIActionType" : "DEUIACTION",
@@ -4996,7 +5009,6 @@
                   "groupOP" : "AND",
                   "logicCat" : "PANELVISIBLE",
                   "logicType" : "GROUP",
-                  "name" : "表单成员[druipart5][面板显示]逻辑",
                   "getPSDEFDLogics" : [ {
                     "condOP" : "ISNULL",
                     "dEFDName" : "curstage_id",
@@ -5090,13 +5102,13 @@
                       "MAXHEIGHT" : "450",
                       "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
                       "enableEdit" : "true",
-                      "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"type\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
-                      "QUOTEPARAMS" : "{\"page\":0,\"size\":20,\"sort\":\"update_time,desc\"}",
+                      "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
+                      "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
                       "enableFullScreen" : "true",
                       "MODE" : "default",
-                      "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); return controller.getNodeInfo({ icon, ...item })})",
+                      "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
                       "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
-                      "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.type}\",\"recent_parent\":\"${data.recent_parent}\",\"icon\":\"${data.icon}\"}`",
+                      "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
                       "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
                       "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
                       "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
@@ -5346,7 +5358,6 @@
                           "glyph" : "xf002@FontAwesome",
                           "cssClass" : "fa fa-search"
                         },
-                        "timeout" : 60000,
                         "uIActionMode" : "FRONT",
                         "uIActionTag" : "attachment_preview",
                         "uIActionType" : "DEUIACTION",
@@ -5450,7 +5461,6 @@
                               "pluginCode" : "FILE_DOWNLOAD",
                               "runtimeObject" : true
                             },
-                            "timeout" : 60000,
                             "tooltip" : "下载当前附件",
                             "uIActionMode" : "FRONT",
                             "uIActionTag" : "download",
@@ -5488,7 +5498,6 @@
                               "glyph" : "xf014@FontAwesome",
                               "cssClass" : "fa fa-trash-o"
                             },
-                            "timeout" : 60000,
                             "tooltip" : "删除",
                             "uIActionMode" : "FRONT",
                             "uIActionTag" : "delete",
@@ -5685,7 +5694,6 @@
                         "glyph" : "xf067@FontAwesome",
                         "cssClass" : "fa fa-plus"
                       },
-                      "timeout" : 60000,
                       "uIActionMode" : "FRONT",
                       "uIActionTag" : "add_attachments",
                       "uIActionType" : "DEUIACTION",
@@ -6343,7 +6351,6 @@
                                         "modelref" : true,
                                         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
                                       },
-                                      "timeout" : 60000,
                                       "uIActionMode" : "FRONT",
                                       "uIActionTag" : "panel_usr0103471499_button_calluilogic1_click",
                                       "uIActionType" : "DEUIACTION",
@@ -6387,7 +6394,6 @@
                                         "modelref" : true,
                                         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
                                       },
-                                      "timeout" : 60000,
                                       "uIActionMode" : "FRONT",
                                       "uIActionTag" : "panel_usr0103471499_button_calluilogic2_click",
                                       "uIActionType" : "DEUIACTION",
@@ -6421,7 +6427,8 @@
                                     "contentType" : "HTML",
                                     "editorParams" : {
                                       "contenttype" : "HTML",
-                                      "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); const tempIcon = icon.trim(); return `<span class='comment-tag' data-value='${JSON.stringify(item)}'>${tempIcon} ${item.identifier} ${item.name}</span>`;}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
+                                      "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
+                                      "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
                                     },
                                     "editorStyle" : "COMMENT_ITEM",
                                     "editorType" : "RAW",
@@ -6515,18 +6522,20 @@
                                     "itemStyle" : "DEFAULT",
                                     "itemType" : "FIELD",
                                     "name" : "pcontent",
-                                    "getPSControlRenders" : [ {
-                                      "layoutPanelModel" : "data.pcontent?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/#{(\".+?\":\".+?\"),\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); const tempIcon = icon.trim(); return `<span class='comment-tag' data-value='${JSON.stringify(item)}'>${tempIcon} ${item.identifier} ${item.name}</span>`;}).replaceAll(/<span data-w-e-type=\"emoji\" class='emoji'>(.+?)<\\/span>/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji));return `<span data-w-e-type=\"emoji\" class='emoji'>${tempVal}</span>`;}).replaceAll(/{\"emoji\":\"(.+?)\"}/g, (x, emoji) => {const tempVal = decodeURIComponent(atob(emoji));return `<span data-w-e-type=\"emoji\" class='emoji'>${tempVal}</span>`;})",
-                                      "name" : "logic1",
-                                      "renderType" : "LAYOUTPANEL_MODEL"
-                                    } ],
                                     "getPSEditor" : {
                                       "contentType" : "HTML",
                                       "editorParams" : {
-                                        "contenttype" : "HTML"
+                                        "contenttype" : "HTML",
+                                        "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
                                       },
+                                      "editorStyle" : "COMMENT_ITEM",
                                       "editorType" : "RAW",
                                       "name" : "pcontent",
+                                      "getPSSysPFPlugin" : {
+                                        "pluginType" : "EDITOR_CUSTOMSTYLE",
+                                        "pluginCode" : "COMMENT_ITEM",
+                                        "runtimeObject" : true
+                                      },
                                       "predefinedType" : "FIELD_TEXT_DYNAMIC"
                                     },
                                     "getPSLayoutPos" : {
@@ -6630,21 +6639,6 @@
                             "id" : "LIST"
                           },
                           "getPSDEListDataItems" : [ {
-                            "dataType" : 5,
-                            "format" : "YYYY-MM-DD HH:mm:ss",
-                            "name" : "create_time",
-                            "getPSAppDEField" : {
-                              "name" : "CREATE_TIME",
-                              "codeName" : "create_time"
-                            }
-                          }, {
-                            "dataType" : 21,
-                            "name" : "pcontent",
-                            "getPSAppDEField" : {
-                              "name" : "PCONTENT",
-                              "codeName" : "pcontent"
-                            }
-                          }, {
                             "dataType" : 25,
                             "name" : "id",
                             "getPSAppDEField" : {
@@ -6653,17 +6647,14 @@
                             }
                           }, {
                             "dataType" : 25,
-                            "name" : "pid",
+                            "getFrontPSCodeList" : {
+                              "modelref" : true,
+                              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+                            },
+                            "name" : "create_man",
                             "getPSAppDEField" : {
-                              "name" : "PID",
-                              "codeName" : "pid"
-                            }
-                          }, {
-                            "dataType" : 21,
-                            "name" : "content",
-                            "getPSAppDEField" : {
-                              "name" : "CONTENT",
-                              "codeName" : "content"
+                              "name" : "CREATE_MAN",
+                              "codeName" : "create_man"
                             }
                           }, {
                             "dataType" : 25,
@@ -6677,15 +6668,33 @@
                               "codeName" : "pcreate_man"
                             }
                           }, {
-                            "dataType" : 25,
-                            "getFrontPSCodeList" : {
-                              "modelref" : true,
-                              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-                            },
-                            "name" : "create_man",
+                            "dataType" : 5,
+                            "format" : "YYYY-MM-DD HH:mm:ss",
+                            "name" : "create_time",
                             "getPSAppDEField" : {
-                              "name" : "CREATE_MAN",
-                              "codeName" : "create_man"
+                              "name" : "CREATE_TIME",
+                              "codeName" : "create_time"
+                            }
+                          }, {
+                            "dataType" : 21,
+                            "name" : "content",
+                            "getPSAppDEField" : {
+                              "name" : "CONTENT",
+                              "codeName" : "content"
+                            }
+                          }, {
+                            "dataType" : 21,
+                            "name" : "pcontent",
+                            "getPSAppDEField" : {
+                              "name" : "PCONTENT",
+                              "codeName" : "pcontent"
+                            }
+                          }, {
+                            "dataType" : 25,
+                            "name" : "pid",
+                            "getPSAppDEField" : {
+                              "name" : "PID",
+                              "codeName" : "pid"
                             }
                           }, {
                             "dataType" : 25,
@@ -9040,7 +9049,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[review_results][面板显示]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "choosed_content",
@@ -9120,7 +9128,6 @@
                         "modelref" : true,
                         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
                       },
-                      "timeout" : 60000,
                       "tooltip" : "返回",
                       "uIActionMode" : "FRONT",
                       "uIActionTag" : "back",
@@ -9991,6 +9998,7 @@
                                 "allowEmpty" : true
                               }, {
                                 "actionType" : "UIACTION",
+                                "buttonStyle" : "DEFAULT",
                                 "caption" : "通过",
                                 "codeName" : "button1",
                                 "detailStyle" : "DEFAULT",
@@ -10036,7 +10044,6 @@
                                     "modelref" : true,
                                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_result.json"
                                   },
-                                  "timeout" : 60000,
                                   "uIActionMode" : "FRONT",
                                   "uIActionTag" : "pass",
                                   "uIActionType" : "DEUIACTION",
@@ -10048,6 +10055,7 @@
                                 "showCaption" : true
                               }, {
                                 "actionType" : "UIACTION",
+                                "buttonStyle" : "DEFAULT",
                                 "caption" : "拒绝",
                                 "codeName" : "button2",
                                 "detailStyle" : "DEFAULT",
@@ -10090,7 +10098,6 @@
                                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_result.json"
                                   },
                                   "refreshMode" : 1,
-                                  "timeout" : 60000,
                                   "uIActionMode" : "FRONT",
                                   "uIActionTag" : "decline",
                                   "uIActionType" : "DEUIACTION",

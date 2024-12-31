@@ -2903,6 +2903,91 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEDATAQUERIES/relation_test_case/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "relation_test_case",
+    "logicName" : "关联测试用例",
+    "name" : "relation_test_case",
+    "getPSDEDQMain" : {
+      "getChildPSDEDQJoins" : [ {
+        "getDERPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+        },
+        "getJoinPSDER" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDERS/DERCUSTOM_RELATION_TARGET_TEST_CASE.json"
+        },
+        "getJoinPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+        },
+        "joinType" : "1N",
+        "name" : "RELATION存在1:N（EXISTS (SELECT)）DERCUSTOM_RELATION_TARGET_TEST_CASE",
+        "getPSDEDQGroupCondition" : {
+          "condOp" : "AND",
+          "condType" : "GROUP",
+          "name" : "连接条件",
+          "getPSDEDQConditions" : [ {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "principal_id",
+            "fieldName" : "PRINCIPAL_ID",
+            "name" : "(PRINCIPAL_ID) 等于(=) 网页请求上下文 principal_id",
+            "getPSDEField" : {
+              "name" : "PRINCIPAL_ID",
+              "codeName" : "principal_id"
+            },
+            "getPSVARTypeId" : "WEBCONTEXT"
+          }, {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "idea",
+            "fieldName" : "PRINCIPAL_TYPE",
+            "name" : "(PRINCIPAL_TYPE) 等于(=) idea",
+            "getPSDEField" : {
+              "name" : "PRINCIPAL_TYPE",
+              "codeName" : "principal_type"
+            }
+          }, {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "test_case",
+            "fieldName" : "TARGET_TYPE",
+            "name" : "(TARGET_TYPE) 等于(=) test_case",
+            "getPSDEField" : {
+              "name" : "TARGET_TYPE",
+              "codeName" : "target_type"
+            }
+          } ]
+        }
+      } ],
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "TEST_CASE"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Relation_test_caseInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "test_case_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Relation_test_caseResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEDATAQUERIES/suites_test_case/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "suites_test_case",
@@ -4204,6 +4289,32 @@
     },
     "getPSDEDataSetReturn" : {
       "name" : "Recent_test_caseResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "relation_test_case",
+    "logicName" : "关联测试用例",
+    "name" : "relation_test_case",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "relation_test_case"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Relation_test_caseInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "test_case_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Relation_test_caseResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "test_case_dto"
@@ -19303,7 +19414,7 @@
   "getAllPSDENotifies" : [ {
     "codeName" : "maintainer_cancel_notify",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDENOTIFIES/maintainer_cancel_notify.json",
-    "msgType" : 65,
+    "msgType" : 225,
     "name" : "测试用例取消分配维护人通知",
     "notifyTag2" : "测试管理",
     "getPSDENotifyTargets" : [ {
@@ -19316,7 +19427,7 @@
     } ],
     "getPSSysMsgQueue" : {
       "modelref" : true,
-      "path" : "PSSYSMSGQUEUES/Default.json"
+      "path" : "PSMODULES/Base/PSSYSMSGQUEUES/Default.json"
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
@@ -19326,7 +19437,7 @@
   }, {
     "codeName" : "maintainer_notify",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDENOTIFIES/maintainer_notify.json",
-    "msgType" : 65,
+    "msgType" : 225,
     "name" : "测试用例分配维护人通知",
     "notifyTag2" : "测试管理",
     "getPSDENotifyTargets" : [ {
@@ -19339,7 +19450,7 @@
     } ],
     "getPSSysMsgQueue" : {
       "modelref" : true,
-      "path" : "PSSYSMSGQUEUES/Default.json"
+      "path" : "PSMODULES/Base/PSSYSMSGQUEUES/Default.json"
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
@@ -19349,27 +19460,27 @@
   }, {
     "codeName" : "maintainer_onchange_notify",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDENOTIFIES/maintainer_onchange_notify.json",
-    "msgType" : 65,
+    "msgType" : 225,
     "name" : "测试用例维护人变更通知",
     "notifyTag2" : "测试管理",
     "getPSDENotifyTargets" : [ {
-      "name" : "负责人",
-      "getPSSysMsgTarget" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSSYSMSGTARGETS/test_case_notify_maintenance_id.json"
-      },
-      "targetType" : "SYSMSGTARGET"
-    }, {
       "name" : "关注人员",
       "getPSSysMsgTarget" : {
         "modelref" : true,
         "path" : "PSMODULES/ProjMgmt/PSSYSMSGTARGETS/attention_by_ownerid.json"
       },
       "targetType" : "SYSMSGTARGET"
+    }, {
+      "name" : "负责人",
+      "getPSSysMsgTarget" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSSYSMSGTARGETS/test_case_notify_maintenance_id.json"
+      },
+      "targetType" : "SYSMSGTARGET"
     } ],
     "getPSSysMsgQueue" : {
       "modelref" : true,
-      "path" : "PSSYSMSGQUEUES/Default.json"
+      "path" : "PSMODULES/Base/PSSYSMSGQUEUES/Default.json"
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
@@ -19379,27 +19490,27 @@
   }, {
     "codeName" : "remove_notify",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDENOTIFIES/remove_notify.json",
-    "msgType" : 65,
+    "msgType" : 225,
     "name" : "测试用例删除/恢复通知",
     "notifyTag2" : "测试管理",
     "getPSDENotifyTargets" : [ {
-      "name" : "关注人员",
-      "getPSSysMsgTarget" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSSYSMSGTARGETS/attention_by_ownerid.json"
-      },
-      "targetType" : "SYSMSGTARGET"
-    }, {
       "name" : "维护人",
       "getPSSysMsgTarget" : {
         "modelref" : true,
         "path" : "PSMODULES/TestMgmt/PSSYSMSGTARGETS/test_case_notify_maintenance_id.json"
       },
       "targetType" : "SYSMSGTARGET"
+    }, {
+      "name" : "关注人员",
+      "getPSSysMsgTarget" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSSYSMSGTARGETS/attention_by_ownerid.json"
+      },
+      "targetType" : "SYSMSGTARGET"
     } ],
     "getPSSysMsgQueue" : {
       "modelref" : true,
-      "path" : "PSSYSMSGQUEUES/Default.json"
+      "path" : "PSMODULES/Base/PSSYSMSGQUEUES/Default.json"
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,

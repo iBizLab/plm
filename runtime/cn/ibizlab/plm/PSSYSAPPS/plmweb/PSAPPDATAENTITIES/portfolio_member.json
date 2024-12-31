@@ -1702,6 +1702,25 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
+      "code" : "ibiz.hub.getApp(context.srfappid).deService.exec(\r\n    'plmweb.portfolio_member',\r\n    'Create',\r\n    context,\r\n    uiLogic.user,\r\n);",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "创建临时数据",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 500
+    }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 160,
       "logicNodeType" : "PREPAREJSPARAM",
@@ -1748,37 +1767,8 @@
         "paramAction" : "SETPARAMVALUE",
         "srcFieldName" : "srfuserid",
         "srcValueType" : "DATACONTEXT"
-      }, {
-        "dstFieldName" : "portfolio_id",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "user"
-        },
-        "name" : "数据上下文[portfolio] ==> user[portfolio_id]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "portfolio",
-        "srcValueType" : "DATACONTEXT"
       } ],
       "topPos" : 360
-    }, {
-      "code" : "ibiz.hub.getApp(context.srfappid).deService.exec(\r\n    'plmweb.portfolio_member',\r\n    'Create',\r\n    context,\r\n    uiLogic.user,\r\n);",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 160,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "创建临时数据",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 500
     }, {
       "codeName" : "END1",
       "leftPos" : 200,
@@ -1787,15 +1777,15 @@
       "topPos" : 611
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "user",
-      "logicName" : "当前人员",
-      "name" : "当前人员",
-      "entityParam" : true
-    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "user",
+      "logicName" : "当前人员",
+      "name" : "当前人员",
       "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {

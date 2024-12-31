@@ -293,6 +293,79 @@
   } ],
   "getAllPSDEFields" : [ {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "AUTHORITY",
+      "dBType" : "MYSQL5",
+      "name" : "AUTHORITY",
+      "queryCodeExp" : "t1.`AUTHORITY`",
+      "standardColumnName" : "`AUTHORITY`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[AUTHORITY][角色代码标记]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[AUTHORITY][角色代码标记]",
+        "stringLength" : 300,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[AUTHORITY][角色代码标记]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[AUTHORITY][角色代码标记]移动端默认",
+        "stringLength" : 300,
+        "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "AUTHORITY",
+          "maxValue" : 300,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[300]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[300]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[300]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "authority",
+    "dEFType" : 1,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 300,
+    "logicName" : "角色代码标记",
+    "name" : "AUTHORITY",
+    "serviceCodeName" : "authority",
+    "stdDataType" : 25,
+    "stringLength" : 300,
+    "valueFormat" : "%1$s",
+    "allowEmpty" : false,
+    "enableQuickSearch" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "ID",
       "dBType" : "MYSQL5",
       "name" : "ID",
@@ -782,10 +855,327 @@
     "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
     "allowEmpty" : false,
     "systemReserver" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "DCSYSTEMID",
+      "dBType" : "MYSQL5",
+      "name" : "DCSYSTEMID",
+      "queryCodeExp" : "t1.`DCSYSTEMID`",
+      "standardColumnName" : "`DCSYSTEMID`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[DCSYSTEMID][租户系统标识]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[DCSYSTEMID][租户系统标识]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[DCSYSTEMID][租户系统标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[DCSYSTEMID][租户系统标识]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "DCSYSTEMID",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "DCSystemId",
+    "dEFType" : 1,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "租户系统标识",
+    "name" : "DCSYSTEMID",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s",
+    "serviceCodeName" : "dc_system_id"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "GLOBALFLAG",
+      "dBType" : "MYSQL5",
+      "name" : "GLOBALFLAG",
+      "queryCodeExp" : "t1.`GLOBALFLAG`",
+      "standardColumnName" : "`GLOBALFLAG`",
+      "valueAutoGen" : true
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[GLOBALFLAG][全局标记]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "[GLOBALFLAG][全局标记]",
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[GLOBALFLAG][全局标记]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBSWITCH",
+        "name" : "[GLOBALFLAG][全局标记]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "GlobalFlag",
+    "dEFType" : 1,
+    "dataType" : "YESNO",
+    "defaultValue" : "0",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "全局标记",
+    "name" : "GLOBALFLAG",
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSCODELISTS/YesNo.json"
+    },
+    "stdDataType" : 9,
+    "valueFormat" : "%1$s",
+    "serviceCodeName" : "global_flag"
+  } ],
+  "getAllPSDEMaps" : [ {
+    "codeName" : "DEMap",
+    "getDstPSDE" : {
+      "modelref" : true,
+      "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/Role.json"
+    },
+    "logicName" : "ebsx角色映射",
+    "name" : "ebsx角色映射",
+    "getPSDEMapActions" : [ {
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/Role/PSDEACTIONS/Create.json"
+      },
+      "name" : "Create ==> Create",
+      "getSrcPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/role/PSDEACTIONS/Create.json"
+      }
+    }, {
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/Role/PSDEACTIONS/Update.json"
+      },
+      "name" : "Update ==> Update",
+      "getSrcPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/role/PSDEACTIONS/Update.json"
+      }
+    }, {
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/Role/PSDEACTIONS/Remove.json"
+      },
+      "name" : "Remove ==> Remove",
+      "getSrcPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/role/PSDEACTIONS/Remove.json"
+      }
+    }, {
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/Role/PSDEACTIONS/Get.json"
+      },
+      "name" : "Get ==> Get",
+      "getSrcPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/role/PSDEACTIONS/Get.json"
+      }
+    }, {
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/Role/PSDEACTIONS/GetDraft.json"
+      },
+      "name" : "GetDraft ==> GetDraft",
+      "getSrcPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/role/PSDEACTIONS/GetDraft.json"
+      }
+    }, {
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/Role/PSDEACTIONS/CheckKey.json"
+      },
+      "name" : "CheckKey ==> CheckKey",
+      "getSrcPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/role/PSDEACTIONS/CheckKey.json"
+      }
+    }, {
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/Role/PSDEACTIONS/Save.json"
+      },
+      "name" : "Save ==> Save",
+      "getSrcPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/role/PSDEACTIONS/Save.json"
+      }
+    } ],
+    "getPSDEMapDataQueries" : [ {
+      "getDstPSDEDataQuery" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "DEFAULT ==> DEFAULT",
+      "getSrcPSDEDataQuery" : {
+        "modelref" : true,
+        "id" : "Default"
+      }
+    }, {
+      "getDstPSDEDataQuery" : {
+        "modelref" : true,
+        "id" : "View"
+      },
+      "name" : "VIEW ==> VIEW",
+      "getSrcPSDEDataQuery" : {
+        "modelref" : true,
+        "id" : "View"
+      }
+    } ],
+    "getPSDEMapDataSets" : [ {
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "DEFAULT ==> DEFAULT",
+      "getSrcPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      }
+    } ],
+    "getPSDEMapFields" : [ {
+      "dstFieldName" : "ROLETAG",
+      "getDstPSDEField" : {
+        "name" : "ROLETAG",
+        "codeName" : "RoleTag"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "AUTHORITY",
+      "getSrcPSDEField" : {
+        "name" : "AUTHORITY",
+        "codeName" : "authority"
+      }
+    }, {
+      "dstFieldName" : "SYS_ROLEID",
+      "getDstPSDEField" : {
+        "name" : "SYS_ROLEID",
+        "codeName" : "RoleId"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "ID",
+      "getSrcPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
+    }, {
+      "dstFieldName" : "GLOBALFLAG",
+      "getDstPSDEField" : {
+        "name" : "GLOBALFLAG",
+        "codeName" : "GlobalFlag"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "GLOBALFLAG",
+      "getSrcPSDEField" : {
+        "name" : "GLOBALFLAG",
+        "codeName" : "GlobalFlag"
+      }
+    }, {
+      "dstFieldName" : "SYS_ROLENAME",
+      "getDstPSDEField" : {
+        "name" : "SYS_ROLENAME",
+        "codeName" : "RoleName"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "NAME",
+      "getSrcPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
+    }, {
+      "dstFieldName" : "DCSYSTEMID",
+      "getDstPSDEField" : {
+        "name" : "DCSYSTEMID",
+        "codeName" : "DCSystemId"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "DCSYSTEMID",
+      "getSrcPSDEField" : {
+        "name" : "DCSYSTEMID",
+        "codeName" : "DCSystemId"
+      }
+    } ]
   } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "role_dto",
     "getPSDEMethodDTOFields" : [ {
+      "logicName" : "角色代码标记",
+      "name" : "authority",
+      "getPSDEField" : {
+        "name" : "AUTHORITY",
+        "codeName" : "authority"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 300,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
       "logicName" : "建立人",
       "name" : "create_man",
       "getPSDEField" : {
@@ -811,6 +1201,28 @@
       "type" : "SIMPLE",
       "allowEmpty" : false,
       "readOnly" : true
+    }, {
+      "logicName" : "租户系统标识",
+      "name" : "dc_system_id",
+      "getPSDEField" : {
+        "name" : "DCSYSTEMID",
+        "codeName" : "DCSystemId"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
+      "defaultValue" : "0",
+      "logicName" : "全局标记",
+      "name" : "global_flag",
+      "getPSDEField" : {
+        "name" : "GLOBALFLAG",
+        "codeName" : "GlobalFlag"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
     }, {
       "logicName" : "标识",
       "name" : "id",

@@ -234,6 +234,16 @@
     "modelref" : true,
     "path" : "PSMODULES/extension/PSDATAENTITIES/PSCorePrdFunc/PSDEDRGROUPS/DRGroup.json"
   } ],
+  "getAllPSDEDRItems" : [ {
+    "modelref" : true,
+    "path" : "PSMODULES/extension/PSDATAENTITIES/PSCorePrdFunc/PSDEDRITEMS/UsrDRItem1227165685.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/extension/PSDATAENTITIES/PSCorePrdFunc/PSDEDRITEMS/UsrDRItem1227318036.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/extension/PSDATAENTITIES/PSCorePrdFunc/PSDEDRITEMS/UsrDRItem1227562670.json"
+  } ],
   "getAllPSDEDataQueries" : [ {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
@@ -304,6 +314,9 @@
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
     "path" : "PSMODULES/extension/PSDATAENTITIES/PSCorePrdFunc/PSDEDATARELATIONS/Default.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/extension/PSDATAENTITIES/PSCorePrdFunc/PSDEDATARELATIONS/second_dev_tab_exp_view_DR.json"
   } ],
   "getAllPSDEDataSets" : [ {
     "codeName" : "Default",
@@ -398,10 +411,365 @@
     "length" : 50,
     "logicName" : "功能类型",
     "name" : "FUNCTYPE",
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSCODELISTS/pscoreprdfunc_type.json"
+    },
     "serviceCodeName" : "FuncType",
     "stdDataType" : 25,
     "stringLength" : 50,
     "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "SETTINGS",
+      "dBType" : "MYSQL5",
+      "name" : "SETTINGS",
+      "queryCodeExp" : "t1.`SETTINGS`",
+      "standardColumnName" : "`SETTINGS`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[SETTINGS][设置]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[SETTINGS][设置]移动端默认",
+        "stringLength" : 500,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[SETTINGS][设置]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[SETTINGS][设置]",
+        "stringLength" : 500,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "SETTINGS",
+          "maxValue" : 500,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[500]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[500]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[500]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "settings",
+    "dEFType" : 1,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 500,
+    "logicName" : "设置",
+    "name" : "SETTINGS",
+    "serviceCodeName" : "settings",
+    "stdDataType" : 25,
+    "stringLength" : 500,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "VERS",
+      "dBType" : "MYSQL5",
+      "name" : "VERS",
+      "queryCodeExp" : "t1.`VERS`",
+      "standardColumnName" : "`VERS`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[VERS][可用版本]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[VERS][可用版本]移动端默认",
+        "stringLength" : 500,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[VERS][可用版本]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[VERS][可用版本]",
+        "stringLength" : 500,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "VERS",
+          "maxValue" : 500,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[500]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[500]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[500]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "vers",
+    "dEFType" : 1,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 500,
+    "logicName" : "可用版本",
+    "name" : "VERS",
+    "serviceCodeName" : "vers",
+    "stdDataType" : 25,
+    "stringLength" : 500,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "INFO",
+      "dBType" : "MYSQL5",
+      "name" : "INFO",
+      "queryCodeExp" : "t1.`INFO`",
+      "standardColumnName" : "`INFO`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[INFO][详细信息]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTAREA_10",
+        "name" : "[INFO][详细信息]",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[INFO][详细信息]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXTAREA",
+        "name" : "[INFO][详细信息]移动端默认",
+        "stringLength" : 1048576,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "INFO",
+          "maxValue" : 1048576,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[1048576]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[1048576]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[1048576]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "info",
+    "dEFType" : 1,
+    "dataType" : "LONGTEXT",
+    "importOrder" : 1000,
+    "length" : 1048576,
+    "logicName" : "详细信息",
+    "name" : "INFO",
+    "serviceCodeName" : "info",
+    "stdDataType" : 21,
+    "stringLength" : 1048576,
+    "valueFormat" : "%1$s",
+    "queryColumn" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "CATEGORY",
+      "dBType" : "MYSQL5",
+      "name" : "CATEGORY",
+      "queryCodeExp" : "t1.`CATEGORY`",
+      "standardColumnName" : "`CATEGORY`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[CATEGORY][产品标签]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTAREA_10",
+        "name" : "[CATEGORY][产品标签]",
+        "stringLength" : 2000,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[CATEGORY][产品标签]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXTAREA",
+        "name" : "[CATEGORY][产品标签]移动端默认",
+        "stringLength" : 2000,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "CATEGORY",
+          "maxValue" : 2000,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[2000]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[2000]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[2000]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "category",
+    "dEFType" : 1,
+    "dataType" : "LONGTEXT_1000",
+    "importOrder" : 1000,
+    "length" : 2000,
+    "logicName" : "产品分类",
+    "name" : "CATEGORY",
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSCODELISTS/pscoreprdfunc_category.json"
+    },
+    "serviceCodeName" : "category",
+    "stdDataType" : 25,
+    "stringLength" : 2000,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "CHANGELOG",
+      "dBType" : "MYSQL5",
+      "name" : "CHANGELOG",
+      "queryCodeExp" : "t1.`CHANGELOG`",
+      "standardColumnName" : "`CHANGELOG`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[CHANGELOG][变更日志]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXTAREA",
+        "name" : "[CHANGELOG][变更日志]移动端默认",
+        "stringLength" : 1048576,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[CHANGELOG][变更日志]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTAREA_10",
+        "name" : "[CHANGELOG][变更日志]",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "CHANGELOG",
+          "maxValue" : 1048576,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[1048576]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[1048576]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[1048576]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "changelog",
+    "dEFType" : 1,
+    "dataType" : "LONGTEXT",
+    "importOrder" : 1000,
+    "length" : 1048576,
+    "logicName" : "变更日志",
+    "name" : "CHANGELOG",
+    "serviceCodeName" : "changelog",
+    "stdDataType" : 21,
+    "stringLength" : 1048576,
+    "valueFormat" : "%1$s",
+    "queryColumn" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "PSCOREPRDFUNCID",
@@ -551,7 +919,7 @@
     "dataType" : "TEXT",
     "importOrder" : 1000,
     "length" : 200,
-    "logicName" : "核心产品功能名称",
+    "logicName" : "应用名称",
     "name" : "PSCOREPRDFUNCNAME",
     "serviceCodeName" : "PSCorePrdFuncName",
     "stdDataType" : 25,
@@ -1890,6 +2258,75 @@
     "stringLength" : 100,
     "valueFormat" : "%1$s",
     "allowEmpty" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "SETTINGURL",
+      "dBType" : "MYSQL5",
+      "name" : "SETTINGURL",
+      "queryCodeExp" : "t1.`SETTINGURL`",
+      "standardColumnName" : "`SETTINGURL`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[SETTINGURL][设置地址]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[SETTINGURL][设置地址]",
+        "stringLength" : 500,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[SETTINGURL][设置地址]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[SETTINGURL][设置地址]移动端默认",
+        "stringLength" : 500,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "SETTINGURL",
+          "maxValue" : 500,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[500]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[500]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[500]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "SettingUrl",
+    "dEFType" : 1,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 500,
+    "logicName" : "设置地址",
+    "name" : "SETTINGURL",
+    "serviceCodeName" : "SettingUrl",
+    "stdDataType" : 25,
+    "stringLength" : 500,
+    "valueFormat" : "%1$s"
   } ],
   "getAllPSDEMainStates" : [ {
     "codeName" : "MS_0",
@@ -1970,6 +2407,61 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 50,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "设置",
+      "name" : "settings",
+      "getPSDEField" : {
+        "name" : "SETTINGS",
+        "codeName" : "settings"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 500,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "可用版本",
+      "name" : "vers",
+      "getPSDEField" : {
+        "name" : "VERS",
+        "codeName" : "vers"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 500,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "详细信息",
+      "name" : "info",
+      "getPSDEField" : {
+        "name" : "INFO",
+        "codeName" : "info"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 21,
+      "stringLength" : 1048576,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "产品分类",
+      "name" : "category",
+      "getPSDEField" : {
+        "name" : "CATEGORY",
+        "codeName" : "category"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 2000,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "变更日志",
+      "name" : "changelog",
+      "getPSDEField" : {
+        "name" : "CHANGELOG",
+        "codeName" : "changelog"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 21,
+      "stringLength" : 1048576,
       "type" : "SIMPLE"
     }, {
       "logicName" : "图标路径",
@@ -2142,7 +2634,7 @@
       "type" : "SIMPLE",
       "allowEmpty" : false
     }, {
-      "logicName" : "核心产品功能名称",
+      "logicName" : "应用名称",
       "name" : "PSCorePrdFuncName",
       "getPSDEField" : {
         "name" : "PSCOREPRDFUNCNAME",
@@ -2185,6 +2677,17 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "设置地址",
+      "name" : "SettingUrl",
+      "getPSDEField" : {
+        "name" : "SETTINGURL",
+        "codeName" : "SettingUrl"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 500,
       "type" : "SIMPLE"
     }, {
       "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
@@ -2261,7 +2764,7 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "logicName" : "核心产品功能名称",
+      "logicName" : "应用名称",
       "name" : "N_PSCOREPRDFUNCNAME_LIKE",
       "getPSDEFSearchMode" : {
         "modelref" : true,
@@ -2313,6 +2816,12 @@
     "name" : "UPDATE"
   } ],
   "getAllPSModelDatas" : [ {
+    "codeName" : "second_dev_tav_exp_view",
+    "logicName" : "二次开发分页导航视图",
+    "name" : "二次开发分页导航视图",
+    "realModelSubType" : "DETABEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "MarketApplicationView",
     "logicName" : "应用市场",
     "name" : "应用市场",
@@ -2330,6 +2839,12 @@
     "modelTag" : "MPICKUPVIEW",
     "name" : "核心产品功能实体数据多项选择视图",
     "realModelSubType" : "DEMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "version_option_view",
+    "logicName" : "版本选项视图",
+    "name" : "版本选项视图",
+    "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "InstalledGridView",
@@ -2350,6 +2865,18 @@
     "realModelSubType" : "DETREEEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "modeling_ide_html_view",
+    "logicName" : "ModelingIDEHTML视图",
+    "name" : "ModelingIDEHTML视图",
+    "realModelSubType" : "DEHTMLVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "api_show_html_view",
+    "logicName" : "接口说明HTML视图",
+    "name" : "接口说明HTML视图",
+    "realModelSubType" : "DEHTMLVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "GridView",
     "logicName" : "核心产品功能实体表格视图",
     "modelTag" : "MDATAVIEW",
@@ -2362,6 +2889,18 @@
     "modelTag" : "REDIRECTVIEW",
     "name" : "核心产品功能实体数据重定向视图",
     "realModelSubType" : "DEREDIRECTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "setting_edit_view",
+    "logicName" : "组件扩展设置视图",
+    "name" : "组件扩展设置视图",
+    "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "data_model_html_view",
+    "logicName" : "数据模型HTML视图",
+    "name" : "数据模型HTML视图",
+    "realModelSubType" : "DEHTMLVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "PickupView",
@@ -2378,10 +2917,31 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "version_option_view_Form",
+    "logicName" : "版本选项视图_表单",
+    "modelTag2" : "0",
+    "name" : "版本选项视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "Main",
     "logicName" : "主编辑表单",
     "modelTag2" : "0",
     "name" : "主编辑表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "setting_edit_view_Form",
+    "logicName" : "组件扩展设置视图_表单",
+    "modelTag2" : "0",
+    "name" : "组件扩展设置视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "Usr12255042_Form",
+    "logicName" : "扩展设置视图_表单",
+    "modelTag2" : "0",
+    "name" : "扩展设置视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   } ],

@@ -338,29 +338,30 @@
     },
     "builtinAction" : true
   }, {
-    "actionMode" : "READ",
-    "actionType" : "USERCUSTOM",
-    "codeName" : "custom_get",
-    "dataAccessAction" : "NONE",
-    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/recent/PSDEACTIONS/custom_get.json",
-    "logicName" : "自定义get",
-    "name" : "custom_get",
+    "actionHolder" : 2,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "jump_corresponding_view",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/recent/PSDEACTIONS/jump_corresponding_view.json",
+    "logicName" : "跳转对应视图",
+    "name" : "jump_corresponding_view",
     "getPSDEActionInput" : {
-      "getKeyPSDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      },
-      "name" : "Custom_getInput",
-      "type" : "KEYFIELD"
-    },
-    "getPSDEActionReturn" : {
-      "name" : "Custom_getResult",
+      "name" : "Jump_corresponding_viewInput",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "recent_dto"
       },
       "type" : "DTO"
-    }
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Jump_corresponding_viewResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/recent/PSDELOGICS/jump_corresponding_view.json"
+    },
+    "enableBackend" : false
   }, {
     "actionHolder" : 1,
     "actionMode" : "CUSTOM",
@@ -4019,6 +4020,73 @@
     "systemReserver" : true
   } ],
   "getAllPSDELogics" : [ {
+    "codeName" : "jump_corresponding_view",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/recent/PSDELOGICS/jump_corresponding_view.json",
+    "logicName" : "跳转对应视图",
+    "name" : "跳转对应视图",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 909,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 200
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/recent.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "ctx",
+      "logicName" : "应用全局变量",
+      "name" : "应用全局变量",
+      "appContextParam" : true
+    }, {
+      "codeName" : "result",
+      "logicName" : "返回结果",
+      "name" : "返回结果",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/recent.json"
+      },
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : false,
+    "enableFront" : true
+  }, {
     "codeName" : "mob_home_recent_access",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/recent/PSDELOGICS/mob_home_recent_access.json",

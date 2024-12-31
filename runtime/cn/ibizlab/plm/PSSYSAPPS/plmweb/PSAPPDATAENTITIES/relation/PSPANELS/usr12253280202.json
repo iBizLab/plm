@@ -1,0 +1,443 @@
+{
+  "getAllPSPanelFields" : [ {
+    "id" : "sum",
+    "viewFieldName" : "SUM"
+  }, {
+    "id" : "show_identifier",
+    "viewFieldName" : "SHOW_IDENTIFIER"
+  }, {
+    "id" : "state",
+    "viewFieldName" : "STATE"
+  }, {
+    "id" : "title",
+    "viewFieldName" : "TITLE"
+  }, {
+    "id" : "is_archived",
+    "hidden" : true,
+    "viewFieldName" : "is_archived"
+  }, {
+    "id" : "expanded",
+    "hidden" : true,
+    "viewFieldName" : "EXPANDED"
+  } ],
+  "codeName" : "usr12253280202",
+  "controlType" : "PANEL",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation/PSPANELS/usr12253280202.json",
+  "hookEventNames" : [ "ONCLICK" ],
+  "layoutMode" : "Flex",
+  "logicName" : "跟踪导航树_关联工作项树节点布局面板",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+  },
+  "getPSControlLogics" : [ {
+    "eventNames" : "onClick",
+    "itemName" : "page_container",
+    "logicTag" : "render_relation_work_item",
+    "logicType" : "APPDEUIACTION",
+    "name" : "logic",
+    "getPSAppDEUIAction" : {
+      "actionTarget" : "SINGLEDATA",
+      "caption" : "跳转",
+      "codeName" : "jump_corresponding_view",
+      "frontProcessType" : "OTHER",
+      "fullCodeName" : "relation_jump_corresponding_view",
+      "name" : "跳转对应视图（排期跟踪）",
+      "getPSAppDEUILogic" : {
+        "modelref" : true,
+        "id" : "jump_corresponding_view"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+      },
+      "refreshMode" : 1,
+      "uIActionMode" : "FRONT",
+      "uIActionTag" : "jump_corresponding_view",
+      "uIActionType" : "DEUIACTION",
+      "uILogicAttachMode" : "REPLACE",
+      "reloadData" : true,
+      "id" : "jump_corresponding_view@relation"
+    }
+  } ],
+  "getPSLayout" : {
+    "layout" : "FLEX"
+  },
+  "getPSSysCss" : {
+    "cssName" : "relation_tree_node_style"
+  },
+  "getRootPSPanelItems" : [ {
+    "itemStyle" : "DEFAULT",
+    "itemType" : "CONTAINER",
+    "name" : "page_container",
+    "getPSLayout" : {
+      "dir" : "column",
+      "layout" : "FLEX"
+    },
+    "getPSLayoutPos" : {
+      "grow" : -1,
+      "layout" : "FLEX"
+    },
+    "getPSPanelItems" : [ {
+      "caption" : "容器",
+      "cssStyle" : "height:var(--ibiz-height-control-default)",
+      "itemStyle" : "DEFAULT",
+      "itemType" : "CONTAINER",
+      "name" : "top",
+      "getPSLayout" : {
+        "align" : "space-between",
+        "dir" : "row",
+        "layout" : "FLEX",
+        "vAlign" : "center"
+      },
+      "getPSLayoutPos" : {
+        "grow" : -1,
+        "layout" : "FLEX"
+      },
+      "getPSPanelItemGroupLogics" : [ {
+        "groupOP" : "AND",
+        "logicCat" : "PANELVISIBLE",
+        "logicType" : "GROUP",
+        "name" : "面板成员[top][面板显示]逻辑",
+        "getPSPanelItemLogics" : [ {
+          "condOp" : "EQ",
+          "dstModelField" : "EXPANDED",
+          "logicType" : "SINGLE",
+          "name" : "逻辑项",
+          "value" : "false"
+        } ],
+        "relatedItemNames" : [ "expanded" ],
+        "notMode" : false
+      } ],
+      "getPSPanelItems" : [ {
+        "caption" : "容器",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "container_sum",
+        "getPSLayout" : {
+          "align" : "flex-start",
+          "dir" : "row",
+          "layout" : "FLEX",
+          "vAlign" : "center"
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "layout" : "FLEX"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "文本(动态)",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "FIELD",
+          "name" : "sum",
+          "getPSEditor" : {
+            "editorType" : "SPAN",
+            "name" : "sum",
+            "predefinedType" : "FIELD_TEXT_DYNAMIC",
+            "renderMode" : "TEXT_DYNAMIC",
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "viewFieldName" : "SUM"
+        }, {
+          "caption" : "文本",
+          "contentType" : "RAW",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "RAWITEM",
+          "name" : "static_text",
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "getPSRawItem" : {
+            "caption" : "个工作项",
+            "contentType" : "RAW",
+            "name" : "static_text",
+            "predefinedType" : "STATIC_TEXT",
+            "renderMode" : "TEXT"
+          },
+          "rawContent" : "个工作项",
+          "showCaption" : true
+        } ]
+      } ]
+    }, {
+      "caption" : "容器",
+      "itemStyle" : "DEFAULT",
+      "itemType" : "CONTAINER",
+      "name" : "content",
+      "getPSLayout" : {
+        "layout" : "FLEX"
+      },
+      "getPSLayoutPos" : {
+        "grow" : -1,
+        "layout" : "FLEX"
+      },
+      "getPSPanelItemGroupLogics" : [ {
+        "groupOP" : "AND",
+        "logicCat" : "PANELVISIBLE",
+        "logicType" : "GROUP",
+        "name" : "面板成员[content][面板显示]逻辑",
+        "getPSPanelItemLogics" : [ {
+          "condOp" : "EQ",
+          "dstModelField" : "EXPANDED",
+          "logicType" : "SINGLE",
+          "name" : "逻辑项",
+          "value" : "true"
+        } ],
+        "relatedItemNames" : [ "expanded" ],
+        "notMode" : false
+      } ],
+      "getPSPanelItems" : [ {
+        "caption" : "容器",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "container2",
+        "getPSLayout" : {
+          "align" : "space-between",
+          "dir" : "row",
+          "layout" : "FLEX",
+          "vAlign" : "center"
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "layout" : "FLEX"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "容器",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "container_identifier",
+          "getPSLayout" : {
+            "align" : "flex-start",
+            "dir" : "row",
+            "layout" : "FLEX",
+            "vAlign" : "center"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "getPSPanelItems" : [ {
+            "caption" : "图片",
+            "contentHeight" : 14.0,
+            "contentType" : "IMAGE",
+            "contentWidth" : 14.0,
+            "height" : 14.0,
+            "itemStyle" : "DEFAULT",
+            "itemType" : "RAWITEM",
+            "name" : "static_image",
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "height" : 14,
+              "heightMode" : "PX",
+              "layout" : "FLEX",
+              "width" : 14,
+              "widthMode" : "PX"
+            },
+            "getPSRawItem" : {
+              "contentType" : "IMAGE",
+              "name" : "static_image",
+              "getPSSysImage" : {
+                "rawContent" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg width=\"20px\" height=\"20px\" viewBox=\"0 0 20 20\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n    <title>工作项</title>\n    <g id=\"页面-1\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\n        <g id=\"画板\" transform=\"translate(-677, -654)\">\n            <g id=\"工作项\" transform=\"translate(677, 654)\">\n                <rect id=\"矩形\" fill=\"#6698FF\" x=\"0\" y=\"0\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n                <path d=\"M12.1359375,3 C12.26875,3 12.396875,3.053125 12.490625,3.146875 L15.853125,6.5109375 C15.946875,6.6046875 16,6.73125 16,6.8640625 L16,16.5 C16,16.7765625 15.7765625,17 15.5,17 L5.5,17 C5.2234375,17 5,16.7765625 5,16.5 L5,3.5 C5,3.2234375 5.2234375,3 5.5,3 L12.1359375,3 Z M13.6251979,8 L12.7626979,8 C12.6814479,8 12.6064479,8.0390625 12.5595729,8.103125 L10.2017604,11.35 L9.1908229,9.959375 C9.1439479,9.8953125 9.0673854,9.85625 8.9876979,9.85625 L8.1251979,9.85625 C8.0236354,9.85625 7.9642604,9.971875 8.0236354,10.0546875 L9.9986354,12.7734375 C10.0986354,12.9109375 10.3048854,12.9109375 10.4048854,12.7734375 L13.7267604,8.2 C13.7861354,8.1171875 13.7267604,8.0015625 13.6251979,8 Z M11.90625,4.153125 L11.90625,7.09375 L14.846875,7.09375 L11.90625,4.153125 Z\" id=\"形状\" fill=\"#FFFFFF\" fill-rule=\"nonzero\"></path>\n            </g>\n        </g>\n    </g>\n</svg>"
+              },
+              "predefinedType" : "STATIC_IMAGE",
+              "rawItemHeight" : 14.0,
+              "rawItemWidth" : 14.0
+            },
+            "getPSSysImage" : {
+              "rawContent" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg width=\"20px\" height=\"20px\" viewBox=\"0 0 20 20\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n    <title>工作项</title>\n    <g id=\"页面-1\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\n        <g id=\"画板\" transform=\"translate(-677, -654)\">\n            <g id=\"工作项\" transform=\"translate(677, 654)\">\n                <rect id=\"矩形\" fill=\"#6698FF\" x=\"0\" y=\"0\" width=\"20\" height=\"20\" rx=\"3\"></rect>\n                <path d=\"M12.1359375,3 C12.26875,3 12.396875,3.053125 12.490625,3.146875 L15.853125,6.5109375 C15.946875,6.6046875 16,6.73125 16,6.8640625 L16,16.5 C16,16.7765625 15.7765625,17 15.5,17 L5.5,17 C5.2234375,17 5,16.7765625 5,16.5 L5,3.5 C5,3.2234375 5.2234375,3 5.5,3 L12.1359375,3 Z M13.6251979,8 L12.7626979,8 C12.6814479,8 12.6064479,8.0390625 12.5595729,8.103125 L10.2017604,11.35 L9.1908229,9.959375 C9.1439479,9.8953125 9.0673854,9.85625 8.9876979,9.85625 L8.1251979,9.85625 C8.0236354,9.85625 7.9642604,9.971875 8.0236354,10.0546875 L9.9986354,12.7734375 C10.0986354,12.9109375 10.3048854,12.9109375 10.4048854,12.7734375 L13.7267604,8.2 C13.7861354,8.1171875 13.7267604,8.0015625 13.6251979,8 Z M11.90625,4.153125 L11.90625,7.09375 L14.846875,7.09375 L11.90625,4.153125 Z\" id=\"形状\" fill=\"#FFFFFF\" fill-rule=\"nonzero\"></path>\n            </g>\n        </g>\n    </g>\n</svg>"
+            },
+            "rawItemHeight" : 14.0,
+            "rawItemWidth" : 14.0,
+            "width" : 14.0,
+            "showCaption" : true
+          }, {
+            "caption" : "文本(动态)",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "FIELD",
+            "name" : "show_identifier",
+            "getPSEditor" : {
+              "editorType" : "SPAN",
+              "name" : "show_identifier",
+              "predefinedType" : "FIELD_TEXT_DYNAMIC",
+              "renderMode" : "TEXT_DYNAMIC",
+              "enableLinkView" : false
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "viewFieldName" : "SHOW_IDENTIFIER"
+          } ]
+        }, {
+          "caption" : "容器",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "container_state",
+          "getPSLayout" : {
+            "layout" : "FLEX"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "getPSPanelItems" : [ {
+            "caption" : "文本(动态)",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "FIELD",
+            "name" : "state",
+            "getPSEditor" : {
+              "editorType" : "SPAN",
+              "name" : "state",
+              "getPSAppCodeList" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__work_item_state2.json"
+              },
+              "predefinedType" : "FIELD_TEXT_DYNAMIC",
+              "renderMode" : "TEXT_DYNAMIC",
+              "enableLinkView" : false
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "viewFieldName" : "STATE",
+            "convertToCodeItemText" : true
+          } ]
+        } ]
+      }, {
+        "caption" : "容器",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "container3",
+        "getPSLayout" : {
+          "dir" : "row",
+          "layout" : "FLEX",
+          "vAlign" : "center"
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "layout" : "FLEX"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "容器",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "container",
+          "getPSLayout" : {
+            "align" : "flex-start",
+            "dir" : "row",
+            "layout" : "FLEX",
+            "vAlign" : "center"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "getPSPanelItems" : [ {
+            "caption" : "文本(动态)",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "FIELD",
+            "name" : "title",
+            "getPSEditor" : {
+              "editorType" : "SPAN",
+              "name" : "title",
+              "predefinedType" : "FIELD_TEXT_DYNAMIC",
+              "renderMode" : "TEXT_DYNAMIC",
+              "enableLinkView" : false
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "viewFieldName" : "TITLE"
+          }, {
+            "caption" : "图片",
+            "contentHeight" : 18.0,
+            "contentType" : "IMAGE",
+            "contentWidth" : 14.0,
+            "height" : 18.0,
+            "itemStyle" : "DEFAULT",
+            "itemType" : "RAWITEM",
+            "name" : "static_image1",
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "height" : 18,
+              "heightMode" : "PX",
+              "layout" : "FLEX",
+              "width" : 14,
+              "widthMode" : "PX"
+            },
+            "getPSPanelItemGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "PANELVISIBLE",
+              "logicType" : "GROUP",
+              "name" : "面板成员[static_image1][面板显示]逻辑",
+              "getPSPanelItemLogics" : [ {
+                "condOp" : "EQ",
+                "dstModelField" : "is_archived",
+                "logicType" : "SINGLE",
+                "name" : "逻辑项",
+                "value" : "1"
+              } ],
+              "relatedItemNames" : [ "is_archived" ],
+              "notMode" : false
+            } ],
+            "getPSRawItem" : {
+              "contentType" : "IMAGE",
+              "name" : "static_image1",
+              "getPSSysImage" : {
+                "glyph" : "xf187@FontAwesome",
+                "cssClass" : "fa fa-archive"
+              },
+              "predefinedType" : "STATIC_IMAGE",
+              "rawItemHeight" : 18.0,
+              "rawItemWidth" : 14.0
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf187@FontAwesome",
+              "cssClass" : "fa fa-archive"
+            },
+            "rawItemHeight" : 18.0,
+            "rawItemWidth" : 14.0,
+            "width" : 14.0,
+            "showCaption" : true
+          }, {
+            "caption" : "文本(动态)",
+            "itemType" : "FIELD",
+            "name" : "is_archived",
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "is_archived"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "viewFieldName" : "is_archived",
+            "hidden" : true
+          } ]
+        } ]
+      } ]
+    }, {
+      "caption" : "文本(动态)",
+      "itemType" : "FIELD",
+      "name" : "expanded",
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "expanded"
+      },
+      "getPSLayoutPos" : {
+        "grow" : -1,
+        "layout" : "FLEX"
+      },
+      "viewFieldName" : "EXPANDED",
+      "hidden" : true
+    } ]
+  } ],
+  "layoutPanel" : true,
+  "modelid" : "1b99c8adc9e35aa79fb88299adf311ed",
+  "modeltype" : "PSSYSVIEWPANEL"
+}

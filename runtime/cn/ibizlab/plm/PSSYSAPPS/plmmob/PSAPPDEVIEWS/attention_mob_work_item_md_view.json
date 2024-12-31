@@ -104,6 +104,9 @@
       "getAllPSPanelFields" : [ {
         "id" : "user_id",
         "viewFieldName" : "USER_ID"
+      }, {
+        "id" : "title",
+        "viewFieldName" : "TITLE"
       } ],
       "codeName" : "usr1009207822",
       "controlType" : "PANEL",
@@ -151,33 +154,82 @@
             "layout" : "FLEX"
           },
           "getPSPanelItems" : [ {
-            "caption" : "文本(动态)",
+            "caption" : "容器",
             "itemStyle" : "DEFAULT",
-            "itemType" : "FIELD",
-            "name" : "user_id",
-            "getPSEditor" : {
-              "editorStyle" : "MOB_PERSONNEL_INFO",
-              "editorType" : "SPAN",
-              "name" : "user_id",
-              "getPSAppCodeList" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
-              },
-              "getPSSysPFPlugin" : {
-                "pluginType" : "EDITOR_CUSTOMSTYLE",
-                "pluginCode" : "MOB_PERSONNEL_INFO",
-                "runtimeObject" : true
-              },
-              "predefinedType" : "FIELD_TEXT_DYNAMIC",
-              "renderMode" : "TEXT_DYNAMIC",
-              "enableLinkView" : false
+            "itemType" : "CONTAINER",
+            "name" : "container1",
+            "getPSLayout" : {
+              "align" : "center",
+              "dir" : "row",
+              "layout" : "FLEX"
             },
             "getPSLayoutPos" : {
               "grow" : -1,
               "layout" : "FLEX"
             },
-            "viewFieldName" : "USER_ID",
-            "convertToCodeItemText" : true
+            "getPSPanelItems" : [ {
+              "caption" : "文本(动态)",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "FIELD",
+              "name" : "user_id",
+              "getPSEditor" : {
+                "editorStyle" : "MOB_PERSONNEL_INFO",
+                "editorType" : "SPAN",
+                "name" : "user_id",
+                "getPSAppCodeList" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/SysOperator.json"
+                },
+                "getPSSysPFPlugin" : {
+                  "pluginType" : "EDITOR_CUSTOMSTYLE",
+                  "pluginCode" : "MOB_PERSONNEL_INFO",
+                  "runtimeObject" : true
+                },
+                "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                "renderMode" : "TEXT_DYNAMIC",
+                "enableLinkView" : false
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "viewFieldName" : "USER_ID",
+              "convertToCodeItemText" : true
+            }, {
+              "caption" : "文本(动态)",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "FIELD",
+              "name" : "title",
+              "getPSEditor" : {
+                "editorType" : "SPAN",
+                "name" : "title",
+                "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                "renderMode" : "TEXT_DYNAMIC",
+                "enableLinkView" : false
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSPanelItemGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "name" : "面板成员[title][面板显示]逻辑",
+                "getPSPanelItemLogics" : [ {
+                  "condOp" : "ISNOTNULL",
+                  "dstModelField" : "TITLE",
+                  "logicType" : "SINGLE",
+                  "name" : "逻辑项"
+                } ],
+                "relatedItemNames" : [ "title" ],
+                "notMode" : false
+              } ],
+              "getPSSysCss" : {
+                "cssName" : "mob_attention_title_style"
+              },
+              "viewFieldName" : "TITLE"
+            } ]
           }, {
             "actionType" : "UIACTION",
             "buttonStyle" : "INFO",
@@ -226,7 +278,6 @@
               },
               "refreshMode" : 1,
               "successMsg" : "成功取消关注",
-              "timeout" : 60000,
               "uIActionMode" : "FRONT",
               "uIActionTag" : "un_attention",
               "uIActionType" : "DEUIACTION",
@@ -436,7 +487,6 @@
           "runtimeObject" : true
         },
         "refreshMode" : 1,
-        "timeout" : 60000,
         "uIActionMode" : "FRONT",
         "uIActionTag" : "mob_add_attention_work_item",
         "uIActionType" : "DEUIACTION",

@@ -436,6 +436,9 @@
       "name" : "ASSIGNEE_ID",
       "codeName" : "assignee_id"
     }, {
+      "name" : "CHANGELOG",
+      "codeName" : "changelog"
+    }, {
       "name" : "ID",
       "codeName" : "id"
     }, {
@@ -772,6 +775,113 @@
     },
     "getPSDEDataQueryReturn" : {
       "name" : "Not_publishedResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "release_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDEDATAQUERIES/product_re_project_published/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "product_re_project_published",
+    "logicName" : "产品所属发布",
+    "memo" : "产品所关联项目中的已发布",
+    "name" : "product_re_project_published",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "RELEASE",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condType" : "CUSTOM",
+          "condition" : "t1.project_id in (select r1.target_id from relation r1 where r1.PRINCIPAL_TYPE = 'product' and r1.TARGET_TYPE = 'project' and r1.PRINCIPAL_ID = #{ctx.webcontext.product})\n\n",
+          "name" : "产品关联的项目"
+        }, {
+          "condType" : "CUSTOM",
+          "condition" : "exists(select 1 from `stage` s1, `stage` s2 where t1.`STATUS`  = s1.`id` and s1.`pid` = s2.`id` and s2.`TYPE` = 'published' and s1.`RELEASE_ID`= t1.`id`)",
+          "name" : "发布状态"
+        }, {
+          "condOp" : "ISNOTNULL",
+          "condType" : "SINGLE",
+          "fieldName" : "END_AT",
+          "name" : "(END_AT) 值不为空(NotNil)",
+          "getPSDEField" : {
+            "name" : "END_AT",
+            "codeName" : "end_at"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Product_re_project_publishedInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "release_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Product_re_project_publishedResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "release_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDEDATAQUERIES/published/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "published",
+    "logicName" : "已发布",
+    "name" : "published",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "RELEASE",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condType" : "CUSTOM",
+          "condition" : "exists(select 1 from `stage` s1, `stage` s2 where t1.`STATUS`  = s1.`id` and s1.`pid` = s2.`id` and s2.`TYPE` = 'published' and s1.`RELEASE_ID`= t1.`id`)",
+          "name" : "已发布状态"
+        }, {
+          "condOp" : "ISNOTNULL",
+          "condType" : "SINGLE",
+          "fieldName" : "END_AT",
+          "name" : "(END_AT) 值不为空(NotNil)",
+          "getPSDEField" : {
+            "name" : "END_AT",
+            "codeName" : "end_at"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "PublishedInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "release_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "PublishedResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "release_dto"
@@ -1119,6 +1229,59 @@
     },
     "getPSDEDataSetReturn" : {
       "name" : "Not_publishedResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "release_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "product_re_project_published",
+    "logicName" : "产品所属发布",
+    "memo" : "产品所关联项目中的已发布",
+    "name" : "product_re_project_published",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "product_re_project_published"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Product_re_project_publishedInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "release_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Product_re_project_publishedResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "release_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "published",
+    "logicName" : "已发布",
+    "name" : "published",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "published"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "PublishedInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "release_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "PublishedResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "release_dto"
@@ -2629,6 +2792,158 @@
     "viewLevel" : 0,
     "linkDEField" : true,
     "phisicalDEField" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "END_YEAR",
+      "dBType" : "MYSQL5",
+      "name" : "END_YEAR",
+      "queryCodeExp" : "(year(t1.`END_AT`))",
+      "standardColumnName" : "`END_YEAR`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[END_YEAR][发布年份]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[END_YEAR][发布年份]移动端默认",
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[END_YEAR][发布年份]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[END_YEAR][发布年份]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "END_YEAR",
+          "maxValue" : 200,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[200]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[200]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[200]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "end_year",
+    "dEFType" : 2,
+    "dataType" : "TEXT",
+    "formulaColumns" : "end_at",
+    "formulaFormat" : "(year(%1$s))",
+    "importOrder" : 1000,
+    "length" : 200,
+    "logicName" : "发布年份",
+    "name" : "END_YEAR",
+    "serviceCodeName" : "end_year",
+    "stdDataType" : 25,
+    "stringLength" : 200,
+    "userTag4" : "INTENAL",
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "formulaDEField" : true,
+    "phisicalDEField" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "CHANGELOG",
+      "dBType" : "MYSQL5",
+      "name" : "CHANGELOG",
+      "standardColumnName" : "`CHANGELOG`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[CHANGELOG][发布日志]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXTAREA",
+        "name" : "[CHANGELOG][发布日志]移动端默认",
+        "stringLength" : 1048576,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[CHANGELOG][发布日志]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTAREA_10",
+        "name" : "[CHANGELOG][发布日志]",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "CHANGELOG",
+          "maxValue" : 1048576,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[1048576]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[1048576]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[1048576]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "changelog",
+    "dEFType" : 1,
+    "dataType" : "LONGTEXT",
+    "importOrder" : 1000,
+    "length" : 1048576,
+    "logicName" : "发布日志",
+    "name" : "CHANGELOG",
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "CHANGELOG"
+    },
+    "serviceCodeName" : "changelog",
+    "stdDataType" : 21,
+    "stringLength" : 1048576,
+    "valueFormat" : "%1$s",
+    "queryColumn" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "ID",
@@ -6338,6 +6653,28 @@
       "stringLength" : 60,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "发布年份",
+      "name" : "end_year",
+      "getPSDEField" : {
+        "name" : "END_YEAR",
+        "codeName" : "end_year"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "发布日志",
+      "name" : "changelog",
+      "getPSDEField" : {
+        "name" : "CHANGELOG",
+        "codeName" : "changelog"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 21,
+      "stringLength" : 1048576,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "建立人",
       "name" : "create_man",
       "getPSDEField" : {
@@ -6784,6 +7121,18 @@
     "realModelSubType" : "DEMOBEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "road_map_product_view",
+    "logicName" : "路线图视图(产品)",
+    "name" : "路线图视图(产品)",
+    "realModelSubType" : "DECALENDARVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "modal_main_view",
+    "logicName" : "项目发布主视图_弹窗",
+    "name" : "项目发布主视图_弹窗",
+    "realModelSubType" : "DETABEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "sprint_relation_grid_view",
     "logicName" : "迭代关联发布表格视图",
     "name" : "迭代关联发布表格视图",
@@ -6834,6 +7183,12 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "change_log_show_view",
+    "logicName" : "发布日志展示视图",
+    "name" : "发布日志展示视图",
+    "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "change_stage_view",
     "logicName" : "修改阶段选项操作视图",
     "name" : "修改阶段选项操作视图",
@@ -6854,6 +7209,18 @@
     "realModelSubType" : "DEPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "road_map_view",
+    "logicName" : "路线图视图",
+    "name" : "路线图视图",
+    "realModelSubType" : "DECALENDARVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "change_log_option_view",
+    "logicName" : "发布日志选项操作视图",
+    "name" : "发布日志选项操作视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "mob_work_item_view",
     "logicName" : "移动端发布下工作项视图",
     "name" : "移动端发布下工作项视图",
@@ -6871,6 +7238,13 @@
     "name" : "项目发布模块导航视图",
     "realModelSubType" : "DETREEEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "change_log_option_view_Form",
+    "logicName" : "发布日志选项操作视图_表单",
+    "modelTag2" : "0",
+    "name" : "发布日志选项操作视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
   }, {
     "codeName" : "Main",
     "logicName" : "主编辑表单",
@@ -6897,6 +7271,13 @@
     "logicName" : "移动端发布下工作项视图_表单",
     "modelTag2" : "1",
     "name" : "移动端发布下工作项视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "change_log_show_view_Form",
+    "logicName" : "发布日志展示视图_表单",
+    "modelTag2" : "0",
+    "name" : "发布日志展示视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {

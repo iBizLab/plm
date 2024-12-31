@@ -69,6 +69,40 @@
     "requestPath" : "/check_key",
     "builtinMethod" : false
   }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "choose_position",
+    "methodType" : "DEACTION",
+    "name" : "choose_position",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "insight_member_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_member/PSDEACTIONS/choose_position.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "choose_position"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/choose_position",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "CREATE",
     "actionTag" : "Create",
     "codeName" : "create",
@@ -493,6 +527,53 @@
     "name" : "ROLE_ID",
     "stdDataType" : 25,
     "stringLength" : 60
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[TITLE][职位]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[TITLE][职位]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[TITLE][职位]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[TITLE][职位]移动端默认",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "title",
+    "logicName" : "职位",
+    "name" : "TITLE",
+    "stdDataType" : 25,
+    "stringLength" : 100
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "Default",
@@ -938,6 +1019,17 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "codeName" : "title",
+      "logicName" : "职位",
+      "name" : "title",
+      "getPSAppDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "codeName" : "create_man",
       "logicName" : "建立人",
       "name" : "create_man",
@@ -1188,6 +1280,40 @@
     "requestParamType" : "ENTITY",
     "requestPath" : "/check_key",
     "builtinMethod" : false
+  }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "choose_position",
+    "methodType" : "DEACTION",
+    "name" : "choose_position",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "insight_member_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_member/PSDEACTIONS/choose_position.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "choose_position"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/choose_position",
+    "builtinMethod" : false,
+    "needResourceKey" : true
   }, {
     "actionMode" : "CREATE",
     "actionTag" : "Create",
@@ -1526,6 +1652,45 @@
     "builtinMethod" : true
   } ],
   "getAllPSAppDEUIActions" : [ {
+    "actionTarget" : "MULTIKEY",
+    "noPrivDisplayMode" : 1,
+    "caption" : "选择职位",
+    "codeName" : "choose_position",
+    "dataAccessAction" : "UPDATE",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/insight_member_choose_position_option_view.json",
+      "viewType" : "DEOPTVIEW"
+    },
+    "fullCodeName" : "insight_member_choose_position",
+    "name" : "选择职位",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "choose_position"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf0c0@FontAwesome",
+      "cssClass" : "fa fa-users"
+    },
+    "refreshMode" : 1,
+    "successMsg" : "职位成功变更",
+    "timeout" : 60000,
+    "tooltip" : "变更选中成员的职位",
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "choose_position",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "choose_position@insight_member"
+  }, {
     "actionTarget" : "SINGLEKEY",
     "caption" : "移除成员",
     "codeName" : "remove_member",
@@ -1615,25 +1780,6 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "code" : "ibiz.hub.getApp(context.srfappid).deService.exec(\r\n    'plmweb.insight_member',\r\n    'Create',\r\n    context,\r\n    uiLogic.user,\r\n);",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 649,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "创建临时数据",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 208
-    }, {
       "codeName" : "END1",
       "leftPos" : 910,
       "logicNodeType" : "END",
@@ -1686,16 +1832,25 @@
         "paramAction" : "SETPARAMVALUE",
         "srcFieldName" : "srfuserid",
         "srcValueType" : "DATACONTEXT"
-      }, {
-        "dstFieldName" : "library_id",
-        "getDstPSDEUILogicParam" : {
+      } ],
+      "topPos" : 208
+    }, {
+      "code" : "ibiz.hub.getApp(context.srfappid).deService.exec(\r\n    'plmweb.insight_member',\r\n    'Create',\r\n    context,\r\n    uiLogic.user,\r\n);",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 649,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "创建临时数据",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "user"
+          "id" : "END1"
         },
-        "name" : "数据上下文[library] ==> user[library_id]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "library",
-        "srcValueType" : "DATACONTEXT"
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
       } ],
       "topPos" : 208
     } ],
@@ -1732,6 +1887,10 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/insight_member_assigned_grid_view.json",
     "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/insight_member_choose_position_option_view.json",
+    "viewType" : "DEOPTVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/insight_member_edit_view.json",

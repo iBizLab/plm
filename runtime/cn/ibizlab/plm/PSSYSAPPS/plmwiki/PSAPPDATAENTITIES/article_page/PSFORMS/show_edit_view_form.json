@@ -128,13 +128,6 @@
       "codeName" : "publish_name"
     }
   }, {
-    "id" : "show_identifier",
-    "dataType" : 25,
-    "getPSAppDEField" : {
-      "name" : "SHOW_IDENTIFIER",
-      "codeName" : "show_identifier"
-    }
-  }, {
     "id" : "content",
     "dataType" : 21,
     "getPSAppDEField" : {
@@ -230,7 +223,6 @@
             "groupOP" : "AND",
             "logicCat" : "PANELVISIBLE",
             "logicType" : "GROUP",
-            "name" : "表单成员[icon][面板显示]逻辑",
             "getPSDEFDLogics" : [ {
               "condOP" : "ISNOTNULL",
               "dEFDName" : "icon",
@@ -293,32 +285,6 @@
         "infoGroupMode" : true,
         "showCaption" : false
       }, {
-        "codeName" : "show_identifier",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "show_identifier",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "SHOW_IDENTIFIER",
-          "codeName" : "show_identifier"
-        },
-        "getPSEditor" : {
-          "editorType" : "SPAN",
-          "name" : "show_identifier",
-          "enableLinkView" : false
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "emptyCaption" : true
-      }, {
         "caption" : "正文",
         "codeName" : "description_container",
         "detailStyle" : "DEFAULT",
@@ -343,7 +309,6 @@
             "groupOP" : "AND",
             "logicCat" : "PANELVISIBLE",
             "logicType" : "GROUP",
-            "name" : "表单成员[content][面板显示]逻辑",
             "getPSDEFDLogics" : [ {
               "condOP" : "EQ",
               "dEFDName" : "format_type",
@@ -356,7 +321,6 @@
             "groupOP" : "AND",
             "logicCat" : "ITEMENABLE",
             "logicType" : "GROUP",
-            "name" : "表单成员[content][表单项启用]逻辑",
             "getPSDEFDLogics" : [ {
               "condOP" : "EQ",
               "dEFDName" : "format_type",
@@ -371,8 +335,9 @@
             "cssStyle" : "min-height: 500px;",
             "editorParams" : {
               "contenttype" : "HTML",
+              "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
               "TITLE" : "name",
-              "PARSESCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); const tempIcon = icon.trim(); const params = JSON.stringify(item); return `<span markerClick='marker' params='${params}' class='comment-tag is-click'>${tempIcon} ${item.identifier} ${item.name}</span>`;}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
+              "PARSESCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
             },
             "editorStyle" : "ANCHO_HTML",
             "editorType" : "RAW",
@@ -410,7 +375,6 @@
             "groupOP" : "AND",
             "logicCat" : "PANELVISIBLE",
             "logicType" : "GROUP",
-            "name" : "表单成员[formitem1][面板显示]逻辑",
             "getPSDEFDLogics" : [ {
               "condOP" : "EQ",
               "dEFDName" : "format_type",
@@ -423,7 +387,6 @@
             "groupOP" : "AND",
             "logicCat" : "ITEMENABLE",
             "logicType" : "GROUP",
-            "name" : "表单成员[formitem1][表单项启用]逻辑",
             "getPSDEFDLogics" : [ {
               "condOP" : "EQ",
               "dEFDName" : "format_type",
@@ -466,7 +429,6 @@
             "groupOP" : "AND",
             "logicCat" : "PANELVISIBLE",
             "logicType" : "GROUP",
-            "name" : "表单成员[formitem][面板显示]逻辑",
             "getPSDEFDLogics" : [ {
               "condOP" : "EQ",
               "dEFDName" : "format_type",
@@ -479,7 +441,6 @@
             "groupOP" : "AND",
             "logicCat" : "ITEMENABLE",
             "logicType" : "GROUP",
-            "name" : "表单成员[formitem][表单项启用]逻辑",
             "getPSDEFDLogics" : [ {
               "condOP" : "EQ",
               "dEFDName" : "format_type",
@@ -550,7 +511,6 @@
           "groupOP" : "AND",
           "logicCat" : "PANELVISIBLE",
           "logicType" : "GROUP",
-          "name" : "表单成员[grouppanel_attachments_grid][面板显示]逻辑",
           "getPSDEFDLogics" : [ {
             "condOP" : "ISNOTNULL",
             "dEFDName" : "attachments",
@@ -767,7 +727,6 @@
                   "glyph" : "xf002@FontAwesome",
                   "cssClass" : "fa fa-search"
                 },
-                "timeout" : 60000,
                 "uIActionMode" : "FRONT",
                 "uIActionTag" : "attachment_preview",
                 "uIActionType" : "DEUIACTION",
@@ -873,7 +832,6 @@
                       "pluginCode" : "FILE_DOWNLOAD",
                       "runtimeObject" : true
                     },
-                    "timeout" : 60000,
                     "tooltip" : "下载当前附件",
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "download",

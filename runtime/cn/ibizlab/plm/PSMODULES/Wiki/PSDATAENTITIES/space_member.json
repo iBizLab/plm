@@ -244,6 +244,32 @@
     "enableFront" : false
   }, {
     "actionHolder" : 1,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "choose_position",
+    "dataAccessAction" : "UPDATE",
+    "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/space_member/PSDEACTIONS/choose_position.json",
+    "logicName" : "变更职位",
+    "name" : "choose_position",
+    "getPSDEActionInput" : {
+      "name" : "Choose_positionInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "space_member_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Choose_positionResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space_member/PSDELOGICS/change_position.json"
+    },
+    "enableFront" : false
+  }, {
+    "actionHolder" : 1,
     "actionMode" : "GETDRAFT",
     "actionType" : "DELOGIC",
     "codeName" : "mob_create_space_member",
@@ -313,6 +339,9 @@
     }, {
       "name" : "ROLE_ID",
       "codeName" : "role_id"
+    }, {
+      "name" : "TITLE",
+      "codeName" : "title"
     }, {
       "name" : "ID",
       "codeName" : "id"
@@ -913,6 +942,120 @@
     "viewLevel" : 0,
     "linkDEField" : true,
     "phisicalDEField" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "TITLE",
+      "dBType" : "MYSQL5",
+      "name" : "TITLE",
+      "queryCodeExp" : "t1.`TITLE`",
+      "standardColumnName" : "`TITLE`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[TITLE][职位]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[TITLE][职位]移动端默认",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[TITLE][职位]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[TITLE][职位]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "TITLE",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "title",
+    "dEFType" : 1,
+    "dataType" : "PICKUPDATA",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "职位",
+    "name" : "TITLE",
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space_member/PSDERS/DER1N_SPACE_MEMBER_USER_USER_ID.json"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "TITLE"
+    },
+    "getRealPSDEField" : {
+      "name" : "TITLE",
+      "codeName" : "title"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "TITLE",
+      "codeName" : "title"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+    },
+    "serviceCodeName" : "title",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s",
+    "linkDEField" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "ID",
@@ -1741,6 +1884,168 @@
     "serviceCodeName" : "space_name"
   } ],
   "getAllPSDELogics" : [ {
+    "codeName" : "change_position",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/space_member/PSDELOGICS/change_position.json",
+    "logicName" : "变更职位",
+    "memo" : "批量设置角色身份（position_id）",
+    "name" : "变更职位",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : -50,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "BINDPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 230
+    }, {
+      "codeName" : "BINDPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "srfactionparam"
+      },
+      "leftPos" : -90,
+      "logicNodeType" : "BINDPARAM",
+      "name" : "获取传递的参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "BINDPARAM1"
+        }
+      } ],
+      "srcFieldName" : "srfactionparam",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "topPos" : 403
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space_member/PSDEACTIONS/Update.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space_member.json"
+      },
+      "leftPos" : 500,
+      "logicNodeType" : "DEACTION",
+      "name" : "变更状态",
+      "topPos" : 562
+    }, {
+      "codeName" : "LOOPSUBCALL1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "leftPos" : -90,
+      "logicNodeType" : "LOOPSUBCALL",
+      "name" : "循环ID列表进行操作",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "subCallLink" : true
+      } ],
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "srfactionparam"
+      },
+      "topPos" : 562
+    }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : 180,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "获取传递的状态",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "TITLE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "name" : "for_temp_obj[target_title] ==> Default[TITLE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "target_title",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_temp_obj"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 562
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space_member.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "for_temp_obj",
+      "logicName" : "循环临时变量",
+      "name" : "循环临时变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space_member.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "srfactionparam",
+      "logicName" : "选择数据对象",
+      "name" : "选择数据对象",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space_member.json"
+      },
+      "entityListParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "change_role",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/space_member/PSDELOGICS/change_role.json",
@@ -2480,6 +2785,17 @@
       "stringLength" : 15,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "职位",
+      "name" : "title",
+      "getPSDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "建立人",
       "name" : "create_man",
       "getPSDEField" : {
@@ -2689,7 +3005,7 @@
   "getAllPSDENotifies" : [ {
     "codeName" : "create_member_notify",
     "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/space_member/PSDENOTIFIES/create_member_notify.json",
-    "msgType" : 65,
+    "msgType" : 225,
     "name" : "空间成员加入通知",
     "notifyTag2" : "知识管理",
     "getPSDENotifyTargets" : [ {
@@ -2702,7 +3018,7 @@
     } ],
     "getPSSysMsgQueue" : {
       "modelref" : true,
-      "path" : "PSSYSMSGQUEUES/Default.json"
+      "path" : "PSMODULES/Base/PSSYSMSGQUEUES/Default.json"
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
@@ -2712,7 +3028,7 @@
   }, {
     "codeName" : "remover_member_notify",
     "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/space_member/PSDENOTIFIES/remover_member_notify.json",
-    "msgType" : 65,
+    "msgType" : 225,
     "name" : "空间成员移除通知",
     "notifyTag2" : "知识管理",
     "getPSDENotifyTargets" : [ {
@@ -2725,7 +3041,7 @@
     } ],
     "getPSSysMsgQueue" : {
       "modelref" : true,
-      "path" : "PSSYSMSGQUEUES/Default.json"
+      "path" : "PSMODULES/Base/PSSYSMSGQUEUES/Default.json"
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
@@ -2908,6 +3224,12 @@
     "realModelSubType" : "DEPICKUPGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "choose_position_option_view",
+    "logicName" : "空间成员选择职位选项操作视图",
+    "name" : "空间成员选择职位选项操作视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "EditView",
     "logicName" : "空间成员实体编辑视图",
     "modelTag" : "EDITVIEW",
@@ -2938,6 +3260,13 @@
     "logicName" : "主编辑表单",
     "modelTag2" : "0",
     "name" : "主编辑表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "Usr12128313_Form",
+    "logicName" : "空间成员选择职位选项操作视图_表单",
+    "modelTag2" : "0",
+    "name" : "空间成员选择职位选项操作视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {

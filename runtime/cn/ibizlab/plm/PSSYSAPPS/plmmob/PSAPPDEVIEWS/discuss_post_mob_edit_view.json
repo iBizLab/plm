@@ -314,7 +314,6 @@
             "modelref" : true,
             "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_post.json"
           },
-          "timeout" : 60000,
           "uIActionMode" : "FRONT",
           "uIActionTag" : "panel_usr1018539994_button_calluilogic_send_click",
           "uIActionType" : "DEUIACTION",
@@ -448,7 +447,6 @@
                   "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/discuss_post.json"
                 },
                 "refreshMode" : 1,
-                "timeout" : 60000,
                 "uIActionMode" : "FRONT",
                 "uIActionTag" : "mob_open_attention_list",
                 "uIActionType" : "DEUIACTION",
@@ -1566,7 +1564,6 @@
                                   "modelref" : true,
                                   "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
                                 },
-                                "timeout" : 60000,
                                 "uIActionMode" : "FRONT",
                                 "uIActionTag" : "panel_usr1016756890_upload_click",
                                 "uIActionType" : "DEUIACTION",
@@ -1874,7 +1871,6 @@
                                           "pluginCode" : "FILE_DOWNLOAD",
                                           "runtimeObject" : true
                                         },
-                                        "timeout" : 60000,
                                         "tooltip" : "下载当前附件",
                                         "uIActionMode" : "FRONT",
                                         "uIActionTag" : "download",
@@ -1918,7 +1914,6 @@
                                           "cssClass" : "fa fa-trash-o"
                                         },
                                         "refreshMode" : 1,
-                                        "timeout" : 60000,
                                         "uIActionMode" : "FRONT",
                                         "uIActionTag" : "mob_attachment_delete",
                                         "uIActionType" : "DEUIACTION",
@@ -3197,7 +3192,7 @@
                               "contentType" : "HTML",
                               "editorParams" : {
                                 "contenttype" : "HTML",
-                                "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); const tempIcon = icon.trim(); return `<span class='comment-tag' data-value='${JSON.stringify(item)}'>${tempIcon} ${item.identifier} ${item.name}</span>`;}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
+                                "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
                               },
                               "editorStyle" : "COMMENT_ITEM",
                               "editorType" : "RAW",
@@ -4825,7 +4820,7 @@
                               "contentType" : "HTML",
                               "editorParams" : {
                                 "contenttype" : "HTML",
-                                "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); const tempIcon = icon.trim(); return `<span class='comment-tag' data-value='${JSON.stringify(item)}'>${tempIcon} ${item.identifier} ${item.name}</span>`;}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
+                                "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
                               },
                               "editorStyle" : "COMMENT_ITEM",
                               "editorType" : "RAW",
@@ -5104,7 +5099,6 @@
                             "modelref" : true,
                             "id" : "discuss_post__UPDATE"
                           },
-                          "timeout" : 60000,
                           "uIActionMode" : "FRONT",
                           "uIActionTag" : "mob_descuss_reply",
                           "uIActionType" : "DEUIACTION",

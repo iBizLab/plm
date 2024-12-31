@@ -200,7 +200,6 @@
             "cssClass" : "fa fa-plus"
           },
           "refreshMode" : 1,
-          "timeout" : 60000,
           "uIActionMode" : "FRONT",
           "uIActionTag" : "create_child_work_item",
           "uIActionType" : "DEUIACTION",
@@ -601,7 +600,6 @@
             "cssClass" : "fa fa-plus"
           },
           "refreshMode" : 1,
-          "timeout" : 60000,
           "uIActionMode" : "FRONT",
           "uIActionTag" : "create_new_idea",
           "uIActionType" : "DEUIACTION",
@@ -831,7 +829,6 @@
             "cssClass" : "fa fa-plus"
           },
           "refreshMode" : 1,
-          "timeout" : 60000,
           "uIActionMode" : "FRONT",
           "uIActionTag" : "create_new_test_case",
           "uIActionType" : "DEUIACTION",
@@ -1070,7 +1067,6 @@
             "cssClass" : "fa fa-plus"
           },
           "refreshMode" : 1,
-          "timeout" : 60000,
           "uIActionMode" : "FRONT",
           "uIActionTag" : "create_new_ticket",
           "uIActionType" : "DEUIACTION",
@@ -1310,7 +1306,6 @@
             "cssClass" : "fa fa-plus"
           },
           "refreshMode" : 1,
-          "timeout" : 60000,
           "uIActionMode" : "FRONT",
           "uIActionTag" : "create_new_work_item",
           "uIActionType" : "DEUIACTION",
@@ -1539,7 +1534,6 @@
             "cssClass" : "fa fa-plus"
           },
           "refreshMode" : 1,
-          "timeout" : 60000,
           "uIActionMode" : "FRONT",
           "uIActionTag" : "create_new_work_item_bug",
           "uIActionType" : "DEUIACTION",
@@ -1755,7 +1749,6 @@
             "cssClass" : "fa fa-plus"
           },
           "refreshMode" : 1,
-          "timeout" : 60000,
           "uIActionMode" : "FRONT",
           "uIActionTag" : "customer_create_ticket",
           "uIActionType" : "DEUIACTION",
@@ -1995,7 +1988,6 @@
             "cssClass" : "fa fa-plus"
           },
           "refreshMode" : 1,
-          "timeout" : 60000,
           "uIActionMode" : "FRONT",
           "uIActionTag" : "run_create_new_work_item_bug",
           "uIActionType" : "DEUIACTION",
@@ -2224,7 +2216,6 @@
             "cssClass" : "fa fa-plus"
           },
           "refreshMode" : 1,
-          "timeout" : 60000,
           "uIActionMode" : "FRONT",
           "uIActionTag" : "test_case_create_new_work_item",
           "uIActionType" : "DEUIACTION",
@@ -2325,45 +2316,6 @@
     "noServiceCodeName" : true
   }, {
     "actionMode" : "READ",
-    "codeName" : "custom_get",
-    "methodType" : "DEACTION",
-    "name" : "custom_get",
-    "getPSAppDEMethodInput" : {
-      "getKeyPSAppDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      },
-      "name" : "输入对象",
-      "type" : "KEYFIELD"
-    },
-    "getPSAppDEMethodReturn" : {
-      "name" : "返回对象",
-      "getPSAppDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "recent_dto"
-      },
-      "type" : "DTO"
-    },
-    "getPSDEAction" : {
-      "modelref" : true,
-      "path" : "PSMODULES/Base/PSDATAENTITIES/recent/PSDEACTIONS/custom_get.json"
-    },
-    "getPSDEOPPriv" : {
-      "modelref" : true,
-      "id" : "NONE"
-    },
-    "getPSDEServiceAPIMethod" : {
-      "modelref" : true,
-      "id" : "custom_get"
-    },
-    "requestField" : "ID",
-    "requestMethod" : "GET",
-    "requestParamType" : "FIELD",
-    "requestPath" : "/custom_get",
-    "builtinMethod" : false,
-    "needResourceKey" : true
-  }, {
-    "actionMode" : "READ",
     "actionTag" : "Get",
     "codeName" : "get",
     "methodType" : "DEACTION",
@@ -2439,6 +2391,35 @@
     "requestMethod" : "GET",
     "requestParamType" : "NONE",
     "requestPath" : "/get_draft",
+    "builtinMethod" : false
+  }, {
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "jump_corresponding_view",
+    "methodType" : "DEACTION",
+    "name" : "jump_corresponding_view",
+    "getPSAppDELogic" : {
+      "modelref" : true,
+      "id" : "jump_corresponding_view"
+    },
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Jump_corresponding_viewInput",
+      "name" : "Jump_corresponding_viewInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "recent_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Jump_corresponding_viewResult",
+      "name" : "Jump_corresponding_viewResult",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/recent/PSDEACTIONS/jump_corresponding_view.json"
+    },
     "builtinMethod" : false
   }, {
     "actionMode" : "CUSTOM",
@@ -3990,6 +3971,81 @@
     "stdDataType" : 5,
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   } ],
+  "getAllPSAppDELogics" : [ {
+    "codeName" : "jump_corresponding_view",
+    "defaultParamName" : "Default",
+    "logicName" : "跳转对应视图",
+    "name" : "跳转对应视图",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 909,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 200
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/recent.json"
+      },
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/recent.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "ctx",
+      "logicName" : "应用全局变量",
+      "name" : "应用全局变量",
+      "appContextParam" : true
+    }, {
+      "codeName" : "result",
+      "logicName" : "返回结果",
+      "name" : "返回结果",
+      "getParamPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/recent.json"
+      },
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/recent.json"
+      },
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : false,
+    "enableFront" : true
+  } ],
   "getAllPSAppDEMethodDTOs" : [ {
     "codeName" : "recent_dto",
     "name" : "recent_dto",
@@ -4339,45 +4395,6 @@
     "noServiceCodeName" : true
   }, {
     "actionMode" : "READ",
-    "codeName" : "custom_get",
-    "methodType" : "DEACTION",
-    "name" : "custom_get",
-    "getPSAppDEMethodInput" : {
-      "getKeyPSAppDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      },
-      "name" : "输入对象",
-      "type" : "KEYFIELD"
-    },
-    "getPSAppDEMethodReturn" : {
-      "name" : "返回对象",
-      "getPSAppDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "recent_dto"
-      },
-      "type" : "DTO"
-    },
-    "getPSDEAction" : {
-      "modelref" : true,
-      "path" : "PSMODULES/Base/PSDATAENTITIES/recent/PSDEACTIONS/custom_get.json"
-    },
-    "getPSDEOPPriv" : {
-      "modelref" : true,
-      "id" : "NONE"
-    },
-    "getPSDEServiceAPIMethod" : {
-      "modelref" : true,
-      "id" : "custom_get"
-    },
-    "requestField" : "ID",
-    "requestMethod" : "GET",
-    "requestParamType" : "FIELD",
-    "requestPath" : "/custom_get",
-    "builtinMethod" : false,
-    "needResourceKey" : true
-  }, {
-    "actionMode" : "READ",
     "actionTag" : "Get",
     "codeName" : "get",
     "methodType" : "DEACTION",
@@ -4453,6 +4470,35 @@
     "requestMethod" : "GET",
     "requestParamType" : "NONE",
     "requestPath" : "/get_draft",
+    "builtinMethod" : false
+  }, {
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "jump_corresponding_view",
+    "methodType" : "DEACTION",
+    "name" : "jump_corresponding_view",
+    "getPSAppDELogic" : {
+      "modelref" : true,
+      "id" : "jump_corresponding_view"
+    },
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Jump_corresponding_viewInput",
+      "name" : "Jump_corresponding_viewInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "recent_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Jump_corresponding_viewResult",
+      "name" : "Jump_corresponding_viewResult",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/recent/PSDEACTIONS/jump_corresponding_view.json"
+    },
     "builtinMethod" : false
   }, {
     "actionMode" : "CUSTOM",
@@ -5487,7 +5533,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/recent.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "after_creat_double_relation",
     "uIActionType" : "DEUIACTION",
@@ -5529,7 +5574,6 @@
       "cssClass" : "fa fa-plus"
     },
     "refreshMode" : 1,
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "create_child_work_item",
     "uIActionType" : "DEUIACTION",
@@ -5585,7 +5629,6 @@
       "cssClass" : "fa fa-plus"
     },
     "refreshMode" : 1,
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "create_new_idea",
     "uIActionType" : "DEUIACTION",
@@ -5625,7 +5668,6 @@
       "cssClass" : "fa fa-plus"
     },
     "refreshMode" : 1,
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "create_new_test_case",
     "uIActionType" : "DEUIACTION",
@@ -5681,7 +5723,6 @@
       "cssClass" : "fa fa-plus"
     },
     "refreshMode" : 1,
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "create_new_ticket",
     "uIActionType" : "DEUIACTION",
@@ -5737,7 +5778,6 @@
       "cssClass" : "fa fa-plus"
     },
     "refreshMode" : 1,
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "create_new_work_item",
     "uIActionType" : "DEUIACTION",
@@ -5783,7 +5823,6 @@
       "cssClass" : "fa fa-plus"
     },
     "refreshMode" : 1,
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "create_new_work_item_bug",
     "uIActionType" : "DEUIACTION",
@@ -5816,7 +5855,6 @@
       "cssClass" : "fa fa-plus"
     },
     "refreshMode" : 1,
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "customer_create_ticket",
     "uIActionType" : "DEUIACTION",
@@ -5838,7 +5876,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/recent.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "jump",
     "uIActionType" : "DEUIACTION",
@@ -5855,7 +5892,6 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/recent.json"
     },
     "scriptCode" : "const item = data[0];\r\nwindow.location.hash=`/-/index/-/workspace_tab_exp_view/srfnav=overview/recent_tree_exp_view/srfnav=root%3Aoverview/recent_data_view/-`",
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_home_page",
     "uIActionType" : "DEUIACTION",
@@ -5903,7 +5939,6 @@
       "value" : "work_item_type_id",
       "rawValue" : false
     } ],
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_work_item_main_view",
     "uIActionType" : "DEUIACTION",
@@ -5924,7 +5959,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/recent.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "panel_de_custom_index_view_layout_overview_button_calluilogic_click",
     "uIActionType" : "DEUIACTION",
@@ -5980,7 +6014,6 @@
       "cssClass" : "fa fa-plus"
     },
     "refreshMode" : 1,
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "run_create_new_work_item_bug",
     "uIActionType" : "DEUIACTION",
@@ -6026,7 +6059,6 @@
       "cssClass" : "fa fa-plus"
     },
     "refreshMode" : 1,
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "test_case_create_new_work_item",
     "uIActionType" : "DEUIACTION",

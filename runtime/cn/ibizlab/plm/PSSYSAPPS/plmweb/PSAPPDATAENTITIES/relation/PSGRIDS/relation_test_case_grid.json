@@ -80,7 +80,7 @@
     "enableSort" : false
   }, {
     "align" : "LEFT",
-    "cLConvertMode" : "NONE",
+    "cLConvertMode" : "FRONT",
     "caption" : "维护人",
     "codeName" : "target_maintenance_name",
     "columnType" : "DEFGRIDCOLUMN",
@@ -89,14 +89,26 @@
     "name" : "target_maintenance_name",
     "noPrivDisplayMode" : 1,
     "objectNameField" : "maintenance_name",
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+    },
     "getPSAppDEField" : {
       "name" : "TEST_CASE",
       "codeName" : "test_case"
     },
+    "getPSSysPFPlugin" : {
+      "pluginType" : "GRID_COLRENDER",
+      "pluginCode" : "PERSONAL_INFO_COLUMN",
+      "runtimeObject" : true
+    },
     "valueType" : "OBJECT",
     "width" : 150,
     "widthUnit" : "PX",
-    "enableSort" : false
+    "enableSort" : false,
+    "getUserParam" : {
+      "USERFILTERMAP" : "{\"id\":\"maintenance_id\",\"name\":\"maintenance_name\"}"
+    }
   }, {
     "align" : "LEFT",
     "cLConvertMode" : "FRONT",

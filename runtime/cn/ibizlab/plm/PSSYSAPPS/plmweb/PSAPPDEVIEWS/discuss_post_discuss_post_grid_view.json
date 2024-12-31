@@ -163,7 +163,10 @@
               "predefinedType" : "STATIC_TEXT"
             },
             "showCaption" : true
-          } ]
+          } ],
+          "getPSSysCss" : {
+            "cssName" : "dashboard_repair_style"
+          }
         } ]
       }, {
         "caption" : "容器",
@@ -334,6 +337,16 @@
       }
     } ],
     "getPSAppViewRefs" : [ {
+      "name" : "EDITDATA",
+      "openMode" : "INDEXVIEWTAB_POPUPMODAL",
+      "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
+      "realTitle" : "讨论主视图",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/discuss_post_main_view.json",
+        "viewType" : "DEEDITVIEW"
+      }
+    }, {
       "name" : "NEWDATA",
       "realTitle" : "讨论编辑视图",
       "getRealTitlePSLanguageRes" : {
@@ -342,16 +355,6 @@
       "getRefPSAppView" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/discuss_post_edit_view.json",
-        "viewType" : "DEEDITVIEW"
-      }
-    }, {
-      "name" : "EDITDATA",
-      "openMode" : "INDEXVIEWTAB_POPUPMODAL",
-      "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
-      "realTitle" : "讨论主视图",
-      "getRefPSAppView" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/discuss_post_main_view.json",
         "viewType" : "DEEDITVIEW"
       }
     } ],
@@ -396,7 +399,6 @@
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_post.json"
           },
           "scriptCode" : "const item = data[0];\r\nwindow.location.hash=`/-/index/-/discuss_topic_tab_exp_view/srfnav=discuss/discuss_topic_tree_exp_view/srfnav=root%3Anode%3Anode_5/discuss_post_recent_grid_view/-`",
-          "timeout" : 60000,
           "uIActionMode" : "FRONT",
           "uIActionTag" : "open_discuss_post",
           "uIActionType" : "DEUIACTION",

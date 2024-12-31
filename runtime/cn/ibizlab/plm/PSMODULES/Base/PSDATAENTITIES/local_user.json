@@ -222,6 +222,9 @@
       "name" : "DEPARTMENT_ID",
       "codeName" : "department_id"
     }, {
+      "name" : "ORGANIZATION_ID",
+      "codeName" : "organization_id"
+    }, {
       "name" : "CREATE_TIME",
       "codeName" : "create_time"
     }, {
@@ -1407,6 +1410,83 @@
     "dynaStorageDEField" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "ORGANIZATION_ID",
+      "dBType" : "MYSQL5",
+      "name" : "ORGANIZATION_ID",
+      "queryCodeExp" : "t1.`ORGANIZATION_ID`",
+      "standardColumnName" : "`ORGANIZATION_ID`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[ORGANIZATION_ID][组织标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[ORGANIZATION_ID][组织标识]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[ORGANIZATION_ID][组织标识]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[ORGANIZATION_ID][组织标识]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "ORGANIZATION_ID",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "organization_id",
+    "dEFType" : 1,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "组织标识",
+    "name" : "ORGANIZATION_ID",
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "ORGANIZATION_ID"
+    },
+    "serviceCodeName" : "organization_id",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "CREATE_TIME",
       "dBType" : "MYSQL5",
       "name" : "CREATE_TIME",
@@ -1887,6 +1967,17 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "组织标识",
+      "name" : "organization_id",
+      "getPSDEField" : {
+        "name" : "ORGANIZATION_ID",
+        "codeName" : "organization_id"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
       "jsonFormat" : "yyyy-MM-dd HH:mm:ss",

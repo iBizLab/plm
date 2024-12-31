@@ -370,6 +370,9 @@
         "getPSControlParam" : {
           "autoLoad" : true,
           "showBusyIndicator" : true,
+          "ctrlParams" : {
+            "SHOWMODE" : "daterange"
+          },
           "id" : "CALENDAR"
         },
         "getPSSysCalendarItems" : [ {
@@ -629,7 +632,6 @@
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
               },
-              "timeout" : 60000,
               "uIActionMode" : "FRONT",
               "uIActionTag" : "open_summary_bug",
               "uIActionType" : "DEUIACTION",
@@ -658,7 +660,6 @@
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
               },
-              "timeout" : 60000,
               "uIActionMode" : "FRONT",
               "uIActionTag" : "open_summary_case",
               "uIActionType" : "DEUIACTION",
@@ -687,7 +688,6 @@
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
               },
-              "timeout" : 60000,
               "uIActionMode" : "FRONT",
               "uIActionTag" : "open_summary_idea",
               "uIActionType" : "DEUIACTION",
@@ -716,7 +716,6 @@
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
               },
-              "timeout" : 60000,
               "uIActionMode" : "FRONT",
               "uIActionTag" : "open_summary_other_item",
               "uIActionType" : "DEUIACTION",
@@ -745,7 +744,6 @@
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
               },
-              "timeout" : 60000,
               "uIActionMode" : "FRONT",
               "uIActionTag" : "open_summary_task",
               "uIActionType" : "DEUIACTION",
@@ -774,7 +772,6 @@
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
               },
-              "timeout" : 60000,
               "uIActionMode" : "FRONT",
               "uIActionTag" : "open_summary_ticket",
               "uIActionType" : "DEUIACTION",
@@ -1667,7 +1664,10 @@
                   "predefinedType" : "STATIC_TEXT"
                 },
                 "showCaption" : true
-              } ]
+              } ],
+              "getPSSysCss" : {
+                "cssName" : "dashboard_repair_style"
+              }
             } ]
           }, {
             "caption" : "容器",
@@ -1871,17 +1871,6 @@
           }
         } ],
         "getPSAppViewRefs" : [ {
-          "name" : "NEWDATA",
-          "realTitle" : "工作项编辑视图",
-          "getRealTitlePSLanguageRes" : {
-            "lanResTag" : "PAGE.TITLE.WORK_ITEM.EDITVIEW"
-          },
-          "getRefPSAppView" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_edit_view.json",
-            "viewType" : "DEEDITVIEW"
-          }
-        }, {
           "name" : "EDITDATA",
           "openMode" : "INDEXVIEWTAB_POPUPMODAL",
           "getPSNavigateContexts" : [ {
@@ -1911,6 +1900,17 @@
           "getRefPSAppView" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_main_view.json",
+            "viewType" : "DEEDITVIEW"
+          }
+        }, {
+          "name" : "NEWDATA",
+          "realTitle" : "工作项编辑视图",
+          "getRealTitlePSLanguageRes" : {
+            "lanResTag" : "PAGE.TITLE.WORK_ITEM.EDITVIEW"
+          },
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_edit_view.json",
             "viewType" : "DEEDITVIEW"
           }
         } ],
@@ -2566,7 +2566,6 @@
                         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
                       },
                       "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
-                      "timeout" : 60000,
                       "uIActionMode" : "FRONT",
                       "uIActionTag" : "open_global_setting",
                       "uIActionType" : "DEUIACTION",
@@ -2679,7 +2678,6 @@
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
               },
               "scriptCode" : "const item = data[0];\r\nwindow.location.hash=`/-/index/-/workspace_tab_exp_view/srfnav=overview/recent_tree_exp_view/srfnav=root%3Anode_2%3Anode_5/recent_my_assignee_item_tap_exp_view/srfnav=work_item/work_item_my_assignee_gird_view/-`",
-              "timeout" : 60000,
               "uIActionMode" : "FRONT",
               "uIActionTag" : "query_more_my_assignee",
               "uIActionType" : "DEUIACTION",
@@ -2960,7 +2958,10 @@
                   "predefinedType" : "STATIC_TEXT"
                 },
                 "showCaption" : true
-              } ]
+              } ],
+              "getPSSysCss" : {
+                "cssName" : "dashboard_repair_style"
+              }
             } ]
           }, {
             "caption" : "容器",
@@ -3677,7 +3678,6 @@
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
               },
               "scriptCode" : "const item = data[0];\r\nwindow.location.hash=`/-/index/-/workspace_tab_exp_view/srfnav=overview/recent_tree_exp_view/srfnav=root%3Anode_2%3Anode_6/recent_my_created_tab_exp_view/srfnav=work_item/work_item_my_created_grid_view/-`",
-              "timeout" : 60000,
               "uIActionMode" : "FRONT",
               "uIActionTag" : "open_more_my_create",
               "uIActionType" : "DEUIACTION",
@@ -4317,7 +4317,6 @@
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/recent.json"
               },
               "scriptCode" : "const item = data[0];\r\nwindow.location.hash=`/-/index/-/workspace_tab_exp_view/srfnav=overview/recent_tree_exp_view/srfnav=root%3Aoverview/recent_data_view/-`",
-              "timeout" : 60000,
               "uIActionMode" : "FRONT",
               "uIActionTag" : "open_home_page",
               "uIActionType" : "DEUIACTION",
@@ -5173,7 +5172,6 @@
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/recent.json"
               },
               "scriptCode" : "const item = data[0];\r\nwindow.location.hash=`/-/index/-/workspace_tab_exp_view/srfnav=overview/recent_tree_exp_view/srfnav=root%3Aoverview/recent_data_view/-`",
-              "timeout" : 60000,
               "uIActionMode" : "FRONT",
               "uIActionTag" : "open_home_page",
               "uIActionType" : "DEUIACTION",

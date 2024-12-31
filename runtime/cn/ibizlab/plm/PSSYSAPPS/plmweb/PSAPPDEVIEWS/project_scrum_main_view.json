@@ -406,7 +406,6 @@
               "glyph" : "xf05a@FontAwesome",
               "cssClass" : "fa fa-info-circle"
             },
-            "timeout" : 60000,
             "uIActionMode" : "FRONT",
             "uIActionTag" : "open_show_view",
             "uIActionType" : "DEUIACTION",
@@ -452,7 +451,6 @@
               "cssClass" : "fa fa-users"
             },
             "scriptCode" : "const srfkey = context.project ? context.project : data[0].id;\r\nwindow.location.hash=`/-/index/project=${srfkey}/project_redirect_view/srfnav=usrdrgroup1225572368/project_setting_view/srfnav=member/project_member_config_grid_view/-`",
-            "timeout" : 60000,
             "uIActionMode" : "FRONT",
             "uIActionTag" : "open_project_member",
             "uIActionType" : "DEUIACTION",
@@ -509,7 +507,6 @@
               "cssClass" : "fa fa-edit"
             },
             "scriptCode" : "const srfkey = context.project ? context.project : data[0].id;\r\nwindow.location.hash=`/-/index/project=${srfkey}/project_redirect_view/srfnav=usrdrgroup1225572368/project_setting_view/srfnav=base/project_base_information_edit_view/-`",
-            "timeout" : 60000,
             "uIActionMode" : "FRONT",
             "uIActionTag" : "open_edit_view",
             "uIActionType" : "DEUIACTION",
@@ -566,7 +563,6 @@
               "cssClass" : "fa fa-th-list"
             },
             "scriptCode" : "const srfkey = context.project ? context.project : data[0].id;\r\nwindow.location.hash=`/-/index/project=${srfkey}/project_redirect_view/srfnav=usrdrgroup1225572368/project_setting_view/srfnav=member/project_member_config_grid_view/-`",
-            "timeout" : 60000,
             "uIActionMode" : "FRONT",
             "uIActionTag" : "open_setting_view",
             "uIActionType" : "DEUIACTION",
@@ -623,7 +619,6 @@
               "cssClass" : "fa fa-trash-o"
             },
             "scriptCode" : "const srfkey = context.project ? context.project : data[0].id;\r\nwindow.location.hash=`/-/index/project=${srfkey}/project_redirect_view/srfnav=usrdrgroup1225572368/project_setting_view/srfnav=recycle/work_item_recycle_bin_grid_view/-`",
-            "timeout" : 60000,
             "uIActionMode" : "FRONT",
             "uIActionTag" : "open_deleted_project",
             "uIActionType" : "DEUIACTION",
@@ -887,7 +882,6 @@
                     },
                     "refreshMode" : 1,
                     "successMsg" : "已刷新项目状态",
-                    "timeout" : 60000,
                     "tooltip" : "调用自动化刷新项目状态",
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "refresh_project_state",
@@ -1536,7 +1530,6 @@
                           "groupOP" : "AND",
                           "logicCat" : "ITEMENABLE",
                           "logicType" : "GROUP",
-                          "name" : "表单成员[actual_end_at][表单项启用]逻辑",
                           "getPSDEFDLogics" : [ {
                             "condOP" : "EQ",
                             "dEFDName" : "state_type",
@@ -2225,7 +2218,6 @@
                         "value" : "0",
                         "rawValue" : true
                       } ],
-                      "timeout" : 60000,
                       "uIActionMode" : "FRONT",
                       "uIActionTag" : "open_overdue_work",
                       "uIActionType" : "DEUIACTION",
@@ -2259,7 +2251,6 @@
                         "value" : "0",
                         "rawValue" : true
                       } ],
-                      "timeout" : 60000,
                       "uIActionMode" : "FRONT",
                       "uIActionTag" : "open_cur_waring",
                       "uIActionType" : "DEUIACTION",
@@ -2298,7 +2289,6 @@
                         "value" : "0",
                         "rawValue" : true
                       } ],
-                      "timeout" : 60000,
                       "uIActionMode" : "FRONT",
                       "uIActionTag" : "open_three_day_warning",
                       "uIActionType" : "DEUIACTION",
@@ -2326,7 +2316,6 @@
                         "modelref" : true,
                         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
                       },
-                      "timeout" : 60000,
                       "uIActionMode" : "FRONT",
                       "uIActionTag" : "open_all_work_item",
                       "uIActionType" : "DEUIACTION",
@@ -3564,7 +3553,7 @@
                         "colMD" : 24,
                         "layout" : "TABLE_24COL"
                       },
-                      "allowEmpty" : true,
+                      "allowEmpty" : false,
                       "showCaption" : true
                     }, {
                       "getCapPSLanguageRes" : {
@@ -3769,7 +3758,6 @@
                       "glyph" : "xf044@FontAwesome",
                       "cssClass" : "fa fa-edit"
                     },
-                    "timeout" : 60000,
                     "tooltip" : "编辑公告",
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "edit_notice",
@@ -4048,7 +4036,7 @@
                           "contentType" : "HTML",
                           "editorParams" : {
                             "contenttype" : "HTML",
-                            "PARSESCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); const tempIcon = icon.trim(); const params = JSON.stringify(item); return `<span markerClick='marker' params='${params}' class='comment-tag is-click'>${tempIcon} ${item.identifier} ${item.name}</span>`;}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
+                            "PARSESCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
                           },
                           "editorStyle" : "ANCHO_HTML",
                           "editorType" : "RAW",

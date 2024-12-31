@@ -263,6 +263,9 @@
       "name" : "CATEGORIES",
       "codeName" : "categories"
     }, {
+      "name" : "IS_LEAF3",
+      "codeName" : "is_leaf3"
+    }, {
       "name" : "ID",
       "codeName" : "id"
     }, {
@@ -699,6 +702,54 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/category/PSDEDATAQUERIES/position_category/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "position_category",
+    "logicName" : "职位类别",
+    "name" : "position_category",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/category.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "CATEGORY",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "position",
+          "fieldName" : "OWNER_TYPE",
+          "name" : "(OWNER_TYPE) 等于(=) position",
+          "getPSDEField" : {
+            "name" : "OWNER_TYPE",
+            "codeName" : "owner_type"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Position_categoryInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "category_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Position_categoryResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "category_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/category/PSDEDATAQUERIES/product_idea_category/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "product_idea_category",
@@ -1098,6 +1149,32 @@
     },
     "getPSDEDataSetReturn" : {
       "name" : "No_sectionResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "category_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "position_category",
+    "logicName" : "职位类别",
+    "name" : "position_category",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "position_category"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Position_categoryInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "category_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Position_categoryResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "category_dto"
@@ -1806,6 +1883,76 @@
     "viewLevel" : 0,
     "formulaDEField" : true,
     "phisicalDEField" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "IS_LEAF3",
+      "dBType" : "MYSQL5",
+      "name" : "IS_LEAF3",
+      "queryCodeExp" : "t1.`IS_LEAF3`",
+      "standardColumnName" : "`IS_LEAF3`",
+      "valueAutoGen" : true
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[IS_LEAF3][是否叶子节点3]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBSWITCH",
+        "name" : "[IS_LEAF3][是否叶子节点3]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[IS_LEAF3][是否叶子节点3]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "[IS_LEAF3][是否叶子节点3]",
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "is_leaf3",
+    "dEFType" : 1,
+    "dataType" : "YESNO",
+    "defaultValue" : "1",
+    "importOrder" : 1000,
+    "logicName" : "是否叶子节点3",
+    "name" : "IS_LEAF3",
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSCODELISTS/YesNo.json"
+    },
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "IS_LEAF3"
+    },
+    "serviceCodeName" : "is_leaf3",
+    "stdDataType" : 9,
+    "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "ID",
@@ -3674,6 +3821,17 @@
       "stdDataType" : 9,
       "type" : "SIMPLE"
     }, {
+      "defaultValue" : "1",
+      "logicName" : "是否叶子节点3",
+      "name" : "is_leaf3",
+      "getPSDEField" : {
+        "name" : "IS_LEAF3",
+        "codeName" : "is_leaf3"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "建立人",
       "name" : "create_man",
       "getPSDEField" : {
@@ -4246,6 +4404,44 @@
     },
     "pickupDEFName" : "CATEGORY_ID",
     "removeActionType" : -1,
+    "removeOrder" : 0,
+    "serviceCodeName" : "category",
+    "enableFKey" : true
+  }, {
+    "codeName" : "category",
+    "dERType" : "DER1N",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/position/PSDERS/DER1N_POSITION_CATEGORY_CATEGORY_ID.json",
+    "fKeyName" : "FD7242F1FFBB3BC76D",
+    "logicName" : "名称",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/category.json"
+    },
+    "masterOrder" : -1,
+    "masterRS" : 36,
+    "minorCodeName" : "positions",
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/position.json"
+    },
+    "minorServiceCodeName" : "positions",
+    "name" : "DER1N_POSITION_CATEGORY_CATEGORY_ID",
+    "orderValue" : 100,
+    "getPSDER1NDEFieldMaps" : [ {
+      "codeName" : "Usr1218725911",
+      "getMajorPSDEField" : {
+        "name" : "IS_LEAF3",
+        "codeName" : "is_leaf3"
+      },
+      "mapType" : "NOTEXISTS",
+      "name" : "是否叶子节点"
+    } ],
+    "getPSPickupDEField" : {
+      "name" : "CATEGORY_ID",
+      "codeName" : "category_id"
+    },
+    "pickupDEFName" : "CATEGORY_ID",
+    "removeActionType" : 2,
     "removeOrder" : 0,
     "serviceCodeName" : "category",
     "enableFKey" : true

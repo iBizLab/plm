@@ -4286,6 +4286,103 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEDATAQUERIES/idea_relation_work_item/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "idea_relation_work_item",
+    "logicName" : "需求关联工作项",
+    "name" : "idea_relation_work_item",
+    "getPSDEDQMain" : {
+      "getChildPSDEDQJoins" : [ {
+        "getChildPSDEDQJoins" : [ {
+          "getDERPSDataEntity" : {
+            "modelref" : true,
+            "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+          },
+          "getJoinPSDER" : {
+            "modelref" : true,
+            "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDERS/DERCUSTOM_RELATION_PROJECT.json"
+          },
+          "getJoinPSDataEntity" : {
+            "modelref" : true,
+            "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+          },
+          "joinType" : "1N",
+          "name" : "RELATION存在1:N（EXISTS (SELECT)）DERCUSTOM_RELATION_PROJECT",
+          "getPSDEDQGroupCondition" : {
+            "condOp" : "AND",
+            "condType" : "GROUP",
+            "name" : "连接条件",
+            "getPSDEDQConditions" : [ {
+              "condOp" : "EQ",
+              "condType" : "SINGLE",
+              "condValue" : "principal_id",
+              "fieldName" : "PRINCIPAL_ID",
+              "name" : "(PRINCIPAL_ID) 等于(=) 网页请求上下文 principal_id",
+              "getPSDEField" : {
+                "name" : "PRINCIPAL_ID",
+                "codeName" : "principal_id"
+              },
+              "getPSVARTypeId" : "WEBCONTEXT"
+            } ]
+          }
+        } ],
+        "getDERPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+        },
+        "getJoinPSDER" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDERS/DER1N_WORK_ITEM_PROJECT_PROJECT_ID.json"
+        },
+        "getJoinPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+        },
+        "joinType" : "N1",
+        "name" : "PROJECT相关N:1（INNER JOIN）DER1N_WORK_ITEM_PROJECT_PROJECT_ID"
+      } ],
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "WORK_ITEM",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "0",
+          "fieldName" : "IS_DELETED",
+          "name" : "(IS_DELETED) 等于(=) 0",
+          "getPSDEField" : {
+            "name" : "IS_DELETED",
+            "codeName" : "is_deleted"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Idea_relation_work_itemInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Idea_relation_work_itemResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEDATAQUERIES/kanban_work_item/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "kanban_work_item",
@@ -6486,6 +6583,91 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEDATAQUERIES/relation_work_item/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "relation_work_item",
+    "logicName" : "关联工作项",
+    "name" : "relation_work_item",
+    "getPSDEDQMain" : {
+      "getChildPSDEDQJoins" : [ {
+        "getDERPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+        },
+        "getJoinPSDER" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDERS/DERCUSTOM_RELATION_TARGET_WORK_ITEM.json"
+        },
+        "getJoinPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+        },
+        "joinType" : "1N",
+        "name" : "RELATION存在1:N（EXISTS (SELECT)）DERCUSTOM_RELATION_TARGET_WORK_ITEM",
+        "getPSDEDQGroupCondition" : {
+          "condOp" : "AND",
+          "condType" : "GROUP",
+          "name" : "连接条件",
+          "getPSDEDQConditions" : [ {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "principal_id",
+            "fieldName" : "PRINCIPAL_ID",
+            "name" : "(PRINCIPAL_ID) 等于(=) 网页请求上下文 principal_id",
+            "getPSDEField" : {
+              "name" : "PRINCIPAL_ID",
+              "codeName" : "principal_id"
+            },
+            "getPSVARTypeId" : "WEBCONTEXT"
+          }, {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "idea",
+            "fieldName" : "PRINCIPAL_TYPE",
+            "name" : "(PRINCIPAL_TYPE) 等于(=) idea",
+            "getPSDEField" : {
+              "name" : "PRINCIPAL_TYPE",
+              "codeName" : "principal_type"
+            }
+          }, {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "work_item",
+            "fieldName" : "TARGET_TYPE",
+            "name" : "(TARGET_TYPE) 等于(=) work_item",
+            "getPSDEField" : {
+              "name" : "TARGET_TYPE",
+              "codeName" : "target_type"
+            }
+          } ]
+        }
+      } ],
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "WORK_ITEM"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Relation_work_itemInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Relation_work_itemResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEDATAQUERIES/release/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "release",
@@ -8547,6 +8729,33 @@
     "enableFront" : true,
     "enableTempData" : true
   }, {
+    "codeName" : "idea_relation_work_item",
+    "logicName" : "需求关联工作项",
+    "name" : "idea_relation_work_item",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "idea_relation_work_item"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Idea_relation_work_itemInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Idea_relation_work_itemResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true,
+    "enableTempData" : true
+  }, {
     "codeName" : "kanban_user_stat",
     "groupMode" : 1,
     "logicName" : "kanban成员负荷报告",
@@ -9461,6 +9670,33 @@
       "type" : "PAGE"
     },
     "pageSize" : 20,
+    "enableBackend" : true,
+    "enableFront" : true,
+    "enableTempData" : true
+  }, {
+    "codeName" : "relation_work_item",
+    "logicName" : "关联工作项",
+    "name" : "relation_work_item",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "relation_work_item"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Relation_work_itemInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "work_item_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Relation_work_itemResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_dto"
+      },
+      "type" : "PAGE"
+    },
     "enableBackend" : true,
     "enableFront" : true,
     "enableTempData" : true
@@ -13576,6 +13812,9 @@
       "name" : "[DESCRIPTION][描述]",
       "getPSDEFFormItem" : {
         "codeName" : "Default",
+        "editorParams" : {
+          "LINKVIEWID" : "plmweb.recent_custom_redirect_view"
+        },
         "editorType" : "TEXTAREA_10",
         "name" : "[DESCRIPTION][描述]",
         "stringLength" : 1048576,
@@ -26704,7 +26943,7 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "LOOPSUBCALL1"
+          "id" : "RAWSFCODE1"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -26722,28 +26961,21 @@
       "code" : "var _default = logic.getParam(\"default\");\r\nvar old_work_item_type_id = _default.get(\"work_item_type_id\");\r\n\r\nvar first_value = old_work_item_type_id.split(';')[0];\r\n\r\n_default.set(\"work_item_type_id\", first_value);",
       "codeName" : "RAWSFCODE1",
       "codeType" : "JavaScript",
-      "leftPos" : 240,
+      "leftPos" : 130,
       "logicNodeType" : "RAWSFCODE",
       "name" : "设置工作项类型id",
-      "topPos" : 380
-    }, {
-      "codeName" : "DEACTION1",
-      "getDstPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/Update.json"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
-      },
-      "leftPos" : 436,
-      "logicNodeType" : "DEACTION",
-      "name" : "变更状态",
-      "topPos" : 582
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        }
+      } ],
+      "topPos" : 403
     }, {
       "codeName" : "LOOPSUBCALL1",
       "getDstPSDELogicParam" : {
@@ -26801,6 +27033,24 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
+      "topPos" : 582
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/Update.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+      },
+      "leftPos" : 436,
+      "logicNodeType" : "DEACTION",
+      "name" : "变更状态",
       "topPos" : 582
     } ],
     "getPSDELogicParams" : [ {
@@ -47452,7 +47702,7 @@
   "getAllPSDENotifies" : [ {
     "codeName" : "allocation_notify",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDENOTIFIES/allocation_notify.json",
-    "msgType" : 65,
+    "msgType" : 225,
     "name" : "工作项分配负责人通知",
     "notifyTag2" : "项目管理",
     "getPSDENotifyTargets" : [ {
@@ -47465,7 +47715,7 @@
     } ],
     "getPSSysMsgQueue" : {
       "modelref" : true,
-      "path" : "PSSYSMSGQUEUES/Default.json"
+      "path" : "PSMODULES/Base/PSSYSMSGQUEUES/Default.json"
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
@@ -47475,7 +47725,7 @@
   }, {
     "codeName" : "assignee_onchange_notify",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDENOTIFIES/assignee_onchange_notify.json",
-    "msgType" : 65,
+    "msgType" : 225,
     "name" : "工作项负责人变更通知",
     "notifyTag2" : "项目管理",
     "getPSDENotifyTargets" : [ {
@@ -47488,7 +47738,7 @@
     } ],
     "getPSSysMsgQueue" : {
       "modelref" : true,
-      "path" : "PSSYSMSGQUEUES/Default.json"
+      "path" : "PSMODULES/Base/PSSYSMSGQUEUES/Default.json"
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
@@ -47498,7 +47748,7 @@
   }, {
     "codeName" : "cancel_assignee_notify",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDENOTIFIES/cancel_assignee_notify.json",
-    "msgType" : 65,
+    "msgType" : 225,
     "name" : "工作项取消负责人通知",
     "notifyTag2" : "项目管理",
     "getPSDENotifyTargets" : [ {
@@ -47511,7 +47761,7 @@
     } ],
     "getPSSysMsgQueue" : {
       "modelref" : true,
-      "path" : "PSSYSMSGQUEUES/Default.json"
+      "path" : "PSMODULES/Base/PSSYSMSGQUEUES/Default.json"
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
@@ -47521,7 +47771,7 @@
   }, {
     "codeName" : "create_notify",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDENOTIFIES/create_notify.json",
-    "msgType" : 65,
+    "msgType" : 225,
     "name" : "工作项创建时分配通知",
     "notifyTag2" : "项目管理",
     "getPSDENotifyTargets" : [ {
@@ -47534,7 +47784,7 @@
     } ],
     "getPSSysMsgQueue" : {
       "modelref" : true,
-      "path" : "PSSYSMSGQUEUES/Default.json"
+      "path" : "PSMODULES/Base/PSSYSMSGQUEUES/Default.json"
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
@@ -47544,27 +47794,27 @@
   }, {
     "codeName" : "is_archived_notify",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDENOTIFIES/is_archived_notify.json",
-    "msgType" : 65,
+    "msgType" : 225,
     "name" : "工作项归档/激活通知",
     "notifyTag2" : "项目管理",
     "getPSDENotifyTargets" : [ {
-      "name" : "负责人",
-      "getPSSysMsgTarget" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSSYSMSGTARGETS/work_item_notify_assignee.json"
-      },
-      "targetType" : "SYSMSGTARGET"
-    }, {
       "name" : "关注对象",
       "getPSSysMsgTarget" : {
         "modelref" : true,
         "path" : "PSMODULES/ProjMgmt/PSSYSMSGTARGETS/attention_by_ownerid.json"
       },
       "targetType" : "SYSMSGTARGET"
+    }, {
+      "name" : "负责人",
+      "getPSSysMsgTarget" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSSYSMSGTARGETS/work_item_notify_assignee.json"
+      },
+      "targetType" : "SYSMSGTARGET"
     } ],
     "getPSSysMsgQueue" : {
       "modelref" : true,
-      "path" : "PSSYSMSGQUEUES/Default.json"
+      "path" : "PSMODULES/Base/PSSYSMSGQUEUES/Default.json"
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
@@ -47574,7 +47824,7 @@
   }, {
     "codeName" : "is_deleted_notify",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDENOTIFIES/is_deleted_notify.json",
-    "msgType" : 17,
+    "msgType" : 81,
     "name" : "工作项删除/恢复通知",
     "notifyTag2" : "项目管理",
     "getPSDENotifyTargets" : [ {
@@ -47594,7 +47844,7 @@
     } ],
     "getPSSysMsgQueue" : {
       "modelref" : true,
-      "path" : "PSSYSMSGQUEUES/Default.json"
+      "path" : "PSMODULES/Base/PSSYSMSGQUEUES/Default.json"
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
@@ -47604,17 +47854,10 @@
   }, {
     "codeName" : "state_notify",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDENOTIFIES/state_notify.json",
-    "msgType" : 65,
+    "msgType" : 225,
     "name" : "工作项状态变换通知",
     "notifyTag2" : "项目管理",
     "getPSDENotifyTargets" : [ {
-      "name" : "执行人",
-      "getPSSysMsgTarget" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSSYSMSGTARGETS/executor_by_ownerid.json"
-      },
-      "targetType" : "SYSMSGTARGET"
-    }, {
       "name" : "负责人",
       "getPSSysMsgTarget" : {
         "modelref" : true,
@@ -47628,10 +47871,17 @@
         "path" : "PSMODULES/ProjMgmt/PSSYSMSGTARGETS/attention_by_ownerid.json"
       },
       "targetType" : "SYSMSGTARGET"
+    }, {
+      "name" : "执行人",
+      "getPSSysMsgTarget" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSSYSMSGTARGETS/executor_by_ownerid.json"
+      },
+      "targetType" : "SYSMSGTARGET"
     } ],
     "getPSSysMsgQueue" : {
       "modelref" : true,
-      "path" : "PSSYSMSGQUEUES/Default.json"
+      "path" : "PSMODULES/Base/PSSYSMSGQUEUES/Default.json"
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,

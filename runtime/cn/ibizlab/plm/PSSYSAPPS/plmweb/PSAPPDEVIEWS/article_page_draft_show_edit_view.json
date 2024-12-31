@@ -69,7 +69,6 @@
           "id" : "SUBDATA"
         },
         "refreshMode" : 1,
-        "timeout" : 60000,
         "uIActionMode" : "FRONT",
         "uIActionTag" : "open_page_edit_view",
         "uIActionType" : "DEUIACTION",
@@ -119,7 +118,6 @@
             "cssClass" : "fa fa-paper-plane-o"
           },
           "refreshMode" : 1,
-          "timeout" : 60000,
           "uIActionMode" : "FRONT",
           "uIActionTag" : "release",
           "uIActionType" : "DEUIACTION",
@@ -148,17 +146,32 @@
           "cssClass" : "fa fa-trash-o"
         },
         "getPSUIAction" : {
-          "caption" : "删除数据",
-          "codeName" : "RemoveObject",
-          "fullCodeName" : "RemoveObject",
-          "name" : "删除数据",
-          "predefinedType" : "DATA_REMOVEOBJECT",
+          "actionTarget" : "SINGLEDATA",
+          "caption" : "删除页面",
+          "codeName" : "remove_this_page",
+          "confirmMsg" : "确认删除草稿吗？删除后无法恢复",
+          "fullCodeName" : "article_page_remove_this_page",
+          "name" : "删除页面（草稿）",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "delete"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
+          },
+          "refreshMode" : 2,
+          "successMsg" : "删除成功",
           "timeout" : 60000,
-          "uIActionMode" : "SYS",
-          "uIActionTag" : "RemoveObject",
-          "uIActionType" : "DEUIACTION"
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "remove_this_page",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "remove_this_page@article_page"
         },
         "tooltip" : "删除",
+        "uIActionTarget" : "SINGLEDATA",
         "showCaption" : true,
         "showIcon" : true
       } ],
@@ -408,20 +421,6 @@
         "codeName" : "content"
       }
     }, {
-      "id" : "create_man",
-      "dataType" : 25,
-      "getPSAppDEField" : {
-        "name" : "CREATE_MAN",
-        "codeName" : "create_man"
-      }
-    }, {
-      "id" : "create_time",
-      "dataType" : 5,
-      "getPSAppDEField" : {
-        "name" : "CREATE_TIME",
-        "codeName" : "create_time"
-      }
-    }, {
       "id" : "update_man",
       "dataType" : 25,
       "getPSAppDEField" : {
@@ -565,7 +564,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[content][面板显示]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "EQ",
                 "dEFDName" : "format_type",
@@ -578,7 +576,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[content][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "EQ",
                 "dEFDName" : "format_type",
@@ -593,8 +590,8 @@
               "cssStyle" : "min-height: 500px;",
               "editorParams" : {
                 "contenttype" : "HTML",
-                "TITLE" : "name",
-                "PARSESCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); const tempIcon = icon.trim(); const params = JSON.stringify(item); return `<span markerClick='marker' params='${params}' class='comment-tag is-click'>${tempIcon} ${item.identifier} ${item.name}</span>`;}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
+                "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
+                "PARSESCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
               },
               "editorStyle" : "ANCHO_HTML",
               "editorType" : "RAW",
@@ -631,7 +628,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[formitem1][面板显示]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "EQ",
                 "dEFDName" : "format_type",
@@ -644,7 +640,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[formitem1][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "EQ",
                 "dEFDName" : "format_type",
@@ -686,7 +681,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[formitem][面板显示]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "EQ",
                 "dEFDName" : "format_type",
@@ -699,7 +693,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[formitem][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "EQ",
                 "dEFDName" : "format_type",
@@ -770,7 +763,6 @@
             "groupOP" : "AND",
             "logicCat" : "PANELVISIBLE",
             "logicType" : "GROUP",
-            "name" : "表单成员[grouppanel3][面板显示]逻辑",
             "getPSDEFDLogics" : [ {
               "condOP" : "ISNOTNULL",
               "dEFDName" : "attachments",
@@ -987,7 +979,6 @@
                     "glyph" : "xf002@FontAwesome",
                     "cssClass" : "fa fa-search"
                   },
-                  "timeout" : 60000,
                   "uIActionMode" : "FRONT",
                   "uIActionTag" : "attachment_preview",
                   "uIActionType" : "DEUIACTION",
@@ -1093,7 +1084,6 @@
                         "pluginCode" : "FILE_DOWNLOAD",
                         "runtimeObject" : true
                       },
-                      "timeout" : 60000,
                       "tooltip" : "下载当前附件",
                       "uIActionMode" : "FRONT",
                       "uIActionTag" : "download",
@@ -1276,118 +1266,6 @@
           "detailType" : "GROUPPANEL",
           "name" : "grouppanel2",
           "getPSDEFormDetails" : [ {
-            "getCapPSLanguageRes" : {
-              "lanResTag" : "DEF.LNAME.CREATE_MAN"
-            },
-            "codeName" : "create_man",
-            "dataType" : 25,
-            "detailStyle" : "DEFAULT",
-            "detailType" : "FORMITEM",
-            "enableCond" : 3,
-            "ignoreInput" : 3,
-            "labelPos" : "NONE",
-            "labelWidth" : 0,
-            "name" : "create_man",
-            "noPrivDisplayMode" : 1,
-            "getPSAppDEField" : {
-              "name" : "CREATE_MAN",
-              "codeName" : "create_man"
-            },
-            "getPSEditor" : {
-              "editorStyle" : "PERSONNEL_INFO",
-              "editorType" : "SPAN",
-              "name" : "create_man",
-              "getPSAppCodeList" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-              },
-              "getPSSysPFPlugin" : {
-                "pluginType" : "EDITOR_CUSTOMSTYLE",
-                "pluginCode" : "PERSONNEL_INFO",
-                "runtimeObject" : true
-              },
-              "enableLinkView" : false
-            },
-            "getPSLayoutPos" : {
-              "grow" : -1,
-              "layout" : "FLEX"
-            },
-            "allowEmpty" : true,
-            "convertToCodeItemText" : true,
-            "emptyCaption" : true
-          }, {
-            "codeName" : "rawitem1",
-            "contentType" : "RAW",
-            "detailStyle" : "DEFAULT",
-            "detailType" : "RAWITEM",
-            "name" : "rawitem1",
-            "getPSLayoutPos" : {
-              "grow" : -1,
-              "layout" : "FLEX"
-            },
-            "getPSRawItem" : {
-              "caption" : "创建于",
-              "contentType" : "RAW",
-              "name" : "rawitem1",
-              "rawItemHeight" : -1.0,
-              "rawItemWidth" : -1.0
-            },
-            "rawContent" : "创建于",
-            "rawItemHeight" : -1.0,
-            "rawItemWidth" : -1.0,
-            "showCaption" : true
-          }, {
-            "getCapPSLanguageRes" : {
-              "lanResTag" : "DEF.LNAME.CREATE_TIME"
-            },
-            "caption" : "建立时间",
-            "codeName" : "create_time",
-            "dataType" : 5,
-            "detailStyle" : "DEFAULT",
-            "detailType" : "FORMITEM",
-            "enableCond" : 3,
-            "ignoreInput" : 3,
-            "labelPos" : "NONE",
-            "labelWidth" : 0,
-            "name" : "create_time",
-            "noPrivDisplayMode" : 1,
-            "getPSAppDEField" : {
-              "name" : "CREATE_TIME",
-              "codeName" : "create_time"
-            },
-            "getPSEditor" : {
-              "editorType" : "SPAN",
-              "name" : "create_time",
-              "enableLinkView" : false
-            },
-            "getPSLayoutPos" : {
-              "grow" : -1,
-              "layout" : "FLEX"
-            },
-            "valueFormat" : "YYYY-MM-DD HH:mm:ss",
-            "allowEmpty" : true
-          }, {
-            "codeName" : "rawitem3",
-            "contentType" : "RAW",
-            "detailStyle" : "DEFAULT",
-            "detailType" : "RAWITEM",
-            "name" : "rawitem3",
-            "getPSLayoutPos" : {
-              "grow" : -1,
-              "layout" : "FLEX"
-            },
-            "getPSRawItem" : {
-              "caption" : "|",
-              "contentType" : "RAW",
-              "name" : "rawitem3",
-              "rawItemHeight" : -1.0,
-              "rawItemWidth" : -1.0
-            },
-            "rawContent" : "|",
-            "rawItemHeight" : -1.0,
-            "rawItemWidth" : -1.0,
-            "showCaption" : true
-          }, {
             "getCapPSLanguageRes" : {
               "lanResTag" : "DEF.LNAME.UPDATE_MAN"
             },

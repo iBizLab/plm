@@ -1,0 +1,273 @@
+{
+  "accUserMode" : 2,
+  "getCapPSLanguageRes" : {
+    "lanResTag" : "DE.LNAME.RELEASE"
+  },
+  "caption" : "路线图",
+  "codeName" : "release_road_map_product_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/release_road_map_product_view.json",
+  "mDCtrlActiveMode" : 1,
+  "name" : "releaseroad_map_product_view",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
+  },
+  "getPSAppModule" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProjMgmt.json"
+  },
+  "getPSAppViewLogics" : [ {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "newdata",
+    "getPSAppUILogic" : {
+      "actionAfterWizard" : "DEFAULT",
+      "logicType" : "PREDEFINED",
+      "name" : "新建数据",
+      "viewLogicType" : "APP_NEWDATA",
+      "batchAddOnly" : false,
+      "enableBatchAdd" : false,
+      "enableWizardAdd" : false
+    }
+  }, {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "opendata",
+    "getPSAppUILogic" : {
+      "logicType" : "PREDEFINED",
+      "name" : "打开数据",
+      "viewLogicType" : "APP_OPENDATA",
+      "editMode" : true
+    }
+  } ],
+  "getPSAppViewRefs" : [ {
+    "name" : "opendata@release",
+    "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
+    "realTitle" : "项目发布主视图",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/release_modal_main_view.json",
+      "viewType" : "DETABEXPVIEW"
+    }
+  }, {
+    "name" : "EDITDATA@release",
+    "realTitle" : "项目发布编辑视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.RELEASE.EDITVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/release_edit_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  } ],
+  "getPSControls" : [ {
+    "calendarStyle" : "TIMELINE",
+    "codeName" : "road_map_product_calendar",
+    "controlType" : "CALENDAR",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release/PSCALENDARS/road_map_product_calendar.json",
+    "groupLayout" : "ROW",
+    "groupMode" : "AUTO",
+    "getGroupPSAppDEField" : {
+      "name" : "END_YEAR",
+      "codeName" : "end_year"
+    },
+    "legendPos" : "NONE",
+    "logicName" : "路线图视图（产品）_日历部件",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
+    },
+    "getPSAppViewLogics" : [ {
+      "logicTrigger" : "CUSTOM",
+      "logicType" : "APPUILOGIC",
+      "name" : "release_editdata",
+      "getPSAppUILogic" : {
+        "logicType" : "PREDEFINED",
+        "name" : "编辑数据",
+        "viewLogicType" : "APP_OPENDATA",
+        "editMode" : true
+      }
+    }, {
+      "logicTrigger" : "CUSTOM",
+      "logicType" : "APPUILOGIC",
+      "name" : "release_opendata",
+      "getPSAppUILogic" : {
+        "logicType" : "PREDEFINED",
+        "name" : "打开数据",
+        "getOpenDataPSAppView" : {
+          "openMode" : "INDEXVIEWTAB_POPUPMODAL",
+          "getPSNavigateContexts" : [ {
+            "key" : "RELEASE",
+            "name" : "RELEASE",
+            "value" : "id",
+            "rawValue" : false
+          }, {
+            "key" : "PROJECT",
+            "name" : "PROJECT",
+            "value" : "project_id",
+            "rawValue" : false
+          } ],
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/release_modal_main_view.json",
+            "viewType" : "DETABEXPVIEW"
+          }
+        },
+        "getPSAppUILogicRefViews" : [ {
+          "openMode" : "INDEXVIEWTAB_POPUPMODAL",
+          "getPSNavigateContexts" : [ {
+            "key" : "RELEASE",
+            "name" : "RELEASE",
+            "value" : "id",
+            "rawValue" : false
+          }, {
+            "key" : "PROJECT",
+            "name" : "PROJECT",
+            "value" : "project_id",
+            "rawValue" : false
+          } ],
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/release_modal_main_view.json",
+            "viewType" : "DETABEXPVIEW"
+          }
+        } ],
+        "viewLogicType" : "APP_OPENDATA",
+        "editMode" : false
+      }
+    } ],
+    "getPSControlHandler" : {
+      "enableDEFieldPrivilege" : false,
+      "id" : "calendar"
+    },
+    "getPSControlParam" : {
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "id" : "CALENDAR"
+    },
+    "getPSControlRenders" : [ {
+      "layoutPanelModel" : "function chunkArray(array, chunkSize) {\r\n  let result = [];\r\n  let items = [...array];\r\n  items.sort((a, b) => new Date(a.endTime) - new Date(b.endTime));\r\n  for (let i = 0; i < items.length; i += chunkSize) {\r\n    result.unshift(items.slice(i, i + chunkSize));\r\n  }\r\n  return result;\r\n}\r\nconst groups = ctrl.state.groups;\r\nconst htmlArr = groups.map(group => {\r\n  const items = chunkArray(group.children, 7);\r\n  return `<div class='time-line'>\r\n\t  <div class='time-line-right'>\r\n\t\t<div class='time-line-right--title'>\r\n\t\t  <div class='time-line-right--caption'>${group.caption}年</div>\r\n\t\t  <div class='time-line-right--description'>\r\n\t\t  迭代 ${group.children.length} 次\r\n\t\t  </div>\r\n\t\t</div>\r\n\t  </div>\r\n\t  <div class='time-line-left'>\r\n\t\t${items.map(children => {\r\n      return `<div class='time-line-left--line'>\r\n\t\t  ${children.map((child, index) => {\r\n        return `<div class='time-line-left--item ${index % 2 !== 0 ? 'is-top' : ''}'>\r\n\t\t\t  <div class='time-line-left--item__dot'></div>\r\n\t\t\t  <div class='time-line-left--item__vertical'></div>\r\n\t\t\t  <div class='time-line-left--item__content'>\r\n\t\t\t\t<div class='time-line-left--item__caption' click='ctrl.onRowClick(data)' data=\"{'id': '${child.id}' }\">\r\n\t\t\t\t\t${child.text}\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class='time-line-left--item__time' click='ctrl.onRowClick(data)' data=\"{'id': '${child.id}' }\">\r\n\t\t\t\t\t${child.endTime}\r\n\t\t\t\t</div>\r\n\t\t\t  </div>\r\n\t\t\t</div>`;\r\n      })}\r\n\t\t  </div>`;\r\n    })}\r\n\t  </div>\r\n\t  </div>`;\r\n});\r\nreturn htmlArr.join('').replaceAll(',', '');",
+      "name" : "render",
+      "renderType" : "LAYOUTPANEL_MODEL"
+    } ],
+    "getPSSysCalendarItems" : [ {
+      "getBeginTimePSAppDEField" : {
+        "name" : "END_AT",
+        "codeName" : "end_at"
+      },
+      "getEndTimePSAppDEField" : {
+        "name" : "END_AT",
+        "codeName" : "end_at"
+      },
+      "getIdPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "itemStyle" : "DEFAULT",
+      "itemType" : "release",
+      "maxSize" : -1,
+      "name" : "发布",
+      "getPSAppDEDataSet" : {
+        "modelref" : true,
+        "id" : "fetch_product_re_project_published"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
+      },
+      "getTextPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      },
+      "enableQuickCreate" : false,
+      "id" : "release"
+    } ],
+    "enableGroup" : true,
+    "name" : "calendar",
+    "modelid" : "5902BFD5-B53F-4539-9CCA-95DD1F06257C",
+    "modeltype" : "PSSYSCALENDAR"
+  }, {
+    "controlType" : "SEARCHBAR",
+    "name" : "searchbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
+    },
+    "getPSControlParam" : {
+      "id" : "searchbar"
+    },
+    "quickGroupCount" : -1,
+    "quickSearchMode" : 0,
+    "quickSearchWidth" : 0,
+    "enableFilter" : false,
+    "enableGroup" : false,
+    "enableQuickSearch" : false,
+    "mobileSearchBar" : false
+  }, {
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DE.LNAME.RELEASE"
+    },
+    "caption" : "路线图",
+    "codeName" : "road_map_product_view_captionbar",
+    "controlType" : "CAPTIONBAR",
+    "name" : "captionbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
+    },
+    "getPSControlParam" : { }
+  } ],
+  "getPSDEViewCodeName" : "road_map_product_view",
+  "getPSDEViewId" : "515655f8880b0056aaad6baed924d6b7",
+  "getPSSysCss" : {
+    "cssName" : "road-map-view"
+  },
+  "getPSViewLayoutPanel" : {
+    "codeName" : "layoutpanel",
+    "controlStyle" : "APPDECALENDARVIEW",
+    "controlType" : "VIEWLAYOUTPANEL",
+    "name" : "layoutpanel",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
+    },
+    "getPSControlParam" : { },
+    "layoutBodyOnly" : true,
+    "layoutPanel" : true,
+    "useDefaultLayout" : true
+  },
+  "refFlag" : false,
+  "title" : "路线图",
+  "viewStyle" : "DEFAULT",
+  "viewType" : "DECALENDARVIEW",
+  "xDataControlName" : "calendar",
+  "enableDP" : true,
+  "enableFilter" : true,
+  "enableSearch" : true,
+  "modelid" : "8c216dd28ca07b19cbc0c0bb767cebdc",
+  "modeltype" : "PSAPPDEVIEW",
+  "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "releases",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "project",
+    "majorDEName" : "PROJECT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "minorDECodeName" : "release",
+    "minorDEName" : "RELEASE",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
+    },
+    "name" : "DER1N_RELEASE_PROJECT_PROJECT_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PROJECT_ID",
+      "codeName" : "project_id"
+    },
+    "rSMode" : 2
+  } ] ]
+}

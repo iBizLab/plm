@@ -255,9 +255,9 @@
       "codeName" : "estimated_update",
       "name" : "预估工时表单项更新",
       "getPSDEFIUpdateDetails" : [ {
-        "name" : "workload_schedule"
-      }, {
         "name" : "estimated_workload"
+      }, {
+        "name" : "workload_schedule"
       } ],
       "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nconsole.log('form_data',form_data);\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nvar remaining = 0; // 剩余工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n\tif(estimated_workload){\r\n\t\t// 计算剩余工时\r\n\t\tremaining = (estimated - actual) >= 0 ? (estimated - actual) : 0;\r\n\t\tform_data.remaining_workload = remaining;\r\n\t}\r\n} else {\r\n\tremaining = estimated;\r\n\tform_data.remaining_workload = estimated_workload;\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
       "customCode" : true,
@@ -980,8 +980,21 @@
                   "codeName" : "description"
                 },
                 "getPSEditor" : {
+                  "editorParams" : {
+                    "MODE" : "DEFAULT",
+                    "REPLYSCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class=\\'mob-comment-tag\\'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class=\\'mob-comment-tag\\'>@$1</span>\").replace(/#{\"id\":\"(.+?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"}/g, \"<span class=\\'mob-comment-tag\\'>$4 $3 $2</span>\").replace(/#{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)}/g, \"<span class=\\'mob-comment-tag\\'>$4 $3 $2</span>\")",
+                    "QUOTECODELISTMAP" : "{\"type\":\"plmmob.base__recent_visite\"}",
+                    "USERURL" : "`projects/${context.project}/project_members/fetch_default`",
+                    "QUOTEURL" : "`recents/fetch_recent_access`"
+                  },
+                  "editorStyle" : "MOB_COLLAPSE",
                   "editorType" : "MOBHTMLTEXT",
-                  "name" : "description"
+                  "name" : "description",
+                  "getPSSysPFPlugin" : {
+                    "pluginType" : "EDITOR_CUSTOMSTYLE",
+                    "pluginCode" : "MOBCOMMENT",
+                    "runtimeObject" : true
+                  }
                 },
                 "getPSLayoutPos" : {
                   "colMD" : 24,
@@ -1302,7 +1315,6 @@
                               "modelref" : true,
                               "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
                             },
-                            "timeout" : 60000,
                             "uIActionMode" : "FRONT",
                             "uIActionTag" : "panel_usr1016756890_upload_click",
                             "uIActionType" : "DEUIACTION",
@@ -1610,7 +1622,6 @@
                                       "pluginCode" : "FILE_DOWNLOAD",
                                       "runtimeObject" : true
                                     },
-                                    "timeout" : 60000,
                                     "tooltip" : "下载当前附件",
                                     "uIActionMode" : "FRONT",
                                     "uIActionTag" : "download",
@@ -1654,7 +1665,6 @@
                                       "cssClass" : "fa fa-trash-o"
                                     },
                                     "refreshMode" : 1,
-                                    "timeout" : 60000,
                                     "uIActionMode" : "FRONT",
                                     "uIActionTag" : "mob_attachment_delete",
                                     "uIActionType" : "DEUIACTION",
@@ -2403,7 +2413,6 @@
                 "groupOP" : "AND",
                 "logicCat" : "PANELVISIBLE",
                 "logicType" : "GROUP",
-                "name" : "表单成员[grouppanel7][面板显示]逻辑",
                 "getPSDEFDLogics" : [ {
                   "condOP" : "EQ",
                   "dEFDName" : "project_type",
@@ -2524,7 +2533,6 @@
                 "groupOP" : "AND",
                 "logicCat" : "PANELVISIBLE",
                 "logicType" : "GROUP",
-                "name" : "表单成员[grouppanel8][面板显示]逻辑",
                 "getPSDEFDLogics" : [ {
                   "condOP" : "ISNOTNULL",
                   "dEFDName" : "release_id",
@@ -2721,6 +2729,7 @@
                 "name" : "grouppanel99",
                 "getPSDEFormDetails" : [ {
                   "actionType" : "UIACTION",
+                  "buttonStyle" : "STYLE2",
                   "caption" : "添加实际工时",
                   "codeName" : "button1",
                   "detailStyle" : "STYLE2",
@@ -2803,7 +2812,6 @@
                       "cssClass" : "fa fa-plus"
                     },
                     "refreshMode" : 1,
-                    "timeout" : 60000,
                     "tooltip" : "添加实际工时",
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "mob_add_actual_workload",
@@ -2816,6 +2824,7 @@
                   "showCaption" : false
                 }, {
                   "actionType" : "UIACTION",
+                  "buttonStyle" : "STYLE2",
                   "caption" : "查看工时明细",
                   "codeName" : "button2",
                   "detailStyle" : "STYLE2",
@@ -2855,7 +2864,6 @@
                       "value" : "work_item",
                       "rawValue" : false
                     } ],
-                    "timeout" : 60000,
                     "tooltip" : "查看工时明细",
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "mob_check_workload_detail",
@@ -4159,7 +4167,6 @@
                             "cssClass" : "fa fa-plus"
                           },
                           "refreshMode" : 1,
-                          "timeout" : 60000,
                           "uIActionMode" : "FRONT",
                           "uIActionTag" : "mob_create_and_relation",
                           "uIActionType" : "DEUIACTION",
@@ -4711,6 +4718,24 @@
                   "actionRSMode" : 1,
                   "codeName" : "relations",
                   "dataRSMode" : 0,
+                  "majorDECodeName" : "project",
+                  "majorDEName" : "PROJECT",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "项目-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
                   "majorDECodeName" : "article_page",
                   "majorDEName" : "PAGE",
                   "getMajorPSAppDataEntity" : {
@@ -4814,6 +4839,24 @@
                     "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
                   },
                   "name" : "工作项-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "product",
+                  "majorDEName" : "PRODUCT",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/product.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "产品-关联",
                   "rSMode" : 2
                 } ] ]
               },
@@ -5961,7 +6004,6 @@
                             "rawValue" : false
                           } ],
                           "refreshMode" : 1,
-                          "timeout" : 60000,
                           "uIActionMode" : "FRONT",
                           "uIActionTag" : "create_and_child_work_item",
                           "uIActionType" : "DEUIACTION",
@@ -8235,6 +8277,24 @@
                   "actionRSMode" : 1,
                   "codeName" : "relations",
                   "dataRSMode" : 0,
+                  "majorDECodeName" : "project",
+                  "majorDEName" : "PROJECT",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "项目-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
                   "majorDECodeName" : "article_page",
                   "majorDEName" : "PAGE",
                   "getMajorPSAppDataEntity" : {
@@ -8338,6 +8398,24 @@
                     "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
                   },
                   "name" : "工作项-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "product",
+                  "majorDEName" : "PRODUCT",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/product.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "产品-关联",
                   "rSMode" : 2
                 } ] ]
               },
@@ -10310,6 +10388,24 @@
                   "actionRSMode" : 1,
                   "codeName" : "relations",
                   "dataRSMode" : 0,
+                  "majorDECodeName" : "project",
+                  "majorDEName" : "PROJECT",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "项目-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
                   "majorDECodeName" : "article_page",
                   "majorDEName" : "PAGE",
                   "getMajorPSAppDataEntity" : {
@@ -10413,6 +10509,24 @@
                     "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
                   },
                   "name" : "工作项-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "product",
+                  "majorDEName" : "PRODUCT",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/product.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "产品-关联",
                   "rSMode" : 2
                 } ] ]
               },
@@ -11482,7 +11596,6 @@
                             "rawValue" : false
                           } ],
                           "refreshMode" : 1,
-                          "timeout" : 60000,
                           "uIActionMode" : "FRONT",
                           "uIActionTag" : "mob_create_and_relation_ticket",
                           "uIActionType" : "DEUIACTION",
@@ -12040,6 +12153,24 @@
                   "actionRSMode" : 1,
                   "codeName" : "relations",
                   "dataRSMode" : 0,
+                  "majorDECodeName" : "project",
+                  "majorDEName" : "PROJECT",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "项目-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
                   "majorDECodeName" : "article_page",
                   "majorDEName" : "PAGE",
                   "getMajorPSAppDataEntity" : {
@@ -12143,6 +12274,24 @@
                     "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
                   },
                   "name" : "工作项-关联",
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "relations",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "product",
+                  "majorDEName" : "PRODUCT",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/product.json"
+                  },
+                  "minorDECodeName" : "relation",
+                  "minorDEName" : "RELATION",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
+                  },
+                  "name" : "产品-关联",
                   "rSMode" : 2
                 } ] ]
               },

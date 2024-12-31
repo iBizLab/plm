@@ -320,7 +320,6 @@
                   "cssClass" : "fa fa-plus"
                 },
                 "refreshMode" : 1,
-                "timeout" : 60000,
                 "uIActionMode" : "FRONT",
                 "uIActionTag" : "create_new_test_case",
                 "uIActionType" : "DEUIACTION",
@@ -549,7 +548,6 @@
             "glyph" : "xf067@FontAwesome",
             "cssClass" : "fa fa-plus"
           },
-          "timeout" : 60000,
           "uIActionMode" : "FRONT",
           "uIActionTag" : "add_relation",
           "uIActionType" : "DEUIACTION",
@@ -738,7 +736,7 @@
         "enableSort" : false
       }, {
         "align" : "LEFT",
-        "cLConvertMode" : "NONE",
+        "cLConvertMode" : "FRONT",
         "caption" : "维护人",
         "codeName" : "target_maintenance_name",
         "columnType" : "DEFGRIDCOLUMN",
@@ -747,14 +745,26 @@
         "name" : "target_maintenance_name",
         "noPrivDisplayMode" : 1,
         "objectNameField" : "maintenance_name",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+        },
         "getPSAppDEField" : {
           "name" : "TEST_CASE",
           "codeName" : "test_case"
         },
+        "getPSSysPFPlugin" : {
+          "pluginType" : "GRID_COLRENDER",
+          "pluginCode" : "PERSONAL_INFO_COLUMN",
+          "runtimeObject" : true
+        },
         "valueType" : "OBJECT",
         "width" : 150,
         "widthUnit" : "PX",
-        "enableSort" : false
+        "enableSort" : false,
+        "getUserParam" : {
+          "USERFILTERMAP" : "{\"id\":\"maintenance_id\",\"name\":\"maintenance_name\"}"
+        }
       }, {
         "align" : "LEFT",
         "cLConvertMode" : "FRONT",
@@ -1564,6 +1574,24 @@
     "actionRSMode" : 1,
     "codeName" : "relations",
     "dataRSMode" : 0,
+    "majorDECodeName" : "project",
+    "majorDEName" : "PROJECT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "minorDECodeName" : "relation",
+    "minorDEName" : "RELATION",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+    },
+    "name" : "项目-关联",
+    "rSMode" : 2
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "relations",
+    "dataRSMode" : 0,
     "majorDECodeName" : "article_page",
     "majorDEName" : "PAGE",
     "getMajorPSAppDataEntity" : {
@@ -1667,6 +1695,24 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
     },
     "name" : "工作项-关联",
+    "rSMode" : 2
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "relations",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "product",
+    "majorDEName" : "PRODUCT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+    },
+    "minorDECodeName" : "relation",
+    "minorDEName" : "RELATION",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+    },
+    "name" : "产品-关联",
     "rSMode" : 2
   } ] ]
 }

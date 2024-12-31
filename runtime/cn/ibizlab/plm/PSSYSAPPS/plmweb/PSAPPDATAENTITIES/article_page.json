@@ -214,6 +214,40 @@
     "builtinMethod" : false,
     "needResourceKey" : true
   }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "count_comment",
+    "methodType" : "DEACTION",
+    "name" : "count_comment",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "article_page_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEACTIONS/count_comment.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "count_comment"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/count_comment",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "CREATE",
     "actionTag" : "Create",
     "codeName" : "create",
@@ -3892,6 +3926,68 @@
     "name" : "SPACE_NAME",
     "stdDataType" : 25,
     "stringLength" : 200
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[USER_TAG][用户标记]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[USER_TAG][用户标记]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[USER_TAG][用户标记]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[USER_TAG][用户标记]移动端默认",
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "user_tag",
+    "logicName" : "用户标记",
+    "name" : "USER_TAG",
+    "stdDataType" : 25,
+    "stringLength" : 200
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[USER_TAG2][用户标记2]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[USER_TAG2][用户标记2]移动端默认",
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[USER_TAG2][用户标记2]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[USER_TAG2][用户标记2]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "codeName" : "user_tag2",
+    "logicName" : "用户标记2",
+    "name" : "USER_TAG2",
+    "stdDataType" : 25,
+    "stringLength" : 200
   } ],
   "getAllPSAppDELogics" : [ {
     "codeName" : "get_shared_title",
@@ -4605,6 +4701,28 @@
       "stdDataType" : 5,
       "type" : "SIMPLE",
       "allowEmpty" : false
+    }, {
+      "codeName" : "user_tag",
+      "logicName" : "用户标记",
+      "name" : "user_tag",
+      "getPSAppDEField" : {
+        "name" : "USER_TAG",
+        "codeName" : "user_tag"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "user_tag2",
+      "logicName" : "用户标记2",
+      "name" : "user_tag2",
+      "getPSAppDEField" : {
+        "name" : "USER_TAG2",
+        "codeName" : "user_tag2"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
     } ],
     "sourceType" : "DE",
     "type" : "DEFAULT"
@@ -5035,6 +5153,50 @@
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "n_user_tag2_eq",
+      "logicName" : "用户标记2",
+      "name" : "n_user_tag2_eq",
+      "getPSAppDEField" : {
+        "name" : "USER_TAG2",
+        "codeName" : "user_tag2"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "n_user_tag2_like",
+      "logicName" : "用户标记2",
+      "name" : "n_user_tag2_like",
+      "getPSAppDEField" : {
+        "name" : "USER_TAG2",
+        "codeName" : "user_tag2"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "n_user_tag_eq",
+      "logicName" : "用户标记",
+      "name" : "n_user_tag_eq",
+      "getPSAppDEField" : {
+        "name" : "USER_TAG",
+        "codeName" : "user_tag"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "n_user_tag_like",
+      "logicName" : "用户标记",
+      "name" : "n_user_tag_like",
+      "getPSAppDEField" : {
+        "name" : "USER_TAG",
+        "codeName" : "user_tag"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
       "type" : "SIMPLE"
     } ],
     "sourceType" : "DE",
@@ -5502,6 +5664,40 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/copy_page",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "count_comment",
+    "methodType" : "DEACTION",
+    "name" : "count_comment",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "article_page_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEACTIONS/count_comment.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "count_comment"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/count_comment",
     "builtinMethod" : false,
     "needResourceKey" : true
   }, {
@@ -7510,7 +7706,6 @@
       "glyph" : "xf067@FontAwesome",
       "cssClass" : "fa fa-plus"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "add_attachments",
     "uIActionType" : "DEUIACTION",
@@ -7585,7 +7780,6 @@
       "value" : "format_type",
       "rawValue" : false
     } ],
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "after_create_page",
     "uIActionType" : "DEUIACTION",
@@ -7751,7 +7945,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "tooltip" : "复制链接",
     "uIActionMode" : "FRONT",
     "uIActionTag" : "copy_shared_url",
@@ -7784,7 +7977,6 @@
       "value" : "article_page",
       "rawValue" : false
     } ],
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "create_child_document",
     "uIActionType" : "DEUIACTION",
@@ -7826,7 +8018,6 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
     "scriptCode" : "const div = document.querySelector('.ibiz-control--show_edit_view_form');\r\nif (ibiz.fullscreenUtil) {\r\n    ibiz.fullscreenUtil.openElementFullscreen(div,{class:'fullscreen'});\r\n}",
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "demonstrate_document",
     "uIActionType" : "DEUIACTION",
@@ -7843,7 +8034,6 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
     "scriptCode" : "let treeexpbar_tree = view.getController(\"treeexpbar_tree\");\r\nif(treeexpbar_tree){\r\n    treeexpbar_tree.changeTreeState(\"draft\");\r\n}\r\n",
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "draft",
     "uIActionType" : "DEUIACTION",
@@ -7865,7 +8055,6 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
     "refreshMode" : 1,
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "get_form_stencil",
     "uIActionType" : "DEUIACTION",
@@ -7952,7 +8141,6 @@
       "cssClass" : "fa fa-trash-o"
     },
     "scriptCode" : "const srfkey = context.space;\r\nwindow.location.hash=`/-/index/space=${srfkey}/space_index_view/srfnav=drgroup/space_setting_view/srfnav=recycle/article_page_recycle_grid_view/-`",
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_deleted_view",
     "uIActionType" : "DEUIACTION",
@@ -7969,7 +8157,6 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
     "scriptCode" : "const item = data[0];\r\nwindow.location.hash=`/-/index/-/space_tree_exp_view/srfnav=root%3Awork%3Afilter/article_page_filter_grid_view/-`",
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_more_page",
     "uIActionType" : "DEUIACTION",
@@ -7996,7 +8183,6 @@
       "id" : "SUBDATA"
     },
     "refreshMode" : 1,
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_page_edit_view",
     "uIActionType" : "DEUIACTION",
@@ -8018,7 +8204,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_page_info",
     "uIActionType" : "DEUIACTION",
@@ -8049,7 +8234,6 @@
       "cssClass" : "fa fa-share-alt"
     },
     "refreshMode" : 1,
-    "timeout" : 60000,
     "tooltip" : "页面共享",
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_shared",
@@ -8088,7 +8272,6 @@
       "cssClass" : "fa fa-edit"
     },
     "refreshMode" : 1,
-    "timeout" : 60000,
     "tooltip" : "共享设置",
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_shared_setting",
@@ -8122,7 +8305,6 @@
       "cssClass" : "fa fa-edit"
     },
     "refreshMode" : 1,
-    "timeout" : 60000,
     "tooltip" : "共享设置",
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_shared_setting_management",
@@ -8157,7 +8339,6 @@
       "value" : "space",
       "rawValue" : false
     } ],
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_show_update_logs",
     "uIActionType" : "DEUIACTION",
@@ -8178,7 +8359,6 @@
       "cssClass" : "fa fa-users"
     },
     "scriptCode" : "const srfkey = context.space;\r\nwindow.location.hash=`/-/index/space=${srfkey}/space_index_view/srfnav=drgroup/space_setting_view/srfnav=member/space_member_config_grid_view/-`",
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_space_member",
     "uIActionType" : "DEUIACTION",
@@ -8199,7 +8379,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_version_view",
     "uIActionType" : "DEUIACTION",
@@ -8229,7 +8408,6 @@
       "modelref" : true,
       "id" : "SUBDATA"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "page_upload",
     "uIActionType" : "DEUIACTION",
@@ -8259,7 +8437,6 @@
       "modelref" : true,
       "id" : "SUBDATA"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "quick_create_page_document",
     "uIActionType" : "DEUIACTION",
@@ -8289,7 +8466,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "quick_new_page",
     "uIActionType" : "DEUIACTION",
@@ -8403,7 +8579,6 @@
       "value" : "srfversionid",
       "rawValue" : false
     } ],
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "recover_version_refresh",
     "uIActionType" : "DEUIACTION",
@@ -8430,7 +8605,6 @@
       "cssClass" : "fa fa-paper-plane-o"
     },
     "refreshMode" : 1,
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "release",
     "uIActionType" : "DEUIACTION",
@@ -8439,6 +8613,30 @@
     "closePopupView" : true,
     "reloadData" : true,
     "id" : "release@article_page"
+  }, {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "删除页面",
+    "codeName" : "remove_this_page",
+    "confirmMsg" : "确认删除草稿吗？删除后无法恢复",
+    "fullCodeName" : "article_page_remove_this_page",
+    "name" : "删除页面（草稿）",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "delete"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
+    },
+    "refreshMode" : 2,
+    "successMsg" : "删除成功",
+    "timeout" : 60000,
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "remove_this_page",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "remove_this_page@article_page"
   }, {
     "actionTarget" : "SINGLEDATA",
     "caption" : "另存为模板",
@@ -8525,7 +8723,6 @@
       "id" : "UPDATE"
     },
     "refreshMode" : 1,
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "shared_with_me_edit",
     "uIActionType" : "DEUIACTION",
@@ -8546,7 +8743,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_model_show_view_noupdown_toolbar_deuiaction2_click",
     "uIActionType" : "DEUIACTION",
@@ -8568,7 +8764,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_model_show_view_noupdown_toolbar_deuiaction3_click",
     "uIActionType" : "DEUIACTION",
@@ -8590,7 +8785,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_model_show_view_toolbar_deuiaction2_click",
     "uIActionType" : "DEUIACTION",
@@ -8612,7 +8806,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_model_show_view_toolbar_deuiaction3_click",
     "uIActionType" : "DEUIACTION",
@@ -8634,7 +8827,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_re_show_view_toolbar_deuiaction2_click",
     "uIActionType" : "DEUIACTION",
@@ -8656,7 +8848,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_re_show_view_toolbar_deuiaction3_click",
     "uIActionType" : "DEUIACTION",
@@ -8678,7 +8869,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_show_custom_view_toolbar_deuiaction2_click",
     "uIActionType" : "DEUIACTION",
@@ -8700,7 +8890,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_show_custom_view_toolbar_deuiaction3_click",
     "uIActionType" : "DEUIACTION",
@@ -8722,7 +8911,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_show_view_toolbar_deuiaction2_click",
     "uIActionType" : "DEUIACTION",
@@ -8744,79 +8932,12 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_show_view_toolbar_deuiaction3_click",
     "uIActionType" : "DEUIACTION",
     "uILogicAttachMode" : "REPLACE",
     "uILogicType" : "DELOGIC",
     "id" : "toolbar_show_view_toolbar_deuiaction3_click@article_page"
-  }, {
-    "actionTarget" : "SINGLEDATA",
-    "caption" : "删除",
-    "codeName" : "toolbar_tree_exp_view_draft_cm_deuiaction1_click",
-    "frontProcessType" : "OTHER",
-    "fullCodeName" : "article_page_toolbar_tree_exp_view_draft_cm_deuiaction1_click",
-    "name" : "删除",
-    "getPSAppDEUILogic" : {
-      "modelref" : true,
-      "id" : "delete_page"
-    },
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
-    },
-    "timeout" : 60000,
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "toolbar_tree_exp_view_draft_cm_deuiaction1_click",
-    "uIActionType" : "DEUIACTION",
-    "uILogicAttachMode" : "REPLACE",
-    "uILogicType" : "DELOGIC",
-    "id" : "toolbar_tree_exp_view_draft_cm_deuiaction1_click@article_page"
-  }, {
-    "actionTarget" : "SINGLEDATA",
-    "caption" : "重命名",
-    "codeName" : "toolbar_tree_exp_view_draft_cm_deuiaction2_click",
-    "frontProcessType" : "OTHER",
-    "fullCodeName" : "article_page_toolbar_tree_exp_view_draft_cm_deuiaction2_click",
-    "name" : "重命名",
-    "getPSAppDEUILogic" : {
-      "modelref" : true,
-      "id" : "edit_section_or_category"
-    },
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
-    },
-    "timeout" : 60000,
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "toolbar_tree_exp_view_draft_cm_deuiaction2_click",
-    "uIActionType" : "DEUIACTION",
-    "uILogicAttachMode" : "REPLACE",
-    "uILogicType" : "DELOGIC",
-    "id" : "toolbar_tree_exp_view_draft_cm_deuiaction2_click@article_page"
-  }, {
-    "actionTarget" : "SINGLEDATA",
-    "caption" : "新建子分组",
-    "codeName" : "toolbar_tree_exp_view_draft_cm_deuiaction4_click",
-    "frontProcessType" : "OTHER",
-    "fullCodeName" : "article_page_toolbar_tree_exp_view_draft_cm_deuiaction4_click",
-    "name" : "新建子分组",
-    "getPSAppDEUILogic" : {
-      "modelref" : true,
-      "id" : "create_children_section"
-    },
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
-    },
-    "timeout" : 60000,
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "toolbar_tree_exp_view_draft_cm_deuiaction4_click",
-    "uIActionType" : "DEUIACTION",
-    "uILogicAttachMode" : "REPLACE",
-    "uILogicType" : "DELOGIC",
-    "id" : "toolbar_tree_exp_view_draft_cm_deuiaction4_click@article_page"
   }, {
     "actionTarget" : "SINGLEDATA",
     "caption" : "删除",
@@ -8832,7 +8953,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_tree_exp_view_node1_cm_deuiaction1_click",
     "uIActionType" : "DEUIACTION",
@@ -8854,7 +8974,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_tree_exp_view_node1_cm_deuiaction2_click",
     "uIActionType" : "DEUIACTION",
@@ -8876,7 +8995,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_tree_exp_view_node1_cm_deuiaction4_click",
     "uIActionType" : "DEUIACTION",
@@ -8898,7 +9016,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_tree_exp_view_node2_cm_deuiaction1_click",
     "uIActionType" : "DEUIACTION",
@@ -8920,7 +9037,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_tree_exp_view_node2_cm_deuiaction2_click",
     "uIActionType" : "DEUIACTION",
@@ -8942,7 +9058,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_tree_exp_view_node2_cm_deuiaction4_click",
     "uIActionType" : "DEUIACTION",
@@ -8964,7 +9079,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_tree_exp_view_node3_cm_deuiaction1_click",
     "uIActionType" : "DEUIACTION",
@@ -8986,7 +9100,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_tree_exp_view_node3_cm_deuiaction2_click",
     "uIActionType" : "DEUIACTION",
@@ -9008,7 +9121,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_tree_exp_view_node3_cm_deuiaction4_click",
     "uIActionType" : "DEUIACTION",
@@ -9030,7 +9142,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_tree_exp_view_node4_cm_deuiaction1_click",
     "uIActionType" : "DEUIACTION",
@@ -9052,7 +9163,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_tree_exp_view_node4_cm_deuiaction2_click",
     "uIActionType" : "DEUIACTION",
@@ -9074,7 +9184,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_tree_exp_view_node4_cm_deuiaction4_click",
     "uIActionType" : "DEUIACTION",
@@ -9096,7 +9205,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_tree_exp_view_node5_cm_deuiaction1_click",
     "uIActionType" : "DEUIACTION",
@@ -9118,7 +9226,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_tree_exp_view_node5_cm_deuiaction2_click",
     "uIActionType" : "DEUIACTION",
@@ -9140,7 +9247,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_tree_exp_view_node5_cm_deuiaction4_click",
     "uIActionType" : "DEUIACTION",
@@ -9162,7 +9268,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction2_click",
     "uIActionType" : "DEUIACTION",
@@ -9185,7 +9290,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction4_click",
     "uIActionType" : "DEUIACTION",
@@ -9229,7 +9333,6 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
     },
     "scriptCode" : "const result = await ibiz.util.file.chooseFileAndUpload(context, params, data, { multiple: true, showUploadManager: true });\r\nif (result) {\r\n    const items = result.map(item => {\r\n        return {\r\n            uuid: item.id,\r\n            ...item,\r\n        };\r\n    });\r\n    Object.assign(data, items);\r\n}\r\nreturn { data: result };",
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "upload_attachment",
     "uIActionType" : "DEUIACTION",
@@ -9255,7 +9358,6 @@
       "cssClass" : "fa fa-upload"
     },
     "refreshMode" : 1,
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "upload_icon",
     "uIActionType" : "DEUIACTION",
@@ -9662,13 +9764,13 @@
     "name" : "关闭评论区",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : -110,
+      "leftPos" : -290,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
+          "id" : "DEUIACTION1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -9680,57 +9782,27 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "codeName" : "PREPAREJSPARAM3",
-      "leftPos" : 310,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "设置工具栏项、评论列表显隐",
+      "code" : "const operator = context.loginname;\r\n\r\nlocalStorage.removeItem(operator);",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 844,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "记录评论状态",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM4"
+          "id" : "RAWJSCODE2"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM3"
+          "id" : "RAWJSCODE1"
         }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "visible",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "right_grouppanel_state"
-        },
-        "name" : "直接值[false] ==> right_grouppanel_state[visible]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "false",
-        "srcValueType" : "SRCVALUE"
-      }, {
-        "dstFieldName" : "visible",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "button3_state_obj"
-        },
-        "name" : "直接值[false] ==> button3_state_obj[visible]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "false",
-        "srcValueType" : "SRCVALUE"
-      }, {
-        "dstFieldName" : "visible",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "button2_state_obj"
-        },
-        "name" : "直接值[true] ==> button2_state_obj[visible]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "true",
-        "srcValueType" : "SRCVALUE"
       } ],
       "topPos" : 208
     }, {
       "codeName" : "END1",
-      "leftPos" : 840,
+      "leftPos" : 1340,
       "logicNodeType" : "END",
       "name" : "结束",
       "topPos" : 200
@@ -9800,7 +9872,7 @@
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "END1"
+          "id" : "RAWJSCODE1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -9821,6 +9893,104 @@
         "srcValueType" : "SRCVALUE"
       } ],
       "topPos" : 208
+    }, {
+      "codeName" : "PREPAREJSPARAM3",
+      "leftPos" : 310,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "设置工具栏项、评论列表显隐",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM4"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM3"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "visible",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "right_grouppanel_state"
+        },
+        "name" : "直接值[false] ==> right_grouppanel_state[visible]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "false",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "visible",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "button3_state_obj"
+        },
+        "name" : "直接值[false] ==> button3_state_obj[visible]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "false",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "visible",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "button2_state_obj"
+        },
+        "name" : "直接值[true] ==> button2_state_obj[visible]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "true",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "DEUIACTION1",
+      "getDstPSAppDEUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
+        },
+        "modelref" : true,
+        "id" : "clear_comment_wiki@comment"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
+      },
+      "leftPos" : -159,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "清空评论",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION1"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "code" : "ibiz.mc.command.create.send({ srfdecodename: 'article_page'})",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 1091,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "通知刷新",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      } ],
+      "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
@@ -9828,11 +9998,6 @@
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
-    }, {
-      "codeName" : "form",
-      "logicName" : "form",
-      "name" : "form",
-      "ctrlParam" : true
     }, {
       "codeName" : "view",
       "logicName" : "view",
@@ -9844,9 +10009,9 @@
       "name" : "容器状态",
       "entityParam" : true
     }, {
-      "codeName" : "button3_state_obj",
-      "logicName" : "关闭按钮状态",
-      "name" : "关闭按钮状态",
+      "codeName" : "button2_state_obj",
+      "logicName" : "评论按钮状态",
+      "name" : "评论按钮状态",
       "entityParam" : true
     }, {
       "codeName" : "toolbar",
@@ -9854,9 +10019,14 @@
       "name" : "工具栏",
       "ctrlParam" : true
     }, {
-      "codeName" : "button2_state_obj",
-      "logicName" : "评论按钮状态",
-      "name" : "评论按钮状态",
+      "codeName" : "form",
+      "logicName" : "form",
+      "name" : "form",
+      "ctrlParam" : true
+    }, {
+      "codeName" : "button3_state_obj",
+      "logicName" : "关闭按钮状态",
+      "name" : "关闭按钮状态",
       "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
@@ -10306,6 +10476,21 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "treeexpbar_tree"
+      },
+      "invokeMethod" : "refresh",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "treeexpbar_tree"
+      },
+      "leftPos" : 640,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "视图部件调用",
+      "topPos" : 208
+    }, {
       "codeName" : "DEUIACTION1",
       "getDstPSAppDEUIAction" : {
         "getPSAppDataEntity" : {
@@ -10339,21 +10524,6 @@
         }
       } ],
       "topPos" : 208
-    }, {
-      "codeName" : "VIEWCTRLINVOKE1",
-      "getInvokeCtrl" : {
-        "modelref" : true,
-        "id" : "treeexpbar_tree"
-      },
-      "invokeMethod" : "refresh",
-      "getInvokeParam" : {
-        "modelref" : true,
-        "id" : "treeexpbar_tree"
-      },
-      "leftPos" : 640,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "视图部件调用",
-      "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "node_param",
@@ -10361,6 +10531,11 @@
       "name" : "节点参数",
       "stdDataType" : 25,
       "simpleParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图",
+      "name" : "当前视图",
+      "activeViewParam" : true
     }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
@@ -11132,12 +11307,6 @@
       } ],
       "topPos" : 208
     }, {
-      "codeName" : "END1",
-      "leftPos" : 970,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
-    }, {
       "codeName" : "PREPAREJSPARAM3",
       "leftPos" : 696,
       "logicNodeType" : "PREPAREJSPARAM",
@@ -11145,7 +11314,7 @@
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "END1"
+          "id" : "RAWJSCODE1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -11164,6 +11333,31 @@
         "paramAction" : "SETPARAMVALUE",
         "srcValue" : "true",
         "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 1270,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
+      "code" : "const operator = context.loginname;\r\n\r\nlocalStorage.setItem(operator, 'true');",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 976,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "记录评论状态",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
       } ],
       "topPos" : 208
     }, {
@@ -11217,20 +11411,15 @@
       "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "toolbar",
-      "logicName" : "工具栏",
-      "name" : "工具栏",
+      "codeName" : "button2_state_obj",
+      "logicName" : "评论按钮状态",
+      "name" : "评论按钮状态",
+      "entityParam" : true
+    }, {
+      "codeName" : "container_scroll1",
+      "logicName" : "滚动条容器1",
+      "name" : "滚动条容器1",
       "ctrlParam" : true
-    }, {
-      "codeName" : "right_grouppanel_state",
-      "logicName" : "容器状态",
-      "name" : "容器状态",
-      "entityParam" : true
-    }, {
-      "codeName" : "button3_state_obj",
-      "logicName" : "关闭按钮状态",
-      "name" : "关闭按钮状态",
-      "entityParam" : true
     }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
@@ -11243,14 +11432,19 @@
       "name" : "view",
       "activeViewParam" : true
     }, {
-      "codeName" : "button2_state_obj",
-      "logicName" : "评论按钮状态",
-      "name" : "评论按钮状态",
+      "codeName" : "button3_state_obj",
+      "logicName" : "关闭按钮状态",
+      "name" : "关闭按钮状态",
       "entityParam" : true
     }, {
-      "codeName" : "container_scroll1",
-      "logicName" : "滚动条容器1",
-      "name" : "滚动条容器1",
+      "codeName" : "right_grouppanel_state",
+      "logicName" : "容器状态",
+      "name" : "容器状态",
+      "entityParam" : true
+    }, {
+      "codeName" : "toolbar",
+      "logicName" : "工具栏",
+      "name" : "工具栏",
       "ctrlParam" : true
     }, {
       "codeName" : "form",

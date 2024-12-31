@@ -214,6 +214,40 @@
     "builtinMethod" : false,
     "needResourceKey" : true
   }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "count_comment",
+    "methodType" : "DEACTION",
+    "name" : "count_comment",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "article_page_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEACTIONS/count_comment.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "count_comment"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/count_comment",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "CREATE",
     "actionTag" : "Create",
     "codeName" : "create",
@@ -3892,6 +3926,68 @@
     "name" : "SPACE_NAME",
     "stdDataType" : 25,
     "stringLength" : 200
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[USER_TAG][用户标记]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[USER_TAG][用户标记]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[USER_TAG][用户标记]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[USER_TAG][用户标记]移动端默认",
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "user_tag",
+    "logicName" : "用户标记",
+    "name" : "USER_TAG",
+    "stdDataType" : 25,
+    "stringLength" : 200
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[USER_TAG2][用户标记2]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[USER_TAG2][用户标记2]移动端默认",
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[USER_TAG2][用户标记2]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[USER_TAG2][用户标记2]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "codeName" : "user_tag2",
+    "logicName" : "用户标记2",
+    "name" : "USER_TAG2",
+    "stdDataType" : 25,
+    "stringLength" : 200
   } ],
   "getAllPSAppDELogics" : [ {
     "codeName" : "get_shared_title",
@@ -4605,6 +4701,28 @@
       "stdDataType" : 5,
       "type" : "SIMPLE",
       "allowEmpty" : false
+    }, {
+      "codeName" : "user_tag",
+      "logicName" : "用户标记",
+      "name" : "user_tag",
+      "getPSAppDEField" : {
+        "name" : "USER_TAG",
+        "codeName" : "user_tag"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "user_tag2",
+      "logicName" : "用户标记2",
+      "name" : "user_tag2",
+      "getPSAppDEField" : {
+        "name" : "USER_TAG2",
+        "codeName" : "user_tag2"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
     } ],
     "sourceType" : "DE",
     "type" : "DEFAULT"
@@ -5035,6 +5153,50 @@
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "n_user_tag2_eq",
+      "logicName" : "用户标记2",
+      "name" : "n_user_tag2_eq",
+      "getPSAppDEField" : {
+        "name" : "USER_TAG2",
+        "codeName" : "user_tag2"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "n_user_tag2_like",
+      "logicName" : "用户标记2",
+      "name" : "n_user_tag2_like",
+      "getPSAppDEField" : {
+        "name" : "USER_TAG2",
+        "codeName" : "user_tag2"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "n_user_tag_eq",
+      "logicName" : "用户标记",
+      "name" : "n_user_tag_eq",
+      "getPSAppDEField" : {
+        "name" : "USER_TAG",
+        "codeName" : "user_tag"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "n_user_tag_like",
+      "logicName" : "用户标记",
+      "name" : "n_user_tag_like",
+      "getPSAppDEField" : {
+        "name" : "USER_TAG",
+        "codeName" : "user_tag"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
       "type" : "SIMPLE"
     } ],
     "sourceType" : "DE",
@@ -5502,6 +5664,40 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/copy_page",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "count_comment",
+    "methodType" : "DEACTION",
+    "name" : "count_comment",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "article_page_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEACTIONS/count_comment.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "count_comment"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/count_comment",
     "builtinMethod" : false,
     "needResourceKey" : true
   }, {
@@ -7612,7 +7808,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "tooltip" : "复制链接",
     "uIActionMode" : "FRONT",
     "uIActionTag" : "copy_shared_url",
@@ -7691,7 +7886,6 @@
       "glyph" : "xf196@FontAwesome",
       "cssClass" : "fa fa-plus-square-o"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "mob_create_child_document",
     "uIActionType" : "DEUIACTION",
@@ -7713,7 +7907,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "mob_create_page",
     "uIActionType" : "DEUIACTION",
@@ -7776,7 +7969,6 @@
       "glyph" : "xf0ea@FontAwesome",
       "cssClass" : "fa fa-clipboard"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "mob_draft",
     "uIActionType" : "DEUIACTION",
@@ -7832,7 +8024,6 @@
       "glyph" : "xf07c@FontAwesome",
       "cssClass" : "fa fa-folder-open"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "mob_new_section",
     "uIActionType" : "DEUIACTION",
@@ -7854,7 +8045,6 @@
       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
     },
     "refreshMode" : 1,
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "mob_open_comment_list",
     "uIActionType" : "DEUIACTION",
@@ -7883,7 +8073,6 @@
       "id" : "UPDATE"
     },
     "refreshMode" : 1,
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "mob_open_page_edit_view",
     "uIActionType" : "DEUIACTION",
@@ -7915,7 +8104,6 @@
       "cssClass" : "fa fa-share-alt"
     },
     "refreshMode" : 1,
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "mob_open_shared",
     "uIActionType" : "DEUIACTION",
@@ -7946,7 +8134,6 @@
       "glyph" : "xf0ec@FontAwesome",
       "cssClass" : "fa fa-exchange"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "mob_rename",
     "uIActionType" : "DEUIACTION",
@@ -7983,7 +8170,6 @@
       "cssClass" : "fa fa-edit"
     },
     "refreshMode" : 1,
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "mob_shared_setting",
     "uIActionType" : "DEUIACTION",
@@ -8006,7 +8192,6 @@
       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/article_page.json"
     },
     "refreshMode" : 1,
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_attention_list",
     "uIActionType" : "DEUIACTION",
@@ -8034,7 +8219,6 @@
       "cssClass" : "fa fa-paper-plane-o"
     },
     "refreshMode" : 1,
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "release",
     "uIActionType" : "DEUIACTION",

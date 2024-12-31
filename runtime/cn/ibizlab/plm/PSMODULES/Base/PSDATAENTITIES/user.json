@@ -324,6 +324,9 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEDRITEMS/UsrDRItem1022394038.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEDRITEMS/UsrDRItem1210366303.json"
   } ],
   "getAllPSDEDataQueries" : [ {
     "getAllPSDEDataQueryCodes" : [ {
@@ -1333,6 +1336,81 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "TITLE",
+      "dBType" : "MYSQL5",
+      "name" : "TITLE",
+      "queryCodeExp" : "t1.`TITLE`",
+      "standardColumnName" : "`TITLE`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_TITLE_EQ",
+      "name" : "N_TITLE_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[TITLE][职位]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[TITLE][职位]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[TITLE][职位]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[TITLE][职位]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "TITLE",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "title",
+    "dEFType" : 1,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "职位",
+    "name" : "TITLE",
+    "serviceCodeName" : "title",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "ID",
       "dBType" : "MYSQL5",
       "name" : "ID",
@@ -2297,6 +2375,238 @@
     "viewLevel" : 0,
     "linkDEField" : true,
     "phisicalDEField" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "ORGANIZATION_ID",
+      "dBType" : "MYSQL5",
+      "name" : "ORGANIZATION_ID",
+      "queryCodeExp" : "t1.`ORGANIZATION_ID`",
+      "standardColumnName" : "`ORGANIZATION_ID`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_ORGANIZATION_ID_EQ",
+      "name" : "N_ORGANIZATION_ID_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[ORGANIZATION_ID][组织标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[ORGANIZATION_ID][组织标识]",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/organization.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[ORGANIZATION_ID][组织标识]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "HIDDEN",
+        "name" : "[ORGANIZATION_ID][组织标识]移动端默认",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/organization.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "ORGANIZATION_ID",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "organization_id",
+    "dEFType" : 1,
+    "dataType" : "PICKUP",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "组织标识",
+    "name" : "ORGANIZATION_ID",
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDERS/DER1N_USER_ORGANIZATION_ORGANIZATION_ID.json"
+    },
+    "getRealPSDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/organization.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/organization.json"
+    },
+    "serviceCodeName" : "organization_id",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s",
+    "linkDEField" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "ORGANIZATION_NAME",
+      "dBType" : "MYSQL5",
+      "name" : "ORGANIZATION_NAME",
+      "standardColumnName" : "`ORGANIZATION_NAME`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_ORGANIZATION_NAME_EQ",
+      "name" : "N_ORGANIZATION_NAME_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    }, {
+      "codeName" : "N_ORGANIZATION_NAME_LIKE",
+      "name" : "N_ORGANIZATION_NAME_LIKE",
+      "stdDataType" : 25,
+      "valueOP" : "LIKE"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[ORGANIZATION_NAME][名称]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "PICKER",
+        "name" : "[ORGANIZATION_NAME][名称]",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "MPickupView",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/organization/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/organization.json"
+        },
+        "refPickupPSDEViewCodeName" : "PickupView",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[ORGANIZATION_NAME][名称]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBPICKER",
+        "name" : "[ORGANIZATION_NAME][名称]移动端默认",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "MPickupView",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/organization/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/organization.json"
+        },
+        "refPickupPSDEViewCodeName" : "PickupView",
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "ORGANIZATION_NAME",
+          "maxValue" : 200,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[200]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[200]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[200]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "organization_name",
+    "dEFType" : 3,
+    "dataType" : "PICKUPTEXT",
+    "importOrder" : 1000,
+    "length" : 200,
+    "logicName" : "组织名称",
+    "name" : "ORGANIZATION_NAME",
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDERS/DER1N_USER_ORGANIZATION_ORGANIZATION_ID.json"
+    },
+    "getRealPSDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/organization.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/organization.json"
+    },
+    "serviceCodeName" : "organization_name",
+    "stdDataType" : 25,
+    "stringLength" : 200,
+    "valueFormat" : "%1$s",
+    "getValuePSDEField" : {
+      "name" : "ORGANIZATION_ID",
+      "codeName" : "organization_id"
+    },
+    "viewLevel" : 0,
+    "linkDEField" : true,
+    "phisicalDEField" : false
   } ],
   "getAllPSDELogics" : [ {
     "codeName" : "cancel_report_flag",
@@ -3145,6 +3455,18 @@
       "name" : "PSDEMAPDQ",
       "getSrcPSDEDataQuery" : {
         "modelref" : true,
+        "id" : "unassigned_dept"
+      },
+      "enableDQCond" : true
+    }, {
+      "getDstPSDEDataQuery" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "mapMode" : "INNER",
+      "name" : "PSDEMAPDQ",
+      "getSrcPSDEDataQuery" : {
+        "modelref" : true,
         "id" : "Default"
       },
       "enableDQCond" : true
@@ -3157,18 +3479,6 @@
       "getSrcPSDEDataQuery" : {
         "modelref" : true,
         "id" : "user"
-      },
-      "enableDQCond" : true
-    }, {
-      "getDstPSDEDataQuery" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "mapMode" : "INNER",
-      "name" : "PSDEMAPDQ",
-      "getSrcPSDEDataQuery" : {
-        "modelref" : true,
-        "id" : "unassigned_dept"
       },
       "enableDQCond" : true
     } ],
@@ -3181,7 +3491,7 @@
       "name" : "PSDEMAPDS",
       "getSrcPSDEDataSet" : {
         "modelref" : true,
-        "id" : "Default"
+        "id" : "unassigned_dept"
       },
       "enableDQCond" : true
     }, {
@@ -3204,7 +3514,7 @@
       "name" : "PSDEMAPDS",
       "getSrcPSDEDataSet" : {
         "modelref" : true,
-        "id" : "unassigned_dept"
+        "id" : "Default"
       },
       "enableDQCond" : true
     }, {
@@ -3219,42 +3529,6 @@
       }
     } ],
     "getPSDEMapFields" : [ {
-      "dstFieldName" : "PHONE",
-      "getDstPSDEField" : {
-        "name" : "PHONE",
-        "codeName" : "Phone"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "MOBILE",
-      "getSrcPSDEField" : {
-        "name" : "MOBILE",
-        "codeName" : "mobile"
-      }
-    }, {
-      "dstFieldName" : "STATE",
-      "getDstPSDEField" : {
-        "name" : "STATE",
-        "codeName" : "State"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "STATUS",
-      "getSrcPSDEField" : {
-        "name" : "STATUS",
-        "codeName" : "status"
-      }
-    }, {
-      "dstFieldName" : "POSTID",
-      "getDstPSDEField" : {
-        "name" : "POSTID",
-        "codeName" : "PostId"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "JOB_ID",
-      "getSrcPSDEField" : {
-        "name" : "JOB_ID",
-        "codeName" : "Job_id"
-      }
-    }, {
       "dstFieldName" : "MDEPTNAME",
       "getDstPSDEField" : {
         "name" : "MDEPTNAME",
@@ -3267,40 +3541,16 @@
         "codeName" : "department_name"
       }
     }, {
-      "dstFieldName" : "LOGINNAME",
+      "dstFieldName" : "PHONE",
       "getDstPSDEField" : {
-        "name" : "LOGINNAME",
-        "codeName" : "LoginName"
+        "name" : "PHONE",
+        "codeName" : "Phone"
       },
       "mapType" : "FIELD",
-      "srcFieldName" : "NAME",
+      "srcFieldName" : "MOBILE",
       "getSrcPSDEField" : {
-        "name" : "NAME",
-        "codeName" : "name"
-      }
-    }, {
-      "dstFieldName" : "MDEPTID",
-      "getDstPSDEField" : {
-        "name" : "MDEPTID",
-        "codeName" : "MDeptId"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "DEPARTMENT_ID",
-      "getSrcPSDEField" : {
-        "name" : "DEPARTMENT_ID",
-        "codeName" : "Department_id"
-      }
-    }, {
-      "dstFieldName" : "PERSONNAME",
-      "getDstPSDEField" : {
-        "name" : "PERSONNAME",
-        "codeName" : "PersonName"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "DISPLAY_NAME",
-      "getSrcPSDEField" : {
-        "name" : "DISPLAY_NAME",
-        "codeName" : "display_name"
+        "name" : "MOBILE",
+        "codeName" : "mobile"
       }
     }, {
       "dstFieldName" : "USERCODE",
@@ -3327,6 +3577,78 @@
         "codeName" : "job_name"
       }
     }, {
+      "dstFieldName" : "USERICON",
+      "getDstPSDEField" : {
+        "name" : "USERICON",
+        "codeName" : "UserIcon"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "AVATAR",
+      "getSrcPSDEField" : {
+        "name" : "AVATAR",
+        "codeName" : "avatar"
+      }
+    }, {
+      "dstFieldName" : "ORGNAME",
+      "getDstPSDEField" : {
+        "name" : "ORGNAME",
+        "codeName" : "OrgName"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "ORGANIZATION_NAME",
+      "getSrcPSDEField" : {
+        "name" : "ORGANIZATION_NAME",
+        "codeName" : "organization_name"
+      }
+    }, {
+      "dstFieldName" : "ORGID",
+      "getDstPSDEField" : {
+        "name" : "ORGID",
+        "codeName" : "OrgId"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "ORGANIZATION_ID",
+      "getSrcPSDEField" : {
+        "name" : "ORGANIZATION_ID",
+        "codeName" : "organization_id"
+      }
+    }, {
+      "dstFieldName" : "LOGINNAME",
+      "getDstPSDEField" : {
+        "name" : "LOGINNAME",
+        "codeName" : "LoginName"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "NAME",
+      "getSrcPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
+    }, {
+      "dstFieldName" : "STATE",
+      "getDstPSDEField" : {
+        "name" : "STATE",
+        "codeName" : "State"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "STATUS",
+      "getSrcPSDEField" : {
+        "name" : "STATUS",
+        "codeName" : "status"
+      }
+    }, {
+      "dstFieldName" : "POSTID",
+      "getDstPSDEField" : {
+        "name" : "POSTID",
+        "codeName" : "PostId"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "JOB_ID",
+      "getSrcPSDEField" : {
+        "name" : "JOB_ID",
+        "codeName" : "Job_id"
+      }
+    }, {
       "dstFieldName" : "USERID",
       "getDstPSDEField" : {
         "name" : "USERID",
@@ -3339,16 +3661,40 @@
         "codeName" : "id"
       }
     }, {
-      "dstFieldName" : "USERICON",
+      "dstFieldName" : "PERSONNAME",
       "getDstPSDEField" : {
-        "name" : "USERICON",
-        "codeName" : "UserIcon"
+        "name" : "PERSONNAME",
+        "codeName" : "PersonName"
       },
       "mapType" : "FIELD",
-      "srcFieldName" : "AVATAR",
+      "srcFieldName" : "DISPLAY_NAME",
       "getSrcPSDEField" : {
-        "name" : "AVATAR",
-        "codeName" : "avatar"
+        "name" : "DISPLAY_NAME",
+        "codeName" : "display_name"
+      }
+    }, {
+      "dstFieldName" : "POSTNAME",
+      "getDstPSDEField" : {
+        "name" : "POSTNAME",
+        "codeName" : "PostName"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "TITLE",
+      "getSrcPSDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      }
+    }, {
+      "dstFieldName" : "MDEPTID",
+      "getDstPSDEField" : {
+        "name" : "MDEPTID",
+        "codeName" : "MDeptId"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "DEPARTMENT_ID",
+      "getSrcPSDEField" : {
+        "name" : "DEPARTMENT_ID",
+        "codeName" : "Department_id"
       }
     }, {
       "dstFieldName" : "PASSWORD",
@@ -3479,7 +3825,7 @@
       "name" : "PSDEMAPDQ",
       "getSrcPSDEDataQuery" : {
         "modelref" : true,
-        "id" : "Default"
+        "id" : "unassigned_dept"
       },
       "enableDQCond" : true
     }, {
@@ -3491,7 +3837,7 @@
       "name" : "PSDEMAPDQ",
       "getSrcPSDEDataQuery" : {
         "modelref" : true,
-        "id" : "unassigned_dept"
+        "id" : "Default"
       },
       "enableDQCond" : true
     } ],
@@ -3504,7 +3850,7 @@
       "name" : "PSDEMAPDS",
       "getSrcPSDEDataSet" : {
         "modelref" : true,
-        "id" : "Default"
+        "id" : "unassigned_dept"
       },
       "enableDQCond" : true
     }, {
@@ -3516,7 +3862,7 @@
       "name" : "PSDEMAPDS",
       "getSrcPSDEDataSet" : {
         "modelref" : true,
-        "id" : "unassigned_dept"
+        "id" : "Default"
       },
       "enableDQCond" : true
     }, {
@@ -3531,124 +3877,28 @@
       }
     } ],
     "getPSDEMapFields" : [ {
-      "dstFieldName" : "EMPLOYEE_NUMBER",
+      "dstFieldName" : "ORGANIZATION_NAME",
       "getDstPSDEField" : {
-        "name" : "EMPLOYEE_NUMBER",
-        "codeName" : "employee_number"
+        "name" : "ORGANIZATION_NAME",
+        "codeName" : "organization_name"
       },
       "mapType" : "FIELD",
-      "srcFieldName" : "EMPLOYEE_NUMBER",
+      "srcFieldName" : "ORGANIZATION_NAME",
       "getSrcPSDEField" : {
-        "name" : "EMPLOYEE_NUMBER",
-        "codeName" : "employee_number"
+        "name" : "ORGANIZATION_NAME",
+        "codeName" : "organization_name"
       }
     }, {
-      "dstFieldName" : "AVATAR",
+      "dstFieldName" : "MDEPARTMENT_NAME",
       "getDstPSDEField" : {
-        "name" : "AVATAR",
-        "codeName" : "avatar"
+        "name" : "MDEPARTMENT_NAME",
+        "codeName" : "mdepartment_name"
       },
       "mapType" : "FIELD",
-      "srcFieldName" : "AVATAR",
+      "srcFieldName" : "DEPARTMENT_NAME",
       "getSrcPSDEField" : {
-        "name" : "AVATAR",
-        "codeName" : "avatar"
-      }
-    }, {
-      "dstFieldName" : "MDEPARTMENT_ID",
-      "getDstPSDEField" : {
-        "name" : "MDEPARTMENT_ID",
-        "codeName" : "Mdepartment_id"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "DEPARTMENT_ID",
-      "getSrcPSDEField" : {
-        "name" : "DEPARTMENT_ID",
-        "codeName" : "Department_id"
-      }
-    }, {
-      "dstFieldName" : "STATUS",
-      "getDstPSDEField" : {
-        "name" : "STATUS",
-        "codeName" : "status"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "STATUS",
-      "getSrcPSDEField" : {
-        "name" : "STATUS",
-        "codeName" : "status"
-      }
-    }, {
-      "dstFieldName" : "ID",
-      "getDstPSDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "USER_ID",
-      "getSrcPSDEField" : {
-        "name" : "USER_ID",
-        "codeName" : "user_id"
-      }
-    }, {
-      "dstFieldName" : "TITLE",
-      "getDstPSDEField" : {
-        "name" : "TITLE",
-        "codeName" : "title"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "JOB_NAME",
-      "getSrcPSDEField" : {
-        "name" : "JOB_NAME",
-        "codeName" : "job_name"
-      }
-    }, {
-      "dstFieldName" : "ID",
-      "getDstPSDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "ID",
-      "getSrcPSDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      }
-    }, {
-      "dstFieldName" : "UID",
-      "getDstPSDEField" : {
-        "name" : "UID",
-        "codeName" : "uid"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "NAME",
-      "getSrcPSDEField" : {
-        "name" : "NAME",
-        "codeName" : "name"
-      }
-    }, {
-      "dstFieldName" : "MAIL",
-      "getDstPSDEField" : {
-        "name" : "MAIL",
-        "codeName" : "mail"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "EMAIL",
-      "getSrcPSDEField" : {
-        "name" : "EMAIL",
-        "codeName" : "email"
-      }
-    }, {
-      "dstFieldName" : "MOBILE",
-      "getDstPSDEField" : {
-        "name" : "MOBILE",
-        "codeName" : "mobile"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "MOBILE",
-      "getSrcPSDEField" : {
-        "name" : "MOBILE",
-        "codeName" : "mobile"
+        "name" : "DEPARTMENT_NAME",
+        "codeName" : "department_name"
       }
     }, {
       "dstFieldName" : "DISPLAY_NAME",
@@ -3663,16 +3913,136 @@
         "codeName" : "display_name"
       }
     }, {
-      "dstFieldName" : "MDEPARTMENT_NAME",
+      "dstFieldName" : "UID",
       "getDstPSDEField" : {
-        "name" : "MDEPARTMENT_NAME",
-        "codeName" : "mdepartment_name"
+        "name" : "UID",
+        "codeName" : "uid"
       },
       "mapType" : "FIELD",
-      "srcFieldName" : "DEPARTMENT_NAME",
+      "srcFieldName" : "NAME",
       "getSrcPSDEField" : {
-        "name" : "DEPARTMENT_NAME",
-        "codeName" : "department_name"
+        "name" : "NAME",
+        "codeName" : "name"
+      }
+    }, {
+      "dstFieldName" : "AVATAR",
+      "getDstPSDEField" : {
+        "name" : "AVATAR",
+        "codeName" : "avatar"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "AVATAR",
+      "getSrcPSDEField" : {
+        "name" : "AVATAR",
+        "codeName" : "avatar"
+      }
+    }, {
+      "dstFieldName" : "MOBILE",
+      "getDstPSDEField" : {
+        "name" : "MOBILE",
+        "codeName" : "mobile"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "MOBILE",
+      "getSrcPSDEField" : {
+        "name" : "MOBILE",
+        "codeName" : "mobile"
+      }
+    }, {
+      "dstFieldName" : "ORGANIZATION_ID",
+      "getDstPSDEField" : {
+        "name" : "ORGANIZATION_ID",
+        "codeName" : "organization_id"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "ORGANIZATION_ID",
+      "getSrcPSDEField" : {
+        "name" : "ORGANIZATION_ID",
+        "codeName" : "organization_id"
+      }
+    }, {
+      "dstFieldName" : "MDEPARTMENT_ID",
+      "getDstPSDEField" : {
+        "name" : "MDEPARTMENT_ID",
+        "codeName" : "Mdepartment_id"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "DEPARTMENT_ID",
+      "getSrcPSDEField" : {
+        "name" : "DEPARTMENT_ID",
+        "codeName" : "Department_id"
+      }
+    }, {
+      "dstFieldName" : "EMPLOYEE_NUMBER",
+      "getDstPSDEField" : {
+        "name" : "EMPLOYEE_NUMBER",
+        "codeName" : "employee_number"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "EMPLOYEE_NUMBER",
+      "getSrcPSDEField" : {
+        "name" : "EMPLOYEE_NUMBER",
+        "codeName" : "employee_number"
+      }
+    }, {
+      "dstFieldName" : "ID",
+      "getDstPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "USER_ID",
+      "getSrcPSDEField" : {
+        "name" : "USER_ID",
+        "codeName" : "user_id"
+      }
+    }, {
+      "dstFieldName" : "STATUS",
+      "getDstPSDEField" : {
+        "name" : "STATUS",
+        "codeName" : "status"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "STATUS",
+      "getSrcPSDEField" : {
+        "name" : "STATUS",
+        "codeName" : "status"
+      }
+    }, {
+      "dstFieldName" : "TITLE",
+      "getDstPSDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "TITLE",
+      "getSrcPSDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      }
+    }, {
+      "dstFieldName" : "ID",
+      "getDstPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "ID",
+      "getSrcPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
+    }, {
+      "dstFieldName" : "MAIL",
+      "getDstPSDEField" : {
+        "name" : "MAIL",
+        "codeName" : "mail"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "EMAIL",
+      "getSrcPSDEField" : {
+        "name" : "EMAIL",
+        "codeName" : "email"
       }
     }, {
       "dstFieldName" : "REPORT_FLAG",
@@ -3816,6 +4186,17 @@
       "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "职位",
+      "name" : "title",
+      "getPSDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "建立人",
       "name" : "create_man",
       "getPSDEField" : {
@@ -3903,6 +4284,28 @@
       "getPSDEField" : {
         "name" : "NAME",
         "codeName" : "name"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "组织标识",
+      "name" : "organization_id",
+      "getPSDEField" : {
+        "name" : "ORGANIZATION_ID",
+        "codeName" : "organization_id"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "组织名称",
+      "name" : "organization_name",
+      "getPSDEField" : {
+        "name" : "ORGANIZATION_NAME",
+        "codeName" : "organization_name"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
@@ -4095,6 +4498,48 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "组织标识",
+      "name" : "n_organization_id_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_ORGANIZATION_ID_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "ORGANIZATION_ID",
+        "codeName" : "organization_id"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "组织名称",
+      "name" : "n_organization_name_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_ORGANIZATION_NAME_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "ORGANIZATION_NAME",
+        "codeName" : "organization_name"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "组织名称",
+      "name" : "n_organization_name_like",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_ORGANIZATION_NAME_LIKE"
+      },
+      "getPSDEField" : {
+        "name" : "ORGANIZATION_NAME",
+        "codeName" : "organization_name"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "状态",
       "name" : "n_status_eq",
       "getPSDEFSearchMode" : {
@@ -4104,6 +4549,20 @@
       "getPSDEField" : {
         "name" : "STATUS",
         "codeName" : "status"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "职位",
+      "name" : "n_title_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_TITLE_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
@@ -5018,6 +5477,38 @@
     "removeActionType" : -1,
     "removeOrder" : 0,
     "serviceCodeName" : "job"
+  }, {
+    "codeName" : "organization",
+    "dERType" : "DER1N",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/user/PSDERS/DER1N_USER_ORGANIZATION_ORGANIZATION_ID.json",
+    "fKeyName" : "F1F753E094C78A61A0",
+    "logicName" : "名称",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/organization.json"
+    },
+    "masterOrder" : -1,
+    "masterRS" : 0,
+    "minorCodeName" : "users",
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+    },
+    "minorServiceCodeName" : "users",
+    "name" : "DER1N_USER_ORGANIZATION_ORGANIZATION_ID",
+    "orderValue" : 100,
+    "getPSPickupDEField" : {
+      "name" : "ORGANIZATION_ID",
+      "codeName" : "organization_id"
+    },
+    "getPSPickupTextDEField" : {
+      "name" : "ORGANIZATION_NAME",
+      "codeName" : "organization_name"
+    },
+    "pickupDEFName" : "ORGANIZATION_ID",
+    "removeActionType" : -1,
+    "removeOrder" : 0,
+    "serviceCodeName" : "organization"
   } ],
   "name" : "USER",
   "getPSSysDBScheme" : {

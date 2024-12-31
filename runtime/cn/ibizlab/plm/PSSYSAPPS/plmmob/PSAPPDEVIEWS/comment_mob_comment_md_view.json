@@ -279,6 +279,7 @@
             "REPLYSCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class=\\'mob-comment-tag\\'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class=\\'mob-comment-tag\\'>@$1</span>\").replace(/#{\"id\":\"(.+?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"}/g, \"<span class=\\'mob-comment-tag\\'>$4 $3 $2</span>\").replace(/#{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)}/g, \"<span class=\\'mob-comment-tag\\'>$4 $3 $2</span>\")",
             "QUOTECODELISTMAP" : "{\"type\":\"plmmob.base__recent_visite\"}",
             "USERURL" : "`projects/${context.project}/project_members/fetch_default`",
+            "AUTOFOCUS" : "true",
             "QUOTEURL" : "`recents/fetch_recent_access`"
           },
           "editorStyle" : "COMMENT",
@@ -332,7 +333,6 @@
             "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/comment.json"
           },
           "refreshMode" : 1,
-          "timeout" : 60000,
           "uIActionMode" : "FRONT",
           "uIActionTag" : "send_comment_mob",
           "uIActionType" : "DEUIACTION",
@@ -407,7 +407,6 @@
           "modelref" : true,
           "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/comment.json"
         },
-        "timeout" : 60000,
         "uIActionMode" : "FRONT",
         "uIActionTag" : "open_project_member",
         "uIActionType" : "DEUIACTION",
@@ -437,10 +436,10 @@
           "modelref" : true,
           "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/comment.json"
         },
-        "timeout" : 60000,
         "uIActionMode" : "FRONT",
         "uIActionTag" : "open_recent_pickup_view",
         "uIActionType" : "DEUIACTION",
+        "globalUIAction" : true,
         "id" : "open_recent_pickup_view@comment"
       },
       "getPSAppDataEntity" : {
@@ -821,7 +820,6 @@
                     "modelref" : true,
                     "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/comment.json"
                   },
-                  "timeout" : 60000,
                   "uIActionMode" : "FRONT",
                   "uIActionTag" : "panel_usr1009329700_button_calluilogic1_click",
                   "uIActionType" : "DEUIACTION",
@@ -856,7 +854,7 @@
                 "contentType" : "HTML",
                 "editorParams" : {
                   "contenttype" : "HTML",
-                  "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replace(/#{\"id\":\"(.+?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"}/g, \"<span class='comment-tag'>$4 $3 $2</span>\").replace(/#{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)}/g, \"<span class='comment-tag'>$4 $3 $2</span>\").replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
+                  "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
                 },
                 "editorStyle" : "MOB_COMMENT_ITEM",
                 "editorType" : "RAW",
@@ -960,14 +958,14 @@
                   "contentType" : "HTML",
                   "editorParams" : {
                     "contenttype" : "HTML",
-                    "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); const tempIcon = icon.trim(); return `<span class='comment-tag' data-value='${JSON.stringify(item)}'>${tempIcon} ${item.identifier} ${item.name}</span>`;}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
+                    "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
                   },
-                  "editorStyle" : "COMMENT_ITEM",
+                  "editorStyle" : "MOB_COMMENT_ITEM",
                   "editorType" : "RAW",
                   "name" : "pcontent",
                   "getPSSysPFPlugin" : {
                     "pluginType" : "EDITOR_CUSTOMSTYLE",
-                    "pluginCode" : "COMMENT_ITEM",
+                    "pluginCode" : "MOB_COMMENT_ITEM",
                     "runtimeObject" : true
                   },
                   "predefinedType" : "FIELD_TEXT_DYNAMIC"

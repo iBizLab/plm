@@ -508,7 +508,8 @@
                 "contentType" : "HTML",
                 "editorParams" : {
                   "contenttype" : "HTML",
-                  "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); const tempIcon = icon.trim(); return `<span class='comment-tag' data-value='${JSON.stringify(item)}'>${tempIcon} ${item.identifier} ${item.name}</span>`;}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
+                  "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
+                  "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
                 },
                 "editorStyle" : "COMMENT_ITEM",
                 "editorType" : "RAW",
@@ -713,10 +714,29 @@
       },
       "getPSDEListDataItems" : [ {
         "dataType" : 25,
-        "name" : "id",
+        "getFrontPSCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+        },
+        "name" : "pcreate_man",
         "getPSAppDEField" : {
-          "name" : "ID",
-          "codeName" : "id"
+          "name" : "PCREATE_MAN",
+          "codeName" : "pcreate_man"
+        }
+      }, {
+        "dataType" : 25,
+        "name" : "pid",
+        "getPSAppDEField" : {
+          "name" : "PID",
+          "codeName" : "pid"
+        }
+      }, {
+        "dataType" : 5,
+        "format" : "YYYY-MM-DD HH:mm:ss",
+        "name" : "create_time",
+        "getPSAppDEField" : {
+          "name" : "CREATE_TIME",
+          "codeName" : "create_time"
         }
       }, {
         "dataType" : 25,
@@ -731,13 +751,6 @@
         }
       }, {
         "dataType" : 21,
-        "name" : "pcontent",
-        "getPSAppDEField" : {
-          "name" : "PCONTENT",
-          "codeName" : "pcontent"
-        }
-      }, {
-        "dataType" : 21,
         "name" : "content",
         "getPSAppDEField" : {
           "name" : "CONTENT",
@@ -745,29 +758,17 @@
         }
       }, {
         "dataType" : 25,
-        "name" : "pid",
+        "name" : "id",
         "getPSAppDEField" : {
-          "name" : "PID",
-          "codeName" : "pid"
+          "name" : "ID",
+          "codeName" : "id"
         }
       }, {
-        "dataType" : 25,
-        "getFrontPSCodeList" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-        },
-        "name" : "pcreate_man",
+        "dataType" : 21,
+        "name" : "pcontent",
         "getPSAppDEField" : {
-          "name" : "PCREATE_MAN",
-          "codeName" : "pcreate_man"
-        }
-      }, {
-        "dataType" : 5,
-        "format" : "YYYY-MM-DD HH:mm:ss",
-        "name" : "create_time",
-        "getPSAppDEField" : {
-          "name" : "CREATE_TIME",
-          "codeName" : "create_time"
+          "name" : "PCONTENT",
+          "codeName" : "pcontent"
         }
       }, {
         "dataType" : 25,

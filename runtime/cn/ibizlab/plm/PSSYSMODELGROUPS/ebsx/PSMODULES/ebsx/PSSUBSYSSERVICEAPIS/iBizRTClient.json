@@ -366,7 +366,6 @@
   }, {
     "aPIMode" : 1,
     "codeName" : "SysDepartment",
-    "logicName" : "部门",
     "name" : "SYS_DEPT",
     "getPSSubSysServiceAPIDEFields" : [ {
       "codeName" : "DeptId",
@@ -781,33 +780,23 @@
       "noServiceCodeName" : true
     }, {
       "actionType" : "DEACTION",
-      "codeName" : "Save",
-      "keyField" : "DEPTID",
+      "codeName" : "save",
+      "memo" : "用于映射ebsx接口save（携带key），标准模式接口不输出key，如：/entity/{key}/save",
       "methodType" : "DEACTION",
-      "name" : "Save",
-      "getPSDECodeName" : "SysDepartment",
-      "getPSDELogicName" : "部门",
-      "getPSDEName" : "SYS_DEPT",
+      "name" : "SYS_DEPT__DEACTION__SAVE",
       "getPSSubSysServiceAPIDE" : {
         "modelref" : true,
         "id" : "SysDepartment"
       },
       "getPSSubSysServiceAPIMethodInput" : {
         "name" : "输入对象",
-        "getPSSubSysServiceAPIDTO" : {
-          "modelref" : true,
-          "id" : "SysDepartmentDTO"
-        },
-        "type" : "DTO"
+        "type" : "UNKNOWN"
       },
       "getPSSubSysServiceAPIMethodReturn" : {
-        "name" : "返回对象",
-        "type" : "VOID"
+        "name" : "返回对象"
       },
-      "requestField" : "DEPTID",
       "requestMethod" : "POST",
-      "requestParamType" : "ENTITY",
-      "uniqueTag" : "SYS_DEPT__DEACTION__SAVE"
+      "needResourceKey" : true
     }, {
       "actionType" : "DEACTION",
       "codeName" : "Update",
@@ -876,7 +865,6 @@
   }, {
     "aPIMode" : 1,
     "codeName" : "SysEmployee",
-    "logicName" : "人员",
     "name" : "SYS_EMP",
     "getPSSubSysServiceAPIDEFields" : [ {
       "codeName" : "UserId",
@@ -1461,33 +1449,23 @@
       "noServiceCodeName" : true
     }, {
       "actionType" : "DEACTION",
-      "codeName" : "Save",
-      "keyField" : "USERID",
+      "codeName" : "save",
+      "memo" : "用于映射ebsx接口save（携带key），标准模式接口不输出key，如：/entity/{key}/save",
       "methodType" : "DEACTION",
-      "name" : "Save",
-      "getPSDECodeName" : "SysEmployee",
-      "getPSDELogicName" : "人员",
-      "getPSDEName" : "SYS_EMP",
+      "name" : "SYS_EMP__DEACTION__SAVE",
       "getPSSubSysServiceAPIDE" : {
         "modelref" : true,
         "id" : "SysEmployee"
       },
       "getPSSubSysServiceAPIMethodInput" : {
         "name" : "输入对象",
-        "getPSSubSysServiceAPIDTO" : {
-          "modelref" : true,
-          "id" : "SysEmployeeDTO"
-        },
-        "type" : "DTO"
+        "type" : "UNKNOWN"
       },
       "getPSSubSysServiceAPIMethodReturn" : {
-        "name" : "返回对象",
-        "type" : "VOID"
+        "name" : "返回对象"
       },
-      "requestField" : "USERID",
       "requestMethod" : "POST",
-      "requestParamType" : "ENTITY",
-      "uniqueTag" : "SYS_EMP__DEACTION__SAVE"
+      "needResourceKey" : true
     }, {
       "actionType" : "DEACTION",
       "codeName" : "Update",
@@ -1583,6 +1561,677 @@
       "requestField" : "USERID",
       "requestMethod" : "POST",
       "uniqueTag" : "SYS_EMP__FETCH__USER"
+    } ],
+    "major" : true
+  }, {
+    "aPIMode" : 1,
+    "codeName" : "SysOrganization",
+    "name" : "SYS_ORG",
+    "getPSSubSysServiceAPIDEFields" : [ {
+      "codeName" : "ParentOrgId",
+      "length" : 60,
+      "logicName" : "上级单位",
+      "name" : "PORGID",
+      "stdDataType" : 25
+    }, {
+      "codeName" : "ParentOrgName",
+      "length" : 100,
+      "logicName" : "上级单位",
+      "name" : "PORGNAME",
+      "stdDataType" : 25
+    }, {
+      "codeName" : "OrgId",
+      "length" : 60,
+      "logicName" : "单位标识",
+      "name" : "ORGID",
+      "stdDataType" : 25,
+      "keyDEField" : true
+    }, {
+      "codeName" : "Enable",
+      "logicName" : "逻辑有效",
+      "name" : "ENABLE",
+      "stdDataType" : 9
+    }, {
+      "codeName" : "UpdateDate",
+      "logicName" : "属性",
+      "name" : "UPDATEDATE",
+      "stdDataType" : 5
+    }, {
+      "codeName" : "ShowOrder",
+      "logicName" : "排序",
+      "name" : "SHOWORDER",
+      "stdDataType" : 9
+    }, {
+      "codeName" : "IsValid",
+      "logicName" : "启用标识",
+      "name" : "ISVALID",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "stdDataType" : 9
+    }, {
+      "codeName" : "ShortName",
+      "length" : 100,
+      "logicName" : "单位简称",
+      "name" : "SHORTNAME",
+      "stdDataType" : 25
+    }, {
+      "codeName" : "OrgName",
+      "length" : 100,
+      "logicName" : "名称",
+      "name" : "ORGNAME",
+      "stdDataType" : 25,
+      "majorDEField" : true
+    }, {
+      "codeName" : "CreateDate",
+      "logicName" : "创建时间",
+      "name" : "CREATEDATE",
+      "stdDataType" : 5
+    }, {
+      "codeName" : "OrgCode",
+      "length" : 100,
+      "logicName" : "单位编码",
+      "name" : "ORGCODE",
+      "stdDataType" : 25
+    } ],
+    "getPSSubSysServiceAPIDEMethods" : [ {
+      "actionType" : "DEACTION",
+      "codeName" : "CheckKey",
+      "keyField" : "ORGID",
+      "methodType" : "DEACTION",
+      "name" : "CheckKey",
+      "getPSDECodeName" : "SysOrganization",
+      "getPSDELogicName" : "组织",
+      "getPSDEName" : "SYS_ORG",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysOrganization"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "SysOrganizationDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "SIMPLE"
+      },
+      "requestField" : "ORGID",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "uniqueTag" : "SYS_ORG__DEACTION__CHECKKEY"
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "Create",
+      "keyField" : "ORGID",
+      "methodType" : "DEACTION",
+      "name" : "Create",
+      "getPSDECodeName" : "SysOrganization",
+      "getPSDELogicName" : "组织",
+      "getPSDEName" : "SYS_ORG",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysOrganization"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "SysOrganizationDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "requestField" : "ORGID",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "uniqueTag" : "SYS_ORG__DEACTION__CREATE",
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "Get",
+      "keyField" : "ORGID",
+      "methodType" : "DEACTION",
+      "name" : "Get",
+      "getPSDECodeName" : "SysOrganization",
+      "getPSDELogicName" : "组织",
+      "getPSDEName" : "SYS_ORG",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysOrganization"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "getKeyPSSubSysServiceAPIField" : {
+          "modelref" : true,
+          "id" : "OrgId"
+        },
+        "name" : "输入对象",
+        "type" : "KEYFIELD"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "SysOrganizationDTO"
+        },
+        "type" : "DTO"
+      },
+      "requestField" : "ORGID",
+      "requestMethod" : "GET",
+      "requestParamType" : "FIELD",
+      "uniqueTag" : "SYS_ORG__DEACTION__GET",
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "GetDraft",
+      "keyField" : "ORGID",
+      "methodType" : "DEACTION",
+      "name" : "GetDraft",
+      "getPSDECodeName" : "SysOrganization",
+      "getPSDELogicName" : "组织",
+      "getPSDEName" : "SYS_ORG",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysOrganization"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "SysOrganizationDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "SysOrganizationDTO"
+        },
+        "type" : "DTO"
+      },
+      "requestField" : "ORGID",
+      "requestMethod" : "GET",
+      "requestParamType" : "NONE",
+      "uniqueTag" : "SYS_ORG__DEACTION__GETDRAFT"
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "Remove",
+      "keyField" : "ORGID",
+      "methodType" : "DEACTION",
+      "name" : "Remove",
+      "getPSDECodeName" : "SysOrganization",
+      "getPSDELogicName" : "组织",
+      "getPSDEName" : "SYS_ORG",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysOrganization"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "getKeyPSSubSysServiceAPIField" : {
+          "modelref" : true,
+          "id" : "OrgId"
+        },
+        "name" : "输入对象",
+        "type" : "KEYFIELDS"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "requestField" : "ORGID",
+      "requestMethod" : "DELETE",
+      "requestParamType" : "FIELD",
+      "uniqueTag" : "SYS_ORG__DEACTION__REMOVE",
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "save",
+      "memo" : "用于映射ebsx接口save（携带key），标准模式接口不输出key，如：/entity/{key}/save",
+      "methodType" : "DEACTION",
+      "name" : "SYS_ORG__DEACTION__SAVE",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysOrganization"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "type" : "UNKNOWN"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象"
+      },
+      "requestMethod" : "POST",
+      "needResourceKey" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "Update",
+      "keyField" : "ORGID",
+      "methodType" : "DEACTION",
+      "name" : "Update",
+      "getPSDECodeName" : "SysOrganization",
+      "getPSDELogicName" : "组织",
+      "getPSDEName" : "SYS_ORG",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysOrganization"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "SysOrganizationDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "requestField" : "ORGID",
+      "requestMethod" : "PUT",
+      "requestParamType" : "ENTITY",
+      "uniqueTag" : "SYS_ORG__DEACTION__UPDATE",
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "FetchDefault",
+      "keyField" : "ORGID",
+      "methodType" : "FETCH",
+      "name" : "DEFAULT",
+      "getPSDECodeName" : "SysOrganization",
+      "getPSDELogicName" : "组织",
+      "getPSDEName" : "SYS_ORG",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysOrganization"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "SysOrganizationFilterDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "SysOrganizationDTO"
+        },
+        "type" : "PAGE"
+      },
+      "requestField" : "ORGID",
+      "requestMethod" : "POST",
+      "uniqueTag" : "SYS_ORG__FETCH__DEFAULT"
+    } ],
+    "major" : true
+  }, {
+    "aPIMode" : 1,
+    "codeName" : "SysRole",
+    "name" : "SYS_ROLE",
+    "getPSSubSysServiceAPIDEFields" : [ {
+      "codeName" : "RoleId",
+      "length" : 100,
+      "logicName" : "角色标识",
+      "name" : "SYS_ROLEID",
+      "stdDataType" : 25,
+      "allowEmpty" : false,
+      "keyDEField" : true
+    }, {
+      "codeName" : "RoleName",
+      "length" : 200,
+      "logicName" : "角色名称",
+      "name" : "SYS_ROLENAME",
+      "stdDataType" : 25,
+      "majorDEField" : true
+    }, {
+      "codeName" : "Memo",
+      "length" : 1000,
+      "logicName" : "备注",
+      "name" : "MEMO",
+      "stdDataType" : 25
+    }, {
+      "codeName" : "PRoleId",
+      "length" : 100,
+      "logicName" : "父角色标识",
+      "name" : "PROLEID",
+      "stdDataType" : 25
+    }, {
+      "codeName" : "CreateDate",
+      "length" : 8,
+      "logicName" : "建立时间",
+      "name" : "CREATEDATE",
+      "stdDataType" : 5,
+      "allowEmpty" : false
+    }, {
+      "codeName" : "UpdateDate",
+      "length" : 8,
+      "logicName" : "更新时间",
+      "name" : "UPDATEDATE",
+      "stdDataType" : 5,
+      "allowEmpty" : false
+    }, {
+      "codeName" : "CreateMan",
+      "length" : 60,
+      "logicName" : "建立人",
+      "name" : "CREATEMAN",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "stdDataType" : 25,
+      "allowEmpty" : false
+    }, {
+      "codeName" : "UpdateMan",
+      "length" : 60,
+      "logicName" : "更新人",
+      "name" : "UPDATEMAN",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "stdDataType" : 25,
+      "allowEmpty" : false
+    }, {
+      "codeName" : "AuthorizeAll",
+      "logicName" : "授权全部用户",
+      "name" : "AUTHORIZEALL",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "stdDataType" : 9
+    }, {
+      "codeName" : "UserMode",
+      "length" : 60,
+      "logicName" : "用户模式",
+      "name" : "USERMODE",
+      "stdDataType" : 25
+    }, {
+      "codeName" : "DCSystemId",
+      "length" : 100,
+      "logicName" : "租户系统标识",
+      "name" : "DCSYSTEMID",
+      "stdDataType" : 25
+    }, {
+      "codeName" : "RoleTag",
+      "length" : 100,
+      "logicName" : "角色标识",
+      "name" : "ROLETAG",
+      "stdDataType" : 25
+    }, {
+      "codeName" : "SystemFlag",
+      "length" : 100,
+      "logicName" : "系统标记",
+      "name" : "SYSTEMFLAG",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "stdDataType" : 9
+    }, {
+      "codeName" : "GlobalFlag",
+      "length" : 100,
+      "logicName" : "全局标记",
+      "name" : "GLOBALFLAG",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "stdDataType" : 9
+    } ],
+    "getPSSubSysServiceAPIDEMethods" : [ {
+      "actionType" : "DEACTION",
+      "codeName" : "CheckKey",
+      "keyField" : "SYS_ROLEID",
+      "methodType" : "DEACTION",
+      "name" : "CheckKey",
+      "getPSDECodeName" : "Role",
+      "getPSDELogicName" : "系统角色",
+      "getPSDEName" : "SYS_ROLE",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysRole"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "RoleDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "SIMPLE"
+      },
+      "requestField" : "SYS_ROLEID",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "uniqueTag" : "SYS_ROLE__DEACTION__CHECKKEY"
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "Create",
+      "keyField" : "SYS_ROLEID",
+      "methodType" : "DEACTION",
+      "name" : "Create",
+      "getPSDECodeName" : "Role",
+      "getPSDELogicName" : "系统角色",
+      "getPSDEName" : "SYS_ROLE",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysRole"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "RoleDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "requestField" : "SYS_ROLEID",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "uniqueTag" : "SYS_ROLE__DEACTION__CREATE",
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "Get",
+      "keyField" : "SYS_ROLEID",
+      "methodType" : "DEACTION",
+      "name" : "Get",
+      "getPSDECodeName" : "Role",
+      "getPSDELogicName" : "系统角色",
+      "getPSDEName" : "SYS_ROLE",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysRole"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "getKeyPSSubSysServiceAPIField" : {
+          "modelref" : true,
+          "id" : "RoleId"
+        },
+        "name" : "输入对象",
+        "type" : "KEYFIELD"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "RoleDTO"
+        },
+        "type" : "DTO"
+      },
+      "requestField" : "SYS_ROLEID",
+      "requestMethod" : "GET",
+      "requestParamType" : "FIELD",
+      "uniqueTag" : "SYS_ROLE__DEACTION__GET",
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "GetDraft",
+      "keyField" : "SYS_ROLEID",
+      "methodType" : "DEACTION",
+      "name" : "GetDraft",
+      "getPSDECodeName" : "Role",
+      "getPSDELogicName" : "系统角色",
+      "getPSDEName" : "SYS_ROLE",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysRole"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "RoleDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "RoleDTO"
+        },
+        "type" : "DTO"
+      },
+      "requestField" : "SYS_ROLEID",
+      "requestMethod" : "GET",
+      "requestParamType" : "NONE",
+      "uniqueTag" : "SYS_ROLE__DEACTION__GETDRAFT"
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "Remove",
+      "keyField" : "SYS_ROLEID",
+      "methodType" : "DEACTION",
+      "name" : "Remove",
+      "getPSDECodeName" : "Role",
+      "getPSDELogicName" : "系统角色",
+      "getPSDEName" : "SYS_ROLE",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysRole"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "getKeyPSSubSysServiceAPIField" : {
+          "modelref" : true,
+          "id" : "RoleId"
+        },
+        "name" : "输入对象",
+        "type" : "KEYFIELDS"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "requestField" : "SYS_ROLEID",
+      "requestMethod" : "DELETE",
+      "requestParamType" : "FIELD",
+      "uniqueTag" : "SYS_ROLE__DEACTION__REMOVE",
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "save",
+      "memo" : "用于映射ebsx接口save（携带key），标准模式接口不输出key，如：/entity/{key}/save",
+      "methodType" : "DEACTION",
+      "name" : "SYS_ROLE__DEACTION__SAVE",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysRole"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "type" : "UNKNOWN"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象"
+      },
+      "requestMethod" : "POST",
+      "needResourceKey" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "Update",
+      "keyField" : "SYS_ROLEID",
+      "methodType" : "DEACTION",
+      "name" : "Update",
+      "getPSDECodeName" : "Role",
+      "getPSDELogicName" : "系统角色",
+      "getPSDEName" : "SYS_ROLE",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysRole"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "RoleDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "requestField" : "SYS_ROLEID",
+      "requestMethod" : "PUT",
+      "requestParamType" : "ENTITY",
+      "uniqueTag" : "SYS_ROLE__DEACTION__UPDATE",
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "FetchDefault",
+      "keyField" : "SYS_ROLEID",
+      "methodType" : "FETCH",
+      "name" : "DEFAULT",
+      "getPSDECodeName" : "Role",
+      "getPSDELogicName" : "系统角色",
+      "getPSDEName" : "SYS_ROLE",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysRole"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "RoleFilterDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "RoleDTO"
+        },
+        "type" : "PAGE"
+      },
+      "requestField" : "SYS_ROLEID",
+      "requestMethod" : "POST",
+      "uniqueTag" : "SYS_ROLE__FETCH__DEFAULT"
     } ],
     "major" : true
   }, {
@@ -2135,6 +2784,332 @@
       "uniqueTag" : "SYS_TODO__FETCH__DEFAULT"
     } ],
     "major" : true
+  }, {
+    "aPIMode" : 1,
+    "codeName" : "SysUserRole",
+    "name" : "SYS_USER_ROLE",
+    "getPSSubSysServiceAPIDEFields" : [ {
+      "codeName" : "UserRoleId",
+      "length" : 100,
+      "logicName" : "用户角色关系标识",
+      "name" : "SYS_USER_ROLEID",
+      "stdDataType" : 25,
+      "allowEmpty" : false,
+      "keyDEField" : true
+    }, {
+      "codeName" : "CreateDate",
+      "length" : 8,
+      "logicName" : "建立时间",
+      "name" : "CREATEDATE",
+      "stdDataType" : 5,
+      "allowEmpty" : false
+    }, {
+      "codeName" : "UpdateDate",
+      "length" : 8,
+      "logicName" : "更新时间",
+      "name" : "UPDATEDATE",
+      "stdDataType" : 5,
+      "allowEmpty" : false
+    }, {
+      "codeName" : "UserId",
+      "length" : 100,
+      "logicName" : "用户标识",
+      "name" : "USERID",
+      "stdDataType" : 25,
+      "majorDEField" : true
+    }, {
+      "codeName" : "RoleId",
+      "length" : 100,
+      "logicName" : "角色",
+      "name" : "SYS_ROLEID",
+      "stdDataType" : 25
+    }, {
+      "codeName" : "CreateMan",
+      "length" : 60,
+      "logicName" : "建立人",
+      "name" : "CREATEMAN",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "stdDataType" : 25,
+      "allowEmpty" : false
+    }, {
+      "codeName" : "CreateManName",
+      "length" : 100,
+      "logicName" : "创建人",
+      "name" : "CREATEMANNAME",
+      "stdDataType" : 25
+    }, {
+      "codeName" : "UpdateMan",
+      "length" : 60,
+      "logicName" : "更新人",
+      "name" : "UPDATEMAN",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "stdDataType" : 25,
+      "allowEmpty" : false
+    }, {
+      "codeName" : "UpdateManName",
+      "length" : 100,
+      "logicName" : "更新人",
+      "name" : "UPDATEMANNAME",
+      "stdDataType" : 25
+    }, {
+      "codeName" : "IsValid",
+      "length" : 100,
+      "logicName" : "启用标志",
+      "name" : "ISVALID",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "stdDataType" : 9
+    } ],
+    "getPSSubSysServiceAPIDEMethods" : [ {
+      "actionType" : "DEACTION",
+      "codeName" : "CheckKey",
+      "keyField" : "SYS_USER_ROLEID",
+      "methodType" : "DEACTION",
+      "name" : "CheckKey",
+      "getPSDECodeName" : "UserRole",
+      "getPSDELogicName" : "用户角色关系",
+      "getPSDEName" : "SYS_USER_ROLE",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysUserRole"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "UserRoleDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "SIMPLE"
+      },
+      "requestField" : "SYS_USER_ROLEID",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "uniqueTag" : "SYS_USER_ROLE__DEACTION__CHECKKEY"
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "Create",
+      "keyField" : "SYS_USER_ROLEID",
+      "methodType" : "DEACTION",
+      "name" : "Create",
+      "getPSDECodeName" : "UserRole",
+      "getPSDELogicName" : "用户角色关系",
+      "getPSDEName" : "SYS_USER_ROLE",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysUserRole"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "UserRoleDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "requestField" : "SYS_USER_ROLEID",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "uniqueTag" : "SYS_USER_ROLE__DEACTION__CREATE",
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "Get",
+      "keyField" : "SYS_USER_ROLEID",
+      "methodType" : "DEACTION",
+      "name" : "Get",
+      "getPSDECodeName" : "UserRole",
+      "getPSDELogicName" : "用户角色关系",
+      "getPSDEName" : "SYS_USER_ROLE",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysUserRole"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "getKeyPSSubSysServiceAPIField" : {
+          "modelref" : true,
+          "id" : "UserRoleId"
+        },
+        "name" : "输入对象",
+        "type" : "KEYFIELD"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "UserRoleDTO"
+        },
+        "type" : "DTO"
+      },
+      "requestField" : "SYS_USER_ROLEID",
+      "requestMethod" : "GET",
+      "requestParamType" : "FIELD",
+      "uniqueTag" : "SYS_USER_ROLE__DEACTION__GET",
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "GetDraft",
+      "keyField" : "SYS_USER_ROLEID",
+      "methodType" : "DEACTION",
+      "name" : "GetDraft",
+      "getPSDECodeName" : "UserRole",
+      "getPSDELogicName" : "用户角色关系",
+      "getPSDEName" : "SYS_USER_ROLE",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysUserRole"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "UserRoleDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "UserRoleDTO"
+        },
+        "type" : "DTO"
+      },
+      "requestField" : "SYS_USER_ROLEID",
+      "requestMethod" : "GET",
+      "requestParamType" : "NONE",
+      "uniqueTag" : "SYS_USER_ROLE__DEACTION__GETDRAFT"
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "Remove",
+      "keyField" : "SYS_USER_ROLEID",
+      "methodType" : "DEACTION",
+      "name" : "Remove",
+      "getPSDECodeName" : "UserRole",
+      "getPSDELogicName" : "用户角色关系",
+      "getPSDEName" : "SYS_USER_ROLE",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysUserRole"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "getKeyPSSubSysServiceAPIField" : {
+          "modelref" : true,
+          "id" : "UserRoleId"
+        },
+        "name" : "输入对象",
+        "type" : "KEYFIELDS"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "requestField" : "SYS_USER_ROLEID",
+      "requestMethod" : "DELETE",
+      "requestParamType" : "FIELD",
+      "uniqueTag" : "SYS_USER_ROLE__DEACTION__REMOVE",
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "save",
+      "memo" : "用于映射ebsx接口save（携带key），标准模式接口不输出key，如：/entity/{key}/save",
+      "methodType" : "DEACTION",
+      "name" : "SYS_USER_ROLE__DEACTION__SAVE",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysUserRole"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "type" : "UNKNOWN"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象"
+      },
+      "requestMethod" : "POST",
+      "needResourceKey" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "Update",
+      "keyField" : "SYS_USER_ROLEID",
+      "methodType" : "DEACTION",
+      "name" : "Update",
+      "getPSDECodeName" : "UserRole",
+      "getPSDELogicName" : "用户角色关系",
+      "getPSDEName" : "SYS_USER_ROLE",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysUserRole"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "UserRoleDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "requestField" : "SYS_USER_ROLEID",
+      "requestMethod" : "PUT",
+      "requestParamType" : "ENTITY",
+      "uniqueTag" : "SYS_USER_ROLE__DEACTION__UPDATE",
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "FetchDefault",
+      "keyField" : "SYS_USER_ROLEID",
+      "methodType" : "FETCH",
+      "name" : "DEFAULT",
+      "getPSDECodeName" : "UserRole",
+      "getPSDELogicName" : "用户角色关系",
+      "getPSDEName" : "SYS_USER_ROLE",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysUserRole"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "UserRoleFilterDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "UserRoleDTO"
+        },
+        "type" : "PAGE"
+      },
+      "requestField" : "SYS_USER_ROLEID",
+      "requestMethod" : "POST",
+      "uniqueTag" : "SYS_USER_ROLE__FETCH__DEFAULT"
+    } ],
+    "major" : true
   } ],
   "getAllPSSubSysServiceAPIDTOs" : [ {
     "codeName" : "AuthLogDTO",
@@ -2237,6 +3212,137 @@
     }, {
       "codeName" : "N_USERNAME_LIKE",
       "name" : "N_USERNAME_LIKE",
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    } ],
+    "type" : "DEMETHODDTO"
+  }, {
+    "codeName" : "RoleDTO",
+    "name" : "RoleDTO",
+    "getPSSubSysServiceAPIDTOFields" : [ {
+      "codeName" : "RoleId",
+      "name" : "RoleId",
+      "orderValue" : 1,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "RoleName",
+      "name" : "RoleName",
+      "orderValue" : 2,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "Memo",
+      "name" : "Memo",
+      "orderValue" : 3,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "PRoleId",
+      "name" : "PRoleId",
+      "orderValue" : 7,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "CreateDate",
+      "name" : "CreateDate",
+      "orderValue" : 11,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 5,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "UpdateDate",
+      "name" : "UpdateDate",
+      "orderValue" : 12,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 5,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "CreateMan",
+      "name" : "CreateMan",
+      "orderValue" : 13,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "UpdateMan",
+      "name" : "UpdateMan",
+      "orderValue" : 14,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "AuthorizeAll",
+      "name" : "AuthorizeAll",
+      "orderValue" : 15,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "DCSystemId",
+      "name" : "DCSystemId",
+      "orderValue" : 1000,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "GlobalFlag",
+      "name" : "GlobalFlag",
+      "orderValue" : 1000,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "RoleTag",
+      "name" : "RoleTag",
+      "orderValue" : 1000,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "SystemFlag",
+      "name" : "SystemFlag",
+      "orderValue" : 1000,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "UserMode",
+      "name" : "UserMode",
+      "orderValue" : 1000,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    } ],
+    "type" : "DEMETHODDTO"
+  }, {
+    "codeName" : "RoleFilterDTO",
+    "name" : "RoleFilterDTO",
+    "getPSSubSysServiceAPIDTOFields" : [ {
+      "codeName" : "N_SYS_ROLEID_EQ",
+      "name" : "N_SYS_ROLEID_EQ",
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "N_SYS_ROLENAME_LIKE",
+      "name" : "N_SYS_ROLENAME_LIKE",
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "N_USERMODE_EQ",
+      "name" : "N_USERMODE_EQ",
       "sourceType" : "DEMETHODDTOFIELD",
       "stdDataType" : 25,
       "type" : "SIMPLE"
@@ -3021,6 +4127,116 @@
     } ],
     "type" : "DEMETHODDTO"
   }, {
+    "codeName" : "SysOrganizationDTO",
+    "name" : "SysOrganizationDTO",
+    "getPSSubSysServiceAPIDTOFields" : [ {
+      "codeName" : "ParentOrgId",
+      "name" : "ParentOrgId",
+      "orderValue" : 5,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "ParentOrgName",
+      "name" : "ParentOrgName",
+      "orderValue" : 11,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "OrgId",
+      "name" : "OrgId",
+      "orderValue" : 100,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "UpdateDate",
+      "name" : "UpdateDate",
+      "orderValue" : 120,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "ShowOrder",
+      "name" : "ShowOrder",
+      "orderValue" : 130,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "IsValid",
+      "name" : "IsValid",
+      "orderValue" : 140,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "ShortName",
+      "name" : "ShortName",
+      "orderValue" : 150,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "OrgName",
+      "name" : "OrgName",
+      "orderValue" : 160,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "CreateDate",
+      "name" : "CreateDate",
+      "orderValue" : 170,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "OrgCode",
+      "name" : "OrgCode",
+      "orderValue" : 180,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    } ],
+    "type" : "DEMETHODDTO"
+  }, {
+    "codeName" : "SysOrganizationFilterDTO",
+    "name" : "SysOrganizationFilterDTO",
+    "getPSSubSysServiceAPIDTOFields" : [ {
+      "codeName" : "N_ORGID_EQ",
+      "name" : "N_ORGID_EQ",
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "N_ORGNAME_LIKE",
+      "name" : "N_ORGNAME_LIKE",
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "N_PORGID_EQ",
+      "name" : "N_PORGID_EQ",
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "N_PORGNAME_EQ",
+      "name" : "N_PORGNAME_EQ",
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "N_PORGNAME_LIKE",
+      "name" : "N_PORGNAME_LIKE",
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    } ],
+    "type" : "DEMETHODDTO"
+  }, {
     "codeName" : "SysTodoDTO",
     "name" : "SysTodoDTO",
     "getPSSubSysServiceAPIDTOFields" : [ {
@@ -3297,6 +4513,97 @@
     }, {
       "codeName" : "N_TODOURLTYPE_EQ",
       "name" : "N_TODOURLTYPE_EQ",
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    } ],
+    "type" : "DEMETHODDTO"
+  }, {
+    "codeName" : "UserRoleDTO",
+    "name" : "UserRoleDTO",
+    "getPSSubSysServiceAPIDTOFields" : [ {
+      "codeName" : "UserRoleId",
+      "name" : "UserRoleId",
+      "orderValue" : 1,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "CreateDate",
+      "name" : "CreateDate",
+      "orderValue" : 11,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 5,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "UpdateDate",
+      "name" : "UpdateDate",
+      "orderValue" : 12,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 5,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "UserId",
+      "name" : "UserId",
+      "orderValue" : 180,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "RoleId",
+      "name" : "RoleId",
+      "orderValue" : 190,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "CreateMan",
+      "name" : "CreateMan",
+      "orderValue" : 1000,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "CreateManName",
+      "name" : "CreateManName",
+      "orderValue" : 1000,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "IsValid",
+      "name" : "IsValid",
+      "orderValue" : 1000,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "UpdateMan",
+      "name" : "UpdateMan",
+      "orderValue" : 1000,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "UpdateManName",
+      "name" : "UpdateManName",
+      "orderValue" : 1000,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    } ],
+    "type" : "DEMETHODDTO"
+  }, {
+    "codeName" : "UserRoleFilterDTO",
+    "name" : "UserRoleFilterDTO",
+    "getPSSubSysServiceAPIDTOFields" : [ {
+      "codeName" : "N_SYS_USER_ROLEID_EQ",
+      "name" : "N_SYS_USER_ROLEID_EQ",
       "sourceType" : "DEMETHODDTOFIELD",
       "stdDataType" : 25,
       "type" : "SIMPLE"

@@ -367,6 +367,7 @@
           "ignoreInput" : 0,
           "labelPos" : "TOP",
           "labelWidth" : 130,
+          "modelState" : 540672,
           "name" : "title",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
@@ -398,6 +399,7 @@
           "codeName" : "grouppanel3",
           "detailStyle" : "DEFAULT",
           "detailType" : "GROUPPANEL",
+          "modelState" : 540672,
           "name" : "grouppanel3",
           "getPSDEFormDetails" : [ {
             "getCapPSLanguageRes" : {
@@ -423,14 +425,15 @@
               "editorHeight" : 450.0,
               "editorParams" : {
                 "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
+                "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
                 "MAXHEIGHT" : "450",
                 "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
-                "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"type\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
-                "QUOTEPARAMS" : "{\"page\":0,\"size\":20,\"sort\":\"update_time,desc\"}",
+                "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
+                "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
                 "MODE" : "default",
-                "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); return controller.getNodeInfo({ icon, ...item })})",
+                "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
                 "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
-                "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.type}\",\"recent_parent\":\"${data.recent_parent}\",\"icon\":\"${data.icon}\"}`",
+                "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
                 "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
                 "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
                 "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
@@ -472,6 +475,7 @@
           "codeName" : "grouppanel2",
           "detailStyle" : "DEFAULT",
           "detailType" : "GROUPPANEL",
+          "modelState" : 540672,
           "name" : "grouppanel2",
           "getPSDEFormDetails" : [ {
             "codeName" : "attachments",
@@ -682,7 +686,6 @@
                     "glyph" : "xf002@FontAwesome",
                     "cssClass" : "fa fa-search"
                   },
-                  "timeout" : 60000,
                   "uIActionMode" : "FRONT",
                   "uIActionTag" : "attachment_preview",
                   "uIActionType" : "DEUIACTION",
@@ -786,7 +789,6 @@
                         "pluginCode" : "FILE_DOWNLOAD",
                         "runtimeObject" : true
                       },
-                      "timeout" : 60000,
                       "tooltip" : "下载当前附件",
                       "uIActionMode" : "FRONT",
                       "uIActionTag" : "download",
@@ -824,7 +826,6 @@
                         "glyph" : "xf014@FontAwesome",
                         "cssClass" : "fa fa-trash-o"
                       },
-                      "timeout" : 60000,
                       "tooltip" : "删除",
                       "uIActionMode" : "FRONT",
                       "uIActionTag" : "delete",
@@ -1021,7 +1022,6 @@
                   "glyph" : "xf067@FontAwesome",
                   "cssClass" : "fa fa-plus"
                 },
-                "timeout" : 60000,
                 "uIActionMode" : "FRONT",
                 "uIActionTag" : "add_attachments",
                 "uIActionType" : "DEUIACTION",
@@ -1083,7 +1083,6 @@
             "groupOP" : "AND",
             "logicCat" : "ITEMENABLE",
             "logicType" : "GROUP",
-            "name" : "表单成员[product_name][表单项启用]逻辑",
             "getPSDEFDLogics" : [ {
               "condOP" : "ISNULL",
               "dEFDName" : "checkid",
@@ -1181,7 +1180,6 @@
             "groupOP" : "AND",
             "logicCat" : "ITEMENABLE",
             "logicType" : "GROUP",
-            "name" : "表单成员[category_name][表单项启用]逻辑",
             "getPSDEFDLogics" : [ {
               "condOP" : "ISNOTNULL",
               "dEFDName" : "product_name",
@@ -1260,6 +1258,7 @@
           "labelPos" : "TOP",
           "labelWidth" : 130,
           "memo" : "SRFNAVPARAM.n_product_id_eq=%product_id%\nSRFNAVCTX.product=%product_id%",
+          "modelState" : 540672,
           "name" : "assignee_name",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
@@ -1270,7 +1269,6 @@
             "groupOP" : "AND",
             "logicCat" : "ITEMENABLE",
             "logicType" : "GROUP",
-            "name" : "表单成员[assignee_name][表单项启用]逻辑",
             "getPSDEFDLogics" : [ {
               "condOP" : "ISNOTNULL",
               "dEFDName" : "product_name",
@@ -1376,7 +1374,6 @@
                     "cssClass" : "fa fa-user-md"
                   },
                   "scriptCode" : "ibiz.openView.push(`/-/index/project=${context.project}/projectRedirectView/-/project_setting_view/srfnavctx=%7B\"project\"%3A\"${context.project}\"%2C\"srfdefaulttoroutedepth\"%3A\"3\"%7D;srfnav=root%3Anormal%3Amember/project_member_config_grid_view/-`);",
-                  "timeout" : 60000,
                   "tooltip" : "跳转至成员设置",
                   "uIActionMode" : "FRONT",
                   "uIActionTag" : "jump_to_member_set",
@@ -1426,7 +1423,6 @@
             "groupOP" : "AND",
             "logicCat" : "ITEMENABLE",
             "logicType" : "GROUP",
-            "name" : "表单成员[customer][表单项启用]逻辑",
             "getPSDEFDLogics" : [ {
               "condOP" : "ISNOTNULL",
               "dEFDName" : "product_name",
@@ -1438,7 +1434,6 @@
             "groupOP" : "AND",
             "logicCat" : "SCRIPTCODE_CHANGE",
             "logicType" : "GROUP",
-            "name" : "表单成员[customer][表单项值变更（脚本处理）]逻辑",
             "getPSDEFDLogics" : [ {
               "logicType" : "SINGLE"
             } ],
@@ -1447,7 +1442,6 @@
             "groupOP" : "AND",
             "logicCat" : "SCRIPTCODE_CLICK",
             "logicType" : "GROUP",
-            "name" : "表单成员[customer][表单项点击（脚本处理）]逻辑",
             "getPSDEFDLogics" : [ {
               "logicType" : "SINGLE"
             } ],
@@ -1486,97 +1480,77 @@
           "showCaption" : true
         }, {
           "getCapPSLanguageRes" : {
-            "lanResTag" : "CONTROL.DEFORM.IDEA.QUICK_CREATE.GROUPPANEL.GROUPPANEL4"
+            "lanResTag" : "CONTROL.DEFORM.IDEA.QUICK_CREATE.FORMITEM.ATTENTIONS"
           },
-          "caption" : "关注字段",
-          "codeName" : "grouppanel4",
+          "caption" : "关注人",
+          "codeName" : "attentions",
+          "dataType" : 21,
           "detailStyle" : "DEFAULT",
-          "detailType" : "GROUPPANEL",
-          "name" : "grouppanel4",
-          "getPSDEFormDetails" : [ {
-            "getCapPSLanguageRes" : {
-              "lanResTag" : "CONTROL.DEFORM.IDEA.QUICK_CREATE.FORMITEM.ATTENTIONS"
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "modelState" : 540672,
+          "name" : "attentions",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "ATTENTIONS",
+            "codeName" : "attentions"
+          },
+          "getPSEditor" : {
+            "editorParams" : {
+              "MULTIPLE" : "true",
+              "DEFAULTATNVALUE" : "40",
+              "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+              "AC" : "TRUE",
+              "DEFAULTSELCURUSER" : "true",
+              "SRFNAVPARAM.n_status_eq" : "1",
+              "TRIGGER" : "TRUE",
+              "SELFFILLMAP" : "{\"user_id\":\"user_id\",\"user_name\":\"name\"}",
+              "URL" : "products/${context.product}/product_members/fetch_default",
+              "PICKUPVIEW" : "FALSE",
+              "USERMETHOD" : "post",
+              "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+              "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+              "DEPTMETHOD" : "get",
+              "DEPTURL" : "/users/fetch_default"
             },
-            "caption" : "关注人",
-            "codeName" : "attentions",
-            "dataType" : 21,
-            "detailStyle" : "DEFAULT",
-            "detailType" : "FORMITEM",
-            "enableCond" : 3,
-            "ignoreInput" : 0,
-            "labelPos" : "TOP",
-            "labelWidth" : 130,
+            "editorStyle" : "PERSONEL_SELECT_PRODUCT",
+            "editorType" : "PICKEREX_TRIGGER",
+            "handlerType" : "PickupText",
             "name" : "attentions",
-            "noPrivDisplayMode" : 1,
-            "getPSAppDEField" : {
-              "name" : "ATTENTIONS",
-              "codeName" : "attentions"
+            "objectIdField" : "id",
+            "objectNameField" : "name",
+            "getPSNavigateParams" : [ {
+              "key" : "n_department_id_eq",
+              "name" : "n_department_id_eq",
+              "value" : "srforgsectorid",
+              "rawValue" : false
+            }, {
+              "key" : "n_status_eq",
+              "name" : "n_status_eq",
+              "value" : "1",
+              "rawValue" : true
+            } ],
+            "getPSSysPFPlugin" : {
+              "pluginType" : "EDITOR_CUSTOMSTYLE",
+              "pluginCode" : "PERSON_SELECT",
+              "runtimeObject" : true
             },
-            "getPSEditor" : {
-              "editorParams" : {
-                "MULTIPLE" : "true",
-                "DEFAULTATNVALUE" : "40",
-                "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
-                "AC" : "TRUE",
-                "DEFAULTSELCURUSER" : "true",
-                "SRFNAVPARAM.n_status_eq" : "1",
-                "TRIGGER" : "TRUE",
-                "SELFFILLMAP" : "{\"user_id\":\"user_id\",\"user_name\":\"name\"}",
-                "URL" : "products/${context.product}/product_members/fetch_default",
-                "PICKUPVIEW" : "FALSE",
-                "USERMETHOD" : "post",
-                "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
-                "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
-                "DEPTMETHOD" : "get",
-                "DEPTURL" : "/users/fetch_default"
-              },
-              "editorStyle" : "PERSONEL_SELECT_PRODUCT",
-              "editorType" : "PICKEREX_TRIGGER",
-              "handlerType" : "PickupText",
-              "name" : "attentions",
-              "objectIdField" : "id",
-              "objectNameField" : "name",
-              "getPSNavigateParams" : [ {
-                "key" : "n_department_id_eq",
-                "name" : "n_department_id_eq",
-                "value" : "srforgsectorid",
-                "rawValue" : false
-              }, {
-                "key" : "n_status_eq",
-                "name" : "n_status_eq",
-                "value" : "1",
-                "rawValue" : true
-              } ],
-              "getPSSysPFPlugin" : {
-                "pluginType" : "EDITOR_CUSTOMSTYLE",
-                "pluginCode" : "PERSON_SELECT",
-                "runtimeObject" : true
-              },
-              "valueType" : "OBJECTS",
-              "enableAC" : true,
-              "enablePickupView" : false,
-              "forceSelection" : true,
-              "showTrigger" : true,
-              "singleSelect" : true
-            },
-            "getPSLayoutPos" : {
-              "colMD" : 24,
-              "layout" : "TABLE_24COL"
-            },
-            "allowEmpty" : true,
-            "showCaption" : true
-          } ],
-          "getPSLayout" : {
-            "childColMD" : 24,
-            "columnCount" : 24,
-            "layout" : "TABLE_24COL"
+            "valueType" : "OBJECTS",
+            "enableAC" : true,
+            "enablePickupView" : false,
+            "forceSelection" : true,
+            "showTrigger" : true,
+            "singleSelect" : true
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "infoGroupMode" : false,
-          "showCaption" : false
+          "allowEmpty" : true,
+          "showCaption" : true
         }, {
           "getCapPSLanguageRes" : {
             "lanResTag" : "CONTROL.DEFORM.IDEA.QUICK_CREATE.FORMITEM.PRODUCT_ID"
@@ -2194,7 +2168,6 @@
           "value" : "{\"placement\":\"right\",\"width\":300}",
           "rawValue" : true
         } ],
-        "timeout" : 60000,
         "uIActionMode" : "FRONT",
         "uIActionParamJO" : {
           "modalOption" : {

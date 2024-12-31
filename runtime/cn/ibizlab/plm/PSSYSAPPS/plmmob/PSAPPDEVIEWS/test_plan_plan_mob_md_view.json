@@ -500,6 +500,25 @@
     },
     "getPSDEListDataItems" : [ {
       "dataType" : 25,
+      "getFrontPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/TestMgmt__test_plan_type.json"
+      },
+      "name" : "type",
+      "getPSAppDEField" : {
+        "name" : "TYPE",
+        "codeName" : "type"
+      }
+    }, {
+      "dataType" : 5,
+      "format" : "YYYY-MM-DD",
+      "name" : "start_at",
+      "getPSAppDEField" : {
+        "name" : "START_AT",
+        "codeName" : "start_at"
+      }
+    }, {
+      "dataType" : 25,
       "name" : "assignee_name",
       "getPSAppDEField" : {
         "name" : "ASSIGNEE_NAME",
@@ -515,21 +534,10 @@
     }, {
       "dataType" : 5,
       "format" : "YYYY-MM-DD",
-      "name" : "start_at",
+      "name" : "end_at",
       "getPSAppDEField" : {
-        "name" : "START_AT",
-        "codeName" : "start_at"
-      }
-    }, {
-      "dataType" : 25,
-      "getFrontPSCodeList" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/TestMgmt__test_plan_type.json"
-      },
-      "name" : "type",
-      "getPSAppDEField" : {
-        "name" : "TYPE",
-        "codeName" : "type"
+        "name" : "END_AT",
+        "codeName" : "end_at"
       }
     }, {
       "dataType" : 25,
@@ -541,14 +549,6 @@
       "getPSAppDEField" : {
         "name" : "STATUS",
         "codeName" : "status"
-      }
-    }, {
-      "dataType" : 5,
-      "format" : "YYYY-MM-DD",
-      "name" : "end_at",
-      "getPSAppDEField" : {
-        "name" : "END_AT",
-        "codeName" : "end_at"
       }
     }, {
       "dataType" : 25,
@@ -598,6 +598,26 @@
     } ],
     "getPSDEListItems" : [ {
       "align" : "LEFT",
+      "cLConvertMode" : "FRONT",
+      "caption" : "测试类型",
+      "dataItemName" : "type",
+      "itemType" : "TEXTITEM",
+      "name" : "TYPE",
+      "width" : 150,
+      "widthString" : "150px",
+      "enableSort" : true
+    }, {
+      "align" : "LEFT",
+      "caption" : "开始时间",
+      "dataItemName" : "start_at",
+      "itemType" : "TEXTITEM",
+      "name" : "START_AT",
+      "valueFormat" : "YYYY-MM-DD",
+      "width" : 150,
+      "widthString" : "150px",
+      "enableSort" : true
+    }, {
+      "align" : "LEFT",
       "caption" : "负责人",
       "dataItemName" : "assignee_name",
       "itemType" : "TEXTITEM",
@@ -619,21 +639,11 @@
       "enableSort" : true
     }, {
       "align" : "LEFT",
-      "caption" : "开始时间",
-      "dataItemName" : "start_at",
+      "caption" : "结束时间",
+      "dataItemName" : "end_at",
       "itemType" : "TEXTITEM",
-      "name" : "START_AT",
+      "name" : "END_AT",
       "valueFormat" : "YYYY-MM-DD",
-      "width" : 150,
-      "widthString" : "150px",
-      "enableSort" : true
-    }, {
-      "align" : "LEFT",
-      "cLConvertMode" : "FRONT",
-      "caption" : "测试类型",
-      "dataItemName" : "type",
-      "itemType" : "TEXTITEM",
-      "name" : "TYPE",
       "width" : 150,
       "widthString" : "150px",
       "enableSort" : true
@@ -647,18 +657,9 @@
       "width" : 150,
       "widthString" : "150px",
       "enableSort" : true
-    }, {
-      "align" : "LEFT",
-      "caption" : "结束时间",
-      "dataItemName" : "end_at",
-      "itemType" : "TEXTITEM",
-      "name" : "END_AT",
-      "valueFormat" : "YYYY-MM-DD",
-      "width" : 150,
-      "widthString" : "150px",
-      "enableSort" : true
     } ],
-    "pagingSize" : 1000,
+    "pagingMode" : 2,
+    "pagingSize" : 20,
     "getRemovePSControlAction" : {
       "modelref" : true,
       "id" : "remove",

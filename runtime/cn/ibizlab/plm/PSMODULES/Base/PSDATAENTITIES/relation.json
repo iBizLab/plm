@@ -1400,6 +1400,279 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDEDATAQUERIES/product_plan_idea/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "product_plan_idea",
+    "logicName" : "排期下需求",
+    "name" : "product_plan_idea",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "RELATION",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "product_plan",
+          "fieldName" : "PRINCIPAL_ID",
+          "name" : "(PRINCIPAL_ID) 等于(=) 网页请求上下文 product_plan",
+          "getPSDEField" : {
+            "name" : "PRINCIPAL_ID",
+            "codeName" : "principal_id"
+          },
+          "getPSVARTypeId" : "WEBCONTEXT"
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "product_plan",
+          "fieldName" : "RELATION_TYPE",
+          "name" : "(RELATION_TYPE) 等于(=) product_plan",
+          "getPSDEField" : {
+            "name" : "RELATION_TYPE",
+            "codeName" : "relation_type"
+          }
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "idea",
+          "fieldName" : "TARGET_TYPE",
+          "name" : "(TARGET_TYPE) 等于(=) idea",
+          "getPSDEField" : {
+            "name" : "TARGET_TYPE",
+            "codeName" : "target_type"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Product_plan_ideaInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "relation_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Product_plan_ideaResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "relation_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDEDATAQUERIES/product_re_project/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "product_re_project",
+    "logicName" : "产品关联项目",
+    "name" : "product_re_project",
+    "getPSDEDQMain" : {
+      "getChildPSDEDQJoins" : [ {
+        "getDERPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+        },
+        "getJoinPSDER" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDERS/DERCUSTOM_RELATION_TARGET_PROJECT.json"
+        },
+        "getJoinPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+        },
+        "joinType" : "N1",
+        "name" : "PROJECT相关N:1（INNER JOIN）DERCUSTOM_RELATION_TARGET_PROJECT",
+        "getPSDEDQGroupCondition" : {
+          "condOp" : "AND",
+          "condType" : "GROUP",
+          "name" : "连接条件",
+          "getPSDEDQConditions" : [ {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "0",
+            "fieldName" : "IS_DELETED",
+            "name" : "(IS_DELETED) 等于(=) 0",
+            "getPSDEField" : {
+              "name" : "IS_DELETED",
+              "codeName" : "is_deleted"
+            }
+          } ]
+        }
+      } ],
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "RELATION",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "principal_id",
+          "fieldName" : "PRINCIPAL_ID",
+          "name" : "(PRINCIPAL_ID) 等于(=) 网页请求上下文 principal_id",
+          "getPSDEField" : {
+            "name" : "PRINCIPAL_ID",
+            "codeName" : "principal_id"
+          },
+          "getPSVARTypeId" : "WEBCONTEXT"
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "project",
+          "fieldName" : "TARGET_TYPE",
+          "name" : "(TARGET_TYPE) 等于(=) project",
+          "getPSDEField" : {
+            "name" : "TARGET_TYPE",
+            "codeName" : "target_type"
+          }
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "product",
+          "fieldName" : "PRINCIPAL_TYPE",
+          "name" : "(PRINCIPAL_TYPE) 等于(=) product",
+          "getPSDEField" : {
+            "name" : "PRINCIPAL_TYPE",
+            "codeName" : "principal_type"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Product_re_projectInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "relation_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Product_re_projectResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "relation_dto"
+      },
+      "type" : "DTOS"
+    },
+    "viewLevel" : 0
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDEDATAQUERIES/project_re_product/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "project_re_product",
+    "logicName" : "项目关联产品",
+    "name" : "project_re_product",
+    "getPSDEDQMain" : {
+      "getChildPSDEDQJoins" : [ {
+        "getDERPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+        },
+        "getJoinPSDER" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDERS/DERCUSTOM_RELATION_TARGET_PRODUCT.json"
+        },
+        "getJoinPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+        },
+        "joinType" : "N1",
+        "name" : "PRODUCT相关N:1（INNER JOIN）DERCUSTOM_RELATION_TARGET_PRODUCT",
+        "getPSDEDQGroupCondition" : {
+          "condOp" : "AND",
+          "condType" : "GROUP",
+          "name" : "连接条件",
+          "getPSDEDQConditions" : [ {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "0",
+            "fieldName" : "IS_DELETED",
+            "name" : "(IS_DELETED) 等于(=) 0",
+            "getPSDEField" : {
+              "name" : "IS_DELETED",
+              "codeName" : "is_deleted"
+            }
+          } ]
+        }
+      } ],
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "RELATION",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "principal_id",
+          "fieldName" : "PRINCIPAL_ID",
+          "name" : "(PRINCIPAL_ID) 等于(=) 网页请求上下文 principal_id",
+          "getPSDEField" : {
+            "name" : "PRINCIPAL_ID",
+            "codeName" : "principal_id"
+          },
+          "getPSVARTypeId" : "WEBCONTEXT"
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "product",
+          "fieldName" : "TARGET_TYPE",
+          "name" : "(TARGET_TYPE) 等于(=) product",
+          "getPSDEField" : {
+            "name" : "TARGET_TYPE",
+            "codeName" : "target_type"
+          }
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "project",
+          "fieldName" : "PRINCIPAL_TYPE",
+          "name" : "(PRINCIPAL_TYPE) 等于(=) project",
+          "getPSDEField" : {
+            "name" : "PRINCIPAL_TYPE",
+            "codeName" : "principal_type"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Project_re_productInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "relation_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Project_re_productResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "relation_dto"
+      },
+      "type" : "DTOS"
+    },
+    "viewLevel" : 0
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDEDATAQUERIES/review_re_test_case/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "review_re_test_case",
@@ -3319,6 +3592,86 @@
     },
     "getPSDEDataSetReturn" : {
       "name" : "Idea_version_relationResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "relation_dto"
+      },
+      "type" : "PAGE"
+    },
+    "viewLevel" : 0,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "product_plan_idea",
+    "logicName" : "产品排期计划内关联事项",
+    "name" : "product_plan_idea",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "product_plan_idea"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Product_plan_ideaInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "relation_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Product_plan_ideaResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "relation_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "product_re_project",
+    "logicName" : "产品关联项目",
+    "name" : "product_re_project",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "product_re_project"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Product_re_projectInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "relation_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Product_re_projectResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "relation_dto"
+      },
+      "type" : "PAGE"
+    },
+    "viewLevel" : 0,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "project_re_product",
+    "logicName" : "项目关联产品",
+    "name" : "project_re_product",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "project_re_product"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Project_re_productInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "relation_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Project_re_productResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "relation_dto"
@@ -5533,6 +5886,199 @@
     "valueFormat" : "%1$s",
     "viewLevel" : 0,
     "phisicalDEField" : false,
+    "uIAssistDEField" : true
+  }, {
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[SEQUENCE][排序]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[SEQUENCE][排序]",
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[SEQUENCE][排序]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[SEQUENCE][排序]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "sequence",
+    "dEFType" : 5,
+    "dataType" : "INT",
+    "defaultValue" : "1",
+    "importOrder" : 1000,
+    "logicName" : "排序",
+    "name" : "SEQUENCE",
+    "serviceCodeName" : "sequence",
+    "stdDataType" : 9,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "phisicalDEField" : false,
+    "uIAssistDEField" : true
+  }, {
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[PRODUCT][产品]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[PRODUCT][产品]移动端默认",
+        "stringLength" : 1048576,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[PRODUCT][产品]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[PRODUCT][产品]",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "PRODUCT",
+          "maxValue" : 1048576,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[1048576]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[1048576]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[1048576]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "product",
+    "dEFType" : 5,
+    "dataType" : "PICKUPOBJECT",
+    "importOrder" : 1000,
+    "length" : 1048576,
+    "logicName" : "产品",
+    "name" : "PRODUCT",
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDERS/DERCUSTOM_RELATION_TARGET_PRODUCT.json"
+    },
+    "getPSDER1N" : "外键值对象属性[RELATION#关联|PRODUCT#产品]实体关系[DERCUSTOM_RELATION_TARGET_PRODUCT]类型不正确",
+    "serviceCodeName" : "product",
+    "stdDataType" : 21,
+    "stringLength" : 1048576,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "phisicalDEField" : false,
+    "queryColumn" : false,
+    "uIAssistDEField" : true
+  }, {
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[PROJECT_OBJ][项目对象]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[PROJECT_OBJ][项目对象]",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[PROJECT_OBJ][项目对象]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[PROJECT_OBJ][项目对象]移动端默认",
+        "stringLength" : 1048576,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "PROJECT_OBJ",
+          "maxValue" : 1048576,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[1048576]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[1048576]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[1048576]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "project_obj",
+    "dEFType" : 5,
+    "dataType" : "PICKUPOBJECT",
+    "importOrder" : 1000,
+    "length" : 1048576,
+    "logicName" : "项目对象",
+    "name" : "PROJECT_OBJ",
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDERS/DERCUSTOM_RELATION_TARGET_PROJECT.json"
+    },
+    "getPSDER1N" : "外键值对象属性[RELATION#关联|PROJECT_OBJ#项目对象]实体关系[DERCUSTOM_RELATION_TARGET_PROJECT]类型不正确",
+    "serviceCodeName" : "project_obj",
+    "stdDataType" : 21,
+    "stringLength" : 1048576,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "phisicalDEField" : false,
+    "queryColumn" : false,
     "uIAssistDEField" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
@@ -9286,6 +9832,53 @@
       "stringLength" : 200,
       "type" : "SIMPLE"
     }, {
+      "defaultValue" : "1",
+      "logicName" : "排序",
+      "name" : "sequence",
+      "getPSDEField" : {
+        "name" : "SEQUENCE",
+        "codeName" : "sequence"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "产品",
+      "name" : "product",
+      "getPSDEField" : {
+        "name" : "PRODUCT",
+        "codeName" : "product"
+      },
+      "getRefPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "product_dto"
+      },
+      "getRefPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+      },
+      "sourceType" : "DEFIELD",
+      "stringLength" : 1048576,
+      "type" : "DTO"
+    }, {
+      "logicName" : "项目对象",
+      "name" : "project_obj",
+      "getPSDEField" : {
+        "name" : "PROJECT_OBJ",
+        "codeName" : "project_obj"
+      },
+      "getRefPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "getRefPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "sourceType" : "DEFIELD",
+      "stringLength" : 1048576,
+      "type" : "DTO"
+    }, {
       "logicName" : "建立人",
       "name" : "create_man",
       "getPSDEField" : {
@@ -9600,6 +10193,12 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "plan_track_tree_view",
+    "logicName" : "跟踪树导航视图",
+    "name" : "跟踪树导航视图",
+    "realModelSubType" : "DETREEVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "idea_re_test_case_grid_view",
     "logicName" : "需求关联测试用例实体表格视图",
     "name" : "需求关联测试用例实体表格视图",
@@ -9695,6 +10294,12 @@
     "logicName" : "工单关联工作项多数据视图（移动端）",
     "name" : "工单关联工作项多数据视图（移动端）",
     "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "product_re_project_grid_view",
+    "logicName" : "产品关联项目表格视图",
+    "name" : "产品关联项目表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mob_idea_re_test",
@@ -9904,6 +10509,12 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "plan_kanban_view",
+    "logicName" : "排期跟踪看板视图",
+    "name" : "排期跟踪看板视图",
+    "realModelSubType" : "DEKANBANVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "GridView",
     "logicName" : "工作项关联实体表格视图",
     "modelTag" : "MDATAVIEW",
@@ -9921,6 +10532,12 @@
     "logicName" : "需求关联需求列表视图",
     "name" : "需求关联需求列表视图",
     "realModelSubType" : "DELISTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "project_re_product_grid_view",
+    "logicName" : "项目关联产品表格视图",
+    "name" : "项目关联产品表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "Main",
@@ -10127,6 +10744,60 @@
     "serviceCodeName" : "principal_idea",
     "typeValue" : "idea"
   }, {
+    "codeName" : "principal_product",
+    "dERSubType" : "DER1N",
+    "dERType" : "DERCUSTOM",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDERS/DERCUSTOM_RELATION_PRODUCT.json",
+    "logicName" : "产品-关联源",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+    },
+    "masterRS" : 0,
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+    },
+    "name" : "DERCUSTOM_RELATION_PRODUCT",
+    "orderValue" : 100,
+    "parentSubType" : "product",
+    "pickupDEFName" : "PRINCIPAL_ID",
+    "getPickupPSDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "removeActionType" : 0,
+    "removeOrder" : -1,
+    "serviceCodeName" : "principal_product",
+    "typeValue" : "product"
+  }, {
+    "codeName" : "principal_project",
+    "dERSubType" : "DER1N",
+    "dERType" : "DERCUSTOM",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDERS/DERCUSTOM_RELATION_PROJECT.json",
+    "logicName" : "项目-关联源",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+    },
+    "masterRS" : 0,
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+    },
+    "name" : "DERCUSTOM_RELATION_PROJECT",
+    "orderValue" : 100,
+    "parentSubType" : "project",
+    "pickupDEFName" : "PRINCIPAL_ID",
+    "getPickupPSDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "removeActionType" : 0,
+    "removeOrder" : -1,
+    "serviceCodeName" : "principal_project",
+    "typeValue" : "project"
+  }, {
     "codeName" : "relation_release",
     "dERSubType" : "DER1N",
     "dERType" : "DERCUSTOM",
@@ -10314,6 +10985,33 @@
     "serviceCodeName" : "target_page",
     "typeValue" : "page"
   }, {
+    "codeName" : "TARGET_PRODUCT",
+    "dERSubType" : "DER1N",
+    "dERType" : "DERCUSTOM",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDERS/DERCUSTOM_RELATION_TARGET_PRODUCT.json",
+    "logicName" : "产品-关联目标",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+    },
+    "masterRS" : 0,
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+    },
+    "name" : "DERCUSTOM_RELATION_TARGET_PRODUCT",
+    "orderValue" : 100,
+    "parentSubType" : "product",
+    "pickupDEFName" : "TARGET_ID",
+    "getPickupPSDEField" : {
+      "name" : "TARGET_ID",
+      "codeName" : "target_id"
+    },
+    "removeActionType" : 0,
+    "removeOrder" : -1,
+    "serviceCodeName" : "target_product",
+    "typeValue" : "product"
+  }, {
     "codeName" : "target_product_plan_category",
     "dERSubType" : "DER1N",
     "dERType" : "DERCUSTOM",
@@ -10338,6 +11036,33 @@
     "removeActionType" : 0,
     "removeOrder" : -1,
     "serviceCodeName" : "target_product_plan_category"
+  }, {
+    "codeName" : "TARGET_PROJECT",
+    "dERSubType" : "DER1N",
+    "dERType" : "DERCUSTOM",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDERS/DERCUSTOM_RELATION_TARGET_PROJECT.json",
+    "logicName" : "项目-关联目标",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+    },
+    "masterRS" : 0,
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+    },
+    "name" : "DERCUSTOM_RELATION_TARGET_PROJECT",
+    "orderValue" : 100,
+    "parentSubType" : "project",
+    "pickupDEFName" : "TARGET_ID",
+    "getPickupPSDEField" : {
+      "name" : "TARGET_ID",
+      "codeName" : "target_id"
+    },
+    "removeActionType" : 0,
+    "removeOrder" : -1,
+    "serviceCodeName" : "target_project",
+    "typeValue" : "project"
   }, {
     "codeName" : "target_run",
     "dERSubType" : "DER1N",

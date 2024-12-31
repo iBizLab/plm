@@ -1396,17 +1396,18 @@
       "modelid" : "AD595700-03DB-4CAC-981F-2E08E3818D99",
       "modeltype" : "PSSYSDBPART"
     }, {
-      "codeName" : "test_plan",
+      "actionGroupExtractMode" : "ITEM",
+      "codeName" : "change_log",
       "controlType" : "PORTLET",
       "height" : 500.0,
-      "name" : "dashboard_sysportlet4",
+      "name" : "dashboard_sysportlet3",
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
       },
       "getPSControlHandler" : {
         "enableDEFieldPrivilege" : false,
-        "id" : "dashboard_sysportlet4"
+        "id" : "dashboard_sysportlet3"
       },
       "getPSControlParam" : {
         "height" : 500.0,
@@ -1420,144 +1421,189 @@
         "heightMode" : "PX",
         "layout" : "TABLE_24COL"
       },
+      "getPSUIActionGroup" : {
+        "codeName" : "Usr1217483331",
+        "name" : "发布日志界面行为组",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
+        },
+        "getPSUIActionGroupDetails" : [ {
+          "detailType" : "DEUIACTION",
+          "name" : "u2eccbe3",
+          "getPSSysImage" : {
+            "glyph" : "xf044@FontAwesome",
+            "cssClass" : "fa fa-edit"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEKEY",
+            "caption" : "编辑",
+            "codeName" : "edit_change_log",
+            "dataAccessAction" : "UPDATE",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/release_change_log_option_view.json",
+              "viewType" : "DEOPTVIEW"
+            },
+            "frontProcessType" : "WIZARD",
+            "fullCodeName" : "release_edit_change_log",
+            "name" : "编辑发布日志",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "project__UPDATE"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf044@FontAwesome",
+              "cssClass" : "fa fa-edit"
+            },
+            "tooltip" : "编辑发布日志",
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "edit_change_log",
+            "uIActionType" : "DEUIACTION",
+            "id" : "edit_change_log@release"
+          },
+          "tooltip" : "编辑发布日志",
+          "addSeparator" : false,
+          "showCaption" : false,
+          "showIcon" : true
+        } ],
+        "uniqueTag" : "release__Usr1217483331"
+      },
       "getPortletPSAppView" : {
         "accUserMode" : 2,
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DE.LNAME.TEST_PLAN"
+          "lanResTag" : "DE.LNAME.RELEASE"
         },
-        "caption" : "测试计划",
-        "codeName" : "test_plan_release_relation_grid_view",
-        "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_plan_release_relation_grid_view.json",
-        "gridRowActiveMode" : 1,
-        "name" : "test_planrelease_relation_grid_view",
+        "caption" : "发布日志",
+        "codeName" : "release_change_log_show_view",
+        "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/release_change_log_show_view.json",
+        "name" : "releasechange_log_show_view",
         "getPSAppDataEntity" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
         },
         "getPSAppModule" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/Test.json"
+          "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProjMgmt.json"
         },
         "getPSAppViewEngines" : [ {
           "engineCat" : "VIEW",
-          "engineType" : "GridView",
+          "engineType" : "EditView",
           "name" : "engine"
         } ],
-        "getPSAppViewLogics" : [ {
-          "eventNames" : "onActive",
-          "logicTrigger" : "CTRLEVENT",
-          "logicType" : "APPDEUIACTION",
-          "name" : "OPENDATA",
-          "getPSAppDEUIAction" : {
-            "actionTarget" : "SINGLEDATA",
-            "caption" : "关联跳转测试计划主视图",
-            "codeName" : "open_test_plan_main_view",
-            "frontProcessType" : "OTHER",
-            "fullCodeName" : "test_plan_open_test_plan_main_view",
-            "name" : "关联跳转测试计划主视图",
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
-            },
-            "scriptCode" : "const item = data[0];\r\nwindow.location.hash=`/-/index/library=${item.library_id}/library_index_view/srfnavctx=%257B%2522srfnavctrlid%2522%253A%2522plmweb.library_all_grid_view%2540plmweb.library.main%2522%257D;srfnav=usrdrgroup1227882118/test_plan_main_view/srfnavctx=%257B%2522srfnavctrlid%2522%253A%2522plmweb.test_plan_all_grid_view%2540plmweb.test_plan.main%2522%252C%2522test_plan%2522%253A%2522${item.id}%2522%257D;srfnav=run/run_tree_exp_view/srfnav=root%3Anode/run_all_grid_view/-`",
-            "timeout" : 60000,
-            "uIActionMode" : "FRONT",
-            "uIActionTag" : "open_test_plan_main_view",
-            "uIActionType" : "DEUIACTION",
-            "globalUIAction" : true,
-            "id" : "open_test_plan_main_view@test_plan"
-          },
+        "getPSControls" : [ {
+          "codeName" : "change_log_show_view_toolbar",
+          "controlType" : "TOOLBAR",
+          "logicName" : "发布日志展示视图_工具栏",
+          "name" : "toolbar",
           "getPSAppDataEntity" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
           },
-          "getPSViewCtrlName" : "grid"
-        }, {
-          "logicTrigger" : "CUSTOM",
-          "logicType" : "APPUILOGIC",
-          "name" : "newdata",
-          "getPSAppUILogic" : {
-            "actionAfterWizard" : "DEFAULT",
-            "logicType" : "PREDEFINED",
-            "name" : "新建数据",
-            "getNewDataPSAppView" : {
-              "openMode" : "POPUPMODAL",
-              "getRefPSAppView" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_plan_update_option_view.json",
-                "viewType" : "DEOPTVIEW"
-              }
-            },
-            "getPSAppUILogicRefViews" : [ {
-              "openMode" : "POPUPMODAL",
-              "getRefPSAppView" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_plan_update_option_view.json",
-                "viewType" : "DEOPTVIEW"
-              }
-            } ],
-            "viewLogicType" : "APP_NEWDATA",
-            "batchAddOnly" : false,
-            "enableBatchAdd" : false,
-            "enableWizardAdd" : false
-          }
-        } ],
-        "getPSAppViewNavParams" : [ {
-          "key" : "n_release_id_eq",
-          "name" : "n_release_id_eq",
-          "value" : "release",
-          "rawValue" : false
-        } ],
-        "getPSAppViewRefs" : [ {
-          "name" : "NEWDATA",
-          "realOpenMode" : "POPUPMODAL",
-          "realTitle" : "测试计划编辑视图",
-          "getRefPSAppView" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_plan_update_option_view.json",
-            "viewType" : "DEOPTVIEW"
-          }
-        }, {
-          "name" : "EDITDATA",
-          "realTitle" : "测试计划数据重定向视图",
-          "getRealTitlePSLanguageRes" : {
-            "lanResTag" : "PAGE.TITLE.TEST_PLAN.REDIRECTVIEW"
+          "getPSControlParam" : {
+            "id" : "TOOLBAR"
           },
-          "getRefPSAppView" : {
+          "xDataControlName" : "form",
+          "modelid" : "A2870AFF-7F39-46EA-993C-E8DF0FB43580",
+          "modeltype" : "PSDETOOLBAR"
+        }, {
+          "codeName" : "change_log_show_view_form",
+          "controlType" : "FORM",
+          "getCreatePSControlAction" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_plan_redirect_view.json",
-            "viewType" : "DEREDIRECTVIEW"
-          }
-        } ],
-        "getPSControls" : [ {
-          "aggMode" : "NONE",
-          "codeName" : "sprint_relation_grid",
-          "columnEnableFilter" : 2,
-          "columnEnableLink" : 2,
-          "controlType" : "GRID",
-          "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan/PSGRIDS/sprint_relation_grid.json",
-          "getFetchPSControlAction" : {
-            "modelref" : true,
-            "id" : "fetch",
-            "actionType" : "DEDATASET",
-            "name" : "fetch",
+            "id" : "create",
+            "actionName" : "Create",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "CREATE",
+            "name" : "create",
             "getPSAppDEMethod" : {
               "modelref" : true,
-              "id" : "fetch_default"
+              "id" : "create"
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
             }
           },
-          "groupMode" : "NONE",
-          "logicName" : "迭代关联测试计划_表格",
+          "defaultLabelWidth" : 130,
+          "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release/PSFORMS/change_log_show_view_form.json",
+          "getGetDraftFromPSControlAction" : {
+            "modelref" : true,
+            "id" : "loaddraftfrom",
+            "actionName" : "GETDRAFTFROM",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "CREATE",
+            "name" : "loaddraftfrom",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
+            }
+          },
+          "getGetDraftPSControlAction" : {
+            "modelref" : true,
+            "id" : "loaddraft",
+            "actionName" : "GetDraft",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "CREATE",
+            "name" : "loaddraft",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "get_draft"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
+            }
+          },
+          "getGetPSControlAction" : {
+            "modelref" : true,
+            "id" : "load",
+            "actionName" : "Get",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "READ",
+            "name" : "load",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "get"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
+            }
+          },
+          "logicName" : "发布日志展示视图_表单",
           "getPSAppDataEntity" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
           },
           "getPSControlHandler" : {
             "getPSHandlerActions" : [ {
+              "actionName" : "GetDraft",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "CREATE",
+              "name" : "loaddraft",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "get_draft"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
+              }
+            }, {
+              "actionName" : "GETDRAFTFROM",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "CREATE",
+              "name" : "loaddraftfrom",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
+              }
+            }, {
               "actionName" : "Get",
               "actionType" : "DEACTION",
               "dataAccessAction" : "READ",
@@ -1568,7 +1614,7 @@
               },
               "getPSAppDataEntity" : {
                 "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
               }
             }, {
               "actionName" : "Create",
@@ -1581,7 +1627,7 @@
               },
               "getPSAppDataEntity" : {
                 "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
               }
             }, {
               "actionName" : "Update",
@@ -1594,7 +1640,7 @@
               },
               "getPSAppDataEntity" : {
                 "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
               }
             }, {
               "actionName" : "Remove",
@@ -1607,229 +1653,164 @@
               },
               "getPSAppDataEntity" : {
                 "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
-              }
-            }, {
-              "actionName" : "GetDraft",
-              "actionType" : "DEACTION",
-              "dataAccessAction" : "CREATE",
-              "name" : "loaddraft",
-              "getPSAppDEMethod" : {
-                "modelref" : true,
-                "id" : "get_draft"
-              },
-              "getPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
-              }
-            }, {
-              "actionType" : "DEDATASET",
-              "name" : "fetch",
-              "getPSAppDEMethod" : {
-                "modelref" : true,
-                "id" : "fetch_default"
-              },
-              "getPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
               }
             } ],
-            "userDRAction" : "READ",
             "enableDEFieldPrivilege" : false,
-            "id" : "数据表格处理器"
+            "id" : "编辑表单处理器"
           },
           "getPSControlParam" : {
             "autoLoad" : true,
             "showBusyIndicator" : true,
-            "id" : "GRID"
+            "id" : "FORM"
           },
-          "getPSDEGridColumns" : [ {
-            "align" : "LEFT",
-            "cLConvertMode" : "NONE",
-            "getCapPSLanguageRes" : {
-              "lanResTag" : "DEF.LNAME.NAME"
-            },
-            "caption" : "测试计划",
-            "codeName" : "name",
-            "columnType" : "DEFGRIDCOLUMN",
-            "dataItemName" : "name",
-            "excelCaption" : "测试计划",
-            "name" : "name",
-            "noPrivDisplayMode" : 1,
-            "getPSAppDEField" : {
-              "name" : "NAME",
-              "codeName" : "name"
-            },
-            "width" : 200,
-            "widthUnit" : "STAR",
-            "enableSort" : false
-          }, {
-            "align" : "LEFT",
-            "cLConvertMode" : "FRONT",
-            "caption" : "测试分类",
-            "codeName" : "type",
-            "columnType" : "DEFGRIDCOLUMN",
-            "dataItemName" : "type",
-            "excelCaption" : "测试分类",
-            "name" : "type",
-            "noPrivDisplayMode" : 1,
-            "getPSAppCodeList" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__test_plan_type.json"
-            },
-            "getPSAppDEField" : {
-              "name" : "TYPE",
-              "codeName" : "type"
-            },
-            "width" : 150,
-            "widthUnit" : "PX",
-            "enableSort" : false
-          }, {
-            "align" : "LEFT",
-            "cLConvertMode" : "NONE",
-            "caption" : "计划开始",
-            "codeName" : "start_at",
-            "columnType" : "DEFGRIDCOLUMN",
-            "dataItemName" : "start_at",
-            "excelCaption" : "计划开始",
-            "name" : "start_at",
-            "noPrivDisplayMode" : 1,
-            "getPSAppDEField" : {
-              "name" : "START_AT",
-              "codeName" : "start_at"
-            },
-            "valueFormat" : "YYYY-MM-DD",
-            "width" : 150,
-            "widthUnit" : "PX",
-            "enableSort" : false
-          }, {
-            "align" : "LEFT",
-            "cLConvertMode" : "NONE",
-            "caption" : "计划结束",
-            "codeName" : "end_at",
-            "columnType" : "DEFGRIDCOLUMN",
-            "dataItemName" : "end_at",
-            "excelCaption" : "计划结束",
-            "name" : "end_at",
-            "noPrivDisplayMode" : 1,
-            "getPSAppDEField" : {
-              "name" : "END_AT",
-              "codeName" : "end_at"
-            },
-            "valueFormat" : "YYYY-MM-DD",
-            "width" : 150,
-            "widthUnit" : "PX",
-            "enableSort" : false
-          } ],
-          "getPSDEGridDataItems" : [ {
-            "dataType" : 25,
-            "name" : "name",
-            "getPSAppDEField" : {
-              "name" : "NAME",
-              "codeName" : "name"
-            }
-          }, {
-            "dataType" : 25,
-            "name" : "type",
-            "getPSAppDEField" : {
-              "name" : "TYPE",
-              "codeName" : "type"
-            }
-          }, {
-            "format" : "YYYY-MM-DD",
+          "getPSDEFormItems" : [ {
+            "id" : "srfupdatedate",
+            "hidden" : true,
             "dataType" : 5,
-            "name" : "start_at",
             "getPSAppDEField" : {
-              "name" : "START_AT",
-              "codeName" : "start_at"
+              "name" : "UPDATE_TIME",
+              "codeName" : "update_time"
             }
           }, {
-            "format" : "YYYY-MM-DD",
-            "dataType" : 5,
-            "name" : "end_at",
-            "getPSAppDEField" : {
-              "name" : "END_AT",
-              "codeName" : "end_at"
-            }
+            "id" : "srforikey",
+            "hidden" : true,
+            "dataType" : 25
           }, {
+            "id" : "srfkey",
+            "hidden" : true,
             "dataType" : 25,
-            "name" : "id",
             "getPSAppDEField" : {
               "name" : "ID",
               "codeName" : "id"
             }
           }, {
+            "id" : "srfmajortext",
+            "hidden" : true,
             "dataType" : 25,
-            "name" : "library_id",
-            "getPSAppDEField" : {
-              "name" : "LIBRARY_ID",
-              "codeName" : "library_id"
-            }
-          }, {
-            "dataType" : 25,
-            "name" : "srfkey",
-            "getPSAppDEField" : {
-              "name" : "ID",
-              "codeName" : "id"
-            }
-          }, {
-            "dataType" : 25,
-            "name" : "srfdataaccaction",
-            "getPSAppDEField" : {
-              "name" : "ID",
-              "codeName" : "id"
-            },
-            "dataAccessAction" : true
-          }, {
-            "dataType" : 25,
-            "name" : "project_id",
-            "getPSAppDEField" : {
-              "name" : "PROJECT_ID",
-              "codeName" : "project_id"
-            }
-          }, {
-            "dataType" : 25,
-            "name" : "sprint_id",
-            "getPSAppDEField" : {
-              "name" : "SPRINT_ID",
-              "codeName" : "sprint_id"
-            }
-          }, {
-            "dataType" : 25,
-            "name" : "release_id",
-            "getPSAppDEField" : {
-              "name" : "RELEASE_ID",
-              "codeName" : "release_id"
-            }
-          }, {
-            "dataType" : 25,
-            "name" : "srfmajortext",
             "getPSAppDEField" : {
               "name" : "NAME",
               "codeName" : "name"
             }
           }, {
+            "id" : "srftempmode",
+            "hidden" : true,
+            "dataType" : 25
+          }, {
+            "id" : "srfuf",
+            "hidden" : true,
+            "dataType" : 25
+          }, {
+            "id" : "srfdeid",
+            "hidden" : true,
+            "dataType" : 25
+          }, {
+            "id" : "srfsourcekey",
+            "hidden" : true,
+            "dataType" : 25
+          }, {
+            "id" : "changelog",
+            "dataType" : 21,
+            "getPSAppDEField" : {
+              "name" : "CHANGELOG",
+              "codeName" : "changelog"
+            }
+          }, {
+            "id" : "id",
+            "hidden" : true,
             "dataType" : 25,
-            "name" : "srfmstag"
-          } ],
-          "getPSDEGridEditItems" : [ {
-            "caption" : "标识",
-            "codeName" : "srfkey",
-            "enableCond" : 3,
-            "ignoreInput" : 0,
-            "name" : "srfkey",
             "getPSAppDEField" : {
               "name" : "ID",
               "codeName" : "id"
-            },
-            "getPSEditor" : {
-              "editorType" : "HIDDEN",
-              "name" : "srfkey"
-            },
-            "allowEmpty" : true
+            }
           } ],
-          "pagingSize" : 20,
+          "getPSDEFormPages" : [ {
+            "caption" : "基本信息",
+            "codeName" : "formpage1",
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMPAGE",
+            "name" : "formpage1",
+            "getPSDEFormDetails" : [ {
+              "caption" : "发布日志",
+              "codeName" : "changelog",
+              "dataType" : 21,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "NONE",
+              "labelWidth" : 0,
+              "name" : "changelog",
+              "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "CHANGELOG",
+                "codeName" : "changelog"
+              },
+              "getPSEditor" : {
+                "contentType" : "HTML",
+                "editorParams" : {
+                  "contenttype" : "HTML",
+                  "PARSESCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
+                },
+                "editorStyle" : "ANCHO_HTML",
+                "editorType" : "RAW",
+                "name" : "changelog",
+                "getPSSysPFPlugin" : {
+                  "pluginType" : "EDITOR_CUSTOMSTYLE",
+                  "pluginCode" : "ANCHO_HTML",
+                  "runtimeObject" : true
+                }
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true
+            }, {
+              "getCapPSLanguageRes" : {
+                "lanResTag" : "DEF.LNAME.ID"
+              },
+              "caption" : "标识",
+              "codeName" : "id",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "LEFT",
+              "labelWidth" : 130,
+              "name" : "id",
+              "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "ID",
+                "codeName" : "id"
+              },
+              "getPSEditor" : {
+                "editorType" : "HIDDEN",
+                "name" : "id"
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true,
+              "hidden" : true
+            } ],
+            "getPSLayout" : {
+              "childColMD" : 24,
+              "columnCount" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "infoGroupMode" : true
+          } ],
+          "getPSLayout" : {
+            "childColMD" : 24,
+            "columnCount" : 24,
+            "layout" : "TABLE_24COL"
+          },
           "getRemovePSControlAction" : {
+            "modelref" : true,
+            "id" : "remove",
             "actionName" : "Remove",
             "actionType" : "DEACTION",
             "dataAccessAction" : "DELETE",
@@ -1840,197 +1821,109 @@
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
             }
           },
-          "sortMode" : "REMOTE",
-          "hasWFDataItems" : false,
-          "enableColFilter" : false,
-          "enableCustomized" : false,
-          "enableGroup" : false,
-          "enablePagingBar" : false,
-          "enableRowEdit" : false,
-          "enableRowEditOrder" : false,
-          "enableRowNew" : false,
-          "forceFit" : false,
-          "hideHeader" : false,
-          "noSort" : true,
-          "singleSelect" : true,
-          "name" : "grid",
-          "modelid" : "95DADB11-6F8D-4C5B-94C5-E6124707398B",
-          "modeltype" : "PSDEGRID"
-        }, {
-          "codeName" : "default",
-          "controlType" : "SEARCHFORM",
-          "defaultLabelWidth" : 130,
-          "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan/PSSEARCHFORMS/default.json",
-          "logicName" : "默认搜索表单",
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
-          },
-          "getPSControlHandler" : {
-            "getPSHandlerActions" : [ {
-              "actionType" : "FILTERACTION",
-              "name" : "load",
-              "getPSAppDEMethod" : {
-                "modelref" : true,
-                "id" : "FilterGet"
-              },
-              "getPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
-              }
-            }, {
-              "actionType" : "FILTERACTION",
-              "name" : "loaddraft",
-              "getPSAppDEMethod" : {
-                "modelref" : true,
-                "id" : "FilterGetDraft"
-              },
-              "getPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
-              }
-            }, {
-              "actionType" : "FILTERACTION",
-              "name" : "search",
-              "getPSAppDEMethod" : {
-                "modelref" : true,
-                "id" : "FilterSearch"
-              },
-              "getPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
-              }
-            } ],
-            "enableDEFieldPrivilege" : false,
-            "id" : "搜索表单处理器"
-          },
-          "getPSControlParam" : {
-            "autoLoad" : true,
-            "showBusyIndicator" : true,
-            "id" : "SEARCHFORM"
-          },
-          "getPSDEFormPages" : [ {
-            "getCapPSLanguageRes" : {
-              "lanResTag" : "CONTROL.DEFORM.TEST_PLAN.DEFAULT.FORMPAGE.FORMPAGE1"
-            },
-            "caption" : "常规条件",
-            "codeName" : "formpage1",
-            "detailStyle" : "DEFAULT",
-            "detailType" : "FORMPAGE",
-            "name" : "formpage1",
-            "getPSLayout" : {
-              "childColMD" : 24,
-              "columnCount" : 24,
-              "layout" : "TABLE_24COL"
-            },
-            "infoGroupMode" : false
-          } ],
-          "getPSLayout" : {
-            "childColMD" : 24,
-            "columnCount" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "searchButtonStyle" : "DEFAULT",
           "tabHeaderPos" : "TOP",
-          "enableAdvanceSearch" : false,
-          "enableAutoSearch" : false,
-          "enableFilterSave" : false,
+          "getUpdatePSControlAction" : {
+            "modelref" : true,
+            "id" : "update",
+            "actionName" : "Update",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "UPDATE",
+            "name" : "update",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "update"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
+            }
+          },
+          "infoFormMode" : true,
           "noTabHeader" : true,
-          "name" : "searchform",
-          "modelid" : "2e03f13dbf080a0ac507fdf67dfaf6c4",
-          "modeltype" : "PSDEFORM_SEARCHFORM"
+          "name" : "form",
+          "modelid" : "C2C4F0C2-EDC2-45E8-94A7-3E76CE33B294",
+          "modeltype" : "PSDEFORM_EDITFORM"
         }, {
-          "controlType" : "SEARCHBAR",
-          "name" : "searchbar",
+          "codeName" : "change_log_show_view_datainfobar",
+          "controlType" : "DATAINFOBAR",
+          "name" : "datainfobar",
           "getPSAppDataEntity" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
           },
           "getPSControlParam" : {
-            "id" : "searchbar"
-          },
-          "quickGroupCount" : -1,
-          "quickSearchMode" : 0,
-          "quickSearchWidth" : 0,
-          "enableFilter" : false,
-          "enableGroup" : false,
-          "enableQuickSearch" : false,
-          "mobileSearchBar" : false
+            "id" : "datainfobar"
+          }
         }, {
           "getCapPSLanguageRes" : {
-            "lanResTag" : "DE.LNAME.TEST_PLAN"
+            "lanResTag" : "DE.LNAME.RELEASE"
           },
-          "caption" : "测试计划",
-          "codeName" : "release_relation_grid_view_captionbar",
+          "caption" : "发布日志",
+          "codeName" : "change_log_show_view_captionbar",
           "controlType" : "CAPTIONBAR",
           "name" : "captionbar",
           "getPSAppDataEntity" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
           },
           "getPSControlParam" : { }
         } ],
-        "getPSDEViewCodeName" : "release_relation_grid_view",
-        "getPSDEViewId" : "3BAC7BE3-922E-418E-BBD8-409AED1F8601",
+        "getPSDEViewCodeName" : "change_log_show_view",
+        "getPSDEViewId" : "AFCF4834-54E2-4CFE-8F64-F0CB69B4C5CA",
         "getPSViewLayoutPanel" : {
           "codeName" : "layoutpanel",
-          "controlStyle" : "APPDEGRIDVIEW",
+          "controlStyle" : "APPDEEDITVIEW",
           "controlType" : "VIEWLAYOUTPANEL",
           "name" : "layoutpanel",
           "getPSAppDataEntity" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
           },
           "getPSControlParam" : { },
           "layoutBodyOnly" : true,
           "layoutPanel" : true,
           "useDefaultLayout" : true
         },
-        "title" : "发布关联测试计划表格视图",
+        "title" : "发布日志",
         "viewStyle" : "DEFAULT",
-        "viewType" : "DEGRIDVIEW",
-        "xDataControlName" : "grid",
+        "viewType" : "DEEDITVIEW",
+        "xDataControlName" : "form",
         "enableDP" : true,
-        "enableExport" : true,
-        "enableFilter" : true,
-        "enableImport" : true,
-        "enableRowEdit" : false,
-        "enableSearch" : true,
-        "rowEditDefault" : false,
         "showCaptionBar" : false,
-        "modelid" : "8d328a37d8b84930f90bbf967f888b79",
+        "showDataInfoBar" : true,
+        "modelid" : "443a82264170624be8cba78b5b2a47ed",
         "modeltype" : "PSAPPDEVIEW",
         "getPSAppDERSPaths" : [ [ {
           "actionRSMode" : 1,
-          "codeName" : "test_plans",
+          "codeName" : "releases",
           "dataRSMode" : 0,
-          "majorDECodeName" : "library",
-          "majorDEName" : "LIBRARY",
+          "majorDECodeName" : "project",
+          "majorDEName" : "PROJECT",
           "getMajorPSAppDataEntity" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
           },
-          "minorDECodeName" : "test_plan",
-          "minorDEName" : "TEST_PLAN",
+          "minorDECodeName" : "release",
+          "minorDEName" : "RELEASE",
           "getMinorPSAppDataEntity" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
           },
-          "name" : "DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID",
+          "name" : "DER1N_RELEASE_PROJECT_PROJECT_ID",
           "getParentPSAppDEField" : {
-            "name" : "LIBRARY_ID",
-            "codeName" : "library_id"
+            "name" : "PROJECT_ID",
+            "codeName" : "project_id"
           },
           "rSMode" : 2
         } ] ]
       },
       "portletType" : "VIEW",
-      "title" : "测试计划",
+      "title" : "发布日志",
       "showTitleBar" : true,
-      "modelid" : "F6AD6A27-38BB-4B7E-8E8D-2775F7D34059",
+      "modelid" : "0DA06ACF-28FC-47EC-B419-DF8A95393ED9",
       "modeltype" : "PSSYSDBPART"
     }, {
       "actionGroupExtractMode" : "ITEM",
@@ -2166,7 +2059,6 @@
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/sprint.json"
             },
             "scriptCode" : "const srfkey = context.project;\r\nconst sprint = data[0].id;\r\nwindow.location.hash=`/-/index/project=${srfkey}/project_scrum_index_view/srfnav=usrdrgroup1225840217/sprint_main_view/srfnavctx=%257B%2522srfnavctrlid%2522%253A%2522plmweb.sprint_all_grid_view%2540plmweb.sprint.main%2522%252C%2522sprint%2522%253A%2522${sprint}%2522%257D;srfnav=main_view_overview/sprint_overview_dashboard_view/-`",
-            "timeout" : 60000,
             "uIActionMode" : "FRONT",
             "uIActionTag" : "open_release_sprint",
             "uIActionType" : "DEUIACTION",
@@ -2765,6 +2657,642 @@
       "title" : "迭代",
       "showTitleBar" : true,
       "modelid" : "EED39747-3BAD-43FA-82D4-940C6FFEBCEC",
+      "modeltype" : "PSSYSDBPART"
+    }, {
+      "codeName" : "test_plan",
+      "controlType" : "PORTLET",
+      "height" : 500.0,
+      "name" : "dashboard_sysportlet4",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
+      },
+      "getPSControlHandler" : {
+        "enableDEFieldPrivilege" : false,
+        "id" : "dashboard_sysportlet4"
+      },
+      "getPSControlParam" : {
+        "height" : 500.0,
+        "autoLoad" : true,
+        "showBusyIndicator" : true
+      },
+      "getPSLayoutPos" : {
+        "colLG" : 12,
+        "colMD" : 12,
+        "height" : 500,
+        "heightMode" : "PX",
+        "layout" : "TABLE_24COL"
+      },
+      "getPortletPSAppView" : {
+        "accUserMode" : 2,
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DE.LNAME.TEST_PLAN"
+        },
+        "caption" : "测试计划",
+        "codeName" : "test_plan_release_relation_grid_view",
+        "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_plan_release_relation_grid_view.json",
+        "gridRowActiveMode" : 1,
+        "name" : "test_planrelease_relation_grid_view",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+        },
+        "getPSAppModule" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/Test.json"
+        },
+        "getPSAppViewEngines" : [ {
+          "engineCat" : "VIEW",
+          "engineType" : "GridView",
+          "name" : "engine"
+        } ],
+        "getPSAppViewLogics" : [ {
+          "eventNames" : "onActive",
+          "logicTrigger" : "CTRLEVENT",
+          "logicType" : "APPDEUIACTION",
+          "name" : "OPENDATA",
+          "getPSAppDEUIAction" : {
+            "actionTarget" : "SINGLEDATA",
+            "caption" : "关联跳转测试计划主视图",
+            "codeName" : "open_test_plan_main_view",
+            "frontProcessType" : "OTHER",
+            "fullCodeName" : "test_plan_open_test_plan_main_view",
+            "name" : "关联跳转测试计划主视图",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+            },
+            "scriptCode" : "const item = data[0];\r\nwindow.location.hash=`/-/index/library=${item.library_id}/library_index_view/srfnavctx=%257B%2522srfnavctrlid%2522%253A%2522plmweb.library_all_grid_view%2540plmweb.library.main%2522%257D;srfnav=usrdrgroup1227882118/test_plan_main_view/srfnavctx=%257B%2522srfnavctrlid%2522%253A%2522plmweb.test_plan_all_grid_view%2540plmweb.test_plan.main%2522%252C%2522test_plan%2522%253A%2522${item.id}%2522%257D;srfnav=run/run_tree_exp_view/srfnav=root%3Anode/run_all_grid_view/-`",
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "open_test_plan_main_view",
+            "uIActionType" : "DEUIACTION",
+            "globalUIAction" : true,
+            "id" : "open_test_plan_main_view@test_plan"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+          },
+          "getPSViewCtrlName" : "grid"
+        }, {
+          "logicTrigger" : "CUSTOM",
+          "logicType" : "APPUILOGIC",
+          "name" : "newdata",
+          "getPSAppUILogic" : {
+            "actionAfterWizard" : "DEFAULT",
+            "logicType" : "PREDEFINED",
+            "name" : "新建数据",
+            "getNewDataPSAppView" : {
+              "openMode" : "POPUPMODAL",
+              "getRefPSAppView" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_plan_update_option_view.json",
+                "viewType" : "DEOPTVIEW"
+              }
+            },
+            "getPSAppUILogicRefViews" : [ {
+              "openMode" : "POPUPMODAL",
+              "getRefPSAppView" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_plan_update_option_view.json",
+                "viewType" : "DEOPTVIEW"
+              }
+            } ],
+            "viewLogicType" : "APP_NEWDATA",
+            "batchAddOnly" : false,
+            "enableBatchAdd" : false,
+            "enableWizardAdd" : false
+          }
+        } ],
+        "getPSAppViewNavParams" : [ {
+          "key" : "n_release_id_eq",
+          "name" : "n_release_id_eq",
+          "value" : "release",
+          "rawValue" : false
+        } ],
+        "getPSAppViewRefs" : [ {
+          "name" : "NEWDATA",
+          "realOpenMode" : "POPUPMODAL",
+          "realTitle" : "测试计划编辑视图",
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_plan_update_option_view.json",
+            "viewType" : "DEOPTVIEW"
+          }
+        }, {
+          "name" : "EDITDATA",
+          "realTitle" : "测试计划数据重定向视图",
+          "getRealTitlePSLanguageRes" : {
+            "lanResTag" : "PAGE.TITLE.TEST_PLAN.REDIRECTVIEW"
+          },
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_plan_redirect_view.json",
+            "viewType" : "DEREDIRECTVIEW"
+          }
+        } ],
+        "getPSControls" : [ {
+          "aggMode" : "NONE",
+          "codeName" : "sprint_relation_grid",
+          "columnEnableFilter" : 2,
+          "columnEnableLink" : 2,
+          "controlType" : "GRID",
+          "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan/PSGRIDS/sprint_relation_grid.json",
+          "getFetchPSControlAction" : {
+            "modelref" : true,
+            "id" : "fetch",
+            "actionType" : "DEDATASET",
+            "name" : "fetch",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "fetch_default"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+            }
+          },
+          "groupMode" : "NONE",
+          "logicName" : "迭代关联测试计划_表格",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+          },
+          "getPSControlHandler" : {
+            "getPSHandlerActions" : [ {
+              "actionName" : "Get",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "READ",
+              "name" : "load",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "get"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+              }
+            }, {
+              "actionName" : "Create",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "CREATE",
+              "name" : "create",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "create"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+              }
+            }, {
+              "actionName" : "Update",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "UPDATE",
+              "name" : "update",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "update"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+              }
+            }, {
+              "actionName" : "Remove",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "DELETE",
+              "name" : "remove",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "remove"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+              }
+            }, {
+              "actionName" : "GetDraft",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "CREATE",
+              "name" : "loaddraft",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "get_draft"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+              }
+            }, {
+              "actionType" : "DEDATASET",
+              "name" : "fetch",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "fetch_default"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+              }
+            } ],
+            "userDRAction" : "READ",
+            "enableDEFieldPrivilege" : false,
+            "id" : "数据表格处理器"
+          },
+          "getPSControlParam" : {
+            "autoLoad" : true,
+            "showBusyIndicator" : true,
+            "id" : "GRID"
+          },
+          "getPSDEGridColumns" : [ {
+            "align" : "LEFT",
+            "cLConvertMode" : "NONE",
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "DEF.LNAME.NAME"
+            },
+            "caption" : "测试计划",
+            "codeName" : "name",
+            "columnType" : "DEFGRIDCOLUMN",
+            "dataItemName" : "name",
+            "excelCaption" : "测试计划",
+            "name" : "name",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "NAME",
+              "codeName" : "name"
+            },
+            "width" : 200,
+            "widthUnit" : "STAR",
+            "enableSort" : false
+          }, {
+            "align" : "LEFT",
+            "cLConvertMode" : "FRONT",
+            "caption" : "测试分类",
+            "codeName" : "type",
+            "columnType" : "DEFGRIDCOLUMN",
+            "dataItemName" : "type",
+            "excelCaption" : "测试分类",
+            "name" : "type",
+            "noPrivDisplayMode" : 1,
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__test_plan_type.json"
+            },
+            "getPSAppDEField" : {
+              "name" : "TYPE",
+              "codeName" : "type"
+            },
+            "width" : 150,
+            "widthUnit" : "PX",
+            "enableSort" : false
+          }, {
+            "align" : "LEFT",
+            "cLConvertMode" : "NONE",
+            "caption" : "计划开始",
+            "codeName" : "start_at",
+            "columnType" : "DEFGRIDCOLUMN",
+            "dataItemName" : "start_at",
+            "excelCaption" : "计划开始",
+            "name" : "start_at",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "START_AT",
+              "codeName" : "start_at"
+            },
+            "valueFormat" : "YYYY-MM-DD",
+            "width" : 150,
+            "widthUnit" : "PX",
+            "enableSort" : false
+          }, {
+            "align" : "LEFT",
+            "cLConvertMode" : "NONE",
+            "caption" : "计划结束",
+            "codeName" : "end_at",
+            "columnType" : "DEFGRIDCOLUMN",
+            "dataItemName" : "end_at",
+            "excelCaption" : "计划结束",
+            "name" : "end_at",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "END_AT",
+              "codeName" : "end_at"
+            },
+            "valueFormat" : "YYYY-MM-DD",
+            "width" : 150,
+            "widthUnit" : "PX",
+            "enableSort" : false
+          } ],
+          "getPSDEGridDataItems" : [ {
+            "dataType" : 25,
+            "name" : "name",
+            "getPSAppDEField" : {
+              "name" : "NAME",
+              "codeName" : "name"
+            }
+          }, {
+            "dataType" : 25,
+            "name" : "type",
+            "getPSAppDEField" : {
+              "name" : "TYPE",
+              "codeName" : "type"
+            }
+          }, {
+            "format" : "YYYY-MM-DD",
+            "dataType" : 5,
+            "name" : "start_at",
+            "getPSAppDEField" : {
+              "name" : "START_AT",
+              "codeName" : "start_at"
+            }
+          }, {
+            "format" : "YYYY-MM-DD",
+            "dataType" : 5,
+            "name" : "end_at",
+            "getPSAppDEField" : {
+              "name" : "END_AT",
+              "codeName" : "end_at"
+            }
+          }, {
+            "dataType" : 25,
+            "name" : "id",
+            "getPSAppDEField" : {
+              "name" : "ID",
+              "codeName" : "id"
+            }
+          }, {
+            "dataType" : 25,
+            "name" : "library_id",
+            "getPSAppDEField" : {
+              "name" : "LIBRARY_ID",
+              "codeName" : "library_id"
+            }
+          }, {
+            "dataType" : 25,
+            "name" : "srfkey",
+            "getPSAppDEField" : {
+              "name" : "ID",
+              "codeName" : "id"
+            }
+          }, {
+            "dataType" : 25,
+            "name" : "srfdataaccaction",
+            "getPSAppDEField" : {
+              "name" : "ID",
+              "codeName" : "id"
+            },
+            "dataAccessAction" : true
+          }, {
+            "dataType" : 25,
+            "name" : "project_id",
+            "getPSAppDEField" : {
+              "name" : "PROJECT_ID",
+              "codeName" : "project_id"
+            }
+          }, {
+            "dataType" : 25,
+            "name" : "sprint_id",
+            "getPSAppDEField" : {
+              "name" : "SPRINT_ID",
+              "codeName" : "sprint_id"
+            }
+          }, {
+            "dataType" : 25,
+            "name" : "release_id",
+            "getPSAppDEField" : {
+              "name" : "RELEASE_ID",
+              "codeName" : "release_id"
+            }
+          }, {
+            "dataType" : 25,
+            "name" : "srfmajortext",
+            "getPSAppDEField" : {
+              "name" : "NAME",
+              "codeName" : "name"
+            }
+          }, {
+            "dataType" : 25,
+            "name" : "srfmstag"
+          } ],
+          "getPSDEGridEditItems" : [ {
+            "caption" : "标识",
+            "codeName" : "srfkey",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "name" : "srfkey",
+            "getPSAppDEField" : {
+              "name" : "ID",
+              "codeName" : "id"
+            },
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "srfkey"
+            },
+            "allowEmpty" : true
+          } ],
+          "pagingSize" : 20,
+          "getRemovePSControlAction" : {
+            "actionName" : "Remove",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "DELETE",
+            "name" : "remove",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "remove"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+            }
+          },
+          "sortMode" : "REMOTE",
+          "hasWFDataItems" : false,
+          "enableColFilter" : false,
+          "enableCustomized" : false,
+          "enableGroup" : false,
+          "enablePagingBar" : false,
+          "enableRowEdit" : false,
+          "enableRowEditOrder" : false,
+          "enableRowNew" : false,
+          "forceFit" : false,
+          "hideHeader" : false,
+          "noSort" : true,
+          "singleSelect" : true,
+          "name" : "grid",
+          "modelid" : "95DADB11-6F8D-4C5B-94C5-E6124707398B",
+          "modeltype" : "PSDEGRID"
+        }, {
+          "codeName" : "default",
+          "controlType" : "SEARCHFORM",
+          "defaultLabelWidth" : 130,
+          "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan/PSSEARCHFORMS/default.json",
+          "logicName" : "默认搜索表单",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+          },
+          "getPSControlHandler" : {
+            "getPSHandlerActions" : [ {
+              "actionType" : "FILTERACTION",
+              "name" : "load",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "FilterGet"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+              }
+            }, {
+              "actionType" : "FILTERACTION",
+              "name" : "loaddraft",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "FilterGetDraft"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+              }
+            }, {
+              "actionType" : "FILTERACTION",
+              "name" : "search",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "FilterSearch"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+              }
+            } ],
+            "enableDEFieldPrivilege" : false,
+            "id" : "搜索表单处理器"
+          },
+          "getPSControlParam" : {
+            "autoLoad" : true,
+            "showBusyIndicator" : true,
+            "id" : "SEARCHFORM"
+          },
+          "getPSDEFormPages" : [ {
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "CONTROL.DEFORM.TEST_PLAN.DEFAULT.FORMPAGE.FORMPAGE1"
+            },
+            "caption" : "常规条件",
+            "codeName" : "formpage1",
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMPAGE",
+            "name" : "formpage1",
+            "getPSLayout" : {
+              "childColMD" : 24,
+              "columnCount" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "infoGroupMode" : false
+          } ],
+          "getPSLayout" : {
+            "childColMD" : 24,
+            "columnCount" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "searchButtonStyle" : "DEFAULT",
+          "tabHeaderPos" : "TOP",
+          "enableAdvanceSearch" : false,
+          "enableAutoSearch" : false,
+          "enableFilterSave" : false,
+          "noTabHeader" : true,
+          "name" : "searchform",
+          "modelid" : "2e03f13dbf080a0ac507fdf67dfaf6c4",
+          "modeltype" : "PSDEFORM_SEARCHFORM"
+        }, {
+          "controlType" : "SEARCHBAR",
+          "name" : "searchbar",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+          },
+          "getPSControlParam" : {
+            "id" : "searchbar"
+          },
+          "quickGroupCount" : -1,
+          "quickSearchMode" : 0,
+          "quickSearchWidth" : 0,
+          "enableFilter" : false,
+          "enableGroup" : false,
+          "enableQuickSearch" : false,
+          "mobileSearchBar" : false
+        }, {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "DE.LNAME.TEST_PLAN"
+          },
+          "caption" : "测试计划",
+          "codeName" : "release_relation_grid_view_captionbar",
+          "controlType" : "CAPTIONBAR",
+          "name" : "captionbar",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+          },
+          "getPSControlParam" : { }
+        } ],
+        "getPSDEViewCodeName" : "release_relation_grid_view",
+        "getPSDEViewId" : "3BAC7BE3-922E-418E-BBD8-409AED1F8601",
+        "getPSViewLayoutPanel" : {
+          "codeName" : "layoutpanel",
+          "controlStyle" : "APPDEGRIDVIEW",
+          "controlType" : "VIEWLAYOUTPANEL",
+          "name" : "layoutpanel",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+          },
+          "getPSControlParam" : { },
+          "layoutBodyOnly" : true,
+          "layoutPanel" : true,
+          "useDefaultLayout" : true
+        },
+        "title" : "发布关联测试计划表格视图",
+        "viewStyle" : "DEFAULT",
+        "viewType" : "DEGRIDVIEW",
+        "xDataControlName" : "grid",
+        "enableDP" : true,
+        "enableExport" : true,
+        "enableFilter" : true,
+        "enableImport" : true,
+        "enableRowEdit" : false,
+        "enableSearch" : true,
+        "rowEditDefault" : false,
+        "showCaptionBar" : false,
+        "modelid" : "8d328a37d8b84930f90bbf967f888b79",
+        "modeltype" : "PSAPPDEVIEW",
+        "getPSAppDERSPaths" : [ [ {
+          "actionRSMode" : 1,
+          "codeName" : "test_plans",
+          "dataRSMode" : 0,
+          "majorDECodeName" : "library",
+          "majorDEName" : "LIBRARY",
+          "getMajorPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
+          },
+          "minorDECodeName" : "test_plan",
+          "minorDEName" : "TEST_PLAN",
+          "getMinorPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+          },
+          "name" : "DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID",
+          "getParentPSAppDEField" : {
+            "name" : "LIBRARY_ID",
+            "codeName" : "library_id"
+          },
+          "rSMode" : 2
+        } ] ]
+      },
+      "portletType" : "VIEW",
+      "title" : "测试计划",
+      "showTitleBar" : true,
+      "modelid" : "F6AD6A27-38BB-4B7E-8E8D-2775F7D34059",
       "modeltype" : "PSSYSDBPART"
     } ],
     "getPSSysCss" : {

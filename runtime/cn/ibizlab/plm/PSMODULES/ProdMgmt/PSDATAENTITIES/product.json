@@ -671,6 +671,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "nothing",
+    "dataAccessAction" : "NONE",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEACTIONS/nothing.json",
     "logicName" : "无操作",
     "name" : "nothing",
@@ -691,6 +692,32 @@
       "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDELOGICS/nothing.json"
     },
     "enableBackend" : false
+  }, {
+    "actionHolder" : 1,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "other_re_product",
+    "dataAccessAction" : "UPDATE",
+    "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEACTIONS/other_re_product.json",
+    "logicName" : "关联产品",
+    "name" : "other_re_product",
+    "getPSDEActionInput" : {
+      "name" : "Other_re_productInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "product_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Other_re_productResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDELOGICS/other_re_product.json"
+    },
+    "enableFront" : false
   }, {
     "actionHolder" : 1,
     "actionMode" : "UPDATE",
@@ -971,6 +998,9 @@
   } ],
   "getAllPSDEDRGroups" : [ {
     "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRGROUPS/UsrDRGroup1203616060.json"
+  }, {
+    "modelref" : true,
     "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRGROUPS/UsrDRGroup0314174756.json"
   }, {
     "modelref" : true,
@@ -1087,6 +1117,9 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRITEMS/UsrDRItem1023899091.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRITEMS/UsrDRItem1203411481.json"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRITEMS/UsrDRItem1211332658.json"
@@ -1665,6 +1698,87 @@
     },
     "getPSDEDataQueryReturn" : {
       "name" : "Favorite_userResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "product_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDATAQUERIES/no_relation/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "no_relation",
+    "logicName" : "未关联项目",
+    "name" : "no_relation",
+    "getPSDEDQMain" : {
+      "getChildPSDEDQJoins" : [ {
+        "getDERPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+        },
+        "getJoinPSDER" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDERS/DERCUSTOM_RELATION_TARGET_PRODUCT.json"
+        },
+        "getJoinPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+        },
+        "joinType" : "1NNOT",
+        "name" : "RELATION不存在1:N（NOT EXISTS (SELECT)）DERCUSTOM_RELATION_TARGET_PRODUCT",
+        "getPSDEDQGroupCondition" : {
+          "condOp" : "AND",
+          "condType" : "GROUP",
+          "name" : "连接条件",
+          "getPSDEDQConditions" : [ {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "principal_id",
+            "fieldName" : "PRINCIPAL_ID",
+            "name" : "(PRINCIPAL_ID) 等于(=) 网页请求上下文 principal_id",
+            "getPSDEField" : {
+              "name" : "PRINCIPAL_ID",
+              "codeName" : "principal_id"
+            },
+            "getPSVARTypeId" : "WEBCONTEXT"
+          } ]
+        }
+      } ],
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "PRODUCT",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "0",
+          "fieldName" : "IS_DELETED",
+          "name" : "(IS_DELETED) 等于(=) 0",
+          "getPSDEField" : {
+            "name" : "IS_DELETED",
+            "codeName" : "is_deleted"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "No_relationInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "product_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "No_relationResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "product_dto"
@@ -2395,6 +2509,33 @@
     },
     "getPSDEDataSetReturn" : {
       "name" : "Mob_mainResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "product_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true,
+    "enableTempData" : true
+  }, {
+    "codeName" : "no_relation",
+    "logicName" : "未关联项目",
+    "name" : "no_relation",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "no_relation"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "No_relationInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "product_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "No_relationResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "product_dto"
@@ -6426,6 +6567,318 @@
     "enableBackend" : false,
     "enableFront" : true
   }, {
+    "codeName" : "other_re_product",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDELOGICS/other_re_product.json",
+    "logicName" : "其他实体关联产品",
+    "memo" : "产品实体关联操作，生成正向，反向关联数据",
+    "name" : "其他实体关联产品",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 342,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "存在关联主要标识",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "target_id",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[target_id] 值不为空(NotNil)"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "THROWEXCEPTION1"
+        },
+        "name" : "无值",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "groupOP" : "OR",
+            "logicType" : "GROUP",
+            "name" : "OR",
+            "getPSDELogicLinkConds" : [ {
+              "condOP" : "ISNULL",
+              "dstFieldName" : "target_id",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "logicType" : "SINGLE",
+              "name" : "Default[target_id] 值为空(Nil)"
+            } ]
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 208,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM1",
+      "leftPos" : 520,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "填充关联参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "TARGET_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "relationobj2"
+        },
+        "name" : "Default[target_id] ==> relationobj2[TARGET_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "target_id",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "TARGET_TYPE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "relationobj2"
+        },
+        "name" : "Default[target_type] ==> relationobj2[TARGET_TYPE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "target_type",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValue" : "space",
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "PRINCIPAL_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "relationobj2"
+        },
+        "name" : "Default[principal_id] ==> relationobj2[PRINCIPAL_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "principal_id",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "PRINCIPAL_TYPE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "relationobj2"
+        },
+        "name" : "Default[principal_type] ==> relationobj2[PRINCIPAL_TYPE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "principal_type",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValue" : "product",
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "TARGET_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "relationobj"
+        },
+        "name" : "Default[principal_id] ==> relationobj[TARGET_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "principal_id",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "TARGET_TYPE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "relationobj"
+        },
+        "name" : "Default[principal_type] ==> relationobj[TARGET_TYPE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "principal_type",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValue" : "product",
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "PRINCIPAL_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "relationobj"
+        },
+        "name" : "Default[target_id] ==> relationobj[PRINCIPAL_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "target_id",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "PRINCIPAL_TYPE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "relationobj"
+        },
+        "name" : "Default[target_type] ==> relationobj[PRINCIPAL_TYPE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "target_type",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValue" : "space",
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 216
+    }, {
+      "codeName" : "DEACTION2",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDEACTIONS/Create.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "relationobj2"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+      },
+      "leftPos" : 945,
+      "logicNodeType" : "DEACTION",
+      "name" : "生成反向关联数据",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION2"
+        }
+      } ],
+      "topPos" : 216
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDEACTIONS/Create.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "relationobj"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+      },
+      "leftPos" : 656,
+      "logicNodeType" : "DEACTION",
+      "name" : "生成正向关联数据",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "topPos" : 416
+    }, {
+      "codeName" : "THROWEXCEPTION1",
+      "errorCode" : 0,
+      "errorInfo" : "未指定需要关联的项目",
+      "leftPos" : 342,
+      "logicNodeType" : "THROWEXCEPTION",
+      "name" : "抛出异常",
+      "topPos" : 460
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 985,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 510
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "relationobj",
+      "logicName" : "关系对象",
+      "name" : "关系对象",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "relationobj2",
+      "logicName" : "反向关系对象",
+      "name" : "反向关系对象",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+      },
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "product_addon_authority",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDELOGICS/product_addon_authority.json",
@@ -8366,7 +8819,7 @@
   "getAllPSDENotifies" : [ {
     "codeName" : "archived_nofity",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDENOTIFIES/archived_nofity.json",
-    "msgType" : 65,
+    "msgType" : 225,
     "name" : "产品归档/激活通知",
     "notifyTag2" : "产品管理",
     "getPSDENotifyTargets" : [ {
@@ -8379,7 +8832,7 @@
     } ],
     "getPSSysMsgQueue" : {
       "modelref" : true,
-      "path" : "PSSYSMSGQUEUES/Default.json"
+      "path" : "PSMODULES/Base/PSSYSMSGQUEUES/Default.json"
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
@@ -8389,7 +8842,7 @@
   }, {
     "codeName" : "delete_notify",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDENOTIFIES/delete_notify.json",
-    "msgType" : 65,
+    "msgType" : 225,
     "name" : "产品删除/恢复通知",
     "notifyTag2" : "产品管理",
     "getPSDENotifyTargets" : [ {
@@ -8402,7 +8855,7 @@
     } ],
     "getPSSysMsgQueue" : {
       "modelref" : true,
-      "path" : "PSSYSMSGQUEUES/Default.json"
+      "path" : "PSMODULES/Base/PSSYSMSGQUEUES/Default.json"
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
@@ -8417,8 +8870,38 @@
     "logicName" : "删除",
     "name" : "DELETE"
   }, {
+    "logicName" : "属性扩展_管理",
+    "name" : "MANAGE_PSDEFIELD"
+  }, {
+    "logicName" : "表单扩展_管理",
+    "name" : "MANAGE_PSDEFORM"
+  }, {
+    "logicName" : "逻辑扩展_管理",
+    "name" : "MANAGE_PSDELOGIC"
+  }, {
+    "logicName" : "主状态逻辑扩展_管理",
+    "name" : "MANAGE_PSDEMSLOGIC"
+  }, {
+    "logicName" : "通知扩展_管理",
+    "name" : "MANAGE_PSDENOTIFY"
+  }, {
     "logicName" : "读取",
     "name" : "READ"
+  }, {
+    "logicName" : "属性扩展_只读",
+    "name" : "READ_PSDEFIELD"
+  }, {
+    "logicName" : "表单扩展_只读",
+    "name" : "READ_PSDEFORM"
+  }, {
+    "logicName" : "逻辑扩展_只读",
+    "name" : "READ_PSDELOGIC"
+  }, {
+    "logicName" : "主状态逻辑扩展_只读",
+    "name" : "READ_PSDEMSLOGIC"
+  }, {
+    "logicName" : "通知扩展_只读",
+    "name" : "READ_PSDENOTIFY"
   }, {
     "logicName" : "子数据权限",
     "name" : "SUBDATA"
@@ -8434,11 +8917,67 @@
       "id" : "admin"
     },
     "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "UPDATE",
+      "name" : "UPDATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "UPDATE"
+      }
+    }, {
+      "dataAccessAction" : "MANAGE_PSDEFORM",
+      "name" : "MANAGE_PSDEFORM",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "MANAGE_PSDEFORM"
+      }
+    }, {
+      "dataAccessAction" : "MANAGE_PSDEMSLOGIC",
+      "name" : "MANAGE_PSDEMSLOGIC",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "MANAGE_PSDEMSLOGIC"
+      }
+    }, {
+      "dataAccessAction" : "READ_PSDEMSLOGIC",
+      "name" : "READ_PSDEMSLOGIC",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ_PSDEMSLOGIC"
+      }
+    }, {
+      "dataAccessAction" : "READ_PSDEFIELD",
+      "name" : "READ_PSDEFIELD",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ_PSDEFIELD"
+      }
+    }, {
+      "dataAccessAction" : "READ_PSDELOGIC",
+      "name" : "READ_PSDELOGIC",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ_PSDELOGIC"
+      }
+    }, {
       "dataAccessAction" : "SUBDATA",
       "name" : "SUBDATA",
       "getPSDEOPPriv" : {
         "modelref" : true,
         "id" : "SUBDATA"
+      }
+    }, {
+      "dataAccessAction" : "MANAGE_PSDEFIELD",
+      "name" : "MANAGE_PSDEFIELD",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "MANAGE_PSDEFIELD"
+      }
+    }, {
+      "dataAccessAction" : "MANAGE_PSDELOGIC",
+      "name" : "MANAGE_PSDELOGIC",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "MANAGE_PSDELOGIC"
       }
     }, {
       "dataAccessAction" : "DELETE",
@@ -8448,11 +8987,25 @@
         "id" : "DELETE"
       }
     }, {
-      "dataAccessAction" : "UPDATE",
-      "name" : "UPDATE",
+      "dataAccessAction" : "READ_PSDENOTIFY",
+      "name" : "READ_PSDENOTIFY",
       "getPSDEOPPriv" : {
         "modelref" : true,
-        "id" : "UPDATE"
+        "id" : "READ_PSDENOTIFY"
+      }
+    }, {
+      "dataAccessAction" : "MANAGE_PSDENOTIFY",
+      "name" : "MANAGE_PSDENOTIFY",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "MANAGE_PSDENOTIFY"
+      }
+    }, {
+      "dataAccessAction" : "READ_PSDEFORM",
+      "name" : "READ_PSDEFORM",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ_PSDEFORM"
       }
     }, {
       "dataAccessAction" : "READ",
@@ -8575,11 +9128,32 @@
       "id" : "user"
     },
     "getPSDEUserRoleOPPrivs" : [ {
-      "dataAccessAction" : "READ",
-      "name" : "READ",
+      "dataAccessAction" : "READ_PSDENOTIFY",
+      "name" : "READ_PSDENOTIFY",
       "getPSDEOPPriv" : {
         "modelref" : true,
-        "id" : "READ"
+        "id" : "READ_PSDENOTIFY"
+      }
+    }, {
+      "dataAccessAction" : "READ_PSDEMSLOGIC",
+      "name" : "READ_PSDEMSLOGIC",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ_PSDEMSLOGIC"
+      }
+    }, {
+      "dataAccessAction" : "READ_PSDEFIELD",
+      "name" : "READ_PSDEFIELD",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ_PSDEFIELD"
+      }
+    }, {
+      "dataAccessAction" : "READ_PSDELOGIC",
+      "name" : "READ_PSDELOGIC",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ_PSDELOGIC"
       }
     }, {
       "dataAccessAction" : "SUBDATA",
@@ -8587,6 +9161,20 @@
       "getPSDEOPPriv" : {
         "modelref" : true,
         "id" : "SUBDATA"
+      }
+    }, {
+      "dataAccessAction" : "READ",
+      "name" : "READ",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ"
+      }
+    }, {
+      "dataAccessAction" : "READ_PSDEFORM",
+      "name" : "READ_PSDEFORM",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ_PSDEFORM"
       }
     } ],
     "roleTag" : "USER_RW",
@@ -8662,6 +9250,12 @@
     "logicName" : "产品配置中心视图",
     "name" : "产品配置中心视图",
     "realModelSubType" : "DETREEEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "choose_product_option_view",
+    "logicName" : "选择产品选项操作视图",
+    "name" : "选择产品选项操作视图",
+    "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mob_tab_exp_view",
@@ -8881,6 +9475,13 @@
     "logicName" : "产品新建编辑视图（移动端）_表单",
     "modelTag2" : "1",
     "name" : "产品新建编辑视图（移动端）_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "Usr12045901_Form",
+    "logicName" : "选择产品选项操作视图_表单",
+    "modelTag2" : "0",
+    "name" : "选择产品选项操作视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -9380,6 +9981,60 @@
     "removeActionType" : 0,
     "removeOrder" : -1,
     "serviceCodeName" : "product"
+  }, {
+    "codeName" : "principal_product",
+    "dERSubType" : "DER1N",
+    "dERType" : "DERCUSTOM",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDERS/DERCUSTOM_RELATION_PRODUCT.json",
+    "logicName" : "产品-关联源",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+    },
+    "masterRS" : 0,
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+    },
+    "name" : "DERCUSTOM_RELATION_PRODUCT",
+    "orderValue" : 100,
+    "parentSubType" : "product",
+    "pickupDEFName" : "PRINCIPAL_ID",
+    "getPickupPSDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "removeActionType" : 0,
+    "removeOrder" : -1,
+    "serviceCodeName" : "principal_product",
+    "typeValue" : "product"
+  }, {
+    "codeName" : "TARGET_PRODUCT",
+    "dERSubType" : "DER1N",
+    "dERType" : "DERCUSTOM",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDERS/DERCUSTOM_RELATION_TARGET_PRODUCT.json",
+    "logicName" : "产品-关联目标",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+    },
+    "masterRS" : 0,
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+    },
+    "name" : "DERCUSTOM_RELATION_TARGET_PRODUCT",
+    "orderValue" : 100,
+    "parentSubType" : "product",
+    "pickupDEFName" : "TARGET_ID",
+    "getPickupPSDEField" : {
+      "name" : "TARGET_ID",
+      "codeName" : "target_id"
+    },
+    "removeActionType" : 0,
+    "removeOrder" : -1,
+    "serviceCodeName" : "target_product",
+    "typeValue" : "product"
   } ],
   "memo" : "产品管理核心实体，包含产品的基本信息、生命周期状态等。",
   "getMinorPSDERs" : [ {

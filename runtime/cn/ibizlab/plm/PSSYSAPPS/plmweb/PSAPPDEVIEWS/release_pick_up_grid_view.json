@@ -249,7 +249,6 @@
               "glyph" : "xf044@FontAwesome",
               "cssClass" : "fa fa-edit"
             },
-            "timeout" : 60000,
             "uIActionMode" : "FRONT",
             "uIActionTag" : "open_update_view",
             "uIActionType" : "DEUIACTION",
@@ -384,6 +383,11 @@
         "name" : "START_AT",
         "codeName" : "start_at"
       },
+      "getPSControlAttributes" : [ {
+        "attrName" : "disabledDate",
+        "attrValue" : "(time) => {\r\n    if (!data.end_at) {\r\n        return false;\r\n    }\r\n    const end_at = new Date(data.end_at);\r\n    // 比对天\r\n    time.setHours(0, 0, 0, 0);\r\n    end_at.setHours(0, 0, 0, 0);\r\n    return time.getTime() > end_at.getTime();\r\n}",
+        "name" : "start_at"
+      } ],
       "valueFormat" : "YYYY-MM-DD",
       "width" : 150,
       "widthUnit" : "PX",
@@ -403,6 +407,11 @@
         "name" : "END_AT",
         "codeName" : "end_at"
       },
+      "getPSControlAttributes" : [ {
+        "attrName" : "disabledDate",
+        "attrValue" : "(time) => {\r\n    if (!data.start_at) {\r\n        return false;\r\n    }\r\n    const start_at = new Date(data.start_at);\r\n    // 比对天\r\n    start_at.setHours(0, 0, 0, 0);\r\n    time.setHours(0, 0, 0, 0);\r\n    return time.getTime() < start_at.getTime();\r\n}",
+        "name" : "end_at"
+      } ],
       "valueFormat" : "YYYY-MM-DD",
       "width" : 150,
       "widthUnit" : "PX",
@@ -736,7 +745,6 @@
                 "cssClass" : "fa fa-user-md"
               },
               "scriptCode" : "ibiz.openView.push(`/-/index/project=${context.project}/project_redirect_view/-/project_setting_view/srfnavctx=%7B\"project\"%3A\"${context.project}\"%2C\"srfdefaulttoroutedepth\"%3A\"3\"%7D;srfnav=root%3Anormal%3Amember/project_member_config_grid_view/-`);",
-              "timeout" : 60000,
               "tooltip" : "跳转至成员设置",
               "uIActionMode" : "FRONT",
               "uIActionTag" : "jump_to_member_set",

@@ -6,6 +6,9 @@
     "id" : "role_id",
     "viewFieldName" : "ROLE_ID"
   }, {
+    "id" : "title",
+    "viewFieldName" : "TITLE"
+  }, {
     "id" : "id",
     "hidden" : true,
     "viewFieldName" : "id"
@@ -47,7 +50,8 @@
       "getPSLayout" : {
         "align" : "space-between",
         "dir" : "row",
-        "layout" : "FLEX"
+        "layout" : "FLEX",
+        "vAlign" : "center"
       },
       "getPSLayoutPos" : {
         "grow" : -1,
@@ -119,7 +123,42 @@
           },
           "viewFieldName" : "ROLE_ID",
           "convertToCodeItemText" : true
-        } ]
+        }, {
+          "caption" : "文本(动态)",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "FIELD",
+          "name" : "title",
+          "getPSEditor" : {
+            "editorType" : "SPAN",
+            "name" : "title",
+            "predefinedType" : "FIELD_TEXT_DYNAMIC",
+            "renderMode" : "TEXT_DYNAMIC",
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX",
+            "spacingLeft" : "OUTERMEDIUM"
+          },
+          "getPSPanelItemGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "name" : "面板成员[title][面板显示]逻辑",
+            "getPSPanelItemLogics" : [ {
+              "condOp" : "ISNOTNULL",
+              "dstModelField" : "TITLE",
+              "logicType" : "SINGLE",
+              "name" : "逻辑项"
+            } ],
+            "relatedItemNames" : [ "title" ],
+            "notMode" : false
+          } ],
+          "viewFieldName" : "TITLE"
+        } ],
+        "getPSSysCss" : {
+          "cssName" : "mob_member_title_style"
+        }
       }, {
         "actionGroupExtractMode" : "ITEMS",
         "caption" : "按钮组",

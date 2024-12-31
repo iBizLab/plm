@@ -153,28 +153,21 @@
           "lanResTag" : "TBB.TEXT.*.NEW"
         },
         "caption" : "新建",
-        "codeName" : "new_subdata",
-        "dataAccessAction" : "SUBDATA",
-        "fullCodeName" : "new_subdata",
-        "name" : "表格界面_新建操作_子数据",
-        "getPSDEOPPriv" : {
-          "modelref" : true,
-          "id" : "SUBDATA"
-        },
+        "codeName" : "New",
+        "fullCodeName" : "New",
+        "name" : "表格界面_新建操作",
         "getPSSysImage" : {
           "glyph" : "xf0f6@FontAwesome",
           "cssClass" : "fa fa-file-text-o"
         },
         "predefinedType" : "GRIDVIEW_NEWACTION",
-        "refreshMode" : 1,
         "timeout" : 60000,
         "getTooltipPSLanguageRes" : {
           "lanResTag" : "TBB.TOOLTIP.*.NEW"
         },
         "uIActionMode" : "SYS",
-        "uIActionTag" : "new_subdata",
-        "uIActionType" : "DEUIACTION",
-        "reloadData" : true
+        "uIActionTag" : "New",
+        "uIActionType" : "DEUIACTION"
       },
       "tooltip" : "新建基线",
       "getTooltipPSLanguageRes" : {
@@ -478,7 +471,6 @@
               "glyph" : "xf044@FontAwesome",
               "cssClass" : "fa fa-edit"
             },
-            "timeout" : 60000,
             "uIActionMode" : "FRONT",
             "uIActionTag" : "open_library_update_view",
             "uIActionType" : "DEUIACTION",
@@ -596,6 +588,7 @@
       },
       "width" : 150,
       "widthUnit" : "PX",
+      "enableRowEdit" : true,
       "enableSort" : true
     }, {
       "align" : "LEFT",
@@ -802,6 +795,61 @@
       }
     } ],
     "getPSDEGridEditItems" : [ {
+      "caption" : "负责人",
+      "codeName" : "assignee_name",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "name" : "assignee_name",
+      "getPSAppDEField" : {
+        "name" : "ASSIGNEE_NAME",
+        "codeName" : "assignee_name"
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+          "AC" : "TRUE",
+          "readonly" : "true",
+          "SRFNAVPARAM.n_status_eq" : "1",
+          "TRIGGER" : "TRUE",
+          "URL" : "projects/${context.project}/project_members/fetch_default",
+          "PICKUPVIEW" : "FALSE",
+          "USERMETHOD" : "post",
+          "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+          "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+          "DEPTMETHOD" : "get",
+          "DEPTURL" : "/users/fetch_default"
+        },
+        "editorStyle" : "PERSONEL_SELECT_PROJECT",
+        "editorType" : "PICKEREX_TRIGGER",
+        "name" : "assignee_name",
+        "getPSEditorItems" : [ { } ],
+        "getPSNavigateParams" : [ {
+          "key" : "n_department_id_eq",
+          "name" : "n_department_id_eq",
+          "value" : "srforgsectorid",
+          "rawValue" : false
+        }, {
+          "key" : "n_status_eq",
+          "name" : "n_status_eq",
+          "value" : "1",
+          "rawValue" : true
+        } ],
+        "getPSSysPFPlugin" : {
+          "pluginType" : "EDITOR_CUSTOMSTYLE",
+          "pluginCode" : "PERSON_SELECT",
+          "runtimeObject" : true
+        },
+        "valueItemName" : "ASSIGNEE_ID",
+        "enableAC" : true,
+        "enablePickupView" : false,
+        "forceSelection" : true,
+        "readOnly" : true,
+        "showTrigger" : true,
+        "singleSelect" : true
+      },
+      "valueItemName" : "ASSIGNEE_ID",
+      "allowEmpty" : true
+    }, {
       "caption" : "标识",
       "codeName" : "srfkey",
       "enableCond" : 3,
@@ -814,6 +862,18 @@
       "getPSEditor" : {
         "editorType" : "HIDDEN",
         "name" : "srfkey"
+      },
+      "allowEmpty" : true
+    }, {
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "name" : "assignee_id",
+      "getPSAppDEField" : {
+        "name" : "ASSIGNEE_ID",
+        "codeName" : "assignee_id"
+      },
+      "getPSEditor" : {
+        "editorType" : "HIDDEN"
       },
       "allowEmpty" : true
     } ],

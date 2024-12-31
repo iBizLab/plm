@@ -6,6 +6,10 @@
   "caption" : "最近访问",
   "codeName" : "recent_custom_redirect_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/recent_custom_redirect_view.json",
+  "getGetDataPSAppDEAction" : {
+    "modelref" : true,
+    "id" : "jump_corresponding_view"
+  },
   "name" : "recentcustom_redirect_view",
   "getPSAppDataEntity" : {
     "modelref" : true,
@@ -16,6 +20,31 @@
     "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/Base.json"
   },
   "getPSAppViewRefs" : [ {
+    "name" : "WORK_ITEM",
+    "openMode" : "INDEXVIEWTAB_POPUPMODAL",
+    "getPSNavigateContexts" : [ {
+      "key" : "PROJECT",
+      "name" : "PROJECT",
+      "value" : "recent_parent",
+      "rawValue" : false
+    }, {
+      "key" : "WORK_ITEM",
+      "name" : "WORK_ITEM",
+      "value" : "owner_id",
+      "rawValue" : false
+    }, {
+      "key" : "SRFNAVCTRLID",
+      "name" : "SRFNAVCTRLID",
+      "rawValue" : true
+    } ],
+    "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
+    "realTitle" : "工作项",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_main_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  }, {
     "name" : "PRODUCT",
     "getPSNavigateContexts" : [ {
       "key" : "ID",
@@ -36,13 +65,49 @@
       "viewType" : "DEINDEXVIEW"
     }
   }, {
-    "name" : "WORK_ITEM",
+    "name" : "PAGE",
     "openMode" : "INDEXVIEWTAB_POPUPMODAL",
+    "getPSNavigateContexts" : [ {
+      "key" : "ARTICLE_PAGE",
+      "name" : "ARTICLE_PAGE",
+      "value" : "owner_id",
+      "rawValue" : false
+    }, {
+      "key" : "SPACE",
+      "name" : "SPACE",
+      "value" : "recent_parent",
+      "rawValue" : false
+    } ],
     "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
-    "realTitle" : "工作项",
+    "realTitle" : "页面",
     "getRefPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_main_view.json",
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_model_show_view_noupdown.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  }, {
+    "name" : "TICKET",
+    "openMode" : "INDEXVIEWTAB_POPUPMODAL",
+    "getPSNavigateContexts" : [ {
+      "key" : "TICKET",
+      "name" : "TICKET",
+      "value" : "recent_parent",
+      "rawValue" : false
+    }, {
+      "key" : "SRFNAVCTRLID",
+      "name" : "SRFNAVCTRLID",
+      "rawValue" : true
+    }, {
+      "key" : "PRODUCT",
+      "name" : "PRODUCT",
+      "value" : "owner_id",
+      "rawValue" : false
+    } ],
+    "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
+    "realTitle" : "工单",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_main_view.json",
       "viewType" : "DEEDITVIEW"
     }
   }, {
@@ -54,58 +119,29 @@
       "viewType" : "DEINDEXVIEW"
     }
   }, {
-    "name" : "LIBRARY",
-    "realTitle" : "测试库",
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_index_view.json",
-      "viewType" : "DEINDEXVIEW"
-    }
-  }, {
-    "name" : "IDEA",
-    "openMode" : "INDEXVIEWTAB_POPUPMODAL",
-    "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
-    "realTitle" : "需求",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.IDEA.MAIN_VIEW"
-    },
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_main_view.json",
-      "viewType" : "DEEDITVIEW"
-    }
-  }, {
     "name" : "TEST_CASE",
     "openMode" : "INDEXVIEWTAB_POPUPMODAL",
+    "getPSNavigateContexts" : [ {
+      "key" : "LIBRARY",
+      "name" : "LIBRARY",
+      "value" : "recent_parent",
+      "rawValue" : false
+    }, {
+      "key" : "TEST_CASE",
+      "name" : "TEST_CASE",
+      "value" : "owner_id",
+      "rawValue" : false
+    }, {
+      "key" : "SRFNAVCTRLID",
+      "name" : "SRFNAVCTRLID",
+      "rawValue" : true
+    } ],
     "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
     "realTitle" : "用例",
     "getRefPSAppView" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_main_view.json",
       "viewType" : "DEEDITVIEW"
-    }
-  }, {
-    "name" : "SPACE",
-    "getPSNavigateContexts" : [ {
-      "key" : "ID",
-      "name" : "ID",
-      "value" : "id",
-      "rawValue" : false
-    } ],
-    "getPSNavigateParams" : [ {
-      "key" : "id",
-      "name" : "id",
-      "value" : "id",
-      "rawValue" : false
-    } ],
-    "realTitle" : "空间",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.SPACE.INDEX_VIEW"
-    },
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_index_view.json",
-      "viewType" : "DEINDEXVIEW"
     }
   }, {
     "name" : "KANBAN",
@@ -116,13 +152,31 @@
       "viewType" : "DEINDEXVIEW"
     }
   }, {
-    "name" : "TICKET",
+    "name" : "IDEA",
     "openMode" : "INDEXVIEWTAB_POPUPMODAL",
+    "getPSNavigateContexts" : [ {
+      "key" : "SRFNAVCTRLID",
+      "name" : "SRFNAVCTRLID",
+      "rawValue" : true
+    }, {
+      "key" : "PRODUCT",
+      "name" : "PRODUCT",
+      "value" : "recent_parent",
+      "rawValue" : false
+    }, {
+      "key" : "IDEA",
+      "name" : "IDEA",
+      "value" : "owner_id",
+      "rawValue" : false
+    } ],
     "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
-    "realTitle" : "工单",
+    "realTitle" : "需求",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.IDEA.MAIN_VIEW"
+    },
     "getRefPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_main_view.json",
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_main_view.json",
       "viewType" : "DEEDITVIEW"
     }
   }, {
@@ -154,14 +208,35 @@
       "viewType" : "DEINDEXVIEW"
     }
   }, {
-    "name" : "PAGE",
-    "openMode" : "INDEXVIEWTAB_POPUPMODAL",
-    "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
-    "realTitle" : "页面",
+    "name" : "LIBRARY",
+    "realTitle" : "测试库",
     "getRefPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_model_show_view_noupdown.json",
-      "viewType" : "DEEDITVIEW"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_index_view.json",
+      "viewType" : "DEINDEXVIEW"
+    }
+  }, {
+    "name" : "SPACE",
+    "getPSNavigateContexts" : [ {
+      "key" : "ID",
+      "name" : "ID",
+      "value" : "id",
+      "rawValue" : false
+    } ],
+    "getPSNavigateParams" : [ {
+      "key" : "id",
+      "name" : "id",
+      "value" : "id",
+      "rawValue" : false
+    } ],
+    "realTitle" : "空间",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.SPACE.INDEX_VIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_index_view.json",
+      "viewType" : "DEINDEXVIEW"
     }
   } ],
   "getPSControls" : [ {
@@ -194,11 +269,14 @@
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
-  "refFlag" : false,
   "title" : "自定义重定向视图",
+  "getTypePSAppDEField" : {
+    "name" : "OWNER_SUBTYPE",
+    "codeName" : "owner_subtype"
+  },
   "viewStyle" : "DEFAULT",
   "viewType" : "DEREDIRECTVIEW",
-  "enableCustomGetDataAction" : false,
+  "enableCustomGetDataAction" : true,
   "enableDP" : true,
   "enableWorkflow" : true,
   "redirectView" : true,

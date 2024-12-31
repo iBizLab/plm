@@ -193,6 +193,7 @@
     },
     "width" : 150,
     "widthUnit" : "PX",
+    "enableRowEdit" : true,
     "enableSort" : false
   }, {
     "align" : "LEFT",
@@ -346,6 +347,58 @@
     }
   } ],
   "getPSDEGridEditItems" : [ {
+    "caption" : "维护人",
+    "codeName" : "maintenance_name",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "maintenance_name",
+    "getPSAppDEField" : {
+      "name" : "MAINTENANCE_NAME",
+      "codeName" : "maintenance_name"
+    },
+    "getPSEditor" : {
+      "editorParams" : {
+        "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+        "AC" : "TRUE",
+        "readonly" : "true",
+        "SRFNAVPARAM.n_status_eq" : "1",
+        "TRIGGER" : "TRUE",
+        "URL" : "projects/${context.project}/project_members/fetch_default",
+        "PICKUPVIEW" : "FALSE",
+        "USERMETHOD" : "post",
+        "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+        "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+        "DEPTMETHOD" : "get",
+        "DEPTURL" : "/users/fetch_default"
+      },
+      "editorStyle" : "PERSONEL_SELECT_PROJECT",
+      "editorType" : "PICKEREX_TRIGGER",
+      "name" : "maintenance_name",
+      "getPSNavigateParams" : [ {
+        "key" : "n_department_id_eq",
+        "name" : "n_department_id_eq",
+        "value" : "srforgsectorid",
+        "rawValue" : false
+      }, {
+        "key" : "n_status_eq",
+        "name" : "n_status_eq",
+        "value" : "1",
+        "rawValue" : true
+      } ],
+      "getPSSysPFPlugin" : {
+        "pluginType" : "EDITOR_CUSTOMSTYLE",
+        "pluginCode" : "PERSON_SELECT",
+        "runtimeObject" : true
+      },
+      "enableAC" : true,
+      "enablePickupView" : false,
+      "forceSelection" : true,
+      "readOnly" : true,
+      "showTrigger" : true,
+      "singleSelect" : true
+    },
+    "allowEmpty" : true
+  }, {
     "caption" : "标识",
     "codeName" : "srfkey",
     "enableCond" : 3,

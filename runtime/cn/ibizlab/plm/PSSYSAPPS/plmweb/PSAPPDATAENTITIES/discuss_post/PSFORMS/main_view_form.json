@@ -92,7 +92,6 @@
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_post.json"
       },
-      "timeout" : 60000,
       "uIActionMode" : "FRONT",
       "uIActionTag" : "send_comment",
       "uIActionType" : "DEUIACTION",
@@ -121,7 +120,6 @@
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_post.json"
       },
-      "timeout" : 60000,
       "uIActionMode" : "FRONT",
       "uIActionTag" : "delete_comment",
       "uIActionType" : "DEUIACTION",
@@ -296,13 +294,13 @@
               "MAXHEIGHT" : "450",
               "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
               "enableEdit" : "true",
-              "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"type\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
-              "QUOTEPARAMS" : "{\"page\":0,\"size\":20,\"sort\":\"update_time,desc\"}",
+              "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
+              "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
               "enableFullScreen" : "true",
               "MODE" : "default",
-              "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); return controller.getNodeInfo({ icon, ...item })})",
+              "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
               "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
-              "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.type}\",\"recent_parent\":\"${data.recent_parent}\",\"icon\":\"${data.icon}\"}`",
+              "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
               "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
               "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
               "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
@@ -325,6 +323,7 @@
           "emptyCaption" : true
         }, {
           "actionType" : "UIACTION",
+          "buttonStyle" : "DEFAULT",
           "caption" : "发表评论",
           "codeName" : "button1",
           "detailStyle" : "DEFAULT",
@@ -370,7 +369,6 @@
               "cssClass" : "fa fa-comment-o"
             },
             "scriptCode" : "view.layoutPanel.panelItems.form.control.details.button1.state.visible=false;\r\nview.layoutPanel.panelItems.form.control.details.button2.state.visible=true;\r\nview.layoutPanel.panelItems.form.control.details.comments.state.visible=true;\r\n",
-            "timeout" : 60000,
             "uIActionMode" : "FRONT",
             "uIActionTag" : "show_comment_list",
             "uIActionType" : "DEUIACTION",
@@ -381,6 +379,7 @@
           "showCaption" : true
         }, {
           "actionType" : "UIACTION",
+          "buttonStyle" : "DEFAULT",
           "caption" : "收起评论",
           "codeName" : "button2",
           "detailStyle" : "DEFAULT",
@@ -426,7 +425,6 @@
               "cssClass" : "fa fa-comment-o"
             },
             "scriptCode" : "view.layoutPanel.panelItems.form.control.details.button1.state.visible=true;\r\nview.layoutPanel.panelItems.form.control.details.button2.state.visible=false;\r\nview.layoutPanel.panelItems.form.control.details.comments.state.visible=false;",
-            "timeout" : 60000,
             "tooltip" : "收起评论",
             "uIActionMode" : "FRONT",
             "uIActionTag" : "hidden_comment_list",
@@ -765,7 +763,6 @@
                       "modelref" : true,
                       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_reply.json"
                     },
-                    "timeout" : 60000,
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "del_commnet",
                     "uIActionType" : "DEUIACTION",
@@ -807,7 +804,6 @@
                       "modelref" : true,
                       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_reply.json"
                     },
-                    "timeout" : 60000,
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "reply_comment",
                     "uIActionType" : "DEUIACTION",
@@ -1005,7 +1001,6 @@
                             "modelref" : true,
                             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_post.json"
                           },
-                          "timeout" : 60000,
                           "uIActionMode" : "FRONT",
                           "uIActionTag" : "panel_usr0516087018_button_calluilogic1_click",
                           "uIActionType" : "DEUIACTION",
@@ -1096,7 +1091,7 @@
                         "contentType" : "HTML",
                         "editorParams" : {
                           "contenttype" : "HTML",
-                          "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); const tempIcon = icon.trim(); return `<span class='comment-tag' data-value='${JSON.stringify(item)}'>${tempIcon} ${item.identifier} ${item.name}</span>`;}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
+                          "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
                         },
                         "editorStyle" : "COMMENT_ITEM",
                         "editorType" : "RAW",

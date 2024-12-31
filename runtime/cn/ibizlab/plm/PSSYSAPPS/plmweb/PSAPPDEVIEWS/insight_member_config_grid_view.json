@@ -321,6 +321,7 @@
       "codeName" : "config_grid_view_grid_batchtoolbar",
       "controlType" : "TOOLBAR",
       "logicName" : "删除&&设置角色",
+      "memo" : "选择职位",
       "name" : "grid_batchtoolbar",
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -330,7 +331,7 @@
         "id" : "grid_batchtoolbar"
       },
       "getPSDEToolbarItems" : [ {
-        "caption" : "设置",
+        "caption" : "角色",
         "groupExtractMode" : "ITEM",
         "itemType" : "DEUIACTION",
         "name" : "deuiaction1",
@@ -384,6 +385,64 @@
           "id" : "setting_role@insight_member"
         },
         "tooltip" : "设置角色",
+        "uIActionTarget" : "MULTIKEY",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "职位",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction3",
+        "noPrivDisplayMode" : 1,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "grid_batchtoolbar_deuiaction3"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf0c0@FontAwesome",
+          "cssClass" : "fa fa-users"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "MULTIKEY",
+          "noPrivDisplayMode" : 1,
+          "caption" : "选择职位",
+          "codeName" : "choose_position",
+          "dataAccessAction" : "UPDATE",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/insight_member_choose_position_option_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "fullCodeName" : "insight_member_choose_position",
+          "name" : "选择职位",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "choose_position"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "UPDATE"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf0c0@FontAwesome",
+            "cssClass" : "fa fa-users"
+          },
+          "refreshMode" : 1,
+          "successMsg" : "职位成功变更",
+          "timeout" : 60000,
+          "tooltip" : "变更选中成员的职位",
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "choose_position",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "choose_position@insight_member"
+        },
+        "tooltip" : "变更选中成员的职位",
         "uIActionTarget" : "MULTIKEY",
         "showCaption" : true,
         "showIcon" : true
@@ -490,6 +549,23 @@
       "enableSort" : true
     }, {
       "align" : "LEFT",
+      "cLConvertMode" : "NONE",
+      "caption" : "职位",
+      "codeName" : "title",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "title",
+      "excelCaption" : "职位",
+      "name" : "title",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "width" : 150,
+      "widthUnit" : "PX",
+      "enableSort" : true
+    }, {
+      "align" : "LEFT",
       "cLConvertMode" : "FRONT",
       "getCapPSLanguageRes" : {
         "lanResTag" : "DEF.LNAME.UPDATE_MAN"
@@ -547,6 +623,13 @@
       "getPSAppDEField" : {
         "name" : "ROLE_ID",
         "codeName" : "role_id"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "title",
+      "getPSAppDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
       }
     }, {
       "dataType" : 25,

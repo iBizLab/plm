@@ -328,7 +328,6 @@
                 "cssClass" : "fa fa-plus"
               },
               "refreshMode" : 1,
-              "timeout" : 60000,
               "uIActionMode" : "FRONT",
               "uIActionTag" : "create_new_work_item_bug",
               "uIActionType" : "DEUIACTION",
@@ -603,7 +602,6 @@
             "glyph" : "xf067@FontAwesome",
             "cssClass" : "fa fa-plus"
           },
-          "timeout" : 60000,
           "uIActionMode" : "FRONT",
           "uIActionTag" : "add_relation",
           "uIActionType" : "DEUIACTION",
@@ -827,6 +825,7 @@
         "valueType" : "OBJECT",
         "width" : 150,
         "widthUnit" : "PX",
+        "enableRowEdit" : true,
         "enableSort" : false
       }, {
         "align" : "LEFT",
@@ -998,6 +997,62 @@
         }
       } ],
       "getPSDEGridEditItems" : [ {
+        "caption" : "负责人",
+        "codeName" : "target_assignee",
+        "enableCond" : 0,
+        "ignoreInput" : 0,
+        "name" : "target_assignee",
+        "getPSAppDEField" : {
+          "name" : "WORK_ITEM",
+          "codeName" : "work_item"
+        },
+        "getPSEditor" : {
+          "editorParams" : {
+            "OBJECTNAMEFIELD" : "assignee_name",
+            "VALUETYPE" : "OBJECT",
+            "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+            "AC" : "TRUE",
+            "readonly" : "true",
+            "SRFNAVPARAM.n_status_eq" : "1",
+            "TRIGGER" : "TRUE",
+            "URL" : "projects/${context.project}/project_members/fetch_default",
+            "PICKUPVIEW" : "FALSE",
+            "USERMETHOD" : "post",
+            "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+            "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+            "DEPTMETHOD" : "get",
+            "DEPTURL" : "/users/fetch_default"
+          },
+          "editorStyle" : "PERSONEL_SELECT_PROJECT",
+          "editorType" : "PICKEREX_TRIGGER",
+          "name" : "target_assignee",
+          "objectNameField" : "assignee_name",
+          "getPSNavigateParams" : [ {
+            "key" : "n_department_id_eq",
+            "name" : "n_department_id_eq",
+            "value" : "srforgsectorid",
+            "rawValue" : false
+          }, {
+            "key" : "n_status_eq",
+            "name" : "n_status_eq",
+            "value" : "1",
+            "rawValue" : true
+          } ],
+          "getPSSysPFPlugin" : {
+            "pluginType" : "EDITOR_CUSTOMSTYLE",
+            "pluginCode" : "PERSON_SELECT",
+            "runtimeObject" : true
+          },
+          "valueType" : "OBJECT",
+          "enableAC" : true,
+          "enablePickupView" : false,
+          "forceSelection" : true,
+          "readOnly" : true,
+          "showTrigger" : true,
+          "singleSelect" : true
+        },
+        "allowEmpty" : true
+      }, {
         "caption" : "标识",
         "codeName" : "srfkey",
         "enableCond" : 3,
@@ -1622,6 +1677,24 @@
     "actionRSMode" : 1,
     "codeName" : "relations",
     "dataRSMode" : 0,
+    "majorDECodeName" : "project",
+    "majorDEName" : "PROJECT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "minorDECodeName" : "relation",
+    "minorDEName" : "RELATION",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+    },
+    "name" : "项目-关联",
+    "rSMode" : 2
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "relations",
+    "dataRSMode" : 0,
     "majorDECodeName" : "article_page",
     "majorDEName" : "PAGE",
     "getMajorPSAppDataEntity" : {
@@ -1725,6 +1798,24 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
     },
     "name" : "工作项-关联",
+    "rSMode" : 2
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "relations",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "product",
+    "majorDEName" : "PRODUCT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+    },
+    "minorDECodeName" : "relation",
+    "minorDEName" : "RELATION",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+    },
+    "name" : "产品-关联",
     "rSMode" : 2
   } ] ]
 }

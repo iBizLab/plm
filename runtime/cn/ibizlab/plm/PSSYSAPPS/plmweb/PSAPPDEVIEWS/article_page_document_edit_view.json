@@ -77,7 +77,6 @@
           "cssClass" : "fa fa-paper-plane-o"
         },
         "refreshMode" : 1,
-        "timeout" : 60000,
         "uIActionMode" : "FRONT",
         "uIActionTag" : "release",
         "uIActionType" : "DEUIACTION",
@@ -567,7 +566,6 @@
             "groupOP" : "AND",
             "logicCat" : "PANELVISIBLE",
             "logicType" : "GROUP",
-            "name" : "表单成员[content][面板显示]逻辑",
             "getPSDEFDLogics" : [ {
               "condOP" : "EQ",
               "dEFDName" : "format_type",
@@ -580,7 +578,6 @@
             "groupOP" : "AND",
             "logicCat" : "ITEMENABLE",
             "logicType" : "GROUP",
-            "name" : "表单成员[content][表单项启用]逻辑",
             "getPSDEFDLogics" : [ {
               "condOP" : "EQ",
               "dEFDName" : "format_type",
@@ -595,13 +592,14 @@
             "editorParams" : {
               "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
               "MAXHEIGHT" : "600",
+              "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
               "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
-              "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"type\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
-              "QUOTEPARAMS" : "{\"page\":0,\"size\":20,\"sort\":\"update_time,desc\"}",
+              "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
+              "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
               "MODE" : "default",
-              "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); return controller.getNodeInfo({ icon, ...item })})",
+              "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
               "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
-              "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.type}\",\"recent_parent\":\"${data.recent_parent}\",\"icon\":\"${data.icon}\"}`",
+              "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
               "USERURL" : "`spaces/${context.space}/space_members/fetch_default`",
               "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
               "INSERTKEYS" : "[{\"index\":5,\"keys\":[\"paintformat\"]}]",
@@ -645,7 +643,6 @@
             "groupOP" : "AND",
             "logicCat" : "PANELVISIBLE",
             "logicType" : "GROUP",
-            "name" : "表单成员[formitem1][面板显示]逻辑",
             "getPSDEFDLogics" : [ {
               "condOP" : "EQ",
               "dEFDName" : "format_type",
@@ -658,7 +655,6 @@
             "groupOP" : "AND",
             "logicCat" : "ITEMENABLE",
             "logicType" : "GROUP",
-            "name" : "表单成员[formitem1][表单项启用]逻辑",
             "getPSDEFDLogics" : [ {
               "condOP" : "EQ",
               "dEFDName" : "format_type",
@@ -705,7 +701,6 @@
             "groupOP" : "AND",
             "logicCat" : "PANELVISIBLE",
             "logicType" : "GROUP",
-            "name" : "表单成员[formitem][面板显示]逻辑",
             "getPSDEFDLogics" : [ {
               "condOP" : "EQ",
               "dEFDName" : "format_type",
@@ -718,7 +713,6 @@
             "groupOP" : "AND",
             "logicCat" : "ITEMENABLE",
             "logicType" : "GROUP",
-            "name" : "表单成员[formitem][表单项启用]逻辑",
             "getPSDEFDLogics" : [ {
               "condOP" : "EQ",
               "dEFDName" : "format_type",
@@ -1026,7 +1020,6 @@
                   "glyph" : "xf002@FontAwesome",
                   "cssClass" : "fa fa-search"
                 },
-                "timeout" : 60000,
                 "uIActionMode" : "FRONT",
                 "uIActionTag" : "attachment_preview",
                 "uIActionType" : "DEUIACTION",
@@ -1130,7 +1123,6 @@
                       "pluginCode" : "FILE_DOWNLOAD",
                       "runtimeObject" : true
                     },
-                    "timeout" : 60000,
                     "tooltip" : "下载当前附件",
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "download",
@@ -1168,7 +1160,6 @@
                       "glyph" : "xf014@FontAwesome",
                       "cssClass" : "fa fa-trash-o"
                     },
-                    "timeout" : 60000,
                     "tooltip" : "删除",
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "delete",
@@ -1365,7 +1356,6 @@
                 "glyph" : "xf067@FontAwesome",
                 "cssClass" : "fa fa-plus"
               },
-              "timeout" : 60000,
               "uIActionMode" : "FRONT",
               "uIActionTag" : "add_attachments",
               "uIActionType" : "DEUIACTION",

@@ -141,6 +141,9 @@
       "id" : "TOOLBAR"
     },
     "getPSDEToolbarItems" : [ {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "TBB.TEXT.*.NEW"
+      },
       "caption" : "添加成员",
       "groupExtractMode" : "ITEM",
       "itemType" : "DEUIACTION",
@@ -155,35 +158,30 @@
         "cssClass" : "fa fa-plus"
       },
       "getPSUIAction" : {
-        "actionTarget" : "NONE",
-        "caption" : "添加成员",
-        "codeName" : "add_discuss_topic_member",
-        "dataAccessAction" : "UPDATE",
-        "fullCodeName" : "add_discuss_topic_member",
-        "name" : "添加话题成员",
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_topic.json"
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "TBB.TEXT.*.NEW"
         },
-        "getPSDEOPPriv" : {
-          "modelref" : true,
-          "id" : "UPDATE"
-        },
+        "caption" : "新建",
+        "codeName" : "New",
+        "fullCodeName" : "New",
+        "name" : "表格界面_新建操作",
         "getPSSysImage" : {
           "glyph" : "xf0f6@FontAwesome",
           "cssClass" : "fa fa-file-text-o"
         },
         "predefinedType" : "GRIDVIEW_NEWACTION",
-        "refreshMode" : 1,
         "timeout" : 60000,
+        "getTooltipPSLanguageRes" : {
+          "lanResTag" : "TBB.TOOLTIP.*.NEW"
+        },
         "uIActionMode" : "SYS",
-        "uIActionTag" : "add_discuss_topic_member",
-        "uIActionType" : "DEUIACTION",
-        "globalUIAction" : true,
-        "reloadData" : true
+        "uIActionTag" : "New",
+        "uIActionType" : "DEUIACTION"
       },
       "tooltip" : "添加成员",
-      "uIActionTarget" : "NONE",
+      "getTooltipPSLanguageRes" : {
+        "lanResTag" : "TBB.TOOLTIP.*.NEW"
+      },
       "showCaption" : true,
       "showIcon" : true
     } ],
@@ -317,7 +315,7 @@
         "id" : "grid_batchtoolbar"
       },
       "getPSDEToolbarItems" : [ {
-        "caption" : "设置",
+        "caption" : "角色",
         "groupExtractMode" : "ITEM",
         "itemType" : "DEUIACTION",
         "name" : "deuiaction1",
@@ -369,7 +367,65 @@
           "reloadData" : true,
           "id" : "setting_role@discuss_member"
         },
-        "tooltip" : "设置",
+        "tooltip" : "角色",
+        "uIActionTarget" : "MULTIKEY",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "职位",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction3",
+        "noPrivDisplayMode" : 1,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "grid_batchtoolbar_deuiaction3"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf0c0@FontAwesome",
+          "cssClass" : "fa fa-users"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "MULTIKEY",
+          "noPrivDisplayMode" : 1,
+          "caption" : "职位变更",
+          "codeName" : "choose_position",
+          "dataAccessAction" : "UPDATE",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/discuss_member_choose_position_option_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "fullCodeName" : "discuss_member_choose_position",
+          "name" : "职位变更",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "choose_position"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_member.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "UPDATE"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf0c0@FontAwesome",
+            "cssClass" : "fa fa-users"
+          },
+          "refreshMode" : 1,
+          "successMsg" : "成功变更职位",
+          "timeout" : 60000,
+          "tooltip" : "变更选中成员的职位",
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "choose_position",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "choose_position@discuss_member"
+        },
+        "tooltip" : "变更选中成员的职位",
         "uIActionTarget" : "MULTIKEY",
         "showCaption" : true,
         "showIcon" : true
@@ -473,6 +529,23 @@
       "enableSort" : true
     }, {
       "align" : "LEFT",
+      "cLConvertMode" : "NONE",
+      "caption" : "职位",
+      "codeName" : "title",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "title",
+      "excelCaption" : "职位",
+      "name" : "title",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "width" : 150,
+      "widthUnit" : "PX",
+      "enableSort" : true
+    }, {
+      "align" : "LEFT",
       "cLConvertMode" : "FRONT",
       "getCapPSLanguageRes" : {
         "lanResTag" : "DEF.LNAME.UPDATE_MAN"
@@ -530,6 +603,13 @@
       "getPSAppDEField" : {
         "name" : "ROLE_ID",
         "codeName" : "role_id"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "title",
+      "getPSAppDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
       }
     }, {
       "dataType" : 25,

@@ -14,6 +14,9 @@
     "expression" : "t1.`CATEGORIES`",
     "name" : "CATEGORIES"
   }, {
+    "expression" : "t1.`CHANGELOG`",
+    "name" : "CHANGELOG"
+  }, {
     "expression" : "(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND RELEASE_ID = t1.`ID`)",
     "name" : "COMPLETED_WORK_ITEMS"
   }, {
@@ -28,6 +31,9 @@
   }, {
     "expression" : "t1.`END_AT`",
     "name" : "END_AT"
+  }, {
+    "expression" : "(year(t1.`END_AT`))",
+    "name" : "END_YEAR"
   }, {
     "expression" : "t1.`ID`",
     "name" : "ID"
@@ -59,6 +65,6 @@
     "expression" : "t1.`UPDATE_TIME`",
     "name" : "UPDATE_TIME"
   } ],
-  "queryCode" : "SELECT\n(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND RELEASE_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,\nt1.`ASSIGNEE_ID`,\nt1.`ASSIGNEE_NAME`,\nt1.`CATEGORIES`,\n(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND RELEASE_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,\nt1.`CREATE_MAN`,\nt1.`CREATE_TIME`,\nt1.`DESCRIPTION`,\nt1.`END_AT`,\nt1.`ID`,\nt1.`NAME`,\nt1.`PROJECT_ID`,\nt11.`IS_DELETED` AS `PROJECT_IS_DELETED`,\nt11.`NAME` AS `PROJECT_NAME`,\nt11.`TYPE` AS `PROJECT_TYPE`,\nt1.`START_AT`,\nt1.`STATUS`,\nt1.`UPDATE_MAN`,\nt1.`UPDATE_TIME`\nFROM `PROJECT_RELEASE` t1 \nLEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` \n",
+  "queryCode" : "SELECT\n(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND RELEASE_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,\nt1.`ASSIGNEE_ID`,\nt1.`ASSIGNEE_NAME`,\nt1.`CATEGORIES`,\nt1.`CHANGELOG`,\n(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND RELEASE_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,\nt1.`CREATE_MAN`,\nt1.`CREATE_TIME`,\nt1.`DESCRIPTION`,\nt1.`END_AT`,\n(year(t1.`END_AT`)) AS `END_YEAR`,\nt1.`ID`,\nt1.`NAME`,\nt1.`PROJECT_ID`,\nt11.`IS_DELETED` AS `PROJECT_IS_DELETED`,\nt11.`NAME` AS `PROJECT_NAME`,\nt11.`TYPE` AS `PROJECT_TYPE`,\nt1.`START_AT`,\nt1.`STATUS`,\nt1.`UPDATE_MAN`,\nt1.`UPDATE_TIME`\nFROM `PROJECT_RELEASE` t1 \nLEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` \n",
   "id" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDEDATAQUERIES/View/PSDEDQCODES/MYSQL5.json"
 }
