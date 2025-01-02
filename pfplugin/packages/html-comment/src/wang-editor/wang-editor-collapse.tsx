@@ -136,9 +136,17 @@ const IBizHtmlCollapse = defineComponent({
 
     // 初始化YJS
     const initYjsEditor = (): void => {
+      // 协同房间标识（编辑器参数collaboratekey > 视图参数srfmarkopendatakey > 默认数据主键）
       const isCreate = props.data.srfuf === Srfuf.CREATE;
+      let roomName = isCreate ? 'draft' : props.data.srfkey;
+      if (props.controller.params?.srfmarkopendatakey) {
+        roomName = props.controller.params.srfmarkopendatakey;
+      }
+      if (props.controller.collaborateKey) {
+        roomName = props.controller.collaborateKey;
+      }
       slateYjs.initYjs({
-        roomname: isCreate ? 'draft' : props.data.srfkey,
+        roomname: roomName,
         editor: editorRef.value,
         context: c.context,
         params: c.params,

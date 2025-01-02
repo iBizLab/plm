@@ -3,12 +3,18 @@ import {
   PanelItemController,
   ViewCallTag,
 } from '@ibiz-template/runtime';
+import {
+  IdentifierTitleState,
+  IIdentifierTitleState,
+} from './identifier-title-state';
 
 export class IdentifierTitleController extends PanelItemController {
   /**
-   * 标题
+   * 面板项状态
+   *
+   * @type {IIdentifierTitleState}
    */
-  public caption: string = this.panel.view.state.caption;
+  declare state: IIdentifierTitleState;
 
   /**
    * 编号
@@ -17,6 +23,7 @@ export class IdentifierTitleController extends PanelItemController {
 
   protected async onInit(): Promise<void> {
     super.onInit();
+    this.state.caption = this.panel.view.state.caption;
     this.panel.view.evt.on(
       'onViewInfoChange',
       ({ caption: _caption, dataInfo }) => {
@@ -29,12 +36,22 @@ export class IdentifierTitleController extends PanelItemController {
         if (formc) {
           this.titleNumnber = formc.state.data[tag];
         }
-        this.caption = `${this.panel.view.state.caption}${
+        this.state.caption = `${this.panel.view.state.caption}${
           this.titleNumnber ? `-${this.titleNumnber}` : ''
         }`;
-        (ibiz.util as IParams)?.setBrowserTitle(this.caption);
+        (ibiz.util as IParams)?.setBrowserTitle(this.state.caption);
       },
     );
+  }
+
+  /**
+   * 创建面板状态对象
+   *
+   * @protected
+   * @return {*}  {IdentifierTitleState}
+   */
+  protected createState(): IdentifierTitleState {
+    return new IdentifierTitleState(this.parent?.state);
   }
 
   /**

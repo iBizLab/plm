@@ -1,10 +1,31 @@
-import { ITreeNodeData, MDCtrlLoadParams, TreeController } from '@ibiz-template/runtime';
+import { IDETree } from '@ibiz/model-core';
+import { ITreeEvent, ITreeNodeData, ITreeState, MDCtrlLoadParams, TreeController } from '@ibiz-template/runtime';
 export interface IMobPersonalPickerTreeNodeData extends ITreeNodeData {
     /**
      * 节点展开
      * @type {boolean}
      */
     _defaultExpand: boolean;
+    /**
+     * 树节点层级
+     *
+     * @type {number}
+     */
+    _level: number;
+    /**
+     * 父节点数据对象
+     *
+     * @type {IMobPersonalPickerTreeNodeData}
+     * @memberof IMobPersonalPickerTreeNodeData
+     */
+    _parent?: IMobPersonalPickerTreeNodeData;
+}
+export interface IMobPersonalPickerTreeState extends ITreeState {
+    /**
+     * 用于切换的数据
+     * @type {Array<IMobPersonalPickerTreeNodeData[]>}
+     */
+    tabNodes: Array<IMobPersonalPickerTreeNodeData[]>;
 }
 /**
  * 移动端人员选择树控制器
@@ -13,7 +34,7 @@ export interface IMobPersonalPickerTreeNodeData extends ITreeNodeData {
  * @class MobPersonalPickerTreeController
  * @implements {IControlProvider}
  */
-export declare class MobPersonalPickerTreeController extends TreeController {
+export declare class MobPersonalPickerTreeController<T extends IDETree = IDETree, S extends IMobPersonalPickerTreeState = IMobPersonalPickerTreeState, E extends ITreeEvent = ITreeEvent> extends TreeController<T, S, E> {
     selectedData: string;
     get simpleList(): any;
     protected onCreated(): Promise<void>;
@@ -34,6 +55,7 @@ export declare class MobPersonalPickerTreeController extends TreeController {
         uploadUrl: string;
         downloadUrl: string;
     };
+    protected initState(): void;
     protected onMounted(): Promise<void>;
     /**
      * 处理回显选中
@@ -59,6 +81,18 @@ export declare class MobPersonalPickerTreeController extends TreeController {
      * @memberof TreeController
      */
     onTreeNodeClick(nodeData: ITreeNodeData, event: MouseEvent): Promise<void>;
+    /**
+     * 初始化绘制数据
+     */
+    initNodeItems(): void;
+    /**
+     * loadNodes加载完子数据之后的处理
+     * @author lxm
+     * @date 2023-12-22 02:37:50
+     * @param {IMobPersonalPickerTreeNodeData[]} nodes 加载回来的子数据
+     * @return {*}  {Promise<void>}
+     */
+    afterLoadNodes(nodes: IMobPersonalPickerTreeNodeData[]): Promise<void>;
     /**
      * 设置选中项
      *

@@ -1,15 +1,15 @@
 import './style.css';
-var Ke = Object.defineProperty;
-var Ge = (r, p, s) => p in r ? Ke(r, p, { enumerable: !0, configurable: !0, writable: !0, value: s }) : r[p] = s;
-var d = (r, p, s) => (Ge(r, typeof p != "symbol" ? p + "" : p, s), s);
-import { useNamespace as ce, getDataPickerProps as Xe, getEditorEmits as Ye, renderString as qe, withInstall as Qe } from "@ibiz-template/vue3-util";
-import { EditorController as et, getDeACMode as tt, UIActionUtil as at, OpenAppViewCommand as ue, PluginStaticResource as st, registerEditorProvider as it } from "@ibiz-template/runtime";
-import { RuntimeModelError as H } from "@ibiz-template/core";
-import { mergeDeepLeft as lt, clone as de } from "ramda";
+var Ge = Object.defineProperty;
+var Xe = (r, h, a) => h in r ? Ge(r, h, { enumerable: !0, configurable: !0, writable: !0, value: a }) : r[h] = a;
+var p = (r, h, a) => (Xe(r, typeof h != "symbol" ? h + "" : h, a), a);
+import { useNamespace as K, getDataPickerProps as Ye, getEditorEmits as qe, renderString as Qe, withInstall as et } from "@ibiz-template/vue3-util";
+import { EditorController as tt, getDeACMode as st, UIActionUtil as at, OpenAppViewCommand as de, PluginStaticResource as it, registerEditorProvider as lt } from "@ibiz-template/runtime";
+import { RuntimeModelError as J } from "@ibiz-template/core";
+import { mergeDeepLeft as rt, clone as pe } from "ramda";
 import { notNilEmpty as R } from "qx-util";
-import { defineComponent as pe, ref as S, onMounted as he, watch as w, createVNode as n, computed as J, onBeforeUnmount as rt, resolveComponent as C, withDirectives as nt, resolveDirective as ot, createTextVNode as O, nextTick as ut, isVNode as ct } from "vue";
-import { isArray as dt } from "lodash-es";
-class pt extends et {
+import { defineComponent as he, ref as S, onMounted as me, watch as O, createVNode as o, computed as W, onBeforeUnmount as nt, resolveComponent as C, mergeProps as ot, withDirectives as ut, resolveDirective as ct, createTextVNode as N, nextTick as dt, isVNode as pt } from "vue";
+import { isArray as ht } from "lodash-es";
+class mt extends tt {
   constructor() {
     super(...arguments);
     /**
@@ -17,193 +17,195 @@ class pt extends et {
      *
      * @memberof PersonelSelectController
      */
-    d(this, "operatorMap", /* @__PURE__ */ new Map());
+    p(this, "operatorMap", /* @__PURE__ */ new Map());
     /**
      * 总数
      */
-    d(this, "total", 0);
+    p(this, "total", 0);
     /**
      * 当前人员数量
      */
-    d(this, "currentNumber", -1);
+    p(this, "currentNumber", -1);
     /**
      * 人员当前页
      */
-    d(this, "page", 0);
+    p(this, "page", 0);
     /**
      * 部门人员数据页数
      */
-    d(this, "deptpage", 0);
+    p(this, "deptpage", 0);
     /**
      * 当前部门人员数量
      */
-    d(this, "deptcurrentNumber", -1);
+    p(this, "deptcurrentNumber", -1);
     /**
      * 部门人员总数
      */
-    d(this, "depttotal", 0);
+    p(this, "depttotal", 0);
     /**
      * 每页数量
      */
-    d(this, "size", 20);
+    p(this, "size", 20);
     /**
      * 是否多选
      */
-    d(this, "multiple", !1);
+    p(this, "multiple", !1);
     /**
      * 是否附加符号 多选且开启附加符号并且选择值为多个时，每个选择值前后都拼接上单引号后再抛出去
      */
-    d(this, "isAddSymbol", !1);
+    p(this, "isAddSymbol", !1);
     /**
      * 多选时拼接的字符串
      */
-    d(this, "separator", ",");
+    p(this, "separator", ",");
     /**
      *选择视图相关参数
      */
-    d(this, "pickupView", null);
+    p(this, "pickupView", null);
     /**
      *链接视图相关参数
      */
-    d(this, "linkView", null);
+    p(this, "linkView", null);
     /**
      * 人员UI转化
      */
-    d(this, "userFilterMap", {
+    p(this, "userFilterMap", {
       id: "id",
-      name: "name"
+      name: "name",
+      title: "title"
     });
     /**
      * 部门人员UI转化
      */
-    d(this, "deptFilterMap", {
+    p(this, "deptFilterMap", {
       id: "id",
-      name: "name"
+      name: "name",
+      title: "title"
     });
     /**
      * 是否显示人员部门分页
      */
-    d(this, "isShowTab", !0);
+    p(this, "isShowTab", !0);
     /**
      *值项
      */
-    d(this, "valueItem", "");
+    p(this, "valueItem", "");
     /**
      * 主键属性名称
      */
-    d(this, "keyName", "srfkey");
+    p(this, "keyName", "srfkey");
     /**
      * 主文本属性名称
      */
-    d(this, "textName", "srfmajortext");
+    p(this, "textName", "srfmajortext");
     /**
      * 数据集codeName
      */
-    d(this, "interfaceName", "");
+    p(this, "interfaceName", "");
     /**
      * 自填模式sort排序
      */
-    d(this, "sort", "");
+    p(this, "sort", "");
     /**
      * 不支持AC（根据编辑器类型得）
      */
-    d(this, "noAC", !1);
+    p(this, "noAC", !1);
     /**
      * 不支持按钮（根据编辑器类型得）
      */
-    d(this, "noButton", !1);
+    p(this, "noButton", !1);
     /**
      * 实体自填模式模型
      */
-    d(this, "deACMode");
+    p(this, "deACMode");
     /**
      * 自填数据项集合（已排除了value和text)
      */
-    d(this, "dataItems", []);
+    p(this, "dataItems", []);
     // 对象标识属性
-    d(this, "objectIdField", "");
+    p(this, "objectIdField", "");
     // 对象名称属性
-    d(this, "objectNameField", "");
+    p(this, "objectNameField", "");
     // 对象值属性
-    d(this, "objectValueField", "");
+    p(this, "objectValueField", "");
     // 人员请求地址
-    d(this, "userUrl", "");
+    p(this, "userUrl", "");
     // 部门请求地址
-    d(this, "deptUrl", "");
+    p(this, "deptUrl", "");
     // 复制人员请求url,这是用来保证当配置的URL中的动态参数变化后可以刷新当前请求状态
-    d(this, "copyUserUrl", "");
+    p(this, "copyUserUrl", "");
     // 复制部门人员请求url
-    d(this, "copyDeptUrl", "");
+    p(this, "copyDeptUrl", "");
     // 人员请求方式
-    d(this, "userMethod", "post");
+    p(this, "userMethod", "post");
     // 部门人员请求方式
-    d(this, "deptMethod", "post");
+    p(this, "deptMethod", "post");
     /**
      * 上下文替换正则
      *
      */
-    d(this, "contextReg", /\$\{context.[a-zA-Z_$][a-zA-Z0-9_$]{1,}\}/g);
+    p(this, "contextReg", /\$\{context.[a-zA-Z_$][a-zA-Z0-9_$]{1,}\}/g);
     /**
      * 数据替换正则
      *
      */
-    d(this, "dataReg", /\$\{data.[a-zA-Z_$][a-zA-Z0-9_$]{1,}\}/g);
+    p(this, "dataReg", /\$\{data.[a-zA-Z_$][a-zA-Z0-9_$]{1,}\}/g);
     /**
      * 参数替换正则
      *
      */
-    d(this, "paramsReg", /\$\{params.[a-zA-Z_$][a-zA-Z0-9_$]{1,}\}/g);
+    p(this, "paramsReg", /\$\{params.[a-zA-Z_$][a-zA-Z0-9_$]{1,}\}/g);
     /**
      * 是否配置了默认显示当前用户
      */
-    d(this, "defaultSelCurUser", !1);
+    p(this, "defaultSelCurUser", !1);
     /**
      * 值类型
      */
-    d(this, "valueType", "OBJECTS");
+    p(this, "valueType", "OBJECTS");
     /**
      * 关注类型属性
      *
      */
-    d(this, "attentionTypeField", "type");
+    p(this, "attentionTypeField", "type");
     /**
      * 自填充映射
      */
-    d(this, "selfFillMap", {});
+    p(this, "selfFillMap", {});
     /**
      * 选中后默认关注值
      *
      */
-    d(this, "defaultAttentionValue", "");
+    p(this, "defaultAttentionValue", "");
     /**
      * 是否显示姓名文字
      */
-    d(this, "showNameText", !0);
+    p(this, "showNameText", !0);
     /**
      * 是否显示姓名提示
      */
-    d(this, "showNameTip", !1);
+    p(this, "showNameTip", !1);
   }
   async onInit() {
-    var e, m, u, o;
-    if (super.onInit(), this.initDefaultAttribute(), this.valueItem = ((e = this.model.valueItemName) == null ? void 0 : e.toLowerCase()) || "", this.initParams(), await this.getOperatorUserList(), this.model.appDataEntityId && (this.model.appDEDataSetId && (this.interfaceName = this.model.appDEDataSetId), this.model.appDEACModeId && (this.deACMode = await tt(
+    var u, e, d, n;
+    if (super.onInit(), this.initDefaultAttribute(), this.valueItem = ((u = this.model.valueItemName) == null ? void 0 : u.toLowerCase()) || "", this.initParams(), await this.getOperatorUserList(), this.model.appDataEntityId && (this.model.appDEDataSetId && (this.interfaceName = this.model.appDEDataSetId), this.model.appDEACModeId && (this.deACMode = await st(
       this.model.appDEACModeId,
       this.model.appDataEntityId,
       this.context.srfappid
     ), this.deACMode))) {
-      const { minorSortAppDEFieldId: h, minorSortDir: b } = this.deACMode;
-      h && b && (this.sort = "".concat(h.toLowerCase(), ",").concat(b.toLowerCase())), this.deACMode.textAppDEFieldId && (this.textName = this.deACMode.textAppDEFieldId), this.deACMode.valueAppDEFieldId && (this.keyName = this.deACMode.valueAppDEFieldId), this.deACMode.deacmodeDataItems && (this.dataItems = [], this.deACMode.deacmodeDataItems.forEach(
-        (g) => {
-          g.id !== "value" && g.id !== "text" && this.dataItems.push(g);
+      const { minorSortAppDEFieldId: m, minorSortDir: f } = this.deACMode;
+      m && f && (this.sort = "".concat(m.toLowerCase(), ",").concat(f.toLowerCase())), this.deACMode.textAppDEFieldId && (this.textName = this.deACMode.textAppDEFieldId), this.deACMode.valueAppDEFieldId && (this.keyName = this.deACMode.valueAppDEFieldId), this.deACMode.deacmodeDataItems && (this.dataItems = [], this.deACMode.deacmodeDataItems.forEach(
+        (b) => {
+          b.id !== "value" && b.id !== "text" && this.dataItems.push(b);
         }
       ));
     }
-    const s = [
+    const a = [
       "PICKEREX_DROPDOWNVIEW",
       "PICKEREX_DROPDOWNVIEW_LINK",
       "PICKUPVIEW"
     ];
-    this.model.editorType && s.includes(this.model.editorType) && this.initPickupViewParams(), this.objectIdField = (m = this.model.objectIdField) == null ? void 0 : m.toLowerCase(), this.objectNameField = (u = this.model.objectNameField) == null ? void 0 : u.toLowerCase(), this.objectValueField = (o = this.model.objectValueField) == null ? void 0 : o.toLowerCase();
+    this.model.editorType && a.includes(this.model.editorType) && this.initPickupViewParams(), this.objectIdField = (e = this.model.objectIdField) == null ? void 0 : e.toLowerCase(), this.objectNameField = (d = this.model.objectNameField) == null ? void 0 : d.toLowerCase(), this.objectValueField = (n = this.model.objectValueField) == null ? void 0 : n.toLowerCase();
   }
   /**
    * 初始化字段默认属性
@@ -215,7 +217,7 @@ class pt extends et {
    * 初始化noAc和noButton
    */
   initParams() {
-    var s, e, m, u, o, h, b;
+    var a, u, e, d, n, m, f;
     switch (this.model.editorType) {
       case "PICKEREX_NOAC":
       case "PICKEREX_NOAC_LINK":
@@ -227,31 +229,33 @@ class pt extends et {
       default:
         this.noButton = !1, this.noAC = !1;
     }
-    if (this.userUrl = this.editorParams.URL, this.deptUrl = this.editorParams.DEPTURL, this.userMethod = this.editorParams.USERMETHOD || "post", this.deptMethod = this.editorParams.DEPTMETHOD || "post", this.multiple = this.editorParams.MULTIPLE === "true", this.defaultSelCurUser = this.editorParams.DEFAULTSELCURUSER === "true", this.separator = this.editorParams.SEPARATOR || ",", this.isAddSymbol = this.editorParams.ISADDSYMBOL === "true" && this.multiple === !0, this.isShowTab = this.editorParams.ISSHOWTAB !== "false", (s = this.editorParams) != null && s.VALUETYPE && (this.valueType = (e = this.editorParams) == null ? void 0 : e.VALUETYPE), (m = this.editorParams) != null && m.DEFAULTATNVALUE && (this.defaultAttentionValue = (u = this.editorParams) == null ? void 0 : u.DEFAULTATNVALUE), (o = this.editorParams) != null && o.VALUEITEMNAME && (this.valueItem = (h = this.editorParams) == null ? void 0 : h.VALUEITEMNAME), this.editorParams && Object.prototype.hasOwnProperty.call(this.editorParams, "SELFFILLMAP"))
+    if (this.userUrl = this.editorParams.URL, this.deptUrl = this.editorParams.DEPTURL, this.userMethod = this.editorParams.USERMETHOD || "post", this.deptMethod = this.editorParams.DEPTMETHOD || "post", this.multiple = this.editorParams.MULTIPLE === "true", this.defaultSelCurUser = this.editorParams.DEFAULTSELCURUSER === "true", this.separator = this.editorParams.SEPARATOR || ",", this.isAddSymbol = this.editorParams.ISADDSYMBOL === "true" && this.multiple === !0, this.isShowTab = this.editorParams.ISSHOWTAB !== "false", (a = this.editorParams) != null && a.VALUETYPE && (this.valueType = (u = this.editorParams) == null ? void 0 : u.VALUETYPE), (e = this.editorParams) != null && e.DEFAULTATNVALUE && (this.defaultAttentionValue = (d = this.editorParams) == null ? void 0 : d.DEFAULTATNVALUE), (n = this.editorParams) != null && n.VALUEITEMNAME && (this.valueItem = (m = this.editorParams) == null ? void 0 : m.VALUEITEMNAME), this.editorParams && Object.prototype.hasOwnProperty.call(this.editorParams, "SELFFILLMAP"))
       try {
-        const g = JSON.parse((b = this.editorParams) == null ? void 0 : b.SELFFILLMAP);
-        Object.assign(this.selfFillMap, g);
-      } catch (g) {
+        const b = JSON.parse((f = this.editorParams) == null ? void 0 : f.SELFFILLMAP);
+        Object.assign(this.selfFillMap, b);
+      } catch (b) {
         this.selfFillMap = {};
       }
     if (this.editorParams && Object.prototype.hasOwnProperty.call(this.editorParams, "USERMAP"))
       try {
-        const g = JSON.parse(this.editorParams.USERMAP);
-        Object.assign(this.userFilterMap, g);
-      } catch (g) {
+        const b = JSON.parse(this.editorParams.USERMAP);
+        Object.assign(this.userFilterMap, b);
+      } catch (b) {
         this.userFilterMap = {
           id: "id",
-          name: "name"
+          name: "name",
+          title: "title"
         };
       }
     if (this.editorParams && Object.prototype.hasOwnProperty.call(this.editorParams, "DEPTMAP"))
       try {
-        const g = JSON.parse(this.editorParams.DEPTMAP);
-        Object.assign(this.deptFilterMap, g);
-      } catch (g) {
+        const b = JSON.parse(this.editorParams.DEPTMAP);
+        Object.assign(this.deptFilterMap, b);
+      } catch (b) {
         this.deptFilterMap = {
           id: "id",
-          name: "name"
+          name: "name",
+          title: "title"
         };
       }
     this.editorParams.SHOWNAMETEXT && (this.showNameText = this.toBoolean(this.editorParams.SHOWNAMETEXT)), this.editorParams.SHOWNAMETIP && (this.showNameTip = this.toBoolean(this.editorParams.SHOWNAMETIP));
@@ -291,23 +295,23 @@ class pt extends et {
   /**
    * 加载更多
    */
-  async loadMore(s, e, m = {}) {
-    if (e === "user" && this.currentNumber < this.total) {
-      const u = await this.getServiceData(e, s, m);
-      if (u)
-        return this.page += 1, this.currentNumber < 0 && (this.currentNumber += 1), this.currentNumber += this.size, this.total = (u.total ? Number(u.total) : Number(u.headers["x-total"])) || 0, u.data.forEach((o) => {
-          Object.keys(this.userFilterMap).forEach((h) => {
-            o[h] = o[this.userFilterMap[h]];
+  async loadMore(a, u, e = {}) {
+    if (u === "user" && this.currentNumber < this.total) {
+      const d = await this.getServiceData(u, a, e);
+      if (d)
+        return this.page += 1, this.currentNumber < 0 && (this.currentNumber += 1), this.currentNumber += this.size, this.total = (d.total ? Number(d.total) : Number(d.headers["x-total"])) || 0, d.data.forEach((n) => {
+          Object.keys(this.userFilterMap).forEach((m) => {
+            n[m] = n[this.userFilterMap[m]];
           });
-        }), u;
-    } else if (e === "department" && this.deptcurrentNumber < this.depttotal) {
-      const u = await this.getServiceData(e, s, m);
-      if (u)
-        return this.deptpage += 1, this.deptcurrentNumber < 0 && (this.deptcurrentNumber += 1), this.deptcurrentNumber += this.size, this.depttotal = (u.total ? Number(u.total) : Number(u.headers["x-total"])) || 0, u.data.forEach((o) => {
-          Object.keys(this.deptFilterMap).forEach((h) => {
-            o[h] = o[this.deptFilterMap[h]];
+        }), d;
+    } else if (u === "department" && this.deptcurrentNumber < this.depttotal) {
+      const d = await this.getServiceData(u, a, e);
+      if (d)
+        return this.deptpage += 1, this.deptcurrentNumber < 0 && (this.deptcurrentNumber += 1), this.deptcurrentNumber += this.size, this.depttotal = (d.total ? Number(d.total) : Number(d.headers["x-total"])) || 0, d.data.forEach((n) => {
+          Object.keys(this.deptFilterMap).forEach((m) => {
+            n[m] = n[this.deptFilterMap[m]];
           });
-        }), u;
+        }), d;
     }
   }
   /**
@@ -319,19 +323,19 @@ class pt extends et {
    * @return {*}  {Promise<void>}
    * @memberof GridFieldColumnController
    */
-  async onActionClick(s, e, m) {
-    const u = s.uiactionId;
-    let o = {};
-    this.parent.form ? o = this.parent.form.ctx.view : this.parent.grid && (o = this.parent.grid.ctx.view), await at.execAndResolved(
-      u,
+  async onActionClick(a, u, e) {
+    const d = a.uiactionId;
+    let n = {};
+    this.parent.form ? n = this.parent.form.ctx.view : this.parent.grid && (n = this.parent.grid.ctx.view), await at.execAndResolved(
+      d,
       {
         context: this.context,
         params: this.params,
-        data: e,
-        view: o,
-        event: m
+        data: u,
+        view: n,
+        event: e
       },
-      s.appId
+      a.appId
     );
   }
   /**
@@ -345,31 +349,31 @@ class pt extends et {
    * @param {*} [data]
    * @return {*}  {string}
    */
-  fill(s = "", e, m, u) {
-    if (R(s)) {
-      if (R(e)) {
-        const o = s.match(this.contextReg);
-        o == null || o.forEach((h) => {
-          const b = h.slice(10, h.length - 1);
-          s = s.replace("${context.".concat(b, "}"), e[b] || "");
-        });
-      }
-      if (R(m)) {
-        const o = s.match(this.paramsReg);
-        o == null || o.forEach((h) => {
-          const b = h.slice(9, h.length - 1);
-          s = s.replace("${params.".concat(b, "}"), m[b] || "");
-        });
-      }
+  fill(a = "", u, e, d) {
+    if (R(a)) {
       if (R(u)) {
-        const o = s.match(this.dataReg);
-        o == null || o.forEach((h) => {
-          const b = h.slice(7, h.length - 1);
-          s = s.replace("${data.".concat(b, "}"), u[b] || "");
+        const n = a.match(this.contextReg);
+        n == null || n.forEach((m) => {
+          const f = m.slice(10, m.length - 1);
+          a = a.replace("${context.".concat(f, "}"), u[f] || "");
+        });
+      }
+      if (R(e)) {
+        const n = a.match(this.paramsReg);
+        n == null || n.forEach((m) => {
+          const f = m.slice(9, m.length - 1);
+          a = a.replace("${params.".concat(f, "}"), e[f] || "");
+        });
+      }
+      if (R(d)) {
+        const n = a.match(this.dataReg);
+        n == null || n.forEach((m) => {
+          const f = m.slice(7, m.length - 1);
+          a = a.replace("${data.".concat(f, "}"), d[f] || "");
         });
       }
     }
-    return s;
+    return a;
   }
   /**
    * 加载实体数据集数据
@@ -380,28 +384,28 @@ class pt extends et {
    * @returns {*}  {Promise<IHttpResponse<IData[]>>}
    * @memberof PersonelSelectController
    */
-  async getServiceData(s, e, m) {
-    const { context: u, params: o } = this.handlePublicParams(
-      e,
+  async getServiceData(a, u, e) {
+    const { context: d, params: n } = this.handlePublicParams(
+      u,
       this.context,
       this.params
-    ), h = {};
-    this.sort && !Object.is(this.sort, "") && Object.assign(h, { sort: this.sort }), Object.assign(h, { size: this.size }), m && Object.assign(h, m);
-    const b = lt(o, h);
-    let g = "";
-    const M = this.fill(this.userUrl, u, o, e).replaceAll(
+    ), m = {};
+    this.sort && !Object.is(this.sort, "") && Object.assign(m, { sort: this.sort }), Object.assign(m, { size: this.size }), e && Object.assign(m, e);
+    const f = rt(n, m);
+    let b = "";
+    const A = this.fill(this.userUrl, d, n, u).replaceAll(
       "//",
       "/"
-    ), I = this.fill(this.deptUrl, u, o, e).replaceAll(
+    ), M = this.fill(this.deptUrl, d, n, u).replaceAll(
       "//",
       "/"
     );
-    this.copyUserUrl = M, this.copyDeptUrl = I;
-    let v = "post";
-    const f = {};
-    if (s === "user" ? (g = M, v = this.userMethod.toLowerCase(), v === "get" ? Object.assign(f, { method: v, params: b }) : Object.assign(f, { method: v, data: b })) : (g = I, v = this.deptMethod.toLowerCase(), v === "get" ? Object.assign(f, { method: v, params: b }) : Object.assign(f, { method: v, data: b })), g)
-      return await ibiz.net.request(g, f);
-    throw new H(this.model, "请配置数据接口地址");
+    this.copyUserUrl = A, this.copyDeptUrl = M;
+    let y = "post";
+    const v = {};
+    if (a === "user" ? (b = A, y = this.userMethod.toLowerCase(), y === "get" ? Object.assign(v, { method: y, params: f }) : Object.assign(v, { method: y, data: f })) : (b = M, y = this.deptMethod.toLowerCase(), y === "get" ? Object.assign(v, { method: y, params: f }) : Object.assign(v, { method: y, data: f })), b)
+      return await ibiz.net.request(b, v);
+    throw new J(this.model, "请配置数据接口地址");
   }
   /**
    * 打开数据选择视图
@@ -411,44 +415,44 @@ class pt extends et {
    * @returns {*}  {(Promise<IData[] | undefined>)}
    * @memberof PersonelSelectController
    */
-  async openPickUpView(s, e) {
+  async openPickUpView(a, u) {
     await this.initPickupViewParams();
-    const { context: m, params: u } = this.handlePublicParams(
-      s,
+    const { context: e, params: d } = this.handlePublicParams(
+      a,
       this.context,
       this.params
     );
-    if (e && (u.selectedData = e), !this.pickupView)
-      throw new H(this.model, "请配置数据选择视图");
-    const o = await ibiz.commands.execute(
-      ue.TAG,
+    if (u && (d.selectedData = u), !this.pickupView)
+      throw new J(this.model, "请配置数据选择视图");
+    const n = await ibiz.commands.execute(
+      de.TAG,
       this.pickupView.id,
-      m,
-      u,
+      e,
+      d,
       { openMode: "POPUPMODAL" }
     );
-    if (o && o.ok && o.data)
-      return o.data;
-    ibiz.log.debug("模态取消或关闭异常", o);
+    if (n && n.ok && n.data)
+      return n.data;
+    ibiz.log.debug("模态取消或关闭异常", n);
   }
   /**
    * 打开数据链接视图
    */
-  async openLinkView(s) {
-    const e = this.context.clone();
-    s[this.valueItem] && (e.srfkey = s[this.valueItem]);
-    const { context: m, params: u } = this.handlePublicParams(
-      s,
-      e,
+  async openLinkView(a) {
+    const u = this.context.clone();
+    a[this.valueItem] && (u.srfkey = a[this.valueItem]);
+    const { context: e, params: d } = this.handlePublicParams(
+      a,
+      u,
       this.params
-    ), { linkAppViewId: o } = this.model;
-    if (!o)
-      throw new H(this.model, "请配置数据链接视图");
+    ), { linkAppViewId: n } = this.model;
+    if (!n)
+      throw new J(this.model, "请配置数据链接视图");
     return ibiz.commands.execute(
-      ue.TAG,
-      o,
-      m,
-      u
+      de.TAG,
+      n,
+      e,
+      d
     );
   }
   /**
@@ -459,11 +463,11 @@ class pt extends et {
    * @param {IData} data 选中数据
    * @returns {*}  {Promise<Array<{ id: string; value: any }>>}
    */
-  async calcFillDataItems(s) {
+  async calcFillDataItems(a) {
     return this.deACMode ? this.dataItems.length === 0 ? [] : await Promise.all(
-      this.dataItems.map((m) => {
-        const o = s.map((h) => h[m.appDEFieldId]).join(this.separator);
-        return m.format || m.convertToCodeItemText && m.codeListId || m.customCode, { id: m.id, value: o };
+      this.dataItems.map((e) => {
+        const n = a.map((m) => m[e.appDEFieldId]).join(this.separator);
+        return e.format || e.convertToCodeItemText && e.codeListId || e.customCode, { id: e.id, value: n };
       })
     ) : [];
   }
@@ -474,15 +478,15 @@ class pt extends et {
    * @author: zhujiamin
    * @Date: 2023-08-22 15:58:56
    */
-  handleObjectParams(s) {
-    const e = {};
-    return this.objectIdField && Object.assign(e, {
-      [this.objectIdField]: s[this.keyName]
-    }), this.objectNameField && Object.assign(e, {
-      [this.objectNameField]: s[this.textName]
-    }), this.objectValueField && Object.assign(e, {
-      [this.objectValueField]: de(s)
-    }), e;
+  handleObjectParams(a) {
+    const u = {};
+    return this.objectIdField && Object.assign(u, {
+      [this.objectIdField]: a[this.keyName]
+    }), this.objectNameField && Object.assign(u, {
+      [this.objectNameField]: a[this.textName]
+    }), this.objectValueField && Object.assign(u, {
+      [this.objectValueField]: pe(a)
+    }), u;
   }
   /**
    * 获取操作用户列表
@@ -490,14 +494,14 @@ class pt extends et {
    * @memberof PersonelSelectController
    */
   async getOperatorUserList() {
-    const s = await ibiz.hub.getApp(this.context.srfappid);
-    let e = [];
-    e = await s.codeList.get(
+    const a = await ibiz.hub.getApp(this.context.srfappid);
+    let u = [];
+    u = await a.codeList.get(
       "SysOperator",
       this.context,
       this.params
     ), this.operatorMap = new Map(
-      e.map((m) => [m.value, m])
+      u.map((e) => [e.value, e])
     );
   }
   /**
@@ -518,19 +522,34 @@ class pt extends et {
   isShowNameTip() {
     return this.showNameTip;
   }
+  /**
+   * 获取人员头像路径
+   *
+   * @return {*}  {boolean}
+   * @memberof PersonelSelectController
+   */
+  getUserPictureUrl(a, u) {
+    if (this.operatorMap.size <= 0)
+      return "";
+    let e = {};
+    return this.operatorMap.get(a) ? e = this.operatorMap.get(a) : Array.from(this.operatorMap.entries()).find((d) => {
+      const n = d[1] || {};
+      return n.text && u && n.text === u ? (e = n, !0) : !1;
+    }), e.data && e.data.iconurl ? e.data.iconurl : "";
+  }
 }
-class ht {
+class ft {
   constructor() {
-    d(this, "component", "PersonelSelect");
-    d(this, "formEditor", "PersonelSelect");
-    d(this, "gridEditor", "PersonelSelect");
+    p(this, "component", "PersonelSelect");
+    p(this, "formEditor", "PersonelSelect");
+    p(this, "gridEditor", "PersonelSelect");
   }
-  async createController(p, s) {
-    const e = new pt(p, s);
-    return await e.init(), e;
+  async createController(h, a) {
+    const u = new mt(h, a);
+    return await u.init(), u;
   }
 }
-const mt = /* @__PURE__ */ pe({
+const vt = /* @__PURE__ */ he({
   name: "VirtualList",
   props: {
     items: {
@@ -551,57 +570,57 @@ const mt = /* @__PURE__ */ pe({
   },
   emits: ["scrollEvent"],
   setup(r, {
-    emit: p
+    emit: h
   }) {
-    const s = ce("virtual-list"), e = S(36), m = S(), u = S([]), o = S(0), h = S(0), b = S(0), g = S(0), M = () => {
-      h.value = Math.floor(g.value / r.itemHeight), b.value = h.value + r.showNum, u.value = r.items.slice(h.value, b.value);
-      const f = g.value - g.value % r.itemHeight;
-      o.value = f;
-    }, I = () => {
-      g.value = m.value.scrollTop, M(), v(e.value, g.value);
-    }, v = (f, P) => {
-      p("scrollEvent", f, P);
+    const a = K("virtual-list"), u = S(36), e = S(), d = S([]), n = S(0), m = S(0), f = S(0), b = S(0), A = () => {
+      m.value = Math.floor(b.value / r.itemHeight), f.value = m.value + r.showNum, d.value = r.items.slice(m.value, f.value);
+      const v = b.value - b.value % r.itemHeight;
+      n.value = v;
+    }, M = () => {
+      b.value = e.value.scrollTop, A(), y(u.value, b.value);
+    }, y = (v, g) => {
+      h("scrollEvent", v, g);
     };
-    return he(() => {
+    return me(() => {
       setTimeout(() => {
         scroll();
       }, 1e3);
-    }), w(() => r.items, () => {
-      e.value = r.itemHeight * r.items.length, M();
+    }), O(() => r.items, () => {
+      u.value = r.itemHeight * r.items.length, A();
     }, {
       immediate: !0,
       deep: !0
     }), {
-      ns: s,
-      contentHeight: e,
-      showList: u,
-      contentBox: m,
-      top: o,
-      onScroll: I
+      ns: a,
+      contentHeight: u,
+      showList: d,
+      contentBox: e,
+      top: n,
+      onScroll: M
     };
   },
   render() {
-    return n("div", {
+    return o("div", {
       ref: "contentBox",
       class: this.ns.b(),
       onScroll: () => this.onScroll()
-    }, [n("div", {
+    }, [o("div", {
       class: this.ns.e("container"),
       style: "height:".concat(this.contentHeight, "px;")
-    }, [n("div", {
+    }, [o("div", {
       class: this.ns.e("content"),
       style: "top:".concat(this.top, "px;")
-    }, [this.showList.map((r, p) => n("div", {
-      key: p,
+    }, [this.showList.map((r, h) => o("div", {
+      key: h,
       class: this.ns.m("item")
     }, [this.$slots.default ? this.$slots.default({
       ...r,
       // eslint-disable-next-line object-shorthand
-      index: p
+      index: h
     }) : r.name]))])])]);
   }
-}), V = new st(import.meta.url);
-class ft {
+}), V = new it(import.meta.url);
+class gt {
   /**
    * 计算选中项绘制个数 多选场景需计算显示人员是否超出
    * @author ljx
@@ -609,98 +628,98 @@ class ft {
    * @param {IData} values 选中项key值集合
    * @returns {number} selRenderNum
    */
-  static calcSelItemRenderNum(p, s) {
-    let e = 0;
-    if (s && (p == null ? void 0 : p.length) > 0) {
-      const m = (s == null ? void 0 : s.offsetWidth) || 0, u = window.getComputedStyle(s), o = parseInt(u.marginLeft, 10), h = parseInt(u.marginRight, 10), b = parseInt(u.paddingLeft, 10), g = parseInt(u.paddingRight, 10), M = o + h + b + g, I = 30, v = 28, f = 8, P = (v + f) * p.length;
-      m - M - I - P < 0 && (e = Math.floor(
-        (m - M - I) / (v + f)
-      ), e -= 1);
+  static calcSelItemRenderNum(h, a) {
+    let u = 0;
+    if (a && (h == null ? void 0 : h.length) > 0) {
+      const e = (a == null ? void 0 : a.offsetWidth) || 0, d = window.getComputedStyle(a), n = parseInt(d.marginLeft, 10), m = parseInt(d.marginRight, 10), f = parseInt(d.paddingLeft, 10), b = parseInt(d.paddingRight, 10), A = n + m + f + b, M = 30, y = 28, v = 8, g = (y + v) * h.length;
+      e - A - M - g < 0 && (u = Math.floor(
+        (e - A - M) / (y + v)
+      ), u -= 1);
     }
-    return e;
+    return u;
   }
 }
-function vt(r) {
-  return typeof r == "function" || Object.prototype.toString.call(r) === "[object Object]" && !ct(r);
+function bt(r) {
+  return typeof r == "function" || Object.prototype.toString.call(r) === "[object Object]" && !pt(r);
 }
-const W = /* @__PURE__ */ pe({
+const Z = /* @__PURE__ */ he({
   name: "PersonelSelect",
-  props: Xe(),
-  emits: Ye(),
+  props: Ye(),
+  emits: qe(),
   setup(r, {
-    emit: p
+    emit: h
   }) {
-    const s = ce("picker-dropdown"), e = r.controller, m = S(""), u = S([]), o = S([]), h = S(""), b = S(!1), g = S(!1), M = S(""), I = S([]), v = S("user"), f = S([]), P = S(!1), x = S(!1), D = S(!1), Z = S(""), K = S(), U = S(), G = S();
-    let N;
-    const $ = S(), X = S([]);
+    const a = K("picker-dropdown"), u = K("personel-select"), e = r.controller, d = S(""), n = S([]), m = S([]), f = S(""), b = S(!1), A = S(!1), M = S(""), y = S([]), v = S("user"), g = S([]), F = S(!1), $ = S(!1), U = S(!1), G = S(""), X = S(), D = S(), Y = S();
+    let x;
+    const z = S(), q = S([]);
     let j = 0;
-    const me = J(() => !!(r.controlParams && r.controlParams.editmode === "hover")), Y = (t) => {
-      const a = [], i = [];
-      f.value = [], t.forEach((l) => {
-        var y, E;
-        const c = de(l);
-        (y = e.selfFillMap) != null && y.user_id && ((E = e.selfFillMap) != null && E.user_name) && Object.assign(c, {
+    const fe = W(() => !!(r.controlParams && r.controlParams.editmode === "hover")), Q = (t) => {
+      const s = [], i = [];
+      g.value = [], t.forEach((l) => {
+        var P, E;
+        const c = pe(l);
+        (P = e.selfFillMap) != null && P.user_id && ((E = e.selfFillMap) != null && E.user_name) && Object.assign(c, {
           id: l[e.selfFillMap.user_id],
           name: l[e.selfFillMap.user_name]
-        }), a.push(l[e.selfFillMap.user_id]), i.push(l[e.selfFillMap.user_name]), f.value.push(c);
-      }), h.value = a == null ? void 0 : a.join(e.separator), m.value = i == null ? void 0 : i.toString();
+        }), s.push(l[e.selfFillMap.user_id]), i.push(l[e.selfFillMap.user_name]), g.value.push(c);
+      }), f.value = s == null ? void 0 : s.join(e.separator), d.value = i == null ? void 0 : i.toString();
     }, L = () => {
-      const t = f.value.map((a) => {
+      const t = g.value.map((s) => {
         var l, c;
         const i = {};
         return Object.assign(i, {
-          [(l = e.selfFillMap) == null ? void 0 : l.user_id]: a.id,
-          [(c = e.selfFillMap) == null ? void 0 : c.user_name]: a.name
+          [(l = e.selfFillMap) == null ? void 0 : l.user_id]: s.id,
+          [(c = e.selfFillMap) == null ? void 0 : c.user_name]: s.name
         }), e.attentionTypeField && e.defaultAttentionValue && Object.assign(i, {
           [e.attentionTypeField]: e.defaultAttentionValue
         }), i;
       });
-      p("change", t), e.parent.form && (e.parent.form.state.modified = !1);
-    }, fe = (t) => {
-      const a = {};
-      return v.value === "user" ? Object.assign(a, {
+      h("change", t), e.parent.form && (e.parent.form.state.modified = !1);
+    }, ve = (t) => {
+      const s = {};
+      return v.value === "user" ? Object.assign(s, {
         id: t[e.userFilterMap.id],
         name: t[e.userFilterMap.name]
-      }) : Object.assign(a, {
+      }) : Object.assign(s, {
         id: t[e.deptFilterMap.id],
         name: t[e.deptFilterMap.name]
-      }), a;
-    }, ve = () => {
-      var t, a;
+      }), s;
+    }, ge = () => {
+      var t, s;
       if (e.defaultSelCurUser) {
         const i = {};
         Object.assign(i, {
           id: (t = e.context) == null ? void 0 : t.srfuserid,
-          name: (a = e.context) == null ? void 0 : a.srfusername
-        }), e.multiple ? f.value.findIndex((c) => c.id === i[e.deptFilterMap.id]) < 0 && f.value.push(i) : f.value.length === 0 && (f.value = [i]), L();
+          name: (s = e.context) == null ? void 0 : s.srfusername
+        }), e.multiple ? g.value.findIndex((c) => c.id === i[e.deptFilterMap.id]) < 0 && g.value.push(i) : g.value.length === 0 && (g.value = [i]), L();
       }
-    }, q = () => {
-      N != null && N.value && N.value.hide(), U.value && U.value.hide();
-    }, ge = (t) => {
-      (t.key === "Escape" || t.keyCode === 27) && (t.stopPropagation(), q());
-    }, z = () => {
+    }, ee = () => {
+      x != null && x.value && x.value.hide(), D.value && D.value.hide();
+    }, be = (t) => {
+      (t.key === "Escape" || t.keyCode === 27) && (t.stopPropagation(), ee());
+    }, B = () => {
       if (!(e.defaultAttentionValue && e.valueType === "OBJECTS"))
         return;
-      const t = h.value.split(e.separator);
-      j = ft.calcSelItemRenderNum(t, G.value), h.value = "", Y(f.value);
+      const t = f.value.split(e.separator);
+      j = gt.calcSelItemRenderNum(t, Y.value), f.value = "", Q(g.value);
     };
-    w(() => r.value, (t) => {
+    O(() => r.value, (t) => {
       if (t || t === null || t === void 0) {
         if (e.model.valueType === "OBJECT")
-          m.value = t ? t[e.objectNameField] : null;
+          d.value = t ? t[e.objectNameField] : null;
         else if (e.valueType === "OBJECTS") {
-          const a = dt(t) ? t : [];
-          Y(a), z();
+          const s = ht(t) ? t : [];
+          Q(s), B();
           return;
         } else
-          m.value = t;
+          d.value = t;
         if (t == null) {
-          m.value = "", f.value = [], p("change", null, e.valueItem), p("blur");
+          d.value = "", g.value = [], h("change", null, e.valueItem), h("blur");
           return;
-        } else if (e.multiple && f.value.length === 0 && e.valueItem && r.data && r.data[e.valueItem]) {
-          let a = r.data[e.valueItem].split(e.separator), i = m.value.split(e.separator);
-          e.isAddSymbol && (a = a.map((l) => l.slice(1, -1)), i = i.map((l) => l.slice(1, -1))), a.forEach((l, c) => {
-            f.value.push({
+        } else if (e.multiple && g.value.length === 0 && e.valueItem && r.data && r.data[e.valueItem]) {
+          let s = r.data[e.valueItem].split(e.separator), i = d.value.split(e.separator);
+          e.isAddSymbol && (s = s.map((l) => l.slice(1, -1)), i = i.map((l) => l.slice(1, -1))), s.forEach((l, c) => {
+            g.value.push({
               id: l,
               name: i[c]
             });
@@ -710,116 +729,116 @@ const W = /* @__PURE__ */ pe({
     }, {
       immediate: !0
     });
-    const be = J(() => r.data && r.data[e.valueItem] || void 0);
-    w(be, (t, a) => {
-      t !== a && (h.value = t, t == null && (f.value = [], p("change", null)));
+    const Se = W(() => r.data && r.data[e.valueItem] || void 0);
+    O(Se, (t, s) => {
+      t !== s && (f.value = t, t == null && (g.value = [], h("change", null)));
     }, {
       immediate: !0,
       deep: !0
     });
-    const Q = (t) => {
-      t ? g.value = t : setTimeout(() => {
-        g.value = t;
+    const te = (t) => {
+      t ? A.value = t : setTimeout(() => {
+        A.value = t;
       }, 100);
-    }, Se = (t, a) => {
-      k(a);
-      const i = f.value.findIndex((l) => l.id === t.id);
-      if (i > -1 && f.value.splice(i, 1), e.valueItem) {
-        let l = f.value.map((c) => c.id);
-        e.isAddSymbol && (l = l.map((c) => "'".concat(c, "'"))), p("change", l.join(e.separator), e.valueItem);
+    }, Ee = (t, s) => {
+      k(s);
+      const i = g.value.findIndex((l) => l.id === t.id);
+      if (i > -1 && g.value.splice(i, 1), e.valueItem) {
+        let l = g.value.map((c) => c.id);
+        e.isAddSymbol && (l = l.map((c) => "'".concat(c, "'"))), h("change", l.join(e.separator), e.valueItem);
       }
       if (e.valueType === "OBJECTS")
         L();
       else {
-        let l = f.value.map((c) => c.name);
-        e.isAddSymbol && (l = l.map((c) => "'".concat(c, "'"))), p("change", l.join(e.separator));
+        let l = g.value.map((c) => c.name);
+        e.isAddSymbol && (l = l.map((c) => "'".concat(c, "'"))), h("change", l.join(e.separator));
       }
-    }, Ee = async (t) => {
-      console.log("选中数据", t), M.value && (v.value === "user" ? u.value.unshift(t) : o.value.unshift(t));
-      const a = {};
-      if (Object.assign(a, t), v.value === "user") {
-        Object.assign(a, {
-          [e.userFilterMap.id]: a[e.userFilterMap.id] ? a[e.userFilterMap.id] : a.srfkey,
-          [e.userFilterMap.name]: a[e.userFilterMap.name] ? a[e.userFilterMap.name] : a.srfmajortext
+    }, Pe = async (t) => {
+      console.log("选中数据", t), M.value && (v.value === "user" ? n.value.unshift(t) : m.value.unshift(t));
+      const s = {};
+      if (Object.assign(s, t), v.value === "user") {
+        Object.assign(s, {
+          [e.userFilterMap.id]: s[e.userFilterMap.id] ? s[e.userFilterMap.id] : s.srfkey,
+          [e.userFilterMap.name]: s[e.userFilterMap.name] ? s[e.userFilterMap.name] : s.srfmajortext
         });
-        const i = f.value.findIndex((l) => l.id === a[e.userFilterMap.id]);
-        i < 0 ? f.value.push({
-          id: a[e.userFilterMap.id],
-          name: a[e.userFilterMap.name]
-        }) : f.value.splice(i, 1);
+        const i = g.value.findIndex((l) => l.id === s[e.userFilterMap.id]);
+        i < 0 ? g.value.push({
+          id: s[e.userFilterMap.id],
+          name: s[e.userFilterMap.name]
+        }) : g.value.splice(i, 1);
       } else {
-        Object.assign(a, {
-          [e.deptFilterMap.id]: a[e.deptFilterMap.id] ? a[e.deptFilterMap.id] : a.srfkey,
-          [e.deptFilterMap.name]: a[e.deptFilterMap.name] ? a[e.deptFilterMap.name] : a.srfmajortext
+        Object.assign(s, {
+          [e.deptFilterMap.id]: s[e.deptFilterMap.id] ? s[e.deptFilterMap.id] : s.srfkey,
+          [e.deptFilterMap.name]: s[e.deptFilterMap.name] ? s[e.deptFilterMap.name] : s.srfmajortext
         });
-        const i = f.value.findIndex((l) => l.id === a[e.deptFilterMap.id]);
-        i < 0 ? f.value.push({
-          id: a[e.deptFilterMap.id],
-          name: a[e.deptFilterMap.name]
-        }) : f.value.splice(i, 1);
+        const i = g.value.findIndex((l) => l.id === s[e.deptFilterMap.id]);
+        i < 0 ? g.value.push({
+          id: s[e.deptFilterMap.id],
+          name: s[e.deptFilterMap.name]
+        }) : g.value.splice(i, 1);
       }
       if (e.multiple) {
         if (e.valueItem) {
-          let i = f.value.map((l) => l.id);
-          e.isAddSymbol && (i = i.map((l) => "'".concat(l, "'"))), p("change", i.join(e.separator), e.valueItem);
+          let i = g.value.map((l) => l.id);
+          e.isAddSymbol && (i = i.map((l) => "'".concat(l, "'"))), h("change", i.join(e.separator), e.valueItem);
         }
         if (e.valueType === "OBJECTS")
           L();
         else {
-          let i = f.value.map((l) => l.name);
-          e.isAddSymbol && (i = i.map((l) => "'".concat(l, "'"))), p("change", i.join(e.separator));
+          let i = g.value.map((l) => l.name);
+          e.isAddSymbol && (i = i.map((l) => "'".concat(l, "'"))), h("change", i.join(e.separator));
         }
       } else {
         const i = await e.calcFillDataItems([t]);
         i.length && i.forEach((l) => {
-          p("change", l.value, l.id);
-        }), e.valueItem && (v.value === "user" ? p("change", a[e.userFilterMap.id], e.valueItem) : p("change", a[e.deptFilterMap.id], e.valueItem)), e.model.valueType === "OBJECT" ? p("change", e.handleObjectParams(a)) : e.valueType === "OBJECTS" ? (f.value = [fe(a)], L()) : v.value === "user" ? p("change", t[e.userFilterMap.name]) : p("change", t[e.deptFilterMap.name]), D.value = !1;
+          h("change", l.value, l.id);
+        }), e.valueItem && (v.value === "user" ? h("change", s[e.userFilterMap.id], e.valueItem) : h("change", s[e.deptFilterMap.id], e.valueItem)), e.model.valueType === "OBJECT" ? h("change", e.handleObjectParams(s)) : e.valueType === "OBJECTS" ? (g.value = [ve(s)], L()) : v.value === "user" ? h("change", t[e.userFilterMap.name]) : h("change", t[e.deptFilterMap.name]), U.value = !1;
       }
-      e.valueType !== "OBJECTS" && p("blur", t), Q(!1);
-    }, ye = (t, a) => {
+      e.valueType !== "OBJECTS" && h("blur", t), te(!1);
+    }, ye = (t, s) => {
       t.forEach((i) => {
-        const l = u.value.findIndex((c) => c[a] === i[a]);
-        l > -1 ? u.value.splice(l, 1, i) : u.value.push(i);
+        const l = n.value.findIndex((c) => c[s] === i[s]);
+        l > -1 ? n.value.splice(l, 1, i) : n.value.push(i);
       });
-    }, T = async (t = !1) => {
+    }, w = async (t = !1) => {
       if (M.value)
         return;
-      P.value = !0;
-      const a = {};
-      v.value === "department" ? a.page = e.deptpage : a.page = e.page;
+      F.value = !0;
+      const s = {};
+      v.value === "department" ? s.page = e.deptpage : s.page = e.page;
       try {
-        const i = await e.loadMore(r.data, v.value, a);
-        i && (v.value === "user" ? u.value.length === 0 ? u.value = i.data : ye(i.data, e.userFilterMap.id) : o.value.length === 0 ? o.value = i.data : o.value.push(...i.data));
+        const i = await e.loadMore(r.data, v.value, s);
+        i && (v.value === "user" ? n.value.length === 0 ? n.value = i.data : ye(i.data, e.userFilterMap.id) : m.value.length === 0 ? m.value = i.data : m.value.push(...i.data));
       } catch (i) {
-        P.value = !1;
+        F.value = !1;
       }
-      P.value = !1;
-    }, ee = (t) => {
+      F.value = !1;
+    }, se = (t) => {
       const {
-        dataItems: a
+        dataItems: s
       } = e;
-      a != null && a.length && a.forEach((i) => {
-        p("change", null, i.id);
-      }), e.valueItem && p("change", null, e.valueItem), e.valueType === "OBJECTS" ? p("change", []) : (p("change", null), p("blur", t)), t.stopPropagation(), t.preventDefault();
-    }, A = J(() => qe(m.value));
-    w(A, (t, a) => {
-      t !== a && e.valueType !== "OBJECTS" && p("infoTextChange", t);
+      s != null && s.length && s.forEach((i) => {
+        h("change", null, i.id);
+      }), e.valueItem && h("change", null, e.valueItem), e.valueType === "OBJECTS" ? h("change", []) : (h("change", null), h("blur", t)), t.stopPropagation(), t.preventDefault();
+    }, I = W(() => Qe(d.value));
+    O(I, (t, s) => {
+      t !== s && e.valueType !== "OBJECTS" && h("infoTextChange", t);
     }, {
       immediate: !0
-    }), w(U, (t) => {
-      r.autoFocus && t && (D.value = !0);
-    }), w(D, (t) => {
-      t === !1 && p("blur");
+    }), O(D, (t) => {
+      r.autoFocus && t && (U.value = !0);
+    }), O(U, (t) => {
+      t === !1 && h("blur");
     });
-    const te = async (t) => {
-      P.value = !0;
+    const ae = async (t) => {
+      F.value = !0;
       try {
-        const a = {};
-        Object.assign(a, {
+        const s = {};
+        Object.assign(s, {
           query: t,
           size: 1e3
         });
-        const i = await e.getServiceData(v.value, r.data, a);
+        const i = await e.getServiceData(v.value, r.data, s);
         i && (v.value === "user" ? i.data.forEach((l) => {
           Object.keys(e.userFilterMap).forEach((c) => {
             l[c] = l[e.userFilterMap[c]];
@@ -828,374 +847,390 @@ const W = /* @__PURE__ */ pe({
           Object.keys(e.deptFilterMap).forEach((c) => {
             l[c] = l[e.deptFilterMap[c]];
           });
-        }), I.value = i.data, P.value = !1);
-      } catch (a) {
-        P.value = !1;
+        }), y.value = i.data, F.value = !1);
+      } catch (s) {
+        F.value = !1;
       }
-    }, ae = (t) => {
+    }, ie = (t) => {
       if (v.value !== t) {
         if (v.value = t, M.value) {
-          te(M.value);
+          ae(M.value);
           return;
         }
-        v.value === "user" && u.value.length === 0 && (e.resetUserState(), T()), v.value === "department" && o.value.length === 0 && (e.resetDeptState(), T());
+        v.value === "user" && n.value.length === 0 && (e.resetUserState(), w()), v.value === "department" && m.value.length === 0 && (e.resetDeptState(), w());
       }
     }, Me = (t) => {
       e.isShowNameText() || t.stopPropagation();
-    }, Pe = () => {
+    }, Ae = () => {
       const t = document.documentElement;
       return t ? getComputedStyle(t).getPropertyValue("--ibiz-color-primary") : null;
-    }, Ae = (t) => /[\u4E00-\u9FA5]/.test(t), Ie = (t) => /[\u4e00-\u9fa5]+.*[a-zA-Z]+|[a-zA-Z]+.*[\u4e00-\u9fa5]+/.test(t), B = (t) => {
+    }, Ie = (t) => /[\u4E00-\u9FA5]/.test(t), Fe = (t) => /[\u4e00-\u9fa5]+.*[a-zA-Z]+|[a-zA-Z]+.*[\u4e00-\u9fa5]+/.test(t), _ = (t) => {
       if (!t)
         return "";
-      let a = 0;
-      for (let F = 0; F < t.length; F++)
-        if (Ae(t))
-          a = t.charCodeAt(F) + ((a << 5) - a), a = a & a;
+      let s = 0;
+      for (let T = 0; T < t.length; T++)
+        if (Ie(t))
+          s = t.charCodeAt(T) + ((s << 5) - s), s = s & s;
         else {
-          const Ze = t.charCodeAt(F);
-          a += Ze.toString(16);
+          const Ke = t.charCodeAt(T);
+          s += Ke.toString(16);
         }
-      const i = String(a).substring(0, 6);
-      let l = parseInt(i.substring(0, 2), 16), c = parseInt(i.substring(2, 4), 16), y = parseInt(i.substring(4, 6), 16);
-      l < 0 && (l = 10), c < 0 && (c = 10), y < 0 && (y = 10);
-      const E = "#".concat(l.toString(16).padStart(2, "0")).concat(c.toString(16).padStart(2, "0")).concat(y.toString(16).padStart(2, "0"));
-      return E === "#FFFFFF" && Pe() || E;
-    }, Fe = (t) => {
-      clearTimeout($.value), $.value = setTimeout(() => {
-        !t && t !== 0 ? T() : te(t), clearTimeout($.value);
+      const i = String(s).substring(0, 6);
+      let l = parseInt(i.substring(0, 2), 16), c = parseInt(i.substring(2, 4), 16), P = parseInt(i.substring(4, 6), 16);
+      l < 0 && (l = 10), c < 0 && (c = 10), P < 0 && (P = 10);
+      const E = "#".concat(l.toString(16).padStart(2, "0")).concat(c.toString(16).padStart(2, "0")).concat(P.toString(16).padStart(2, "0"));
+      return E === "#FFFFFF" && Ae() || E;
+    }, Te = (t) => {
+      clearTimeout(z.value), z.value = setTimeout(() => {
+        !t && t !== 0 ? w() : ae(t), clearTimeout(z.value);
       }, 300);
-    }, Te = () => n(C("el-input"), {
-      class: s.be("select-modal", "search-input"),
-      ref: K,
+    }, we = () => o(C("el-input"), {
+      class: a.be("select-modal", "search-input"),
+      ref: X,
       modelValue: M.value,
       "onUpdate:modelValue": (t) => M.value = t,
       placeholder: "搜索",
-      onInput: (t) => Fe(t),
-      onKeydown: ge
+      onInput: (t) => Te(t),
+      onKeydown: be
     }, {
-      suffix: () => n("img", {
+      suffix: () => o("img", {
         src: "".concat(V.dir("assets/images/svg/search.svg")),
         alt: ""
       }, null)
-    }), we = () => n("div", {
-      class: s.be("select-modal", "select-state")
-    }, [n("div", {
-      class: [s.bem("select-modal", "select-state", "select-slider"), s.is("left", v.value === "user"), s.is("right", v.value !== "user")]
-    }, null), n("div", {
-      class: s.bem("select-modal", "select-state", "select-personel"),
-      onClick: () => ae("user")
-    }, [O("人员")]), n("div", {
-      class: s.bem("select-modal", "select-state", "select-department"),
-      onClick: () => ae("department")
-    }, [O("部门")])]), Ce = (t) => {
-      t.forEach((a) => {
-        a.capLanguageRes && a.capLanguageRes.lanResTag && (a.caption = ibiz.i18n.t(a.capLanguageRes.lanResTag, a.caption)), a.tooltipLanguageRes && a.tooltipLanguageRes.lanResTag && (a.tooltip = ibiz.i18n.t(a.tooltipLanguageRes.lanResTag, a.tooltip));
+    }), Ce = () => o("div", {
+      class: a.be("select-modal", "select-state")
+    }, [o("div", {
+      class: [a.bem("select-modal", "select-state", "select-slider"), a.is("left", v.value === "user"), a.is("right", v.value !== "user")]
+    }, null), o("div", {
+      class: a.bem("select-modal", "select-state", "select-personel"),
+      onClick: () => ie("user")
+    }, [N("人员")]), o("div", {
+      class: a.bem("select-modal", "select-state", "select-department"),
+      onClick: () => ie("department")
+    }, [N("部门")])]), Oe = (t) => {
+      t.forEach((s) => {
+        s.capLanguageRes && s.capLanguageRes.lanResTag && (s.caption = ibiz.i18n.t(s.capLanguageRes.lanResTag, s.caption)), s.tooltipLanguageRes && s.tooltipLanguageRes.lanResTag && (s.tooltip = ibiz.i18n.t(s.tooltipLanguageRes.lanResTag, s.tooltip));
       });
-    }, Oe = async (t, a) => {
-      await e.onActionClick(t, [r.data], a);
-    }, Ne = (t) => n("div", {
-      class: s.bem("select-modal", "actions", "item"),
+    }, Ne = async (t, s) => {
+      await e.onActionClick(t, [r.data], s);
+    }, xe = (t) => o("div", {
+      class: a.bem("select-modal", "actions", "item"),
       title: t.tooltip || t.caption,
-      onClick: (a) => Oe(t, a)
-    }, [t.showIcon && t.sysImage && n(C("iBizIcon"), {
+      onClick: (s) => Ne(t, s)
+    }, [t.showIcon && t.sysImage && o(C("iBizIcon"), {
       icon: t.sysImage
-    }, null)]), xe = () => {
-      var a;
-      const t = ((a = e.model.uiactionGroup) == null ? void 0 : a.uiactionGroupDetails) || [];
-      return Ce(t), n("div", {
-        class: s.be("select-modal", "actions")
-      }, [t.map((i) => Ne(i))]);
+    }, null)]), Ue = () => {
+      var s;
+      const t = ((s = e.model.uiactionGroup) == null ? void 0 : s.uiactionGroupDetails) || [];
+      return Oe(t), o("div", {
+        class: a.be("select-modal", "actions")
+      }, [t.map((i) => xe(i))]);
     }, De = () => {
-      var a;
-      const t = ((a = e.model.uiactionGroup) == null ? void 0 : a.uiactionGroupDetails) || [];
-      return !e.isShowTab && t.length === 0 ? null : n("div", {
-        class: [s.be("select-modal", "select"), s.is("no-solider-tab", !e.isShowTab && t.length > 0)]
-      }, [e.isShowTab ? we() : null, xe()]);
-    }, Ue = (t) => {
+      var s;
+      const t = ((s = e.model.uiactionGroup) == null ? void 0 : s.uiactionGroupDetails) || [];
+      return !e.isShowTab && t.length === 0 ? null : o("div", {
+        class: [a.be("select-modal", "select"), a.is("no-solider-tab", !e.isShowTab && t.length > 0)]
+      }, [e.isShowTab ? Ce() : null, Ue()]);
+    }, je = (t) => {
       if (e.multiple) {
-        if (h.value) {
-          let a = h.value.split(e.separator);
-          return e.isAddSymbol && (a = a.map((l) => l.slice(1, -1))), a.findIndex((l) => l === t) > -1 ? n("div", {
-            class: s.bem("select-modal", "personel-list", "icon")
-          }, [n("i", {
+        if (f.value) {
+          let s = f.value.split(e.separator);
+          return e.isAddSymbol && (s = s.map((l) => l.slice(1, -1))), s.findIndex((l) => l === t) > -1 ? o("div", {
+            class: a.bem("select-modal", "personel-list", "icon")
+          }, [o("i", {
             class: "fa fa-check",
             "aria-hidden": "true"
           }, null)]) : null;
         }
       } else
-        return h.value === t ? n("div", {
-          class: s.bem("select-modal", "personel-list", "icon")
-        }, [n("i", {
+        return f.value === t ? o("div", {
+          class: a.bem("select-modal", "personel-list", "icon")
+        }, [o("i", {
           class: "fa fa-check",
           "aria-hidden": "true"
         }, null)]) : null;
-    }, je = (t) => {
+    }, Le = (t) => {
       if (t && t.toString().length < 2)
         return t;
       if (t && t.toString().length >= 2) {
-        if (Ie(t)) {
-          const c = t.split("").find((E) => /[a-zA-Z]/.test(E)) || "", y = t.split("").find((E) => /[\u4E00-\u9FA5]/.test(E)) || "";
-          return "".concat(c).concat(y).toLowerCase();
+        if (Fe(t)) {
+          const c = t.split("").find((E) => /[a-zA-Z]/.test(E)) || "", P = t.split("").find((E) => /[\u4E00-\u9FA5]/.test(E)) || "";
+          return "".concat(c).concat(P).toLowerCase();
         }
         return /[a-zA-Z]/.test(t) ? t.split("").filter((c) => /[a-zA-Z]/.test(c)).slice(0, 2).join("").toUpperCase() : /[\u4E00-\u9FA5]/.test(t) ? t.split("").filter((c) => /[\u4E00-\u9FA5]/.test(c)).slice(-2).join("") : t.replaceAll(" ", "").substring(0, 2);
       }
-    }, Le = (t) => {
-      console.log("头像加载失败"), X.value.push(t);
     }, ke = (t) => {
+      console.log("头像加载失败"), q.value.push(t);
+    }, Re = (t) => {
       if (!t)
         return null;
-      const a = JSON.parse(t);
-      if (a.length === 0)
+      const s = JSON.parse(t);
+      if (s.length === 0)
         return null;
       const {
         downloadUrl: i
-      } = ibiz.util.file.calcFileUpDownUrl(e.context, e.params, r.data, e.editorParams), l = i.replace("%fileId%", a[0].id);
-      return n("img", {
-        class: s.bem("select-modal", "personel-list", "avatar"),
+      } = ibiz.util.file.calcFileUpDownUrl(e.context, e.params, r.data, e.editorParams), l = i.replace("%fileId%", s[0].id);
+      return o("img", {
+        class: a.bem("select-modal", "personel-list", "avatar"),
         src: l,
-        onError: () => Le(t),
+        onError: () => ke(t),
         alt: ""
       }, null);
-    }, _ = (t, a) => e.operatorMap && e.operatorMap.get(t) && e.operatorMap.get(t).data.iconurl && !X.value.includes(e.operatorMap.get(t).data.iconurl) ? ke(e.operatorMap.get(t).data.iconurl) : je(a), se = (t) => {
-      const a = v.value === "user" ? t[e.userFilterMap.name] || t.name : t[e.deptFilterMap.name] || t.name, i = v.value === "user" ? t[e.userFilterMap.id] : t[e.deptFilterMap.id];
-      return n("div", {
-        class: [s.bem("select-modal", "personel-list", "item"), s.is("selected", h.value === i)],
-        onClick: () => Ee(t)
-      }, [n("div", {
-        class: s.bem("select-modal", "personel-list", "text")
-      }, [n("div", {
-        class: s.bem("select-modal", "personel-list", "text-img"),
-        style: "background-color:".concat(B(a))
-      }, [_(i, a)]), n("div", {
-        class: s.bem("select-modal", "personel-list", "text-label")
-      }, [a]), i === e.context.srfuserid ? n("div", {
-        class: s.bem("select-modal", "personel-list", "myself")
-      }, [O("我自己")]) : null]), Ue(i)]);
-    }, Re = (t, a) => {
+    }, H = (t, s) => {
+      const i = e.getUserPictureUrl(t, s);
+      return i && !q.value.includes(i) ? Re(i) : Le(s);
+    }, le = (t) => {
+      const s = v.value === "user" ? t[e.userFilterMap.name] || t.name : t[e.deptFilterMap.name] || t.name, i = v.value === "user" ? t[e.userFilterMap.id] : t[e.deptFilterMap.id], l = v.value === "user" ? t[e.userFilterMap.title] : t[e.deptFilterMap.title];
+      return o("div", {
+        class: [a.bem("select-modal", "personel-list", "item"), a.is("selected", f.value === i)],
+        onClick: () => Pe(t)
+      }, [o("div", {
+        class: a.bem("select-modal", "personel-list", "text")
+      }, [o("div", {
+        class: a.bem("select-modal", "personel-list", "text-img"),
+        style: "background-color:".concat(_(s))
+      }, [H(i, s)]), o("div", {
+        class: a.bem("select-modal", "personel-list", "text-label")
+      }, [s]), l && o("div", {
+        class: a.bem("select-modal", "personel-list", "title-label")
+      }, [l]), i === e.context.srfuserid ? o("div", {
+        class: a.bem("select-modal", "personel-list", "myself")
+      }, [N("我自己")]) : null]), je(i)]);
+    }, Ve = (t, s) => {
       const {
         context: i,
         params: l
       } = e;
-      return n(C("iBizControlShell"), {
-        class: s.b("panel-item"),
+      return o(C("iBizControlShell"), {
+        class: a.b("panel-item"),
         data: t,
-        modelData: a,
+        modelData: s,
         context: i,
         params: l
       }, null);
-    }, Ve = (t, a) => {
+    }, $e = (t, s) => {
       const i = S();
-      return n(C("el-popover"), {
+      return o(C("el-popover"), {
         ref: i,
         target: "hover",
         placement: "right",
         offset: 24,
         width: "auto",
         onShow: (l) => {
-          N = i;
+          x = i;
         }
       }, {
-        reference: () => se(t),
-        default: () => Re(t, a)
+        reference: () => le(t),
+        default: () => Ve(t, s)
       });
-    }, $e = (t) => M.value ? I.value : t, k = (t) => {
+    }, ze = (t) => M.value ? y.value : t, k = (t) => {
       t.preventDefault(), t.stopPropagation();
-    }, ze = (t, a) => {
-      x.value && (v.value === "user" ? t - a < 305 && (P.value || T()) : t - a < 250 && (P.value || T()));
-    }, ie = (t) => {
-      var c, y;
-      const a = ((c = e.model.uiactionGroup) == null ? void 0 : c.uiactionGroupDetails) || [], i = $e(t), l = (y = e.deACMode) == null ? void 0 : y.itemLayoutPanel;
-      return n(mt, {
+    }, Be = (t, s) => {
+      $.value && (v.value === "user" ? t - s < 305 && (F.value || w()) : t - s < 250 && (F.value || w()));
+    }, re = (t) => {
+      var c, P;
+      const s = ((c = e.model.uiactionGroup) == null ? void 0 : c.uiactionGroupDetails) || [], i = ze(t), l = (P = e.deACMode) == null ? void 0 : P.itemLayoutPanel;
+      return o(vt, {
         items: i,
         itemHeight: 36,
-        class: [s.be("select-modal", "personel-list"), s.be("select-modal", "personel-list-".concat(v.value)), s.is("no-solider-tab", !e.isShowTab && a.length > 0)],
-        onScrollEvent: (E, F) => ze(E, F)
+        class: [a.be("select-modal", "personel-list"), a.be("select-modal", "personel-list-".concat(v.value)), a.is("no-solider-tab", !e.isShowTab && s.length > 0)],
+        onScrollEvent: (E, T) => Be(E, T)
       }, {
-        default: (E) => l ? Ve(E, l) : se(E)
+        default: (E) => l ? $e(E, l) : le(E)
       });
-    }, le = (t) => {
+    }, ne = (t) => {
       b.value = t;
-    }, Be = () => n("div", {
-      class: s.be("select-modal", "deptpersonel")
-    }, [n("div", {
-      class: s.bem("select-modal", "deptpersonel", "dept")
-    }, [n("div", {
+    }, _e = () => o("div", {
+      class: a.be("select-modal", "deptpersonel")
+    }, [o("div", {
+      class: a.bem("select-modal", "deptpersonel", "dept")
+    }, [o("div", {
       class: "collpase-icon"
-    }, [b.value ? n("i", {
+    }, [b.value ? o("i", {
       class: "fa fa-angle-right",
       "aria-hidden": "true",
-      onClick: () => le(!1)
-    }, null) : n("i", {
+      onClick: () => ne(!1)
+    }, null) : o("i", {
       class: "fa fa-angle-down",
       "aria-hidden": "true",
-      onClick: () => le(!0)
-    }, null)]), n("img", {
+      onClick: () => ne(!0)
+    }, null)]), o("img", {
       src: "".concat(V.dir("assets/images/svg/org.svg"))
-    }, null), n("span", null, ["".concat(e.context.srfusername, "的团队")]), n("span", null, [O("·")]), n("span", null, [e.depttotal])]), b.value ? null : n("div", {
-      class: s.bem("select-modal", "deptpersonel", "dept-person")
-    }, [ie(o.value)])]), _e = () => nt(n("div", {
-      class: s.b("select-modal"),
+    }, null), o("span", null, ["".concat(e.context.srfusername, "的团队")]), o("span", null, [N("·")]), o("span", null, [e.depttotal])]), b.value ? null : o("div", {
+      class: a.bem("select-modal", "deptpersonel", "dept-person")
+    }, [re(m.value)])]), He = () => ut(o("div", {
+      class: a.b("select-modal"),
       onPointerdown: k,
       onPointerup: k,
       onClick: k
-    }, [Te(), De(), v.value === "user" ? ie(u.value) : Be()]), [[ot("loading"), P.value]]), re = () => n("div", {
-      class: [s.b("no-select-value"), s.is("readonly", r.readonly || r.disabled)]
-    }, [n("img", {
+    }, [we(), De(), v.value === "user" ? re(n.value) : _e()]), [[ct("loading"), F.value]]), oe = () => o("div", {
+      class: [a.b("no-select-value"), a.is("readonly", r.readonly || r.disabled)]
+    }, [o("img", {
       src: "".concat(V.dir("assets/images/svg/member.svg")),
       alt: ""
-    }, null), n("span", null, [O("未设置")])]), ne = () => {
-      var a;
+    }, null), o("span", null, [N("未设置")])]), ue = () => {
+      var s;
       const t = e.isShowNameTip();
       if (e.multiple) {
         let i = !1;
         const l = [];
-        if (h.value) {
-          let c = h.value.split(e.separator), y = A.value.split(e.separator);
-          e.isAddSymbol && (c = c.map((E) => E.slice(1, -1))), e.isAddSymbol && (y = y.map((E) => E.slice(1, -1))), c.forEach((E, F) => {
+        if (f.value) {
+          let c = f.value.split(e.separator), P = I.value.split(e.separator);
+          e.isAddSymbol && (c = c.map((E) => E.slice(1, -1))), e.isAddSymbol && (P = P.map((E) => E.slice(1, -1))), c.forEach((E, T) => {
             l.push({
               id: E,
-              name: y[F]
+              name: P[T]
             });
           });
         } else
-          A.value === "当前用户" && r.disabled && l.push({
-            id: A.value,
-            name: A.value
+          I.value === "当前用户" && r.disabled && l.push({
+            id: I.value,
+            name: I.value
           });
-        return e.defaultAttentionValue && e.valueType === "OBJECTS" && j > 0 && (i = j < ((a = f.value) == null ? void 0 : a.length), l == null || l.splice(j, l == null ? void 0 : l.length)), n("div", {
-          class: [s.b("select-value-multiple"), s.is("readonly", r.readonly || r.disabled), i ? s.be("select-value-multiple", "hidden") : ""]
+        return e.defaultAttentionValue && e.valueType === "OBJECTS" && j > 0 && (i = j < ((s = g.value) == null ? void 0 : s.length), l == null || l.splice(j, l == null ? void 0 : l.length)), o("div", {
+          class: [a.b("select-value-multiple"), a.is("readonly", r.readonly || r.disabled), i ? a.be("select-value-multiple", "hidden") : ""]
         }, [l == null ? void 0 : l.map((c) => {
-          let y;
-          return n("div", {
-            class: s.be("select-value-multiple", "item"),
+          let P;
+          return o("div", {
+            class: a.be("select-value-multiple", "item"),
             title: t ? c.name : ""
-          }, [n("div", {
-            class: [s.be("select-value", "textimg"), s.bem("select-value-multiple", "item", "textimg")],
-            style: "background-color:".concat(B(c.name))
-          }, [n(C("el-tooltip"), {
+          }, [o("div", {
+            class: [a.be("select-value", "textimg"), a.bem("select-value-multiple", "item", "textimg")],
+            style: "background-color:".concat(_(c.name))
+          }, [o(C("el-tooltip"), {
             class: "box-item",
             effect: "dark",
             content: c.name,
             placement: "top",
             offset: 12
-          }, vt(y = _(c.id, c.name)) ? y : {
-            default: () => [y]
-          }), r.readonly || r.disabled ? null : n("div", {
-            class: [s.bem("select-value-multiple", "item", "close")],
-            onClick: (E) => Se(c, E)
-          }, [n("i", {
+          }, bt(P = H(c.id, c.name)) ? P : {
+            default: () => [P]
+          }), r.readonly || r.disabled ? null : o("div", {
+            class: [a.bem("select-value-multiple", "item", "close")],
+            onClick: (E) => Ee(c, E)
+          }, [o("i", {
             class: "fa fa-close",
             "aria-hidden": "true"
           }, null)])])]);
-        }), i ? n("span", {
-          class: s.bem("select-value-multiple", "hidden", "ellipsis")
-        }, [O("...")]) : null, n("div", {
-          class: s.b("no-select-value")
-        }, [n("img", {
+        }), i ? o(C("el-tooltip"), {
+          class: u.b("multiple-ellipsis"),
+          "popper-class": u.be("multiple-ellipsis", "popper"),
+          effect: "dark",
+          content: I.value,
+          placement: "top",
+          offset: 12
+        }, {
+          default: () => [o("span", {
+            class: u.be("multiple-ellipsis", "default")
+          }, [N("...")])]
+        }) : null, o("div", {
+          class: a.b("no-select-value"),
+          title: "选择人员"
+        }, [o("img", {
           src: "".concat(V.dir("assets/images/svg/member.svg")),
           alt: ""
         }, null)])]);
       }
-      return n("div", {
-        class: [s.b("select-value"), s.is("readonly", r.readonly || r.disabled)],
-        title: t ? A.value : ""
-      }, [n("div", {
-        class: s.be("select-value", "textimg"),
-        style: "background-color:".concat(B(A.value))
-      }, [_(h.value, A.value)]), n("div", {
-        class: s.be("select-value", "text")
-      }, [n("div", {
-        class: s.bem("select-value", "text", "label")
-      }, [A.value])]), r.readonly || r.disabled ? null : n("i", {
-        class: ["fa fa-times-circle", s.be("select-value", "close")],
+      return o("div", {
+        class: [a.b("select-value"), a.is("readonly", r.readonly || r.disabled)],
+        title: t ? I.value : ""
+      }, [o("div", {
+        class: a.be("select-value", "textimg"),
+        style: "background-color:".concat(_(I.value))
+      }, [H(f.value, I.value)]), o("div", {
+        class: a.be("select-value", "text")
+      }, [o("div", {
+        class: a.bem("select-value", "text", "label")
+      }, [I.value])]), r.readonly || r.disabled ? null : o("i", {
+        class: ["fa fa-times-circle", a.be("select-value", "close")],
         "aria-hidden": "true",
-        onClick: (i) => ee(i)
+        onClick: (i) => se(i)
       }, null)]);
-    }, He = async () => {
-      var c, y;
-      x.value = !0, p("focus");
+    }, Je = async () => {
+      var c, P;
+      $.value = !0, h("focus");
       const {
         context: t,
-        params: a
-      } = e.handlePublicParams(r.data, e.context, e.params), i = e.fill(e.userUrl, t, a, r.data).replaceAll("//", "/"), l = e.fill(e.deptUrl, t, a, r.data).replaceAll("//", "/");
-      (i !== e.copyUserUrl || l !== e.copyDeptUrl || r.data && r.data.srfkey !== Z.value) && (Z.value = ((c = r.data) == null ? void 0 : c.srfkey) || "", u.value = [], o.value = [], e.resetState(), T(!0)), await ut(), (y = K.value) == null || y.focus();
-    }, Je = () => A.value ? ne() : re(), We = () => {
-      x.value = !1;
+        params: s
+      } = e.handlePublicParams(r.data, e.context, e.params), i = e.fill(e.userUrl, t, s, r.data).replaceAll("//", "/"), l = e.fill(e.deptUrl, t, s, r.data).replaceAll("//", "/");
+      (i !== e.copyUserUrl || l !== e.copyDeptUrl || r.data && r.data.srfkey !== G.value) && (G.value = ((c = r.data) == null ? void 0 : c.srfkey) || "", n.value = [], m.value = [], e.resetState(), w(!0)), await dt(), (P = X.value) == null || P.focus();
+    }, We = () => I.value ? ue() : oe(), Ze = () => {
+      $.value = !1;
     };
-    w(() => r.readonly, (t) => {
-      t && q();
+    O(() => r.readonly, (t) => {
+      t && ee();
     }, {
       deep: !0
     });
-    const oe = () => {
-      z();
+    const ce = () => {
+      B();
     };
-    return he(() => {
-      ve(), window == null || window.addEventListener("resize", oe), z();
-    }), rt(() => {
-      e.resetState(), window == null || window.removeEventListener("resize", oe);
+    return me(() => {
+      ge(), window == null || window.addEventListener("resize", ce), B();
+    }), nt(() => {
+      e.resetState(), window == null || window.removeEventListener("resize", ce);
     }), {
-      ns: s,
+      ns: a,
+      ns2: u,
       c: e,
-      refValue: h,
-      curValue: m,
-      valueText: A,
-      loading: P,
-      items: u,
-      personelSelRef: G,
-      onClear: ee,
-      load: T,
-      isEditable: g,
-      popoverRef: U,
-      setEditable: Q,
-      renderDropModal: _e,
-      renderNoSelectValue: re,
-      renderSelectInput: ne,
-      renderReadState: Je,
-      onPopShow: He,
-      onPageHide: We,
+      refValue: f,
+      curValue: d,
+      valueText: I,
+      loading: F,
+      items: n,
+      personelSelRef: Y,
+      onClear: se,
+      load: w,
+      isEditable: A,
+      popoverRef: D,
+      setEditable: te,
+      renderDropModal: He,
+      renderNoSelectValue: oe,
+      renderSelectInput: ue,
+      renderReadState: We,
+      onPopShow: Je,
+      onPageHide: Ze,
       handleClick: Me,
-      showFormDefaultContent: me,
-      modelVisible: D
+      showFormDefaultContent: fe,
+      modelVisible: U
     };
   },
   render() {
-    const r = n(C("el-popover"), {
+    const r = o(C("el-popover"), ot({
       ref: "popoverRef",
       visible: this.modelVisible,
-      "onUpdate:visible": (p) => this.modelVisible = p,
+      "onUpdate:visible": (h) => this.modelVisible = h,
       trigger: "click",
       popperClass: this.ns.b("person-select"),
       width: 320,
       teleported: !0,
       onShow: () => this.onPopShow(),
       onHide: () => this.onPageHide()
-    }, {
+    }, this.$attrs), {
       reference: () => this.renderReadState(),
       default: () => this.renderDropModal()
     });
-    return n("div", {
+    return o("div", {
       ref: "personelSelRef",
-      class: [this.ns.b(), this.ns.b("person-value"), this.disabled ? this.ns.m("disabled") : "", this.readonly ? this.ns.m("readonly") : "", this.c.isShowNameText() ? "" : this.ns.m("only-icon"), this.ns.is("editable", this.isEditable), this.ns.is("show-default", this.showFormDefaultContent)],
+      class: [this.ns.b(), this.ns2.b(), this.ns.b("person-value"), this.disabled ? this.ns.m("disabled") : "", this.readonly ? this.ns.m("readonly") : "", this.c.isShowNameText() ? "" : this.ns.m("only-icon"), this.ns.is("editable", this.isEditable), this.ns.is("show-default", this.showFormDefaultContent), this.ns2.is("multiple", this.c.multiple)],
       onClick: this.handleClick
     }, [this.readonly || this.disabled ? this.renderReadState() : r]);
   }
-}), gt = Qe(
-  W,
+}), St = et(
+  Z,
   function(r) {
-    r.component(W.name, W), it(
+    r.component(Z.name, Z), lt(
       "EDITOR_CUSTOMSTYLE_PERSON_SELECT",
-      () => new ht()
+      () => new ft()
     );
   }
-), Ft = {
+), wt = {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/explicit-function-return-type
   install(r) {
-    r.use(gt);
+    r.use(St);
   }
 };
 export {
-  gt as IBizPersonelSelect,
-  Ft as default
+  St as IBizPersonelSelect,
+  wt as default
 };

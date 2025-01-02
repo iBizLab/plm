@@ -106,6 +106,18 @@ export class CustomNodeFactory {
   }
 
   /**
+   * @description 获取控制器
+   * @static
+   * @param {string} id
+   * @param {string} type
+   * @return {*}
+   * @memberof CustomNodeFactory
+   */
+  public static getControllerById(id: string, type: string) {
+    return this.customNodeMap.get(`${type}${id}`);
+  }
+
+  /**
    * 卸载节点适配器
    *
    * @public

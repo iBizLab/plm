@@ -183,7 +183,9 @@ export const Marker = defineComponent({
           class={[ns.e('item'), ns.is('active', item.id === curItem.value.id)]}
           onClick={() => onSelect(item)}
         >
-          <div class={ns.e('type')}>{renderContent('type', item.type)}</div>
+          <div class={ns.e('type')}>
+            {renderContent('type', item.owner_subtype)}
+          </div>
           <div class={ns.e('identifier')}>
             {renderContent('identifier', item.identifier)}
           </div>

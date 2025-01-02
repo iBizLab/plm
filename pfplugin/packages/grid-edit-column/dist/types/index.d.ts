@@ -10,8 +10,9 @@ export declare const IBizGridEditColumn: import("@ibiz-template/vue3-util").Type
     };
 }, {
     ns: import("@ibiz-template/core").Namespace;
+    picking: boolean;
     componentRef: import("vue").Ref<any>;
-    containerRef: import("vue").Ref<any>;
+    actionToolbarRef: import("vue").Ref<any>;
     fieldName: string;
     gridEditItemProps: IData;
     rowDataChange: (val: unknown, name?: string | undefined) => Promise<void>;
@@ -48,6 +49,7 @@ export declare const IBizTreeGridExFieldColumn: import("@ibiz-template/vue3-util
 }, {
     ns: import("@ibiz-template/core").Namespace;
     ns2: import("@ibiz-template/core").Namespace;
+    zIndex: number;
     nodeColumn: import("vue").ComputedRef<import("@ibiz-template/runtime").TreeGridExNodeColumnController | undefined>;
     fieldValue: import("vue").ComputedRef<any>;
     showText: import("vue").ComputedRef<any>;
@@ -55,7 +57,11 @@ export declare const IBizTreeGridExFieldColumn: import("@ibiz-template/vue3-util
     tooltip: import("vue").ComputedRef<any>;
     editable: import("vue").ComputedRef<boolean>;
     readonly: import("vue").ComputedRef<boolean>;
+    editColums: import("vue").ComputedRef<import("@ibiz-template/runtime").TreeGridExColumnController<import("@ibiz/model-core").IDETreeColumn>[]>;
+    actionToolbarRef: import("vue").Ref<any>;
     onInfoTextChange: (text: string) => void;
+    onDataChange: (tempNodeColumn: IData, val: unknown, name: string) => Promise<void>;
+    editorEnter: (tempNodeColumn: IData, val: unknown, name: string) => Promise<void>;
     onTextClick: (event: MouseEvent) => void;
     onActionClick: (detail: import("@ibiz/model-core").IUIActionGroupDetail, event: MouseEvent) => Promise<void>;
     onOpenEdit: (event: Event) => void;

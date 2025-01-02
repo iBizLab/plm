@@ -3,7 +3,7 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable no-useless-escape */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { computed, defineComponent, onMounted, ref } from 'vue';
+import { computed, defineComponent, onMounted, ref, watch } from 'vue';
 import draggable from 'vuedraggable';
 
 export const VirtualDraggable = defineComponent({
@@ -47,6 +47,22 @@ export const VirtualDraggable = defineComponent({
         ele.style.height = `${Math.max(cHeight, ele.offsetHeight)}px`;
       }
     });
+
+    watch(
+      props.items,
+      () => {
+        if (draggableRef.value) {
+          const ele = draggableRef.value.$el;
+          if (props.items.length) {
+            const cHeight = props.items.length * props.itemSize + 16;
+            ele.style.height = `${Math.max(cHeight, ele.offsetHeight)}px`;
+          } else {
+            ele.style.height = 'inherit';
+          }
+        }
+      },
+      { immediate: true },
+    );
 
     const handleScroll = ({ scrollTop }: { scrollTop: number }) => {
       const count = Math.floor(scrollTop / props.itemSize);

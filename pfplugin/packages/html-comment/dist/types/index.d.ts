@@ -29,8 +29,10 @@ export declare const IBizHtmlComment: import("@ibiz-template/vue3-util").TypeWit
     onChange: (value: unknown) => void;
     onFocus: () => void;
     onBlur: () => null | undefined;
+    onClick: (event: MouseEvent) => void;
     renderAvatar: () => JSX.Element | null;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+    click: (_event?: IData | undefined, _data?: IData | undefined) => true;
     change: (_value: unknown, _name?: string | undefined) => boolean;
     blur: (_event?: IData | undefined) => boolean;
     focus: (_event?: IData | undefined) => boolean;
@@ -59,9 +61,10 @@ export declare const IBizHtmlComment: import("@ibiz-template/vue3-util").TypeWit
         required: boolean;
     };
 }>> & {
-    onChange?: ((_value: unknown, _name?: string | undefined) => any) | undefined;
     onFocus?: ((_event?: IData | undefined) => any) | undefined;
     onBlur?: ((_event?: IData | undefined) => any) | undefined;
+    onChange?: ((_value: unknown, _name?: string | undefined) => any) | undefined;
+    onClick?: ((_event?: IData | undefined, _data?: IData | undefined) => any) | undefined;
     onEnter?: ((_event?: IData | undefined) => any) | undefined;
     onInfoTextChange?: ((_text: string) => any) | undefined;
 }, {

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable prefer-destructuring */
 import {
   PropType,
   computed,

@@ -33,6 +33,11 @@ export class AttentionController extends EditorController<IPicker> {
   public operatorMap = new Map();
 
   /**
+   * 当前操作者数据
+   */
+  public currentOperator?: IData;
+
+  /**
    * 总数
    */
   public total: number = 0;
@@ -93,6 +98,7 @@ export class AttentionController extends EditorController<IPicker> {
   public userFilterMap: IData = {
     id: 'id',
     name: 'name',
+    title: 'title',
   };
 
   /**
@@ -101,6 +107,7 @@ export class AttentionController extends EditorController<IPicker> {
   deptFilterMap: IData = {
     id: 'id',
     name: 'name',
+    title: 'title',
   };
 
   /**
@@ -222,6 +229,7 @@ export class AttentionController extends EditorController<IPicker> {
   public selfFillMap = {
     user_id: 'user_id',
     user_name: 'name',
+    user_title: 'title',
   };
 
   /**
@@ -368,6 +376,7 @@ export class AttentionController extends EditorController<IPicker> {
         this.selfFillMap = {
           user_id: 'user_id',
           user_name: 'name',
+          user_title: 'title',
         };
       }
     }
@@ -384,6 +393,7 @@ export class AttentionController extends EditorController<IPicker> {
         this.userFilterMap = {
           id: 'id',
           name: 'name',
+          title: 'title',
         };
       }
     }
@@ -399,6 +409,7 @@ export class AttentionController extends EditorController<IPicker> {
         this.deptFilterMap = {
           id: 'id',
           name: 'name',
+          title: 'title',
         };
       }
     }
@@ -421,6 +432,32 @@ export class AttentionController extends EditorController<IPicker> {
   public async initLinkViewParams(): Promise<void> {
     if (this.model.linkAppViewId) {
       this.linkView = await ibiz.hub.config.view.get(this.model.linkAppViewId);
+    }
+  }
+
+  /**
+   * 初始化当前操作者数据
+   */
+  public async initCurrentOperator(data: IData, query?: IData): Promise<void> {
+    const userId = this.context.srfuserid;
+    if (!userId) {
+      return;
+    }
+    const res = await this.getServiceData(
+      'department',
+      data,
+      {},
+      {
+        ...query,
+        page: 0,
+        size: 20,
+        n_id_eq: userId,
+      },
+    );
+    if (res && res.data && res.data.length > 0) {
+      this.currentOperator = res.data.find(
+        (item: IData) => item[this.deptFilterMap.id] === userId,
+      );
     }
   }
 
@@ -577,6 +614,7 @@ export class AttentionController extends EditorController<IPicker> {
     tag: 'user' | 'department',
     data: IData,
     query?: IData,
+    customParams?: IData,
   ): Promise<IHttpResponse<IData[]>> {
     const { context, params } = this.handlePublicParams(
       data,
@@ -593,7 +631,7 @@ export class AttentionController extends EditorController<IPicker> {
       Object.assign(fixedParams, query);
     }
     // 合并计算出来的参数和固定参数，以计算参数为准
-    const tempParams = mergeDeepLeft(params, fixedParams);
+    const tempParams = customParams || mergeDeepLeft(params, fixedParams);
     let url = '';
     const _url = this.fill(this.userUrl, context, params, data).replaceAll(
       '//',

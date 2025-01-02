@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable prefer-destructuring */
 import $, { DomElement } from '../../utils/dom-core';
 import DropListMenu from './DropListMenu';
 import { EMPTY_FN } from '../../utils/constants';

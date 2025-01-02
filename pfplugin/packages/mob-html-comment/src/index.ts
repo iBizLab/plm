@@ -19,6 +19,10 @@ export const IBizMobHtmlComment = withInstall(
       () => new MobCommentProvider(),
     );
     registerEditorProvider(
+      `MOBHTMLTEXT_MOB_COLLAPSE`,
+      () => new MobCommentProvider(),
+    );
+    registerEditorProvider(
       `MOBHTMLTEXT_REPLY_COMMENT`,
       () => new MobCommentProvider('REPLY'),
     );

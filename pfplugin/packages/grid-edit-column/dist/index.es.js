@@ -1,83 +1,83 @@
 import './style.css';
-var Ge = Object.defineProperty;
-var ze = (e, l, o) => l in e ? Ge(e, l, { enumerable: !0, configurable: !0, writable: !0, value: o }) : e[l] = o;
-var V = (e, l, o) => (ze(e, typeof l != "symbol" ? l + "" : l, o), o);
-import { useClickOutside as Y, useNamespace as _, withInstall as ne } from "@ibiz-template/vue3-util";
-import { Srfuf as G, GridFieldEditColumnController as Fe, GridRowState as Oe, UIActionUtil as Be, SysUIActionTag as j, TreeGridExNodeColumnController as _e, TreeGridExRowState as le, TreeGridExFieldColumnController as re, registerGridColumnProvider as Ue, registerTreeGridExColumnProvider as $e } from "@ibiz-template/runtime";
-import { computed as i, ref as b, reactive as x, defineComponent as J, onMounted as se, onUnmounted as He, createVNode as s, resolveComponent as h, h as W, isVNode as qe } from "vue";
-import { isNotNil as ae, isNil as je } from "ramda";
-import { RuntimeError as de } from "@ibiz-template/core";
-function Ke(e, l) {
-  const o = e.controller, r = i(() => e.row.editColStates[o.fieldName].disabled), n = i(() => e.row.editColStates[o.fieldName].readonly), c = i(() => !!e.row.errors[o.fieldName]), f = i(
-    () => e.row.editColStates[o.fieldName].editable
-  ), u = (L) => {
-    e.row.editColStates[o.fieldName].editable = L;
-  }, m = i(() => !r.value && !n.value && !c.value), w = i(() => c.value || m.value && f.value), C = i(() => !w.value), E = !1, I = !0, p = i(() => m.value && !f.value), T = i(() => f.value);
-  let R;
-  const v = () => {
-    u(!0), R = Y(l, async (L) => {
-      u(!1), R.stop();
+var be = Object.defineProperty;
+var Ee = (e, c, t) => c in e ? be(e, c, { enumerable: !0, configurable: !0, writable: !0, value: t }) : e[c] = t;
+var F = (e, c, t) => (Ee(e, typeof c != "symbol" ? c + "" : c, t), t);
+import { useClickOutside as Z, useNamespace as B, useUIStore as pe, withInstall as ee } from "@ibiz-template/vue3-util";
+import { Srfuf as _, GridFieldEditColumnController as ye, GridRowState as Ie, UIActionUtil as Te, SysUIActionTag as j, TreeGridExNodeColumnController as Re, TreeGridExRowState as te, TreeGridExFieldColumnController as oe, registerGridColumnProvider as Se, registerTreeGridExColumnProvider as Le } from "@ibiz-template/runtime";
+import { computed as i, ref as p, reactive as D, defineComponent as q, watch as Pe, createVNode as s, resolveComponent as g, isVNode as ie, onMounted as ne, h as H } from "vue";
+import { isNotNil as le, isNil as xe } from "ramda";
+import { RuntimeError as se } from "@ibiz-template/core";
+function ke(e, c) {
+  const t = e.controller, v = i(() => e.row.editColStates[t.fieldName].disabled), n = i(() => e.row.editColStates[t.fieldName].readonly), u = i(() => !!e.row.errors[t.fieldName]), d = i(
+    () => e.row.editColStates[t.fieldName].editable
+  ), o = (E) => {
+    e.row.editColStates[t.fieldName].editable = E;
+  }, r = i(() => !v.value && !n.value && !u.value), a = i(() => u.value || r.value && d.value), m = i(() => !a.value), h = !1, y = !0, P = i(() => r.value && !d.value), R = i(() => d.value);
+  let T;
+  const L = () => {
+    o(!0), T = Z(c, async (E) => {
+      o(!1), T.stop();
     });
-  }, y = () => {
-    R && R.stop(), ibiz.log.debug("".concat(o.fieldName, "属性编辑器focus事件"));
+  }, x = () => {
+    T && T.stop(), ibiz.log.debug("".concat(t.fieldName, "属性编辑器focus事件"));
   };
-  let k = e.row.data[o.fieldName];
-  const D = b(!1), z = () => {
-    var L;
-    ibiz.log.debug("".concat(o.fieldName, "属性编辑器blur事件")), !(D.value || o.hasDropdown) && (u(!1), ((L = o.model.userParam) == null ? void 0 : L.SAVEMODE) === "BLUR" ? o.grid.save(e.row.data) : e.row.data.srfuf === G.CREATE ? o.grid.remove({ data: [e.row.data], silent: !0 }) : o.setRowValue(e.row, k));
+  let k = e.row.data[t.fieldName];
+  const A = p(!1), M = () => {
+    var E;
+    ibiz.log.debug("".concat(t.fieldName, "属性编辑器blur事件")), !(A.value || t.hasDropdown) && (o(!1), ((E = t.model.userParam) == null ? void 0 : E.SAVEMODE) === "BLUR" ? t.grid.save(e.row.data) : e.row.data.srfuf === _.CREATE ? t.grid.remove({ data: [e.row.data], silent: !0 }) : t.setRowValue(e.row, k));
   }, N = async () => {
-    o.setPickerValue(e.row), D.value = !0, ibiz.log.debug("".concat(o.fieldName, "属性编辑器enter事件")), await o.grid.save(e.row.data), k = e.row.data[o.fieldName], u(!1), D.value = !1;
-  }, F = (L) => {
-    L.keyCode === 27 && u(!1);
-  }, P = x({
-    showEditMask: p,
-    stopPropagation: T
-  }), M = x({
-    autoFocus: I,
-    disabled: E,
-    readonly: C,
-    cellEditable: m,
-    onFocus: y,
-    onBlur: z,
+    t.setPickerValue(e.row), A.value = !0, ibiz.log.debug("".concat(t.fieldName, "属性编辑器enter事件")), await t.grid.save(e.row.data), k = e.row.data[t.fieldName], o(!1), A.value = !1;
+  }, z = (E) => {
+    E.keyCode === 27 && o(!1);
+  }, f = D({
+    showEditMask: P,
+    stopPropagation: R
+  }), b = D({
+    autoFocus: y,
+    disabled: h,
+    readonly: m,
+    cellEditable: r,
+    onFocus: x,
+    onBlur: M,
     onEnter: N,
-    onKeydown: F
+    onKeydown: z
   });
   return {
-    gridEditItemProps: P,
-    editorProps: M,
-    onMaskClick: v
+    gridEditItemProps: f,
+    editorProps: b,
+    onMaskClick: L
   };
 }
-function Xe(e, l) {
-  const o = e.controller, r = i(() => e.row.editColStates[o.fieldName].disabled), n = i(() => e.row.editColStates[o.fieldName].readonly), c = i(
-    () => e.row.editColStates[o.fieldName].editable
-  ), f = i(() => n.value || !c.value), u = i(() => c.value && r.value), m = i(() => c.value), w = x({
-    stopPropagation: m
-  }), C = x({
-    disabled: u,
-    readonly: f
+function Ae(e, c) {
+  const t = e.controller, v = i(() => e.row.editColStates[t.fieldName].disabled), n = i(() => e.row.editColStates[t.fieldName].readonly), u = i(
+    () => e.row.editColStates[t.fieldName].editable
+  ), d = i(() => n.value || !u.value), o = i(() => u.value && v.value), r = i(() => u.value), a = D({
+    stopPropagation: r
+  }), m = D({
+    disabled: o,
+    readonly: d
   });
   return {
-    gridEditItemProps: w,
-    editorProps: C
+    gridEditItemProps: a,
+    editorProps: m
   };
 }
-function Ye(e, l) {
-  const o = e.controller, r = i(() => e.row.editColStates[o.fieldName].disabled), n = i(() => e.row.editColStates[o.fieldName].readonly), c = i(() => e.controller.grid.state.rowEditOpen), f = i(() => n.value || !c.value), u = i(() => c.value && r.value), m = i(() => c.value), w = () => {
-    o.grid.save(e.row.data);
-  }, C = x({
-    stopPropagation: m
-  }), E = x({
-    disabled: u,
-    readonly: f,
-    onBlur: w
+function De(e, c) {
+  const t = e.controller, v = i(() => e.row.editColStates[t.fieldName].disabled), n = i(() => e.row.editColStates[t.fieldName].readonly), u = i(() => e.controller.grid.state.rowEditOpen), d = i(() => n.value || !u.value), o = i(() => u.value && v.value), r = i(() => u.value), a = () => {
+    t.grid.save(e.row.data);
+  }, m = D({
+    stopPropagation: r
+  }), h = D({
+    disabled: o,
+    readonly: d,
+    onBlur: a
   });
   return {
-    gridEditItemProps: C,
-    editorProps: E
+    gridEditItemProps: m,
+    editorProps: h
   };
 }
-class ce extends Fe {
+class re extends ye {
   constructor() {
     super(...arguments);
     /**
@@ -86,21 +86,21 @@ class ce extends Fe {
      * @type {(IAppCodeList | undefined)}
      * @memberof GridEditColumnController
      */
-    V(this, "userCodeList");
+    F(this, "userCodeList");
     /**
      * 是否拥有下拉
      *
      * @type {boolean}
      * @memberof GridEditColumnController
      */
-    V(this, "hasDropdown", !1);
+    F(this, "hasDropdown", !1);
     /**
      * 当前选项id
      *
      * @type {string}
      * @memberof GridEditColumnController
      */
-    V(this, "curPickerId", "");
+    F(this, "curPickerId", "");
   }
   /**
    * 加载用户代码表
@@ -109,16 +109,16 @@ class ce extends Fe {
    * @return {*}  {Promise<readonly}
    * @memberof GridEditColumnController
    */
-  async loadUserCodeList(o) {
-    if (o.codelistTag) {
-      const r = ibiz.hub.getApp(this.context.srfappid), n = await r.codeList.get(
-        o.codelistTag,
+  async loadUserCodeList(t) {
+    if (t.codelistTag) {
+      const v = ibiz.hub.getApp(this.context.srfappid), n = await v.codeList.get(
+        t.codelistTag,
         this.context,
         this.params
       );
-      this.userCodeList = r.codeList.getCodeList(o.codelistTag);
-      const c = (o.pickerData || "").split(",");
-      return this.hasDropdown = !0, n.filter((f) => c.includes(f.id));
+      this.userCodeList = v.codeList.getCodeList(t.codelistTag);
+      const u = (t.pickerData || "").split(",");
+      return this.hasDropdown = !0, n.filter((d) => u.includes(d.id));
     }
     return [];
   }
@@ -129,161 +129,138 @@ class ce extends Fe {
    * @return {*}  {Promise<readonly}
    * @memberof GridEditColumnController
    */
-  setPickerValue(o) {
-    const { srfuf: r } = o.data;
-    if (r === G.CREATE) {
-      const n = o.data.srfUserData;
-      n && n.pickerField && (o.data[n.pickerField] = this.curPickerId);
+  setPickerValue(t) {
+    const { srfuf: v } = t.data;
+    if (v === _.CREATE) {
+      const n = t.data.srfUserData;
+      n && n.pickerField && (t.data[n.pickerField] = this.curPickerId);
     }
   }
 }
-function We(e) {
-  return typeof e == "function" || Object.prototype.toString.call(e) === "[object Object]" && !qe(e);
+function Ve(e) {
+  return typeof e == "function" || Object.prototype.toString.call(e) === "[object Object]" && !ie(e);
 }
-const K = /* @__PURE__ */ J({
-  name: "GridEditColumn",
+const ae = /* @__PURE__ */ q({
+  name: "IBizEditColumnActionToolbar",
   props: {
-    controller: {
-      type: ce,
+    actionDetails: {
+      type: Array,
       required: !0
     },
-    row: {
-      type: Oe,
+    actionsState: {
+      type: Object,
       required: !0
-    }
+    },
+    caption: String,
+    mode: {
+      type: String,
+      default: "buttons"
+    },
+    // 分组的行为级别
+    groupLevelKeys: {
+      type: Object,
+      default: [50]
+    },
+    editColums: {
+      type: Object,
+      required: !0
+    },
+    showCommonAction: {
+      type: Boolean,
+      default: !0
+    },
+    zIndex: Number,
+    popperClass: String
   },
-  setup(e) {
-    var te;
-    const l = _("grid-edit-column"), o = b(), r = b(), n = e.controller, c = (te = n.editItem) == null ? void 0 : te.codeName, f = b(!1), u = b(!1), m = b(), w = b(), C = b(), E = [50, 100], I = b(!1), {
-      zIndex: p
-    } = e.controller.grid.state, T = b([]), R = b("");
-    let v = !1, y;
-    const k = e.row.data.srfUserData;
-    (async () => {
-      const {
-        srfuf: t
-      } = e.row.data;
-      t === G.CREATE && k && (T.value = await n.loadUserCodeList(k), R.value = k.defaultValue, n.curPickerId = k.defaultValue);
-    })();
-    const z = i(() => {
-      const {
-        deuiactionGroup: t
-      } = n.model;
-      return t != null && t.uiactionGroupDetails ? t.uiactionGroupDetails.filter((a) => E.findIndex((d) => d === a.actionLevel) === -1) : [];
-    }), N = i(() => {
-      const {
-        deuiactionGroup: t
-      } = n.model;
-      return t != null && t.uiactionGroupDetails ? t.uiactionGroupDetails.filter((a) => E.findIndex((d) => d === a.actionLevel) !== -1) : [];
-    }), F = i(() => !(n.grid.model.controlType === "TREEGRID" && !n.grid.state.showTreeGrid)), P = async (t, a) => {
-      await n.setRowValue(e.row, t, a);
-    }, M = () => {
-      switch (ibiz.config.grid.editShowMode) {
-        case "cell":
-          return Ke(e, o);
-        case "row":
-          return Xe(e);
-        case "all":
-          return Ye(e);
-        default:
-          throw new de("".concat(ibiz.config.grid.editShowMode, "暂未支持"));
-      }
-    }, {
-      gridEditItemProps: L,
-      editorProps: U
-    } = M(), Q = (t) => {
-      e.row.editColStates[n.fieldName].editable = t;
-    };
-    se(() => {
-      e.row.data.srfuf === G.CREATE && Q(!0), r.value && (y = Y(r, async () => {
-        !v && !U.readonly && (n.hasDropdown = !1, U.onBlur());
-      }));
-    }), He(() => {
-      y && y.stop && y.stop();
+  emits: ["saveAll", "actionClick"],
+  setup(e, {
+    emit: c
+  }) {
+    var $;
+    const t = B("edit-column-action-toolbar"), v = B("edit-column-action-toolbar"), n = p(!1), u = p(!1), d = p(!1), o = p(), r = p(), a = p(!1);
+    ($ = e.actionDetails) == null || $.forEach((w) => {
+      w.capLanguageRes && w.capLanguageRes.lanResTag && (w.caption = ibiz.i18n.t(w.capLanguageRes.lanResTag, w.caption)), w.tooltipLanguageRes && w.tooltipLanguageRes.lanResTag && (w.tooltip = ibiz.i18n.t(w.tooltipLanguageRes.lanResTag, w.tooltip));
     });
-    const ue = (t) => {
-      e.controller.hasAction && (t.stopPropagation(), e.controller.triggerAction(e.row, t));
-    }, fe = (t) => {
-      e.controller.isLinkColumn && (t.stopPropagation(), e.controller.openLinkView(e.row, t));
-    }, me = i(() => n.getCustomHtml(e.row)), O = i(() => e.row.uiActionGroupStates[n.model.codeName]), B = i(() => e.row.data[e.controller.model.codeName.toLowerCase()]), Z = i(() => n.formatValue(B.value)), $ = b(void 0), ve = (t) => {
-      $.value = t;
-    }, he = i(() => {
-      if (e.controller.grid.overflowMode === "ellipsis" && ae(B.value) && B.value !== "")
-        return $.value ? $.value : Z.value + (e.controller.model.unitName || "");
-    }), we = (t, a) => {
-      const d = {
-        ...a
-      };
-      if (w.value) {
-        const g = w.value.querySelector(".".concat(t.id));
-        g && (d.target = g);
-      }
-      return d;
-    }, H = async (t, a) => {
-      var S, A;
-      a.stopPropagation(), I.value = !0;
-      const d = {
-        context: n.context,
-        params: n.params,
-        data: [e.row.data],
-        view: n.grid.view,
-        event: we(t, a)
-      }, g = await Be.exec(t.uiactionId, d, t.appId);
-      if (g.cancel || (u.value = !1), I.value = !1, g.closeView)
-        d.view.modal.ignoreDismissCheck = !0, d.view.closeView({
-          ok: !0
-        });
-      else if (g.refresh)
-        switch (g.refreshMode) {
-          case 1:
-            d.view.callUIAction(j.REFRESH);
-            break;
-          case 2:
-            (S = d.view.parentView) == null || S.callUIAction(j.REFRESH);
-            break;
-          case 3:
-            (A = d.view.getTopView()) == null || A.callUIAction(j.REFRESH);
-            break;
-        }
-    }, Ce = async (t, a, d) => {
-      const g = d || t.editItem.codeName;
-      await n.setRowValue(e.row, a, g);
-      const S = t.editor.model.editorType;
-      ["TEXTBOX", "PASSWORD", "TEXTAREA", "TEXTAREA_10", "NUMBER", "SOLIDER", "STEPPER"].includes(S) || (q(), u.value = !1);
-    }, ge = () => {
-      q(), u.value = !1, n.grid.saveAll();
-    }, be = (t) => {
-      var A, oe;
-      const a = t.editItem.codeName, d = e.row.data[a], g = (A = e.row.editColStates[a]) == null ? void 0 : A.readonly, S = (oe = e.row.editColStates[a]) == null ? void 0 : oe.disabled;
-      return t.editorProvider && W(h(t.editorProvider.gridEditor), {
-        class: l.e("editor"),
-        value: g ? t.formatValue(d) : d,
-        data: e.row.data,
-        controller: t.editor,
-        overflowMode: n.grid.overflowMode,
-        // eslint-disable-next-line no-shadow
-        onChange: (ie, Ve) => Ce(t, ie, Ve),
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        onEnter: (ie) => ge(),
-        readonly: g,
-        disabled: S
+    const m = p([]), h = p([]), y = () => {
+      h.value = [], m.value = [], e.actionDetails && e.actionDetails.forEach((w) => {
+        !e.showCommonAction && w.actionLevel === 200 || (e.groupLevelKeys.findIndex((V) => V === w.actionLevel) !== -1 ? h.value.push(w) : m.value.push(w));
       });
-    }, Ee = () => {
-      f.value = !0;
-    }, q = () => {
-      f.value = !1;
-    }, Ie = (t) => {
-      t.stopPropagation(), t.preventDefault();
-    }, ye = (t) => {
-      t.stopPropagation(), Q(!0);
-    }, Re = () => {
-      const a = Object.values(n.grid.columns).filter((d) => d.enableRowEdit && d.model.id !== n.model.id).map((d) => {
+    };
+    Pe(() => e.showCommonAction, () => {
+      y();
+    }, {
+      immediate: !0
+    });
+    const P = p(), R = () => {
+      u.value = !0;
+    }, T = () => {
+      u.value = !1;
+    }, L = () => {
+      d.value = !0;
+    }, x = () => {
+      d.value = !1;
+    }, k = () => {
+      a.value = !0;
+    }, A = () => {
+      a.value = !1;
+    }, M = () => {
+      x(), u.value = !1;
+    }, N = async (w, V) => {
+      V.stopPropagation(), c("actionClick", w, V);
+    }, z = (w) => {
+      const {
+        actionLevel: V
+      } = w;
+      return [t.e("item"), t.is("disabled", !1), t.em("item", "level-".concat(V)), t.is("level-".concat(V), !0)];
+    }, f = () => {
+      d.value || (u.value = !1);
+    };
+    return {
+      ns: t,
+      ns2: v,
+      actionRef: r,
+      childLevelRef: o,
+      expandDetails: m,
+      groupDetails: h,
+      groupButtonRef: P,
+      popoverVisible: n,
+      topLevelVisible: u,
+      handleClick: N,
+      openTopLevel: R,
+      closeTopLevel: T,
+      openChildLevel: L,
+      closeChildLevel: x,
+      closeAllPopover: M,
+      openProcessing: k,
+      closeProcessing: A,
+      onChildLevelClick: (w) => {
+        w.stopPropagation(), w.preventDefault();
+      },
+      onTopLevelPopHide: () => {
+        c("saveAll");
+      },
+      onTopLevelPopShow: () => {
+        const w = o.value, V = Z(r.value, async () => {
+          a.value || (f(), u.value || V.stop());
+        }, {
+          ignore: [w]
+        });
+      },
+      calcActionItemClass: z
+    };
+  },
+  render() {
+    var d;
+    const {
+      $slots: e
+    } = this, c = () => {
+      const o = this.editColums.map((r) => {
         const {
-          caption: g
-        } = d.model, S = d.model.sysImage || {
+          caption: a
+        } = r.model, m = r.model.sysImage || {
           cssClass: "fa fa-bars"
         };
-        return s(h("el-popover"), {
+        return s(g("el-popover"), {
           placement: "right-start",
           width: "280",
           teleported: !1,
@@ -291,111 +268,244 @@ const K = /* @__PURE__ */ J({
           trigger: "click"
         }, {
           reference: () => s("div", {
-            class: l.bem("actions-popper", "action-group", "edit-column")
-          }, [s(h("iBizIcon"), {
-            icon: S
-          }, null), g]),
+            class: this.ns.bem("popper", "action-group", "edit-column")
+          }, [s("div", {
+            class: this.ns.bem("popper", "action-group", "icon")
+          }, [s(g("iBizIcon"), {
+            icon: m
+          }, null)]), s("span", null, [a])]),
           default: () => s("div", {
-            onMouseenter: Ee,
-            onMouseleave: q,
-            ref: m,
-            onClick: (A) => Ie(A)
-          }, [be(d)])
+            onMouseenter: this.openChildLevel,
+            onMouseleave: this.closeChildLevel,
+            ref: "childLevelRef",
+            onClick: (h) => this.onChildLevelClick(h)
+          }, [e.editor && (e == null ? void 0 : e.editor(r))])
         });
       });
-      return a.length > 0 ? s("div", {
-        class: l.be("actions-popper", "edit-group")
-      }, [a]) : null;
-    }, ke = (t) => s(h("el-button"), {
+      return o.length > 0 ? s("div", {
+        class: this.ns.be("popper", "edit-group")
+      }, [o]) : null;
+    }, t = (o) => s(g("el-divider"), {
+      class: this.ns.e("separator"),
+      "border-style": "double",
+      direction: o ? "vertical" : "horizontal"
+    }, null), v = (o, r = !0) => [o.addSeparator && t(r), s(g("el-button"), {
       text: !0,
       size: "small",
-      onClick: (a) => H(t, a),
-      title: t.tooltipLanguageRes ? ibiz.i18n.t(t.tooltipLanguageRes.lanResTag, t.tooltip) : t.tooltip,
-      disabled: O.value[t.id].disabled,
-      class: ee(t)
+      onClick: (a) => this.handleClick(o, a),
+      title: o.tooltip,
+      disabled: this.actionsState[o.id].disabled,
+      class: this.calcActionItemClass(o)
     }, {
-      default: () => [t.showIcon && t.sysImage && s("div", {
-        class: l.be("action", "icon")
-      }, [s(h("iBizIcon"), {
-        icon: t.sysImage
-      }, null)]), t.showCaption ? t.capLanguageRes ? ibiz.i18n.t(t.capLanguageRes.lanResTag, t.caption) : t.caption : ""]
-    }), xe = () => {
-      let t = null;
-      const a = [];
-      return N.value.forEach((d) => {
-        d.uiactionId && d.uiactionId.includes("get_editor_column") ? t = Re() : O.value[d.id].visible && a.push(ke(d));
-      }), s("div", {
-        class: l.be("actions-popper", "action-group"),
-        ref: w
-      }, [t, ...a]);
-    }, Te = () => {
-      const t = m.value, a = Y(w, async (d) => {
-        I.value || (De(), u.value || a.stop());
-      }, {
-        ignore: [t]
-      });
-    }, Pe = (t) => {
-      t.stopPropagation(), u.value = !u.value;
-    }, pe = () => {
-      n.grid.saveAll();
-    }, ee = (t) => {
-      const {
-        actionLevel: a
-      } = t;
-      return [t.id, l.e("item"), l.is("disabled", !1), l.em("item", "level-".concat(a))];
-    }, Le = () => s(h("el-popover"), {
-      visible: u.value,
-      popperClass: l.b("actions-popper"),
-      placement: "right-start",
-      width: "280",
-      trigger: "click",
-      onShow: () => {
-        Te();
-      },
-      onHide: () => {
-        pe();
-      },
-      "popper-style": {
-        zIndex: p
-      },
-      ref: C
-    }, {
-      reference: () => s(h("el-button"), {
-        text: !0,
-        size: "small",
-        class: "hover-action",
-        onClick: (t) => Pe(t),
-        title: "更多"
-      }, {
-        icon: () => s(h("ion-icon"), {
-          name: "ellipsis-vertical-outline"
-        }, null)
-      }),
-      default: () => xe()
-    }), Se = () => z.value.map((t) => {
-      if (O.value[t.id].visible && (t.actionLevel === 250 || F.value && t.actionLevel === 200))
-        return s(h("el-button"), {
-          text: !0,
-          size: "small",
-          onClick: (a) => H(t, a),
-          title: t.tooltipLanguageRes ? ibiz.i18n.t(t.tooltipLanguageRes.lanResTag, t.tooltip) : t.tooltip,
-          disabled: O.value[t.id].disabled,
-          class: ee(t)
-        }, {
-          default: () => [t.showIcon && t.sysImage && s(h("iBizIcon"), {
-            icon: t.sysImage
-          }, null), t.showCaption ? t.capLanguageRes ? ibiz.i18n.t(t.capLanguageRes.lanResTag, t.caption) : t.caption : ""]
+      default: () => [s("div", {
+        class: [this.ns.em("item", "icon"), this.ns.is("has-caption", o.showCaption && !!o.caption), this.ns.is("has-icon", o.showIcon && !!o.sysImage)]
+      }, [o.showIcon && o.sysImage && s(g("iBizIcon"), {
+        icon: o.sysImage
+      }, null)]), s("div", {
+        class: [this.ns.em("item", "label"), this.ns.is("has-caption", o.showCaption && !!o.caption), this.ns.is("has-icon", o.showIcon && !!o.sysImage)]
+      }, [o.showCaption ? o.caption : ""])]
+    })], n = (o, r = !0) => {
+      if (r)
+        return o.map((h) => {
+          var y;
+          return (y = this.actionsState[h.id]) != null && y.visible ? v(h, r) : null;
         });
-    }), Ae = () => {
+      let a = null;
+      const m = [];
+      return o.forEach((h) => {
+        h.uiactionId && h.uiactionId.includes("get_editor_column") ? a = c() : this.actionsState[h.id].visible && m.push(v(h, r));
+      }), s("div", {
+        class: this.ns.be("popper", "action-group"),
+        ref: "actionRef"
+      }, [a, ...m]);
+    }, u = () => {
+      let o;
+      if (this.groupDetails.length === 0 || !(this.groupDetails.findIndex((m) => this.actionsState[m.id].visible === !0) !== -1))
+        return null;
+      const a = this.groupDetails.findIndex((m) => this.actionsState[m.id].disabled === !1) === -1;
+      return [s(g("el-button"), {
+        size: "small",
+        text: !0,
+        disabled: a,
+        ref: "groupButtonRef",
+        class: [this.ns.e("item"), this.ns.is("group-button", !0), this.ns.is("expand", this.topLevelVisible)]
+      }, {
+        icon: () => s(g("ion-icon"), {
+          class: this.ns.e("icon"),
+          name: "ellipsis-vertical",
+          title: ibiz.i18n.t("component.actionToolbar.more")
+        }, null)
+      }), s(g("el-popover"), {
+        placement: "right-start",
+        width: "280",
+        "virtual-ref": this.groupButtonRef,
+        trigger: "click",
+        visible: this.topLevelVisible,
+        "onUpdate:visible": (m) => this.topLevelVisible = m,
+        "popper-class": this.ns.b("popper"),
+        "virtual-triggering": !0,
+        "popper-style": {
+          zIndex: this.zIndex
+        },
+        onShow: () => {
+          this.onTopLevelPopShow();
+        },
+        onHide: () => {
+          this.onTopLevelPopHide();
+        }
+      }, Ve(o = n(this.groupDetails, !1)) ? o : {
+        default: () => [o]
+      })];
+    };
+    if ((d = this.actionsState) != null && d.visible)
+      return s("div", {
+        class: [this.ns.b(), this.ns.m("buttons")],
+        onClick: (o) => o.stopPropagation()
+      }, [n(this.expandDetails), u()]);
+  }
+}), de = [
+  "TEXTBOX",
+  "PASSWORD",
+  "TEXTAREA",
+  "TEXTAREA_10",
+  "NUMBER",
+  "SOLIDER",
+  "STEPPER"
+];
+function Me(e) {
+  return typeof e == "function" || Object.prototype.toString.call(e) === "[object Object]" && !ie(e);
+}
+const K = /* @__PURE__ */ q({
+  name: "GridEditColumn",
+  props: {
+    controller: {
+      type: re,
+      required: !0
+    },
+    row: {
+      type: Ie,
+      required: !0
+    }
+  },
+  setup(e) {
+    var W;
+    const c = B("grid-edit-column"), t = p(), v = p(), n = e.controller, u = (W = n.editItem) == null ? void 0 : W.codeName, d = p(), {
+      zIndex: o
+    } = e.controller.grid.state, r = p([]), a = p("");
+    let m = !1;
+    const h = e.row.data.srfUserData;
+    (async () => {
       const {
-        enableRowEdit: t,
-        deuiactionGroup: a
-      } = n.model, d = [];
-      return t && d.push(s(h("el-button"), {
+        srfuf: l
+      } = e.row.data;
+      l === _.CREATE && h && (r.value = await n.loadUserCodeList(h), a.value = h.defaultValue, n.curPickerId = h.defaultValue);
+    })();
+    const P = i(() => !(n.grid.model.controlType === "TREEGRID" && !n.grid.state.showTreeGrid)), R = () => {
+      var l;
+      (l = t.value) == null || l.closeAllPopover();
+    }, T = async (l, C) => {
+      await n.setRowValue(e.row, l, C);
+    }, L = () => {
+      switch (ibiz.config.grid.editShowMode) {
+        case "cell":
+          return ke(e, v);
+        case "row":
+          return Ae(e);
+        case "all":
+          return De(e);
+        default:
+          throw new se("".concat(ibiz.config.grid.editShowMode, "暂未支持"));
+      }
+    }, {
+      gridEditItemProps: x,
+      editorProps: k
+    } = L(), A = (l) => {
+      e.row.editColStates[n.fieldName].editable = l;
+    };
+    ne(() => {
+      e.row.data.srfuf === _.CREATE && A(!0);
+    });
+    const M = (l) => {
+      e.controller.hasAction && (l.stopPropagation(), e.controller.triggerAction(e.row, l));
+    }, N = (l) => {
+      e.controller.isLinkColumn && (l.stopPropagation(), e.controller.openLinkView(e.row, l));
+    }, z = i(() => n.getCustomHtml(e.row)), f = Object.values(n.grid.columns).filter((l) => l.enableRowEdit && l.model.id !== n.model.id), b = i(() => e.row.data[e.controller.model.codeName.toLowerCase()]), E = i(() => n.formatValue(b.value)), G = p(void 0), $ = (l) => {
+      G.value = l;
+    }, w = i(() => {
+      if (e.controller.grid.overflowMode === "ellipsis" && le(b.value) && b.value !== "")
+        return G.value ? G.value : E.value + (e.controller.model.unitName || "");
+    }), V = (l, C) => {
+      const I = {
+        ...C
+      };
+      if (d.value) {
+        const S = d.value.querySelector(".".concat(l.id));
+        S && (I.target = S);
+      }
+      return I;
+    }, Y = async (l, C) => {
+      var O, U;
+      C.stopPropagation(), R();
+      const I = {
+        context: n.context,
+        params: n.params,
+        data: [e.row.data],
+        view: n.grid.view,
+        event: V(l, C)
+      }, S = await Te.exec(l.uiactionId, I, l.appId);
+      if (S.closeView)
+        I.view.modal.ignoreDismissCheck = !0, I.view.closeView({
+          ok: !0
+        });
+      else if (S.refresh)
+        switch (S.refreshMode) {
+          case 1:
+            I.view.callUIAction(j.REFRESH);
+            break;
+          case 2:
+            (O = I.view.parentView) == null || O.callUIAction(j.REFRESH);
+            break;
+          case 3:
+            (U = I.view.getTopView()) == null || U.callUIAction(j.REFRESH);
+            break;
+        }
+    }, ce = async (l, C, I) => {
+      const S = I || l.editItem.codeName;
+      await n.setRowValue(e.row, C, S);
+      const O = l.editor.model.editorType;
+      de.includes(O) || R();
+    }, ue = () => {
+      R(), n.grid.saveAll();
+    }, me = (l) => {
+      var U, J;
+      const C = l.editItem.codeName, I = e.row.data[C], S = (U = e.row.editColStates[C]) == null ? void 0 : U.readonly, O = (J = e.row.editColStates[C]) == null ? void 0 : J.disabled;
+      return l.editorProvider && H(g(l.editorProvider.gridEditor), {
+        class: c.e("editor"),
+        value: S ? l.formatValue(I) : I,
+        data: e.row.data,
+        controller: l.editor,
+        overflowMode: n.grid.overflowMode,
+        // eslint-disable-next-line no-shadow
+        onChange: (Q, ge) => ce(l, Q, ge),
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        onEnter: (Q) => ue(),
+        readonly: S,
+        disabled: O
+      });
+    }, he = (l) => {
+      l.stopPropagation(), A(!0);
+    }, fe = () => {
+      n.grid.saveAll();
+    }, ve = () => {
+      const {
+        enableRowEdit: l,
+        deuiactionGroup: C
+      } = n.model, I = [];
+      return l && I.push(s(g("el-button"), {
         text: !0,
         size: "small",
         class: "hover-action",
-        onClick: (g) => ye(g),
+        onClick: (S) => he(S),
         title: "编辑"
       }, {
         default: () => [s("svg", {
@@ -413,57 +523,69 @@ const K = /* @__PURE__ */ J({
           d: "M2 8.34L10.71 0 15 4.17 6.538 13H2V8.34zm1.2.512V11.8h2.826l7.283-7.6-2.606-2.533L3.2 8.852zM0 16v-1.2h16V16H0z",
           id: "aiu编辑"
         }, null)])])]
-      })), a && (d.push(Se()), N.value.length > 0 && d.push(Le())), d;
-    }, De = () => {
-      f.value || (u.value = !1);
-    }, Ne = (t) => {
-      R.value = t.id, n.curPickerId = t.id;
-    }, Me = async (t) => {
-      v = t;
+      })), C != null && C.uiactionGroupDetails && I.push(s(ae, {
+        ref: "actionToolbarRef",
+        class: c.e("toolbar"),
+        actionDetails: C == null ? void 0 : C.uiactionGroupDetails,
+        actionsState: e.row.uiActionGroupStates[n.model.codeName],
+        groupLevelKeys: [50, 100],
+        zIndex: o,
+        editColums: f,
+        showCommonAction: P.value,
+        onActionClick: Y,
+        onSaveAll: fe
+      }, {
+        editor: (S) => me(S)
+      })), I;
+    }, we = (l) => {
+      a.value = l.id, n.curPickerId = l.id;
+    }, Ce = async (l) => {
+      m = l;
     };
     return {
-      ns: l,
-      componentRef: o,
-      containerRef: r,
-      fieldName: c,
-      gridEditItemProps: L,
-      rowDataChange: P,
-      editorProps: U,
-      onCellClick: ue,
-      onTextClick: fe,
-      onInfoTextChange: ve,
-      onActionClick: H,
-      renderActions: Ae,
-      CustomHtml: me,
-      fieldValue: B,
-      formatValue: Z,
-      tooltip: he,
+      ns: c,
+      picking: m,
+      componentRef: v,
+      actionToolbarRef: t,
+      fieldName: u,
+      gridEditItemProps: x,
+      rowDataChange: T,
+      editorProps: k,
+      onCellClick: M,
+      onTextClick: N,
+      onInfoTextChange: $,
+      onActionClick: Y,
+      renderActions: ve,
+      CustomHtml: z,
+      fieldValue: b,
+      formatValue: E,
+      tooltip: w,
       renderPicker: () => {
-        if (T.value.length > 0)
-          return s(h("el-dropdown"), {
-            onVisibleChange: Me,
-            onCommand: (t) => Ne(t)
+        if (r.value.length > 0)
+          return s(g("el-dropdown"), {
+            onVisibleChange: Ce,
+            onCommand: (l) => we(l)
           }, {
-            default: () => s(h("iBizCodeList"), {
-              class: l.e("text"),
-              codeListItems: T.value,
+            default: () => s(g("iBizCodeList"), {
+              class: c.e("text"),
+              codeListItems: r.value,
               codeList: n.userCodeList,
-              value: R.value
+              value: a.value
             }, null),
             dropdown: () => {
-              let t;
-              return s(h("el-dropdown-menu"), null, We(t = T.value.map((a) => s(h("el-dropdown-item"), {
-                title: a.tooltip,
-                command: a
+              let l;
+              return s(g("el-dropdown-menu"), null, Me(l = r.value.map((C) => s(g("el-dropdown-item"), {
+                title: C.tooltip,
+                command: C
               }, {
-                default: () => [s(h("iBizCodeList"), {
-                  class: l.e("text"),
-                  codeListItems: T.value,
+                default: () => [s(g("iBizCodeList"), {
+                  class: c.e("text"),
+                  codeListItems: r.value,
                   codeList: n.userCodeList,
-                  value: a.id
+                  value: C.id
                 }, null)]
-              }))) ? t : {
-                default: () => [t]
+              }))) ? l : {
+                default: () => [l]
               });
             }
           });
@@ -471,13 +593,13 @@ const K = /* @__PURE__ */ J({
     };
   },
   render() {
-    var r;
+    var v;
     const e = this.controller;
-    let l = null;
-    e.isCustomCode ? l = s("span", {
+    let c = null;
+    e.isCustomCode ? c = s("span", {
       class: this.ns.e("script"),
       innerHTML: this.CustomHtml
-    }, null) : e.codeList ? l = s(h("iBizCodeList"), {
+    }, null) : e.codeList ? c = s(g("iBizCodeList"), {
       class: this.ns.e("text"),
       codeListItems: e.codeListItems,
       codeList: e.codeList,
@@ -485,12 +607,12 @@ const K = /* @__PURE__ */ J({
       onClick: this.onTextClick,
       onInfoTextChange: this.onInfoTextChange,
       title: this.tooltip
-    }, null) : l = s("span", {
+    }, null) : c = s("span", {
       class: this.ns.e("text"),
       title: this.tooltip,
       onClick: this.onTextClick
     }, [this.formatValue, this.fieldValue != null && e.model.unitName]);
-    const o = s(h("iBizGridEditItem"), {
+    const t = s(g("iBizGridEditItem"), {
       ref: "componentRef",
       required: !e.editItem.allowEmpty,
       error: this.row.errors[this.fieldName],
@@ -498,7 +620,7 @@ const K = /* @__PURE__ */ J({
       class: this.ns.m("edit-item"),
       ...this.gridEditItemProps
     }, {
-      default: () => [e.editorProvider && W(h(e.editorProvider.gridEditor), {
+      default: () => [e.editorProvider && H(g(e.editorProvider.gridEditor), {
         class: this.ns.e("editor"),
         value: this.row.data[this.fieldName],
         data: this.row.data,
@@ -511,140 +633,139 @@ const K = /* @__PURE__ */ J({
       })]
     });
     return s("div", {
-      ref: "containerRef",
-      class: [this.ns.b(), e.clickable(this.row) && this.ns.m("clickable"), this.ns.m(this.controller.grid.overflowMode), (r = this.controller.model.cellSysCss) == null ? void 0 : r.cssName, this.ns.is("has-action", !!e.model.deuiactionGroup)],
+      class: [this.ns.b(), e.clickable(this.row) && this.ns.m("clickable"), this.ns.m(this.controller.grid.overflowMode), (v = this.controller.model.cellSysCss) == null ? void 0 : v.cssName, this.ns.is("has-action", !!e.model.deuiactionGroup)],
       onClick: this.onCellClick
     }, [e.model.enableRowEdit ? s("div", {
       class: this.ns.b("edit-container")
-    }, [o, this.renderPicker()]) : s("div", {
+    }, [t, this.renderPicker()]) : s("div", {
       class: this.ns.b("text-container")
-    }, [l]), !(e.model.enableRowEdit && !this.editorProps.readonly) && this.editorProps.cellEditable ? s("div", {
+    }, [c]), !(e.model.enableRowEdit && !this.editorProps.readonly) && this.editorProps.cellEditable ? s("div", {
       class: this.ns.b("toolbar-container")
     }, [this.renderActions()]) : null]);
   }
 });
-class Je {
+class Ne {
   constructor() {
-    V(this, "component", "GridEditColumn");
+    F(this, "component", "GridEditColumn");
   }
-  async createController(l, o) {
-    const r = new ce(l, o);
-    return await r.init(), r;
+  async createController(c, t) {
+    const v = new re(c, t);
+    return await v.init(), v;
   }
 }
-function Qe(e, l) {
-  const o = e.controller, r = i(() => e.row.editColStates[o.name].disabled), n = i(() => e.row.editColStates[o.name].readonly), c = i(() => !!e.row.errors[o.name]), f = i(() => e.row.editColStates[o.name].editable), u = (P) => {
-    e.row.editColStates[o.name].editable = P;
-  }, m = i(() => !r.value && !n.value && !c.value), w = i(() => c.value || m.value && f.value), C = i(() => !w.value), E = !1, I = !0, p = i(() => !1), T = i(() => f.value);
-  let R = e.row.data[e.controller.name];
-  const v = b(!1), y = () => {
-    ibiz.log.debug("".concat(o.name, "属性编辑器focus事件"));
+function ze(e, c) {
+  const t = e.controller, v = i(() => e.row.editColStates[t.name].disabled), n = i(() => e.row.editColStates[t.name].readonly), u = i(() => !!e.row.errors[t.name]), d = i(() => e.row.editColStates[t.name].editable), o = (f) => {
+    e.row.editColStates[t.name].editable = f;
+  }, r = i(() => !v.value && !n.value && !u.value), a = i(() => u.value || r.value && d.value), m = i(() => !a.value), h = !1, y = !0, P = i(() => !1), R = i(() => d.value);
+  let T = e.row.data[e.controller.name];
+  const L = p(!1), x = () => {
+    ibiz.log.debug("".concat(t.name, "属性编辑器focus事件"));
   }, k = () => {
-    var P, M;
-    ibiz.log.debug("".concat(o.name, "属性编辑器blur事件")), !v.value && (u(!1), ((P = o.nodeColumn.userParam) == null ? void 0 : P.SAVEMODE) === "BLUR" ? o.treeGrid.save(e.row.data) : ((M = e.row.data._deData) == null ? void 0 : M.srfuf) === G.CREATE ? o.treeGrid.remove({ data: [e.row.data], silent: !0 }) : o.setRowValue(e.row, R));
-  }, D = async () => {
-    v.value = !0, await o.treeGrid.save(e.row.data), R = e.row.data[e.controller.name], u(!1), v.value = !1;
-  }, z = (P) => {
-    P.keyCode === 27 && u(!1);
-  }, N = x({
-    showEditMask: p,
-    stopPropagation: T
-  }), F = x({
-    autoFocus: I,
-    disabled: E,
-    readonly: C,
+    var f, b;
+    ibiz.log.debug("".concat(t.name, "属性编辑器blur事件")), !L.value && (o(!1), ((f = t.nodeColumn.userParam) == null ? void 0 : f.SAVEMODE) === "BLUR" ? t.treeGrid.save(e.row.data) : ((b = e.row.data._deData) == null ? void 0 : b.srfuf) === _.CREATE ? t.treeGrid.remove({ data: [e.row.data], silent: !0 }) : t.setRowValue(e.row, T));
+  }, A = async () => {
+    L.value = !0, await t.treeGrid.save(e.row.data), T = e.row.data[e.controller.name], o(!1), L.value = !1;
+  }, M = (f) => {
+    f.keyCode === 27 && o(!1);
+  }, N = D({
+    showEditMask: P,
+    stopPropagation: R
+  }), z = D({
+    autoFocus: y,
+    disabled: h,
+    readonly: m,
     onBlur: k,
-    onFocus: y,
-    onEnter: D,
-    onKeydown: z
+    onFocus: x,
+    onEnter: A,
+    onKeydown: M
   });
   return {
     gridEditItemProps: N,
-    editorProps: F
+    editorProps: z
   };
 }
-function Ze(e, l) {
-  const o = e.controller, r = i(() => e.row.editColStates[o.name].disabled), n = i(() => e.row.editColStates[o.name].readonly), c = i(() => e.row.editColStates[o.name].editable), f = i(() => n.value || !c.value), u = i(() => c.value && r.value), m = i(() => c.value), w = x({
-    stopPropagation: m
-  }), C = x({
-    disabled: u,
-    readonly: f
+function Ge(e, c) {
+  const t = e.controller, v = i(() => e.row.editColStates[t.name].disabled), n = i(() => e.row.editColStates[t.name].readonly), u = i(() => e.row.editColStates[t.name].editable), d = i(() => n.value || !u.value), o = i(() => u.value && v.value), r = i(() => u.value), a = D({
+    stopPropagation: r
+  }), m = D({
+    disabled: o,
+    readonly: d
   });
   return {
-    gridEditItemProps: w,
-    editorProps: C
+    gridEditItemProps: a,
+    editorProps: m
   };
 }
-function et(e, l) {
-  const o = e.controller, r = i(() => e.row.editColStates[o.name].disabled), n = i(() => e.row.editColStates[o.name].readonly), c = i(() => e.controller.treeGrid.state.rowEditOpen), f = i(() => n.value || !c.value), u = i(() => c.value && r.value), m = i(() => c.value), w = () => {
-    o.treeGrid.save(e.row.data);
-  }, C = x({
-    stopPropagation: m
-  }), E = x({
-    disabled: u,
-    readonly: f,
-    onBlur: w
+function Oe(e, c) {
+  const t = e.controller, v = i(() => e.row.editColStates[t.name].disabled), n = i(() => e.row.editColStates[t.name].readonly), u = i(() => e.controller.treeGrid.state.rowEditOpen), d = i(() => n.value || !u.value), o = i(() => u.value && v.value), r = i(() => u.value), a = () => {
+    t.treeGrid.save(e.row.data);
+  }, m = D({
+    stopPropagation: r
+  }), h = D({
+    disabled: o,
+    readonly: d,
+    onBlur: a
   });
   return {
-    gridEditItemProps: C,
-    editorProps: E
+    gridEditItemProps: m,
+    editorProps: h
   };
 }
-const tt = /* @__PURE__ */ J({
+const Fe = /* @__PURE__ */ q({
   name: "TreeGridExEditColumn",
   props: {
     controller: {
-      type: _e,
+      type: Re,
       required: !0
     },
     row: {
-      type: le,
+      type: te,
       required: !0
     }
   },
   setup(e) {
-    const l = i(() => e.row.data[e.controller.name]), o = _("tree-grid-ex-edit-column"), r = b(), n = e.controller, c = async (I, p) => {
-      ibiz.log.debug("".concat(n.name, "值变更"), I), await n.setRowValue(e.row, I, p);
-    }, f = () => {
+    const c = i(() => e.row.data[e.controller.name]), t = B("tree-grid-ex-edit-column"), v = p(), n = e.controller, u = async (y, P) => {
+      ibiz.log.debug("".concat(n.name, "值变更"), y), await n.setRowValue(e.row, y, P);
+    }, d = () => {
       switch (ibiz.config.grid.editShowMode) {
         case "cell":
-          return Qe(e);
+          return ze(e);
         case "row":
-          return Ze(e);
+          return Ge(e);
         case "all":
-          return et(e);
+          return Oe(e);
         default:
-          throw new de("".concat(ibiz.config.grid.editShowMode, "暂未支持"));
+          throw new se("".concat(ibiz.config.grid.editShowMode, "暂未支持"));
       }
     }, {
-      gridEditItemProps: u,
-      editorProps: m
-    } = f(), w = b(void 0), C = (I) => {
-      w.value = I;
-    }, E = i(() => {
-      if (m.readonly)
-        return je(w.value) ? n.formatValue(l.value) : w.value;
+      gridEditItemProps: o,
+      editorProps: r
+    } = d(), a = p(void 0), m = (y) => {
+      a.value = y;
+    }, h = i(() => {
+      if (r.readonly)
+        return xe(a.value) ? n.formatValue(c.value) : a.value;
     });
     return {
-      ns: o,
-      fieldValue: l,
-      componentRef: r,
-      tooltip: E,
-      rowDataChange: c,
-      onInfoTextChange: C,
-      gridEditItemProps: u,
-      editorProps: m
+      ns: t,
+      fieldValue: c,
+      componentRef: v,
+      tooltip: h,
+      rowDataChange: u,
+      onInfoTextChange: m,
+      gridEditItemProps: o,
+      editorProps: r
     };
   },
   render() {
-    return s(h("iBizGridEditItem"), {
+    return s(g("iBizGridEditItem"), {
       ref: "componentRef",
       required: !this.controller.nodeEditItem.allowEmpty,
       overflowMode: this.controller.overflowMode,
       class: [this.ns, this.ns.m(this.controller.overflowMode)],
       ...this.gridEditItemProps
     }, {
-      default: () => [this.controller.editorProvider && W(h(this.controller.editorProvider.gridEditor), {
+      default: () => [this.controller.editorProvider && H(g(this.controller.editorProvider.gridEditor), {
         class: this.ns.e("editor"),
         value: this.fieldValue,
         data: this.row.data,
@@ -658,65 +779,101 @@ const tt = /* @__PURE__ */ J({
     });
   }
 });
-const X = /* @__PURE__ */ J({
+const X = /* @__PURE__ */ q({
   name: "TreeGridExFieldColumn",
   props: {
     controller: {
-      type: re,
+      type: oe,
       required: !0
     },
     row: {
-      type: le,
+      type: te,
       required: !0
     }
   },
   setup(e) {
-    const l = _("tree-grid-ex-field-column"), o = _("tree-grid-ex-field-edit-column"), r = i(() => e.controller.nodeColumnControllerMap.get(e.row.data._nodeId)), n = i(() => e.row.editColStates[r.value.name].editable), c = i(() => e.row.editColStates[r.value.name].readonly), f = (v) => {
-      e.row.editColStates[r.value.name].editable = v;
-    }, u = (v) => {
-      v.stopPropagation(), f(!0);
+    const c = B("tree-grid-ex-field-column"), t = B("tree-grid-ex-field-edit-column"), n = pe().zIndex.increment(), u = p(), d = i(() => e.controller.nodeColumnControllerMap.get(e.row.data._nodeId)), o = i(() => e.row.editColStates[d.value.name].editable), r = i(() => e.row.editColStates[d.value.name].readonly), a = (f) => {
+      e.row.editColStates[d.value.name].editable = f;
+    }, m = (f) => {
+      f.stopPropagation(), a(!0);
     };
-    se(() => {
-      e.row.data.srfuf === G.CREATE && f(!0);
+    ne(() => {
+      e.row.data.srfuf === _.CREATE && a(!0);
     });
-    const m = i(() => e.row.data._nodeType !== "DE" && e.controller.isFirstShowColumn ? e.row.data._text : e.row.data[e.controller.name]), w = b(""), C = (v) => {
-      w.value = v;
-    }, E = i(() => {
-      const v = r.value;
-      return v ? v.nodeEditItem ? void 0 : v.codeList ? w.value : v.formatValue(m.value) + (v.unitName || "") : m.value;
-    }), I = i(() => {
-      if (e.controller.treeGrid.overflowMode === "ellipsis" && ae(m.value) && m.value !== "")
-        return E.value;
-    }), p = i(() => m.value && r.value && (r.value.isLinkColumn || r.value.hasClickAction));
+    const h = i(() => e.row.data._nodeType !== "DE" && e.controller.isFirstShowColumn ? e.row.data._text : e.row.data[e.controller.name]), y = p(""), P = (f) => {
+      y.value = f;
+    }, R = i(() => {
+      const f = d.value;
+      return f ? f.nodeEditItem ? void 0 : f.codeList ? y.value : f.formatValue(h.value) + (f.unitName || "") : h.value;
+    }), T = i(() => {
+      if (e.controller.treeGrid.overflowMode === "ellipsis" && le(h.value) && h.value !== "")
+        return R.value;
+    }), L = i(() => h.value && d.value && (d.value.isLinkColumn || d.value.hasClickAction)), x = (f) => {
+      var b;
+      (b = d.value) == null || b.onTextClick(e.row, f);
+    }, k = () => {
+      var f;
+      (f = u.value) == null || f.closeAllPopover();
+    }, A = async (f, b) => {
+      var E;
+      k(), await ((E = d.value) == null ? void 0 : E.onActionClick(f, e.row, b));
+    }, M = i(() => Object.values(e.controller.treeGrid.columns).filter((f) => {
+      var E;
+      const b = f.nodeColumnControllerMap.get(e.row.data._nodeId);
+      return b.nodeColumn.enableRowEdit && b.nodeColumn.id !== ((E = d.value) == null ? void 0 : E.nodeColumn.id);
+    }));
     return {
-      ns: l,
-      ns2: o,
-      nodeColumn: r,
-      fieldValue: m,
-      showText: E,
-      clickable: p,
-      tooltip: I,
-      editable: n,
-      readonly: c,
-      onInfoTextChange: C,
-      onTextClick: (v) => {
-        var y;
-        (y = r.value) == null || y.onTextClick(e.row, v);
+      ns: c,
+      ns2: t,
+      zIndex: n,
+      nodeColumn: d,
+      fieldValue: h,
+      showText: R,
+      clickable: L,
+      tooltip: T,
+      editable: o,
+      readonly: r,
+      editColums: M,
+      actionToolbarRef: u,
+      onInfoTextChange: P,
+      onDataChange: async (f, b, E) => {
+        await f.setRowValue(e.row, b, E);
+        const G = f.editor.model.editorType;
+        de.includes(G) || k();
       },
-      onActionClick: async (v, y) => {
-        var k;
-        await ((k = r.value) == null ? void 0 : k.onActionClick(v, e.row, y));
+      editorEnter: async (f, b, E) => {
+        await f.setRowValue(e.row, b, E), k();
       },
-      onOpenEdit: u
+      onTextClick: x,
+      onActionClick: A,
+      onOpenEdit: m
     };
   },
   render() {
-    var r, n, c, f;
+    var n, u, d, o;
     let e = null;
-    (r = this.nodeColumn) != null && r.nodeEditItem ? e = s(tt, {
+    const c = (r) => {
+      var R, T;
+      const a = r.nodeColumnControllerMap.get(this.row.data._nodeId), m = a.name, h = this.row.data[m], y = (R = this.row.editColStates[m]) == null ? void 0 : R.readonly, P = (T = this.row.editColStates[m]) == null ? void 0 : T.disabled;
+      return a.editorProvider && H(g(a.editorProvider.gridEditor), {
+        class: this.ns.e("editor"),
+        value: y ? a.formatValue(h) : h,
+        data: this.row.data,
+        controller: a.editor,
+        overflowMode: a.overflowMode,
+        // eslint-disable-next-line no-shadow
+        onChange: (L, x) => this.onDataChange(a, L, x || m),
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        onEnter: (L) => this.editorEnter(a, h, m),
+        // 待测试
+        readonly: y,
+        disabled: P
+      });
+    };
+    (n = this.nodeColumn) != null && n.nodeEditItem ? e = s(Fe, {
       controller: this.nodeColumn,
       row: this.row
-    }, null) : (n = this.nodeColumn) != null && n.codeList ? e = s(h("iBizCodeList"), {
+    }, null) : (u = this.nodeColumn) != null && u.codeList ? e = s(g("iBizCodeList"), {
       class: this.ns.e("text"),
       codeListItems: this.nodeColumn.codeListItems,
       codeList: this.nodeColumn.codeList,
@@ -729,19 +886,24 @@ const X = /* @__PURE__ */ J({
       title: this.tooltip,
       onClick: this.onTextClick
     }, [this.showText]);
-    let l;
-    this.$slots.actions ? l = this.$slots.actions() : this.row.columnActionsStates[this.controller.name] && (l = s(h("iBizActionToolbar"), {
+    let t;
+    this.$slots.actions ? t = this.$slots.actions() : this.row.columnActionsStates[this.controller.name] && (t = s(ae, {
+      ref: "actionToolbarRef",
       class: this.ns.e("toolbar"),
-      "action-details": (c = this.nodeColumn) == null ? void 0 : c.nodeColumn.deuiactionGroup.uiactionGroupDetails,
-      "actions-state": this.row.columnActionsStates[this.controller.name],
+      actionDetails: (d = this.nodeColumn) == null ? void 0 : d.nodeColumn.deuiactionGroup.uiactionGroupDetails,
+      actionsState: this.row.columnActionsStates[this.controller.name],
       groupLevelKeys: [50, 100],
+      zIndex: this.zIndex,
+      editColums: this.editColums,
       onActionClick: this.onActionClick
-    }, null));
-    const o = s(h("el-button"), {
+    }, {
+      editor: (r) => c(r)
+    }));
+    const v = s(g("el-button"), {
       text: !0,
       size: "small",
       class: "hover-action",
-      onClick: (u) => this.onOpenEdit(u),
+      onClick: (r) => this.onOpenEdit(r),
       title: "编辑"
     }, {
       default: () => [s("svg", {
@@ -761,47 +923,47 @@ const X = /* @__PURE__ */ J({
       }, null)])])]
     });
     return s("div", {
-      class: [this.ns.b(), this.ns2.b(), this.clickable && this.ns.m("clickable"), this.ns.m(this.controller.treeGrid.overflowMode), (f = this.controller.model.cellSysCss) == null ? void 0 : f.cssName, this.ns2.is("editable", this.editable), this.ns.is("has-action", !!l)]
+      class: [this.ns.b(), this.ns2.b(), this.clickable && this.ns.m("clickable"), this.ns.m(this.controller.treeGrid.overflowMode), (o = this.controller.model.cellSysCss) == null ? void 0 : o.cssName, this.ns2.is("editable", this.editable), this.ns.is("has-action", !!t)]
     }, [s("div", {
       class: this.ns.b("text-container")
     }, [e]), s("div", {
       class: this.ns.b("toolbar-container")
-    }, [!this.editable && !this.readonly ? [o, l] : null])]);
+    }, [!this.editable && !this.readonly ? [v, t] : null])]);
   }
 });
-class ot {
+class Be {
   constructor() {
-    V(this, "component", "TreeGridExFieldColumn");
+    F(this, "component", "TreeGridExFieldColumn");
   }
-  async createController(l, o) {
-    const r = new re(l, o);
-    return await r.init(), r;
+  async createController(c, t) {
+    const v = new oe(c, t);
+    return await v.init(), v;
   }
 }
-const it = ne(
+const _e = ee(
   K,
   function(e) {
-    e.component(K.name, K), Ue(
+    e.component(K.name, K), Se(
       "GRID_COLRENDER_COLUMN_ACTION_EDIT",
-      () => new Je()
+      () => new Ne()
     );
   }
-), nt = ne(
+), Ue = ee(
   X,
   function(e) {
-    e.component(X.name, X), $e(
+    e.component(X.name, X), Le(
       "GRID_COLRENDER_COLUMN_ACTION_EDIT",
-      () => new ot()
+      () => new Be()
     );
   }
-), ft = {
+), We = {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/explicit-function-return-type
   install(e) {
-    e.use(it), e.use(nt);
+    e.use(_e), e.use(Ue);
   }
 };
 export {
-  it as IBizGridEditColumn,
-  nt as IBizTreeGridExFieldColumn,
-  ft as default
+  _e as IBizGridEditColumn,
+  Ue as IBizTreeGridExFieldColumn,
+  We as default
 };

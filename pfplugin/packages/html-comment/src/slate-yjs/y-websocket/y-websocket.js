@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 /* eslint-disable prefer-template */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable no-plusplus */

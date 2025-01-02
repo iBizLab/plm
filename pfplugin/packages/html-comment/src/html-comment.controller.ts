@@ -11,6 +11,7 @@ import { downloadFileFromBlob, RuntimeError } from '@ibiz-template/core';
 import {
   CodeListItem,
   ControllerEvent,
+  convertNavData,
   EditorController,
   EventBase,
   getDeACMode,
@@ -157,6 +158,15 @@ export class HtmlCommentController extends EditorController<IHtml> {
   public enableRealtime: boolean = false;
 
   /**
+   * 协同编辑key
+   *
+   * @author tony001
+   * @date 2024-12-20 17:12:36
+   * @type {(string | undefined)}
+   */
+  public collaborateKey: string | undefined;
+
+  /**
    * 编辑器实例
    */
   public editor!: IDomEditor;
@@ -204,6 +214,15 @@ export class HtmlCommentController extends EditorController<IHtml> {
    * @type {boolean}
    */
   chatCompletion: boolean = false;
+
+  /**
+   * @description 提及工作项控制器
+   * @readonly
+   * @memberof HtmlCommentController
+   */
+  get markerController() {
+    return CustomNodeFactory.getControllerById(this.uuid, 'marker');
+  }
 
   evt: ControllerEvent<commentEvent> = new ControllerEvent<commentEvent>(
     this.getEventArgs.bind(this),
@@ -256,6 +275,7 @@ export class HtmlCommentController extends EditorController<IHtml> {
         EMITMODE,
         DEFAULTCOLLAPSE,
         ENABLEREALTIME,
+        COLLABORATEKEY,
       } = this.editorParams;
 
       if (uploadParams) {
@@ -313,6 +333,14 @@ export class HtmlCommentController extends EditorController<IHtml> {
         this.enableRealtime =
           Object.is(ENABLEREALTIME, 'TRUE') ||
           Object.is(ENABLEREALTIME, 'true');
+      }
+      if (COLLABORATEKEY) {
+        this.collaborateKey = convertNavData(
+          { collaboratekey: COLLABORATEKEY },
+          (this.parent as IData).data || {},
+          this.params,
+          this.context,
+        ).collaboratekey;
       }
     }
 

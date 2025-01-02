@@ -45,9 +45,9 @@ export const IBizHtmlComment = withInstall(HtmlComment, function (v: App) {
   if (!window.customElements.get('formula-elem')) {
     window.customElements.define('formula-elem', FormulaElem);
   }
-  v.component(IBizHtmlCollapse.name, IBizHtmlCollapse);
-  v.component(IBizHtmlContent.name, IBizHtmlContent);
-  v.component(HtmlComment.name, HtmlComment);
+  v.component(IBizHtmlCollapse.name!, IBizHtmlCollapse);
+  v.component(IBizHtmlContent.name!, IBizHtmlContent);
+  v.component(HtmlComment.name!, HtmlComment);
   registerEditorProvider(
     'EDITOR_CUSTOMSTYLE_COMMENT',
     () => new HtmlCommentProvider(),

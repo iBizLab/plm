@@ -4,6 +4,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import libLegacy from '@qx-chitanda/vite-plugin-lib-legacy';
 import dts from 'vite-plugin-dts';
 import libCss from 'vite-plugin-libcss';
+import eslint from 'vite-plugin-eslint';
 // https://vitejs.dev/config/
 export default defineConfig({
   build: {
@@ -46,9 +47,9 @@ export default defineConfig({
     },
   },
   plugins: [
-    // eslint({
-    //   include: 'src/**/*.{ts,tsx,js,jsx}',
-    // }),
+    eslint({
+      include: 'src/**/*.{ts,tsx,js,jsx}',
+    }),
     vue(),
     vueJsx(),
     libLegacy(),

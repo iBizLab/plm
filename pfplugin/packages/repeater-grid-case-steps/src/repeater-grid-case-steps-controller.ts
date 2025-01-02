@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable eqeqeq */
@@ -6,10 +7,13 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable default-case */
 import {
+  EditFormController,
   FormMDCtrlRepeaterController,
   getDefaultValue,
+  isValueChange,
 } from '@ibiz-template/runtime';
 import { IDEFormItem } from '@ibiz/model-core';
+import { debounce } from 'lodash-es';
 import { createUUID } from 'qx-util';
 
 export class RepeaterGridCaseStepsController extends FormMDCtrlRepeaterController {
@@ -83,6 +87,65 @@ export class RepeaterGridCaseStepsController extends FormMDCtrlRepeaterControlle
       allow: [],
     },
   ];
+
+  protected async onInit(): Promise<void> {
+    await super.onInit();
+    const form = this.form as EditFormController;
+    form.evt.on('onSaveSuccess', async () => {
+      if (this.data.updatedate) {
+        const oldValue = this.data.updatedate[this.name];
+        if (isValueChange(oldValue, this.value)) {
+          this.save();
+        }
+      }
+    });
+    // 自动保存防抖，只有最后一次执行
+    this.save = debounce(this.save.bind(this), 1000, {
+      trailing: true,
+    }) as () => Promise<void>;
+  }
+
+  async save(): Promise<void> {
+    if (!(this.form as EditFormController).model.enableAutoSave) {
+      return;
+    }
+    // 自动保存静默，报错直接控制台输出
+    const saveParam: IData = {
+      silent: true,
+      noFillBack: true,
+      silentVerify: true,
+    };
+    (this.form as IData).save(saveParam);
+  }
+
+  /**
+   * @description 重写setValue，防止抖动
+   * @param {(IData[] | IData | null)} value
+   * @memberof RepeaterGridCaseStepsController
+   */
+  async setValue(value: IData[] | IData | null): Promise<void> {
+    // this.form.setDataValue(this.name, value);
+    if (
+      Object.prototype.hasOwnProperty.call(this.form.state.data, this.name) &&
+      !isValueChange(this.form.state.data[this.name], value)
+    ) {
+      // *`表单里没有属性${name}或者${name}的值未发生改变`
+      return;
+    }
+    const oldValue = this.form.state.data[this.name];
+    // 改变值
+    this.form.state.data[this.name] = value;
+
+    // 设置正在处理状态
+    this.form.state.modified = true;
+
+    await (this.form as IData).evt.emit('onFormDataChange', {
+      name: this.name,
+      value,
+      oldValue,
+    });
+    this.save();
+  }
 
   /**
    * 处理添加行为组
@@ -294,7 +357,9 @@ export class RepeaterGridCaseStepsController extends FormMDCtrlRepeaterControlle
    * @memberof RepeaterGridCaseStepsController
    */
   public calcDefaultValue(data: IData): IData {
-    const result: IData = {};
+    const result: IData = {
+      [this.entityKey]: createUUID(),
+    };
     const deformDetails: IDEFormItem[] = this.model.deformDetails || [];
     Object.values(deformDetails).forEach(detail => {
       const { createDV, createDVT } = detail;

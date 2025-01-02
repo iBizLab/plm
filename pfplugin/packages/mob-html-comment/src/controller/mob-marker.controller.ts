@@ -1,3 +1,6 @@
+/* eslint-disable camelcase */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-useless-escape */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-await-in-loop */
@@ -56,10 +59,13 @@ export class CommentMarkerController {
    * 人员UI转化
    */
   public quoteFieldMap: IData = {
-    value: 'id',
+    id: 'id',
     name: 'name',
     identifier: 'identifier',
-    type: 'owner_subtype',
+    owner_subtype: 'owner_subtype',
+    owner_id: 'owner_id',
+    owner_type: 'owner_type',
+    recent_parent: 'recent_parent',
   };
 
   /**
@@ -239,9 +245,18 @@ export class CommentMarkerController {
    */
   public transformHtml(value: string): string {
     const result = value.replaceAll(
-      /<mob-marker class="ql-marker" data-identifier="(.+?)" data-name="(.+?)" data-value="(.+?)" data-icon="((.|[\t\r\f\n\s])+?)">(.+?)<\/mob-marker>/g,
-      (x, identifier, name, id, icon) => {
-        return `#{"id":"${id}","name":"${name}","identifier":"${identifier}","icon":"${icon}"}<span> </span>`;
+      /<mob-marker class="ql-marker" data-id="(.+?)" data-name="(.+?)" data-identifier="(.+?)" data-owner_subtype="(.+?)" data-owner_id="(.+?)" data-owner_type="(.+?)" data-recent_parent="(.+?)" data-icon="((.|[\t\r\f\n\s])+?)\)*\">(.+?)<\/mob-marker>/g,
+      (
+        x,
+        id,
+        name,
+        identifier,
+        owner_subtype,
+        owner_id,
+        owner_type,
+        recent_parent,
+      ) => {
+        return `#{"id":"${id}","name":"${name}","identifier":"${identifier}","owner_id":"${owner_id}","owner_type":"${owner_type}","owner_subtype":"${owner_subtype}","recent_parent":"${recent_parent}"}<span> </span>`;
       },
     );
     return result;
@@ -255,9 +270,14 @@ export class CommentMarkerController {
    */
   public transformDelta(value: string): string {
     const result = value.replaceAll(
-      /#{"id":"(.+?)","name":"(.+?)","identifier":"(.+?)","icon":"((.|[\t\r\f\n\s])+?)"}/g,
-      (x, id, name, identifier, icon) => {
-        return this.getNodeInfo({ id, name, identifier, icon });
+      /\#\{(\".+?\":\".+?\")(,\"icon\":\"((.|[\t\r\f\n\s])+?)\")*\}/g,
+      (x, _value, icon) => {
+        const item = JSON.parse(`{${_value}}`);
+        if (icon) {
+          icon = icon.slice(8).slice(1, -1);
+        }
+        const resulthtml = this.getNodeInfo({ icon, ...item });
+        return resulthtml;
       },
     );
     return result;
@@ -270,7 +290,19 @@ export class CommentMarkerController {
    * @memberof CommentMarkerController
    */
   public getNodeInfo(data: IData): string {
-    return `<mob-marker class="ql-marker" data-identifier="${data.identifier}" data-name="${data.name}" data-value="${data.id}" data-icon="${data.icon}">${data.name}</mob-marker>`;
+    if (!data.icon && this.quoteCodelistMap.has('type') && data.owner_subtype) {
+      const item = this.quoteCodelistMap.get('type')!;
+      const findItem = this.findCodeListItem(
+        item.codeListItems,
+        data.owner_subtype,
+      );
+      if (findItem && findItem.sysImage) {
+        Object.assign(data, {
+          icon: findItem.sysImage.rawContent.replaceAll('"', "'"),
+        });
+      }
+    }
+    return `<mob-marker class="ql-marker" data-id="${data.id}" data-name="${data.name}" data-identifier="${data.identifier}" data-owner_subtype="${data.owner_subtype}" data-owner_id="${data.owner_id}" data-owner_type="${data.owner_type}" data-recent_parent="${data.recent_parent}" data-icon="${data.icon}">${data.name}</mob-marker>`;
   }
 
   /**
@@ -308,9 +340,12 @@ export class CommentMarkerController {
    * @memberof CommentMarkerController
    */
   public getSelection(data: IData): IData {
-    if (this.quoteCodelistMap.has('type') && data.type) {
+    if (this.quoteCodelistMap.has('type') && data.owner_subtype) {
       const item = this.quoteCodelistMap.get('type')!;
-      const findItem = this.findCodeListItem(item.codeListItems, data.type);
+      const findItem = this.findCodeListItem(
+        item.codeListItems,
+        data.owner_subtype,
+      );
       if (findItem && findItem.sysImage) {
         Object.assign(data, {
           icon: findItem.sysImage.rawContent,

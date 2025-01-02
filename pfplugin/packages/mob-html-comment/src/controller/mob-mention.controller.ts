@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /* eslint-disable no-template-curly-in-string */
 import { RuntimeError } from '@ibiz-template/core';
 import { IAppViewLogic, IEditor, IViewLogic } from '@ibiz/model-core';
@@ -60,7 +61,7 @@ export class CommentMentionController {
    * 人员UI转化
    */
   public userFieldMap: IData = {
-    value: 'user_id',
+    id: 'user_id',
     name: 'name',
   };
 
@@ -214,20 +215,10 @@ export class CommentMentionController {
    * @memberof CommentMentionController
    */
   public transformHtml(value: string): string {
-    let result = value;
-    result = value.replaceAll(
-      /<span class="ql-mention" data-value="(.+?)" data-name="(.+?)">@(.+?)<\/span>/g,
-      (x, id, name, text) => {
-        if (text === name) {
-          return `@{"id":"${id}","name":"${name}"}`;
-        }
-        // 删除情况
-        if (text < name) {
-          return '';
-        }
-        // 新增情况
-        const v = text.slice(name.length - text.length);
-        return `@{"id":"${id}","name":"${name}"}<span>${v}</span>`;
+    const result = value.replaceAll(
+      /<mob-mention class="ql-mention" data-id="(.+?)" data-name="(.+?)">@(.+?)<\/mob-mention>/g,
+      (x, id, name) => {
+        return `@{"id":"${id}","name":"${name}"}<span> </span>`;
       },
     );
     return result;
@@ -256,7 +247,7 @@ export class CommentMentionController {
    * @memberof CommentMentionController
    */
   public getNodeInfo(data: IData): string {
-    return `<span class="ql-mention" data-value="${data.id}" data-name="${data.name}">@${data.name}</span>`;
+    return `<mob-mention class="ql-mention" data-id="${data.id}" data-name="${data.name}">@${data.name}</mob-mention>`;
   }
 
   /**

@@ -15,6 +15,10 @@ export declare class AttentionController extends EditorController<IPicker> {
      */
     operatorMap: Map<any, any>;
     /**
+     * 当前操作者数据
+     */
+    currentOperator?: IData;
+    /**
      * 总数
      */
     total: number;
@@ -151,6 +155,7 @@ export declare class AttentionController extends EditorController<IPicker> {
     selfFillMap: {
         user_id: string;
         user_name: string;
+        user_title: string;
     };
     /**
      * 默认选中项
@@ -183,6 +188,10 @@ export declare class AttentionController extends EditorController<IPicker> {
      * 初始化链接视图相关参数
      */
     initLinkViewParams(): Promise<void>;
+    /**
+     * 初始化当前操作者数据
+     */
+    initCurrentOperator(data: IData, query?: IData): Promise<void>;
     /**
      * 重置状态
      */
@@ -222,7 +231,7 @@ export declare class AttentionController extends EditorController<IPicker> {
      * @returns {*}  {Promise<IHttpResponse<IData[]>>}
      * @memberof PersonelSelectController
      */
-    getServiceData(tag: 'user' | 'department', data: IData, query?: IData): Promise<IHttpResponse<IData[]>>;
+    getServiceData(tag: 'user' | 'department', data: IData, query?: IData, customParams?: IData): Promise<IHttpResponse<IData[]>>;
     /**
      * 打开数据选择视图
      *

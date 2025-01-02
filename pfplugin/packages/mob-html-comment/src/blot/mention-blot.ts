@@ -13,13 +13,13 @@ export class MentionBlot extends Inline {
 
   static className = 'ql-mention';
 
-  static tagName = 'span';
+  static tagName = 'mob-mention';
 
   static create(dataString: string) {
     const data = JSON.parse(dataString);
-    const { name, value } = data;
+    const { name, id } = data;
     const node = super.create();
-    node.setAttribute('data-value', value);
+    node.setAttribute('data-id', id);
     node.setAttribute('data-name', name);
     return node;
   }

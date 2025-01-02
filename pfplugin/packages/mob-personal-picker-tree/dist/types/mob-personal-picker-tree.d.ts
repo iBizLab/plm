@@ -39,7 +39,7 @@ export declare const MobPersonalPickerTree: import("vue").DefineComponent<{
         default: boolean;
     };
 }, {
-    c: MobPersonalPickerTreeController;
+    c: MobPersonalPickerTreeController<IDETree, import("./mob-personal-picker-tree.controller").IMobPersonalPickerTreeState, import("@ibiz-template/runtime").ITreeEvent>;
     ns: import("@ibiz-template/core").Namespace;
     treeData: import("vue").ComputedRef<ITreeNodeData[]>;
     checkedKeys: import("vue").ComputedRef<(string | undefined)[]>;
@@ -49,8 +49,9 @@ export declare const MobPersonalPickerTree: import("vue").DefineComponent<{
     onNodeClick: (event: MouseEvent, item: IMobPersonalPickerTreeNodeData, nodeModel: IDETreeNode | undefined) => void;
     onTabChange: (index: number) => void;
     loadData: (item: IData) => Promise<void>;
-    renderTree: (item: IMobPersonalPickerTreeNodeData, index: number) => Array<JSX.Element | null>;
+    renderTree: (items: IMobPersonalPickerTreeNodeData[], index: number) => Array<JSX.Element | null>;
     renderNoData: () => VNode | undefined;
+    renderVirtualTree: (items: IMobPersonalPickerTreeNodeData[]) => JSX.Element;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     modelData: {
         type: PropType<IDETree>;

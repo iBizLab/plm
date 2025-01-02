@@ -857,7 +857,7 @@ const IBizHtmlContent = defineComponent({
     const renderReply = () => {
       if (c.reply.value) {
         const htmlCode = ScriptFactory.execScriptFn(
-          { value: c.reply.value },
+          { value: c.reply.value, controller: c },
           c.replyScript,
           { singleRowReturn: true, isAsync: false },
         ) as string;

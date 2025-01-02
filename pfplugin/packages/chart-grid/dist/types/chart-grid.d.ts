@@ -30,6 +30,7 @@ declare const ChartGrid: import("vue").DefineComponent<{
     c: ChartGridController;
     ns: import("@ibiz-template/core").Namespace;
     uuid: string;
+    exporting: Ref<boolean>;
     headerStyle: () => {};
     isCollapse: Ref<boolean>;
     collapse: () => Promise<void>;

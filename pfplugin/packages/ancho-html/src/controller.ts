@@ -6,6 +6,7 @@ import {
   OpenAppViewCommand,
 } from '@ibiz-template/runtime';
 import { IRaw } from '@ibiz/model-core';
+import { clone } from 'ramda';
 
 /**
  * 直接内容编辑器控制器
@@ -120,23 +121,24 @@ export class RawEditorController extends EditorController<IRaw> {
       return;
     }
     const tempContext = this.context.clone();
+    const tempParams = clone(this.params);
     tempContext.srfkey = item.id;
     if (item.owner_subtype === 'page') {
-      tempContext.article_page = item.owner_id;
+      tempParams.article_page = item.owner_id;
     } else {
-      tempContext[item.owner_subtype] = item.owner_id;
+      tempParams[item.owner_subtype] = item.owner_id;
     }
-    tempContext[item.owner_type] = item.recent_parent;
+    tempParams[item.owner_type] = item.recent_parent;
     delete item.script;
     delete item.icon;
     delete item.id;
-    Object.assign(tempContext, item);
+    Object.assign(tempParams, item);
     if (item && this.linkViewId) {
       ibiz.commands.execute(
         OpenAppViewCommand.TAG,
         this.linkViewId,
         tempContext,
-        this.params,
+        tempParams,
       );
     }
   }

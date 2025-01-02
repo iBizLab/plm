@@ -282,4 +282,11 @@ export declare class PersonelSelectController extends EditorController<IPicker> 
      * @memberof PersonelSelectController
      */
     isShowNameTip(): boolean;
+    /**
+     * 获取人员头像路径
+     *
+     * @return {*}  {boolean}
+     * @memberof PersonelSelectController
+     */
+    getUserPictureUrl(userid: string, usertext: string): string;
 }

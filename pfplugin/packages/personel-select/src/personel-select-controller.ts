@@ -35,6 +35,11 @@ export class PersonelSelectController extends EditorController<IPicker> {
   public operatorMap = new Map();
 
   /**
+   * 当前操作者数据
+   */
+  public currentOperator?: IData;
+
+  /**
    * 总数
    */
   public total: number = 0;
@@ -100,6 +105,7 @@ export class PersonelSelectController extends EditorController<IPicker> {
   public userFilterMap: IData = {
     id: 'id',
     name: 'name',
+    title: 'title',
   };
 
   /**
@@ -108,6 +114,7 @@ export class PersonelSelectController extends EditorController<IPicker> {
   public deptFilterMap: IData = {
     id: 'id',
     name: 'name',
+    title: 'title',
   };
 
   /**
@@ -224,7 +231,11 @@ export class PersonelSelectController extends EditorController<IPicker> {
   /**
    * 自填充映射
    */
-  public selfFillMap = {};
+  public selfFillMap = {
+    user_id: 'user_id',
+    user_name: 'name',
+    user_title: 'title',
+  };
 
   /**
    * 选中后默认关注值
@@ -360,7 +371,7 @@ export class PersonelSelectController extends EditorController<IPicker> {
         const tempSelfFillMap = JSON.parse(this.editorParams?.SELFFILLMAP);
         Object.assign(this.selfFillMap, tempSelfFillMap);
       } catch (error) {
-        this.selfFillMap = {};
+        ibiz.log.error(error);
       }
     }
 
@@ -376,6 +387,7 @@ export class PersonelSelectController extends EditorController<IPicker> {
         this.userFilterMap = {
           id: 'id',
           name: 'name',
+          title: 'title',
         };
       }
     }
@@ -391,6 +403,7 @@ export class PersonelSelectController extends EditorController<IPicker> {
         this.deptFilterMap = {
           id: 'id',
           name: 'name',
+          title: 'title',
         };
       }
     }
@@ -420,6 +433,32 @@ export class PersonelSelectController extends EditorController<IPicker> {
   public async initLinkViewParams(): Promise<void> {
     if (this.model.linkAppViewId) {
       this.linkView = await ibiz.hub.config.view.get(this.model.linkAppViewId);
+    }
+  }
+
+  /**
+   * 初始化当前操作者数据
+   */
+  public async initCurrentOperator(data: IData, query?: IData): Promise<void> {
+    const userId = this.context.srfuserid;
+    if (!userId) {
+      return;
+    }
+    const res = await this.getServiceData(
+      'department',
+      data,
+      {},
+      {
+        ...query,
+        page: 0,
+        size: 20,
+        n_id_eq: userId,
+      },
+    );
+    if (res && res.data && res.data.length > 0) {
+      this.currentOperator = res.data.find(
+        (item: IData) => item[this.deptFilterMap.id] === userId,
+      );
     }
   }
 
@@ -590,6 +629,7 @@ export class PersonelSelectController extends EditorController<IPicker> {
     tag: 'user' | 'department',
     data: IData,
     query?: IData,
+    customParams?: IData,
   ): Promise<IHttpResponse<IData[]>> {
     const { context, params } = this.handlePublicParams(
       data,
@@ -606,7 +646,7 @@ export class PersonelSelectController extends EditorController<IPicker> {
       Object.assign(fixedParams, query);
     }
     // 合并计算出来的参数和固定参数，以计算参数为准
-    const tempParams = mergeDeepLeft(params, fixedParams);
+    const tempParams = customParams || mergeDeepLeft(params, fixedParams);
     let url = '';
     const _url = this.fill(this.userUrl, context, params, data).replaceAll(
       '//',
@@ -809,5 +849,34 @@ export class PersonelSelectController extends EditorController<IPicker> {
    */
   public isShowNameTip(): boolean {
     return this.showNameTip;
+  }
+
+  /**
+   * 获取人员头像路径
+   *
+   * @return {*}  {boolean}
+   * @memberof PersonelSelectController
+   */
+  public getUserPictureUrl(userid: string, usertext: string): string {
+    if (this.operatorMap.size <= 0) {
+      return '';
+    }
+    let operator: IData = {};
+    if (this.operatorMap.get(userid)) {
+      operator = this.operatorMap.get(userid);
+    } else {
+      Array.from(this.operatorMap.entries()).find((items: IData[]): boolean => {
+        const item: IData = items[1] || {};
+        if (item.text && usertext && item.text === usertext) {
+          operator = item;
+          return true;
+        }
+        return false;
+      });
+    }
+    if (operator.data && operator.data.iconurl) {
+      return operator.data.iconurl;
+    }
+    return '';
   }
 }

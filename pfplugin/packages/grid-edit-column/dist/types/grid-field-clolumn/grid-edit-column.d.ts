@@ -13,8 +13,9 @@ export declare const GridEditColumn: import("vue").DefineComponent<{
     };
 }, {
     ns: import("@ibiz-template/core").Namespace;
+    picking: boolean;
     componentRef: Ref<any>;
-    containerRef: Ref<any>;
+    actionToolbarRef: Ref<any>;
     fieldName: string;
     gridEditItemProps: IData;
     rowDataChange: (val: unknown, name?: string) => Promise<void>;

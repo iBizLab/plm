@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable no-shadow */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Editor from '../editor/index';
 import Menu from './menu-constructors/Menu';
 import MenuConstructorList from './menu-list';
@@ -59,13 +63,13 @@ class Menus {
 
   // 添加到菜单栏
   private _addToToolbar(): void {
-    const editor = this.editor;
-    const $toolbarElem = editor.$toolbarElem;
+    const { editor } = this;
+    const { $toolbarElem } = editor;
     $toolbarElem.addClass('clearfix');
 
     // 遍历添加到 DOM
     this.menuList.forEach(menu => {
-      const $elem = menu.$elem;
+      const { $elem } = menu;
       if ($elem) {
         $toolbarElem.append($elem);
       }
@@ -78,7 +82,7 @@ class Menus {
    * @return Menus 菜单对象
    */
   public menuFind(key: string): Menu {
-    const menuList = this.menuList;
+    const { menuList } = this;
     for (let i = 0, l = menuList.length; i < l; i++) {
       if (menuList[i].key === key) return menuList[i];
     }

@@ -69,7 +69,7 @@ export const IdentifierTitle = defineComponent({
               icon={this.$props.controller.model.sysImage}
             ></iBizIcon>
           )}
-          <span>{this.$props.controller.caption}</span>
+          <span>{this.$props.controller.state.caption}</span>
           <div class={this.ns.b('copy')}>
             <div
               class={this.ns.be('copy', 'copy-id')}

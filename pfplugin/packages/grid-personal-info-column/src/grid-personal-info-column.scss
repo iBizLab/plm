@@ -1,0 +1,34 @@
+@include b('grid-personal-info-column') {
+  display: inline-block;
+  white-space: pre-line;
+}
+
+@include b('grid-personal-info-column-content') {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  @include e(head-sculpture) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: getCssVar('height-control', 'default');
+    height: getCssVar('height-control', 'default');
+    font-size: getCssVar('font-size', 'small');
+    color: getCssVar(color, white);
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+
+    img {
+      width: getCssVar('height-control', 'default');
+      height: getCssVar('height-control', 'default');
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+
+  @include e(tip) {
+    margin-left: getCssVar('spacing', 'tight');
+  }
+}

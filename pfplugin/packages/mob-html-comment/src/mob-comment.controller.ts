@@ -18,7 +18,7 @@ import Quill from 'quill';
 import { MarkerBlot, MentionBlot } from './blot';
 import { CommentMentionController } from './controller/mob-mention.controller';
 import { CommentMarkerController } from './controller/mob-marker.controller';
-import { MarkerElem } from './custom-elem';
+import { MarkerElem, MentionElem } from './custom-elem';
 import { HtmlUtil } from './utils';
 import { mobCommentEvent } from './html-comment.event';
 
@@ -81,8 +81,35 @@ export class MobCommentController extends EditorController<IHtml> {
    * @memberof MobCommentController
    */
   public modules: IData = {
-    toolbar: [],
+    toolbar: [
+      ['bold', 'italic', 'underline', 'strike'],
+      ['link', 'image', 'code-block'],
+    ],
   };
+
+  /**
+   * 是否显示伸缩按钮
+   *
+   * @type {boolean}
+   * @memberof MobCommentController
+   */
+  public showCollapse: boolean = true;
+
+  /**
+   * 收缩时的高度
+   *
+   * @type {number}
+   * @memberof MobCommentController
+   */
+  public defaultHeight: number = 200;
+
+  /**
+   * 自动聚焦
+   *
+   * @type {boolean}
+   * @memberof MobCommentController
+   */
+  public autoFocus: boolean = false;
 
   /**
    * @description 视图
@@ -146,6 +173,9 @@ export class MobCommentController extends EditorController<IHtml> {
     if (!window.customElements.get('mob-marker')) {
       window.customElements.define('mob-marker', MarkerElem);
     }
+    if (!window.customElements.get('mob-mention')) {
+      window.customElements.define('mob-mention', MentionElem);
+    }
   }
 
   /**
@@ -183,6 +213,9 @@ export class MobCommentController extends EditorController<IHtml> {
         IMAGEMODE,
         MODULES,
         REPLYSCRIPT,
+        DEFAULTHEIGHT,
+        SHOWCOLLAPSE,
+        AUTOFOCUS,
       } = this.editorParams;
       if (uploadParams) {
         try {
@@ -223,6 +256,15 @@ export class MobCommentController extends EditorController<IHtml> {
       }
       if (REPLYSCRIPT) {
         this.replyScript = REPLYSCRIPT;
+      }
+      if (DEFAULTHEIGHT) {
+        this.defaultHeight = Number(DEFAULTHEIGHT);
+      }
+      if (SHOWCOLLAPSE) {
+        this.showCollapse = this.toBoolean(SHOWCOLLAPSE);
+      }
+      if (AUTOFOCUS) {
+        this.autoFocus = this.toBoolean(AUTOFOCUS);
       }
     }
     this.initBlot();

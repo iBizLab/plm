@@ -56,6 +56,7 @@ export declare class NumberTreeGridController extends TreeGridController<IDETree
     findChanges(originalArray: IData[], updatedArray: IData[]): {
         added: IData[];
         removed: IData[];
+        changed: IData[];
     };
     /**
      * 刷新

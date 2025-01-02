@@ -23,6 +23,7 @@ export declare const IBizPersonelSelect: import("@ibiz-template/vue3-util").Type
     };
 }, {
     ns: import("@ibiz-template/core").Namespace;
+    ns2: import("@ibiz-template/core").Namespace;
     c: import("./personel-select-controller").PersonelSelectController;
     refValue: import("vue").Ref<string>;
     curValue: import("vue").Ref<string | null>;

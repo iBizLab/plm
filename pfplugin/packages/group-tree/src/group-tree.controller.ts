@@ -25,6 +25,7 @@ import {
   IPortalMessage,
   RuntimeError,
   RuntimeModelError,
+  recursiveIterate,
 } from '@ibiz-template/core';
 import { isNil } from 'ramda';
 import { ref } from 'vue';
@@ -456,6 +457,19 @@ export class GroupTreeController<
     dropNode: ITreeNodeData,
     type: 'inner' | 'prev' | 'next',
   ): boolean {
+    // 校验是否可拖入，放入项不能是自己或自己的子数据
+    let enableDrag: boolean = true;
+    recursiveIterate(
+      { _children: [draggingNode] },
+      (node: ITreeNodeData) => {
+        if (node._id === dropNode._id) {
+          enableDrag = false;
+          return true;
+        }
+      },
+      { childrenFields: ['_children'] },
+    );
+    if (!enableDrag) return false;
     const draggingNodeModel = this.getNodeModel(draggingNode._nodeId)!;
     const dropNodeModel = this.getNodeModel(dropNode._nodeId)!;
     // * 移入的情况

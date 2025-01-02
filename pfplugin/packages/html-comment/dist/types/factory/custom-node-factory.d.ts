@@ -46,6 +46,15 @@ export declare class CustomNodeFactory {
      */
     static getPluginsById(id: string): INodeController[];
     /**
+     * @description 获取控制器
+     * @static
+     * @param {string} id
+     * @param {string} type
+     * @return {*}
+     * @memberof CustomNodeFactory
+     */
+    static getControllerById(id: string, type: string): INodeController | undefined;
+    /**
      * 卸载节点适配器
      *
      * @public

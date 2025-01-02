@@ -36,6 +36,7 @@ export const PersonelSelect = defineComponent({
   emits: getEditorEmits(),
   setup(props, { emit }) {
     const ns = useNamespace('picker-dropdown');
+    const ns2 = useNamespace('personel-select');
 
     const c = props.controller;
 
@@ -134,6 +135,12 @@ export const PersonelSelect = defineComponent({
             name: item[(c.selfFillMap as IParams).user_name as string],
           });
         }
+        // 添加职称
+        if (c.selfFillMap.user_title) {
+          Object.assign(_item, {
+            title: item[(c.selfFillMap as IParams).user_title as string],
+          });
+        }
         // 兼容写法,所有人员id都通过refValue存储,所有人员name通过curValue存储
         tempRefValue.push(item[(c.selfFillMap as IParams).user_id as string]);
         tempValueText.push(
@@ -161,7 +168,9 @@ export const PersonelSelect = defineComponent({
         Object.assign(tempItem, {
           [(c.selfFillMap as IParams)?.user_id as string]: select.id,
           [(c.selfFillMap as IParams)?.user_name as string]: select.name,
+          [(c.selfFillMap as IParams)?.user_title as string]: select.title, // 添加用户职称
         });
+
         // 添加关注类型
         if (c.attentionTypeField && c.defaultAttentionValue) {
           Object.assign(tempItem, {
@@ -205,13 +214,19 @@ export const PersonelSelect = defineComponent({
      * @date 2024-02-28 02:42:45
      * @return {*}
      */
-    const handleCurrentUserShow = () => {
+    const handleCurrentUserShow = async (): Promise<void> => {
       if (c.defaultSelCurUser) {
         const tempItem: IParams = {};
         Object.assign(tempItem, {
           id: c.context?.srfuserid,
           name: c.context?.srfusername,
         });
+
+        if (!c.currentOperator) await c.initCurrentOperator({});
+        if (c.currentOperator)
+          Object.assign(tempItem, {
+            title: c.currentOperator[c.deptFilterMap.title],
+          });
         // 区分单多选
         if (c.multiple) {
           const index = multipleSelect.value.findIndex((select: IData) => {
@@ -219,6 +234,8 @@ export const PersonelSelect = defineComponent({
           });
           if (index < 0) {
             multipleSelect.value.push(tempItem);
+          } else {
+            Object.assign(multipleSelect.value[index], tempItem);
           }
         } else if (multipleSelect.value.length === 0) {
           multipleSelect.value = [tempItem];
@@ -423,6 +440,7 @@ export const PersonelSelect = defineComponent({
           multipleSelect.value.push({
             id: item[c.userFilterMap.id],
             name: item[c.userFilterMap.name],
+            title: item[c.userFilterMap.title],
           });
         } else {
           multipleSelect.value.splice(index, 1);
@@ -443,6 +461,7 @@ export const PersonelSelect = defineComponent({
           multipleSelect.value.push({
             id: item[c.deptFilterMap.id],
             name: item[c.deptFilterMap.name],
+            title: item[c.deptFilterMap.title],
           });
         } else {
           multipleSelect.value.splice(index, 1);
@@ -974,13 +993,9 @@ export const PersonelSelect = defineComponent({
 
     // 绘制用户头像
     const renderUserAvatar = (userid: string, usertext: string) => {
-      if (
-        c.operatorMap &&
-        c.operatorMap.get(userid) &&
-        c.operatorMap.get(userid).data.iconurl &&
-        !errorLoadItems.value.includes(c.operatorMap.get(userid).data.iconurl)
-      ) {
-        return getUserAvatar(c.operatorMap.get(userid).data.iconurl);
+      const userUrl = c.getUserPictureUrl(userid, usertext);
+      if (userUrl && !errorLoadItems.value.includes(userUrl)) {
+        return getUserAvatar(userUrl);
       }
       return renderTextPhoto(usertext);
     };
@@ -995,6 +1010,10 @@ export const PersonelSelect = defineComponent({
         selectState.value === 'user'
           ? item[c.userFilterMap.id]
           : item[c.deptFilterMap.id];
+      const userTitle: string =
+        selectState.value === 'user'
+          ? item[c.userFilterMap.title]
+          : item[c.deptFilterMap.title];
       return (
         <div
           class={[
@@ -1013,6 +1032,13 @@ export const PersonelSelect = defineComponent({
             <div class={ns.bem('select-modal', 'personel-list', 'text-label')}>
               {usertext}
             </div>
+            {userTitle && (
+              <div
+                class={ns.bem('select-modal', 'personel-list', 'title-label')}
+              >
+                {userTitle}
+              </div>
+            )}
             {userid === c.context.srfuserid ? (
               <div class={ns.bem('select-modal', 'personel-list', 'myself')}>
                 我自己
@@ -1294,11 +1320,16 @@ export const PersonelSelect = defineComponent({
               );
             })}
             {isEquality ? (
-              <span
-                class={ns.bem('select-value-multiple', 'hidden', 'ellipsis')}
+              <el-tooltip
+                class={ns2.b('multiple-ellipsis')}
+                popper-class={ns2.be('multiple-ellipsis', 'popper')}
+                effect='dark'
+                content={valueText.value}
+                placement='top'
+                offset={12}
               >
-                ...
-              </span>
+                <span class={ns2.be('multiple-ellipsis', 'default')}>...</span>
+              </el-tooltip>
             ) : null}
             <div class={ns.b('no-select-value')} title='选择人员'>
               <img
@@ -1412,6 +1443,7 @@ export const PersonelSelect = defineComponent({
 
     return {
       ns,
+      ns2,
       c,
       refValue,
       curValue,
@@ -1465,12 +1497,14 @@ export const PersonelSelect = defineComponent({
         ref='personelSelRef'
         class={[
           this.ns.b(),
+          this.ns2.b(),
           this.ns.b('person-value'),
           this.disabled ? this.ns.m('disabled') : '',
           this.readonly ? this.ns.m('readonly') : '',
           !this.c.isShowNameText() ? this.ns.m('only-icon') : '',
           this.ns.is('editable', this.isEditable),
           this.ns.is('show-default', this.showFormDefaultContent),
+          this.ns2.is('multiple', this.c.multiple),
         ]}
         onClick={this.handleClick}
       >

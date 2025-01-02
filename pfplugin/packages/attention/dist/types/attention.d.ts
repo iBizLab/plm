@@ -44,7 +44,7 @@ export declare const Attention: import("vue").DefineComponent<{
     renderSelectInput: () => JSX.Element;
     onPopShow: () => Promise<void>;
     onPageHide: () => void;
-    onAttentionChange: (value: string | undefined) => void;
+    onAttentionChange: (value: string | undefined) => Promise<void>;
     renderEditContent: () => IData;
     renderReadonlyContent: () => JSX.Element | IData;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {

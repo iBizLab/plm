@@ -175,6 +175,7 @@ export const Attention = defineComponent({
             Object.assign(_item, {
               id: item[c.selfFillMap.user_id as string],
               name: item[c.selfFillMap.user_name as string],
+              title: item[c.selfFillMap.user_title as string],
               [c.attentionTypeField]: item[c.attentionTypeField],
             });
           }
@@ -281,6 +282,7 @@ export const Attention = defineComponent({
         Object.assign(tempItem, {
           [c.selfFillMap.user_id as string]: select.id,
           [c.selfFillMap.user_name as string]: select.name,
+          [c.selfFillMap.user_title as string]: select.title,
           [c.attentionTypeField]: select[c.attentionTypeField],
         });
         if (c.fieldMap) {
@@ -510,7 +512,9 @@ export const Attention = defineComponent({
     /**
      * 关注改变事件
      */
-    const onAttentionChange = (value: string | undefined): void => {
+    const onAttentionChange = async (
+      value: string | undefined,
+    ): Promise<void> => {
       if (!c.codeListMap) {
         return;
       }
@@ -532,6 +536,11 @@ export const Attention = defineComponent({
             name: c.context.srfusername,
             [c.attentionTypeField]: value,
           };
+          if (!c.currentOperator) await c.initCurrentOperator(props.data);
+          if (c.currentOperator)
+            Object.assign(tempItem, {
+              title: c.currentOperator[c.userFilterMap.title],
+            });
           multipleSelect.value.push(tempItem);
         }
       } else {
@@ -974,6 +983,10 @@ export const Attention = defineComponent({
         selectState.value === 'user'
           ? item[c.userFilterMap.id]
           : item[c.deptFilterMap.id];
+      const userTitle: string =
+        selectState.value === 'user'
+          ? item[c.userFilterMap.title]
+          : item[c.deptFilterMap.title];
       return (
         <div
           class={[
@@ -992,6 +1005,13 @@ export const Attention = defineComponent({
             <div class={ns.bem('select-modal', 'personel-list', 'text-label')}>
               {usertext}
             </div>
+            {userTitle && (
+              <div
+                class={ns.bem('select-modal', 'personel-list', 'title-label')}
+              >
+                {userTitle}
+              </div>
+            )}
             {userid === c.context.srfuserid ? (
               <div class={ns.bem('select-modal', 'personel-list', 'myself')}>
                 我自己

@@ -1,10 +1,20 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable import/no-extraneous-dependencies */
-import { defineComponent, Ref, ref, watch, onMounted, onUnmounted } from 'vue';
+import {
+  defineComponent,
+  Ref,
+  ref,
+  watch,
+  onMounted,
+  onUnmounted,
+  nextTick,
+  computed,
+} from 'vue';
 import {
   getHtmlProps,
   getEditorEmits,
   useNamespace,
+  useUIStore,
 } from '@ibiz-template/vue3-util';
 import 'quill/dist/quill.core.css';
 import 'quill/dist/quill.snow.css';
@@ -13,9 +23,14 @@ import Quill from 'quill';
 import { Delta } from 'quill/core';
 import { base64ToBlob, CoreConst } from '@ibiz-template/core';
 import { getCookie } from 'qx-util';
-import { ScriptFactory } from '@ibiz-template/runtime';
+import {
+  getPlatformType,
+  PlatformType,
+  ScriptFactory,
+} from '@ibiz-template/runtime';
 import { MobCommentController } from './mob-comment.controller';
 import './mob-comment.scss';
+import IBizQuillCollapse from './quill-components/quill-collapse';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const IBizMobComment: any = defineComponent({
@@ -56,10 +71,19 @@ const IBizMobComment: any = defineComponent({
     const mentionItems: Ref<IData[]> = ref([]);
     const markerItems: Ref<IData[]> = ref([]);
 
+    // 折叠富文本编辑时打开其他抽屉时保持编辑状态
+    const holdVisible = ref(false);
+
+    // DEFAULT 模式是 折叠富文本模式
+    const isDefault = c.editorParams.MODE === 'DEFAULT';
+
     const curValue = ref('');
 
     // 回复数据
     const reply = ref('');
+
+    const { zIndex } = useUIStore();
+    const modalZIndex = zIndex.increment();
 
     const getImage = (delta: Delta) => {
       const item = delta.ops.find(x => x.insert && (x.insert as IData).image);
@@ -88,11 +112,16 @@ const IBizMobComment: any = defineComponent({
       );
       const url = downloadUrl.value.replace('%fileId%', file.fileid);
       const value = getValue();
-      emit('change', value.replace(image, url));
+      if (!isDefault) {
+        emit('change', value.replace(image, url));
+      }
     };
 
     const refresh = (value: string = curValue.value) => {
-      const range = quill.getSelection();
+      if (!quill) {
+        return;
+      }
+      const range = quill?.getSelection();
       const contents = quill.clipboard.convert({
         html: `${value}<p><br></p>`,
         text: '\n',
@@ -123,12 +152,18 @@ const IBizMobComment: any = defineComponent({
     const handleMentionClick = async () => {
       const logic = c.mention.getMentionLogic();
       if (logic) {
+        if (isDefault) {
+          holdVisible.value = true;
+        }
         const res = await c.openPickUpView(props.data, logic);
         if (res && res[0]) {
           const selection = res[0]._deData;
           onMentionConfirm({
             selectedOptions: [{ ...selection, value: selection.id }],
           });
+        }
+        if (isDefault) {
+          holdVisible.value = false;
         }
       } else {
         mentionItems.value = await c.getMentions(props.data);
@@ -156,12 +191,18 @@ const IBizMobComment: any = defineComponent({
     const handleMarkerClick = async () => {
       const logic = c.marker.getMarkerLogic();
       if (logic) {
+        if (isDefault) {
+          holdVisible.value = true;
+        }
         const res = await c.openPickUpView(props.data, logic);
         if (res && res[0]) {
           const selectedOptions = c.marker.toUIData(res);
           onMarkerConfirm({
             selectedOptions,
           });
+        }
+        if (isDefault) {
+          holdVisible.value = false;
         }
       } else {
         markerItems.value = await c.getMarkers(props.data);
@@ -182,28 +223,29 @@ const IBizMobComment: any = defineComponent({
     const onDeltaChange = (delta: Delta): boolean => {
       let result: boolean = true;
       const insertItem = delta.ops.find(x => x.insert);
+      const range = quill.getSelection(true);
+      const index = Math.max(range.index - 1, 0);
       if (insertItem) {
         const value = insertItem.insert;
         if (value === '@') {
-          const range = quill.getSelection(true);
-          quill.deleteText(range.index, 1, 'user');
+          quill.history.undo();
           handleMentionClick();
           result = false;
         }
         if (value === '#') {
-          const range = quill.getSelection(true);
-          quill.deleteText(range.index, 1, 'user');
+          quill.history.undo();
           handleMarkerClick();
           result = false;
         }
       }
       const deleteItem = delta.ops.find(x => x.delete);
       if (deleteItem) {
-        const range = quill.getSelection(true);
-        const item = quill.getContents(range.index - 1, 1);
-        const hasMarker = item.ops.some(x => x.attributes?.marker);
-        if (hasMarker) {
-          quill.deleteText(range.index - 1, 1, 'user');
+        const item = quill.getContents(index, 1);
+        const hasCustom = item.ops.some(
+          x => x.attributes?.marker || x.attributes?.mention,
+        );
+        if (hasCustom) {
+          quill.deleteText(index, 1, 'user');
           result = false;
         }
       }
@@ -215,7 +257,9 @@ const IBizMobComment: any = defineComponent({
         return;
       }
       const theme = c.showToolbar ? 'snow' : 'bubble';
-      Object.assign(c.modules, { toolbar: toolbarRef.value });
+      if (!isDefault) {
+        Object.assign(c.modules, { toolbar: toolbarRef.value });
+      }
       quill = new Quill(editorRef.value, {
         theme,
         modules: c.modules,
@@ -231,7 +275,9 @@ const IBizMobComment: any = defineComponent({
               handleUpload(image);
               return;
             }
-            emit('change', getValue());
+            if (!isDefault) {
+              emit('change', getValue());
+            }
           }
         }
       });
@@ -242,7 +288,13 @@ const IBizMobComment: any = defineComponent({
           emit('focus');
         } else {
           // 失焦
-          editing.value = false;
+          if (isDefault) {
+            if (!holdVisible.value) {
+              editing.value = false;
+            }
+          } else {
+            editing.value = false;
+          }
           emit('blur');
         }
       });
@@ -256,7 +308,7 @@ const IBizMobComment: any = defineComponent({
       () => {
         if (props.value) {
           curValue.value = c.transformDelta(props.value);
-          const html = quill.getSemanticHTML();
+          const html = quill?.getSemanticHTML();
           if (curValue.value !== html) {
             refresh();
           }
@@ -303,8 +355,34 @@ const IBizMobComment: any = defineComponent({
       { immediate: true, deep: true },
     );
 
+    /** 以下是一个获取窗口垂直滚动位置的函数 */
+    const getVerticalScrollPosition = () => {
+      if (typeof window.pageYOffset !== 'undefined') {
+        return window.pageYOffset;
+      }
+      return document.documentElement.scrollTop;
+    };
+
+    /** 处理初始化自动聚焦 */
+    const handleAutoFocus = () => {
+      nextTick(() => {
+        setTimeout(() => {
+          const verticalScrollPosition = getVerticalScrollPosition();
+          quill?.focus();
+
+          // 适配IOS端重新聚焦后正在编辑的元素位置不正确
+          if (getPlatformType() === PlatformType.IOS) {
+            nextTick(() => {
+              window.scrollTo(0, verticalScrollPosition);
+            });
+          }
+        }, 200);
+      });
+    };
+
     onMounted(() => {
       init();
+      if (c.autoFocus) handleAutoFocus();
     });
 
     // 设置回复数据
@@ -337,7 +415,7 @@ const IBizMobComment: any = defineComponent({
     const renderReply = () => {
       if (reply.value) {
         const htmlCode = ScriptFactory.execScriptFn(
-          { value: reply.value },
+          { value: reply.value, controller: c },
           c.replyScript,
           { singleRowReturn: true, isAsync: false },
         ) as string;
@@ -353,9 +431,109 @@ const IBizMobComment: any = defineComponent({
       }
     };
 
+    const updating = ref(false);
+
+    const isCollapse = ref(true);
+
+    // 展开编辑
+    const handleEdit = () => {
+      if (!quill) {
+        init();
+      }
+    };
+
+    // 取消编辑
+    const handleCancel = () => {
+      editing.value = false;
+      updating.value = false;
+    };
+
+    // 确认编辑
+    const handleConfirm = () => {
+      emit('change', getValue());
+      nextTick(() => {
+        editing.value = false;
+        updating.value = false;
+      });
+    };
+
+    const onOpen = () => {
+      if (isDefault) {
+        holdVisible.value = true;
+      }
+    };
+
+    const onClose = () => {
+      if (isDefault) {
+        holdVisible.value = false;
+      }
+    };
+
+    const showAction = computed({
+      get() {
+        return editing.value || holdVisible.value;
+      },
+      set(value) {
+        editing.value = value;
+      },
+    });
+
+    const renderCollpase = () => {
+      return (
+        <div class={ns.b('collapse')}>
+          {!editing.value && (
+            <IBizQuillCollapse
+              value={curValue.value}
+              controller={c}
+              disabled={props.disabled}
+              readonly={props.readonly}
+              showCollapse={c.showCollapse}
+              defaultHeight={c.defaultHeight}
+              isCollapse={isCollapse.value}
+              onEdit={() => {
+                editing.value = true;
+              }}
+              onCollapse={(val: boolean) => {
+                isCollapse.value = val;
+              }}
+            />
+          )}
+          <van-action-sheet
+            v-model:show={showAction.value}
+            teleport='body'
+            class={[ns.be('collapse', 'popup'), ns.m(lang.toLowerCase())]}
+            close-on-click-overlay={false}
+            z-index={modalZIndex}
+            onOpened={handleEdit}
+          >
+            <div class={ns.be('collapse', 'content')}>
+              <div ref='editorRef'>
+                {c.valueMode === 'html' ? (
+                  <div v-html={curValue.value}></div>
+                ) : null}
+              </div>
+            </div>
+            <div class={ns.be('collapse', 'footer')}>
+              <van-button class={ns.e('cancel')} onClick={handleCancel}>
+                {ibiz.i18n.t('editor.common.cancel')}
+              </van-button>
+              <van-button
+                class={ns.e('confirm')}
+                onClick={handleConfirm}
+                type='primary'
+              >
+                {ibiz.i18n.t('editor.common.confirm')}
+              </van-button>
+            </div>
+          </van-action-sheet>
+        </div>
+      );
+    };
+
     return {
       ns,
       lang,
+      isDefault,
       editing,
       editorRef,
       toolbarRef,
@@ -364,6 +542,7 @@ const IBizMobComment: any = defineComponent({
       mentionItems,
       markerItems,
       curValue,
+      modalZIndex,
       handleMentionClick,
       handleMarkerClick,
       onMentionCancel,
@@ -371,9 +550,15 @@ const IBizMobComment: any = defineComponent({
       onMarkerCancel,
       onMarkerConfirm,
       renderReply,
+      renderCollpase,
+      onOpen,
+      onClose,
     };
   },
   render() {
+    if (this.isDefault) {
+      return this.renderCollpase();
+    }
     return (
       <div
         class={[
@@ -435,7 +620,13 @@ const IBizMobComment: any = defineComponent({
             </button>
           </div>
         </div>
-        <van-popup v-model:show={this.showAtPopup} round position='bottom'>
+        <van-popup
+          v-model:show={this.showAtPopup}
+          round
+          position='bottom'
+          onOpen={this.onOpen}
+          onClose={this.onClose}
+        >
           <van-picker
             columns={this.mentionItems}
             confirm-button-text={ibiz.i18n.t('editor.common.confirm')}
@@ -454,7 +645,13 @@ const IBizMobComment: any = defineComponent({
             }}
           </van-picker>
         </van-popup>
-        <van-popup v-model:show={this.showMkPopup} round position='bottom'>
+        <van-popup
+          v-model:show={this.showMkPopup}
+          round
+          position='bottom'
+          onOpen={this.onOpen}
+          onClose={this.onClose}
+        >
           <van-picker
             columns={this.markerItems}
             confirm-button-text={ibiz.i18n.t('editor.common.confirm')}

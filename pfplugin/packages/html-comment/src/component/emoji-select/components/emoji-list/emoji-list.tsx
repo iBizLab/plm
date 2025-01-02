@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { PropType, defineComponent, computed, watch, ref } from 'vue';
 import { useNamespace } from '@ibiz-template/vue3-util';
 import { CategoryLabel } from '../category-label';
