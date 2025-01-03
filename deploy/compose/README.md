@@ -1,5 +1,13 @@
 # 使用Docker Compose安装PLM
- 
+
+### 安装准备
+拉取青云镜像需要登录，可以参照官方文档创建用户：[https://docsv4.qingcloud.com/user_guide/container/dockerhub/manual/user_manage/](https://docsv4.qingcloud.com/user_guide/container/dockerhub/manual/user_manage/)
+
+使用创建的docker用户在命令行执行以下命令
+```
+docker login -u <username> -p <password> dockerhub.qingcloud.com
+```
+
 ### 安装
 ##### 克隆此存储库：
 
