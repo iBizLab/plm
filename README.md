@@ -49,9 +49,9 @@ iBizPLM划分为7大模块：
 ### 安装部署
 
 ##### 安装准备
-参照官方文档创建青云docker用户：[https://docsv4.qingcloud.com/user_guide/container/dockerhub/manual/user_manage/](https://docsv4.qingcloud.com/user_guide/container/dockerhub/manual/user_manage/)
+###### 参照官方文档创建青云docker用户：[https://docsv4.qingcloud.com/user_guide/container/dockerhub/manual/user_manage/](https://docsv4.qingcloud.com/user_guide/container/dockerhub/manual/user_manage/)
 
-使用此用户登录
+###### 使用此用户在命令行执行以下登录命令
 ```
 docker login -u <username> -p <password> dockerhub.qingcloud.com
 ```
