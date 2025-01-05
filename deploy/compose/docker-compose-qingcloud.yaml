@@ -1,0 +1,269 @@
+version: "3.2"
+networks:
+  agent_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.144.0.0/16
+
+services:
+  #mysql
+  mysql:
+    image: dockerhub.qingcloud.com/ibizlab/mysql:5.7.plm.20241210
+    ports:
+      - "30006:3306"
+    environment:
+      - TZ=Asia/Shanghai
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_ROOT_PASSWORD=Mysql@2022
+      - IPADDR=10.144.0.1
+      - GITUSER=admin
+      - GITTOKEN=admin@2023
+      - CLOUDDBNAME=a_lab01_3f9ebc219
+      - DBSERVERIP=mysql
+      - DBSERVERPORT=3306
+      - DBUSERNAME=a_lab01_3f9ebc219
+      - DBPASSWORD=9d@A178@
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+    command: mysqld
+    networks:
+      - agent_network
+  #nacos
+  nacos:
+    image: dockerhub.qingcloud.com/ibizlab/nacos-server:v2.0.3
+    environment:
+      - PREFER_HOST_MODE=hostname
+      - MODE=standalone
+      - SPRING_DATASOURCE_PLATFORM=mysql
+      - MYSQL_SERVICE_HOST=mysql
+      - MYSQL_SERVICE_DB_NAME=nacos_conf
+      - MYSQL_SERVICE_PORT=3306
+      - MYSQL_SERVICE_USER=nacos
+      - MYSQL_SERVICE_PASSWORD=Nacos@2022
+      - JVM_XMS=512m
+      - JVM_XMX=2048m
+    ports:
+      - "30048:8848"
+    networks:
+      - agent_network
+    entrypoint:
+      - /entrypoint-waitfor.sh
+    command: mysql:3306
+  #redis
+  redis:
+    image: dockerhub.qingcloud.com/ibizlab/redis:6.2.6
+    ports:
+      - "6379:6379"
+    environment:
+      - TZ=Asia/Shanghai
+    logging:
+      driver: "json-file"
+    command: redis-server
+    networks:
+      - agent_network
+  #zookeeper
+  zoo1:
+    image: dockerhub.qingcloud.com/ibizlab/zookeeper:3.7.0
+    ports:
+      - "2181:2181"
+    networks:
+      - agent_network
+    environment:
+      - ZOO_MY_ID=1
+      - ZOO_SERVERS=server.1=0.0.0.0:2888:3888;2181
+  #emqx
+  emqx:
+    image: dockerhub.qingcloud.com/ibizlab/emqx:4.4
+    ports:
+      - "30083:8083"
+    networks:
+      - agent_network
+  #ibizlab-uaa-api
+  ibizlab-uaa-api:
+    image: dockerhub.qingcloud.com/ibizlab/uaa-api:2.0.15
+    ports:
+      - "32666:32666"
+    networks:
+      - agent_network
+    entrypoint: /entrypoint-waitfor.sh
+    command: nacos:8848
+    environment:
+      - IBIZ_SERVICEHUB_ID=ibizuaa
+      - SPRING_CLOUD_NACOS_CONFIG_NAMESPACE=
+      - SPRING_CLOUD_NACOS_DISCOVERY_NAMESPACE=
+      - NACOS=nacos.ibizcloud.cn:30048
+      - SPRING_CLOUD_NACOS_CONFIG_SERVER-ADDR=nacos.ibizcloud.cn:30048
+      - SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR=nacos.ibizcloud.cn:30048
+      - SPRING_CLOUD_NACOS_DISCOVERY_IP=nacos.ibizcloud.cn
+      - SPRING_CLOUD_NACOS_DISCOVERY_GROUP=ibiz_config_group
+      - SPRING_CLOUD_NACOS_CONFIG_GROUP=ibiz_config_group
+      - SPRING_DATASOURCE_DEFAULTSCHEMA=a_lab01_3f9ebc219
+      - SPRING_DATASOURCE_DRIVER-CLASS-NAME=com.mysql.cj.jdbc.Driver
+      - SPRING_DATASOURCE_PASSWORD=9d@A178@
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/a_lab01_3f9ebc219?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useOldAliasMetadataBehavior=true&serverTimezone=GMT%2B8&allowMultiQueries=true&useSSL=false
+      - SPRING_DATASOURCE_USERNAME=a_lab01_3f9ebc219
+      - SPRING_LIQUIBASE_ENABLED=true
+      - SPRING_DATASOURCE_ISSYNCDBSCHEMA=true
+      - SERVER_PORT=32666
+      - IBIZ_CACHELEVEL=L2
+      - SPRING_REDIS_HOST=redis
+      - SPRING_REDIS_PORT=6379
+      - SPRING_REDIS_DATABASE=0
+      - IBIZ_AUTH_ACCOUNTLOCK_ENABLE=false
+      - IBIZ_AUTH_ACCOUNTLOCK_MAXFAILCOUNT=10
+      - IBIZ_AUTH_PASSWORDSTORAGEMODE=none
+      - IBIZ_AUTH_SECURITY=oauth2
+      - IBIZ_AUTH_PASSWORDENCRYPTMODE=none
+      - IBIZ_JWT_SIGNATURE=RSA
+      - IBIZ_AUTH_PASSWORDSTORAGEMODE=sm3
+      
+    extra_hosts:
+      - "gateway.ibizcloud.cn:10.144.0.1"
+      - "nacos.ibizcloud.cn:10.144.0.1"
+  #ibiz-ebsx-allinone
+  ibiz-ebsx-allinone:
+    image: dockerhub.qingcloud.com/ibizlab/ibiz-ebsx-allinone-rt:8.1.0.565.91.241231
+    environment:
+      - SPRING_CLOUD_NACOS_DISCOVERY_IP=nacos.ibizcloud.cn
+      - SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR=nacos.ibizcloud.cn:30048
+      - SPRING_CLOUD_NACOS_CONFIG_SERVER-ADDR=nacos.ibizcloud.cn:30048
+      - SERVER_PORT=30000
+      - SPRING_DATASOURCE_USERNAME=a_lab01_3f9ebc219
+      - SPRING_DATASOURCE_PASSWORD=9d@A178@
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/a_lab01_3f9ebc219?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useOldAliasMetadataBehavior=true&serverTimezone=GMT%2B8&allowMultiQueries=true
+      - IPADDR=10.144.0.1
+      
+    entrypoint: /entrypoint-waitfor.sh
+    command: ibizlab-uaa-api:32666
+    ports:
+      - "30000:30000"
+    networks:
+      - agent_network
+    volumes:
+      - ./rt_data:/app/file/datafile/file
+    extra_hosts:
+      - "nacos.ibizcloud.cn:10.144.0.1"
+  #ibiz-ebsx-gateway
+  ibiz-ebsx-gateway:
+    image: dockerhub.qingcloud.com/ibizlab/ibiz-ebsx-gateway:8.1.0.377
+    ports:
+      - "30086:30086"
+    environment:
+      - SPRING_CLOUD_NACOS_DISCOVERY_IP=nacos.ibizcloud.cn
+      - SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR=nacos.ibizcloud.cn:30048
+      - SPRING_CLOUD_NACOS_CONFIG_SERVER-ADDR=nacos.ibizcloud.cn:30048
+      - SERVER_PORT=30086
+      
+    networks:
+      - agent_network
+    entrypoint: /entrypoint-waitfor.sh
+    command: nacos:8848
+    extra_hosts:
+      - "nacos.ibizcloud.cn:10.144.0.1"
+  #cloudmgrweb
+  cloudmgrweb:
+    image: dockerhub.qingcloud.com/ibizlab/ibiz-cloud-web-runner:9.0.6.3
+    ports:
+      - "30101:80"
+    networks:
+      - agent_network
+    entrypoint: /entrypoint-waitfor.sh
+    command: ibiz-ebsx-allinone:30000
+    environment:
+      - MOCKDCSYSTEMID=cloudmgr
+      - APPNAME=CloudMgr
+      - APPCODE=cloudmgr
+      - APICODE=cloudmgr__cloudmgr
+      - BASEURL=cloudmgr__cloudmgr
+      - SYSCENTERID=demo
+      - CENTERNAME=演示中心
+      
+    extra_hosts:
+      - "gateway.ibizcloud.cn:10.144.0.1"
+      - "nacos.ibizcloud.cn:10.144.0.1"
+  #cloudmgrapi
+  cloudmgrapi:
+    image: dockerhub.qingcloud.com/ibizlab/ibiz-service-runner:8.1.0.532.1
+    ports:
+      - "30100:30100"
+    networks:
+      - agent_network
+    entrypoint: /entrypoint-waitfor.sh
+    command: cloudmgrweb:80
+    environment:
+      - IBIZ_SERVICEHUB_ID=cloudmgrapi
+      - NACOS=nacos.ibizcloud.cn:30048
+      - SPRING_CLOUD_NACOS_CONFIG_SERVER-ADDR=nacos.ibizcloud.cn:30048
+      - SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR=nacos.ibizcloud.cn:30048
+      - SPRING_CLOUD_NACOS_DISCOVERY_IP=nacos.ibizcloud.cn
+      - SPRING_DATASOURCE_DEFAULTSCHEMA=a_lab01_3f9ebc219
+      - SPRING_DATASOURCE_DRIVER-CLASS-NAME=com.mysql.jdbc.Driver
+      - SPRING_DATASOURCE_PASSWORD=9d@A178@
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/a_lab01_3f9ebc219?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useOldAliasMetadataBehavior=true&serverTimezone=GMT%2B8&allowMultiQueries=true&useSSL=false
+      - SPRING_DATASOURCE_USERNAME=a_lab01_3f9ebc219
+      - SERVER_PORT=30100
+      
+    extra_hosts:
+      - "gateway.ibizcloud.cn:10.144.0.1"
+      - "nacos.ibizcloud.cn:10.144.0.1"
+  #plmweb
+  plmweb:
+    image: dockerhub.qingcloud.com/ibizlab/ibiz-cloud-web-runner:9.0.7.38-alpha.43.plm.241231
+    ports:
+      - 30250:80
+    networks:
+      - agent_network
+    environment:
+      - FILE_PREVIEW_ADDRESS=http://10.144.0.1:30012
+      
+    entrypoint: /entrypoint-waitfor.sh
+    command: nacos:8848
+    extra_hosts:
+      - "gateway.ibizcloud.cn:10.144.0.1"
+      - "nacos.ibizcloud.cn:10.144.0.1"
+  #plmmob
+  plmmob:
+    image: dockerhub.qingcloud.com/ibizlab/ibiz-cloud-mob-runner:9.0.0.41.plm.241231
+    ports:
+      - 30260:80
+    networks:
+      - agent_network
+    entrypoint: /entrypoint-waitfor.sh
+    command: nacos:8848
+    extra_hosts:
+      - "gateway.ibizcloud.cn:10.144.0.1"
+      - "nacos.ibizcloud.cn:10.144.0.1"
+  #plmservice
+  plmservice:
+    image: dockerhub.qingcloud.com/ibizlab/ibiz-service-runner:8.1.0.565.91
+    ports:
+      - "30251:30251"
+    networks:
+      - agent_network
+    environment:
+      - IBIZ_SERVICEHUB_ID=demo
+      - NACOS=nacos.ibizcloud.cn:30048
+      - SPRING_CLOUD_NACOS_CONFIG_SERVER-ADDR=nacos.ibizcloud.cn:30048
+      - SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR=nacos.ibizcloud.cn:30048
+      - SPRING_CLOUD_NACOS_DISCOVERY_IP=nacos.ibizcloud.cn
+      - SPRING_DATASOURCE_DEFAULTSCHEMA=root
+      - SPRING_DATASOURCE_DRIVER-CLASS-NAME=org.h2.Driver
+      - SPRING_DATASOURCE_PASSWORD=123456
+      - SPRING_DATASOURCE_URL=jdbc:h2:mem:master
+      - SPRING_DATASOURCE_USERNAME=root
+      - SERVER_PORT=30251
+      - SPRING_REDIS_HOST=redis
+      - SPRING_REDIS_PORT=6379
+      - ZOOKEEPER_ADDRESS=zoo1
+      - ZOOKEEPER_PORT=2181
+      
+    entrypoint: /entrypoint-waitfor.sh
+    command: ibiz-ebsx-allinone:30000
+    extra_hosts:
+      - "gateway.ibizcloud.cn:10.144.0.1"
+      - "nacos.ibizcloud.cn:10.144.0.1"
+  kkfileview:
+    image: dockerhub.qingcloud.com/ibizlab/kkfileview:4.1.0
+    ports:
+      - 30012:8012
