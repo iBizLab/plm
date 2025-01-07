@@ -16,7 +16,7 @@ services:
       - TZ=Asia/Shanghai
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
       - MYSQL_ROOT_PASSWORD=Mysql@2022
-      - IPADDR=10.144.0.1
+      - IPADDR=${IPADDR:-10.144.0.1}
       - GITUSER=admin
       - GITTOKEN=admin@2023
       - CLOUDDBNAME=a_lab01_3f9ebc219
@@ -119,8 +119,8 @@ services:
       - IBIZ_AUTH_PASSWORDSTORAGEMODE=sm3
       
     extra_hosts:
-      - "gateway.ibizcloud.cn:10.144.0.1"
-      - "nacos.ibizcloud.cn:10.144.0.1"
+      - "gateway.ibizcloud.cn:${IPADDR:-10.144.0.1}"
+      - "nacos.ibizcloud.cn:${IPADDR:-10.144.0.1}"
   #ibiz-ebsx-allinone
   ibiz-ebsx-allinone:
     image: dockerhub.qingcloud.com/ibizlab/ibiz-ebsx-allinone-rt:8.1.0.565.91.241231
@@ -132,7 +132,7 @@ services:
       - SPRING_DATASOURCE_USERNAME=a_lab01_3f9ebc219
       - SPRING_DATASOURCE_PASSWORD=9d@A178@
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/a_lab01_3f9ebc219?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useOldAliasMetadataBehavior=true&serverTimezone=GMT%2B8&allowMultiQueries=true
-      - IPADDR=10.144.0.1
+      - IPADDR=${IPADDR:-10.144.0.1}
       
     entrypoint: /entrypoint-waitfor.sh
     command: ibizlab-uaa-api:32666
@@ -143,7 +143,7 @@ services:
     volumes:
       - ./rt_data:/app/file/datafile/file
     extra_hosts:
-      - "nacos.ibizcloud.cn:10.144.0.1"
+      - "nacos.ibizcloud.cn:${IPADDR:-10.144.0.1}"
   #ibiz-ebsx-gateway
   ibiz-ebsx-gateway:
     image: dockerhub.qingcloud.com/ibizlab/ibiz-ebsx-gateway:8.1.0.377
@@ -160,7 +160,7 @@ services:
     entrypoint: /entrypoint-waitfor.sh
     command: nacos:8848
     extra_hosts:
-      - "nacos.ibizcloud.cn:10.144.0.1"
+      - "nacos.ibizcloud.cn:${IPADDR:-10.144.0.1}"
   #cloudmgrweb
   cloudmgrweb:
     image: dockerhub.qingcloud.com/ibizlab/ibiz-cloud-web-runner:9.0.6.3
@@ -180,8 +180,8 @@ services:
       - CENTERNAME=演示中心
       
     extra_hosts:
-      - "gateway.ibizcloud.cn:10.144.0.1"
-      - "nacos.ibizcloud.cn:10.144.0.1"
+      - "gateway.ibizcloud.cn:${IPADDR:-10.144.0.1}"
+      - "nacos.ibizcloud.cn:${IPADDR:-10.144.0.1}"
   #cloudmgrapi
   cloudmgrapi:
     image: dockerhub.qingcloud.com/ibizlab/ibiz-service-runner:8.1.0.532.1
@@ -205,8 +205,8 @@ services:
       - SERVER_PORT=30100
       
     extra_hosts:
-      - "gateway.ibizcloud.cn:10.144.0.1"
-      - "nacos.ibizcloud.cn:10.144.0.1"
+      - "gateway.ibizcloud.cn:${IPADDR:-10.144.0.1}"
+      - "nacos.ibizcloud.cn:${IPADDR:-10.144.0.1}"
   #plmweb
   plmweb:
     image: dockerhub.qingcloud.com/ibizlab/ibiz-cloud-web-runner:9.0.7.38-alpha.43.plm.241231
@@ -215,13 +215,13 @@ services:
     networks:
       - agent_network
     environment:
-      - FILE_PREVIEW_ADDRESS=http://10.144.0.1:30012
+      - FILE_PREVIEW_ADDRESS=http://${IPADDR:-10.144.0.1}:30012
       
     entrypoint: /entrypoint-waitfor.sh
     command: nacos:8848
     extra_hosts:
-      - "gateway.ibizcloud.cn:10.144.0.1"
-      - "nacos.ibizcloud.cn:10.144.0.1"
+      - "gateway.ibizcloud.cn:${IPADDR:-10.144.0.1}"
+      - "nacos.ibizcloud.cn:${IPADDR:-10.144.0.1}"
   #plmmob
   plmmob:
     image: dockerhub.qingcloud.com/ibizlab/ibiz-cloud-mob-runner:9.0.0.41.plm.241231
@@ -232,8 +232,8 @@ services:
     entrypoint: /entrypoint-waitfor.sh
     command: nacos:8848
     extra_hosts:
-      - "gateway.ibizcloud.cn:10.144.0.1"
-      - "nacos.ibizcloud.cn:10.144.0.1"
+      - "gateway.ibizcloud.cn:${IPADDR:-10.144.0.1}"
+      - "nacos.ibizcloud.cn:${IPADDR:-10.144.0.1}"
   #plmservice
   plmservice:
     image: dockerhub.qingcloud.com/ibizlab/ibiz-service-runner:8.1.0.565.91
@@ -261,8 +261,8 @@ services:
     entrypoint: /entrypoint-waitfor.sh
     command: ibiz-ebsx-allinone:30000
     extra_hosts:
-      - "gateway.ibizcloud.cn:10.144.0.1"
-      - "nacos.ibizcloud.cn:10.144.0.1"
+      - "gateway.ibizcloud.cn:${IPADDR:-10.144.0.1}"
+      - "nacos.ibizcloud.cn:${IPADDR:-10.144.0.1}"
   kkfileview:
     image: dockerhub.qingcloud.com/ibizlab/kkfileview:4.1.0
     ports:
