@@ -38,52 +38,44 @@ iBizPLM划分为7大模块：
 
 ### 在线体验
 
-- PC端-演示地址：[http://plm.ibizlab.cn/ibizplm-plmweb/](http://plm.ibizlab.cn/ibizplm-plmweb/)
-- 移动端-演示地址（Demo版）：[http://mob.plm.ibizlab.cn/ibizplm-plmmob/](http://mob.plm.ibizlab.cn/ibizplm-plmmob/)
+- 官方网站：[https://plm.ibizlab.cn](https://plm.ibizlab.cn)
+- PC端-演示地址：[https://plm.ibizlab.cn/ibizplm-plmweb/](https://plm.ibizlab.cn/ibizplm-plmweb/)
+- 移动端-演示地址（Demo版）：[https://mob.plm.ibizlab.cn/ibizplm-plmmob/](https://mob.plm.ibizlab.cn/ibizplm-plmmob/)
 - 演示管理员账号/密码：demo_admin/123456
 - 演示普通用户账号/密码：demo_user/123456
 - 欢迎加入iBizPLM交流QQ群：1067434627
-- 系统详细设计文档：[http://plmdoc.ibizlab.cn](http://plmdoc.ibizlab.cn) 特别鸣谢：[doc-generator](https://github.com/iBizLab/doc-generator) 提供模型发布"系统详细设计文档"扩展
-- 基于 Spring Boot 和 Vue 的轻量级应用程序源码[plm-code](https://github.com/iBizLab/plm-code)
+- 系统操作手册：[https://plm.ibizlab.cn/wiki/](https://plm.ibizlab.cn/wiki/)
+- 系统详细设计文档：[https://plm.ibizlab.cn/doc/](https://plm.ibizlab.cn/doc/) 特别鸣谢：[doc-generator](https://gitee.com/iBizLab/doc-generator) 提供模型发布"系统详细设计文档"扩展
+- 基于 Spring Boot 和 Vue 的轻量级应用程序源码[plm-code](https://gitee.com/iBizLab/plm-code)
+- 开源系统日常更新代码仓库[plm-open](https://gitee.com/ibizplm-open/plm-runner)
 
 ### 安装部署
 
 ##### 安装准备
-###### 参照官方文档创建青云docker用户：[https://docsv4.qingcloud.com/user_guide/container/dockerhub/manual/user_manage/](https://docsv4.qingcloud.com/user_guide/container/dockerhub/manual/user_manage/)
 
-###### 使用此用户在命令行执行以下登录命令
-```
-docker login -u <username> -p <password> dockerhub.qingcloud.com
-```
-
-##### 克隆此存储库：
+dockerhub连接不便，目前镜像已经推送到青云，未登陆青云的可以用ibizplm账号登陆。
 
 ```
-git clone https://github.com/ibizlab/plm.git
+docker login -u ibizplm -p ibizplm dockerhub.qingcloud.com
 ```
 
-##### 切换到此目录：
+##### 获取编排文件
+进入plm/deploy/compose目录
 
 ```
-cd iBizPLM/deploy/compose
-```
-
-##### 复制示例`.env.example`文件并编辑要更改的任何值：
-
-```
-cp .env.example .env
-vim .env
+git clone https://gitee.com/ibizlab/plm.git
+cd plm/deploy/compose
 ```
 
 ##### 启动容器：
 
 ```
-docker-compose --env-file=.env up -d
+docker-compose -f docker-compose-qingcloud.yaml up -d
 ```
 
 等待启动完成访问http://localhost:30250/ibizplm-plmweb/
 
-了解更多请参考[deploy/compose/README.md](deploy/compose/README.md)
+了解更多请参考[官网/快速开始](https://plm.ibizlab.cn/start.shtml) 或 [deploy/compose/README.md](deploy/compose/README.md)
 
 ### 技术架构
 
