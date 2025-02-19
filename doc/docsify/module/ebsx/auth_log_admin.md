@@ -37,11 +37,13 @@
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[数据查询(DEFAULT)](module/ebsx/auth_log_admin/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/ebsx/auth_log_admin/query/View)|VIEW|否|否 |否 ||
+|[当前用户(cur_user)](module/ebsx/auth_log_admin/query/cur_user)|cur_user|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/ebsx/auth_log_admin/dataset/Default)|DEFAULT|数据查询|是|||
+|[当前用户(cur_user)](module/ebsx/auth_log_admin/dataset/cur_user)|cur_user|数据查询|否|||
 |[排重用户(distinct_userid)](module/ebsx/auth_log_admin/dataset/distinct_userid)|distinct_userid|数据查询|否|||
 |[日期分组集合(group_by_data)](module/ebsx/auth_log_admin/dataset/group_by_data)|group_by_data|数据查询|否|||
 

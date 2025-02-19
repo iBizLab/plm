@@ -16,6 +16,7 @@ entity "DEPARTMENT\n部门" as DEPARTMENT [[$../module/Base/department {部门}]
         --
         <&link-intact> HEAD_ID - 部门负责人标识
         <&link-intact> PARENT_ID - 父部门标识
+        <&link-intact> ORGANIZATION_ID - 组织标识
 }
 entity "GROUP\n团队" as GROUP [[$../module/Base/group {团队}]] {
         <&key> ID - 标识

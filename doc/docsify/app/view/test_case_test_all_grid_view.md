@@ -15,11 +15,11 @@
 
 
 ### 关联界面行为
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [移入计划（气泡）](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [复制用例](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [删除](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [界面行为支持获取编辑列](module/TestMgmt/test_case#界面行为)
   * [用例(TEST_CASE)](module/TestMgmt/test_case) : [移动](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [界面行为支持获取编辑列](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [删除](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [复制](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [移入计划（气泡）](module/TestMgmt/test_case#界面行为)
 
 ### 关联视图
   * [移入计划(test_case_case_move_plan_option_view)](app/view/test_case_case_move_plan_option_view)

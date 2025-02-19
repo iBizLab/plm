@@ -16,6 +16,8 @@ stages.each { it ->
     new_stage.set('name', it.get('name'))
     new_stage.set('type', it.get('type'))
     new_stage.set('sequence', it.get('sequence'))
+    new_stage.set('color', it.get('color'))
+    new_stage.set('style', it.get('style'))
     new_stage.set('is_current', 0)
     if(it.get('id') == first_stage_id){
         new_stage.set('is_current', 1)

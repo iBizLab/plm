@@ -15,24 +15,24 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./recent_jump_other_view#begin {开始}]]
-state "工作项" as PREPAREJSPARAM7  [[$./recent_jump_other_view#preparejsparam7 {工作项}]]
-state "获取选中数据详情" as RAWJSCODE1  [[$./recent_jump_other_view#rawjscode1 {获取选中数据详情}]]
-state "测试类" as PREPAREJSPARAM8  [[$./recent_jump_other_view#preparejsparam8 {测试类}]]
 state "项目类" as PREPAREJSPARAM6  [[$./recent_jump_other_view#preparejsparam6 {项目类}]]
-state "清空父类标识" as PREPAREJSPARAM10  [[$./recent_jump_other_view#preparejsparam10 {清空父类标识}]]
-state "获取选中卡片" as PREPAREJSPARAM1  [[$./recent_jump_other_view#preparejsparam1 {获取选中卡片}]]
-state "需求" as PREPAREJSPARAM4  [[$./recent_jump_other_view#preparejsparam4 {需求}]]
-state "结束" as END1 <<end>> [[$./recent_jump_other_view#end1 {结束}]]
-state "页面" as PREPAREJSPARAM12  [[$./recent_jump_other_view#preparejsparam12 {页面}]]
 state "实体行为" as DEACTION1  [[$./recent_jump_other_view#deaction1 {实体行为}]]
-state "产品类" as PREPAREJSPARAM3  [[$./recent_jump_other_view#preparejsparam3 {产品类}]]
-state "获取选中表格行" as PREPAREJSPARAM2  [[$./recent_jump_other_view#preparejsparam2 {获取选中表格行}]]
-state "重定向跳转" as DEUIACTION1  [[$./recent_jump_other_view#deuiaction1 {重定向跳转}]]
-state "工单" as PREPAREJSPARAM5  [[$./recent_jump_other_view#preparejsparam5 {工单}]]
-state "打开工作项主视图" as DEUIACTION2  [[$./recent_jump_other_view#deuiaction2 {打开工作项主视图}]]
+state "结束" as END1 <<end>> [[$./recent_jump_other_view#end1 {结束}]]
 state "填充项目标识" as PREPAREJSPARAM13  [[$./recent_jump_other_view#preparejsparam13 {填充项目标识}]]
-state "测试用例" as PREPAREJSPARAM9  [[$./recent_jump_other_view#preparejsparam9 {测试用例}]]
 state "知识类" as PREPAREJSPARAM11  [[$./recent_jump_other_view#preparejsparam11 {知识类}]]
+state "打开工作项主视图" as DEUIACTION2  [[$./recent_jump_other_view#deuiaction2 {打开工作项主视图}]]
+state "获取选中卡片" as PREPAREJSPARAM1  [[$./recent_jump_other_view#preparejsparam1 {获取选中卡片}]]
+state "清空父类标识" as PREPAREJSPARAM10  [[$./recent_jump_other_view#preparejsparam10 {清空父类标识}]]
+state "测试用例" as PREPAREJSPARAM9  [[$./recent_jump_other_view#preparejsparam9 {测试用例}]]
+state "工单" as PREPAREJSPARAM5  [[$./recent_jump_other_view#preparejsparam5 {工单}]]
+state "获取选中表格行" as PREPAREJSPARAM2  [[$./recent_jump_other_view#preparejsparam2 {获取选中表格行}]]
+state "工作项" as PREPAREJSPARAM7  [[$./recent_jump_other_view#preparejsparam7 {工作项}]]
+state "产品类" as PREPAREJSPARAM3  [[$./recent_jump_other_view#preparejsparam3 {产品类}]]
+state "重定向跳转" as DEUIACTION1  [[$./recent_jump_other_view#deuiaction1 {重定向跳转}]]
+state "获取选中数据详情" as RAWJSCODE1  [[$./recent_jump_other_view#rawjscode1 {获取选中数据详情}]]
+state "需求" as PREPAREJSPARAM4  [[$./recent_jump_other_view#preparejsparam4 {需求}]]
+state "测试类" as PREPAREJSPARAM8  [[$./recent_jump_other_view#preparejsparam8 {测试类}]]
+state "页面" as PREPAREJSPARAM12  [[$./recent_jump_other_view#preparejsparam12 {页面}]]
 
 
 Begin --> PREPAREJSPARAM1 : [[$./recent_jump_other_view#begin-preparejsparam1{最近使用} 最近使用]]
@@ -253,15 +253,15 @@ if (selecteddata.length > 0) {
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|当前视图|cur_view|当前视图对象||
 |工作项过滤器|work_item_filter|过滤器||
+|工作项|work_item|数据对象||
+|卡片参数|DATAVIEW|部件对象||
 |选中数据（数组）|selectedData|简单数据列表||
+|工作项分页结果对象|work_item_page|分页查询||
+|当前视图|cur_view|当前视图对象||
+|选中数据|selectobj|数据对象||
 |当前部件对象|this_obj|当前部件对象||
+|表格部件参数|grid|部件对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |上下文参数|ctx|导航视图参数绑定参数||
 |state|STATE|数据对象||
-|选中数据|selectobj|数据对象||
-|表格部件参数|grid|部件对象||
-|卡片参数|DATAVIEW|部件对象||
-|工作项|work_item|数据对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|工作项分页结果对象|work_item_page|分页查询||

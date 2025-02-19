@@ -15,17 +15,17 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./send_comment#begin {开始}]]
-state "获取评论框内容" as RAWJSCODE1  [[$./send_comment#rawjscode1 {获取评论框内容}]]
-state "为评论重新赋值参数" as PREPAREJSPARAM6  [[$./send_comment#preparejsparam6 {为评论重新赋值参数}]]
-state "清空评论框与评论id" as RAWJSCODE2  [[$./send_comment#rawjscode2 {清空评论框与评论id}]]
-state "设置评论id" as PREPAREJSPARAM3  [[$./send_comment#preparejsparam3 {设置评论id}]]
+state "结束" as END1 <<end>> [[$./send_comment#end1 {结束}]]
+state "回复标识" as PREPAREJSPARAM2  [[$./send_comment#preparejsparam2 {回复标识}]]
+state "修改评论" as DEACTION3  [[$./send_comment#deaction3 {修改评论}]]
 state "设置评论principal_id与principal_type" as PREPAREJSPARAM1  [[$./send_comment#preparejsparam1 {设置评论principal_id与principal_type}]]
 state "无操作（仅用于连接）" as PREPAREJSPARAM5  [[$./send_comment#preparejsparam5 {无操作（仅用于连接）}]]
-state "空，用于条件分支" as PREPAREJSPARAM4  [[$./send_comment#preparejsparam4 {空，用于条件分支}]]
-state "结束" as END1 <<end>> [[$./send_comment#end1 {结束}]]
-state "修改评论" as DEACTION3  [[$./send_comment#deaction3 {修改评论}]]
-state "回复标识" as PREPAREJSPARAM2  [[$./send_comment#preparejsparam2 {回复标识}]]
+state "获取评论框内容" as RAWJSCODE1  [[$./send_comment#rawjscode1 {获取评论框内容}]]
+state "设置评论id" as PREPAREJSPARAM3  [[$./send_comment#preparejsparam3 {设置评论id}]]
 state "创建评论" as DEACTION2  [[$./send_comment#deaction2 {创建评论}]]
+state "空，用于条件分支" as PREPAREJSPARAM4  [[$./send_comment#preparejsparam4 {空，用于条件分支}]]
+state "为评论重新赋值参数" as PREPAREJSPARAM6  [[$./send_comment#preparejsparam6 {为评论重新赋值参数}]]
+state "清空评论框与评论id" as RAWJSCODE2  [[$./send_comment#rawjscode2 {清空评论框与评论id}]]
 
 
 Begin --> RAWJSCODE1
@@ -170,7 +170,7 @@ uiLogic.editor.toggleCollapse(false)
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|编辑器|editor|数据对象||
 |当前视图对象|view|当前视图对象||
-|评论对象|comment|数据对象||
 |应用上下文变量|ctx|导航视图参数绑定参数||
+|评论对象|comment|数据对象||
+|编辑器|editor|数据对象||

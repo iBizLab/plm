@@ -35,14 +35,14 @@ view.layoutPanel.panelItems.send_comment_container.state.visible=false;
 
 
 ### 关联界面行为
-  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [打开讨论树导航视图（移动端）](module/Team/discuss_post#界面行为)
   * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [关闭](module/Team/discuss_post#界面行为)
-  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [删除](module/Team/discuss_post#界面行为)
-  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [移动（移动端）](module/Team/discuss_post#界面行为)
   * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [打开](module/Team/discuss_post#界面行为)
-  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [发送](module/Team/discuss_post#界面行为)
-  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [打开讨论关注列表（移动端）](module/Team/discuss_post#界面行为)
+  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [打开讨论树导航视图（移动端）](module/Team/discuss_post#界面行为)
   * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [打开搜索页](module/Team/discuss_post#界面行为)
+  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [打开讨论关注列表（移动端）](module/Team/discuss_post#界面行为)
+  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [删除](module/Team/discuss_post#界面行为)
+  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [发送](module/Team/discuss_post#界面行为)
+  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [移动（移动端）](module/Team/discuss_post#界面行为)
 
 ### 关联视图
   * [页面(article_page_search_mob_md_view)](app/view/article_page_search_mob_md_view)

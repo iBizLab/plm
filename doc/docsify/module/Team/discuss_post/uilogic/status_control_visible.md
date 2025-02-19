@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./status_control_visible#begin {开始}]]
-state "判断回复框是否显示并填充附加属性" as RAWJSCODE1  [[$./status_control_visible#rawjscode1 {判断回复框是否显示并填充附加属性}]]
 state "查询附加属性" as DEACTION1  [[$./status_control_visible#deaction1 {查询附加属性}]]
+state "判断回复框是否显示并填充附加属性" as RAWJSCODE1  [[$./status_control_visible#rawjscode1 {判断回复框是否显示并填充附加属性}]]
 
 
 Begin --> DEACTION1

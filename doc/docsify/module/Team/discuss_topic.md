@@ -19,6 +19,8 @@
 |话题名称|NAME|文本，可指定长度|200|是||
 |所属对象|SCOPE_ID|文本，可指定长度|100|是||
 |所属|SCOPE_TYPE|[单项选择(文本值)](index/dictionary_index#scope_type "所属类型（通用）")|60|是||
+|当日贴数|TODAY_POST_COUNT|文本，可指定长度|200|是||
+|当日人数|TODAY_READ_COUNT|文本，可指定长度|200|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 |可见范围|VISIBILITY|单项选择(文本值)|60|否||
@@ -57,7 +59,7 @@
 |RemoveTemp|RemoveTemp|内置方法|默认|支持||||
 |RemoveTempMajor|RemoveTempMajor|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
-|Update|Update|内置方法|默认|不支持||||
+|Update|Update|内置方法|默认|不支持|[附加操作](index/action_logic_index#discuss_topic_Update)|||
 |UpdateTemp|UpdateTemp|内置方法|默认|不支持||||
 |UpdateTempMajor|UpdateTempMajor|内置方法|默认|不支持||||
 |激活|activate|[实体处理逻辑](module/Team/discuss_topic/logic/activate "激活")|默认|不支持||||
@@ -82,6 +84,7 @@
 |[恢复](module/Team/discuss_topic/logic/recover)|recover|无||恢复已删除状态话题数据，修改话题的是否删除属性值，并恢复访问记录|
 |[无操作](module/Team/discuss_topic/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[激活](module/Team/discuss_topic/logic/activate)|activate|无||激活已归档状态话题，修改话题的归档属性|
+|[生成最近访问](module/Team/discuss_topic/logic/create_recent)|create_recent|无||在用户对数据进行了get或update操作时生成相应的访问记录。type为3，不在界面上进行显示|
 |[移动话题](module/Team/discuss_topic/logic/move_discuss_topic)|move_discuss_topic|无||高级设置中移动项目|
 |[自动创建人员](module/Team/discuss_topic/logic/auto_create_members)|auto_create_members|无||当所属选择"团队"时，点击完成后自动添加团队下的所有成员。|
 |[获取快速新建话题集合](module/Team/discuss_topic/logic/quick_create)|quick_create|无||用于获取可快速新建的话题集合|
@@ -104,6 +107,7 @@
 |[团队话题(group)](module/Team/discuss_topic/query/group)|group|否|否 |否 ||
 |[正常状态话题(normal)](module/Team/discuss_topic/query/normal)|normal|否|否 |否 ||
 |[组织话题(org)](module/Team/discuss_topic/query/org)|org|否|否 |否 ||
+|[开源社区查询(oss_main)](module/Team/discuss_topic/query/oss_main)|oss_main|否|否 |否 ||
 |[公开(public)](module/Team/discuss_topic/query/public)|public|否|否 |否 ||
 |[只读用户(reader)](module/Team/discuss_topic/query/reader)|reader|否|否 |否 ||
 |[未星标话题(unfavorite)](module/Team/discuss_topic/query/unfavorite)|unfavorite|否|否 |否 ||
@@ -122,6 +126,7 @@
 |[团队话题(group)](module/Team/discuss_topic/dataset/group)|group|数据查询|否|||
 |[主表格查询(main)](module/Team/discuss_topic/dataset/main)|main|数据查询|否|||
 |[正常状态话题(normal)](module/Team/discuss_topic/dataset/normal)|normal|数据查询|否|||
+|[开源社区查询(oss_main)](module/Team/discuss_topic/dataset/oss_main)|oss_main|数据查询|否|||
 |[快速新建查询(quick)](module/Team/discuss_topic/dataset/quick)|quick|[实体逻辑](module/Team/discuss_topic/logic/quick_create)|否|||
 |[快速新建查询（管理用户）(quick_user)](module/Team/discuss_topic/dataset/quick_user)|quick_user|数据查询|否|||
 |[只读用户(reader)](module/Team/discuss_topic/dataset/reader)|reader|数据查询|否|||
@@ -160,11 +165,11 @@
 
 
 
-##### 全部数据（写） :id=discuss_topic-ALL_W
+##### 话题数据（写） :id=discuss_topic-ALL_W
 
 <p class="panel-title"><b>数据范围</b></p>
 
-* `全部数据`
+* `无`
 
 <p class="panel-title"><b>数据能力</b></p>
 

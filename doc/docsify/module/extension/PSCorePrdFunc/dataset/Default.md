@@ -16,6 +16,10 @@
 * `默认（全部查询列）`
 
 
+<p class="panel-title"><b>主排序属性</b></p>
+
+* `ORDERVALUE(排序值)` `ASC`
+
 
 
 ### 数据查询

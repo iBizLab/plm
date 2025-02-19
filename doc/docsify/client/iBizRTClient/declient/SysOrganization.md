@@ -1,4 +1,4 @@
-# null(SysOrganization) :id=SysOrganization
+# 组织(SysOrganization) :id=SysOrganization
 ## CheckKey
 
 <el-row>

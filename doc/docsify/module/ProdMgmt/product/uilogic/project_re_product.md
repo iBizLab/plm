@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./project_re_product#begin {开始}]]
-state "实体行为" as DEACTION1  [[$./project_re_product#deaction1 {实体行为}]]
 state "准备参数" as PREPAREJSPARAM1  [[$./project_re_product#preparejsparam1 {准备参数}]]
+state "实体行为" as DEACTION1  [[$./project_re_product#deaction1 {实体行为}]]
 state "结束" as END1 <<end>> [[$./project_re_product#end1 {结束}]]
 
 
@@ -60,5 +60,5 @@ DEACTION1 --> END1
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|上下文|ctx|导航视图参数绑定参数||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|上下文|ctx|导航视图参数绑定参数||

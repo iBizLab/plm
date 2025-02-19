@@ -15,11 +15,11 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./mob_add_attachment#begin {开始}]]
-state "结束" as END1 <<end>> [[$./mob_add_attachment#end1 {结束}]]
 state "显示" as RAWJSCODE2  [[$./mob_add_attachment#rawjscode2 {显示}]]
+state "设置附件列表" as RAWJSCODE1  [[$./mob_add_attachment#rawjscode1 {设置附件列表}]]
 state "上传附件" as DEUIACTION1  [[$./mob_add_attachment#deuiaction1 {上传附件}]]
 state "添加附件数据" as VIEWCTRLINVOKE1  [[$./mob_add_attachment#viewctrlinvoke1 {添加附件数据}]]
-state "设置附件列表" as RAWJSCODE1  [[$./mob_add_attachment#rawjscode1 {设置附件列表}]]
+state "结束" as END1 <<end>> [[$./mob_add_attachment#end1 {结束}]]
 
 
 Begin --> DEUIACTION1
@@ -88,7 +88,7 @@ view.layoutPanel.panelItems.mdctrl.state.visible = true
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |多数据部件|mdctrl|部件对象||
-|文件列表|files|数据对象列表||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |附件列表|attach|数据对象列表||
+|文件列表|files|数据对象列表||

@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./check_ticket_info#begin {开始}]]
-state "切换显示组件(主界面)" as RAWJSCODE1  [[$./check_ticket_info#rawjscode1 {切换显示组件(主界面)}]]
 state "切换显示组件(关系界面)" as RAWJSCODE2  [[$./check_ticket_info#rawjscode2 {切换显示组件(关系界面)}]]
+state "切换显示组件(主界面)" as RAWJSCODE1  [[$./check_ticket_info#rawjscode1 {切换显示组件(主界面)}]]
 
 
 Begin --> RAWJSCODE1 : [[$./check_ticket_info#begin-rawjscode1{主界面} 主界面]]

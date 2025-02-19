@@ -18,13 +18,15 @@
 * `属性等价`
 `ID(标识)` <i class="fa fa-angle-double-right"/></i> `ID(标识)`
 * `属性等价`
-`CREATE_TIME(建立时间)` <i class="fa fa-angle-double-right"/></i> `CREATE_TIME(创建时间)`
-* `属性等价`
-`UPDATE_TIME(更新时间)` <i class="fa fa-angle-double-right"/></i> `UPDATE_TIME(最后更新时间)`
+`ROLE_ID(系统角色标识)` <i class="fa fa-angle-double-right"/></i> `ROLE_ID(系统角色标识)`
 * `属性等价`
 `MEMBER_UID(用户组/人员标识)` <i class="fa fa-angle-double-right"/></i> `MEMBER_UID(用户组/人员标识)`
 * `属性等价`
-`ROLE_ID(系统角色标识)` <i class="fa fa-angle-double-right"/></i> `ROLE_ID(系统角色标识)`
+`NAME(姓名)` <i class="fa fa-angle-double-right"/></i> `MEMBER_NAME(成员姓名)`
+* `属性等价`
+`CREATE_TIME(建立时间)` <i class="fa fa-angle-double-right"/></i> `CREATE_TIME(创建时间)`
+* `属性等价`
+`UPDATE_TIME(更新时间)` <i class="fa fa-angle-double-right"/></i> `UPDATE_TIME(最后更新时间)`
 
 <p class="panel-title"><b>行为映射</b></p>
 

@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./new_hybrid_kanban_story_toolbar#begin {开始}]]
-state "新建用户故事（hybrid）" as DEUIACTION1  [[$./new_hybrid_kanban_story_toolbar#deuiaction1 {新建用户故事（hybrid）}]]
 state "设置第一个看板栏id" as PREPAREJSPARAM1  [[$./new_hybrid_kanban_story_toolbar#preparejsparam1 {设置第一个看板栏id}]]
+state "新建用户故事（hybrid）" as DEUIACTION1  [[$./new_hybrid_kanban_story_toolbar#deuiaction1 {新建用户故事（hybrid）}]]
 
 
 Begin --> PREPAREJSPARAM1

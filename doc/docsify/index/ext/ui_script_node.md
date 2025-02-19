@@ -1,5 +1,5 @@
 
-## 使用脚本的界面逻辑节点<sup class="footnote-symbol"> <font color=orange>[445]</font></sup>
+## 使用脚本的界面逻辑节点<sup class="footnote-symbol"> <font color=orange>[458]</font></sup>
 
 #### [资源组件(ADDON_RESOURCE)](module/Base/addon_resource)的处理逻辑[资源删除逻辑(resource_del)](module/Base/addon_resource/uilogic/resource_del)
 
@@ -69,22 +69,6 @@ uiLogic.attach = uiLogic.files.map(item =>{
 ```javascript
 view.layoutPanel.panelItems.mdctrl.state.visible = true
 ```
-#### [附件(ATTACHMENT)](module/Base/attachment)的处理逻辑[附件删除（移动端）(mob_remove_attachment)](module/Base/attachment/uilogic/mob_remove_attachment)
-
-节点：设置附件数据
-<p class="panel-title"><b>执行代码</b></p>
-
-```javascript
-uiLogic.attach = { data: uiLogic.default, silent: true };
-```
-#### [附件(ATTACHMENT)](module/Base/attachment)的处理逻辑[附件删除（移动端）(mob_remove_attachment)](module/Base/attachment/uilogic/mob_remove_attachment)
-
-节点：注入脚本代码
-<p class="panel-title"><b>执行代码</b></p>
-
-```javascript
-console.log("附件数据",uiLogic.attach)
-```
 #### [附件(ATTACHMENT)](module/Base/attachment)的处理逻辑[附件预览(attachment_preview)](module/Base/attachment/uilogic/attachment_preview)
 
 节点：注入脚本代码
@@ -125,6 +109,22 @@ function getCurrentWindowInfo(url) {
         return  protocol +"//" + host + ":" + port ;
     }
 }
+```
+#### [附件(ATTACHMENT)](module/Base/attachment)的处理逻辑[附件删除（移动端）(mob_remove_attachment)](module/Base/attachment/uilogic/mob_remove_attachment)
+
+节点：设置附件数据
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+uiLogic.attach = { data: uiLogic.default, silent: true };
+```
+#### [附件(ATTACHMENT)](module/Base/attachment)的处理逻辑[附件删除（移动端）(mob_remove_attachment)](module/Base/attachment/uilogic/mob_remove_attachment)
+
+节点：注入脚本代码
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+console.log("附件数据",uiLogic.attach)
 ```
 #### [附件(ATTACHMENT)](module/Base/attachment)的处理逻辑[计算附件是否隐藏逻辑(calc_attachment_hidden)](module/Base/attachment/uilogic/calc_attachment_hidden)
 
@@ -347,6 +347,16 @@ uiLogic.view.reply_comment_id=null;
 uiLogic.comment.toggleCollapse(true);
 uiLogic.comment.focus();
 ```
+#### [评论(COMMENT)](module/Base/comment)的处理逻辑[编辑评论(edit_comment)](module/Base/comment/uilogic/edit_comment)
+
+节点：展开评论输入框并设值
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+uiLogic.comment.toggleCollapse(true);
+uiLogic.comment.setValue(uiLogic.default.content);
+uiLogic.comment.reply.value = null;
+```
 #### [评论(COMMENT)](module/Base/comment)的处理逻辑[获取客户沟通总条数(get_customer_comment_total)](module/Base/comment/uilogic/get_customer_comment_total)
 
 节点：设置总条数
@@ -372,16 +382,6 @@ if(!total){
 ```javascript
 const total = uiLogic.ctrl.state.items.length;
 uiLogic.view.layoutPanel.state.data.total = total;
-```
-#### [评论(COMMENT)](module/Base/comment)的处理逻辑[编辑评论(edit_comment)](module/Base/comment/uilogic/edit_comment)
-
-节点：展开评论输入框并设值
-<p class="panel-title"><b>执行代码</b></p>
-
-```javascript
-uiLogic.comment.toggleCollapse(true);
-uiLogic.comment.setValue(uiLogic.default.content);
-uiLogic.comment.reply.value = null;
 ```
 #### [评论(COMMENT)](module/Base/comment)的处理逻辑[回复评论（移动端）(reply_comment_mob)](module/Base/comment/uilogic/reply_comment_mob)
 
@@ -992,41 +992,15 @@ ibiz.hub.getApp(context.srfappid).deService.exec(
     uiLogic.user,
 );
 ```
-#### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[刷新（移动端）(mob_refresh)](module/Team/discuss_post/uilogic/mob_refresh)
-
-节点：通知刷新
-<p class="panel-title"><b>执行代码</b></p>
-
-```javascript
-ibiz.mc.command.update.send({ srfdecodename: 'discuss_post', srfkey: context.discuss_post});
-```
 #### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[编辑回复(edit_reply)](module/Team/discuss_post/uilogic/edit_reply)
 
 节点：展开评论输入框并设值
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
-uiLogic.reply.toggleCollapse(true);
-uiLogic.reply.setValue(uiLogic.default.content);
-```
-#### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[添加附件数据(add_attachment)](module/Team/discuss_post/uilogic/add_attachment)
 
-节点：设置附件参数
-<p class="panel-title"><b>执行代码</b></p>
-
-```javascript
-// 计算新建默认值
-const defaultData = uiLogic.grid.calcDefaultValue({}, true);
-uiLogic.attach = uiLogic.files.map(item => 
-    {
-        return {
-            name: item.name,
-            file_id: item.id,
-            id: item.uuid,
-            ...defaultData,
-        }
-    }
-)
+uiLogic.editor.toggleCollapse(true);
+uiLogic.editor.setValue(uiLogic.default.content);
 ```
 #### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[讨论关闭时隐藏回复输入框(status_control_visible)](module/Team/discuss_post/uilogic/status_control_visible)
 
@@ -1040,14 +1014,21 @@ panel.container_comment.state.visible = (panel.form.control.state.data.status ==
 panel.form.control.state.data.discuss_num = uiLogic.default.discuss_num;
 panel.form.control.state.data.reply_num = uiLogic.default.reply_num;
 ```
-#### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[刷新(refresh)](module/Team/discuss_post/uilogic/refresh)
+#### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[删除讨论下评论(del_comment)](module/Team/discuss_post/uilogic/del_comment)
 
-节点：通知刷新
+节点：回复数量-1
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
-ibiz.mc.command.update.send({ srfdecodename: 'discuss_post', srfkey: context.principal_id});
-ibiz.mc.command.update.send({ srfdecodename: 'discuss_reply', srfkey: context.principal_id})
+
+var comment_count = uiLogic.ctrl.formItems.comment_count;
+if (comment_count.value == 1) {
+    uiLogic.ctrl.formItems.comments.state.visible = false;
+    comment_count.value = 0;
+    comment_count.state.visible = false;
+} else {
+    comment_count.value = comment_count.value - 1;
+}
 ```
 #### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[添加回复(add_reply)](module/Team/discuss_post/uilogic/add_reply)
 
@@ -1056,6 +1037,31 @@ ibiz.mc.command.update.send({ srfdecodename: 'discuss_reply', srfkey: context.pr
 
 ```javascript
 uiLogic.discuss_reply.content = uiLogic.view.layoutPanel.panelItems.field_textbox.value;
+uiLogic.comment.content = uiLogic.view.layoutPanel.panelItems.field_textbox.value;
+```
+#### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[添加回复(add_reply)](module/Team/discuss_post/uilogic/add_reply)
+
+节点：修改讨论下的comments
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+debugger;
+var comments_control = uiLogic.view.layoutPanel.panelItems.form.control.formItems.find(item => item.name == "comments").editor;
+var comment = uiLogic.comment;
+if (view.operation_type == "send_post_comment") {
+    comments_control.addItem(comment);
+} else if (view.operation_type == "edit_post_comment") {
+    comments_control.deleteItem(comment.comment_id);
+    comments_control.addItem(comment);
+}
+```
+#### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[添加回复(add_reply)](module/Team/discuss_post/uilogic/add_reply)
+
+节点：修改回复下的comments
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+null
 ```
 #### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[添加回复(add_reply)](module/Team/discuss_post/uilogic/add_reply)
 
@@ -1065,10 +1071,43 @@ uiLogic.discuss_reply.content = uiLogic.view.layoutPanel.panelItems.field_textbo
 ```javascript
 uiLogic.view.layoutPanel.panelItems.field_textbox.value = '';
 uiLogic.view.layoutPanel.panelItems.field_textbox.data.field_textbox = '';
-uiLogic.view.edit_reply_id = null;
+uiLogic.view.operation_type = null;
+uiLogic.view.operation_id = null;
+uiLogic.view.reply_id = null;
 uiLogic.editor.reply.value = null;
 uiLogic.editor.toggleCollapse(false)
 
+```
+#### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[编辑讨论下评论(edit_comment)](module/Team/discuss_post/uilogic/edit_comment)
+
+节点：注入脚本代码
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+// 获取底部编辑器，设置打开状态并设置值
+
+var editor = uiLogic.view.layoutPanel.panelItems.field_textbox.editor;
+editor.toggleCollapse(true);
+editor.setValue(uiLogic.default.content);
+```
+#### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[刷新(refresh)](module/Team/discuss_post/uilogic/refresh)
+
+节点：通知刷新
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+ibiz.mc.command.update.send({ srfdecodename: 'discuss_post', srfkey: context.principal_id});
+ibiz.mc.command.update.send({ srfdecodename: 'discuss_reply', srfkey: context.principal_id})
+```
+#### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[编辑回复下评论(edit_reply_comment)](module/Team/discuss_post/uilogic/edit_reply_comment)
+
+节点：展开评论输入框并设值
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+
+uiLogic.editor.toggleCollapse(true);
+uiLogic.editor.setValue(uiLogic.default.content);
 ```
 #### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[发送评论（移动端讨论）(send_comment_mob)](module/Team/discuss_post/uilogic/send_comment_mob)
 
@@ -1124,14 +1163,70 @@ view.layoutPanel.panelItems.comment_container.state.visible=true;
 uiLogic.view.layoutPanel.panelItems.field_textbox.editor.clear();
 uiLogic.view.edit_comment_id = null;
 ```
-#### [讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply)的处理逻辑[获取回复列表条数(get_reply_num)](module/Team/discuss_reply/uilogic/get_reply_num)
+#### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[发送讨论下评论(send_comment)](module/Team/discuss_post/uilogic/send_comment)
 
-节点：获取回复列表条数
+节点：注入脚本代码
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
-const total = uiLogic.ctrl.state.total;
-view.parentView.layoutPanel.panelItems.form.control.details.replys.model.caption = total + '个回复'
+// 获取底部编辑器，设置打开状态并设置空值
+
+var editor = uiLogic.view.layoutPanel.panelItems.field_textbox.editor;
+editor.toggleCollapse(true);
+editor.setValue(" ");
+```
+#### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[刷新（移动端）(mob_refresh)](module/Team/discuss_post/uilogic/mob_refresh)
+
+节点：通知刷新
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+ibiz.mc.command.update.send({ srfdecodename: 'discuss_post', srfkey: context.discuss_post});
+```
+#### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[添加附件数据(add_attachment)](module/Team/discuss_post/uilogic/add_attachment)
+
+节点：设置附件参数
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+// 计算新建默认值
+const defaultData = uiLogic.grid.calcDefaultValue({}, true);
+uiLogic.attach = uiLogic.files.map(item => 
+    {
+        return {
+            name: item.name,
+            file_id: item.id,
+            id: item.uuid,
+            ...defaultData,
+        }
+    }
+)
+```
+#### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[发送回复下评论(send_reply_comment)](module/Team/discuss_post/uilogic/send_reply_comment)
+
+节点：展开评论输入框并设值
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+
+uiLogic.editor.toggleCollapse(true);
+uiLogic.editor.setValue(" ");
+```
+#### [讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply)的处理逻辑[回复下删除评论(rely_del_comment)](module/Team/discuss_reply/uilogic/rely_del_comment)
+
+节点：回复数量-1
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+
+var comments_count = uiLogic.ctrl.panelItems.comment_count;
+if (comments_count.value == 1) {
+    uiLogic.ctrl.panelItems.comments.state.visible = false;
+    comments_count.value = 0;
+    comments_count.state.visible = false;
+} else {
+    comments_count.value = comments_count.value - 1;
+}
 ```
 #### [讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply)的处理逻辑[获取回复列表总条数（移动端）(mob_get_reply_total)](module/Team/discuss_reply/uilogic/mob_get_reply_total)
 
@@ -1414,6 +1509,16 @@ uiLogic.view.ctx.controllersMap.get("form").details.grouppanel12.state.visible=t
 ```javascript
 uiLogic.view.ctx.parent.controllersMap.get("form").details.grouppanel8.state.visible=false;
 uiLogic.view.ctx.parent.controllersMap.get("form").details.grouppanel12.state.visible=true;
+```
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[需求展示评论显隐控制(idea_comment_visible)](module/ProdMgmt/idea/uilogic/idea_comment_visible)
+
+节点：评论显隐控制
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+if (uiLogic.view.layoutPanel.panelItems.list.control.state.items.length==0){
+    uiLogic.view.parentView.layoutPanel.panelItems.form.control.details.grouppanel3.state.visible=false
+}
 ```
 #### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[通知刷新(flush)](module/ProdMgmt/idea/uilogic/flush)
 
@@ -2037,6 +2142,14 @@ if (uiLogic && uiLogic.datas.sevenday_active_rate) {
     
 
 ```
+#### [成员(MEMBER)](module/Base/member)的处理逻辑[添加页面共享成员(add_shared_member)](module/Base/member/uilogic/add_shared_member)
+
+节点：添加页面共享成员
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+view.layoutPanel.panelItems.choose_member.setDataValue(null);
+```
 #### [成员(MEMBER)](module/Base/member)的处理逻辑[打开页面共享成员选择页（移动端）(open_choose_shared_member)](module/Base/member/uilogic/open_choose_shared_member)
 
 节点：注入脚本代码
@@ -2048,14 +2161,6 @@ uiLogic.default.check_type = 'reader';
 if(check_type) {
     uiLogic.default.check_type = check_type;
 }
-```
-#### [成员(MEMBER)](module/Base/member)的处理逻辑[添加页面共享成员(add_shared_member)](module/Base/member/uilogic/add_shared_member)
-
-节点：添加页面共享成员
-<p class="panel-title"><b>执行代码</b></p>
-
-```javascript
-view.layoutPanel.panelItems.choose_member.setDataValue(null);
 ```
 #### [成员(MEMBER)](module/Base/member)的处理逻辑[成员权限值变更(member_role_change)](module/Base/member/uilogic/member_role_change)
 
@@ -2170,6 +2275,30 @@ uiLogic.attach = uiLogic.files.map(item =>
         }
     }
 )
+```
+#### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[新建发布并通知刷新(save_notify_refresh)](module/Wiki/article_page/uilogic/save_notify_refresh)
+
+节点：注入脚本代码
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+const page_info = uiLogic.page_info;
+if(page_info.format_type === "MD"){
+    page_info.content = page_info.formitem;
+}
+if(page_info.format_type === "EXCEL"){
+    page_info.content = page_info.formitem1;
+}
+```
+#### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[新建发布并通知刷新(save_notify_refresh)](module/Wiki/article_page/uilogic/save_notify_refresh)
+
+节点：设置表单是否变更
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+if (uiLogic.form) {
+    uiLogic.form.state.modified = false;
+}
 ```
 #### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[新建发布并通知刷新(save_notify_refresh)](module/Wiki/article_page/uilogic/save_notify_refresh)
 
@@ -2453,20 +2582,6 @@ if (uiLogic.ctrl) {
 uiLogic.ctrl.refresh();
 }
 ```
-#### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[图表全屏（移动端）(mob_full_screen)](module/ProjMgmt/project/uilogic/mob_full_screen)
-
-节点：注入脚本代码
-<p class="panel-title"><b>执行代码</b></p>
-
-```javascript
-console.log('执行全屏逻辑');
-if (uiLogic.ctrl) {
-   const contentElement = uiLogic.ctrl.contentElement;
-    if (contentElement) {
-        ibiz.fullscreenUtil.openElementFullscreen(contentElement,{srftitle:'测试标题',showClose:true});
-    }
-}
-```
 #### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[通知刷新(notify_refresh)](module/ProjMgmt/project/uilogic/notify_refresh)
 
 节点：通知刷新
@@ -2493,6 +2608,20 @@ return (async function() {
     } 
 )();
 
+```
+#### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[图表全屏（移动端）(mob_full_screen)](module/ProjMgmt/project/uilogic/mob_full_screen)
+
+节点：注入脚本代码
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+console.log('执行全屏逻辑');
+if (uiLogic.ctrl) {
+   const contentElement = uiLogic.ctrl.contentElement;
+    if (contentElement) {
+        ibiz.fullscreenUtil.openElementFullscreen(contentElement,{srftitle:'测试标题',showClose:true});
+    }
+}
 ```
 #### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[设置默认项目成员（移动端）(mob_set_default_project_member)](module/ProjMgmt/project/uilogic/mob_set_default_project_member)
 
@@ -2767,14 +2896,6 @@ uiLogic.default.choose_relation_data = null;
 ```javascript
 ibiz.mc.command.update.send({ srfdecodename: context.principal_type})
 ```
-#### [关联(RELATION)](module/Base/relation)的处理逻辑[通知刷新产品需求（移动端）(notify_refresh)](module/Base/relation/uilogic/notify_refresh)
-
-节点：通知刷新
-<p class="panel-title"><b>执行代码</b></p>
-
-```javascript
-ibiz.mc.command.create.send({ srfdecodename: 'idea'})
-```
 #### [关联(RELATION)](module/Base/relation)的处理逻辑[取消关联行为是否启用(del_relation_disabled)](module/Base/relation/uilogic/del_relation_disabled)
 
 节点：根据上下文中srfreadonly判断取消关联是否启用
@@ -2809,6 +2930,14 @@ ibiz.mc.command.create.send({ srfdecodename: 'idea'})
 		})
 	}
 
+```
+#### [关联(RELATION)](module/Base/relation)的处理逻辑[通知刷新产品需求（移动端）(notify_refresh)](module/Base/relation/uilogic/notify_refresh)
+
+节点：通知刷新
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+ibiz.mc.command.create.send({ srfdecodename: 'idea'})
 ```
 #### [关联(RELATION)](module/Base/relation)的处理逻辑[依赖列表视图加载完成(dependency_load_success)](module/Base/relation/uilogic/dependency_load_success)
 
@@ -3306,6 +3435,14 @@ if (rows && rows.length > 0) {
 ```
 #### [评审结果(REVIEW_RESULT)](module/TestMgmt/review_result)的处理逻辑[拒绝(refuse)](module/TestMgmt/review_result/uilogic/refuse)
 
+节点：通知刷新
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+ibiz.mc.command.create.send({ srfdecodename: 'review_content'})
+```
+#### [评审结果(REVIEW_RESULT)](module/TestMgmt/review_result)的处理逻辑[拒绝(refuse)](module/TestMgmt/review_result/uilogic/refuse)
+
 节点：控制表单状态
 <p class="panel-title"><b>执行代码</b></p>
 
@@ -3357,6 +3494,14 @@ if (rows && rows.length > 0) {
         choose_data.setDataValue(null);
     }
 }
+```
+#### [评审结果(REVIEW_RESULT)](module/TestMgmt/review_result)的处理逻辑[通过(pass)](module/TestMgmt/review_result/uilogic/pass)
+
+节点：通知刷新
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+ibiz.mc.command.create.send({ srfdecodename: 'review_content'})
 ```
 #### [评审结果(REVIEW_RESULT)](module/TestMgmt/review_result)的处理逻辑[通过(pass)](module/TestMgmt/review_result/uilogic/pass)
 
@@ -3555,15 +3700,6 @@ if (uiLogic.ctrl) {
     }
 }
 ```
-#### [执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment)的处理逻辑[获取移动端结果附件总条数(get_mob_run_attachment)](module/TestMgmt/run_attachment/uilogic/get_mob_run_attachment)
-
-节点：注入脚本代码
-<p class="panel-title"><b>执行代码</b></p>
-
-```javascript
-const total = uiLogic.ctrl.state.rows.length;
-uiLogic.view.layoutPanel.state.data.total = "共" + total;
-```
 #### [执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment)的处理逻辑[获取结果附件总条数(get_run_attachment_total)](module/TestMgmt/run_attachment/uilogic/get_run_attachment_total)
 
 节点：获取表格条数
@@ -3576,6 +3712,15 @@ if(uiLogic.view.layoutPanel.panelItems.total.data.total == 0){
 }else{
     view.layoutPanel.panelItems.grid.state.visible = true
 }
+```
+#### [执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment)的处理逻辑[获取移动端结果附件总条数(get_mob_run_attachment)](module/TestMgmt/run_attachment/uilogic/get_mob_run_attachment)
+
+节点：注入脚本代码
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+const total = uiLogic.ctrl.state.rows.length;
+uiLogic.view.layoutPanel.state.data.total = "共" + total;
 ```
 #### [执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment)的处理逻辑[添加附件数据(add_attachment)](module/TestMgmt/run_attachment/uilogic/add_attachment)
 
@@ -3603,28 +3748,6 @@ ibiz.hub.getApp(context.srfappid).deService.exec(
 );
 
 ```
-#### [执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment)的处理逻辑[添加附件数据（移动端）(mob_add_attachment)](module/TestMgmt/run_attachment/uilogic/mob_add_attachment)
-
-节点：设置附件列表
-<p class="panel-title"><b>执行代码</b></p>
-
-```javascript
-uiLogic.attach = uiLogic.files.map(item =>{
-	return {
-	  name: item.name,
-	  file_id: item.id,
-	  id: item.uuid,
-	}
-})
-```
-#### [执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment)的处理逻辑[添加附件数据（移动端）(mob_add_attachment)](module/TestMgmt/run_attachment/uilogic/mob_add_attachment)
-
-节点：显示
-<p class="panel-title"><b>执行代码</b></p>
-
-```javascript
-view.layoutPanel.panelItems.mdctrl.state.visible = true
-```
 #### [执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment)的处理逻辑[删除(del)](module/TestMgmt/run_attachment/uilogic/del)
 
 节点：执行删除方法
@@ -3649,6 +3772,28 @@ ibiz.hub.getApp(context.srfappid).deService.exec(
 if(uiLogic.view.layoutPanel.panelItems.total.data.total == 0){
     view.layoutPanel.panelItems.grid.state.visible = false;
 }
+```
+#### [执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment)的处理逻辑[添加附件数据（移动端）(mob_add_attachment)](module/TestMgmt/run_attachment/uilogic/mob_add_attachment)
+
+节点：设置附件列表
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+uiLogic.attach = uiLogic.files.map(item =>{
+	return {
+	  name: item.name,
+	  file_id: item.id,
+	  id: item.uuid,
+	}
+})
+```
+#### [执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment)的处理逻辑[添加附件数据（移动端）(mob_add_attachment)](module/TestMgmt/run_attachment/uilogic/mob_add_attachment)
+
+节点：显示
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+view.layoutPanel.panelItems.mdctrl.state.visible = true
 ```
 #### [执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment)的处理逻辑[附件删除（移动端）(mob_remove_attachment)](module/TestMgmt/run_attachment/uilogic/mob_remove_attachment)
 
@@ -3772,13 +3917,14 @@ return (async function() {
 )();
 
 ```
-#### [空间(SPACE)](module/Wiki/space)的处理逻辑[刷新当前表格(refresh_current_grid)](module/Wiki/space/uilogic/refresh_current_grid)
+#### [空间(SPACE)](module/Wiki/space)的处理逻辑[判断当前用户角色（关联）(recognize_cur_user_role)](module/Wiki/space/uilogic/recognize_cur_user_role)
 
-节点：通过实体刷新表格、树
+节点：隐藏工具栏
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
-ibiz.mc.command.update.send({ srfdecodename: 'space', srfkey: params.owner_id})
+uiLogic.treeexpbar.layoutPanel.panelItems.control_toolbar.state.visible=false;
+
 ```
 #### [空间(SPACE)](module/Wiki/space)的处理逻辑[刷新当前表格(refresh_current_grid)](module/Wiki/space/uilogic/refresh_current_grid)
 
@@ -3801,14 +3947,13 @@ setTimeout(() => {
     }
 }, 300)
 ```
-#### [空间(SPACE)](module/Wiki/space)的处理逻辑[判断当前用户角色（关联）(recognize_cur_user_role)](module/Wiki/space/uilogic/recognize_cur_user_role)
+#### [空间(SPACE)](module/Wiki/space)的处理逻辑[刷新当前表格(refresh_current_grid)](module/Wiki/space/uilogic/refresh_current_grid)
 
-节点：隐藏工具栏
+节点：通过实体刷新表格、树
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
-uiLogic.treeexpbar.layoutPanel.panelItems.control_toolbar.state.visible=false;
-
+ibiz.mc.command.update.send({ srfdecodename: 'space', srfkey: params.owner_id})
 ```
 #### [空间成员(SPACE_MEMBER)](module/Wiki/space_member)的处理逻辑[新建空间默认临时成员(create_default_temp_members)](module/Wiki/space_member/uilogic/create_default_temp_members)
 
@@ -4739,6 +4884,28 @@ if (bol) {
 }
 } )();
 ```
+#### [企业用户(USER)](module/Base/user)的处理逻辑[删除部门(trash_dept)](module/Base/user/uilogic/trash_dept)
+
+节点：提示移除成员后才可删除
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+const bol = await util.confirm.warning({
+  title: '提示',
+  desc: '请移除该部门下成员才可删除！',
+});
+```
+#### [企业用户(USER)](module/Base/user)的处理逻辑[删除部门(trash_dept)](module/Base/user/uilogic/trash_dept)
+
+节点：提示移除下级部门
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+const bol = await util.confirm.warning({
+  title: '提示',
+  desc: '请先移除下级部门后才可删除！',
+});
+```
 #### [版本(VERSION)](module/Base/version)的处理逻辑[获取版本总条数(get_version_total)](module/Base/version/uilogic/get_version_total)
 
 节点：设置总条数
@@ -5111,31 +5278,6 @@ const panel = view.layoutPanel.panelItems.choose_data;
 if (panel) {
     panel.state.visible = false;
 }
-```
-#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[计算面板项行为状态(calc_kanban_item_action_state)](module/ProjMgmt/work_item/uilogic/calc_kanban_item_action_state)
-
-节点：看板中工作项的归档或激活按钮的禁用判定
-<p class="panel-title"><b>执行代码</b></p>
-
-```javascript
-setTimeout(() => {
-	const items = uiLogic.kanban.state.items;
-    const uaState = uiLogic.kanban.state.uaState;
-	if (items && items.length > 0) {
-		items.forEach(item => {
-            const actions = uaState[item.srfkey];
-            Object.values(actions).forEach(action=>{
-               // 归档
-					if (action.uiActionId === 'archive@work_item') {
-						action.disabled = item.is_archived !== 0;
-					} else if (action.uiActionId === 'activate@work_item') {
-						// 激活
-						action.disabled = item.is_archived === 0;
-					} 
-            })
-        })
-	}
-}, 1000);
 ```
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[获取工作项工时进度（移动端）(mob_get_workload_schedule)](module/ProjMgmt/work_item/uilogic/mob_get_workload_schedule)
 
@@ -5537,6 +5679,20 @@ main_form_executors.setDataValue(executors)
 
 
 ```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[计算项目资源成员(calc_project_resouce_member)](module/ProjMgmt/work_item/uilogic/calc_project_resouce_member)
+
+节点：设置选中数据
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+const { gantt } = uiLogic;
+if (gantt) {
+    const selecteddata = JSON.stringify(gantt.getNodeDataByNodeId('member_node'));
+    if (selecteddata) {
+        params.selecteddata = selecteddata;
+    }
+}
+```
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[图表显示总数(chart_show_count)](module/ProjMgmt/work_item/uilogic/chart_show_count)
 
 节点：图表显示总数
@@ -5550,20 +5706,6 @@ if (chart) {
   const text = '总数：' + count;
   Object.assign(options.title, { text, show: true });
   chart.updateChart();
-}
-```
-#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[计算项目资源成员(calc_project_resouce_member)](module/ProjMgmt/work_item/uilogic/calc_project_resouce_member)
-
-节点：设置选中数据
-<p class="panel-title"><b>执行代码</b></p>
-
-```javascript
-const { gantt } = uiLogic;
-if (gantt) {
-    const selecteddata = JSON.stringify(gantt.getNodeDataByNodeId('member_node'));
-    if (selecteddata) {
-        params.selecteddata = selecteddata;
-    }
 }
 ```
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[建立关联数据(create_relation)](module/ProjMgmt/work_item/uilogic/create_relation)

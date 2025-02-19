@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./product_relation_space#begin {开始}]]
-state "创建关联数据" as DEACTION1  [[$./product_relation_space#deaction1 {创建关联数据}]]
 state "结束" as END1 <<end>> [[$./product_relation_space#end1 {结束}]]
 state "准备参数" as PREPAREJSPARAM1  [[$./product_relation_space#preparejsparam1 {准备参数}]]
+state "创建关联数据" as DEACTION1  [[$./product_relation_space#deaction1 {创建关联数据}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -60,5 +60,5 @@ DEACTION1 --> END1
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |上下文参数|ctx|导航视图参数绑定参数||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

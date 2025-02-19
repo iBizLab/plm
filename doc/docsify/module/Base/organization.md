@@ -30,6 +30,7 @@
 
 | 名称col350     |   从实体col200 | 关系类型col200     |   备注col500  |
 | -------- |---------- |------------|----- |
+|[DER1N_DEPARTMENT_ORGANIZATION_ORGANIZATION_ID](der/DER1N_DEPARTMENT_ORGANIZATION_ORGANIZATION_ID)|[部门(DEPARTMENT)](module/Base/department)|1:N关系||
 |[DER1N_ORGANIZATION_ORGANIZATION_PID](der/DER1N_ORGANIZATION_ORGANIZATION_PID)|[组织(ORGANIZATION)](module/Base/organization)|1:N关系||
 |[DER1N_USER_ORGANIZATION_ORGANIZATION_ID](der/DER1N_USER_ORGANIZATION_ORGANIZATION_ID)|[企业用户(USER)](module/Base/user)|1:N关系||
 
@@ -67,11 +68,31 @@
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[数据查询(DEFAULT)](module/Base/organization/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/Base/organization/query/View)|VIEW|否|否 |否 ||
+|[根节点(root)](module/Base/organization/query/root)|root|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/Base/organization/dataset/Default)|DEFAULT|数据查询|是|||
+|[根节点(root)](module/Base/organization/dataset/root)|root|数据查询|否|||
+
+## 数据权限
+
+##### 全部数据（读写） :id=organization-ALL_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `UPDATE`
+* `CREATE`
+* `DELETE`
+* `READ`
+
+
+
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -81,6 +102,11 @@
 |N_PID_EQ|父标识|EQ||
 |N_PNAME_EQ|名称|EQ||
 |N_PNAME_LIKE|名称|LIKE||
+
+## 界面行为
+|  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
+| --------| --------| -------- |------------|------------|------------|
+| 编辑组织 | edit_org | 编辑组织 |单项数据|<details><summary>打开视图或向导（模态）</summary>[组织](app/view/organization_org_option_view)</details>||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -101,8 +127,14 @@
 <el-anchor-link :href="`#/module/Base/organization?id=数据集合`">
   数据集合
 </el-anchor-link>
+<el-anchor-link :href="`#/module/Base/organization?id=数据权限`">
+  数据权限
+</el-anchor-link>
 <el-anchor-link :href="`#/module/Base/organization?id=搜索模式`">
   搜索模式
+</el-anchor-link>
+<el-anchor-link :href="`#/module/Base/organization?id=界面行为`">
+  界面行为
 </el-anchor-link>
 </el-anchor>
 </div>

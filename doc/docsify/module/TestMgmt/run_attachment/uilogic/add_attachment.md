@@ -15,12 +15,12 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./add_attachment#begin {开始}]]
-state "结束" as END1 <<end>> [[$./add_attachment#end1 {结束}]]
 state "获取文件名称" as RAWJSCODE1  [[$./add_attachment#rawjscode1 {获取文件名称}]]
-state "添加结果附件实体临时数据" as RAWJSCODE2  [[$./add_attachment#rawjscode2 {添加结果附件实体临时数据}]]
-state "视图部件调用" as VIEWCTRLINVOKE1  [[$./add_attachment#viewctrlinvoke1 {视图部件调用}]]
 state "绑定表单" as PREPAREJSPARAM1  [[$./add_attachment#preparejsparam1 {绑定表单}]]
+state "结束" as END1 <<end>> [[$./add_attachment#end1 {结束}]]
+state "视图部件调用" as VIEWCTRLINVOKE1  [[$./add_attachment#viewctrlinvoke1 {视图部件调用}]]
 state "上传附件" as DEUIACTION1  [[$./add_attachment#deuiaction1 {上传附件}]]
+state "添加结果附件实体临时数据" as RAWJSCODE2  [[$./add_attachment#rawjscode2 {添加结果附件实体临时数据}]]
 
 
 Begin --> DEUIACTION1
@@ -100,8 +100,8 @@ ibiz.hub.getApp(context.srfappid).deService.exec(
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|主表单|form|部件对象||
 |结果附件对象|run_attachment|数据对象||
-|上下文|context|导航视图参数绑定参数||
-|当前视图|view|当前视图对象||
 |上传文件|files|数据对象列表||
+|当前视图|view|当前视图对象||
+|上下文|context|导航视图参数绑定参数||
+|主表单|form|部件对象||

@@ -16,9 +16,9 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./my_assign_chart_jump#begin {开始}]]
 state "界面行为" as DEUIACTION1  [[$./my_assign_chart_jump#deuiaction1 {界面行为}]]
-state "结束" as END1 <<end>> [[$./my_assign_chart_jump#end1 {结束}]]
-state "界面行为" as DEUIACTION3  [[$./my_assign_chart_jump#deuiaction3 {界面行为}]]
 state "界面行为" as DEUIACTION2  [[$./my_assign_chart_jump#deuiaction2 {界面行为}]]
+state "界面行为" as DEUIACTION3  [[$./my_assign_chart_jump#deuiaction3 {界面行为}]]
+state "结束" as END1 <<end>> [[$./my_assign_chart_jump#end1 {结束}]]
 state "界面行为" as DEUIACTION4  [[$./my_assign_chart_jump#deuiaction4 {界面行为}]]
 state "调试逻辑参数" as DEBUGPARAM1  [[$./my_assign_chart_jump#debugparam1 {调试逻辑参数}]]
 
@@ -100,6 +100,6 @@ DEUIACTION4 --> END1
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|当前部件|ctrl|当前部件对象||
 |当前视图|view|当前视图对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|当前部件|ctrl|当前部件对象||

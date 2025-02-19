@@ -209,7 +209,7 @@
 <el-alert title="/insight_members/{key}/change_role" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`UPDATE`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|

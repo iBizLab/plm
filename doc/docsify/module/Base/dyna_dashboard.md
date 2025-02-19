@@ -94,6 +94,7 @@
 |[默认（全部数据）(VIEW)](module/Base/dyna_dashboard/query/View)|VIEW|否|否 |否 ||
 |[示例图(example_chart)](module/Base/dyna_dashboard/query/example_chart)|example_chart|否|否 |否 ||
 |[系统仪表盘(is_system)](module/Base/dyna_dashboard/query/is_system)|is_system|否|否 |否 ||
+|[我的看板(my_dashboard)](module/Base/dyna_dashboard/query/my_dashboard)|my_dashboard|否|否 |否 ||
 |[正常数据(normal)](module/Base/dyna_dashboard/query/normal)|normal|否|否 |否 ||
 
 ## 数据集合
@@ -102,9 +103,22 @@
 |[数据集(DEFAULT)](module/Base/dyna_dashboard/dataset/Default)|DEFAULT|数据查询|是|||
 |[示例图(example_chart)](module/Base/dyna_dashboard/dataset/example_chart)|example_chart|数据查询|否|||
 |[系统仪表盘(is_system)](module/Base/dyna_dashboard/dataset/is_system)|is_system|数据查询|否|||
+|[我的看板(my_dashboard)](module/Base/dyna_dashboard/dataset/my_dashboard)|my_dashboard|数据查询|否|||
 |[正常数据(normal)](module/Base/dyna_dashboard/dataset/normal)|normal|数据查询|否|||
 
 ## 数据权限
+
+##### 全部数据（读） :id=dyna_dashboard-ALL_R
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `READ`
+
+
 
 ##### 全部数据（读写） :id=dyna_dashboard-ALL_RW
 
@@ -118,6 +132,21 @@
 * `READ`
 * `DELETE`
 * `CREATE`
+
+
+
+##### 我的看板（读写） :id=dyna_dashboard-USER_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `数据集合` ：[我的看板(my_dashboard)](module/Base/dyna_dashboard#数据集合)
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `DELETE(效能视图(SUBDATA))`
+* `CREATE(效能视图(SUBDATA))`
+* `UPDATE(效能视图(SUBDATA))`
+* `READ`
 
 
 
@@ -147,7 +176,6 @@
 |[仪表盘操作列](module/Base/dyna_dashboard/uilogic/control_del)|control_del|仪表盘为最后一个时禁止删除|
 |[使用此模板(禁止关闭)](module/Base/dyna_dashboard/uilogic/use_cur_template_no_closed)|use_cur_template_no_closed|使用此模板(禁止关闭)|
 |[列表加载完成](module/Base/dyna_dashboard/uilogic/list_load_success)|list_load_success|列表加载完成|
-|[获取其他仪表盘](module/Base/dyna_dashboard/uilogic/fill_other_board)|fill_other_board|获取其他仪表盘|
 |[获取选中模板名称](module/Base/dyna_dashboard/uilogic/fill_choosed_board_name)|fill_choosed_board_name|获取选中模板名称|
 |[通知刷新](module/Base/dyna_dashboard/uilogic/notify_refresh)|notify_refresh||
 

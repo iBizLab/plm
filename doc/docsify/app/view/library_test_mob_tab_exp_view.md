@@ -9,10 +9,10 @@
 
 
 ### 关联界面行为
-  * [测试库(LIBRARY)](module/TestMgmt/library) : [测试库成员（移动端）](module/TestMgmt/library#界面行为)
-  * [测试库(LIBRARY)](module/TestMgmt/library) : [测试库设置（移动端）](module/TestMgmt/library#界面行为)
   * [测试库(LIBRARY)](module/TestMgmt/library) : [回收站（移动端）](module/TestMgmt/library#界面行为)
   * [测试库(LIBRARY)](module/TestMgmt/library) : [高级设置（移动端）](module/TestMgmt/library#界面行为)
+  * [测试库(LIBRARY)](module/TestMgmt/library) : [测试库设置（移动端）](module/TestMgmt/library#界面行为)
+  * [测试库(LIBRARY)](module/TestMgmt/library) : [测试库成员（移动端）](module/TestMgmt/library#界面行为)
 
 ### 关联视图
   * [测试库成员(library_member_mob_list_view)](app/view/library_member_mob_list_view)

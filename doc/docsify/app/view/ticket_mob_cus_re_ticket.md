@@ -15,8 +15,8 @@
 
 
 ### 关联界面行为
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [客户关联工单（移动端）](module/ProdMgmt/ticket#界面行为)
   * [工单(TICKET)](module/ProdMgmt/ticket) : [客户新建工单（移动端）](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [客户关联工单（移动端）](module/ProdMgmt/ticket#界面行为)
 
 ### 关联视图
   * [选择工单11(ticket_mob_customer_re_ticket)](app/view/ticket_mob_customer_re_ticket)

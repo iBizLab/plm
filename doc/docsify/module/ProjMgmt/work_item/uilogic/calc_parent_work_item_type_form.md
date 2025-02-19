@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./calc_parent_work_item_type_form#begin {开始}]]
-state "结束" as END2 <<end>> [[$./calc_parent_work_item_type_form#end2 {结束}]]
 state "计算父工作项类型" as RAWJSCODE4  [[$./calc_parent_work_item_type_form#rawjscode4 {计算父工作项类型}]]
+state "结束" as END2 <<end>> [[$./calc_parent_work_item_type_form#end2 {结束}]]
 state "获取工作项类型" as PREPAREJSPARAM3  [[$./calc_parent_work_item_type_form#preparejsparam3 {获取工作项类型}]]
 
 
@@ -76,9 +76,9 @@ RAWJSCODE4 --> END2
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|工作项类型|type|数据对象||
-|项目类型|project_type|数据对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|父工作项类型|parent_type|数据对象||
 |视图参数|params|||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |部件|ctrl|当前部件对象||
+|父工作项类型|parent_type|数据对象||
+|项目类型|project_type|数据对象||
+|工作项类型|type|数据对象||

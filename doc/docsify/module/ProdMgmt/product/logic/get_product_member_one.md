@@ -15,14 +15,14 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./get_product_member_one#begin {"开始"}]]
+state "结束" as END2 <<end>> [[$./get_product_member_one#end2 {"结束"}]]
 state "获取产品ID并设置过滤参数" as PREPAREPARAM2  [[$./get_product_member_one#prepareparam2 {"获取产品ID并设置过滤参数"}]]
 state "查询当前用户是否为产品成员" as DEDATASET3  [[$./get_product_member_one#dedataset3 {"查询当前用户是否为产品成员"}]]
-state "结束" as END2 <<end>> [[$./get_product_member_one#end2 {"结束"}]]
+state "准备参数" as PREPAREPARAM3  [[$./get_product_member_one#prepareparam3 {"准备参数"}]]
+state "绑定用户数据到for_obj" as PREPAREPARAM5  [[$./get_product_member_one#prepareparam5 {"绑定用户数据到for_obj"}]]
 state "只读权限" as RAWSFCODE1  [[$./get_product_member_one#rawsfcode1 {"只读权限"}]]
 state "非只读权限" as RAWSFCODE2  [[$./get_product_member_one#rawsfcode2 {"非只读权限"}]]
 state "结束" as END6 <<end>> [[$./get_product_member_one#end6 {"结束"}]]
-state "准备参数" as PREPAREPARAM3  [[$./get_product_member_one#prepareparam3 {"准备参数"}]]
-state "绑定用户数据到for_obj" as PREPAREPARAM5  [[$./get_product_member_one#prepareparam5 {"绑定用户数据到for_obj"}]]
 state "判断系统管理员身份" as RAWSFCODE3  [[$./get_product_member_one#rawsfcode3 {"判断系统管理员身份"}]]
 state "执行脚本代码" as RAWSFCODE4  [[$./get_product_member_one#rawsfcode4 {"执行脚本代码"}]]
 

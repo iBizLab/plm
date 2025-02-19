@@ -1,5 +1,5 @@
 
-## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[216]</font></sup>
+## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[219]</font></sup>
 
 #### [组件(ADDON)](module/Base/addon)的处理逻辑[组件权限计数器(addon_authority)](module/Base/addon/logic/addon_authority)
 
@@ -312,6 +312,19 @@ result.set("unknown_precent", unknown_precent)
 result.set("not_important_precent", not_important_precent)
 result.set("score_precent", score_precent)
 ```
+#### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[获取讨论权限(get_post_auth)](module/Team/discuss_post/logic/get_post_auth)
+
+节点：判断
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('default').real;
+def userid = sys.user().getUserid();
+if (userid == _default.get('create_man')) {
+    _default.set('srfreadonly', false);
+}
+
+```
 #### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[获取话题成员（移动端）(mob_get_topic_member)](module/Team/discuss_post/logic/mob_get_topic_member)
 
 节点：非只读权限
@@ -353,6 +366,16 @@ defaultObj.set("srfreadonly", true);
 var defaultObj = logic.getParam("default");
 
 defaultObj.set("srfreadonly", true);
+```
+#### [讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply)的处理逻辑[子回复数据(sub_reply_data)](module/Team/discuss_reply/logic/sub_reply_data)
+
+节点：设置数据
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def sub_replys = logic.param("subreply_page").getReal();
+
+entity.set('sub_replys', sub_replys.getContent());
 ```
 #### [话题(DISCUSS_TOPIC)](module/Team/discuss_topic)的处理逻辑[获取快速新建话题集合(quick_create)](module/Team/discuss_topic/logic/quick_create)
 
@@ -422,6 +445,7 @@ var modeljArray = modeljO.model;
 var bireportids = [];
 var replaceIds ={};
 for(var i=0; i<modeljArray.length; i++){
+    sys.info("进入第一个循环")
   var reportModel = modeljArray[i];
   var portletid = reportModel.i;
   var bireportid = portletid.substring(12).replace("__",".");
@@ -430,6 +454,7 @@ for(var i=0; i<modeljArray.length; i++){
 var reportSearchContext = sys.filter("insight_report");
 var templReports = reportSearchContext.in("id",bireportids.join(",")).pageable(0,1000).select("is_system");
 for(var i=0; i<templReports.length; i++){
+    sys.info("进入第二个循环")
     var bireport = templReports.get(i);
     var orginId = bireport.get("id");
     bireport.reset("id");
@@ -439,6 +464,7 @@ for(var i=0; i<templReports.length; i++){
     replaceIds[orginId.replace(".","__").toLowerCase()] = newbireport.get("id").replace(".","__").toLowerCase();
 }
 for(var key in replaceIds){
+    sys.info("进入第三个循环")
     var keyreg = new RegExp(key, "g");
     strModel = strModel.replace(keyreg,replaceIds[key]);
 }
@@ -610,7 +636,7 @@ if (list.size() != 0) {
     result.set("customer_score_precent", 0)
 }
 ```
-#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[计划内需求批删除(plan_delete_idea)](module/ProdMgmt/idea/logic/plan_delete_idea)
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[计划取消关联需求(plan_delete_idea)](module/ProdMgmt/idea/logic/plan_delete_idea)
 
 节点：拼接正反关联对象的主键
 <p class="panel-title"><b>执行代码[JavaScript]</b></p>
@@ -626,6 +652,16 @@ var reverse_relation_obj = logic.getParam("reverse_relation_obj");
 if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get("target_id") != null && reverse_relation_obj.get("principal_type") != null){
     reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id") + '_' + reverse_relation_obj.get("principal_type"));
 }
+```
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[设置初始排序值(set_sequence)](module/ProdMgmt/idea/logic/set_sequence)
+
+节点：处理初始排序值
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal() 
+def _sequence = _default.get('sequence')
+_default.set('sequence', _sequence*100)
 ```
 #### [效能报表(INSIGHT_REPORT)](module/Insight/insight_report)的处理逻辑[使用此模板(use_cur_template)](module/Insight/insight_report/logic/use_cur_template)
 
@@ -2329,12 +2365,12 @@ if(for_temp_obj.get('owner_id') != null){
 // 获取正向关联对象的主键
 var forward_relation_obj = logic.getParam("forward_relation_obj");
 if(forward_relation_obj.get("principal_id") != null && forward_relation_obj.get("target_id") != null){
-    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id"));
+    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id")+ '_' + forward_relation_obj.get("principal_type"));
 }
 // 获取反向关联对象的主键
 var reverse_relation_obj = logic.getParam("reverse_relation_obj");
 if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get("target_id") != null){
-    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id"));
+    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id")+ '_' + reverse_relation_obj.get("principal_type"));
 }
 ```
 #### [关联(RELATION)](module/Base/relation)的处理逻辑[执行用例取消关联缺陷(run_del_relation_bug)](module/Base/relation/logic/run_del_relation_bug)
@@ -2362,12 +2398,12 @@ if(for_temp_obj.get("principal_id") != null && for_temp_obj.get("target_id") != 
 // 获取正向关联对象的主键
 var forward_relation_obj = logic.getParam("forward_relation_obj");
 if(forward_relation_obj.get("principal_id") != null && forward_relation_obj.get("target_id") != null){
-    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id"));
+    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id")+ '_' + forward_relation_obj.get("principal_type"));
 }
 // 获取反向关联对象的主键
 var reverse_relation_obj = logic.getParam("reverse_relation_obj");
 if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get("target_id") != null){
-    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id"));
+    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id")+ '_' + reverse_relation_obj.get("principal_type"));
 }
 ```
 #### [关联(RELATION)](module/Base/relation)的处理逻辑[测试用例取消关联缺陷(test_case_del_relation_bug)](module/Base/relation/logic/test_case_del_relation_bug)
@@ -2480,6 +2516,8 @@ stages.each { it ->
     new_stage.set('name', it.get('name'))
     new_stage.set('type', it.get('type'))
     new_stage.set('sequence', it.get('sequence'))
+    new_stage.set('color', it.get('color'))
+    new_stage.set('style', it.get('style'))
     new_stage.set('is_current', 0)
     if(it.get('id') == first_stage_id){
         new_stage.set('is_current', 1)

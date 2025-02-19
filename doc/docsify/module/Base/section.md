@@ -11,6 +11,7 @@
 |建立时间|CREATE_TIME|日期时间型||否||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |是否叶子节点|IS_LEAF|是否逻辑||是||
+|是否叶子节点2|IS_LEAF2|是否逻辑||是||
 |名称|NAME|文本，可指定长度|200|是||
 |所属数据标识|OWNER_ID|文本，可指定长度|100|是||
 |所属对象子类型|OWNER_SUBTYPE|文本，可指定长度|100|是||
@@ -60,6 +61,7 @@
 |[默认（全部数据）(VIEW)](module/Base/section/query/View)|VIEW|否|否 |否 ||
 |[检查名称是否重复(check_name)](module/Base/section/query/check_name)|check_name|否|否 |否 ||
 |[需求子产品(idea_section)](module/Base/section/query/idea_section)|idea_section|否|否 |否 ||
+|[我的分组(my_section)](module/Base/section/query/my_section)|my_section|否|否 |否 ||
 |[产品排期分组(this_product_section)](module/Base/section/query/this_product_section)|this_product_section|否|否 |否 ||
 
 ## 数据集合
@@ -69,8 +71,21 @@
 |[产品排期分组(This_product_section)](module/Base/section/dataset/This_product_section)|This_product_section|数据查询|否|||
 |[检查名称是否重复(check_name)](module/Base/section/dataset/check_name)|check_name|数据查询|否|||
 |[需求子产品(idea_section)](module/Base/section/dataset/idea_section)|idea_section|数据查询|否|||
+|[我的分组(my_section)](module/Base/section/dataset/my_section)|my_section|数据查询|否|||
 
 ## 数据权限
+
+##### 全部数据（读） :id=section-ALL_R
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `READ`
+
+
 
 ##### 全部数据（读写） :id=section-ALL_RW
 
@@ -84,6 +99,21 @@
 * `READ`
 * `CREATE`
 * `UPDATE`
+
+
+
+##### 我的分组（读写） :id=section-USER_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `数据集合` ：[我的分组(my_section)](module/Base/section#数据集合)
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `UPDATE`
+* `READ`
+* `DELETE`
+* `CREATE`
 
 
 

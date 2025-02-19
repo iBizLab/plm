@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./toolbar_add_attachment#begin {开始}]]
-state "上传附件（工具栏）" as RAWJSCODE1  [[$./toolbar_add_attachment#rawjscode1 {上传附件（工具栏）}]]
 state "添加附件" as DEUIACTION1  [[$./toolbar_add_attachment#deuiaction1 {添加附件}]]
+state "上传附件（工具栏）" as RAWJSCODE1  [[$./toolbar_add_attachment#rawjscode1 {上传附件（工具栏）}]]
 
 
 Begin --> RAWJSCODE1

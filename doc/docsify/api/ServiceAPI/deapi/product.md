@@ -359,7 +359,7 @@
 <el-alert title="/products/{key}/change_admin_role" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`UPDATE`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -826,7 +826,7 @@ Integer
 <el-alert title="/products/{key}/product_counters" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`READ`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|

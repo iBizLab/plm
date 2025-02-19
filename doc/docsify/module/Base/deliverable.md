@@ -61,12 +61,14 @@
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[数据查询(DEFAULT)](module/Base/deliverable/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/Base/deliverable/query/View)|VIEW|否|否 |否 ||
+|[我的交付物(my_deliverable)](module/Base/deliverable/query/my_deliverable)|my_deliverable|否|否 |否 ||
 |[项目下的交付物(project_deliverable)](module/Base/deliverable/query/project_deliverable)|project_deliverable|否|否 |是 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/Base/deliverable/dataset/Default)|DEFAULT|数据查询|是|||
+|[我的交付物(my_deliverable)](module/Base/deliverable/dataset/my_deliverable)|my_deliverable|数据查询|否|||
 |[项目下的交付物(project_deliverable)](module/Base/deliverable/dataset/project_deliverable)|project_deliverable|数据查询|否|||
 
 ## 数据权限
@@ -83,6 +85,33 @@
 * `CREATE`
 * `UPDATE`
 * `DELETE`
+
+
+
+##### 我的交付物（读写） :id=deliverable-USER_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `数据集合` ：[我的交付物(my_deliverable)](module/Base/deliverable#数据集合)
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `UPDATE`
+* `CREATE(工作项(CREATE))`
+* `DELETE(工作项(DELETE))`
+* `READ`
+
+
+
+##### 操作用户(写) :id=deliverable-USER_W
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `无`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `CREATE(工作项(CREATE))`
 
 
 

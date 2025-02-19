@@ -15,13 +15,13 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./mob_add_attachment#begin {开始}]]
-state "准备参数" as PREPAREJSPARAM1  [[$./mob_add_attachment#preparejsparam1 {准备参数}]]
+state "显示" as RAWJSCODE2  [[$./mob_add_attachment#rawjscode2 {显示}]]
+state "上传附件" as DEUIACTION1  [[$./mob_add_attachment#deuiaction1 {上传附件}]]
+state "视图部件调用" as VIEWCTRLINVOKE2  [[$./mob_add_attachment#viewctrlinvoke2 {视图部件调用}]]
 state "设置附件列表" as RAWJSCODE1  [[$./mob_add_attachment#rawjscode1 {设置附件列表}]]
 state "添加附件数据" as VIEWCTRLINVOKE1  [[$./mob_add_attachment#viewctrlinvoke1 {添加附件数据}]]
 state "结束" as END1 <<end>> [[$./mob_add_attachment#end1 {结束}]]
-state "上传附件" as DEUIACTION1  [[$./mob_add_attachment#deuiaction1 {上传附件}]]
-state "视图部件调用" as VIEWCTRLINVOKE2  [[$./mob_add_attachment#viewctrlinvoke2 {视图部件调用}]]
-state "显示" as RAWJSCODE2  [[$./mob_add_attachment#rawjscode2 {显示}]]
+state "准备参数" as PREPAREJSPARAM1  [[$./mob_add_attachment#preparejsparam1 {准备参数}]]
 
 
 Begin --> DEUIACTION1
@@ -104,8 +104,8 @@ view.layoutPanel.panelItems.mdctrl.state.visible = true
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |附件列表|attach|数据对象列表||
-|form|form|部件对象||
 |view|view|当前视图对象||
-|文件列表|files|数据对象列表||
+|form|form|部件对象||
 |多数据部件|mdctrl|部件对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|文件列表|files|数据对象列表||

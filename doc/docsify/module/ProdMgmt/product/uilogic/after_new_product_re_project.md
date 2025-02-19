@@ -16,8 +16,8 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./after_new_product_re_project#begin {开始}]]
 state "实体行为" as DEACTION1  [[$./after_new_product_re_project#deaction1 {实体行为}]]
-state "准备参数" as PREPAREJSPARAM1  [[$./after_new_product_re_project#preparejsparam1 {准备参数}]]
 state "结束" as END1 <<end>> [[$./after_new_product_re_project#end1 {结束}]]
+state "准备参数" as PREPAREJSPARAM1  [[$./after_new_product_re_project#preparejsparam1 {准备参数}]]
 
 
 Begin --> PREPAREJSPARAM1

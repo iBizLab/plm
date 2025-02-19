@@ -161,6 +161,7 @@
 |[我的测试用例工时(my_test_case_workload)](module/Base/workload/query/my_test_case_workload)|my_test_case_workload|否|否 |否 ||
 |[我的工作类别记录(my_type_of)](module/Base/workload/query/my_type_of)|my_type_of|否|否 |否 ||
 |[我的工作项工时(my_work_item_workload)](module/Base/workload/query/my_work_item_workload)|my_work_item_workload|否|否 |否 ||
+|[我的工时(my_workload)](module/Base/workload/query/my_workload)|my_workload|否|否 |否 ||
 |[测试用例工时(test_case_workload)](module/Base/workload/query/test_case_workload)|test_case_workload|否|否 |否 ||
 |[工作类别记录(type_of)](module/Base/workload/query/type_of)|type_of|否|否 |否 ||
 |[团队维度日历链接(user_group_link)](module/Base/workload/query/user_group_link)|user_group_link|否|否 |否 ||
@@ -188,6 +189,7 @@
 |[我的测试用例工时(my_test_case_workload)](module/Base/workload/dataset/my_test_case_workload)|my_test_case_workload|数据查询|否|||
 |[我的工作类别记录(my_type_of)](module/Base/workload/dataset/my_type_of)|my_type_of|数据查询|否|||
 |[我的工作项工时(my_work_item_workload)](module/Base/workload/dataset/my_work_item_workload)|my_work_item_workload|数据查询|否|||
+|[我的工时(my_workload)](module/Base/workload/dataset/my_workload)|my_workload|数据查询|否|||
 |[测试用例维度(test_case_dimension)](module/Base/workload/dataset/test_case_dimension)|test_case_dimension|[实体逻辑](module/Base/workload/logic/test_case_dimension)|否|||
 |[测试用例管理维度(test_case_management_dimension)](module/Base/workload/dataset/test_case_management_dimension)|test_case_management_dimension|[实体逻辑](module/Base/workload/logic/test_case_management_dimension)|否|||
 |[测试用例工时(test_case_workload)](module/Base/workload/dataset/test_case_workload)|test_case_workload|数据查询|否|||
@@ -203,6 +205,18 @@
 
 ## 数据权限
 
+##### 全部数据（读） :id=workload-ALL_R
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `READ`
+
+
+
 ##### 全部数据（读写） :id=workload-ALL_RW
 
 <p class="panel-title"><b>数据范围</b></p>
@@ -214,6 +228,33 @@
 * `READ`
 * `DELETE`
 * `UPDATE`
+* `CREATE`
+
+
+
+##### 我的工时（读写） :id=workload-USER_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `数据集合` ：[我的工时(my_workload)](module/Base/workload#数据集合)
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `DELETE`
+* `CREATE`
+* `UPDATE`
+* `READ`
+
+
+
+##### 操作用户(写) :id=workload-USER_W
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `无`
+
+<p class="panel-title"><b>数据能力</b></p>
+
 * `CREATE`
 
 

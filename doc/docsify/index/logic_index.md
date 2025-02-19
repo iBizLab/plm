@@ -161,6 +161,12 @@
 |[获取交付物详情](module/Base/deliverable/logic/get_mob_delivery_detail)|get_mob_delivery_detail|无|||
 
 
+## [部门(DEPARTMENT)](module/Base/department.md) :id=department
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[部门过滤](module/Base/department/logic/dept_filter)|dept_filter|无|||
+
 
 ## [数据字典(DICTIONARY)](module/Base/dictionary_data.md) :id=dictionary_data
 
@@ -183,6 +189,7 @@
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
+|[修改评论](module/Team/discuss_post/logic/update_comment)|update_comment|无||修改讨论中的评论信息|
 |[关闭](module/Team/discuss_post/logic/close)|close|无||变更讨论的当前状态为关闭|
 |[删除](module/Team/discuss_post/logic/delete)|delete|无||讨论数据的逻辑删除，修改讨论的是否删除属性值|
 |[删除评论](module/Team/discuss_post/logic/del_comment)|del_comment|无||删除评论|
@@ -191,7 +198,9 @@
 |[打开](module/Team/discuss_post/logic/open)|open|无||变更讨论的当前状态为进行中|
 |[无操作](module/Team/discuss_post/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[添加评论](module/Team/discuss_post/logic/send_comment)|send_comment|无||添加讨论中的评论信息|
+|[生成最近访问](module/Team/discuss_post/logic/create_recent)|create_recent|无||在用户对项目数据进行了get或update操作时生成相应的访问记录.type为3，不在界面上进行显示|
 |[移动](module/Team/discuss_post/logic/move)|move|无||移动讨论至话题|
+|[获取讨论权限](module/Team/discuss_post/logic/get_post_auth)|get_post_auth|无||获取讨论权限，创建人等于自己，则srfreadonly为false。否则直接结束，不返回数据|
 |[获取话题成员（移动端）](module/Team/discuss_post/logic/mob_get_topic_member)|mob_get_topic_member|无|||
 |[讨论中评论数计数器](module/Team/discuss_post/logic/discuss_post_count)|discuss_post_count|无|||
 |[讨论关注（移动端）](module/Team/discuss_post/logic/mob_discuss_post_attention)|mob_discuss_post_attention|无|||
@@ -202,9 +211,13 @@
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
 |[删除回复](module/Team/discuss_reply/logic/del_reply)|del_reply|无||删除回复|
+|[回复下修改评论](module/Team/discuss_reply/logic/update_comment)|update_comment|无||回复下修改评论|
 |[回复下删除评论](module/Team/discuss_reply/logic/del_comment)|del_comment|无||回复下删除评论|
 |[回复下添加评论](module/Team/discuss_reply/logic/send_comment)|send_comment|无||回复下添加评论|
+|[子回复数据](module/Team/discuss_reply/logic/sub_reply_data)|sub_reply_data|无||设置回复的子回复|
+|[更新讨论时间](module/Team/discuss_reply/logic/update_post_time)|update_post_time|无|||
 |[添加回复](module/Team/discuss_reply/logic/add_reply)|add_reply|无||添加回复|
+|[编辑回复](module/Team/discuss_reply/logic/edit_reply)|edit_reply|无||编辑回复|
 
 
 ## [话题(DISCUSS_TOPIC)](module/Team/discuss_topic.md) :id=discuss_topic
@@ -219,6 +232,7 @@
 |[恢复](module/Team/discuss_topic/logic/recover)|recover|无||恢复已删除状态话题数据，修改话题的是否删除属性值，并恢复访问记录|
 |[无操作](module/Team/discuss_topic/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[激活](module/Team/discuss_topic/logic/activate)|activate|无||激活已归档状态话题，修改话题的归档属性|
+|[生成最近访问](module/Team/discuss_topic/logic/create_recent)|create_recent|无||在用户对数据进行了get或update操作时生成相应的访问记录。type为3，不在界面上进行显示|
 |[移动话题](module/Team/discuss_topic/logic/move_discuss_topic)|move_discuss_topic|无||高级设置中移动项目|
 |[自动创建人员](module/Team/discuss_topic/logic/auto_create_members)|auto_create_members|无||当所属选择"团队"时，点击完成后自动添加团队下的所有成员。|
 |[获取快速新建话题集合](module/Team/discuss_topic/logic/quick_create)|quick_create|无||用于获取可快速新建的话题集合|
@@ -285,7 +299,8 @@
 |[获取客户分数](module/ProdMgmt/idea/logic/get_customer_score)|get_customer_score|无||获取客户分数数据|
 |[获取工单数量](module/ProdMgmt/idea/logic/get_ticket_num)|get_ticket_num|无||获取工单数量数据|
 |[获取默认模块](module/ProdMgmt/idea/logic/idea_category)|idea_category|无||获取需求的默认模块|
-|[计划内需求批删除](module/ProdMgmt/idea/logic/plan_delete_idea)|plan_delete_idea|无||排期（计划）内取消关联需求，删除正反向关联数据|
+|[计划取消关联需求](module/ProdMgmt/idea/logic/plan_delete_idea)|plan_delete_idea|无||排期（计划）内取消关联需求，删除正反向关联数据|
+|[设置初始排序值](module/ProdMgmt/idea/logic/set_sequence)|set_sequence|无||设置初始排序值|
 |[负责人变更附加逻辑](module/ProdMgmt/idea/logic/assignee_onchange)|assignee_onchange|属性逻辑||产品需求负责人变更时触发相应的通知消息|
 |[选择需求模板](module/ProdMgmt/idea/logic/choose_case_template)|choose_case_template|无||获取选中模板并返回详情|
 |[需求关注（移动端）](module/ProdMgmt/idea/logic/mob_idea_attention)|mob_idea_attention|无|||
@@ -1081,7 +1096,9 @@
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
+|[冻结用户](module/Base/user/logic/Freeze)|Freeze|无||冻结用户|
 |[取消统计](module/Base/user/logic/cancel_report_flag)|cancel_report_flag|无||取消用户统计状态|
+|[激活用户](module/Base/user/logic/Activate)|Activate|无||激活用户|
 |[统计过滤](module/Base/user/logic/report_flag_filter)|report_flag_filter|无||排除非统计用户|
 |[设置统计](module/Base/user/logic/set_report_flag)|set_report_flag|无||更新用户统计状态|
 |[非空间下成员](module/Base/user/logic/not_space_mmeber)|not_space_mmeber|无||非空间下成员|

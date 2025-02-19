@@ -16,10 +16,10 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./calc_attachment_hidden#begin {开始}]]
 state "结束" as END1 <<end>> [[$./calc_attachment_hidden#end1 {结束}]]
-state "上下文中srfreadonly禁用删除附件行为" as RAWJSCODE1  [[$./calc_attachment_hidden#rawjscode1 {上下文中srfreadonly禁用删除附件行为}]]
-state "设置表格显示" as PREPAREJSPARAM2  [[$./calc_attachment_hidden#preparejsparam2 {设置表格显示}]]
-state "获取重复器表格" as PREPAREJSPARAM1  [[$./calc_attachment_hidden#preparejsparam1 {获取重复器表格}]]
 state "设置表格隐藏" as PREPAREJSPARAM3  [[$./calc_attachment_hidden#preparejsparam3 {设置表格隐藏}]]
+state "设置表格显示" as PREPAREJSPARAM2  [[$./calc_attachment_hidden#preparejsparam2 {设置表格显示}]]
+state "上下文中srfreadonly禁用删除附件行为" as RAWJSCODE1  [[$./calc_attachment_hidden#rawjscode1 {上下文中srfreadonly禁用删除附件行为}]]
+state "获取重复器表格" as PREPAREJSPARAM1  [[$./calc_attachment_hidden#preparejsparam1 {获取重复器表格}]]
 
 
 Begin --> PREPAREJSPARAM1

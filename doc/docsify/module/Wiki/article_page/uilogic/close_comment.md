@@ -15,13 +15,13 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./close_comment#begin {开始}]]
-state "记录评论状态" as RAWJSCODE1  [[$./close_comment#rawjscode1 {记录评论状态}]]
-state "结束" as END1 <<end>> [[$./close_comment#end1 {结束}]]
 state "准备逻辑参数" as PREPAREJSPARAM1  [[$./close_comment#preparejsparam1 {准备逻辑参数}]]
-state "设置视图评论显隐变量" as PREPAREJSPARAM4  [[$./close_comment#preparejsparam4 {设置视图评论显隐变量}]]
 state "设置工具栏项、评论列表显隐" as PREPAREJSPARAM3  [[$./close_comment#preparejsparam3 {设置工具栏项、评论列表显隐}]]
-state "清空评论" as DEUIACTION1  [[$./close_comment#deuiaction1 {清空评论}]]
 state "通知刷新" as RAWJSCODE2  [[$./close_comment#rawjscode2 {通知刷新}]]
+state "结束" as END1 <<end>> [[$./close_comment#end1 {结束}]]
+state "清空评论" as DEUIACTION1  [[$./close_comment#deuiaction1 {清空评论}]]
+state "设置视图评论显隐变量" as PREPAREJSPARAM4  [[$./close_comment#preparejsparam4 {设置视图评论显隐变量}]]
+state "记录评论状态" as RAWJSCODE1  [[$./close_comment#rawjscode1 {记录评论状态}]]
 
 
 Begin --> DEUIACTION1
@@ -107,8 +107,8 @@ ibiz.mc.command.create.send({ srfdecodename: 'article_page'})
 | --------| --------| --------  | --------   |
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |view|view|当前视图对象||
+|关闭按钮状态|button3_state_obj|数据对象||
+|工具栏|toolbar|部件对象||
 |容器状态|right_grouppanel_state|数据对象||
 |评论按钮状态|button2_state_obj|数据对象||
-|工具栏|toolbar|部件对象||
 |form|form|部件对象||
-|关闭按钮状态|button3_state_obj|数据对象||

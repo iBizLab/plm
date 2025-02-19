@@ -15,17 +15,17 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./jump_corresponding_view#begin {开始}]]
+state "项目" as PREPAREJSPARAM4  [[$./jump_corresponding_view#preparejsparam4 {项目}]]
+state "清空上下文" as PREPAREJSPARAM11  [[$./jump_corresponding_view#preparejsparam11 {清空上下文}]]
 state "打开动态表单" as DEUIACTION4  [[$./jump_corresponding_view#deuiaction4 {打开动态表单}]]
-state "测试库" as PREPAREJSPARAM3  [[$./jump_corresponding_view#preparejsparam3 {测试库}]]
+state "打开工作项" as DEUIACTION2  [[$./jump_corresponding_view#deuiaction2 {打开工作项}]]
+state "工单" as PREPAREJSPARAM7  [[$./jump_corresponding_view#preparejsparam7 {工单}]]
 state "结束" as END1 <<end>> [[$./jump_corresponding_view#end1 {结束}]]
 state "空，承载判断" as PREPAREJSPARAM1  [[$./jump_corresponding_view#preparejsparam1 {空，承载判断}]]
-state "工单" as PREPAREJSPARAM7  [[$./jump_corresponding_view#preparejsparam7 {工单}]]
-state "工作项" as PREPAREJSPARAM9  [[$./jump_corresponding_view#preparejsparam9 {工作项}]]
-state "清空上下文" as PREPAREJSPARAM11  [[$./jump_corresponding_view#preparejsparam11 {清空上下文}]]
 state "打开测试用例" as DEUIACTION3  [[$./jump_corresponding_view#deuiaction3 {打开测试用例}]]
+state "工作项" as PREPAREJSPARAM9  [[$./jump_corresponding_view#preparejsparam9 {工作项}]]
+state "测试库" as PREPAREJSPARAM3  [[$./jump_corresponding_view#preparejsparam3 {测试库}]]
 state "产品" as PREPAREJSPARAM2  [[$./jump_corresponding_view#preparejsparam2 {产品}]]
-state "打开工作项" as DEUIACTION2  [[$./jump_corresponding_view#deuiaction2 {打开工作项}]]
-state "项目" as PREPAREJSPARAM4  [[$./jump_corresponding_view#preparejsparam4 {项目}]]
 state "测试用例" as PREPAREJSPARAM8  [[$./jump_corresponding_view#preparejsparam8 {测试用例}]]
 
 
@@ -151,8 +151,8 @@ DEUIACTION2 --> PREPAREJSPARAM11
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
+|临时对象|temp_obj|数据对象||
 |上下文|ctx|导航视图参数绑定参数||
 |临时对象分页结果|temp_obj_page|分页查询||
 |临时对象过滤器|temp_obj_filter|过滤器||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|临时对象|temp_obj|数据对象||

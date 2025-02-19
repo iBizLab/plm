@@ -39,20 +39,20 @@ if (form) {
 
 
 ### 关联界面行为
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [编辑界面_下一个记录](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [清空评论(客户沟通)](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [关联工作项（工具栏）](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [发送评论](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [关联产品需求（工具栏）](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [发送评论（客户沟通）](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [编辑界面_上一个记录](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [工单删除（工具栏）](module/ProdMgmt/ticket#界面行为)
   * [工单(TICKET)](module/ProdMgmt/ticket) : [关联工单（工具栏）](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [关联工作项（工具栏）](module/ProdMgmt/ticket#界面行为)
   * [工单(TICKET)](module/ProdMgmt/ticket) : [清空评论](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [激活（工具栏）](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [最小化](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [工单归档（工具栏）](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [编辑界面_上一个记录](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [关联产品需求（工具栏）](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [发送评论](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [清空评论(客户沟通)](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [发送评论（客户沟通）](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [编辑界面_下一个记录](module/ProdMgmt/ticket#界面行为)
   * [工单(TICKET)](module/ProdMgmt/ticket) : [工具栏上传附件](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [激活（工具栏）](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [工单归档（工具栏）](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [工单删除（工具栏）](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [最小化](module/ProdMgmt/ticket#界面行为)
 
 ### 关联界面逻辑
   * [评论(COMMENT)](module/Base/comment) : [控制评论按钮隐藏](module/Base/comment/uilogic/comment_icon_hidden)
@@ -62,7 +62,7 @@ if (form) {
 ### 关联视图
   * [活动历史列表(activity_history_list_view)](app/view/activity_history_list_view)
   * [客户沟通(comment_customer_connect_list_view)](app/view/comment_customer_connect_list_view)
-  * [评论(comment_list_view)](app/view/comment_list_view)
+  * [评论(comment_ticket_list_view)](app/view/comment_ticket_list_view)
   * [客户(customer_pick_up_view)](app/view/customer_pick_up_view)
   * [关联(relation_ticket_re_idea_grid_view)](app/view/relation_ticket_re_idea_grid_view)
   * [关联(relation_ticket_re_self_grid_view)](app/view/relation_ticket_re_self_grid_view)

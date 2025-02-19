@@ -16,10 +16,10 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./delete#begin {"开始"}]]
 state "更新删除状态" as DEACTION1  [[$./delete#deaction1 {"更新删除状态"}]]
-state "设置工作项过滤器参数" as PREPAREPARAM1  [[$./delete#prepareparam1 {"设置工作项过滤器参数"}]]
-state "查询下级工作项" as DEDATASET1  [[$./delete#dedataset1 {"查询下级工作项"}]]
 state "设置删除状态" as PREPAREPARAM2  [[$./delete#prepareparam2 {"设置删除状态"}]]
 state "删除最近访问" as RAWSQLCALL1  [[$./delete#rawsqlcall1 {"删除最近访问"}]]
+state "设置工作项过滤器参数" as PREPAREPARAM1  [[$./delete#prepareparam1 {"设置工作项过滤器参数"}]]
+state "查询下级工作项" as DEDATASET1  [[$./delete#dedataset1 {"查询下级工作项"}]]
 state "结束" as END1 <<end>> [[$./delete#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./delete#loopsubcall1 {"循环子调用"}]] #green {
 state "递归删除子工作项" as DELOGIC1  [[$./delete#delogic1 {"递归删除子工作项"}]]

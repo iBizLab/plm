@@ -33,7 +33,6 @@
 | 名称col150    | 映射实体col200   | 备注col900  |
 | -------- |----------  |----- |
 |[ebsx_admin_mapping](module/Base/login_log/demap/ebsx_admin_mapping)|[认证日志(AUTH_LOG_ADMIN)](module/ebsx/auth_log_admin)||
-|[ebsx_mapping](module/Base/login_log/demap/ebsx_mapping)|[认证日志(SYS_AUTHLOG)](module/ebsx/AuthLog)||
 
 ## 行为
 | 中文名col200    | 代码名col150    | 类型col150    | 事务col100   | 批处理col100   | 附加操作col100  | 插件col150    |  备注col300  |

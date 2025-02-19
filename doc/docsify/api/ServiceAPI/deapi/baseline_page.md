@@ -470,7 +470,7 @@ Integer
 <el-alert title="/baseline_pages/shift_in_baseline" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`CREATE`
 
 
 
@@ -549,10 +549,15 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/baseline_pages/shift_out_baseline" type="info" :closable="false" ></el-alert>
+<el-alert title="/baseline_pages/{key}/shift_out_baseline" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`UPDATE`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|标识|
 
 
 
@@ -599,30 +604,6 @@ Integer
 ```
 
 
-##### 响应示例： {docsify-ignore}
-```json
-
-{
-  "principal_id" : null,
-  "owner_type" : null,
-  "principal_type" : null,
-  "target_type" : null,
-  "target_id" : null,
-  "target_version_id" : null,
-  "type" : null,
-  "target_version" : null,
-  "baseline" : null,
-  "space_id" : null,
-  "cur_version_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
-}
-
-```
 
 ## 基线对比数据查询
 
@@ -1271,7 +1252,7 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/baselines/{pkey}/baseline_pages/shift_out_baseline" type="info" :closable="false" ></el-alert>
+<el-alert title="/baselines/{pkey}/baseline_pages/{key}/shift_out_baseline" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 
@@ -1280,6 +1261,7 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |pkey|String|基线主键|
+|key|String|标识|
 
 
 

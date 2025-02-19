@@ -17,7 +17,7 @@
 
 运行对象：`IBizHtmlComment`
 
-远程仓库：`@ibiz-template-plm/html-comment@0.0.3-alpha.165`
+远程仓库：`@ibiz-template-plm/html-comment@0.0.3-alpha.196`
 
 ### LuckySheet编辑 :id=LUCKYSHEET
 
@@ -117,7 +117,7 @@
 
 运行对象：`SharedCheckPage`
 
-远程仓库：`@ibiz-template-plm/shared-check-page@0.0.3-dev.278`
+远程仓库：`@ibiz-template-plm/shared-check-page@0.0.3-alpha.182`
 
 ### 关注 :id=ATTENTION
 
@@ -135,7 +135,7 @@
 
 运行对象：`IBizGroupTreeControl`
 
-远程仓库：`@ibiz-template-plm/group-tree@0.0.3-alpha.161`
+远程仓库：`@ibiz-template-plm/group-tree@0.0.3-alpha.196`
 
 ### 分页分组下拉导航树插件 :id=TAB_GROUP_SELECT
 
@@ -293,7 +293,7 @@
 
 运行对象：`IBizRoutePicker`
 
-远程仓库：`@ibiz-template-plm/route-picker@0.0.3-alpha.7`
+远程仓库：`@ibiz-template-plm/route-picker@0.0.3-alpha.190`
 
 ### 文件下载 :id=FILE_DOWNLOAD
 
@@ -374,7 +374,7 @@
 
 运行对象：`IBizRepeaterGridCaseSteps`
 
-远程仓库：`@ibiz-template-plm/repeater-grid-case-steps@0.0.3-alpha.162`
+远程仓库：`@ibiz-template-plm/repeater-grid-case-steps@0.0.3-alpha.192`
 
 ### 直接内容表格列 :id=JSCODE_GRID_COLUMN
 
@@ -464,7 +464,7 @@
 
 运行对象：`IBizMobHtmlComment`
 
-远程仓库：`@ibiz-template-plmmob/mob-html-comment@0.0.3-alpha.175`
+远程仓库：`@ibiz-template-plmmob/mob-html-comment@0.0.3-alpha.197`
 
 ### 移动端锚点富文本 :id=MOB_ANCHO_HTML
 
@@ -572,7 +572,7 @@
 
 运行对象：`IBizGridEditColumn`
 
-远程仓库：`@ibiz-template-plm/grid-edit-column@0.0.3-alpha.167`
+远程仓库：`@ibiz-template-plm/grid-edit-column@0.0.3-alpha.191`
 
 ### 评审内容排序 :id=REVIEW_CONTENT_SORT
 
@@ -608,7 +608,7 @@
 
 运行对象：`CommentList`
 
-远程仓库：`@ibiz-template-plm/comment-list@0.0.3-alpha.47`
+远程仓库：`@ibiz-template-plm/comment-list@0.0.3-alpha.189`
 
 ### 资源下拉列表 :id=RESOURCE_DROPDOWN_LIST
 
@@ -636,7 +636,7 @@
 
 运行对象：`IBizTrackTreeGridControl`
 
-远程仓库：`@ibiz-template-plm/track-tree-grid@0.0.3-alpha.174`
+远程仓库：`@ibiz-template-plm/track-tree-grid@0.0.3-alpha.176`
 
 ### 路由drbar :id=ROUTE_DRBAR
 
@@ -699,7 +699,7 @@
 
 运行对象：`AnchoHtml`
 
-远程仓库：`@ibiz-template-plm/ancho-html@0.0.3-alpha.138`
+远程仓库：`@ibiz-template-plm/ancho-html@0.0.3-alpha.186`
 
 ### 阶段进度条 :id=STAGE_PROGRESS_BAR
 
@@ -753,7 +753,7 @@
 
 运行对象：`IBizProjectAttributes`
 
-远程仓库：`@ibiz-template-plm/project-attributes@0.0.3-alpha.52`
+远程仓库：`@ibiz-template-plm/project-attributes@0.0.3-alpha.183`
 
 ### 项目属性Mob :id=MOB_PROJECT_ATTRIBUTES
 

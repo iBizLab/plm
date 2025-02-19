@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./get_customer_score_2#begin {开始}]]
-state "设置客户分数值" as RAWJSCODE1  [[$./get_customer_score_2#rawjscode1 {设置客户分数值}]]
 state "获取分数" as DEACTION1  [[$./get_customer_score_2#deaction1 {获取分数}]]
+state "设置客户分数值" as RAWJSCODE1  [[$./get_customer_score_2#rawjscode1 {设置客户分数值}]]
 
 
 Begin --> DEACTION1
@@ -59,7 +59,7 @@ view.layoutPanel.state.data.score = uiLogic.result.score
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
+|视图|view|当前视图对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |上下文|ctx|导航视图参数绑定参数||
 |结果|result|数据对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|视图|view|当前视图对象||

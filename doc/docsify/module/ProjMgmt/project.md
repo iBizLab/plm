@@ -261,6 +261,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/ProjMgmt/project/dataset/Default)|DEFAULT|数据查询|是|||
+|[全部数据(VIEW)](module/ProjMgmt/project/dataset/VIEW)|VIEW|数据查询|否|||
 |[管理员(admin)](module/ProjMgmt/project/dataset/admin)|admin|数据查询|否|||
 |[已归档(archived)](module/ProjMgmt/project/dataset/archived)|archived|数据查询|否|||
 |[BI反查(bi_detail)](module/ProjMgmt/project/dataset/bi_detail)|bi_detail|数据查询|否|||
@@ -292,22 +293,22 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `READ_PSDEFORM`
-* `DELETE`
-* `MANAGE_PSDEFORM`
-* `BEGIN`
 * `END`
-* `READ`
-* `MANAGE_PSDELOGIC`
-* `MANAGE_PSDEFIELD`
-* `SUBDATA`
-* `READ_PSDEFIELD`
 * `UPDATE`
-* `READ_PSDENOTIFY`
-* `READ_PSDEMSLOGIC`
-* `MANAGE_PSDENOTIFY`
 * `READ_PSDELOGIC`
+* `MANAGE_PSDEFORM`
 * `MANAGE_PSDEMSLOGIC`
+* `READ_PSDENOTIFY`
+* `READ_PSDEFIELD`
+* `MANAGE_PSDEFIELD`
+* `BEGIN`
+* `READ`
+* `READ_PSDEFORM`
+* `SUBDATA`
+* `MANAGE_PSDENOTIFY`
+* `READ_PSDEMSLOGIC`
+* `DELETE`
+* `MANAGE_PSDELOGIC`
 
 
 
@@ -319,21 +320,21 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `SUBDATA`
-* `CREATE`
 * `DELETE`
+* `SUBDATA`
 * `READ`
 * `END`
-* `BEGIN`
+* `CREATE`
 * `UPDATE`
+* `BEGIN`
 
 
 
-##### 全部数据（写） :id=project-ALL_W
+##### 项目数据（写） :id=project-ALL_W
 
 <p class="panel-title"><b>数据范围</b></p>
 
-* `全部数据`
+* `无`
 
 <p class="panel-title"><b>数据能力</b></p>
 
@@ -361,15 +362,15 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `END`
+* `READ_PSDELOGIC`
+* `READ`
 * `READ_PSDENOTIFY`
 * `READ_PSDEFORM`
-* `READ_PSDELOGIC`
 * `SUBDATA`
-* `READ`
+* `BEGIN`
 * `READ_PSDEMSLOGIC`
 * `READ_PSDEFIELD`
-* `BEGIN`
+* `END`
 
 
 

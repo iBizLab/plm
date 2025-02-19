@@ -17,6 +17,7 @@
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|颜色|
+|<el-row justify="space-between"><el-col :span="20">style</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|背景样式|
 |<el-row justify="space-between"><el-col :span="20">is_current</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否发布当前阶段|
 |<el-row justify="space-between"><el-col :span="20">operated_time</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|操作时间|
 |<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|阶段类型|
@@ -36,6 +37,7 @@
 ```json
 {
   "color" : null,
+  "style" : null,
   "is_current" : null,
   "operated_time" : null,
   "type" : null,
@@ -61,6 +63,7 @@
 
 {
   "color" : null,
+  "style" : null,
   "is_current" : null,
   "operated_time" : null,
   "type" : null,
@@ -106,6 +109,7 @@
 
 {
   "color" : null,
+  "style" : null,
   "is_current" : null,
   "operated_time" : null,
   "type" : null,
@@ -170,6 +174,7 @@
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|颜色|
+|<el-row justify="space-between"><el-col :span="20">style</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|背景样式|
 |<el-row justify="space-between"><el-col :span="20">is_current</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否发布当前阶段|
 |<el-row justify="space-between"><el-col :span="20">operated_time</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|操作时间|
 |<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|阶段类型|
@@ -189,6 +194,7 @@
 ```json
 {
   "color" : null,
+  "style" : null,
   "is_current" : null,
   "operated_time" : null,
   "type" : null,
@@ -214,6 +220,7 @@
 
 {
   "color" : null,
+  "style" : null,
   "is_current" : null,
   "operated_time" : null,
   "type" : null,
@@ -252,6 +259,7 @@
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|颜色|
+|<el-row justify="space-between"><el-col :span="20">style</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|背景样式|
 |<el-row justify="space-between"><el-col :span="20">is_current</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否发布当前阶段|
 |<el-row justify="space-between"><el-col :span="20">operated_time</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|操作时间|
 |<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|阶段类型|
@@ -271,6 +279,7 @@
 ```json
 {
   "color" : null,
+  "style" : null,
   "is_current" : null,
   "operated_time" : null,
   "type" : null,
@@ -296,6 +305,7 @@
 
 {
   "color" : null,
+  "style" : null,
   "is_current" : null,
   "operated_time" : null,
   "type" : null,
@@ -334,6 +344,7 @@
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|颜色|
+|<el-row justify="space-between"><el-col :span="20">style</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|背景样式|
 |<el-row justify="space-between"><el-col :span="20">is_current</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否发布当前阶段|
 |<el-row justify="space-between"><el-col :span="20">operated_time</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|操作时间|
 |<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|阶段类型|
@@ -353,6 +364,7 @@
 ```json
 {
   "color" : null,
+  "style" : null,
   "is_current" : null,
   "operated_time" : null,
   "type" : null,
@@ -401,6 +413,7 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|颜色|
+|<el-row justify="space-between"><el-col :span="20">style</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|背景样式|
 |<el-row justify="space-between"><el-col :span="20">is_current</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否发布当前阶段|
 |<el-row justify="space-between"><el-col :span="20">operated_time</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|操作时间|
 |<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|阶段类型|
@@ -420,6 +433,7 @@ Integer
 ```json
 {
   "color" : null,
+  "style" : null,
   "is_current" : null,
   "operated_time" : null,
   "type" : null,
@@ -459,6 +473,7 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|颜色|
+|<el-row justify="space-between"><el-col :span="20">style</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|背景样式|
 |<el-row justify="space-between"><el-col :span="20">is_current</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否发布当前阶段|
 |<el-row justify="space-between"><el-col :span="20">operated_time</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|操作时间|
 |<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|阶段类型|
@@ -478,6 +493,7 @@ Integer
 ```json
 {
   "color" : null,
+  "style" : null,
   "is_current" : null,
   "operated_time" : null,
   "type" : null,
@@ -503,6 +519,7 @@ Integer
 
 {
   "color" : null,
+  "style" : null,
   "is_current" : null,
   "operated_time" : null,
   "type" : null,
@@ -546,6 +563,7 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|颜色|
+|<el-row justify="space-between"><el-col :span="20">style</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|背景样式|
 |<el-row justify="space-between"><el-col :span="20">is_current</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否发布当前阶段|
 |<el-row justify="space-between"><el-col :span="20">operated_time</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|操作时间|
 |<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|阶段类型|
@@ -565,6 +583,7 @@ Integer
 ```json
 {
   "color" : null,
+  "style" : null,
   "is_current" : null,
   "operated_time" : null,
   "type" : null,
@@ -590,6 +609,7 @@ Integer
 
 {
   "color" : null,
+  "style" : null,
   "is_current" : null,
   "operated_time" : null,
   "type" : null,
@@ -628,6 +648,7 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|颜色|
+|<el-row justify="space-between"><el-col :span="20">style</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|背景样式|
 |<el-row justify="space-between"><el-col :span="20">is_current</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否发布当前阶段|
 |<el-row justify="space-between"><el-col :span="20">operated_time</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|操作时间|
 |<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|阶段类型|
@@ -647,6 +668,7 @@ Integer
 ```json
 {
   "color" : null,
+  "style" : null,
   "is_current" : null,
   "operated_time" : null,
   "type" : null,
@@ -672,6 +694,7 @@ Integer
 
 {
   "color" : null,
+  "style" : null,
   "is_current" : null,
   "operated_time" : null,
   "type" : null,
@@ -717,6 +740,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_pname_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父名称|
 |<el-row justify="space-between"><el-col :span="20">n_pname_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
+|<el-row justify="space-between"><el-col :span="20">n_style_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|背景样式|
 
 
 
@@ -734,6 +758,7 @@ Integer
   "n_pname_eq" : null,
   "n_pname_like" : null,
   "n_release_id_eq" : null,
+  "n_style_eq" : null,
 }
 ```
 
@@ -743,6 +768,7 @@ Integer
 [
   {
     "color" : null,
+    "style" : null,
     "is_current" : null,
     "operated_time" : null,
     "type" : null,
@@ -788,6 +814,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_pname_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父名称|
 |<el-row justify="space-between"><el-col :span="20">n_pname_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
+|<el-row justify="space-between"><el-col :span="20">n_style_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|背景样式|
 
 
 
@@ -805,6 +832,7 @@ Integer
   "n_pname_eq" : null,
   "n_pname_like" : null,
   "n_release_id_eq" : null,
+  "n_style_eq" : null,
 }
 ```
 
@@ -814,6 +842,7 @@ Integer
 [
   {
     "color" : null,
+    "style" : null,
     "is_current" : null,
     "operated_time" : null,
     "type" : null,
@@ -859,6 +888,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_pname_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父名称|
 |<el-row justify="space-between"><el-col :span="20">n_pname_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
+|<el-row justify="space-between"><el-col :span="20">n_style_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|背景样式|
 
 
 
@@ -876,6 +906,7 @@ Integer
   "n_pname_eq" : null,
   "n_pname_like" : null,
   "n_release_id_eq" : null,
+  "n_style_eq" : null,
 }
 ```
 
@@ -885,6 +916,7 @@ Integer
 [
   {
     "color" : null,
+    "style" : null,
     "is_current" : null,
     "operated_time" : null,
     "type" : null,
@@ -930,6 +962,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_pname_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父名称|
 |<el-row justify="space-between"><el-col :span="20">n_pname_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
+|<el-row justify="space-between"><el-col :span="20">n_style_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|背景样式|
 
 
 
@@ -947,6 +980,7 @@ Integer
   "n_pname_eq" : null,
   "n_pname_like" : null,
   "n_release_id_eq" : null,
+  "n_style_eq" : null,
 }
 ```
 
@@ -956,6 +990,7 @@ Integer
 [
   {
     "color" : null,
+    "style" : null,
     "is_current" : null,
     "operated_time" : null,
     "type" : null,
@@ -1001,6 +1036,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_pname_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父名称|
 |<el-row justify="space-between"><el-col :span="20">n_pname_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
+|<el-row justify="space-between"><el-col :span="20">n_style_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|背景样式|
 
 
 
@@ -1018,6 +1054,7 @@ Integer
   "n_pname_eq" : null,
   "n_pname_like" : null,
   "n_release_id_eq" : null,
+  "n_style_eq" : null,
 }
 ```
 
@@ -1027,6 +1064,7 @@ Integer
 [
   {
     "color" : null,
+    "style" : null,
     "is_current" : null,
     "operated_time" : null,
     "type" : null,
@@ -1072,6 +1110,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_pname_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父名称|
 |<el-row justify="space-between"><el-col :span="20">n_pname_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父名称|
 |<el-row justify="space-between"><el-col :span="20">n_release_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目发布标识|
+|<el-row justify="space-between"><el-col :span="20">n_style_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|背景样式|
 
 
 
@@ -1089,6 +1128,7 @@ Integer
   "n_pname_eq" : null,
   "n_pname_like" : null,
   "n_release_id_eq" : null,
+  "n_style_eq" : null,
 }
 ```
 
@@ -1098,6 +1138,7 @@ Integer
 [
   {
     "color" : null,
+    "style" : null,
     "is_current" : null,
     "operated_time" : null,
     "type" : null,

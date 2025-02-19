@@ -15,11 +15,11 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./change_tree_state#begin {开始}]]
+state "结束" as END2 <<end>> [[$./change_tree_state#end2 {结束}]]
 state "切换树正常状态" as VIEWCTRLINVOKE2  [[$./change_tree_state#viewctrlinvoke2 {切换树正常状态}]]
-state "设置eventArgs" as PREPAREJSPARAM3  [[$./change_tree_state#preparejsparam3 {设置eventArgs}]]
 state "设置eventArgs" as PREPAREJSPARAM2  [[$./change_tree_state#preparejsparam2 {设置eventArgs}]]
 state "切换草稿状态" as VIEWCTRLINVOKE1  [[$./change_tree_state#viewctrlinvoke1 {切换草稿状态}]]
-state "结束" as END2 <<end>> [[$./change_tree_state#end2 {结束}]]
+state "设置eventArgs" as PREPAREJSPARAM3  [[$./change_tree_state#preparejsparam3 {设置eventArgs}]]
 
 
 Begin --> PREPAREJSPARAM2 : [[$./change_tree_state#begin-preparejsparam2{未发布状态} 未发布状态]]
@@ -82,6 +82,6 @@ VIEWCTRLINVOKE2 --> END2
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|视图|view|当前视图对象||
-|树|treeexpbar_tree|部件对象||
 |事件参数|eventArgs|简单数据||
+|树|treeexpbar_tree|部件对象||
+|视图|view|当前视图对象||

@@ -11,6 +11,8 @@ t1.`IS_DELETED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
+(select count(1) today_post_count from discuss_post p where p.TOPIC_ID = t1.`ID` and DATE(p.UPDATE_TIME) = curdate() ) AS `TODAY_POST_COUNT`,
+(select count(1) today_read_count from recent r where r.OWNER_TYPE = 'discuss' and r.RECENT_PARENT = t1.`ID` and DATE(r.UPDATE_TIME) = curdate() ) AS `TODAY_READ_COUNT`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`

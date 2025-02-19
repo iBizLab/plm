@@ -15,9 +15,9 @@
 
 
 ### 关联界面行为
+  * [评论(COMMENT)](module/Base/comment) : [编辑](module/Base/comment#界面行为)
   * [评论(COMMENT)](module/Base/comment) : [回复](module/Base/comment#界面行为)
   * [评论(COMMENT)](module/Base/comment) : [删除评论](module/Base/comment#界面行为)
-  * [评论(COMMENT)](module/Base/comment) : [编辑](module/Base/comment#界面行为)
   * [评论(COMMENT)](module/Base/comment) : [添加回复（客户沟通）](module/Base/comment#界面行为)
 
 <script>

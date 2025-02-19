@@ -15,13 +15,13 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./remove_attachment#begin {开始}]]
-state "获取表格部件" as PREPAREJSPARAM1  [[$./remove_attachment#preparejsparam1 {获取表格部件}]]
-state "视图部件调用" as VIEWCTRLINVOKE2  [[$./remove_attachment#viewctrlinvoke2 {视图部件调用}]]
-state "表格行删除" as VIEWCTRLINVOKE1  [[$./remove_attachment#viewctrlinvoke1 {表格行删除}]]
 state "设置表单静默保存" as PREPAREJSPARAM2  [[$./remove_attachment#preparejsparam2 {设置表单静默保存}]]
-state "结束" as END1 <<end>> [[$./remove_attachment#end1 {结束}]]
+state "获取表格部件" as PREPAREJSPARAM1  [[$./remove_attachment#preparejsparam1 {获取表格部件}]]
 state "实体行为" as DEACTION1  [[$./remove_attachment#deaction1 {实体行为}]]
+state "结束" as END1 <<end>> [[$./remove_attachment#end1 {结束}]]
+state "视图部件调用" as VIEWCTRLINVOKE2  [[$./remove_attachment#viewctrlinvoke2 {视图部件调用}]]
 state "设置附件数据" as RAWJSCODE1  [[$./remove_attachment#rawjscode1 {设置附件数据}]]
+state "表格行删除" as VIEWCTRLINVOKE1  [[$./remove_attachment#viewctrlinvoke1 {表格行删除}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -103,9 +103,9 @@ uiLogic.attach = { data: uiLogic.default, silent: true };
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
+|主表单对象|form|部件对象||
 |视图参数|params|||
+|附件数据|attach|数据对象||
+|当前视图对象|view|当前视图对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |表格|grid|部件对象||
-|当前视图对象|view|当前视图对象||
-|主表单对象|form|部件对象||
-|附件数据|attach|数据对象||

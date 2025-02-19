@@ -1,4 +1,4 @@
-# PLMWiki(plmwiki)  <!-- {docsify-ignore-all} -->
+# 百科(plmwiki)  <!-- {docsify-ignore-all} -->
 
 ## 菜单
 

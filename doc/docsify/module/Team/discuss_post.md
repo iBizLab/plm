@@ -17,11 +17,14 @@
 |建立时间|CREATE_TIME|日期时间型||否||
 |热度|HEAT|整型||是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|编号<sup class="footnote-symbol">[[序列]](index/sequence_index#seq_post_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
 |是否已删除|IS_DELETED|是否逻辑||是||
 |讨论名称|NAME|文本，可指定长度|200|是||
+|阅读次数|READ_COUNT|文本，可指定长度|200|是||
 |讨论回复数|REPLIES|文本，可指定长度|200|是||
 |状态|STATUS|[单项选择(文本值)](index/dictionary_index#discuss_status "讨论状态")|60|是||
 |话题标识|TOPIC_ID|外键值|100|是||
+|话题标识|TOPIC_IDENTIFIER|外键值附加数据|15|是||
 |话题|TOPIC_NAME|外键值文本|200|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
@@ -61,7 +64,7 @@
 |GetDraft|GetDraft|内置方法|默认|不支持||||
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
-|Update|Update|内置方法|默认|不支持||||
+|Update|Update|内置方法|默认|不支持|[附加操作](index/action_logic_index#discuss_post_Update)|||
 |关闭|close|[实体处理逻辑](module/Team/discuss_post/logic/close "关闭")|默认|不支持||||
 |删除评论|del_comment|[实体处理逻辑](module/Team/discuss_post/logic/del_comment "删除评论")|默认|不支持||||
 |删除|delete|[实体处理逻辑](module/Team/discuss_post/logic/delete "删除")|默认|不支持||||
@@ -74,10 +77,12 @@
 |打开|open|[实体处理逻辑](module/Team/discuss_post/logic/open "打开")|默认|不支持||||
 |恢复|recover|[实体处理逻辑](module/Team/discuss_post/logic/recover "恢复")|默认|不支持||||
 |添加评论|send_comment|[实体处理逻辑](module/Team/discuss_post/logic/send_comment "添加评论")|默认|不支持||||
+|修改评论|update_comment|[实体处理逻辑](module/Team/discuss_post/logic/update_comment "修改评论")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
+|[修改评论](module/Team/discuss_post/logic/update_comment)|update_comment|无||修改讨论中的评论信息|
 |[关闭](module/Team/discuss_post/logic/close)|close|无||变更讨论的当前状态为关闭|
 |[删除](module/Team/discuss_post/logic/delete)|delete|无||讨论数据的逻辑删除，修改讨论的是否删除属性值|
 |[删除评论](module/Team/discuss_post/logic/del_comment)|del_comment|无||删除评论|
@@ -86,7 +91,9 @@
 |[打开](module/Team/discuss_post/logic/open)|open|无||变更讨论的当前状态为进行中|
 |[无操作](module/Team/discuss_post/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[添加评论](module/Team/discuss_post/logic/send_comment)|send_comment|无||添加讨论中的评论信息|
+|[生成最近访问](module/Team/discuss_post/logic/create_recent)|create_recent|无||在用户对项目数据进行了get或update操作时生成相应的访问记录.type为3，不在界面上进行显示|
 |[移动](module/Team/discuss_post/logic/move)|move|无||移动讨论至话题|
+|[获取讨论权限](module/Team/discuss_post/logic/get_post_auth)|get_post_auth|无||获取讨论权限，创建人等于自己，则srfreadonly为false。否则直接结束，不返回数据|
 |[获取话题成员（移动端）](module/Team/discuss_post/logic/mob_get_topic_member)|mob_get_topic_member|无|||
 |[讨论中评论数计数器](module/Team/discuss_post/logic/discuss_post_count)|discuss_post_count|无|||
 |[讨论关注（移动端）](module/Team/discuss_post/logic/mob_discuss_post_attention)|mob_discuss_post_attention|无|||
@@ -100,6 +107,7 @@
 |[讨论集合(mob_discuss_post_list)](module/Team/discuss_post/query/mob_discuss_post_list)|mob_discuss_post_list|否|否 |否 ||
 |[我关注的(my_attention)](module/Team/discuss_post/query/my_attention)|my_attention|否|否 |否 ||
 |[我发起的(my_create)](module/Team/discuss_post/query/my_create)|my_create|否|否 |否 ||
+|[我的讨论(my_post)](module/Team/discuss_post/query/my_post)|my_post|否|否 |否 ||
 |[我回复的(my_reply)](module/Team/discuss_post/query/my_reply)|my_reply|否|否 |否 ||
 |[正常状态讨论(normal)](module/Team/discuss_post/query/normal)|normal|否|否 |否 ||
 |[父未删除(parent_not_deleted)](module/Team/discuss_post/query/parent_not_deleted)|parent_not_deleted|否|否 |否 ||
@@ -115,6 +123,7 @@
 |[讨论集合(mob_discuss_post_list)](module/Team/discuss_post/dataset/mob_discuss_post_list)|mob_discuss_post_list|数据查询|否|||
 |[我关注的(my_attention)](module/Team/discuss_post/dataset/my_attention)|my_attention|数据查询|否|||
 |[我发起的(my_create)](module/Team/discuss_post/dataset/my_create)|my_create|数据查询|否|||
+|[我的讨论(my_post)](module/Team/discuss_post/dataset/my_post)|my_post|数据查询|否|||
 |[我回复的(my_reply)](module/Team/discuss_post/dataset/my_reply)|my_reply|数据查询|否|||
 |[正常状态讨论(normal)](module/Team/discuss_post/dataset/normal)|normal|数据查询|否|||
 |[只读用户(reader)](module/Team/discuss_post/dataset/reader)|reader|数据查询|否|||
@@ -149,6 +158,21 @@
 
 
 
+##### 我的讨论（读写） :id=discuss_post-USER_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `数据集合` ：[我的讨论(my_post)](module/Team/discuss_post#数据集合)
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `DELETE`
+* `READ(话题(READ))`
+* `CREATE(话题(SUBDATA))`
+* `UPDATE(话题(SUBDATA))`
+
+
+
 ##### 操作用户(写) :id=discuss_post-USER_W
 
 <p class="panel-title"><b>数据范围</b></p>
@@ -176,44 +200,46 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 添加回复 | create_reply | 添加回复 |无数据|用户自定义||
-| 添加附件 | add_attachments | 添加附件 |无数据|用户自定义||
-| 发起讨论 | create_discuss | 发起讨论 |无数据|<details><summary>打开视图或向导（模态）</summary>[发起讨论](app/view/discuss_post_quick_create_view)</details>||
-| 删除 | delete | 删除 |多项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)|批操作工具栏上按钮调用|
-| 打开回复 | open_replies | 打开回复 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[讨论](app/view/discuss_post_mob_edit_view)</details>||
-| 显示评论列表 | show_comment_list | 发送评论 |无数据|用户自定义||
-| 关闭 | close | 关闭 |单项数据（主键）|<details><summary>后台调用</summary>[close](#行为)||
-| 发送 | panel_usr1018539994_button_calluilogic_send_click | 发送 |单项数据|用户自定义||
 | 编辑 | panel_usr0516087018_button_calluilogic1_click | 编辑 |单项数据|用户自定义||
 | 移动 | move | 移动 |单项数据|<details><summary>后台调用</summary>[move](#行为)||
 | 删除评论（移动端） | mob_del_comment | 删除评论 |单项数据（主键）|<details><summary>后台调用</summary>[del_comment](#行为)||
 | 恢复 | recover | 恢复 |多项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)|回收站批操作按钮调用；|
 | 发起讨论（移动端） | mob_create_discuss | 发起讨论 |无数据|<details><summary>打开视图或向导（模态）</summary>[发起讨论](app/view/discuss_post_mob_dis_create_view)</details>||
+| 添加回复 | create_reply | 添加回复 |无数据|用户自定义||
+| 评论 | panel_usr0516087018_button_calluilogic2_click | 评论 |单项数据|用户自定义||
+| 添加附件 | add_attachments | 添加附件 |无数据|用户自定义||
 | 新建讨论（快速新建） | quick_new_discuss_post | 新建讨论 |无数据|<details><summary>打开视图或向导（模态）</summary>[发起讨论](app/view/discuss_post_quick_create_view)</details>||
 | 打开讨论 | open_discuss_post | 打开讨论 |无数据|用户自定义||
 | 发送 | panel_usr1029137485_button_calluilogic_click | 发送 |单项数据|用户自定义||
 | 移动（移动端） | mob_move | 移动 |单项数据|<details><summary>后台调用</summary>[move](#行为)||
+| 发起讨论 | create_discuss | 发起讨论 |无数据|<details><summary>打开视图或向导（模态）</summary>[发起讨论](app/view/discuss_post_quick_create_view)</details>||
+| 删除 | delete | 删除 |多项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)|批操作工具栏上按钮调用|
 | 清空回复 | clear_reply | 清空 |无数据|用户自定义||
-| 发表评论 | send_comment | 发表评论 |无数据|用户自定义||
+| 发表评论 | send_comment | 评论 |无数据|用户自定义||
 | 上传附件 | upload_attachment | 上传 |无数据|用户自定义||
-| 删除评论 | delete_comment | 删除评论 |单项数据（主键）|用户自定义||
+| 打开回复 | open_replies | 打开回复 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[讨论](app/view/discuss_post_mob_edit_view)</details>||
+| 删除评论 | delete_comment | 删除评论 |单项数据|<details><summary>后台调用</summary>[del_comment](#行为)||
 | 打开讨论关注列表（移动端） | mob_open_attention_list | 打开关注列表 |单项数据|<details><summary>打开视图或向导（模态）</summary>[讨论关注](app/view/attention_mob_discuss_md_view)</details>||
 | 打开讨论树导航视图（移动端） | mob_open_discuss_tree | 打开讨论树导航视图 |无数据|<details><summary>打开视图或向导（模态）</summary>[讨论](app/view/discuss_post_mob_discuss_post_tree)</details>||
-| 收起评论列表 | hidden_comment_list | 收起评论 |无数据|用户自定义||
+| 关闭 | close | 关闭 |单项数据（主键）|<details><summary>后台调用</summary>[close](#行为)||
+| 发送 | panel_usr1018539994_button_calluilogic_send_click | 发送 |单项数据|用户自定义||
 | 打开 | open | 打开 |单项数据（主键）|<details><summary>后台调用</summary>[open](#行为)||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
-|[删除评论](module/Team/discuss_post/uilogic/del_comment)|del_comment|删除评论|
+|[删除讨论下评论](module/Team/discuss_post/uilogic/del_comment)|del_comment|删除评论|
 |[刷新](module/Team/discuss_post/uilogic/refresh)|refresh|刷新主视图|
 |[刷新（移动端）](module/Team/discuss_post/uilogic/mob_refresh)|mob_refresh||
-|[发送评论](module/Team/discuss_post/uilogic/send_comment)|send_comment|发送评论|
+|[发送回复下评论](module/Team/discuss_post/uilogic/send_reply_comment)|send_reply_comment|添加回复的评论，展开底部输入框<br>reply实体列表使用|
+|[发送讨论下评论](module/Team/discuss_post/uilogic/send_comment)|send_comment|发送评论|
 |[发送评论（移动端讨论）](module/Team/discuss_post/uilogic/send_comment_mob)|send_comment_mob|发送评论，并关闭评论输入框|
-|[添加回复](module/Team/discuss_post/uilogic/add_reply)|add_reply|添加回复，并关闭回复输入框|
+|[添加回复](module/Team/discuss_post/uilogic/add_reply)|add_reply|main_view页面统一回复、评论入口|
 |[添加附件数据](module/Team/discuss_post/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[清空回复](module/Team/discuss_post/uilogic/clear_reply)|clear_reply|清空当前输入框内已输入内容|
 |[编辑回复](module/Team/discuss_post/uilogic/edit_reply)|edit_reply|编辑回复，获取回复数据，展开回复输入框并赋值|
+|[编辑回复下评论](module/Team/discuss_post/uilogic/edit_reply_comment)|edit_reply_comment|编辑回复，获取回复数据，展开回复输入框并赋值|
+|[编辑讨论下评论](module/Team/discuss_post/uilogic/edit_comment)|edit_comment||
 |[讨论关闭时隐藏回复输入框](module/Team/discuss_post/uilogic/status_control_visible)|status_control_visible|讨论关闭时隐藏回复输入框|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">

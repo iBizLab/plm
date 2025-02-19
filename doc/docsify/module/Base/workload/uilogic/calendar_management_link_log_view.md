@@ -16,8 +16,8 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./calendar_management_link_log_view#begin {开始}]]
 state "结束" as END1 <<end>> [[$./calendar_management_link_log_view#end1 {结束}]]
-state "工作项维度链接日志表格视图（管理）" as DEUIACTION1  [[$./calendar_management_link_log_view#deuiaction1 {工作项维度链接日志表格视图（管理）}]]
 state "获取搜索表单的日期范围条件" as RAWJSCODE1  [[$./calendar_management_link_log_view#rawjscode1 {获取搜索表单的日期范围条件}]]
+state "工作项维度链接日志表格视图（管理）" as DEUIACTION1  [[$./calendar_management_link_log_view#deuiaction1 {工作项维度链接日志表格视图（管理）}]]
 
 
 Begin --> RAWJSCODE1

@@ -30,13 +30,6 @@
 <el-row>
 <el-tabs v-model="show_index">
 
-<el-tab-pane label="ATTENTION" name="index_ATTENTION">
-
-|    中文名col150 | 属性名称col200           | 包含属性col100 | 排序方向col100 | 索引长度col100 | 备注col600 |
-| --------   |------------| -----  | -----  | :----: | -------- |
-|所属数据标识|OWNER_ID|false|升序|-1||
-
-</el-tab-pane>
 <el-tab-pane label="ATTENTION2" name="index_ATTENTION2">
 
 |    中文名col150 | 属性名称col200           | 包含属性col100 | 排序方向col100 | 索引长度col100 | 备注col600 |
@@ -44,6 +37,13 @@
 |所属数据标识|OWNER_ID|false|升序|-1||
 |所属对象子类型|OWNER_SUBTYPE|false|升序|-1||
 |所属数据对象|OWNER_TYPE|false|升序|-1||
+
+</el-tab-pane>
+<el-tab-pane label="ATTENTION" name="index_ATTENTION">
+
+|    中文名col150 | 属性名称col200           | 包含属性col100 | 排序方向col100 | 索引长度col100 | 备注col600 |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|所属数据标识|OWNER_ID|false|升序|-1||
 
 </el-tab-pane>
 
@@ -245,7 +245,7 @@
       return {
 show_der:'minor',
 show_field_group:'field_group_user_id',
-show_index:'index_ATTENTION',
+show_index:'index_ATTENTION2',
       }
     },
     methods: {

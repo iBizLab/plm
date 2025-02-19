@@ -14,8 +14,8 @@
 
 
 ### 关联界面行为
-  * [工时类别(WORKLOAD_TYPE)](module/Base/workload_type) : [表格界面_编辑操作](module/Base/workload_type#界面行为)
   * [工时类别(WORKLOAD_TYPE)](module/Base/workload_type) : [新建类别](module/Base/workload_type#界面行为)
+  * [工时类别(WORKLOAD_TYPE)](module/Base/workload_type) : [表格界面_编辑操作](module/Base/workload_type#界面行为)
   * [工时类别(WORKLOAD_TYPE)](module/Base/workload_type) : [删除](module/Base/workload_type#界面行为)
 
 ### 关联视图

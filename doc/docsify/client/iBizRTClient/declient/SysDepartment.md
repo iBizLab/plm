@@ -1,4 +1,4 @@
-# null(SysDepartment) :id=SysDepartment
+# 部门(SysDepartment) :id=SysDepartment
 ## CheckKey
 
 <el-row>

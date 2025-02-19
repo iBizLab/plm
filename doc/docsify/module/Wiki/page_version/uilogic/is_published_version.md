@@ -15,11 +15,11 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./is_published_version#begin {开始}]]
-state "准备参数" as PREPAREJSPARAM2  [[$./is_published_version#preparejsparam2 {准备参数}]]
-state "准备参数" as PREPAREJSPARAM1  [[$./is_published_version#preparejsparam1 {准备参数}]]
 state "准备参数" as PREPAREJSPARAM3  [[$./is_published_version#preparejsparam3 {准备参数}]]
-state "调试逻辑参数" as DEBUGPARAM1  [[$./is_published_version#debugparam1 {调试逻辑参数}]]
+state "准备参数" as PREPAREJSPARAM1  [[$./is_published_version#preparejsparam1 {准备参数}]]
 state "结束" as END1 <<end>> [[$./is_published_version#end1 {结束}]]
+state "准备参数" as PREPAREJSPARAM2  [[$./is_published_version#preparejsparam2 {准备参数}]]
+state "调试逻辑参数" as DEBUGPARAM1  [[$./is_published_version#debugparam1 {调试逻辑参数}]]
 
 
 Begin --> PREPAREJSPARAM2
@@ -86,8 +86,8 @@ PREPAREJSPARAM3 --> END1
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
+|上下文|ctx|导航视图参数绑定参数||
 |开关|field_switch|数据对象||
 |视图参数|params|数据对象||
-|上下文|ctx|导航视图参数绑定参数||
-|当前视图对象|view|当前视图对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|当前视图对象|view|当前视图对象||

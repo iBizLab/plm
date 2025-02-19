@@ -18,7 +18,7 @@
 |[评论(COMMENT)](module/Base/comment)|comment|主实体|SQL|COMMENT|否|否|附属主实体控制|否|用于存储用户在需求、工单、工作项、页面、等内容上发布的评论。|
 |[通用规则(COMMON_FLOW)](module/Base/common_flow)|common_flow|主实体|无存储||否|否|自控制|否|用于存储通用规则|
 |[数据同步任务(DATA_SYNC_TASK)](module/Base/data_sync_task)|data_sync_task|主实体|SQL|DATA_SYNC_TASK|否|否|自控制|否|记录数据同步任务|
-|[交付物(DELIVERABLE)](module/Base/deliverable)|deliverable|主实体|SQL|ATTACHMENT|否|否|附属主实体控制|否|工作项中产出的具体成果物，包括文档、软件代码、报告等。|
+|[交付物(DELIVERABLE)](module/Base/deliverable)|deliverable|主实体|SQL|ATTACHMENT|否|否|附属主实体控制（未映射自控）|否|工作项中产出的具体成果物，包括文档、软件代码、报告等。|
 |[部门(DEPARTMENT)](module/Base/department)|department|主实体|无存储||否|否|自控制|否|用于查看和管理企业的部门信息。|
 |[数据字典(DICTIONARY)](module/Base/dictionary_data)|dictionary_data|主实体|SQL|DICTIONARY|否|否|自控制|否|用于记录基础数据字典。|
 |[动态应用菜单(DYNA_APPMENU)](module/Base/dyna_appmenu)|dyna_appmenu|主实体|SQL|DYNA_APPMENU|否|否|自控制|否|配置动态菜单功能必备。|
@@ -47,7 +47,7 @@
 |[关联(RELATION)](module/Base/relation)|relation|主实体|SQL|RELATION|是|否|附属主实体控制（未映射自控）|否|用于记录不同实体间的关系，如需求与工单、工作项与缺陷等。|
 |[资源组件成员(RESOURCE_MEMBER)](module/Base/resource_member)|resource_member|主实体|无存储||否|否|自控制|否|存储不同资源组件所包含的成员|
 |[角色(ROLE)](module/Base/role)|role|主实体|无存储||否|否|自控制|否|用于系统角色管理。|
-|[系统角色成员(ROLE_MEMBER)](module/Base/role_member)|role_member|主实体|无存储||否|否|自控制|否|用于系统角色成员管理|
+|[系统角色成员(ROLE_MEMBER)](module/Base/role_member)|role_member|关系实体|无存储||是|否|附属主实体控制（未映射自控）|否|用于系统角色成员管理|
 |[附件搜索(SEARCH_ATTACHMENT)](module/Base/search_attachment)|search_attachment|主实体|SQL|ATTACHMENT|否|否|自控制|否|高级搜索中的附件搜索。|
 |[评论搜索(SEARCH_COMMENT)](module/Base/search_comment)|search_comment|主实体|SQL|COMMENT|否|否|自控制|否|高级搜索中的评论搜索。|
 |[分组(SECTION)](module/Base/section)|section|主实体|SQL|SECTION|否|否|自控制|否|用于结构化管理需求、工单等。|
@@ -67,7 +67,7 @@
 
 |  中文名col200      |   代码名col150    |  备注col450  |
 |  --------   |------------ |  -------- |
-|[组织管理](er/org)|org||
 |[通用-关联\索引](er/base_relation)|base_relation||
 |[组件管理](er/addon)|addon||
+|[组织管理](er/org)|org||
 

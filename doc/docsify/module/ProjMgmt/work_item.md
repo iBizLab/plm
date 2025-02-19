@@ -778,8 +778,8 @@
 |[工作项取消负责人通知](module/ProjMgmt/work_item/notify/cancel_assignee_notify)|cancel_assignee_notify|[默认消息队列](index/notify_index)|[工作项通知模板(取消分配负责人)](index/notify_index#work_item_assignee_cancel)|负责人 ||
 |[工作项创建时分配通知](module/ProjMgmt/work_item/notify/create_notify)|create_notify|[默认消息队列](index/notify_index)|[工作项通知模板(分配负责人)](index/notify_index#work_item_assignee)|负责人 ||
 |[工作项归档/激活通知](module/ProjMgmt/work_item/notify/is_archived_notify)|is_archived_notify|[默认消息队列](index/notify_index)|[工作项通知模板(归档/激活工作项)](index/notify_index#work_item_archived_or_activate)|关注对象 负责人 ||
-|[工作项删除/恢复通知](module/ProjMgmt/work_item/notify/is_deleted_notify)|is_deleted_notify|[默认消息队列](index/notify_index)|[工作项通知模板(删除/恢复工作项)](index/notify_index#work_item_remove_or_recover)|负责人 关注人员 ||
-|[工作项状态变换通知](module/ProjMgmt/work_item/notify/state_notify)|state_notify|[默认消息队列](index/notify_index)|[工作项通知模板（状态变更）](index/notify_index#work_item_state_onchange)|负责人 关注人员 执行人 ||
+|[工作项删除/恢复通知](module/ProjMgmt/work_item/notify/is_deleted_notify)|is_deleted_notify|[默认消息队列](index/notify_index)|[工作项通知模板(删除/恢复工作项)](index/notify_index#work_item_remove_or_recover)|关注人员 负责人 ||
+|[工作项状态变换通知](module/ProjMgmt/work_item/notify/state_notify)|state_notify|[默认消息队列](index/notify_index)|[工作项通知模板（状态变更）](index/notify_index#work_item_state_onchange)|执行人 负责人 关注人员 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -1136,7 +1136,6 @@
 |[计算表格列行为状态](module/ProjMgmt/work_item/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制归档和激活行为的禁用状态|
 |[计算表格列行为状态(需求树表格)](module/ProjMgmt/work_item/uilogic/calc_requirement_column_action)|calc_requirement_column_action|用于动态控制归档和激活行为的禁用状态|
 |[计算资源成员（全局）](module/ProjMgmt/work_item/uilogic/calc_resouce_member)|calc_resouce_member|计算资源甘特部件当前人员，打开选择视图时回显simplelist|
-|[计算面板项行为状态](module/ProjMgmt/work_item/uilogic/calc_kanban_item_action_state)|calc_kanban_item_action_state|看板中工作项的归档或激活按钮的禁用判定|
 |[计算项目资源成员](module/ProjMgmt/work_item/uilogic/calc_project_resouce_member)|calc_project_resouce_member|计算资源甘特部件当前人员，打开选择视图时回显simplelist|
 |[设置执行人](module/ProjMgmt/work_item/uilogic/setting_executors)|setting_executors|设置执行人|
 |[设置默认关注人](module/ProjMgmt/work_item/uilogic/set_default_attention)|set_default_attention|新建工作项时，默认将创建人添加到此工作项的关注列表|

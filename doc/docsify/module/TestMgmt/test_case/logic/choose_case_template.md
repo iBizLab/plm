@@ -17,11 +17,13 @@ hide empty description
 state "开始" as Begin <<start>> [[$./choose_case_template#begin {"开始"}]]
 state "结束" as END1 <<end>> [[$./choose_case_template#end1 {"结束"}]]
 state "获取选中数据ID" as PREPAREPARAM1  [[$./choose_case_template#prepareparam1 {"获取选中数据ID"}]]
+state "调试逻辑参数" as DEBUGPARAM1  [[$./choose_case_template#debugparam1 {"调试逻辑参数"}]]
 state "获取选中模板详情" as DEACTION1  [[$./choose_case_template#deaction1 {"获取选中模板详情"}]]
 
 
 Begin --> PREPAREPARAM1
-PREPAREPARAM1 --> DEACTION1
+PREPAREPARAM1 --> DEBUGPARAM1
+DEBUGPARAM1 --> DEACTION1
 DEACTION1 --> END1
 
 
@@ -47,6 +49,14 @@ DEACTION1 --> END1
 
 
 1. 将`Default(传入变量).choosed_data` 设置给  `choosed_data(选择的模板).ID(标识)`
+
+#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
+
+
+
+> [!NOTE|label:调试信息|icon:fa fa-bug]
+> 调试输出参数`Default(传入变量)`的详细信息
+
 
 #### 获取选中模板详情 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 

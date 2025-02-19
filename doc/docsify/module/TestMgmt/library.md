@@ -162,20 +162,20 @@
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `MANAGE_PSDEFORM`
-* `MANAGE_PSDEMSLOGIC`
-* `DELETE`
-* `MANAGE_PSDELOGIC`
-* `SUBDATA`
-* `UPDATE`
-* `MANAGE_PSDEFIELD`
-* `READ_PSDELOGIC`
 * `READ_PSDEMSLOGIC`
-* `READ_PSDENOTIFY`
-* `MANAGE_PSDENOTIFY`
 * `READ`
+* `MANAGE_PSDEMSLOGIC`
+* `MANAGE_PSDELOGIC`
+* `READ_PSDENOTIFY`
+* `DELETE`
 * `READ_PSDEFIELD`
+* `UPDATE`
+* `READ_PSDELOGIC`
+* `MANAGE_PSDENOTIFY`
+* `MANAGE_PSDEFIELD`
 * `READ_PSDEFORM`
+* `SUBDATA`
+* `MANAGE_PSDEFORM`
 
 
 
@@ -195,11 +195,11 @@
 
 
 
-##### 全部数据（写） :id=library-ALL_W
+##### 测试库数据（写） :id=library-ALL_W
 
 <p class="panel-title"><b>数据范围</b></p>
 
-* `全部数据`
+* `无`
 
 <p class="panel-title"><b>数据能力</b></p>
 
@@ -227,13 +227,13 @@
 
 <p class="panel-title"><b>数据能力</b></p>
 
+* `READ`
+* `SUBDATA`
+* `READ_PSDEMSLOGIC`
 * `READ_PSDEFIELD`
+* `READ_PSDELOGIC`
 * `READ_PSDENOTIFY`
 * `READ_PSDEFORM`
-* `SUBDATA`
-* `READ_PSDELOGIC`
-* `READ_PSDEMSLOGIC`
-* `READ`
 
 
 

@@ -20,7 +20,7 @@
 |[迭代变更(SPRINT_ALTERATION)](module/ProjMgmt/sprint_alteration)|sprint_alteration|主实体|SQL|SPRINT_ALTERATION|否|否|附属主实体控制|否|迭代变更信息|
 |[发布阶段(STAGE)](module/ProjMgmt/stage)|stage|主实体|SQL|STAGE|否|否|附属主实体控制（未映射自控）|否|跟踪项目发布的各个阶段。|
 |[泳道(SWIMLANE)](module/ProjMgmt/swimlane)|swimlane|主实体|SQL|SWIMLANE|否|否|附属主实体控制（未映射自控）|否|在项目开发工作中使用，用于区分不同流程阶段。|
-|[流转记录(TRANSITION_HISTORY)](module/ProjMgmt/transition_history)|transition_history|主实体|SQL|TRANSITION_HISTORY|否|否|自控制|否|记录工作项状态变更的历史记录。|
+|[流转记录(TRANSITION_HISTORY)](module/ProjMgmt/transition_history)|transition_history|主实体|SQL|TRANSITION_HISTORY|否|否|附属主实体控制（未映射自控）|否|记录工作项状态变更的历史记录。|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|work_item|主实体|SQL|WORK_ITEM|否|是|附属主实体控制（未映射自控）|是|项目管理中的基本单元，可包含不同类型的工作项如任务、需求、缺陷等。|
 |[工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state)|work_item_state|主实体|SQL|WORK_ITEM_STATE|否|否|自控制|否|代表工作项在生命周期中的不同阶段状态，支持用户为工作项自定义状态。|
 |[工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type)|work_item_type|主实体|SQL|WORK_ITEM_TYPE|否|否|自控制|否|仅瀑布类型项目可以自定义工作项类型（定义瀑布型项目中可自定义的不同工作项类别。）|
@@ -31,7 +31,7 @@
 
 |  中文名col200      |   代码名col150    |  备注col450  |
 |  --------   |------------ |  -------- |
+|[项目管理-scrum](er/projmgmt_scrum)|projmgmt_scrum||
 |[项目管理-KANBAN](er/projmgmt_kanban)|projmgmt_kanban||
 |[项目管理-waterfall](er/projmgmt_waterfall)|projmgmt_waterfall||
-|[项目管理-scrum](er/projmgmt_scrum)|projmgmt_scrum||
 

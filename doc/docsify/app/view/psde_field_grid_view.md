@@ -1,4 +1,4 @@
-# 实体属性(psde_field_grid_view)  <!-- {docsify-ignore-all} -->
+# 项目属性(psde_field_grid_view)  <!-- {docsify-ignore-all} -->
 
 
 系统自动添加

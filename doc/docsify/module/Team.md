@@ -8,7 +8,7 @@
 | --------  |------------| -----   |  --------|  --------|  --------|    -------- | -------- | -------- |-------- |
 |[协作成员(DISCUSS_MEMBER)](module/Team/discuss_member)|discuss_member|关系实体|SQL|MEMBER|是|否|附属主实体控制（未映射自控）|否|记录话题的团队成员及其角色设置。|
 |[讨论(DISCUSS_POST)](module/Team/discuss_post)|discuss_post|主实体|SQL|DISCUSS_POST|否|否|附属主实体控制（未映射自控）|否|根据话题发起的讨论，使成员围绕话题展开讨论|
-|[讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply)|discuss_reply|主实体|SQL|DISCUSS_REPLY|否|否|附属主实体控制（未映射自控）|否|记录讨论下的回复信息，包括回复内容、回复人等信息。|
+|[讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply)|discuss_reply|主实体|SQL|DISCUSS_REPLY|否|否|自控制|否|记录讨论下的回复信息，包括回复内容、回复人等信息。|
 |[话题(DISCUSS_TOPIC)](module/Team/discuss_topic)|discuss_topic|主实体|SQL|DISCUSS_TOPIC|否|否|自控制|否|话题是交流信息和分享知识的讨论集合。|
 |[关键结果(KEY_RESULT)](module/Team/key_result)|key_result|主实体|SQL|KEY_RESULT|否|否|自控制|否|关键结果信息|
 |[目标(OBJECTIVE)](module/Team/objective)|objective|主实体|SQL|OBJECTIVE|否|否|自控制|否|记录目标数据信息|

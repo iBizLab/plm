@@ -180,11 +180,11 @@
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `READ`
 * `SHARED`
-* `DELETE`
-* `UPDATE`
+* `READ`
 * `SUBDATA`
+* `UPDATE`
+* `DELETE`
 
 
 
@@ -196,20 +196,20 @@
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `SHARED`
 * `CREATE`
 * `SUBDATA`
 * `READ`
-* `DELETE`
 * `UPDATE`
+* `SHARED`
+* `DELETE`
 
 
 
-##### 全部数据（写） :id=space-ALL_W
+##### 空间数据（写） :id=space-ALL_W
 
 <p class="panel-title"><b>数据范围</b></p>
 
-* `全部数据`
+* `无`
 
 <p class="panel-title"><b>数据能力</b></p>
 
@@ -237,9 +237,9 @@
 
 <p class="panel-title"><b>数据能力</b></p>
 
+* `CREATE`
 * `SUBDATA`
 * `READ`
-* `CREATE`
 
 
 

@@ -15,11 +15,11 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./create_and_relation#begin {开始}]]
-state "结束" as END1 <<end>> [[$./create_and_relation#end1 {结束}]]
-state "创建工单" as DEACTION1  [[$./create_and_relation#deaction1 {创建工单}]]
-state "关闭视图" as VIEWCTRLINVOKE1  [[$./create_and_relation#viewctrlinvoke1 {关闭视图}]]
 state "准备参数" as PREPAREJSPARAM1  [[$./create_and_relation#preparejsparam1 {准备参数}]]
+state "结束" as END1 <<end>> [[$./create_and_relation#end1 {结束}]]
+state "关闭视图" as VIEWCTRLINVOKE1  [[$./create_and_relation#viewctrlinvoke1 {关闭视图}]]
 state "执行后行为" as DEUIACTION1  [[$./create_and_relation#deuiaction1 {执行后行为}]]
+state "创建工单" as DEACTION1  [[$./create_and_relation#deaction1 {创建工单}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -77,7 +77,7 @@ VIEWCTRLINVOKE1 --> END1
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|当前视图|view|当前视图对象||
-|表单数据|form_data|数据对象||
 |表单|form|部件对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|当前视图|view|当前视图对象||
+|表单数据|form_data|数据对象||

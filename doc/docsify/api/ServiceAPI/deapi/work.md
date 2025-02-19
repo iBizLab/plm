@@ -192,15 +192,10 @@
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/works/{key}/add_project" type="info" :closable="false" ></el-alert>
+<el-alert title="/works/add_project" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
-
-##### 路径参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|key|String|标识|
+权限标识：`CREATE`
 
 
 
@@ -233,6 +228,23 @@
 ```
 
 
+##### 响应示例： {docsify-ignore}
+```json
+
+{
+  "pilot_id" : null,
+  "principal_id" : null,
+  "principal_type" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "portfolio_id" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+
+```
 
 ## 添加项目集
 
@@ -241,15 +253,10 @@
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/works/{key}/add_project_portfolio" type="info" :closable="false" ></el-alert>
+<el-alert title="/works/add_project_portfolio" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
-
-##### 路径参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|key|String|标识|
+权限标识：`CREATE`
 
 
 
@@ -282,6 +289,23 @@
 ```
 
 
+##### 响应示例： {docsify-ignore}
+```json
+
+{
+  "pilot_id" : null,
+  "principal_id" : null,
+  "principal_type" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "portfolio_id" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+
+```
 
 ## 检查工作主键
 
@@ -845,7 +869,7 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/portfolios/{pkey}/works/{key}/add_project" type="info" :closable="false" ></el-alert>
+<el-alert title="/portfolios/{pkey}/works/add_project" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 
@@ -854,7 +878,6 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |pkey|String|文件夹主键|
-|key|String|标识|
 
 
 
@@ -878,7 +901,7 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/portfolios/{pkey}/works/{key}/add_project_portfolio" type="info" :closable="false" ></el-alert>
+<el-alert title="/portfolios/{pkey}/works/add_project_portfolio" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 
@@ -887,7 +910,6 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |pkey|String|文件夹主键|
-|key|String|标识|
 
 
 

@@ -90,8 +90,8 @@
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `UPDATE`
 * `READ`
+* `UPDATE`
 
 
 

@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./edit_section_or_category#begin {开始}]]
-state "准备参数" as PREPAREJSPARAM1  [[$./edit_section_or_category#preparejsparam1 {准备参数}]]
 state "视图部件调用" as VIEWCTRLINVOKE1  [[$./edit_section_or_category#viewctrlinvoke1 {视图部件调用}]]
+state "准备参数" as PREPAREJSPARAM1  [[$./edit_section_or_category#preparejsparam1 {准备参数}]]
 
 
 Begin --> PREPAREJSPARAM1

@@ -17,10 +17,10 @@ hide empty description
 state "开始" as Begin <<start>> [[$./activate#begin {"开始"}]]
 state "设置是否归档状态" as PREPAREPARAM2  [[$./activate#prepareparam2 {"设置是否归档状态"}]]
 state "更新是否归档状态" as DEACTION1  [[$./activate#deaction1 {"更新是否归档状态"}]]
-state "查询下级工作项" as DEDATASET1  [[$./activate#dedataset1 {"查询下级工作项"}]]
 state "设置父工作项非叶子节点" as PREPAREPARAM3  [[$./activate#prepareparam3 {"设置父工作项非叶子节点"}]]
 state "更新父工作项非叶子节点" as DEACTION2  [[$./activate#deaction2 {"更新父工作项非叶子节点"}]]
 state "设置工作项过滤器参数" as PREPAREPARAM1  [[$./activate#prepareparam1 {"设置工作项过滤器参数"}]]
+state "查询下级工作项" as DEDATASET1  [[$./activate#dedataset1 {"查询下级工作项"}]]
 state "结束" as END1 <<end>> [[$./activate#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./activate#loopsubcall1 {"循环子调用"}]] #green {
 state "递归调用" as DELOGIC1  [[$./activate#delogic1 {"递归调用"}]]

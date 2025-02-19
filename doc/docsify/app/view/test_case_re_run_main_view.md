@@ -40,8 +40,8 @@ if (form) {
 
 
 ### 关联界面行为
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [清空评论](module/TestMgmt/test_case#界面行为)
   * [用例(TEST_CASE)](module/TestMgmt/test_case) : [发送评论](module/TestMgmt/test_case#界面行为)
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [清空评论](module/TestMgmt/test_case#界面行为)
 
 ### 关联界面逻辑
   * [评论(COMMENT)](module/Base/comment) : [控制评论按钮隐藏](module/Base/comment/uilogic/comment_icon_hidden)

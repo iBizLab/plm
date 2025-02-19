@@ -15,10 +15,10 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./recognize_cur_user_role#begin {开始}]]
-state "隐藏工具栏" as RAWJSCODE1  [[$./recognize_cur_user_role#rawjscode1 {隐藏工具栏}]]
 state "判断当前用户角色权限" as DEACTION1  [[$./recognize_cur_user_role#deaction1 {判断当前用户角色权限}]]
-state "准备参数" as PREPAREJSPARAM1  [[$./recognize_cur_user_role#preparejsparam1 {准备参数}]]
 state "结束" as END1 <<end>> [[$./recognize_cur_user_role#end1 {结束}]]
+state "隐藏工具栏" as RAWJSCODE1  [[$./recognize_cur_user_role#rawjscode1 {隐藏工具栏}]]
+state "准备参数" as PREPAREJSPARAM1  [[$./recognize_cur_user_role#preparejsparam1 {准备参数}]]
 
 
 Begin --> DEACTION1
@@ -79,6 +79,6 @@ uiLogic.treeexpbar.layoutPanel.panelItems.control_toolbar.state.visible=false;
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |上下文|ctx|导航视图参数绑定参数||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |当前视图|view|当前视图对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |树|treeexpbar|部件对象||

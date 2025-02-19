@@ -60,7 +60,7 @@ if(uiLogic.reportpanel){
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|报表面板门户部件|reportpanel_portlet|当前部件对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |报表面板|reportpanel|部件对象||
 |返回结果对象|result|数据对象||
+|报表面板门户部件|reportpanel_portlet|当前部件对象||

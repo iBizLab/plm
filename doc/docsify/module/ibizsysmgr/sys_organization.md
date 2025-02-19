@@ -60,12 +60,32 @@
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[数据查询(DEFAULT)](module/ibizsysmgr/sys_organization/query/Default)|DEFAULT|是|否 |否 ||
+|[Nav](module/ibizsysmgr/sys_organization/query/Nav)|Nav|否|否 |否 ||
 |[默认（全部数据）(VIEW)](module/ibizsysmgr/sys_organization/query/View)|VIEW|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/ibizsysmgr/sys_organization/dataset/Default)|DEFAULT|数据查询|是|||
+|[Nav](module/ibizsysmgr/sys_organization/dataset/Nav)|Nav|数据查询|否|||
+
+## 数据权限
+
+##### 全部数据（读写） :id=sys_organization-ALL_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `UPDATE`
+* `READ`
+* `DELETE`
+* `CREATE`
+
+
+
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -94,6 +114,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ibizsysmgr/sys_organization?id=数据集合`">
   数据集合
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ibizsysmgr/sys_organization?id=数据权限`">
+  数据权限
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ibizsysmgr/sys_organization?id=搜索模式`">
   搜索模式

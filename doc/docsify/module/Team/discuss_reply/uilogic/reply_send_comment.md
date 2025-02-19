@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./reply_send_comment#begin {开始}]]
-state "填充评论属性" as PREPAREJSPARAM1  [[$./reply_send_comment#preparejsparam1 {填充评论属性}]]
 state "保存评论" as DEACTION1  [[$./reply_send_comment#deaction1 {保存评论}]]
+state "填充评论属性" as PREPAREJSPARAM1  [[$./reply_send_comment#preparejsparam1 {填充评论属性}]]
 state "视图部件调用" as VIEWCTRLINVOKE1  [[$./reply_send_comment#viewctrlinvoke1 {视图部件调用}]]
 
 
@@ -68,8 +68,8 @@ DEACTION1 --> VIEWCTRLINVOKE1
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|控制器|ctrl|当前部件对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|评论部件控制器|comment_controller|部件对象||
 |上下文变量|ctx|导航视图参数绑定参数||
 |评论对象|comment|数据对象||
-|评论部件控制器|comment_controller|部件对象||
+|控制器|ctrl|当前部件对象||

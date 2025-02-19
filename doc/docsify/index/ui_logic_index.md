@@ -178,15 +178,18 @@
 
 |  中文名col200 | 代码名col200 | 备注col500 |
 | --------|--------|------|
-|[删除评论](module/Team/discuss_post/uilogic/del_comment)|del_comment|删除评论|
+|[删除讨论下评论](module/Team/discuss_post/uilogic/del_comment)|del_comment|删除评论|
 |[刷新](module/Team/discuss_post/uilogic/refresh)|refresh|刷新主视图|
 |[刷新（移动端）](module/Team/discuss_post/uilogic/mob_refresh)|mob_refresh||
-|[发送评论](module/Team/discuss_post/uilogic/send_comment)|send_comment|发送评论|
+|[发送回复下评论](module/Team/discuss_post/uilogic/send_reply_comment)|send_reply_comment|添加回复的评论，展开底部输入框<br>reply实体列表使用|
+|[发送讨论下评论](module/Team/discuss_post/uilogic/send_comment)|send_comment|发送评论|
 |[发送评论（移动端讨论）](module/Team/discuss_post/uilogic/send_comment_mob)|send_comment_mob|发送评论，并关闭评论输入框|
-|[添加回复](module/Team/discuss_post/uilogic/add_reply)|add_reply|添加回复，并关闭回复输入框|
+|[添加回复](module/Team/discuss_post/uilogic/add_reply)|add_reply|main_view页面统一回复、评论入口|
 |[添加附件数据](module/Team/discuss_post/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[清空回复](module/Team/discuss_post/uilogic/clear_reply)|clear_reply|清空当前输入框内已输入内容|
 |[编辑回复](module/Team/discuss_post/uilogic/edit_reply)|edit_reply|编辑回复，获取回复数据，展开回复输入框并赋值|
+|[编辑回复下评论](module/Team/discuss_post/uilogic/edit_reply_comment)|edit_reply_comment|编辑回复，获取回复数据，展开回复输入框并赋值|
+|[编辑讨论下评论](module/Team/discuss_post/uilogic/edit_comment)|edit_comment||
 |[讨论关闭时隐藏回复输入框](module/Team/discuss_post/uilogic/status_control_visible)|status_control_visible|讨论关闭时隐藏回复输入框|
 
 
@@ -198,7 +201,6 @@
 |[回复下发送评论](module/Team/discuss_reply/uilogic/reply_send_comment)|reply_send_comment|回复下发送评论|
 |[点击发表评论](module/Team/discuss_reply/uilogic/click_send_comment)|click_send_comment|未完成|
 |[获取回复列表总条数（移动端）](module/Team/discuss_reply/uilogic/mob_get_reply_total)|mob_get_reply_total||
-|[获取回复列表条数](module/Team/discuss_reply/uilogic/get_reply_num)|get_reply_num|获取回复列表条数|
 
 
 ## [话题(DISCUSS_TOPIC)](module/Team/discuss_topic.md) :id=discuss_topic
@@ -217,7 +219,6 @@
 |[仪表盘操作列](module/Base/dyna_dashboard/uilogic/control_del)|control_del|仪表盘为最后一个时禁止删除|
 |[使用此模板(禁止关闭)](module/Base/dyna_dashboard/uilogic/use_cur_template_no_closed)|use_cur_template_no_closed|使用此模板(禁止关闭)|
 |[列表加载完成](module/Base/dyna_dashboard/uilogic/list_load_success)|list_load_success|列表加载完成|
-|[获取其他仪表盘](module/Base/dyna_dashboard/uilogic/fill_other_board)|fill_other_board|获取其他仪表盘|
 |[获取选中模板名称](module/Base/dyna_dashboard/uilogic/fill_choosed_board_name)|fill_choosed_board_name|获取选中模板名称|
 |[通知刷新](module/Base/dyna_dashboard/uilogic/notify_refresh)|notify_refresh||
 
@@ -278,6 +279,7 @@
 |[门户刷新](module/ProdMgmt/idea/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户编辑](module/ProdMgmt/idea/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|
 |[需求关联需求](module/ProdMgmt/idea/uilogic/idea_relation_idea)|idea_relation_idea|值变更时触发，需求关联需求，调用处理逻辑生成正反向数据|
+|[需求展示评论显隐控制](module/ProdMgmt/idea/uilogic/idea_comment_visible)|idea_comment_visible||
 
 
 
@@ -846,6 +848,11 @@
 | --------|--------|------|
 |[修改密码（移动端表单）](module/Base/user/uilogic/mob_change_pas)|mob_change_pas|修改密码|
 |[修改密码（表单）](module/Base/user/uilogic/change_pas)|change_pas|修改密码|
+|[删除部门](module/Base/user/uilogic/trash_dept)|trash_dept||
+|[新建下级根部门](module/Base/user/uilogic/new_root_dept)|new_root_dept||
+|[新建下级部门](module/Base/user/uilogic/new_dept)|new_dept||
+|[编辑组织](module/Base/user/uilogic/edit_org)|edit_org||
+|[编辑部门](module/Base/user/uilogic/edit_dept)|edit_dept||
 
 
 ## [版本(VERSION)](module/Base/version.md) :id=version
@@ -946,7 +953,6 @@
 |[计算表格列行为状态](module/ProjMgmt/work_item/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制归档和激活行为的禁用状态|
 |[计算表格列行为状态(需求树表格)](module/ProjMgmt/work_item/uilogic/calc_requirement_column_action)|calc_requirement_column_action|用于动态控制归档和激活行为的禁用状态|
 |[计算资源成员（全局）](module/ProjMgmt/work_item/uilogic/calc_resouce_member)|calc_resouce_member|计算资源甘特部件当前人员，打开选择视图时回显simplelist|
-|[计算面板项行为状态](module/ProjMgmt/work_item/uilogic/calc_kanban_item_action_state)|calc_kanban_item_action_state|看板中工作项的归档或激活按钮的禁用判定|
 |[计算项目资源成员](module/ProjMgmt/work_item/uilogic/calc_project_resouce_member)|calc_project_resouce_member|计算资源甘特部件当前人员，打开选择视图时回显simplelist|
 |[设置执行人](module/ProjMgmt/work_item/uilogic/setting_executors)|setting_executors|设置执行人|
 |[设置默认关注人](module/ProjMgmt/work_item/uilogic/set_default_attention)|set_default_attention|新建工作项时，默认将创建人添加到此工作项的关注列表|

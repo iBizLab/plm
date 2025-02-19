@@ -178,19 +178,19 @@
 
 <p class="panel-title"><b>数据能力</b></p>
 
+* `READ_PSDENOTIFY`
+* `READ_PSDEFORM`
+* `MANAGE_PSDEFIELD`
+* `SUBDATA`
+* `READ_PSDEFIELD`
+* `DELETE`
+* `MANAGE_PSDELOGIC`
+* `READ_PSDEMSLOGIC`
 * `UPDATE`
 * `MANAGE_PSDEFORM`
 * `MANAGE_PSDEMSLOGIC`
-* `READ_PSDEMSLOGIC`
-* `READ_PSDEFIELD`
 * `READ_PSDELOGIC`
-* `SUBDATA`
-* `MANAGE_PSDEFIELD`
-* `MANAGE_PSDELOGIC`
-* `DELETE`
-* `READ_PSDENOTIFY`
 * `MANAGE_PSDENOTIFY`
-* `READ_PSDEFORM`
 * `READ`
 
 
@@ -211,11 +211,11 @@
 
 
 
-##### 全部数据（写） :id=product-ALL_W
+##### 产品数据（写） :id=product-ALL_W
 
 <p class="panel-title"><b>数据范围</b></p>
 
-* `全部数据`
+* `无`
 
 <p class="panel-title"><b>数据能力</b></p>
 
@@ -255,13 +255,13 @@
 
 <p class="panel-title"><b>数据能力</b></p>
 
+* `READ_PSDELOGIC`
+* `READ_PSDEFIELD`
+* `READ_PSDEFORM`
 * `READ_PSDENOTIFY`
 * `READ_PSDEMSLOGIC`
-* `READ_PSDEFIELD`
-* `READ_PSDELOGIC`
-* `SUBDATA`
 * `READ`
-* `READ_PSDEFORM`
+* `SUBDATA`
 
 
 

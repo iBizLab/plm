@@ -15,10 +15,10 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./show_commnet#begin {开始}]]
-state "准备参数" as PREPAREJSPARAM1  [[$./show_commnet#preparejsparam1 {准备参数}]]
-state "设置视图参数" as PREPAREJSPARAM3  [[$./show_commnet#preparejsparam3 {设置视图参数}]]
-state "结束" as END1 <<end>> [[$./show_commnet#end1 {结束}]]
 state "记录评论状态" as RAWJSCODE1  [[$./show_commnet#rawjscode1 {记录评论状态}]]
+state "准备参数" as PREPAREJSPARAM1  [[$./show_commnet#preparejsparam1 {准备参数}]]
+state "结束" as END1 <<end>> [[$./show_commnet#end1 {结束}]]
+state "设置视图参数" as PREPAREJSPARAM3  [[$./show_commnet#preparejsparam3 {设置视图参数}]]
 state "准备参数" as PREPAREJSPARAM2  [[$./show_commnet#preparejsparam2 {准备参数}]]
 
 
@@ -85,11 +85,11 @@ localStorage.setItem(operator, 'true');
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|评论按钮状态|button2_state_obj|数据对象||
-|滚动条容器1|container_scroll1|部件对象||
+|工具栏|toolbar|部件对象||
+|容器状态|right_grouppanel_state|数据对象||
+|关闭按钮状态|button3_state_obj|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |view|view|当前视图对象||
-|关闭按钮状态|button3_state_obj|数据对象||
-|容器状态|right_grouppanel_state|数据对象||
-|工具栏|toolbar|部件对象||
+|评论按钮状态|button2_state_obj|数据对象||
+|滚动条容器1|container_scroll1|部件对象||
 |form|form|部件对象||

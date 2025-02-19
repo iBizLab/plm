@@ -12,7 +12,6 @@
 ## [登录日志(LOGIN_LOG)](module/Base/login_log.md) :id=login_log
 
 * [ebsx_admin_mapping](module/Base/login_log/demap/ebsx_admin_mapping.md)
-* [ebsx认证日志映射(ebsx_mapping)](module/Base/login_log/demap/ebsx_mapping.md)
 
 ## [通知设置(NOTIFY_SETTING)](module/Base/notify_setting.md) :id=notify_setting
 
@@ -26,6 +25,7 @@
 ## [角色(ROLE)](module/Base/role.md) :id=role
 
 * [ebsx角色映射](module/Base/role/demap/DEMap.md)
+* [ibizsysmgr角色映射](module/Base/role/demap/DEMap2.md)
 
 ## [系统角色成员(ROLE_MEMBER)](module/Base/role_member.md) :id=role_member
 

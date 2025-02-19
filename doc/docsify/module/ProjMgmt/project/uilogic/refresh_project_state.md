@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./refresh_project_state#begin {开始}]]
-state "实体行为" as DEACTION1  [[$./refresh_project_state#deaction1 {实体行为}]]
 state "结束" as END1 <<end>> [[$./refresh_project_state#end1 {结束}]]
+state "实体行为" as DEACTION1  [[$./refresh_project_state#deaction1 {实体行为}]]
 
 
 Begin --> DEACTION1

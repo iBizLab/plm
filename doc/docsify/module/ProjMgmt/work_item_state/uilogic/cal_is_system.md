@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./cal_is_system#begin {开始}]]
-state "结束" as END1 <<end>> [[$./cal_is_system#end1 {结束}]]
 state "系统工作项状态隐藏编辑列" as RAWJSCODE1  [[$./cal_is_system#rawjscode1 {系统工作项状态隐藏编辑列}]]
+state "结束" as END1 <<end>> [[$./cal_is_system#end1 {结束}]]
 
 
 Begin --> RAWJSCODE1

@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./get_customer_score#begin {开始}]]
-state "获取分数" as DEACTION1  [[$./get_customer_score#deaction1 {获取分数}]]
 state "获取客户分数" as RAWJSCODE1  [[$./get_customer_score#rawjscode1 {获取客户分数}]]
+state "获取分数" as DEACTION1  [[$./get_customer_score#deaction1 {获取分数}]]
 state "结果" as DEBUGPARAM1  [[$./get_customer_score#debugparam1 {结果}]]
 
 
@@ -68,6 +68,6 @@ view.layoutPanel.panelItems.form.control.data.customer_score_precent = uiLogic.r
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|结果|result|数据对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |视图|view|当前视图对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|结果|result|数据对象||

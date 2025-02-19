@@ -19,11 +19,11 @@ state "判断系统管理员身份" as RAWSFCODE3  [[$./get_discuss_member_one#r
 state "结束" as END2 <<end>> [[$./get_discuss_member_one#end2 {"结束"}]]
 state "获取话题ID并设置过滤参数" as PREPAREPARAM2  [[$./get_discuss_member_one#prepareparam2 {"获取话题ID并设置过滤参数"}]]
 state "查询当前用户是否为话题成员" as DEDATASET3  [[$./get_discuss_member_one#dedataset3 {"查询当前用户是否为话题成员"}]]
+state "只读权限" as RAWSFCODE1  [[$./get_discuss_member_one#rawsfcode1 {"只读权限"}]]
+state "结束" as END6 <<end>> [[$./get_discuss_member_one#end6 {"结束"}]]
 state "空，承载判断" as PREPAREPARAM3  [[$./get_discuss_member_one#prepareparam3 {"空，承载判断"}]]
 state "绑定用户数据到for_obj" as PREPAREPARAM5  [[$./get_discuss_member_one#prepareparam5 {"绑定用户数据到for_obj"}]]
-state "只读权限" as RAWSFCODE1  [[$./get_discuss_member_one#rawsfcode1 {"只读权限"}]]
 state "非只读权限" as RAWSFCODE2  [[$./get_discuss_member_one#rawsfcode2 {"非只读权限"}]]
-state "结束" as END6 <<end>> [[$./get_discuss_member_one#end6 {"结束"}]]
 state "执行脚本代码" as RAWSFCODE4  [[$./get_discuss_member_one#rawsfcode4 {"执行脚本代码"}]]
 
 

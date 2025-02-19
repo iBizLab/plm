@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./new_hybrid_kanban_issue_toolbar#begin {开始}]]
-state "设置第一个看板栏id" as PREPAREJSPARAM1  [[$./new_hybrid_kanban_issue_toolbar#preparejsparam1 {设置第一个看板栏id}]]
 state "新建事务（hybrid）" as DEUIACTION1  [[$./new_hybrid_kanban_issue_toolbar#deuiaction1 {新建事务（hybrid）}]]
+state "设置第一个看板栏id" as PREPAREJSPARAM1  [[$./new_hybrid_kanban_issue_toolbar#preparejsparam1 {设置第一个看板栏id}]]
 
 
 Begin --> PREPAREJSPARAM1

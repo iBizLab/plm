@@ -13,14 +13,14 @@
 
 
 ### 关联界面行为
+  * [迭代(SPRINT)](module/ProjMgmt/sprint) : [删除](module/ProjMgmt/sprint#界面行为)
+  * [迭代(SPRINT)](module/ProjMgmt/sprint) : [删除](module/ProjMgmt/sprint#界面行为)
   * [迭代(SPRINT)](module/ProjMgmt/sprint) : [编辑](module/ProjMgmt/sprint#界面行为)
   * [迭代(SPRINT)](module/ProjMgmt/sprint) : [编辑](module/ProjMgmt/sprint#界面行为)
   * [迭代(SPRINT)](module/ProjMgmt/sprint) : [新建分组](module/ProjMgmt/sprint#界面行为)
-  * [迭代(SPRINT)](module/ProjMgmt/sprint) : [删除](module/ProjMgmt/sprint#界面行为)
-  * [迭代(SPRINT)](module/ProjMgmt/sprint) : [新建类别](module/ProjMgmt/sprint#界面行为)
-  * [迭代(SPRINT)](module/ProjMgmt/sprint) : [删除](module/ProjMgmt/sprint#界面行为)
-  * [迭代(SPRINT)](module/ProjMgmt/sprint) : [树界面_刷新全部操作](module/ProjMgmt/sprint#界面行为)
   * [迭代(SPRINT)](module/ProjMgmt/sprint) : [编辑](module/ProjMgmt/sprint#界面行为)
+  * [迭代(SPRINT)](module/ProjMgmt/sprint) : [新建类别](module/ProjMgmt/sprint#界面行为)
+  * [迭代(SPRINT)](module/ProjMgmt/sprint) : [树界面_刷新全部操作](module/ProjMgmt/sprint#界面行为)
   * [迭代(SPRINT)](module/ProjMgmt/sprint) : [删除](module/ProjMgmt/sprint#界面行为)
 
 ### 关联视图

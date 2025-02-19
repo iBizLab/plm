@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./get_run_attachment_total#begin {开始}]]
-state "获取表格条数" as RAWJSCODE2  [[$./get_run_attachment_total#rawjscode2 {获取表格条数}]]
 state "结束" as END1 <<end>> [[$./get_run_attachment_total#end1 {结束}]]
+state "获取表格条数" as RAWJSCODE2  [[$./get_run_attachment_total#rawjscode2 {获取表格条数}]]
 
 
 Begin --> RAWJSCODE2

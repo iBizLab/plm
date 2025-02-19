@@ -16,8 +16,8 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./dependency_onchange#begin {开始}]]
 state "准备关系参数" as PREPAREJSPARAM1  [[$./dependency_onchange#preparejsparam1 {准备关系参数}]]
-state "更新关系信息" as DEACTION1  [[$./dependency_onchange#deaction1 {更新关系信息}]]
 state "结束" as END1 <<end>> [[$./dependency_onchange#end1 {结束}]]
+state "更新关系信息" as DEACTION1  [[$./dependency_onchange#deaction1 {更新关系信息}]]
 
 
 Begin --> PREPAREJSPARAM1 : [[$./dependency_onchange#begin-preparejsparam1{依赖类型不为空} 依赖类型不为空]]
@@ -68,5 +68,5 @@ DEACTION1 --> END1
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |关联对象|relation|数据对象||
-|应用上下文变量|ctx|导航视图参数绑定参数||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|应用上下文变量|ctx|导航视图参数绑定参数||

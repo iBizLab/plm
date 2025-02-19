@@ -62,7 +62,8 @@ DEACTION1 --> END1
 
 
 1. 将`for_temp_obj(循环临时变量).target_topic_id` 设置给  `update_obj(更新对象).TOPIC_ID(话题标识)`
-2. 将`Default(传入变量).ID(标识)` 设置给  `update_obj(更新对象).ID(标识)`
+2. 将` ==> update_obj[IDENTIFIER]` 设置给  `update_obj(更新对象).IDENTIFIER(编号)`
+3. 将`Default(传入变量).ID(标识)` 设置给  `update_obj(更新对象).ID(标识)`
 
 #### 执行更新 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 

@@ -15,12 +15,12 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./idea_relation_work_item#begin {开始}]]
-state "绑定表格部件" as PREPAREJSPARAM1  [[$./idea_relation_work_item#preparejsparam1 {绑定表格部件}]]
-state "进行关联操作" as DEACTION1  [[$./idea_relation_work_item#deaction1 {进行关联操作}]]
 state "隐藏下拉框并清空下拉框内容" as RAWJSCODE1  [[$./idea_relation_work_item#rawjscode1 {隐藏下拉框并清空下拉框内容}]]
-state "获取选中列表" as RAWJSCODE2  [[$./idea_relation_work_item#rawjscode2 {获取选中列表}]]
 state "触发计数器刷新" as RAWJSCODE3  [[$./idea_relation_work_item#rawjscode3 {触发计数器刷新}]]
+state "绑定表格部件" as PREPAREJSPARAM1  [[$./idea_relation_work_item#preparejsparam1 {绑定表格部件}]]
 state "表格刷新" as VIEWCTRLINVOKE1  [[$./idea_relation_work_item#viewctrlinvoke1 {表格刷新}]]
+state "获取选中列表" as RAWJSCODE2  [[$./idea_relation_work_item#rawjscode2 {获取选中列表}]]
+state "进行关联操作" as DEACTION1  [[$./idea_relation_work_item#deaction1 {进行关联操作}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -121,8 +121,8 @@ ibiz.mc.command.update.send({ srfdecodename: context.principal_type})
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|执行用例对象|dto2|数据对象||
-|传入后台对象|dto|数据对象||
-|视图对象|view|当前视图对象||
 |表格对象|grid|部件对象||
 |viewctx|viewctx|导航视图参数绑定参数||
+|视图对象|view|当前视图对象||
+|传入后台对象|dto|数据对象||
+|执行用例对象|dto2|数据对象||

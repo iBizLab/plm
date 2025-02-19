@@ -21,6 +21,7 @@
 |父阶段类型|P_TYPE|[外键值附加数据](index/dictionary_index#stage_type "阶段类型")|100|是||
 |项目发布标识|RELEASE_ID|外键值|100|是||
 |排序|SEQUENCE|数值||是||
+|背景样式|STYLE|[单项选择(文本值)](index/dictionary_index#background_style "背景样式")|100|是||
 |阶段类型|TYPE|[文本，可指定长度](index/dictionary_index#stage_type "阶段类型")|100|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
@@ -31,7 +32,7 @@
 <el-row>
 <el-tabs v-model="show_index">
 
-<el-tab-pane label="STAGEDERINDEX" name="index_I4C4F848D594F43719">
+<el-tab-pane label="STAGEDERINDEX" name="index_I2A8238F3252BDED87">
 
 |    中文名col150 | 属性名称col200           | 包含属性col100 | 排序方向col100 | 索引长度col100 | 备注col600 |
 | --------   |------------| -----  | -----  | :----: | -------- |
@@ -148,6 +149,7 @@
 |N_PNAME_EQ|父名称|EQ||
 |N_PNAME_LIKE|父名称|LIKE||
 |N_RELEASE_ID_EQ|项目发布标识|EQ||
+|N_STYLE_EQ|背景样式|EQ||
 
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
@@ -196,7 +198,7 @@
       return {
 show_der:'major',
 
-show_index:'index_I4C4F848D594F43719',
+show_index:'index_I2A8238F3252BDED87',
       }
     },
     methods: {

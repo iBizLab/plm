@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./refresh_current_grid#begin {开始}]]
-state "视图部件调用" as VIEWCTRLINVOKE1  [[$./refresh_current_grid#viewctrlinvoke1 {视图部件调用}]]
 state "刷新视图" as RAWJSCODE1  [[$./refresh_current_grid#rawjscode1 {刷新视图}]]
+state "视图部件调用" as VIEWCTRLINVOKE1  [[$./refresh_current_grid#viewctrlinvoke1 {视图部件调用}]]
 
 
 Begin --> VIEWCTRLINVOKE1 : [[$./refresh_current_grid#begin-viewctrlinvoke1{刷新表格} 刷新表格]]
@@ -75,6 +75,6 @@ setTimeout(() => {
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
+|当前工具栏|view|当前视图对象||
 |当前表格|grid|部件对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|当前工具栏|view|当前视图对象||

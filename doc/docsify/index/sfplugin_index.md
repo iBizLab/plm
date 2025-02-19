@@ -5,11 +5,11 @@
 |项目工作项代码表||PSCodeListImpl|[MSLogicCodeListRuntimeEx](#UsrSFPlugin0623056576)||
 |SysDEBIReportProxyUtilRuntime||PSSysUtilImpl|[SysDEBIReportProxyUtilRuntime](#UsrSFPlugin0702700490)||
 |SysPSDEModelUtilRuntime||PSSysUtilImpl|[PLMSysPSDEModelUtilRuntime](#PLMSysPSDEModelUtilRuntime)||
-|用例步骤导入增强||PSSysTranslatorImpl|[One2ManyCaseStepImpTransRuntime](#UsrSFPlugin0515997865)|用例步骤导入增强|
 |用户导入增强||PSSysTranslatorImpl|[One2ManyUserImpTransRuntime](#UsrSFPlugin0424744613)|参数名               说明                                   默认值<br>username       指定从用户实体对象中获取值名称名称             display_name<br>userdename     指定用户数据实体名称                          user<br>one2manyfield  指定转换器属性映射的1对多集合属性名称          attentions<br>one2manyuserid 指定映射的1对多集合属性中存储用户标识属性名称   user_id|
+|结束时间边界值||PSSysTranslatorImpl|[SysEndOfDayTranslatorRuntime](#UsrSFPlugin0401275996)||
 |交付物导入增强||PSSysTranslatorImpl|[One2ManyDeliverableImpTransRuntime](#UsrSFPlugin1119809482)|导入工作项时，生成交付物<br>多个交付物以“；”进行隔开|
 |@内容||PSSysTranslatorImpl|[SysAtContentTranslatorRuntime](#UsrSFPlugin0201416283)|评论@转换器|
-|结束时间边界值||PSSysTranslatorImpl|[SysEndOfDayTranslatorRuntime](#UsrSFPlugin0401275996)||
+|用例步骤导入增强||PSSysTranslatorImpl|[One2ManyCaseStepImpTransRuntime](#UsrSFPlugin0515997865)|用例步骤导入增强|
 |工作项通知模板(运行时)||PSSysMsgTemplImpl|[[消息模板]工作项通知模板(运行时)](#UsrSFPlugin0204714710)||
 |填充产品需求版本数据(fill_version_data)|[基线需求(BASELINE_IDEA)](module/ProdMgmt/baseline_idea)|PSDEDataSetImpl|[FillVersionDataDEDataSetRuntime](#UsrSFPlugin0421357755)|cn.ibizlab.plm.user.plugin.groovy.dataentity.ds.FillVersionDataDEDataSetRuntime|
 |填充页面版本数据(fill_version_data)|[基线页面(BASELINE_PAGE)](module/Wiki/baseline_page)|PSDEDataSetImpl|[FillVersionDataDEDataSetRuntime](#UsrSFPlugin0421357755)|cn.ibizlab.plm.user.plugin.groovy.dataentity.ds.FillVersionDataDEDataSetRuntime|

@@ -126,9 +126,9 @@
 <p class="panel-title"><b>数据能力</b></p>
 
 * `CREATE`
-* `DELETE`
 * `UPDATE`
 * `READ`
+* `DELETE`
 
 
 

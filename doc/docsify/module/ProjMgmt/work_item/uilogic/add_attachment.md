@@ -15,11 +15,11 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./add_attachment#begin {开始}]]
-state "视图部件调用" as VIEWCTRLINVOKE2  [[$./add_attachment#viewctrlinvoke2 {视图部件调用}]]
-state "结束" as END1 <<end>> [[$./add_attachment#end1 {结束}]]
-state "绑定表格部件" as PREPAREJSPARAM1  [[$./add_attachment#preparejsparam1 {绑定表格部件}]]
-state "上传附件" as DEUIACTION1  [[$./add_attachment#deuiaction1 {上传附件}]]
 state "设置附件参数" as RAWJSCODE4  [[$./add_attachment#rawjscode4 {设置附件参数}]]
+state "绑定表格部件" as PREPAREJSPARAM1  [[$./add_attachment#preparejsparam1 {绑定表格部件}]]
+state "结束" as END1 <<end>> [[$./add_attachment#end1 {结束}]]
+state "上传附件" as DEUIACTION1  [[$./add_attachment#deuiaction1 {上传附件}]]
+state "视图部件调用" as VIEWCTRLINVOKE2  [[$./add_attachment#viewctrlinvoke2 {视图部件调用}]]
 
 
 Begin --> DEUIACTION1
@@ -89,9 +89,9 @@ uiLogic.attach = uiLogic.files.map(item =>
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|重复器表格|grid|部件对象||
 |附件|attach|数据对象列表||
-|表单|form|部件对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|上传文件|files|数据对象列表||
 |当前视图对象|view|当前视图对象||
+|重复器表格|grid|部件对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|表单|form|部件对象||
+|上传文件|files|数据对象列表||

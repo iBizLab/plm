@@ -103,6 +103,21 @@
 
 ## 数据权限
 
+##### 全部数据（读写） :id=baseline-ALL_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `DELETE(产品(SUBDATA))`
+* `CREATE(测试库(SUBDATA))`
+* `READ`
+* `UPDATE(产品(SUBDATA))`
+
+
+
 ##### 操作用户(写) :id=baseline-USER_W
 
 <p class="panel-title"><b>数据范围</b></p>

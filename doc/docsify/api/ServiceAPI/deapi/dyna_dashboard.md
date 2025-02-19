@@ -306,7 +306,7 @@ Integer
 <el-alert title="/dyna_dashboards/{key}/fill_other_board" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`UPDATE`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -840,6 +840,67 @@ Integer
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
 <el-alert title="/dyna_dashboards/fetch_is_system" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_dynadashboardid_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|动态数据看板标识|
+|<el-row justify="space-between"><el-col :span="20">n_dynadashboardname_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "page" : 0,
+  "size" : 20,
+  "sort" : null,
+  "n_dynadashboardid_eq" : null,
+  "n_dynadashboardname_like" : null,
+  "n_owner_id_eq" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+[
+  {
+    "is_system" : null,
+    "type" : null,
+    "owner_type" : null,
+    "owner_id" : null,
+    "desc" : null,
+    "example_chart" : null,
+    "sequences" : null,
+    "app_id" : null,
+    "create_date" : null,
+    "create_man" : null,
+    "dyna_dashboard_id" : null,
+    "dyna_dashboard_name" : null,
+    "model" : null,
+    "model_id" : null,
+    "update_man" : null,
+    "update_time" : null,
+    "user_id" : null,
+  }
+]
+```
+
+## 我的看板
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/dyna_dashboards/fetch_my_dashboard" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 权限标识：`READ`
@@ -1561,6 +1622,35 @@ Integer
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
 <el-alert title="/insight_views/{pkey}/dyna_dashboards/fetch_is_system" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|效能视图主键|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_dynadashboardid_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|动态数据看板标识|
+|<el-row justify="space-between"><el-col :span="20">n_dynadashboardname_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
+
+
+
+## 根据效能视图我的看板
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/insight_views/{pkey}/dyna_dashboards/fetch_my_dashboard" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 

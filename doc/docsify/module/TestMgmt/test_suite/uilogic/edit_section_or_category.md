@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./edit_section_or_category#begin {开始}]]
-state "视图部件调用" as VIEWCTRLINVOKE1  [[$./edit_section_or_category#viewctrlinvoke1 {视图部件调用}]]
 state "准备参数" as PREPAREJSPARAM1  [[$./edit_section_or_category#preparejsparam1 {准备参数}]]
+state "视图部件调用" as VIEWCTRLINVOKE1  [[$./edit_section_or_category#viewctrlinvoke1 {视图部件调用}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -51,6 +51,6 @@ PREPAREJSPARAM1 --> VIEWCTRLINVOKE1
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|节点参数|node_param|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |树部件|treeexpbar_tree|部件对象||
+|节点参数|node_param|数据对象||

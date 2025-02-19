@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./open_app_info#begin {开始}]]
+state "结束" as END1 <<end>> [[$./open_app_info#end1 {结束}]]
 state "界面行为" as DEUIACTION1  [[$./open_app_info#deuiaction1 {界面行为}]]
 state "刷新导航占位" as RAWJSCODE1  [[$./open_app_info#rawjscode1 {刷新导航占位}]]
-state "结束" as END1 <<end>> [[$./open_app_info#end1 {结束}]]
 
 
 Begin --> DEUIACTION1
@@ -68,5 +68,5 @@ setTimeout(() => {
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |cvt|cvt|当前部件对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./notify_refresh#begin {开始}]]
-state "结束" as END1 <<end>> [[$./notify_refresh#end1 {结束}]]
 state "通知刷新" as RAWJSCODE1  [[$./notify_refresh#rawjscode1 {通知刷新}]]
+state "结束" as END1 <<end>> [[$./notify_refresh#end1 {结束}]]
 
 
 Begin --> RAWJSCODE1

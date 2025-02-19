@@ -160,9 +160,9 @@
 <p class="panel-title"><b>数据能力</b></p>
 
 * `UPDATE`
-* `READ`
-* `CREATE`
 * `DELETE`
+* `CREATE`
+* `READ`
 
 
 
@@ -175,6 +175,7 @@
 |N_NAME_LIKE|名称|LIKE||
 |N_OWNER_ID_EQ|所属数据标识|EQ||
 |N_OWNER_SUBTYPE_EQ|所属对象子类型|EQ||
+|N_OWNER_TYPE_EQ|所属数据对象|EQ||
 |N_RECENT_PARENT_EQ|访问父类|EQ||
 |N_SHOW_IDENTIFIER_LIKE|编号|LIKE||
 

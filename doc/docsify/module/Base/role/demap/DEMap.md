@@ -16,15 +16,15 @@
 <p class="panel-title"><b>属性映射</b></p>
 
 * `属性等价`
-`AUTHORITY(角色代码标记)` <i class="fa fa-angle-double-right"/></i> `ROLETAG(角色标识)`
+`AUTHORITY(角色标识)` <i class="fa fa-angle-double-right"/></i> `ROLETAG(角色标识)`
 * `属性等价`
-`ID(标识)` <i class="fa fa-angle-double-right"/></i> `SYS_ROLEID(角色标识)`
+`NAME(角色名称)` <i class="fa fa-angle-double-right"/></i> `SYS_ROLENAME(角色名称)`
 * `属性等价`
 `GLOBALFLAG(全局标记)` <i class="fa fa-angle-double-right"/></i> `GLOBALFLAG(全局标记)`
 * `属性等价`
-`NAME(名称)` <i class="fa fa-angle-double-right"/></i> `SYS_ROLENAME(角色名称)`
-* `属性等价`
 `DCSYSTEMID(租户系统标识)` <i class="fa fa-angle-double-right"/></i> `DCSYSTEMID(租户系统标识)`
+* `属性等价`
+`ID(标识)` <i class="fa fa-angle-double-right"/></i> `SYS_ROLEID(角色标识)`
 
 <p class="panel-title"><b>行为映射</b></p>
 

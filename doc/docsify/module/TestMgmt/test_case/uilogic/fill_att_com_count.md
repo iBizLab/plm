@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./fill_att_com_count#begin {开始}]]
-state "结束" as END1 <<end>> [[$./fill_att_com_count#end1 {结束}]]
 state "填充关注&评论数" as RAWJSCODE1  [[$./fill_att_com_count#rawjscode1 {填充关注&评论数}]]
+state "结束" as END1 <<end>> [[$./fill_att_com_count#end1 {结束}]]
 
 
 Begin --> RAWJSCODE1
@@ -64,5 +64,5 @@ comment_counts.setDataValue(uiLogic.default.comment_count);
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |统计容器|CONTAINER_COUNT|数据对象||
-|当前视图对象|view|当前视图对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|当前视图对象|view|当前视图对象||

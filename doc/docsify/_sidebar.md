@@ -1,10 +1,10 @@
 * <i class="fa fa-th-list"></i> 系统模块
-  * [基础管理](module/Base)
   * [产品管理](module/ProdMgmt)
   * [项目管理](module/ProjMgmt)
   * [测试管理](module/TestMgmt)
   * [知识管理](module/Wiki)
   * [协作空间](module/Team)
+  * [基础管理](module/Base)
   * [效能度量](module/Insight)
   * [全文检索](module/FTR)
   * [系统管理](module/ibizsysmgr)
@@ -16,18 +16,18 @@
   * [智能报表](bi_scheme/BIScheme/BIScheme)
 
 * <i class="fa-brands fa-gg"></i> 服务接口
-  * [ServiceAPI](api/ServiceAPI/ServiceAPI)
-  * [_dynamodelapi](api/_dynamodelapi/_dynamodelapi)
+  * [服务接口](api/ServiceAPI/ServiceAPI)
+  * [运行时扩展代理接口](api/_dynamodelapi/_dynamodelapi)
 
 * <i class="fa fa-plug"></i> 对接外部接口
-  * [extension](client/extension/extension)
-  * [iBizRT客户端](client/iBizRTClient/iBizRTClient)
-  * [ibizsysmgr](client/ibizsysmgr/ibizsysmgr)
+  * [ebsx系统管理](client/iBizRTClient/iBizRTClient)
+  * [模型扩展](client/extension/extension)
+  * [系统管理](client/ibizsysmgr/ibizsysmgr)
 
 * <i class="fa fa-desktop"></i> 系统应用
-  * [PLMMob](app/plmmob)
-  * [PLMWeb](app/plmweb)
-  * [PLMWiki](app/plmwiki)
+  * [桌面端](app/plmweb)
+  * [百科](app/plmwiki)
+  * [移动端](app/plmmob)
 
 * [<i class="fa-solid fa-shield-halved"></i> 系统权限](index/security_index)
 

@@ -44,5 +44,5 @@ state "准备参数" as PREPAREJSPARAM1  [[$./click_send_comment#preparejsparam1
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |ctrl|ctrl|当前容器对象||
-|上下文变量|ctx|导航视图参数绑定参数||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|上下文变量|ctx|导航视图参数绑定参数||

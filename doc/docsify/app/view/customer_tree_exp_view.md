@@ -14,14 +14,14 @@
 
 ### 关联界面行为
   * [客户(CUSTOMER)](module/ProdMgmt/customer) : [编辑](module/ProdMgmt/customer#界面行为)
+  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [新建类别](module/ProdMgmt/customer#界面行为)
   * [客户(CUSTOMER)](module/ProdMgmt/customer) : [编辑](module/ProdMgmt/customer#界面行为)
-  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [编辑](module/ProdMgmt/customer#界面行为)
+  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [删除](module/ProdMgmt/customer#界面行为)
   * [客户(CUSTOMER)](module/ProdMgmt/customer) : [删除](module/ProdMgmt/customer#界面行为)
   * [客户(CUSTOMER)](module/ProdMgmt/customer) : [树界面_刷新全部操作](module/ProdMgmt/customer#界面行为)
+  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [删除](module/ProdMgmt/customer#界面行为)
+  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [编辑](module/ProdMgmt/customer#界面行为)
   * [客户(CUSTOMER)](module/ProdMgmt/customer) : [新建分组](module/ProdMgmt/customer#界面行为)
-  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [删除](module/ProdMgmt/customer#界面行为)
-  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [删除](module/ProdMgmt/customer#界面行为)
-  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [新建类别](module/ProdMgmt/customer#界面行为)
 
 ### 关联视图
   * [全部客户(customer_all_grid_view)](app/view/customer_all_grid_view)

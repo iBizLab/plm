@@ -236,7 +236,7 @@
 |移动需求|move_order|用户自定义|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/ProdMgmt/idea/logic/nothing "无操作")|默认|不支持||||
 |其他实体关联需求|others_relation_idea|[实体处理逻辑](module/ProdMgmt/idea/logic/others_relation_idea "其他实体关联需求")|默认|不支持||||
-|计划内批删除|plan_delete_idea|[实体处理逻辑](module/ProdMgmt/idea/logic/plan_delete_idea "计划内需求批删除")|默认|不支持||||
+|计划取消关联需求|plan_delete_idea|[实体处理逻辑](module/ProdMgmt/idea/logic/plan_delete_idea "计划取消关联需求")|默认|不支持||||
 |产品需求关联分页计数器|product_idea_re_counters|[实体处理逻辑](module/ProdMgmt/idea/logic/product_idea_re_counters "产品需求关联分页计数器")|默认|不支持||||
 |恢复|recover|[实体处理逻辑](module/ProdMgmt/idea/logic/recover "恢复")|默认|不支持||||
 |更新需求进度|update_idea_progress|[实体处理逻辑](module/ProdMgmt/idea/logic/update_idea_progress "更新需求进度")|默认|不支持||||
@@ -266,7 +266,8 @@
 |[获取客户分数](module/ProdMgmt/idea/logic/get_customer_score)|get_customer_score|无||获取客户分数数据|
 |[获取工单数量](module/ProdMgmt/idea/logic/get_ticket_num)|get_ticket_num|无||获取工单数量数据|
 |[获取默认模块](module/ProdMgmt/idea/logic/idea_category)|idea_category|无||获取需求的默认模块|
-|[计划内需求批删除](module/ProdMgmt/idea/logic/plan_delete_idea)|plan_delete_idea|无||排期（计划）内取消关联需求，删除正反向关联数据|
+|[计划取消关联需求](module/ProdMgmt/idea/logic/plan_delete_idea)|plan_delete_idea|无||排期（计划）内取消关联需求，删除正反向关联数据|
+|[设置初始排序值](module/ProdMgmt/idea/logic/set_sequence)|set_sequence|无||设置初始排序值|
 |[负责人变更附加逻辑](module/ProdMgmt/idea/logic/assignee_onchange)|assignee_onchange|属性逻辑||产品需求负责人变更时触发相应的通知消息|
 |[选择需求模板](module/ProdMgmt/idea/logic/choose_case_template)|choose_case_template|无||获取选中模板并返回详情|
 |[需求关注（移动端）](module/ProdMgmt/idea/logic/mob_idea_attention)|mob_idea_attention|无|||
@@ -458,9 +459,9 @@
 <p class="panel-title"><b>数据能力</b></p>
 
 * `CREATE`
-* `UPDATE`
-* `DELETE`
 * `READ`
+* `DELETE`
+* `UPDATE`
 
 
 
@@ -512,7 +513,7 @@
 |[产品需求分配负责人通知](module/ProdMgmt/idea/notify/assignee_notify)|assignee_notify|[默认消息队列](index/notify_index)|[需求通知模板(分配负责人)](index/notify_index#idea_assignee)|负责人 ||
 |[产品需求负责人变更通知](module/ProdMgmt/idea/notify/assignee_onchange_notify)|assignee_onchange_notify|[默认消息队列](index/notify_index)|[需求通知模板(负责人变更通知)](index/notify_index#idea_assignee_onchange)|关注人员 ||
 |[产品需求删除/恢复通知](module/ProdMgmt/idea/notify/remove_notify)|remove_notify|[默认消息队列](index/notify_index)|[需求通知模板(删除/恢复需求)](index/notify_index#idea_remove_or_recover)|负责人 关注人员 ||
-|[产品需求状态变更通知](module/ProdMgmt/idea/notify/state_onchage_notify)|state_onchage_notify|[默认消息队列](index/notify_index)|[需求通知模板(状态变更)](index/notify_index#idea_state_onchange)|负责人 关注人员 ||
+|[产品需求状态变更通知](module/ProdMgmt/idea/notify/state_onchage_notify)|state_onchage_notify|[默认消息队列](index/notify_index)|[需求通知模板(状态变更)](index/notify_index#idea_state_onchange)|关注人员 负责人 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -682,6 +683,7 @@
 |[门户刷新](module/ProdMgmt/idea/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户编辑](module/ProdMgmt/idea/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|
 |[需求关联需求](module/ProdMgmt/idea/uilogic/idea_relation_idea)|idea_relation_idea|值变更时触发，需求关联需求，调用处理逻辑生成正反向数据|
+|[需求展示评论显隐控制](module/ProdMgmt/idea/uilogic/idea_comment_visible)|idea_comment_visible||
 
 ## 导入模式
 

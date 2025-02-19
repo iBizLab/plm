@@ -80,5 +80,5 @@ LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID`
 
 WHERE EXISTS(SELECT * FROM `RELATION` t101 
  WHERE 
- t1.`ID` = t101.`TARGET_ID`  AND  ( t101.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}  AND  t101.`PRINCIPAL_TYPE` = 'idea'  AND  t101.`TARGET_TYPE` = 'work_item' ) )
+ t1.`ID` = t101.`TARGET_ID`  AND  ( t101.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}  AND  t101.`PRINCIPAL_TYPE` = 'idea'  AND  t101.`TARGET_TYPE` = 'work_item' ) ) AND ( t1.`IS_DELETED` <> 1 )
 ```

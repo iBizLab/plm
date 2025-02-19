@@ -13,6 +13,7 @@
 
 
 ### 关联界面行为
+  * [团队(GROUP)](module/Base/group) : [删除](module/Base/group#界面行为)
   * [团队(GROUP)](module/Base/group) : [新建团队](module/Base/group#界面行为)
   * [团队(GROUP)](module/Base/group) : [编辑](module/Base/group#界面行为)
   * [团队(GROUP)](module/Base/group) : [编辑](module/Base/group#界面行为)
@@ -20,7 +21,6 @@
   * [团队(GROUP)](module/Base/group) : [编辑](module/Base/group#界面行为)
   * [团队(GROUP)](module/Base/group) : [删除](module/Base/group#界面行为)
   * [团队(GROUP)](module/Base/group) : [新建分组](module/Base/group#界面行为)
-  * [团队(GROUP)](module/Base/group) : [删除](module/Base/group#界面行为)
   * [团队(GROUP)](module/Base/group) : [树界面_刷新全部操作](module/Base/group#界面行为)
 
 ### 关联视图

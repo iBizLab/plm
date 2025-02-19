@@ -9,7 +9,7 @@
 
 ### 关联视图
   * [项目状态(project_state_grid_view)](app/view/project_state_grid_view)
-  * [实体属性(psde_field_grid_view)](app/view/psde_field_grid_view)
+  * [项目属性(psde_field_grid_view)](app/view/psde_field_grid_view)
 
 <script>
  const { createApp } = Vue

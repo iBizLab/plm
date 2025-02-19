@@ -18,10 +18,10 @@
 
 
 ### 关联界面行为
-  * [需求(IDEA)](module/ProdMgmt/idea) : [删除（工具栏）](module/ProdMgmt/idea#界面行为)
   * [需求(IDEA)](module/ProdMgmt/idea) : [打开评论列表](module/ProdMgmt/idea#界面行为)
   * [需求(IDEA)](module/ProdMgmt/idea) : [需求归档（工具栏）](module/ProdMgmt/idea#界面行为)
   * [需求(IDEA)](module/ProdMgmt/idea) : [打开需求关注列表（移动端）](module/ProdMgmt/idea#界面行为)
+  * [需求(IDEA)](module/ProdMgmt/idea) : [删除（工具栏）](module/ProdMgmt/idea#界面行为)
 
 ### 关联界面逻辑
   * [需求(IDEA)](module/ProdMgmt/idea) : [获取客户分数](module/ProdMgmt/idea/uilogic/get_customer_score)

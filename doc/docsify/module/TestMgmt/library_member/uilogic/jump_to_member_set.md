@@ -15,10 +15,10 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./jump_to_member_set#begin {开始}]]
-state "操作提示" as MSGBOX1  [[$./jump_to_member_set#msgbox1 {操作提示}]]
-state "设置路由" as RAWJSCODE1  [[$./jump_to_member_set#rawjscode1 {设置路由}]]
 state "结束" as END1 <<end>> [[$./jump_to_member_set#end1 {结束}]]
 state "设置确认信息" as PREPAREJSPARAM1  [[$./jump_to_member_set#preparejsparam1 {设置确认信息}]]
+state "设置路由" as RAWJSCODE1  [[$./jump_to_member_set#rawjscode1 {设置路由}]]
+state "操作提示" as MSGBOX1  [[$./jump_to_member_set#msgbox1 {操作提示}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -80,7 +80,7 @@ ibiz.openView.push(`/-/index/library=${context.library}/library_index_view/srfna
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |消息确认标识|msg|数据对象||
-|视图|view|当前视图对象||
 |上一次返回参数|lastReturn|上一次调用返回||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |项目标识|project|数据对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|视图|view|当前视图对象||

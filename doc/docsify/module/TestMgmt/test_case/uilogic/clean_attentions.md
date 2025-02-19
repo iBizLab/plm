@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./clean_attentions#begin {开始}]]
-state "清空附件数据" as RAWJSCODE2  [[$./clean_attentions#rawjscode2 {清空附件数据}]]
 state "结束" as END1 <<end>> [[$./clean_attentions#end1 {结束}]]
 state "设置新关注人" as RAWJSCODE1  [[$./clean_attentions#rawjscode1 {设置新关注人}]]
+state "清空附件数据" as RAWJSCODE2  [[$./clean_attentions#rawjscode2 {清空附件数据}]]
 
 
 Begin --> RAWJSCODE1
@@ -88,6 +88,6 @@ app2.deService.exec('plmweb.attachment', 'fetchdefault', {...context, test_case:
 | --------| --------| --------  | --------   |
 |上下文|ctx|导航视图参数绑定参数||
 |关注人信息|attentions|数据对象||
-|当前视图|view|当前视图对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|当前视图|view|当前视图对象||
 |表单|form|部件对象||

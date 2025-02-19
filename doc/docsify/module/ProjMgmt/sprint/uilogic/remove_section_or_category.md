@@ -68,8 +68,8 @@ PREPAREJSPARAM1 --> VIEWCTRLINVOKE1 : [[$./remove_section_or_category#preparejsp
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|节点数据|node_data|数据对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |树部件|treeexpbar_tree|部件对象||
 |当前视图|view|当前视图对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|节点数据|node_data|数据对象||
 |节点参数|node_param|简单数据||

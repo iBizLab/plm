@@ -15,13 +15,13 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./add_child_change#begin {开始}]]
-state "绑定表格部件" as PREPAREJSPARAM1  [[$./add_child_change#preparejsparam1 {绑定表格部件}]]
-state "触发计数器刷新" as RAWJSCODE3  [[$./add_child_change#rawjscode3 {触发计数器刷新}]]
-state "表格刷新" as VIEWCTRLINVOKE1  [[$./add_child_change#viewctrlinvoke1 {表格刷新}]]
 state "获取选中列表" as RAWJSCODE2  [[$./add_child_change#rawjscode2 {获取选中列表}]]
 state "更新父标识" as DEACTION1  [[$./add_child_change#deaction1 {更新父标识}]]
-state "准备参数" as PREPAREJSPARAM2  [[$./add_child_change#preparejsparam2 {准备参数}]]
+state "触发计数器刷新" as RAWJSCODE3  [[$./add_child_change#rawjscode3 {触发计数器刷新}]]
 state "隐藏下拉框并清空下拉框内容" as RAWJSCODE1  [[$./add_child_change#rawjscode1 {隐藏下拉框并清空下拉框内容}]]
+state "准备参数" as PREPAREJSPARAM2  [[$./add_child_change#preparejsparam2 {准备参数}]]
+state "绑定表格部件" as PREPAREJSPARAM1  [[$./add_child_change#preparejsparam1 {绑定表格部件}]]
+state "表格刷新" as VIEWCTRLINVOKE1  [[$./add_child_change#viewctrlinvoke1 {表格刷新}]]
 
 
 Begin --> PREPAREJSPARAM1

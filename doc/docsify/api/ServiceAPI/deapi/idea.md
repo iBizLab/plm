@@ -821,7 +821,7 @@
 <el-alert title="/ideas/{key}/change_state" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`UPDATE`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -1110,7 +1110,7 @@ Integer
 <el-alert title="/ideas/choose_case_template" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`CREATE`
 
 
 
@@ -2221,7 +2221,7 @@ Integer
 <el-alert title="/ideas/{key}/idea_copy" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`CREATE`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -2366,7 +2366,7 @@ Integer
 <el-alert title="/ideas/{key}/idea_move" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`UPDATE`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -2511,7 +2511,7 @@ Integer
 <el-alert title="/ideas/{key}/idea_re_plan" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`UPDATE`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -3356,7 +3356,7 @@ Integer
 
 ```
 
-## 计划内批删除
+## 计划取消关联需求
 
 <el-row>
 <div style="width: 80px">
@@ -3366,7 +3366,7 @@ Integer
 <el-alert title="/ideas/{key}/plan_delete_idea" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`UPDATE`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -3511,7 +3511,7 @@ Integer
 <el-alert title="/ideas/{key}/product_idea_re_counters" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`READ`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -11249,7 +11249,7 @@ Integer
 
 
 
-## 根据产品计划内批删除
+## 根据产品计划取消关联需求
 
 <el-row>
 <div style="width: 80px">

@@ -15,10 +15,10 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./remove_section_or_category#begin {开始}]]
-state "视图部件调用" as VIEWCTRLINVOKE2  [[$./remove_section_or_category#viewctrlinvoke2 {视图部件调用}]]
+state "删除报表的相应类别" as DEACTION1  [[$./remove_section_or_category#deaction1 {删除报表的相应类别}]]
 state "树节点删除方法" as VIEWCTRLINVOKE1  [[$./remove_section_or_category#viewctrlinvoke1 {树节点删除方法}]]
 state "准备参数" as PREPAREJSPARAM1  [[$./remove_section_or_category#preparejsparam1 {准备参数}]]
-state "删除报表的相应类别" as DEACTION1  [[$./remove_section_or_category#deaction1 {删除报表的相应类别}]]
+state "视图部件调用" as VIEWCTRLINVOKE2  [[$./remove_section_or_category#viewctrlinvoke2 {视图部件调用}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -73,8 +73,8 @@ PREPAREJSPARAM1 --> VIEWCTRLINVOKE1 : [[$./remove_section_or_category#preparejsp
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|当前视图|view|当前视图对象||
 |树部件|treeexpbar_tree|部件对象||
-|节点参数|node_param|简单数据||
-|节点数据|node_data|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|当前视图|view|当前视图对象||
+|节点数据|node_data|数据对象||
+|节点参数|node_param|简单数据||

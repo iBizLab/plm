@@ -11,6 +11,7 @@
 #### 搜索栏(searchbar)
 
 ## 视图界面逻辑
+  * [需求展示评论显隐控制](module/ProdMgmt/idea/uilogic/idea_comment_visible)
   * newdata(预置新建数据逻辑)
   * opendata(预置打开数据逻辑)
 

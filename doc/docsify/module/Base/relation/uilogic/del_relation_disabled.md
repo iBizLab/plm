@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./del_relation_disabled#begin {开始}]]
-state "结束" as END1 <<end>> [[$./del_relation_disabled#end1 {结束}]]
 state "根据上下文中srfreadonly判断取消关联是否启用" as RAWJSCODE1  [[$./del_relation_disabled#rawjscode1 {根据上下文中srfreadonly判断取消关联是否启用}]]
+state "结束" as END1 <<end>> [[$./del_relation_disabled#end1 {结束}]]
 
 
 Begin --> RAWJSCODE1

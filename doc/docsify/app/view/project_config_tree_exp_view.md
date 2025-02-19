@@ -30,7 +30,7 @@
   * [scrum项目(project_scrum_flow_setting_tab_view)](app/view/project_scrum_flow_setting_tab_view)
   * [标签管理(project_tag_tag_grid_view)](app/view/project_tag_tag_grid_view)
   * [瀑布项目(project_waterfall_flow_setting_tab_view)](app/view/project_waterfall_flow_setting_tab_view)
-  * [实体属性(psde_field_grid_view)](app/view/psde_field_grid_view)
+  * [工作项属性(psde_field_global_work_item_grid_view)](app/view/psde_field_global_work_item_grid_view)
   * [发布阶段(stage_data_global_grid_view)](app/view/stage_data_global_grid_view)
   * [工作项配置(work_item_global_setting_view)](app/view/work_item_global_setting_view)
   * [工作项状态(work_item_state_grid_view)](app/view/work_item_state_grid_view)

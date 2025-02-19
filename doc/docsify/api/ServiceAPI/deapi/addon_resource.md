@@ -270,7 +270,7 @@ Integer
 <el-alert title="/addon_resources/{key}/check_resource_is_deleted" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`READ`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|

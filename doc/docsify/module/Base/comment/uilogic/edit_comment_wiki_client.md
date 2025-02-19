@@ -82,6 +82,6 @@ uiLogic.comment.reply.value = null;
 | --------| --------| --------  | --------   |
 |父视图|parentView|数据对象||
 |评论对象|comment|数据对象||
+|评论id存储对象|comment_id|数据对象||
 |当前视图对象|view|当前视图对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|评论id存储对象|comment_id|数据对象||

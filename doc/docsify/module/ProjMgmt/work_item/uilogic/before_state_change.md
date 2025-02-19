@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./before_state_change#begin {开始}]]
-state "获取选中数据" as PREPAREJSPARAM1  [[$./before_state_change#preparejsparam1 {获取选中数据}]]
 state "判断类型是否匹配" as RAWJSCODE1  [[$./before_state_change#rawjscode1 {判断类型是否匹配}]]
+state "获取选中数据" as PREPAREJSPARAM1  [[$./before_state_change#preparejsparam1 {获取选中数据}]]
 state "结束" as END1 <<end>> [[$./before_state_change#end1 {结束}]]
 
 
@@ -89,10 +89,10 @@ if (selectedData && selectedData.length > 0) {
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|批操作工具栏|detoolbar|数据对象||
-|当前表格|cur_grid|当前部件对象||
-|view|view|当前视图对象||
-|选中数据|selecteddata|数据对象列表||
-|表格|treegrid|部件对象||
 |视图参数|param|||
+|表格|treegrid|部件对象||
+|选中数据|selecteddata|数据对象列表||
+|当前表格|cur_grid|当前部件对象||
+|批操作工具栏|detoolbar|数据对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|view|view|当前视图对象||

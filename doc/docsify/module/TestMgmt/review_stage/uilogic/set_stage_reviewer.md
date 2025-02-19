@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./set_stage_reviewer#begin {开始}]]
-state "结束" as END1 <<end>> [[$./set_stage_reviewer#end1 {结束}]]
-state "实体行为" as DEACTION1  [[$./set_stage_reviewer#deaction1 {实体行为}]]
 state "准备参数" as PREPAREJSPARAM1  [[$./set_stage_reviewer#preparejsparam1 {准备参数}]]
+state "实体行为" as DEACTION1  [[$./set_stage_reviewer#deaction1 {实体行为}]]
+state "结束" as END1 <<end>> [[$./set_stage_reviewer#end1 {结束}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -61,6 +61,6 @@ DEACTION1 --> END1
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |上下文|ctx|导航视图参数绑定参数||
-|评审|review|数据对象||
-|当前视图对象|view|当前视图对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|当前视图对象|view|当前视图对象||
+|评审|review|数据对象||

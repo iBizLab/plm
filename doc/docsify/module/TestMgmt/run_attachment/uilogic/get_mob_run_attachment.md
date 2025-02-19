@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./get_mob_run_attachment#begin {开始}]]
-state "注入脚本代码" as RAWJSCODE1  [[$./get_mob_run_attachment#rawjscode1 {注入脚本代码}]]
 state "结束" as END1 <<end>> [[$./get_mob_run_attachment#end1 {结束}]]
+state "注入脚本代码" as RAWJSCODE1  [[$./get_mob_run_attachment#rawjscode1 {注入脚本代码}]]
 
 
 Begin --> RAWJSCODE1

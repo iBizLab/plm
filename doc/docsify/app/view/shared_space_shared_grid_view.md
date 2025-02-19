@@ -14,8 +14,8 @@
 
 
 ### 关联界面行为
-  * [共享空间(SHARED_SPACE)](module/Wiki/shared_space) : [空间共享设置(配置中心)](module/Wiki/shared_space#界面行为)
   * [共享空间(SHARED_SPACE)](module/Wiki/shared_space) : [关闭共享（表格操作列）](module/Wiki/shared_space#界面行为)
+  * [共享空间(SHARED_SPACE)](module/Wiki/shared_space) : [空间共享设置(配置中心)](module/Wiki/shared_space#界面行为)
 
 ### 关联视图
   * [共享空间(shared_space_edit_view)](app/view/shared_space_edit_view)

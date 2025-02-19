@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./project_relation_space#begin {开始}]]
+state "结束" as END1 <<end>> [[$./project_relation_space#end1 {结束}]]
 state "创建关联数据" as DEACTION1  [[$./project_relation_space#deaction1 {创建关联数据}]]
 state "准备参数" as PREPAREJSPARAM1  [[$./project_relation_space#preparejsparam1 {准备参数}]]
-state "结束" as END1 <<end>> [[$./project_relation_space#end1 {结束}]]
 
 
 Begin --> PREPAREJSPARAM1

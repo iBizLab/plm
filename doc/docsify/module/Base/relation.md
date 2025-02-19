@@ -161,6 +161,7 @@
 |[需求关联工单(idea_re_ticket)](module/Base/relation/query/idea_re_ticket)|idea_re_ticket|否|否 |否 ||
 |[需求关联工作项(idea_re_work_item)](module/Base/relation/query/idea_re_work_item)|idea_re_work_item|否|否 |否 ||
 |[版本需求关联数据(idea_version_relation)](module/Base/relation/query/idea_version_relation)|idea_version_relation|否|否 |否 |主实体版本创建时，查询关联principal_type为需求的数据存入version_data|
+|[我的关联(my_relation)](module/Base/relation/query/my_relation)|my_relation|否|否 |否 ||
 |[排期下需求(product_plan_idea)](module/Base/relation/query/product_plan_idea)|product_plan_idea|否|否 |否 ||
 |[产品关联项目(product_re_project)](module/Base/relation/query/product_re_project)|product_re_project|否|否 |否 ||
 |[项目关联产品(project_re_product)](module/Base/relation/query/project_re_product)|project_re_product|否|否 |否 ||
@@ -195,6 +196,7 @@
 |[需求关联工单(idea_re_ticket)](module/Base/relation/dataset/idea_re_ticket)|idea_re_ticket|数据查询|否|||
 |[需求关联工作项(idea_re_work_item)](module/Base/relation/dataset/idea_re_work_item)|idea_re_work_item|数据查询|否|||
 |[版本需求关联数据(idea_version_relation)](module/Base/relation/dataset/idea_version_relation)|idea_version_relation|数据查询|否||主实体版本创建时，查询关联principal_type为需求的数据存入version_data|
+|[我的关联(my_relation)](module/Base/relation/dataset/my_relation)|my_relation|数据查询|否|||
 |[产品排期计划内关联事项(product_plan_idea)](module/Base/relation/dataset/product_plan_idea)|product_plan_idea|数据查询|否|||
 |[产品关联项目(product_re_project)](module/Base/relation/dataset/product_re_project)|product_re_project|数据查询|否|||
 |[项目关联产品(project_re_product)](module/Base/relation/dataset/project_re_product)|project_re_product|数据查询|否|||
@@ -217,6 +219,18 @@
 
 ## 数据权限
 
+##### 全部数据（读） :id=relation-ALL_R
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `READ`
+
+
+
 ##### 全部数据（读写） :id=relation-ALL_RW
 
 <p class="panel-title"><b>数据范围</b></p>
@@ -229,6 +243,21 @@
 * `DELETE`
 * `CREATE`
 * `UPDATE`
+
+
+
+##### 我的关联（读写） :id=relation-USER_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `数据集合` ：[我的关联(my_relation)](module/Base/relation#数据集合)
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `UPDATE`
+* `READ`
+* `DELETE`
+* `CREATE`
 
 
 
@@ -265,6 +294,7 @@
 | 产品移动端新建工作项（新建后关联） | product_create_work_item | 新建工作项 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_mob_create_option_view)</details>||
 | 打开关联产品 | open_relation_product | 打开关联产品 |单项数据|<details><summary>打开HTML页面</summary>*./#/-/index/product=${data.target_id}/product_index_view/-*</details>||
 | 新建执行后（建立双向关联数据) | after_creat_double_relation | 新建执行后（建立双向关联数据) |单项数据（主键）|用户自定义||
+| 跳转对应需求视图（排期跟踪） | jump_idea | 跳转对应需求视图 |单项数据|用户自定义||
 | 执行用例取消关联缺陷 | run_del_relation_bug | 取消关联 |单项数据|<details><summary>后台调用</summary>[run_del_relation_bug](#行为)||
 | 添加依赖后置任务（移动端） | mob_add_after_dependency | 添加后置任务 |无数据|<details><summary>后台调用</summary>[add_dependency](#行为)||
 | 打开路线图视图（产品）_关联 | open_roadmap | 路线图 |无数据|<details><summary>打开视图或向导（模态）</summary>[路线图](app/view/release_road_map_product_view)</details>||

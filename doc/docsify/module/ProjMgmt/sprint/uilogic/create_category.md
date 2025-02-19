@@ -57,6 +57,6 @@ PREPAREJSPARAM1 --> VIEWCTRLINVOKE1
 | --------| --------| --------  | --------   |
 |上下文对象|context|导航视图参数绑定参数||
 |节点参数|node_param|数据对象||
-|树部件|treeexpbar_tree|部件对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |默认值对象|defaultValue|数据对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|树部件|treeexpbar_tree|部件对象||

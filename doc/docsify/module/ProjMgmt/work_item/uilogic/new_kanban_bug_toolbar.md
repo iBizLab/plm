@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./new_kanban_bug_toolbar#begin {开始}]]
+state "获取首个分组代码表标识" as PREPAREJSPARAM1  [[$./new_kanban_bug_toolbar#preparejsparam1 {获取首个分组代码表标识}]]
 state "界面行为" as DEUIACTION1  [[$./new_kanban_bug_toolbar#deuiaction1 {界面行为}]]
 state "结束" as END1 <<end>> [[$./new_kanban_bug_toolbar#end1 {结束}]]
-state "获取首个分组代码表标识" as PREPAREJSPARAM1  [[$./new_kanban_bug_toolbar#preparejsparam1 {获取首个分组代码表标识}]]
 
 
 Begin --> PREPAREJSPARAM1

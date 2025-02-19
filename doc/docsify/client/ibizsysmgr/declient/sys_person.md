@@ -252,6 +252,25 @@
 ```
 
 
+## GetSimple
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="GET" type="success" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/sys_people/{key}" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|主键|
+
+
+
+
 ## Remove
 
 <el-row>
@@ -271,16 +290,21 @@
 
 
 
-## Save
+## ResetPassword
 
 <el-row>
 <div style="width: 80px">
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/sys_people" type="info" :closable="false" ></el-alert>
+<el-alert title="/sys_people/{key}" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|主键|
 
 
 
@@ -347,6 +371,25 @@
   "update_time" : null,
 }
 ```
+
+
+## SYS_PERSON__DEACTION__SAVE
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/sys_people/{key}" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|主键|
+
+
 
 
 ## Update
@@ -450,6 +493,7 @@
 |---|---|----|
 |n_dc_eq|String|N_DC_EQ|
 |n_id_eq|String|N_ID_EQ|
+|n_uid_eq|String|N_UID_EQ|
 
 
 
@@ -461,6 +505,7 @@
   "sort" : null,
   "n_dc_eq" : null,
   "n_id_eq" : null,
+  "n_uid_eq" : null,
 }
 ```
 
@@ -483,6 +528,7 @@
 |---|---|----|
 |n_dc_eq|String|N_DC_EQ|
 |n_id_eq|String|N_ID_EQ|
+|n_uid_eq|String|N_UID_EQ|
 
 
 
@@ -494,6 +540,7 @@
   "sort" : null,
   "n_dc_eq" : null,
   "n_id_eq" : null,
+  "n_uid_eq" : null,
 }
 ```
 

@@ -15,10 +15,10 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./del#begin {开始}]]
-state "根据条件隐藏表格" as RAWJSCODE3  [[$./del#rawjscode3 {根据条件隐藏表格}]]
-state "准备参数" as PREPAREJSPARAM1  [[$./del#preparejsparam1 {准备参数}]]
-state "视图部件调用" as VIEWCTRLINVOKE1  [[$./del#viewctrlinvoke1 {视图部件调用}]]
 state "执行删除方法" as RAWJSCODE2  [[$./del#rawjscode2 {执行删除方法}]]
+state "视图部件调用" as VIEWCTRLINVOKE1  [[$./del#viewctrlinvoke1 {视图部件调用}]]
+state "准备参数" as PREPAREJSPARAM1  [[$./del#preparejsparam1 {准备参数}]]
+state "根据条件隐藏表格" as RAWJSCODE3  [[$./del#rawjscode3 {根据条件隐藏表格}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -85,8 +85,8 @@ if(uiLogic.view.layoutPanel.panelItems.total.data.total == 0){
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|主表单对象|form|部件对象||
 |上下文|context|导航视图参数绑定参数||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|当前视图对象|view|当前视图对象||
 |上传文件|files|数据对象列表||
+|主表单对象|form|部件对象||
+|当前视图对象|view|当前视图对象||

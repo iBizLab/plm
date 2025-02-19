@@ -21,10 +21,10 @@
 
 
 ### 关联界面行为
-  * [评审(REVIEW)](module/TestMgmt/review) : [撤销评审](module/TestMgmt/review#界面行为)
-  * [评审(REVIEW)](module/TestMgmt/review) : [删除](module/TestMgmt/review#界面行为)
   * [评审(REVIEW)](module/TestMgmt/review) : [表格界面_新建操作](module/TestMgmt/review#界面行为)
+  * [评审(REVIEW)](module/TestMgmt/review) : [撤销评审](module/TestMgmt/review#界面行为)
   * [评审(REVIEW)](module/TestMgmt/review) : [设置类别](module/TestMgmt/review#界面行为)
+  * [评审(REVIEW)](module/TestMgmt/review) : [删除](module/TestMgmt/review#界面行为)
   * [评审(REVIEW)](module/TestMgmt/review) : [提交评审](module/TestMgmt/review#界面行为)
 
 ### 关联界面逻辑

@@ -693,89 +693,6 @@ Integer
 
 ```
 
-## 无操作
-
-<el-row>
-<div style="width: 80px">
-<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
-</div>
-<div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/review_contents/{key}/nothing" type="info" :closable="false" ></el-alert>
-</div>
-</el-row>
-权限标识：`NONE`
-
-##### 路径参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|key|String|标识|
-
-
-
-##### 请求参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
-|<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
-|<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
-|<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
-|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
-|<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
-|<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
-|<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">review_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审数据|
-|<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
-|<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
-|<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
-|<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
-|<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
-|<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
-|<el-row justify="space-between"><el-col :span="20">target_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|关联目标版本|
-|<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
-|<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-
-
-
-##### 请求示例： {docsify-ignore}
-```json
-{
-  "change_type" : null,
-  "principal_id" : null,
-  "change_version" : null,
-  "owner_type" : null,
-  "principal_type" : null,
-  "stage_results" : null,
-  "final_stage_results" : null,
-  "target_type" : null,
-  "target_id" : null,
-  "parent_version_id" : null,
-  "target_version_id" : null,
-  "review_data" : null,
-  "test_case" : null,
-  "cur_version_id" : null,
-  "target_identifier" : null,
-  "target_title" : null,
-  "target_state" : null,
-  "target_assignee" : null,
-  "target_version" : null,
-  "target_priority" : null,
-  "target_parent_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
-}
-```
-
-
-
 ## 规划用例
 
 <el-row>
@@ -903,7 +820,7 @@ Integer
 <el-alert title="/review_contents/review_content_total" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`READ`
 
 
 
@@ -2255,56 +2172,6 @@ Integer
 
 
 
-## 根据评审无操作
-
-<el-row>
-<div style="width: 80px">
-<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
-</div>
-<div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/reviews/{pkey}/review_contents/{key}/nothing" type="info" :closable="false" ></el-alert>
-</div>
-</el-row>
-
-
-##### 路径参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|pkey|String|评审主键|
-|key|String|标识|
-
-
-
-
-##### 请求参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
-|<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
-|<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
-|<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
-|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
-|<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
-|<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
-|<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">review_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审数据|
-|<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
-|<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
-|<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
-|<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
-|<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
-|<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
-|<el-row justify="space-between"><el-col :span="20">target_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|关联目标版本|
-|<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
-|<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-
-
-
 ## 根据评审规划用例
 
 <el-row>
@@ -3266,56 +3133,6 @@ Integer
 
 
 
-## 根据评审向导无操作
-
-<el-row>
-<div style="width: 80px">
-<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
-</div>
-<div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/review_wizards/{pkey}/review_contents/{key}/nothing" type="info" :closable="false" ></el-alert>
-</div>
-</el-row>
-
-
-##### 路径参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|pkey|String|评审向导主键|
-|key|String|标识|
-
-
-
-
-##### 请求参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
-|<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
-|<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
-|<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
-|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
-|<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
-|<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
-|<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">review_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审数据|
-|<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
-|<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
-|<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
-|<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
-|<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
-|<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
-|<el-row justify="space-between"><el-col :span="20">target_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|关联目标版本|
-|<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
-|<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-
-
-
 ## 根据评审向导规划用例
 
 <el-row>
@@ -4244,56 +4061,6 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |pkey|String|用例主键|
-
-
-
-
-##### 请求参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
-|<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
-|<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
-|<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
-|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
-|<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
-|<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
-|<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">review_data</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审数据|
-|<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
-|<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
-|<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
-|<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
-|<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
-|<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
-|<el-row justify="space-between"><el-col :span="20">target_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|关联目标版本|
-|<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
-|<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-
-
-
-## 根据用例无操作
-
-<el-row>
-<div style="width: 80px">
-<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
-</div>
-<div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/test_cases/{pkey}/review_contents/{key}/nothing" type="info" :closable="false" ></el-alert>
-</div>
-</el-row>
-
-
-##### 路径参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|pkey|String|用例主键|
-|key|String|标识|
 
 
 

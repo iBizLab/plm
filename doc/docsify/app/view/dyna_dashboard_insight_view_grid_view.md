@@ -18,11 +18,11 @@
 
 
 ### 关联界面行为
-  * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [列表导航加载完成](module/Base/dyna_dashboard#界面行为)
-  * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [使用此模板](module/Base/dyna_dashboard#界面行为)
   * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [表格界面_编辑操作](module/Base/dyna_dashboard#界面行为)
   * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [删除仪表盘](module/Base/dyna_dashboard#界面行为)
   * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [新建仪表盘_管理](module/Base/dyna_dashboard#界面行为)
+  * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [使用此模板](module/Base/dyna_dashboard#界面行为)
+  * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [列表导航加载完成](module/Base/dyna_dashboard#界面行为)
   * [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard) : [打开新建仪表盘（测试）](module/Base/dyna_dashboard#界面行为)
 
 ### 关联界面逻辑

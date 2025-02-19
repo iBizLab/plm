@@ -385,8 +385,8 @@
 
 * `DELETE(产品(SUBDATA))`
 * `READ(产品(READ))`
-* `UPDATE`
 * `CREATE`
+* `UPDATE`
 
 
 

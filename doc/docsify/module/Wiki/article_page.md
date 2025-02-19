@@ -214,10 +214,8 @@
 |锁定页面|lock_page|[实体处理逻辑](module/Wiki/article_page/logic/lock_page "锁定页面")|默认|不支持||||
 |移动需求|move_order|用户自定义|默认|不支持||||
 |移动页面|move_page|[实体处理逻辑](module/Wiki/article_page/logic/move_page "移动页面")|默认|不支持||||
-|根据模板新建草稿|new_draft_form_stencil|[实体处理逻辑](module/Wiki/article_page/logic/get_form_stencil "获取模板数据")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/Wiki/article_page/logic/nothing "无操作")|默认|不支持||||
 |发布页面|publish_page|[实体处理逻辑](module/Wiki/article_page/logic/publish_page "发布页面")|默认|不支持||||
-|发布页面（测试）|publish_page_test|[实体处理逻辑](module/Wiki/article_page/logic/publish_page "发布页面")|默认|不支持||||
 |恢复|recover|[实体处理逻辑](module/Wiki/article_page/logic/recover "恢复")|默认|不支持||||
 |恢复到历史版本|recover_version|[实体处理逻辑](module/Wiki/article_page/logic/recover_version "恢复历史版本")|默认|不支持||||
 |另存为模板|save_to_stencil|[实体处理逻辑](module/Wiki/article_page/logic/save_to_stencil "另存为模板")|默认|不支持||||

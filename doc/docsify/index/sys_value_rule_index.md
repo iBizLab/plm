@@ -1,5 +1,16 @@
 # 系统值规则 <!-- {docsify-ignore-all} -->
 
+### 电子邮件 :id=UsrValueRule0408061405
+
+<br>
+<p class="panel-title"><b>规则类型</b></p>
+
+* `正则式`
+
+<p class="panel-title"><b>正则表达式</b></p>
+
+* `^ [a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`
+
 ### 密码 :id=UsrValueRule0407250158
 
 <br>
@@ -32,17 +43,6 @@
 <p class="panel-title"><b>正则表达式</b></p>
 
 * `^ [A-Z0-9]{1,15}$`
-
-### 电子邮件 :id=UsrValueRule0408061405
-
-<br>
-<p class="panel-title"><b>规则类型</b></p>
-
-* `正则式`
-
-<p class="panel-title"><b>正则表达式</b></p>
-
-* `^ [a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`
 
 
 

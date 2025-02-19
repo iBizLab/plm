@@ -15,10 +15,10 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./add_attachment_grid#begin {开始}]]
-state "设置附件参数" as RAWJSCODE4  [[$./add_attachment_grid#rawjscode4 {设置附件参数}]]
-state "上传附件" as DEUIACTION1  [[$./add_attachment_grid#deuiaction1 {上传附件}]]
-state "结束" as END1 <<end>> [[$./add_attachment_grid#end1 {结束}]]
 state "视图部件调用" as VIEWCTRLINVOKE1  [[$./add_attachment_grid#viewctrlinvoke1 {视图部件调用}]]
+state "结束" as END1 <<end>> [[$./add_attachment_grid#end1 {结束}]]
+state "上传附件" as DEUIACTION1  [[$./add_attachment_grid#deuiaction1 {上传附件}]]
+state "设置附件参数" as RAWJSCODE4  [[$./add_attachment_grid#rawjscode4 {设置附件参数}]]
 
 
 Begin --> DEUIACTION1
@@ -82,7 +82,7 @@ uiLogic.attach = uiLogic.files.map(item =>
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |重复器表格|grid|部件对象||
-|上传文件|files|数据对象列表||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |附件|attach|数据对象列表||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |当前视图对象|view|当前视图对象||
+|上传文件|files|数据对象列表||

@@ -16,9 +16,9 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./create_and_relation_customer#begin {开始}]]
 state "idea实体赋参" as PREPAREJSPARAM2  [[$./create_and_relation_customer#preparejsparam2 {idea实体赋参}]]
-state "结束" as END1 <<end>> [[$./create_and_relation_customer#end1 {结束}]]
 state "进行关联操作" as DEACTION1  [[$./create_and_relation_customer#deaction1 {进行关联操作}]]
 state "通知刷新" as RAWJSCODE3  [[$./create_and_relation_customer#rawjscode3 {通知刷新}]]
+state "结束" as END1 <<end>> [[$./create_and_relation_customer#end1 {结束}]]
 state "新建需求" as create_idea  [[$./create_and_relation_customer#create_idea {新建需求}]]
 state "获取选中列表" as RAWJSCODE2  [[$./create_and_relation_customer#rawjscode2 {获取选中列表}]]
 
@@ -109,8 +109,8 @@ ibiz.mc.command.update.send({ srfdecodename: 'idea', srfkey: context.idea})
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|传入后台对象|dto|数据对象||
 |idea|idea|数据对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|表单对象|form|部件对象||
 |视图对象|view|当前视图对象||
+|传入后台对象|dto|数据对象||
+|表单对象|form|部件对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

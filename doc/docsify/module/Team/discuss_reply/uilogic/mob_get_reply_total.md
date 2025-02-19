@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./mob_get_reply_total#begin {开始}]]
-state "注入脚本代码" as RAWJSCODE1  [[$./mob_get_reply_total#rawjscode1 {注入脚本代码}]]
 state "结束" as END1 <<end>> [[$./mob_get_reply_total#end1 {结束}]]
+state "注入脚本代码" as RAWJSCODE1  [[$./mob_get_reply_total#rawjscode1 {注入脚本代码}]]
 
 
 Begin --> RAWJSCODE1
@@ -56,6 +56,6 @@ uiLogic.view.layoutPanel.state.data.total = total;
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |当前部件对象|CTRL|当前部件对象||
 |当前视图对象|VIEW|当前视图对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

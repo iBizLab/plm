@@ -11,9 +11,9 @@
 
 ### 关联界面行为
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [发送评论](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [编辑界面_保存操作](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [修改密码](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [清空评论](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [编辑界面_保存操作](module/ProjMgmt/work_item#界面行为)
 
 ### 关联界面逻辑
   * [评论(COMMENT)](module/Base/comment) : [控制评论按钮隐藏](module/Base/comment/uilogic/comment_icon_hidden)

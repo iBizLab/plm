@@ -1,4 +1,4 @@
-# PLMWeb(plmweb)  <!-- {docsify-ignore-all} -->
+# 桌面端(plmweb)  <!-- {docsify-ignore-all} -->
 
 ## 菜单
 
@@ -13,11 +13,14 @@
     <el-menu-item index="menuitem7" @click="itemClick('#/app/view/discuss_topic_tab_exp_view')">协作空间</el-menu-item>
     <el-menu-item index="index_view_search" @click="itemClick('#/app/view/search_hub_tab_search_view')">应用搜索匹配的菜单项（勿删）</el-menu-item>
     <el-menu-item index="setting" @click="itemClick('#/app/view/management_tab_exp_view')"><i class="fa fa-gears"></i>管理后台（勿删）</el-menu-item>
-    <el-menu-item index="helper" @click="itemClick('#/app/view/article_page_help_tree_exp_view')">帮助（勿删）</el-menu-item>
+    <el-menu-item index="helper">帮助（勿删）</el-menu-item>
     <el-menu-item index="custom" @click="itemClick('#/app/view/workspace_quick_create_view')">快速新建</el-menu-item>
+    <el-menu-item index="menuitem62" @click="itemClick('#/app/view/recent_modeling_custome_view')">modeling IDE跳转</el-menu-item>
     <el-menu-item index="menuitem9" @click="itemClick('#/app/view/workload_management_view')"><i class="fa fa-clock-o"></i>工时管理</el-menu-item>
     <el-menu-item index="menuitem35" @click="itemClick('#/app/view/work_item_resource_gantt_view')">资源分配</el-menu-item>
     <el-menu-item index="menuitem8" @click="itemClick('#/app/view/flow_tab_exp_view')"><i class="fa fa-rocket"></i>自动化</el-menu-item>
+    <el-menu-item index="menuitem55" @click="itemClick('#/app/view/ps_core_prd_func_tree_exp_view')">应用市场</el-menu-item>
+    <el-menu-item index="menuitem61" @click="itemClick('#/app/view/ps_core_prd_func_second_dev_tav_exp_view')"><i class="fa fa-code"></i>二次开发</el-menu-item>
   </el-menu>
 </el-row>
 
@@ -81,7 +84,7 @@
 |[页面实体自定义视图（展示）](app/view/article_page_show_custom_view)|article_page_show_custom_view|页面|实体自定义视图||
 |[更新日志](app/view/article_page_show_update_log_view)|article_page_show_update_log_view|更新|实体编辑视图||
 |[页面](app/view/article_page_show_version_view)|article_page_show_version_view|页面|实体编辑视图||
-|[页面http://172.16.220.130:30080/mosdynamictool/mos-dynamic-mgr/assets/svg/design-save.svg](app/view/article_page_show_view)|article_page_show_view|页面|实体编辑视图||
+|[页面](app/view/article_page_show_view)|article_page_show_view|页面|实体编辑视图||
 |[页面表格视图](app/view/article_page_space_grid_view)|article_page_space_grid_view|页面列表|实体表格视图||
 |[页面数据统计表格](app/view/article_page_statistical_grid_view)|article_page_statistical_grid_view|数据统计|实体表格视图||
 |[测试协同编辑视图](app/view/article_page_test_edit_view)|article_page_test_edit_view|测试协同编辑视图|实体编辑视图||
@@ -155,9 +158,11 @@
 |[类别数据选择视图](app/view/category_pick_up_view)|category_pick_up_view|类别|实体数据选择视图|系统自动添加|
 |[客户沟通](app/view/comment_customer_connect_list_view)|comment_customer_connect_list_view|客户沟通|实体列表视图||
 |[评论编辑视图](app/view/comment_edit_view)|comment_edit_view|评论|实体编辑视图|系统自动添加|
+|[评论列表视图](app/view/comment_idea_list_view)|comment_idea_list_view|评论|实体列表视图|系统自动添加|
 |[评论列表视图](app/view/comment_list_view)|comment_list_view|评论|实体列表视图||
 |[评论列表视图](app/view/comment_list_view_idea)|comment_list_view_idea|评论|实体列表视图|系统自动添加|
 |[评论数据重定向视图](app/view/comment_redirect_view)|comment_redirect_view|评论|实体数据重定向视图|系统自动添加|
+|[评论列表视图](app/view/comment_ticket_list_view)|comment_ticket_list_view|评论|实体列表视图|系统自动添加|
 |[评论列表视图](app/view/comment_wiki_list_view)|comment_wiki_list_view|评论|实体列表视图||
 |[添加至类别](app/view/customer_add_category_option_view)|customer_add_category_option_view|选择类别|实体选项操作视图||
 |[全部客户](app/view/customer_all_grid_view)|customer_all_grid_view|全部客户|实体表格视图||
@@ -183,6 +188,8 @@
 |[交付物数据重定向视图](app/view/deliverable_redirect_view)|deliverable_redirect_view|交付物|实体数据重定向视图|系统自动添加|
 |[交付目标修改视图](app/view/deliverable_target_edit_view)|deliverable_target_edit_view|编辑交付目标|实体选项操作视图||
 |[交付目标表格视图](app/view/deliverable_target_grid_view)|deliverable_target_grid_view|交付物|实体表格视图||
+|[部门选项操作新建视图](app/view/department_dept_option_new_view)|department_dept_option_new_view|部门|实体选项操作视图|系统自动添加|
+|[部门选项操作视图](app/view/department_dept_option_view)|department_dept_option_view|部门|实体选项操作视图||
 |[部门选择表格视图](app/view/department_pick_up_grid_view)|department_pick_up_grid_view|部门|实体选择表格视图（部件视图）|系统自动添加|
 |[部门数据选择视图](app/view/department_pick_up_view)|department_pick_up_view|部门|实体数据选择视图|系统自动添加|
 |[数据字典编辑视图](app/view/dictionary_data_edit_view)|dictionary_data_edit_view|数据字典|实体编辑视图|系统自动添加|
@@ -433,6 +440,7 @@
 |[成员](app/view/member_shared_page_list_view)|member_shared_page_list_view|成员|实体列表视图||
 |[通知设置](app/view/notify_setting_config_view)|notify_setting_config_view|通知设置|实体编辑视图||
 |[消息设置](app/view/notify_setting_config_view_test)|notify_setting_config_view_test|消息设置|实体编辑视图||
+|[组织编辑](app/view/organization_org_option_view)|organization_org_option_view|组织|实体选项操作视图||
 |[历史版本](app/view/page_version_list_exp_view)|page_version_list_exp_view|历史版本|实体列表导航视图||
 |[系统参数编辑视图](app/view/parameter_edit_view)|parameter_edit_view|系统参数|实体编辑视图|系统自动添加|
 |[系统参数表格视图](app/view/parameter_grid_view)|parameter_grid_view|系统参数|实体表格视图||
@@ -602,16 +610,18 @@
 |[添加指标](app/view/ps_sys_bi_cube_measure_quick_create_measure)|ps_sys_bi_cube_measure_quick_create_measure|添加指标|实体选项操作视图||
 |[智能报表立方体指标数据重定向视图](app/view/ps_sys_bi_cube_measure_redirect_view)|ps_sys_bi_cube_measure_redirect_view|智能报表立方体指标|实体数据重定向视图|系统自动添加|
 |[立方体树导航](app/view/ps_sys_bi_cube_tree_exp_view)|ps_sys_bi_cube_tree_exp_view|立方体数据管理|实体树导航视图||
-|[实体属性表格视图](app/view/psde_field_data_extend_grid_view)|psde_field_data_extend_grid_view|属性管理|实体表格视图||
+|[实体属性表格视图](app/view/psde_field_data_extend_grid_view)|psde_field_data_extend_grid_view|项目属性|实体表格视图||
 |[实体属性表格视图](app/view/psde_field_global_idea_grid_view)|psde_field_global_idea_grid_view|实体属性|实体表格视图||
 |[实体属性表格视图](app/view/psde_field_global_test_case_grid_view)|psde_field_global_test_case_grid_view|实体属性|实体表格视图||
 |[实体属性表格视图](app/view/psde_field_global_ticket_grid_view)|psde_field_global_ticket_grid_view|实体属性|实体表格视图||
-|[实体属性表格视图](app/view/psde_field_grid_view)|psde_field_grid_view|实体属性|实体表格视图|系统自动添加|
+|[实体属性表格视图](app/view/psde_field_global_work_item_grid_view)|psde_field_global_work_item_grid_view|工作项属性|实体表格视图|系统自动添加|
+|[实体属性表格视图](app/view/psde_field_grid_view)|psde_field_grid_view|项目属性|实体表格视图|系统自动添加|
 |[实体属性表格视图](app/view/psde_field_idea_extend_transmit_grid_view)|psde_field_idea_extend_transmit_grid_view|实体属性|实体表格视图||
 |[实体属性编辑视图](app/view/psde_field_quick_cfg_view)|psde_field_quick_cfg_view|实体属性|实体编辑视图|系统自动添加|
 |[实体属性选项操作视图](app/view/psde_field_quick_create_view)|psde_field_quick_create_view|实体属性|实体选项操作视图||
 |[实体属性表格视图](app/view/psde_field_test_case_extend_transmit_grid_view)|psde_field_test_case_extend_transmit_grid_view|实体属性|实体表格视图||
 |[实体属性表格视图](app/view/psde_field_ticekt_extend_transmit_grid_view)|psde_field_ticekt_extend_transmit_grid_view|实体属性|实体表格视图||
+|[实体属性表格视图](app/view/psde_field_work_item_extend_transmit_grid_view)|psde_field_work_item_extend_transmit_grid_view|工作项属性|实体表格视图|系统自动添加|
 |[全部日志](app/view/psde_logic_all_log_grid_view)|psde_logic_all_log_grid_view|全部日志|实体表格视图||
 |[属性视图](app/view/psde_logic_design_edit_view)|psde_logic_design_edit_view|实体处理逻辑|实体编辑视图||
 |[逻辑设计](app/view/psde_logic_logic_design_custom)|psde_logic_logic_design_custom|逻辑设计|实体自定义视图||
@@ -660,6 +670,7 @@
 |[最近访问表格视图](app/view/recent_grid_view)|recent_grid_view|最近访问|实体表格视图|系统自动添加|
 |[工作台](app/view/recent_his_tab_exp_view)|recent_his_tab_exp_view|工作台|实体分页导航视图||
 |[工作台2](app/view/recent_index_view)|recent_index_view|工作台2|实体首页视图||
+|[modeling跳转](app/view/recent_modeling_custome_view)|recent_modeling_custome_view|最近访问|实体自定义视图||
 |[我负责的事项](app/view/recent_my_assignee_item_tap_exp_view)|recent_my_assignee_item_tap_exp_view|我负责的事项|实体分页导航视图||
 |[我创建的事项](app/view/recent_my_created_tab_exp_view)|recent_my_created_tab_exp_view|最近访问|实体分页导航视图||
 |[我待完成事项](app/view/recent_my_todo_item_tap_exp_view)|recent_my_todo_item_tap_exp_view|我待完成事项|实体分页导航视图||
@@ -769,6 +780,11 @@
 |[用例评审表格](app/view/review_test_case_grid_view)|review_test_case_grid_view|用例评审|实体表格视图|系统自动添加|
 |[评审实体树导航](app/view/review_tree_exp_view)|review_tree_exp_view|评审|实体树导航视图||
 |[评审新建向导](app/view/review_wizard_create_wizard_view)|review_wizard_create_wizard_view|新建评审|实体向导视图||
+|[角色编辑视图](app/view/role_edit_view)|role_edit_view|角色|实体编辑视图|系统自动添加|
+|[角色配置](app/view/role_edit_view2)|role_edit_view2|角色配置|实体编辑视图（左右关系）||
+|[角色表格视图](app/view/role_grid_view)|role_grid_view|角色配置|实体表格视图|系统自动添加|
+|[系统角色成员编辑视图](app/view/role_member_edit_view)|role_member_edit_view|系统角色成员|实体编辑视图|系统自动添加|
+|[系统角色成员表格视图](app/view/role_member_grid_view)|role_member_grid_view|角色成员|实体表格视图|系统自动添加|
 |[全部用例](app/view/run_all_grid_view)|run_all_grid_view|全部用例|实体表格视图||
 |[执行用例结果附件表格视图](app/view/run_attachment_grid_view)|run_attachment_grid_view|执行用例结果附件|实体表格视图||
 |[测试用例计划对比分析](app/view/run_comparative_analysis_report_view)|run_comparative_analysis_report_view|测试用例计划对比分析|实体图表视图||
@@ -972,6 +988,7 @@
 |[测试计划类别数据选择](app/view/test_plan_categories_pick_up_tree_view)|test_plan_categories_pick_up_tree_view|选择类别|实体选择树视图（部件视图）||
 |[检查更新](app/view/test_plan_check_refresh_option_view)|test_plan_check_refresh_option_view|检查更新|实体选项操作视图||
 |[报告总结](app/view/test_plan_conclude_edit_view)|test_plan_conclude_edit_view|测试计划|实体编辑视图||
+|[测试计划表格视图（指定项目）](app/view/test_plan_cur_project_grid_view)|test_plan_cur_project_grid_view|全部计划|实体表格视图||
 |[测试计划反查表格](app/view/test_plan_drill_detail_grid_view)|test_plan_drill_detail_grid_view|测试计划返查|实体表格视图||
 |[测试计划编辑视图](app/view/test_plan_edit_view)|test_plan_edit_view|测试计划|实体编辑视图|系统自动添加|
 |[普通测试](app/view/test_plan_general_grid_view)|test_plan_general_grid_view|普通测试|实体表格视图|系统自动添加|
@@ -1070,10 +1087,12 @@
 |[用户信息自定义视图](app/view/user_info_custom_view)|user_info_custom_view|用户信息自定义视图|实体自定义视图||
 |[帐号信息](app/view/user_info_view)|user_info_view|帐号信息|实体编辑视图||
 |[失效帐号](app/view/user_invalid_grid_view)|user_invalid_grid_view|失效帐号管理|实体表格视图|系统自动添加|
+|[设置成员信息](app/view/user_main_view)|user_main_view|设置成员信息|实体选项操作视图||
 |[企业用户数据多项选择视图](app/view/user_mpick_up_view)|user_mpick_up_view|企业用户|实体数据多项选择视图||
 |[企业用户选择表格视图](app/view/user_pick_up_grid_view)|user_pick_up_grid_view|企业用户|实体选择表格视图（部件视图）|系统自动添加|
 |[企业用户数据选择视图](app/view/user_pick_up_view)|user_pick_up_view|企业用户|实体数据选择视图|系统自动添加|
 |[设置成员信息](app/view/user_quick_cfg_view)|user_quick_cfg_view|设置成员信息|实体编辑视图||
+|[添加成员](app/view/user_quick_create_view)|user_quick_create_view|添加成员|实体选项操作视图||
 |[企业用户数据重定向视图](app/view/user_redirect_view)|user_redirect_view|企业用户|实体数据重定向视图|系统自动添加|
 |[帐号设置](app/view/user_setting_view)|user_setting_view|帐号设置|实体编辑视图（左右关系）||
 |[成员](app/view/user_tab_exp_view)|user_tab_exp_view|成员|实体分页导航视图||

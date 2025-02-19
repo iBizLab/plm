@@ -28,6 +28,11 @@
 
 
 
+### 查询条件
+
+(`IS_DELETED(是否已删除)` NOTEQ `'1'`)
+
+
 
 ### 查询连接
 * **RELATION存在1:N（EXISTS (SELECT)）DERCUSTOM_RELATION_TARGET_TICKET**<br>
@@ -81,7 +86,7 @@ LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID`
 
 WHERE EXISTS(SELECT * FROM `RELATION` t31 
  WHERE 
- t1.`ID` = t31.`TARGET_ID`  AND  ( t31.`TARGET_TYPE` = 'ticket'  AND  t31.`PRINCIPAL_TYPE` = 'idea'  AND  t31.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id} ) )
+ t1.`ID` = t31.`TARGET_ID`  AND  ( t31.`TARGET_TYPE` = 'ticket'  AND  t31.`PRINCIPAL_TYPE` = 'idea'  AND  t31.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id} ) ) AND ( t1.`IS_DELETED` <> 1 )
 ```
 
 </el-dialog>

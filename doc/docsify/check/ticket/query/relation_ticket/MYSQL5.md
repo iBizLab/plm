@@ -39,5 +39,5 @@ LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID`
 
 WHERE EXISTS(SELECT * FROM `RELATION` t31 
  WHERE 
- t1.`ID` = t31.`TARGET_ID`  AND  ( t31.`TARGET_TYPE` = 'ticket'  AND  t31.`PRINCIPAL_TYPE` = 'idea'  AND  t31.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id} ) )
+ t1.`ID` = t31.`TARGET_ID`  AND  ( t31.`TARGET_TYPE` = 'ticket'  AND  t31.`PRINCIPAL_TYPE` = 'idea'  AND  t31.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id} ) ) AND ( t1.`IS_DELETED` <> 1 )
 ```

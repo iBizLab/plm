@@ -8,6 +8,12 @@
 #### 编辑表单(form)
 
 ##### 部件逻辑
+* `editreply` : [编辑讨论下评论](module/Team/discuss_post/uilogic/edit_comment)
+* `onClick`
+```
+var comments = ctrl.formItems.find(item => item.name === "comments");
+comments.state.visible = !comments.state.visible;
+```
 #### 工具栏(toolbar)
 
 ## 视图界面逻辑
@@ -15,18 +21,19 @@
 
 
 ### 关联界面行为
-  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [清空回复](module/Team/discuss_post#界面行为)
+  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [关闭](module/Team/discuss_post#界面行为)
+  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [打开](module/Team/discuss_post#界面行为)
   * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [添加回复](module/Team/discuss_post#界面行为)
+  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [清空回复](module/Team/discuss_post#界面行为)
+  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [删除评论](module/Team/discuss_post#界面行为)
   * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [移动](module/Team/discuss_post#界面行为)
   * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [删除](module/Team/discuss_post#界面行为)
-  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [删除评论](module/Team/discuss_post#界面行为)
-  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [打开](module/Team/discuss_post#界面行为)
-  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [发表评论](module/Team/discuss_post#界面行为)
-  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [关闭](module/Team/discuss_post#界面行为)
 
 ### 关联界面逻辑
   * [评论(COMMENT)](module/Base/comment) : [控制评论按钮隐藏](module/Base/comment/uilogic/comment_icon_hidden)
+  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [编辑讨论下评论](module/Team/discuss_post/uilogic/edit_comment)
   * [评论(COMMENT)](module/Base/comment) : [控制评论按钮显示](module/Base/comment/uilogic/comment_icon_show)
+  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [删除讨论下评论](module/Team/discuss_post/uilogic/del_comment)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关注人员更新](module/ProjMgmt/work_item/uilogic/attention_personnel_update)
 
 ### 关联视图

@@ -147,7 +147,7 @@
 | clone此应用 | clone_git | clone此应用 |无数据|用户自定义||
 | 启用 | Install | 启用 |单项数据（主键）|<details><summary>后台调用</summary>[install](#行为)||
 | 安装特定版本_提示开发中 | install_specific_ver_test | 安装特定版本 |单项数据|用户自定义||
-| 跳转gitlab | skip_gitlab | Gitlab |无数据|用户自定义||
+| 跳转gitlab | skip_gitlab | Git |无数据|用户自定义||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |

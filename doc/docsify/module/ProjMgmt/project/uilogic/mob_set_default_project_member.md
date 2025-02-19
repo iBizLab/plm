@@ -64,7 +64,7 @@ uiLogic.form.state.data.members = [uiLogic.members];
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |表单|form|当前部件对象||
 |项目成员|members|数据对象||
 |关注数据|attention|数据对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

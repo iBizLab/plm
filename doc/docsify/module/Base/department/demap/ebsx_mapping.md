@@ -16,15 +16,15 @@
 <p class="panel-title"><b>属性映射</b></p>
 
 * `属性等价`
-`IDENTIFIER(部门标识/编号)` <i class="fa fa-angle-double-right"/></i> `DEPTCODE(部门代码)`
-* `属性等价`
 `HEAD_ID(部门负责人标识)` <i class="fa fa-angle-double-right"/></i> `DEPTLEADER(部门领导)`
 * `属性等价`
-`NAME(名称)` <i class="fa fa-angle-double-right"/></i> `DEPTNAME(部门名称)`
+`PARENT_ID(父部门标识)` <i class="fa fa-angle-double-right"/></i> `PDEPTID(上级部门)`
 * `属性等价`
 `ID(标识)` <i class="fa fa-angle-double-right"/></i> `DEPTID(部门标识)`
 * `属性等价`
-`PARENT_ID(父部门标识)` <i class="fa fa-angle-double-right"/></i> `PDEPTID(上级部门)`
+`IDENTIFIER(部门标识/编号)` <i class="fa fa-angle-double-right"/></i> `DEPTCODE(部门代码)`
+* `属性等价`
+`NAME(名称)` <i class="fa fa-angle-double-right"/></i> `DEPTNAME(部门名称)`
 
 <p class="panel-title"><b>行为映射</b></p>
 
@@ -55,6 +55,6 @@
 <p class="panel-title"><b>集合映射</b></p>
 
 * `内部处理`
-`root(根部门)` <i class="fa fa-angle-double-right"/></i> `DEFAULT(数据集)` 并且 `启用查询条件`
-* `内部处理`
 `DEFAULT(数据集)` <i class="fa fa-angle-double-right"/></i> `DEFAULT(数据集)` 并且 `启用查询条件`
+* `内部处理`
+`root(根部门)` <i class="fa fa-angle-double-right"/></i> `DEFAULT(数据集)` 并且 `启用查询条件`

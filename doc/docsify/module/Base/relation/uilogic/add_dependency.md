@@ -16,11 +16,11 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./add_dependency#begin {开始}]]
 state "获取选中列表" as RAWJSCODE2  [[$./add_dependency#rawjscode2 {获取选中列表}]]
-state "触发计数器刷新" as RAWJSCODE3  [[$./add_dependency#rawjscode3 {触发计数器刷新}]]
+state "进行关联操作" as DEACTION1  [[$./add_dependency#deaction1 {进行关联操作}]]
 state "绑定表格部件" as PREPAREJSPARAM1  [[$./add_dependency#preparejsparam1 {绑定表格部件}]]
 state "隐藏下拉框并清空下拉框内容" as RAWJSCODE1  [[$./add_dependency#rawjscode1 {隐藏下拉框并清空下拉框内容}]]
+state "触发计数器刷新" as RAWJSCODE3  [[$./add_dependency#rawjscode3 {触发计数器刷新}]]
 state "列表刷新" as VIEWCTRLINVOKE1  [[$./add_dependency#viewctrlinvoke1 {列表刷新}]]
-state "进行关联操作" as DEACTION1  [[$./add_dependency#deaction1 {进行关联操作}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -120,9 +120,9 @@ ibiz.mc.command.update.send({ srfdecodename: context.principal_type})
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|viewctx|viewctx|导航视图参数绑定参数||
-|列表对象|list|部件对象||
+|传入后台对象|dto|数据对象||
 |视图对象|view|当前视图对象||
 |ctrl|ctrl|当前部件对象||
-|传入后台对象|dto|数据对象||
+|列表对象|list|部件对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|viewctx|viewctx|导航视图参数绑定参数||

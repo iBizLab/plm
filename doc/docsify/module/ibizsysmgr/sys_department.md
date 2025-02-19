@@ -17,6 +17,7 @@
 |DN|DN|文本，可指定长度|200|是||
 |逻辑有效标记|ENABLED|是否逻辑|1|否||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|是否叶子节点|IS_LEAF|是否逻辑||是||
 |组织机构标识|ORGANIZATION_ID|文本，可指定长度|100|是||
 |组织机构名称|ORGANIZATION_NAME|文本，可指定长度|100|是||
 |机构编号|ORGANIZATION_NUMBER|文本，可指定长度|100|是||
@@ -52,6 +53,24 @@
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/ibizsysmgr/sys_department/dataset/Default)|DEFAULT|数据查询|是|||
 
+## 数据权限
+
+##### 全部数据（读写） :id=sys_department-ALL_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `DELETE`
+* `CREATE`
+* `READ`
+* `UPDATE`
+
+
+
+
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
@@ -73,6 +92,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ibizsysmgr/sys_department?id=数据集合`">
   数据集合
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ibizsysmgr/sys_department?id=数据权限`">
+  数据权限
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ibizsysmgr/sys_department?id=搜索模式`">
   搜索模式

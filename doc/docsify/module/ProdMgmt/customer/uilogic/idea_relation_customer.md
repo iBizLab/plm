@@ -15,13 +15,13 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./idea_relation_customer#begin {开始}]]
-state "表格刷新" as VIEWCTRLINVOKE1  [[$./idea_relation_customer#viewctrlinvoke1 {表格刷新}]]
 state "绑定表格部件" as PREPAREJSPARAM1  [[$./idea_relation_customer#preparejsparam1 {绑定表格部件}]]
-state "隐藏下拉框并清空下拉框内容" as RAWJSCODE1  [[$./idea_relation_customer#rawjscode1 {隐藏下拉框并清空下拉框内容}]]
-state "刷新主视图" as RAWJSCODE4  [[$./idea_relation_customer#rawjscode4 {刷新主视图}]]
 state "触发计数器刷新" as RAWJSCODE3  [[$./idea_relation_customer#rawjscode3 {触发计数器刷新}]]
-state "获取选中列表" as RAWJSCODE2  [[$./idea_relation_customer#rawjscode2 {获取选中列表}]]
+state "刷新主视图" as RAWJSCODE4  [[$./idea_relation_customer#rawjscode4 {刷新主视图}]]
 state "进行关联操作" as DEACTION1  [[$./idea_relation_customer#deaction1 {进行关联操作}]]
+state "隐藏下拉框并清空下拉框内容" as RAWJSCODE1  [[$./idea_relation_customer#rawjscode1 {隐藏下拉框并清空下拉框内容}]]
+state "表格刷新" as VIEWCTRLINVOKE1  [[$./idea_relation_customer#viewctrlinvoke1 {表格刷新}]]
+state "获取选中列表" as RAWJSCODE2  [[$./idea_relation_customer#rawjscode2 {获取选中列表}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -131,6 +131,6 @@ ibiz.mc.command.update.send({ srfdecodename: 'idea', srfkey: context.idea})
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |表格对象|grid|部件对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |传入后台对象|dto|数据对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |视图对象|view|当前视图对象||

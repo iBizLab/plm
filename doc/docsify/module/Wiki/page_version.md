@@ -83,9 +83,9 @@
 <p class="panel-title"><b>数据能力</b></p>
 
 * `READ`
-* `CREATE`
-* `DELETE`
 * `UPDATE`
+* `DELETE`
+* `CREATE`
 
 
 

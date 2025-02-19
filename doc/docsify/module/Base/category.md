@@ -83,6 +83,7 @@
 |[检查名称是否重复(check_name)](module/Base/category/query/check_name)|check_name|否|否 |否 ||
 |[通用类别（代码表）(common_categories)](module/Base/category/query/common_categories)|common_categories|否|否 |否 ||
 |[当前产品需求类别(cur_product_idea_category)](module/Base/category/query/cur_product_idea_category)|cur_product_idea_category|否|否 |否 ||
+|[我的类别(my_category)](module/Base/category/query/my_category)|my_category|否|否 |否 ||
 |[无父类(no_parent)](module/Base/category/query/no_parent)|no_parent|否|否 |否 ||
 |[无分组的类别（且父标识不为空）(no_section)](module/Base/category/query/no_section)|no_section|否|否 |否 ||
 |[职位类别(position_category)](module/Base/category/query/position_category)|position_category|否|否 |否 ||
@@ -98,6 +99,7 @@
 |[检查名称是否重复(check_name)](module/Base/category/dataset/check_name)|check_name|数据查询|否|||
 |[当前项目类别(common_categories)](module/Base/category/dataset/common_categories)|common_categories|数据查询|否|||
 |[当前产品需求类别(cur_product_idea_category)](module/Base/category/dataset/cur_product_idea_category)|cur_product_idea_category|数据查询|否|||
+|[我的类别(my_category)](module/Base/category/dataset/my_category)|my_category|数据查询|否|||
 |[无父类(no_parent)](module/Base/category/dataset/no_parent)|no_parent|数据查询|否|||
 |[无分组的类别(no_section)](module/Base/category/dataset/no_section)|no_section|数据查询|否|||
 |[职位类别(position_category)](module/Base/category/dataset/position_category)|position_category|数据查询|否|||
@@ -107,6 +109,18 @@
 |[空间目录（顶级）(space_category_top)](module/Base/category/dataset/space_category_top)|space_category_top|数据查询|否|||
 
 ## 数据权限
+
+##### 全部数据（读） :id=category-ALL_R
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `READ`
+
+
 
 ##### 全部数据（读写） :id=category-ALL_RW
 
@@ -118,6 +132,21 @@
 
 * `DELETE`
 * `CREATE`
+* `UPDATE`
+* `READ`
+
+
+
+##### 我的类别（读写） :id=category-USER_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `数据集合` ：[我的类别(my_category)](module/Base/category#数据集合)
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `CREATE`
+* `DELETE`
 * `UPDATE`
 * `READ`
 

@@ -372,8 +372,8 @@
 |------------| -----   |  -------- | -------- |-------- |-------- |
 |[测试用例取消分配维护人通知](module/TestMgmt/test_case/notify/maintainer_cancel_notify)|maintainer_cancel_notify|[默认消息队列](index/notify_index)|[测试用例通知模板(取消分配维护人)](index/notify_index#test_case_maintainer_cancel)|维护人 ||
 |[测试用例分配维护人通知](module/TestMgmt/test_case/notify/maintainer_notify)|maintainer_notify|[默认消息队列](index/notify_index)|[测试用例通知模板(分配维护人)](index/notify_index#test_case_maintainer)|维护人 ||
-|[测试用例维护人变更通知](module/TestMgmt/test_case/notify/maintainer_onchange_notify)|maintainer_onchange_notify|[默认消息队列](index/notify_index)|[测试用例通知模板(维护人变更)](index/notify_index#test_case_maintainer_onchange)|关注人员 负责人 ||
-|[测试用例删除/恢复通知](module/TestMgmt/test_case/notify/remove_notify)|remove_notify|[默认消息队列](index/notify_index)|[测试用例通知模板(删除/恢复测试用例)](index/notify_index#test_case_remove_or_recover)|维护人 关注人员 ||
+|[测试用例维护人变更通知](module/TestMgmt/test_case/notify/maintainer_onchange_notify)|maintainer_onchange_notify|[默认消息队列](index/notify_index)|[测试用例通知模板(维护人变更)](index/notify_index#test_case_maintainer_onchange)|负责人 关注人员 ||
+|[测试用例删除/恢复通知](module/TestMgmt/test_case/notify/remove_notify)|remove_notify|[默认消息队列](index/notify_index)|[测试用例通知模板(删除/恢复测试用例)](index/notify_index#test_case_remove_or_recover)|关注人员 维护人 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -453,7 +453,7 @@
 | 查看工时明细 | check_workload_detail | 查看工时明细 |无数据|用户自定义||
 | 打开更多测试用例 | open_more_test_case | 打开更多测试用例 |无数据|用户自定义||
 | 打开关注列表 | open_attention_list | 打开关注列表 |无数据|<details><summary>打开视图或向导（模态）</summary>[关注](app/view/attention_mob_md_view)</details>||
-| 移动 | move | 移动 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[移动用例](app/view/test_case_move_case_option_view)</details>||
+| 移动 | move | 移动 |单项数据（主键）|<details><summary>后台调用</summary>[move_case](#行为)||
 | 恢复 | recover | 恢复 |多项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
 | 打开测试用例（动态） | open_case_main | 打开测试用例 |单项数据|<details><summary>打开视图或向导（模态）</summary>[用例](app/view/test_case_main_view)</details>||
 | 移入计划（气泡） | case_move_plan | 移入计划 |多项数据（主键）|<details><summary>后台调用</summary>[case_move_plan](#行为)||
@@ -464,7 +464,7 @@
 | 选择模板 | choose_case_template | 选择模板 |无数据|<details><summary>打开编辑表单</summary></details>||
 | 上传附件 | upload_attachment | 上传 |无数据|用户自定义||
 | 查看工时明细（移动端） | mob_check_workload_detail | 查看工时明细 |无数据|<details><summary>打开视图或向导（模态）</summary>[工时记录](app/view/workload_mob_detail_view)</details>||
-| 复制用例 | copy_test_case | 复制用例 |多项数据（主键）|<details><summary>后台调用</summary>[copy_case](#行为)||
+| 复制 | copy_test_case | 复制 |多项数据（主键）|<details><summary>后台调用</summary>[copy_case](#行为)||
 | 添加实际工时（移动端） | mob_add_actual_workload | 添加实际工时 |单项数据|<details><summary>打开视图或向导（模态）</summary>[登记工时](app/view/workload_register_mob_edit_view)</details>||
 | 设置评审状态 | set_state | 设置评审状态 |多项数据（主键）|<details><summary>后台调用</summary>[set_state](#行为)||
 | 设置维护人 | set_maintenance | 设置维护人 |多项数据（主键）|<details><summary>后台调用</summary>[set_maintenance](#行为)||

@@ -349,7 +349,7 @@
 <el-alert title="/relations/add_dependency" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`CREATE`
 
 
 
@@ -568,7 +568,7 @@ Integer
 <el-alert title="/relations/{key}/del_relation" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`DELETE`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -785,15 +785,10 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/relations/{key}/program_test_case" type="info" :closable="false" ></el-alert>
+<el-alert title="/relations/program_test_case" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
-
-##### 路径参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|key|String|标识|
+权限标识：`CREATE`
 
 
 
@@ -870,6 +865,45 @@ Integer
 ```
 
 
+##### 响应示例： {docsify-ignore}
+```json
+
+{
+  "level" : null,
+  "principal_id" : null,
+  "owner_type" : null,
+  "principal_type" : null,
+  "target_type" : null,
+  "target_id" : null,
+  "parent_version_id" : null,
+  "target_version_id" : null,
+  "work_item" : null,
+  "idea" : null,
+  "ticket" : null,
+  "customer" : null,
+  "test_case" : null,
+  "cur_version_id" : null,
+  "target_identifier" : null,
+  "target_title" : null,
+  "target_state" : null,
+  "target_assignee" : null,
+  "relation_type" : null,
+  "target_priority" : null,
+  "target_parent_id" : null,
+  "principal_work_item" : null,
+  "job_type" : null,
+  "sequence" : null,
+  "product" : null,
+  "project_obj" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+
+```
 
 ## 执行用例取消关联缺陷
 
@@ -881,7 +915,7 @@ Integer
 <el-alert title="/relations/{key}/run_del_relation_bug" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`DELETE`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -1101,7 +1135,7 @@ Integer
 <el-alert title="/relations/{key}/test_case_del_relation_bug" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`DELETE`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -1194,7 +1228,7 @@ Integer
 <el-alert title="/relations/{key}/work_item_del_relation_case" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`DELETE`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -2170,6 +2204,94 @@ Integer
 </el-row>
 权限标识：`READ`
 主实体版本创建时，查询关联principal_type为需求的数据存入version_data
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_job_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|前后置任务|
+|<el-row justify="space-between"><el-col :span="20">n_level_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|重要程度|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
+|<el-row justify="space-between"><el-col :span="20">n_principal_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
+|<el-row justify="space-between"><el-col :span="20">n_target_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标主体标识|
+|<el-row justify="space-between"><el-col :span="20">n_target_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
+|<el-row justify="space-between"><el-col :span="20">n_target_version_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "page" : 0,
+  "size" : 20,
+  "sort" : null,
+  "n_id_eq" : null,
+  "n_job_type_eq" : null,
+  "n_level_eq" : null,
+  "n_name_like" : null,
+  "n_principal_id_eq" : null,
+  "n_principal_type_eq" : null,
+  "n_target_id_eq" : null,
+  "n_target_type_eq" : null,
+  "n_target_version_id_eq" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+[
+  {
+    "level" : null,
+    "principal_id" : null,
+    "owner_type" : null,
+    "principal_type" : null,
+    "target_type" : null,
+    "target_id" : null,
+    "parent_version_id" : null,
+    "target_version_id" : null,
+    "work_item" : null,
+    "idea" : null,
+    "ticket" : null,
+    "customer" : null,
+    "test_case" : null,
+    "cur_version_id" : null,
+    "target_identifier" : null,
+    "target_title" : null,
+    "target_state" : null,
+    "target_assignee" : null,
+    "relation_type" : null,
+    "target_priority" : null,
+    "target_parent_id" : null,
+    "principal_work_item" : null,
+    "job_type" : null,
+    "sequence" : null,
+    "product" : null,
+    "project_obj" : null,
+    "create_man" : null,
+    "create_time" : null,
+    "id" : null,
+    "name" : null,
+    "update_man" : null,
+    "update_time" : null,
+  }
+]
+```
+
+## 我的关联
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/relations/fetch_my_relation" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
 
 
 
@@ -4460,7 +4582,7 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/products/{pkey}/relations/{key}/program_test_case" type="info" :closable="false" ></el-alert>
+<el-alert title="/products/{pkey}/relations/program_test_case" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 
@@ -4469,7 +4591,6 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |pkey|String|产品主键|
-|key|String|标识|
 
 
 
@@ -5088,6 +5209,41 @@ Integer
 </div>
 </el-row>
 主实体版本创建时，查询关联principal_type为需求的数据存入version_data
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|产品主键|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_job_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|前后置任务|
+|<el-row justify="space-between"><el-col :span="20">n_level_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|重要程度|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
+|<el-row justify="space-between"><el-col :span="20">n_principal_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
+|<el-row justify="space-between"><el-col :span="20">n_target_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标主体标识|
+|<el-row justify="space-between"><el-col :span="20">n_target_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
+|<el-row justify="space-between"><el-col :span="20">n_target_version_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
+
+
+
+## 根据产品我的关联
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/products/{pkey}/relations/fetch_my_relation" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -6340,7 +6496,7 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/work_items/{pkey}/relations/{key}/program_test_case" type="info" :closable="false" ></el-alert>
+<el-alert title="/work_items/{pkey}/relations/program_test_case" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 
@@ -6349,7 +6505,6 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |pkey|String|工作项主键|
-|key|String|标识|
 
 
 
@@ -6968,6 +7123,41 @@ Integer
 </div>
 </el-row>
 主实体版本创建时，查询关联principal_type为需求的数据存入version_data
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|工作项主键|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_job_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|前后置任务|
+|<el-row justify="space-between"><el-col :span="20">n_level_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|重要程度|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
+|<el-row justify="space-between"><el-col :span="20">n_principal_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
+|<el-row justify="space-between"><el-col :span="20">n_target_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标主体标识|
+|<el-row justify="space-between"><el-col :span="20">n_target_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
+|<el-row justify="space-between"><el-col :span="20">n_target_version_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
+
+
+
+## 根据工作项我的关联
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/work_items/{pkey}/relations/fetch_my_relation" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -8220,7 +8410,7 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/tickets/{pkey}/relations/{key}/program_test_case" type="info" :closable="false" ></el-alert>
+<el-alert title="/tickets/{pkey}/relations/program_test_case" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 
@@ -8229,7 +8419,6 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |pkey|String|工单主键|
-|key|String|标识|
 
 
 
@@ -8848,6 +9037,41 @@ Integer
 </div>
 </el-row>
 主实体版本创建时，查询关联principal_type为需求的数据存入version_data
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|工单主键|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_job_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|前后置任务|
+|<el-row justify="space-between"><el-col :span="20">n_level_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|重要程度|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
+|<el-row justify="space-between"><el-col :span="20">n_principal_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
+|<el-row justify="space-between"><el-col :span="20">n_target_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标主体标识|
+|<el-row justify="space-between"><el-col :span="20">n_target_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
+|<el-row justify="space-between"><el-col :span="20">n_target_version_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
+
+
+
+## 根据工单我的关联
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/tickets/{pkey}/relations/fetch_my_relation" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -10100,7 +10324,7 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/runs/{pkey}/relations/{key}/program_test_case" type="info" :closable="false" ></el-alert>
+<el-alert title="/runs/{pkey}/relations/program_test_case" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 
@@ -10109,7 +10333,6 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |pkey|String|执行用例主键|
-|key|String|标识|
 
 
 
@@ -10728,6 +10951,41 @@ Integer
 </div>
 </el-row>
 主实体版本创建时，查询关联principal_type为需求的数据存入version_data
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|执行用例主键|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_job_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|前后置任务|
+|<el-row justify="space-between"><el-col :span="20">n_level_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|重要程度|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
+|<el-row justify="space-between"><el-col :span="20">n_principal_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
+|<el-row justify="space-between"><el-col :span="20">n_target_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标主体标识|
+|<el-row justify="space-between"><el-col :span="20">n_target_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
+|<el-row justify="space-between"><el-col :span="20">n_target_version_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
+
+
+
+## 根据执行用例我的关联
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/runs/{pkey}/relations/fetch_my_relation" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -11980,7 +12238,7 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/test_cases/{pkey}/relations/{key}/program_test_case" type="info" :closable="false" ></el-alert>
+<el-alert title="/test_cases/{pkey}/relations/program_test_case" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 
@@ -11989,7 +12247,6 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |pkey|String|用例主键|
-|key|String|标识|
 
 
 
@@ -12608,6 +12865,41 @@ Integer
 </div>
 </el-row>
 主实体版本创建时，查询关联principal_type为需求的数据存入version_data
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|用例主键|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_job_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|前后置任务|
+|<el-row justify="space-between"><el-col :span="20">n_level_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|重要程度|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
+|<el-row justify="space-between"><el-col :span="20">n_principal_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
+|<el-row justify="space-between"><el-col :span="20">n_target_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标主体标识|
+|<el-row justify="space-between"><el-col :span="20">n_target_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
+|<el-row justify="space-between"><el-col :span="20">n_target_version_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
+
+
+
+## 根据用例我的关联
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/test_cases/{pkey}/relations/fetch_my_relation" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -13860,7 +14152,7 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/ideas/{pkey}/relations/{key}/program_test_case" type="info" :closable="false" ></el-alert>
+<el-alert title="/ideas/{pkey}/relations/program_test_case" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 
@@ -13869,7 +14161,6 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |pkey|String|需求主键|
-|key|String|标识|
 
 
 
@@ -14488,6 +14779,41 @@ Integer
 </div>
 </el-row>
 主实体版本创建时，查询关联principal_type为需求的数据存入version_data
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|需求主键|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_job_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|前后置任务|
+|<el-row justify="space-between"><el-col :span="20">n_level_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|重要程度|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
+|<el-row justify="space-between"><el-col :span="20">n_principal_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
+|<el-row justify="space-between"><el-col :span="20">n_target_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标主体标识|
+|<el-row justify="space-between"><el-col :span="20">n_target_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
+|<el-row justify="space-between"><el-col :span="20">n_target_version_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
+
+
+
+## 根据需求我的关联
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/ideas/{pkey}/relations/fetch_my_relation" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -15740,7 +16066,7 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/article_pages/{pkey}/relations/{key}/program_test_case" type="info" :closable="false" ></el-alert>
+<el-alert title="/article_pages/{pkey}/relations/program_test_case" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 
@@ -15749,7 +16075,6 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |pkey|String|页面主键|
-|key|String|标识|
 
 
 
@@ -16368,6 +16693,41 @@ Integer
 </div>
 </el-row>
 主实体版本创建时，查询关联principal_type为需求的数据存入version_data
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|页面主键|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_job_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|前后置任务|
+|<el-row justify="space-between"><el-col :span="20">n_level_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|重要程度|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
+|<el-row justify="space-between"><el-col :span="20">n_principal_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
+|<el-row justify="space-between"><el-col :span="20">n_target_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标主体标识|
+|<el-row justify="space-between"><el-col :span="20">n_target_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
+|<el-row justify="space-between"><el-col :span="20">n_target_version_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
+
+
+
+## 根据页面我的关联
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/article_pages/{pkey}/relations/fetch_my_relation" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -17620,7 +17980,7 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/projects/{pkey}/relations/{key}/program_test_case" type="info" :closable="false" ></el-alert>
+<el-alert title="/projects/{pkey}/relations/program_test_case" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 
@@ -17629,7 +17989,6 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |pkey|String|项目主键|
-|key|String|标识|
 
 
 
@@ -18248,6 +18607,41 @@ Integer
 </div>
 </el-row>
 主实体版本创建时，查询关联principal_type为需求的数据存入version_data
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|项目主键|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_job_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|前后置任务|
+|<el-row justify="space-between"><el-col :span="20">n_level_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|重要程度|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
+|<el-row justify="space-between"><el-col :span="20">n_principal_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
+|<el-row justify="space-between"><el-col :span="20">n_target_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标主体标识|
+|<el-row justify="space-between"><el-col :span="20">n_target_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
+|<el-row justify="space-between"><el-col :span="20">n_target_version_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
+
+
+
+## 根据项目我的关联
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/projects/{pkey}/relations/fetch_my_relation" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|

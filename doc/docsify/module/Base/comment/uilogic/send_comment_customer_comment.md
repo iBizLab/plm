@@ -15,17 +15,17 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./send_comment_customer_comment#begin {开始}]]
-state "设置评论id" as PREPAREJSPARAM3  [[$./send_comment_customer_comment#preparejsparam3 {设置评论id}]]
-state "清空评论框与评论id" as RAWJSCODE2  [[$./send_comment_customer_comment#rawjscode2 {清空评论框与评论id}]]
-state "隐藏评论区" as RAWJSCODE3  [[$./send_comment_customer_comment#rawjscode3 {隐藏评论区}]]
 state "获取评论框内容" as RAWJSCODE1  [[$./send_comment_customer_comment#rawjscode1 {获取评论框内容}]]
-state "结束" as END1 <<end>> [[$./send_comment_customer_comment#end1 {结束}]]
 state "空，用于条件分支" as PREPAREJSPARAM4  [[$./send_comment_customer_comment#preparejsparam4 {空，用于条件分支}]]
-state "修改评论" as DEACTION3  [[$./send_comment_customer_comment#deaction3 {修改评论}]]
-state "回复标识" as PREPAREJSPARAM2  [[$./send_comment_customer_comment#preparejsparam2 {回复标识}]]
-state "创建评论" as DEACTION2  [[$./send_comment_customer_comment#deaction2 {创建评论}]]
 state "设置评论principal_id与principal_type" as PREPAREJSPARAM1  [[$./send_comment_customer_comment#preparejsparam1 {设置评论principal_id与principal_type}]]
+state "创建评论" as DEACTION2  [[$./send_comment_customer_comment#deaction2 {创建评论}]]
+state "隐藏评论区" as RAWJSCODE3  [[$./send_comment_customer_comment#rawjscode3 {隐藏评论区}]]
+state "清空评论框与评论id" as RAWJSCODE2  [[$./send_comment_customer_comment#rawjscode2 {清空评论框与评论id}]]
+state "回复标识" as PREPAREJSPARAM2  [[$./send_comment_customer_comment#preparejsparam2 {回复标识}]]
 state "刷新沟通列表" as RAWJSCODE4  [[$./send_comment_customer_comment#rawjscode4 {刷新沟通列表}]]
+state "修改评论" as DEACTION3  [[$./send_comment_customer_comment#deaction3 {修改评论}]]
+state "结束" as END1 <<end>> [[$./send_comment_customer_comment#end1 {结束}]]
+state "设置评论id" as PREPAREJSPARAM3  [[$./send_comment_customer_comment#preparejsparam3 {设置评论id}]]
 
 
 Begin --> RAWJSCODE1
@@ -167,10 +167,10 @@ uiLogic.editor.reply.value = null;
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
+|表单|form|部件对象||
 |应用上下文变量|ctx|导航视图参数绑定参数||
+|评论对象|comment|数据对象||
+|编辑器|editor|数据对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |嵌入客户沟通视图|commentcustomer_connect_list_view|部件对象||
 |当前视图对象|view|当前视图对象||
-|表单|form|部件对象||
-|评论对象|comment|数据对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|编辑器|editor|数据对象||

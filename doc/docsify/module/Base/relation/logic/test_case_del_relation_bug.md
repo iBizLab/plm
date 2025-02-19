@@ -15,6 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./test_case_del_relation_bug#begin {"开始"}]]
+state "调试逻辑参数" as DEBUGPARAM1  [[$./test_case_del_relation_bug#debugparam1 {"调试逻辑参数"}]]
 state "填充关联对象的主要关联属性" as PREPAREPARAM1  [[$./test_case_del_relation_bug#prepareparam1 {"填充关联对象的主要关联属性"}]]
 state "拼接关联对象的主键" as RAWSFCODE1  [[$./test_case_del_relation_bug#rawsfcode1 {"拼接关联对象的主键"}]]
 state "删除测试用例关联缺陷数据" as DEACTION2  [[$./test_case_del_relation_bug#deaction2 {"删除测试用例关联缺陷数据"}]]
@@ -30,7 +31,8 @@ state "删除缺陷关联执行用例" as DEACTION5  [[$./test_case_del_relation
 }
 
 
-Begin --> PREPAREPARAM1
+Begin --> DEBUGPARAM1
+DEBUGPARAM1 --> PREPAREPARAM1
 PREPAREPARAM1 --> RAWSFCODE1
 RAWSFCODE1 --> DEACTION2
 DEACTION2 --> DEACTION3
@@ -55,14 +57,24 @@ DEACTION4 --> DEACTION5
 
 
 *- N/A*
+#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
+
+
+
+> [!NOTE|label:调试信息|icon:fa fa-bug]
+> 调试输出参数`run_relation_filter(执行用例关联缺陷查询过滤器)`的详细信息
+
+
 #### 填充关联对象的主要关联属性 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`Default(传入变量).PRINCIPAL_ID(关联主体标识)` 设置给  `forward_relation_obj(正向关联对象).PRINCIPAL_ID(关联主体标识)`
-2. 将`Default(传入变量).PRINCIPAL_ID(关联主体标识)` 设置给  `reverse_relation_obj(反向关联对象).TARGET_ID(目标主体标识)`
-3. 将`Default(传入变量).TARGET_ID(目标主体标识)` 设置给  `reverse_relation_obj(反向关联对象).PRINCIPAL_ID(关联主体标识)`
-4. 将`Default(传入变量).TARGET_ID(目标主体标识)` 设置给  `forward_relation_obj(正向关联对象).TARGET_ID(目标主体标识)`
+2. 将`Default(传入变量).PRINCIPAL_TYPE(关联主体类型)` 设置给  `forward_relation_obj(正向关联对象).PRINCIPAL_TYPE(关联主体类型)`
+3. 将`Default(传入变量).PRINCIPAL_TYPE(关联主体类型)` 设置给  `reverse_relation_obj(反向关联对象).PRINCIPAL_TYPE(关联主体类型)`
+4. 将`Default(传入变量).PRINCIPAL_ID(关联主体标识)` 设置给  `reverse_relation_obj(反向关联对象).TARGET_ID(目标主体标识)`
+5. 将`Default(传入变量).TARGET_ID(目标主体标识)` 设置给  `reverse_relation_obj(反向关联对象).PRINCIPAL_ID(关联主体标识)`
+6. 将`Default(传入变量).TARGET_ID(目标主体标识)` 设置给  `forward_relation_obj(正向关联对象).TARGET_ID(目标主体标识)`
 
 #### 拼接关联对象的主键 :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
@@ -74,12 +86,12 @@ DEACTION4 --> DEACTION5
 // 获取正向关联对象的主键
 var forward_relation_obj = logic.getParam("forward_relation_obj");
 if(forward_relation_obj.get("principal_id") != null && forward_relation_obj.get("target_id") != null){
-    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id"));
+    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id")+ '_' + forward_relation_obj.get("principal_type"));
 }
 // 获取反向关联对象的主键
 var reverse_relation_obj = logic.getParam("reverse_relation_obj");
 if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get("target_id") != null){
-    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id"));
+    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id")+ '_' + reverse_relation_obj.get("principal_type"));
 }
 ```
 
