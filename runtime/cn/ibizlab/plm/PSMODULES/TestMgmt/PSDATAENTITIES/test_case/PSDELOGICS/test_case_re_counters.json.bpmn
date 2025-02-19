@@ -19,12 +19,12 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casetest_case_re_countersend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casetest_case_re_countersrawsqlcall5" id="rawsqlcall5" implementation="http://www.jboss.org/drools/rule" name="测试用例版本"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casetest_case_re_countersprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置测试用例ID"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casetest_case_re_countersdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取测试用例当前版本"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casetest_case_re_countersrawsqlcall4" id="rawsqlcall4" implementation="http://www.jboss.org/drools/rule" name="测试用例执行历史"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casetest_case_re_countersrawsqlcall5" id="rawsqlcall5" implementation="http://www.jboss.org/drools/rule" name="测试用例版本"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casetest_case_re_countersrawsqlcall9" id="rawsqlcall9" implementation="http://www.jboss.org/drools/rule" name="合并查询计数器"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casetest_case_re_countersrawsqlcall3" id="rawsqlcall3" implementation="http://www.jboss.org/drools/rule" name="测试用例关联缺陷"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casetest_case_re_countersrawsqlcall4" id="rawsqlcall4" implementation="http://www.jboss.org/drools/rule" name="测试用例执行历史"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casetest_case_re_countersrawsqlcall6" id="rawsqlcall6" implementation="http://www.jboss.org/drools/rule" name="测试用例关联产品需求"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casetest_case_re_countersrawsqlcall7" id="rawsqlcall7" implementation="http://www.jboss.org/drools/rule" name="测试用例关联工作项"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casetest_case_re_countersrawsqlcall8" id="rawsqlcall8" implementation="http://www.jboss.org/drools/rule" name="测试用例关联缺陷"/>
@@ -33,6 +33,8 @@
                     <sequenceFlow id="rawsqlcall1_rawsqlcall2" sourceRef="rawsqlcall1" targetRef="rawsqlcall2">
                     </sequenceFlow>
                     <sequenceFlow id="rawsqlcall2_rawsqlcall3" sourceRef="rawsqlcall2" targetRef="rawsqlcall3">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall5_prepareparam1" sourceRef="rawsqlcall5" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
                     </sequenceFlow>
@@ -54,13 +56,11 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="rawsqlcall4_rawsqlcall5" sourceRef="rawsqlcall4" targetRef="rawsqlcall5">
-                    </sequenceFlow>
-                    <sequenceFlow id="rawsqlcall5_prepareparam1" sourceRef="rawsqlcall5" targetRef="prepareparam1">
-                    </sequenceFlow>
                     <sequenceFlow id="rawsqlcall9_rawsqlcall3" sourceRef="rawsqlcall9" targetRef="rawsqlcall3">
                     </sequenceFlow>
                     <sequenceFlow id="rawsqlcall3_end1" sourceRef="rawsqlcall3" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall4_rawsqlcall5" sourceRef="rawsqlcall4" targetRef="rawsqlcall5">
                     </sequenceFlow>
                     <sequenceFlow id="rawsqlcall6_rawsqlcall7" sourceRef="rawsqlcall6" targetRef="rawsqlcall7">
                     </sequenceFlow>

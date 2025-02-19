@@ -16,7 +16,7 @@
     "path" : "PSSYSAPPS/plmmob/PSAPPMODULES/Base.json"
   },
   "getPSDEViewCodeName" : "mob_work_item_re_idea_list_view",
-  "getPSDEViewId" : "4AECD3D6-AC15-47B9-A428-348891C5CACF",
+  "getPSDEViewId" : "fa802baeda84159d359f8f98643c1408",
   "getPSViewLayoutPanel" : {
     "getAllPSPanelFields" : [ {
       "id" : "total",
@@ -290,7 +290,7 @@
     "mobilePanel" : true,
     "useDefaultLayout" : false,
     "viewProxyMode" : true,
-    "modelid" : "3ECF947E-16CF-41CC-A612-657CD7904473",
+    "modelid" : "d6516b0ab256a6ccfcec14964e1a4c85",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSAppViewLogics" : [ {
       "eventNames" : "onLoadSuccess",
@@ -686,7 +686,7 @@
           } ]
         } ],
         "name" : "mdctrl_itempanel",
-        "modelid" : "5B39E26B-E600-4ECA-88FE-1FCE080A3D50",
+        "modelid" : "990834d7b423133c16f8a1e294a7d1e8",
         "modeltype" : "PSSYSVIEWPANEL"
       },
       "logicName" : "mob_work_item_re_idea_list",
@@ -801,18 +801,16 @@
         "getPSUIActionGroupDetails" : [ {
           "caption" : "取消关联",
           "detailType" : "DEUIACTION",
-          "name" : "ue009d6d",
+          "name" : "ua71fcf1",
           "getPSSysImage" : {
             "glyph" : "xf127@FontAwesome",
             "cssClass" : "fa fa-unlink"
           },
           "getPSUIAction" : {
             "actionTarget" : "SINGLEDATA",
-            "noPrivDisplayMode" : 6,
             "caption" : "取消关联",
             "codeName" : "del_relation",
             "confirmMsg" : "确认取消关联？",
-            "dataAccessAction" : "UPDATE",
             "fullCodeName" : "relation_del_relation",
             "name" : "取消关联",
             "getPSAppDEMethod" : {
@@ -826,10 +824,6 @@
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
-            },
-            "getPSDEOPPriv" : {
-              "modelref" : true,
-              "id" : "UPDATE"
             },
             "getPSSysImage" : {
               "glyph" : "xf127@FontAwesome",
@@ -897,7 +891,7 @@
       "showHeader" : true,
       "singleSelect" : false,
       "name" : "mdctrl",
-      "modelid" : "BCD518B6-496B-430A-8BBD-BEB2E4762422",
+      "modelid" : "21bb5e42e3605286948093035d3fde1f",
       "modeltype" : "PSDELIST"
     }, {
       "codeName" : "mob_work_item_re_idea_list_view_righttoolbar",
@@ -1079,7 +1073,7 @@
       } ],
       "toolbarStyle" : "MOBNAVRIGHTMENU",
       "xDataControlName" : "mdctrl",
-      "modelid" : "66CEED7F-549C-4131-A1C5-3B6F796C6E2B",
+      "modelid" : "e60f0a9e5012aa15fcdde3f1c2a8f54f",
       "modeltype" : "PSDETOOLBAR"
     }, {
       "controlType" : "SEARCHBAR",
@@ -1122,9 +1116,71 @@
   "enablePullDownRefresh" : false,
   "enableSearch" : true,
   "showCaptionBar" : false,
-  "modelid" : "6cde27c18ac3f41c618481cb6acd5582",
+  "modelid" : "ca9e18018d98e6e431e1686b71b400a7",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "test_plans",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "project",
+    "majorDEName" : "PROJECT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+    },
+    "minorDECodeName" : "test_plan",
+    "minorDEName" : "TEST_PLAN",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/test_plan.json"
+    },
+    "name" : "DER1N_TEST_PLAN_PROJECT_PROJECT_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PROJECT_ID",
+      "codeName" : "project_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "runs",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "test_plan",
+    "majorDEName" : "TEST_PLAN",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/test_plan.json"
+    },
+    "minorDECodeName" : "run",
+    "minorDEName" : "RUN",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/run.json"
+    },
+    "name" : "DER1N_RUN_TEST_PLAN_PLAN_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PLAN_ID",
+      "codeName" : "plan_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "relations",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "run",
+    "majorDEName" : "RUN",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/run.json"
+    },
+    "minorDECodeName" : "relation",
+    "minorDEName" : "RELATION",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
+    },
+    "name" : "执行用例-关联",
+    "rSMode" : 2
+  } ], [ {
     "actionRSMode" : 1,
     "codeName" : "test_plans",
     "dataRSMode" : 0,

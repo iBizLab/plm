@@ -24,6 +24,18 @@ package cn.ibizlab.plm.prodmgmt.logic.productlogic.get_product_member_one;
             then
             end
 
+            //逻辑处理节点[结束]
+            rule "end2"
+            ruleflow-group "productget_product_member_oneend2"
+            when
+            then
+                        update(productget_product_member_onedefault);//更新fact中变量值
+                        update(productget_product_member_onefilter);//更新fact中变量值
+                        update(productget_product_member_onefor_obj);//更新fact中变量值
+                        update(productget_product_member_onemembers);//更新fact中变量值
+                        update(productget_product_member_oneuser);//更新fact中变量值
+            end
+
             //逻辑处理节点[获取产品id并设置过滤参数]
             rule "prepareparam2"
             ruleflow-group "productget_product_member_oneprepareparam2"
@@ -50,11 +62,24 @@ package cn.ibizlab.plm.prodmgmt.logic.productlogic.get_product_member_one;
                         update(productget_product_member_oneuser);//更新fact中变量值
             end
 
-            //逻辑处理节点[结束]
-            rule "end2"
-            ruleflow-group "productget_product_member_oneend2"
+            //逻辑处理节点[准备参数]
+            rule "prepareparam3"
+            ruleflow-group "productget_product_member_oneprepareparam3"
             when
             then
+                        update(productget_product_member_onedefault);//更新fact中变量值
+                        update(productget_product_member_onefilter);//更新fact中变量值
+                        update(productget_product_member_onefor_obj);//更新fact中变量值
+                        update(productget_product_member_onemembers);//更新fact中变量值
+                        update(productget_product_member_oneuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定用户数据到for_obj]
+            rule "prepareparam5"
+            ruleflow-group "productget_product_member_oneprepareparam5"
+            when
+            then
+                            productget_product_member_onefor_obj.set("",productget_product_member_onemembers.get("0"));
                         update(productget_product_member_onedefault);//更新fact中变量值
                         update(productget_product_member_onefilter);//更新fact中变量值
                         update(productget_product_member_onefor_obj);//更新fact中变量值
@@ -91,31 +116,6 @@ package cn.ibizlab.plm.prodmgmt.logic.productlogic.get_product_member_one;
             ruleflow-group "productget_product_member_oneend6"
             when
             then
-                        update(productget_product_member_onedefault);//更新fact中变量值
-                        update(productget_product_member_onefilter);//更新fact中变量值
-                        update(productget_product_member_onefor_obj);//更新fact中变量值
-                        update(productget_product_member_onemembers);//更新fact中变量值
-                        update(productget_product_member_oneuser);//更新fact中变量值
-            end
-
-            //逻辑处理节点[准备参数]
-            rule "prepareparam3"
-            ruleflow-group "productget_product_member_oneprepareparam3"
-            when
-            then
-                        update(productget_product_member_onedefault);//更新fact中变量值
-                        update(productget_product_member_onefilter);//更新fact中变量值
-                        update(productget_product_member_onefor_obj);//更新fact中变量值
-                        update(productget_product_member_onemembers);//更新fact中变量值
-                        update(productget_product_member_oneuser);//更新fact中变量值
-            end
-
-            //逻辑处理节点[绑定用户数据到for_obj]
-            rule "prepareparam5"
-            ruleflow-group "productget_product_member_oneprepareparam5"
-            when
-            then
-                            productget_product_member_onefor_obj.set("",productget_product_member_onemembers.get("0"));
                         update(productget_product_member_onedefault);//更新fact中变量值
                         update(productget_product_member_onefilter);//更新fact中变量值
                         update(productget_product_member_onefor_obj);//更新fact中变量值

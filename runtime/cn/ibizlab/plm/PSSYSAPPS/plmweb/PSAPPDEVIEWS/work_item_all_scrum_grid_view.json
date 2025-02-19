@@ -102,17 +102,6 @@
     }
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "NEWDATA",
-    "realTitle" : "工作项编辑视图",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.WORK_ITEM.EDITVIEW"
-    },
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_edit_view.json",
-      "viewType" : "DEEDITVIEW"
-    }
-  }, {
     "name" : "EDITDATA",
     "openMode" : "INDEXVIEWTAB_POPUPMODAL",
     "getPSNavigateContexts" : [ {
@@ -126,6 +115,17 @@
     "getRefPSAppView" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_main_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  }, {
+    "name" : "NEWDATA",
+    "realTitle" : "工作项编辑视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.WORK_ITEM.EDITVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_edit_view.json",
       "viewType" : "DEEDITVIEW"
     }
   } ],
@@ -602,7 +602,7 @@
       "showIcon" : true
     } ],
     "xDataControlName" : "grid",
-    "modelid" : "661B8348-1FBE-4226-8154-1E363F1D1D6C",
+    "modelid" : "eaf436ac7ccc105476fdfb83828bcabc",
     "modeltype" : "PSDETOOLBAR"
   }, {
     "aggMode" : "NONE",
@@ -1651,7 +1651,7 @@
         }, {
           "caption" : "移入发布",
           "detailType" : "DEUIACTION",
-          "name" : "u0f2b72c",
+          "name" : "ud7b3a0b",
           "getPSSysImage" : {
             "glyph" : "xf1d9@FontAwesome",
             "cssClass" : "fa fa-send-o"
@@ -3340,6 +3340,87 @@
       "emptyCaption" : false,
       "hidden" : false,
       "showCaption" : false
+    }, {
+      "caption" : "执行人",
+      "dataType" : 21,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "executors_user_id",
+      "getPSAppDEField" : {
+        "name" : "EXECUTORS",
+        "codeName" : "executors"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_EXECUTORS_EXISTS__N_USER_ID_EQ",
+        "getDstPSDEFSearchMode" : {
+          "modelref" : true,
+          "id" : "N_USER_ID_EQ"
+        },
+        "getDstPSDEField" : {
+          "name" : "USER_ID",
+          "codeName" : "user_id"
+        },
+        "getDstPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/executor.json"
+        },
+        "name" : "N_EXECUTORS_EXISTS__N_USER_ID_EQ",
+        "getPSDER" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/executor/PSDERS/DERCUSTOM_EXECUTOR_WORK_ITEM_OWNER_ID.json"
+        },
+        "stdDataType" : 25,
+        "valueOP" : "EXISTS"
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+          "AC" : "TRUE",
+          "SRFNAVPARAM.n_status_eq" : "1",
+          "TRIGGER" : "TRUE",
+          "URL" : "projects/${context.project}/project_members/fetch_default",
+          "PICKUPVIEW" : "FALSE",
+          "USERMETHOD" : "post",
+          "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+          "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+          "DEPTMETHOD" : "get",
+          "DEPTURL" : "/users/fetch_default"
+        },
+        "editorStyle" : "PERSONEL_SELECT_PROJECT",
+        "editorType" : "PICKEREX_TRIGGER",
+        "name" : "executors_user_id",
+        "getPSNavigateParams" : [ {
+          "key" : "n_department_id_eq",
+          "name" : "n_department_id_eq",
+          "value" : "srforgsectorid",
+          "rawValue" : false
+        }, {
+          "key" : "n_status_eq",
+          "name" : "n_status_eq",
+          "value" : "1",
+          "rawValue" : true
+        } ],
+        "getPSSysPFPlugin" : {
+          "pluginType" : "EDITOR_CUSTOMSTYLE",
+          "pluginCode" : "PERSON_SELECT",
+          "runtimeObject" : true
+        },
+        "valueItemName" : "user_id",
+        "enableAC" : true,
+        "enablePickupView" : false,
+        "forceSelection" : true,
+        "showTrigger" : true,
+        "singleSelect" : true
+      },
+      "valueItemName" : "user_id",
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "showCaption" : false,
+      "getUserParam" : {
+        "ITEMTYPE" : "SIMPLE"
+      }
     } ],
     "getPSSearchBarGroups" : [ {
       "caption" : "全部工作项",
@@ -3418,7 +3499,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "all_scrum_grid_view",
-  "getPSDEViewId" : "860968c08b5a0aa4cc5dcc7e851eddb6",
+  "getPSDEViewId" : "aafa5b1c4a50b7f6b3eaf2454abf522d",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEGRIDVIEW",
@@ -3445,7 +3526,7 @@
   "enableRowEdit" : false,
   "enableSearch" : true,
   "rowEditDefault" : true,
-  "modelid" : "7386d5b91e61cd16260d39e744538ef3",
+  "modelid" : "baeae2f9b8a1b9601c72ed3ae774dc5f",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

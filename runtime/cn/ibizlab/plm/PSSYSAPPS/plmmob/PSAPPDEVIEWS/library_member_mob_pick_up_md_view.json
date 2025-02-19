@@ -214,7 +214,6 @@
                 "groupOP" : "AND",
                 "logicCat" : "PANELVISIBLE",
                 "logicType" : "GROUP",
-                "name" : "面板成员[title][面板显示]逻辑",
                 "getPSPanelItemLogics" : [ {
                   "condOp" : "ISNOTNULL",
                   "dstModelField" : "TITLE",
@@ -252,7 +251,7 @@
               "getPSUIActionGroupDetails" : [ {
                 "caption" : "设置角色",
                 "detailType" : "DEUIACTION",
-                "name" : "uad09b74",
+                "name" : "u4f0764f",
                 "getPSSysImage" : {
                   "glyph" : "xf185@FontAwesome",
                   "cssClass" : "fa fa-sun-o"
@@ -303,7 +302,7 @@
               }, {
                 "caption" : "删除成员",
                 "detailType" : "DEUIACTION",
-                "name" : "uc1000af",
+                "name" : "u41f22e9",
                 "getPSSysImage" : {
                   "glyph" : "xf014@FontAwesome",
                   "cssClass" : "fa fa-trash-o"
@@ -353,7 +352,7 @@
         } ]
       } ],
       "name" : "mdctrl_itempanel",
-      "modelid" : "E45B0406-49AC-4EC0-98DD-E0FA16779F88",
+      "modelid" : "22e2b838b2ae8c29c82f0800ed3c6fab",
       "modeltype" : "PSSYSVIEWPANEL"
     },
     "logicName" : "mob_list",
@@ -438,6 +437,13 @@
     },
     "getPSDEListDataItems" : [ {
       "dataType" : 25,
+      "name" : "name",
+      "getPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
+    }, {
+      "dataType" : 25,
       "getFrontPSCodeList" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/Base__role_type.json"
@@ -446,13 +452,6 @@
       "getPSAppDEField" : {
         "name" : "ROLE_ID",
         "codeName" : "role_id"
-      }
-    }, {
-      "dataType" : 25,
-      "name" : "name",
-      "getPSAppDEField" : {
-        "name" : "NAME",
-        "codeName" : "name"
       }
     }, {
       "dataType" : 25,
@@ -527,7 +526,7 @@
     "showHeader" : true,
     "singleSelect" : false,
     "name" : "mdctrl",
-    "modelid" : "1B882F87-4610-4055-9720-4EA2CD14487A",
+    "modelid" : "9dd87c8ef855f305a8c51fff88d940a0",
     "modeltype" : "PSDELIST"
   }, {
     "controlType" : "SEARCHBAR",
@@ -561,7 +560,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "mob_pick_up_md_view",
-  "getPSDEViewId" : "6393061E-D75B-4548-8CBB-2B0F0FB35B38",
+  "getPSDEViewId" : "04c2ae3173f6b370ab6fddc472178f06",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEMOBPICKUPMDVIEW",
@@ -586,9 +585,53 @@
   "enablePullDownRefresh" : false,
   "enableSearch" : true,
   "expandSearchForm" : true,
-  "modelid" : "1c4c407c3f3f8e4b87ff15290d11eb41",
+  "modelid" : "7b3d5bb199f8d228c5e598d7bde9d06c",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "users",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "department",
+    "majorDEName" : "DEPARTMENT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/department.json"
+    },
+    "minorDECodeName" : "user",
+    "minorDEName" : "USER",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/user.json"
+    },
+    "name" : "DER1N_USER_DEPARTMENT_DEPARTMENT_ID",
+    "getParentPSAppDEField" : {
+      "name" : "DEPARTMENT_ID",
+      "codeName" : "department_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "library_members",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "user",
+    "majorDEName" : "USER",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/user.json"
+    },
+    "minorDECodeName" : "library_member",
+    "minorDEName" : "LIBRARY_MEMBER",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/library_member.json"
+    },
+    "name" : "DER1N_LIBRARY_MEMBER_USER_USER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "USER_ID",
+      "codeName" : "user_id"
+    },
+    "rSMode" : 2
+  } ], [ {
     "actionRSMode" : 1,
     "codeName" : "library_members",
     "dataRSMode" : 0,

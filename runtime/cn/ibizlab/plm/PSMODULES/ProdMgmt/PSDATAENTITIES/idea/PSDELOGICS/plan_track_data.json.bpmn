@@ -15,9 +15,9 @@
                                 <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.ticket()" name="ideaplan_track_datare_page_ticket" type="refentity"/>
                                 <tns:metaData express="new HashMap()" name="ideaplan_track_dataresult" type="refentity"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IideaService))" name="ideaservice" type="service"/>
-                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="work_itemservice" type="service"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IticketService))" name="ticketservice" type="service"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Itest_caseService))" name="test_caseservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="work_itemservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IideaService))" name="iBzSysIdeaDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="ideaplan_track_datadefault" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
@@ -36,13 +36,13 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_track_dataloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环所有的需求"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_track_dataprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置基础过滤器"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_track_datadedataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="获取关联需求"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_track_dataprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="组装数据"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_track_datadedataset3" id="dedataset3" implementation="http://www.jboss.org/drools/rule" name="获取关联工作项"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_track_datadedataset4" id="dedataset4" implementation="http://www.jboss.org/drools/rule" name="获取关联工单"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_track_datadedataset5" id="dedataset5" implementation="http://www.jboss.org/drools/rule" name="获取关联测试用例"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_track_dataprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="组装数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_track_dataappendparam1" id="appendparam1" implementation="http://www.jboss.org/drools/rule" name="附加到数组参数"/>
                         <endEvent id="appendparam1_end" name="end"/>
                         <sequenceFlow id="appendparam1_end_line" sourceRef="appendparam1" targetRef="appendparam1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_track_datadedataset3" id="dedataset3" implementation="http://www.jboss.org/drools/rule" name="获取关联工作项"/>
                     <sequenceFlow id="begin_dedataset1" sourceRef="begin" targetRef="dedataset1">
                     </sequenceFlow>
                     <sequenceFlow id="dedataset1_loopsubcall1" sourceRef="dedataset1" targetRef="loopsubcall1">
@@ -55,13 +55,13 @@
                     </sequenceFlow>
                     <sequenceFlow id="dedataset2_dedataset3" sourceRef="dedataset2" targetRef="dedataset3">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam1_appendparam1" sourceRef="prepareparam1" targetRef="appendparam1">
-                    </sequenceFlow>
-                    <sequenceFlow id="dedataset3_dedataset4" sourceRef="dedataset3" targetRef="dedataset4">
-                    </sequenceFlow>
                     <sequenceFlow id="dedataset4_dedataset5" sourceRef="dedataset4" targetRef="dedataset5">
                     </sequenceFlow>
                     <sequenceFlow id="dedataset5_prepareparam1" sourceRef="dedataset5" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_appendparam1" sourceRef="prepareparam1" targetRef="appendparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset3_dedataset4" sourceRef="dedataset3" targetRef="dedataset4">
                     </sequenceFlow>
         </process>
     </definitions>

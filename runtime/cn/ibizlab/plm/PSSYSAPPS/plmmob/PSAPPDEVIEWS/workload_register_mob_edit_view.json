@@ -190,9 +190,9 @@
       "codeName" : "duration_updateform",
       "name" : "时长表单项更新",
       "getPSDEFIUpdateDetails" : [ {
-        "name" : "workload_schedule"
-      }, {
         "name" : "remaining_workload"
+      }, {
+        "name" : "workload_schedule"
       } ],
       "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar remaining_workload = form_data.remaining_workload;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;\r\nvar duration_workload = form_data.duration;\r\nvar duration = 0;\r\nif(duration_workload){\r\n\tduration = Number(duration_workload);\r\n}\r\n// 已登记的实际工时\r\nvar actual = 0; \r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n}\r\nvar estimated = 0; // 预估工时\r\nvar remaining = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n\t// 重置剩余工时\r\n\tremaining = estimated - duration - actual;\r\n\tif(remaining <= 0){\r\n\t\tremaining = 0;\r\n\t}\r\n\tform_data.remaining_workload = remaining;\r\n}\r\n \r\n// 重置工时进度\r\nif((actual + duration + remaining) != 0){\r\n\tvar schedule = (((actual + duration) / (actual + remaining + duration)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
       "customCode" : true
@@ -745,7 +745,7 @@
     "mobileControl" : true,
     "noTabHeader" : true,
     "name" : "form",
-    "modelid" : "5FFAD78A-BC71-4E9D-8E22-AE9F32E122FB",
+    "modelid" : "57d41060aad92a338e45ae943aea5443",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "register_mob_edit_view_righttoolbar",
@@ -812,7 +812,7 @@
     } ],
     "toolbarStyle" : "MOBNAVRIGHTMENU",
     "xDataControlName" : "form",
-    "modelid" : "B4C8AF8E-304B-4CAE-9210-92380F3BC192",
+    "modelid" : "857377dc5391c45361078955acc6631d",
     "modeltype" : "PSDETOOLBAR"
   }, {
     "codeName" : "register_mob_edit_view_datainfobar",
@@ -840,7 +840,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "register_mob_edit_view",
-  "getPSDEViewId" : "D26B2140-C092-4987-B412-69E18963EF58",
+  "getPSDEViewId" : "a4421d0bd5d33c603140b91a927529e3",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEMOBEDITVIEW",
@@ -863,7 +863,7 @@
   "enableDP" : true,
   "enablePullDownRefresh" : false,
   "showDataInfoBar" : true,
-  "modelid" : "099fab9a2ef688cc414a5e3ea29237a5",
+  "modelid" : "8933de4d4f67f527507dfde222e22183",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

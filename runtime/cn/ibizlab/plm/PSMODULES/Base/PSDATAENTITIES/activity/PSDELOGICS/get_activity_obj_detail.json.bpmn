@@ -12,8 +12,8 @@
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IideaService))" name="ideaservice" type="service"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="work_itemservice" type="service"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IticketService))" name="ticketservice" type="service"/>
-                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IcustomerService))" name="customerservice" type="service"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Itest_caseService))" name="test_caseservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IcustomerService))" name="customerservice" type="service"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IrunService))" name="runservice" type="service"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.Iarticle_pageService))" name="article_pageservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IactivityService))" name="iBzSysActivityDefaultService" type="service"/>
@@ -26,13 +26,13 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detaildeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取工作项类详情"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detailprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置选中ID"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detaildeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="获取工单类详情"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detaildeaction4" id="deaction4" implementation="http://www.jboss.org/drools/rule" name="获取客户类详情"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detaildeaction5" id="deaction5" implementation="http://www.jboss.org/drools/rule" name="获取测试用例类需求"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detailprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置项目信息"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detailprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置产品信息"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detailend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detaildeaction5" id="deaction5" implementation="http://www.jboss.org/drools/rule" name="获取测试用例类需求"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detailprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置项目信息"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detailprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置产品信息"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detaildeaction4" id="deaction4" implementation="http://www.jboss.org/drools/rule" name="获取客户类详情"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detailprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="设置测试库信息"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detaildeaction6" id="deaction6" implementation="http://www.jboss.org/drools/rule" name="获取执行用例类数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="activityget_activity_obj_detaildeaction7" id="deaction7" implementation="http://www.jboss.org/drools/rule" name="获取页面类数据"/>
@@ -122,13 +122,13 @@
                     </sequenceFlow>
                     <sequenceFlow id="deaction3_prepareparam3" sourceRef="deaction3" targetRef="prepareparam3">
                     </sequenceFlow>
-                    <sequenceFlow id="deaction4_prepareparam3" sourceRef="deaction4" targetRef="prepareparam3">
-                    </sequenceFlow>
                     <sequenceFlow id="deaction5_prepareparam4" sourceRef="deaction5" targetRef="prepareparam4">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam2_end1" sourceRef="prepareparam2" targetRef="end1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam3_end1" sourceRef="prepareparam3" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction4_prepareparam3" sourceRef="deaction4" targetRef="prepareparam3">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam4_end1" sourceRef="prepareparam4" targetRef="end1">
                     </sequenceFlow>

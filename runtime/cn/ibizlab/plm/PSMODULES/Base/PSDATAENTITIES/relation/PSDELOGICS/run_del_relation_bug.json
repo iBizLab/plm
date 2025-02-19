@@ -13,7 +13,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "PREPAREPARAM1"
+        "id" : "DEBUGPARAM1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -21,9 +21,9 @@
         "id" : "Begin"
       }
     } ],
-    "topPos" : -140
+    "topPos" : -190
   }, {
-    "code" : "// 获取正向关联对象的主键\r\nvar forward_relation_obj = logic.getParam(\"forward_relation_obj\");\r\nif(forward_relation_obj.get(\"principal_id\") != null && forward_relation_obj.get(\"target_id\") != null){\r\n    forward_relation_obj.set(\"id\", forward_relation_obj.get(\"principal_id\") + \"_\" + forward_relation_obj.get(\"target_id\"));\r\n}\r\n// 获取反向关联对象的主键\r\nvar reverse_relation_obj = logic.getParam(\"reverse_relation_obj\");\r\nif(reverse_relation_obj.get(\"principal_id\") != null && reverse_relation_obj.get(\"target_id\") != null){\r\n    reverse_relation_obj.set(\"id\", reverse_relation_obj.get(\"principal_id\") + \"_\" + reverse_relation_obj.get(\"target_id\"));\r\n}",
+    "code" : "// 获取正向关联对象的主键\r\nvar forward_relation_obj = logic.getParam(\"forward_relation_obj\");\r\nif(forward_relation_obj.get(\"principal_id\") != null && forward_relation_obj.get(\"target_id\") != null){\r\n    forward_relation_obj.set(\"id\", forward_relation_obj.get(\"principal_id\") + \"_\" + forward_relation_obj.get(\"target_id\")+ '_' + forward_relation_obj.get(\"principal_type\"));\r\n}\r\n// 获取反向关联对象的主键\r\nvar reverse_relation_obj = logic.getParam(\"reverse_relation_obj\");\r\nif(reverse_relation_obj.get(\"principal_id\") != null && reverse_relation_obj.get(\"target_id\") != null){\r\n    reverse_relation_obj.set(\"id\", reverse_relation_obj.get(\"principal_id\") + \"_\" + reverse_relation_obj.get(\"target_id\")+ '_' + reverse_relation_obj.get(\"principal_type\"));\r\n}",
     "codeName" : "RAWSFCODE1",
     "codeType" : "JavaScript",
     "leftPos" : 160,
@@ -100,6 +100,59 @@
     } ],
     "topPos" : 290
   }, {
+    "codeName" : "DEBUGPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "test_case_relation_bug"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "调试逻辑参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM1"
+      }
+    } ],
+    "topPos" : -94
+  }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : 160,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备执行用例参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION6"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "run"
+      },
+      "name" : "Default[PRINCIPAL_ID] ==> run[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRINCIPAL_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 380
+  }, {
     "codeName" : "DEACTION6",
     "getDstPSDEAction" : {
       "modelref" : true,
@@ -147,6 +200,174 @@
       "id" : "run"
     },
     "topPos" : 480
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 160,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "填充正反关联对象的主要关联属性",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "PRINCIPAL_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "forward_relation_obj"
+      },
+      "name" : "Default[PRINCIPAL_ID] ==> forward_relation_obj[PRINCIPAL_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRINCIPAL_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "PRINCIPAL_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "reverse_relation_obj"
+      },
+      "name" : "Default[PRINCIPAL_TYPE] ==> reverse_relation_obj[PRINCIPAL_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRINCIPAL_TYPE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "PRINCIPAL_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "forward_relation_obj"
+      },
+      "name" : "Default[PRINCIPAL_TYPE] ==> forward_relation_obj[PRINCIPAL_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRINCIPAL_TYPE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "TARGET_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "reverse_relation_obj"
+      },
+      "name" : "Default[PRINCIPAL_ID] ==> reverse_relation_obj[TARGET_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRINCIPAL_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "PRINCIPAL_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "reverse_relation_obj"
+      },
+      "name" : "Default[TARGET_ID] ==> reverse_relation_obj[PRINCIPAL_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "TARGET_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "TARGET_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "forward_relation_obj"
+      },
+      "name" : "Default[TARGET_ID] ==> forward_relation_obj[TARGET_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "TARGET_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : -11
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 160,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备关联数据过滤参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "n_target_id_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "relation_filter"
+      },
+      "name" : "Default[TARGET_ID] ==> relation_filter[n_target_id_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "TARGET_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "n_target_type_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "relation_filter"
+      },
+      "name" : "直接值[work_item] ==> relation_filter[n_target_type_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "work_item",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "n_principal_id_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "relation_filter"
+      },
+      "name" : "run[CASE_ID] ==> relation_filter[n_principal_id_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "CASE_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "run"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "n_principal_type_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "relation_filter"
+      },
+      "name" : "直接值[test_case] ==> relation_filter[n_principal_type_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "test_case",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 613
   }, {
     "codeName" : "DEDATASET1",
     "getDstPSDEDataSet" : {
@@ -222,178 +443,6 @@
       "id" : "relation_page"
     },
     "topPos" : 838
-  }, {
-    "codeName" : "PREPAREPARAM1",
-    "leftPos" : 160,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "填充正反关联对象的主要关联属性",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM1"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "PRINCIPAL_ID",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "forward_relation_obj"
-      },
-      "name" : "Default[PRINCIPAL_ID] ==> forward_relation_obj[PRINCIPAL_ID]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "PRINCIPAL_ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "TARGET_ID",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "reverse_relation_obj"
-      },
-      "name" : "Default[PRINCIPAL_ID] ==> reverse_relation_obj[TARGET_ID]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "PRINCIPAL_ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "PRINCIPAL_ID",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "reverse_relation_obj"
-      },
-      "name" : "Default[TARGET_ID] ==> reverse_relation_obj[PRINCIPAL_ID]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "TARGET_ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "TARGET_ID",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "forward_relation_obj"
-      },
-      "name" : "Default[TARGET_ID] ==> forward_relation_obj[TARGET_ID]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "TARGET_ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    } ],
-    "topPos" : -11
-  }, {
-    "codeName" : "PREPAREPARAM3",
-    "leftPos" : 160,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备执行用例参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEACTION6"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM3"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "ID",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "run"
-      },
-      "name" : "Default[PRINCIPAL_ID] ==> run[ID]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "PRINCIPAL_ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    } ],
-    "topPos" : 380
-  }, {
-    "codeName" : "PREPAREPARAM2",
-    "leftPos" : 160,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备关联数据过滤参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM2"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "n_target_id_eq",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "relation_filter"
-      },
-      "name" : "Default[TARGET_ID] ==> relation_filter[n_target_id_eq]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "TARGET_ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "n_target_type_eq",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "relation_filter"
-      },
-      "name" : "直接值[work_item] ==> relation_filter[n_target_type_eq]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcValue" : "work_item",
-      "srcValueType" : "SRCVALUE"
-    }, {
-      "dstFieldName" : "n_principal_id_eq",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "relation_filter"
-      },
-      "name" : "run[CASE_ID] ==> relation_filter[n_principal_id_eq]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "CASE_ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "run"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "n_principal_type_eq",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "relation_filter"
-      },
-      "name" : "直接值[test_case] ==> relation_filter[n_principal_type_eq]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcValue" : "test_case",
-      "srcValueType" : "SRCVALUE"
-    } ],
-    "topPos" : 613
   }, {
     "code" : "var for_temp_obj = logic.getParam(\"for_temp_obj\");\r\nvar test_case_relation_bug = logic.getParam(\"test_case_relation_bug\");\r\nvar bug_relation_test_case = logic.getParam(\"bug_relation_test_case\");\r\nif(for_temp_obj.get(\"principal_id\") != null && for_temp_obj.get(\"target_id\") != null){\r\n    // 获取测试用例关联缺陷对象的主键\r\n    test_case_relation_bug.set(\"id\", for_temp_obj.get(\"principal_id\") + \"_\" + for_temp_obj.get(\"target_id\"));\r\n    // 获取缺陷关联测试用例对象的主键\r\n    bug_relation_test_case.set(\"id\", for_temp_obj.get(\"target_id\") + \"_\" + for_temp_obj.get(\"principal_id\"));\r\n}",
     "codeName" : "RAWSFCODE2",

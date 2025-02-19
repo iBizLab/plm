@@ -93,20 +93,6 @@
     "scriptCode" : "// console.log('执行人发生变化!', ctrl)\r\nvar assignee_id = ctrl.details.assignee_id;\r\nvar assignee_name = ctrl.details.assignee_name;\r\nvar estimated_workload = ctrl.details.estimated_workload;\r\nvar remaining_workload = ctrl.details.remaining_workload;\r\nvar executors = ctrl.details.executors.value;\r\nvar total_estimated_workload = 0;\r\nif(executors != null && executors != undefined && executors.length > 0){\r\n    // 默认取第一个执行人作为负责人\r\n    var first_executor = executors[0];\r\n    if(first_executor.user_id != null){\r\n        assignee_id.setDataValue(first_executor.user_id)\r\n    }\r\n    if(first_executor.user_name != null){\r\n        assignee_name.setDataValue(first_executor.user_name)\r\n    }\r\n    for (var i = 0; i < executors.length; i++) {\r\n        var executor_estimated_workload = executors[i].estimated_workload;\r\n        if(executor_estimated_workload != null && executor_estimated_workload != undefined){\r\n            total_estimated_workload =  total_estimated_workload + Number(executor_estimated_workload)\r\n        }\r\n        if(executors[i].is_assignee != null && executors[i].is_assignee != undefined && executors[i].is_assignee == 1) {\r\n            // 根据重复器中的是否负责人按钮，进行设置。只会有一个\r\n            assignee_id.setDataValue(executors[i].user_id)\r\n            assignee_name.setDataValue(executors[i].user_name)\r\n        }\r\n    }\r\n    estimated_workload.setDataValue(total_estimated_workload)\r\n    remaining_workload.setDataValue(total_estimated_workload)\r\n} else {\r\n    assignee_id.setDataValue(null)\r\n    assignee_name.setDataValue(null)\r\n    estimated_workload.setDataValue(null)\r\n}\r\n"
   } ],
   "getPSDEFormItemUpdates" : [ {
-    "codeName" : "set_type_bug",
-    "name" : "设置缺陷类型",
-    "getPSAppDEMethod" : {
-      "modelref" : true,
-      "id" : "set_type_bug"
-    },
-    "getPSDEFIUpdateDetails" : [ {
-      "name" : "project_type"
-    }, {
-      "name" : "work_item_type_name"
-    }, {
-      "name" : "work_item_type_id"
-    } ]
-  }, {
     "codeName" : "calc_parent_work_item_type",
     "name" : "计算父工作项类型",
     "getPSDEFIUpdateDetails" : [ {
@@ -114,6 +100,20 @@
     } ],
     "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
     "customCode" : true
+  }, {
+    "codeName" : "set_type_bug",
+    "name" : "设置缺陷类型",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "set_type_bug"
+    },
+    "getPSDEFIUpdateDetails" : [ {
+      "name" : "work_item_type_name"
+    }, {
+      "name" : "work_item_type_id"
+    }, {
+      "name" : "project_type"
+    } ]
   } ],
   "getPSDEFormItemVRs" : [ {
     "checkMode" : 1,
@@ -1611,45 +1611,6 @@
             "getPSEditorItems" : [ {
               "name" : "project_id"
             } ],
-            "getPSUIActionGroup" : {
-              "codeName" : "Usr1221520658",
-              "name" : "自填模式行为组",
-              "getPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-              },
-              "getPSUIActionGroupDetails" : [ {
-                "caption" : "项目配置",
-                "detailType" : "DEUIACTION",
-                "name" : "u3fee786",
-                "getPSUIAction" : {
-                  "actionTarget" : "NONE",
-                  "caption" : "项目配置",
-                  "codeName" : "open_global_setting",
-                  "getFrontPSAppView" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
-                    "viewType" : "DETREEEXPVIEW"
-                  },
-                  "frontProcessType" : "OTHER",
-                  "fullCodeName" : "project_open_global_setting",
-                  "name" : "打开项目配置(全局)",
-                  "getPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                  },
-                  "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
-                  "uIActionMode" : "FRONT",
-                  "uIActionTag" : "open_global_setting",
-                  "uIActionType" : "DEUIACTION",
-                  "id" : "open_global_setting@project"
-                },
-                "addSeparator" : false,
-                "showCaption" : true,
-                "showIcon" : true
-              } ],
-              "uniqueTag" : "project__Usr1221520658"
-            },
             "placeHolder" : "选择所属项目",
             "valueItemName" : "project_id",
             "enableAC" : true,
@@ -1902,7 +1863,7 @@
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
               "enableCond" : 3,
-              "ignoreInput" : 2,
+              "ignoreInput" : 0,
               "labelPos" : "RIGHT",
               "labelWidth" : 130,
               "name" : "multiple_people",
@@ -2625,6 +2586,6 @@
     }
   },
   "noTabHeader" : true,
-  "modelid" : "FA968E09-124E-4C97-AE3B-7DC7FF23AADE",
+  "modelid" : "7b34c841f31ec30c42e622050dc3bd44",
   "modeltype" : "PSDEFORM_EDITFORM"
 }

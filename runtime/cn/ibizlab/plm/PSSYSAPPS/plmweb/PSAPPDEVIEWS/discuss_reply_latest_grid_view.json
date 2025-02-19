@@ -193,7 +193,7 @@
     "enableFilterSave" : false,
     "noTabHeader" : true,
     "name" : "searchform",
-    "modelid" : "fabc8ef6b9ea6b3d12cfe4d381a884bd",
+    "modelid" : "6f703755323cec7d6bf031b0397f3846",
     "modeltype" : "PSDEFORM_SEARCHFORM"
   }, {
     "codeName" : "common",
@@ -285,12 +285,17 @@
         "logicType" : "APPDEUIACTION",
         "name" : "deletecomment",
         "getPSAppDEUIAction" : {
-          "actionTarget" : "SINGLEKEY",
+          "actionTarget" : "SINGLEDATA",
           "caption" : "删除评论",
           "codeName" : "del_commnet",
+          "confirmMsg" : "确认删除此回复？",
           "frontProcessType" : "OTHER",
           "fullCodeName" : "discuss_reply_del_commnet",
           "name" : "回复下删除评论",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "del_comment"
+          },
           "getPSAppDEUILogic" : {
             "modelref" : true,
             "id" : "rely_del_comment"
@@ -299,10 +304,15 @@
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_reply.json"
           },
-          "uIActionMode" : "FRONT",
+          "refreshMode" : 2,
+          "successMsg" : "删除成功",
+          "timeout" : 60000,
+          "uIActionMode" : "BACKEND",
           "uIActionTag" : "del_commnet",
           "uIActionType" : "DEUIACTION",
-          "uILogicAttachMode" : "REPLACE",
+          "uILogicAttachMode" : "AFTER",
+          "enableConfirm" : true,
+          "reloadData" : true,
           "id" : "del_commnet@discuss_reply"
         }
       }, {
@@ -678,7 +688,7 @@
         } ]
       } ],
       "name" : "list_itempanel",
-      "modelid" : "F5260C8F-FD9D-4A2F-82E7-CFACD726E922",
+      "modelid" : "36d06c2405126fa6682fd2dd305f0e08",
       "modeltype" : "PSSYSVIEWPANEL"
     },
     "logicName" : "common",
@@ -762,27 +772,6 @@
     },
     "getPSDEListDataItems" : [ {
       "dataType" : 25,
-      "name" : "post_id",
-      "getPSAppDEField" : {
-        "name" : "POST_ID",
-        "codeName" : "post_id"
-      }
-    }, {
-      "dataType" : 21,
-      "name" : "content",
-      "getPSAppDEField" : {
-        "name" : "CONTENT",
-        "codeName" : "content"
-      }
-    }, {
-      "dataType" : 21,
-      "name" : "comments",
-      "getPSAppDEField" : {
-        "name" : "COMMENTS",
-        "codeName" : "comments"
-      }
-    }, {
-      "dataType" : 25,
       "getFrontPSCodeList" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
@@ -791,6 +780,20 @@
       "getPSAppDEField" : {
         "name" : "CREATE_MAN",
         "codeName" : "create_man"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "post_id",
+      "getPSAppDEField" : {
+        "name" : "POST_ID",
+        "codeName" : "post_id"
+      }
+    }, {
+      "dataType" : 21,
+      "name" : "comments",
+      "getPSAppDEField" : {
+        "name" : "COMMENTS",
+        "codeName" : "comments"
       }
     }, {
       "dataType" : 5,
@@ -806,6 +809,13 @@
       "getPSAppDEField" : {
         "name" : "ID",
         "codeName" : "id"
+      }
+    }, {
+      "dataType" : 21,
+      "name" : "content",
+      "getPSAppDEField" : {
+        "name" : "CONTENT",
+        "codeName" : "content"
       }
     }, {
       "dataType" : 25,
@@ -865,7 +875,7 @@
     "showHeader" : true,
     "singleSelect" : false,
     "name" : "list",
-    "modelid" : "F609B172-5DF6-4189-A637-CFFC472481E1",
+    "modelid" : "e34642f171a8dba8f7041096e0bd61e4",
     "modeltype" : "PSDELIST"
   }, {
     "controlType" : "SEARCHBAR",
@@ -899,7 +909,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "latest_grid_view",
-  "getPSDEViewId" : "B597ED71-EF61-4648-93E7-627490321446",
+  "getPSDEViewId" : "590842ce01ad2629e5a484e428eef252",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDELISTVIEW",
@@ -922,7 +932,7 @@
   "enableFilter" : true,
   "enableQuickSearch" : true,
   "enableSearch" : true,
-  "modelid" : "67d31e6db62dcad2470dc8d940eb7c05",
+  "modelid" : "22221514218f5ab95a3ccf617072c38a",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

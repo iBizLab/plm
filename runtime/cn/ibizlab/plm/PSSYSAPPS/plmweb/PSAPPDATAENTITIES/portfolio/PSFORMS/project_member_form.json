@@ -373,17 +373,6 @@
             "value" : "display_name:name"
           } ],
           "getPSAppViewRefs" : [ {
-            "name" : "EDITDATA",
-            "realTitle" : "文件夹成员数据重定向视图",
-            "getRealTitlePSLanguageRes" : {
-              "lanResTag" : "PAGE.TITLE.PORTFOLIO_MEMBER.REDIRECTVIEW"
-            },
-            "getRefPSAppView" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/portfolio_member_redirect_view.json",
-              "viewType" : "DEREDIRECTVIEW"
-            }
-          }, {
             "name" : "NEWDATA",
             "openMode" : "POPUPMODAL",
             "realOpenMode" : "POPUPMODAL",
@@ -395,6 +384,17 @@
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/portfolio_member_edit_view.json",
               "viewType" : "DEEDITVIEW"
+            }
+          }, {
+            "name" : "EDITDATA",
+            "realTitle" : "文件夹成员数据重定向视图",
+            "getRealTitlePSLanguageRes" : {
+              "lanResTag" : "PAGE.TITLE.PORTFOLIO_MEMBER.REDIRECTVIEW"
+            },
+            "getRefPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/portfolio_member_redirect_view.json",
+              "viewType" : "DEREDIRECTVIEW"
             }
           }, {
             "name" : "MPICKUPVIEW:PORTFOLIO",
@@ -905,6 +905,50 @@
           "modelid" : "4f6431664ca9e6f9bcafed2cdfef397d",
           "modeltype" : "PSAPPDEVIEW",
           "getPSAppDERSPaths" : [ [ {
+            "actionRSMode" : 1,
+            "codeName" : "users",
+            "dataRSMode" : 0,
+            "majorDECodeName" : "department",
+            "majorDEName" : "DEPARTMENT",
+            "getMajorPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/department.json"
+            },
+            "minorDECodeName" : "user",
+            "minorDEName" : "USER",
+            "getMinorPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+            },
+            "name" : "DER1N_USER_DEPARTMENT_DEPARTMENT_ID",
+            "getParentPSAppDEField" : {
+              "name" : "DEPARTMENT_ID",
+              "codeName" : "department_id"
+            },
+            "rSMode" : 2
+          }, {
+            "actionRSMode" : 1,
+            "codeName" : "portfolio_members",
+            "dataRSMode" : 0,
+            "majorDECodeName" : "user",
+            "majorDEName" : "USER",
+            "getMajorPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+            },
+            "minorDECodeName" : "portfolio_member",
+            "minorDEName" : "PORTFOLIO_MEMBER",
+            "getMinorPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio_member.json"
+            },
+            "name" : "DER1N_PORTFOLIO_MEMBER_USER_USER_ID",
+            "getParentPSAppDEField" : {
+              "name" : "USER_ID",
+              "codeName" : "user_id"
+            },
+            "rSMode" : 2
+          } ], [ {
             "actionRSMode" : 1,
             "codeName" : "portfolio_members",
             "dataRSMode" : 0,

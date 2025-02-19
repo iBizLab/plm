@@ -15,9 +15,9 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.plan_track_data;
                 global cn.ibizlab.plm.core.prodmgmt.domain.ticket ideaplan_track_datare_page_ticket;
                 global java.util.Map ideaplan_track_dataresult;
                     global cn.ibizlab.plm.core.prodmgmt.service.IideaService ideaservice;
-                    global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService work_itemservice;
                     global cn.ibizlab.plm.core.prodmgmt.service.IticketService ticketservice;
                     global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService test_caseservice;
+                    global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService work_itemservice;
         global cn.ibizlab.plm.core.prodmgmt.service.IideaService iBzSysIdeaDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
 
@@ -112,46 +112,6 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.plan_track_data;
                         update(ideaplan_track_dataresult);//更新fact中变量值
             end
 
-            //逻辑处理节点[组装数据]
-            rule "prepareparam1"
-            ruleflow-group "ideaplan_track_dataprepareparam1"
-            when
-            then
-                            ideaplan_track_dataidea.set("re_idea",ideaplan_track_datare_page_idea.get(""));
-                            ideaplan_track_dataidea.set("idea_sum",ideaplan_track_datare_page_idea.get("size"));
-                            ideaplan_track_dataidea.set("work_item_sum",ideaplan_track_datare_page_item.get("size"));
-                            ideaplan_track_dataidea.set("ticket_sum",ideaplan_track_datare_page_ticket.get("size"));
-                            ideaplan_track_dataidea.set("test_case_sum",ideaplan_track_datare_page_case.get("size"));
-                            ideaplan_track_dataidea.set("re_item",ideaplan_track_datare_page_item.get(""));
-                            ideaplan_track_dataidea.set("re_case",ideaplan_track_datare_page_case.get(""));
-                            ideaplan_track_dataidea.set("re_ticket",ideaplan_track_datare_page_ticket.get(""));
-                        update(ideaplan_track_datadefault);//更新fact中变量值
-                        update(ideaplan_track_database_filter);//更新fact中变量值
-                        update(ideaplan_track_dataidea);//更新fact中变量值
-                        update(ideaplan_track_datapage_ideas);//更新fact中变量值
-                        update(ideaplan_track_datare_page_case);//更新fact中变量值
-                        update(ideaplan_track_datare_page_idea);//更新fact中变量值
-                        update(ideaplan_track_datare_page_item);//更新fact中变量值
-                        update(ideaplan_track_datare_page_ticket);//更新fact中变量值
-                        update(ideaplan_track_dataresult);//更新fact中变量值
-            end
-
-            //逻辑处理节点[获取关联工作项]
-            rule "dedataset3"
-            ruleflow-group "ideaplan_track_datadedataset3"
-            when
-            then
-                        update(ideaplan_track_datadefault);//更新fact中变量值
-                        update(ideaplan_track_database_filter);//更新fact中变量值
-                        update(ideaplan_track_dataidea);//更新fact中变量值
-                        update(ideaplan_track_datapage_ideas);//更新fact中变量值
-                        update(ideaplan_track_datare_page_case);//更新fact中变量值
-                        update(ideaplan_track_datare_page_idea);//更新fact中变量值
-                        update(ideaplan_track_datare_page_item);//更新fact中变量值
-                        update(ideaplan_track_datare_page_ticket);//更新fact中变量值
-                        update(ideaplan_track_dataresult);//更新fact中变量值
-            end
-
             //逻辑处理节点[获取关联工单]
             rule "dedataset4"
             ruleflow-group "ideaplan_track_datadedataset4"
@@ -184,9 +144,49 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.plan_track_data;
                         update(ideaplan_track_dataresult);//更新fact中变量值
             end
 
+            //逻辑处理节点[组装数据]
+            rule "prepareparam1"
+            ruleflow-group "ideaplan_track_dataprepareparam1"
+            when
+            then
+                            ideaplan_track_dataidea.set("re_idea",ideaplan_track_datare_page_idea.get(""));
+                            ideaplan_track_dataidea.set("idea_sum",ideaplan_track_datare_page_idea.get("size"));
+                            ideaplan_track_dataidea.set("work_item_sum",ideaplan_track_datare_page_item.get("size"));
+                            ideaplan_track_dataidea.set("ticket_sum",ideaplan_track_datare_page_ticket.get("size"));
+                            ideaplan_track_dataidea.set("test_case_sum",ideaplan_track_datare_page_case.get("size"));
+                            ideaplan_track_dataidea.set("re_item",ideaplan_track_datare_page_item.get(""));
+                            ideaplan_track_dataidea.set("re_case",ideaplan_track_datare_page_case.get(""));
+                            ideaplan_track_dataidea.set("re_ticket",ideaplan_track_datare_page_ticket.get(""));
+                        update(ideaplan_track_datadefault);//更新fact中变量值
+                        update(ideaplan_track_database_filter);//更新fact中变量值
+                        update(ideaplan_track_dataidea);//更新fact中变量值
+                        update(ideaplan_track_datapage_ideas);//更新fact中变量值
+                        update(ideaplan_track_datare_page_case);//更新fact中变量值
+                        update(ideaplan_track_datare_page_idea);//更新fact中变量值
+                        update(ideaplan_track_datare_page_item);//更新fact中变量值
+                        update(ideaplan_track_datare_page_ticket);//更新fact中变量值
+                        update(ideaplan_track_dataresult);//更新fact中变量值
+            end
+
             //逻辑处理节点[附加到数组参数]
             rule "appendparam1"
             ruleflow-group "ideaplan_track_dataappendparam1"
+            when
+            then
+                        update(ideaplan_track_datadefault);//更新fact中变量值
+                        update(ideaplan_track_database_filter);//更新fact中变量值
+                        update(ideaplan_track_dataidea);//更新fact中变量值
+                        update(ideaplan_track_datapage_ideas);//更新fact中变量值
+                        update(ideaplan_track_datare_page_case);//更新fact中变量值
+                        update(ideaplan_track_datare_page_idea);//更新fact中变量值
+                        update(ideaplan_track_datare_page_item);//更新fact中变量值
+                        update(ideaplan_track_datare_page_ticket);//更新fact中变量值
+                        update(ideaplan_track_dataresult);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取关联工作项]
+            rule "dedataset3"
+            ruleflow-group "ideaplan_track_datadedataset3"
             when
             then
                         update(ideaplan_track_datadefault);//更新fact中变量值

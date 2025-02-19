@@ -171,7 +171,7 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "UPDATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -1544,7 +1544,7 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "UPDATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -2268,41 +2268,6 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 74,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "设置确认信息",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "MSGBOX1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "ok",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "msg"
-        },
-        "name" : "直接值[ok] ==> msg[ok]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "ok",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : 208
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 1169,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
-    }, {
       "buttonsType" : "OKCANCEL",
       "codeName" : "MSGBOX1",
       "leftPos" : 355,
@@ -2344,6 +2309,41 @@
       } ],
       "topPos" : 208
     }, {
+      "codeName" : "END1",
+      "leftPos" : 1169,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 74,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "设置确认信息",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "MSGBOX1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "ok",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "msg"
+        },
+        "name" : "直接值[ok] ==> msg[ok]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "ok",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 208
+    }, {
       "code" : "// 如果当前视图打开方式为普通模态，则先关闭模态再跳转\r\nif (view.modal && view.modal.mode === 'MODAL') {\r\n\tview.modal.ignoreDismissCheck = true\r\n\tview.closeView({ ok: true })\r\n}\r\nibiz.openView.push(`/-/index/product=${context.product}/product_index_view/srfnav=usrdrgroup1228809432/product_details_setting_view/srfnav=root%3Anormal%3Amember/product_member_config_grid_view/-`);",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 699,
@@ -2364,17 +2364,6 @@
       "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "msg",
-      "logicName" : "消息确认标识",
-      "name" : "消息确认标识",
-      "entityParam" : true
-    }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
       "codeName" : "project",
       "logicName" : "项目标识",
       "name" : "项目标识",
@@ -2389,6 +2378,17 @@
       "logicName" : "上一次返回参数",
       "name" : "上一次返回参数",
       "lastReturnParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "msg",
+      "logicName" : "消息确认标识",
+      "name" : "消息确认标识",
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -2397,40 +2397,40 @@
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/product_member_mob_add_person_md_view.json",
-    "viewType" : "DEMOBMPICKUPVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/product_member_mob_more_mem_selected.json",
-    "viewType" : "DEMOBMPICKUPVIEW"
-  }, {
-    "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/product_member_mob_product_member_selected.json",
     "viewType" : "DEMOBPICKUPVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/product_member_mob_product_role_option_view.json",
-    "viewType" : "DEMOBOPTVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/product_member_mob_add_person_tree.json",
-    "viewType" : "DEMOBPICKUPTREEVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/product_member_mob_product_member_selected_pickup_md_view.json",
-    "viewType" : "DEMOBPICKUPMDVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/product_member_mob_dept_mem_selected.json",
-    "viewType" : "DEMOBPICKUPTREEVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/product_member_mob_list_view.json",
     "viewType" : "DEMOBLISTVIEW"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/product_member_mob_more_mem_selected.json",
+    "viewType" : "DEMOBMPICKUPVIEW"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/product_member_mob_product_member_select.json",
     "viewType" : "DEMOBMPICKUPVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/product_member_mob_product_role_option_view.json",
+    "viewType" : "DEMOBOPTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/product_member_mob_add_person_md_view.json",
+    "viewType" : "DEMOBMPICKUPVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/product_member_mob_product_member_selected_pickup_md_view.json",
+    "viewType" : "DEMOBPICKUPMDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/product_member_mob_add_person_tree.json",
+    "viewType" : "DEMOBPICKUPTREEVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/product_member_mob_dept_mem_selected.json",
+    "viewType" : "DEMOBPICKUPTREEVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/product_member_mob_product_member_select_pickup_md_view.json",
@@ -2647,7 +2647,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "设置角色",
       "detailType" : "DEUIACTION",
-      "name" : "ud4e35e4",
+      "name" : "u37ee770",
       "getPSSysImage" : {
         "glyph" : "xf185@FontAwesome",
         "cssClass" : "fa fa-sun-o"
@@ -2666,7 +2666,7 @@
     }, {
       "caption" : "移除成员",
       "detailType" : "DEUIACTION",
-      "name" : "u20562c4",
+      "name" : "u2009d78",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
         "cssClass" : "fa fa-trash-o"

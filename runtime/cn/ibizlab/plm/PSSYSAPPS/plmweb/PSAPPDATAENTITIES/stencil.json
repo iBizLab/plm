@@ -152,7 +152,7 @@
     "requestPath" : "/get_draft",
     "builtinMethod" : false
   }, {
-    "actionMode" : "GETDRAFT",
+    "actionMode" : "CUSTOM",
     "codeName" : "new_draft_form_stencil",
     "methodType" : "DEACTION",
     "name" : "new_draft_form_stencil",
@@ -166,11 +166,7 @@
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
-      "getPSAppDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "stencil_dto"
-      },
-      "type" : "DTO"
+      "type" : "VOID"
     },
     "getPSDEAction" : {
       "modelref" : true,
@@ -178,7 +174,7 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "space__READ"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -187,7 +183,8 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/new_draft_form_stencil",
-    "builtinMethod" : false
+    "builtinMethod" : false,
+    "needResourceKey" : true
   }, {
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
@@ -490,6 +487,18 @@
   } ],
   "getAllPSAppDEFields" : [ {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[FORMAT_TYPE][正文格式]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[FORMAT_TYPE][正文格式]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[FORMAT_TYPE][正文格式]移动端默认",
       "getPSDEFFormItem" : {
@@ -503,18 +512,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[FORMAT_TYPE][正文格式]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "DROPDOWNLIST",
-        "name" : "[FORMAT_TYPE][正文格式]",
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT",
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "format_type",
     "logicName" : "正文格式",
@@ -1386,7 +1383,7 @@
     "requestPath" : "/get_draft",
     "builtinMethod" : false
   }, {
-    "actionMode" : "GETDRAFT",
+    "actionMode" : "CUSTOM",
     "codeName" : "new_draft_form_stencil",
     "methodType" : "DEACTION",
     "name" : "new_draft_form_stencil",
@@ -1400,11 +1397,7 @@
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
-      "getPSAppDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "stencil_dto"
-      },
-      "type" : "DTO"
+      "type" : "VOID"
     },
     "getPSDEAction" : {
       "modelref" : true,
@@ -1412,7 +1405,7 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "space__READ"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -1421,7 +1414,8 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/new_draft_form_stencil",
-    "builtinMethod" : false
+    "builtinMethod" : false,
+    "needResourceKey" : true
   }, {
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
@@ -1865,24 +1859,24 @@
       "topPos" : 184,
       "parallelOutput" : true
     }, {
-      "code" : "if(uiLogic.selecteddata && uiLogic.selecteddata.length >0){\r\n    uiLogic.context.stencil_id = uiLogic.selecteddata[0].id;\r\n    uiLogic.stencil_info = uiLogic.selecteddata[0];\r\n    uiLogic.stencil_info.space_id = uiLogic.context.stencil_space;\r\n\r\n}",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : -97,
+      "code" : "view.state.isLoading = false;\r\nview.closeView();\r\n",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 680,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "设置上下文",
+      "name" : "关闭当前视图",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEACTION1"
+          "id" : "END1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE1"
+          "id" : "RAWJSCODE2"
         }
       } ],
-      "topPos" : 184
+      "topPos" : 192
     }, {
       "codeName" : "DEACTION1",
       "getDstPSAppDEAction" : {
@@ -1918,63 +1912,24 @@
       },
       "topPos" : 192
     }, {
-      "code" : "view.state.isLoading = false;\r\nview.closeView();\r\n",
-      "codeName" : "RAWJSCODE2",
-      "leftPos" : 680,
+      "code" : "if(uiLogic.selecteddata && uiLogic.selecteddata.length >0){\r\n    uiLogic.context.stencil_id = uiLogic.selecteddata[0].id;\r\n    uiLogic.stencil_info = uiLogic.selecteddata[0];\r\n    uiLogic.stencil_info.space_id = uiLogic.context.stencil_space;\r\n\r\n}",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : -97,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "关闭当前视图",
+      "name" : "设置上下文",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "END1"
+          "id" : "DEACTION1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE2"
+          "id" : "RAWJSCODE1"
         }
       } ],
-      "topPos" : 192
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 959,
-      "logicNodeType" : "END",
-      "name" : "结束",
       "topPos" : 184
-    }, {
-      "codeName" : "PREPAREJSPARAM2",
-      "leftPos" : 281,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "设置上下文参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "space",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "context"
-        },
-        "name" : "context[stencil_space] ==> context[space]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "stencil_space",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "context"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 192
     }, {
       "codeName" : "DEUIACTION1",
       "getDstPSAppDEUIAction" : {
@@ -2010,6 +1965,12 @@
       } ],
       "topPos" : 192
     }, {
+      "codeName" : "END1",
+      "leftPos" : 959,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 184
+    }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : -330,
       "logicNodeType" : "PREPAREJSPARAM",
@@ -2041,6 +2002,39 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 192
+    }, {
+      "codeName" : "PREPAREJSPARAM2",
+      "leftPos" : 281,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "设置上下文参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "space",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "context"
+        },
+        "name" : "context[stencil_space] ==> context[space]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "stencil_space",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "context"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 192
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "stencil_info",
@@ -2048,26 +2042,11 @@
       "name" : "模板信息",
       "entityParam" : true
     }, {
-      "codeName" : "view",
-      "logicName" : "视图",
-      "name" : "视图",
-      "activeViewParam" : true
-    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
-    }, {
-      "codeName" : "page_info",
-      "logicName" : "新建页面信息",
-      "name" : "新建页面信息",
-      "entityParam" : true
-    }, {
-      "codeName" : "listexpbar",
-      "logicName" : "列表",
-      "name" : "列表",
-      "ctrlParam" : true
     }, {
       "codeName" : "selecteddata",
       "logicName" : "选中数据",
@@ -2078,6 +2057,21 @@
       "logicName" : "视图上下文",
       "name" : "视图上下文",
       "navContextParam" : true
+    }, {
+      "codeName" : "listexpbar",
+      "logicName" : "列表",
+      "name" : "列表",
+      "ctrlParam" : true
+    }, {
+      "codeName" : "page_info",
+      "logicName" : "新建页面信息",
+      "name" : "新建页面信息",
+      "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "视图",
+      "name" : "视图",
+      "activeViewParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -2086,16 +2080,16 @@
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/stencil_model_edit_view.json",
+    "viewType" : "DEEDITVIEW"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/stencil_center_list_view.json",
     "viewType" : "DELISTVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/stencil_list_exp_view.json",
     "viewType" : "DELISTEXPVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/stencil_model_edit_view.json",
-    "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/stencil_show_edit_view.json",
@@ -2174,9 +2168,6 @@
     "name" : "READ"
   }, {
     "logicName" : "更新",
-    "name" : "UPDATE"
-  }, {
-    "logicName" : "更新",
     "mapPSDEName" : "SPACE",
     "mapPSDEOPPrivName" : "UPDATE",
     "getMapPSDER" : {
@@ -2189,6 +2180,9 @@
     },
     "name" : "UPDATE",
     "id" : "space__UPDATE"
+  }, {
+    "logicName" : "更新",
+    "name" : "UPDATE"
   } ],
   "codeName" : "stencil",
   "dEAPICodeName" : "stencil",

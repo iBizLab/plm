@@ -242,7 +242,7 @@
           "path" : "PSMODULES/Base/PSDATAENTITIES/department.json"
         },
         "masterOrder" : -1,
-        "masterRS" : 0,
+        "masterRS" : 16,
         "minorCodeName" : "departments",
         "getMinorPSDataEntity" : {
           "modelref" : true,
@@ -255,10 +255,16 @@
           "name" : "PARENT_ID",
           "codeName" : "Parent_id"
         },
+        "getPSPickupTextDEField" : {
+          "name" : "PNAME",
+          "codeName" : "pname"
+        },
         "pickupDEFName" : "PARENT_ID",
         "removeActionType" : -1,
         "removeOrder" : 0,
-        "serviceCodeName" : "department"
+        "serviceCodeName" : "department",
+        "enableFKey" : true,
+        "recursiveRS" : true
       },
       "getParentPSDETreeNode" : {
         "modelref" : true,
@@ -287,7 +293,7 @@
           "path" : "PSMODULES/Base/PSDATAENTITIES/department.json"
         },
         "masterOrder" : -1,
-        "masterRS" : 0,
+        "masterRS" : 16,
         "minorCodeName" : "departments",
         "getMinorPSDataEntity" : {
           "modelref" : true,
@@ -300,10 +306,16 @@
           "name" : "PARENT_ID",
           "codeName" : "Parent_id"
         },
+        "getPSPickupTextDEField" : {
+          "name" : "PNAME",
+          "codeName" : "pname"
+        },
         "pickupDEFName" : "PARENT_ID",
         "removeActionType" : -1,
         "removeOrder" : 0,
-        "serviceCodeName" : "department"
+        "serviceCodeName" : "department",
+        "enableFKey" : true,
+        "recursiveRS" : true
       },
       "getParentPSDETreeNode" : {
         "modelref" : true,
@@ -556,9 +568,25 @@
     }, {
       "counterMode" : 0,
       "dataSourceType" : "DEDATASET",
+      "getIdPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
       "maxSize" : -1,
       "name" : "角色(动态)",
       "nodeType" : "roles",
+      "getPSAppDEDataSet" : {
+        "modelref" : true,
+        "id" : "fetch_default"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/role.json"
+      },
+      "getTextPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      },
       "treeNodeType" : "DE",
       "hasPSDETreeNodeRSs" : false,
       "appendPNodeId" : false,
@@ -714,7 +742,7 @@
     "outputIconDefault" : true,
     "rootVisible" : false,
     "name" : "tree",
-    "modelid" : "FDFAB2E9-4832-4C1A-81BE-673DDAEEFAED",
+    "modelid" : "3916c749cacfd9ec36527a9e51339db7",
     "modeltype" : "PSDETREEVIEW"
   }, {
     "controlType" : "SEARCHBAR",
@@ -748,7 +776,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "user_pick_up_tree_view",
-  "getPSDEViewId" : "05A5E7AD-5BE1-483E-A3F3-7B2A1B43A92E",
+  "getPSDEViewId" : "6e68daf53a8d0bdea4ff13d750f68992",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEPICKUPTREEVIEW",
@@ -773,6 +801,29 @@
   "enableSearch" : true,
   "expandSearchForm" : true,
   "pickupMode" : true,
-  "modelid" : "c2ea6d27a768afae8a5b1080f291a655",
-  "modeltype" : "PSAPPDEVIEW"
+  "modelid" : "4aabea2a5c6cecd036f75dcaf89de817",
+  "modeltype" : "PSAPPDEVIEW",
+  "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "users",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "department",
+    "majorDEName" : "DEPARTMENT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/department.json"
+    },
+    "minorDECodeName" : "user",
+    "minorDEName" : "USER",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+    },
+    "name" : "DER1N_USER_DEPARTMENT_DEPARTMENT_ID",
+    "getParentPSAppDEField" : {
+      "name" : "DEPARTMENT_ID",
+      "codeName" : "department_id"
+    },
+    "rSMode" : 2
+  } ] ]
 }

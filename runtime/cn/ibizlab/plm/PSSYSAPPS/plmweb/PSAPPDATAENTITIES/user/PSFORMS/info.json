@@ -50,13 +50,13 @@
   "getGetPSControlAction" : {
     "modelref" : true,
     "id" : "load",
-    "actionName" : "Get",
+    "actionName" : "GetFull",
     "actionType" : "DEACTION",
     "dataAccessAction" : "READ",
     "name" : "load",
     "getPSAppDEMethod" : {
       "modelref" : true,
-      "id" : "get"
+      "id" : "get_full"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -235,6 +235,14 @@
     "getPSAppDEField" : {
       "name" : "ORGANIZATION_NAME",
       "codeName" : "organization_name"
+    }
+  }, {
+    "id" : "report_flag",
+    "hidden" : true,
+    "dataType" : 9,
+    "getPSAppDEField" : {
+      "name" : "REPORT_FLAG",
+      "codeName" : "report_flag"
     }
   }, {
     "id" : "id",
@@ -500,7 +508,7 @@
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "allowEmpty" : true,
+          "allowEmpty" : false,
           "showCaption" : true
         }, {
           "caption" : "职位",
@@ -509,7 +517,7 @@
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
           "enableCond" : 0,
-          "ignoreInput" : 0,
+          "ignoreInput" : 3,
           "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "title",
@@ -528,6 +536,7 @@
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
+          "convertToCodeItemText" : true,
           "showCaption" : true
         }, {
           "caption" : "工号",
@@ -554,7 +563,7 @@
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "allowEmpty" : true,
+          "allowEmpty" : false,
           "showCaption" : true
         }, {
           "caption" : "状态",
@@ -662,6 +671,32 @@
           },
           "allowEmpty" : true,
           "hidden" : true
+        }, {
+          "caption" : "统计",
+          "codeName" : "report_flag",
+          "dataType" : 9,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "report_flag",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "REPORT_FLAG",
+            "codeName" : "report_flag"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "report_flag"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true
         } ],
         "getPSLayout" : {
           "childColMD" : 24,
@@ -681,7 +716,6 @@
         "name" : "grouppanel1",
         "getPSDEFormDetails" : [ {
           "actionType" : "UIACTION",
-          "buttonStyle" : "DEFAULT",
           "getCapPSLanguageRes" : {
             "lanResTag" : "TBB.TEXT.*.SAVE"
           },
@@ -829,6 +863,6 @@
     }
   },
   "noTabHeader" : true,
-  "modelid" : "727E2EDE-29C8-4858-B7A0-854242A36FDA",
+  "modelid" : "373105246ab75bb37e17f56c5d7b3537",
   "modeltype" : "PSDEFORM_EDITFORM"
 }

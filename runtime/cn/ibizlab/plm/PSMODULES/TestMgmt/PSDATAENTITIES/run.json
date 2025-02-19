@@ -186,7 +186,7 @@
     "actionMode" : "SAVE",
     "actionType" : "BUILTIN",
     "codeName" : "Save",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDEACTIONS/Save.json",
     "logicName" : "Save",
     "name" : "Save",
@@ -236,7 +236,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "batch_save_run_history",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDEACTIONS/batch_save_run_history.json",
     "logicName" : "批设置执行结果",
     "name" : "batch_save_run_history",
@@ -263,7 +263,7 @@
     "actionMode" : "READ",
     "actionType" : "DELOGIC",
     "codeName" : "get_actual_workload",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDEACTIONS/get_actual_workload.json",
     "logicName" : "获取实际工时",
     "name" : "get_actual_workload",
@@ -524,7 +524,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "run_re_counters",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDEACTIONS/run_re_counters.json",
     "logicName" : "执行用例关联分页计数器",
     "name" : "run_re_counters",
@@ -550,7 +550,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "save_run_history",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDEACTIONS/save_run_history.json",
     "logicName" : "保存执行结果",
     "name" : "save_run_history",
@@ -577,7 +577,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "set_executor",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDEACTIONS/set_executor.json",
     "logicName" : "设置执行人",
     "name" : "set_executor",
@@ -5300,6 +5300,17 @@
     "uIAssistDEField" : true
   }, {
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[RUN_ATTACHMENT][结果附件]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[RUN_ATTACHMENT][结果附件]",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[RUN_ATTACHMENT][结果附件]移动端默认",
       "getPSDEFFormItem" : {
@@ -5312,17 +5323,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[RUN_ATTACHMENT][结果附件]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "HIDDEN",
-        "name" : "[RUN_ATTACHMENT][结果附件]",
-        "stringLength" : 1048576,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -5600,25 +5600,6 @@
       "standardColumnName" : "`LIBRARY_IDENTIFIER`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[LIBRARY_IDENTIFIER][测试库编号]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[LIBRARY_IDENTIFIER][测试库编号]",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan.json"
-        },
-        "stringLength" : 15,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[LIBRARY_IDENTIFIER][测试库编号]移动端默认",
       "getPSDEFFormItem" : {
@@ -5639,6 +5620,25 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[LIBRARY_IDENTIFIER][测试库编号]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[LIBRARY_IDENTIFIER][测试库编号]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan.json"
+        },
+        "stringLength" : 15,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -5708,6 +5708,17 @@
       "standardColumnName" : "`BI_PLAN_NAME`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[BI_PLAN_NAME][bi测试计划名称]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[BI_PLAN_NAME][bi测试计划名称]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[BI_PLAN_NAME][bi测试计划名称]移动端默认",
       "getPSDEFFormItem" : {
@@ -5720,17 +5731,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[BI_PLAN_NAME][bi测试计划名称]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[BI_PLAN_NAME][bi测试计划名称]",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -5855,17 +5855,6 @@
       "standardColumnName" : "`COMMENT_COUNT`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[COMMENT_COUNT][评论数]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[COMMENT_COUNT][评论数]",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[COMMENT_COUNT][评论数]移动端默认",
       "getPSDEFFormItem" : {
@@ -5878,6 +5867,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[COMMENT_COUNT][评论数]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[COMMENT_COUNT][评论数]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -5930,24 +5930,6 @@
       "standardColumnName" : "`LIBRARY_IS_DELETED`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[LIBRARY_IS_DELETED][测试库是否删除]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[LIBRARY_IS_DELETED][测试库是否删除]",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
-        },
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[LIBRARY_IS_DELETED][测试库是否删除]移动端默认",
       "getPSDEFFormItem" : {
@@ -5967,6 +5949,24 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[LIBRARY_IS_DELETED][测试库是否删除]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[LIBRARY_IS_DELETED][测试库是否删除]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+        },
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -6027,6 +6027,24 @@
       "standardColumnName" : "`LIBRARY_IS_ARCHIVED`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[LIBRARY_IS_ARCHIVED][测试库是否归档]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[LIBRARY_IS_ARCHIVED][测试库是否归档]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+        },
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[LIBRARY_IS_ARCHIVED][测试库是否归档]移动端默认",
       "getPSDEFFormItem" : {
@@ -6046,24 +6064,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[LIBRARY_IS_ARCHIVED][测试库是否归档]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[LIBRARY_IS_ARCHIVED][测试库是否归档]",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
-        },
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -6200,16 +6200,6 @@
       "valueOP" : "LTANDEQ"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[RECENT_CREATE_DAYS][最近创建日期]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[RECENT_CREATE_DAYS][最近创建日期]",
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[RECENT_CREATE_DAYS][最近创建日期]移动端默认",
       "getPSDEFFormItem" : {
@@ -6221,6 +6211,16 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[RECENT_CREATE_DAYS][最近创建日期]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[RECENT_CREATE_DAYS][最近创建日期]",
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -8105,39 +8105,6 @@
       } ],
       "topPos" : -100
     }, {
-      "codeName" : "DEACTION6",
-      "getDstPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run_history/PSDEACTIONS/Create.json"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "run_history"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run_history.json"
-      },
-      "leftPos" : 600,
-      "logicNodeType" : "DEACTION",
-      "name" : "创建执行结果",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM6"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION6"
-        }
-      } ],
-      "getRetPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "run_history"
-      },
-      "topPos" : -110
-    }, {
       "codeName" : "END3",
       "leftPos" : 1425,
       "logicNodeType" : "END",
@@ -8287,6 +8254,39 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 68
+    }, {
+      "codeName" : "DEACTION6",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run_history/PSDEACTIONS/Create.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "run_history"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run_history.json"
+      },
+      "leftPos" : 600,
+      "logicNodeType" : "DEACTION",
+      "name" : "创建执行结果",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM6"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION6"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "run_history"
+      },
+      "topPos" : -110
     }, {
       "codeName" : "PREPAREPARAM6",
       "leftPos" : 780,
@@ -15161,20 +15161,6 @@
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "建立",
-    "mapPSDEName" : "TEST_CASE",
-    "mapPSDEOPPrivName" : "CREATE",
-    "getMapPSDER" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDERS/DER1N_RUN_TEST_CASE_CASE_ID.json"
-    },
-    "getMapPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
-    },
-    "name" : "CREATE",
-    "id" : "test_case__CREATE"
-  }, {
-    "logicName" : "建立",
     "mapPSDEName" : "TEST_PLAN",
     "mapPSDEOPPrivName" : "CREATE",
     "getMapPSDER" : {
@@ -15189,10 +15175,21 @@
     "id" : "test_plan__CREATE"
   }, {
     "logicName" : "建立",
-    "name" : "CREATE"
+    "mapPSDEName" : "TEST_CASE",
+    "mapPSDEOPPrivName" : "CREATE",
+    "getMapPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDERS/DER1N_RUN_TEST_CASE_CASE_ID.json"
+    },
+    "getMapPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+    },
+    "name" : "CREATE",
+    "id" : "test_case__CREATE"
   }, {
-    "logicName" : "删除",
-    "name" : "DELETE"
+    "logicName" : "建立",
+    "name" : "CREATE"
   }, {
     "logicName" : "删除",
     "mapPSDEName" : "TEST_PLAN",
@@ -15207,6 +15204,9 @@
     },
     "name" : "DELETE",
     "id" : "test_plan__DELETE"
+  }, {
+    "logicName" : "删除",
+    "name" : "DELETE"
   }, {
     "logicName" : "删除",
     "mapPSDEName" : "TEST_CASE",
@@ -15226,20 +15226,6 @@
     "name" : "READ"
   }, {
     "logicName" : "读取",
-    "mapPSDEName" : "TEST_CASE",
-    "mapPSDEOPPrivName" : "READ",
-    "getMapPSDER" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDERS/DER1N_RUN_TEST_CASE_CASE_ID.json"
-    },
-    "getMapPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
-    },
-    "name" : "READ",
-    "id" : "test_case__READ"
-  }, {
-    "logicName" : "读取",
     "mapPSDEName" : "TEST_PLAN",
     "mapPSDEOPPrivName" : "READ",
     "getMapPSDER" : {
@@ -15253,22 +15239,22 @@
     "name" : "READ",
     "id" : "test_plan__READ"
   }, {
-    "logicName" : "更新",
-    "name" : "UPDATE"
-  }, {
-    "logicName" : "更新",
-    "mapPSDEName" : "TEST_PLAN",
-    "mapPSDEOPPrivName" : "UPDATE",
+    "logicName" : "读取",
+    "mapPSDEName" : "TEST_CASE",
+    "mapPSDEOPPrivName" : "READ",
     "getMapPSDER" : {
       "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDERS/DER1N_RUN_TEST_PLAN_PLAN_ID.json"
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDERS/DER1N_RUN_TEST_CASE_CASE_ID.json"
     },
     "getMapPSDataEntity" : {
       "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan.json"
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
     },
-    "name" : "UPDATE",
-    "id" : "test_plan__UPDATE"
+    "name" : "READ",
+    "id" : "test_case__READ"
+  }, {
+    "logicName" : "更新",
+    "name" : "UPDATE"
   }, {
     "logicName" : "更新",
     "mapPSDEName" : "TEST_CASE",
@@ -15283,6 +15269,20 @@
     },
     "name" : "UPDATE",
     "id" : "test_case__UPDATE"
+  }, {
+    "logicName" : "更新",
+    "mapPSDEName" : "TEST_PLAN",
+    "mapPSDEOPPrivName" : "UPDATE",
+    "getMapPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDERS/DER1N_RUN_TEST_PLAN_PLAN_ID.json"
+    },
+    "getMapPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan.json"
+    },
+    "name" : "UPDATE",
+    "id" : "test_plan__UPDATE"
   } ],
   "getAllPSDEReports" : [ {
     "codeName" : "bi_report",
@@ -15393,16 +15393,16 @@
     "utilType" : "DATAAUDIT"
   } ],
   "getAllPSModelDatas" : [ {
-    "codeName" : "daily_tendencies_option_view",
-    "logicName" : "每日执行用例趋势选项操作视图（测试）",
-    "name" : "每日执行用例趋势选项操作视图（测试）",
-    "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "EditView2",
     "logicName" : "执行用例实体编辑视图（左右关系）",
     "name" : "执行用例实体编辑视图（左右关系）",
     "realModelSubType" : "DEEDITVIEW2",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "daily_test_report_view",
+    "logicName" : "每日测试次数统计",
+    "name" : "每日测试次数统计",
+    "realModelSubType" : "DECHARTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "pick_up_grid_view",
@@ -15411,16 +15411,35 @@
     "realModelSubType" : "DEPICKUPGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "members_distribution_option_view",
+    "logicName" : "成员执行情况选项操作视图",
+    "name" : "成员执行情况选项操作视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "set_status_option_view",
     "logicName" : "设置执行结果视图",
     "name" : "设置执行结果视图",
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "priority_distributions_report_view",
-    "logicName" : "执行用例优先级分布",
-    "name" : "执行用例优先级分布",
-    "realModelSubType" : "DECHARTVIEW",
+    "codeName" : "RedirectView",
+    "logicName" : "执行用例实体数据重定向视图",
+    "modelTag" : "REDIRECTVIEW",
+    "name" : "执行用例实体数据重定向视图",
+    "realModelSubType" : "DEREDIRECTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "run_re_run_history_edit_view",
+    "logicName" : "执行用例关联执行结果编辑视图",
+    "name" : "执行用例关联执行结果编辑视图",
+    "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "all_grid_view",
+    "logicName" : "执行用例表格视图（全部用例）",
+    "name" : "执行用例表格视图（全部用例）",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mob_run_re_history_edit_view",
@@ -15435,66 +15454,16 @@
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mpick_up_view",
-    "logicName" : "执行用例实体数据多项选择视图",
-    "modelTag" : "MPICKUPVIEW",
-    "name" : "执行用例实体数据多项选择视图",
-    "realModelSubType" : "DEMPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "RedirectView",
-    "logicName" : "执行用例实体数据重定向视图",
-    "modelTag" : "REDIRECTVIEW",
-    "name" : "执行用例实体数据重定向视图",
-    "realModelSubType" : "DEREDIRECTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "daily_tendencies_report_view",
-    "logicName" : "每日执行用例趋势",
-    "name" : "每日执行用例趋势",
-    "realModelSubType" : "DECHARTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "drill_detail_grid_view",
-    "logicName" : "执行用例反查表格视图",
-    "name" : "执行用例反查表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "comparative_analysis_report_view",
-    "logicName" : "测试用例计划对比分析",
-    "name" : "测试用例计划对比分析",
-    "realModelSubType" : "DECHARTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "all_grid_view",
-    "logicName" : "执行用例表格视图（全部用例）",
-    "name" : "执行用例表格视图（全部用例）",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "setting_actual_executor_view",
     "logicName" : "设置执行人视图",
     "name" : "设置执行人视图",
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "results_report_view",
-    "logicName" : "执行结果分布",
-    "name" : "执行结果分布",
-    "realModelSubType" : "DECHARTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "daily_test_option_view",
-    "logicName" : "每日测试次数统计选项操作视图（测试）",
-    "name" : "每日测试次数统计选项操作视图（测试）",
+    "codeName" : "daily_tendencies_option_view",
+    "logicName" : "每日执行用例趋势选项操作视图（测试）",
+    "name" : "每日执行用例趋势选项操作视图（测试）",
     "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "run_mob_md_view",
-    "logicName" : "执行用例移动端多数据视图",
-    "name" : "执行用例移动端多数据视图",
-    "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mob_edit_view",
@@ -15503,10 +15472,46 @@
     "realModelSubType" : "DEMOBEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "comparative_analysis_report_view",
+    "logicName" : "测试用例计划对比分析",
+    "name" : "测试用例计划对比分析",
+    "realModelSubType" : "DECHARTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "members_distribution_report_view",
+    "logicName" : "执行用例成员分布报表",
+    "name" : "执行用例成员分布报表",
+    "realModelSubType" : "DECHARTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "results_report_view",
+    "logicName" : "执行结果分布",
+    "name" : "执行结果分布",
+    "realModelSubType" : "DECHARTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "filter_grid_view",
+    "logicName" : "执行用例筛选器表格视图",
+    "name" : "执行用例筛选器表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "run_mob_md_view",
+    "logicName" : "执行用例移动端多数据视图",
+    "name" : "执行用例移动端多数据视图",
+    "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "history_grid_view",
     "logicName" : "执行用例表格视图（执行历史）",
     "name" : "执行用例表格视图（执行历史）",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "daily_tendencies_report_view",
+    "logicName" : "每日执行用例趋势",
+    "name" : "每日执行用例趋势",
+    "realModelSubType" : "DECHARTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "main_view",
@@ -15516,16 +15521,11 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "members_distribution_option_view",
-    "logicName" : "成员执行情况选项操作视图",
-    "name" : "成员执行情况选项操作视图",
-    "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "run_re_run_history_edit_view",
-    "logicName" : "执行用例关联执行结果编辑视图",
-    "name" : "执行用例关联执行结果编辑视图",
-    "realModelSubType" : "DEEDITVIEW",
+    "codeName" : "pick_up_view",
+    "logicName" : "执行用例实体数据选择视图",
+    "modelTag" : "PICKUPVIEW",
+    "name" : "执行用例实体数据选择视图",
+    "realModelSubType" : "DEPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "tree_exp_view",
@@ -15534,23 +15534,16 @@
     "realModelSubType" : "DETREEEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "daily_test_report_view",
-    "logicName" : "每日测试次数统计",
-    "name" : "每日测试次数统计",
+    "codeName" : "priority_distributions_report_view",
+    "logicName" : "执行用例优先级分布",
+    "name" : "执行用例优先级分布",
     "realModelSubType" : "DECHARTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "pick_up_view",
-    "logicName" : "执行用例实体数据选择视图",
-    "modelTag" : "PICKUPVIEW",
-    "name" : "执行用例实体数据选择视图",
-    "realModelSubType" : "DEPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "members_distribution_report_view",
-    "logicName" : "执行用例成员分布报表",
-    "name" : "执行用例成员分布报表",
-    "realModelSubType" : "DECHARTVIEW",
+    "codeName" : "drill_detail_grid_view",
+    "logicName" : "执行用例反查表格视图",
+    "name" : "执行用例反查表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "edit_view",
@@ -15559,16 +15552,11 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "filter_grid_view",
-    "logicName" : "执行用例筛选器表格视图",
-    "name" : "执行用例筛选器表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "Implementationresults_option_view",
-    "logicName" : "执行结果选项操作视图",
-    "name" : "执行结果选项操作视图",
-    "realModelSubType" : "DEOPTVIEW",
+    "codeName" : "mpick_up_view",
+    "logicName" : "执行用例实体数据多项选择视图",
+    "modelTag" : "MPICKUPVIEW",
+    "name" : "执行用例实体数据多项选择视图",
+    "realModelSubType" : "DEMPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "GridView",
@@ -15578,31 +15566,22 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "Implementationresults_option_view",
+    "logicName" : "执行结果选项操作视图",
+    "name" : "执行结果选项操作视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "daily_test_option_view",
+    "logicName" : "每日测试次数统计选项操作视图（测试）",
+    "name" : "每日测试次数统计选项操作视图（测试）",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "setting_status_form",
     "logicName" : "设置执行结果_表单",
     "modelTag2" : "0",
     "name" : "设置执行结果_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "Usr04307192_Form",
-    "logicName" : "成员执行情况选项操作视图_表单",
-    "modelTag2" : "0",
-    "name" : "成员执行情况选项操作视图_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "ImplementationResults_Form",
-    "logicName" : "执行结果分布_表单",
-    "modelTag2" : "0",
-    "name" : "执行结果分布_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "Usr04302223_Form",
-    "logicName" : "执行结果选项操作视图_表单",
-    "modelTag2" : "0",
-    "name" : "执行结果选项操作视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -15613,31 +15592,24 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
+    "codeName" : "ImplementationResults_Form",
+    "logicName" : "执行结果分布_表单",
+    "modelTag2" : "0",
+    "name" : "执行结果分布_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_run_re_history_Form",
+    "logicName" : "执行用例关联执行结果移动端_表单",
+    "modelTag2" : "1",
+    "name" : "执行用例关联执行结果移动端_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "Main",
     "logicName" : "主编辑表单",
     "modelTag2" : "0",
     "name" : "主编辑表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "update_run_status_form",
-    "logicName" : "设置执行结果",
-    "modelTag2" : "0",
-    "name" : "设置执行结果",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "mob_edit_view_Form",
-    "logicName" : "执行用例移动端编辑视图_表单",
-    "modelTag2" : "1",
-    "name" : "执行用例移动端编辑视图_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "Usr04261930_Form",
-    "logicName" : "每日执行结果统计选项操作视图（测试）_表单",
-    "modelTag2" : "0",
-    "name" : "每日执行结果统计选项操作视图（测试）_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -15648,10 +15620,38 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "mob_run_re_history_Form",
-    "logicName" : "执行用例关联执行结果移动端_表单",
+    "codeName" : "mob_edit_view_Form",
+    "logicName" : "执行用例移动端编辑视图_表单",
     "modelTag2" : "1",
-    "name" : "执行用例关联执行结果移动端_表单",
+    "name" : "执行用例移动端编辑视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "Usr04302223_Form",
+    "logicName" : "执行结果选项操作视图_表单",
+    "modelTag2" : "0",
+    "name" : "执行结果选项操作视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "update_run_status_form",
+    "logicName" : "设置执行结果",
+    "modelTag2" : "0",
+    "name" : "设置执行结果",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "Usr04307192_Form",
+    "logicName" : "成员执行情况选项操作视图_表单",
+    "modelTag2" : "0",
+    "name" : "成员执行情况选项操作视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "Usr04261930_Form",
+    "logicName" : "每日执行结果统计选项操作视图（测试）_表单",
+    "modelTag2" : "0",
+    "name" : "每日执行结果统计选项操作视图（测试）_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {

@@ -27,12 +27,29 @@ package cn.ibizlab.plm.base.logic.relationlogic.test_case_del_relation_bug;
             then
             end
 
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam1"
+            ruleflow-group "relationtest_case_del_relation_bugdebugparam1"
+            when
+            then
+                        update(relationtest_case_del_relation_bugdefault);//更新fact中变量值
+                        update(relationtest_case_del_relation_bugbug_relation_run);//更新fact中变量值
+                        update(relationtest_case_del_relation_bugforward_relation_obj);//更新fact中变量值
+                        update(relationtest_case_del_relation_bugrelation_for_temp_obj);//更新fact中变量值
+                        update(relationtest_case_del_relation_bugreverse_relation_obj);//更新fact中变量值
+                        update(relationtest_case_del_relation_bugrun_relation_bug);//更新fact中变量值
+                        update(relationtest_case_del_relation_bugrun_relation_filter);//更新fact中变量值
+                        update(relationtest_case_del_relation_bugrun_relation_page);//更新fact中变量值
+            end
+
             //逻辑处理节点[填充关联对象的主要关联属性]
             rule "prepareparam1"
             ruleflow-group "relationtest_case_del_relation_bugprepareparam1"
             when
             then
                             relationtest_case_del_relation_bugforward_relation_obj.set("principalid",relationtest_case_del_relation_bugdefault.get("principalid"));
+                            relationtest_case_del_relation_bugforward_relation_obj.set("principaltype",relationtest_case_del_relation_bugdefault.get("principaltype"));
+                            relationtest_case_del_relation_bugreverse_relation_obj.set("principaltype",relationtest_case_del_relation_bugdefault.get("principaltype"));
                             relationtest_case_del_relation_bugreverse_relation_obj.set("targetid",relationtest_case_del_relation_bugdefault.get("principalid"));
                             relationtest_case_del_relation_bugreverse_relation_obj.set("principalid",relationtest_case_del_relation_bugdefault.get("targetid"));
                             relationtest_case_del_relation_bugforward_relation_obj.set("targetid",relationtest_case_del_relation_bugdefault.get("targetid"));

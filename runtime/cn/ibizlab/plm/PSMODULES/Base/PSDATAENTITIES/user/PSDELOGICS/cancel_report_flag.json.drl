@@ -20,6 +20,15 @@ package cn.ibizlab.plm.base.logic.userlogic.cancel_report_flag;
             then
             end
 
+            //逻辑处理节点[获取用户全量信息]
+            rule "deaction2"
+            ruleflow-group "usercancel_report_flagdeaction2"
+            when
+            then
+                        userservice.getFull(usercancel_report_flagdefault);
+                        update(usercancel_report_flagdefault);//更新fact中变量值
+            end
+
             //逻辑处理节点[设置用户参数]
             rule "prepareparam1"
             ruleflow-group "usercancel_report_flagprepareparam1"

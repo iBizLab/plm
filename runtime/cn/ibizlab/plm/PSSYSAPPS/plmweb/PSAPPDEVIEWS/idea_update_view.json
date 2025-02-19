@@ -23,7 +23,6 @@
     "name" : "engine"
   } ],
   "getPSControls" : [ {
-    "autoSaveMode" : 1,
     "codeName" : "update_form",
     "controlType" : "FORM",
     "getCreatePSControlAction" : {
@@ -174,7 +173,6 @@
     },
     "getPSControlParam" : {
       "autoLoad" : true,
-      "enableAutoSave" : true,
       "showBusyIndicator" : true,
       "id" : "FORM"
     },
@@ -316,9 +314,9 @@
             "getPSEditor" : {
               "editorHeight" : 600.0,
               "editorParams" : {
-                "SAVEINTERVAL" : "3000",
                 "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
                 "MAXHEIGHT" : "600",
+                "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
                 "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
                 "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
                 "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
@@ -326,7 +324,6 @@
                 "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
                 "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
                 "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
-                "EMITMODE" : "AUTOMATIC",
                 "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
                 "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
                 "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
@@ -1016,11 +1013,74 @@
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
       }
     },
-    "enableAutoSave" : true,
     "noTabHeader" : true,
     "name" : "form",
-    "modelid" : "C528E568-C725-49E4-91C2-9457793E6FF2",
+    "modelid" : "7196107c16093c7cebf7761fa64db43b",
     "modeltype" : "PSDEFORM_EDITFORM"
+  }, {
+    "codeName" : "update_view_toolbar",
+    "controlType" : "TOOLBAR",
+    "logicName" : "保存需求",
+    "name" : "toolbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
+    },
+    "getPSControlParam" : {
+      "id" : "TOOLBAR"
+    },
+    "getPSDEToolbarItems" : [ {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "TBB.TEXT.EDITVIEW.SAVEANDCLOSE"
+      },
+      "caption" : "保存",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction1",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "toolbar_deuiaction1"
+      },
+      "getPSSysImage" : {
+        "glyph" : "xf0c7@FontAwesome",
+        "cssClass" : "fa fa-save"
+      },
+      "getPSUIAction" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "TBB.TEXT.EDITVIEW.SAVEANDCLOSE"
+        },
+        "caption" : "保存并关闭",
+        "codeName" : "SaveAndExit",
+        "dataAccessAction" : "SUBDATA",
+        "fullCodeName" : "SaveAndExit",
+        "name" : "编辑界面_保存并退出操作",
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "SUBDATA"
+        },
+        "getPSSysImage" : {
+          "cssClass" : "sx-tb-saveandclose"
+        },
+        "predefinedType" : "EDITVIEW_SAVEANDEXITACTION",
+        "timeout" : 60000,
+        "getTooltipPSLanguageRes" : {
+          "lanResTag" : "TBB.TOOLTIP.EDITVIEW.SAVEANDCLOSE"
+        },
+        "uIActionMode" : "SYS",
+        "uIActionTag" : "SaveAndExit",
+        "uIActionType" : "DEUIACTION"
+      },
+      "tooltip" : "保存",
+      "getTooltipPSLanguageRes" : {
+        "lanResTag" : "TBB.TOOLTIP.EDITVIEW.SAVEANDCLOSE"
+      },
+      "showCaption" : true,
+      "showIcon" : true
+    } ],
+    "xDataControlName" : "form",
+    "modelid" : "2d2f26de58eba52ec7dafb1fe8d1f724",
+    "modeltype" : "PSDETOOLBAR"
   }, {
     "codeName" : "update_view_datainfobar",
     "controlType" : "DATAINFOBAR",
@@ -1047,7 +1107,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "update_view",
-  "getPSDEViewId" : "A2E2FF8C-444B-4F7D-90D8-EAF4B87E749C",
+  "getPSDEViewId" : "3c0262bf42105e1a9fff190cf8a3a5d3",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEEDITVIEW",
@@ -1069,7 +1129,7 @@
   "xDataControlName" : "form",
   "enableDP" : true,
   "showDataInfoBar" : true,
-  "modelid" : "ee14195578ed1bb93bbc07c8e2dc8de6",
+  "modelid" : "edbe2bd526fa47c6a1838bef3a020a0d",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

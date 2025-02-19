@@ -318,6 +318,55 @@
       "type" : "DTOS"
     },
     "viewLevel" : 0
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/favorite/PSDEDATAQUERIES/my_favorite/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "my_favorite",
+    "logicName" : "我的收藏",
+    "name" : "my_favorite",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/favorite.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "FAVORITE",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "srfpersonid",
+          "fieldName" : "CREATE_MAN",
+          "name" : "(CREATE_MAN) 等于(=) 用户上下文 srfpersonid",
+          "getPSDEField" : {
+            "name" : "CREATE_MAN",
+            "codeName" : "create_man"
+          },
+          "getPSVARTypeId" : "SESSIONCONTEXT"
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "My_favoriteInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "favorite_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "My_favoriteResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "favorite_dto"
+      },
+      "type" : "DTOS"
+    }
   } ],
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
@@ -348,6 +397,32 @@
       "type" : "PAGE"
     },
     "defaultMode" : true,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "my_favorite",
+    "logicName" : "我的收藏",
+    "name" : "my_favorite",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "my_favorite"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "My_favoriteInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "favorite_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "My_favoriteResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "favorite_dto"
+      },
+      "type" : "PAGE"
+    },
     "enableBackend" : true,
     "enableFront" : true
   } ],
@@ -1366,8 +1441,56 @@
     "userDRAction" : "READ",
     "allData" : true,
     "systemReserved" : true
+  }, {
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/favorite/PSDEUSERROLES/USER_RW.json",
+    "name" : "我的收藏（读写）",
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "my_favorite"
+    },
+    "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "CREATE",
+      "name" : "CREATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "CREATE"
+      }
+    }, {
+      "dataAccessAction" : "UPDATE",
+      "name" : "UPDATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "UPDATE"
+      }
+    }, {
+      "dataAccessAction" : "DELETE",
+      "name" : "DELETE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "DELETE"
+      }
+    }, {
+      "dataAccessAction" : "READ",
+      "name" : "READ",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ"
+      }
+    } ],
+    "roleTag" : "USER_RW",
+    "userCat" : "CAT1",
+    "userDRAction" : "READ",
+    "enableUserDR" : true,
+    "systemReserved" : true
   } ],
   "getAllPSModelDatas" : [ {
+    "codeName" : "pick_up_view",
+    "logicName" : "收藏实体数据选择视图",
+    "modelTag" : "PICKUPVIEW",
+    "name" : "收藏实体数据选择视图",
+    "realModelSubType" : "DEPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "EditView2",
     "logicName" : "收藏实体编辑视图（左右关系）",
     "name" : "收藏实体编辑视图（左右关系）",
@@ -1412,13 +1535,6 @@
     "modelTag" : "MPICKUPVIEW",
     "name" : "收藏实体数据多项选择视图",
     "realModelSubType" : "DEMPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "pick_up_view",
-    "logicName" : "收藏实体数据选择视图",
-    "modelTag" : "PICKUPVIEW",
-    "name" : "收藏实体数据选择视图",
-    "realModelSubType" : "DEPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "Main",

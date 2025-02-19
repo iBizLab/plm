@@ -24,11 +24,11 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseget_library_memberprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="获取测试库ID并设置过滤参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseget_library_memberdedataset3" id="dedataset3" implementation="http://www.jboss.org/drools/rule" name="查询当前用户是否为测试库成员"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseget_library_memberprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="绑定用户数据到for_obj"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseget_library_memberrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="只读权限"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseget_library_memberend6" id="end6" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end6_end" name="end"/>
                         <sequenceFlow id="end6_end_line" sourceRef="end6" targetRef="end6_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseget_library_memberprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="空"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseget_library_memberrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="只读权限"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseget_library_memberrawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="非只读权限"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseget_library_memberrawsfcode4" id="rawsfcode4" implementation="http://www.jboss.org/drools/rule" name="设置只读权限"/>
                     <sequenceFlow id="begin_prepareparam3" sourceRef="begin" targetRef="prepareparam3">
@@ -101,6 +101,8 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_end6" sourceRef="rawsfcode1" targetRef="end6">
+                    </sequenceFlow>
                     <sequenceFlow id="gateway-prepareparam3_rawsfcode4" sourceRef="gateway-prepareparam3" targetRef="rawsfcode4">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $test_caseget_library_memberdefault:test_case();
@@ -122,8 +124,6 @@
                                 eval((RuleUtils.test($test_caseget_library_memberdefault.get("isDeleted"),"EQ","0"))&&(RuleUtils.test($test_caseget_library_memberdefault.get("isArchived"),"EQ","0")))
                                 ]]>
                             </conditionExpression>
-                    </sequenceFlow>
-                    <sequenceFlow id="rawsfcode1_end6" sourceRef="rawsfcode1" targetRef="end6">
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode2_end6" sourceRef="rawsfcode2" targetRef="end6">
                     </sequenceFlow>

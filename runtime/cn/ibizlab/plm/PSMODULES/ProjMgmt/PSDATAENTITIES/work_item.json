@@ -414,7 +414,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "change_assignee",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/change_assignee.json",
     "logicName" : "分配负责人",
     "name" : "change_assignee",
@@ -468,7 +468,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "change_state",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/change_state.json",
     "logicName" : "变更状态",
     "name" : "change_state",
@@ -495,7 +495,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "change_time",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/change_time.json",
     "logicName" : "修改时间",
     "name" : "change_time",
@@ -577,7 +577,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "copy",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/copy.json",
     "logicName" : "复制",
     "name" : "copy",
@@ -918,10 +918,10 @@
     }
   }, {
     "actionHolder" : 1,
-    "actionMode" : "GETDRAFT",
+    "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "move_work_item",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/move_work_item.json",
     "logicName" : "移动工作项",
     "name" : "move_work_item",
@@ -935,16 +935,13 @@
     },
     "getPSDEActionReturn" : {
       "name" : "Move_work_itemResult",
-      "getPSDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "work_item_dto"
-      },
-      "type" : "DTO"
+      "type" : "VOID"
     },
     "getPSDELogic" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDELOGICS/move_work_item.json"
     },
+    "enableAudit" : true,
     "enableFront" : false
   }, {
     "actionHolder" : 2,
@@ -1090,7 +1087,7 @@
     "actionMode" : "GETDRAFT",
     "actionType" : "DELOGIC",
     "codeName" : "resource_member_setting",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/resource_member_setting.json",
     "logicName" : "资源成员设置",
     "name" : "resource_member_setting",
@@ -1147,7 +1144,7 @@
     "actionMode" : "GETDRAFT",
     "actionType" : "DELOGIC",
     "codeName" : "set_default_entry",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/set_default_entry.json",
     "logicName" : "选择看板后填充默认看板栏",
     "name" : "set_default_entry",
@@ -1177,7 +1174,7 @@
     "actionMode" : "GETDRAFT",
     "actionType" : "DELOGIC",
     "codeName" : "set_type_bug",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/set_type_bug.json",
     "logicName" : "设置缺陷类型",
     "name" : "set_type_bug",
@@ -1207,7 +1204,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "shift_in_kanban",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/shift_in_kanban.json",
     "logicName" : "移入看板",
     "name" : "shift_in_kanban",
@@ -1342,7 +1339,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "work_item_re_counters",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/work_item_re_counters.json",
     "logicName" : "工作项关联分页计数器",
     "name" : "work_item_re_counters",
@@ -1422,7 +1419,7 @@
     "actionMode" : "READ",
     "actionType" : "DELOGIC",
     "codeName" : "work_item_type_id",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/work_item_type_id.json",
     "logicName" : "获取工作项类型",
     "name" : "work_item_type_id",
@@ -1639,6 +1636,9 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEDRITEMS/UsrDRItem0103071430.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEDRITEMS/UsrDRItem0106883973.json"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEDRITEMS/UsrDRItem0119093341.json"
@@ -6647,7 +6647,23 @@
         "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
       },
       "joinType" : "MAIN",
-      "name" : "WORK_ITEM"
+      "name" : "WORK_ITEM",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "NOTEQ",
+          "condType" : "SINGLE",
+          "condValue" : "1",
+          "fieldName" : "IS_DELETED",
+          "name" : "(IS_DELETED) 不等于(<>) 1",
+          "getPSDEField" : {
+            "name" : "IS_DELETED",
+            "codeName" : "is_deleted"
+          }
+        } ]
+      }
     },
     "getPSDEDataQueryInput" : {
       "name" : "Relation_work_itemInput",
@@ -13282,30 +13298,6 @@
       "array" : true
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "UsrUIMode0924406389",
-      "name" : "移动端动态状态",
-      "getPSDEFFormItem" : {
-        "codeName" : "UsrUIMode0924406389",
-        "editorParams" : {
-          "srfnavparam.state" : "%state%",
-          "srfnavparam.project_id" : "%project_id%",
-          "srfnavparam.work_item_type_id" : "%work_item_type_id%",
-          "alwaysLoad" : "true"
-        },
-        "editorType" : "MOBDROPDOWNLIST",
-        "name" : "移动端动态状态",
-        "originCaption" : "状态",
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_state.json"
-        },
-        "stringLength" : 100,
-        "uIMode" : "CUSTOM",
-        "allowEmpty" : false,
-        "needCodeListConfig" : true
-      },
-      "type" : "CUSTOM"
-    }, {
       "codeName" : "UsrUIMode0301708875",
       "memo" : "通过主状态预定义代码表附加参数镜像动态的代码表计算",
       "name" : "动态状态",
@@ -13366,6 +13358,30 @@
         "needCodeListConfig" : true
       },
       "type" : "DEFAULT"
+    }, {
+      "codeName" : "UsrUIMode0924406389",
+      "name" : "移动端动态状态",
+      "getPSDEFFormItem" : {
+        "codeName" : "UsrUIMode0924406389",
+        "editorParams" : {
+          "srfnavparam.state" : "%state%",
+          "srfnavparam.project_id" : "%project_id%",
+          "srfnavparam.work_item_type_id" : "%work_item_type_id%",
+          "alwaysLoad" : "true"
+        },
+        "editorType" : "MOBDROPDOWNLIST",
+        "name" : "移动端动态状态",
+        "originCaption" : "状态",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_state.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "CUSTOM",
+        "allowEmpty" : false,
+        "needCodeListConfig" : true
+      },
+      "type" : "CUSTOM"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -16069,17 +16085,6 @@
       "standardColumnName" : "`COMMENT_COUNT`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[COMMENT_COUNT][评论数]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[COMMENT_COUNT][评论数]",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[COMMENT_COUNT][评论数]移动端默认",
       "getPSDEFFormItem" : {
@@ -16092,6 +16097,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[COMMENT_COUNT][评论数]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[COMMENT_COUNT][评论数]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -16757,17 +16773,6 @@
     "uIAssistDEField" : true
   }, {
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[CHOOSE_VERSION_ID][选择版本标识]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[CHOOSE_VERSION_ID][选择版本标识]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[CHOOSE_VERSION_ID][选择版本标识]移动端默认",
       "getPSDEFFormItem" : {
@@ -16780,6 +16785,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[CHOOSE_VERSION_ID][选择版本标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[CHOOSE_VERSION_ID][选择版本标识]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -16823,6 +16839,17 @@
     "uIAssistDEField" : true
   }, {
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[CHOOSE_VERSION_NAME][选择版本名称]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[CHOOSE_VERSION_NAME][选择版本名称]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[CHOOSE_VERSION_NAME][选择版本名称]移动端默认",
       "getPSDEFFormItem" : {
@@ -16835,17 +16862,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[CHOOSE_VERSION_NAME][选择版本名称]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[CHOOSE_VERSION_NAME][选择版本名称]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -16889,6 +16905,17 @@
     "uIAssistDEField" : true
   }, {
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[ATTENTIONS_IMP][关注人]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[ATTENTIONS_IMP][关注人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[ATTENTIONS_IMP][关注人]移动端默认",
       "getPSDEFFormItem" : {
@@ -16901,17 +16928,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[ATTENTIONS_IMP][关注人]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[ATTENTIONS_IMP][关注人]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -17079,25 +17095,6 @@
       "standardColumnName" : "`RELEASE_STATUS`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[RELEASE_STATUS][发布状态]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[RELEASE_STATUS][发布状态]",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
-        },
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[RELEASE_STATUS][发布状态]移动端默认",
       "getPSDEFFormItem" : {
@@ -17118,6 +17115,25 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[RELEASE_STATUS][发布状态]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[RELEASE_STATUS][发布状态]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
+        },
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -17482,6 +17498,16 @@
       "standardColumnName" : "`RELATION_TOTAL_IDEA`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[RELATION_TOTAL_IDEA][关联产品需求数]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[RELATION_TOTAL_IDEA][关联产品需求数]",
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[RELATION_TOTAL_IDEA][关联产品需求数]移动端默认",
       "getPSDEFFormItem" : {
@@ -17493,16 +17519,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[RELATION_TOTAL_IDEA][关联产品需求数]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[RELATION_TOTAL_IDEA][关联产品需求数]",
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -17662,16 +17678,6 @@
       "standardColumnName" : "`RELATION_TOTAL_WORK_ITEM`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[RELATION_TOTAL_WORK_ITEM][关联工作项数]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[RELATION_TOTAL_WORK_ITEM][关联工作项数]",
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[RELATION_TOTAL_WORK_ITEM][关联工作项数]移动端默认",
       "getPSDEFFormItem" : {
@@ -17683,6 +17689,16 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[RELATION_TOTAL_WORK_ITEM][关联工作项数]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[RELATION_TOTAL_WORK_ITEM][关联工作项数]",
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -17729,6 +17745,25 @@
       "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[WORK_ITEM_ORIGIN_STATE][原始状态]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[WORK_ITEM_ORIGIN_STATE][原始状态]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[WORK_ITEM_ORIGIN_STATE][原始状态]移动端默认",
       "getPSDEFFormItem" : {
@@ -17749,25 +17784,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[WORK_ITEM_ORIGIN_STATE][原始状态]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[WORK_ITEM_ORIGIN_STATE][原始状态]",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type.json"
-        },
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -17915,17 +17931,6 @@
       "valueOP" : "EXISTS"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[EXECUTORS][执行人]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "HIDDEN",
-        "name" : "[EXECUTORS][执行人]",
-        "stringLength" : 1048576,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[EXECUTORS][执行人]移动端默认",
       "getPSDEFFormItem" : {
@@ -17938,6 +17943,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[EXECUTORS][执行人]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[EXECUTORS][执行人]",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -18063,6 +18079,17 @@
       "standardColumnName" : "`ACTUAL_START_AT`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[ACTUAL_START_AT][实际开始时间]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DATEPICKER",
+        "name" : "[ACTUAL_START_AT][实际开始时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[ACTUAL_START_AT][实际开始时间]移动端默认",
       "getPSDEFFormItem" : {
@@ -18075,17 +18102,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[ACTUAL_START_AT][实际开始时间]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "DATEPICKER",
-        "name" : "[ACTUAL_START_AT][实际开始时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -18133,6 +18149,17 @@
       "standardColumnName" : "`ACTUAL_END_AT`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[ACTUAL_END_AT][实际结束时间]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DATEPICKER",
+        "name" : "[ACTUAL_END_AT][实际结束时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[ACTUAL_END_AT][实际结束时间]移动端默认",
       "getPSDEFFormItem" : {
@@ -18145,17 +18172,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[ACTUAL_END_AT][实际结束时间]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "DATEPICKER",
-        "name" : "[ACTUAL_END_AT][实际结束时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -18302,17 +18318,6 @@
       "valueOP" : "LT"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[OVERDUE_TIME][逾期天数]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[OVERDUE_TIME][逾期天数]",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[OVERDUE_TIME][逾期天数]移动端默认",
       "getPSDEFFormItem" : {
@@ -18325,6 +18330,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[OVERDUE_TIME][逾期天数]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[OVERDUE_TIME][逾期天数]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -18446,6 +18462,24 @@
       "standardColumnName" : "`PROJECT_IS_DELETED`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[PROJECT_IS_DELETED][项目是否删除]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[PROJECT_IS_DELETED][项目是否删除]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+        },
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[PROJECT_IS_DELETED][项目是否删除]移动端默认",
       "getPSDEFFormItem" : {
@@ -18465,24 +18499,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[PROJECT_IS_DELETED][项目是否删除]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[PROJECT_IS_DELETED][项目是否删除]",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
-        },
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -19346,6 +19362,22 @@
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
     }, {
+      "codeName" : "Default",
+      "name" : "[WORK_ITEM_TYPE_ID][工作项类型标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[WORK_ITEM_TYPE_ID][工作项类型标识]",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "UsrUIMode0924374179",
       "name" : "移动端工作项类型",
       "getPSDEFFormItem" : {
@@ -19372,22 +19404,6 @@
         "allowEmpty" : false
       },
       "type" : "CUSTOM"
-    }, {
-      "codeName" : "Default",
-      "name" : "[WORK_ITEM_TYPE_ID][工作项类型标识]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "HIDDEN",
-        "name" : "[WORK_ITEM_TYPE_ID][工作项类型标识]",
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type.json"
-        },
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -21415,81 +21431,6 @@
       "topPos" : 170,
       "parallelOutput" : true
     }, {
-      "codeName" : "DEDATASET1",
-      "getDstPSDEDataSet" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "work_item_filter"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
-      },
-      "leftPos" : 170,
-      "logicNodeType" : "DEDATASET",
-      "name" : "查询下级工作项",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "LOOPSUBCALL1"
-        },
-        "name" : "若存在子级工作项",
-        "getPSDELogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "name" : "连接条件组",
-          "getPSDELogicLinkConds" : [ {
-            "condOP" : "GT",
-            "dstFieldName" : "size",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "work_item_page"
-            },
-            "logicType" : "SINGLE",
-            "name" : "work_item_page[size] 大于(>) 0",
-            "paramValue" : "0"
-          } ]
-        },
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEDATASET1"
-        }
-      }, {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "name" : "不存在子级工作项",
-        "getPSDELogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "name" : "连接条件组",
-          "getPSDELogicLinkConds" : [ {
-            "condOP" : "EQ",
-            "dstFieldName" : "size",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "work_item_page"
-            },
-            "logicType" : "SINGLE",
-            "name" : "work_item_page[size] 等于(=) 0",
-            "paramValue" : "0"
-          } ]
-        },
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEDATASET1"
-        }
-      } ],
-      "getRetPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "work_item_page"
-      },
-      "topPos" : 440
-    }, {
       "codeName" : "PREPAREPARAM3",
       "leftPos" : 410,
       "logicNodeType" : "PREPAREPARAM",
@@ -21581,6 +21522,81 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 290
+    }, {
+      "codeName" : "DEDATASET1",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "work_item_filter"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+      },
+      "leftPos" : 170,
+      "logicNodeType" : "DEDATASET",
+      "name" : "查询下级工作项",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "name" : "若存在子级工作项",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "GT",
+            "dstFieldName" : "size",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "work_item_page"
+            },
+            "logicType" : "SINGLE",
+            "name" : "work_item_page[size] 大于(>) 0",
+            "paramValue" : "0"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "不存在子级工作项",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "size",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "work_item_page"
+            },
+            "logicType" : "SINGLE",
+            "name" : "work_item_page[size] 等于(=) 0",
+            "paramValue" : "0"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "work_item_page"
+      },
+      "topPos" : 440
     }, {
       "codeName" : "LOOPSUBCALL1",
       "getDstPSDELogicParam" : {
@@ -26611,6 +26627,50 @@
       },
       "topPos" : 393
     }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/Update.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+      },
+      "leftPos" : 396,
+      "logicNodeType" : "DEACTION",
+      "name" : "分配负责人",
+      "topPos" : 562
+    }, {
+      "codeName" : "LOOPSUBCALL1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "leftPos" : -90,
+      "logicNodeType" : "LOOPSUBCALL",
+      "name" : "循环子调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "subCallLink" : true
+      } ],
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "srfactionparam"
+      },
+      "topPos" : 562
+    }, {
       "codeName" : "PREPAREPARAM2",
       "leftPos" : 180,
       "logicNodeType" : "PREPAREPARAM",
@@ -26655,50 +26715,6 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 562
-    }, {
-      "codeName" : "DEACTION1",
-      "getDstPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/Update.json"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
-      },
-      "leftPos" : 396,
-      "logicNodeType" : "DEACTION",
-      "name" : "分配负责人",
-      "topPos" : 562
-    }, {
-      "codeName" : "LOOPSUBCALL1",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "for_temp_obj"
-      },
-      "leftPos" : -90,
-      "logicNodeType" : "LOOPSUBCALL",
-      "name" : "循环子调用",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM2"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "LOOPSUBCALL1"
-        },
-        "subCallLink" : true
-      } ],
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "srfactionparam"
-      },
       "topPos" : 562
     } ],
     "getPSDELogicParams" : [ {
@@ -26977,6 +26993,24 @@
       } ],
       "topPos" : 403
     }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/Update.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+      },
+      "leftPos" : 436,
+      "logicNodeType" : "DEACTION",
+      "name" : "变更状态",
+      "topPos" : 582
+    }, {
       "codeName" : "LOOPSUBCALL1",
       "getDstPSDELogicParam" : {
         "modelref" : true,
@@ -27033,24 +27067,6 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 582
-    }, {
-      "codeName" : "DEACTION1",
-      "getDstPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/Update.json"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
-      },
-      "leftPos" : 436,
-      "logicNodeType" : "DEACTION",
-      "name" : "变更状态",
       "topPos" : 582
     } ],
     "getPSDELogicParams" : [ {
@@ -27139,6 +27155,32 @@
       },
       "topPos" : 403
     }, {
+      "codeName" : "LOOPSUBCALL1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "leftPos" : -90,
+      "logicNodeType" : "LOOPSUBCALL",
+      "name" : "循环子调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "subCallLink" : true
+      } ],
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "srfactionparam"
+      },
+      "topPos" : 562
+    }, {
       "codeName" : "PREPAREPARAM2",
       "leftPos" : 180,
       "logicNodeType" : "PREPAREPARAM",
@@ -27201,32 +27243,6 @@
       "leftPos" : 396,
       "logicNodeType" : "DEACTION",
       "name" : "修改时间",
-      "topPos" : 562
-    }, {
-      "codeName" : "LOOPSUBCALL1",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "for_temp_obj"
-      },
-      "leftPos" : -90,
-      "logicNodeType" : "LOOPSUBCALL",
-      "name" : "循环子调用",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM2"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "LOOPSUBCALL1"
-        },
-        "subCallLink" : true
-      } ],
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "srfactionparam"
-      },
       "topPos" : 562
     } ],
     "getPSDELogicParams" : [ {
@@ -30045,32 +30061,6 @@
       },
       "topPos" : 441
     }, {
-      "codeName" : "LOOPSUBCALL1",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "for_temp_obj"
-      },
-      "leftPos" : 160,
-      "logicNodeType" : "LOOPSUBCALL",
-      "name" : "循环子调用",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RESETPARAM2"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "LOOPSUBCALL1"
-        },
-        "subCallLink" : true
-      } ],
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "page"
-      },
-      "topPos" : 568
-    }, {
       "codeName" : "PREPAREPARAM3",
       "leftPos" : 876,
       "logicNodeType" : "PREPAREPARAM",
@@ -30102,6 +30092,32 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 451
+    }, {
+      "codeName" : "LOOPSUBCALL1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "LOOPSUBCALL",
+      "name" : "循环子调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RESETPARAM2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "subCallLink" : true
+      } ],
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page"
+      },
+      "topPos" : 568
     }, {
       "codeName" : "RESETPARAM2",
       "getDstPSDELogicParam" : {
@@ -31819,6 +31835,62 @@
       } ],
       "topPos" : 70
     }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : 170,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置删除状态",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "IS_DELETED",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "name" : "直接值[1] ==> Default[IS_DELETED]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "1",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : -40
+    }, {
+      "codeName" : "RAWSQLCALL1",
+      "leftPos" : 170,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "删除最近访问",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "name" : "Default[ID]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "sql" : "update recent set IS_DELETED=1 where owner_id=? and owner_subtype='work_item'",
+      "topPos" : 170
+    }, {
       "codeName" : "PREPAREPARAM1",
       "leftPos" : 170,
       "logicNodeType" : "PREPAREPARAM",
@@ -31925,62 +31997,6 @@
         "id" : "work_item_page"
       },
       "topPos" : 440
-    }, {
-      "codeName" : "PREPAREPARAM2",
-      "leftPos" : 170,
-      "logicNodeType" : "PREPAREPARAM",
-      "name" : "设置删除状态",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM2"
-        }
-      } ],
-      "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "IS_DELETED",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "name" : "直接值[1] ==> Default[IS_DELETED]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "1",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : -40
-    }, {
-      "codeName" : "RAWSQLCALL1",
-      "leftPos" : 170,
-      "logicNodeType" : "RAWSQLCALL",
-      "name" : "删除最近访问",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSQLCALL1"
-        }
-      } ],
-      "getPSDELogicNodeParams" : [ {
-        "name" : "Default[ID]",
-        "paramAction" : "SQLPARAM",
-        "srcFieldName" : "ID",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "sql" : "update recent set IS_DELETED=1 where owner_id=? and owner_subtype='work_item'",
-      "topPos" : 170
     }, {
       "codeName" : "LOOPSUBCALL1",
       "getDstPSDELogicParam" : {
@@ -33803,153 +33819,6 @@
       "topPos" : -80,
       "parallelOutput" : true
     }, {
-      "codeName" : "END2",
-      "leftPos" : 71,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "getReturnParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "returnType" : "LOGICPARAM",
-      "topPos" : 150
-    }, {
-      "codeName" : "PREPAREPARAM2",
-      "leftPos" : 284,
-      "logicNodeType" : "PREPAREPARAM",
-      "name" : "获取产品ID并设置过滤参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEDATASET3"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM2"
-        }
-      } ],
-      "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "N_PROJECT_ID_EQ",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "filter"
-        },
-        "name" : "Default[project_id] ==> filter[N_PROJECT_ID_EQ]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "project_id",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "N_USER_ID_EQ",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "filter"
-        },
-        "name" : "用户全局对象[srfpersonid] ==> filter[N_USER_ID_EQ]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "srfpersonid",
-        "srcValueType" : "SESSION"
-      } ],
-      "topPos" : -72
-    }, {
-      "codeName" : "PREPAREPARAM3",
-      "leftPos" : -290,
-      "logicNodeType" : "PREPAREPARAM",
-      "name" : "空",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSFCODE4"
-        },
-        "name" : "已归档已删除",
-        "getPSDELogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "name" : "连接条件组",
-          "getPSDELogicLinkConds" : [ {
-            "groupOP" : "OR",
-            "logicType" : "GROUP",
-            "name" : "OR",
-            "getPSDELogicLinkConds" : [ {
-              "condOP" : "EQ",
-              "dstFieldName" : "IS_ARCHIVED",
-              "getDstLogicParam" : {
-                "modelref" : true,
-                "id" : "Default"
-              },
-              "logicType" : "SINGLE",
-              "name" : "Default[IS_ARCHIVED] 等于(=) 1",
-              "paramValue" : "1"
-            }, {
-              "condOP" : "EQ",
-              "dstFieldName" : "IS_DELETED",
-              "getDstLogicParam" : {
-                "modelref" : true,
-                "id" : "Default"
-              },
-              "logicType" : "SINGLE",
-              "name" : "Default[IS_DELETED] 等于(=) 1",
-              "paramValue" : "1"
-            }, {
-              "condOP" : "EQ",
-              "dstFieldName" : "project_is_archived",
-              "getDstLogicParam" : {
-                "modelref" : true,
-                "id" : "Default"
-              },
-              "logicType" : "SINGLE",
-              "name" : "Default[project_is_archived] 等于(=) 1",
-              "paramValue" : "1"
-            } ]
-          } ]
-        },
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM3"
-        }
-      }, {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSFCODE3"
-        },
-        "name" : "连接名称",
-        "getPSDELogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "name" : "连接条件组",
-          "getPSDELogicLinkConds" : [ {
-            "condOP" : "EQ",
-            "dstFieldName" : "IS_ARCHIVED",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[IS_ARCHIVED] 等于(=) 0",
-            "paramValue" : "0"
-          }, {
-            "condOP" : "EQ",
-            "dstFieldName" : "IS_DELETED",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[IS_DELETED] 等于(=) 0",
-            "paramValue" : "0"
-          } ]
-        },
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM3"
-        }
-      } ],
-      "topPos" : -72
-    }, {
       "code" : "def _usercontext = sys.user();\r\ndef srfreadonly = _usercontext.testSysUniRes(\"SYSTEM\");\r\ndef _default = logic.param(\"default\").real;\r\nif(srfreadonly == true){\r\n    _default.set(\"srfreadonly\",false);\r\n}",
       "codeName" : "RAWSFCODE3",
       "codeType" : "Groovy",
@@ -34007,6 +33876,59 @@
           "modelref" : true,
           "id" : "RAWSFCODE3"
         }
+      } ],
+      "topPos" : -72
+    }, {
+      "codeName" : "END2",
+      "leftPos" : 71,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 150
+    }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : 284,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "获取产品ID并设置过滤参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET3"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "N_PROJECT_ID_EQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "filter"
+        },
+        "name" : "Default[project_id] ==> filter[N_PROJECT_ID_EQ]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "project_id",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "N_USER_ID_EQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "filter"
+        },
+        "name" : "用户全局对象[srfpersonid] ==> filter[N_USER_ID_EQ]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "srfpersonid",
+        "srcValueType" : "SESSION"
       } ],
       "topPos" : -72
     }, {
@@ -34176,6 +34098,111 @@
       } ],
       "topPos" : -72
     }, {
+      "codeName" : "END6",
+      "leftPos" : 1020,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : -220
+    }, {
+      "codeName" : "PREPAREPARAM3",
+      "leftPos" : -290,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "空",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE4"
+        },
+        "name" : "已归档已删除",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "groupOP" : "OR",
+            "logicType" : "GROUP",
+            "name" : "OR",
+            "getPSDELogicLinkConds" : [ {
+              "condOP" : "EQ",
+              "dstFieldName" : "IS_ARCHIVED",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "logicType" : "SINGLE",
+              "name" : "Default[IS_ARCHIVED] 等于(=) 1",
+              "paramValue" : "1"
+            }, {
+              "condOP" : "EQ",
+              "dstFieldName" : "IS_DELETED",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "logicType" : "SINGLE",
+              "name" : "Default[IS_DELETED] 等于(=) 1",
+              "paramValue" : "1"
+            }, {
+              "condOP" : "EQ",
+              "dstFieldName" : "project_is_archived",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "logicType" : "SINGLE",
+              "name" : "Default[project_is_archived] 等于(=) 1",
+              "paramValue" : "1"
+            } ]
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM3"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE3"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "IS_ARCHIVED",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[IS_ARCHIVED] 等于(=) 0",
+            "paramValue" : "0"
+          }, {
+            "condOP" : "EQ",
+            "dstFieldName" : "IS_DELETED",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[IS_DELETED] 等于(=) 0",
+            "paramValue" : "0"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM3"
+        }
+      } ],
+      "topPos" : -72
+    }, {
       "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"srfreadonly\", false);",
       "codeName" : "RAWSFCODE2",
       "leftPos" : 756,
@@ -34193,17 +34220,6 @@
         }
       } ],
       "topPos" : -336
-    }, {
-      "codeName" : "END6",
-      "leftPos" : 1020,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "getReturnParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "returnType" : "LOGICPARAM",
-      "topPos" : -220
     }, {
       "code" : "var defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);",
       "codeName" : "RAWSFCODE4",
@@ -37781,6 +37797,34 @@
       "topPos" : 130,
       "parallelOutput" : true
     }, {
+      "codeName" : "RAWSQLCALL1",
+      "leftPos" : 170,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "恢复最近访问",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "name" : "Default[ID]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "sql" : "update recent set IS_DELETED=0 where owner_id=? and owner_subtype='work_item'",
+      "topPos" : 235
+    }, {
       "codeName" : "PREPAREPARAM3",
       "leftPos" : 440,
       "logicNodeType" : "PREPAREPARAM",
@@ -37840,34 +37884,6 @@
       "logicNodeType" : "DEACTION",
       "name" : "更新父工作项非叶子节点",
       "topPos" : 130
-    }, {
-      "codeName" : "RAWSQLCALL1",
-      "leftPos" : 170,
-      "logicNodeType" : "RAWSQLCALL",
-      "name" : "恢复最近访问",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSQLCALL1"
-        }
-      } ],
-      "getPSDELogicNodeParams" : [ {
-        "name" : "Default[ID]",
-        "paramAction" : "SQLPARAM",
-        "srcFieldName" : "ID",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "sql" : "update recent set IS_DELETED=0 where owner_id=? and owner_subtype='work_item'",
-      "topPos" : 235
     }, {
       "codeName" : "PREPAREPARAM1",
       "leftPos" : 170,
@@ -40362,6 +40378,62 @@
       } ],
       "topPos" : 453
     }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : 180,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备看板过滤器参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "BOARD_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "name" : "for_temp_obj[target_board_id] ==> Default[BOARD_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "target_board_id",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_temp_obj"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "sort",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "entry_filter"
+        },
+        "name" : "直接值[showorder,asc] ==> entry_filter[sort]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "showorder,asc",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "n_board_id_eq",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "entry_filter"
+        },
+        "name" : "for_temp_obj[target_board_id] ==> entry_filter[n_board_id_eq]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "target_board_id",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_temp_obj"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 562
+    }, {
       "codeName" : "DEDATASET1",
       "getDstPSDEDataSet" : {
         "modelref" : true,
@@ -40479,62 +40551,6 @@
         "modelref" : true,
         "id" : "srfactionparam"
       },
-      "topPos" : 562
-    }, {
-      "codeName" : "PREPAREPARAM2",
-      "leftPos" : 180,
-      "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备看板过滤器参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEDATASET1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM2"
-        }
-      } ],
-      "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "BOARD_ID",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "name" : "for_temp_obj[target_board_id] ==> Default[BOARD_ID]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "target_board_id",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "for_temp_obj"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "sort",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "entry_filter"
-        },
-        "name" : "直接值[showorder,asc] ==> entry_filter[sort]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "showorder,asc",
-        "srcValueType" : "SRCVALUE"
-      }, {
-        "dstFieldName" : "n_board_id_eq",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "entry_filter"
-        },
-        "name" : "for_temp_obj[target_board_id] ==> entry_filter[n_board_id_eq]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "target_board_id",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "for_temp_obj"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
       "topPos" : 562
     } ],
     "getPSDELogicParams" : [ {
@@ -47828,17 +47844,17 @@
     "name" : "工作项删除/恢复通知",
     "notifyTag2" : "项目管理",
     "getPSDENotifyTargets" : [ {
-      "name" : "负责人",
-      "getPSSysMsgTarget" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSSYSMSGTARGETS/work_item_notify_assignee.json"
-      },
-      "targetType" : "SYSMSGTARGET"
-    }, {
       "name" : "关注人员",
       "getPSSysMsgTarget" : {
         "modelref" : true,
         "path" : "PSMODULES/ProjMgmt/PSSYSMSGTARGETS/attention_by_ownerid.json"
+      },
+      "targetType" : "SYSMSGTARGET"
+    }, {
+      "name" : "负责人",
+      "getPSSysMsgTarget" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSSYSMSGTARGETS/work_item_notify_assignee.json"
       },
       "targetType" : "SYSMSGTARGET"
     } ],
@@ -47858,6 +47874,13 @@
     "name" : "工作项状态变换通知",
     "notifyTag2" : "项目管理",
     "getPSDENotifyTargets" : [ {
+      "name" : "执行人",
+      "getPSSysMsgTarget" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSSYSMSGTARGETS/executor_by_ownerid.json"
+      },
+      "targetType" : "SYSMSGTARGET"
+    }, {
       "name" : "负责人",
       "getPSSysMsgTarget" : {
         "modelref" : true,
@@ -47869,13 +47892,6 @@
       "getPSSysMsgTarget" : {
         "modelref" : true,
         "path" : "PSMODULES/ProjMgmt/PSSYSMSGTARGETS/attention_by_ownerid.json"
-      },
-      "targetType" : "SYSMSGTARGET"
-    }, {
-      "name" : "执行人",
-      "getPSSysMsgTarget" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSSYSMSGTARGETS/executor_by_ownerid.json"
       },
       "targetType" : "SYSMSGTARGET"
     } ],
@@ -48114,10 +48130,22 @@
     "utilType" : "NOTIFYSETTING"
   } ],
   "getAllPSModelDatas" : [ {
-    "codeName" : "bi_form_view_item_state",
-    "logicName" : "BI报表配置视图_工作项状态",
-    "name" : "BI报表配置视图_工作项状态",
-    "realModelSubType" : "DEEDITVIEW",
+    "codeName" : "change_parent_pick_up_grid_view",
+    "logicName" : "工作项变更父工作项选择视图_选择数据视图",
+    "name" : "工作项变更父工作项选择视图_选择数据视图",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "scrum_bug_state_report_view",
+    "logicName" : "Scrum缺陷状态分布报表",
+    "name" : "Scrum缺陷状态分布报表",
+    "realModelSubType" : "DECHARTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_plan_md_view",
+    "logicName" : "规划移动端多数据视图",
+    "name" : "规划移动端多数据视图",
+    "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "under_work_grid_view",
@@ -48126,118 +48154,10 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "dyna_tab_exp_view",
-    "logicName" : "工作项动态设计分页（全局）",
-    "name" : "工作项动态设计分页（全局）",
-    "realModelSubType" : "DETABEXPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_milestone_list_view",
-    "logicName" : "里程碑移动端列表视图",
-    "name" : "里程碑移动端列表视图",
-    "realModelSubType" : "DEMOBLISTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "shift_in_kanban",
-    "logicName" : "移入看板选项操作视图",
-    "name" : "移入看板选项操作视图",
-    "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "executors_edit_form",
-    "logicName" : "工作项执行人选项操作视图",
-    "name" : "工作项执行人选项操作视图",
-    "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "project_dyna_tab_exp_view",
-    "logicName" : "工作项动态设计分页（项目）",
-    "name" : "工作项动态设计分页（项目）",
-    "realModelSubType" : "DETABEXPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "scrum_temp_speed_report_view",
-    "logicName" : "Scrum团队速度报表",
-    "name" : "Scrum团队速度报表",
-    "realModelSubType" : "DECHARTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "recycle_bin_grid_view",
-    "logicName" : "回收站表格视图",
-    "name" : "回收站表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "case_re_bug_mpick_up_grid_view",
-    "logicName" : "用例关联缺陷多项数据选择视图_选择数据视图",
-    "name" : "用例关联缺陷多项数据选择视图_选择数据视图",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "others_re_notbug_mpick_up_grid_view",
-    "logicName" : "其他实体关联工作项多项选择视图_选择数据视图（不含缺陷）",
-    "name" : "其他实体关联工作项多项选择视图_选择数据视图（不含缺陷）",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "sprint_work_item_customView",
-    "logicName" : "迭代工作项统计",
-    "name" : "迭代工作项统计",
-    "realModelSubType" : "DECUSTOMVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "summary_other_grid_view",
-    "logicName" : "我的事项其他工作项表格视图",
-    "name" : "我的事项其他工作项表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "dyna_kanban_tree_grid_view",
-    "logicName" : "工作项树表格视图（kanban动态）",
-    "name" : "工作项树表格视图（kanban动态）",
-    "realModelSubType" : "DETREEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_common_edit_view",
-    "logicName" : "工作项移动端通用编辑视图",
-    "name" : "工作项移动端通用编辑视图",
-    "realModelSubType" : "DEMOBEDITVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "kanban_user_stat_report_view",
-    "logicName" : "kanban成员负荷报告",
-    "name" : "kanban成员负荷报告",
-    "realModelSubType" : "DECHARTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "filter_grid_view",
-    "logicName" : "筛选器表格视图",
-    "name" : "筛选器表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "test_report_view",
-    "logicName" : "测试报表视图",
-    "name" : "测试报表视图",
-    "realModelSubType" : "DEREPORTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "completed_drill_detail_grid_view",
-    "logicName" : "工作项完成率反查表格视图",
-    "name" : "工作项完成率反查表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "my_todo_gird_view",
-    "logicName" : "我待完成的工作项表格视图",
-    "name" : "我待完成的工作项表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "waterfall_story_grid_view",
-    "logicName" : "工作项表格视图（全部需求waterfall）",
-    "name" : "工作项表格视图（全部需求waterfall）",
-    "realModelSubType" : "DEGRIDVIEW",
+    "codeName" : "search_mob_md_view",
+    "logicName" : "移动端工作项查询结果多数据视图",
+    "name" : "移动端工作项查询结果多数据视图",
+    "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "scrum_defect_property_report_view",
@@ -48246,106 +48166,10 @@
     "realModelSubType" : "DECHARTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "quick_create_view",
-    "logicName" : "工作项快速建立视图（通用）",
-    "name" : "工作项快速建立视图（通用）",
+    "codeName" : "shift_in_kanban",
+    "logicName" : "移入看板选项操作视图",
+    "name" : "移入看板选项操作视图",
     "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_depend_mpick_up_view",
-    "logicName" : "移动端工作项选择依赖多项选择视图",
-    "name" : "移动端工作项选择依赖多项选择视图",
-    "realModelSubType" : "DEMOBMPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_complete_trend_chart_view",
-    "logicName" : "项目工作项完成趋势图表视图（移动端）",
-    "name" : "项目工作项完成趋势图表视图（移动端）",
-    "realModelSubType" : "DEMOBCHARTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "requirement_tree_grid_view",
-    "logicName" : "需求树表格视图",
-    "name" : "需求树表格视图",
-    "realModelSubType" : "DETREEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "re_mpick_up_view",
-    "logicName" : "关联工作项多项选择视图（测试用例关联）",
-    "name" : "关联工作项多项选择视图（测试用例关联）",
-    "realModelSubType" : "DEMPICKUPVIEW2",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "kanban_bug_daily_tide_report_view",
-    "logicName" : "kanban缺陷每日趋势报表",
-    "name" : "kanban缺陷每日趋势报表",
-    "realModelSubType" : "DECHARTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_relation_mpick_view",
-    "logicName" : "移动端工作项选择关联多项选择视图",
-    "name" : "移动端工作项选择关联多项选择视图",
-    "realModelSubType" : "DEMOBMPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "hybrid_kanban_view",
-    "logicName" : "混合工作项看板视图",
-    "name" : "混合工作项看板视图",
-    "realModelSubType" : "DEKANBANVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "project_resource_gantt_view",
-    "logicName" : "项目资源分配甘特视图",
-    "name" : "项目资源分配甘特视图",
-    "realModelSubType" : "DEGANTTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "my_assignee_gird_view_show",
-    "logicName" : "我负责的工作项表格视图（模态）",
-    "name" : "我负责的工作项表格视图（模态）",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "kanban_tree_grid_view",
-    "logicName" : "工作项树表格视图（kanban）",
-    "name" : "工作项树表格视图（kanban）",
-    "realModelSubType" : "DETREEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "kanban_defect_property_report_view",
-    "logicName" : "kanban缺陷属性分布报表",
-    "name" : "kanban缺陷属性分布报表",
-    "realModelSubType" : "DECHARTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "scrum_print_user_stat_report_view",
-    "logicName" : "Scrum成员负荷报告",
-    "name" : "Scrum成员负荷报告",
-    "realModelSubType" : "DECHARTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "all_kanban_grid_view",
-    "logicName" : "工作项表格视图（kanban）",
-    "name" : "工作项表格视图（kanban）",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "gantt_view",
-    "logicName" : "工作项甘特视图",
-    "name" : "工作项甘特视图",
-    "realModelSubType" : "DEGANTTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "change_parent_pick_up_view",
-    "logicName" : "工作项变更父工作项选择视图",
-    "name" : "工作项变更父工作项选择视图",
-    "realModelSubType" : "DEPICKUPVIEW2",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_create_view",
-    "logicName" : "移动端新建工作项编辑视图",
-    "name" : "移动端新建工作项编辑视图",
-    "realModelSubType" : "DEMOBEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mob_mpick_up_view",
@@ -48354,10 +48178,220 @@
     "realModelSubType" : "DEMOBMPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "dyna_kanban_grid_view",
+    "logicName" : "工作项表格视图（动态kanban）",
+    "name" : "工作项表格视图（动态kanban）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "plan_work_item_mpick_up_view",
+    "logicName" : "规划工作项多项选择视图",
+    "name" : "规划工作项多项选择视图",
+    "realModelSubType" : "DEMPICKUPVIEW2",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "bug_mob_mpick_up_view",
+    "logicName" : "其他实体关联缺陷选择视图（移动端）",
+    "name" : "其他实体关联缺陷选择视图（移动端）",
+    "realModelSubType" : "DEMOBMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "scrum_bug_daily_tide_report_view",
+    "logicName" : "Scrum缺陷每日趋势报表",
+    "name" : "Scrum缺陷每日趋势报表",
+    "realModelSubType" : "DECHARTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_common_edit_view",
+    "logicName" : "工作项移动端通用编辑视图",
+    "name" : "工作项移动端通用编辑视图",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_idea_list_view",
+    "logicName" : "需求移动端列表视图",
+    "name" : "需求移动端列表视图",
+    "realModelSubType" : "DEMOBLISTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "executors_edit_form",
+    "logicName" : "工作项执行人选项操作视图",
+    "name" : "工作项执行人选项操作视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "Usr07302198GridView",
+    "logicName" : "测试无权限总数（表格）",
+    "name" : "测试无权限总数（表格）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "choose_child_mpick_up_view",
+    "logicName" : "子工作项多项选择视图",
+    "name" : "子工作项多项选择视图",
+    "realModelSubType" : "DEMPICKUPVIEW2",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "re_mpick_up_grid_view",
+    "logicName" : "关联工作项多项选择视图_选择数据视图（测试用例关联）",
+    "name" : "关联工作项多项选择视图_选择数据视图（测试用例关联）",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "release_grid_view",
+    "logicName" : "工作项表格视图（发布）",
+    "name" : "工作项表格视图（发布）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "scrum_property_distribution_report_view",
+    "logicName" : "Scrum需求属性分布报表",
+    "name" : "Scrum需求属性分布报表",
+    "realModelSubType" : "DECHARTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "dyna_kanban_tree_grid_view",
+    "logicName" : "工作项树表格视图（kanban动态）",
+    "name" : "工作项树表格视图（kanban动态）",
+    "realModelSubType" : "DETREEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_create_option_view",
+    "logicName" : "工作项快速新建选项操作视图（移动端）",
+    "name" : "工作项快速新建选项操作视图（移动端）",
+    "realModelSubType" : "DEMOBOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "filter_grid_view",
+    "logicName" : "筛选器表格视图",
+    "name" : "筛选器表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "re_self_mpick_up_grid_view",
+    "logicName" : "工作项关联工作项多项选择视图_选择数据视图",
+    "name" : "工作项关联工作项多项选择视图_选择数据视图",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "my_todo_gird_view",
+    "logicName" : "我待完成的工作项表格视图",
+    "name" : "我待完成的工作项表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_pickup_view",
+    "logicName" : "工作项单数据选择视图（移动端）",
+    "name" : "工作项单数据选择视图（移动端）",
+    "realModelSubType" : "DEMOBPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "others_re_mpick_up_grid_view",
+    "logicName" : "其他实体关联工作项多项选择视图_选择数据视图",
+    "name" : "其他实体关联工作项多项选择视图_选择数据视图",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "quick_create_view",
+    "logicName" : "工作项快速建立视图（通用）",
+    "name" : "工作项快速建立视图（通用）",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "test_plan_bug_grid_view",
+    "logicName" : "工作项表格视图（测试计划关联缺陷）",
+    "name" : "工作项表格视图（测试计划关联缺陷）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "re_mpick_up_view",
+    "logicName" : "关联工作项多项选择视图（测试用例关联）",
+    "name" : "关联工作项多项选择视图（测试用例关联）",
+    "realModelSubType" : "DEMPICKUPVIEW2",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "resource_gantt_view",
+    "logicName" : "资源分配甘特图",
+    "name" : "资源分配甘特图",
+    "realModelSubType" : "DEGANTTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_milestone_list_view",
+    "logicName" : "里程碑移动端列表视图",
+    "name" : "里程碑移动端列表视图",
+    "realModelSubType" : "DEMOBLISTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "my_assignee_gird_view_show",
+    "logicName" : "我负责的工作项表格视图（模态）",
+    "name" : "我负责的工作项表格视图（模态）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_depend_mpick_up_view_PickupMDView",
+    "logicName" : "移动端工作项选择依赖多项选择视图_选择数据视图",
+    "name" : "移动端工作项选择依赖多项选择视图_选择数据视图",
+    "realModelSubType" : "DEMOBPICKUPMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "kanban_tree_grid_view",
+    "logicName" : "工作项树表格视图（kanban）",
+    "name" : "工作项树表格视图（kanban）",
+    "realModelSubType" : "DETREEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "scrum_print_user_stat_report_view",
+    "logicName" : "Scrum成员负荷报告",
+    "name" : "Scrum成员负荷报告",
+    "realModelSubType" : "DECHARTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "sprint_work_item_customView",
+    "logicName" : "迭代工作项统计",
+    "name" : "迭代工作项统计",
+    "realModelSubType" : "DECUSTOMVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "kanban_bug_daily_tide_report_view",
+    "logicName" : "kanban缺陷每日趋势报表",
+    "name" : "kanban缺陷每日趋势报表",
+    "realModelSubType" : "DECHARTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "dyna_quick_create_view",
+    "logicName" : "工作项快速建立视图（动态）",
+    "name" : "工作项快速建立视图（动态）",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "gantt_view",
+    "logicName" : "工作项甘特视图",
+    "name" : "工作项甘特视图",
+    "realModelSubType" : "DEGANTTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "requirement_tree_grid_view",
+    "logicName" : "需求树表格视图",
+    "name" : "需求树表格视图",
+    "realModelSubType" : "DETREEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "dyna_create_view",
     "logicName" : "工作项新建视图（动态）",
     "name" : "工作项新建视图（动态）",
     "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_my_assignee_md_view",
+    "logicName" : "我负责的工作项移动端多数据视图",
+    "name" : "我负责的工作项移动端多数据视图",
+    "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "waterfall_bug_grid_view",
+    "logicName" : "工作项表格视图（全部缺陷waterfall）",
+    "name" : "工作项表格视图（全部缺陷waterfall）",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "my_attention_grid_view",
@@ -48366,22 +48400,22 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "program_pickup_grid_view",
+    "logicName" : "规划计划的工作项表格视图",
+    "name" : "规划计划的工作项表格视图",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "baseline_mpick_up_view",
     "logicName" : "基线规划工作项多项选择视图",
     "name" : "基线规划工作项多项选择视图",
     "realModelSubType" : "DEMPICKUPVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_child_mpick_up_view_PickupMDView",
-    "logicName" : "移动端子工作项多项选择视图_选择数据视图",
-    "name" : "移动端子工作项多项选择视图_选择数据视图",
-    "realModelSubType" : "DEMOBPICKUPMDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_recycle_bin_md_view",
-    "logicName" : "移动端工作项回收站多数据视图",
-    "name" : "移动端工作项回收站多数据视图",
-    "realModelSubType" : "DEMOBMDVIEW",
+    "codeName" : "sprint_contribution_grid_view",
+    "logicName" : "迭代成员贡献度表格视图",
+    "name" : "迭代成员贡献度表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "backlog_age_report_report_view",
@@ -48390,10 +48424,16 @@
     "realModelSubType" : "DECHARTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "my_assignee_mobboard",
-    "logicName" : "我负责的工作项（移动端仪表盘）",
-    "name" : "我负责的工作项（移动端仪表盘）",
-    "realModelSubType" : "DEMOBMDVIEW",
+    "codeName" : "srcum_tree_grid_view",
+    "logicName" : "工作项树表格视图（scrum）",
+    "name" : "工作项树表格视图（scrum）",
+    "realModelSubType" : "DETREEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "case_re_bug_mpick_up_grid_view",
+    "logicName" : "用例关联缺陷多项数据选择视图_选择数据视图",
+    "name" : "用例关联缺陷多项数据选择视图_选择数据视图",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "dyna_scrum_grid_view",
@@ -48408,10 +48448,22 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "sprint_contribution_grid_view",
-    "logicName" : "迭代成员贡献度表格视图",
-    "name" : "迭代成员贡献度表格视图",
+    "codeName" : "my_assignee_gird_view",
+    "logicName" : "我负责的工作项表格视图",
+    "name" : "我负责的工作项表格视图",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "bi_form_view_item_bug",
+    "logicName" : "BI报表配置视图_工作项缺陷",
+    "name" : "BI报表配置视图_工作项缺陷",
+    "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_depend_mpick_up_view",
+    "logicName" : "移动端工作项选择依赖多项选择视图",
+    "name" : "移动端工作项选择依赖多项选择视图",
+    "realModelSubType" : "DEMOBMPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mob_release_work_item_list_view",
@@ -48427,10 +48479,16 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "choose_child_mpick_up_view",
-    "logicName" : "子工作项多项选择视图",
-    "name" : "子工作项多项选择视图",
-    "realModelSubType" : "DEMPICKUPVIEW2",
+    "codeName" : "mob_child_mpick_up_view",
+    "logicName" : "移动端子工作项多项选择视图",
+    "name" : "移动端子工作项多项选择视图",
+    "realModelSubType" : "DEMOBMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "change_parent_pick_up_view",
+    "logicName" : "工作项变更父工作项选择视图",
+    "name" : "工作项变更父工作项选择视图",
+    "realModelSubType" : "DEPICKUPVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mob_dyna_edit_view",
@@ -48439,22 +48497,64 @@
     "realModelSubType" : "DEMOBEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "scrum_property_distribution_report_view",
-    "logicName" : "Scrum需求属性分布报表",
-    "name" : "Scrum需求属性分布报表",
-    "realModelSubType" : "DECHARTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "child_grid_view",
     "logicName" : "子工作项表格视图",
     "name" : "子工作项表格视图",
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "scrum_defect_total_trend_report_view",
-    "logicName" : "Scrum缺陷累计趋势报表",
-    "name" : "Scrum缺陷累计趋势报表",
+    "codeName" : "depend_mpick_up_view",
+    "logicName" : "工作项选择依赖多项选择视图",
+    "name" : "工作项选择依赖多项选择视图",
+    "realModelSubType" : "DEMPICKUPVIEW2",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "bi_form_view_item_state",
+    "logicName" : "BI报表配置视图_工作项状态",
+    "name" : "BI报表配置视图_工作项状态",
+    "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_waterfall_list_view",
+    "logicName" : "工作项移动端列表视图（waterfall）",
+    "name" : "工作项移动端列表视图（waterfall）",
+    "realModelSubType" : "DEMOBLISTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "plan_work_item_mpick_up_grid_view",
+    "logicName" : "规划工作项多项选择视图_选择数据视图",
+    "name" : "规划工作项多项选择视图_选择数据视图",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "test_report_view",
+    "logicName" : "测试报表视图",
+    "name" : "测试报表视图",
+    "realModelSubType" : "DEREPORTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_work_item_statistic_chart_view",
+    "logicName" : "工作项统计图表视图（移动端）",
+    "name" : "工作项统计图表视图（移动端）",
+    "realModelSubType" : "DEMOBCHARTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "kanban_user_stat_report_view",
+    "logicName" : "kanban成员负荷报告",
+    "name" : "kanban成员负荷报告",
     "realModelSubType" : "DECHARTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_calendar_exp_view",
+    "logicName" : "工作项移动端日历视图",
+    "name" : "工作项移动端日历视图",
+    "realModelSubType" : "DEMOBCALENDARVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_create_view",
+    "logicName" : "移动端新建工作项编辑视图",
+    "name" : "移动端新建工作项编辑视图",
+    "realModelSubType" : "DEMOBEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "summary_task_grid_view",
@@ -48463,28 +48563,10 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "waterfall_bug_grid_view",
-    "logicName" : "工作项表格视图（全部缺陷waterfall）",
-    "name" : "工作项表格视图（全部缺陷waterfall）",
+    "codeName" : "milestone_grid_view",
+    "logicName" : "工作项表格视图（里程碑）",
+    "name" : "工作项表格视图（里程碑）",
     "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "test_plan_bug_grid_view",
-    "logicName" : "工作项表格视图（测试计划关联缺陷）",
-    "name" : "工作项表格视图（测试计划关联缺陷）",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "re_self_mpick_up_view",
-    "logicName" : "工作项关联工作项多项选择视图",
-    "name" : "工作项关联工作项多项选择视图",
-    "realModelSubType" : "DEMPICKUPVIEW2",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_bug_list_view",
-    "logicName" : "缺陷移动端列表视图",
-    "name" : "缺陷移动端列表视图",
-    "realModelSubType" : "DEMOBLISTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "global_setting_view",
@@ -48499,22 +48581,22 @@
     "realModelSubType" : "DECHARTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "milestone_grid_view",
-    "logicName" : "工作项表格视图（里程碑）",
-    "name" : "工作项表格视图（里程碑）",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "waterfall_tree_grid_view",
     "logicName" : "工作项树表格视图（waterfall）",
     "name" : "工作项树表格视图（waterfall）",
     "realModelSubType" : "DETREEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "bug_mob_mpick_up_view",
-    "logicName" : "其他实体关联缺陷选择视图（移动端）",
-    "name" : "其他实体关联缺陷选择视图（移动端）",
-    "realModelSubType" : "DEMOBMPICKUPVIEW",
+    "codeName" : "epic_main_view",
+    "logicName" : "工作项主视图（史诗）",
+    "name" : "工作项主视图（史诗）",
+    "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "workload_detail_grid_view",
+    "logicName" : "工作项工时反查表格视图",
+    "name" : "工作项工时反查表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "cur_warning_grid_view",
@@ -48529,95 +48611,28 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "bug_main_view",
-    "logicName" : "工作项主视图（缺陷）",
-    "name" : "工作项主视图（缺陷）",
-    "realModelSubType" : "DEEDITVIEW",
+    "codeName" : "test_drill_detail_grid_view",
+    "logicName" : "工作项反查表格视图",
+    "name" : "工作项反查表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "pick_up_grid_view",
-    "logicName" : "工作项实体选择表格视图（部件视图）",
-    "name" : "工作项实体选择表格视图（部件视图）",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "resource_gantt_view",
-    "logicName" : "资源分配甘特图",
-    "name" : "资源分配甘特图",
-    "realModelSubType" : "DEGANTTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "quick_create_bug_view",
-    "logicName" : "工作项快速建立视图（缺陷）",
-    "name" : "工作项快速建立视图（缺陷）",
+    "codeName" : "quick_create_milestone_view",
+    "logicName" : "工作项快速建立视图（里程碑）",
+    "name" : "工作项快速建立视图（里程碑）",
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "dyna_waterfall_quick_create_view",
-    "logicName" : "动态新建瀑布工作项",
-    "name" : "动态新建瀑布工作项",
-    "realModelSubType" : "DEOPTVIEW",
+    "codeName" : "kanban_work_item_report_view",
+    "logicName" : "kanban工作项分布报表视图",
+    "name" : "kanban工作项分布报表视图",
+    "realModelSubType" : "DECHARTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "burn_out_custom_view",
-    "logicName" : "燃尽图自定义视图",
-    "name" : "燃尽图自定义视图",
-    "realModelSubType" : "DECUSTOMVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "scrum_bug_grid_view",
-    "logicName" : "工作项表格视图（全部缺陷scrum）",
-    "name" : "工作项表格视图（全部缺陷scrum）",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "my_assignee_gird_view",
-    "logicName" : "我负责的工作项表格视图",
-    "name" : "我负责的工作项表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_pickup_view_PickupMDView",
-    "logicName" : "工作项单数据选择视图_选择数据视图（移动端）",
-    "name" : "工作项单数据选择视图_选择数据视图（移动端）",
-    "realModelSubType" : "DEMOBPICKUPMDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "sprint_grid_view",
-    "logicName" : "工作项表格视图（迭代）",
-    "name" : "工作项表格视图（迭代）",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "pick_up_view",
-    "logicName" : "工作项实体数据选择视图",
-    "modelTag" : "PICKUPVIEW",
-    "name" : "工作项实体数据选择视图",
-    "realModelSubType" : "DEPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_pickup_view",
-    "logicName" : "工作项单数据选择视图（移动端）",
-    "name" : "工作项单数据选择视图（移动端）",
-    "realModelSubType" : "DEMOBPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_calendar_exp_view",
-    "logicName" : "工作项移动端日历视图",
-    "name" : "工作项移动端日历视图",
-    "realModelSubType" : "DEMOBCALENDARVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_my_assignee_md_view",
-    "logicName" : "我负责的工作项移动端多数据视图",
-    "name" : "我负责的工作项移动端多数据视图",
-    "realModelSubType" : "DEMOBMDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "change_parent_pick_up_grid_view",
-    "logicName" : "工作项变更父工作项选择视图_选择数据视图",
-    "name" : "工作项变更父工作项选择视图_选择数据视图",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "codeName" : "re_self_mpick_up_view",
+    "logicName" : "工作项关联工作项多项选择视图",
+    "name" : "工作项关联工作项多项选择视图",
+    "realModelSubType" : "DEMPICKUPVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "work_item_test",
@@ -48626,28 +48641,10 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "scrum_bug_state_report_view",
-    "logicName" : "Scrum缺陷状态分布报表",
-    "name" : "Scrum缺陷状态分布报表",
+    "codeName" : "scrum_backlog_flow_report_view",
+    "logicName" : "Scrum需求累计流图",
+    "name" : "Scrum需求累计流图",
     "realModelSubType" : "DECHARTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_my_assignee_chart",
-    "logicName" : "个人工作项统计（移动端仪表盘）",
-    "name" : "个人工作项统计（移动端仪表盘）",
-    "realModelSubType" : "DEMOBCHARTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "all_scrum_grid_view",
-    "logicName" : "工作项表格视图（scrum）",
-    "name" : "工作项表格视图（scrum）",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "Usr07302198GridView",
-    "logicName" : "测试无权限总数（表格）",
-    "name" : "测试无权限总数（表格）",
-    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "others_re_notbug_view",
@@ -48656,22 +48653,22 @@
     "realModelSubType" : "DEMPICKUPVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "version_comparison_view",
-    "logicName" : "工作项版本对比视图",
-    "name" : "工作项版本对比视图",
-    "realModelSubType" : "DEEDITVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "overdue_grid_view",
-    "logicName" : "逾期工作项表格视图",
-    "name" : "逾期工作项表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
+    "codeName" : "test_tab_exp_view",
+    "logicName" : "缺陷属性分布导航视图测试",
+    "name" : "缺陷属性分布导航视图测试",
+    "realModelSubType" : "DETABEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "RedirectView_Dyna",
     "logicName" : "工作项实体数据重定向视图(动态)",
     "name" : "工作项实体数据重定向视图(动态)",
     "realModelSubType" : "DEREDIRECTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "my_assignee_mobboard",
+    "logicName" : "我负责的工作项（移动端仪表盘）",
+    "name" : "我负责的工作项（移动端仪表盘）",
+    "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "change_assignee_view",
@@ -48686,22 +48683,28 @@
     "realModelSubType" : "DECALENDARVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "scrum_backlog_flow_report_view",
-    "logicName" : "Scrum需求累计流图",
-    "name" : "Scrum需求累计流图",
-    "realModelSubType" : "DECHARTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "test_drill_detail_grid_view",
-    "logicName" : "工作项反查表格视图",
-    "name" : "工作项反查表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_idea_list_view",
-    "logicName" : "需求移动端列表视图",
-    "name" : "需求移动端列表视图",
+    "codeName" : "mob_kanban_list_view",
+    "logicName" : "工作项移动端列表视图（kanban）",
+    "name" : "工作项移动端列表视图（kanban）",
     "realModelSubType" : "DEMOBLISTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_hybrid_list_view",
+    "logicName" : "工作项移动端列表视图（hybrid）",
+    "name" : "工作项移动端列表视图（hybrid）",
+    "realModelSubType" : "DEMOBLISTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "project_resource_gantt_view",
+    "logicName" : "项目资源分配甘特视图",
+    "name" : "项目资源分配甘特视图",
+    "realModelSubType" : "DEGANTTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "dyna_hybrid_quick_create_view",
+    "logicName" : "动态新建混合工作项",
+    "name" : "动态新建混合工作项",
+    "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "test_follow_edit_view",
@@ -48710,52 +48713,16 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "summary_bug_grid_view",
-    "logicName" : "我的事项缺陷数表格视图",
-    "name" : "我的事项缺陷数表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
+    "codeName" : "version_comparison_view",
+    "logicName" : "工作项版本对比视图",
+    "name" : "工作项版本对比视图",
+    "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_waterfall_list_view",
-    "logicName" : "工作项移动端列表视图（waterfall）",
-    "name" : "工作项移动端列表视图（waterfall）",
-    "realModelSubType" : "DEMOBLISTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "bug_mob_mpick_up_view_PickupMDView",
-    "logicName" : "其他实体关联缺陷选择视图（移动端）_选择数据视图",
-    "name" : "其他实体关联缺陷选择视图（移动端）_选择数据视图",
-    "realModelSubType" : "DEMOBPICKUPMDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_relation_mpick_view_PickupMDView",
-    "logicName" : "移动端工作项选择关联多项选择视图_选择数据视图",
-    "name" : "移动端工作项选择关联多项选择视图_选择数据视图",
-    "realModelSubType" : "DEMOBPICKUPMDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "dyna_kanban_grid_view",
-    "logicName" : "工作项表格视图（动态kanban）",
-    "name" : "工作项表格视图（动态kanban）",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "plan_work_item_mpick_up_grid_view",
-    "logicName" : "规划工作项多项选择视图_选择数据视图",
-    "name" : "规划工作项多项选择视图_选择数据视图",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_scrum_list_view",
-    "logicName" : "工作项移动端列表视图（scrum）",
-    "name" : "工作项移动端列表视图（scrum）",
-    "realModelSubType" : "DEMOBLISTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "baseline_mpick_up_grid_view",
-    "logicName" : "基线规划工作项多项选择视图_选择数据视图",
-    "name" : "基线规划工作项多项选择视图_选择数据视图",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "codeName" : "mob_my_created_md_view",
+    "logicName" : "我创建的工作项移动端多数据视图",
+    "name" : "我创建的工作项移动端多数据视图",
+    "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "dyna_waterfall_tree_grid_view",
@@ -48764,10 +48731,34 @@
     "realModelSubType" : "DETREEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "release_grid_view",
-    "logicName" : "工作项表格视图（发布）",
-    "name" : "工作项表格视图（发布）",
+    "codeName" : "hybrid_kanban_view",
+    "logicName" : "混合工作项看板视图",
+    "name" : "混合工作项看板视图",
+    "realModelSubType" : "DEKANBANVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_scrum_list_view",
+    "logicName" : "工作项移动端列表视图（scrum）",
+    "name" : "工作项移动端列表视图（scrum）",
+    "realModelSubType" : "DEMOBLISTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "all_waterfall_grid_view",
+    "logicName" : "工作项表格视图（waterfall）",
+    "name" : "工作项表格视图（waterfall）",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "others_re_notbug_mpick_up_grid_view",
+    "logicName" : "其他实体关联工作项多项选择视图_选择数据视图（不含缺陷）",
+    "name" : "其他实体关联工作项多项选择视图_选择数据视图（不含缺陷）",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "bug_main_view",
+    "logicName" : "工作项主视图（缺陷）",
+    "name" : "工作项主视图（缺陷）",
+    "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "three_day_warning_grid_view",
@@ -48776,34 +48767,46 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "dyna_quick_create_view",
-    "logicName" : "工作项快速建立视图（动态）",
-    "name" : "工作项快速建立视图（动态）",
-    "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "program_pickup_grid_view",
-    "logicName" : "规划计划的工作项表格视图",
-    "name" : "规划计划的工作项表格视图",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_plan_md_view",
-    "logicName" : "规划移动端多数据视图",
-    "name" : "规划移动端多数据视图",
+    "codeName" : "my_created_mobdash",
+    "logicName" : "我创建的工作项（移动端仪表盘）",
+    "name" : "我创建的工作项（移动端仪表盘）",
     "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "case_re_bug_mpick_up_view",
-    "logicName" : "关联缺陷多项数据选择视图（测试用例关联）",
-    "name" : "关联缺陷多项数据选择视图（测试用例关联）",
-    "realModelSubType" : "DEMPICKUPVIEW2",
+    "codeName" : "bug_mob_mpick_up_view_PickupMDView",
+    "logicName" : "其他实体关联缺陷选择视图（移动端）_选择数据视图",
+    "name" : "其他实体关联缺陷选择视图（移动端）_选择数据视图",
+    "realModelSubType" : "DEMOBPICKUPMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "epic_main_view",
-    "logicName" : "工作项主视图（史诗）",
-    "name" : "工作项主视图（史诗）",
-    "realModelSubType" : "DEEDITVIEW",
+    "codeName" : "quick_create_bug_view",
+    "logicName" : "工作项快速建立视图（缺陷）",
+    "name" : "工作项快速建立视图（缺陷）",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "all_scrum_grid_view",
+    "logicName" : "工作项表格视图（scrum）",
+    "name" : "工作项表格视图（scrum）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_bug_list_view",
+    "logicName" : "缺陷移动端列表视图",
+    "name" : "缺陷移动端列表视图",
+    "realModelSubType" : "DEMOBLISTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "summary_bug_grid_view",
+    "logicName" : "我的事项缺陷数表格视图",
+    "name" : "我的事项缺陷数表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "scrum_defect_total_trend_report_view",
+    "logicName" : "Scrum缺陷累计趋势报表",
+    "name" : "Scrum缺陷累计趋势报表",
+    "realModelSubType" : "DECHARTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "bug_state_statement",
@@ -48812,34 +48815,22 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "re_mpick_up_grid_view",
-    "logicName" : "关联工作项多项选择视图_选择数据视图（测试用例关联）",
-    "name" : "关联工作项多项选择视图_选择数据视图（测试用例关联）",
+    "codeName" : "scrum_defect_age_report_view",
+    "logicName" : "Scrum缺陷年龄报告报表",
+    "name" : "Scrum缺陷年龄报告报表",
+    "realModelSubType" : "DECHARTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "depend_mpick_up_grid_view",
+    "logicName" : "工作项选择依赖多项选择视图_选择数据视图",
+    "name" : "工作项选择依赖多项选择视图_选择数据视图",
     "realModelSubType" : "DEPICKUPGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "plan_work_item_mpick_up_view",
-    "logicName" : "规划工作项多项选择视图",
-    "name" : "规划工作项多项选择视图",
-    "realModelSubType" : "DEMPICKUPVIEW2",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "bi_form_view_item_bug",
-    "logicName" : "BI报表配置视图_工作项缺陷",
-    "name" : "BI报表配置视图_工作项缺陷",
-    "realModelSubType" : "DEEDITVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "index_my_created_grid_view",
-    "logicName" : "我创建的工作项表格视图（首页）",
-    "name" : "我创建的工作项表格视图（首页）",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "more_work_item_unit",
-    "logicName" : "工作项部件表格视图（更多）",
-    "name" : "工作项部件表格视图（更多）",
-    "realModelSubType" : "DEGRIDVIEW",
+    "codeName" : "project_dyna_tab_exp_view",
+    "logicName" : "工作项动态设计分页（项目）",
+    "name" : "工作项动态设计分页（项目）",
+    "realModelSubType" : "DETABEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "copy_view",
@@ -48848,63 +48839,21 @@
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "choose_child_mpick_up_grid_view",
+    "logicName" : "子工作项多项选择视图_选择数据视图",
+    "name" : "子工作项多项选择视图_选择数据视图",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "burn_out_custom_view",
+    "logicName" : "燃尽图自定义视图",
+    "name" : "燃尽图自定义视图",
+    "realModelSubType" : "DECUSTOMVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "mob_dyna_list_view",
     "logicName" : "工作项移动端列表视图(动态)",
     "name" : "工作项移动端列表视图(动态)",
-    "realModelSubType" : "DEMOBLISTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_not_completed_md_view",
-    "logicName" : "待完成事项移动端多数据视图",
-    "name" : "待完成事项移动端多数据视图",
-    "realModelSubType" : "DEMOBMDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "plan_quick_create_view",
-    "logicName" : "工作项快速建立视图（规划）",
-    "name" : "工作项快速建立视图（规划）",
-    "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "move_view",
-    "logicName" : "移动选项视图",
-    "name" : "移动选项视图",
-    "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "search_mob_md_view",
-    "logicName" : "移动端工作项查询结果多数据视图",
-    "name" : "移动端工作项查询结果多数据视图",
-    "realModelSubType" : "DEMOBMDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_child_mpick_up_view",
-    "logicName" : "移动端子工作项多项选择视图",
-    "name" : "移动端子工作项多项选择视图",
-    "realModelSubType" : "DEMOBMPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "change_time_view",
-    "logicName" : "变更时间选项操作视图",
-    "name" : "变更时间选项操作视图",
-    "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "kanban_backlog_daily_trend_report_view",
-    "logicName" : "kanban需求每日趋势报表",
-    "name" : "kanban需求每日趋势报表",
-    "realModelSubType" : "DECHARTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "waterfall_require_tree_grid_view",
-    "logicName" : "需求树表格视图（waterfall动态）",
-    "name" : "需求树表格视图（waterfall动态）",
-    "realModelSubType" : "DETREEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_hybrid_milestone_list_view",
-    "logicName" : "里程碑移动端列表视图（hybrid）",
-    "name" : "里程碑移动端列表视图（hybrid）",
     "realModelSubType" : "DEMOBLISTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
@@ -48914,10 +48863,119 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "dyna_hybrid_quick_create_view",
-    "logicName" : "动态新建混合工作项",
-    "name" : "动态新建混合工作项",
+    "codeName" : "move_view",
+    "logicName" : "移动选项视图",
+    "name" : "移动选项视图",
     "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_relation_mpick_view",
+    "logicName" : "移动端工作项选择关联多项选择视图",
+    "name" : "移动端工作项选择关联多项选择视图",
+    "realModelSubType" : "DEMOBMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_hybrid_milestone_list_view",
+    "logicName" : "里程碑移动端列表视图（hybrid）",
+    "name" : "里程碑移动端列表视图（hybrid）",
+    "realModelSubType" : "DEMOBLISTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "scrum_require_tree_grid_view",
+    "logicName" : "需求树表格视图（scrum动态）",
+    "name" : "需求树表格视图（scrum动态）",
+    "realModelSubType" : "DETREEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "kanban_backlog_daily_trend_report_view",
+    "logicName" : "kanban需求每日趋势报表",
+    "name" : "kanban需求每日趋势报表",
+    "realModelSubType" : "DECHARTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "change_time_view",
+    "logicName" : "变更时间选项操作视图",
+    "name" : "变更时间选项操作视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_pickup_view_PickupMDView",
+    "logicName" : "工作项单数据选择视图_选择数据视图（移动端）",
+    "name" : "工作项单数据选择视图_选择数据视图（移动端）",
+    "realModelSubType" : "DEMOBPICKUPMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "scrum_bug_grid_view",
+    "logicName" : "工作项表格视图（全部缺陷scrum）",
+    "name" : "工作项表格视图（全部缺陷scrum）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "waterfall_require_tree_grid_view",
+    "logicName" : "需求树表格视图（waterfall动态）",
+    "name" : "需求树表格视图（waterfall动态）",
+    "realModelSubType" : "DETREEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "plan_quick_create_view",
+    "logicName" : "工作项快速建立视图（规划）",
+    "name" : "工作项快速建立视图（规划）",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "pick_up_view",
+    "logicName" : "工作项实体数据选择视图",
+    "modelTag" : "PICKUPVIEW",
+    "name" : "工作项实体数据选择视图",
+    "realModelSubType" : "DEPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "all_kanban_grid_view",
+    "logicName" : "工作项表格视图（kanban）",
+    "name" : "工作项表格视图（kanban）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "kanban_acklog_age_report_view",
+    "logicName" : "KanBan需求年龄报告报表",
+    "name" : "KanBan需求年龄报告报表",
+    "realModelSubType" : "DECHARTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "more_work_item_unit",
+    "logicName" : "工作项部件表格视图（更多）",
+    "name" : "工作项部件表格视图（更多）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "pick_up_grid_view",
+    "logicName" : "工作项实体选择表格视图（部件视图）",
+    "name" : "工作项实体选择表格视图（部件视图）",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "index_my_created_grid_view",
+    "logicName" : "我创建的工作项表格视图（首页）",
+    "name" : "我创建的工作项表格视图（首页）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "release_work_item_customView",
+    "logicName" : "发布工作项统计",
+    "name" : "发布工作项统计",
+    "realModelSubType" : "DECUSTOMVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "waterfall_story_grid_view",
+    "logicName" : "工作项表格视图（全部需求waterfall）",
+    "name" : "工作项表格视图（全部需求waterfall）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "project_set_resource_gantt_view",
+    "logicName" : "项目集资源分配甘特视图",
+    "name" : "项目集资源分配甘特视图",
+    "realModelSubType" : "DEGANTTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView2",
@@ -48926,34 +48984,34 @@
     "realModelSubType" : "DEEDITVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "others_re_mpick_up_grid_view",
-    "logicName" : "其他实体关联工作项多项选择视图_选择数据视图",
-    "name" : "其他实体关联工作项多项选择视图_选择数据视图",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "codeName" : "sprint_grid_view",
+    "logicName" : "工作项表格视图（迭代）",
+    "name" : "工作项表格视图（迭代）",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_kanban_list_view",
-    "logicName" : "工作项移动端列表视图（kanban）",
-    "name" : "工作项移动端列表视图（kanban）",
-    "realModelSubType" : "DEMOBLISTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_mpick_up_view_PickupMDView",
-    "logicName" : "其他实体关联工作项选择视图（移动端）_选择数据视图",
-    "name" : "其他实体关联工作项选择视图（移动端）_选择数据视图",
-    "realModelSubType" : "DEMOBPICKUPMDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "dyna_kanban_quick_create_view",
-    "logicName" : "动态新建看板工作项",
-    "name" : "动态新建看板工作项",
-    "realModelSubType" : "DEOPTVIEW",
+    "codeName" : "overdue_grid_view",
+    "logicName" : "逾期工作项表格视图",
+    "name" : "逾期工作项表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "kanban_defect_age_report_view",
     "logicName" : "KanBan缺陷年龄报告报表",
     "name" : "KanBan缺陷年龄报告报表",
     "realModelSubType" : "DECHARTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_child_list_view",
+    "logicName" : "子工作项移动端列表视图",
+    "name" : "子工作项移动端列表视图",
+    "realModelSubType" : "DEMOBLISTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "baseline_mpick_up_grid_view",
+    "logicName" : "基线规划工作项多项选择视图_选择数据视图",
+    "name" : "基线规划工作项多项选择视图_选择数据视图",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "GridView",
@@ -48963,34 +49021,10 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "kanban_backlog_property_report_view",
-    "logicName" : "kanban需求属性分布报表",
-    "name" : "kanban需求属性分布报表",
-    "realModelSubType" : "DECHARTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_depend_mpick_up_view_PickupMDView",
-    "logicName" : "移动端工作项选择依赖多项选择视图_选择数据视图",
-    "name" : "移动端工作项选择依赖多项选择视图_选择数据视图",
+    "codeName" : "mob_relation_mpick_view_PickupMDView",
+    "logicName" : "移动端工作项选择关联多项选择视图_选择数据视图",
+    "name" : "移动端工作项选择关联多项选择视图_选择数据视图",
     "realModelSubType" : "DEMOBPICKUPMDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "my_created_mobdash",
-    "logicName" : "我创建的工作项（移动端仪表盘）",
-    "name" : "我创建的工作项（移动端仪表盘）",
-    "realModelSubType" : "DEMOBMDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "quick_create_milestone_view",
-    "logicName" : "工作项快速建立视图（里程碑）",
-    "name" : "工作项快速建立视图（里程碑）",
-    "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "depend_mpick_up_grid_view",
-    "logicName" : "工作项选择依赖多项选择视图_选择数据视图",
-    "name" : "工作项选择依赖多项选择视图_选择数据视图",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "dyna_main_view",
@@ -48999,10 +49033,28 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_hybrid_list_view",
-    "logicName" : "工作项移动端列表视图（hybrid）",
-    "name" : "工作项移动端列表视图（hybrid）",
-    "realModelSubType" : "DEMOBLISTVIEW",
+    "codeName" : "mob_not_completed_md_view",
+    "logicName" : "待完成事项移动端多数据视图",
+    "name" : "待完成事项移动端多数据视图",
+    "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "scrum_temp_speed_report_view",
+    "logicName" : "Scrum团队速度报表",
+    "name" : "Scrum团队速度报表",
+    "realModelSubType" : "DECHARTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_child_mpick_up_view_PickupMDView",
+    "logicName" : "移动端子工作项多项选择视图_选择数据视图",
+    "name" : "移动端子工作项多项选择视图_选择数据视图",
+    "realModelSubType" : "DEMOBPICKUPMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "dyna_waterfall_quick_create_view",
+    "logicName" : "动态新建瀑布工作项",
+    "name" : "动态新建瀑布工作项",
+    "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "RedirectView",
@@ -49012,16 +49064,10 @@
     "realModelSubType" : "DEREDIRECTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "release_work_item_customView",
-    "logicName" : "发布工作项统计",
-    "name" : "发布工作项统计",
-    "realModelSubType" : "DECUSTOMVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "dyna_scrum_quick_create_view",
-    "logicName" : "动态新建敏捷工作项",
-    "name" : "动态新建敏捷工作项",
-    "realModelSubType" : "DEOPTVIEW",
+    "codeName" : "case_re_bug_mpick_up_view",
+    "logicName" : "关联缺陷多项数据选择视图（测试用例关联）",
+    "name" : "关联缺陷多项数据选择视图（测试用例关联）",
+    "realModelSubType" : "DEMPICKUPVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mob_my_attention_md_view",
@@ -49036,12 +49082,6 @@
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "scrum_backlog_state_report_view",
-    "logicName" : "Scrum需求状态分布报表",
-    "name" : "Scrum需求状态分布报表",
-    "realModelSubType" : "DECHARTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "main_view",
     "logicName" : "工作项主视图（通用）",
     "name" : "工作项主视图（通用）",
@@ -49054,28 +49094,52 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "scrum_bug_daily_tide_report_view",
-    "logicName" : "Scrum缺陷每日趋势报表",
-    "name" : "Scrum缺陷每日趋势报表",
-    "realModelSubType" : "DECHARTVIEW",
+    "codeName" : "mob_my_assignee_chart",
+    "logicName" : "个人工作项统计（移动端仪表盘）",
+    "name" : "个人工作项统计（移动端仪表盘）",
+    "realModelSubType" : "DEMOBCHARTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "scrum_require_tree_grid_view",
-    "logicName" : "需求树表格视图（scrum动态）",
-    "name" : "需求树表格视图（scrum动态）",
+    "codeName" : "dyna_hybrid_tree_grid_view",
+    "logicName" : "工作项树表格视图（hybrid动态）",
+    "name" : "工作项树表格视图（hybrid动态）",
     "realModelSubType" : "DETREEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "choose_child_mpick_up_grid_view",
-    "logicName" : "子工作项多项选择视图_选择数据视图",
-    "name" : "子工作项多项选择视图_选择数据视图",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "codeName" : "dyna_kanban_quick_create_view",
+    "logicName" : "动态新建看板工作项",
+    "name" : "动态新建看板工作项",
+    "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "all_waterfall_grid_view",
-    "logicName" : "工作项表格视图（waterfall）",
-    "name" : "工作项表格视图（waterfall）",
+    "codeName" : "mob_mpick_up_view_PickupMDView",
+    "logicName" : "其他实体关联工作项选择视图（移动端）_选择数据视图",
+    "name" : "其他实体关联工作项选择视图（移动端）_选择数据视图",
+    "realModelSubType" : "DEMOBPICKUPMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "work_item_grid_parts",
+    "logicName" : "工作项表格视图（仪表盘部件）",
+    "name" : "工作项表格视图（仪表盘部件）",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "completed_drill_detail_grid_view",
+    "logicName" : "工作项完成率反查表格视图",
+    "name" : "工作项完成率反查表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "kanban_defect_property_report_view",
+    "logicName" : "kanban缺陷属性分布报表",
+    "name" : "kanban缺陷属性分布报表",
+    "realModelSubType" : "DECHARTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_complete_trend_chart_view",
+    "logicName" : "项目工作项完成趋势图表视图（移动端）",
+    "name" : "项目工作项完成趋势图表视图（移动端）",
+    "realModelSubType" : "DEMOBCHARTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "others_re_view",
@@ -49090,16 +49154,10 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "kanban_work_item_report_view",
-    "logicName" : "kanban工作项分布报表视图",
-    "name" : "kanban工作项分布报表视图",
-    "realModelSubType" : "DECHARTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "test_tab_exp_view",
-    "logicName" : "缺陷属性分布导航视图测试",
-    "name" : "缺陷属性分布导航视图测试",
-    "realModelSubType" : "DETABEXPVIEW",
+    "codeName" : "dyna_scrum_quick_create_view",
+    "logicName" : "动态新建敏捷工作项",
+    "name" : "动态新建敏捷工作项",
+    "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mob_sprint_work_item_list_view",
@@ -49114,46 +49172,28 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_child_list_view",
-    "logicName" : "子工作项移动端列表视图",
-    "name" : "子工作项移动端列表视图",
-    "realModelSubType" : "DEMOBLISTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_work_item_statistic_chart_view",
-    "logicName" : "工作项统计图表视图（移动端）",
-    "name" : "工作项统计图表视图（移动端）",
-    "realModelSubType" : "DEMOBCHARTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "srcum_tree_grid_view",
-    "logicName" : "工作项树表格视图（scrum）",
-    "name" : "工作项树表格视图（scrum）",
-    "realModelSubType" : "DETREEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "depend_mpick_up_view",
-    "logicName" : "工作项选择依赖多项选择视图",
-    "name" : "工作项选择依赖多项选择视图",
-    "realModelSubType" : "DEMPICKUPVIEW2",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "dyna_hybrid_tree_grid_view",
-    "logicName" : "工作项树表格视图（hybrid动态）",
-    "name" : "工作项树表格视图（hybrid动态）",
-    "realModelSubType" : "DETREEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_my_created_md_view",
-    "logicName" : "我创建的工作项移动端多数据视图",
-    "name" : "我创建的工作项移动端多数据视图",
-    "realModelSubType" : "DEMOBMDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "workload_detail_grid_view",
-    "logicName" : "工作项工时反查表格视图",
-    "name" : "工作项工时反查表格视图",
+    "codeName" : "dyna_waterfall_grid_view",
+    "logicName" : "工作项表格视图（动态waterfall）",
+    "name" : "工作项表格视图（动态waterfall）",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "recycle_bin_grid_view",
+    "logicName" : "回收站表格视图",
+    "name" : "回收站表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "dyna_tab_exp_view",
+    "logicName" : "工作项动态设计分页（全局）",
+    "name" : "工作项动态设计分页（全局）",
+    "realModelSubType" : "DETABEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "scrum_backlog_state_report_view",
+    "logicName" : "Scrum需求状态分布报表",
+    "name" : "Scrum需求状态分布报表",
+    "realModelSubType" : "DECHARTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "kanban_view",
@@ -49168,66 +49208,28 @@
     "realModelSubType" : "DETREEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "project_set_resource_gantt_view",
-    "logicName" : "项目集资源分配甘特视图",
-    "name" : "项目集资源分配甘特视图",
-    "realModelSubType" : "DEGANTTVIEW",
+    "codeName" : "mob_recycle_bin_md_view",
+    "logicName" : "移动端工作项回收站多数据视图",
+    "name" : "移动端工作项回收站多数据视图",
+    "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "work_item_grid_parts",
-    "logicName" : "工作项表格视图（仪表盘部件）",
-    "name" : "工作项表格视图（仪表盘部件）",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "scrum_defect_age_report_view",
-    "logicName" : "Scrum缺陷年龄报告报表",
-    "name" : "Scrum缺陷年龄报告报表",
+    "codeName" : "kanban_backlog_property_report_view",
+    "logicName" : "kanban需求属性分布报表",
+    "name" : "kanban需求属性分布报表",
     "realModelSubType" : "DECHARTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "re_self_mpick_up_grid_view",
-    "logicName" : "工作项关联工作项多项选择视图_选择数据视图",
-    "name" : "工作项关联工作项多项选择视图_选择数据视图",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "kanban_acklog_age_report_view",
-    "logicName" : "KanBan需求年龄报告报表",
-    "name" : "KanBan需求年龄报告报表",
-    "realModelSubType" : "DECHARTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_create_option_view",
-    "logicName" : "工作项快速新建选项操作视图（移动端）",
-    "name" : "工作项快速新建选项操作视图（移动端）",
-    "realModelSubType" : "DEMOBOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "dyna_waterfall_grid_view",
-    "logicName" : "工作项表格视图（动态waterfall）",
-    "name" : "工作项表格视图（动态waterfall）",
+    "codeName" : "summary_other_grid_view",
+    "logicName" : "我的事项其他工作项表格视图",
+    "name" : "我的事项其他工作项表格视图",
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "new_waterfall_task",
-    "logicName" : "新建瀑布任务",
+    "codeName" : "hybrid_feature",
+    "logicName" : "混合特性",
     "modelTag2" : "0",
-    "name" : "新建瀑布任务",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "bi_form_item_state",
-    "logicName" : "BI报表配置_工作项状态",
-    "modelTag2" : "0",
-    "name" : "BI报表配置_工作项状态",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "new_scrum_feature",
-    "logicName" : "新建敏捷特性",
-    "modelTag2" : "0",
-    "name" : "新建敏捷特性",
+    "name" : "混合特性",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -49238,10 +49240,31 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
+    "codeName" : "comparison_form",
+    "logicName" : "版本对比_表单",
+    "modelTag2" : "0",
+    "name" : "版本对比_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "new_waterfall_bug",
+    "logicName" : "新建瀑布缺陷",
+    "modelTag2" : "0",
+    "name" : "新建瀑布缺陷",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "waterfall_task",
     "logicName" : "瀑布任务",
     "modelTag2" : "0",
     "name" : "瀑布任务",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "new_hybrid_stage",
+    "logicName" : "新建混合阶段",
+    "modelTag2" : "0",
+    "name" : "新建混合阶段",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -49256,13 +49279,6 @@
     "logicName" : "scrum史诗",
     "modelTag2" : "0",
     "name" : "scrum史诗",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "executors_form",
-    "logicName" : "执行人_表单",
-    "modelTag2" : "0",
-    "name" : "执行人_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -49287,6 +49303,13 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
+    "codeName" : "mob_create_form",
+    "logicName" : "移动端新建工作项表单",
+    "modelTag2" : "1",
+    "name" : "移动端新建工作项表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "waterfall_bug",
     "logicName" : "瀑布缺陷",
     "modelTag2" : "0",
@@ -49301,24 +49324,10 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "new_hybrid_story",
-    "logicName" : "新建混合用户故事",
-    "modelTag2" : "0",
-    "name" : "新建混合用户故事",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "new_kanban_story",
-    "logicName" : "新建看板用户故事",
-    "modelTag2" : "0",
-    "name" : "新建看板用户故事",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "mob_create_option_view_Form",
-    "logicName" : "工作项快速新建选项操作视图（移动端）_表单",
+    "codeName" : "bug_mob_edit_view_Form",
+    "logicName" : "缺陷移动端编辑视图_表单",
     "modelTag2" : "1",
-    "name" : "工作项快速新建选项操作视图（移动端）_表单",
+    "name" : "缺陷移动端编辑视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -49329,48 +49338,6 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "kanban_bug",
-    "logicName" : "看板缺陷",
-    "modelTag2" : "0",
-    "name" : "看板缺陷",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "new_scrum_epic",
-    "logicName" : "新建敏捷史诗",
-    "modelTag2" : "0",
-    "name" : "新建敏捷史诗",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "copy_form",
-    "logicName" : "复制工作项_表单",
-    "modelTag2" : "0",
-    "name" : "复制工作项_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "recycle_bin_form",
-    "logicName" : "回收站_表单",
-    "modelTag2" : "0",
-    "name" : "回收站_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "new_kanban_issue",
-    "logicName" : "新建看板事务",
-    "modelTag2" : "0",
-    "name" : "新建看板事务",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "hybrid_issue",
-    "logicName" : "混合事务",
-    "modelTag2" : "0",
-    "name" : "混合事务",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
     "codeName" : "hybrid_stage",
     "logicName" : "混合阶段",
     "modelTag2" : "0",
@@ -49378,185 +49345,17 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "hybrid_story",
-    "logicName" : "混合用户故事",
+    "codeName" : "new_hybrid_story",
+    "logicName" : "新建混合用户故事",
     "modelTag2" : "0",
-    "name" : "混合用户故事",
+    "name" : "新建混合用户故事",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "new_kanban_task",
-    "logicName" : "新建看板任务",
+    "codeName" : "kanban_bug",
+    "logicName" : "看板缺陷",
     "modelTag2" : "0",
-    "name" : "新建看板任务",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "waterfall_milestone",
-    "logicName" : "瀑布里程碑",
-    "modelTag2" : "0",
-    "name" : "瀑布里程碑",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "quick_create_milestone",
-    "logicName" : "快速建立（里程碑）",
-    "modelTag2" : "0",
-    "name" : "快速建立（里程碑）",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "normal_form",
-    "logicName" : "通用表单",
-    "modelTag2" : "0",
-    "name" : "通用表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "scrum_story",
-    "logicName" : "scrum用户故事",
-    "modelTag2" : "0",
-    "name" : "scrum用户故事",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "new_waterfall_requirement",
-    "logicName" : "新建瀑布需求",
-    "modelTag2" : "0",
-    "name" : "新建瀑布需求",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "change_assignee_form",
-    "logicName" : "分配负责人_表单",
-    "modelTag2" : "0",
-    "name" : "分配负责人_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "new_hybrid_issue",
-    "logicName" : "新建混合事务",
-    "modelTag2" : "0",
-    "name" : "新建混合事务",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "new_kanban_bug",
-    "logicName" : "新建看板缺陷",
-    "modelTag2" : "0",
-    "name" : "新建看板缺陷",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "new_hybrid_bug",
-    "logicName" : "新建混合缺陷",
-    "modelTag2" : "0",
-    "name" : "新建混合缺陷",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "new_hybrid_requirement",
-    "logicName" : "新建混合需求",
-    "modelTag2" : "0",
-    "name" : "新建混合需求",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "new_waterfall_milestone",
-    "logicName" : "新建瀑布里程碑",
-    "modelTag2" : "0",
-    "name" : "新建瀑布里程碑",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "hybrid_milestone",
-    "logicName" : "混合里程碑",
-    "modelTag2" : "0",
-    "name" : "混合里程碑",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "new_hybrid_feature",
-    "logicName" : "新建混合特性",
-    "modelTag2" : "0",
-    "name" : "新建混合特性",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "bug_mob_edit_view_Form",
-    "logicName" : "缺陷移动端编辑视图_表单",
-    "modelTag2" : "1",
-    "name" : "缺陷移动端编辑视图_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "mob_create_form",
-    "logicName" : "移动端新建工作项表单",
-    "modelTag2" : "1",
-    "name" : "移动端新建工作项表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "kanban_story",
-    "logicName" : "看板用户故事",
-    "modelTag2" : "0",
-    "name" : "看板用户故事",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "new_scrum_bug",
-    "logicName" : "新建敏捷缺陷",
-    "modelTag2" : "0",
-    "name" : "新建敏捷缺陷",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "hybrid_requirement",
-    "logicName" : "混合需求",
-    "modelTag2" : "0",
-    "name" : "混合需求",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "bi_report_measure_form",
-    "logicName" : "BI报表快速编辑表单（指标）",
-    "modelTag2" : "0",
-    "name" : "BI报表快速编辑表单（指标）",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "change_state",
-    "logicName" : "修改状态",
-    "modelTag2" : "0",
-    "name" : "修改状态",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "bi_form_item_bug",
-    "logicName" : "BI报表配置_工作项缺陷",
-    "modelTag2" : "0",
-    "name" : "BI报表配置_工作项缺陷",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "hybrid_feature",
-    "logicName" : "混合特性",
-    "modelTag2" : "0",
-    "name" : "混合特性",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "change_time_form",
-    "logicName" : "变更时间_表单",
-    "modelTag2" : "0",
-    "name" : "变更时间_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "new_hybrid_stage",
-    "logicName" : "新建混合阶段",
-    "modelTag2" : "0",
-    "name" : "新建混合阶段",
+    "name" : "看板缺陷",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -49567,38 +49366,10 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "new_hybrid_milestone",
-    "logicName" : "新建混合里程碑",
+    "codeName" : "copy_form",
+    "logicName" : "复制工作项_表单",
     "modelTag2" : "0",
-    "name" : "新建混合里程碑",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "shift_in_kanban_form",
-    "logicName" : "移入看板_表单",
-    "modelTag2" : "0",
-    "name" : "移入看板_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "hybrid_bug",
-    "logicName" : "混合缺陷",
-    "modelTag2" : "0",
-    "name" : "混合缺陷",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "scrum_feature",
-    "logicName" : "scrum特性",
-    "modelTag2" : "0",
-    "name" : "scrum特性",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "comparison_form",
-    "logicName" : "版本对比_表单",
-    "modelTag2" : "0",
-    "name" : "版本对比_表单",
+    "name" : "复制工作项_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -49609,10 +49380,262 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
+    "codeName" : "new_scrum_epic",
+    "logicName" : "新建敏捷史诗",
+    "modelTag2" : "0",
+    "name" : "新建敏捷史诗",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "new_kanban_issue",
+    "logicName" : "新建看板事务",
+    "modelTag2" : "0",
+    "name" : "新建看板事务",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "recycle_bin_form",
+    "logicName" : "回收站_表单",
+    "modelTag2" : "0",
+    "name" : "回收站_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "new_waterfall_stage",
+    "logicName" : "新建瀑布阶段",
+    "modelTag2" : "0",
+    "name" : "新建瀑布阶段",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "new_hybrid_issue",
+    "logicName" : "新建混合事务",
+    "modelTag2" : "0",
+    "name" : "新建混合事务",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "waterfall_milestone",
+    "logicName" : "瀑布里程碑",
+    "modelTag2" : "0",
+    "name" : "瀑布里程碑",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "new_kanban_feature",
+    "logicName" : "新建看板特性",
+    "modelTag2" : "0",
+    "name" : "新建看板特性",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "quick_create_milestone",
+    "logicName" : "快速建立（里程碑）",
+    "modelTag2" : "0",
+    "name" : "快速建立（里程碑）",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "new_kanban_task",
+    "logicName" : "新建看板任务",
+    "modelTag2" : "0",
+    "name" : "新建看板任务",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "normal_form",
+    "logicName" : "通用表单",
+    "modelTag2" : "0",
+    "name" : "通用表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "hybrid_requirement",
+    "logicName" : "混合需求",
+    "modelTag2" : "0",
+    "name" : "混合需求",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "new_waterfall_task",
+    "logicName" : "新建瀑布任务",
+    "modelTag2" : "0",
+    "name" : "新建瀑布任务",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "hybrid_epic",
+    "logicName" : "混合史诗",
+    "modelTag2" : "0",
+    "name" : "混合史诗",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "scrum_story",
+    "logicName" : "scrum用户故事",
+    "modelTag2" : "0",
+    "name" : "scrum用户故事",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "hybrid_task",
+    "logicName" : "混合任务",
+    "modelTag2" : "0",
+    "name" : "混合任务",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "change_assignee_form",
+    "logicName" : "分配负责人_表单",
+    "modelTag2" : "0",
+    "name" : "分配负责人_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "new_hybrid_milestone",
+    "logicName" : "新建混合里程碑",
+    "modelTag2" : "0",
+    "name" : "新建混合里程碑",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "new_hybrid_epic",
+    "logicName" : "新建混合史诗",
+    "modelTag2" : "0",
+    "name" : "新建混合史诗",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "hybrid_milestone",
+    "logicName" : "混合里程碑",
+    "modelTag2" : "0",
+    "name" : "混合里程碑",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "new_hybrid_task",
+    "logicName" : "新建混合任务",
+    "modelTag2" : "0",
+    "name" : "新建混合任务",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "new_scrum_task",
+    "logicName" : "新建敏捷任务",
+    "modelTag2" : "0",
+    "name" : "新建敏捷任务",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "kanban_story",
+    "logicName" : "看板用户故事",
+    "modelTag2" : "0",
+    "name" : "看板用户故事",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "new_hybrid_feature",
+    "logicName" : "新建混合特性",
+    "modelTag2" : "0",
+    "name" : "新建混合特性",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "change_state",
+    "logicName" : "修改状态",
+    "modelTag2" : "0",
+    "name" : "修改状态",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "change_time_form",
+    "logicName" : "变更时间_表单",
+    "modelTag2" : "0",
+    "name" : "变更时间_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "new_hybrid_requirement",
+    "logicName" : "新建混合需求",
+    "modelTag2" : "0",
+    "name" : "新建混合需求",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "new_waterfall_requirement",
+    "logicName" : "新建瀑布需求",
+    "modelTag2" : "0",
+    "name" : "新建瀑布需求",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "shift_in_kanban_form",
+    "logicName" : "移入看板_表单",
+    "modelTag2" : "0",
+    "name" : "移入看板_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "new_scrum_bug",
+    "logicName" : "新建敏捷缺陷",
+    "modelTag2" : "0",
+    "name" : "新建敏捷缺陷",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "new_hybrid_bug",
+    "logicName" : "新建混合缺陷",
+    "modelTag2" : "0",
+    "name" : "新建混合缺陷",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "scrum_feature",
+    "logicName" : "scrum特性",
+    "modelTag2" : "0",
+    "name" : "scrum特性",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "quick_create_bug",
     "logicName" : "快速建立（缺陷）",
     "modelTag2" : "0",
     "name" : "快速建立（缺陷）",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "new_scrum_feature",
+    "logicName" : "新建敏捷特性",
+    "modelTag2" : "0",
+    "name" : "新建敏捷特性",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "new_kanban_bug",
+    "logicName" : "新建看板缺陷",
+    "modelTag2" : "0",
+    "name" : "新建看板缺陷",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "bi_report_measure_form",
+    "logicName" : "BI报表快速编辑表单（指标）",
+    "modelTag2" : "0",
+    "name" : "BI报表快速编辑表单（指标）",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "new_kanban_epic",
+    "logicName" : "新建看板史诗",
+    "modelTag2" : "0",
+    "name" : "新建看板史诗",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "hybrid_story",
+    "logicName" : "混合用户故事",
+    "modelTag2" : "0",
+    "name" : "混合用户故事",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -49630,10 +49653,10 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "new_kanban_epic",
-    "logicName" : "新建看板史诗",
+    "codeName" : "bi_form_item_bug",
+    "logicName" : "BI报表配置_工作项缺陷",
     "modelTag2" : "0",
-    "name" : "新建看板史诗",
+    "name" : "BI报表配置_工作项缺陷",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -49644,6 +49667,13 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
+    "codeName" : "mob_create_option_view_Form",
+    "logicName" : "工作项快速新建选项操作视图（移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "工作项快速新建选项操作视图（移动端）_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "kanban_feature",
     "logicName" : "看板特性",
     "modelTag2" : "0",
@@ -49651,31 +49681,10 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "new_waterfall_bug",
-    "logicName" : "新建瀑布缺陷",
+    "codeName" : "hybrid_issue",
+    "logicName" : "混合事务",
     "modelTag2" : "0",
-    "name" : "新建瀑布缺陷",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "new_hybrid_epic",
-    "logicName" : "新建混合史诗",
-    "modelTag2" : "0",
-    "name" : "新建混合史诗",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "new_hybrid_task",
-    "logicName" : "新建混合任务",
-    "modelTag2" : "0",
-    "name" : "新建混合任务",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "hybrid_task",
-    "logicName" : "混合任务",
-    "modelTag2" : "0",
-    "name" : "混合任务",
+    "name" : "混合事务",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -49683,6 +49692,13 @@
     "logicName" : "工作项快速建立视图（规划）_表单",
     "modelTag2" : "0",
     "name" : "工作项快速建立视图（规划）_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "bi_form_item_state",
+    "logicName" : "BI报表配置_工作项状态",
+    "modelTag2" : "0",
+    "name" : "BI报表配置_工作项状态",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -49707,10 +49723,10 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "hybrid_epic",
-    "logicName" : "混合史诗",
+    "codeName" : "new_waterfall_milestone",
+    "logicName" : "新建瀑布里程碑",
     "modelTag2" : "0",
-    "name" : "混合史诗",
+    "name" : "新建瀑布里程碑",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -49721,24 +49737,24 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "new_kanban_feature",
-    "logicName" : "新建看板特性",
+    "codeName" : "executors_form",
+    "logicName" : "执行人_表单",
     "modelTag2" : "0",
-    "name" : "新建看板特性",
+    "name" : "执行人_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "new_scrum_task",
-    "logicName" : "新建敏捷任务",
+    "codeName" : "hybrid_bug",
+    "logicName" : "混合缺陷",
     "modelTag2" : "0",
-    "name" : "新建敏捷任务",
+    "name" : "混合缺陷",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "new_waterfall_stage",
-    "logicName" : "新建瀑布阶段",
+    "codeName" : "new_kanban_story",
+    "logicName" : "新建看板用户故事",
     "modelTag2" : "0",
-    "name" : "新建瀑布阶段",
+    "name" : "新建看板用户故事",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   } ],
@@ -50142,7 +50158,8 @@
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
     },
-    "masterRS" : 0,
+    "masterOrder" : 100,
+    "masterRS" : 5,
     "getMinorPSDataEntity" : {
       "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/version.json"

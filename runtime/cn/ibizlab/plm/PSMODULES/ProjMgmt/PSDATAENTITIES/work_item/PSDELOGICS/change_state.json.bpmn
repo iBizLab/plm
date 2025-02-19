@@ -18,11 +18,11 @@
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_statebindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定选择数据对象"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_staterawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="设置工作项类型id"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_stateloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_stateprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置状态"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_statedeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="变更状态"/>
                         <endEvent id="deaction1_end" name="end"/>
                         <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_stateloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_stateprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置状态"/>
                     <sequenceFlow id="begin_bindparam1" sourceRef="begin" targetRef="bindparam1">
                     </sequenceFlow>
                     <sequenceFlow id="bindparam1_rawsfcode1" sourceRef="bindparam1" targetRef="rawsfcode1">

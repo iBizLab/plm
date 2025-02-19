@@ -22,7 +22,7 @@
     "rawValue" : false
   } ],
   "getPSDEViewCodeName" : "mob_depend_on_list_view",
-  "getPSDEViewId" : "4615DA4A-A055-486E-A27F-2ED1400A891D",
+  "getPSDEViewId" : "e66ec17ddb819264d4fb512bbbce8128",
   "getPSViewLayoutPanel" : {
     "getAllPSPanelFields" : [ {
       "id" : "total",
@@ -297,7 +297,7 @@
     "mobilePanel" : true,
     "useDefaultLayout" : false,
     "viewProxyMode" : true,
-    "modelid" : "CC5784C3-4302-4777-A0A3-65EE89B18996",
+    "modelid" : "966dde3774ddf1491ab632c12c8f7905",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSAppViewLogics" : [ {
       "eventNames" : "onLoadSuccess",
@@ -499,7 +499,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "面板成员[container4][面板显示]逻辑",
               "getPSPanelItemLogics" : [ {
                 "condOp" : "EQ",
                 "dstModelField" : "JOB_TYPE",
@@ -878,7 +877,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "面板成员[container5][面板显示]逻辑",
               "getPSPanelItemLogics" : [ {
                 "condOp" : "EQ",
                 "dstModelField" : "JOB_TYPE",
@@ -1344,18 +1342,18 @@
         "id" : "MDCTRL"
       },
       "getPSDEListDataItems" : [ {
+        "dataType" : 21,
+        "name" : "principal_work_item"
+      }, {
+        "dataType" : 21,
+        "name" : "work_item"
+      }, {
         "dataType" : 25,
         "getFrontPSCodeList" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/Base__choose_job_type.json"
         },
         "name" : "job_type"
-      }, {
-        "dataType" : 21,
-        "name" : "principal_work_item"
-      }, {
-        "dataType" : 21,
-        "name" : "work_item"
       }, {
         "dataType" : 25,
         "name" : "srfkey",
@@ -1381,7 +1379,7 @@
         "getPSUIActionGroupDetails" : [ {
           "caption" : "取消依赖",
           "detailType" : "DEUIACTION",
-          "name" : "u3c718ce",
+          "name" : "u9b92cfb",
           "getPSSysImage" : {
             "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\" fill=\"currentColor\">\n  <path d=\"M640 640H448V576h192V192H64v384h192v64H0V128h704v512h-64zM384 384h192v64H384v384h576V448h-192V384h256v512H320V384h64z\"></path>\n</svg>"
           },
@@ -1390,7 +1388,6 @@
             "caption" : "取消依赖",
             "codeName" : "del_dependency",
             "confirmMsg" : "确认取消依赖?",
-            "dataAccessAction" : "UPDATE",
             "fullCodeName" : "relation_del_dependency",
             "name" : "取消依赖",
             "getPSAppDEMethod" : {
@@ -1404,10 +1401,6 @@
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
-            },
-            "getPSDEOPPriv" : {
-              "modelref" : true,
-              "id" : "UPDATE"
             },
             "getPSSysImage" : {
               "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\" fill=\"currentColor\">\n  <path d=\"M640 640H448V576h192V192H64v384h192v64H0V128h704v512h-64zM384 384h192v64H384v384h576V448h-192V384h256v512H320V384h64z\"></path>\n</svg>"
@@ -1472,7 +1465,7 @@
       "showHeader" : true,
       "singleSelect" : false,
       "name" : "mdctrl",
-      "modelid" : "409b9ca678cd0712024049960628b718",
+      "modelid" : "a90764fba4c01c3b7eacdf7d6a820342",
       "modeltype" : "PSDELIST"
     }, {
       "codeName" : "mob_depend_on_list_view_righttoolbar",
@@ -1617,7 +1610,7 @@
       } ],
       "toolbarStyle" : "MOBNAVRIGHTMENU",
       "xDataControlName" : "mdctrl",
-      "modelid" : "854F8B7F-8B9A-4AA2-840A-086A705329CD",
+      "modelid" : "936cf801807ecd92f7b2d242959c0836",
       "modeltype" : "PSDETOOLBAR"
     }, {
       "controlType" : "SEARCHBAR",
@@ -1660,9 +1653,71 @@
   "enablePullDownRefresh" : false,
   "enableSearch" : true,
   "showCaptionBar" : false,
-  "modelid" : "c2d5b8b819a8ce29c06e68cedaadc88c",
+  "modelid" : "7792e3e4d8c59de22cec0a9d3a12430f",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "test_plans",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "project",
+    "majorDEName" : "PROJECT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+    },
+    "minorDECodeName" : "test_plan",
+    "minorDEName" : "TEST_PLAN",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/test_plan.json"
+    },
+    "name" : "DER1N_TEST_PLAN_PROJECT_PROJECT_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PROJECT_ID",
+      "codeName" : "project_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "runs",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "test_plan",
+    "majorDEName" : "TEST_PLAN",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/test_plan.json"
+    },
+    "minorDECodeName" : "run",
+    "minorDEName" : "RUN",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/run.json"
+    },
+    "name" : "DER1N_RUN_TEST_PLAN_PLAN_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PLAN_ID",
+      "codeName" : "plan_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "relations",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "run",
+    "majorDEName" : "RUN",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/run.json"
+    },
+    "minorDECodeName" : "relation",
+    "minorDEName" : "RELATION",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/relation.json"
+    },
+    "name" : "执行用例-关联",
+    "rSMode" : 2
+  } ], [ {
     "actionRSMode" : 1,
     "codeName" : "test_plans",
     "dataRSMode" : 0,

@@ -258,6 +258,38 @@
       "type" : "DTOS"
     },
     "viewLevel" : 0
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/organization/PSDEDATAQUERIES/root/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "root",
+    "logicName" : "根节点",
+    "name" : "root",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/organization.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "ORGANIZATION"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "RootInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "organization_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "RootResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "organization_dto"
+      },
+      "type" : "DTOS"
+    }
   } ],
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
@@ -290,6 +322,32 @@
     "defaultMode" : true,
     "enableBackend" : true,
     "enableFront" : true
+  }, {
+    "codeName" : "root",
+    "logicName" : "根节点",
+    "name" : "root",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "root"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "RootInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "organization_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "RootResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "organization_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
   } ],
   "getAllPSDEFields" : [ {
     "getAllPSDEFDTColumns" : [ {
@@ -300,6 +358,18 @@
       "standardColumnName" : "`ORGANIZATION_NUMBER`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[ORGANIZATION_NUMBER][机构编号]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[ORGANIZATION_NUMBER][机构编号]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[ORGANIZATION_NUMBER][机构编号]移动端默认",
       "getPSDEFFormItem" : {
@@ -313,18 +383,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[ORGANIZATION_NUMBER][机构编号]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[ORGANIZATION_NUMBER][机构编号]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -442,6 +500,17 @@
       "standardColumnName" : "`DESCRIPTION`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[DESCRIPTION][描述]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTAREA_10",
+        "name" : "[DESCRIPTION][描述]",
+        "stringLength" : 2000,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[DESCRIPTION][描述]移动端默认",
       "getPSDEFFormItem" : {
@@ -454,17 +523,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[DESCRIPTION][描述]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTAREA_10",
-        "name" : "[DESCRIPTION][描述]",
-        "stringLength" : 2000,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -572,21 +630,6 @@
       "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[ID][标识]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.ID"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[ID][标识]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[ID][标识]移动端默认",
       "getPSDEFFormItem" : {
@@ -603,6 +646,21 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[ID][标识]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.ID"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[ID][标识]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -810,21 +868,6 @@
       "standardColumnName" : "`CREATE_MAN`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[CREATE_MAN][建立人]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_MAN"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[CREATE_MAN][建立人]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[CREATE_MAN][建立人]移动端默认",
       "getPSDEFFormItem" : {
@@ -841,6 +884,21 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[CREATE_MAN][建立人]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.CREATE_MAN"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[CREATE_MAN][建立人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1462,30 +1520,6 @@
       }
     } ],
     "getPSDEMapFields" : [ {
-      "dstFieldName" : "PORGNAME",
-      "getDstPSDEField" : {
-        "name" : "PORGNAME",
-        "codeName" : "ParentOrgName"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "PNAME",
-      "getSrcPSDEField" : {
-        "name" : "PNAME",
-        "codeName" : "pname"
-      }
-    }, {
-      "dstFieldName" : "SHOWORDER",
-      "getDstPSDEField" : {
-        "name" : "SHOWORDER",
-        "codeName" : "ShowOrder"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "SORT",
-      "getSrcPSDEField" : {
-        "name" : "SORT",
-        "codeName" : "sort"
-      }
-    }, {
       "dstFieldName" : "ORGNAME",
       "getDstPSDEField" : {
         "name" : "ORGNAME",
@@ -1498,16 +1532,16 @@
         "codeName" : "name"
       }
     }, {
-      "dstFieldName" : "ORGID",
+      "dstFieldName" : "PORGNAME",
       "getDstPSDEField" : {
-        "name" : "ORGID",
-        "codeName" : "OrgId"
+        "name" : "PORGNAME",
+        "codeName" : "ParentOrgName"
       },
       "mapType" : "FIELD",
-      "srcFieldName" : "ID",
+      "srcFieldName" : "PNAME",
       "getSrcPSDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
+        "name" : "PNAME",
+        "codeName" : "pname"
       }
     }, {
       "dstFieldName" : "PORGID",
@@ -1522,6 +1556,30 @@
         "codeName" : "Pid"
       }
     }, {
+      "dstFieldName" : "ORGID",
+      "getDstPSDEField" : {
+        "name" : "ORGID",
+        "codeName" : "OrgId"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "ID",
+      "getSrcPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
+    }, {
+      "dstFieldName" : "SHOWORDER",
+      "getDstPSDEField" : {
+        "name" : "SHOWORDER",
+        "codeName" : "ShowOrder"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "SORT",
+      "getSrcPSDEField" : {
+        "name" : "SORT",
+        "codeName" : "sort"
+      }
+    }, {
       "dstFieldName" : "ENABLE",
       "getDstPSDEField" : {
         "name" : "ENABLE",
@@ -1534,7 +1592,8 @@
         "name" : "ENABLE",
         "codeName" : "Enable"
       }
-    } ]
+    } ],
+    "valid" : false
   }, {
     "codeName" : "DEMap2",
     "getDstPSDE" : {
@@ -1617,13 +1676,24 @@
     "getPSDEMapDataQueries" : [ {
       "getDstPSDEDataQuery" : {
         "modelref" : true,
+        "id" : "Nav"
+      },
+      "name" : "PSDEMAPDQ",
+      "getSrcPSDEDataQuery" : {
+        "modelref" : true,
+        "id" : "root"
+      }
+    }, {
+      "getDstPSDEDataQuery" : {
+        "modelref" : true,
         "id" : "Default"
       },
-      "name" : "DEFAULT ==> DEFAULT",
+      "name" : "PSDEMAPDQ",
       "getSrcPSDEDataQuery" : {
         "modelref" : true,
         "id" : "Default"
-      }
+      },
+      "enableDQCond" : true
     }, {
       "getDstPSDEDataQuery" : {
         "modelref" : true,
@@ -1640,11 +1710,23 @@
         "modelref" : true,
         "id" : "Default"
       },
-      "name" : "DEFAULT ==> DEFAULT",
+      "name" : "PSDEMAPDS",
       "getSrcPSDEDataSet" : {
         "modelref" : true,
         "id" : "Default"
-      }
+      },
+      "enableDQCond" : true
+    }, {
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Nav"
+      },
+      "name" : "PSDEMAPDS",
+      "getSrcPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "root"
+      },
+      "enableDQCond" : true
     } ],
     "getPSDEMapFields" : [ {
       "dstFieldName" : "PARENT_ID",
@@ -1659,18 +1741,6 @@
         "codeName" : "Pid"
       }
     }, {
-      "dstFieldName" : "PARENT_NAME",
-      "getDstPSDEField" : {
-        "name" : "PARENT_NAME",
-        "codeName" : "parent_name"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "PNAME",
-      "getSrcPSDEField" : {
-        "name" : "PNAME",
-        "codeName" : "pname"
-      }
-    }, {
       "dstFieldName" : "ORGANIZATION_NAME",
       "getDstPSDEField" : {
         "name" : "ORGANIZATION_NAME",
@@ -1683,17 +1753,52 @@
         "codeName" : "name"
       }
     }, {
+      "dstFieldName" : "DESCRIPTION",
+      "getDstPSDEField" : {
+        "name" : "DESCRIPTION",
+        "codeName" : "description"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "DESCRIPTION",
+      "getSrcPSDEField" : {
+        "name" : "DESCRIPTION",
+        "codeName" : "description"
+      }
+    }, {
+      "dstFieldName" : "PARENT_NAME",
+      "getDstPSDEField" : {
+        "name" : "PARENT_NAME",
+        "codeName" : "parent_name"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "PNAME",
+      "getSrcPSDEField" : {
+        "name" : "PNAME",
+        "codeName" : "pname"
+      }
+    }, {
       "dstFieldName" : "ID",
       "getDstPSDEField" : {
         "name" : "ID",
         "codeName" : "id"
       },
       "mapType" : "FIELD",
-      "name" : "ID ==> ID",
       "srcFieldName" : "ID",
       "getSrcPSDEField" : {
         "name" : "ID",
         "codeName" : "id"
+      }
+    }, {
+      "dstFieldName" : "ORGANIZATION_NUMBER",
+      "getDstPSDEField" : {
+        "name" : "ORGANIZATION_NUMBER",
+        "codeName" : "organization_number"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "ORGANIZATION_NUMBER",
+      "getSrcPSDEField" : {
+        "name" : "ORGANIZATION_NUMBER",
+        "codeName" : "organization_number"
       }
     }, {
       "dstFieldName" : "CREATE_TIME",
@@ -1720,32 +1825,6 @@
       "getSrcPSDEField" : {
         "name" : "UPDATE_TIME",
         "codeName" : "update_time"
-      }
-    }, {
-      "dstFieldName" : "ORGANIZATION_NUMBER",
-      "getDstPSDEField" : {
-        "name" : "ORGANIZATION_NUMBER",
-        "codeName" : "organization_number"
-      },
-      "mapType" : "FIELD",
-      "name" : "ORGANIZATION_NUMBER ==> ORGANIZATION_NUMBER",
-      "srcFieldName" : "ORGANIZATION_NUMBER",
-      "getSrcPSDEField" : {
-        "name" : "ORGANIZATION_NUMBER",
-        "codeName" : "organization_number"
-      }
-    }, {
-      "dstFieldName" : "DESCRIPTION",
-      "getDstPSDEField" : {
-        "name" : "DESCRIPTION",
-        "codeName" : "description"
-      },
-      "mapType" : "FIELD",
-      "name" : "DESCRIPTION ==> DESCRIPTION",
-      "srcFieldName" : "DESCRIPTION",
-      "getSrcPSDEField" : {
-        "name" : "DESCRIPTION",
-        "codeName" : "description"
       }
     }, {
       "dstFieldName" : "SHORT_NAME",
@@ -2012,12 +2091,50 @@
     "logicName" : "更新",
     "name" : "UPDATE"
   } ],
+  "getAllPSDEUserRoles" : [ {
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/organization/PSDEUSERROLES/ALL_RW.json",
+    "name" : "全部数据（读写）",
+    "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "UPDATE",
+      "name" : "UPDATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "UPDATE"
+      }
+    }, {
+      "dataAccessAction" : "CREATE",
+      "name" : "CREATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "CREATE"
+      }
+    }, {
+      "dataAccessAction" : "DELETE",
+      "name" : "DELETE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "DELETE"
+      }
+    }, {
+      "dataAccessAction" : "READ",
+      "name" : "READ",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ"
+      }
+    } ],
+    "roleTag" : "ALL_RW",
+    "userCat" : "CAT1",
+    "userDRAction" : "READ",
+    "allData" : true,
+    "systemReserved" : true
+  } ],
   "getAllPSModelDatas" : [ {
-    "codeName" : "PickupView",
-    "logicName" : "组织实体数据选择视图",
-    "modelTag" : "PICKUPVIEW",
-    "name" : "组织实体数据选择视图",
-    "realModelSubType" : "DEPICKUPVIEW",
+    "codeName" : "RedirectView",
+    "logicName" : "组织实体数据重定向视图",
+    "modelTag" : "REDIRECTVIEW",
+    "name" : "组织实体数据重定向视图",
+    "realModelSubType" : "DEREDIRECTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView2",
@@ -2026,10 +2143,11 @@
     "realModelSubType" : "DEEDITVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "PickupGridView",
-    "logicName" : "组织实体选择表格视图（部件视图）",
-    "name" : "组织实体选择表格视图（部件视图）",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "codeName" : "EditView",
+    "logicName" : "组织实体编辑视图",
+    "modelTag" : "EDITVIEW",
+    "name" : "组织实体编辑视图",
+    "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "GridView",
@@ -2046,19 +2164,31 @@
     "realModelSubType" : "DEMPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "EditView",
-    "logicName" : "组织实体编辑视图",
-    "modelTag" : "EDITVIEW",
-    "name" : "组织实体编辑视图",
-    "realModelSubType" : "DEEDITVIEW",
+    "codeName" : "PickupGridView",
+    "logicName" : "组织实体选择表格视图（部件视图）",
+    "name" : "组织实体选择表格视图（部件视图）",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "RedirectView",
-    "logicName" : "组织实体数据重定向视图",
-    "modelTag" : "REDIRECTVIEW",
-    "name" : "组织实体数据重定向视图",
-    "realModelSubType" : "DEREDIRECTVIEW",
+    "codeName" : "PickupView",
+    "logicName" : "组织实体数据选择视图",
+    "modelTag" : "PICKUPVIEW",
+    "name" : "组织实体数据选择视图",
+    "realModelSubType" : "DEPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "org_option_view",
+    "logicName" : "组织选项操作视图",
+    "name" : "组织选项操作视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "org_option_view_Form",
+    "logicName" : "组织选项操作视图_表单",
+    "modelTag2" : "0",
+    "name" : "组织选项操作视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
   }, {
     "codeName" : "Main",
     "logicName" : "主编辑表单",
@@ -2114,6 +2244,34 @@
     "codeName" : "name"
   },
   "getMajorPSDERs" : [ {
+    "codeName" : "organization",
+    "dERType" : "DER1N",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/department/PSDERS/DER1N_DEPARTMENT_ORGANIZATION_ORGANIZATION_ID.json",
+    "fKeyName" : "FA815383F003AA3ABD",
+    "logicName" : "名称",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/organization.json"
+    },
+    "masterOrder" : -1,
+    "masterRS" : 0,
+    "minorCodeName" : "departments",
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/department.json"
+    },
+    "minorServiceCodeName" : "departments",
+    "name" : "DER1N_DEPARTMENT_ORGANIZATION_ORGANIZATION_ID",
+    "orderValue" : 100,
+    "getPSPickupDEField" : {
+      "name" : "ORGANIZATION_ID",
+      "codeName" : "organization_id"
+    },
+    "pickupDEFName" : "ORGANIZATION_ID",
+    "removeActionType" : -1,
+    "removeOrder" : 0,
+    "serviceCodeName" : "organization"
+  }, {
     "codeName" : "organization",
     "dERType" : "DER1N",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/organization/PSDERS/DER1N_ORGANIZATION_ORGANIZATION_PID.json",

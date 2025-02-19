@@ -423,7 +423,6 @@
                 "groupOP" : "AND",
                 "logicCat" : "PANELVISIBLE",
                 "logicType" : "GROUP",
-                "name" : "面板成员[container8][面板显示]逻辑",
                 "getPSPanelItemLogics" : [ {
                   "condOp" : "EQ",
                   "dstModelField" : "EXPANDED",
@@ -448,7 +447,9 @@
                 },
                 "getPSLayoutPos" : {
                   "grow" : -1,
-                  "layout" : "FLEX"
+                  "layout" : "FLEX",
+                  "shrink" : 0,
+                  "spacingRight" : "OUTERMEDIUM"
                 },
                 "viewFieldName" : "SHOW_IDENTIFIER"
               }, {
@@ -485,7 +486,6 @@
                 "groupOP" : "AND",
                 "logicCat" : "PANELVISIBLE",
                 "logicType" : "GROUP",
-                "name" : "面板成员[container1][面板显示]逻辑",
                 "getPSPanelItemLogics" : [ {
                   "condOp" : "EQ",
                   "dstModelField" : "EXPANDED",
@@ -824,11 +824,14 @@
               },
               "viewFieldName" : "EXPANDED",
               "hidden" : true
-            } ]
+            } ],
+            "getPSSysCss" : {
+              "cssName" : "track_panel_style"
+            }
           } ],
           "layoutPanel" : true,
           "name" : "render_demand",
-          "modelid" : "08E416B3-57F3-4E03-9E94-FEF77EF0079E",
+          "modelid" : "7718d35e7ff74a02ce57b57d290b8527",
           "modeltype" : "PSSYSVIEWPANEL"
         },
         "renderType" : "LAYOUTPANEL"
@@ -1002,7 +1005,7 @@
         "name" : "render_relation_case",
         "getPSLayoutPanel" : {
           "getAllPSPanelFields" : [ {
-            "id" : "sum",
+            "id" : "num",
             "viewFieldName" : "SUM"
           }, {
             "id" : "show_identifier",
@@ -1109,7 +1112,6 @@
                 "groupOP" : "AND",
                 "logicCat" : "PANELVISIBLE",
                 "logicType" : "GROUP",
-                "name" : "面板成员[top][面板显示]逻辑",
                 "getPSPanelItemLogics" : [ {
                   "condOp" : "EQ",
                   "dstModelField" : "EXPANDED",
@@ -1139,10 +1141,10 @@
                   "caption" : "文本(动态)",
                   "itemStyle" : "DEFAULT",
                   "itemType" : "FIELD",
-                  "name" : "sum",
+                  "name" : "num",
                   "getPSEditor" : {
                     "editorType" : "SPAN",
-                    "name" : "sum",
+                    "name" : "num",
                     "predefinedType" : "FIELD_TEXT_DYNAMIC",
                     "renderMode" : "TEXT_DYNAMIC",
                     "enableLinkView" : false
@@ -1157,19 +1159,19 @@
                   "contentType" : "RAW",
                   "itemStyle" : "DEFAULT",
                   "itemType" : "RAWITEM",
-                  "name" : "static_text",
+                  "name" : "caption",
                   "getPSLayoutPos" : {
                     "grow" : -1,
                     "layout" : "FLEX"
                   },
                   "getPSRawItem" : {
-                    "caption" : "个测试用例",
+                    "caption" : "个关联测试",
                     "contentType" : "RAW",
-                    "name" : "static_text",
+                    "name" : "caption",
                     "predefinedType" : "STATIC_TEXT",
                     "renderMode" : "TEXT"
                   },
-                  "rawContent" : "个测试用例",
+                  "rawContent" : "个关联测试",
                   "showCaption" : true
                 } ]
               } ]
@@ -1189,7 +1191,6 @@
                 "groupOP" : "AND",
                 "logicCat" : "PANELVISIBLE",
                 "logicType" : "GROUP",
-                "name" : "面板成员[content][面板显示]逻辑",
                 "getPSPanelItemLogics" : [ {
                   "condOp" : "EQ",
                   "dstModelField" : "EXPANDED",
@@ -1361,7 +1362,8 @@
                     },
                     "getPSLayoutPos" : {
                       "grow" : -1,
-                      "layout" : "FLEX"
+                      "layout" : "FLEX",
+                      "spacingRight" : "OUTERSMALL"
                     },
                     "viewFieldName" : "TITLE"
                   }, {
@@ -1385,7 +1387,6 @@
                       "groupOP" : "AND",
                       "logicCat" : "PANELVISIBLE",
                       "logicType" : "GROUP",
-                      "name" : "面板成员[static_image1][面板显示]逻辑",
                       "getPSPanelItemLogics" : [ {
                         "condOp" : "EQ",
                         "dstModelField" : "is_archived",
@@ -1446,7 +1447,10 @@
               },
               "viewFieldName" : "EXPANDED",
               "hidden" : true
-            } ]
+            } ],
+            "getPSSysCss" : {
+              "cssName" : "track_panel_style"
+            }
           } ],
           "layoutPanel" : true,
           "name" : "render_relation_case",
@@ -1499,7 +1503,7 @@
         "name" : "render_relation_idea",
         "getPSLayoutPanel" : {
           "getAllPSPanelFields" : [ {
-            "id" : "sum",
+            "id" : "num",
             "viewFieldName" : "SUM"
           }, {
             "id" : "show_identifier",
@@ -1533,8 +1537,31 @@
             "eventNames" : "onClick",
             "itemName" : "page_container",
             "logicTag" : "render_relation_idea",
-            "logicType" : "APPDEUILOGIC",
+            "logicType" : "APPDEUIACTION",
             "name" : "logic",
+            "getPSAppDEUIAction" : {
+              "actionTarget" : "SINGLEDATA",
+              "caption" : "跳转对应需求视图",
+              "codeName" : "jump_idea",
+              "frontProcessType" : "OTHER",
+              "fullCodeName" : "relation_jump_idea",
+              "name" : "跳转对应需求视图（排期跟踪）",
+              "getPSAppDEUILogic" : {
+                "modelref" : true,
+                "id" : "open_idea_view"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+              },
+              "refreshMode" : 1,
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "jump_idea",
+              "uIActionType" : "DEUIACTION",
+              "uILogicAttachMode" : "REPLACE",
+              "reloadData" : true,
+              "id" : "jump_idea@relation"
+            },
             "getPSAppDEUILogic" : {
               "modelref" : true,
               "id" : "open_idea_view"
@@ -1583,7 +1610,6 @@
                 "groupOP" : "AND",
                 "logicCat" : "PANELVISIBLE",
                 "logicType" : "GROUP",
-                "name" : "面板成员[top][面板显示]逻辑",
                 "getPSPanelItemLogics" : [ {
                   "condOp" : "EQ",
                   "dstModelField" : "EXPANDED",
@@ -1613,10 +1639,10 @@
                   "caption" : "文本(动态)",
                   "itemStyle" : "DEFAULT",
                   "itemType" : "FIELD",
-                  "name" : "sum",
+                  "name" : "num",
                   "getPSEditor" : {
                     "editorType" : "SPAN",
-                    "name" : "sum",
+                    "name" : "num",
                     "predefinedType" : "FIELD_TEXT_DYNAMIC",
                     "renderMode" : "TEXT_DYNAMIC",
                     "enableLinkView" : false
@@ -1631,19 +1657,19 @@
                   "contentType" : "RAW",
                   "itemStyle" : "DEFAULT",
                   "itemType" : "RAWITEM",
-                  "name" : "static_text",
+                  "name" : "caption",
                   "getPSLayoutPos" : {
                     "grow" : -1,
                     "layout" : "FLEX"
                   },
                   "getPSRawItem" : {
-                    "caption" : "个需求",
+                    "caption" : "个关联需求",
                     "contentType" : "RAW",
-                    "name" : "static_text",
+                    "name" : "caption",
                     "predefinedType" : "STATIC_TEXT",
                     "renderMode" : "TEXT"
                   },
-                  "rawContent" : "个需求",
+                  "rawContent" : "个关联需求",
                   "showCaption" : true
                 } ]
               } ]
@@ -1663,7 +1689,6 @@
                 "groupOP" : "AND",
                 "logicCat" : "PANELVISIBLE",
                 "logicType" : "GROUP",
-                "name" : "面板成员[content][面板显示]逻辑",
                 "getPSPanelItemLogics" : [ {
                   "condOp" : "EQ",
                   "dstModelField" : "EXPANDED",
@@ -1835,7 +1860,8 @@
                     },
                     "getPSLayoutPos" : {
                       "grow" : -1,
-                      "layout" : "FLEX"
+                      "layout" : "FLEX",
+                      "spacingRight" : "OUTERSMALL"
                     },
                     "viewFieldName" : "TITLE"
                   }, {
@@ -1859,7 +1885,6 @@
                       "groupOP" : "AND",
                       "logicCat" : "PANELVISIBLE",
                       "logicType" : "GROUP",
-                      "name" : "面板成员[static_image1][面板显示]逻辑",
                       "getPSPanelItemLogics" : [ {
                         "condOp" : "EQ",
                         "dstModelField" : "is_archived",
@@ -1920,11 +1945,14 @@
               },
               "viewFieldName" : "EXPANDED",
               "hidden" : true
-            } ]
+            } ],
+            "getPSSysCss" : {
+              "cssName" : "track_panel_style"
+            }
           } ],
           "layoutPanel" : true,
           "name" : "render_relation_idea",
-          "modelid" : "D9BD9526-980E-4547-94C2-127DF2F7274E",
+          "modelid" : "629a9b90277027a372b50ebdfe4fd725",
           "modeltype" : "PSSYSVIEWPANEL"
         },
         "renderType" : "LAYOUTPANEL"
@@ -1973,7 +2001,7 @@
         "name" : "render_relation_work_item",
         "getPSLayoutPanel" : {
           "getAllPSPanelFields" : [ {
-            "id" : "sum",
+            "id" : "num",
             "viewFieldName" : "SUM"
           }, {
             "id" : "show_identifier",
@@ -2072,7 +2100,6 @@
                 "groupOP" : "AND",
                 "logicCat" : "PANELVISIBLE",
                 "logicType" : "GROUP",
-                "name" : "面板成员[top][面板显示]逻辑",
                 "getPSPanelItemLogics" : [ {
                   "condOp" : "EQ",
                   "dstModelField" : "EXPANDED",
@@ -2102,10 +2129,10 @@
                   "caption" : "文本(动态)",
                   "itemStyle" : "DEFAULT",
                   "itemType" : "FIELD",
-                  "name" : "sum",
+                  "name" : "num",
                   "getPSEditor" : {
                     "editorType" : "SPAN",
-                    "name" : "sum",
+                    "name" : "num",
                     "predefinedType" : "FIELD_TEXT_DYNAMIC",
                     "renderMode" : "TEXT_DYNAMIC",
                     "enableLinkView" : false
@@ -2120,19 +2147,19 @@
                   "contentType" : "RAW",
                   "itemStyle" : "DEFAULT",
                   "itemType" : "RAWITEM",
-                  "name" : "static_text",
+                  "name" : "caption",
                   "getPSLayoutPos" : {
                     "grow" : -1,
                     "layout" : "FLEX"
                   },
                   "getPSRawItem" : {
-                    "caption" : "个工作项",
+                    "caption" : "个关联工作项",
                     "contentType" : "RAW",
-                    "name" : "static_text",
+                    "name" : "caption",
                     "predefinedType" : "STATIC_TEXT",
                     "renderMode" : "TEXT"
                   },
-                  "rawContent" : "个工作项",
+                  "rawContent" : "个关联工作项",
                   "showCaption" : true
                 } ]
               } ]
@@ -2152,7 +2179,6 @@
                 "groupOP" : "AND",
                 "logicCat" : "PANELVISIBLE",
                 "logicType" : "GROUP",
-                "name" : "面板成员[content][面板显示]逻辑",
                 "getPSPanelItemLogics" : [ {
                   "condOp" : "EQ",
                   "dstModelField" : "EXPANDED",
@@ -2324,7 +2350,8 @@
                     },
                     "getPSLayoutPos" : {
                       "grow" : -1,
-                      "layout" : "FLEX"
+                      "layout" : "FLEX",
+                      "spacingRight" : "OUTERSMALL"
                     },
                     "viewFieldName" : "TITLE"
                   }, {
@@ -2348,7 +2375,6 @@
                       "groupOP" : "AND",
                       "logicCat" : "PANELVISIBLE",
                       "logicType" : "GROUP",
-                      "name" : "面板成员[static_image1][面板显示]逻辑",
                       "getPSPanelItemLogics" : [ {
                         "condOp" : "EQ",
                         "dstModelField" : "is_archived",
@@ -2409,7 +2435,10 @@
               },
               "viewFieldName" : "EXPANDED",
               "hidden" : true
-            } ]
+            } ],
+            "getPSSysCss" : {
+              "cssName" : "track_panel_style"
+            }
           } ],
           "layoutPanel" : true,
           "name" : "render_relation_work_item",
@@ -2462,7 +2491,7 @@
         "name" : "render_relation_ticket",
         "getPSLayoutPanel" : {
           "getAllPSPanelFields" : [ {
-            "id" : "sum",
+            "id" : "num",
             "viewFieldName" : "SUM"
           }, {
             "id" : "show_identifier",
@@ -2561,7 +2590,6 @@
                 "groupOP" : "AND",
                 "logicCat" : "PANELVISIBLE",
                 "logicType" : "GROUP",
-                "name" : "面板成员[top][面板显示]逻辑",
                 "getPSPanelItemLogics" : [ {
                   "condOp" : "EQ",
                   "dstModelField" : "EXPANDED",
@@ -2591,10 +2619,10 @@
                   "caption" : "文本(动态)",
                   "itemStyle" : "DEFAULT",
                   "itemType" : "FIELD",
-                  "name" : "sum",
+                  "name" : "num",
                   "getPSEditor" : {
                     "editorType" : "SPAN",
-                    "name" : "sum",
+                    "name" : "num",
                     "predefinedType" : "FIELD_TEXT_DYNAMIC",
                     "renderMode" : "TEXT_DYNAMIC",
                     "enableLinkView" : false
@@ -2609,19 +2637,19 @@
                   "contentType" : "RAW",
                   "itemStyle" : "DEFAULT",
                   "itemType" : "RAWITEM",
-                  "name" : "static_text",
+                  "name" : "caption",
                   "getPSLayoutPos" : {
                     "grow" : -1,
                     "layout" : "FLEX"
                   },
                   "getPSRawItem" : {
-                    "caption" : "个工单",
+                    "caption" : "个关联工单",
                     "contentType" : "RAW",
-                    "name" : "static_text",
+                    "name" : "caption",
                     "predefinedType" : "STATIC_TEXT",
                     "renderMode" : "TEXT"
                   },
-                  "rawContent" : "个工单",
+                  "rawContent" : "个关联工单",
                   "showCaption" : true
                 } ]
               } ]
@@ -2641,7 +2669,6 @@
                 "groupOP" : "AND",
                 "logicCat" : "PANELVISIBLE",
                 "logicType" : "GROUP",
-                "name" : "面板成员[content][面板显示]逻辑",
                 "getPSPanelItemLogics" : [ {
                   "condOp" : "EQ",
                   "dstModelField" : "EXPANDED",
@@ -2813,7 +2840,8 @@
                     },
                     "getPSLayoutPos" : {
                       "grow" : -1,
-                      "layout" : "FLEX"
+                      "layout" : "FLEX",
+                      "spacingRight" : "OUTERSMALL"
                     },
                     "viewFieldName" : "TITLE"
                   }, {
@@ -2837,7 +2865,6 @@
                       "groupOP" : "AND",
                       "logicCat" : "PANELVISIBLE",
                       "logicType" : "GROUP",
-                      "name" : "面板成员[static_image1][面板显示]逻辑",
                       "getPSPanelItemLogics" : [ {
                         "condOp" : "EQ",
                         "dstModelField" : "is_archived",
@@ -2898,7 +2925,10 @@
               },
               "viewFieldName" : "EXPANDED",
               "hidden" : true
-            } ]
+            } ],
+            "getPSSysCss" : {
+              "cssName" : "track_panel_style"
+            }
           } ],
           "layoutPanel" : true,
           "name" : "render_relation_ticket",
@@ -2972,7 +3002,7 @@
     "outputIconDefault" : true,
     "rootVisible" : false,
     "name" : "tree",
-    "modelid" : "7115E530-8A63-4898-9F8D-860AA47649C1",
+    "modelid" : "faa04dc65d25a21c579792f8d508472a",
     "modeltype" : "PSDETREEVIEW"
   }, {
     "controlType" : "SEARCHBAR",
@@ -3006,7 +3036,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "plan_track_tree_view",
-  "getPSDEViewId" : "18297403-B31B-47A0-9E54-72BB45253E32",
+  "getPSDEViewId" : "4c52feebf0109d133ff077e0375ce989",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDETREEVIEW",
@@ -3029,9 +3059,71 @@
   "enableFilter" : true,
   "enableSearch" : true,
   "showCaptionBar" : false,
-  "modelid" : "6fe00a3d7aaff2e04aa86f8174ab0d6a",
+  "modelid" : "ae3987c16d5c40399167d24e2c1de504",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "test_plans",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "project",
+    "majorDEName" : "PROJECT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "minorDECodeName" : "test_plan",
+    "minorDEName" : "TEST_PLAN",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+    },
+    "name" : "DER1N_TEST_PLAN_PROJECT_PROJECT_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PROJECT_ID",
+      "codeName" : "project_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "runs",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "test_plan",
+    "majorDEName" : "TEST_PLAN",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+    },
+    "minorDECodeName" : "run",
+    "minorDEName" : "RUN",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+    },
+    "name" : "DER1N_RUN_TEST_PLAN_PLAN_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PLAN_ID",
+      "codeName" : "plan_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "relations",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "run",
+    "majorDEName" : "RUN",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+    },
+    "minorDECodeName" : "relation",
+    "minorDEName" : "RELATION",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+    },
+    "name" : "执行用例-关联",
+    "rSMode" : 2
+  } ], [ {
     "actionRSMode" : 1,
     "codeName" : "test_plans",
     "dataRSMode" : 0,

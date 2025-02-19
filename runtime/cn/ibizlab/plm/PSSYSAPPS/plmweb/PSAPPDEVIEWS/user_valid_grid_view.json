@@ -193,12 +193,22 @@
         "layout" : "FLEX"
       },
       "showCaption" : true
+    }, {
+      "caption" : "工具栏",
+      "itemStyle" : "DEFAULT",
+      "itemType" : "CTRLPOS",
+      "name" : "tabtoolbar",
+      "getPSLayoutPos" : {
+        "grow" : -1,
+        "layout" : "FLEX"
+      },
+      "showCaption" : true
     } ],
     "layoutBodyOnly" : false,
     "layoutPanel" : true,
     "useDefaultLayout" : false,
     "viewProxyMode" : true,
-    "modelid" : "EA2F15D3-C2DE-4293-8B48-5E49F67CADA9",
+    "modelid" : "67cd26f82c073a1c83b762811cba023a",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSAppViewEngines" : [ {
       "engineCat" : "VIEW",
@@ -214,17 +224,19 @@
         "logicType" : "PREDEFINED",
         "name" : "新建数据",
         "getNewDataPSAppView" : {
+          "openMode" : "POPUPMODAL",
           "getRefPSAppView" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_quick_cfg_view.json",
-            "viewType" : "DEEDITVIEW"
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_quick_create_view.json",
+            "viewType" : "DEOPTVIEW"
           }
         },
         "getPSAppUILogicRefViews" : [ {
+          "openMode" : "POPUPMODAL",
           "getRefPSAppView" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_quick_cfg_view.json",
-            "viewType" : "DEEDITVIEW"
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_quick_create_view.json",
+            "viewType" : "DEOPTVIEW"
           }
         } ],
         "viewLogicType" : "APP_NEWDATA",
@@ -240,17 +252,19 @@
         "logicType" : "PREDEFINED",
         "name" : "打开数据",
         "getOpenDataPSAppView" : {
+          "openMode" : "POPUPMODAL",
           "getRefPSAppView" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_redirect_view.json",
-            "viewType" : "DEREDIRECTVIEW"
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_main_view.json",
+            "viewType" : "DEOPTVIEW"
           }
         },
         "getPSAppUILogicRefViews" : [ {
+          "openMode" : "POPUPMODAL",
           "getRefPSAppView" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_redirect_view.json",
-            "viewType" : "DEREDIRECTVIEW"
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_main_view.json",
+            "viewType" : "DEOPTVIEW"
           }
         } ],
         "viewLogicType" : "APP_OPENDATA",
@@ -259,22 +273,21 @@
     } ],
     "getPSAppViewRefs" : [ {
       "name" : "EDITDATA",
-      "realTitle" : "企业用户数据重定向视图",
-      "getRealTitlePSLanguageRes" : {
-        "lanResTag" : "PAGE.TITLE.USER.REDIRECTVIEW"
-      },
-      "getRefPSAppView" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_redirect_view.json",
-        "viewType" : "DEREDIRECTVIEW"
-      }
-    }, {
-      "name" : "NEWDATA",
+      "realOpenMode" : "POPUPMODAL",
       "realTitle" : "设置成员信息",
       "getRefPSAppView" : {
         "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_quick_cfg_view.json",
-        "viewType" : "DEEDITVIEW"
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_main_view.json",
+        "viewType" : "DEOPTVIEW"
+      }
+    }, {
+      "name" : "NEWDATA",
+      "realOpenMode" : "POPUPMODAL",
+      "realTitle" : "添加成员",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_quick_create_view.json",
+        "viewType" : "DEOPTVIEW"
       }
     } ],
     "getPSControls" : [ {
@@ -341,7 +354,7 @@
         }
       },
       "groupMode" : "NONE",
-      "logicName" : "企业用户管理表格视图_表格",
+      "logicName" : "用户信息",
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
@@ -557,7 +570,133 @@
           "name" : "DISPLAY_NAME",
           "codeName" : "display_name"
         },
-        "width" : 150,
+        "getPSDEUIActionGroup" : {
+          "codeName" : "Usr0206064594",
+          "name" : "正常用户操作列",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+          },
+          "getPSUIActionGroupDetails" : [ {
+            "actionLevel" : 200,
+            "detailType" : "DEUIACTION",
+            "name" : "u19948a7",
+            "getPSSysImage" : {
+              "glyph" : "xf044@FontAwesome",
+              "cssClass" : "fa fa-edit"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "SINGLEKEY",
+              "getCapPSLanguageRes" : {
+                "lanResTag" : "TBB.TEXT.*.EDIT"
+              },
+              "caption" : "编辑",
+              "codeName" : "Edit",
+              "fullCodeName" : "Edit",
+              "name" : "表格界面_编辑操作",
+              "getPSSysImage" : {
+                "glyph" : "xf044@FontAwesome",
+                "cssClass" : "fa fa-edit"
+              },
+              "predefinedType" : "GRIDVIEW_EDITACTION",
+              "timeout" : 60000,
+              "tooltip" : "编辑",
+              "getTooltipPSLanguageRes" : {
+                "lanResTag" : "TBB.TOOLTIP.*.EDIT"
+              },
+              "uIActionMode" : "SYS",
+              "uIActionTag" : "Edit",
+              "uIActionType" : "DEUIACTION"
+            },
+            "tooltip" : "编辑",
+            "getTooltipPSLanguageRes" : {
+              "lanResTag" : "TBB.TOOLTIP.*.EDIT"
+            },
+            "addSeparator" : false,
+            "showCaption" : false,
+            "showIcon" : true
+          }, {
+            "caption" : "重置密码",
+            "detailType" : "DEUIACTION",
+            "name" : "u8343a9b",
+            "getPSSysImage" : {
+              "glyph" : "xf0d2@FontAwesome",
+              "cssClass" : "fa fa-pinterest"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "SINGLEDATA",
+              "caption" : "重置密码",
+              "codeName" : "reset_password",
+              "confirmMsg" : "确认重置用户密码？",
+              "fullCodeName" : "user_reset_password",
+              "name" : "重置密码",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "reset_password"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+              },
+              "getPSSysImage" : {
+                "glyph" : "xf0d2@FontAwesome",
+                "cssClass" : "fa fa-pinterest"
+              },
+              "successMsg" : "重置密码成功！",
+              "timeout" : 60000,
+              "uIActionMode" : "BACKEND",
+              "uIActionTag" : "reset_password",
+              "uIActionType" : "DEUIACTION",
+              "enableConfirm" : true,
+              "id" : "reset_password@user"
+            },
+            "addSeparator" : false,
+            "showCaption" : true,
+            "showIcon" : true
+          }, {
+            "caption" : "冻结成员",
+            "detailType" : "DEUIACTION",
+            "name" : "ucf189b8",
+            "getPSSysImage" : {
+              "glyph" : "xf1e9@FontAwesome",
+              "cssClass" : "fa fa-yelp"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "SINGLEKEY",
+              "caption" : "冻结成员",
+              "codeName" : "freeze",
+              "confirmMsg" : "确认冻结成员？",
+              "fullCodeName" : "user_freeze",
+              "name" : "冻结成员",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "freeze"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+              },
+              "getPSSysImage" : {
+                "glyph" : "xf1e9@FontAwesome",
+                "cssClass" : "fa fa-yelp"
+              },
+              "refreshMode" : 1,
+              "successMsg" : "冻结成员成功！",
+              "timeout" : 60000,
+              "uIActionMode" : "BACKEND",
+              "uIActionTag" : "freeze",
+              "uIActionType" : "DEUIACTION",
+              "enableConfirm" : true,
+              "reloadData" : true,
+              "id" : "freeze@user"
+            },
+            "addSeparator" : false,
+            "showCaption" : true,
+            "showIcon" : true
+          } ],
+          "uniqueTag" : "user__Usr0206064594"
+        },
+        "width" : 250,
         "widthUnit" : "PX",
         "enableSort" : true
       }, {
@@ -594,7 +733,7 @@
           "name" : "EMPLOYEE_NUMBER",
           "codeName" : "employee_number"
         },
-        "width" : 200,
+        "width" : 250,
         "widthUnit" : "PX",
         "enableSort" : true
       }, {
@@ -650,7 +789,7 @@
         "enableSort" : true
       }, {
         "align" : "LEFT",
-        "cLConvertMode" : "NONE",
+        "cLConvertMode" : "FRONT",
         "caption" : "职位",
         "codeName" : "title",
         "columnType" : "DEFGRIDCOLUMN",
@@ -658,6 +797,10 @@
         "excelCaption" : "职位",
         "name" : "title",
         "noPrivDisplayMode" : 1,
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__position.json"
+        },
         "getPSAppDEField" : {
           "name" : "TITLE",
           "codeName" : "title"
@@ -932,8 +1075,129 @@
       "enableQuickSearch" : true,
       "mobileSearchBar" : false,
       "name" : "tabsearchbar",
-      "modelid" : "93068F88-6076-43F2-812C-812DB121C63C",
+      "modelid" : "cc42dfa7abc20ad58f3dae5d84ca5222",
       "modeltype" : "PSSYSSEARCHBAR"
+    }, {
+      "codeName" : "valid_grid_view_tabtoolbar",
+      "controlType" : "TOOLBAR",
+      "logicName" : "用户快速新建_工具栏",
+      "name" : "tabtoolbar",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+      },
+      "getPSControlParam" : {
+        "ctrlParams" : {
+          "TELEPORTFLAG" : "true"
+        },
+        "id" : "TABTOOLBAR"
+      },
+      "getPSDEToolbarItems" : [ {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "TBB.TEXT.*.NEW"
+        },
+        "caption" : "添加成员",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction1",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "tabtoolbar_deuiaction1"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf067@FontAwesome",
+          "cssClass" : "fa fa-plus"
+        },
+        "getPSUIAction" : {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "TBB.TEXT.*.NEW"
+          },
+          "caption" : "新建",
+          "codeName" : "New",
+          "fullCodeName" : "New",
+          "name" : "表格界面_新建操作",
+          "getPSSysImage" : {
+            "glyph" : "xf0f6@FontAwesome",
+            "cssClass" : "fa fa-file-text-o"
+          },
+          "predefinedType" : "GRIDVIEW_NEWACTION",
+          "timeout" : 60000,
+          "getTooltipPSLanguageRes" : {
+            "lanResTag" : "TBB.TOOLTIP.*.NEW"
+          },
+          "uIActionMode" : "SYS",
+          "uIActionTag" : "New",
+          "uIActionType" : "DEUIACTION"
+        },
+        "tooltip" : "添加成员",
+        "getTooltipPSLanguageRes" : {
+          "lanResTag" : "TBB.TOOLTIP.*.NEW"
+        },
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "itemType" : "SEPERATOR",
+        "name" : "seperator1"
+      }, {
+        "buttonStyle" : "STYLE2",
+        "itemType" : "ITEMS",
+        "name" : "items1",
+        "getPSDEToolbarItems" : [ {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "TBB.TEXT.*.EXPORT"
+          },
+          "caption" : "导出成员",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction2",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "tabtoolbar_deuiaction2"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf1c3@FontAwesome",
+            "cssClass" : "fa fa-file-excel-o"
+          },
+          "getPSUIAction" : {
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "TBB.TEXT.*.EXPORT"
+            },
+            "caption" : "导出",
+            "codeName" : "ExportExcel",
+            "fullCodeName" : "ExportExcel",
+            "name" : "表格界面_导出操作（Excel）",
+            "getPSSysImage" : {
+              "glyph" : "xf1c3@FontAwesome",
+              "cssClass" : "fa fa-file-excel-o"
+            },
+            "predefinedType" : "GRIDVIEW_EXPORTACTION",
+            "timeout" : 60000,
+            "getTooltipPSLanguageRes" : {
+              "lanResTag" : "TBB.TOOLTIP.*.EXPORT"
+            },
+            "uIActionMode" : "SYS",
+            "uIActionTag" : "ExportExcel",
+            "uIActionType" : "DEUIACTION"
+          },
+          "tooltip" : "导出成员",
+          "getTooltipPSLanguageRes" : {
+            "lanResTag" : "TBB.TOOLTIP.*.EXPORT"
+          },
+          "showCaption" : true,
+          "showIcon" : true
+        } ],
+        "getPSSysImage" : {
+          "glyph" : "xf0ca@FontAwesome",
+          "cssClass" : "fa fa-list-ul"
+        },
+        "showCaption" : true,
+        "showIcon" : true
+      } ],
+      "xDataControlName" : "grid",
+      "modelid" : "16F7E132-0ADE-4494-9197-81578476EE84",
+      "modeltype" : "PSDETOOLBAR"
     }, {
       "controlType" : "SEARCHBAR",
       "name" : "searchbar",
@@ -980,5 +1244,28 @@
   "rowEditDefault" : false,
   "showCaptionBar" : false,
   "modelid" : "1f78d52e871b3ab491182b328088781c",
-  "modeltype" : "PSAPPDEVIEW"
+  "modeltype" : "PSAPPDEVIEW",
+  "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "users",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "department",
+    "majorDEName" : "DEPARTMENT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/department.json"
+    },
+    "minorDECodeName" : "user",
+    "minorDEName" : "USER",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+    },
+    "name" : "DER1N_USER_DEPARTMENT_DEPARTMENT_ID",
+    "getParentPSAppDEField" : {
+      "name" : "DEPARTMENT_ID",
+      "codeName" : "department_id"
+    },
+    "rSMode" : 2
+  } ] ]
 }

@@ -27,7 +27,7 @@
     "name" : "fetch",
     "getPSAppDEMethod" : {
       "modelref" : true,
-      "id" : "fetch_default"
+      "id" : "fetch_common"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -94,7 +94,7 @@
     }
   } ],
   "getPSControls" : [ {
-    "codeName" : "grid_view_grid_batchtoolbar",
+    "codeName" : "all_grid_view_grid_batchtoolbar",
     "controlType" : "TOOLBAR",
     "logicName" : "批操作工具栏（需求表格）",
     "name" : "grid_batchtoolbar",
@@ -257,7 +257,6 @@
           "actionTarget" : "MULTIKEY",
           "caption" : "需求复制",
           "codeName" : "idea_copy",
-          "dialogResult" : "OK",
           "getFrontPSAppView" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_copy_option_view.json",
@@ -275,14 +274,14 @@
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
           },
+          "refreshMode" : 1,
           "successMsg" : "复制成功",
           "timeout" : 60000,
           "uIActionMode" : "BACKEND",
           "uIActionTag" : "idea_copy",
           "uIActionType" : "DEUIACTION",
-          "closeEditView" : true,
-          "closePopupView" : true,
           "enableConfirm" : true,
+          "reloadData" : true,
           "id" : "idea_copy@idea"
         },
         "tooltip" : "复制",
@@ -648,7 +647,7 @@
     "caption" : "模块",
     "codeName" : "category_id",
     "columnType" : "DEFGRIDCOLUMN",
-    "dataItemName" : "category_id",
+    "dataItemName" : "category_id_text",
     "excelCaption" : "模块",
     "name" : "category_id",
     "noPrivDisplayMode" : 1,
@@ -662,6 +661,7 @@
     },
     "width" : 150,
     "widthUnit" : "PX",
+    "enableRowEdit" : true,
     "enableSort" : true
   }, {
     "align" : "LEFT",
@@ -824,6 +824,13 @@
     "getPSAppDEField" : {
       "name" : "ASSIGNEE_NAME",
       "codeName" : "assignee_name"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "category_id_text",
+    "getPSAppDEField" : {
+      "name" : "CATEGORY_ID",
+      "codeName" : "category_id"
     }
   }, {
     "dataType" : 25,
@@ -1098,6 +1105,47 @@
     "valueItemName" : "assignee_id",
     "allowEmpty" : false
   }, {
+    "caption" : "模块",
+    "codeName" : "category_id",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "category_id",
+    "getPSAppDEField" : {
+      "name" : "CATEGORY_ID",
+      "codeName" : "category_id"
+    },
+    "getPSEditor" : {
+      "editorParams" : {
+        "readonly" : "true"
+      },
+      "editorType" : "DROPDOWNLIST",
+      "name" : "category_id",
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__idea_categories.json"
+      },
+      "getPSEditorItems" : [ {
+        "name" : "category_id",
+        "getPSAppDEACMode" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "getPSAppDEDataSet" : {
+          "modelref" : true,
+          "id" : "fetch_default"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
+        }
+      } ],
+      "readOnly" : true,
+      "singleSelect" : true
+    },
+    "valueItemName" : "category_id",
+    "allowEmpty" : true,
+    "needCodeListConfig" : true
+  }, {
     "caption" : "计划时间",
     "codeName" : "plan_at",
     "enableCond" : 3,
@@ -1184,6 +1232,7 @@
   "enableColFilter" : false,
   "enableCustomized" : true,
   "enableGroup" : false,
+  "enableItemPrivilege" : true,
   "enablePagingBar" : true,
   "enableRowEdit" : true,
   "enableRowEditOrder" : false,

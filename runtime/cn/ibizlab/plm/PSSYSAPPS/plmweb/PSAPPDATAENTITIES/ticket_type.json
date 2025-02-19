@@ -447,17 +447,6 @@
   } ],
   "getAllPSAppDEFields" : [ {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[DESCRIPTION][描述]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTAREA_10",
-        "name" : "[DESCRIPTION][描述]",
-        "stringLength" : 2000,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[DESCRIPTION][描述]移动端默认",
       "getPSDEFFormItem" : {
@@ -470,6 +459,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[DESCRIPTION][描述]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTAREA_10",
+        "name" : "[DESCRIPTION][描述]",
+        "stringLength" : 2000,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "codeName" : "description",
     "logicName" : "描述",
@@ -478,6 +478,17 @@
     "stringLength" : 2000
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[IS_SYSTEM][是否系统默认]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "[IS_SYSTEM][是否系统默认]",
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[IS_SYSTEM][是否系统默认]移动端默认",
       "getPSDEFFormItem" : {
@@ -490,17 +501,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[IS_SYSTEM][是否系统默认]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "DROPDOWNLIST_100",
-        "name" : "[IS_SYSTEM][是否系统默认]",
-        "uIMode" : "DEFAULT",
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "is_system",
     "logicName" : "是否系统默认",
@@ -1512,12 +1512,6 @@
       "topPos" : 306
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
       "codeName" : "disabled",
       "logicName" : "是否禁用",
       "name" : "是否禁用",
@@ -1527,6 +1521,12 @@
       "logicName" : "表单",
       "name" : "表单",
       "ctrlParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -1535,16 +1535,16 @@
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_type_editor_view.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_type_confirm_remove_view.json",
     "viewType" : "DEOPTVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_type_config_tab_exp_view.json",
-    "viewType" : "DETABEXPVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_type_quick_create_view.json",
+    "viewType" : "DEOPTVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_type_global_setting_view.json",
-    "viewType" : "DEGRIDVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_type_pick_up_view.json",
+    "viewType" : "DEPICKUPVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_type_edit_view.json",
@@ -1555,7 +1555,7 @@
     "viewType" : "DEPICKUPGRIDVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_type_confirm_remove_view.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_type_editor_view.json",
     "viewType" : "DEOPTVIEW"
   }, {
     "modelref" : true,
@@ -1563,12 +1563,12 @@
     "viewType" : "DEREDIRECTVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_type_pick_up_view.json",
-    "viewType" : "DEPICKUPVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_type_global_setting_view.json",
+    "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_type_quick_create_view.json",
-    "viewType" : "DEOPTVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_type_config_tab_exp_view.json",
+    "viewType" : "DETABEXPVIEW"
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "建立",
@@ -1641,7 +1641,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "新建工单类型",
       "detailType" : "DEUIACTION",
-      "name" : "uaaf58df",
+      "name" : "u81f10ef",
       "getPSSysImage" : {
         "glyph" : "xf067@FontAwesome",
         "cssClass" : "fa fa-plus"
@@ -1668,7 +1668,7 @@
     "uniqueTag" : "ticket_type__Usr0418746430",
     "getPSUIActionGroupDetails" : [ {
       "detailType" : "DEUIACTION",
-      "name" : "ub26e592",
+      "name" : "uc771d16",
       "getPSSysImage" : {
         "glyph" : "xf044@FontAwesome",
         "cssClass" : "fa fa-edit"
@@ -1686,7 +1686,7 @@
       }
     }, {
       "detailType" : "DEUIACTION",
-      "name" : "u1b3d86c",
+      "name" : "u9370fb6",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
         "cssClass" : "fa fa-trash-o"

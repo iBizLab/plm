@@ -20,7 +20,7 @@
     "rawValue" : false
   } ],
   "getPSDEViewCodeName" : "all_grid_view",
-  "getPSDEViewId" : "a225eb6e6a06ff36dd5e39c22a02a0d2",
+  "getPSDEViewId" : "780f2088ee60ca625e87b8dc3283dffb",
   "getPSViewLayoutPanel" : {
     "codeName" : "usr0815223248",
     "controlType" : "VIEWLAYOUTPANEL",
@@ -194,7 +194,7 @@
     "layoutPanel" : true,
     "useDefaultLayout" : false,
     "viewProxyMode" : true,
-    "modelid" : "EE0DB833-0EA2-41DC-ABD8-46A46EC0FCBB",
+    "modelid" : "6594ed792b6d9b52879940823e015b6e",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSAppViewEngines" : [ {
       "engineCat" : "VIEW",
@@ -256,6 +256,14 @@
       }
     } ],
     "getPSAppViewRefs" : [ {
+      "name" : "EDITDATA",
+      "realTitle" : "排期分页",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_plan_tab_exp_view.json",
+        "viewType" : "DETABEXPVIEW"
+      }
+    }, {
       "name" : "NEWDATA",
       "realOpenMode" : "POPUPMODAL",
       "realTitle" : "新建计划",
@@ -263,14 +271,6 @@
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_plan_quick_create_view.json",
         "viewType" : "DEOPTVIEW"
-      }
-    }, {
-      "name" : "EDITDATA",
-      "realTitle" : "排期分页",
-      "getRefPSAppView" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_plan_tab_exp_view.json",
-        "viewType" : "DETABEXPVIEW"
       }
     }, {
       "name" : "OPENDATA",
@@ -710,6 +710,7 @@
         },
         "width" : 200,
         "widthUnit" : "PX",
+        "enableRowEdit" : true,
         "enableSort" : true
       }, {
         "align" : "LEFT",
@@ -969,6 +970,31 @@
         }
       } ],
       "getPSDEGridEditItems" : [ {
+        "caption" : "类别",
+        "codeName" : "categorys",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "name" : "categorys",
+        "getPSAppDEField" : {
+          "name" : "CATEGORIES",
+          "codeName" : "categories"
+        },
+        "getPSEditor" : {
+          "editorParams" : {
+            "readonly" : "true"
+          },
+          "editorType" : "MDROPDOWNLIST",
+          "name" : "categorys",
+          "getPSAppCodeList" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__category.json"
+          },
+          "readOnly" : true,
+          "singleSelect" : false
+        },
+        "allowEmpty" : true,
+        "needCodeListConfig" : true
+      }, {
         "caption" : "负责人",
         "codeName" : "assignee_name",
         "enableCond" : 3,
@@ -1203,7 +1229,7 @@
   "enableRowEdit" : true,
   "enableSearch" : true,
   "rowEditDefault" : false,
-  "modelid" : "539a5c7d309db9118489a32e62ccbd9e",
+  "modelid" : "d5859215641788d0d3b43fc6e4d8d7e1",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

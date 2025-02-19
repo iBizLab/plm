@@ -100,7 +100,7 @@
         "mobilePanel" : true,
         "useDefaultLayout" : false,
         "viewProxyMode" : true,
-        "modelid" : "E6EF02A7-0F3E-465B-B454-2ACCEE867E7F",
+        "modelid" : "785d6e4cf20cc23d15a47b6a2b845a8b",
         "modeltype" : "PSSYSVIEWLAYOUTPANEL",
         "getPSAppViewEngines" : [ {
           "engineCat" : "VIEW",
@@ -314,7 +314,7 @@
                 "path" : "PSMODULES/Base/PSDATAENTITIES/department.json"
               },
               "masterOrder" : -1,
-              "masterRS" : 0,
+              "masterRS" : 16,
               "minorCodeName" : "departments",
               "getMinorPSDataEntity" : {
                 "modelref" : true,
@@ -327,10 +327,16 @@
                 "name" : "PARENT_ID",
                 "codeName" : "Parent_id"
               },
+              "getPSPickupTextDEField" : {
+                "name" : "PNAME",
+                "codeName" : "pname"
+              },
               "pickupDEFName" : "PARENT_ID",
               "removeActionType" : -1,
               "removeOrder" : 0,
-              "serviceCodeName" : "department"
+              "serviceCodeName" : "department",
+              "enableFKey" : true,
+              "recursiveRS" : true
             },
             "getParentPSDETreeNode" : {
               "modelref" : true,
@@ -359,7 +365,7 @@
                 "path" : "PSMODULES/Base/PSDATAENTITIES/department.json"
               },
               "masterOrder" : -1,
-              "masterRS" : 0,
+              "masterRS" : 16,
               "minorCodeName" : "departments",
               "getMinorPSDataEntity" : {
                 "modelref" : true,
@@ -372,10 +378,16 @@
                 "name" : "PARENT_ID",
                 "codeName" : "Parent_id"
               },
+              "getPSPickupTextDEField" : {
+                "name" : "PNAME",
+                "codeName" : "pname"
+              },
               "pickupDEFName" : "PARENT_ID",
               "removeActionType" : -1,
               "removeOrder" : 0,
-              "serviceCodeName" : "department"
+              "serviceCodeName" : "department",
+              "enableFKey" : true,
+              "recursiveRS" : true
             },
             "getParentPSDETreeNode" : {
               "modelref" : true,
@@ -929,9 +941,53 @@
       "enablePullDownRefresh" : false,
       "enableSearch" : true,
       "expandSearchForm" : true,
-      "modelid" : "75be7fdbd4f29245dded8215c53d781c",
+      "modelid" : "e1f3197a5aa4ad0bc49e5201bc6d9e4a",
       "modeltype" : "PSAPPDEVIEW",
       "getPSAppDERSPaths" : [ [ {
+        "actionRSMode" : 1,
+        "codeName" : "users",
+        "dataRSMode" : 0,
+        "majorDECodeName" : "department",
+        "majorDEName" : "DEPARTMENT",
+        "getMajorPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/department.json"
+        },
+        "minorDECodeName" : "user",
+        "minorDEName" : "USER",
+        "getMinorPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/user.json"
+        },
+        "name" : "DER1N_USER_DEPARTMENT_DEPARTMENT_ID",
+        "getParentPSAppDEField" : {
+          "name" : "DEPARTMENT_ID",
+          "codeName" : "department_id"
+        },
+        "rSMode" : 2
+      }, {
+        "actionRSMode" : 1,
+        "codeName" : "space_members",
+        "dataRSMode" : 0,
+        "majorDECodeName" : "user",
+        "majorDEName" : "USER",
+        "getMajorPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/user.json"
+        },
+        "minorDECodeName" : "space_member",
+        "minorDEName" : "SPACE_MEMBER",
+        "getMinorPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space_member.json"
+        },
+        "name" : "DER1N_SPACE_MEMBER_USER_USER_ID",
+        "getParentPSAppDEField" : {
+          "name" : "USER_ID",
+          "codeName" : "user_id"
+        },
+        "rSMode" : 2
+      } ], [ {
         "actionRSMode" : 1,
         "codeName" : "space_members",
         "dataRSMode" : 0,
@@ -1067,7 +1123,7 @@
         }
       } ],
       "name" : "simplelist_itempanel",
-      "modelid" : "509C9905-9154-46F8-95ED-DEBDFA47B7C9",
+      "modelid" : "463b9f3d90a51a64fd4b5580efac06aa",
       "modeltype" : "PSSYSVIEWPANEL"
     },
     "logicName" : "mob_simple_list",
@@ -1227,7 +1283,7 @@
     "showHeader" : true,
     "singleSelect" : false,
     "name" : "simplelist",
-    "modelid" : "8A1C1F1F-1999-4243-8A94-1ADFF9EA8E48",
+    "modelid" : "b5f0292f972def864589df05605e2846",
     "modeltype" : "PSDELIST"
   }, {
     "getCapPSLanguageRes" : {
@@ -1266,9 +1322,53 @@
   "enableDP" : true,
   "enablePullDownRefresh" : false,
   "showCaptionBar" : false,
-  "modelid" : "b71b28ca830bb2f7369839e233fb78ba",
+  "modelid" : "a03b182f128881adf788dcbe85bdd942",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "users",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "department",
+    "majorDEName" : "DEPARTMENT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/department.json"
+    },
+    "minorDECodeName" : "user",
+    "minorDEName" : "USER",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/user.json"
+    },
+    "name" : "DER1N_USER_DEPARTMENT_DEPARTMENT_ID",
+    "getParentPSAppDEField" : {
+      "name" : "DEPARTMENT_ID",
+      "codeName" : "department_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "space_members",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "user",
+    "majorDEName" : "USER",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/user.json"
+    },
+    "minorDECodeName" : "space_member",
+    "minorDEName" : "SPACE_MEMBER",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space_member.json"
+    },
+    "name" : "DER1N_SPACE_MEMBER_USER_USER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "USER_ID",
+      "codeName" : "user_id"
+    },
+    "rSMode" : 2
+  } ], [ {
     "actionRSMode" : 1,
     "codeName" : "space_members",
     "dataRSMode" : 0,

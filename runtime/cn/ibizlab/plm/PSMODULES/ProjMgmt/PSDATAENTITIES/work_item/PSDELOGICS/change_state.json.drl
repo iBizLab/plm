@@ -42,6 +42,17 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.change_state;
                         update(work_itemchange_statesrfactionparam);//更新fact中变量值
             end
 
+            //逻辑处理节点[变更状态]
+            rule "deaction1"
+            ruleflow-group "work_itemchange_statedeaction1"
+            when
+            then
+                        work_itemservice.update(work_itemchange_statedefault);
+                        update(work_itemchange_statedefault);//更新fact中变量值
+                        update(work_itemchange_statefor_temp_obj);//更新fact中变量值
+                        update(work_itemchange_statesrfactionparam);//更新fact中变量值
+            end
+
             //逻辑处理节点[循环子调用]
             rule "loopsubcall1"
             ruleflow-group "work_itemchange_stateloopsubcall1"
@@ -58,17 +69,6 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.change_state;
             when
             then
                             work_itemchange_statedefault.set("state",work_itemchange_statefor_temp_obj.get("state"));
-                        update(work_itemchange_statedefault);//更新fact中变量值
-                        update(work_itemchange_statefor_temp_obj);//更新fact中变量值
-                        update(work_itemchange_statesrfactionparam);//更新fact中变量值
-            end
-
-            //逻辑处理节点[变更状态]
-            rule "deaction1"
-            ruleflow-group "work_itemchange_statedeaction1"
-            when
-            then
-                        work_itemservice.update(work_itemchange_statedefault);
                         update(work_itemchange_statedefault);//更新fact中变量值
                         update(work_itemchange_statefor_temp_obj);//更新fact中变量值
                         update(work_itemchange_statesrfactionparam);//更新fact中变量值

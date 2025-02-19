@@ -219,10 +219,10 @@
     "enableFront" : false
   }, {
     "actionHolder" : 1,
-    "actionMode" : "CUSTOM",
+    "actionMode" : "GETDRAFT",
     "actionType" : "DELOGIC",
     "codeName" : "delete_categories",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "DELETE",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_plan/PSDEACTIONS/delete_categories.json",
     "logicName" : "删除类别",
     "name" : "delete_categories",
@@ -236,7 +236,11 @@
     },
     "getPSDEActionReturn" : {
       "name" : "Delete_categoriesResult",
-      "type" : "VOID"
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "product_plan_dto"
+      },
+      "type" : "DTO"
     },
     "getPSDELogic" : {
       "modelref" : true,
@@ -1432,16 +1436,6 @@
       "standardColumnName" : "`SEQUENCE`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[SEQUENCE][序号]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[SEQUENCE][序号]",
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[SEQUENCE][序号]移动端默认",
       "getPSDEFFormItem" : {
@@ -1453,6 +1447,16 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[SEQUENCE][序号]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[SEQUENCE][序号]",
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -3300,6 +3304,12 @@
     "id" : "product__UPDATE"
   } ],
   "getAllPSModelDatas" : [ {
+    "codeName" : "categories_pick_up_tree_view",
+    "logicName" : "排期类别选择树视图",
+    "name" : "排期类别选择树视图",
+    "realModelSubType" : "DEPICKUPTREEVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "RedirectView",
     "logicName" : "排期实体数据重定向视图",
     "modelTag" : "REDIRECTVIEW",
@@ -3307,10 +3317,23 @@
     "realModelSubType" : "DEREDIRECTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "edit_option_view",
+    "logicName" : "排期编辑视图",
+    "name" : "排期编辑视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "tree_exp_view",
     "logicName" : "排期模块树导航视图",
     "name" : "排期模块树导航视图",
     "realModelSubType" : "DETREEEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "pick_up_view",
+    "logicName" : "排期实体数据选择视图",
+    "modelTag" : "PICKUPVIEW",
+    "name" : "排期实体数据选择视图",
+    "realModelSubType" : "DEPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "quick_create_view",
@@ -3332,16 +3355,10 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_create_view",
-    "logicName" : "移动端新建排期编辑视图",
-    "name" : "移动端新建排期编辑视图",
-    "realModelSubType" : "DEMOBEDITVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "edit_option_view",
-    "logicName" : "排期编辑视图",
-    "name" : "排期编辑视图",
-    "realModelSubType" : "DEOPTVIEW",
+    "codeName" : "all_grid_view",
+    "logicName" : "排期表格视图（全部计划）",
+    "name" : "排期表格视图（全部计划）",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "GridView",
@@ -3351,29 +3368,16 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "pick_up_grid_view",
-    "logicName" : "排期实体选择表格视图（部件视图）",
-    "name" : "排期实体选择表格视图（部件视图）",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "codeName" : "mob_plan_md_view",
+    "logicName" : "排期移动端多数据视图",
+    "name" : "排期移动端多数据视图",
+    "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "all_grid_view",
-    "logicName" : "排期表格视图（全部计划）",
-    "name" : "排期表格视图（全部计划）",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "pick_up_view",
-    "logicName" : "排期实体数据选择视图",
-    "modelTag" : "PICKUPVIEW",
-    "name" : "排期实体数据选择视图",
-    "realModelSubType" : "DEPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "categories_pick_up_tree_view",
-    "logicName" : "排期类别选择树视图",
-    "name" : "排期类别选择树视图",
-    "realModelSubType" : "DEPICKUPTREEVIEW",
+    "codeName" : "mob_create_view",
+    "logicName" : "移动端新建排期编辑视图",
+    "name" : "移动端新建排期编辑视图",
+    "realModelSubType" : "DEMOBEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mpick_up_view",
@@ -3383,10 +3387,10 @@
     "realModelSubType" : "DEMPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_plan_md_view",
-    "logicName" : "排期移动端多数据视图",
-    "name" : "排期移动端多数据视图",
-    "realModelSubType" : "DEMOBMDVIEW",
+    "codeName" : "pick_up_grid_view",
+    "logicName" : "排期实体选择表格视图（部件视图）",
+    "name" : "排期实体选择表格视图（部件视图）",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView2",

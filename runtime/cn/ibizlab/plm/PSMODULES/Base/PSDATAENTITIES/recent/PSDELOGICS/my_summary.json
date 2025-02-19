@@ -7,13 +7,13 @@
   "name" : "我的任务总结",
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
-    "leftPos" : 70,
+    "leftPos" : -100,
     "logicNodeType" : "BEGIN",
     "name" : "开始",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "RAWSQLCALL1"
+        "id" : "PREPAREPARAM1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -34,6 +34,90 @@
     },
     "returnType" : "LOGICPARAM",
     "topPos" : 200
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : -4,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置初始化",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "bug_num",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "name" : "直接值[0] ==> result[bug_num]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "0",
+      "srcValue" : "0",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "case_num",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "name" : "直接值[0] ==> result[case_num]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "0",
+      "srcValue" : "0",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "idea_num",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "name" : "直接值[0] ==> result[idea_num]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "0",
+      "srcValue" : "0",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "other_item_num",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "name" : "直接值[0] ==> result[other_item_num]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "0",
+      "srcValue" : "0",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "task_num",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "name" : "直接值[0] ==> result[task_num]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "0",
+      "srcValue" : "0",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "ticket_num",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "name" : "直接值[0] ==> result[ticket_num]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "0",
+      "srcValue" : "0",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 208
   }, {
     "codeName" : "RAWSQLCALL1",
     "getDstPSDELogicParam" : {

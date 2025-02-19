@@ -206,7 +206,7 @@
     },
     "getPSSubSysServiceAPIDEMethod" : {
       "modelref" : true,
-      "id" : "Save"
+      "id" : "save"
     },
     "builtinAction" : true
   } ],
@@ -253,6 +253,38 @@
       "type" : "DTOS"
     },
     "defaultMode" : true
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_organization/PSDEDATAQUERIES/Nav/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "Nav",
+    "logicName" : "Nav",
+    "name" : "Nav",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_organization.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "SYS_ORGANIZATION"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "NavInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "sys_organizationFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "NavResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "sys_organizationDTO"
+      },
+      "type" : "DTOS"
+    }
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
@@ -322,6 +354,36 @@
     "defaultMode" : true,
     "enableBackend" : true,
     "enableFront" : true
+  }, {
+    "codeName" : "Nav",
+    "logicName" : "Nav",
+    "name" : "Nav",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "Nav"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "NavInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "sys_organizationFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "NavResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "sys_organizationDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSSubSysServiceAPIDEMethod" : {
+      "modelref" : true,
+      "id" : "FetchNav"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
   } ],
   "getAllPSDEFields" : [ {
     "getAllPSDEFDTColumns" : [ {
@@ -338,6 +400,17 @@
       "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[ID][标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[ID][标识]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[ID][标识]移动端默认",
       "getPSDEFFormItem" : {
@@ -350,17 +423,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[ID][标识]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[ID][标识]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -490,18 +552,6 @@
       "standardColumnName" : "`ENABLED`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[ENABLED][逻辑有效标记]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "DROPDOWNLIST_100",
-        "name" : "[ENABLED][逻辑有效标记]",
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false,
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[ENABLED][逻辑有效标记]移动端默认",
       "getPSDEFFormItem" : {
@@ -515,6 +565,18 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[ENABLED][逻辑有效标记]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "[ENABLED][逻辑有效标记]",
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false,
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -556,18 +618,6 @@
       "standardColumnName" : "`CREATOR`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[CREATOR][创建人]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[CREATOR][创建人]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[CREATOR][创建人]移动端默认",
       "getPSDEFFormItem" : {
@@ -581,6 +631,18 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[CREATOR][创建人]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[CREATOR][创建人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -630,18 +692,6 @@
       "standardColumnName" : "`CREATE_TIME`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[CREATE_TIME][创建时间]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[CREATE_TIME][创建时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[CREATE_TIME][创建时间]移动端默认",
       "getPSDEFFormItem" : {
@@ -655,6 +705,18 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[CREATE_TIME][创建时间]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[CREATE_TIME][创建时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -692,6 +754,18 @@
       "standardColumnName" : "`UPDATER`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[UPDATER][最后更新人]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[UPDATER][最后更新人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[UPDATER][最后更新人]移动端默认",
       "getPSDEFFormItem" : {
@@ -705,18 +779,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[UPDATER][最后更新人]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[UPDATER][最后更新人]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1025,18 +1087,6 @@
       "standardColumnName" : "`ORGANIZATION_NUMBER`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[ORGANIZATION_NUMBER][机构编号]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[ORGANIZATION_NUMBER][机构编号]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[ORGANIZATION_NUMBER][机构编号]移动端默认",
       "getPSDEFFormItem" : {
@@ -1050,6 +1100,18 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[ORGANIZATION_NUMBER][机构编号]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[ORGANIZATION_NUMBER][机构编号]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1236,6 +1298,16 @@
       "standardColumnName" : "`SORT`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[SORT][排序]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[SORT][排序]",
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[SORT][排序]移动端默认",
       "getPSDEFFormItem" : {
@@ -1247,16 +1319,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[SORT][排序]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[SORT][排序]",
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1297,21 +1359,6 @@
       "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[PARENT_ID][父标识]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "HIDDEN",
-        "name" : "[PARENT_ID][父标识]",
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_organization.json"
-        },
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[PARENT_ID][父标识]移动端默认",
       "getPSDEFFormItem" : {
@@ -1328,6 +1375,21 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[PARENT_ID][父标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[PARENT_ID][父标识]",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_organization.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1635,27 +1697,44 @@
     "logicName" : "更新",
     "name" : "UPDATE"
   } ],
+  "getAllPSDEUserRoles" : [ {
+    "dynaModelFilePath" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_organization/PSDEUSERROLES/ALL_RW.json",
+    "name" : "全部数据（读写）",
+    "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "UPDATE",
+      "name" : "UPDATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "UPDATE"
+      }
+    }, {
+      "dataAccessAction" : "READ",
+      "name" : "READ",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ"
+      }
+    }, {
+      "dataAccessAction" : "DELETE",
+      "name" : "DELETE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "DELETE"
+      }
+    }, {
+      "dataAccessAction" : "CREATE",
+      "name" : "CREATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "CREATE"
+      }
+    } ],
+    "roleTag" : "ALL_RW",
+    "userCat" : "CAT1",
+    "userDRAction" : "READ",
+    "allData" : true
+  } ],
   "getAllPSModelDatas" : [ {
-    "codeName" : "RedirectView",
-    "logicName" : "组织实体数据重定向视图",
-    "modelTag" : "REDIRECTVIEW",
-    "name" : "组织实体数据重定向视图",
-    "realModelSubType" : "DEREDIRECTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "MPickupView",
-    "logicName" : "组织实体数据多项选择视图",
-    "modelTag" : "MPICKUPVIEW",
-    "name" : "组织实体数据多项选择视图",
-    "realModelSubType" : "DEMPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "PickupGridView",
-    "logicName" : "组织实体选择表格视图（部件视图）",
-    "name" : "组织实体选择表格视图（部件视图）",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "PickupView",
     "logicName" : "组织实体数据选择视图",
     "modelTag" : "PICKUPVIEW",
@@ -1670,6 +1749,12 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "EditView2",
+    "logicName" : "组织实体编辑视图（左右关系）",
+    "name" : "组织实体编辑视图（左右关系）",
+    "realModelSubType" : "DEEDITVIEW2",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "GridView",
     "logicName" : "组织实体表格视图",
     "modelTag" : "MDATAVIEW",
@@ -1677,10 +1762,24 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "EditView2",
-    "logicName" : "组织实体编辑视图（左右关系）",
-    "name" : "组织实体编辑视图（左右关系）",
-    "realModelSubType" : "DEEDITVIEW2",
+    "codeName" : "MPickupView",
+    "logicName" : "组织实体数据多项选择视图",
+    "modelTag" : "MPICKUPVIEW",
+    "name" : "组织实体数据多项选择视图",
+    "realModelSubType" : "DEMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "RedirectView",
+    "logicName" : "组织实体数据重定向视图",
+    "modelTag" : "REDIRECTVIEW",
+    "name" : "组织实体数据重定向视图",
+    "realModelSubType" : "DEREDIRECTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "PickupGridView",
+    "logicName" : "组织实体选择表格视图（部件视图）",
+    "name" : "组织实体选择表格视图（部件视图）",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "Main",

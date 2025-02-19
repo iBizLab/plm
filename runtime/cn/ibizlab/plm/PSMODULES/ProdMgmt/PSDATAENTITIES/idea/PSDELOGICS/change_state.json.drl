@@ -32,16 +32,6 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.change_state;
                         update(ideachange_statesrfactionparam);//更新fact中变量值
             end
 
-            //逻辑处理节点[循环id列表进行操作]
-            rule "loopsubcall1"
-            ruleflow-group "ideachange_stateloopsubcall1"
-            when
-            then
-                        update(ideachange_statedefault);//更新fact中变量值
-                        update(ideachange_statefor_temp_obj);//更新fact中变量值
-                        update(ideachange_statesrfactionparam);//更新fact中变量值
-            end
-
             //逻辑处理节点[获取需求传递的状态]
             rule "prepareparam2"
             ruleflow-group "ideachange_stateprepareparam2"
@@ -59,6 +49,16 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.change_state;
             when
             then
                         ideaservice.update(ideachange_statedefault);
+                        update(ideachange_statedefault);//更新fact中变量值
+                        update(ideachange_statefor_temp_obj);//更新fact中变量值
+                        update(ideachange_statesrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环id列表进行操作]
+            rule "loopsubcall1"
+            ruleflow-group "ideachange_stateloopsubcall1"
+            when
+            then
                         update(ideachange_statedefault);//更新fact中变量值
                         update(ideachange_statefor_temp_obj);//更新fact中变量值
                         update(ideachange_statesrfactionparam);//更新fact中变量值

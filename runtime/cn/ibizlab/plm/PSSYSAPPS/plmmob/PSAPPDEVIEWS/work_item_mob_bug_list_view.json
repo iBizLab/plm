@@ -16,7 +16,7 @@
     "path" : "PSSYSAPPS/plmmob/PSAPPMODULES/ProjMgmt.json"
   },
   "getPSDEViewCodeName" : "mob_bug_list_view",
-  "getPSDEViewId" : "703A61B7-6E08-40F7-B856-B28CDD483D65",
+  "getPSDEViewId" : "aafbdbee46c43c4e72a241ed3c7e22ac",
   "getPSViewLayoutPanel" : {
     "codeName" : "usr0920647658",
     "controlType" : "VIEWLAYOUTPANEL",
@@ -244,7 +244,7 @@
     "mobilePanel" : true,
     "useDefaultLayout" : false,
     "viewProxyMode" : true,
-    "modelid" : "15A3B16F-1F94-4B0F-B9F2-D7867E543C7C",
+    "modelid" : "f70e1f2eeeea033681cd5eb9e0a339d9",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSAppViewLogics" : [ {
       "logicTrigger" : "CUSTOM",
@@ -675,7 +675,7 @@
           } ]
         } ],
         "name" : "mdctrl_itempanel",
-        "modelid" : "4F6DAA5F-52D7-4013-ACC2-96F18EF0A614",
+        "modelid" : "8e92202cd73f5c8866d73027e35f8428",
         "modeltype" : "PSSYSVIEWPANEL"
       },
       "logicName" : "mob_common_list",
@@ -764,14 +764,10 @@
       },
       "getPSDEListDataItems" : [ {
         "dataType" : 25,
-        "getFrontPSCodeList" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_state2.json"
-        },
-        "name" : "state",
+        "name" : "show_identifier",
         "getPSAppDEField" : {
-          "name" : "STATE",
-          "codeName" : "state"
+          "name" : "SHOW_IDENTIFIER",
+          "codeName" : "show_identifier"
         }
       }, {
         "dataType" : 25,
@@ -779,6 +775,21 @@
         "getPSAppDEField" : {
           "name" : "ASSIGNEE_NAME",
           "codeName" : "assignee_name"
+        }
+      }, {
+        "dataType" : 25,
+        "name" : "title",
+        "getPSAppDEField" : {
+          "name" : "TITLE",
+          "codeName" : "title"
+        }
+      }, {
+        "dataType" : 5,
+        "format" : "YYYY-MM-DD",
+        "name" : "end_at",
+        "getPSAppDEField" : {
+          "name" : "END_AT",
+          "codeName" : "end_at"
         }
       }, {
         "dataType" : 25,
@@ -792,34 +803,23 @@
           "codeName" : "priority"
         }
       }, {
+        "dataType" : 25,
+        "getFrontPSCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_state2.json"
+        },
+        "name" : "state",
+        "getPSAppDEField" : {
+          "name" : "STATE",
+          "codeName" : "state"
+        }
+      }, {
         "dataType" : 5,
         "format" : "YYYY-MM-DD",
         "name" : "start_at",
         "getPSAppDEField" : {
           "name" : "START_AT",
           "codeName" : "start_at"
-        }
-      }, {
-        "dataType" : 25,
-        "name" : "show_identifier",
-        "getPSAppDEField" : {
-          "name" : "SHOW_IDENTIFIER",
-          "codeName" : "show_identifier"
-        }
-      }, {
-        "dataType" : 5,
-        "format" : "YYYY-MM-DD",
-        "name" : "end_at",
-        "getPSAppDEField" : {
-          "name" : "END_AT",
-          "codeName" : "end_at"
-        }
-      }, {
-        "dataType" : 25,
-        "name" : "title",
-        "getPSAppDEField" : {
-          "name" : "TITLE",
-          "codeName" : "title"
         }
       }, {
         "dataType" : 25,
@@ -926,11 +926,10 @@
       } ],
       "getPSDEListItems" : [ {
         "align" : "LEFT",
-        "cLConvertMode" : "FRONT",
-        "caption" : "状态",
-        "dataItemName" : "state",
+        "caption" : "编号",
+        "dataItemName" : "show_identifier",
         "itemType" : "TEXTITEM",
-        "name" : "STATE",
+        "name" : "SHOW_IDENTIFIER",
         "width" : 150,
         "widthString" : "150px",
         "enableSort" : true
@@ -945,30 +944,10 @@
         "enableSort" : true
       }, {
         "align" : "LEFT",
-        "cLConvertMode" : "FRONT",
-        "caption" : "优先级",
-        "dataItemName" : "priority",
+        "caption" : "标题",
+        "dataItemName" : "title",
         "itemType" : "TEXTITEM",
-        "name" : "PRIORITY",
-        "width" : 150,
-        "widthString" : "150px",
-        "enableSort" : true
-      }, {
-        "align" : "LEFT",
-        "caption" : "开始时间",
-        "dataItemName" : "start_at",
-        "itemType" : "TEXTITEM",
-        "name" : "START_AT",
-        "valueFormat" : "YYYY-MM-DD",
-        "width" : 150,
-        "widthString" : "150px",
-        "enableSort" : true
-      }, {
-        "align" : "LEFT",
-        "caption" : "编号",
-        "dataItemName" : "show_identifier",
-        "itemType" : "TEXTITEM",
-        "name" : "SHOW_IDENTIFIER",
+        "name" : "TITLE",
         "width" : 150,
         "widthString" : "150px",
         "enableSort" : true
@@ -984,10 +963,31 @@
         "enableSort" : true
       }, {
         "align" : "LEFT",
-        "caption" : "标题",
-        "dataItemName" : "title",
+        "cLConvertMode" : "FRONT",
+        "caption" : "优先级",
+        "dataItemName" : "priority",
         "itemType" : "TEXTITEM",
-        "name" : "TITLE",
+        "name" : "PRIORITY",
+        "width" : 150,
+        "widthString" : "150px",
+        "enableSort" : true
+      }, {
+        "align" : "LEFT",
+        "cLConvertMode" : "FRONT",
+        "caption" : "状态",
+        "dataItemName" : "state",
+        "itemType" : "TEXTITEM",
+        "name" : "STATE",
+        "width" : 150,
+        "widthString" : "150px",
+        "enableSort" : true
+      }, {
+        "align" : "LEFT",
+        "caption" : "开始时间",
+        "dataItemName" : "start_at",
+        "itemType" : "TEXTITEM",
+        "name" : "START_AT",
+        "valueFormat" : "YYYY-MM-DD",
         "width" : 150,
         "widthString" : "150px",
         "enableSort" : true
@@ -1119,7 +1119,7 @@
       } ],
       "toolbarStyle" : "USER",
       "xDataControlName" : "mdctrl",
-      "modelid" : "ABC024BA-3125-4579-9129-DDF88D193CDA",
+      "modelid" : "9ac41487ae24cae77d0195a8cb45e733",
       "modeltype" : "PSDETOOLBAR"
     }, {
       "controlType" : "SEARCHBAR",
@@ -1163,7 +1163,7 @@
   "enableQuickSearch" : true,
   "enableSearch" : true,
   "showCaptionBar" : false,
-  "modelid" : "885f80b4ad20aa957f02a70c0f545f81",
+  "modelid" : "ee0cdea219c2b8ba9d472d642b0055d8",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

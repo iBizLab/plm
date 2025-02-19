@@ -85,6 +85,15 @@
       "name" : "SHORT_NAME",
       "stdDataType" : 25
     }, {
+      "codeName" : "is_leaf",
+      "logicName" : "是否叶子节点",
+      "name" : "IS_LEAF",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "stdDataType" : 9
+    }, {
       "codeName" : "sort",
       "length" : 20,
       "logicName" : "排序",
@@ -305,33 +314,22 @@
       "noServiceCodeName" : true
     }, {
       "actionType" : "DEACTION",
-      "codeName" : "Save",
-      "keyField" : "ID",
+      "codeName" : "save",
       "methodType" : "DEACTION",
-      "name" : "Save",
-      "getPSDECodeName" : "sys_department",
-      "getPSDELogicName" : "部门",
-      "getPSDEName" : "SYS_DEPARTMENT",
+      "name" : "SYS_DEPARTMENT__DEACTION__SAVE",
       "getPSSubSysServiceAPIDE" : {
         "modelref" : true,
         "id" : "sys_department"
       },
       "getPSSubSysServiceAPIMethodInput" : {
         "name" : "输入对象",
-        "getPSSubSysServiceAPIDTO" : {
-          "modelref" : true,
-          "id" : "sys_departmentDTO"
-        },
-        "type" : "DTO"
+        "type" : "UNKNOWN"
       },
       "getPSSubSysServiceAPIMethodReturn" : {
-        "name" : "返回对象",
-        "type" : "VOID"
+        "name" : "返回对象"
       },
-      "requestField" : "ID",
       "requestMethod" : "POST",
-      "requestParamType" : "ENTITY",
-      "uniqueTag" : "SYS_DEPARTMENT__DEACTION__SAVE"
+      "needResourceKey" : true
     }, {
       "actionType" : "DEACTION",
       "codeName" : "Update",
@@ -658,33 +656,22 @@
       "noServiceCodeName" : true
     }, {
       "actionType" : "DEACTION",
-      "codeName" : "Save",
-      "keyField" : "ID",
+      "codeName" : "save",
       "methodType" : "DEACTION",
-      "name" : "Save",
-      "getPSDECodeName" : "sys_organization",
-      "getPSDELogicName" : "组织",
-      "getPSDEName" : "SYS_ORGANIZATION",
+      "name" : "SYS_ORGANIZATION__DEACTION__SAVE",
       "getPSSubSysServiceAPIDE" : {
         "modelref" : true,
         "id" : "sys_organization"
       },
       "getPSSubSysServiceAPIMethodInput" : {
         "name" : "输入对象",
-        "getPSSubSysServiceAPIDTO" : {
-          "modelref" : true,
-          "id" : "sys_organizationDTO"
-        },
-        "type" : "DTO"
+        "type" : "UNKNOWN"
       },
       "getPSSubSysServiceAPIMethodReturn" : {
-        "name" : "返回对象",
-        "type" : "VOID"
+        "name" : "返回对象"
       },
-      "requestField" : "ID",
       "requestMethod" : "POST",
-      "requestParamType" : "ENTITY",
-      "uniqueTag" : "SYS_ORGANIZATION__DEACTION__SAVE"
+      "needResourceKey" : true
     }, {
       "actionType" : "DEACTION",
       "codeName" : "Update",
@@ -748,6 +735,38 @@
       "requestField" : "ID",
       "requestMethod" : "POST",
       "uniqueTag" : "SYS_ORGANIZATION__FETCH__DEFAULT"
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "FetchNav",
+      "keyField" : "ID",
+      "methodType" : "FETCH",
+      "name" : "Nav",
+      "getPSDECodeName" : "sys_organization",
+      "getPSDELogicName" : "组织",
+      "getPSDEName" : "SYS_ORGANIZATION",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "sys_organization"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "sys_organizationFilterDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "sys_organizationDTO"
+        },
+        "type" : "PAGE"
+      },
+      "requestField" : "ID",
+      "requestMethod" : "POST",
+      "uniqueTag" : "SYS_ORGANIZATION__FETCH__NAV"
     } ],
     "major" : true
   }, {
@@ -1055,6 +1074,40 @@
       "uniqueTag" : "SYS_PERSON__DEACTION__GETDRAFT"
     }, {
       "actionType" : "DEACTION",
+      "codeName" : "GetSimple",
+      "keyField" : "ID",
+      "methodType" : "DEACTION",
+      "name" : "GetSimple",
+      "getPSDECodeName" : "sys_person",
+      "getPSDELogicName" : "人员",
+      "getPSDEName" : "SYS_PERSON",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "sys_person"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "getKeyPSSubSysServiceAPIField" : {
+          "modelref" : true,
+          "id" : "id"
+        },
+        "name" : "输入对象",
+        "type" : "KEYFIELD"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "sys_personDTO"
+        },
+        "type" : "DTO"
+      },
+      "requestField" : "ID",
+      "requestMethod" : "GET",
+      "requestParamType" : "FIELD",
+      "uniqueTag" : "SYS_PERSON__DEACTION__GETSIMPLE",
+      "needResourceKey" : true
+    }, {
+      "actionType" : "DEACTION",
       "codeName" : "Remove",
       "keyField" : "ID",
       "methodType" : "DEACTION",
@@ -1086,10 +1139,10 @@
       "noServiceCodeName" : true
     }, {
       "actionType" : "DEACTION",
-      "codeName" : "Save",
+      "codeName" : "ResetPassword",
       "keyField" : "ID",
       "methodType" : "DEACTION",
-      "name" : "Save",
+      "name" : "ResetPassword",
       "getPSDECodeName" : "sys_person",
       "getPSDELogicName" : "人员",
       "getPSDEName" : "SYS_PERSON",
@@ -1112,7 +1165,26 @@
       "requestField" : "ID",
       "requestMethod" : "POST",
       "requestParamType" : "ENTITY",
-      "uniqueTag" : "SYS_PERSON__DEACTION__SAVE"
+      "uniqueTag" : "SYS_PERSON__DEACTION__RESETPASSWORD",
+      "needResourceKey" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "save",
+      "methodType" : "DEACTION",
+      "name" : "SYS_PERSON__DEACTION__SAVE",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "sys_person"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "type" : "UNKNOWN"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象"
+      },
+      "requestMethod" : "POST",
+      "needResourceKey" : true
     }, {
       "actionType" : "DEACTION",
       "codeName" : "Update",
@@ -1213,7 +1285,7 @@
   }, {
     "aPIMode" : 1,
     "codeName" : "sys_role",
-    "logicName" : "系统角色",
+    "logicName" : "角色",
     "name" : "SYS_ROLE_UAA",
     "getPSSubSysServiceAPIDEFields" : [ {
       "codeName" : "id",
@@ -1469,33 +1541,22 @@
       "noServiceCodeName" : true
     }, {
       "actionType" : "DEACTION",
-      "codeName" : "Save",
-      "keyField" : "ID",
+      "codeName" : "save",
       "methodType" : "DEACTION",
-      "name" : "Save",
-      "getPSDECodeName" : "sys_role",
-      "getPSDELogicName" : "系统角色",
-      "getPSDEName" : "SYS_ROLE_UAA",
+      "name" : "SYS_ROLE_UAA__DEACTION__SAVE",
       "getPSSubSysServiceAPIDE" : {
         "modelref" : true,
         "id" : "sys_role"
       },
       "getPSSubSysServiceAPIMethodInput" : {
         "name" : "输入对象",
-        "getPSSubSysServiceAPIDTO" : {
-          "modelref" : true,
-          "id" : "sys_roleDTO"
-        },
-        "type" : "DTO"
+        "type" : "UNKNOWN"
       },
       "getPSSubSysServiceAPIMethodReturn" : {
-        "name" : "返回对象",
-        "type" : "VOID"
+        "name" : "返回对象"
       },
-      "requestField" : "ID",
       "requestMethod" : "POST",
-      "requestParamType" : "ENTITY",
-      "uniqueTag" : "SYS_ROLE_UAA__DEACTION__SAVE"
+      "needResourceKey" : true
     }, {
       "actionType" : "DEACTION",
       "codeName" : "Update",
@@ -1564,7 +1625,7 @@
   }, {
     "aPIMode" : 1,
     "codeName" : "sys_role_member",
-    "logicName" : "系统角色成员",
+    "logicName" : "角色成员",
     "name" : "SYS_ROLE_MEMBER",
     "getPSSubSysServiceAPIDEFields" : [ {
       "codeName" : "id",
@@ -1617,6 +1678,12 @@
       "length" : 100,
       "logicName" : "系统角色标识",
       "name" : "ROLE_ID",
+      "stdDataType" : 25
+    }, {
+      "codeName" : "member_name",
+      "length" : 100,
+      "logicName" : "成员姓名",
+      "name" : "MEMBER_NAME",
       "stdDataType" : 25
     }, {
       "codeName" : "member_group_name",
@@ -1791,33 +1858,22 @@
       "noServiceCodeName" : true
     }, {
       "actionType" : "DEACTION",
-      "codeName" : "Save",
-      "keyField" : "ID",
+      "codeName" : "save",
       "methodType" : "DEACTION",
-      "name" : "Save",
-      "getPSDECodeName" : "sys_role_member",
-      "getPSDELogicName" : "系统角色成员",
-      "getPSDEName" : "SYS_ROLE_MEMBER",
+      "name" : "SYS_ROLE_MEMBER__DEACTION__SAVE",
       "getPSSubSysServiceAPIDE" : {
         "modelref" : true,
         "id" : "sys_role_member"
       },
       "getPSSubSysServiceAPIMethodInput" : {
         "name" : "输入对象",
-        "getPSSubSysServiceAPIDTO" : {
-          "modelref" : true,
-          "id" : "sys_role_memberDTO"
-        },
-        "type" : "DTO"
+        "type" : "UNKNOWN"
       },
       "getPSSubSysServiceAPIMethodReturn" : {
-        "name" : "返回对象",
-        "type" : "VOID"
+        "name" : "返回对象"
       },
-      "requestField" : "ID",
       "requestMethod" : "POST",
-      "requestParamType" : "ENTITY",
-      "uniqueTag" : "SYS_ROLE_MEMBER__DEACTION__SAVE"
+      "needResourceKey" : true
     }, {
       "actionType" : "DEACTION",
       "codeName" : "Update",
@@ -1956,6 +2012,13 @@
       "orderValue" : 230,
       "sourceType" : "DEMETHODDTOFIELD",
       "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "is_leaf",
+      "name" : "is_leaf",
+      "orderValue" : 240,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 9,
       "type" : "SIMPLE"
     }, {
       "codeName" : "short_name",
@@ -2397,6 +2460,12 @@
       "sourceType" : "DEMETHODDTOFIELD",
       "stdDataType" : 25,
       "type" : "SIMPLE"
+    }, {
+      "codeName" : "N_UID_EQ",
+      "name" : "N_UID_EQ",
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
     } ],
     "type" : "DEMETHODDTO"
   }, {
@@ -2576,6 +2645,13 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "codeName" : "member_name",
+      "name" : "member_name",
+      "orderValue" : 200,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "codeName" : "member_group_name",
       "name" : "member_group_name",
       "orderValue" : 225,
@@ -2615,7 +2691,7 @@
   "authTimeout" : 1,
   "codeName" : "ibizsysmgr",
   "dynaModelFilePath" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSSUBSYSSERVICEAPIS/ibizsysmgr.json",
-  "name" : "ibizsysmgr",
+  "name" : "系统管理",
   "getPSSystemModule" : {
     "modelref" : true,
     "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr.json"

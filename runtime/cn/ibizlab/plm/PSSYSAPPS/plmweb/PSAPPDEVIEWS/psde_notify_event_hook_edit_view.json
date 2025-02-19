@@ -2445,6 +2445,87 @@
       "emptyCaption" : false,
       "hidden" : false,
       "showCaption" : false
+    }, {
+      "caption" : "执行人",
+      "dataType" : 21,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "executors_user_id",
+      "getPSAppDEField" : {
+        "name" : "EXECUTORS",
+        "codeName" : "executors"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_EXECUTORS_EXISTS__N_USER_ID_EQ",
+        "getDstPSDEFSearchMode" : {
+          "modelref" : true,
+          "id" : "N_USER_ID_EQ"
+        },
+        "getDstPSDEField" : {
+          "name" : "USER_ID",
+          "codeName" : "user_id"
+        },
+        "getDstPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/executor.json"
+        },
+        "name" : "N_EXECUTORS_EXISTS__N_USER_ID_EQ",
+        "getPSDER" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/executor/PSDERS/DERCUSTOM_EXECUTOR_WORK_ITEM_OWNER_ID.json"
+        },
+        "stdDataType" : 25,
+        "valueOP" : "EXISTS"
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+          "AC" : "TRUE",
+          "SRFNAVPARAM.n_status_eq" : "1",
+          "TRIGGER" : "TRUE",
+          "URL" : "projects/${context.project}/project_members/fetch_default",
+          "PICKUPVIEW" : "FALSE",
+          "USERMETHOD" : "post",
+          "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+          "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+          "DEPTMETHOD" : "get",
+          "DEPTURL" : "/users/fetch_default"
+        },
+        "editorStyle" : "PERSONEL_SELECT_PROJECT",
+        "editorType" : "PICKEREX_TRIGGER",
+        "name" : "executors_user_id",
+        "getPSNavigateParams" : [ {
+          "key" : "n_department_id_eq",
+          "name" : "n_department_id_eq",
+          "value" : "srforgsectorid",
+          "rawValue" : false
+        }, {
+          "key" : "n_status_eq",
+          "name" : "n_status_eq",
+          "value" : "1",
+          "rawValue" : true
+        } ],
+        "getPSSysPFPlugin" : {
+          "pluginType" : "EDITOR_CUSTOMSTYLE",
+          "pluginCode" : "PERSON_SELECT",
+          "runtimeObject" : true
+        },
+        "valueItemName" : "user_id",
+        "enableAC" : true,
+        "enablePickupView" : false,
+        "forceSelection" : true,
+        "showTrigger" : true,
+        "singleSelect" : true
+      },
+      "valueItemName" : "user_id",
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "showCaption" : false,
+      "getUserParam" : {
+        "ITEMTYPE" : "SIMPLE"
+      }
     } ],
     "getPSSearchBarGroups" : [ {
       "caption" : "全部工作项",

@@ -107,7 +107,7 @@
       "name" : "附加逻辑",
       "getPSDELogic" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer/PSDELOGICS/get_product_member.json"
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer/PSDELOGICS/fill_categories_name.json"
       },
       "internalLogic" : true
     }, {
@@ -116,7 +116,7 @@
       "name" : "附加逻辑",
       "getPSDELogic" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer/PSDELOGICS/fill_categories_name.json"
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer/PSDELOGICS/get_product_member.json"
       },
       "internalLogic" : true
     } ],
@@ -218,7 +218,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "add_categories",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer/PSDEACTIONS/add_categories.json",
     "logicName" : "添加至类别",
     "name" : "add_categories",
@@ -307,7 +307,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "del_relation",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "DELETE",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer/PSDEACTIONS/del_relation.json",
     "logicName" : "取消关联",
     "name" : "del_relation",
@@ -334,7 +334,7 @@
     "actionMode" : "GETDRAFT",
     "actionType" : "DELOGIC",
     "codeName" : "delete_categories",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "DELETE",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer/PSDEACTIONS/delete_categories.json",
     "logicName" : "删除类别",
     "name" : "delete_categories",
@@ -475,7 +475,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "product_customer_re_counters",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer/PSDEACTIONS/product_customer_re_counters.json",
     "logicName" : "产品客户关联分页计数器",
     "name" : "product_customer_re_counters",
@@ -3533,38 +3533,6 @@
       },
       "topPos" : 403
     }, {
-      "codeName" : "PREPAREPARAM2",
-      "leftPos" : 180,
-      "logicNodeType" : "PREPAREPARAM",
-      "name" : "设置类别路径",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM2"
-        }
-      } ],
-      "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "CATEGORIES",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "name" : "for_temp_obj[CATEGORIES] ==> Default[CATEGORIES]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "CATEGORIES",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "for_temp_obj"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 562
-    }, {
       "codeName" : "DEACTION1",
       "getDstPSDEAction" : {
         "modelref" : true,
@@ -3607,6 +3575,38 @@
         "modelref" : true,
         "id" : "srfactionparam"
       },
+      "topPos" : 562
+    }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : 180,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置类别路径",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "CATEGORIES",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "name" : "for_temp_obj[CATEGORIES] ==> Default[CATEGORIES]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "CATEGORIES",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_temp_obj"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
       "topPos" : 562
     } ],
     "getPSDELogicParams" : [ {
@@ -6691,40 +6691,21 @@
     "utilType" : "NOTIFYSETTING"
   } ],
   "getAllPSModelDatas" : [ {
-    "codeName" : "mob_edit_view",
-    "logicName" : "移动端客户编辑视图",
-    "name" : "移动端客户编辑视图",
-    "realModelSubType" : "DEMOBEDITVIEW",
+    "codeName" : "mob_md_view",
+    "logicName" : "移动端客户多数据视图",
+    "name" : "移动端客户多数据视图",
+    "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "set_category_option_view",
-    "logicName" : "客户设置类别视图",
-    "name" : "客户设置类别视图",
-    "realModelSubType" : "DEOPTVIEW",
+    "codeName" : "pc_customer_pickup_tree_view",
+    "logicName" : "客户选择树视图（PC端）",
+    "name" : "客户选择树视图（PC端）",
+    "realModelSubType" : "DEPICKUPTREEVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "add_category_option_view",
-    "logicName" : "添加至类别选项操作视图",
-    "name" : "添加至类别选项操作视图",
-    "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mpick_up_view",
-    "logicName" : "客户实体数据多项选择视图",
-    "modelTag" : "MPICKUPVIEW",
-    "name" : "客户实体数据多项选择视图",
-    "realModelSubType" : "DEMPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "test_tree_select_grid_view",
-    "logicName" : "测试树下拉选择的表格",
-    "name" : "测试树下拉选择的表格",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "test_tree_select_edit_view",
-    "logicName" : "测试树下拉选择的编辑视图",
-    "name" : "测试树下拉选择的编辑视图",
+    "codeName" : "idea_customer_info_view",
+    "logicName" : "需求客户分数视图",
+    "name" : "需求客户分数视图",
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
@@ -6734,16 +6715,28 @@
     "realModelSubType" : "DETREEEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "idea_customer_info_view",
-    "logicName" : "需求客户分数视图",
-    "name" : "需求客户分数视图",
+    "codeName" : "pick_up_grid_view",
+    "logicName" : "客户实体选择表格视图（部件视图）",
+    "name" : "客户实体选择表格视图（部件视图）",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_info_view",
+    "logicName" : "客户信息详情编辑视图（移动端）",
+    "name" : "客户信息详情编辑视图（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "test_tree_select_edit_view",
+    "logicName" : "测试树下拉选择的编辑视图",
+    "name" : "测试树下拉选择的编辑视图",
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "pick_up_tree_view",
-    "logicName" : "客户选择树视图",
-    "name" : "客户选择树视图",
-    "realModelSubType" : "DEPICKUPTREEVIEW",
+    "codeName" : "add_category_option_view",
+    "logicName" : "添加至类别选项操作视图",
+    "name" : "添加至类别选项操作视图",
+    "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView",
@@ -6753,6 +6746,12 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_mpick_up_view_PickupMDView",
+    "logicName" : "其他实体关联客户多项选择视图_选择数据视图（移动端）",
+    "name" : "其他实体关联客户多项选择视图_选择数据视图（移动端）",
+    "realModelSubType" : "DEMOBPICKUPMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "GridView",
     "logicName" : "客户实体表格视图",
     "modelTag" : "MDATAVIEW",
@@ -6760,10 +6759,10 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_md_view",
-    "logicName" : "移动端客户多数据视图",
-    "name" : "移动端客户多数据视图",
-    "realModelSubType" : "DEMOBMDVIEW",
+    "codeName" : "set_category_option_view",
+    "logicName" : "客户设置类别视图",
+    "name" : "客户设置类别视图",
+    "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "main_view",
@@ -6772,10 +6771,10 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "pick_up_grid_view",
-    "logicName" : "客户实体选择表格视图（部件视图）",
-    "name" : "客户实体选择表格视图（部件视图）",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "codeName" : "test_tree_select_grid_view",
+    "logicName" : "测试树下拉选择的表格",
+    "name" : "测试树下拉选择的表格",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "quick_create_view",
@@ -6797,22 +6796,16 @@
     "realModelSubType" : "DEEDITVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_mpick_up_view_PickupMDView",
-    "logicName" : "其他实体关联客户多项选择视图_选择数据视图（移动端）",
-    "name" : "其他实体关联客户多项选择视图_选择数据视图（移动端）",
-    "realModelSubType" : "DEMOBPICKUPMDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "pc_customer_pickup_tree_view",
-    "logicName" : "客户选择树视图（PC端）",
-    "name" : "客户选择树视图（PC端）",
-    "realModelSubType" : "DEPICKUPTREEVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_info_view",
-    "logicName" : "客户信息详情编辑视图（移动端）",
-    "name" : "客户信息详情编辑视图（移动端）",
+    "codeName" : "mob_edit_view",
+    "logicName" : "移动端客户编辑视图",
+    "name" : "移动端客户编辑视图",
     "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_mpick_up_view",
+    "logicName" : "其他实体关联客户多项选择视图（移动端）",
+    "name" : "其他实体关联客户多项选择视图（移动端）",
+    "realModelSubType" : "DEMOBMPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "pick_up_view",
@@ -6822,16 +6815,23 @@
     "realModelSubType" : "DEPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_mpick_up_view",
-    "logicName" : "其他实体关联客户多项选择视图（移动端）",
-    "name" : "其他实体关联客户多项选择视图（移动端）",
-    "realModelSubType" : "DEMOBMPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "idea_re_customer_grid_view",
     "logicName" : "需求关联客户表格视图",
     "name" : "需求关联客户表格视图",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mpick_up_view",
+    "logicName" : "客户实体数据多项选择视图",
+    "modelTag" : "MPICKUPVIEW",
+    "name" : "客户实体数据多项选择视图",
+    "realModelSubType" : "DEMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "pick_up_tree_view",
+    "logicName" : "客户选择树视图",
+    "name" : "客户选择树视图",
+    "realModelSubType" : "DEPICKUPTREEVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "all_grid_view",
@@ -6840,10 +6840,17 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_edit_view_Form",
-    "logicName" : "移动端客户编辑视图_表单",
+    "codeName" : "info_view_Form",
+    "logicName" : "需求客户信息视图_表单",
+    "modelTag2" : "0",
+    "name" : "需求客户信息视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_info_view_Form",
+    "logicName" : "客户信息详情编辑视图（移动端）_表单",
     "modelTag2" : "1",
-    "name" : "移动端客户编辑视图_表单",
+    "name" : "客户信息详情编辑视图（移动端）_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -6868,6 +6875,13 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
+    "codeName" : "idea_customer_info_view_Form",
+    "logicName" : "需求客户信息视图_表单",
+    "modelTag2" : "0",
+    "name" : "需求客户信息视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "setting_category_view_form",
     "logicName" : "客户设置类别视图_表单",
     "modelTag2" : "0",
@@ -6889,24 +6903,10 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "mob_info_view_Form",
-    "logicName" : "客户信息详情编辑视图（移动端）_表单",
+    "codeName" : "mob_edit_view_Form",
+    "logicName" : "移动端客户编辑视图_表单",
     "modelTag2" : "1",
-    "name" : "客户信息详情编辑视图（移动端）_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "idea_customer_info_view_Form",
-    "logicName" : "需求客户信息视图_表单",
-    "modelTag2" : "0",
-    "name" : "需求客户信息视图_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "info_view_Form",
-    "logicName" : "需求客户信息视图_表单",
-    "modelTag2" : "0",
-    "name" : "需求客户信息视图_表单",
+    "name" : "移动端客户编辑视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   } ],

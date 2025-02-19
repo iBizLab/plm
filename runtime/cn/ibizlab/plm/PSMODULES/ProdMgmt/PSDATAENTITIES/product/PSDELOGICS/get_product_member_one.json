@@ -24,6 +24,17 @@
     "topPos" : -80,
     "parallelOutput" : true
   }, {
+    "codeName" : "END2",
+    "leftPos" : -52,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 107
+  }, {
     "codeName" : "PREPAREPARAM2",
     "leftPos" : 314,
     "logicNodeType" : "PREPAREPARAM",
@@ -140,64 +151,6 @@
       "id" : "members"
     },
     "topPos" : -72
-  }, {
-    "codeName" : "END2",
-    "leftPos" : -52,
-    "logicNodeType" : "END",
-    "name" : "结束",
-    "getReturnParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "returnType" : "LOGICPARAM",
-    "topPos" : 107
-  }, {
-    "code" : "var defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);",
-    "codeName" : "RAWSFCODE1",
-    "leftPos" : 756,
-    "logicNodeType" : "RAWSFCODE",
-    "name" : "只读权限",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "END6"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE1"
-      }
-    } ],
-    "topPos" : -72
-  }, {
-    "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"srfreadonly\", false);",
-    "codeName" : "RAWSFCODE2",
-    "leftPos" : 756,
-    "logicNodeType" : "RAWSFCODE",
-    "name" : "非只读权限",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "END6"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE2"
-      }
-    } ],
-    "topPos" : -336
-  }, {
-    "codeName" : "END6",
-    "leftPos" : 1020,
-    "logicNodeType" : "END",
-    "name" : "结束",
-    "getReturnParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "returnType" : "LOGICPARAM",
-    "topPos" : -220
   }, {
     "codeName" : "PREPAREPARAM3",
     "leftPos" : -310,
@@ -329,6 +282,53 @@
       "srcValueType" : "SRCDLPARAM"
     } ],
     "topPos" : -336
+  }, {
+    "code" : "var defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);",
+    "codeName" : "RAWSFCODE1",
+    "leftPos" : 756,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "只读权限",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END6"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : -72
+  }, {
+    "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"srfreadonly\", false);",
+    "codeName" : "RAWSFCODE2",
+    "leftPos" : 756,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "非只读权限",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END6"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE2"
+      }
+    } ],
+    "topPos" : -336
+  }, {
+    "codeName" : "END6",
+    "leftPos" : 1020,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : -220
   }, {
     "code" : "def _usercontext = sys.user();\r\ndef srfreadonly = _usercontext.testSysUniRes(\"SYSTEM\");\r\ndef _default = logic.param(\"default\").real;\r\nif(srfreadonly == true){\r\n    _default.set(\"srfreadonly\",false);\r\n}",
     "codeName" : "RAWSFCODE3",

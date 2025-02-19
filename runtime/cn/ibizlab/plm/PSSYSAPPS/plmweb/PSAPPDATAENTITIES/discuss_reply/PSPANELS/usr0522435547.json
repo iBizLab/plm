@@ -37,12 +37,17 @@
     "logicType" : "APPDEUIACTION",
     "name" : "deletecomment",
     "getPSAppDEUIAction" : {
-      "actionTarget" : "SINGLEKEY",
+      "actionTarget" : "SINGLEDATA",
       "caption" : "删除评论",
       "codeName" : "del_commnet",
+      "confirmMsg" : "确认删除此回复？",
       "frontProcessType" : "OTHER",
       "fullCodeName" : "discuss_reply_del_commnet",
       "name" : "回复下删除评论",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "del_comment"
+      },
       "getPSAppDEUILogic" : {
         "modelref" : true,
         "id" : "rely_del_comment"
@@ -51,10 +56,15 @@
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/discuss_reply.json"
       },
-      "uIActionMode" : "FRONT",
+      "refreshMode" : 2,
+      "successMsg" : "删除成功",
+      "timeout" : 60000,
+      "uIActionMode" : "BACKEND",
       "uIActionTag" : "del_commnet",
       "uIActionType" : "DEUIACTION",
-      "uILogicAttachMode" : "REPLACE",
+      "uILogicAttachMode" : "AFTER",
+      "enableConfirm" : true,
+      "reloadData" : true,
       "id" : "del_commnet@discuss_reply"
     }
   }, {
@@ -428,6 +438,6 @@
       } ]
     } ]
   } ],
-  "modelid" : "F5260C8F-FD9D-4A2F-82E7-CFACD726E922",
+  "modelid" : "36d06c2405126fa6682fd2dd305f0e08",
   "modeltype" : "PSSYSVIEWPANEL"
 }

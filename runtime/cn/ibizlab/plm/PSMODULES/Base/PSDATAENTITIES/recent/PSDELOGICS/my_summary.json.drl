@@ -29,6 +29,21 @@ package cn.ibizlab.plm.base.logic.recentlogic.my_summary;
                         update(recentmy_summaryresult);//更新fact中变量值
             end
 
+            //逻辑处理节点[设置初始化]
+            rule "prepareparam1"
+            ruleflow-group "recentmy_summaryprepareparam1"
+            when
+            then
+                            recentmy_summaryresult.set("bug_num","0");
+                            recentmy_summaryresult.set("case_num","0");
+                            recentmy_summaryresult.set("idea_num","0");
+                            recentmy_summaryresult.set("other_item_num","0");
+                            recentmy_summaryresult.set("task_num","0");
+                            recentmy_summaryresult.set("ticket_num","0");
+                        update(recentmy_summarydefault);//更新fact中变量值
+                        update(recentmy_summaryresult);//更新fact中变量值
+            end
+
             //逻辑处理节点[获取工作项数、任务数、bug数]
             rule "rawsqlcall1"
             ruleflow-group "recentmy_summaryrawsqlcall1"

@@ -1696,45 +1696,6 @@
               "getPSEditorItems" : [ {
                 "name" : "project_id"
               } ],
-              "getPSUIActionGroup" : {
-                "codeName" : "Usr1221520658",
-                "name" : "自填模式行为组",
-                "getPSAppDataEntity" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                },
-                "getPSUIActionGroupDetails" : [ {
-                  "caption" : "项目配置",
-                  "detailType" : "DEUIACTION",
-                  "name" : "u3fee786",
-                  "getPSUIAction" : {
-                    "actionTarget" : "NONE",
-                    "caption" : "项目配置",
-                    "codeName" : "open_global_setting",
-                    "getFrontPSAppView" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
-                      "viewType" : "DETREEEXPVIEW"
-                    },
-                    "frontProcessType" : "OTHER",
-                    "fullCodeName" : "project_open_global_setting",
-                    "name" : "打开项目配置(全局)",
-                    "getPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                    },
-                    "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
-                    "uIActionMode" : "FRONT",
-                    "uIActionTag" : "open_global_setting",
-                    "uIActionType" : "DEUIACTION",
-                    "id" : "open_global_setting@project"
-                  },
-                  "addSeparator" : false,
-                  "showCaption" : true,
-                  "showIcon" : true
-                } ],
-                "uniqueTag" : "project__Usr1221520658"
-              },
               "placeHolder" : "选择所属项目",
               "valueItemName" : "project_id",
               "enableAC" : true,
@@ -3354,6 +3315,14 @@
       "id" : "_FORM_HYBRID_BUG"
     },
     "getPSDEFormItemUpdates" : [ {
+      "codeName" : "calc_parent_work_item_type",
+      "name" : "计算父工作项类型",
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "work_item_type_name"
+      } ],
+      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+      "customCode" : true
+    }, {
       "codeName" : "set_default_entry",
       "name" : "选择看板后填充默认看板栏",
       "getPSAppDEMethod" : {
@@ -3364,14 +3333,6 @@
         "name" : "entry_id"
       } ]
     }, {
-      "codeName" : "calc_parent_work_item_type",
-      "name" : "计算父工作项类型",
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_name"
-      } ],
-      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-      "customCode" : true
-    }, {
       "codeName" : "set_type_bug",
       "name" : "设置缺陷类型",
       "getPSAppDEMethod" : {
@@ -3379,11 +3340,11 @@
         "id" : "set_type_bug"
       },
       "getPSDEFIUpdateDetails" : [ {
-        "name" : "project_type"
-      }, {
         "name" : "work_item_type_name"
       }, {
         "name" : "work_item_type_id"
+      }, {
+        "name" : "project_type"
       } ]
     } ],
     "getPSDEFormItemVRs" : [ {
@@ -4958,45 +4919,6 @@
               "getPSEditorItems" : [ {
                 "name" : "project_id"
               } ],
-              "getPSUIActionGroup" : {
-                "codeName" : "Usr1221520658",
-                "name" : "自填模式行为组",
-                "getPSAppDataEntity" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                },
-                "getPSUIActionGroupDetails" : [ {
-                  "caption" : "项目配置",
-                  "detailType" : "DEUIACTION",
-                  "name" : "u3fee786",
-                  "getPSUIAction" : {
-                    "actionTarget" : "NONE",
-                    "caption" : "项目配置",
-                    "codeName" : "open_global_setting",
-                    "getFrontPSAppView" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
-                      "viewType" : "DETREEEXPVIEW"
-                    },
-                    "frontProcessType" : "OTHER",
-                    "fullCodeName" : "project_open_global_setting",
-                    "name" : "打开项目配置(全局)",
-                    "getPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                    },
-                    "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
-                    "uIActionMode" : "FRONT",
-                    "uIActionTag" : "open_global_setting",
-                    "uIActionType" : "DEUIACTION",
-                    "id" : "open_global_setting@project"
-                  },
-                  "addSeparator" : false,
-                  "showCaption" : true,
-                  "showIcon" : true
-                } ],
-                "uniqueTag" : "project__Usr1221520658"
-              },
               "placeHolder" : "选择所属项目",
               "valueItemName" : "project_id",
               "enableAC" : true,
@@ -5783,7 +5705,7 @@
     },
     "noTabHeader" : true,
     "name" : "_form_hybrid_bug",
-    "modelid" : "712E8146-5B81-4798-AE51-C50BCAFFCB1D",
+    "modelid" : "af322a756bf5b450d376a3fe0a564d67",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "new_hybrid_epic",
@@ -5958,6 +5880,16 @@
       "id" : "_FORM_HYBRID_EPIC"
     },
     "getPSDEFormItemUpdates" : [ {
+      "codeName" : "set_default_entry",
+      "name" : "选择看板后填充默认看板栏",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "set_default_entry"
+      },
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "entry_id"
+      } ]
+    }, {
       "codeName" : "calc_parent_work_item_type",
       "name" : "计算父工作项类型",
       "getPSDEFIUpdateDetails" : [ {
@@ -5975,19 +5907,9 @@
       "getPSDEFIUpdateDetails" : [ {
         "name" : "work_item_type_name"
       }, {
-        "name" : "work_item_type_id"
-      }, {
         "name" : "project_type"
-      } ]
-    }, {
-      "codeName" : "set_default_entry",
-      "name" : "选择看板后填充默认看板栏",
-      "getPSAppDEMethod" : {
-        "modelref" : true,
-        "id" : "set_default_entry"
-      },
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "entry_id"
+      }, {
+        "name" : "work_item_type_id"
       } ]
     } ],
     "getPSDEFormItemVRs" : [ {
@@ -7562,45 +7484,6 @@
               "getPSEditorItems" : [ {
                 "name" : "project_id"
               } ],
-              "getPSUIActionGroup" : {
-                "codeName" : "Usr1221520658",
-                "name" : "自填模式行为组",
-                "getPSAppDataEntity" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                },
-                "getPSUIActionGroupDetails" : [ {
-                  "caption" : "项目配置",
-                  "detailType" : "DEUIACTION",
-                  "name" : "u3fee786",
-                  "getPSUIAction" : {
-                    "actionTarget" : "NONE",
-                    "caption" : "项目配置",
-                    "codeName" : "open_global_setting",
-                    "getFrontPSAppView" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
-                      "viewType" : "DETREEEXPVIEW"
-                    },
-                    "frontProcessType" : "OTHER",
-                    "fullCodeName" : "project_open_global_setting",
-                    "name" : "打开项目配置(全局)",
-                    "getPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                    },
-                    "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
-                    "uIActionMode" : "FRONT",
-                    "uIActionTag" : "open_global_setting",
-                    "uIActionType" : "DEUIACTION",
-                    "id" : "open_global_setting@project"
-                  },
-                  "addSeparator" : false,
-                  "showCaption" : true,
-                  "showIcon" : true
-                } ],
-                "uniqueTag" : "project__Usr1221520658"
-              },
               "placeHolder" : "选择所属项目",
               "valueItemName" : "project_id",
               "enableAC" : true,
@@ -8320,7 +8203,7 @@
     },
     "noTabHeader" : true,
     "name" : "_form_hybrid_epic",
-    "modelid" : "DCD9CC64-13DA-448F-83F2-1EDA45C8AAFE",
+    "modelid" : "6caaff8865362c4df59a23eedbb27891",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "new_hybrid_feature",
@@ -8502,12 +8385,20 @@
         "id" : "set_type_bug"
       },
       "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_id"
-      }, {
         "name" : "project_type"
       }, {
         "name" : "work_item_type_name"
+      }, {
+        "name" : "work_item_type_id"
       } ]
+    }, {
+      "codeName" : "calc_parent_work_item_type",
+      "name" : "计算父工作项类型",
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "work_item_type_name"
+      } ],
+      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+      "customCode" : true
     }, {
       "codeName" : "set_default_entry",
       "name" : "选择看板后填充默认看板栏",
@@ -8518,14 +8409,6 @@
       "getPSDEFIUpdateDetails" : [ {
         "name" : "entry_id"
       } ]
-    }, {
-      "codeName" : "calc_parent_work_item_type",
-      "name" : "计算父工作项类型",
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_name"
-      } ],
-      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-      "customCode" : true
     } ],
     "getPSDEFormItemVRs" : [ {
       "checkMode" : 1,
@@ -10106,45 +9989,6 @@
               "getPSEditorItems" : [ {
                 "name" : "project_id"
               } ],
-              "getPSUIActionGroup" : {
-                "codeName" : "Usr1221520658",
-                "name" : "自填模式行为组",
-                "getPSAppDataEntity" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                },
-                "getPSUIActionGroupDetails" : [ {
-                  "caption" : "项目配置",
-                  "detailType" : "DEUIACTION",
-                  "name" : "u3fee786",
-                  "getPSUIAction" : {
-                    "actionTarget" : "NONE",
-                    "caption" : "项目配置",
-                    "codeName" : "open_global_setting",
-                    "getFrontPSAppView" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
-                      "viewType" : "DETREEEXPVIEW"
-                    },
-                    "frontProcessType" : "OTHER",
-                    "fullCodeName" : "project_open_global_setting",
-                    "name" : "打开项目配置(全局)",
-                    "getPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                    },
-                    "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
-                    "uIActionMode" : "FRONT",
-                    "uIActionTag" : "open_global_setting",
-                    "uIActionType" : "DEUIACTION",
-                    "id" : "open_global_setting@project"
-                  },
-                  "addSeparator" : false,
-                  "showCaption" : true,
-                  "showIcon" : true
-                } ],
-                "uniqueTag" : "project__Usr1221520658"
-              },
               "placeHolder" : "选择所属项目",
               "valueItemName" : "project_id",
               "enableAC" : true,
@@ -10974,7 +10818,7 @@
     },
     "noTabHeader" : true,
     "name" : "_form_hybrid_feature",
-    "modelid" : "79359023-66C1-498A-8289-E7E782B82748",
+    "modelid" : "959f64629df173a907c0a84b7ab427c6",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "new_hybrid_issue",
@@ -11149,15 +10993,13 @@
       "id" : "_FORM_HYBRID_ISSUE"
     },
     "getPSDEFormItemUpdates" : [ {
-      "codeName" : "set_default_entry",
-      "name" : "选择看板后填充默认看板栏",
-      "getPSAppDEMethod" : {
-        "modelref" : true,
-        "id" : "set_default_entry"
-      },
+      "codeName" : "calc_parent_work_item_type",
+      "name" : "计算父工作项类型",
       "getPSDEFIUpdateDetails" : [ {
-        "name" : "entry_id"
-      } ]
+        "name" : "work_item_type_name"
+      } ],
+      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+      "customCode" : true
     }, {
       "codeName" : "set_type_bug",
       "name" : "设置缺陷类型",
@@ -11168,18 +11010,20 @@
       "getPSDEFIUpdateDetails" : [ {
         "name" : "work_item_type_name"
       }, {
-        "name" : "work_item_type_id"
-      }, {
         "name" : "project_type"
+      }, {
+        "name" : "work_item_type_id"
       } ]
     }, {
-      "codeName" : "calc_parent_work_item_type",
-      "name" : "计算父工作项类型",
+      "codeName" : "set_default_entry",
+      "name" : "选择看板后填充默认看板栏",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "set_default_entry"
+      },
       "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_name"
-      } ],
-      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-      "customCode" : true
+        "name" : "entry_id"
+      } ]
     } ],
     "getPSDEFormItemVRs" : [ {
       "checkMode" : 1,
@@ -12732,45 +12576,6 @@
               "getPSEditorItems" : [ {
                 "name" : "project_id"
               } ],
-              "getPSUIActionGroup" : {
-                "codeName" : "Usr1221520658",
-                "name" : "自填模式行为组",
-                "getPSAppDataEntity" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                },
-                "getPSUIActionGroupDetails" : [ {
-                  "caption" : "项目配置",
-                  "detailType" : "DEUIACTION",
-                  "name" : "u3fee786",
-                  "getPSUIAction" : {
-                    "actionTarget" : "NONE",
-                    "caption" : "项目配置",
-                    "codeName" : "open_global_setting",
-                    "getFrontPSAppView" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
-                      "viewType" : "DETREEEXPVIEW"
-                    },
-                    "frontProcessType" : "OTHER",
-                    "fullCodeName" : "project_open_global_setting",
-                    "name" : "打开项目配置(全局)",
-                    "getPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                    },
-                    "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
-                    "uIActionMode" : "FRONT",
-                    "uIActionTag" : "open_global_setting",
-                    "uIActionType" : "DEUIACTION",
-                    "id" : "open_global_setting@project"
-                  },
-                  "addSeparator" : false,
-                  "showCaption" : true,
-                  "showIcon" : true
-                } ],
-                "uniqueTag" : "project__Usr1221520658"
-              },
               "placeHolder" : "选择所属项目",
               "valueItemName" : "project_id",
               "enableAC" : true,
@@ -13391,7 +13196,7 @@
     },
     "noTabHeader" : true,
     "name" : "_form_hybrid_issue",
-    "modelid" : "697292D9-81A2-4D64-BD27-4B981A500F35",
+    "modelid" : "523fe6f41543c8345812263a25b7111c",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "new_hybrid_milestone",
@@ -13566,6 +13371,20 @@
       "id" : "_FORM_HYBRID_MILESTONE"
     },
     "getPSDEFormItemUpdates" : [ {
+      "codeName" : "set_type_bug",
+      "name" : "设置缺陷类型",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "set_type_bug"
+      },
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "project_type"
+      }, {
+        "name" : "work_item_type_id"
+      }, {
+        "name" : "work_item_type_name"
+      } ]
+    }, {
       "codeName" : "calc_parent_work_item_type",
       "name" : "计算父工作项类型",
       "getPSDEFIUpdateDetails" : [ {
@@ -13582,20 +13401,6 @@
       },
       "getPSDEFIUpdateDetails" : [ {
         "name" : "entry_id"
-      } ]
-    }, {
-      "codeName" : "set_type_bug",
-      "name" : "设置缺陷类型",
-      "getPSAppDEMethod" : {
-        "modelref" : true,
-        "id" : "set_type_bug"
-      },
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_name"
-      }, {
-        "name" : "work_item_type_id"
-      }, {
-        "name" : "project_type"
       } ]
     } ],
     "getPSDEFormItemVRs" : [ {
@@ -15156,45 +14961,6 @@
               "getPSEditorItems" : [ {
                 "name" : "project_id"
               } ],
-              "getPSUIActionGroup" : {
-                "codeName" : "Usr1221520658",
-                "name" : "自填模式行为组",
-                "getPSAppDataEntity" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                },
-                "getPSUIActionGroupDetails" : [ {
-                  "caption" : "项目配置",
-                  "detailType" : "DEUIACTION",
-                  "name" : "u3fee786",
-                  "getPSUIAction" : {
-                    "actionTarget" : "NONE",
-                    "caption" : "项目配置",
-                    "codeName" : "open_global_setting",
-                    "getFrontPSAppView" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
-                      "viewType" : "DETREEEXPVIEW"
-                    },
-                    "frontProcessType" : "OTHER",
-                    "fullCodeName" : "project_open_global_setting",
-                    "name" : "打开项目配置(全局)",
-                    "getPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                    },
-                    "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
-                    "uIActionMode" : "FRONT",
-                    "uIActionTag" : "open_global_setting",
-                    "uIActionType" : "DEUIACTION",
-                    "id" : "open_global_setting@project"
-                  },
-                  "addSeparator" : false,
-                  "showCaption" : true,
-                  "showIcon" : true
-                } ],
-                "uniqueTag" : "project__Usr1221520658"
-              },
               "placeHolder" : "选择所属项目",
               "valueItemName" : "project_id",
               "enableAC" : true,
@@ -15915,7 +15681,7 @@
     },
     "noTabHeader" : true,
     "name" : "_form_hybrid_milestone",
-    "modelid" : "A40D60A8-E712-4A83-A82F-86DEE3F210A2",
+    "modelid" : "6baeb3053034f81b86fc821c6d814312",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "new_hybrid_requirement",
@@ -16115,9 +15881,9 @@
         "id" : "set_type_bug"
       },
       "getPSDEFIUpdateDetails" : [ {
-        "name" : "project_type"
-      }, {
         "name" : "work_item_type_name"
+      }, {
+        "name" : "project_type"
       }, {
         "name" : "work_item_type_id"
       } ]
@@ -17701,45 +17467,6 @@
               "getPSEditorItems" : [ {
                 "name" : "project_id"
               } ],
-              "getPSUIActionGroup" : {
-                "codeName" : "Usr1221520658",
-                "name" : "自填模式行为组",
-                "getPSAppDataEntity" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                },
-                "getPSUIActionGroupDetails" : [ {
-                  "caption" : "项目配置",
-                  "detailType" : "DEUIACTION",
-                  "name" : "u3fee786",
-                  "getPSUIAction" : {
-                    "actionTarget" : "NONE",
-                    "caption" : "项目配置",
-                    "codeName" : "open_global_setting",
-                    "getFrontPSAppView" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
-                      "viewType" : "DETREEEXPVIEW"
-                    },
-                    "frontProcessType" : "OTHER",
-                    "fullCodeName" : "project_open_global_setting",
-                    "name" : "打开项目配置(全局)",
-                    "getPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                    },
-                    "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
-                    "uIActionMode" : "FRONT",
-                    "uIActionTag" : "open_global_setting",
-                    "uIActionType" : "DEUIACTION",
-                    "id" : "open_global_setting@project"
-                  },
-                  "addSeparator" : false,
-                  "showCaption" : true,
-                  "showIcon" : true
-                } ],
-                "uniqueTag" : "project__Usr1221520658"
-              },
               "placeHolder" : "选择所属项目",
               "valueItemName" : "project_id",
               "enableAC" : true,
@@ -18559,7 +18286,7 @@
     },
     "noTabHeader" : true,
     "name" : "_form_hybrid_requirement",
-    "modelid" : "71BED65F-818A-4664-952E-CA0EB5E2E7DB",
+    "modelid" : "9adebc0a874a1443e29281aa5a66a496",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "new_hybrid_stage",
@@ -18734,6 +18461,16 @@
       "id" : "_FORM_HYBRID_STAGE"
     },
     "getPSDEFormItemUpdates" : [ {
+      "codeName" : "set_default_entry",
+      "name" : "选择看板后填充默认看板栏",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "set_default_entry"
+      },
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "entry_id"
+      } ]
+    }, {
       "codeName" : "calc_parent_work_item_type",
       "name" : "计算父工作项类型",
       "getPSDEFIUpdateDetails" : [ {
@@ -18749,21 +18486,11 @@
         "id" : "set_type_bug"
       },
       "getPSDEFIUpdateDetails" : [ {
-        "name" : "project_type"
+        "name" : "work_item_type_name"
       }, {
         "name" : "work_item_type_id"
       }, {
-        "name" : "work_item_type_name"
-      } ]
-    }, {
-      "codeName" : "set_default_entry",
-      "name" : "选择看板后填充默认看板栏",
-      "getPSAppDEMethod" : {
-        "modelref" : true,
-        "id" : "set_default_entry"
-      },
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "entry_id"
+        "name" : "project_type"
       } ]
     } ],
     "getPSDEFormItemVRs" : [ {
@@ -20324,45 +20051,6 @@
               "getPSEditorItems" : [ {
                 "name" : "project_id"
               } ],
-              "getPSUIActionGroup" : {
-                "codeName" : "Usr1221520658",
-                "name" : "自填模式行为组",
-                "getPSAppDataEntity" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                },
-                "getPSUIActionGroupDetails" : [ {
-                  "caption" : "项目配置",
-                  "detailType" : "DEUIACTION",
-                  "name" : "u3fee786",
-                  "getPSUIAction" : {
-                    "actionTarget" : "NONE",
-                    "caption" : "项目配置",
-                    "codeName" : "open_global_setting",
-                    "getFrontPSAppView" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
-                      "viewType" : "DETREEEXPVIEW"
-                    },
-                    "frontProcessType" : "OTHER",
-                    "fullCodeName" : "project_open_global_setting",
-                    "name" : "打开项目配置(全局)",
-                    "getPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                    },
-                    "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
-                    "uIActionMode" : "FRONT",
-                    "uIActionTag" : "open_global_setting",
-                    "uIActionType" : "DEUIACTION",
-                    "id" : "open_global_setting@project"
-                  },
-                  "addSeparator" : false,
-                  "showCaption" : true,
-                  "showIcon" : true
-                } ],
-                "uniqueTag" : "project__Usr1221520658"
-              },
               "placeHolder" : "选择所属项目",
               "valueItemName" : "project_id",
               "enableAC" : true,
@@ -21083,7 +20771,7 @@
     },
     "noTabHeader" : true,
     "name" : "_form_hybrid_stage",
-    "modelid" : "9E2DB746-13DD-408C-A7DD-01E27382711F",
+    "modelid" : "119b9e8643207c858a3556a822247106",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "new_hybrid_story",
@@ -21258,28 +20946,6 @@
       "id" : "_FORM_HYBRID_STORY"
     },
     "getPSDEFormItemUpdates" : [ {
-      "codeName" : "set_type_bug",
-      "name" : "设置缺陷类型",
-      "getPSAppDEMethod" : {
-        "modelref" : true,
-        "id" : "set_type_bug"
-      },
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_name"
-      }, {
-        "name" : "project_type"
-      }, {
-        "name" : "work_item_type_id"
-      } ]
-    }, {
-      "codeName" : "calc_parent_work_item_type",
-      "name" : "计算父工作项类型",
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_name"
-      } ],
-      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-      "customCode" : true
-    }, {
       "codeName" : "set_default_entry",
       "name" : "选择看板后填充默认看板栏",
       "getPSAppDEMethod" : {
@@ -21289,6 +20955,28 @@
       "getPSDEFIUpdateDetails" : [ {
         "name" : "entry_id"
       } ]
+    }, {
+      "codeName" : "set_type_bug",
+      "name" : "设置缺陷类型",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "set_type_bug"
+      },
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "work_item_type_id"
+      }, {
+        "name" : "project_type"
+      }, {
+        "name" : "work_item_type_name"
+      } ]
+    }, {
+      "codeName" : "calc_parent_work_item_type",
+      "name" : "计算父工作项类型",
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "work_item_type_name"
+      } ],
+      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+      "customCode" : true
     } ],
     "getPSDEFormItemVRs" : [ {
       "checkMode" : 1,
@@ -22869,45 +22557,6 @@
               "getPSEditorItems" : [ {
                 "name" : "project_id"
               } ],
-              "getPSUIActionGroup" : {
-                "codeName" : "Usr1221520658",
-                "name" : "自填模式行为组",
-                "getPSAppDataEntity" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                },
-                "getPSUIActionGroupDetails" : [ {
-                  "caption" : "项目配置",
-                  "detailType" : "DEUIACTION",
-                  "name" : "u3fee786",
-                  "getPSUIAction" : {
-                    "actionTarget" : "NONE",
-                    "caption" : "项目配置",
-                    "codeName" : "open_global_setting",
-                    "getFrontPSAppView" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
-                      "viewType" : "DETREEEXPVIEW"
-                    },
-                    "frontProcessType" : "OTHER",
-                    "fullCodeName" : "project_open_global_setting",
-                    "name" : "打开项目配置(全局)",
-                    "getPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                    },
-                    "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
-                    "uIActionMode" : "FRONT",
-                    "uIActionTag" : "open_global_setting",
-                    "uIActionType" : "DEUIACTION",
-                    "id" : "open_global_setting@project"
-                  },
-                  "addSeparator" : false,
-                  "showCaption" : true,
-                  "showIcon" : true
-                } ],
-                "uniqueTag" : "project__Usr1221520658"
-              },
               "placeHolder" : "选择所属项目",
               "valueItemName" : "project_id",
               "enableAC" : true,
@@ -23727,7 +23376,7 @@
     },
     "noTabHeader" : true,
     "name" : "_form_hybrid_story",
-    "modelid" : "2947B4F1-BD3E-4A6F-91AE-5C4127B8139D",
+    "modelid" : "38ae05b6b12fbee009c875096e09d21f",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "new_hybrid_task",
@@ -23909,18 +23558,14 @@
       "id" : "_FORM_HYBRID_TASK"
     },
     "getPSDEFormItemUpdates" : [ {
-      "codeName" : "set_type_bug",
-      "name" : "设置缺陷类型",
+      "codeName" : "set_default_entry",
+      "name" : "选择看板后填充默认看板栏",
       "getPSAppDEMethod" : {
         "modelref" : true,
-        "id" : "set_type_bug"
+        "id" : "set_default_entry"
       },
       "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_id"
-      }, {
-        "name" : "project_type"
-      }, {
-        "name" : "work_item_type_name"
+        "name" : "entry_id"
       } ]
     }, {
       "codeName" : "calc_parent_work_item_type",
@@ -23931,14 +23576,18 @@
       "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
       "customCode" : true
     }, {
-      "codeName" : "set_default_entry",
-      "name" : "选择看板后填充默认看板栏",
+      "codeName" : "set_type_bug",
+      "name" : "设置缺陷类型",
       "getPSAppDEMethod" : {
         "modelref" : true,
-        "id" : "set_default_entry"
+        "id" : "set_type_bug"
       },
       "getPSDEFIUpdateDetails" : [ {
-        "name" : "entry_id"
+        "name" : "project_type"
+      }, {
+        "name" : "work_item_type_name"
+      }, {
+        "name" : "work_item_type_id"
       } ]
     } ],
     "getPSDEFormItemVRs" : [ {
@@ -25520,45 +25169,6 @@
               "getPSEditorItems" : [ {
                 "name" : "project_id"
               } ],
-              "getPSUIActionGroup" : {
-                "codeName" : "Usr1221520658",
-                "name" : "自填模式行为组",
-                "getPSAppDataEntity" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                },
-                "getPSUIActionGroupDetails" : [ {
-                  "caption" : "项目配置",
-                  "detailType" : "DEUIACTION",
-                  "name" : "u3fee786",
-                  "getPSUIAction" : {
-                    "actionTarget" : "NONE",
-                    "caption" : "项目配置",
-                    "codeName" : "open_global_setting",
-                    "getFrontPSAppView" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
-                      "viewType" : "DETREEEXPVIEW"
-                    },
-                    "frontProcessType" : "OTHER",
-                    "fullCodeName" : "project_open_global_setting",
-                    "name" : "打开项目配置(全局)",
-                    "getPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                    },
-                    "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
-                    "uIActionMode" : "FRONT",
-                    "uIActionTag" : "open_global_setting",
-                    "uIActionType" : "DEUIACTION",
-                    "id" : "open_global_setting@project"
-                  },
-                  "addSeparator" : false,
-                  "showCaption" : true,
-                  "showIcon" : true
-                } ],
-                "uniqueTag" : "project__Usr1221520658"
-              },
               "placeHolder" : "选择所属项目",
               "valueItemName" : "project_id",
               "enableAC" : true,
@@ -25866,7 +25476,7 @@
                 "detailStyle" : "DEFAULT",
                 "detailType" : "FORMITEM",
                 "enableCond" : 3,
-                "ignoreInput" : 2,
+                "ignoreInput" : 0,
                 "labelPos" : "RIGHT",
                 "labelWidth" : 130,
                 "name" : "multiple_people",
@@ -26564,7 +26174,7 @@
     },
     "noTabHeader" : true,
     "name" : "_form_hybrid_task",
-    "modelid" : "E05B9C93-35D9-49C4-A584-9ADCBBD3FF75",
+    "modelid" : "6e975e76595f2b9f06ed7d9950bd17ad",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "dyna_hybrid_quick_create_view_datainfobar",
@@ -26592,7 +26202,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "dyna_hybrid_quick_create_view",
-  "getPSDEViewId" : "C637E4AA-EF4C-427F-94C1-D2093FB869E1",
+  "getPSDEViewId" : "9529fafca02968a7ec24a199e2086970",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEOPTVIEW",
@@ -26615,7 +26225,7 @@
   "enableDP" : true,
   "manualAppendForms" : true,
   "showDataInfoBar" : true,
-  "modelid" : "17fcaac3565af73d3a03d8f50d826e18",
+  "modelid" : "5167aeccac14bf69aae2bc24bd04f31f",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

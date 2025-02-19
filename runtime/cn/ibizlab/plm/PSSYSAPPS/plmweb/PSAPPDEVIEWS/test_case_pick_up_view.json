@@ -737,7 +737,7 @@
               },
               "getPSUIAction" : {
                 "actionTarget" : "MULTIKEY",
-                "caption" : "复制用例",
+                "caption" : "复制",
                 "codeName" : "copy_test_case",
                 "getFrontPSAppView" : {
                   "modelref" : true,
@@ -746,7 +746,7 @@
                 },
                 "frontProcessType" : "WIZARD",
                 "fullCodeName" : "test_case_copy_test_case",
-                "name" : "复制用例",
+                "name" : "复制",
                 "getPSAppDEMethod" : {
                   "modelref" : true,
                   "id" : "copy_case"
@@ -978,7 +978,7 @@
               "showCaption" : true,
               "showIcon" : true
             }, {
-              "caption" : "复制用例",
+              "caption" : "复制",
               "detailType" : "DEUIACTION",
               "name" : "uc5b9282",
               "getPSSysImage" : {
@@ -987,7 +987,7 @@
               },
               "getPSUIAction" : {
                 "actionTarget" : "MULTIKEY",
-                "caption" : "复制用例",
+                "caption" : "复制",
                 "codeName" : "copy_test_case",
                 "getFrontPSAppView" : {
                   "modelref" : true,
@@ -996,7 +996,7 @@
                 },
                 "frontProcessType" : "WIZARD",
                 "fullCodeName" : "test_case_copy_test_case",
-                "name" : "复制用例",
+                "name" : "复制",
                 "getPSAppDEMethod" : {
                   "modelref" : true,
                   "id" : "copy_case"
@@ -1042,6 +1042,10 @@
                 "frontProcessType" : "WIZARD",
                 "fullCodeName" : "test_case_move",
                 "name" : "移动",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "move_case"
+                },
                 "getPSAppDataEntity" : {
                   "modelref" : true,
                   "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
@@ -1056,9 +1060,14 @@
                   "glyph" : "xf047@FontAwesome",
                   "cssClass" : "fa fa-arrows"
                 },
-                "uIActionMode" : "FRONT",
+                "refreshMode" : 1,
+                "successMsg" : "移动成功",
+                "timeout" : 60000,
+                "uIActionMode" : "BACKEND",
                 "uIActionTag" : "move",
                 "uIActionType" : "DEUIACTION",
+                "enableConfirm" : true,
+                "reloadData" : true,
                 "id" : "move@test_case"
               },
               "addSeparator" : false,
@@ -1230,20 +1239,25 @@
           "enableSort" : true
         }, {
           "align" : "LEFT",
-          "cLConvertMode" : "NONE",
+          "cLConvertMode" : "FRONT",
           "caption" : "所属模块",
-          "codeName" : "suite_name",
+          "codeName" : "suite_id",
           "columnType" : "DEFGRIDCOLUMN",
-          "dataItemName" : "suite_name",
+          "dataItemName" : "suite_id_text",
           "excelCaption" : "所属模块",
-          "name" : "suite_name",
+          "name" : "suite_id",
           "noPrivDisplayMode" : 1,
+          "getPSAppCodeList" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__test_suite_case.json"
+          },
           "getPSAppDEField" : {
-            "name" : "SUITE_NAME",
-            "codeName" : "suite_name"
+            "name" : "SUITE_ID",
+            "codeName" : "suite_id"
           },
           "width" : 150,
           "widthUnit" : "PX",
+          "enableRowEdit" : true,
           "enableSort" : true
         }, {
           "align" : "LEFT",
@@ -1386,10 +1400,17 @@
           }
         }, {
           "dataType" : 25,
-          "name" : "suite_name",
+          "name" : "suite_id_text",
           "getPSAppDEField" : {
-            "name" : "SUITE_NAME",
-            "codeName" : "suite_name"
+            "name" : "SUITE_ID",
+            "codeName" : "suite_id"
+          }
+        }, {
+          "dataType" : 25,
+          "name" : "suite_id",
+          "getPSAppDEField" : {
+            "name" : "SUITE_ID",
+            "codeName" : "suite_id"
           }
         }, {
           "dataType" : 25,
@@ -1456,13 +1477,6 @@
           "getPSAppDEField" : {
             "name" : "TEST_LIBRARY_ID",
             "codeName" : "test_library_id"
-          }
-        }, {
-          "dataType" : 25,
-          "name" : "suite_id",
-          "getPSAppDEField" : {
-            "name" : "SUITE_ID",
-            "codeName" : "suite_id"
           }
         }, {
           "dataType" : 25,
@@ -1681,6 +1695,47 @@
           "allowEmpty" : true,
           "needCodeListConfig" : true
         }, {
+          "caption" : "所属模块",
+          "codeName" : "suite_id",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "name" : "suite_id",
+          "getPSAppDEField" : {
+            "name" : "SUITE_ID",
+            "codeName" : "suite_id"
+          },
+          "getPSEditor" : {
+            "editorParams" : {
+              "readonly" : "true"
+            },
+            "editorType" : "DROPDOWNLIST",
+            "name" : "suite_id",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__test_suite_case.json"
+            },
+            "getPSEditorItems" : [ {
+              "name" : "suite_id",
+              "getPSAppDEACMode" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "getPSAppDEDataSet" : {
+                "modelref" : true,
+                "id" : "fetch_default"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_suite.json"
+              }
+            } ],
+            "readOnly" : true,
+            "singleSelect" : true
+          },
+          "valueItemName" : "suite_id",
+          "allowEmpty" : true,
+          "needCodeListConfig" : true
+        }, {
           "caption" : "维护人",
           "codeName" : "maintenance_id",
           "enableCond" : 3,
@@ -1827,7 +1882,7 @@
         "getPSControlParam" : { }
       } ],
       "getPSDEViewCodeName" : "pick_up_grid_view",
-      "getPSDEViewId" : "b0f7f7005b4be2ad44296d1766ac4677",
+      "getPSDEViewId" : "cea7aace2ed9c3593aa314e4f7033e75",
       "getPSViewLayoutPanel" : {
         "codeName" : "layoutpanel",
         "controlStyle" : "APPDEPICKUPGRIDVIEW",
@@ -1859,7 +1914,7 @@
       "expandSearchForm" : true,
       "pickupMode" : true,
       "rowEditDefault" : false,
-      "modelid" : "1589219e7ed03e6422255293631ce087",
+      "modelid" : "b4f9e849423f1bc9acfb29395e5549bd",
       "modeltype" : "PSAPPDEVIEW",
       "getPSAppDERSPaths" : [ [ {
         "actionRSMode" : 1,
@@ -1908,7 +1963,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "pick_up_view",
-  "getPSDEViewId" : "8cefed70fe2d0a0e582e386e91e40636",
+  "getPSDEViewId" : "68a3c91ea6b083bf9bc3a0e2f03e3936",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEPICKUPVIEW",
@@ -1932,7 +1987,7 @@
   "viewType" : "DEPICKUPVIEW",
   "enableDP" : true,
   "showCaptionBar" : false,
-  "modelid" : "e26e5d9b39e53dc60f47e2a66ed4dd7f",
+  "modelid" : "c99c83de59e57788aeef58f59bf2b214",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

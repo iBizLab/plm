@@ -183,10 +183,10 @@
     "builtinAction" : true
   }, {
     "actionHolder" : 1,
-    "actionMode" : "GETDRAFT",
+    "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "new_draft_form_stencil",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/stencil/PSDEACTIONS/new_draft_form_stencil.json",
     "logicName" : "根据模板新建草稿",
     "name" : "new_draft_form_stencil",
@@ -200,11 +200,7 @@
     },
     "getPSDEActionReturn" : {
       "name" : "New_draft_form_stencilResult",
-      "getPSDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "stencil_dto"
-      },
-      "type" : "DTO"
+      "type" : "VOID"
     },
     "getPSDELogic" : {
       "modelref" : true,
@@ -665,6 +661,18 @@
       "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[FORMAT_TYPE][正文格式]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[FORMAT_TYPE][正文格式]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[FORMAT_TYPE][正文格式]移动端默认",
       "getPSDEFFormItem" : {
@@ -678,18 +686,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[FORMAT_TYPE][正文格式]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "DROPDOWNLIST",
-        "name" : "[FORMAT_TYPE][正文格式]",
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT",
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -2353,9 +2349,6 @@
     "name" : "READ"
   }, {
     "logicName" : "更新",
-    "name" : "UPDATE"
-  }, {
-    "logicName" : "更新",
     "mapPSDEName" : "SPACE",
     "mapPSDEOPPrivName" : "UPDATE",
     "getMapPSDER" : {
@@ -2368,6 +2361,9 @@
     },
     "name" : "UPDATE",
     "id" : "space__UPDATE"
+  }, {
+    "logicName" : "更新",
+    "name" : "UPDATE"
   } ],
   "getAllPSDEUserRoles" : [ {
     "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/stencil/PSDEUSERROLES/ALL_R.json",
@@ -2444,6 +2440,12 @@
     "systemReserved" : true
   } ],
   "getAllPSModelDatas" : [ {
+    "codeName" : "model_edit_view",
+    "logicName" : "页面模板编辑视图",
+    "name" : "页面模板编辑视图",
+    "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "EditView2",
     "logicName" : "页面模板实体编辑视图（左右关系）",
     "name" : "页面模板实体编辑视图（左右关系）",
@@ -2456,10 +2458,11 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "pick_up_grid_view",
-    "logicName" : "页面模板实体选择表格视图（部件视图）",
-    "name" : "页面模板实体选择表格视图（部件视图）",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "codeName" : "pick_up_view",
+    "logicName" : "页面模板实体数据选择视图",
+    "modelTag" : "PICKUPVIEW",
+    "name" : "页面模板实体数据选择视图",
+    "realModelSubType" : "DEPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "save_option_view",
@@ -2468,10 +2471,10 @@
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "model_edit_view",
-    "logicName" : "页面模板编辑视图",
-    "name" : "页面模板编辑视图",
-    "realModelSubType" : "DEEDITVIEW",
+    "codeName" : "center_list_view",
+    "logicName" : "模板中心实体列表视图",
+    "name" : "模板中心实体列表视图",
+    "realModelSubType" : "DELISTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "all_grid_view",
@@ -2486,11 +2489,10 @@
     "realModelSubType" : "DELISTEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mpick_up_view",
-    "logicName" : "页面模板实体数据多项选择视图",
-    "modelTag" : "MPICKUPVIEW",
-    "name" : "页面模板实体数据多项选择视图",
-    "realModelSubType" : "DEMPICKUPVIEW",
+    "codeName" : "pick_up_grid_view",
+    "logicName" : "页面模板实体选择表格视图（部件视图）",
+    "name" : "页面模板实体选择表格视图（部件视图）",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "GridView",
@@ -2500,17 +2502,17 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mpick_up_view",
+    "logicName" : "页面模板实体数据多项选择视图",
+    "modelTag" : "MPICKUPVIEW",
+    "name" : "页面模板实体数据多项选择视图",
+    "realModelSubType" : "DEMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "show_edit_view",
     "logicName" : "页面模板编辑视图_展示",
     "name" : "页面模板编辑视图_展示",
     "realModelSubType" : "DEEDITVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "pick_up_view",
-    "logicName" : "页面模板实体数据选择视图",
-    "modelTag" : "PICKUPVIEW",
-    "name" : "页面模板实体数据选择视图",
-    "realModelSubType" : "DEPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "RedirectView",
@@ -2525,12 +2527,6 @@
     "modelTag" : "EDITVIEW",
     "name" : "页面模板实体编辑视图",
     "realModelSubType" : "DEEDITVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "center_list_view",
-    "logicName" : "模板中心实体列表视图",
-    "name" : "模板中心实体列表视图",
-    "realModelSubType" : "DELISTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "Main",

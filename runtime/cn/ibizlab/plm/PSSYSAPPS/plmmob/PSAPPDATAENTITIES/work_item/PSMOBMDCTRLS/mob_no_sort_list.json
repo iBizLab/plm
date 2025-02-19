@@ -26,7 +26,7 @@
     "name" : "fetch",
     "getPSAppDEMethod" : {
       "modelref" : true,
-      "id" : "fetch_deleted"
+      "id" : "fetch_common"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -362,7 +362,7 @@
       } ]
     } ],
     "name" : "mdctrl_itempanel",
-    "modelid" : "4F6DAA5F-52D7-4013-ACC2-96F18EF0A614",
+    "modelid" : "8e92202cd73f5c8866d73027e35f8428",
     "modeltype" : "PSSYSVIEWPANEL"
   },
   "logicName" : "mob_no_sort_list",
@@ -486,55 +486,64 @@
     "name" : "srfmstag"
   } ],
   "getPSDEUIActionGroup" : {
-    "codeName" : "Usr1229282939",
-    "name" : "恢复（回收站）",
+    "codeName" : "Usr0201085943",
+    "name" : "取消关联（子工作项）",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
     },
     "getPSUIActionGroupDetails" : [ {
-      "actionLevel" : 200,
-      "caption" : "恢复",
+      "caption" : "取消关联",
       "detailType" : "DEUIACTION",
-      "name" : "u304ad8f",
+      "name" : "u0a620b7",
       "getPSSysImage" : {
-        "glyph" : "xf021@FontAwesome",
-        "cssClass" : "fa fa-refresh"
+        "glyph" : "xf127@FontAwesome",
+        "cssClass" : "fa fa-unlink"
       },
       "getPSUIAction" : {
-        "actionTarget" : "MULTIKEY",
-        "caption" : "恢复",
-        "codeName" : "recover",
-        "confirmMsg" : "确认恢复？",
-        "fullCodeName" : "work_item_recover",
-        "name" : "恢复",
+        "actionTarget" : "SINGLEKEY",
+        "caption" : "取消关联",
+        "codeName" : "child_del_relation",
+        "fullCodeName" : "work_item_child_del_relation",
+        "name" : "取消关联（子工作项）",
         "getPSAppDEMethod" : {
           "modelref" : true,
-          "id" : "recover"
+          "id" : "child_del_relation"
+        },
+        "getPSAppDEUILogic" : {
+          "modelref" : true,
+          "id" : "child_refresh_counter"
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
         },
+        "getPSNavigateContexts" : [ {
+          "key" : "DEL_CHILD_RELATION",
+          "name" : "DEL_CHILD_RELATION",
+          "value" : "id",
+          "rawValue" : false
+        } ],
         "getPSSysImage" : {
-          "glyph" : "xf021@FontAwesome",
-          "cssClass" : "fa fa-refresh"
+          "glyph" : "xf127@FontAwesome",
+          "cssClass" : "fa fa-unlink"
         },
         "refreshMode" : 1,
-        "successMsg" : "恢复成功",
+        "successMsg" : "取消关联成功",
         "timeout" : 60000,
         "uIActionMode" : "BACKEND",
-        "uIActionTag" : "recover",
+        "uIActionTag" : "child_del_relation",
         "uIActionType" : "DEUIACTION",
+        "uILogicAttachMode" : "AFTER",
         "enableConfirm" : true,
         "reloadData" : true,
-        "id" : "recover@work_item"
+        "id" : "child_del_relation@work_item"
       },
       "addSeparator" : false,
       "showCaption" : true,
       "showIcon" : true
     } ],
-    "uniqueTag" : "work_item__Usr1229282939"
+    "uniqueTag" : "work_item__Usr0201085943"
   },
   "pagingMode" : 2,
   "pagingSize" : 20,

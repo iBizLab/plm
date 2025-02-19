@@ -19,7 +19,7 @@
     "path" : "PSSYSAPPS/plmmob/PSAPPMODULES/Wiki.json"
   },
   "getPSDEViewCodeName" : "mob_space_member_pickup_tree_view",
-  "getPSDEViewId" : "96351370fa2125edd4bb6ec0b00ce9be",
+  "getPSDEViewId" : "2c3985773b61c6d0104b34185b254a3f",
   "getPSViewLayoutPanel" : {
     "codeName" : "usr1019459442",
     "controlType" : "VIEWLAYOUTPANEL",
@@ -67,7 +67,7 @@
     "mobilePanel" : true,
     "useDefaultLayout" : false,
     "viewProxyMode" : true,
-    "modelid" : "E6EF02A7-0F3E-465B-B454-2ACCEE867E7F",
+    "modelid" : "785d6e4cf20cc23d15a47b6a2b845a8b",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSAppViewEngines" : [ {
       "engineCat" : "VIEW",
@@ -269,7 +269,7 @@
             "path" : "PSMODULES/Base/PSDATAENTITIES/department.json"
           },
           "masterOrder" : -1,
-          "masterRS" : 0,
+          "masterRS" : 16,
           "minorCodeName" : "departments",
           "getMinorPSDataEntity" : {
             "modelref" : true,
@@ -282,10 +282,16 @@
             "name" : "PARENT_ID",
             "codeName" : "Parent_id"
           },
+          "getPSPickupTextDEField" : {
+            "name" : "PNAME",
+            "codeName" : "pname"
+          },
           "pickupDEFName" : "PARENT_ID",
           "removeActionType" : -1,
           "removeOrder" : 0,
-          "serviceCodeName" : "department"
+          "serviceCodeName" : "department",
+          "enableFKey" : true,
+          "recursiveRS" : true
         },
         "getParentPSDETreeNode" : {
           "modelref" : true,
@@ -314,7 +320,7 @@
             "path" : "PSMODULES/Base/PSDATAENTITIES/department.json"
           },
           "masterOrder" : -1,
-          "masterRS" : 0,
+          "masterRS" : 16,
           "minorCodeName" : "departments",
           "getMinorPSDataEntity" : {
             "modelref" : true,
@@ -327,10 +333,16 @@
             "name" : "PARENT_ID",
             "codeName" : "Parent_id"
           },
+          "getPSPickupTextDEField" : {
+            "name" : "PNAME",
+            "codeName" : "pname"
+          },
           "pickupDEFName" : "PARENT_ID",
           "removeActionType" : -1,
           "removeOrder" : 0,
-          "serviceCodeName" : "department"
+          "serviceCodeName" : "department",
+          "enableFKey" : true,
+          "recursiveRS" : true
         },
         "getParentPSDETreeNode" : {
           "modelref" : true,
@@ -883,9 +895,53 @@
   "enablePullDownRefresh" : false,
   "enableSearch" : true,
   "expandSearchForm" : true,
-  "modelid" : "f0aca810384cf1004e4016d5b457224f",
+  "modelid" : "56061e7a06ebeee8eb15bd7dc67ae7e3",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "users",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "department",
+    "majorDEName" : "DEPARTMENT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/department.json"
+    },
+    "minorDECodeName" : "user",
+    "minorDEName" : "USER",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/user.json"
+    },
+    "name" : "DER1N_USER_DEPARTMENT_DEPARTMENT_ID",
+    "getParentPSAppDEField" : {
+      "name" : "DEPARTMENT_ID",
+      "codeName" : "department_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "space_members",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "user",
+    "majorDEName" : "USER",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/user.json"
+    },
+    "minorDECodeName" : "space_member",
+    "minorDEName" : "SPACE_MEMBER",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space_member.json"
+    },
+    "name" : "DER1N_SPACE_MEMBER_USER_USER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "USER_ID",
+      "codeName" : "user_id"
+    },
+    "rSMode" : 2
+  } ], [ {
     "actionRSMode" : 1,
     "codeName" : "space_members",
     "dataRSMode" : 0,

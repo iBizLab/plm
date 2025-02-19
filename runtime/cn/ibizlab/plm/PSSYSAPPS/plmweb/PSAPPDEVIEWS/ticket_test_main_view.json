@@ -30,7 +30,7 @@
     "rawValue" : true
   } ],
   "getPSDEViewCodeName" : "test_main_view",
-  "getPSDEViewId" : "eb12506d9d958b1a20407e2402ab3472",
+  "getPSDEViewId" : "7f068d335c1dce88510dc10d280c2ffb",
   "getPSSysCss" : {
     "cssName" : "main-info-common-view"
   },
@@ -191,7 +191,9 @@
           "name" : "view_toolbar",
           "getPSLayout" : {
             "align" : "center",
-            "layout" : "FLEX"
+            "dir" : "row",
+            "layout" : "FLEX",
+            "vAlign" : "center"
           },
           "getPSLayoutPos" : {
             "grow" : -1,
@@ -199,6 +201,20 @@
             "layout" : "FLEX"
           },
           "getPSPanelItems" : [ {
+            "caption" : "协同编辑消息占位",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "RAWITEM",
+            "name" : "coop_pos",
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "getPSRawItem" : {
+              "name" : "coop_pos",
+              "predefinedType" : "COOP_POS"
+            },
+            "showCaption" : true
+          }, {
             "caption" : "工具栏",
             "itemStyle" : "DEFAULT",
             "itemType" : "CTRLPOS",
@@ -400,7 +416,6 @@
                       "groupOP" : "AND",
                       "logicCat" : "PANELVISIBLE",
                       "logicType" : "GROUP",
-                      "name" : "面板成员[comment_cancel][面板显示]逻辑",
                       "getPSPanelItemLogics" : [ {
                         "condOp" : "ISNOTNULL",
                         "dstModelField" : "FIELD_TEXTBOX",
@@ -457,7 +472,6 @@
                       "groupOP" : "AND",
                       "logicCat" : "PANELVISIBLE",
                       "logicType" : "GROUP",
-                      "name" : "面板成员[comment_send][面板显示]逻辑",
                       "getPSPanelItemLogics" : [ {
                         "condOp" : "ISNOTNULL",
                         "dstModelField" : "FIELD_TEXTBOX",
@@ -554,7 +568,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "面板成员[client_panel_container][面板显示]逻辑",
               "getPSPanelItemLogics" : [ {
                 "condOp" : "ISNOTNULL",
                 "dstModelField" : "SHOW_CLIENT_CONTAINER",
@@ -581,7 +594,6 @@
                 "groupOP" : "AND",
                 "logicCat" : "PANELVISIBLE",
                 "logicType" : "GROUP",
-                "name" : "面板成员[client_panelpart1][面板显示]逻辑",
                 "getPSPanelItemLogics" : [ {
                   "condOp" : "EQ",
                   "logicType" : "SINGLE",
@@ -852,7 +864,7 @@
     "layoutPanel" : true,
     "useDefaultLayout" : false,
     "viewProxyMode" : true,
-    "modelid" : "918b875053f0056ab1c5a74cf1083f1d",
+    "modelid" : "f79bd20905914c96f4b74932d33a0d63",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSAppViewEngines" : [ {
       "engineCat" : "VIEW",
@@ -1176,7 +1188,7 @@
             "caption" : "激活",
             "codeName" : "toolbar_activate",
             "confirmMsg" : "确认激活吗？",
-            "dataAccessAction" : "SUBDATA",
+            "dataAccessAction" : "UPDATE",
             "dialogResult" : "OK",
             "fullCodeName" : "ticket_toolbar_activate",
             "name" : "激活（工具栏）",
@@ -1190,7 +1202,7 @@
             },
             "getPSDEOPPriv" : {
               "modelref" : true,
-              "id" : "SUBDATA"
+              "id" : "UPDATE"
             },
             "getPSSysImage" : {
               "cssClass" : "key"
@@ -2897,7 +2909,7 @@
                   "name" : "tabpage2",
                   "getPSDEFormDetails" : [ {
                     "codeName" : "druipart1",
-                    "dRItemTag" : "UsrDRItem0104352880",
+                    "dRItemTag" : "UsrDRItem0211558019",
                     "detailStyle" : "DEFAULT",
                     "detailType" : "DRUIPART",
                     "name" : "druipart1",
@@ -2907,10 +2919,11 @@
                         "lanResTag" : "DE.LNAME.COMMENT"
                       },
                       "caption" : "评论",
-                      "codeName" : "comment_list_view",
-                      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/comment_list_view.json",
+                      "codeName" : "comment_ticket_list_view",
+                      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/comment_ticket_list_view.json",
                       "mDCtrlActiveMode" : 0,
-                      "name" : "commentlist_view",
+                      "memo" : "系统自动添加",
+                      "name" : "commentticket_list_view",
                       "getPSAppDataEntity" : {
                         "modelref" : true,
                         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
@@ -2930,8 +2943,8 @@
                         "value" : "principal_id",
                         "rawValue" : false
                       } ],
-                      "getPSDEViewCodeName" : "list_view",
-                      "getPSDEViewId" : "2cd57b81d6d3e24a97d721002d13a493",
+                      "getPSDEViewCodeName" : "ticket_list_view",
+                      "getPSDEViewId" : "34802f8289d299ab813a59a9367c6ad3",
                       "getPSViewLayoutPanel" : {
                         "codeName" : "usr0103274907",
                         "controlType" : "VIEWLAYOUTPANEL",
@@ -3415,7 +3428,6 @@
                                     "groupOP" : "AND",
                                     "logicCat" : "PANELVISIBLE",
                                     "logicType" : "GROUP",
-                                    "name" : "面板成员[container2][面板显示]逻辑",
                                     "getPSPanelItemLogics" : [ {
                                       "condOp" : "NOTEQ",
                                       "dstModelField" : "FIELD_TEXT_DYNAMIC2",
@@ -3640,7 +3652,6 @@
                                     "groupOP" : "AND",
                                     "logicCat" : "PANELVISIBLE",
                                     "logicType" : "GROUP",
-                                    "name" : "面板成员[container3][面板显示]逻辑",
                                     "getPSPanelItemLogics" : [ {
                                       "condOp" : "ISNOTNULL",
                                       "dstModelField" : "PID",
@@ -3816,24 +3827,6 @@
                           },
                           "getPSDEListDataItems" : [ {
                             "dataType" : 25,
-                            "name" : "id",
-                            "getPSAppDEField" : {
-                              "name" : "ID",
-                              "codeName" : "id"
-                            }
-                          }, {
-                            "dataType" : 25,
-                            "getFrontPSCodeList" : {
-                              "modelref" : true,
-                              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-                            },
-                            "name" : "create_man",
-                            "getPSAppDEField" : {
-                              "name" : "CREATE_MAN",
-                              "codeName" : "create_man"
-                            }
-                          }, {
-                            "dataType" : 25,
                             "getFrontPSCodeList" : {
                               "modelref" : true,
                               "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
@@ -3853,13 +3846,6 @@
                             }
                           }, {
                             "dataType" : 21,
-                            "name" : "content",
-                            "getPSAppDEField" : {
-                              "name" : "CONTENT",
-                              "codeName" : "content"
-                            }
-                          }, {
-                            "dataType" : 21,
                             "name" : "pcontent",
                             "getPSAppDEField" : {
                               "name" : "PCONTENT",
@@ -3867,10 +3853,35 @@
                             }
                           }, {
                             "dataType" : 25,
+                            "getFrontPSCodeList" : {
+                              "modelref" : true,
+                              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+                            },
+                            "name" : "create_man",
+                            "getPSAppDEField" : {
+                              "name" : "CREATE_MAN",
+                              "codeName" : "create_man"
+                            }
+                          }, {
+                            "dataType" : 25,
                             "name" : "pid",
                             "getPSAppDEField" : {
                               "name" : "PID",
                               "codeName" : "pid"
+                            }
+                          }, {
+                            "dataType" : 25,
+                            "name" : "id",
+                            "getPSAppDEField" : {
+                              "name" : "ID",
+                              "codeName" : "id"
+                            }
+                          }, {
+                            "dataType" : 21,
+                            "name" : "content",
+                            "getPSAppDEField" : {
+                              "name" : "CONTENT",
+                              "codeName" : "content"
                             }
                           }, {
                             "dataType" : 25,
@@ -3957,7 +3968,7 @@
                             "lanResTag" : "DE.LNAME.COMMENT"
                           },
                           "caption" : "评论",
-                          "codeName" : "list_view_captionbar",
+                          "codeName" : "ticket_list_view_captionbar",
                           "controlType" : "CAPTIONBAR",
                           "name" : "captionbar",
                           "getPSAppDataEntity" : {
@@ -3975,9 +3986,75 @@
                       "enableFilter" : true,
                       "enableSearch" : true,
                       "showCaptionBar" : false,
-                      "modelid" : "eac2aa8e4fe80453d257341ab278a79a",
+                      "modelid" : "7f993863469d4be7430e2f76a3b121a8",
                       "modeltype" : "PSAPPDEVIEW",
                       "getPSAppDERSPaths" : [ [ {
+                        "actionRSMode" : 1,
+                        "codeName" : "test_plans",
+                        "dataRSMode" : 0,
+                        "majorDECodeName" : "project",
+                        "majorDEName" : "PROJECT",
+                        "getMajorPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+                        },
+                        "minorDECodeName" : "test_plan",
+                        "minorDEName" : "TEST_PLAN",
+                        "getMinorPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+                        },
+                        "name" : "DER1N_TEST_PLAN_PROJECT_PROJECT_ID",
+                        "getParentPSAppDEField" : {
+                          "name" : "PROJECT_ID",
+                          "codeName" : "project_id"
+                        },
+                        "rSMode" : 2
+                      }, {
+                        "actionRSMode" : 1,
+                        "codeName" : "runs",
+                        "dataRSMode" : 0,
+                        "majorDECodeName" : "test_plan",
+                        "majorDEName" : "TEST_PLAN",
+                        "getMajorPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+                        },
+                        "minorDECodeName" : "run",
+                        "minorDEName" : "RUN",
+                        "getMinorPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                        },
+                        "name" : "DER1N_RUN_TEST_PLAN_PLAN_ID",
+                        "getParentPSAppDEField" : {
+                          "name" : "PLAN_ID",
+                          "codeName" : "plan_id"
+                        },
+                        "rSMode" : 2
+                      }, {
+                        "actionRSMode" : 1,
+                        "codeName" : "comments",
+                        "dataRSMode" : 0,
+                        "majorDECodeName" : "run",
+                        "majorDEName" : "RUN",
+                        "getMajorPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                        },
+                        "minorDECodeName" : "comment",
+                        "minorDEName" : "COMMENT",
+                        "getMinorPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
+                        },
+                        "name" : "DERCOSTOM_COMMENT_RUN_PRINCIPAL_ID",
+                        "getParentPSAppDEField" : {
+                          "name" : "PRINCIPAL_ID",
+                          "codeName" : "principal_id"
+                        },
+                        "rSMode" : 2
+                      } ], [ {
                         "actionRSMode" : 1,
                         "codeName" : "test_plans",
                         "dataRSMode" : 0,
@@ -5254,7 +5331,6 @@
                                   "groupOP" : "AND",
                                   "logicCat" : "PANELVISIBLE",
                                   "logicType" : "GROUP",
-                                  "name" : "面板成员[auditinfo][面板显示]逻辑",
                                   "getPSPanelItemLogics" : [ {
                                     "condOp" : "NOTEQ",
                                     "dstModelField" : "AUDITTYPE",
@@ -5283,7 +5359,6 @@
                                   "groupOP" : "AND",
                                   "logicCat" : "PANELVISIBLE",
                                   "logicType" : "GROUP",
-                                  "name" : "面板成员[container3][面板显示]逻辑",
                                   "getPSPanelItemLogics" : [ {
                                     "condOp" : "EQ",
                                     "dstModelField" : "AUDITTYPE",
@@ -5308,7 +5383,6 @@
                                     "groupOP" : "AND",
                                     "logicCat" : "PANELVISIBLE",
                                     "logicType" : "GROUP",
-                                    "name" : "面板成员[work_item][面板显示]逻辑",
                                     "getPSPanelItemLogics" : [ {
                                       "condOp" : "EQ",
                                       "dstModelField" : "OBJECTTYPE",
@@ -5342,7 +5416,6 @@
                                     "groupOP" : "AND",
                                     "logicCat" : "PANELVISIBLE",
                                     "logicType" : "GROUP",
-                                    "name" : "面板成员[run][面板显示]逻辑",
                                     "getPSPanelItemLogics" : [ {
                                       "groupOP" : "OR",
                                       "logicType" : "GROUP",
@@ -5388,7 +5461,6 @@
                                     "groupOP" : "AND",
                                     "logicCat" : "PANELVISIBLE",
                                     "logicType" : "GROUP",
-                                    "name" : "面板成员[ticket][面板显示]逻辑",
                                     "getPSPanelItemLogics" : [ {
                                       "condOp" : "EQ",
                                       "dstModelField" : "OBJECTTYPE",
@@ -5422,7 +5494,6 @@
                                     "groupOP" : "AND",
                                     "logicCat" : "PANELVISIBLE",
                                     "logicType" : "GROUP",
-                                    "name" : "面板成员[idea][面板显示]逻辑",
                                     "getPSPanelItemLogics" : [ {
                                       "condOp" : "EQ",
                                       "dstModelField" : "OBJECTTYPE",
@@ -5447,7 +5518,7 @@
                             } ]
                           } ],
                           "name" : "list_itempanel",
-                          "modelid" : "47611fb86ad8e99f21ec0c16773bd20b",
+                          "modelid" : "bfa33b7f1b88000fc19b6f369ed9f855",
                           "modeltype" : "PSSYSVIEWPANEL"
                         },
                         "logicName" : "HISTORY_LIST",
@@ -5535,18 +5606,26 @@
                           "id" : "LIST"
                         },
                         "getPSDEListDataItems" : [ {
-                          "dataType" : 21,
-                          "name" : "auditinfo",
-                          "getPSAppDEField" : {
-                            "name" : "AUDITINFO",
-                            "codeName" : "audit_info"
-                          }
-                        }, {
                           "dataType" : 25,
                           "name" : "audittype",
                           "getPSAppDEField" : {
                             "name" : "AUDITTYPE",
                             "codeName" : "audit_type"
+                          }
+                        }, {
+                          "dataType" : 5,
+                          "format" : "YYYY-MM-DD HH:mm:ss",
+                          "name" : "update_time",
+                          "getPSAppDEField" : {
+                            "name" : "UPDATE_TIME",
+                            "codeName" : "update_time"
+                          }
+                        }, {
+                          "dataType" : 25,
+                          "name" : "objecttype",
+                          "getPSAppDEField" : {
+                            "name" : "OBJECTTYPE",
+                            "codeName" : "object_type"
                           }
                         }, {
                           "dataType" : 25,
@@ -5563,19 +5642,11 @@
                             "codeName" : "op_person_id"
                           }
                         }, {
-                          "dataType" : 25,
-                          "name" : "objecttype",
+                          "dataType" : 21,
+                          "name" : "auditinfo",
                           "getPSAppDEField" : {
-                            "name" : "OBJECTTYPE",
-                            "codeName" : "object_type"
-                          }
-                        }, {
-                          "dataType" : 5,
-                          "format" : "YYYY-MM-DD HH:mm:ss",
-                          "name" : "update_time",
-                          "getPSAppDEField" : {
-                            "name" : "UPDATE_TIME",
-                            "codeName" : "update_time"
+                            "name" : "AUDITINFO",
+                            "codeName" : "audit_info"
                           }
                         }, {
                           "dataType" : 25,
@@ -5638,7 +5709,7 @@
                         "showHeader" : true,
                         "singleSelect" : false,
                         "name" : "list",
-                        "modelid" : "3d3e19d816ba90fd3ec7a6191578b33e",
+                        "modelid" : "33927f427b5d2208d47c096d8bfed110",
                         "modeltype" : "PSDELIST"
                       }, {
                         "controlType" : "SEARCHBAR",
@@ -5672,7 +5743,7 @@
                         "getPSControlParam" : { }
                       } ],
                       "getPSDEViewCodeName" : "history_list_view",
-                      "getPSDEViewId" : "fbb0ae2ba2c1f30f14ee5dc3d0d24d16",
+                      "getPSDEViewId" : "7253adee34ca867c56dcb38cc85e3fd4",
                       "getPSViewLayoutPanel" : {
                         "codeName" : "layoutpanel",
                         "controlStyle" : "APPDELISTVIEW",
@@ -5696,7 +5767,7 @@
                       "enableFilter" : true,
                       "enableSearch" : true,
                       "showCaptionBar" : false,
-                      "modelid" : "a09dce0a598d8be807726cba248d769d",
+                      "modelid" : "eacb2cfc05e9d388135b6bea5e6105f1",
                       "modeltype" : "PSAPPDEVIEW"
                     },
                     "getPSLayoutPos" : {
@@ -5933,7 +6004,6 @@
                                       "groupOP" : "AND",
                                       "logicCat" : "PANELVISIBLE",
                                       "logicType" : "GROUP",
-                                      "name" : "面板成员[ticket_state][面板显示]逻辑",
                                       "getPSPanelItemLogics" : [ {
                                         "condOp" : "EQ",
                                         "dstModelField" : "TYPE",
@@ -5974,7 +6044,6 @@
                                       "groupOP" : "AND",
                                       "logicCat" : "PANELVISIBLE",
                                       "logicType" : "GROUP",
-                                      "name" : "面板成员[idea_state][面板显示]逻辑",
                                       "getPSPanelItemLogics" : [ {
                                         "condOp" : "EQ",
                                         "dstModelField" : "TYPE",
@@ -6016,7 +6085,6 @@
                                       "groupOP" : "AND",
                                       "logicCat" : "PANELVISIBLE",
                                       "logicType" : "GROUP",
-                                      "name" : "面板成员[state][面板显示]逻辑",
                                       "getPSPanelItemLogics" : [ {
                                         "condOp" : "EQ",
                                         "dstModelField" : "TYPE",
@@ -6198,7 +6266,74 @@
                       "enableSearch" : true,
                       "showCaptionBar" : false,
                       "modelid" : "1b3da2e5f2072f477843eccf609f4af4",
-                      "modeltype" : "PSAPPDEVIEW"
+                      "modeltype" : "PSAPPDEVIEW",
+                      "getPSAppDERSPaths" : [ [ {
+                        "actionRSMode" : 1,
+                        "codeName" : "work_items",
+                        "dataRSMode" : 0,
+                        "majorDECodeName" : "project",
+                        "majorDEName" : "PROJECT",
+                        "getMajorPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+                        },
+                        "minorDECodeName" : "work_item",
+                        "minorDEName" : "WORK_ITEM",
+                        "getMinorPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+                        },
+                        "name" : "DER1N_WORK_ITEM_PROJECT_PROJECT_ID",
+                        "getParentPSAppDEField" : {
+                          "name" : "PROJECT_ID",
+                          "codeName" : "project_id"
+                        },
+                        "rSMode" : 2
+                      }, {
+                        "actionRSMode" : 1,
+                        "codeName" : "transition_histories",
+                        "dataRSMode" : 0,
+                        "majorDECodeName" : "work_item",
+                        "majorDEName" : "WORK_ITEM",
+                        "getMajorPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+                        },
+                        "minorDECodeName" : "transition_history",
+                        "minorDEName" : "TRANSITION_HISTORY",
+                        "getMinorPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/transition_history.json"
+                        },
+                        "name" : "DERCUSTOM_TRANSITION_HISTORY_WORK_ITEM",
+                        "getParentPSAppDEField" : {
+                          "name" : "OWNER_ID",
+                          "codeName" : "owner_id"
+                        },
+                        "rSMode" : 2
+                      } ], [ {
+                        "actionRSMode" : 1,
+                        "codeName" : "transition_histories",
+                        "dataRSMode" : 0,
+                        "majorDECodeName" : "work_item",
+                        "majorDEName" : "WORK_ITEM",
+                        "getMajorPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+                        },
+                        "minorDECodeName" : "transition_history",
+                        "minorDEName" : "TRANSITION_HISTORY",
+                        "getMinorPSAppDataEntity" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/transition_history.json"
+                        },
+                        "name" : "DERCUSTOM_TRANSITION_HISTORY_WORK_ITEM",
+                        "getParentPSAppDEField" : {
+                          "name" : "OWNER_ID",
+                          "codeName" : "owner_id"
+                        },
+                        "rSMode" : 2
+                      } ] ]
                     },
                     "getPSLayoutPos" : {
                       "colMD" : 24,
@@ -6270,7 +6405,7 @@
                     "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/Base.json"
                   },
                   "getPSDEViewCodeName" : "ticket_re_idea_grid_view",
-                  "getPSDEViewId" : "F6326F2B-7EB5-4202-8AB4-BEC8772E8B19",
+                  "getPSDEViewId" : "afb09005318d06e9358f70b7a8ea00e2",
                   "getPSViewLayoutPanel" : {
                     "getAllPSPanelFields" : [ {
                       "id" : "total",
@@ -6705,7 +6840,7 @@
                     "layoutPanel" : true,
                     "useDefaultLayout" : false,
                     "viewProxyMode" : true,
-                    "modelid" : "1f4bc0e2822230d4cfec1eaa88686a70",
+                    "modelid" : "95e9fcd7b12c66971c6dcd2334d10349",
                     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
                     "getPSAppViewEngines" : [ {
                       "engineCat" : "VIEW",
@@ -6814,6 +6949,17 @@
                       }
                     } ],
                     "getPSAppViewRefs" : [ {
+                      "name" : "NEWDATA",
+                      "realTitle" : "工作项关联编辑视图",
+                      "getRealTitlePSLanguageRes" : {
+                        "lanResTag" : "PAGE.TITLE.RELATION.EDITVIEW"
+                      },
+                      "getRefPSAppView" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/relation_edit_view.json",
+                        "viewType" : "DEEDITVIEW"
+                      }
+                    }, {
                       "name" : "EDITDATA",
                       "openMode" : "POPUPMODAL",
                       "getPSNavigateContexts" : [ {
@@ -6835,17 +6981,6 @@
                       "getRefPSAppView" : {
                         "modelref" : true,
                         "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_main_view.json",
-                        "viewType" : "DEEDITVIEW"
-                      }
-                    }, {
-                      "name" : "NEWDATA",
-                      "realTitle" : "工作项关联编辑视图",
-                      "getRealTitlePSLanguageRes" : {
-                        "lanResTag" : "PAGE.TITLE.RELATION.EDITVIEW"
-                      },
-                      "getRefPSAppView" : {
-                        "modelref" : true,
-                        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/relation_edit_view.json",
                         "viewType" : "DEEDITVIEW"
                       }
                     } ],
@@ -6916,7 +7051,7 @@
                       } ],
                       "toolbarStyle" : "USER",
                       "xDataControlName" : "grid",
-                      "modelid" : "A4A92B30-9A2A-4B9D-9D51-00121585DEE9",
+                      "modelid" : "3a369bbb662f90d62f4233be142f85e9",
                       "modeltype" : "PSDETOOLBAR"
                     }, {
                       "aggMode" : "NONE",
@@ -7197,18 +7332,16 @@
                           "getPSUIActionGroupDetails" : [ {
                             "caption" : "取消关联",
                             "detailType" : "DEUIACTION",
-                            "name" : "ue009d6d",
+                            "name" : "ua71fcf1",
                             "getPSSysImage" : {
                               "glyph" : "xf127@FontAwesome",
                               "cssClass" : "fa fa-unlink"
                             },
                             "getPSUIAction" : {
                               "actionTarget" : "SINGLEDATA",
-                              "noPrivDisplayMode" : 6,
                               "caption" : "取消关联",
                               "codeName" : "del_relation",
                               "confirmMsg" : "确认取消关联？",
-                              "dataAccessAction" : "UPDATE",
                               "fullCodeName" : "relation_del_relation",
                               "name" : "取消关联",
                               "getPSAppDEMethod" : {
@@ -7222,10 +7355,6 @@
                               "getPSAppDataEntity" : {
                                 "modelref" : true,
                                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
-                              },
-                              "getPSDEOPPriv" : {
-                                "modelref" : true,
-                                "id" : "UPDATE"
                               },
                               "getPSSysImage" : {
                                 "glyph" : "xf127@FontAwesome",
@@ -7428,7 +7557,7 @@
                       "noSort" : false,
                       "singleSelect" : true,
                       "name" : "grid",
-                      "modelid" : "71330C8D-D4A4-4287-B1C2-84F962E76EDD",
+                      "modelid" : "76ae7fdfae242ab7e34f1be8c9c4199d",
                       "modeltype" : "PSDEGRID"
                     }, {
                       "codeName" : "default",
@@ -7557,9 +7686,71 @@
                   "enableSearch" : true,
                   "rowEditDefault" : false,
                   "showCaptionBar" : false,
-                  "modelid" : "badc9c3d9d4d525d224f1406cd74bacd",
+                  "modelid" : "9e5848df66bac8320ee2aea06fdc06c2",
                   "modeltype" : "PSAPPDEVIEW",
                   "getPSAppDERSPaths" : [ [ {
+                    "actionRSMode" : 1,
+                    "codeName" : "test_plans",
+                    "dataRSMode" : 0,
+                    "majorDECodeName" : "project",
+                    "majorDEName" : "PROJECT",
+                    "getMajorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+                    },
+                    "minorDECodeName" : "test_plan",
+                    "minorDEName" : "TEST_PLAN",
+                    "getMinorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+                    },
+                    "name" : "DER1N_TEST_PLAN_PROJECT_PROJECT_ID",
+                    "getParentPSAppDEField" : {
+                      "name" : "PROJECT_ID",
+                      "codeName" : "project_id"
+                    },
+                    "rSMode" : 2
+                  }, {
+                    "actionRSMode" : 1,
+                    "codeName" : "runs",
+                    "dataRSMode" : 0,
+                    "majorDECodeName" : "test_plan",
+                    "majorDEName" : "TEST_PLAN",
+                    "getMajorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+                    },
+                    "minorDECodeName" : "run",
+                    "minorDEName" : "RUN",
+                    "getMinorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                    },
+                    "name" : "DER1N_RUN_TEST_PLAN_PLAN_ID",
+                    "getParentPSAppDEField" : {
+                      "name" : "PLAN_ID",
+                      "codeName" : "plan_id"
+                    },
+                    "rSMode" : 2
+                  }, {
+                    "actionRSMode" : 1,
+                    "codeName" : "relations",
+                    "dataRSMode" : 0,
+                    "majorDECodeName" : "run",
+                    "majorDEName" : "RUN",
+                    "getMajorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                    },
+                    "minorDECodeName" : "relation",
+                    "minorDEName" : "RELATION",
+                    "getMinorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+                    },
+                    "name" : "执行用例-关联",
+                    "rSMode" : 2
+                  } ], [ {
                     "actionRSMode" : 1,
                     "codeName" : "test_plans",
                     "dataRSMode" : 0,
@@ -8223,7 +8414,7 @@
                     "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/Base.json"
                   },
                   "getPSDEViewCodeName" : "ticket_re_work_item_grid_view",
-                  "getPSDEViewId" : "36ECB1FC-B8FA-4920-A356-404FE77C3FB1",
+                  "getPSDEViewId" : "9b14bd5b4f23045ec04de086bdd9c7fc",
                   "getPSViewLayoutPanel" : {
                     "getAllPSPanelFields" : [ {
                       "id" : "total",
@@ -8717,17 +8908,6 @@
                       }
                     } ],
                     "getPSAppViewRefs" : [ {
-                      "name" : "NEWDATA",
-                      "realTitle" : "工作项关联编辑视图",
-                      "getRealTitlePSLanguageRes" : {
-                        "lanResTag" : "PAGE.TITLE.RELATION.EDITVIEW"
-                      },
-                      "getRefPSAppView" : {
-                        "modelref" : true,
-                        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/relation_edit_view.json",
-                        "viewType" : "DEEDITVIEW"
-                      }
-                    }, {
                       "name" : "EDITDATA",
                       "openMode" : "POPUPMODAL",
                       "getPSNavigateContexts" : [ {
@@ -8762,6 +8942,17 @@
                       "getRefPSAppView" : {
                         "modelref" : true,
                         "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_main_view.json",
+                        "viewType" : "DEEDITVIEW"
+                      }
+                    }, {
+                      "name" : "NEWDATA",
+                      "realTitle" : "工作项关联编辑视图",
+                      "getRealTitlePSLanguageRes" : {
+                        "lanResTag" : "PAGE.TITLE.RELATION.EDITVIEW"
+                      },
+                      "getRefPSAppView" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/relation_edit_view.json",
                         "viewType" : "DEEDITVIEW"
                       }
                     } ],
@@ -8832,7 +9023,7 @@
                       } ],
                       "toolbarStyle" : "USER",
                       "xDataControlName" : "grid",
-                      "modelid" : "1EC05DD6-680A-43DE-8175-2E7D9C1A910B",
+                      "modelid" : "954d0be6cf3388597f3e7afce71744eb",
                       "modeltype" : "PSDETOOLBAR"
                     }, {
                       "aggMode" : "NONE",
@@ -9081,18 +9272,16 @@
                           "getPSUIActionGroupDetails" : [ {
                             "caption" : "取消关联",
                             "detailType" : "DEUIACTION",
-                            "name" : "ue009d6d",
+                            "name" : "ua71fcf1",
                             "getPSSysImage" : {
                               "glyph" : "xf127@FontAwesome",
                               "cssClass" : "fa fa-unlink"
                             },
                             "getPSUIAction" : {
                               "actionTarget" : "SINGLEDATA",
-                              "noPrivDisplayMode" : 6,
                               "caption" : "取消关联",
                               "codeName" : "del_relation",
                               "confirmMsg" : "确认取消关联？",
-                              "dataAccessAction" : "UPDATE",
                               "fullCodeName" : "relation_del_relation",
                               "name" : "取消关联",
                               "getPSAppDEMethod" : {
@@ -9106,10 +9295,6 @@
                               "getPSAppDataEntity" : {
                                 "modelref" : true,
                                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
-                              },
-                              "getPSDEOPPriv" : {
-                                "modelref" : true,
-                                "id" : "UPDATE"
                               },
                               "getPSSysImage" : {
                                 "glyph" : "xf127@FontAwesome",
@@ -9421,9 +9606,71 @@
                   "enableSearch" : true,
                   "rowEditDefault" : false,
                   "showCaptionBar" : false,
-                  "modelid" : "0ec4268b0ddfd396a16bd9d7a223f22b",
+                  "modelid" : "7f3cb53acf2209fc56ea733a0d0dd5d3",
                   "modeltype" : "PSAPPDEVIEW",
                   "getPSAppDERSPaths" : [ [ {
+                    "actionRSMode" : 1,
+                    "codeName" : "test_plans",
+                    "dataRSMode" : 0,
+                    "majorDECodeName" : "project",
+                    "majorDEName" : "PROJECT",
+                    "getMajorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+                    },
+                    "minorDECodeName" : "test_plan",
+                    "minorDEName" : "TEST_PLAN",
+                    "getMinorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+                    },
+                    "name" : "DER1N_TEST_PLAN_PROJECT_PROJECT_ID",
+                    "getParentPSAppDEField" : {
+                      "name" : "PROJECT_ID",
+                      "codeName" : "project_id"
+                    },
+                    "rSMode" : 2
+                  }, {
+                    "actionRSMode" : 1,
+                    "codeName" : "runs",
+                    "dataRSMode" : 0,
+                    "majorDECodeName" : "test_plan",
+                    "majorDEName" : "TEST_PLAN",
+                    "getMajorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+                    },
+                    "minorDECodeName" : "run",
+                    "minorDEName" : "RUN",
+                    "getMinorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                    },
+                    "name" : "DER1N_RUN_TEST_PLAN_PLAN_ID",
+                    "getParentPSAppDEField" : {
+                      "name" : "PLAN_ID",
+                      "codeName" : "plan_id"
+                    },
+                    "rSMode" : 2
+                  }, {
+                    "actionRSMode" : 1,
+                    "codeName" : "relations",
+                    "dataRSMode" : 0,
+                    "majorDECodeName" : "run",
+                    "majorDEName" : "RUN",
+                    "getMajorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                    },
+                    "minorDECodeName" : "relation",
+                    "minorDEName" : "RELATION",
+                    "getMinorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+                    },
+                    "name" : "执行用例-关联",
+                    "rSMode" : 2
+                  } ], [ {
                     "actionRSMode" : 1,
                     "codeName" : "test_plans",
                     "dataRSMode" : 0,
@@ -10087,7 +10334,7 @@
                     "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/Base.json"
                   },
                   "getPSDEViewCodeName" : "ticket_re_self_grid_view",
-                  "getPSDEViewId" : "3F238481-D401-4A1E-B56E-C4EE27ACD266",
+                  "getPSDEViewId" : "cb3552ac1e36283b9ceaea9473d695cb",
                   "getPSViewLayoutPanel" : {
                     "getAllPSPanelFields" : [ {
                       "id" : "total",
@@ -10908,18 +11155,16 @@
                           "getPSUIActionGroupDetails" : [ {
                             "caption" : "取消关联",
                             "detailType" : "DEUIACTION",
-                            "name" : "ue009d6d",
+                            "name" : "ua71fcf1",
                             "getPSSysImage" : {
                               "glyph" : "xf127@FontAwesome",
                               "cssClass" : "fa fa-unlink"
                             },
                             "getPSUIAction" : {
                               "actionTarget" : "SINGLEDATA",
-                              "noPrivDisplayMode" : 6,
                               "caption" : "取消关联",
                               "codeName" : "del_relation",
                               "confirmMsg" : "确认取消关联？",
-                              "dataAccessAction" : "UPDATE",
                               "fullCodeName" : "relation_del_relation",
                               "name" : "取消关联",
                               "getPSAppDEMethod" : {
@@ -10933,10 +11178,6 @@
                               "getPSAppDataEntity" : {
                                 "modelref" : true,
                                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
-                              },
-                              "getPSDEOPPriv" : {
-                                "modelref" : true,
-                                "id" : "UPDATE"
                               },
                               "getPSSysImage" : {
                                 "glyph" : "xf127@FontAwesome",
@@ -11239,9 +11480,71 @@
                   "enableSearch" : true,
                   "rowEditDefault" : false,
                   "showCaptionBar" : false,
-                  "modelid" : "f2a86f4ac51a05556b4104d84506dc08",
+                  "modelid" : "4aa6ca27e2c8b463ff9351f65b9d898d",
                   "modeltype" : "PSAPPDEVIEW",
                   "getPSAppDERSPaths" : [ [ {
+                    "actionRSMode" : 1,
+                    "codeName" : "test_plans",
+                    "dataRSMode" : 0,
+                    "majorDECodeName" : "project",
+                    "majorDEName" : "PROJECT",
+                    "getMajorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+                    },
+                    "minorDECodeName" : "test_plan",
+                    "minorDEName" : "TEST_PLAN",
+                    "getMinorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+                    },
+                    "name" : "DER1N_TEST_PLAN_PROJECT_PROJECT_ID",
+                    "getParentPSAppDEField" : {
+                      "name" : "PROJECT_ID",
+                      "codeName" : "project_id"
+                    },
+                    "rSMode" : 2
+                  }, {
+                    "actionRSMode" : 1,
+                    "codeName" : "runs",
+                    "dataRSMode" : 0,
+                    "majorDECodeName" : "test_plan",
+                    "majorDEName" : "TEST_PLAN",
+                    "getMajorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+                    },
+                    "minorDECodeName" : "run",
+                    "minorDEName" : "RUN",
+                    "getMinorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                    },
+                    "name" : "DER1N_RUN_TEST_PLAN_PLAN_ID",
+                    "getParentPSAppDEField" : {
+                      "name" : "PLAN_ID",
+                      "codeName" : "plan_id"
+                    },
+                    "rSMode" : 2
+                  }, {
+                    "actionRSMode" : 1,
+                    "codeName" : "relations",
+                    "dataRSMode" : 0,
+                    "majorDECodeName" : "run",
+                    "majorDEName" : "RUN",
+                    "getMajorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                    },
+                    "minorDECodeName" : "relation",
+                    "minorDEName" : "RELATION",
+                    "getMinorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+                    },
+                    "name" : "执行用例-关联",
+                    "rSMode" : 2
+                  } ], [ {
                     "actionRSMode" : 1,
                     "codeName" : "test_plans",
                     "dataRSMode" : 0,
@@ -11931,7 +12234,7 @@
                     "rawValue" : false
                   } ],
                   "getPSDEViewCodeName" : "customer_connect_list_view",
-                  "getPSDEViewId" : "2505f714dcceb96c99b9ea327a8475e4",
+                  "getPSDEViewId" : "271cb4d4b123fdffcf2094532fbab141",
                   "getPSViewLayoutPanel" : {
                     "getAllPSPanelFields" : [ {
                       "id" : "total",
@@ -12647,7 +12950,6 @@
                                 "groupOP" : "AND",
                                 "logicCat" : "PANELVISIBLE",
                                 "logicType" : "GROUP",
-                                "name" : "面板成员[container2][面板显示]逻辑",
                                 "getPSPanelItemLogics" : [ {
                                   "condOp" : "NOTEQ",
                                   "dstModelField" : "FIELD_TEXT_DYNAMIC2",
@@ -12872,7 +13174,6 @@
                                 "groupOP" : "AND",
                                 "logicCat" : "PANELVISIBLE",
                                 "logicType" : "GROUP",
-                                "name" : "面板成员[container3][面板显示]逻辑",
                                 "getPSPanelItemLogics" : [ {
                                   "condOp" : "ISNOTNULL",
                                   "dstModelField" : "PID",
@@ -13046,36 +13347,17 @@
                       },
                       "getPSDEListDataItems" : [ {
                         "dataType" : 25,
-                        "getFrontPSCodeList" : {
-                          "modelref" : true,
-                          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-                        },
-                        "name" : "pcreate_man",
-                        "getPSAppDEField" : {
-                          "name" : "PCREATE_MAN",
-                          "codeName" : "pcreate_man"
-                        }
-                      }, {
-                        "dataType" : 25,
                         "name" : "id",
                         "getPSAppDEField" : {
                           "name" : "ID",
                           "codeName" : "id"
                         }
                       }, {
-                        "dataType" : 5,
-                        "format" : "YYYY-MM-DD HH:mm:ss",
-                        "name" : "create_time",
-                        "getPSAppDEField" : {
-                          "name" : "CREATE_TIME",
-                          "codeName" : "create_time"
-                        }
-                      }, {
                         "dataType" : 21,
-                        "name" : "content",
+                        "name" : "pcontent",
                         "getPSAppDEField" : {
-                          "name" : "CONTENT",
-                          "codeName" : "content"
+                          "name" : "PCONTENT",
+                          "codeName" : "pcontent"
                         }
                       }, {
                         "dataType" : 25,
@@ -13083,6 +13365,13 @@
                         "getPSAppDEField" : {
                           "name" : "PID",
                           "codeName" : "pid"
+                        }
+                      }, {
+                        "dataType" : 21,
+                        "name" : "content",
+                        "getPSAppDEField" : {
+                          "name" : "CONTENT",
+                          "codeName" : "content"
                         }
                       }, {
                         "dataType" : 25,
@@ -13096,11 +13385,23 @@
                           "codeName" : "create_man"
                         }
                       }, {
-                        "dataType" : 21,
-                        "name" : "pcontent",
+                        "dataType" : 5,
+                        "format" : "YYYY-MM-DD HH:mm:ss",
+                        "name" : "create_time",
                         "getPSAppDEField" : {
-                          "name" : "PCONTENT",
-                          "codeName" : "pcontent"
+                          "name" : "CREATE_TIME",
+                          "codeName" : "create_time"
+                        }
+                      }, {
+                        "dataType" : 25,
+                        "getFrontPSCodeList" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+                        },
+                        "name" : "pcreate_man",
+                        "getPSAppDEField" : {
+                          "name" : "PCREATE_MAN",
+                          "codeName" : "pcreate_man"
                         }
                       }, {
                         "dataType" : 25,
@@ -13203,9 +13504,75 @@
                   "enableQuickSearch" : true,
                   "enableSearch" : true,
                   "showCaptionBar" : false,
-                  "modelid" : "7055cbe3b23909a1950dbfd6d255712c",
+                  "modelid" : "2053efc4bbc2711686737fa8576a8690",
                   "modeltype" : "PSAPPDEVIEW",
                   "getPSAppDERSPaths" : [ [ {
+                    "actionRSMode" : 1,
+                    "codeName" : "test_plans",
+                    "dataRSMode" : 0,
+                    "majorDECodeName" : "project",
+                    "majorDEName" : "PROJECT",
+                    "getMajorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+                    },
+                    "minorDECodeName" : "test_plan",
+                    "minorDEName" : "TEST_PLAN",
+                    "getMinorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+                    },
+                    "name" : "DER1N_TEST_PLAN_PROJECT_PROJECT_ID",
+                    "getParentPSAppDEField" : {
+                      "name" : "PROJECT_ID",
+                      "codeName" : "project_id"
+                    },
+                    "rSMode" : 2
+                  }, {
+                    "actionRSMode" : 1,
+                    "codeName" : "runs",
+                    "dataRSMode" : 0,
+                    "majorDECodeName" : "test_plan",
+                    "majorDEName" : "TEST_PLAN",
+                    "getMajorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+                    },
+                    "minorDECodeName" : "run",
+                    "minorDEName" : "RUN",
+                    "getMinorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                    },
+                    "name" : "DER1N_RUN_TEST_PLAN_PLAN_ID",
+                    "getParentPSAppDEField" : {
+                      "name" : "PLAN_ID",
+                      "codeName" : "plan_id"
+                    },
+                    "rSMode" : 2
+                  }, {
+                    "actionRSMode" : 1,
+                    "codeName" : "comments",
+                    "dataRSMode" : 0,
+                    "majorDECodeName" : "run",
+                    "majorDEName" : "RUN",
+                    "getMajorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                    },
+                    "minorDECodeName" : "comment",
+                    "minorDEName" : "COMMENT",
+                    "getMinorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
+                    },
+                    "name" : "DERCOSTOM_COMMENT_RUN_PRINCIPAL_ID",
+                    "getParentPSAppDEField" : {
+                      "name" : "PRINCIPAL_ID",
+                      "codeName" : "principal_id"
+                    },
+                    "rSMode" : 2
+                  } ], [ {
                     "actionRSMode" : 1,
                     "codeName" : "test_plans",
                     "dataRSMode" : 0,
@@ -14959,7 +15326,7 @@
   "xDataControlName" : "form",
   "enableDP" : true,
   "showDataInfoBar" : true,
-  "modelid" : "588beb49be62ae5830599fc5701f07be",
+  "modelid" : "a68986b8fa4eb32bad70e96a78fe9d3b",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

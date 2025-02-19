@@ -491,7 +491,7 @@
         "showCaption" : true,
         "showIcon" : true
       } ],
-      "modelid" : "DF1CE5E4-8970-4B83-81A8-B84EE37560ED",
+      "modelid" : "32f7afc5a4c526990c392cbbc45f4a69",
       "modeltype" : "PSDETOOLBAR"
     } ],
     "getPSDEGridColumns" : [ {
@@ -537,7 +537,7 @@
       "enableSort" : true
     }, {
       "align" : "LEFT",
-      "cLConvertMode" : "NONE",
+      "cLConvertMode" : "FRONT",
       "caption" : "职位",
       "codeName" : "title",
       "columnType" : "DEFGRIDCOLUMN",
@@ -545,6 +545,10 @@
       "excelCaption" : "职位",
       "name" : "title",
       "noPrivDisplayMode" : 1,
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__position.json"
+      },
       "getPSAppDEField" : {
         "name" : "TITLE",
         "codeName" : "title"
@@ -751,7 +755,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "config_grid_view",
-  "getPSDEViewId" : "2f3e78d0e1a8446a870a42d2a858e79e",
+  "getPSDEViewId" : "d9316602785091e4c926b2b71de48e5f",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEGRIDVIEW",
@@ -778,9 +782,53 @@
   "enableRowEdit" : false,
   "enableSearch" : true,
   "rowEditDefault" : false,
-  "modelid" : "fc673378e1cfcbf265abb5be40ea9f2b",
+  "modelid" : "25b30af7d61ca864f56603d077b6c0cf",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "users",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "department",
+    "majorDEName" : "DEPARTMENT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/department.json"
+    },
+    "minorDECodeName" : "user",
+    "minorDEName" : "USER",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+    },
+    "name" : "DER1N_USER_DEPARTMENT_DEPARTMENT_ID",
+    "getParentPSAppDEField" : {
+      "name" : "DEPARTMENT_ID",
+      "codeName" : "department_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "product_members",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "user",
+    "majorDEName" : "USER",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+    },
+    "minorDECodeName" : "product_member",
+    "minorDEName" : "PRODUCT_MEMBER",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product_member.json"
+    },
+    "name" : "DER1N_PRODUCT_MEMBER_USER_USER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "USER_ID",
+      "codeName" : "user_id"
+    },
+    "rSMode" : 2
+  } ], [ {
     "actionRSMode" : 1,
     "codeName" : "product_members",
     "dataRSMode" : 0,

@@ -229,7 +229,7 @@
       }, {
         "caption" : "看板管理",
         "detailType" : "DEUIACTION",
-        "name" : "u8a50616",
+        "name" : "u49ac520",
         "getPSSysImage" : {
           "glyph" : "xf185@FontAwesome",
           "cssClass" : "fa fa-sun-o"
@@ -322,7 +322,7 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "READ"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -1274,7 +1274,7 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "READ"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -2038,61 +2038,6 @@
       } ],
       "topPos" : 698
     }, {
-      "codeName" : "END1",
-      "leftPos" : -157,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 810
-    }, {
-      "code" : "if (uiLogic.default.id === context.curboard) {\r\n    context.srfdefaulttoroutedepth = 3;\r\n    context.board = context.project;\r\n}",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : -197,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "计算删除看板标识",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 548
-    }, {
-      "codeName" : "DEUIACTION2",
-      "getDstPSAppDEUIAction" : {
-        "modelref" : true,
-        "id" : "Remove"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/board.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : -197,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "删除看板",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION2"
-        }
-      } ],
-      "topPos" : 248
-    }, {
       "codeName" : "DEACTION1",
       "getDstPSAppDEAction" : {
         "modelref" : true,
@@ -2158,27 +2103,71 @@
         "id" : "Default"
       },
       "topPos" : 360
+    }, {
+      "code" : "if (uiLogic.default.id === context.curboard) {\r\n    context.srfdefaulttoroutedepth = 3;\r\n    context.board = context.project;\r\n}",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : -197,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "计算删除看板标识",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 548
+    }, {
+      "codeName" : "DEUIACTION2",
+      "getDstPSAppDEUIAction" : {
+        "modelref" : true,
+        "id" : "Remove"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/board.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : -197,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "删除看板",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION2"
+        }
+      } ],
+      "topPos" : 248
+    }, {
+      "codeName" : "END1",
+      "leftPos" : -157,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 810
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "data",
-      "logicName" : "数据",
-      "name" : "数据",
-      "entityParam" : true
-    }, {
-      "codeName" : "view",
-      "logicName" : "当前视图",
-      "name" : "当前视图",
-      "activeViewParam" : true
-    }, {
       "codeName" : "context",
       "logicName" : "上下文变量",
       "name" : "上下文变量",
       "navContextParam" : true
     }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
+      "codeName" : "data",
+      "logicName" : "数据",
+      "name" : "数据",
       "entityParam" : true
     }, {
       "codeName" : "checkKey",
@@ -2186,6 +2175,17 @@
       "name" : "checkKey",
       "stdDataType" : 9,
       "simpleParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图",
+      "name" : "当前视图",
+      "activeViewParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -2193,14 +2193,6 @@
     }
   } ],
   "getAllPSAppViews" : [ {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/board_pick_up_grid_view.json",
-    "viewType" : "DEPICKUPGRIDVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/board_pick_up_view.json",
-    "viewType" : "DEPICKUPVIEW"
-  }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/board_edit_view.json",
     "viewType" : "DEEDITVIEW"
@@ -2210,12 +2202,20 @@
     "viewType" : "DEOPTVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/board_confirm_remove_view.json",
-    "viewType" : "DEOPTVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/board_pick_up_grid_view.json",
+    "viewType" : "DEPICKUPGRIDVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/board_grid_view.json",
     "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/board_pick_up_view.json",
+    "viewType" : "DEPICKUPVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/board_confirm_remove_view.json",
+    "viewType" : "DEOPTVIEW"
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "建立",
@@ -2366,7 +2366,7 @@
     "uniqueTag" : "board__Usr0429187007",
     "getPSUIActionGroupDetails" : [ {
       "detailType" : "DEUIACTION",
-      "name" : "u199d781",
+      "name" : "u88f921c",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
         "cssClass" : "fa fa-trash-o"
@@ -2414,7 +2414,7 @@
     }, {
       "caption" : "看板管理",
       "detailType" : "DEUIACTION",
-      "name" : "u8a50616",
+      "name" : "u49ac520",
       "getPSSysImage" : {
         "glyph" : "xf185@FontAwesome",
         "cssClass" : "fa fa-sun-o"

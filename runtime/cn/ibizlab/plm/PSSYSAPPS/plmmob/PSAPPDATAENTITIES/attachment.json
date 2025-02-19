@@ -1640,12 +1640,6 @@
       "topPos" : 50,
       "parallelOutput" : true
     }, {
-      "codeName" : "END1",
-      "leftPos" : 1108,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 50
-    }, {
       "code" : "view.layoutPanel.panelItems.mdctrl.state.visible = true",
       "codeName" : "RAWJSCODE2",
       "leftPos" : 766,
@@ -1661,6 +1655,25 @@
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
           "id" : "RAWJSCODE2"
+        }
+      } ],
+      "topPos" : 58
+    }, {
+      "code" : "uiLogic.attach = uiLogic.files.map(item =>{\r\n\treturn {\r\n\t  name: item.name,\r\n\t  file_id: item.id,\r\n\t  id: item.uuid,\r\n\t}\r\n})",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 266,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "设置附件列表",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
         }
       } ],
       "topPos" : 58
@@ -1726,45 +1739,32 @@
       } ],
       "topPos" : 58
     }, {
-      "code" : "uiLogic.attach = uiLogic.files.map(item =>{\r\n\treturn {\r\n\t  name: item.name,\r\n\t  file_id: item.id,\r\n\t  id: item.uuid,\r\n\t}\r\n})",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 266,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "设置附件列表",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 58
+      "codeName" : "END1",
+      "leftPos" : 1108,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 50
     } ],
     "getPSDEUILogicParams" : [ {
+      "codeName" : "mdctrl",
+      "logicName" : "多数据部件",
+      "name" : "多数据部件",
+      "ctrlParam" : true
+    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "mdctrl",
-      "logicName" : "多数据部件",
-      "name" : "多数据部件",
-      "ctrlParam" : true
+      "codeName" : "attach",
+      "logicName" : "附件列表",
+      "name" : "附件列表",
+      "entityListParam" : true
     }, {
       "codeName" : "files",
       "logicName" : "文件列表",
       "name" : "文件列表",
-      "entityListParam" : true
-    }, {
-      "codeName" : "attach",
-      "logicName" : "附件列表",
-      "name" : "附件列表",
       "entityListParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
@@ -1796,6 +1796,111 @@
       } ],
       "topPos" : 200,
       "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 220,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "获取列表部件",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "mdctrl"
+        },
+        "name" : "view[ctx.controllersMap.get(\"mdctrl\")] ==> mdctrl",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ctx.controllersMap.get(\"mdctrl\")",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "form"
+        },
+        "name" : "view[ctx.parent.controllersMap.get(\"form\")] ==> form",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ctx.parent.controllersMap.get(\"form\")",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "id",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "params"
+        },
+        "name" : "Default[id] ==> params[id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "id",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 310
+    }, {
+      "code" : "console.log(\"附件数据\",uiLogic.attach)",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 626,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      } ],
+      "topPos" : 310
+    }, {
+      "codeName" : "VIEWCTRLINVOKE2",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "form"
+      },
+      "invokeMethod" : "save",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 1510,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "表单保存",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE2"
+        }
+      } ],
+      "topPos" : 490
     }, {
       "codeName" : "PREPAREJSPARAM2",
       "leftPos" : 1220,
@@ -1844,6 +1949,12 @@
         }
       } ],
       "topPos" : 310
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 1768,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 302
     }, {
       "codeName" : "DEACTION1",
       "getDstPSAppDEAction" : {
@@ -1915,133 +2026,16 @@
         }
       } ],
       "topPos" : 310
-    }, {
-      "code" : "console.log(\"附件数据\",uiLogic.attach)",
-      "codeName" : "RAWJSCODE2",
-      "leftPos" : 626,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        }
-      } ],
-      "topPos" : 310
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 1768,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 302
-    }, {
-      "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 220,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "获取列表部件",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "mdctrl"
-        },
-        "name" : "view[ctx.controllersMap.get(\"mdctrl\")] ==> mdctrl",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "ctx.controllersMap.get(\"mdctrl\")",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "view"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "form"
-        },
-        "name" : "view[ctx.parent.controllersMap.get(\"form\")] ==> form",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "ctx.parent.controllersMap.get(\"form\")",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "view"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "id",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "params"
-        },
-        "name" : "Default[id] ==> params[id]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "id",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 310
-    }, {
-      "codeName" : "VIEWCTRLINVOKE2",
-      "getInvokeCtrl" : {
-        "modelref" : true,
-        "id" : "form"
-      },
-      "invokeMethod" : "save",
-      "getInvokeParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 1510,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "表单保存",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "VIEWCTRLINVOKE2"
-        }
-      } ],
-      "topPos" : 490
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "attach",
-      "logicName" : "附件数据",
-      "name" : "附件数据",
-      "entityParam" : true
-    }, {
       "codeName" : "view",
       "logicName" : "当前视图对象",
       "name" : "当前视图对象",
       "activeViewParam" : true
     }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
+      "codeName" : "attach",
+      "logicName" : "附件数据",
+      "name" : "附件数据",
       "entityParam" : true
     }, {
       "codeName" : "mdctrl",
@@ -2049,15 +2043,21 @@
       "name" : "列表",
       "ctrlParam" : true
     }, {
-      "codeName" : "params",
-      "logicName" : "视图参数",
-      "name" : "视图参数",
-      "viewNavDataParam" : true
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
     }, {
       "codeName" : "form",
       "logicName" : "主表单对象",
       "name" : "主表单对象",
       "ctrlParam" : true
+    }, {
+      "codeName" : "params",
+      "logicName" : "视图参数",
+      "name" : "视图参数",
+      "viewNavDataParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -2066,15 +2066,15 @@
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/attachment_mob_md_view.json",
+    "viewType" : "DEMOBMDVIEW"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/attachment_mob_page_md_view.json",
     "viewType" : "DEMOBMDVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/attachment_mob_readonly_md_view.json",
-    "viewType" : "DEMOBMDVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/attachment_mob_md_view.json",
     "viewType" : "DEMOBMDVIEW"
   } ],
   "getAllPSDEOPPrivs" : [ {
@@ -2424,16 +2424,18 @@
   "enableWFActions" : false,
   "major" : false,
   "getAllPSAppDEUIActionGroups" : [ {
+    "codeName" : "A258b62f7649916a65c",
     "name" : "附件列表界面行为组（移动端）",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/attachment.json"
     },
+    "uniqueTag" : "attachment__A258b62f7649916a65c",
     "getPSUIActionGroupDetails" : [ {
       "actionLevel" : 250,
       "caption" : "下载",
       "detailType" : "DEUIACTION",
-      "name" : "ubf65ea8",
+      "name" : "u1e2ba6d",
       "getPSSysImage" : {
         "glyph" : "xf019@FontAwesome",
         "cssClass" : "fa fa-download"
@@ -2453,7 +2455,7 @@
     }, {
       "caption" : "删除",
       "detailType" : "DEUIACTION",
-      "name" : "u4e9feb6",
+      "name" : "u38dbf91",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
         "cssClass" : "fa fa-trash-o"
@@ -2482,7 +2484,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "下载",
       "detailType" : "DEUIACTION",
-      "name" : "ud0f719f",
+      "name" : "u8538353",
       "getPSSysImage" : {
         "glyph" : "xf019@FontAwesome",
         "cssClass" : "fa fa-download"

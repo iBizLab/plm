@@ -74,17 +74,6 @@
     }
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "NEWDATA",
-    "realTitle" : "成员编辑视图",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.MEMBER.EDITVIEW"
-    },
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/member_edit_view.json",
-      "viewType" : "DEEDITVIEW"
-    }
-  }, {
     "name" : "EDITDATA",
     "realTitle" : "成员数据重定向视图",
     "getRealTitlePSLanguageRes" : {
@@ -94,6 +83,17 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/member_redirect_view.json",
       "viewType" : "DEREDIRECTVIEW"
+    }
+  }, {
+    "name" : "NEWDATA",
+    "realTitle" : "成员编辑视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.MEMBER.EDITVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/member_edit_view.json",
+      "viewType" : "DEEDITVIEW"
     }
   } ],
   "getPSControls" : [ {
@@ -159,7 +159,7 @@
       "showIcon" : true
     } ],
     "xDataControlName" : "grid",
-    "modelid" : "8989B206-B7E8-4B88-B502-6CE48FA856DC",
+    "modelid" : "07487209fe2a4c5f4f2218e647e80093",
     "modeltype" : "PSDETOOLBAR"
   }, {
     "aggMode" : "NONE",
@@ -377,7 +377,7 @@
         },
         "getPSUIActionGroupDetails" : [ {
           "detailType" : "DEUIACTION",
-          "name" : "u679c252",
+          "name" : "u4016a74",
           "getPSSysImage" : {
             "glyph" : "xf185@FontAwesome",
             "cssClass" : "fa fa-sun-o"
@@ -429,7 +429,7 @@
           "showIcon" : true
         }, {
           "detailType" : "DEUIACTION",
-          "name" : "u8abfb7b",
+          "name" : "ue13dbbe",
           "getPSSysImage" : {
             "glyph" : "xf014@FontAwesome",
             "cssClass" : "fa fa-trash-o"
@@ -607,7 +607,7 @@
     "noSort" : false,
     "singleSelect" : true,
     "name" : "grid",
-    "modelid" : "B8FD2971-613B-4FBA-94D4-043125C092F7",
+    "modelid" : "1a2b9e1cad771555b9b7afa6c6041432",
     "modeltype" : "PSDEGRID"
   }, {
     "codeName" : "position_grid_view_search_form",
@@ -687,7 +687,7 @@
     "enableFilterSave" : false,
     "noTabHeader" : true,
     "name" : "searchform",
-    "modelid" : "36517E37-7442-4CC6-9C3C-E58296DFB641",
+    "modelid" : "09501a10d5f6e8a81bf2580a92af6acc",
     "modeltype" : "PSDEFORM_SEARCHFORM"
   }, {
     "controlType" : "SEARCHBAR",
@@ -721,7 +721,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "position_grid_view",
-  "getPSDEViewId" : "08D7F7C1-2422-422B-9B9B-A3C702496587",
+  "getPSDEViewId" : "a22603a38bb86ab9eff67e231c014fb6",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEGRIDVIEW",
@@ -749,7 +749,7 @@
   "enableRowEdit" : false,
   "enableSearch" : true,
   "rowEditDefault" : false,
-  "modelid" : "6369ccdfe9f07b61a32fcca584571974",
+  "modelid" : "909cf206e7a1148cb073721484026c96",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,
@@ -834,6 +834,50 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/member.json"
     },
     "name" : "DERCUSTOM_MEMBER_PAGE_OWNER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "rSMode" : 2
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "groups",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "section",
+    "majorDEName" : "SECTION",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/section.json"
+    },
+    "minorDECodeName" : "group",
+    "minorDEName" : "GROUP",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/group.json"
+    },
+    "name" : "DER1N_GROUP_SECTION_SECTION_ID",
+    "getParentPSAppDEField" : {
+      "name" : "SECTION_ID",
+      "codeName" : "section_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "members",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "group",
+    "majorDEName" : "GROUP",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/group.json"
+    },
+    "minorDECodeName" : "member",
+    "minorDEName" : "MEMBER",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/member.json"
+    },
+    "name" : "DERCUSTOM_MEMBER_GROUP_OWNER_ID",
     "getParentPSAppDEField" : {
       "name" : "OWNER_ID",
       "codeName" : "owner_id"

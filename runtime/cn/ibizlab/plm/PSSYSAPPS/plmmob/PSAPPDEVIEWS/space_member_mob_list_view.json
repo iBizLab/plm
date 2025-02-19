@@ -241,7 +241,6 @@
                 "groupOP" : "AND",
                 "logicCat" : "PANELVISIBLE",
                 "logicType" : "GROUP",
-                "name" : "面板成员[title][面板显示]逻辑",
                 "getPSPanelItemLogics" : [ {
                   "condOp" : "ISNOTNULL",
                   "dstModelField" : "TITLE",
@@ -279,7 +278,7 @@
               "getPSUIActionGroupDetails" : [ {
                 "caption" : "设置角色",
                 "detailType" : "DEUIACTION",
-                "name" : "u4b86972",
+                "name" : "u313e5d8",
                 "getPSSysImage" : {
                   "glyph" : "xf185@FontAwesome",
                   "cssClass" : "fa fa-sun-o"
@@ -328,7 +327,7 @@
               }, {
                 "caption" : "移除成员",
                 "detailType" : "DEUIACTION",
-                "name" : "u58351fa",
+                "name" : "u9306c3e",
                 "getPSSysImage" : {
                   "glyph" : "xf1f8@FontAwesome",
                   "cssClass" : "fa fa-trash"
@@ -387,7 +386,7 @@
         } ]
       } ],
       "name" : "mdctrl_itempanel",
-      "modelid" : "78c1c3456cd589b4004b8362ccb8e400",
+      "modelid" : "e77046a0d6180a59326ead356efba809",
       "modeltype" : "PSSYSVIEWPANEL"
     },
     "logicName" : "mob_list",
@@ -472,10 +471,10 @@
     },
     "getPSDEListDataItems" : [ {
       "dataType" : 25,
-      "name" : "id",
+      "name" : "name",
       "getPSAppDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
+        "name" : "NAME",
+        "codeName" : "name"
       }
     }, {
       "dataType" : 25,
@@ -490,10 +489,10 @@
       }
     }, {
       "dataType" : 25,
-      "name" : "name",
+      "name" : "id",
       "getPSAppDEField" : {
-        "name" : "NAME",
-        "codeName" : "name"
+        "name" : "ID",
+        "codeName" : "id"
       }
     }, {
       "dataType" : 25,
@@ -641,7 +640,7 @@
     } ],
     "toolbarStyle" : "MOBNAVRIGHTMENU",
     "xDataControlName" : "mdctrl",
-    "modelid" : "EE792D02-1958-4C67-9C8D-EB7DEA491FB7",
+    "modelid" : "d7d7bd4654277f30afded2b2d6c5895f",
     "modeltype" : "PSDETOOLBAR"
   }, {
     "controlType" : "SEARCHBAR",
@@ -675,7 +674,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "mob_list_view",
-  "getPSDEViewId" : "936EFC1D-D155-46A1-97A9-57DD4FC6C10F",
+  "getPSDEViewId" : "5c7f7d19d9cfc8827367aa37371f7169",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEMOBLISTVIEW",
@@ -700,9 +699,53 @@
   "enablePullDownRefresh" : false,
   "enableQuickSearch" : true,
   "enableSearch" : true,
-  "modelid" : "971fc840d4ae41eadce4fcfd4d2ba92f",
+  "modelid" : "b5ead77f4fbbc3ed3b87b95d7839d4ca",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "users",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "department",
+    "majorDEName" : "DEPARTMENT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/department.json"
+    },
+    "minorDECodeName" : "user",
+    "minorDEName" : "USER",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/user.json"
+    },
+    "name" : "DER1N_USER_DEPARTMENT_DEPARTMENT_ID",
+    "getParentPSAppDEField" : {
+      "name" : "DEPARTMENT_ID",
+      "codeName" : "department_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "space_members",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "user",
+    "majorDEName" : "USER",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/user.json"
+    },
+    "minorDECodeName" : "space_member",
+    "minorDEName" : "SPACE_MEMBER",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/space_member.json"
+    },
+    "name" : "DER1N_SPACE_MEMBER_USER_USER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "USER_ID",
+      "codeName" : "user_id"
+    },
+    "rSMode" : 2
+  } ], [ {
     "actionRSMode" : 1,
     "codeName" : "space_members",
     "dataRSMode" : 0,

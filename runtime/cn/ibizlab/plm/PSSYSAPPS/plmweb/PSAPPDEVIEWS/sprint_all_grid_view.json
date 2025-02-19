@@ -23,7 +23,7 @@
     "rawValue" : false
   } ],
   "getPSDEViewCodeName" : "all_grid_view",
-  "getPSDEViewId" : "1990d0fd8e5d1cb901e5b79fab5b0c20",
+  "getPSDEViewId" : "2ec529b9121c57d960782f172cd39ed2",
   "getPSViewLayoutPanel" : {
     "codeName" : "usr0205202073",
     "controlType" : "VIEWLAYOUTPANEL",
@@ -261,14 +261,6 @@
       }
     } ],
     "getPSAppViewRefs" : [ {
-      "name" : "EDITDATA",
-      "realTitle" : "迭代实体分页导航视图",
-      "getRefPSAppView" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sprint_main_view.json",
-        "viewType" : "DETABEXPVIEW"
-      }
-    }, {
       "name" : "NEWDATA",
       "realOpenMode" : "POPUPMODAL",
       "realTitle" : "迭代快速建立视图",
@@ -276,6 +268,14 @@
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sprint_quick_create_view.json",
         "viewType" : "DEOPTVIEW"
+      }
+    }, {
+      "name" : "EDITDATA",
+      "realTitle" : "迭代实体分页导航视图",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sprint_main_view.json",
+        "viewType" : "DETABEXPVIEW"
       }
     } ],
     "getPSControls" : [ {
@@ -734,6 +734,7 @@
         },
         "width" : 300,
         "widthUnit" : "PX",
+        "enableRowEdit" : true,
         "enableSort" : true
       }, {
         "align" : "LEFT",
@@ -1028,6 +1029,31 @@
         "name" : "srfmstag"
       } ],
       "getPSDEGridEditItems" : [ {
+        "caption" : "类别",
+        "codeName" : "categories",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "name" : "categories",
+        "getPSAppDEField" : {
+          "name" : "CATEGORIES",
+          "codeName" : "categories"
+        },
+        "getPSEditor" : {
+          "editorParams" : {
+            "readonly" : "true"
+          },
+          "editorType" : "MDROPDOWNLIST",
+          "name" : "categories",
+          "getPSAppCodeList" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__category.json"
+          },
+          "readOnly" : true,
+          "singleSelect" : false
+        },
+        "allowEmpty" : true,
+        "needCodeListConfig" : true
+      }, {
         "caption" : "负责人",
         "codeName" : "assignee_name",
         "enableCond" : 3,
@@ -1925,7 +1951,7 @@
   "enableRowEdit" : false,
   "enableSearch" : true,
   "rowEditDefault" : false,
-  "modelid" : "bda4b06ff279923a594c9930f7c57bcd",
+  "modelid" : "8b1f76cd7c1efe342b236dd32bdf3e88",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

@@ -167,7 +167,7 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "UPDATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -1540,7 +1540,7 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "UPDATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -2263,6 +2263,25 @@
       "name" : "结束",
       "topPos" : 200
     }, {
+      "code" : "ibiz.hub.getApp(context.srfappid).deService.exec(\r\n    'plmweb.product_member',\r\n    'Create',\r\n    context,\r\n    uiLogic.user,\r\n);",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 649,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "创建临时数据",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 208
+    }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 392,
       "logicNodeType" : "PREPAREJSPARAM",
@@ -2311,36 +2330,17 @@
         "srcValueType" : "DATACONTEXT"
       } ],
       "topPos" : 208
-    }, {
-      "code" : "ibiz.hub.getApp(context.srfappid).deService.exec(\r\n    'plmweb.product_member',\r\n    'Create',\r\n    context,\r\n    uiLogic.user,\r\n);",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 649,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "创建临时数据",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
+      "codeName" : "user",
+      "logicName" : "当前人员",
+      "name" : "当前人员",
+      "entityParam" : true
+    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "user",
-      "logicName" : "当前人员",
-      "name" : "当前人员",
       "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
@@ -2372,41 +2372,6 @@
       } ],
       "topPos" : 200,
       "parallelOutput" : true
-    }, {
-      "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 74,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "设置确认信息",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "MSGBOX1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "ok",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "msg"
-        },
-        "name" : "直接值[ok] ==> msg[ok]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "ok",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : 208
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 1169,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
     }, {
       "buttonsType" : "OKCANCEL",
       "codeName" : "MSGBOX1",
@@ -2449,6 +2414,41 @@
       } ],
       "topPos" : 208
     }, {
+      "codeName" : "END1",
+      "leftPos" : 1169,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 74,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "设置确认信息",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "MSGBOX1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "ok",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "msg"
+        },
+        "name" : "直接值[ok] ==> msg[ok]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "ok",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 208
+    }, {
       "code" : "// 如果当前视图打开方式为普通模态，则先关闭模态再跳转\r\nif (view.modal && view.modal.mode === 'MODAL') {\r\n\tview.modal.ignoreDismissCheck = true\r\n\tview.closeView({ ok: true })\r\n}\r\nibiz.openView.push(`/-/index/product=${context.product}/product_index_view/srfnav=usrdrgroup1228809432/product_details_setting_view/srfnav=root%3Anormal%3Amember/product_member_config_grid_view/-`);",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 699,
@@ -2469,17 +2469,6 @@
       "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "msg",
-      "logicName" : "消息确认标识",
-      "name" : "消息确认标识",
-      "entityParam" : true
-    }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
       "codeName" : "project",
       "logicName" : "项目标识",
       "name" : "项目标识",
@@ -2494,6 +2483,17 @@
       "logicName" : "上一次返回参数",
       "name" : "上一次返回参数",
       "lastReturnParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "msg",
+      "logicName" : "消息确认标识",
+      "name" : "消息确认标识",
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -2502,12 +2502,20 @@
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_member_edit_view.json",
-    "viewType" : "DEEDITVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_member_choose_position_option_view.json",
+    "viewType" : "DEOPTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_member_config_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_member_assigned_grid_view.json",
     "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_member_edit_view.json",
+    "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_member_redirect_view.json",
@@ -2516,14 +2524,6 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_member_role_edit_view.json",
     "viewType" : "DEOPTVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_member_choose_position_option_view.json",
-    "viewType" : "DEOPTVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_member_config_grid_view.json",
-    "viewType" : "DEGRIDVIEW"
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "建立",

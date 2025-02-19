@@ -266,7 +266,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "change_role",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_member/PSDEACTIONS/change_role.json",
     "logicName" : "变更角色",
     "name" : "change_role",
@@ -1206,6 +1206,10 @@
     "length" : 100,
     "logicName" : "职位",
     "name" : "TITLE",
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSCODELISTS/position.json"
+    },
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -2011,6 +2015,32 @@
       },
       "topPos" : 403
     }, {
+      "codeName" : "LOOPSUBCALL1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "leftPos" : -90,
+      "logicNodeType" : "LOOPSUBCALL",
+      "name" : "循环ID列表进行操作",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "subCallLink" : true
+      } ],
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "srfactionparam"
+      },
+      "topPos" : 562
+    }, {
       "codeName" : "PREPAREPARAM2",
       "leftPos" : 180,
       "logicNodeType" : "PREPAREPARAM",
@@ -2059,32 +2089,6 @@
       "leftPos" : 500,
       "logicNodeType" : "DEACTION",
       "name" : "变更状态",
-      "topPos" : 562
-    }, {
-      "codeName" : "LOOPSUBCALL1",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "for_temp_obj"
-      },
-      "leftPos" : -90,
-      "logicNodeType" : "LOOPSUBCALL",
-      "name" : "循环ID列表进行操作",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM2"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "LOOPSUBCALL1"
-        },
-        "subCallLink" : true
-      } ],
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "srfactionparam"
-      },
       "topPos" : 562
     } ],
     "getPSDELogicParams" : [ {
@@ -2173,24 +2177,6 @@
       },
       "topPos" : 403
     }, {
-      "codeName" : "DEACTION1",
-      "getDstPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_member/PSDEACTIONS/Update.json"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_member.json"
-      },
-      "leftPos" : 396,
-      "logicNodeType" : "DEACTION",
-      "name" : "变更状态",
-      "topPos" : 562
-    }, {
       "codeName" : "LOOPSUBCALL1",
       "getDstPSDELogicParam" : {
         "modelref" : true,
@@ -2247,6 +2233,24 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
+      "topPos" : 562
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_member/PSDEACTIONS/Update.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_member.json"
+      },
+      "leftPos" : 396,
+      "logicNodeType" : "DEACTION",
+      "name" : "变更状态",
       "topPos" : 562
     } ],
     "getPSDELogicParams" : [ {
@@ -3502,16 +3506,23 @@
     "utilType" : "NOTIFYSETTING"
   } ],
   "getAllPSModelDatas" : [ {
-    "codeName" : "mob_add_person_md_view_PickupMDView",
-    "logicName" : "产品添加人员多数据选择视图（多选-移动端）_选择数据视图",
-    "name" : "产品添加人员多数据选择视图（多选-移动端）_选择数据视图",
-    "realModelSubType" : "DEMOBPICKUPMDVIEW",
+    "codeName" : "pick_up_view",
+    "logicName" : "产品成员实体数据选择视图",
+    "modelTag" : "PICKUPVIEW",
+    "name" : "产品成员实体数据选择视图",
+    "realModelSubType" : "DEPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView2",
     "logicName" : "产品成员实体编辑视图（左右关系）",
     "name" : "产品成员实体编辑视图（左右关系）",
     "realModelSubType" : "DEEDITVIEW2",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_product_member_selected_PickupMDView",
+    "logicName" : "产品人员选择视图（移动端）_选择数据视图",
+    "name" : "产品人员选择视图（移动端）_选择数据视图",
+    "realModelSubType" : "DEMOBPICKUPMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "RedirectView",
@@ -3521,40 +3532,16 @@
     "realModelSubType" : "DEREDIRECTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "config_grid_view",
-    "logicName" : "产品成员配置",
-    "name" : "产品成员配置",
-    "realModelSubType" : "DEGRIDVIEW",
+    "codeName" : "mob_dept_mem_selected",
+    "logicName" : "产品部门人员树选择视图（移动端）",
+    "name" : "产品部门人员树选择视图（移动端）",
+    "realModelSubType" : "DEMOBPICKUPTREEVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_more_mem_selected",
-    "logicName" : "产品人员选择视图（多选-移动端）",
-    "name" : "产品人员选择视图（多选-移动端）",
-    "realModelSubType" : "DEMOBMPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_product_role_option_view",
-    "logicName" : "产品成员角色选项操作视图（移动端）",
-    "name" : "产品成员角色选项操作视图（移动端）",
-    "realModelSubType" : "DEMOBOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "pick_up_grid_view",
-    "logicName" : "产品成员实体选择表格视图（部件视图）",
-    "name" : "产品成员实体选择表格视图（部件视图）",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_product_member_select",
-    "logicName" : "产品成员选择视图（移动端）",
-    "name" : "产品成员选择视图（移动端）",
-    "realModelSubType" : "DEMOBMPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_product_member_selected",
-    "logicName" : "产品人员选择视图（移动端）",
-    "name" : "产品人员选择视图（移动端）",
-    "realModelSubType" : "DEMOBPICKUPVIEW",
+    "codeName" : "mob_add_person_md_view_PickupMDView",
+    "logicName" : "产品添加人员多数据选择视图（多选-移动端）_选择数据视图",
+    "name" : "产品添加人员多数据选择视图（多选-移动端）_选择数据视图",
+    "realModelSubType" : "DEMOBPICKUPMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mob_add_person_md_view",
@@ -3563,22 +3550,34 @@
     "realModelSubType" : "DEMOBMPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_product_member_select_PickupMDView",
-    "logicName" : "产品成员选择视图（移动端）_选择数据视图",
-    "name" : "产品成员选择视图（移动端）_选择数据视图",
-    "realModelSubType" : "DEMOBPICKUPMDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "mob_list_view",
     "logicName" : "产品成员列表视图（移动端）",
     "name" : "产品成员列表视图（移动端）",
     "realModelSubType" : "DEMOBLISTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_more_mem_selected_PickupMDView",
-    "logicName" : "产品人员选择视图（多选-移动端）_选择数据视图",
-    "name" : "产品人员选择视图（多选-移动端）_选择数据视图",
+    "codeName" : "role_edit_view",
+    "logicName" : "产品成员实体选项操作视图（设置角色）",
+    "name" : "产品成员实体选项操作视图（设置角色）",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_product_member_select_PickupMDView",
+    "logicName" : "产品成员选择视图（移动端）_选择数据视图",
+    "name" : "产品成员选择视图（移动端）_选择数据视图",
     "realModelSubType" : "DEMOBPICKUPMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_more_mem_selected",
+    "logicName" : "产品人员选择视图（多选-移动端）",
+    "name" : "产品人员选择视图（多选-移动端）",
+    "realModelSubType" : "DEMOBMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_product_member_select",
+    "logicName" : "产品成员选择视图（移动端）",
+    "name" : "产品成员选择视图（移动端）",
+    "realModelSubType" : "DEMOBMPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "GridView",
@@ -3588,35 +3587,28 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "choose_position_option_view",
-    "logicName" : "产品成员选择职位选项操作视图",
-    "name" : "产品成员选择职位选项操作视图",
-    "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_product_member_selected_PickupMDView",
-    "logicName" : "产品人员选择视图（移动端）_选择数据视图",
-    "name" : "产品人员选择视图（移动端）_选择数据视图",
-    "realModelSubType" : "DEMOBPICKUPMDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "assigned_grid_view",
     "logicName" : "产品成员绑定",
     "name" : "产品成员绑定",
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_dept_mem_selected",
-    "logicName" : "产品部门人员树选择视图（移动端）",
-    "name" : "产品部门人员树选择视图（移动端）",
-    "realModelSubType" : "DEMOBPICKUPTREEVIEW",
+    "codeName" : "mob_product_role_option_view",
+    "logicName" : "产品成员角色选项操作视图（移动端）",
+    "name" : "产品成员角色选项操作视图（移动端）",
+    "realModelSubType" : "DEMOBOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "pick_up_view",
-    "logicName" : "产品成员实体数据选择视图",
-    "modelTag" : "PICKUPVIEW",
-    "name" : "产品成员实体数据选择视图",
-    "realModelSubType" : "DEPICKUPVIEW",
+    "codeName" : "mob_product_member_selected",
+    "logicName" : "产品人员选择视图（移动端）",
+    "name" : "产品人员选择视图（移动端）",
+    "realModelSubType" : "DEMOBPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "choose_position_option_view",
+    "logicName" : "产品成员选择职位选项操作视图",
+    "name" : "产品成员选择职位选项操作视图",
+    "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mpick_up_view",
@@ -3626,6 +3618,18 @@
     "realModelSubType" : "DEMPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_add_person_tree",
+    "logicName" : "产品添加人员树选择视图（移动端）",
+    "name" : "产品添加人员树选择视图（移动端）",
+    "realModelSubType" : "DEMOBPICKUPTREEVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_more_mem_selected_PickupMDView",
+    "logicName" : "产品人员选择视图（多选-移动端）_选择数据视图",
+    "name" : "产品人员选择视图（多选-移动端）_选择数据视图",
+    "realModelSubType" : "DEMOBPICKUPMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "EditView",
     "logicName" : "产品成员实体编辑视图",
     "modelTag" : "EDITVIEW",
@@ -3633,16 +3637,16 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "role_edit_view",
-    "logicName" : "产品成员实体选项操作视图（设置角色）",
-    "name" : "产品成员实体选项操作视图（设置角色）",
-    "realModelSubType" : "DEOPTVIEW",
+    "codeName" : "config_grid_view",
+    "logicName" : "产品成员配置",
+    "name" : "产品成员配置",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_add_person_tree",
-    "logicName" : "产品添加人员树选择视图（移动端）",
-    "name" : "产品添加人员树选择视图（移动端）",
-    "realModelSubType" : "DEMOBPICKUPTREEVIEW",
+    "codeName" : "pick_up_grid_view",
+    "logicName" : "产品成员实体选择表格视图（部件视图）",
+    "name" : "产品成员实体选择表格视图（部件视图）",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mob_product_role_form",
@@ -3659,17 +3663,17 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "Usr12111337_Form",
-    "logicName" : "产品成员选择职位选项操作视图_表单",
-    "modelTag2" : "0",
-    "name" : "产品成员选择职位选项操作视图_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
     "codeName" : "Main",
     "logicName" : "主编辑表单",
     "modelTag2" : "0",
     "name" : "主编辑表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "Usr12111337_Form",
+    "logicName" : "产品成员选择职位选项操作视图_表单",
+    "modelTag2" : "0",
+    "name" : "产品成员选择职位选项操作视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   } ],

@@ -457,20 +457,6 @@
     "keyField" : true
   }, {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[NAME][名称]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.NAME"
-        },
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[NAME][名称]",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[NAME][名称]移动端默认",
       "getPSDEFFormItem" : {
@@ -486,6 +472,20 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[NAME][名称]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.NAME"
+        },
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[NAME][名称]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "codeName" : "name",
     "getLNPSLanguageRes" : {
@@ -622,6 +622,21 @@
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[UPDATE_MAN][更新人]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_MAN][更新人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[UPDATE_MAN][更新人]移动端默认",
       "getPSDEFFormItem" : {
@@ -638,21 +653,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[UPDATE_MAN][更新人]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_MAN][更新人]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "update_man",
     "getLNPSLanguageRes" : {
@@ -1572,11 +1572,6 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "context",
-      "logicName" : "上下文对象",
-      "name" : "上下文对象",
-      "navContextParam" : true
-    }, {
       "codeName" : "treeexpbar_tree",
       "logicName" : "树部件",
       "name" : "树部件",
@@ -1591,6 +1586,11 @@
       "logicName" : "默认值对象",
       "name" : "默认值对象",
       "entityParam" : true
+    }, {
+      "codeName" : "context",
+      "logicName" : "上下文对象",
+      "name" : "上下文对象",
+      "navContextParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -1621,21 +1621,6 @@
       } ],
       "topPos" : 230,
       "parallelOutput" : true
-    }, {
-      "codeName" : "VIEWCTRLINVOKE1",
-      "getInvokeCtrl" : {
-        "modelref" : true,
-        "id" : "treeexpbar_tree"
-      },
-      "invokeMethod" : "newTreeNode",
-      "getInvokeParam" : {
-        "modelref" : true,
-        "id" : "node_param"
-      },
-      "leftPos" : 722,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "视图部件调用",
-      "topPos" : 238
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 440,
@@ -1712,17 +1697,32 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 238
+    }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "treeexpbar_tree"
+      },
+      "invokeMethod" : "newTreeNode",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "node_param"
+      },
+      "leftPos" : 722,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "视图部件调用",
+      "topPos" : 238
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "treeexpbar_tree",
-      "logicName" : "树部件",
-      "name" : "树部件",
-      "ctrlParam" : true
-    }, {
       "codeName" : "node_param",
       "logicName" : "节点参数",
       "name" : "节点参数",
       "entityParam" : true
+    }, {
+      "codeName" : "context",
+      "logicName" : "上下文对象",
+      "name" : "上下文对象",
+      "navContextParam" : true
     }, {
       "codeName" : "defaultValue",
       "logicName" : "默认值",
@@ -1735,10 +1735,10 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "context",
-      "logicName" : "上下文对象",
-      "name" : "上下文对象",
-      "navContextParam" : true
+      "codeName" : "treeexpbar_tree",
+      "logicName" : "树部件",
+      "name" : "树部件",
+      "ctrlParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,

@@ -32,17 +32,6 @@ package cn.ibizlab.plm.team.logic.discuss_memberlogic.change_role;
                         update(discuss_memberchange_rolesrfactionparam);//更新fact中变量值
             end
 
-            //逻辑处理节点[获取传递的状态]
-            rule "prepareparam2"
-            ruleflow-group "discuss_memberchange_roleprepareparam2"
-            when
-            then
-                            discuss_memberchange_roledefault.set("roleid",discuss_memberchange_rolefor_temp_obj.get("roleid"));
-                        update(discuss_memberchange_roledefault);//更新fact中变量值
-                        update(discuss_memberchange_rolefor_temp_obj);//更新fact中变量值
-                        update(discuss_memberchange_rolesrfactionparam);//更新fact中变量值
-            end
-
             //逻辑处理节点[变更成员状态]
             rule "deaction1"
             ruleflow-group "discuss_memberchange_roledeaction1"
@@ -59,6 +48,17 @@ package cn.ibizlab.plm.team.logic.discuss_memberlogic.change_role;
             ruleflow-group "discuss_memberchange_roleloopsubcall1"
             when
             then
+                        update(discuss_memberchange_roledefault);//更新fact中变量值
+                        update(discuss_memberchange_rolefor_temp_obj);//更新fact中变量值
+                        update(discuss_memberchange_rolesrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取传递的状态]
+            rule "prepareparam2"
+            ruleflow-group "discuss_memberchange_roleprepareparam2"
+            when
+            then
+                            discuss_memberchange_roledefault.set("roleid",discuss_memberchange_rolefor_temp_obj.get("roleid"));
                         update(discuss_memberchange_roledefault);//更新fact中变量值
                         update(discuss_memberchange_rolefor_temp_obj);//更新fact中变量值
                         update(discuss_memberchange_rolesrfactionparam);//更新fact中变量值

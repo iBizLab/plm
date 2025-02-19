@@ -13,7 +13,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "PREPAREPARAM1"
+        "id" : "DEBUGPARAM1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -22,6 +22,27 @@
       }
     } ],
     "topPos" : -90
+  }, {
+    "codeName" : "DEBUGPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "run_relation_filter"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "调试逻辑参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM1"
+      }
+    } ],
+    "topPos" : 21
   }, {
     "codeName" : "PREPAREPARAM1",
     "leftPos" : 160,
@@ -47,6 +68,34 @@
       "name" : "Default[PRINCIPAL_ID] ==> forward_relation_obj[PRINCIPAL_ID]",
       "paramAction" : "SETPARAMVALUE",
       "srcFieldName" : "PRINCIPAL_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "PRINCIPAL_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "forward_relation_obj"
+      },
+      "name" : "Default[PRINCIPAL_TYPE] ==> forward_relation_obj[PRINCIPAL_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRINCIPAL_TYPE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "PRINCIPAL_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "reverse_relation_obj"
+      },
+      "name" : "Default[PRINCIPAL_TYPE] ==> reverse_relation_obj[PRINCIPAL_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRINCIPAL_TYPE",
       "getSrcPSDELogicParam" : {
         "modelref" : true,
         "id" : "Default"
@@ -97,7 +146,7 @@
     } ],
     "topPos" : 119
   }, {
-    "code" : "// 获取正向关联对象的主键\r\nvar forward_relation_obj = logic.getParam(\"forward_relation_obj\");\r\nif(forward_relation_obj.get(\"principal_id\") != null && forward_relation_obj.get(\"target_id\") != null){\r\n    forward_relation_obj.set(\"id\", forward_relation_obj.get(\"principal_id\") + \"_\" + forward_relation_obj.get(\"target_id\"));\r\n}\r\n// 获取反向关联对象的主键\r\nvar reverse_relation_obj = logic.getParam(\"reverse_relation_obj\");\r\nif(reverse_relation_obj.get(\"principal_id\") != null && reverse_relation_obj.get(\"target_id\") != null){\r\n    reverse_relation_obj.set(\"id\", reverse_relation_obj.get(\"principal_id\") + \"_\" + reverse_relation_obj.get(\"target_id\"));\r\n}",
+    "code" : "// 获取正向关联对象的主键\r\nvar forward_relation_obj = logic.getParam(\"forward_relation_obj\");\r\nif(forward_relation_obj.get(\"principal_id\") != null && forward_relation_obj.get(\"target_id\") != null){\r\n    forward_relation_obj.set(\"id\", forward_relation_obj.get(\"principal_id\") + \"_\" + forward_relation_obj.get(\"target_id\")+ '_' + forward_relation_obj.get(\"principal_type\"));\r\n}\r\n// 获取反向关联对象的主键\r\nvar reverse_relation_obj = logic.getParam(\"reverse_relation_obj\");\r\nif(reverse_relation_obj.get(\"principal_id\") != null && reverse_relation_obj.get(\"target_id\") != null){\r\n    reverse_relation_obj.set(\"id\", reverse_relation_obj.get(\"principal_id\") + \"_\" + reverse_relation_obj.get(\"target_id\")+ '_' + reverse_relation_obj.get(\"principal_type\"));\r\n}",
     "codeName" : "RAWSFCODE1",
     "codeType" : "JavaScript",
     "leftPos" : 160,

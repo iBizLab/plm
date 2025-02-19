@@ -41,6 +41,16 @@
   }, {
     "actionMode" : "UPDATE",
     "actionType" : "BUILTIN",
+    "getAfterPSDEActionLogics" : [ {
+      "actionLogicType" : 1,
+      "attachMode" : "AFTER",
+      "name" : "附加逻辑",
+      "getPSDELogic" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDELOGICS/create_recent.json"
+      },
+      "internalLogic" : true
+    } ],
     "codeName" : "Update",
     "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEACTIONS/Update.json",
@@ -94,7 +104,25 @@
       "name" : "附加逻辑",
       "getPSDELogic" : {
         "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDELOGICS/create_recent.json"
+      },
+      "internalLogic" : true
+    }, {
+      "actionLogicType" : 1,
+      "attachMode" : "AFTER",
+      "name" : "附加逻辑",
+      "getPSDELogic" : {
+        "modelref" : true,
         "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDELOGICS/mob_get_topic_member.json"
+      },
+      "internalLogic" : true
+    }, {
+      "actionLogicType" : 1,
+      "attachMode" : "AFTER",
+      "name" : "附加逻辑",
+      "getPSDELogic" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDELOGICS/get_post_auth.json"
       },
       "internalLogic" : true
     } ],
@@ -222,7 +250,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "del_comment",
-    "dataAccessAction" : "UPDATE",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEACTIONS/del_comment.json",
     "logicName" : "删除评论",
     "name" : "del_comment",
@@ -379,7 +407,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "move",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEACTIONS/move.json",
     "logicName" : "移动",
     "name" : "move",
@@ -482,7 +510,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "send_comment",
-    "dataAccessAction" : "UPDATE",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEACTIONS/send_comment.json",
     "logicName" : "添加评论",
     "name" : "send_comment",
@@ -503,6 +531,33 @@
       "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDELOGICS/send_comment.json"
     },
     "enableFront" : false
+  }, {
+    "actionHolder" : 1,
+    "actionMode" : "UPDATE",
+    "actionType" : "DELOGIC",
+    "codeName" : "update_comment",
+    "dataAccessAction" : "READ",
+    "dynaModelFilePath" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEACTIONS/update_comment.json",
+    "logicName" : "修改评论",
+    "name" : "update_comment",
+    "getPSDEActionInput" : {
+      "name" : "Update_commentInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "discuss_post_dto"
+      },
+      "type" : "DTO",
+      "output" : true
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Update_commentResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDELOGICS/update_comment.json"
+    },
+    "enableFront" : false
   } ],
   "getAllPSDEDBConfigs" : [ {
     "dBType" : "MYSQL5",
@@ -514,6 +569,9 @@
   } ],
   "getAllPSDEDBTables" : [ {
     "getAllPSDEFields" : [ {
+      "name" : "IDENTIFIER",
+      "codeName" : "identifier"
+    }, {
       "name" : "IS_DELETED",
       "codeName" : "is_deleted"
     }, {
@@ -992,6 +1050,55 @@
     },
     "getPSDEDataQueryReturn" : {
       "name" : "My_createResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "discuss_post_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEDATAQUERIES/my_post/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "my_post",
+    "logicName" : "我的讨论",
+    "name" : "my_post",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "DISCUSS_POST",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "srfpersonid",
+          "fieldName" : "CREATE_MAN",
+          "name" : "(CREATE_MAN) 等于(=) 用户上下文 srfpersonid",
+          "getPSDEField" : {
+            "name" : "CREATE_MAN",
+            "codeName" : "create_man"
+          },
+          "getPSVARTypeId" : "SESSIONCONTEXT"
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "My_postInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "discuss_post_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "My_postResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "discuss_post_dto"
@@ -1659,6 +1766,32 @@
     "enableBackend" : true,
     "enableFront" : true
   }, {
+    "codeName" : "my_post",
+    "logicName" : "我的讨论",
+    "name" : "my_post",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "my_post"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "My_postInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "discuss_post_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "My_postResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "discuss_post_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
     "codeName" : "my_reply",
     "logicName" : "我回复的",
     "majorSortDir" : "DESC",
@@ -1779,6 +1912,94 @@
   } ],
   "getAllPSDEFields" : [ {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "IDENTIFIER",
+      "dBType" : "MYSQL5",
+      "name" : "IDENTIFIER",
+      "queryCodeExp" : "t1.`IDENTIFIER`",
+      "standardColumnName" : "`IDENTIFIER`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[IDENTIFIER][编号]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[IDENTIFIER][编号]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[IDENTIFIER][编号]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[IDENTIFIER][编号]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "IDENTIFIER",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "identifier",
+    "dEFType" : 1,
+    "dataType" : "TEXT",
+    "dupCheckMode" : "ALL",
+    "getDupCheckPSDEFields" : [ {
+      "name" : "TOPIC_ID",
+      "codeName" : "Topic_id"
+    } ],
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "编号",
+    "name" : "IDENTIFIER",
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "IDENTIFIER"
+    },
+    "getPSSysSequence" : {
+      "modelref" : true,
+      "path" : "PSSYSSEQUENCES/seq_post_id.json"
+    },
+    "sequenceMode" : "CREATE",
+    "serviceCodeName" : "identifier",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s",
+    "enableQuickSearch" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "IS_DELETED",
       "dBType" : "MYSQL5",
       "name" : "IS_DELETED",
@@ -1849,6 +2070,17 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[ATTENTIONS][关注]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[ATTENTIONS][关注]",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[ATTENTIONS][关注]移动端默认",
       "getPSDEFFormItem" : {
@@ -1861,17 +2093,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[ATTENTIONS][关注]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "HIDDEN",
-        "name" : "[ATTENTIONS][关注]",
-        "stringLength" : 1048576,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1919,6 +2140,17 @@
     "uIAssistDEField" : true
   }, {
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[ATTACHMENTS][附件]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[ATTACHMENTS][附件]",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[ATTACHMENTS][附件]移动端默认",
       "getPSDEFFormItem" : {
@@ -1931,17 +2163,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[ATTACHMENTS][附件]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "HIDDEN",
-        "name" : "[ATTACHMENTS][附件]",
-        "stringLength" : 1048576,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -2003,6 +2224,18 @@
       "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[STATUS][状态]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[STATUS][状态]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[STATUS][状态]移动端默认",
       "getPSDEFFormItem" : {
@@ -2016,18 +2249,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[STATUS][状态]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "DROPDOWNLIST",
-        "name" : "[STATUS][状态]",
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT",
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -2080,17 +2301,6 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[COMMENTS][评论]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "HIDDEN",
-        "name" : "[COMMENTS][评论]",
-        "stringLength" : 1048576,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[COMMENTS][评论]移动端默认",
       "getPSDEFFormItem" : {
@@ -2103,6 +2313,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[COMMENTS][评论]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[COMMENTS][评论]",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -2160,16 +2381,6 @@
       "valueAutoGen" : true
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[HEAT][热度]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[HEAT][热度]",
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[HEAT][热度]移动端默认",
       "getPSDEFFormItem" : {
@@ -2181,6 +2392,16 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[HEAT][热度]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[HEAT][热度]",
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -2370,6 +2591,17 @@
       "standardColumnName" : "`COMMENT_COUNT`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[COMMENT_COUNT][评论数]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[COMMENT_COUNT][评论数]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[COMMENT_COUNT][评论数]移动端默认",
       "getPSDEFFormItem" : {
@@ -2382,17 +2614,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[COMMENT_COUNT][评论数]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[COMMENT_COUNT][评论数]",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -2438,6 +2659,190 @@
     "queryColumn" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "TOPIC_IDENTIFIER",
+      "dBType" : "MYSQL5",
+      "name" : "TOPIC_IDENTIFIER",
+      "queryCodeExp" : "t11.`IDENTIFIER`",
+      "standardColumnName" : "`TOPIC_IDENTIFIER`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[TOPIC_IDENTIFIER][话题标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[TOPIC_IDENTIFIER][话题标识]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic.json"
+        },
+        "stringLength" : 15,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[TOPIC_IDENTIFIER][话题标识]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[TOPIC_IDENTIFIER][话题标识]移动端默认",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic.json"
+        },
+        "stringLength" : 15,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "TOPIC_IDENTIFIER",
+          "maxValue" : 15,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[15]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[15]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[15]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "topic_identifier",
+    "dEFType" : 3,
+    "dataType" : "PICKUPDATA",
+    "importOrder" : 1000,
+    "length" : 15,
+    "logicName" : "话题标识",
+    "name" : "TOPIC_IDENTIFIER",
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDERS/DER1N_DISCUSS_POST_DISCUSS_TOPIC_TOPIC_ID.json"
+    },
+    "getRealPSDEField" : {
+      "name" : "IDENTIFIER",
+      "codeName" : "identifier"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "IDENTIFIER",
+      "codeName" : "identifier"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic.json"
+    },
+    "serviceCodeName" : "topic_identifier",
+    "stdDataType" : 25,
+    "stringLength" : 15,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "linkDEField" : true,
+    "phisicalDEField" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "READ_COUNT",
+      "dBType" : "MYSQL5",
+      "name" : "READ_COUNT",
+      "queryCodeExp" : "(select count(1) as read_count from recent r where r.OWNER_ID = t1.`ID` and r.OWNER_TYPE = 'discuss' and r.OWNER_SUBTYPE = 'post')",
+      "standardColumnName" : "`READ_COUNT`",
+      "valueAutoGen" : true
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[READ_COUNT][阅读次数]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[READ_COUNT][阅读次数]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[READ_COUNT][阅读次数]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[READ_COUNT][阅读次数]移动端默认",
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "READ_COUNT",
+          "maxValue" : 200,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[200]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[200]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[200]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "read_count",
+    "dEFType" : 2,
+    "dataType" : "TEXT",
+    "defaultValue" : "0",
+    "formulaColumns" : "id",
+    "formulaFormat" : "(select count(1) as read_count from recent r where r.OWNER_ID = %1$s and r.OWNER_TYPE = 'discuss' and r.OWNER_SUBTYPE = 'post')",
+    "importOrder" : 1000,
+    "length" : 200,
+    "logicName" : "阅读次数",
+    "name" : "READ_COUNT",
+    "serviceCodeName" : "read_count",
+    "stdDataType" : 25,
+    "stringLength" : 200,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "formulaDEField" : true,
+    "phisicalDEField" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "CONTENT",
       "dBType" : "MYSQL5",
       "name" : "CONTENT",
@@ -2445,17 +2850,6 @@
       "standardColumnName" : "`CONTENT`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[CONTENT][讨论内容]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTAREA_10",
-        "name" : "[CONTENT][讨论内容]",
-        "stringLength" : 1048576,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[CONTENT][讨论内容]移动端默认",
       "getPSDEFFormItem" : {
@@ -2468,6 +2862,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[CONTENT][讨论内容]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTAREA_10",
+        "name" : "[CONTENT][讨论内容]",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -2626,20 +3031,6 @@
       "valueOP" : "LIKE"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[NAME][名称]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.NAME"
-        },
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[NAME][名称]",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[NAME][名称]移动端默认",
       "getPSDEFFormItem" : {
@@ -2655,6 +3046,20 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[NAME][名称]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.NAME"
+        },
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[NAME][名称]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -2989,6 +3394,21 @@
       "standardColumnName" : "`UPDATE_TIME`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[UPDATE_TIME][更新时间]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_TIME][更新时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[UPDATE_TIME][更新时间]移动端默认",
       "getPSDEFFormItem" : {
@@ -3005,21 +3425,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[UPDATE_TIME][更新时间]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -3431,6 +3836,221 @@
     "enableBackend" : true,
     "enableFront" : false
   }, {
+    "codeName" : "create_recent",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDELOGICS/create_recent.json",
+    "logicName" : "生成最近访问",
+    "memo" : "在用户对项目数据进行了get或update操作时生成相应的访问记录.type为3，不在界面上进行显示",
+    "name" : "生成最近访问",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 346,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 130,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM1",
+      "leftPos" : 306,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备最近访问参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "OWNER_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "recent"
+        },
+        "name" : "Default[ID] ==> recent[OWNER_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "RECENT_PARENT_IDENTIFIER",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "recent"
+        },
+        "name" : "Default[TOPIC_IDENTIFIER] ==> recent[RECENT_PARENT_IDENTIFIER]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "TOPIC_IDENTIFIER",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "RECENT_PARENT_NAME",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "recent"
+        },
+        "name" : "Default[TOPIC_NAME] ==> recent[RECENT_PARENT_NAME]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "TOPIC_NAME",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "RECENT_PARENT",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "recent"
+        },
+        "name" : "Default[TOPIC_ID] ==> recent[RECENT_PARENT]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "TOPIC_ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "CREATE_MAN",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "recent"
+        },
+        "name" : "用户全局对象[srfpersonid] ==> recent[CREATE_MAN]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "srfpersonid",
+        "srcValueType" : "SESSION"
+      }, {
+        "dstFieldName" : "TYPE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "recent"
+        },
+        "name" : "直接值[3] ==> recent[TYPE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "3",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "NAME",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "recent"
+        },
+        "name" : "Default[NAME] ==> recent[NAME]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "NAME",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "OWNER_TYPE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "recent"
+        },
+        "name" : "直接值[discuss] ==> recent[OWNER_TYPE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "discuss",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "OWNER_SUBTYPE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "recent"
+        },
+        "name" : "直接值[post] ==> recent[OWNER_SUBTYPE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "post",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 265
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/recent/PSDEACTIONS/Save.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "recent"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/recent.json"
+      },
+      "leftPos" : 306,
+      "logicNodeType" : "DEACTION",
+      "name" : "保存最近访问",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "topPos" : 426
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 346,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 590
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "recent",
+      "logicName" : "recent",
+      "name" : "recent",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/recent.json"
+      },
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "del_comment",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDELOGICS/del_comment.json",
@@ -3453,7 +4073,7 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 110,
+      "topPos" : 40,
       "parallelOutput" : true
     }, {
       "codeName" : "PREPAREPARAM1",
@@ -3477,16 +4097,16 @@
           "modelref" : true,
           "id" : "comment"
         },
-        "name" : "Default[del_comment_id] ==> comment[ID]",
+        "name" : "Default[comment_id] ==> comment[ID]",
         "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "del_comment_id",
+        "srcFieldName" : "comment_id",
         "getSrcPSDELogicParam" : {
           "modelref" : true,
           "id" : "Default"
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 300
+      "topPos" : 220
     }, {
       "codeName" : "DEACTION1",
       "getDstPSDEAction" : {
@@ -3537,9 +4157,9 @@
         }
       } ],
       "getPSDELogicNodeParams" : [ {
-        "name" : "Default[del_comment_id]",
+        "name" : "Default[comment_id]",
         "paramAction" : "SQLPARAM",
-        "srcFieldName" : "del_comment_id",
+        "srcFieldName" : "comment_id",
         "getSrcPSDELogicParam" : {
           "modelref" : true,
           "id" : "Default"
@@ -3555,7 +4175,7 @@
       "name" : "结束",
       "getReturnParam" : {
         "modelref" : true,
-        "id" : "comment"
+        "id" : "Default"
       },
       "returnType" : "LOGICPARAM",
       "topPos" : 665
@@ -3932,6 +4552,100 @@
       },
       "returnType" : "LOGICPARAM",
       "topPos" : 632
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
+    "codeName" : "get_post_auth",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDELOGICS/get_post_auth.json",
+    "logicName" : "获取讨论权限",
+    "memo" : "获取讨论权限，创建人等于自己，则srfreadonly为false。否则直接结束，不返回数据",
+    "name" : "获取讨论权限",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 160,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 730,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 200
+    }, {
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 307,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "code" : "def _default = logic.param('default').real;\r\ndef userid = sys.user().getUserid();\r\nif (userid == _default.get('create_man')) {\r\n    _default.set('srfreadonly', false);\r\n}\r\n",
+      "codeName" : "RAWSFCODE1",
+      "codeType" : "Groovy",
+      "leftPos" : 524,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "判断",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        }
+      } ],
+      "topPos" : 208
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",
@@ -4793,6 +5507,19 @@
         },
         "srcValueType" : "SRCDLPARAM"
       }, {
+        "dstFieldName" : "IDENTIFIER",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "update_obj"
+        },
+        "name" : " ==> update_obj[IDENTIFIER]",
+        "getPSSysSequence" : {
+          "modelref" : true,
+          "path" : "PSSYSSEQUENCES/seq_post_id.json"
+        },
+        "paramAction" : "SETPARAMVALUE",
+        "srcValueType" : "SEQUENCE"
+      }, {
         "dstFieldName" : "ID",
         "getDstPSDELogicParam" : {
           "modelref" : true,
@@ -5350,10 +6077,189 @@
     },
     "enableBackend" : true,
     "enableFront" : false
+  }, {
+    "codeName" : "update_comment",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDELOGICS/update_comment.json",
+    "logicName" : "修改评论",
+    "memo" : "修改讨论中的评论信息",
+    "name" : "修改评论",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM1",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备评论数据",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "commnet"
+        },
+        "name" : "Default[comment_id] ==> commnet[ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "comment_id",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "CONTENT",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "commnet"
+        },
+        "name" : "Default[content] ==> commnet[CONTENT]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "content",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 370
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/comment/PSDEACTIONS/Update.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "commnet"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/comment.json"
+      },
+      "leftPos" : 400,
+      "logicNodeType" : "DEACTION",
+      "name" : "修改评论",
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "commnet"
+      },
+      "topPos" : 490
+    }, {
+      "codeName" : "RAWSQLCALL1",
+      "leftPos" : 161,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "修改评论内容",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "name" : "commnet[CONTENT]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "CONTENT",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "commnet"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "name" : "commnet[ID]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "commnet"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "sql" : "update comment set CONTENT = ? where id = ?",
+      "topPos" : 513
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 201,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "commnet"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 646
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "commnet",
+      "logicName" : "评论",
+      "name" : "评论",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/comment.json"
+      },
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
   } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "discuss_post_dto",
     "getPSDEMethodDTOFields" : [ {
+      "logicName" : "编号",
+      "name" : "identifier",
+      "getPSDEField" : {
+        "name" : "IDENTIFIER",
+        "codeName" : "identifier"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
       "defaultValue" : "0",
       "logicName" : "是否已删除",
       "name" : "is_deleted",
@@ -5486,6 +6392,29 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "defaultValue" : "0",
+      "logicName" : "阅读次数",
+      "name" : "read_count",
+      "getPSDEField" : {
+        "name" : "READ_COUNT",
+        "codeName" : "read_count"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "话题标识",
+      "name" : "topic_identifier",
+      "getPSDEField" : {
+        "name" : "TOPIC_IDENTIFIER",
+        "codeName" : "topic_identifier"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 15,
       "type" : "SIMPLE"
     }, {
       "logicName" : "讨论内容",
@@ -5707,9 +6636,6 @@
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "建立",
-    "name" : "CREATE"
-  }, {
-    "logicName" : "建立",
     "mapPSDEName" : "DISCUSS_TOPIC",
     "mapPSDEOPPrivName" : "SUBDATA",
     "getMapPSDER" : {
@@ -5722,6 +6648,9 @@
     },
     "name" : "CREATE",
     "id" : "discuss_topic__CREATE"
+  }, {
+    "logicName" : "建立",
+    "name" : "CREATE"
   }, {
     "logicName" : "删除",
     "name" : "DELETE"
@@ -5832,6 +6761,47 @@
     "enableUserDR" : true,
     "systemReserved" : true
   }, {
+    "dynaModelFilePath" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEUSERROLES/USER_RW.json",
+    "name" : "我的讨论（读写）",
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "my_post"
+    },
+    "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "DELETE",
+      "name" : "DELETE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "DELETE"
+      }
+    }, {
+      "dataAccessAction" : "READ",
+      "name" : "READ",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "discuss_topic__READ"
+      }
+    }, {
+      "dataAccessAction" : "CREATE",
+      "name" : "CREATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "discuss_topic__CREATE"
+      }
+    }, {
+      "dataAccessAction" : "UPDATE",
+      "name" : "UPDATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "discuss_topic__UPDATE"
+      }
+    } ],
+    "roleTag" : "USER_RW",
+    "userCat" : "CAT1",
+    "userDRAction" : "READ",
+    "enableUserDR" : true,
+    "systemReserved" : true
+  }, {
     "dynaModelFilePath" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEUSERROLES/USER_W.json",
     "name" : "操作用户(写)",
     "getPSDEUserRoleOPPrivs" : [ {
@@ -5848,182 +6818,16 @@
     "systemReserved" : true
   } ],
   "getAllPSModelDatas" : [ {
-    "codeName" : "mob_recycle_md_view",
-    "logicName" : "讨论回收站多数据视图（移动端）",
-    "name" : "讨论回收站多数据视图（移动端）",
-    "realModelSubType" : "DEMOBMDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "GridView",
-    "logicName" : "讨论实体表格视图",
-    "modelTag" : "MDATAVIEW",
-    "name" : "讨论实体表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "recent_grid_view",
-    "logicName" : "讨论实体表格视图（最新讨论）",
-    "name" : "讨论实体表格视图（最新讨论）",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_discuss_post_tree",
-    "logicName" : "讨论树导航视图（移动端）",
-    "name" : "讨论树导航视图（移动端）",
-    "realModelSubType" : "DEMOBTREEEXPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "RedirectView",
-    "logicName" : "讨论实体数据重定向视图",
-    "modelTag" : "REDIRECTVIEW",
-    "name" : "讨论实体数据重定向视图",
-    "realModelSubType" : "DEREDIRECTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_my_reply_discuss",
-    "logicName" : "讨论多数据视图（我回复的-移动端）",
-    "name" : "讨论多数据视图（我回复的-移动端）",
-    "realModelSubType" : "DEMOBMDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "quick_create_view",
-    "logicName" : "讨论快速建立视图",
-    "name" : "讨论快速建立视图",
-    "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "main_view",
-    "logicName" : "讨论主视图",
-    "name" : "讨论主视图",
-    "realModelSubType" : "DEEDITVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_latest_discuss",
-    "logicName" : "讨论多数据视图（最新讨论-移动端）",
-    "name" : "讨论多数据视图（最新讨论-移动端）",
-    "realModelSubType" : "DEMOBMDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_edit_view",
-    "logicName" : "讨论编辑视图（移动端）",
-    "name" : "讨论编辑视图（移动端）",
-    "realModelSubType" : "DEMOBEDITVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_my_create_discuss",
-    "logicName" : "讨论多数据视图（我发起的-移动端）",
-    "name" : "讨论多数据视图（我发起的-移动端）",
-    "realModelSubType" : "DEMOBMDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_tab_exp_view",
-    "logicName" : "讨论移动端分页导航视图",
-    "name" : "讨论移动端分页导航视图",
-    "realModelSubType" : "DEMOBTABEXPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "topic_mob_list_view",
-    "logicName" : "话题讨论列表视图（移动端）",
-    "name" : "话题讨论列表视图（移动端）",
-    "realModelSubType" : "DEMOBLISTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_search_md_view",
-    "logicName" : "移动端讨论搜索多数据视图",
-    "name" : "移动端讨论搜索多数据视图",
-    "realModelSubType" : "DEMOBMDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "my_create_grid_view",
-    "logicName" : "讨论实体表格视图 （我发起的）",
-    "name" : "讨论实体表格视图 （我发起的）",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "all_grid_view",
-    "logicName" : "讨论实体表格视图（全部讨论）",
-    "name" : "讨论实体表格视图（全部讨论）",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "PickupGridView",
-    "logicName" : "讨论实体选择表格视图（部件视图）",
-    "name" : "讨论实体选择表格视图（部件视图）",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_dis_create_view",
-    "logicName" : "讨论新建视图（移动端）",
-    "name" : "讨论新建视图（移动端）",
-    "realModelSubType" : "DEMOBEDITVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_list_view",
-    "logicName" : "讨论列表视图（移动端）",
-    "name" : "讨论列表视图（移动端）",
-    "realModelSubType" : "DEMOBLISTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_my_attention",
-    "logicName" : "讨论多数据视图（我关注的-移动端）",
-    "name" : "讨论多数据视图（我关注的-移动端）",
-    "realModelSubType" : "DEMOBMDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "tree_exp_view",
-    "logicName" : "讨论实体树导航视图",
-    "name" : "讨论实体树导航视图",
-    "realModelSubType" : "DETREEEXPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "my_attention_grid_view",
-    "logicName" : "讨论实体表格视图 （我关注的）",
-    "name" : "讨论实体表格视图 （我关注的）",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "EditView2",
-    "logicName" : "讨论实体编辑视图（左右关系）",
-    "name" : "讨论实体编辑视图（左右关系）",
-    "realModelSubType" : "DEEDITVIEW2",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "PickupView",
-    "logicName" : "讨论实体数据选择视图",
-    "modelTag" : "PICKUPVIEW",
-    "name" : "讨论实体数据选择视图",
-    "realModelSubType" : "DEPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "my_reply_grid_view",
     "logicName" : "讨论实体表格视图 （我回复的）",
     "name" : "讨论实体表格视图 （我回复的）",
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "recycle_bin_grid_view",
-    "logicName" : "讨论回收站表格视图",
-    "name" : "讨论回收站表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "discuss_post_grid_view",
-    "logicName" : "讨论表格视图（仪表盘部件）",
-    "name" : "讨论表格视图（仪表盘部件）",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_discuss_move_option_view",
-    "logicName" : "讨论移动选项视图（移动端）",
-    "name" : "讨论移动选项视图（移动端）",
-    "realModelSubType" : "DEMOBOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "MPickupView",
-    "logicName" : "讨论实体数据多项选择视图",
-    "modelTag" : "MPICKUPVIEW",
-    "name" : "讨论实体数据多项选择视图",
-    "realModelSubType" : "DEMPICKUPVIEW",
+    "codeName" : "main_view",
+    "logicName" : "讨论主视图",
+    "name" : "讨论主视图",
+    "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView",
@@ -6033,30 +6837,182 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "discuss_post_grid_view",
+    "logicName" : "讨论表格视图（仪表盘部件）",
+    "name" : "讨论表格视图（仪表盘部件）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "RedirectView",
+    "logicName" : "讨论实体数据重定向视图",
+    "modelTag" : "REDIRECTVIEW",
+    "name" : "讨论实体数据重定向视图",
+    "realModelSubType" : "DEREDIRECTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "all_grid_view",
+    "logicName" : "讨论实体表格视图（全部讨论）",
+    "name" : "讨论实体表格视图（全部讨论）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "PickupView",
+    "logicName" : "讨论实体数据选择视图",
+    "modelTag" : "PICKUPVIEW",
+    "name" : "讨论实体数据选择视图",
+    "realModelSubType" : "DEPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_search_md_view",
+    "logicName" : "移动端讨论搜索多数据视图",
+    "name" : "移动端讨论搜索多数据视图",
+    "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "recent_grid_view",
+    "logicName" : "讨论实体表格视图（最新讨论）",
+    "name" : "讨论实体表格视图（最新讨论）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "topic_mob_list_view",
+    "logicName" : "话题讨论列表视图（移动端）",
+    "name" : "话题讨论列表视图（移动端）",
+    "realModelSubType" : "DEMOBLISTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_dis_create_view",
+    "logicName" : "讨论新建视图（移动端）",
+    "name" : "讨论新建视图（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_recycle_md_view",
+    "logicName" : "讨论回收站多数据视图（移动端）",
+    "name" : "讨论回收站多数据视图（移动端）",
+    "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_my_attention",
+    "logicName" : "讨论多数据视图（我关注的-移动端）",
+    "name" : "讨论多数据视图（我关注的-移动端）",
+    "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_list_view",
+    "logicName" : "讨论列表视图（移动端）",
+    "name" : "讨论列表视图（移动端）",
+    "realModelSubType" : "DEMOBLISTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_my_reply_discuss",
+    "logicName" : "讨论多数据视图（我回复的-移动端）",
+    "name" : "讨论多数据视图（我回复的-移动端）",
+    "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "my_attention_grid_view",
+    "logicName" : "讨论实体表格视图 （我关注的）",
+    "name" : "讨论实体表格视图 （我关注的）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_edit_view",
+    "logicName" : "讨论编辑视图（移动端）",
+    "name" : "讨论编辑视图（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "my_create_grid_view",
+    "logicName" : "讨论实体表格视图 （我发起的）",
+    "name" : "讨论实体表格视图 （我发起的）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "EditView2",
+    "logicName" : "讨论实体编辑视图（左右关系）",
+    "name" : "讨论实体编辑视图（左右关系）",
+    "realModelSubType" : "DEEDITVIEW2",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "tree_exp_view",
+    "logicName" : "讨论实体树导航视图",
+    "name" : "讨论实体树导航视图",
+    "realModelSubType" : "DETREEEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_discuss_post_tree",
+    "logicName" : "讨论树导航视图（移动端）",
+    "name" : "讨论树导航视图（移动端）",
+    "realModelSubType" : "DEMOBTREEEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_tab_exp_view",
+    "logicName" : "讨论移动端分页导航视图",
+    "name" : "讨论移动端分页导航视图",
+    "realModelSubType" : "DEMOBTABEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "quick_create_view",
+    "logicName" : "讨论快速建立视图",
+    "name" : "讨论快速建立视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "move_choose_view",
     "logicName" : "讨论移动选项视图",
     "name" : "讨论移动选项视图",
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "quick_create_form",
-    "logicName" : "快速新建_表单",
+    "codeName" : "PickupGridView",
+    "logicName" : "讨论实体选择表格视图（部件视图）",
+    "name" : "讨论实体选择表格视图（部件视图）",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "MPickupView",
+    "logicName" : "讨论实体数据多项选择视图",
+    "modelTag" : "MPICKUPVIEW",
+    "name" : "讨论实体数据多项选择视图",
+    "realModelSubType" : "DEMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_latest_discuss",
+    "logicName" : "讨论多数据视图（最新讨论-移动端）",
+    "name" : "讨论多数据视图（最新讨论-移动端）",
+    "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "recycle_bin_grid_view",
+    "logicName" : "讨论回收站表格视图",
+    "name" : "讨论回收站表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "GridView",
+    "logicName" : "讨论实体表格视图",
+    "modelTag" : "MDATAVIEW",
+    "name" : "讨论实体表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_my_create_discuss",
+    "logicName" : "讨论多数据视图（我发起的-移动端）",
+    "name" : "讨论多数据视图（我发起的-移动端）",
+    "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_discuss_move_option_view",
+    "logicName" : "讨论移动选项视图（移动端）",
+    "name" : "讨论移动选项视图（移动端）",
+    "realModelSubType" : "DEMOBOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "main_view_form",
+    "logicName" : "主视图_表单",
     "modelTag2" : "0",
-    "name" : "快速新建_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "mob_edit_view_Form",
-    "logicName" : "讨论移动端编辑视图_表单",
-    "modelTag2" : "1",
-    "name" : "讨论移动端编辑视图_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "mob_dis_create_view_Form",
-    "logicName" : "讨论新建视图（移动端）_表单",
-    "modelTag2" : "1",
-    "name" : "讨论新建视图（移动端）_表单",
+    "name" : "主视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -6067,17 +7023,17 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "mob_topic_dis_list_Form",
-    "logicName" : "话题讨论列表编辑视图（移动端）_表单",
-    "modelTag2" : "1",
-    "name" : "话题讨论列表编辑视图（移动端）_表单",
+    "codeName" : "main",
+    "logicName" : "主编辑表单",
+    "modelTag2" : "0",
+    "name" : "主编辑表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "main_view_form",
-    "logicName" : "主视图_表单",
-    "modelTag2" : "0",
-    "name" : "主视图_表单",
+    "codeName" : "mob_dis_create_view_Form",
+    "logicName" : "讨论新建视图（移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "讨论新建视图（移动端）_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -6088,10 +7044,24 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "main",
-    "logicName" : "主编辑表单",
+    "codeName" : "mob_edit_view_Form",
+    "logicName" : "讨论移动端编辑视图_表单",
+    "modelTag2" : "1",
+    "name" : "讨论移动端编辑视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "quick_create_form",
+    "logicName" : "快速新建_表单",
     "modelTag2" : "0",
-    "name" : "主编辑表单",
+    "name" : "快速新建_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_topic_dis_list_Form",
+    "logicName" : "话题讨论列表编辑视图（移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "话题讨论列表编辑视图（移动端）_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   } ],
@@ -6147,7 +7117,7 @@
       "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post.json"
     },
     "masterOrder" : 100,
-    "masterRS" : 5,
+    "masterRS" : 1,
     "minorCodeName" : "discuss_replies",
     "getMinorPSDataEntity" : {
       "modelref" : true,

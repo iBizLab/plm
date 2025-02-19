@@ -206,7 +206,7 @@
     },
     "getPSSubSysServiceAPIDEMethod" : {
       "modelref" : true,
-      "id" : "Save"
+      "id" : "save"
     },
     "builtinAction" : true
   } ],
@@ -551,18 +551,6 @@
       "standardColumnName" : "`UPDATER`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[UPDATER][最后更新人]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[UPDATER][最后更新人]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[UPDATER][最后更新人]移动端默认",
       "getPSDEFFormItem" : {
@@ -576,6 +564,18 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[UPDATER][最后更新人]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[UPDATER][最后更新人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -625,18 +625,6 @@
       "standardColumnName" : "`UPDATE_TIME`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[UPDATE_TIME][最后更新时间]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][最后更新时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[UPDATE_TIME][最后更新时间]移动端默认",
       "getPSDEFFormItem" : {
@@ -650,6 +638,18 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[UPDATE_TIME][最后更新时间]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_TIME][最后更新时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -756,17 +756,6 @@
       "standardColumnName" : "`MEMBER_UID`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[MEMBER_UID][用户组/人员标识]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[MEMBER_UID][用户组/人员标识]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[MEMBER_UID][用户组/人员标识]移动端默认",
       "getPSDEFFormItem" : {
@@ -779,6 +768,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[MEMBER_UID][用户组/人员标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[MEMBER_UID][用户组/人员标识]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -887,10 +887,79 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "MEMBER_NAME",
+      "dBType" : "MYSQL5",
+      "name" : "MEMBER_NAME",
+      "queryCodeExp" : "t1.`MEMBER_NAME`",
+      "standardColumnName" : "`MEMBER_NAME`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[MEMBER_NAME][成员姓名]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[MEMBER_NAME][成员姓名]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[MEMBER_NAME][成员姓名]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[MEMBER_NAME][成员姓名]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "MEMBER_NAME",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "member_name",
+    "dEFType" : 1,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "成员姓名",
+    "name" : "MEMBER_NAME",
+    "serviceCodeName" : "member_name",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "MEMBER_GROUP_NAME",
       "dBType" : "MYSQL5",
       "name" : "MEMBER_GROUP_NAME",
-      "queryCodeExp" : "MEMBER_NAME",
+      "queryCodeExp" : "t1.`MEMBER_NAME`",
       "standardColumnName" : "`MEMBER_GROUP_NAME`"
     } ],
     "getAllPSDEFUIModes" : [ {
@@ -1133,6 +1202,17 @@
       "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "成员姓名",
+      "name" : "member_name",
+      "getPSDEField" : {
+        "name" : "MEMBER_NAME",
+        "codeName" : "member_name"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "成员分组名称",
       "name" : "member_group_name",
       "getPSDEField" : {
@@ -1206,13 +1286,43 @@
     "logicName" : "更新",
     "name" : "UPDATE"
   } ],
+  "getAllPSDEUserRoles" : [ {
+    "dynaModelFilePath" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_role_member/PSDEUSERROLES/ALL_RW.json",
+    "name" : "全部数据（读写）",
+    "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "CREATE",
+      "name" : "CREATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "CREATE"
+      }
+    }, {
+      "dataAccessAction" : "READ",
+      "name" : "READ",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ"
+      }
+    }, {
+      "dataAccessAction" : "DELETE",
+      "name" : "DELETE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "DELETE"
+      }
+    }, {
+      "dataAccessAction" : "UPDATE",
+      "name" : "UPDATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "UPDATE"
+      }
+    } ],
+    "roleTag" : "ALL_RW",
+    "userDRAction" : "READ",
+    "allData" : true
+  } ],
   "getAllPSModelDatas" : [ {
-    "codeName" : "EditView2",
-    "logicName" : "系统角色成员实体编辑视图（左右关系）",
-    "name" : "系统角色成员实体编辑视图（左右关系）",
-    "realModelSubType" : "DEEDITVIEW2",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "PickupView",
     "logicName" : "系统角色成员实体数据选择视图",
     "modelTag" : "PICKUPVIEW",
@@ -1220,11 +1330,17 @@
     "realModelSubType" : "DEPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "EditView",
-    "logicName" : "系统角色成员实体编辑视图",
-    "modelTag" : "EDITVIEW",
-    "name" : "系统角色成员实体编辑视图",
-    "realModelSubType" : "DEEDITVIEW",
+    "codeName" : "PickupGridView",
+    "logicName" : "系统角色成员实体选择表格视图（部件视图）",
+    "name" : "系统角色成员实体选择表格视图（部件视图）",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "RedirectView",
+    "logicName" : "系统角色成员实体数据重定向视图",
+    "modelTag" : "REDIRECTVIEW",
+    "name" : "系统角色成员实体数据重定向视图",
+    "realModelSubType" : "DEREDIRECTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "GridView",
@@ -1241,17 +1357,17 @@
     "realModelSubType" : "DEMPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "RedirectView",
-    "logicName" : "系统角色成员实体数据重定向视图",
-    "modelTag" : "REDIRECTVIEW",
-    "name" : "系统角色成员实体数据重定向视图",
-    "realModelSubType" : "DEREDIRECTVIEW",
+    "codeName" : "EditView2",
+    "logicName" : "系统角色成员实体编辑视图（左右关系）",
+    "name" : "系统角色成员实体编辑视图（左右关系）",
+    "realModelSubType" : "DEEDITVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "PickupGridView",
-    "logicName" : "系统角色成员实体选择表格视图（部件视图）",
-    "name" : "系统角色成员实体选择表格视图（部件视图）",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "codeName" : "EditView",
+    "logicName" : "系统角色成员实体编辑视图",
+    "modelTag" : "EDITVIEW",
+    "name" : "系统角色成员实体编辑视图",
+    "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "Main",

@@ -183,45 +183,6 @@
     },
     "topPos" : 51
   }, {
-    "codeName" : "PREPAREPARAM3",
-    "leftPos" : -35,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "返回系统管理员权限",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "END2"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM3"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "user_role",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "name" : "直接值[sys_admin] ==> Default[user_role]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcValue" : "sys_admin",
-      "srcValueType" : "SRCVALUE"
-    } ],
-    "topPos" : 126
-  }, {
-    "codeName" : "END2",
-    "leftPos" : 5,
-    "logicNodeType" : "END",
-    "name" : "结束",
-    "getReturnParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "returnType" : "LOGICPARAM",
-    "topPos" : 244
-  }, {
     "codeName" : "DEDATASET3",
     "getDstPSDEDataSet" : {
       "modelref" : true,
@@ -296,6 +257,45 @@
       "id" : "members"
     },
     "topPos" : -190
+  }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : -35,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "返回系统管理员权限",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "user_role",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "直接值[sys_admin] ==> Default[user_role]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "sys_admin",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 126
+  }, {
+    "codeName" : "END2",
+    "leftPos" : 5,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 244
   }, {
     "codeName" : "PREPAREPARAM4",
     "leftPos" : -381,
@@ -406,6 +406,43 @@
       "srcValueType" : "SRCDLPARAM"
     } ],
     "topPos" : -416
+  }, {
+    "code" : "var defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);\r\ndefaultObj.set(\"user_role\", \"reader\");",
+    "codeName" : "RAWSFCODE1",
+    "leftPos" : 766,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "只读权限",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END6"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : -190
+  }, {
+    "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"srfreadonly\", true);\r\ndefaultObj.set(\"user_role\", \"reader\");",
+    "codeName" : "RAWSFCODE4",
+    "codeType" : "JavaScript",
+    "leftPos" : 766,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "只读权限",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END6"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE4"
+      }
+    } ],
+    "topPos" : 51
   }, {
     "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"srfreadonly\", false);\r\ndefaultObj.set(\"user_role\", \"user\");",
     "codeName" : "RAWSFCODE6",
@@ -526,43 +563,6 @@
     "topPos" : 252
   }, {
     "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"srfreadonly\", false);\r\ndefaultObj.set(\"user_role\", \"admin\");",
-    "codeName" : "RAWSFCODE5",
-    "codeType" : "JavaScript",
-    "leftPos" : 756,
-    "logicNodeType" : "RAWSFCODE",
-    "name" : "管理员",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "END6"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE5"
-      }
-    } ],
-    "topPos" : 432
-  }, {
-    "code" : "var defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);\r\ndefaultObj.set(\"user_role\", \"reader\");",
-    "codeName" : "RAWSFCODE1",
-    "leftPos" : 766,
-    "logicNodeType" : "RAWSFCODE",
-    "name" : "只读权限",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "END6"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE1"
-      }
-    } ],
-    "topPos" : -190
-  }, {
-    "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"srfreadonly\", false);\r\ndefaultObj.set(\"user_role\", \"admin\");",
     "codeName" : "RAWSFCODE2",
     "codeType" : "JavaScript",
     "leftPos" : 766,
@@ -580,36 +580,6 @@
       }
     } ],
     "topPos" : -516
-  }, {
-    "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"srfreadonly\", false);\r\ndefaultObj.set(\"user_role\", \"user\");",
-    "codeName" : "RAWSFCODE7",
-    "codeType" : "JavaScript",
-    "leftPos" : 766,
-    "logicNodeType" : "RAWSFCODE",
-    "name" : "普通用户",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "END6"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE7"
-      }
-    } ],
-    "topPos" : -371
-  }, {
-    "codeName" : "END6",
-    "leftPos" : 1100,
-    "logicNodeType" : "END",
-    "name" : "结束",
-    "getReturnParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "returnType" : "LOGICPARAM",
-    "topPos" : -60
   }, {
     "code" : "def _usercontext = sys.user();\r\ndef srfreadonly = _usercontext.testSysUniRes(\"SYSTEM\");\r\ndef _default = logic.param(\"default\").real;\r\nif(srfreadonly == true){\r\n    _default.set(\"srfreadonly\",false);\r\n}",
     "codeName" : "RAWSFCODE3",
@@ -714,12 +684,12 @@
     } ],
     "topPos" : -72
   }, {
-    "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"srfreadonly\", true);\r\ndefaultObj.set(\"user_role\", \"reader\");",
-    "codeName" : "RAWSFCODE4",
+    "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"srfreadonly\", false);\r\ndefaultObj.set(\"user_role\", \"admin\");",
+    "codeName" : "RAWSFCODE5",
     "codeType" : "JavaScript",
-    "leftPos" : 766,
+    "leftPos" : 756,
     "logicNodeType" : "RAWSFCODE",
-    "name" : "只读权限",
+    "name" : "管理员",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -728,10 +698,40 @@
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "RAWSFCODE4"
+        "id" : "RAWSFCODE5"
       }
     } ],
-    "topPos" : 51
+    "topPos" : 432
+  }, {
+    "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"srfreadonly\", false);\r\ndefaultObj.set(\"user_role\", \"user\");",
+    "codeName" : "RAWSFCODE7",
+    "codeType" : "JavaScript",
+    "leftPos" : 766,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "普通用户",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END6"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE7"
+      }
+    } ],
+    "topPos" : -371
+  }, {
+    "codeName" : "END6",
+    "leftPos" : 1100,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : -60
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",

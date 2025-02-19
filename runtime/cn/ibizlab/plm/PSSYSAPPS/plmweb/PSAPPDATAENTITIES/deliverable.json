@@ -180,7 +180,7 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "CREATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -374,6 +374,44 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetch_default",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_my_deliverable",
+    "dataSetName" : "my_deliverable",
+    "dataSetTag" : "my_deliverable",
+    "methodType" : "FETCH",
+    "name" : "fetch_my_deliverable",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "deliverable_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "deliverable_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "my_deliverable"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_my_deliverable"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_my_deliverable",
     "builtinMethod" : false
   }, {
     "codeName" : "fetch_project_deliverable",
@@ -602,17 +640,6 @@
     "stringLength" : 100
   }, {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[WORK_ITEM_TYPE_ID][工作项类型]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[WORK_ITEM_TYPE_ID][工作项类型]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[WORK_ITEM_TYPE_ID][工作项类型]移动端默认",
       "getPSDEFFormItem" : {
@@ -625,6 +652,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[WORK_ITEM_TYPE_ID][工作项类型]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[WORK_ITEM_TYPE_ID][工作项类型]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "codeName" : "work_item_type_id",
     "logicName" : "工作项类型",
@@ -1340,7 +1378,7 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "CREATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -1533,6 +1571,44 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetch_default",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_my_deliverable",
+    "dataSetName" : "my_deliverable",
+    "dataSetTag" : "my_deliverable",
+    "methodType" : "FETCH",
+    "name" : "fetch_my_deliverable",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "deliverable_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "deliverable_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "my_deliverable"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_my_deliverable"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_my_deliverable",
     "builtinMethod" : false
   }, {
     "codeName" : "fetch_project_deliverable",
@@ -1923,12 +1999,6 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "codeName" : "END1",
-      "leftPos" : 200,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 571
-    }, {
       "code" : "setTimeout(() => {\r\n\tconst rows = uiLogic.grid.state.rows;\r\n\tconst srfreadonly = context.srfreadonly;\r\n\tif (rows && rows.length > 0) {\r\n\t\trows.forEach(row => {\r\n\t\t\tconst actionColumn = row.uiActionGroupStates.create_time;\r\n\t\t\tif (actionColumn && Object.values(actionColumn).length > 0) {\r\n\t\t\t\tObject.values(actionColumn).forEach(action => {\r\n                    if(srfreadonly == true){\r\n                        console.log(\"123\")\r\n\t\t\t\t\t    // 提交\r\n\t\t\t\t\t    if (action.uiActionId === 'submit_form@deliverable') {\r\n                            action.disabled = true;\r\n                        }\r\n                        // 删除\r\n\t\t\t\t\t    if (action.uiActionId === 'del_form@deliverable') {\r\n                            action.disabled = true;\r\n                        }\r\n                        // 提交\r\n\t\t\t\t\t    if (action.uiActionId === 'submit@deliverable') {\r\n                            action.visible = false;\r\n                        }\r\n                        // 删除\r\n\t\t\t\t\t    if (action.uiActionId === 'del@deliverable') {\r\n                            action.visible = false;;\r\n                        }\r\n                        // 编辑\r\n\t\t\t\t\t    if (action.uiActionId === 'edit@deliverable') {\r\n                            action.visible = false;;\r\n                        }\r\n\t\t\t\t\t}\r\n\t\t\t\t})\r\n\t\t\t}\r\n\t\t})\r\n\t}\r\n}, 1000);",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 160,
@@ -1947,6 +2017,12 @@
         }
       } ],
       "topPos" : 420
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 571
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
@@ -2058,6 +2134,100 @@
       } ],
       "topPos" : 230
     }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "form"
+      },
+      "invokeMethod" : "autoSave",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "form"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "主表单自动保存",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        }
+      } ],
+      "topPos" : 1000
+    }, {
+      "codeName" : "PREPAREJSPARAM4",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM4"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "owner_id",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "deliverable"
+        },
+        "name" : "ctx[work_item] ==> deliverable[owner_id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "work_item",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "ctx"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "owner_subtype",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "deliverable"
+        },
+        "name" : "直接值[DELIVERABLE] ==> deliverable[owner_subtype]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "DELIVERABLE",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "owner_type",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "deliverable"
+        },
+        "name" : "直接值[WORK_ITEM] ==> deliverable[owner_type]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "WORK_ITEM",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "title",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "deliverable"
+        },
+        "name" : "input[value] ==> deliverable[title]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "value",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "input"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 680
+    }, {
       "codeName" : "PREPAREJSPARAM3",
       "leftPos" : 160,
       "logicNodeType" : "PREPAREJSPARAM",
@@ -2131,97 +2301,35 @@
       } ],
       "topPos" : 530
     }, {
-      "codeName" : "END1",
-      "leftPos" : 200,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 1132
-    }, {
-      "codeName" : "PREPAREJSPARAM4",
+      "codeName" : "PREPAREJSPARAM5",
       "leftPos" : 160,
       "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "准备参数",
+      "name" : "清空输入框内容",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE1"
+          "id" : "VIEWCTRLINVOKE1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM4"
+          "id" : "PREPAREJSPARAM5"
         }
       } ],
       "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "owner_id",
+        "dstFieldName" : "data.input_data",
         "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "deliverable"
-        },
-        "name" : "ctx[work_item] ==> deliverable[owner_id]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "work_item",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "ctx"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "owner_subtype",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "deliverable"
-        },
-        "name" : "直接值[DELIVERABLE] ==> deliverable[owner_subtype]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "DELIVERABLE",
-        "srcValueType" : "SRCVALUE"
-      }, {
-        "dstFieldName" : "owner_type",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "deliverable"
-        },
-        "name" : "直接值[WORK_ITEM] ==> deliverable[owner_type]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "WORK_ITEM",
-        "srcValueType" : "SRCVALUE"
-      }, {
-        "dstFieldName" : "title",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "deliverable"
-        },
-        "name" : "input[value] ==> deliverable[title]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "value",
-        "getSrcPSDEUILogicParam" : {
           "modelref" : true,
           "id" : "input"
         },
-        "srcValueType" : "SRCDLPARAM"
+        "name" : "空值（NULL） ==> input[data.input_data]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "value",
+        "srcValue" : "\"\"",
+        "srcValueType" : "NULLVALUE"
       } ],
-      "topPos" : 680
-    }, {
-      "code" : "view.layoutPanel.panelItems.grid.state.visible = true;\r\nibiz.hub.getApp(context.srfappid).deService.exec(\r\n    'plmweb.deliverable',\r\n    'create',\r\n    context,\r\n    uiLogic.deliverable,\r\n);\r\n",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 160,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "添加交付物实体临时数据",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM5"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 770
+      "topPos" : 880
     }, {
       "codeName" : "PREPAREJSPARAM2",
       "leftPos" : 160,
@@ -2268,68 +2376,36 @@
       } ],
       "topPos" : 380
     }, {
-      "codeName" : "PREPAREJSPARAM5",
+      "code" : "view.layoutPanel.panelItems.grid.state.visible = true;\r\nibiz.hub.getApp(context.srfappid).deService.exec(\r\n    'plmweb.deliverable',\r\n    'create',\r\n    context,\r\n    uiLogic.deliverable,\r\n);\r\n",
+      "codeName" : "RAWJSCODE1",
       "leftPos" : 160,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "清空输入框内容",
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "添加交付物实体临时数据",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
           "modelref" : true,
           "id" : "PREPAREJSPARAM5"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "data.input_data",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "input"
-        },
-        "name" : "空值（NULL） ==> input[data.input_data]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "value",
-        "srcValue" : "\"\"",
-        "srcValueType" : "NULLVALUE"
-      } ],
-      "topPos" : 880
-    }, {
-      "codeName" : "VIEWCTRLINVOKE1",
-      "getInvokeCtrl" : {
-        "modelref" : true,
-        "id" : "form"
-      },
-      "invokeMethod" : "autoSave",
-      "getInvokeParam" : {
-        "modelref" : true,
-        "id" : "form"
-      },
-      "leftPos" : 160,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "主表单自动保存",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
+          "id" : "RAWJSCODE1"
         }
       } ],
-      "topPos" : 1000
+      "topPos" : 770
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 1132
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "view",
-      "logicName" : "当前视图对象",
-      "name" : "当前视图对象",
-      "activeViewParam" : true
+      "codeName" : "panelItems",
+      "logicName" : "面板成员组",
+      "name" : "面板成员组",
+      "entityParam" : true
     }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
@@ -2337,29 +2413,9 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "ctx",
-      "logicName" : "应用上下文变量",
-      "name" : "应用上下文变量",
-      "navContextParam" : true
-    }, {
-      "codeName" : "panelItems",
-      "logicName" : "面板成员组",
-      "name" : "面板成员组",
-      "entityParam" : true
-    }, {
-      "codeName" : "container1",
-      "logicName" : "容器对象",
-      "name" : "容器对象",
-      "activeContainerParam" : true
-    }, {
       "codeName" : "form",
       "logicName" : "主表单对象",
       "name" : "主表单对象",
-      "ctrlParam" : true
-    }, {
-      "codeName" : "grid",
-      "logicName" : "表格对象",
-      "name" : "表格对象",
       "ctrlParam" : true
     }, {
       "codeName" : "input",
@@ -2367,10 +2423,30 @@
       "name" : "输入框",
       "entityParam" : true
     }, {
+      "codeName" : "grid",
+      "logicName" : "表格对象",
+      "name" : "表格对象",
+      "ctrlParam" : true
+    }, {
       "codeName" : "deliverable",
       "logicName" : "交付目标对象",
       "name" : "交付目标对象",
       "entityParam" : true
+    }, {
+      "codeName" : "ctx",
+      "logicName" : "应用上下文变量",
+      "name" : "应用上下文变量",
+      "navContextParam" : true
+    }, {
+      "codeName" : "container1",
+      "logicName" : "容器对象",
+      "name" : "容器对象",
+      "activeContainerParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -2401,12 +2477,51 @@
       } ],
       "topPos" : 150
     }, {
-      "code" : "if(uiLogic.view.layoutPanel.panelItems.total.data.total == 0){\r\n    view.layoutPanel.panelItems.grid.state.visible = false;\r\n}",
-      "codeName" : "RAWJSCODE3",
+      "code" : "ibiz.hub.getApp(context.srfappid).deService.exec(\r\n    'plmweb.deliverable',\r\n    'remove',\r\n    context,\r\n    uiLogic.default,\r\n);\r\n\r\n",
+      "codeName" : "RAWJSCODE2",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "根据条件隐藏表格",
-      "topPos" : 635
+      "name" : "执行删除方法",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      } ],
+      "topPos" : 430
+    }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "form"
+      },
+      "invokeMethod" : "save",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "files"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "视图部件调用",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE3"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        }
+      } ],
+      "topPos" : 547
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 160,
@@ -2454,58 +2569,14 @@
       } ],
       "topPos" : 320
     }, {
-      "codeName" : "VIEWCTRLINVOKE1",
-      "getInvokeCtrl" : {
-        "modelref" : true,
-        "id" : "form"
-      },
-      "invokeMethod" : "save",
-      "getInvokeParam" : {
-        "modelref" : true,
-        "id" : "files"
-      },
-      "leftPos" : 160,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "视图部件调用",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE3"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
-        }
-      } ],
-      "topPos" : 547
-    }, {
-      "code" : "ibiz.hub.getApp(context.srfappid).deService.exec(\r\n    'plmweb.deliverable',\r\n    'remove',\r\n    context,\r\n    uiLogic.default,\r\n);\r\n\r\n",
-      "codeName" : "RAWJSCODE2",
+      "code" : "if(uiLogic.view.layoutPanel.panelItems.total.data.total == 0){\r\n    view.layoutPanel.panelItems.grid.state.visible = false;\r\n}",
+      "codeName" : "RAWJSCODE3",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "执行删除方法",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        }
-      } ],
-      "topPos" : 430
+      "name" : "根据条件隐藏表格",
+      "topPos" : 635
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "form",
-      "logicName" : "主表单对象",
-      "name" : "主表单对象",
-      "ctrlParam" : true
-    }, {
       "codeName" : "context",
       "logicName" : "上下文",
       "name" : "上下文",
@@ -2517,15 +2588,20 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "view",
-      "logicName" : "当前视图对象",
-      "name" : "当前视图对象",
-      "activeViewParam" : true
-    }, {
       "codeName" : "files",
       "logicName" : "上传文件",
       "name" : "上传文件",
       "entityListParam" : true
+    }, {
+      "codeName" : "form",
+      "logicName" : "主表单对象",
+      "name" : "主表单对象",
+      "ctrlParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -2557,25 +2633,6 @@
       "topPos" : 300,
       "parallelOutput" : true
     }, {
-      "code" : "ibiz.mc.command.update.send({ srfdecodename: 'work_item'})",
-      "codeName" : "RAWJSCODE3",
-      "leftPos" : 170,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "触发计数器刷新",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE3"
-        }
-      } ],
-      "topPos" : 550
-    }, {
       "code" : "uiLogic.view.layoutPanel.panelItems.total.data.total = uiLogic.view.layoutPanel.panelItems.grid.control.state.items.length;\r\nif(uiLogic.view.layoutPanel.panelItems.total.data.total == 0){\r\n    view.layoutPanel.panelItems.grid.state.visible = false\r\n}else{\r\n    view.layoutPanel.panelItems.grid.state.visible = true\r\n}\r\n",
       "codeName" : "RAWJSCODE2",
       "leftPos" : 170,
@@ -2595,6 +2652,25 @@
       } ],
       "topPos" : 430
     }, {
+      "code" : "ibiz.mc.command.update.send({ srfdecodename: 'work_item'})",
+      "codeName" : "RAWJSCODE3",
+      "leftPos" : 170,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "触发计数器刷新",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE3"
+        }
+      } ],
+      "topPos" : 550
+    }, {
       "codeName" : "END1",
       "leftPos" : 210,
       "logicNodeType" : "END",
@@ -2602,11 +2678,6 @@
       "topPos" : 671
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "deliverable",
-      "logicName" : "交付物列表",
-      "name" : "交付物列表",
-      "entityListParam" : true
-    }, {
       "codeName" : "VIEW",
       "logicName" : "当前视图对象",
       "name" : "当前视图对象",
@@ -2623,6 +2694,11 @@
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
+    }, {
+      "codeName" : "deliverable",
+      "logicName" : "交付物列表",
+      "name" : "交付物列表",
+      "entityListParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -2710,16 +2786,16 @@
       "topPos" : 435
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "view",
-      "logicName" : "当前视图",
-      "name" : "当前视图",
-      "activeViewParam" : true
-    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图",
+      "name" : "当前视图",
+      "activeViewParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -2905,40 +2981,6 @@
       } ],
       "topPos" : 150
     }, {
-      "codeName" : "DEUIACTION1",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/deliverable.json"
-        },
-        "modelref" : true,
-        "id" : "upload_attachment@deliverable"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/deliverable.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "files"
-      },
-      "leftPos" : 160,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "上传",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION1"
-        }
-      } ],
-      "topPos" : 320
-    }, {
       "code" : "uiLogic.default.name = uiLogic.files[0].name;\r\nuiLogic.default.file_id = uiLogic.files[0].id;",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 160,
@@ -2957,6 +2999,25 @@
         }
       } ],
       "topPos" : 435
+    }, {
+      "code" : "ibiz.hub.getApp(context.srfappid).deService.exec(\r\n    'plmweb.deliverable',\r\n    'update',\r\n    context,\r\n    uiLogic.default,\r\n);",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "提交（表单中）",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      } ],
+      "topPos" : 670
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 160,
@@ -3019,45 +3080,60 @@
       "name" : "视图部件调用",
       "topPos" : 787
     }, {
-      "code" : "ibiz.hub.getApp(context.srfappid).deService.exec(\r\n    'plmweb.deliverable',\r\n    'update',\r\n    context,\r\n    uiLogic.default,\r\n);",
-      "codeName" : "RAWJSCODE2",
+      "codeName" : "DEUIACTION1",
+      "getDstPSAppDEUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/deliverable.json"
+        },
+        "modelref" : true,
+        "id" : "upload_attachment@deliverable"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/deliverable.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "files"
+      },
       "leftPos" : 160,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "提交（表单中）",
+      "logicNodeType" : "DEUIACTION",
+      "name" : "上传",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
+          "id" : "RAWJSCODE1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE2"
+          "id" : "DEUIACTION1"
         }
       } ],
-      "topPos" : 670
+      "topPos" : 320
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "files",
-      "logicName" : "上传文件",
-      "name" : "上传文件",
-      "entityListParam" : true
-    }, {
       "codeName" : "form",
       "logicName" : "主表单对象",
       "name" : "主表单对象",
       "ctrlParam" : true
     }, {
-      "codeName" : "context",
-      "logicName" : "上下文",
-      "name" : "上下文",
-      "navContextParam" : true
+      "codeName" : "files",
+      "logicName" : "上传文件",
+      "name" : "上传文件",
+      "entityListParam" : true
     }, {
       "codeName" : "view",
       "logicName" : "当前视图对象",
       "name" : "当前视图对象",
       "activeViewParam" : true
+    }, {
+      "codeName" : "context",
+      "logicName" : "上下文",
+      "name" : "上下文",
+      "navContextParam" : true
     }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
@@ -3076,7 +3152,7 @@
     "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/deliverable_grid_view.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/deliverable_project_grid_view.json",
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
@@ -3092,7 +3168,7 @@
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/deliverable_project_grid_view.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/deliverable_grid_view.json",
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
@@ -3173,7 +3249,7 @@
   "dEAPICodeName2" : "deliverables",
   "dEAPITag" : "DELIVERABLE",
   "dataAccCtrlArch" : 1,
-  "dataAccCtrlMode" : 2,
+  "dataAccCtrlMode" : 3,
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/deliverable.json",
   "enableUIActions" : 15,
   "getKeyPSAppDEField" : {
@@ -3246,7 +3322,7 @@
     }, {
       "caption" : "编辑",
       "detailType" : "DEUIACTION",
-      "name" : "u238a6c5",
+      "name" : "u73b6741",
       "getPSSysImage" : {
         "glyph" : "xf044@FontAwesome",
         "cssClass" : "fa fa-edit"

@@ -1682,24 +1682,38 @@
       "topPos" : 122,
       "parallelOutput" : true
     }, {
-      "code" : "// 计算新建默认值\r\nconst defaultData = uiLogic.grid.calcDefaultValue({}, true);\r\nuiLogic.attach = uiLogic.files.map(item => \r\n    {\r\n        return {\r\n            name: item.name,\r\n            file_id: item.id,\r\n            id: item.uuid,\r\n            ...defaultData,\r\n        }\r\n    }\r\n)",
-      "codeName" : "RAWJSCODE4",
-      "leftPos" : 766,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "设置附件参数",
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "grid"
+      },
+      "invokeMethod" : "addAttachMent",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "attach"
+      },
+      "leftPos" : 1009,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "视图部件调用",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
+          "id" : "END1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE4"
+          "id" : "VIEWCTRLINVOKE1"
         }
       } ],
       "topPos" : 130
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 1270,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 122
     }, {
       "codeName" : "DEUIACTION1",
       "getDstPSAppDEUIAction" : {
@@ -1735,35 +1749,21 @@
       } ],
       "topPos" : 130
     }, {
-      "codeName" : "END1",
-      "leftPos" : 1270,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 122
-    }, {
-      "codeName" : "VIEWCTRLINVOKE1",
-      "getInvokeCtrl" : {
-        "modelref" : true,
-        "id" : "grid"
-      },
-      "invokeMethod" : "addAttachMent",
-      "getInvokeParam" : {
-        "modelref" : true,
-        "id" : "attach"
-      },
-      "leftPos" : 1009,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "视图部件调用",
+      "code" : "// 计算新建默认值\r\nconst defaultData = uiLogic.grid.calcDefaultValue({}, true);\r\nuiLogic.attach = uiLogic.files.map(item => \r\n    {\r\n        return {\r\n            name: item.name,\r\n            file_id: item.id,\r\n            id: item.uuid,\r\n            ...defaultData,\r\n        }\r\n    }\r\n)",
+      "codeName" : "RAWJSCODE4",
+      "leftPos" : 766,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "设置附件参数",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "END1"
+          "id" : "VIEWCTRLINVOKE1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
+          "id" : "RAWJSCODE4"
         }
       } ],
       "topPos" : 130
@@ -1774,9 +1774,9 @@
       "name" : "重复器表格",
       "ctrlParam" : true
     }, {
-      "codeName" : "files",
-      "logicName" : "上传文件",
-      "name" : "上传文件",
+      "codeName" : "attach",
+      "logicName" : "附件",
+      "name" : "附件",
       "entityListParam" : true
     }, {
       "codeName" : "Default",
@@ -1785,15 +1785,15 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "attach",
-      "logicName" : "附件",
-      "name" : "附件",
-      "entityListParam" : true
-    }, {
       "codeName" : "view",
       "logicName" : "当前视图对象",
       "name" : "当前视图对象",
       "activeViewParam" : true
+    }, {
+      "codeName" : "files",
+      "logicName" : "上传文件",
+      "name" : "上传文件",
+      "entityListParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -1893,11 +1893,10 @@
       "name" : "结束",
       "topPos" : 650
     }, {
-      "code" : "const rows = uiLogic.grid.mdController.state.rows;\r\nconst srfreadonly = context.srfreadonly;\r\nif (rows && rows.length > 0) {\r\n\trows.forEach(row => {\r\n        // 删除附件行为禁用\r\n\t\tconst uiActionId = row.uaColStates.uagridcolumn1.u44d00e2;\r\n        if(srfreadonly == true && uiActionId.hasOwnProperty('disabled')){\r\n            uiActionId.disabled = true;\r\n        }    \r\n\t})\r\n}\t\r\n",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 460,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "上下文中srfreadonly禁用删除附件行为",
+      "codeName" : "PREPAREJSPARAM3",
+      "leftPos" : 200,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "设置表格隐藏",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
@@ -1907,10 +1906,31 @@
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE1"
+          "id" : "PREPAREJSPARAM3"
         }
       } ],
-      "topPos" : 550
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "state.keepAlive",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "grid"
+        },
+        "name" : "直接值[true] ==> grid[state.keepAlive]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "true",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "state.visible",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "grid"
+        },
+        "name" : "直接值[false] ==> grid[state.visible]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "false",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 440
     }, {
       "codeName" : "PREPAREJSPARAM2",
       "leftPos" : 530,
@@ -1951,6 +1971,25 @@
         "srcValueType" : "SRCVALUE"
       } ],
       "topPos" : 440
+    }, {
+      "code" : "const rows = uiLogic.grid.mdController.state.rows;\r\nconst srfreadonly = context.srfreadonly;\r\nif (rows && rows.length > 0) {\r\n\trows.forEach(row => {\r\n        // 删除附件行为禁用\r\n\t\tconst uiActionId = row.uaColStates.uagridcolumn1.u44d00e2;\r\n        if(srfreadonly == true && uiActionId.hasOwnProperty('disabled')){\r\n            uiActionId.disabled = true;\r\n        }    \r\n\t})\r\n}\t\r\n",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 460,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "上下文中srfreadonly禁用删除附件行为",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 550
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 350,
@@ -2022,45 +2061,6 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 220
-    }, {
-      "codeName" : "PREPAREJSPARAM3",
-      "leftPos" : 200,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "设置表格隐藏",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM3"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "state.keepAlive",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "grid"
-        },
-        "name" : "直接值[true] ==> grid[state.keepAlive]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "true",
-        "srcValueType" : "SRCVALUE"
-      }, {
-        "dstFieldName" : "state.visible",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "grid"
-        },
-        "name" : "直接值[false] ==> grid[state.visible]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "false",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : 440
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "grid",
@@ -2108,6 +2108,35 @@
       } ],
       "topPos" : 200,
       "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREJSPARAM2",
+      "leftPos" : 1220,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "设置表单静默保存",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "silent",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "name" : "直接值[true] ==> Default[silent]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "true",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 390
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 406,
@@ -2168,6 +2197,42 @@
       } ],
       "topPos" : 208
     }, {
+      "codeName" : "DEACTION1",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "Remove"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/attachment.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "attach"
+      },
+      "leftPos" : 780,
+      "logicNodeType" : "DEACTION",
+      "name" : "实体行为",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "topPos" : 380
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 1768,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
       "codeName" : "VIEWCTRLINVOKE2",
       "getInvokeCtrl" : {
         "modelref" : true,
@@ -2194,6 +2259,25 @@
         }
       } ],
       "topPos" : 390
+    }, {
+      "code" : "uiLogic.attach = { data: uiLogic.default, silent: true };",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 662,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "设置附件数据",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 208
     }, {
       "codeName" : "VIEWCTRLINVOKE1",
       "getInvokeCtrl" : {
@@ -2264,96 +2348,27 @@
         }
       } ],
       "topPos" : 208
-    }, {
-      "codeName" : "PREPAREJSPARAM2",
-      "leftPos" : 1220,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "设置表单静默保存",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "VIEWCTRLINVOKE2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "silent",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "name" : "直接值[true] ==> Default[silent]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "true",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : 390
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 1768,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
-    }, {
-      "codeName" : "DEACTION1",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "Remove"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/attachment.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "attach"
-      },
-      "leftPos" : 780,
-      "logicNodeType" : "DEACTION",
-      "name" : "实体行为",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        }
-      } ],
-      "topPos" : 380
-    }, {
-      "code" : "uiLogic.attach = { data: uiLogic.default, silent: true };",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 662,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "设置附件数据",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
+      "codeName" : "form",
+      "logicName" : "主表单对象",
+      "name" : "主表单对象",
+      "ctrlParam" : true
+    }, {
       "codeName" : "params",
       "logicName" : "视图参数",
       "name" : "视图参数",
       "viewNavDataParam" : true
+    }, {
+      "codeName" : "attach",
+      "logicName" : "附件数据",
+      "name" : "附件数据",
+      "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
     }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
@@ -2365,21 +2380,6 @@
       "logicName" : "表格",
       "name" : "表格",
       "ctrlParam" : true
-    }, {
-      "codeName" : "view",
-      "logicName" : "当前视图对象",
-      "name" : "当前视图对象",
-      "activeViewParam" : true
-    }, {
-      "codeName" : "form",
-      "logicName" : "主表单对象",
-      "name" : "主表单对象",
-      "ctrlParam" : true
-    }, {
-      "codeName" : "attach",
-      "logicName" : "附件数据",
-      "name" : "附件数据",
-      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -2411,25 +2411,6 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "code" : "uiLogic.attach = { data: data, silent: true };",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 662,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "设置附件数据",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 208
-    }, {
       "codeName" : "VIEWCTRLINVOKE1",
       "getInvokeCtrl" : {
         "modelref" : true,
@@ -2453,6 +2434,25 @@
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
           "id" : "VIEWCTRLINVOKE1"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "code" : "uiLogic.attach = { data: data, silent: true };",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 662,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "设置附件数据",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
         }
       } ],
       "topPos" : 208
@@ -2515,26 +2515,26 @@
       "name" : "附件数据",
       "entityParam" : true
     }, {
-      "codeName" : "grid",
-      "logicName" : "表格",
-      "name" : "表格",
-      "ctrlParam" : true
-    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
     }, {
+      "codeName" : "params",
+      "logicName" : "视图参数",
+      "name" : "视图参数",
+      "viewNavDataParam" : true
+    }, {
       "codeName" : "view",
       "logicName" : "当前视图对象",
       "name" : "当前视图对象",
       "activeViewParam" : true
     }, {
-      "codeName" : "params",
-      "logicName" : "视图参数",
-      "name" : "视图参数",
-      "viewNavDataParam" : true
+      "codeName" : "grid",
+      "logicName" : "表格",
+      "name" : "表格",
+      "ctrlParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,

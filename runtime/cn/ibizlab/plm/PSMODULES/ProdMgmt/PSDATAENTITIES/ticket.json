@@ -134,7 +134,7 @@
       "name" : "附加逻辑",
       "getPSDELogic" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDELOGICS/get_product_member.json"
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDELOGICS/create_recent.json"
       },
       "internalLogic" : true
     }, {
@@ -143,7 +143,7 @@
       "name" : "附加逻辑",
       "getPSDELogic" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDELOGICS/create_recent.json"
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDELOGICS/get_product_member.json"
       },
       "internalLogic" : true
     } ],
@@ -282,7 +282,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "allocate_person",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEACTIONS/allocate_person.json",
     "logicName" : "分配负责人",
     "name" : "allocate_person",
@@ -336,7 +336,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "choose_tag",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEACTIONS/choose_tag.json",
     "logicName" : "设置标签",
     "name" : "choose_tag",
@@ -391,7 +391,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "customer_del_ticket",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEACTIONS/customer_del_ticket.json",
     "logicName" : "客户取消关联工单",
     "name" : "customer_del_ticket",
@@ -579,7 +579,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "product_ticket_re_counters",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEACTIONS/product_ticket_re_counters.json",
     "logicName" : "产品工单关联分页计数器",
     "name" : "product_ticket_re_counters",
@@ -795,6 +795,9 @@
   "getAllPSDEDRItems" : [ {
     "modelref" : true,
     "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEDRITEMS/UsrDRItem0104352880.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEDRITEMS/UsrDRItem0211558019.json"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEDRITEMS/UsrDRItem0221007103.json"
@@ -2923,7 +2926,23 @@
         "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
       },
       "joinType" : "MAIN",
-      "name" : "TICKET"
+      "name" : "TICKET",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "NOTEQ",
+          "condType" : "SINGLE",
+          "condValue" : "1",
+          "fieldName" : "IS_DELETED",
+          "name" : "(IS_DELETED) 不等于(<>) 1",
+          "getPSDEField" : {
+            "name" : "IS_DELETED",
+            "codeName" : "is_deleted"
+          }
+        } ]
+      }
     },
     "getPSDEDataQueryInput" : {
       "name" : "Relation_ticketInput",
@@ -6163,6 +6182,7 @@
       "codeName" : "assignee_id"
     },
     "enableAudit" : true,
+    "ignoreRefresh" : true,
     "linkDEField" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
@@ -6912,17 +6932,6 @@
       "standardColumnName" : "`SOLUTION_WAY`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[SOLUTION_WAY][解决办法]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTAREA_10",
-        "name" : "[SOLUTION_WAY][解决办法]",
-        "stringLength" : 2000,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[SOLUTION_WAY][解决办法]移动端默认",
       "getPSDEFFormItem" : {
@@ -6935,6 +6944,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[SOLUTION_WAY][解决办法]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTAREA_10",
+        "name" : "[SOLUTION_WAY][解决办法]",
+        "stringLength" : 2000,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -7063,6 +7083,17 @@
       "standardColumnName" : "`COMMENT_COUNT`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[COMMENT_COUNT][评论数]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[COMMENT_COUNT][评论数]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[COMMENT_COUNT][评论数]移动端默认",
       "getPSDEFFormItem" : {
@@ -7075,17 +7106,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[COMMENT_COUNT][评论数]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[COMMENT_COUNT][评论数]",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -7138,6 +7158,24 @@
       "standardColumnName" : "`PRODUCT_IS_DELETED`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[PRODUCT_IS_DELETED][产品是否删除]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[PRODUCT_IS_DELETED][产品是否删除]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+        },
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[PRODUCT_IS_DELETED][产品是否删除]移动端默认",
       "getPSDEFFormItem" : {
@@ -7157,24 +7195,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[PRODUCT_IS_DELETED][产品是否删除]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[PRODUCT_IS_DELETED][产品是否删除]",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
-        },
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -7325,17 +7345,6 @@
     "phisicalDEField" : false
   }, {
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[ATTENTIONS_IMP][关注人]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[ATTENTIONS_IMP][关注人]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[ATTENTIONS_IMP][关注人]移动端默认",
       "getPSDEFFormItem" : {
@@ -7348,6 +7357,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[ATTENTIONS_IMP][关注人]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[ATTENTIONS_IMP][关注人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -7408,16 +7428,6 @@
       "valueOP" : "LTANDEQ"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[RECENT_CREATE_DAYS][最近创建日期]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[RECENT_CREATE_DAYS][最近创建日期]",
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[RECENT_CREATE_DAYS][最近创建日期]移动端默认",
       "getPSDEFFormItem" : {
@@ -7429,6 +7439,16 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[RECENT_CREATE_DAYS][最近创建日期]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[RECENT_CREATE_DAYS][最近创建日期]",
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -9240,32 +9260,6 @@
       },
       "topPos" : 403
     }, {
-      "codeName" : "LOOPSUBCALL1",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "for_temp_obj"
-      },
-      "leftPos" : -90,
-      "logicNodeType" : "LOOPSUBCALL",
-      "name" : "循环子调用",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM2"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "LOOPSUBCALL1"
-        },
-        "subCallLink" : true
-      } ],
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "srfactionparam"
-      },
-      "topPos" : 562
-    }, {
       "codeName" : "PREPAREPARAM2",
       "leftPos" : 180,
       "logicNodeType" : "PREPAREPARAM",
@@ -9314,6 +9308,32 @@
       "leftPos" : 396,
       "logicNodeType" : "DEACTION",
       "name" : "变更工单标签信息",
+      "topPos" : 562
+    }, {
+      "codeName" : "LOOPSUBCALL1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "leftPos" : -90,
+      "logicNodeType" : "LOOPSUBCALL",
+      "name" : "循环子调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "subCallLink" : true
+      } ],
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "srfactionparam"
+      },
       "topPos" : 562
     } ],
     "getPSDELogicParams" : [ {
@@ -14267,18 +14287,18 @@
         "id" : "product__READ"
       }
     }, {
-      "dataAccessAction" : "UPDATE",
-      "name" : "UPDATE",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "UPDATE"
-      }
-    }, {
       "dataAccessAction" : "CREATE",
       "name" : "CREATE",
       "getPSDEOPPriv" : {
         "modelref" : true,
         "id" : "CREATE"
+      }
+    }, {
+      "dataAccessAction" : "UPDATE",
+      "name" : "UPDATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "UPDATE"
       }
     } ],
     "roleTag" : "CUSTOMER_USER_RW",
@@ -14391,34 +14411,22 @@
     "utilType" : "DYNASTORAGE"
   } ],
   "getAllPSModelDatas" : [ {
-    "codeName" : "dyna_tab_exp_view",
-    "logicName" : "动态工单设计分页导航（全局）",
-    "name" : "动态工单设计分页导航（全局）",
-    "realModelSubType" : "DETABEXPVIEW",
+    "codeName" : "NavGridView",
+    "logicName" : "内置导航表格（测试）",
+    "name" : "内置导航表格（测试）",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "idea_re_ticket_chart_view",
-    "logicName" : "需求关联工单饼图视图",
-    "name" : "需求关联工单饼图视图",
-    "realModelSubType" : "DECHARTVIEW",
+    "codeName" : "mob_search_md_view",
+    "logicName" : "移动端工单搜索多数据视图",
+    "name" : "移动端工单搜索多数据视图",
+    "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "my_created_grid_view",
     "logicName" : "我创建的工单表格视图",
     "name" : "我创建的工单表格视图",
     "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "config_tab_exp_view",
-    "logicName" : "工单配置分页导航视图",
-    "name" : "工单配置分页导航视图",
-    "realModelSubType" : "DETABEXPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_create_view",
-    "logicName" : "移动端新建工单编辑视图",
-    "name" : "移动端新建工单编辑视图",
-    "realModelSubType" : "DEMOBEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "RedirectView",
@@ -14434,10 +14442,40 @@
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_create_view",
+    "logicName" : "移动端新建工单编辑视图",
+    "name" : "移动端新建工单编辑视图",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_edit_view",
+    "logicName" : "工单移动端编辑视图",
+    "name" : "工单移动端编辑视图",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "un_plan_grid_view",
+    "logicName" : "工单表格视图（待计划）",
+    "name" : "工单表格视图（待计划）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "ticket_grid_parts",
+    "logicName" : "工单表格视图（仪表盘部件）",
+    "name" : "工单表格视图（仪表盘部件）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "tree_exp_view",
     "logicName" : "工单导航视图",
     "name" : "工单导航视图",
     "realModelSubType" : "DETREEEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_mpick_up_view_PickupMDView",
+    "logicName" : "工单移动端多项选择视图_选择数据视图",
+    "name" : "工单移动端多项选择视图_选择数据视图",
+    "realModelSubType" : "DEMOBPICKUPMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "customer_re_ticket_grid_view",
@@ -14446,10 +14484,16 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "filter_grid_view",
-    "logicName" : "工单筛选器表格视图",
-    "name" : "工单筛选器表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
+    "codeName" : "mob_customer_re_ticket",
+    "logicName" : "客户关联工单选择视图（移动端）",
+    "name" : "客户关联工单选择视图（移动端）",
+    "realModelSubType" : "DEMOBMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "global_setting_view",
+    "logicName" : "工单全局配置视图",
+    "name" : "工单全局配置视图",
+    "realModelSubType" : "DECUSTOMVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "allocate_person_view",
@@ -14458,16 +14502,23 @@
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_search_md_view",
-    "logicName" : "移动端工单搜索多数据视图",
-    "name" : "移动端工单搜索多数据视图",
-    "realModelSubType" : "DEMOBMDVIEW",
+    "codeName" : "dyna_tab_exp_view",
+    "logicName" : "动态工单设计分页导航（全局）",
+    "name" : "动态工单设计分页导航（全局）",
+    "realModelSubType" : "DETABEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "others_re_ticket_mpick_up_grid_view",
-    "logicName" : "其他实体联工单多项选择视图_选择数据视图",
-    "name" : "其他实体联工单多项选择视图_选择数据视图",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "codeName" : "mpick_up_view",
+    "logicName" : "工单实体数据多项选择视图",
+    "modelTag" : "MPICKUPVIEW",
+    "name" : "工单实体数据多项选择视图",
+    "realModelSubType" : "DEMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "test_all_grid_view",
+    "logicName" : "工单表格视图（全部工单测试）",
+    "name" : "工单表格视图（全部工单测试）",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "pick_up_view",
@@ -14477,34 +14528,16 @@
     "realModelSubType" : "DEPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_customer_re_ticket",
-    "logicName" : "客户关联工单选择视图（移动端）",
-    "name" : "客户关联工单选择视图（移动端）",
-    "realModelSubType" : "DEMOBMPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "ticket_grid_parts",
-    "logicName" : "工单表格视图（仪表盘部件）",
-    "name" : "工单表格视图（仪表盘部件）",
+    "codeName" : "drill_detail_grid_view",
+    "logicName" : "工单反查表格视图",
+    "name" : "工单反查表格视图",
     "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_md_view",
-    "logicName" : "工单移动端多数据视图",
-    "name" : "工单移动端多数据视图",
-    "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView2",
     "logicName" : "工单实体编辑视图（左右关系）",
     "name" : "工单实体编辑视图（左右关系）",
     "realModelSubType" : "DEEDITVIEW2",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "all_grid_view",
-    "logicName" : "工单表格视图（全部工单）",
-    "name" : "工单表格视图（全部工单）",
-    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mob_my_created_md_view",
@@ -14519,22 +14552,16 @@
     "realModelSubType" : "DEMPICKUPVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_ticket_create_option_view",
-    "logicName" : "工单快速新建选项操作视图（移动端）",
-    "name" : "工单快速新建选项操作视图（移动端）",
-    "realModelSubType" : "DEMOBOPTVIEW",
+    "codeName" : "my_assignee_grid_view",
+    "logicName" : "工单表格视图（我负责的）",
+    "name" : "工单表格视图（我负责的）",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "pick_up_grid_view",
-    "logicName" : "工单实体选择表格视图（部件视图）",
-    "name" : "工单实体选择表格视图（部件视图）",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "product_dyna_tab_exp_view",
-    "logicName" : "工单动态设计分页导航（产品）",
-    "name" : "工单动态设计分页导航（产品）",
-    "realModelSubType" : "DETABEXPVIEW",
+    "codeName" : "idea_re_ticket_chart_view",
+    "logicName" : "需求关联工单饼图视图",
+    "name" : "需求关联工单饼图视图",
+    "realModelSubType" : "DECHARTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mob_my_attention_md_view",
@@ -14543,10 +14570,16 @@
     "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_mpick_up_view_PickupMDView",
-    "logicName" : "工单移动端多项选择视图_选择数据视图",
-    "name" : "工单移动端多项选择视图_选择数据视图",
-    "realModelSubType" : "DEMOBPICKUPMDVIEW",
+    "codeName" : "archived_grid_view",
+    "logicName" : "工单表格视图（已归档）",
+    "name" : "工单表格视图（已归档）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "test_main_view",
+    "logicName" : "工单主视图（测试）",
+    "name" : "工单主视图（测试）",
+    "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "progress_grid_view",
@@ -14555,22 +14588,22 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "set_tags_option_view",
+    "logicName" : "设置标签选项操作视图",
+    "name" : "设置标签选项操作视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "config_tab_exp_view",
+    "logicName" : "工单配置分页导航视图",
+    "name" : "工单配置分页导航视图",
+    "realModelSubType" : "DETABEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "customer_re_ticket_pick_up_grid_view",
     "logicName" : "客户关联工单多项选择视图_选择数据视图",
     "name" : "客户关联工单多项选择视图_选择数据视图",
     "realModelSubType" : "DEPICKUPGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_customer_re_ticket_PickupMDView",
-    "logicName" : "客户关联工单选择视图（移动端）_选择数据视图",
-    "name" : "客户关联工单选择视图（移动端）_选择数据视图",
-    "realModelSubType" : "DEMOBPICKUPMDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "global_setting_view",
-    "logicName" : "工单全局配置视图",
-    "name" : "工单全局配置视图",
-    "realModelSubType" : "DECUSTOMVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "quick_create_view",
@@ -14579,10 +14612,10 @@
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "archived_grid_view",
-    "logicName" : "工单表格视图（已归档）",
-    "name" : "工单表格视图（已归档）",
-    "realModelSubType" : "DEGRIDVIEW",
+    "codeName" : "NavTestEditView",
+    "logicName" : "内置导航编辑视图（测试）",
+    "name" : "内置导航编辑视图（测试）",
+    "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "customer_re_ticket_pick_up_view",
@@ -14591,16 +14624,16 @@
     "realModelSubType" : "DEMPICKUPVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "bi_form_ticket_ratio",
-    "logicName" : "BI报表工单占比",
-    "name" : "BI报表工单占比",
-    "realModelSubType" : "DEEDITVIEW",
+    "codeName" : "others_re_ticket_mpick_up_grid_view",
+    "logicName" : "其他实体联工单多项选择视图_选择数据视图",
+    "name" : "其他实体联工单多项选择视图_选择数据视图",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "set_tags_option_view",
-    "logicName" : "设置标签选项操作视图",
-    "name" : "设置标签选项操作视图",
-    "realModelSubType" : "DEOPTVIEW",
+    "codeName" : "mob_cus_re_ticket",
+    "logicName" : "客户关联工单多数据视图（移动端）",
+    "name" : "客户关联工单多数据视图（移动端）",
+    "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "GridView",
@@ -14610,10 +14643,10 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "setting_view",
-    "logicName" : "工单设置视图（产品中）",
-    "name" : "工单设置视图（产品中）",
-    "realModelSubType" : "DECUSTOMVIEW",
+    "codeName" : "submit_grid_view",
+    "logicName" : "工单表格视图（我提交的）",
+    "name" : "工单表格视图（我提交的）",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "idea_re_ticket_pick_up_view",
@@ -14622,41 +14655,10 @@
     "realModelSubType" : "DEMPICKUPVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "un_plan_grid_view",
-    "logicName" : "工单表格视图（待计划）",
-    "name" : "工单表格视图（待计划）",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "NavTestEditView",
-    "logicName" : "内置导航编辑视图（测试）",
-    "name" : "内置导航编辑视图（测试）",
+    "codeName" : "bi_form_ticket_ratio",
+    "logicName" : "BI报表工单占比",
+    "name" : "BI报表工单占比",
     "realModelSubType" : "DEEDITVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "submit_grid_view",
-    "logicName" : "工单表格视图（我提交的）",
-    "name" : "工单表格视图（我提交的）",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "search_mob_md_view",
-    "logicName" : "移动端工单搜索多数据视图",
-    "name" : "移动端工单搜索多数据视图",
-    "realModelSubType" : "DEMOBMDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_ticket_recycle",
-    "logicName" : "工单回收站多数据视图（移动端）",
-    "name" : "工单回收站多数据视图（移动端）",
-    "realModelSubType" : "DEMOBMDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mpick_up_view",
-    "logicName" : "工单实体数据多项选择视图",
-    "modelTag" : "MPICKUPVIEW",
-    "name" : "工单实体数据多项选择视图",
-    "realModelSubType" : "DEMPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mob_my_assignee_md_view",
@@ -14665,16 +14667,22 @@
     "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_cus_re_ticket",
-    "logicName" : "客户关联工单多数据视图（移动端）",
-    "name" : "客户关联工单多数据视图（移动端）",
-    "realModelSubType" : "DEMOBMDVIEW",
+    "codeName" : "idea_re_ticket_statistics_view",
+    "logicName" : "需求关联工单统计视图",
+    "name" : "需求关联工单统计视图",
+    "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "test_all_grid_view",
-    "logicName" : "工单表格视图（全部工单测试）",
-    "name" : "工单表格视图（全部工单测试）",
+    "codeName" : "summary_ticket_grid_view",
+    "logicName" : "我的事项工单表格视图",
+    "name" : "我的事项工单表格视图",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_customer_re_ticket_PickupMDView",
+    "logicName" : "客户关联工单选择视图（移动端）_选择数据视图",
+    "name" : "客户关联工单选择视图（移动端）_选择数据视图",
+    "realModelSubType" : "DEMOBPICKUPMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView",
@@ -14684,10 +14692,10 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_edit_view",
-    "logicName" : "工单移动端编辑视图",
-    "name" : "工单移动端编辑视图",
-    "realModelSubType" : "DEMOBEDITVIEW",
+    "codeName" : "setting_view",
+    "logicName" : "工单设置视图（产品中）",
+    "name" : "工单设置视图（产品中）",
+    "realModelSubType" : "DECUSTOMVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "my_assign_grid_view",
@@ -14696,9 +14704,33 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "pick_up_grid_view",
+    "logicName" : "工单实体选择表格视图（部件视图）",
+    "name" : "工单实体选择表格视图（部件视图）",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_md_view",
+    "logicName" : "工单移动端多数据视图",
+    "name" : "工单移动端多数据视图",
+    "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_ticket_create_option_view",
+    "logicName" : "工单快速新建选项操作视图（移动端）",
+    "name" : "工单快速新建选项操作视图（移动端）",
+    "realModelSubType" : "DEMOBOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "my_attention_grid_view",
     "logicName" : "我关注的工单表格视图",
     "name" : "我关注的工单表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "filter_grid_view",
+    "logicName" : "工单筛选器表格视图",
+    "name" : "工单筛选器表格视图",
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
@@ -14714,45 +14746,39 @@
     "realModelSubType" : "DEMPICKUPVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "idea_re_ticket_statistics_view",
-    "logicName" : "需求关联工单统计视图",
-    "name" : "需求关联工单统计视图",
-    "realModelSubType" : "DEEDITVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "advanced_search_grid_view",
     "logicName" : "工单高级搜索表格视图",
     "name" : "工单高级搜索表格视图",
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "test_main_view",
-    "logicName" : "工单主视图（测试）",
-    "name" : "工单主视图（测试）",
-    "realModelSubType" : "DEEDITVIEW",
+    "codeName" : "product_dyna_tab_exp_view",
+    "logicName" : "工单动态设计分页导航（产品）",
+    "name" : "工单动态设计分页导航（产品）",
+    "realModelSubType" : "DETABEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "NavGridView",
-    "logicName" : "内置导航表格（测试）",
-    "name" : "内置导航表格（测试）",
-    "realModelSubType" : "DEGRIDVIEW",
+    "codeName" : "mob_mpick_up_view",
+    "logicName" : "其他实体关联工单选择视图（移动端）",
+    "name" : "其他实体关联工单选择视图（移动端）",
+    "realModelSubType" : "DEMOBMPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "drill_detail_grid_view",
-    "logicName" : "工单反查表格视图",
-    "name" : "工单反查表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "my_assignee_grid_view",
-    "logicName" : "工单表格视图（我负责的）",
-    "name" : "工单表格视图（我负责的）",
-    "realModelSubType" : "DEGRIDVIEW",
+    "codeName" : "search_mob_md_view",
+    "logicName" : "移动端工单搜索多数据视图",
+    "name" : "移动端工单搜索多数据视图",
+    "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "tags_tciket_grid_view",
     "logicName" : "当前标签下工单",
     "name" : "当前标签下工单",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "all_grid_view",
+    "logicName" : "工单表格视图（全部工单）",
+    "name" : "工单表格视图（全部工单）",
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
@@ -14762,30 +14788,17 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "summary_ticket_grid_view",
-    "logicName" : "我的事项工单表格视图",
-    "name" : "我的事项工单表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "test_ai_main_view",
     "logicName" : "工单编辑视图(测试)",
     "name" : "工单编辑视图(测试)",
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_mpick_up_view",
-    "logicName" : "其他实体关联工单选择视图（移动端）",
-    "name" : "其他实体关联工单选择视图（移动端）",
-    "realModelSubType" : "DEMOBMPICKUPVIEW",
+    "codeName" : "mob_ticket_recycle",
+    "logicName" : "工单回收站多数据视图（移动端）",
+    "name" : "工单回收站多数据视图（移动端）",
+    "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "nav_form",
-    "logicName" : "内置导航表单",
-    "modelTag2" : "0",
-    "name" : "内置导航表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
   }, {
     "codeName" : "Usr10145802_Form",
     "logicName" : "工单快速新建选项操作视图（移动端）_表单",
@@ -14794,10 +14807,31 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
+    "codeName" : "test_ai_main_view_Form",
+    "logicName" : "工单编辑视图(测试)_表单",
+    "modelTag2" : "0",
+    "name" : "工单编辑视图(测试)_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_edit_view_Form",
+    "logicName" : "工单移动端编辑视图_表单",
+    "modelTag2" : "1",
+    "name" : "工单移动端编辑视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "quick_create",
     "logicName" : "工单快速建立视图_表单",
     "modelTag2" : "0",
     "name" : "工单快速建立视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "nav_form",
+    "logicName" : "内置导航表单",
+    "modelTag2" : "0",
+    "name" : "内置导航表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -14815,24 +14849,10 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "mob_create_view_Form",
-    "logicName" : "移动端新建工单编辑视图_表单",
-    "modelTag2" : "1",
-    "name" : "移动端新建工单编辑视图_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
     "codeName" : "idea_re_view_Form",
     "logicName" : "需求关联工单统计视图_表单",
     "modelTag2" : "0",
     "name" : "需求关联工单统计视图_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "test_ai_main_view_Form",
-    "logicName" : "工单编辑视图(测试)_表单",
-    "modelTag2" : "0",
-    "name" : "工单编辑视图(测试)_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -14850,10 +14870,10 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "mob_edit_view_Form",
-    "logicName" : "工单移动端编辑视图_表单",
+    "codeName" : "mob_create_view_Form",
+    "logicName" : "移动端新建工单编辑视图_表单",
     "modelTag2" : "1",
-    "name" : "工单移动端编辑视图_表单",
+    "name" : "移动端新建工单编辑视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {

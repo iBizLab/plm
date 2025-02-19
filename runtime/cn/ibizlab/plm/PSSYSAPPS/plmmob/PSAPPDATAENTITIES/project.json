@@ -19,40 +19,6 @@
         "codeName" : "name"
       }
     } ],
-    "getPSDEUIActionGroup" : {
-      "codeName" : "Usr1221520658",
-      "name" : "自填模式行为组",
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
-      },
-      "getPSUIActionGroupDetails" : [ {
-        "caption" : "项目配置",
-        "detailType" : "DEUIACTION",
-        "name" : "u3fee786",
-        "getPSUIAction" : {
-          "actionTarget" : "NONE",
-          "caption" : "项目配置",
-          "codeName" : "open_global_setting",
-          "frontProcessType" : "OTHER",
-          "fullCodeName" : "project_open_global_setting",
-          "name" : "打开项目配置(全局)",
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
-          },
-          "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
-          "uIActionMode" : "FRONT",
-          "uIActionTag" : "open_global_setting",
-          "uIActionType" : "DEUIACTION",
-          "id" : "open_global_setting@project"
-        },
-        "addSeparator" : false,
-        "showCaption" : true,
-        "showIcon" : true
-      } ],
-      "uniqueTag" : "project__Usr1221520658"
-    },
     "pagingSize" : 50,
     "getTextPSAppDEField" : {
       "name" : "NAME",
@@ -480,7 +446,7 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "UPDATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -875,10 +841,6 @@
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/nothing.json"
     },
-    "getPSDEOPPriv" : {
-      "modelref" : true,
-      "id" : "NONE"
-    },
     "builtinMethod" : false
   }, {
     "actionMode" : "CUSTOM",
@@ -1125,14 +1087,14 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "CREATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
       "id" : "remove_from_project_set"
     },
     "requestField" : "ID",
-    "requestMethod" : "POST",
+    "requestMethod" : "DELETE",
     "requestParamType" : "FIELD",
     "requestPath" : "/remove_from_project_set",
     "builtinMethod" : false
@@ -2113,6 +2075,44 @@
     "requestPath" : "/fetch_user",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_view",
+    "dataSetName" : "VIEW",
+    "dataSetTag" : "VIEW",
+    "methodType" : "FETCH",
+    "name" : "fetch_view",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "VIEW"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_view"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_view",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_work_project",
     "dataSetName" : "work_project",
     "dataSetTag" : "work_project",
@@ -2542,18 +2542,6 @@
     "userTag4" : "INTENAL"
   }, {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[SCOPE_TYPE][所属]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "DROPDOWNLIST",
-        "name" : "[SCOPE_TYPE][所属]",
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT",
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[SCOPE_TYPE][所属]移动端默认",
       "getPSDEFFormItem" : {
@@ -2567,6 +2555,18 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[SCOPE_TYPE][所属]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[SCOPE_TYPE][所属]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
     } ],
     "codeName" : "scope_type",
     "logicName" : "所属",
@@ -2575,17 +2575,6 @@
     "stringLength" : 60
   }, {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[SCOPE_ID][所属对象]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[SCOPE_ID][所属对象]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[SCOPE_ID][所属对象]移动端默认",
       "getPSDEFFormItem" : {
@@ -2598,6 +2587,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[SCOPE_ID][所属对象]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[SCOPE_ID][所属对象]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "codeName" : "scope_id",
     "logicName" : "所属对象",
@@ -2762,6 +2762,16 @@
     "userTag4" : "INTENAL"
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[ALL_WORK_ITEMS][全部工作项数]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[ALL_WORK_ITEMS][全部工作项数]",
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[ALL_WORK_ITEMS][全部工作项数]移动端默认",
       "getPSDEFFormItem" : {
@@ -2773,16 +2783,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[ALL_WORK_ITEMS][全部工作项数]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[ALL_WORK_ITEMS][全部工作项数]",
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "all_work_items",
     "logicName" : "全部工作项数",
@@ -2791,17 +2791,6 @@
     "userTag4" : "INTENAL"
   }, {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[TEMP][临时]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[TEMP][临时]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[TEMP][临时]移动端默认",
       "getPSDEFFormItem" : {
@@ -2814,6 +2803,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[TEMP][临时]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[TEMP][临时]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "codeName" : "temp",
     "logicName" : "临时",
@@ -2881,6 +2881,17 @@
     "stdDataType" : 6
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[ACTUAL_START_AT][实际开始时间]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DATEPICKEREX_NOTIME",
+        "name" : "[ACTUAL_START_AT][实际开始时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[ACTUAL_START_AT][实际开始时间]移动端默认",
       "getPSDEFFormItem" : {
@@ -2893,17 +2904,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[ACTUAL_START_AT][实际开始时间]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "DATEPICKEREX_NOTIME",
-        "name" : "[ACTUAL_START_AT][实际开始时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td"
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "actual_start_at",
     "logicName" : "实际开始时间",
@@ -2943,6 +2943,17 @@
     "valueFormat" : "YYYY-MM-DD"
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[EXPECTED_TIME][预计时间]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[EXPECTED_TIME][预计时间]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[EXPECTED_TIME][预计时间]移动端默认",
       "getPSDEFFormItem" : {
@@ -2955,17 +2966,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[EXPECTED_TIME][预计时间]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[EXPECTED_TIME][预计时间]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "expected_time",
     "logicName" : "预计工时",
@@ -4813,7 +4813,7 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "UPDATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -5208,10 +5208,6 @@
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/nothing.json"
     },
-    "getPSDEOPPriv" : {
-      "modelref" : true,
-      "id" : "NONE"
-    },
     "builtinMethod" : false
   }, {
     "actionMode" : "CUSTOM",
@@ -5458,14 +5454,14 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "CREATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
       "id" : "remove_from_project_set"
     },
     "requestField" : "ID",
-    "requestMethod" : "POST",
+    "requestMethod" : "DELETE",
     "requestParamType" : "FIELD",
     "requestPath" : "/remove_from_project_set",
     "builtinMethod" : false
@@ -6445,6 +6441,44 @@
     "requestPath" : "/fetch_user",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_view",
+    "dataSetName" : "VIEW",
+    "dataSetTag" : "VIEW",
+    "methodType" : "FETCH",
+    "name" : "fetch_view",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "VIEW"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_view"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_view",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_work_project",
     "dataSetName" : "work_project",
     "dataSetTag" : "work_project",
@@ -7400,6 +7434,36 @@
     "tempDataMode" : 2,
     "builtinMethod" : false
   }, {
+    "codeName" : "FetchTempVIEW",
+    "dataSetTag" : "VIEW",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "VIEW",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "VIEWInput",
+      "name" : "VIEWInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "VIEWResult",
+      "name" : "VIEWResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "VIEW"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
     "codeName" : "FetchTempWork_project",
     "dataSetTag" : "work_project",
     "dataSetType" : "DATAQUERY",
@@ -7800,22 +7864,6 @@
     "id" : "mob_setting@project"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "项目配置",
-    "codeName" : "open_global_setting",
-    "frontProcessType" : "OTHER",
-    "fullCodeName" : "project_open_global_setting",
-    "name" : "打开项目配置(全局)",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
-    },
-    "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "open_global_setting",
-    "uIActionType" : "DEUIACTION",
-    "id" : "open_global_setting@project"
-  }, {
-    "actionTarget" : "NONE",
     "caption" : "打开项目移动端列表",
     "codeName" : "open_mob_list_view",
     "getFrontPSAppView" : {
@@ -7868,17 +7916,17 @@
       "topPos" : 210
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
       "codeName" : "ctrl",
       "logicName" : "当前部件",
       "name" : "当前部件",
       "activeCtrlParam" : true,
       "ctrlParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -7975,6 +8023,12 @@
       "topPos" : 318
     } ],
     "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
       "codeName" : "form",
       "logicName" : "表单",
       "name" : "表单",
@@ -7989,12 +8043,6 @@
       "codeName" : "attention",
       "logicName" : "关注数据",
       "name" : "关注数据",
-      "entityParam" : true
-    }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
       "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
@@ -8027,6 +8075,12 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
+      "codeName" : "END1",
+      "leftPos" : 680,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
       "code" : "ibiz.mc.command.update.send({ srfdecodename: 'project', srfkey: params.owner_id})",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 383,
@@ -8045,12 +8099,6 @@
         }
       } ],
       "topPos" : 208
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 680,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
@@ -8066,12 +8114,52 @@
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_kanban_tree_exp_view.json",
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_list_view.json",
+    "viewType" : "DEMOBLISTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_hybrid_tree_exp_view.json",
     "viewType" : "DEMOBTREEEXPVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_waterfall_tree_exp_view.json",
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_scrum_tab_exp_view.json",
+    "viewType" : "DEMOBTABEXPVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_waterfall_tab_exp_view.json",
+    "viewType" : "DEMOBTABEXPVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_baseinfo_over_view.json",
+    "viewType" : "DEMOBEDITVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_create_view.json",
+    "viewType" : "DEMOBEDITVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_project_pickup_view_pickup_md_view.json",
+    "viewType" : "DEMOBPICKUPMDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_redirect_view.json",
+    "viewType" : "DEMOBREDIRECTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_scrum_tree_exp_view.json",
     "viewType" : "DEMOBTREEEXPVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_tree_exp_view.json",
+    "viewType" : "DEMOBTREEEXPVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_move_edit_view.json",
+    "viewType" : "DEMOBEDITVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_edit_view.json",
+    "viewType" : "DEMOBEDITVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_baseinfo_over_view.json",
@@ -8080,6 +8168,18 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_property_edit_view.json",
     "viewType" : "DEEDITVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_setting_view.json",
+    "viewType" : "DEMOBEDITVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_notice_show_view.json",
+    "viewType" : "DEMOBEDITVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_notice_edit_view.json",
+    "viewType" : "DEOPTVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_kanban_tab_exp_view.json",
@@ -8094,75 +8194,23 @@
     "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_project_pickup_view.json",
-    "viewType" : "DEMOBPICKUPVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_create_view.json",
-    "viewType" : "DEMOBEDITVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_notice_edit_view.json",
-    "viewType" : "DEOPTVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_redirect_view.json",
-    "viewType" : "DEMOBREDIRECTVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_tree_exp_view.json",
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_kanban_tree_exp_view.json",
     "viewType" : "DEMOBTREEEXPVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_edit_view.json",
-    "viewType" : "DEMOBEDITVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_move_edit_view.json",
-    "viewType" : "DEMOBEDITVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_project_pickup_view_pickup_md_view.json",
-    "viewType" : "DEMOBPICKUPMDVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_notice_show_view.json",
-    "viewType" : "DEMOBEDITVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_scrum_tab_exp_view.json",
-    "viewType" : "DEMOBTABEXPVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_advanced_setting_view.json",
     "viewType" : "DEMOBEDITVIEW"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_project_pickup_view.json",
+    "viewType" : "DEMOBPICKUPVIEW"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_over_view.json",
     "viewType" : "DEMOBPORTALVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_setting_view.json",
-    "viewType" : "DEMOBEDITVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_hybrid_tree_exp_view.json",
-    "viewType" : "DEMOBTREEEXPVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_waterfall_tab_exp_view.json",
-    "viewType" : "DEMOBTABEXPVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_list_view.json",
-    "viewType" : "DEMOBLISTVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_baseinfo_over_view.json",
-    "viewType" : "DEMOBEDITVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_scrum_tree_exp_view.json",
+    "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/project_mob_waterfall_tree_exp_view.json",
     "viewType" : "DEMOBTREEEXPVIEW"
   } ],
   "getAllPSDEOPPrivs" : [ {
@@ -8276,7 +8324,7 @@
     "uniqueTag" : "project__Usr1012135938",
     "getPSUIActionGroupDetails" : [ {
       "detailType" : "DEUIACTION",
-      "name" : "u5379584",
+      "name" : "u777dd44",
       "getPSSysImage" : {
         "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"16\" height=\"16\">\n  <path d=\"M645.82501221 415.30163575l208.70617675-207.98602296-0.71520995 117.86462403c-0.28674316 9.77563477 7.61682129 18.3968811 17.3908081 18.11013794h12.50546265c9.77563477-0.28756714 17.96594238-6.03643799 18.11013793-15.95544434l0.57595825-175.50247193c0-0.14419555 0.28674316-9.34222412 0.28674317-9.34222411 0.14419555-4.88534546-1.00689697-9.34222412-4.16931153-12.50546265-3.16241455-3.16241455-7.47097778-5.17373657-12.50546264-5.03118897l-8.91210937 0.14419556c-0.14337158 0-0.28344727 0-0.4284668 0.14419556l-174.06628418-0.72097779c-9.77563477 0.28756714-17.96594238 8.34027099-18.11013794 18.25598144v12.50546265c1.43948364 11.64193726 10.63504028 18.39852906 20.40985108 18.11013795l114.7013855 0.28756713-208.13021851 207.26998902c-9.48724365 9.48724365-9.48724365 24.86508179 0 34.35067749 9.48724365 9.63061523 24.86755372 9.63061523 34.35397338 0h-0.00329589zM382.78430175 611.35897827l-208.84872436 207.27163696 0.71932984-117.29443359c0.28756714-9.77151489-7.62011719-18.39358521-17.39410401-18.11013794h-13.22149658c-9.77563477 0.28756714-17.96594238 6.03726196-18.11013794 15.95626831l-0.57595825 175.64666748c0 0.14419555-0.28674316 9.34222412-0.28674316 9.34222413-0.14419555 4.89111328 1.00689697 9.34222412 4.16519164 12.50546264 3.16241455 3.16241455 7.47592163 5.17373657 12.50546265 5.03118897l8.9112854-0.14419556c0.14419555 0 0.28756714 0 0.43258667-0.14419556l174.78561401 0.72015381c9.77151489-0.28756714 17.96594238-8.33615112 18.11013794-18.25598144v-12.50463867c-1.43865967-11.64193726-10.63751221-18.39852906-20.41397094-18.11013794l-114.70220948-0.28756714 207.98684693-207.26504517c9.48724365-9.48724365 9.48724365-24.86837768 0-34.35397339-9.33892823-9.63061523-24.57421875-9.63061523-34.06311036 0.00082398v0zM902.39834594 874.82815552l-0.43176269-175.64666748c-0.28756714-9.77645874-8.34027099-15.66870117-18.11096192-15.95626832h-12.50463867c-9.77645874-0.28344727-17.53665161 8.34027099-17.39492797 18.11013794l0.7201538 117.8687439-208.84954833-207.84512328c-9.48724365-9.48724365-24.86755372-9.48724365-34.35397339-1e-8-9.48312378 9.48641968-9.48312378 24.86755372 0 34.35397339l207.98931885 207.26422119-114.70138551 0.28756714c-9.77563477-0.28756714-18.82946777 6.61157227-20.41314696 18.11013794v12.50546264c0.28674316 9.77563477 8.34027099 17.96594238 18.11013794 18.25598146l174.06710815-0.72015382c0.14337158 0 0.28674316 0.14419555 0.43176269 0.14419556l8.91210938 0.14419555c4.88452148 0.14337158 9.34222412-1.72457886 12.50463867-5.03118896 3.16241455-3.16241455 4.31103516-7.61599732 4.16601562-12.50546265 0 0-0.14419555-9.19885254-0.14419555-9.34222412h0.00411987zM209.00970459 173.68179321l114.70138549-0.28756714c9.77151489 0.28756714 18.82617188-6.61157227 20.40985109-18.11013794v-12.5071106c-0.28756714-9.77563477-8.33615112-17.96594238-18.11013794-18.25598144l-174.92651368 0.72015381c-0.14419555 0-0.28756714-0.14419555-0.43258667-0.14419555l-8.91046142-0.14419557c-4.89111328-0.14337158-9.34222412 1.72457886-12.50546265 5.03118898-3.16241455 3.16241455-4.31515503 7.61599732-4.16519165 12.50546264 0 0 0.28674316 9.19885254 0.28674316 9.34222413l0.4284668 175.64666747c0.14419555 9.77233887 8.34027099 15.66870117 18.11013794 15.95214844h13.22561645c9.77563477 0.28674316 17.53582763-8.33615112 17.38998414-18.11013794l-0.57513429-117.28948974 208.70947266 207.41500854c9.48229981 9.48724365 24.86425781 9.48724365 34.34985351 0 9.48724365-9.48724365 9.48724365-24.86755372 0-34.35397339l-207.98684691-207.40759278zM209.00970459 173.68179321z\" fill=\"#272636\"></path>\n</svg>"
       },
@@ -8292,30 +8340,6 @@
         },
         "modelref" : true,
         "id" : "full_screen@project"
-      }
-    } ]
-  }, {
-    "codeName" : "Usr1221520658",
-    "name" : "自填模式行为组",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
-    },
-    "uniqueTag" : "project__Usr1221520658",
-    "getPSUIActionGroupDetails" : [ {
-      "caption" : "项目配置",
-      "detailType" : "DEUIACTION",
-      "name" : "u3fee786",
-      "addSeparator" : false,
-      "showCaption" : true,
-      "showIcon" : true,
-      "getPSUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
-        },
-        "modelref" : true,
-        "id" : "open_global_setting@project"
       }
     } ]
   } ]

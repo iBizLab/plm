@@ -130,15 +130,14 @@
             "contenttype" : "HTML",
             "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
           },
-          "editorStyle" : "COMMENT_ITEM",
+          "editorStyle" : "MOB_COMMENT_ITEM",
           "editorType" : "RAW",
           "name" : "content",
           "getPSSysPFPlugin" : {
             "pluginType" : "EDITOR_CUSTOMSTYLE",
-            "pluginCode" : "COMMENT_ITEM",
+            "pluginCode" : "MOB_COMMENT_ITEM",
             "runtimeObject" : true
-          },
-          "predefinedType" : "FIELD_TEXT_DYNAMIC"
+          }
         },
         "getPSLayoutPos" : {
           "grow" : -1,
@@ -205,7 +204,7 @@
       } ]
     } ],
     "name" : "mdctrl_itempanel",
-    "modelid" : "0FC3F946-BCD0-4236-81D5-84517E93FC14",
+    "modelid" : "7a6954427bc25b6dc1c6757778b93cdb",
     "modeltype" : "PSSYSVIEWPANEL"
   },
   "logicName" : "List2",
@@ -278,6 +277,6 @@
   "noSort" : false,
   "showHeader" : true,
   "singleSelect" : false,
-  "modelid" : "5962FD73-2415-4593-8F62-8ECA741C5526",
+  "modelid" : "95bd8a1e8e8f4a819d3f91e4455c3277",
   "modeltype" : "PSDELIST"
 }

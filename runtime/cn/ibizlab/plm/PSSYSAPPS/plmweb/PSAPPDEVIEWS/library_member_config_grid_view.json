@@ -100,17 +100,6 @@
     "value" : "display_name:name"
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "EDITDATA",
-    "realTitle" : "测试库成员数据重定向视图",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.LIBRARY_MEMBER.REDIRECTVIEW"
-    },
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_member_redirect_view.json",
-      "viewType" : "DEREDIRECTVIEW"
-    }
-  }, {
     "name" : "NEWDATA",
     "realTitle" : "测试库成员编辑视图",
     "getRealTitlePSLanguageRes" : {
@@ -120,6 +109,17 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_member_edit_view.json",
       "viewType" : "DEEDITVIEW"
+    }
+  }, {
+    "name" : "EDITDATA",
+    "realTitle" : "测试库成员数据重定向视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.LIBRARY_MEMBER.REDIRECTVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_member_redirect_view.json",
+      "viewType" : "DEREDIRECTVIEW"
     }
   }, {
     "name" : "MPICKUPVIEW:LIBRARY"
@@ -546,7 +546,7 @@
       "enableSort" : true
     }, {
       "align" : "LEFT",
-      "cLConvertMode" : "NONE",
+      "cLConvertMode" : "FRONT",
       "caption" : "职位",
       "codeName" : "title",
       "columnType" : "DEFGRIDCOLUMN",
@@ -554,6 +554,10 @@
       "excelCaption" : "职位",
       "name" : "title",
       "noPrivDisplayMode" : 1,
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__position.json"
+      },
       "getPSAppDEField" : {
         "name" : "TITLE",
         "codeName" : "title"
@@ -843,7 +847,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "config_grid_view",
-  "getPSDEViewId" : "79d71dc6bf49a2dba926ae1424887d46",
+  "getPSDEViewId" : "ca019a3f0e52d6b2735ac2c8aeab5bf8",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEGRIDVIEW",
@@ -870,9 +874,53 @@
   "enableRowEdit" : false,
   "enableSearch" : true,
   "rowEditDefault" : false,
-  "modelid" : "ba06938c3f112aa7f1884f0e339cdbed",
+  "modelid" : "d2683379149127c1a070453576eb7f37",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "users",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "department",
+    "majorDEName" : "DEPARTMENT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/department.json"
+    },
+    "minorDECodeName" : "user",
+    "minorDEName" : "USER",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+    },
+    "name" : "DER1N_USER_DEPARTMENT_DEPARTMENT_ID",
+    "getParentPSAppDEField" : {
+      "name" : "DEPARTMENT_ID",
+      "codeName" : "department_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "library_members",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "user",
+    "majorDEName" : "USER",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+    },
+    "minorDECodeName" : "library_member",
+    "minorDEName" : "LIBRARY_MEMBER",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library_member.json"
+    },
+    "name" : "DER1N_LIBRARY_MEMBER_USER_USER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "USER_ID",
+      "codeName" : "user_id"
+    },
+    "rSMode" : 2
+  } ], [ {
     "actionRSMode" : 1,
     "codeName" : "library_members",
     "dataRSMode" : 0,

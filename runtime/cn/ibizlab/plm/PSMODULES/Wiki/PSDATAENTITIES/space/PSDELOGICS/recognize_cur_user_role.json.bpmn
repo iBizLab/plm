@@ -24,24 +24,24 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spacerecognize_cur_user_roleprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="获取项目ID并设置过滤参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spacerecognize_cur_user_roleprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="获取产品ID并设置过滤参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spacerecognize_cur_user_rolededataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="查询当前用户是否为产品成员"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spacerecognize_cur_user_rolededataset3" id="dedataset3" implementation="http://www.jboss.org/drools/rule" name="查询当前用户是否为项目成员"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spacerecognize_cur_user_roleprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="返回系统管理员权限"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spacerecognize_cur_user_roleend2" id="end2" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end2_end" name="end"/>
                         <sequenceFlow id="end2_end_line" sourceRef="end2" targetRef="end2_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spacerecognize_cur_user_rolededataset3" id="dedataset3" implementation="http://www.jboss.org/drools/rule" name="查询当前用户是否为项目成员"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spacerecognize_cur_user_roleprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="只读参数设置为空"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spacerecognize_cur_user_roleprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="绑定用户数据到for_obj"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spacerecognize_cur_user_rolerawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="只读权限"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spacerecognize_cur_user_rolerawsfcode4" id="rawsfcode4" implementation="http://www.jboss.org/drools/rule" name="只读权限"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spacerecognize_cur_user_rolerawsfcode6" id="rawsfcode6" implementation="http://www.jboss.org/drools/rule" name="普通用户"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spacerecognize_cur_user_roleprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="绑定用户数据到for_obj"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spacerecognize_cur_user_rolerawsfcode5" id="rawsfcode5" implementation="http://www.jboss.org/drools/rule" name="管理员"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spacerecognize_cur_user_rolerawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="只读权限"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spacerecognize_cur_user_rolerawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="管理员"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spacerecognize_cur_user_rolerawsfcode3" id="rawsfcode3" implementation="http://www.jboss.org/drools/rule" name="判断系统管理员身份"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spacerecognize_cur_user_rolerawsfcode5" id="rawsfcode5" implementation="http://www.jboss.org/drools/rule" name="管理员"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spacerecognize_cur_user_rolerawsfcode7" id="rawsfcode7" implementation="http://www.jboss.org/drools/rule" name="普通用户"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spacerecognize_cur_user_roleend6" id="end6" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end6_end" name="end"/>
                         <sequenceFlow id="end6_end_line" sourceRef="end6" targetRef="end6_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spacerecognize_cur_user_rolerawsfcode3" id="rawsfcode3" implementation="http://www.jboss.org/drools/rule" name="判断系统管理员身份"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="spacerecognize_cur_user_rolerawsfcode4" id="rawsfcode4" implementation="http://www.jboss.org/drools/rule" name="只读权限"/>
                     <sequenceFlow id="begin_prepareparam4" sourceRef="begin" targetRef="prepareparam4">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam2_dedataset3" sourceRef="prepareparam2" targetRef="dedataset3">
@@ -74,8 +74,6 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam3_end2" sourceRef="prepareparam3" targetRef="end2">
-                    </sequenceFlow>
                     <sequenceFlow id="gateway-dedataset3_rawsfcode1" sourceRef="gateway-dedataset3" targetRef="rawsfcode1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $spacerecognize_cur_user_roledefault:space();
@@ -101,6 +99,8 @@
                                 eval((RuleUtils.test($spacerecognize_cur_user_rolemembers.get("size"),"EQ","1")))
                                 ]]>
                             </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_end2" sourceRef="prepareparam3" targetRef="end2">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam4_rawsfcode3" sourceRef="prepareparam4" targetRef="rawsfcode3">
                     </sequenceFlow>
@@ -131,6 +131,10 @@
                             </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam5_rawsfcode7" sourceRef="prepareparam5" targetRef="rawsfcode7">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_end6" sourceRef="rawsfcode1" targetRef="end6">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode4_end6" sourceRef="rawsfcode4" targetRef="end6">
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode6_end6" sourceRef="rawsfcode6" targetRef="end6">
                     </sequenceFlow>
@@ -173,13 +177,7 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="rawsfcode5_end6" sourceRef="rawsfcode5" targetRef="end6">
-                    </sequenceFlow>
-                    <sequenceFlow id="rawsfcode1_end6" sourceRef="rawsfcode1" targetRef="end6">
-                    </sequenceFlow>
                     <sequenceFlow id="rawsfcode2_end6" sourceRef="rawsfcode2" targetRef="end6">
-                    </sequenceFlow>
-                    <sequenceFlow id="rawsfcode7_end6" sourceRef="rawsfcode7" targetRef="end6">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-rawsfcode3_prepareparam2" sourceRef="gateway-rawsfcode3" targetRef="prepareparam2">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
@@ -220,7 +218,9 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="rawsfcode4_end6" sourceRef="rawsfcode4" targetRef="end6">
+                    <sequenceFlow id="rawsfcode5_end6" sourceRef="rawsfcode5" targetRef="end6">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode7_end6" sourceRef="rawsfcode7" targetRef="end6">
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-dedataset2" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset2_end_line"></exclusiveGateway>
                             <sequenceFlow id="dedataset2_gateway-dedataset2_gatewayline" sourceRef="dedataset2" targetRef="gateway-dedataset2"></sequenceFlow>

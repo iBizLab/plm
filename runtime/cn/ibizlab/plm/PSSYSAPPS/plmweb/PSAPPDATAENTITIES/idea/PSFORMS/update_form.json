@@ -1,5 +1,4 @@
 {
-  "autoSaveMode" : 1,
   "codeName" : "update_form",
   "controlType" : "FORM",
   "getCreatePSControlAction" : {
@@ -207,9 +206,9 @@
           "getPSEditor" : {
             "editorHeight" : 600.0,
             "editorParams" : {
-              "SAVEINTERVAL" : "3000",
               "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
               "MAXHEIGHT" : "600",
+              "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
               "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
               "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
               "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
@@ -217,7 +216,6 @@
               "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
               "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
               "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
-              "EMITMODE" : "AUTOMATIC",
               "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
               "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
               "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
@@ -907,8 +905,7 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
     }
   },
-  "enableAutoSave" : true,
   "noTabHeader" : true,
-  "modelid" : "C528E568-C725-49E4-91C2-9457793E6FF2",
+  "modelid" : "7196107c16093c7cebf7761fa64db43b",
   "modeltype" : "PSDEFORM_EDITFORM"
 }

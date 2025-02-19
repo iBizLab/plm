@@ -30,13 +30,13 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallyend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallyloopsubcall2" id="loopsubcall2" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallydebugparam4" id="debugparam4" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallydebugparam3" id="debugparam3" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallydedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取评审内容数据集"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallyloopsubcall2" id="loopsubcall2" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallyprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="绑定评审结果"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallyloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallydebugparam3" id="debugparam3" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallydeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="处理每一个内容"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallydedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取评审内容数据集"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallyprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="设置评审内容过滤器"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallydebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallyprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="设置拒绝"/>
@@ -52,28 +52,7 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam5_deaction1" sourceRef="prepareparam5" targetRef="deaction1">
                     </sequenceFlow>
-                    <sequenceFlow id="loopsubcall2_debugparam4" sourceRef="loopsubcall2" targetRef="debugparam4">
-                    </sequenceFlow>
                     <sequenceFlow id="debugparam4_prepareparam1" sourceRef="debugparam4" targetRef="prepareparam1">
-                    </sequenceFlow>
-                    <sequenceFlow id="prepareparam1_loopsubcall1" sourceRef="prepareparam1" targetRef="loopsubcall1">
-                    </sequenceFlow>
-                    <sequenceFlow id="loopsubcall1_debugparam2" sourceRef="loopsubcall1" targetRef="debugparam2">
-                    </sequenceFlow>
-                    <sequenceFlow id="gateway-loopsubcall1_debugparam3" sourceRef="gateway-loopsubcall1" targetRef="debugparam3">
-                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
-                                            $review_contentgenerate_review_result_finallydefault:review_content();
-                                            $review_contentgenerate_review_result_finallycur_result:review_result();
-                                            $review_contentgenerate_review_result_finallyfilter_content:review_content();
-                                            $review_contentgenerate_review_result_finallyfinally_result:review_content();
-                                            $review_contentgenerate_review_result_finallyfor_content:review_content();
-                                            $review_contentgenerate_review_result_finallyreview_content_page:review_content();
-                                            $review_contentgenerate_review_result_finallystage_results:review_result();
-                                            $review_contentgenerate_review_result_finallytest_case:test_case();
-                                    eval($review_contentgenerate_review_result_finallydefault==review_contentgenerate_review_result_finallydefault && $review_contentgenerate_review_result_finallycur_result==review_contentgenerate_review_result_finallycur_result && $review_contentgenerate_review_result_finallyfilter_content==review_contentgenerate_review_result_finallyfilter_content && $review_contentgenerate_review_result_finallyfinally_result==review_contentgenerate_review_result_finallyfinally_result && $review_contentgenerate_review_result_finallyfor_content==review_contentgenerate_review_result_finallyfor_content && $review_contentgenerate_review_result_finallyreview_content_page==review_contentgenerate_review_result_finallyreview_content_page && $review_contentgenerate_review_result_finallystage_results==review_contentgenerate_review_result_finallystage_results && $review_contentgenerate_review_result_finallytest_case==review_contentgenerate_review_result_finallytest_case);
-                                eval((RuleUtils.test($review_contentgenerate_review_result_finallyfinally_result.get("finalStageResults"),"NOTEQ","false")))
-                                ]]>
-                            </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="gateway-debugparam3_prepareparam5" sourceRef="gateway-debugparam3" targetRef="prepareparam5">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
@@ -105,9 +84,30 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="deaction1_end1" sourceRef="deaction1" targetRef="end1">
-                    </sequenceFlow>
                     <sequenceFlow id="dedataset1_loopsubcall2" sourceRef="dedataset1" targetRef="loopsubcall2">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall2_debugparam4" sourceRef="loopsubcall2" targetRef="debugparam4">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_loopsubcall1" sourceRef="prepareparam1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_debugparam2" sourceRef="loopsubcall1" targetRef="debugparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall1_debugparam3" sourceRef="gateway-loopsubcall1" targetRef="debugparam3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $review_contentgenerate_review_result_finallydefault:review_content();
+                                            $review_contentgenerate_review_result_finallycur_result:review_result();
+                                            $review_contentgenerate_review_result_finallyfilter_content:review_content();
+                                            $review_contentgenerate_review_result_finallyfinally_result:review_content();
+                                            $review_contentgenerate_review_result_finallyfor_content:review_content();
+                                            $review_contentgenerate_review_result_finallyreview_content_page:review_content();
+                                            $review_contentgenerate_review_result_finallystage_results:review_result();
+                                            $review_contentgenerate_review_result_finallytest_case:test_case();
+                                    eval($review_contentgenerate_review_result_finallydefault==review_contentgenerate_review_result_finallydefault && $review_contentgenerate_review_result_finallycur_result==review_contentgenerate_review_result_finallycur_result && $review_contentgenerate_review_result_finallyfilter_content==review_contentgenerate_review_result_finallyfilter_content && $review_contentgenerate_review_result_finallyfinally_result==review_contentgenerate_review_result_finallyfinally_result && $review_contentgenerate_review_result_finallyfor_content==review_contentgenerate_review_result_finallyfor_content && $review_contentgenerate_review_result_finallyreview_content_page==review_contentgenerate_review_result_finallyreview_content_page && $review_contentgenerate_review_result_finallystage_results==review_contentgenerate_review_result_finallystage_results && $review_contentgenerate_review_result_finallytest_case==review_contentgenerate_review_result_finallytest_case);
+                                eval((RuleUtils.test($review_contentgenerate_review_result_finallyfinally_result.get("finalStageResults"),"NOTEQ","false")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_end1" sourceRef="deaction1" targetRef="end1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam7_dedataset1" sourceRef="prepareparam7" targetRef="dedataset1">
                     </sequenceFlow>
@@ -160,14 +160,14 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam3_end2" sourceRef="prepareparam3" targetRef="end2">
                     </sequenceFlow>
-                            <exclusiveGateway id="gateway-loopsubcall1" name="Gateway" gatewayDirection="Diverging" default="gateway-loopsubcall1_end_line"></exclusiveGateway>
-                            <sequenceFlow id="loopsubcall1_gateway-loopsubcall1_gatewayline" sourceRef="loopsubcall1" targetRef="gateway-loopsubcall1"></sequenceFlow>
-                            <sequenceFlow id="gateway-loopsubcall1_end_line" sourceRef="gateway-loopsubcall1" targetRef="gateway-loopsubcall1_end"/>
-                            <endEvent id="gateway-loopsubcall1_end" name="end"/>
                             <exclusiveGateway id="gateway-debugparam3" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam3_end_line"></exclusiveGateway>
                             <sequenceFlow id="debugparam3_gateway-debugparam3_gatewayline" sourceRef="debugparam3" targetRef="gateway-debugparam3"></sequenceFlow>
                             <sequenceFlow id="gateway-debugparam3_end_line" sourceRef="gateway-debugparam3" targetRef="gateway-debugparam3_end"/>
                             <endEvent id="gateway-debugparam3_end" name="end"/>
+                            <exclusiveGateway id="gateway-loopsubcall1" name="Gateway" gatewayDirection="Diverging" default="gateway-loopsubcall1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="loopsubcall1_gateway-loopsubcall1_gatewayline" sourceRef="loopsubcall1" targetRef="gateway-loopsubcall1"></sequenceFlow>
+                            <sequenceFlow id="gateway-loopsubcall1_end_line" sourceRef="gateway-loopsubcall1" targetRef="gateway-loopsubcall1_end"/>
+                            <endEvent id="gateway-loopsubcall1_end" name="end"/>
                             <exclusiveGateway id="gateway-debugparam2" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam2_end_line"></exclusiveGateway>
                             <sequenceFlow id="debugparam2_gateway-debugparam2_gatewayline" sourceRef="debugparam2" targetRef="gateway-debugparam2"></sequenceFlow>
                             <sequenceFlow id="gateway-debugparam2_end_line" sourceRef="gateway-debugparam2" targetRef="gateway-debugparam2_end"/>

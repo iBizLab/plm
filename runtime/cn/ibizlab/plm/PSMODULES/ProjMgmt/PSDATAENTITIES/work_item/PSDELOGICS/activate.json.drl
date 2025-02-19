@@ -50,18 +50,6 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.activate;
                         update(work_itemactivatework_item_page);//更新fact中变量值
             end
 
-            //逻辑处理节点[查询下级工作项]
-            rule "dedataset1"
-            ruleflow-group "work_itemactivatededataset1"
-            when
-            then
-                        update(work_itemactivatedefault);//更新fact中变量值
-                        update(work_itemactivatefor_temp_obj);//更新fact中变量值
-                        update(work_itemactivatep_work_item);//更新fact中变量值
-                        update(work_itemactivatework_item_filter);//更新fact中变量值
-                        update(work_itemactivatework_item_page);//更新fact中变量值
-            end
-
             //逻辑处理节点[设置父工作项非叶子节点]
             rule "prepareparam3"
             ruleflow-group "work_itemactivateprepareparam3"
@@ -95,6 +83,18 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.activate;
             when
             then
                             work_itemactivatework_item_filter.set("n_pid_eq",work_itemactivatedefault.get("id"));
+                        update(work_itemactivatedefault);//更新fact中变量值
+                        update(work_itemactivatefor_temp_obj);//更新fact中变量值
+                        update(work_itemactivatep_work_item);//更新fact中变量值
+                        update(work_itemactivatework_item_filter);//更新fact中变量值
+                        update(work_itemactivatework_item_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询下级工作项]
+            rule "dedataset1"
+            ruleflow-group "work_itemactivatededataset1"
+            when
+            then
                         update(work_itemactivatedefault);//更新fact中变量值
                         update(work_itemactivatefor_temp_obj);//更新fact中变量值
                         update(work_itemactivatep_work_item);//更新fact中变量值

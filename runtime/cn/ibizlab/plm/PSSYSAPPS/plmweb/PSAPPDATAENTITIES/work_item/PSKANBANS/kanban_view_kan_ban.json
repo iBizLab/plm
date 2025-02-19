@@ -393,7 +393,6 @@
     } ],
     "uniqueTag" : "work_item__Usr1219683065"
   },
-  "hookEventNames" : [ "ONLOADSUCCESS", "ONSELECTIONCHANGE" ],
   "getItemPSLayoutPanel" : {
     "getAllPSPanelFields" : [ {
       "id" : "work_item_type_id",
@@ -659,7 +658,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "面板成员[assignee_name][面板显示]逻辑",
               "getPSPanelItemLogics" : [ {
                 "condOp" : "ISNOTNULL",
                 "dstModelField" : "ASSIGNEE_NAME",
@@ -747,7 +745,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "面板成员[state][面板显示]逻辑",
               "getPSPanelItemLogics" : [ {
                 "condOp" : "ISNOTNULL",
                 "dstModelField" : "STATE",
@@ -781,7 +778,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "面板成员[container7][面板显示]逻辑",
               "getPSPanelItemLogics" : [ {
                 "condOp" : "ISNOTNULL",
                 "dstModelField" : "START_AT",
@@ -878,7 +874,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "面板成员[container5][面板显示]逻辑",
               "getPSPanelItemLogics" : [ {
                 "condOp" : "ISNOTNULL",
                 "dstModelField" : "END_AT",
@@ -978,52 +973,11 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
   },
-  "getPSControlLogics" : [ {
-    "eventNames" : "onLoadSuccess",
-    "logicTag" : "kanban",
-    "logicType" : "APPDEUILOGIC",
-    "name" : "logic4",
-    "getPSAppDEUILogic" : {
-      "modelref" : true,
-      "id" : "calc_kanban_item_action_state"
-    },
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-    }
-  }, {
-    "eventNames" : "onSelectionChange",
-    "logicTag" : "kanban",
-    "logicType" : "APPDEUILOGIC",
-    "name" : "logic2",
-    "getPSAppDEUILogic" : {
-      "modelref" : true,
-      "id" : "calc_kanban_item_action_state"
-    },
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-    }
-  } ],
   "getPSDEDataImport" : {
     "modelref" : true,
     "id" : "import_work_item_waterfall"
   },
   "getPSDEDataViewDataItems" : [ {
-    "dataType" : 25,
-    "name" : "identifier",
-    "getPSAppDEField" : {
-      "name" : "IDENTIFIER",
-      "codeName" : "identifier"
-    }
-  }, {
-    "dataType" : 25,
-    "name" : "title",
-    "getPSAppDEField" : {
-      "name" : "TITLE",
-      "codeName" : "title"
-    }
-  }, {
     "dataType" : 25,
     "name" : "srfkey",
     "getPSAppDEField" : {
@@ -1134,26 +1088,6 @@
     "name" : "srfmstag"
   } ],
   "getPSDEDataViewItems" : [ {
-    "caption" : "编号",
-    "dataItemName" : "identifier",
-    "itemType" : "DATAITEM",
-    "name" : "IDENTIFIER",
-    "getPSAppDEField" : {
-      "name" : "IDENTIFIER",
-      "codeName" : "identifier"
-    },
-    "enableSort" : true
-  }, {
-    "caption" : "标题",
-    "dataItemName" : "title",
-    "itemType" : "DATAITEM",
-    "name" : "TITLE",
-    "getPSAppDEField" : {
-      "name" : "TITLE",
-      "codeName" : "title"
-    },
-    "enableSort" : true
-  }, {
     "dataItemName" : "operate",
     "itemType" : "ACTIONITEM",
     "name" : "OPERATE",
@@ -1363,45 +1297,6 @@
           "enableConfirm" : true,
           "reloadData" : true,
           "id" : "archive@work_item"
-        },
-        "addSeparator" : false,
-        "showCaption" : true,
-        "showIcon" : true
-      }, {
-        "actionLevel" : 250,
-        "caption" : "激活",
-        "detailType" : "DEUIACTION",
-        "name" : "u0fe1155",
-        "getPSSysImage" : {
-          "cssClass" : "key"
-        },
-        "getPSUIAction" : {
-          "actionTarget" : "MULTIKEY",
-          "caption" : "激活",
-          "codeName" : "activate",
-          "confirmMsg" : "确认激活？",
-          "fullCodeName" : "work_item_activate",
-          "name" : "激活",
-          "getPSAppDEMethod" : {
-            "modelref" : true,
-            "id" : "activate"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-          },
-          "getPSSysImage" : {
-            "cssClass" : "key"
-          },
-          "refreshMode" : 1,
-          "successMsg" : "激活成功",
-          "timeout" : 60000,
-          "uIActionMode" : "BACKEND",
-          "uIActionTag" : "activate",
-          "uIActionType" : "DEUIACTION",
-          "enableConfirm" : true,
-          "reloadData" : true,
-          "id" : "activate@work_item"
         },
         "addSeparator" : false,
         "showCaption" : true,
@@ -2770,8 +2665,8 @@
                   "detailType" : "FORMITEM",
                   "enableCond" : 3,
                   "ignoreInput" : 0,
-                  "labelPos" : "TOP",
-                  "labelWidth" : 130,
+                  "labelPos" : "NONE",
+                  "labelWidth" : 0,
                   "name" : "board_name",
                   "noPrivDisplayMode" : 1,
                   "getPSAppDEField" : {
@@ -2830,8 +2725,7 @@
                     "layout" : "TABLE_24COL"
                   },
                   "valueItemName" : "board_id",
-                  "allowEmpty" : false,
-                  "showCaption" : true
+                  "allowEmpty" : false
                 }, {
                   "caption" : "看板标识",
                   "codeName" : "board_id",
@@ -3009,7 +2903,7 @@
       }, {
         "caption" : "移入发布",
         "detailType" : "DEUIACTION",
-        "name" : "u683f35b",
+        "name" : "ub66f18a",
         "getPSSysImage" : {
           "glyph" : "xf1d9@FontAwesome",
           "cssClass" : "fa fa-send-o"

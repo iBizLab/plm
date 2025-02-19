@@ -193,10 +193,10 @@
     "builtinAction" : true
   }, {
     "actionHolder" : 1,
-    "actionMode" : "CUSTOM",
+    "actionMode" : "GETDRAFT",
     "actionType" : "DELOGIC",
     "codeName" : "delete_categories",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "DELETE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDEACTIONS/delete_categories.json",
     "logicName" : "删除类别",
     "name" : "delete_categories",
@@ -210,7 +210,11 @@
     },
     "getPSDEActionReturn" : {
       "name" : "Delete_categoriesResult",
-      "type" : "VOID"
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_plan_dto"
+      },
+      "type" : "DTO"
     },
     "getPSDELogic" : {
       "modelref" : true,
@@ -274,7 +278,7 @@
     "actionMode" : "READ",
     "actionType" : "DELOGIC",
     "codeName" : "test_plan_report_survey",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDEACTIONS/test_plan_report_survey.json",
     "logicName" : "测试报告概览数据源",
     "name" : "test_plan_report_survey",
@@ -546,6 +550,55 @@
       "id" : "bi_search_group"
     },
     "viewLevel" : 100
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDEDATAQUERIES/cur_project/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "cur_project",
+    "logicName" : "当前项目",
+    "name" : "cur_project",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "TEST_PLAN",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "n_project_id_eq",
+          "fieldName" : "PROJECT_ID",
+          "name" : "(PROJECT_ID) 等于(=) 网页请求上下文 n_project_id_eq",
+          "getPSDEField" : {
+            "name" : "PROJECT_ID",
+            "codeName" : "project_id"
+          },
+          "getPSVARTypeId" : "WEBCONTEXT"
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Cur_projectInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "test_plan_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Cur_projectResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_plan_dto"
+      },
+      "type" : "DTOS"
+    }
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
@@ -1040,6 +1093,32 @@
       "id" : "bi_search_group"
     },
     "viewLevel" : 100,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "cur_project",
+    "logicName" : "当前项目",
+    "name" : "cur_project",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "cur_project"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Cur_projectInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "test_plan_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Cur_projectResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_plan_dto"
+      },
+      "type" : "PAGE"
+    },
     "enableBackend" : true,
     "enableFront" : true
   }, {
@@ -2133,17 +2212,6 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[CATEGORIES_NAME][类别]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTAREA_10",
-        "name" : "[CATEGORIES_NAME][类别]",
-        "stringLength" : 2000,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[CATEGORIES_NAME][类别]移动端默认",
       "getPSDEFFormItem" : {
@@ -2156,6 +2224,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[CATEGORIES_NAME][类别]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTAREA_10",
+        "name" : "[CATEGORIES_NAME][类别]",
+        "stringLength" : 2000,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -2694,6 +2773,24 @@
       "standardColumnName" : "`LIBRARY_IS_DELETED`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[LIBRARY_IS_DELETED][测试库是否删除]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[LIBRARY_IS_DELETED][测试库是否删除]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
+        },
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[LIBRARY_IS_DELETED][测试库是否删除]移动端默认",
       "getPSDEFFormItem" : {
@@ -2713,24 +2810,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[LIBRARY_IS_DELETED][测试库是否删除]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[LIBRARY_IS_DELETED][测试库是否删除]",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
-        },
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -6612,9 +6691,6 @@
     "name" : "DELETE"
   }, {
     "logicName" : "开始",
-    "name" : "IN_PROGRESS"
-  }, {
-    "logicName" : "开始",
     "mapPSDEName" : "LIBRARY",
     "mapPSDEOPPrivName" : "SUBDATA",
     "getMapPSDER" : {
@@ -6627,6 +6703,9 @@
     },
     "name" : "IN_PROGRESS",
     "id" : "library__IN_PROGRESS"
+  }, {
+    "logicName" : "开始",
+    "name" : "IN_PROGRESS"
   }, {
     "logicName" : "读取",
     "mapPSDEName" : "LIBRARY",
@@ -6644,6 +6723,20 @@
   }, {
     "logicName" : "读取",
     "name" : "READ"
+  }, {
+    "logicName" : "读取",
+    "mapPSDEName" : "PROJECT",
+    "mapPSDEOPPrivName" : "READ",
+    "getMapPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDERS/DER1N_TEST_PLAN_PROJECT_PROJECT_ID.json"
+    },
+    "getMapPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+    },
+    "name" : "READ",
+    "id" : "project__READ"
   }, {
     "logicName" : "更新",
     "name" : "UPDATE"
@@ -6679,6 +6772,59 @@
     "reportType" : "DESYSBIREPORTS",
     "sysUniResCode" : "LIBRARY"
   } ],
+  "getAllPSDEUserRoles" : [ {
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDEUSERROLES/ALL_R.json",
+    "name" : "全部数据（读）",
+    "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "READ",
+      "name" : "READ",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ"
+      }
+    } ],
+    "roleTag" : "ALL_R",
+    "userCat" : "CAT1",
+    "userDRAction" : "READ",
+    "allData" : true
+  }, {
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDEUSERROLES/ALL_RW.json",
+    "name" : "全部数据（读写）",
+    "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "READ",
+      "name" : "READ",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "library__READ"
+      }
+    }, {
+      "dataAccessAction" : "DELETE",
+      "name" : "DELETE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "library__DELETE"
+      }
+    }, {
+      "dataAccessAction" : "CREATE",
+      "name" : "CREATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "CREATE"
+      }
+    }, {
+      "dataAccessAction" : "UPDATE",
+      "name" : "UPDATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "UPDATE"
+      }
+    } ],
+    "roleTag" : "ALL_RW",
+    "userCat" : "CAT1",
+    "userDRAction" : "READ",
+    "allData" : true,
+    "systemReserved" : true
+  } ],
   "getAllPSDEUtils" : [ {
     "codeName" : "Usr0417764210",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDEUTILDES/Usr0417764210.json",
@@ -6691,9 +6837,9 @@
     "utilType" : "NOTIFYSETTING"
   } ],
   "getAllPSModelDatas" : [ {
-    "codeName" : "all_grid_view",
-    "logicName" : "测试计划表格视图（全部计划）",
-    "name" : "测试计划表格视图（全部计划）",
+    "codeName" : "drill_detail_grid_view",
+    "logicName" : "测试计划反查表格视图",
+    "name" : "测试计划反查表格视图",
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
@@ -6703,28 +6849,23 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "update_option_view",
+    "logicName" : "测试计划编辑视图",
+    "modelTag" : "EDITVIEW",
+    "name" : "测试计划编辑视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "EditView",
     "logicName" : "测试计划实体编辑视图",
     "name" : "测试计划实体编辑视图",
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "pick_up_grid_view",
-    "logicName" : "测试计划实体选择表格视图（部件视图）",
-    "name" : "测试计划实体选择表格视图（部件视图）",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "categories_pick_up_tree_view",
-    "logicName" : "测试计划类别数据选择树视图",
-    "name" : "测试计划类别数据选择树视图",
-    "realModelSubType" : "DEPICKUPTREEVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "in_progress_grid_view",
-    "logicName" : "进行中的测试计划",
-    "name" : "进行中的测试计划",
-    "realModelSubType" : "DEGRIDVIEW",
+    "codeName" : "report_dashboard_view",
+    "logicName" : "测试报告实体数据看板视图",
+    "name" : "测试报告实体数据看板视图",
+    "realModelSubType" : "DEPORTALVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "check_refresh_option_view",
@@ -6739,21 +6880,15 @@
     "realModelSubType" : "DEEDITVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "project_grid_view",
-    "logicName" : "测试计划表格视图（项目）",
-    "name" : "测试计划表格视图（项目）",
-    "realModelSubType" : "DEGRIDVIEW",
+    "codeName" : "report_survey_custom_view",
+    "logicName" : "报告概览自定义视图",
+    "name" : "报告概览自定义视图",
+    "realModelSubType" : "DECUSTOMVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "sprint_relation_grid_view",
     "logicName" : "迭代关联测试计划表格视图",
     "name" : "迭代关联测试计划表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "release_relation_grid_view",
-    "logicName" : "发布关联测试计划表格视图",
-    "name" : "发布关联测试计划表格视图",
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
@@ -6763,34 +6898,9 @@
     "realModelSubType" : "DETABEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "project_tree_exp_view",
-    "logicName" : "测试计划树导航视图（项目）",
-    "name" : "测试计划树导航视图（项目）",
-    "realModelSubType" : "DETREEEXPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "quick_create_view",
     "logicName" : "测试计划快速建立视图",
     "name" : "测试计划快速建立视图",
-    "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "general_grid_view",
-    "logicName" : "测试计划表格视图（普通测试）",
-    "name" : "测试计划表格视图（普通测试）",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "test_plan_grid_view",
-    "logicName" : "测试计划表格视图（仪表盘部件）",
-    "name" : "测试计划表格视图（仪表盘部件）",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "update_option_view",
-    "logicName" : "测试计划编辑视图",
-    "modelTag" : "EDITVIEW",
-    "name" : "测试计划编辑视图",
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
@@ -6800,10 +6910,10 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "report_dashboard_view",
-    "logicName" : "测试报告实体数据看板视图",
-    "name" : "测试报告实体数据看板视图",
-    "realModelSubType" : "DEPORTALVIEW",
+    "codeName" : "project_grid_view",
+    "logicName" : "测试计划表格视图（项目）",
+    "name" : "测试计划表格视图（项目）",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "RedirectView",
@@ -6813,35 +6923,22 @@
     "realModelSubType" : "DEREDIRECTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "report_custom_view",
-    "logicName" : "测试报告自定义视图",
-    "name" : "测试报告自定义视图",
-    "realModelSubType" : "DECUSTOMVIEW",
+    "codeName" : "test_plan_grid_view",
+    "logicName" : "测试计划表格视图（仪表盘部件）",
+    "name" : "测试计划表格视图（仪表盘部件）",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "report_survey_custom_view",
-    "logicName" : "报告概览自定义视图",
-    "name" : "报告概览自定义视图",
-    "realModelSubType" : "DECUSTOMVIEW",
+    "codeName" : "project_tree_exp_view",
+    "logicName" : "测试计划树导航视图（项目）",
+    "name" : "测试计划树导航视图（项目）",
+    "realModelSubType" : "DETREEEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "pick_up_around_view",
-    "logicName" : "测试计划实体数据选择视图（左右关系）",
-    "name" : "测试计划实体数据选择视图（左右关系）",
-    "realModelSubType" : "DEPICKUPVIEW2",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mpick_up_view",
-    "logicName" : "测试计划实体数据多项选择视图",
-    "modelTag" : "MPICKUPVIEW",
-    "name" : "测试计划实体数据多项选择视图",
-    "realModelSubType" : "DEMPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "conclude_edit_view",
-    "logicName" : "报告总结",
-    "name" : "报告总结",
-    "realModelSubType" : "DEEDITVIEW",
+    "codeName" : "all_grid_view",
+    "logicName" : "测试计划表格视图（全部计划）",
+    "name" : "测试计划表格视图（全部计划）",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "my_part_grid_view",
@@ -6850,28 +6947,40 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "drill_detail_grid_view",
-    "logicName" : "测试计划反查表格视图",
-    "name" : "测试计划反查表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "pick_up_around_gird_view",
-    "logicName" : "测试计划实体数据选择视图（左右关系）_选择数据视图",
-    "name" : "测试计划实体数据选择视图（左右关系）_选择数据视图",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "tree_exp_view",
-    "logicName" : "测试计划导航视图",
-    "name" : "测试计划导航视图",
-    "realModelSubType" : "DETREEEXPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "plan_mob_md_view",
     "logicName" : "计划移动端多数据视图",
     "name" : "计划移动端多数据视图",
     "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "categories_pick_up_tree_view",
+    "logicName" : "测试计划类别数据选择树视图",
+    "name" : "测试计划类别数据选择树视图",
+    "realModelSubType" : "DEPICKUPTREEVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "cur_project_grid_view",
+    "logicName" : "测试计划表格视图（指定项目）",
+    "name" : "测试计划表格视图（指定项目）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "conclude_edit_view",
+    "logicName" : "报告总结",
+    "name" : "报告总结",
+    "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "release_relation_grid_view",
+    "logicName" : "发布关联测试计划表格视图",
+    "name" : "发布关联测试计划表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "report_custom_view",
+    "logicName" : "测试报告自定义视图",
+    "name" : "测试报告自定义视图",
+    "realModelSubType" : "DECUSTOMVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "pick_up_view",
@@ -6881,11 +6990,29 @@
     "realModelSubType" : "DEPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "GridView",
-    "logicName" : "测试计划实体表格视图",
-    "modelTag" : "MDATAVIEW",
-    "name" : "测试计划实体表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
+    "codeName" : "mpick_up_view",
+    "logicName" : "测试计划实体数据多项选择视图",
+    "modelTag" : "MPICKUPVIEW",
+    "name" : "测试计划实体数据多项选择视图",
+    "realModelSubType" : "DEMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "pick_up_around_view",
+    "logicName" : "测试计划实体数据选择视图（左右关系）",
+    "name" : "测试计划实体数据选择视图（左右关系）",
+    "realModelSubType" : "DEPICKUPVIEW2",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "pick_up_grid_view",
+    "logicName" : "测试计划实体选择表格视图（部件视图）",
+    "name" : "测试计划实体选择表格视图（部件视图）",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "tree_exp_view",
+    "logicName" : "测试计划导航视图",
+    "name" : "测试计划导航视图",
+    "realModelSubType" : "DETREEEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "my_assignee_grid_view",
@@ -6894,10 +7021,35 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "check_refresh_option_view_Form",
-    "logicName" : "检查更新选项操作视图_表单",
+    "codeName" : "GridView",
+    "logicName" : "测试计划实体表格视图",
+    "modelTag" : "MDATAVIEW",
+    "name" : "测试计划实体表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "pick_up_around_gird_view",
+    "logicName" : "测试计划实体数据选择视图（左右关系）_选择数据视图",
+    "name" : "测试计划实体数据选择视图（左右关系）_选择数据视图",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "in_progress_grid_view",
+    "logicName" : "进行中的测试计划",
+    "name" : "进行中的测试计划",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "general_grid_view",
+    "logicName" : "测试计划表格视图（普通测试）",
+    "name" : "测试计划表格视图（普通测试）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "report_conclude",
+    "logicName" : "报告总结",
     "modelTag2" : "0",
-    "name" : "检查更新选项操作视图_表单",
+    "name" : "报告总结",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -6915,17 +7067,17 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
+    "codeName" : "check_refresh_option_view_Form",
+    "logicName" : "检查更新选项操作视图_表单",
+    "modelTag2" : "0",
+    "name" : "检查更新选项操作视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "report_form",
     "logicName" : "概览表单",
     "modelTag2" : "0",
     "name" : "概览表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "report_conclude",
-    "logicName" : "报告总结",
-    "modelTag2" : "0",
-    "name" : "报告总结",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   } ],
@@ -7083,8 +7235,8 @@
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
     },
-    "masterOrder" : -1,
-    "masterRS" : 0,
+    "masterOrder" : 100,
+    "masterRS" : 5,
     "minorCodeName" : "test_plans",
     "getMinorPSDataEntity" : {
       "modelref" : true,

@@ -310,7 +310,7 @@
       "name" : "附加逻辑",
       "getPSDELogic" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDELOGICS/create_recent.json"
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDELOGICS/get_product_member_one.json"
       },
       "internalLogic" : true
     }, {
@@ -319,7 +319,7 @@
       "name" : "附加逻辑",
       "getPSDELogic" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDELOGICS/get_product_member_one.json"
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDELOGICS/create_recent.json"
       },
       "internalLogic" : true
     } ],
@@ -593,7 +593,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "change_admin_role",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEACTIONS/change_admin_role.json",
     "logicName" : "变更管理员角色",
     "name" : "change_admin_role",
@@ -671,7 +671,6 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "nothing",
-    "dataAccessAction" : "NONE",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEACTIONS/nothing.json",
     "logicName" : "无操作",
     "name" : "nothing",
@@ -750,7 +749,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "product_counters",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEACTIONS/product_counters.json",
     "logicName" : "产品计数器",
     "name" : "product_counters",
@@ -998,7 +997,7 @@
   } ],
   "getAllPSDEDRGroups" : [ {
     "modelref" : true,
-    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRGROUPS/UsrDRGroup1203616060.json"
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRGROUPS/UsrDRGroup0418793617.json"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRGROUPS/UsrDRGroup0314174756.json"
@@ -1013,13 +1012,7 @@
     "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRGROUPS/UsrDRGroup1228149482.json"
   }, {
     "modelref" : true,
-    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRGROUPS/UsrDRGroup0423482168.json"
-  }, {
-    "modelref" : true,
     "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRGROUPS/UsrDRGroup1228275731.json"
-  }, {
-    "modelref" : true,
-    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRGROUPS/UsrDRGroup0418793617.json"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRGROUPS/DRGroup.json"
@@ -1031,7 +1024,13 @@
     "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRGROUPS/UsrDRGroup1228280909.json"
   }, {
     "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRGROUPS/UsrDRGroup1203616060.json"
+  }, {
+    "modelref" : true,
     "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRGROUPS/UsrDRGroup0314383150.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEDRGROUPS/UsrDRGroup0423482168.json"
   } ],
   "getAllPSDEDRItems" : [ {
     "modelref" : true,
@@ -3374,18 +3373,6 @@
       "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[SCOPE_TYPE][所属]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "DROPDOWNLIST",
-        "name" : "[SCOPE_TYPE][所属]",
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT",
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[SCOPE_TYPE][所属]移动端默认",
       "getPSDEFFormItem" : {
@@ -3399,6 +3386,18 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[SCOPE_TYPE][所属]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[SCOPE_TYPE][所属]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -3457,17 +3456,6 @@
       "standardColumnName" : "`SCOPE_ID`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[SCOPE_ID][所属对象]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[SCOPE_ID][所属对象]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[SCOPE_ID][所属对象]移动端默认",
       "getPSDEFFormItem" : {
@@ -3480,6 +3468,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[SCOPE_ID][所属对象]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[SCOPE_ID][所属对象]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -5949,6 +5948,17 @@
       "topPos" : -80,
       "parallelOutput" : true
     }, {
+      "codeName" : "END2",
+      "leftPos" : -52,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 107
+    }, {
       "codeName" : "PREPAREPARAM2",
       "leftPos" : 314,
       "logicNodeType" : "PREPAREPARAM",
@@ -6065,64 +6075,6 @@
         "id" : "members"
       },
       "topPos" : -72
-    }, {
-      "codeName" : "END2",
-      "leftPos" : -52,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "getReturnParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "returnType" : "LOGICPARAM",
-      "topPos" : 107
-    }, {
-      "code" : "var defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);",
-      "codeName" : "RAWSFCODE1",
-      "leftPos" : 756,
-      "logicNodeType" : "RAWSFCODE",
-      "name" : "只读权限",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "END6"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSFCODE1"
-        }
-      } ],
-      "topPos" : -72
-    }, {
-      "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"srfreadonly\", false);",
-      "codeName" : "RAWSFCODE2",
-      "leftPos" : 756,
-      "logicNodeType" : "RAWSFCODE",
-      "name" : "非只读权限",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "END6"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSFCODE2"
-        }
-      } ],
-      "topPos" : -336
-    }, {
-      "codeName" : "END6",
-      "leftPos" : 1020,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "getReturnParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "returnType" : "LOGICPARAM",
-      "topPos" : -220
     }, {
       "codeName" : "PREPAREPARAM3",
       "leftPos" : -310,
@@ -6254,6 +6206,53 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : -336
+    }, {
+      "code" : "var defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);",
+      "codeName" : "RAWSFCODE1",
+      "leftPos" : 756,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "只读权限",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END6"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        }
+      } ],
+      "topPos" : -72
+    }, {
+      "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"srfreadonly\", false);",
+      "codeName" : "RAWSFCODE2",
+      "leftPos" : 756,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "非只读权限",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END6"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE2"
+        }
+      } ],
+      "topPos" : -336
+    }, {
+      "codeName" : "END6",
+      "leftPos" : 1020,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : -220
     }, {
       "code" : "def _usercontext = sys.user();\r\ndef srfreadonly = _usercontext.testSysUniRes(\"SYSTEM\");\r\ndef _default = logic.param(\"default\").real;\r\nif(srfreadonly == true){\r\n    _default.set(\"srfreadonly\",false);\r\n}",
       "codeName" : "RAWSFCODE3",
@@ -8917,6 +8916,62 @@
       "id" : "admin"
     },
     "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "READ_PSDENOTIFY",
+      "name" : "READ_PSDENOTIFY",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ_PSDENOTIFY"
+      }
+    }, {
+      "dataAccessAction" : "READ_PSDEFORM",
+      "name" : "READ_PSDEFORM",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ_PSDEFORM"
+      }
+    }, {
+      "dataAccessAction" : "MANAGE_PSDEFIELD",
+      "name" : "MANAGE_PSDEFIELD",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "MANAGE_PSDEFIELD"
+      }
+    }, {
+      "dataAccessAction" : "SUBDATA",
+      "name" : "SUBDATA",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "SUBDATA"
+      }
+    }, {
+      "dataAccessAction" : "READ_PSDEFIELD",
+      "name" : "READ_PSDEFIELD",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ_PSDEFIELD"
+      }
+    }, {
+      "dataAccessAction" : "DELETE",
+      "name" : "DELETE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "DELETE"
+      }
+    }, {
+      "dataAccessAction" : "MANAGE_PSDELOGIC",
+      "name" : "MANAGE_PSDELOGIC",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "MANAGE_PSDELOGIC"
+      }
+    }, {
+      "dataAccessAction" : "READ_PSDEMSLOGIC",
+      "name" : "READ_PSDEMSLOGIC",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ_PSDEMSLOGIC"
+      }
+    }, {
       "dataAccessAction" : "UPDATE",
       "name" : "UPDATE",
       "getPSDEOPPriv" : {
@@ -8938,20 +8993,6 @@
         "id" : "MANAGE_PSDEMSLOGIC"
       }
     }, {
-      "dataAccessAction" : "READ_PSDEMSLOGIC",
-      "name" : "READ_PSDEMSLOGIC",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "READ_PSDEMSLOGIC"
-      }
-    }, {
-      "dataAccessAction" : "READ_PSDEFIELD",
-      "name" : "READ_PSDEFIELD",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "READ_PSDEFIELD"
-      }
-    }, {
       "dataAccessAction" : "READ_PSDELOGIC",
       "name" : "READ_PSDELOGIC",
       "getPSDEOPPriv" : {
@@ -8959,53 +9000,11 @@
         "id" : "READ_PSDELOGIC"
       }
     }, {
-      "dataAccessAction" : "SUBDATA",
-      "name" : "SUBDATA",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "SUBDATA"
-      }
-    }, {
-      "dataAccessAction" : "MANAGE_PSDEFIELD",
-      "name" : "MANAGE_PSDEFIELD",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "MANAGE_PSDEFIELD"
-      }
-    }, {
-      "dataAccessAction" : "MANAGE_PSDELOGIC",
-      "name" : "MANAGE_PSDELOGIC",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "MANAGE_PSDELOGIC"
-      }
-    }, {
-      "dataAccessAction" : "DELETE",
-      "name" : "DELETE",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "DELETE"
-      }
-    }, {
-      "dataAccessAction" : "READ_PSDENOTIFY",
-      "name" : "READ_PSDENOTIFY",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "READ_PSDENOTIFY"
-      }
-    }, {
       "dataAccessAction" : "MANAGE_PSDENOTIFY",
       "name" : "MANAGE_PSDENOTIFY",
       "getPSDEOPPriv" : {
         "modelref" : true,
         "id" : "MANAGE_PSDENOTIFY"
-      }
-    }, {
-      "dataAccessAction" : "READ_PSDEFORM",
-      "name" : "READ_PSDEFORM",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "READ_PSDEFORM"
       }
     }, {
       "dataAccessAction" : "READ",
@@ -9066,7 +9065,7 @@
     "systemReserved" : true
   }, {
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEUSERROLES/ALL_W.json",
-    "name" : "全部数据（写）",
+    "name" : "产品数据（写）",
     "getPSDEUserRoleOPPrivs" : [ {
       "dataAccessAction" : "CREATE",
       "name" : "CREATE",
@@ -9078,7 +9077,6 @@
     "roleTag" : "ALL_W",
     "userCat" : "CAT1",
     "userDRAction" : "READ",
-    "allData" : true,
     "systemReserved" : true
   }, {
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEUSERROLES/CUSTOMER_USER_R.json",
@@ -9128,6 +9126,27 @@
       "id" : "user"
     },
     "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "READ_PSDELOGIC",
+      "name" : "READ_PSDELOGIC",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ_PSDELOGIC"
+      }
+    }, {
+      "dataAccessAction" : "READ_PSDEFIELD",
+      "name" : "READ_PSDEFIELD",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ_PSDEFIELD"
+      }
+    }, {
+      "dataAccessAction" : "READ_PSDEFORM",
+      "name" : "READ_PSDEFORM",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ_PSDEFORM"
+      }
+    }, {
       "dataAccessAction" : "READ_PSDENOTIFY",
       "name" : "READ_PSDENOTIFY",
       "getPSDEOPPriv" : {
@@ -9142,27 +9161,6 @@
         "id" : "READ_PSDEMSLOGIC"
       }
     }, {
-      "dataAccessAction" : "READ_PSDEFIELD",
-      "name" : "READ_PSDEFIELD",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "READ_PSDEFIELD"
-      }
-    }, {
-      "dataAccessAction" : "READ_PSDELOGIC",
-      "name" : "READ_PSDELOGIC",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "READ_PSDELOGIC"
-      }
-    }, {
-      "dataAccessAction" : "SUBDATA",
-      "name" : "SUBDATA",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "SUBDATA"
-      }
-    }, {
       "dataAccessAction" : "READ",
       "name" : "READ",
       "getPSDEOPPriv" : {
@@ -9170,11 +9168,11 @@
         "id" : "READ"
       }
     }, {
-      "dataAccessAction" : "READ_PSDEFORM",
-      "name" : "READ_PSDEFORM",
+      "dataAccessAction" : "SUBDATA",
+      "name" : "SUBDATA",
       "getPSDEOPPriv" : {
         "modelref" : true,
-        "id" : "READ_PSDEFORM"
+        "id" : "SUBDATA"
       }
     } ],
     "roleTag" : "USER_RW",
@@ -9195,16 +9193,23 @@
     "utilType" : "NOTIFYSETTING"
   } ],
   "getAllPSModelDatas" : [ {
-    "codeName" : "team_grid_view",
-    "logicName" : "产品表格视图（当前团队）",
-    "name" : "产品表格视图（当前团队）",
+    "codeName" : "all_grid_view",
+    "logicName" : "产品表格视图（全部产品）",
+    "name" : "产品表格视图（全部产品）",
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_ad_setting_view",
-    "logicName" : "产品高级设置编辑视图（移动端）",
-    "name" : "产品高级设置编辑视图（移动端）",
-    "realModelSubType" : "DEMOBEDITVIEW",
+    "codeName" : "base_information_edit_view",
+    "logicName" : "产品基本信息",
+    "name" : "产品基本信息",
+    "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "pick_up_view",
+    "logicName" : "产品实体数据选择视图",
+    "modelTag" : "PICKUPVIEW",
+    "name" : "产品实体数据选择视图",
+    "realModelSubType" : "DEPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "RedirectView",
@@ -9212,6 +9217,25 @@
     "modelTag" : "REDIRECTVIEW",
     "name" : "产品实体数据重定向视图",
     "realModelSubType" : "DEREDIRECTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mpick_up_view",
+    "logicName" : "产品实体数据多项选择视图",
+    "modelTag" : "MPICKUPVIEW",
+    "name" : "产品实体数据多项选择视图",
+    "realModelSubType" : "DEMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "is_archived_grid_view",
+    "logicName" : "已归档产品表格视图",
+    "name" : "已归档产品表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_ad_setting_view",
+    "logicName" : "产品高级设置编辑视图（移动端）",
+    "name" : "产品高级设置编辑视图（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "index_view",
@@ -9227,10 +9251,10 @@
     "realModelSubType" : "DETABEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "ticket_configuration_tab_exp_view",
-    "logicName" : "工单事项配置分页导航视图",
-    "name" : "工单事项配置分页导航视图",
-    "realModelSubType" : "DETABEXPVIEW",
+    "codeName" : "mob_md_view",
+    "logicName" : "产品列表-移动端",
+    "name" : "产品列表-移动端",
+    "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "recover_tab_exp_view",
@@ -9239,59 +9263,10 @@
     "realModelSubType" : "DETABEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "pick_up_view",
-    "logicName" : "产品实体数据选择视图",
-    "modelTag" : "PICKUPVIEW",
-    "name" : "产品实体数据选择视图",
-    "realModelSubType" : "DEPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "config_tree_exp_view",
-    "logicName" : "产品配置中心视图",
-    "name" : "产品配置中心视图",
-    "realModelSubType" : "DETREEEXPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "choose_product_option_view",
-    "logicName" : "选择产品选项操作视图",
-    "name" : "选择产品选项操作视图",
-    "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_tab_exp_view",
-    "logicName" : "产品移动端分页导航视图",
-    "name" : "产品移动端分页导航视图",
-    "realModelSubType" : "DEMOBTABEXPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_setting_view",
-    "logicName" : "产品设置编辑视图（移动端）",
-    "name" : "产品设置编辑视图（移动端）",
-    "realModelSubType" : "DEMOBEDITVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_product_move",
-    "logicName" : "产品移动编辑视图（移动端）",
-    "name" : "产品移动编辑视图（移动端）",
-    "realModelSubType" : "DEMOBEDITVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_create_view",
-    "logicName" : "产品新建编辑视图（移动端）",
-    "name" : "产品新建编辑视图（移动端）",
-    "realModelSubType" : "DEMOBEDITVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "archived_grid_view",
-    "logicName" : "产品管理表格视图（已归档）",
-    "name" : "产品管理表格视图（已归档）",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "tree_exp_view",
-    "logicName" : "产品导航视图",
-    "name" : "产品导航视图",
-    "realModelSubType" : "DETREEEXPVIEW",
+    "codeName" : "show_edit_view",
+    "logicName" : "产品信息展示视图",
+    "name" : "产品信息展示视图",
+    "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mob_recycle_tab_view",
@@ -9300,22 +9275,34 @@
     "realModelSubType" : "DEMOBTABEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "management_tab_exp_view",
-    "logicName" : "产品管理导航视图",
-    "name" : "产品管理导航视图",
-    "realModelSubType" : "DETABEXPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "all_grid_view",
-    "logicName" : "产品表格视图（全部产品）",
-    "name" : "产品表格视图（全部产品）",
+    "codeName" : "archived_grid_view",
+    "logicName" : "产品管理表格视图（已归档）",
+    "name" : "产品管理表格视图（已归档）",
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "deleted_grid_view",
-    "logicName" : "产品管理表格视图（已删除）",
-    "name" : "产品管理表格视图（已删除）",
-    "realModelSubType" : "DEGRIDVIEW",
+    "codeName" : "pick_up_grid_view",
+    "logicName" : "产品实体选择表格视图（部件视图）",
+    "name" : "产品实体选择表格视图（部件视图）",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "tree_exp_view",
+    "logicName" : "产品导航视图",
+    "name" : "产品导航视图",
+    "realModelSubType" : "DETREEEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_create_view",
+    "logicName" : "产品新建编辑视图（移动端）",
+    "name" : "产品新建编辑视图（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "choose_product_option_view",
+    "logicName" : "选择产品选项操作视图",
+    "name" : "选择产品选项操作视图",
+    "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "details_setting_view",
@@ -9324,10 +9311,10 @@
     "realModelSubType" : "DETREEEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_md_view",
-    "logicName" : "产品列表-移动端",
-    "name" : "产品列表-移动端",
-    "realModelSubType" : "DEMOBMDVIEW",
+    "codeName" : "mob_setting_view",
+    "logicName" : "产品设置编辑视图（移动端）",
+    "name" : "产品设置编辑视图（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "setting_view",
@@ -9336,16 +9323,28 @@
     "realModelSubType" : "DEEDITVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "idea_configuration_tab_exp_view",
+    "logicName" : "产品需求事项配置分页导航视图",
+    "name" : "产品需求事项配置分页导航视图",
+    "realModelSubType" : "DETABEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_product_pickup_view",
+    "logicName" : "产品数据选择视图（移动端）",
+    "name" : "产品数据选择视图（移动端）",
+    "realModelSubType" : "DEMOBPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "quick_create_view",
     "logicName" : "产品快速建立视图",
     "name" : "产品快速建立视图",
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_product_tree",
-    "logicName" : "产品树导航视图（移动端）",
-    "name" : "产品树导航视图（移动端）",
-    "realModelSubType" : "DEMOBTREEEXPVIEW",
+    "codeName" : "product_list_parts",
+    "logicName" : "产品表格视图（仪表盘部件）",
+    "name" : "产品表格视图（仪表盘部件）",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView",
@@ -9355,40 +9354,21 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "pick_up_grid_view",
-    "logicName" : "产品实体选择表格视图（部件视图）",
-    "name" : "产品实体选择表格视图（部件视图）",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "codeName" : "mob_product_move",
+    "logicName" : "产品移动编辑视图（移动端）",
+    "name" : "产品移动编辑视图（移动端）",
+    "realModelSubType" : "DEMOBEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "filter_tab_exp_view",
-    "logicName" : "产品筛选器分页视图",
-    "name" : "产品筛选器分页视图",
+    "codeName" : "management_tab_exp_view",
+    "logicName" : "产品管理导航视图",
+    "name" : "产品管理导航视图",
     "realModelSubType" : "DETABEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mpick_up_view",
-    "logicName" : "产品实体数据多项选择视图",
-    "modelTag" : "MPICKUPVIEW",
-    "name" : "产品实体数据多项选择视图",
-    "realModelSubType" : "DEMPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "base_information_edit_view",
-    "logicName" : "产品基本信息",
-    "name" : "产品基本信息",
-    "realModelSubType" : "DEEDITVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "show_edit_view",
-    "logicName" : "产品信息展示视图",
-    "name" : "产品信息展示视图",
-    "realModelSubType" : "DEEDITVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "in_progress_grid_view",
-    "logicName" : "产品管理表格视图（进行中）",
-    "name" : "产品管理表格视图（进行中）",
+    "codeName" : "deleted_grid_view",
+    "logicName" : "产品管理表格视图（已删除）",
+    "name" : "产品管理表格视图（已删除）",
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
@@ -9398,10 +9378,46 @@
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "team_grid_view",
+    "logicName" : "产品表格视图（当前团队）",
+    "name" : "产品表格视图（当前团队）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "filter_tab_exp_view",
+    "logicName" : "产品筛选器分页视图",
+    "name" : "产品筛选器分页视图",
+    "realModelSubType" : "DETABEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "mob_product_pickup_view_PickupMDView",
     "logicName" : "产品数据选择视图（移动端）_选择数据视图",
     "name" : "产品数据选择视图（移动端）_选择数据视图",
     "realModelSubType" : "DEMOBPICKUPMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "ticket_configuration_tab_exp_view",
+    "logicName" : "工单事项配置分页导航视图",
+    "name" : "工单事项配置分页导航视图",
+    "realModelSubType" : "DETABEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_product_tree",
+    "logicName" : "产品树导航视图（移动端）",
+    "name" : "产品树导航视图（移动端）",
+    "realModelSubType" : "DEMOBTREEEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "advanced_setting_edit_view",
+    "logicName" : "产品高级设置",
+    "name" : "产品高级设置",
+    "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "config_tree_exp_view",
+    "logicName" : "产品配置中心视图",
+    "name" : "产品配置中心视图",
+    "realModelSubType" : "DETREEEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "idea_configuration_view",
@@ -9410,15 +9426,9 @@
     "realModelSubType" : "DECUSTOMVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_product_pickup_view",
-    "logicName" : "产品数据选择视图（移动端）",
-    "name" : "产品数据选择视图（移动端）",
-    "realModelSubType" : "DEMOBPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "is_archived_grid_view",
-    "logicName" : "已归档产品表格视图",
-    "name" : "已归档产品表格视图",
+    "codeName" : "org_grid_view",
+    "logicName" : "产品表格视图（当前组织）",
+    "name" : "产品表格视图（当前组织）",
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
@@ -9428,16 +9438,16 @@
     "realModelSubType" : "DEEDITVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "org_grid_view",
-    "logicName" : "产品表格视图（当前组织）",
-    "name" : "产品表格视图（当前组织）",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "GridView",
     "logicName" : "产品实体表格视图",
     "modelTag" : "MDATAVIEW",
     "name" : "产品实体表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "in_progress_grid_view",
+    "logicName" : "产品管理表格视图（进行中）",
+    "name" : "产品管理表格视图（进行中）",
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
@@ -9447,10 +9457,10 @@
     "realModelSubType" : "DEWIZARDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "advanced_setting_edit_view",
-    "logicName" : "产品高级设置",
-    "name" : "产品高级设置",
-    "realModelSubType" : "DEEDITVIEW",
+    "codeName" : "mob_tab_exp_view",
+    "logicName" : "产品移动端分页导航视图",
+    "name" : "产品移动端分页导航视图",
+    "realModelSubType" : "DEMOBTABEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mob_list_view",
@@ -9459,36 +9469,10 @@
     "realModelSubType" : "DEMOBLISTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "product_list_parts",
-    "logicName" : "产品表格视图（仪表盘部件）",
-    "name" : "产品表格视图（仪表盘部件）",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "idea_configuration_tab_exp_view",
-    "logicName" : "产品需求事项配置分页导航视图",
-    "name" : "产品需求事项配置分页导航视图",
-    "realModelSubType" : "DETABEXPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mob_create_view_Form",
-    "logicName" : "产品新建编辑视图（移动端）_表单",
+    "codeName" : "mob_setting_view_Form",
+    "logicName" : "产品设置编辑视图（移动端）_表单",
     "modelTag2" : "1",
-    "name" : "产品新建编辑视图（移动端）_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "Usr12045901_Form",
-    "logicName" : "选择产品选项操作视图_表单",
-    "modelTag2" : "0",
-    "name" : "选择产品选项操作视图_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "move_option_view_Form",
-    "logicName" : "产品移动视图_表单",
-    "modelTag2" : "0",
-    "name" : "产品移动视图_表单",
+    "name" : "产品设置编辑视图（移动端）_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -9497,6 +9481,13 @@
     "modelTag" : "WIZARDFORM",
     "modelTag2" : "0",
     "name" : "新建表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_product_move_Form",
+    "logicName" : "产品移动编辑视图（移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "产品移动编辑视图（移动端）_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -9514,13 +9505,6 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "mob_setting_view_Form",
-    "logicName" : "产品设置编辑视图（移动端）_表单",
-    "modelTag2" : "1",
-    "name" : "产品设置编辑视图（移动端）_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
     "codeName" : "advanced_setting",
     "logicName" : "高级设置",
     "modelTag2" : "0",
@@ -9528,10 +9512,10 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "mob_product_move_Form",
-    "logicName" : "产品移动编辑视图（移动端）_表单",
+    "codeName" : "mob_create_view_Form",
+    "logicName" : "产品新建编辑视图（移动端）_表单",
     "modelTag2" : "1",
-    "name" : "产品移动编辑视图（移动端）_表单",
+    "name" : "产品新建编辑视图（移动端）_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -9539,6 +9523,13 @@
     "logicName" : "产品高级设置编辑视图（移动端）_表单",
     "modelTag2" : "1",
     "name" : "产品高级设置编辑视图（移动端）_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "move_option_view_Form",
+    "logicName" : "产品移动视图_表单",
+    "modelTag2" : "0",
+    "name" : "产品移动视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -9554,6 +9545,13 @@
     "logicName" : "基本信息",
     "modelTag2" : "0",
     "name" : "基本信息",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "Usr12045901_Form",
+    "logicName" : "选择产品选项操作视图_表单",
+    "modelTag2" : "0",
+    "name" : "选择产品选项操作视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {

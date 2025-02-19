@@ -106,6 +106,34 @@
     "topPos" : 130,
     "parallelOutput" : true
   }, {
+    "codeName" : "RAWSQLCALL1",
+    "leftPos" : 170,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "恢复最近访问",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "update recent set IS_DELETED=0 where owner_id=? and owner_subtype='work_item'",
+    "topPos" : 235
+  }, {
     "codeName" : "PREPAREPARAM3",
     "leftPos" : 440,
     "logicNodeType" : "PREPAREPARAM",
@@ -165,34 +193,6 @@
     "logicNodeType" : "DEACTION",
     "name" : "更新父工作项非叶子节点",
     "topPos" : 130
-  }, {
-    "codeName" : "RAWSQLCALL1",
-    "leftPos" : 170,
-    "logicNodeType" : "RAWSQLCALL",
-    "name" : "恢复最近访问",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSQLCALL1"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "name" : "Default[ID]",
-      "paramAction" : "SQLPARAM",
-      "srcFieldName" : "ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    } ],
-    "sql" : "update recent set IS_DELETED=0 where owner_id=? and owner_subtype='work_item'",
-    "topPos" : 235
   }, {
     "codeName" : "PREPAREPARAM1",
     "leftPos" : 170,

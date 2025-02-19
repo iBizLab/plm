@@ -82,7 +82,7 @@
     "rawValue" : false
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "EDITDATA",
+    "name" : "NEWDATA",
     "realTitle" : "成员编辑视图",
     "getRealTitlePSLanguageRes" : {
       "lanResTag" : "PAGE.TITLE.MEMBER.EDITVIEW"
@@ -93,7 +93,7 @@
       "viewType" : "DEEDITVIEW"
     }
   }, {
-    "name" : "NEWDATA",
+    "name" : "EDITDATA",
     "realTitle" : "成员编辑视图",
     "getRealTitlePSLanguageRes" : {
       "lanResTag" : "PAGE.TITLE.MEMBER.EDITVIEW"
@@ -175,7 +175,7 @@
       "showIcon" : true
     } ],
     "xDataControlName" : "grid",
-    "modelid" : "B7A39B4D-1FC2-44F9-AB66-FD7785681088",
+    "modelid" : "ba1fde173c334c0f94753b89c6c7c414",
     "modeltype" : "PSDETOOLBAR"
   }, {
     "codeName" : "default",
@@ -541,7 +541,7 @@
         "showCaption" : true,
         "showIcon" : true
       } ],
-      "modelid" : "D0E5C050-E3CF-4C40-B134-447D5000B405",
+      "modelid" : "cf9173dc21445e07eb5f0bfc85119362",
       "modeltype" : "PSDETOOLBAR"
     } ],
     "getPSDEGridColumns" : [ {
@@ -587,7 +587,7 @@
       "enableSort" : true
     }, {
       "align" : "LEFT",
-      "cLConvertMode" : "NONE",
+      "cLConvertMode" : "FRONT",
       "caption" : "职位",
       "codeName" : "title",
       "columnType" : "DEFGRIDCOLUMN",
@@ -595,6 +595,10 @@
       "excelCaption" : "职位",
       "name" : "title",
       "noPrivDisplayMode" : 1,
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__position.json"
+      },
       "getPSAppDEField" : {
         "name" : "TITLE",
         "codeName" : "title"
@@ -663,7 +667,7 @@
         },
         "getPSUIActionGroupDetails" : [ {
           "detailType" : "DEUIACTION",
-          "name" : "u679c252",
+          "name" : "u4016a74",
           "getPSSysImage" : {
             "glyph" : "xf185@FontAwesome",
             "cssClass" : "fa fa-sun-o"
@@ -715,7 +719,7 @@
           "showIcon" : true
         }, {
           "detailType" : "DEUIACTION",
-          "name" : "u8abfb7b",
+          "name" : "ue13dbbe",
           "getPSSysImage" : {
             "glyph" : "xf014@FontAwesome",
             "cssClass" : "fa fa-trash-o"
@@ -1064,6 +1068,50 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/member.json"
     },
     "name" : "DERCUSTOM_MEMBER_PAGE_OWNER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "rSMode" : 2
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "groups",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "section",
+    "majorDEName" : "SECTION",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/section.json"
+    },
+    "minorDECodeName" : "group",
+    "minorDEName" : "GROUP",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/group.json"
+    },
+    "name" : "DER1N_GROUP_SECTION_SECTION_ID",
+    "getParentPSAppDEField" : {
+      "name" : "SECTION_ID",
+      "codeName" : "section_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "members",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "group",
+    "majorDEName" : "GROUP",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/group.json"
+    },
+    "minorDECodeName" : "member",
+    "minorDEName" : "MEMBER",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/member.json"
+    },
+    "name" : "DERCUSTOM_MEMBER_GROUP_OWNER_ID",
     "getParentPSAppDEField" : {
       "name" : "OWNER_ID",
       "codeName" : "owner_id"

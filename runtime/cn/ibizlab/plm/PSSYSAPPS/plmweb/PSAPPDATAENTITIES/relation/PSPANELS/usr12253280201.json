@@ -1,6 +1,6 @@
 {
   "getAllPSPanelFields" : [ {
-    "id" : "sum",
+    "id" : "num",
     "viewFieldName" : "SUM"
   }, {
     "id" : "show_identifier",
@@ -98,7 +98,6 @@
         "groupOP" : "AND",
         "logicCat" : "PANELVISIBLE",
         "logicType" : "GROUP",
-        "name" : "面板成员[top][面板显示]逻辑",
         "getPSPanelItemLogics" : [ {
           "condOp" : "EQ",
           "dstModelField" : "EXPANDED",
@@ -128,10 +127,10 @@
           "caption" : "文本(动态)",
           "itemStyle" : "DEFAULT",
           "itemType" : "FIELD",
-          "name" : "sum",
+          "name" : "num",
           "getPSEditor" : {
             "editorType" : "SPAN",
-            "name" : "sum",
+            "name" : "num",
             "predefinedType" : "FIELD_TEXT_DYNAMIC",
             "renderMode" : "TEXT_DYNAMIC",
             "enableLinkView" : false
@@ -146,19 +145,19 @@
           "contentType" : "RAW",
           "itemStyle" : "DEFAULT",
           "itemType" : "RAWITEM",
-          "name" : "static_text",
+          "name" : "caption",
           "getPSLayoutPos" : {
             "grow" : -1,
             "layout" : "FLEX"
           },
           "getPSRawItem" : {
-            "caption" : "个工单",
+            "caption" : "个关联工单",
             "contentType" : "RAW",
-            "name" : "static_text",
+            "name" : "caption",
             "predefinedType" : "STATIC_TEXT",
             "renderMode" : "TEXT"
           },
-          "rawContent" : "个工单",
+          "rawContent" : "个关联工单",
           "showCaption" : true
         } ]
       } ]
@@ -178,7 +177,6 @@
         "groupOP" : "AND",
         "logicCat" : "PANELVISIBLE",
         "logicType" : "GROUP",
-        "name" : "面板成员[content][面板显示]逻辑",
         "getPSPanelItemLogics" : [ {
           "condOp" : "EQ",
           "dstModelField" : "EXPANDED",
@@ -350,7 +348,8 @@
             },
             "getPSLayoutPos" : {
               "grow" : -1,
-              "layout" : "FLEX"
+              "layout" : "FLEX",
+              "spacingRight" : "OUTERSMALL"
             },
             "viewFieldName" : "TITLE"
           }, {
@@ -374,7 +373,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "面板成员[static_image1][面板显示]逻辑",
               "getPSPanelItemLogics" : [ {
                 "condOp" : "EQ",
                 "dstModelField" : "is_archived",
@@ -435,7 +433,10 @@
       },
       "viewFieldName" : "EXPANDED",
       "hidden" : true
-    } ]
+    } ],
+    "getPSSysCss" : {
+      "cssName" : "track_panel_style"
+    }
   } ],
   "layoutPanel" : true,
   "modelid" : "5d49efecfb0cf975e8cfe6e380fdea06",

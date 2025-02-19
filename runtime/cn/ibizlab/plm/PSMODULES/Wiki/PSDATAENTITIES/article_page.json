@@ -480,7 +480,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "favorite",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEACTIONS/favorite.json",
     "logicName" : "设置星标",
     "name" : "favorite",
@@ -532,7 +532,7 @@
     "actionMode" : "GETDRAFT",
     "actionType" : "DELOGIC",
     "codeName" : "get_draft_pages",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEACTIONS/get_draft_pages.json",
     "logicName" : "获取草稿页面",
     "name" : "get_draft_pages",
@@ -660,36 +660,6 @@
     },
     "enableFront" : false
   }, {
-    "actionHolder" : 1,
-    "actionMode" : "GETDRAFT",
-    "actionType" : "DELOGIC",
-    "codeName" : "new_draft_form_stencil",
-    "dataAccessAction" : "NONE",
-    "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEACTIONS/new_draft_form_stencil.json",
-    "logicName" : "根据模板新建草稿",
-    "name" : "new_draft_form_stencil",
-    "getPSDEActionInput" : {
-      "name" : "New_draft_form_stencilInput",
-      "getPSDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "article_page_dto"
-      },
-      "type" : "DTO"
-    },
-    "getPSDEActionReturn" : {
-      "name" : "New_draft_form_stencilResult",
-      "getPSDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "article_page_dto"
-      },
-      "type" : "DTO"
-    },
-    "getPSDELogic" : {
-      "modelref" : true,
-      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDELOGICS/get_form_stencil.json"
-    },
-    "enableFront" : false
-  }, {
     "actionHolder" : 2,
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
@@ -734,32 +704,6 @@
     },
     "getPSDEActionReturn" : {
       "name" : "Publish_pageResult",
-      "type" : "VOID"
-    },
-    "getPSDELogic" : {
-      "modelref" : true,
-      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDELOGICS/publish_page.json"
-    },
-    "enableFront" : false
-  }, {
-    "actionHolder" : 1,
-    "actionMode" : "CUSTOM",
-    "actionType" : "DELOGIC",
-    "codeName" : "publish_page_test",
-    "dataAccessAction" : "NONE",
-    "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEACTIONS/publish_page_test.json",
-    "logicName" : "发布页面（测试）",
-    "name" : "publish_page_test",
-    "getPSDEActionInput" : {
-      "name" : "Publish_page_testInput",
-      "getPSDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "article_page_dto"
-      },
-      "type" : "DTO"
-    },
-    "getPSDEActionReturn" : {
-      "name" : "Publish_page_testResult",
       "type" : "VOID"
     },
     "getPSDELogic" : {
@@ -824,7 +768,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "save_to_stencil",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEACTIONS/save_to_stencil.json",
     "logicName" : "另存为模板",
     "name" : "save_to_stencil",
@@ -942,7 +886,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "un_favorite",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEACTIONS/un_favorite.json",
     "logicName" : "取消星标",
     "name" : "un_favorite",
@@ -4811,6 +4755,18 @@
       "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[IS_SHARED][是否开启共享]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[IS_SHARED][是否开启共享]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[IS_SHARED][是否开启共享]移动端默认",
       "getPSDEFFormItem" : {
@@ -4824,18 +4780,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[IS_SHARED][是否开启共享]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "DROPDOWNLIST",
-        "name" : "[IS_SHARED][是否开启共享]",
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT",
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -4961,17 +4905,6 @@
       "standardColumnName" : "`ACCESS_PASSWORD`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[ACCESS_PASSWORD][访问密码]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[ACCESS_PASSWORD][访问密码]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[ACCESS_PASSWORD][访问密码]移动端默认",
       "getPSDEFFormItem" : {
@@ -4984,6 +4917,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[ACCESS_PASSWORD][访问密码]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[ACCESS_PASSWORD][访问密码]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -6216,6 +6160,17 @@
       "valueOP" : "LTANDEQ"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[PUBLISH_TIME][发布时间]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DATEPICKER",
+        "name" : "[PUBLISH_TIME][发布时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[PUBLISH_TIME][发布时间]移动端默认",
       "getPSDEFFormItem" : {
@@ -6228,17 +6183,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[PUBLISH_TIME][发布时间]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "DATEPICKER",
-        "name" : "[PUBLISH_TIME][发布时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -6357,6 +6301,17 @@
       "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[PUBLISH_MAN][发布人]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[PUBLISH_MAN][发布人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[PUBLISH_MAN][发布人]移动端默认",
       "getPSDEFFormItem" : {
@@ -6369,17 +6324,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[PUBLISH_MAN][发布人]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[PUBLISH_MAN][发布人]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -6434,6 +6378,17 @@
       "standardColumnName" : "`PUBLISH_CONTENT`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[PUBLISH_CONTENT][发布正文]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTAREA_10",
+        "name" : "[PUBLISH_CONTENT][发布正文]",
+        "stringLength" : 16777215,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[PUBLISH_CONTENT][发布正文]移动端默认",
       "getPSDEFFormItem" : {
@@ -6446,17 +6401,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[PUBLISH_CONTENT][发布正文]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTAREA_10",
-        "name" : "[PUBLISH_CONTENT][发布正文]",
-        "stringLength" : 16777215,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -6675,6 +6619,17 @@
       "valueAutoGen" : true
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[PUBLISHED][发布状态]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "[PUBLISHED][发布状态]",
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[PUBLISHED][发布状态]移动端默认",
       "getPSDEFFormItem" : {
@@ -6687,17 +6642,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[PUBLISHED][发布状态]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "DROPDOWNLIST_100",
-        "name" : "[PUBLISHED][发布状态]",
-        "uIMode" : "DEFAULT",
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -6814,17 +6758,6 @@
       "standardColumnName" : "`ICON`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[ICON][页面图标]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[ICON][页面图标]",
-        "stringLength" : 500,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[ICON][页面图标]移动端默认",
       "getPSDEFFormItem" : {
@@ -6837,6 +6770,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[ICON][页面图标]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[ICON][页面图标]",
+        "stringLength" : 500,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -6898,6 +6842,18 @@
       "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[IS_SHARED_SUBSET][是否同时共享子页面]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[IS_SHARED_SUBSET][是否同时共享子页面]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[IS_SHARED_SUBSET][是否同时共享子页面]移动端默认",
       "getPSDEFFormItem" : {
@@ -6911,18 +6867,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[IS_SHARED_SUBSET][是否同时共享子页面]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "DROPDOWNLIST",
-        "name" : "[IS_SHARED_SUBSET][是否同时共享子页面]",
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT",
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -6981,6 +6925,17 @@
       "standardColumnName" : "`READ_SHARED`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[READ_SHARED][共享只读能力]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[READ_SHARED][共享只读能力]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[READ_SHARED][共享只读能力]移动端默认",
       "getPSDEFFormItem" : {
@@ -6993,17 +6948,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[READ_SHARED][共享只读能力]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[READ_SHARED][共享只读能力]",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -7056,6 +7000,17 @@
       "standardColumnName" : "`SHARED_BY`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[SHARED_BY][共享人]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[SHARED_BY][共享人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[SHARED_BY][共享人]移动端默认",
       "getPSDEFFormItem" : {
@@ -7068,17 +7023,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[SHARED_BY][共享人]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[SHARED_BY][共享人]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -7199,17 +7143,6 @@
       "standardColumnName" : "`ATTENTION_COUNT`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[ATTENTION_COUNT][关注数]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[ATTENTION_COUNT][关注数]",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[ATTENTION_COUNT][关注数]移动端默认",
       "getPSDEFFormItem" : {
@@ -7222,6 +7155,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[ATTENTION_COUNT][关注数]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[ATTENTION_COUNT][关注数]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -7484,6 +7428,16 @@
       "valueOP" : "LTANDEQ"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[RECENT_CREATE_DAYS][最近创建日期]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[RECENT_CREATE_DAYS][最近创建日期]",
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[RECENT_CREATE_DAYS][最近创建日期]移动端默认",
       "getPSDEFFormItem" : {
@@ -7495,16 +7449,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[RECENT_CREATE_DAYS][最近创建日期]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[RECENT_CREATE_DAYS][最近创建日期]",
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -8620,6 +8564,17 @@
       "valueOP" : "LIKE"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[USER_TAG2][用户标记2]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[USER_TAG2][用户标记2]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[USER_TAG2][用户标记2]移动端默认",
       "getPSDEFFormItem" : {
@@ -8632,17 +8587,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[USER_TAG2][用户标记2]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[USER_TAG2][用户标记2]",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -12255,34 +12199,6 @@
       } ],
       "topPos" : 70
     }, {
-      "codeName" : "PREPAREPARAM2",
-      "leftPos" : 170,
-      "logicNodeType" : "PREPAREPARAM",
-      "name" : "设置页面删除状态",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM2"
-        }
-      } ],
-      "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "IS_DELETED",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "name" : "直接值[1] ==> Default[IS_DELETED]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "1",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : -40
-    }, {
       "codeName" : "RAWSQLCALL1",
       "leftPos" : 170,
       "logicNodeType" : "RAWSQLCALL",
@@ -12417,6 +12333,34 @@
         "id" : "selected_page"
       },
       "topPos" : 450
+    }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : 170,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置页面删除状态",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "IS_DELETED",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "name" : "直接值[1] ==> Default[IS_DELETED]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "1",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : -40
     }, {
       "codeName" : "LOOPSUBCALL1",
       "getDstPSDELogicParam" : {
@@ -15580,13 +15524,13 @@
     "name" : "发布页面",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : -340,
+      "leftPos" : -510,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "RAWSFCODE1"
+          "id" : "DEBUGPARAM1"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -15596,6 +15540,27 @@
       } ],
       "topPos" : 200,
       "parallelOutput" : true
+    }, {
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : -411,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
+      } ],
+      "topPos" : 208
     }, {
       "codeName" : "PREPAREPARAM1",
       "leftPos" : 72,
@@ -20353,20 +20318,6 @@
     "name" : "DELETE"
   }, {
     "logicName" : "读取",
-    "mapPSDEName" : "SPACE",
-    "mapPSDEOPPrivName" : "READ",
-    "getMapPSDER" : {
-      "modelref" : true,
-      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDERS/DER1N_PAGE_SPACE_SPACE_ID.json"
-    },
-    "getMapPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space.json"
-    },
-    "name" : "READ",
-    "id" : "space__READ"
-  }, {
-    "logicName" : "读取",
     "mapPSDEName" : "SHARED_SPACE",
     "mapPSDEOPPrivName" : "READ",
     "getMapPSDER" : {
@@ -20379,6 +20330,20 @@
     },
     "name" : "READ",
     "id" : "shared_space_page__READ"
+  }, {
+    "logicName" : "读取",
+    "mapPSDEName" : "SPACE",
+    "mapPSDEOPPrivName" : "READ",
+    "getMapPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDERS/DER1N_PAGE_SPACE_SPACE_ID.json"
+    },
+    "getMapPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space.json"
+    },
+    "name" : "READ",
+    "id" : "space__READ"
   }, {
     "logicName" : "读取",
     "name" : "READ"
@@ -20551,28 +20516,22 @@
     "utilType" : "VERSIONCONTROL"
   } ],
   "getAllPSModelDatas" : [ {
-    "codeName" : "document_edit_view",
-    "logicName" : "页面编辑视图（文档）",
-    "name" : "页面编辑视图（文档）",
-    "realModelSubType" : "DEEDITVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "with_version_view",
     "logicName" : "页面实体版本数据展示视图",
     "name" : "页面实体版本数据展示视图",
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "shared_grid_view",
-    "logicName" : "共享页面表格视图",
-    "name" : "共享页面表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
+    "codeName" : "shared_with_sub_view",
+    "logicName" : "共享页面树导航视图（子页面同时共享）",
+    "name" : "共享页面树导航视图（子页面同时共享）",
+    "realModelSubType" : "DETREEEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "TestEditView",
-    "logicName" : "测试协同编辑视图",
-    "name" : "测试协同编辑视图",
-    "realModelSubType" : "DEEDITVIEW",
+    "codeName" : "show_custom_view",
+    "logicName" : "页面实体自定义视图（展示）",
+    "name" : "页面实体自定义视图（展示）",
+    "realModelSubType" : "DECUSTOMVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView",
@@ -20588,21 +20547,15 @@
     "realModelSubType" : "DETREEEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "shared_mob_list_view",
-    "logicName" : "页面移动端列表视图（与我共享）",
-    "name" : "页面移动端列表视图（与我共享）",
-    "realModelSubType" : "DEMOBLISTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "test_view",
-    "logicName" : "测试页面-引用代码表",
-    "name" : "测试页面-引用代码表",
-    "realModelSubType" : "DEEDITVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "show_view",
     "logicName" : "页面实体编辑视图（展示）",
     "name" : "页面实体编辑视图（展示）",
+    "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "shared_show_view",
+    "logicName" : "页面实体展示视图（共享）",
+    "name" : "页面实体展示视图（共享）",
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
@@ -20612,46 +20565,22 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "space_grid_view",
-    "logicName" : "页面表格视图（仪表盘部件）",
-    "name" : "页面表格视图（仪表盘部件）",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "move_page_option_view",
-    "logicName" : "移动页面选项操作视图",
-    "name" : "移动页面选项操作视图",
-    "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "model_show_view",
-    "logicName" : "页面实体编辑视图模态弹出（展示）",
-    "name" : "页面实体编辑视图模态弹出（展示）",
+    "codeName" : "create_form_stencil_edit_view",
+    "logicName" : "从模板新建页面编辑视图",
+    "name" : "从模板新建页面编辑视图",
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_document_edit_view",
-    "logicName" : "页面文档编辑视图（移动端）",
-    "name" : "页面文档编辑视图（移动端）",
-    "realModelSubType" : "DEMOBEDITVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "qucik_create_view",
-    "logicName" : "页面快速新建视图（文档）",
-    "name" : "页面快速新建视图（文档）",
+    "codeName" : "page_detail_edit_view",
+    "logicName" : "页面信息编辑视图",
+    "name" : "页面信息编辑视图",
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "shared_tree_exp_view",
-    "logicName" : "共享空间页面树导航视图",
-    "name" : "共享空间页面树导航视图",
-    "realModelSubType" : "DETREEEXPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "test_grid_view",
-    "logicName" : "测试页面导入表格",
-    "name" : "测试页面导入表格",
-    "realModelSubType" : "DEGRIDVIEW",
+    "codeName" : "test_view",
+    "logicName" : "测试页面-引用代码表",
+    "name" : "测试页面-引用代码表",
+    "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "RedirectView",
@@ -20661,52 +20590,34 @@
     "realModelSubType" : "DEREDIRECTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "updated_logs",
-    "logicName" : "更新日志",
-    "name" : "更新日志",
-    "realModelSubType" : "DECUSTOMVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "shared_setting_view",
-    "logicName" : "共享设置视图",
-    "name" : "共享设置视图",
-    "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "shared_show_view",
-    "logicName" : "页面实体展示视图（共享）",
-    "name" : "页面实体展示视图（共享）",
-    "realModelSubType" : "DEEDITVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "draft_show_edit_view",
-    "logicName" : "草稿展示编辑视图",
-    "name" : "草稿展示编辑视图",
-    "realModelSubType" : "DEEDITVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "copy_page_option_view",
-    "logicName" : "复制页面选项操作视图",
-    "name" : "复制页面选项操作视图",
-    "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "baseline_mpick_up_view",
-    "logicName" : "基线规划页面多项选择视图",
-    "name" : "基线规划页面多项选择视图",
-    "realModelSubType" : "DEMPICKUPVIEW2",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "pick_up_grid_view",
-    "logicName" : "页面实体选择表格视图（部件视图）",
-    "name" : "页面实体选择表格视图（部件视图）",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "shared_with_me_grid_view",
     "logicName" : "与我共享表格视图",
     "name" : "与我共享表格视图",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "quick_new_page_option_view",
+    "logicName" : "快速新建页面选项操作视图",
+    "name" : "快速新建页面选项操作视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "upload_icon_option_view",
+    "logicName" : "上传图标选项操作视图",
+    "name" : "上传图标选项操作视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_edit_view",
+    "logicName" : "页面移动端展示视图",
+    "name" : "页面移动端展示视图",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "updated_logs",
+    "logicName" : "更新日志",
+    "name" : "更新日志",
+    "realModelSubType" : "DECUSTOMVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "tree_exp_view",
@@ -20740,23 +20651,10 @@
     "realModelSubType" : "DEMOBLISTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "pick_up_view",
-    "logicName" : "页面实体数据选择视图",
-    "modelTag" : "PICKUPVIEW",
-    "name" : "页面实体数据选择视图",
-    "realModelSubType" : "DEPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "set_name_version_option_view",
-    "logicName" : "保存命名版本选项操作视图",
-    "name" : "保存命名版本选项操作视图",
-    "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "after_new_edit_view",
-    "logicName" : "快速新建后续视图",
-    "name" : "快速新建后续视图",
-    "realModelSubType" : "DEEDITVIEW",
+    "codeName" : "mob_option_view",
+    "logicName" : "共享设置视图(移动端)",
+    "name" : "共享设置视图(移动端)",
+    "realModelSubType" : "DEMOBOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mob_draft_list_view",
@@ -20765,16 +20663,40 @@
     "realModelSubType" : "DEMOBLISTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_create_view",
+    "logicName" : "页面移动端新建视图",
+    "name" : "页面移动端新建视图",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "mob_list_view",
     "logicName" : "页面移动端列表视图",
     "name" : "页面移动端列表视图",
     "realModelSubType" : "DEMOBLISTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "show_update_log_view",
-    "logicName" : "更新日志（展示）",
-    "name" : "更新日志（展示）",
+    "codeName" : "TestEditView",
+    "logicName" : "测试协同编辑视图",
+    "name" : "测试协同编辑视图",
     "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "search_mob_md_view",
+    "logicName" : "移动端页面搜索多数据视图",
+    "name" : "移动端页面搜索多数据视图",
+    "realModelSubType" : "DEMOBMDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "filter_grid_view",
+    "logicName" : "页面筛选器表格视图",
+    "name" : "页面筛选器表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "baseline_mpick_up_grid_view",
+    "logicName" : "基线规划空间多项选择视图_选择数据视图",
+    "name" : "基线规划空间多项选择视图_选择数据视图",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "show_version_view",
@@ -20783,28 +20705,41 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "set_name_version_option_view",
+    "logicName" : "保存命名版本选项操作视图",
+    "name" : "保存命名版本选项操作视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "show_update_log_view",
+    "logicName" : "更新日志（展示）",
+    "name" : "更新日志（展示）",
+    "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "test_grid_view",
+    "logicName" : "测试页面导入表格",
+    "name" : "测试页面导入表格",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "shared_with_me_view",
     "logicName" : "页面实体编辑视图（与我共享）",
     "name" : "页面实体编辑视图（与我共享）",
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "re_show_view",
-    "logicName" : "关联的页面实体编辑视图（展示）",
-    "name" : "关联的页面实体编辑视图（展示）",
-    "realModelSubType" : "DEEDITVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "advanced_search_grid_view",
-    "logicName" : "页面高级搜索表格视图",
-    "name" : "页面高级搜索表格视图",
+    "codeName" : "other_re_sapce_page_grid_view",
+    "logicName" : "其他实体关联空间页面展示表格",
+    "name" : "其他实体关联空间页面展示表格",
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "page_detail_edit_view",
-    "logicName" : "页面信息编辑视图",
-    "name" : "页面信息编辑视图",
-    "realModelSubType" : "DEEDITVIEW",
+    "codeName" : "pick_up_view",
+    "logicName" : "页面实体数据选择视图",
+    "modelTag" : "PICKUPVIEW",
+    "name" : "页面实体数据选择视图",
+    "realModelSubType" : "DEPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mpick_up_view",
@@ -20814,21 +20749,39 @@
     "realModelSubType" : "DEMPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "shared_with_sub_view",
-    "logicName" : "共享页面树导航视图（子页面同时共享）",
-    "name" : "共享页面树导航视图（子页面同时共享）",
-    "realModelSubType" : "DETREEEXPVIEW",
+    "codeName" : "re_show_view",
+    "logicName" : "关联的页面实体编辑视图（展示）",
+    "name" : "关联的页面实体编辑视图（展示）",
+    "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_rename_view",
-    "logicName" : "页面移动端重命名编辑视图",
-    "name" : "页面移动端重命名编辑视图",
-    "realModelSubType" : "DEMOBEDITVIEW",
+    "codeName" : "shared_grid_view",
+    "logicName" : "共享页面表格视图",
+    "name" : "共享页面表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "advanced_search_grid_view",
+    "logicName" : "页面高级搜索表格视图",
+    "name" : "页面高级搜索表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mob_add_childgroup_view",
     "logicName" : "页面移动端新建子分组编辑视图",
     "name" : "页面移动端新建子分组编辑视图",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "space_grid_view",
+    "logicName" : "页面表格视图（仪表盘部件）",
+    "name" : "页面表格视图（仪表盘部件）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_rename_view",
+    "logicName" : "页面移动端重命名编辑视图",
+    "name" : "页面移动端重命名编辑视图",
     "realModelSubType" : "DEMOBEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
@@ -20838,16 +20791,10 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "quick_new_page_option_view",
-    "logicName" : "快速新建页面选项操作视图",
-    "name" : "快速新建页面选项操作视图",
-    "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "pick_up_tree_view",
-    "logicName" : "页面选择树视图",
-    "name" : "页面选择树视图",
-    "realModelSubType" : "DEPICKUPTREEVIEW",
+    "codeName" : "baseline_mpick_up_view",
+    "logicName" : "基线规划页面多项选择视图",
+    "name" : "基线规划页面多项选择视图",
+    "realModelSubType" : "DEMPICKUPVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "model_show_view_noupdown",
@@ -20856,10 +20803,10 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_edit_view",
-    "logicName" : "页面移动端展示视图",
-    "name" : "页面移动端展示视图",
-    "realModelSubType" : "DEMOBEDITVIEW",
+    "codeName" : "document_edit_view",
+    "logicName" : "页面编辑视图（文档）",
+    "name" : "页面编辑视图（文档）",
+    "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "statistical_grid_view",
@@ -20868,34 +20815,52 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "show_custom_view",
-    "logicName" : "页面实体自定义视图（展示）",
-    "name" : "页面实体自定义视图（展示）",
-    "realModelSubType" : "DECUSTOMVIEW",
+    "codeName" : "shared_setting_view",
+    "logicName" : "共享设置视图",
+    "name" : "共享设置视图",
+    "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "search_mob_md_view",
-    "logicName" : "移动端页面搜索多数据视图",
-    "name" : "移动端页面搜索多数据视图",
-    "realModelSubType" : "DEMOBMDVIEW",
+    "codeName" : "copy_page_option_view",
+    "logicName" : "复制页面选项操作视图",
+    "name" : "复制页面选项操作视图",
+    "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "other_re_sapce_page_grid_view",
-    "logicName" : "其他实体关联空间页面展示表格",
-    "name" : "其他实体关联空间页面展示表格",
-    "realModelSubType" : "DEGRIDVIEW",
+    "codeName" : "move_page_option_view",
+    "logicName" : "移动页面选项操作视图",
+    "name" : "移动页面选项操作视图",
+    "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_create_view",
-    "logicName" : "页面移动端新建视图",
-    "name" : "页面移动端新建视图",
+    "codeName" : "pick_up_grid_view",
+    "logicName" : "页面实体选择表格视图（部件视图）",
+    "name" : "页面实体选择表格视图（部件视图）",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "draft_show_edit_view",
+    "logicName" : "草稿展示编辑视图",
+    "name" : "草稿展示编辑视图",
+    "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "pick_up_tree_view",
+    "logicName" : "页面选择树视图",
+    "name" : "页面选择树视图",
+    "realModelSubType" : "DEPICKUPTREEVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "qucik_create_view",
+    "logicName" : "页面快速新建视图（文档）",
+    "name" : "页面快速新建视图（文档）",
+    "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_document_edit_view",
+    "logicName" : "页面文档编辑视图（移动端）",
+    "name" : "页面文档编辑视图（移动端）",
     "realModelSubType" : "DEMOBEDITVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "filter_grid_view",
-    "logicName" : "页面筛选器表格视图",
-    "name" : "页面筛选器表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "LogListView",
@@ -20904,28 +20869,28 @@
     "realModelSubType" : "DELISTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "create_form_stencil_edit_view",
-    "logicName" : "从模板新建页面编辑视图",
-    "name" : "从模板新建页面编辑视图",
+    "codeName" : "shared_tree_exp_view",
+    "logicName" : "共享空间页面树导航视图",
+    "name" : "共享空间页面树导航视图",
+    "realModelSubType" : "DETREEEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "after_new_edit_view",
+    "logicName" : "快速新建后续视图",
+    "name" : "快速新建后续视图",
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "baseline_mpick_up_grid_view",
-    "logicName" : "基线规划空间多项选择视图_选择数据视图",
-    "name" : "基线规划空间多项选择视图_选择数据视图",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "codeName" : "model_show_view",
+    "logicName" : "页面实体编辑视图模态弹出（展示）",
+    "name" : "页面实体编辑视图模态弹出（展示）",
+    "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mob_option_view",
-    "logicName" : "共享设置视图(移动端)",
-    "name" : "共享设置视图(移动端)",
-    "realModelSubType" : "DEMOBOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "upload_icon_option_view",
-    "logicName" : "上传图标选项操作视图",
-    "name" : "上传图标选项操作视图",
-    "realModelSubType" : "DEOPTVIEW",
+    "codeName" : "shared_mob_list_view",
+    "logicName" : "页面移动端列表视图（与我共享）",
+    "name" : "页面移动端列表视图（与我共享）",
+    "realModelSubType" : "DEMOBLISTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "help_view",
@@ -20934,17 +20899,10 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "move_page_option_view_Form",
-    "logicName" : "移动页面选项操作视图_表单",
+    "codeName" : "page_detail_edit_view_Form",
+    "logicName" : "页面信息编辑视图_表单",
     "modelTag2" : "0",
-    "name" : "移动页面选项操作视图_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "document_edit_view_Form",
-    "logicName" : "页面编辑视图 - 文档（移动端）_表单",
-    "modelTag2" : "1",
-    "name" : "页面编辑视图 - 文档（移动端）_表单",
+    "name" : "页面信息编辑视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -20955,24 +20913,10 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "upload_icon_option_view_Form",
-    "logicName" : "上传图标选项操作视图_表单",
+    "codeName" : "Usr05244541_Form",
+    "logicName" : "快速新建页面选项操作视图_表单",
     "modelTag2" : "0",
-    "name" : "上传图标选项操作视图_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "mob_option_view_Form",
-    "logicName" : "共享设置视图(移动端)_表单",
-    "modelTag2" : "1",
-    "name" : "共享设置视图(移动端)_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "after_new_edit_view_Form",
-    "logicName" : "快速新建后续视图_表单",
-    "modelTag2" : "0",
-    "name" : "快速新建后续视图_表单",
+    "name" : "快速新建页面选项操作视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -20983,17 +20927,17 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "draft_show_edit_view_Form",
-    "logicName" : "草稿展示编辑视图_表单",
+    "codeName" : "test_edit_view_document_form",
+    "logicName" : "页面编辑视图（文档）_表单 （测试）",
     "modelTag2" : "0",
-    "name" : "草稿展示编辑视图_表单",
+    "name" : "页面编辑视图（文档）_表单 （测试）",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "page_detail_edit_view_Form",
-    "logicName" : "页面信息编辑视图_表单",
-    "modelTag2" : "0",
-    "name" : "页面信息编辑视图_表单",
+    "codeName" : "document_edit_view_Form",
+    "logicName" : "页面编辑视图 - 文档（移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "页面编辑视图 - 文档（移动端）_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -21004,59 +20948,10 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "mob_edit_view_Form",
-    "logicName" : "页面移动端编辑视图_表单",
-    "modelTag2" : "1",
-    "name" : "页面移动端编辑视图_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
     "codeName" : "show_edit_view_form",
     "logicName" : "页面实体编辑视图（展示）_表单",
     "modelTag2" : "0",
     "name" : "页面实体编辑视图（展示）_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "mob_addchildgroup_view_Form",
-    "logicName" : "页面移动端新建子分组编辑视图_表单",
-    "modelTag2" : "1",
-    "name" : "页面移动端新建子分组编辑视图_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "Usr05244541_Form",
-    "logicName" : "快速新建页面选项操作视图_表单",
-    "modelTag2" : "0",
-    "name" : "快速新建页面选项操作视图_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "version_show",
-    "logicName" : "版本展示表单",
-    "modelTag2" : "0",
-    "name" : "版本展示表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "shared_form",
-    "logicName" : "共享页面_表单",
-    "modelTag2" : "0",
-    "name" : "共享页面_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "test_edit_view_document_form",
-    "logicName" : "页面编辑视图（文档）_表单 （测试）",
-    "modelTag2" : "0",
-    "name" : "页面编辑视图（文档）_表单 （测试）",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "mob_rename_view_Form",
-    "logicName" : "页面移动端重命名编辑视图_表单",
-    "modelTag2" : "1",
-    "name" : "页面移动端重命名编辑视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -21074,17 +20969,10 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "mob_document_edit_view_Form",
-    "logicName" : "页面文档编辑视图（移动端）_表单",
-    "modelTag2" : "1",
-    "name" : "页面文档编辑视图（移动端）_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "test_view_Form",
-    "logicName" : "引用代码表_表单",
+    "codeName" : "version_show",
+    "logicName" : "版本展示表单",
     "modelTag2" : "0",
-    "name" : "引用代码表_表单",
+    "name" : "版本展示表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -21095,10 +20983,52 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "page_header",
-    "logicName" : "页面表头测试",
+    "codeName" : "mob_edit_view_Form",
+    "logicName" : "页面移动端编辑视图_表单",
+    "modelTag2" : "1",
+    "name" : "页面移动端编辑视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_addchildgroup_view_Form",
+    "logicName" : "页面移动端新建子分组编辑视图_表单",
+    "modelTag2" : "1",
+    "name" : "页面移动端新建子分组编辑视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "test_view_Form",
+    "logicName" : "引用代码表_表单",
     "modelTag2" : "0",
-    "name" : "页面表头测试",
+    "name" : "引用代码表_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_rename_view_Form",
+    "logicName" : "页面移动端重命名编辑视图_表单",
+    "modelTag2" : "1",
+    "name" : "页面移动端重命名编辑视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_document_edit_view_Form",
+    "logicName" : "页面文档编辑视图（移动端）_表单",
+    "modelTag2" : "1",
+    "name" : "页面文档编辑视图（移动端）_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_option_view_Form",
+    "logicName" : "共享设置视图(移动端)_表单",
+    "modelTag2" : "1",
+    "name" : "共享设置视图(移动端)_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "shared_form",
+    "logicName" : "共享页面_表单",
+    "modelTag2" : "0",
+    "name" : "共享页面_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -21106,6 +21036,34 @@
     "logicName" : "保存命名版本选项操作视图_表单",
     "modelTag2" : "0",
     "name" : "保存命名版本选项操作视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "move_page_option_view_Form",
+    "logicName" : "移动页面选项操作视图_表单",
+    "modelTag2" : "0",
+    "name" : "移动页面选项操作视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "draft_show_edit_view_Form",
+    "logicName" : "草稿展示编辑视图_表单",
+    "modelTag2" : "0",
+    "name" : "草稿展示编辑视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "upload_icon_option_view_Form",
+    "logicName" : "上传图标选项操作视图_表单",
+    "modelTag2" : "0",
+    "name" : "上传图标选项操作视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "page_header",
+    "logicName" : "页面表头测试",
+    "modelTag2" : "0",
+    "name" : "页面表头测试",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -21120,6 +21078,13 @@
     "logicName" : "从模板新建页面编辑视图_表单",
     "modelTag2" : "0",
     "name" : "从模板新建页面编辑视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "after_new_edit_view_Form",
+    "logicName" : "快速新建后续视图_表单",
+    "modelTag2" : "0",
+    "name" : "快速新建后续视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   } ],
@@ -21434,7 +21399,8 @@
       "modelref" : true,
       "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
     },
-    "masterRS" : 0,
+    "masterOrder" : 100,
+    "masterRS" : 5,
     "getMinorPSDataEntity" : {
       "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/version.json"

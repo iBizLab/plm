@@ -110,11 +110,12 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.create_plan_snapshot;
                         update(work_itemcreate_plan_snapshotversion);//更新fact中变量值
             end
 
-            //逻辑处理节点[循环子调用]
-            rule "loopsubcall1"
-            ruleflow-group "work_itemcreate_plan_snapshotloopsubcall1"
+            //逻辑处理节点[关联对象版本标识]
+            rule "prepareparam3"
+            ruleflow-group "work_itemcreate_plan_snapshotprepareparam3"
             when
             then
+                            work_itemcreate_plan_snapshotrelation.set("targetversionid",work_itemcreate_plan_snapshotfor_temp_obj.get("curversionid"));
                         update(work_itemcreate_plan_snapshotdefault);//更新fact中变量值
                         update(work_itemcreate_plan_snapshotbaseline);//更新fact中变量值
                         update(work_itemcreate_plan_snapshotfilter);//更新fact中变量值
@@ -125,12 +126,11 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.create_plan_snapshot;
                         update(work_itemcreate_plan_snapshotversion);//更新fact中变量值
             end
 
-            //逻辑处理节点[关联对象版本标识]
-            rule "prepareparam3"
-            ruleflow-group "work_itemcreate_plan_snapshotprepareparam3"
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "work_itemcreate_plan_snapshotloopsubcall1"
             when
             then
-                            work_itemcreate_plan_snapshotrelation.set("targetversionid",work_itemcreate_plan_snapshotfor_temp_obj.get("curversionid"));
                         update(work_itemcreate_plan_snapshotdefault);//更新fact中变量值
                         update(work_itemcreate_plan_snapshotbaseline);//更新fact中变量值
                         update(work_itemcreate_plan_snapshotfilter);//更新fact中变量值

@@ -442,7 +442,7 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "READ"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -531,6 +531,19 @@
   } ],
   "getAllPSAppDEFields" : [ {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[VISIBILITY][可见范围]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[VISIBILITY][可见范围]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false,
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[VISIBILITY][可见范围]移动端默认",
       "getPSDEFFormItem" : {
@@ -545,19 +558,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[VISIBILITY][可见范围]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "DROPDOWNLIST",
-        "name" : "[VISIBILITY][可见范围]",
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false,
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "visibility",
     "logicName" : "可见范围",
@@ -594,20 +594,6 @@
     "stdDataType" : 6
   }, {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[DESCRIPTION][描述]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.DESCRIPTION"
-        },
-        "codeName" : "Default",
-        "editorType" : "TEXTAREA_10",
-        "name" : "[DESCRIPTION][描述]",
-        "stringLength" : 2000,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[DESCRIPTION][描述]移动端默认",
       "getPSDEFFormItem" : {
@@ -623,6 +609,20 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[DESCRIPTION][描述]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.DESCRIPTION"
+        },
+        "codeName" : "Default",
+        "editorType" : "TEXTAREA_10",
+        "name" : "[DESCRIPTION][描述]",
+        "stringLength" : 2000,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "codeName" : "description",
     "getLNPSLanguageRes" : {
@@ -920,21 +920,6 @@
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   }, {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[SECTION_ID][分组标识]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "HIDDEN",
-        "name" : "[SECTION_ID][分组标识]",
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/Base/PSDATAENTITIES/section.json"
-        },
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[SECTION_ID][分组标识]移动端默认",
       "getPSDEFFormItem" : {
@@ -951,6 +936,21 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[SECTION_ID][分组标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[SECTION_ID][分组标识]",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/section.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "codeName" : "section_id",
     "logicName" : "分组标识",
@@ -1642,7 +1642,7 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "READ"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -2052,11 +2052,6 @@
       "topPos" : 238
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "context",
-      "logicName" : "上下文对象",
-      "name" : "上下文对象",
-      "navContextParam" : true
-    }, {
       "codeName" : "treeexpbar_tree",
       "logicName" : "树部件",
       "name" : "树部件",
@@ -2067,16 +2062,21 @@
       "name" : "默认值",
       "entityParam" : true
     }, {
-      "codeName" : "node_param",
-      "logicName" : "节点参数",
-      "name" : "节点参数",
-      "entityParam" : true
-    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
+    }, {
+      "codeName" : "node_param",
+      "logicName" : "节点参数",
+      "name" : "节点参数",
+      "entityParam" : true
+    }, {
+      "codeName" : "context",
+      "logicName" : "上下文对象",
+      "name" : "上下文对象",
+      "navContextParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -2279,12 +2279,12 @@
     "viewType" : "DEOPTVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/group_quick_create_view.json",
-    "viewType" : "DEOPTVIEW"
-  }, {
-    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/group_tree_exp_view.json",
     "viewType" : "DETREEEXPVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/group_quick_create_view.json",
+    "viewType" : "DEOPTVIEW"
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "建立",
@@ -2319,6 +2319,29 @@
     "name" : "NAME",
     "codeName" : "name"
   },
+  "getMinorPSAppDERSs" : [ {
+    "actionRSMode" : 1,
+    "codeName" : "groups",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "section",
+    "majorDEName" : "SECTION",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/section.json"
+    },
+    "minorDECodeName" : "group",
+    "minorDEName" : "GROUP",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/group.json"
+    },
+    "name" : "DER1N_GROUP_SECTION_SECTION_ID",
+    "getParentPSAppDEField" : {
+      "name" : "SECTION_ID",
+      "codeName" : "section_id"
+    },
+    "rSMode" : 2
+  } ],
   "name" : "GROUP",
   "getPSDEName" : "GROUP",
   "getPSDEServiceAPI" : {

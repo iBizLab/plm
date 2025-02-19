@@ -181,6 +181,58 @@
     },
     "builtinAction" : true
   }, {
+    "actionMode" : "READ",
+    "actionType" : "USERCUSTOM",
+    "codeName" : "GetSimple",
+    "dataAccessAction" : "READ",
+    "dynaModelFilePath" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person/PSDEACTIONS/GetSimple.json",
+    "logicName" : "获取人员简要信息",
+    "name" : "GetSimple",
+    "getPSDEActionInput" : {
+      "getKeyPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "name" : "GetSimpleInput",
+      "type" : "KEYFIELD"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "GetSimpleResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "sys_personDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSSubSysServiceAPIDEMethod" : {
+      "modelref" : true,
+      "id" : "GetSimple"
+    }
+  }, {
+    "actionMode" : "CUSTOM",
+    "actionType" : "USERCUSTOM",
+    "codeName" : "ResetPassword",
+    "dataAccessAction" : "UPDATE",
+    "dynaModelFilePath" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person/PSDEACTIONS/ResetPassword.json",
+    "logicName" : "重置密码",
+    "name" : "ResetPassword",
+    "getPSDEActionInput" : {
+      "name" : "ResetPasswordInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "sys_personDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "ResetPasswordResult",
+      "type" : "VOID"
+    },
+    "getPSSubSysServiceAPIDEMethod" : {
+      "modelref" : true,
+      "id" : "ResetPassword"
+    }
+  }, {
     "actionMode" : "SAVE",
     "actionType" : "BUILTIN",
     "codeName" : "Save",
@@ -203,7 +255,7 @@
     },
     "getPSSubSysServiceAPIDEMethod" : {
       "modelref" : true,
-      "id" : "Save"
+      "id" : "save"
     },
     "builtinAction" : true
   } ],
@@ -1395,17 +1447,6 @@
       "standardColumnName" : "`STATUS`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[STATUS][状态]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[STATUS][状态]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[STATUS][状态]移动端默认",
       "getPSDEFFormItem" : {
@@ -1418,6 +1459,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[STATUS][状态]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[STATUS][状态]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1729,6 +1781,12 @@
       "queryCodeExp" : "t1.`UID`",
       "standardColumnName" : "`UID`"
     } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_UID_EQ",
+      "name" : "N_UID_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
       "name" : "[UID][uid/loginname]",
@@ -1789,6 +1847,7 @@
     "serviceCodeName" : "uid",
     "stdDataType" : 25,
     "stringLength" : 100,
+    "unionKeyValue" : "KEY1",
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
@@ -1799,6 +1858,17 @@
       "standardColumnName" : "`ORGANIZATION_ID`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[ORGANIZATION_ID][组织标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[ORGANIZATION_ID][组织标识]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[ORGANIZATION_ID][组织标识]移动端默认",
       "getPSDEFFormItem" : {
@@ -1811,17 +1881,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[ORGANIZATION_ID][组织标识]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[ORGANIZATION_ID][组织标识]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1868,6 +1927,17 @@
       "standardColumnName" : "`AVATAR`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[AVATAR][头像]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[AVATAR][头像]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[AVATAR][头像]移动端默认",
       "getPSDEFFormItem" : {
@@ -1880,17 +1950,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[AVATAR][头像]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[AVATAR][头像]",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1937,17 +1996,6 @@
       "standardColumnName" : "`ORGANIZATION_NAME`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[ORGANIZATION_NAME][组织名称]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[ORGANIZATION_NAME][组织名称]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[ORGANIZATION_NAME][组织名称]移动端默认",
       "getPSDEFFormItem" : {
@@ -1960,6 +2008,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[ORGANIZATION_NAME][组织名称]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[ORGANIZATION_NAME][组织名称]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -2632,6 +2691,20 @@
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
+    }, {
+      "logicName" : "uid/loginname",
+      "name" : "N_UID_EQ",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_UID_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "UID",
+        "codeName" : "uid"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
     } ],
     "sourceType" : "DE",
     "type" : "DEFILTER",
@@ -2651,9 +2724,32 @@
     "name" : "UPDATE"
   } ],
   "getAllPSDEUserRoles" : [ {
+    "dynaModelFilePath" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person/PSDEUSERROLES/ALL_R.json",
+    "name" : "全部数据（读）",
+    "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "READ",
+      "name" : "READ",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ"
+      }
+    } ],
+    "roleTag" : "ALL_R",
+    "userCat" : "CAT1",
+    "userDRAction" : "READ",
+    "allData" : true,
+    "systemReserved" : true
+  }, {
     "dynaModelFilePath" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person/PSDEUSERROLES/ALL_RW.json",
     "name" : "全部数据（读写）",
     "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "CREATE",
+      "name" : "CREATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "CREATE"
+      }
+    }, {
       "dataAccessAction" : "READ",
       "name" : "READ",
       "getPSDEOPPriv" : {
@@ -2673,13 +2769,6 @@
       "getPSDEOPPriv" : {
         "modelref" : true,
         "id" : "DELETE"
-      }
-    }, {
-      "dataAccessAction" : "CREATE",
-      "name" : "CREATE",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "CREATE"
       }
     } ],
     "roleTag" : "ALL_RW",
@@ -2726,31 +2815,11 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "RedirectView",
-    "logicName" : "人员实体数据重定向视图",
-    "modelTag" : "REDIRECTVIEW",
-    "name" : "人员实体数据重定向视图",
-    "realModelSubType" : "DEREDIRECTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "EditView2",
-    "logicName" : "人员实体编辑视图（左右关系）",
-    "name" : "人员实体编辑视图（左右关系）",
-    "realModelSubType" : "DEEDITVIEW2",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "pick_up_view",
     "logicName" : "人员实体数据选择视图",
     "modelTag" : "PICKUPVIEW",
     "name" : "人员实体数据选择视图",
     "realModelSubType" : "DEPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "EditView",
-    "logicName" : "人员实体编辑视图",
-    "modelTag" : "EDITVIEW",
-    "name" : "人员实体编辑视图",
-    "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "pick_up_grid_view",
@@ -2764,6 +2833,26 @@
     "modelTag" : "MPICKUPVIEW",
     "name" : "人员实体数据多项选择视图",
     "realModelSubType" : "DEMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "RedirectView",
+    "logicName" : "人员实体数据重定向视图",
+    "modelTag" : "REDIRECTVIEW",
+    "name" : "人员实体数据重定向视图",
+    "realModelSubType" : "DEREDIRECTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "EditView2",
+    "logicName" : "人员实体编辑视图（左右关系）",
+    "name" : "人员实体编辑视图（左右关系）",
+    "realModelSubType" : "DEEDITVIEW2",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "EditView",
+    "logicName" : "人员实体编辑视图",
+    "modelTag" : "EDITVIEW",
+    "name" : "人员实体编辑视图",
+    "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "Main",
@@ -2836,6 +2925,9 @@
   "storageMode" : 4,
   "systemTag" : "iBizPLM",
   "getUnionKeyValuePSDEFields" : [ {
+    "name" : "UID",
+    "codeName" : "uid"
+  }, {
     "name" : "DC",
     "codeName" : "dc"
   } ],

@@ -107,22 +107,6 @@ package cn.ibizlab.plm.base.logic.categorylogic.delete_child_category;
             end
 
             //逻辑处理节点[上级的是否叶子节点变更]
-            rule "prepareparam3"
-            ruleflow-group "categorydelete_child_categoryprepareparam3"
-            when
-            then
-                            categorydelete_child_categoryparent_section.set("id",categorydelete_child_categorydefault.get("sectionid"));
-                            categorydelete_child_categoryfilter.set("n_section_id_eq",categorydelete_child_categorydefault.get("sectionid"));
-                            categorydelete_child_categoryparent_section.set("isleaf","1");
-                        update(categorydelete_child_categorydefault);//更新fact中变量值
-                        update(categorydelete_child_categorycategory_page);//更新fact中变量值
-                        update(categorydelete_child_categoryfilter);//更新fact中变量值
-                        update(categorydelete_child_categoryfor_temp_obj);//更新fact中变量值
-                        update(categorydelete_child_categoryparent_category);//更新fact中变量值
-                        update(categorydelete_child_categoryparent_section);//更新fact中变量值
-            end
-
-            //逻辑处理节点[上级的是否叶子节点变更]
             rule "prepareparam2"
             ruleflow-group "categorydelete_child_categoryprepareparam2"
             when
@@ -161,6 +145,22 @@ package cn.ibizlab.plm.base.logic.categorylogic.delete_child_category;
         param.put("param1",categorydelete_child_categorydefault.get("id"));
     String strSql="UPDATE idea t  INNER JOIN category t21 ON t.category_id = t21.ID  SET t.category_id = NULL WHERE (t.category_id = #{et.param0} OR t21.categories LIKE CONCAT('%',#{et.param1},'%'))";
                         iBzSysCategoryDefaultService.execute(strSql,param);//SQL调用
+                        update(categorydelete_child_categorydefault);//更新fact中变量值
+                        update(categorydelete_child_categorycategory_page);//更新fact中变量值
+                        update(categorydelete_child_categoryfilter);//更新fact中变量值
+                        update(categorydelete_child_categoryfor_temp_obj);//更新fact中变量值
+                        update(categorydelete_child_categoryparent_category);//更新fact中变量值
+                        update(categorydelete_child_categoryparent_section);//更新fact中变量值
+            end
+
+            //逻辑处理节点[上级的是否叶子节点变更]
+            rule "prepareparam3"
+            ruleflow-group "categorydelete_child_categoryprepareparam3"
+            when
+            then
+                            categorydelete_child_categoryparent_section.set("id",categorydelete_child_categorydefault.get("sectionid"));
+                            categorydelete_child_categoryfilter.set("n_section_id_eq",categorydelete_child_categorydefault.get("sectionid"));
+                            categorydelete_child_categoryparent_section.set("isleaf","1");
                         update(categorydelete_child_categorydefault);//更新fact中变量值
                         update(categorydelete_child_categorycategory_page);//更新fact中变量值
                         update(categorydelete_child_categoryfilter);//更新fact中变量值

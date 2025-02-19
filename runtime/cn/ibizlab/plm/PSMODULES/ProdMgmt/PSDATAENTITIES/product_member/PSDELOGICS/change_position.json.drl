@@ -42,6 +42,16 @@ package cn.ibizlab.plm.prodmgmt.logic.product_memberlogic.change_position;
                         update(product_memberchange_positionsrfactionparam);//更新fact中变量值
             end
 
+            //逻辑处理节点[循环id列表进行操作]
+            rule "loopsubcall1"
+            ruleflow-group "product_memberchange_positionloopsubcall1"
+            when
+            then
+                        update(product_memberchange_positiondefault);//更新fact中变量值
+                        update(product_memberchange_positionfor_temp_obj);//更新fact中变量值
+                        update(product_memberchange_positionsrfactionparam);//更新fact中变量值
+            end
+
             //逻辑处理节点[获取传递的状态]
             rule "prepareparam2"
             ruleflow-group "product_memberchange_positionprepareparam2"
@@ -59,16 +69,6 @@ package cn.ibizlab.plm.prodmgmt.logic.product_memberlogic.change_position;
             when
             then
                         product_memberservice.update(product_memberchange_positiondefault);
-                        update(product_memberchange_positiondefault);//更新fact中变量值
-                        update(product_memberchange_positionfor_temp_obj);//更新fact中变量值
-                        update(product_memberchange_positionsrfactionparam);//更新fact中变量值
-            end
-
-            //逻辑处理节点[循环id列表进行操作]
-            rule "loopsubcall1"
-            ruleflow-group "product_memberchange_positionloopsubcall1"
-            when
-            then
                         update(product_memberchange_positiondefault);//更新fact中变量值
                         update(product_memberchange_positionfor_temp_obj);//更新fact中变量值
                         update(product_memberchange_positionsrfactionparam);//更新fact中变量值

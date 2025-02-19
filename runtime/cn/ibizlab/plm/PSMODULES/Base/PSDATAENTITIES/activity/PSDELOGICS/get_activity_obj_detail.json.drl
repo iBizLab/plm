@@ -12,8 +12,8 @@ package cn.ibizlab.plm.base.logic.activitylogic.get_activity_obj_detail;
                     global cn.ibizlab.plm.core.prodmgmt.service.IideaService ideaservice;
                     global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService work_itemservice;
                     global cn.ibizlab.plm.core.prodmgmt.service.IticketService ticketservice;
-                    global cn.ibizlab.plm.core.prodmgmt.service.IcustomerService customerservice;
                     global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService test_caseservice;
+                    global cn.ibizlab.plm.core.prodmgmt.service.IcustomerService customerservice;
                     global cn.ibizlab.plm.core.testmgmt.service.IrunService runservice;
                     global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService article_pageservice;
         global cn.ibizlab.plm.core.base.service.IactivityService iBzSysActivityDefaultService;
@@ -77,12 +77,11 @@ package cn.ibizlab.plm.base.logic.activitylogic.get_activity_obj_detail;
                         update(activityget_activity_obj_detailoption_info);//更新fact中变量值
             end
 
-            //逻辑处理节点[获取客户类详情]
-            rule "deaction4"
-            ruleflow-group "activityget_activity_obj_detaildeaction4"
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "activityget_activity_obj_detailend1"
             when
             then
-                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(customerservice.get(activityget_activity_obj_detaildetail_info.getId()),activityget_activity_obj_detaildetail_info);
                         update(activityget_activity_obj_detaildefault);//更新fact中变量值
                         update(activityget_activity_obj_detailobject_id);//更新fact中变量值
                         update(activityget_activity_obj_detaildetail_info);//更新fact中变量值
@@ -127,11 +126,12 @@ package cn.ibizlab.plm.base.logic.activitylogic.get_activity_obj_detail;
                         update(activityget_activity_obj_detailoption_info);//更新fact中变量值
             end
 
-            //逻辑处理节点[结束]
-            rule "end1"
-            ruleflow-group "activityget_activity_obj_detailend1"
+            //逻辑处理节点[获取客户类详情]
+            rule "deaction4"
+            ruleflow-group "activityget_activity_obj_detaildeaction4"
             when
             then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(customerservice.get(activityget_activity_obj_detaildetail_info.getId()),activityget_activity_obj_detaildetail_info);
                         update(activityget_activity_obj_detaildefault);//更新fact中变量值
                         update(activityget_activity_obj_detailobject_id);//更新fact中变量值
                         update(activityget_activity_obj_detaildetail_info);//更新fact中变量值

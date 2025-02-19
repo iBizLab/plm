@@ -111,6 +111,30 @@
     }
   } ],
   "getPSAppViewRefs" : [ {
+    "name" : "NEWDATA",
+    "realOpenMode" : "POPUPMODAL",
+    "realTitle" : "执行用例主视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.RUN.EDITVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/run_main_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  }, {
+    "name" : "OPENDATA",
+    "realOpenMode" : "POPUPMODAL",
+    "realTitle" : "执行用例主视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.RUN.EDITVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/run_main_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  }, {
     "name" : "EDITDATA",
     "openMode" : "INDEXVIEWTAB_POPUPMODAL",
     "getPSNavigateContexts" : [ {
@@ -131,30 +155,6 @@
     },
     "viewParamJO" : {
       "test_case" : "%case_id%"
-    }
-  }, {
-    "name" : "OPENDATA",
-    "realOpenMode" : "POPUPMODAL",
-    "realTitle" : "执行用例主视图",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.RUN.EDITVIEW"
-    },
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/run_main_view.json",
-      "viewType" : "DEEDITVIEW"
-    }
-  }, {
-    "name" : "NEWDATA",
-    "realOpenMode" : "POPUPMODAL",
-    "realTitle" : "执行用例主视图",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.RUN.EDITVIEW"
-    },
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/run_main_view.json",
-      "viewType" : "DEEDITVIEW"
     }
   }, {
     "name" : "MPICKUPVIEW:TEST_CASE",
@@ -2471,7 +2471,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "all_grid_view",
-  "getPSDEViewId" : "59adc894d723833e929f4daf9a545330",
+  "getPSDEViewId" : "493f3914a98a58308018c506b686d81f",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEGRIDVIEW",
@@ -2498,9 +2498,53 @@
   "enableRowEdit" : true,
   "enableSearch" : true,
   "rowEditDefault" : false,
-  "modelid" : "4114c0946ed38c3b18d6f7abc455e661",
+  "modelid" : "c65805e75f541b00f2e4cc0c35c01297",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "test_plans",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "project",
+    "majorDEName" : "PROJECT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "minorDECodeName" : "test_plan",
+    "minorDEName" : "TEST_PLAN",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+    },
+    "name" : "DER1N_TEST_PLAN_PROJECT_PROJECT_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PROJECT_ID",
+      "codeName" : "project_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "runs",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "test_plan",
+    "majorDEName" : "TEST_PLAN",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+    },
+    "minorDECodeName" : "run",
+    "minorDEName" : "RUN",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+    },
+    "name" : "DER1N_RUN_TEST_PLAN_PLAN_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PLAN_ID",
+      "codeName" : "plan_id"
+    },
+    "rSMode" : 2
+  } ], [ {
     "actionRSMode" : 1,
     "codeName" : "test_plans",
     "dataRSMode" : 0,

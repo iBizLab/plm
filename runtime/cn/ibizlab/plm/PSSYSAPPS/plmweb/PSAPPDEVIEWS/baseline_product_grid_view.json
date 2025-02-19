@@ -88,15 +88,6 @@
     }
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "NEWDATA",
-    "realOpenMode" : "POPUPMODAL",
-    "realTitle" : "产品基线快速建立视图",
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_product_create_view.json",
-      "viewType" : "DEOPTVIEW"
-    }
-  }, {
     "name" : "EDITDATA",
     "getPSNavigateContexts" : [ {
       "key" : "BASELINE_STATUS",
@@ -109,6 +100,15 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_product_main_view.json",
       "viewType" : "DETABEXPVIEW"
+    }
+  }, {
+    "name" : "NEWDATA",
+    "realOpenMode" : "POPUPMODAL",
+    "realTitle" : "产品基线快速建立视图",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_product_create_view.json",
+      "viewType" : "DEOPTVIEW"
     }
   } ],
   "getPSControls" : [ {
@@ -235,7 +235,7 @@
       "showIcon" : true
     } ],
     "xDataControlName" : "grid",
-    "modelid" : "F4C7FDFF-9067-4458-8533-CF79BB9ED78D",
+    "modelid" : "9da2c91cf886e834d5c0fb4bf956ca1f",
     "modeltype" : "PSDETOOLBAR"
   }, {
     "aggMode" : "NONE",
@@ -393,7 +393,7 @@
         "getPSUIActionGroupDetails" : [ {
           "actionLevel" : 200,
           "detailType" : "DEUIACTION",
-          "name" : "u119fb10",
+          "name" : "ue6b55d2",
           "getPSSysImage" : {
             "glyph" : "xf192@FontAwesome",
             "cssClass" : "fa fa-dot-circle-o"
@@ -441,7 +441,7 @@
         }, {
           "caption" : "编辑",
           "detailType" : "DEUIACTION",
-          "name" : "u7d7b8a9",
+          "name" : "u5b353fb",
           "getPSSysImage" : {
             "glyph" : "xf044@FontAwesome",
             "cssClass" : "fa fa-edit"
@@ -482,7 +482,7 @@
         }, {
           "caption" : "删除",
           "detailType" : "DEUIACTION",
-          "name" : "uab35736",
+          "name" : "uc95f550",
           "getPSSysImage" : {
             "glyph" : "xf014@FontAwesome",
             "cssClass" : "fa fa-trash-o"
@@ -571,6 +571,7 @@
       },
       "width" : 300,
       "widthUnit" : "PX",
+      "enableRowEdit" : true,
       "enableSort" : true
     }, {
       "align" : "LEFT",
@@ -795,6 +796,31 @@
       }
     } ],
     "getPSDEGridEditItems" : [ {
+      "caption" : "类别",
+      "codeName" : "categories",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "name" : "categories",
+      "getPSAppDEField" : {
+        "name" : "CATEGORIES",
+        "codeName" : "categories"
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "readonly" : "true"
+        },
+        "editorType" : "MDROPDOWNLIST",
+        "name" : "categories",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__category.json"
+        },
+        "readOnly" : true,
+        "singleSelect" : false
+      },
+      "allowEmpty" : true,
+      "needCodeListConfig" : true
+    }, {
       "caption" : "负责人",
       "codeName" : "assignee_name",
       "enableCond" : 3,

@@ -792,6 +792,13 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
+      "code" : "const list = uiLogic.setting_model_list;\r\nconst items = list.getAllData() || [];\r\nif (uiLogic.listservice) {\r\n    uiLogic.listservice.updateBatch(list.context, items).then((res) => {\r\n        if (res.data) {\r\n            list.setData(res.data);\r\n        }\r\n        list.evt.emit('onSaveSuccess', undefined);\r\n    })\r\n}",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 583,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "更新列表数据",
+      "topPos" : 208
+    }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 368,
       "logicNodeType" : "PREPAREJSPARAM",
@@ -823,25 +830,18 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 208
-    }, {
-      "code" : "const list = uiLogic.setting_model_list;\r\nconst items = list.getAllData() || [];\r\nif (uiLogic.listservice) {\r\n    uiLogic.listservice.updateBatch(list.context, items).then((res) => {\r\n        if (res.data) {\r\n            list.setData(res.data);\r\n        }\r\n        list.evt.emit('onSaveSuccess', undefined);\r\n    })\r\n}",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 583,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "更新列表数据",
-      "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "setting_model_list",
-      "logicName" : "列表部件",
-      "name" : "列表部件",
-      "ctrlParam" : true
-    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
+    }, {
+      "codeName" : "setting_model_list",
+      "logicName" : "列表部件",
+      "name" : "列表部件",
+      "ctrlParam" : true
     }, {
       "codeName" : "listservice",
       "logicName" : "列表服务",

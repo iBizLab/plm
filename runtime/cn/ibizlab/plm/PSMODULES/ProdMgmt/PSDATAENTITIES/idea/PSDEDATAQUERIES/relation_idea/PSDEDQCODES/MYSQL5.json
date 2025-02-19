@@ -5,6 +5,10 @@
     "condType" : "CUSTOM",
     "customCond" : "EXISTS(SELECT * FROM `RELATION` t41 \n WHERE \n t1.`ID` = t41.`TARGET_ID`  AND  ( t41.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}  AND  t41.`PRINCIPAL_TYPE` = 'idea'  AND  t41.`TARGET_TYPE` = 'idea' ) )",
     "name" : "查询条件"
+  }, {
+    "condType" : "CUSTOM",
+    "customCond" : "( t1.`IS_DELETED` <> 1 )",
+    "name" : "查询条件"
   } ],
   "getPSDEDataQueryCodeExps" : [ {
     "expression" : "t1.`DESCRIPTION`",
