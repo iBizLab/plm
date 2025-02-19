@@ -10,7 +10,7 @@ networks:
 services:
   #mysql
   mysql:
-    image: dockerhub.qingcloud.com/ibizlab/mysql:5.7.plm.20241210
+    image: dockerhub.qingcloud.com/ibizlab/mysql:5.7.plm.20250218
     ports:
       - "30006:3306"
     environment:
@@ -124,7 +124,7 @@ services:
       - "nacos.ibizcloud.cn:${IPADDR:-10.144.0.1}"
   #ibiz-ebsx-allinone
   ibiz-ebsx-allinone:
-    image: dockerhub.qingcloud.com/ibizlab/ibiz-ebsx-allinone-rt:8.1.0.565.91.241231
+    image: dockerhub.qingcloud.com/ibizlab/ibiz-ebsx-allinone-rt:8.1.0.565.91.250218
     environment:
       - SPRING_CLOUD_NACOS_DISCOVERY_IP=nacos.ibizcloud.cn
       - SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR=nacos.ibizcloud.cn:30048
@@ -210,7 +210,7 @@ services:
       - "nacos.ibizcloud.cn:${IPADDR:-10.144.0.1}"
   #plmweb
   plmweb:
-    image: dockerhub.qingcloud.com/ibizlab/ibiz-cloud-web-runner:9.0.7.38-alpha.43.plm.241231
+    image: dockerhub.qingcloud.com/ibizlab/ibiz-cloud-web-runner:9.0.7.38-alpha.55.plm.250218
     ports:
       - 30250:80
     networks:
@@ -225,7 +225,7 @@ services:
       - "nacos.ibizcloud.cn:${IPADDR:-10.144.0.1}"
   #plmmob
   plmmob:
-    image: dockerhub.qingcloud.com/ibizlab/ibiz-cloud-mob-runner:9.0.0.41.plm.241231
+    image: dockerhub.qingcloud.com/ibizlab/ibiz-cloud-mob-runner:9.0.0.47.plm.250218
     ports:
       - 30260:80
     networks:
@@ -237,7 +237,7 @@ services:
       - "nacos.ibizcloud.cn:${IPADDR:-10.144.0.1}"
   #plmservice
   plmservice:
-    image: dockerhub.qingcloud.com/ibizlab/ibiz-service-runner:8.1.0.565.91
+    image: dockerhub.qingcloud.com/ibizlab/ibiz-service-runner:8.1.0.567.11
     ports:
       - "30251:30251"
     networks:
