@@ -53,7 +53,7 @@ cd plm/deploy/compose
 ##### 从存储库中检索任何更改：
 
 ```
-git pull https://github.com/ibizlab/plm.git
+git pull https://gitee.com/ibizlab/plm.git
 ```
 
 ##### 重新启动容器：
