@@ -118,6 +118,7 @@ services:
       - IBIZ_AUTH_PASSWORDENCRYPTMODE=none
       - IBIZ_JWT_SIGNATURE=RSA
       - IBIZ_AUTH_PASSWORDSTORAGEMODE=sm3
+      - JAVA_OPTS=-Xms256m -Xmx1024m -Xss256K
       
     extra_hosts:
       - "gateway.ibizcloud.cn:${IPADDR:-10.144.0.1}"
@@ -134,6 +135,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD=9d@A178@
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/a_lab01_3f9ebc219?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useOldAliasMetadataBehavior=true&serverTimezone=GMT%2B8&allowMultiQueries=true
       - IPADDR=${IPADDR:-10.144.0.1}
+      - JAVA_OPTS=-Xms256m -Xmx${EBSX_LIMITS_MEMORY:-2048m} -Xss256K
       
     entrypoint: /entrypoint-waitfor.sh
     command: ibizlab-uaa-api:32666
@@ -155,6 +157,7 @@ services:
       - SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR=nacos.ibizcloud.cn:30048
       - SPRING_CLOUD_NACOS_CONFIG_SERVER-ADDR=nacos.ibizcloud.cn:30048
       - SERVER_PORT=30086
+      - JAVA_OPTS=-Xms256m -Xmx512m -Xss256K
       
     networks:
       - agent_network
@@ -204,6 +207,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/a_lab01_3f9ebc219?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useOldAliasMetadataBehavior=true&serverTimezone=GMT%2B8&allowMultiQueries=true&useSSL=false
       - SPRING_DATASOURCE_USERNAME=a_lab01_3f9ebc219
       - SERVER_PORT=30100
+      - JAVA_OPTS=-Xms256m -Xmx1024m -Xss256K
       
     extra_hosts:
       - "gateway.ibizcloud.cn:${IPADDR:-10.144.0.1}"
@@ -237,7 +241,7 @@ services:
       - "nacos.ibizcloud.cn:${IPADDR:-10.144.0.1}"
   #plmservice
   plmservice:
-    image: dockerhub.qingcloud.com/ibizlab/ibiz-service-runner:8.1.0.567.11
+    image: dockerhub.qingcloud.com/ibizlab/ibiz-service-runner:8.1.0.567.11.plm.250218
     ports:
       - "30251:30251"
     networks:
@@ -258,6 +262,7 @@ services:
       - SPRING_REDIS_PORT=6379
       - ZOOKEEPER_ADDRESS=zoo1
       - ZOOKEEPER_PORT=2181
+      - JAVA_OPTS=-Xms256m -Xmx${PLM_LIMITS_MEMORY:-2048m} -Xss256K
       
     entrypoint: /entrypoint-waitfor.sh
     command: ibiz-ebsx-allinone:30000
