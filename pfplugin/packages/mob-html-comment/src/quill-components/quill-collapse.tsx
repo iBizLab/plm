@@ -1,6 +1,13 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable import/no-extraneous-dependencies */
-import { defineComponent, nextTick, onMounted, ref, watch } from 'vue';
+import {
+  defineComponent,
+  nextTick,
+  onMounted,
+  ref,
+  watch,
+  onBeforeUnmount,
+} from 'vue';
 import {
   getHtmlProps,
   useNamespace,
@@ -82,19 +89,53 @@ const IBizQuillCollapse: any = defineComponent({
     };
 
     // 监听img加载情况
-    const watchHtmlImages = (container: HTMLElement | null) => {
+    const watchHtmlImages = async (
+      container: HTMLElement | null,
+    ): Promise<void> => {
       if (!container) return;
       const images = container.querySelectorAll('img');
-      let totalHieght = 0;
+      const curCollapseHeight = container.offsetHeight;
+      let totalHeight = curCollapseHeight > 42 ? curCollapseHeight : 42; // 模拟有文字内容时的高度或者没文字内容时的边距高度
+      // 创建一个数组来存储每个图片加载完成的 Promise
+      const imageLoadPromises: Promise<void>[] = [];
       images.forEach(image => {
-        image.addEventListener('load', () => {
-          const height = image.offsetHeight;
-          totalHieght += height;
-          if (totalHieght > props.defaultHeight) {
-            collapseHeight.value = `${props.defaultHeight}px`;
-            showCollapseBtn.value = true;
-          }
+        const loadPromise = new Promise<void>(resolve => {
+          const onLoad = () => {
+            const height = image.offsetHeight;
+            totalHeight += height;
+            resolve();
+          };
+
+          image.addEventListener('load', onLoad);
+
+          // 在元素对象上存储事件处理函数，便于后续移除
+          // eslint-disable-next-line no-param-reassign
+          (image as IParams)._onLoad = onLoad;
         });
+        imageLoadPromises.push(loadPromise);
+      });
+
+      // 等待所有图片加载完成
+      await Promise.all(imageLoadPromises);
+
+      if (totalHeight > props.defaultHeight) {
+        collapseHeight.value = `${props.defaultHeight}px`;
+        showCollapseBtn.value = true;
+      } else if (totalHeight > curCollapseHeight) {
+        collapseHeight.value = `${totalHeight}px`;
+      }
+    };
+
+    /** 销毁img监听 */
+    const removeImageLoadListeners = (container: HTMLElement | null) => {
+      if (!container) return;
+      const images = container.querySelectorAll('img');
+      images?.forEach((image: IParams) => {
+        if (image._onLoad) {
+          image.removeEventListener('load', image._onLoad);
+          // eslint-disable-next-line no-param-reassign
+          delete image._onLoad;
+        }
       });
     };
 
@@ -104,6 +145,10 @@ const IBizQuillCollapse: any = defineComponent({
         resetCollapseHeight();
         watchHtmlImages(editorRef.value);
       });
+    });
+
+    onBeforeUnmount(() => {
+      removeImageLoadListeners(editorRef.value);
     });
 
     const handleClick = () => {

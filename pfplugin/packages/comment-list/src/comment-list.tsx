@@ -19,10 +19,9 @@ export const CommentList = defineComponent({
     },
   },
   emits: getEditorEmits(),
-  setup(props, { emit }) {
+  setup(props) {
     const ns = useNamespace('comment-list');
     const c = props.controller;
-    const commentInput = ref('');
     const items = ref<IData[]>([]);
     const errorLoadItems = ref<string[]>([]);
 
@@ -68,24 +67,24 @@ export const CommentList = defineComponent({
       items.value.push(event.eventArg);
     };
 
+    const updateItem = (event: IData) => {
+      const index = items.value.findIndex((_item: IData) => {
+        return _item.id === event.id;
+      });
+      if (index > -1) {
+        items.value.splice(index, 1, event);
+      }
+    };
+
     c.evt.on('deleteItem', handleDelete);
 
     c.evt.on('addItem', handleAdd);
 
+    c.evt.on('editreply', updateItem);
+
     // 删除评论
     const deleteComment = async (item: IData) => {
-      const del = await ibiz.confirm.error({
-        title: '是否删除',
-      });
-      if (del) {
-        c.deleteComment(item);
-      }
-    };
-
-    // 发送评论
-    const sendComment = () => {
-      c.sendComment(commentInput.value, props.data);
-      commentInput.value = '';
+      c.deleteComment(item);
     };
 
     // 头像加载失败
@@ -112,53 +111,6 @@ export const CommentList = defineComponent({
       const url = downloadUrl.replace('%fileId%', urlConfig[0].id);
       return (
         <img src={url} onError={() => avatarLoadError(avatarUrl)} alt='' />
-      );
-    };
-
-    // 绘制头部
-    const renderHeader = () => {
-      return (
-        <div class={ns.e('header')}>
-          <div>{items.value.length}条评论</div>
-          <el-divider></el-divider>
-        </div>
-      );
-    };
-
-    // 绘制当前用户头像
-    const renderCurrentAvatar = () => {
-      const { avatar, srfusername } = c.context;
-      if (avatar) {
-        return getUserAvatar(avatar);
-      }
-      return (
-        <div
-          class={ns.em('input', 'current-label')}
-          style={`background-color:${stringToHexColor(srfusername)}`}
-        >
-          {renderTextPhoto(srfusername)}
-        </div>
-      );
-    };
-
-    // 绘制评论框
-    const renderInput = () => {
-      return (
-        <div class={ns.e('input')}>
-          <div class={ns.em('input', 'left')}>
-            <div class={ns.em('input', 'avatar')}>{renderCurrentAvatar()}</div>
-          </div>
-          <el-input
-            class={ns.em('input', 'input')}
-            v-model={commentInput.value}
-            type='textarea'
-            rows={1}
-            autosize={commentInput.value.length > 0 ? true : false}
-          ></el-input>
-          <div class={ns.em('input', 'right')}>
-            <el-button onClick={sendComment}>发送</el-button>
-          </div>
-        </div>
       );
     };
 
@@ -218,6 +170,11 @@ export const CommentList = defineComponent({
       }
     };
 
+    // 编辑内容
+    const editItem = (item: IData) => {
+      c.updateComment(item);
+    };
+
     // 绘制列表项
     const renderListItem = (item: IData) => {
       return (
@@ -228,21 +185,36 @@ export const CommentList = defineComponent({
               {formatTime(item.create_time)}
             </span>
             {item.create_man === c.context.srfuserid ? (
-              <span
-                class={ns.em('item', 'delicon')}
-                onClick={() => deleteComment(item)}
-              >
-                <i class='fa fa-trash-o' aria-hidden='true'></i>
-              </span>
+              <div>
+                <span
+                  class={ns.em('item', 'edit')}
+                  onClick={() => editItem(item)}
+                  title='编辑'
+                >
+                  <i class='fa fa-edit' aria-hidden='true'></i>
+                </span>
+                <span
+                  class={ns.em('item', 'delicon')}
+                  onClick={() => deleteComment(item)}
+                  title='删除'
+                >
+                  <i class='fa fa-trash-o' aria-hidden='true'></i>
+                </span>
+              </div>
             ) : null}
           </div>
-          <div class={ns.em('item', 'content')}>{item.content}</div>
+          <div class={ns.em('item', 'content')}>
+            <div v-html={item.content}></div>
+          </div>
         </div>
       );
     };
 
     // 绘制列表
     const renderList = () => {
+      if (items.value.length === 0) {
+        return <iBizNoData class={ns.e('nodata')}></iBizNoData>;
+      }
       return (
         <div class={ns.e('list')}>
           {items.value.map((item: IData) => {
@@ -260,15 +232,14 @@ export const CommentList = defineComponent({
     onBeforeUnmount(() => {
       c.evt.off('addItem', handleAdd);
       c.evt.off('deleteItem', handleDelete);
+      c.evt.off('editreply', updateItem);
     });
 
-    return { ns, c, renderHeader, renderInput, renderList, stopClick };
+    return { ns, c, renderList, stopClick };
   },
   render() {
     return (
       <div class={this.ns.b()} onClick={this.stopClick}>
-        {this.renderHeader()}
-        {this.renderInput()}
         {this.renderList()}
       </div>
     );

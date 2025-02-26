@@ -112,6 +112,12 @@ export const PersonelSelect = defineComponent({
       return false;
     });
 
+    const isImg = (imgUrl: string) => {
+      const reg =
+        /^https?:|^http?:|^data:image|(\.png$|\.svg|\.jpg|\.png|\.gif|\.psd|\.tif|\.bmp|\.jpeg)$/;
+      return reg.test(imgUrl);
+    };
+
     /**
      * 处理值类型为OBJECTS时选中项UI展示
      * @author ljx
@@ -970,17 +976,27 @@ export const PersonelSelect = defineComponent({
       if (!avatarUrl) {
         return null;
       }
-      const urlConfig = JSON.parse(avatarUrl);
-      if (urlConfig.length === 0) {
-        return null;
+      let url = '';
+      if (isImg(avatarUrl)) {
+        url = avatarUrl;
+      } else {
+        let urlConfig: IData[] = [];
+        try {
+          urlConfig = JSON.parse(avatarUrl);
+        } catch (error) {
+          console.error('解析头像数据失败', error);
+        }
+        if (urlConfig.length === 0) {
+          return null;
+        }
+        const { downloadUrl } = ibiz.util.file.calcFileUpDownUrl(
+          c.context,
+          c.params,
+          props.data,
+          c.editorParams,
+        );
+        url = downloadUrl.replace('%fileId%', urlConfig[0].id);
       }
-      const { downloadUrl } = ibiz.util.file.calcFileUpDownUrl(
-        c.context,
-        c.params,
-        props.data,
-        c.editorParams,
-      );
-      const url = downloadUrl.replace('%fileId%', urlConfig[0].id);
       return (
         <img
           class={ns.bem('select-modal', 'personel-list', 'avatar')}
@@ -994,8 +1010,9 @@ export const PersonelSelect = defineComponent({
     // 绘制用户头像
     const renderUserAvatar = (userid: string, usertext: string) => {
       const userUrl = c.getUserPictureUrl(userid, usertext);
-      if (userUrl && !errorLoadItems.value.includes(userUrl)) {
-        return getUserAvatar(userUrl);
+      const avatar = getUserAvatar(userUrl);
+      if (userUrl && !errorLoadItems.value.includes(userUrl) && avatar) {
+        return avatar;
       }
       return renderTextPhoto(usertext);
     };

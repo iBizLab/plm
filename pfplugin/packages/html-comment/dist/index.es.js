@@ -2,7 +2,7 @@ import './style.css';
 import "vue";
 import "@ibiz-template/runtime";
 import "@ibiz-template/vue3-util";
-import { I as n, i as u } from "./index-d82c894b.js";
+import { I as n, i as u } from "./index-703854e9.js";
 import "lodash-es";
 import "@ibiz-template/core";
 import "dayjs";

@@ -572,6 +572,9 @@ const IBizHtmlCollapse = defineComponent({
       }
       if (props.value !== emitValue) {
         emit('change', emitValue);
+        c.evt.emit('onChange', {
+          eventArg: emitValue,
+        });
       }
     };
 
@@ -607,11 +610,8 @@ const IBizHtmlCollapse = defineComponent({
     };
     // 编辑器内容、选区变化时的回调函数
     const handleChange = (editor: IDomEditor) => {
-      const html = editor.getHtml();
       handleExpand(editor);
       setImageHook(editor);
-      // wangEditor初始值抛空字符串给后台
-      const emitValue = html === '<p><br></p>' ? '' : html;
       // 修复初始化有值编辑器也会抛值导致表单脏值检查异常问题
       if (!hasEnableEdit.value && editor.isFocused()) {
         if (c.emitMode === 'AUTOMATIC') {
@@ -620,9 +620,6 @@ const IBizHtmlCollapse = defineComponent({
           handleEmit();
         }
       }
-      c.evt.emit('onChange', {
-        eventArg: emitValue,
-      });
     };
     // 编辑器销毁时的回调函数。调用 editor.destroy() 即可销毁编辑器
     const handleDestroyed = (_editor: IDomEditor) => {

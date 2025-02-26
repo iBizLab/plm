@@ -232,6 +232,14 @@
       white-space: nowrap;
     }
 
+    pre {
+      width: 100%;
+      margin: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
     img {
       display: inline-block;
       height: 32px;
@@ -363,6 +371,28 @@
   }
 }
 
+// 折叠富文本工具栏样式
+@include b('html') {
+  &.#{bem(html-collapse)},
+  &.is-allow-collapse {
+    @include b(html-toolbar) {
+      --w-e-toolbar-bg-color: var(--ibiz-color-bg-0);
+    
+      border: 1px solid var(--ibiz-color-border);
+      border-bottom: none;
+
+      .w-e-bar {
+        padding: 0;
+      }
+
+      .w-e-bar-divider {
+        height: 22px;
+        margin: auto 1px;
+      }
+    }
+  }
+}
+
 mention-elem {
   padding: 3px !important;
   margin: 0 4px !important;
@@ -467,8 +497,7 @@ div.ibiz-html {
   }
 }
 
-
 // 表情
 emoji-elem {
-margin: 0 1px !important;
+  margin: 0 1px !important;
 }

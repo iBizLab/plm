@@ -1,9 +1,9 @@
 import './style.css';
 var be = Object.defineProperty;
 var Ee = (e, c, t) => c in e ? be(e, c, { enumerable: !0, configurable: !0, writable: !0, value: t }) : e[c] = t;
-var F = (e, c, t) => (Ee(e, typeof c != "symbol" ? c + "" : c, t), t);
-import { useClickOutside as Z, useNamespace as B, useUIStore as pe, withInstall as ee } from "@ibiz-template/vue3-util";
-import { Srfuf as _, GridFieldEditColumnController as ye, GridRowState as Ie, UIActionUtil as Te, SysUIActionTag as j, TreeGridExNodeColumnController as Re, TreeGridExRowState as te, TreeGridExFieldColumnController as oe, registerGridColumnProvider as Se, registerTreeGridExColumnProvider as Le } from "@ibiz-template/runtime";
+var B = (e, c, t) => (Ee(e, typeof c != "symbol" ? c + "" : c, t), t);
+import { useClickOutside as Z, useNamespace as _, useUIStore as pe, withInstall as ee } from "@ibiz-template/vue3-util";
+import { Srfuf as G, GridFieldEditColumnController as ye, GridRowState as Ie, UIActionUtil as Te, SysUIActionTag as j, TreeGridExNodeColumnController as Re, TreeGridExRowState as te, TreeGridExFieldColumnController as oe, registerGridColumnProvider as Se, registerTreeGridExColumnProvider as Le } from "@ibiz-template/runtime";
 import { computed as i, ref as p, reactive as D, defineComponent as q, watch as Pe, createVNode as s, resolveComponent as g, isVNode as ie, onMounted as ne, h as H } from "vue";
 import { isNotNil as le, isNil as xe } from "ramda";
 import { RuntimeError as se } from "@ibiz-template/core";
@@ -22,11 +22,11 @@ function ke(e, c) {
     T && T.stop(), ibiz.log.debug("".concat(t.fieldName, "属性编辑器focus事件"));
   };
   let k = e.row.data[t.fieldName];
-  const A = p(!1), M = () => {
+  const A = p(!1), M = async () => {
     var E;
-    ibiz.log.debug("".concat(t.fieldName, "属性编辑器blur事件")), !(A.value || t.hasDropdown) && (o(!1), ((E = t.model.userParam) == null ? void 0 : E.SAVEMODE) === "BLUR" ? t.grid.save(e.row.data) : e.row.data.srfuf === _.CREATE ? t.grid.remove({ data: [e.row.data], silent: !0 }) : t.setRowValue(e.row, k));
+    ibiz.log.debug("".concat(t.fieldName, "属性编辑器blur事件")), !(A.value || t.hasDropdown) && (o(!1), ((E = t.model.userParam) == null ? void 0 : E.SAVEMODE) === "BLUR" ? t.grid.save(e.row.data) : e.row.data.srfuf === G.CREATE ? (e.row.modified || t.grid.remove({ data: [e.row.data], silent: !0 }), await t.grid.save(e.row.data)) : t.setRowValue(e.row, k));
   }, N = async () => {
-    t.setPickerValue(e.row), A.value = !0, ibiz.log.debug("".concat(t.fieldName, "属性编辑器enter事件")), await t.grid.save(e.row.data), k = e.row.data[t.fieldName], o(!1), A.value = !1;
+    t.setPickerValue(e.row), A.value = !0, ibiz.log.debug("".concat(t.fieldName, "属性编辑器enter事件")), e.row.data.srfuf === G.CREATE && (e.row.modified || t.grid.remove({ data: [e.row.data], silent: !0 })), await t.grid.save(e.row.data), k = e.row.data[t.fieldName], o(!1), A.value = !1;
   }, z = (E) => {
     E.keyCode === 27 && o(!1);
   }, f = D({
@@ -86,21 +86,21 @@ class re extends ye {
      * @type {(IAppCodeList | undefined)}
      * @memberof GridEditColumnController
      */
-    F(this, "userCodeList");
+    B(this, "userCodeList");
     /**
      * 是否拥有下拉
      *
      * @type {boolean}
      * @memberof GridEditColumnController
      */
-    F(this, "hasDropdown", !1);
+    B(this, "hasDropdown", !1);
     /**
      * 当前选项id
      *
      * @type {string}
      * @memberof GridEditColumnController
      */
-    F(this, "curPickerId", "");
+    B(this, "curPickerId", "");
   }
   /**
    * 加载用户代码表
@@ -131,7 +131,7 @@ class re extends ye {
    */
   setPickerValue(t) {
     const { srfuf: v } = t.data;
-    if (v === _.CREATE) {
+    if (v === G.CREATE) {
       const n = t.data.srfUserData;
       n && n.pickerField && (t.data[n.pickerField] = this.curPickerId);
     }
@@ -177,7 +177,7 @@ const ae = /* @__PURE__ */ q({
     emit: c
   }) {
     var $;
-    const t = B("edit-column-action-toolbar"), v = B("edit-column-action-toolbar"), n = p(!1), u = p(!1), d = p(!1), o = p(), r = p(), a = p(!1);
+    const t = _("edit-column-action-toolbar"), v = _("edit-column-action-toolbar"), n = p(!1), u = p(!1), d = p(!1), o = p(), r = p(), a = p(!1);
     ($ = e.actionDetails) == null || $.forEach((w) => {
       w.capLanguageRes && w.capLanguageRes.lanResTag && (w.caption = ibiz.i18n.t(w.capLanguageRes.lanResTag, w.caption)), w.tooltipLanguageRes && w.tooltipLanguageRes.lanResTag && (w.tooltip = ibiz.i18n.t(w.tooltipLanguageRes.lanResTag, w.tooltip));
     });
@@ -389,7 +389,7 @@ const K = /* @__PURE__ */ q({
   },
   setup(e) {
     var W;
-    const c = B("grid-edit-column"), t = p(), v = p(), n = e.controller, u = (W = n.editItem) == null ? void 0 : W.codeName, d = p(), {
+    const c = _("grid-edit-column"), t = p(), v = p(), n = e.controller, u = (W = n.editItem) == null ? void 0 : W.codeName, d = p(), {
       zIndex: o
     } = e.controller.grid.state, r = p([]), a = p("");
     let m = !1;
@@ -398,7 +398,7 @@ const K = /* @__PURE__ */ q({
       const {
         srfuf: l
       } = e.row.data;
-      l === _.CREATE && h && (r.value = await n.loadUserCodeList(h), a.value = h.defaultValue, n.curPickerId = h.defaultValue);
+      l === G.CREATE && h && (r.value = await n.loadUserCodeList(h), a.value = h.defaultValue, n.curPickerId = h.defaultValue);
     })();
     const P = i(() => !(n.grid.model.controlType === "TREEGRID" && !n.grid.state.showTreeGrid)), R = () => {
       var l;
@@ -423,17 +423,17 @@ const K = /* @__PURE__ */ q({
       e.row.editColStates[n.fieldName].editable = l;
     };
     ne(() => {
-      e.row.data.srfuf === _.CREATE && A(!0);
+      e.row.data.srfuf === G.CREATE && A(!0);
     });
     const M = (l) => {
       e.controller.hasAction && (l.stopPropagation(), e.controller.triggerAction(e.row, l));
     }, N = (l) => {
       e.controller.isLinkColumn && (l.stopPropagation(), e.controller.openLinkView(e.row, l));
-    }, z = i(() => n.getCustomHtml(e.row)), f = Object.values(n.grid.columns).filter((l) => l.enableRowEdit && l.model.id !== n.model.id), b = i(() => e.row.data[e.controller.model.codeName.toLowerCase()]), E = i(() => n.formatValue(b.value)), G = p(void 0), $ = (l) => {
-      G.value = l;
+    }, z = i(() => n.getCustomHtml(e.row)), f = Object.values(n.grid.columns).filter((l) => l.enableRowEdit && l.model.id !== n.model.id), b = i(() => e.row.data[e.controller.model.codeName.toLowerCase()]), E = i(() => n.formatValue(b.value)), O = p(void 0), $ = (l) => {
+      O.value = l;
     }, w = i(() => {
       if (e.controller.grid.overflowMode === "ellipsis" && le(b.value) && b.value !== "")
-        return G.value ? G.value : E.value + (e.controller.model.unitName || "");
+        return O.value ? O.value : E.value + (e.controller.model.unitName || "");
     }), V = (l, C) => {
       const I = {
         ...C
@@ -444,7 +444,7 @@ const K = /* @__PURE__ */ q({
       }
       return I;
     }, Y = async (l, C) => {
-      var O, U;
+      var F, U;
       C.stopPropagation(), R();
       const I = {
         context: n.context,
@@ -463,7 +463,7 @@ const K = /* @__PURE__ */ q({
             I.view.callUIAction(j.REFRESH);
             break;
           case 2:
-            (O = I.view.parentView) == null || O.callUIAction(j.REFRESH);
+            (F = I.view.parentView) == null || F.callUIAction(j.REFRESH);
             break;
           case 3:
             (U = I.view.getTopView()) == null || U.callUIAction(j.REFRESH);
@@ -472,13 +472,13 @@ const K = /* @__PURE__ */ q({
     }, ce = async (l, C, I) => {
       const S = I || l.editItem.codeName;
       await n.setRowValue(e.row, C, S);
-      const O = l.editor.model.editorType;
-      de.includes(O) || R();
+      const F = l.editor.model.editorType;
+      de.includes(F) || R();
     }, ue = () => {
       R(), n.grid.saveAll();
     }, me = (l) => {
       var U, J;
-      const C = l.editItem.codeName, I = e.row.data[C], S = (U = e.row.editColStates[C]) == null ? void 0 : U.readonly, O = (J = e.row.editColStates[C]) == null ? void 0 : J.disabled;
+      const C = l.editItem.codeName, I = e.row.data[C], S = (U = e.row.editColStates[C]) == null ? void 0 : U.readonly, F = (J = e.row.editColStates[C]) == null ? void 0 : J.disabled;
       return l.editorProvider && H(g(l.editorProvider.gridEditor), {
         class: c.e("editor"),
         value: S ? l.formatValue(I) : I,
@@ -490,7 +490,7 @@ const K = /* @__PURE__ */ q({
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         onEnter: (Q) => ue(),
         readonly: S,
-        disabled: O
+        disabled: F
       });
     }, he = (l) => {
       l.stopPropagation(), A(!0);
@@ -646,7 +646,7 @@ const K = /* @__PURE__ */ q({
 });
 class Ne {
   constructor() {
-    F(this, "component", "GridEditColumn");
+    B(this, "component", "GridEditColumn");
   }
   async createController(c, t) {
     const v = new re(c, t);
@@ -662,7 +662,7 @@ function ze(e, c) {
     ibiz.log.debug("".concat(t.name, "属性编辑器focus事件"));
   }, k = () => {
     var f, b;
-    ibiz.log.debug("".concat(t.name, "属性编辑器blur事件")), !L.value && (o(!1), ((f = t.nodeColumn.userParam) == null ? void 0 : f.SAVEMODE) === "BLUR" ? t.treeGrid.save(e.row.data) : ((b = e.row.data._deData) == null ? void 0 : b.srfuf) === _.CREATE ? t.treeGrid.remove({ data: [e.row.data], silent: !0 }) : t.setRowValue(e.row, T));
+    ibiz.log.debug("".concat(t.name, "属性编辑器blur事件")), !L.value && (o(!1), ((f = t.nodeColumn.userParam) == null ? void 0 : f.SAVEMODE) === "BLUR" ? t.treeGrid.save(e.row.data) : ((b = e.row.data._deData) == null ? void 0 : b.srfuf) === G.CREATE ? t.treeGrid.remove({ data: [e.row.data], silent: !0 }) : t.setRowValue(e.row, T));
   }, A = async () => {
     L.value = !0, await t.treeGrid.save(e.row.data), T = e.row.data[e.controller.name], o(!1), L.value = !1;
   }, M = (f) => {
@@ -724,7 +724,7 @@ const Fe = /* @__PURE__ */ q({
     }
   },
   setup(e) {
-    const c = i(() => e.row.data[e.controller.name]), t = B("tree-grid-ex-edit-column"), v = p(), n = e.controller, u = async (y, P) => {
+    const c = i(() => e.row.data[e.controller.name]), t = _("tree-grid-ex-edit-column"), v = p(), n = e.controller, u = async (y, P) => {
       ibiz.log.debug("".concat(n.name, "值变更"), y), await n.setRowValue(e.row, y, P);
     }, d = () => {
       switch (ibiz.config.grid.editShowMode) {
@@ -792,13 +792,13 @@ const X = /* @__PURE__ */ q({
     }
   },
   setup(e) {
-    const c = B("tree-grid-ex-field-column"), t = B("tree-grid-ex-field-edit-column"), n = pe().zIndex.increment(), u = p(), d = i(() => e.controller.nodeColumnControllerMap.get(e.row.data._nodeId)), o = i(() => e.row.editColStates[d.value.name].editable), r = i(() => e.row.editColStates[d.value.name].readonly), a = (f) => {
+    const c = _("tree-grid-ex-field-column"), t = _("tree-grid-ex-field-edit-column"), n = pe().zIndex.increment(), u = p(), d = i(() => e.controller.nodeColumnControllerMap.get(e.row.data._nodeId)), o = i(() => e.row.editColStates[d.value.name].editable), r = i(() => e.row.editColStates[d.value.name].readonly), a = (f) => {
       e.row.editColStates[d.value.name].editable = f;
     }, m = (f) => {
       f.stopPropagation(), a(!0);
     };
     ne(() => {
-      e.row.data.srfuf === _.CREATE && a(!0);
+      e.row.data.srfuf === G.CREATE && a(!0);
     });
     const h = i(() => e.row.data._nodeType !== "DE" && e.controller.isFirstShowColumn ? e.row.data._text : e.row.data[e.controller.name]), y = p(""), P = (f) => {
       y.value = f;
@@ -838,8 +838,8 @@ const X = /* @__PURE__ */ q({
       onInfoTextChange: P,
       onDataChange: async (f, b, E) => {
         await f.setRowValue(e.row, b, E);
-        const G = f.editor.model.editorType;
-        de.includes(G) || k();
+        const O = f.editor.model.editorType;
+        de.includes(O) || k();
       },
       editorEnter: async (f, b, E) => {
         await f.setRowValue(e.row, b, E), k();
@@ -933,7 +933,7 @@ const X = /* @__PURE__ */ q({
 });
 class Be {
   constructor() {
-    F(this, "component", "TreeGridExFieldColumn");
+    B(this, "component", "TreeGridExFieldColumn");
   }
   async createController(c, t) {
     const v = new oe(c, t);

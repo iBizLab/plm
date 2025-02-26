@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   CodeListItem,
@@ -15,6 +16,11 @@ interface commentEvent extends IComponentEvent {
   };
 
   addItem: {
+    event: EventBase;
+    emitArgs: IData;
+  };
+
+  editreply: {
     event: EventBase;
     emitArgs: IData;
   };
@@ -59,6 +65,12 @@ export class CommentListComtroller extends EditorController<ITextBox> {
 
   public extraParams: IData = {};
 
+  /**
+   * 实体codeName
+   * @type {string}
+   */
+  public deCodeName: string = 'comment';
+
   protected async onInit(): Promise<void> {
     super.onInit();
     await this.getOperatorUserList();
@@ -67,6 +79,9 @@ export class CommentListComtroller extends EditorController<ITextBox> {
     }
     if (this.editorParams && this.editorParams.ISLOCAL === 'TRUE') {
       this.isLocal = true;
+    }
+    if (this.editorParams && this.editorParams.DECODENAME) {
+      this.deCodeName = this.editorParams.DECODENAME;
     }
   }
 
@@ -98,9 +113,10 @@ export class CommentListComtroller extends EditorController<ITextBox> {
     const { form } = this.parent as any;
     if (form) {
       const { srfappid } = this.context;
+      const appCodeName = srfappid.split('_').pop();
       const deService = await ibiz.hub.getAppDEService(
         srfappid,
-        'plmweb.comment',
+        `${appCodeName}.${this.deCodeName}`,
         this.context,
       );
       return deService;
@@ -128,6 +144,56 @@ export class CommentListComtroller extends EditorController<ITextBox> {
     this.evt.emit('addItem', {
       eventArg: item,
     });
+  }
+
+  /**
+   * 更新项
+   *
+   * @param {IData} item
+   * @return {*}  {Promise<void>}
+   * @memberof CommentListComtroller
+   */
+  public async upadteItem(item: IData): Promise<void> {
+    if (this.isLocal) {
+      // 去缓存里更新数据
+      const service = await this.getLocalTempData();
+      if (service) {
+        await service.update(this.context, item);
+        const uiDomain = ibiz.uiDomainManager.get(this.context.srfsessionid);
+        if (uiDomain) {
+          uiDomain.dataChangeCompleted();
+        }
+      }
+    }
+    this.evt.emit('editreply', {
+      eventArg: item,
+    });
+  }
+
+  /**
+   * 重新编辑评论
+   *
+   * @param {IData} item
+   * @memberof CommentListComtroller
+   */
+  public updateComment(item: IData): void {
+    const panel = (this.parent as any).panel;
+    const form = (this.parent as any).form;
+    if (panel) {
+      panel.evt.emit('editreply', {
+        targetName: 'comments',
+        context: this.context,
+        params: this.params,
+        data: [item],
+      });
+    } else if (form) {
+      form.evt.emit('editreply', {
+        targetName: 'comments',
+        context: this.context,
+        params: this.params,
+        data: [item],
+      });
+    }
   }
 
   /**

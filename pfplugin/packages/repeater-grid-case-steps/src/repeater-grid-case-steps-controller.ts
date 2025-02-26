@@ -95,17 +95,17 @@ export class RepeaterGridCaseStepsController extends FormMDCtrlRepeaterControlle
       if (this.data.updatedate) {
         const oldValue = this.data.updatedate[this.name];
         if (isValueChange(oldValue, this.value)) {
-          this.save();
+          this.saveCaseSteps();
         }
       }
     });
     // 自动保存防抖，只有最后一次执行
-    this.save = debounce(this.save.bind(this), 1000, {
+    this.saveCaseSteps = debounce(this.saveCaseSteps.bind(this), 1000, {
       trailing: true,
     }) as () => Promise<void>;
   }
 
-  async save(): Promise<void> {
+  async saveCaseSteps(): Promise<void> {
     if (!(this.form as EditFormController).model.enableAutoSave) {
       return;
     }
@@ -144,7 +144,7 @@ export class RepeaterGridCaseStepsController extends FormMDCtrlRepeaterControlle
       value,
       oldValue,
     });
-    this.save();
+    this.saveCaseSteps();
   }
 
   /**

@@ -89,6 +89,9 @@ export const Attention = defineComponent({
     // 远程搜索定时器标识
     const timer = ref();
 
+    // 所有头像加载失败项
+    const errorLoadItems: Ref<string[]> = ref([]);
+
     // 为关注时，界面需要绘制的个数
     let selRenderNum: number = 0;
 
@@ -111,6 +114,12 @@ export const Attention = defineComponent({
     const valueText = computed(() => {
       return renderString(curValue.value);
     });
+
+    const isImg = (imgUrl: string) => {
+      const reg =
+        /^https?:|^http?:|^data:image|(\.png$|\.svg|\.jpg|\.png|\.gif|\.psd|\.tif|\.bmp|\.jpeg)$/;
+      return reg.test(imgUrl);
+    };
 
     /**
      * 阻止默认和冒泡
@@ -936,26 +945,42 @@ export const Attention = defineComponent({
       }
     };
 
+    const avatarLoadError = (avatarUrl: string) => {
+      console.log('头像加载失败');
+      errorLoadItems.value.push(avatarUrl);
+    };
+
     // 获取用户头像
     const getUserAvatar = (avatarUrl: string) => {
       if (!avatarUrl) {
         return null;
       }
-      const urlConfig = JSON.parse(avatarUrl);
-      if (urlConfig.length === 0) {
-        return null;
+      let url = '';
+      if (isImg(avatarUrl)) {
+        url = avatarUrl;
+      } else {
+        let urlConfig: IData[] = [];
+        try {
+          urlConfig = JSON.parse(avatarUrl);
+        } catch (error) {
+          console.error('解析头像数据失败', error);
+        }
+        if (urlConfig.length === 0) {
+          return null;
+        }
+        const { downloadUrl } = ibiz.util.file.calcFileUpDownUrl(
+          c.context,
+          c.params,
+          props.data,
+          c.editorParams,
+        );
+        url = downloadUrl.replace('%fileId%', urlConfig[0].id);
       }
-      const { downloadUrl } = ibiz.util.file.calcFileUpDownUrl(
-        c.context,
-        c.params,
-        props.data,
-        c.editorParams,
-      );
-      const url = downloadUrl.replace('%fileId%', urlConfig[0].id);
       return (
         <img
           class={ns.bem('select-modal', 'personel-list', 'avatar')}
           src={url}
+          onError={() => avatarLoadError(avatarUrl)}
           alt=''
         />
       );
@@ -963,12 +988,10 @@ export const Attention = defineComponent({
 
     // 绘制用户头像
     const renderUserAvatar = (userid: string, usertext: string) => {
-      if (
-        c.operatorMap &&
-        c.operatorMap.get(userid) &&
-        c.operatorMap.get(userid).data.iconurl
-      ) {
-        return getUserAvatar(c.operatorMap.get(userid).data.iconurl);
+      const userUrl = c.getUserPictureUrl(userid, usertext);
+      const avatar = getUserAvatar(userUrl);
+      if (userUrl && !errorLoadItems.value.includes(userUrl) && avatar) {
+        return avatar;
       }
       return renderTextPhoto(usertext);
     };

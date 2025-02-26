@@ -13,6 +13,7 @@ import {
   onMounted,
   reactive,
   ref,
+  computed,
   resolveComponent,
   watch,
 } from 'vue';
@@ -50,6 +51,12 @@ export const ProjectAttributes = defineComponent({
       (...args) => new ProjectAttributesController(...args),
       { excludePropsKeys: ['data'] },
     );
+
+    const readonly = computed(() => {
+      return !!(
+        c.context.srfreadonly === true || c.context.srfreadonly === 'true'
+      );
+    });
 
     // 点击外部
     let funcs: OnClickOutsideResult;
@@ -169,6 +176,7 @@ export const ProjectAttributes = defineComponent({
       funcs = useClickOutside(pxx as any, async e => {
         if (e && e.target) {
           if (
+            readonly.value ||
             (e.target as any).tagName.toLowerCase() === 'input' ||
             (e.target as any).tagName.toLowerCase() === 'svg'
           ) {
@@ -248,6 +256,7 @@ export const ProjectAttributes = defineComponent({
     return {
       c,
       ns,
+      readonly,
       formItems,
       emit,
       renderEditor,
@@ -280,7 +289,11 @@ export const ProjectAttributes = defineComponent({
                   id={item.key}
                 >
                   {this.renderEditor(item, controller)}
-                  <div class={this.ns.e('item-edit-svg')}>{this.editSvg()}</div>
+                  {!this.readonly && (
+                    <div class={this.ns.e('item-edit-svg')}>
+                      {this.editSvg()}
+                    </div>
+                  )}
                 </div>
                 {isLink && item.ref.isFocus ? (
                   <div

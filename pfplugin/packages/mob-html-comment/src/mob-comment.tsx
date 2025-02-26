@@ -112,9 +112,7 @@ const IBizMobComment: any = defineComponent({
       );
       const url = downloadUrl.value.replace('%fileId%', file.fileid);
       const value = getValue();
-      if (!isDefault) {
-        emit('change', value.replace(image, url));
-      }
+      emit('change', value.replace(image, url));
     };
 
     const refresh = (value: string = curValue.value) => {

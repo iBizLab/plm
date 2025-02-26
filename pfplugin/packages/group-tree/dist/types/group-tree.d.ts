@@ -20,25 +20,10 @@ export declare const GroupTreeControl: import("vue").DefineComponent<{
     provider: {
         type: PropType<IControlProvider>;
     };
-    /**
-     * 部件行数据默认激活模式
-     * - 0 不激活
-     * - 1 单击激活
-     * - 2 双击激活(默认值)
-     *
-     * @type {(number | 0 | 1 | 2)}
-     */
     mdctrlActiveMode: {
         type: NumberConstructor;
         default: undefined;
     };
-    /**
-     * 是否为单选
-     * - true 单选
-     * - false 多选
-     *
-     * @type {(Boolean)}
-     */
     singleSelect: {
         type: BooleanConstructor;
         default: undefined;
@@ -988,25 +973,10 @@ export declare const GroupTreeControl: import("vue").DefineComponent<{
     provider: {
         type: PropType<IControlProvider>;
     };
-    /**
-     * 部件行数据默认激活模式
-     * - 0 不激活
-     * - 1 单击激活
-     * - 2 双击激活(默认值)
-     *
-     * @type {(number | 0 | 1 | 2)}
-     */
     mdctrlActiveMode: {
         type: NumberConstructor;
         default: undefined;
     };
-    /**
-     * 是否为单选
-     * - true 单选
-     * - false 多选
-     *
-     * @type {(Boolean)}
-     */
     singleSelect: {
         type: BooleanConstructor;
         default: undefined;

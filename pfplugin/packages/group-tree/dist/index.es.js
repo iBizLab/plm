@@ -2,18 +2,18 @@ import './style.css';
 var he = Object.defineProperty;
 var pe = (e, N, n) => N in e ? he(e, N, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[N] = n;
 var T = (e, N, n) => (pe(e, typeof N != "symbol" ? N + "" : N, n), n);
-import { TreeController as Ne, getChildNodeRSs as me, calcDeCodeNameById as L, handleAllSettled as ye, Srfuf as ge, getControlPanel as _e, registerControlProvider as De } from "@ibiz-template/runtime";
+import { TreeController as Ne, getChildNodeRSs as me, calcDeCodeNameById as L, handleAllSettled as ye, Srfuf as _e, getControlPanel as De, registerControlProvider as ge } from "@ibiz-template/runtime";
 import { useControlController as ve, useNamespace as Y, withInstall as Ie } from "@ibiz-template/vue3-util";
-import { ref as k, defineComponent as we, computed as Z, reactive as Ee, watch as ee, nextTick as xe, resolveComponent as D, onMounted as be, onUnmounted as Ce, withDirectives as Te, createVNode as h, resolveDirective as Me, isVNode as Re, createTextVNode as te } from "vue";
+import { ref as k, defineComponent as Ee, computed as Z, reactive as we, watch as ee, nextTick as xe, resolveComponent as v, onMounted as be, onUnmounted as Ce, withDirectives as Te, createVNode as h, resolveDirective as Me, isVNode as Re, createTextVNode as te } from "vue";
 import { createUUID as ne } from "qx-util";
 import { debounce as ie } from "lodash-es";
-import { RuntimeError as K, RuntimeModelError as oe } from "@ibiz-template/core";
+import { RuntimeError as K, RuntimeModelError as oe, recursiveIterate as ke } from "@ibiz-template/core";
 import { isNil as ae } from "ramda";
-function I(e, N) {
+function E(e, N) {
   const n = N.state.items.find((o) => o._id === e);
   return n || N.state.items.find((o) => o._uuid === e);
 }
-function ke(e, N) {
+function Se(e, N) {
   const n = () => {
     const s = e.value;
     if (!s)
@@ -39,7 +39,7 @@ function ke(e, N) {
       return l.expanded ? (l.collapse(), !1) : (l.expand(), !0);
   } };
 }
-function Se(e) {
+function Ae(e) {
   switch (e) {
     case "inner":
       return "inner";
@@ -51,7 +51,7 @@ function Se(e) {
       throw new K("暂不支持dropType:".concat(e));
   }
 }
-class Ae extends Ne {
+class Oe extends Ne {
   constructor() {
     super(...arguments);
     /**
@@ -101,15 +101,6 @@ class Ae extends Ne {
     super.initState(), this.state.newingNodeModel = null, this.state.newingNodeText = null, this.state.newingNodeDefault = null, this.state.editingNodeKey = null, this.state.editingNodeText = null, this.state.editingNodeDefault = null;
   }
   /**
-   * 临时取消监听
-   *
-   * @protected
-   * @param {IData} msg
-   * @memberof GroupTreeController
-   */
-  onDataChange(n) {
-  }
-  /**
    *  初始化节点拖入关系处理
    */
   initDropNodeRss() {
@@ -148,7 +139,7 @@ class Ae extends Ne {
     const d = this.context.srfreadonly === !0 || this.context.srfreadonly === "true";
     if (!n || n === this.state.editingNodeKey || d)
       return;
-    const a = I(n, this), s = this.getNodeModel(a._nodeId);
+    const a = E(n, this), s = this.getNodeModel(a._nodeId);
     s != null && s.allowEditText && (this.state.editingNodeKey = a._id, this.state.editingNodeText = a._text, this.state.editingNodeDefault = o, this.state.newingNodeModel = null, this.state.newingNodeText = null, this.state.newingNodeDefault = null);
   }
   /**
@@ -160,7 +151,7 @@ class Ae extends Ne {
   removeTreeNode(n) {
     if (!n || n === this.state.editingNodeKey)
       return;
-    const o = I(n, this), d = {
+    const o = E(n, this), d = {
       context: this.context || {},
       params: this.params || {},
       data: [o]
@@ -254,13 +245,12 @@ class Ae extends Ne {
       );
       await ye(
         a.map(async (m) => {
-          if (m.srfuf !== ge.CREATE) {
-            const E = o.clone();
-            E[l] = m.srfkey, await await ibiz.hub.getApp(s.appId).deService.exec(
+          if (m.srfuf !== _e.CREATE) {
+            const D = o.clone();
+            D[l] = m.srfkey, await ibiz.hub.getApp(s.appId).deService.exec(
               s.appDataEntityId,
               "remove",
-              E,
-              a,
+              D,
               d
             ), f = !0;
           }
@@ -278,7 +268,9 @@ class Ae extends Ne {
     } finally {
       await this.endLoading();
     }
-    this.state.selectedData = [], await this._evt.emit("onRemoveSuccess", void 0);
+    this.state.selectedData = [], await this._evt.emit("onRemoveSuccess", void 0), a.forEach((l) => {
+      this.emitDEDataChange("remove", l._deData);
+    });
   }
   /**
    * 计算是否允许拖入
@@ -288,22 +280,32 @@ class Ae extends Ne {
    * @returns
    */
   calcAllowDrop(n, o, d) {
-    var f, l;
-    const a = this.getNodeModel(n._nodeId), s = this.getNodeModel(o._nodeId);
+    var l, m;
+    let a = !0;
+    if (ke(
+      { _children: [n] },
+      (D) => {
+        if (D._id === o._id)
+          return a = !1, !0;
+      },
+      { childrenFields: ["_children"] }
+    ), !a)
+      return !1;
+    const s = this.getNodeModel(n._nodeId), f = this.getNodeModel(o._nodeId);
     if (d === "inner")
       return !!this.findDropNodeRS(
         o._nodeId,
-        a.appDataEntityId
+        s.appDataEntityId
       );
-    if (a.appDataEntityId !== s.appDataEntityId)
+    if (s.appDataEntityId !== f.appDataEntityId)
       return !1;
-    if (((f = n._parent) == null ? void 0 : f._id) === ((l = o._parent) == null ? void 0 : l._id)) {
-      const m = this.getNodeModel(o._nodeId);
-      return (m == null ? void 0 : m.allowOrder) === !0;
+    if (((l = n._parent) == null ? void 0 : l._id) === ((m = o._parent) == null ? void 0 : m._id)) {
+      const D = this.getNodeModel(o._nodeId);
+      return (D == null ? void 0 : D.allowOrder) === !0;
     }
     return o._parent ? o._parent && o._parent._id && this.getNodeModel(o._parent._nodeId).rootNode ? !0 : !!this.findDropNodeRS(
       o._parent._nodeId,
-      a.appDataEntityId
+      s.appDataEntityId
     ) : !1;
   }
   /**
@@ -318,42 +320,42 @@ class Ae extends Ne {
     const a = this.getNodeModel(n._nodeId), s = d === "inner" ? o : o._parent, f = d === "inner" || ((S = o._parent) == null ? void 0 : S._id) !== ((M = n._parent) == null ? void 0 : M._id);
     let l = this.getNodeModel(o._nodeId);
     const m = a.appDataEntityId !== l.appDataEntityId;
-    let E = !1;
-    if (this.getNodeModel(s._nodeId).rootNode && (E = !0), f || E) {
-      const v = [];
-      for (const _ of this.dropNodeRss.values())
-        v.push(
-          ..._.filter((g) => (
+    let D = !1;
+    if (this.getNodeModel(s._nodeId).rootNode && (D = !0), f || D) {
+      const I = [];
+      for (const g of this.dropNodeRss.values())
+        I.push(
+          ...g.filter((_) => (
             // 修复子关系情况，根上也存在当前实体数据
-            g.minorEntityId === a.appDataEntityId
+            _.minorEntityId === a.appDataEntityId
           ))
         );
-      if (E && f)
-        v && (v.forEach((_) => {
-          n._deData[_.pickupDEFName] = null;
+      if (D && f)
+        I && (I.forEach((g) => {
+          n._deData[g.pickupDEFName] = null;
         }), l = this.getNodeModel(a.id));
       else {
-        const _ = this.findDropNodeRS(
+        const g = this.findDropNodeRS(
           s._nodeId,
           a.appDataEntityId
         );
-        _ && (v && v.forEach((g) => {
-          n._deData[g.pickupDEFName] = null;
-        }), n._deData[_.pickupDEFName] = s._value, _.detreeNodeRSParams && _.detreeNodeRSParams.forEach((g) => {
+        g && (I && I.forEach((_) => {
+          n._deData[_.pickupDEFName] = null;
+        }), n._deData[g.pickupDEFName] = s._value, g.detreeNodeRSParams && g.detreeNodeRSParams.forEach((_) => {
           var b, x;
-          g.name && g.value && ((b = n._deData) != null && b.hasOwnProperty(
-            g.name.toLowerCase()
-          )) && ((x = s._deData) != null && x.hasOwnProperty(g.value.toLowerCase())) && (n._deData[g.name.toLowerCase()] = s._deData[g.value.toLowerCase()]);
-        }), l = this.getNodeModel(_.childDETreeNodeId));
+          _.name && _.value && ((b = n._deData) != null && b.hasOwnProperty(
+            _.name.toLowerCase()
+          )) && ((x = s._deData) != null && x.hasOwnProperty(_.value.toLowerCase())) && (n._deData[_.name.toLowerCase()] = s._deData[_.value.toLowerCase()]);
+        }), l = this.getNodeModel(g.childDETreeNodeId));
       }
       this.state.expandedKeys = this.calcExpandedKeys([s]), await this.updateDeNodeData([n]);
     }
     if (d === "inner" || m)
       f && await this.refreshNodeChildren(n, !0), await this.refreshNodeChildren(s, !0);
     else {
-      const { moveAppDEActionId: v, appDataEntityId: _, allowOrder: g } = l;
-      if (g) {
-        if (!v)
+      const { moveAppDEActionId: I, appDataEntityId: g, allowOrder: _ } = l;
+      if (_) {
+        if (!I)
           throw new oe(
             this.model,
             ibiz.i18n.t("runtime.controller.common.md.noMoveDataCconfig")
@@ -361,10 +363,10 @@ class Ae extends Ne {
         const b = {
           srftargetkey: o.srfkey,
           srfmovetype: d === "prev" ? "MOVEBEFORE" : "MOVEAFTER"
-        }, x = ibiz.hub.getApp(this.context.srfappid), A = L(_), R = this.context.clone();
+        }, x = ibiz.hub.getApp(this.context.srfappid), A = L(g), R = this.context.clone();
         R[A] = n.srfkey, (await x.deService.exec(
-          _,
-          v,
+          g,
+          I,
           R,
           b
         )).ok && (this.emitDEDataChange("update", n._deData), f && await this.refreshNodeChildren(n, !0), await this.refreshNodeChildren(s));
@@ -462,10 +464,10 @@ class Ae extends Ne {
     super.refresh(), this.resetTreeState();
   }
 }
-function Oe(e) {
+function Be(e) {
   return typeof e == "function" || Object.prototype.toString.call(e) === "[object Object]" && !Re(e);
 }
-const j = /* @__PURE__ */ we({
+const j = /* @__PURE__ */ Ee({
   name: "IBizGroupTreeControl",
   props: {
     modelData: {
@@ -483,25 +485,10 @@ const j = /* @__PURE__ */ we({
     provider: {
       type: Object
     },
-    /**
-     * 部件行数据默认激活模式
-     * - 0 不激活
-     * - 1 单击激活
-     * - 2 双击激活(默认值)
-     *
-     * @type {(number | 0 | 1 | 2)}
-     */
     mdctrlActiveMode: {
       type: Number,
       default: void 0
     },
-    /**
-     * 是否为单选
-     * - true 单选
-     * - false 多选
-     *
-     * @type {(Boolean)}
-     */
     singleSelect: {
       type: Boolean,
       default: void 0
@@ -519,7 +506,7 @@ const j = /* @__PURE__ */ we({
     }
   },
   setup() {
-    const e = ve((...t) => new Ae(...t)), N = Z(() => e.context.srfreadonly === !0 || e.context.srfreadonly === "true"), n = Ee({});
+    const e = ve((...t) => new Oe(...t)), N = Z(() => e.context.srfreadonly === !0 || e.context.srfreadonly === "true"), n = we({});
     e.evt.on("onCreated", () => {
       e.counter && e.counter.onChange((t) => {
         Object.assign(n, t);
@@ -532,17 +519,17 @@ const j = /* @__PURE__ */ we({
     const m = async () => {
       if (e.state.editingNodeKey)
         if (e.state.editingNodeText) {
-          const t = I(e.state.editingNodeKey, e);
+          const t = E(e.state.editingNodeKey, e);
           await e.onModifyTreeNode(t, e.state.editingNodeText);
         } else
           e.state.editingNodeKey = null;
       e.state.newingNodeText ? e.onCreateTreeNode() : e.state.newingNodeModel = null;
-    }, E = async () => {
+    }, D = async () => {
       e.state.editingNodeKey && (e.state.editingNodeKey = null), e.state.newingNodeModel && (e.state.newingNodeModel = null, e.state.newingNodeText = "");
     }, {
       updateUI: F,
       triggerNodeExpand: S
-    } = ke(a, e), M = (t) => t.map((i) => ({
+    } = Se(a, e), M = (t) => t.map((i) => ({
       _id: i._id,
       _uuid: i._uuid,
       _leaf: i._leaf,
@@ -559,28 +546,28 @@ const j = /* @__PURE__ */ we({
     }), e.evt.on("onAfterNodeDrop", (t) => {
       t.isChangedParent && (f.value = ne());
     });
-    const v = Z(() => e.state.isLoaded ? e.model.rootVisible ? e.state.rootNodes : e.state.rootNodes.reduce((t, i) => i._children ? t.concat(i._children) : t, []) : []);
-    ee(v, (t, i) => {
+    const I = Z(() => e.state.isLoaded ? e.model.rootVisible ? e.state.rootNodes : e.state.rootNodes.reduce((t, i) => i._children ? t.concat(i._children) : t, []) : []);
+    ee(I, (t, i) => {
       t !== i && (f.value = ne());
     });
-    const _ = async (t, i) => {
+    const g = async (t, i) => {
       let r;
       if (t.level === 0)
-        r = v.value, ibiz.log.debug("初始加载");
+        r = I.value, ibiz.log.debug("初始加载");
       else {
-        const u = I(t.data._uuid, e);
+        const u = E(t.data._uuid, e);
         u._children ? (ibiz.log.debug("节点展开加载-本地", u), r = u._children) : (ibiz.log.debug("节点展开加载-远程", u), r = await e.loadNodes(u));
       }
       ibiz.log.debug("给树返回值", r), i(M(r)), F();
     };
-    let g = !1;
+    let _ = !1;
     e.evt.on("onLoadSuccess", () => {
-      g = !0, setTimeout(() => {
-        g = !1;
+      _ = !0, setTimeout(() => {
+        _ = !1;
       }, 200);
     }), e.evt.on("onSelectionChange", async () => {
       var t;
-      g && await xe(), e.state.singleSelect ? a.value.setCurrentKey(((t = e.state.selectedData[0]) == null ? void 0 : t._id) || void 0) : a.value.setCheckedKeys(e.state.selectedData.map((i) => i._id));
+      _ && await xe(), e.state.singleSelect ? a.value.setCurrentKey(((t = e.state.selectedData[0]) == null ? void 0 : t._id) || void 0) : a.value.setCheckedKeys(e.state.selectedData.map((i) => i._id));
     });
     const b = (t, i) => {
       const {
@@ -619,7 +606,7 @@ const j = /* @__PURE__ */ we({
         C = i.default, C.default && !C.showContextMenu && (C = C.default);
       });
     });
-    const se = D("IBizRawItem"), O = D("IBizIcon"), U = (t, i, r, u) => {
+    const se = v("IBizRawItem"), O = v("IBizIcon"), U = (t, i, r, u) => {
       const p = [];
       return t.forEach((c) => {
         var X;
@@ -675,7 +662,7 @@ const j = /* @__PURE__ */ we({
       if (!((p = (u = t == null ? void 0 : t.decontextMenu) == null ? void 0 : u.detoolbarItems) != null && p.length))
         return;
       const r = e.contextMenuInfos[t.id];
-      return r.clickTBUIActionItem && r.onlyOneActionItem ? null : h(D("iBizContextMenuControl"), {
+      return r.clickTBUIActionItem && r.onlyOneActionItem ? null : h(v("iBizContextMenuControl"), {
         modelData: t.decontextMenu,
         groupLevelKeys: [50, 100],
         nodeModel: t,
@@ -684,7 +671,7 @@ const j = /* @__PURE__ */ we({
         onActionClick: (c, w) => e.doUIAction(c.uiactionId, i, w, c.appId)
       }, null);
     }, P = (t, i) => {
-      const r = I(t._uuid, e);
+      const r = E(t._uuid, e);
       if (!r)
         throw new K("没有找到_uuid为".concat(t._uuid, "的节点"));
       e.onExpandChange(r, i);
@@ -693,16 +680,16 @@ const j = /* @__PURE__ */ we({
     }, 500), de = (t) => {
       e.state.query = t, re();
     }, G = (t, i, r) => {
-      const u = I(t.data._uuid, e), p = I(i.data._uuid, e);
+      const u = E(t.data._uuid, e), p = E(i.data._uuid, e);
       return e.calcAllowDrop(u, p, r);
     }, H = (t) => {
-      const i = I(t.data._uuid, e);
+      const i = E(t.data._uuid, e);
       return e.calcAllowDrag(i);
     }, q = (t, i, r) => {
-      const u = Se(r), p = I(t.data._uuid, e), c = I(i.data._uuid, e);
+      const u = Ae(r), p = E(t.data._uuid, e), c = E(i.data._uuid, e);
       e.onNodeDrop(p, c, u);
     }, z = (t) => {
-      (t.key === "Enter" || t.keyCode === 13) && (t.stopPropagation(), m()), (t.key === "Escape" || t.keyCode === 27) && (t.stopPropagation(), E());
+      (t.key === "Enter" || t.keyCode === 13) && (t.stopPropagation(), m()), (t.key === "Escape" || t.keyCode === 27) && (t.stopPropagation(), D());
     }, Q = (t) => {
       var i;
       if (t.code === "F2" || t.code === "Enter") {
@@ -737,7 +724,7 @@ const j = /* @__PURE__ */ we({
           class: o.em("counter", "box")
         }, [h("span", {
           class: o.e("dot")
-        }, [te("·")]), h(D("iBizBadge"), {
+        }, [te("·")]), h(v("iBizBadge"), {
           class: o.e("counter"),
           value: i
         }, null)]);
@@ -747,7 +734,7 @@ const j = /* @__PURE__ */ we({
     }, [h("div", {
       class: o.be("filter", "header"),
       onClick: le
-    }, [h(D("ion-icon"), {
+    }, [h(v("ion-icon"), {
       name: "arrow-back-outline"
     }, null), te("返回")])]) : null, J = (t) => {
       var r, u;
@@ -770,7 +757,7 @@ const j = /* @__PURE__ */ we({
       }, [(r = e.state.newingNodeModel) != null && r.sysImage ? h(O, {
         class: o.be("node", "icon"),
         icon: (u = e.state.newingNodeModel) == null ? void 0 : u.sysImage
-      }, null) : null, h(D("el-input"), {
+      }, null) : null, h(v("el-input"), {
         modelValue: e.state.newingNodeText,
         "onUpdate:modelValue": (p) => e.state.newingNodeText = p,
         ref: "treeNodeTextInputRef",
@@ -787,15 +774,15 @@ const j = /* @__PURE__ */ we({
       treeRef: a,
       treeviewRef: s,
       treeNodeTextInputRef: l,
-      treeData: v,
+      treeData: I,
       treeRefreshKey: f,
-      findNodeData: I,
+      findNodeData: E,
       handleEditKeyDown: z,
       onCheck: b,
       onNodeClick: A,
       onNodeDbClick: R,
       onNodeContextmenu: V,
-      loadData: _,
+      loadData: g,
       renderContextMenu: $,
       renderCounter: W,
       updateNodeExpand: P,
@@ -808,7 +795,7 @@ const j = /* @__PURE__ */ we({
         class: [o.b("content"), o.is("filter", e.isFilter.value)]
       }, [fe(), h("div", {
         class: [o.b("tree-box"), o.is("filter", e.isFilter.value)]
-      }, [h(D("el-tree"), {
+      }, [h(v("el-tree"), {
         ref: "treeRef",
         key: f.value,
         class: [d.b("tree"), o.is("list-tree", e.renderMode === "listTree")],
@@ -826,7 +813,7 @@ const j = /* @__PURE__ */ we({
           class: ue
         },
         lazy: !0,
-        load: _,
+        load: g,
         onCheck: b,
         onNodeExpand: (t) => {
           P(t, !0);
@@ -844,7 +831,7 @@ const j = /* @__PURE__ */ we({
           data: t
         }) => {
           var c, w;
-          const i = I(t._uuid, e);
+          const i = E(t._uuid, e);
           if (!i)
             return null;
           const r = e.getNodeModel(i._nodeId);
@@ -854,7 +841,7 @@ const j = /* @__PURE__ */ we({
             }, [i._icon ? h(O, {
               class: o.be("node", "icon"),
               icon: i._icon
-            }, null) : null, h(D("el-input"), {
+            }, null) : null, h(v("el-input"), {
               modelValue: e.state.editingNodeText,
               "onUpdate:modelValue": (y) => e.state.editingNodeText = y,
               ref: "treeNodeTextInputRef",
@@ -866,9 +853,9 @@ const j = /* @__PURE__ */ we({
                 z(y);
               }
             }, null)]);
-          const u = _e(r);
+          const u = De(r);
           let p;
-          return u ? p = h(D("iBizControlShell"), {
+          return u ? p = h(v("iBizControlShell"), {
             data: i,
             modelData: u,
             context: e.context,
@@ -893,19 +880,19 @@ const j = /* @__PURE__ */ we({
   },
   render() {
     const e = {
-      searchbar: () => this.c.enableQuickSearch ? h(D("el-input"), {
+      searchbar: () => this.c.enableQuickSearch ? h(v("el-input"), {
         "model-value": this.c.state.query,
         class: this.ns.b("quick-search"),
         placeholder: this.c.state.placeHolder,
         onInput: this.onInput
       }, {
-        prefix: () => h(D("ion-icon"), {
+        prefix: () => h(v("ion-icon"), {
           class: this.ns.e("search-icon"),
           name: "search"
         }, null)
       }) : null
     };
-    this.c.bottomToolbar && (e.toolbar = () => h(D("iBizControlShell"), {
+    this.c.bottomToolbar && (e.toolbar = () => h(v("iBizControlShell"), {
       modelData: this.c.bottomToolbar,
       context: this.c.context,
       params: this.c.params
@@ -914,29 +901,29 @@ const j = /* @__PURE__ */ we({
     return e[N] = () => {
       if (this.c.state.isLoaded && this.treeRefreshKey)
         return this.renderTree();
-    }, Te(h(D("iBizControlBase"), {
+    }, Te(h(v("iBizControlBase"), {
       ref: "treeviewRef",
       controller: this.c
-    }, Oe(e) ? e : {
+    }, Be(e) ? e : {
       default: () => [e]
     }), [[Me("loading"), this.c.state.isLoading]]);
   }
 });
-class Be {
+class Ke {
   constructor() {
     T(this, "component", "IBizGroupTreeControl");
   }
 }
-const Ge = Ie(
+const He = Ie(
   j,
   function(e) {
-    e.component(j.name, j), De(
+    e.component(j.name, j), ge(
       "TREE_RENDER_GROUP_TREE",
-      () => new Be()
+      () => new Ke()
     );
   }
 );
 export {
-  Ge as IBizGroupTreeControl,
-  Ge as default
+  He as IBizGroupTreeControl,
+  He as default
 };

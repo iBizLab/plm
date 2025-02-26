@@ -10,6 +10,13 @@
   display: flex;
   flex-wrap: wrap;
 
+  .el-button {
+    > span {
+      // 禁用点击事件，保证event.target是button元素  
+      pointer-events: none; 
+    }
+  }
+
   @include e(item) {
     padding: getCssVar('spacing', 'extra-tight') getCssVar('spacing', 'none');
     margin: getCssVar(spacing, none) getCssVar(spacing, tight) getCssVar(spacing, none) getCssVar(spacing, none);
@@ -31,11 +38,6 @@
     &:last-child {
       margin-right: 0;
     }
-
-    // 平铺项 常规操作级按钮隐藏
-    // @include when('level-200') {
-    //   opacity: 0;
-    // }
 
     @include when('group-button') {
       --el-button-outline-color: transparent;
@@ -63,7 +65,6 @@
 
 @include b('edit-column-action-toolbar-popper') {
   @include e('action-group') {
-
     @include m('edit-column') {
       display: flex;
       align-items: center;
@@ -80,7 +81,6 @@
 
     @include m('icon') {
       @include action-icon;
-
       margin: 0 rem(6px) 0 0;
     }
 
@@ -95,10 +95,12 @@
       color: var(--ibiz-color-text-2);
       text-align: left;
       border-radius: 0;
-
+      > span {
+        // 禁用点击事件，保证event.target是button元素  
+        pointer-events: none; 
+      }
       &:hover {
         background-color: var(--ibiz-color-fill-0);
-
         &:not(.is-disabled) {
           color: var(--ibiz-color-primary);
         }

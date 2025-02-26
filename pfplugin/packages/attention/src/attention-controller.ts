@@ -823,4 +823,33 @@ export class AttentionController extends EditorController<IPicker> {
       return obj ? obj[propName] || '' : '';
     });
   }
+
+  /**
+   * 获取人员头像路径
+   *
+   * @return {*}  {string}
+   * @memberof AttentionController
+   */
+  public getUserPictureUrl(userid: string, usertext: string): string {
+    if (this.operatorMap.size <= 0) {
+      return '';
+    }
+    let operator: IData = {};
+    if (this.operatorMap.get(userid)) {
+      operator = this.operatorMap.get(userid);
+    } else {
+      Array.from(this.operatorMap.entries()).find((items: IData[]): boolean => {
+        const item: IData = items[1] || {};
+        if (item.text && usertext && item.text === usertext) {
+          operator = item;
+          return true;
+        }
+        return false;
+      });
+    }
+    if (operator.data && operator.data.iconurl) {
+      return operator.data.iconurl;
+    }
+    return '';
+  }
 }
