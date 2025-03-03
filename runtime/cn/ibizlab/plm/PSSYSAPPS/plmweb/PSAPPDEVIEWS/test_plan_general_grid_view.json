@@ -77,14 +77,6 @@
     }
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "EDITDATA",
-    "realTitle" : "测试计划",
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_plan_main_view.json",
-      "viewType" : "DETABEXPVIEW"
-    }
-  }, {
     "name" : "NEWDATA",
     "realOpenMode" : "POPUPMODAL",
     "realTitle" : "新建测试计划",
@@ -92,6 +84,14 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_plan_quick_create_view.json",
       "viewType" : "DEOPTVIEW"
+    }
+  }, {
+    "name" : "EDITDATA",
+    "realTitle" : "测试计划",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_plan_main_view.json",
+      "viewType" : "DETABEXPVIEW"
     }
   } ],
   "getPSControls" : [ {
@@ -136,28 +136,21 @@
           "lanResTag" : "TBB.TEXT.*.NEW"
         },
         "caption" : "新建",
-        "codeName" : "new_subdata",
-        "dataAccessAction" : "SUBDATA",
-        "fullCodeName" : "new_subdata",
-        "name" : "表格界面_新建操作_子数据",
-        "getPSDEOPPriv" : {
-          "modelref" : true,
-          "id" : "SUBDATA"
-        },
+        "codeName" : "New",
+        "fullCodeName" : "New",
+        "name" : "表格界面_新建操作",
         "getPSSysImage" : {
           "glyph" : "xf0f6@FontAwesome",
           "cssClass" : "fa fa-file-text-o"
         },
         "predefinedType" : "GRIDVIEW_NEWACTION",
-        "refreshMode" : 1,
         "timeout" : 60000,
         "getTooltipPSLanguageRes" : {
           "lanResTag" : "TBB.TOOLTIP.*.NEW"
         },
         "uIActionMode" : "SYS",
-        "uIActionTag" : "new_subdata",
-        "uIActionType" : "DEUIACTION",
-        "reloadData" : true
+        "uIActionTag" : "New",
+        "uIActionType" : "DEUIACTION"
       },
       "tooltip" : "新建计划",
       "getTooltipPSLanguageRes" : {
@@ -450,7 +443,6 @@
               "cssClass" : "fa fa-edit"
             },
             "refreshMode" : 1,
-            "timeout" : 60000,
             "uIActionMode" : "FRONT",
             "uIActionTag" : "open_update_view",
             "uIActionType" : "DEUIACTION",
@@ -570,6 +562,7 @@
       },
       "width" : 200,
       "widthUnit" : "PX",
+      "enableRowEdit" : true,
       "enableSort" : true
     }, {
       "align" : "LEFT",
@@ -849,6 +842,58 @@
       "name" : "srfmstag"
     } ],
     "getPSDEGridEditItems" : [ {
+      "caption" : "负责人",
+      "codeName" : "assignee_name",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "name" : "assignee_name",
+      "getPSAppDEField" : {
+        "name" : "ASSIGNEE_NAME",
+        "codeName" : "assignee_name"
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+          "AC" : "TRUE",
+          "readonly" : "true",
+          "SRFNAVPARAM.n_status_eq" : "1",
+          "TRIGGER" : "TRUE",
+          "URL" : "projects/${context.project}/project_members/fetch_default",
+          "PICKUPVIEW" : "FALSE",
+          "USERMETHOD" : "post",
+          "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+          "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+          "DEPTMETHOD" : "get",
+          "DEPTURL" : "/users/fetch_default"
+        },
+        "editorStyle" : "PERSONEL_SELECT_PROJECT",
+        "editorType" : "PICKEREX_TRIGGER",
+        "name" : "assignee_name",
+        "getPSNavigateParams" : [ {
+          "key" : "n_department_id_eq",
+          "name" : "n_department_id_eq",
+          "value" : "srforgsectorid",
+          "rawValue" : false
+        }, {
+          "key" : "n_status_eq",
+          "name" : "n_status_eq",
+          "value" : "1",
+          "rawValue" : true
+        } ],
+        "getPSSysPFPlugin" : {
+          "pluginType" : "EDITOR_CUSTOMSTYLE",
+          "pluginCode" : "PERSON_SELECT",
+          "runtimeObject" : true
+        },
+        "enableAC" : true,
+        "enablePickupView" : false,
+        "forceSelection" : true,
+        "readOnly" : true,
+        "showTrigger" : true,
+        "singleSelect" : true
+      },
+      "allowEmpty" : true
+    }, {
       "caption" : "标识",
       "codeName" : "srfkey",
       "enableCond" : 3,
@@ -1574,7 +1619,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "general_grid_view",
-  "getPSDEViewId" : "5ce9a155546f6afb0991ec66b6807e59",
+  "getPSDEViewId" : "fdc20f2a8db36335381070c21aed42fa",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEGRIDVIEW",
@@ -1601,9 +1646,31 @@
   "enableRowEdit" : false,
   "enableSearch" : true,
   "rowEditDefault" : false,
-  "modelid" : "e88743f8f717b80640621a94e8118098",
+  "modelid" : "edfe305831fd5588a27961be0e36d77b",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "test_plans",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "project",
+    "majorDEName" : "PROJECT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "minorDECodeName" : "test_plan",
+    "minorDEName" : "TEST_PLAN",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+    },
+    "name" : "DER1N_TEST_PLAN_PROJECT_PROJECT_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PROJECT_ID",
+      "codeName" : "project_id"
+    },
+    "rSMode" : 2
+  } ], [ {
     "actionRSMode" : 1,
     "codeName" : "test_plans",
     "dataRSMode" : 0,

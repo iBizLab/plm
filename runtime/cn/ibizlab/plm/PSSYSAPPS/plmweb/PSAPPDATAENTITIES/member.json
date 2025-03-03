@@ -1,5 +1,39 @@
 {
   "getAllPSAppDEActions" : [ {
+    "actionMode" : "CUSTOM",
+    "codeName" : "add_member_position",
+    "methodType" : "DEACTION",
+    "name" : "add_member_position",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "member_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/member/PSDEACTIONS/add_member_position.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "shared_page_member__UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "add_member_position"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/add_member_position",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "CREATE",
     "codeName" : "add_shared_page_member",
     "methodType" : "DEACTION",
@@ -60,7 +94,7 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "UPDATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -1000,6 +1034,18 @@
     "stringLength" : 100
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[ROLE_ID][角色]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[ROLE_ID][角色]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[ROLE_ID][角色]移动端默认",
       "getPSDEFFormItem" : {
@@ -1013,18 +1059,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[ROLE_ID][角色]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "DROPDOWNLIST",
-        "name" : "[ROLE_ID][角色]",
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT",
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "role_id",
     "logicName" : "角色",
@@ -1033,6 +1067,17 @@
     "stringLength" : 60
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[DEPARTMENT_NAME][部门名称]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[DEPARTMENT_NAME][部门名称]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[DEPARTMENT_NAME][部门名称]移动端默认",
       "getPSDEFFormItem" : {
@@ -1045,17 +1090,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[DEPARTMENT_NAME][部门名称]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[DEPARTMENT_NAME][部门名称]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "department_name",
     "logicName" : "部门",
@@ -1095,6 +1129,17 @@
     "stringLength" : 100
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[JOB_NAME][职位]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[JOB_NAME][职位]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[JOB_NAME][职位]移动端默认",
       "getPSDEFFormItem" : {
@@ -1107,17 +1152,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[JOB_NAME][职位]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[JOB_NAME][职位]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "job_name",
     "logicName" : "职位",
@@ -1154,6 +1188,106 @@
     "logicName" : "统计标识",
     "name" : "REPORT_FLAG",
     "stdDataType" : 9
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[POSITION_NAME][职位名称]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "PICKER",
+        "name" : "[POSITION_NAME][职位名称]",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "MPickupView",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/position/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/position.json"
+        },
+        "refPickupPSDEViewCodeName" : "PickupView",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[POSITION_NAME][职位名称]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBPICKER",
+        "name" : "[POSITION_NAME][职位名称]移动端默认",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "MPickupView",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/position/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/position.json"
+        },
+        "refPickupPSDEViewCodeName" : "PickupView",
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "position_name",
+    "logicName" : "职位名称",
+    "name" : "POSITION_NAME",
+    "stdDataType" : 25,
+    "stringLength" : 200
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[TITLE][职位]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[TITLE][职位]移动端默认",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[TITLE][职位]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[TITLE][职位]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "codeName" : "title",
+    "logicName" : "职位",
+    "name" : "TITLE",
+    "stdDataType" : 25,
+    "stringLength" : 100
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -1429,6 +1563,45 @@
     "name" : "UPDATE_TIME",
     "stdDataType" : 5,
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[POSITION_ID][职位标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[POSITION_ID][职位标识]",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/position.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[POSITION_ID][职位标识]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "HIDDEN",
+        "name" : "[POSITION_ID][职位标识]移动端默认",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/position.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "position_id",
+    "logicName" : "职位标识",
+    "name" : "POSITION_ID",
+    "stdDataType" : 25,
+    "stringLength" : 100
   } ],
   "getAllPSAppDELogics" : [ {
     "codeName" : "nothing",
@@ -1586,6 +1759,28 @@
       "stdDataType" : 9,
       "type" : "SIMPLE"
     }, {
+      "codeName" : "position_name",
+      "logicName" : "职位名称",
+      "name" : "position_name",
+      "getPSAppDEField" : {
+        "name" : "POSITION_NAME",
+        "codeName" : "position_name"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "title",
+      "logicName" : "职位",
+      "name" : "title",
+      "getPSAppDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "codeName" : "create_man",
       "logicName" : "建立人",
       "name" : "create_man",
@@ -1629,6 +1824,17 @@
       "getPSAppDEField" : {
         "name" : "NAME",
         "codeName" : "name"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "position_id",
+      "logicName" : "职位标识",
+      "name" : "position_id",
+      "getPSAppDEField" : {
+        "name" : "POSITION_ID",
+        "codeName" : "position_id"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
@@ -1709,6 +1915,39 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "codeName" : "n_position_id_eq",
+      "logicName" : "职位标识",
+      "name" : "n_position_id_eq",
+      "getPSAppDEField" : {
+        "name" : "POSITION_ID",
+        "codeName" : "position_id"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "n_position_name_eq",
+      "logicName" : "职位名称",
+      "name" : "n_position_name_eq",
+      "getPSAppDEField" : {
+        "name" : "POSITION_NAME",
+        "codeName" : "position_name"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "n_position_name_like",
+      "logicName" : "职位名称",
+      "name" : "n_position_name_like",
+      "getPSAppDEField" : {
+        "name" : "POSITION_NAME",
+        "codeName" : "position_name"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "codeName" : "n_role_id_eq",
       "logicName" : "角色",
       "name" : "n_role_id_eq",
@@ -1746,6 +1985,40 @@
     "type" : "DEFILTER"
   } ],
   "getAllPSAppDEMethods" : [ {
+    "actionMode" : "CUSTOM",
+    "codeName" : "add_member_position",
+    "methodType" : "DEACTION",
+    "name" : "add_member_position",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "member_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/member/PSDEACTIONS/add_member_position.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "shared_page_member__UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "add_member_position"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/add_member_position",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "CREATE",
     "codeName" : "add_shared_page_member",
     "methodType" : "DEACTION",
@@ -1806,7 +2079,7 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "UPDATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -2685,6 +2958,36 @@
     "id" : "add_member@member"
   }, {
     "actionTarget" : "NONE",
+    "caption" : "添加成员",
+    "codeName" : "add_member_position",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_choose_mpick_up_view.json",
+      "viewType" : "DEMPICKUPVIEW2"
+    },
+    "fullCodeName" : "member_add_member_position",
+    "name" : "添加成员（职位）",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "add_member_position"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/member.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf067@FontAwesome",
+      "cssClass" : "fa fa-plus"
+    },
+    "successMsg" : "添加成员成功！",
+    "timeout" : 60000,
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "add_member_position",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "id" : "add_member_position@member"
+  }, {
+    "actionTarget" : "NONE",
     "caption" : "添加",
     "codeName" : "add_shared_mmeber",
     "frontProcessType" : "OTHER",
@@ -2699,7 +3002,6 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/member.json"
     },
     "refreshMode" : 1,
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "add_shared_mmeber",
     "uIActionType" : "DEUIACTION",
@@ -2939,16 +3241,16 @@
       "topPos" : 357
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "ctx",
-      "logicName" : "应用上下文变量",
-      "name" : "应用上下文变量",
-      "navContextParam" : true
-    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
+    }, {
+      "codeName" : "ctx",
+      "logicName" : "应用上下文变量",
+      "name" : "应用上下文变量",
+      "navContextParam" : true
     }, {
       "codeName" : "view",
       "logicName" : "view",
@@ -2962,44 +3264,52 @@
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/member_redirect_view.json",
+    "viewType" : "DEREDIRECTVIEW"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/member_grid_view.json",
     "viewType" : "DEGRIDVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/member_portfolio_resource_mpick_up_grid_view.json",
-    "viewType" : "DEPICKUPGRIDVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/member_all_resource_mpick_up_view.json",
-    "viewType" : "DEMPICKUPVIEW2"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/member_role_edit_view.json",
-    "viewType" : "DEOPTVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/member_edit_view.json",
-    "viewType" : "DEEDITVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/member_all_resource_mpick_up_grid_view.json",
-    "viewType" : "DEPICKUPGRIDVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/member_portfolio_resource_mpick_up_view.json",
-    "viewType" : "DEMPICKUPVIEW2"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/member_shared_page_list_view.json",
-    "viewType" : "DELISTVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/member_project_resource_mpick_up_view.json",
     "viewType" : "DEMPICKUPVIEW2"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/member_all_resource_mpick_up_grid_view.json",
+    "viewType" : "DEPICKUPGRIDVIEW"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/member_project_resource_mpick_up_grid_view.json",
     "viewType" : "DEPICKUPGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/member_edit_view.json",
+    "viewType" : "DEEDITVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/member_shared_page_list_view.json",
+    "viewType" : "DELISTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/member_all_resource_mpick_up_view.json",
+    "viewType" : "DEMPICKUPVIEW2"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/member_position_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/member_role_edit_view.json",
+    "viewType" : "DEOPTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/member_portfolio_resource_mpick_up_grid_view.json",
+    "viewType" : "DEPICKUPGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/member_portfolio_resource_mpick_up_view.json",
+    "viewType" : "DEMPICKUPVIEW2"
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "建立",
@@ -3037,9 +3347,6 @@
     "id" : "shared_page_member__DELETE"
   }, {
     "logicName" : "读取",
-    "name" : "READ"
-  }, {
-    "logicName" : "读取",
     "mapPSDEName" : "GROUP",
     "mapPSDEOPPrivName" : "READ",
     "getMapPSDER" : {
@@ -3054,6 +3361,9 @@
     "id" : "member_group__READ"
   }, {
     "logicName" : "读取",
+    "name" : "READ"
+  }, {
+    "logicName" : "读取",
     "mapPSDEName" : "PAGE",
     "mapPSDEOPPrivName" : "UPDATE",
     "getMapPSDER" : {
@@ -3066,20 +3376,6 @@
     },
     "name" : "READ",
     "id" : "shared_page_member__READ"
-  }, {
-    "logicName" : "更新",
-    "mapPSDEName" : "PAGE",
-    "mapPSDEOPPrivName" : "UPDATE",
-    "getMapPSDER" : {
-      "modelref" : true,
-      "path" : "PSMODULES/Base/PSDATAENTITIES/member/PSDERS/DERCUSTOM_MEMBER_PAGE_OWNER_ID.json"
-    },
-    "getMapPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
-    },
-    "name" : "UPDATE",
-    "id" : "shared_page_member__UPDATE"
   }, {
     "logicName" : "更新",
     "mapPSDEName" : "PROJECT",
@@ -3097,6 +3393,20 @@
   }, {
     "logicName" : "更新",
     "name" : "UPDATE"
+  }, {
+    "logicName" : "更新",
+    "mapPSDEName" : "PAGE",
+    "mapPSDEOPPrivName" : "UPDATE",
+    "getMapPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/member/PSDERS/DERCUSTOM_MEMBER_PAGE_OWNER_ID.json"
+    },
+    "getMapPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "name" : "UPDATE",
+    "id" : "shared_page_member__UPDATE"
   } ],
   "codeName" : "member",
   "dEAPICodeName" : "member",
@@ -3235,7 +3545,7 @@
     "uniqueTag" : "member__Usr0417326119",
     "getPSUIActionGroupDetails" : [ {
       "detailType" : "DEUIACTION",
-      "name" : "u679c252",
+      "name" : "u4016a74",
       "getPSSysImage" : {
         "glyph" : "xf185@FontAwesome",
         "cssClass" : "fa fa-sun-o"
@@ -3254,7 +3564,7 @@
       }
     }, {
       "detailType" : "DEUIACTION",
-      "name" : "u8abfb7b",
+      "name" : "ue13dbbe",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
         "cssClass" : "fa fa-trash-o"

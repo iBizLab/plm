@@ -1,0 +1,79 @@
+package cn.ibizlab.plm.team.logic.discuss_replylogic.update_comment;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.team.domain.discuss_reply discuss_replyupdate_commentdefault;
+                global cn.ibizlab.plm.core.base.domain.comment discuss_replyupdate_commentcomment;
+                    global cn.ibizlab.plm.core.base.service.IcommentService commentservice;
+        global cn.ibizlab.plm.core.team.service.Idiscuss_replyService iBzSysDiscuss_replyDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "discuss_replyupdate_commentbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[填充评论属性]
+            rule "prepareparam1"
+            ruleflow-group "discuss_replyupdate_commentprepareparam1"
+            when
+            then
+                            discuss_replyupdate_commentcomment.set("id",discuss_replyupdate_commentdefault.get("comment_id"));
+                            discuss_replyupdate_commentcomment.set("content",discuss_replyupdate_commentdefault.get("content"));
+                        update(discuss_replyupdate_commentdefault);//更新fact中变量值
+                        update(discuss_replyupdate_commentcomment);//更新fact中变量值
+            end
+
+            //逻辑处理节点[修改评论]
+            rule "deaction1"
+            ruleflow-group "discuss_replyupdate_commentdeaction1"
+            when
+            then
+                        commentservice.update(discuss_replyupdate_commentcomment);
+                        update(discuss_replyupdate_commentdefault);//更新fact中变量值
+                        update(discuss_replyupdate_commentcomment);//更新fact中变量值
+            end
+
+            //逻辑处理节点[修改评论内容]
+            rule "rawsqlcall2"
+            ruleflow-group "discuss_replyupdate_commentrawsqlcall2"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",discuss_replyupdate_commentcomment.get("content"));
+        param.put("param1",discuss_replyupdate_commentcomment.get("id"));
+    String strSql="update comment set CONTENT = #{et.param0} where id = #{et.param1}";
+                        iBzSysDiscuss_replyDefaultService.execute(strSql,param);//SQL调用
+                        update(discuss_replyupdate_commentdefault);//更新fact中变量值
+                        update(discuss_replyupdate_commentcomment);//更新fact中变量值
+            end
+
+            //逻辑处理节点[讨论热度+2]
+            rule "rawsqlcall1"
+            ruleflow-group "discuss_replyupdate_commentrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",discuss_replyupdate_commentdefault.get("postid"));
+    String strSql="update discuss_post t1 set t1.heat = t1.heat + 2  where t1.id = #{et.param0}";
+                        iBzSysDiscuss_replyDefaultService.execute(strSql,param);//SQL调用
+                        update(discuss_replyupdate_commentdefault);//更新fact中变量值
+                        update(discuss_replyupdate_commentcomment);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "discuss_replyupdate_commentend1"
+            when
+            then
+                        update(discuss_replyupdate_commentdefault);//更新fact中变量值
+                        update(discuss_replyupdate_commentcomment);//更新fact中变量值
+            end

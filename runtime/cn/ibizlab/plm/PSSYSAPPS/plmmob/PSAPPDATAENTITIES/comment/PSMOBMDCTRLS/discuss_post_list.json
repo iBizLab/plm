@@ -238,7 +238,7 @@
           "contentType" : "HTML",
           "editorParams" : {
             "contenttype" : "HTML",
-            "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); const tempIcon = icon.trim(); return `<span class='comment-tag' data-value='${JSON.stringify(item)}'>${tempIcon} ${item.identifier} ${item.name}</span>`;}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
+            "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
           },
           "editorStyle" : "COMMENT_ITEM",
           "editorType" : "RAW",
@@ -258,7 +258,7 @@
       } ]
     } ],
     "name" : "mdctrl_itempanel",
-    "modelid" : "99696425-8083-40DB-BEB5-723FBB898F51",
+    "modelid" : "df3ec11c56a92f746aa07e9c038cbe6c",
     "modeltype" : "PSSYSVIEWPANEL"
   },
   "logicName" : "discuss_post_list",
@@ -331,6 +331,6 @@
   "noSort" : false,
   "showHeader" : true,
   "singleSelect" : false,
-  "modelid" : "7B24A8FD-3DBF-4A49-9BB5-9BCBBA1124ED",
+  "modelid" : "0c1c5478aa161de9684f9034197fe3ee",
   "modeltype" : "PSDELIST"
 }

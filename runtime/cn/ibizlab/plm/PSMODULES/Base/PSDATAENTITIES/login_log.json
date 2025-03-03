@@ -183,10 +183,10 @@
     "builtinAction" : true
   }, {
     "actionHolder" : 1,
-    "actionMode" : "CUSTOM",
+    "actionMode" : "GETDRAFT",
     "actionType" : "DELOGIC",
     "codeName" : "active_member",
-    "dataAccessAction" : "NONE",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/login_log/PSDEACTIONS/active_member.json",
     "logicName" : "获取活跃成员数据",
     "name" : "active_member",
@@ -200,7 +200,11 @@
     },
     "getPSDEActionReturn" : {
       "name" : "Active_memberResult",
-      "type" : "VOID"
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "login_log_dto"
+      },
+      "type" : "DTO"
     },
     "getPSDELogic" : {
       "modelref" : true,
@@ -298,24 +302,7 @@
         "path" : "PSMODULES/Base/PSDATAENTITIES/login_log.json"
       },
       "joinType" : "MAIN",
-      "name" : "LOGIN_LOG",
-      "getPSDEDQGroupCondition" : {
-        "condOp" : "AND",
-        "condType" : "GROUP",
-        "name" : "连接条件",
-        "getPSDEDQConditions" : [ {
-          "condOp" : "EQ",
-          "condType" : "SINGLE",
-          "condValue" : "srfuaauserid",
-          "fieldName" : "USER_ID",
-          "name" : "(USER_ID) 等于(=) 用户上下文 srfuaauserid",
-          "getPSDEField" : {
-            "name" : "USER_ID",
-            "codeName" : "user_id"
-          },
-          "getPSVARTypeId" : "SESSIONCONTEXT"
-        } ]
-      }
+      "name" : "LOGIN_LOG"
     },
     "getPSDEDataQueryInput" : {
       "name" : "Cur_userInput",
@@ -659,17 +646,6 @@
       "standardColumnName" : "`COUNTY`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[COUNTY][区/县]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[COUNTY][区/县]",
-        "stringLength" : 500,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[COUNTY][区/县]移动端默认",
       "getPSDEFFormItem" : {
@@ -682,6 +658,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[COUNTY][区/县]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[COUNTY][区/县]",
+        "stringLength" : 500,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -797,17 +784,6 @@
       "standardColumnName" : "`CITY`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[CITY][城市]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[CITY][城市]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[CITY][城市]移动端默认",
       "getPSDEFFormItem" : {
@@ -820,6 +796,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[CITY][城市]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[CITY][城市]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -935,17 +922,6 @@
       "standardColumnName" : "`LOGIN_METHOD`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[LOGIN_METHOD][登陆方式]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[LOGIN_METHOD][登陆方式]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[LOGIN_METHOD][登陆方式]移动端默认",
       "getPSDEFFormItem" : {
@@ -958,6 +934,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[LOGIN_METHOD][登陆方式]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[LOGIN_METHOD][登陆方式]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1004,17 +991,6 @@
       "standardColumnName" : "`PROVINCE`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[PROVINCE][省]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[PROVINCE][省]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[PROVINCE][省]移动端默认",
       "getPSDEFFormItem" : {
@@ -1027,6 +1003,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[PROVINCE][省]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[PROVINCE][省]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1211,6 +1198,17 @@
       "standardColumnName" : "`USER_NAME`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[USER_NAME][用户名称]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[USER_NAME][用户名称]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[USER_NAME][用户名称]移动端默认",
       "getPSDEFFormItem" : {
@@ -1223,17 +1221,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[USER_NAME][用户名称]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[USER_NAME][用户名称]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1280,6 +1267,17 @@
       "standardColumnName" : "`ISP`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[ISP][网络提供商]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[ISP][网络提供商]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[ISP][网络提供商]移动端默认",
       "getPSDEFFormItem" : {
@@ -1292,17 +1290,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[ISP][网络提供商]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[ISP][网络提供商]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1355,6 +1342,18 @@
       "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[AUTHCODE][认证结果]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[AUTHCODE][认证结果]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[AUTHCODE][认证结果]移动端默认",
       "getPSDEFFormItem" : {
@@ -1368,18 +1367,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[AUTHCODE][认证结果]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "DROPDOWNLIST",
-        "name" : "[AUTHCODE][认证结果]",
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT",
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1423,6 +1410,17 @@
     "serviceCodeName" : "auth_code"
   }, {
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[ACTIVE_MEMBERS][活跃成员数]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[ACTIVE_MEMBERS][活跃成员数]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[ACTIVE_MEMBERS][活跃成员数]移动端默认",
       "getPSDEFFormItem" : {
@@ -1435,17 +1433,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[ACTIVE_MEMBERS][活跃成员数]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[ACTIVE_MEMBERS][活跃成员数]",
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1488,17 +1475,6 @@
     "uIAssistDEField" : true
   }, {
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[ACTIVE_RATE][活跃率]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[ACTIVE_RATE][活跃率]",
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[ACTIVE_RATE][活跃率]移动端默认",
       "getPSDEFFormItem" : {
@@ -1511,6 +1487,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[ACTIVE_RATE][活跃率]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[ACTIVE_RATE][活跃率]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1566,21 +1553,6 @@
       "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[ID][标识]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.ID"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[ID][标识]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[ID][标识]移动端默认",
       "getPSDEFFormItem" : {
@@ -1597,6 +1569,21 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[ID][标识]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.ID"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[ID][标识]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1822,6 +1809,21 @@
       "standardColumnName" : "`CREATE_TIME`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[CREATE_TIME][建立时间]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.CREATE_TIME"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[CREATE_TIME][建立时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[CREATE_TIME][建立时间]移动端默认",
       "getPSDEFFormItem" : {
@@ -1838,21 +1840,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[CREATE_TIME][建立时间]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_TIME"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[CREATE_TIME][建立时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1980,6 +1967,21 @@
       "standardColumnName" : "`UPDATE_TIME`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[UPDATE_TIME][更新时间]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_TIME][更新时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[UPDATE_TIME][更新时间]移动端默认",
       "getPSDEFFormItem" : {
@@ -1996,21 +1998,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[UPDATE_TIME][更新时间]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -3008,7 +2995,130 @@
       "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/auth_log_admin.json"
     },
     "name" : "ebsx_admin_mapping",
+    "getPSDEMapActions" : [ {
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/auth_log_admin/PSDEACTIONS/Create.json"
+      },
+      "name" : "Create ==> Create",
+      "getSrcPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/login_log/PSDEACTIONS/Create.json"
+      }
+    }, {
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/auth_log_admin/PSDEACTIONS/Update.json"
+      },
+      "name" : "Update ==> Update",
+      "getSrcPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/login_log/PSDEACTIONS/Update.json"
+      }
+    }, {
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/auth_log_admin/PSDEACTIONS/Remove.json"
+      },
+      "name" : "Remove ==> Remove",
+      "getSrcPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/login_log/PSDEACTIONS/Remove.json"
+      }
+    }, {
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/auth_log_admin/PSDEACTIONS/Get.json"
+      },
+      "name" : "Get ==> Get",
+      "getSrcPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/login_log/PSDEACTIONS/Get.json"
+      }
+    }, {
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/auth_log_admin/PSDEACTIONS/GetDraft.json"
+      },
+      "name" : "GetDraft ==> GetDraft",
+      "getSrcPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/login_log/PSDEACTIONS/GetDraft.json"
+      }
+    }, {
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/auth_log_admin/PSDEACTIONS/CheckKey.json"
+      },
+      "name" : "CheckKey ==> CheckKey",
+      "getSrcPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/login_log/PSDEACTIONS/CheckKey.json"
+      }
+    }, {
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/auth_log_admin/PSDEACTIONS/Save.json"
+      },
+      "name" : "Save ==> Save",
+      "getSrcPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/login_log/PSDEACTIONS/Save.json"
+      }
+    } ],
+    "getPSDEMapDataQueries" : [ {
+      "getDstPSDEDataQuery" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "DEFAULT ==> DEFAULT",
+      "getSrcPSDEDataQuery" : {
+        "modelref" : true,
+        "id" : "Default"
+      }
+    }, {
+      "getDstPSDEDataQuery" : {
+        "modelref" : true,
+        "id" : "View"
+      },
+      "name" : "VIEW ==> VIEW",
+      "getSrcPSDEDataQuery" : {
+        "modelref" : true,
+        "id" : "View"
+      }
+    }, {
+      "getDstPSDEDataQuery" : {
+        "modelref" : true,
+        "id" : "cur_user"
+      },
+      "name" : "cur_user ==> cur_user",
+      "getSrcPSDEDataQuery" : {
+        "modelref" : true,
+        "id" : "cur_user"
+      }
+    } ],
     "getPSDEMapDataSets" : [ {
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "distinct_userid"
+      },
+      "name" : "PSDEMAPDS",
+      "getSrcPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "distinct_userid"
+      }
+    }, {
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "cur_user"
+      },
+      "name" : "PSDEMAPDS",
+      "getSrcPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "cur_user"
+      },
+      "enableDQCond" : true
+    }, {
       "getDstPSDEDataSet" : {
         "modelref" : true,
         "id" : "group_by_data"
@@ -3017,16 +3127,6 @@
       "getSrcPSDEDataSet" : {
         "modelref" : true,
         "id" : "echarts_datas"
-      }
-    }, {
-      "getDstPSDEDataSet" : {
-        "modelref" : true,
-        "id" : "distinct_userid"
-      },
-      "name" : "PSDEMAPDS",
-      "getSrcPSDEDataSet" : {
-        "modelref" : true,
-        "id" : "distinct_userid"
       }
     }, {
       "getDstPSDEDataSet" : {
@@ -3040,102 +3140,6 @@
       }
     } ],
     "getPSDEMapFields" : [ {
-      "dstFieldName" : "PERSONNAME",
-      "getDstPSDEField" : {
-        "name" : "PERSONNAME",
-        "codeName" : "PersonName"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "USER_NAME",
-      "getSrcPSDEField" : {
-        "name" : "USER_NAME",
-        "codeName" : "user_name"
-      }
-    }, {
-      "dstFieldName" : "AUTHAGENT",
-      "getDstPSDEField" : {
-        "name" : "AUTHAGENT",
-        "codeName" : "AuthAgent"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "LOGIN_METHOD",
-      "getSrcPSDEField" : {
-        "name" : "LOGIN_METHOD",
-        "codeName" : "login_method"
-      }
-    }, {
-      "dstFieldName" : "USERAGENT",
-      "getDstPSDEField" : {
-        "name" : "USERAGENT",
-        "codeName" : "UserAgent"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "USER_AGENT",
-      "getSrcPSDEField" : {
-        "name" : "USER_AGENT",
-        "codeName" : "user_agent"
-      }
-    }, {
-      "dstFieldName" : "AUTHTIME",
-      "getDstPSDEField" : {
-        "name" : "AUTHTIME",
-        "codeName" : "AuthTime"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "AUTHTIME",
-      "getSrcPSDEField" : {
-        "name" : "AUTHTIME",
-        "codeName" : "AuthTime"
-      }
-    }, {
-      "dstFieldName" : "USERID",
-      "getDstPSDEField" : {
-        "name" : "USERID",
-        "codeName" : "UserId"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "USER_ID",
-      "getSrcPSDEField" : {
-        "name" : "USER_ID",
-        "codeName" : "user_id"
-      }
-    }, {
-      "dstFieldName" : "LOGID",
-      "getDstPSDEField" : {
-        "name" : "LOGID",
-        "codeName" : "LogId"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "ID",
-      "getSrcPSDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      }
-    }, {
-      "dstFieldName" : "AUTHCODE",
-      "getDstPSDEField" : {
-        "name" : "AUTHCODE",
-        "codeName" : "AuthCode"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "AUTHCODE",
-      "getSrcPSDEField" : {
-        "name" : "AUTHCODE",
-        "codeName" : "AuthCode"
-      }
-    }, {
-      "dstFieldName" : "IPADDR",
-      "getDstPSDEField" : {
-        "name" : "IPADDR",
-        "codeName" : "IPAddr"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "IP",
-      "getSrcPSDEField" : {
-        "name" : "IP",
-        "codeName" : "ip"
-      }
-    }, {
       "dstFieldName" : "ACTIVE_MEMBERS",
       "getDstPSDEField" : {
         "name" : "ACTIVE_MEMBERS",
@@ -3147,48 +3151,65 @@
         "name" : "ACTIVE_MEMBERS",
         "codeName" : "active_members"
       }
-    } ]
-  }, {
-    "codeName" : "ebsx_mapping",
-    "getDstPSDE" : {
-      "modelref" : true,
-      "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/AuthLog.json"
-    },
-    "logicName" : "ebsx认证日志映射",
-    "name" : "ebsx_mapping",
-    "getPSDEMapDataSets" : [ {
-      "getDstPSDEDataSet" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "name" : "PSDEMAPDS",
-      "getSrcPSDEDataSet" : {
-        "modelref" : true,
-        "id" : "echarts_datas"
-      },
-      "enableDQCond" : true
     }, {
-      "getDstPSDEDataSet" : {
-        "modelref" : true,
-        "id" : "CurUser"
-      },
-      "name" : "PSDEMAPDS",
-      "getSrcPSDEDataSet" : {
-        "modelref" : true,
-        "id" : "cur_user"
-      }
-    } ],
-    "getPSDEMapFields" : [ {
-      "dstFieldName" : "IPADDR",
+      "dstFieldName" : "USERID",
       "getDstPSDEField" : {
-        "name" : "IPADDR",
-        "codeName" : "IPAddr"
+        "name" : "USERID",
+        "codeName" : "UserId"
       },
       "mapType" : "FIELD",
-      "srcFieldName" : "IP",
+      "srcFieldName" : "USER_ID",
       "getSrcPSDEField" : {
-        "name" : "IP",
-        "codeName" : "ip"
+        "name" : "USER_ID",
+        "codeName" : "user_id"
+      }
+    }, {
+      "dstFieldName" : "PERSONNAME",
+      "getDstPSDEField" : {
+        "name" : "PERSONNAME",
+        "codeName" : "PersonName"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "USER_NAME",
+      "getSrcPSDEField" : {
+        "name" : "USER_NAME",
+        "codeName" : "user_name"
+      }
+    }, {
+      "dstFieldName" : "LOGID",
+      "getDstPSDEField" : {
+        "name" : "LOGID",
+        "codeName" : "LogId"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "ID",
+      "getSrcPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
+    }, {
+      "dstFieldName" : "AUTHCODE",
+      "getDstPSDEField" : {
+        "name" : "AUTHCODE",
+        "codeName" : "AuthCode"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "AUTHCODE",
+      "getSrcPSDEField" : {
+        "name" : "AUTHCODE",
+        "codeName" : "AuthCode"
+      }
+    }, {
+      "dstFieldName" : "AUTHAGENT",
+      "getDstPSDEField" : {
+        "name" : "AUTHAGENT",
+        "codeName" : "AuthAgent"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "LOGIN_METHOD",
+      "getSrcPSDEField" : {
+        "name" : "LOGIN_METHOD",
+        "codeName" : "login_method"
       }
     }, {
       "dstFieldName" : "USERAGENT",
@@ -3215,64 +3236,29 @@
         "codeName" : "AuthTime"
       }
     }, {
-      "dstFieldName" : "PERSONNAME",
+      "dstFieldName" : "IPADDR",
       "getDstPSDEField" : {
-        "name" : "PERSONNAME",
-        "codeName" : "PersonName"
+        "name" : "IPADDR",
+        "codeName" : "IPAddr"
       },
       "mapType" : "FIELD",
-      "srcFieldName" : "USER_NAME",
+      "srcFieldName" : "IP",
       "getSrcPSDEField" : {
-        "name" : "USER_NAME",
-        "codeName" : "user_name"
+        "name" : "IP",
+        "codeName" : "ip"
       }
     }, {
-      "dstFieldName" : "AUTHAGENT",
+      "dstFieldName" : "USERNAME",
       "getDstPSDEField" : {
-        "name" : "AUTHAGENT",
-        "codeName" : "AuthAgent"
+        "name" : "USERNAME",
+        "codeName" : "UserName"
       },
       "mapType" : "FIELD",
-      "srcFieldName" : "LOGIN_METHOD",
+      "name" : "NAME ==> USERNAME",
+      "srcFieldName" : "NAME",
       "getSrcPSDEField" : {
-        "name" : "LOGIN_METHOD",
-        "codeName" : "login_method"
-      }
-    }, {
-      "dstFieldName" : "AUTHCODE",
-      "getDstPSDEField" : {
-        "name" : "AUTHCODE",
-        "codeName" : "AuthCode"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "AUTHCODE",
-      "getSrcPSDEField" : {
-        "name" : "AUTHCODE",
-        "codeName" : "AuthCode"
-      }
-    }, {
-      "dstFieldName" : "USERID",
-      "getDstPSDEField" : {
-        "name" : "USERID",
-        "codeName" : "UserId"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "USER_ID",
-      "getSrcPSDEField" : {
-        "name" : "USER_ID",
-        "codeName" : "user_id"
-      }
-    }, {
-      "dstFieldName" : "LOGID",
-      "getDstPSDEField" : {
-        "name" : "LOGID",
-        "codeName" : "LogId"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "ID",
-      "getSrcPSDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
+        "name" : "NAME",
+        "codeName" : "name"
       }
     } ]
   } ],
@@ -3674,18 +3660,16 @@
     "systemReserved" : true
   } ],
   "getAllPSModelDatas" : [ {
-    "codeName" : "EditView",
-    "logicName" : "登录日志实体编辑视图",
-    "modelTag" : "EDITVIEW",
-    "name" : "登录日志实体编辑视图",
-    "realModelSubType" : "DEEDITVIEW",
+    "codeName" : "EditView2",
+    "logicName" : "登录日志实体编辑视图（左右关系）",
+    "name" : "登录日志实体编辑视图（左右关系）",
+    "realModelSubType" : "DEEDITVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "GridView",
-    "logicName" : "登录日志实体表格视图",
-    "modelTag" : "MDATAVIEW",
-    "name" : "登录日志实体表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
+    "codeName" : "over_view",
+    "logicName" : "实体自定义视图（概览）",
+    "name" : "实体自定义视图（概览）",
+    "realModelSubType" : "DECUSTOMVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "MPickupView",
@@ -3693,30 +3677,6 @@
     "modelTag" : "MPICKUPVIEW",
     "name" : "登录日志实体数据多项选择视图",
     "realModelSubType" : "DEMPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "PickupGridView",
-    "logicName" : "登录日志实体选择表格视图（部件视图）",
-    "name" : "登录日志实体选择表格视图（部件视图）",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "EditView2",
-    "logicName" : "登录日志实体编辑视图（左右关系）",
-    "name" : "登录日志实体编辑视图（左右关系）",
-    "realModelSubType" : "DEEDITVIEW2",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "active_members",
-    "logicName" : "实体自定义视图（活跃成员）",
-    "name" : "实体自定义视图（活跃成员）",
-    "realModelSubType" : "DECUSTOMVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "over_view",
-    "logicName" : "实体自定义视图（概览）",
-    "name" : "实体自定义视图（概览）",
-    "realModelSubType" : "DECUSTOMVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "RedirectView",
@@ -3731,6 +3691,32 @@
     "modelTag" : "PICKUPVIEW",
     "name" : "登录日志实体数据选择视图",
     "realModelSubType" : "DEPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "GridView",
+    "logicName" : "登录日志实体表格视图",
+    "modelTag" : "MDATAVIEW",
+    "name" : "登录日志实体表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "active_members",
+    "logicName" : "实体自定义视图（活跃成员）",
+    "name" : "实体自定义视图（活跃成员）",
+    "realModelSubType" : "DECUSTOMVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "EditView",
+    "logicName" : "登录日志实体编辑视图",
+    "modelTag" : "EDITVIEW",
+    "name" : "登录日志实体编辑视图",
+    "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "PickupGridView",
+    "logicName" : "登录日志实体选择表格视图（部件视图）",
+    "name" : "登录日志实体选择表格视图（部件视图）",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "Main",

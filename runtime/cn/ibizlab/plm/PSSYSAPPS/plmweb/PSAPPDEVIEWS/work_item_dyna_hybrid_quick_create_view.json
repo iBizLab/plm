@@ -218,6 +218,14 @@
       "id" : "FORM"
     },
     "getPSDEFormItemUpdates" : [ {
+      "codeName" : "calc_parent_work_item_type",
+      "name" : "计算父工作项类型",
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "work_item_type_name"
+      } ],
+      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+      "customCode" : true
+    }, {
       "codeName" : "set_default_entry",
       "name" : "选择看板后填充默认看板栏",
       "getPSAppDEMethod" : {
@@ -228,14 +236,6 @@
         "name" : "entry_id"
       } ]
     }, {
-      "codeName" : "calc_parent_work_item_type",
-      "name" : "计算父工作项类型",
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_name"
-      } ],
-      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-      "customCode" : true
-    }, {
       "codeName" : "set_type_bug",
       "name" : "设置缺陷类型",
       "getPSAppDEMethod" : {
@@ -243,11 +243,11 @@
         "id" : "set_type_bug"
       },
       "getPSDEFIUpdateDetails" : [ {
+        "name" : "project_type"
+      }, {
         "name" : "work_item_type_id"
       }, {
         "name" : "work_item_type_name"
-      }, {
-        "name" : "project_type"
       } ]
     } ],
     "getPSDEFormItemVRs" : [ {
@@ -726,14 +726,15 @@
                 "editorHeight" : 450.0,
                 "editorParams" : {
                   "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
+                  "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
                   "MAXHEIGHT" : "450",
                   "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
-                  "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"type\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
-                  "QUOTEPARAMS" : "{\"page\":0,\"size\":20,\"sort\":\"update_time,desc\"}",
+                  "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
+                  "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
                   "MODE" : "default",
-                  "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); return controller.getNodeInfo({ icon, ...item })})",
+                  "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
                   "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
-                  "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.type}\",\"recent_parent\":\"${data.recent_parent}\",\"icon\":\"${data.icon}\"}`",
+                  "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
                   "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
                   "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
                   "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
@@ -982,7 +983,6 @@
                       "glyph" : "xf002@FontAwesome",
                       "cssClass" : "fa fa-search"
                     },
-                    "timeout" : 60000,
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "attachment_preview",
                     "uIActionType" : "DEUIACTION",
@@ -1086,7 +1086,6 @@
                           "pluginCode" : "FILE_DOWNLOAD",
                           "runtimeObject" : true
                         },
-                        "timeout" : 60000,
                         "tooltip" : "下载当前附件",
                         "uIActionMode" : "FRONT",
                         "uIActionTag" : "download",
@@ -1124,7 +1123,6 @@
                           "glyph" : "xf014@FontAwesome",
                           "cssClass" : "fa fa-trash-o"
                         },
-                        "timeout" : 60000,
                         "tooltip" : "删除",
                         "uIActionMode" : "FRONT",
                         "uIActionTag" : "delete",
@@ -1321,7 +1319,6 @@
                     "glyph" : "xf067@FontAwesome",
                     "cssClass" : "fa fa-plus"
                   },
-                  "timeout" : 60000,
                   "uIActionMode" : "FRONT",
                   "uIActionTag" : "add_attachments",
                   "uIActionType" : "DEUIACTION",
@@ -1662,7 +1659,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[project_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNULL",
                 "dEFDName" : "checkid",
@@ -1700,46 +1696,6 @@
               "getPSEditorItems" : [ {
                 "name" : "project_id"
               } ],
-              "getPSUIActionGroup" : {
-                "codeName" : "Usr1221520658",
-                "name" : "自填模式行为组",
-                "getPSAppDataEntity" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                },
-                "getPSUIActionGroupDetails" : [ {
-                  "caption" : "项目配置",
-                  "detailType" : "DEUIACTION",
-                  "name" : "u3fee786",
-                  "getPSUIAction" : {
-                    "actionTarget" : "NONE",
-                    "caption" : "项目配置",
-                    "codeName" : "open_global_setting",
-                    "getFrontPSAppView" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
-                      "viewType" : "DETREEEXPVIEW"
-                    },
-                    "frontProcessType" : "OTHER",
-                    "fullCodeName" : "project_open_global_setting",
-                    "name" : "打开项目配置(全局)",
-                    "getPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                    },
-                    "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
-                    "timeout" : 60000,
-                    "uIActionMode" : "FRONT",
-                    "uIActionTag" : "open_global_setting",
-                    "uIActionType" : "DEUIACTION",
-                    "id" : "open_global_setting@project"
-                  },
-                  "addSeparator" : false,
-                  "showCaption" : true,
-                  "showIcon" : true
-                } ],
-                "uniqueTag" : "project__Usr1221520658"
-              },
               "placeHolder" : "选择所属项目",
               "valueItemName" : "project_id",
               "enableAC" : true,
@@ -1799,7 +1755,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[work_item_type_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -1890,7 +1845,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[board_name][面板显示]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "EQ",
                 "dEFDName" : "project_type",
@@ -1976,7 +1930,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[ptitle][面板显示]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "NOTEQ",
                 "dEFDName" : "work_item_type_name",
@@ -1989,7 +1942,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[ptitle][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -2072,7 +2024,6 @@
                 "groupOP" : "AND",
                 "logicCat" : "PANELVISIBLE",
                 "logicType" : "GROUP",
-                "name" : "表单成员[grouppanel9][面板显示]逻辑",
                 "getPSDEFDLogics" : [ {
                   "groupOP" : "OR",
                   "logicType" : "GROUP",
@@ -2127,6 +2078,7 @@
                 "showCaption" : true
               }, {
                 "actionType" : "UIACTION",
+                "buttonStyle" : "STYLE2",
                 "caption" : "设置执行人",
                 "codeName" : "setting_executors",
                 "detailStyle" : "STYLE2",
@@ -2141,7 +2093,6 @@
                   "groupOP" : "AND",
                   "logicCat" : "PANELVISIBLE",
                   "logicType" : "GROUP",
-                  "name" : "表单成员[setting_executors][面板显示]逻辑",
                   "getPSDEFDLogics" : [ {
                     "condOP" : "EQ",
                     "dEFDName" : "multiple_people",
@@ -2188,7 +2139,6 @@
                     "value" : "executors",
                     "rawValue" : false
                   } ],
-                  "timeout" : 60000,
                   "tooltip" : "设置执行人",
                   "uIActionMode" : "FRONT",
                   "uIActionTag" : "create_open_executors",
@@ -2232,7 +2182,6 @@
                 "groupOP" : "AND",
                 "logicCat" : "PANELVISIBLE",
                 "logicType" : "GROUP",
-                "name" : "表单成员[assignee_name][面板显示]逻辑",
                 "getPSDEFDLogics" : [ {
                   "groupOP" : "OR",
                   "logicType" : "GROUP",
@@ -2254,7 +2203,6 @@
                 "groupOP" : "AND",
                 "logicCat" : "ITEMENABLE",
                 "logicType" : "GROUP",
-                "name" : "表单成员[assignee_name][表单项启用]逻辑",
                 "getPSDEFDLogics" : [ {
                   "condOP" : "ISNOTNULL",
                   "dEFDName" : "project_name",
@@ -2361,7 +2309,6 @@
                         "cssClass" : "fa fa-user-md"
                       },
                       "scriptCode" : "ibiz.openView.push(`/-/index/project=${context.project}/project_redirect_view/-/project_setting_view/srfnavctx=%7B\"project\"%3A\"${context.project}\"%2C\"srfdefaulttoroutedepth\"%3A\"3\"%7D;srfnav=root%3Anormal%3Amember/project_member_config_grid_view/-`);",
-                      "timeout" : 60000,
                       "tooltip" : "跳转至成员设置",
                       "uIActionMode" : "FRONT",
                       "uIActionTag" : "jump_to_member_set",
@@ -2417,7 +2364,6 @@
                 "groupOP" : "AND",
                 "logicCat" : "PANELVISIBLE",
                 "logicType" : "GROUP",
-                "name" : "表单成员[executors][面板显示]逻辑",
                 "getPSDEFDLogics" : [ {
                   "condOP" : "EQ",
                   "dEFDName" : "multiple_people",
@@ -2663,7 +2609,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[grouppanel3][面板显示]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_group",
@@ -2848,7 +2793,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[grouppanel4][面板显示]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_group",
@@ -2913,7 +2857,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[grouppanel5][面板显示]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_group",
@@ -3029,7 +2972,9 @@
                   "DEFAULTATNVALUE" : "40",
                   "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
                   "AC" : "TRUE",
+                  "DEFAULTSELCURUSER" : "true",
                   "SRFNAVPARAM.n_status_eq" : "1",
+                  "SRFNAVCTX.project" : "%project_id%",
                   "TRIGGER" : "TRUE",
                   "SELFFILLMAP" : "{\"user_id\":\"user_id\",\"user_name\":\"name\"}",
                   "URL" : "projects/${context.project}/project_members/fetch_default",
@@ -3046,6 +2991,12 @@
                 "name" : "attentions",
                 "objectIdField" : "id",
                 "objectNameField" : "name",
+                "getPSNavigateContexts" : [ {
+                  "key" : "PROJECT",
+                  "name" : "PROJECT",
+                  "value" : "project_id",
+                  "rawValue" : false
+                } ],
                 "getPSNavigateParams" : [ {
                   "key" : "n_department_id_eq",
                   "name" : "n_department_id_eq",
@@ -3364,6 +3315,14 @@
       "id" : "_FORM_HYBRID_BUG"
     },
     "getPSDEFormItemUpdates" : [ {
+      "codeName" : "calc_parent_work_item_type",
+      "name" : "计算父工作项类型",
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "work_item_type_name"
+      } ],
+      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+      "customCode" : true
+    }, {
       "codeName" : "set_default_entry",
       "name" : "选择看板后填充默认看板栏",
       "getPSAppDEMethod" : {
@@ -3374,14 +3333,6 @@
         "name" : "entry_id"
       } ]
     }, {
-      "codeName" : "calc_parent_work_item_type",
-      "name" : "计算父工作项类型",
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_name"
-      } ],
-      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-      "customCode" : true
-    }, {
       "codeName" : "set_type_bug",
       "name" : "设置缺陷类型",
       "getPSAppDEMethod" : {
@@ -3389,11 +3340,11 @@
         "id" : "set_type_bug"
       },
       "getPSDEFIUpdateDetails" : [ {
+        "name" : "work_item_type_name"
+      }, {
         "name" : "work_item_type_id"
       }, {
         "name" : "project_type"
-      }, {
-        "name" : "work_item_type_name"
       } ]
     } ],
     "getPSDEFormItemVRs" : [ {
@@ -3842,14 +3793,15 @@
                 "editorHeight" : 450.0,
                 "editorParams" : {
                   "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
+                  "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
                   "MAXHEIGHT" : "450",
                   "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
-                  "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"type\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
-                  "QUOTEPARAMS" : "{\"page\":0,\"size\":20,\"sort\":\"update_time,desc\"}",
+                  "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
+                  "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
                   "MODE" : "default",
-                  "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); return controller.getNodeInfo({ icon, ...item })})",
+                  "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
                   "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
-                  "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.type}\",\"recent_parent\":\"${data.recent_parent}\",\"icon\":\"${data.icon}\"}`",
+                  "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
                   "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
                   "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
                   "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
@@ -4099,7 +4051,6 @@
                       "glyph" : "xf002@FontAwesome",
                       "cssClass" : "fa fa-search"
                     },
-                    "timeout" : 60000,
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "attachment_preview",
                     "uIActionType" : "DEUIACTION",
@@ -4203,7 +4154,6 @@
                           "pluginCode" : "FILE_DOWNLOAD",
                           "runtimeObject" : true
                         },
-                        "timeout" : 60000,
                         "tooltip" : "下载当前附件",
                         "uIActionMode" : "FRONT",
                         "uIActionTag" : "download",
@@ -4241,7 +4191,6 @@
                           "glyph" : "xf014@FontAwesome",
                           "cssClass" : "fa fa-trash-o"
                         },
-                        "timeout" : 60000,
                         "tooltip" : "删除",
                         "uIActionMode" : "FRONT",
                         "uIActionTag" : "delete",
@@ -4438,7 +4387,6 @@
                     "glyph" : "xf067@FontAwesome",
                     "cssClass" : "fa fa-plus"
                   },
-                  "timeout" : 60000,
                   "uIActionMode" : "FRONT",
                   "uIActionTag" : "add_attachments",
                   "uIActionType" : "DEUIACTION",
@@ -4925,7 +4873,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[project_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "need_fill_form",
@@ -4937,7 +4884,6 @@
               "groupOP" : "AND",
               "logicCat" : "SCRIPTCODE_CHANGE",
               "logicType" : "GROUP",
-              "name" : "表单成员[project_name][表单项值变更（脚本处理）]逻辑",
               "getPSDEFDLogics" : [ {
                 "logicType" : "SINGLE",
                 "value" : "view.params.srfparentkey = data.project_id;"
@@ -4973,46 +4919,6 @@
               "getPSEditorItems" : [ {
                 "name" : "project_id"
               } ],
-              "getPSUIActionGroup" : {
-                "codeName" : "Usr1221520658",
-                "name" : "自填模式行为组",
-                "getPSAppDataEntity" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                },
-                "getPSUIActionGroupDetails" : [ {
-                  "caption" : "项目配置",
-                  "detailType" : "DEUIACTION",
-                  "name" : "u3fee786",
-                  "getPSUIAction" : {
-                    "actionTarget" : "NONE",
-                    "caption" : "项目配置",
-                    "codeName" : "open_global_setting",
-                    "getFrontPSAppView" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
-                      "viewType" : "DETREEEXPVIEW"
-                    },
-                    "frontProcessType" : "OTHER",
-                    "fullCodeName" : "project_open_global_setting",
-                    "name" : "打开项目配置(全局)",
-                    "getPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                    },
-                    "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
-                    "timeout" : 60000,
-                    "uIActionMode" : "FRONT",
-                    "uIActionTag" : "open_global_setting",
-                    "uIActionType" : "DEUIACTION",
-                    "id" : "open_global_setting@project"
-                  },
-                  "addSeparator" : false,
-                  "showCaption" : true,
-                  "showIcon" : true
-                } ],
-                "uniqueTag" : "project__Usr1221520658"
-              },
               "placeHolder" : "选择所属项目",
               "valueItemName" : "project_id",
               "enableAC" : true,
@@ -5049,7 +4955,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[work_item_type_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -5212,7 +5117,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[ptitle][面板显示]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "NOTEQ",
                 "dEFDName" : "work_item_type_name",
@@ -5225,7 +5129,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[ptitle][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -5315,7 +5218,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[assignee_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -5421,7 +5323,6 @@
                       "cssClass" : "fa fa-user-md"
                     },
                     "scriptCode" : "ibiz.openView.push(`/-/index/project=${context.project}/project_redirect_view/-/project_setting_view/srfnavctx=%7B\"project\"%3A\"${context.project}\"%2C\"srfdefaulttoroutedepth\"%3A\"3\"%7D;srfnav=root%3Anormal%3Amember/project_member_config_grid_view/-`);",
-                    "timeout" : 60000,
                     "tooltip" : "跳转至成员设置",
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "jump_to_member_set",
@@ -5804,7 +5705,7 @@
     },
     "noTabHeader" : true,
     "name" : "_form_hybrid_bug",
-    "modelid" : "712E8146-5B81-4798-AE51-C50BCAFFCB1D",
+    "modelid" : "af322a756bf5b450d376a3fe0a564d67",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "new_hybrid_epic",
@@ -6457,14 +6358,15 @@
                 "editorHeight" : 450.0,
                 "editorParams" : {
                   "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
+                  "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
                   "MAXHEIGHT" : "450",
                   "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
-                  "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"type\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
-                  "QUOTEPARAMS" : "{\"page\":0,\"size\":20,\"sort\":\"update_time,desc\"}",
+                  "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
+                  "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
                   "MODE" : "default",
-                  "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); return controller.getNodeInfo({ icon, ...item })})",
+                  "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
                   "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
-                  "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.type}\",\"recent_parent\":\"${data.recent_parent}\",\"icon\":\"${data.icon}\"}`",
+                  "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
                   "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
                   "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
                   "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
@@ -6714,7 +6616,6 @@
                       "glyph" : "xf002@FontAwesome",
                       "cssClass" : "fa fa-search"
                     },
-                    "timeout" : 60000,
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "attachment_preview",
                     "uIActionType" : "DEUIACTION",
@@ -6818,7 +6719,6 @@
                           "pluginCode" : "FILE_DOWNLOAD",
                           "runtimeObject" : true
                         },
-                        "timeout" : 60000,
                         "tooltip" : "下载当前附件",
                         "uIActionMode" : "FRONT",
                         "uIActionTag" : "download",
@@ -6856,7 +6756,6 @@
                           "glyph" : "xf014@FontAwesome",
                           "cssClass" : "fa fa-trash-o"
                         },
-                        "timeout" : 60000,
                         "tooltip" : "删除",
                         "uIActionMode" : "FRONT",
                         "uIActionTag" : "delete",
@@ -7053,7 +6952,6 @@
                     "glyph" : "xf067@FontAwesome",
                     "cssClass" : "fa fa-plus"
                   },
-                  "timeout" : 60000,
                   "uIActionMode" : "FRONT",
                   "uIActionTag" : "add_attachments",
                   "uIActionType" : "DEUIACTION",
@@ -7540,7 +7438,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[project_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "need_fill_form",
@@ -7552,7 +7449,6 @@
               "groupOP" : "AND",
               "logicCat" : "SCRIPTCODE_CHANGE",
               "logicType" : "GROUP",
-              "name" : "表单成员[project_name][表单项值变更（脚本处理）]逻辑",
               "getPSDEFDLogics" : [ {
                 "logicType" : "SINGLE",
                 "value" : "view.params.srfparentkey = data.project_id;"
@@ -7588,46 +7484,6 @@
               "getPSEditorItems" : [ {
                 "name" : "project_id"
               } ],
-              "getPSUIActionGroup" : {
-                "codeName" : "Usr1221520658",
-                "name" : "自填模式行为组",
-                "getPSAppDataEntity" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                },
-                "getPSUIActionGroupDetails" : [ {
-                  "caption" : "项目配置",
-                  "detailType" : "DEUIACTION",
-                  "name" : "u3fee786",
-                  "getPSUIAction" : {
-                    "actionTarget" : "NONE",
-                    "caption" : "项目配置",
-                    "codeName" : "open_global_setting",
-                    "getFrontPSAppView" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
-                      "viewType" : "DETREEEXPVIEW"
-                    },
-                    "frontProcessType" : "OTHER",
-                    "fullCodeName" : "project_open_global_setting",
-                    "name" : "打开项目配置(全局)",
-                    "getPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                    },
-                    "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
-                    "timeout" : 60000,
-                    "uIActionMode" : "FRONT",
-                    "uIActionTag" : "open_global_setting",
-                    "uIActionType" : "DEUIACTION",
-                    "id" : "open_global_setting@project"
-                  },
-                  "addSeparator" : false,
-                  "showCaption" : true,
-                  "showIcon" : true
-                } ],
-                "uniqueTag" : "project__Usr1221520658"
-              },
               "placeHolder" : "选择所属项目",
               "valueItemName" : "project_id",
               "enableAC" : true,
@@ -7664,7 +7520,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[work_item_type_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -7828,7 +7683,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[assignee_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -7934,7 +7788,6 @@
                       "cssClass" : "fa fa-user-md"
                     },
                     "scriptCode" : "ibiz.openView.push(`/-/index/project=${context.project}/project_redirect_view/-/project_setting_view/srfnavctx=%7B\"project\"%3A\"${context.project}\"%2C\"srfdefaulttoroutedepth\"%3A\"3\"%7D;srfnav=root%3Anormal%3Amember/project_member_config_grid_view/-`);",
-                    "timeout" : 60000,
                     "tooltip" : "跳转至成员设置",
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "jump_to_member_set",
@@ -8350,7 +8203,7 @@
     },
     "noTabHeader" : true,
     "name" : "_form_hybrid_epic",
-    "modelid" : "DCD9CC64-13DA-448F-83F2-1EDA45C8AAFE",
+    "modelid" : "6caaff8865362c4df59a23eedbb27891",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "new_hybrid_feature",
@@ -9010,14 +8863,15 @@
                 "editorHeight" : 450.0,
                 "editorParams" : {
                   "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
+                  "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
                   "MAXHEIGHT" : "450",
                   "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
-                  "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"type\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
-                  "QUOTEPARAMS" : "{\"page\":0,\"size\":20,\"sort\":\"update_time,desc\"}",
+                  "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
+                  "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
                   "MODE" : "default",
-                  "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); return controller.getNodeInfo({ icon, ...item })})",
+                  "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
                   "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
-                  "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.type}\",\"recent_parent\":\"${data.recent_parent}\",\"icon\":\"${data.icon}\"}`",
+                  "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
                   "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
                   "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
                   "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
@@ -9267,7 +9121,6 @@
                       "glyph" : "xf002@FontAwesome",
                       "cssClass" : "fa fa-search"
                     },
-                    "timeout" : 60000,
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "attachment_preview",
                     "uIActionType" : "DEUIACTION",
@@ -9371,7 +9224,6 @@
                           "pluginCode" : "FILE_DOWNLOAD",
                           "runtimeObject" : true
                         },
-                        "timeout" : 60000,
                         "tooltip" : "下载当前附件",
                         "uIActionMode" : "FRONT",
                         "uIActionTag" : "download",
@@ -9409,7 +9261,6 @@
                           "glyph" : "xf014@FontAwesome",
                           "cssClass" : "fa fa-trash-o"
                         },
-                        "timeout" : 60000,
                         "tooltip" : "删除",
                         "uIActionMode" : "FRONT",
                         "uIActionTag" : "delete",
@@ -9606,7 +9457,6 @@
                     "glyph" : "xf067@FontAwesome",
                     "cssClass" : "fa fa-plus"
                   },
-                  "timeout" : 60000,
                   "uIActionMode" : "FRONT",
                   "uIActionTag" : "add_attachments",
                   "uIActionType" : "DEUIACTION",
@@ -10093,7 +9943,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[project_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "need_fill_form",
@@ -10105,7 +9954,6 @@
               "groupOP" : "AND",
               "logicCat" : "SCRIPTCODE_CHANGE",
               "logicType" : "GROUP",
-              "name" : "表单成员[project_name][表单项值变更（脚本处理）]逻辑",
               "getPSDEFDLogics" : [ {
                 "logicType" : "SINGLE",
                 "value" : "view.params.srfparentkey = data.project_id;"
@@ -10141,46 +9989,6 @@
               "getPSEditorItems" : [ {
                 "name" : "project_id"
               } ],
-              "getPSUIActionGroup" : {
-                "codeName" : "Usr1221520658",
-                "name" : "自填模式行为组",
-                "getPSAppDataEntity" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                },
-                "getPSUIActionGroupDetails" : [ {
-                  "caption" : "项目配置",
-                  "detailType" : "DEUIACTION",
-                  "name" : "u3fee786",
-                  "getPSUIAction" : {
-                    "actionTarget" : "NONE",
-                    "caption" : "项目配置",
-                    "codeName" : "open_global_setting",
-                    "getFrontPSAppView" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
-                      "viewType" : "DETREEEXPVIEW"
-                    },
-                    "frontProcessType" : "OTHER",
-                    "fullCodeName" : "project_open_global_setting",
-                    "name" : "打开项目配置(全局)",
-                    "getPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                    },
-                    "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
-                    "timeout" : 60000,
-                    "uIActionMode" : "FRONT",
-                    "uIActionTag" : "open_global_setting",
-                    "uIActionType" : "DEUIACTION",
-                    "id" : "open_global_setting@project"
-                  },
-                  "addSeparator" : false,
-                  "showCaption" : true,
-                  "showIcon" : true
-                } ],
-                "uniqueTag" : "project__Usr1221520658"
-              },
               "placeHolder" : "选择所属项目",
               "valueItemName" : "project_id",
               "enableAC" : true,
@@ -10217,7 +10025,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[work_item_type_name][面板显示]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNULL",
                 "dEFDName" : "test_case_not_bug",
@@ -10229,7 +10036,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[work_item_type_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -10392,7 +10198,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[ptitle][面板显示]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "NOTEQ",
                 "dEFDName" : "work_item_type_name",
@@ -10405,7 +10210,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[ptitle][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -10494,7 +10298,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[assignee_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -10600,7 +10403,6 @@
                       "cssClass" : "fa fa-user-md"
                     },
                     "scriptCode" : "ibiz.openView.push(`/-/index/project=${context.project}/project_redirect_view/-/project_setting_view/srfnavctx=%7B\"project\"%3A\"${context.project}\"%2C\"srfdefaulttoroutedepth\"%3A\"3\"%7D;srfnav=root%3Anormal%3Amember/project_member_config_grid_view/-`);",
-                    "timeout" : 60000,
                     "tooltip" : "跳转至成员设置",
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "jump_to_member_set",
@@ -11016,7 +10818,7 @@
     },
     "noTabHeader" : true,
     "name" : "_form_hybrid_feature",
-    "modelid" : "79359023-66C1-498A-8289-E7E782B82748",
+    "modelid" : "959f64629df173a907c0a84b7ab427c6",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "new_hybrid_issue",
@@ -11191,6 +10993,14 @@
       "id" : "_FORM_HYBRID_ISSUE"
     },
     "getPSDEFormItemUpdates" : [ {
+      "codeName" : "calc_parent_work_item_type",
+      "name" : "计算父工作项类型",
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "work_item_type_name"
+      } ],
+      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+      "customCode" : true
+    }, {
       "codeName" : "set_type_bug",
       "name" : "设置缺陷类型",
       "getPSAppDEMethod" : {
@@ -11200,18 +11010,10 @@
       "getPSDEFIUpdateDetails" : [ {
         "name" : "work_item_type_name"
       }, {
-        "name" : "work_item_type_id"
-      }, {
         "name" : "project_type"
+      }, {
+        "name" : "work_item_type_id"
       } ]
-    }, {
-      "codeName" : "calc_parent_work_item_type",
-      "name" : "计算父工作项类型",
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_name"
-      } ],
-      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-      "customCode" : true
     }, {
       "codeName" : "set_default_entry",
       "name" : "选择看板后填充默认看板栏",
@@ -11648,14 +11450,15 @@
                 "editorHeight" : 450.0,
                 "editorParams" : {
                   "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
+                  "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
                   "MAXHEIGHT" : "450",
                   "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
-                  "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"type\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
-                  "QUOTEPARAMS" : "{\"page\":0,\"size\":20,\"sort\":\"update_time,desc\"}",
+                  "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
+                  "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
                   "MODE" : "default",
-                  "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); return controller.getNodeInfo({ icon, ...item })})",
+                  "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
                   "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
-                  "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.type}\",\"recent_parent\":\"${data.recent_parent}\",\"icon\":\"${data.icon}\"}`",
+                  "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
                   "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
                   "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
                   "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
@@ -11905,7 +11708,6 @@
                       "glyph" : "xf002@FontAwesome",
                       "cssClass" : "fa fa-search"
                     },
-                    "timeout" : 60000,
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "attachment_preview",
                     "uIActionType" : "DEUIACTION",
@@ -12009,7 +11811,6 @@
                           "pluginCode" : "FILE_DOWNLOAD",
                           "runtimeObject" : true
                         },
-                        "timeout" : 60000,
                         "tooltip" : "下载当前附件",
                         "uIActionMode" : "FRONT",
                         "uIActionTag" : "download",
@@ -12047,7 +11848,6 @@
                           "glyph" : "xf014@FontAwesome",
                           "cssClass" : "fa fa-trash-o"
                         },
-                        "timeout" : 60000,
                         "tooltip" : "删除",
                         "uIActionMode" : "FRONT",
                         "uIActionTag" : "delete",
@@ -12244,7 +12044,6 @@
                     "glyph" : "xf067@FontAwesome",
                     "cssClass" : "fa fa-plus"
                   },
-                  "timeout" : 60000,
                   "uIActionMode" : "FRONT",
                   "uIActionTag" : "add_attachments",
                   "uIActionType" : "DEUIACTION",
@@ -12731,7 +12530,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[project_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "need_fill_form",
@@ -12743,7 +12541,6 @@
               "groupOP" : "AND",
               "logicCat" : "SCRIPTCODE_CHANGE",
               "logicType" : "GROUP",
-              "name" : "表单成员[project_name][表单项值变更（脚本处理）]逻辑",
               "getPSDEFDLogics" : [ {
                 "logicType" : "SINGLE",
                 "value" : "view.params.srfparentkey = data.project_id;"
@@ -12779,46 +12576,6 @@
               "getPSEditorItems" : [ {
                 "name" : "project_id"
               } ],
-              "getPSUIActionGroup" : {
-                "codeName" : "Usr1221520658",
-                "name" : "自填模式行为组",
-                "getPSAppDataEntity" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                },
-                "getPSUIActionGroupDetails" : [ {
-                  "caption" : "项目配置",
-                  "detailType" : "DEUIACTION",
-                  "name" : "u3fee786",
-                  "getPSUIAction" : {
-                    "actionTarget" : "NONE",
-                    "caption" : "项目配置",
-                    "codeName" : "open_global_setting",
-                    "getFrontPSAppView" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
-                      "viewType" : "DETREEEXPVIEW"
-                    },
-                    "frontProcessType" : "OTHER",
-                    "fullCodeName" : "project_open_global_setting",
-                    "name" : "打开项目配置(全局)",
-                    "getPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                    },
-                    "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
-                    "timeout" : 60000,
-                    "uIActionMode" : "FRONT",
-                    "uIActionTag" : "open_global_setting",
-                    "uIActionType" : "DEUIACTION",
-                    "id" : "open_global_setting@project"
-                  },
-                  "addSeparator" : false,
-                  "showCaption" : true,
-                  "showIcon" : true
-                } ],
-                "uniqueTag" : "project__Usr1221520658"
-              },
               "placeHolder" : "选择所属项目",
               "valueItemName" : "project_id",
               "enableAC" : true,
@@ -12855,7 +12612,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[work_item_type_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -13019,7 +12775,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[assignee_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -13125,7 +12880,6 @@
                       "cssClass" : "fa fa-user-md"
                     },
                     "scriptCode" : "ibiz.openView.push(`/-/index/project=${context.project}/project_redirect_view/-/project_setting_view/srfnavctx=%7B\"project\"%3A\"${context.project}\"%2C\"srfdefaulttoroutedepth\"%3A\"3\"%7D;srfnav=root%3Anormal%3Amember/project_member_config_grid_view/-`);",
-                    "timeout" : 60000,
                     "tooltip" : "跳转至成员设置",
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "jump_to_member_set",
@@ -13442,7 +13196,7 @@
     },
     "noTabHeader" : true,
     "name" : "_form_hybrid_issue",
-    "modelid" : "697292D9-81A2-4D64-BD27-4B981A500F35",
+    "modelid" : "523fe6f41543c8345812263a25b7111c",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "new_hybrid_milestone",
@@ -13617,16 +13371,6 @@
       "id" : "_FORM_HYBRID_MILESTONE"
     },
     "getPSDEFormItemUpdates" : [ {
-      "codeName" : "set_default_entry",
-      "name" : "选择看板后填充默认看板栏",
-      "getPSAppDEMethod" : {
-        "modelref" : true,
-        "id" : "set_default_entry"
-      },
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "entry_id"
-      } ]
-    }, {
       "codeName" : "set_type_bug",
       "name" : "设置缺陷类型",
       "getPSAppDEMethod" : {
@@ -13634,9 +13378,9 @@
         "id" : "set_type_bug"
       },
       "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_id"
-      }, {
         "name" : "project_type"
+      }, {
+        "name" : "work_item_type_id"
       }, {
         "name" : "work_item_type_name"
       } ]
@@ -13648,6 +13392,16 @@
       } ],
       "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
       "customCode" : true
+    }, {
+      "codeName" : "set_default_entry",
+      "name" : "选择看板后填充默认看板栏",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "set_default_entry"
+      },
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "entry_id"
+      } ]
     } ],
     "getPSDEFormItemVRs" : [ {
       "checkMode" : 1,
@@ -14081,14 +13835,15 @@
                 "editorHeight" : 450.0,
                 "editorParams" : {
                   "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
+                  "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
                   "MAXHEIGHT" : "450",
                   "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
-                  "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"type\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
-                  "QUOTEPARAMS" : "{\"page\":0,\"size\":20,\"sort\":\"update_time,desc\"}",
+                  "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
+                  "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
                   "MODE" : "default",
-                  "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); return controller.getNodeInfo({ icon, ...item })})",
+                  "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
                   "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
-                  "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.type}\",\"recent_parent\":\"${data.recent_parent}\",\"icon\":\"${data.icon}\"}`",
+                  "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
                   "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
                   "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
                   "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
@@ -14338,7 +14093,6 @@
                       "glyph" : "xf002@FontAwesome",
                       "cssClass" : "fa fa-search"
                     },
-                    "timeout" : 60000,
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "attachment_preview",
                     "uIActionType" : "DEUIACTION",
@@ -14442,7 +14196,6 @@
                           "pluginCode" : "FILE_DOWNLOAD",
                           "runtimeObject" : true
                         },
-                        "timeout" : 60000,
                         "tooltip" : "下载当前附件",
                         "uIActionMode" : "FRONT",
                         "uIActionTag" : "download",
@@ -14480,7 +14233,6 @@
                           "glyph" : "xf014@FontAwesome",
                           "cssClass" : "fa fa-trash-o"
                         },
-                        "timeout" : 60000,
                         "tooltip" : "删除",
                         "uIActionMode" : "FRONT",
                         "uIActionTag" : "delete",
@@ -14677,7 +14429,6 @@
                     "glyph" : "xf067@FontAwesome",
                     "cssClass" : "fa fa-plus"
                   },
-                  "timeout" : 60000,
                   "uIActionMode" : "FRONT",
                   "uIActionTag" : "add_attachments",
                   "uIActionType" : "DEUIACTION",
@@ -15164,7 +14915,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[project_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "need_fill_form",
@@ -15176,7 +14926,6 @@
               "groupOP" : "AND",
               "logicCat" : "SCRIPTCODE_CHANGE",
               "logicType" : "GROUP",
-              "name" : "表单成员[project_name][表单项值变更（脚本处理）]逻辑",
               "getPSDEFDLogics" : [ {
                 "logicType" : "SINGLE",
                 "value" : "view.params.srfparentkey = data.project_id;"
@@ -15212,46 +14961,6 @@
               "getPSEditorItems" : [ {
                 "name" : "project_id"
               } ],
-              "getPSUIActionGroup" : {
-                "codeName" : "Usr1221520658",
-                "name" : "自填模式行为组",
-                "getPSAppDataEntity" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                },
-                "getPSUIActionGroupDetails" : [ {
-                  "caption" : "项目配置",
-                  "detailType" : "DEUIACTION",
-                  "name" : "u3fee786",
-                  "getPSUIAction" : {
-                    "actionTarget" : "NONE",
-                    "caption" : "项目配置",
-                    "codeName" : "open_global_setting",
-                    "getFrontPSAppView" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
-                      "viewType" : "DETREEEXPVIEW"
-                    },
-                    "frontProcessType" : "OTHER",
-                    "fullCodeName" : "project_open_global_setting",
-                    "name" : "打开项目配置(全局)",
-                    "getPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                    },
-                    "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
-                    "timeout" : 60000,
-                    "uIActionMode" : "FRONT",
-                    "uIActionTag" : "open_global_setting",
-                    "uIActionType" : "DEUIACTION",
-                    "id" : "open_global_setting@project"
-                  },
-                  "addSeparator" : false,
-                  "showCaption" : true,
-                  "showIcon" : true
-                } ],
-                "uniqueTag" : "project__Usr1221520658"
-              },
               "placeHolder" : "选择所属项目",
               "valueItemName" : "project_id",
               "enableAC" : true,
@@ -15288,7 +14997,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[work_item_type_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -15451,7 +15159,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[ptitle][面板显示]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "NOTEQ",
                 "dEFDName" : "work_item_type_name",
@@ -15464,7 +15171,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[ptitle][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -15554,7 +15260,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[assignee_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -15660,7 +15365,6 @@
                       "cssClass" : "fa fa-user-md"
                     },
                     "scriptCode" : "ibiz.openView.push(`/-/index/project=${context.project}/project_redirect_view/-/project_setting_view/srfnavctx=%7B\"project\"%3A\"${context.project}\"%2C\"srfdefaulttoroutedepth\"%3A\"3\"%7D;srfnav=root%3Anormal%3Amember/project_member_config_grid_view/-`);",
-                    "timeout" : 60000,
                     "tooltip" : "跳转至成员设置",
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "jump_to_member_set",
@@ -15977,7 +15681,7 @@
     },
     "noTabHeader" : true,
     "name" : "_form_hybrid_milestone",
-    "modelid" : "A40D60A8-E712-4A83-A82F-86DEE3F210A2",
+    "modelid" : "6baeb3053034f81b86fc821c6d814312",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "new_hybrid_requirement",
@@ -16160,20 +15864,6 @@
       "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
       "customCode" : true
     }, {
-      "codeName" : "set_type_bug",
-      "name" : "设置缺陷类型",
-      "getPSAppDEMethod" : {
-        "modelref" : true,
-        "id" : "set_type_bug"
-      },
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_id"
-      }, {
-        "name" : "work_item_type_name"
-      }, {
-        "name" : "project_type"
-      } ]
-    }, {
       "codeName" : "set_default_entry",
       "name" : "选择看板后填充默认看板栏",
       "getPSAppDEMethod" : {
@@ -16182,6 +15872,20 @@
       },
       "getPSDEFIUpdateDetails" : [ {
         "name" : "entry_id"
+      } ]
+    }, {
+      "codeName" : "set_type_bug",
+      "name" : "设置缺陷类型",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "set_type_bug"
+      },
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "work_item_type_name"
+      }, {
+        "name" : "project_type"
+      }, {
+        "name" : "work_item_type_id"
       } ]
     } ],
     "getPSDEFormItemVRs" : [ {
@@ -16637,14 +16341,15 @@
                 "editorHeight" : 450.0,
                 "editorParams" : {
                   "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
+                  "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
                   "MAXHEIGHT" : "450",
                   "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
-                  "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"type\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
-                  "QUOTEPARAMS" : "{\"page\":0,\"size\":20,\"sort\":\"update_time,desc\"}",
+                  "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
+                  "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
                   "MODE" : "default",
-                  "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); return controller.getNodeInfo({ icon, ...item })})",
+                  "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
                   "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
-                  "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.type}\",\"recent_parent\":\"${data.recent_parent}\",\"icon\":\"${data.icon}\"}`",
+                  "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
                   "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
                   "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
                   "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
@@ -16894,7 +16599,6 @@
                       "glyph" : "xf002@FontAwesome",
                       "cssClass" : "fa fa-search"
                     },
-                    "timeout" : 60000,
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "attachment_preview",
                     "uIActionType" : "DEUIACTION",
@@ -16998,7 +16702,6 @@
                           "pluginCode" : "FILE_DOWNLOAD",
                           "runtimeObject" : true
                         },
-                        "timeout" : 60000,
                         "tooltip" : "下载当前附件",
                         "uIActionMode" : "FRONT",
                         "uIActionTag" : "download",
@@ -17036,7 +16739,6 @@
                           "glyph" : "xf014@FontAwesome",
                           "cssClass" : "fa fa-trash-o"
                         },
-                        "timeout" : 60000,
                         "tooltip" : "删除",
                         "uIActionMode" : "FRONT",
                         "uIActionTag" : "delete",
@@ -17233,7 +16935,6 @@
                     "glyph" : "xf067@FontAwesome",
                     "cssClass" : "fa fa-plus"
                   },
-                  "timeout" : 60000,
                   "uIActionMode" : "FRONT",
                   "uIActionTag" : "add_attachments",
                   "uIActionType" : "DEUIACTION",
@@ -17720,7 +17421,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[project_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "need_fill_form",
@@ -17732,7 +17432,6 @@
               "groupOP" : "AND",
               "logicCat" : "SCRIPTCODE_CHANGE",
               "logicType" : "GROUP",
-              "name" : "表单成员[project_name][表单项值变更（脚本处理）]逻辑",
               "getPSDEFDLogics" : [ {
                 "logicType" : "SINGLE",
                 "value" : "view.params.srfparentkey = data.project_id;"
@@ -17768,46 +17467,6 @@
               "getPSEditorItems" : [ {
                 "name" : "project_id"
               } ],
-              "getPSUIActionGroup" : {
-                "codeName" : "Usr1221520658",
-                "name" : "自填模式行为组",
-                "getPSAppDataEntity" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                },
-                "getPSUIActionGroupDetails" : [ {
-                  "caption" : "项目配置",
-                  "detailType" : "DEUIACTION",
-                  "name" : "u3fee786",
-                  "getPSUIAction" : {
-                    "actionTarget" : "NONE",
-                    "caption" : "项目配置",
-                    "codeName" : "open_global_setting",
-                    "getFrontPSAppView" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
-                      "viewType" : "DETREEEXPVIEW"
-                    },
-                    "frontProcessType" : "OTHER",
-                    "fullCodeName" : "project_open_global_setting",
-                    "name" : "打开项目配置(全局)",
-                    "getPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                    },
-                    "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
-                    "timeout" : 60000,
-                    "uIActionMode" : "FRONT",
-                    "uIActionTag" : "open_global_setting",
-                    "uIActionType" : "DEUIACTION",
-                    "id" : "open_global_setting@project"
-                  },
-                  "addSeparator" : false,
-                  "showCaption" : true,
-                  "showIcon" : true
-                } ],
-                "uniqueTag" : "project__Usr1221520658"
-              },
               "placeHolder" : "选择所属项目",
               "valueItemName" : "project_id",
               "enableAC" : true,
@@ -17844,7 +17503,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[work_item_type_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -18007,7 +17665,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[ptitle][面板显示]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "NOTEQ",
                 "dEFDName" : "work_item_type_name",
@@ -18020,7 +17677,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[ptitle][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -18110,7 +17766,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[assignee_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -18216,7 +17871,6 @@
                       "cssClass" : "fa fa-user-md"
                     },
                     "scriptCode" : "ibiz.openView.push(`/-/index/project=${context.project}/project_redirect_view/-/project_setting_view/srfnavctx=%7B\"project\"%3A\"${context.project}\"%2C\"srfdefaulttoroutedepth\"%3A\"3\"%7D;srfnav=root%3Anormal%3Amember/project_member_config_grid_view/-`);",
-                    "timeout" : 60000,
                     "tooltip" : "跳转至成员设置",
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "jump_to_member_set",
@@ -18632,7 +18286,7 @@
     },
     "noTabHeader" : true,
     "name" : "_form_hybrid_requirement",
-    "modelid" : "71BED65F-818A-4664-952E-CA0EB5E2E7DB",
+    "modelid" : "9adebc0a874a1443e29281aa5a66a496",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "new_hybrid_stage",
@@ -18807,6 +18461,16 @@
       "id" : "_FORM_HYBRID_STAGE"
     },
     "getPSDEFormItemUpdates" : [ {
+      "codeName" : "set_default_entry",
+      "name" : "选择看板后填充默认看板栏",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "set_default_entry"
+      },
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "entry_id"
+      } ]
+    }, {
       "codeName" : "calc_parent_work_item_type",
       "name" : "计算父工作项类型",
       "getPSDEFIUpdateDetails" : [ {
@@ -18822,21 +18486,11 @@
         "id" : "set_type_bug"
       },
       "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_id"
-      }, {
         "name" : "work_item_type_name"
       }, {
+        "name" : "work_item_type_id"
+      }, {
         "name" : "project_type"
-      } ]
-    }, {
-      "codeName" : "set_default_entry",
-      "name" : "选择看板后填充默认看板栏",
-      "getPSAppDEMethod" : {
-        "modelref" : true,
-        "id" : "set_default_entry"
-      },
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "entry_id"
       } ]
     } ],
     "getPSDEFormItemVRs" : [ {
@@ -19271,14 +18925,15 @@
                 "editorHeight" : 450.0,
                 "editorParams" : {
                   "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
+                  "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
                   "MAXHEIGHT" : "450",
                   "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
-                  "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"type\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
-                  "QUOTEPARAMS" : "{\"page\":0,\"size\":20,\"sort\":\"update_time,desc\"}",
+                  "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
+                  "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
                   "MODE" : "default",
-                  "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); return controller.getNodeInfo({ icon, ...item })})",
+                  "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
                   "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
-                  "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.type}\",\"recent_parent\":\"${data.recent_parent}\",\"icon\":\"${data.icon}\"}`",
+                  "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
                   "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
                   "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
                   "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
@@ -19528,7 +19183,6 @@
                       "glyph" : "xf002@FontAwesome",
                       "cssClass" : "fa fa-search"
                     },
-                    "timeout" : 60000,
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "attachment_preview",
                     "uIActionType" : "DEUIACTION",
@@ -19632,7 +19286,6 @@
                           "pluginCode" : "FILE_DOWNLOAD",
                           "runtimeObject" : true
                         },
-                        "timeout" : 60000,
                         "tooltip" : "下载当前附件",
                         "uIActionMode" : "FRONT",
                         "uIActionTag" : "download",
@@ -19670,7 +19323,6 @@
                           "glyph" : "xf014@FontAwesome",
                           "cssClass" : "fa fa-trash-o"
                         },
-                        "timeout" : 60000,
                         "tooltip" : "删除",
                         "uIActionMode" : "FRONT",
                         "uIActionTag" : "delete",
@@ -19867,7 +19519,6 @@
                     "glyph" : "xf067@FontAwesome",
                     "cssClass" : "fa fa-plus"
                   },
-                  "timeout" : 60000,
                   "uIActionMode" : "FRONT",
                   "uIActionTag" : "add_attachments",
                   "uIActionType" : "DEUIACTION",
@@ -20354,7 +20005,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[project_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "need_fill_form",
@@ -20366,7 +20016,6 @@
               "groupOP" : "AND",
               "logicCat" : "SCRIPTCODE_CHANGE",
               "logicType" : "GROUP",
-              "name" : "表单成员[project_name][表单项值变更（脚本处理）]逻辑",
               "getPSDEFDLogics" : [ {
                 "logicType" : "SINGLE",
                 "value" : "view.params.srfparentkey = data.project_id;"
@@ -20402,46 +20051,6 @@
               "getPSEditorItems" : [ {
                 "name" : "project_id"
               } ],
-              "getPSUIActionGroup" : {
-                "codeName" : "Usr1221520658",
-                "name" : "自填模式行为组",
-                "getPSAppDataEntity" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                },
-                "getPSUIActionGroupDetails" : [ {
-                  "caption" : "项目配置",
-                  "detailType" : "DEUIACTION",
-                  "name" : "u3fee786",
-                  "getPSUIAction" : {
-                    "actionTarget" : "NONE",
-                    "caption" : "项目配置",
-                    "codeName" : "open_global_setting",
-                    "getFrontPSAppView" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
-                      "viewType" : "DETREEEXPVIEW"
-                    },
-                    "frontProcessType" : "OTHER",
-                    "fullCodeName" : "project_open_global_setting",
-                    "name" : "打开项目配置(全局)",
-                    "getPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                    },
-                    "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
-                    "timeout" : 60000,
-                    "uIActionMode" : "FRONT",
-                    "uIActionTag" : "open_global_setting",
-                    "uIActionType" : "DEUIACTION",
-                    "id" : "open_global_setting@project"
-                  },
-                  "addSeparator" : false,
-                  "showCaption" : true,
-                  "showIcon" : true
-                } ],
-                "uniqueTag" : "project__Usr1221520658"
-              },
               "placeHolder" : "选择所属项目",
               "valueItemName" : "project_id",
               "enableAC" : true,
@@ -20478,7 +20087,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[work_item_type_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -20641,7 +20249,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[ptitle][面板显示]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "NOTEQ",
                 "dEFDName" : "work_item_type_name",
@@ -20654,7 +20261,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[ptitle][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -20744,7 +20350,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[assignee_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -20850,7 +20455,6 @@
                       "cssClass" : "fa fa-user-md"
                     },
                     "scriptCode" : "ibiz.openView.push(`/-/index/project=${context.project}/project_redirect_view/-/project_setting_view/srfnavctx=%7B\"project\"%3A\"${context.project}\"%2C\"srfdefaulttoroutedepth\"%3A\"3\"%7D;srfnav=root%3Anormal%3Amember/project_member_config_grid_view/-`);",
-                    "timeout" : 60000,
                     "tooltip" : "跳转至成员设置",
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "jump_to_member_set",
@@ -21167,7 +20771,7 @@
     },
     "noTabHeader" : true,
     "name" : "_form_hybrid_stage",
-    "modelid" : "9E2DB746-13DD-408C-A7DD-01E27382711F",
+    "modelid" : "119b9e8643207c858a3556a822247106",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "new_hybrid_story",
@@ -21342,20 +20946,6 @@
       "id" : "_FORM_HYBRID_STORY"
     },
     "getPSDEFormItemUpdates" : [ {
-      "codeName" : "set_type_bug",
-      "name" : "设置缺陷类型",
-      "getPSAppDEMethod" : {
-        "modelref" : true,
-        "id" : "set_type_bug"
-      },
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_name"
-      }, {
-        "name" : "project_type"
-      }, {
-        "name" : "work_item_type_id"
-      } ]
-    }, {
       "codeName" : "set_default_entry",
       "name" : "选择看板后填充默认看板栏",
       "getPSAppDEMethod" : {
@@ -21364,6 +20954,20 @@
       },
       "getPSDEFIUpdateDetails" : [ {
         "name" : "entry_id"
+      } ]
+    }, {
+      "codeName" : "set_type_bug",
+      "name" : "设置缺陷类型",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "set_type_bug"
+      },
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "work_item_type_id"
+      }, {
+        "name" : "project_type"
+      }, {
+        "name" : "work_item_type_name"
       } ]
     }, {
       "codeName" : "calc_parent_work_item_type",
@@ -21827,14 +21431,15 @@
                 "editorHeight" : 450.0,
                 "editorParams" : {
                   "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
+                  "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
                   "MAXHEIGHT" : "450",
                   "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
-                  "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"type\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
-                  "QUOTEPARAMS" : "{\"page\":0,\"size\":20,\"sort\":\"update_time,desc\"}",
+                  "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
+                  "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
                   "MODE" : "default",
-                  "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); return controller.getNodeInfo({ icon, ...item })})",
+                  "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
                   "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
-                  "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.type}\",\"recent_parent\":\"${data.recent_parent}\",\"icon\":\"${data.icon}\"}`",
+                  "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
                   "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
                   "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
                   "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
@@ -22084,7 +21689,6 @@
                       "glyph" : "xf002@FontAwesome",
                       "cssClass" : "fa fa-search"
                     },
-                    "timeout" : 60000,
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "attachment_preview",
                     "uIActionType" : "DEUIACTION",
@@ -22188,7 +21792,6 @@
                           "pluginCode" : "FILE_DOWNLOAD",
                           "runtimeObject" : true
                         },
-                        "timeout" : 60000,
                         "tooltip" : "下载当前附件",
                         "uIActionMode" : "FRONT",
                         "uIActionTag" : "download",
@@ -22226,7 +21829,6 @@
                           "glyph" : "xf014@FontAwesome",
                           "cssClass" : "fa fa-trash-o"
                         },
-                        "timeout" : 60000,
                         "tooltip" : "删除",
                         "uIActionMode" : "FRONT",
                         "uIActionTag" : "delete",
@@ -22423,7 +22025,6 @@
                     "glyph" : "xf067@FontAwesome",
                     "cssClass" : "fa fa-plus"
                   },
-                  "timeout" : 60000,
                   "uIActionMode" : "FRONT",
                   "uIActionTag" : "add_attachments",
                   "uIActionType" : "DEUIACTION",
@@ -22910,7 +22511,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[project_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "need_fill_form",
@@ -22922,7 +22522,6 @@
               "groupOP" : "AND",
               "logicCat" : "SCRIPTCODE_CHANGE",
               "logicType" : "GROUP",
-              "name" : "表单成员[project_name][表单项值变更（脚本处理）]逻辑",
               "getPSDEFDLogics" : [ {
                 "logicType" : "SINGLE",
                 "value" : "view.params.srfparentkey = data.project_id;"
@@ -22958,46 +22557,6 @@
               "getPSEditorItems" : [ {
                 "name" : "project_id"
               } ],
-              "getPSUIActionGroup" : {
-                "codeName" : "Usr1221520658",
-                "name" : "自填模式行为组",
-                "getPSAppDataEntity" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                },
-                "getPSUIActionGroupDetails" : [ {
-                  "caption" : "项目配置",
-                  "detailType" : "DEUIACTION",
-                  "name" : "u3fee786",
-                  "getPSUIAction" : {
-                    "actionTarget" : "NONE",
-                    "caption" : "项目配置",
-                    "codeName" : "open_global_setting",
-                    "getFrontPSAppView" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
-                      "viewType" : "DETREEEXPVIEW"
-                    },
-                    "frontProcessType" : "OTHER",
-                    "fullCodeName" : "project_open_global_setting",
-                    "name" : "打开项目配置(全局)",
-                    "getPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                    },
-                    "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
-                    "timeout" : 60000,
-                    "uIActionMode" : "FRONT",
-                    "uIActionTag" : "open_global_setting",
-                    "uIActionType" : "DEUIACTION",
-                    "id" : "open_global_setting@project"
-                  },
-                  "addSeparator" : false,
-                  "showCaption" : true,
-                  "showIcon" : true
-                } ],
-                "uniqueTag" : "project__Usr1221520658"
-              },
               "placeHolder" : "选择所属项目",
               "valueItemName" : "project_id",
               "enableAC" : true,
@@ -23034,7 +22593,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[work_item_type_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -23197,7 +22755,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[ptitle][面板显示]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "NOTEQ",
                 "dEFDName" : "work_item_type_name",
@@ -23210,7 +22767,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[ptitle][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -23300,7 +22856,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[assignee_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -23406,7 +22961,6 @@
                       "cssClass" : "fa fa-user-md"
                     },
                     "scriptCode" : "ibiz.openView.push(`/-/index/project=${context.project}/project_redirect_view/-/project_setting_view/srfnavctx=%7B\"project\"%3A\"${context.project}\"%2C\"srfdefaulttoroutedepth\"%3A\"3\"%7D;srfnav=root%3Anormal%3Amember/project_member_config_grid_view/-`);",
-                    "timeout" : 60000,
                     "tooltip" : "跳转至成员设置",
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "jump_to_member_set",
@@ -23822,7 +23376,7 @@
     },
     "noTabHeader" : true,
     "name" : "_form_hybrid_story",
-    "modelid" : "2947B4F1-BD3E-4A6F-91AE-5C4127B8139D",
+    "modelid" : "38ae05b6b12fbee009c875096e09d21f",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "new_hybrid_task",
@@ -24004,6 +23558,24 @@
       "id" : "_FORM_HYBRID_TASK"
     },
     "getPSDEFormItemUpdates" : [ {
+      "codeName" : "set_default_entry",
+      "name" : "选择看板后填充默认看板栏",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "set_default_entry"
+      },
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "entry_id"
+      } ]
+    }, {
+      "codeName" : "calc_parent_work_item_type",
+      "name" : "计算父工作项类型",
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "work_item_type_name"
+      } ],
+      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+      "customCode" : true
+    }, {
       "codeName" : "set_type_bug",
       "name" : "设置缺陷类型",
       "getPSAppDEMethod" : {
@@ -24016,24 +23588,6 @@
         "name" : "work_item_type_name"
       }, {
         "name" : "work_item_type_id"
-      } ]
-    }, {
-      "codeName" : "calc_parent_work_item_type",
-      "name" : "计算父工作项类型",
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_name"
-      } ],
-      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-      "customCode" : true
-    }, {
-      "codeName" : "set_default_entry",
-      "name" : "选择看板后填充默认看板栏",
-      "getPSAppDEMethod" : {
-        "modelref" : true,
-        "id" : "set_default_entry"
-      },
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "entry_id"
       } ]
     } ],
     "getPSDEFormItemVRs" : [ {
@@ -24489,14 +24043,15 @@
                 "editorHeight" : 450.0,
                 "editorParams" : {
                   "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
+                  "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
                   "MAXHEIGHT" : "450",
                   "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
-                  "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"type\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
-                  "QUOTEPARAMS" : "{\"page\":0,\"size\":20,\"sort\":\"update_time,desc\"}",
+                  "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
+                  "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
                   "MODE" : "default",
-                  "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); return controller.getNodeInfo({ icon, ...item })})",
+                  "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
                   "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
-                  "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.type}\",\"recent_parent\":\"${data.recent_parent}\",\"icon\":\"${data.icon}\"}`",
+                  "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
                   "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
                   "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
                   "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
@@ -24746,7 +24301,6 @@
                       "glyph" : "xf002@FontAwesome",
                       "cssClass" : "fa fa-search"
                     },
-                    "timeout" : 60000,
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "attachment_preview",
                     "uIActionType" : "DEUIACTION",
@@ -24850,7 +24404,6 @@
                           "pluginCode" : "FILE_DOWNLOAD",
                           "runtimeObject" : true
                         },
-                        "timeout" : 60000,
                         "tooltip" : "下载当前附件",
                         "uIActionMode" : "FRONT",
                         "uIActionTag" : "download",
@@ -24888,7 +24441,6 @@
                           "glyph" : "xf014@FontAwesome",
                           "cssClass" : "fa fa-trash-o"
                         },
-                        "timeout" : 60000,
                         "tooltip" : "删除",
                         "uIActionMode" : "FRONT",
                         "uIActionTag" : "delete",
@@ -25085,7 +24637,6 @@
                     "glyph" : "xf067@FontAwesome",
                     "cssClass" : "fa fa-plus"
                   },
-                  "timeout" : 60000,
                   "uIActionMode" : "FRONT",
                   "uIActionTag" : "add_attachments",
                   "uIActionType" : "DEUIACTION",
@@ -25572,7 +25123,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[project_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "need_fill_form",
@@ -25584,7 +25134,6 @@
               "groupOP" : "AND",
               "logicCat" : "SCRIPTCODE_CHANGE",
               "logicType" : "GROUP",
-              "name" : "表单成员[project_name][表单项值变更（脚本处理）]逻辑",
               "getPSDEFDLogics" : [ {
                 "logicType" : "SINGLE",
                 "value" : "view.params.srfparentkey = data.project_id;"
@@ -25620,46 +25169,6 @@
               "getPSEditorItems" : [ {
                 "name" : "project_id"
               } ],
-              "getPSUIActionGroup" : {
-                "codeName" : "Usr1221520658",
-                "name" : "自填模式行为组",
-                "getPSAppDataEntity" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                },
-                "getPSUIActionGroupDetails" : [ {
-                  "caption" : "项目配置",
-                  "detailType" : "DEUIACTION",
-                  "name" : "u3fee786",
-                  "getPSUIAction" : {
-                    "actionTarget" : "NONE",
-                    "caption" : "项目配置",
-                    "codeName" : "open_global_setting",
-                    "getFrontPSAppView" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
-                      "viewType" : "DETREEEXPVIEW"
-                    },
-                    "frontProcessType" : "OTHER",
-                    "fullCodeName" : "project_open_global_setting",
-                    "name" : "打开项目配置(全局)",
-                    "getPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                    },
-                    "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
-                    "timeout" : 60000,
-                    "uIActionMode" : "FRONT",
-                    "uIActionTag" : "open_global_setting",
-                    "uIActionType" : "DEUIACTION",
-                    "id" : "open_global_setting@project"
-                  },
-                  "addSeparator" : false,
-                  "showCaption" : true,
-                  "showIcon" : true
-                } ],
-                "uniqueTag" : "project__Usr1221520658"
-              },
               "placeHolder" : "选择所属项目",
               "valueItemName" : "project_id",
               "enableAC" : true,
@@ -25696,7 +25205,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[work_item_type_name][面板显示]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNULL",
                 "dEFDName" : "test_case_not_bug",
@@ -25708,7 +25216,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[work_item_type_name][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -25871,7 +25378,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[ptitle][面板显示]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "NOTEQ",
                 "dEFDName" : "work_item_type_name",
@@ -25884,7 +25390,6 @@
               "groupOP" : "AND",
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[ptitle][表单项启用]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNOTNULL",
                 "dEFDName" : "project_name",
@@ -25971,7 +25476,7 @@
                 "detailStyle" : "DEFAULT",
                 "detailType" : "FORMITEM",
                 "enableCond" : 3,
-                "ignoreInput" : 2,
+                "ignoreInput" : 0,
                 "labelPos" : "RIGHT",
                 "labelWidth" : 130,
                 "name" : "multiple_people",
@@ -25994,6 +25499,7 @@
                 "showCaption" : true
               }, {
                 "actionType" : "UIACTION",
+                "buttonStyle" : "STYLE2",
                 "caption" : "设置执行人",
                 "codeName" : "setting_executors",
                 "detailStyle" : "STYLE2",
@@ -26008,7 +25514,6 @@
                   "groupOP" : "AND",
                   "logicCat" : "PANELVISIBLE",
                   "logicType" : "GROUP",
-                  "name" : "表单成员[setting_executors][面板显示]逻辑",
                   "getPSDEFDLogics" : [ {
                     "condOP" : "EQ",
                     "dEFDName" : "multiple_people",
@@ -26055,7 +25560,6 @@
                     "value" : "executors",
                     "rawValue" : false
                   } ],
-                  "timeout" : 60000,
                   "tooltip" : "设置执行人",
                   "uIActionMode" : "FRONT",
                   "uIActionTag" : "create_open_executors",
@@ -26098,7 +25602,6 @@
                 "groupOP" : "AND",
                 "logicCat" : "PANELVISIBLE",
                 "logicType" : "GROUP",
-                "name" : "表单成员[assignee_name][面板显示]逻辑",
                 "getPSDEFDLogics" : [ {
                   "groupOP" : "OR",
                   "logicType" : "GROUP",
@@ -26120,7 +25623,6 @@
                 "groupOP" : "AND",
                 "logicCat" : "ITEMENABLE",
                 "logicType" : "GROUP",
-                "name" : "表单成员[assignee_name][表单项启用]逻辑",
                 "getPSDEFDLogics" : [ {
                   "condOP" : "ISNOTNULL",
                   "dEFDName" : "project_name",
@@ -26226,7 +25728,6 @@
                         "cssClass" : "fa fa-user-md"
                       },
                       "scriptCode" : "ibiz.openView.push(`/-/index/project=${context.project}/project_redirect_view/-/project_setting_view/srfnavctx=%7B\"project\"%3A\"${context.project}\"%2C\"srfdefaulttoroutedepth\"%3A\"3\"%7D;srfnav=root%3Anormal%3Amember/project_member_config_grid_view/-`);",
-                      "timeout" : 60000,
                       "tooltip" : "跳转至成员设置",
                       "uIActionMode" : "FRONT",
                       "uIActionTag" : "jump_to_member_set",
@@ -26280,7 +25781,6 @@
                 "groupOP" : "AND",
                 "logicCat" : "PANELVISIBLE",
                 "logicType" : "GROUP",
-                "name" : "表单成员[executors][面板显示]逻辑",
                 "getPSDEFDLogics" : [ {
                   "condOP" : "EQ",
                   "dEFDName" : "multiple_people",
@@ -26674,7 +26174,7 @@
     },
     "noTabHeader" : true,
     "name" : "_form_hybrid_task",
-    "modelid" : "E05B9C93-35D9-49C4-A584-9ADCBBD3FF75",
+    "modelid" : "6e975e76595f2b9f06ed7d9950bd17ad",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "dyna_hybrid_quick_create_view_datainfobar",
@@ -26702,7 +26202,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "dyna_hybrid_quick_create_view",
-  "getPSDEViewId" : "C637E4AA-EF4C-427F-94C1-D2093FB869E1",
+  "getPSDEViewId" : "9529fafca02968a7ec24a199e2086970",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEOPTVIEW",
@@ -26725,7 +26225,7 @@
   "enableDP" : true,
   "manualAppendForms" : true,
   "showDataInfoBar" : true,
-  "modelid" : "17fcaac3565af73d3a03d8f50d826e18",
+  "modelid" : "5167aeccac14bf69aae2bc24bd04f31f",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

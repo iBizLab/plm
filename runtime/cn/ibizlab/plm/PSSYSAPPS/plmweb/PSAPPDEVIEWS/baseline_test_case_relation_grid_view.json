@@ -126,17 +126,6 @@
     "rawValue" : false
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "NEWDATA",
-    "realTitle" : "基线用例编辑视图",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.BASELINE_TEST_CASE.EDITVIEW"
-    },
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_test_case_edit_view.json",
-      "viewType" : "DEEDITVIEW"
-    }
-  }, {
     "name" : "EDITDATA",
     "openMode" : "POPUPMODAL",
     "getPSNavigateContexts" : [ {
@@ -166,6 +155,17 @@
     "getRefPSAppView" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_main_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  }, {
+    "name" : "NEWDATA",
+    "realTitle" : "基线用例编辑视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.BASELINE_TEST_CASE.EDITVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_test_case_edit_view.json",
       "viewType" : "DEEDITVIEW"
     }
   } ],
@@ -454,6 +454,7 @@
       },
       "width" : 150,
       "widthUnit" : "PX",
+      "enableRowEdit" : true,
       "enableSort" : false
     }, {
       "align" : "LEFT",
@@ -607,6 +608,58 @@
       }
     } ],
     "getPSDEGridEditItems" : [ {
+      "caption" : "维护人",
+      "codeName" : "maintenance_name",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "name" : "maintenance_name",
+      "getPSAppDEField" : {
+        "name" : "MAINTENANCE_NAME",
+        "codeName" : "maintenance_name"
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+          "AC" : "TRUE",
+          "readonly" : "true",
+          "SRFNAVPARAM.n_status_eq" : "1",
+          "TRIGGER" : "TRUE",
+          "URL" : "projects/${context.project}/project_members/fetch_default",
+          "PICKUPVIEW" : "FALSE",
+          "USERMETHOD" : "post",
+          "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+          "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+          "DEPTMETHOD" : "get",
+          "DEPTURL" : "/users/fetch_default"
+        },
+        "editorStyle" : "PERSONEL_SELECT_PROJECT",
+        "editorType" : "PICKEREX_TRIGGER",
+        "name" : "maintenance_name",
+        "getPSNavigateParams" : [ {
+          "key" : "n_department_id_eq",
+          "name" : "n_department_id_eq",
+          "value" : "srforgsectorid",
+          "rawValue" : false
+        }, {
+          "key" : "n_status_eq",
+          "name" : "n_status_eq",
+          "value" : "1",
+          "rawValue" : true
+        } ],
+        "getPSSysPFPlugin" : {
+          "pluginType" : "EDITOR_CUSTOMSTYLE",
+          "pluginCode" : "PERSON_SELECT",
+          "runtimeObject" : true
+        },
+        "enableAC" : true,
+        "enablePickupView" : false,
+        "forceSelection" : true,
+        "readOnly" : true,
+        "showTrigger" : true,
+        "singleSelect" : true
+      },
+      "allowEmpty" : true
+    }, {
       "caption" : "标识",
       "codeName" : "srfkey",
       "enableCond" : 3,
@@ -657,7 +710,7 @@
     "noSort" : true,
     "singleSelect" : false,
     "name" : "grid",
-    "modelid" : "a8a223e8f0ecec618e74a85dfd35938c",
+    "modelid" : "dd4e8c2c54d5f20b65d410cddedb5ac9",
     "modeltype" : "PSDEGRID"
   }, {
     "codeName" : "default",
@@ -740,7 +793,7 @@
     "enableFilterSave" : false,
     "noTabHeader" : true,
     "name" : "searchform",
-    "modelid" : "d06d72eac7d7733e90735156b5910fb4",
+    "modelid" : "3eb862eda7fe4a0c7644748d8fa2a680",
     "modeltype" : "PSDEFORM_SEARCHFORM"
   }, {
     "codeName" : "relation_grid_view_tabtoolbar",
@@ -920,7 +973,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "relation_grid_view",
-  "getPSDEViewId" : "E2116964-7EAF-4224-98BE-303804AA78E0",
+  "getPSDEViewId" : "c89a1573dab992ac73554ffba96bcc04",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEGRIDVIEW",
@@ -947,7 +1000,7 @@
   "enableSearch" : true,
   "rowEditDefault" : false,
   "showCaptionBar" : false,
-  "modelid" : "26fad733d4b26a4567621de99a3993fc",
+  "modelid" : "f33933a2c9d4388b3f8765c3001c4602",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

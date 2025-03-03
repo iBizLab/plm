@@ -32,17 +32,6 @@ package cn.ibizlab.plm.projmgmt.logic.project_memberlogic.change_role;
                         update(project_memberchange_rolesrfactionparam);//更新fact中变量值
             end
 
-            //逻辑处理节点[变更成员状态]
-            rule "deaction1"
-            ruleflow-group "project_memberchange_roledeaction1"
-            when
-            then
-                        project_memberservice.update(project_memberchange_roledefault);
-                        update(project_memberchange_roledefault);//更新fact中变量值
-                        update(project_memberchange_rolefor_temp_obj);//更新fact中变量值
-                        update(project_memberchange_rolesrfactionparam);//更新fact中变量值
-            end
-
             //逻辑处理节点[循环id列表进行操作]
             rule "loopsubcall1"
             ruleflow-group "project_memberchange_roleloopsubcall1"
@@ -59,6 +48,17 @@ package cn.ibizlab.plm.projmgmt.logic.project_memberlogic.change_role;
             when
             then
                             project_memberchange_roledefault.set("roleid",project_memberchange_rolefor_temp_obj.get("roleid"));
+                        update(project_memberchange_roledefault);//更新fact中变量值
+                        update(project_memberchange_rolefor_temp_obj);//更新fact中变量值
+                        update(project_memberchange_rolesrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[变更成员状态]
+            rule "deaction1"
+            ruleflow-group "project_memberchange_roledeaction1"
+            when
+            then
+                        project_memberservice.update(project_memberchange_roledefault);
                         update(project_memberchange_roledefault);//更新fact中变量值
                         update(project_memberchange_rolefor_temp_obj);//更新fact中变量值
                         update(project_memberchange_rolesrfactionparam);//更新fact中变量值

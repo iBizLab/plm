@@ -17,18 +17,18 @@
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="space_memberchange_rolebindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="获取传递的参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="space_memberchange_roleloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环ID列表进行操作"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="space_memberchange_roleprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="获取传递的状态"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="space_memberchange_roledeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="变更状态"/>
                         <endEvent id="deaction1_end" name="end"/>
                         <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="space_memberchange_roleloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环ID列表进行操作"/>
                     <sequenceFlow id="begin_bindparam1" sourceRef="begin" targetRef="bindparam1">
                     </sequenceFlow>
                     <sequenceFlow id="bindparam1_loopsubcall1" sourceRef="bindparam1" targetRef="loopsubcall1">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
-                    </sequenceFlow>
                     <sequenceFlow id="loopsubcall1_prepareparam2" sourceRef="loopsubcall1" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
                     </sequenceFlow>
         </process>
     </definitions>

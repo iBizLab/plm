@@ -23,6 +23,17 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.get_project_member;
             then
             end
 
+            //逻辑处理节点[判断系统管理员身份]
+            rule "rawsfcode3"
+            ruleflow-group "work_itemget_project_memberrawsfcode3"
+            when
+            then
+                        update(work_itemget_project_memberdefault);//更新fact中变量值
+                        update(work_itemget_project_memberfilter);//更新fact中变量值
+                        update(work_itemget_project_memberfor_obj);//更新fact中变量值
+                        update(work_itemget_project_membermembers);//更新fact中变量值
+            end
+
             //逻辑处理节点[结束]
             rule "end2"
             ruleflow-group "work_itemget_project_memberend2"
@@ -41,28 +52,6 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.get_project_member;
             then
                             work_itemget_project_memberfilter.set("n_project_id_eq",work_itemget_project_memberdefault.get("projectid"));
                                 work_itemget_project_memberfilter.set("n_user_id_eq",curuser.getSessionParams().get("srfpersonid"));
-                        update(work_itemget_project_memberdefault);//更新fact中变量值
-                        update(work_itemget_project_memberfilter);//更新fact中变量值
-                        update(work_itemget_project_memberfor_obj);//更新fact中变量值
-                        update(work_itemget_project_membermembers);//更新fact中变量值
-            end
-
-            //逻辑处理节点[空]
-            rule "prepareparam3"
-            ruleflow-group "work_itemget_project_memberprepareparam3"
-            when
-            then
-                        update(work_itemget_project_memberdefault);//更新fact中变量值
-                        update(work_itemget_project_memberfilter);//更新fact中变量值
-                        update(work_itemget_project_memberfor_obj);//更新fact中变量值
-                        update(work_itemget_project_membermembers);//更新fact中变量值
-            end
-
-            //逻辑处理节点[判断系统管理员身份]
-            rule "rawsfcode3"
-            ruleflow-group "work_itemget_project_memberrawsfcode3"
-            when
-            then
                         update(work_itemget_project_memberdefault);//更新fact中变量值
                         update(work_itemget_project_memberfilter);//更新fact中变量值
                         update(work_itemget_project_memberfor_obj);//更新fact中变量值
@@ -103,9 +92,9 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.get_project_member;
                         update(work_itemget_project_membermembers);//更新fact中变量值
             end
 
-            //逻辑处理节点[非只读权限]
-            rule "rawsfcode2"
-            ruleflow-group "work_itemget_project_memberrawsfcode2"
+            //逻辑处理节点[结束]
+            rule "end6"
+            ruleflow-group "work_itemget_project_memberend6"
             when
             then
                         update(work_itemget_project_memberdefault);//更新fact中变量值
@@ -114,9 +103,20 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.get_project_member;
                         update(work_itemget_project_membermembers);//更新fact中变量值
             end
 
-            //逻辑处理节点[结束]
-            rule "end6"
-            ruleflow-group "work_itemget_project_memberend6"
+            //逻辑处理节点[空]
+            rule "prepareparam3"
+            ruleflow-group "work_itemget_project_memberprepareparam3"
+            when
+            then
+                        update(work_itemget_project_memberdefault);//更新fact中变量值
+                        update(work_itemget_project_memberfilter);//更新fact中变量值
+                        update(work_itemget_project_memberfor_obj);//更新fact中变量值
+                        update(work_itemget_project_membermembers);//更新fact中变量值
+            end
+
+            //逻辑处理节点[非只读权限]
+            rule "rawsfcode2"
+            ruleflow-group "work_itemget_project_memberrawsfcode2"
             when
             then
                         update(work_itemget_project_memberdefault);//更新fact中变量值

@@ -5,6 +5,9 @@
   }, {
     "id" : "role_id",
     "viewFieldName" : "ROLE_ID"
+  }, {
+    "id" : "title",
+    "viewFieldName" : "TITLE"
   } ],
   "codeName" : "usr1015195268",
   "controlType" : "PANEL",
@@ -115,7 +118,41 @@
           },
           "viewFieldName" : "ROLE_ID",
           "convertToCodeItemText" : true
-        } ]
+        }, {
+          "caption" : "文本(动态)",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "FIELD",
+          "name" : "title",
+          "getPSEditor" : {
+            "editorType" : "SPAN",
+            "name" : "title",
+            "predefinedType" : "FIELD_TEXT_DYNAMIC",
+            "renderMode" : "TEXT_DYNAMIC",
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX",
+            "spacingLeft" : "OUTERMEDIUM"
+          },
+          "getPSPanelItemGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "getPSPanelItemLogics" : [ {
+              "condOp" : "ISNOTNULL",
+              "dstModelField" : "TITLE",
+              "logicType" : "SINGLE",
+              "name" : "逻辑项"
+            } ],
+            "relatedItemNames" : [ "title" ],
+            "notMode" : false
+          } ],
+          "viewFieldName" : "TITLE"
+        } ],
+        "getPSSysCss" : {
+          "cssName" : "mob_member_title_style"
+        }
       }, {
         "actionGroupExtractMode" : "ITEMS",
         "caption" : "按钮组",
@@ -139,7 +176,7 @@
           "getPSUIActionGroupDetails" : [ {
             "caption" : "设置角色",
             "detailType" : "DEUIACTION",
-            "name" : "uad09b74",
+            "name" : "u4f0764f",
             "getPSSysImage" : {
               "glyph" : "xf185@FontAwesome",
               "cssClass" : "fa fa-sun-o"
@@ -190,7 +227,7 @@
           }, {
             "caption" : "删除成员",
             "detailType" : "DEUIACTION",
-            "name" : "uc1000af",
+            "name" : "u41f22e9",
             "getPSSysImage" : {
               "glyph" : "xf014@FontAwesome",
               "cssClass" : "fa fa-trash-o"
@@ -239,6 +276,6 @@
       } ]
     } ]
   } ],
-  "modelid" : "E45B0406-49AC-4EC0-98DD-E0FA16779F88",
+  "modelid" : "22e2b838b2ae8c29c82f0800ed3c6fab",
   "modeltype" : "PSSYSVIEWPANEL"
 }

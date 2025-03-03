@@ -306,7 +306,6 @@
               "glyph" : "xf044@FontAwesome",
               "cssClass" : "fa fa-edit"
             },
-            "timeout" : 60000,
             "uIActionMode" : "FRONT",
             "uIActionTag" : "open_edit_view",
             "uIActionType" : "DEUIACTION",
@@ -408,6 +407,7 @@
       },
       "width" : 300,
       "widthUnit" : "PX",
+      "enableRowEdit" : true,
       "enableSort" : true
     }, {
       "align" : "LEFT",
@@ -702,6 +702,31 @@
       "name" : "srfmstag"
     } ],
     "getPSDEGridEditItems" : [ {
+      "caption" : "类别",
+      "codeName" : "categories",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "name" : "categories",
+      "getPSAppDEField" : {
+        "name" : "CATEGORIES",
+        "codeName" : "categories"
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "readonly" : "true"
+        },
+        "editorType" : "MDROPDOWNLIST",
+        "name" : "categories",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__category.json"
+        },
+        "readOnly" : true,
+        "singleSelect" : false
+      },
+      "allowEmpty" : true,
+      "needCodeListConfig" : true
+    }, {
       "caption" : "负责人",
       "codeName" : "assignee_name",
       "enableCond" : 3,
@@ -800,7 +825,6 @@
                 "cssClass" : "fa fa-user-md"
               },
               "scriptCode" : "ibiz.openView.push(`/-/index/project=${context.project}/project_redirect_view/-/project_setting_view/srfnavctx=%7B\"project\"%3A\"${context.project}\"%2C\"srfdefaulttoroutedepth\"%3A\"3\"%7D;srfnav=root%3Anormal%3Amember/project_member_config_grid_view/-`);",
-              "timeout" : 60000,
               "tooltip" : "跳转至成员设置",
               "uIActionMode" : "FRONT",
               "uIActionTag" : "jump_to_member_set",
@@ -1059,7 +1083,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "pick_up_grid_view",
-  "getPSDEViewId" : "46d645134f6b4b6bf78aae140a30652d",
+  "getPSDEViewId" : "4b8aa69a454a373ea77fcacb524b4c68",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEPICKUPGRIDVIEW",
@@ -1090,7 +1114,7 @@
   "expandSearchForm" : true,
   "pickupMode" : true,
   "rowEditDefault" : false,
-  "modelid" : "8b46fe2b83aa7419db974793005793a5",
+  "modelid" : "7c74041d95e4aa9cb4cc61c93757d211",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

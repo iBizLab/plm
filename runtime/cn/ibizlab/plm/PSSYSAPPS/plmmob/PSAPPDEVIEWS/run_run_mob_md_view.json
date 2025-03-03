@@ -317,7 +317,6 @@
                   "groupOP" : "AND",
                   "logicCat" : "PANELVISIBLE",
                   "logicType" : "GROUP",
-                  "name" : "面板成员[type][面板显示]逻辑",
                   "getPSPanelItemLogics" : [ {
                     "condOp" : "ISNOTNULL",
                     "dstModelField" : "TYPE",
@@ -380,7 +379,6 @@
                   "groupOP" : "AND",
                   "logicCat" : "PANELVISIBLE",
                   "logicType" : "GROUP",
-                  "name" : "面板成员[status][面板显示]逻辑",
                   "getPSPanelItemLogics" : [ {
                     "condOp" : "ISNOTNULL",
                     "dstModelField" : "STATUS",
@@ -473,7 +471,6 @@
                 "groupOP" : "AND",
                 "logicCat" : "PANELVISIBLE",
                 "logicType" : "GROUP",
-                "name" : "面板成员[maintenance_name][面板显示]逻辑",
                 "getPSPanelItemLogics" : [ {
                   "condOp" : "ISNOTNULL",
                   "dstModelField" : "MAINTENANCE_NAME",
@@ -490,7 +487,7 @@
         } ]
       } ],
       "name" : "mdctrl_itempanel",
-      "modelid" : "98B49E5A-0FE0-478A-A35B-16A451F31766",
+      "modelid" : "2e3f91888fff8be0fe80c64ea3929b64",
       "modeltype" : "PSSYSVIEWPANEL"
     },
     "logicName" : "List",
@@ -582,6 +579,17 @@
       }
     }, {
       "dataType" : 25,
+      "getFrontPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/TestMgmt__case_state.json"
+      },
+      "name" : "state",
+      "getPSAppDEField" : {
+        "name" : "STATE",
+        "codeName" : "state"
+      }
+    }, {
+      "dataType" : 25,
       "name" : "maintenance_name",
       "getPSAppDEField" : {
         "name" : "MAINTENANCE_NAME",
@@ -599,14 +607,6 @@
         "codeName" : "status"
       }
     }, {
-      "dataType" : 5,
-      "format" : "YYYY-MM-DD HH:mm:ss",
-      "name" : "update_time",
-      "getPSAppDEField" : {
-        "name" : "UPDATE_TIME",
-        "codeName" : "update_time"
-      }
-    }, {
       "dataType" : 25,
       "getFrontPSCodeList" : {
         "modelref" : true,
@@ -618,15 +618,12 @@
         "codeName" : "type"
       }
     }, {
-      "dataType" : 25,
-      "getFrontPSCodeList" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/TestMgmt__case_state.json"
-      },
-      "name" : "state",
+      "dataType" : 5,
+      "format" : "YYYY-MM-DD HH:mm:ss",
+      "name" : "update_time",
       "getPSAppDEField" : {
-        "name" : "STATE",
-        "codeName" : "state"
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
       }
     }, {
       "dataType" : 25,
@@ -668,6 +665,16 @@
       "enableSort" : true
     }, {
       "align" : "LEFT",
+      "cLConvertMode" : "FRONT",
+      "caption" : "评审状态",
+      "dataItemName" : "state",
+      "itemType" : "TEXTITEM",
+      "name" : "STATE",
+      "width" : 150,
+      "widthString" : "150px",
+      "enableSort" : true
+    }, {
+      "align" : "LEFT",
       "caption" : "维护人",
       "dataItemName" : "maintenance_name",
       "itemType" : "TEXTITEM",
@@ -695,16 +702,6 @@
       "itemType" : "TEXTITEM",
       "name" : "UPDATE_TIME",
       "valueFormat" : "YYYY-MM-DD HH:mm:ss",
-      "width" : 150,
-      "widthString" : "150px",
-      "enableSort" : true
-    }, {
-      "align" : "LEFT",
-      "cLConvertMode" : "FRONT",
-      "caption" : "评审状态",
-      "dataItemName" : "state",
-      "itemType" : "TEXTITEM",
-      "name" : "STATE",
       "width" : 150,
       "widthString" : "150px",
       "enableSort" : true
@@ -753,7 +750,7 @@
     "showHeader" : true,
     "singleSelect" : false,
     "name" : "mdctrl",
-    "modelid" : "F44CDA74-C736-43B7-91B1-6D78269527E7",
+    "modelid" : "c54de1ebc92b7c2b04a5b9852d5ac483",
     "modeltype" : "PSDELIST"
   }, {
     "codeName" : "run_mob_md_view_righttoolbar",
@@ -769,7 +766,7 @@
     },
     "toolbarStyle" : "MOBNAVRIGHTMENU",
     "xDataControlName" : "mdctrl",
-    "modelid" : "DEAFEA01-91E2-47DF-964D-6B33C1EE4912",
+    "modelid" : "9ca1d21296996cc3015f2aec0c769cb7",
     "modeltype" : "PSDETOOLBAR"
   }, {
     "controlType" : "SEARCHBAR",
@@ -803,7 +800,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "run_mob_md_view",
-  "getPSDEViewId" : "8CFA6975-F7C4-4395-85F2-6AF3F0AC4837",
+  "getPSDEViewId" : "7c7e794e21384d2462cedc16ae647bd5",
   "getPSSysCss" : {
     "cssName" : "test_detail_list_style"
   },
@@ -830,9 +827,53 @@
   "enablePullDownRefresh" : false,
   "enableQuickSearch" : true,
   "enableSearch" : true,
-  "modelid" : "a916035db47d2358d1fb11731ae531a9",
+  "modelid" : "2e86a24a4d35c68f442534a560b5a54b",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "test_plans",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "project",
+    "majorDEName" : "PROJECT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+    },
+    "minorDECodeName" : "test_plan",
+    "minorDEName" : "TEST_PLAN",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/test_plan.json"
+    },
+    "name" : "DER1N_TEST_PLAN_PROJECT_PROJECT_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PROJECT_ID",
+      "codeName" : "project_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "runs",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "test_plan",
+    "majorDEName" : "TEST_PLAN",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/test_plan.json"
+    },
+    "minorDECodeName" : "run",
+    "minorDEName" : "RUN",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/run.json"
+    },
+    "name" : "DER1N_RUN_TEST_PLAN_PLAN_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PLAN_ID",
+      "codeName" : "plan_id"
+    },
+    "rSMode" : 2
+  } ], [ {
     "actionRSMode" : 1,
     "codeName" : "test_plans",
     "dataRSMode" : 0,

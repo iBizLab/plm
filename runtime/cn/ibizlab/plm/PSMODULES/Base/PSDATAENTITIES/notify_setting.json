@@ -2147,16 +2147,6 @@
     "getPSDEMapActions" : [ {
       "getDstPSDEAction" : {
         "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/system_extension_notify_setting/PSDEACTIONS/CheckKey.json"
-      },
-      "name" : "PSDEMapAction",
-      "getSrcPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/notify_setting/PSDEACTIONS/CheckKey.json"
-      }
-    }, {
-      "getDstPSDEAction" : {
-        "modelref" : true,
         "path" : "PSMODULES/extension/PSDATAENTITIES/system_extension_notify_setting/PSDEACTIONS/Create.json"
       },
       "name" : "PSDEMapAction",
@@ -2167,22 +2157,12 @@
     }, {
       "getDstPSDEAction" : {
         "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/system_extension_notify_setting/PSDEACTIONS/Remove.json"
+        "path" : "PSMODULES/extension/PSDATAENTITIES/system_extension_notify_setting/PSDEACTIONS/CheckKey.json"
       },
       "name" : "PSDEMapAction",
       "getSrcPSDEAction" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/notify_setting/PSDEACTIONS/Remove.json"
-      }
-    }, {
-      "getDstPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/system_extension_notify_setting/PSDEACTIONS/Update.json"
-      },
-      "name" : "PSDEMapAction",
-      "getSrcPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/notify_setting/PSDEACTIONS/Update.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/notify_setting/PSDEACTIONS/CheckKey.json"
       }
     }, {
       "getDstPSDEAction" : {
@@ -2203,6 +2183,26 @@
       "getSrcPSDEAction" : {
         "modelref" : true,
         "path" : "PSMODULES/Base/PSDATAENTITIES/notify_setting/PSDEACTIONS/Get.json"
+      }
+    }, {
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/system_extension_notify_setting/PSDEACTIONS/Remove.json"
+      },
+      "name" : "PSDEMapAction",
+      "getSrcPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/notify_setting/PSDEACTIONS/Remove.json"
+      }
+    }, {
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/system_extension_notify_setting/PSDEACTIONS/Update.json"
+      },
+      "name" : "PSDEMapAction",
+      "getSrcPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/notify_setting/PSDEACTIONS/Update.json"
       }
     } ],
     "getPSDEMapDataQueries" : [ {
@@ -2641,6 +2641,13 @@
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/notify_setting/PSDEUSERROLES/USER_RW.json",
     "name" : "当前用户（读写）",
     "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "CREATE",
+      "name" : "CREATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "CREATE"
+      }
+    }, {
       "dataAccessAction" : "DELETE",
       "name" : "DELETE",
       "getPSDEOPPriv" : {
@@ -2661,13 +2668,6 @@
         "modelref" : true,
         "id" : "UPDATE"
       }
-    }, {
-      "dataAccessAction" : "CREATE",
-      "name" : "CREATE",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "CREATE"
-      }
     } ],
     "roleTag" : "USER_RW",
     "userCat" : "CAT1",
@@ -2684,6 +2684,13 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "pick_up_view",
+    "logicName" : "通知设置实体数据选择视图",
+    "modelTag" : "PICKUPVIEW",
+    "name" : "通知设置实体数据选择视图",
+    "realModelSubType" : "DEPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "pick_up_grid_view",
     "logicName" : "通知设置实体选择表格视图（部件视图）",
     "name" : "通知设置实体选择表格视图（部件视图）",
@@ -2696,29 +2703,15 @@
     "realModelSubType" : "DEEDITVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "config_view",
-    "logicName" : "通知设置",
-    "name" : "通知设置",
-    "realModelSubType" : "DEEDITVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "mpick_up_view",
-    "logicName" : "通知设置实体数据多项选择视图",
-    "modelTag" : "MPICKUPVIEW",
-    "name" : "通知设置实体数据多项选择视图",
-    "realModelSubType" : "DEMPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "pick_up_view",
-    "logicName" : "通知设置实体数据选择视图",
-    "modelTag" : "PICKUPVIEW",
-    "name" : "通知设置实体数据选择视图",
-    "realModelSubType" : "DEPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "config_view_test",
     "logicName" : "消息设置(测试)",
     "name" : "消息设置(测试)",
+    "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "config_view",
+    "logicName" : "通知设置",
+    "name" : "通知设置",
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
@@ -2736,17 +2729,24 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "config_view_Form",
-    "logicName" : "config_view_表单",
-    "modelTag2" : "0",
-    "name" : "config_view_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
+    "codeName" : "mpick_up_view",
+    "logicName" : "通知设置实体数据多项选择视图",
+    "modelTag" : "MPICKUPVIEW",
+    "name" : "通知设置实体数据多项选择视图",
+    "realModelSubType" : "DEMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "config_view_test_Form",
     "logicName" : "config_view_表单(测试)",
     "modelTag2" : "0",
     "name" : "config_view_表单(测试)",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "config_view_Form",
+    "logicName" : "config_view_表单",
+    "modelTag2" : "0",
+    "name" : "config_view_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {

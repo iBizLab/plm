@@ -179,7 +179,8 @@
           "contentType" : "HTML",
           "editorParams" : {
             "contenttype" : "HTML",
-            "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); const tempIcon = icon.trim(); return `<span class='comment-tag' data-value='${JSON.stringify(item)}'>${tempIcon} ${item.identifier} ${item.name}</span>`;}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
+            "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
+            "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
           },
           "editorStyle" : "COMMENT_ITEM",
           "editorType" : "RAW",
@@ -215,7 +216,6 @@
           "groupOP" : "AND",
           "logicCat" : "PANELVISIBLE",
           "logicType" : "GROUP",
-          "name" : "面板成员[container3][面板显示]逻辑",
           "getPSPanelItemLogics" : [ {
             "condOp" : "ISNOTNULL",
             "dstModelField" : "PID",
@@ -294,6 +294,6 @@
       } ]
     } ]
   } ],
-  "modelid" : "F37089BE-4991-40D5-B9A8-7C887BDA38A6",
+  "modelid" : "1b67335d60e75806808140f11e9df88b",
   "modeltype" : "PSSYSVIEWPANEL"
 }

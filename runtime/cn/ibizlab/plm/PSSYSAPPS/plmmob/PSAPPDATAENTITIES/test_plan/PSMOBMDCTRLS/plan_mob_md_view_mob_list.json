@@ -347,7 +347,7 @@
       } ]
     } ],
     "name" : "mdctrl_itempanel",
-    "modelid" : "23F3B779-A03D-4513-A606-D70802CD53D8",
+    "modelid" : "b3ab78122c8e0b81dc8ead3c7782f7a6",
     "modeltype" : "PSSYSVIEWPANEL"
   },
   "logicName" : "List",
@@ -357,17 +357,18 @@
   },
   "getPSDEListDataItems" : [ {
     "dataType" : 25,
-    "name" : "assignee_name",
-    "getPSAppDEField" : {
-      "name" : "ASSIGNEE_NAME",
-      "codeName" : "assignee_name"
-    }
-  }, {
-    "dataType" : 25,
     "name" : "name",
     "getPSAppDEField" : {
       "name" : "NAME",
       "codeName" : "name"
+    }
+  }, {
+    "dataType" : 5,
+    "format" : "YYYY-MM-DD",
+    "name" : "end_at",
+    "getPSAppDEField" : {
+      "name" : "END_AT",
+      "codeName" : "end_at"
     }
   }, {
     "dataType" : 5,
@@ -390,6 +391,13 @@
     }
   }, {
     "dataType" : 25,
+    "name" : "assignee_name",
+    "getPSAppDEField" : {
+      "name" : "ASSIGNEE_NAME",
+      "codeName" : "assignee_name"
+    }
+  }, {
+    "dataType" : 25,
     "getFrontPSCodeList" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/TestMgmt__test_plan_status.json"
@@ -398,14 +406,6 @@
     "getPSAppDEField" : {
       "name" : "STATUS",
       "codeName" : "status"
-    }
-  }, {
-    "dataType" : 5,
-    "format" : "YYYY-MM-DD",
-    "name" : "end_at",
-    "getPSAppDEField" : {
-      "name" : "END_AT",
-      "codeName" : "end_at"
     }
   }, {
     "dataType" : 25,
@@ -455,15 +455,6 @@
   } ],
   "getPSDEListItems" : [ {
     "align" : "LEFT",
-    "caption" : "负责人",
-    "dataItemName" : "assignee_name",
-    "itemType" : "TEXTITEM",
-    "name" : "ASSIGNEE_NAME",
-    "width" : 150,
-    "widthString" : "150px",
-    "enableSort" : true
-  }, {
-    "align" : "LEFT",
     "getCapPSLanguageRes" : {
       "lanResTag" : "DEF.LNAME.NAME"
     },
@@ -471,6 +462,16 @@
     "dataItemName" : "name",
     "itemType" : "TEXTITEM",
     "name" : "NAME",
+    "width" : 150,
+    "widthString" : "150px",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "caption" : "结束时间",
+    "dataItemName" : "end_at",
+    "itemType" : "TEXTITEM",
+    "name" : "END_AT",
+    "valueFormat" : "YYYY-MM-DD",
     "width" : 150,
     "widthString" : "150px",
     "enableSort" : true
@@ -496,6 +497,15 @@
     "enableSort" : true
   }, {
     "align" : "LEFT",
+    "caption" : "负责人",
+    "dataItemName" : "assignee_name",
+    "itemType" : "TEXTITEM",
+    "name" : "ASSIGNEE_NAME",
+    "width" : 150,
+    "widthString" : "150px",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
     "cLConvertMode" : "FRONT",
     "caption" : "状态",
     "dataItemName" : "status",
@@ -504,18 +514,9 @@
     "width" : 150,
     "widthString" : "150px",
     "enableSort" : true
-  }, {
-    "align" : "LEFT",
-    "caption" : "结束时间",
-    "dataItemName" : "end_at",
-    "itemType" : "TEXTITEM",
-    "name" : "END_AT",
-    "valueFormat" : "YYYY-MM-DD",
-    "width" : 150,
-    "widthString" : "150px",
-    "enableSort" : true
   } ],
-  "pagingSize" : 1000,
+  "pagingMode" : 2,
+  "pagingSize" : 20,
   "getRemovePSControlAction" : {
     "modelref" : true,
     "id" : "remove",
@@ -557,6 +558,6 @@
   "noSort" : false,
   "showHeader" : true,
   "singleSelect" : false,
-  "modelid" : "CA9E24BB-B3AD-4AE8-A0C7-82AA1F443F16",
+  "modelid" : "5f21f3f2e9f84507ea3915e7b36314d3",
   "modeltype" : "PSDELIST"
 }

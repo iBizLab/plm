@@ -737,6 +737,19 @@
       "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[VISIBILITY][可见范围]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[VISIBILITY][可见范围]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false,
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[VISIBILITY][可见范围]移动端默认",
       "getPSDEFFormItem" : {
@@ -751,19 +764,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[VISIBILITY][可见范围]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "DROPDOWNLIST",
-        "name" : "[VISIBILITY][可见范围]",
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false,
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -888,20 +888,6 @@
       "standardColumnName" : "`DESCRIPTION`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[DESCRIPTION][描述]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.DESCRIPTION"
-        },
-        "codeName" : "Default",
-        "editorType" : "TEXTAREA_10",
-        "name" : "[DESCRIPTION][描述]",
-        "stringLength" : 2000,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[DESCRIPTION][描述]移动端默认",
       "getPSDEFFormItem" : {
@@ -917,6 +903,20 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[DESCRIPTION][描述]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.DESCRIPTION"
+        },
+        "codeName" : "Default",
+        "editorType" : "TEXTAREA_10",
+        "name" : "[DESCRIPTION][描述]",
+        "stringLength" : 2000,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1599,21 +1599,6 @@
       "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[SECTION_ID][分组标识]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "HIDDEN",
-        "name" : "[SECTION_ID][分组标识]",
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/Base/PSDATAENTITIES/section.json"
-        },
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[SECTION_ID][分组标识]移动端默认",
       "getPSDEFFormItem" : {
@@ -1630,6 +1615,21 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[SECTION_ID][分组标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[SECTION_ID][分组标识]",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/section.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -2172,22 +2172,22 @@
     "enableUserDR" : true
   } ],
   "getAllPSModelDatas" : [ {
-    "codeName" : "update_view",
-    "logicName" : "团队编辑视图",
-    "name" : "团队编辑视图",
-    "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "EditView2",
     "logicName" : "团队实体编辑视图（左右关系）",
     "name" : "团队实体编辑视图（左右关系）",
     "realModelSubType" : "DEEDITVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "quick_create_view",
-    "logicName" : "团队快速新建视图",
-    "name" : "团队快速新建视图",
+    "codeName" : "update_view",
+    "logicName" : "团队编辑视图",
+    "name" : "团队编辑视图",
     "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "pick_up_grid_view",
+    "logicName" : "团队实体选择表格视图（部件视图）",
+    "name" : "团队实体选择表格视图（部件视图）",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "pick_up_view",
@@ -2197,11 +2197,10 @@
     "realModelSubType" : "DEPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "mpick_up_view",
-    "logicName" : "团队实体数据多项选择视图",
-    "modelTag" : "MPICKUPVIEW",
-    "name" : "团队实体数据多项选择视图",
-    "realModelSubType" : "DEMPICKUPVIEW",
+    "codeName" : "tree_exp_view",
+    "logicName" : "团队树导航视图",
+    "name" : "团队树导航视图",
+    "realModelSubType" : "DETREEEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView",
@@ -2225,16 +2224,17 @@
     "realModelSubType" : "DEREDIRECTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "pick_up_grid_view",
-    "logicName" : "团队实体选择表格视图（部件视图）",
-    "name" : "团队实体选择表格视图（部件视图）",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "codeName" : "quick_create_view",
+    "logicName" : "团队快速新建视图",
+    "name" : "团队快速新建视图",
+    "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "tree_exp_view",
-    "logicName" : "团队树导航视图",
-    "name" : "团队树导航视图",
-    "realModelSubType" : "DETREEEXPVIEW",
+    "codeName" : "mpick_up_view",
+    "logicName" : "团队实体数据多项选择视图",
+    "modelTag" : "MPICKUPVIEW",
+    "name" : "团队实体数据多项选择视图",
+    "realModelSubType" : "DEMPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "Main",
@@ -2335,6 +2335,15 @@
     "minorServiceCodeName" : "groups",
     "name" : "DER1N_GROUP_SECTION_SECTION_ID",
     "orderValue" : 100,
+    "getPSDER1NDEFieldMaps" : [ {
+      "codeName" : "Usr0120372358",
+      "getMajorPSDEField" : {
+        "name" : "IS_LEAF2",
+        "codeName" : "is_leaf2"
+      },
+      "mapType" : "NOTEXISTS",
+      "name" : "是否叶子节点"
+    } ],
     "getPSPickupDEField" : {
       "name" : "SECTION_ID",
       "codeName" : "section_id"

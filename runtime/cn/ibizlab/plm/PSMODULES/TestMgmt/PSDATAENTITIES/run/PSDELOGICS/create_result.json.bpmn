@@ -22,11 +22,11 @@
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置执行人相关信息"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction6" id="deaction6" implementation="http://www.jboss.org/drools/rule" name="创建执行结果"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultend3" id="end3" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end3_end" name="end"/>
                         <sequenceFlow id="end3_end_line" sourceRef="end3" targetRef="end3_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="执行结果数据准备"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction6" id="deaction6" implementation="http://www.jboss.org/drools/rule" name="创建执行结果"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="执行用例数据准备"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction7" id="deaction7" implementation="http://www.jboss.org/drools/rule" name="更新执行用例"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
@@ -58,8 +58,6 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam3_prepareparam5" sourceRef="prepareparam3" targetRef="prepareparam5">
                     </sequenceFlow>
-                    <sequenceFlow id="deaction6_prepareparam6" sourceRef="deaction6" targetRef="prepareparam6">
-                    </sequenceFlow>
                     <sequenceFlow id="gateway-prepareparam5_deaction6" sourceRef="gateway-prepareparam5" targetRef="deaction6">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $runcreate_resultdefault:run();
@@ -85,6 +83,8 @@
                                 eval((RuleUtils.test($runcreate_resultdefault.get("status"),"ISNULL","")))
                                 ]]>
                             </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction6_prepareparam6" sourceRef="deaction6" targetRef="prepareparam6">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam6_debugparam1" sourceRef="prepareparam6" targetRef="debugparam1">
                     </sequenceFlow>

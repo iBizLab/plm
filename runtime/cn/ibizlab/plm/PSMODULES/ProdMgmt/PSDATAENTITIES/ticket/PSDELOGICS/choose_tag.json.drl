@@ -32,16 +32,6 @@ package cn.ibizlab.plm.prodmgmt.logic.ticketlogic.choose_tag;
                         update(ticketchoose_tagsrfactionparam);//更新fact中变量值
             end
 
-            //逻辑处理节点[循环子调用]
-            rule "loopsubcall1"
-            ruleflow-group "ticketchoose_tagloopsubcall1"
-            when
-            then
-                        update(ticketchoose_tagdefault);//更新fact中变量值
-                        update(ticketchoose_tagfor_temp_obj);//更新fact中变量值
-                        update(ticketchoose_tagsrfactionparam);//更新fact中变量值
-            end
-
             //逻辑处理节点[设置工单标签信息]
             rule "prepareparam2"
             ruleflow-group "ticketchoose_tagprepareparam2"
@@ -59,6 +49,16 @@ package cn.ibizlab.plm.prodmgmt.logic.ticketlogic.choose_tag;
             when
             then
                         ticketservice.update(ticketchoose_tagdefault);
+                        update(ticketchoose_tagdefault);//更新fact中变量值
+                        update(ticketchoose_tagfor_temp_obj);//更新fact中变量值
+                        update(ticketchoose_tagsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "ticketchoose_tagloopsubcall1"
+            when
+            then
                         update(ticketchoose_tagdefault);//更新fact中变量值
                         update(ticketchoose_tagfor_temp_obj);//更新fact中变量值
                         update(ticketchoose_tagsrfactionparam);//更新fact中变量值

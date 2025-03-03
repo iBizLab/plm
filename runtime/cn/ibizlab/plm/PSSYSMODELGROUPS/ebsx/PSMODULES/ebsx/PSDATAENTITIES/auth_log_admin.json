@@ -303,6 +303,55 @@
       "type" : "DTOS"
     },
     "viewLevel" : 0
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/auth_log_admin/PSDEDATAQUERIES/cur_user/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "cur_user",
+    "logicName" : "当前用户",
+    "name" : "cur_user",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/auth_log_admin.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "AUTH_LOG_ADMIN",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "srfpersonid",
+          "fieldName" : "USERID",
+          "name" : "(USERID) 等于(=) 用户上下文 srfpersonid",
+          "getPSDEField" : {
+            "name" : "USERID",
+            "codeName" : "UserId"
+          },
+          "getPSVARTypeId" : "SESSIONCONTEXT"
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Cur_userInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "auth_log_adminFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Cur_userResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "auth_log_adminDTO"
+      },
+      "type" : "DTOS"
+    }
   } ],
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
@@ -333,6 +382,32 @@
       "type" : "PAGE"
     },
     "defaultMode" : true,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "cur_user",
+    "logicName" : "当前用户",
+    "name" : "cur_user",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "cur_user"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Cur_userInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "auth_log_adminFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Cur_userResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "auth_log_adminDTO"
+      },
+      "type" : "PAGE"
+    },
     "enableBackend" : true,
     "enableFront" : true
   }, {
@@ -615,6 +690,17 @@
       "standardColumnName" : "`USERID`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[USERID][用户全局标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[USERID][用户全局标识]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[USERID][用户全局标识]移动端默认",
       "getPSDEFFormItem" : {
@@ -627,17 +713,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[USERID][用户全局标识]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[USERID][用户全局标识]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -913,6 +988,17 @@
       "standardColumnName" : "`IPADDR`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[IPADDR][IP地址]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[IPADDR][IP地址]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[IPADDR][IP地址]移动端默认",
       "getPSDEFFormItem" : {
@@ -925,17 +1011,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[IPADDR][IP地址]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[IPADDR][IP地址]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1067,17 +1142,6 @@
       "standardColumnName" : "`USERAGENT`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[USERAGENT][客户端]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[USERAGENT][客户端]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[USERAGENT][客户端]移动端默认",
       "getPSDEFFormItem" : {
@@ -1090,6 +1154,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[USERAGENT][客户端]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[USERAGENT][客户端]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1233,17 +1308,6 @@
       "standardColumnName" : "`AUTHAGENT`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[AUTHAGENT][认证方式]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[AUTHAGENT][认证方式]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[AUTHAGENT][认证方式]移动端默认",
       "getPSDEFFormItem" : {
@@ -1256,6 +1320,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[AUTHAGENT][认证方式]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[AUTHAGENT][认证方式]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1303,6 +1378,17 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[ACTIVE_MEMBERS][活跃成员数]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[ACTIVE_MEMBERS][活跃成员数]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[ACTIVE_MEMBERS][活跃成员数]移动端默认",
       "getPSDEFFormItem" : {
@@ -1315,17 +1401,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[ACTIVE_MEMBERS][活跃成员数]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[ACTIVE_MEMBERS][活跃成员数]",
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1570,31 +1645,17 @@
     "name" : "UPDATE"
   } ],
   "getAllPSModelDatas" : [ {
-    "codeName" : "EditView",
-    "logicName" : "认证日志实体编辑视图",
-    "modelTag" : "EDITVIEW",
-    "name" : "认证日志实体编辑视图",
-    "realModelSubType" : "DEEDITVIEW",
+    "codeName" : "PickupView",
+    "logicName" : "认证日志实体数据选择视图",
+    "modelTag" : "PICKUPVIEW",
+    "name" : "认证日志实体数据选择视图",
+    "realModelSubType" : "DEPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "PickupGridView",
     "logicName" : "认证日志实体选择表格视图（部件视图）",
     "name" : "认证日志实体选择表格视图（部件视图）",
     "realModelSubType" : "DEPICKUPGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "RedirectView",
-    "logicName" : "认证日志实体数据重定向视图",
-    "modelTag" : "REDIRECTVIEW",
-    "name" : "认证日志实体数据重定向视图",
-    "realModelSubType" : "DEREDIRECTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "PickupView",
-    "logicName" : "认证日志实体数据选择视图",
-    "modelTag" : "PICKUPVIEW",
-    "name" : "认证日志实体数据选择视图",
-    "realModelSubType" : "DEPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView2",
@@ -1615,6 +1676,20 @@
     "modelTag" : "MDATAVIEW",
     "name" : "认证日志实体表格视图",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "EditView",
+    "logicName" : "认证日志实体编辑视图",
+    "modelTag" : "EDITVIEW",
+    "name" : "认证日志实体编辑视图",
+    "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "RedirectView",
+    "logicName" : "认证日志实体数据重定向视图",
+    "modelTag" : "REDIRECTVIEW",
+    "name" : "认证日志实体数据重定向视图",
+    "realModelSubType" : "DEREDIRECTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "Main",

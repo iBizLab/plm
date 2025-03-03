@@ -24,6 +24,46 @@
     "topPos" : 200,
     "parallelOutput" : true
   }, {
+    "codeName" : "DEBUGPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : -102,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "传入参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM1"
+      }
+    } ],
+    "topPos" : 208
+  }, {
+    "code" : "var default_obj = logic.getParam(\"default\");\r\ndefault_obj.set(\"submitted_at\", new Date());",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "JavaScript",
+    "leftPos" : 106,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "设置提交时间",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 208
+  }, {
     "codeName" : "PREPAREPARAM1",
     "leftPos" : 282,
     "logicNodeType" : "PREPAREPARAM",
@@ -69,75 +109,6 @@
       "paramAction" : "SETPARAMVALUE",
       "srcValue" : "20",
       "srcValueType" : "SRCVALUE"
-    } ],
-    "topPos" : 208
-  }, {
-    "codeName" : "DEACTION1",
-    "getDstPSDEAction" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/Update.json"
-    },
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
-    },
-    "leftPos" : 639,
-    "logicNodeType" : "DEACTION",
-    "name" : "更新评审",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "LOOPSUBCALL1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEACTION1"
-      }
-    } ],
-    "topPos" : 208
-  }, {
-    "codeName" : "DEBUGPARAM1",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "leftPos" : -102,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "传入参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM3"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM1"
-      }
-    } ],
-    "topPos" : 208
-  }, {
-    "code" : "var default_obj = logic.getParam(\"default\");\r\ndefault_obj.set(\"submitted_at\", new Date());",
-    "codeName" : "RAWSFCODE1",
-    "codeType" : "JavaScript",
-    "leftPos" : 106,
-    "logicNodeType" : "RAWSFCODE",
-    "name" : "设置提交时间",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE1"
-      }
     } ],
     "topPos" : 208
   }, {
@@ -193,6 +164,35 @@
       "paramAction" : "SETPARAMVALUE",
       "srcValue" : "20",
       "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 208
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/Update.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "leftPos" : 639,
+    "logicNodeType" : "DEACTION",
+    "name" : "更新评审",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
     } ],
     "topPos" : 208
   }, {

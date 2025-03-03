@@ -57,6 +57,9 @@
       "id" : "role_id",
       "viewFieldName" : "ROLE_ID"
     }, {
+      "id" : "title",
+      "viewFieldName" : "TITLE"
+    }, {
       "id" : "id",
       "hidden" : true,
       "viewFieldName" : "id"
@@ -99,7 +102,8 @@
         "getPSLayout" : {
           "align" : "space-between",
           "dir" : "row",
-          "layout" : "FLEX"
+          "layout" : "FLEX",
+          "vAlign" : "center"
         },
         "getPSLayoutPos" : {
           "grow" : -1,
@@ -171,7 +175,41 @@
             },
             "viewFieldName" : "ROLE_ID",
             "convertToCodeItemText" : true
-          } ]
+          }, {
+            "caption" : "文本(动态)",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "FIELD",
+            "name" : "title",
+            "getPSEditor" : {
+              "editorType" : "SPAN",
+              "name" : "title",
+              "predefinedType" : "FIELD_TEXT_DYNAMIC",
+              "renderMode" : "TEXT_DYNAMIC",
+              "enableLinkView" : false
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX",
+              "spacingLeft" : "OUTERMEDIUM"
+            },
+            "getPSPanelItemGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "PANELVISIBLE",
+              "logicType" : "GROUP",
+              "getPSPanelItemLogics" : [ {
+                "condOp" : "ISNOTNULL",
+                "dstModelField" : "TITLE",
+                "logicType" : "SINGLE",
+                "name" : "逻辑项"
+              } ],
+              "relatedItemNames" : [ "title" ],
+              "notMode" : false
+            } ],
+            "viewFieldName" : "TITLE"
+          } ],
+          "getPSSysCss" : {
+            "cssName" : "mob_member_title_style"
+          }
         }, {
           "actionGroupExtractMode" : "ITEMS",
           "caption" : "按钮组",
@@ -195,7 +233,7 @@
             "getPSUIActionGroupDetails" : [ {
               "caption" : "设置角色",
               "detailType" : "DEUIACTION",
-              "name" : "ud4e35e4",
+              "name" : "u37ee770",
               "getPSSysImage" : {
                 "glyph" : "xf185@FontAwesome",
                 "cssClass" : "fa fa-sun-o"
@@ -251,7 +289,7 @@
             }, {
               "caption" : "移除成员",
               "detailType" : "DEUIACTION",
-              "name" : "u20562c4",
+              "name" : "u2009d78",
               "getPSSysImage" : {
                 "glyph" : "xf014@FontAwesome",
                 "cssClass" : "fa fa-trash-o"
@@ -316,7 +354,7 @@
       } ]
     } ],
     "name" : "mdctrl_itempanel",
-    "modelid" : "2C17F327-7C3F-4F89-925D-E69D9E7CCD31",
+    "modelid" : "822e3646478db3efc7856f1faf2f8eaa",
     "modeltype" : "PSSYSVIEWPANEL"
   },
   "logicName" : "List",
@@ -353,7 +391,8 @@
       "codeName" : "product_id"
     }
   } ],
-  "pagingSize" : 1000,
+  "pagingMode" : 2,
+  "pagingSize" : 20,
   "getRemovePSControlAction" : {
     "modelref" : true,
     "id" : "remove",
@@ -395,6 +434,6 @@
   "noSort" : false,
   "showHeader" : true,
   "singleSelect" : false,
-  "modelid" : "9FF8881E-F5CD-40EA-923E-D8E9B332A852",
+  "modelid" : "8d9a071b6ba6152f8ea5f79d35c3502a",
   "modeltype" : "PSDELIST"
 }

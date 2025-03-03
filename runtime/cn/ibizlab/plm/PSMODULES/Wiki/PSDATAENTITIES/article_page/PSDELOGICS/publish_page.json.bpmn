@@ -19,6 +19,7 @@
                             <tns:global identifier="article_pagepublish_pageversion_temp" type="cn.ibizlab.plm.core.base.domain.version" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagepublish_pagedebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagepublish_pageprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置发布信息"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagepublish_pageprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="仅充当判断节点"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagepublish_pagerawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="设置发布时间"/>
@@ -28,7 +29,9 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagepublish_pageend2" id="end2" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end2_end" name="end"/>
                         <sequenceFlow id="end2_end_line" sourceRef="end2" targetRef="end2_end"/>
-                    <sequenceFlow id="begin_rawsfcode1" sourceRef="begin" targetRef="rawsfcode1">
+                    <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam1_rawsfcode1" sourceRef="debugparam1" targetRef="rawsfcode1">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-prepareparam1_prepareparam4" sourceRef="gateway-prepareparam1" targetRef="prepareparam4">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[

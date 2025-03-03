@@ -12,7 +12,7 @@
     "name" : "fetch",
     "getPSAppDEMethod" : {
       "modelref" : true,
-      "id" : "fetch_test_case_re_idea"
+      "id" : "fetch_work_item_relation_idea"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -103,7 +103,7 @@
     "enableSort" : false
   }, {
     "align" : "LEFT",
-    "cLConvertMode" : "NONE",
+    "cLConvertMode" : "FRONT",
     "caption" : "负责人",
     "codeName" : "target_assignee",
     "columnType" : "DEFGRIDCOLUMN",
@@ -112,14 +112,26 @@
     "name" : "target_assignee",
     "noPrivDisplayMode" : 1,
     "objectNameField" : "assignee_name",
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+    },
     "getPSAppDEField" : {
       "name" : "IDEA",
       "codeName" : "idea"
     },
+    "getPSSysPFPlugin" : {
+      "pluginType" : "GRID_COLRENDER",
+      "pluginCode" : "PERSONAL_INFO_COLUMN",
+      "runtimeObject" : true
+    },
     "valueType" : "OBJECT",
     "width" : 150,
     "widthUnit" : "PX",
-    "enableSort" : false
+    "enableSort" : false,
+    "getUserParam" : {
+      "USERFILTERMAP" : "{\"id\":\"assignee_id\",\"name\":\"assignee_name\"}"
+    }
   }, {
     "align" : "LEFT",
     "cLConvertMode" : "FRONT",
@@ -175,18 +187,16 @@
       "getPSUIActionGroupDetails" : [ {
         "caption" : "取消关联",
         "detailType" : "DEUIACTION",
-        "name" : "ue009d6d",
+        "name" : "ua71fcf1",
         "getPSSysImage" : {
           "glyph" : "xf127@FontAwesome",
           "cssClass" : "fa fa-unlink"
         },
         "getPSUIAction" : {
           "actionTarget" : "SINGLEDATA",
-          "noPrivDisplayMode" : 6,
           "caption" : "取消关联",
           "codeName" : "del_relation",
           "confirmMsg" : "确认取消关联？",
-          "dataAccessAction" : "UPDATE",
           "fullCodeName" : "relation_del_relation",
           "name" : "取消关联",
           "getPSAppDEMethod" : {
@@ -200,10 +210,6 @@
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
-          },
-          "getPSDEOPPriv" : {
-            "modelref" : true,
-            "id" : "UPDATE"
           },
           "getPSSysImage" : {
             "glyph" : "xf127@FontAwesome",
@@ -404,6 +410,6 @@
   "hideHeader" : false,
   "noSort" : false,
   "singleSelect" : true,
-  "modelid" : "71330C8D-D4A4-4287-B1C2-84F962E76EDD",
+  "modelid" : "76ae7fdfae242ab7e34f1be8c9c4199d",
   "modeltype" : "PSDEGRID"
 }

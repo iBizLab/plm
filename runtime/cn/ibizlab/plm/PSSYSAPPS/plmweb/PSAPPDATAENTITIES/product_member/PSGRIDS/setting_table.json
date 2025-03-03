@@ -38,7 +38,7 @@
       "id" : "grid_batchtoolbar"
     },
     "getPSDEToolbarItems" : [ {
-      "caption" : "设置",
+      "caption" : "角色",
       "groupExtractMode" : "ITEM",
       "itemType" : "DEUIACTION",
       "name" : "deuiaction1",
@@ -97,6 +97,64 @@
       "showCaption" : true,
       "showIcon" : true
     }, {
+      "caption" : "职位",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction3",
+      "noPrivDisplayMode" : 1,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "grid_batchtoolbar_deuiaction3"
+      },
+      "getPSSysImage" : {
+        "glyph" : "xf0c0@FontAwesome",
+        "cssClass" : "fa fa-users"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "MULTIKEY",
+        "noPrivDisplayMode" : 1,
+        "caption" : "职位变更",
+        "codeName" : "choose_position",
+        "dataAccessAction" : "UPDATE",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_member_choose_position_option_view.json",
+          "viewType" : "DEOPTVIEW"
+        },
+        "fullCodeName" : "product_member_choose_position",
+        "name" : "职位变更",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "change_position"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product_member.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "UPDATE"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf0c0@FontAwesome",
+          "cssClass" : "fa fa-users"
+        },
+        "refreshMode" : 1,
+        "successMsg" : "职位变更成功",
+        "timeout" : 60000,
+        "tooltip" : "变更选中成员职位",
+        "uIActionMode" : "BACKEND",
+        "uIActionTag" : "choose_position",
+        "uIActionType" : "DEUIACTION",
+        "enableConfirm" : true,
+        "reloadData" : true,
+        "id" : "choose_position@product_member"
+      },
+      "tooltip" : "变更选中成员职位",
+      "uIActionTarget" : "MULTIKEY",
+      "showCaption" : true,
+      "showIcon" : true
+    }, {
       "getCapPSLanguageRes" : {
         "lanResTag" : "TBB.TEXT.*.REMOVE"
       },
@@ -150,7 +208,7 @@
       "showCaption" : true,
       "showIcon" : true
     } ],
-    "modelid" : "DF1CE5E4-8970-4B83-81A8-B84EE37560ED",
+    "modelid" : "32f7afc5a4c526990c392cbbc45f4a69",
     "modeltype" : "PSDETOOLBAR"
   } ],
   "getPSDEGridColumns" : [ {
@@ -185,11 +243,32 @@
     "noPrivDisplayMode" : 1,
     "getPSAppCodeList" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__role_type.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__product_role_type.json"
     },
     "getPSAppDEField" : {
       "name" : "ROLE_ID",
       "codeName" : "role_id"
+    },
+    "width" : 150,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "caption" : "职位",
+    "codeName" : "title",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "title",
+    "excelCaption" : "职位",
+    "name" : "title",
+    "noPrivDisplayMode" : 1,
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__position.json"
+    },
+    "getPSAppDEField" : {
+      "name" : "TITLE",
+      "codeName" : "title"
     },
     "width" : 150,
     "widthUnit" : "PX",
@@ -253,6 +332,13 @@
     "getPSAppDEField" : {
       "name" : "ROLE_ID",
       "codeName" : "role_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "title",
+    "getPSAppDEField" : {
+      "name" : "TITLE",
+      "codeName" : "title"
     }
   }, {
     "dataType" : 25,

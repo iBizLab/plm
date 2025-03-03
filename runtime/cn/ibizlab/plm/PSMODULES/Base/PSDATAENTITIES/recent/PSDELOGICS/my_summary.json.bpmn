@@ -15,11 +15,14 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="recentmy_summaryend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="recentmy_summaryprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置初始化"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="recentmy_summaryrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="获取工作项数、任务数、bug数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="recentmy_summaryrawsqlcall2" id="rawsqlcall2" implementation="http://www.jboss.org/drools/rule" name="获取产品需求数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="recentmy_summaryrawsqlcall4" id="rawsqlcall4" implementation="http://www.jboss.org/drools/rule" name="获取产品工单数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="recentmy_summaryrawsqlcall3" id="rawsqlcall3" implementation="http://www.jboss.org/drools/rule" name="获取测试用例数"/>
-                    <sequenceFlow id="begin_rawsqlcall1" sourceRef="begin" targetRef="rawsqlcall1">
+                    <sequenceFlow id="begin_prepareparam1" sourceRef="begin" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_rawsqlcall1" sourceRef="prepareparam1" targetRef="rawsqlcall1">
                     </sequenceFlow>
                     <sequenceFlow id="rawsqlcall1_rawsqlcall2" sourceRef="rawsqlcall1" targetRef="rawsqlcall2">
                     </sequenceFlow>

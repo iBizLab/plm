@@ -35,29 +35,6 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.delete;
                         update(work_itemdeletework_item_page);//更新fact中变量值
             end
 
-            //逻辑处理节点[设置工作项过滤器参数]
-            rule "prepareparam1"
-            ruleflow-group "work_itemdeleteprepareparam1"
-            when
-            then
-                            work_itemdeletework_item_filter.set("n_pid_eq",work_itemdeletedefault.get("id"));
-                        update(work_itemdeletedefault);//更新fact中变量值
-                        update(work_itemdeletefor_temp_obj);//更新fact中变量值
-                        update(work_itemdeletework_item_filter);//更新fact中变量值
-                        update(work_itemdeletework_item_page);//更新fact中变量值
-            end
-
-            //逻辑处理节点[查询下级工作项]
-            rule "dedataset1"
-            ruleflow-group "work_itemdeletededataset1"
-            when
-            then
-                        update(work_itemdeletedefault);//更新fact中变量值
-                        update(work_itemdeletefor_temp_obj);//更新fact中变量值
-                        update(work_itemdeletework_item_filter);//更新fact中变量值
-                        update(work_itemdeletework_item_page);//更新fact中变量值
-            end
-
             //逻辑处理节点[设置删除状态]
             rule "prepareparam2"
             ruleflow-group "work_itemdeleteprepareparam2"
@@ -79,6 +56,29 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.delete;
         param.put("param0",work_itemdeletedefault.get("id"));
     String strSql="update recent set IS_DELETED=1 where owner_id=#{et.param0} and owner_subtype='work_item'";
                         iBzSysWork_itemDefaultService.execute(strSql,param);//SQL调用
+                        update(work_itemdeletedefault);//更新fact中变量值
+                        update(work_itemdeletefor_temp_obj);//更新fact中变量值
+                        update(work_itemdeletework_item_filter);//更新fact中变量值
+                        update(work_itemdeletework_item_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置工作项过滤器参数]
+            rule "prepareparam1"
+            ruleflow-group "work_itemdeleteprepareparam1"
+            when
+            then
+                            work_itemdeletework_item_filter.set("n_pid_eq",work_itemdeletedefault.get("id"));
+                        update(work_itemdeletedefault);//更新fact中变量值
+                        update(work_itemdeletefor_temp_obj);//更新fact中变量值
+                        update(work_itemdeletework_item_filter);//更新fact中变量值
+                        update(work_itemdeletework_item_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询下级工作项]
+            rule "dedataset1"
+            ruleflow-group "work_itemdeletededataset1"
+            when
+            then
                         update(work_itemdeletedefault);//更新fact中变量值
                         update(work_itemdeletefor_temp_obj);//更新fact中变量值
                         update(work_itemdeletework_item_filter);//更新fact中变量值

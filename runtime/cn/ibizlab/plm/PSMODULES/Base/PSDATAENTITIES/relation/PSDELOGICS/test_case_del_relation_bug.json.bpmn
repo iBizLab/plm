@@ -26,6 +26,7 @@
                             <tns:global identifier="relationtest_case_del_relation_bugrun_relation_page" type="cn.ibizlab.plm.core.base.domain.relation" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationtest_case_del_relation_bugdebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationtest_case_del_relation_bugprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充关联对象的主要关联属性"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationtest_case_del_relation_bugrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="拼接关联对象的主键"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationtest_case_del_relation_bugdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="删除测试用例关联缺陷数据"/>
@@ -40,7 +41,9 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationtest_case_del_relation_bugdeaction5" id="deaction5" implementation="http://www.jboss.org/drools/rule" name="删除缺陷关联执行用例"/>
                         <endEvent id="deaction5_end" name="end"/>
                         <sequenceFlow id="deaction5_end_line" sourceRef="deaction5" targetRef="deaction5_end"/>
-                    <sequenceFlow id="begin_prepareparam1" sourceRef="begin" targetRef="prepareparam1">
+                    <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam1_prepareparam1" sourceRef="debugparam1" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_rawsfcode1" sourceRef="prepareparam1" targetRef="rawsfcode1">
                     </sequenceFlow>

@@ -58,6 +58,9 @@
       "id" : "role_id",
       "viewFieldName" : "ROLE_ID"
     }, {
+      "id" : "title",
+      "viewFieldName" : "TITLE"
+    }, {
       "id" : "id",
       "hidden" : true,
       "viewFieldName" : "id"
@@ -168,7 +171,41 @@
             },
             "viewFieldName" : "ROLE_ID",
             "convertToCodeItemText" : true
-          } ]
+          }, {
+            "caption" : "文本(动态)",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "FIELD",
+            "name" : "title",
+            "getPSEditor" : {
+              "editorType" : "SPAN",
+              "name" : "title",
+              "predefinedType" : "FIELD_TEXT_DYNAMIC",
+              "renderMode" : "TEXT_DYNAMIC",
+              "enableLinkView" : false
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX",
+              "spacingLeft" : "OUTERMEDIUM"
+            },
+            "getPSPanelItemGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "PANELVISIBLE",
+              "logicType" : "GROUP",
+              "getPSPanelItemLogics" : [ {
+                "condOp" : "ISNOTNULL",
+                "dstModelField" : "TITLE",
+                "logicType" : "SINGLE",
+                "name" : "逻辑项"
+              } ],
+              "relatedItemNames" : [ "title" ],
+              "notMode" : false
+            } ],
+            "viewFieldName" : "TITLE"
+          } ],
+          "getPSSysCss" : {
+            "cssName" : "mob_member_title_style"
+          }
         }, {
           "actionGroupExtractMode" : "ITEMS",
           "caption" : "按钮组",
@@ -192,7 +229,7 @@
             "getPSUIActionGroupDetails" : [ {
               "caption" : "设置角色",
               "detailType" : "DEUIACTION",
-              "name" : "u9e9d9ca",
+              "name" : "u167cf6b",
               "getPSSysImage" : {
                 "glyph" : "xf185@FontAwesome",
                 "cssClass" : "fa fa-sun-o"
@@ -243,7 +280,7 @@
             }, {
               "caption" : "移除成员",
               "detailType" : "DEUIACTION",
-              "name" : "u4a4daf8",
+              "name" : "u81cc40b",
               "getPSSysImage" : {
                 "glyph" : "xf014@FontAwesome",
                 "cssClass" : "fa fa-trash-o"
@@ -310,7 +347,7 @@
       } ]
     } ],
     "name" : "mdctrl_itempanel",
-    "modelid" : "7D1819E1-7A49-4561-AEA1-48F7110FDB49",
+    "modelid" : "7f9d600b477281ba50527eb80892e566",
     "modeltype" : "PSSYSVIEWPANEL"
   },
   "logicName" : "mob_list",
@@ -321,6 +358,13 @@
   },
   "getPSDEListDataItems" : [ {
     "dataType" : 25,
+    "name" : "id",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    }
+  }, {
+    "dataType" : 25,
     "getFrontPSCodeList" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/Base__role_type.json"
@@ -329,13 +373,6 @@
     "getPSAppDEField" : {
       "name" : "ROLE_ID",
       "codeName" : "role_id"
-    }
-  }, {
-    "dataType" : 25,
-    "name" : "id",
-    "getPSAppDEField" : {
-      "name" : "ID",
-      "codeName" : "id"
     }
   }, {
     "dataType" : 25,
@@ -373,7 +410,8 @@
       "codeName" : "project_id"
     }
   } ],
-  "pagingSize" : 1000,
+  "pagingMode" : 2,
+  "pagingSize" : 20,
   "getRemovePSControlAction" : {
     "modelref" : true,
     "id" : "remove",
@@ -415,6 +453,6 @@
   "noSort" : false,
   "showHeader" : true,
   "singleSelect" : false,
-  "modelid" : "CD8EC4C7-5814-4888-BD2D-50DC9405C8BE",
+  "modelid" : "d54a9131f2a1859d13cfa444f83501b3",
   "modeltype" : "PSDELIST"
 }

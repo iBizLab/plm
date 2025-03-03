@@ -249,7 +249,6 @@
               "glyph" : "xf044@FontAwesome",
               "cssClass" : "fa fa-edit"
             },
-            "timeout" : 60000,
             "uIActionMode" : "FRONT",
             "uIActionTag" : "open_update_view",
             "uIActionType" : "DEUIACTION",
@@ -351,6 +350,7 @@
       },
       "width" : 300,
       "widthUnit" : "PX",
+      "enableRowEdit" : true,
       "enableSort" : true
     }, {
       "align" : "LEFT",
@@ -384,6 +384,11 @@
         "name" : "START_AT",
         "codeName" : "start_at"
       },
+      "getPSControlAttributes" : [ {
+        "attrName" : "disabledDate",
+        "attrValue" : "(time) => {\r\n    if (!data.end_at) {\r\n        return false;\r\n    }\r\n    const end_at = new Date(data.end_at);\r\n    // 比对天\r\n    time.setHours(0, 0, 0, 0);\r\n    end_at.setHours(0, 0, 0, 0);\r\n    return time.getTime() > end_at.getTime();\r\n}",
+        "name" : "start_at"
+      } ],
       "valueFormat" : "YYYY-MM-DD",
       "width" : 150,
       "widthUnit" : "PX",
@@ -403,6 +408,11 @@
         "name" : "END_AT",
         "codeName" : "end_at"
       },
+      "getPSControlAttributes" : [ {
+        "attrName" : "disabledDate",
+        "attrValue" : "(time) => {\r\n    if (!data.start_at) {\r\n        return false;\r\n    }\r\n    const start_at = new Date(data.start_at);\r\n    // 比对天\r\n    start_at.setHours(0, 0, 0, 0);\r\n    time.setHours(0, 0, 0, 0);\r\n    return time.getTime() < start_at.getTime();\r\n}",
+        "name" : "end_at"
+      } ],
       "valueFormat" : "YYYY-MM-DD",
       "width" : 150,
       "widthUnit" : "PX",
@@ -637,6 +647,31 @@
       }
     } ],
     "getPSDEGridEditItems" : [ {
+      "caption" : "类别",
+      "codeName" : "categories",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "name" : "categories",
+      "getPSAppDEField" : {
+        "name" : "CATEGORIES",
+        "codeName" : "categories"
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "readonly" : "true"
+        },
+        "editorType" : "MDROPDOWNLIST",
+        "name" : "categories",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__category.json"
+        },
+        "readOnly" : true,
+        "singleSelect" : false
+      },
+      "allowEmpty" : true,
+      "needCodeListConfig" : true
+    }, {
       "caption" : "负责人",
       "codeName" : "assignee_name",
       "enableCond" : 3,
@@ -736,7 +771,6 @@
                 "cssClass" : "fa fa-user-md"
               },
               "scriptCode" : "ibiz.openView.push(`/-/index/project=${context.project}/project_redirect_view/-/project_setting_view/srfnavctx=%7B\"project\"%3A\"${context.project}\"%2C\"srfdefaulttoroutedepth\"%3A\"3\"%7D;srfnav=root%3Anormal%3Amember/project_member_config_grid_view/-`);",
-              "timeout" : 60000,
               "tooltip" : "跳转至成员设置",
               "uIActionMode" : "FRONT",
               "uIActionTag" : "jump_to_member_set",
@@ -1047,7 +1081,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "pick_up_grid_view",
-  "getPSDEViewId" : "093619e9c1b2eed15645337687e55ceb",
+  "getPSDEViewId" : "9f7f111bd61e807bec72f140a9f8e8e2",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEPICKUPGRIDVIEW",
@@ -1078,7 +1112,7 @@
   "expandSearchForm" : true,
   "pickupMode" : true,
   "rowEditDefault" : false,
-  "modelid" : "4f4e9c85c7daea02992a5922f3233407",
+  "modelid" : "a78175d61a25fc5925bd4e00c7ddc583",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

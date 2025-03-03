@@ -229,14 +229,14 @@
         "codeName" : "name"
       }
     }, {
-      "id" : "formitem",
+      "id" : "content",
       "dataType" : 21,
       "getPSAppDEField" : {
         "name" : "CONTENT",
         "codeName" : "content"
       }
     }, {
-      "id" : "publish_content",
+      "id" : "formitem",
       "dataType" : 21,
       "getPSAppDEField" : {
         "name" : "CONTENT",
@@ -345,12 +345,68 @@
         "name" : "grouppanel1",
         "getPSDEFormDetails" : [ {
           "caption" : "正文",
+          "codeName" : "content",
+          "dataType" : 21,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 4,
+          "labelPos" : "NONE",
+          "labelWidth" : 0,
+          "name" : "content",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "CONTENT",
+            "codeName" : "content"
+          },
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "format_type",
+              "logicType" : "SINGLE",
+              "value" : "HTML"
+            } ],
+            "relatedDetailNames" : [ "format_type" ],
+            "notMode" : false
+          }, {
+            "groupOP" : "AND",
+            "logicCat" : "ITEMENABLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "format_type",
+              "logicType" : "SINGLE",
+              "value" : "HTML"
+            } ],
+            "relatedDetailNames" : [ "format_type" ],
+            "notMode" : false
+          } ],
+          "getPSEditor" : {
+            "editorParams" : {
+              "SHOWCOLLAPSE" : "false"
+            },
+            "editorType" : "MOBHTMLTEXT",
+            "name" : "content",
+            "placeHolder" : "请输入内容"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "resetItemName" : "format_type",
+          "resetItemNames" : [ "format_type" ],
+          "allowEmpty" : true
+        }, {
+          "caption" : "正文",
           "codeName" : "formitem",
           "dataType" : 21,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
           "enableCond" : 3,
-          "ignoreInput" : 12,
+          "ignoreInput" : 4,
           "labelPos" : "NONE",
           "labelWidth" : 0,
           "name" : "formitem",
@@ -363,62 +419,6 @@
             "groupOP" : "AND",
             "logicCat" : "PANELVISIBLE",
             "logicType" : "GROUP",
-            "name" : "表单成员[formitem][面板显示]逻辑",
-            "getPSDEFDLogics" : [ {
-              "condOP" : "EQ",
-              "dEFDName" : "format_type",
-              "logicType" : "SINGLE",
-              "value" : "HTML"
-            } ],
-            "relatedDetailNames" : [ "format_type" ],
-            "notMode" : false
-          }, {
-            "groupOP" : "AND",
-            "logicCat" : "ITEMENABLE",
-            "logicType" : "GROUP",
-            "name" : "表单成员[formitem][表单项启用]逻辑",
-            "getPSDEFDLogics" : [ {
-              "condOP" : "EQ",
-              "dEFDName" : "format_type",
-              "logicType" : "SINGLE",
-              "value" : "HTML"
-            } ],
-            "relatedDetailNames" : [ "format_type" ],
-            "notMode" : false
-          } ],
-          "getPSEditor" : {
-            "editorType" : "MOBHTMLTEXT",
-            "name" : "formitem",
-            "placeHolder" : "请输入内容"
-          },
-          "getPSLayoutPos" : {
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "resetItemName" : "format_type",
-          "resetItemNames" : [ "format_type" ],
-          "allowEmpty" : true
-        }, {
-          "caption" : "发布正文",
-          "codeName" : "publish_content",
-          "dataType" : 21,
-          "detailStyle" : "DEFAULT",
-          "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 12,
-          "labelPos" : "NONE",
-          "labelWidth" : 0,
-          "name" : "publish_content",
-          "noPrivDisplayMode" : 1,
-          "getPSAppDEField" : {
-            "name" : "CONTENT",
-            "codeName" : "content"
-          },
-          "getPSDEFDGroupLogics" : [ {
-            "groupOP" : "AND",
-            "logicCat" : "PANELVISIBLE",
-            "logicType" : "GROUP",
-            "name" : "表单成员[publish_content][面板显示]逻辑",
             "getPSDEFDLogics" : [ {
               "condOP" : "EQ",
               "dEFDName" : "format_type",
@@ -431,7 +431,6 @@
             "groupOP" : "AND",
             "logicCat" : "ITEMENABLE",
             "logicType" : "GROUP",
-            "name" : "表单成员[publish_content][表单项启用]逻辑",
             "getPSDEFDLogics" : [ {
               "condOP" : "EQ",
               "dEFDName" : "format_type",
@@ -445,7 +444,7 @@
             "editorType" : "MOBMARKDOWN",
             "maxLength" : 16777215,
             "mode" : "EDIT",
-            "name" : "publish_content",
+            "name" : "formitem",
             "showMaxLength" : true
           },
           "getPSLayoutPos" : {
@@ -465,7 +464,6 @@
             "groupOP" : "AND",
             "logicCat" : "PANELVISIBLE",
             "logicType" : "GROUP",
-            "name" : "表单成员[rawitem1][面板显示]逻辑",
             "getPSDEFDLogics" : [ {
               "condOP" : "EQ",
               "dEFDName" : "format_type",
@@ -684,7 +682,7 @@
     "mobileControl" : true,
     "noTabHeader" : true,
     "name" : "form",
-    "modelid" : "CB273EF5-4427-4E01-9320-73C958CB83C8",
+    "modelid" : "8bc8b9ea24e106bee800a3cef4288614",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "mob_document_edit_view_righttoolbar",
@@ -736,7 +734,6 @@
           "cssClass" : "fa fa-paper-plane-o"
         },
         "refreshMode" : 1,
-        "timeout" : 60000,
         "uIActionMode" : "FRONT",
         "uIActionTag" : "release",
         "uIActionType" : "DEUIACTION",
@@ -753,7 +750,7 @@
     } ],
     "toolbarStyle" : "MOBNAVRIGHTMENU",
     "xDataControlName" : "form",
-    "modelid" : "B885F304-4BDE-48E6-9365-B9B3FC325EC4",
+    "modelid" : "d427796ece75f10a7b135668d72bd677",
     "modeltype" : "PSDETOOLBAR"
   }, {
     "codeName" : "mob_document_edit_view_datainfobar",
@@ -781,7 +778,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "mob_document_edit_view",
-  "getPSDEViewId" : "2D08D511-A1AC-4D08-99F0-56FE8EEAEBDD",
+  "getPSDEViewId" : "dacf350099ac8265a6ddbe366e6688f2",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEMOBEDITVIEW",
@@ -803,7 +800,7 @@
   "enableDP" : true,
   "enablePullDownRefresh" : false,
   "showDataInfoBar" : true,
-  "modelid" : "b50105211d1d8124d19ccc310fd48fb1",
+  "modelid" : "5f12f19ebc8c607dd754b78dac39ef08",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

@@ -79,13 +79,13 @@
     "getGetPSControlAction" : {
       "modelref" : true,
       "id" : "load",
-      "actionName" : "Get",
+      "actionName" : "GetFull",
       "actionType" : "DEACTION",
       "dataAccessAction" : "READ",
       "name" : "load",
       "getPSAppDEMethod" : {
         "modelref" : true,
-        "id" : "get"
+        "id" : "get_full"
       },
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -121,13 +121,13 @@
           "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/user.json"
         }
       }, {
-        "actionName" : "Get",
+        "actionName" : "GetFull",
         "actionType" : "DEACTION",
         "dataAccessAction" : "READ",
         "name" : "load",
         "getPSAppDEMethod" : {
           "modelref" : true,
-          "id" : "get"
+          "id" : "get_full"
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
@@ -305,11 +305,11 @@
         "codeName" : "department_name"
       }
     }, {
-      "id" : "job_name",
+      "id" : "title",
       "dataType" : 25,
       "getPSAppDEField" : {
-        "name" : "JOB_NAME",
-        "codeName" : "job_name"
+        "name" : "TITLE",
+        "codeName" : "title"
       }
     }, {
       "id" : "employee_number",
@@ -327,6 +327,38 @@
       "getPSAppDEField" : {
         "name" : "STATUS",
         "codeName" : "status"
+      }
+    }, {
+      "id" : "department_id",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "DEPARTMENT_ID",
+        "codeName" : "department_id"
+      }
+    }, {
+      "id" : "organization_id",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "ORGANIZATION_ID",
+        "codeName" : "organization_id"
+      }
+    }, {
+      "id" : "organization_name",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "ORGANIZATION_NAME",
+        "codeName" : "organization_name"
+      }
+    }, {
+      "id" : "report_flag",
+      "hidden" : true,
+      "dataType" : 9,
+      "getPSAppDEField" : {
+        "name" : "REPORT_FLAG",
+        "codeName" : "report_flag"
       }
     }, {
       "id" : "id",
@@ -584,34 +616,35 @@
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
-            "allowEmpty" : true,
+            "allowEmpty" : false,
             "showCaption" : true
           }, {
             "caption" : "职位",
-            "codeName" : "job_name",
+            "codeName" : "title",
             "dataType" : 25,
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
             "enableCond" : 0,
-            "ignoreInput" : 0,
+            "ignoreInput" : 3,
             "labelPos" : "LEFT",
             "labelWidth" : 130,
-            "name" : "job_name",
+            "name" : "title",
             "noPrivDisplayMode" : 1,
             "getPSAppDEField" : {
-              "name" : "JOB_NAME",
-              "codeName" : "job_name"
+              "name" : "TITLE",
+              "codeName" : "title"
             },
             "getPSEditor" : {
               "editorType" : "MOBTEXT",
-              "maxLength" : 200,
-              "name" : "job_name"
+              "maxLength" : 100,
+              "name" : "title"
             },
             "getPSLayoutPos" : {
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
             "allowEmpty" : true,
+            "convertToCodeItemText" : true,
             "showCaption" : true
           }, {
             "caption" : "工号",
@@ -638,7 +671,7 @@
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
-            "allowEmpty" : true,
+            "allowEmpty" : false,
             "showCaption" : true
           }, {
             "caption" : "状态",
@@ -666,6 +699,110 @@
               "layout" : "TABLE_24COL"
             },
             "updateDV" : "1",
+            "allowEmpty" : true,
+            "hidden" : true
+          }, {
+            "caption" : "部门标识",
+            "codeName" : "department_id",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "department_id",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "DEPARTMENT_ID",
+              "codeName" : "department_id"
+            },
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "department_id"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "hidden" : true
+          }, {
+            "caption" : "组织标识",
+            "codeName" : "organization_id",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "organization_id",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "ORGANIZATION_ID",
+              "codeName" : "organization_id"
+            },
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "organization_id"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "hidden" : true
+          }, {
+            "caption" : "组织名称",
+            "codeName" : "organization_name",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "organization_name",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "ORGANIZATION_NAME",
+              "codeName" : "organization_name"
+            },
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "organization_name"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "hidden" : true
+          }, {
+            "caption" : "统计",
+            "codeName" : "report_flag",
+            "dataType" : 9,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "report_flag",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "REPORT_FLAG",
+              "codeName" : "report_flag"
+            },
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "report_flag"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
             "allowEmpty" : true,
             "hidden" : true
           } ],
@@ -832,7 +969,7 @@
     "mobileControl" : true,
     "noTabHeader" : true,
     "name" : "form",
-    "modelid" : "AF80C244-0960-4B0A-988A-6D9098F2A538",
+    "modelid" : "297353fa23d14442dea4eebdf16a16b4",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "mob_user_info_view_righttoolbar",
@@ -848,7 +985,7 @@
     },
     "toolbarStyle" : "MOBNAVRIGHTMENU",
     "xDataControlName" : "form",
-    "modelid" : "F3BC10CE-1459-4A47-88BE-55135046C64A",
+    "modelid" : "df38d620aedcf9e370fce902178dd242",
     "modeltype" : "PSDETOOLBAR"
   }, {
     "codeName" : "mob_user_info_view_datainfobar",
@@ -876,7 +1013,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "mob_user_info_view",
-  "getPSDEViewId" : "858BECE4-A073-40DF-A9D2-B19D4BABAC68",
+  "getPSDEViewId" : "3e9d9d724507f310e5aeb2c10040c350",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEMOBEDITVIEW",
@@ -899,6 +1036,29 @@
   "enableDP" : true,
   "enablePullDownRefresh" : false,
   "showDataInfoBar" : true,
-  "modelid" : "c038c77dd488e018a0a1ce1e9fe352da",
-  "modeltype" : "PSAPPDEVIEW"
+  "modelid" : "e89894e7a5fe5ee4124c8ccd3632dc2d",
+  "modeltype" : "PSAPPDEVIEW",
+  "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "users",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "department",
+    "majorDEName" : "DEPARTMENT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/department.json"
+    },
+    "minorDECodeName" : "user",
+    "minorDEName" : "USER",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/user.json"
+    },
+    "name" : "DER1N_USER_DEPARTMENT_DEPARTMENT_ID",
+    "getParentPSAppDEField" : {
+      "name" : "DEPARTMENT_ID",
+      "codeName" : "department_id"
+    },
+    "rSMode" : 2
+  } ] ]
 }

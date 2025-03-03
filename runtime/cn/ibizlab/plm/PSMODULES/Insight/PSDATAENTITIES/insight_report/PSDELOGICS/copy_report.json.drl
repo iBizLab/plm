@@ -67,20 +67,6 @@ package cn.ibizlab.plm.insight.logic.insight_reportlogic.copy_report;
                         update(insight_reportcopy_reporttarget_board);//更新fact中变量值
             end
 
-            //逻辑处理节点[实体行为]
-            rule "deaction4"
-            ruleflow-group "insight_reportcopy_reportdeaction4"
-            when
-            then
-                        dyna_dashboardservice.update(insight_reportcopy_reporttarget_board);
-                        update(insight_reportcopy_reportdefault);//更新fact中变量值
-                        update(insight_reportcopy_reportcur_report);//更新fact中变量值
-                        update(insight_reportcopy_reportform_data);//更新fact中变量值
-                        update(insight_reportcopy_reportnew_report);//更新fact中变量值
-                        update(insight_reportcopy_reportsrfactionparam);//更新fact中变量值
-                        update(insight_reportcopy_reporttarget_board);//更新fact中变量值
-            end
-
             //逻辑处理节点[传入参数]
             rule "debugparam1"
             ruleflow-group "insight_reportcopy_reportdebugparam1"
@@ -129,6 +115,20 @@ package cn.ibizlab.plm.insight.logic.insight_reportlogic.copy_report;
             ruleflow-group "insight_reportcopy_reportdebugparam2"
             when
             then
+                        update(insight_reportcopy_reportdefault);//更新fact中变量值
+                        update(insight_reportcopy_reportcur_report);//更新fact中变量值
+                        update(insight_reportcopy_reportform_data);//更新fact中变量值
+                        update(insight_reportcopy_reportnew_report);//更新fact中变量值
+                        update(insight_reportcopy_reportsrfactionparam);//更新fact中变量值
+                        update(insight_reportcopy_reporttarget_board);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体行为]
+            rule "deaction4"
+            ruleflow-group "insight_reportcopy_reportdeaction4"
+            when
+            then
+                        dyna_dashboardservice.update(insight_reportcopy_reporttarget_board);
                         update(insight_reportcopy_reportdefault);//更新fact中变量值
                         update(insight_reportcopy_reportcur_report);//更新fact中变量值
                         update(insight_reportcopy_reportform_data);//更新fact中变量值

@@ -314,76 +314,6 @@
     } ],
     "topPos" : 500
   }, {
-    "codeName" : "PREPAREPARAM3",
-    "leftPos" : 790,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "上级的是否叶子节点变更",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET2"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM3"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "ID",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "parent_section"
-      },
-      "name" : "Default[SECTION_ID] ==> parent_section[ID]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "SECTION_ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "filter"
-      },
-      "name" : " ==> filter",
-      "paramAction" : "RENEWPARAM"
-    }, {
-      "dstFieldName" : "N_SECTION_ID_EQ",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "filter"
-      },
-      "name" : "Default[SECTION_ID] ==> filter[N_SECTION_ID_EQ]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "SECTION_ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "category_page"
-      },
-      "name" : " ==> category_page",
-      "paramAction" : "RENEWPARAM"
-    }, {
-      "dstFieldName" : "IS_LEAF",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "parent_section"
-      },
-      "name" : "直接值[1] ==> parent_section[IS_LEAF]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcValue" : "1",
-      "srcValueType" : "SRCVALUE"
-    } ],
-    "topPos" : 630
-  }, {
     "codeName" : "PREPAREPARAM2",
     "leftPos" : 140,
     "logicNodeType" : "PREPAREPARAM",
@@ -565,6 +495,76 @@
     } ],
     "sql" : "UPDATE idea t \r\nINNER JOIN category t21 ON t.category_id = t21.ID \r\nSET t.category_id = NULL\r\nWHERE (t.category_id = ? OR t21.categories LIKE CONCAT('%',?,'%'))",
     "topPos" : -40
+  }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : 790,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "上级的是否叶子节点变更",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "parent_section"
+      },
+      "name" : "Default[SECTION_ID] ==> parent_section[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "SECTION_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : " ==> filter",
+      "paramAction" : "RENEWPARAM"
+    }, {
+      "dstFieldName" : "N_SECTION_ID_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : "Default[SECTION_ID] ==> filter[N_SECTION_ID_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "SECTION_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "category_page"
+      },
+      "name" : " ==> category_page",
+      "paramAction" : "RENEWPARAM"
+    }, {
+      "dstFieldName" : "IS_LEAF",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "parent_section"
+      },
+      "name" : "直接值[1] ==> parent_section[IS_LEAF]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "1",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 630
   }, {
     "codeName" : "DEDATASET2",
     "getDstPSDEDataSet" : {

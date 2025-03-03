@@ -395,7 +395,7 @@
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
         "enableCond" : 3,
-        "ignoreInput" : 3,
+        "ignoreInput" : 0,
         "labelPos" : "TOP",
         "labelWidth" : 130,
         "name" : "submitter_name",
@@ -406,25 +406,49 @@
         },
         "getPSEditor" : {
           "editorParams" : {
-            "readonly" : "true"
+            "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+            "AC" : "TRUE",
+            "readonly" : "true",
+            "SRFNAVPARAM.n_status_eq" : "1",
+            "TRIGGER" : "TRUE",
+            "URL" : "projects/${context.project}/project_members/fetch_default",
+            "PICKUPVIEW" : "FALSE",
+            "USERMETHOD" : "post",
+            "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+            "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+            "DEPTMETHOD" : "get",
+            "DEPTURL" : "/users/fetch_default"
           },
-          "editorStyle" : "PERSONNEL_INFO",
-          "editorType" : "SPAN",
+          "editorStyle" : "PERSONEL_SELECT_PROJECT",
+          "editorType" : "PICKEREX_TRIGGER",
+          "handlerType" : "PickupText",
           "name" : "submitter_name",
-          "getPSAppCodeList" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-          },
           "getPSEditorItems" : [ {
             "name" : "submitter_id"
           } ],
+          "getPSNavigateParams" : [ {
+            "key" : "n_department_id_eq",
+            "name" : "n_department_id_eq",
+            "value" : "srforgsectorid",
+            "rawValue" : false
+          }, {
+            "key" : "n_status_eq",
+            "name" : "n_status_eq",
+            "value" : "1",
+            "rawValue" : true
+          } ],
           "getPSSysPFPlugin" : {
             "pluginType" : "EDITOR_CUSTOMSTYLE",
-            "pluginCode" : "PERSONNEL_INFO",
+            "pluginCode" : "PERSON_SELECT",
             "runtimeObject" : true
           },
-          "enableLinkView" : false,
-          "readOnly" : true
+          "valueItemName" : "submitter_id",
+          "enableAC" : true,
+          "enablePickupView" : false,
+          "forceSelection" : true,
+          "readOnly" : true,
+          "showTrigger" : true,
+          "singleSelect" : true
         },
         "getPSLayoutPos" : {
           "colLG" : 6,
@@ -433,7 +457,6 @@
         },
         "valueItemName" : "submitter_id",
         "allowEmpty" : true,
-        "convertToCodeItemText" : true,
         "showCaption" : true
       }, {
         "getCapPSLanguageRes" : {
@@ -733,7 +756,7 @@
                 "value" : "show_identifier:test_case.show_identifier,title:title"
               } ],
               "getPSDEViewCodeName" : "grid_view_all",
-              "getPSDEViewId" : "FA37A914-B679-49E8-BD51-62BE0A196961",
+              "getPSDEViewId" : "2f27e218fc4cb2f0ea7876a80d7243cd",
               "getPSViewLayoutPanel" : {
                 "getAllPSPanelFields" : [ {
                   "id" : "schedule",
@@ -829,7 +852,6 @@
                           "groupOP" : "AND",
                           "logicCat" : "ITEMENABLE",
                           "logicType" : "GROUP",
-                          "name" : "面板成员[schedule][表单项启用]逻辑",
                           "getPSPanelItemLogics" : [ {
                             "condOp" : "EQ",
                             "dstModelField" : "total",
@@ -1014,7 +1036,7 @@
                 "layoutPanel" : true,
                 "useDefaultLayout" : false,
                 "viewProxyMode" : true,
-                "modelid" : "418C0CD0-979F-4377-B27E-FB35135E535D",
+                "modelid" : "d023fb941c247a9d45de6b4fabe6b4fc",
                 "modeltype" : "PSSYSVIEWLAYOUTPANEL",
                 "getPSAppViewEngines" : [ {
                   "engineCat" : "VIEW",
@@ -1295,7 +1317,6 @@
                       } ],
                       "paramItem" : "review",
                       "refreshMode" : 2,
-                      "timeout" : 60000,
                       "uIActionMode" : "FRONT",
                       "uIActionTag" : "submit_review",
                       "uIActionType" : "DEUIACTION",
@@ -1310,7 +1331,7 @@
                   } ],
                   "toolbarStyle" : "USER",
                   "xDataControlName" : "grid",
-                  "modelid" : "C92564C4-C6C5-467A-A669-C3592C918A16",
+                  "modelid" : "d3a9ac86f4712402a0626888611afe18",
                   "modeltype" : "PSDETOOLBAR"
                 }, {
                   "aggMode" : "NONE",
@@ -1624,7 +1645,7 @@
                       "showCaption" : true,
                       "showIcon" : true
                     } ],
-                    "modelid" : "F6B0E272-B2D5-48E0-B73E-5B17BC0EDE73",
+                    "modelid" : "8ff97ed8eeac6f5498f6d54910248a1f",
                     "modeltype" : "PSDETOOLBAR"
                   } ],
                   "getPSDEGridColumns" : [ {
@@ -1671,7 +1692,7 @@
                       "getPSUIActionGroupDetails" : [ {
                         "actionLevel" : 200,
                         "detailType" : "DEUIACTION",
-                        "name" : "uafa07b8",
+                        "name" : "ucb9925e",
                         "getPSSysImage" : {
                           "glyph" : "xf112@FontAwesome",
                           "cssClass" : "fa fa-mail-reply"
@@ -1719,7 +1740,7 @@
                       }, {
                         "actionLevel" : 200,
                         "detailType" : "DEUIACTION",
-                        "name" : "u7c6b8ab",
+                        "name" : "u2d8231b",
                         "getPSSysImage" : {
                           "glyph" : "xf0ec@FontAwesome",
                           "cssClass" : "fa fa-exchange"
@@ -1743,7 +1764,6 @@
                             "glyph" : "xf0ec@FontAwesome",
                             "cssClass" : "fa fa-exchange"
                           },
-                          "timeout" : 60000,
                           "tooltip" : "版本比对",
                           "uIActionMode" : "FRONT",
                           "uIActionTag" : "review_content_version_comparison",
@@ -1870,7 +1890,6 @@
                         "id" : "SUBDATA"
                       },
                       "successMsg" : "评审结果已设置",
-                      "timeout" : 60000,
                       "uIActionMode" : "FRONT",
                       "uIActionTag" : "set_review_result",
                       "uIActionType" : "DEUIACTION",
@@ -2102,7 +2121,7 @@
                   "noSort" : true,
                   "singleSelect" : false,
                   "name" : "grid",
-                  "modelid" : "4396EFB4-73BC-45E1-A7BD-12F6FB31C9FF",
+                  "modelid" : "66a5a665f7448d1e682710ca5a1f5c50",
                   "modeltype" : "PSDEGRID"
                 }, {
                   "controlType" : "SEARCHBAR",
@@ -2148,7 +2167,7 @@
               "enableRowEdit" : true,
               "enableSearch" : true,
               "rowEditDefault" : false,
-              "modelid" : "3edd4127022303fdb33540501a3d53fc",
+              "modelid" : "961db6b53633c132f82c9005947fd19c",
               "modeltype" : "PSAPPDEVIEW",
               "getPSAppDERSPaths" : [ [ {
                 "actionRSMode" : 1,
@@ -2354,7 +2373,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[druipart4][面板显示]逻辑",
               "getPSDEFDLogics" : [ {
                 "groupOP" : "AND",
                 "logicType" : "GROUP",
@@ -2436,7 +2454,7 @@
                 "value" : "show_identifier:test_case.show_identifier,title:title"
               } ],
               "getPSDEViewCodeName" : "no_grid_view_all",
-              "getPSDEViewId" : "17DC1979-DA39-400B-8050-39600BCA3ACD",
+              "getPSDEViewId" : "1f1b47c828f497f70adb7f5a6c94c6d9",
               "getPSViewLayoutPanel" : {
                 "getAllPSPanelFields" : [ {
                   "id" : "schedule",
@@ -2532,7 +2550,6 @@
                           "groupOP" : "AND",
                           "logicCat" : "ITEMENABLE",
                           "logicType" : "GROUP",
-                          "name" : "面板成员[schedule][表单项启用]逻辑",
                           "getPSPanelItemLogics" : [ {
                             "condOp" : "EQ",
                             "dstModelField" : "total",
@@ -2717,7 +2734,7 @@
                 "layoutPanel" : true,
                 "useDefaultLayout" : false,
                 "viewProxyMode" : true,
-                "modelid" : "418C0CD0-979F-4377-B27E-FB35135E535D",
+                "modelid" : "d023fb941c247a9d45de6b4fabe6b4fc",
                 "modeltype" : "PSSYSVIEWLAYOUTPANEL",
                 "getPSAppViewEngines" : [ {
                   "engineCat" : "VIEW",
@@ -2826,17 +2843,6 @@
                   }
                 } ],
                 "getPSAppViewRefs" : [ {
-                  "name" : "NEWDATA",
-                  "realTitle" : "评审内容编辑视图",
-                  "getRealTitlePSLanguageRes" : {
-                    "lanResTag" : "PAGE.TITLE.REVIEW_CONTENT.EDITVIEW"
-                  },
-                  "getRefPSAppView" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_content_edit_view.json",
-                    "viewType" : "DEEDITVIEW"
-                  }
-                }, {
                   "name" : "EDITDATA",
                   "openMode" : "POPUPMODAL",
                   "getPSNavigateContexts" : [ {
@@ -2850,6 +2856,17 @@
                   "getRefPSAppView" : {
                     "modelref" : true,
                     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_main_view.json",
+                    "viewType" : "DEEDITVIEW"
+                  }
+                }, {
+                  "name" : "NEWDATA",
+                  "realTitle" : "评审内容编辑视图",
+                  "getRealTitlePSLanguageRes" : {
+                    "lanResTag" : "PAGE.TITLE.REVIEW_CONTENT.EDITVIEW"
+                  },
+                  "getRefPSAppView" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_content_edit_view.json",
                     "viewType" : "DEEDITVIEW"
                   }
                 }, {
@@ -2917,7 +2934,6 @@
                         "modelref" : true,
                         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
                       },
-                      "timeout" : 60000,
                       "uIActionMode" : "FRONT",
                       "uIActionTag" : "complete_review",
                       "uIActionType" : "DEUIACTION",
@@ -2972,7 +2988,6 @@
                       },
                       "refreshMode" : 1,
                       "successMsg" : "已开启",
-                      "timeout" : 60000,
                       "uIActionMode" : "FRONT",
                       "uIActionTag" : "start_cur_stage_review",
                       "uIActionType" : "DEUIACTION",
@@ -3040,7 +3055,6 @@
                       } ],
                       "paramItem" : "review",
                       "refreshMode" : 2,
-                      "timeout" : 60000,
                       "uIActionMode" : "FRONT",
                       "uIActionTag" : "submit_review",
                       "uIActionType" : "DEUIACTION",
@@ -3055,7 +3069,7 @@
                   } ],
                   "toolbarStyle" : "USER",
                   "xDataControlName" : "grid",
-                  "modelid" : "D8FF3F1F-AB64-4F3F-9D1F-6A0920C67D3E",
+                  "modelid" : "8e59f274160e5e92217521ed9898db1d",
                   "modeltype" : "PSDETOOLBAR"
                 }, {
                   "aggMode" : "NONE",
@@ -3369,7 +3383,7 @@
                       "showCaption" : true,
                       "showIcon" : true
                     } ],
-                    "modelid" : "F6B0E272-B2D5-48E0-B73E-5B17BC0EDE73",
+                    "modelid" : "8ff97ed8eeac6f5498f6d54910248a1f",
                     "modeltype" : "PSDETOOLBAR"
                   } ],
                   "getPSDEGridColumns" : [ {
@@ -3416,7 +3430,7 @@
                       "getPSUIActionGroupDetails" : [ {
                         "actionLevel" : 200,
                         "detailType" : "DEUIACTION",
-                        "name" : "uafa07b8",
+                        "name" : "ucb9925e",
                         "getPSSysImage" : {
                           "glyph" : "xf112@FontAwesome",
                           "cssClass" : "fa fa-mail-reply"
@@ -3464,7 +3478,7 @@
                       }, {
                         "actionLevel" : 200,
                         "detailType" : "DEUIACTION",
-                        "name" : "u7c6b8ab",
+                        "name" : "u2d8231b",
                         "getPSSysImage" : {
                           "glyph" : "xf0ec@FontAwesome",
                           "cssClass" : "fa fa-exchange"
@@ -3488,7 +3502,6 @@
                             "glyph" : "xf0ec@FontAwesome",
                             "cssClass" : "fa fa-exchange"
                           },
-                          "timeout" : 60000,
                           "tooltip" : "版本比对",
                           "uIActionMode" : "FRONT",
                           "uIActionTag" : "review_content_version_comparison",
@@ -3615,7 +3628,6 @@
                         "id" : "SUBDATA"
                       },
                       "successMsg" : "评审结果已设置",
-                      "timeout" : 60000,
                       "uIActionMode" : "FRONT",
                       "uIActionTag" : "set_review_result",
                       "uIActionType" : "DEUIACTION",
@@ -3846,7 +3858,7 @@
                   "noSort" : true,
                   "singleSelect" : true,
                   "name" : "grid",
-                  "modelid" : "58ACF61F-05FB-4A71-9F78-92E1D9BCD229",
+                  "modelid" : "43241e27715db36e80bf7ea9d9d68c6b",
                   "modeltype" : "PSDEGRID"
                 }, {
                   "codeName" : "no_grid_view_all_search_form",
@@ -3926,7 +3938,7 @@
                   "enableFilterSave" : false,
                   "noTabHeader" : true,
                   "name" : "searchform",
-                  "modelid" : "CEE9AB0C-06FA-4337-9882-213C9D95E165",
+                  "modelid" : "1fb467764bc3e7445797626c64d04e8f",
                   "modeltype" : "PSDEFORM_SEARCHFORM"
                 }, {
                   "controlType" : "SEARCHBAR",
@@ -3972,7 +3984,7 @@
               "enableRowEdit" : true,
               "enableSearch" : true,
               "rowEditDefault" : false,
-              "modelid" : "6ff0cf3be7e518781325ea366a717715",
+              "modelid" : "83523b7767f2949141412f8265235d29",
               "modeltype" : "PSAPPDEVIEW",
               "getPSAppDERSPaths" : [ [ {
                 "actionRSMode" : 1,
@@ -4178,7 +4190,6 @@
               "groupOP" : "AND",
               "logicCat" : "PANELVISIBLE",
               "logicType" : "GROUP",
-              "name" : "表单成员[druipart5][面板显示]逻辑",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNULL",
                 "dEFDName" : "curstage_id",
@@ -4272,13 +4283,13 @@
                   "MAXHEIGHT" : "450",
                   "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
                   "enableEdit" : "true",
-                  "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"type\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
-                  "QUOTEPARAMS" : "{\"page\":0,\"size\":20,\"sort\":\"update_time,desc\"}",
+                  "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
+                  "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
                   "enableFullScreen" : "true",
                   "MODE" : "default",
-                  "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); return controller.getNodeInfo({ icon, ...item })})",
+                  "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
                   "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
-                  "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.type}\",\"recent_parent\":\"${data.recent_parent}\",\"icon\":\"${data.icon}\"}`",
+                  "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
                   "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
                   "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
                   "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
@@ -4528,7 +4539,6 @@
                       "glyph" : "xf002@FontAwesome",
                       "cssClass" : "fa fa-search"
                     },
-                    "timeout" : 60000,
                     "uIActionMode" : "FRONT",
                     "uIActionTag" : "attachment_preview",
                     "uIActionType" : "DEUIACTION",
@@ -4632,7 +4642,6 @@
                           "pluginCode" : "FILE_DOWNLOAD",
                           "runtimeObject" : true
                         },
-                        "timeout" : 60000,
                         "tooltip" : "下载当前附件",
                         "uIActionMode" : "FRONT",
                         "uIActionTag" : "download",
@@ -4670,7 +4679,6 @@
                           "glyph" : "xf014@FontAwesome",
                           "cssClass" : "fa fa-trash-o"
                         },
-                        "timeout" : 60000,
                         "tooltip" : "删除",
                         "uIActionMode" : "FRONT",
                         "uIActionTag" : "delete",
@@ -4843,7 +4851,7 @@
               "getPSUIActionGroupDetails" : [ {
                 "caption" : "添加附件",
                 "detailType" : "DEUIACTION",
-                "name" : "u861da48",
+                "name" : "u0f550cf",
                 "getPSSysImage" : {
                   "glyph" : "xf067@FontAwesome",
                   "cssClass" : "fa fa-plus"
@@ -4867,7 +4875,6 @@
                     "glyph" : "xf067@FontAwesome",
                     "cssClass" : "fa fa-plus"
                   },
-                  "timeout" : 60000,
                   "uIActionMode" : "FRONT",
                   "uIActionTag" : "add_attachments",
                   "uIActionType" : "DEUIACTION",
@@ -5413,7 +5420,6 @@
                                 "groupOP" : "AND",
                                 "logicCat" : "PANELVISIBLE",
                                 "logicType" : "GROUP",
-                                "name" : "面板成员[container2][面板显示]逻辑",
                                 "getPSPanelItemLogics" : [ {
                                   "condOp" : "NOTEQ",
                                   "dstModelField" : "FIELD_TEXT_DYNAMIC2",
@@ -5525,7 +5531,6 @@
                                     "modelref" : true,
                                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
                                   },
-                                  "timeout" : 60000,
                                   "uIActionMode" : "FRONT",
                                   "uIActionTag" : "panel_usr0103471499_button_calluilogic1_click",
                                   "uIActionType" : "DEUIACTION",
@@ -5569,7 +5574,6 @@
                                     "modelref" : true,
                                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
                                   },
-                                  "timeout" : 60000,
                                   "uIActionMode" : "FRONT",
                                   "uIActionTag" : "panel_usr0103471499_button_calluilogic2_click",
                                   "uIActionType" : "DEUIACTION",
@@ -5603,7 +5607,8 @@
                                 "contentType" : "HTML",
                                 "editorParams" : {
                                   "contenttype" : "HTML",
-                                  "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); const tempIcon = icon.trim(); return `<span class='comment-tag' data-value='${JSON.stringify(item)}'>${tempIcon} ${item.identifier} ${item.name}</span>`;}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
+                                  "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
+                                  "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
                                 },
                                 "editorStyle" : "COMMENT_ITEM",
                                 "editorType" : "RAW",
@@ -5639,7 +5644,6 @@
                                 "groupOP" : "AND",
                                 "logicCat" : "PANELVISIBLE",
                                 "logicType" : "GROUP",
-                                "name" : "面板成员[container3][面板显示]逻辑",
                                 "getPSPanelItemLogics" : [ {
                                   "condOp" : "ISNOTNULL",
                                   "dstModelField" : "PID",
@@ -5697,18 +5701,20 @@
                                 "itemStyle" : "DEFAULT",
                                 "itemType" : "FIELD",
                                 "name" : "pcontent",
-                                "getPSControlRenders" : [ {
-                                  "layoutPanelModel" : "data.pcontent?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/#{(\".+?\":\".+?\"),\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); const tempIcon = icon.trim(); return `<span class='comment-tag' data-value='${JSON.stringify(item)}'>${tempIcon} ${item.identifier} ${item.name}</span>`;}).replaceAll(/<span data-w-e-type=\"emoji\" class='emoji'>(.+?)<\\/span>/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji));return `<span data-w-e-type=\"emoji\" class='emoji'>${tempVal}</span>`;}).replaceAll(/{\"emoji\":\"(.+?)\"}/g, (x, emoji) => {const tempVal = decodeURIComponent(atob(emoji));return `<span data-w-e-type=\"emoji\" class='emoji'>${tempVal}</span>`;})",
-                                  "name" : "logic1",
-                                  "renderType" : "LAYOUTPANEL_MODEL"
-                                } ],
                                 "getPSEditor" : {
                                   "contentType" : "HTML",
                                   "editorParams" : {
-                                    "contenttype" : "HTML"
+                                    "contenttype" : "HTML",
+                                    "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
                                   },
+                                  "editorStyle" : "COMMENT_ITEM",
                                   "editorType" : "RAW",
                                   "name" : "pcontent",
+                                  "getPSSysPFPlugin" : {
+                                    "pluginType" : "EDITOR_CUSTOMSTYLE",
+                                    "pluginCode" : "COMMENT_ITEM",
+                                    "runtimeObject" : true
+                                  },
                                   "predefinedType" : "FIELD_TEXT_DYNAMIC"
                                 },
                                 "getPSLayoutPos" : {
@@ -5812,6 +5818,17 @@
                         "id" : "LIST"
                       },
                       "getPSDEListDataItems" : [ {
+                        "dataType" : 25,
+                        "getFrontPSCodeList" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+                        },
+                        "name" : "pcreate_man",
+                        "getPSAppDEField" : {
+                          "name" : "PCREATE_MAN",
+                          "codeName" : "pcreate_man"
+                        }
+                      }, {
                         "dataType" : 5,
                         "format" : "YYYY-MM-DD HH:mm:ss",
                         "name" : "create_time",
@@ -5828,10 +5845,14 @@
                         }
                       }, {
                         "dataType" : 25,
-                        "name" : "id",
+                        "getFrontPSCodeList" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+                        },
+                        "name" : "create_man",
                         "getPSAppDEField" : {
-                          "name" : "ID",
-                          "codeName" : "id"
+                          "name" : "CREATE_MAN",
+                          "codeName" : "create_man"
                         }
                       }, {
                         "dataType" : 25,
@@ -5841,33 +5862,18 @@
                           "codeName" : "pid"
                         }
                       }, {
+                        "dataType" : 25,
+                        "name" : "id",
+                        "getPSAppDEField" : {
+                          "name" : "ID",
+                          "codeName" : "id"
+                        }
+                      }, {
                         "dataType" : 21,
                         "name" : "content",
                         "getPSAppDEField" : {
                           "name" : "CONTENT",
                           "codeName" : "content"
-                        }
-                      }, {
-                        "dataType" : 25,
-                        "getFrontPSCodeList" : {
-                          "modelref" : true,
-                          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-                        },
-                        "name" : "pcreate_man",
-                        "getPSAppDEField" : {
-                          "name" : "PCREATE_MAN",
-                          "codeName" : "pcreate_man"
-                        }
-                      }, {
-                        "dataType" : 25,
-                        "getFrontPSCodeList" : {
-                          "modelref" : true,
-                          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-                        },
-                        "name" : "create_man",
-                        "getPSAppDEField" : {
-                          "name" : "CREATE_MAN",
-                          "codeName" : "create_man"
                         }
                       }, {
                         "dataType" : 25,
@@ -5975,6 +5981,72 @@
                   "modelid" : "eac2aa8e4fe80453d257341ab278a79a",
                   "modeltype" : "PSAPPDEVIEW",
                   "getPSAppDERSPaths" : [ [ {
+                    "actionRSMode" : 1,
+                    "codeName" : "test_plans",
+                    "dataRSMode" : 0,
+                    "majorDECodeName" : "project",
+                    "majorDEName" : "PROJECT",
+                    "getMajorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+                    },
+                    "minorDECodeName" : "test_plan",
+                    "minorDEName" : "TEST_PLAN",
+                    "getMinorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+                    },
+                    "name" : "DER1N_TEST_PLAN_PROJECT_PROJECT_ID",
+                    "getParentPSAppDEField" : {
+                      "name" : "PROJECT_ID",
+                      "codeName" : "project_id"
+                    },
+                    "rSMode" : 2
+                  }, {
+                    "actionRSMode" : 1,
+                    "codeName" : "runs",
+                    "dataRSMode" : 0,
+                    "majorDECodeName" : "test_plan",
+                    "majorDEName" : "TEST_PLAN",
+                    "getMajorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+                    },
+                    "minorDECodeName" : "run",
+                    "minorDEName" : "RUN",
+                    "getMinorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                    },
+                    "name" : "DER1N_RUN_TEST_PLAN_PLAN_ID",
+                    "getParentPSAppDEField" : {
+                      "name" : "PLAN_ID",
+                      "codeName" : "plan_id"
+                    },
+                    "rSMode" : 2
+                  }, {
+                    "actionRSMode" : 1,
+                    "codeName" : "comments",
+                    "dataRSMode" : 0,
+                    "majorDECodeName" : "run",
+                    "majorDEName" : "RUN",
+                    "getMajorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+                    },
+                    "minorDECodeName" : "comment",
+                    "minorDEName" : "COMMENT",
+                    "getMinorPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
+                    },
+                    "name" : "DERCOSTOM_COMMENT_RUN_PRINCIPAL_ID",
+                    "getParentPSAppDEField" : {
+                      "name" : "PRINCIPAL_ID",
+                      "codeName" : "principal_id"
+                    },
+                    "rSMode" : 2
+                  } ], [ {
                     "actionRSMode" : 1,
                     "codeName" : "test_plans",
                     "dataRSMode" : 0,
@@ -7021,7 +7093,7 @@
                 "rawValue" : false
               } ],
               "getPSDEViewCodeName" : "list_view",
-              "getPSDEViewId" : "8EB43CE1-512B-4209-A9C2-FEE5CB7F411C",
+              "getPSDEViewId" : "4bbb21d1872ebcd758ad32ec9b51d22b",
               "getPSViewLayoutPanel" : {
                 "codeName" : "usr0520728860",
                 "controlType" : "VIEWLAYOUTPANEL",
@@ -7117,18 +7189,7 @@
                         "grow" : -1,
                         "heightMode" : "FULL",
                         "layout" : "FLEX"
-                      },
-                      "getPSPanelItems" : [ {
-                        "caption" : "工具栏",
-                        "itemStyle" : "DEFAULT",
-                        "itemType" : "CTRLPOS",
-                        "name" : "toolbar",
-                        "getPSLayoutPos" : {
-                          "grow" : -1,
-                          "layout" : "FLEX"
-                        },
-                        "showCaption" : true
-                      } ]
+                      }
                     } ]
                   } ],
                   "predefinedType" : "VIEWHEADER"
@@ -7161,7 +7222,7 @@
                 "layoutPanel" : true,
                 "useDefaultLayout" : false,
                 "viewProxyMode" : true,
-                "modelid" : "8B9206B8-28DE-4B61-895E-8F614265EE6A",
+                "modelid" : "d7c9940e5793e559c4da263b73e484a1",
                 "modeltype" : "PSSYSVIEWLAYOUTPANEL",
                 "getPSAppViewEngines" : [ {
                   "engineCat" : "VIEW",
@@ -7258,21 +7319,6 @@
                   }
                 } ],
                 "getPSControls" : [ {
-                  "codeName" : "list_view_toolbar",
-                  "controlType" : "TOOLBAR",
-                  "logicName" : "工具栏模板（默认表格界面）",
-                  "name" : "toolbar",
-                  "getPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_stage.json"
-                  },
-                  "getPSControlParam" : {
-                    "id" : "TOOLBAR"
-                  },
-                  "xDataControlName" : "list",
-                  "modelid" : "ec6fbb681f5e3e6783c2af57e5eefaaa",
-                  "modeltype" : "PSDETOOLBAR"
-                }, {
                   "codeName" : "default",
                   "controlType" : "SEARCHFORM",
                   "defaultLabelWidth" : 130,
@@ -7353,7 +7399,7 @@
                   "enableFilterSave" : false,
                   "noTabHeader" : true,
                   "name" : "searchform",
-                  "modelid" : "29f7692674b3c17f74651f790fbc213a",
+                  "modelid" : "6a830069f68f3cacd06e018e773f245e",
                   "modeltype" : "PSDEFORM_SEARCHFORM"
                 }, {
                   "codeName" : "stage_list",
@@ -7647,7 +7693,6 @@
                               "groupOP" : "AND",
                               "logicCat" : "PANELVISIBLE",
                               "logicType" : "GROUP",
-                              "name" : "面板成员[reviewer_name][面板显示]逻辑",
                               "getPSPanelItemLogics" : [ {
                                 "groupOP" : "OR",
                                 "logicType" : "GROUP",
@@ -7708,7 +7753,6 @@
                               "groupOP" : "AND",
                               "logicCat" : "PANELVISIBLE",
                               "logicType" : "GROUP",
-                              "name" : "面板成员[reviewer_readonly][面板显示]逻辑",
                               "getPSPanelItemLogics" : [ {
                                 "groupOP" : "AND",
                                 "logicType" : "GROUP",
@@ -7768,7 +7812,7 @@
                       } ]
                     } ],
                     "name" : "list_itempanel",
-                    "modelid" : "F8C732C6-AA6C-4C00-8ECD-DCDC8A13793C",
+                    "modelid" : "6a14381f2e563365a984919d97e65a4f",
                     "modeltype" : "PSSYSVIEWPANEL"
                   },
                   "logicName" : "stage_list",
@@ -7934,7 +7978,7 @@
                   "showHeader" : true,
                   "singleSelect" : true,
                   "name" : "list",
-                  "modelid" : "0A95AC68-7F2D-4625-AA91-4EC079E07AAA",
+                  "modelid" : "d3d04b69a45d623ce8307afb2b4dc1f3",
                   "modeltype" : "PSDELIST"
                 }, {
                   "controlType" : "SEARCHBAR",
@@ -7977,7 +8021,7 @@
               "enableQuickSearch" : true,
               "enableSearch" : true,
               "showCaptionBar" : false,
-              "modelid" : "5c4e8de04e2df1c286ac0b5b466dffce",
+              "modelid" : "fe1747f4c00f8f335c9075f0b50d29c5",
               "modeltype" : "PSAPPDEVIEW"
             },
             "getPSLayoutPos" : {
@@ -8222,7 +8266,6 @@
           "groupOP" : "AND",
           "logicCat" : "PANELVISIBLE",
           "logicType" : "GROUP",
-          "name" : "表单成员[review_results][面板显示]逻辑",
           "getPSDEFDLogics" : [ {
             "condOP" : "ISNOTNULL",
             "dEFDName" : "choosed_content",
@@ -8302,7 +8345,6 @@
                     "modelref" : true,
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
                   },
-                  "timeout" : 60000,
                   "tooltip" : "返回",
                   "uIActionMode" : "FRONT",
                   "uIActionTag" : "back",
@@ -8317,7 +8359,7 @@
               } ],
               "toolbarStyle" : "USER",
               "xDataControlName" : "form",
-              "modelid" : "9A2A09B4-E1BA-4A2A-80DE-E85723CD5E9C",
+              "modelid" : "aaf289a359beee100449349ee35e3987",
               "modeltype" : "PSDETOOLBAR"
             }, {
               "codeName" : "set_result_edit_view_form",
@@ -9218,7 +9260,6 @@
                                 "modelref" : true,
                                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_result.json"
                               },
-                              "timeout" : 60000,
                               "uIActionMode" : "FRONT",
                               "uIActionTag" : "pass",
                               "uIActionType" : "DEUIACTION",
@@ -9272,7 +9313,6 @@
                                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_result.json"
                               },
                               "refreshMode" : 1,
-                              "timeout" : 60000,
                               "uIActionMode" : "FRONT",
                               "uIActionTag" : "decline",
                               "uIActionType" : "DEUIACTION",
@@ -9407,7 +9447,7 @@
                       },
                       "noTabHeader" : true,
                       "name" : "mdctrl1_form",
-                      "modelid" : "593A8C74-B75B-4B5A-A7D5-D7DA5BA41C90",
+                      "modelid" : "f75759e440add5333964d3534b98f592",
                       "modeltype" : "PSDEFORM_EDITFORM"
                     },
                     "contentType" : "FORM",
@@ -10099,7 +10139,7 @@
                       },
                       "noTabHeader" : true,
                       "name" : "mdctrl2_form",
-                      "modelid" : "7BB71FFA-23FD-4917-974D-F696C75EBC68",
+                      "modelid" : "88bf50b85bf093b353bcb5ffe7514944",
                       "modeltype" : "PSDEFORM_EDITFORM"
                     },
                     "contentType" : "FORM",
@@ -10206,7 +10246,7 @@
               },
               "noTabHeader" : true,
               "name" : "form",
-              "modelid" : "10746CD0-D540-41F7-96D7-B74165E317D3",
+              "modelid" : "4bcefe2cbf57111cc46d21d26417527d",
               "modeltype" : "PSDEFORM_EDITFORM"
             }, {
               "codeName" : "set_result_edit_view_datainfobar",
@@ -10234,7 +10274,7 @@
               "getPSControlParam" : { }
             } ],
             "getPSDEViewCodeName" : "set_result_edit_view",
-            "getPSDEViewId" : "B3E863BD-7465-4ED8-97E5-7CB1DB02CF67",
+            "getPSDEViewId" : "6f95528a126875566b4d8b5f5c664e07",
             "getPSSysCss" : {
               "cssName" : "review-results-style"
             },
@@ -10259,7 +10299,7 @@
             "enableDP" : true,
             "showCaptionBar" : false,
             "showDataInfoBar" : true,
-            "modelid" : "b84f6a71b4a64654a669d9b8eea6a267",
+            "modelid" : "5956bc94f187fb16ddff5afecb4759df",
             "modeltype" : "PSAPPDEVIEW",
             "getPSAppDERSPaths" : [ [ {
               "actionRSMode" : 1,
@@ -10595,6 +10635,6 @@
     }
   },
   "noTabHeader" : true,
-  "modelid" : "04873E7D-AD13-4F72-9070-820D4145744C",
+  "modelid" : "42a3feb159bc5d5ff0f0cdde2c755ca7",
   "modeltype" : "PSDEFORM_EDITFORM"
 }

@@ -445,7 +445,7 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "UPDATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -2781,7 +2781,7 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "UPDATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -4605,7 +4605,6 @@
       "modelref" : true,
       "id" : "SRFUR__LIBRARY_M"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "create_library",
     "uIActionType" : "DEUIACTION",
@@ -4703,7 +4702,6 @@
       "cssClass" : "fa fa-trash-o"
     },
     "scriptCode" : "const srfkey = context.library ? context.library : data[0].id;\r\nwindow.location.hash=`/-/index/library=${srfkey}/library_index_view/srfnav=usrdrgroup1227882118/library_setting_view/srfnav=recycle/test_case_recycle_grid_view/-`",
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_deleted_view",
     "uIActionType" : "DEUIACTION",
@@ -4734,7 +4732,6 @@
       "cssClass" : "fa fa-th-list"
     },
     "scriptCode" : "const srfkey = context.library ? context.library : data[0].id;\r\nwindow.location.hash=`/-/index/library=${srfkey}/library_index_view/srfnav=usrdrgroup1227882118/library_setting_view/srfnav=member/library_member_config_grid_view/-`",
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_details_setting_view",
     "uIActionType" : "DEUIACTION",
@@ -4756,7 +4753,6 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
     },
     "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/library_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_1%3Anode/library_config_tab_exp_view/srfnav=config_tab_exp_view_in_progress/library_in_progress_grid_view/-`",
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_global_setting",
     "uIActionType" : "DEUIACTION",
@@ -4778,7 +4774,6 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
     },
     "getPSSysImage" : { },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_index_view",
     "uIActionType" : "DEUIACTION",
@@ -4808,7 +4803,6 @@
       "name" : "SRFREADONLY",
       "rawValue" : true
     } ],
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_library_exp_view",
     "uIActionType" : "DEUIACTION",
@@ -4825,7 +4819,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
     },
-    "timeout" : 60000,
     "tooltip" : "新窗口打开",
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_new",
@@ -4853,7 +4846,6 @@
       "value" : "id",
       "rawValue" : false
     } ],
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_new_library",
     "uIActionType" : "DEUIACTION",
@@ -4879,7 +4871,6 @@
       "glyph" : "xf05a@FontAwesome",
       "cssClass" : "fa fa-info-circle"
     },
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_show_edit_view",
     "uIActionType" : "DEUIACTION",
@@ -4939,7 +4930,6 @@
       "cssClass" : "fa fa-edit"
     },
     "scriptCode" : "const srfkey = context.library ? context.library : data[0].id;\r\nwindow.location.hash=`/-/index/library=${srfkey}/library_index_view/srfnav=usrdrgroup1227882118/library_setting_view/srfnav=base/library_base_info_edit_view/-`",
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "setting_base_info",
     "uIActionType" : "DEUIACTION",
@@ -4965,7 +4955,6 @@
       "cssClass" : "fa fa-users"
     },
     "scriptCode" : "const srfkey = context.library ? context.library : data[0].id;\r\nwindow.location.hash=`/-/index/library=${srfkey}/library_index_view/srfnav=usrdrgroup1227882118/library_setting_view/srfnav=member/library_member_config_grid_view/-`",
-    "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "setting_library_member",
     "uIActionType" : "DEUIACTION",
@@ -5071,6 +5060,12 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 571
+    }, {
       "code" : "\tconst rows = uiLogic.grid.state.rows;\r\n\tif (rows && rows.length > 0) {\r\n\t\trows.forEach(row => {\r\n\t\t\tconst titleColumn = row.uiActionGroupStates.name;\r\n\t\t\tconst is_favorite = row.data.is_favorite;\r\n\t\t\tif (titleColumn && Object.values(titleColumn).length > 0) {\r\n\t\t\t\tObject.values(titleColumn).forEach(action => {\r\n\t\t\t\t\t// 收藏\r\n\t\t\t\t\tif (action.uiActionId === 'star@library') {\r\n\t\t\t\t\t\taction.visible = is_favorite == 0;\r\n\t\t\t\t\t} else if (action.uiActionId === 'unstar@library') {\r\n\t\t\t\t\t\t// 取消收藏\r\n\t\t\t\t\t\taction.visible = is_favorite != 0;\r\n\t\t\t\t\t}\r\n\t\t\t\t})\r\n\t\t\t}\r\n\t\t})\r\n\t}\r\n",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 160,
@@ -5089,25 +5084,19 @@
         }
       } ],
       "topPos" : 420
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 200,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 571
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "Grid",
-      "logicName" : "表格",
-      "name" : "表格",
-      "activeCtrlParam" : true,
-      "ctrlParam" : true
-    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
+    }, {
+      "codeName" : "Grid",
+      "logicName" : "表格",
+      "name" : "表格",
+      "activeCtrlParam" : true,
+      "ctrlParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -5227,16 +5216,16 @@
       "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
+      "codeName" : "list",
+      "logicName" : "临时数据列表",
+      "name" : "临时数据列表",
+      "entityListParam" : true
+    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
-    }, {
-      "codeName" : "list",
-      "logicName" : "临时数据列表",
-      "name" : "临时数据列表",
-      "entityListParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -5258,32 +5247,24 @@
     "viewType" : "DETREEEXPVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_pick_up_grid_view.json",
-    "viewType" : "DEPICKUPGRIDVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_pick_up_view.json",
+    "viewType" : "DEPICKUPVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_in_progress_grid_view.json",
-    "viewType" : "DEGRIDVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_advanced_setting_edit_view.json",
+    "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_config_tab_exp_view.json",
     "viewType" : "DETABEXPVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_all_grid_view.json",
-    "viewType" : "DEGRIDVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_is_archived_grid_view.json",
-    "viewType" : "DEGRIDVIEW"
-  }, {
-    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_main_view.json",
     "viewType" : "DETABEXPVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_deleted_grid_view.json",
-    "viewType" : "DEGRIDVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_details_setting_tree_exp_view.json",
+    "viewType" : "DETREEEXPVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_quick_create_view.json",
@@ -5294,16 +5275,8 @@
     "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_org_grid_view.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_deleted_grid_view.json",
     "viewType" : "DEGRIDVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_team_grid_view.json",
-    "viewType" : "DEGRIDVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_index_view.json",
-    "viewType" : "DEINDEXVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_move_library_view.json",
@@ -5314,23 +5287,31 @@
     "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_index_view.json",
+    "viewType" : "DEINDEXVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_team_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_archived_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_setting_member_view.json",
     "viewType" : "DEOPTVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_filter_tab_exp_view.json",
-    "viewType" : "DETABEXPVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_org_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_redirect_view.json",
     "viewType" : "DEREDIRECTVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_details_setting_tree_exp_view.json",
-    "viewType" : "DETREEEXPVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_library_grid_parts.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_is_archived_grid_view.json",
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
@@ -5342,24 +5323,32 @@
     "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_archived_grid_view.json",
-    "viewType" : "DEGRIDVIEW"
-  }, {
-    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_setting_view.json",
     "viewType" : "DEEDITVIEW2"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_advanced_setting_edit_view.json",
-    "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_grid_view.json",
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_pick_up_view.json",
-    "viewType" : "DEPICKUPVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_in_progress_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_all_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_filter_tab_exp_view.json",
+    "viewType" : "DETABEXPVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_pick_up_grid_view.json",
+    "viewType" : "DEPICKUPGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_library_grid_parts.json",
+    "viewType" : "DEGRIDVIEW"
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "建立",
@@ -5368,8 +5357,38 @@
     "logicName" : "删除",
     "name" : "DELETE"
   }, {
+    "logicName" : "属性扩展_管理",
+    "name" : "MANAGE_PSDEFIELD"
+  }, {
+    "logicName" : "表单扩展_管理",
+    "name" : "MANAGE_PSDEFORM"
+  }, {
+    "logicName" : "逻辑扩展_管理",
+    "name" : "MANAGE_PSDELOGIC"
+  }, {
+    "logicName" : "主状态逻辑扩展_管理",
+    "name" : "MANAGE_PSDEMSLOGIC"
+  }, {
+    "logicName" : "通知扩展_管理",
+    "name" : "MANAGE_PSDENOTIFY"
+  }, {
     "logicName" : "读取",
     "name" : "READ"
+  }, {
+    "logicName" : "属性扩展_只读",
+    "name" : "READ_PSDEFIELD"
+  }, {
+    "logicName" : "表单扩展_只读",
+    "name" : "READ_PSDEFORM"
+  }, {
+    "logicName" : "逻辑扩展_只读",
+    "name" : "READ_PSDELOGIC"
+  }, {
+    "logicName" : "主状态逻辑扩展_只读",
+    "name" : "READ_PSDEMSLOGIC"
+  }, {
+    "logicName" : "通知扩展_只读",
+    "name" : "READ_PSDENOTIFY"
   }, {
     "logicName" : "子数据权限",
     "name" : "SUBDATA"

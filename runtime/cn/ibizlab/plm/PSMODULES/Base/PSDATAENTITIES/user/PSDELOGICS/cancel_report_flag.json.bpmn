@@ -12,12 +12,15 @@
                             <tns:global identifier="usercancel_report_flagdefault" type="cn.ibizlab.plm.core.base.domain.user" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="usercancel_report_flagdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="获取用户全量信息"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="usercancel_report_flagprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置用户参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="usercancel_report_flagdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="取消用户统计状态"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="usercancel_report_flagend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
-                    <sequenceFlow id="begin_prepareparam1" sourceRef="begin" targetRef="prepareparam1">
+                    <sequenceFlow id="begin_deaction2" sourceRef="begin" targetRef="deaction2">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction2_prepareparam1" sourceRef="deaction2" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
                     </sequenceFlow>

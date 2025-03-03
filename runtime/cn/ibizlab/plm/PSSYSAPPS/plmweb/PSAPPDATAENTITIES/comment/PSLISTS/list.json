@@ -236,7 +236,6 @@
             "groupOP" : "AND",
             "logicCat" : "PANELVISIBLE",
             "logicType" : "GROUP",
-            "name" : "面板成员[container2][面板显示]逻辑",
             "getPSPanelItemLogics" : [ {
               "condOp" : "NOTEQ",
               "dstModelField" : "FIELD_TEXT_DYNAMIC2",
@@ -348,7 +347,6 @@
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
               },
-              "timeout" : 60000,
               "uIActionMode" : "FRONT",
               "uIActionTag" : "panel_usr0103471499_button_calluilogic1_click",
               "uIActionType" : "DEUIACTION",
@@ -392,7 +390,6 @@
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
               },
-              "timeout" : 60000,
               "uIActionMode" : "FRONT",
               "uIActionTag" : "panel_usr0103471499_button_calluilogic2_click",
               "uIActionType" : "DEUIACTION",
@@ -426,7 +423,8 @@
             "contentType" : "HTML",
             "editorParams" : {
               "contenttype" : "HTML",
-              "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\"),\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); const tempIcon = icon.trim(); return `<span class='comment-tag' data-value='${JSON.stringify(item)}'>${tempIcon} ${item.identifier} ${item.name}</span>`;}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
+              "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
+              "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
             },
             "editorStyle" : "COMMENT_ITEM",
             "editorType" : "RAW",
@@ -462,7 +460,6 @@
             "groupOP" : "AND",
             "logicCat" : "PANELVISIBLE",
             "logicType" : "GROUP",
-            "name" : "面板成员[container3][面板显示]逻辑",
             "getPSPanelItemLogics" : [ {
               "condOp" : "ISNOTNULL",
               "dstModelField" : "PID",
@@ -520,18 +517,20 @@
             "itemStyle" : "DEFAULT",
             "itemType" : "FIELD",
             "name" : "pcontent",
-            "getPSControlRenders" : [ {
-              "layoutPanelModel" : "data.pcontent?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/#{(\".+?\":\".+?\"),\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); const tempIcon = icon.trim(); return `<span class='comment-tag' data-value='${JSON.stringify(item)}'>${tempIcon} ${item.identifier} ${item.name}</span>`;}).replaceAll(/<span data-w-e-type=\"emoji\" class='emoji'>(.+?)<\\/span>/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji));return `<span data-w-e-type=\"emoji\" class='emoji'>${tempVal}</span>`;}).replaceAll(/{\"emoji\":\"(.+?)\"}/g, (x, emoji) => {const tempVal = decodeURIComponent(atob(emoji));return `<span data-w-e-type=\"emoji\" class='emoji'>${tempVal}</span>`;})",
-              "name" : "logic1",
-              "renderType" : "LAYOUTPANEL_MODEL"
-            } ],
             "getPSEditor" : {
               "contentType" : "HTML",
               "editorParams" : {
-                "contenttype" : "HTML"
+                "contenttype" : "HTML",
+                "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
               },
+              "editorStyle" : "COMMENT_ITEM",
               "editorType" : "RAW",
               "name" : "pcontent",
+              "getPSSysPFPlugin" : {
+                "pluginType" : "EDITOR_CUSTOMSTYLE",
+                "pluginCode" : "COMMENT_ITEM",
+                "runtimeObject" : true
+              },
               "predefinedType" : "FIELD_TEXT_DYNAMIC"
             },
             "getPSLayoutPos" : {
@@ -561,6 +560,17 @@
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
   },
   "getPSDEListDataItems" : [ {
+    "dataType" : 25,
+    "getFrontPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+    },
+    "name" : "pcreate_man",
+    "getPSAppDEField" : {
+      "name" : "PCREATE_MAN",
+      "codeName" : "pcreate_man"
+    }
+  }, {
     "dataType" : 5,
     "format" : "YYYY-MM-DD HH:mm:ss",
     "name" : "create_time",
@@ -577,10 +587,14 @@
     }
   }, {
     "dataType" : 25,
-    "name" : "id",
+    "getFrontPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+    },
+    "name" : "create_man",
     "getPSAppDEField" : {
-      "name" : "ID",
-      "codeName" : "id"
+      "name" : "CREATE_MAN",
+      "codeName" : "create_man"
     }
   }, {
     "dataType" : 25,
@@ -590,33 +604,18 @@
       "codeName" : "pid"
     }
   }, {
+    "dataType" : 25,
+    "name" : "id",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    }
+  }, {
     "dataType" : 21,
     "name" : "content",
     "getPSAppDEField" : {
       "name" : "CONTENT",
       "codeName" : "content"
-    }
-  }, {
-    "dataType" : 25,
-    "getFrontPSCodeList" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-    },
-    "name" : "pcreate_man",
-    "getPSAppDEField" : {
-      "name" : "PCREATE_MAN",
-      "codeName" : "pcreate_man"
-    }
-  }, {
-    "dataType" : 25,
-    "getFrontPSCodeList" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-    },
-    "name" : "create_man",
-    "getPSAppDEField" : {
-      "name" : "CREATE_MAN",
-      "codeName" : "create_man"
     }
   }, {
     "dataType" : 25,

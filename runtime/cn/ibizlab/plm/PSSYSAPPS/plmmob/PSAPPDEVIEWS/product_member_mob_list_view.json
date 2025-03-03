@@ -108,6 +108,9 @@
         "id" : "role_id",
         "viewFieldName" : "ROLE_ID"
       }, {
+        "id" : "title",
+        "viewFieldName" : "TITLE"
+      }, {
         "id" : "id",
         "hidden" : true,
         "viewFieldName" : "id"
@@ -150,7 +153,8 @@
           "getPSLayout" : {
             "align" : "space-between",
             "dir" : "row",
-            "layout" : "FLEX"
+            "layout" : "FLEX",
+            "vAlign" : "center"
           },
           "getPSLayoutPos" : {
             "grow" : -1,
@@ -222,7 +226,41 @@
               },
               "viewFieldName" : "ROLE_ID",
               "convertToCodeItemText" : true
-            } ]
+            }, {
+              "caption" : "文本(动态)",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "FIELD",
+              "name" : "title",
+              "getPSEditor" : {
+                "editorType" : "SPAN",
+                "name" : "title",
+                "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                "renderMode" : "TEXT_DYNAMIC",
+                "enableLinkView" : false
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX",
+                "spacingLeft" : "OUTERMEDIUM"
+              },
+              "getPSPanelItemGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "getPSPanelItemLogics" : [ {
+                  "condOp" : "ISNOTNULL",
+                  "dstModelField" : "TITLE",
+                  "logicType" : "SINGLE",
+                  "name" : "逻辑项"
+                } ],
+                "relatedItemNames" : [ "title" ],
+                "notMode" : false
+              } ],
+              "viewFieldName" : "TITLE"
+            } ],
+            "getPSSysCss" : {
+              "cssName" : "mob_member_title_style"
+            }
           }, {
             "actionGroupExtractMode" : "ITEMS",
             "caption" : "按钮组",
@@ -246,7 +284,7 @@
               "getPSUIActionGroupDetails" : [ {
                 "caption" : "设置角色",
                 "detailType" : "DEUIACTION",
-                "name" : "ud4e35e4",
+                "name" : "u37ee770",
                 "getPSSysImage" : {
                   "glyph" : "xf185@FontAwesome",
                   "cssClass" : "fa fa-sun-o"
@@ -302,7 +340,7 @@
               }, {
                 "caption" : "移除成员",
                 "detailType" : "DEUIACTION",
-                "name" : "u20562c4",
+                "name" : "u2009d78",
                 "getPSSysImage" : {
                   "glyph" : "xf014@FontAwesome",
                   "cssClass" : "fa fa-trash-o"
@@ -367,7 +405,7 @@
         } ]
       } ],
       "name" : "mdctrl_itempanel",
-      "modelid" : "2C17F327-7C3F-4F89-925D-E69D9E7CCD31",
+      "modelid" : "822e3646478db3efc7856f1faf2f8eaa",
       "modeltype" : "PSSYSVIEWPANEL"
     },
     "logicName" : "List",
@@ -478,7 +516,8 @@
         "codeName" : "product_id"
       }
     } ],
-    "pagingSize" : 1000,
+    "pagingMode" : 2,
+    "pagingSize" : 20,
     "getRemovePSControlAction" : {
       "modelref" : true,
       "id" : "remove",
@@ -521,7 +560,7 @@
     "showHeader" : true,
     "singleSelect" : false,
     "name" : "mdctrl",
-    "modelid" : "9FF8881E-F5CD-40EA-923E-D8E9B332A852",
+    "modelid" : "8d9a071b6ba6152f8ea5f79d35c3502a",
     "modeltype" : "PSDELIST"
   }, {
     "codeName" : "mob_list_view_righttoolbar",
@@ -598,7 +637,7 @@
     } ],
     "toolbarStyle" : "MOBNAVRIGHTMENU",
     "xDataControlName" : "mdctrl",
-    "modelid" : "69C0D4D5-0110-4F09-B315-21E7D5DC2553",
+    "modelid" : "dbd4e0ba1b43c86d07fd0f526488cd33",
     "modeltype" : "PSDETOOLBAR"
   }, {
     "controlType" : "SEARCHBAR",
@@ -632,7 +671,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "mob_list_view",
-  "getPSDEViewId" : "75A0E775-D76F-4C61-A058-C90625E3D666",
+  "getPSDEViewId" : "3c15caf5a1adf6970bd0d769cdff1c21",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEMOBLISTVIEW",
@@ -657,9 +696,53 @@
   "enablePullDownRefresh" : false,
   "enableQuickSearch" : true,
   "enableSearch" : true,
-  "modelid" : "d742a5cb16e61571e7fe4ac968973f6d",
+  "modelid" : "0876f657bdf442ba076f9ac012d86fd7",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "users",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "department",
+    "majorDEName" : "DEPARTMENT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/department.json"
+    },
+    "minorDECodeName" : "user",
+    "minorDEName" : "USER",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/user.json"
+    },
+    "name" : "DER1N_USER_DEPARTMENT_DEPARTMENT_ID",
+    "getParentPSAppDEField" : {
+      "name" : "DEPARTMENT_ID",
+      "codeName" : "department_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "product_members",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "user",
+    "majorDEName" : "USER",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/user.json"
+    },
+    "minorDECodeName" : "product_member",
+    "minorDEName" : "PRODUCT_MEMBER",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/product_member.json"
+    },
+    "name" : "DER1N_PRODUCT_MEMBER_USER_USER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "USER_ID",
+      "codeName" : "user_id"
+    },
+    "rSMode" : 2
+  } ], [ {
     "actionRSMode" : 1,
     "codeName" : "product_members",
     "dataRSMode" : 0,

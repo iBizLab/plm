@@ -30,10 +30,10 @@
                         <endEvent id="delogic1_end" name="end"/>
                         <sequenceFlow id="delogic1_end_line" sourceRef="delogic1" targetRef="delogic1_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorydelete_child_categoryprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="判断节点（无操作）"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorydelete_child_categoryprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="上级的是否叶子节点变更"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorydelete_child_categoryprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="上级的是否叶子节点变更"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorydelete_child_categorydedataset3" id="dedataset3" implementation="http://www.jboss.org/drools/rule" name="模块下模块"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorydelete_child_categoryrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="修改需求信息"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorydelete_child_categoryprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="上级的是否叶子节点变更"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorydelete_child_categorydedataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="子产品下模块"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorydelete_child_categoryend2" id="end2" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end2_end" name="end"/>
@@ -115,8 +115,6 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam3_dedataset2" sourceRef="prepareparam3" targetRef="dedataset2">
-                    </sequenceFlow>
                     <sequenceFlow id="prepareparam2_dedataset3" sourceRef="prepareparam2" targetRef="dedataset3">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-dedataset3_deaction3" sourceRef="gateway-dedataset3" targetRef="deaction3">
@@ -146,6 +144,8 @@
                             </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="rawsqlcall1_deaction2" sourceRef="rawsqlcall1" targetRef="deaction2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_dedataset2" sourceRef="prepareparam3" targetRef="dedataset2">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-dedataset2_end2" sourceRef="gateway-dedataset2" targetRef="end2">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[

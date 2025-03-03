@@ -9,8 +9,12 @@
             </extensionElements>
                 <startEvent id="begin" isInterrupting="true"/>
                 <endEvent id="prepareparam1_end" name="end"/>
-                            <callActivity activiti:exclusive="true" calledElement="cn.ibizlab.plm.core.team.service.logic.discuss_postmob_get_topic_member" id="AAC8DE30-847B-4E09-B187-F6BAF95D0AD9" name="mob_get_topic_member.json.bpmn"/>
-                        <sequenceFlow id="begin_AAC8DE30-847B-4E09-B187-F6BAF95D0AD9" sourceRef="begin" targetRef="AAC8DE30-847B-4E09-B187-F6BAF95D0AD9"/>
-                            <sequenceFlow id="AAC8DE30-847B-4E09-B187-F6BAF95D0AD9_prepareparam1_end" sourceRef="AAC8DE30-847B-4E09-B187-F6BAF95D0AD9" targetRef="prepareparam1_end"/>
+                            <callActivity activiti:exclusive="true" calledElement="cn.ibizlab.plm.core.team.service.logic.discuss_postcreate_recent" id="0d9972226892f8233ac40119338970cf" name="create_recent.json.bpmn"/>
+                        <sequenceFlow id="begin_0d9972226892f8233ac40119338970cf" sourceRef="begin" targetRef="0d9972226892f8233ac40119338970cf"/>
+                            <callActivity activiti:exclusive="true" calledElement="cn.ibizlab.plm.core.team.service.logic.discuss_postmob_get_topic_member" id="33eb32f72aa421080d568b8fb162a569" name="mob_get_topic_member.json.bpmn"/>
+                        <sequenceFlow id="0d9972226892f8233ac40119338970cf_33eb32f72aa421080d568b8fb162a569" sourceRef="0d9972226892f8233ac40119338970cf" targetRef="33eb32f72aa421080d568b8fb162a569"/>
+                            <callActivity activiti:exclusive="true" calledElement="cn.ibizlab.plm.core.team.service.logic.discuss_postget_post_auth" id="7E94A10B-F9E7-4420-996F-67FD06D2E5EC" name="get_post_auth.json.bpmn"/>
+                        <sequenceFlow id="33eb32f72aa421080d568b8fb162a569_7E94A10B-F9E7-4420-996F-67FD06D2E5EC" sourceRef="33eb32f72aa421080d568b8fb162a569" targetRef="7E94A10B-F9E7-4420-996F-67FD06D2E5EC"/>
+                            <sequenceFlow id="7E94A10B-F9E7-4420-996F-67FD06D2E5EC_prepareparam1_end" sourceRef="7E94A10B-F9E7-4420-996F-67FD06D2E5EC" targetRef="prepareparam1_end"/>
         </process>
     </definitions>

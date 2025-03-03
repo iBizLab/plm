@@ -43,20 +43,6 @@ package cn.ibizlab.plm.testmgmt.logic.runlogic.create_result;
                         update(runcreate_resulttemp_obj);//更新fact中变量值
             end
 
-            //逻辑处理节点[创建执行结果]
-            rule "deaction6"
-            ruleflow-group "runcreate_resultdeaction6"
-            when
-            then
-                        run_historyservice.create(runcreate_resultrun_history);
-                        update(runcreate_resultdefault);//更新fact中变量值
-                        update(runcreate_resultid);//更新fact中变量值
-                        update(runcreate_resultids);//更新fact中变量值
-                        update(runcreate_resultrun_history);//更新fact中变量值
-                        update(runcreate_resultsteps);//更新fact中变量值
-                        update(runcreate_resulttemp_obj);//更新fact中变量值
-            end
-
             //逻辑处理节点[结束]
             rule "end3"
             ruleflow-group "runcreate_resultend3"
@@ -82,6 +68,20 @@ package cn.ibizlab.plm.testmgmt.logic.runlogic.create_result;
                             runcreate_resultrun_history.set("runid",runcreate_resultdefault.get("id"));
                                 runcreate_resultrun_history.set("id",null);
                             runcreate_resultrun_history.set("steps",runcreate_resultdefault.get("steps"));
+                        update(runcreate_resultdefault);//更新fact中变量值
+                        update(runcreate_resultid);//更新fact中变量值
+                        update(runcreate_resultids);//更新fact中变量值
+                        update(runcreate_resultrun_history);//更新fact中变量值
+                        update(runcreate_resultsteps);//更新fact中变量值
+                        update(runcreate_resulttemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建执行结果]
+            rule "deaction6"
+            ruleflow-group "runcreate_resultdeaction6"
+            when
+            then
+                        run_historyservice.create(runcreate_resultrun_history);
                         update(runcreate_resultdefault);//更新fact中变量值
                         update(runcreate_resultid);//更新fact中变量值
                         update(runcreate_resultids);//更新fact中变量值

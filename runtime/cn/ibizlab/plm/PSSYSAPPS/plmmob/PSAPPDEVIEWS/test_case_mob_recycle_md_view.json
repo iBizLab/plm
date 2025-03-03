@@ -288,7 +288,6 @@
                   "groupOP" : "AND",
                   "logicCat" : "PANELVISIBLE",
                   "logicType" : "GROUP",
-                  "name" : "面板成员[type][面板显示]逻辑",
                   "getPSPanelItemLogics" : [ {
                     "condOp" : "ISNOTNULL",
                     "dstModelField" : "TYPE",
@@ -407,7 +406,6 @@
                 "groupOP" : "AND",
                 "logicCat" : "PANELVISIBLE",
                 "logicType" : "GROUP",
-                "name" : "面板成员[maintenance_id][面板显示]逻辑",
                 "getPSPanelItemLogics" : [ {
                   "condOp" : "ISNOTNULL",
                   "dstModelField" : "MAINTENANCE_ID",
@@ -424,7 +422,7 @@
         } ]
       } ],
       "name" : "mdctrl_itempanel",
-      "modelid" : "2842FA4E-2086-4C87-BB05-3F424B08DF32",
+      "modelid" : "aa118d6c9e35dcf77477e6a75080c707",
       "modeltype" : "PSSYSVIEWPANEL"
     },
     "logicName" : "mob_common_list",
@@ -513,14 +511,10 @@
     },
     "getPSDEListDataItems" : [ {
       "dataType" : 25,
-      "getFrontPSCodeList" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/TestMgmt__case_state.json"
-      },
-      "name" : "state",
+      "name" : "maintenance_name",
       "getPSAppDEField" : {
-        "name" : "STATE",
-        "codeName" : "state"
+        "name" : "MAINTENANCE_NAME",
+        "codeName" : "maintenance_name"
       }
     }, {
       "dataType" : 5,
@@ -532,17 +526,14 @@
       }
     }, {
       "dataType" : 25,
-      "name" : "title",
+      "getFrontPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/TestMgmt__case_state.json"
+      },
+      "name" : "state",
       "getPSAppDEField" : {
-        "name" : "TITLE",
-        "codeName" : "title"
-      }
-    }, {
-      "dataType" : 25,
-      "name" : "maintenance_name",
-      "getPSAppDEField" : {
-        "name" : "MAINTENANCE_NAME",
-        "codeName" : "maintenance_name"
+        "name" : "STATE",
+        "codeName" : "state"
       }
     }, {
       "dataType" : 25,
@@ -554,6 +545,13 @@
       "getPSAppDEField" : {
         "name" : "TYPE",
         "codeName" : "type"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "title",
+      "getPSAppDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
       }
     }, {
       "dataType" : 25,
@@ -593,11 +591,10 @@
     } ],
     "getPSDEListItems" : [ {
       "align" : "LEFT",
-      "cLConvertMode" : "FRONT",
-      "caption" : "状态",
-      "dataItemName" : "state",
+      "caption" : "维护人",
+      "dataItemName" : "maintenance_name",
       "itemType" : "TEXTITEM",
-      "name" : "STATE",
+      "name" : "MAINTENANCE_NAME",
       "width" : 150,
       "widthString" : "150px",
       "enableSort" : true
@@ -616,19 +613,11 @@
       "enableSort" : true
     }, {
       "align" : "LEFT",
-      "caption" : "标题",
-      "dataItemName" : "title",
+      "cLConvertMode" : "FRONT",
+      "caption" : "状态",
+      "dataItemName" : "state",
       "itemType" : "TEXTITEM",
-      "name" : "TITLE",
-      "width" : 150,
-      "widthString" : "150px",
-      "enableSort" : true
-    }, {
-      "align" : "LEFT",
-      "caption" : "维护人",
-      "dataItemName" : "maintenance_name",
-      "itemType" : "TEXTITEM",
-      "name" : "MAINTENANCE_NAME",
+      "name" : "STATE",
       "width" : 150,
       "widthString" : "150px",
       "enableSort" : true
@@ -639,6 +628,15 @@
       "dataItemName" : "type",
       "itemType" : "TEXTITEM",
       "name" : "TYPE",
+      "width" : 150,
+      "widthString" : "150px",
+      "enableSort" : true
+    }, {
+      "align" : "LEFT",
+      "caption" : "标题",
+      "dataItemName" : "title",
+      "itemType" : "TEXTITEM",
+      "name" : "TITLE",
       "width" : 150,
       "widthString" : "150px",
       "enableSort" : true
@@ -654,7 +652,7 @@
         "actionLevel" : 200,
         "caption" : "恢复",
         "detailType" : "DEUIACTION",
-        "name" : "u0d44b5b",
+        "name" : "uaac0f3c",
         "getPSSysImage" : {
           "glyph" : "xf021@FontAwesome",
           "cssClass" : "fa fa-refresh"
@@ -739,7 +737,7 @@
     "showHeader" : true,
     "singleSelect" : false,
     "name" : "mdctrl",
-    "modelid" : "BD063C86-CAC6-4803-838F-6B5580E752C0",
+    "modelid" : "c228a2ae7eb666945b6f9cf87d83f5b5",
     "modeltype" : "PSDELIST"
   }, {
     "codeName" : "mob_recycle_md_view_righttoolbar",
@@ -755,7 +753,7 @@
     },
     "toolbarStyle" : "MOBNAVRIGHTMENU",
     "xDataControlName" : "mdctrl",
-    "modelid" : "359A5E7D-2FE7-407E-8083-6E0B5C31EFB8",
+    "modelid" : "0c7f5ed2c8f6ee0f5fb75b661c3e5020",
     "modeltype" : "PSDETOOLBAR"
   }, {
     "controlType" : "SEARCHBAR",
@@ -789,7 +787,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "mob_recycle_md_view",
-  "getPSDEViewId" : "1BF6E8DE-A2BD-4E89-98EA-639CE70B8419",
+  "getPSDEViewId" : "4167b94c3463d4ea33bb1c91e718aaf9",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEMOBMDVIEW",
@@ -814,7 +812,7 @@
   "enablePullDownRefresh" : false,
   "enableQuickSearch" : true,
   "enableSearch" : true,
-  "modelid" : "496b94bb59399f2e6f68ef2f72ec7e66",
+  "modelid" : "3abba645b160de48ba65a7f03ca5466f",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

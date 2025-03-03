@@ -22,11 +22,11 @@
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemrecoverprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置删除状态"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemrecoverdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="更新删除状态"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemrecoverrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="恢复最近访问"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemrecoverprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置父工作项非叶子节点"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemrecoverdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="更新父工作项非叶子节点"/>
                         <endEvent id="deaction2_end" name="end"/>
                         <sequenceFlow id="deaction2_end_line" sourceRef="deaction2" targetRef="deaction2_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemrecoverrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="恢复最近访问"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemrecoverprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置工作项过滤器参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemrecoverdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="查询下级工作项"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemrecoverloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
@@ -54,9 +54,9 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam3_deaction2" sourceRef="prepareparam3" targetRef="deaction2">
-                    </sequenceFlow>
                     <sequenceFlow id="rawsqlcall1_prepareparam1" sourceRef="rawsqlcall1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_deaction2" sourceRef="prepareparam3" targetRef="deaction2">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_dedataset1" sourceRef="prepareparam1" targetRef="dedataset1">
                     </sequenceFlow>

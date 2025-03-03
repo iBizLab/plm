@@ -32,17 +32,6 @@ package cn.ibizlab.plm.prodmgmt.logic.customerlogic.add_categories;
                         update(customeradd_categoriessrfactionparam);//更新fact中变量值
             end
 
-            //逻辑处理节点[设置类别路径]
-            rule "prepareparam2"
-            ruleflow-group "customeradd_categoriesprepareparam2"
-            when
-            then
-                            customeradd_categoriesdefault.set("categories",customeradd_categoriesfor_temp_obj.get("categories"));
-                        update(customeradd_categoriesdefault);//更新fact中变量值
-                        update(customeradd_categoriesfor_temp_obj);//更新fact中变量值
-                        update(customeradd_categoriessrfactionparam);//更新fact中变量值
-            end
-
             //逻辑处理节点[变更客户属性]
             rule "deaction1"
             ruleflow-group "customeradd_categoriesdeaction1"
@@ -59,6 +48,17 @@ package cn.ibizlab.plm.prodmgmt.logic.customerlogic.add_categories;
             ruleflow-group "customeradd_categoriesloopsubcall1"
             when
             then
+                        update(customeradd_categoriesdefault);//更新fact中变量值
+                        update(customeradd_categoriesfor_temp_obj);//更新fact中变量值
+                        update(customeradd_categoriessrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置类别路径]
+            rule "prepareparam2"
+            ruleflow-group "customeradd_categoriesprepareparam2"
+            when
+            then
+                            customeradd_categoriesdefault.set("categories",customeradd_categoriesfor_temp_obj.get("categories"));
                         update(customeradd_categoriesdefault);//更新fact中变量值
                         update(customeradd_categoriesfor_temp_obj);//更新fact中变量值
                         update(customeradd_categoriessrfactionparam);//更新fact中变量值

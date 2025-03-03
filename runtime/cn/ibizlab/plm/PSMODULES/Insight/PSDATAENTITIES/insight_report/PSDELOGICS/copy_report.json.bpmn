@@ -27,11 +27,11 @@
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="insight_reportcopy_reportdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="获取当前报表详情"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="insight_reportcopy_reportdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取目标仪表盘详情"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="insight_reportcopy_reportdeaction4" id="deaction4" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="insight_reportcopy_reportdebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="传入参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="insight_reportcopy_reportprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="获取仪表盘ID、报表ID"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="insight_reportcopy_reportrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="insight_reportcopy_reportdebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="insight_reportcopy_reportdeaction4" id="deaction4" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="insight_reportcopy_reportprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置待新建的报表参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="insight_reportcopy_reportdeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="新建报表"/>
                     <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
@@ -40,8 +40,6 @@
                     </sequenceFlow>
                     <sequenceFlow id="deaction1_rawsfcode1" sourceRef="deaction1" targetRef="rawsfcode1">
                     </sequenceFlow>
-                    <sequenceFlow id="deaction4_end1" sourceRef="deaction4" targetRef="end1">
-                    </sequenceFlow>
                     <sequenceFlow id="debugparam1_prepareparam1" sourceRef="debugparam1" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_deaction2" sourceRef="prepareparam1" targetRef="deaction2">
@@ -49,6 +47,8 @@
                     <sequenceFlow id="rawsfcode1_debugparam2" sourceRef="rawsfcode1" targetRef="debugparam2">
                     </sequenceFlow>
                     <sequenceFlow id="debugparam2_deaction4" sourceRef="debugparam2" targetRef="deaction4">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction4_end1" sourceRef="deaction4" targetRef="end1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam2_deaction3" sourceRef="prepareparam2" targetRef="deaction3">
                     </sequenceFlow>
