@@ -97,14 +97,6 @@ export declare class GroupTreeController<T extends IDETree = IDETree, S extends 
     protected onCreated(): Promise<void>;
     protected initState(): void;
     /**
-     * 临时取消监听
-     *
-     * @protected
-     * @param {IData} msg
-     * @memberof GroupTreeController
-     */
-    protected onDataChange(msg: IData): void;
-    /**
      *  初始化节点拖入关系处理
      */
     protected initDropNodeRss(): void;

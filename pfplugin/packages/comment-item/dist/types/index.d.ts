@@ -35,7 +35,9 @@ export declare const IBizCommentItemRawItem: import("@ibiz-template/vue3-util").
     previewSrcList: import("vue").Ref<string[] | []>;
     onShow: () => Promise<void>;
     handleKeyPress: (event: KeyboardEvent) => Promise<void>;
+    handleClick: (event: MouseEvent) => void;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+    click: (_event?: IData | undefined, _data?: IData | undefined) => true;
     change: (_value: unknown, _name?: string | undefined) => boolean;
     blur: (_event?: IData | undefined) => boolean;
     focus: (_event?: IData | undefined) => boolean;
@@ -64,6 +66,7 @@ export declare const IBizCommentItemRawItem: import("@ibiz-template/vue3-util").
         required: boolean;
     };
 }>> & {
+    onClick?: ((_event?: IData | undefined, _data?: IData | undefined) => any) | undefined;
     onChange?: ((_value: unknown, _name?: string | undefined) => any) | undefined;
     onBlur?: ((_event?: IData | undefined) => any) | undefined;
     onFocus?: ((_event?: IData | undefined) => any) | undefined;

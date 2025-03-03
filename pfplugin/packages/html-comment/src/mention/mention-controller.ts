@@ -87,6 +87,7 @@ export class MenTionController {
   public userFieldMap: IData = {
     id: 'id',
     name: 'name',
+    title: 'title',
   };
 
   /**
@@ -302,7 +303,8 @@ export class MenTionController {
         this.userUrl = USERURL;
       }
       if (USERFIELDMAP) {
-        this.userFieldMap = JSON.parse(USERFIELDMAP);
+        const userMap = JSON.parse(USERFIELDMAP);
+        Object.assign(this.userFieldMap, userMap);
       }
       if (USERMETHOD) {
         this.userMethod = USERMETHOD.toLowerCase();

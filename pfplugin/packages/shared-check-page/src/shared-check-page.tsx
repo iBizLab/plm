@@ -191,6 +191,7 @@ export const SharedCheckPage = defineComponent({
           context: this.$props.context,
           params: this.$props.params,
           modelData: this.modelData,
+          modal: this.modal,
           ...this.$attrs,
         },
         this.$slots,

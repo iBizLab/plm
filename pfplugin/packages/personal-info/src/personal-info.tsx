@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { ref, defineComponent, Ref, watch, computed } from 'vue';
 import {
   getSpanProps,
@@ -30,6 +31,9 @@ export const PersonalInfo = defineComponent({
     const c = props.controller;
 
     const text: Ref<string> = ref('');
+
+    // 加载失败图片集合
+    const loadErrorMap: Ref<string[]> = ref([]);
 
     // eslint-disable-next-line prefer-destructuring
     const codeList = c.codeList;
@@ -309,8 +313,13 @@ export const PersonalInfo = defineComponent({
       return tempText;
     });
 
+    const imgLoadError = (url: string) => {
+      loadErrorMap.value.push(url);
+    };
+
     // 绘制人员头像
     const renderUserAvatar = (): JSX.Element | string => {
+      let avatarUrl = '';
       if (props.value) {
         const findItem = findCodeListItem(
           items.value as CodeListItem[],
@@ -320,15 +329,18 @@ export const PersonalInfo = defineComponent({
           const avatar = getUsrAvatar(findItem);
           const icon = JSON.parse(avatar!);
           const urls = ibiz.util.file.calcFileUpDownUrl(c.context, c.params);
-          const avatarUrl = urls.downloadUrl.replace('%fileId%', icon[0].id);
-          return (
-            <img
-              class={ns.bem('content', 'head-sculpture', 'avatar-icon')}
-              src={avatarUrl}
-              alt=''
-            />
-          );
+          avatarUrl = urls.downloadUrl.replace('%fileId%', icon[0].id);
         }
+      }
+      if (avatarUrl && loadErrorMap.value.indexOf(avatarUrl) === -1) {
+        return (
+          <img
+            class={ns.bem('content', 'head-sculpture', 'avatar-icon')}
+            src={avatarUrl}
+            onError={() => imgLoadError(avatarUrl)}
+            alt=''
+          />
+        );
       }
       return renderTextPhoto(showText.value) || '';
     };
@@ -339,11 +351,11 @@ export const PersonalInfo = defineComponent({
         return '- - -';
       }
       const img = c.parseAvatar(tempVal);
-      if (img) {
+      if (img && loadErrorMap.value.indexOf(img) === -1) {
         return (
           <div class={ns.b('content')}>
             <div class={ns.be('content', 'head-sculpture')}>
-              <img src={img}></img>
+              <img src={img} onError={() => imgLoadError(img)}></img>
             </div>
           </div>
         );

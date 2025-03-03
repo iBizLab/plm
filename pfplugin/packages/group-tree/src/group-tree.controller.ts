@@ -25,6 +25,7 @@ import {
   IPortalMessage,
   RuntimeError,
   RuntimeModelError,
+  recursiveIterate,
 } from '@ibiz-template/core';
 import { isNil } from 'ramda';
 import { ref } from 'vue';
@@ -162,17 +163,6 @@ export class GroupTreeController<
     this.state.editingNodeKey = null;
     this.state.editingNodeText = null;
     this.state.editingNodeDefault = null;
-  }
-
-  /**
-   * 临时取消监听
-   *
-   * @protected
-   * @param {IData} msg
-   * @memberof GroupTreeController
-   */
-  protected onDataChange(msg: IData): void {
-    // todo
   }
 
   /**
@@ -402,13 +392,12 @@ export class GroupTreeController<
             const tempContext = context.clone();
             tempContext[deName] = item.srfkey;
             // 删除后台的数据
-            await await ibiz.hub
+            await ibiz.hub
               .getApp((model as IDETreeNode).appId)
               .deService.exec(
                 (model as IDETreeNode).appDataEntityId!,
                 'remove',
                 tempContext,
-                data,
                 params,
               );
             needRefresh = true;
@@ -442,6 +431,10 @@ export class GroupTreeController<
     }
     this.state.selectedData = [];
     await this._evt.emit('onRemoveSuccess', undefined);
+    // 发送对象删除事件
+    data.forEach(item => {
+      this.emitDEDataChange('remove', item._deData);
+    });
   }
 
   /**
@@ -456,6 +449,19 @@ export class GroupTreeController<
     dropNode: ITreeNodeData,
     type: 'inner' | 'prev' | 'next',
   ): boolean {
+    // 校验是否可拖入，放入项不能是自己或自己的子数据
+    let enableDrag: boolean = true;
+    recursiveIterate(
+      { _children: [draggingNode] },
+      (node: ITreeNodeData) => {
+        if (node._id === dropNode._id) {
+          enableDrag = false;
+          return true;
+        }
+      },
+      { childrenFields: ['_children'] },
+    );
+    if (!enableDrag) return false;
     const draggingNodeModel = this.getNodeModel(draggingNode._nodeId)!;
     const dropNodeModel = this.getNodeModel(dropNode._nodeId)!;
     // * 移入的情况

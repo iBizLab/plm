@@ -56,6 +56,27 @@ export declare class MobCommentController extends EditorController<IHtml> {
      */
     modules: IData;
     /**
+     * 是否显示伸缩按钮
+     *
+     * @type {boolean}
+     * @memberof MobCommentController
+     */
+    showCollapse: boolean;
+    /**
+     * 收缩时的高度
+     *
+     * @type {number}
+     * @memberof MobCommentController
+     */
+    defaultHeight: number;
+    /**
+     * 自动聚焦
+     *
+     * @type {boolean}
+     * @memberof MobCommentController
+     */
+    autoFocus: boolean;
+    /**
      * @description 视图
      * @private
      * @return {*}  {IViewController}

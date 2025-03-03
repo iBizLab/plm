@@ -3,7 +3,7 @@ var _e = Object.defineProperty;
 var Be = (l, d, r) => d in l ? _e(l, d, { enumerable: !0, configurable: !0, writable: !0, value: r }) : l[d] = r;
 var n = (l, d, r) => (Be(l, typeof d != "symbol" ? d + "" : d, r), r);
 import { PluginStaticResource as He, EditorController as We, getDeACMode as Ye, registerEditorProvider as Ze } from "@ibiz-template/runtime";
-import { defineComponent as oe, ref as p, onMounted as ne, watch as ce, createVNode as s, computed as Ke, onBeforeMount as Xe, nextTick as qe, onUnmounted as Je, resolveComponent as S, isVNode as Ge, createTextVNode as $ } from "vue";
+import { defineComponent as oe, ref as p, onMounted as ne, watch as ce, createVNode as a, computed as Ke, onBeforeMount as Xe, nextTick as qe, onUnmounted as Je, resolveComponent as S, isVNode as Ge, createTextVNode as $ } from "vue";
 import { useNamespace as de, getDataPickerProps as Qe, getEditorEmits as et, useClickOutside as tt } from "@ibiz-template/vue3-util";
 import { RuntimeModelError as re } from "@ibiz-template/core";
 import { mergeDeepLeft as le } from "ramda";
@@ -31,7 +31,7 @@ const at = /* @__PURE__ */ oe({
   setup(l, {
     emit: d
   }) {
-    const r = de("virtual-list"), t = p(36), f = p(), o = p([]), u = p(0), m = p(0), v = p(0), b = p(0), M = () => {
+    const r = de("team-select-virtual-list"), t = p(36), f = p(), o = p([]), u = p(0), m = p(0), v = p(0), b = p(0), M = () => {
       m.value = Math.floor(b.value / l.itemHeight), v.value = m.value + l.showNum, o.value = l.items.slice(m.value, v.value);
       const h = b.value - b.value % l.itemHeight;
       u.value = h;
@@ -59,17 +59,17 @@ const at = /* @__PURE__ */ oe({
     };
   },
   render() {
-    return s("div", {
+    return a("div", {
       ref: "contentBox",
       class: this.ns.b(),
       onScroll: () => this.onScroll()
-    }, [s("div", {
+    }, [a("div", {
       class: this.ns.e("container"),
       style: "height:".concat(this.contentHeight, "px;")
-    }, [s("div", {
+    }, [a("div", {
       class: this.ns.e("content"),
       style: "top:".concat(this.top, "px;")
-    }, [this.showList.map((l, d) => s("div", {
+    }, [this.showList.map((l, d) => a("div", {
       key: d,
       class: this.ns.m("item")
     }, [this.$slots.default ? this.$slots.default({
@@ -102,46 +102,46 @@ const ie = /* @__PURE__ */ oe({
       member: !1,
       department: !1,
       team: !1
-    }), u = () => s("svg", {
+    }), u = () => a("svg", {
       viewBox: "0 0 16 16",
       xmlns: "http://www.w3.org/2000/svg",
       height: "1em",
       width: "1em",
       preserveAspectRatio: "xMidYMid meet",
       focusable: "false"
-    }, [s("g", {
+    }, [a("g", {
       id: "azvnormal/user-bold",
       "stroke-width": "1",
       "fill-rule": "evenodd"
-    }, [s("path", {
+    }, [a("path", {
       d: "M8 .828a4.172 4.172 0 0 1 2.548 7.476A6.696 6.696 0 0 1 14.7 14.5a.7.7 0 0 1-1.4 0 5.3 5.3 0 0 0-10.595-.222L2.7 14.5a.7.7 0 0 1-1.4 0l.006-.279a6.7 6.7 0 0 1 4.146-5.92A4.172 4.172 0 0 1 8 .828zm0 1.344a2.828 2.828 0 0 0-.326 5.637 6.797 6.797 0 0 1 .651-.002A2.828 2.828 0 0 0 8 2.172z",
       id: "azv形状结合"
-    }, null)])]), m = () => s("svg", {
+    }, null)])]), m = () => a("svg", {
       viewBox: "0 0 16 16",
       xmlns: "http://www.w3.org/2000/svg",
       height: "1em",
       width: "1em",
       preserveAspectRatio: "xMidYMid meet",
       focusable: "false"
-    }, [s("g", {
+    }, [a("g", {
       id: "aqo1.Base基础/1.icon图标/2.normal/部门",
       "stroke-width": "1",
       "fill-rule": "evenodd"
-    }, [s("path", {
+    }, [a("path", {
       d: "M9 1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-.39l-.016 2.138H11.5a2.1 2.1 0 0 1 2.095 1.95l.005.15V11h.4a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h.4V9.238a.9.9 0 0 0-.787-.893l-.113-.007h-7a.9.9 0 0 0-.893.787l-.007.113V11H4a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h.4V9.238a2.1 2.1 0 0 1 1.95-2.094l.15-.006h2.894L7.41 5H7a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h2zm4.8 11.2h-1.6v1.6h1.6v-1.6zm-10 0H2.2v1.6h1.6v-1.6zm5-10H7.2v1.6h1.6V2.2z",
       id: "aqo形状结合"
-    }, null)])]), v = () => s("svg", {
+    }, null)])]), v = () => a("svg", {
       viewBox: "0 0 16 16",
       xmlns: "http://www.w3.org/2000/svg",
       height: "1em",
       width: "1em",
       preserveAspectRatio: "xMidYMid meet",
       focusable: "false"
-    }, [s("g", {
+    }, [a("g", {
       id: "azznormal/user-group",
       "stroke-width": "1",
       "fill-rule": "evenodd"
-    }, [s("path", {
+    }, [a("path", {
       d: "M8.2 8.85a5.602 5.602 0 0 1 3.399 5.04.6.6 0 1 1-1.19.11H10.4a4.4 4.4 0 0 0-8.8-.06l.003.06a.6.6 0 0 1-1.2 0H.4c0-2.311 1.4-4.296 3.4-5.15a3.6 3.6 0 1 1 4.402 0zM6 8.4a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8zm4.5 1.2V8.4a1.9 1.9 0 0 0 0-3.8V3.4a3.1 3.1 0 0 1 2.048 5.428A5.104 5.104 0 0 1 15.576 13h-.016a.6.6 0 1 1-1.198-.048A3.9 3.9 0 0 0 10.5 9.6zM6.632 13H5.424h1.208z",
       id: "azz形状结合"
     }, null)])]), b = (e) => {
@@ -151,50 +151,50 @@ const ie = /* @__PURE__ */ oe({
         return m();
       if (e === "team")
         return v();
-    }, M = () => s("svg", {
+    }, M = () => a("svg", {
       viewBox: "0 0 16 16",
       xmlns: "http://www.w3.org/2000/svg",
       height: "1em",
       width: "1em",
       preserveAspectRatio: "xMidYMid meet",
       focusable: "false"
-    }, [s("g", {
+    }, [a("g", {
       id: "abbnavigation/angle-right",
       "stroke-width": "1",
       "fill-rule": "evenodd"
-    }, [s("path", {
+    }, [a("path", {
       d: "M7.978 11.498l-.005.005L2.3 5.831 3.13 5l4.848 4.848L12.826 5l.83.831-5.673 5.672-.005-.005z",
       id: "abb形状结合",
       transform: "rotate(-90 7.978 8.252)"
-    }, null)])]), E = () => s("svg", {
+    }, null)])]), E = () => a("svg", {
       viewBox: "0 0 16 16",
       xmlns: "http://www.w3.org/2000/svg",
       height: "1em",
       width: "1em",
       preserveAspectRatio: "xMidYMid meet",
       focusable: "false"
-    }, [s("g", {
+    }, [a("g", {
       id: "azznormal/user-group",
       "stroke-width": "1",
       "fill-rule": "evenodd"
-    }, [s("path", {
+    }, [a("path", {
       d: "M8.2 8.85a5.602 5.602 0 0 1 3.399 5.04.6.6 0 1 1-1.19.11H10.4a4.4 4.4 0 0 0-8.8-.06l.003.06a.6.6 0 0 1-1.2 0H.4c0-2.311 1.4-4.296 3.4-5.15a3.6 3.6 0 1 1 4.402 0zM6 8.4a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8zm4.5 1.2V8.4a1.9 1.9 0 0 0 0-3.8V3.4a3.1 3.1 0 0 1 2.048 5.428A5.104 5.104 0 0 1 15.576 13h-.016a.6.6 0 1 1-1.198-.048A3.9 3.9 0 0 0 10.5 9.6zM6.632 13H5.424h1.208z",
       id: "azz形状结合"
-    }, null)])]), P = () => s("svg", {
+    }, null)])]), P = () => a("svg", {
       viewBox: "0 0 16 16",
       xmlns: "http://www.w3.org/2000/svg",
       height: "1em",
       width: "1em",
       preserveAspectRatio: "xMidYMid meet",
       focusable: "false"
-    }, [s("g", {
+    }, [a("g", {
       id: "agwtips/close-circle-bold-fill",
       "stroke-width": "1",
       "fill-rule": "evenodd"
-    }, [s("path", {
+    }, [a("path", {
       d: "M0 8c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8zm6.296.064l-2.298 2.298 1.768 1.768 2.298-2.298 2.298 2.298 1.768-1.768-2.298-2.298 2.298-2.298-1.768-1.768-2.298 2.298-2.298-2.298-1.768 1.768 2.298 2.298z",
       id: "agw形状结合"
-    }, null)])]), h = p("member"), w = p(!1), L = p(!1), ue = p(""), T = p([]), F = p([]), D = p([]), O = p(/* @__PURE__ */ new Map()), C = p(/* @__PURE__ */ new Map()), me = p(), A = p(), X = p(!1), he = p(), k = p(""), B = p([]), H = p([]), W = p(), I = p(null);
+    }, null)])]), h = p("member"), w = p(!1), L = p(!1), ue = p(""), T = p([]), F = p([]), D = p([]), O = p(/* @__PURE__ */ new Map()), C = p(/* @__PURE__ */ new Map()), me = p(), y = p(), X = p(!1), he = p(), k = p(""), B = p([]), H = p([]), W = p(), I = p(null);
     let z;
     const q = p([]), pe = Ke(() => !!(l.controlParams && l.controlParams.editmode === "hover" && !l.readonly)), ve = () => {
       const e = document.documentElement;
@@ -202,34 +202,34 @@ const ie = /* @__PURE__ */ oe({
     }, fe = (e) => /[\u4E00-\u9FA5]/.test(e), ge = (e) => /[\u4e00-\u9fa5]+.*[a-zA-Z]+|[a-zA-Z]+.*[\u4e00-\u9fa5]+/.test(e), J = (e) => {
       if (!e)
         return "";
-      let a = 0;
+      let s = 0;
       for (let R = 0; R < e.length; R++)
         if (fe(e))
-          a = e.charCodeAt(R) + ((a << 5) - a), a = a & a;
+          s = e.charCodeAt(R) + ((s << 5) - s), s = s & s;
         else {
           const je = e.charCodeAt(R);
-          a += je.toString(16);
+          s += je.toString(16);
         }
-      const i = String(a).substring(0, 6);
-      let c = parseInt(i.substring(0, 2), 16), g = parseInt(i.substring(2, 4), 16), y = parseInt(i.substring(4, 6), 16);
-      c < 0 && (c = 10), g < 0 && (g = 10), y < 0 && (y = 10);
-      const x = "#".concat(c.toString(16).padStart(2, "0")).concat(g.toString(16).padStart(2, "0")).concat(y.toString(16).padStart(2, "0"));
+      const i = String(s).substring(0, 6);
+      let c = parseInt(i.substring(0, 2), 16), g = parseInt(i.substring(2, 4), 16), A = parseInt(i.substring(4, 6), 16);
+      c < 0 && (c = 10), g < 0 && (g = 10), A < 0 && (A = 10);
+      const x = "#".concat(c.toString(16).padStart(2, "0")).concat(g.toString(16).padStart(2, "0")).concat(A.toString(16).padStart(2, "0"));
       return x === "#FFFFFF" && ve() || x;
     }, be = (e) => {
       if (e && e.toString().length < 2)
         return e;
       if (e && e.toString().length >= 2) {
         if (ge(e)) {
-          const g = e.split("").find((x) => /[a-zA-Z]/.test(x)) || "", y = e.split("").find((x) => /[\u4E00-\u9FA5]/.test(x)) || "";
-          return "".concat(g).concat(y).toLowerCase();
+          const g = e.split("").find((x) => /[a-zA-Z]/.test(x)) || "", A = e.split("").find((x) => /[\u4E00-\u9FA5]/.test(x)) || "";
+          return "".concat(g).concat(A).toLowerCase();
         }
         return /[a-zA-Z]/.test(e) ? e.split("").filter((g) => /[a-zA-Z]/.test(g)).slice(0, 2).join("").toUpperCase() : /[\u4E00-\u9FA5]/.test(e) ? e.split("").filter((g) => /[\u4E00-\u9FA5]/.test(g)).slice(-2).join("") : e.replaceAll(" ", "").substring(0, 2);
       }
     }, we = (e) => {
-      var a;
-      return ((a = I.value) == null ? void 0 : a.id) === e ? s("div", {
+      var s;
+      return ((s = I.value) == null ? void 0 : s.id) === e ? a("div", {
         class: r.bem("select-modal", "personel-list", "icon")
-      }, [s("i", {
+      }, [a("i", {
         class: "fa fa-check",
         "aria-hidden": "true"
       }, null)]) : null;
@@ -238,25 +238,25 @@ const ie = /* @__PURE__ */ oe({
     }, Ee = (e) => {
       if (!e)
         return null;
-      const a = JSON.parse(e);
-      if (a.length === 0)
+      const s = JSON.parse(e);
+      if (s.length === 0)
         return null;
       const {
         downloadUrl: i
-      } = ibiz.util.file.calcFileUpDownUrl(t.context, t.params, l.data, t.editorParams), c = i.replace("%fileId%", a[0].id);
-      return s("img", {
+      } = ibiz.util.file.calcFileUpDownUrl(t.context, t.params, l.data, t.editorParams), c = i.replace("%fileId%", s[0].id);
+      return a("img", {
         class: r.bem("select-modal", "personel-list", "avatar"),
         src: c,
         onError: () => Me(e),
         alt: ""
       }, null);
-    }, G = (e, a) => t.operatorMap && t.operatorMap.get(e) && t.operatorMap.get(e).data.iconurl && !q.value.includes(t.operatorMap.get(e).data.iconurl) ? Ee(t.operatorMap.get(e).data.iconurl) : be(a), Y = async (e, a, i = !1) => {
-      if (e.preventDefault(), e.stopPropagation(), console.log("选中数据", a), o.value.team = !1, o.value.department = !1, o.value.member = !1, i) {
-        const c = C.value.get(a.id);
-        c.value = !0, d("change", a.id, t.valueItem), d("change", a.name), t.teamValueItem && d("change", 30, t.teamValueItem);
+    }, G = (e, s) => t.operatorMap && t.operatorMap.get(e) && t.operatorMap.get(e).data.iconurl && !q.value.includes(t.operatorMap.get(e).data.iconurl) ? Ee(t.operatorMap.get(e).data.iconurl) : be(s), Y = async (e, s, i = !1) => {
+      if (e.preventDefault(), e.stopPropagation(), console.log("选中数据", s), o.value.team = !1, o.value.department = !1, o.value.member = !1, i) {
+        const c = C.value.get(s.id);
+        c.value = !0, d("change", s.id, t.valueItem), d("change", s.name), t.teamValueItem && d("change", 30, t.teamValueItem);
       } else
-        Q(), h.value === "member" || h.value === "team" ? d("change", a[t.userFilterMap.id], t.valueItem) : d("change", a[t.deptFilterMap.id], t.valueItem), h.value === "member" || h.value === "team" ? d("change", a[t.userFilterMap.name]) : d("change", a[t.deptFilterMap.name]), t.teamValueItem && d("change", 20, t.teamValueItem);
-      k.value = "", A.value.handleClose();
+        Q(), h.value === "member" || h.value === "team" ? d("change", s[t.userFilterMap.id], t.valueItem) : d("change", s[t.deptFilterMap.id], t.valueItem), h.value === "member" || h.value === "team" ? d("change", s[t.userFilterMap.name]) : d("change", s[t.deptFilterMap.name]), t.teamValueItem && d("change", 20, t.teamValueItem);
+      k.value = "", y.value.handleClose();
     };
     Xe(async () => {
       await se();
@@ -271,59 +271,59 @@ const ie = /* @__PURE__ */ oe({
       });
     });
     const Q = () => {
-      Array.from(C.value.keys()).forEach((a) => {
-        const i = C.value.get(a);
+      Array.from(C.value.keys()).forEach((s) => {
+        const i = C.value.get(s);
         i && (i.value = !1);
       });
     }, ee = (e = !1) => {
       k.value = "", o.value.team = !1, o.value.department = !1, o.value.member = !1, Q(), d("change", null, t.valueItem), d("change", null);
-    }, U = (e, a = !0, i = !0) => {
+    }, U = (e, s = !0, i = !0) => {
       const c = h.value === "member" || h.value === "team" ? e[t.userFilterMap.name] || e.name : e[t.deptFilterMap.name] || e.name, g = h.value === "member" || h.value === "team" ? e[t.userFilterMap.id] : e[t.deptFilterMap.id];
-      return s("div", {
+      return a("div", {
         class: [
           r.bem("select-modal", "personel-list", "item"),
           i ? "isShowPadding" : ""
           // ns.is('selected', selectedPersonnel.value?.id === userid),
         ],
-        onClick: (y) => Y(y, e)
-      }, [s("div", {
+        onClick: (A) => Y(A, e)
+      }, [a("div", {
         class: r.bem("select-modal", "personel-list", "text")
-      }, [s("div", {
+      }, [a("div", {
         class: r.bem("select-modal", "personel-list", "text-img"),
         style: "background-color:".concat(J(c))
-      }, [G(g, c)]), s("div", {
+      }, [G(g, c)]), a("div", {
         class: r.bem("select-modal", "personel-list", "text-label")
-      }, [c]), a && g === t.context.srfuserid ? s("div", {
+      }, [c]), s && g === t.context.srfuserid ? a("div", {
         class: r.bem("select-modal", "personel-list", "myself")
-      }, [$("我自己")]) : null]), a && we(g)]);
-    }, Ae = (e) => {
-      const a = O.value.get(e.id);
-      return s("div", {
+      }, [$("我自己")]) : null]), s && we(g)]);
+    }, ye = (e) => {
+      const s = O.value.get(e.id);
+      return a("div", {
         class: [
           r.bem("select-modal", "personel-list", "item-team")
           // ns.is('selected', refValue.value === userid),
         ],
         onClick: (i) => Y(i, e, !0)
-      }, [s("img", {
+      }, [a("img", {
         src: "".concat(_.dir("assets/images/svg/user-group-avatar.svg")),
         style: "margin-right:6px",
         alt: ""
-      }, null), e.name, a && " · ", a && a.length]);
-    }, ye = (e, a) => {
+      }, null), e.name, s && " · ", s && s.length]);
+    }, Ae = (e, s) => {
       const {
         context: i,
         params: c
       } = t;
-      return s(S("iBizControlShell"), {
+      return a(S("iBizControlShell"), {
         class: r.b("panel-item"),
         data: e,
-        modelData: a,
+        modelData: s,
         context: i,
         params: c
       }, null);
-    }, Ie = (e, a) => {
+    }, Ie = (e, s) => {
       const i = p();
-      return s(S("el-popover"), {
+      return a(S("el-popover"), {
         ref: i,
         target: "hover",
         placement: "right",
@@ -331,13 +331,13 @@ const ie = /* @__PURE__ */ oe({
         width: "auto"
       }, {
         reference: () => U(e),
-        default: () => ye(e, a)
+        default: () => Ae(e, s)
       });
     }, te = (e) => {
       var c;
-      const a = e, i = (c = t.deACMode) == null ? void 0 : c.itemLayoutPanel;
-      return s(at, {
-        items: a,
+      const s = e, i = (c = t.deACMode) == null ? void 0 : c.itemLayoutPanel;
+      return a(at, {
+        items: s,
         itemHeight: 36,
         class: [
           r.be("select-modal", "personel-list"),
@@ -347,17 +347,17 @@ const ie = /* @__PURE__ */ oe({
       }, {
         default: (g) => i ? Ie(g, i) : U(g, !0)
       });
-    }, Pe = (e, a) => {
+    }, Pe = (e, s) => {
       e.forEach((i) => {
-        const c = T.value.findIndex((g) => g[a] === i[a]);
+        const c = T.value.findIndex((g) => g[s] === i[s]);
         c > -1 ? T.value.splice(c, 1, i) : T.value.push(i);
       });
     }, Se = async (e = !1) => {
       w.value = !0;
-      const a = {};
-      a.page = t.page;
+      const s = {};
+      s.page = t.page;
       try {
-        const i = await t.loadMore(l.data, "member", a);
+        const i = await t.loadMore(l.data, "member", s);
         i && (T.value.length === 0 ? T.value = i.data : Pe(i.data, t.userFilterMap.id));
       } catch (i) {
         w.value = !1;
@@ -365,10 +365,10 @@ const ie = /* @__PURE__ */ oe({
       w.value = !1;
     }, Te = async (e = !1) => {
       w.value = !0;
-      const a = {};
-      a.page = t.deptpage;
+      const s = {};
+      s.page = t.deptpage;
       try {
-        const i = await t.loadMore(l.data, "department", a);
+        const i = await t.loadMore(l.data, "department", s);
         i && (F.value.length === 0 ? F.value = i.data : F.value.push(...i.data));
       } catch (i) {
         w.value = !1;
@@ -378,134 +378,129 @@ const ie = /* @__PURE__ */ oe({
       if (e !== "team")
         return;
       w.value = !0;
-      const a = {};
+      const s = {};
       try {
-        const i = await t.loadMore(l.data, "team", a);
+        const i = await t.loadMore(l.data, "team", s);
         i && (D.value = i == null ? void 0 : i.data, D.value.forEach((c) => {
           if (C.value.get(c.id) === void 0) {
-            const y = p(!1);
-            C.value.set(c.id, y);
+            const A = p(!1);
+            C.value.set(c.id, A);
           }
         }));
       } catch (i) {
         w.value = !1;
       }
       w.value = !1;
-    }, xe = async (e, a) => {
-      const i = {}, c = await t.loadTeamMember(l.data, a.id, i);
-      O.value.get(a.id) || c && O.value.set(a.id, c.data), A.value.handleOpen();
+    }, xe = async (e, s) => {
+      const i = {}, c = await t.loadTeamMember(l.data, s.id, i);
+      O.value.get(s.id) || c && O.value.set(s.id, c.data), y.value.handleOpen();
     }, Fe = (e) => {
       Array.from(C.value.keys()).filter((c) => c !== e).forEach((c) => {
         const g = C.value.get(c);
         g && (g.value = !1);
       });
-    }, De = async (e, a) => {
-      e.preventDefault(), e.stopPropagation(), C.value.get(a.id).value ? ee(!0) : (await Y(e, a, !0), Fe(a.id)), o.value.team = !1, o.value.department = !1, o.value.member = !1, A.value.handleClose();
+    }, De = async (e, s) => {
+      e.preventDefault(), e.stopPropagation(), C.value.get(s.id).value ? ee(!0) : (await Y(e, s, !0), Fe(s.id)), o.value.team = !1, o.value.department = !1, o.value.member = !1, y.value.handleClose();
     }, Z = async (e) => {
       h.value = e, h.value === "member" && T.value.length === 0 && (t.resetUserState(), await Se()), h.value === "department" && F.value.length === 0 && (t.resetDeptState(), await Te()), await Ce(e);
-    }, ae = (e, a) => {
-      e.stopPropagation(), L.value = a, A.value.handleOpen();
-    }, Oe = () => s("div", {
+    }, ae = (e, s) => {
+      e.stopPropagation(), L.value = s, y.value.handleOpen();
+    }, Oe = () => a("div", {
       class: r.be("select-modal", "deptpersonel"),
       onClick: () => {
-        A.value.handleOpen();
+        y.value.handleOpen();
       }
-    }, [s("div", {
+    }, [a("div", {
       class: r.bem("select-modal", "deptpersonel", "dept")
-    }, [s("div", {
+    }, [a("div", {
       class: "collpase-icon"
-    }, [L.value ? s("i", {
+    }, [L.value ? a("i", {
       class: "fa fa-angle-right",
       "aria-hidden": "true",
       onClick: (e) => ae(e, !1)
-    }, null) : s("i", {
+    }, null) : a("i", {
       class: "fa fa-angle-down",
       "aria-hidden": "true",
       onClick: (e) => ae(e, !0)
-    }, null)]), s("img", {
+    }, null)]), a("img", {
       src: "".concat(_.dir("assets/images/svg/org.svg"))
-    }, null), s("span", null, ["".concat(t.context.srfusername, "的团队")]), s("span", null, [$("·")]), s("span", null, [t.depttotal])]), L.value ? null : s("div", {
+    }, null), a("span", null, ["".concat(t.context.srfusername, "的团队")]), a("span", null, [$("·")]), a("span", null, [t.depttotal])]), L.value ? null : a("div", {
       class: r.bem("select-modal", "deptpersonel", "dept-person")
     }, [te(F.value)])]), Ue = async (e) => {
       w.value = !0, B.value = [], H.value = [];
       try {
-        const a = {};
-        Object.assign(a, {
+        const s = {};
+        Object.assign(s, {
           query: e,
           size: 1e3
         });
-        const i = await t.getServiceData("member", l.data, a), c = await t.getServiceData("team", l.data, a);
+        const i = await t.getServiceData("member", l.data, s), c = await t.getServiceData("team", l.data, s);
         i && (i.data.forEach((g) => {
-          Object.keys(t.userFilterMap).forEach((y) => {
-            g[y] = g[t.userFilterMap[y]];
+          Object.keys(t.userFilterMap).forEach((A) => {
+            g[A] = g[t.userFilterMap[A]];
           });
         }), B.value = i.data, w.value = !1), c && (H.value = c.data);
-      } catch (a) {
+      } catch (s) {
         w.value = !1;
       }
-      A.value.handleOpen();
+      y.value.handleOpen();
     }, Ne = (e) => {
       clearTimeout(W.value), W.value = setTimeout(() => {
         e && Ue(e), clearTimeout(W.value);
       }, 300);
-    }, Le = () => s(S("el-collapse"), {
+    }, Le = () => a(S("el-collapse"), {
       class: r.e("collapse")
     }, {
-      default: () => [D.value.length === 0 ? s("div", {
+      default: () => [D.value.length === 0 ? a("div", {
         class: r.e("no-team")
       }, [$("暂无团队")]) : D.value.map((e) => {
-        const a = O.value.get(e.id), i = C.value.get(e.id);
-        return s(S("el-collapse-item"), {
+        const s = O.value.get(e.id), i = C.value.get(e.id);
+        return a(S("el-collapse-item"), {
           class: r.e("collapse-item"),
           name: e.id,
           title: e.caption,
           onClick: (c) => xe(c, e)
         }, {
-          default: () => s("div", null, [a && a.length > 0 ? a.map((c) => U(c, !0)) : s("div", {
+          default: () => a("div", null, [s && s.length > 0 ? s.map((c) => U(c, !0)) : a("div", {
             class: r.e("noteamItem")
           }, [$("暂无人员")])]),
-          title: () => s("div", {
+          title: () => a("div", {
             class: r.e("collapse-item-checkbox-wrapper")
-          }, [s(S("el-checkbox"), {
+          }, [a(S("el-checkbox"), {
             class: r.e("collapse-item-checkbox"),
             size: "large",
             modelValue: i.value,
             "onUpdate:modelValue": (c) => i.value = c,
             onClick: (c) => De(c, e)
-          }, null), s("img", {
+          }, null), a("img", {
             src: "".concat(_.dir("assets/images/svg/user-group-avatar.svg")),
             style: "margin-right:6px",
             alt: ""
-          }, null), e.name, a && " · ", a && a.length])
+          }, null), e.name, s && " · ", s && s.length])
         });
       })]
-    }), ke = (e) => e === "department" ? Oe() : e === "member" ? te(T.value) : e === "team" ? Le() : s("div", null, [e]), ze = () => !k.value && I.value ? I.value.dataType === "team" ? s("div", {
+    }), ke = (e) => e === "department" ? Oe() : e === "member" ? te(T.value) : e === "team" ? Le() : a("div", null, [e]), ze = () => !k.value && I.value ? I.value.dataType === "team" ? a("div", {
       class: r.e("personnel-team")
-    }, [s("div", {
+    }, [a("div", {
       class: r.e("personnel-team-svg")
-    }, [E()]), s("div", null, [I.value.name])]) : U(I.value, !1, !1) : null, Ve = (e) => {
-      A && A.value.$el && (V.value = A.value.$el.clientWidth), X.value = e;
+    }, [E()]), a("div", null, [I.value.name])]) : U(I.value, !1, !1) : null, Ve = (e) => {
+      y.value && y.value.$el && (V.value = y.value.$el.clientWidth), X.value = e;
     }, se = async () => {
       l.readonly || l.disabled || (await Z("member"), await Z("department"), await Z("team"), h.value = "member");
-    }, Re = (e, a) => {
-      e.stopPropagation(), h.value = a.label, o.value[a.label] = !o.value[a.label], ["member", "department", "team"].filter((c) => c !== a.label).forEach((c) => {
+    }, Re = (e, s) => {
+      e.stopPropagation(), h.value = s.label, o.value[s.label] = !o.value[s.label], ["member", "department", "team"].filter((c) => c !== s.label).forEach((c) => {
         o.value[c] = !1;
       });
     }, N = p(), $e = p(), K = (e) => D.value.findIndex((c) => c.id === e) >= 0 ? "team" : T.value.findIndex((c) => c.id === e) >= 0 ? "member" : "";
     ce(() => l.value, (e) => {
-      if (e || e === null || e === void 0)
-        if (e) {
-          const a = K(l.data[t.valueItem]);
-          a === "team" ? I.value = {
-            dataType: "team",
-            name: e
-          } : a === "member" && (I.value = {
-            name: e,
-            [t.userFilterMap.id]: l.data[t.valueItem],
-            [t.deptFilterMap.id]: l.data[t.valueItem]
-          });
-        } else
-          I.value = null;
+      (e || e === null || e === void 0) && (e ? K(l.data[t.valueItem]) === "team" ? I.value = {
+        dataType: "team",
+        name: e
+      } : I.value = {
+        name: e,
+        [t.userFilterMap.id]: l.data[t.valueItem],
+        [t.deptFilterMap.id]: l.data[t.valueItem]
+      } : I.value = null);
     }, {
       immediate: !0
     });
@@ -513,12 +508,12 @@ const ie = /* @__PURE__ */ oe({
     return ne(() => {
       N.value && (z = tt(N, async (e) => {
         if (N.value && !N.value.contains(e.target)) {
-          let a = [];
-          e.target && e.target.className && typeof e.target.className == "string" && (a = e.target.className.split(" ")), a.findIndex((c) => c === "ibiz-team-select__popover-item") === -1 && (o.value.team = !1, o.value.department = !1, o.value.member = !1);
+          let s = [];
+          e.target && e.target.className && typeof e.target.className == "string" && (s = e.target.className.split(" ")), s.findIndex((c) => c === "ibiz-team-select__popover-item") === -1 && (o.value.team = !1, o.value.department = !1, o.value.member = !1);
         }
-      })), V.value = A.value.$el.clientWidth;
+      })), V.value = y.value.$el.clientWidth;
     }), qe(() => {
-      V.value = A.value.$el.clientWidth;
+      V.value = y.value.$el.clientWidth;
     }), Je(() => {
       z && z.stop && z.stop();
     }), {
@@ -542,12 +537,12 @@ const ie = /* @__PURE__ */ oe({
       selectedPersonnel: I,
       searchRef: me,
       visibleChange: Ve,
-      dropdownRef: A,
+      dropdownRef: y,
       dropdownClick: se,
       popoverRef: he,
       teamMenberItems: O,
       renderPersonnel: ze,
-      renderTeamItem: Ae,
+      renderTeamItem: ye,
       dropDownItemVisible: o,
       dropdownItemClick: Re,
       romateTeamData: H,
@@ -558,25 +553,25 @@ const ie = /* @__PURE__ */ oe({
         o.value.team = !1, o.value.department = !1, o.value.member = !1;
       },
       clearSelect: ee,
-      readOnlyItem: () => l.value ? K(l.data[t.valueItem]) === "team" ? s("div", {
+      readOnlyItem: () => l.value ? K(l.data[t.valueItem]) === "team" ? a("div", {
         class: r.e("personnel-team")
-      }, [s("div", {
+      }, [a("div", {
         class: r.e("personnel-team-svg")
-      }, [E()]), s("div", null, [l.value])]) : s("div", {
+      }, [E()]), a("div", null, [l.value])]) : a("div", {
         class: r.bem("select-modal", "personel-list", "text")
-      }, [s("div", {
+      }, [a("div", {
         class: r.bem("select-modal", "personel-list", "text-img"),
         style: "background-color:".concat(J(l.value))
-      }, [G(l.data[t.valueItem], l.value)]), s("div", {
+      }, [G(l.data[t.valueItem], l.value)]), a("div", {
         class: r.bem("select-modal", "personel-list", "text-label")
       }, [l.value])]) : "未设置",
       width: V
     };
   },
   render() {
-    return s("div", {
+    return a("div", {
       class: [this.ns.b()]
-    }, [this.$props.readonly || this.$props.disabled ? this.readOnlyItem() : s(S("el-dropdown"), {
+    }, [this.$props.readonly || this.$props.disabled ? this.readOnlyItem() : a(S("el-dropdown"), {
       class: [this.ns.e("dropdown")],
       ref: "dropdownRef",
       "popper-class": this.ns.e("popover"),
@@ -584,9 +579,9 @@ const ie = /* @__PURE__ */ oe({
       trigger: "click",
       "hide-on-click": !0
     }, {
-      default: () => s("div", {
+      default: () => a("div", {
         class: [this.ns.e("dropdown-input")]
-      }, [s(S("el-input"), {
+      }, [a(S("el-input"), {
         class: [this.ns.e("search-input"), this.searchValue || this.selectedPersonnel ? "hasValue" : ""],
         ref: "searchRef",
         modelValue: this.searchValue,
@@ -595,51 +590,51 @@ const ie = /* @__PURE__ */ oe({
         onInput: (l) => this.handleSearch(l),
         onFocus: this.handleFocus
       }, {
-        suffix: () => s("div", {
+        suffix: () => a("div", {
           class: [this.ns.e("dropdown-input-suffix")]
-        }, [s("img", {
+        }, [a("img", {
           class: [this.ns.e("search-arrow"), this.dropdownVisible ? "isopen" : ""],
           src: "".concat(_.dir("assets/images/svg/arrow.svg")),
           alt: ""
-        }, null), s("div", {
+        }, null), a("div", {
           class: [this.ns.e("search-delete")],
           onClick: (l) => {
             l.stopPropagation(), this.clearSelect();
           }
         }, [this.deleteSvg()])]),
-        prefix: () => s("div", {
+        prefix: () => a("div", {
           class: [this.ns.e("dropdown-input-prefix"), this.dropdownVisible ? "dark" : ""]
         }, [this.renderPersonnel()])
       })]),
       dropdown: () => {
         let l;
-        return this.searchValue ? s(S("el-dropdown-menu"), null, {
+        return this.searchValue ? a(S("el-dropdown-menu"), null, {
           default: () => [this.romateData.length > 0 && this.dropDownItem.map((d) => {
             if (d.label === "member")
-              return s("div", {
+              return a("div", {
                 class: this.ns.e("popover-item"),
                 style: this.width ? "width:".concat(this.width, "px") : "pointer-events: none;"
-              }, [s("div", {
+              }, [a("div", {
                 class: this.ns.e("popover-item-center")
-              }, [s("div", {
+              }, [a("div", {
                 class: this.ns.e("popover-item-name")
               }, [d.name])])]);
-          }), this.romateData.map((d) => s("div", {
+          }), this.romateData.map((d) => a("div", {
             class: this.ns.e("search-romate-item")
           }, [this.renderPersonItem(d, !1, !1)])), this.romateTeamData.length > 0 && this.dropDownItem.map((d) => {
             if (d.label === "team")
-              return s("div", {
+              return a("div", {
                 class: this.ns.e("popover-item"),
                 style: this.width ? "width:".concat(this.width, "px") : "pointer-events: none;"
-              }, [s("div", {
+              }, [a("div", {
                 class: this.ns.e("popover-item-center")
-              }, [s("div", {
+              }, [a("div", {
                 class: this.ns.e("popover-item-name")
               }, [d.name])])]);
-          }), this.romateTeamData.map((d) => s("div", {
+          }), this.romateTeamData.map((d) => a("div", {
             class: this.ns.e("search-romate-item")
           }, [this.renderTeamItem(d)]))]
-        }) : s(S("el-dropdown-menu"), null, st(l = this.dropDownItem.map((d) => s(S("el-popover"), {
+        }) : a(S("el-dropdown-menu"), null, st(l = this.dropDownItem.map((d) => a(S("el-popover"), {
           trigger: "click",
           placement: "right",
           width: "380",
@@ -666,21 +661,21 @@ const ie = /* @__PURE__ */ oe({
           },
           visible: this.dropDownItemVisible[d.label]
         }, {
-          reference: () => s("div", {
+          reference: () => a("div", {
             class: this.ns.e("popover-item"),
             style: this.width ? "width:".concat(this.width, "px") : "",
             onClick: (r) => this.dropdownItemClick(r, d),
             ref: "dropdownMenu"
-          }, [s("div", {
+          }, [a("div", {
             class: this.ns.e("popover-item-center")
-          }, [s("div", {
+          }, [a("div", {
             class: this.ns.e("popover-item-left")
-          }, [this.renderItemSvg(d.label)]), s("div", {
+          }, [this.renderItemSvg(d.label)]), a("div", {
             class: this.ns.e("popover-item-name")
-          }, [d.name])]), s("div", {
+          }, [d.name])]), a("div", {
             class: this.ns.e("popover-item-right")
           }, [this.rightArrowSvg()])]),
-          default: () => s("div", {
+          default: () => a("div", {
             onClick: (r) => {
               this.dropdownRef.handleOpen();
             },

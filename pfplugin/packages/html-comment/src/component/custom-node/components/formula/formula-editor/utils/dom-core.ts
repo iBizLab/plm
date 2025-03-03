@@ -1,3 +1,11 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-void */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable prefer-destructuring */
+/* eslint-disable no-constructor-return */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Editor from '../editor/index';
 import { MathJax } from '../mathjax';
 import { toArray } from './util';

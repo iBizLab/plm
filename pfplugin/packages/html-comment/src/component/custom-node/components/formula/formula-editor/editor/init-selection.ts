@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable prefer-destructuring */
 import Editor from './index';
 import $ from '../utils/dom-core';
 import { EMPTY_P } from '../utils/constants';

@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 import { DomElement } from '../../utils/dom-core';
 import { hightlightHtml } from '../../utils/util';
 import Editor from '../../editor/index';

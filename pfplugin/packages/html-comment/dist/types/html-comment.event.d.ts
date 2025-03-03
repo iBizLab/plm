@@ -36,4 +36,12 @@ export interface commentEvent extends IComponentEvent {
         event: EventBase;
         emitArgs: undefined;
     };
+    openPopper: {
+        event: EventBase;
+        emitArgs: undefined;
+    };
+    closePopper: {
+        event: EventBase;
+        emitArgs: undefined;
+    };
 }

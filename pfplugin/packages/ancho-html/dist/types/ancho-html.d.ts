@@ -62,10 +62,10 @@ export declare const AnchoHtml: import("vue").DefineComponent<{
         required: boolean;
     };
 }>> & {
-    onClick?: ((_event?: IData | undefined, _data?: IData | undefined) => any) | undefined;
     onFocus?: ((_event?: IData | undefined) => any) | undefined;
     onBlur?: ((_event?: IData | undefined) => any) | undefined;
     onChange?: ((_value: unknown, _name?: string | undefined) => any) | undefined;
+    onClick?: ((_event?: IData | undefined, _data?: IData | undefined) => any) | undefined;
     onEnter?: ((_event?: IData | undefined) => any) | undefined;
     onInfoTextChange?: ((_text: string) => any) | undefined;
 }, {

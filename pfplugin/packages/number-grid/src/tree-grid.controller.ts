@@ -431,12 +431,14 @@ export class NumberTreeGridController extends TreeGridController<
     const index = this.findRowStateIndex(data);
     this.state.items.splice(index, 1, res.data);
     rowState.data = res.data;
+    rowState.oldData = res.data.clone();
     rowState.modified = false;
     // 如果时新建数据需重载父节点，因为tempsrfkey发生改变
     if (isCreate) {
       this.evt.emit('onReloadParentNode', { node: res.data });
     }
     this.gridStateNotify(rowState, GridNotifyState.SAVE);
+    await this.updateRows(this.state.rows);
     await this.evt.emit('onSaveSuccess', undefined);
   }
 

@@ -162,6 +162,18 @@ export declare class MarkerController {
      */
     presetPreventPropEvents: number[];
     /**
+     * @description 工作项链接视图id
+     * @type {string}
+     * @memberof HtmlCommentController
+     */
+    linkViewId: string;
+    /**
+     * @description 代码表对象
+     * @type {IData}
+     * @memberof MarkerController
+     */
+    codeListMap: IData;
+    /**
      * 删除回调
      *
      * @type {NOOP}
@@ -196,7 +208,7 @@ export declare class MarkerController {
     showModal(): void;
     findCodeListItem(codelist: CodeListItem[] | undefined, value: string | number): CodeListItem | undefined;
     /**
-     * 插入@
+     * 插入#
      *
      * @param {IDomEditor} editor
      * @memberof MarkerController
@@ -262,4 +274,17 @@ export declare class MarkerController {
      * @memberof MarkerController
      */
     loadCodeList(appCodeListId: string): Promise<IData | undefined>;
+    /**
+     * @description 处理点击事件
+     * @param {MouseEvent} event
+     * @memberof MarkerController
+     */
+    handleClick(event: MouseEvent): void;
+    /**
+     * @description 解析评论节点
+     * @param {IData} data
+     * @return {*}
+     * @memberof CommentItemRawItemEditorController
+     */
+    parseCommentTag(data: IData): string;
 }

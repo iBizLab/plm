@@ -14,7 +14,7 @@ export declare const CommentItemRawItem: import("vue").DefineComponent<{
     autoFocus: {
         type: BooleanConstructor;
         default: boolean;
-    };
+    }; /** 点击事件 */
     overflowMode: {
         type: StringConstructor;
     };
@@ -36,7 +36,10 @@ export declare const CommentItemRawItem: import("vue").DefineComponent<{
     previewSrcList: Ref<string[] | []>;
     onShow: () => Promise<void>;
     handleKeyPress: (event: KeyboardEvent) => Promise<void>;
+    handleClick: (event: MouseEvent) => void;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+    /** 点击事件 */
+    click: (_event?: IData, _data?: IData) => true;
     change: (_value: unknown, _name?: string | undefined) => boolean;
     blur: (_event?: IData | undefined) => boolean;
     focus: (_event?: IData | undefined) => boolean;
@@ -56,7 +59,7 @@ export declare const CommentItemRawItem: import("vue").DefineComponent<{
     autoFocus: {
         type: BooleanConstructor;
         default: boolean;
-    };
+    }; /** 点击事件 */
     overflowMode: {
         type: StringConstructor;
     };
@@ -65,6 +68,7 @@ export declare const CommentItemRawItem: import("vue").DefineComponent<{
         required: boolean;
     };
 }>> & {
+    onClick?: ((_event?: IData | undefined, _data?: IData | undefined) => any) | undefined;
     onChange?: ((_value: unknown, _name?: string | undefined) => any) | undefined;
     onBlur?: ((_event?: IData | undefined) => any) | undefined;
     onFocus?: ((_event?: IData | undefined) => any) | undefined;

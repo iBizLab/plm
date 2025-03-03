@@ -55,7 +55,7 @@ declare const IBizHtmlContent: import("vue").DefineComponent<{
     readonlyState: Ref<boolean>;
     changeFullScreenState: () => void;
     renderPreview: () => JSX.Element;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("link" | "blur" | "change" | "focus" | "enter" | "infoTextChange")[], "link" | "blur" | "change" | "focus" | "enter" | "infoTextChange", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("focus" | "blur" | "link" | "change" | "enter" | "infoTextChange" | "itemClick")[], "focus" | "blur" | "link" | "change" | "enter" | "infoTextChange" | "itemClick", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     value: StringConstructor;
     controller: import("@ibiz-template/vue3-util").RequiredProp<import("vue").PropType<HtmlCommentController>, undefined, undefined>;
     data: import("@ibiz-template/vue3-util").RequiredProp<import("vue").PropType<IData>, undefined, undefined>;
@@ -78,12 +78,13 @@ declare const IBizHtmlContent: import("vue").DefineComponent<{
         required: boolean;
     };
 }>> & {
-    onChange?: ((...args: any[]) => any) | undefined;
     onFocus?: ((...args: any[]) => any) | undefined;
     onBlur?: ((...args: any[]) => any) | undefined;
+    onChange?: ((...args: any[]) => any) | undefined;
     onEnter?: ((...args: any[]) => any) | undefined;
     onLink?: ((...args: any[]) => any) | undefined;
     onInfoTextChange?: ((...args: any[]) => any) | undefined;
+    onItemClick?: ((...args: any[]) => any) | undefined;
 }, {
     disabled: boolean;
     readonly: boolean;

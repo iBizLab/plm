@@ -1,0 +1,79 @@
+/* stylelint-disable selector-class-pattern */
+@include b('dropdown-select-daterange') {
+  @include e('input') {
+    .van-dropdown-menu {
+      width: 100%;
+    }
+
+    .van-dropdown-menu__bar {
+      height: calc(
+        getCssVar(form-item, line-height) + 2 * getCssVar(spacing-tight)
+      );
+    }
+
+    .van-dropdown-menu__title {
+      right: getCssVar(spacing-tight);
+      width: 100%;
+    }
+
+    .van-dropdown-item__option {
+      padding: getCssVar(spacing, tight) getCssVar(spacing, base);
+
+      .van-cell__value {
+        flex: 0;
+        min-width: getCssVar(spacing, extra-loose);
+      }
+    }
+
+    &::after{
+      content: unset;
+    }
+  }
+
+  @include e('calendar') {
+    .van-calendar__day--start,.van-calendar__day--end {
+      .#{bem(calendar-date-range-picker-calendar,today)} {
+        color: getCssVar(color, default);
+
+        .ibiz-calendar-date-range-picker-calendar__today--bottom-info {
+          display: none;
+        }
+      }
+    }
+  }
+  @include e('custom') {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: getCssVar(spacing, tight) getCssVar(spacing, base);
+    margin-bottom: getCssVar(spacing, base);
+    text-align: left;
+    @include m('text') { 
+      flex: 1; 
+    }
+    @include m('icon') {
+      display: none;
+      min-width: getCssVar(spacing, extra-loose);
+      @include when('selected') {
+        display: inline-block;
+      }
+    }
+
+    &::after {
+      position: absolute;
+      bottom: 0;
+      left: getCssVar(spacing, base-tight);
+      width: calc(
+        100% - getCssVar(spacing, base) - getCssVar(spacing, base-tight)
+      );
+      height: 1px;
+      margin-left: 2px;
+      content: '';
+      background-color: getCssVar(color, border);
+      opacity: 0.7;
+    }
+    @include when('selected') {
+      color: getCssVar(color, primary);
+    }
+  }
+}

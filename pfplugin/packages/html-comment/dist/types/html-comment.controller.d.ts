@@ -115,6 +115,14 @@ export declare class HtmlCommentController extends EditorController<IHtml> {
      */
     enableRealtime: boolean;
     /**
+     * 协同编辑key
+     *
+     * @author tony001
+     * @date 2024-12-20 17:12:36
+     * @type {(string | undefined)}
+     */
+    collaborateKey: string | undefined;
+    /**
      * 编辑器实例
      */
     editor: IDomEditor;
@@ -157,6 +165,12 @@ export declare class HtmlCommentController extends EditorController<IHtml> {
      * @type {boolean}
      */
     chatCompletion: boolean;
+    /**
+     * @description 提及工作项控制器
+     * @readonly
+     * @memberof HtmlCommentController
+     */
+    get markerController(): import("./interface").INodeController | undefined;
     evt: ControllerEvent<commentEvent>;
     protected getEventArgs(): Omit<EventBase, 'eventName'>;
     protected onInit(): Promise<void>;
@@ -173,7 +187,7 @@ export declare class HtmlCommentController extends EditorController<IHtml> {
      * @param {IDomEditor} editor
      * @memberof HtmlCommentController
      */
-    onCreated(editor: IDomEditor, data: IData, toolbarConfig: IData): void;
+    onCreated(editor: IDomEditor, data: IData, toolbarConfig: IData): Promise<void>;
     /**
      * 组件销毁
      *
@@ -279,4 +293,10 @@ export declare class HtmlCommentController extends EditorController<IHtml> {
      * @memberof HtmlCommentController
      */
     getView(): any;
+    /**
+     * @description 处理点击
+     * @param {MouseEvent} event
+     * @memberof HtmlCommentController
+     */
+    handleClick(event: MouseEvent): void;
 }

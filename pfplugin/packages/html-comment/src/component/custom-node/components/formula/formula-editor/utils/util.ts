@@ -1,3 +1,8 @@
+/* eslint-disable radix */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { HIGHLIGHT_COLOR } from './constants';
 
 /**

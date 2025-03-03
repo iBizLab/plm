@@ -32,6 +32,14 @@ export declare class RepeaterGridCaseStepsController extends FormMDCtrlRepeaterC
      * @memberof RepeaterGridCaseStepsController
      */
     presetGroupActions: IData[];
+    protected onInit(): Promise<void>;
+    save(): Promise<void>;
+    /**
+     * @description 重写setValue，防止抖动
+     * @param {(IData[] | IData | null)} value
+     * @memberof RepeaterGridCaseStepsController
+     */
+    setValue(value: IData[] | IData | null): Promise<void>;
     /**
      * 处理添加行为组
      *

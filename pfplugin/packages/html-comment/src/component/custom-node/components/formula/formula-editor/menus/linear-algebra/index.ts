@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import DropListMenu from '../menu-constructors/DropListMenu';
 import $ from '../../utils/dom-core';
 import { createMemuElem } from '../../utils/util';

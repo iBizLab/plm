@@ -24,6 +24,7 @@ export declare const PersonelSelect: import("vue").DefineComponent<{
     };
 }, {
     ns: import("@ibiz-template/core").Namespace;
+    ns2: import("@ibiz-template/core").Namespace;
     c: PersonelSelectController;
     refValue: Ref<string>;
     curValue: Ref<string | null>;

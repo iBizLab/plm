@@ -2,6 +2,13 @@
 /* stylelint-disable no-descending-specificity */
 /* stylelint-disable rule-empty-line-before */
 /* stylelint-disable selector-type-no-unknown */
+@mixin personel-list-item-text-label {
+  padding: 0 rem(6px);
+  font-size: 0.8em;
+  background-color: #{getCssVar(color, border)};
+  border-radius: rem(16px);
+}
+
 @include b('picker-dropdown') {
 
   @include b('picker-dropdown-select-value') {
@@ -272,11 +279,12 @@
         border-radius: 50%;
       }
 
+      @include m('title-label') {
+        @include personel-list-item-text-label;
+      }
+
       @include m('myself') {
-        padding: 0 5px;
-        font-size: 0.8em;
-        background-color: #{getCssVar(color, border)};
-        border-radius: 16px;
+        @include personel-list-item-text-label;
       }
     }
 
@@ -385,6 +393,31 @@
   .#{bem('picker-dropdown-no-select-value')} {
     span {
       display: none;
+    }
+  }
+}
+
+// 适配超出显示省略号宽度计算异常
+@include b('personel-select') {
+  @include when('multiple') {
+    width: 100%;
+
+    .#{bem('picker-dropdown-select-value__textimg')} {
+      overflow: unset;
+    }
+  }
+}
+
+// 多选省略相关样式
+@include b('personel-select-multiple-ellipsis') {
+  @include e(default) {
+    cursor: pointer;
+  }
+  @include e('popper') {
+    max-width: 312px;
+    text-align: justify;
+    &>span:nth-child(1) {
+      width: 100%;
     }
   }
 }

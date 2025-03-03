@@ -15,7 +15,7 @@ export declare function useCellEdit(props: {
         readonly: boolean;
         cellEditable: boolean;
         onFocus: () => void;
-        onBlur: () => void;
+        onBlur: () => Promise<void>;
         onEnter: () => Promise<void>;
         onKeydown: (event: IParams) => void;
     };

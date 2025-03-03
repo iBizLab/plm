@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { defineComponent, ref, computed, onMounted, Ref } from 'vue';
 import { useNamespace } from '@ibiz-template/vue3-util';
 import './audio.scss';

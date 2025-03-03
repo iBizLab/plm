@@ -1,5 +1,6 @@
-import { IOverlayPopoverContainer } from '@ibiz-template/runtime';
+import { ControllerEvent, IOverlayPopoverContainer } from '@ibiz-template/runtime';
 import { IDomEditor } from '@wangeditor/editor';
+import { commentEvent } from '../html-comment.event';
 /**
  * 用户列表适配器
  *
@@ -37,6 +38,13 @@ export declare class EmojiController {
      */
     presetPreventPropEvents: number[];
     /**
+     * 编辑器事件
+     *
+     * @type {ControllerEvent<commentEvent>}
+     * @memberof EmojiController
+     */
+    evt: ControllerEvent<commentEvent>;
+    /**
      * 删除回调
      *
      * @type {NOOP}
@@ -65,7 +73,7 @@ export declare class EmojiController {
      * @param {IDomEditor} editor
      * @memberof EmojiController
      */
-    init(editor: IDomEditor): Promise<void>;
+    init(editor: IDomEditor, option: IData): Promise<void>;
     /**
      * 监听事件
      *

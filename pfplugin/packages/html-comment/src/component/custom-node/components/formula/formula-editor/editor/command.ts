@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 import $, { DomElement } from '../utils/dom-core';
 import Editor from './index';
 import { createEmptyElem } from '../utils/util';

@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable prefer-destructuring */
 import $, { DomElement } from '../utils/dom-core';
 import Editor from './index';
 import { UA } from '../utils/util';

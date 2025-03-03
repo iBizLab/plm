@@ -1,28 +1,30 @@
+/* eslint-disable vue/no-mutating-props */
 /* eslint-disable no-param-reassign */
 import {
-  computed,
-  defineComponent,
   h,
-  onMounted,
   ref,
-  resolveComponent,
   VNode,
+  computed,
+  onMounted,
+  defineComponent,
+  resolveComponent,
 } from 'vue';
 import {
-  IAppDEUIActionGroupDetail,
   IUIActionGroupDetail,
+  IAppDEUIActionGroupDetail,
 } from '@ibiz/model-core';
 import { useNamespace, useUIStore } from '@ibiz-template/vue3-util';
 import {
   Srfuf,
-  TreeGridExFieldColumnController,
   TreeGridExRowState,
+  TreeGridExFieldColumnController,
+  UIActionUtil,
 } from '@ibiz-template/runtime';
 import { isNotNil } from 'ramda';
 import TreeGridExEditColumn from './tree-grid-ex-edit-column/tree-grid-ex-edit-column';
-import './tree-grid-ex-field-column.scss';
 import { IBizEditColumnActionToolbar } from '../edit-column-action-toolbar/edit-column-action-toolbar';
 import { filterTypes } from '../utils';
+import './tree-grid-ex-field-column.scss';
 
 export const TreeGridExFieldColumn = defineComponent({
   name: 'TreeGridExFieldColumn',
@@ -165,8 +167,44 @@ export const TreeGridExFieldColumn = defineComponent({
       detail: IUIActionGroupDetail,
       event: MouseEvent,
     ): Promise<void> => {
-      handleToobarPopClose();
-      await nodeColumn.value?.onActionClick(detail, props.row, event);
+      event.stopPropagation();
+      const ctrl = nodeColumn.value?.treeGrid;
+      if (ctrl) {
+        actionToolbarRef.value?.openProcessing();
+        const eventArgs = ctrl.getEventArgs();
+        const nodeParams = (ctrl as IData).parseTreeNodeData(props.row.data);
+        const result = await UIActionUtil.exec(
+          detail.uiactionId!,
+          {
+            ...eventArgs,
+            ...nodeParams,
+            event,
+          },
+          detail.appId,
+        );
+        actionToolbarRef.value?.closeProcessing();
+        // 行为非取消时才关闭
+        if (!result.cancel) handleToobarPopClose();
+        if (result.closeView) {
+          ctrl.view.closeView();
+        } else if (result.refresh) {
+          switch (result.refreshMode) {
+            // 刷新当前节点的子
+            case 1:
+              ctrl.refreshNodeChildren(props.row.data);
+              break;
+            // 刷新当前节点的父节点的子
+            case 2:
+              ctrl.refreshNodeChildren(props.row.data, true);
+              break;
+            // 刷新所有节点数据
+            case 3:
+              ctrl.refresh();
+              break;
+            default:
+          }
+        }
+      }
     };
 
     /**

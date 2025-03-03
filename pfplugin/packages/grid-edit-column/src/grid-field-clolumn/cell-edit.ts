@@ -1,3 +1,4 @@
+/* eslint-disable no-lonely-if */
 import { OnClickOutsideResult } from '@ibiz-template/core';
 import { GridRowState, Srfuf } from '@ibiz-template/runtime';
 import { useClickOutside } from '@ibiz-template/vue3-util';
@@ -92,7 +93,7 @@ export function useCellEdit(
   // 是否在保存过程中
   const saveProcessing = ref(false);
 
-  const onBlur = (): void => {
+  const onBlur = async (): Promise<void> => {
     ibiz.log.debug(`${c.fieldName}属性编辑器blur事件`);
     if (saveProcessing.value || c.hasDropdown) {
       return;
@@ -103,10 +104,13 @@ export function useCellEdit(
       c.grid.save(props.row.data);
     } else {
       // 保存模式为enter模式时，失去焦点就取消操作
-      // 新建的行取消时删除这一行的数据
       // eslint-disable-next-line no-lonely-if
+      // 新建行值没改变就删除，值改变了就保存
       if (props.row.data.srfuf === Srfuf.CREATE) {
-        c.grid.remove({ data: [props.row.data], silent: true });
+        if (!props.row.modified) {
+          c.grid.remove({ data: [props.row.data], silent: true });
+        }
+        await c.grid.save(props.row.data);
       } else {
         c.setRowValue(props.row, oldValue);
       }
@@ -117,6 +121,12 @@ export function useCellEdit(
     c.setPickerValue(props.row);
     saveProcessing.value = true;
     ibiz.log.debug(`${c.fieldName}属性编辑器enter事件`);
+    // 新建行值没改变就删除
+    if (props.row.data.srfuf === Srfuf.CREATE) {
+      if (!props.row.modified) {
+        c.grid.remove({ data: [props.row.data], silent: true });
+      }
+    }
     await c.grid.save(props.row.data);
     // 重新设置最新值为原始值
     oldValue = props.row.data[c.fieldName];

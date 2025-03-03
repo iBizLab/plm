@@ -15,7 +15,7 @@ const E = {
     o.component(
       "IBizMobPersonalPickerTree",
       a({
-        loader: () => import("./mob-personal-picker-tree-3263421a.js"),
+        loader: () => import("./mob-personal-picker-tree-0a2d46b9.js"),
         loadingComponent: P,
         delay: 0
       })

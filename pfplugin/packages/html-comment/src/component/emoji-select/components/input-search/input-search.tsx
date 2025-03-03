@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { defineComponent, ref } from 'vue';
 import { useNamespace } from '@ibiz-template/vue3-util';
 import { SearchSvg } from '../../icons';

@@ -21,7 +21,8 @@ $mob-personal-picker-tree: ('text-color': getCssVar('color', 'text'),
   background: getCssVar('mob-personal-picker-tree', 'bg-color');
 
   @include e('virtual-tree') {
-    height: 100%;
+    height: inherit;
+    overflow: hidden;
   }
 
   // 分组
@@ -79,6 +80,15 @@ $mob-personal-picker-tree: ('text-color': getCssVar('color', 'text'),
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+    }
+    @include m('title-label') {
+      height: getCssVar('font-size', 'header-5');
+      padding: 0 rem(6px);
+      margin-left: getCssVar('spacing', 'tight');
+      font-size: 0.7rem;
+      line-height: getCssVar('font-size', 'header-5');
+      background-color: #{getCssVar(color, border)};
+      border-radius: getCssVar('font-size', 'header-5');
     }
   }
 

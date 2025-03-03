@@ -1,106 +1,115 @@
 import './style.css';
-var z = Object.defineProperty;
-var D = (o, r, t) => r in o ? z(o, r, { enumerable: !0, configurable: !0, writable: !0, value: t }) : o[r] = t;
-var p = (o, r, t) => (D(o, typeof r != "symbol" ? r + "" : r, t), t);
-import { EditorController as H, ScriptFactory as U, registerEditorProvider as b } from "@ibiz-template/runtime";
-import { getRawProps as $, getEditorEmits as F, useNamespace as q, withInstall as B } from "@ibiz-template/vue3-util";
-import { defineComponent as J, ref as d, computed as M, watch as A, createVNode as u, resolveComponent as L, nextTick as f } from "vue";
-const C = /* @__PURE__ */ J({
+var $ = Object.defineProperty;
+var z = (s, r, e) => r in s ? $(s, r, { enumerable: !0, configurable: !0, writable: !0, value: e }) : s[r] = e;
+var f = (s, r, e) => (z(s, typeof r != "symbol" ? r + "" : r, e), e);
+import { EditorController as H, ScriptFactory as U, PanelItemEventName as F, OpenAppViewCommand as J, registerEditorProvider as R } from "@ibiz-template/runtime";
+import { getRawProps as K, getEditorEmits as q, useNamespace as B, withInstall as V } from "@ibiz-template/vue3-util";
+import { defineComponent as W, ref as h, computed as T, watch as k, createVNode as I, resolveComponent as S, nextTick as w } from "vue";
+import { clone as G } from "ramda";
+const v = /* @__PURE__ */ W({
   name: "CommentItemRawItem",
-  props: $(),
-  emits: F(),
-  setup(o) {
-    var R, P, T, S;
-    const r = q("raw"), t = o.controller, n = t.model, a = d(""), y = d(""), m = d(), h = d(), w = d([]);
-    let v = "TEXT", l = "";
-    n.contentType && (v = n.contentType), (R = n.editorParams) != null && R.contenttype && (v = (P = n.editorParams) == null ? void 0 : P.contenttype), (T = n.editorParams) != null && T.template && (l = n.editorParams.template.replaceAll("//n", "\n")), (S = n.editorParams) != null && S.TEMPLATE && (l = n.editorParams.TEMPLATE.replaceAll("//n", "\n"));
-    const k = M(() => !!(o.controlParams && o.controlParams.editmode === "hover")), x = (e) => e.replaceAll(/{"emoji":"(.+?)"}/g, (i, s) => {
-      const c = decodeURIComponent(atob(s));
-      return '<span class="emoji-tag">'.concat(c, "</span>");
-    }).replaceAll(/<span data-w-e-type="emoji" class='emoji'>(.+?)<\/span>/g, (i, s) => {
-      const c = decodeURIComponent(atob(s));
-      return "<span data-w-e-type=\"emoji\" class='emoji'>".concat(c, "</span>");
+  props: K(),
+  emits: {
+    ...q(),
+    /** 点击事件 */
+    click: (s, r) => !0
+  },
+  setup(s) {
+    var L, P, _, b;
+    const r = B("raw"), e = s.controller, t = e.model, i = h(""), l = h(""), c = h(), d = h(), o = h([]);
+    let C = "TEXT", u = "";
+    t.contentType && (C = t.contentType), (L = t.editorParams) != null && L.contenttype && (C = (P = t.editorParams) == null ? void 0 : P.contenttype), (_ = t.editorParams) != null && _.template && (u = t.editorParams.template.replaceAll("//n", "\n")), (b = t.editorParams) != null && b.TEMPLATE && (u = t.editorParams.TEMPLATE.replaceAll("//n", "\n"));
+    const O = T(() => !!(s.controlParams && s.controlParams.editmode === "hover")), x = (n) => n.replaceAll(/{"emoji":"(.+?)"}/g, (m, a) => {
+      const p = decodeURIComponent(atob(a));
+      return '<span class="emoji-tag">'.concat(p, "</span>");
+    }).replaceAll(/<span data-w-e-type="emoji" class='emoji'>(.+?)<\/span>/g, (m, a) => {
+      const p = decodeURIComponent(atob(a));
+      return "<span data-w-e-type=\"emoji\" class='emoji'>".concat(p, "</span>");
     });
-    A(() => o.value, async (e, i) => {
-      if (e !== i) {
-        if ((typeof e == "string" || typeof e == "number") && (a.value = e), l && e) {
-          let s = null;
-          if (typeof e == "string")
+    k(() => s.value, async (n, m) => {
+      if (n !== m) {
+        if ((typeof n == "string" || typeof n == "number") && (i.value = n), u && n) {
+          let a = null;
+          if (typeof n == "string")
             try {
-              s = JSON.parse(e);
-            } catch (c) {
+              a = JSON.parse(n);
+            } catch (p) {
               ibiz.log.error("JSON字符串转换错误");
             }
-          a.value = await ibiz.util.hbs.render(l, s || e);
+          i.value = await ibiz.util.hbs.render(u, a || n);
         }
-        a.value = x(a.value ? "".concat(a.value) : "");
+        i.value = x(i.value ? "".concat(i.value) : "");
       }
     }, {
       immediate: !0
     });
-    const I = M(() => t.scriptCode ? o.controller.getPanelItemCustomHtml(t.scriptCode, {
-      content: a.value
-    }) : ""), O = async (e) => {
-      if (y.value = e, w.value = [e], await f(), m.value) {
+    const y = T(() => e.scriptCode ? s.controller.getPanelItemCustomHtml(e.scriptCode, {
+      content: i.value
+    }) : ""), A = async (n) => {
+      if (l.value = n, o.value = [n], await w(), c.value) {
         const {
-          container: i
-        } = m.value.$refs;
-        i && i.children[0].click();
+          container: m
+        } = c.value.$refs;
+        m && m.children[0].click();
       }
-    }, _ = async () => {
-      await f(), h.value && h.value.querySelectorAll("img").forEach((i) => {
-        i.onclick = (s) => {
-          const c = s.target;
-          c && O(c.src);
+    }, M = async () => {
+      await w(), d.value && d.value.querySelectorAll("img").forEach((m) => {
+        m.onclick = (a) => {
+          const p = a.target;
+          p && A(p.src);
         };
       });
-    }, E = (e) => {
-      if (m.value) {
+    }, g = (n) => {
+      if (c.value) {
         const {
-          container: i
-        } = m.value.$refs;
-        if (i) {
-          const s = i.querySelector(".el-image-viewer__wrapper");
-          s == null || s[e]("keydown", g);
+          container: m
+        } = c.value.$refs;
+        if (m) {
+          const a = m.querySelector(".el-image-viewer__wrapper");
+          a == null || a[n]("keydown", E);
         }
       }
-    }, g = async (e) => {
-      (e.key === "Escape" || e.keyCode === 27) && (e.stopPropagation(), e.preventDefault(), await f(), E("removeEventListener"), w.value = []);
-    }, N = async () => {
-      await f(), E("addEventListener");
+    }, E = async (n) => {
+      (n.key === "Escape" || n.keyCode === 27) && (n.stopPropagation(), n.preventDefault(), await w(), g("removeEventListener"), o.value = []);
+    }, j = async () => {
+      await w(), g("addEventListener");
+    }, D = (n) => {
+      n.stopPropagation(), n.preventDefault(), e.handleClick(n);
     };
-    return A(() => I, () => {
-      _();
+    return k(() => y, () => {
+      M();
     }, {
       immediate: !0
     }), {
       ns: r,
-      c: t,
-      rawRef: h,
-      previewRef: m,
-      content: a,
-      previewUrl: y,
-      type: v,
-      template: l,
-      htmlCode: I,
-      showFormDefaultContent: k,
-      previewSrcList: w,
-      onShow: N,
-      handleKeyPress: g
+      c: e,
+      rawRef: d,
+      previewRef: c,
+      content: i,
+      previewUrl: l,
+      type: C,
+      template: u,
+      htmlCode: y,
+      showFormDefaultContent: O,
+      previewSrcList: o,
+      onShow: j,
+      handleKeyPress: E,
+      handleClick: D
     };
   },
   render() {
-    return u("div", {
+    return I("div", {
       class: [this.ns.b(), this.ns.is("comment-item", !0), this.disabled ? this.ns.m("disabled") : "", this.readonly ? this.ns.m("readonly") : "", this.ns.is("show-default", this.showFormDefaultContent)]
-    }, [this.htmlCode ? u("div", {
+    }, [this.htmlCode ? I("div", {
       ref: "rawRef",
+      onClick: this.handleClick,
       class: this.ns.e("script"),
       innerHTML: this.htmlCode
-    }, null) : this.content && u(L("iBizRawItem"), {
+    }, null) : this.content && I(S("iBizRawItem"), {
       class: this.ns.b("content"),
       content: this.content,
       type: this.type
-    }, null), u(L("el-image"), {
+    }, null), I(S("el-image"), {
       class: this.ns.e("preview"),
       ref: "previewRef",
       "zoom-rate": 1.1,
@@ -112,7 +121,7 @@ const C = /* @__PURE__ */ J({
     }, null)]);
   }
 });
-class K extends H {
+class X extends H {
   constructor() {
     super(...arguments);
     /**
@@ -121,12 +130,44 @@ class K extends H {
      * @type {string}
      * @memberof CommentItemRawItemEditorController
      */
-    p(this, "scriptCode", "");
+    f(this, "scriptCode", "");
+    /**
+     * @description 链接视图id
+     * @type {string}
+     * @memberof CommentItemRawItemEditorController
+     */
+    f(this, "linkViewId", "plmweb.recent_redirect_view");
+    /**
+     * @description 图标代码表标识
+     * @type {string}
+     * @memberof CommentItemRawItemEditorController
+     */
+    f(this, "iconCodeListId", "plmweb.base__recent_visite");
+    /**
+     * @description 代码表数据
+     * @type {readonly}
+     * @memberof CommentItemRawItemEditorController
+     */
+    f(this, "codeListItems", []);
   }
   async onInit() {
     await super.onInit();
-    const { SCRIPTCODE: t } = this.editorParams;
-    t && (this.scriptCode = t);
+    const { SCRIPTCODE: e, LINKVIEWID: t, ICONCODELISTID: i } = this.editorParams;
+    e && (this.scriptCode = e), t && (this.linkViewId = t), i && (this.iconCodeListId = i), this.codeListItems = await this.loadCodeList(this.iconCodeListId);
+  }
+  /**
+   * 加载代码表
+   *
+   * @param {string} appCodeListId
+   * @return {*}  {(Promise<readonly CodeListItem[]>)}
+   * @memberof CommentItemRawItemEditorController
+   */
+  async loadCodeList(e) {
+    return await ibiz.hub.getApp(this.context.srfappid).codeList.get(
+      e,
+      this.context,
+      this.params
+    );
   }
   /**
    * 获取面板绘制器自定义html
@@ -136,45 +177,116 @@ class K extends H {
    * @return {*}  {(string | undefined)}
    * @memberof CommentItemRawItemEditorController
    */
-  getPanelItemCustomHtml(t, n) {
-    if (t)
-      return U.execScriptFn({ data: n || {} }, t, {
-        singleRowReturn: !0,
-        isAsync: !1
-      });
+  getPanelItemCustomHtml(e, t) {
+    if (e)
+      return U.execScriptFn(
+        { data: t || {}, controller: this },
+        e,
+        {
+          singleRowReturn: !0,
+          isAsync: !1
+        }
+      );
+  }
+  findCodeListItem(e, t) {
+    if (e) {
+      const i = e.find((l) => l.value == t);
+      if (i)
+        return i;
+      for (let l = 0; l < e.length; l++) {
+        const c = this.findCodeListItem(
+          e[l].children,
+          t
+        );
+        if (c)
+          return c;
+      }
+    }
+  }
+  /**
+   * @description 解析评论节点
+   * @param {IData} data
+   * @return {*}
+   * @memberof CommentItemRawItemEditorController
+   */
+  parseCommentTag(e) {
+    let { icon: t } = e;
+    if (!e.icon && e.owner_subtype && this.codeListItems.length) {
+      const i = this.findCodeListItem(
+        this.codeListItems,
+        e.owner_subtype
+      );
+      i && i.sysImage && (t = i.sysImage.rawContent || "");
+    }
+    return "<span class='comment-tag' data-value='".concat(JSON.stringify(
+      e
+    ), "'>").concat(t, " ").concat(e.identifier, " ").concat(e.name, "</span>");
+  }
+  /**
+   * @description 点击事件
+   * @param {MouseEvent} event
+   * @memberof CommentItemRawItemEditorController
+   */
+  onClick(e) {
+    const { panel: t } = this.parent;
+    t && t.evt.emit("onPanelItemEvent", {
+      panelItemName: this.model.id,
+      panelItemEventName: F.CLICK,
+      event: e
+    });
+  }
+  /**
+   * @description 处理点击事件
+   * @param {MouseEvent} event
+   * @return {*}  {void}
+   * @memberof CommentItemRawItemEditorController
+   */
+  handleClick(e) {
+    const { classList: t, dataset: i } = e.target;
+    if (t && t.contains("comment-tag")) {
+      const l = i.value || "", c = this.context.clone(), d = G(this.params), o = JSON.parse(l);
+      if (!o.owner_type)
+        return;
+      c.srfkey = o.id, o.owner_subtype === "page" ? d.article_page = o.owner_id : d[o.owner_subtype] = o.owner_id, d[o.owner_type] = o.recent_parent, delete o.script, delete o.icon, delete o.id, Object.assign(d, o), o && this.linkViewId && ibiz.commands.execute(
+        J.TAG,
+        this.linkViewId,
+        c,
+        d
+      );
+    }
   }
 }
-class j {
+class N {
   constructor() {
-    p(this, "formEditor", "CommentItemRawItem");
-    p(this, "gridEditor", "CommentItemRawItem");
+    f(this, "formEditor", "CommentItemRawItem");
+    f(this, "gridEditor", "CommentItemRawItem");
   }
-  async createController(r, t) {
-    const n = new K(
+  async createController(r, e) {
+    const t = new X(
       r,
-      t
+      e
     );
-    return await n.init(), n;
+    return await t.init(), t;
   }
 }
-const W = B(
-  C,
-  function(o) {
-    o.component(C.name, C), b(
+const Y = V(
+  v,
+  function(s) {
+    s.component(v.name, v), R(
       "RAW_COMMENT_ITEM",
-      () => new j()
-    ), b(
+      () => new N()
+    ), R(
       "EDITOR_CUSTOMSTYLE_COMMENT_ITEM",
-      () => new j()
+      () => new N()
     );
   }
-), Z = {
+), ie = {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/explicit-function-return-type
-  install(o) {
-    o.use(W);
+  install(s) {
+    s.use(Y);
   }
 };
 export {
-  W as IBizCommentItemRawItem,
-  Z as default
+  Y as IBizCommentItemRawItem,
+  ie as default
 };

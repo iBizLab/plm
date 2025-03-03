@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { PropType, defineComponent, computed } from 'vue';
 import { useNamespace } from '@ibiz-template/vue3-util';
 import './emoji-item.scss';

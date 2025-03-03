@@ -1,4 +1,10 @@
-import { GridController, IListController } from '@ibiz-template/runtime';
+import { GridController, IGridState, IListController } from '@ibiz-template/runtime';
+interface ICheckboxGrid extends IGridState {
+    /**
+     * 启用全选
+     */
+    enableSelectAll: boolean;
+}
 /**
  * 多选视图表格插件（多选框）控制器
  *
@@ -16,6 +22,21 @@ export declare class CheckboxGridController extends GridController {
      */
     get simpleList(): IListController;
     /**
+     * 状态对象
+     *
+     * @type {ICheckboxGrid}
+     * @memberof CheckboxGridController
+     */
+    state: ICheckboxGrid;
+    protected initState(): void;
+    /**
+     * 部件参数解析
+     *
+     * @protected
+     * @memberof ControlController
+     */
+    protected handleControlParams(): void;
+    /**
      * 处理选中数据
      *
      * @param {string[]} selects 选中数据
@@ -30,3 +51,4 @@ export declare class CheckboxGridController extends GridController {
      */
     protected handlePushSimpleListItems(): void;
 }
+export {};

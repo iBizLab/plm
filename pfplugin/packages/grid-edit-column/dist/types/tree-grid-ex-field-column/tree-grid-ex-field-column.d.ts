@@ -12,6 +12,7 @@ export declare const TreeGridExFieldColumn: import("vue").DefineComponent<{
 }, {
     ns: import("@ibiz-template/core").Namespace;
     ns2: import("@ibiz-template/core").Namespace;
+    zIndex: number;
     nodeColumn: import("vue").ComputedRef<import("@ibiz-template/runtime").TreeGridExNodeColumnController | undefined>;
     fieldValue: import("vue").ComputedRef<any>;
     showText: import("vue").ComputedRef<any>;
@@ -19,7 +20,11 @@ export declare const TreeGridExFieldColumn: import("vue").DefineComponent<{
     tooltip: import("vue").ComputedRef<any>;
     editable: import("vue").ComputedRef<boolean>;
     readonly: import("vue").ComputedRef<boolean>;
+    editColums: import("vue").ComputedRef<import("@ibiz-template/runtime").TreeGridExColumnController<import("@ibiz/model-core").IDETreeColumn>[]>;
+    actionToolbarRef: import("vue").Ref<any>;
     onInfoTextChange: (text: string) => void;
+    onDataChange: (tempNodeColumn: IData, val: unknown, name: string) => Promise<void>;
+    editorEnter: (tempNodeColumn: IData, val: unknown, name: string) => Promise<void>;
     onTextClick: (event: MouseEvent) => void;
     onActionClick: (detail: IUIActionGroupDetail, event: MouseEvent) => Promise<void>;
     onOpenEdit: (event: Event) => void;

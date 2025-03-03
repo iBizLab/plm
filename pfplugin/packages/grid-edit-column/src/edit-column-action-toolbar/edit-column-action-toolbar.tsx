@@ -3,8 +3,8 @@ import { defineComponent, PropType, Ref, ref, watch } from 'vue';
 import { useClickOutside, useNamespace } from '@ibiz-template/vue3-util';
 import { IButtonContainerState } from '@ibiz-template/runtime';
 import { IAppDEUIActionGroupDetail } from '@ibiz/model-core';
-import './edit-column-action-toolbar.scss';
 import { OnClickOutsideResult } from '@ibiz-template/core';
+import './edit-column-action-toolbar.scss';
 
 /**
  * 表格编辑列行为工具栏
@@ -29,8 +29,8 @@ export const IBizEditColumnActionToolbar = defineComponent({
     },
     // 分组的行为级别
     groupLevelKeys: {
-      type: Object as PropType<number[]>,
-      default: [50],
+      type: Array as PropType<number[]>,
+      default: () => [50],
     },
     editColums: {
       type: Object as PropType<IData>,
@@ -136,14 +136,10 @@ export const IBizEditColumnActionToolbar = defineComponent({
     );
 
     /**
-     * 行为项分组实例
-     */
-    const groupButtonRef = ref();
-
-    /**
      * 打开子popper
      */
-    const openTopLevel = (): void => {
+    const openTopLevel = (event: Event): void => {
+      event.stopPropagation();
       topLevelVisible.value = true;
     };
 
@@ -229,32 +225,31 @@ export const IBizEditColumnActionToolbar = defineComponent({
       event.preventDefault();
     };
 
-    /**
-     * 顶级popover消失时保存全部
-     */
-    const onTopLevelPopHide = (): void => {
-      emit('saveAll');
-    };
+    let funcs: OnClickOutsideResult | undefined;
 
     // 点击外部时回调
     const onTopLevelPopShow = (): void => {
       const eles = childLevelRef.value;
-
-      const funcs: OnClickOutsideResult = useClickOutside(
-        actionRef.value,
-        async () => {
+      funcs = useClickOutside(
+        actionRef,
+        () => {
           // 界面行为没有在处理中时，才关闭
           if (!processing.value) {
             handleOutSideClick();
-            if (!topLevelVisible.value) {
-              funcs.stop();
-            }
           }
         },
         {
           ignore: [eles],
         },
       );
+    };
+
+    /**
+     * 顶级popover消失时保存全部
+     */
+    const onTopLevelPopHide = (): void => {
+      funcs?.stop();
+      emit('saveAll');
     };
 
     return {
@@ -264,7 +259,6 @@ export const IBizEditColumnActionToolbar = defineComponent({
       childLevelRef,
       expandDetails,
       groupDetails,
-      groupButtonRef,
       popoverVisible,
       topLevelVisible,
       handleClick,
@@ -430,7 +424,7 @@ export const IBizEditColumnActionToolbar = defineComponent({
     /**
      * 绘制分组
      */
-    const renderGroup = (): JSX.Element[] | null => {
+    const renderGroup = (): JSX.Element | null => {
       if (this.groupDetails.length === 0) {
         return null;
       }
@@ -447,36 +441,13 @@ export const IBizEditColumnActionToolbar = defineComponent({
         this.groupDetails.findIndex(item => {
           return this.actionsState[item.id!].disabled === false;
         }) === -1;
-      return [
-        <el-button
-          size='small'
-          text
-          disabled={pdisabled}
-          ref='groupButtonRef'
-          class={[
-            this.ns.e('item'),
-            this.ns.is('group-button', true),
-            this.ns.is('expand', this.topLevelVisible),
-          ]}
-        >
-          {{
-            icon: () => (
-              <ion-icon
-                class={this.ns.e('icon')}
-                name='ellipsis-vertical'
-                title={ibiz.i18n.t('component.actionToolbar.more')}
-              />
-            ),
-          }}
-        </el-button>,
+      return (
         <el-popover
-          placement='right-start'
           width='280'
-          virtual-ref={this.groupButtonRef}
-          trigger='click'
-          v-model:visible={this.topLevelVisible}
+          disabled={pdisabled}
+          placement='right-start'
+          visible={this.topLevelVisible}
           popper-class={this.ns.b('popper')}
-          virtual-triggering
           popper-style={{ zIndex: this.zIndex }}
           onShow={() => {
             this.onTopLevelPopShow();
@@ -485,9 +456,38 @@ export const IBizEditColumnActionToolbar = defineComponent({
             this.onTopLevelPopHide();
           }}
         >
-          {renderActions(this.groupDetails, false)}
-        </el-popover>,
-      ];
+          {{
+            reference: () => {
+              return (
+                <el-button
+                  size='small'
+                  text
+                  disabled={pdisabled}
+                  onClick={this.openTopLevel}
+                  class={[
+                    this.ns.e('item'),
+                    this.ns.is('group-button', true),
+                    this.ns.is('expand', this.topLevelVisible),
+                  ]}
+                >
+                  {{
+                    icon: () => (
+                      <ion-icon
+                        class={this.ns.e('icon')}
+                        name='ellipsis-vertical'
+                        title={ibiz.i18n.t('component.actionToolbar.more')}
+                      />
+                    ),
+                  }}
+                </el-button>
+              );
+            },
+            default: () => {
+              return renderActions(this.groupDetails, false);
+            },
+          }}
+        </el-popover>
+      );
     };
 
     if (!this.actionsState?.visible) {

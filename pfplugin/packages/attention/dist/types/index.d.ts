@@ -43,7 +43,7 @@ export declare const IBizAttention: import("@ibiz-template/vue3-util").TypeWithI
     renderSelectInput: () => JSX.Element;
     onPopShow: () => Promise<void>;
     onPageHide: () => void;
-    onAttentionChange: (value: string | undefined) => void;
+    onAttentionChange: (value: string | undefined) => Promise<void>;
     renderEditContent: () => IData;
     renderReadonlyContent: () => IData | JSX.Element;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {

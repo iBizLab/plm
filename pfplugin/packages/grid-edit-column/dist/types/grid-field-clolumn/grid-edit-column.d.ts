@@ -13,8 +13,9 @@ export declare const GridEditColumn: import("vue").DefineComponent<{
     };
 }, {
     ns: import("@ibiz-template/core").Namespace;
+    picking: boolean;
     componentRef: Ref<any>;
-    containerRef: Ref<any>;
+    actionToolbarRef: Ref<any>;
     fieldName: string;
     gridEditItemProps: IData;
     rowDataChange: (val: unknown, name?: string) => Promise<void>;
@@ -24,7 +25,7 @@ export declare const GridEditColumn: import("vue").DefineComponent<{
     onInfoTextChange: (text: string) => void;
     onActionClick: (detail: IUIActionGroupDetail, event: MouseEvent) => Promise<void>;
     renderActions: () => IData[];
-    CustomHtml: import("vue").ComputedRef<string | undefined>;
+    CustomHtml: import("vue").ComputedRef<Promise<string | undefined>>;
     fieldValue: import("vue").ComputedRef<any>;
     formatValue: import("vue").ComputedRef<string>;
     tooltip: import("vue").ComputedRef<string | undefined>;

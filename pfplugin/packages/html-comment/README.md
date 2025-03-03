@@ -58,14 +58,14 @@
 
 ### 提及工作项
 
-| 属性名        | 描述                                 | 类型       | 默认值                                                       |
-| ------------- | ------------------------------------ | ---------- | ------------------------------------------------------------ |
-| QUOTEURL      | 请求工作项列表 url                   | string     |                                                              |
-| QUOTEFIELDMAP | 工作项属性映射表，用于转换工作项数据 | Object     | {id: 'id', name:'name'}                                      |
-| QUOTEMETHOD   | 请求用户数据方法                     | post / get | post                                                         |
-| QUOTEPARAMS   | 请求参数                             | Object     |                                                              |
+| 属性名        | 描述                                 | 类型       | 默认值                                                                              |
+| ------------- | ------------------------------------ | ---------- | ----------------------------------------------------------------------------------- |
+| QUOTEURL      | 请求工作项列表 url                   | string     |                                                                                     |
+| QUOTEFIELDMAP | 工作项属性映射表，用于转换工作项数据 | Object     | {id: 'id', name:'name'}                                                             |
+| QUOTEMETHOD   | 请求用户数据方法                     | post / get | post                                                                                |
+| QUOTEPARAMS   | 请求参数                             | Object     |                                                                                     |
 | QUOTESCRIPT   | 选中提及工作项时编辑器抛出的值格式   | string     | \#{id=${data.id},name=${data.name},identifier=${data.identifier},icon=${data.icon}} |
-| QUOTEINSCRIPT | 解析提及工作项数据格式脚本           | string     |                                                              |
+| QUOTEINSCRIPT | 解析提及工作项数据格式脚本           | string     |                                                                                     |
 
 - 输入#或点击#菜单时弹出用户列表（通过添加注册 marker 节点支持，工作项列表数据根据 QUOTEURL、QUOTEFIELDMAP、QUOTEMETHOD、QUOTEPARAMS 支持）
 - 支持 ac 过滤
@@ -92,6 +92,7 @@
 插件支持AI询问功能，在配置自填模式，且自填模式为AI聊天模式的情况下，评论工具栏会出现AI的图标，点击IA图标，会弹出AI聊天模态，可以与AI进行对话，同时可根据对话情况选择是否将AI回答内容回填到评论框中
 
 ### 协同编辑
+
 插件通过集成yjs和slate-yjs支持协同编辑，需配置编辑器参数ENABLEREALTIME=true，以启用协同编辑功能。
 
 [yjs参考资料](https://blog.csdn.net/weixin_47746452/article/details/135079472)
@@ -157,7 +158,7 @@ Slate框架有一个**apply**方法，在编辑器中的任意操作都会触发
 
 在协同编辑时，我们想要知道其他用户的光标在当前编辑器上的位置，需在当前编辑器上其他用户的光标位置处插入一个用户标记来展示，因此我们需要在发送和接收消息的时候对光标数据进行处理，让我们能够得知其他用户的光标在当前编辑器的位置
 
-​    光标在每一行的文本偏移量在每个用户的编辑器上都是一致的，不会因为插入了用户标记导致位置不同，所以计算光标位置时我们使用光标在这行上的文本偏移量为基准来计算
+​ 光标在每一行的文本偏移量在每个用户的编辑器上都是一致的，不会因为插入了用户标记导致位置不同，所以计算光标位置时我们使用光标在这行上的文本偏移量为基准来计算
 
 根据位置计算偏移量：**calcOffsetByPoint**
 
@@ -181,6 +182,7 @@ Slate框架有一个**apply**方法，在编辑器中的任意操作都会触发
 | SAVEINTERVAL   | 支持段落化json，保存间隔                           | number           | 3000    |
 | EMITMODE       | 支持段落化json，抛值模式                           | BUTTON/AUTOMATIC | BUTTON  |
 | ENABLEREALTIME | 实时编辑（协同编辑）                               | boolean          | false   |
+| COLLABORATEKEY | 实时编辑（协同编辑房间标识）                        | string          |    |
 
 ## 基本使用
 

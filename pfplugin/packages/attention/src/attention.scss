@@ -1,6 +1,12 @@
 /* stylelint-disable selector-class-pattern */
 /* stylelint-disable rule-empty-line-before */
 /* stylelint-disable selector-type-no-unknown */
+@mixin attention-list-item-text-label {
+  padding: 0 rem(6px);
+  font-size: 0.8em;
+  background-color: #{getCssVar(color, border)};
+  border-radius: rem(16px);
+}
 @include b('attention') {
   display: flex;
   align-items: center;
@@ -271,11 +277,12 @@
         border-radius: 50%;
       }
 
+      @include m('title-label') {
+        @include attention-list-item-text-label;
+      }
+
       @include m('myself') {
-        padding: 0 5px;
-        font-size: 0.8em;
-        background-color: #{getCssVar(color, border)};
-        border-radius: 16px;
+        @include attention-list-item-text-label;
       }
     }
 

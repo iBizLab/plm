@@ -19,6 +19,7 @@ import { IEditor, INavigateParamContainer } from '@ibiz/model-core';
 import { VNode, h } from 'vue';
 import { Boot, DomEditor, IDomEditor } from '@wangeditor/editor';
 import { NOOP, RuntimeError, listenJSEvent } from '@ibiz-template/core';
+import { clone } from 'ramda';
 import markerModule from './marker-node-module';
 import { Marker } from '../component';
 import { commentEvent } from '../html-comment.event';
@@ -453,9 +454,12 @@ export class MarkerController {
    * @memberof MarkerController
    */
   public insertNode(data: IData) {
-    if (this.quoteCodelistMap.has('type') && data.type) {
+    if (this.quoteCodelistMap.has('type') && data.owner_subtype) {
       const item = this.quoteCodelistMap.get('type')!;
-      const findItem = this.findCodeListItem(item.codeListItems, data.type);
+      const findItem = this.findCodeListItem(
+        item.codeListItems,
+        data.owner_subtype,
+      );
       if (findItem && findItem.sysImage) {
         Object.assign(data, {
           icon: findItem.sysImage.rawContent,
@@ -670,31 +674,54 @@ export class MarkerController {
     if (nodeName && nodeName === 'MENTION-ELEM') {
       const value = dataset.value || '';
       const tempContext = this.context.clone();
+      const tempParams = clone(this.params);
       const item = JSON.parse(value);
       if (!item.owner_type) {
         return;
       }
       tempContext.srfkey = item.id;
       const ownerSubtype = item.owner_subtype || item.type;
-      tempContext.owner_subtype = ownerSubtype;
+      tempParams.owner_subtype = ownerSubtype;
       if (ownerSubtype === 'page') {
-        tempContext.article_page = item.owner_id;
+        tempParams.article_page = item.owner_id;
       } else {
-        tempContext[ownerSubtype] = item.owner_id;
+        tempParams[ownerSubtype] = item.owner_id;
       }
-      tempContext[item.owner_type] = item.recent_parent;
+      tempParams[item.owner_type] = item.recent_parent;
       delete item.script;
       delete item.icon;
       delete item.id;
-      Object.assign(tempContext, item);
+      Object.assign(tempParams, item);
       if (item && this.linkViewId) {
         ibiz.commands.execute(
           OpenAppViewCommand.TAG,
           this.linkViewId,
           tempContext,
-          this.params,
+          tempParams,
         );
       }
     }
+  }
+
+  /**
+   * @description 解析评论节点
+   * @param {IData} data
+   * @return {*}
+   * @memberof CommentItemRawItemEditorController
+   */
+  public parseCommentTag(data: IData) {
+    let { icon } = data;
+    const params = JSON.stringify(data);
+    if (!data.icon && data.owner_subtype && this.quoteCodelistMap.has('type')) {
+      const item = this.quoteCodelistMap.get('type')!;
+      const findItem = this.findCodeListItem(
+        item.codeListItems,
+        data.owner_subtype,
+      );
+      if (findItem && findItem.sysImage) {
+        icon = findItem.sysImage.rawContent || '';
+      }
+    }
+    return `<span markerClick='marker' params='${params}' class='comment-tag is-click'>${icon} ${data.identifier} ${data.name}</span>`;
   }
 }

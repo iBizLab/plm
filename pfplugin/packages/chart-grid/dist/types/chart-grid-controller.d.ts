@@ -1,5 +1,7 @@
-import { ChartController } from '@ibiz-template/runtime';
+import { ChartController, ControllerEvent } from '@ibiz-template/runtime';
+import { IChartGridEvent } from './i-chart-grid.event';
 export declare class ChartGridController extends ChartController {
+    get _evt(): ControllerEvent<IChartGridEvent>;
     cloneOrginSeries: any;
     /**
      * 初始化图表
@@ -35,4 +37,16 @@ export declare class ChartGridController extends ChartController {
      * @memberof ExtendGridController
      */
     parseItemsPercent(items: IData[]): void;
+    /**
+     * @description 导出canvas图片
+     * @return {*}  {Promise<void>}
+     * @memberof ChartGridController
+     */
+    exportCanvas(): Promise<void>;
+    /**
+     * @description 导出excel
+     * @return {*}  {Promise<void>}
+     * @memberof ChartGridController
+     */
+    exportExcel(): Promise<void>;
 }

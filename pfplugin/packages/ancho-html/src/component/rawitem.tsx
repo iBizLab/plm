@@ -13,7 +13,11 @@ import {
 } from '@ibiz/model-core';
 import Prism from 'prismjs';
 import './rawitem.scss';
-import { ScriptFactory } from '@ibiz-template/runtime';
+import {
+  ExpBarControlController,
+  ITreeController,
+  ScriptFactory,
+} from '@ibiz-template/runtime';
 import { RawEditorController } from '../controller';
 
 export const AnchoHtmlNavBar = defineComponent({
@@ -567,22 +571,64 @@ export const AnchoHtmlNavBar = defineComponent({
       if (
         event &&
         event.target instanceof HTMLElement &&
-        event.target.tagName === 'IMG'
+        (event.target.tagName === 'IMG' || event.target.tagName === 'A')
       ) {
-        event.stopPropagation();
-        event.preventDefault();
-        // 图片触发点击事件
-        const url = event.target.getAttribute('src') || '';
-        if (url) {
-          const index = previewSrcList.value.indexOf(url);
-          previewImgIndex.value = index;
-        }
-        showImg.value = true;
-        // 开始监听esc键盘事件
-        await nextTick();
-        const imgEl = document.querySelector('.el-image-viewer__wrapper');
-        if (imgEl) {
-          (imgEl as any).addEventListener('keydown', listenEsc);
+        if (event.target.tagName === 'A') {
+          const href = event.target.getAttribute('href') || '';
+          if (href.startsWith('redirect://tree#')) {
+            // 特殊链接，自定义解析，并阻止触发后续事件
+            event.stopPropagation();
+            event.preventDefault();
+            const index = href.indexOf('#');
+            if (index > -1) {
+              const id = href.slice(index + 1);
+              if (id) {
+                const pviewController = (props.controller?.parent as IData).form
+                  ?.view.parentView;
+                if (pviewController) {
+                  const treeexpbar: ExpBarControlController =
+                    pviewController.getController('treeexpbar');
+                  const currentNode =
+                    treeexpbar.navStack[0] ||
+                    treeexpbar?.xDataController.state.selectedData[0];
+                  if (currentNode) {
+                    // 先展开当前节点
+                    const { _id } = currentNode;
+                    await (
+                      treeexpbar?.xDataController as ITreeController
+                    ).expandNodeByKey([_id]);
+                  }
+
+                  const activeTarget =
+                    treeexpbar?.xDataController.state.items.find(
+                      (item: IData) => {
+                        return item._deData?.srfkey === id;
+                      },
+                    );
+                  if (activeTarget) {
+                    treeexpbar.xDataController.setActive(activeTarget);
+                    treeexpbar.xDataController.setSelection([activeTarget]);
+                  }
+                }
+              }
+            }
+          }
+        } else {
+          // 图片触发点击事件
+          event.stopPropagation();
+          event.preventDefault();
+          const url = event.target.getAttribute('src') || '';
+          if (url) {
+            const index = previewSrcList.value.indexOf(url);
+            previewImgIndex.value = index;
+          }
+          showImg.value = true;
+          // 开始监听esc键盘事件
+          await nextTick();
+          const imgEl = document.querySelector('.el-image-viewer__wrapper');
+          if (imgEl) {
+            (imgEl as any).addEventListener('keydown', listenEsc);
+          }
         }
       }
     };
@@ -600,7 +646,6 @@ export const AnchoHtmlNavBar = defineComponent({
       const params = (e.target as HTMLElement).getAttribute('params');
       if (!clickValue || !params) {
         e.stopPropagation();
-        e.preventDefault();
         return;
       }
       emit('itemClick', e, JSON.parse(params));

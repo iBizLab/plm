@@ -189,6 +189,7 @@ export const MenTion = defineComponent({
       const usertext: string = user.name;
       const avatarBg = HtmlUtil.stringToHexColor(usertext);
       const avatarName = HtmlUtil.avatarName(usertext);
+      const userTitle: string = user.title;
       let url = '';
       if (c.operatorMap.has(user.id)) {
         const operator = c.operatorMap.get(user.id);
@@ -211,6 +212,7 @@ export const MenTion = defineComponent({
           <div class={ns.e('name')} title={usertext}>
             {usertext}
           </div>
+          {userTitle && <div class={ns.e('title-label')}>{userTitle}</div>}
         </div>
       );
     };

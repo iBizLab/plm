@@ -1,12 +1,16 @@
 import { PropType, Ref } from 'vue';
 import { IRawItemContainer } from '@ibiz/model-core';
+import { RawEditorController } from '../controller';
 export declare const AnchoHtmlNavBar: import("vue").DefineComponent<{
     type: {
         type: StringConstructor;
         required: false;
     };
+    controller: {
+        type: PropType<RawEditorController>;
+    };
     content: {
-        type: (StringConstructor | ObjectConstructor | NumberConstructor)[];
+        type: (ObjectConstructor | StringConstructor | NumberConstructor)[];
     };
     rawItem: {
         type: PropType<IRawItemContainer>;
@@ -55,13 +59,16 @@ export declare const AnchoHtmlNavBar: import("vue").DefineComponent<{
     closeImgPreview: () => void;
     imgClick: (event: Event) => Promise<void>;
     handleClick: (e: MouseEvent) => Promise<void>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "click"[], "click", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "itemClick"[], "itemClick", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     type: {
         type: StringConstructor;
         required: false;
     };
+    controller: {
+        type: PropType<RawEditorController>;
+    };
     content: {
-        type: (StringConstructor | ObjectConstructor | NumberConstructor)[];
+        type: (ObjectConstructor | StringConstructor | NumberConstructor)[];
     };
     rawItem: {
         type: PropType<IRawItemContainer>;
@@ -74,5 +81,5 @@ export declare const AnchoHtmlNavBar: import("vue").DefineComponent<{
         type: StringConstructor;
     };
 }>> & {
-    onClick?: ((...args: any[]) => any) | undefined;
+    onItemClick?: ((...args: any[]) => any) | undefined;
 }, {}, {}>;

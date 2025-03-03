@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable prefer-destructuring */
 import $ from '../utils/dom-core';
 import Editor from '../editor/index';
 import { debounce } from '../utils/util';

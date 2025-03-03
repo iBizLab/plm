@@ -1,3 +1,4 @@
+/* eslint-disable vue/no-mutating-props */
 /* eslint-disable no-param-reassign */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable no-nested-ternary */
@@ -30,10 +31,10 @@ import { RuntimeError } from '@ibiz-template/core';
 import { useCellEdit } from './cell-edit';
 import { useRowEdit } from './row-edit';
 import { useAllEdit } from './all-edit';
-import './grid-edit-column.scss';
 import { GridEditColumnController } from './grid-edit-column.controller';
 import IBizEditColumnActionToolbar from '../edit-column-action-toolbar/edit-column-action-toolbar';
 import { filterTypes } from '../utils';
+import './grid-edit-column.scss';
 
 export const GridEditColumn = defineComponent({
   name: 'GridEditColumn',
@@ -58,9 +59,6 @@ export const GridEditColumn = defineComponent({
 
     // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
     const fieldName = c.editItem?.codeName!;
-
-    // 界面行为组的Ref，有特殊界面行为时包含内部编辑器以及其他界面行为，排除外部点击时使用
-    const actionRef = ref();
 
     const { zIndex } = props.controller.grid.state;
 
@@ -211,38 +209,28 @@ export const GridEditColumn = defineComponent({
       return undefined;
     });
 
-    const handleEvent = (detail: IUIActionGroupDetail, event: Event): Event => {
-      const e = { ...event };
-      if (actionRef.value) {
-        const actionEl = actionRef.value.querySelector(`.${detail.id!}`);
-        if (actionEl) {
-          e.target = actionEl;
-        }
-      }
-      return e;
-    };
-
     // 界面行为点击
     const onActionClick = async (
       detail: IUIActionGroupDetail,
       event: MouseEvent,
     ): Promise<void> => {
       event.stopPropagation();
-
-      handleToobarPopClose();
+      actionToolbarRef.value?.openProcessing();
       const params = {
         context: c.context,
         params: c.params,
         data: [props.row.data],
         view: c.grid.view,
-        event: handleEvent(detail, event),
+        event,
       };
       const result = await UIActionUtil.exec(
         detail.uiactionId!,
         params as unknown as IUILogicParams,
         detail.appId,
       );
-
+      actionToolbarRef.value?.closeProcessing();
+      // 行为非取消时才关闭
+      if (!result.cancel) handleToobarPopClose();
       if (result.closeView) {
         params.view.modal.ignoreDismissCheck = true;
         params.view.closeView({ ok: true });

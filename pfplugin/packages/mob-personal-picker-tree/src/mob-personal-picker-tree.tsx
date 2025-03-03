@@ -235,6 +235,20 @@ export const MobPersonalPickerTree = defineComponent({
     const isExpand = (item: IData): boolean => {
       return c.state.expandedKeys.includes(item._id);
     };
+    // 当前节点下所有子展开个数，用于虚拟列表截取
+    const calcExpandNum = (children?: IData[]): number => {
+      let expandNum = 0;
+      if (children && children.length > 0) {
+        expandNum = children.length;
+        for (let i = 0; i < children.length; i++) {
+          const item = children[i];
+          if (item._children && item._children.length > 0) {
+            expandNum += calcExpandNum(item._children);
+          }
+        }
+      }
+      return expandNum;
+    };
     // 处理不展开
     const handleNoExpand = (datas: IData[], curItem: IData): void => {
       for (let i = 0; i < datas.length; i++) {
@@ -265,7 +279,8 @@ export const MobPersonalPickerTree = defineComponent({
       const index = tabItems.findIndex(
         (item2: IData) => item2._id === item._id,
       );
-      if (index !== -1) tabItems.splice(index + 1, item._children!.length);
+      if (index !== -1)
+        tabItems.splice(index + 1, calcExpandNum(item._children));
       handleNoExpand(c.state.rootNodes, item);
     };
 
@@ -398,12 +413,16 @@ export const MobPersonalPickerTree = defineComponent({
       item: IMobPersonalPickerTreeNodeData,
       nodeModel: IDETreeNode | undefined,
     ): JSX.Element => {
+      const userTitle = item._deData ? item._deData.title : undefined;
       return (
         <div class={ns.e('node-item')}>
           <span class={ns.em('node-item', 'icon')}>
             {renderNodeIcon(item, nodeModel)}
           </span>
           <span class={ns.em('node-item', 'text')}>{item._text}</span>
+          {userTitle && (
+            <span class={ns.em('node-item', 'title-label')}>{userTitle}</span>
+          )}
         </div>
       );
     };

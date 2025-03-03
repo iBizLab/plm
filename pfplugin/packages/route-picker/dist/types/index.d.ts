@@ -41,7 +41,7 @@ export declare const IBizRoutePicker: import("@ibiz-template/vue3-util").TypeWit
         [key: string]: any;
     }>;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
-    change: (_value: unknown, _name?: string | undefined) => boolean;
+    change: (_value: unknown, _name?: string | undefined, _ignore?: boolean | undefined) => boolean;
     blur: (_event?: IData | undefined) => boolean;
     focus: (_event?: IData | undefined) => boolean;
     enter: (_event?: IData | undefined) => boolean;
@@ -69,7 +69,7 @@ export declare const IBizRoutePicker: import("@ibiz-template/vue3-util").TypeWit
         required: boolean;
     };
 }>> & {
-    onChange?: ((_value: unknown, _name?: string | undefined) => any) | undefined;
+    onChange?: ((_value: unknown, _name?: string | undefined, _ignore?: boolean | undefined) => any) | undefined;
     onBlur?: ((_event?: IData | undefined) => any) | undefined;
     onFocus?: ((_event?: IData | undefined) => any) | undefined;
     onEnter?: ((_event?: IData | undefined) => any) | undefined;

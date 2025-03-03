@@ -1,0 +1,208 @@
+@include b(attention-select) {
+  width: 100%;
+
+  .el-dropdown {
+    width: 100%;
+  }
+
+  .el-select {
+    width: 100%;
+  }
+
+  @include e('arrow') {
+    display: flex;
+    transition: transform 0.3s;
+    transform: rotateZ(0);
+    transform-origin: center center;
+
+    > svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    &.overturn {
+      transform: rotateZ(-180deg);
+    }
+  }
+
+  @include m(readonly) {
+    font-size: getCssVar(form-item, font-size);
+    line-height: getCssVar(editor, default, line-height);
+    color: getCssVar('form-item', 'readonly-color');
+  }
+}
+
+@include b(attention-select-popper) {
+  &.el-popper.el-dropdown__popper {
+    min-height: 100px;
+    max-height: 500px;
+    overflow: auto;
+
+    .el-scrollbar .el-dropdown__list {
+      background: getCssVar(color, bg, 3);
+
+      .el-dropdown-menu {
+        background: getCssVar(color, bg, 3);
+      }
+    }
+  }
+}
+
+// 表单下的编辑器默认显示，悬浮上去显示编辑器
+@include b(attention-select-form-default-content) {
+  display: none;
+}
+
+@include b(form-item) {
+  @include b(attention-select) {
+    @include when(show-default) {
+      // 悬浮显示编辑器
+      &:hover {
+        @include b(attention-select-form-default-content) {
+          display: none;
+        }
+        @include b(attention-select-select) {
+          display: block;
+        }
+      }
+
+      // 不悬浮时显示信息态
+      @include b(attention-select-form-default-content) {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: getCssVar(editor, default, line-height);
+        padding: getCssVar(form-item, hover-edit-padding);
+        font-family: Arial, sans-serif;
+        font-size: getCssVar(form-item, font-size);
+        line-height: getCssVar(editor, default, line-height);
+        color: getCssVar(form-item, text-color);
+        @include b(attention-select-content-item) {
+          height: calc(
+            getCssVar(editor, default, line-height) - getCssVar(
+                'spacing',
+                'tight'
+              )
+          );
+          padding: 0 getCssVar('spacing', 'tight');
+          margin: 2px 6px 2px 0;
+          font-size: getCssVar(font-size, small);
+          line-height: calc(
+            getCssVar(editor, default, line-height) - getCssVar(
+                'spacing',
+                'tight'
+              )
+          );
+          color: getCssVar(editor, default, text-color);
+          background-color: getCssVar(color, fill-0);
+          border: 1px solid transparent;
+          border-radius: getCssVar(border-radius, small);
+        }
+      }
+      @include b(attention-select-select) {
+        display: none;
+      }
+
+      // 输入态
+      @include when(editable) {
+        @include b(attention-select-form-default-content) {
+          display: none;
+        }
+        @include b(attention-select-select) {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+@include b(attention-select-select-popover) {
+  display: none;
+}
+
+@include b('attention-select-select-data') {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: left;
+  height: #{getCssVar(height, control, default)};
+  cursor: pointer;
+
+
+
+  img {
+    width: 30px;
+    height: 30px;
+    border: 1px dashed #{getCssVar(color, border)};
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  svg {
+    min-width: 28px;
+    font-size: 28px;
+    border: 1px dashed #{getCssVar(color, border)};
+    border-radius: 50%;
+  }
+
+  @include e('add') {
+    display: flex;
+    gap: getCssVar(spacing, tight);
+    align-items: center;
+
+    &:hover {
+      color: #{getCssVar(color, primary)};
+  
+      img {
+        border: 1px dashed #{getCssVar(color, primary)};
+      }
+  
+      svg {
+        border: 1px dashed #{getCssVar(color, primary)};
+      }
+    }
+  }
+  @include e('item') {
+    position: relative;
+    width: getCssVar(spacing, extra-loose);
+    height: getCssVar(spacing, extra-loose);
+
+    --visibility: hidden;
+    @include m('avatar') {
+      display: flex;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      width: getCssVar(spacing, extra-loose);
+      height: getCssVar(spacing, extra-loose);
+      overflow: hidden;
+      font-size: getCssVar(font-size, regular);
+      color: white;
+      border-radius: 50%;
+    }
+    @include m('clear') {
+      position: absolute;
+      top: -1px;
+      right: -8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      color: #fff;
+      visibility: var(--visibility);
+      background-color: #d3d3d3;
+      border-radius: 50%;
+    }
+
+    &:hover {
+      --visibility: visible;
+    }
+  }
+}
+
+@include b('attention-select-person-select') {
+  &.el-popover {
+    padding: 0;
+  }
+}

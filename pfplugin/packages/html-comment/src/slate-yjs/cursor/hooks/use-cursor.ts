@@ -1,7 +1,8 @@
+/* eslint-disable import/order */
 /* eslint-disable no-param-reassign */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ref, Ref, watch, computed, watchEffect, ComputedRef } from 'vue';
+import { ref, Ref, watch, computed, ComputedRef } from 'vue';
 import { SlateRange, SlateText } from '@wangeditor/editor';
 import { NodeMatch, getCursorRange, getOverlayPosition } from '../util';
 import {

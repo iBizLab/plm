@@ -224,7 +224,7 @@ export const TeamSelect = defineComponent({
     // 团队成员数据集
     const teamMenberItems: Ref<Map<string, IData>> = ref(new Map());
 
-    // 团队成员数据集
+    // 团队成员选中数据集
     const teamMenberItemsCheck: Ref<Map<string, Ref<boolean>>> = ref(new Map());
 
     // 搜索框
@@ -973,7 +973,7 @@ export const TeamSelect = defineComponent({
     };
 
     const visibleChange = (visible: any) => {
-      if (dropdownRef && dropdownRef.value.$el) {
+      if (dropdownRef.value && dropdownRef.value.$el) {
         width.value = dropdownRef.value.$el.clientWidth;
       }
       dropdownVisible.value = visible;
@@ -1028,7 +1028,7 @@ export const TeamSelect = defineComponent({
                 dataType: 'team',
                 name: newVal,
               };
-            } else if (type === 'member') {
+            } else {
               selectedPersonnel.value = {
                 name: newVal,
                 [c.userFilterMap.id]: props.data[c.valueItem],
