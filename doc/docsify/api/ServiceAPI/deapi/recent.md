@@ -287,50 +287,6 @@
 Integer
 ```
 
-## 自定义get
-
-<el-row>
-<div style="width: 80px">
-<el-alert center title="GET" type="success" :closable="false" ></el-alert>
-</div>
-<div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/recents/{key}/custom_get" type="info" :closable="false" ></el-alert>
-</div>
-</el-row>
-权限标识：`NONE`
-
-##### 路径参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|key|String|标识|
-
-
-
-
-##### 响应示例： {docsify-ignore}
-```json
-
-{
-  "identifier" : null,
-  "owner_id" : null,
-  "owner_type" : null,
-  "owner_subtype" : null,
-  "type" : null,
-  "is_deleted" : null,
-  "recent_parent_name" : null,
-  "recent_parent" : null,
-  "show_identifier" : null,
-  "recent_parent_identifier" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
-}
-
-```
-
 ## 获取最近访问草稿
 
 <el-row>
@@ -417,15 +373,10 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/recents/{key}/my_charge_entry" type="info" :closable="false" ></el-alert>
+<el-alert title="/recents/my_charge_entry" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
-
-##### 路径参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|key|String|标识|
+权限标识：`CREATE`
 
 
 
@@ -470,6 +421,29 @@ Integer
 ```
 
 
+##### 响应示例： {docsify-ignore}
+```json
+
+{
+  "identifier" : null,
+  "owner_id" : null,
+  "owner_type" : null,
+  "owner_subtype" : null,
+  "type" : null,
+  "is_deleted" : null,
+  "recent_parent_name" : null,
+  "recent_parent" : null,
+  "show_identifier" : null,
+  "recent_parent_identifier" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+
+```
 
 ## 我创建的事项
 
@@ -478,15 +452,10 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/recents/{key}/my_created_entry" type="info" :closable="false" ></el-alert>
+<el-alert title="/recents/my_created_entry" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
-
-##### 路径参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|key|String|标识|
+权限标识：`CREATE`
 
 
 
@@ -531,6 +500,29 @@ Integer
 ```
 
 
+##### 响应示例： {docsify-ignore}
+```json
+
+{
+  "identifier" : null,
+  "owner_id" : null,
+  "owner_type" : null,
+  "owner_subtype" : null,
+  "type" : null,
+  "is_deleted" : null,
+  "recent_parent_name" : null,
+  "recent_parent" : null,
+  "show_identifier" : null,
+  "recent_parent_identifier" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+
+```
 
 ## 我的任务总结
 
@@ -542,7 +534,7 @@ Integer
 <el-alert title="/recents/my_summary" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`CREATE`
 
 
 
@@ -711,6 +703,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
+|<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 
@@ -727,6 +720,7 @@ Integer
   "n_name_like" : null,
   "n_owner_id_eq" : null,
   "n_owner_subtype_eq" : null,
+  "n_owner_type_eq" : null,
   "n_recent_parent_eq" : null,
   "n_show_identifier_like" : null,
 }
@@ -778,6 +772,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
+|<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 
@@ -794,6 +789,7 @@ Integer
   "n_name_like" : null,
   "n_owner_id_eq" : null,
   "n_owner_subtype_eq" : null,
+  "n_owner_type_eq" : null,
   "n_recent_parent_eq" : null,
   "n_show_identifier_like" : null,
 }
@@ -845,6 +841,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
+|<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 
@@ -861,6 +858,7 @@ Integer
   "n_name_like" : null,
   "n_owner_id_eq" : null,
   "n_owner_subtype_eq" : null,
+  "n_owner_type_eq" : null,
   "n_recent_parent_eq" : null,
   "n_show_identifier_like" : null,
 }
@@ -912,6 +910,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
+|<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 
@@ -928,6 +927,7 @@ Integer
   "n_name_like" : null,
   "n_owner_id_eq" : null,
   "n_owner_subtype_eq" : null,
+  "n_owner_type_eq" : null,
   "n_recent_parent_eq" : null,
   "n_show_identifier_like" : null,
 }
@@ -979,6 +979,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
+|<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 
@@ -995,6 +996,7 @@ Integer
   "n_name_like" : null,
   "n_owner_id_eq" : null,
   "n_owner_subtype_eq" : null,
+  "n_owner_type_eq" : null,
   "n_recent_parent_eq" : null,
   "n_show_identifier_like" : null,
 }
@@ -1046,6 +1048,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
+|<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 
@@ -1062,6 +1065,7 @@ Integer
   "n_name_like" : null,
   "n_owner_id_eq" : null,
   "n_owner_subtype_eq" : null,
+  "n_owner_type_eq" : null,
   "n_recent_parent_eq" : null,
   "n_show_identifier_like" : null,
 }
@@ -1113,6 +1117,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
+|<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 
@@ -1129,6 +1134,7 @@ Integer
   "n_name_like" : null,
   "n_owner_id_eq" : null,
   "n_owner_subtype_eq" : null,
+  "n_owner_type_eq" : null,
   "n_recent_parent_eq" : null,
   "n_show_identifier_like" : null,
 }
@@ -1180,6 +1186,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
+|<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 
@@ -1196,6 +1203,7 @@ Integer
   "n_name_like" : null,
   "n_owner_id_eq" : null,
   "n_owner_subtype_eq" : null,
+  "n_owner_type_eq" : null,
   "n_recent_parent_eq" : null,
   "n_show_identifier_like" : null,
 }
@@ -1247,6 +1255,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
+|<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 
@@ -1263,6 +1272,7 @@ Integer
   "n_name_like" : null,
   "n_owner_id_eq" : null,
   "n_owner_subtype_eq" : null,
+  "n_owner_type_eq" : null,
   "n_recent_parent_eq" : null,
   "n_show_identifier_like" : null,
 }
@@ -1314,6 +1324,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
+|<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 
@@ -1330,6 +1341,7 @@ Integer
   "n_name_like" : null,
   "n_owner_id_eq" : null,
   "n_owner_subtype_eq" : null,
+  "n_owner_type_eq" : null,
   "n_recent_parent_eq" : null,
   "n_show_identifier_like" : null,
 }
@@ -1381,6 +1393,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
+|<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 
@@ -1397,6 +1410,7 @@ Integer
   "n_name_like" : null,
   "n_owner_id_eq" : null,
   "n_owner_subtype_eq" : null,
+  "n_owner_type_eq" : null,
   "n_recent_parent_eq" : null,
   "n_show_identifier_like" : null,
 }
@@ -1448,6 +1462,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
+|<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 
@@ -1464,6 +1479,7 @@ Integer
   "n_name_like" : null,
   "n_owner_id_eq" : null,
   "n_owner_subtype_eq" : null,
+  "n_owner_type_eq" : null,
   "n_recent_parent_eq" : null,
   "n_show_identifier_like" : null,
 }
@@ -1515,6 +1531,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
+|<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 
@@ -1531,6 +1548,7 @@ Integer
   "n_name_like" : null,
   "n_owner_id_eq" : null,
   "n_owner_subtype_eq" : null,
+  "n_owner_type_eq" : null,
   "n_recent_parent_eq" : null,
   "n_show_identifier_like" : null,
 }
@@ -1582,6 +1600,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
+|<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 
@@ -1598,6 +1617,7 @@ Integer
   "n_name_like" : null,
   "n_owner_id_eq" : null,
   "n_owner_subtype_eq" : null,
+  "n_owner_type_eq" : null,
   "n_recent_parent_eq" : null,
   "n_show_identifier_like" : null,
 }
@@ -1649,6 +1669,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
+|<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 
@@ -1665,6 +1686,7 @@ Integer
   "n_name_like" : null,
   "n_owner_id_eq" : null,
   "n_owner_subtype_eq" : null,
+  "n_owner_type_eq" : null,
   "n_recent_parent_eq" : null,
   "n_show_identifier_like" : null,
 }
@@ -1716,6 +1738,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
+|<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 
@@ -1732,6 +1755,7 @@ Integer
   "n_name_like" : null,
   "n_owner_id_eq" : null,
   "n_owner_subtype_eq" : null,
+  "n_owner_type_eq" : null,
   "n_recent_parent_eq" : null,
   "n_show_identifier_like" : null,
 }
@@ -1783,6 +1807,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
+|<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 
@@ -1799,6 +1824,7 @@ Integer
   "n_name_like" : null,
   "n_owner_id_eq" : null,
   "n_owner_subtype_eq" : null,
+  "n_owner_type_eq" : null,
   "n_recent_parent_eq" : null,
   "n_show_identifier_like" : null,
 }
@@ -1850,6 +1876,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
+|<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 
@@ -1866,6 +1893,7 @@ Integer
   "n_name_like" : null,
   "n_owner_id_eq" : null,
   "n_owner_subtype_eq" : null,
+  "n_owner_type_eq" : null,
   "n_recent_parent_eq" : null,
   "n_show_identifier_like" : null,
 }
@@ -1917,6 +1945,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
+|<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 
@@ -1933,6 +1962,7 @@ Integer
   "n_name_like" : null,
   "n_owner_id_eq" : null,
   "n_owner_subtype_eq" : null,
+  "n_owner_type_eq" : null,
   "n_recent_parent_eq" : null,
   "n_show_identifier_like" : null,
 }
@@ -1984,6 +2014,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
+|<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 
@@ -2000,6 +2031,7 @@ Integer
   "n_name_like" : null,
   "n_owner_id_eq" : null,
   "n_owner_subtype_eq" : null,
+  "n_owner_type_eq" : null,
   "n_recent_parent_eq" : null,
   "n_show_identifier_like" : null,
 }

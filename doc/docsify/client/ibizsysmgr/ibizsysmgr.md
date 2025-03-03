@@ -1,4 +1,4 @@
-# ibizsysmgr(ibizsysmgr) <!-- {docsify-ignore-all} -->
+# 系统管理(ibizsysmgr) <!-- {docsify-ignore-all} -->
 
 
 

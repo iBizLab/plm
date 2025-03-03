@@ -8,6 +8,7 @@ var modeljArray = modeljO.model;
 var bireportids = [];
 var replaceIds ={};
 for(var i=0; i<modeljArray.length; i++){
+    sys.info("进入第一个循环")
   var reportModel = modeljArray[i];
   var portletid = reportModel.i;
   var bireportid = portletid.substring(12).replace("__",".");
@@ -16,6 +17,7 @@ for(var i=0; i<modeljArray.length; i++){
 var reportSearchContext = sys.filter("insight_report");
 var templReports = reportSearchContext.in("id",bireportids.join(",")).pageable(0,1000).select("is_system");
 for(var i=0; i<templReports.length; i++){
+    sys.info("进入第二个循环")
     var bireport = templReports.get(i);
     var orginId = bireport.get("id");
     bireport.reset("id");
@@ -25,6 +27,7 @@ for(var i=0; i<templReports.length; i++){
     replaceIds[orginId.replace(".","__").toLowerCase()] = newbireport.get("id").replace(".","__").toLowerCase();
 }
 for(var key in replaceIds){
+    sys.info("进入第三个循环")
     var keyreg = new RegExp(key, "g");
     strModel = strModel.replace(keyreg,replaceIds[key]);
 }

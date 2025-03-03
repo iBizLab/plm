@@ -112,10 +112,10 @@
 <br>
 
 > [!NOTE|label:内部逻辑]
-> 执行处理逻辑 [获取产品成员(get_product_member)](module/ProdMgmt/customer/logic/get_product_member.md)
+> 执行处理逻辑 [填充类别文本(fill_categories_name)](module/ProdMgmt/customer/logic/fill_categories_name.md)
 
 > [!NOTE|label:内部逻辑]
-> 执行处理逻辑 [填充类别文本(fill_categories_name)](module/ProdMgmt/customer/logic/fill_categories_name.md)
+> 执行处理逻辑 [获取产品成员(get_product_member)](module/ProdMgmt/customer/logic/get_product_member.md)
 
 
 #### [Remove](module/ProdMgmt/customer#行为) :id=customer_Remove
@@ -143,7 +143,64 @@
 <br>
 
 > [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [生成最近访问(create_recent)](module/Team/discuss_post/logic/create_recent.md)
+
+> [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [获取话题成员（移动端）(mob_get_topic_member)](module/Team/discuss_post/logic/mob_get_topic_member.md)
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [获取讨论权限(get_post_auth)](module/Team/discuss_post/logic/get_post_auth.md)
+
+
+#### [Update](module/Team/discuss_post#行为) :id=discuss_post_Update
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [生成最近访问(create_recent)](module/Team/discuss_post/logic/create_recent.md)
+
+
+
+## [讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply.md)  :id=discuss_reply
+
+#### [Create](module/Team/discuss_reply#行为) :id=discuss_reply_Create
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [更新讨论时间(update_post_time)](module/Team/discuss_reply/logic/update_post_time.md)
+
+
+#### [Save](module/Team/discuss_reply#行为) :id=discuss_reply_Save
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [更新讨论时间(update_post_time)](module/Team/discuss_reply/logic/update_post_time.md)
+
+
+#### [Update](module/Team/discuss_reply#行为) :id=discuss_reply_Update
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [更新讨论时间(update_post_time)](module/Team/discuss_reply/logic/update_post_time.md)
 
 
 
@@ -171,6 +228,21 @@
 
 > [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [获取话题成员(get_discuss_member_one)](module/Team/discuss_topic/logic/get_discuss_member_one.md)
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [生成最近访问(create_recent)](module/Team/discuss_topic/logic/create_recent.md)
+
+
+#### [Update](module/Team/discuss_topic#行为) :id=discuss_topic_Update
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [生成最近访问(create_recent)](module/Team/discuss_topic/logic/create_recent.md)
 
 
 
@@ -237,6 +309,13 @@
 
 #### [Create](module/ProdMgmt/idea#行为) :id=idea_Create
 
+
+
+<p class="panel-title"><b>操作之前</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [设置初始排序值(set_sequence)](module/ProdMgmt/idea/logic/set_sequence.md)
 
 
 
@@ -374,10 +453,10 @@
 <br>
 
 > [!NOTE|label:内部逻辑]
-> 执行处理逻辑 [生成最近访问(create_recent)](module/TestMgmt/library/logic/create_recent.md)
+> 执行处理逻辑 [自动创建人员(auto_create_members)](module/TestMgmt/library/logic/auto_create_members.md)
 
 > [!NOTE|label:内部逻辑]
-> 执行处理逻辑 [自动创建人员(auto_create_members)](module/TestMgmt/library/logic/auto_create_members.md)
+> 执行处理逻辑 [生成最近访问(create_recent)](module/TestMgmt/library/logic/create_recent.md)
 
 > [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [创建测试库流程准则(auto_create_guideline)](module/TestMgmt/library/logic/auto_create_guideline.md)
@@ -574,10 +653,10 @@
 <br>
 
 > [!NOTE|label:内部逻辑]
-> 执行处理逻辑 [生成最近访问(create_recent)](module/ProdMgmt/product/logic/create_recent.md)
+> 执行处理逻辑 [获取产品成员(get_product_member_one)](module/ProdMgmt/product/logic/get_product_member_one.md)
 
 > [!NOTE|label:内部逻辑]
-> 执行处理逻辑 [获取产品成员(get_product_member_one)](module/ProdMgmt/product/logic/get_product_member_one.md)
+> 执行处理逻辑 [生成最近访问(create_recent)](module/ProdMgmt/product/logic/create_recent.md)
 
 
 #### [Update](module/ProdMgmt/product#行为) :id=product_Update
@@ -672,10 +751,10 @@
 <br>
 
 > [!NOTE|label:内部逻辑]
-> 执行处理逻辑 [生成最近访问(create_recent)](module/ProjMgmt/project/logic/create_recent.md)
+> 执行处理逻辑 [获取项目成员(get_project_member_one)](module/ProjMgmt/project/logic/get_project_member_one.md)
 
 > [!NOTE|label:内部逻辑]
-> 执行处理逻辑 [获取项目成员(get_project_member_one)](module/ProjMgmt/project/logic/get_project_member_one.md)
+> 执行处理逻辑 [生成最近访问(create_recent)](module/ProjMgmt/project/logic/create_recent.md)
 
 
 #### [Update](module/ProjMgmt/project#行为) :id=project_Update
@@ -976,10 +1055,10 @@
 <br>
 
 > [!NOTE|label:内部逻辑]
-> 执行处理逻辑 [生成最近访问(create_recent)](module/Wiki/space/logic/create_recent.md)
+> 执行处理逻辑 [获取知识空间成员(get_space_member_one)](module/Wiki/space/logic/get_space_member_one.md)
 
 > [!NOTE|label:内部逻辑]
-> 执行处理逻辑 [获取知识空间成员(get_space_member_one)](module/Wiki/space/logic/get_space_member_one.md)
+> 执行处理逻辑 [生成最近访问(create_recent)](module/Wiki/space/logic/create_recent.md)
 
 
 
@@ -1121,10 +1200,10 @@
 <br>
 
 > [!NOTE|label:内部逻辑]
-> 执行处理逻辑 [获取产品成员(get_product_member)](module/ProdMgmt/ticket/logic/get_product_member.md)
+> 执行处理逻辑 [生成最近访问(create_recent)](module/ProdMgmt/ticket/logic/create_recent.md)
 
 > [!NOTE|label:内部逻辑]
-> 执行处理逻辑 [生成最近访问(create_recent)](module/ProdMgmt/ticket/logic/create_recent.md)
+> 执行处理逻辑 [获取产品成员(get_product_member)](module/ProdMgmt/ticket/logic/get_product_member.md)
 
 
 #### [GetDraft](module/ProdMgmt/ticket#行为) :id=ticket_GetDraft

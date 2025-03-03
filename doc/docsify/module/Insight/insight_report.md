@@ -161,7 +161,7 @@
 | 新建分组 | toolbar_report_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建分组 |单项数据|用户自定义||
 | 同步模板模型 | sync_model | 同步模型 |多项数据（主键）|<details><summary>后台调用</summary>[sync_model](#行为)||
 | 编辑 | toolbar_report_tree_exp_view_node3_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
-| 导出PDF | export_pdf | 导出为PDF |单项数据|用户自定义||
+| 导出PNG | export_pdf | 导出PNG |单项数据|用户自定义||
 | 使用此模板 | panel_usr0708314116_button_calluilogic_click | 使用此模板 |单项数据|用户自定义||
 | 删除 | toolbar_report_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 新建报表 | create_report | 新建报表 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建报表](app/view/insight_report_quick_create_view)</details>||

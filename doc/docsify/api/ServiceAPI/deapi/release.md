@@ -30,6 +30,8 @@
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">end_year</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布年份|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布日志|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目标识|
@@ -54,6 +56,8 @@
   "all_work_items" : null,
   "project_is_deleted" : null,
   "project_type" : null,
+  "end_year" : null,
+  "changelog" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -84,6 +88,8 @@
   "all_work_items" : null,
   "project_is_deleted" : null,
   "project_type" : null,
+  "end_year" : null,
+  "changelog" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -134,6 +140,8 @@
   "all_work_items" : null,
   "project_is_deleted" : null,
   "project_type" : null,
+  "end_year" : null,
+  "changelog" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -203,6 +211,8 @@
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">end_year</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布年份|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布日志|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目标识|
@@ -227,6 +237,8 @@
   "all_work_items" : null,
   "project_is_deleted" : null,
   "project_type" : null,
+  "end_year" : null,
+  "changelog" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -257,6 +269,8 @@
   "all_work_items" : null,
   "project_is_deleted" : null,
   "project_type" : null,
+  "end_year" : null,
+  "changelog" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -307,6 +321,8 @@
   "all_work_items" : null,
   "project_is_deleted" : null,
   "project_type" : null,
+  "end_year" : null,
+  "changelog" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -350,6 +366,8 @@
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">end_year</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布年份|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布日志|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目标识|
@@ -374,6 +392,8 @@
   "all_work_items" : null,
   "project_is_deleted" : null,
   "project_type" : null,
+  "end_year" : null,
+  "changelog" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -404,6 +424,8 @@
   "all_work_items" : null,
   "project_is_deleted" : null,
   "project_type" : null,
+  "end_year" : null,
+  "changelog" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -447,6 +469,8 @@
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">end_year</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布年份|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布日志|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目标识|
@@ -471,6 +495,8 @@
   "all_work_items" : null,
   "project_is_deleted" : null,
   "project_type" : null,
+  "end_year" : null,
+  "changelog" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -501,6 +527,8 @@
   "all_work_items" : null,
   "project_is_deleted" : null,
   "project_type" : null,
+  "end_year" : null,
+  "changelog" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -544,6 +572,8 @@
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">end_year</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布年份|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布日志|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目标识|
@@ -568,6 +598,8 @@
   "all_work_items" : null,
   "project_is_deleted" : null,
   "project_type" : null,
+  "end_year" : null,
+  "changelog" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -595,7 +627,7 @@ Integer
 <el-alert title="/releases/{key}/del_relation" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`UPDATE`
+权限标识：`DELETE`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -621,6 +653,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">end_year</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布年份|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布日志|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目标识|
@@ -645,6 +679,8 @@ Integer
   "all_work_items" : null,
   "project_is_deleted" : null,
   "project_type" : null,
+  "end_year" : null,
+  "changelog" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -665,15 +701,10 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/releases/{key}/delete_categories" type="info" :closable="false" ></el-alert>
+<el-alert title="/releases/delete_categories" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
-
-##### 路径参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|key|String|标识|
+权限标识：`DELETE`
 
 
 
@@ -694,6 +725,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">end_year</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布年份|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布日志|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目标识|
@@ -718,6 +751,8 @@ Integer
   "all_work_items" : null,
   "project_is_deleted" : null,
   "project_type" : null,
+  "end_year" : null,
+  "changelog" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -730,6 +765,37 @@ Integer
 ```
 
 
+##### 响应示例： {docsify-ignore}
+```json
+
+{
+  "start_at" : null,
+  "end_at" : null,
+  "description" : null,
+  "status" : null,
+  "categories" : null,
+  "categories_name" : null,
+  "stage_transitions" : null,
+  "schedule" : null,
+  "assignee_name" : null,
+  "assignee_id" : null,
+  "completed_work_items" : null,
+  "all_work_items" : null,
+  "project_is_deleted" : null,
+  "project_type" : null,
+  "end_year" : null,
+  "changelog" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "project_id" : null,
+  "project_name" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+
+```
 
 ## 获取项目发布草稿
 
@@ -762,6 +828,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">end_year</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布年份|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布日志|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目标识|
@@ -786,6 +854,8 @@ Integer
   "all_work_items" : null,
   "project_is_deleted" : null,
   "project_type" : null,
+  "end_year" : null,
+  "changelog" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -816,6 +886,8 @@ Integer
   "all_work_items" : null,
   "project_is_deleted" : null,
   "project_type" : null,
+  "end_year" : null,
+  "changelog" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -864,6 +936,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">end_year</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布年份|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布日志|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目标识|
@@ -888,6 +962,8 @@ Integer
   "all_work_items" : null,
   "project_is_deleted" : null,
   "project_type" : null,
+  "end_year" : null,
+  "changelog" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -918,6 +994,8 @@ Integer
   "all_work_items" : null,
   "project_is_deleted" : null,
   "project_type" : null,
+  "end_year" : null,
+  "changelog" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -961,6 +1039,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">end_year</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布年份|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布日志|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目标识|
@@ -985,6 +1065,8 @@ Integer
   "all_work_items" : null,
   "project_is_deleted" : null,
   "project_type" : null,
+  "end_year" : null,
+  "changelog" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -1015,6 +1097,8 @@ Integer
   "all_work_items" : null,
   "project_is_deleted" : null,
   "project_type" : null,
+  "end_year" : null,
+  "changelog" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -1058,6 +1142,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">end_year</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布年份|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布日志|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目标识|
@@ -1082,6 +1168,8 @@ Integer
   "all_work_items" : null,
   "project_is_deleted" : null,
   "project_type" : null,
+  "end_year" : null,
+  "changelog" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -1112,6 +1200,8 @@ Integer
   "all_work_items" : null,
   "project_is_deleted" : null,
   "project_type" : null,
+  "end_year" : null,
+  "changelog" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -1186,6 +1276,8 @@ Integer
     "all_work_items" : null,
     "project_is_deleted" : null,
     "project_type" : null,
+    "end_year" : null,
+    "changelog" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1331,6 +1423,8 @@ Integer
     "all_work_items" : null,
     "project_is_deleted" : null,
     "project_type" : null,
+    "end_year" : null,
+    "changelog" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1405,6 +1499,8 @@ Integer
     "all_work_items" : null,
     "project_is_deleted" : null,
     "project_type" : null,
+    "end_year" : null,
+    "changelog" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1479,6 +1575,8 @@ Integer
     "all_work_items" : null,
     "project_is_deleted" : null,
     "project_type" : null,
+    "end_year" : null,
+    "changelog" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1553,6 +1651,161 @@ Integer
     "all_work_items" : null,
     "project_is_deleted" : null,
     "project_type" : null,
+    "end_year" : null,
+    "changelog" : null,
+    "create_man" : null,
+    "create_time" : null,
+    "id" : null,
+    "name" : null,
+    "project_id" : null,
+    "project_name" : null,
+    "update_man" : null,
+    "update_time" : null,
+  }
+]
+```
+
+## 产品所属发布
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/releases/fetch_product_re_project_published" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+产品所关联项目中的已发布
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
+|<el-row justify="space-between"><el-col :span="20">n_project_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
+|<el-row justify="space-between"><el-col :span="20">n_project_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
+|<el-row justify="space-between"><el-col :span="20">n_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|阶段|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "page" : 0,
+  "size" : 20,
+  "sort" : null,
+  "n_categories_like" : null,
+  "n_id_eq" : null,
+  "n_name_like" : null,
+  "n_project_id_eq" : null,
+  "n_project_name_eq" : null,
+  "n_project_name_like" : null,
+  "n_status_eq" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+[
+  {
+    "start_at" : null,
+    "end_at" : null,
+    "description" : null,
+    "status" : null,
+    "categories" : null,
+    "categories_name" : null,
+    "stage_transitions" : null,
+    "schedule" : null,
+    "assignee_name" : null,
+    "assignee_id" : null,
+    "completed_work_items" : null,
+    "all_work_items" : null,
+    "project_is_deleted" : null,
+    "project_type" : null,
+    "end_year" : null,
+    "changelog" : null,
+    "create_man" : null,
+    "create_time" : null,
+    "id" : null,
+    "name" : null,
+    "project_id" : null,
+    "project_name" : null,
+    "update_man" : null,
+    "update_time" : null,
+  }
+]
+```
+
+## 已发布
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/releases/fetch_published" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
+|<el-row justify="space-between"><el-col :span="20">n_project_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
+|<el-row justify="space-between"><el-col :span="20">n_project_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
+|<el-row justify="space-between"><el-col :span="20">n_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|阶段|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "page" : 0,
+  "size" : 20,
+  "sort" : null,
+  "n_categories_like" : null,
+  "n_id_eq" : null,
+  "n_name_like" : null,
+  "n_project_id_eq" : null,
+  "n_project_name_eq" : null,
+  "n_project_name_like" : null,
+  "n_status_eq" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+[
+  {
+    "start_at" : null,
+    "end_at" : null,
+    "description" : null,
+    "status" : null,
+    "categories" : null,
+    "categories_name" : null,
+    "stage_transitions" : null,
+    "schedule" : null,
+    "assignee_name" : null,
+    "assignee_id" : null,
+    "completed_work_items" : null,
+    "all_work_items" : null,
+    "project_is_deleted" : null,
+    "project_type" : null,
+    "end_year" : null,
+    "changelog" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1627,6 +1880,8 @@ Integer
     "all_work_items" : null,
     "project_is_deleted" : null,
     "project_type" : null,
+    "end_year" : null,
+    "changelog" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1701,6 +1956,8 @@ Integer
     "all_work_items" : null,
     "project_is_deleted" : null,
     "project_type" : null,
+    "end_year" : null,
+    "changelog" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1912,6 +2169,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">end_year</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布年份|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布日志|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目标识|
@@ -1999,6 +2258,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">end_year</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布年份|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布日志|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目标识|
@@ -2064,6 +2325,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">end_year</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布年份|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布日志|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目标识|
@@ -2108,6 +2371,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">end_year</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布年份|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布日志|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目标识|
@@ -2152,6 +2417,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">end_year</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布年份|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布日志|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目标识|
@@ -2197,6 +2464,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">end_year</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布年份|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布日志|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目标识|
@@ -2211,7 +2480,7 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/projects/{pkey}/releases/{key}/delete_categories" type="info" :closable="false" ></el-alert>
+<el-alert title="/projects/{pkey}/releases/delete_categories" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 
@@ -2220,7 +2489,6 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |pkey|String|项目主键|
-|key|String|标识|
 
 
 
@@ -2242,6 +2510,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">end_year</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布年份|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布日志|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目标识|
@@ -2286,6 +2556,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">end_year</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布年份|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布日志|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目标识|
@@ -2331,6 +2603,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">end_year</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布年份|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布日志|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目标识|
@@ -2375,6 +2649,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">end_year</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布年份|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布日志|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目标识|
@@ -2419,6 +2695,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">all_work_items</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|全部工作项数|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目类型|
+|<el-row justify="space-between"><el-col :span="20">end_year</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布年份|
+|<el-row justify="space-between"><el-col :span="20">changelog</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|发布日志|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">project_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目标识|
@@ -2599,6 +2877,72 @@ Integer
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
 <el-alert title="/projects/{pkey}/releases/fetch_not_published" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|项目主键|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
+|<el-row justify="space-between"><el-col :span="20">n_project_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
+|<el-row justify="space-between"><el-col :span="20">n_project_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
+|<el-row justify="space-between"><el-col :span="20">n_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|阶段|
+
+
+
+## 根据项目产品所属发布
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/projects/{pkey}/releases/fetch_product_re_project_published" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+产品所关联项目中的已发布
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|项目主键|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
+|<el-row justify="space-between"><el-col :span="20">n_project_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
+|<el-row justify="space-between"><el-col :span="20">n_project_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
+|<el-row justify="space-between"><el-col :span="20">n_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|阶段|
+
+
+
+## 根据项目已发布
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/projects/{pkey}/releases/fetch_published" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 

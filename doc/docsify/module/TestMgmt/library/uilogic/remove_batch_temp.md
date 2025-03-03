@@ -66,5 +66,5 @@ return (async function() {
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |临时数据列表|list|数据对象列表||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

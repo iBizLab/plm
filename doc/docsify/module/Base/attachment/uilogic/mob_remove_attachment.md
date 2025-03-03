@@ -15,13 +15,13 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./mob_remove_attachment#begin {开始}]]
+state "获取列表部件" as PREPAREJSPARAM1  [[$./mob_remove_attachment#preparejsparam1 {获取列表部件}]]
+state "注入脚本代码" as RAWJSCODE2  [[$./mob_remove_attachment#rawjscode2 {注入脚本代码}]]
+state "表单保存" as VIEWCTRLINVOKE2  [[$./mob_remove_attachment#viewctrlinvoke2 {表单保存}]]
 state "设置表单静默保存" as PREPAREJSPARAM2  [[$./mob_remove_attachment#preparejsparam2 {设置表单静默保存}]]
 state "设置附件数据" as RAWJSCODE1  [[$./mob_remove_attachment#rawjscode1 {设置附件数据}]]
-state "删除附件" as DEACTION1  [[$./mob_remove_attachment#deaction1 {删除附件}]]
-state "注入脚本代码" as RAWJSCODE2  [[$./mob_remove_attachment#rawjscode2 {注入脚本代码}]]
 state "结束" as END1 <<end>> [[$./mob_remove_attachment#end1 {结束}]]
-state "获取列表部件" as PREPAREJSPARAM1  [[$./mob_remove_attachment#preparejsparam1 {获取列表部件}]]
-state "表单保存" as VIEWCTRLINVOKE2  [[$./mob_remove_attachment#viewctrlinvoke2 {表单保存}]]
+state "删除附件" as DEACTION1  [[$./mob_remove_attachment#deaction1 {删除附件}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -108,9 +108,9 @@ console.log("附件数据",uiLogic.attach)
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|附件数据|attach|数据对象||
 |当前视图对象|view|当前视图对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|附件数据|attach|数据对象||
 |列表|mdctrl|部件对象||
-|视图参数|params|||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |主表单对象|form|部件对象||
+|视图参数|params|||

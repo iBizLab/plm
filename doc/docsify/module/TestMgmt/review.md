@@ -162,7 +162,7 @@
 |填充评审规则|fill_guideline|[实体处理逻辑](module/TestMgmt/review/logic/fill_guideline "填充评审规则")|默认|不支持||||
 |填充阶段评审人|fill_stage_reviewer|[实体处理逻辑](module/TestMgmt/review/logic/fill_stage_reviewer "填充阶段评审人")|默认|不支持||||
 |获取关注人|get_attention|内置方法|默认|不支持||||
-|nothing|nothing|[实体处理逻辑](module/TestMgmt/review/logic/nothing "nothing")|默认|不支持||||
+|无操作|nothing|[实体处理逻辑](module/TestMgmt/review/logic/nothing "nothing")|默认|不支持||||
 |撤销评审|repeal_review|[实体处理逻辑](module/TestMgmt/review/logic/repeal_review "撤销评审")|默认|不支持||||
 |提交评审|submit_review|[实体处理逻辑](module/TestMgmt/review/logic/submit_review "提交评审")|默认|不支持||||
 

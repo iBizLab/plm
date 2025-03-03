@@ -15,11 +15,11 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./shift_in_test_plan#begin {开始}]]
+state "界面行为" as DEUIACTION1  [[$./shift_in_test_plan#deuiaction1 {界面行为}]]
+state "获取选中数据" as RAWJSCODE1  [[$./shift_in_test_plan#rawjscode1 {获取选中数据}]]
 state "填充属性" as PREPAREJSPARAM1  [[$./shift_in_test_plan#preparejsparam1 {填充属性}]]
 state "实体行为" as DEACTION1  [[$./shift_in_test_plan#deaction1 {实体行为}]]
-state "界面行为" as DEUIACTION1  [[$./shift_in_test_plan#deuiaction1 {界面行为}]]
 state "结束" as END1 <<end>> [[$./shift_in_test_plan#end1 {结束}]]
-state "获取选中数据" as RAWJSCODE1  [[$./shift_in_test_plan#rawjscode1 {获取选中数据}]]
 
 
 Begin --> RAWJSCODE1
@@ -83,9 +83,9 @@ if (selecteddata.length > 0) {
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|runarray|runarray|数据对象列表||
-|上下文变量|ctx|导航视图参数绑定参数||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |选中迭代对象|selectobj|数据对象||
 |更新工作项对象|updateobj|数据对象||
+|runarray|runarray|数据对象列表||
+|上下文变量|ctx|导航视图参数绑定参数||
 |视图对象|view|当前视图对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

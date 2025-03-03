@@ -15,17 +15,17 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./send_comment_mob#begin {开始}]]
+state "设置评论principal_id与principal_type" as PREPAREJSPARAM1  [[$./send_comment_mob#preparejsparam1 {设置评论principal_id与principal_type}]]
+state "发送评论（讨论）" as DEACTION4  [[$./send_comment_mob#deaction4 {发送评论（讨论）}]]
 state "通知刷新主表单" as RAWJSCODE5  [[$./send_comment_mob#rawjscode5 {通知刷新主表单}]]
+state "发送评论（回复）" as DEACTION5  [[$./send_comment_mob#deaction5 {发送评论（回复）}]]
+state "获取评论框内容" as RAWJSCODE1  [[$./send_comment_mob#rawjscode1 {获取评论框内容}]]
+state "填入临时数据" as RAWJSCODE4  [[$./send_comment_mob#rawjscode4 {填入临时数据}]]
+state "清空评论框与评论id" as RAWJSCODE2  [[$./send_comment_mob#rawjscode2 {清空评论框与评论id}]]
+state "准备参数" as PREPAREJSPARAM9  [[$./send_comment_mob#preparejsparam9 {准备参数}]]
 state "准备参数" as PREPAREJSPARAM10  [[$./send_comment_mob#preparejsparam10 {准备参数}]]
 state "为评论重新赋值参数" as PREPAREJSPARAM6  [[$./send_comment_mob#preparejsparam6 {为评论重新赋值参数}]]
 state "结束" as END1 <<end>> [[$./send_comment_mob#end1 {结束}]]
-state "发送评论（回复）" as DEACTION5  [[$./send_comment_mob#deaction5 {发送评论（回复）}]]
-state "获取评论框内容" as RAWJSCODE1  [[$./send_comment_mob#rawjscode1 {获取评论框内容}]]
-state "发送评论（讨论）" as DEACTION4  [[$./send_comment_mob#deaction4 {发送评论（讨论）}]]
-state "设置评论principal_id与principal_type" as PREPAREJSPARAM1  [[$./send_comment_mob#preparejsparam1 {设置评论principal_id与principal_type}]]
-state "准备参数" as PREPAREJSPARAM9  [[$./send_comment_mob#preparejsparam9 {准备参数}]]
-state "清空评论框与评论id" as RAWJSCODE2  [[$./send_comment_mob#rawjscode2 {清空评论框与评论id}]]
-state "填入临时数据" as RAWJSCODE4  [[$./send_comment_mob#rawjscode4 {填入临时数据}]]
 
 
 Begin --> RAWJSCODE1
@@ -182,8 +182,8 @@ view.layoutPanel.panelItems.comment_container.state.visible=true;
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |应用上下文变量|ctx|导航视图参数绑定参数||
 |当前视图对象|view|当前视图对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |评论对象|comment|数据对象||
 |编辑器|editor|数据对象||

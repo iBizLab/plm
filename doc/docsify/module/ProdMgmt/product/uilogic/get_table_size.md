@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./get_table_size#begin {开始}]]
-state "设置总条数" as RAWJSCODE1  [[$./get_table_size#rawjscode1 {设置总条数}]]
 state "结束" as END1 <<end>> [[$./get_table_size#end1 {结束}]]
+state "设置总条数" as RAWJSCODE1  [[$./get_table_size#rawjscode1 {设置总条数}]]
 
 
 Begin --> RAWJSCODE1

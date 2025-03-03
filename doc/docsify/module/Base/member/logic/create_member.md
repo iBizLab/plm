@@ -64,10 +64,11 @@ BINDPARAM1 --> END1 : [[$./create_member#bindparam1-end1{未勾选添加成员} 
 
 
 1. 将`for_temp_obj(循环临时变量).ID(标识)` 设置给  `member_obj(关系对象).USER_ID(登录名)`
-2. 将`GROUP` 设置给  `member_obj(关系对象).OWNER_TYPE(所属数据对象)`
-3. 将`GROUP` 设置给  `member_obj(关系对象).OWNER_SUBTYPE(所属对象子类型)`
-4. 将`for_temp_obj(循环临时变量).DISPLAY_NAME(姓名)` 设置给  `member_obj(关系对象).NAME(名称)`
-5. 将`Default(传入变量).ownerid` 设置给  `member_obj(关系对象).OWNER_ID(所属数据标识)`
+2. 将`for_temp_obj(循环临时变量).TITLE(职位)` 设置给  `member_obj(关系对象).JOB_NAME(职位)`
+3. 将`GROUP` 设置给  `member_obj(关系对象).OWNER_TYPE(所属数据对象)`
+4. 将`GROUP` 设置给  `member_obj(关系对象).OWNER_SUBTYPE(所属对象子类型)`
+5. 将`for_temp_obj(循环临时变量).DISPLAY_NAME(姓名)` 设置给  `member_obj(关系对象).NAME(名称)`
+6. 将`Default(传入变量).ownerid` 设置给  `member_obj(关系对象).OWNER_ID(所属数据标识)`
 
 #### 建立团队成员 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 

@@ -9,5 +9,5 @@ and t2.principal_type = 'DISCUSS_POST' and t2.id = ?)
 
 <p class="panel-title"><b>执行sql参数</b></p>
 
-1. `Default(传入变量).del_comment_id`
+1. `Default(传入变量).comment_id`
 

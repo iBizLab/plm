@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./choose_case_template#begin {开始}]]
-state "结束" as END1 <<end>> [[$./choose_case_template#end1 {结束}]]
-state "绑定表单数据" as PREPAREJSPARAM1  [[$./choose_case_template#preparejsparam1 {绑定表单数据}]]
 state "设置表单数据" as PREPAREJSPARAM2  [[$./choose_case_template#preparejsparam2 {设置表单数据}]]
+state "绑定表单数据" as PREPAREJSPARAM1  [[$./choose_case_template#preparejsparam1 {绑定表单数据}]]
+state "结束" as END1 <<end>> [[$./choose_case_template#end1 {结束}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -69,7 +69,7 @@ PREPAREJSPARAM2 --> END1
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|表单数据|form_data|数据对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |当前视图|view|当前视图对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|表单数据|form_data|数据对象||
 |表单|form|部件对象||

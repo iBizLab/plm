@@ -15,10 +15,10 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./refresh_counter#begin {开始}]]
-state "计数器刷新" as RAWJSCODE2  [[$./refresh_counter#rawjscode2 {计数器刷新}]]
-state "主表单重新加载" as VIEWCTRLINVOKE2  [[$./refresh_counter#viewctrlinvoke2 {主表单重新加载}]]
-state "结束" as END1 <<end>> [[$./refresh_counter#end1 {结束}]]
 state "表格显示" as RAWJSCODE3  [[$./refresh_counter#rawjscode3 {表格显示}]]
+state "主表单重新加载" as VIEWCTRLINVOKE2  [[$./refresh_counter#viewctrlinvoke2 {主表单重新加载}]]
+state "计数器刷新" as RAWJSCODE2  [[$./refresh_counter#rawjscode2 {计数器刷新}]]
+state "结束" as END1 <<end>> [[$./refresh_counter#end1 {结束}]]
 state "绑定视图部件" as PREPAREJSPARAM1  [[$./refresh_counter#preparejsparam1 {绑定视图部件}]]
 
 
@@ -83,7 +83,7 @@ ibiz.mc.command.update.send({ srfdecodename: context.principal_type});
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|主表单|form|数据对象||
 |当前视图|view|当前视图对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |表格|grid|部件对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|主表单|form|数据对象||

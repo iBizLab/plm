@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./remove_attachment_grid#begin {开始}]]
-state "设置附件数据" as RAWJSCODE1  [[$./remove_attachment_grid#rawjscode1 {设置附件数据}]]
 state "表格行删除" as VIEWCTRLINVOKE1  [[$./remove_attachment_grid#viewctrlinvoke1 {表格行删除}]]
+state "设置附件数据" as RAWJSCODE1  [[$./remove_attachment_grid#rawjscode1 {设置附件数据}]]
 state "结束" as END1 <<end>> [[$./remove_attachment_grid#end1 {结束}]]
 state "获取表格部件" as PREPAREJSPARAM1  [[$./remove_attachment_grid#preparejsparam1 {获取表格部件}]]
 
@@ -72,7 +72,7 @@ uiLogic.attach = { data: data, silent: true };
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |附件数据|attach|数据对象||
-|表格|grid|部件对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|当前视图对象|view|当前视图对象||
 |视图参数|params|||
+|当前视图对象|view|当前视图对象||
+|表格|grid|部件对象||

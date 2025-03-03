@@ -3,6 +3,7 @@
 
 ```plantuml
 @startuml
+skinparam svgLinkTarget _blank
 <style>
 root {
   HyperlinkColor #42b983

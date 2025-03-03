@@ -16,8 +16,8 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./plan_snapshot_check#begin {开始}]]
 state "设立基线按钮不显示" as RAWJSCODE1  [[$./plan_snapshot_check#rawjscode1 {设立基线按钮不显示}]]
-state "填充快照标识" as PREPAREJSPARAM1  [[$./plan_snapshot_check#preparejsparam1 {填充快照标识}]]
 state "获取快照信息" as DEACTION1  [[$./plan_snapshot_check#deaction1 {获取快照信息}]]
+state "填充快照标识" as PREPAREJSPARAM1  [[$./plan_snapshot_check#preparejsparam1 {填充快照标识}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -70,6 +70,6 @@ view.layoutPanel.panelItems.toolbar.state.visible = false;
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|上下文变量|ctx|导航视图参数绑定参数||
-|规划快照对象|plan_snapshot|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|规划快照对象|plan_snapshot|数据对象||
+|上下文变量|ctx|导航视图参数绑定参数||

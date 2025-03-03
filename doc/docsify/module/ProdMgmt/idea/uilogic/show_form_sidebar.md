@@ -49,6 +49,6 @@ uiLogic.view.ctx.controllersMap.get("form").details.grouppanel8.state.visible=tr
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |上下文|ctx|导航视图参数绑定参数||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |视图|view|当前视图对象||

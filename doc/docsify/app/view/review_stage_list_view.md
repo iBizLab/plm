@@ -7,7 +7,6 @@
 #### 列表(list)
 #### 搜索栏(searchbar)
 #### 搜索表单(searchform)
-#### 工具栏(toolbar)
 
 ## 视图界面逻辑
   * [选中阶段](module/TestMgmt/review_stage/uilogic/choose_stage)

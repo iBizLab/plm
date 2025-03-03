@@ -15,11 +15,11 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./control_relation_sprint#begin {开始}]]
-state "获取迭代面板控制器" as PREPAREJSPARAM1  [[$./control_relation_sprint#preparejsparam1 {获取迭代面板控制器}]]
-state "获取当前项目ID" as PREPAREJSPARAM3  [[$./control_relation_sprint#preparejsparam3 {获取当前项目ID}]]
-state "获取当前项目信息" as DEACTION1  [[$./control_relation_sprint#deaction1 {获取当前项目信息}]]
 state "控制发布概览迭代信息的展示" as PREPAREJSPARAM2  [[$./control_relation_sprint#preparejsparam2 {控制发布概览迭代信息的展示}]]
+state "获取当前项目信息" as DEACTION1  [[$./control_relation_sprint#deaction1 {获取当前项目信息}]]
 state "结束" as END1 <<end>> [[$./control_relation_sprint#end1 {结束}]]
+state "获取当前项目ID" as PREPAREJSPARAM3  [[$./control_relation_sprint#preparejsparam3 {获取当前项目ID}]]
+state "获取迭代面板控制器" as PREPAREJSPARAM1  [[$./control_relation_sprint#preparejsparam1 {获取迭代面板控制器}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -81,8 +81,8 @@ PREPAREJSPARAM2 --> END1
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
+|迭代看板部件|sprint|数据对象||
 |项目对象|project|数据对象||
 |上下文变量|context|导航视图参数绑定参数||
-|迭代看板部件|sprint|数据对象||
 |部件|dashboard|当前部件对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

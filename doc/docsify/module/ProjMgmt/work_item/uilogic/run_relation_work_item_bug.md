@@ -15,13 +15,13 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./run_relation_work_item_bug#begin {开始}]]
+state "进行关联操作" as DEACTION1  [[$./run_relation_work_item_bug#deaction1 {进行关联操作}]]
+state "获取选中列表" as RAWJSCODE2  [[$./run_relation_work_item_bug#rawjscode2 {获取选中列表}]]
+state "触发计数器刷新" as RAWJSCODE3  [[$./run_relation_work_item_bug#rawjscode3 {触发计数器刷新}]]
+state "隐藏下拉框并清空下拉框内容" as RAWJSCODE1  [[$./run_relation_work_item_bug#rawjscode1 {隐藏下拉框并清空下拉框内容}]]
+state "绑定表格部件" as PREPAREJSPARAM1  [[$./run_relation_work_item_bug#preparejsparam1 {绑定表格部件}]]
 state "额外为测试用例进行关联操作" as DEACTION2  [[$./run_relation_work_item_bug#deaction2 {额外为测试用例进行关联操作}]]
 state "表格刷新" as VIEWCTRLINVOKE1  [[$./run_relation_work_item_bug#viewctrlinvoke1 {表格刷新}]]
-state "触发计数器刷新" as RAWJSCODE3  [[$./run_relation_work_item_bug#rawjscode3 {触发计数器刷新}]]
-state "获取选中列表" as RAWJSCODE2  [[$./run_relation_work_item_bug#rawjscode2 {获取选中列表}]]
-state "进行关联操作" as DEACTION1  [[$./run_relation_work_item_bug#deaction1 {进行关联操作}]]
-state "绑定表格部件" as PREPAREJSPARAM1  [[$./run_relation_work_item_bug#preparejsparam1 {绑定表格部件}]]
-state "隐藏下拉框并清空下拉框内容" as RAWJSCODE1  [[$./run_relation_work_item_bug#rawjscode1 {隐藏下拉框并清空下拉框内容}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -139,9 +139,9 @@ ibiz.mc.command.update.send({ srfdecodename: 'run'})
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
+|视图对象|view|当前视图对象||
+|传入后台对象|dto|数据对象||
+|测试用例对象|test_case_dto|数据对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |表格对象|grid|部件对象||
 |viewctx|viewctx|导航视图参数绑定参数||
-|测试用例对象|test_case_dto|数据对象||
-|传入后台对象|dto|数据对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|视图对象|view|当前视图对象||

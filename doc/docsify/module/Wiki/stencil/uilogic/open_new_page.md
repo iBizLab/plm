@@ -15,13 +15,13 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./open_new_page#begin {开始}]]
-state "设置上下文" as RAWJSCODE1  [[$./open_new_page#rawjscode1 {设置上下文}]]
-state "获取模板数据并新建草稿页面" as DEACTION1  [[$./open_new_page#deaction1 {获取模板数据并新建草稿页面}]]
 state "关闭当前视图" as RAWJSCODE2  [[$./open_new_page#rawjscode2 {关闭当前视图}]]
-state "结束" as END1 <<end>> [[$./open_new_page#end1 {结束}]]
-state "设置上下文参数" as PREPAREJSPARAM2  [[$./open_new_page#preparejsparam2 {设置上下文参数}]]
+state "获取模板数据并新建草稿页面" as DEACTION1  [[$./open_new_page#deaction1 {获取模板数据并新建草稿页面}]]
+state "设置上下文" as RAWJSCODE1  [[$./open_new_page#rawjscode1 {设置上下文}]]
 state "打开编辑页" as DEUIACTION1  [[$./open_new_page#deuiaction1 {打开编辑页}]]
+state "结束" as END1 <<end>> [[$./open_new_page#end1 {结束}]]
 state "获取列表选中数据" as PREPAREJSPARAM1  [[$./open_new_page#preparejsparam1 {获取列表选中数据}]]
+state "设置上下文参数" as PREPAREJSPARAM2  [[$./open_new_page#preparejsparam2 {设置上下文参数}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -109,9 +109,9 @@ view.closeView();
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |模板信息|stencil_info|数据对象||
-|视图|view|当前视图对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|新建页面信息|page_info|数据对象||
-|列表|listexpbar|部件对象||
 |选中数据|selecteddata|数据对象列表||
 |视图上下文|context|导航视图参数绑定参数||
+|列表|listexpbar|部件对象||
+|新建页面信息|page_info|数据对象||
+|视图|view|当前视图对象||

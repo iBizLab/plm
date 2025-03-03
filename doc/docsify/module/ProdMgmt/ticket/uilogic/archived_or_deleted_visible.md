@@ -57,7 +57,7 @@ PREPAREJSPARAM1 --> END1
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
+|视图消息占位状态|viewmsg_pos_state|数据对象||
+|视图消息占位|viewmsg_pos|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |view|view|当前视图对象||
-|视图消息占位|viewmsg_pos|数据对象||
-|视图消息占位状态|viewmsg_pos_state|数据对象||

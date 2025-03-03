@@ -56,9 +56,9 @@ uiLogic.icon.visible = text_box.value ? false : true;
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|评论|send|数据对象||
-|图标|icon|数据对象||
-|视图|view|当前视图对象||
 |上下文|context|导航视图参数绑定参数||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|视图|view|当前视图对象||
+|评论|send|数据对象||
 |清空|reset|数据对象||
+|图标|icon|数据对象||

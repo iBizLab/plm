@@ -16,9 +16,9 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./edit_to_design#begin {开始}]]
 state "打印报表数据" as RAWJSCODE2  [[$./edit_to_design#rawjscode2 {打印报表数据}]]
-state "刷新部件" as RAWJSCODE3  [[$./edit_to_design#rawjscode3 {刷新部件}]]
 state "跳转设计页" as RAWJSCODE1  [[$./edit_to_design#rawjscode1 {跳转设计页}]]
 state "结束" as END1 <<end>> [[$./edit_to_design#end1 {结束}]]
+state "刷新部件" as RAWJSCODE3  [[$./edit_to_design#rawjscode3 {刷新部件}]]
 
 
 Begin --> RAWJSCODE2
@@ -88,6 +88,6 @@ uiLogic.ctrl.refresh();
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|当前视图|view|当前视图对象||
 |门户部件|ctrl|当前部件对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|当前视图|view|当前视图对象||

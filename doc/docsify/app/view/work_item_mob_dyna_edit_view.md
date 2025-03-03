@@ -13,8 +13,8 @@
 
 
 ### 关联界面行为
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [删除（移动端工具栏）](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [归档(工具栏)](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [删除（移动端工具栏）](module/ProjMgmt/work_item#界面行为)
 
 ### 关联界面逻辑
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [获取工作项工时进度（移动端）](module/ProjMgmt/work_item/uilogic/mob_get_workload_schedule)

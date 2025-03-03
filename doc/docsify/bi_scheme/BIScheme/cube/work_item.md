@@ -54,7 +54,7 @@
 |登记工时|z_actual_workload|合计|实际工时(ACTUAL_WORKLOAD)||
 |预估工时|z_estimated_workload|合计|预估工时(ESTIMATED_WORKLOAD)||
 ##### 计算式指标
-|    名称col200   | 代码名col150  |  计算公式col500   |  备注col500  |
+|    名称col200   | 代码名col150  |  计算公式col501   |  备注col500  |
 | --------  |------------| -----   |  --------|
 |关联产品需求|z_relation_total_idea|(SELECT COUNT(distinct s1.target_id) FROM RELATION s1 WHERE s1.PRINCIPAL_ID = dataresult.ID AND s1.TARGET_TYPE ='IDEA' and dataresult.is_deleted = 0 and dataresult.project_is_deleted = 0)||
 |关联工作项|z_relation_total_work_item|(SELECT COUNT(distinct s1.target_id) FROM RELATION s1 LEFT JOIN WORK_ITEM s2 ON s1.TARGET_ID =s2.ID LEFT JOIN WORK_ITEM_TYPE s3 ON s3.ID= s2.WORK_ITEM_TYPE_ID WHERE s1.PRINCIPAL_ID = dataresult.ID  AND s1.TARGET_TYPE = 'WORK_ITEM' AND s3.ORGIN_STATE IN (params(work_item_type,'epic','bug','feature','issue','story','task','milestone','requirement','stage')) and dataresult.is_deleted = 0 and dataresult.project_is_deleted = 0)||

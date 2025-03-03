@@ -278,6 +278,7 @@
 |[公开(public)](module/TestMgmt/test_case/query/public)|public|否|否 |否 ||
 |[只读用户(reader)](module/TestMgmt/test_case/query/reader)|reader|否|否 |否 ||
 |[最近浏览(recent_test_case)](module/TestMgmt/test_case/query/recent_test_case)|recent_test_case|否|否 |否 ||
+|[关联测试用例(relation_test_case)](module/TestMgmt/test_case/query/relation_test_case)|relation_test_case|否|否 |否 ||
 |[当前模块下用例(suites_test_case)](module/TestMgmt/test_case/query/suites_test_case)|suites_test_case|否|否 |否 ||
 |[测试用例活动情况(test_case_maneuver_context)](module/TestMgmt/test_case/query/test_case_maneuver_context)|test_case_maneuver_context|否|否 |否 ||
 |[工作项关联测试用例(work_item_relation_test_case)](module/TestMgmt/test_case/query/work_item_relation_test_case)|work_item_relation_test_case|否|否 |否 ||
@@ -318,6 +319,7 @@
 |[测试用例规划分析(program_analyze)](module/TestMgmt/test_case/dataset/program_analyze)|program_analyze|[实体逻辑](module/TestMgmt/test_case/logic/program_analyze)|否|||
 |[只读用户(reader)](module/TestMgmt/test_case/dataset/reader)|reader|数据查询|否|||
 |[最近浏览(recent_test_case)](module/TestMgmt/test_case/dataset/recent_test_case)|recent_test_case|数据查询|否|||
+|[关联测试用例(relation_test_case)](module/TestMgmt/test_case/dataset/relation_test_case)|relation_test_case|数据查询|否|||
 |[评审数据(review_data)](module/TestMgmt/test_case/dataset/review_data)|review_data|[实体逻辑](module/TestMgmt/test_case/logic/set_change_type)|否|||
 |[当前模块下用例(this_suite_test_case)](module/TestMgmt/test_case/dataset/suites_test_case)|this_suite_test_case|数据查询|否|||
 |[测试用例活动情况(test_case_maneuver_context)](module/TestMgmt/test_case/dataset/test_case_maneuver_context)|test_case_maneuver_context|[实体逻辑](module/TestMgmt/test_case/logic/test_case_maneuver_context)|否|||
@@ -451,8 +453,9 @@
 | 查看工时明细 | check_workload_detail | 查看工时明细 |无数据|用户自定义||
 | 打开更多测试用例 | open_more_test_case | 打开更多测试用例 |无数据|用户自定义||
 | 打开关注列表 | open_attention_list | 打开关注列表 |无数据|<details><summary>打开视图或向导（模态）</summary>[关注](app/view/attention_mob_md_view)</details>||
-| 移动 | move | 移动 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[移动用例](app/view/test_case_move_case_option_view)</details>||
+| 移动 | move | 移动 |单项数据（主键）|<details><summary>后台调用</summary>[move_case](#行为)||
 | 恢复 | recover | 恢复 |多项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
+| 打开测试用例（动态） | open_case_main | 打开测试用例 |单项数据|<details><summary>打开视图或向导（模态）</summary>[用例](app/view/test_case_main_view)</details>||
 | 移入计划（气泡） | case_move_plan | 移入计划 |多项数据（主键）|<details><summary>后台调用</summary>[case_move_plan](#行为)||
 | 查看评审历史 | check_review_history | 查看评审历史 |无数据|用户自定义||
 | 自定义测试用例导入 | test_case_import_data | 导入测试用例 |无数据|<details><summary>打开数据导入视图</summary>[测试用例导入]()</details>||
@@ -461,7 +464,7 @@
 | 选择模板 | choose_case_template | 选择模板 |无数据|<details><summary>打开编辑表单</summary></details>||
 | 上传附件 | upload_attachment | 上传 |无数据|用户自定义||
 | 查看工时明细（移动端） | mob_check_workload_detail | 查看工时明细 |无数据|<details><summary>打开视图或向导（模态）</summary>[工时记录](app/view/workload_mob_detail_view)</details>||
-| 复制用例 | copy_test_case | 复制用例 |多项数据（主键）|<details><summary>后台调用</summary>[copy_case](#行为)||
+| 复制 | copy_test_case | 复制 |多项数据（主键）|<details><summary>后台调用</summary>[copy_case](#行为)||
 | 添加实际工时（移动端） | mob_add_actual_workload | 添加实际工时 |单项数据|<details><summary>打开视图或向导（模态）</summary>[登记工时](app/view/workload_register_mob_edit_view)</details>||
 | 设置评审状态 | set_state | 设置评审状态 |多项数据（主键）|<details><summary>后台调用</summary>[set_state](#行为)||
 | 设置维护人 | set_maintenance | 设置维护人 |多项数据（主键）|<details><summary>后台调用</summary>[set_maintenance](#行为)||

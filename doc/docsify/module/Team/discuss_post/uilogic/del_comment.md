@@ -1,4 +1,4 @@
-## 删除评论 <!-- {docsify-ignore-all} -->
+## 删除讨论下评论 <!-- {docsify-ignore-all} -->
 
    删除评论
 
@@ -16,13 +16,13 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./del_comment#begin {开始}]]
 state "视图部件调用" as VIEWCTRLINVOKE1  [[$./del_comment#viewctrlinvoke1 {视图部件调用}]]
+state "回复数量-1" as RAWJSCODE1  [[$./del_comment#rawjscode1 {回复数量-1}]]
 state "删除评论" as DEACTION1  [[$./del_comment#deaction1 {删除评论}]]
 state "获取评论标识" as PREPAREJSPARAM1  [[$./del_comment#preparejsparam1 {获取评论标识}]]
 
 
 Begin --> PREPAREJSPARAM1
-PREPAREJSPARAM1 --> DEACTION1
-DEACTION1 --> VIEWCTRLINVOKE1
+PREPAREJSPARAM1 --> VIEWCTRLINVOKE1
 
 
 @enduml
@@ -50,6 +50,24 @@ DEACTION1 --> VIEWCTRLINVOKE1
 
 调用实体 [讨论(DISCUSS_POST)](module/Team/discuss_post.md) 行为 [删除评论(del_comment)](module/Team/discuss_post#行为) ，行为参数为`comment(评论)`
 
+#### 回复数量-1 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+
+
+
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+
+var comment_count = uiLogic.ctrl.formItems.comment_count;
+if (comment_count.value == 1) {
+    uiLogic.ctrl.formItems.comments.state.visible = false;
+    comment_count.value = 0;
+    comment_count.state.visible = false;
+} else {
+    comment_count.value = comment_count.value - 1;
+}
+```
+
 #### 视图部件调用 :id=VIEWCTRLINVOKE1<sup class="footnote-symbol"> <font color=gray size=1>[视图部件调用]</font></sup>
 
 
@@ -61,8 +79,8 @@ DEACTION1 --> VIEWCTRLINVOKE1
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|评论标识|comment_key|简单数据||
-|当前部件对象|ctrl|当前部件对象||
 |评论组件控制器|comments_controller|部件对象||
 |评论|comment|数据对象||
+|评论标识|comment_key|简单数据||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|当前部件对象|ctrl|当前部件对象||

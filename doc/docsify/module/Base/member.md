@@ -17,8 +17,11 @@
 |所属数据标识|OWNER_ID|文本，可指定长度|100|是||
 |所属对象子类型|OWNER_SUBTYPE|文本，可指定长度|100|是||
 |所属数据对象|OWNER_TYPE|文本，可指定长度|100|是||
+|职位标识|POSITION_ID|外键值|100|是||
+|职位名称|POSITION_NAME|外键值文本|200|是||
 |统计标识|REPORT_FLAG|[是否逻辑](index/dictionary_index#user_report_flag "启停状态")||是||
 |角色|ROLE_ID|[单项选择(文本值)](index/dictionary_index#user_group_role_type "团队角色类型")|60|是||
+|职位|TITLE|外键值附加数据|100|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 |登录名|USER_ID|外键值|100|是||
@@ -53,6 +56,7 @@
 
 |  名称col350   | 主实体col200   | 关系类型col200   |    备注col500  |
 | -------- |---------- |-----------|----- |
+|[DER1N_MEMBER_POSITION_POSITION_ID](der/DER1N_MEMBER_POSITION_POSITION_ID)|[职位(POSITION)](module/Base/position)|1:N关系||
 |[DER1N_MEMBER_USER_USER_ID](der/DER1N_MEMBER_USER_USER_ID)|[企业用户(USER)](module/Base/user)|1:N关系||
 |[DERCUSTOM_MEMBER_COMMON_FLOW](der/DERCUSTOM_MEMBER_COMMON_FLOW)|[通用规则(COMMON_FLOW)](module/Base/common_flow)|自定义关系||
 |[DERCUSTOM_MEMBER_GROUP_OWNER_ID](der/DERCUSTOM_MEMBER_GROUP_OWNER_ID)|[团队(GROUP)](module/Base/group)|自定义关系||
@@ -73,6 +77,7 @@
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|添加成员（职位）|add_member_position|[实体处理逻辑](module/Base/member/logic/add_member_position "添加成员（职位）")|默认|不支持||||
 |添加共享页面非空间下成员|add_shared_page_member|[实体处理逻辑](module/Base/member/logic/add_shared_page_member "添加共享页面非空间下成员")|默认|不支持||||
 |变更角色|change_role|[实体处理逻辑](module/Base/member/logic/change_role "变更角色")|默认|不支持||||
 |新建成员|create_member|[实体处理逻辑](module/Base/member/logic/create_member "新建成员")|默认|不支持||||
@@ -87,6 +92,7 @@
 |[无操作](module/Base/member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[添加共享页面非空间下成员](module/Base/member/logic/add_shared_page_member)|add_shared_page_member|无||添加共享页面非空间下成员|
 |[添加共享页面非空间下成员（移动端）](module/Base/member/logic/mob_add_shared_page_member)|mob_add_shared_page_member|无||添加共享页面非空间下成员（移动端）|
+|[添加成员（职位）](module/Base/member/logic/add_member_position)|add_member_position|无|||
 |[获取当前项目下资源成员](module/Base/member/logic/cur_project_resource)|cur_project_resource|无||获取当前项目下资源成员|
 |[获取当前项目集下资源成员](module/Base/member/logic/cur_portfolio_resource)|cur_portfolio_resource|无||获取当前项目集下资源成员|
 |[获取资源成员（全局）](module/Base/member/logic/resource_member)|resource_member|无||获取资源成员（全局）|
@@ -144,6 +150,9 @@
 |N_NAME_LIKE|名称|LIKE||
 |N_OWNER_ID_EQ|所属数据标识|EQ||
 |N_OWNER_TYPE_EQ|所属数据对象|EQ||
+|N_POSITION_ID_EQ|职位标识|EQ||
+|N_POSITION_NAME_EQ|职位名称|EQ||
+|N_POSITION_NAME_LIKE|职位名称|LIKE||
 |N_ROLE_ID_EQ|角色|EQ||
 |N_USER_ID_EQ|登录名|EQ||
 |N_USER_ID_NOTIN|登录名|NOTIN||
@@ -153,6 +162,7 @@
 | --------| --------| -------- |------------|------------|------------|
 | 删除页面共享成员 | del_shared_member | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 | 移动端添加共享成员（test） | mob_add | 移动端添加共享成员 |无数据|用户自定义||
+| 添加成员（职位） | add_member_position | 添加成员 |无数据|<details><summary>后台调用</summary>[add_member_position](#行为)||
 | 添加页面共享成员 | add_shared_mmeber | 添加 |无数据|用户自定义||
 | 打开页面共享成员选择页（移动端） | share_member_mob_list | 添加页面共享成员 |无数据|<details><summary>后台调用</summary>[mob_add_shared_member](#行为)||
 | 设置 | open_role_edit_view | 设置 |多项数据（主键）|<details><summary>后台调用</summary>[change_role](#行为)||

@@ -15,12 +15,12 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./start_cur_stage_review#begin {开始}]]
-state "准备参数" as PREPAREJSPARAM1  [[$./start_cur_stage_review#preparejsparam1 {准备参数}]]
-state "结束" as END1 <<end>> [[$./start_cur_stage_review#end1 {结束}]]
-state "实体行为" as DEACTION1  [[$./start_cur_stage_review#deaction1 {实体行为}]]
 state "注入脚本代码" as RAWJSCODE2  [[$./start_cur_stage_review#rawjscode2 {注入脚本代码}]]
 state "消息弹窗" as MSGBOX1  [[$./start_cur_stage_review#msgbox1 {消息弹窗}]]
+state "结束" as END1 <<end>> [[$./start_cur_stage_review#end1 {结束}]]
 state "通知刷新" as RAWJSCODE1  [[$./start_cur_stage_review#rawjscode1 {通知刷新}]]
+state "实体行为" as DEACTION1  [[$./start_cur_stage_review#deaction1 {实体行为}]]
+state "准备参数" as PREPAREJSPARAM1  [[$./start_cur_stage_review#preparejsparam1 {准备参数}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -93,9 +93,9 @@ ibiz.mc.command.update.send({ srfdecodename: 'review', srfkey: context.review})
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|父表单|parent_form|数据对象||
 |表格|grid|部件对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |当前视图|view|当前视图对象||
+|父表单|parent_form|数据对象||
 |上下文|ctx|导航视图参数绑定参数||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |父视图|parent_view|数据对象||

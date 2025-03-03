@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./add_comment_client#begin {开始}]]
-state "设置评论输入框默认展开" as RAWJSCODE1  [[$./add_comment_client#rawjscode1 {设置评论输入框默认展开}]]
-state "结束" as END1 <<end>> [[$./add_comment_client#end1 {结束}]]
 state "准备参数" as PREPAREJSPARAM1  [[$./add_comment_client#preparejsparam1 {准备参数}]]
+state "结束" as END1 <<end>> [[$./add_comment_client#end1 {结束}]]
+state "设置评论输入框默认展开" as RAWJSCODE1  [[$./add_comment_client#rawjscode1 {设置评论输入框默认展开}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -71,8 +71,8 @@ uiLogic.comment.focus();
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|view|view|当前视图对象||
-|panelItems|panelItems|数据对象||
+|父视图|parentView|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |评论|comment|数据对象||
-|父视图|parentView|数据对象||
+|view|view|当前视图对象||
+|panelItems|panelItems|数据对象||

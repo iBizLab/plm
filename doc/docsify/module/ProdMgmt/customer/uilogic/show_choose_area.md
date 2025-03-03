@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./show_choose_area#begin {开始}]]
-state "设置选择区域显示" as PREPAREJSPARAM2  [[$./show_choose_area#preparejsparam2 {设置选择区域显示}]]
 state "绑定部件对象" as PREPAREJSPARAM1  [[$./show_choose_area#preparejsparam1 {绑定部件对象}]]
+state "设置选择区域显示" as PREPAREJSPARAM2  [[$./show_choose_area#preparejsparam2 {设置选择区域显示}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -52,6 +52,6 @@ PREPAREJSPARAM1 --> PREPAREJSPARAM2
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|选项框状态对象|choose_data_state_obj|数据对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |当前视图|view|当前视图对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|选项框状态对象|choose_data_state_obj|数据对象||

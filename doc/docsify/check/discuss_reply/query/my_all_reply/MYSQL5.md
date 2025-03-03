@@ -1,0 +1,17 @@
+```sql
+SELECT
+t1.`CONTENT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t11.`NAME` AS `DISCUSS_NAME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`POST_ID`,
+t11.`TOPIC_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `DISCUSS_REPLY` t1 
+LEFT JOIN `DISCUSS_POST` t11 ON t1.`POST_ID` = t11.`ID` 
+
+WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} )
+```

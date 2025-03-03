@@ -35,7 +35,9 @@
 |dn|String|dn|
 |mdepartment_id|String|Mdepartment_id|
 |uid|String|uid|
+|organization_id|String|organization_id|
 |avatar|String|avatar|
+|organization_name|String|organization_name|
 |create_time|Timestamp|create_time|
 |id|String|id|
 |update_time|Timestamp|update_time|
@@ -65,7 +67,9 @@
   "dn" : null,
   "mdepartment_id" : null,
   "uid" : null,
+  "organization_id" : null,
   "avatar" : null,
+  "organization_name" : null,
   "create_time" : null,
   "id" : null,
   "update_time" : null,
@@ -109,7 +113,9 @@
 |dn|String|dn|
 |mdepartment_id|String|Mdepartment_id|
 |uid|String|uid|
+|organization_id|String|organization_id|
 |avatar|String|avatar|
+|organization_name|String|organization_name|
 |create_time|Timestamp|create_time|
 |id|String|id|
 |update_time|Timestamp|update_time|
@@ -139,7 +145,9 @@
   "dn" : null,
   "mdepartment_id" : null,
   "uid" : null,
+  "organization_id" : null,
   "avatar" : null,
+  "organization_name" : null,
   "create_time" : null,
   "id" : null,
   "update_time" : null,
@@ -202,7 +210,9 @@
 |dn|String|dn|
 |mdepartment_id|String|Mdepartment_id|
 |uid|String|uid|
+|organization_id|String|organization_id|
 |avatar|String|avatar|
+|organization_name|String|organization_name|
 |create_time|Timestamp|create_time|
 |id|String|id|
 |update_time|Timestamp|update_time|
@@ -232,12 +242,33 @@
   "dn" : null,
   "mdepartment_id" : null,
   "uid" : null,
+  "organization_id" : null,
   "avatar" : null,
+  "organization_name" : null,
   "create_time" : null,
   "id" : null,
   "update_time" : null,
 }
 ```
+
+
+## GetSimple
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="GET" type="success" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/sys_people/{key}" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|主键|
+
+
 
 
 ## Remove
@@ -259,16 +290,21 @@
 
 
 
-## Save
+## ResetPassword
 
 <el-row>
 <div style="width: 80px">
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/sys_people" type="info" :closable="false" ></el-alert>
+<el-alert title="/sys_people/{key}" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|主键|
 
 
 
@@ -295,7 +331,9 @@
 |dn|String|dn|
 |mdepartment_id|String|Mdepartment_id|
 |uid|String|uid|
+|organization_id|String|organization_id|
 |avatar|String|avatar|
+|organization_name|String|organization_name|
 |create_time|Timestamp|create_time|
 |id|String|id|
 |update_time|Timestamp|update_time|
@@ -325,12 +363,33 @@
   "dn" : null,
   "mdepartment_id" : null,
   "uid" : null,
+  "organization_id" : null,
   "avatar" : null,
+  "organization_name" : null,
   "create_time" : null,
   "id" : null,
   "update_time" : null,
 }
 ```
+
+
+## SYS_PERSON__DEACTION__SAVE
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/sys_people/{key}" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|主键|
+
+
 
 
 ## Update
@@ -374,7 +433,9 @@
 |dn|String|dn|
 |mdepartment_id|String|Mdepartment_id|
 |uid|String|uid|
+|organization_id|String|organization_id|
 |avatar|String|avatar|
+|organization_name|String|organization_name|
 |create_time|Timestamp|create_time|
 |id|String|id|
 |update_time|Timestamp|update_time|
@@ -404,7 +465,9 @@
   "dn" : null,
   "mdepartment_id" : null,
   "uid" : null,
+  "organization_id" : null,
   "avatar" : null,
+  "organization_name" : null,
   "create_time" : null,
   "id" : null,
   "update_time" : null,
@@ -430,6 +493,7 @@
 |---|---|----|
 |n_dc_eq|String|N_DC_EQ|
 |n_id_eq|String|N_ID_EQ|
+|n_uid_eq|String|N_UID_EQ|
 
 
 
@@ -441,6 +505,7 @@
   "sort" : null,
   "n_dc_eq" : null,
   "n_id_eq" : null,
+  "n_uid_eq" : null,
 }
 ```
 
@@ -463,6 +528,7 @@
 |---|---|----|
 |n_dc_eq|String|N_DC_EQ|
 |n_id_eq|String|N_ID_EQ|
+|n_uid_eq|String|N_UID_EQ|
 
 
 
@@ -474,6 +540,7 @@
   "sort" : null,
   "n_dc_eq" : null,
   "n_id_eq" : null,
+  "n_uid_eq" : null,
 }
 ```
 

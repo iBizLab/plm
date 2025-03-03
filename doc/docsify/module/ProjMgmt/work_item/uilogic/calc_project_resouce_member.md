@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./calc_project_resouce_member#begin {开始}]]
-state "打开成员选择视图" as DEUIACTION1  [[$./calc_project_resouce_member#deuiaction1 {打开成员选择视图}]]
 state "设置选中数据" as RAWJSCODE1  [[$./calc_project_resouce_member#rawjscode1 {设置选中数据}]]
 state "结束" as END1 <<end>> [[$./calc_project_resouce_member#end1 {结束}]]
+state "打开成员选择视图" as DEUIACTION1  [[$./calc_project_resouce_member#deuiaction1 {打开成员选择视图}]]
 
 
 Begin --> RAWJSCODE1
@@ -69,6 +69,6 @@ if (gantt) {
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |选中数据|selectdata|数据对象||
 |部件|gantt|部件对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

@@ -604,7 +604,7 @@
 <el-alert title="/runs/{key}/batch_save_run_history" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`UPDATE`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -861,7 +861,7 @@ Integer
 <el-alert title="/runs/{key}/get_actual_workload" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`READ`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -2340,7 +2340,7 @@ Integer
 <el-alert title="/runs/{key}/run_re_counters" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`READ`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -2469,7 +2469,7 @@ Integer
 <el-alert title="/runs/save" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`CREATE`
 
 
 
@@ -2650,7 +2650,7 @@ Integer
 <el-alert title="/runs/{key}/save_run_history" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`UPDATE`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -2779,7 +2779,7 @@ Integer
 <el-alert title="/runs/{key}/set_executor" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`UPDATE`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|

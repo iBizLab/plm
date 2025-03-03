@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./page_refresh#begin {开始}]]
-state "通知刷新" as RAWJSCODE1  [[$./page_refresh#rawjscode1 {通知刷新}]]
-state "结束" as END1 <<end>> [[$./page_refresh#end1 {结束}]]
 state "恢复历史版本" as DEUIACTION1  [[$./page_refresh#deuiaction1 {恢复历史版本}]]
+state "结束" as END1 <<end>> [[$./page_refresh#end1 {结束}]]
+state "通知刷新" as RAWJSCODE1  [[$./page_refresh#rawjscode1 {通知刷新}]]
 
 
 Begin --> DEUIACTION1
@@ -65,6 +65,6 @@ ibiz.mc.command.send({srfdecodename: 'article_page',srfkey:uiLogic.context.artic
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
+|form对象|form|部件对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |应用上下文|context|导航视图参数绑定参数||
-|form对象|form|部件对象||

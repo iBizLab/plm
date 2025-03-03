@@ -48,8 +48,8 @@ ibiz.mc.command.update.send({ srfdecodename: 'run'})
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
+|环境变量|hjbl|||
 |APP|APP|应用程序变量||
 |当前工具栏|view|当前视图对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|环境变量|hjbl|||
 |当前表格|grid|部件对象||

@@ -16,13 +16,15 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./my_summary#begin {"开始"}]]
 state "结束" as END1 <<end>> [[$./my_summary#end1 {"结束"}]]
+state "设置初始化" as PREPAREPARAM1  [[$./my_summary#prepareparam1 {"设置初始化"}]]
 state "获取工作项数、任务数、bug数" as RAWSQLCALL1  [[$./my_summary#rawsqlcall1 {"获取工作项数、任务数、bug数"}]]
 state "获取产品需求数" as RAWSQLCALL2  [[$./my_summary#rawsqlcall2 {"获取产品需求数"}]]
 state "获取产品工单数" as RAWSQLCALL4  [[$./my_summary#rawsqlcall4 {"获取产品工单数"}]]
 state "获取测试用例数" as RAWSQLCALL3  [[$./my_summary#rawsqlcall3 {"获取测试用例数"}]]
 
 
-Begin --> RAWSQLCALL1
+Begin --> PREPAREPARAM1
+PREPAREPARAM1 --> RAWSQLCALL1
 RAWSQLCALL1 --> RAWSQLCALL2
 RAWSQLCALL2 --> RAWSQLCALL4
 RAWSQLCALL4 --> RAWSQLCALL3
@@ -45,6 +47,17 @@ RAWSQLCALL3 --> END1
 
 
 返回 `result`
+
+#### 设置初始化 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`0` 设置给  `result.bug_num`
+2. 将`0` 设置给  `result.case_num`
+3. 将`0` 设置给  `result.idea_num`
+4. 将`0` 设置给  `result.other_item_num`
+5. 将`0` 设置给  `result.task_num`
+6. 将`0` 设置给  `result.ticket_num`
 
 #### 获取工作项数、任务数、bug数 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 

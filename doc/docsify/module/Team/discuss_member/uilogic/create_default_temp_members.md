@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./create_default_temp_members#begin {开始}]]
-state "结束" as END1 <<end>> [[$./create_default_temp_members#end1 {结束}]]
 state "创建临时数据" as RAWJSCODE1  [[$./create_default_temp_members#rawjscode1 {创建临时数据}]]
 state "获取当前用户数据" as PREPAREJSPARAM1  [[$./create_default_temp_members#preparejsparam1 {获取当前用户数据}]]
+state "结束" as END1 <<end>> [[$./create_default_temp_members#end1 {结束}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -46,9 +46,8 @@ RAWJSCODE1 --> END1
 
 
 1. 将`数据上下文[srfusername] ==> user[name]` 设置给  `user(当前人员).name`
-2. 将`数据上下文[discuss_topic] ==> user[owner_id]` 设置给  `user(当前人员).owner_id`
-3. 将`admin` 设置给  `user(当前人员).role_id`
-4. 将`数据上下文[srfuserid] ==> user[user_id]` 设置给  `user(当前人员).user_id`
+2. 将`admin` 设置给  `user(当前人员).role_id`
+3. 将`数据上下文[srfuserid] ==> user[user_id]` 设置给  `user(当前人员).user_id`
 
 #### 创建临时数据 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 

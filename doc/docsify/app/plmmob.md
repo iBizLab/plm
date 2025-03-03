@@ -1,4 +1,4 @@
-# PLMMob(plmmob)  <!-- {docsify-ignore-all} -->
+# 移动端(plmmob)  <!-- {docsify-ignore-all} -->
 
 ## 菜单
 

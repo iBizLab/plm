@@ -15,13 +15,13 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./create_double_relation#begin {开始}]]
-state "建立关联关系" as DEACTION2  [[$./create_double_relation#deaction2 {建立关联关系}]]
-state "拼接关联对象的主键" as RAWJSCODE1  [[$./create_double_relation#rawjscode1 {拼接关联对象的主键}]]
-state "表格刷新" as VIEWCTRLINVOKE1  [[$./create_double_relation#viewctrlinvoke1 {表格刷新}]]
 state "结束" as END1 <<end>> [[$./create_double_relation#end1 {结束}]]
-state "填充关联数据属性" as PREPAREJSPARAM1  [[$./create_double_relation#preparejsparam1 {填充关联数据属性}]]
 state "隐藏下拉框" as RAWJSCODE2  [[$./create_double_relation#rawjscode2 {隐藏下拉框}]]
+state "拼接关联对象的主键" as RAWJSCODE1  [[$./create_double_relation#rawjscode1 {拼接关联对象的主键}]]
 state "建立关联关系" as DEACTION1  [[$./create_double_relation#deaction1 {建立关联关系}]]
+state "建立关联关系" as DEACTION2  [[$./create_double_relation#deaction2 {建立关联关系}]]
+state "填充关联数据属性" as PREPAREJSPARAM1  [[$./create_double_relation#preparejsparam1 {填充关联数据属性}]]
+state "表格刷新" as VIEWCTRLINVOKE1  [[$./create_double_relation#viewctrlinvoke1 {表格刷新}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -114,9 +114,9 @@ if (panel) {
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|反向关联对象|relation2|数据对象||
-|当前表格对象|grid|部件对象||
-|正向关联对象|relation|数据对象||
-|ctx|ctx|导航视图参数绑定参数||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |当前视图对象|view|当前视图对象||
+|反向关联对象|relation2|数据对象||
+|ctx|ctx|导航视图参数绑定参数||
+|当前表格对象|grid|部件对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|正向关联对象|relation|数据对象||

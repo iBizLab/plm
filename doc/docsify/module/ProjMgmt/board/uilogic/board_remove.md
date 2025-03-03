@@ -16,10 +16,10 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./board_remove#begin {开始}]]
 state "打开默认看板" as DEUIACTION1  [[$./board_remove#deuiaction1 {打开默认看板}]]
-state "结束" as END1 <<end>> [[$./board_remove#end1 {结束}]]
+state "判断看板是否已删除" as DEACTION1  [[$./board_remove#deaction1 {判断看板是否已删除}]]
 state "计算删除看板标识" as RAWJSCODE1  [[$./board_remove#rawjscode1 {计算删除看板标识}]]
 state "删除看板" as DEUIACTION2  [[$./board_remove#deuiaction2 {删除看板}]]
-state "判断看板是否已删除" as DEACTION1  [[$./board_remove#deaction1 {判断看板是否已删除}]]
+state "结束" as END1 <<end>> [[$./board_remove#end1 {结束}]]
 
 
 Begin --> DEUIACTION2
@@ -88,8 +88,8 @@ if (uiLogic.default.id === context.curboard) {
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|数据|data|数据对象||
-|当前视图|view|当前视图对象||
 |上下文变量|context|导航视图参数绑定参数||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|数据|data|数据对象||
 |checkKey|checkKey|简单数据||
+|当前视图|view|当前视图对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

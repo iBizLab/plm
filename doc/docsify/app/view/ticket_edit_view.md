@@ -25,7 +25,7 @@ false
 ### 关联视图
   * [活动历史列表(activity_history_list_view)](app/view/activity_history_list_view)
   * [客户沟通(comment_customer_connect_list_view)](app/view/comment_customer_connect_list_view)
-  * [评论(comment_list_view)](app/view/comment_list_view)
+  * [评论(comment_ticket_list_view)](app/view/comment_ticket_list_view)
   * [客户(customer_pick_up_view)](app/view/customer_pick_up_view)
   * [关联(relation_ticket_re_idea_grid_view)](app/view/relation_ticket_re_idea_grid_view)
   * [关联(relation_ticket_re_self_grid_view)](app/view/relation_ticket_re_self_grid_view)

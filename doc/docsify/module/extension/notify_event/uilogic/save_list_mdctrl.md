@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./save_list_mdctrl#begin {开始}]]
-state "准备列表服务" as PREPAREJSPARAM1  [[$./save_list_mdctrl#preparejsparam1 {准备列表服务}]]
 state "更新列表数据" as RAWJSCODE1  [[$./save_list_mdctrl#rawjscode1 {更新列表数据}]]
+state "准备列表服务" as PREPAREJSPARAM1  [[$./save_list_mdctrl#preparejsparam1 {准备列表服务}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -65,6 +65,6 @@ if (uiLogic.listservice) {
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|列表部件|setting_model_list|部件对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|列表部件|setting_model_list|部件对象||
 |列表服务|listservice|数据对象||

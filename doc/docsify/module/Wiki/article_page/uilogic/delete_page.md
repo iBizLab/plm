@@ -54,3 +54,4 @@ DEUIACTION1 --> VIEWCTRLINVOKE1
 |节点参数|node_param|简单数据||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |树部件|treeexpbar_tree|部件对象||
+|当前视图|view|当前视图对象||

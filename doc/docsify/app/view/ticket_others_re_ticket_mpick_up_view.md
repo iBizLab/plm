@@ -10,8 +10,8 @@
 
 
 ### 关联界面行为
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [视图_取消](module/ProdMgmt/ticket#界面行为)
   * [工单(TICKET)](module/ProdMgmt/ticket) : [视图_确定](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [视图_取消](module/ProdMgmt/ticket#界面行为)
 
 ### 关联视图
   * [需求(idea_others_re_mpick_up_grid_view)](app/view/idea_others_re_mpick_up_grid_view)

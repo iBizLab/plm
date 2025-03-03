@@ -16,8 +16,8 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./shared_form_data#begin {开始}]]
 state "结束" as END1 <<end>> [[$./shared_form_data#end1 {结束}]]
-state "获取共享链接" as DEACTION1  [[$./shared_form_data#deaction1 {获取共享链接}]]
 state "设置共享页面默认参数" as RAWJSCODE1  [[$./shared_form_data#rawjscode1 {设置共享页面默认参数}]]
+state "获取共享链接" as DEACTION1  [[$./shared_form_data#deaction1 {获取共享链接}]]
 
 
 Begin --> DEACTION1

@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./create_relation#begin {开始}]]
-state "建立关联关系" as DEACTION1  [[$./create_relation#deaction1 {建立关联关系}]]
 state "填充关联主数据" as PREPAREJSPARAM1  [[$./create_relation#preparejsparam1 {填充关联主数据}]]
 state "拼接关联对象的主键" as RAWJSCODE1  [[$./create_relation#rawjscode1 {拼接关联对象的主键}]]
+state "建立关联关系" as DEACTION1  [[$./create_relation#deaction1 {建立关联关系}]]
 state "结束" as END1 <<end>> [[$./create_relation#end1 {结束}]]
 
 
@@ -77,6 +77,6 @@ relationobj.id = relationobj.principal_id + "_" + relationobj.target_id;
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
+|ctx|ctx|导航视图参数绑定参数||
 |relation|relation|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|ctx|ctx|导航视图参数绑定参数||

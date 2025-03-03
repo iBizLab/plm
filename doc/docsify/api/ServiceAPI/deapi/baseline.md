@@ -294,15 +294,10 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/baselines/{key}/delete_categories" type="info" :closable="false" ></el-alert>
+<el-alert title="/baselines/delete_categories" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
-
-##### 路径参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|key|String|标识|
+权限标识：`DELETE`
 
 
 
@@ -347,6 +342,29 @@ Integer
 ```
 
 
+##### 响应示例： {docsify-ignore}
+```json
+
+{
+  "description" : null,
+  "status" : null,
+  "owner_id" : null,
+  "owner_type" : null,
+  "owner_subtype" : null,
+  "type" : null,
+  "categories" : null,
+  "categories_name" : null,
+  "assignee_name" : null,
+  "assignee_id" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+
+```
 
 ## 获取基线草稿
 
@@ -907,7 +925,7 @@ Integer
 <el-alert title="/baselines/fetch_default" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`READ`
 
 
 
@@ -1359,7 +1377,7 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/libraries/{pkey}/baselines/{key}/delete_categories" type="info" :closable="false" ></el-alert>
+<el-alert title="/libraries/{pkey}/baselines/delete_categories" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 
@@ -1368,7 +1386,6 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |pkey|String|测试库主键|
-|key|String|标识|
 
 
 
@@ -2112,7 +2129,7 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/products/{pkey}/baselines/{key}/delete_categories" type="info" :closable="false" ></el-alert>
+<el-alert title="/products/{pkey}/baselines/delete_categories" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 
@@ -2121,7 +2138,6 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |pkey|String|产品主键|
-|key|String|标识|
 
 
 
@@ -2865,7 +2881,7 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/projects/{pkey}/baselines/{key}/delete_categories" type="info" :closable="false" ></el-alert>
+<el-alert title="/projects/{pkey}/baselines/delete_categories" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 
@@ -2874,7 +2890,6 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |pkey|String|项目主键|
-|key|String|标识|
 
 
 
@@ -3618,7 +3633,7 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/spaces/{pkey}/baselines/{key}/delete_categories" type="info" :closable="false" ></el-alert>
+<el-alert title="/spaces/{pkey}/baselines/delete_categories" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 
@@ -3627,7 +3642,6 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |pkey|String|空间主键|
-|key|String|标识|
 
 
 

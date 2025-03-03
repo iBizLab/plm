@@ -16,8 +16,8 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./calc_active_member_info#begin {开始}]]
 state "结束" as END1 <<end>> [[$./calc_active_member_info#end1 {结束}]]
-state "计算活跃成员数据信息" as RAWJSCODE1  [[$./calc_active_member_info#rawjscode1 {计算活跃成员数据信息}]]
 state "实体行为" as DEACTION1  [[$./calc_active_member_info#deaction1 {实体行为}]]
+state "计算活跃成员数据信息" as RAWJSCODE1  [[$./calc_active_member_info#rawjscode1 {计算活跃成员数据信息}]]
 
 
 Begin --> DEACTION1
@@ -86,6 +86,6 @@ if (uiLogic && uiLogic.datas.sevenday_active_rate) {
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |view|view|当前视图对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |返回数据|datas|数据对象||

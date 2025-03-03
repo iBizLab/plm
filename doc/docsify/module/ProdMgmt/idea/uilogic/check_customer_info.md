@@ -69,6 +69,6 @@ uiLogic.view.ctx.parent.controllersMap.get("form").details.grouppanel11.state.vi
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
+|当前视图对象|view|当前视图对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |上下文|ctx|导航视图参数绑定参数||
-|当前视图对象|view|当前视图对象||

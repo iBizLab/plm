@@ -49,5 +49,5 @@ view.parentView.layoutPanel.panelItems.form.control.details.replys.model.caption
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |当前部件对象|ctrl|当前部件对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

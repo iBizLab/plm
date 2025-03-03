@@ -421,7 +421,7 @@ Integer
 <el-alert title="/sprints/{key}/del_relation" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`UPDATE`
+权限标识：`DELETE`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -495,15 +495,10 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/sprints/{key}/delete_categories" type="info" :closable="false" ></el-alert>
+<el-alert title="/sprints/delete_categories" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
-
-##### 路径参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|key|String|标识|
+权限标识：`DELETE`
 
 
 
@@ -564,6 +559,37 @@ Integer
 ```
 
 
+##### 响应示例： {docsify-ignore}
+```json
+
+{
+  "start_at" : null,
+  "end_at" : null,
+  "description" : null,
+  "status" : null,
+  "pname" : null,
+  "project_name" : null,
+  "categories" : null,
+  "categories_name" : null,
+  "schedule" : null,
+  "assignee_name" : null,
+  "assignee_id" : null,
+  "completed_work_items" : null,
+  "all_work_items" : null,
+  "past_days" : null,
+  "project_is_deleted" : null,
+  "project_type" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "pid" : null,
+  "project_id" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+
+```
 
 ## 结束迭代
 
@@ -2635,7 +2661,7 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/projects/{pkey}/sprints/{key}/delete_categories" type="info" :closable="false" ></el-alert>
+<el-alert title="/projects/{pkey}/sprints/delete_categories" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 
@@ -2644,7 +2670,6 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |pkey|String|项目主键|
-|key|String|标识|
 
 
 

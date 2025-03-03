@@ -26,7 +26,7 @@
 
 ### 指标
 ##### 计算式指标
-|    名称col200   | 代码名col150  |  计算公式col500   |  备注col500  |
+|    名称col200   | 代码名col150  |  计算公式col501   |  备注col500  |
 | --------  |------------| -----   |  --------|
 |评审完成周期|review_completed_cycle|sumif(dateDiff(COMPLETED_AT, SUBMITTED_AT, 'day'), state=60 and library_is_deleted = 0) / if(countif(library_is_deleted = 0) = 0, 1, countif(library_is_deleted = 0))|统计评审计划下从开始到评审完成的耗时，反映测试团队的评审效率。|
 |评审数量|reviews|countif(library_is_deleted = 0)|统计不同维度下用例评审的数量。|

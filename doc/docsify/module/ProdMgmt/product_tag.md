@@ -94,6 +94,18 @@
 
 
 
+##### 操作用户(写) :id=product_tag-USER_W
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `无`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `CREATE`
+
+
+
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |

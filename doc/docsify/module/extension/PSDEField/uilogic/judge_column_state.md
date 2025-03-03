@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./judge_column_state#begin {开始}]]
-state "结束" as END1 <<end>> [[$./judge_column_state#end1 {结束}]]
 state "判断操作列是否禁用" as RAWJSCODE1  [[$./judge_column_state#rawjscode1 {判断操作列是否禁用}]]
+state "结束" as END1 <<end>> [[$./judge_column_state#end1 {结束}]]
 
 
 Begin --> RAWJSCODE1

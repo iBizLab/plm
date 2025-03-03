@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./back#begin {开始}]]
+state "绑定表单" as PREPAREJSPARAM2  [[$./back#preparejsparam2 {绑定表单}]]
 state "获取父视图对象" as PREPAREJSPARAM1  [[$./back#preparejsparam1 {获取父视图对象}]]
 state "切换显示组件" as RAWJSCODE1  [[$./back#rawjscode1 {切换显示组件}]]
-state "绑定表单" as PREPAREJSPARAM2  [[$./back#preparejsparam2 {绑定表单}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -69,7 +69,7 @@ choose_data.setDataValue(null);
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|当前视图对象|view|当前视图对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|parentView|parentView|数据对象||
 |父表单|parent_form|数据对象||
+|parentView|parentView|数据对象||
+|当前视图对象|view|当前视图对象||

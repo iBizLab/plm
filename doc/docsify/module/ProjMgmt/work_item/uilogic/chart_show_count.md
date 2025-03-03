@@ -16,8 +16,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./chart_show_count#begin {开始}]]
-state "图标参数" as PREPAREJSPARAM1  [[$./chart_show_count#preparejsparam1 {图标参数}]]
 state "图表显示总数" as RAWJSCODE1  [[$./chart_show_count#rawjscode1 {图表显示总数}]]
+state "图标参数" as PREPAREJSPARAM1  [[$./chart_show_count#preparejsparam1 {图标参数}]]
 
 
 Begin --> PREPAREJSPARAM1

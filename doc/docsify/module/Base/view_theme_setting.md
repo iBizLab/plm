@@ -63,6 +63,7 @@
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[数据查询(DEFAULT)](module/Base/view_theme_setting/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/Base/view_theme_setting/query/View)|VIEW|否|否 |否 ||
+|[我的主题设置(my_view_theme_setting)](module/Base/view_theme_setting/query/my_view_theme_setting)|my_view_theme_setting|否|否 |否 ||
 |[实体数据关系界面组（同步）(PSMODEL_SYNC)](module/Base/view_theme_setting/query/psmodel_sync)|PSMODEL_SYNC|否|否 |否 |用于定义实体数据关系界面组同步的数据|
 
 ## 数据集合
@@ -71,9 +72,22 @@
 |[数据集(DEFAULT)](module/Base/view_theme_setting/dataset/Default)|DEFAULT|数据查询|是|||
 |[当前用户全部（含全局）(CUR_USER_ALL)](module/Base/view_theme_setting/dataset/cur_user_all)|CUR_USER_ALL|数据查询|否|||
 |[当前用户全部（含全局去重）(CUR_USER_ALL2)](module/Base/view_theme_setting/dataset/cur_user_all2)|CUR_USER_ALL2|[实体逻辑](module/Base/view_theme_setting/logic/distinctData)|否|||
+|[我的主题设置(my_view_theme_setting)](module/Base/view_theme_setting/dataset/my_view_theme_setting)|my_view_theme_setting|数据查询|否|||
 |[实体数据关系界面组（同步）(PSMODEL_SYNC)](module/Base/view_theme_setting/dataset/psmodel_sync)|PSMODEL_SYNC|数据查询|否||用于定义实体数据关系界面组同步的数据|
 
 ## 数据权限
+
+##### 全部数据（读） :id=view_theme_setting-ALL_R
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `READ`
+
+
 
 ##### 全部数据（读写） :id=view_theme_setting-ALL_RW
 
@@ -83,10 +97,25 @@
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `DELETE`
+* `READ`
 * `UPDATE`
 * `CREATE`
+* `DELETE`
+
+
+
+##### 我的主题设置（读写） :id=view_theme_setting-USER_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `数据集合` ：[我的主题设置(my_view_theme_setting)](module/Base/view_theme_setting#数据集合)
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `DELETE`
+* `CREATE`
 * `READ`
+* `UPDATE`
 
 
 

@@ -15,14 +15,14 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./use_cur_template#begin {开始}]]
-state "通知刷新" as RAWJSCODE3  [[$./use_cur_template#rawjscode3 {通知刷新}]]
-state "输出新建后的报表" as DEBUGPARAM1  [[$./use_cur_template#debugparam1 {输出新建后的报表}]]
-state "结束" as END1 <<end>> [[$./use_cur_template#end1 {结束}]]
-state "获取卡片视图选中数据" as RAWJSCODE4  [[$./use_cur_template#rawjscode4 {获取卡片视图选中数据}]]
-state "关闭当前视图" as RAWJSCODE2  [[$./use_cur_template#rawjscode2 {关闭当前视图}]]
-state "设置上下文" as RAWJSCODE1  [[$./use_cur_template#rawjscode1 {设置上下文}]]
 state "消息弹窗" as MSGBOX1  [[$./use_cur_template#msgbox1 {消息弹窗}]]
+state "获取卡片视图选中数据" as RAWJSCODE4  [[$./use_cur_template#rawjscode4 {获取卡片视图选中数据}]]
+state "设置上下文" as RAWJSCODE1  [[$./use_cur_template#rawjscode1 {设置上下文}]]
+state "关闭当前视图" as RAWJSCODE2  [[$./use_cur_template#rawjscode2 {关闭当前视图}]]
+state "输出新建后的报表" as DEBUGPARAM1  [[$./use_cur_template#debugparam1 {输出新建后的报表}]]
+state "通知刷新" as RAWJSCODE3  [[$./use_cur_template#rawjscode3 {通知刷新}]]
 state "使用此模板" as DEACTION1  [[$./use_cur_template#deaction1 {使用此模板}]]
+state "结束" as END1 <<end>> [[$./use_cur_template#end1 {结束}]]
 
 
 Begin --> RAWJSCODE4
@@ -134,9 +134,9 @@ ibiz.mc.command.create.send({ srfdecodename: 'insight_report'})
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|看板数据|dyna_dashboard_info|数据对象||
 |上下文|ctx|导航视图参数绑定参数||
-|当前视图对象|view|当前视图对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|选中数据|selecteddata|数据对象列表||
 |新建报表|new_report|数据对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|当前视图对象|view|当前视图对象||
+|选中数据|selecteddata|数据对象列表||
+|看板数据|dyna_dashboard_info|数据对象||

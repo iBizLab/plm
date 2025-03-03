@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./deleted_visible#begin {开始}]]
-state "准备参数" as PREPAREJSPARAM1  [[$./deleted_visible#preparejsparam1 {准备参数}]]
 state "结束" as END1 <<end>> [[$./deleted_visible#end1 {结束}]]
+state "准备参数" as PREPAREJSPARAM1  [[$./deleted_visible#preparejsparam1 {准备参数}]]
 
 
 Begin --> END1 : [[$./deleted_visible#begin-end1{连接名称} 连接名称]]
@@ -57,6 +57,6 @@ Begin --> END1 : [[$./deleted_visible#begin-end1{连接名称} 连接名称]]
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|视图消息占位|viewmsg_pos|数据对象||
 |view|view|当前视图对象||
 |视图消息占位状态|viewmsg_pos_state|数据对象||
-|视图消息占位|viewmsg_pos|数据对象||

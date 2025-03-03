@@ -51,6 +51,6 @@ PREPAREJSPARAM1 --> VIEWCTRLINVOKE1
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |树表部件|treegrid|部件对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |操作参数|op_params|数据对象||

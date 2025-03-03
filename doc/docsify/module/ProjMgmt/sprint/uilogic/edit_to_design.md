@@ -16,8 +16,8 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./edit_to_design#begin {开始}]]
 state "结束" as END1 <<end>> [[$./edit_to_design#end1 {结束}]]
-state "门户刷新" as RAWJSCODE2  [[$./edit_to_design#rawjscode2 {门户刷新}]]
 state "跳转设计页" as RAWJSCODE1  [[$./edit_to_design#rawjscode1 {跳转设计页}]]
+state "门户刷新" as RAWJSCODE2  [[$./edit_to_design#rawjscode2 {门户刷新}]]
 
 
 Begin --> RAWJSCODE1

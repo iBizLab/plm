@@ -15,30 +15,30 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./un_attention#begin {开始}]]
-state "通知刷新" as RAWJSCODE2  [[$./un_attention#rawjscode2 {通知刷新}]]
-state "绑定关注数" as PREPAREJSPARAM2  [[$./un_attention#preparejsparam2 {绑定关注数}]]
-state "空" as PREPAREJSPARAM10  [[$./un_attention#preparejsparam10 {空}]]
-state "客户" as PREPAREJSPARAM5  [[$./un_attention#preparejsparam5 {客户}]]
-state "执行用例" as PREPAREJSPARAM6  [[$./un_attention#preparejsparam6 {执行用例}]]
-state "保存关注人数据" as DEACTION2  [[$./un_attention#deaction2 {保存关注人数据}]]
 state "产品需求" as PREPAREJSPARAM3  [[$./un_attention#preparejsparam3 {产品需求}]]
-state "结束" as END1 <<end>> [[$./un_attention#end1 {结束}]]
-state "页面" as PREPAREJSPARAM8  [[$./un_attention#preparejsparam8 {页面}]]
-state "保存关注人数据" as DEACTION6  [[$./un_attention#deaction6 {保存关注人数据}]]
-state "测试用例" as PREPAREJSPARAM7  [[$./un_attention#preparejsparam7 {测试用例}]]
-state "讨论" as PREPAREJSPARAM9  [[$./un_attention#preparejsparam9 {讨论}]]
-state "保存关注人信息" as DEACTION7  [[$./un_attention#deaction7 {保存关注人信息}]]
-state "刷新列表" as VIEWCTRLINVOKE1  [[$./un_attention#viewctrlinvoke1 {刷新列表}]]
-state "调试逻辑参数" as DEBUGPARAM1  [[$./un_attention#debugparam1 {调试逻辑参数}]]
-state "保存关注人数据" as DEACTION1  [[$./un_attention#deaction1 {保存关注人数据}]]
-state "保存关注人数据" as DEACTION4  [[$./un_attention#deaction4 {保存关注人数据}]]
+state "保存关注人数据" as DEACTION2  [[$./un_attention#deaction2 {保存关注人数据}]]
 state "工单" as PREPAREJSPARAM4  [[$./un_attention#preparejsparam4 {工单}]]
-state "注入脚本代码" as RAWJSCODE3  [[$./un_attention#rawjscode3 {注入脚本代码}]]
-state "保存关注人数据" as DEACTION8  [[$./un_attention#deaction8 {保存关注人数据}]]
-state "保存关注人数据" as DEACTION3  [[$./un_attention#deaction3 {保存关注人数据}]]
+state "讨论" as PREPAREJSPARAM9  [[$./un_attention#preparejsparam9 {讨论}]]
 state "保存关注人数据" as DEACTION5  [[$./un_attention#deaction5 {保存关注人数据}]]
 state "删除" as RAWJSCODE1  [[$./un_attention#rawjscode1 {删除}]]
+state "保存关注人数据" as DEACTION6  [[$./un_attention#deaction6 {保存关注人数据}]]
+state "绑定关注数" as PREPAREJSPARAM2  [[$./un_attention#preparejsparam2 {绑定关注数}]]
+state "保存关注人数据" as DEACTION8  [[$./un_attention#deaction8 {保存关注人数据}]]
+state "结束" as END1 <<end>> [[$./un_attention#end1 {结束}]]
 state "工作项" as PREPAREJSPARAM1  [[$./un_attention#preparejsparam1 {工作项}]]
+state "保存关注人数据" as DEACTION4  [[$./un_attention#deaction4 {保存关注人数据}]]
+state "调试逻辑参数" as DEBUGPARAM1  [[$./un_attention#debugparam1 {调试逻辑参数}]]
+state "保存关注人信息" as DEACTION7  [[$./un_attention#deaction7 {保存关注人信息}]]
+state "测试用例" as PREPAREJSPARAM7  [[$./un_attention#preparejsparam7 {测试用例}]]
+state "页面" as PREPAREJSPARAM8  [[$./un_attention#preparejsparam8 {页面}]]
+state "保存关注人数据" as DEACTION1  [[$./un_attention#deaction1 {保存关注人数据}]]
+state "保存关注人数据" as DEACTION3  [[$./un_attention#deaction3 {保存关注人数据}]]
+state "空" as PREPAREJSPARAM10  [[$./un_attention#preparejsparam10 {空}]]
+state "执行用例" as PREPAREJSPARAM6  [[$./un_attention#preparejsparam6 {执行用例}]]
+state "刷新列表" as VIEWCTRLINVOKE1  [[$./un_attention#viewctrlinvoke1 {刷新列表}]]
+state "客户" as PREPAREJSPARAM5  [[$./un_attention#preparejsparam5 {客户}]]
+state "通知刷新" as RAWJSCODE2  [[$./un_attention#rawjscode2 {通知刷新}]]
+state "注入脚本代码" as RAWJSCODE3  [[$./un_attention#rawjscode3 {注入脚本代码}]]
 
 
 Begin --> RAWJSCODE1
@@ -293,10 +293,10 @@ ibiz.mc.command.update.send({ srfdecodename: "article_page",srfkey:context.princ
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|应用上下文|ctx|导航视图参数绑定参数||
-|当前视图对象|view|当前视图对象||
-|关注数据|attention_data|数据对象列表||
-|多数据部件|mdctrl|部件对象||
-|提交对象|commit_object|数据对象||
 |关注人容器对象|attention_container|数据对象||
+|应用上下文|ctx|导航视图参数绑定参数||
+|多数据部件|mdctrl|部件对象||
+|当前视图对象|view|当前视图对象||
+|提交对象|commit_object|数据对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|关注数据|attention_data|数据对象列表||

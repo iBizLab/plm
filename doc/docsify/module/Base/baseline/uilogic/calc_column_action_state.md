@@ -80,5 +80,5 @@ if (rows && rows.length > 0) {
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |表格|Grid|当前部件对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

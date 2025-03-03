@@ -70,11 +70,13 @@
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[数据查询(DEFAULT)](module/Base/favorite/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/Base/favorite/query/View)|VIEW|否|否 |否 ||
+|[我的收藏(my_favorite)](module/Base/favorite/query/my_favorite)|my_favorite|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/Base/favorite/dataset/Default)|DEFAULT|数据查询|是|||
+|[我的收藏(my_favorite)](module/Base/favorite/dataset/my_favorite)|my_favorite|数据查询|否|||
 
 ## 数据权限
 
@@ -90,6 +92,21 @@
 * `READ`
 * `UPDATE`
 * `CREATE`
+
+
+
+##### 我的收藏（读写） :id=favorite-USER_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `数据集合` ：[我的收藏(my_favorite)](module/Base/favorite#数据集合)
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `CREATE`
+* `UPDATE`
+* `DELETE`
+* `READ`
 
 
 

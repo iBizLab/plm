@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./open_dependency#begin {开始}]]
+state "打开依赖工作项主视图" as DEUIACTION1  [[$./open_dependency#deuiaction1 {打开依赖工作项主视图}]]
 state "获取工作项类型" as DEACTION1  [[$./open_dependency#deaction1 {获取工作项类型}]]
 state "填充链接工作项标识" as PREPAREJSPARAM1  [[$./open_dependency#preparejsparam1 {填充链接工作项标识}]]
-state "打开依赖工作项主视图" as DEUIACTION1  [[$./open_dependency#deuiaction1 {打开依赖工作项主视图}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -64,5 +64,5 @@ DEACTION1 --> DEUIACTION1
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |应用上下文变量|ctx|导航视图参数绑定参数||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |工作项|work_item|数据对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

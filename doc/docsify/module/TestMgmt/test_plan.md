@@ -177,14 +177,14 @@
     <td></td>
   </tr>
   <tr>
-    <td>开始(IN_PROGRESS)</td>
+    <td>开始(IN_PROGRESS)<br><a href ="#/der/DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID">DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID</a></td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"></td>
     <td align="center"></td>
     <td></td>
   </tr>
   <tr>
-    <td>开始(IN_PROGRESS)<br><a href ="#/der/DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID">DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID</a></td>
+    <td>开始(IN_PROGRESS)</td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"></td>
     <td align="center"></td>
@@ -232,6 +232,13 @@
     <td align="center"><i class="fa fa-check"></i></td>
     <td></td>
   </tr>
+  <tr>
+    <td>读取(READ)<br><a href ="#/der/DER1N_TEST_PLAN_PROJECT_PROJECT_ID">DER1N_TEST_PLAN_PROJECT_PROJECT_ID</a></td>
+    <td align="center"><i class="fa fa-check"></i></td>
+    <td align="center"><i class="fa fa-check"></i></td>
+    <td align="center"><i class="fa fa-check"></i></td>
+    <td></td>
+  </tr>
 
 </table>
 
@@ -248,6 +255,7 @@
 |[默认（全部数据）(VIEW)](module/TestMgmt/test_plan/query/View)|VIEW|否|否 |否 ||
 |[BI反查(bi_detail)](module/TestMgmt/test_plan/query/bi_detail)|bi_detail|否|否 |否 ||
 |[BI查询(bi_search)](module/TestMgmt/test_plan/query/bi_search)|bi_search|否|否 |否 ||
+|[当前项目(cur_project)](module/TestMgmt/test_plan/query/cur_project)|cur_project|否|否 |否 ||
 |[我负责的(my_assignee)](module/TestMgmt/test_plan/query/my_assignee)|my_assignee|否|否 |否 ||
 |[我的进行中的(my_in_progress)](module/TestMgmt/test_plan/query/my_in_progress)|my_in_progress|否|否 |否 ||
 |[我参与的(my_participate)](module/TestMgmt/test_plan/query/my_participate)|my_participate|否|否 |否 ||
@@ -261,12 +269,43 @@
 |[数据集(DEFAULT)](module/TestMgmt/test_plan/dataset/Default)|DEFAULT|数据查询|是|||
 |[BI反查(bi_detail)](module/TestMgmt/test_plan/dataset/bi_detail)|bi_detail|数据查询|否|||
 |[BI查询(bi_search)](module/TestMgmt/test_plan/dataset/bi_search)|bi_search|数据查询|否|||
+|[当前项目(cur_project)](module/TestMgmt/test_plan/dataset/cur_project)|cur_project|数据查询|否|||
 |[我负责的(my_assignee)](module/TestMgmt/test_plan/dataset/my_assignee)|my_assignee|数据查询|否|||
 |[我的进行中的(my_in_progress)](module/TestMgmt/test_plan/dataset/my_in_progress)|my_in_progress|数据查询|否|||
 |[我参与的(my_participate)](module/TestMgmt/test_plan/dataset/my_participate)|my_participate|数据查询|否|||
 |[未开始和进行中的计划(pending_and_in_progress)](module/TestMgmt/test_plan/dataset/pending_and_in_progress)|pending_and_in_progress|数据查询|否|||
 |[查询未移入过的计划(query_no_shift_in)](module/TestMgmt/test_plan/dataset/query_no_shift_in)|query_no_shift_in|数据查询|否|||
 |[未加入计划(un_join_plan)](module/TestMgmt/test_plan/dataset/un_join_plan)|un_join_plan|数据查询|否|||
+
+## 数据权限
+
+##### 全部数据（读） :id=test_plan-ALL_R
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `READ`
+
+
+
+##### 全部数据（读写） :id=test_plan-ALL_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `READ(测试库(READ))`
+* `DELETE(测试库(SUBDATA))`
+* `CREATE`
+* `UPDATE`
+
+
+
 ## 消息通知
 
 |    中文名col200   | 代码名col150       |  消息队列col200   |  消息模板col200 |  通知目标col150     |  备注col350  |
@@ -375,6 +414,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/TestMgmt/test_plan?id=数据集合`">
   数据集合
+</el-anchor-link>
+<el-anchor-link :href="`#/module/TestMgmt/test_plan?id=数据权限`">
+  数据权限
 </el-anchor-link>
 <el-anchor-link :href="`#/module/TestMgmt/test_plan?id=消息通知`">
   消息通知

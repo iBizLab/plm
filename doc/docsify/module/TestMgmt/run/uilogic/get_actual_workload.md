@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./get_actual_workload#begin {开始}]]
-state "结束" as END1 <<end>> [[$./get_actual_workload#end1 {结束}]]
 state "计算工时进度" as RAWJSCODE1  [[$./get_actual_workload#rawjscode1 {计算工时进度}]]
+state "结束" as END1 <<end>> [[$./get_actual_workload#end1 {结束}]]
 state "获取实际工时" as DEACTION1  [[$./get_actual_workload#deaction1 {获取实际工时}]]
 
 

@@ -15,15 +15,15 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./open_main_view#begin {开始}]]
+state " 打开页面主视图" as DEUIACTION6  [[$./open_main_view#deuiaction6 { 打开页面主视图}]]
 state "打开测试用例主视图" as DEUIACTION2  [[$./open_main_view#deuiaction2 {打开测试用例主视图}]]
-state "打开工作项主视图" as DEUIACTION1  [[$./open_main_view#deuiaction1 {打开工作项主视图}]]
+state "填充上下文参数" as PREPAREJSPARAM1  [[$./open_main_view#preparejsparam1 {填充上下文参数}]]
 state "打开工单主视图" as DEUIACTION4  [[$./open_main_view#deuiaction4 {打开工单主视图}]]
+state "打开工作项主视图" as DEUIACTION1  [[$./open_main_view#deuiaction1 {打开工作项主视图}]]
+state "打开客户主视图" as DEUIACTION5  [[$./open_main_view#deuiaction5 {打开客户主视图}]]
 state "获取工作项类型" as DEACTION1  [[$./open_main_view#deaction1 {获取工作项类型}]]
 state "打开产品需求主视图" as DEUIACTION3  [[$./open_main_view#deuiaction3 {打开产品需求主视图}]]
-state "打开客户主视图" as DEUIACTION5  [[$./open_main_view#deuiaction5 {打开客户主视图}]]
 state "填充工作项类型" as PREPAREJSPARAM2  [[$./open_main_view#preparejsparam2 {填充工作项类型}]]
-state "填充上下文参数" as PREPAREJSPARAM1  [[$./open_main_view#preparejsparam1 {填充上下文参数}]]
-state " 打开页面主视图" as DEUIACTION6  [[$./open_main_view#deuiaction6 { 打开页面主视图}]]
 
 
 Begin --> PREPAREJSPARAM1 : [[$./open_main_view#begin-preparejsparam1{工作项} 工作项]]
@@ -131,6 +131,6 @@ Begin --> DEUIACTION6 : [[$./open_main_view#begin-deuiaction6{页面} 页面]]
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
+|工作项|work_item|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |应用上下文变量|ctx|导航视图参数绑定参数||
-|工作项|work_item|数据对象||

@@ -262,15 +262,10 @@
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/login_logs/{key}/active_member" type="info" :closable="false" ></el-alert>
+<el-alert title="/login_logs/active_member" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
-
-##### 路径参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|key|String|标识|
+权限标识：`CREATE`
 
 
 
@@ -323,6 +318,33 @@
 ```
 
 
+##### 响应示例： {docsify-ignore}
+```json
+
+{
+  "auth_time" : null,
+  "county" : null,
+  "country" : null,
+  "city" : null,
+  "ip" : null,
+  "login_method" : null,
+  "province" : null,
+  "user_agent" : null,
+  "user_id" : null,
+  "user_name" : null,
+  "isp" : null,
+  "auth_code" : null,
+  "active_members" : null,
+  "active_rate" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+
+```
 
 ## 检查登录日志主键
 

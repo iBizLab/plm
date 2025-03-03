@@ -15,6 +15,7 @@
 |所属对象子类型|OWNER_SUBTYPE|文本，可指定长度|100|是||
 |所属数据对象|OWNER_TYPE|文本，可指定长度|100|是||
 |角色|ROLE_ID|[单项选择(文本值)](index/dictionary_index#role_type "角色类型")|60|是||
+|职位|TITLE|外键值附加数据|100|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 |用户标识|USER_ID|外键值|100|是||
@@ -51,11 +52,13 @@
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
 |变更角色|change_role|[实体处理逻辑](module/Insight/insight_member/logic/change_role "变更角色")|默认|不支持||||
+|变更职位|choose_position|[实体处理逻辑](module/Insight/insight_member/logic/change_position "变更职位")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/Insight/insight_member/logic/nothing "无操作")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
+|[变更职位](module/Insight/insight_member/logic/change_position)|change_position|无||批量设置角色身份（position_id）|
 |[变更角色](module/Insight/insight_member/logic/change_role)|change_role|无||批量设置角色身份（role_id）|
 |[无操作](module/Insight/insight_member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 
@@ -85,6 +88,7 @@
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
 | 设置角色 | setting_role | 设置角色 |多项数据（主键）|<details><summary>后台调用</summary>[change_role](#行为)||
+| 选择职位 | choose_position | 选择职位 |多项数据（主键）|<details><summary>后台调用</summary>[choose_position](#行为)||
 | 移除成员 | remove_member | 移除成员 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 
 ## 界面逻辑

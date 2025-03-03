@@ -26,6 +26,10 @@
 
 * `全部数据`
 
+> [!ATTENTION|label:存在长文本属性]
+>
+> `CHANGELOG(发布日志)`
+
 
 
 
@@ -39,11 +43,13 @@ SELECT
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`CATEGORIES`,
+t1.`CHANGELOG`,
 (SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND RELEASE_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+(year(t1.`END_AT`)) AS `END_YEAR`,
 t1.`ID`,
 t1.`NAME`,
 t1.`PROJECT_ID`,

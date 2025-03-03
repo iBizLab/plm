@@ -16,9 +16,9 @@
 
 
 ### 关联界面行为
-  * [测试库(LIBRARY)](module/TestMgmt/library) : [打开测试库主视图](module/TestMgmt/library#界面行为)
-  * [测试库(LIBRARY)](module/TestMgmt/library) : [打开测试库配置](module/TestMgmt/library#界面行为)
   * [测试库(LIBRARY)](module/TestMgmt/library) : [取消星标](module/TestMgmt/library#界面行为)
+  * [测试库(LIBRARY)](module/TestMgmt/library) : [打开测试库配置](module/TestMgmt/library#界面行为)
+  * [测试库(LIBRARY)](module/TestMgmt/library) : [打开测试库主视图](module/TestMgmt/library#界面行为)
   * [测试库(LIBRARY)](module/TestMgmt/library) : [打开测试库导航页](module/TestMgmt/library#界面行为)
 
 ### 关联视图

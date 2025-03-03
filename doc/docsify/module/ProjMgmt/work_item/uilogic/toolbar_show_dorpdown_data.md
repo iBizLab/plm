@@ -16,8 +16,8 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./toolbar_show_dorpdown_data#begin {开始}]]
 state "绑定部件对象" as PREPAREJSPARAM1  [[$./toolbar_show_dorpdown_data#preparejsparam1 {绑定部件对象}]]
-state "展开下拉" as RAWJSCODE1  [[$./toolbar_show_dorpdown_data#rawjscode1 {展开下拉}]]
 state "设置选择区域显示" as PREPAREJSPARAM2  [[$./toolbar_show_dorpdown_data#preparejsparam2 {设置选择区域显示}]]
+state "展开下拉" as RAWJSCODE1  [[$./toolbar_show_dorpdown_data#rawjscode1 {展开下拉}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -67,8 +67,8 @@ if (uiLogic. choose_data_state_obj) {
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|父视图|parentView|当前视图对象||
-|父视图表单|form|部件对象||
-|当前视图|curView|数据对象||
 |选项框状态对象|choose_data_state_obj|数据对象||
+|父视图|parentView|当前视图对象||
+|当前视图|curView|数据对象||
+|父视图表单|form|部件对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

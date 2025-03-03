@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./cal_is_system#begin {开始}]]
-state "结束" as END1 <<end>> [[$./cal_is_system#end1 {结束}]]
 state "系统工作项状态隐藏编辑列" as RAWJSCODE1  [[$./cal_is_system#rawjscode1 {系统工作项状态隐藏编辑列}]]
+state "结束" as END1 <<end>> [[$./cal_is_system#end1 {结束}]]
 
 
 Begin --> RAWJSCODE1
@@ -64,5 +64,5 @@ if (rows && rows.length > 0) {
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|表格|grid|当前部件对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|表格|grid|当前部件对象||

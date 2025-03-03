@@ -1,16 +1,19 @@
 # 产品生命周期管理系统
 
 
+iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。
+
+
 #### 系统模块
 
 |    模块名称col200   | 代码名col200      |  模型组col200   |   备注col400  |
 | --------  |------------| -----    |-------- |
-|[基础管理](module/Base)|Base||主要包含基础类、通用类业务实体的管理，如目录、评论、关注、人员等。|
 |[产品管理](module/ProdMgmt)|ProdMgmt||主要包含产品相关业务实体的管理，如：产品、需求、工单、客户等。|
 |[项目管理](module/ProjMgmt)|ProjMgmt||主要包含项目相关业务实体的管理，如：项目、项目集、工作项、迭代、发布等。|
 |[测试管理](module/TestMgmt)|TestMgmt||主要包含测试相关的业务实体的管理，如：测试库、测试计划、测试用例、执行用例等。|
 |[知识管理](module/Wiki)|Wiki||主要包含知识空间相关业务实体的管理，如：空间、页面等。|
 |[协作空间](module/Team)|Team||主要包含话题相关业务实体的管理，如讨论 、话题等。|
+|[基础管理](module/Base)|Base||主要包含基础类、通用类业务实体的管理，如目录、评论、关注、人员等。|
 |[效能度量](module/Insight)|Insight||主要包含效能度量相关业务实体的管理，如仪表盘、报表等。|
 |[全文检索](module/FTR)|FTR||全文检索相关业务实体管理。|
 |[系统管理](module/ibizsysmgr)|ibizsysmgr|ibizsysmgr[^ibizsysmgr]|部门及人员业务实体的映射。|
@@ -23,24 +26,24 @@
 
 |  中文名col200      |   代码名col200 |   备注col600  |
 |  --------   |------------  |  -----   |
-|[ServiceAPI](api/ServiceAPI/ServiceAPI)|ServiceAPI||
-|[_dynamodelapi](api/_dynamodelapi/_dynamodelapi)|_dynamodelapi||
+|[服务接口](api/ServiceAPI/ServiceAPI)|ServiceAPI||
+|[运行时扩展代理接口](api/_dynamodelapi/_dynamodelapi)|_dynamodelapi||
 
 #### 对接外部接口
 
 |  中文名col200      |   代码名col200  |    备注col600  |
 |  --------   |------------|    -----   |
-|[extension](client/extension/extension)|extension||
-|[iBizRT客户端](client/iBizRTClient/iBizRTClient)|iBizRTClient||
-|[ibizsysmgr](client/ibizsysmgr/ibizsysmgr)|ibizsysmgr||
+|[ebsx系统管理](client/iBizRTClient/iBizRTClient)|iBizRTClient||
+|[模型扩展](client/extension/extension)|extension||
+|[系统管理](client/ibizsysmgr/ibizsysmgr)|ibizsysmgr||
 
 #### 系统应用
 
 |  中文名col200      |   代码名col200  |   备注col600  |
 |  --------   |------------ |  -----   |
-|[<i class="fa-solid fa-mobile"></i>软件生命周期管理系统](app/plmmob)|plmmob||
 |[<i class="fa-solid fa-desktop"></i>软件生命周期管理系统](app/plmweb)|plmweb||
 |[<i class="fa-solid fa-desktop"></i>软件生命周期管理系统](app/plmwiki)|plmwiki||
+|[<i class="fa-solid fa-mobile"></i>软件生命周期管理系统](app/plmmob)|plmmob||
 
 
 #### 国际化支持

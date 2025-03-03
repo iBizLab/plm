@@ -91,6 +91,7 @@
 |  中文名col200 | 代码名col200 | 备注col500 |
 | --------|--------|------|
 |[删除类别或分组](module/Base/category/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
+|[编辑类别或分组](module/Base/category/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
 
 
 
@@ -177,15 +178,18 @@
 
 |  中文名col200 | 代码名col200 | 备注col500 |
 | --------|--------|------|
-|[删除评论](module/Team/discuss_post/uilogic/del_comment)|del_comment|删除评论|
+|[删除讨论下评论](module/Team/discuss_post/uilogic/del_comment)|del_comment|删除评论|
 |[刷新](module/Team/discuss_post/uilogic/refresh)|refresh|刷新主视图|
 |[刷新（移动端）](module/Team/discuss_post/uilogic/mob_refresh)|mob_refresh||
-|[发送评论](module/Team/discuss_post/uilogic/send_comment)|send_comment|发送评论|
+|[发送回复下评论](module/Team/discuss_post/uilogic/send_reply_comment)|send_reply_comment|添加回复的评论，展开底部输入框<br>reply实体列表使用|
+|[发送讨论下评论](module/Team/discuss_post/uilogic/send_comment)|send_comment|发送评论|
 |[发送评论（移动端讨论）](module/Team/discuss_post/uilogic/send_comment_mob)|send_comment_mob|发送评论，并关闭评论输入框|
-|[添加回复](module/Team/discuss_post/uilogic/add_reply)|add_reply|添加回复，并关闭回复输入框|
+|[添加回复](module/Team/discuss_post/uilogic/add_reply)|add_reply|main_view页面统一回复、评论入口|
 |[添加附件数据](module/Team/discuss_post/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[清空回复](module/Team/discuss_post/uilogic/clear_reply)|clear_reply|清空当前输入框内已输入内容|
 |[编辑回复](module/Team/discuss_post/uilogic/edit_reply)|edit_reply|编辑回复，获取回复数据，展开回复输入框并赋值|
+|[编辑回复下评论](module/Team/discuss_post/uilogic/edit_reply_comment)|edit_reply_comment|编辑回复，获取回复数据，展开回复输入框并赋值|
+|[编辑讨论下评论](module/Team/discuss_post/uilogic/edit_comment)|edit_comment||
 |[讨论关闭时隐藏回复输入框](module/Team/discuss_post/uilogic/status_control_visible)|status_control_visible|讨论关闭时隐藏回复输入框|
 
 
@@ -197,7 +201,6 @@
 |[回复下发送评论](module/Team/discuss_reply/uilogic/reply_send_comment)|reply_send_comment|回复下发送评论|
 |[点击发表评论](module/Team/discuss_reply/uilogic/click_send_comment)|click_send_comment|未完成|
 |[获取回复列表总条数（移动端）](module/Team/discuss_reply/uilogic/mob_get_reply_total)|mob_get_reply_total||
-|[获取回复列表条数](module/Team/discuss_reply/uilogic/get_reply_num)|get_reply_num|获取回复列表条数|
 
 
 ## [话题(DISCUSS_TOPIC)](module/Team/discuss_topic.md) :id=discuss_topic
@@ -216,7 +219,6 @@
 |[仪表盘操作列](module/Base/dyna_dashboard/uilogic/control_del)|control_del|仪表盘为最后一个时禁止删除|
 |[使用此模板(禁止关闭)](module/Base/dyna_dashboard/uilogic/use_cur_template_no_closed)|use_cur_template_no_closed|使用此模板(禁止关闭)|
 |[列表加载完成](module/Base/dyna_dashboard/uilogic/list_load_success)|list_load_success|列表加载完成|
-|[获取其他仪表盘](module/Base/dyna_dashboard/uilogic/fill_other_board)|fill_other_board|获取其他仪表盘|
 |[获取选中模板名称](module/Base/dyna_dashboard/uilogic/fill_choosed_board_name)|fill_choosed_board_name|获取选中模板名称|
 |[通知刷新](module/Base/dyna_dashboard/uilogic/notify_refresh)|notify_refresh||
 
@@ -277,6 +279,7 @@
 |[门户刷新](module/ProdMgmt/idea/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户编辑](module/ProdMgmt/idea/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|
 |[需求关联需求](module/ProdMgmt/idea/uilogic/idea_relation_idea)|idea_relation_idea|值变更时触发，需求关联需求，调用处理逻辑生成正反向数据|
+|[需求展示评论显隐控制](module/ProdMgmt/idea/uilogic/idea_comment_visible)|idea_comment_visible||
 
 
 
@@ -366,6 +369,7 @@
 
 
 
+
 ## [页面(PAGE)](module/Wiki/article_page.md) :id=article_page
 
 |  中文名col200 | 代码名col200 | 备注col500 |
@@ -414,14 +418,26 @@
 |[新建项目集默认临时成员](module/Base/portfolio_member/uilogic/default_project_member)|default_project_member|创建临时数据，并将当前用户加入到项目集临时成员内|
 
 
+## [职位(POSITION)](module/Base/position.md) :id=position
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[删除类别或分组](module/Base/position/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
+|[新建分组](module/Base/position/uilogic/create_category)|create_category|调用树节点新建方法新建分组|
+|[新建职位](module/Base/position/uilogic/create_position)|create_position|调用树节点新建方法，新建职位|
+|[编辑类别或分组](module/Base/position/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
+
+
 ## [产品(PRODUCT)](module/ProdMgmt/product.md) :id=product
 
 |  中文名col200 | 代码名col200 | 备注col500 |
 | --------|--------|------|
 |[批量删除产品成员临时数据](module/ProdMgmt/product/uilogic/remove_batch_temp)|remove_batch_temp|获取产品内所有临时成员数据并删除|
+|[新建后项目关联产品](module/ProdMgmt/product/uilogic/after_new_product_re_project)|after_new_product_re_project||
 |[获取表格当前页大小](module/ProdMgmt/product/uilogic/get_table_size)|get_table_size||
 |[计算表格列行为状态(product)](module/ProdMgmt/product/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|
 |[通知刷新](module/ProdMgmt/product/uilogic/notify_refresh)|notify_refresh|通知页面刷新|
+|[项目关联产品](module/ProdMgmt/product/uilogic/project_re_product)|project_re_product||
 
 
 ## [产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member.md) :id=product_member
@@ -450,6 +466,7 @@
 
 |  中文名col200 | 代码名col200 | 备注col500 |
 | --------|--------|------|
+|[产品关联项目](module/ProjMgmt/project/uilogic/product_re_project)|product_re_project||
 |[刷新当前表格](module/ProjMgmt/project/uilogic/refresh_current_grid)|refresh_current_grid|刷新当前视图的表格|
 |[刷新项目状态](module/ProjMgmt/project/uilogic/refresh_project_state)|refresh_project_state||
 |[图表全屏（移动端）](module/ProjMgmt/project/uilogic/mob_full_screen)|mob_full_screen||
@@ -480,6 +497,17 @@
 
 
 
+
+## [核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc.md) :id=PSCorePrdFunc
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[clone此应用](module/extension/PSCorePrdFunc/uilogic/clone_git)|clone_git||
+|[初始化插件信息](module/extension/PSCorePrdFunc/uilogic/init_plugin_info)|init_plugin_info|进入扩展设置时，从setting中获取插件标识和插件库|
+|[更新插件设置](module/extension/PSCorePrdFunc/uilogic/update_plugin_setting)|update_plugin_setting|插件库更改后，更新setting字段|
+|[跳转gitlab](module/extension/PSCorePrdFunc/uilogic/skip_gitlab)|skip_gitlab||
+|[跳转应用详情页面](module/extension/PSCorePrdFunc/uilogic/open_app_info)|open_app_info||
+|[跳转设置页面](module/extension/PSCorePrdFunc/uilogic/skip_setting)|skip_setting||
 
 
 
@@ -526,8 +554,10 @@
 |[工作项添加依赖关系](module/Base/relation/uilogic/add_dependency)|add_dependency|工作项添加依赖关系|
 |[建立双向关联数据（移动端）](module/Base/relation/uilogic/create_double_relation)|create_double_relation|移动端建立双向关联数据|
 |[打开依赖工作项](module/Base/relation/uilogic/open_dependency)|open_dependency|打开依赖工作项主视图|
+|[打开需求（跟踪）](module/Base/relation/uilogic/open_idea_view)|open_idea_view||
 |[获取关联列表总条数](module/Base/relation/uilogic/get_list_total)|get_list_total|获取关联列表的总条数信息|
 |[触发计数器刷新及表格刷新](module/Base/relation/uilogic/refresh_counter)|refresh_counter|关联数据变更后，触发计数器刷新<br>并且刷新表单|
+|[跳转对应视图（排期跟踪）](module/Base/relation/uilogic/jump_corresponding_view)|jump_corresponding_view||
 |[选择下拉框区域展示](module/Base/relation/uilogic/show_choose_area)|show_choose_area|逻辑控制关联表格下方选项区域动态显示|
 |[通知刷新产品需求（移动端）](module/Base/relation/uilogic/notify_refresh)|notify_refresh|通知页面刷新|
 
@@ -605,6 +635,7 @@
 |  中文名col200 | 代码名col200 | 备注col500 |
 | --------|--------|------|
 |[批量删除评审用例临时数据](module/TestMgmt/review_wizard/uilogic/remove_batch_temp)|remove_batch_temp|获取评审所有临时用例并删除|
+
 
 
 
@@ -717,6 +748,12 @@
 
 
 
+
+
+
+
+
+
 ## [用例(TEST_CASE)](module/TestMgmt/test_case.md) :id=test_case
 
 |  中文名col200 | 代码名col200 | 备注col500 |
@@ -811,6 +848,11 @@
 | --------|--------|------|
 |[修改密码（移动端表单）](module/Base/user/uilogic/mob_change_pas)|mob_change_pas|修改密码|
 |[修改密码（表单）](module/Base/user/uilogic/change_pas)|change_pas|修改密码|
+|[删除部门](module/Base/user/uilogic/trash_dept)|trash_dept||
+|[新建下级根部门](module/Base/user/uilogic/new_root_dept)|new_root_dept||
+|[新建下级部门](module/Base/user/uilogic/new_dept)|new_dept||
+|[编辑组织](module/Base/user/uilogic/edit_org)|edit_org||
+|[编辑部门](module/Base/user/uilogic/edit_dept)|edit_dept||
 
 
 ## [版本(VERSION)](module/Base/version.md) :id=version
@@ -911,7 +953,6 @@
 |[计算表格列行为状态](module/ProjMgmt/work_item/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制归档和激活行为的禁用状态|
 |[计算表格列行为状态(需求树表格)](module/ProjMgmt/work_item/uilogic/calc_requirement_column_action)|calc_requirement_column_action|用于动态控制归档和激活行为的禁用状态|
 |[计算资源成员（全局）](module/ProjMgmt/work_item/uilogic/calc_resouce_member)|calc_resouce_member|计算资源甘特部件当前人员，打开选择视图时回显simplelist|
-|[计算面板项行为状态](module/ProjMgmt/work_item/uilogic/calc_kanban_item_action_state)|calc_kanban_item_action_state|看板中工作项的归档或激活按钮的禁用判定|
 |[计算项目资源成员](module/ProjMgmt/work_item/uilogic/calc_project_resouce_member)|calc_project_resouce_member|计算资源甘特部件当前人员，打开选择视图时回显simplelist|
 |[设置执行人](module/ProjMgmt/work_item/uilogic/setting_executors)|setting_executors|设置执行人|
 |[设置默认关注人](module/ProjMgmt/work_item/uilogic/set_default_attention)|set_default_attention|新建工作项时，默认将创建人添加到此工作项的关注列表|

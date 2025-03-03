@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./open_group_duration_link#begin {开始}]]
-state "打开团队工时日志链接表格视图" as DEUIACTION1  [[$./open_group_duration_link#deuiaction1 {打开团队工时日志链接表格视图}]]
 state "获取搜索表单中的日期范围" as RAWJSCODE1  [[$./open_group_duration_link#rawjscode1 {获取搜索表单中的日期范围}]]
+state "打开团队工时日志链接表格视图" as DEUIACTION1  [[$./open_group_duration_link#deuiaction1 {打开团队工时日志链接表格视图}]]
 
 
 Begin --> RAWJSCODE1

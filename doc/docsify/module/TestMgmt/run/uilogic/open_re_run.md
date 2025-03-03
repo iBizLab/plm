@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./open_re_run#begin {开始}]]
-state "结束" as END1 <<end>> [[$./open_re_run#end1 {结束}]]
 state "打开关联用例" as DEUIACTION1  [[$./open_re_run#deuiaction1 {打开关联用例}]]
+state "结束" as END1 <<end>> [[$./open_re_run#end1 {结束}]]
 
 
 Begin --> DEUIACTION1

@@ -15,12 +15,12 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./open_resource_capacity#begin {开始}]]
+state "设置资源组件过滤器参数" as PREPAREJSPARAM1  [[$./open_resource_capacity#preparejsparam1 {设置资源组件过滤器参数}]]
+state "绑定资源组件对象" as BINDPARAM1  [[$./open_resource_capacity#bindparam1 {绑定资源组件对象}]]
 state "打开项目集容量设置视图" as DEUIACTION1  [[$./open_resource_capacity#deuiaction1 {打开项目集容量设置视图}]]
 state "将项目集资源组件标识填充至上下文中" as PREPAREJSPARAM2  [[$./open_resource_capacity#preparejsparam2 {将项目集资源组件标识填充至上下文中}]]
-state "结束" as END1 <<end>> [[$./open_resource_capacity#end1 {结束}]]
 state "获取当前项目集下的资源组件" as DEDATASET1  [[$./open_resource_capacity#dedataset1 {获取当前项目集下的资源组件}]]
-state "绑定资源组件对象" as BINDPARAM1  [[$./open_resource_capacity#bindparam1 {绑定资源组件对象}]]
-state "设置资源组件过滤器参数" as PREPAREJSPARAM1  [[$./open_resource_capacity#preparejsparam1 {设置资源组件过滤器参数}]]
+state "结束" as END1 <<end>> [[$./open_resource_capacity#end1 {结束}]]
 
 
 Begin --> PREPAREJSPARAM1 : [[$./open_resource_capacity#begin-preparejsparam1{上下文中存在项目集标识} 上下文中存在项目集标识]]
@@ -87,8 +87,8 @@ DEUIACTION1 --> END1
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|当前项目下的资源组件|addon_resource|数据对象||
 |上下文|ctx|导航视图参数绑定参数||
 |资源组件分页查询结果变量|addon_resource_page|分页查询||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |资源组件过滤器|addon_resource_filter|过滤器||
+|当前项目下的资源组件|addon_resource|数据对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

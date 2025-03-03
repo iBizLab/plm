@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./bi_form_state_default#begin {开始}]]
-state "调试逻辑参数" as DEBUGPARAM3  [[$./bi_form_state_default#debugparam3 {调试逻辑参数}]]
-state "调试逻辑参数" as DEBUGPARAM2  [[$./bi_form_state_default#debugparam2 {调试逻辑参数}]]
 state "调试逻辑参数" as DEBUGPARAM1  [[$./bi_form_state_default#debugparam1 {调试逻辑参数}]]
+state "调试逻辑参数" as DEBUGPARAM2  [[$./bi_form_state_default#debugparam2 {调试逻辑参数}]]
+state "调试逻辑参数" as DEBUGPARAM3  [[$./bi_form_state_default#debugparam3 {调试逻辑参数}]]
 
 
 Begin --> DEBUGPARAM1
@@ -64,5 +64,5 @@ DEBUGPARAM2 --> DEBUGPARAM3
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|上下文|ctx|导航视图参数绑定参数||
 |视图|view|当前视图对象||
+|上下文|ctx|导航视图参数绑定参数||

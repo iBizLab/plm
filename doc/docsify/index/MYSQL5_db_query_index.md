@@ -460,7 +460,9 @@ t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
 t11.`NAME` AS `SPACE_NAME`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
@@ -509,7 +511,9 @@ t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
 t11.`NAME` AS `SPACE_NAME`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
@@ -549,7 +553,9 @@ t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
 t11.`NAME` AS `SPACE_NAME`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
@@ -609,7 +615,9 @@ t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
 t11.`NAME` AS `SPACE_NAME`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
@@ -652,7 +660,9 @@ t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
 t11.`NAME` AS `SPACE_NAME`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
@@ -707,7 +717,9 @@ t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
 t11.`NAME` AS `SPACE_NAME`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
@@ -748,7 +760,9 @@ t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
 t11.`NAME` AS `SPACE_NAME`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
@@ -789,7 +803,9 @@ t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
 t11.`NAME` AS `SPACE_NAME`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
@@ -830,7 +846,9 @@ t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
 t11.`NAME` AS `SPACE_NAME`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
@@ -871,11 +889,13 @@ t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
 t11.`NAME` AS `SPACE_NAME`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
-WHERE ( t11.`IS_DELETED` = 0 ) AND ( t1.`IS_DELETED` = 0  AND  t1.`TYPE` = '1' )
+WHERE ( t11.`IS_DELETED` = 0 ) AND ( t1.`IS_DELETED` = 0  AND  t1.`TYPE` = '1'  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_PUBLISHED` = 1 )
 ```
 
 #### 无父页面(no_parent_page) :id=article_page-no_parent_page
@@ -912,7 +932,9 @@ t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
 t11.`NAME` AS `SPACE_NAME`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
@@ -953,7 +975,9 @@ t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
 t11.`NAME` AS `SPACE_NAME`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
@@ -994,7 +1018,9 @@ t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
 t11.`NAME` AS `SPACE_NAME`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
@@ -1035,7 +1061,9 @@ t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
 t11.`NAME` AS `SPACE_NAME`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
@@ -1076,7 +1104,9 @@ t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
 t11.`NAME` AS `SPACE_NAME`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
@@ -1119,7 +1149,9 @@ t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
 t11.`NAME` AS `SPACE_NAME`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
@@ -1171,7 +1203,9 @@ t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
 t11.`NAME` AS `SPACE_NAME`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
@@ -1212,7 +1246,9 @@ t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
 t11.`NAME` AS `SPACE_NAME`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
@@ -1275,7 +1311,9 @@ t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
 t11.`NAME` AS `SPACE_NAME`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
@@ -1398,6 +1436,7 @@ t1.`NAME`,
 t1.`OWNER_ID`,
 t1.`OWNER_SUBTYPE`,
 t1.`OWNER_TYPE`,
+t1.`TITLE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
@@ -1416,6 +1455,7 @@ t1.`NAME`,
 t1.`OWNER_ID`,
 t1.`OWNER_SUBTYPE`,
 t1.`OWNER_TYPE`,
+t1.`TITLE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
@@ -1454,6 +1494,7 @@ t1.`NAME`,
 t1.`OWNER_ID`,
 t1.`OWNER_SUBTYPE`,
 t1.`OWNER_TYPE`,
+t1.`TITLE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
@@ -1500,6 +1541,25 @@ t1.`USERID`,
 t1.`USERNAME`
 FROM `IBZAUTHLOG` t1 
 
+```
+
+#### 当前用户(cur_user) :id=auth_log_admin-cur_user
+```sql
+SELECT
+t1.`AUTHAGENT`,
+t1.`AUTHCODE`,
+t1.`AUTHTIME`,
+t1.`DOMAINS`,
+t1.`IPADDR`,
+t1.`LOGID`,
+t1.`MACADDR`,
+t1.`PERSONNAME`,
+t1.`USERAGENT`,
+t1.`USERID`,
+t1.`USERNAME`
+FROM `IBZAUTHLOG` t1 
+
+WHERE ( t1.`USERID` = #{ctx.sessioncontext.srfpersonid} )
 ```
 
 
@@ -1799,6 +1859,7 @@ t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`IS_LEAF`,
 t1.`IS_LEAF2`,
+t1.`IS_LEAF3`,
 case when t1.`IS_LEAF`+t1.`IS_LEAF2`=2 then 1 else 0 end AS `LEAF_FLAG`,
 t1.`NAME`,
 t1.`OWNER_ID`,
@@ -1824,6 +1885,7 @@ t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`IS_LEAF`,
 t1.`IS_LEAF2`,
+t1.`IS_LEAF3`,
 case when t1.`IS_LEAF`+t1.`IS_LEAF2`=2 then 1 else 0 end AS `LEAF_FLAG`,
 t1.`NAME`,
 t1.`OWNER_ID`,
@@ -1849,6 +1911,7 @@ t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`IS_LEAF`,
 t1.`IS_LEAF2`,
+t1.`IS_LEAF3`,
 case when t1.`IS_LEAF`+t1.`IS_LEAF2`=2 then 1 else 0 end AS `LEAF_FLAG`,
 t1.`NAME`,
 t1.`OWNER_ID`,
@@ -1875,6 +1938,7 @@ t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`IS_LEAF`,
 t1.`IS_LEAF2`,
+t1.`IS_LEAF3`,
 case when t1.`IS_LEAF`+t1.`IS_LEAF2`=2 then 1 else 0 end AS `LEAF_FLAG`,
 t1.`NAME`,
 t1.`OWNER_ID`,
@@ -1901,6 +1965,7 @@ t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`IS_LEAF`,
 t1.`IS_LEAF2`,
+t1.`IS_LEAF3`,
 case when t1.`IS_LEAF`+t1.`IS_LEAF2`=2 then 1 else 0 end AS `LEAF_FLAG`,
 t1.`NAME`,
 t1.`OWNER_ID`,
@@ -1918,6 +1983,33 @@ LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID`
 WHERE ( t1.`OWNER_TYPE` = 'product'  AND  t1.`OWNER_SUBTYPE` = 'idea'  AND  t1.`OWNER_ID` = #{ctx.datacontext.product} )
 ```
 
+#### 我的类别(my_category) :id=category-my_category
+```sql
+SELECT
+t1.`CATEGORIES`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_LEAF`,
+t1.`IS_LEAF2`,
+t1.`IS_LEAF3`,
+case when t1.`IS_LEAF`+t1.`IS_LEAF2`=2 then 1 else 0 end AS `LEAF_FLAG`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`PID`,
+t1.`SECTION_ID`,
+t11.`NAME` AS `SECTION_NAME`,
+t1.`SEQUENCE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `CATEGORY` t1 
+LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID` 
+
+WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} )
+```
+
 #### 无父类(no_parent) :id=category-no_parent
 ```sql
 SELECT
@@ -1927,6 +2019,7 @@ t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`IS_LEAF`,
 t1.`IS_LEAF2`,
+t1.`IS_LEAF3`,
 case when t1.`IS_LEAF`+t1.`IS_LEAF2`=2 then 1 else 0 end AS `LEAF_FLAG`,
 t1.`NAME`,
 t1.`OWNER_ID`,
@@ -1953,6 +2046,7 @@ t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`IS_LEAF`,
 t1.`IS_LEAF2`,
+t1.`IS_LEAF3`,
 case when t1.`IS_LEAF`+t1.`IS_LEAF2`=2 then 1 else 0 end AS `LEAF_FLAG`,
 t1.`NAME`,
 t1.`OWNER_ID`,
@@ -1970,6 +2064,33 @@ LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID`
 WHERE ( t1.`SECTION_ID` IS NULL  AND  t1.`PID` IS NULL )
 ```
 
+#### 职位类别(position_category) :id=category-position_category
+```sql
+SELECT
+t1.`CATEGORIES`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_LEAF`,
+t1.`IS_LEAF2`,
+t1.`IS_LEAF3`,
+case when t1.`IS_LEAF`+t1.`IS_LEAF2`=2 then 1 else 0 end AS `LEAF_FLAG`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`PID`,
+t1.`SECTION_ID`,
+t11.`NAME` AS `SECTION_NAME`,
+t1.`SEQUENCE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `CATEGORY` t1 
+LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID` 
+
+WHERE ( t1.`OWNER_TYPE` = 'position' )
+```
+
 #### 主模块(product_idea_category) :id=category-product_idea_category
 ```sql
 SELECT
@@ -1979,6 +2100,7 @@ t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`IS_LEAF`,
 t1.`IS_LEAF2`,
+t1.`IS_LEAF3`,
 case when t1.`IS_LEAF`+t1.`IS_LEAF2`=2 then 1 else 0 end AS `LEAF_FLAG`,
 t1.`NAME`,
 t1.`OWNER_ID`,
@@ -2005,6 +2127,7 @@ t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`IS_LEAF`,
 t1.`IS_LEAF2`,
+t1.`IS_LEAF3`,
 case when t1.`IS_LEAF`+t1.`IS_LEAF2`=2 then 1 else 0 end AS `LEAF_FLAG`,
 t1.`NAME`,
 t1.`OWNER_ID`,
@@ -2031,6 +2154,7 @@ t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`IS_LEAF`,
 t1.`IS_LEAF2`,
+t1.`IS_LEAF3`,
 case when t1.`IS_LEAF`+t1.`IS_LEAF2`=2 then 1 else 0 end AS `LEAF_FLAG`,
 t1.`NAME`,
 t1.`OWNER_ID`,
@@ -2057,6 +2181,7 @@ t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`IS_LEAF`,
 t1.`IS_LEAF2`,
+t1.`IS_LEAF3`,
 case when t1.`IS_LEAF`+t1.`IS_LEAF2`=2 then 1 else 0 end AS `LEAF_FLAG`,
 t1.`NAME`,
 t1.`OWNER_ID`,
@@ -2418,6 +2543,25 @@ FROM `ATTACHMENT` t1
 
 ```
 
+#### 我的交付物(my_deliverable) :id=deliverable-my_deliverable
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`FILE_ID`,
+t1.`ID`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `ATTACHMENT` t1 
+
+WHERE ( t1.`OWNER_TYPE` = 'WORK_ITEM'  AND  t1.`OWNER_SUBTYPE` = 'DELIVERABLE'  AND  t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} )
+```
+
 #### 项目下的交付物(project_deliverable) :id=deliverable-project_deliverable
 ```sql
 SELECT
@@ -2554,6 +2698,7 @@ t1.`OWNER_ID`,
 t1.`OWNER_SUBTYPE`,
 t1.`OWNER_TYPE`,
 t1.`ROLE_ID`,
+t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`
@@ -2572,6 +2717,7 @@ t1.`OWNER_ID`,
 t1.`OWNER_SUBTYPE`,
 t1.`OWNER_TYPE`,
 t1.`ROLE_ID`,
+t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`
@@ -2589,11 +2735,14 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`HEAT`,
 t1.`ID`,
+t1.`IDENTIFIER`,
 t1.`IS_DELETED`,
 t1.`NAME`,
+(select count(1) as read_count from recent r where r.OWNER_ID = t1.`ID` and r.OWNER_TYPE = 'discuss' and r.OWNER_SUBTYPE = 'post') AS `READ_COUNT`,
 (SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,
 t1.`STATUS`,
 t1.`TOPIC_ID`,
+t11.`IDENTIFIER` AS `TOPIC_IDENTIFIER`,
 t11.`NAME` AS `TOPIC_NAME`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
@@ -2612,11 +2761,14 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`HEAT`,
 t1.`ID`,
+t1.`IDENTIFIER`,
 t1.`IS_DELETED`,
 t1.`NAME`,
+(select count(1) as read_count from recent r where r.OWNER_ID = t1.`ID` and r.OWNER_TYPE = 'discuss' and r.OWNER_SUBTYPE = 'post') AS `READ_COUNT`,
 (SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,
 t1.`STATUS`,
 t1.`TOPIC_ID`,
+t11.`IDENTIFIER` AS `TOPIC_IDENTIFIER`,
 t11.`NAME` AS `TOPIC_NAME`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
@@ -2632,11 +2784,14 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`HEAT`,
 t1.`ID`,
+t1.`IDENTIFIER`,
 t1.`IS_DELETED`,
 t1.`NAME`,
+(select count(1) as read_count from recent r where r.OWNER_ID = t1.`ID` and r.OWNER_TYPE = 'discuss' and r.OWNER_SUBTYPE = 'post') AS `READ_COUNT`,
 (SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,
 t1.`STATUS`,
 t1.`TOPIC_ID`,
+t11.`IDENTIFIER` AS `TOPIC_IDENTIFIER`,
 t11.`NAME` AS `TOPIC_NAME`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
@@ -2653,11 +2808,14 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`HEAT`,
 t1.`ID`,
+t1.`IDENTIFIER`,
 t1.`IS_DELETED`,
 t1.`NAME`,
+(select count(1) as read_count from recent r where r.OWNER_ID = t1.`ID` and r.OWNER_TYPE = 'discuss' and r.OWNER_SUBTYPE = 'post') AS `READ_COUNT`,
 (SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,
 t1.`STATUS`,
 t1.`TOPIC_ID`,
+t11.`IDENTIFIER` AS `TOPIC_IDENTIFIER`,
 t11.`NAME` AS `TOPIC_NAME`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
@@ -2674,11 +2832,14 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`HEAT`,
 t1.`ID`,
+t1.`IDENTIFIER`,
 t1.`IS_DELETED`,
 t1.`NAME`,
+(select count(1) as read_count from recent r where r.OWNER_ID = t1.`ID` and r.OWNER_TYPE = 'discuss' and r.OWNER_SUBTYPE = 'post') AS `READ_COUNT`,
 (SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,
 t1.`STATUS`,
 t1.`TOPIC_ID`,
+t11.`IDENTIFIER` AS `TOPIC_IDENTIFIER`,
 t11.`NAME` AS `TOPIC_NAME`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
@@ -2697,11 +2858,14 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`HEAT`,
 t1.`ID`,
+t1.`IDENTIFIER`,
 t1.`IS_DELETED`,
 t1.`NAME`,
+(select count(1) as read_count from recent r where r.OWNER_ID = t1.`ID` and r.OWNER_TYPE = 'discuss' and r.OWNER_SUBTYPE = 'post') AS `READ_COUNT`,
 (SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,
 t1.`STATUS`,
 t1.`TOPIC_ID`,
+t11.`IDENTIFIER` AS `TOPIC_IDENTIFIER`,
 t11.`NAME` AS `TOPIC_NAME`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
@@ -2711,6 +2875,30 @@ LEFT JOIN `DISCUSS_TOPIC` t11 ON t1.`TOPIC_ID` = t11.`ID`
 WHERE ( t11.`IS_DELETED` = 0 ) AND ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`IS_DELETED` = 0 )
 ```
 
+#### 我的讨论(my_post) :id=discuss_post-my_post
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`HEAT`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+(select count(1) as read_count from recent r where r.OWNER_ID = t1.`ID` and r.OWNER_TYPE = 'discuss' and r.OWNER_SUBTYPE = 'post') AS `READ_COUNT`,
+(SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,
+t1.`STATUS`,
+t1.`TOPIC_ID`,
+t11.`IDENTIFIER` AS `TOPIC_IDENTIFIER`,
+t11.`NAME` AS `TOPIC_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `DISCUSS_POST` t1 
+LEFT JOIN `DISCUSS_TOPIC` t11 ON t1.`TOPIC_ID` = t11.`ID` 
+
+WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} )
+```
+
 #### 我回复的(my_reply) :id=discuss_post-my_reply
 ```sql
 SELECT
@@ -2718,11 +2906,14 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`HEAT`,
 t1.`ID`,
+t1.`IDENTIFIER`,
 t1.`IS_DELETED`,
 t1.`NAME`,
+(select count(1) as read_count from recent r where r.OWNER_ID = t1.`ID` and r.OWNER_TYPE = 'discuss' and r.OWNER_SUBTYPE = 'post') AS `READ_COUNT`,
 (SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,
 t1.`STATUS`,
 t1.`TOPIC_ID`,
+t11.`IDENTIFIER` AS `TOPIC_IDENTIFIER`,
 t11.`NAME` AS `TOPIC_NAME`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
@@ -2741,11 +2932,14 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`HEAT`,
 t1.`ID`,
+t1.`IDENTIFIER`,
 t1.`IS_DELETED`,
 t1.`NAME`,
+(select count(1) as read_count from recent r where r.OWNER_ID = t1.`ID` and r.OWNER_TYPE = 'discuss' and r.OWNER_SUBTYPE = 'post') AS `READ_COUNT`,
 (SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,
 t1.`STATUS`,
 t1.`TOPIC_ID`,
+t11.`IDENTIFIER` AS `TOPIC_IDENTIFIER`,
 t11.`NAME` AS `TOPIC_NAME`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
@@ -2762,11 +2956,14 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`HEAT`,
 t1.`ID`,
+t1.`IDENTIFIER`,
 t1.`IS_DELETED`,
 t1.`NAME`,
+(select count(1) as read_count from recent r where r.OWNER_ID = t1.`ID` and r.OWNER_TYPE = 'discuss' and r.OWNER_SUBTYPE = 'post') AS `READ_COUNT`,
 (SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,
 t1.`STATUS`,
 t1.`TOPIC_ID`,
+t11.`IDENTIFIER` AS `TOPIC_IDENTIFIER`,
 t11.`NAME` AS `TOPIC_NAME`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
@@ -2783,11 +2980,14 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`HEAT`,
 t1.`ID`,
+t1.`IDENTIFIER`,
 t1.`IS_DELETED`,
 t1.`NAME`,
+(select count(1) as read_count from recent r where r.OWNER_ID = t1.`ID` and r.OWNER_TYPE = 'discuss' and r.OWNER_SUBTYPE = 'post') AS `READ_COUNT`,
 (SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,
 t1.`STATUS`,
 t1.`TOPIC_ID`,
+t11.`IDENTIFIER` AS `TOPIC_IDENTIFIER`,
 t11.`NAME` AS `TOPIC_NAME`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
@@ -2804,11 +3004,14 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`HEAT`,
 t1.`ID`,
+t1.`IDENTIFIER`,
 t1.`IS_DELETED`,
 t1.`NAME`,
+(select count(1) as read_count from recent r where r.OWNER_ID = t1.`ID` and r.OWNER_TYPE = 'discuss' and r.OWNER_SUBTYPE = 'post') AS `READ_COUNT`,
 (SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,
 t1.`STATUS`,
 t1.`TOPIC_ID`,
+t11.`IDENTIFIER` AS `TOPIC_IDENTIFIER`,
 t11.`NAME` AS `TOPIC_NAME`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
@@ -2827,11 +3030,14 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`HEAT`,
 t1.`ID`,
+t1.`IDENTIFIER`,
 t1.`IS_DELETED`,
 t1.`NAME`,
+(select count(1) as read_count from recent r where r.OWNER_ID = t1.`ID` and r.OWNER_TYPE = 'discuss' and r.OWNER_SUBTYPE = 'post') AS `READ_COUNT`,
 (SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,
 t1.`STATUS`,
 t1.`TOPIC_ID`,
+t11.`IDENTIFIER` AS `TOPIC_IDENTIFIER`,
 t11.`NAME` AS `TOPIC_NAME`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
@@ -2856,6 +3062,7 @@ t11.`NAME` AS `DISCUSS_NAME`,
 t1.`ID`,
 t1.`NAME`,
 t1.`POST_ID`,
+t11.`TOPIC_ID`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `DISCUSS_REPLY` t1 
@@ -2875,11 +3082,31 @@ t11.`NAME` AS `DISCUSS_NAME`,
 t1.`ID`,
 t1.`NAME`,
 t1.`POST_ID`,
+t11.`TOPIC_ID`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `DISCUSS_REPLY` t1 
 LEFT JOIN `DISCUSS_POST` t11 ON t1.`POST_ID` = t11.`ID` 
 
+```
+
+#### 我的全部回复(my_all_reply) :id=discuss_reply-my_all_reply
+```sql
+SELECT
+t1.`CONTENT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t11.`NAME` AS `DISCUSS_NAME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`POST_ID`,
+t11.`TOPIC_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `DISCUSS_REPLY` t1 
+LEFT JOIN `DISCUSS_POST` t11 ON t1.`POST_ID` = t11.`ID` 
+
+WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} )
 ```
 
 #### 我的回复(my_reply) :id=discuss_reply-my_reply
@@ -2894,6 +3121,7 @@ t11.`NAME` AS `DISCUSS_NAME`,
 t1.`ID`,
 t1.`NAME`,
 t1.`POST_ID`,
+t11.`TOPIC_ID`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `DISCUSS_REPLY` t1 
@@ -2915,6 +3143,7 @@ t11.`NAME` AS `DISCUSS_NAME`,
 t1.`ID`,
 t1.`NAME`,
 t1.`POST_ID`,
+t11.`TOPIC_ID`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `DISCUSS_REPLY` t1 
@@ -2941,6 +3170,8 @@ t1.`IS_DELETED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
+(select count(1) today_post_count from discuss_post p where p.TOPIC_ID = t1.`ID` and DATE(p.UPDATE_TIME) = curdate() ) AS `TODAY_POST_COUNT`,
+(select count(1) today_read_count from recent r where r.OWNER_TYPE = 'discuss' and r.RECENT_PARENT = t1.`ID` and DATE(r.UPDATE_TIME) = curdate() ) AS `TODAY_READ_COUNT`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
@@ -2962,6 +3193,8 @@ t1.`IS_DELETED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
+(select count(1) today_post_count from discuss_post p where p.TOPIC_ID = t1.`ID` and DATE(p.UPDATE_TIME) = curdate() ) AS `TODAY_POST_COUNT`,
+(select count(1) today_read_count from recent r where r.OWNER_TYPE = 'discuss' and r.RECENT_PARENT = t1.`ID` and DATE(r.UPDATE_TIME) = curdate() ) AS `TODAY_READ_COUNT`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
@@ -2983,6 +3216,8 @@ t1.`IS_DELETED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
+(select count(1) today_post_count from discuss_post p where p.TOPIC_ID = t1.`ID` and DATE(p.UPDATE_TIME) = curdate() ) AS `TODAY_POST_COUNT`,
+(select count(1) today_read_count from recent r where r.OWNER_TYPE = 'discuss' and r.RECENT_PARENT = t1.`ID` and DATE(r.UPDATE_TIME) = curdate() ) AS `TODAY_READ_COUNT`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
@@ -3007,6 +3242,8 @@ t1.`IS_DELETED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
+(select count(1) today_post_count from discuss_post p where p.TOPIC_ID = t1.`ID` and DATE(p.UPDATE_TIME) = curdate() ) AS `TODAY_POST_COUNT`,
+(select count(1) today_read_count from recent r where r.OWNER_TYPE = 'discuss' and r.RECENT_PARENT = t1.`ID` and DATE(r.UPDATE_TIME) = curdate() ) AS `TODAY_READ_COUNT`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
@@ -3029,6 +3266,8 @@ t1.`IS_DELETED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
+(select count(1) today_post_count from discuss_post p where p.TOPIC_ID = t1.`ID` and DATE(p.UPDATE_TIME) = curdate() ) AS `TODAY_POST_COUNT`,
+(select count(1) today_read_count from recent r where r.OWNER_TYPE = 'discuss' and r.RECENT_PARENT = t1.`ID` and DATE(r.UPDATE_TIME) = curdate() ) AS `TODAY_READ_COUNT`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
@@ -3051,6 +3290,8 @@ t1.`IS_DELETED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
+(select count(1) today_post_count from discuss_post p where p.TOPIC_ID = t1.`ID` and DATE(p.UPDATE_TIME) = curdate() ) AS `TODAY_POST_COUNT`,
+(select count(1) today_read_count from recent r where r.OWNER_TYPE = 'discuss' and r.RECENT_PARENT = t1.`ID` and DATE(r.UPDATE_TIME) = curdate() ) AS `TODAY_READ_COUNT`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
@@ -3073,6 +3314,8 @@ t1.`IS_DELETED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
+(select count(1) today_post_count from discuss_post p where p.TOPIC_ID = t1.`ID` and DATE(p.UPDATE_TIME) = curdate() ) AS `TODAY_POST_COUNT`,
+(select count(1) today_read_count from recent r where r.OWNER_TYPE = 'discuss' and r.RECENT_PARENT = t1.`ID` and DATE(r.UPDATE_TIME) = curdate() ) AS `TODAY_READ_COUNT`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
@@ -3095,6 +3338,8 @@ t1.`IS_DELETED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
+(select count(1) today_post_count from discuss_post p where p.TOPIC_ID = t1.`ID` and DATE(p.UPDATE_TIME) = curdate() ) AS `TODAY_POST_COUNT`,
+(select count(1) today_read_count from recent r where r.OWNER_TYPE = 'discuss' and r.RECENT_PARENT = t1.`ID` and DATE(r.UPDATE_TIME) = curdate() ) AS `TODAY_READ_COUNT`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
@@ -3117,6 +3362,8 @@ t1.`IS_DELETED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
+(select count(1) today_post_count from discuss_post p where p.TOPIC_ID = t1.`ID` and DATE(p.UPDATE_TIME) = curdate() ) AS `TODAY_POST_COUNT`,
+(select count(1) today_read_count from recent r where r.OWNER_TYPE = 'discuss' and r.RECENT_PARENT = t1.`ID` and DATE(r.UPDATE_TIME) = curdate() ) AS `TODAY_READ_COUNT`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
@@ -3139,6 +3386,8 @@ t1.`IS_DELETED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
+(select count(1) today_post_count from discuss_post p where p.TOPIC_ID = t1.`ID` and DATE(p.UPDATE_TIME) = curdate() ) AS `TODAY_POST_COUNT`,
+(select count(1) today_read_count from recent r where r.OWNER_TYPE = 'discuss' and r.RECENT_PARENT = t1.`ID` and DATE(r.UPDATE_TIME) = curdate() ) AS `TODAY_READ_COUNT`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
@@ -3163,6 +3412,8 @@ t1.`IS_DELETED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
+(select count(1) today_post_count from discuss_post p where p.TOPIC_ID = t1.`ID` and DATE(p.UPDATE_TIME) = curdate() ) AS `TODAY_POST_COUNT`,
+(select count(1) today_read_count from recent r where r.OWNER_TYPE = 'discuss' and r.RECENT_PARENT = t1.`ID` and DATE(r.UPDATE_TIME) = curdate() ) AS `TODAY_READ_COUNT`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
@@ -3185,6 +3436,8 @@ t1.`IS_DELETED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
+(select count(1) today_post_count from discuss_post p where p.TOPIC_ID = t1.`ID` and DATE(p.UPDATE_TIME) = curdate() ) AS `TODAY_POST_COUNT`,
+(select count(1) today_read_count from recent r where r.OWNER_TYPE = 'discuss' and r.RECENT_PARENT = t1.`ID` and DATE(r.UPDATE_TIME) = curdate() ) AS `TODAY_READ_COUNT`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
@@ -3207,12 +3460,40 @@ t1.`IS_DELETED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
+(select count(1) today_post_count from discuss_post p where p.TOPIC_ID = t1.`ID` and DATE(p.UPDATE_TIME) = curdate() ) AS `TODAY_POST_COUNT`,
+(select count(1) today_read_count from recent r where r.OWNER_TYPE = 'discuss' and r.RECENT_PARENT = t1.`ID` and DATE(r.UPDATE_TIME) = curdate() ) AS `TODAY_READ_COUNT`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
 FROM `DISCUSS_TOPIC` t1 
 
 WHERE ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  t1.`SCOPE_TYPE` = 'organization' )
+```
+
+#### 开源社区查询(oss_main) :id=discuss_topic-oss_main
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+(select count(1) today_post_count from discuss_post p where p.TOPIC_ID = t1.`ID` and DATE(p.UPDATE_TIME) = curdate() ) AS `TODAY_POST_COUNT`,
+(select count(1) today_read_count from recent r where r.OWNER_TYPE = 'discuss' and r.RECENT_PARENT = t1.`ID` and DATE(r.UPDATE_TIME) = curdate() ) AS `TODAY_READ_COUNT`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `DISCUSS_TOPIC` t1 
+
+WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  ( t1.`VISIBILITY` = 'public'  OR  EXISTS(SELECT * FROM `MEMBER` t11 
+ WHERE 
+ t1.`ID` = t11.`OWNER_ID`  AND  ( t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) ) ) )
 ```
 
 #### 公开(public) :id=discuss_topic-public
@@ -3229,6 +3510,8 @@ t1.`IS_DELETED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
+(select count(1) today_post_count from discuss_post p where p.TOPIC_ID = t1.`ID` and DATE(p.UPDATE_TIME) = curdate() ) AS `TODAY_POST_COUNT`,
+(select count(1) today_read_count from recent r where r.OWNER_TYPE = 'discuss' and r.RECENT_PARENT = t1.`ID` and DATE(r.UPDATE_TIME) = curdate() ) AS `TODAY_READ_COUNT`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
@@ -3251,6 +3534,8 @@ t1.`IS_DELETED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
+(select count(1) today_post_count from discuss_post p where p.TOPIC_ID = t1.`ID` and DATE(p.UPDATE_TIME) = curdate() ) AS `TODAY_POST_COUNT`,
+(select count(1) today_read_count from recent r where r.OWNER_TYPE = 'discuss' and r.RECENT_PARENT = t1.`ID` and DATE(r.UPDATE_TIME) = curdate() ) AS `TODAY_READ_COUNT`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
@@ -3275,6 +3560,8 @@ t1.`IS_DELETED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
+(select count(1) today_post_count from discuss_post p where p.TOPIC_ID = t1.`ID` and DATE(p.UPDATE_TIME) = curdate() ) AS `TODAY_POST_COUNT`,
+(select count(1) today_read_count from recent r where r.OWNER_TYPE = 'discuss' and r.RECENT_PARENT = t1.`ID` and DATE(r.UPDATE_TIME) = curdate() ) AS `TODAY_READ_COUNT`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
@@ -3297,6 +3584,8 @@ t1.`IS_DELETED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
+(select count(1) today_post_count from discuss_post p where p.TOPIC_ID = t1.`ID` and DATE(p.UPDATE_TIME) = curdate() ) AS `TODAY_POST_COUNT`,
+(select count(1) today_read_count from recent r where r.OWNER_TYPE = 'discuss' and r.RECENT_PARENT = t1.`ID` and DATE(r.UPDATE_TIME) = curdate() ) AS `TODAY_READ_COUNT`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
@@ -3321,6 +3610,8 @@ t1.`IS_DELETED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
+(select count(1) today_post_count from discuss_post p where p.TOPIC_ID = t1.`ID` and DATE(p.UPDATE_TIME) = curdate() ) AS `TODAY_POST_COUNT`,
+(select count(1) today_read_count from recent r where r.OWNER_TYPE = 'discuss' and r.RECENT_PARENT = t1.`ID` and DATE(r.UPDATE_TIME) = curdate() ) AS `TODAY_READ_COUNT`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
@@ -3460,6 +3751,29 @@ t1.`USERID`
 FROM `DYNADASHBOARD` t1 
 
 WHERE ( t1.`IS_SYSTEM` = 1 )
+```
+
+#### 我的看板(my_dashboard) :id=dyna_dashboard-my_dashboard
+```sql
+SELECT
+t1.`APPID`,
+t1.`CREATEDATE`,
+t1.`CREATEMAN`,
+t1.`DYNADASHBOARDID`,
+t1.`DYNADASHBOARDNAME`,
+t1.`EXAMPLE_CHART`,
+t1.`IS_SYSTEM`,
+t1.`MODELID`,
+t1.`OWNER_ID`,
+t1.`OWNER_TYPE`,
+t1.`SEQUENCES`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USERID`
+FROM `DYNADASHBOARD` t1 
+
+WHERE ( t1.`CREATEMAN` = #{ctx.sessioncontext.srfpersonid} )
 ```
 
 #### 正常数据(normal) :id=dyna_dashboard-normal
@@ -3716,6 +4030,23 @@ t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `FAVORITE` t1 
 
+```
+
+#### 我的收藏(my_favorite) :id=favorite-my_favorite
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `FAVORITE` t1 
+
+WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} )
 ```
 
 
@@ -5178,6 +5509,59 @@ LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID`
 WHERE ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  exists(select 1 from recent t2 where t1.id=t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )  AND  NOT EXISTS(SELECT 1 FROM `RELATION` t3 WHERE t1.`ID` = t3.`TARGET_ID` AND  t3.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}   ) )
 ```
 
+#### 关联需求(relation_idea) :id=idea-relation_idea
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t21.`CATEGORIES`,
+t1.`CATEGORY_ID`,
+t21.`NAME` AS `CATEGORY_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`ID`,
+t1.`IDEA_FROM`,
+t1.`IDEA_TYPE`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PLAN_AT`,
+t1.`PLAN_AT_FROM`,
+t1.`PLAN_AT_GRANULARITY`,
+t1.`PLAN_AT_TO`,
+t1.`PRIORITY`,
+t1.`PRODUCT_ID`,
+t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
+t11.`IS_ARCHIVED` AS `PRODUCT_IS_ARCHIVED`,
+t11.`IS_DELETED` AS `PRODUCT_IS_DELETED`,
+t11.`NAME` AS `PRODUCT_NAME`,
+t1.`PROGRESS`,
+t1.`REAL_AT`,
+t1.`REAL_AT_FROM`,
+t1.`REAL_AT_GRANULARITY`,
+t1.`REAL_AT_TO`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t21.`SECTION_ID`,
+t31.`NAME` AS `SECTION_NAME`,
+t1.`SEQUENCE`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STATE`,
+t1.`SUITE`,
+t1.`TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `IDEA` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
+LEFT JOIN `CATEGORY` t21 ON t1.`CATEGORY_ID` = t21.`ID` 
+LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID` 
+
+WHERE EXISTS(SELECT * FROM `RELATION` t41 
+ WHERE 
+ t1.`ID` = t41.`TARGET_ID`  AND  ( t41.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}  AND  t41.`PRINCIPAL_TYPE` = 'idea'  AND  t41.`TARGET_TYPE` = 'idea' ) ) AND ( t1.`IS_DELETED` <> 1 )
+```
+
 #### 普通用户(user) :id=idea-user
 ```sql
 SELECT
@@ -5383,6 +5767,7 @@ t1.`OWNER_ID`,
 t1.`OWNER_SUBTYPE`,
 t1.`OWNER_TYPE`,
 t1.`ROLE_ID`,
+t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`
@@ -5401,6 +5786,7 @@ t1.`OWNER_ID`,
 t1.`OWNER_SUBTYPE`,
 t1.`OWNER_TYPE`,
 t1.`ROLE_ID`,
+t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`
@@ -6126,6 +6512,7 @@ t11.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t11.`NAME` AS `LIBRARY_NAME`,
 t1.`NAME`,
 t1.`ROLE_ID`,
+t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`
@@ -6145,6 +6532,7 @@ t11.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t11.`NAME` AS `LIBRARY_NAME`,
 t1.`NAME`,
 t1.`ROLE_ID`,
+t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`
@@ -6164,6 +6552,7 @@ t11.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t11.`NAME` AS `LIBRARY_NAME`,
 t1.`NAME`,
 t1.`ROLE_ID`,
+t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`
@@ -6184,6 +6573,7 @@ t11.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t11.`NAME` AS `LIBRARY_NAME`,
 t1.`NAME`,
 t1.`ROLE_ID`,
+t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`
@@ -6203,6 +6593,7 @@ t11.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t11.`NAME` AS `LIBRARY_NAME`,
 t1.`NAME`,
 t1.`ROLE_ID`,
+t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`
@@ -6262,6 +6653,7 @@ t1.`EMPLOYEE_NUMBER`,
 t1.`ID`,
 t1.`MOBILE`,
 t1.`NAME`,
+t1.`ORGANIZATION_ID`,
 t1.`PASSWORD`,
 t1.`STATUS`,
 t1.`UPDATE_MAN`,
@@ -6285,6 +6677,7 @@ t1.`EMPLOYEE_NUMBER`,
 t1.`ID`,
 t1.`MOBILE`,
 t1.`NAME`,
+t1.`ORGANIZATION_ID`,
 t1.`PASSWORD`,
 t1.`STATUS`,
 t1.`UPDATE_MAN`,
@@ -6307,11 +6700,15 @@ t1.`NAME`,
 t1.`OWNER_ID`,
 t1.`OWNER_SUBTYPE`,
 t1.`OWNER_TYPE`,
+t1.`POSITION_ID`,
+t11.`NAME` AS `POSITION_NAME`,
 t1.`ROLE_ID`,
+t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`
 FROM `MEMBER` t1 
+LEFT JOIN `POSITION` t11 ON t1.`POSITION_ID` = t11.`ID` 
 
 ```
 
@@ -6325,11 +6722,15 @@ t1.`NAME`,
 t1.`OWNER_ID`,
 t1.`OWNER_SUBTYPE`,
 t1.`OWNER_TYPE`,
+t1.`POSITION_ID`,
+t11.`NAME` AS `POSITION_NAME`,
 t1.`ROLE_ID`,
+t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`
 FROM `MEMBER` t1 
+LEFT JOIN `POSITION` t11 ON t1.`POSITION_ID` = t11.`ID` 
 
 ```
 
@@ -6343,11 +6744,15 @@ t1.`NAME`,
 t1.`OWNER_ID`,
 t1.`OWNER_SUBTYPE`,
 t1.`OWNER_TYPE`,
+t1.`POSITION_ID`,
+t11.`NAME` AS `POSITION_NAME`,
 t1.`ROLE_ID`,
+t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`
 FROM `MEMBER` t1 
+LEFT JOIN `POSITION` t11 ON t1.`POSITION_ID` = t11.`ID` 
 
 WHERE ( ( USER_ID NOT IN (SELECT user_id from attention t2 where t2.OWNER_ID = #{ctx.webcontext.principal_id} )) )
 ```
@@ -6362,11 +6767,15 @@ t1.`NAME`,
 t1.`OWNER_ID`,
 t1.`OWNER_SUBTYPE`,
 t1.`OWNER_TYPE`,
+t1.`POSITION_ID`,
+t11.`NAME` AS `POSITION_NAME`,
 t1.`ROLE_ID`,
+t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`
 FROM `MEMBER` t1 
+LEFT JOIN `POSITION` t11 ON t1.`POSITION_ID` = t11.`ID` 
 
 WHERE ( t1.`OWNER_ID` = #{ctx.webcontext.shared_page}  AND  t1.`OWNER_TYPE` = 'PAGE'  AND  t1.`OWNER_SUBTYPE` = 'SHARED' )
 ```
@@ -6806,6 +7215,60 @@ WHERE ( t1.`USER_ID` <> #{ctx.sessioncontext.srfpersonid}  AND  t1.`PORTFOLIO_ID
 ```
 
 
+## [职位(POSITION)](module/Base/position.md) :id=position
+
+#### 数据查询(DEFAULT) :id=position-Default
+```sql
+SELECT
+t1.`CATEGORY_ID`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ENABLE`,
+t1.`ID`,
+t1.`NAME`,
+t1.`SEQUENCE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `POSITION` t1 
+
+WHERE t1.ENABLE = 1
+```
+
+#### 默认（全部数据）(VIEW) :id=position-View
+```sql
+SELECT
+t1.`CATEGORY_ID`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ENABLE`,
+t1.`ID`,
+t1.`NAME`,
+t1.`SEQUENCE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `POSITION` t1 
+
+WHERE t1.ENABLE = 1
+```
+
+#### 无分组(no_category) :id=position-no_category
+```sql
+SELECT
+t1.`CATEGORY_ID`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ENABLE`,
+t1.`ID`,
+t1.`NAME`,
+t1.`SEQUENCE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `POSITION` t1 
+
+WHERE t1.ENABLE = 1 AND ( t1.`CATEGORY_ID` IS NULL )
+```
+
+
 ## [产品(PRODUCT)](module/ProdMgmt/product.md) :id=product
 
 #### 数据查询(DEFAULT) :id=product-Default
@@ -7019,6 +7482,31 @@ WHERE EXISTS(SELECT * FROM `PRODUCT_MEMBER` t11
  t1.`ID` = t11.`PRODUCT_ID`  AND  ( t11.`ROLE_ID` <> 'reader'  AND  t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) ) AND ( (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '1'  AND  t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0 )
 ```
 
+#### 未关联项目(no_relation) :id=product-no_relation
+```sql
+SELECT
+t1.`COLOR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `PRODUCT` t1 
+
+WHERE NOT(EXISTS(SELECT * FROM `RELATION` t11 
+ WHERE 
+ t1.`ID` = t11.`TARGET_ID`  AND  ( t11.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id} ) )) AND ( t1.`IS_DELETED` = 0 )
+```
+
 #### 正常状态(normal) :id=product-normal
 ```sql
 SELECT
@@ -7177,6 +7665,7 @@ t1.`PRODUCT_ID`,
 t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
 t11.`NAME` AS `PRODUCT_NAME`,
 t1.`ROLE_ID`,
+t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`
@@ -7196,6 +7685,7 @@ t1.`PRODUCT_ID`,
 t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
 t11.`NAME` AS `PRODUCT_NAME`,
 t1.`ROLE_ID`,
+t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`
@@ -7215,6 +7705,7 @@ t1.`PRODUCT_ID`,
 t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
 t11.`NAME` AS `PRODUCT_NAME`,
 t1.`ROLE_ID`,
+t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`
@@ -7235,6 +7726,7 @@ t1.`PRODUCT_ID`,
 t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
 t11.`NAME` AS `PRODUCT_NAME`,
 t1.`ROLE_ID`,
+t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`
@@ -7917,6 +8409,44 @@ WHERE EXISTS(SELECT * FROM `PROJECT_MEMBER` t21
  t1.`ID` = t21.`PROJECT_ID`  AND  ( t21.`ROLE_ID` <> 'reader'  AND  t21.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) ) AND ( (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '1'  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0 )
 ```
 
+#### 未关联的项目(no_relation) :id=project-no_relation
+```sql
+SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`COLOR`,
+t1.`CONSUME_TIME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`END_AT`,
+t1.`EXPECTED_TIME`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_LOCAL_CONFIGURE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`START_AT`,
+t1.`STATE`,
+t11.`TYPE` AS `STATE_TYPE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `PROJECT` t1 
+LEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` 
+
+WHERE NOT(EXISTS(SELECT * FROM `RELATION` t21 
+ WHERE 
+ t1.`ID` = t21.`TARGET_ID`  AND  ( t21.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id} ) )) AND ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0 )
+```
+
 #### 正常状态(normal) :id=project-normal
 ```sql
 SELECT
@@ -7951,6 +8481,44 @@ FROM `PROJECT` t1
 LEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0 )
+```
+
+#### 产品关联项目(product_re_project) :id=project-product_re_project
+```sql
+SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`COLOR`,
+t1.`CONSUME_TIME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`END_AT`,
+t1.`EXPECTED_TIME`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_LOCAL_CONFIGURE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`START_AT`,
+t1.`STATE`,
+t11.`TYPE` AS `STATE_TYPE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `PROJECT` t1 
+LEFT JOIN `PROJECT_STATE` t11 ON t1.`STATE` = t11.`ID` 
+
+WHERE EXISTS(SELECT * FROM `RELATION` t21 
+ WHERE 
+ t1.`ID` = t21.`TARGET_ID`  AND  ( t21.`PRINCIPAL_ID` = #{ctx.webcontext.product} ) )
 ```
 
 #### 公开(public) :id=project-public
@@ -8263,6 +8831,7 @@ t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
 t1.`ROLE_ID`,
+t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`,
@@ -8285,6 +8854,7 @@ t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
 t1.`ROLE_ID`,
+t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`,
@@ -8306,6 +8876,7 @@ t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
 t1.`ROLE_ID`,
+t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`,
@@ -8328,6 +8899,7 @@ t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
 t1.`ROLE_ID`,
+t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`,
@@ -9195,6 +9767,106 @@ FROM `RELATION` t1
 WHERE ( t1.`PRINCIPAL_TYPE` = 'idea'  AND  ( t1.`TARGET_TYPE` = 'customer'  OR  t1.`TARGET_TYPE` = 'idea'  OR  t1.`TARGET_TYPE` = 'ticket'  OR  t1.`TARGET_TYPE` = 'work_item'  OR  t1.`TARGET_TYPE` = 'test_case' ) )
 ```
 
+#### 我的关联(my_relation) :id=relation-my_relation
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`ID`,
+t1.`LEVEL`,
+t1.`NAME`,
+t1.`OWNER_TYPE`,
+t1.`PARENT_VERSION_ID`,
+t1.`PRINCIPAL_ID`,
+t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
+t1.`TARGET_ID`,
+t1.`TARGET_TYPE`,
+t1.`TARGET_VERSION_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `RELATION` t1 
+
+WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} )
+```
+
+#### 排期下需求(product_plan_idea) :id=relation-product_plan_idea
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`ID`,
+t1.`LEVEL`,
+t1.`NAME`,
+t1.`OWNER_TYPE`,
+t1.`PARENT_VERSION_ID`,
+t1.`PRINCIPAL_ID`,
+t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
+t1.`TARGET_ID`,
+t1.`TARGET_TYPE`,
+t1.`TARGET_VERSION_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `RELATION` t1 
+
+WHERE ( t1.`PRINCIPAL_ID` = #{ctx.webcontext.product_plan}  AND  t1.`RELATION_TYPE` = 'product_plan'  AND  t1.`TARGET_TYPE` = 'idea' )
+```
+
+#### 产品关联项目(product_re_project) :id=relation-product_re_project
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`ID`,
+t1.`LEVEL`,
+t1.`NAME`,
+t1.`OWNER_TYPE`,
+t1.`PARENT_VERSION_ID`,
+t1.`PRINCIPAL_ID`,
+t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
+t1.`TARGET_ID`,
+t1.`TARGET_TYPE`,
+t1.`TARGET_VERSION_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `RELATION` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`TARGET_ID` = t11.`ID` 
+
+
+WHERE ( t11.`IS_DELETED` = 0 ) AND ( t1.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}  AND  t1.`TARGET_TYPE` = 'project'  AND  t1.`PRINCIPAL_TYPE` = 'product' )
+```
+
+#### 项目关联产品(project_re_product) :id=relation-project_re_product
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`ID`,
+t1.`LEVEL`,
+t1.`NAME`,
+t1.`OWNER_TYPE`,
+t1.`PARENT_VERSION_ID`,
+t1.`PRINCIPAL_ID`,
+t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
+t1.`TARGET_ID`,
+t1.`TARGET_TYPE`,
+t1.`TARGET_VERSION_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `RELATION` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`TARGET_ID` = t11.`ID` 
+
+
+WHERE ( t11.`IS_DELETED` = 0 ) AND ( t1.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}  AND  t1.`TARGET_TYPE` = 'product'  AND  t1.`PRINCIPAL_TYPE` = 'project' )
+```
+
 #### 评审关联测试用例(review_re_test_case) :id=relation-review_re_test_case
 ```sql
 SELECT
@@ -9629,6 +10301,7 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+(year(t1.`END_AT`)) AS `END_YEAR`,
 t1.`ID`,
 t1.`NAME`,
 t1.`PROJECT_ID`,
@@ -9651,11 +10324,13 @@ SELECT
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`CATEGORIES`,
+t1.`CHANGELOG`,
 (SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND RELEASE_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+(year(t1.`END_AT`)) AS `END_YEAR`,
 t1.`ID`,
 t1.`NAME`,
 t1.`PROJECT_ID`,
@@ -9683,6 +10358,7 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+(year(t1.`END_AT`)) AS `END_YEAR`,
 t1.`ID`,
 t1.`NAME`,
 t1.`PROJECT_ID`,
@@ -9735,6 +10411,7 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+(year(t1.`END_AT`)) AS `END_YEAR`,
 t1.`ID`,
 t1.`NAME`,
 t1.`PROJECT_ID`,
@@ -9765,6 +10442,7 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+(year(t1.`END_AT`)) AS `END_YEAR`,
 t1.`ID`,
 t1.`NAME`,
 t1.`PROJECT_ID`,
@@ -9783,6 +10461,64 @@ WHERE NOT(EXISTS(SELECT * FROM `WORK_ITEM` t21
  t1.`ID` = t21.`RELEASE_ID`  AND  ( t21.`ID` = #{ctx.webcontext.work_item} ) )) AND ( not exists(select 1 from `stage` s1, `stage` s2 where t1.`STATUS`  = s1.`id` and s1.`pid` = s2.`id` and s2.`TYPE` = 'published' and s1.`RELEASE_ID`= t1.`id`) )
 ```
 
+#### 产品所属发布(product_re_project_published) :id=release-product_re_project_published
+```sql
+SELECT
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND RELEASE_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CATEGORIES`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND RELEASE_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`END_AT`,
+(year(t1.`END_AT`)) AS `END_YEAR`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PROJECT_ID`,
+t11.`IS_DELETED` AS `PROJECT_IS_DELETED`,
+t11.`NAME` AS `PROJECT_NAME`,
+t11.`TYPE` AS `PROJECT_TYPE`,
+t1.`START_AT`,
+t1.`STATUS`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `PROJECT_RELEASE` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+
+WHERE ( t1.project_id in (select r1.target_id from relation r1 where r1.PRINCIPAL_TYPE = 'product' and r1.TARGET_TYPE = 'project' and r1.PRINCIPAL_ID = #{ctx.webcontext.product})  AND  exists(select 1 from `stage` s1, `stage` s2 where t1.`STATUS`  = s1.`id` and s1.`pid` = s2.`id` and s2.`TYPE` = 'published' and s1.`RELEASE_ID`= t1.`id`)  AND  t1.`END_AT` IS NOT NULL )
+```
+
+#### 已发布(published) :id=release-published
+```sql
+SELECT
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND RELEASE_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CATEGORIES`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND RELEASE_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`END_AT`,
+(year(t1.`END_AT`)) AS `END_YEAR`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PROJECT_ID`,
+t11.`IS_DELETED` AS `PROJECT_IS_DELETED`,
+t11.`NAME` AS `PROJECT_NAME`,
+t11.`TYPE` AS `PROJECT_TYPE`,
+t1.`START_AT`,
+t1.`STATUS`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `PROJECT_RELEASE` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+
+WHERE ( exists(select 1 from `stage` s1, `stage` s2 where t1.`STATUS`  = s1.`id` and s1.`pid` = s2.`id` and s2.`TYPE` = 'published' and s1.`RELEASE_ID`= t1.`id`)  AND  t1.`END_AT` IS NOT NULL )
+```
+
 #### 只读用户(reader) :id=release-reader
 ```sql
 SELECT
@@ -9795,6 +10531,7 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+(year(t1.`END_AT`)) AS `END_YEAR`,
 t1.`ID`,
 t1.`NAME`,
 t1.`PROJECT_ID`,
@@ -9825,6 +10562,7 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
+(year(t1.`END_AT`)) AS `END_YEAR`,
 t1.`ID`,
 t1.`NAME`,
 t1.`PROJECT_ID`,
@@ -11206,6 +11944,7 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`IS_LEAF`,
+t1.`IS_LEAF2`,
 t1.`NAME`,
 t1.`OWNER_ID`,
 t1.`OWNER_SUBTYPE`,
@@ -11224,6 +11963,7 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`IS_LEAF`,
+t1.`IS_LEAF2`,
 t1.`NAME`,
 t1.`OWNER_ID`,
 t1.`OWNER_SUBTYPE`,
@@ -11242,6 +11982,7 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`IS_LEAF`,
+t1.`IS_LEAF2`,
 t1.`NAME`,
 t1.`OWNER_ID`,
 t1.`OWNER_SUBTYPE`,
@@ -11261,6 +12002,7 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`IS_LEAF`,
+t1.`IS_LEAF2`,
 t1.`NAME`,
 t1.`OWNER_ID`,
 t1.`OWNER_SUBTYPE`,
@@ -11273,6 +12015,26 @@ FROM `SECTION` t1
 WHERE ( t1.`OWNER_SUBTYPE` = 'idea' )
 ```
 
+#### 我的分组(my_section) :id=section-my_section
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_LEAF`,
+t1.`IS_LEAF2`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`SEQUENCE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `SECTION` t1 
+
+WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} )
+```
+
 #### 产品排期分组(this_product_section) :id=section-this_product_section
 ```sql
 SELECT
@@ -11280,6 +12042,7 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`IS_LEAF`,
+t1.`IS_LEAF2`,
 t1.`NAME`,
 t1.`OWNER_ID`,
 t1.`OWNER_SUBTYPE`,
@@ -11426,6 +12189,8 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t1.`VISIBILITY`
 FROM `SPACE` t1 
 LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
@@ -11452,6 +12217,8 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t1.`VISIBILITY`
 FROM `SPACE` t1 
 LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
@@ -11478,6 +12245,8 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t1.`VISIBILITY`
 FROM `SPACE` t1 
 LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
@@ -11507,6 +12276,8 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t1.`VISIBILITY`
 FROM `SPACE` t1 
 LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
@@ -11534,6 +12305,8 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t1.`VISIBILITY`
 FROM `SPACE` t1 
 LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
@@ -11561,6 +12334,8 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t1.`VISIBILITY`
 FROM `SPACE` t1 
 LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
@@ -11587,6 +12362,8 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t1.`VISIBILITY`
 FROM `SPACE` t1 
 LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
@@ -11614,6 +12391,8 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t1.`VISIBILITY`
 FROM `SPACE` t1 
 LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
@@ -11641,6 +12420,8 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t1.`VISIBILITY`
 FROM `SPACE` t1 
 LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
@@ -11668,6 +12449,8 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t1.`VISIBILITY`
 FROM `SPACE` t1 
 LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
@@ -11727,6 +12510,8 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t1.`VISIBILITY`
 FROM `SPACE` t1 
 LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
@@ -11754,6 +12539,8 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t1.`VISIBILITY`
 FROM `SPACE` t1 
 LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
@@ -11783,6 +12570,8 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t1.`VISIBILITY`
 FROM `SPACE` t1 
 LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
@@ -11810,6 +12599,8 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t1.`VISIBILITY`
 FROM `SPACE` t1 
 LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
@@ -11839,6 +12630,8 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t1.`VISIBILITY`
 FROM `SPACE` t1 
 LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
@@ -11866,6 +12659,8 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t1.`VISIBILITY`
 FROM `SPACE` t1 
 LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
@@ -11895,6 +12690,8 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t1.`VISIBILITY`
 FROM `SPACE` t1 
 LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
@@ -11922,6 +12719,8 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t1.`VISIBILITY`
 FROM `SPACE` t1 
 LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
@@ -11951,6 +12750,8 @@ t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t1.`USER_TAG`,
+t1.`USER_TAG2`,
 t1.`VISIBILITY`
 FROM `SPACE` t1 
 LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
@@ -11974,6 +12775,7 @@ t1.`ROLE_ID`,
 t1.`SPACE_ID`,
 t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
 t11.`NAME` AS `SPACE_NAME`,
+t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`
@@ -11993,6 +12795,7 @@ t1.`ROLE_ID`,
 t1.`SPACE_ID`,
 t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
 t11.`NAME` AS `SPACE_NAME`,
+t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`
@@ -12012,6 +12815,7 @@ t1.`ROLE_ID`,
 t1.`SPACE_ID`,
 t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
 t11.`NAME` AS `SPACE_NAME`,
+t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`
@@ -12032,6 +12836,7 @@ t1.`ROLE_ID`,
 t1.`SPACE_ID`,
 t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
 t11.`NAME` AS `SPACE_NAME`,
+t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`USER_ID`
@@ -12488,6 +13293,7 @@ t11.`SEQUENCE` AS `P_SEQUENCE`,
 t11.`TYPE` AS `P_TYPE`,
 t1.`RELEASE_ID`,
 t1.`SEQUENCE`,
+t1.`STYLE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
@@ -12513,6 +13319,7 @@ t11.`SEQUENCE` AS `P_SEQUENCE`,
 t11.`TYPE` AS `P_TYPE`,
 t1.`RELEASE_ID`,
 t1.`SEQUENCE`,
+t1.`STYLE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
@@ -12538,6 +13345,7 @@ t11.`SEQUENCE` AS `P_SEQUENCE`,
 t11.`TYPE` AS `P_TYPE`,
 t1.`RELEASE_ID`,
 t1.`SEQUENCE`,
+t1.`STYLE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
@@ -12565,6 +13373,7 @@ t11.`SEQUENCE` AS `P_SEQUENCE`,
 t11.`TYPE` AS `P_TYPE`,
 t1.`RELEASE_ID`,
 t1.`SEQUENCE`,
+t1.`STYLE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
@@ -12591,6 +13400,7 @@ t11.`SEQUENCE` AS `P_SEQUENCE`,
 t11.`TYPE` AS `P_TYPE`,
 t1.`RELEASE_ID`,
 t1.`SEQUENCE`,
+t1.`STYLE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
@@ -12617,6 +13427,7 @@ t11.`SEQUENCE` AS `P_SEQUENCE`,
 t11.`TYPE` AS `P_TYPE`,
 t1.`RELEASE_ID`,
 t1.`SEQUENCE`,
+t1.`STYLE`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
@@ -13943,6 +14754,46 @@ LEFT JOIN `LIBRARY` t21 ON t1.`TEST_LIBRARY_ID` = t21.`ID`
 WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  NOT EXISTS(SELECT 1 FROM `RELATION` t3 WHERE t1.`ID` = t3.`TARGET_ID` AND  t3.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}   )  AND  exists(select 1 from recent t2 where t1.id=t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} ) )
 ```
 
+#### 关联测试用例(relation_test_case) :id=test_case-relation_test_case
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`LEVEL`,
+t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
+t21.`IS_ARCHIVED` AS `LIBRARY_IS_ARCHIVED`,
+t21.`IS_DELETED` AS `LIBRARY_IS_DELETED`,
+t1.`MAINTENANCE_ID`,
+t1.`MAINTENANCE_NAME`,
+t1.`NAME`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t1.`REVIEW_RESULT_STATE`,
+concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STATE`,
+t11.`SUITES`,
+t1.`SUITE_ID`,
+t11.`NAME` AS `SUITE_NAME`,
+t1.`TEST_LIBRARY_ID`,
+t21.`NAME` AS `TEST_LIBRARY_NAME`,
+t1.`TEST_TYPE`,
+t1.`TITLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `TEST_CASE` t1 
+LEFT JOIN `TEST_SUITE` t11 ON t1.`SUITE_ID` = t11.`ID` 
+LEFT JOIN `LIBRARY` t21 ON t1.`TEST_LIBRARY_ID` = t21.`ID` 
+
+WHERE EXISTS(SELECT * FROM `RELATION` t31 
+ WHERE 
+ t1.`ID` = t31.`TARGET_ID`  AND  ( t31.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}  AND  t31.`PRINCIPAL_TYPE` = 'idea'  AND  t31.`TARGET_TYPE` = 'test_case' ) ) AND ( t1.`IS_DELETED` <> 1 )
+```
+
 #### 当前模块下用例(suites_test_case) :id=test_case-suites_test_case
 ```sql
 SELECT
@@ -14261,6 +15112,42 @@ LEFT JOIN `LIBRARY` t21 ON t1.`LIBRARY_ID` = t21.`ID`
 LEFT JOIN `SPRINT` t31 ON t1.`SPRINT_ID` = t31.`ID` 
 LEFT JOIN `PROJECT_RELEASE` t41 ON t1.`RELEASE_ID` = t41.`ID` 
 
+```
+
+#### 当前项目(cur_project) :id=test_plan-cur_project
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CATEGORIES`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`END_AT`,
+t1.`ID`,
+t1.`LIBRARY_ID`,
+t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
+t21.`IS_DELETED` AS `LIBRARY_IS_DELETED`,
+t21.`NAME` AS `LIBRARY_NAME`,
+t1.`NAME`,
+t1.`PROJECT_ID`,
+t11.`NAME` AS `PROJECT_NAME`,
+t11.`TYPE` AS `PROJECT_TYPE`,
+t1.`RELEASE_ID`,
+t41.`NAME` AS `RELEASE_NAME`,
+t1.`SPRINT_ID`,
+t31.`NAME` AS `SPRINT_NAME`,
+t1.`START_AT`,
+t1.`STATUS`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `TEST_PLAN` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+LEFT JOIN `LIBRARY` t21 ON t1.`LIBRARY_ID` = t21.`ID` 
+LEFT JOIN `SPRINT` t31 ON t1.`SPRINT_ID` = t31.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t41 ON t1.`RELEASE_ID` = t41.`ID` 
+
+WHERE ( t1.`PROJECT_ID` = #{ctx.webcontext.n_project_id_eq} )
 ```
 
 #### 我负责的(my_assignee) :id=test_plan-my_assignee
@@ -15658,6 +16545,51 @@ LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID`
 LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  exists(select 1 from recent t2 where t1.id=t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )  AND  NOT EXISTS(SELECT 1 FROM `RELATION` t3 WHERE t1.`ID` = t3.`TARGET_ID` AND  t3.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}   ) )
+```
+
+#### 关联工单(relation_ticket) :id=ticket-relation_ticket
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CHANNEL`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUSTOMER_ID`,
+t21.`NAME` AS `CUSTOMER_NAME`,
+t1.`ESTIMATED_AT`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PRIORITY`,
+t1.`PRODUCT_ID`,
+t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
+t11.`IS_ARCHIVED` AS `PRODUCT_IS_ARCHIVED`,
+t11.`IS_DELETED` AS `PRODUCT_IS_DELETED`,
+t11.`NAME` AS `PRODUCT_NAME`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+1 AS `REP_NUM`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
+t1.`STATE`,
+t1.`SUBMITTED_AT`,
+t1.`SUBMITTER_ID`,
+t1.`SUBMITTER_NAME`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `TICKET` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
+LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID` 
+
+WHERE EXISTS(SELECT * FROM `RELATION` t31 
+ WHERE 
+ t1.`ID` = t31.`TARGET_ID`  AND  ( t31.`TARGET_TYPE` = 'ticket'  AND  t31.`PRINCIPAL_TYPE` = 'idea'  AND  t31.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id} ) ) AND ( t1.`IS_DELETED` <> 1 )
 ```
 
 #### 当前标签下工单(ticket_re_product_tag) :id=ticket-ticket_re_product_tag
@@ -17467,6 +18399,92 @@ LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID`
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 1 )
+```
+
+#### 需求关联工作项(idea_relation_work_item) :id=work_item-idea_relation_work_item
+```sql
+SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`BACKLOG_FROM`,
+t1.`BACKLOG_TYPE`,
+t1.`BOARD_ID`,
+t81.`NAME` AS `BOARD_NAME`,
+t1.`COMPLETED_AT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`END_AT`,
+t1.`ENTRY_ID`,
+t71.`NAME` AS `ENTRY_NAME`,
+t1.`ENTRY_POSITION`,
+t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
+t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
+t1.`PID`,
+t1.`PRIORITY`,
+t1.`PROJECT_ID`,
+t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
+t11.`IS_ARCHIVED` AS `PROJECT_IS_ARCHIVED`,
+t11.`IS_DELETED` AS `PROJECT_IS_DELETED`,
+t11.`NAME` AS `PROJECT_NAME`,
+t11.`TYPE` AS `PROJECT_TYPE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
+t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t1.`RELEASE_ID`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
+1 AS `REP_NUM`,
+t1.`RISK`,
+t1.`SEQUENCE`,
+t1.`SEVERITY`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
+t1.`SPRINT_ID`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
+t1.`START_AT`,
+t1.`STATE`,
+t41.`TYPE` AS `STATE_TYPE`,
+t1.`SWIMLANE_ID`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TOP_ID`,
+t91.`TITLE` AS `TOP_TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
+t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
+t1.`WORK_ITEM_TYPE_ID`,
+t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
+t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
+FROM `WORK_ITEM` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
+
+WHERE EXISTS(SELECT * FROM `RELATION` t101 
+ WHERE 
+ t11.`ID` = t101.`PRINCIPAL_ID`  AND  ( t101.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id} ) ) AND ( t1.`IS_DELETED` = 0 )
 ```
 
 #### 看板工作项(kanban_work_item) :id=work_item-kanban_work_item
@@ -19306,6 +20324,92 @@ LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID`
 WHERE ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  exists(select 1 from recent t2 where t1.id=t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )  AND  NOT EXISTS(SELECT 1 FROM `RELATION` t3 WHERE t1.`ID` = t3.`TARGET_ID` AND  t3.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}   ) )
 ```
 
+#### 关联工作项(relation_work_item) :id=work_item-relation_work_item
+```sql
+SELECT
+t1.`ACTUAL_END_AT`,
+t1.`ACTUAL_START_AT`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`BACKLOG_FROM`,
+t1.`BACKLOG_TYPE`,
+t1.`BOARD_ID`,
+t81.`NAME` AS `BOARD_NAME`,
+t1.`COMPLETED_AT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`END_AT`,
+t1.`ENTRY_ID`,
+t71.`NAME` AS `ENTRY_NAME`,
+t1.`ENTRY_POSITION`,
+t1.`ENTRY_STATUS`,
+t1.`FINISHER`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
+t1.`JOB_TYPE`,
+t1.`MULTIPLE_PEOPLE`,
+IFNULL((TIMESTAMPDIFF(DAY,t1.`END_AT`,IFNULL(t1.`ACTUAL_END_AT`,CURDATE()))),NULL) AS `OVERDUE_TIME`,
+t1.`PID`,
+t1.`PRIORITY`,
+t1.`PROJECT_ID`,
+t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
+t11.`IS_ARCHIVED` AS `PROJECT_IS_ARCHIVED`,
+t11.`IS_DELETED` AS `PROJECT_IS_DELETED`,
+t11.`NAME` AS `PROJECT_NAME`,
+t11.`TYPE` AS `PROJECT_TYPE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
+t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t1.`RELEASE_ID`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
+1 AS `REP_NUM`,
+t1.`RISK`,
+t1.`SEQUENCE`,
+t1.`SEVERITY`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
+t1.`SPRINT_ID`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
+t1.`START_AT`,
+t1.`STATE`,
+t41.`TYPE` AS `STATE_TYPE`,
+t1.`SWIMLANE_ID`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TOP_ID`,
+t91.`TITLE` AS `TOP_TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
+t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
+t1.`WORK_ITEM_TYPE_ID`,
+t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
+t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
+FROM `WORK_ITEM` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
+
+WHERE EXISTS(SELECT * FROM `RELATION` t101 
+ WHERE 
+ t1.`ID` = t101.`TARGET_ID`  AND  ( t101.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}  AND  t101.`PRINCIPAL_TYPE` = 'idea'  AND  t101.`TARGET_TYPE` = 'work_item' ) ) AND ( t1.`IS_DELETED` <> 1 )
+```
+
 #### 项目发布下工作项(release) :id=work_item-release
 ```sql
 SELECT
@@ -20999,6 +22103,34 @@ FROM `WORKLOAD` t1
 LEFT JOIN `WORKLOAD_TYPE` t11 ON t1.`TYPE_ID` = t11.`ID` 
 
 WHERE ( t1.`PRINCIPAL_TYPE` = 'WORK_ITEM'  AND  t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} )
+```
+
+#### 我的工时(my_workload) :id=workload-my_workload
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`DURATION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`NAME`,
+t1.`OWNER_TYPE`,
+t1.`PRINCIPAL_ID`,
+t1.`PRINCIPAL_TYPE`,
+t1.`RECENT_PARENT`,
+t1.`RECENT_PARENT_IDENTIFIER`,
+t1.`RECENT_PARENT_NAME`,
+t1.`REGISTER_DATE`,
+concat(t1.`RECENT_PARENT_IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`TYPE_ID`,
+t11.`NAME` AS `TYPE_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `WORKLOAD` t1 
+LEFT JOIN `WORKLOAD_TYPE` t11 ON t1.`TYPE_ID` = t11.`ID` 
+
+WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} )
 ```
 
 #### 测试用例工时(test_case_workload) :id=workload-test_case_workload

@@ -18,11 +18,12 @@ state "开始" as Begin <<start>> [[$./run_del_relation_bug#begin {"开始"}]]
 state "拼接关联对象的主键" as RAWSFCODE1  [[$./run_del_relation_bug#rawsfcode1 {"拼接关联对象的主键"}]]
 state "删除正向关联" as DEACTION2  [[$./run_del_relation_bug#deaction2 {"删除正向关联"}]]
 state "删除反向关联" as DEACTION3  [[$./run_del_relation_bug#deaction3 {"删除反向关联"}]]
-state "获取执行用例" as DEACTION6  [[$./run_del_relation_bug#deaction6 {"获取执行用例"}]]
-state "对应测试用例关联缺陷" as DEDATASET1  [[$./run_del_relation_bug#dedataset1 {"对应测试用例关联缺陷"}]]
-state "填充正反关联对象的主要关联属性" as PREPAREPARAM1  [[$./run_del_relation_bug#prepareparam1 {"填充正反关联对象的主要关联属性"}]]
+state "调试逻辑参数" as DEBUGPARAM1  [[$./run_del_relation_bug#debugparam1 {"调试逻辑参数"}]]
 state "准备执行用例参数" as PREPAREPARAM3  [[$./run_del_relation_bug#prepareparam3 {"准备执行用例参数"}]]
+state "获取执行用例" as DEACTION6  [[$./run_del_relation_bug#deaction6 {"获取执行用例"}]]
+state "填充正反关联对象的主要关联属性" as PREPAREPARAM1  [[$./run_del_relation_bug#prepareparam1 {"填充正反关联对象的主要关联属性"}]]
 state "准备关联数据过滤参数" as PREPAREPARAM2  [[$./run_del_relation_bug#prepareparam2 {"准备关联数据过滤参数"}]]
+state "对应测试用例关联缺陷" as DEDATASET1  [[$./run_del_relation_bug#dedataset1 {"对应测试用例关联缺陷"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./run_del_relation_bug#loopsubcall1 {"循环子调用"}]] #green {
 state "填充主键" as RAWSFCODE2  [[$./run_del_relation_bug#rawsfcode2 {"填充主键"}]]
 state "删除测试用例关联缺陷数据" as DEACTION4  [[$./run_del_relation_bug#deaction4 {"删除测试用例关联缺陷数据"}]]
@@ -30,7 +31,8 @@ state "删除缺陷关联测试用例数据" as DEACTION5  [[$./run_del_relation
 }
 
 
-Begin --> PREPAREPARAM1
+Begin --> DEBUGPARAM1
+DEBUGPARAM1 --> PREPAREPARAM1
 PREPAREPARAM1 --> RAWSFCODE1
 RAWSFCODE1 --> DEACTION2
 DEACTION2 --> DEACTION3
@@ -55,14 +57,24 @@ DEACTION4 --> DEACTION5
 
 
 *- N/A*
+#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
+
+
+
+> [!NOTE|label:调试信息|icon:fa fa-bug]
+> 调试输出参数`test_case_relation_bug(测试用例关联缺陷)`的详细信息
+
+
 #### 填充正反关联对象的主要关联属性 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`Default(传入变量).PRINCIPAL_ID(关联主体标识)` 设置给  `forward_relation_obj(正向关联对象).PRINCIPAL_ID(关联主体标识)`
-2. 将`Default(传入变量).PRINCIPAL_ID(关联主体标识)` 设置给  `reverse_relation_obj(反向关联对象).TARGET_ID(目标主体标识)`
-3. 将`Default(传入变量).TARGET_ID(目标主体标识)` 设置给  `reverse_relation_obj(反向关联对象).PRINCIPAL_ID(关联主体标识)`
-4. 将`Default(传入变量).TARGET_ID(目标主体标识)` 设置给  `forward_relation_obj(正向关联对象).TARGET_ID(目标主体标识)`
+2. 将`Default(传入变量).PRINCIPAL_TYPE(关联主体类型)` 设置给  `reverse_relation_obj(反向关联对象).PRINCIPAL_TYPE(关联主体类型)`
+3. 将`Default(传入变量).PRINCIPAL_TYPE(关联主体类型)` 设置给  `forward_relation_obj(正向关联对象).PRINCIPAL_TYPE(关联主体类型)`
+4. 将`Default(传入变量).PRINCIPAL_ID(关联主体标识)` 设置给  `reverse_relation_obj(反向关联对象).TARGET_ID(目标主体标识)`
+5. 将`Default(传入变量).TARGET_ID(目标主体标识)` 设置给  `reverse_relation_obj(反向关联对象).PRINCIPAL_ID(关联主体标识)`
+6. 将`Default(传入变量).TARGET_ID(目标主体标识)` 设置给  `forward_relation_obj(正向关联对象).TARGET_ID(目标主体标识)`
 
 #### 拼接关联对象的主键 :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
@@ -74,12 +86,12 @@ DEACTION4 --> DEACTION5
 // 获取正向关联对象的主键
 var forward_relation_obj = logic.getParam("forward_relation_obj");
 if(forward_relation_obj.get("principal_id") != null && forward_relation_obj.get("target_id") != null){
-    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id"));
+    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id")+ '_' + forward_relation_obj.get("principal_type"));
 }
 // 获取反向关联对象的主键
 var reverse_relation_obj = logic.getParam("reverse_relation_obj");
 if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get("target_id") != null){
-    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id"));
+    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id")+ '_' + reverse_relation_obj.get("principal_type"));
 }
 ```
 

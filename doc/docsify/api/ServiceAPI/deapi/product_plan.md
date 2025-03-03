@@ -366,15 +366,10 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/product_plans/{key}/delete_categories" type="info" :closable="false" ></el-alert>
+<el-alert title="/product_plans/delete_categories" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
-
-##### 路径参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|key|String|标识|
+权限标识：`DELETE`
 
 
 
@@ -421,6 +416,30 @@ Integer
 ```
 
 
+##### 响应示例： {docsify-ignore}
+```json
+
+{
+  "type" : null,
+  "start_at" : null,
+  "end_at" : null,
+  "is_leaf" : null,
+  "categories" : null,
+  "categories_name" : null,
+  "is_deleted" : null,
+  "assignee_name" : null,
+  "assignee_id" : null,
+  "sequence" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "product_id" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+
+```
 
 ## 获取排期草稿
 
@@ -1172,7 +1191,7 @@ Integer
 <el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/products/{pkey}/product_plans/{key}/delete_categories" type="info" :closable="false" ></el-alert>
+<el-alert title="/products/{pkey}/product_plans/delete_categories" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 
@@ -1181,7 +1200,6 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |pkey|String|产品主键|
-|key|String|标识|
 
 
 

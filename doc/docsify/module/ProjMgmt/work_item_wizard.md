@@ -72,6 +72,24 @@
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/ProjMgmt/work_item_wizard/dataset/Default)|DEFAULT|数据查询|是|||
 
+## 数据权限
+
+##### 全部数据（读写） :id=work_item_wizard-ALL_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `CREATE`
+* `READ`
+* `UPDATE`
+* `DELETE`
+
+
+
+
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
@@ -99,6 +117,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProjMgmt/work_item_wizard?id=数据集合`">
   数据集合
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProjMgmt/work_item_wizard?id=数据权限`">
+  数据权限
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProjMgmt/work_item_wizard?id=搜索模式`">
   搜索模式

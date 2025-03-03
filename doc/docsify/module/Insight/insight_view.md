@@ -126,7 +126,15 @@
 
 * `SUBDATA`
 * `UPDATE`
+* `MANAGE_PSSYSBIDIMENSION`
+* `MANAGE_PSSYSBIREPORT`
+* `READ_PSSYSBIREPORT`
+* `MANAGE_PSSYSBICUBE`
+* `READ_PSSYSBIMEASURE`
+* `READ_PSSYSBIDIMENSION`
+* `MANAGE_PSSYSBIMEASURE`
 * `READ`
+* `READ_PSSYSBICUBE`
 * `DELETE`
 
 
@@ -147,11 +155,11 @@
 
 
 
-##### 全部数据（写） :id=insight_view-ALL_W
+##### 效能数据（写） :id=insight_view-ALL_W
 
 <p class="panel-title"><b>数据范围</b></p>
 
-* `全部数据`
+* `无`
 
 <p class="panel-title"><b>数据能力</b></p>
 
@@ -167,7 +175,11 @@
 
 <p class="panel-title"><b>数据能力</b></p>
 
+* `READ_PSSYSBICUBE`
 * `READ`
+* `READ_PSSYSBIDIMENSION`
+* `READ_PSSYSBIREPORT`
+* `READ_PSSYSBIMEASURE`
 
 
 
@@ -180,7 +192,15 @@
 <p class="panel-title"><b>数据能力</b></p>
 
 * `READ`
+* `READ_PSSYSBIMEASURE`
+* `READ_PSSYSBIREPORT`
+* `MANAGE_PSSYSBIREPORT`
+* `READ_PSSYSBIDIMENSION`
+* `MANAGE_PSSYSBIDIMENSION`
 * `SUBDATA`
+* `READ_PSSYSBICUBE`
+* `MANAGE_PSSYSBIMEASURE`
+* `MANAGE_PSSYSBICUBE`
 
 
 

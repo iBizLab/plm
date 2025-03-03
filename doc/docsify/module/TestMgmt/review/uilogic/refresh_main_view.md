@@ -15,11 +15,11 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./refresh_main_view#begin {开始}]]
+state "刷新页面" as RAWJSCODE1  [[$./refresh_main_view#rawjscode1 {刷新页面}]]
 state "结束" as END1 <<end>> [[$./refresh_main_view#end1 {结束}]]
 state "设置分页表单" as PREPAREJSPARAM1  [[$./refresh_main_view#preparejsparam1 {设置分页表单}]]
-state "调试逻辑参数" as DEBUGPARAM1  [[$./refresh_main_view#debugparam1 {调试逻辑参数}]]
 state "控制显隐" as RAWJSCODE2  [[$./refresh_main_view#rawjscode2 {控制显隐}]]
-state "刷新页面" as RAWJSCODE1  [[$./refresh_main_view#rawjscode1 {刷新页面}]]
+state "调试逻辑参数" as DEBUGPARAM1  [[$./refresh_main_view#debugparam1 {调试逻辑参数}]]
 
 
 Begin --> DEBUGPARAM1

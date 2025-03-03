@@ -16,9 +16,9 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./access_password#begin {"开始"}]]
 state "获取共享空间" as DEACTION1  [[$./access_password#deaction1 {"获取共享空间"}]]
-state "填充校验标识" as PREPAREPARAM3  [[$./access_password#prepareparam3 {"填充校验标识"}]]
 state "查询共享空间密码信息" as RAWSQLCALL1  [[$./access_password#rawsqlcall1 {"查询共享空间密码信息"}]]
 state "解密密码信息" as DELOGIC1  [[$./access_password#delogic1 {"解密密码信息"}]]
+state "填充校验标识" as PREPAREPARAM3  [[$./access_password#prepareparam3 {"填充校验标识"}]]
 state "校验链接是否有效" as RAWSFCODE1  [[$./access_password#rawsfcode1 {"校验链接是否有效"}]]
 state "密码正确" as PREPAREPARAM1  [[$./access_password#prepareparam1 {"密码正确"}]]
 state "密码错误" as PREPAREPARAM2  [[$./access_password#prepareparam2 {"密码错误"}]]

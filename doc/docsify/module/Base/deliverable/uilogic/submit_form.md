@@ -15,11 +15,11 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./submit_form#begin {开始}]]
-state "上传" as DEUIACTION1  [[$./submit_form#deuiaction1 {上传}]]
 state "获取文件名称" as RAWJSCODE1  [[$./submit_form#rawjscode1 {获取文件名称}]]
+state "提交（表单中）" as RAWJSCODE2  [[$./submit_form#rawjscode2 {提交（表单中）}]]
 state "设置上下文参数" as PREPAREJSPARAM1  [[$./submit_form#preparejsparam1 {设置上下文参数}]]
 state "视图部件调用" as VIEWCTRLINVOKE1  [[$./submit_form#viewctrlinvoke1 {视图部件调用}]]
-state "提交（表单中）" as RAWJSCODE2  [[$./submit_form#rawjscode2 {提交（表单中）}]]
+state "上传" as DEUIACTION1  [[$./submit_form#deuiaction1 {上传}]]
 
 
 Begin --> DEUIACTION1
@@ -90,8 +90,8 @@ ibiz.hub.getApp(context.srfappid).deService.exec(
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|上传文件|files|数据对象列表||
 |主表单对象|form|部件对象||
-|上下文|context|导航视图参数绑定参数||
+|上传文件|files|数据对象列表||
 |当前视图对象|view|当前视图对象||
+|上下文|context|导航视图参数绑定参数||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

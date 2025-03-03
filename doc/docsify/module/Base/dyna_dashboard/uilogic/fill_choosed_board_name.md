@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./fill_choosed_board_name#begin {开始}]]
-state "设置仪表盘标题" as RAWJSCODE1  [[$./fill_choosed_board_name#rawjscode1 {设置仪表盘标题}]]
 state "结束" as END1 <<end>> [[$./fill_choosed_board_name#end1 {结束}]]
+state "设置仪表盘标题" as RAWJSCODE1  [[$./fill_choosed_board_name#rawjscode1 {设置仪表盘标题}]]
 
 
 Begin --> RAWJSCODE1
@@ -57,8 +57,8 @@ view.layoutPanel.panelItems.board_title.setDataValue(uiLogic.ctrl.inputData.dyna
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |仪表盘标题|board_title|数据对象||
-|ctrl|ctrl|当前部件对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |视图导航参数|params|||
 |当前视图对象|view|当前视图对象||
+|ctrl|ctrl|当前部件对象||

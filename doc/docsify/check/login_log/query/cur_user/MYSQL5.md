@@ -20,5 +20,5 @@ t1.`USER_ID`,
 t1.`USER_NAME`
 FROM `` t1 
 
-WHERE ( t1.`USER_ID` = #{ctx.sessioncontext.srfuaauserid} )
+
 ```

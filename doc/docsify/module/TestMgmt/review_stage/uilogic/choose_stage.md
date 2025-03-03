@@ -16,12 +16,12 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./choose_stage#begin {开始}]]
 state "设置选中值" as RAWJSCODE3  [[$./choose_stage#rawjscode3 {设置选中值}]]
-state "绑定父级页面/表单" as PREPAREJSPARAM1  [[$./choose_stage#preparejsparam1 {绑定父级页面/表单}]]
-state "准备参数" as PREPAREJSPARAM3  [[$./choose_stage#preparejsparam3 {准备参数}]]
-state "取消选中值" as RAWJSCODE2  [[$./choose_stage#rawjscode2 {取消选中值}]]
-state "实体行为" as DEACTION1  [[$./choose_stage#deaction1 {实体行为}]]
 state "准备参数" as PREPAREJSPARAM2  [[$./choose_stage#preparejsparam2 {准备参数}]]
+state "绑定父级页面/表单" as PREPAREJSPARAM1  [[$./choose_stage#preparejsparam1 {绑定父级页面/表单}]]
+state "取消选中值" as RAWJSCODE2  [[$./choose_stage#rawjscode2 {取消选中值}]]
 state "设置选中值" as RAWJSCODE1  [[$./choose_stage#rawjscode1 {设置选中值}]]
+state "准备参数" as PREPAREJSPARAM3  [[$./choose_stage#preparejsparam3 {准备参数}]]
+state "实体行为" as DEACTION1  [[$./choose_stage#deaction1 {实体行为}]]
 
 
 Begin --> DEACTION1
@@ -132,10 +132,10 @@ curstage_id.setDataValue(null);
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|评审信息|review_info|数据对象||
-|父表单|parent_form|数据对象||
-|列表对象|list|部件对象||
-|父视图对象|parent_view|数据对象||
 |上下文|ctx|导航视图参数绑定参数||
 |当前视图对象|view|当前视图对象||
+|父视图对象|parent_view|数据对象||
+|父表单|parent_form|数据对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|列表对象|list|部件对象||
+|评审信息|review_info|数据对象||

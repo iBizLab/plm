@@ -15,10 +15,10 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./fill_and_refresh_portlet#begin {开始}]]
-state "刷新门户部件" as VIEWCTRLINVOKE2  [[$./fill_and_refresh_portlet#viewctrlinvoke2 {刷新门户部件}]]
-state "结束" as END1 <<end>> [[$./fill_and_refresh_portlet#end1 {结束}]]
 state "过滤表单undefined数据" as RAWJSCODE1  [[$./fill_and_refresh_portlet#rawjscode1 {过滤表单undefined数据}]]
 state "设置门户配置数据" as VIEWCTRLINVOKE1  [[$./fill_and_refresh_portlet#viewctrlinvoke1 {设置门户配置数据}]]
+state "刷新门户部件" as VIEWCTRLINVOKE2  [[$./fill_and_refresh_portlet#viewctrlinvoke2 {刷新门户部件}]]
+state "结束" as END1 <<end>> [[$./fill_and_refresh_portlet#end1 {结束}]]
 
 
 Begin --> RAWJSCODE1
@@ -80,5 +80,5 @@ uiLogic.config = Object.fromEntries(
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |部件|ctrl|当前部件对象||
-|门户配置|config|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|门户配置|config|数据对象||

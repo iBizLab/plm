@@ -62,7 +62,7 @@ panelItems.client_panel_container.state.visible = false;
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|评论框编辑器|editor|数据对象||
 |嵌入视图|commentcustomer_connect_list_view|部件对象||
+|评论框编辑器|editor|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |当前视图对象|view|当前视图对象||

@@ -73,9 +73,9 @@ PREPAREJSPARAM3 --> END1
 | --------| --------| --------  | --------   |
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |滚动条容器1|container_scroll1|部件对象||
-|容器状态|right_grouppanel_state|数据对象||
+|form|form|部件对象||
 |view|view|当前视图对象||
-|评论按钮状态|button2_state_obj|数据对象||
 |工具栏|toolbar|部件对象||
 |关闭按钮状态|button3_state_obj|数据对象||
-|form|form|部件对象||
+|评论按钮状态|button2_state_obj|数据对象||
+|容器状态|right_grouppanel_state|数据对象||

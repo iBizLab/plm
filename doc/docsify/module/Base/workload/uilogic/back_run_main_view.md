@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./back_run_main_view#begin {开始}]]
-state "切换显示组件" as RAWJSCODE1  [[$./back_run_main_view#rawjscode1 {切换显示组件}]]
 state "绑定表单" as PREPAREJSPARAM2  [[$./back_run_main_view#preparejsparam2 {绑定表单}]]
 state "获取父视图对象" as PREPAREJSPARAM1  [[$./back_run_main_view#preparejsparam1 {获取父视图对象}]]
+state "切换显示组件" as RAWJSCODE1  [[$./back_run_main_view#rawjscode1 {切换显示组件}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -67,6 +67,6 @@ uiLogic.parentview.ctx.controllersMap.get("form").details.grouppanel1.state.visi
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |表单|form|部件对象||
-|parentView|parentView|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|parentView|parentView|数据对象||
 |当前视图对象|view|当前视图对象||

@@ -16,10 +16,10 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./resource_del#begin {开始}]]
 state "检验资源是否已删除" as DEACTION1  [[$./resource_del#deaction1 {检验资源是否已删除}]]
-state "打开默认资源" as DEUIACTION2  [[$./resource_del#deuiaction2 {打开默认资源}]]
 state "删除资源" as DEUIACTION1  [[$./resource_del#deuiaction1 {删除资源}]]
 state "结束" as END1 <<end>> [[$./resource_del#end1 {结束}]]
 state "计算删除的资源标识" as RAWJSCODE1  [[$./resource_del#rawjscode1 {计算删除的资源标识}]]
+state "打开默认资源" as DEUIACTION2  [[$./resource_del#deuiaction2 {打开默认资源}]]
 
 
 Begin --> DEUIACTION1

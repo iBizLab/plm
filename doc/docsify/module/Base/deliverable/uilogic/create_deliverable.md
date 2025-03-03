@@ -15,13 +15,13 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./create_deliverable#begin {开始}]]
-state "获取面板中的单独成员" as PREPAREJSPARAM3  [[$./create_deliverable#preparejsparam3 {获取面板中的单独成员}]]
-state "结束" as END1 <<end>> [[$./create_deliverable#end1 {结束}]]
-state "准备参数" as PREPAREJSPARAM4  [[$./create_deliverable#preparejsparam4 {准备参数}]]
-state "添加交付物实体临时数据" as RAWJSCODE1  [[$./create_deliverable#rawjscode1 {添加交付物实体临时数据}]]
-state "获取面板所有成员" as PREPAREJSPARAM2  [[$./create_deliverable#preparejsparam2 {获取面板所有成员}]]
-state "清空输入框内容" as PREPAREJSPARAM5  [[$./create_deliverable#preparejsparam5 {清空输入框内容}]]
 state "主表单自动保存" as VIEWCTRLINVOKE1  [[$./create_deliverable#viewctrlinvoke1 {主表单自动保存}]]
+state "准备参数" as PREPAREJSPARAM4  [[$./create_deliverable#preparejsparam4 {准备参数}]]
+state "获取面板中的单独成员" as PREPAREJSPARAM3  [[$./create_deliverable#preparejsparam3 {获取面板中的单独成员}]]
+state "清空输入框内容" as PREPAREJSPARAM5  [[$./create_deliverable#preparejsparam5 {清空输入框内容}]]
+state "获取面板所有成员" as PREPAREJSPARAM2  [[$./create_deliverable#preparejsparam2 {获取面板所有成员}]]
+state "添加交付物实体临时数据" as RAWJSCODE1  [[$./create_deliverable#rawjscode1 {添加交付物实体临时数据}]]
+state "结束" as END1 <<end>> [[$./create_deliverable#end1 {结束}]]
 
 
 Begin --> PREPAREJSPARAM2
@@ -111,12 +111,12 @@ ibiz.hub.getApp(context.srfappid).deService.exec(
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|当前视图对象|view|当前视图对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|应用上下文变量|ctx|导航视图参数绑定参数||
 |面板成员组|panelItems|数据对象||
-|容器对象|container1|当前容器对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |主表单对象|form|部件对象||
-|表格对象|grid|部件对象||
 |输入框|input|数据对象||
+|表格对象|grid|部件对象||
 |交付目标对象|deliverable|数据对象||
+|应用上下文变量|ctx|导航视图参数绑定参数||
+|容器对象|container1|当前容器对象||
+|当前视图对象|view|当前视图对象||

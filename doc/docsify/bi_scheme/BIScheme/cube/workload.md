@@ -26,7 +26,7 @@
 | --------  |------------| -----   |  --------|--------|
 |登记工时|z_register_workload|合计|时长(DURATION)|说明：统计登记工时的总量<br>规则：求和（登记工时）|
 ##### 计算式指标
-|    名称col200   | 代码名col150  |  计算公式col500   |  备注col500  |
+|    名称col200   | 代码名col150  |  计算公式col501   |  备注col500  |
 | --------  |------------| -----   |  --------|
 |工时类别占比|workload_type_ratio|countif(type_id in (params(type_id, ('1')))) / if(count(id) = 0, 1, count(id))|统计登记工时的所属类别情况。	|
 |登记次数|register_number|count(id)|统计登记工时的操作次数。|

@@ -15,11 +15,11 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./submit_review#begin {"开始"}]]
-state "设置提交人、状态" as PREPAREPARAM1  [[$./submit_review#prepareparam1 {"设置提交人、状态"}]]
-state "更新评审" as DEACTION1  [[$./submit_review#deaction1 {"更新评审"}]]
 state "传入参数" as DEBUGPARAM1  [[$./submit_review#debugparam1 {"传入参数"}]]
 state "设置提交时间" as RAWSFCODE1  [[$./submit_review#rawsfcode1 {"设置提交时间"}]]
+state "设置提交人、状态" as PREPAREPARAM1  [[$./submit_review#prepareparam1 {"设置提交人、状态"}]]
 state "设置阶段的状态" as PREPAREPARAM2  [[$./submit_review#prepareparam2 {"设置阶段的状态"}]]
+state "更新评审" as DEACTION1  [[$./submit_review#deaction1 {"更新评审"}]]
 state "获取关系信息" as DEDATASET1  [[$./submit_review#dedataset1 {"获取关系信息"}]]
 state "设置关系过滤参数" as PREPAREPARAM3  [[$./submit_review#prepareparam3 {"设置关系过滤参数"}]]
 state "结束" as END1 <<end>> [[$./submit_review#end1 {"结束"}]]

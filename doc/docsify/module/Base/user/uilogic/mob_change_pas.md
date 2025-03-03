@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./mob_change_pas#begin {开始}]]
-state "结束" as END1 <<end>> [[$./mob_change_pas#end1 {结束}]]
 state "移动端校验表单" as MOBRAWJSCODE1  [[$./mob_change_pas#mobrawjscode1 {移动端校验表单}]]
+state "结束" as END1 <<end>> [[$./mob_change_pas#end1 {结束}]]
 
 
 Begin --> MOBRAWJSCODE1
@@ -70,6 +70,6 @@ if (bol) {
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |视图|view|当前视图对象||
 |表单|form|部件对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

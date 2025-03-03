@@ -17,8 +17,8 @@ hide empty description
 state "开始" as Begin <<start>> [[$./toolbar_link_work_item#begin {开始}]]
 state "嵌入视图不存在" as RAWJSCODE2  [[$./toolbar_link_work_item#rawjscode2 {嵌入视图不存在}]]
 state "显示下拉并展开数据" as DEUIACTION1  [[$./toolbar_link_work_item#deuiaction1 {显示下拉并展开数据}]]
-state "存在嵌入视图" as PREPAREJSPARAM1  [[$./toolbar_link_work_item#preparejsparam1 {存在嵌入视图}]]
 state "切换分页" as RAWJSCODE1  [[$./toolbar_link_work_item#rawjscode1 {切换分页}]]
+state "存在嵌入视图" as PREPAREJSPARAM1  [[$./toolbar_link_work_item#preparejsparam1 {存在嵌入视图}]]
 state "设置关系页面对象" as PREPAREJSPARAM2  [[$./toolbar_link_work_item#preparejsparam2 {设置关系页面对象}]]
 
 
@@ -93,7 +93,7 @@ uiLogic.druipart.navContext.srfshowchoose = true;
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |传入变量(<i class="fa fa-check"/></i>)|Default|简单数据||
-|视图|view|当前视图对象||
 |表单|form|部件对象||
 |嵌入视图对象|druipart|数据对象||
+|视图|view|当前视图对象||
 |嵌入视图|embedView|数据对象||

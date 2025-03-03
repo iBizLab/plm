@@ -293,7 +293,7 @@
 <el-alert title="/customers/{key}/add_categories" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`CREATE`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -631,7 +631,7 @@ Integer
 <el-alert title="/customers/{key}/del_relation" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`DELETE`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
@@ -708,7 +708,7 @@ Integer
 <el-alert title="/customers/delete_categories" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`DELETE`
 
 
 
@@ -1177,7 +1177,7 @@ Integer
 <el-alert title="/customers/{key}/product_customer_re_counters" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`READ`
 
 ##### 路径参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|

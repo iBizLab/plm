@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./edit_comment#begin {开始}]]
-state "展开评论输入框并设值" as RAWJSCODE1  [[$./edit_comment#rawjscode1 {展开评论输入框并设值}]]
 state "设置评论id" as PREPAREJSPARAM1  [[$./edit_comment#preparejsparam1 {设置评论id}]]
+state "展开评论输入框并设值" as RAWJSCODE1  [[$./edit_comment#rawjscode1 {展开评论输入框并设值}]]
 
 
 Begin --> PREPAREJSPARAM1 : [[$./edit_comment#begin-preparejsparam1{无评论内容时不执行} 无评论内容时不执行]]
@@ -65,8 +65,8 @@ uiLogic.comment.reply.value = null;
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
+|评论对象|comment|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|评论id存储对象|comment_id|数据对象||
 |父视图对象|parentView|数据对象||
 |当前视图对象|view|当前视图对象||
-|评论对象|comment|数据对象||
+|评论id存储对象|comment_id|数据对象||

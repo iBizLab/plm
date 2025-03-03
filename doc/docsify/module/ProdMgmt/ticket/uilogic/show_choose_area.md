@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./show_choose_area#begin {开始}]]
-state "设置选择区域显示" as PREPAREJSPARAM2  [[$./show_choose_area#preparejsparam2 {设置选择区域显示}]]
 state "绑定部件对象" as PREPAREJSPARAM1  [[$./show_choose_area#preparejsparam1 {绑定部件对象}]]
+state "设置选择区域显示" as PREPAREJSPARAM2  [[$./show_choose_area#preparejsparam2 {设置选择区域显示}]]
 
 
 Begin --> PREPAREJSPARAM1

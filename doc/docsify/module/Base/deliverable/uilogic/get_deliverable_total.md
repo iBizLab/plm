@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./get_deliverable_total#begin {开始}]]
-state "触发计数器刷新" as RAWJSCODE3  [[$./get_deliverable_total#rawjscode3 {触发计数器刷新}]]
 state "获取交付目标总条数" as RAWJSCODE2  [[$./get_deliverable_total#rawjscode2 {获取交付目标总条数}]]
+state "触发计数器刷新" as RAWJSCODE3  [[$./get_deliverable_total#rawjscode3 {触发计数器刷新}]]
 state "结束" as END1 <<end>> [[$./get_deliverable_total#end1 {结束}]]
 
 
@@ -73,7 +73,7 @@ ibiz.mc.command.update.send({ srfdecodename: 'work_item'})
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|交付物列表|deliverable|数据对象列表||
 |当前视图对象|VIEW|当前视图对象||
 |当前部件对象|CTRL|当前部件对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|交付物列表|deliverable|数据对象列表||

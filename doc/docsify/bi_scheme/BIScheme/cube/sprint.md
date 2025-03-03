@@ -24,7 +24,7 @@
 
 ### 指标
 ##### 计算式指标
-|    名称col200   | 代码名col150  |  计算公式col500   |  备注col500  |
+|    名称col200   | 代码名col150  |  计算公式col501   |  备注col500  |
 | --------  |------------| -----   |  --------|
 |迭代延期数|sprint_delay_number|countif(status <> 3 and end_at < now() and project_is_deleted = 0)|统计延期迭代的数量。<br>|
 |迭代延期率|sprint_delay_rate|countif(status <> 3 and end_at < now() and project_is_deleted = 0) / if(countif(project_is_deleted = 0) = 0, 1, countif(project_is_deleted = 0))|统计延期迭代数的占比，反映迭代的延期情况。<br>|

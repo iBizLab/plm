@@ -15,12 +15,14 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./set_report_flag#begin {"开始"}]]
+state "获取用户全量信息" as DEACTION2  [[$./set_report_flag#deaction2 {"获取用户全量信息"}]]
 state "设置用户参数" as PREPAREPARAM1  [[$./set_report_flag#prepareparam1 {"设置用户参数"}]]
 state "更新用户统计状态" as DEACTION1  [[$./set_report_flag#deaction1 {"更新用户统计状态"}]]
 state "结束" as END1 <<end>> [[$./set_report_flag#end1 {"结束"}]]
 
 
-Begin --> PREPAREPARAM1
+Begin --> DEACTION2
+DEACTION2 --> PREPAREPARAM1
 PREPAREPARAM1 --> DEACTION1
 DEACTION1 --> END1
 
@@ -36,6 +38,14 @@ DEACTION1 --> END1
 
 
 *- N/A*
+#### 获取用户全量信息 :id=DEACTION2<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+
+
+
+调用实体 [企业用户(USER)](module/Base/user.md) 行为 [获取人员全量信息(GetFull)](module/Base/user#行为) ，行为参数为`Default(传入变量)`
+
+将执行结果返回给参数`Default(传入变量)`
+
 #### 设置用户参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 

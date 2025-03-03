@@ -8,7 +8,7 @@
 
 
 ### 关联视图
-  * [实体属性(psde_field_grid_view)](app/view/psde_field_grid_view)
+  * [工作项属性(psde_field_global_work_item_grid_view)](app/view/psde_field_global_work_item_grid_view)
   * [工作项状态(work_item_state_grid_view)](app/view/work_item_state_grid_view)
 
 <script>

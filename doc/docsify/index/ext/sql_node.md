@@ -1,5 +1,5 @@
 
-## 存在直接SQL调用的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[215]</font></sup>
+## 存在直接SQL调用的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[221]</font></sup>
 
 #### [基线(BASELINE)](module/Base/baseline)的处理逻辑[删除基线前附加逻辑(before_remove)](module/Base/baseline/logic/before_remove)
 
@@ -115,6 +115,20 @@ WHERE FIND_IN_SET(?, categories) > 0 ;
 1. `Default(传入变量).id(标识)`
 2. `Default(传入变量).id(标识)`
 
+#### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[修改评论(update_comment)](module/Team/discuss_post/logic/update_comment)
+
+节点：修改评论内容
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+update comment set CONTENT = ? where id = ?
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `commnet(评论).CONTENT(内容)`
+2. `commnet(评论).ID(标识)`
+
 #### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[删除评论(del_comment)](module/Team/discuss_post/logic/del_comment)
 
 节点：热度-2
@@ -129,7 +143,7 @@ and t2.principal_type = 'DISCUSS_POST' and t2.id = ?)
 
 <p class="panel-title"><b>执行sql参数</b></p>
 
-1. `Default(传入变量).del_comment_id`
+1. `Default(传入变量).comment_id`
 
 #### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[填充附加数据(fill_addition)](module/Team/discuss_post/logic/fill_addition)
 
@@ -174,6 +188,20 @@ update recent set IS_DELETED=0 where owner_id=? and owner_subtype='idea'
 
 1. `Default(传入变量).ID(标识)`
 
+#### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[讨论中评论数计数器(discuss_post_count)](module/Team/discuss_post/logic/discuss_post_count)
+
+节点：直接SQL调用
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT count(1) as discuss_post_count FROM `comment` where OWNER_TYPE = 'DISCUSS_POST' AND PRINCIPAL_ID = ?
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+
+重置参数`result(结果)`，并将执行sql结果赋值给参数`result(结果)`
 #### [讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply)的处理逻辑[删除回复(del_reply)](module/Team/discuss_reply/logic/del_reply)
 
 节点：计算此回复下的评论条数
@@ -216,6 +244,34 @@ delete from `comment` where principal_id = ? and principal_type = 'DISCUSS_REPLY
 
 1. `Default(传入变量).ID(标识)`
 
+#### [讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply)的处理逻辑[回复下修改评论(update_comment)](module/Team/discuss_reply/logic/update_comment)
+
+节点：修改评论内容
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+update comment set CONTENT = ? where id = ?
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `comment(评论对象).CONTENT(内容)`
+2. `comment(评论对象).ID(标识)`
+
+#### [讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply)的处理逻辑[回复下修改评论(update_comment)](module/Team/discuss_reply/logic/update_comment)
+
+节点：讨论热度+2
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+update discuss_post t1 set t1.heat = t1.heat + 2 
+where t1.id = ?
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).POST_ID(讨论标识)`
+
 #### [讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply)的处理逻辑[回复下删除评论(del_comment)](module/Team/discuss_reply/logic/del_comment)
 
 节点：讨论热度-2
@@ -223,12 +279,14 @@ delete from `comment` where principal_id = ? and principal_type = 'DISCUSS_REPLY
 
 ```sql
 update discuss_post t1 set t1.heat = t1.heat - 2 
-where t1.id = ?
+where exists(select 1 from `comment` t2 
+where t2.principal_id = t1.id 
+and t2.principal_type = 'DISCUSS_REPLY' and t2.id = ?)
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
 
-1. `Default(传入变量).POST_ID(讨论标识)`
+1. `Default(传入变量).ID(标识)`
 
 #### [讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply)的处理逻辑[回复下添加评论(send_comment)](module/Team/discuss_reply/logic/send_comment)
 
@@ -251,6 +309,20 @@ where t1.id = ?
 
 ```sql
 update discuss_post t1 set t1.heat = t1.heat + 5 
+where t1.id = ?
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).POST_ID(讨论标识)`
+
+#### [讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply)的处理逻辑[编辑回复(edit_reply)](module/Team/discuss_reply/logic/edit_reply)
+
+节点：讨论热度+2
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+update discuss_post t1 set t1.heat = t1.heat + 2 
 where t1.id = ?
 ```
 
@@ -910,6 +982,20 @@ update recent set IS_DELETED=0 where owner_id=? and owner_subtype='page'
 
 1. `Default(传入变量).ID(标识)`
 
+#### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[统计页面评论数(count_comment)](module/Wiki/article_page/logic/count_comment)
+
+节点：统计页面评论数
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT COUNT(*) AS total FROM `comment` WHERE PRINCIPAL_TYPE = 'PAGE' AND CONTENT <> '<p><del>该评论已删除</del></p>' AND PRINCIPAL_ID = ?
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).article_page`
+
+将执行sql结果赋值给参数`comment_num(评论数)`
 #### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[获取共享信息(get_shared_info)](module/Wiki/article_page/logic/get_shared_info)
 
 节点：获取访问密码

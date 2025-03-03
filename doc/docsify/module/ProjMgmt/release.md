@@ -12,11 +12,13 @@
 |负责人|ASSIGNEE_NAME|文本，可指定长度|100|是||
 |类别|CATEGORIES|多项选择(文本值)|2000|是||
 |类别|CATEGORIES_NAME|长文本，长度1000|2000|是||
+|发布日志|CHANGELOG|长文本，没有长度限制|1048576|是||
 |已完成工作项数|COMPLETED_WORK_ITEMS|数值||是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
 |描述|DESCRIPTION|长文本，长度1000|2000|是||
 |发布时间|END_AT|日期型||是||
+|发布年份|END_YEAR|文本，可指定长度|200|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |名称|NAME|文本，可指定长度|200|否||
 |项目标识|PROJECT_ID|外键值|100|否||
@@ -133,6 +135,8 @@
 |[BI查询(bi_search)](module/ProjMgmt/release/query/bi_search)|bi_search|否|否 |否 ||
 |[选择发布关联(choose_relese_relation)](module/ProjMgmt/release/query/choose_relese_relation)|choose_relese_relation|否|否 |否 ||
 |[未已发布(not_published)](module/ProjMgmt/release/query/not_published)|not_published|否|否 |否 ||
+|[产品所属发布(product_re_project_published)](module/ProjMgmt/release/query/product_re_project_published)|product_re_project_published|否|否 |否 |产品所关联项目中的已发布|
+|[已发布(published)](module/ProjMgmt/release/query/published)|published|否|否 |否 ||
 |[只读用户(reader)](module/ProjMgmt/release/query/reader)|reader|否|否 |否 ||
 |[迭代关联发布(sprint_relation)](module/ProjMgmt/release/query/sprint_relation)|sprint_relation|否|否 |否 ||
 
@@ -145,6 +149,8 @@
 |[选择发布关联(choose_relese_relation)](module/ProjMgmt/release/dataset/choose_relese_relation)|choose_relese_relation|数据查询|否|||
 |[项目下发布（移动端）(mob_project_release)](module/ProjMgmt/release/dataset/mob_project_release)|mob_project_release|[实体逻辑](module/ProjMgmt/release/logic/mob_project_release)|否|||
 |[未已发布(not_published)](module/ProjMgmt/release/dataset/not_published)|not_published|数据查询|否|||
+|[产品所属发布(product_re_project_published)](module/ProjMgmt/release/dataset/product_re_project_published)|product_re_project_published|数据查询|否||产品所关联项目中的已发布|
+|[已发布(published)](module/ProjMgmt/release/dataset/published)|published|数据查询|否|||
 |[只读用户(reader)](module/ProjMgmt/release/dataset/reader)|reader|数据查询|否|||
 |[迭代关联发布(sprint_relation)](module/ProjMgmt/release/dataset/sprint_relation)|sprint_relation|数据查询|否|||
 
@@ -207,6 +213,7 @@
 | 编辑 | toolbar_tree_exp_view_node3_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | BI编辑 | bi_report_view | 编辑 |无数据|用户自定义||
 | 删除 | toolbar_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 编辑发布日志 | edit_change_log | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[发布日志](app/view/release_change_log_option_view)</details>||
 | 跳转发布主视图 | open_release_main_view | 跳转发布概览页面 |单项数据|用户自定义||
 | 编辑 | open_update_view | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑发布](app/view/release_update_view)</details>||
 | 删除 | toolbar_tree_exp_view_node3_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
@@ -223,6 +230,7 @@
 | 编辑 | toolbar_tree_exp_view_node2_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 新建分组 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建分组 |单项数据|用户自定义||
 | 删除 | toolbar_tree_exp_view_node1_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 打开路线图视图_发布 | open_roadmap | 路线图 |无数据|<details><summary>打开视图或向导（模态）</summary>[路线图](app/view/release_road_map_view)</details>||
 | 发布关联迭代 | release_relation_sprint | 关联迭代 |无数据|<details><summary>后台调用</summary>[release_relation_sprint](#行为)||
 
 ## 界面逻辑

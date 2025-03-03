@@ -23,6 +23,8 @@
 |主部门|MDEPARTMENT_ID|文本，可指定长度|100|是||
 |主部门|MDEPARTMENT_NAME|文本，可指定长度|100|是||
 |移动电话|MOBILE|文本，可指定长度|100|是||
+|组织标识|ORGANIZATION_ID|文本，可指定长度|100|是||
+|组织名称|ORGANIZATION_NAME|文本，可指定长度|100|是||
 |地址|POSTAL_ADDRESS|文本，可指定长度|500|是||
 |统计|REPORT_FLAG|是否逻辑||是||
 |状态|STATUS|文本，可指定长度|100|是||
@@ -35,6 +37,7 @@
 
 <p class="panel-title"><b>联合主键</b></p>
 
+  * `uid/loginname(UID)`
   * `DC(DC)`
 
 ## 行为
@@ -44,7 +47,9 @@
 |Create|Create|内置方法|默认|不支持||||
 |Get|Get|内置方法|默认|不支持||||
 |GetDraft|GetDraft|内置方法|默认|不支持||||
+|获取人员简要信息|GetSimple|用户自定义|默认|不支持||||
 |Remove|Remove|内置方法|默认|支持||||
+|重置密码|ResetPassword|用户自定义|默认|不支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
 
@@ -68,7 +73,7 @@
 
 ## 数据权限
 
-##### 全部数据（读写） :id=sys_person-ALL_RW
+##### 全部数据（读） :id=sys_person-ALL_R
 
 <p class="panel-title"><b>数据范围</b></p>
 
@@ -77,9 +82,21 @@
 <p class="panel-title"><b>数据能力</b></p>
 
 * `READ`
+
+
+
+##### 全部数据（读写） :id=sys_person-ALL_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `CREATE`
+* `READ`
 * `UPDATE`
 * `DELETE`
-* `CREATE`
 
 
 
@@ -101,6 +118,7 @@
 | -------- |------------|------------|------|
 |N_DC_EQ|DC|EQ||
 |N_ID_EQ|标识|EQ||
+|N_UID_EQ|uid/loginname|EQ||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

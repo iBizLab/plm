@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./reply_comment_mob#begin {开始}]]
-state "结束" as END1 <<end>> [[$./reply_comment_mob#end1 {结束}]]
 state "展开评论输入框并设值回复" as RAWJSCODE1  [[$./reply_comment_mob#rawjscode1 {展开评论输入框并设值回复}]]
+state "结束" as END1 <<end>> [[$./reply_comment_mob#end1 {结束}]]
 
 
 Begin --> RAWJSCODE1
@@ -66,6 +66,6 @@ uiLogic.view.reply_comment_id=uiLogic.default.id;
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |评论对象|comment|数据对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |当前视图对象|view|当前视图对象||
