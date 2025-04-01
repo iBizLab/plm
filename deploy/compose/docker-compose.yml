@@ -1,0 +1,55 @@
+include:
+  - ./docker-compose-base.yml
+services:
+  #plmservice
+  plmservice:
+    env_file: .env
+    image: ${IMAGE_URL}ibiz-service-runner:v8.1.0.569.4
+    container_name: plmservice
+    ports:
+      - "${SYSTEM_APIPORT}:${SYSTEM_APIPORT}"
+    networks:
+      - agent_network
+    environment:
+      - TZ=Asia/Shanghai  
+      - SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR=http://${NACOS_HOST}:${NACOS_PORT}
+      - SPRING_CLOUD_NACOS_CONFIG_SERVER-ADDR=http://${NACOS_HOST}:${NACOS_PORT}
+      - SPRING_CLOUD_NACOS_DISCOVERY_IP=plmservice
+      - SERVER_PORT=${SYSTEM_APIPORT}
+      - IBIZ_SERVICEHUB_INITMODE=auto
+      - SPRING_DATASOURCE_DRIVER-CLASS-NAME=com.mysql.jdbc.Driver
+      - SPRING_DATASOURCE_PASSWORD=plm@2024
+      - SPRING_DATASOURCE_URL=jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/plm?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useOldAliasMetadataBehavior=true&serverTimezone=GMT%2B8&allowMultiQueries=true&useSSL=false
+      - SPRING_DATASOURCE_USERNAME=plm
+      - JAVA_OPTS=-Xms512m -Xmx2048m -Xss256K
+    entrypoint: /entrypoint-waitfor.sh
+    command: ibiz-ebsx-gateway:30086
+
+
+  #plmweb
+  plmweb:
+    env_file: .env
+    image: ${IMAGE_URL}ibiz-cloud-web-runner:9.0.7.38-alpha.55.plm.250401
+    container_name: plmweb
+    ports:
+      - ${SYSTEM_WEBPORT}:80
+    networks:
+      - agent_network
+    environment:
+      - TZ=Asia/Shanghai  
+      - FILE_PREVIEW_ADDRESS=http://${IPADDR:-10.144.0.1}:30012
+    entrypoint: /entrypoint-waitfor.sh
+    command: plmservice:${SYSTEM_APIPORT}
+
+
+  #plmmob
+  plmmob:
+    env_file: .env
+    image: ${IMAGE_URL}ibiz-cloud-mob-runner:9.0.0.47.plm.250226
+    container_name: plmmob
+    ports:
+      - ${SYSTEM_MOBPORT}:80
+    networks:
+      - agent_network
+    entrypoint: /entrypoint-waitfor.sh
+    command: plmservice:${SYSTEM_APIPORT}
