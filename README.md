@@ -1,3 +1,7 @@
+<a href="./MODELING.md">
+<img style="vertical-align: top;" src="./sample/banner.png" alt="logo"  >
+</a>
+
 #  iBiz产品生命周期管理（iBizPLM）
 
 ## 介绍
@@ -51,13 +55,10 @@ iBizPLM划分为7大模块：
 
 ### 安装部署
 
-##### 安装准备
+> [!CAUTION]
+> 新安装脚本使用docker volumes 管理持久化卷，之前用相对路径做卷的用户谨慎升级！！。
 
-dockerhub连接不便，目前镜像已经推送到青云，未登陆青云的可以用ibizplm账号登陆。
-
-```
-docker login -u ibizplm -p ibizplm dockerhub.qingcloud.com
-```
+![部署结构图](./sample/plmdeploy.jpg)
 
 ##### 获取编排文件
 进入plm/deploy/compose目录
@@ -70,12 +71,16 @@ cd plm/deploy/compose
 ##### 启动容器：
 
 ```
-docker-compose -f docker-compose-qingcloud.yaml up -d
+docker-compose up -d
 ```
 
-等待启动完成访问http://localhost:30250/ibizplm-plmweb/
+等待启动完成访问
 
-了解更多请参考[官网/快速开始](https://plm.ibizlab.cn/start.shtml) 或 [deploy/compose/README.md](deploy/compose/README.md)
+**iBizPLM桌面端**：http://localhost:30250/ibizplm-plmweb/
+
+**iBizPLM移动端**：http://localhost:30260/ibizplm-plmmob/
+
+了解更多请参考 [deploy/compose/README.md](deploy/compose/README.md)
 
 ### 技术架构
 

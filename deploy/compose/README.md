@@ -7,6 +7,10 @@
 - Docker >= 24.0.0 & Docker Compose >= v2.26.1
   > 如果你并没有在本机安装 Docker（Windows、Mac，或者 Linux）, 可以参考文档 [Install Docker Engine](https://docs.docker.com/engine/install/) 自行安装。
 
+  > [!CAUTION]
+  > 新安装脚本使用docker volumes 管理持久化卷，之前用相对路径做卷的用户谨慎升级！！。
+
+
 #### 启动PLM服务
 1. 克隆仓库：
 
@@ -57,7 +61,23 @@
 	[DEBUG] n.i.central.cloud.core.ServiceHubBase    : Max: -1
    ```
 
-等待启动完成访问http://xxx.xxx.xxx.xxx:30250/ibizplm-plmweb/
+等待启动完成访问
+
+假定本机使用localhost访问，如果跨机器访问请将localhost更换为服务器ip地址或域名：
+
+
+**iBizPLM桌面端**：http://localhost:30250/ibizplm-plmweb/
+
+**iBizPLM移动端**：http://localhost:30260/ibizplm-plmmob/
+
+**UAA系统管理**：http://localhost:32666
+
+使用dev开发启动的还可以访问到：
+
+**CodeServer开发调试工具**: http://localhost:8080
+
+**ModelingIDE**：http://localhost:32003/modeldesign/#/psdevslnsys=28F7326A-7C72-4C2D-A497-A16372ABBADC/modelingindex/psdevslnsys=28F7326A-7C72-4C2D-A497-A16372ABBADC/pssystemindexview/srfnav=info/pssystemdashboardview/-
+
 
 #### 数据卷
 > [!CAUTION]
@@ -68,3 +88,17 @@
 - allinone_data：ibiz-ebsx-allinone服务存放文件的数据卷，例如：图片，附件等
 
 - task_data：task服务存放文件的数据卷：发布文件、模型文件
+
+
+#### 环境彻底重置
+
+如果安装时碰到问题，再不考虑已有持久化数据的前提下，可以完成彻底重置并重新安装
+
+
+   ```bash
+   $ cd plm/deploy/compose 
+   $ docker volume rm compose_mysql_data compose_allinone_data compose_task_data  #删除三个持久化卷
+   $ docker-compose down  #清空默认安装环境
+   $ docker-compose -f docker-compose-dev.yml down  #清空dev安装环境，如果有启动
+   $ docker-compose -f docker-compose-qingcloud.yaml down  #清空旧版青云安装环境，如果有启动   
+   ```
