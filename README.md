@@ -68,7 +68,7 @@ git clone https://gitee.com/ibizlab/plm.git
 cd plm/deploy/compose
 ```
 
-##### 启动容器：
+##### 启动容器
 
 ```
 docker-compose up -d
