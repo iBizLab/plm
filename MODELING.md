@@ -111,6 +111,23 @@
 
 **ModelingIDE**：http://localhost:32003/modeldesign/#/psdevslnsys=28F7326A-7C72-4C2D-A497-A16372ABBADC/modelingindex/psdevslnsys=28F7326A-7C72-4C2D-A497-A16372ABBADC/pssystemindexview/srfnav=info/pssystemdashboardview/-
 
+### **设计传送门**
+📢 在iBizPLM任意页面上按CTRL+F12快速直通ModelingIDE
+<p align=“center” style="width:100%"><img src="./sample/modeling-11.png"  align = "middle"  style="max-width:1000px" /></p>
+
+📢 设置ModelingIDE配置平台地址+V9设计模式
+
+- 本地已安装可设置为：http://localhost:32003/modeldesign/#/psdevslnsys=28F7326A-7C72-4C2D-A497-A16372ABBADC/modelingindex/
+
+- 本地未按照可设置为开源社区ModelingIDE尝鲜地址：https://open.ibizlab.cn/modeldesign/#/psdevslnsys=28F7326A-7C72-4C2D-A497-A16372ABBADC/modelingindex/
+
+<p align=“center” style="width:100%"><img src="./sample/modeling-12.png"  align = "middle"  style="max-width:1000px" /></p>
+
+📢 选中页面或部件点击编辑传送
+<p align=“center” style="width:100%"><img src="./sample/modeling-13.png"  align = "middle"  style="max-width:1000px" /></p>
+
+📢 ModelingIDE中修改设计一键发布，iBizPLM系统刷新，变更立即生效。
+<p align=“center” style="width:100%"><img src="./sample/modeling-14.png"  align = "middle"  style="max-width:1000px" /></p>
 
 ### **致谢与期待**
 此次升级源于社区开发者的真实需求，我们感谢每一位提出建议的用户。未来，我们将继续以技术开放为原则，与开发者共同推动iBizPLM生态的成长。
