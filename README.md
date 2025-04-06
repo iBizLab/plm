@@ -50,8 +50,10 @@ iBizPLM划分为7大模块：
 - 欢迎加入iBizPLM交流QQ群：1067434627
 - 系统操作手册：[https://plm.ibizlab.cn/wiki/](https://plm.ibizlab.cn/wiki/)
 - 系统详细设计文档：[https://plm.ibizlab.cn/doc/](https://plm.ibizlab.cn/doc/) 特别鸣谢：[doc-generator](https://gitee.com/iBizLab/doc-generator) 提供模型发布"系统详细设计文档"扩展
-- 基于 Spring Boot 和 Vue 的轻量级应用程序源码[plm-code](https://gitee.com/iBizLab/plm-code)
-- 开源系统日常更新代码仓库[plm-open](https://gitee.com/ibizplm-open/plm-runner)
+- 基于 Spring Boot 和 Vue 的轻量级应用程序源码 [plm-code](https://gitee.com/iBizLab/plm-code)
+- 开源系统日常更新(plm-api服务/plm-web桌面端/plm-mob移动端)代码仓库 [plm-open](https://gitee.com/ibizplm-open/plm-runner)
+- 依赖支撑服务(ebsx-allinone支撑服务/ebsx-gateway网关/uaa认证服务/前后端框架)仓库 [ibizlab-cloud](https://gitee.com/organizations/ibizlab-cloud/projects)
+- 应用市场仓库 [ibizlab-appstore](https://gitee.com/organizations/ibizlab-appstore/projects)
 
 ### 安装部署
 
