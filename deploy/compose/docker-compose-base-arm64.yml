@@ -1,0 +1,178 @@
+services:
+  #mysql
+  mysql:
+    profiles:
+      - mysql  
+    image: ${IMAGE_URL}mysql:5.7.41.ibiz-arm64
+    container_name: mysql
+    ports:
+    - "${MYSQL_PORT}:3306"  
+    environment:
+    - TZ=Asia/Shanghai
+    - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    volumes:
+    - mysql_data:/bitnami/mysql/data
+    networks:
+    - agent_network
+    entrypoint: /opt/bitnami/scripts/mysql/entrypoint.sh
+    command: /opt/bitnami/scripts/mysql/run.sh
+
+
+  #nacos
+  nacos:
+    profiles:
+      - nacos  
+    image: ${IMAGE_URL}nacos-server:v2.0.4.ibiz-arm64
+    container_name: nacos
+    ports:
+    - "${NACOS_PORT}:8848"
+    environment:
+    - TZ=Asia/Shanghai
+    - PREFER_HOST_MODE=hostname
+    - MODE=standalone
+    - SPRING_DATASOURCE_PLATFORM=mysql
+    - MYSQL_SERVICE_HOST=${MYSQL_HOST}
+    - MYSQL_SERVICE_DB_NAME=nacos_conf
+    - MYSQL_SERVICE_PORT=${MYSQL_PORT}
+    - MYSQL_SERVICE_USER=nacos
+    - MYSQL_SERVICE_PASSWORD=Nacos@2022
+    - JVM_XMS=256m
+    - JVM_XMX=1024m
+    networks:
+      - agent_network
+    entrypoint:
+    - /entrypoint-waitfor.sh
+    command: ${MYSQL_HOST}:${MYSQL_PORT}
+
+  
+  #redis
+  redis:
+    profiles:
+      - redis  
+    image: ${IMAGE_URL}redis:6.2.6-arm64
+    container_name: redis
+    ports:
+    - "${REDIS_PORT}:6379"
+    environment:
+    - TZ=Asia/Shanghai
+    logging:
+      driver: "json-file"
+    networks:
+    - agent_network   
+    command: redis-server
+
+
+  #zookeeper
+  zoo1:
+    profiles:
+      - zoo1  
+    image: ${IMAGE_URL}zookeeper:3.7.0-arm64
+    container_name: zoo1
+    ports:
+    - "${ZOOKEEPER_PORT}:2181"
+    environment:
+    - TZ=Asia/Shanghai
+    - ZOO_MY_ID=1
+    - ZOO_SERVERS=server.1=0.0.0.0:2888:3888;2181
+    networks:
+    - agent_network
+
+
+  #emqx
+  emqx:
+    profiles:
+      - emqx  
+    image: ${IMAGE_URL}emqx:4.4-arm64
+    container_name: emqx
+    ports:
+    - "${EMQX_PORT}:8083"
+    environment:
+    - TZ=Asia/Shanghai
+    networks:
+    - agent_network
+
+
+  #ibiz-ebsx-allinone
+  ibiz-ebsx-allinone:
+    env_file: .env
+    image: ${IMAGE_URL}ibiz-ebsx-allinone-rt:8.1.0.569.5-arm64
+    container_name: ibiz-ebsx-allinone
+    ports:
+      - "30000:30000"
+    environment:
+      - TZ=Asia/Shanghai    
+      - SERVER_PORT=30000
+      - SPRING_CLOUD_NACOS_DISCOVERY_IP=ibiz-ebsx-allinone
+      - SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR=http://${NACOS_HOST}:${NACOS_PORT}
+      - SPRING_CLOUD_NACOS_CONFIG_SERVER-ADDR=http://${NACOS_HOST}:${NACOS_PORT}
+      - SPRING_DATASOURCE_DRIVER-CLASS-NAME=com.mysql.jdbc.Driver
+      - SPRING_DATASOURCE_PASSWORD=9d@A178@
+      - SPRING_DATASOURCE_URL=jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/a_lab01_3f9ebc219?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useOldAliasMetadataBehavior=true&serverTimezone=GMT%2B8&allowMultiQueries=true&useSSL=false
+      - SPRING_DATASOURCE_USERNAME=a_lab01_3f9ebc219
+      - JAVA_OPTS=-Xms512m -Xmx2048m -Xss512K
+      - IBIZ_SERVICEHUB_INITMODE=auto      
+    volumes:
+      - allinone_data:/app/file
+    networks:
+      agent_network:
+        aliases:
+          - nacos.ibizcloud.cn            
+    entrypoint: /entrypoint-waitfor.sh
+    command: ${NACOS_HOST}:${NACOS_PORT}
+
+
+  #ibizlab-uaa-api
+  ibizlab-uaa-api:
+    env_file: .env
+    image: ${IMAGE_URL}uaa-standalone:2.1.6-arm64
+    container_name: ibizlab-uaa-api
+    ports:
+      - "32666:32666"
+    environment:
+      - TZ=Asia/Shanghai  
+      - SERVER_PORT=32666
+      - IBIZ_SERVICEHUB_ID=ibizuaa
+      - SPRING_CLOUD_NACOS_DISCOVERY_IP=ibizlab-uaa-api
+      - SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR=http://${NACOS_HOST}:${NACOS_PORT}
+      - SPRING_CLOUD_NACOS_CONFIG_SERVER-ADDR=http://${NACOS_HOST}:${NACOS_PORT}
+      - SPRING_CLOUD_NACOS_DISCOVERY_GROUP=ibiz_config_group
+      - SPRING_CLOUD_NACOS_CONFIG_GROUP=ibiz_config_group
+      - JAVA_OPTS=-Xms256m -Xmx1024m -Xss512K
+    networks:
+      - agent_network
+    entrypoint: /entrypoint-waitfor.sh
+    command: ibiz-ebsx-allinone:30000
+
+
+  #ibiz-ebsx-gateway
+  ibiz-ebsx-gateway:
+    env_file: .env
+    image: ${IMAGE_URL}ibiz-ebsx-gateway:8.1.0.377-b2-arm64
+    container_name: ibiz-ebsx-gateway
+    ports:
+      - "30086:30086"
+    environment:
+      - TZ=Asia/Shanghai  
+      - SERVER_PORT=30086
+      - SPRING_CLOUD_NACOS_DISCOVERY_IP=ibiz-ebsx-gateway
+      - SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR=http://${NACOS_HOST}:${NACOS_PORT}
+      - SPRING_CLOUD_NACOS_CONFIG_SERVER-ADDR=http://${NACOS_HOST}:${NACOS_PORT}
+      - JAVA_OPTS=-Xms256m -Xmx512m -Xss512K
+    networks:
+      agent_network:
+        aliases:
+          - gateway.ibizcloud.cn
+    entrypoint: /entrypoint-waitfor.sh
+    command: ibizlab-uaa-api:32666
+
+
+volumes:
+  mysql_data:
+    driver: local
+  allinone_data:
+    driver: local
+
+networks:
+  agent_network:
+    driver: bridge
+    attachable: true

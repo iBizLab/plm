@@ -22,10 +22,14 @@ $ git clone https://gitee.com/ibizlab/plm.git
 
 > [!CAUTION]
 > 请注意，目前官方提供的所有 Docker 镜像均基于 x86 架构构建，并不提供基于 ARM64 的 Docker 镜像。
+> 2025.04.11 目前官方已经提供基于 ARM64 的 Docker 镜像。
 
 ```bash
 $ cd plm/deploy/compose
 $ docker compose -f docker-compose.yml --env-file .env up -d
+
+# ARM64架构启动:
+# docker-compose -f docker-compose-arm64.yml --env-file=.env up -d
 
 # 如果使用开发模式，根据变量注释提示调整**.dev**文件内对应参数,将启动包含ModelingIDE和code-server的构型:
 # docker compose -f docker-compose-dev.yml --env-file .dev up -d
