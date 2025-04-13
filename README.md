@@ -44,7 +44,7 @@ iBizPLM划分为7大模块：
 
 - 官方网站：[https://plm.ibizlab.cn](https://plm.ibizlab.cn)
 - PC端-演示地址：[https://plm.ibizlab.cn/ibizplm-plmweb/](https://plm.ibizlab.cn/ibizplm-plmweb/)
-- 移动端-演示地址（Demo版）：[https://mob.plm.ibizlab.cn/ibizplm-plmmob/](https://mob.plm.ibizlab.cn/ibizplm-plmmob/)
+- 移动端-演示地址：[https://mob.plm.ibizlab.cn/ibizplm-plmmob/](https://mob.plm.ibizlab.cn/ibizplm-plmmob/)
 - 演示管理员账号/密码：demo_admin/123456
 - 演示普通用户账号/密码：demo_user/123456
 - 欢迎加入iBizPLM交流QQ群：1067434627
@@ -105,6 +105,14 @@ iBizPLM使用了现代化软件架构，前端技术使用Vue，后端技术使�
 - 状态管理：pinia
 - 数据交互：axios
 - UI框架：element-plus
+
+### 二开视频
+
+| No.  | 日期          | 视频主题         | 视频地址                                             |
+| ---- | ------------- | ------------------ | ---------------------------------------------------- |
+| 1    | 2025-04-10    | Modeling建模-基础篇-修改系统标题 | https://www.bilibili.com/video/BV1b9dnYXE6b |
+| 2    | 2025-04-11    | Modeling建模-基础篇-修改系统菜单 | https://www.bilibili.com/video/BV1tAd5YYEra |
+| 3    | 2025-04-12    | Modeling建模-基础篇-修改登录页   | https://www.bilibili.com/video/BV1NodDYAE1X |
 
 ### 演示图
 
