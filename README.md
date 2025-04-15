@@ -73,7 +73,14 @@ cd plm/deploy/compose
 ##### 启动容器
 
 ```
-docker-compose up -d
+$ cd plm/deploy/compose
+$ docker compose -f docker-compose.yml --env-file .env up -d
+
+# ARM64架构启动:
+# docker-compose -f docker-compose-arm64.yml --env-file=.env up -d
+
+# 如果使用开发模式，根据变量注释提示调整**.dev**文件内对应参数,将启动包含ModelingIDE和code-server的构型:
+# docker compose -f docker-compose-dev.yml --env-file .dev up -d
 ```
 
 等待启动完成访问
