@@ -119,7 +119,7 @@
 
 - 本地已安装可设置为：http://localhost:32003/modeldesign/#/psdevslnsys=28F7326A-7C72-4C2D-A497-A16372ABBADC/modelingindex/
 
-- 本地未按照可设置为开源社区ModelingIDE尝鲜地址：https://open.ibizlab.cn/modeldesign/#/psdevslnsys=28F7326A-7C72-4C2D-A497-A16372ABBADC/modelingindex/
+- 本地未安装可设置为开源社区ModelingIDE尝鲜地址：https://open.ibizlab.cn/modeldesign/#/psdevslnsys=28F7326A-7C72-4C2D-A497-A16372ABBADC/modelingindex/
 
 <p align=“center” style="width:100%"><img src="./sample/modeling-12.png"  align = "middle"  style="max-width:1000px" /></p>
 
