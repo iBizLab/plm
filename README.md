@@ -121,6 +121,7 @@ iBizPLM使用了现代化软件架构，前端技术使用Vue，后端技术使�
 | 2    | 2025-04-11    | Modeling建模-基础篇-修改系统菜单 | https://www.bilibili.com/video/BV1tAd5YYEra |
 | 3    | 2025-04-12    | Modeling建模-基础篇-修改登录页   | https://www.bilibili.com/video/BV1NodDYAE1X |
 | 4    | 2025-04-14    | Modeling建模-基础篇-修改数据字典   | https://www.bilibili.com/video/BV17jojYxERp |
+| 5    | 2025-04-15    | Modeling建模-基础篇-修改系统LOGO   | https://www.bilibili.com/video/BV13ZdfYeEzv |
 
 ### 演示图
 
