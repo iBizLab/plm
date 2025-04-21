@@ -125,6 +125,8 @@ iBizPLM使用了现代化软件架构，前端技术使用Vue，后端技术使�
 | 6    | 2025-04-16    | iBizPLM Groovy 架构说明   | https://www.bilibili.com/video/BV1sCoNYMEeV |
 | 7    | 2025-04-16    | Modeling建模-进阶篇-表格   | https://www.bilibili.com/video/BV1KPoTYCEAg |
 | 8    | 2025-04-17    | Modeling建模-进阶篇-处理逻辑   | https://www.bilibili.com/video/BV18D5vzKE6H |
+| 8    | 2025-04-18    | Modeling建模-进阶篇-表单   | https://www.bilibili.com/video/BV1MP5JzpEkr |
+
 
 ### 演示图
 
