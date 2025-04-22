@@ -29,7 +29,7 @@ services:
   #plmweb
   plmweb:
     env_file: .env
-    image: ${IMAGE_URL}ibiz-cloud-web-runner:9.0.7.40-alpha.9.plm.250422
+    image: ${IMAGE_URL}ibiz-cloud-web-runner:9.0.7.38-alpha.55.plm.250401
     container_name: plmweb
     ports:
       - ${SYSTEM_WEBPORT}:80
@@ -38,13 +38,6 @@ services:
     environment:
       - TZ=Asia/Shanghai  
       - FILE_PREVIEW_ADDRESS=http://${IPADDR:-10.144.0.1}:30012
-      - CUSTOMPARAMS={"file_preview_address":"http://${IPADDR:-10.144.0.1}:30012","ENABLEMULTILOGIN":false}
-      - MOCKDCSYSTEMID=ibizplm
-      - APPNAME=桌面端
-      - APPCODE=ibizplm-plmweb
-      - APICODE=ibizplm__plmweb
-      - BASEURL=ibizplm__plmweb
-      - PLUGINBASEURL=./plugins
     entrypoint: /entrypoint-waitfor.sh
     command: plmservice:${SYSTEM_APIPORT}
 
