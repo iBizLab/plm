@@ -1,0 +1,13 @@
+global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService  articlePageService;
+global cn.ibizlab.plm.core.wiki.domain.article_page et;
+
+    no-loop
+
+    rule "article_pagecommit_version"
+    ruleflow-group "500771e4621727f19726a9929292be1c"
+    when
+    then
+    cn.ibizlab.plm.core.wiki.domain.article_page actionLogicDE =new cn.ibizlab.plm.core.wiki.domain.article_page();
+    et.copyTo(actionLogicDE,true);
+    articlePageService.commit_version(actionLogicDE);
+    end

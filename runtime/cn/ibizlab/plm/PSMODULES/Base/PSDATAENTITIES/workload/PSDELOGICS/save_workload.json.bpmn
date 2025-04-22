@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.workloadsave_workload" isClosed="false" isExecutable="true" name="base_workload_save_workload_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.workloadsave_workload">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="workloadsave_workloaddefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.extend_storage()" name="workloadsave_workloadactual" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.idea()" name="workloadsave_workloadidea" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.extend_storage()" name="workloadsave_workloadremaining" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.test_case()" name="workloadsave_workloadtest_case" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.workload()" name="workloadsave_workloadu_workload" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="workloadsave_workloadwork_item" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IideaService))" name="ideaservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="work_itemservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Itest_caseService))" name="test_caseservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IworkloadService))" name="workloadservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Iextend_storageService))" name="extend_storageservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IworkloadService))" name="iBzSysWorkloadDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="workloadsave_workloaddefault" type="cn.ibizlab.plm.core.base.domain.workload" />
+                            <tns:global identifier="workloadsave_workloadactual" type="cn.ibizlab.plm.core.base.domain.extend_storage" />
+                            <tns:global identifier="workloadsave_workloadidea" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
+                            <tns:global identifier="workloadsave_workloadremaining" type="cn.ibizlab.plm.core.base.domain.extend_storage" />
+                            <tns:global identifier="workloadsave_workloadtest_case" type="cn.ibizlab.plm.core.testmgmt.domain.test_case" />
+                            <tns:global identifier="workloadsave_workloadu_workload" type="cn.ibizlab.plm.core.base.domain.workload" />
+                            <tns:global identifier="workloadsave_workloadwork_item" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadsave_workloadprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="绑定所属对象标识"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadsave_workloaddeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="获取需求"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadsave_workloaddeaction4" id="deaction4" implementation="http://www.jboss.org/drools/rule" name="获取工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadsave_workloaddeaction5" id="deaction5" implementation="http://www.jboss.org/drools/rule" name="获取测试用例"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadsave_workloadprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="工作项和项目信息属性"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadsave_workloadprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="产品需求和产品信息属性"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadsave_workloadprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="测试用例和测试库信息属性"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadsave_workloaddeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="保存工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadsave_workloaddeaction6" id="deaction6" implementation="http://www.jboss.org/drools/rule" name="更新剩余工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadsave_workloadprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="工时为0时置为NULL"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadsave_workloadrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="合计已登记工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadsave_workloaddeaction7" id="deaction7" implementation="http://www.jboss.org/drools/rule" name="更新实际工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadsave_workloadprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="填充父工作项标识"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadsave_workloaddelogic1" id="delogic1" implementation="http://www.jboss.org/drools/rule" name="自动计算父工时"/>
+                        <endEvent id="delogic1_end" name="end"/>
+                        <sequenceFlow id="delogic1_end_line" sourceRef="delogic1" targetRef="delogic1_end"/>
+                    <sequenceFlow id="begin_prepareparam2" sourceRef="begin" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam2_deaction3" sourceRef="gateway-prepareparam2" targetRef="deaction3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $workloadsave_workloaddefault:workload();
+                                            $workloadsave_workloadactual:extend_storage();
+                                            $workloadsave_workloadidea:idea();
+                                            $workloadsave_workloadremaining:extend_storage();
+                                            $workloadsave_workloadtest_case:test_case();
+                                            $workloadsave_workloadu_workload:workload();
+                                            $workloadsave_workloadwork_item:work_item();
+                                    eval($workloadsave_workloaddefault==workloadsave_workloaddefault && $workloadsave_workloadactual==workloadsave_workloadactual && $workloadsave_workloadidea==workloadsave_workloadidea && $workloadsave_workloadremaining==workloadsave_workloadremaining && $workloadsave_workloadtest_case==workloadsave_workloadtest_case && $workloadsave_workloadu_workload==workloadsave_workloadu_workload && $workloadsave_workloadwork_item==workloadsave_workloadwork_item);
+                                eval((RuleUtils.test($workloadsave_workloaddefault.get("workload_kind"),"EQ","产品需求")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam2_deaction4" sourceRef="gateway-prepareparam2" targetRef="deaction4">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $workloadsave_workloaddefault:workload();
+                                            $workloadsave_workloadactual:extend_storage();
+                                            $workloadsave_workloadidea:idea();
+                                            $workloadsave_workloadremaining:extend_storage();
+                                            $workloadsave_workloadtest_case:test_case();
+                                            $workloadsave_workloadu_workload:workload();
+                                            $workloadsave_workloadwork_item:work_item();
+                                    eval($workloadsave_workloaddefault==workloadsave_workloaddefault && $workloadsave_workloadactual==workloadsave_workloadactual && $workloadsave_workloadidea==workloadsave_workloadidea && $workloadsave_workloadremaining==workloadsave_workloadremaining && $workloadsave_workloadtest_case==workloadsave_workloadtest_case && $workloadsave_workloadu_workload==workloadsave_workloadu_workload && $workloadsave_workloadwork_item==workloadsave_workloadwork_item);
+                                eval((RuleUtils.test($workloadsave_workloaddefault.get("workload_kind"),"EQ","工作项")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam2_deaction5" sourceRef="gateway-prepareparam2" targetRef="deaction5">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $workloadsave_workloaddefault:workload();
+                                            $workloadsave_workloadactual:extend_storage();
+                                            $workloadsave_workloadidea:idea();
+                                            $workloadsave_workloadremaining:extend_storage();
+                                            $workloadsave_workloadtest_case:test_case();
+                                            $workloadsave_workloadu_workload:workload();
+                                            $workloadsave_workloadwork_item:work_item();
+                                    eval($workloadsave_workloaddefault==workloadsave_workloaddefault && $workloadsave_workloadactual==workloadsave_workloadactual && $workloadsave_workloadidea==workloadsave_workloadidea && $workloadsave_workloadremaining==workloadsave_workloadremaining && $workloadsave_workloadtest_case==workloadsave_workloadtest_case && $workloadsave_workloadu_workload==workloadsave_workloadu_workload && $workloadsave_workloadwork_item==workloadsave_workloadwork_item);
+                                eval((RuleUtils.test($workloadsave_workloaddefault.get("workload_kind"),"EQ","测试用例")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction3_prepareparam4" sourceRef="deaction3" targetRef="prepareparam4">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction4_prepareparam3" sourceRef="deaction4" targetRef="prepareparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction5_prepareparam5" sourceRef="deaction5" targetRef="prepareparam5">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_deaction2" sourceRef="prepareparam3" targetRef="deaction2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam4_deaction2" sourceRef="prepareparam4" targetRef="deaction2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam5_deaction2" sourceRef="prepareparam5" targetRef="deaction2">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction2_deaction6" sourceRef="deaction2" targetRef="deaction6">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction6_rawsqlcall1" sourceRef="deaction6" targetRef="rawsqlcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam6_deaction7" sourceRef="prepareparam6" targetRef="deaction7">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-rawsqlcall1_deaction7" sourceRef="gateway-rawsqlcall1" targetRef="deaction7">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $workloadsave_workloaddefault:workload();
+                                            $workloadsave_workloadactual:extend_storage();
+                                            $workloadsave_workloadidea:idea();
+                                            $workloadsave_workloadremaining:extend_storage();
+                                            $workloadsave_workloadtest_case:test_case();
+                                            $workloadsave_workloadu_workload:workload();
+                                            $workloadsave_workloadwork_item:work_item();
+                                    eval($workloadsave_workloaddefault==workloadsave_workloaddefault && $workloadsave_workloadactual==workloadsave_workloadactual && $workloadsave_workloadidea==workloadsave_workloadidea && $workloadsave_workloadremaining==workloadsave_workloadremaining && $workloadsave_workloadtest_case==workloadsave_workloadtest_case && $workloadsave_workloadu_workload==workloadsave_workloadu_workload && $workloadsave_workloadwork_item==workloadsave_workloadwork_item);
+                                eval((RuleUtils.test($workloadsave_workloadactual.get("decimalValue"),"NOTEQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-rawsqlcall1_prepareparam6" sourceRef="gateway-rawsqlcall1" targetRef="prepareparam6">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $workloadsave_workloaddefault:workload();
+                                            $workloadsave_workloadactual:extend_storage();
+                                            $workloadsave_workloadidea:idea();
+                                            $workloadsave_workloadremaining:extend_storage();
+                                            $workloadsave_workloadtest_case:test_case();
+                                            $workloadsave_workloadu_workload:workload();
+                                            $workloadsave_workloadwork_item:work_item();
+                                    eval($workloadsave_workloaddefault==workloadsave_workloaddefault && $workloadsave_workloadactual==workloadsave_workloadactual && $workloadsave_workloadidea==workloadsave_workloadidea && $workloadsave_workloadremaining==workloadsave_workloadremaining && $workloadsave_workloadtest_case==workloadsave_workloadtest_case && $workloadsave_workloadu_workload==workloadsave_workloadu_workload && $workloadsave_workloadwork_item==workloadsave_workloadwork_item);
+                                eval((RuleUtils.test($workloadsave_workloadactual.get("datetimeValue"),"EQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-deaction7_prepareparam7" sourceRef="gateway-deaction7" targetRef="prepareparam7">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $workloadsave_workloaddefault:workload();
+                                            $workloadsave_workloadactual:extend_storage();
+                                            $workloadsave_workloadidea:idea();
+                                            $workloadsave_workloadremaining:extend_storage();
+                                            $workloadsave_workloadtest_case:test_case();
+                                            $workloadsave_workloadu_workload:workload();
+                                            $workloadsave_workloadwork_item:work_item();
+                                    eval($workloadsave_workloaddefault==workloadsave_workloaddefault && $workloadsave_workloadactual==workloadsave_workloadactual && $workloadsave_workloadidea==workloadsave_workloadidea && $workloadsave_workloadremaining==workloadsave_workloadremaining && $workloadsave_workloadtest_case==workloadsave_workloadtest_case && $workloadsave_workloadu_workload==workloadsave_workloadu_workload && $workloadsave_workloadwork_item==workloadsave_workloadwork_item);
+                                eval((RuleUtils.test($workloadsave_workloadwork_item.get("pid"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam7_delogic1" sourceRef="prepareparam7" targetRef="delogic1">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-prepareparam2" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam2_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam2_gateway-prepareparam2_gatewayline" sourceRef="prepareparam2" targetRef="gateway-prepareparam2"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam2_end_line" sourceRef="gateway-prepareparam2" targetRef="gateway-prepareparam2_end"/>
+                            <endEvent id="gateway-prepareparam2_end" name="end"/>
+                            <exclusiveGateway id="gateway-rawsqlcall1" name="Gateway" gatewayDirection="Diverging" default="gateway-rawsqlcall1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="rawsqlcall1_gateway-rawsqlcall1_gatewayline" sourceRef="rawsqlcall1" targetRef="gateway-rawsqlcall1"></sequenceFlow>
+                            <sequenceFlow id="gateway-rawsqlcall1_end_line" sourceRef="gateway-rawsqlcall1" targetRef="gateway-rawsqlcall1_end"/>
+                            <endEvent id="gateway-rawsqlcall1_end" name="end"/>
+                            <exclusiveGateway id="gateway-deaction7" name="Gateway" gatewayDirection="Diverging" default="gateway-deaction7_end_line"></exclusiveGateway>
+                            <sequenceFlow id="deaction7_gateway-deaction7_gatewayline" sourceRef="deaction7" targetRef="gateway-deaction7"></sequenceFlow>
+                            <sequenceFlow id="gateway-deaction7_end_line" sourceRef="gateway-deaction7" targetRef="gateway-deaction7_end"/>
+                            <endEvent id="gateway-deaction7_end" name="end"/>
+        </process>
+    </definitions>

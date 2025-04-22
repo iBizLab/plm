@@ -1,0 +1,117 @@
+package cn.ibizlab.plm.projmgmt.logic.projectlogic.auto_create_members;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.project projectauto_create_membersdefault;
+                global cn.ibizlab.plm.core.base.domain.member projectauto_create_membersmember;
+                global cn.ibizlab.plm.core.base.domain.member projectauto_create_membersmember_obj;
+                global cn.ibizlab.plm.core.base.domain.member projectauto_create_membersmember_page;
+                global cn.ibizlab.plm.core.projmgmt.domain.project_member projectauto_create_membersproject_member;
+                    global cn.ibizlab.plm.core.base.service.ImemberService memberservice;
+                    global cn.ibizlab.plm.core.projmgmt.service.Iproject_memberService project_memberservice;
+        global cn.ibizlab.plm.core.projmgmt.service.IprojectService iBzSysProjectDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "projectauto_create_membersbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备查询参数]
+            rule "prepareparam2"
+            ruleflow-group "projectauto_create_membersprepareparam2"
+            when
+            then
+                            projectauto_create_membersmember.set("n_owner_id_eq",projectauto_create_membersdefault.get("scopeid"));
+                            projectauto_create_membersmember.set("n_owner_type_eq","GROUP");
+                        update(projectauto_create_membersdefault);//更新fact中变量值
+                        update(projectauto_create_membersmember);//更新fact中变量值
+                        update(projectauto_create_membersmember_obj);//更新fact中变量值
+                        update(projectauto_create_membersmember_page);//更新fact中变量值
+                        update(projectauto_create_membersproject_member);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询用户数据]
+            rule "dedataset1"
+            ruleflow-group "projectauto_create_membersdedataset1"
+            when
+            then
+                        update(projectauto_create_membersdefault);//更新fact中变量值
+                        update(projectauto_create_membersmember);//更新fact中变量值
+                        update(projectauto_create_membersmember_obj);//更新fact中变量值
+                        update(projectauto_create_membersmember_page);//更新fact中变量值
+                        update(projectauto_create_membersproject_member);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "projectauto_create_membersloopsubcall1"
+            when
+            then
+                        update(projectauto_create_membersdefault);//更新fact中变量值
+                        update(projectauto_create_membersmember);//更新fact中变量值
+                        update(projectauto_create_membersmember_obj);//更新fact中变量值
+                        update(projectauto_create_membersmember_page);//更新fact中变量值
+                        update(projectauto_create_membersproject_member);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重置项目成员参数]
+            rule "resetparam1"
+            ruleflow-group "projectauto_create_membersresetparam1"
+            when
+            then
+                        update(projectauto_create_membersdefault);//更新fact中变量值
+                        update(projectauto_create_membersmember);//更新fact中变量值
+                        update(projectauto_create_membersmember_obj);//更新fact中变量值
+                        update(projectauto_create_membersmember_page);//更新fact中变量值
+                        update(projectauto_create_membersproject_member);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备项目成员参数]
+            rule "prepareparam4"
+            ruleflow-group "projectauto_create_membersprepareparam4"
+            when
+            then
+                            projectauto_create_membersproject_member.set("projectid",projectauto_create_membersdefault.get("id"));
+                            projectauto_create_membersproject_member.set("name",projectauto_create_membersmember_obj.get("name"));
+                            projectauto_create_membersproject_member.set("userid",projectauto_create_membersmember_obj.get("userid"));
+                            projectauto_create_membersproject_member.set("roleid",projectauto_create_membersmember_obj.get("roleid"));
+                        update(projectauto_create_membersdefault);//更新fact中变量值
+                        update(projectauto_create_membersmember);//更新fact中变量值
+                        update(projectauto_create_membersmember_obj);//更新fact中变量值
+                        update(projectauto_create_membersmember_page);//更新fact中变量值
+                        update(projectauto_create_membersproject_member);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成用户数据]
+            rule "deaction3"
+            ruleflow-group "projectauto_create_membersdeaction3"
+            when
+            then
+                        project_memberservice.create(projectauto_create_membersproject_member);
+                        update(projectauto_create_membersdefault);//更新fact中变量值
+                        update(projectauto_create_membersmember);//更新fact中变量值
+                        update(projectauto_create_membersmember_obj);//更新fact中变量值
+                        update(projectauto_create_membersmember_page);//更新fact中变量值
+                        update(projectauto_create_membersproject_member);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "projectauto_create_membersend1"
+            when
+            then
+                        update(projectauto_create_membersdefault);//更新fact中变量值
+                        update(projectauto_create_membersmember);//更新fact中变量值
+                        update(projectauto_create_membersmember_obj);//更新fact中变量值
+                        update(projectauto_create_membersmember_page);//更新fact中变量值
+                        update(projectauto_create_membersproject_member);//更新fact中变量值
+            end

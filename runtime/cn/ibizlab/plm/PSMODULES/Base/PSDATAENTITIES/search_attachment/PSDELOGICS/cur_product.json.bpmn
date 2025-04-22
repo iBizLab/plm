@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.search_attachmentcur_product" isClosed="false" isExecutable="true" name="base_search_attachment_cur_product_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.search_attachmentcur_product">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="search_attachmentcur_productdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.search_attachment()" name="search_attachmentcur_productfor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.idea()" name="search_attachmentcur_productidea" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.search_attachment()" name="search_attachmentcur_productresult_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.ticket()" name="search_attachmentcur_productticket" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Isearch_attachmentService))" name="search_attachmentservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Isearch_attachmentService))" name="iBzSysSearch_attachmentDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="search_attachmentcur_productdefault" type="cn.ibizlab.plm.core.base.domain.search_attachment" />
+                            <tns:global identifier="search_attachmentcur_productfor_temp_obj" type="cn.ibizlab.plm.core.base.domain.search_attachment" />
+                            <tns:global identifier="search_attachmentcur_productidea" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
+                            <tns:global identifier="search_attachmentcur_productresult_page" type="cn.ibizlab.plm.core.base.domain.search_attachment" />
+                            <tns:global identifier="search_attachmentcur_productticket" type="cn.ibizlab.plm.core.prodmgmt.domain.ticket" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_attachmentcur_productdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="当前产品下的全部附件"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_attachmentcur_productbindparam2" id="bindparam2" implementation="http://www.jboss.org/drools/rule" name="绑定产品需求参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_attachmentcur_productprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="填充产品需求展示属性"/>
+                        <endEvent id="prepareparam2_end" name="end"/>
+                        <sequenceFlow id="prepareparam2_end_line" sourceRef="prepareparam2" targetRef="prepareparam2_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_attachmentcur_productloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_attachmentcur_productbindparam3" id="bindparam3" implementation="http://www.jboss.org/drools/rule" name="绑定工单参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_attachmentcur_productprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="填充工单展示属性"/>
+                        <endEvent id="prepareparam3_end" name="end"/>
+                        <sequenceFlow id="prepareparam3_end_line" sourceRef="prepareparam3" targetRef="prepareparam3_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_attachmentcur_productend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="begin_dedataset1" sourceRef="begin" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset1_loopsubcall1" sourceRef="dedataset1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam2_prepareparam2" sourceRef="bindparam2" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall1_bindparam2" sourceRef="gateway-loopsubcall1" targetRef="bindparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $search_attachmentcur_productdefault:search_attachment();
+                                            $search_attachmentcur_productfor_temp_obj:search_attachment();
+                                            $search_attachmentcur_productidea:idea();
+                                            $search_attachmentcur_productresult_page:search_attachment();
+                                            $search_attachmentcur_productticket:ticket();
+                                    eval($search_attachmentcur_productdefault==search_attachmentcur_productdefault && $search_attachmentcur_productfor_temp_obj==search_attachmentcur_productfor_temp_obj && $search_attachmentcur_productidea==search_attachmentcur_productidea && $search_attachmentcur_productresult_page==search_attachmentcur_productresult_page && $search_attachmentcur_productticket==search_attachmentcur_productticket);
+                                eval((RuleUtils.test($search_attachmentcur_productfor_temp_obj.get("ownerType"),"EQ","IDEA")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall1_bindparam3" sourceRef="gateway-loopsubcall1" targetRef="bindparam3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $search_attachmentcur_productdefault:search_attachment();
+                                            $search_attachmentcur_productfor_temp_obj:search_attachment();
+                                            $search_attachmentcur_productidea:idea();
+                                            $search_attachmentcur_productresult_page:search_attachment();
+                                            $search_attachmentcur_productticket:ticket();
+                                    eval($search_attachmentcur_productdefault==search_attachmentcur_productdefault && $search_attachmentcur_productfor_temp_obj==search_attachmentcur_productfor_temp_obj && $search_attachmentcur_productidea==search_attachmentcur_productidea && $search_attachmentcur_productresult_page==search_attachmentcur_productresult_page && $search_attachmentcur_productticket==search_attachmentcur_productticket);
+                                eval((RuleUtils.test($search_attachmentcur_productfor_temp_obj.get("ownerType"),"EQ","TICKET")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam3_prepareparam3" sourceRef="bindparam3" targetRef="prepareparam3">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-loopsubcall1" name="Gateway" gatewayDirection="Diverging" default="gateway-loopsubcall1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="loopsubcall1_gateway-loopsubcall1_gatewayline" sourceRef="loopsubcall1" targetRef="gateway-loopsubcall1"></sequenceFlow>
+                            <sequenceFlow id="gateway-loopsubcall1_end_line" sourceRef="gateway-loopsubcall1" targetRef="gateway-loopsubcall1_end"/>
+                            <endEvent id="gateway-loopsubcall1_end" name="end"/>
+        </process>
+    </definitions>

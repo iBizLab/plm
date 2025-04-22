@@ -1,0 +1,60 @@
+package cn.ibizlab.plm.prodmgmt.logic.ticketlogic.archive;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.ticket ticketarchivedefault;
+                global java.util.Map ticketarchiveid;
+                global java.util.Map ticketarchiveids;
+                global cn.ibizlab.plm.core.prodmgmt.domain.ticket ticketarchivetemp_obj;
+                    global cn.ibizlab.plm.core.prodmgmt.service.IticketService ticketservice;
+        global cn.ibizlab.plm.core.prodmgmt.service.IticketService iBzSysTicketDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ticketarchivebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[修改是否归档标识]
+            rule "prepareparam1"
+            ruleflow-group "ticketarchiveprepareparam1"
+            when
+            then
+                            ticketarchivetemp_obj.set("isarchived","1");
+                            ticketarchivetemp_obj.set("id",ticketarchivedefault.get("id"));
+                        update(ticketarchivedefault);//更新fact中变量值
+                        update(ticketarchiveid);//更新fact中变量值
+                        update(ticketarchiveids);//更新fact中变量值
+                        update(ticketarchivetemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[执行更新操作]
+            rule "deaction1"
+            ruleflow-group "ticketarchivedeaction1"
+            when
+            then
+                        ticketservice.update(ticketarchivetemp_obj);
+                        update(ticketarchivedefault);//更新fact中变量值
+                        update(ticketarchiveid);//更新fact中变量值
+                        update(ticketarchiveids);//更新fact中变量值
+                        update(ticketarchivetemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "ticketarchiveend1"
+            when
+            then
+                        update(ticketarchivedefault);//更新fact中变量值
+                        update(ticketarchiveid);//更新fact中变量值
+                        update(ticketarchiveids);//更新fact中变量值
+                        update(ticketarchivetemp_obj);//更新fact中变量值
+            end

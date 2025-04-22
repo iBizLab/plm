@@ -1,0 +1,79 @@
+package cn.ibizlab.plm.testmgmt.logic.review_wizardlogic.fill_guideline;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_wizard review_wizardfill_guidelinedefault;
+                global cn.ibizlab.plm.core.testmgmt.domain.guideline review_wizardfill_guidelineguideline_detail;
+                global cn.ibizlab.plm.core.testmgmt.domain.guideline review_wizardfill_guidelineguideline_filter;
+                global cn.ibizlab.plm.core.testmgmt.domain.guideline review_wizardfill_guidelineguideline_id;
+                global cn.ibizlab.plm.core.testmgmt.domain.guideline review_wizardfill_guidelineguideline_page;
+                    global cn.ibizlab.plm.core.testmgmt.service.IguidelineService guidelineservice;
+        global cn.ibizlab.plm.core.testmgmt.service.Ireview_wizardService iBzSysReview_wizardDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "review_wizardfill_guidelinebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "review_wizardfill_guidelineend1"
+            when
+            then
+                        update(review_wizardfill_guidelinedefault);//更新fact中变量值
+                        update(review_wizardfill_guidelineguideline_detail);//更新fact中变量值
+                        update(review_wizardfill_guidelineguideline_filter);//更新fact中变量值
+                        update(review_wizardfill_guidelineguideline_id);//更新fact中变量值
+                        update(review_wizardfill_guidelineguideline_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置过滤参数]
+            rule "prepareparam1"
+            ruleflow-group "review_wizardfill_guidelineprepareparam1"
+            when
+            then
+                            review_wizardfill_guidelineguideline_filter.set("n_subject_type_eq",review_wizardfill_guidelinedefault.get("type"));
+                            review_wizardfill_guidelineguideline_filter.set("n_object_type_eq","LIBRARY");
+                            review_wizardfill_guidelineguideline_filter.set("n_scope_id_eq",review_wizardfill_guidelinedefault.get("libraryid"));
+                        update(review_wizardfill_guidelinedefault);//更新fact中变量值
+                        update(review_wizardfill_guidelineguideline_detail);//更新fact中变量值
+                        update(review_wizardfill_guidelineguideline_filter);//更新fact中变量值
+                        update(review_wizardfill_guidelineguideline_id);//更新fact中变量值
+                        update(review_wizardfill_guidelineguideline_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询当前测试库指定类型的规则]
+            rule "dedataset1"
+            ruleflow-group "review_wizardfill_guidelinededataset1"
+            when
+            then
+                        update(review_wizardfill_guidelinedefault);//更新fact中变量值
+                        update(review_wizardfill_guidelineguideline_detail);//更新fact中变量值
+                        update(review_wizardfill_guidelineguideline_filter);//更新fact中变量值
+                        update(review_wizardfill_guidelineguideline_id);//更新fact中变量值
+                        update(review_wizardfill_guidelineguideline_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置返回的guideline_id]
+            rule "prepareparam2"
+            ruleflow-group "review_wizardfill_guidelineprepareparam2"
+            when
+            then
+                            review_wizardfill_guidelineguideline_detail.set("guideline_id",review_wizardfill_guidelineguideline_page.get("0"));
+                            review_wizardfill_guidelineguideline_detail.set("stage",review_wizardfill_guidelineguideline_detail.get("reviewstage"));
+                            review_wizardfill_guidelineguideline_detail.set("guideline_id",review_wizardfill_guidelineguideline_detail.get("id"));
+                        update(review_wizardfill_guidelinedefault);//更新fact中变量值
+                        update(review_wizardfill_guidelineguideline_detail);//更新fact中变量值
+                        update(review_wizardfill_guidelineguideline_filter);//更新fact中变量值
+                        update(review_wizardfill_guidelineguideline_id);//更新fact中变量值
+                        update(review_wizardfill_guidelineguideline_page);//更新fact中变量值
+            end

@@ -1,0 +1,185 @@
+package cn.ibizlab.plm.testmgmt.logic.test_caselogic.baseline_plan_case;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case test_casebaseline_plan_casedefault;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case test_casebaseline_plan_casecase_versions;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case test_casebaseline_plan_casefor_temp_obj;
+                global cn.ibizlab.plm.core.base.domain.version test_casebaseline_plan_casefor_temp_version_obj;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case test_casebaseline_plan_casepage;
+                global cn.ibizlab.plm.core.base.domain.version test_casebaseline_plan_caseversion_filter;
+                global cn.ibizlab.plm.core.base.domain.version test_casebaseline_plan_caseversion_page;
+                    global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService test_caseservice;
+                    global cn.ibizlab.plm.core.base.service.IversionService versionservice;
+        global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService iBzSysTest_caseDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "test_casebaseline_plan_casebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[选择用例列表]
+            rule "dedataset1"
+            ruleflow-group "test_casebaseline_plan_casededataset1"
+            when
+            then
+                        update(test_casebaseline_plan_casedefault);//更新fact中变量值
+                        update(test_casebaseline_plan_casecase_versions);//更新fact中变量值
+                        update(test_casebaseline_plan_casefor_temp_obj);//更新fact中变量值
+                        update(test_casebaseline_plan_casefor_temp_version_obj);//更新fact中变量值
+                        update(test_casebaseline_plan_casepage);//更新fact中变量值
+                        update(test_casebaseline_plan_caseversion_filter);//更新fact中变量值
+                        update(test_casebaseline_plan_caseversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "test_casebaseline_plan_caseloopsubcall1"
+            when
+            then
+                        update(test_casebaseline_plan_casedefault);//更新fact中变量值
+                        update(test_casebaseline_plan_casecase_versions);//更新fact中变量值
+                        update(test_casebaseline_plan_casefor_temp_obj);//更新fact中变量值
+                        update(test_casebaseline_plan_casefor_temp_version_obj);//更新fact中变量值
+                        update(test_casebaseline_plan_casepage);//更新fact中变量值
+                        update(test_casebaseline_plan_caseversion_filter);//更新fact中变量值
+                        update(test_casebaseline_plan_caseversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[执行脚本代码]
+            rule "rawsfcode1"
+            ruleflow-group "test_casebaseline_plan_caserawsfcode1"
+            when
+            then
+                        update(test_casebaseline_plan_casedefault);//更新fact中变量值
+                        update(test_casebaseline_plan_casecase_versions);//更新fact中变量值
+                        update(test_casebaseline_plan_casefor_temp_obj);//更新fact中变量值
+                        update(test_casebaseline_plan_casefor_temp_version_obj);//更新fact中变量值
+                        update(test_casebaseline_plan_casepage);//更新fact中变量值
+                        update(test_casebaseline_plan_caseversion_filter);//更新fact中变量值
+                        update(test_casebaseline_plan_caseversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备版本过滤器]
+            rule "prepareparam1"
+            ruleflow-group "test_casebaseline_plan_caseprepareparam1"
+            when
+            then
+                            test_casebaseline_plan_caseversion_filter.set("n_id_in",test_casebaseline_plan_casecase_versions.get("version_id_in"));
+                        update(test_casebaseline_plan_casedefault);//更新fact中变量值
+                        update(test_casebaseline_plan_casecase_versions);//更新fact中变量值
+                        update(test_casebaseline_plan_casefor_temp_obj);//更新fact中变量值
+                        update(test_casebaseline_plan_casefor_temp_version_obj);//更新fact中变量值
+                        update(test_casebaseline_plan_casepage);//更新fact中变量值
+                        update(test_casebaseline_plan_caseversion_filter);//更新fact中变量值
+                        update(test_casebaseline_plan_caseversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取版本数据]
+            rule "dedataset2"
+            ruleflow-group "test_casebaseline_plan_casededataset2"
+            when
+            then
+                        update(test_casebaseline_plan_casedefault);//更新fact中变量值
+                        update(test_casebaseline_plan_casecase_versions);//更新fact中变量值
+                        update(test_casebaseline_plan_casefor_temp_obj);//更新fact中变量值
+                        update(test_casebaseline_plan_casefor_temp_version_obj);//更新fact中变量值
+                        update(test_casebaseline_plan_casepage);//更新fact中变量值
+                        update(test_casebaseline_plan_caseversion_filter);//更新fact中变量值
+                        update(test_casebaseline_plan_caseversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall2"
+            ruleflow-group "test_casebaseline_plan_caseloopsubcall2"
+            when
+            then
+                        update(test_casebaseline_plan_casedefault);//更新fact中变量值
+                        update(test_casebaseline_plan_casecase_versions);//更新fact中变量值
+                        update(test_casebaseline_plan_casefor_temp_obj);//更新fact中变量值
+                        update(test_casebaseline_plan_casefor_temp_version_obj);//更新fact中变量值
+                        update(test_casebaseline_plan_casepage);//更新fact中变量值
+                        update(test_casebaseline_plan_caseversion_filter);//更新fact中变量值
+                        update(test_casebaseline_plan_caseversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall3"
+            ruleflow-group "test_casebaseline_plan_caseloopsubcall3"
+            when
+            then
+                        update(test_casebaseline_plan_casedefault);//更新fact中变量值
+                        update(test_casebaseline_plan_casecase_versions);//更新fact中变量值
+                        update(test_casebaseline_plan_casefor_temp_obj);//更新fact中变量值
+                        update(test_casebaseline_plan_casefor_temp_version_obj);//更新fact中变量值
+                        update(test_casebaseline_plan_casepage);//更新fact中变量值
+                        update(test_casebaseline_plan_caseversion_filter);//更新fact中变量值
+                        update(test_casebaseline_plan_caseversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充当前版本名称]
+            rule "prepareparam2"
+            ruleflow-group "test_casebaseline_plan_caseprepareparam2"
+            when
+            then
+                            test_casebaseline_plan_casefor_temp_obj.set("curversionname",test_casebaseline_plan_casefor_temp_version_obj.get("name"));
+                        update(test_casebaseline_plan_casedefault);//更新fact中变量值
+                        update(test_casebaseline_plan_casecase_versions);//更新fact中变量值
+                        update(test_casebaseline_plan_casefor_temp_obj);//更新fact中变量值
+                        update(test_casebaseline_plan_casefor_temp_version_obj);//更新fact中变量值
+                        update(test_casebaseline_plan_casepage);//更新fact中变量值
+                        update(test_casebaseline_plan_caseversion_filter);//更新fact中变量值
+                        update(test_casebaseline_plan_caseversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall4"
+            ruleflow-group "test_casebaseline_plan_caseloopsubcall4"
+            when
+            then
+                        update(test_casebaseline_plan_casedefault);//更新fact中变量值
+                        update(test_casebaseline_plan_casecase_versions);//更新fact中变量值
+                        update(test_casebaseline_plan_casefor_temp_obj);//更新fact中变量值
+                        update(test_casebaseline_plan_casefor_temp_version_obj);//更新fact中变量值
+                        update(test_casebaseline_plan_casepage);//更新fact中变量值
+                        update(test_casebaseline_plan_caseversion_filter);//更新fact中变量值
+                        update(test_casebaseline_plan_caseversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备版本参数]
+            rule "prepareparam3"
+            ruleflow-group "test_casebaseline_plan_caseprepareparam3"
+            when
+            then
+                            test_casebaseline_plan_casefor_temp_obj.set("curversionname","v1");
+                        update(test_casebaseline_plan_casedefault);//更新fact中变量值
+                        update(test_casebaseline_plan_casecase_versions);//更新fact中变量值
+                        update(test_casebaseline_plan_casefor_temp_obj);//更新fact中变量值
+                        update(test_casebaseline_plan_casefor_temp_version_obj);//更新fact中变量值
+                        update(test_casebaseline_plan_casepage);//更新fact中变量值
+                        update(test_casebaseline_plan_caseversion_filter);//更新fact中变量值
+                        update(test_casebaseline_plan_caseversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "test_casebaseline_plan_caseend1"
+            when
+            then
+                        update(test_casebaseline_plan_casedefault);//更新fact中变量值
+                        update(test_casebaseline_plan_casecase_versions);//更新fact中变量值
+                        update(test_casebaseline_plan_casefor_temp_obj);//更新fact中变量值
+                        update(test_casebaseline_plan_casefor_temp_version_obj);//更新fact中变量值
+                        update(test_casebaseline_plan_casepage);//更新fact中变量值
+                        update(test_casebaseline_plan_caseversion_filter);//更新fact中变量值
+                        update(test_casebaseline_plan_caseversion_page);//更新fact中变量值
+            end

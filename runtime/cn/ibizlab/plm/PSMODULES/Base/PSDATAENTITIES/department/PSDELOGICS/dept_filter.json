@@ -1,0 +1,152 @@
+{
+  "codeName" : "dept_filter",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/department/PSDELOGICS/dept_filter.json",
+  "logicName" : "部门过滤",
+  "name" : "部门过滤",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : -230,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 199,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "END2",
+    "leftPos" : 318,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "dept_page"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 199
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "dept_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/department.json"
+    },
+    "leftPos" : 88,
+    "logicNodeType" : "DEDATASET",
+    "name" : "部门过滤",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "dept_page"
+    },
+    "topPos" : 207
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : -102,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "N_ID_NOTEQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "dept_filter"
+      },
+      "name" : "Default[cur_id] ==> dept_filter[N_ID_NOTEQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "cur_id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValue" : "1000",
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 207
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/department.json"
+    },
+    "default" : true,
+    "filterParam" : true
+  }, {
+    "codeName" : "dept_filter",
+    "logicName" : "部门过滤器",
+    "name" : "部门过滤器",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/department.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "dept_page",
+    "logicName" : "部门查询结果",
+    "name" : "部门查询结果",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/department.json"
+    },
+    "entityPageParam" : true
+  }, {
+    "codeName" : "result_list",
+    "logicName" : "数据对象列表变量",
+    "name" : "数据对象列表变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/department.json"
+    },
+    "entityListParam" : true
+  }, {
+    "codeName" : "temp",
+    "logicName" : "temp",
+    "name" : "temp",
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.notify_settingget_by_user" isClosed="false" isExecutable="true" name="base_notify_setting_get_by_user_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.notify_settingget_by_user">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="notify_settingget_by_userdefault" type="entity"/>
+                                <tns:metaData express="new HashMap()" name="notify_settingget_by_usercontext" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.extension.domain.notify_event()" name="notify_settingget_by_userloop_event" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.extension.domain.PSDENotify()" name="notify_settingget_by_usernotify" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.extension.domain.notify_event()" name="notify_settingget_by_usernotify_event" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.extension.domain.notify_event()" name="notify_settingget_by_usernotify_events" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.extension.domain.PSDENotify()" name="notify_settingget_by_usernotify_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.notify_setting()" name="notify_settingget_by_usernotify_setting_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.extension.domain.PSDENotify()" name="notify_settingget_by_usernotifys" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.extension.domain.notify_event()" name="notify_settingget_by_userorigin_events" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="notify_settingget_by_usersession_param" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.notify_setting()" name="notify_settingget_by_useruser_setting" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="notify_settingget_by_useruser_settings" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Inotify_settingService))" name="notify_settingservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.extension.service.IPSDENotifyService))" name="psdenotifyservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Inotify_settingService))" name="iBzSysNotify_settingDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="notify_settingget_by_userdefault" type="cn.ibizlab.plm.core.base.domain.notify_setting" />
+                            <tns:global identifier="notify_settingget_by_userloop_event" type="cn.ibizlab.plm.core.extension.domain.notify_event" />
+                            <tns:global identifier="notify_settingget_by_usernotify" type="cn.ibizlab.plm.core.extension.domain.PSDENotify" />
+                            <tns:global identifier="notify_settingget_by_usernotify_event" type="cn.ibizlab.plm.core.extension.domain.notify_event" />
+                            <tns:global identifier="notify_settingget_by_usernotify_events" type="cn.ibizlab.plm.core.extension.domain.notify_event" />
+                            <tns:global identifier="notify_settingget_by_usernotify_filter" type="cn.ibizlab.plm.core.extension.domain.PSDENotify" />
+                            <tns:global identifier="notify_settingget_by_usernotify_setting_filter" type="cn.ibizlab.plm.core.base.domain.notify_setting" />
+                            <tns:global identifier="notify_settingget_by_usernotifys" type="cn.ibizlab.plm.core.extension.domain.PSDENotify" />
+                            <tns:global identifier="notify_settingget_by_userorigin_events" type="cn.ibizlab.plm.core.extension.domain.notify_event" />
+                            <tns:global identifier="notify_settingget_by_useruser_setting" type="cn.ibizlab.plm.core.base.domain.notify_setting" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="设置通知过滤分页"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取用户通知"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userdedataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="获取通知列表"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环构建通知事件"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_usersortparam1" id="sortparam1" implementation="http://www.jboss.org/drools/rule" name="排序数组参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="将通知事件集填充"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定用户配置"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userrenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新初始化事件"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="构建事件"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取完整用户配置"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userbindparam3" id="bindparam3" implementation="http://www.jboss.org/drools/rule" name="提取原事件数组"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="重置存在flag"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userappendparam2" id="appendparam2" implementation="http://www.jboss.org/drools/rule" name="原事件数组附加"/>
+                        <endEvent id="appendparam2_end" name="end"/>
+                        <sequenceFlow id="appendparam2_end_line" sourceRef="appendparam2" targetRef="appendparam2_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userloopsubcall2" id="loopsubcall2" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userappendparam1" id="appendparam1" implementation="http://www.jboss.org/drools/rule" name="插入事件"/>
+                        <endEvent id="appendparam1_end" name="end"/>
+                        <sequenceFlow id="appendparam1_end_line" sourceRef="appendparam1" targetRef="appendparam1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置存在标识"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userend2" id="end2" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end2_end" name="end"/>
+                        <sequenceFlow id="end2_end_line" sourceRef="end2" targetRef="end2_end"/>
+                    <sequenceFlow id="begin_prepareparam5" sourceRef="begin" targetRef="prepareparam5">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam5_dedataset1" sourceRef="prepareparam5" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset1_bindparam1" sourceRef="gateway-dedataset1" targetRef="bindparam1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $notify_settingget_by_userdefault:notify_setting();
+                                            $notify_settingget_by_usercontext:Map();
+                                            $notify_settingget_by_userloop_event:notify_event();
+                                            $notify_settingget_by_usernotify:PSDENotify();
+                                            $notify_settingget_by_usernotify_event:notify_event();
+                                            $notify_settingget_by_usernotify_events:notify_event();
+                                            $notify_settingget_by_usernotify_filter:PSDENotify();
+                                            $notify_settingget_by_usernotify_setting_filter:notify_setting();
+                                            $notify_settingget_by_usernotifys:PSDENotify();
+                                            $notify_settingget_by_userorigin_events:notify_event();
+                                            $notify_settingget_by_usersession_param:Map();
+                                            $notify_settingget_by_useruser_setting:notify_setting();
+                                            $notify_settingget_by_useruser_settings:Map();
+                                    eval($notify_settingget_by_userdefault==notify_settingget_by_userdefault && $notify_settingget_by_userloop_event==notify_settingget_by_userloop_event && $notify_settingget_by_usernotify==notify_settingget_by_usernotify && $notify_settingget_by_usernotify_event==notify_settingget_by_usernotify_event && $notify_settingget_by_usernotify_events==notify_settingget_by_usernotify_events && $notify_settingget_by_usernotify_filter==notify_settingget_by_usernotify_filter && $notify_settingget_by_usernotify_setting_filter==notify_settingget_by_usernotify_setting_filter && $notify_settingget_by_usernotifys==notify_settingget_by_usernotifys && $notify_settingget_by_userorigin_events==notify_settingget_by_userorigin_events && $notify_settingget_by_useruser_setting==notify_settingget_by_useruser_setting && );
+                                eval((RuleUtils.test($notify_settingget_by_useruser_settings.get("size"),"GT","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset1_dedataset2" sourceRef="dedataset1" targetRef="dedataset2">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset2_loopsubcall1" sourceRef="dedataset2" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_renewparam1" sourceRef="loopsubcall1" targetRef="renewparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_sortparam1" sourceRef="loopsubcall1" targetRef="sortparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="sortparam1_prepareparam2" sourceRef="sortparam1" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_end1" sourceRef="prepareparam2" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_deaction1" sourceRef="bindparam1" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="renewparam1_prepareparam1" sourceRef="renewparam1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_prepareparam4" sourceRef="prepareparam1" targetRef="prepareparam4">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_bindparam3" sourceRef="deaction1" targetRef="bindparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam3_appendparam2" sourceRef="bindparam3" targetRef="appendparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam4_loopsubcall2" sourceRef="prepareparam4" targetRef="loopsubcall2">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall2_prepareparam3" sourceRef="gateway-loopsubcall2" targetRef="prepareparam3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $notify_settingget_by_userdefault:notify_setting();
+                                            $notify_settingget_by_usercontext:Map();
+                                            $notify_settingget_by_userloop_event:notify_event();
+                                            $notify_settingget_by_usernotify:PSDENotify();
+                                            $notify_settingget_by_usernotify_event:notify_event();
+                                            $notify_settingget_by_usernotify_events:notify_event();
+                                            $notify_settingget_by_usernotify_filter:PSDENotify();
+                                            $notify_settingget_by_usernotify_setting_filter:notify_setting();
+                                            $notify_settingget_by_usernotifys:PSDENotify();
+                                            $notify_settingget_by_userorigin_events:notify_event();
+                                            $notify_settingget_by_usersession_param:Map();
+                                            $notify_settingget_by_useruser_setting:notify_setting();
+                                            $notify_settingget_by_useruser_settings:Map();
+                                    eval($notify_settingget_by_userdefault==notify_settingget_by_userdefault && $notify_settingget_by_userloop_event==notify_settingget_by_userloop_event && $notify_settingget_by_usernotify==notify_settingget_by_usernotify && $notify_settingget_by_usernotify_event==notify_settingget_by_usernotify_event && $notify_settingget_by_usernotify_events==notify_settingget_by_usernotify_events && $notify_settingget_by_usernotify_filter==notify_settingget_by_usernotify_filter && $notify_settingget_by_usernotify_setting_filter==notify_settingget_by_usernotify_setting_filter && $notify_settingget_by_usernotifys==notify_settingget_by_usernotifys && $notify_settingget_by_userorigin_events==notify_settingget_by_userorigin_events && $notify_settingget_by_useruser_setting==notify_settingget_by_useruser_setting && );
+                                eval((RuleUtils.test($notify_settingget_by_userloop_event.get("id"),"EQ","id")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall2_appendparam1" sourceRef="gateway-loopsubcall2" targetRef="appendparam1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $notify_settingget_by_userdefault:notify_setting();
+                                            $notify_settingget_by_usercontext:Map();
+                                            $notify_settingget_by_userloop_event:notify_event();
+                                            $notify_settingget_by_usernotify:PSDENotify();
+                                            $notify_settingget_by_usernotify_event:notify_event();
+                                            $notify_settingget_by_usernotify_events:notify_event();
+                                            $notify_settingget_by_usernotify_filter:PSDENotify();
+                                            $notify_settingget_by_usernotify_setting_filter:notify_setting();
+                                            $notify_settingget_by_usernotifys:PSDENotify();
+                                            $notify_settingget_by_userorigin_events:notify_event();
+                                            $notify_settingget_by_usersession_param:Map();
+                                            $notify_settingget_by_useruser_setting:notify_setting();
+                                            $notify_settingget_by_useruser_settings:Map();
+                                    eval($notify_settingget_by_userdefault==notify_settingget_by_userdefault && $notify_settingget_by_userloop_event==notify_settingget_by_userloop_event && $notify_settingget_by_usernotify==notify_settingget_by_usernotify && $notify_settingget_by_usernotify_event==notify_settingget_by_usernotify_event && $notify_settingget_by_usernotify_events==notify_settingget_by_usernotify_events && $notify_settingget_by_usernotify_filter==notify_settingget_by_usernotify_filter && $notify_settingget_by_usernotify_setting_filter==notify_settingget_by_usernotify_setting_filter && $notify_settingget_by_usernotifys==notify_settingget_by_usernotifys && $notify_settingget_by_userorigin_events==notify_settingget_by_userorigin_events && $notify_settingget_by_useruser_setting==notify_settingget_by_useruser_setting && );
+                                eval((RuleUtils.test($notify_settingget_by_usersession_param.get("exist_flag"),"NOTEQ","1")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_end2" sourceRef="prepareparam3" targetRef="end2">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-dedataset1" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="dedataset1_gateway-dedataset1_gatewayline" sourceRef="dedataset1" targetRef="gateway-dedataset1"></sequenceFlow>
+                            <sequenceFlow id="gateway-dedataset1_end_line" sourceRef="gateway-dedataset1" targetRef="gateway-dedataset1_end"/>
+                            <endEvent id="gateway-dedataset1_end" name="end"/>
+                            <exclusiveGateway id="gateway-loopsubcall2" name="Gateway" gatewayDirection="Diverging" default="gateway-loopsubcall2_end_line"></exclusiveGateway>
+                            <sequenceFlow id="loopsubcall2_gateway-loopsubcall2_gatewayline" sourceRef="loopsubcall2" targetRef="gateway-loopsubcall2"></sequenceFlow>
+                            <sequenceFlow id="gateway-loopsubcall2_end_line" sourceRef="gateway-loopsubcall2" targetRef="gateway-loopsubcall2_end"/>
+                            <endEvent id="gateway-loopsubcall2_end" name="end"/>
+        </process>
+    </definitions>

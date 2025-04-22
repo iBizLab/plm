@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.prodmgmt.product.create.afterLogic" isClosed="false" isExecutable="true" name="prodmgmt_product_create_afterLogic" processType="Private" tns:packageName="cn.ibizlab.plm.core.prodmgmt.product.create.afterLogic">
+            <extensionElements>
+                <tns:import name="java.util.Map"/>
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                <tns:import name="cn.ibizlab.plm.core.prodmgmt.domain.product"/>
+            </extensionElements>
+                <startEvent id="begin" isInterrupting="true"/>
+                <endEvent id="prepareparam1_end" name="end"/>
+                            <callActivity activiti:exclusive="true" calledElement="cn.ibizlab.plm.core.prodmgmt.service.logic.productcreate_product_ticket" id="327608ca84cc548fb5cd508492574238" name="create_product_ticket.json.bpmn"/>
+                        <sequenceFlow id="begin_327608ca84cc548fb5cd508492574238" sourceRef="begin" targetRef="327608ca84cc548fb5cd508492574238"/>
+                            <callActivity activiti:exclusive="true" calledElement="cn.ibizlab.plm.core.prodmgmt.service.logic.productcreate_recent" id="f12f36add82bd00db96c740805b3619c" name="create_recent.json.bpmn"/>
+                        <sequenceFlow id="327608ca84cc548fb5cd508492574238_f12f36add82bd00db96c740805b3619c" sourceRef="327608ca84cc548fb5cd508492574238" targetRef="f12f36add82bd00db96c740805b3619c"/>
+                            <callActivity activiti:exclusive="true" calledElement="cn.ibizlab.plm.core.prodmgmt.service.logic.productauto_create_members" id="507b3711889d7969d289ca75490ebfd9" name="auto_create_members.json.bpmn"/>
+                        <sequenceFlow id="f12f36add82bd00db96c740805b3619c_507b3711889d7969d289ca75490ebfd9" sourceRef="f12f36add82bd00db96c740805b3619c" targetRef="507b3711889d7969d289ca75490ebfd9"/>
+                            <sequenceFlow id="507b3711889d7969d289ca75490ebfd9_prepareparam1_end" sourceRef="507b3711889d7969d289ca75490ebfd9" targetRef="prepareparam1_end"/>
+        </process>
+    </definitions>

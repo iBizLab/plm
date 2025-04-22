@@ -1,0 +1,352 @@
+{
+  "aggMode" : "NONE",
+  "codeName" : "relation_grid_view_grid",
+  "columnEnableFilter" : 2,
+  "columnEnableLink" : 2,
+  "controlStyle" : "NUMBER_GRID",
+  "controlType" : "GRID",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_page/PSGRIDS/relation_grid_view_grid.json",
+  "getFetchPSControlAction" : {
+    "modelref" : true,
+    "id" : "fetch",
+    "actionType" : "DEDATASET",
+    "name" : "fetch",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "fetch_fill_version_data"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_page.json"
+    }
+  },
+  "groupMode" : "NONE",
+  "logicName" : "基线页面实体表格视图_表格",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_page.json"
+  },
+  "getPSControls" : [ {
+    "codeName" : "relation_grid_view_grid_batchtoolbar",
+    "controlType" : "TOOLBAR",
+    "logicName" : "移出基线",
+    "name" : "grid_batchtoolbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_page.json"
+    },
+    "getPSControlParam" : {
+      "id" : "grid_batchtoolbar"
+    },
+    "getPSDEToolbarItems" : [ {
+      "caption" : "移出",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction1",
+      "noPrivDisplayMode" : 1,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "grid_batchtoolbar_deuiaction1"
+      },
+      "getPSControlLogics" : [ {
+        "itemName" : "deuiaction1",
+        "logicTag" : "grid_batchtoolbar",
+        "logicType" : "SCRIPT",
+        "name" : "logic",
+        "scriptCode" : "context.baseline_status !== '2'",
+        "triggerType" : "ITEMENABLE"
+      } ],
+      "getPSSysImage" : {
+        "glyph" : "xf112@FontAwesome",
+        "cssClass" : "fa fa-mail-reply"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "MULTIKEY",
+        "noPrivDisplayMode" : 1,
+        "caption" : "移出",
+        "codeName" : "shift_out_baseline",
+        "confirmMsg" : "确认此基线中移除？",
+        "dataAccessAction" : "UPDATE",
+        "fullCodeName" : "baseline_page_shift_out_baseline",
+        "name" : "移出基线",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "shift_out_baseline"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_page.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "UPDATE"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf112@FontAwesome",
+          "cssClass" : "fa fa-mail-reply"
+        },
+        "refreshMode" : 1,
+        "successMsg" : "移出成功",
+        "timeout" : 60000,
+        "uIActionMode" : "BACKEND",
+        "uIActionTag" : "shift_out_baseline",
+        "uIActionType" : "DEUIACTION",
+        "enableConfirm" : true,
+        "reloadData" : true,
+        "id" : "shift_out_baseline@baseline_page"
+      },
+      "tooltip" : "移出",
+      "uIActionTarget" : "MULTIKEY",
+      "showCaption" : true,
+      "showIcon" : true
+    } ],
+    "modelid" : "695f4e9b9d18206a838f1a09fa056730",
+    "modeltype" : "PSDETOOLBAR"
+  } ],
+  "getPSDEGridColumns" : [ {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.NAME"
+    },
+    "caption" : "标题",
+    "codeName" : "name",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "name",
+    "excelCaption" : "标题",
+    "name" : "name",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "width" : 200,
+    "widthUnit" : "STAR",
+    "enableSort" : false
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "caption" : "页面类型",
+    "codeName" : "type",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "type",
+    "excelCaption" : "页面类型",
+    "name" : "type",
+    "noPrivDisplayMode" : 1,
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Wiki__page_type.json"
+    },
+    "getPSAppDEField" : {
+      "name" : "TYPE",
+      "codeName" : "type"
+    },
+    "width" : 150,
+    "widthUnit" : "PX",
+    "enableSort" : false
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "版本",
+    "codeName" : "target_version_name",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "target_version",
+    "excelCaption" : "版本",
+    "name" : "target_version_name",
+    "noPrivDisplayMode" : 1,
+    "objectNameField" : "name",
+    "getPSAppDEField" : {
+      "name" : "TARGET_VERSION",
+      "codeName" : "target_version"
+    },
+    "valueType" : "OBJECT",
+    "width" : 150,
+    "widthUnit" : "PX",
+    "enableSort" : false
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+    },
+    "caption" : "更新人",
+    "codeName" : "update_man",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "update_man",
+    "excelCaption" : "更新人",
+    "name" : "update_man",
+    "noPrivDisplayMode" : 1,
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+    },
+    "getPSAppDEField" : {
+      "name" : "UPDATE_MAN",
+      "codeName" : "update_man"
+    },
+    "width" : 150,
+    "widthUnit" : "PX",
+    "enableSort" : false
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+    },
+    "caption" : "更新时间",
+    "codeName" : "update_time",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "update_time",
+    "excelCaption" : "更新时间",
+    "name" : "update_time",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "update_time"
+    },
+    "valueFormat" : "YYYY-MM-DD HH:mm:ss",
+    "width" : 200,
+    "widthUnit" : "PX",
+    "enableSort" : false
+  } ],
+  "getPSDEGridDataItems" : [ {
+    "dataType" : 25,
+    "name" : "name",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "type",
+    "getPSAppDEField" : {
+      "name" : "TYPE",
+      "codeName" : "type"
+    }
+  }, {
+    "dataType" : 21,
+    "name" : "target_version",
+    "getPSAppDEField" : {
+      "name" : "TARGET_VERSION",
+      "codeName" : "target_version"
+    },
+    "valueType" : "OBJECT"
+  }, {
+    "dataType" : 25,
+    "name" : "update_man",
+    "getPSAppDEField" : {
+      "name" : "UPDATE_MAN",
+      "codeName" : "update_man"
+    }
+  }, {
+    "format" : "YYYY-MM-DD HH:mm:ss",
+    "dataType" : 5,
+    "name" : "update_time",
+    "getPSAppDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "update_time"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "target_id",
+    "getPSAppDEField" : {
+      "name" : "TARGET_ID",
+      "codeName" : "target_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "principal_id",
+    "getPSAppDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "target_version_id",
+    "getPSAppDEField" : {
+      "name" : "TARGET_VERSION_ID",
+      "codeName" : "target_version_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "space_id",
+    "getPSAppDEField" : {
+      "name" : "SPACE_ID",
+      "codeName" : "space_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfdataaccaction",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "dataAccessAction" : true
+  }, {
+    "dataType" : 25,
+    "name" : "srfmajortext",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  } ],
+  "getPSDEGridEditItems" : [ {
+    "caption" : "标识",
+    "codeName" : "srfkey",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getPSEditor" : {
+      "editorType" : "HIDDEN",
+      "name" : "srfkey"
+    },
+    "allowEmpty" : true
+  } ],
+  "getPSSysPFPlugin" : {
+    "pluginType" : "GRID_RENDER",
+    "pluginCode" : "NUMBER_GRID",
+    "runtimeObject" : true
+  },
+  "pagingMode" : 1,
+  "pagingSize" : 20,
+  "getRemovePSControlAction" : {
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_page.json"
+    }
+  },
+  "sortMode" : "REMOTE",
+  "hasWFDataItems" : false,
+  "enableColFilter" : false,
+  "enableCustomized" : false,
+  "enableGroup" : false,
+  "enablePagingBar" : true,
+  "enableRowEdit" : false,
+  "enableRowEditOrder" : false,
+  "enableRowNew" : false,
+  "forceFit" : false,
+  "hideHeader" : false,
+  "noSort" : true,
+  "singleSelect" : false,
+  "modelid" : "ad856d0d26b1937b4605710e5e0fdeec",
+  "modeltype" : "PSDEGRID"
+}

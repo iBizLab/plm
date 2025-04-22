@@ -1,0 +1,225 @@
+{
+  "codeName" : "complete_trend",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDELOGICS/complete_trend.json",
+  "logicName" : "工作项完成趋势",
+  "memo" : "工作项完成趋势",
+  "name" : "工作项完成趋势",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 10,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "RAWSQLCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "work_item"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "七天前创建且未完成的工作项数量",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[n_project_id_eq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_project_id_eq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "select count(1) as `seven_ago_not_completed`  from work_item t1, work_item_state t2 \r\nwhere t1.`STATE` = t2.ID and t2.`TYPE`  <> 'completed'\r\nand datediff(curdate(), t1.CREATE_TIME) >= 7  \r\nand t1.PROJECT_ID = ? and t1.IS_DELETED = 0",
+    "topPos" : 239,
+    "fillDstLogicParam" : true
+  }, {
+    "codeName" : "RAWSQLCALL2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "work_item"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "七天前完成的工作项数量",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[n_project_id_eq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_project_id_eq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "select count(1) as `seven_ago_completed` from work_item t1, work_item_state t2 \r\nwhere t1.STATE = t2.id and t2.`TYPE` = 'completed'\r\nand datediff(curdate(), t1.COMPLETED_AT) >= 7  \r\nand t1.PROJECT_ID = ? \r\nand t1.IS_DELETED = 0",
+    "topPos" : 333,
+    "fillDstLogicParam" : true
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "seven_days"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取七天内创建或完成的工作项",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "result_page"
+    },
+    "topPos" : 450
+  }, {
+    "code" : "def result_list = logic.param('result_list').getReal()\r\ndef result_page = logic.param('result_page').getReal()\r\ndef work_item = logic.param('work_item').getReal()\r\n\r\n// 七天前未完成数量\r\ndef not_completed = work_item.get('seven_ago_not_completed')\r\ndef completed = work_item.get('seven_ago_completed')\r\n\r\ndef dateFormatter = new java.text.SimpleDateFormat(\"yyyy-MM-dd\")\r\ndef calendar = java.util.Calendar.getInstance()\r\n\r\n// 获取当前日期\r\ndef endDate = calendar.time\r\n\r\n// 获取6天前的日期\r\ncalendar.add(Calendar.DAY_OF_MONTH, -6)\r\ndef startDate = calendar.time\r\n\r\n// 生成日期列表\r\ndef datesInRange = []\r\ncalendar.time = startDate // 重置日历到起始日期\r\n\r\nwhile (calendar.time <= endDate) {\r\n    def rep_date = dateFormatter.format(calendar.time)\r\n    def rep_obj = sys.entity('work_item')\r\n    rep_obj.set('rep_date', rep_date) \r\n    result_list.add(rep_obj)\r\n    calendar.add(java.util.Calendar.DATE, 1)\r\n}\r\nresult_list.each { it ->\r\n    def rep_date = dateFormatter.format(new Date(it.get('rep_date').time))\r\n    result_page.each { item ->\r\n        def state_type = item.get('state_type')\r\n        if(state_type != null){\r\n            if(state_type == 'completed' && item.get('completed_at') != null){\r\n                def completed_at = dateFormatter.format(new Date(item.get('completed_at').time))\r\n                if(completed_at == rep_date){\r\n                    completed++\r\n                    not_completed--\r\n                }   \r\n            } else if(state_type != 'completed' && item.get('create_time') != null){\r\n                def create_time = dateFormatter.format(new Date(item.get('create_time').time))\r\n                if(create_time == rep_date){\r\n                    not_completed++\r\n                }\r\n            }\r\n        }\r\n    }\r\n    it.set('rep_value1', not_completed)\r\n    it.set('rep_value2', completed)\r\n}\r\n\r\n",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "Groovy",
+    "leftPos" : 160,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "统计七天内的完成/未完成数量",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 604
+  }, {
+    "codeName" : "BINDPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "result_page"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "BINDPARAM",
+    "name" : "绑定返回统计结果",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      }
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "result_list"
+    },
+    "topPos" : 758
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 200,
+    "logicNodeType" : "END",
+    "name" : "绑定返回结果",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "result_page"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 940
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "default" : true,
+    "filterParam" : true
+  }, {
+    "codeName" : "result_list",
+    "logicName" : "返回结果集合",
+    "name" : "返回结果集合",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "entityListParam" : true
+  }, {
+    "codeName" : "result_page",
+    "logicName" : "返回分页结果对象",
+    "name" : "返回分页结果对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "entityPageParam" : true
+  }, {
+    "codeName" : "work_item",
+    "logicName" : "工作项对象",
+    "name" : "工作项对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

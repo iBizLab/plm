@@ -1,0 +1,161 @@
+package cn.ibizlab.plm.base.logic.template_flowlogic.test_plan_auto_set_state;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.run template_flowtest_plan_auto_set_statedefault;
+                global java.util.Map template_flowtest_plan_auto_set_statefinish_flag;
+                global cn.ibizlab.plm.core.testmgmt.domain.run template_flowtest_plan_auto_set_staterunfilter;
+                global cn.ibizlab.plm.core.testmgmt.domain.run template_flowtest_plan_auto_set_stateruns;
+                global cn.ibizlab.plm.core.testmgmt.domain.run template_flowtest_plan_auto_set_statetemp_run;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_plan template_flowtest_plan_auto_set_statetest_plan;
+                    global cn.ibizlab.plm.core.testmgmt.service.Itest_planService test_planservice;
+                    global cn.ibizlab.plm.core.testmgmt.service.IrunService runservice;
+        global cn.ibizlab.plm.core.base.service.Itemplate_flowService iBzSysTemplate_flowDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "template_flowtest_plan_auto_set_statebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备测试计划]
+            rule "prepareparam1"
+            ruleflow-group "template_flowtest_plan_auto_set_stateprepareparam1"
+            when
+            then
+                            template_flowtest_plan_auto_set_statetest_plan.set("id",template_flowtest_plan_auto_set_statedefault.get("planid"));
+                        update(template_flowtest_plan_auto_set_statedefault);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statefinish_flag);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_staterunfilter);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_stateruns);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statetemp_run);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statetest_plan);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取执行用例对应的测试计划]
+            rule "deaction1"
+            ruleflow-group "template_flowtest_plan_auto_set_statedeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(test_planservice.get(template_flowtest_plan_auto_set_statetest_plan.getId()),template_flowtest_plan_auto_set_statetest_plan);
+                        update(template_flowtest_plan_auto_set_statedefault);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statefinish_flag);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_staterunfilter);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_stateruns);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statetemp_run);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statetest_plan);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取计划下所有执行用例]
+            rule "dedataset1"
+            ruleflow-group "template_flowtest_plan_auto_set_statededataset1"
+            when
+            then
+                        update(template_flowtest_plan_auto_set_statedefault);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statefinish_flag);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_staterunfilter);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_stateruns);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statetemp_run);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statetest_plan);//更新fact中变量值
+            end
+
+            //逻辑处理节点[初始化设置结束标识]
+            rule "prepareparam3"
+            ruleflow-group "template_flowtest_plan_auto_set_stateprepareparam3"
+            when
+            then
+                            template_flowtest_plan_auto_set_statefinish_flag.set("","1");
+                        update(template_flowtest_plan_auto_set_statedefault);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statefinish_flag);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_staterunfilter);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_stateruns);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statetemp_run);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statetest_plan);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环计算执行用例]
+            rule "loopsubcall1"
+            ruleflow-group "template_flowtest_plan_auto_set_stateloopsubcall1"
+            when
+            then
+                        update(template_flowtest_plan_auto_set_statedefault);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statefinish_flag);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_staterunfilter);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_stateruns);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statetemp_run);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statetest_plan);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end2"
+            ruleflow-group "template_flowtest_plan_auto_set_stateend2"
+            when
+            then
+                        update(template_flowtest_plan_auto_set_statedefault);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statefinish_flag);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_staterunfilter);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_stateruns);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statetemp_run);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statetest_plan);//更新fact中变量值
+            end
+
+            //逻辑处理节点[存在未执行的用例设置结束变量为0]
+            rule "prepareparam2"
+            ruleflow-group "template_flowtest_plan_auto_set_stateprepareparam2"
+            when
+            then
+                            template_flowtest_plan_auto_set_statefinish_flag.set("","0");
+                        update(template_flowtest_plan_auto_set_statedefault);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statefinish_flag);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_staterunfilter);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_stateruns);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statetemp_run);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statetest_plan);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置计划为已完成]
+            rule "prepareparam4"
+            ruleflow-group "template_flowtest_plan_auto_set_stateprepareparam4"
+            when
+            then
+                        update(template_flowtest_plan_auto_set_statedefault);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statefinish_flag);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_staterunfilter);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_stateruns);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statetemp_run);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statetest_plan);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设计计划为进行中]
+            rule "prepareparam5"
+            ruleflow-group "template_flowtest_plan_auto_set_stateprepareparam5"
+            when
+            then
+                        update(template_flowtest_plan_auto_set_statedefault);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statefinish_flag);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_staterunfilter);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_stateruns);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statetemp_run);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statetest_plan);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "template_flowtest_plan_auto_set_stateend1"
+            when
+            then
+                        update(template_flowtest_plan_auto_set_statedefault);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statefinish_flag);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_staterunfilter);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_stateruns);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statetemp_run);//更新fact中变量值
+                        update(template_flowtest_plan_auto_set_statetest_plan);//更新fact中变量值
+            end

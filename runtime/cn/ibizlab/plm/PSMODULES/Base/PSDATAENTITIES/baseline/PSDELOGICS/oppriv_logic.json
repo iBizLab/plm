@@ -1,0 +1,135 @@
+{
+  "codeName" : "oppriv_logic",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/baseline/PSDELOGICS/oppriv_logic.json",
+  "logicName" : "基线操作标识业务计算逻辑",
+  "logicSubType" : "DEOPPRIV",
+  "memo" : "基线操作标识业务计算逻辑",
+  "name" : "基线操作标识业务计算逻辑",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "状态为已完成",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "STATUS",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[STATUS] 等于(=) 2",
+          "paramValue" : "2"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "其他状态",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "STATUS",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[STATUS] 不等于(<>) 2",
+          "paramValue" : "2"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 820,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "oppriv"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 390
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 430,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "不允许修改",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "update",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "oppriv"
+      },
+      "name" : "直接值[false] ==> oppriv[update]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "false",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 398
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/baseline.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "oppriv",
+    "logicName" : "权限承载对象",
+    "name" : "权限承载对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/baseline.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

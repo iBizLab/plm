@@ -1,0 +1,361 @@
+{
+  "accUserMode" : 2,
+  "getCapPSLanguageRes" : {
+    "lanResTag" : "DE.LNAME.WORK_ITEM"
+  },
+  "caption" : "工作项统计",
+  "codeName" : "work_item_mob_work_item_statistic_chart_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/work_item_mob_work_item_statistic_chart_view.json",
+  "name" : "work_itemmob_work_item_statistic_chart_view",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+  },
+  "getPSAppModule" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPMODULES/ProjMgmt.json"
+  },
+  "getPSAppViewEngines" : [ {
+    "engineCat" : "VIEW",
+    "engineType" : "MobChartView",
+    "name" : "engine"
+  } ],
+  "getPSControls" : [ {
+    "codeName" : "overview_chart",
+    "controlStyle" : "CUSTOM_LABEL",
+    "controlType" : "CHART",
+    "coordinateSystem" : "XY",
+    "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item/PSCHARTS/overview_chart.json",
+    "getFetchPSControlAction" : {
+      "modelref" : true,
+      "id" : "fetch",
+      "actionType" : "DEDATASET",
+      "name" : "fetch",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "fetch_overview_chart"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+      }
+    },
+    "logicName" : "overview_chart",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+    },
+    "getPSChartCoordinateSystems" : [ {
+      "eChartsType" : "cartesian2d",
+      "index" : 0,
+      "name" : "[bar_0]直角坐标系[0]",
+      "getPSChartGrid" : {
+        "index" : 0,
+        "name" : "[bar_0]直角坐标系[0]",
+        "getPSChartCoordinateSystem" : {
+          "modelref" : true,
+          "id" : "0"
+        },
+        "getPSChartGridXAxis0" : {
+          "modelref" : true,
+          "id" : "0"
+        },
+        "getPSChartGridYAxis0" : {
+          "modelref" : true,
+          "id" : "0"
+        },
+        "type" : "grid",
+        "id" : "0"
+      },
+      "type" : "XY",
+      "id" : "0"
+    } ],
+    "getPSChartDataSetGroups" : [ {
+      "index" : 0,
+      "name" : "overview_chart",
+      "getPSAppDEDataSet" : {
+        "modelref" : true,
+        "id" : "fetch_overview_chart"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+      },
+      "id" : "0"
+    } ],
+    "getPSChartDataSets" : [ {
+      "index" : 0,
+      "name" : "bar_0-overview_chart",
+      "getPSChartDataSetFields" : [ {
+        "index" : 0,
+        "name" : "WORK_ITEM_TYPE_NAME",
+        "groupField" : true,
+        "id" : "0"
+      }, {
+        "index" : 1,
+        "name" : "STATE",
+        "getPSCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_state.json"
+        },
+        "groupField" : true,
+        "id" : "1"
+      }, {
+        "index" : 2,
+        "name" : "REP_NUM",
+        "groupField" : false,
+        "id" : "2"
+      } ],
+      "id" : "0"
+    } ],
+    "getPSChartGrids" : [ {
+      "index" : 0,
+      "name" : "[bar_0]直角坐标系[0]",
+      "getPSChartCoordinateSystem" : {
+        "modelref" : true,
+        "id" : "0"
+      },
+      "getPSChartGridXAxis0" : {
+        "modelref" : true,
+        "id" : "0"
+      },
+      "getPSChartGridYAxis0" : {
+        "modelref" : true,
+        "id" : "0"
+      },
+      "type" : "grid",
+      "id" : "0"
+    } ],
+    "getPSChartXAxises" : [ {
+      "eChartsPos" : "xAxis",
+      "eChartsType" : "category",
+      "index" : 0,
+      "name" : "axis_xAxis_0",
+      "position" : "bottom",
+      "type" : "category",
+      "id" : "0"
+    } ],
+    "getPSChartYAxises" : [ {
+      "eChartsPos" : "yAxis",
+      "eChartsType" : "value",
+      "index" : 0,
+      "name" : "axis_yAxis_0",
+      "position" : "left",
+      "type" : "numeric",
+      "id" : "0"
+    } ],
+    "getPSControlHandler" : {
+      "getPSHandlerActions" : [ {
+        "actionName" : "Get",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "READ",
+        "name" : "load",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "get"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+        }
+      }, {
+        "actionName" : "Create",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "CREATE",
+        "name" : "create",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "create"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+        }
+      }, {
+        "actionName" : "Update",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "UPDATE",
+        "name" : "update",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "update"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+        }
+      }, {
+        "actionName" : "Remove",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "DELETE",
+        "name" : "remove",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "remove"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+        }
+      }, {
+        "actionType" : "DEDATASET",
+        "name" : "fetch",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "fetch_overview_chart"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+        }
+      } ],
+      "userDRAction" : "READ",
+      "enableDEFieldPrivilege" : false,
+      "id" : "图形控件处理器"
+    },
+    "getPSControlParam" : {
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "id" : "CHART"
+    },
+    "getPSDEChartDataGrid" : {
+      "index" : 0,
+      "id" : "0"
+    },
+    "getPSDEChartLegend" : {
+      "index" : 0,
+      "legendPos" : "TOP",
+      "showLegend" : true,
+      "id" : "0"
+    },
+    "getPSDEChartSerieses" : [ {
+      "catalogField" : "WORK_ITEM_TYPE_NAME",
+      "eChartsType" : "bar",
+      "index" : 0,
+      "name" : "bar_0",
+      "getPSChartCoordinateSystem" : {
+        "modelref" : true,
+        "id" : "0"
+      },
+      "getPSChartDataSet" : {
+        "modelref" : true,
+        "id" : "0"
+      },
+      "getPSChartSeriesEncode" : {
+        "index" : 0,
+        "itemId" : "STATE",
+        "itemName" : "STATE",
+        "name" : "坐标系编码",
+        "getPSChartXAxis" : {
+          "modelref" : true,
+          "id" : "0"
+        },
+        "getPSChartYAxis" : {
+          "modelref" : true,
+          "id" : "0"
+        },
+        "type" : "XY",
+        "x" : [ "WORK_ITEM_TYPE_NAME" ],
+        "y" : [ "REP_NUM" ],
+        "id" : "0"
+      },
+      "seriesField" : "STATE",
+      "seriesLayoutBy" : "column",
+      "getSeriesPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/ProjMgmt__work_item_state.json"
+      },
+      "seriesType" : "bar",
+      "valueField" : "REP_NUM",
+      "enableChartDataSet" : true,
+      "stack" : true,
+      "getUserParam" : {
+        "EC.label" : "{position:'inside'}",
+        "EC.barWidth" : "40",
+        "EC.stack" : "'chart'"
+      }
+    } ],
+    "getPSDEChartTitle" : {
+      "index" : 0,
+      "showTitle" : true,
+      "id" : "0"
+    },
+    "getPSSysPFPlugin" : {
+      "pluginType" : "CHART_RENDER",
+      "pluginCode" : "CUSTOM_LABEL",
+      "runtimeObject" : true
+    },
+    "readOnly" : true,
+    "name" : "chart",
+    "modelid" : "be0ae9c806315e7568db7d9d31644427",
+    "modeltype" : "PSDECHART",
+    "getUserParam" : {
+      "EC.color" : "[\"#5470c6\",\"#91cc75\",\"#fac858\",\"#ee6666\",\"#73c0de\",\"#3ba272\",\"#fc8452\",\"#9a60b4\",\"#ea7ccc\",\"#5470c6\",\"#91cc75\"]"
+    }
+  }, {
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DE.LNAME.WORK_ITEM"
+    },
+    "caption" : "工作项统计",
+    "codeName" : "mob_work_item_statistic_chart_view_captionbar",
+    "controlType" : "CAPTIONBAR",
+    "name" : "captionbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+    },
+    "getPSControlParam" : { }
+  } ],
+  "getPSDEViewCodeName" : "mob_work_item_statistic_chart_view",
+  "getPSDEViewId" : "6825a46a54251141b69f668297222c6f",
+  "getPSViewLayoutPanel" : {
+    "codeName" : "layoutpanel",
+    "controlStyle" : "APPDEMOBCHARTVIEW",
+    "controlType" : "VIEWLAYOUTPANEL",
+    "name" : "layoutpanel",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+    },
+    "getPSControlParam" : { },
+    "layoutBodyOnly" : true,
+    "layoutPanel" : true,
+    "useDefaultLayout" : true
+  },
+  "title" : "工作项统计",
+  "viewStyle" : "DEFAULT",
+  "viewType" : "DEMOBCHARTVIEW",
+  "enableDP" : true,
+  "enablePullDownRefresh" : false,
+  "enableQuickGroup" : false,
+  "enableQuickSearch" : false,
+  "enableSearch" : false,
+  "expandSearchForm" : false,
+  "loadDefault" : true,
+  "showCaptionBar" : false,
+  "modelid" : "f9f869022990825e092ae58c24b162bb",
+  "modeltype" : "PSAPPDEVIEW",
+  "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "work_items",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "project",
+    "majorDEName" : "PROJECT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/project.json"
+    },
+    "minorDECodeName" : "work_item",
+    "minorDEName" : "WORK_ITEM",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/work_item.json"
+    },
+    "name" : "DER1N_WORK_ITEM_PROJECT_PROJECT_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PROJECT_ID",
+      "codeName" : "project_id"
+    },
+    "rSMode" : 2
+  } ] ]
+}

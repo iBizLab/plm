@@ -1,0 +1,107 @@
+package cn.ibizlab.plm.team.logic.discuss_topiclogic.auto_create_members;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.team.domain.discuss_topic discuss_topicauto_create_membersdefault;
+                global cn.ibizlab.plm.core.team.domain.discuss_member discuss_topicauto_create_membersdiscuss_member;
+                global cn.ibizlab.plm.core.base.domain.member discuss_topicauto_create_membersfor_member_obj;
+                global cn.ibizlab.plm.core.base.domain.member discuss_topicauto_create_membersmember_filter;
+                global cn.ibizlab.plm.core.base.domain.member discuss_topicauto_create_membersmember_page;
+                    global cn.ibizlab.plm.core.base.service.ImemberService memberservice;
+                    global cn.ibizlab.plm.core.team.service.Idiscuss_memberService discuss_memberservice;
+        global cn.ibizlab.plm.core.team.service.Idiscuss_topicService iBzSysDiscuss_topicDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "discuss_topicauto_create_membersbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备团队成员查询参数]
+            rule "prepareparam1"
+            ruleflow-group "discuss_topicauto_create_membersprepareparam1"
+            when
+            then
+                            discuss_topicauto_create_membersmember_filter.set("n_owner_id_eq",discuss_topicauto_create_membersdefault.get("scopeid"));
+                            discuss_topicauto_create_membersmember_filter.set("n_owner_type_eq","GROUP");
+                        update(discuss_topicauto_create_membersdefault);//更新fact中变量值
+                        update(discuss_topicauto_create_membersdiscuss_member);//更新fact中变量值
+                        update(discuss_topicauto_create_membersfor_member_obj);//更新fact中变量值
+                        update(discuss_topicauto_create_membersmember_filter);//更新fact中变量值
+                        update(discuss_topicauto_create_membersmember_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取此团队下的成员]
+            rule "dedataset1"
+            ruleflow-group "discuss_topicauto_create_membersdedataset1"
+            when
+            then
+                        update(discuss_topicauto_create_membersdefault);//更新fact中变量值
+                        update(discuss_topicauto_create_membersdiscuss_member);//更新fact中变量值
+                        update(discuss_topicauto_create_membersfor_member_obj);//更新fact中变量值
+                        update(discuss_topicauto_create_membersmember_filter);//更新fact中变量值
+                        update(discuss_topicauto_create_membersmember_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "discuss_topicauto_create_membersloopsubcall1"
+            when
+            then
+                        update(discuss_topicauto_create_membersdefault);//更新fact中变量值
+                        update(discuss_topicauto_create_membersdiscuss_member);//更新fact中变量值
+                        update(discuss_topicauto_create_membersfor_member_obj);//更新fact中变量值
+                        update(discuss_topicauto_create_membersmember_filter);//更新fact中变量值
+                        update(discuss_topicauto_create_membersmember_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重置话题成员对象]
+            rule "resetparam1"
+            ruleflow-group "discuss_topicauto_create_membersresetparam1"
+            when
+            then
+                        update(discuss_topicauto_create_membersdefault);//更新fact中变量值
+                        update(discuss_topicauto_create_membersdiscuss_member);//更新fact中变量值
+                        update(discuss_topicauto_create_membersfor_member_obj);//更新fact中变量值
+                        update(discuss_topicauto_create_membersmember_filter);//更新fact中变量值
+                        update(discuss_topicauto_create_membersmember_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充话题成员属性]
+            rule "prepareparam2"
+            ruleflow-group "discuss_topicauto_create_membersprepareparam2"
+            when
+            then
+                            discuss_topicauto_create_membersdiscuss_member.set("userid",discuss_topicauto_create_membersfor_member_obj.get("userid"));
+                            discuss_topicauto_create_membersdiscuss_member.set("roleid",discuss_topicauto_create_membersfor_member_obj.get("roleid"));
+                            discuss_topicauto_create_membersdiscuss_member.set("name",discuss_topicauto_create_membersfor_member_obj.get("name"));
+                            discuss_topicauto_create_membersdiscuss_member.set("ownerid",discuss_topicauto_create_membersdefault.get("id"));
+                            discuss_topicauto_create_membersdiscuss_member.set("ownertype","DISCUSS");
+                            discuss_topicauto_create_membersdiscuss_member.set("ownersubtype","DISCUSS");
+                        update(discuss_topicauto_create_membersdefault);//更新fact中变量值
+                        update(discuss_topicauto_create_membersdiscuss_member);//更新fact中变量值
+                        update(discuss_topicauto_create_membersfor_member_obj);//更新fact中变量值
+                        update(discuss_topicauto_create_membersmember_filter);//更新fact中变量值
+                        update(discuss_topicauto_create_membersmember_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成话题成员数据]
+            rule "deaction1"
+            ruleflow-group "discuss_topicauto_create_membersdeaction1"
+            when
+            then
+                        discuss_memberservice.save(discuss_topicauto_create_membersdiscuss_member);
+                        update(discuss_topicauto_create_membersdefault);//更新fact中变量值
+                        update(discuss_topicauto_create_membersdiscuss_member);//更新fact中变量值
+                        update(discuss_topicauto_create_membersfor_member_obj);//更新fact中变量值
+                        update(discuss_topicauto_create_membersmember_filter);//更新fact中变量值
+                        update(discuss_topicauto_create_membersmember_page);//更新fact中变量值
+            end

@@ -1,0 +1,50 @@
+package cn.ibizlab.plm.base.logic.workloadlogic.work_item_management_dimension;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.workload workloadwork_item_management_dimensiondefault;
+                global cn.ibizlab.plm.core.base.domain.workload workloadwork_item_management_dimensionpage;
+                    global cn.ibizlab.plm.core.base.service.IworkloadService workloadservice;
+        global cn.ibizlab.plm.core.base.service.IworkloadService iBzSysWorkloadDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "workloadwork_item_management_dimensionbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[重置分页参数]
+            rule "prepareparam1"
+            ruleflow-group "workloadwork_item_management_dimensionprepareparam1"
+            when
+            then
+                            workloadwork_item_management_dimensiondefault.set("size","10000");
+                        update(workloadwork_item_management_dimensiondefault);//更新fact中变量值
+                        update(workloadwork_item_management_dimensionpage);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询工作项工时]
+            rule "dedataset1"
+            ruleflow-group "workloadwork_item_management_dimensiondedataset1"
+            when
+            then
+                        update(workloadwork_item_management_dimensiondefault);//更新fact中变量值
+                        update(workloadwork_item_management_dimensionpage);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "workloadwork_item_management_dimensionend1"
+            when
+            then
+                        update(workloadwork_item_management_dimensiondefault);//更新fact中变量值
+                        update(workloadwork_item_management_dimensionpage);//更新fact中变量值
+            end

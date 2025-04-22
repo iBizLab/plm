@@ -1,0 +1,81 @@
+package cn.ibizlab.plm.base.logic.relationlogic.del_relation;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.relation relationdel_relationdefault;
+                global cn.ibizlab.plm.core.base.domain.relation relationdel_relationforward_relation_obj;
+                global cn.ibizlab.plm.core.base.domain.relation relationdel_relationreverse_relation_obj;
+                    global cn.ibizlab.plm.core.base.service.IrelationService relationservice;
+        global cn.ibizlab.plm.core.base.service.IrelationService iBzSysRelationDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "relationdel_relationbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[填充正反关联对象的主要关联属性]
+            rule "prepareparam1"
+            ruleflow-group "relationdel_relationprepareparam1"
+            when
+            then
+                            relationdel_relationforward_relation_obj.set("principalid",relationdel_relationdefault.get("principalid"));
+                            relationdel_relationforward_relation_obj.set("principaltype",relationdel_relationdefault.get("principaltype"));
+                            relationdel_relationreverse_relation_obj.set("principaltype",relationdel_relationdefault.get("targettype"));
+                            relationdel_relationreverse_relation_obj.set("targetid",relationdel_relationdefault.get("principalid"));
+                            relationdel_relationreverse_relation_obj.set("principalid",relationdel_relationdefault.get("targetid"));
+                            relationdel_relationforward_relation_obj.set("targetid",relationdel_relationdefault.get("targetid"));
+                        update(relationdel_relationdefault);//更新fact中变量值
+                        update(relationdel_relationforward_relation_obj);//更新fact中变量值
+                        update(relationdel_relationreverse_relation_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[拼接关联对象的主键]
+            rule "rawsfcode1"
+            ruleflow-group "relationdel_relationrawsfcode1"
+            when
+            then
+                        update(relationdel_relationdefault);//更新fact中变量值
+                        update(relationdel_relationforward_relation_obj);//更新fact中变量值
+                        update(relationdel_relationreverse_relation_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[删除正向关联]
+            rule "deaction2"
+            ruleflow-group "relationdel_relationdeaction2"
+            when
+            then
+                        relationservice.remove(relationdel_relationforward_relation_obj.getId());
+                        update(relationdel_relationdefault);//更新fact中变量值
+                        update(relationdel_relationforward_relation_obj);//更新fact中变量值
+                        update(relationdel_relationreverse_relation_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[删除反向关联]
+            rule "deaction3"
+            ruleflow-group "relationdel_relationdeaction3"
+            when
+            then
+                        relationservice.remove(relationdel_relationreverse_relation_obj.getId());
+                        update(relationdel_relationdefault);//更新fact中变量值
+                        update(relationdel_relationforward_relation_obj);//更新fact中变量值
+                        update(relationdel_relationreverse_relation_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "relationdel_relationend1"
+            when
+            then
+                        update(relationdel_relationdefault);//更新fact中变量值
+                        update(relationdel_relationforward_relation_obj);//更新fact中变量值
+                        update(relationdel_relationreverse_relation_obj);//更新fact中变量值
+            end

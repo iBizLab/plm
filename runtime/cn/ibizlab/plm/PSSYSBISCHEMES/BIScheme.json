@@ -1,0 +1,1948 @@
+{
+  "getAllPSSysBICubes" : [ {
+    "getAllPSSysBICubeDimensions" : [ {
+      "codeName" : "w_product_id",
+      "dimensionType" : "COMMON",
+      "name" : "产品",
+      "getPSDEField" : {
+        "name" : "PRODUCT_ID",
+        "codeName" : "Product_id"
+      },
+      "stdDataType" : 25,
+      "getTextPSDEField" : {
+        "name" : "PRODUCT_NAME",
+        "codeName" : "Product_name"
+      }
+    }, {
+      "codeName" : "w_priority",
+      "dimensionType" : "COMMON",
+      "name" : "优先级",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSCODELISTS/idea_priority.json"
+      },
+      "getPSDEField" : {
+        "name" : "PRIORITY",
+        "codeName" : "priority"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_attentions_imp",
+      "dimensionType" : "COMMON",
+      "name" : "关注人",
+      "getPSDEField" : {
+        "name" : "ATTENTIONS_IMP",
+        "codeName" : "attentions_imp"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_create_man",
+      "dimensionType" : "COMMON",
+      "name" : "创建人",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_create_time",
+      "dimensionType" : "COMMON",
+      "name" : "创建时间",
+      "getPSDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_section_id",
+      "dimensionType" : "COMMON",
+      "name" : "子产品",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSCODELISTS/idea_section2.json"
+      },
+      "getPSDEField" : {
+        "name" : "SECTION_ID",
+        "codeName" : "section_id"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_update_man",
+      "dimensionType" : "COMMON",
+      "name" : "更新人",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "UPDATE_MAN",
+        "codeName" : "update_man"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_update_time",
+      "dimensionType" : "COMMON",
+      "name" : "更新时间",
+      "getPSDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_state",
+      "dimensionType" : "COMMON",
+      "name" : "状态",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSCODELISTS/idea_state.json"
+      },
+      "getPSDEField" : {
+        "name" : "STATE",
+        "codeName" : "state"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_plan_at_from",
+      "dimensionType" : "COMMON",
+      "name" : "计划开始时间",
+      "getPSDEField" : {
+        "name" : "PLAN_AT_FROM",
+        "codeName" : "plan_at_from"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_plan_at_to",
+      "dimensionType" : "COMMON",
+      "name" : "计划结束时间",
+      "getPSDEField" : {
+        "name" : "PLAN_AT_TO",
+        "codeName" : "plan_at_to"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_assignee_id",
+      "dimensionType" : "COMMON",
+      "name" : "负责人",
+      "getPSDEField" : {
+        "name" : "ASSIGNEE_ID",
+        "codeName" : "assignee_id"
+      },
+      "stdDataType" : 25,
+      "getTextPSDEField" : {
+        "name" : "ASSIGNEE_NAME",
+        "codeName" : "assignee_name"
+      }
+    }, {
+      "codeName" : "w_idea_from",
+      "dimensionType" : "COMMON",
+      "name" : "需求来源",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/demand_sources.json"
+      },
+      "getPSDEField" : {
+        "name" : "IDEA_FROM",
+        "codeName" : "idea_from"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_idea_type",
+      "dimensionType" : "COMMON",
+      "name" : "需求类型",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/requirement_type.json"
+      },
+      "getPSDEField" : {
+        "name" : "IDEA_TYPE",
+        "codeName" : "idea_type"
+      },
+      "stdDataType" : 25
+    } ],
+    "getAllPSSysBICubeMeasures" : [ {
+      "aggMode" : "COUNT",
+      "codeName" : "z_relation_total_idea",
+      "measureFormula" : "(SELECT COUNT(distinct s1.target_id) FROM RELATION s1 WHERE s1.PRINCIPAL_ID = dataresult.ID AND s1.TARGET_TYPE ='IDEA' and dataresult.is_deleted = 0 and dataresult.product_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "name" : "关联产品需求",
+      "dataItem" : true
+    }, {
+      "aggMode" : "COUNT",
+      "codeName" : "z_relation_total_work_item",
+      "measureFormula" : "(SELECT COUNT(distinct s1.target_id) FROM RELATION s1 WHERE s1.PRINCIPAL_ID = dataresult.ID AND s1.TARGET_TYPE ='WORK_ITEM' and dataresult.is_deleted = 0 and dataresult.product_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "name" : "关联工作项",
+      "dataItem" : true
+    }, {
+      "aggMode" : "COUNT",
+      "codeName" : "z_relation_total_ticket",
+      "measureFormula" : "(SELECT COUNT(distinct s1.target_id) FROM RELATION s1 WHERE s1.PRINCIPAL_ID = dataresult.ID AND s1.TARGET_TYPE ='TICKET' and dataresult.is_deleted = 0 and dataresult.product_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "name" : "关联工单",
+      "dataItem" : true
+    }, {
+      "aggMode" : "COUNT",
+      "codeName" : "z_relation_total_test_case",
+      "measureFormula" : "(SELECT COUNT(distinct s1.target_id) FROM RELATION s1 WHERE s1.PRINCIPAL_ID = dataresult.ID AND s1.TARGET_TYPE ='TEST_CASE' and dataresult.is_deleted = 0 and dataresult.product_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "name" : "关联测试用例",
+      "dataItem" : true
+    }, {
+      "aggMode" : "SUM",
+      "codeName" : "z_remaining_workload",
+      "drillDetailCustomCond" : "is_deleted = 0 and product_is_deleted = 0",
+      "jsonFormat" : "[=0]0;##0.00",
+      "measureType" : "COMMON",
+      "name" : "剩余工时",
+      "getPSDEField" : {
+        "name" : "REMAINING_WORKLOAD",
+        "codeName" : "remaining_workload"
+      },
+      "stdDataType" : 6
+    }, {
+      "aggMode" : "COUNT",
+      "codeName" : "z_relation_total_customer",
+      "measureFormula" : "(SELECT COUNT(distinct s1.TARGET_ID) FROM RELATION s1 WHERE s1.PRINCIPAL_ID = dataresult.ID AND s1.TARGET_TYPE ='CUSTOMER' AND dataresult.PRODUCT_IS_DELETED = 0 and dataresult.is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "name" : "客户",
+      "dataItem" : true
+    }, {
+      "aggMode" : "SUM",
+      "codeName" : "z_actual_workload",
+      "drillDetailCustomCond" : "is_deleted = 0 and product_is_deleted = 0",
+      "jsonFormat" : "[=0]0;##0.00",
+      "measureType" : "COMMON",
+      "name" : "登记工时",
+      "getPSDEField" : {
+        "name" : "ACTUAL_WORKLOAD",
+        "codeName" : "actual_workload"
+      },
+      "stdDataType" : 6
+    }, {
+      "codeName" : "idea_ratio",
+      "drillDetailCustomCond" : "multiif(param(code_type, '-1') = '10', priority in (params(priority, ('P0'))), param(code_type, '-1') = '20', state in (params(state, ('10'))), param(code_type, '-1') = '30', idea_from in (params(idea_from, ('10'))), param(code_type, '10') = '40', idea_type in (params(idea_type, ('10'))), priority in (params(priority, ('P0')))) and is_deleted = 0 and product_is_deleted = 0",
+      "jsonFormat" : "[=0]0.00%;##0.00%",
+      "measureFormula" : "countif(multiif(param(code_type, '-1') = '10', priority in (params(priority, ('P0'))), param(code_type, '-1') = '20', state in (params(state, ('10'))), param(code_type, '-1') = '30', idea_from in (params(idea_from, ('10'))), param(code_type, '10') = '40', idea_type in (params(idea_type, ('10'))), priority in (params(priority, ('P0')))) and is_deleted = 0 and product_is_deleted = 0) / if(countif(is_deleted = 0 and product_is_deleted = 0) = 0, 1, countif(is_deleted = 0 and product_is_deleted = 0))",
+      "measureType" : "CALCULATED",
+      "memo" : "统计不同属性产品需求的占比情况。\n",
+      "name" : "需求占比",
+      "paramPSDEUIActionTag" : "open_bi_form_idea_ratio@idea"
+    }, {
+      "codeName" : "idea_number",
+      "drillDetailCustomCond" : "is_deleted=0 and PRODUCT_IS_DELETED = 0",
+      "measureFormula" : "countif(is_deleted=0 and PRODUCT_IS_DELETED = 0)",
+      "measureType" : "CALCULATED",
+      "memo" : "统计不同维度下的产品需求数量。\n",
+      "name" : "需求数量"
+    }, {
+      "aggMode" : "SUM",
+      "codeName" : "z_estimated_workload",
+      "drillDetailCustomCond" : "is_deleted = 0 and product_is_deleted = 0",
+      "jsonFormat" : "[=0]0;##0.00",
+      "measureType" : "COMMON",
+      "name" : "预估工时",
+      "getPSDEField" : {
+        "name" : "ESTIMATED_WORKLOAD",
+        "codeName" : "estimated_workload"
+      },
+      "stdDataType" : 6
+    } ],
+    "codeName" : "idea",
+    "cubeOption" : 1,
+    "name" : "产品需求",
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "bi_search"
+    },
+    "getPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+    }
+  }, {
+    "getAllPSSysBICubeDimensions" : [ {
+      "codeName" : "w_create_man",
+      "dimensionType" : "COMMON",
+      "name" : "创建人",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_create_time",
+      "dimensionType" : "COMMON",
+      "name" : "创建时间",
+      "getPSDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_end_at",
+      "dimensionType" : "COMMON",
+      "name" : "发布时间",
+      "getPSDEField" : {
+        "name" : "END_AT",
+        "codeName" : "end_at"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_start_at",
+      "dimensionType" : "COMMON",
+      "name" : "开始时间",
+      "getPSDEField" : {
+        "name" : "START_AT",
+        "codeName" : "start_at"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_assignee_id",
+      "dimensionType" : "COMMON",
+      "name" : "负责人",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "ASSIGNEE_ID",
+        "codeName" : "assignee_id"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_status",
+      "dimensionType" : "COMMON",
+      "name" : "阶段",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/cur_project_stage.json"
+      },
+      "getPSDEField" : {
+        "name" : "STATUS",
+        "codeName" : "status"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_project_id",
+      "dimensionType" : "COMMON",
+      "name" : "项目",
+      "getPSDEField" : {
+        "name" : "PROJECT_ID",
+        "codeName" : "Project_id"
+      },
+      "stdDataType" : 25,
+      "getTextPSDEField" : {
+        "name" : "PROJECT_NAME",
+        "codeName" : "project_name"
+      }
+    } ],
+    "getAllPSSysBICubeMeasures" : [ {
+      "codeName" : "release_number",
+      "drillDetailCustomCond" : "project_is_deleted = 0",
+      "measureFormula" : "countif(project_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "memo" : "统计不同维度下发布的数量。\n",
+      "name" : "发布数量"
+    } ],
+    "codeName" : "release",
+    "cubeOption" : 1,
+    "name" : "发布",
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "bi_search"
+    },
+    "getPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
+    }
+  }, {
+    "getAllPSSysBICubeDimensions" : [ {
+      "codeName" : "w_severity",
+      "dimensionType" : "COMMON",
+      "name" : "严重程度",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/severity.json"
+      },
+      "getPSDEField" : {
+        "name" : "SEVERITY",
+        "codeName" : "severity"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_job_type",
+      "dimensionType" : "COMMON",
+      "name" : "任务类别",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/task_category.json"
+      },
+      "getPSDEField" : {
+        "name" : "JOB_TYPE",
+        "codeName" : "job_type"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_priority",
+      "dimensionType" : "COMMON",
+      "name" : "优先级",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/work_item_priority.json"
+      },
+      "getPSDEField" : {
+        "name" : "PRIORITY",
+        "codeName" : "priority"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_attentions",
+      "dimensionType" : "COMMON",
+      "name" : "关注人",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "ATTENTIONS",
+        "codeName" : "attentions"
+      },
+      "stdDataType" : 21
+    }, {
+      "codeName" : "w_create_man",
+      "dimensionType" : "COMMON",
+      "name" : "创建人",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_create_time",
+      "dimensionType" : "COMMON",
+      "memo" : "参数界面行为临时配置，用于测试功能，测试完后删除",
+      "name" : "创建时间",
+      "getPSDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      },
+      "paramPSDEUIActionTag" : "open_bi_form_state@work_item",
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_release_id",
+      "dimensionType" : "COMMON",
+      "name" : "发布",
+      "getPSDEField" : {
+        "name" : "RELEASE_ID",
+        "codeName" : "release_id"
+      },
+      "stdDataType" : 25,
+      "getTextPSDEField" : {
+        "name" : "RELEASE_NAME",
+        "codeName" : "release_name"
+      }
+    }, {
+      "codeName" : "w_reappear_probability",
+      "dimensionType" : "COMMON",
+      "name" : "复现概率",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/reproduction_probability.json"
+      },
+      "getPSDEField" : {
+        "name" : "REAPPEAR_PROBABILITY",
+        "codeName" : "reappear_probability"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_completed_at",
+      "dimensionType" : "COMMON",
+      "name" : "完成时间",
+      "getPSDEField" : {
+        "name" : "COMPLETED_AT",
+        "codeName" : "completed_at"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_work_item_origin_state",
+      "dimensionType" : "COMMON",
+      "name" : "工作项类型",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/work_item_origin_state.json"
+      },
+      "getPSDEField" : {
+        "name" : "WORK_ITEM_ORIGIN_STATE",
+        "codeName" : "work_item_origin_state"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_start_at",
+      "dimensionType" : "COMMON",
+      "name" : "开始时间",
+      "getPSDEField" : {
+        "name" : "START_AT",
+        "codeName" : "start_at"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_archived_state",
+      "dimensionType" : "COMMON",
+      "name" : "归档状态",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSCODELISTS/contains_archive.json"
+      },
+      "getPSDEField" : {
+        "name" : "IS_ARCHIVED",
+        "codeName" : "is_archived"
+      },
+      "stdDataType" : 9
+    }, {
+      "codeName" : "w_end_at",
+      "dimensionType" : "COMMON",
+      "name" : "截止时间",
+      "getPSDEField" : {
+        "name" : "END_AT",
+        "codeName" : "end_at"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_update_man",
+      "dimensionType" : "COMMON",
+      "name" : "更新人",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "UPDATE_MAN",
+        "codeName" : "update_man"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_update_time",
+      "dimensionType" : "COMMON",
+      "name" : "更新时间",
+      "getPSDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_tags",
+      "dimensionType" : "COMMON",
+      "name" : "标签",
+      "getPSDEField" : {
+        "name" : "TAGS",
+        "codeName" : "tags"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_state",
+      "dimensionType" : "COMMON",
+      "name" : "状态",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/work_item_state2.json"
+      },
+      "getPSDEField" : {
+        "name" : "STATE",
+        "codeName" : "state"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_state_transition",
+      "dimensionFormula" : "state_transition",
+      "dimensionType" : "CALCULATED",
+      "name" : "状态变更时间",
+      "stdDataType" : 27
+    }, {
+      "codeName" : "w_state_type",
+      "dimensionType" : "COMMON",
+      "name" : "状态类型",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/state_type.json"
+      },
+      "getPSDEField" : {
+        "name" : "STATE_TYPE",
+        "codeName" : "state_type"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_board_id",
+      "dimensionType" : "COMMON",
+      "name" : "看板",
+      "getPSDEField" : {
+        "name" : "BOARD_ID",
+        "codeName" : "Board_id"
+      },
+      "stdDataType" : 25,
+      "getTextPSDEField" : {
+        "name" : "BOARD_NAME",
+        "codeName" : "Board_name"
+      }
+    }, {
+      "codeName" : "w_assignee_id",
+      "dimensionType" : "COMMON",
+      "name" : "负责人",
+      "getPSDEField" : {
+        "name" : "ASSIGNEE_ID",
+        "codeName" : "assignee_id"
+      },
+      "stdDataType" : 25,
+      "getTextPSDEField" : {
+        "name" : "ASSIGNEE_NAME",
+        "codeName" : "assignee_name"
+      }
+    }, {
+      "codeName" : "w_sprint_id",
+      "dimensionType" : "COMMON",
+      "name" : "迭代",
+      "getPSDEField" : {
+        "name" : "SPRINT_ID",
+        "codeName" : "sprint_id"
+      },
+      "stdDataType" : 25,
+      "getTextPSDEField" : {
+        "name" : "SPRINT_NAME",
+        "codeName" : "sprint_name"
+      }
+    }, {
+      "codeName" : "w_backlog_from",
+      "dimensionType" : "COMMON",
+      "name" : "需求来源",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/demand_sources.json"
+      },
+      "getPSDEField" : {
+        "name" : "BACKLOG_FROM",
+        "codeName" : "backlog_from"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_backlog_type",
+      "dimensionType" : "COMMON",
+      "name" : "需求类型",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/requirement_type.json"
+      },
+      "getPSDEField" : {
+        "name" : "BACKLOG_TYPE",
+        "codeName" : "backlog_type"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_project",
+      "dimensionType" : "COMMON",
+      "name" : "项目",
+      "getPSDEField" : {
+        "name" : "PROJECT_ID",
+        "codeName" : "project_id"
+      },
+      "stdDataType" : 25,
+      "getTextPSDEField" : {
+        "name" : "PROJECT_NAME",
+        "codeName" : "project_name"
+      }
+    }, {
+      "codeName" : "w_risk",
+      "dimensionType" : "COMMON",
+      "name" : "风险",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/risk.json"
+      },
+      "getPSDEField" : {
+        "name" : "RISK",
+        "codeName" : "risk"
+      },
+      "stdDataType" : 25
+    } ],
+    "getAllPSSysBICubeMeasures" : [ {
+      "aggMode" : "COUNT",
+      "codeName" : "z_relation_total_idea",
+      "measureFormula" : "(SELECT COUNT(distinct s1.target_id) FROM RELATION s1 WHERE s1.PRINCIPAL_ID = dataresult.ID AND s1.TARGET_TYPE ='IDEA' and dataresult.is_deleted = 0 and dataresult.project_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "name" : "关联产品需求",
+      "dataItem" : true
+    }, {
+      "aggMode" : "COUNT",
+      "codeName" : "z_relation_total_work_item",
+      "measureFormula" : "(SELECT COUNT(distinct s1.target_id) FROM RELATION s1 LEFT JOIN WORK_ITEM s2 ON s1.TARGET_ID =s2.ID LEFT JOIN WORK_ITEM_TYPE s3 ON s3.ID= s2.WORK_ITEM_TYPE_ID WHERE s1.PRINCIPAL_ID = dataresult.ID  AND s1.TARGET_TYPE = 'WORK_ITEM' AND s3.ORGIN_STATE IN (params(work_item_type,'epic','bug','feature','issue','story','task','milestone','requirement','stage')) and dataresult.is_deleted = 0 and dataresult.project_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "name" : "关联工作项",
+      "dataItem" : true
+    }, {
+      "aggMode" : "COUNT",
+      "codeName" : "z_relation_total_ticket",
+      "measureFormula" : "(SELECT COUNT(distinct s1.target_id) FROM RELATION s1 WHERE s1.PRINCIPAL_ID = dataresult.ID AND s1.TARGET_TYPE ='TICKET' and dataresult.is_deleted = 0 and dataresult.project_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "name" : "关联工单",
+      "dataItem" : true
+    }, {
+      "aggMode" : "COUNT",
+      "codeName" : "z_relation_total_test_case",
+      "measureFormula" : "(SELECT COUNT(distinct s1.target_id) FROM RELATION s1 WHERE s1.PRINCIPAL_ID = dataresult.ID AND s1.TARGET_TYPE ='TEST_CASE' and dataresult.is_deleted = 0 and dataresult.project_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "name" : "关联测试用例",
+      "dataItem" : true
+    }, {
+      "aggMode" : "SUM",
+      "codeName" : "z_remaining_workload",
+      "drillDetailCustomCond" : "is_deleted = 0 and project_is_deleted = 0",
+      "jsonFormat" : "[=0]0;##0.00;",
+      "measureType" : "COMMON",
+      "name" : "剩余工时",
+      "getPSDEField" : {
+        "name" : "REMAINING_WORKLOAD",
+        "codeName" : "remaining_workload"
+      },
+      "stdDataType" : 6
+    }, {
+      "codeName" : "work_item_completed_rate",
+      "drillDetailCustomCond" : "multiif(param(code_type, '-1') = '10', state_type = param(state_type, 'completed'), param(code_type, '-1') = '20', state = param(state, '10'), state_type = 'completed') and is_deleted = 0 and project_is_deleted = 0",
+      "jsonFormat" : "[=0]0.00%;##0.00%",
+      "measureFormula" : "countif(multiif(param(code_type, '-1') = '10', state_type = param(state_type, 'completed'), param(code_type, '-1') = '20', state = param(state, '10'), state_type = 'completed') and is_deleted = 0 and project_is_deleted = 0) / if(countif(is_deleted = 0 and project_is_deleted = 0) = 0, 1, countif(is_deleted = 0 and project_is_deleted = 0))",
+      "measureType" : "CALCULATED",
+      "memo" : "统计完成工作项的占比，反映工作项的完成情况。",
+      "name" : "工作项完成率",
+      "paramPSDEUIActionTag" : "open_bi_form_state@work_item"
+    }, {
+      "codeName" : "work_items_completed_on_schedule",
+      "drillDetailCustomCond" : "multiif(param(code_type, '-1') = '10', state_type = param(state_type, 'completed'), param(code_type, '-1') = '20', state = param(state, '10'), state_type = 'completed') and (end_at is not null and end_at >= completed_at or end_at is null and 1 = param(end_at, 0)) and is_deleted = 0 and project_is_deleted = 0",
+      "measureFormula" : "countif(multiif(param(code_type, '-1') = '10', state_type = param(state_type, 'completed'), param(code_type, '-1') = '20', state = param(state, '10'), state_type = 'completed') and (end_at is not null and end_at >= completed_at or end_at is null and 1 = param(end_at, 0)) and is_deleted = 0 and project_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "memo" : "统计已完成工作项的按期数量。",
+      "name" : "工作项按期完成数",
+      "paramPSDEUIActionTag" : "open_bi_form_all@work_item"
+    }, {
+      "codeName" : "work_item_completion_rate_on_schedule",
+      "drillDetailCustomCond" : "multiif(param(code_type, '-1') = '10', state_type = param(state_type, 'completed'), param(code_type, '-1') = '20', state = param(state, '10'), state_type = 'completed') and (end_at is not null and end_at >= completed_at or end_at is null and 1 = param(end_at, 0)) and is_deleted = 0 and project_is_deleted = 0",
+      "jsonFormat" : "[=0]0.00%;##0.00%",
+      "measureFormula" : "countif(multiif(param(code_type, '-1') = '10', state_type = param(state_type, 'completed'), param(code_type, '-1') = '20', state = param(state, '10'), state_type = 'completed') and (end_at is not null and end_at >= completed_at or end_at is null and 1 = param(end_at, 0)) and is_deleted = 0 and project_is_deleted = 0) / if(countif(is_deleted=0 and project_is_deleted = 0) = 0, 1, countif(is_deleted=0 and project_is_deleted = 0))",
+      "measureType" : "CALCULATED",
+      "memo" : "统计按期完成的工作项占比，反映工作项的按期完成情况。",
+      "name" : "工作项按期完成率",
+      "paramPSDEUIActionTag" : "open_bi_form_all@work_item"
+    }, {
+      "codeName" : "count",
+      "drillDetailCustomCond" : "is_deleted = 0 and project_is_deleted = 0",
+      "measureFormula" : "countif(is_deleted = 0 and project_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "memo" : "统计所有的工作项数量。",
+      "name" : "工作项数量"
+    }, {
+      "codeName" : "overdue_completed_work_item",
+      "drillDetailCustomCond" : "multiif(param(code_type, '-1') = '10', state_type = param(state_type, 'completed'), param(code_type, '-1') = '20', state = param(state, '10'), state_type = 'completed') and (end_at is not null and end_at < now() or end_at is null and 1 = param(end_at, 0)) and is_deleted = 0 and project_is_deleted = 0",
+      "measureFormula" : "countif(multiif(param(code_type, '-1') = '10', state_type = param(state_type, 'completed'), param(code_type, '-1') = '20', state = param(state, '10'), state_type = 'completed') and (end_at is not null and end_at < now() or end_at is null and 1 = param(end_at, 0)) and is_deleted = 0 and project_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "memo" : "统计已完成工作项的逾期数量。",
+      "name" : "工作项逾期完成数",
+      "paramPSDEUIActionTag" : "open_bi_form_all@work_item"
+    }, {
+      "codeName" : "overdue_completed_work_item_rate",
+      "drillDetailCustomCond" : "multiif(param(code_type, '-1') = '10', state_type = param(state_type, 'completed'), param(code_type, '-1') = '20', state = param(state, '10'), state_type = 'completed') and (end_at is not null and end_at < now() or end_at is null and 1 = param(end_at, 0)) and is_deleted = 0 and project_is_deleted = 0",
+      "jsonFormat" : "[=0]0.00%;##0.00%",
+      "measureFormula" : "countif(multiif(param(code_type, '-1') = '10', state_type = param(state_type, 'completed'), param(code_type, '-1') = '20', state = param(state, '10'), state_type = 'completed') and (end_at is not null and end_at < now() or end_at is null and 1 = param(end_at, 0)) and is_deleted = 0 and project_is_deleted = 0) / if(countif(is_deleted=0 and project_is_deleted = 0) = 0, 1, countif(is_deleted=0 and project_is_deleted = 0))",
+      "measureType" : "CALCULATED",
+      "memo" : "统计已完成的逾期工作项，占完成或关闭工作项的比例，反映项目或团队完成工作项的逾期情况。",
+      "name" : "工作项逾期完成率",
+      "paramPSDEUIActionTag" : "open_bi_form_all@work_item",
+      "valueFormat" : "#.##"
+    }, {
+      "codeName" : "overdue_unfinished_work_item",
+      "drillDetailCustomCond" : "(end_at is not null and end_at < now() or end_at is null and 1 = param(end_at, 0)) and state <> 40  and is_deleted = 0 and project_is_deleted = 0",
+      "measureFormula" : "countif((end_at is not null and end_at < now() or end_at is null and 1 = param(end_at, 0)) and state <> 40  and is_deleted = 0 and project_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "memo" : "统计未完成工作项的逾期数量。",
+      "name" : "未完成工作项逾期数",
+      "paramPSDEUIActionTag" : "open_bi_form_time@work_item"
+    }, {
+      "codeName" : "overdue_unfinished_work_item_rate",
+      "drillDetailCustomCond" : "(end_at is not null and end_at < now() or end_at is null and 1 = param(end_at, 0)) and state <> 40  and is_deleted = 0 and project_is_deleted = 0",
+      "jsonFormat" : "[=0]0.00%;##0.00%",
+      "measureFormula" : "countif((end_at is not null and end_at < now() or end_at is null and 1 = param(end_at, 0)) and state <> 40  and is_deleted = 0 and project_is_deleted = 0) / if(countif(is_deleted=0 and project_is_deleted = 0) = 0, 1, countif(is_deleted=0 and project_is_deleted = 0))",
+      "measureType" : "CALCULATED",
+      "memo" : "统计未完成的逾期工作项，占未完成工作项的比例，反映未完成工作项的逾期占比。",
+      "name" : "未完成工作项逾期率",
+      "paramPSDEUIActionTag" : "open_bi_form_time@work_item",
+      "valueFormat" : "###.##"
+    }, {
+      "aggMode" : "MAX",
+      "codeName" : "state_transition",
+      "drillDetailCustomCond" : "is_deleted = 0 and project_is_deleted = 0",
+      "measureFormula" : "(SELECT MAX(UPDATE_TIME) FROM TRANSITION_HISTORY WHERE OWNER_ID = dataresult.ID AND TO_STATE = PARAM(state_type,'10') and dataresult.is_deleted = 0 and dataresult.project_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "memo" : "状态变更时间",
+      "name" : "状态变更时间",
+      "dataItem" : true
+    }, {
+      "aggMode" : "SUM",
+      "codeName" : "z_actual_workload",
+      "drillDetailCustomCond" : "is_deleted = 0 and project_is_deleted = 0",
+      "jsonFormat" : "[=0]0;##0.00;",
+      "measureType" : "COMMON",
+      "name" : "登记工时",
+      "getPSDEField" : {
+        "name" : "ACTUAL_WORKLOAD",
+        "codeName" : "actual_workload"
+      },
+      "stdDataType" : 6
+    }, {
+      "codeName" : "bug_di",
+      "drillDetailCustomCond" : "is_deleted = 0 and project_is_deleted = 0",
+      "jsonFormat" : "[=0]0;##0.00;",
+      "measureFormula" : "sumif(multiif(severity =40,0.1,severity =30,1,severity =20,3,severity =10,10,0), is_deleted = 0 and project_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "memo" : "统计项目、发布版本、迭代的缺陷 DI，反映团队的开发质量。",
+      "name" : "缺陷DI"
+    }, {
+      "codeName" : "bug_ratio",
+      "drillDetailCustomCond" : "multiif(param(code_type, '-1') = '10', severity in (params(severity, ('10'))), param(code_type, '-1') = '20', priority in (params(priority, ('10'))), severity in (params(severity, ('10')))) and WORK_ITEM_TYPE_GROUP = 'bug' and is_deleted = 0 and project_is_deleted = 0",
+      "jsonFormat" : "[=0]0.00%;##0.00%",
+      "measureFormula" : "countif(multiif(param(code_type, '-1') = '10', severity in (params(severity, ('10'))), param(code_type, '-1') = '20', priority in (params(priority, ('10'))), severity in (params(severity, ('10')))) and WORK_ITEM_TYPE_GROUP = 'bug' and is_deleted = 0 and project_is_deleted = 0) / if(countif(WORK_ITEM_TYPE_GROUP = 'bug' and is_deleted = 0 and project_is_deleted = 0) = 0, 1, countif(WORK_ITEM_TYPE_GROUP = 'bug' and is_deleted = 0 and project_is_deleted = 0))",
+      "measureType" : "CALCULATED",
+      "memo" : "统计不同属性缺陷的占比情况。\n",
+      "name" : "缺陷占比",
+      "paramPSDEUIActionTag" : "open_bi_form_item_bug@work_item"
+    }, {
+      "codeName" : "idea_throughput",
+      "drillDetailCustomCond" : "multiif(param(code_type, '-1') = '10', state_type = param(state_type, 'completed'), param(code_type, '-1') = '20', state = param(state, '10'), state_type = 'completed') and WORK_ITEM_TYPE_GROUP = 'requirement' and is_deleted = 0 and project_is_deleted = 0",
+      "measureFormula" : "countif(multiif(param(code_type, '-1') = '10', state_type = param(state_type, 'completed'), param(code_type, '-1') = '20', state = param(state, '10'), state_type = 'completed') and WORK_ITEM_TYPE_GROUP = 'requirement' and is_deleted = 0 and project_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "memo" : "统计完成或交付的需求数量。",
+      "name" : "需求吞吐量",
+      "paramPSDEUIActionTag" : "open_bi_form_state@work_item"
+    }, {
+      "codeName" : "idea_coverage",
+      "drillDetailCustomCond" : "relation_total_test_case <> 0 and WORK_ITEM_TYPE_GROUP = 'requirement'  and is_deleted = 0 and project_is_deleted = 0",
+      "jsonFormat" : "[=0]0.00%;##0.00%",
+      "measureFormula" : "countif(relation_total_test_case <> 0 and WORK_ITEM_TYPE_GROUP = 'requirement'  and is_deleted = 0 and project_is_deleted = 0) / if(countif(is_deleted = 0 and WORK_ITEM_TYPE_GROUP = 'requirement' and project_is_deleted = 0) = 0, 1, countif(is_deleted = 0 and WORK_ITEM_TYPE_GROUP = 'requirement' and project_is_deleted = 0))",
+      "measureType" : "CALCULATED",
+      "memo" : "统计关联了用例的需求数占比，反映了测试用例对需求的覆盖程度。",
+      "name" : "需求覆盖率"
+    }, {
+      "codeName" : "estimated_deviation_rate",
+      "drillDetailCustomCond" : "is_deleted = 0 and project_is_deleted = 0",
+      "jsonFormat" : "[=0]0.00%;##0.00%",
+      "measureFormula" : "sumif(abs(actual_workload - estimated_workload) / if(estimated_workload = 0, 1, estimated_workload), is_deleted = 0 and project_is_deleted = 0) / if(countif(is_deleted = 0 and project_is_deleted = 0) = 0, 1, countif(is_deleted = 0 and project_is_deleted = 0))",
+      "measureType" : "CALCULATED",
+      "memo" : "统计成员对工作项的预估偏差情况，反映成员对工作项的计划偏差情况。",
+      "name" : "预估偏差率"
+    }, {
+      "aggMode" : "SUM",
+      "codeName" : "z_estimated_workload",
+      "drillDetailCustomCond" : "is_deleted = 0 and project_is_deleted = 0",
+      "jsonFormat" : "[=0]0;##0.00;",
+      "measureType" : "COMMON",
+      "name" : "预估工时",
+      "getPSDEField" : {
+        "name" : "ESTIMATED_WORKLOAD",
+        "codeName" : "estimated_workload"
+      },
+      "stdDataType" : 6
+    }, {
+      "codeName" : "estimated_differential_working_hours",
+      "drillDetailCustomCond" : "is_deleted = 0 and project_is_deleted = 0",
+      "jsonFormat" : "[=0]0;##0.##;",
+      "measureFormula" : "sumif(abs(ACTUAL_WORKLOAD-ESTIMATED_WORKLOAD), is_deleted = 0 and project_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "memo" : "统计预估工时与实际工时的偏差量。",
+      "name" : "预估差异工时"
+    } ],
+    "codeName" : "work_item",
+    "cubeOption" : 1,
+    "name" : "工作项",
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "bi_search"
+    },
+    "getPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    }
+  }, {
+    "getAllPSSysBICubeDimensions" : [ {
+      "codeName" : "w_product_id",
+      "dimensionType" : "COMMON",
+      "name" : "产品",
+      "getPSDEField" : {
+        "name" : "PRODUCT_ID",
+        "codeName" : "Product_id"
+      },
+      "stdDataType" : 25,
+      "getTextPSDEField" : {
+        "name" : "PRODUCT_NAME",
+        "codeName" : "Product_name"
+      }
+    }, {
+      "codeName" : "w_priority",
+      "dimensionType" : "COMMON",
+      "name" : "优先级",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSCODELISTS/ticket_priority.json"
+      },
+      "getPSDEField" : {
+        "name" : "PRIORITY",
+        "codeName" : "priority"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_attentions_imp",
+      "dimensionType" : "COMMON",
+      "name" : "关注人",
+      "getPSDEField" : {
+        "name" : "ATTENTIONS_IMP",
+        "codeName" : "attentions_imp"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_create_man",
+      "dimensionType" : "COMMON",
+      "name" : "创建人",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_create_time",
+      "dimensionType" : "COMMON",
+      "name" : "创建时间",
+      "getPSDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_customer_id",
+      "dimensionType" : "COMMON",
+      "name" : "客户",
+      "getPSDEField" : {
+        "name" : "CUSTOMER_ID",
+        "codeName" : "customer_id"
+      },
+      "stdDataType" : 25,
+      "getTextPSDEField" : {
+        "name" : "CUSTOMER_NAME",
+        "codeName" : "customer_name"
+      }
+    }, {
+      "codeName" : "w_type",
+      "dimensionType" : "COMMON",
+      "name" : "工单类型",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSCODELISTS/base_ticket_type.json"
+      },
+      "getPSDEField" : {
+        "name" : "TYPE",
+        "codeName" : "type"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_submitter_id",
+      "dimensionType" : "COMMON",
+      "name" : "提交人",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "SUBMITTER_ID",
+        "codeName" : "submitter_id"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_update_man",
+      "dimensionType" : "COMMON",
+      "name" : "更新人",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "UPDATE_MAN",
+        "codeName" : "update_man"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_update_time",
+      "dimensionType" : "COMMON",
+      "name" : "更新时间",
+      "getPSDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_tags",
+      "dimensionType" : "COMMON",
+      "name" : "标签",
+      "getPSDEField" : {
+        "name" : "TAGS",
+        "codeName" : "tags"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_channel",
+      "dimensionType" : "COMMON",
+      "name" : "渠道",
+      "getPSDEField" : {
+        "name" : "CHANNEL",
+        "codeName" : "channel"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_state",
+      "dimensionType" : "COMMON",
+      "name" : "状态",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSCODELISTS/ticket_state.json"
+      },
+      "getPSDEField" : {
+        "name" : "STATE",
+        "codeName" : "state"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_solution",
+      "dimensionType" : "COMMON",
+      "name" : "解决方案",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSCODELISTS/solutions.json"
+      },
+      "getPSDEField" : {
+        "name" : "SOLUTION",
+        "codeName" : "solution"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_assignee_id",
+      "dimensionType" : "COMMON",
+      "name" : "负责人",
+      "getPSDEField" : {
+        "name" : "ASSIGNEE_ID",
+        "codeName" : "assignee_id"
+      },
+      "stdDataType" : 25,
+      "getTextPSDEField" : {
+        "name" : "ASSIGNEE_NAME",
+        "codeName" : "assignee_name"
+      }
+    } ],
+    "getAllPSSysBICubeMeasures" : [ {
+      "codeName" : "ticket_ratio",
+      "drillDetailCustomCond" : "multiif(param(code_type, '-1') = '10', priority in (params(priority, ('P0'))), param(code_type, '-1') = '20', state in (params(state, ('10'))), param(code_type, '-1') = '30', type in (params(type, ('10'))), param(code_type, '-1') = '40', channel in (params(channel, ('10'))), param(code_type, '-1') = '50', solution in (params(solution, ('10'))), priority in (params(priority, ('P0')))) and is_deleted = 0 and product_is_deleted = 0",
+      "jsonFormat" : "[=0]0.00%;##0.00%",
+      "measureFormula" : "countif(multiif(param(code_type, '-1') = '10', priority in (params(priority, ('P0'))), param(code_type, '-1') = '20', state in (params(state, ('10'))), param(code_type, '-1') = '30', type in (params(type, ('10'))), param(code_type, '-1') = '40', channel in (params(channel, ('10'))), param(code_type, '-1') = '50', solution in (params(solution, ('10'))), priority in (params(priority, ('P0')))) and is_deleted = 0 and product_is_deleted = 0) / if(countif(is_deleted = 0 and product_is_deleted = 0) = 0, 1, countif(is_deleted = 0 and product_is_deleted = 0))",
+      "measureType" : "CALCULATED",
+      "memo" : "统计不同属性工单的占比情况。\t",
+      "name" : "工单占比",
+      "paramPSDEUIActionTag" : "open_bi_form_ticket_ratio@ticket"
+    }, {
+      "codeName" : "tickets",
+      "drillDetailCustomCond" : "is_deleted=0 and product_is_deleted = 0",
+      "measureFormula" : "countif(is_deleted=0 and product_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "memo" : "统计不同维度下的工单数量。",
+      "name" : "工单数量"
+    } ],
+    "codeName" : "ticket",
+    "cubeOption" : 1,
+    "name" : "工单",
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "bi_search"
+    },
+    "getPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
+    }
+  }, {
+    "getAllPSSysBICubeDimensions" : [ {
+      "codeName" : "w_register_date",
+      "dimensionType" : "COMMON",
+      "name" : "工作日期",
+      "getPSDEField" : {
+        "name" : "REGISTER_DATE",
+        "codeName" : "register_date"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_type_id",
+      "dimensionType" : "COMMON",
+      "name" : "工作类别",
+      "getPSDEField" : {
+        "name" : "TYPE_ID",
+        "codeName" : "Type_id"
+      },
+      "stdDataType" : 25,
+      "getTextPSDEField" : {
+        "name" : "TYPE_NAME",
+        "codeName" : "Type_name"
+      }
+    }, {
+      "codeName" : "w_register_man",
+      "dimensionType" : "COMMON",
+      "name" : "登记人",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "stdDataType" : 25
+    } ],
+    "getAllPSSysBICubeMeasures" : [ {
+      "codeName" : "workload_type_ratio",
+      "drillDetailCustomCond" : "type_id in (params(type_id, ('1')))",
+      "jsonFormat" : "[=0]0.00%;##0.00%",
+      "measureFormula" : "countif(type_id in (params(type_id, ('1')))) / if(count(id) = 0, 1, count(id))",
+      "measureType" : "CALCULATED",
+      "memo" : "统计登记工时的所属类别情况。\t",
+      "name" : "工时类别占比",
+      "paramPSDEUIActionTag" : "open_bi_form_workload_type_ratio@workload"
+    }, {
+      "aggMode" : "SUM",
+      "codeName" : "z_register_workload",
+      "jsonFormat" : "[=0]0;##0.00",
+      "measureType" : "COMMON",
+      "memo" : "说明：统计登记工时的总量\n规则：求和（登记工时）",
+      "name" : "登记工时",
+      "getPSDEField" : {
+        "name" : "DURATION",
+        "codeName" : "duration"
+      },
+      "stdDataType" : 6
+    }, {
+      "codeName" : "register_number",
+      "measureFormula" : "count(id)",
+      "measureType" : "CALCULATED",
+      "memo" : "统计登记工时的操作次数。",
+      "name" : "登记次数"
+    } ],
+    "codeName" : "workload",
+    "cubeOption" : 1,
+    "name" : "工时",
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "bi_search"
+    },
+    "getPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/workload.json"
+    }
+  }, {
+    "getAllPSSysBICubeDimensions" : [ {
+      "codeName" : "w_priority",
+      "dimensionType" : "COMMON",
+      "name" : "优先级",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/work_item_priority.json"
+      },
+      "getPSDEField" : {
+        "name" : "PRIORITY",
+        "codeName" : "priority"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_executor_id",
+      "dimensionType" : "COMMON",
+      "name" : "执行人",
+      "getPSDEField" : {
+        "name" : "EXECUTOR_ID",
+        "codeName" : "executor_id"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_executed_at",
+      "dimensionType" : "COMMON",
+      "name" : "执行时间",
+      "getPSDEField" : {
+        "name" : "EXECUTED_AT",
+        "codeName" : "executed_at"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_status",
+      "dimensionType" : "COMMON",
+      "name" : "执行结果",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSCODELISTS/run_status.json"
+      },
+      "getPSDEField" : {
+        "name" : "STATUS",
+        "codeName" : "status"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_library_id",
+      "dimensionType" : "COMMON",
+      "name" : "测试库",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSCODELISTS/all_library.json"
+      },
+      "getPSDEField" : {
+        "name" : "LIBRARY_ID",
+        "codeName" : "library_id"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_plan_id",
+      "dimensionType" : "COMMON",
+      "name" : "测试计划",
+      "getPSDEField" : {
+        "name" : "BI_PLAN_NAME",
+        "codeName" : "bi_plan_name"
+      },
+      "stdDataType" : 25
+    } ],
+    "getAllPSSysBICubeMeasures" : [ {
+      "codeName" : "run_number",
+      "drillDetailCustomCond" : "library_is_deleted = 0",
+      "measureFormula" : "countif(library_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "memo" : "统计测试计划下的执行用例数量。\n",
+      "name" : "执行用例数量"
+    }, {
+      "codeName" : "test_run_rate",
+      "drillDetailCustomCond" : "library_is_deleted = 0",
+      "jsonFormat" : "[=0]0.00%;##0.00%",
+      "measureFormula" : "countif(relation_total_history > 0 and library_is_deleted = 0) / if(countif(library_is_deleted = 0) = 0, 1, countif(library_is_deleted = 0))",
+      "measureType" : "CALCULATED",
+      "memo" : "统计测试计划下被执行过的用例占比，反映测试团队的测试进度。\n",
+      "name" : "测试执行率"
+    }, {
+      "codeName" : "test_run_pass_rate",
+      "drillDetailCustomCond" : "status = 10 and library_is_deleted = 0",
+      "jsonFormat" : "[=0]0.00%;##0.00%",
+      "measureFormula" : "countif(status = 10 and library_is_deleted = 0) / if(countif(library_is_deleted = 0) = 0, 1, countif(library_is_deleted = 0))",
+      "measureType" : "CALCULATED",
+      "memo" : "统计测试计划下，执行通过的用例占比，反映测试团队的执行情况。\t\n",
+      "name" : "测试执行通过率"
+    }, {
+      "codeName" : "bug_number",
+      "drillDetailCustomCond" : "library_is_deleted = 0",
+      "measureFormula" : "sumif(relation_total_bug, library_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "memo" : "统计关联了执行用例的缺陷数。\n",
+      "name" : "缺陷数"
+    } ],
+    "codeName" : "run",
+    "cubeOption" : 1,
+    "name" : "执行用例",
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "bi_search"
+    },
+    "getPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
+    }
+  }, {
+    "getAllPSSysBICubeDimensions" : [ {
+      "codeName" : "w_attentions_imp",
+      "dimensionType" : "COMMON",
+      "name" : "关注人",
+      "getPSDEField" : {
+        "name" : "ATTENTIONS_IMP",
+        "codeName" : "attentions_imp"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_create_man",
+      "dimensionType" : "COMMON",
+      "name" : "创建人",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_create_time",
+      "dimensionType" : "COMMON",
+      "name" : "创建时间",
+      "getPSDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_library_id",
+      "dimensionType" : "COMMON",
+      "name" : "测试库",
+      "getPSDEField" : {
+        "name" : "TEST_LIBRARY_ID",
+        "codeName" : "Test_library_id"
+      },
+      "stdDataType" : 25,
+      "getTextPSDEField" : {
+        "name" : "TEST_LIBRARY_NAME",
+        "codeName" : "Test_library_name"
+      }
+    }, {
+      "codeName" : "w_test_type",
+      "dimensionType" : "COMMON",
+      "name" : "测试类型",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSCODELISTS/test_case_test_type.json"
+      },
+      "getPSDEField" : {
+        "name" : "TEST_TYPE",
+        "codeName" : "test_type"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_state",
+      "dimensionType" : "COMMON",
+      "name" : "状态",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSCODELISTS/case_state.json"
+      },
+      "getPSDEField" : {
+        "name" : "STATE",
+        "codeName" : "state"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_type",
+      "dimensionType" : "COMMON",
+      "name" : "用例类型",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSCODELISTS/test_case_type.json"
+      },
+      "getPSDEField" : {
+        "name" : "TYPE",
+        "codeName" : "type"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_maintenance_id",
+      "dimensionType" : "COMMON",
+      "name" : "维护人",
+      "getPSDEField" : {
+        "name" : "MAINTENANCE_ID",
+        "codeName" : "maintenance_id"
+      },
+      "stdDataType" : 25,
+      "getTextPSDEField" : {
+        "name" : "MAINTENANCE_NAME",
+        "codeName" : "maintenance_name"
+      }
+    }, {
+      "codeName" : "w_review_result_state",
+      "dimensionType" : "COMMON",
+      "name" : "评审结果",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSCODELISTS/review_result.json"
+      },
+      "getPSDEField" : {
+        "name" : "REVIEW_RESULT_STATE",
+        "codeName" : "review_result_state"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_level",
+      "dimensionType" : "COMMON",
+      "name" : "重要程度",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSCODELISTS/test_case_level.json"
+      },
+      "getPSDEField" : {
+        "name" : "LEVEL",
+        "codeName" : "level"
+      },
+      "stdDataType" : 25
+    } ],
+    "getAllPSSysBICubeMeasures" : [ {
+      "codeName" : "case_rate",
+      "drillDetailCustomCond" : "multiif(param(code_type, '-1') = '10', level in (params(level, ('P1'))), param(code_type, '-1') = '20', state in (params(state, ('-1'))), param(code_type, '-1') = '30', type in (params(case_type, ('-1'))), level in (params(level, ('P1')))) and is_deleted = 0 and library_is_deleted = 0",
+      "jsonFormat" : "[=0]0.00%;##0.00%",
+      "measureFormula" : "countif(multiif(param(code_type, '-1') = '10', level in (params(level, ('P1'))), param(code_type, '-1') = '20', state in (params(state, ('-1'))), param(code_type, '-1') = '30', type in (params(case_type, ('-1'))), level in (params(level, ('P1')))) and is_deleted = 0 and library_is_deleted = 0) / if(countif(is_deleted = 0 and library_is_deleted = 0) = 0, 1, countif(is_deleted = 0 and library_is_deleted = 0))",
+      "measureType" : "CALCULATED",
+      "memo" : "统计不同用例类型的占比，反映测试用例的类型分布情况。",
+      "name" : "用例占比",
+      "paramPSDEUIActionTag" : "open_bi_form_case_case_ratio@test_case"
+    }, {
+      "codeName" : "case_number",
+      "drillDetailCustomCond" : "is_deleted=0 and library_is_deleted = 0",
+      "measureFormula" : "countif(is_deleted=0 and library_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "memo" : "统计测试团队编写的用例数量，反映测试团队的产出及需求复杂度、产品质量等。\n",
+      "name" : "用例数量"
+    } ],
+    "codeName" : "test_case",
+    "cubeOption" : 1,
+    "name" : "测试用例",
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "bi_search"
+    },
+    "getPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+    }
+  }, {
+    "getAllPSSysBICubeDimensions" : [ {
+      "codeName" : "w_sprint_id",
+      "dimensionType" : "COMMON",
+      "name" : "关联迭代",
+      "getPSDEField" : {
+        "name" : "SPRINT_ID",
+        "codeName" : "Sprint_id"
+      },
+      "stdDataType" : 25,
+      "getTextPSDEField" : {
+        "name" : "SPRINT_NAME",
+        "codeName" : "Sprint_name"
+      }
+    }, {
+      "codeName" : "w_project_id",
+      "dimensionType" : "COMMON",
+      "name" : "关联项目",
+      "getPSDEField" : {
+        "name" : "PROJECT_ID",
+        "codeName" : "project_id"
+      },
+      "stdDataType" : 25,
+      "getTextPSDEField" : {
+        "name" : "PROJECT_NAME",
+        "codeName" : "project_name"
+      }
+    }, {
+      "codeName" : "w_create_man",
+      "dimensionType" : "COMMON",
+      "name" : "创建人",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_create_time",
+      "dimensionType" : "COMMON",
+      "name" : "创建时间",
+      "getPSDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_library_id",
+      "dimensionType" : "COMMON",
+      "name" : "测试库",
+      "getPSDEField" : {
+        "name" : "LIBRARY_ID",
+        "codeName" : "Library_id"
+      },
+      "stdDataType" : 25,
+      "getTextPSDEField" : {
+        "name" : "LIBRARY_NAME",
+        "codeName" : "Library_name"
+      }
+    }, {
+      "codeName" : "w_status",
+      "dimensionType" : "COMMON",
+      "name" : "状态",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSCODELISTS/test_plan_status.json"
+      },
+      "getPSDEField" : {
+        "name" : "STATUS",
+        "codeName" : "status"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_start_at",
+      "dimensionType" : "COMMON",
+      "name" : "计划开始",
+      "getPSDEField" : {
+        "name" : "START_AT",
+        "codeName" : "start_at"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_end_at",
+      "dimensionType" : "COMMON",
+      "name" : "计划结束",
+      "getPSDEField" : {
+        "name" : "END_AT",
+        "codeName" : "end_at"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_assignee_id",
+      "dimensionType" : "COMMON",
+      "name" : "负责人",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "ASSIGNEE_ID",
+        "codeName" : "assignee_id"
+      },
+      "stdDataType" : 25
+    } ],
+    "getAllPSSysBICubeMeasures" : [ {
+      "codeName" : "plan_cycle",
+      "drillDetailCustomCond" : "status='completed' and library_is_deleted = 0",
+      "jsonFormat" : "[=0]0;##0.00",
+      "measureFormula" : "sumif(dateDiff(end_at, start_at, 'day'), status='completed' and library_is_deleted = 0)  / if(countif(library_is_deleted = 0) = 0, 1, countif(library_is_deleted = 0))",
+      "measureType" : "CALCULATED",
+      "memo" : "统计测试计划从开始到交付的耗时，反映测试团队的交付效率。",
+      "name" : "测试交付周期"
+    }, {
+      "codeName" : "plans",
+      "drillDetailCustomCond" : "library_is_deleted = 0",
+      "measureFormula" : "countif(library_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "memo" : "统计不同维度下测试计划的数量。",
+      "name" : "计划数量"
+    } ],
+    "codeName" : "test_plan",
+    "cubeOption" : 1,
+    "name" : "测试计划",
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "bi_search"
+    },
+    "getPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan.json"
+    }
+  }, {
+    "getAllPSSysBICubeDimensions" : [ {
+      "codeName" : "w_create_man",
+      "dimensionType" : "COMMON",
+      "name" : "创建人",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_create_time",
+      "dimensionType" : "COMMON",
+      "name" : "创建时间",
+      "getPSDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_completed_at",
+      "dimensionType" : "COMMON",
+      "name" : "完成时间",
+      "getPSDEField" : {
+        "name" : "COMPLETED_AT",
+        "codeName" : "completed_at"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_submitted_id",
+      "dimensionType" : "COMMON",
+      "name" : "提交人",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "SUBMITTER_ID",
+        "codeName" : "submitter_id"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_submitted_at",
+      "dimensionType" : "COMMON",
+      "name" : "提交时间",
+      "getPSDEField" : {
+        "name" : "SUBMITTED_AT",
+        "codeName" : "submitted_at"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_library_id",
+      "dimensionType" : "COMMON",
+      "name" : "测试库",
+      "getPSDEField" : {
+        "name" : "LIBRARY_ID",
+        "codeName" : "library_id"
+      },
+      "stdDataType" : 25,
+      "getTextPSDEField" : {
+        "name" : "LIBRARY_NAME",
+        "codeName" : "Library_name"
+      }
+    }, {
+      "codeName" : "w_state",
+      "dimensionType" : "COMMON",
+      "name" : "状态",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSCODELISTS/test_case_state.json"
+      },
+      "getPSDEField" : {
+        "name" : "STATE",
+        "codeName" : "state"
+      },
+      "stdDataType" : 25
+    } ],
+    "getAllPSSysBICubeMeasures" : [ {
+      "codeName" : "review_completed_cycle",
+      "drillDetailCustomCond" : "state=60 and library_is_deleted = 0",
+      "jsonFormat" : "[=0]0;##0.00",
+      "measureFormula" : "sumif(dateDiff(COMPLETED_AT, SUBMITTED_AT, 'day'), state=60 and library_is_deleted = 0) / if(countif(library_is_deleted = 0) = 0, 1, countif(library_is_deleted = 0))",
+      "measureType" : "CALCULATED",
+      "memo" : "统计评审计划下从开始到评审完成的耗时，反映测试团队的评审效率。",
+      "name" : "评审完成周期"
+    }, {
+      "codeName" : "reviews",
+      "drillDetailCustomCond" : "library_is_deleted = 0",
+      "measureFormula" : "countif(library_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "memo" : "统计不同维度下用例评审的数量。",
+      "name" : "评审数量"
+    } ],
+    "codeName" : "review",
+    "cubeOption" : 1,
+    "name" : "测试评审",
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "bi_search"
+    },
+    "getPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    }
+  }, {
+    "getAllPSSysBICubeDimensions" : [ {
+      "codeName" : "w_start_at",
+      "dimensionType" : "COMMON",
+      "name" : "开始时间",
+      "getPSDEField" : {
+        "name" : "START_AT",
+        "codeName" : "start_at"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_status",
+      "dimensionType" : "COMMON",
+      "name" : "状态",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/sprint_status.json"
+      },
+      "getPSDEField" : {
+        "name" : "STATUS",
+        "codeName" : "status"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_end_at",
+      "dimensionType" : "COMMON",
+      "name" : "结束时间",
+      "getPSDEField" : {
+        "name" : "END_AT",
+        "codeName" : "end_at"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_assignee_id",
+      "dimensionType" : "COMMON",
+      "name" : "负责人",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "ASSIGNEE_ID",
+        "codeName" : "assignee_id"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_project_id",
+      "dimensionType" : "COMMON",
+      "name" : "项目",
+      "getPSDEField" : {
+        "name" : "PROJECT_ID",
+        "codeName" : "Project_id"
+      },
+      "stdDataType" : 25,
+      "getTextPSDEField" : {
+        "name" : "PROJECT_NAME",
+        "codeName" : "project_name"
+      }
+    } ],
+    "getAllPSSysBICubeMeasures" : [ {
+      "codeName" : "sprint_delay_number",
+      "drillDetailCustomCond" : "status <> 3 and end_at < now() and project_is_deleted = 0",
+      "measureFormula" : "countif(status <> 3 and end_at < now() and project_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "memo" : "统计延期迭代的数量。\n",
+      "name" : "迭代延期数"
+    }, {
+      "codeName" : "sprint_delay_rate",
+      "drillDetailCustomCond" : "status <> 3 and end_at < now() and project_is_deleted = 0",
+      "jsonFormat" : "[=0]0.00%;##0.00%",
+      "measureFormula" : "countif(status <> 3 and end_at < now() and project_is_deleted = 0) / if(countif(project_is_deleted = 0) = 0, 1, countif(project_is_deleted = 0))",
+      "measureType" : "CALCULATED",
+      "memo" : "统计延期迭代数的占比，反映迭代的延期情况。\n",
+      "name" : "迭代延期率"
+    }, {
+      "codeName" : "sprint_deliver_on_time",
+      "drillDetailCustomCond" : "status = 3 and end_at < now() and project_is_deleted = 0",
+      "measureFormula" : "countif(status = 3 and end_at < now() and project_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "memo" : "统计迭代按时结束的数量。\n",
+      "name" : "迭代按时交付数"
+    }, {
+      "codeName" : "sprint_delivery_on_time_rate",
+      "drillDetailCustomCond" : "status = 3 and end_at < now() and project_is_deleted = 0",
+      "jsonFormat" : "[=0]0.00%;##0.00%",
+      "measureFormula" : "countif(status = 3 and end_at < now() and project_is_deleted = 0) / if(countif(project_is_deleted = 0) = 0, 1, countif(project_is_deleted = 0))",
+      "measureType" : "CALCULATED",
+      "memo" : "统计迭代按时交付树的占比，反映迭代的交付情况。\n",
+      "name" : "迭代按时交付率"
+    }, {
+      "codeName" : "sprint_number",
+      "drillDetailCustomCond" : "project_is_deleted = 0",
+      "measureFormula" : "countif(project_is_deleted = 0)",
+      "measureType" : "CALCULATED",
+      "memo" : "统计不同维度下迭代的数量。",
+      "name" : "迭代数量"
+    } ],
+    "codeName" : "sprint",
+    "cubeOption" : 1,
+    "name" : "迭代",
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "bi_search"
+    },
+    "getPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint.json"
+    }
+  }, {
+    "getAllPSSysBICubeDimensions" : [ {
+      "codeName" : "w_create_man",
+      "dimensionType" : "COMMON",
+      "name" : "创建人",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_create_time",
+      "dimensionType" : "COMMON",
+      "name" : "创建时间",
+      "getPSDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_start_at",
+      "dimensionType" : "COMMON",
+      "name" : "开始时间",
+      "getPSDEField" : {
+        "name" : "START_AT",
+        "codeName" : "start_at"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_is_archived",
+      "dimensionType" : "COMMON",
+      "name" : "归档状态",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/YesNo.json"
+      },
+      "getPSDEField" : {
+        "name" : "IS_ARCHIVED",
+        "codeName" : "is_archived"
+      },
+      "stdDataType" : 9
+    }, {
+      "codeName" : "w_members",
+      "dimensionType" : "COMMON",
+      "name" : "成员",
+      "getPSDEField" : {
+        "name" : "MEMBERS",
+        "codeName" : "members"
+      },
+      "stdDataType" : 21
+    }, {
+      "codeName" : "w_update_man",
+      "dimensionType" : "COMMON",
+      "name" : "更新人",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "UPDATE_MAN",
+        "codeName" : "update_man"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_update_time",
+      "dimensionType" : "COMMON",
+      "name" : "更新时间",
+      "getPSDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_state",
+      "dimensionType" : "COMMON",
+      "name" : "状态",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/dyna_project_state.json"
+      },
+      "getPSDEField" : {
+        "name" : "STATE",
+        "codeName" : "state"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_end_at",
+      "dimensionType" : "COMMON",
+      "name" : "结束时间",
+      "getPSDEField" : {
+        "name" : "END_AT",
+        "codeName" : "end_at"
+      },
+      "stdDataType" : 5
+    }, {
+      "codeName" : "w_assignee_id",
+      "dimensionType" : "COMMON",
+      "name" : "负责人",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "getPSDEField" : {
+        "name" : "ASSIGNEE_ID",
+        "codeName" : "assignee_id"
+      },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "w_type",
+      "dimensionType" : "COMMON",
+      "name" : "项目类型",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSCODELISTS/project_type.json"
+      },
+      "getPSDEField" : {
+        "name" : "TYPE",
+        "codeName" : "type"
+      },
+      "stdDataType" : 25
+    } ],
+    "getAllPSSysBICubeMeasures" : [ {
+      "codeName" : "average_project_progress",
+      "drillDetailCustomCond" : "is_deleted = 0",
+      "jsonFormat" : "[=0]0.00%;##0.00%",
+      "measureFormula" : "sum(if(ALL_WORK_ITEMS = 0, 0, COMPLETED_WORK_ITEMS / ALL_WORK_ITEMS)) / if(countif(is_deleted = 0) = 0, 1, countif(is_deleted = 0))",
+      "measureType" : "CALCULATED",
+      "memo" : "统计项目的进展情况。",
+      "name" : "项目平均进度"
+    }, {
+      "codeName" : "project_number",
+      "drillDetailCustomCond" : "is_deleted=0",
+      "measureFormula" : "countif(is_deleted=0)",
+      "measureType" : "CALCULATED",
+      "memo" : "统计不同维度下项目的数量。\n",
+      "name" : "项目数量"
+    }, {
+      "codeName" : "project_risk_rate",
+      "drillDetailCustomCond" : "state in (params(state,('delay'))) and is_deleted = 0",
+      "jsonFormat" : "[=0]0.00%;##0.00%",
+      "measureFormula" : "countif(state in (params(state,('delay'))) and is_deleted = 0) / if(countif(is_deleted = 0) = 0, 1, countif(is_deleted = 0))",
+      "measureType" : "CALCULATED",
+      "memo" : "统计不同风险项目的占比，反映项目的进度风险情况。\n",
+      "name" : "项目风险占比",
+      "paramPSDEUIActionTag" : "open_bi_form_project_risk_ratio@project"
+    } ],
+    "codeName" : "project",
+    "cubeOption" : 1,
+    "name" : "项目",
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "bi_search"
+    },
+    "getPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+    }
+  } ],
+  "getAllPSSysBIDimensions" : [ {
+    "getAllPSSysBIHierarchies" : [ {
+      "codeName" : "time",
+      "hierarchyType" : "TIME",
+      "name" : "时间"
+    } ],
+    "codeName" : "time",
+    "name" : "时间维度"
+  } ],
+  "bIEngineType" : "OLAP",
+  "codeName" : "BIScheme",
+  "dynaModelFilePath" : "PSSYSBISCHEMES/BIScheme.json",
+  "name" : "智能报表",
+  "uniqueTag" : "BIScheme"
+}
