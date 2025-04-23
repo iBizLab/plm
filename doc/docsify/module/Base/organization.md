@@ -78,6 +78,18 @@
 
 ## 数据权限
 
+##### 全部数据（读） :id=organization-ALL_R
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `READ`
+
+
+
 ##### 全部数据（读写） :id=organization-ALL_RW
 
 <p class="panel-title"><b>数据范围</b></p>

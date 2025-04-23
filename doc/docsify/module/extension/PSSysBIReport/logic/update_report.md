@@ -48,9 +48,8 @@ DEACTION1 --> END1
 
 
 
-1. 将`Default(传入变量).PSSYSBICUBEID(智能报表立方体)` 设置给  `insight_report(效能报表).GROUP(组别)`
-2. 将`Default(传入变量).pssysbireportname(智能报表名称)` 设置给  `insight_report(效能报表).NAME(名称)`
-3. 将`Default(传入变量).PSSYSBIREPORTID(智能报表标识)` 设置给  `insight_report(效能报表).ID(标识)`
+1. 将`Default(传入变量).pssysbireportname(智能报表名称)` 设置给  `insight_report(效能报表).NAME(名称)`
+2. 将`Default(传入变量).PSSYSBIREPORTID(智能报表标识)` 设置给  `insight_report(效能报表).ID(标识)`
 
 #### 回写图表类型 :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 

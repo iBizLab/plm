@@ -13,7 +13,7 @@
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |是否系统类型|IS_SYSTEM|是否逻辑||是||
 |状态名称|NAME|文本，可指定长度|200|否||
-|序号|SEQUENCE|数值||否||
+|序号|SEQUENCE|数值||是||
 |背景样式|STYLE|[单项选择(文本值)](index/dictionary_index#background_style "背景样式")|100|是||
 |状态类别|TYPE|[单项选择(文本值)](index/dictionary_index#project_state_type "项目状态类型")|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
@@ -109,7 +109,7 @@
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
-|[系统工作项状态隐藏操作列](module/ProjMgmt/project_state/uilogic/cal_is_system)|cal_is_system|系统工作项状态隐藏操作列|
+|[判断操作列是否禁用](module/ProjMgmt/project_state/uilogic/judge_column_state)|judge_column_state|用于动态控制激活行为的禁用状态|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

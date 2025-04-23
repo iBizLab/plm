@@ -13,16 +13,16 @@
 
 
 ### 关联界面行为
-  * [页面(PAGE)](module/Wiki/article_page) : [取消收藏](module/Wiki/article_page#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [打开关注列表（移动端）](module/Wiki/article_page#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [打开评论列表（移动端）](module/Wiki/article_page#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [打开评论列表](module/Wiki/article_page#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [打开界面编辑页（移动端）](module/Wiki/article_page#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [收藏](module/Wiki/article_page#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [页面共享设置（移动端）](module/Wiki/article_page#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [开启页面共享（移动端）](module/Wiki/article_page#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [关闭共享（移动端）](module/Wiki/article_page#界面行为)
   * [页面(PAGE)](module/Wiki/article_page) : [打开关注列表](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [打开评论列表（移动端）](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [打开界面编辑页（移动端）](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [取消收藏](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [打开评论列表](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [打开关注列表（移动端）](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [开启页面共享（移动端）](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [页面共享设置（移动端）](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [关闭共享（移动端）](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [收藏](module/Wiki/article_page#界面行为)
 
 ### 关联视图
   * [页面(article_page_mob_document_edit_view)](app/view/article_page_mob_document_edit_view)

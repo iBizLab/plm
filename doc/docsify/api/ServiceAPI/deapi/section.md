@@ -24,6 +24,8 @@
 |<el-row justify="space-between"><el-col :span="20">is_leaf2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否叶子节点2|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -42,6 +44,8 @@
   "name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -62,6 +66,8 @@
   "name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -102,6 +108,8 @@
   "name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -157,6 +165,8 @@
 |<el-row justify="space-between"><el-col :span="20">is_leaf2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否叶子节点2|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -175,6 +185,8 @@
   "name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -195,6 +207,8 @@
   "name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -224,6 +238,8 @@
 |<el-row justify="space-between"><el-col :span="20">is_leaf2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否叶子节点2|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -242,6 +258,8 @@
   "name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -276,6 +294,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">is_leaf2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否叶子节点2|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -294,6 +314,8 @@ Integer
   "name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -314,6 +336,8 @@ Integer
   "name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -348,6 +372,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">is_leaf2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否叶子节点2|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -366,6 +392,8 @@ Integer
   "name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -386,6 +414,8 @@ Integer
   "name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -415,6 +445,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">is_leaf2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否叶子节点2|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -433,6 +465,8 @@ Integer
   "name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -453,6 +487,8 @@ Integer
   "name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -479,6 +515,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
 |<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -493,6 +531,8 @@ Integer
   "n_owner_id_eq" : null,
   "n_owner_subtype_eq" : null,
   "n_owner_type_eq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -513,6 +553,8 @@ Integer
     "name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -539,6 +581,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
 |<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -553,6 +597,8 @@ Integer
   "n_owner_id_eq" : null,
   "n_owner_subtype_eq" : null,
   "n_owner_type_eq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -573,6 +619,8 @@ Integer
     "name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -599,6 +647,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
 |<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -613,6 +663,8 @@ Integer
   "n_owner_id_eq" : null,
   "n_owner_subtype_eq" : null,
   "n_owner_type_eq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -633,6 +685,8 @@ Integer
     "name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -659,6 +713,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
 |<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -673,6 +729,8 @@ Integer
   "n_owner_id_eq" : null,
   "n_owner_subtype_eq" : null,
   "n_owner_type_eq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -693,6 +751,8 @@ Integer
     "name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -719,6 +779,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
 |<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -733,6 +795,8 @@ Integer
   "n_owner_id_eq" : null,
   "n_owner_subtype_eq" : null,
   "n_owner_type_eq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -753,6 +817,8 @@ Integer
     "name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```

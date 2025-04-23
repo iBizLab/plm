@@ -53,6 +53,7 @@ DEDATASET1 --> END1 : [[$./delete#dedataset1-end1{不存在子级} 不存在子�
 
 
 1. 将`1` 设置给  `Default(传入变量).IS_DELETED(是否已删除)`
+2. 将`空值（NULL）` 设置给  `Default(传入变量).PARENT_ID(父页面标识)`
 
 #### 更新页面删除状态 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 

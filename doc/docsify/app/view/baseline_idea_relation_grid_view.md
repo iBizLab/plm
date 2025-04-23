@@ -15,9 +15,9 @@
 
 
 ### 关联界面行为
+  * [基线需求(BASELINE_IDEA)](module/ProdMgmt/baseline_idea) : [表格界面_导出操作（Excel）](module/ProdMgmt/baseline_idea#界面行为)
   * [基线需求(BASELINE_IDEA)](module/ProdMgmt/baseline_idea) : [规划需求](module/ProdMgmt/baseline_idea#界面行为)
   * [基线需求(BASELINE_IDEA)](module/ProdMgmt/baseline_idea) : [移出基线](module/ProdMgmt/baseline_idea#界面行为)
-  * [基线需求(BASELINE_IDEA)](module/ProdMgmt/baseline_idea) : [表格界面_导出操作（Excel）](module/ProdMgmt/baseline_idea#界面行为)
 
 ### 关联视图
   * [基线需求(baseline_idea_edit_view)](app/view/baseline_idea_edit_view)

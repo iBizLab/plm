@@ -185,6 +185,7 @@
 |N_ORGANIZATION_NAME_LIKE|组织名称|LIKE||
 |N_STATUS_EQ|状态|EQ||
 |N_TITLE_EQ|职位|EQ||
+|N_USER_ID_NOTEQ|用户ID|NOTEQ||
 
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |

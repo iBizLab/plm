@@ -14,8 +14,8 @@
 
 
 ### 关联界面行为
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建里程碑（移动端waterfall）](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建阶段（移动端waterfall）](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建里程碑（移动端waterfall）](module/ProjMgmt/work_item#界面行为)
 
 ### 关联视图
   * [工作项(work_item_mob_common_edit_view)](app/view/work_item_mob_common_edit_view)

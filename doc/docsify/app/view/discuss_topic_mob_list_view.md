@@ -14,8 +14,8 @@
 
 
 ### 关联界面行为
-  * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [取消星标](module/Team/discuss_topic#界面行为)
   * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [设置星标](module/Team/discuss_topic#界面行为)
+  * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [取消星标](module/Team/discuss_topic#界面行为)
 
 ### 关联视图
   * [话题(discuss_topic_mob_topic_dis_list)](app/view/discuss_topic_mob_topic_dis_list)

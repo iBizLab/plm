@@ -9,8 +9,8 @@
 
 
 ### 关联界面行为
-  * [测试计划(TEST_PLAN)](module/TestMgmt/test_plan) : [确定](module/TestMgmt/test_plan#界面行为)
   * [测试计划(TEST_PLAN)](module/TestMgmt/test_plan) : [视图_取消](module/TestMgmt/test_plan#界面行为)
+  * [测试计划(TEST_PLAN)](module/TestMgmt/test_plan) : [确定](module/TestMgmt/test_plan#界面行为)
 
 ### 关联视图
   * [全部计划(test_plan_all_grid_view)](app/view/test_plan_all_grid_view)

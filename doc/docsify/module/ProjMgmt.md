@@ -32,6 +32,6 @@
 |  中文名col200      |   代码名col150    |  备注col450  |
 |  --------   |------------ |  -------- |
 |[项目管理-scrum](er/projmgmt_scrum)|projmgmt_scrum||
-|[项目管理-KANBAN](er/projmgmt_kanban)|projmgmt_kanban||
+|[项目管理-kanban](er/projmgmt_kanban)|projmgmt_kanban||
 |[项目管理-waterfall](er/projmgmt_waterfall)|projmgmt_waterfall||
 

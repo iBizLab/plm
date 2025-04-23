@@ -24,8 +24,8 @@ Object.assign(viewParam, { n_register_date_gtandeq, n_register_date_ltandeq, dat
 
 
 ### 关联界面行为
-  * [工时(WORKLOAD)](module/Base/workload) : [工作类别总登记时长链接跳转](module/Base/workload#界面行为)
   * [工时(WORKLOAD)](module/Base/workload) : [表格界面_导出操作（Excel）](module/Base/workload#界面行为)
+  * [工时(WORKLOAD)](module/Base/workload) : [工作类别总登记时长链接跳转](module/Base/workload#界面行为)
 
 ### 关联视图
   * [工时(workload_edit_view)](app/view/workload_edit_view)

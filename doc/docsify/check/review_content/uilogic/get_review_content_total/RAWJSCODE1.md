@@ -17,6 +17,9 @@ if (rows && rows.length > 0) {
     const floatTotalAlready = parseFloat(total_already);
     const ratio = Math.round((floatTotalAlready / floatTotal) * 100); 
     uiLogic.view.layoutPanel.state.data.schedule = ratio;
-} 
+} else {
+    uiLogic.view.layoutPanel.state.data.total_already = 0;
+    uiLogic.view.layoutPanel.state.data.schedule = 0;
+}
 
 ```

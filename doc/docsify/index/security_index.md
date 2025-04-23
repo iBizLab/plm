@@ -2,13 +2,13 @@
 
 |  中文名col150      |   编号col150  |  模式col300 |  备注  |
 |  --------   | -----   |  -----    |  -------- |
-|[系统管理员](security/AUTHOR_ADMIN.md)|AUTHOR_ADMIN|授权访问用户（管理员）||
+|[系统管理员](security/AUTHOR_ADMIN.md)|AUTHOR_ADMIN|无||
 |[效能管理员](security/INSIGHT_ADMIN.md)|INSIGHT_ADMIN|无||
 |[知识管理员](security/WIKI_ADMIN.md)|WIKI_ADMIN|无||
 |[默认用户权限](security/ROLE_USERS.md)|ROLE_USERS|用户默认||
 |[项目管理员](security/PROJECT_ADMIN.md)|PROJECT_ADMIN|无||
-|[微信用户](security/WXMP_USERS.md)|WXMP_USERS|授权访问用户||
-|[匿名用户](security/ANON_USERS.md)|ANON_USERS|授权访问用户||
+|[微信用户](security/WXMP_USERS.md)|WXMP_USERS|无||
+|[匿名用户](security/ANON_USERS.md)|ANON_USERS|无||
 |[测试管理员](security/TEST_ADMIN.md)|TEST_ADMIN|无||
 |[协作管理员](security/TEAM_ADMIN.md)|TEAM_ADMIN|无||
 |[产品管理员](security/PRODUCT_ADMIN.md)|PRODUCT_ADMIN|无||
@@ -3760,7 +3760,46 @@
 
   <tr>
 
-<td rowspan="1"><a href ="#/module/Base/organization">组织(ORGANIZATION)</a></td>
+<td rowspan="2"><a href ="#/module/Base/organization">组织(ORGANIZATION)</a></td>
+
+<td><a href ="#/module/Base/organization#organization-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+  <tr>
 
 <td><a href ="#/module/Base/organization#organization-all_rw">全部数据（读写）</a></td>
 <td align="center">

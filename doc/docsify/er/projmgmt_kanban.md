@@ -1,4 +1,4 @@
-# 项目管理-KANBAN <!-- {docsify-ignore-all} -->
+# 项目管理-kanban <!-- {docsify-ignore-all} -->
 
 
 ```plantuml

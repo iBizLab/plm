@@ -31,21 +31,16 @@ RAWJSCODE1 --> END1
 
 ### 处理步骤说明
 
-#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
-
-
-
-
-#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
-
-
-
-
 #### 获取选中数据 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`treegrid(表格).state.selectedData` 拷贝到  `selecteddata(选中数据)`
+
+#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
+
+
+
 
 #### 判断类型是否匹配 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
@@ -82,6 +77,11 @@ if (selectedData && selectedData.length > 0) {
     }
 }
 ```
+
+#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
+
+
+
 
 
 

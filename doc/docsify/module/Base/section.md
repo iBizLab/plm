@@ -19,6 +19,8 @@
 |序号|SEQUENCE|数值||是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
+|用户标记|USER_TAG|文本，可指定长度|200|是||
+|用户标记2|USER_TAG2|文本，可指定长度|200|是||
 
 
 ## 关系
@@ -126,6 +128,8 @@
 |N_OWNER_ID_EQ|所属数据标识|EQ||
 |N_OWNER_SUBTYPE_EQ|所属对象子类型|EQ||
 |N_OWNER_TYPE_EQ|所属数据对象|EQ||
+|N_USER_TAG_EQ|用户标记|EQ||
+|N_USER_TAG2_EQ|用户标记2|EQ||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

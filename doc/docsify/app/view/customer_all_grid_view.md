@@ -15,10 +15,10 @@
 
 
 ### 关联界面行为
-  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [删除](module/ProdMgmt/customer#界面行为)
   * [客户(CUSTOMER)](module/ProdMgmt/customer) : [客户自定义导入](module/ProdMgmt/customer#界面行为)
-  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [新建客户](module/ProdMgmt/customer#界面行为)
+  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [删除](module/ProdMgmt/customer#界面行为)
   * [客户(CUSTOMER)](module/ProdMgmt/customer) : [添加至类别（多选）](module/ProdMgmt/customer#界面行为)
+  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [新建客户](module/ProdMgmt/customer#界面行为)
   * [客户(CUSTOMER)](module/ProdMgmt/customer) : [表格界面_导出操作（Excel）](module/ProdMgmt/customer#界面行为)
   * [客户(CUSTOMER)](module/ProdMgmt/customer) : [表格界面_删除操作](module/ProdMgmt/customer#界面行为)
 

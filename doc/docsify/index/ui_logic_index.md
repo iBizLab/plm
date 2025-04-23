@@ -471,6 +471,7 @@
 |[刷新项目状态](module/ProjMgmt/project/uilogic/refresh_project_state)|refresh_project_state||
 |[图表全屏（移动端）](module/ProjMgmt/project/uilogic/mob_full_screen)|mob_full_screen||
 |[批量删除项目成员临时数据](module/ProjMgmt/project/uilogic/remove_batch_temp)|remove_batch_temp|获取项目内所有临时成员数据并删除|
+|[新建后关联产品](module/ProjMgmt/project/uilogic/after_new_product_re_project)|after_new_product_re_project||
 |[计算表格列行为状态(project)](module/ProjMgmt/project/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|
 |[设置默认项目成员（移动端）](module/ProjMgmt/project/uilogic/mob_set_default_project_member)|mob_set_default_project_member|新建项目时，默认将创建人添加到此项目成员|
 |[通知刷新](module/ProjMgmt/project/uilogic/notify_refresh)|notify_refresh|通知页面刷新|
@@ -491,7 +492,7 @@
 
 |  中文名col200 | 代码名col200 | 备注col500 |
 | --------|--------|------|
-|[系统工作项状态隐藏操作列](module/ProjMgmt/project_state/uilogic/cal_is_system)|cal_is_system|系统工作项状态隐藏操作列|
+|[判断操作列是否禁用](module/ProjMgmt/project_state/uilogic/judge_column_state)|judge_column_state|用于动态控制激活行为的禁用状态|
 
 
 
@@ -968,7 +969,7 @@
 
 |  中文名col200 | 代码名col200 | 备注col500 |
 | --------|--------|------|
-|[系统工作项状态隐藏操作列](module/ProjMgmt/work_item_state/uilogic/cal_is_system)|cal_is_system|系统工作项状态隐藏操作列|
+|[判断操作列是否禁用](module/ProjMgmt/work_item_state/uilogic/judge_column_state)|judge_column_state|用于动态控制激活行为的禁用状态|
 
 
 

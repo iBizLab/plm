@@ -120,7 +120,7 @@
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
-|[系统工作项状态隐藏操作列](module/ProjMgmt/work_item_state/uilogic/cal_is_system)|cal_is_system|系统工作项状态隐藏操作列|
+|[判断操作列是否禁用](module/ProjMgmt/work_item_state/uilogic/judge_column_state)|judge_column_state|用于动态控制激活行为的禁用状态|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

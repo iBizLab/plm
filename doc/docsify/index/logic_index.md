@@ -519,7 +519,6 @@
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
-|[test_counters](module/ProdMgmt/product/logic/test_counters)|test_counters|无|||
 |[产品关联分页计数器](module/ProdMgmt/product/logic/product_counters)|product_counters|无||计算关系分页下事件的条数|
 |[产品关联空间](module/ProdMgmt/product/logic/product_re_space)|product_re_space|无||产品关联空间操作，生成正反向关联数据|
 |[产品移动](module/ProdMgmt/product/logic/product_move)|product_move|无||产品更多设置中移动产品|

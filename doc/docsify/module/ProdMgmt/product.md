@@ -22,6 +22,8 @@
 |所属|SCOPE_TYPE|[单项选择(文本值)](index/dictionary_index#scope_type "所属类型（通用）")|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
+|用户标记|USER_TAG|文本，可指定长度|200|是||
+|用户标记2|USER_TAG2|文本，可指定长度|200|是||
 |可见范围|VISIBILITY|单项选择(文本值)|60|否||
 
 
@@ -93,13 +95,11 @@
 |产品移动|product_move|[实体处理逻辑](module/ProdMgmt/product/logic/product_move "产品移动")|默认|不支持||||
 |产品只读用户判断|product_readonly_recognize|[实体处理逻辑](module/ProdMgmt/product/logic/get_product_member_one "获取产品成员")|默认|不支持||||
 |恢复|recover|[实体处理逻辑](module/ProdMgmt/product/logic/recover "恢复")|默认|不支持||||
-|test_counter|test_counter|[实体处理逻辑](module/ProdMgmt/product/logic/test_counters "test_counters")|默认|不支持||||
 |取消星标|un_favorite|[实体处理逻辑](module/ProdMgmt/product/logic/un_favorite "取消星标")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
-|[test_counters](module/ProdMgmt/product/logic/test_counters)|test_counters|无|||
 |[产品关联分页计数器](module/ProdMgmt/product/logic/product_counters)|product_counters|无||计算关系分页下事件的条数|
 |[产品关联空间](module/ProdMgmt/product/logic/product_re_space)|product_re_space|无||产品关联空间操作，生成正反向关联数据|
 |[产品移动](module/ProdMgmt/product/logic/product_move)|product_move|无||产品更多设置中移动产品|
@@ -282,6 +282,8 @@
 |N_IS_DELETED_EQ|是否已删除|EQ||
 |N_NAME_LIKE|产品名称|LIKE||
 |N_SCOPE_TYPE_EQ|所属|EQ||
+|N_USER_TAG_EQ|用户标记|EQ||
+|N_USER_TAG2_EQ|用户标记2|EQ||
 |N_VISIBILITY_EQ|可见范围|EQ||
 
 ## 界面行为

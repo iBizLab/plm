@@ -2,7 +2,7 @@
   * [产品管理](er/prodmgmt)
 * 项目管理
   * [项目管理-scrum](er/projmgmt_scrum)
-  * [项目管理-KANBAN](er/projmgmt_kanban)
+  * [项目管理-kanban](er/projmgmt_kanban)
   * [项目管理-waterfall](er/projmgmt_waterfall)
 * 测试管理
   * [测试管理](er/test_mgmt)

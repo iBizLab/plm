@@ -523,7 +523,7 @@
 | 关联工单（移动端） | mob_add_ticket | 关联工单 |无数据|<details><summary>后台调用</summary>[others_relation_ticket](#行为)||
 | 工单归档 | ticket_archive | 归档 |多项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 | 打开我的事项工单 | open_summary_ticket | 工单 |无数据|<details><summary>打开视图或向导（模态）</summary>[工单](app/view/ticket_summary_ticket_grid_view)</details>||
-| 激活 | activate | 激活 |多项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)|批操作工具栏上按钮调用；|
+| 工单激活 | activate | 激活 |多项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)|批操作工具栏上按钮调用；|
 | 打开工单关注列表（移动端） | mob_open_attention_list | 打开关注列表 |单项数据|<details><summary>打开视图或向导（模态）</summary>[工单关注](app/view/attention_mob_ticket_md_view)</details>||
 | 新建执行后（建立双向关联数据) | after_creat_double_relation | 新建执行后（建立双向关联数据) |单项数据（主键）|用户自定义||
 | 显示下拉并展开数据（嵌入视图） | show_dorpdown_data | 显示下拉并展开数据 |无数据|用户自定义||

@@ -9,6 +9,9 @@
 #### 工具栏(righttoolbar)
 
 
+### 关联界面行为
+  * [交付物(DELIVERABLE)](module/Base/deliverable) : [编辑界面_保存并退出操作](module/Base/deliverable#界面行为)
+
 ### 关联视图
   * [交付物(deliverable_mob_display_view)](app/view/deliverable_mob_display_view)
   * [工作项(work_item_mob_pickup_view)](app/view/work_item_mob_pickup_view)

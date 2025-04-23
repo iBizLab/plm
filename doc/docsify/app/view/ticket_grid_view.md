@@ -18,10 +18,10 @@
 
 
 ### 关联界面行为
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [工单归档](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [激活](module/ProdMgmt/ticket#界面行为)
   * [工单(TICKET)](module/ProdMgmt/ticket) : [分配负责人](module/ProdMgmt/ticket#界面行为)
   * [工单(TICKET)](module/ProdMgmt/ticket) : [工单删除](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [工单激活](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [工单归档](module/ProdMgmt/ticket#界面行为)
   * [工单(TICKET)](module/ProdMgmt/ticket) : [设置标签](module/ProdMgmt/ticket#界面行为)
 
 ### 关联视图

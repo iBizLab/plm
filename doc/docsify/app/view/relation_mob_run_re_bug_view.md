@@ -15,9 +15,9 @@
 
 
 ### 关联界面行为
+  * [关联(RELATION)](module/Base/relation) : [执行用例关联缺陷（移动端）](module/Base/relation#界面行为)
   * [关联(RELATION)](module/Base/relation) : [移动端新建缺陷（新建后关联）](module/Base/relation#界面行为)
   * [关联(RELATION)](module/Base/relation) : [新建执行后（建立双向关联数据)](module/Base/relation#界面行为)
-  * [关联(RELATION)](module/Base/relation) : [执行用例关联缺陷（移动端）](module/Base/relation#界面行为)
 
 ### 关联视图
   * [选择缺陷(work_item_bug_mob_mpick_up_view)](app/view/work_item_bug_mob_mpick_up_view)

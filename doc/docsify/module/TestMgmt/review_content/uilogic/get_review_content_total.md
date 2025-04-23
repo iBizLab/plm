@@ -15,10 +15,10 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./get_review_content_total#begin {开始}]]
+state "获取评审结果进度" as DEACTION1  [[$./get_review_content_total#deaction1 {获取评审结果进度}]]
+state "结束" as END1 <<end>> [[$./get_review_content_total#end1 {结束}]]
 state "设置总条数" as RAWJSCODE1  [[$./get_review_content_total#rawjscode1 {设置总条数}]]
 state "准备参数" as PREPAREJSPARAM1  [[$./get_review_content_total#preparejsparam1 {准备参数}]]
-state "结束" as END1 <<end>> [[$./get_review_content_total#end1 {结束}]]
-state "获取评审结果进度" as DEACTION1  [[$./get_review_content_total#deaction1 {获取评审结果进度}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -66,7 +66,10 @@ if (rows && rows.length > 0) {
     const floatTotalAlready = parseFloat(total_already);
     const ratio = Math.round((floatTotalAlready / floatTotal) * 100); 
     uiLogic.view.layoutPanel.state.data.schedule = ratio;
-} 
+} else {
+    uiLogic.view.layoutPanel.state.data.total_already = 0;
+    uiLogic.view.layoutPanel.state.data.schedule = 0;
+}
 
 ```
 
@@ -89,6 +92,6 @@ if (rows && rows.length > 0) {
 | --------| --------| --------  | --------   |
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |表格|grid|部件对象||
-|当前部件对象|CTRL|当前部件对象||
 |当前视图对象|VIEW|当前视图对象||
 |上下文|ctx|导航视图参数绑定参数||
+|当前部件对象|CTRL|当前部件对象||

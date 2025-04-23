@@ -29,16 +29,6 @@ RAWJSCODE1 --> END1
 
 ### 处理步骤说明
 
-#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
-
-
-
-
-#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
-
-
-
-
 #### 触发计数器刷新 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
 
@@ -48,6 +38,16 @@ RAWJSCODE1 --> END1
 ```javascript
 ibiz.mc.command.update.send({ srfdecodename: context.principal_type})
 ```
+
+#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
+
+
+
+
+#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
+
+
+
 
 
 

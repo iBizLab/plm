@@ -9,9 +9,9 @@
 
 ### 关联界面行为
   * [项目(PROJECT)](module/ProjMgmt/project) : [查看全部工作项](module/ProjMgmt/project#界面行为)
-  * [项目(PROJECT)](module/ProjMgmt/project) : [查看三日到期预警](module/ProjMgmt/project#界面行为)
   * [项目(PROJECT)](module/ProjMgmt/project) : [查看已逾期工作项](module/ProjMgmt/project#界面行为)
   * [项目(PROJECT)](module/ProjMgmt/project) : [查看当日到期预警](module/ProjMgmt/project#界面行为)
+  * [项目(PROJECT)](module/ProjMgmt/project) : [查看三日到期预警](module/ProjMgmt/project#界面行为)
 
 ### 关联视图
   * [基本信息(project_baseinfo_over_view)](app/view/project_baseinfo_over_view)

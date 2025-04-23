@@ -11,10 +11,10 @@
     <el-menu-item index="menuitem5" @click="itemClick('#/app/view/space_tree_exp_view')">知识管理</el-menu-item>
     <el-menu-item index="menuitem6" @click="itemClick('#/app/view/insight_view_tree_exp_view')">效能度量</el-menu-item>
     <el-menu-item index="menuitem7" @click="itemClick('#/app/view/discuss_topic_tab_exp_view')">协作空间</el-menu-item>
-    <el-menu-item index="index_view_search" @click="itemClick('#/app/view/search_hub_tab_search_view')">应用搜索匹配的菜单项（勿删）</el-menu-item>
+    <el-menu-item index="index_view_search" @click="itemClick('#/app/view/search_hub_tab_search_view')">高级搜索（勿删）</el-menu-item>
     <el-menu-item index="setting" @click="itemClick('#/app/view/management_tab_exp_view')"><i class="fa fa-gears"></i>管理后台（勿删）</el-menu-item>
     <el-menu-item index="helper">帮助（勿删）</el-menu-item>
-    <el-menu-item index="custom" @click="itemClick('#/app/view/workspace_quick_create_view')">快速新建</el-menu-item>
+    <el-menu-item index="custom" @click="itemClick('#/app/view/workspace_quick_create_view')">快速新建（勿删）</el-menu-item>
     <el-menu-item index="menuitem62" @click="itemClick('#/app/view/recent_modeling_custome_view')">modeling IDE跳转</el-menu-item>
     <el-menu-item index="menuitem9" @click="itemClick('#/app/view/workload_management_view')"><i class="fa fa-clock-o"></i>工时管理</el-menu-item>
     <el-menu-item index="menuitem35" @click="itemClick('#/app/view/work_item_resource_gantt_view')">资源分配</el-menu-item>
@@ -597,7 +597,7 @@
 |[核心产品功能数据重定向视图](app/view/ps_core_prd_func_redirect_view)|ps_core_prd_func_redirect_view|核心产品功能|实体数据重定向视图|系统自动添加|
 |[二次开发分页导航](app/view/ps_core_prd_func_second_dev_tav_exp_view)|ps_core_prd_func_second_dev_tav_exp_view|二次开发|实体分页导航视图||
 |[组件扩展设置](app/view/ps_core_prd_func_setting_edit_view)|ps_core_prd_func_setting_edit_view|扩展设置|实体编辑视图||
-|[应用管理](app/view/ps_core_prd_func_tree_exp_view)|ps_core_prd_func_tree_exp_view|核心产品功能|实体树导航视图||
+|[应用管理](app/view/ps_core_prd_func_tree_exp_view)|ps_core_prd_func_tree_exp_view|应用市场|实体树导航视图||
 |[版本](app/view/ps_core_prd_func_version_option_view)|ps_core_prd_func_version_option_view|历史版本|实体选项操作视图||
 |[应用](app/view/ps_core_prd_info_view)|ps_core_prd_info_view|应用|实体编辑视图||
 |[应用市场](app/view/ps_core_prd_market_application_view)|ps_core_prd_market_application_view|核心产品|实体数据视图||

@@ -64,6 +64,8 @@
 |标题|TITLE|文本，可指定长度|500|否||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
+|用户标记|USER_TAG|文本，可指定长度|200|是||
+|用户标记2|USER_TAG2|文本，可指定长度|200|是||
 |工时进度|WORKLOAD_SCHEDULE|数值||是||
 
 
@@ -570,6 +572,8 @@
 |N_TITLE_LIKE|标题|LIKE||
 |N_UPDATE_TIME_GTANDEQ|更新时间|GTANDEQ||
 |N_UPDATE_TIME_LTANDEQ|更新时间|LTANDEQ||
+|N_USER_TAG_EQ|用户标记|EQ||
+|N_USER_TAG2_EQ|用户标记2|EQ||
 
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |

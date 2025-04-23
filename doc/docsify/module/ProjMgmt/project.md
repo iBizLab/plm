@@ -440,6 +440,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 | 打开项目移动端列表视图 | open_mob_list_view | 打开项目移动端列表 |无数据|<details><summary>打开视图或向导（模态）</summary>[项目](app/view/project_mob_list_view)</details>||
 | 查看已逾期工作项 | open_overdue_work | 查看已逾期工作项 |无数据|<details><summary>打开视图或向导（模态）</summary>[逾期工作项](app/view/work_item_overdue_grid_view)</details>||
 | 打开BI报表配置表单_项目_风险占比 | open_bi_form_project_risk_ratio | 配置 |无数据|<details><summary>打开快捷编辑</summary></details>||
+| 新建产品（关联项目） | new_product_re_project | 新建产品 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建产品](app/view/product_create_wizard_view)</details>||
 | 反查打开项目 | bi_open_project | 打开项目 |单项数据|用户自定义||
 | 已归档_激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
 | 从项目集中移除 | remove_from_project_set | 移除 |单项数据（主键）|<details><summary>后台调用</summary>[remove_from_project_set](#行为)||
@@ -457,6 +458,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[刷新项目状态](module/ProjMgmt/project/uilogic/refresh_project_state)|refresh_project_state||
 |[图表全屏（移动端）](module/ProjMgmt/project/uilogic/mob_full_screen)|mob_full_screen||
 |[批量删除项目成员临时数据](module/ProjMgmt/project/uilogic/remove_batch_temp)|remove_batch_temp|获取项目内所有临时成员数据并删除|
+|[新建后关联产品](module/ProjMgmt/project/uilogic/after_new_product_re_project)|after_new_product_re_project||
 |[计算表格列行为状态(project)](module/ProjMgmt/project/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|
 |[设置默认项目成员（移动端）](module/ProjMgmt/project/uilogic/mob_set_default_project_member)|mob_set_default_project_member|新建项目时，默认将创建人添加到此项目成员|
 |[通知刷新](module/ProjMgmt/project/uilogic/notify_refresh)|notify_refresh|通知页面刷新|

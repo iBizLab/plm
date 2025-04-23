@@ -17,7 +17,7 @@
 
 运行对象：`IBizHtmlComment`
 
-远程仓库：`@ibiz-template-plm/html-comment@0.0.3-alpha.196`
+远程仓库：`@ibiz-template-plm/html-comment@0.0.3-alpha.205`
 
 ### LuckySheet编辑 :id=LUCKYSHEET
 
@@ -90,7 +90,7 @@
 
 运行对象：`IBizPersonelSelect`
 
-远程仓库：`@ibiz-template-plm/person-select@0.0.3-alpha.159`
+远程仓库：`@ibiz-template-plm/person-select@0.0.3-alpha.204`
 
 ### 人员选择（移动端） :id=MOB_PERSONEL_SELECT
 
@@ -126,7 +126,7 @@
 
 运行对象：`IBizAttention`
 
-远程仓库：`@ibiz-template-plm/attention@0.0.3-alpha.160`
+远程仓库：`@ibiz-template-plm/attention@0.0.3-alpha.198`
 
 ### 分组树 :id=GROUP_TREE
 

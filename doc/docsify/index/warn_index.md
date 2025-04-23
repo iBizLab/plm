@@ -1,7 +1,7 @@
 # 模型预警 <!-- {docsify-ignore-all} -->
 
 
-### 处理逻辑中使用脚本<sup class="footnote-symbol"> <font color=orange>[158]</font></sup>
+### 处理逻辑中使用脚本<sup class="footnote-symbol"> <font color=orange>[157]</font></sup>
 | 实体col200   | 处理逻辑col300  | 脚本模式col100  |
 | --------   |------------|----------|
 |[组件(ADDON)](module/Base/addon#处理逻辑)|[组件权限计数器(addon_authority)](module/Base/addon/logic/addon_authority.md)|否|
@@ -61,7 +61,6 @@
 |[文件夹(PORTFOLIO)](module/Base/portfolio#处理逻辑)|[项目集组件权限计数器(portfolio_addon_authority)](module/Base/portfolio/logic/portfolio_addon_authority.md)|否|
 |[文件夹(PORTFOLIO)](module/Base/portfolio#处理逻辑)|[项目集资源成员设置(resource_member_setting)](module/Base/portfolio/logic/resource_member_setting.md)|否|
 |[文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member#处理逻辑)|[移除项目集成员通知(remove_project_set_member_notify)](module/Base/portfolio_member/logic/remove_project_set_member_notify.md)|否|
-|[产品(PRODUCT)](module/ProdMgmt/product#处理逻辑)|[test_counters](module/ProdMgmt/product/logic/test_counters.md)|否|
 |[产品(PRODUCT)](module/ProdMgmt/product#处理逻辑)|[产品组件权限计数器(product_addon_authority)](module/ProdMgmt/product/logic/product_addon_authority.md)|否|
 |[产品(PRODUCT)](module/ProdMgmt/product#处理逻辑)|[获取产品成员(get_product_member_one)](module/ProdMgmt/product/logic/get_product_member_one.md)|否|
 |[产品(PRODUCT)](module/ProdMgmt/product#处理逻辑)|[获取快速新建产品集合(quick_create)](module/ProdMgmt/product/logic/quick_create.md)|否|
@@ -454,7 +453,7 @@
 |[项目(PROJECT)](module/ProjMgmt/project#界面逻辑)|[门户全屏](module/ProjMgmt/project/uilogic/full_screen)|
 |[项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member#界面逻辑)|[新建项目默认临时成员](module/ProjMgmt/project_member/uilogic/create_default_temp_members)|
 |[项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member#界面逻辑)|[跳转至成员设置](module/ProjMgmt/project_member/uilogic/jump_to_member_set)|
-|[项目状态(PROJECT_STATE)](module/ProjMgmt/project_state#界面逻辑)|[系统工作项状态隐藏操作列](module/ProjMgmt/project_state/uilogic/cal_is_system)|
+|[项目状态(PROJECT_STATE)](module/ProjMgmt/project_state#界面逻辑)|[判断操作列是否禁用](module/ProjMgmt/project_state/uilogic/judge_column_state)|
 |[核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc#界面逻辑)|[跳转设置页面](module/extension/PSCorePrdFunc/uilogic/skip_setting)|
 |[核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc#界面逻辑)|[clone此应用](module/extension/PSCorePrdFunc/uilogic/clone_git)|
 |[核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc#界面逻辑)|[初始化插件信息](module/extension/PSCorePrdFunc/uilogic/init_plugin_info)|
@@ -629,7 +628,7 @@
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#界面逻辑)|[关联需求（工具栏）](module/ProjMgmt/work_item/uilogic/toolbar_link_idea)|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#界面逻辑)|[门户全屏](module/ProjMgmt/work_item/uilogic/full_screen)|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#界面逻辑)|[工单关联工作项](module/ProjMgmt/work_item/uilogic/ticket_relation_work_item)|
-|[工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state#界面逻辑)|[系统工作项状态隐藏操作列](module/ProjMgmt/work_item_state/uilogic/cal_is_system)|
+|[工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state#界面逻辑)|[判断操作列是否禁用](module/ProjMgmt/work_item_state/uilogic/judge_column_state)|
 
 ### 包含长文本的查询<sup class="footnote-symbol"> <font color=orange>[49]</font></sup>
 | 实体col200   | 数据查询col300  |
@@ -813,12 +812,12 @@
 ### 操作标识未配置映射<sup class="footnote-symbol"> <font color=orange>[6]</font></sup>
 | 实体col200   | 操作标识col300  |
 | --------   |------------|
-|[执行人(EXECUTOR)](module/Base/executor.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
-|[页面版本(PAGE_VERSION)](module/Wiki/page_version.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
 |[关注(ATTENTION)](module/Base/attention.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
+|[执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
 |[迭代变更(SPRINT_ALTERATION)](module/ProjMgmt/sprint_alteration.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
 |[评论(COMMENT)](module/Base/comment.md)|READ<br>DELETE<br>UPDATE|
-|[执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
+|[页面版本(PAGE_VERSION)](module/Wiki/page_version.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
+|[执行人(EXECUTOR)](module/Base/executor.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
 
 ### 除主键、主信息、预置属性外，不包含其他配置的表格<sup class="footnote-symbol"> <font color=orange>[29]</font></sup>
 | 实体col200   |   视图col400 | 表格col400  |
@@ -951,7 +950,7 @@
 |[流程准则(GUIDELINE)](module/TestMgmt/guideline)|主编辑表单(main)|[流程配置(guideline_config_option_view)](app/view/guideline_config_option_view)|
 |[需求(IDEA)](module/ProdMgmt/idea)|需求排期表单(idea_re_plan)|[需求(idea_bi_form_idea_ratio)](app/view/idea_bi_form_idea_ratio)|
 |[效能成员(INSIGHT_MEMBER)](module/Insight/insight_member)|主编辑表单(main)|[职位选择(insight_member_choose_position_option_view)](app/view/insight_member_choose_position_option_view)|
-|[效能报表(INSIGHT_REPORT)](module/Insight/insight_report)|设置仪表盘选项操作视图_表单(set_board_option_view_form)|[新建报表(insight_report_quick_create_view)](app/view/insight_report_quick_create_view)|
+|[效能报表(INSIGHT_REPORT)](module/Insight/insight_report)|设置仪表盘选项操作视图_表单(set_board_option_view_form)|[设置仪表盘(insight_report_set_board_option_view)](app/view/insight_report_set_board_option_view)|
 |[效能视图(INSIGHT_VIEW)](module/Insight/insight_view)|视图配置视图_表单(setting_view_form)|[视图信息(insight_view_advanced_setting_edit_view)](app/view/insight_view_advanced_setting_edit_view)|
 |[测试库(LIBRARY)](module/TestMgmt/library)|测试库首页视图_表单(overview)|[高级设置(library_advanced_setting_edit_view)](app/view/library_advanced_setting_edit_view)|
 |[测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member)|测试库成员选择职位选项操作视图_表单(usr12129613_form)|[职位选择(library_member_choose_position_option_view)](app/view/library_member_choose_position_option_view)|

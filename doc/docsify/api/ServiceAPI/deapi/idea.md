@@ -70,6 +70,8 @@
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -134,6 +136,8 @@
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -200,6 +204,8 @@
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -286,6 +292,8 @@
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -387,6 +395,8 @@
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -451,6 +461,8 @@
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -517,6 +529,8 @@
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -597,6 +611,8 @@
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -661,6 +677,8 @@
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -742,6 +760,8 @@
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -806,6 +826,8 @@
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -887,6 +909,8 @@
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -951,6 +975,8 @@
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -1027,6 +1053,8 @@
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -1091,6 +1119,8 @@
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -1171,6 +1201,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -1235,6 +1267,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -1301,6 +1335,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -1381,6 +1417,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -1445,6 +1483,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -1532,6 +1572,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -1618,6 +1660,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -1699,6 +1743,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -1763,6 +1809,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -1846,6 +1894,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -1910,6 +1960,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -1976,6 +2028,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -2062,6 +2116,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -2142,6 +2198,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -2206,6 +2264,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -2287,6 +2347,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -2351,6 +2413,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -2432,6 +2496,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -2496,6 +2562,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -2577,6 +2645,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -2641,6 +2711,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -2722,6 +2794,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -2786,6 +2860,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -2867,6 +2943,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -2931,6 +3009,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -3012,6 +3092,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -3076,6 +3158,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -3142,6 +3226,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -3222,6 +3308,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -3286,6 +3374,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -3352,6 +3442,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -3432,6 +3524,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -3496,6 +3590,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -3577,6 +3673,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -3641,6 +3739,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -3722,6 +3822,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -3786,6 +3888,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -3862,6 +3966,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -3926,6 +4032,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -3992,6 +4100,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -4072,6 +4182,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -4136,6 +4248,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 ```
 
@@ -4202,6 +4316,8 @@ Integer
   "product_name" : null,
   "update_man" : null,
   "update_time" : null,
+  "user_tag" : null,
+  "user_tag2" : null,
 }
 
 ```
@@ -4264,6 +4380,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -4325,6 +4443,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -4391,6 +4511,8 @@ Integer
     "product_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -4454,6 +4576,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -4515,6 +4639,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -4593,6 +4719,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -4654,6 +4782,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -4720,6 +4850,8 @@ Integer
     "product_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -4783,6 +4915,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -4844,6 +4978,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -4910,6 +5046,8 @@ Integer
     "product_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -4972,6 +5110,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -5033,6 +5173,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -5099,6 +5241,8 @@ Integer
     "product_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -5161,6 +5305,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -5222,6 +5368,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -5288,6 +5436,8 @@ Integer
     "product_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -5350,6 +5500,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -5411,6 +5563,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -5525,6 +5679,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -5586,6 +5742,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -5660,6 +5818,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -5721,6 +5881,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -5787,6 +5949,8 @@ Integer
     "product_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -5849,6 +6013,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -5910,6 +6076,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -5976,6 +6144,8 @@ Integer
     "product_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -6039,6 +6209,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -6100,6 +6272,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -6166,6 +6340,8 @@ Integer
     "product_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -6229,6 +6405,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -6290,6 +6468,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -6356,6 +6536,8 @@ Integer
     "product_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -6418,6 +6600,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -6479,6 +6663,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -6545,6 +6731,8 @@ Integer
     "product_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -6607,6 +6795,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -6668,6 +6858,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -6734,6 +6926,8 @@ Integer
     "product_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -6797,6 +6991,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -6858,6 +7054,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -6924,6 +7122,8 @@ Integer
     "product_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -6987,6 +7187,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -7048,6 +7250,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -7114,6 +7318,8 @@ Integer
     "product_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -7177,6 +7383,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -7238,6 +7446,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -7304,6 +7514,8 @@ Integer
     "product_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -7367,6 +7579,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -7428,6 +7642,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -7494,6 +7710,8 @@ Integer
     "product_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -7556,6 +7774,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -7617,6 +7837,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -7683,6 +7905,8 @@ Integer
     "product_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -7745,6 +7969,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -7806,6 +8032,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -7872,6 +8100,8 @@ Integer
     "product_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -7935,6 +8165,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -7996,6 +8228,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -8062,6 +8296,8 @@ Integer
     "product_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -8125,6 +8361,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -8186,6 +8424,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -8252,6 +8492,8 @@ Integer
     "product_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -8315,6 +8557,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -8376,6 +8620,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -8450,6 +8696,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -8511,6 +8759,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -8577,6 +8827,8 @@ Integer
     "product_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -8640,6 +8892,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -8701,6 +8955,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -8767,6 +9023,8 @@ Integer
     "product_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -8829,6 +9087,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -8890,6 +9150,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -8956,6 +9218,8 @@ Integer
     "product_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -9019,6 +9283,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -9080,6 +9346,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -9146,6 +9414,8 @@ Integer
     "product_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -9208,6 +9478,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -9269,6 +9541,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -9335,6 +9609,8 @@ Integer
     "product_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -9397,6 +9673,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -9458,6 +9736,8 @@ Integer
   "n_title_like" : null,
   "n_update_time_gtandeq" : null,
   "n_update_time_ltandeq" : null,
+  "n_user_tag2_eq" : null,
+  "n_user_tag_eq" : null,
 }
 ```
 
@@ -9524,6 +9804,8 @@ Integer
     "product_name" : null,
     "update_man" : null,
     "update_time" : null,
+    "user_tag" : null,
+    "user_tag2" : null,
   }
 ]
 ```
@@ -9767,6 +10049,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -9890,6 +10174,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -9971,6 +10257,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -10052,6 +10340,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -10133,6 +10423,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -10213,6 +10505,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -10293,6 +10587,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -10374,6 +10670,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -10497,6 +10795,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -10577,6 +10877,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -10679,6 +10981,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -10760,6 +11064,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -10841,6 +11147,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -10922,6 +11230,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -11003,6 +11313,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -11084,6 +11396,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -11165,6 +11479,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -11246,6 +11562,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -11327,6 +11645,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -11408,6 +11728,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -11489,6 +11811,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -11569,6 +11893,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -11650,6 +11976,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
 |<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
 
 
@@ -11717,6 +12045,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -11784,6 +12114,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -11851,6 +12183,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -11918,6 +12252,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -11985,6 +12321,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -12052,6 +12390,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -12119,6 +12459,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -12186,6 +12528,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -12253,6 +12597,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -12320,6 +12666,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -12387,6 +12735,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -12454,6 +12804,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -12521,6 +12873,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -12588,6 +12942,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -12655,6 +13011,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -12722,6 +13080,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -12789,6 +13149,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -12856,6 +13218,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -12923,6 +13287,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -12990,6 +13356,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -13057,6 +13425,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -13124,6 +13494,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -13191,6 +13563,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -13258,6 +13632,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -13325,6 +13701,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -13392,6 +13770,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -13459,6 +13839,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -13526,6 +13908,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -13593,6 +13977,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
 |<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_user_tag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 

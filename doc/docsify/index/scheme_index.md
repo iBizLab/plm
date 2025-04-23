@@ -208,6 +208,8 @@
 |SEQUENCE|序号|DECIMAL|是||||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
+|USER_TAG|用户标记|VARCHAR|是|200|||
+|USER_TAG2|用户标记2|VARCHAR|是|200|||
 #### 工单渠道(CHANNEL)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
@@ -491,6 +493,8 @@
 |TITLE|标题|VARCHAR|是|500|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
+|USER_TAG|用户标记|VARCHAR|是|200|||
+|USER_TAG2|用户标记2|VARCHAR|是|200|||
 #### 需求模板(IDEA_TEMPLATE)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
@@ -764,6 +768,8 @@
 |SCOPE_TYPE|所属|VARCHAR|是|60|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
+|USER_TAG|用户标记|VARCHAR|是|200|||
+|USER_TAG2|用户标记2|VARCHAR|是|200|||
 |VISIBILITY|可见范围|VARCHAR|是|60|||
 #### 产品成员(PRODUCT_MEMBER)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
@@ -1081,6 +1087,8 @@
 |SEQUENCE|序号|DECIMAL|是||||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
+|USER_TAG|用户标记|VARCHAR|是|200|||
+|USER_TAG2|用户标记2|VARCHAR|是|200|||
 #### 序列(SEQUENCE_GENERATOR)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |

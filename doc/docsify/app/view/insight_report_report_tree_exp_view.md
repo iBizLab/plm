@@ -14,14 +14,14 @@
 
 ### 关联界面行为
   * [效能报表(INSIGHT_REPORT)](module/Insight/insight_report) : [编辑](module/Insight/insight_report#界面行为)
+  * [效能报表(INSIGHT_REPORT)](module/Insight/insight_report) : [编辑](module/Insight/insight_report#界面行为)
+  * [效能报表(INSIGHT_REPORT)](module/Insight/insight_report) : [删除](module/Insight/insight_report#界面行为)
+  * [效能报表(INSIGHT_REPORT)](module/Insight/insight_report) : [编辑](module/Insight/insight_report#界面行为)
   * [效能报表(INSIGHT_REPORT)](module/Insight/insight_report) : [树界面_刷新全部操作](module/Insight/insight_report#界面行为)
-  * [效能报表(INSIGHT_REPORT)](module/Insight/insight_report) : [删除](module/Insight/insight_report#界面行为)
-  * [效能报表(INSIGHT_REPORT)](module/Insight/insight_report) : [编辑](module/Insight/insight_report#界面行为)
-  * [效能报表(INSIGHT_REPORT)](module/Insight/insight_report) : [删除](module/Insight/insight_report#界面行为)
-  * [效能报表(INSIGHT_REPORT)](module/Insight/insight_report) : [编辑](module/Insight/insight_report#界面行为)
   * [效能报表(INSIGHT_REPORT)](module/Insight/insight_report) : [删除](module/Insight/insight_report#界面行为)
   * [效能报表(INSIGHT_REPORT)](module/Insight/insight_report) : [新建类别](module/Insight/insight_report#界面行为)
   * [效能报表(INSIGHT_REPORT)](module/Insight/insight_report) : [新建分组](module/Insight/insight_report#界面行为)
+  * [效能报表(INSIGHT_REPORT)](module/Insight/insight_report) : [删除](module/Insight/insight_report#界面行为)
 
 ### 关联视图
   * [全部报表(insight_report_all_report_grid_view)](app/view/insight_report_all_report_grid_view)

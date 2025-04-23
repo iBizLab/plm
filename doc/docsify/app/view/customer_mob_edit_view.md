@@ -9,6 +9,9 @@
 #### 工具栏(righttoolbar)
 
 
+### 关联界面行为
+  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [编辑界面_保存并退出操作](module/ProdMgmt/customer#界面行为)
+
 <script>
  const { createApp } = Vue
   createApp({

@@ -2701,22 +2701,28 @@ if(view.modal && view.modal.mode === 'MODAL'){
 }
 ibiz.openView.push(`/-/index/project=${context.project}/project_redirect_view/-/project_setting_view/srfnav=member/project_member_config_grid_view/-`);
 ```
-#### [项目状态(PROJECT_STATE)](module/ProjMgmt/project_state)的处理逻辑[系统工作项状态隐藏操作列(cal_is_system)](module/ProjMgmt/project_state/uilogic/cal_is_system)
+#### [项目状态(PROJECT_STATE)](module/ProjMgmt/project_state)的处理逻辑[判断操作列是否禁用(judge_column_state)](module/ProjMgmt/project_state/uilogic/judge_column_state)
 
-节点：系统工作项状态隐藏编辑列
+节点：判断操作列是否禁用
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
-const rows = uiLogic.grid.state.rows;
-if (rows && rows.length > 0) {
-    rows.forEach(row => {
-        const is_system = row.data.is_system;
-        if (is_system === 1) {
-            row.uaColStates.uagridcolumn1.u2cc9dd2.visible = false;
-            row.uaColStates.uagridcolumn1.u8247bb2.visible = false;
-        }
-    })
-}
+	const rows = uiLogic.grid.state.rows;
+    console.log(rows);
+	if (rows && rows.length > 0) {
+		rows.forEach(row => {
+			const is_system = row.data.is_system;
+					 if (is_system === 1) {
+						// 禁用
+                        row.uaColStates.uagridcolumn1.visible = false;
+                        Object.values(row.uaColStates.uagridcolumn1).forEach(item => {
+                            item.visible = false;
+                            item.disabled = true;
+                        })
+					} 	
+		})
+	}
+
 ```
 #### [核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc)的处理逻辑[跳转设置页面(skip_setting)](module/extension/PSCorePrdFunc/uilogic/skip_setting)
 
@@ -3273,7 +3279,10 @@ if (rows && rows.length > 0) {
     const floatTotalAlready = parseFloat(total_already);
     const ratio = Math.round((floatTotalAlready / floatTotal) * 100); 
     uiLogic.view.layoutPanel.state.data.schedule = ratio;
-} 
+} else {
+    uiLogic.view.layoutPanel.state.data.total_already = 0;
+    uiLogic.view.layoutPanel.state.data.schedule = 0;
+}
 
 ```
 #### [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)的处理逻辑[评审内容版本比对(review_content_version_comparison)](module/TestMgmt/review_content/uilogic/review_content_version_comparison)
@@ -6068,22 +6077,28 @@ uiLogic.default.choose_data = null;
 ```javascript
 ibiz.mc.command.update.send({ srfdecodename: context.principal_type})
 ```
-#### [工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state)的处理逻辑[系统工作项状态隐藏操作列(cal_is_system)](module/ProjMgmt/work_item_state/uilogic/cal_is_system)
+#### [工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state)的处理逻辑[判断操作列是否禁用(judge_column_state)](module/ProjMgmt/work_item_state/uilogic/judge_column_state)
 
-节点：系统工作项状态隐藏编辑列
+节点：判断操作列是否禁用
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
-const rows = uiLogic.grid.state.rows;
-if (rows && rows.length > 0) {
-    rows.forEach(row => {
-        const is_system = row.data.is_system;
-        if (is_system === 1) {
-            row.uaColStates.uagridcolumn1.u639d4f1.visible = false;
-            row.uaColStates.uagridcolumn1.u57914a9.visible = false;
-        }
-    })
-}
+	const rows = uiLogic.grid.state.rows;
+    console.log(rows);
+	if (rows && rows.length > 0) {
+		rows.forEach(row => {
+			const is_system = row.data.is_system;
+					 if (is_system === 1) {
+						// 禁用
+                        row.uaColStates.uagridcolumn1.visible = false;
+                        Object.values(row.uaColStates.uagridcolumn1).forEach(item => {
+                            item.visible = false;
+                            item.disabled = true;
+                        })
+					} 	
+		})
+	}
+
 ```
 
 

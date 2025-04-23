@@ -16,8 +16,8 @@
 
 
 ### 关联界面行为
-  * [协作成员(DISCUSS_MEMBER)](module/Team/discuss_member) : [表格界面_新建操作](module/Team/discuss_member#界面行为)
   * [协作成员(DISCUSS_MEMBER)](module/Team/discuss_member) : [移除成员](module/Team/discuss_member#界面行为)
+  * [协作成员(DISCUSS_MEMBER)](module/Team/discuss_member) : [表格界面_新建操作](module/Team/discuss_member#界面行为)
 
 ### 关联界面逻辑
   * [协作成员(DISCUSS_MEMBER)](module/Team/discuss_member) : [新建协作默认临时成员](module/Team/discuss_member/uilogic/create_default_temp_members)

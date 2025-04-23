@@ -15,12 +15,12 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./close_comment#begin {开始}]]
-state "准备逻辑参数" as PREPAREJSPARAM1  [[$./close_comment#preparejsparam1 {准备逻辑参数}]]
+state "准备界面元素" as PREPAREJSPARAM1  [[$./close_comment#preparejsparam1 {准备界面元素}]]
 state "设置工具栏项、评论列表显隐" as PREPAREJSPARAM3  [[$./close_comment#preparejsparam3 {设置工具栏项、评论列表显隐}]]
 state "通知刷新" as RAWJSCODE2  [[$./close_comment#rawjscode2 {通知刷新}]]
 state "结束" as END1 <<end>> [[$./close_comment#end1 {结束}]]
 state "清空评论" as DEUIACTION1  [[$./close_comment#deuiaction1 {清空评论}]]
-state "设置视图评论显隐变量" as PREPAREJSPARAM4  [[$./close_comment#preparejsparam4 {设置视图评论显隐变量}]]
+state "设置视图评论显隐" as PREPAREJSPARAM4  [[$./close_comment#preparejsparam4 {设置视图评论显隐}]]
 state "记录评论状态" as RAWJSCODE1  [[$./close_comment#rawjscode1 {记录评论状态}]]
 
 
@@ -39,29 +39,11 @@ RAWJSCODE2 --> END1
 
 ### 处理步骤说明
 
-#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
-
-
-
-
-#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
-
-
-
-
 #### 清空评论 :id=DEUIACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体界面行为调用]</font></sup>
 
 
 
 调用实体 [评论(COMMENT)](module/Base/comment.md) 界面行为 [清空评论（知识库）](module/Base/comment#界面行为) 
-
-#### 准备逻辑参数 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
-
-
-
-1. 将`view.layoutPanel.panelItems.right_container.state` 设置给  `right_grouppanel_state(容器状态)`
-2. 将`toolbar(工具栏).state.buttonsState.deuiaction3` 设置给  `button3_state_obj(关闭按钮状态)`
-3. 将`toolbar(工具栏).state.buttonsState.deuiaction2` 设置给  `button2_state_obj(评论按钮状态)`
 
 #### 设置工具栏项、评论列表显隐 :id=PREPAREJSPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
@@ -71,7 +53,15 @@ RAWJSCODE2 --> END1
 2. 将`false` 设置给  `button3_state_obj(关闭按钮状态).visible`
 3. 将`true` 设置给  `button2_state_obj(评论按钮状态).visible`
 
-#### 设置视图评论显隐变量 :id=PREPAREJSPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备界面元素 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`view.layoutPanel.panelItems.right_container.state` 设置给  `right_grouppanel_state(容器状态)`
+2. 将`toolbar(工具栏).state.buttonsState.deuiaction3` 设置给  `button3_state_obj(关闭按钮状态)`
+3. 将`toolbar(工具栏).state.buttonsState.deuiaction2` 设置给  `button2_state_obj(评论按钮状态)`
+
+#### 设置视图评论显隐 :id=PREPAREJSPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -98,6 +88,16 @@ localStorage.removeItem(operator);
 ```javascript
 ibiz.mc.command.create.send({ srfdecodename: 'article_page'})
 ```
+
+#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
+
+
+
+
+#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
+
+
+
 
 
 

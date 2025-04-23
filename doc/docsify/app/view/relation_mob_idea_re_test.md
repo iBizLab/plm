@@ -15,8 +15,8 @@
 
 
 ### 关联界面行为
-  * [关联(RELATION)](module/Base/relation) : [产品移动端新建用例（新建后关联）](module/Base/relation#界面行为)
   * [关联(RELATION)](module/Base/relation) : [关联测试用例（移动端）](module/Base/relation#界面行为)
+  * [关联(RELATION)](module/Base/relation) : [产品移动端新建用例（新建后关联）](module/Base/relation#界面行为)
   * [关联(RELATION)](module/Base/relation) : [新建执行后（建立双向关联数据)](module/Base/relation#界面行为)
 
 ### 关联视图

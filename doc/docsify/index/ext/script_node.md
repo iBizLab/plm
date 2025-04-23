@@ -1,5 +1,5 @@
 
-## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[219]</font></sup>
+## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[218]</font></sup>
 
 #### [组件(ADDON)](module/Base/addon)的处理逻辑[组件权限计数器(addon_authority)](module/Base/addon/logic/addon_authority)
 
@@ -1614,16 +1614,6 @@ addon_resource.set('members', insert_members)
 ```javascript
 var defaultObj = logic.getParam("default");
 defaultObj.set("update_time", new Date());
-```
-#### [产品(PRODUCT)](module/ProdMgmt/product)的处理逻辑[test_counters](module/ProdMgmt/product/logic/test_counters)
-
-节点：执行脚本代码
-<p class="panel-title"><b>执行代码[Groovy]</b></p>
-
-```groovy
-def _default = logic.param('Default').getReal()
-_default.set('flag1', 0)
-_default.set('flag2', 1)
 ```
 #### [产品(PRODUCT)](module/ProdMgmt/product)的处理逻辑[产品组件权限计数器(product_addon_authority)](module/ProdMgmt/product/logic/product_addon_authority)
 

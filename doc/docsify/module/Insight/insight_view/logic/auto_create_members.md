@@ -55,9 +55,11 @@ LOOPSUBCALL1 --> END1
 
 
 1. 将`Default(传入变量).ID(标识)` 设置给  `view_member(成员参数).OWNER_ID(效能标识)`
-2. 将`admin` 设置给  `view_member(成员参数).ROLE_ID(角色)`
-3. 将`用户全局对象.srfpersonid` 设置给  `view_member(成员参数).USER_ID(用户标识)`
-4. 将`用户全局对象.srfpersonname` 设置给  `view_member(成员参数).NAME(名称)`
+2. 将`INSIGHT` 设置给  `view_member(成员参数).OWNER_TYPE(所属数据对象)`
+3. 将`INSIGHT` 设置给  `view_member(成员参数).OWNER_SUBTYPE(所属对象子类型)`
+4. 将`admin` 设置给  `view_member(成员参数).ROLE_ID(角色)`
+5. 将`用户全局对象.srfpersonid` 设置给  `view_member(成员参数).USER_ID(用户标识)`
+6. 将`用户全局对象.srfpersonname` 设置给  `view_member(成员参数).NAME(名称)`
 
 #### 准备查询数据 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
@@ -70,7 +72,7 @@ LOOPSUBCALL1 --> END1
 
 
 
-调用实体 [空间成员(SPACE_MEMBER)](module/Wiki/space_member.md) 行为 [Create](module/Wiki/space_member#行为) ，行为参数为`view_member(成员参数)`
+调用实体 [成员(MEMBER)](module/Base/member.md) 行为 [Create](module/Base/member#行为) ，行为参数为`view_member(成员参数)`
 
 #### 实体数据集 :id=DEDATASET1<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
 
