@@ -317,7 +317,9 @@ export const PersonelSelect = defineComponent({
           if (newVal === null || newVal === undefined) {
             curValue.value = '';
             multipleSelect.value = [];
-            emit('change', null, c.valueItem);
+            if ((c.parent as any).form.state.isLoaded) {
+              emit('change', undefined, c.valueItem);
+            }
             emit('blur');
             // eslint-disable-next-line no-useless-return
             return;
@@ -418,7 +420,6 @@ export const PersonelSelect = defineComponent({
 
     // 往外抛值
     const onACSelect = async (data: IData) => {
-      console.log('选中数据', data);
       // 选中了搜索过滤返回的数据，那就把选中的数据加入已加载的人员或部门人员里,放在最前面,并去重
       if (searchValue.value) {
         if (selectState.value === 'user') {
@@ -427,6 +428,7 @@ export const PersonelSelect = defineComponent({
           deptItems.value.unshift(data);
         }
       }
+      if (c.clearFilter) searchValue.value = '';
       // 处理值项和本身的值
       const item: IData = {};
       Object.assign(item, data);
@@ -770,10 +772,10 @@ export const PersonelSelect = defineComponent({
     const renderSearchInput = () => {
       return (
         <el-input
-          class={ns.be('select-modal', 'search-input')}
           ref={searchRef}
-          v-model={searchValue.value}
+          class={ns.be('select-modal', 'search-input')}
           placeholder='搜索'
+          v-model={searchValue.value}
           onInput={(value: string | number) => handleSearch(value)}
           onKeydown={handleSearchKeyDown}
         >
@@ -967,7 +969,6 @@ export const PersonelSelect = defineComponent({
     };
 
     const avatarLoadError = (avatarUrl: string) => {
-      console.log('头像加载失败');
       errorLoadItems.value.push(avatarUrl);
     };
 
@@ -1056,6 +1057,13 @@ export const PersonelSelect = defineComponent({
                 {userTitle}
               </div>
             )}
+            {c.suffix && (
+              <div
+                class={ns.bem('select-modal', 'personel-list', 'title-label')}
+              >
+                {item[c.suffix]}
+              </div>
+            )}
             {userid === c.context.srfuserid ? (
               <div class={ns.bem('select-modal', 'personel-list', 'myself')}>
                 我自己
@@ -1118,7 +1126,6 @@ export const PersonelSelect = defineComponent({
 
     // 阻止默认和冒泡
     const onModalEvent = (e: Event) => {
-      e.preventDefault();
       e.stopPropagation();
     };
 
@@ -1426,6 +1433,7 @@ export const PersonelSelect = defineComponent({
     };
 
     const onPageHide = () => {
+      searchValue.value = '';
       visible.value = false;
     };
 

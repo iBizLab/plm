@@ -253,6 +253,22 @@ export class PersonelSelectController extends EditorController<IPicker> {
    */
   public showNameTip: boolean = false;
 
+  /**
+   * 后缀
+   *
+   * @type {string}
+   * @memberof PersonelSelectController
+   */
+  public suffix: string = '';
+
+  /**
+   * 是否清除过滤条件
+   *
+   * @type {boolean}
+   * @memberof PersonelSelectController
+   */
+  public clearFilter: boolean = false;
+
   protected async onInit(): Promise<void> {
     super.onInit();
     this.initDefaultAttribute();
@@ -351,6 +367,8 @@ export class PersonelSelectController extends EditorController<IPicker> {
         ? true
         : false;
     this.isShowTab = this.editorParams.ISSHOWTAB === 'false' ? false : true;
+    this.suffix = this.editorParams.SUFFIX;
+    this.clearFilter = this.editorParams.CLEARFILTER === 'true' ? true : false;
 
     if (this.editorParams?.VALUETYPE) {
       this.valueType = this.editorParams?.VALUETYPE;

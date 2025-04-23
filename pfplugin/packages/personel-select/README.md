@@ -41,6 +41,8 @@
 | DEFAULTATNVALUE   | string     | ---    | 在人员或部门中选中当前操作者时，指定默认的关注类型。<br />   |
 | ISADDSYMBOL       | boolean    | false  | 是否附加符号 多选且开启附加符号并且选择值为多个时，每个选择值前后都拼接上单引号后再抛出去 |
 | ISSHOWTAB         | boolean    | true   | 是否显示人员、部门分类，不启用时，只启用并显示全部人员，对应的人员地址需要配置在URL上 |
+| SUFFIX            | string     | ---    | 额外显示的后缀标签，值为字段属性名称 |
+| CLEARFILTER       | boolean    | false  | 是否在人员选择之后自动清除过滤条件 |
 
 ### SELFFILLMAP
 

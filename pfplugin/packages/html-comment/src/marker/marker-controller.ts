@@ -260,13 +260,14 @@ export class MarkerController {
         return;
       }
 
-      if (t === '#' && !this.execting) {
-        this.query = '';
-        this.showModal();
-      }
-
-      // 非 '#' 则执行默认行为
       insertText(t);
+
+      if (t === '#' && !this.execting) {
+        setTimeout(() => {
+          this.query = '';
+          this.showModal();
+        }, 0);
+      }
     };
 
     // 重写 isInline

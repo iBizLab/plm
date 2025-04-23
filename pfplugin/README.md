@@ -33,6 +33,47 @@ $ pnpm i
 ```bash
 $ pnpm build
 ```
+### 本地调试
+
+1. 启动开发环境
+
+进入插件包工作空间下，在插件包工作空间中执行 pnpm dev，Vite 开启监听，实时展示代码修改效果
+
+```bash
+$ pnpm dev
+```
+
+2. 将插件包链接到全局
+
+等待 pnpm dev 执行结束后，在插件包工作空间中执行 pnpm link --global
+
+```bash
+pnpm link --global
+```
+
+3. 在主项目工作空间下执行 pnpm link --global "插件包名称"，将插件包链接到主项目
+
+```bash
+pnpm link --global "插件包名称"
+```
+
+4. 在主项目 user-register.ts 中导入并注册插件包
+
+通过app.use将插件包注册到主项目内，ibiz.plugin.setDevIgnore方法设置本地开发忽略远程加载插件，防止远程包样式影响本地开发。
+
+以锚点富文本为例，代码如下：
+
+```bash
+import { App } from "vue";
+import IBizAnchoHtml from "@ibiz-template-plm/ancho-html";
+export default {
+  install(app: App): void {
+    app.use(IBizAnchoHtml);
+    ibiz.plugin.setDevIgnore("@ibiz-template-plm/ancho-html@0.0.3-alpha.186");
+  },
+};
+
+```
 
 ### 插件详情
 

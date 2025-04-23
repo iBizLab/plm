@@ -992,6 +992,11 @@ const IBizHtmlCollapse = defineComponent({
               }
               isBackFill.value = false;
             }
+            // 解析失败时，重新解析
+            if (newVal) {
+              const html = c.parseNode(newVal);
+              valueHtml.value = html;
+            }
           }
         },
         { immediate: true },

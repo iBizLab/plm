@@ -66,19 +66,35 @@ export const HtmlComment = defineComponent({
       isAvatarLoadError.value = true;
     };
 
+    const isImg = (imgUrl: string) => {
+      const reg =
+        /^https?:|^http?:|^data:image|(\.png$|\.svg|\.jpg|\.png|\.gif|\.psd|\.tif|\.bmp|\.jpeg)$/;
+      return reg.test(imgUrl);
+    };
+
     const renderAvatar = () => {
       if (c.userAvatar && !isAvatarLoadError.value) {
-        const urlConfig = JSON.parse(c.userAvatar);
-        if (urlConfig.length === 0) {
-          return null;
+        let url = '';
+        if (isImg(c.userAvatar)) {
+          url = c.userAvatar;
+        } else {
+          let urlConfig: IData[] = [];
+          try {
+            urlConfig = JSON.parse(c.userAvatar);
+          } catch (error) {
+            console.error('解析头像数据失败', error);
+          }
+          if (urlConfig.length === 0) {
+            return null;
+          }
+          const { downloadUrl } = ibiz.util.file.calcFileUpDownUrl(
+            c.context,
+            c.params,
+            props.data,
+            c.editorParams,
+          );
+          url = downloadUrl.replace('%fileId%', urlConfig[0].id);
         }
-        const { downloadUrl } = ibiz.util.file.calcFileUpDownUrl(
-          c.context,
-          c.params,
-          props.data,
-          c.editorParams,
-        );
-        const url = downloadUrl.replace('%fileId%', urlConfig[0].id);
         return (
           <div class={ns.e('avatar-name')}>
             <img src={url} alt='' onError={avatarLoadError} />
