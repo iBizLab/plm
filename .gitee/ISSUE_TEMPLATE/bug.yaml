@@ -1,0 +1,34 @@
+name: Bug反馈
+description: 在使用本项目过程中遇到的功能异常、系统报错
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢对项目的支持与关注。在提出问题之前，请确保你已查阅相关开发或使用文档：http://plm.ibizlab.cn
+  - type: textarea
+    id: desired-problem
+    attributes:
+      label: 问题描述
+      description: 请描述你遇到的问题，以及相关的异常截图。
+    validations:
+      required: true
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: 复现步骤
+      description: 请提供问题复现的步骤说明和截图，以方便我们排查。
+    validations:
+      required: false
+  - type: dropdown
+    id: version
+    attributes:
+      label: 软件版本
+      description: 你当前正在使用我们软件的哪个版本？根据"deploy/compose/.env"的SYSTEM_REPO参数选择，如果是dev方式启动的请选择ModelingIDE。
+      options:
+        - https://gitee.com/ibizplm-open/plm-runner/releases/download/V1.0-alpha.20250422/V1.0-alpha.20250422.zip (最新)
+        - https://gitee.com/ibizplm-open/plm-runner/releases/download/V1.0-alpha.20250226/V1.0-alpha.20250226.zip
+        - ModelingIDE
+    validations:
+      required: true
