@@ -127,6 +127,9 @@ iBizPLM使用了现代化软件架构，前端技术使用Vue，后端技术使�
 | 8    | 2025-04-17    | Modeling建模-进阶篇-处理逻辑   | https://www.bilibili.com/video/BV18D5vzKE6H |
 | 9    | 2025-04-18    | Modeling建模-进阶篇-表单   | https://www.bilibili.com/video/BV1MP5JzpEkr |
 | 10   | 2025-04-21    | Modeling建模-进阶篇-数据查询   | https://www.bilibili.com/video/BV1U45Cz9Eke |
+| 11	| 2025-04-22	| Modeling建模-进阶篇-界面逻辑	| https://www.bilibili.com/video/BV1Xn5RztELa |
+| 12	| 2025-04-23	| Modeling建模-进阶篇-工具栏	| https://www.bilibili.com/video/BV1ZYL8zKECp |
+| 13	| 2025-04-24	| Modeling建模-进阶篇-界面行为	| https://www.bilibili.com/video/BV13aLgzKEPs |
 
 
 ### 演示图
