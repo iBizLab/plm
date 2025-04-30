@@ -446,6 +446,9 @@
     "path" : "PSMODULES/ProdMgmt/PSCODELISTS/idea_priority.json"
   }, {
     "modelref" : true,
+    "path" : "PSMODULES/TestMgmt/PSCODELISTS/run_status_color.json"
+  }, {
+    "modelref" : true,
     "path" : "PSCODELISTS/CodeList57.json"
   }, {
     "modelref" : true,
@@ -648,6 +651,9 @@
   }, {
     "modelref" : true,
     "path" : "PSCODELISTS/CodeList59.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSCODELISTS/idea_dictionary.json"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ProjMgmt/PSCODELISTS/rear_dependency_type.json"
@@ -863,6 +869,9 @@
     "path" : "PSMODULES/extension/PSCODELISTS/portlet_runtime.json"
   }, {
     "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSCODELISTS/cur_product_mem.json"
+  }, {
+    "modelref" : true,
     "path" : "PSCODELISTS/CodeList22.json"
   }, {
     "modelref" : true,
@@ -966,6 +975,9 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/extension/PSCODELISTS/group.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSCODELISTS/idea_dictionary_group.json"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/TestMgmt/PSCODELISTS/review_type_guideline.json"
@@ -2808,6 +2820,20 @@
     "styleCode" : "ATTENTION_PRODUCT",
     "replaceDefault" : false
   }, {
+    "codeName" : "IDEA_TEAM_SELECT",
+    "dynaModelFilePath" : "PSSYSEDITORSTYLES/IDEA_TEAM_SELECT.json",
+    "editorHeight" : -1.0,
+    "editorType" : "PICKER",
+    "editorWidth" : -1.0,
+    "name" : "人员团队选择（产品需求）",
+    "getPSSysPFPlugin" : {
+      "pluginType" : "EDITOR_CUSTOMSTYLE",
+      "pluginCode" : "TEAM_SELECT",
+      "runtimeObject" : true
+    },
+    "styleCode" : "IDEA_TEAM_SELECT",
+    "replaceDefault" : false
+  }, {
     "codeName" : "PERSONEL_SELECT_ALL",
     "dynaModelFilePath" : "PSSYSEDITORSTYLES/PERSONEL_SELECT_ALL.json",
     "editorHeight" : -1.0,
@@ -2984,6 +3010,20 @@
       "runtimeObject" : true
     },
     "styleCode" : "COMMENT_PRODUCT",
+    "replaceDefault" : false
+  }, {
+    "codeName" : "PERSONEL_SELECT_WORKLOAD",
+    "dynaModelFilePath" : "PSSYSEDITORSTYLES/PERSONEL_SELECT_WORKLOAD.json",
+    "editorHeight" : -1.0,
+    "editorType" : "PICKEREX_TRIGGER",
+    "editorWidth" : -1.0,
+    "name" : "人员选择器（workload）",
+    "getPSSysPFPlugin" : {
+      "pluginType" : "EDITOR_CUSTOMSTYLE",
+      "pluginCode" : "PERSON_SELECT",
+      "runtimeObject" : true
+    },
+    "styleCode" : "PERSONEL_SELECT_WORKLOAD",
     "replaceDefault" : false
   }, {
     "codeName" : "PERSONEL_SELECT_SPACE",
@@ -4727,6 +4767,17 @@
     }
   } ],
   "getAllPSSysSFPlugins" : [ {
+    "codeName" : "DynaFieldDEDataImportRuntimeEx",
+    "dynaModelFilePath" : "PSSYSSFPLUGINS/DynaFieldDEDataImportRuntimeEx.json",
+    "memo" : "支持动态属性导入",
+    "name" : "DynaFieldDEDataImportRuntimeEx",
+    "pluginCode" : "DynaFieldDEDataImportRuntimeEx",
+    "pluginType" : "USER",
+    "rTObjectName" : "cn.ibizlab.plm.user.plugin.groovy.dataentity.dataimport.DynaFieldDEDataImportRuntimeEx",
+    "rTObjectSource" : 1,
+    "templCode" : "package cn.ibizlab.plm.user.plugin.groovy.dataentity.dataimport\r\n\r\nimport com.fasterxml.jackson.databind.node.ObjectNode\r\nimport groovy.transform.CompileStatic\r\nimport net.ibizsys.central.cloud.core.dataentity.IDataEntityRuntime\r\nimport net.ibizsys.central.cloud.core.dataentity.util.IDEExtensionUtilRuntime;\r\nimport net.ibizsys.central.plugin.extension.dataentity.util.DEExtensionUtilRuntimeBase;\r\nimport net.ibizsys.central.plugin.poi.dataentity.dataimport.POIDEDataImportRuntime\r\nimport net.ibizsys.model.IPSModelObjectRuntime\r\nimport net.ibizsys.model.PSModelEnums;\r\nimport net.ibizsys.model.dataentity.dataimport.IPSDEDataImportItem\r\nimport net.ibizsys.model.dataentity.dataimport.PSDEDataImportItemImpl;\r\nimport net.ibizsys.model.dataentity.defield.IPSDEField\r\nimport net.ibizsys.model.dataentity.der.IPSDER1N\r\nimport net.ibizsys.model.dataentity.der.IPSDERBase\r\nimport net.ibizsys.model.dataentity.der.IPSDERCustom;\r\nimport net.ibizsys.runtime.security.IUserContext;\r\nimport net.ibizsys.runtime.util.IWebContext\r\nimport net.ibizsys.runtime.util.JsonUtils;\r\nimport org.springframework.util.ObjectUtils;\r\nimport org.springframework.util.StringUtils\r\n\r\n@CompileStatic\r\npublic class DynaFieldDEDataImportRuntimeEx extends POIDEDataImportRuntime  {\r\n    private static final org.apache.commons.logging.Log log = org.apache.commons.logging.LogFactory.getLog(DynaFieldDEDataImportRuntimeEx.class);\r\n\r\n    private List<String> extendParentKeys = new ArrayList<>();\r\n\r\n    private IDEExtensionUtilRuntime iDEExtensionUtilRuntime = null;\r\n\r\n    @Override\r\n    protected void onInit() throws Exception {\r\n        if(this.getDataEntityRuntime().isEnableExtension() && this.getDataEntityRuntime().getDEExtensionUtilRuntime()!=null) {\r\n            this.iDEExtensionUtilRuntime = this.getDataEntityRuntime().getDEExtensionUtilRuntime();\r\n        }\r\n\r\n        List<IPSDERBase> minorPSDERs = getDataEntityRuntime().getPSDataEntity().getMinorPSDERs();\r\n        if (!ObjectUtils.isEmpty(minorPSDERs)) {\r\n            for (IPSDERBase iPSDERBase : minorPSDERs) {\r\n                if (iPSDERBase instanceof IPSDER1N) {\r\n                    IPSDER1N iPSDER1N = (IPSDER1N) iPSDERBase;\r\n                    if ((iPSDER1N.getMasterRS() & PSModelEnums.DER1NMasterRS.EXTENSION.value) == PSModelEnums.DER1NMasterRS.EXTENSION.value) {\r\n                        extendParentKeys.add(iPSDER1N.getPSPickupDEFieldMust().getName());\r\n                    }\r\n                    continue;\r\n                }\r\n\r\n                if (iPSDERBase instanceof IPSDERCustom) {\r\n                    IPSDERCustom iPSDERCustom = (IPSDERCustom) iPSDERBase;\r\n                    if (PSModelEnums.DERSubType.DER1N.value.equals(iPSDERCustom.getDERSubType()) || PSModelEnums.DERSubType.DER11.value.equals(iPSDERCustom.getDERSubType())) {\r\n                        if (iPSDERCustom.getPickupPSDEField() != null && ((iPSDERCustom.getMasterRS() & PSModelEnums.DER1NMasterRS.EXTENSION.value) == PSModelEnums.DER1NMasterRS.EXTENSION.value)) {\r\n                            extendParentKeys.add(iPSDERCustom.getPickupPSDEField().getName());\r\n                        }\r\n                    }\r\n                    continue;\r\n                }\r\n            }\r\n        }\r\n        super.onInit();\r\n    }\r\n\r\n    @Override\r\n    public IDataEntityRuntime getDataEntityRuntime() {\r\n        return (IDataEntityRuntime)super.getDataEntityRuntime();\r\n    }\r\n    protected Map<String, IPSDEDataImportItem> getPSDEDataImportItems(IUserContext iUserContext) throws Throwable {\r\n        Map<String, IPSDEDataImportItem> map = super.getPSDEDataImportItems(iUserContext);\r\n        if(!ObjectUtils.isEmpty(extendParentKeys) && getDEExtensionUtilRuntime() != null) {\r\n            IWebContext iWebContext = iUserContext.getWebContext();\r\n            if(iWebContext != null) {\r\n                for (String extendParentKey : extendParentKeys) {\r\n                    String strDataType = iWebContext.getParameter(extendParentKey);\r\n                    if (!StringUtils.hasLength(strDataType)) {\r\n                        continue;\r\n                    }\r\n                    List<IPSDEField> psDEFieldList = this.getDEExtensionUtilRuntime().getPSDEFields(String.format(DEExtensionUtilRuntimeBase.FIELD_EXTENSION_FORMAT, extendParentKey.toUpperCase(), strDataType));\r\n                    int defaultOrderValue = 99900;\r\n                    if (!ObjectUtils.isEmpty(psDEFieldList)) {\r\n                        for (IPSDEField iPSDEField : psDEFieldList) {\r\n                            if (!StringUtils.hasLength(iPSDEField.getLogicName())) {\r\n                                continue;\r\n                            }\r\n                            if (map.containsKey(iPSDEField.getLogicName())) {\r\n                                log.warn(String.format(\"扩展属性[%s]标题[%s]已经存在，忽略导入\", iPSDEField.getName(), iPSDEField.getLogicName()));\r\n                                continue;\r\n                            }\r\n\r\n                            ObjectNode objectNode = JsonUtils.createObjectNode();\r\n                            objectNode.put(PSDEDataImportItemImpl.ATTR_GETID, iPSDEField.getLowerCaseName());\r\n                            objectNode.put(PSDEDataImportItemImpl.ATTR_GETNAME, iPSDEField.getLowerCaseName());\r\n                            objectNode.put(PSDEDataImportItemImpl.ATTR_GETCAPTION, iPSDEField.getLogicName());\r\n\r\n                            // int iOrderValue = iPSDEField.getImportOrder() != 0 ? iPSDEField.getImportOrder() : iPSDEField.getOrderValue();\r\n                            int iOrderValue = iPSDEField.getImportOrder();\r\n                            if (iOrderValue == 0) {\r\n                                iOrderValue = defaultOrderValue++;\r\n                            }\r\n                            objectNode.put(PSDEDataImportItemImpl.ATTR_GETORDERVALUE, iOrderValue);\r\n\r\n                            IPSDEDataImportItem iPSDEDataImportItem = this.getSystemRuntime().getPSSystemService().createAndInitPSModelObject((IPSModelObjectRuntime) this.getPSDEDataImport(), IPSDEDataImportItem.class, objectNode);\r\n                            if (iPSDEDataImportItem instanceof PSDEDataImportItemImpl) {\r\n                                PSDEDataImportItemImpl psDEDataImportItemImpl = (PSDEDataImportItemImpl) iPSDEDataImportItem;\r\n                                psDEDataImportItemImpl.setPSDEField(iPSDEField);\r\n                                if (iPSDEField.getInlinePSCodeList() != null) {\r\n                                    psDEDataImportItemImpl.setPSCodeList(iPSDEField.getInlinePSCodeList());\r\n                                } else {\r\n                                    psDEDataImportItemImpl.setPSCodeList(iPSDEField.getPSCodeList());\r\n                                }\r\n                                map.put(psDEDataImportItemImpl.getCaption(), psDEDataImportItemImpl);\r\n                            }\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n        }\r\n        return map;\r\n    }\r\n\r\n    protected IDEExtensionUtilRuntime getDEExtensionUtilRuntime() {\r\n        return this.iDEExtensionUtilRuntime;\r\n    }\r\n}",
+    "runtimeObject" : true
+  }, {
     "codeName" : "EventHookDENotifyRuntimeEx",
     "dynaModelFilePath" : "PSSYSSFPLUGINS/EventHookDENotifyRuntimeEx.json",
     "memo" : "运行时事件通知增强插件",
@@ -4760,7 +4811,7 @@
     "pluginType" : "USER",
     "rTObjectName" : "cn.ibizlab.plm.user.plugin.groovy.dataentity.dataimport.NestedDataImportRuntimeEx",
     "rTObjectSource" : 1,
-    "templCode" : "package cn.ibizlab.plm.user.plugin.groovy.dataentity.dataimport\r\n\r\nimport com.fasterxml.jackson.databind.JsonNode\r\nimport groovy.transform.CompileStatic;\r\nimport net.ibizsys.central.cloud.core.util.domain.V2ImportSchema;\r\nimport net.ibizsys.central.plugin.poi.dataentity.dataimport.POIDEDataImportRuntime\r\nimport net.ibizsys.central.util.IEntityDTO;\r\nimport net.ibizsys.model.dataentity.dataimport.IPSDEDataImportItem;\r\nimport net.ibizsys.model.dataentity.defield.IPSDEField;\r\nimport net.ibizsys.runtime.dataentity.DataEntityRuntimeException;\r\nimport net.ibizsys.runtime.util.IEntity;\r\nimport org.apache.poi.ss.usermodel.Workbook;\r\nimport org.springframework.util.StringUtils;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\nimport java.util.Map;\r\n\r\n@CompileStatic\r\npublic class NestedDataImportRuntimeEx extends POIDEDataImportRuntime  {\r\n    private static final org.apache.commons.logging.Log log = org.apache.commons.logging.LogFactory.getLog(NestedDataImportRuntimeEx.class);\r\n\r\n    public final static String PARAM_NESTEDNAMEFIELD = \"nestednamefield\";\r\n    public final static String PARAM_NESTEDPKEYFIELD = \"nestedpkeyfield\";\r\n    public final static String PARAM_NESTEDSYMBOL = \"nestedsymbol\";\r\n\r\n    private String strNestedNameField = null;\r\n    private String strNestedPKeyField = null;\r\n    private String strNestedSymbol = null;\r\n\r\n    @Override\r\n    protected void onInit() throws Exception {\r\n        this.strNestedNameField =  this.getImportParam(PARAM_NESTEDNAMEFIELD,\"\");\r\n        this.strNestedPKeyField =  this.getImportParam(PARAM_NESTEDPKEYFIELD,\"pid\");\r\n        this.strNestedSymbol = this.getImportParam(PARAM_NESTEDSYMBOL, \"→\");\r\n        super.onInit();\r\n    }\r\n\r\n    @Override\r\n    protected List<Map<String, Object>> doResolveData(IEntity baseEntity, Workbook wb, V2ImportSchema importSchema) throws Throwable {\r\n       List<Map<String, Object>> dataList = super.doResolveData(baseEntity, wb, importSchema);\r\n       //进一步解析1对多数据对象导入数据\r\n        Map<String, IPSDEDataImportItem> psDEDataImportItemMap = getPSDEDataImportItems();\r\n        if (psDEDataImportItemMap == null || psDEDataImportItemMap.size() == 0) {\r\n            throw new DataEntityRuntimeException(this.getDataEntityRuntimeBase(), this, String.format(\"没有定义任何导入项\"));\r\n        }\r\n        String strNestedNameFieldTag = \"\";\r\n        String strNestedKeyTag = \"\";\r\n        String strNestedPKeyTag = \"\";\r\n        boolean enableNestedImport = false;\r\n        for (java.util.Map.Entry<String, IPSDEDataImportItem> entry : psDEDataImportItemMap.entrySet()) {\r\n            IPSDEField iPSDEField = entry.getValue().getPSDEFieldMust();\r\n            if(!StringUtils.hasLength(strNestedNameField)){\r\n                strNestedNameField = this.getDataEntityRuntime().getMajorPSDEField().getLowerCaseName();\r\n            }\r\n            if (iPSDEField.getLowerCaseName().equalsIgnoreCase(strNestedNameField)) {\r\n                strNestedNameFieldTag = entry.getKey();\r\n            }\r\n            if (iPSDEField.getLowerCaseName().equalsIgnoreCase(strNestedPKeyField)) {\r\n                strNestedPKeyTag = entry.getKey();\r\n            }\r\n            if (iPSDEField.getLowerCaseName().equalsIgnoreCase(this.getDataEntityRuntime().getKeyPSDEField().getLowerCaseName())) {\r\n                strNestedKeyTag = entry.getKey();\r\n            }\r\n            if(StringUtils.hasLength(strNestedNameFieldTag) && StringUtils.hasLength(strNestedPKeyTag) && StringUtils.hasLength(strNestedKeyTag) ){\r\n                enableNestedImport = true;\r\n            }\r\n        }\r\n        if(!enableNestedImport){\r\n            return dataList;\r\n        }\r\n        List<String> parentKeyList = new ArrayList<>();\r\n        for (Map<String, Object> paramMap : dataList){\r\n            //生成主键用于后续绑定嵌套\r\n            IEntityDTO iEntityDTO = this.getDataEntityRuntime().createEntity(paramMap);\r\n            this.getDataEntityRuntime().fillEntityKeyValue(iEntityDTO);\r\n            String strKeyPSDEFieldName = this.getDataEntityRuntime().getKeyPSDEField().getLowerCaseName();\r\n            String strKey = (String)iEntityDTO.get(strKeyPSDEFieldName);\r\n            paramMap.put(strNestedKeyTag,strKey);\r\n            String nestedContent = (String) paramMap.get(strNestedNameFieldTag);\r\n            if(StringUtils.hasLength(nestedContent)&& nestedContent.startsWith(strNestedSymbol)){\r\n                int nestCount = 0;\r\n                while (nestedContent.startsWith(strNestedSymbol)){\r\n                    nestedContent = nestedContent.substring(1);\r\n                    paramMap.put(strNestedPKeyTag,parentKeyList.get(nestCount));\r\n                    nestCount++;\r\n                }\r\n                if(parentKeyList.size() > nestCount){\r\n                    parentKeyList.set(nestCount,strKey);\r\n                }else {\r\n                    parentKeyList.add(strKey);\r\n                }\r\n            }else {\r\n                parentKeyList.clear();\r\n                parentKeyList.add(strKey);\r\n            }\r\n            paramMap.put(strNestedNameFieldTag,nestedContent);\r\n        }\r\n       return dataList;\r\n    }\r\n\r\n    protected String getImportParam(String strKey, String strDefault) {\r\n        if (this.getPSDEDataImport().getImpParams() != null) {\r\n            JsonNode node = this.getPSDEDataImport().getImpParams().get(strKey);\r\n            if (node != null) {\r\n                return node.asText(strDefault);\r\n            }\r\n        }\r\n        return strDefault;\r\n    }\r\n\r\n}",
+    "templCode" : "package cn.ibizlab.plm.user.plugin.groovy.dataentity.dataimport\r\n\r\nimport com.fasterxml.jackson.databind.JsonNode\r\nimport com.fasterxml.jackson.databind.node.ObjectNode\r\nimport groovy.transform.CompileStatic\r\nimport net.ibizsys.central.cloud.core.dataentity.IDataEntityRuntime\r\nimport net.ibizsys.central.cloud.core.dataentity.util.IDEExtensionUtilRuntime;\r\nimport net.ibizsys.central.cloud.core.util.domain.V2ImportSchema\r\nimport net.ibizsys.central.plugin.extension.dataentity.util.DEExtensionUtilRuntimeBase;\r\nimport net.ibizsys.central.plugin.poi.dataentity.dataimport.POIDEDataImportRuntime\r\nimport net.ibizsys.central.util.IEntityDTO\r\nimport net.ibizsys.model.IPSModelObjectRuntime\r\nimport net.ibizsys.model.PSModelEnums;\r\nimport net.ibizsys.model.dataentity.dataimport.IPSDEDataImportItem\r\nimport net.ibizsys.model.dataentity.dataimport.PSDEDataImportItemImpl;\r\nimport net.ibizsys.model.dataentity.defield.IPSDEField\r\nimport net.ibizsys.model.dataentity.der.IPSDER1N\r\nimport net.ibizsys.model.dataentity.der.IPSDERBase\r\nimport net.ibizsys.model.dataentity.der.IPSDERCustom;\r\nimport net.ibizsys.runtime.dataentity.DataEntityRuntimeException\r\nimport net.ibizsys.runtime.security.IUserContext;\r\nimport net.ibizsys.runtime.util.IEntity\r\nimport net.ibizsys.runtime.util.IWebContext\r\nimport net.ibizsys.runtime.util.JsonUtils;\r\nimport org.apache.poi.ss.usermodel.Workbook\r\nimport org.springframework.util.ObjectUtils;\r\nimport org.springframework.util.StringUtils\r\n\r\n@CompileStatic\r\npublic class NestedDataImportRuntimeEx extends POIDEDataImportRuntime  {\r\n    private static final org.apache.commons.logging.Log log = org.apache.commons.logging.LogFactory.getLog(NestedDataImportRuntimeEx.class);\r\n\r\n    public final static String PARAM_NESTEDNAMEFIELD = \"nestednamefield\";\r\n    public final static String PARAM_NESTEDPKEYFIELD = \"nestedpkeyfield\";\r\n    public final static String PARAM_NESTEDSYMBOL = \"nestedsymbol\";\r\n\r\n    private String strNestedNameField = null;\r\n    private String strNestedPKeyField = null;\r\n    private String strNestedSymbol = null;\r\n\r\n    private List<String> extendParentKeys = new ArrayList<>();\r\n\r\n    private IDEExtensionUtilRuntime iDEExtensionUtilRuntime = null;\r\n\r\n    @Override\r\n    protected void onInit() throws Exception {\r\n        this.strNestedNameField =  this.getImportParam(PARAM_NESTEDNAMEFIELD,\"\");\r\n        this.strNestedPKeyField =  this.getImportParam(PARAM_NESTEDPKEYFIELD,\"pid\");\r\n        this.strNestedSymbol = this.getImportParam(PARAM_NESTEDSYMBOL, \"→\");\r\n        if(this.getDataEntityRuntime().isEnableExtension() && this.getDataEntityRuntime().getDEExtensionUtilRuntime()!=null) {\r\n            this.iDEExtensionUtilRuntime = this.getDataEntityRuntime().getDEExtensionUtilRuntime();\r\n        }\r\n\r\n        List<IPSDERBase> minorPSDERs = getDataEntityRuntime().getPSDataEntity().getMinorPSDERs();\r\n        if (!ObjectUtils.isEmpty(minorPSDERs)) {\r\n            for (IPSDERBase iPSDERBase : minorPSDERs) {\r\n                if (iPSDERBase instanceof IPSDER1N) {\r\n                    IPSDER1N iPSDER1N = (IPSDER1N) iPSDERBase;\r\n                    if ((iPSDER1N.getMasterRS() & PSModelEnums.DER1NMasterRS.EXTENSION.value) == PSModelEnums.DER1NMasterRS.EXTENSION.value) {\r\n                        extendParentKeys.add(iPSDER1N.getPSPickupDEFieldMust().getName());\r\n                    }\r\n                    continue;\r\n                }\r\n\r\n                if (iPSDERBase instanceof IPSDERCustom) {\r\n                    IPSDERCustom iPSDERCustom = (IPSDERCustom) iPSDERBase;\r\n                    if (PSModelEnums.DERSubType.DER1N.value.equals(iPSDERCustom.getDERSubType()) || PSModelEnums.DERSubType.DER11.value.equals(iPSDERCustom.getDERSubType())) {\r\n                        if (iPSDERCustom.getPickupPSDEField() != null && ((iPSDERCustom.getMasterRS() & PSModelEnums.DER1NMasterRS.EXTENSION.value) == PSModelEnums.DER1NMasterRS.EXTENSION.value)) {\r\n                            extendParentKeys.add(iPSDERCustom.getPickupPSDEField().getName());\r\n                        }\r\n                    }\r\n                    continue;\r\n                }\r\n            }\r\n        }\r\n        super.onInit();\r\n    }\r\n\r\n    @Override\r\n    public IDataEntityRuntime getDataEntityRuntime() {\r\n        return (IDataEntityRuntime)super.getDataEntityRuntime();\r\n    }\r\n    protected Map<String, IPSDEDataImportItem> getPSDEDataImportItems(IUserContext iUserContext) throws Throwable {\r\n        Map<String, IPSDEDataImportItem> map = super.getPSDEDataImportItems(iUserContext);\r\n        if(!ObjectUtils.isEmpty(extendParentKeys) && getDEExtensionUtilRuntime() != null) {\r\n            IWebContext iWebContext = iUserContext.getWebContext();\r\n            if(iWebContext != null) {\r\n                for (String extendParentKey : extendParentKeys) {\r\n                    String strDataType = iWebContext.getParameter(extendParentKey);\r\n                    if (!StringUtils.hasLength(strDataType)) {\r\n                        continue;\r\n                    }\r\n                    List<IPSDEField> psDEFieldList = this.getDEExtensionUtilRuntime().getPSDEFields(String.format(DEExtensionUtilRuntimeBase.FIELD_EXTENSION_FORMAT, extendParentKey.toUpperCase(), strDataType));\r\n                    int defaultOrderValue = 99900;\r\n                    if (!ObjectUtils.isEmpty(psDEFieldList)) {\r\n                        for (IPSDEField iPSDEField : psDEFieldList) {\r\n                            if (!StringUtils.hasLength(iPSDEField.getLogicName())) {\r\n                                continue;\r\n                            }\r\n                            if (map.containsKey(iPSDEField.getLogicName())) {\r\n                                log.warn(String.format(\"扩展属性[%s]标题[%s]已经存在，忽略导入\", iPSDEField.getName(), iPSDEField.getLogicName()));\r\n                                continue;\r\n                            }\r\n\r\n                            ObjectNode objectNode = JsonUtils.createObjectNode();\r\n                            objectNode.put(PSDEDataImportItemImpl.ATTR_GETID, iPSDEField.getLowerCaseName());\r\n                            objectNode.put(PSDEDataImportItemImpl.ATTR_GETNAME, iPSDEField.getLowerCaseName());\r\n                            objectNode.put(PSDEDataImportItemImpl.ATTR_GETCAPTION, iPSDEField.getLogicName());\r\n\r\n                            //int iOrderValue = iPSDEField.getImportOrder() != 0 ? iPSDEField.getImportOrder() : iPSDEField.getOrderValue();\r\n                            int iOrderValue = iPSDEField.getImportOrder();\r\n                            if (iOrderValue == 0) {\r\n                                iOrderValue = defaultOrderValue++;\r\n                            }\r\n                            objectNode.put(PSDEDataImportItemImpl.ATTR_GETORDERVALUE, iOrderValue);\r\n\r\n                            IPSDEDataImportItem iPSDEDataImportItem = this.getSystemRuntime().getPSSystemService().createAndInitPSModelObject((IPSModelObjectRuntime) this.getPSDEDataImport(), IPSDEDataImportItem.class, objectNode);\r\n                            if (iPSDEDataImportItem instanceof PSDEDataImportItemImpl) {\r\n                                PSDEDataImportItemImpl psDEDataImportItemImpl = (PSDEDataImportItemImpl) iPSDEDataImportItem;\r\n                                psDEDataImportItemImpl.setPSDEField(iPSDEField);\r\n                                if (iPSDEField.getInlinePSCodeList() != null) {\r\n                                    psDEDataImportItemImpl.setPSCodeList(iPSDEField.getInlinePSCodeList());\r\n                                } else {\r\n                                    psDEDataImportItemImpl.setPSCodeList(iPSDEField.getPSCodeList());\r\n                                }\r\n                                map.put(psDEDataImportItemImpl.getCaption(), psDEDataImportItemImpl);\r\n                            }\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n        }\r\n        return map;\r\n    }\r\n\r\n    @Override\r\n    protected List<Map<String, Object>> doResolveData(IEntity baseEntity, Workbook wb, V2ImportSchema importSchema) throws Throwable {\r\n        List<Map<String, Object>> dataList = super.doResolveData(baseEntity, wb, importSchema);\r\n        //进一步解析1对多数据对象导入数据\r\n        Map<String, IPSDEDataImportItem> psDEDataImportItemMap = getPSDEDataImportItems();\r\n        if (psDEDataImportItemMap == null || psDEDataImportItemMap.size() == 0) {\r\n            throw new DataEntityRuntimeException(this.getDataEntityRuntimeBase(), this, String.format(\"没有定义任何导入项\"));\r\n        }\r\n        String strNestedNameFieldTag = \"\";\r\n        String strNestedKeyTag = \"\";\r\n        String strNestedPKeyTag = \"\";\r\n        boolean enableNestedImport = false;\r\n        for (java.util.Map.Entry<String, IPSDEDataImportItem> entry : psDEDataImportItemMap.entrySet()) {\r\n            IPSDEField iPSDEField = entry.getValue().getPSDEFieldMust();\r\n            if(!StringUtils.hasLength(strNestedNameField)){\r\n                strNestedNameField = this.getDataEntityRuntime().getMajorPSDEField().getLowerCaseName();\r\n            }\r\n            if (iPSDEField.getLowerCaseName().equalsIgnoreCase(strNestedNameField)) {\r\n                strNestedNameFieldTag = entry.getKey();\r\n            }\r\n            if (iPSDEField.getLowerCaseName().equalsIgnoreCase(strNestedPKeyField)) {\r\n                strNestedPKeyTag = entry.getKey();\r\n            }\r\n            if (iPSDEField.getLowerCaseName().equalsIgnoreCase(this.getDataEntityRuntime().getKeyPSDEField().getLowerCaseName())) {\r\n                strNestedKeyTag = entry.getKey();\r\n            }\r\n            if(StringUtils.hasLength(strNestedNameFieldTag) && StringUtils.hasLength(strNestedPKeyTag) && StringUtils.hasLength(strNestedKeyTag) ){\r\n                enableNestedImport = true;\r\n            }\r\n        }\r\n        if(!enableNestedImport){\r\n            return dataList;\r\n        }\r\n        List<String> parentKeyList = new ArrayList<>();\r\n        for (Map<String, Object> paramMap : dataList){\r\n            //生成主键用于后续绑定嵌套\r\n            IEntityDTO iEntityDTO = this.getDataEntityRuntime().createEntity(paramMap);\r\n            this.getDataEntityRuntime().fillEntityKeyValue(iEntityDTO);\r\n            String strKeyPSDEFieldName = this.getDataEntityRuntime().getKeyPSDEField().getLowerCaseName();\r\n            String strKey = (String)iEntityDTO.get(strKeyPSDEFieldName);\r\n            paramMap.put(strNestedKeyTag,strKey);\r\n            String nestedContent = (String) paramMap.get(strNestedNameFieldTag);\r\n            if(StringUtils.hasLength(nestedContent)&& nestedContent.startsWith(strNestedSymbol)){\r\n                int nestCount = 0;\r\n                while (nestedContent.startsWith(strNestedSymbol)){\r\n                    nestedContent = nestedContent.substring(1);\r\n                    paramMap.put(strNestedPKeyTag,parentKeyList.get(nestCount));\r\n                    nestCount++;\r\n                }\r\n                if(parentKeyList.size() > nestCount){\r\n                    parentKeyList.set(nestCount,strKey);\r\n                }else {\r\n                    parentKeyList.add(strKey);\r\n                }\r\n            }else {\r\n                parentKeyList.clear();\r\n                parentKeyList.add(strKey);\r\n            }\r\n            paramMap.put(strNestedNameFieldTag,nestedContent);\r\n        }\r\n        return dataList;\r\n    }\r\n\r\n    protected String getImportParam(String strKey, String strDefault) {\r\n        if (this.getPSDEDataImport().getImpParams() != null) {\r\n            JsonNode node = this.getPSDEDataImport().getImpParams().get(strKey);\r\n            if (node != null) {\r\n                return node.asText(strDefault);\r\n            }\r\n        }\r\n        return strDefault;\r\n    }\r\n\r\n    protected IDEExtensionUtilRuntime getDEExtensionUtilRuntime() {\r\n        return this.iDEExtensionUtilRuntime;\r\n    }\r\n}",
     "runtimeObject" : true
   }, {
     "codeName" : "PLMSysPSDEModelUtilRuntime",
@@ -4904,7 +4955,7 @@
     "pluginType" : "DEDATASET",
     "rTObjectName" : "cn.ibizlab.plm.user.plugin.groovy.dataentity.ds.MemberWorklaodDEDataSetRuntime",
     "rTObjectSource" : 1,
-    "templCode" : "package cn.ibizlab.plm.user.plugin.groovy.dataentity.ds;\r\n\r\nimport groovy.transform.CompileStatic\r\nimport net.ibizsys.runtime.util.ISearchCond\r\nimport net.ibizsys.runtime.util.SearchFieldCond\r\nimport net.ibizsys.runtime.util.SearchGroupCond\r\nimport net.ibizsys.central.dataentity.IDataEntityRuntime;\r\nimport net.ibizsys.central.plugin.util.dataentity.ds.DEDataSetRuntimeBase;\r\nimport org.springframework.data.domain.Page;\r\nimport net.ibizsys.central.util.IEntityDTO;\r\nimport net.ibizsys.central.util.ISearchContextDTO;\r\nimport net.ibizsys.central.util.PageImpl\r\nimport org.springframework.data.domain.Pageable;\r\n\r\n@CompileStatic\r\nclass MemberWorklaodDEDataSetRuntime extends DEDataSetRuntimeBase {\r\n\r\n\t@Override\r\n\tprotected Page<?> doFetchReal(ISearchContextDTO iSearchContextDTO) throws Throwable {\r\n\r\n\t\tif (this.getDataEntityRuntime().getSystemPersistentAdapter() == null) {\r\n\t\t\tthrow new Exception(\"实体未提供系统持久化设置器\");\r\n\t\t}\r\n\r\n        // 获取User实体\r\n        IDataEntityRuntime userDERutime = this.getSystemRuntime().getDataEntityRuntime(\"USER\");\r\n        ISearchContextDTO userSearchContextDTO = userDERutime.createSearchContext();\r\n\t\tuserSearchContextDTO.setPageable(iSearchContextDTO.getPageable());\r\n\t\tuserSearchContextDTO.sort(\"display_name,desc\");\r\n\t\t// 判断搜索条件中是否包含登记人\r\n\t\tfor (ISearchCond first : iSearchContextDTO.searchConds) {\r\n\t\t\tSearchGroupCond firstSearchGroupCond = (SearchGroupCond)first;\r\n\t\t\tif (firstSearchGroupCond.searchConds.size() > 0) {\r\n\t\t\t\tfor (ISearchCond second : firstSearchGroupCond.searchConds) {\r\n\t\t\t\t\tif (second instanceof SearchGroupCond){\r\n\t\t\t\t\t\tSearchGroupCond secondSearchGroupCond = (SearchGroupCond)second;\r\n\t\t\t\t\t\tif (secondSearchGroupCond.searchConds.size() > 0){\r\n\t\t\t\t\t\t\tfor (ISearchCond third : secondSearchGroupCond.searchConds) {\r\n\t\t\t\t\t\t\t\tif (third instanceof SearchFieldCond){\r\n\t\t\t\t\t\t\t\t\tSearchFieldCond searchFieldCond = (SearchFieldCond)third;\r\n\t\t\t\t\t\t\t\t\tif (searchFieldCond.getFieldName() == \"create_man\"){\r\n                                        String objValue = String.valueOf(searchFieldCond.getValue());\r\n\t\t\t\t\t\t\t\t\t\tif (!Objects.isNull(objValue)){\r\n\t\t\t\t\t\t\t\t\t\t\tobjValue = objValue.replaceAll(\"'\", \"\");\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\tuserSearchContextDTO.setFieldCond(\"id\", searchFieldCond.getCondOp(), objValue);\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}\r\n\t\tObject[] args = [userSearchContextDTO];\r\n        // 调用User的workload数据集合\r\n\t\tPage<?> ret = (Page<?>)userDERutime.fetchDataSet(\"workload\", null, args);\r\n\t\tPage<IEntityDTO> page = userDERutime.getEntityDTOPage(ret, userDERutime.getDefaultPSDEDataSet(), userSearchContextDTO.getPageable());\r\n\t\treturn new CustomPageImpl<IEntityDTO>(fillWorkloadData(page.getContent(), iSearchContextDTO), userSearchContextDTO.getPageable(), ret.getTotalElements(), page.getTotalPages());;\r\n\r\n\t}\r\n\r\n\t@Override\r\n\tpublic boolean isValid(Object[] args) {\r\n\t\treturn true;\r\n\t}\r\n\r\n\tprotected List<IEntityDTO> fillWorkloadData(List<IEntityDTO> dtos,ISearchContextDTO iSearchContextDTO){\r\n\t\tList<String> fetchUserIdList = new ArrayList<String>();\r\n\t\t// 查询工时日志\r\n\t\tfor (IEntityDTO dto : dtos) {\r\n\t\t\tfetchUserIdList.add(dto.getString(\"id\", \"\"));\r\n\t\t}\r\n\t\tiSearchContextDTO.count(false).limit(10000).in(\"create_man\", fetchUserIdList);\r\n\t\tList<IEntityDTO> worklaodDTOList = this.getDataEntityRuntime().selectDataQuery(\"calendar\", iSearchContextDTO);\r\n\t\tif(worklaodDTOList != null && worklaodDTOList.size() > 0){\r\n\t\t\tfor (IEntityDTO user : dtos) {\r\n\t\t\t\tboolean userExistsWorkload = false;\r\n\t\t\t\tfor (IEntityDTO workload : worklaodDTOList) {\r\n\t\t\t\t\tif(user.getString(\"id\", \"\") == workload.getString(\"create_man\", \"\")){\r\n\t\t\t\t\t\tuserExistsWorkload = true;\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif(!userExistsWorkload){\r\n\t\t\t\t\tIEntityDTO entityDTO = this.getDataEntityRuntime().createEntity();\r\n\t\t\t\t\tentityDTO.put(\"create_man\", user.getString(\"id\", \"\"));\r\n\t\t\t\t\tentityDTO.put(\"duration\", 0);\r\n\t\t\t\t\tworklaodDTOList.add(entityDTO);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\treturn worklaodDTOList;\r\n\t\t}\r\n\t\tList<IEntityDTO> emptyDTOList = new ArrayList<IEntityDTO>();\r\n\t\tfor (IEntityDTO user : dtos) {\r\n\t\t\tIEntityDTO entityDTO = this.getDataEntityRuntime().createEntity();\r\n\t\t\tentityDTO.put(\"create_man\", user.getString(\"id\", \"\"));\r\n\t\t\tentityDTO.put(\"duration\", 0);\r\n\t\t\temptyDTOList.add(entityDTO);\r\n\t\t}\r\n\r\n\t\treturn emptyDTOList;\r\n\t}\r\n\r\n\tclass CustomPageImpl<T> extends net.ibizsys.central.util.PageImpl<T> {\r\n\t\tprivate final long total;\r\n\t\tpublic CustomPageImpl(List<T> content, Pageable pageable, long total, int totalPages) {\r\n\t\t\tsuper(content, pageable, total,totalPages);\r\n\t\t\tthis.total = total;\r\n\t\t}\r\n\r\n\t\t@Override\r\n\t\tlong getTotalElements() {\r\n\t\t\treturn total;\r\n\t\t}\r\n\t}\r\n}",
+    "templCode" : "package cn.ibizlab.plm.user.plugin.groovy.dataentity.ds;\r\n\r\nimport groovy.transform.CompileStatic\r\nimport net.ibizsys.runtime.util.ISearchCond\r\nimport net.ibizsys.runtime.util.SearchFieldCond\r\nimport net.ibizsys.runtime.util.SearchGroupCond\r\nimport net.ibizsys.central.dataentity.IDataEntityRuntime;\r\nimport net.ibizsys.central.plugin.util.dataentity.ds.DEDataSetRuntimeBase;\r\nimport org.springframework.data.domain.Page;\r\nimport net.ibizsys.central.util.IEntityDTO;\r\nimport net.ibizsys.central.util.ISearchContextDTO;\r\nimport net.ibizsys.central.util.PageImpl\r\nimport org.springframework.data.domain.Pageable;\r\n\r\n@CompileStatic\r\nclass MemberWorklaodDEDataSetRuntime extends DEDataSetRuntimeBase {\r\n\r\n\t@Override\r\n\tprotected Page<?> doFetchReal(ISearchContextDTO iSearchContextDTO) throws Throwable {\r\n\r\n\t\tif (this.getDataEntityRuntime().getSystemPersistentAdapter() == null) {\r\n\t\t\tthrow new Exception(\"实体未提供系统持久化设置器\");\r\n\t\t}\r\n\r\n        // 获取User实体\r\n        IDataEntityRuntime userDERutime = this.getSystemRuntime().getDataEntityRuntime(\"USER\");\r\n        ISearchContextDTO userSearchContextDTO = userDERutime.createSearchContext();\r\n\t\tuserSearchContextDTO.setPageable(iSearchContextDTO.getPageable());\r\n\t\tuserSearchContextDTO.sort(\"display_name,desc\");\r\n\t\t// 判断搜索条件中是否包含登记人\r\n        String objValue = null;\r\n\t\tfor (ISearchCond first : iSearchContextDTO.searchConds) {\r\n\t\t\tSearchGroupCond firstSearchGroupCond = (SearchGroupCond)first;\r\n\t\t\tif (firstSearchGroupCond.searchConds.size() > 0) {\r\n\t\t\t\tfor (ISearchCond second : firstSearchGroupCond.searchConds) {\r\n\t\t\t\t\tif (second instanceof SearchGroupCond){\r\n\t\t\t\t\t\tSearchGroupCond secondSearchGroupCond = (SearchGroupCond)second;\r\n\t\t\t\t\t\tif (secondSearchGroupCond.searchConds.size() > 0){\r\n\t\t\t\t\t\t\tfor (ISearchCond third : secondSearchGroupCond.searchConds) {\r\n\t\t\t\t\t\t\t\tif (third instanceof SearchFieldCond){\r\n\t\t\t\t\t\t\t\t\tSearchFieldCond searchFieldCond = (SearchFieldCond)third;\r\n\t\t\t\t\t\t\t\t\tif (searchFieldCond.getFieldName() == \"create_man\"){\r\n                                        objValue = String.valueOf(searchFieldCond.getValue());\r\n\t\t\t\t\t\t\t\t\t\tif (!Objects.isNull(objValue)){\r\n\t\t\t\t\t\t\t\t\t\t\tobjValue = objValue.replaceAll(\"'\", \"\");\r\n\t\t\t\t\t\t\t\t\t\t}\r\n                                        print \"连接符\" + searchFieldCond.getCondOp();\r\n\t\t\t\t\t\t\t\t\t\t//userSearchContextDTO.setFieldCond(\"id\", searchFieldCond.getCondOp(), objValue);\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}\r\n        if (!Objects.isNull(objValue)) {\r\n            List<IEntityDTO> dtos = new ArrayList<>();\r\n            String[] strArr= objValue.split(\",\");\r\n            for (int i = 0; i < strArr.length; i++){\r\n                IEntityDTO userDTO = userDERutime.createEntity();\r\n                userDTO.put(\"id\", strArr[i]);\r\n                dtos.add(userDTO);\r\n            }\r\n            int pageNum = strArr.length == 0 ? 1 : (int)Math.ceil((double)strArr.length / (double)userSearchContextDTO.getPageable().getPageSize());\r\n            return new CustomPageImpl<IEntityDTO>(fillWorkloadData(dtos, iSearchContextDTO), userSearchContextDTO.getPageable(), strArr.length, pageNum);\r\n        }\r\n        // 调用User的workload数据集合\r\n        Object[] args = [userSearchContextDTO];\r\n\t\tPage<?> ret = (Page<?>)userDERutime.fetchDataSet(\"workload\", null, args);\r\n\t\tPage<IEntityDTO> page = userDERutime.getEntityDTOPage(ret, userDERutime.getDefaultPSDEDataSet(), userSearchContextDTO.getPageable());\r\n\t\treturn new CustomPageImpl<IEntityDTO>(fillWorkloadData(page.getContent(), iSearchContextDTO), userSearchContextDTO.getPageable(), ret.getTotalElements(), page.getTotalPages());\r\n\t}\r\n\r\n\t@Override\r\n\tpublic boolean isValid(Object[] args) {\r\n\t\treturn true;\r\n\t}\r\n\r\n\tprotected List<IEntityDTO> fillWorkloadData(List<IEntityDTO> dtos,ISearchContextDTO iSearchContextDTO){\r\n\t\tList<String> fetchUserIdList = new ArrayList<String>();\r\n\t\t// 查询工时日志\r\n\t\tfor (IEntityDTO dto : dtos) {\r\n\t\t\tfetchUserIdList.add(dto.getString(\"id\", \"\"));\r\n\t\t}\r\n\t\tiSearchContextDTO.count(false).limit(10000)//in(\"create_man\", fetchUserIdList);\r\n\t\tList<IEntityDTO> worklaodDTOList = this.getDataEntityRuntime().selectDataQuery(\"calendar\", iSearchContextDTO);\r\n\t\tif(worklaodDTOList != null && worklaodDTOList.size() > 0){\r\n\t\t\tfor (IEntityDTO user : dtos) {\r\n\t\t\t\tboolean userExistsWorkload = false;\r\n\t\t\t\tfor (IEntityDTO workload : worklaodDTOList) {\r\n\t\t\t\t\tif(user.getString(\"id\", \"\") == workload.getString(\"create_man\", \"\")){\r\n\t\t\t\t\t\tuserExistsWorkload = true;\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif(!userExistsWorkload){\r\n\t\t\t\t\tIEntityDTO entityDTO = this.getDataEntityRuntime().createEntity();\r\n\t\t\t\t\tentityDTO.put(\"create_man\", user.getString(\"id\", \"\"));\r\n\t\t\t\t\tentityDTO.put(\"duration\", 0);\r\n\t\t\t\t\tworklaodDTOList.add(entityDTO);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\treturn worklaodDTOList;\r\n\t\t}\r\n\t\tList<IEntityDTO> emptyDTOList = new ArrayList<IEntityDTO>();\r\n\t\tfor (IEntityDTO user : dtos) {\r\n\t\t\tIEntityDTO entityDTO = this.getDataEntityRuntime().createEntity();\r\n\t\t\tentityDTO.put(\"create_man\", user.getString(\"id\", \"\"));\r\n\t\t\tentityDTO.put(\"duration\", 0);\r\n\t\t\temptyDTOList.add(entityDTO);\r\n\t\t}\r\n\r\n\t\treturn emptyDTOList;\r\n\t}\r\n\r\n\tclass CustomPageImpl<T> extends net.ibizsys.central.util.PageImpl<T> {\r\n\t\tprivate final long total;\r\n\t\tpublic CustomPageImpl(List<T> content, Pageable pageable, long total, int totalPages) {\r\n\t\t\tsuper(content, pageable, total,totalPages);\r\n\t\t\tthis.total = total;\r\n\t\t}\r\n\r\n\t\t@Override\r\n\t\tlong getTotalElements() {\r\n\t\t\treturn total;\r\n\t\t}\r\n\t}\r\n}",
     "runtimeObject" : true
   }, {
     "codeName" : "UsrSFPlugin0515997865",
@@ -6317,146 +6368,6 @@
     "dynaModelFilePath" : "PSSYSUSERROLES/ROLE_USERS.json",
     "name" : "默认用户权限",
     "getPSSysUserRoleDatas" : [ {
-      "name" : "默认用户权限-WORK_ITEM_TYPE[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type.json"
-      }
-    }, {
-      "name" : "默认用户权限-PAGE[只读共享(读)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEUSERROLES/SHARED_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
-      }
-    }, {
-      "name" : "默认用户权限-PORTFOLIO[管理员（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio/PSDEUSERROLES/ADMIN_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio.json"
-      }
-    }, {
-      "name" : "默认用户权限-POSITION[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/position/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/position.json"
-      }
-    }, {
-      "name" : "默认用户权限-STAGE[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/stage/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/stage.json"
-      }
-    }, {
-      "name" : "默认用户权限-DYNADASHBOARD[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/dyna_dashboard/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/dyna_dashboard.json"
-      }
-    }, {
-      "name" : "默认用户权限-ORGANIZATION[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/organization/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/organization.json"
-      }
-    }, {
-      "name" : "默认用户权限-INSIGHT_VIEW[管理员（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view/PSDEUSERROLES/ADMIN_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view.json"
-      }
-    }, {
-      "name" : "默认用户权限-RELATION[我的关联（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDEUSERROLES/USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
-      }
-    }, {
-      "name" : "默认用户权限-CATEGORY[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/category/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/category.json"
-      }
-    }, {
-      "name" : "默认用户权限-TICKET[普通用户（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEUSERROLES/USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
-      }
-    }, {
-      "name" : "默认用户权限-PRODUCT[管理员（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEUSERROLES/ADMIN_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
-      }
-    }, {
-      "name" : "默认用户权限-WORKLOAD[操作用户(写)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEUSERROLES/USER_W.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/workload.json"
-      }
-    }, {
-      "name" : "默认用户权限-IDEA[只读用户(读)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
-      }
-    }, {
       "name" : "默认用户权限-TICKET[只读用户(读)]",
       "getPSDEUserRole" : {
         "modelref" : true,
@@ -6467,154 +6378,34 @@
         "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
       }
     }, {
-      "name" : "默认用户权限-DISCUSS_REPLY[我的回复（读写）]",
+      "name" : "默认用户权限-IDEA[管理员（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_reply/PSDEUSERROLES/USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_reply.json"
-      }
-    }, {
-      "name" : "默认用户权限-PSSYSBICUBEDIMENSION[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICubeDimension/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICubeDimension.json"
-      }
-    }, {
-      "name" : "默认用户权限-PROJECT_STATE[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state.json"
-      }
-    }, {
-      "name" : "默认用户权限-SYS_PERSON[普通用户（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person/PSDEUSERROLES/USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person.json"
-      }
-    }, {
-      "name" : "默认用户权限-PROJECT[管理员（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEUSERROLES/ADMIN_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
-      }
-    }, {
-      "name" : "默认用户权限-SPACE[只读用户（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space.json"
-      }
-    }, {
-      "name" : "默认用户权限-DISCUSS_POST[只读用户（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post.json"
-      }
-    }, {
-      "name" : "默认用户权限-LIBRARY[管理员（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEUSERROLES/ADMIN_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
-      }
-    }, {
-      "name" : "默认用户权限-DEPARTMENT[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/department/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/department.json"
-      }
-    }, {
-      "name" : "默认用户权限-TICKET[操作用户(写)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEUSERROLES/USER_W.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
-      }
-    }, {
-      "name" : "默认用户权限-PSAPPPORTLET[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSAppPortlet/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSAppPortlet.json"
-      }
-    }, {
-      "name" : "默认用户权限-TICKET[特定用户（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEUSERROLES/CUSTOMER_USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
-      }
-    }, {
-      "name" : "默认用户权限-IDEA[普通用户（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEUSERROLES/USER_RW.json"
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEUSERROLES/ADMIN_RW.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
         "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
       }
     }, {
-      "name" : "默认用户权限-PRODUCT[普通用户（读写）]",
+      "name" : "默认用户权限-GROUP[团队成员（读）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEUSERROLES/USER_RW.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/group/PSDEUSERROLES/USER_R.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/group.json"
       }
     }, {
-      "name" : "默认用户权限-TEST_CASE[操作角色(读)]",
+      "name" : "默认用户权限-DISCUSS_REPLY[全部数据（读）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEUSERROLES/USER_R.json"
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_reply/PSDEUSERROLES/ALL_R.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_reply.json"
       }
     }, {
       "name" : "默认用户权限-SPACE[管理员（读写）]",
@@ -6627,64 +6418,74 @@
         "path" : "PSMODULES/Wiki/PSDATAENTITIES/space.json"
       }
     }, {
-      "name" : "默认用户权限-CATEGORY[我的类别（读写）]",
+      "name" : "默认用户权限-DISCUSS_REPLY[我的回复（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/category/PSDEUSERROLES/USER_RW.json"
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_reply/PSDEUSERROLES/USER_RW.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/category.json"
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_reply.json"
       }
     }, {
-      "name" : "默认用户权限-DICTIONARY[全部数据（读）]",
+      "name" : "默认用户权限-IDEA[操作用户(写)]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEUSERROLES/ALL_R.json"
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEUSERROLES/USER_W.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
       }
     }, {
-      "name" : "默认用户权限-PROJECT[普通用户（读写）]",
+      "name" : "默认用户权限-WORK_ITEM[操作用户(写)]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEUSERROLES/USER_RW.json"
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEUSERROLES/USER_W.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+      }
+    }, {
+      "name" : "默认用户权限-PROJECT_TAG[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_tag/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_tag.json"
+      }
+    }, {
+      "name" : "默认用户权限-PROJECT[管理员（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEUSERROLES/ADMIN_RW.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
         "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
       }
     }, {
-      "name" : "默认用户权限-PROJECT[只读用户（读）]",
+      "name" : "默认用户权限-WORK_ITEM_WIZARD[全部数据（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEUSERROLES/USER_R.json"
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_wizard/PSDEUSERROLES/ALL_RW.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_wizard.json"
       }
     }, {
-      "name" : "默认用户权限-PAGE[操作用户(写)]",
+      "name" : "默认用户权限-PAGE[与我共享(写)]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEUSERROLES/USER_W.json"
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEUSERROLES/SHAERD_W.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
         "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
-      }
-    }, {
-      "name" : "默认用户权限-VIEW_THEME_SETTING[我的主题设置（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/view_theme_setting/PSDEUSERROLES/USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/view_theme_setting.json"
       }
     }, {
       "name" : "默认用户权限-SYS_EMP[普通用户（读写）]",
@@ -6697,24 +6498,34 @@
         "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee.json"
       }
     }, {
-      "name" : "默认用户权限-PSSYSBIREPORT[全部数据（读写）]",
+      "name" : "默认用户权限-WORKLOAD[我的工时（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBIReport/PSDEUSERROLES/ALL_RW.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEUSERROLES/USER_RW.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBIReport.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/workload.json"
       }
     }, {
-      "name" : "默认用户权限-FAVORITE[我的收藏（读写）]",
+      "name" : "默认用户权限-PROJECT[普通用户（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/favorite/PSDEUSERROLES/USER_RW.json"
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEUSERROLES/USER_RW.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/favorite.json"
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      }
+    }, {
+      "name" : "默认用户权限-LIBRARY[只读用户（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
       }
     }, {
       "name" : "默认用户权限-BOARD[操作用户(读)]",
@@ -6727,6 +6538,96 @@
         "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/board.json"
       }
     }, {
+      "name" : "默认用户权限-FAVORITE[我的收藏（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/favorite/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/favorite.json"
+      }
+    }, {
+      "name" : "默认用户权限-RELATION[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+      }
+    }, {
+      "name" : "默认用户权限-DISCUSS_POST[只读用户（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post.json"
+      }
+    }, {
+      "name" : "默认用户权限-PSDENOTIFY[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDENotify/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDENotify.json"
+      }
+    }, {
+      "name" : "默认用户权限-PSSYSBICUBE[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICube/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICube.json"
+      }
+    }, {
+      "name" : "默认用户权限-PRODUCT[普通用户（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+      }
+    }, {
+      "name" : "默认用户权限-VIEW_THEME_SETTING[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/view_theme_setting/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/view_theme_setting.json"
+      }
+    }, {
+      "name" : "默认用户权限-PSSYSBICUBEDIMENSION[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICubeDimension/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICubeDimension.json"
+      }
+    }, {
+      "name" : "默认用户权限-DYNADASHBOARD[我的看板（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dyna_dashboard/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dyna_dashboard.json"
+      }
+    }, {
       "name" : "默认用户权限-WORK_ITEM_STATE[全部数据（读）]",
       "getPSDEUserRole" : {
         "modelref" : true,
@@ -6737,64 +6638,14 @@
         "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_state.json"
       }
     }, {
-      "name" : "默认用户权限-SECTION[全部数据（读）]",
+      "name" : "默认用户权限-TICKET[管理员（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/section/PSDEUSERROLES/ALL_R.json"
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEUSERROLES/ADMIN_RW.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/section.json"
-      }
-    }, {
-      "name" : "默认用户权限-PAGE[操作用户(读)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
-      }
-    }, {
-      "name" : "默认用户权限-IDEA[特定用户（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEUSERROLES/CUSTOMER_USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
-      }
-    }, {
-      "name" : "默认用户权限-SHARED_SPACE[管理员（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/shared_space/PSDEUSERROLES/ADMIN_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/shared_space.json"
-      }
-    }, {
-      "name" : "默认用户权限-STENCIL[只读用户（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/stencil/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/stencil.json"
-      }
-    }, {
-      "name" : "默认用户权限-LIBRARY[普通用户（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEUSERROLES/USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
       }
     }, {
       "name" : "默认用户权限-DISCUSS_TOPIC[只读用户（读）]",
@@ -6807,30 +6658,50 @@
         "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic.json"
       }
     }, {
-      "name" : "默认用户权限-DISCUSS_TOPIC[管理员（读写）]",
+      "name" : "默认用户权限-DICTIONARY[全部数据（读）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic/PSDEUSERROLES/ADMIN_RW.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEUSERROLES/ALL_R.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
       }
     }, {
-      "name" : "默认用户权限-PSSYSBICUBEMEASURE[全部数据（读写）]",
+      "name" : "默认用户权限-LIBRARY[管理员（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICubeMeasure/PSDEUSERROLES/ALL_RW.json"
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEUSERROLES/ADMIN_RW.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICubeMeasure.json"
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
       }
     }, {
-      "name" : "默认用户权限-SPACE[普通用户（读写）]",
+      "name" : "默认用户权限-PAGE[只读共享(读)]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEUSERROLES/USER_RW.json"
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEUSERROLES/SHARED_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+      }
+    }, {
+      "name" : "默认用户权限-INSIGHT_REPORT[操作用户(写)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_report/PSDEUSERROLES/USER_W.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_report.json"
+      }
+    }, {
+      "name" : "默认用户权限-SPACE[只读用户（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEUSERROLES/USER_R.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
@@ -6847,234 +6718,44 @@
         "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_report.json"
       }
     }, {
-      "name" : "默认用户权限-BASELINE[操作用户(写)]",
+      "name" : "默认用户权限-PROJECT[只读用户（读）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/baseline/PSDEUSERROLES/USER_W.json"
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEUSERROLES/USER_R.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/baseline.json"
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
       }
     }, {
-      "name" : "默认用户权限-INSIGHT_VIEW[普通用户（读写）]",
+      "name" : "默认用户权限-PSAPPPORTLET[全部数据（读）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view/PSDEUSERROLES/USER_RW.json"
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSAppPortlet/PSDEUSERROLES/ALL_R.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view.json"
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSAppPortlet.json"
       }
     }, {
-      "name" : "默认用户权限-RELEASE[操作用户(写)]",
+      "name" : "默认用户权限-STAGE[全部数据（读）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDEUSERROLES/USER_W.json"
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/stage/PSDEUSERROLES/ALL_R.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/stage.json"
       }
     }, {
-      "name" : "默认用户权限-WORK_ITEM[操作用户(读)]",
+      "name" : "默认用户权限-STENCIL[只读用户（读）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEUSERROLES/USER_R.json"
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/stencil/PSDEUSERROLES/USER_R.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
-      }
-    }, {
-      "name" : "默认用户权限-INSIGHT[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/insight/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/insight.json"
-      }
-    }, {
-      "name" : "默认用户权限-RELEASE[操作用户(读)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
-      }
-    }, {
-      "name" : "默认用户权限-PRODUCT[只读用户（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
-      }
-    }, {
-      "name" : "默认用户权限-LIBRARY[只读用户（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
-      }
-    }, {
-      "name" : "默认用户权限-DELIVERABLE[操作用户(写)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/deliverable/PSDEUSERROLES/USER_W.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/deliverable.json"
-      }
-    }, {
-      "name" : "默认用户权限-IDEA[管理员（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEUSERROLES/ADMIN_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
-      }
-    }, {
-      "name" : "默认用户权限-PORTFOLIO[普通用户（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio/PSDEUSERROLES/USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio.json"
-      }
-    }, {
-      "name" : "默认用户权限-TEST_CASE[操作用户(写)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEUSERROLES/USER_W.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
-      }
-    }, {
-      "name" : "默认用户权限-WORK_ITEM[操作用户(写)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEUSERROLES/USER_W.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
-      }
-    }, {
-      "name" : "默认用户权限-GROUP[团队成员（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/group/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/group.json"
-      }
-    }, {
-      "name" : "默认用户权限-PAGE[与我共享(写)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEUSERROLES/SHAERD_W.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
-      }
-    }, {
-      "name" : "默认用户权限-LOGIN_LOG[当前用户（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/login_log/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/login_log.json"
-      }
-    }, {
-      "name" : "默认用户权限-ACTIVITY[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/activity/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/activity.json"
-      }
-    }, {
-      "name" : "默认用户权限-WORKLOAD[我的工时（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEUSERROLES/USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/workload.json"
-      }
-    }, {
-      "name" : "默认用户权限-PSDEFIELD[操作用户（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEField/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEField.json"
-      }
-    }, {
-      "name" : "默认用户权限-SPRINT[操作用户(读)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint.json"
-      }
-    }, {
-      "name" : "默认用户权限-PSDENOTIFY[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDENotify/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDENotify.json"
-      }
-    }, {
-      "name" : "默认用户权限-IDEA[操作用户(写)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEUSERROLES/USER_W.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
-      }
-    }, {
-      "name" : "默认用户权限-DISCUSS_POST[我的讨论（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEUSERROLES/USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post.json"
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/stencil.json"
       }
     }, {
       "name" : "默认用户权限-RUN[操作角色(读)]",
@@ -7087,136 +6768,6 @@
         "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
       }
     }, {
-      "name" : "默认用户权限-VERSION[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/version/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/version.json"
-      }
-    }, {
-      "name" : "默认用户权限-INSIGHT_VIEW[只读用户（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view/PSDEUSERROLES/USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view.json"
-      }
-    }, {
-      "name" : "默认用户权限-VIEW_THEME_SETTING[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/view_theme_setting/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/view_theme_setting.json"
-      }
-    }, {
-      "name" : "默认用户权限-USER[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
-      }
-    }, {
-      "name" : "默认用户权限-USER[当前用户（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEUSERROLES/USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
-      }
-    }, {
-      "name" : "默认用户权限-INSIGHT_REPORT[操作用户(写)]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_report/PSDEUSERROLES/USER_W.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_report.json"
-      }
-    }, {
-      "name" : "默认用户权限-PROJECT_TAG[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_tag/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_tag.json"
-      }
-    }, {
-      "name" : "默认用户权限-WORK_ITEM_WIZARD_DETAIL[全部数据（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_wizard_detail/PSDEUSERROLES/ALL_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_wizard_detail.json"
-      }
-    }, {
-      "name" : "默认用户权限-PRODUCT[特定用户（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEUSERROLES/CUSTOMER_USER_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
-      }
-    }, {
-      "name" : "默认用户权限-SECTION[我的分组（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/section/PSDEUSERROLES/USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/section.json"
-      }
-    }, {
-      "name" : "默认用户权限-RELATION[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
-      }
-    }, {
-      "name" : "默认用户权限-RECENT[普通用户（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/recent/PSDEUSERROLES/USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/recent.json"
-      }
-    }, {
-      "name" : "默认用户权限-WORKLOAD_TYPE[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/workload_type/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/workload_type.json"
-      }
-    }, {
       "name" : "默认用户权限-NOTIFY_SETTING[当前用户（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
@@ -7227,64 +6778,14 @@
         "path" : "PSMODULES/Base/PSDATAENTITIES/notify_setting.json"
       }
     }, {
-      "name" : "默认用户权限-PSSYSBICUBE[全部数据（读写）]",
+      "name" : "默认用户权限-SECTION[全部数据（读）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICube/PSDEUSERROLES/ALL_RW.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/section/PSDEUSERROLES/ALL_R.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICube.json"
-      }
-    }, {
-      "name" : "默认用户权限-TICKET_TYPE[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket_type/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket_type.json"
-      }
-    }, {
-      "name" : "默认用户权限-TICKET[管理员（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEUSERROLES/ADMIN_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
-      }
-    }, {
-      "name" : "默认用户权限-DYNADASHBOARD[我的看板（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/dyna_dashboard/PSDEUSERROLES/USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/dyna_dashboard.json"
-      }
-    }, {
-      "name" : "默认用户权限-MSVALUEPROXY[全部数据（读）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/MSValueProxy/PSDEUSERROLES/ALL_R.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/extension/PSDATAENTITIES/MSValueProxy.json"
-      }
-    }, {
-      "name" : "默认用户权限-DELIVERABLE[我的交付物（读写）]",
-      "getPSDEUserRole" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/deliverable/PSDEUSERROLES/USER_RW.json"
-      },
-      "getPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/deliverable.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/section.json"
       }
     }, {
       "name" : "默认用户权限-WORKLOAD[全部数据（读）]",
@@ -7307,14 +6808,54 @@
         "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person.json"
       }
     }, {
-      "name" : "默认用户权限-WORK_ITEM_WIZARD[全部数据（读写）]",
+      "name" : "默认用户权限-INSIGHT_VIEW[普通用户（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_wizard/PSDEUSERROLES/ALL_RW.json"
+        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view/PSDEUSERROLES/USER_RW.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_wizard.json"
+        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view.json"
+      }
+    }, {
+      "name" : "默认用户权限-SPRINT[操作用户(读)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint.json"
+      }
+    }, {
+      "name" : "默认用户权限-RELATION[我的关联（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+      }
+    }, {
+      "name" : "默认用户权限-DELIVERABLE[我的交付物（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/deliverable/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/deliverable.json"
+      }
+    }, {
+      "name" : "默认用户权限-TICKET_TYPE[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket_type/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket_type.json"
       }
     }, {
       "name" : "默认用户权限-PORTFOLIO[只读用户（读）]",
@@ -7327,6 +6868,286 @@
         "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio.json"
       }
     }, {
+      "name" : "默认用户权限-WORKLOAD_TYPE[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/workload_type/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/workload_type.json"
+      }
+    }, {
+      "name" : "默认用户权限-MSVALUEPROXY[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/MSValueProxy/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/MSValueProxy.json"
+      }
+    }, {
+      "name" : "默认用户权限-RELEASE[操作用户(写)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDEUSERROLES/USER_W.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
+      }
+    }, {
+      "name" : "默认用户权限-PROJECT_STATE[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_state.json"
+      }
+    }, {
+      "name" : "默认用户权限-VIEW_THEME_SETTING[我的主题设置（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/view_theme_setting/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/view_theme_setting.json"
+      }
+    }, {
+      "name" : "默认用户权限-SPACE[普通用户（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/space.json"
+      }
+    }, {
+      "name" : "默认用户权限-TICKET[普通用户（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
+      }
+    }, {
+      "name" : "默认用户权限-PRODUCT[管理员（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEUSERROLES/ADMIN_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+      }
+    }, {
+      "name" : "默认用户权限-TEST_CASE[操作用户(写)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEUSERROLES/USER_W.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+      }
+    }, {
+      "name" : "默认用户权限-TICKET[特定用户（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEUSERROLES/CUSTOMER_USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
+      }
+    }, {
+      "name" : "默认用户权限-PRODUCT[只读用户（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+      }
+    }, {
+      "name" : "默认用户权限-PORTFOLIO[普通用户（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio.json"
+      }
+    }, {
+      "name" : "默认用户权限-ACTIVITY[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/activity/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/activity.json"
+      }
+    }, {
+      "name" : "默认用户权限-INSIGHT_VIEW[只读用户（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view.json"
+      }
+    }, {
+      "name" : "默认用户权限-LIBRARY[普通用户（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
+      }
+    }, {
+      "name" : "默认用户权限-PSSYSBIREPORT[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBIReport/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBIReport.json"
+      }
+    }, {
+      "name" : "默认用户权限-PSDEFIELD[操作用户（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEField/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEField.json"
+      }
+    }, {
+      "name" : "默认用户权限-PAGE[操作用户(读)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+      }
+    }, {
+      "name" : "默认用户权限-IDEA[普通用户（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+      }
+    }, {
+      "name" : "默认用户权限-SYS_PERSON[普通用户（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/sys_person.json"
+      }
+    }, {
+      "name" : "默认用户权限-CATEGORY[我的类别（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/category/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/category.json"
+      }
+    }, {
+      "name" : "默认用户权限-IDEA[只读用户(读)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+      }
+    }, {
+      "name" : "默认用户权限-DELIVERABLE[操作用户(写)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/deliverable/PSDEUSERROLES/USER_W.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/deliverable.json"
+      }
+    }, {
+      "name" : "默认用户权限-WORK_ITEM[操作用户(读)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+      }
+    }, {
+      "name" : "默认用户权限-PSSYSBICUBEMEASURE[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICubeMeasure/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBICubeMeasure.json"
+      }
+    }, {
+      "name" : "默认用户权限-USER[当前用户（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+      }
+    }, {
+      "name" : "默认用户权限-RECENT[普通用户（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/recent/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/recent.json"
+      }
+    }, {
+      "name" : "默认用户权限-DISCUSS_POST[我的讨论（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post.json"
+      }
+    }, {
       "name" : "默认用户权限-DISCUSS_TOPIC[普通用户（读写）]",
       "getPSDEUserRole" : {
         "modelref" : true,
@@ -7337,14 +7158,254 @@
         "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic.json"
       }
     }, {
-      "name" : "默认用户权限-DISCUSS_REPLY[全部数据（读）]",
+      "name" : "默认用户权限-VERSION[全部数据（读）]",
       "getPSDEUserRole" : {
         "modelref" : true,
-        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_reply/PSDEUSERROLES/ALL_R.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/version/PSDEUSERROLES/ALL_R.json"
       },
       "getPSDataEntity" : {
         "modelref" : true,
-        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_reply.json"
+        "path" : "PSMODULES/Base/PSDATAENTITIES/version.json"
+      }
+    }, {
+      "name" : "默认用户权限-USER[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+      }
+    }, {
+      "name" : "默认用户权限-ORGANIZATION[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/organization/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/organization.json"
+      }
+    }, {
+      "name" : "默认用户权限-INSIGHT[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/insight/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/insight.json"
+      }
+    }, {
+      "name" : "默认用户权限-LOGIN_LOG[当前用户（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/login_log/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/login_log.json"
+      }
+    }, {
+      "name" : "默认用户权限-PAGE[操作用户(写)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEUSERROLES/USER_W.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+      }
+    }, {
+      "name" : "默认用户权限-INSIGHT_VIEW[管理员（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view/PSDEUSERROLES/ADMIN_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_view.json"
+      }
+    }, {
+      "name" : "默认用户权限-WORK_ITEM_TYPE[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type.json"
+      }
+    }, {
+      "name" : "默认用户权限-WORKLOAD[操作用户(写)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEUSERROLES/USER_W.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/workload.json"
+      }
+    }, {
+      "name" : "默认用户权限-TICKET[操作用户(写)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEUSERROLES/USER_W.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
+      }
+    }, {
+      "name" : "默认用户权限-SECTION[我的分组（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/section/PSDEUSERROLES/USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/section.json"
+      }
+    }, {
+      "name" : "默认用户权限-POSITION[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/position/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/position.json"
+      }
+    }, {
+      "name" : "默认用户权限-REVIEW_CONTENT[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_content/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_content.json"
+      }
+    }, {
+      "name" : "默认用户权限-RELEASE[操作用户(读)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
+      }
+    }, {
+      "name" : "默认用户权限-BASELINE[操作用户(写)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/baseline/PSDEUSERROLES/USER_W.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/baseline.json"
+      }
+    }, {
+      "name" : "默认用户权限-DYNADASHBOARD[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dyna_dashboard/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dyna_dashboard.json"
+      }
+    }, {
+      "name" : "默认用户权限-TEST_CASE[操作角色(读)]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEUSERROLES/USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+      }
+    }, {
+      "name" : "默认用户权限-IDEA[特定用户（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEUSERROLES/CUSTOMER_USER_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+      }
+    }, {
+      "name" : "默认用户权限-WORK_ITEM_WIZARD_DETAIL[全部数据（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_wizard_detail/PSDEUSERROLES/ALL_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_wizard_detail.json"
+      }
+    }, {
+      "name" : "默认用户权限-CATEGORY[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/category/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/category.json"
+      }
+    }, {
+      "name" : "默认用户权限-SHARED_SPACE[管理员（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/shared_space/PSDEUSERROLES/ADMIN_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Wiki/PSDATAENTITIES/shared_space.json"
+      }
+    }, {
+      "name" : "默认用户权限-PRODUCT[特定用户（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDEUSERROLES/CUSTOMER_USER_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+      }
+    }, {
+      "name" : "默认用户权限-DEPARTMENT[全部数据（读）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/department/PSDEUSERROLES/ALL_R.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/department.json"
+      }
+    }, {
+      "name" : "默认用户权限-DISCUSS_TOPIC[管理员（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic/PSDEUSERROLES/ADMIN_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_topic.json"
+      }
+    }, {
+      "name" : "默认用户权限-PORTFOLIO[管理员（读写）]",
+      "getPSDEUserRole" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio/PSDEUSERROLES/ADMIN_RW.json"
+      },
+      "getPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio.json"
       }
     } ],
     "getPSSysUserRoleReses" : [ {
@@ -7923,6 +7984,9 @@
       "path" : "PSMODULES/ProdMgmt/PSCODELISTS/product_tag.json"
     }, {
       "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSCODELISTS/idea_dictionary.json"
+    }, {
+      "modelref" : true,
       "path" : "PSMODULES/ProdMgmt/PSCODELISTS/common_level.json"
     }, {
       "modelref" : true,
@@ -7930,6 +7994,9 @@
     }, {
       "modelref" : true,
       "path" : "PSMODULES/ProdMgmt/PSCODELISTS/category.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSCODELISTS/cur_product_mem.json"
     }, {
       "modelref" : true,
       "path" : "PSMODULES/ProdMgmt/PSCODELISTS/customer_level.json"
@@ -8247,6 +8314,9 @@
     }, {
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSCODELISTS/rep_times1_to_10.json"
+    }, {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSCODELISTS/run_status_color.json"
     }, {
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSCODELISTS/review_guideline.json"

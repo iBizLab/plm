@@ -121,10 +121,10 @@
     "updateDVT" : "APPDATA",
     "updateDV" : "curstage_id"
   }, {
-    "id" : "comment",
+    "id" : "result_state",
     "dataType" : 25
   }, {
-    "id" : "result_state",
+    "id" : "comment",
     "dataType" : 25
   }, {
     "id" : "id",
@@ -169,29 +169,6 @@
       "allowEmpty" : true,
       "hidden" : true
     }, {
-      "codeName" : "comment",
-      "dataType" : 25,
-      "detailStyle" : "DEFAULT",
-      "detailType" : "FORMITEM",
-      "enableCond" : 3,
-      "fieldName" : "comment",
-      "ignoreInput" : 0,
-      "labelPos" : "NONE",
-      "labelWidth" : 0,
-      "name" : "comment",
-      "noPrivDisplayMode" : 1,
-      "getPSEditor" : {
-        "editorType" : "TEXTAREA",
-        "name" : "comment",
-        "placeHolder" : "输入描述",
-        "showMaxLength" : true
-      },
-      "getPSLayoutPos" : {
-        "colMD" : 24,
-        "layout" : "TABLE_24COL"
-      },
-      "allowEmpty" : true
-    }, {
       "codeName" : "result_state",
       "dataType" : 25,
       "detailStyle" : "DEFAULT",
@@ -218,6 +195,42 @@
       "allowEmpty" : false,
       "emptyCaption" : true,
       "needCodeListConfig" : true
+    }, {
+      "codeName" : "comment",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "fieldName" : "comment",
+      "ignoreInput" : 0,
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "comment",
+      "noPrivDisplayMode" : 1,
+      "getPSDEFDGroupLogics" : [ {
+        "groupOP" : "AND",
+        "logicCat" : "ITEMBLANK",
+        "logicType" : "GROUP",
+        "getPSDEFDLogics" : [ {
+          "condOP" : "EQ",
+          "dEFDName" : "result_state",
+          "logicType" : "SINGLE",
+          "value" : "3"
+        } ],
+        "relatedDetailNames" : [ "result_state" ],
+        "notMode" : false
+      } ],
+      "getPSEditor" : {
+        "editorType" : "TEXTAREA",
+        "name" : "comment",
+        "placeHolder" : "请输入评审意见",
+        "showMaxLength" : true
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "allowEmpty" : false
     }, {
       "getCapPSLanguageRes" : {
         "lanResTag" : "DEF.LNAME.ID"

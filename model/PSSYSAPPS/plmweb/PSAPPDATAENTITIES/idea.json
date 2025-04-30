@@ -1235,6 +1235,10 @@
         "codeName" : "Category_id"
       }
     } ],
+    "getPSSysSFPlugin" : {
+      "modelref" : true,
+      "path" : "PSSYSSFPLUGINS/DynaFieldDEDataImportRuntimeEx.json"
+    },
     "updateDataAccessAction" : "UPDATE",
     "getUpdatePSAppDEAction" : {
       "modelref" : true,
@@ -12020,7 +12024,7 @@
     "id" : "choose_case_template@idea"
   }, {
     "actionTarget" : "NONE",
-    "caption" : "新建需求（测试）",
+    "caption" : "新建需求",
     "codeName" : "create_idea_and_relation_customer",
     "getFrontPSAppView" : {
       "modelref" : true,
@@ -12068,6 +12072,12 @@
       "modelref" : true,
       "id" : "SUBDATA"
     },
+    "getPSNavigateParams" : [ {
+      "key" : "product_id",
+      "name" : "product_id",
+      "value" : "product",
+      "rawValue" : false
+    } ],
     "uIActionMode" : "FRONT",
     "uIActionTag" : "custom_import_data",
     "uIActionType" : "DEUIACTION",
@@ -14784,7 +14794,7 @@
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "create_idea"
+          "id" : "RAWJSCODE2"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -14807,6 +14817,25 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : -261
+    }, {
+      "code" : "\r\nibiz.mc.command.update.send({ srfdecodename: 'idea', srfkey: context.idea})",
+      "codeName" : "RAWJSCODE3",
+      "leftPos" : 590,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "通知刷新",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE3"
+        }
+      } ],
+      "topPos" : 230
     }, {
       "codeName" : "DEACTION1",
       "getDstPSAppDEAction" : {
@@ -14837,65 +14866,6 @@
         }
       } ],
       "topPos" : 100
-    }, {
-      "code" : "\r\nibiz.mc.command.update.send({ srfdecodename: 'idea', srfkey: context.idea})",
-      "codeName" : "RAWJSCODE3",
-      "leftPos" : 590,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "通知刷新",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE3"
-        }
-      } ],
-      "topPos" : 230
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 630,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 380
-    }, {
-      "codeName" : "create_idea",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "save"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "idea"
-      },
-      "leftPos" : 590,
-      "logicNodeType" : "DEACTION",
-      "name" : "新建需求",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "create_idea"
-        }
-      } ],
-      "getRetPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "idea"
-      },
-      "topPos" : -158
     }, {
       "code" : "let choose = uiLogic.default.customer;\r\nif(choose != null && choose != ''){\r\n    uiLogic.dto.srfactionparam = choose.split(',').map(id => ({ id }));\r\n    uiLogic.dto.principal_id = uiLogic.idea.id;\r\n    uiLogic.dto.id = uiLogic.idea.id;\r\n    uiLogic.dto.principal_type = \"idea\";\r\n    uiLogic.dto.target_type = \"customer\";\r\n}",
       "codeName" : "RAWJSCODE2",
@@ -14956,33 +14926,61 @@
         }
       } ],
       "topPos" : -40
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 630,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 380
+    }, {
+      "codeName" : "create_idea",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "save"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "idea"
+      },
+      "leftPos" : 780,
+      "logicNodeType" : "DEACTION",
+      "name" : "新建需求",
+      "getRetPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "idea"
+      },
+      "topPos" : -150
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "idea",
-      "logicName" : "idea",
-      "name" : "idea",
-      "entityParam" : true
-    }, {
-      "codeName" : "view",
-      "logicName" : "视图对象",
-      "name" : "视图对象",
-      "activeViewParam" : true
+      "codeName" : "form",
+      "logicName" : "表单对象",
+      "name" : "表单对象",
+      "ctrlParam" : true
     }, {
       "codeName" : "dto",
       "logicName" : "传入后台对象",
       "name" : "传入后台对象",
       "entityParam" : true
     }, {
-      "codeName" : "form",
-      "logicName" : "表单对象",
-      "name" : "表单对象",
-      "ctrlParam" : true
+      "codeName" : "idea",
+      "logicName" : "idea",
+      "name" : "idea",
+      "entityParam" : true
     }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "视图对象",
+      "name" : "视图对象",
+      "activeViewParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -18726,6 +18724,10 @@
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_mpick_up_view.json",
+    "viewType" : "DEMPICKUPVIEW"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_others_re_mpick_up_grid_view.json",
     "viewType" : "DEPICKUPGRIDVIEW"
   }, {
@@ -18800,6 +18802,10 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_drill_detail_grid_view.json",
     "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_review_re_idea_view.json",
+    "viewType" : "DEMPICKUPVIEW2"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_main_view.json",

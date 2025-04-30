@@ -6,8 +6,6 @@ package cn.ibizlab.plm.testmgmt.logic.guidelinelogic.fill_stage_order;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.testmgmt.domain.guideline guidelinefill_stage_orderdefault;
-                global cn.ibizlab.plm.core.testmgmt.domain.review_stage guidelinefill_stage_orderfor_stage;
-                global cn.ibizlab.plm.core.testmgmt.domain.review_stage guidelinefill_stage_orderstage_arr;
                 global cn.ibizlab.plm.core.testmgmt.domain.review_stage guidelinefill_stage_orderstage_list;
         global cn.ibizlab.plm.core.testmgmt.service.IguidelineService iBzSysGuidelineDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
@@ -28,8 +26,6 @@ package cn.ibizlab.plm.testmgmt.logic.guidelinelogic.fill_stage_order;
             when
             then
                         update(guidelinefill_stage_orderdefault);//更新fact中变量值
-                        update(guidelinefill_stage_orderfor_stage);//更新fact中变量值
-                        update(guidelinefill_stage_orderstage_arr);//更新fact中变量值
                         update(guidelinefill_stage_orderstage_list);//更新fact中变量值
             end
 
@@ -40,19 +36,15 @@ package cn.ibizlab.plm.testmgmt.logic.guidelinelogic.fill_stage_order;
             then
                             guidelinefill_stage_orderstage_list.set("",guidelinefill_stage_orderdefault.get("reviewstage"));
                         update(guidelinefill_stage_orderdefault);//更新fact中变量值
-                        update(guidelinefill_stage_orderfor_stage);//更新fact中变量值
-                        update(guidelinefill_stage_orderstage_arr);//更新fact中变量值
                         update(guidelinefill_stage_orderstage_list);//更新fact中变量值
             end
 
-            //逻辑处理节点[循环子调用]
-            rule "loopsubcall1"
-            ruleflow-group "guidelinefill_stage_orderloopsubcall1"
+            //逻辑处理节点[设置排序值]
+            rule "rawsfcode1"
+            ruleflow-group "guidelinefill_stage_orderrawsfcode1"
             when
             then
                         update(guidelinefill_stage_orderdefault);//更新fact中变量值
-                        update(guidelinefill_stage_orderfor_stage);//更新fact中变量值
-                        update(guidelinefill_stage_orderstage_arr);//更新fact中变量值
                         update(guidelinefill_stage_orderstage_list);//更新fact中变量值
             end
 
@@ -61,33 +53,7 @@ package cn.ibizlab.plm.testmgmt.logic.guidelinelogic.fill_stage_order;
             ruleflow-group "guidelinefill_stage_orderprepareparam3"
             when
             then
-                            guidelinefill_stage_orderdefault.set("reviewstage",guidelinefill_stage_orderstage_arr.get(""));
+                            guidelinefill_stage_orderdefault.set("reviewstage",guidelinefill_stage_orderstage_list.get(""));
                         update(guidelinefill_stage_orderdefault);//更新fact中变量值
-                        update(guidelinefill_stage_orderfor_stage);//更新fact中变量值
-                        update(guidelinefill_stage_orderstage_arr);//更新fact中变量值
-                        update(guidelinefill_stage_orderstage_list);//更新fact中变量值
-            end
-
-            //逻辑处理节点[调试逻辑参数]
-            rule "debugparam2"
-            ruleflow-group "guidelinefill_stage_orderdebugparam2"
-            when
-            then
-                        update(guidelinefill_stage_orderdefault);//更新fact中变量值
-                        update(guidelinefill_stage_orderfor_stage);//更新fact中变量值
-                        update(guidelinefill_stage_orderstage_arr);//更新fact中变量值
-                        update(guidelinefill_stage_orderstage_list);//更新fact中变量值
-            end
-
-            //逻辑处理节点[准备参数]
-            rule "prepareparam2"
-            ruleflow-group "guidelinefill_stage_orderprepareparam2"
-            when
-            then
-                            guidelinefill_stage_orderfor_stage.set("order",guidelinefill_stage_orderfor_stage.get("srfordervalue"));
-                            guidelinefill_stage_orderstage_arr.set("",guidelinefill_stage_orderfor_stage.get(""));
-                        update(guidelinefill_stage_orderdefault);//更新fact中变量值
-                        update(guidelinefill_stage_orderfor_stage);//更新fact中变量值
-                        update(guidelinefill_stage_orderstage_arr);//更新fact中变量值
                         update(guidelinefill_stage_orderstage_list);//更新fact中变量值
             end

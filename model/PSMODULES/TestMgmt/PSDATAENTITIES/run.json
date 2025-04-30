@@ -2252,7 +2252,7 @@
       "enableUserUpdate" : true
     }, {
       "codeName" : "STATE",
-      "logicName" : "评审状态",
+      "logicName" : "用例状态",
       "name" : "STATE",
       "orderValue" : 290,
       "getPSCodeList" : {
@@ -2826,7 +2826,7 @@
     "dataType" : "PICKUPDATA",
     "importOrder" : 1000,
     "length" : 60,
-    "logicName" : "评审状态",
+    "logicName" : "用例状态",
     "name" : "STATE",
     "getPSCodeList" : {
       "modelref" : true,
@@ -6111,6 +6111,118 @@
     },
     "serviceCodeName" : "library_is_archived",
     "stdDataType" : 9,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "linkDEField" : true,
+    "phisicalDEField" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "REVIEW_RESULT_STATE",
+      "dBType" : "MYSQL5",
+      "name" : "REVIEW_RESULT_STATE",
+      "queryCodeExp" : "t11.`REVIEW_RESULT_STATE`",
+      "standardColumnName" : "`REVIEW_RESULT_STATE`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[REVIEW_RESULT_STATE][评审结果]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[REVIEW_RESULT_STATE][评审结果]移动端默认",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+        },
+        "stringLength" : 60,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[REVIEW_RESULT_STATE][评审结果]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[REVIEW_RESULT_STATE][评审结果]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+        },
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "REVIEW_RESULT_STATE",
+          "maxValue" : 60,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[60]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[60]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[60]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "review_result_state",
+    "dEFType" : 3,
+    "dataType" : "PICKUPDATA",
+    "importOrder" : 1000,
+    "length" : 60,
+    "logicName" : "评审结果",
+    "name" : "REVIEW_RESULT_STATE",
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSCODELISTS/review_result.json"
+    },
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDERS/DER1N_RUN_TEST_CASE_CASE_ID.json"
+    },
+    "getRealPSDEField" : {
+      "name" : "REVIEW_RESULT_STATE",
+      "codeName" : "review_result_state"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "REVIEW_RESULT_STATE",
+      "codeName" : "review_result_state"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+    },
+    "serviceCodeName" : "review_result_state",
+    "stdDataType" : 25,
+    "stringLength" : 60,
     "valueFormat" : "%1$s",
     "viewLevel" : 0,
     "linkDEField" : true,
@@ -13722,7 +13834,7 @@
       "stringLength" : 60,
       "type" : "SIMPLE"
     }, {
-      "logicName" : "评审状态",
+      "logicName" : "用例状态",
       "name" : "state",
       "getPSDEField" : {
         "name" : "STATE",
@@ -13926,7 +14038,7 @@
       "stringLength" : 500,
       "type" : "SIMPLE"
     }, {
-      "logicName" : "评审状态",
+      "logicName" : "用例状态",
       "name" : "state",
       "getPSDEField" : {
         "name" : "STATE",
@@ -14361,6 +14473,17 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "评审结果",
+      "name" : "review_result_state",
+      "getPSDEField" : {
+        "name" : "REVIEW_RESULT_STATE",
+        "codeName" : "review_result_state"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 60,
       "type" : "SIMPLE"
     }, {
       "logicName" : "关注人",

@@ -2493,7 +2493,8 @@
                                   "editorParams" : {
                                     "contenttype" : "HTML",
                                     "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
-                                    "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
+                                    "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})",
+                                    "TRANSLATEOBJ" : "{\"&reg\":\"&amp;reg\"}"
                                   },
                                   "editorStyle" : "COMMENT_ITEM",
                                   "editorType" : "RAW",
@@ -2590,7 +2591,8 @@
                                     "contentType" : "HTML",
                                     "editorParams" : {
                                       "contenttype" : "HTML",
-                                      "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
+                                      "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})",
+                                      "TRANSLATEOBJ" : "{\"&reg\":\"&amp;reg\"}"
                                     },
                                     "editorStyle" : "COMMENT_ITEM",
                                     "editorType" : "RAW",
@@ -15769,18 +15771,24 @@
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/Test.json"
               },
+              "getPSAppViewNavParams" : [ {
+                "key" : "n_target_id_eq",
+                "name" : "n_target_id_eq",
+                "value" : "test_case",
+                "rawValue" : false
+              } ],
               "getPSDEViewCodeName" : "list_view",
               "getPSDEViewId" : "56515adf25bb15c98b26b93fe16f82fd",
               "getPSViewLayoutPanel" : {
                 "getAllPSPanelFields" : [ {
+                  "id" : "review_data_identifier",
+                  "viewFieldName" : "identifier"
+                }, {
                   "id" : "review_data_name",
                   "viewFieldName" : "name"
                 }, {
                   "id" : "review_data_date",
                   "viewFieldName" : "create_time"
-                }, {
-                  "id" : "review_data_identifier",
-                  "viewFieldName" : "identifier"
                 }, {
                   "id" : "create_man",
                   "viewFieldName" : "create_man"
@@ -16026,7 +16034,7 @@
                         "caption" : "容器",
                         "itemStyle" : "DEFAULT",
                         "itemType" : "CONTAINER",
-                        "name" : "container",
+                        "name" : "container5",
                         "getPSLayout" : {
                           "align" : "space-between",
                           "dir" : "row",
@@ -16038,22 +16046,74 @@
                           "layout" : "FLEX"
                         },
                         "getPSPanelItems" : [ {
-                          "caption" : "文本(动态)",
+                          "caption" : "容器",
                           "itemStyle" : "DEFAULT",
-                          "itemType" : "FIELD",
-                          "name" : "review_data_name",
-                          "getPSEditor" : {
-                            "editorType" : "SPAN",
-                            "name" : "review_data_name",
-                            "predefinedType" : "FIELD_TEXT_DYNAMIC",
-                            "renderMode" : "TEXT_DYNAMIC",
-                            "enableLinkView" : false
+                          "itemType" : "CONTAINER",
+                          "name" : "container",
+                          "getPSLayout" : {
+                            "align" : "flex-start",
+                            "dir" : "row",
+                            "layout" : "FLEX",
+                            "vAlign" : "center"
                           },
                           "getPSLayoutPos" : {
                             "grow" : -1,
                             "layout" : "FLEX"
                           },
-                          "viewFieldName" : "name"
+                          "getPSPanelItems" : [ {
+                            "caption" : "文本(动态)",
+                            "itemStyle" : "DEFAULT",
+                            "itemType" : "FIELD",
+                            "name" : "review_data_identifier",
+                            "getPSEditor" : {
+                              "editorType" : "SPAN",
+                              "name" : "review_data_identifier",
+                              "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                              "renderMode" : "TEXT_DYNAMIC",
+                              "enableLinkView" : false
+                            },
+                            "getPSLayoutPos" : {
+                              "grow" : -1,
+                              "layout" : "FLEX"
+                            },
+                            "viewFieldName" : "identifier"
+                          }, {
+                            "caption" : "标签",
+                            "contentType" : "RAW",
+                            "itemStyle" : "DEFAULT",
+                            "itemType" : "RAWITEM",
+                            "name" : "static_label",
+                            "getPSLayoutPos" : {
+                              "grow" : -1,
+                              "layout" : "FLEX"
+                            },
+                            "getPSRawItem" : {
+                              "caption" : "-",
+                              "contentType" : "RAW",
+                              "name" : "static_label",
+                              "predefinedType" : "STATIC_LABEL",
+                              "renderMode" : "PARAGRAPH"
+                            },
+                            "rawContent" : "-",
+                            "showCaption" : true
+                          }, {
+                            "caption" : "文本(动态)",
+                            "itemStyle" : "DEFAULT",
+                            "itemType" : "FIELD",
+                            "name" : "review_data_name",
+                            "getPSEditor" : {
+                              "editorType" : "SPAN",
+                              "name" : "review_data_name",
+                              "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                              "renderMode" : "TEXT_DYNAMIC",
+                              "enableLinkView" : false
+                            },
+                            "getPSLayoutPos" : {
+                              "grow" : -1,
+                              "layout" : "FLEX"
+                            },
+                            "viewFieldName" : "name"
+                          } ]
                         }, {
                           "caption" : "文本(动态)",
                           "itemStyle" : "DEFAULT",
@@ -16072,23 +16132,6 @@
                           },
                           "viewFieldName" : "create_time"
                         } ]
-                      }, {
-                        "caption" : "文本(动态)",
-                        "itemStyle" : "DEFAULT",
-                        "itemType" : "FIELD",
-                        "name" : "review_data_identifier",
-                        "getPSEditor" : {
-                          "editorType" : "SPAN",
-                          "name" : "review_data_identifier",
-                          "predefinedType" : "FIELD_TEXT_DYNAMIC",
-                          "renderMode" : "TEXT_DYNAMIC",
-                          "enableLinkView" : false
-                        },
-                        "getPSLayoutPos" : {
-                          "grow" : -1,
-                          "layout" : "FLEX"
-                        },
-                        "viewFieldName" : "identifier"
                       } ],
                       "predefinedType" : "CONTAINER_SINGLEDATA"
                     }, {

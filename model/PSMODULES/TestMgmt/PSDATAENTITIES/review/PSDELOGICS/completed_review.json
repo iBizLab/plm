@@ -271,6 +271,19 @@
       },
       "srcValueType" : "SRCDLPARAM"
     }, {
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "comment"
+      },
+      "name" : "tmp_obj[comment] ==> comment",
+      "paramAction" : "BINDPARAM",
+      "srcFieldName" : "comment",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "tmp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
       "dstFieldName" : "curstage_id",
       "getDstPSDELogicParam" : {
         "modelref" : true,
@@ -477,13 +490,13 @@
     "topPos" : 594
   }, {
     "codeName" : "PREPAREPARAM4",
-    "leftPos" : 813,
+    "leftPos" : 780,
     "logicNodeType" : "PREPAREPARAM",
     "name" : "通过",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEACTION1"
+        "id" : "PREPAREPARAM8"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -502,7 +515,7 @@
       "srcValue" : "3",
       "srcValueType" : "SRCVALUE"
     } ],
-    "topPos" : 740
+    "topPos" : 750
   }, {
     "codeName" : "PREPAREPARAM5",
     "leftPos" : 1010,
@@ -511,7 +524,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEACTION1"
+        "id" : "PREPAREPARAM8"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -530,7 +543,38 @@
       "srcValue" : "4",
       "srcValueType" : "SRCVALUE"
     } ],
-    "topPos" : 740
+    "topPos" : 750
+  }, {
+    "codeName" : "PREPAREPARAM8",
+    "leftPos" : 890,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置评审建议",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM8"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "COMMENT",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "result_obj"
+      },
+      "name" : "comment ==> result_obj[COMMENT]",
+      "paramAction" : "SETPARAMVALUE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "comment"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 860
   }, {
     "codeName" : "DEACTION1",
     "getDstPSDEAction" : {
@@ -545,10 +589,10 @@
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_result.json"
     },
-    "leftPos" : 910,
+    "leftPos" : 890,
     "logicNodeType" : "DEACTION",
     "name" : "更新",
-    "topPos" : 870
+    "topPos" : 960
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",
@@ -565,6 +609,12 @@
     "logicName" : "未完成评审用例数量",
     "name" : "未完成评审用例数量",
     "stdDataType" : 9,
+    "simpleParam" : true
+  }, {
+    "codeName" : "comment",
+    "logicName" : "评审意见",
+    "name" : "评审意见",
+    "stdDataType" : 25,
     "simpleParam" : true
   }, {
     "codeName" : "content_fliter",

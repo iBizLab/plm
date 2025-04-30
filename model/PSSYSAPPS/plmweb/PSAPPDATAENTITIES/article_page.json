@@ -9622,7 +9622,7 @@
     "name" : "关闭评论区",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : 220,
+      "leftPos" : 67,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDEUILogicLinks" : [ {
@@ -9637,13 +9637,32 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 212,
+      "topPos" : 82,
       "parallelOutput" : true
     }, {
+      "code" : "ibiz.mc.command.create.send({ srfdecodename: 'article_page'})",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 1117,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "通知刷新",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      } ],
+      "topPos" : 90
+    }, {
       "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 557,
+      "leftPos" : 377,
       "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "准备逻辑参数",
+      "name" : "准备界面元素",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
@@ -9696,16 +9715,35 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 208
+      "topPos" : 90
+    }, {
+      "code" : "const operator = context.loginname;\r\n\r\nlocalStorage.removeItem(operator);",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 830,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "记录评论状态",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 90
     }, {
       "codeName" : "PREPAREJSPARAM3",
-      "leftPos" : 557,
+      "leftPos" : 600,
       "logicNodeType" : "PREPAREJSPARAM",
       "name" : "设置工具栏项、评论列表显隐",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM4"
+          "id" : "RAWJSCODE1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -9745,33 +9783,7 @@
         "srcValue" : "true",
         "srcValueType" : "SRCVALUE"
       } ],
-      "topPos" : 318
-    }, {
-      "code" : "ibiz.mc.command.create.send({ srfdecodename: 'article_page'})",
-      "codeName" : "RAWJSCODE2",
-      "leftPos" : 557,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "通知刷新",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        }
-      } ],
-      "topPos" : 608
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 330,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 612,
-      "parallelOutput" : true
+      "topPos" : 90
     }, {
       "codeName" : "DEUIACTION1",
       "getDstPSAppDEUIAction" : {
@@ -9786,7 +9798,7 @@
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
       },
-      "leftPos" : 351,
+      "leftPos" : 177,
       "logicNodeType" : "DEUIACTION",
       "name" : "清空评论",
       "getPSDEUILogicLinks" : [ {
@@ -9801,24 +9813,19 @@
           "id" : "DEUIACTION1"
         }
       } ],
-      "topPos" : 210
+      "topPos" : 90
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 1287,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 92,
+      "parallelOutput" : true
     }, {
       "codeName" : "PREPAREJSPARAM4",
-      "leftPos" : 557,
+      "leftPos" : 830,
       "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "设置视图评论显隐变量",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM4"
-        }
-      } ],
+      "name" : "设置视图评论显隐",
       "getPSDEUILogicNodeParams" : [ {
         "dstFieldName" : "common_list_isshow",
         "getDstPSDEUILogicParam" : {
@@ -9830,26 +9837,7 @@
         "srcValue" : "false",
         "srcValueType" : "SRCVALUE"
       } ],
-      "topPos" : 418
-    }, {
-      "code" : "const operator = context.loginname;\r\n\r\nlocalStorage.removeItem(operator);",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 557,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "记录评论状态",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 518
+      "topPos" : -120
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
@@ -9858,35 +9846,35 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "view",
-      "logicName" : "view",
-      "name" : "view",
-      "activeViewParam" : true
-    }, {
-      "codeName" : "button3_state_obj",
-      "logicName" : "关闭按钮状态",
-      "name" : "关闭按钮状态",
-      "entityParam" : true
-    }, {
-      "codeName" : "toolbar",
-      "logicName" : "工具栏",
-      "name" : "工具栏",
-      "ctrlParam" : true
-    }, {
       "codeName" : "right_grouppanel_state",
       "logicName" : "容器状态",
       "name" : "容器状态",
-      "entityParam" : true
-    }, {
-      "codeName" : "button2_state_obj",
-      "logicName" : "评论按钮状态",
-      "name" : "评论按钮状态",
       "entityParam" : true
     }, {
       "codeName" : "form",
       "logicName" : "form",
       "name" : "form",
       "ctrlParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "view",
+      "name" : "view",
+      "activeViewParam" : true
+    }, {
+      "codeName" : "toolbar",
+      "logicName" : "工具栏",
+      "name" : "工具栏",
+      "ctrlParam" : true
+    }, {
+      "codeName" : "button2_state_obj",
+      "logicName" : "评论按钮状态",
+      "name" : "评论按钮状态",
+      "entityParam" : true
+    }, {
+      "codeName" : "button3_state_obj",
+      "logicName" : "关闭按钮状态",
+      "name" : "关闭按钮状态",
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -11134,7 +11122,7 @@
     "name" : "显示评论区",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : 50,
+      "leftPos" : -80,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDEUILogicLinks" : [ {
@@ -11149,12 +11137,12 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 200,
+      "topPos" : 202,
       "parallelOutput" : true
     }, {
       "code" : "const operator = context.loginname;\r\n\r\nlocalStorage.setItem(operator, 'true');",
       "codeName" : "RAWJSCODE1",
-      "leftPos" : 976,
+      "leftPos" : 580,
       "logicNodeType" : "RAWJSCODE",
       "name" : "记录评论状态",
       "getPSDEUILogicLinks" : [ {
@@ -11169,12 +11157,79 @@
           "id" : "RAWJSCODE1"
         }
       } ],
-      "topPos" : 208
+      "topPos" : 210
+    }, {
+      "codeName" : "PREPAREJSPARAM3",
+      "leftPos" : 350,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "设置视图评论显隐",
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "common_list_isshow",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "name" : "直接值[true] ==> view[common_list_isshow]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "true",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : -10
+    }, {
+      "codeName" : "PREPAREJSPARAM2",
+      "leftPos" : 280,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "设置工具栏项、评论列表显隐",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "visible",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "right_grouppanel_state"
+        },
+        "name" : "直接值[true] ==> right_grouppanel_state[visible]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "true",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "visible",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "button3_state_obj"
+        },
+        "name" : "直接值[true] ==> button3_state_obj[visible]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "true",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "visible",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "button2_state_obj"
+        },
+        "name" : "直接值[false] ==> button2_state_obj[visible]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "false",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 210,
+      "parallelOutput" : true
     }, {
       "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 217,
+      "leftPos" : 27,
       "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "准备参数",
+      "name" : "准备界面元素",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
@@ -11227,91 +11282,15 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 208
+      "topPos" : 210,
+      "parallelOutput" : true
     }, {
       "codeName" : "END1",
-      "leftPos" : 1270,
+      "leftPos" : 920,
       "logicNodeType" : "END",
       "name" : "结束",
-      "topPos" : 200
-    }, {
-      "codeName" : "PREPAREJSPARAM3",
-      "leftPos" : 696,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "设置视图参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM3"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "common_list_isshow",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "view"
-        },
-        "name" : "直接值[true] ==> view[common_list_isshow]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "true",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : 208
-    }, {
-      "codeName" : "PREPAREJSPARAM2",
-      "leftPos" : 450,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "准备参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM3"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "visible",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "right_grouppanel_state"
-        },
-        "name" : "直接值[true] ==> right_grouppanel_state[visible]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "true",
-        "srcValueType" : "SRCVALUE"
-      }, {
-        "dstFieldName" : "visible",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "button3_state_obj"
-        },
-        "name" : "直接值[true] ==> button3_state_obj[visible]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "true",
-        "srcValueType" : "SRCVALUE"
-      }, {
-        "dstFieldName" : "visible",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "button2_state_obj"
-        },
-        "name" : "直接值[false] ==> button2_state_obj[visible]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "false",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : 208
+      "topPos" : 202,
+      "parallelOutput" : true
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "toolbar",
@@ -11319,14 +11298,14 @@
       "name" : "工具栏",
       "ctrlParam" : true
     }, {
+      "codeName" : "button2_state_obj",
+      "logicName" : "评论按钮状态",
+      "name" : "评论按钮状态",
+      "entityParam" : true
+    }, {
       "codeName" : "right_grouppanel_state",
       "logicName" : "容器状态",
       "name" : "容器状态",
-      "entityParam" : true
-    }, {
-      "codeName" : "button3_state_obj",
-      "logicName" : "关闭按钮状态",
-      "name" : "关闭按钮状态",
       "entityParam" : true
     }, {
       "codeName" : "Default",
@@ -11335,24 +11314,24 @@
       "default" : true,
       "entityParam" : true
     }, {
+      "codeName" : "button3_state_obj",
+      "logicName" : "关闭按钮状态",
+      "name" : "关闭按钮状态",
+      "entityParam" : true
+    }, {
+      "codeName" : "form",
+      "logicName" : "form",
+      "name" : "form",
+      "ctrlParam" : true
+    }, {
       "codeName" : "view",
       "logicName" : "view",
       "name" : "view",
       "activeViewParam" : true
     }, {
-      "codeName" : "button2_state_obj",
-      "logicName" : "评论按钮状态",
-      "name" : "评论按钮状态",
-      "entityParam" : true
-    }, {
       "codeName" : "container_scroll1",
       "logicName" : "滚动条容器1",
       "name" : "滚动条容器1",
-      "ctrlParam" : true
-    }, {
-      "codeName" : "form",
-      "logicName" : "form",
-      "name" : "form",
       "ctrlParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
@@ -11532,6 +11511,10 @@
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_model_show_view.json",
+    "viewType" : "DEEDITVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_version_comparison_view.json",
     "viewType" : "DEEDITVIEW"
   } ],
   "getAllPSDEOPPrivs" : [ {

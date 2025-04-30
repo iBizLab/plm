@@ -7,6 +7,7 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.completed_review;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.testmgmt.domain.review reviewcompleted_reviewdefault;
                 global java.util.Map reviewcompleted_reviewcase_number;
+                global java.util.Map reviewcompleted_reviewcomment;
                 global cn.ibizlab.plm.core.testmgmt.domain.review_content reviewcompleted_reviewcontent_fliter;
                 global cn.ibizlab.plm.core.testmgmt.domain.review_content reviewcompleted_reviewcontent_list;
                 global cn.ibizlab.plm.core.testmgmt.domain.review_content reviewcompleted_reviewcontent_obj;
@@ -40,6 +41,7 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.completed_review;
                         review_contentservice.complete_review(reviewcompleted_reviewdefault);
                         update(reviewcompleted_reviewdefault);//更新fact中变量值
                         update(reviewcompleted_reviewcase_number);//更新fact中变量值
+                        update(reviewcompleted_reviewcomment);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_fliter);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_list);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_obj);//更新fact中变量值
@@ -59,6 +61,7 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.completed_review;
             then
                         update(reviewcompleted_reviewdefault);//更新fact中变量值
                         update(reviewcompleted_reviewcase_number);//更新fact中变量值
+                        update(reviewcompleted_reviewcomment);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_fliter);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_list);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_obj);//更新fact中变量值
@@ -79,6 +82,7 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.completed_review;
                             reviewcompleted_reviewcontent_fliter.set("n_principal_id_eq",reviewcompleted_reviewdefault.get("id"));
                         update(reviewcompleted_reviewdefault);//更新fact中变量值
                         update(reviewcompleted_reviewcase_number);//更新fact中变量值
+                        update(reviewcompleted_reviewcomment);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_fliter);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_list);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_obj);//更新fact中变量值
@@ -98,6 +102,7 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.completed_review;
             then
                         update(reviewcompleted_reviewdefault);//更新fact中变量值
                         update(reviewcompleted_reviewcase_number);//更新fact中变量值
+                        update(reviewcompleted_reviewcomment);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_fliter);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_list);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_obj);//更新fact中变量值
@@ -117,6 +122,7 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.completed_review;
             then
                         update(reviewcompleted_reviewdefault);//更新fact中变量值
                         update(reviewcompleted_reviewcase_number);//更新fact中变量值
+                        update(reviewcompleted_reviewcomment);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_fliter);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_list);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_obj);//更新fact中变量值
@@ -137,6 +143,7 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.completed_review;
                             reviewcompleted_reviewsrfactionparam.set("",reviewcompleted_reviewdefault.get("srfactionparam"));
                         update(reviewcompleted_reviewdefault);//更新fact中变量值
                         update(reviewcompleted_reviewcase_number);//更新fact中变量值
+                        update(reviewcompleted_reviewcomment);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_fliter);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_list);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_obj);//更新fact中变量值
@@ -155,12 +162,14 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.completed_review;
             when
             then
                             reviewcompleted_reviewreview_obj.set("id",reviewcompleted_reviewdefault.get("id"));
+                            reviewcompleted_reviewcomment.set("",reviewcompleted_reviewtmp_obj.get("comment"));
                             reviewcompleted_reviewdefault.set("curstage_id",reviewcompleted_reviewtmp_obj.get("stage_id"));
-                            reviewcompleted_reviewdefault.set("principal_id",reviewcompleted_reviewdefault.get("id"));
+                            reviewcompleted_reviewdefault.set("principalid",reviewcompleted_reviewdefault.get("id"));
                             reviewcompleted_reviewresult.set("",reviewcompleted_reviewtmp_obj.get("result"));
                             reviewcompleted_reviewcase_number.set("",reviewcompleted_reviewtmp_obj.get("case_number"));
                         update(reviewcompleted_reviewdefault);//更新fact中变量值
                         update(reviewcompleted_reviewcase_number);//更新fact中变量值
+                        update(reviewcompleted_reviewcomment);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_fliter);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_list);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_obj);//更新fact中变量值
@@ -181,6 +190,7 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.completed_review;
                             reviewcompleted_reviewresult_list.set("",reviewcompleted_reviewcontent_obj.get("stageresults"));
                         update(reviewcompleted_reviewdefault);//更新fact中变量值
                         update(reviewcompleted_reviewcase_number);//更新fact中变量值
+                        update(reviewcompleted_reviewcomment);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_fliter);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_list);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_obj);//更新fact中变量值
@@ -200,6 +210,7 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.completed_review;
             then
                         update(reviewcompleted_reviewdefault);//更新fact中变量值
                         update(reviewcompleted_reviewcase_number);//更新fact中变量值
+                        update(reviewcompleted_reviewcomment);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_fliter);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_list);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_obj);//更新fact中变量值
@@ -219,6 +230,7 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.completed_review;
             then
                         update(reviewcompleted_reviewdefault);//更新fact中变量值
                         update(reviewcompleted_reviewcase_number);//更新fact中变量值
+                        update(reviewcompleted_reviewcomment);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_fliter);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_list);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_obj);//更新fact中变量值
@@ -239,6 +251,7 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.completed_review;
                             reviewcompleted_reviewresult_obj.set("resultstate","3");
                         update(reviewcompleted_reviewdefault);//更新fact中变量值
                         update(reviewcompleted_reviewcase_number);//更新fact中变量值
+                        update(reviewcompleted_reviewcomment);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_fliter);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_list);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_obj);//更新fact中变量值
@@ -259,6 +272,28 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.completed_review;
                             reviewcompleted_reviewresult_obj.set("resultstate","4");
                         update(reviewcompleted_reviewdefault);//更新fact中变量值
                         update(reviewcompleted_reviewcase_number);//更新fact中变量值
+                        update(reviewcompleted_reviewcomment);//更新fact中变量值
+                        update(reviewcompleted_reviewcontent_fliter);//更新fact中变量值
+                        update(reviewcompleted_reviewcontent_list);//更新fact中变量值
+                        update(reviewcompleted_reviewcontent_obj);//更新fact中变量值
+                        update(reviewcompleted_reviewcontent_page);//更新fact中变量值
+                        update(reviewcompleted_reviewresult);//更新fact中变量值
+                        update(reviewcompleted_reviewresult_list);//更新fact中变量值
+                        update(reviewcompleted_reviewresult_obj);//更新fact中变量值
+                        update(reviewcompleted_reviewreview_obj);//更新fact中变量值
+                        update(reviewcompleted_reviewsrfactionparam);//更新fact中变量值
+                        update(reviewcompleted_reviewtmp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置评审建议]
+            rule "prepareparam8"
+            ruleflow-group "reviewcompleted_reviewprepareparam8"
+            when
+            then
+                            reviewcompleted_reviewresult_obj.set("comment",reviewcompleted_reviewcomment.get(""));
+                        update(reviewcompleted_reviewdefault);//更新fact中变量值
+                        update(reviewcompleted_reviewcase_number);//更新fact中变量值
+                        update(reviewcompleted_reviewcomment);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_fliter);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_list);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_obj);//更新fact中变量值
@@ -279,6 +314,7 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.completed_review;
                         review_resultservice.update(reviewcompleted_reviewresult_obj);
                         update(reviewcompleted_reviewdefault);//更新fact中变量值
                         update(reviewcompleted_reviewcase_number);//更新fact中变量值
+                        update(reviewcompleted_reviewcomment);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_fliter);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_list);//更新fact中变量值
                         update(reviewcompleted_reviewcontent_obj);//更新fact中变量值

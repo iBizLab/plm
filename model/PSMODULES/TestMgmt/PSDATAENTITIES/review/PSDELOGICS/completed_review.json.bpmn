@@ -7,6 +7,7 @@
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="reviewcompleted_reviewdefault" type="entity"/>
                                 <tns:metaData express="new HashMap()" name="reviewcompleted_reviewcase_number" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="reviewcompleted_reviewcomment" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_content()" name="reviewcompleted_reviewcontent_fliter" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_content()" name="reviewcompleted_reviewcontent_list" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_content()" name="reviewcompleted_reviewcontent_obj" type="refentity"/>
@@ -47,6 +48,7 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewcompleted_reviewdebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="输出循环数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewcompleted_reviewprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="通过"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewcompleted_reviewprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="拒绝"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewcompleted_reviewprepareparam8" id="prepareparam8" implementation="http://www.jboss.org/drools/rule" name="设置评审建议"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewcompleted_reviewdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="更新"/>
                         <endEvent id="deaction1_end" name="end"/>
                         <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
@@ -58,6 +60,7 @@
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $reviewcompleted_reviewdefault:review();
                                             $reviewcompleted_reviewcase_number:Map();
+                                            $reviewcompleted_reviewcomment:Map();
                                             $reviewcompleted_reviewcontent_fliter:review_content();
                                             $reviewcompleted_reviewcontent_list:review_content();
                                             $reviewcompleted_reviewcontent_obj:review_content();
@@ -77,6 +80,7 @@
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $reviewcompleted_reviewdefault:review();
                                             $reviewcompleted_reviewcase_number:Map();
+                                            $reviewcompleted_reviewcomment:Map();
                                             $reviewcompleted_reviewcontent_fliter:review_content();
                                             $reviewcompleted_reviewcontent_list:review_content();
                                             $reviewcompleted_reviewcontent_obj:review_content();
@@ -108,6 +112,7 @@
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $reviewcompleted_reviewdefault:review();
                                             $reviewcompleted_reviewcase_number:Map();
+                                            $reviewcompleted_reviewcomment:Map();
                                             $reviewcompleted_reviewcontent_fliter:review_content();
                                             $reviewcompleted_reviewcontent_list:review_content();
                                             $reviewcompleted_reviewcontent_obj:review_content();
@@ -127,6 +132,7 @@
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $reviewcompleted_reviewdefault:review();
                                             $reviewcompleted_reviewcase_number:Map();
+                                            $reviewcompleted_reviewcomment:Map();
                                             $reviewcompleted_reviewcontent_fliter:review_content();
                                             $reviewcompleted_reviewcontent_list:review_content();
                                             $reviewcompleted_reviewcontent_obj:review_content();
@@ -146,6 +152,7 @@
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $reviewcompleted_reviewdefault:review();
                                             $reviewcompleted_reviewcase_number:Map();
+                                            $reviewcompleted_reviewcomment:Map();
                                             $reviewcompleted_reviewcontent_fliter:review_content();
                                             $reviewcompleted_reviewcontent_list:review_content();
                                             $reviewcompleted_reviewcontent_obj:review_content();
@@ -161,9 +168,11 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam4_deaction1" sourceRef="prepareparam4" targetRef="deaction1">
+                    <sequenceFlow id="prepareparam4_prepareparam8" sourceRef="prepareparam4" targetRef="prepareparam8">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam5_deaction1" sourceRef="prepareparam5" targetRef="deaction1">
+                    <sequenceFlow id="prepareparam5_prepareparam8" sourceRef="prepareparam5" targetRef="prepareparam8">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam8_deaction1" sourceRef="prepareparam8" targetRef="deaction1">
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-loopsubcall3" name="Gateway" gatewayDirection="Diverging" default="gateway-loopsubcall3_end_line"></exclusiveGateway>
                             <sequenceFlow id="loopsubcall3_gateway-loopsubcall3_gatewayline" sourceRef="loopsubcall3" targetRef="gateway-loopsubcall3"></sequenceFlow>

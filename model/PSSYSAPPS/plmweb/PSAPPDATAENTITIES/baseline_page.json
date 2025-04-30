@@ -1872,6 +1872,53 @@
     "reloadData" : true,
     "id" : "baseline_page@baseline_page"
   }, {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "版本对比",
+    "codeName" : "page_version_comparison",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_version_comparison_view.json",
+      "viewType" : "DEEDITVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "baseline_page_page_version_comparison",
+    "name" : "页面版本对比",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_page.json"
+    },
+    "getPSNavigateContexts" : [ {
+      "key" : "SPACE",
+      "name" : "SPACE",
+      "value" : "space_id",
+      "rawValue" : false
+    }, {
+      "key" : "ARTICLE_PAGE",
+      "name" : "ARTICLE_PAGE",
+      "value" : "target_id",
+      "rawValue" : false
+    } ],
+    "getPSNavigateParams" : [ {
+      "key" : "base_version",
+      "name" : "base_version",
+      "value" : "base_target_version_id",
+      "rawValue" : false
+    }, {
+      "key" : "compare_version",
+      "name" : "compare_version",
+      "value" : "compare_target_version_id",
+      "rawValue" : false
+    } ],
+    "getPSSysImage" : {
+      "glyph" : "xf0ec@FontAwesome",
+      "cssClass" : "fa fa-exchange"
+    },
+    "tooltip" : "版本对比",
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "page_version_comparison",
+    "uIActionType" : "DEUIACTION",
+    "id" : "page_version_comparison@baseline_page"
+  }, {
     "actionTarget" : "MULTIKEY",
     "noPrivDisplayMode" : 1,
     "caption" : "移出",
@@ -2069,5 +2116,34 @@
   "enableUIModify" : true,
   "enableUIRemove" : true,
   "enableWFActions" : false,
-  "major" : true
+  "major" : true,
+  "getAllPSAppDEUIActionGroups" : [ {
+    "codeName" : "Usr0428368797",
+    "name" : "基线对比操作列",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_page.json"
+    },
+    "uniqueTag" : "baseline_page__Usr0428368797",
+    "getPSUIActionGroupDetails" : [ {
+      "detailType" : "DEUIACTION",
+      "name" : "ue0b520e",
+      "getPSSysImage" : {
+        "glyph" : "xf0ec@FontAwesome",
+        "cssClass" : "fa fa-exchange"
+      },
+      "tooltip" : "版本对比",
+      "addSeparator" : false,
+      "showCaption" : false,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_page.json"
+        },
+        "modelref" : true,
+        "id" : "page_version_comparison@baseline_page"
+      }
+    } ]
+  } ]
 }

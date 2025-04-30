@@ -1940,13 +1940,6 @@
                     "valueType" : "OBJECTS"
                   }, {
                     "dataType" : 25,
-                    "name" : "target_id",
-                    "getPSAppDEField" : {
-                      "name" : "TARGET_ID",
-                      "codeName" : "target_id"
-                    }
-                  }, {
-                    "dataType" : 25,
                     "name" : "target_parent_id",
                     "getPSAppDEField" : {
                       "name" : "TARGET_PARENT_ID",
@@ -3676,13 +3669,6 @@
                       "codeName" : "stage_results"
                     },
                     "valueType" : "OBJECTS"
-                  }, {
-                    "dataType" : 25,
-                    "name" : "target_id",
-                    "getPSAppDEField" : {
-                      "name" : "TARGET_ID",
-                      "codeName" : "target_id"
-                    }
                   }, {
                     "dataType" : 25,
                     "name" : "target_parent_id",
@@ -5617,7 +5603,8 @@
                                 "editorParams" : {
                                   "contenttype" : "HTML",
                                   "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
-                                  "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
+                                  "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})",
+                                  "TRANSLATEOBJ" : "{\"&reg\":\"&amp;reg\"}"
                                 },
                                 "editorStyle" : "COMMENT_ITEM",
                                 "editorType" : "RAW",
@@ -5714,7 +5701,8 @@
                                   "contentType" : "HTML",
                                   "editorParams" : {
                                     "contenttype" : "HTML",
-                                    "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
+                                    "SCRIPTCODE" : "data.content?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class='comment-tag'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class='comment-tag'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g, (x, value, icon) => {const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})",
+                                    "TRANSLATEOBJ" : "{\"&reg\":\"&amp;reg\"}"
                                   },
                                   "editorStyle" : "COMMENT_ITEM",
                                   "editorType" : "RAW",
@@ -7246,6 +7234,20 @@
                   "getPSAppDEUILogic" : {
                     "modelref" : true,
                     "id" : "choose_stage"
+                  },
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_stage.json"
+                  },
+                  "getPSViewCtrlName" : "list"
+                }, {
+                  "eventNames" : "onLoadSuccess",
+                  "logicTrigger" : "CTRLEVENT",
+                  "logicType" : "APPDEUILOGIC",
+                  "name" : "DEFAULT_SELECTED",
+                  "getPSAppDEUILogic" : {
+                    "modelref" : true,
+                    "id" : "default_choose"
                   },
                   "getPSAppDataEntity" : {
                     "modelref" : true,
@@ -9376,6 +9378,9 @@
                           "getPSLayoutPos" : {
                             "colMD" : 24,
                             "layout" : "TABLE_24COL"
+                          },
+                          "getPSSysCss" : {
+                            "cssName" : "review_btn_style"
                           },
                           "infoGroupMode" : false,
                           "showCaption" : false

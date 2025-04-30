@@ -487,6 +487,9 @@
         "createDV" : "10",
         "updateDV" : "10"
       }, {
+        "id" : "comment",
+        "dataType" : 25
+      }, {
         "id" : "stage_id",
         "hidden" : true,
         "dataType" : 25,
@@ -814,6 +817,42 @@
             "updateDV" : "10",
             "allowEmpty" : true,
             "needCodeListConfig" : true
+          }, {
+            "codeName" : "comment",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "fieldName" : "comment",
+            "ignoreInput" : 0,
+            "labelPos" : "NONE",
+            "labelWidth" : 0,
+            "name" : "comment",
+            "noPrivDisplayMode" : 1,
+            "getPSDEFDGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "ITEMBLANK",
+              "logicType" : "GROUP",
+              "getPSDEFDLogics" : [ {
+                "condOP" : "NOTEQ",
+                "dEFDName" : "result",
+                "logicType" : "SINGLE",
+                "value" : "20"
+              } ],
+              "relatedDetailNames" : [ "result" ],
+              "notMode" : false
+            } ],
+            "getPSEditor" : {
+              "editorType" : "TEXTAREA",
+              "name" : "comment",
+              "placeHolder" : "请输入评审意见",
+              "showMaxLength" : true
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : false
           } ],
           "getPSLayout" : {
             "childColMD" : 24,

@@ -135,7 +135,7 @@
         "logicTag" : "toolbar",
         "logicType" : "SCRIPT",
         "name" : "deuiaction1",
-        "scriptCode" : "context.srfreadonly != true",
+        "scriptCode" : "(context.srfreadonly != true)&&((context.library != null) || (context.library != undefined))",
         "triggerType" : "ITEMVISIBLE"
       } ],
       "getPSSysImage" : {
@@ -167,6 +167,62 @@
       "getTooltipPSLanguageRes" : {
         "lanResTag" : "TBB.TOOLTIP.*.NEW"
       },
+      "showCaption" : true,
+      "showIcon" : true
+    }, {
+      "caption" : "新建评审",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction2",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "toolbar_deuiaction2"
+      },
+      "getPSControlLogics" : [ {
+        "itemName" : "deuiaction2",
+        "logicTag" : "toolbar",
+        "logicType" : "SCRIPT",
+        "name" : "idea",
+        "scriptCode" : "(context.srfreadonly != true)&&((context.product != null) || (context.product != undefined))",
+        "triggerType" : "ITEMVISIBLE"
+      } ],
+      "getPSSysImage" : {
+        "glyph" : "xf067@FontAwesome",
+        "cssClass" : "fa fa-plus"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "NONE",
+        "caption" : "新建评审",
+        "codeName" : "new_idea_review",
+        "dialogResult" : "OK",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_wizard_idea_create_wizard_view.json",
+          "viewType" : "DEWIZARDVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "review_new_idea_review",
+        "name" : "新建需求评审",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf067@FontAwesome",
+          "cssClass" : "fa fa-plus"
+        },
+        "refreshMode" : 1,
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "new_idea_review",
+        "uIActionType" : "DEUIACTION",
+        "closeEditView" : true,
+        "closePopupView" : true,
+        "reloadData" : true,
+        "id" : "new_idea_review@review"
+      },
+      "tooltip" : "新建评审",
+      "uIActionTarget" : "NONE",
       "showCaption" : true,
       "showIcon" : true
     } ],

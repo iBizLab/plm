@@ -32904,7 +32904,7 @@
     "name" : "状态变更前逻辑",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : -160,
+      "leftPos" : -130,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDEUILogicLinks" : [ {
@@ -32924,7 +32924,7 @@
     }, {
       "code" : "const selectedData = uiLogic.selecteddata;\r\nlet needDisable = true;\r\nif (selectedData && selectedData.length > 0) {\r\n    const firstData = selectedData[0];\r\n    for (let i = 0; i < selectedData.length; i++) {\r\n        const curData = selectedData[i];\r\n        const dataType = curData.work_item_type_id;\r\n        if (firstData.work_item_type_id !== dataType) {\r\n            needDisable = true;\r\n            break; \r\n        } else {\r\n            needDisable = false;\r\n        }\r\n    }\r\n    if(needDisable === true){\r\n        const cur_grid = uiLogic.cur_grid;\r\n        let detoolbar = uiLogic.detoolbar;\r\n        detoolbar = cur_grid.ctx.controllersMap.get(\"treegrid\").batchToolbarController.state;\r\n        const detoolbarbutton = detoolbar.buttonsState.children;\r\n        for(let j = 0; j <detoolbarbutton.length;j++){\r\n            const toolitem = detoolbarbutton[j];\r\n            if (toolitem.uiActionId == \"change_state@work_item\"){\r\n                toolitem.disabled = true;\r\n            }\r\n        }\r\n    }\r\n}",
       "codeName" : "RAWJSCODE1",
-      "leftPos" : 384,
+      "leftPos" : 214,
       "logicNodeType" : "RAWJSCODE",
       "name" : "判断类型是否匹配",
       "getPSDEUILogicLinks" : [ {
@@ -32939,7 +32939,7 @@
           "id" : "RAWJSCODE1"
         }
       } ],
-      "topPos" : 208
+      "topPos" : 200
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : -1,
@@ -32971,13 +32971,14 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 208
+      "topPos" : 198
     }, {
       "codeName" : "END1",
-      "leftPos" : 916,
+      "leftPos" : 446,
       "logicNodeType" : "END",
       "name" : "结束",
-      "topPos" : 200
+      "topPos" : 200,
+      "parallelOutput" : true
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "param",

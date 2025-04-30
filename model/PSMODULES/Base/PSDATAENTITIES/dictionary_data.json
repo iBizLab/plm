@@ -369,6 +369,54 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/idea/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "idea",
+    "logicName" : "需求",
+    "name" : "idea",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "DICTIONARY",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "LIKE",
+          "condType" : "SINGLE",
+          "condValue" : "idea",
+          "fieldName" : "CATALOG",
+          "name" : "(CATALOG) 文本包含(%) idea",
+          "getPSDEField" : {
+            "name" : "CATALOG",
+            "codeName" : "catalog"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "IdeaInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "IdeaResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/idea_state/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "idea_state",
@@ -548,6 +596,32 @@
       "type" : "PAGE"
     },
     "defaultMode" : true,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "idea",
+    "logicName" : "需求",
+    "name" : "idea",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "idea"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "IdeaInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "IdeaResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "PAGE"
+    },
     "enableBackend" : true,
     "enableFront" : true
   }, {
@@ -1951,6 +2025,18 @@
     "systemReserved" : true
   } ],
   "getAllPSModelDatas" : [ {
+    "codeName" : "delete_confirm_option_view",
+    "logicName" : "数据字典确认删除视图",
+    "name" : "数据字典确认删除视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "idea_dictionary_create_view",
+    "logicName" : "需求字典新建视图",
+    "name" : "需求字典新建视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "PickupGridView",
     "logicName" : "数据字典实体选择表格视图（部件视图）",
     "name" : "数据字典实体选择表格视图（部件视图）",
@@ -2038,6 +2124,12 @@
     "realModelSubType" : "DETABEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "idea_dictionary_grid_view",
+    "logicName" : "需求字典表格视图",
+    "name" : "需求字典表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "GridView",
     "logicName" : "数据字典实体表格视图",
     "modelTag" : "MDATAVIEW",
@@ -2086,6 +2178,13 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
+    "codeName" : "Usr04280472_Form",
+    "logicName" : "数据字典确认删除视图_表单",
+    "modelTag2" : "0",
+    "name" : "数据字典确认删除视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "global_edit_view_Form",
     "logicName" : "实体选项操作视图（编辑阶段）_表单",
     "modelTag2" : "0",
@@ -2104,6 +2203,13 @@
     "logicName" : "工单配置状态管理确认删除_表单",
     "modelTag2" : "0",
     "name" : "工单配置状态管理确认删除_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "Usr04285955_Form",
+    "logicName" : "需求字典新建视图_表单",
+    "modelTag2" : "0",
+    "name" : "需求字典新建视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   } ],

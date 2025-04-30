@@ -1927,7 +1927,7 @@
     "name" : "生成阶段排序值",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : 200,
+      "leftPos" : 120,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDELogicLinks" : [ {
@@ -1945,7 +1945,7 @@
       "parallelOutput" : true
     }, {
       "codeName" : "END1",
-      "leftPos" : 976,
+      "leftPos" : 936,
       "logicNodeType" : "END",
       "name" : "结束",
       "getReturnParam" : {
@@ -1956,13 +1956,13 @@
       "topPos" : 200
     }, {
       "codeName" : "PREPAREPARAM1",
-      "leftPos" : 302,
+      "leftPos" : 252,
       "logicNodeType" : "PREPAREPARAM",
       "name" : "准备参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "LOOPSUBCALL1"
+          "id" : "RAWSFCODE1"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -1986,26 +1986,13 @@
       } ],
       "topPos" : 208
     }, {
-      "codeName" : "LOOPSUBCALL1",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "for_stage"
-      },
-      "leftPos" : 473,
-      "logicNodeType" : "LOOPSUBCALL",
-      "name" : "循环子调用",
+      "code" : "def stage_list = logic.param('stage_list').getReal();\r\ndef order = 1;\r\nstage_list.each { stage ->\r\n    println \"Order: $order, Stage: $stage\"\r\n    stage.set(\"order\", order);\r\n    order++;\r\n}\r\n",
+      "codeName" : "RAWSFCODE1",
+      "codeType" : "Groovy",
+      "leftPos" : 483,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "设置排序值",
       "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM2"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "LOOPSUBCALL1"
-        },
-        "subCallLink" : true
-      }, {
         "getDstPSDELogicNode" : {
           "modelref" : true,
           "id" : "PREPAREPARAM3"
@@ -2013,17 +2000,13 @@
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "LOOPSUBCALL1"
+          "id" : "RAWSFCODE1"
         }
       } ],
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "stage_list"
-      },
       "topPos" : 208
     }, {
       "codeName" : "PREPAREPARAM3",
-      "leftPos" : 726,
+      "leftPos" : 706,
       "logicNodeType" : "PREPAREPARAM",
       "name" : "准备参数",
       "getPSDELogicLinks" : [ {
@@ -2043,69 +2026,15 @@
           "modelref" : true,
           "id" : "Default"
         },
-        "name" : "stage_arr ==> Default[REVIEW_STAGE]",
+        "name" : "stage_list ==> Default[REVIEW_STAGE]",
         "paramAction" : "SETPARAMVALUE",
         "getSrcPSDELogicParam" : {
           "modelref" : true,
-          "id" : "stage_arr"
+          "id" : "stage_list"
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 208
-    }, {
-      "codeName" : "DEBUGPARAM2",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "for_stage"
-      },
-      "leftPos" : 473,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM2"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM2"
-        }
-      } ],
-      "topPos" : 348
-    }, {
-      "codeName" : "PREPAREPARAM2",
-      "leftPos" : 473,
-      "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备参数",
-      "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "ORDER",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "for_stage"
-        },
-        "name" : "for_stage[srfordervalue] ==> for_stage[ORDER]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "srfordervalue",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "for_stage"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "stage_arr"
-        },
-        "name" : "for_stage ==> stage_arr",
-        "paramAction" : "APPENDPARAM",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "for_stage"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 468
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",
@@ -2117,24 +2046,6 @@
       },
       "default" : true,
       "entityParam" : true
-    }, {
-      "codeName" : "for_stage",
-      "logicName" : "循环阶段数据",
-      "name" : "循环阶段数据",
-      "getParamPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_stage.json"
-      },
-      "entityParam" : true
-    }, {
-      "codeName" : "stage_arr",
-      "logicName" : "阶段数组",
-      "name" : "阶段数组",
-      "getParamPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_stage.json"
-      },
-      "entityListParam" : true
     }, {
       "codeName" : "stage_list",
       "logicName" : "阶段列表",
@@ -3040,6 +2951,32 @@
     "removeActionType" : 0,
     "removeOrder" : -1,
     "serviceCodeName" : "library"
+  }, {
+    "codeName" : "PRODUCT",
+    "dERSubType" : "DER1N",
+    "dERType" : "DERCUSTOM",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline/PSDERS/DERCUSTOM_GUIDELINE_PRODUCT_PRODUCT_ID.json",
+    "logicName" : "产品-评审准则",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+    },
+    "masterOrder" : 100,
+    "masterRS" : 5,
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline.json"
+    },
+    "name" : "DERCUSTOM_GUIDELINE_PRODUCT_PRODUCT_ID",
+    "orderValue" : 100,
+    "pickupDEFName" : "SCOPE_ID",
+    "getPickupPSDEField" : {
+      "name" : "SCOPE_ID",
+      "codeName" : "scope_id"
+    },
+    "removeActionType" : 0,
+    "removeOrder" : -1,
+    "serviceCodeName" : "product"
   } ],
   "name" : "GUIDELINE",
   "getPSSysDBScheme" : {

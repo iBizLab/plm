@@ -567,6 +567,55 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_content/PSDEDATAQUERIES/cur_history/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "cur_history",
+    "logicName" : "当前评审历史",
+    "name" : "cur_history",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_content.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "REVIEW_CONTENT",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "principal_id",
+          "fieldName" : "PRINCIPAL_ID",
+          "name" : "(PRINCIPAL_ID) 等于(=) 网页请求上下文 principal_id",
+          "getPSDEField" : {
+            "name" : "PRINCIPAL_ID",
+            "codeName" : "principal_id"
+          },
+          "getPSVARTypeId" : "WEBCONTEXT"
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Cur_historyInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "review_content_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Cur_historyResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "review_content_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_content/PSDEDATAQUERIES/history_list/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "history_list",
@@ -675,6 +724,32 @@
       "runtimeObject" : true
     },
     "viewLevel" : 0,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "cur_history",
+    "logicName" : "当前评审历史",
+    "name" : "cur_history",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "cur_history"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Cur_historyInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "review_content_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Cur_historyResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "review_content_dto"
+      },
+      "type" : "PAGE"
+    },
     "enableBackend" : true,
     "enableFront" : true
   }, {
@@ -1460,106 +1535,6 @@
     "serviceCodeName" : "final_stage_results",
     "stdDataType" : 25,
     "stringLength" : 60,
-    "valueFormat" : "%1$s",
-    "viewLevel" : 0,
-    "inheritDEField" : true,
-    "linkDEField" : true,
-    "phisicalDEField" : false
-  }, {
-    "getAllPSDEFDTColumns" : [ {
-      "columnName" : "TARGET_ID",
-      "dBType" : "MYSQL5",
-      "name" : "TARGET_ID",
-      "queryCodeExp" : "t11.`TARGET_ID`",
-      "standardColumnName" : "`TARGET_ID`"
-    } ],
-    "getAllPSDEFSearchModes" : [ {
-      "codeName" : "N_TARGET_ID_EQ",
-      "name" : "N_TARGET_ID_EQ",
-      "stdDataType" : 25,
-      "valueOP" : "EQ"
-    } ],
-    "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[TARGET_ID][关联目标标识]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[TARGET_ID][关联目标标识]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "codeName" : "MobileDefault",
-      "name" : "[TARGET_ID][关联目标标识]移动端默认",
-      "getPSDEFFormItem" : {
-        "codeName" : "MobileDefault",
-        "editorType" : "MOBTEXT",
-        "name" : "[TARGET_ID][关联目标标识]移动端默认",
-        "stringLength" : 100,
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "getAllPSDEFValueRules" : [ {
-      "codeName" : "Default",
-      "name" : "默认规则",
-      "getPSDEFVRGroupCondition" : {
-        "condOp" : "AND",
-        "condType" : "GROUP",
-        "name" : "默认组",
-        "getPSDEFVRConditions" : [ {
-          "condType" : "STRINGLENGTH",
-          "dEFName" : "TARGET_ID",
-          "maxValue" : 100,
-          "name" : "默认字符串长度",
-          "ruleInfo" : "内容长度必须小于等于[100]",
-          "includeMaxValue" : true,
-          "includeMinValue" : false,
-          "keyCond" : true
-        } ],
-        "ruleInfo" : "内容长度必须小于等于[100]"
-      },
-      "ruleInfo" : "内容长度必须小于等于[100]",
-      "checkDefault" : true,
-      "defaultMode" : true,
-      "enableBackend" : true,
-      "enableFront" : true
-    } ],
-    "codeName" : "target_id",
-    "dEFType" : 3,
-    "dataType" : "INHERIT",
-    "importOrder" : 1000,
-    "length" : 100,
-    "logicName" : "关联目标标识",
-    "name" : "TARGET_ID",
-    "getPSDER" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_content/PSDERS/DERMULINH_REVIEW_CONTENT_RELATION.json"
-    },
-    "getRealPSDEField" : {
-      "name" : "TARGET_ID",
-      "codeName" : "target_id"
-    },
-    "getRealPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
-    },
-    "getRelatedPSDEField" : {
-      "name" : "TARGET_ID",
-      "codeName" : "target_id"
-    },
-    "getRelatedPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
-    },
-    "serviceCodeName" : "target_id",
-    "stdDataType" : 25,
-    "stringLength" : 100,
-    "unionKeyValue" : "KEY2",
     "valueFormat" : "%1$s",
     "viewLevel" : 0,
     "inheritDEField" : true,
@@ -2591,6 +2566,106 @@
     "linkDEField" : true,
     "phisicalDEField" : false,
     "uIAssistDEField" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "TARGET_ID",
+      "dBType" : "MYSQL5",
+      "name" : "TARGET_ID",
+      "queryCodeExp" : "t11.`TARGET_ID`",
+      "standardColumnName" : "`TARGET_ID`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_TARGET_ID_EQ",
+      "name" : "N_TARGET_ID_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[TARGET_ID][关联目标标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[TARGET_ID][关联目标标识]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[TARGET_ID][关联目标标识]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[TARGET_ID][关联目标标识]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "TARGET_ID",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "target_id",
+    "dEFType" : 3,
+    "dataType" : "INHERIT",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "关联目标标识",
+    "name" : "TARGET_ID",
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_content/PSDERS/DERMULINH_REVIEW_CONTENT_RELATION.json"
+    },
+    "getRealPSDEField" : {
+      "name" : "TARGET_ID",
+      "codeName" : "target_id"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "TARGET_ID",
+      "codeName" : "target_id"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+    },
+    "serviceCodeName" : "target_id",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "unionKeyValue" : "KEY2",
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "inheritDEField" : true,
+    "linkDEField" : true,
+    "phisicalDEField" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "ID",
@@ -8462,17 +8537,6 @@
       "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
-      "logicName" : "关联目标标识",
-      "name" : "target_id",
-      "getPSDEField" : {
-        "name" : "TARGET_ID",
-        "codeName" : "target_id"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "stringLength" : 100,
-      "type" : "SIMPLE"
-    }, {
       "logicName" : "父对象版本标识",
       "name" : "parent_version_id",
       "getPSDEField" : {
@@ -8622,6 +8686,17 @@
       "getPSDEField" : {
         "name" : "TARGET_PARENT_ID",
         "codeName" : "target_parent_id"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "关联目标标识",
+      "name" : "target_id",
+      "getPSDEField" : {
+        "name" : "TARGET_ID",
+        "codeName" : "target_id"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
