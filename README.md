@@ -134,6 +134,8 @@ iBizPLM使用了现代化软件架构，前端技术使用Vue，后端技术使�
 | 15	| 2025-04-27	| Modeling建模-进阶篇-搜索栏	| https://www.bilibili.com/video/BV1nwLBz8EBQ |
 | 16	| 2025-04-28	| Modeling建模-进阶篇-实体、属性、关系	| https://www.bilibili.com/video/BV1YQL1zuECa |
 | 17	| 2025-04-29	| Modeling建模-进阶篇-权限1	| https://www.bilibili.com/video/BV1fiGmzjE2c |
+| 18	| 2025-04-30	| Modeling建模-进阶篇-权限2	| https://www.bilibili.com/video/BV1nAG9zPESa |
+
 
 
 ### 演示图
@@ -351,7 +353,7 @@ PLM业务扩展的核心目标是将iBizPLM转化为不仅仅是一个标准的�
 
 
 
-特别鸣谢：我们丶的故事、XQ 等QQ朋友提供的宝贵意见。
+特别鸣谢：我们丶的故事、XQ、文元、张萝卜 等QQ朋友提供的宝贵意见。
 
 ### 开源计划
 
