@@ -632,7 +632,7 @@
           "logicTag" : "toolbar",
           "logicType" : "SCRIPT",
           "name" : "deuiaction1",
-          "scriptCode" : "(data.state == '10'||data.state=='50')&&(context.curstage_id == null)&&(data.create_man == context.srfuserid)",
+          "scriptCode" : "(data.state == '10'||data.state=='50')&&(context.curstage_id == null)&&(data.create_man == context.srfuserid)&&(data.type == 'TEST_CASE')",
           "triggerType" : "ITEMVISIBLE"
         } ],
         "getPSSysImage" : {
@@ -659,6 +659,11 @@
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
           },
           "getPSNavigateParams" : [ {
+            "key" : "tag",
+            "name" : "tag",
+            "value" : "TEST_CASE",
+            "rawValue" : true
+          }, {
             "key" : "review",
             "name" : "review",
             "value" : "review",
@@ -735,6 +740,72 @@
         },
         "tooltip" : "撤销评审",
         "uIActionTarget" : "SINGLEDATA",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "添加内容",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction3",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "toolbar_deuiaction3"
+        },
+        "getPSControlLogics" : [ {
+          "itemName" : "deuiaction3",
+          "logicTag" : "toolbar",
+          "logicType" : "SCRIPT",
+          "name" : "idea",
+          "scriptCode" : "(data.state == '10'||data.state=='50')&&(context.curstage_id == null)&&(data.create_man == context.srfuserid)&&(data.type == 'IDEA')",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
+        "getPSSysImage" : {
+          "glyph" : "xf067@FontAwesome",
+          "cssClass" : "fa fa-plus"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "添加内容",
+          "codeName" : "add_idea_review_content",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_review_re_idea_view.json",
+            "viewType" : "DEMPICKUPVIEW2"
+          },
+          "fullCodeName" : "review_add_idea_review_content",
+          "name" : "添加需求评审内容",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "add_review_content"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "tag",
+            "name" : "tag",
+            "value" : "IDEA",
+            "rawValue" : true
+          }, {
+            "key" : "review",
+            "name" : "review",
+            "value" : "review",
+            "rawValue" : false
+          } ],
+          "paramItem" : "review",
+          "refreshMode" : 1,
+          "timeout" : 60000,
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "add_idea_review_content",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "add_idea_review_content@review"
+        },
+        "tooltip" : "添加内容",
+        "uIActionTarget" : "NONE",
         "showCaption" : true,
         "showIcon" : true
       } ],
@@ -1897,10 +1968,10 @@
                         "actionAfterWizard" : "DEFAULT",
                         "getBatchAddPSAppViews" : [ {
                           "openMode" : "POPUPMODAL",
-                          "refMode" : "TEST_CASE",
+                          "refMode" : "IDEA",
                           "getRefPSAppView" : {
                             "modelref" : true,
-                            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view2_review.json",
+                            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_review_re_idea_view.json",
                             "viewType" : "DEMPICKUPVIEW2"
                           }
                         } ],
@@ -1925,10 +1996,10 @@
                           }
                         }, {
                           "openMode" : "POPUPMODAL",
-                          "refMode" : "TEST_CASE",
+                          "refMode" : "IDEA",
                           "getRefPSAppView" : {
                             "modelref" : true,
-                            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view2_review.json",
+                            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_review_re_idea_view.json",
                             "viewType" : "DEMPICKUPVIEW2"
                           }
                         } ],
@@ -2004,16 +2075,19 @@
                         "viewType" : "DEEDITVIEW"
                       }
                     }, {
-                      "name" : "MPICKUPVIEW:REVIEW_WIZARD"
-                    }, {
-                      "name" : "MPICKUPVIEW:TEST_CASE",
+                      "name" : "MPICKUPVIEW:IDEA",
                       "realOpenMode" : "POPUPMODAL",
-                      "realTitle" : "用例实体数据多项选择",
+                      "realTitle" : "计划关联需求多项数据选择视图",
+                      "getRealTitlePSLanguageRes" : {
+                        "lanResTag" : "PAGE.TITLE.IDEA.OTHERS_RELATION_IDEA_VIEW"
+                      },
                       "getRefPSAppView" : {
                         "modelref" : true,
-                        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view2_review.json",
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_review_re_idea_view.json",
                         "viewType" : "DEMPICKUPVIEW2"
                       }
+                    }, {
+                      "name" : "MPICKUPVIEW:REVIEW_WIZARD"
                     } ],
                     "getPSControls" : [ {
                       "codeName" : "grid_view_all_toolbar",
@@ -3588,10 +3662,10 @@
                         "actionAfterWizard" : "DEFAULT",
                         "getBatchAddPSAppViews" : [ {
                           "openMode" : "POPUPMODAL",
-                          "refMode" : "TEST_CASE",
+                          "refMode" : "IDEA",
                           "getRefPSAppView" : {
                             "modelref" : true,
-                            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view2_review.json",
+                            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_review_re_idea_view.json",
                             "viewType" : "DEMPICKUPVIEW2"
                           }
                         } ],
@@ -3616,10 +3690,10 @@
                           }
                         }, {
                           "openMode" : "POPUPMODAL",
-                          "refMode" : "TEST_CASE",
+                          "refMode" : "IDEA",
                           "getRefPSAppView" : {
                             "modelref" : true,
-                            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view2_review.json",
+                            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_review_re_idea_view.json",
                             "viewType" : "DEMPICKUPVIEW2"
                           }
                         } ],
@@ -3695,16 +3769,19 @@
                         "viewType" : "DEEDITVIEW"
                       }
                     }, {
-                      "name" : "MPICKUPVIEW:REVIEW_WIZARD"
-                    }, {
-                      "name" : "MPICKUPVIEW:TEST_CASE",
+                      "name" : "MPICKUPVIEW:IDEA",
                       "realOpenMode" : "POPUPMODAL",
-                      "realTitle" : "用例实体数据多项选择",
+                      "realTitle" : "计划关联需求多项数据选择视图",
+                      "getRealTitlePSLanguageRes" : {
+                        "lanResTag" : "PAGE.TITLE.IDEA.OTHERS_RELATION_IDEA_VIEW"
+                      },
                       "getRefPSAppView" : {
                         "modelref" : true,
-                        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view2_review.json",
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_review_re_idea_view.json",
                         "viewType" : "DEMPICKUPVIEW2"
                       }
+                    }, {
+                      "name" : "MPICKUPVIEW:REVIEW_WIZARD"
                     } ],
                     "getPSControls" : [ {
                       "codeName" : "no_grid_view_all_toolbar",
@@ -6648,43 +6725,6 @@
                           },
                           "getPSDEListDataItems" : [ {
                             "dataType" : 25,
-                            "getFrontPSCodeList" : {
-                              "modelref" : true,
-                              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-                            },
-                            "name" : "pcreate_man",
-                            "getPSAppDEField" : {
-                              "name" : "PCREATE_MAN",
-                              "codeName" : "pcreate_man"
-                            }
-                          }, {
-                            "dataType" : 5,
-                            "format" : "YYYY-MM-DD HH:mm:ss",
-                            "name" : "create_time",
-                            "getPSAppDEField" : {
-                              "name" : "CREATE_TIME",
-                              "codeName" : "create_time"
-                            }
-                          }, {
-                            "dataType" : 21,
-                            "name" : "pcontent",
-                            "getPSAppDEField" : {
-                              "name" : "PCONTENT",
-                              "codeName" : "pcontent"
-                            }
-                          }, {
-                            "dataType" : 25,
-                            "getFrontPSCodeList" : {
-                              "modelref" : true,
-                              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-                            },
-                            "name" : "create_man",
-                            "getPSAppDEField" : {
-                              "name" : "CREATE_MAN",
-                              "codeName" : "create_man"
-                            }
-                          }, {
-                            "dataType" : 25,
                             "name" : "pid",
                             "getPSAppDEField" : {
                               "name" : "PID",
@@ -6696,6 +6736,43 @@
                             "getPSAppDEField" : {
                               "name" : "ID",
                               "codeName" : "id"
+                            }
+                          }, {
+                            "dataType" : 21,
+                            "name" : "pcontent",
+                            "getPSAppDEField" : {
+                              "name" : "PCONTENT",
+                              "codeName" : "pcontent"
+                            }
+                          }, {
+                            "dataType" : 5,
+                            "format" : "YYYY-MM-DD HH:mm:ss",
+                            "name" : "create_time",
+                            "getPSAppDEField" : {
+                              "name" : "CREATE_TIME",
+                              "codeName" : "create_time"
+                            }
+                          }, {
+                            "dataType" : 25,
+                            "getFrontPSCodeList" : {
+                              "modelref" : true,
+                              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+                            },
+                            "name" : "pcreate_man",
+                            "getPSAppDEField" : {
+                              "name" : "PCREATE_MAN",
+                              "codeName" : "pcreate_man"
+                            }
+                          }, {
+                            "dataType" : 25,
+                            "getFrontPSCodeList" : {
+                              "modelref" : true,
+                              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+                            },
+                            "name" : "create_man",
+                            "getPSAppDEField" : {
+                              "name" : "CREATE_MAN",
+                              "codeName" : "create_man"
                             }
                           }, {
                             "dataType" : 21,
@@ -10045,6 +10122,9 @@
                                   "triggerType" : "ITEMVISIBLE"
                                 } ],
                                 "getPSEditor" : {
+                                  "editorParams" : {
+                                    "triggerMode" : "input"
+                                  },
                                   "editorType" : "TEXTAREA",
                                   "maxLength" : 2000,
                                   "name" : "comment",

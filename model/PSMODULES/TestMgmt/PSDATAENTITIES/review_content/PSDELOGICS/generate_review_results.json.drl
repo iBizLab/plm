@@ -9,6 +9,7 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
                 global cn.ibizlab.plm.core.testmgmt.domain.guideline review_contentgenerate_review_resultsguideline;
                 global cn.ibizlab.plm.core.testmgmt.domain.guideline review_contentgenerate_review_resultsguideline_filter;
                 global cn.ibizlab.plm.core.testmgmt.domain.guideline review_contentgenerate_review_resultsguideline_pages;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea review_contentgenerate_review_resultsidea;
                 global cn.ibizlab.plm.core.testmgmt.domain.review_result review_contentgenerate_review_resultsreview_result;
                 global cn.ibizlab.plm.core.testmgmt.domain.review_stage review_contentgenerate_review_resultsreview_stage;
                 global cn.ibizlab.plm.core.testmgmt.domain.review_stage review_contentgenerate_review_resultsreview_stage_filter;
@@ -29,6 +30,26 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
             then
             end
 
+            //逻辑处理节点[测试用例]
+            rule "prepareparam6"
+            ruleflow-group "review_contentgenerate_review_resultsprepareparam6"
+            when
+            then
+                            review_contentgenerate_review_resultstest_case.set("",review_contentgenerate_review_resultsdefault.get("testcase"));
+                            review_contentgenerate_review_resultsguideline_filter.set("n_scope_id_eq",review_contentgenerate_review_resultstest_case.get("testlibraryid"));
+                            review_contentgenerate_review_resultsguideline_filter.set("n_object_type_eq","LIBRARY");
+                        update(review_contentgenerate_review_resultsdefault);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsguideline);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsidea);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview_stage_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultstest_case);//更新fact中变量值
+            end
+
             //逻辑处理节点[结束]
             rule "end1"
             ruleflow-group "review_contentgenerate_review_resultsend1"
@@ -38,6 +59,7 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
                         update(review_contentgenerate_review_resultsguideline);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsidea);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
@@ -54,6 +76,7 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
                         update(review_contentgenerate_review_resultsguideline);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsidea);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
@@ -61,19 +84,17 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
                         update(review_contentgenerate_review_resultstest_case);//更新fact中变量值
             end
 
-            //逻辑处理节点[获取所属测试库设置流程准则的过滤参数]
+            //逻辑处理节点[通用参数]
             rule "prepareparam1"
             ruleflow-group "review_contentgenerate_review_resultsprepareparam1"
             when
             then
-                            review_contentgenerate_review_resultstest_case.set("",review_contentgenerate_review_resultsdefault.get("testcase"));
-                            review_contentgenerate_review_resultsguideline_filter.set("n_scope_id_eq",review_contentgenerate_review_resultstest_case.get("testlibraryid"));
-                            review_contentgenerate_review_resultsguideline_filter.set("n_object_type_eq","LIBRARY");
                             review_contentgenerate_review_resultsguideline_filter.set("n_subject_type_eq",review_contentgenerate_review_resultsdefault.get("targettype"));
                         update(review_contentgenerate_review_resultsdefault);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsidea);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
@@ -90,6 +111,7 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
                         update(review_contentgenerate_review_resultsguideline);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsidea);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
@@ -108,6 +130,7 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
                         update(review_contentgenerate_review_resultsguideline);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsidea);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
@@ -125,6 +148,7 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
                         update(review_contentgenerate_review_resultsguideline);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsidea);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
@@ -141,6 +165,27 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
                         update(review_contentgenerate_review_resultsguideline);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsidea);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview_stage_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultstest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[产品需求]
+            rule "prepareparam5"
+            ruleflow-group "review_contentgenerate_review_resultsprepareparam5"
+            when
+            then
+                            review_contentgenerate_review_resultsidea.set("",review_contentgenerate_review_resultsdefault.get("idea"));
+                            review_contentgenerate_review_resultsguideline_filter.set("n_scope_id_eq",review_contentgenerate_review_resultsidea.get("productid"));
+                            review_contentgenerate_review_resultsguideline_filter.set("n_object_type_eq","PRODUCT");
+                        update(review_contentgenerate_review_resultsdefault);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsguideline);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsidea);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
@@ -162,6 +207,7 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
                         update(review_contentgenerate_review_resultsguideline);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsidea);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
@@ -178,6 +224,7 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
                         update(review_contentgenerate_review_resultsguideline);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsidea);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
@@ -195,6 +242,7 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
                         update(review_contentgenerate_review_resultsguideline);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsidea);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
@@ -211,6 +259,7 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
                         update(review_contentgenerate_review_resultsguideline);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsidea);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值

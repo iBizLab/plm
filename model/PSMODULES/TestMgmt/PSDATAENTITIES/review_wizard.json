@@ -757,8 +757,8 @@
     "dataType" : "TEXT",
     "dupCheckMode" : "ALL",
     "getDupCheckPSDEFields" : [ {
-      "name" : "LIBRARY_ID",
-      "codeName" : "library_id"
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
     } ],
     "importOrder" : 1000,
     "getLNPSLanguageRes" : {
@@ -777,7 +777,7 @@
     },
     "getPSSysSequence" : {
       "modelref" : true,
-      "path" : "PSSYSSEQUENCES/seq_review_id.json"
+      "path" : "PSSYSSEQUENCES/common_seq_review_id.json"
     },
     "sequenceMode" : "CREATE",
     "serviceCodeName" : "identifier",
@@ -968,6 +968,12 @@
       "name" : "PRINCIPAL_ID",
       "queryCodeExp" : "t1.`PRINCIPAL_ID`",
       "standardColumnName" : "`PRINCIPAL_ID`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_PRINCIPAL_ID_EQ",
+      "name" : "N_PRINCIPAL_ID_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -2103,7 +2109,7 @@
       "columnName" : "SHOW_IDENTIFIER",
       "dBType" : "MYSQL5",
       "name" : "SHOW_IDENTIFIER",
-      "queryCodeExp" : "concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`)",
+      "queryCodeExp" : "concat(t1.`IDENTIFIER`)",
       "standardColumnName" : "`SHOW_IDENTIFIER`"
     } ],
     "getAllPSDEFUIModes" : [ {
@@ -2165,8 +2171,8 @@
     "codeName" : "show_identifier",
     "dEFType" : 2,
     "dataType" : "TEXT",
-    "formulaColumns" : "library_identifier;identifier",
-    "formulaFormat" : "concat(%1$s,'-',%2$s)",
+    "formulaColumns" : "identifier",
+    "formulaFormat" : "concat(%1$s)",
     "importOrder" : 1000,
     "getLNPSLanguageRes" : {
       "lanResTag" : "DEF.LNAME.SHOW_IDENTIFIER"
@@ -4241,6 +4247,20 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "评审主体标识",
+      "name" : "n_principal_id_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_PRINCIPAL_ID_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "PRINCIPAL_ID",
+        "codeName" : "principal_id"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "defaultValue" : "10",
       "logicName" : "评审状态",
       "name" : "n_state_eq",
@@ -4553,6 +4573,38 @@
     "removeOrder" : -1,
     "serviceCodeName" : "review_wizard",
     "typeValue" : "REVIEW:REVIEW"
+  }, {
+    "codeName" : "review_wizard",
+    "dERSubType" : "DER1N",
+    "dERType" : "DERCUSTOM",
+    "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/review_content_idea/PSDERS/DERCUSTOM_REVIEW_CONTENT_IDEA_REVIEW_WIZARD.json",
+    "logicName" : "评审-评审内容",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_wizard.json"
+    },
+    "masterOrder" : 100,
+    "masterRS" : 3,
+    "minorCodeName" : "review_content_ideas",
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/review_content_idea.json"
+    },
+    "minorServiceCodeName" : "review_content_ideas",
+    "name" : "DERCUSTOM_REVIEW_CONTENT_IDEA_REVIEW_WIZARD",
+    "getNestedPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "all"
+    },
+    "orderValue" : 100,
+    "pickupDEFName" : "PRINCIPAL_ID",
+    "getPickupPSDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "removeActionType" : 1,
+    "removeOrder" : -1,
+    "serviceCodeName" : "review_wizard"
   }, {
     "codeName" : "review_wizard",
     "dERSubType" : "DER1N",

@@ -452,6 +452,9 @@
     "path" : "PSCODELISTS/CodeList57.json"
   }, {
     "modelref" : true,
+    "path" : "PSCODELISTS/work_item_dictionary.json"
+  }, {
+    "modelref" : true,
     "path" : "PSMODULES/Insight/PSCODELISTS/report_group.json"
   }, {
     "modelref" : true,
@@ -782,6 +785,9 @@
     "path" : "PSMODULES/Base/PSCODELISTS/UsrCodeList0320804109.json"
   }, {
     "modelref" : true,
+    "path" : "PSCODELISTS/test_case_dictionary.json"
+  }, {
+    "modelref" : true,
     "path" : "PSMODULES/Wiki/PSCODELISTS/shared_pages.json"
   }, {
     "modelref" : true,
@@ -804,6 +810,9 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/Wiki/PSCODELISTS/shared_page_check_type.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSCODELISTS/ticket_dictionary.json"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/Wiki/PSCODELISTS/stencil_scope.json"
@@ -975,9 +984,6 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/extension/PSCODELISTS/group.json"
-  }, {
-    "modelref" : true,
-    "path" : "PSCODELISTS/idea_dictionary_group.json"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/TestMgmt/PSCODELISTS/review_type_guideline.json"
@@ -1604,6 +1610,10 @@
     "modelref" : true,
     "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_content_extend.json",
     "name" : "REVIEW_CONTENT_EXTEND"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/review_content_idea.json",
+    "name" : "REVIEW_CONTENT_IDEA"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_result.json",
@@ -4451,6 +4461,20 @@
     "wXContent" : "${data.update_mantext}给你分配了测试计划：${data.name}",
     "mailGroupSend" : false
   }, {
+    "codeName" : "review_inform_template",
+    "content" : "<div class=\"notice-card\" style=\"display: flex; align-items: flex-start;\">\n    <div class=\"notice-card__avatar\" style=\"flex-shrink: 0;\">\n        <span class=\"notice-card__avatar-icon\" style=\"background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;\">${data.create_mantext?substring(0,2)!}</span>\n    </div>\n    <div class=\"notice-card__content\" style=\"flex-grow: 1;width: calc(100% - 46px);\">\n        <div class=\"notice-card__event\">\n            <div class=\"notice-card__event-title\" style=\"font-size: 14px; color: #000;\">\n                <span class=\"notice-card__event-name\" style=\"color: #999; font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\">${data.create_mantext}</span> \n                <span class=\"notice-card__event-desc\" style=\"font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\">把你加入了项目集</span>\n            </div>\n        </div>\n        <div class=\"notice-card-object\" style=\"display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;\">\n            <#if data.portfolio_identifier??>\n                <span class=\"notice-card__object-id\" style=\"color: #999; font-size:14px;\">${data.portfolio_identifier}</span>\n            </#if>\n            <span class=\"notice-card__object-name\" title=\"${data.portfolio_name}\">${data.portfolio_name}</span>\n        </div>\n        <div class=\"notice-card-pilot\" style=\"font-size: 12px; color: #999; text-transform: lowercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;\">\n            <span class=\"notice-pilot-time\">${data.create_time?string(\"yyyy-MM-dd HH:mm:ss\")}</span>\n            <span class=\"notice-pilot-info\"> · 评审管理 · ${data.portfolio_name}</span>\n        </div>\n    </div>\n</div>",
+    "contentType" : "HTML",
+    "dDContent" : "${data.create_mantext}把你加入了项目集：${data.portfolio_name}",
+    "dynaModelFilePath" : "PSMODULES/Base/PSSYSMSGTEMPLS/review_inform_template.json",
+    "name" : "评审通知模板",
+    "getPSSystemModule" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base.json"
+    },
+    "taskUrl" : "route://-/index/portfolio=${data.portfolio_id}/portfolio_project_index_view/srfnav=drgroup/work_tree_grid_ex_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D",
+    "wXContent" : "${data.create_mantext}把你加入了项目集：${data.portfolio_name}",
+    "mailGroupSend" : false
+  }, {
     "codeName" : "test_case_maintainer_cancel",
     "content" : "<div class=\"notice-card\" style=\"display: flex; align-items: flex-start;\">\n    <div class=\"notice-card__avatar\" style=\"flex-shrink: 0;\">\n        <span class=\"notice-card__avatar-icon\" style=\"background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;\">${data.update_mantext?substring(0,2)!}</span>\n    </div>\n    <div class=\"notice-card__content\" style=\"flex-grow: 1;width: calc(100% - 46px);\">\n        <div class=\"notice-card__event\">\n            <div class=\"notice-card__event-title\" style=\"font-size: 14px; color: #000;\">\n                <span class=\"notice-card__event-name\" style=\"color: #999; font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\">${data.update_mantext}</span> \n                <span class=\"notice-card__event-desc\" style=\"font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\">取消分配了测试用例</span>\n            </div>\n        </div>\n        <div class=\"notice-card-object\" style=\"display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;\">\n\t\t\t<#if data.show_identifier??>\n                <span class=\"notice-card__object-id\" style=\"color: #999; font-size:14px;\">${data.show_identifier}</span>\n            </#if>\n            <span class=\"notice-card__object-name\" title=\"${data.title}\">${data.title}</span>\n        </div>\n\t\t\n        <div class=\"notice-card-pilot\" style=\"font-size: 12px; color: #999; text-transform: lowercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;\">\n            <span class=\"notice-pilot-time\">${data.update_time?string(\"yyyy-MM-dd HH:mm:ss\")}</span>\n            <span class=\"notice-pilot-info\"> · 测试管理 · ${data.test_library_name}</span>\n        </div>\n    </div>\n</div>",
     "contentType" : "HTML",
@@ -5105,6 +5129,9 @@
   }, {
     "modelref" : true,
     "path" : "PSSYSSEQUENCES/seq_work_item_id.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSSEQUENCES/common_seq_review_id.json"
   }, {
     "modelref" : true,
     "path" : "PSSYSSEQUENCES/seq_post_id.json"
@@ -8036,6 +8063,9 @@
       "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_ticket_type.json"
     }, {
       "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/review_content_idea.json"
+    }, {
+      "modelref" : true,
       "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
     }, {
       "modelref" : true,
@@ -9178,8 +9208,7 @@
     "contentType" : "CODE",
     "defaultFlag" : true,
     "dynaModelFilePath" : "PSSYSSFPUBS/plm.json",
-    "groovySourceFolder" : "plm-core/src/main/groovy",
-    "modelFolder" : "plm-core/src/main/resources/model/cn/ibizlab/plm",
+    "modelFolder" : "model",
     "name" : "plm",
     "pKGCodeName" : "cn.ibizlab.plm",
     "versionString" : "1.0.0.0",

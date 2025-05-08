@@ -730,6 +730,45 @@
     "requestPath" : "/get_draft",
     "builtinMethod" : false
   }, {
+    "actionMode" : "READ",
+    "codeName" : "get_redirect_data",
+    "methodType" : "DEACTION",
+    "name" : "get_redirect_data",
+    "getPSAppDEMethodInput" : {
+      "getKeyPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "name" : "输入对象",
+      "type" : "KEYFIELD"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "review_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/get_redirect_data.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "get_redirect_data"
+    },
+    "requestField" : "ID",
+    "requestMethod" : "GET",
+    "requestParamType" : "FIELD",
+    "requestPath" : "/get_redirect_data",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "nothing",
@@ -4402,6 +4441,45 @@
     "requestPath" : "/get_draft",
     "builtinMethod" : false
   }, {
+    "actionMode" : "READ",
+    "codeName" : "get_redirect_data",
+    "methodType" : "DEACTION",
+    "name" : "get_redirect_data",
+    "getPSAppDEMethodInput" : {
+      "getKeyPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "name" : "输入对象",
+      "type" : "KEYFIELD"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "review_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/get_redirect_data.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "get_redirect_data"
+    },
+    "requestField" : "ID",
+    "requestMethod" : "GET",
+    "requestParamType" : "FIELD",
+    "requestPath" : "/get_redirect_data",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "nothing",
@@ -5002,6 +5080,45 @@
   }, {
     "actionTarget" : "NONE",
     "caption" : "添加内容",
+    "codeName" : "add_idea_review_content",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_review_re_idea_view.json",
+      "viewType" : "DEMPICKUPVIEW2"
+    },
+    "fullCodeName" : "review_add_idea_review_content",
+    "name" : "添加需求评审内容",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "add_review_content"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+    },
+    "getPSNavigateParams" : [ {
+      "key" : "tag",
+      "name" : "tag",
+      "value" : "IDEA",
+      "rawValue" : true
+    }, {
+      "key" : "review",
+      "name" : "review",
+      "value" : "review",
+      "rawValue" : false
+    } ],
+    "paramItem" : "review",
+    "refreshMode" : 1,
+    "timeout" : 60000,
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "add_idea_review_content",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "add_idea_review_content@review"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "添加内容",
     "codeName" : "add_review_content",
     "getFrontPSAppView" : {
       "modelref" : true,
@@ -5019,6 +5136,11 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
     },
     "getPSNavigateParams" : [ {
+      "key" : "tag",
+      "name" : "tag",
+      "value" : "TEST_CASE",
+      "rawValue" : true
+    }, {
       "key" : "review",
       "name" : "review",
       "value" : "review",
@@ -5151,6 +5273,10 @@
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "review_new_idea_review",
     "name" : "新建需求评审",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "notify_refresh"
+    },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
@@ -5163,6 +5289,7 @@
     "uIActionMode" : "FRONT",
     "uIActionTag" : "new_idea_review",
     "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "AFTER",
     "closeEditView" : true,
     "closePopupView" : true,
     "reloadData" : true,
@@ -6712,6 +6839,67 @@
       "id" : "Begin"
     }
   }, {
+    "codeName" : "notify_refresh",
+    "defaultParamName" : "Default",
+    "logicName" : "通知刷新",
+    "name" : "通知刷新",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 220,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 230,
+      "parallelOutput" : true
+    }, {
+      "code" : "ibiz.mc.command.create.send({ srfdecodename: 'review'})",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 399,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "通知刷新",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 238
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 650,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 230
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
     "codeName" : "portlet_refresh",
     "defaultParamName" : "Default",
     "logicName" : "门户刷新",
@@ -7103,6 +7291,10 @@
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_main_view.json",
+    "viewType" : "DEEDITVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_idea_main_view.json",
     "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,

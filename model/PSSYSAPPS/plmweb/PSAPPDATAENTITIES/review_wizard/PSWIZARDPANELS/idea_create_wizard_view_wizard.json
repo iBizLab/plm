@@ -134,9 +134,9 @@
         "id" : "fill_guideline"
       },
       "getPSDEFIUpdateDetails" : [ {
-        "name" : "review_guideline_id"
-      }, {
         "name" : "review_stage"
+      }, {
+        "name" : "review_guideline_id"
       } ]
     } ],
     "getPSDEFormItems" : [ {
@@ -596,17 +596,17 @@
               "getPSNavigateParams" : [ {
                 "key" : "n_owner_subtype_eq",
                 "name" : "n_owner_subtype_eq",
-                "value" : "library_review",
+                "value" : "product_review",
                 "rawValue" : true
               }, {
                 "key" : "n_owner_id_eq",
                 "name" : "n_owner_id_eq",
-                "value" : "library",
+                "value" : "product",
                 "rawValue" : false
               }, {
                 "key" : "n_owner_type_eq",
                 "name" : "n_owner_type_eq",
-                "value" : "library",
+                "value" : "product",
                 "rawValue" : true
               } ]
             } ],
@@ -985,26 +985,26 @@
           },
           "getPSEditor" : {
             "editorParams" : {
-              "srfnavparam.n_owner_subtype_eq" : "library_review",
-              "srfnavparam.n_owner_id_eq" : "%library%",
-              "srfnavparam.n_owner_type_eq" : "library"
+              "srfnavparam.n_owner_subtype_eq" : "product_review",
+              "srfnavparam.n_owner_id_eq" : "%product%",
+              "srfnavparam.n_owner_type_eq" : "product"
             },
             "editorType" : "HIDDEN",
             "name" : "categories",
             "getPSNavigateParams" : [ {
               "key" : "n_owner_subtype_eq",
               "name" : "n_owner_subtype_eq",
-              "value" : "library_review",
+              "value" : "product_review",
               "rawValue" : true
             }, {
               "key" : "n_owner_id_eq",
               "name" : "n_owner_id_eq",
-              "value" : "library",
+              "value" : "product",
               "rawValue" : false
             }, {
               "key" : "n_owner_type_eq",
               "name" : "n_owner_type_eq",
-              "value" : "library",
+              "value" : "product",
               "rawValue" : true
             } ]
           },
@@ -1377,10 +1377,10 @@
               "actionAfterWizard" : "DEFAULT",
               "getBatchAddPSAppViews" : [ {
                 "openMode" : "POPUPMODAL",
-                "refMode" : "TEST_CASE",
+                "refMode" : "IDEA",
                 "getRefPSAppView" : {
                   "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view2_review.json",
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_review_re_idea_view.json",
                   "viewType" : "DEMPICKUPVIEW2"
                 }
               } ],
@@ -1407,10 +1407,10 @@
                 }
               }, {
                 "openMode" : "POPUPMODAL",
-                "refMode" : "TEST_CASE",
+                "refMode" : "IDEA",
                 "getRefPSAppView" : {
                   "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view2_review.json",
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_review_re_idea_view.json",
                   "viewType" : "DEMPICKUPVIEW2"
                 }
               } ],
@@ -1474,16 +1474,19 @@
               "viewType" : "DEREDIRECTVIEW"
             }
           }, {
-            "name" : "MPICKUPVIEW:REVIEW_WIZARD"
-          }, {
-            "name" : "MPICKUPVIEW:TEST_CASE",
+            "name" : "MPICKUPVIEW:IDEA",
             "realOpenMode" : "POPUPMODAL",
-            "realTitle" : "用例实体数据多项选择",
+            "realTitle" : "计划关联需求多项数据选择视图",
+            "getRealTitlePSLanguageRes" : {
+              "lanResTag" : "PAGE.TITLE.IDEA.OTHERS_RELATION_IDEA_VIEW"
+            },
             "getRefPSAppView" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view2_review.json",
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_review_re_idea_view.json",
               "viewType" : "DEMPICKUPVIEW2"
             }
+          }, {
+            "name" : "MPICKUPVIEW:REVIEW_WIZARD"
           } ],
           "getPSControls" : [ {
             "codeName" : "under_review_grid_view_toolbar",
@@ -1498,10 +1501,61 @@
               "id" : "TOOLBAR"
             },
             "getPSDEToolbarItems" : [ {
-              "getCapPSLanguageRes" : {
-                "lanResTag" : "TBB.TEXT.*.NEW"
-              },
               "caption" : "规划用例",
+              "groupExtractMode" : "ITEM",
+              "itemType" : "DEUIACTION",
+              "name" : "deuiaction2",
+              "noPrivDisplayMode" : 2,
+              "getPSAppViewUIAction" : {
+                "modelref" : true,
+                "id" : "toolbar_deuiaction2"
+              },
+              "getPSControlLogics" : [ {
+                "itemName" : "deuiaction2",
+                "logicTag" : "toolbar",
+                "logicType" : "SCRIPT",
+                "name" : "test_case",
+                "scriptCode" : "context.principal_type == 'test_case'",
+                "triggerType" : "ITEMVISIBLE"
+              } ],
+              "getPSSysImage" : {
+                "glyph" : "xf067@FontAwesome",
+                "cssClass" : "fa fa-plus"
+              },
+              "getPSUIAction" : {
+                "actionTarget" : "NONE",
+                "caption" : "规划用例",
+                "codeName" : "program_review_test_case",
+                "getFrontPSAppView" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view2_review.json",
+                  "viewType" : "DEMPICKUPVIEW2"
+                },
+                "frontProcessType" : "WIZARD",
+                "fullCodeName" : "review_content_program_review_test_case",
+                "name" : "规划评审用例",
+                "getPSAppDEUILogic" : {
+                  "modelref" : true,
+                  "id" : "get_review_data"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
+                },
+                "refreshMode" : 1,
+                "uIActionMode" : "FRONT",
+                "uIActionTag" : "program_review_test_case",
+                "uIActionType" : "DEUIACTION",
+                "uILogicAttachMode" : "AFTER",
+                "reloadData" : true,
+                "id" : "program_review_test_case@review_content"
+              },
+              "tooltip" : "规划用例",
+              "uIActionTarget" : "NONE",
+              "showCaption" : true,
+              "showIcon" : true
+            }, {
+              "caption" : "规划需求",
               "groupExtractMode" : "ITEM",
               "itemType" : "DEUIACTION",
               "name" : "deuiaction1",
@@ -1510,35 +1564,48 @@
                 "modelref" : true,
                 "id" : "toolbar_deuiaction1"
               },
+              "getPSControlLogics" : [ {
+                "itemName" : "deuiaction1",
+                "logicTag" : "toolbar",
+                "logicType" : "SCRIPT",
+                "name" : "idea",
+                "scriptCode" : "context.principal_type == 'idea'",
+                "triggerType" : "ITEMVISIBLE"
+              } ],
               "getPSSysImage" : {
                 "glyph" : "xf067@FontAwesome",
                 "cssClass" : "fa fa-plus"
               },
               "getPSUIAction" : {
-                "getCapPSLanguageRes" : {
-                  "lanResTag" : "TBB.TEXT.*.NEW"
+                "actionTarget" : "NONE",
+                "caption" : "规划需求",
+                "codeName" : "program_review_idea",
+                "getFrontPSAppView" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_review_re_idea_view.json",
+                  "viewType" : "DEMPICKUPVIEW2"
                 },
-                "caption" : "新建",
-                "codeName" : "New",
-                "fullCodeName" : "New",
-                "name" : "表格界面_新建操作",
-                "getPSSysImage" : {
-                  "glyph" : "xf0f6@FontAwesome",
-                  "cssClass" : "fa fa-file-text-o"
+                "frontProcessType" : "WIZARD",
+                "fullCodeName" : "review_content_program_review_idea",
+                "name" : "规划评审需求",
+                "getPSAppDEUILogic" : {
+                  "modelref" : true,
+                  "id" : "get_review_data"
                 },
-                "predefinedType" : "GRIDVIEW_NEWACTION",
-                "timeout" : 60000,
-                "getTooltipPSLanguageRes" : {
-                  "lanResTag" : "TBB.TOOLTIP.*.NEW"
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
                 },
-                "uIActionMode" : "SYS",
-                "uIActionTag" : "New",
-                "uIActionType" : "DEUIACTION"
+                "refreshMode" : 1,
+                "uIActionMode" : "FRONT",
+                "uIActionTag" : "program_review_idea",
+                "uIActionType" : "DEUIACTION",
+                "uILogicAttachMode" : "AFTER",
+                "reloadData" : true,
+                "id" : "program_review_idea@review_content"
               },
-              "tooltip" : "规划用例",
-              "getTooltipPSLanguageRes" : {
-                "lanResTag" : "TBB.TOOLTIP.*.NEW"
-              },
+              "tooltip" : "规划需求",
+              "uIActionTarget" : "NONE",
               "showCaption" : true,
               "showIcon" : true
             } ],

@@ -958,6 +958,9 @@
       "name" : "IDEA_TYPE",
       "codeName" : "idea_type"
     }, {
+      "name" : "REVIEW_RESULT_STATE",
+      "codeName" : "review_result_state"
+    }, {
       "name" : "SEQUENCE",
       "codeName" : "sequence"
     }, {
@@ -4282,6 +4285,36 @@
     },
     "enableBackend" : true,
     "enableFront" : true,
+    "enableTempData" : true
+  }, {
+    "actionHolder" : 1,
+    "codeName" : "review_data",
+    "dataSetType" : "DELOGIC",
+    "logicName" : "评审数据",
+    "name" : "review_data",
+    "getPSDEDataSetInput" : {
+      "name" : "Review_dataInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "idea_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Review_dataResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "idea_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDELOGICS/set_change_type.json"
+    },
+    "predefinedType" : "DELOGIC",
+    "enableBackend" : true,
+    "enableFront" : false,
     "enableTempData" : true
   }, {
     "codeName" : "user",
@@ -9239,6 +9272,98 @@
     "formulaDEField" : true,
     "phisicalDEField" : false,
     "queryColumn" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "REVIEW_RESULT_STATE",
+      "dBType" : "MYSQL5",
+      "name" : "REVIEW_RESULT_STATE",
+      "queryCodeExp" : "t1.`REVIEW_RESULT_STATE`",
+      "standardColumnName" : "`REVIEW_RESULT_STATE`",
+      "valueAutoGen" : true
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_REVIEW_RESULT_STATE_EQ",
+      "name" : "N_REVIEW_RESULT_STATE_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[REVIEW_RESULT_STATE][评审结果]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBDROPDOWNLIST",
+        "name" : "[REVIEW_RESULT_STATE][评审结果]移动端默认",
+        "stringLength" : 60,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[REVIEW_RESULT_STATE][评审结果]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[REVIEW_RESULT_STATE][评审结果]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "REVIEW_RESULT_STATE",
+          "maxValue" : 60,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[60]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[60]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[60]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "review_result_state",
+    "dEFType" : 1,
+    "dataType" : "SSCODELIST",
+    "defaultValue" : "1",
+    "importOrder" : 1000,
+    "length" : 60,
+    "logicName" : "评审结果",
+    "name" : "REVIEW_RESULT_STATE",
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSCODELISTS/review_result.json"
+    },
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "REVIEW_RESULT_STATE"
+    },
+    "serviceCodeName" : "review_result_state",
+    "stdDataType" : 25,
+    "stringLength" : 60,
+    "valueFormat" : "%1$s",
+    "enableAudit" : true
   }, {
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -18787,6 +18912,510 @@
     "enableBackend" : true,
     "enableFront" : false
   }, {
+    "codeName" : "set_change_type",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDELOGICS/set_change_type.json",
+    "logicName" : "获取变更类型与变更版本",
+    "name" : "获取变更类型与变更版本",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 306,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNULL",
+            "dstFieldName" : "review",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[review] 值为空(Nil)"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL1"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "review",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[review] 值不为空(NotNil)"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "DEDATASET1",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "normal"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+      },
+      "leftPos" : 500,
+      "logicNodeType" : "DEDATASET",
+      "name" : "查询需求分页数据",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_results"
+      },
+      "topPos" : 208
+    }, {
+      "codeName" : "LOOPSUBCALL1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_obj"
+      },
+      "leftPos" : 700,
+      "logicNodeType" : "LOOPSUBCALL",
+      "name" : "循环子调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "subCallLink" : true
+      } ],
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_results"
+      },
+      "topPos" : 208
+    }, {
+      "codeName" : "DEBUGPARAM2",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_results"
+      },
+      "leftPos" : 500,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM2"
+        }
+      } ],
+      "topPos" : 290
+    }, {
+      "codeName" : "RAWSQLCALL1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_results"
+      },
+      "leftPos" : 306,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "获取评审测试用例",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "name" : "Default[review]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "review",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "name" : "Default[n_test_library_id_eq]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "n_test_library_id_eq",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "sql" : "\tSELECT\r\n\t\t* \r\n\tFROM\r\n\t\tidea t1 \r\n\tWHERE\r\n\t\tNOT EXISTS (\r\n\t\tSELECT\r\n\t\t\t* \r\n\t\tFROM\r\n\t\t\trelation t2\r\n\t\t\tJOIN review_content_extend t3 ON t3.id = t2.id\r\n\t\t\tJOIN review t4 ON t4.id = t2.PRINCIPAL_ID \r\n\t\tWHERE\r\n\t\t\tt2.TARGET_ID = t1.id \r\n\t\t\tAND t4.id = ? \r\n\t\t) \r\n\t\tAND t1.product_id = ?  AND t1.IS_DELETED = 0\r\n\tORDER BY\r\n\tt1.IDENTIFIER;",
+      "topPos" : 371,
+      "fillDstLogicParam" : true
+    }, {
+      "codeName" : "PREPAREPARAM1",
+      "leftPos" : 700,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置版本过滤器",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "N_OWNER_ID_EQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "version_filter"
+        },
+        "name" : "for_obj[ID] ==> version_filter[N_OWNER_ID_EQ]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_obj"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "SIZE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "version_filter"
+        },
+        "name" : "直接值[2] ==> version_filter[SIZE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "2",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 371
+    }, {
+      "codeName" : "DEDATASET2",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "version_filter"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/version.json"
+      },
+      "leftPos" : 700,
+      "logicNodeType" : "DEDATASET",
+      "name" : "查询符合条件的版本",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM3"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET2"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "version_pages_results"
+      },
+      "topPos" : 511
+    }, {
+      "codeName" : "DEBUGPARAM3",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_obj"
+      },
+      "leftPos" : 961,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        },
+        "name" : "未评审",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "REVIEW_RESULT_STATE",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "for_obj"
+            },
+            "logicType" : "SINGLE",
+            "name" : "for_obj[REVIEW_RESULT_STATE] 等于(=) 1",
+            "paramValue" : "1"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM3"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM3"
+        },
+        "name" : "已评审",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "NOTEQ",
+            "dstFieldName" : "REVIEW_RESULT_STATE",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "for_obj"
+            },
+            "logicType" : "SINGLE",
+            "name" : "for_obj[REVIEW_RESULT_STATE] 不等于(<>) 1",
+            "paramValue" : "1"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM3"
+        }
+      } ],
+      "topPos" : 511
+    }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : 810,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置变更类型为新增",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "change_type",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_obj"
+        },
+        "name" : "直接值[0] ==> for_obj[change_type]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "0",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 634
+    }, {
+      "codeName" : "PREPAREPARAM3",
+      "leftPos" : 1111,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置变更类型为修改",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM3"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "change_type",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_obj"
+        },
+        "name" : "直接值[1] ==> for_obj[change_type]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "1",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 634
+    }, {
+      "code" : "var version_pages_results = logic.getParam(\"version_pages_results\");\r\n\r\nif (version_pages_results) {\r\n    var change_version = {};\r\n    var for_obj = logic.getParam(\"for_obj\");\r\n    for (var i = 0; i < version_pages_results.length; i++) {\r\n        //新增只有to\r\n        if (i === 0) {\r\n            change_version[\"to\"] = version_pages_results.get(i);\r\n        }\r\n    }\r\n\r\n    for_obj.set(\"change_version\", change_version);\r\n}",
+      "codeName" : "RAWSFCODE1",
+      "codeType" : "JavaScript",
+      "leftPos" : 810,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "设置from-to都为最新版",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        }
+      } ],
+      "topPos" : 761
+    }, {
+      "code" : "var version_pages_results = logic.getParam(\"version_pages_results\");\r\nif (version_pages_results) {\r\n    var change_version = {};\r\n    var for_obj = logic.getParam(\"for_obj\");\r\n    for (var i = 0; i < version_pages_results.length; i++) {\r\n        if (i === 0) {\r\n            change_version[\"from\"] = version_pages_results.get(i);\r\n            change_version[\"to\"] = version_pages_results.get(i);\r\n            sys.info(\"进入1\");\r\n        } else if (i === 1) {\r\n            change_version[\"from\"] = version_pages_results.get(i);\r\n            sys.info(\"进入2\");\r\n        }\r\n    }\r\n    for_obj.set(\"change_version\", change_version);}",
+      "codeName" : "RAWSFCODE2",
+      "codeType" : "JavaScript",
+      "leftPos" : 1111,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "设置改变版本信息",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE2"
+        }
+      } ],
+      "topPos" : 761
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 1001,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "page_results"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 890
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+      },
+      "default" : true,
+      "filterParam" : true
+    }, {
+      "codeName" : "for_obj",
+      "logicName" : "循环临时变量",
+      "name" : "循环临时变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "page_results",
+      "logicName" : "分页查询结果",
+      "name" : "分页查询结果",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+      },
+      "entityPageParam" : true
+    }, {
+      "codeName" : "version_filter",
+      "logicName" : "版本过滤器",
+      "name" : "版本过滤器",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/version.json"
+      },
+      "filterParam" : true
+    }, {
+      "codeName" : "version_pages_results",
+      "logicName" : "版本分页结果",
+      "name" : "版本分页结果",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/version.json"
+      },
+      "entityPageParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "set_sequence",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDELOGICS/set_sequence.json",
@@ -20270,6 +20899,18 @@
       "stdDataType" : 6,
       "type" : "SIMPLE"
     }, {
+      "defaultValue" : "1",
+      "logicName" : "评审结果",
+      "name" : "review_result_state",
+      "getPSDEField" : {
+        "name" : "REVIEW_RESULT_STATE",
+        "codeName" : "review_result_state"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "剩余工时",
       "name" : "remaining_workload",
       "getPSDEField" : {
@@ -21179,6 +21820,21 @@
       "stdDataType" : 9,
       "type" : "SIMPLE"
     }, {
+      "defaultValue" : "1",
+      "logicName" : "评审结果",
+      "name" : "n_review_result_state_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_REVIEW_RESULT_STATE_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "REVIEW_RESULT_STATE",
+        "codeName" : "review_result_state"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "子产品标识",
       "name" : "n_section_id_eq",
       "getPSDEFSearchMode" : {
@@ -21971,6 +22627,12 @@
     "realModelSubType" : "DEMOBPICKUPMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "not_add_pick_up_grid_view_review",
+    "logicName" : "未添加的需求表格视图（评审）",
+    "name" : "未添加的需求表格视图（评审）",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "main_view",
     "logicName" : "需求主视图",
     "name" : "需求主视图",
@@ -22416,6 +23078,70 @@
     "getPickupPSDEField" : {
       "name" : "OWNER_ID",
       "codeName" : "owner_id"
+    },
+    "removeActionType" : 0,
+    "removeOrder" : -1,
+    "serviceCodeName" : "idea"
+  }, {
+    "codeName" : "idea",
+    "dERSubType" : "DER1N",
+    "dERType" : "DERCUSTOM",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_content/PSDERS/DERCUSTOM_IDEA_REVIEW_CONTENT.json",
+    "logicName" : "产品需求-评审内容",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+    },
+    "masterOrder" : 100,
+    "masterRS" : 7,
+    "minorCodeName" : "review_contents",
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_content.json"
+    },
+    "minorServiceCodeName" : "review_contents",
+    "name" : "DERCUSTOM_IDEA_REVIEW_CONTENT",
+    "getNestedPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "all"
+    },
+    "orderValue" : 100,
+    "pickupDEFName" : "TARGET_ID",
+    "getPickupPSDEField" : {
+      "name" : "TARGET_ID",
+      "codeName" : "target_id"
+    },
+    "removeActionType" : 0,
+    "removeOrder" : -1,
+    "serviceCodeName" : "idea"
+  }, {
+    "codeName" : "idea",
+    "dERSubType" : "DER1N",
+    "dERType" : "DERCUSTOM",
+    "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/review_content_idea/PSDERS/DERCUSTOM_IDEA_REVIEW_CONTENT_IDEA.json",
+    "logicName" : "产品需求-评审内容",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+    },
+    "masterOrder" : 100,
+    "masterRS" : 7,
+    "minorCodeName" : "review_content_ideas",
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/review_content_idea.json"
+    },
+    "minorServiceCodeName" : "review_content_ideas",
+    "name" : "DERCUSTOM_IDEA_REVIEW_CONTENT_IDEA",
+    "getNestedPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "all"
+    },
+    "orderValue" : 100,
+    "pickupDEFName" : "TARGET_ID",
+    "getPickupPSDEField" : {
+      "name" : "TARGET_ID",
+      "codeName" : "target_id"
     },
     "removeActionType" : 0,
     "removeOrder" : -1,

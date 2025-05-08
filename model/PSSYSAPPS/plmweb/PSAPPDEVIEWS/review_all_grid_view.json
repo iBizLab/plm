@@ -61,16 +61,16 @@
         "openMode" : "INDEXVIEWTAB_POPUPMODAL",
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_main_view.json",
-          "viewType" : "DEEDITVIEW"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_redirect_view.json",
+          "viewType" : "DEREDIRECTVIEW"
         }
       },
       "getPSAppUILogicRefViews" : [ {
         "openMode" : "INDEXVIEWTAB_POPUPMODAL",
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_main_view.json",
-          "viewType" : "DEEDITVIEW"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_redirect_view.json",
+          "viewType" : "DEREDIRECTVIEW"
         }
       } ],
       "viewLogicType" : "APP_OPENDATA",
@@ -84,19 +84,6 @@
     "rawValue" : true
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "EDITDATA",
-    "openMode" : "INDEXVIEWTAB_POPUPMODAL",
-    "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
-    "realTitle" : "评审主视图",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.REVIEW.MAIN_VIEW"
-    },
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_main_view.json",
-      "viewType" : "DEEDITVIEW"
-    }
-  }, {
     "name" : "NEWDATA",
     "openMode" : "INDEXVIEWTAB_POPUPMODAL",
     "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
@@ -108,6 +95,19 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_wizard_create_wizard_view.json",
       "viewType" : "DEWIZARDVIEW"
+    }
+  }, {
+    "name" : "EDITDATA",
+    "openMode" : "INDEXVIEWTAB_POPUPMODAL",
+    "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
+    "realTitle" : "评审数据重定向视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.REVIEW.REDIRECTVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_redirect_view.json",
+      "viewType" : "DEREDIRECTVIEW"
     }
   } ],
   "getPSControls" : [ {
@@ -209,6 +209,10 @@
         "frontProcessType" : "WIZARD",
         "fullCodeName" : "review_new_idea_review",
         "name" : "新建需求评审",
+        "getPSAppDEUILogic" : {
+          "modelref" : true,
+          "id" : "notify_refresh"
+        },
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
@@ -221,6 +225,7 @@
         "uIActionMode" : "FRONT",
         "uIActionTag" : "new_idea_review",
         "uIActionType" : "DEUIACTION",
+        "uILogicAttachMode" : "AFTER",
         "closeEditView" : true,
         "closePopupView" : true,
         "reloadData" : true,

@@ -7,6 +7,7 @@
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="review_contentsubmit_reviewdefault" type="entity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="review_contentsubmit_reviewfor_reltion" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.idea()" name="review_contentsubmit_reviewidea" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="review_contentsubmit_reviewrelation_page" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="review_contentsubmit_reviewreltion_filter" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_content()" name="review_contentsubmit_reviewreview_content" type="refentity"/>
@@ -16,11 +17,13 @@
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.test_case()" name="review_contentsubmit_reviewtest_case" type="refentity"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IreviewService))" name="reviewservice" type="service"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IrelationService))" name="relationservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IideaService))" name="ideaservice" type="service"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Itest_caseService))" name="test_caseservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Ireview_contentService))" name="iBzSysReview_contentDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="review_contentsubmit_reviewdefault" type="cn.ibizlab.plm.core.testmgmt.domain.review_content" />
                             <tns:global identifier="review_contentsubmit_reviewfor_reltion" type="cn.ibizlab.plm.core.base.domain.relation" />
+                            <tns:global identifier="review_contentsubmit_reviewidea" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
                             <tns:global identifier="review_contentsubmit_reviewrelation_page" type="cn.ibizlab.plm.core.base.domain.relation" />
                             <tns:global identifier="review_contentsubmit_reviewreltion_filter" type="cn.ibizlab.plm.core.base.domain.relation" />
                             <tns:global identifier="review_contentsubmit_reviewreview_content" type="cn.ibizlab.plm.core.testmgmt.domain.review_content" />
@@ -45,10 +48,18 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewthrowexception1" id="throwexception1" implementation="http://www.jboss.org/drools/rule" name="评审内容为空"/>
                         <endEvent id="throwexception1_end" name="end"/>
                         <sequenceFlow id="throwexception1_end_line" sourceRef="throwexception1" targetRef="throwexception1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="获取需求ID"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="获取测试用例ID"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdeaction5" id="deaction5" implementation="http://www.jboss.org/drools/rule" name="获取产品需求详情"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="获取测试用例详情"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewprepareparam8" id="prepareparam8" implementation="http://www.jboss.org/drools/rule" name="设置产品需求评审状态"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="设置测试用例评审状态"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdeaction6" id="deaction6" implementation="http://www.jboss.org/drools/rule" name="更新产品需求"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="更新测试用例"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewresetparam2" id="resetparam2" implementation="http://www.jboss.org/drools/rule" name="重置参数"/>
+                        <endEvent id="resetparam2_end" name="end"/>
+                        <sequenceFlow id="resetparam2_end_line" sourceRef="resetparam2" targetRef="resetparam2_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewresetparam1" id="resetparam1" implementation="http://www.jboss.org/drools/rule" name="重置测试用例参数"/>
                         <endEvent id="resetparam1_end" name="end"/>
                         <sequenceFlow id="resetparam1_end_line" sourceRef="resetparam1" targetRef="resetparam1_end"/>
@@ -70,6 +81,7 @@
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $review_contentsubmit_reviewdefault:review_content();
                                             $review_contentsubmit_reviewfor_reltion:relation();
+                                            $review_contentsubmit_reviewidea:idea();
                                             $review_contentsubmit_reviewrelation_page:relation();
                                             $review_contentsubmit_reviewreltion_filter:relation();
                                             $review_contentsubmit_reviewreview_content:review_content();
@@ -77,7 +89,7 @@
                                             $review_contentsubmit_reviewstage:review_stage();
                                             $review_contentsubmit_reviewstages:review_stage();
                                             $review_contentsubmit_reviewtest_case:test_case();
-                                    eval($review_contentsubmit_reviewdefault==review_contentsubmit_reviewdefault && $review_contentsubmit_reviewfor_reltion==review_contentsubmit_reviewfor_reltion && $review_contentsubmit_reviewrelation_page==review_contentsubmit_reviewrelation_page && $review_contentsubmit_reviewreltion_filter==review_contentsubmit_reviewreltion_filter && $review_contentsubmit_reviewreview_content==review_contentsubmit_reviewreview_content && $review_contentsubmit_reviewreview_detail==review_contentsubmit_reviewreview_detail && $review_contentsubmit_reviewstage==review_contentsubmit_reviewstage && $review_contentsubmit_reviewstages==review_contentsubmit_reviewstages && $review_contentsubmit_reviewtest_case==review_contentsubmit_reviewtest_case);
+                                    eval($review_contentsubmit_reviewdefault==review_contentsubmit_reviewdefault && $review_contentsubmit_reviewfor_reltion==review_contentsubmit_reviewfor_reltion && $review_contentsubmit_reviewidea==review_contentsubmit_reviewidea && $review_contentsubmit_reviewrelation_page==review_contentsubmit_reviewrelation_page && $review_contentsubmit_reviewreltion_filter==review_contentsubmit_reviewreltion_filter && $review_contentsubmit_reviewreview_content==review_contentsubmit_reviewreview_content && $review_contentsubmit_reviewreview_detail==review_contentsubmit_reviewreview_detail && $review_contentsubmit_reviewstage==review_contentsubmit_reviewstage && $review_contentsubmit_reviewstages==review_contentsubmit_reviewstages && $review_contentsubmit_reviewtest_case==review_contentsubmit_reviewtest_case);
                                 eval((RuleUtils.test($review_contentsubmit_reviewrelation_page.get("size"),"NOTEQ","0")))
                                 ]]>
                             </conditionExpression>
@@ -86,6 +98,7 @@
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $review_contentsubmit_reviewdefault:review_content();
                                             $review_contentsubmit_reviewfor_reltion:relation();
+                                            $review_contentsubmit_reviewidea:idea();
                                             $review_contentsubmit_reviewrelation_page:relation();
                                             $review_contentsubmit_reviewreltion_filter:relation();
                                             $review_contentsubmit_reviewreview_content:review_content();
@@ -93,22 +106,64 @@
                                             $review_contentsubmit_reviewstage:review_stage();
                                             $review_contentsubmit_reviewstages:review_stage();
                                             $review_contentsubmit_reviewtest_case:test_case();
-                                    eval($review_contentsubmit_reviewdefault==review_contentsubmit_reviewdefault && $review_contentsubmit_reviewfor_reltion==review_contentsubmit_reviewfor_reltion && $review_contentsubmit_reviewrelation_page==review_contentsubmit_reviewrelation_page && $review_contentsubmit_reviewreltion_filter==review_contentsubmit_reviewreltion_filter && $review_contentsubmit_reviewreview_content==review_contentsubmit_reviewreview_content && $review_contentsubmit_reviewreview_detail==review_contentsubmit_reviewreview_detail && $review_contentsubmit_reviewstage==review_contentsubmit_reviewstage && $review_contentsubmit_reviewstages==review_contentsubmit_reviewstages && $review_contentsubmit_reviewtest_case==review_contentsubmit_reviewtest_case);
+                                    eval($review_contentsubmit_reviewdefault==review_contentsubmit_reviewdefault && $review_contentsubmit_reviewfor_reltion==review_contentsubmit_reviewfor_reltion && $review_contentsubmit_reviewidea==review_contentsubmit_reviewidea && $review_contentsubmit_reviewrelation_page==review_contentsubmit_reviewrelation_page && $review_contentsubmit_reviewreltion_filter==review_contentsubmit_reviewreltion_filter && $review_contentsubmit_reviewreview_content==review_contentsubmit_reviewreview_content && $review_contentsubmit_reviewreview_detail==review_contentsubmit_reviewreview_detail && $review_contentsubmit_reviewstage==review_contentsubmit_reviewstage && $review_contentsubmit_reviewstages==review_contentsubmit_reviewstages && $review_contentsubmit_reviewtest_case==review_contentsubmit_reviewtest_case);
                                 eval((RuleUtils.test($review_contentsubmit_reviewrelation_page.get("size"),"EQ","0")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam6_deaction4" sourceRef="prepareparam6" targetRef="deaction4">
                     </sequenceFlow>
-                    <sequenceFlow id="loopsubcall1_prepareparam4" sourceRef="loopsubcall1" targetRef="prepareparam4">
+                    <sequenceFlow id="loopsubcall1_debugparam1" sourceRef="loopsubcall1" targetRef="debugparam1">
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
                     </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam1_prepareparam4" sourceRef="gateway-debugparam1" targetRef="prepareparam4">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $review_contentsubmit_reviewdefault:review_content();
+                                            $review_contentsubmit_reviewfor_reltion:relation();
+                                            $review_contentsubmit_reviewidea:idea();
+                                            $review_contentsubmit_reviewrelation_page:relation();
+                                            $review_contentsubmit_reviewreltion_filter:relation();
+                                            $review_contentsubmit_reviewreview_content:review_content();
+                                            $review_contentsubmit_reviewreview_detail:review();
+                                            $review_contentsubmit_reviewstage:review_stage();
+                                            $review_contentsubmit_reviewstages:review_stage();
+                                            $review_contentsubmit_reviewtest_case:test_case();
+                                    eval($review_contentsubmit_reviewdefault==review_contentsubmit_reviewdefault && $review_contentsubmit_reviewfor_reltion==review_contentsubmit_reviewfor_reltion && $review_contentsubmit_reviewidea==review_contentsubmit_reviewidea && $review_contentsubmit_reviewrelation_page==review_contentsubmit_reviewrelation_page && $review_contentsubmit_reviewreltion_filter==review_contentsubmit_reviewreltion_filter && $review_contentsubmit_reviewreview_content==review_contentsubmit_reviewreview_content && $review_contentsubmit_reviewreview_detail==review_contentsubmit_reviewreview_detail && $review_contentsubmit_reviewstage==review_contentsubmit_reviewstage && $review_contentsubmit_reviewstages==review_contentsubmit_reviewstages && $review_contentsubmit_reviewtest_case==review_contentsubmit_reviewtest_case);
+                                eval((RuleUtils.test($review_contentsubmit_reviewfor_reltion.get("targetType"),"EQ","TEST_CASE")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam1_prepareparam7" sourceRef="gateway-debugparam1" targetRef="prepareparam7">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $review_contentsubmit_reviewdefault:review_content();
+                                            $review_contentsubmit_reviewfor_reltion:relation();
+                                            $review_contentsubmit_reviewidea:idea();
+                                            $review_contentsubmit_reviewrelation_page:relation();
+                                            $review_contentsubmit_reviewreltion_filter:relation();
+                                            $review_contentsubmit_reviewreview_content:review_content();
+                                            $review_contentsubmit_reviewreview_detail:review();
+                                            $review_contentsubmit_reviewstage:review_stage();
+                                            $review_contentsubmit_reviewstages:review_stage();
+                                            $review_contentsubmit_reviewtest_case:test_case();
+                                    eval($review_contentsubmit_reviewdefault==review_contentsubmit_reviewdefault && $review_contentsubmit_reviewfor_reltion==review_contentsubmit_reviewfor_reltion && $review_contentsubmit_reviewidea==review_contentsubmit_reviewidea && $review_contentsubmit_reviewrelation_page==review_contentsubmit_reviewrelation_page && $review_contentsubmit_reviewreltion_filter==review_contentsubmit_reviewreltion_filter && $review_contentsubmit_reviewreview_content==review_contentsubmit_reviewreview_content && $review_contentsubmit_reviewreview_detail==review_contentsubmit_reviewreview_detail && $review_contentsubmit_reviewstage==review_contentsubmit_reviewstage && $review_contentsubmit_reviewstages==review_contentsubmit_reviewstages && $review_contentsubmit_reviewtest_case==review_contentsubmit_reviewtest_case);
+                                eval((RuleUtils.test($review_contentsubmit_reviewfor_reltion.get("targetType"),"EQ","IDEA")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam7_deaction5" sourceRef="prepareparam7" targetRef="deaction5">
+                    </sequenceFlow>
                     <sequenceFlow id="prepareparam4_deaction2" sourceRef="prepareparam4" targetRef="deaction2">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction5_prepareparam8" sourceRef="deaction5" targetRef="prepareparam8">
                     </sequenceFlow>
                     <sequenceFlow id="deaction2_prepareparam5" sourceRef="deaction2" targetRef="prepareparam5">
                     </sequenceFlow>
+                    <sequenceFlow id="prepareparam8_deaction6" sourceRef="prepareparam8" targetRef="deaction6">
+                    </sequenceFlow>
                     <sequenceFlow id="prepareparam5_deaction3" sourceRef="prepareparam5" targetRef="deaction3">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction6_resetparam2" sourceRef="deaction6" targetRef="resetparam2">
                     </sequenceFlow>
                     <sequenceFlow id="deaction3_resetparam1" sourceRef="deaction3" targetRef="resetparam1">
                     </sequenceFlow>
@@ -116,5 +171,9 @@
                             <sequenceFlow id="dedataset1_gateway-dedataset1_gatewayline" sourceRef="dedataset1" targetRef="gateway-dedataset1"></sequenceFlow>
                             <sequenceFlow id="gateway-dedataset1_end_line" sourceRef="gateway-dedataset1" targetRef="gateway-dedataset1_end"/>
                             <endEvent id="gateway-dedataset1_end" name="end"/>
+                            <exclusiveGateway id="gateway-debugparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="debugparam1_gateway-debugparam1_gatewayline" sourceRef="debugparam1" targetRef="gateway-debugparam1"></sequenceFlow>
+                            <sequenceFlow id="gateway-debugparam1_end_line" sourceRef="gateway-debugparam1" targetRef="gateway-debugparam1_end"/>
+                            <endEvent id="gateway-debugparam1_end" name="end"/>
         </process>
     </definitions>

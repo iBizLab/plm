@@ -3,7 +3,7 @@
   "name" : "MySQL5",
   "getPSDEDataQueryCodeConds" : [ {
     "condType" : "CUSTOM",
-    "customCond" : "EXISTS(SELECT * FROM `RELATION` t21 \n WHERE \n t1.`ID` = t21.`TARGET_ID`  AND  ( t21.`TARGET_TYPE` = 'customer'  AND  t21.`PRINCIPAL_TYPE` = 'idea'  AND  t21.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id} ) )",
+    "customCond" : "EXISTS(SELECT * FROM `RELATION` t21 \n WHERE \n t1.`ID` = t21.`TARGET_ID`  AND  ( t21.`TARGET_TYPE` = 'customer'  AND  t21.`PRINCIPAL_TYPE` = 'idea'  AND  t21.`PRINCIPAL_ID` =  ${srfwebcontext('principal_id','{\"defname\":\"PRINCIPAL_ID\",\"dename\":\"RELATION\"}')} ) )",
     "name" : "查询条件"
   }, {
     "condType" : "CUSTOM",

@@ -1083,7 +1083,8 @@
             "getPSDEFDLogics" : [ {
               "condOP" : "ISNULL",
               "dEFDName" : "checkid",
-              "logicType" : "SINGLE"
+              "logicType" : "SINGLE",
+              "name" : "checkid值为空(Nil)"
             } ],
             "relatedDetailNames" : [ "checkid" ],
             "notMode" : false
@@ -1180,7 +1181,8 @@
             "getPSDEFDLogics" : [ {
               "condOP" : "ISNOTNULL",
               "dEFDName" : "product_name",
-              "logicType" : "SINGLE"
+              "logicType" : "SINGLE",
+              "name" : "product_name值不为空(NotNil)"
             } ],
             "relatedDetailNames" : [ "product_name" ],
             "notMode" : false
@@ -1269,7 +1271,8 @@
             "getPSDEFDLogics" : [ {
               "condOP" : "ISNOTNULL",
               "dEFDName" : "product_name",
-              "logicType" : "SINGLE"
+              "logicType" : "SINGLE",
+              "name" : "product_name值不为空(NotNil)"
             } ],
             "relatedDetailNames" : [ "product_name" ],
             "notMode" : false
@@ -1423,7 +1426,8 @@
             "getPSDEFDLogics" : [ {
               "condOP" : "ISNOTNULL",
               "dEFDName" : "product_name",
-              "logicType" : "SINGLE"
+              "logicType" : "SINGLE",
+              "name" : "product_name值不为空(NotNil)"
             } ],
             "relatedDetailNames" : [ "product_name" ],
             "notMode" : false
@@ -1447,25 +1451,29 @@
           "getPSEditor" : {
             "editorParams" : {
               "multiple" : "true",
-              "SRFNAVPARAM.n_product_id_eq" : "%product%"
+              "DROPDOWNVIEW" : "TRUE",
+              "AC" : "FALSE",
+              "TRIGGER" : "TRUE",
+              "PICKUPVIEW" : "TRUE"
             },
-            "editorType" : "MDROPDOWNLIST",
+            "editorType" : "PICKEREX_DROPDOWNVIEW",
             "name" : "customer",
-            "getPSAppCodeList" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__product_customer.json"
-            },
             "getPSEditorItems" : [ {
               "name" : "customer_id"
             } ],
-            "getPSNavigateParams" : [ {
-              "key" : "n_product_id_eq",
-              "name" : "n_product_id_eq",
-              "value" : "product",
-              "rawValue" : false
-            } ],
+            "getPickupPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/customer_pc_customer_pickup_tree_view.json",
+              "viewType" : "DEPICKUPTREEVIEW"
+            },
             "placeHolder" : "选择客户",
-            "singleSelect" : false
+            "valueItemName" : "customer_id",
+            "dropDownView" : true,
+            "enableAC" : false,
+            "enablePickupView" : true,
+            "forceSelection" : true,
+            "showTrigger" : true,
+            "singleSelect" : true
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
@@ -1473,7 +1481,6 @@
           },
           "valueItemName" : "customer_id",
           "allowEmpty" : true,
-          "needCodeListConfig" : true,
           "showCaption" : true
         }, {
           "getCapPSLanguageRes" : {

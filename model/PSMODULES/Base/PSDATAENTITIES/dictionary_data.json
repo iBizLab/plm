@@ -14,6 +14,21 @@
     "defaultMode" : true,
     "enablePagingBar" : false,
     "id" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEACMODES/Default.json"
+  }, {
+    "codeName" : "dictionary",
+    "logicName" : "字典",
+    "name" : "dictionary",
+    "getPSDEACModeDataItems" : [ {
+      "dataType" : 25,
+      "name" : "value"
+    }, {
+      "dataType" : 25,
+      "name" : "text"
+    } ],
+    "pagingSize" : 50,
+    "defaultMode" : false,
+    "enablePagingBar" : false,
+    "id" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEACMODES/dictionary.json"
   } ],
   "getAllPSDEActions" : [ {
     "actionMode" : "CREATE",
@@ -260,6 +275,9 @@
       "name" : "COLOR",
       "codeName" : "color"
     }, {
+      "name" : "STYLE",
+      "codeName" : "style"
+    }, {
       "name" : "CATALOG",
       "codeName" : "catalog"
     }, {
@@ -417,6 +435,102 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/idea_priority/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "idea_priority",
+    "logicName" : "需求优先级",
+    "name" : "idea_priority",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "DICTIONARY",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "idea_priority",
+          "fieldName" : "CATALOG",
+          "name" : "(CATALOG) 等于(=) idea_priority",
+          "getPSDEField" : {
+            "name" : "CATALOG",
+            "codeName" : "catalog"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Idea_priorityInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Idea_priorityResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/idea_source/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "idea_source",
+    "logicName" : "需求来源",
+    "name" : "idea_source",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "DICTIONARY",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "idea_source",
+          "fieldName" : "CATALOG",
+          "name" : "(CATALOG) 等于(=) idea_source",
+          "getPSDEField" : {
+            "name" : "CATALOG",
+            "codeName" : "catalog"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Idea_sourceInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Idea_sourceResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/idea_state/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "idea_state",
@@ -456,6 +570,54 @@
     },
     "getPSDEDataQueryReturn" : {
       "name" : "Idea_stateResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/idea_type/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "idea_type",
+    "logicName" : "需求类型",
+    "name" : "idea_type",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "DICTIONARY",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "idea_type",
+          "fieldName" : "CATALOG",
+          "name" : "(CATALOG) 等于(=) idea_type",
+          "getPSDEField" : {
+            "name" : "CATALOG",
+            "codeName" : "catalog"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Idea_typeInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Idea_typeResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "dictionary_data_dto"
@@ -513,6 +675,342 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/test_case/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "test_case",
+    "logicName" : "测试用例",
+    "name" : "test_case",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "DICTIONARY",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "LIKE",
+          "condType" : "SINGLE",
+          "condValue" : "test_case",
+          "fieldName" : "CATALOG",
+          "name" : "(CATALOG) 文本包含(%) test_case",
+          "getPSDEField" : {
+            "name" : "CATALOG",
+            "codeName" : "catalog"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Test_caseInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Test_caseResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/test_case_importance_level/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "test_case_importance_level",
+    "logicName" : "测试用例重要程度",
+    "name" : "test_case_importance_level",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "DICTIONARY",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "test_case_importance_level",
+          "fieldName" : "CATALOG",
+          "name" : "(CATALOG) 等于(=) test_case_importance_level",
+          "getPSDEField" : {
+            "name" : "CATALOG",
+            "codeName" : "catalog"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Test_case_importance_levelInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Test_case_importance_levelResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/test_case_status/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "test_case_status",
+    "logicName" : "测试用例状态",
+    "name" : "test_case_status",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "DICTIONARY",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "test_case_status",
+          "fieldName" : "CATALOG",
+          "name" : "(CATALOG) 等于(=) test_case_status",
+          "getPSDEField" : {
+            "name" : "CATALOG",
+            "codeName" : "catalog"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Test_case_statusInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Test_case_statusResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/test_case_test_type/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "test_case_test_type",
+    "logicName" : "测试用例测试类型",
+    "name" : "test_case_test_type",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "DICTIONARY",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "test_case_test_type",
+          "fieldName" : "CATALOG",
+          "name" : "(CATALOG) 等于(=) test_case_test_type",
+          "getPSDEField" : {
+            "name" : "CATALOG",
+            "codeName" : "catalog"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Test_case_test_typeInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Test_case_test_typeResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/test_case_type/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "test_case_type",
+    "logicName" : "测试用例类型",
+    "name" : "test_case_type",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "DICTIONARY",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "test_case_type",
+          "fieldName" : "CATALOG",
+          "name" : "(CATALOG) 等于(=) test_case_type",
+          "getPSDEField" : {
+            "name" : "CATALOG",
+            "codeName" : "catalog"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Test_case_typeInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Test_case_typeResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/ticket/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "ticket",
+    "logicName" : "工单",
+    "name" : "ticket",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "DICTIONARY",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "LIKE",
+          "condType" : "SINGLE",
+          "condValue" : "ticket",
+          "fieldName" : "CATALOG",
+          "name" : "(CATALOG) 文本包含(%) ticket",
+          "getPSDEField" : {
+            "name" : "CATALOG",
+            "codeName" : "catalog"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "TicketInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "TicketResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/ticket_solution/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "ticket_solution",
+    "logicName" : "工单解决方案",
+    "name" : "ticket_solution",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "DICTIONARY",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "ticket_solution",
+          "fieldName" : "CATALOG",
+          "name" : "(CATALOG) 等于(=) ticket_solution",
+          "getPSDEField" : {
+            "name" : "CATALOG",
+            "codeName" : "catalog"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Ticket_solutionInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Ticket_solutionResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/ticket_state/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "ticket_state",
@@ -552,6 +1050,294 @@
     },
     "getPSDEDataQueryReturn" : {
       "name" : "Ticket_stateResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/work_item/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "work_item",
+    "logicName" : "工作项",
+    "name" : "work_item",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "DICTIONARY",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "LIKE",
+          "condType" : "SINGLE",
+          "condValue" : "work_item",
+          "fieldName" : "CATALOG",
+          "name" : "(CATALOG) 文本包含(%) work_item",
+          "getPSDEField" : {
+            "name" : "CATALOG",
+            "codeName" : "catalog"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Work_itemInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Work_itemResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/work_item_category/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "work_item_category",
+    "logicName" : "工作项任务类别",
+    "name" : "work_item_category",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "DICTIONARY",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "work_item_category",
+          "fieldName" : "CATALOG",
+          "name" : "(CATALOG) 等于(=) work_item_category",
+          "getPSDEField" : {
+            "name" : "CATALOG",
+            "codeName" : "catalog"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Work_item_categoryInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Work_item_categoryResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/work_item_priority/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "work_item_priority",
+    "logicName" : "工作项优先级",
+    "name" : "work_item_priority",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "DICTIONARY",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "work_item_priority",
+          "fieldName" : "CATALOG",
+          "name" : "(CATALOG) 等于(=) work_item_priority",
+          "getPSDEField" : {
+            "name" : "CATALOG",
+            "codeName" : "catalog"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Work_item_priorityInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Work_item_priorityResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/work_item_probability/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "work_item_probability",
+    "logicName" : "工作项复现概率",
+    "name" : "work_item_probability",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "DICTIONARY",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "work_item_probability",
+          "fieldName" : "CATALOG",
+          "name" : "(CATALOG) 等于(=) work_item_probability",
+          "getPSDEField" : {
+            "name" : "CATALOG",
+            "codeName" : "catalog"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Work_item_probabilityInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Work_item_probabilityResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/work_item_risk/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "work_item_risk",
+    "logicName" : "工作项风险",
+    "name" : "work_item_risk",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "DICTIONARY",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "work_item_risk",
+          "fieldName" : "CATALOG",
+          "name" : "(CATALOG) 等于(=) work_item_risk",
+          "getPSDEField" : {
+            "name" : "CATALOG",
+            "codeName" : "catalog"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Work_item_riskInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Work_item_riskResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/work_item_severity/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "work_item_severity",
+    "logicName" : "工作项严重程度",
+    "name" : "work_item_severity",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "DICTIONARY",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "work_item_severity",
+          "fieldName" : "CATALOG",
+          "name" : "(CATALOG) 等于(=) work_item_severity",
+          "getPSDEField" : {
+            "name" : "CATALOG",
+            "codeName" : "catalog"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Work_item_severityInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Work_item_severityResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "dictionary_data_dto"
@@ -625,6 +1411,58 @@
     "enableBackend" : true,
     "enableFront" : true
   }, {
+    "codeName" : "idea_priority",
+    "logicName" : "需求优先级",
+    "name" : "idea_priority",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "idea_priority"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Idea_priorityInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Idea_priorityResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "idea_source",
+    "logicName" : "需求来源",
+    "name" : "idea_source",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "idea_source"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Idea_sourceInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Idea_sourceResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
     "codeName" : "idea_state",
     "logicName" : "需求状态",
     "name" : "idea_state",
@@ -642,6 +1480,32 @@
     },
     "getPSDEDataSetReturn" : {
       "name" : "Idea_stateResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "idea_type",
+    "logicName" : "需求类型",
+    "name" : "idea_type",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "idea_type"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Idea_typeInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Idea_typeResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "dictionary_data_dto"
@@ -677,6 +1541,188 @@
     "enableBackend" : true,
     "enableFront" : true
   }, {
+    "codeName" : "test_case",
+    "logicName" : "测试用例",
+    "name" : "test_case",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "test_case"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Test_caseInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Test_caseResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "test_case_importance_level",
+    "logicName" : "测试用例重要程度",
+    "name" : "test_case_importance_level",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "test_case_importance_level"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Test_case_importance_levelInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Test_case_importance_levelResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "test_case_status",
+    "logicName" : "测试用例状态",
+    "name" : "test_case_status",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "test_case_status"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Test_case_statusInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Test_case_statusResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "test_case_test_type",
+    "logicName" : "测试用例测试类型",
+    "name" : "test_case_test_type",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "test_case_test_type"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Test_case_test_typeInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Test_case_test_typeResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "test_case_type",
+    "logicName" : "测试用例类型",
+    "name" : "test_case_type",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "test_case_type"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Test_case_typeInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Test_case_typeResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "ticket",
+    "logicName" : "工单",
+    "name" : "ticket",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "ticket"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "TicketInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "TicketResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "ticket_solution",
+    "logicName" : "工单解决方案",
+    "name" : "ticket_solution",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "ticket_solution"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Ticket_solutionInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Ticket_solutionResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
     "codeName" : "ticket_state",
     "logicName" : "工单状态",
     "name" : "ticket_state",
@@ -694,6 +1740,162 @@
     },
     "getPSDEDataSetReturn" : {
       "name" : "Ticket_stateResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "work_item",
+    "logicName" : "工作项",
+    "name" : "work_item",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "work_item"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Work_itemInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Work_itemResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "work_item_category",
+    "logicName" : "工作项任务类别",
+    "name" : "work_item_category",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "work_item_category"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Work_item_categoryInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Work_item_categoryResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "work_item_priority",
+    "logicName" : "工作项优先级",
+    "name" : "work_item_priority",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "work_item_priority"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Work_item_priorityInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Work_item_priorityResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "work_item_probability",
+    "logicName" : "工作项复现概率",
+    "name" : "work_item_probability",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "work_item_probability"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Work_item_probabilityInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Work_item_probabilityResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "work_item_risk",
+    "logicName" : "工作项风险",
+    "name" : "work_item_risk",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "work_item_risk"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Work_item_riskInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Work_item_riskResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "work_item_severity",
+    "logicName" : "工作项严重程度",
+    "name" : "work_item_severity",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "work_item_severity"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Work_item_severityInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Work_item_severityResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "dictionary_data_dto"
@@ -1082,6 +2284,95 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "STYLE",
+      "dBType" : "MYSQL5",
+      "name" : "STYLE",
+      "queryCodeExp" : "t1.`STYLE`",
+      "standardColumnName" : "`STYLE`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_STYLE_EQ",
+      "name" : "N_STYLE_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[STYLE][背景样式]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBDROPDOWNLIST",
+        "name" : "[STYLE][背景样式]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[STYLE][背景样式]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[STYLE][背景样式]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "STYLE",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "style",
+    "dEFType" : 1,
+    "dataType" : "SSCODELIST",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "背景样式",
+    "name" : "STYLE",
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSCODELISTS/background_style.json"
+    },
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "STYLE"
+    },
+    "serviceCodeName" : "style",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "CATALOG",
       "dBType" : "MYSQL5",
       "name" : "CATALOG",
@@ -1093,6 +2384,11 @@
       "name" : "N_CATALOG_EQ",
       "stdDataType" : 25,
       "valueOP" : "EQ"
+    }, {
+      "codeName" : "N_CATALOG_LIKE",
+      "name" : "N_CATALOG_LIKE",
+      "stdDataType" : 25,
+      "valueOP" : "LIKE"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
@@ -1805,6 +3101,17 @@
       "stdDataType" : 9,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "背景样式",
+      "name" : "style",
+      "getPSDEField" : {
+        "name" : "STYLE",
+        "codeName" : "style"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "字典目录",
       "name" : "catalog",
       "getPSDEField" : {
@@ -1911,6 +3218,20 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "字典目录",
+      "name" : "n_catalog_like",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_CATALOG_LIKE"
+      },
+      "getPSDEField" : {
+        "name" : "CATALOG",
+        "codeName" : "catalog"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "标识",
       "name" : "n_id_eq",
       "getPSDEFSearchMode" : {
@@ -1934,6 +3255,20 @@
       "getPSDEField" : {
         "name" : "NAME",
         "codeName" : "name"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "背景样式",
+      "name" : "n_style_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_STYLE_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "STYLE",
+        "codeName" : "style"
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
@@ -2037,10 +3372,28 @@
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "ticket_dictionary_create_view",
+    "logicName" : "工单字典新建视图",
+    "name" : "工单字典新建视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "work_item_dictionary_grid_view",
+    "logicName" : "工作项字典表格视图",
+    "name" : "工作项字典表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "PickupGridView",
     "logicName" : "数据字典实体选择表格视图（部件视图）",
     "name" : "数据字典实体选择表格视图（部件视图）",
     "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "test_case_dictionary_grid_view",
+    "logicName" : "测试用例字典表格视图",
+    "name" : "测试用例字典表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView2",
@@ -2099,6 +3452,12 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "work_item_dictionary_create_view",
+    "logicName" : "工作项字典新建视图",
+    "name" : "工作项字典新建视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "idea_confirm_remove_view",
     "logicName" : "需求配置状态管理实体确认删除视图",
     "name" : "需求配置状态管理实体确认删除视图",
@@ -2122,6 +3481,18 @@
     "logicName" : "分页导航视图（发布配置）",
     "name" : "分页导航视图（发布配置）",
     "realModelSubType" : "DETABEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "test_case_dictionary_create_view",
+    "logicName" : "测试用例字典新建视图",
+    "name" : "测试用例字典新建视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "ticket_dictionary_grid_view",
+    "logicName" : "工单字典表格视图",
+    "name" : "工单字典表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "idea_dictionary_grid_view",
@@ -2149,6 +3520,20 @@
     "name" : "数据字典实体数据重定向视图",
     "realModelSubType" : "DEREDIRECTVIEW",
     "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "ticket_create_form",
+    "logicName" : "工单字典新建视图_表单",
+    "modelTag2" : "0",
+    "name" : "工单字典新建视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "work_item_create_form",
+    "logicName" : "工作项字典新建视图_表单",
+    "modelTag2" : "0",
+    "name" : "工作项字典新建视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
   }, {
     "codeName" : "Main",
     "logicName" : "主编辑表单",
@@ -2206,7 +3591,14 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "Usr04285955_Form",
+    "codeName" : "test_case_create_form",
+    "logicName" : "测试用例字典新建视图_表单",
+    "modelTag2" : "0",
+    "name" : "测试用例字典新建视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "idea_create_form",
     "logicName" : "需求字典新建视图_表单",
     "modelTag2" : "0",
     "name" : "需求字典新建视图_表单",
