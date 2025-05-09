@@ -1886,6 +1886,33 @@
             "name" : "IS_DELETED",
             "codeName" : "is_deleted"
           }
+        }, {
+          "condOp" : "OR",
+          "condType" : "GROUP",
+          "name" : "OR",
+          "getPSDEDQConditions" : [ {
+            "condOp" : "LIKE",
+            "condType" : "SINGLE",
+            "condValue" : "category_id",
+            "fieldName" : "CATEGORIES",
+            "name" : "(CATEGORIES) 文本包含(%) 网页请求上下文 category_id",
+            "getPSDEField" : {
+              "name" : "CATEGORIES",
+              "codeName" : "categories"
+            },
+            "getPSVARTypeId" : "WEBCONTEXT"
+          }, {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "category_id",
+            "fieldName" : "CATEGORY_ID",
+            "name" : "(CATEGORY_ID) 等于(=) 网页请求上下文 category_id",
+            "getPSDEField" : {
+              "name" : "CATEGORY_ID",
+              "codeName" : "Category_id"
+            },
+            "getPSVARTypeId" : "WEBCONTEXT"
+          } ]
         } ]
       }
     },
@@ -19171,14 +19198,29 @@
           "logicType" : "GROUP",
           "name" : "连接条件组",
           "getPSDELogicLinkConds" : [ {
-            "condOP" : "ISNOTNULL",
-            "dstFieldName" : "baseline",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[baseline] 值不为空(NotNil)"
+            "groupOP" : "OR",
+            "logicType" : "GROUP",
+            "name" : "OR",
+            "getPSDELogicLinkConds" : [ {
+              "condOP" : "EQ",
+              "dstFieldName" : "tag",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "logicType" : "SINGLE",
+              "name" : "Default[tag] 等于(=) baseline",
+              "paramValue" : "baseline"
+            }, {
+              "condOP" : "ISNOTNULL",
+              "dstFieldName" : "baseline",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "logicType" : "SINGLE",
+              "name" : "Default[baseline] 值不为空(NotNil)"
+            } ]
           } ]
         },
         "getSrcPSDELogicNode" : {

@@ -175,14 +175,29 @@
         "logicType" : "GROUP",
         "name" : "连接条件组",
         "getPSDELogicLinkConds" : [ {
-          "condOP" : "ISNOTNULL",
-          "dstFieldName" : "baseline",
-          "getDstLogicParam" : {
-            "modelref" : true,
-            "id" : "Default"
-          },
-          "logicType" : "SINGLE",
-          "name" : "Default[baseline] 值不为空(NotNil)"
+          "groupOP" : "OR",
+          "logicType" : "GROUP",
+          "name" : "OR",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "tag",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[tag] 等于(=) baseline",
+            "paramValue" : "baseline"
+          }, {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "baseline",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[baseline] 值不为空(NotNil)"
+          } ]
         } ]
       },
       "getSrcPSDELogicNode" : {
