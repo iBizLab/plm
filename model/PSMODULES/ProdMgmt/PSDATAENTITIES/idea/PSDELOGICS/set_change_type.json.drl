@@ -6,6 +6,7 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.set_change_type;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.prodmgmt.domain.idea ideaset_change_typedefault;
+                global java.util.Map ideaset_change_typebaseline_filter;
                 global cn.ibizlab.plm.core.prodmgmt.domain.idea ideaset_change_typefor_obj;
                 global cn.ibizlab.plm.core.prodmgmt.domain.idea ideaset_change_typepage_results;
                 global cn.ibizlab.plm.core.base.domain.version ideaset_change_typeversion_filter;
@@ -25,12 +26,40 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.set_change_type;
             then
             end
 
+            //逻辑处理节点[设置基线过滤器]
+            rule "prepareparam4"
+            ruleflow-group "ideaset_change_typeprepareparam4"
+            when
+            then
+                            ideaset_change_typebaseline_filter.set("baseline",ideaset_change_typedefault.get("baseline"));
+                        update(ideaset_change_typedefault);//更新fact中变量值
+                        update(ideaset_change_typebaseline_filter);//更新fact中变量值
+                        update(ideaset_change_typefor_obj);//更新fact中变量值
+                        update(ideaset_change_typepage_results);//更新fact中变量值
+                        update(ideaset_change_typeversion_filter);//更新fact中变量值
+                        update(ideaset_change_typeversion_pages_results);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询基线需求分页数据]
+            rule "dedataset3"
+            ruleflow-group "ideaset_change_typededataset3"
+            when
+            then
+                        update(ideaset_change_typedefault);//更新fact中变量值
+                        update(ideaset_change_typebaseline_filter);//更新fact中变量值
+                        update(ideaset_change_typefor_obj);//更新fact中变量值
+                        update(ideaset_change_typepage_results);//更新fact中变量值
+                        update(ideaset_change_typeversion_filter);//更新fact中变量值
+                        update(ideaset_change_typeversion_pages_results);//更新fact中变量值
+            end
+
             //逻辑处理节点[调试逻辑参数]
             rule "debugparam1"
             ruleflow-group "ideaset_change_typedebugparam1"
             when
             then
                         update(ideaset_change_typedefault);//更新fact中变量值
+                        update(ideaset_change_typebaseline_filter);//更新fact中变量值
                         update(ideaset_change_typefor_obj);//更新fact中变量值
                         update(ideaset_change_typepage_results);//更新fact中变量值
                         update(ideaset_change_typeversion_filter);//更新fact中变量值
@@ -43,6 +72,7 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.set_change_type;
             when
             then
                         update(ideaset_change_typedefault);//更新fact中变量值
+                        update(ideaset_change_typebaseline_filter);//更新fact中变量值
                         update(ideaset_change_typefor_obj);//更新fact中变量值
                         update(ideaset_change_typepage_results);//更新fact中变量值
                         update(ideaset_change_typeversion_filter);//更新fact中变量值
@@ -55,6 +85,7 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.set_change_type;
             when
             then
                         update(ideaset_change_typedefault);//更新fact中变量值
+                        update(ideaset_change_typebaseline_filter);//更新fact中变量值
                         update(ideaset_change_typefor_obj);//更新fact中变量值
                         update(ideaset_change_typepage_results);//更新fact中变量值
                         update(ideaset_change_typeversion_filter);//更新fact中变量值
@@ -67,13 +98,14 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.set_change_type;
             when
             then
                         update(ideaset_change_typedefault);//更新fact中变量值
+                        update(ideaset_change_typebaseline_filter);//更新fact中变量值
                         update(ideaset_change_typefor_obj);//更新fact中变量值
                         update(ideaset_change_typepage_results);//更新fact中变量值
                         update(ideaset_change_typeversion_filter);//更新fact中变量值
                         update(ideaset_change_typeversion_pages_results);//更新fact中变量值
             end
 
-            //逻辑处理节点[获取评审测试用例]
+            //逻辑处理节点[获取评审需求]
             rule "rawsqlcall1"
             ruleflow-group "ideaset_change_typerawsqlcall1"
             when
@@ -90,6 +122,7 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.set_change_type;
                                     }
                             }
                         update(ideaset_change_typedefault);//更新fact中变量值
+                        update(ideaset_change_typebaseline_filter);//更新fact中变量值
                         update(ideaset_change_typefor_obj);//更新fact中变量值
                         update(ideaset_change_typepage_results);//更新fact中变量值
                         update(ideaset_change_typeversion_filter);//更新fact中变量值
@@ -104,6 +137,7 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.set_change_type;
                             ideaset_change_typeversion_filter.set("n_owner_id_eq",ideaset_change_typefor_obj.get("id"));
                             ideaset_change_typeversion_filter.set("size","2");
                         update(ideaset_change_typedefault);//更新fact中变量值
+                        update(ideaset_change_typebaseline_filter);//更新fact中变量值
                         update(ideaset_change_typefor_obj);//更新fact中变量值
                         update(ideaset_change_typepage_results);//更新fact中变量值
                         update(ideaset_change_typeversion_filter);//更新fact中变量值
@@ -116,6 +150,7 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.set_change_type;
             when
             then
                         update(ideaset_change_typedefault);//更新fact中变量值
+                        update(ideaset_change_typebaseline_filter);//更新fact中变量值
                         update(ideaset_change_typefor_obj);//更新fact中变量值
                         update(ideaset_change_typepage_results);//更新fact中变量值
                         update(ideaset_change_typeversion_filter);//更新fact中变量值
@@ -128,6 +163,7 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.set_change_type;
             when
             then
                         update(ideaset_change_typedefault);//更新fact中变量值
+                        update(ideaset_change_typebaseline_filter);//更新fact中变量值
                         update(ideaset_change_typefor_obj);//更新fact中变量值
                         update(ideaset_change_typepage_results);//更新fact中变量值
                         update(ideaset_change_typeversion_filter);//更新fact中变量值
@@ -141,6 +177,7 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.set_change_type;
             then
                             ideaset_change_typefor_obj.set("change_type","0");
                         update(ideaset_change_typedefault);//更新fact中变量值
+                        update(ideaset_change_typebaseline_filter);//更新fact中变量值
                         update(ideaset_change_typefor_obj);//更新fact中变量值
                         update(ideaset_change_typepage_results);//更新fact中变量值
                         update(ideaset_change_typeversion_filter);//更新fact中变量值
@@ -154,6 +191,7 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.set_change_type;
             then
                             ideaset_change_typefor_obj.set("change_type","1");
                         update(ideaset_change_typedefault);//更新fact中变量值
+                        update(ideaset_change_typebaseline_filter);//更新fact中变量值
                         update(ideaset_change_typefor_obj);//更新fact中变量值
                         update(ideaset_change_typepage_results);//更新fact中变量值
                         update(ideaset_change_typeversion_filter);//更新fact中变量值
@@ -166,6 +204,7 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.set_change_type;
             when
             then
                         update(ideaset_change_typedefault);//更新fact中变量值
+                        update(ideaset_change_typebaseline_filter);//更新fact中变量值
                         update(ideaset_change_typefor_obj);//更新fact中变量值
                         update(ideaset_change_typepage_results);//更新fact中变量值
                         update(ideaset_change_typeversion_filter);//更新fact中变量值
@@ -178,6 +217,7 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.set_change_type;
             when
             then
                         update(ideaset_change_typedefault);//更新fact中变量值
+                        update(ideaset_change_typebaseline_filter);//更新fact中变量值
                         update(ideaset_change_typefor_obj);//更新fact中变量值
                         update(ideaset_change_typepage_results);//更新fact中变量值
                         update(ideaset_change_typeversion_filter);//更新fact中变量值
@@ -190,6 +230,7 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.set_change_type;
             when
             then
                         update(ideaset_change_typedefault);//更新fact中变量值
+                        update(ideaset_change_typebaseline_filter);//更新fact中变量值
                         update(ideaset_change_typefor_obj);//更新fact中变量值
                         update(ideaset_change_typepage_results);//更新fact中变量值
                         update(ideaset_change_typeversion_filter);//更新fact中变量值

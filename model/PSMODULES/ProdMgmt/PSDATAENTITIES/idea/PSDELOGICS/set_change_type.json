@@ -23,6 +23,71 @@
     "topPos" : 200,
     "parallelOutput" : true
   }, {
+    "codeName" : "PREPAREPARAM4",
+    "leftPos" : 306,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置基线过滤器",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "baseline",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "baseline_filter"
+      },
+      "name" : "Default[baseline] ==> baseline_filter[baseline]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "baseline",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 43
+  }, {
+    "codeName" : "DEDATASET3",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "baseline_idea"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "baseline_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+    },
+    "leftPos" : 500,
+    "logicNodeType" : "DEDATASET",
+    "name" : "查询基线需求分页数据",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET3"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "page_results"
+    },
+    "topPos" : 123
+  }, {
     "codeName" : "DEBUGPARAM1",
     "getDstPSDELogicParam" : {
       "modelref" : true,
@@ -75,6 +140,31 @@
           },
           "logicType" : "SINGLE",
           "name" : "Default[review] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "baseline",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[baseline] 值不为空(NotNil)"
         } ]
       },
       "getSrcPSDELogicNode" : {
@@ -171,7 +261,7 @@
     },
     "leftPos" : 306,
     "logicNodeType" : "RAWSQLCALL",
-    "name" : "获取评审测试用例",
+    "name" : "获取评审需求",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -458,6 +548,11 @@
       "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
     },
     "default" : true,
+    "filterParam" : true
+  }, {
+    "codeName" : "baseline_filter",
+    "logicName" : "基线过滤器",
+    "name" : "基线过滤器",
     "filterParam" : true
   }, {
     "codeName" : "for_obj",

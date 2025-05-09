@@ -6,6 +6,7 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="ideaset_change_typedefault" type="entity"/>
+                                <tns:metaData express="new HashMap()" name="ideaset_change_typebaseline_filter" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.idea()" name="ideaset_change_typefor_obj" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.idea()" name="ideaset_change_typepage_results" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.version()" name="ideaset_change_typeversion_filter" type="refentity"/>
@@ -21,11 +22,13 @@
                             <tns:global identifier="ideaset_change_typeversion_pages_results" type="cn.ibizlab.plm.core.base.domain.version" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaset_change_typeprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="设置基线过滤器"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaset_change_typededataset3" id="dedataset3" implementation="http://www.jboss.org/drools/rule" name="查询基线需求分页数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaset_change_typedebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaset_change_typededataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="查询需求分页数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaset_change_typeloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaset_change_typedebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaset_change_typerawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="获取评审测试用例"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaset_change_typerawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="获取评审需求"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaset_change_typeprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置版本过滤器"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaset_change_typededataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="查询符合条件的版本"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaset_change_typedebugparam3" id="debugparam3" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
@@ -38,9 +41,14 @@
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
                     <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
                     </sequenceFlow>
+                    <sequenceFlow id="prepareparam4_dedataset3" sourceRef="prepareparam4" targetRef="dedataset3">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset3_loopsubcall1" sourceRef="dedataset3" targetRef="loopsubcall1">
+                    </sequenceFlow>
                     <sequenceFlow id="gateway-debugparam1_dedataset1" sourceRef="gateway-debugparam1" targetRef="dedataset1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $ideaset_change_typedefault:idea();
+                                            $ideaset_change_typebaseline_filter:Map();
                                             $ideaset_change_typefor_obj:idea();
                                             $ideaset_change_typepage_results:idea();
                                             $ideaset_change_typeversion_filter:version();
@@ -53,12 +61,26 @@
                     <sequenceFlow id="gateway-debugparam1_rawsqlcall1" sourceRef="gateway-debugparam1" targetRef="rawsqlcall1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $ideaset_change_typedefault:idea();
+                                            $ideaset_change_typebaseline_filter:Map();
                                             $ideaset_change_typefor_obj:idea();
                                             $ideaset_change_typepage_results:idea();
                                             $ideaset_change_typeversion_filter:version();
                                             $ideaset_change_typeversion_pages_results:version();
                                     eval($ideaset_change_typedefault==ideaset_change_typedefault && $ideaset_change_typefor_obj==ideaset_change_typefor_obj && $ideaset_change_typepage_results==ideaset_change_typepage_results && $ideaset_change_typeversion_filter==ideaset_change_typeversion_filter && $ideaset_change_typeversion_pages_results==ideaset_change_typeversion_pages_results);
                                 eval((RuleUtils.test($ideaset_change_typedefault.get("review"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam1_prepareparam4" sourceRef="gateway-debugparam1" targetRef="prepareparam4">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ideaset_change_typedefault:idea();
+                                            $ideaset_change_typebaseline_filter:Map();
+                                            $ideaset_change_typefor_obj:idea();
+                                            $ideaset_change_typepage_results:idea();
+                                            $ideaset_change_typeversion_filter:version();
+                                            $ideaset_change_typeversion_pages_results:version();
+                                    eval($ideaset_change_typedefault==ideaset_change_typedefault && $ideaset_change_typefor_obj==ideaset_change_typefor_obj && $ideaset_change_typepage_results==ideaset_change_typepage_results && $ideaset_change_typeversion_filter==ideaset_change_typeversion_filter && $ideaset_change_typeversion_pages_results==ideaset_change_typeversion_pages_results);
+                                eval((RuleUtils.test($ideaset_change_typedefault.get("baseline"),"ISNOTNULL","")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
@@ -77,6 +99,7 @@
                     <sequenceFlow id="gateway-debugparam3_prepareparam2" sourceRef="gateway-debugparam3" targetRef="prepareparam2">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $ideaset_change_typedefault:idea();
+                                            $ideaset_change_typebaseline_filter:Map();
                                             $ideaset_change_typefor_obj:idea();
                                             $ideaset_change_typepage_results:idea();
                                             $ideaset_change_typeversion_filter:version();
@@ -89,6 +112,7 @@
                     <sequenceFlow id="gateway-debugparam3_prepareparam3" sourceRef="gateway-debugparam3" targetRef="prepareparam3">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $ideaset_change_typedefault:idea();
+                                            $ideaset_change_typebaseline_filter:Map();
                                             $ideaset_change_typefor_obj:idea();
                                             $ideaset_change_typepage_results:idea();
                                             $ideaset_change_typeversion_filter:version();

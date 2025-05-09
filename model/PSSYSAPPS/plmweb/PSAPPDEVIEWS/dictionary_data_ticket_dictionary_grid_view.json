@@ -260,27 +260,6 @@
     },
     "getPSDEGridColumns" : [ {
       "align" : "LEFT",
-      "cLConvertMode" : "FRONT",
-      "caption" : "分类",
-      "codeName" : "catalog",
-      "columnType" : "DEFGRIDCOLUMN",
-      "dataItemName" : "catalog",
-      "excelCaption" : "分类",
-      "name" : "catalog",
-      "noPrivDisplayMode" : 1,
-      "getPSAppCodeList" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__dictionary_catalog.json"
-      },
-      "getPSAppDEField" : {
-        "name" : "CATALOG",
-        "codeName" : "catalog"
-      },
-      "width" : 200,
-      "widthUnit" : "PX",
-      "enableSort" : true
-    }, {
-      "align" : "LEFT",
       "cLConvertMode" : "NONE",
       "getCapPSLanguageRes" : {
         "lanResTag" : "DEF.LNAME.NAME"
@@ -516,13 +495,6 @@
     } ],
     "getPSDEGridDataItems" : [ {
       "dataType" : 25,
-      "name" : "catalog",
-      "getPSAppDEField" : {
-        "name" : "CATALOG",
-        "codeName" : "catalog"
-      }
-    }, {
-      "dataType" : 25,
       "name" : "name",
       "getPSAppDEField" : {
         "name" : "NAME",
@@ -565,6 +537,13 @@
       "getPSAppDEField" : {
         "name" : "SEQUENCE",
         "codeName" : "sequence"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "catalog",
+      "getPSAppDEField" : {
+        "name" : "CATALOG",
+        "codeName" : "catalog"
       }
     }, {
       "dataType" : 25,
@@ -685,6 +664,18 @@
       "showCaption" : false
     } ],
     "getPSSearchBarGroups" : [ {
+      "caption" : "工单状态",
+      "data" : "{\"theme_model\":{\"searchconds\":[{\"condtype\":\"GROUP\",\"condop\":\"AND\",\"bnotmode\":false,\"searchconds\":[{\"condtype\":\"DEFIELD\",\"fieldname\":\"catalog\",\"condop\":\"EQ\",\"value\":\"ticket_state\"}]}]}}",
+      "itemType" : "GROUP",
+      "name" : "ticket_status",
+      "getPSAppDEField" : {
+        "name" : "CATALOG",
+        "codeName" : "catalog"
+      },
+      "width" : 0.0,
+      "addSeparator" : false,
+      "defaultGroup" : true
+    }, {
       "caption" : "工单解决方案",
       "data" : "{\"theme_model\":{\"searchconds\":[{\"condtype\":\"GROUP\",\"condop\":\"AND\",\"bnotmode\":false,\"searchconds\":[{\"condtype\":\"DEFIELD\",\"fieldname\":\"catalog\",\"condop\":\"EQ\",\"value\":\"ticket_solution\"}]}]}}",
       "itemType" : "GROUP",
@@ -694,8 +685,7 @@
         "codeName" : "catalog"
       },
       "width" : 0.0,
-      "addSeparator" : false,
-      "defaultGroup" : true
+      "addSeparator" : false
     }, {
       "caption" : "工单优先级",
       "data" : "{\"theme_model\":{\"searchconds\":[{\"condtype\":\"GROUP\",\"condop\":\"AND\",\"bnotmode\":false,\"searchconds\":[{\"condtype\":\"DEFIELD\",\"fieldname\":\"catalog\",\"condop\":\"EQ\",\"value\":\"ticket_priority\"}]}]}}",
@@ -708,7 +698,7 @@
       "width" : 0.0,
       "addSeparator" : false
     } ],
-    "quickGroupCount" : 2,
+    "quickGroupCount" : 3,
     "quickSearchMode" : 2,
     "quickSearchWidth" : 0,
     "searchBarStyle" : "SEARCHBAR2",

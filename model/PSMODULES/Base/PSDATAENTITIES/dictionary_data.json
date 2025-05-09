@@ -963,6 +963,54 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/ticket_priority/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "ticket_priority",
+    "logicName" : "工单优先级",
+    "name" : "ticket_priority",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "DICTIONARY",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "ticket_priority",
+          "fieldName" : "CATALOG",
+          "name" : "(CATALOG) 等于(=) ticket_priority",
+          "getPSDEField" : {
+            "name" : "CATALOG",
+            "codeName" : "catalog"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Ticket_priorityInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Ticket_priorityResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/dictionary_data/PSDEDATAQUERIES/ticket_solution/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "ticket_solution",
@@ -1688,6 +1736,32 @@
     },
     "getPSDEDataSetReturn" : {
       "name" : "TicketResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "ticket_priority",
+    "logicName" : "工单优先级",
+    "name" : "ticket_priority",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "ticket_priority"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Ticket_priorityInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "dictionary_data_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Ticket_priorityResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "dictionary_data_dto"
