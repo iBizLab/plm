@@ -3,7 +3,7 @@
   "name" : "MySQL5",
   "getPSDEDataQueryCodeConds" : [ {
     "condType" : "CUSTOM",
-    "customCond" : "( ( t1.`CREATE_MAN` =  ${srfsessioncontext('srfpersonid','{\"defname\":\"CREATE_MAN\",\"dename\":\"IDEA\"}')}  OR  t1.`CREATE_MAN` =  ${srfsessioncontext('srfpersonname','{\"defname\":\"CREATE_MAN\",\"dename\":\"IDEA\"}')} )  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0 )",
+    "customCond" : "( ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  OR  t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonname} )  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0 )",
     "name" : "查询条件"
   } ],
   "getPSDEDataQueryCodeExps" : [ {

@@ -3,7 +3,7 @@
   "name" : "MySQL5",
   "getPSDEDataQueryCodeConds" : [ {
     "condType" : "CUSTOM",
-    "customCond" : "( t1.`IS_DELETED` = 0  AND  <#assign _value=srfwebcontext('section_id','{\"defname\":\"SECTION_ID\",\"dename\":\"IDEA\",\"ignoreempty\":true}')><#if _value?length gt 0>t21.`SECTION_ID` =  ${_value}<#else>1=1</#if> )",
+    "customCond" : "( t1.`IS_DELETED` = 0  AND  <choose><when test=\"ctx.webcontext.section_id !=null \">  t21.`SECTION_ID` = #{ctx.webcontext.section_id}  </when><otherwise>1=1</otherwise></choose> )",
     "name" : "查询条件"
   } ],
   "getPSDEDataQueryCodeExps" : [ {

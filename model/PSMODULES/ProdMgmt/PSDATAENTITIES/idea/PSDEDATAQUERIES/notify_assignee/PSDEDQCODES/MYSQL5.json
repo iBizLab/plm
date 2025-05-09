@@ -3,7 +3,7 @@
   "name" : "MySQL5",
   "getPSDEDataQueryCodeConds" : [ {
     "condType" : "CUSTOM",
-    "customCond" : "( t1.`ID` =  ${srfwebcontext('id','{\"defname\":\"ID\",\"dename\":\"IDEA\"}')}  AND  t1.`ASSIGNEE_ID` <>  ${srfsessioncontext('srfpersonid','{\"defname\":\"ASSIGNEE_ID\",\"dename\":\"IDEA\"}')} )",
+    "customCond" : "( t1.`ID` = #{ctx.webcontext.id}  AND  t1.`ASSIGNEE_ID` <> #{ctx.sessioncontext.srfpersonid} )",
     "name" : "查询条件"
   } ],
   "getPSDEDataQueryCodeExps" : [ {

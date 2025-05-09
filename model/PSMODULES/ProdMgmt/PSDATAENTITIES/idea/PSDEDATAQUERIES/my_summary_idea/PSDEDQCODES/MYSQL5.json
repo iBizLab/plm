@@ -7,7 +7,7 @@
     "name" : "查询条件"
   }, {
     "condType" : "CUSTOM",
-    "customCond" : "( t1.`ASSIGNEE_ID` =  ${srfsessioncontext('srfpersonid','{\"defname\":\"ASSIGNEE_ID\",\"dename\":\"IDEA\"}')}  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  t1.state in ( select val from dictionary where CATALOG = 'idea_state' and type = 'in_progress') )",
+    "customCond" : "( t1.`ASSIGNEE_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  t1.state in ( select val from dictionary where CATALOG = 'idea_state' and type = 'in_progress') )",
     "name" : "查询条件"
   } ],
   "getPSDEDataQueryCodeExps" : [ {

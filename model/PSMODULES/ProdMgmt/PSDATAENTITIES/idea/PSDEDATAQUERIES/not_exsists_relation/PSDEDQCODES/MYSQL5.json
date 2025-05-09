@@ -3,11 +3,11 @@
   "name" : "MySQL5",
   "getPSDEDataQueryCodeConds" : [ {
     "condType" : "CUSTOM",
-    "customCond" : "NOT(EXISTS(SELECT * FROM `RELATION` t41 \n WHERE \n t1.`ID` = t41.`TARGET_ID`  AND  ( t41.`TARGET_TYPE` =  ${srfwebcontext('target_type','{\"defname\":\"TARGET_TYPE\",\"dename\":\"RELATION\"}')}  AND  t41.`PRINCIPAL_TYPE` =  ${srfwebcontext('principal_type','{\"defname\":\"PRINCIPAL_TYPE\",\"dename\":\"RELATION\"}')}  AND  t41.`PRINCIPAL_ID` =  ${srfwebcontext('principal_id','{\"defname\":\"PRINCIPAL_ID\",\"dename\":\"RELATION\"}')} ) ))",
+    "customCond" : "NOT(EXISTS(SELECT * FROM `RELATION` t41 \n WHERE \n t1.`ID` = t41.`TARGET_ID`  AND  ( t41.`TARGET_TYPE` = #{ctx.webcontext.target_type}  AND  t41.`PRINCIPAL_TYPE` = #{ctx.webcontext.principal_type}  AND  t41.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id} ) ))",
     "name" : "查询条件"
   }, {
     "condType" : "CUSTOM",
-    "customCond" : "( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  ( <#assign _value=srfwebcontext('category_id','{\"defname\":\"CATEGORIES\",\"dename\":\"IDEA\",\"ignoreempty\":true}')><#if _value?length gt 0>t21.`CATEGORIES` LIKE  CONCAT('%',${_value},'%')<#else>1=1</#if>  OR  <#assign _value=srfwebcontext('category_id','{\"defname\":\"CATEGORY_ID\",\"dename\":\"IDEA\",\"ignoreempty\":true}')><#if _value?length gt 0>t1.`CATEGORY_ID` =  ${_value}<#else>1=1</#if> )  AND  t1.`ID` <>  ${srfwebcontext('principal_id','{\"defname\":\"ID\",\"dename\":\"IDEA\"}')} )",
+    "customCond" : "( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  ( <choose><when test=\"ctx.webcontext.category_id !=null \">  t21.`CATEGORIES` LIKE CONCAT('%',#{ctx.webcontext.category_id},'%')  </when><otherwise>1=1</otherwise></choose>  OR  <choose><when test=\"ctx.webcontext.category_id !=null \">  t1.`CATEGORY_ID` = #{ctx.webcontext.category_id}  </when><otherwise>1=1</otherwise></choose> )  AND  t1.`ID` <> #{ctx.webcontext.principal_id} )",
     "name" : "查询条件"
   } ],
   "getPSDEDataQueryCodeExps" : [ {
