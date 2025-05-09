@@ -3225,6 +3225,23 @@
       "codeName" : "user_id"
     }
   }, {
+    "codeName" : "review_notify",
+    "dynaModelFilePath" : "PSSYSMSGTARGETS/review_notify.json",
+    "msgTargetType" : "DE",
+    "name" : "评审通知评审人",
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "cur_review"
+    },
+    "getPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_stage.json"
+    },
+    "getTargetPSDEField" : {
+      "name" : "REVIEWER",
+      "codeName" : "reviewer"
+    }
+  }, {
     "codeName" : "comment_idea_assignee",
     "dynaModelFilePath" : "PSMODULES/Base/PSSYSMSGTARGETS/comment_idea_assignee.json",
     "msgTargetType" : "DE",
@@ -4462,7 +4479,7 @@
     "mailGroupSend" : false
   }, {
     "codeName" : "review_inform_template",
-    "content" : "<div class=\"notice-card\" style=\"display: flex; align-items: flex-start;\">\n    <div class=\"notice-card__avatar\" style=\"flex-shrink: 0;\">\n        <span class=\"notice-card__avatar-icon\" style=\"background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;\">${data.create_mantext?substring(0,2)!}</span>\n    </div>\n    <div class=\"notice-card__content\" style=\"flex-grow: 1;width: calc(100% - 46px);\">\n        <div class=\"notice-card__event\">\n            <div class=\"notice-card__event-title\" style=\"font-size: 14px; color: #000;\">\n                <span class=\"notice-card__event-name\" style=\"color: #999; font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\">${data.create_mantext}</span> \n                <span class=\"notice-card__event-desc\" style=\"font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\">把你加入了项目集</span>\n            </div>\n        </div>\n        <div class=\"notice-card-object\" style=\"display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;\">\n            <#if data.portfolio_identifier??>\n                <span class=\"notice-card__object-id\" style=\"color: #999; font-size:14px;\">${data.portfolio_identifier}</span>\n            </#if>\n            <span class=\"notice-card__object-name\" title=\"${data.portfolio_name}\">${data.portfolio_name}</span>\n        </div>\n        <div class=\"notice-card-pilot\" style=\"font-size: 12px; color: #999; text-transform: lowercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;\">\n            <span class=\"notice-pilot-time\">${data.create_time?string(\"yyyy-MM-dd HH:mm:ss\")}</span>\n            <span class=\"notice-pilot-info\"> · 评审管理 · ${data.portfolio_name}</span>\n        </div>\n    </div>\n</div>",
+    "content" : "<div class=\"notice-card\" style=\"display: flex; align-items: flex-start;\">\n    <div class=\"notice-card__avatar\" style=\"flex-shrink: 0;\">\n        <span class=\"notice-card__avatar-icon\" style=\"background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;\">${data.create_mantext?substring(0,2)!}</span>\n    </div>\n    <div class=\"notice-card__content\" style=\"flex-grow: 1;width: calc(100% - 46px);\">\n        <div class=\"notice-card__event\">\n            <div class=\"notice-card__event-title\" style=\"font-size: 14px; color: #000;\">\n                <span class=\"notice-card__event-name\" style=\"color: #999; font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\">${data.create_mantext}</span> \n                <span class=\"notice-card__event-desc\" style=\"font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\">给你分配了评审</span>\n            </div>\n        </div>\n        <div class=\"notice-card-object\" style=\"display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;\">\n            <#if data.portfolio_identifier??>\n                <span class=\"notice-card__object-id\" style=\"color: #999; font-size:14px;\">${data.portfolio_identifier}</span>\n            </#if>\n            <span class=\"notice-card__object-name\" title=\"${data.portfolio_name}\">${data.portfolio_name}</span>\n        </div>\n        <div class=\"notice-card-pilot\" style=\"font-size: 12px; color: #999; text-transform: lowercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;\">\n            <span class=\"notice-pilot-time\">${data.create_time?string(\"yyyy-MM-dd HH:mm:ss\")}</span>\n            <span class=\"notice-pilot-info\"> · 评审管理 · ${data.portfolio_name}</span>\n        </div>\n    </div>\n</div>",
     "contentType" : "HTML",
     "dDContent" : "${data.create_mantext}把你加入了项目集：${data.portfolio_name}",
     "dynaModelFilePath" : "PSMODULES/Base/PSSYSMSGTEMPLS/review_inform_template.json",
