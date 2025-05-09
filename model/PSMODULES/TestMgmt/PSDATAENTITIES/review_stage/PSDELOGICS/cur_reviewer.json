@@ -20,7 +20,7 @@
         "id" : "Begin"
       }
     } ],
-    "topPos" : 120,
+    "topPos" : 200,
     "parallelOutput" : true
   }, {
     "codeName" : "PREPAREPARAM1",
@@ -39,17 +39,17 @@
       }
     } ],
     "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "id",
+      "dstFieldName" : "ID",
       "getDstPSDELogicParam" : {
         "modelref" : true,
-        "id" : "temp"
+        "id" : "review"
       },
-      "name" : "数据上下文[id] ==> temp[id]",
+      "name" : "数据上下文[id] ==> review[ID]",
       "paramAction" : "SETPARAMVALUE",
       "srcFieldName" : "id",
       "srcValueType" : "DATACONTEXT"
     } ],
-    "topPos" : 310
+    "topPos" : 326
   }, {
     "codeName" : "DEACTION1",
     "getDstPSDEAction" : {
@@ -58,7 +58,7 @@
     },
     "getDstPSDELogicParam" : {
       "modelref" : true,
-      "id" : "temp"
+      "id" : "review"
     },
     "getDstPSDataEntity" : {
       "modelref" : true,
@@ -70,7 +70,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM1"
+        "id" : "PREPAREPARAM2"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -80,18 +80,14 @@
     } ],
     "getRetPSDELogicParam" : {
       "modelref" : true,
-      "id" : "temp"
+      "id" : "review"
     },
-    "topPos" : 460
+    "topPos" : 417
   }, {
-    "codeName" : "DEBUGPARAM1",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "temp"
-    },
+    "codeName" : "PREPAREPARAM2",
     "leftPos" : 160,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "调试逻辑参数",
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -100,10 +96,10 @@
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM1"
+        "id" : "PREPAREPARAM2"
       }
     } ],
-    "topPos" : 598
+    "topPos" : 512
   }, {
     "codeName" : "END1",
     "leftPos" : 200,
@@ -111,10 +107,10 @@
     "name" : "结束",
     "getReturnParam" : {
       "modelref" : true,
-      "id" : "temp"
+      "id" : "review_stage_list"
     },
     "returnType" : "LOGICPARAM",
-    "topPos" : 742
+    "topPos" : 606
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",
@@ -125,16 +121,21 @@
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_stage.json"
     },
     "default" : true,
-    "filterParam" : true
+    "entityParam" : true
   }, {
-    "codeName" : "temp",
-    "logicName" : "temp",
-    "name" : "temp",
+    "codeName" : "review",
+    "logicName" : "评审",
+    "name" : "评审",
     "getParamPSDataEntity" : {
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
     },
     "entityParam" : true
+  }, {
+    "codeName" : "review_stage_list",
+    "logicName" : "评审步骤列表",
+    "name" : "评审步骤列表",
+    "entityListParam" : true
   } ],
   "getStartPSDELogicNode" : {
     "modelref" : true,
