@@ -15022,89 +15022,9 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : -400
+      "topPos" : -450
     }, {
-      "codeName" : "PREPAREJSPARAM2",
-      "leftPos" : 590,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "idea实体赋参",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "idea"
-        },
-        "name" : "Default ==> idea",
-        "paramAction" : "SETPARAMVALUE",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : -261
-    }, {
-      "code" : "\r\nibiz.mc.command.update.send({ srfdecodename: 'idea', srfkey: context.idea})",
-      "codeName" : "RAWJSCODE3",
-      "leftPos" : 590,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "通知刷新",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE3"
-        }
-      } ],
-      "topPos" : 230
-    }, {
-      "codeName" : "DEACTION1",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "others_relation_idea"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "dto"
-      },
-      "leftPos" : 726,
-      "logicNodeType" : "DEACTION",
-      "name" : "进行关联操作",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE3"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        }
-      } ],
-      "topPos" : 100
-    }, {
-      "code" : "let choose = uiLogic.default.customer;\r\nif(choose != null && choose != ''){\r\n    uiLogic.dto.srfactionparam = choose.split(',').map(id => ({ id }));\r\n    uiLogic.dto.principal_id = uiLogic.idea.id;\r\n    uiLogic.dto.id = uiLogic.idea.id;\r\n    uiLogic.dto.principal_type = \"idea\";\r\n    uiLogic.dto.target_type = \"customer\";\r\n}",
+      "code" : "let choose = uiLogic.default.customer_id;\r\nif(choose != null && choose != ''){\r\n    uiLogic.dto.srfactionparam = choose.split(',').map(id => ({ id }));\r\n    uiLogic.dto.principal_id = uiLogic.idea.id;\r\n    uiLogic.dto.id = uiLogic.idea.id;\r\n    uiLogic.dto.principal_type = \"idea\";\r\n    uiLogic.dto.target_type = \"customer\";\r\n}",
       "codeName" : "RAWJSCODE2",
       "leftPos" : 590,
       "logicNodeType" : "RAWJSCODE",
@@ -15164,6 +15084,55 @@
       } ],
       "topPos" : -40
     }, {
+      "code" : "\r\nibiz.mc.command.update.send({ srfdecodename: 'idea', srfkey: context.idea})",
+      "codeName" : "RAWJSCODE3",
+      "leftPos" : 590,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "通知刷新",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE3"
+        }
+      } ],
+      "topPos" : 230
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "others_relation_idea"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "dto"
+      },
+      "leftPos" : 726,
+      "logicNodeType" : "DEACTION",
+      "name" : "进行关联操作",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE3"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "topPos" : 100
+    }, {
       "codeName" : "END1",
       "leftPos" : 630,
       "logicNodeType" : "END",
@@ -15191,8 +15160,49 @@
         "id" : "idea"
       },
       "topPos" : -150
+    }, {
+      "codeName" : "PREPAREJSPARAM2",
+      "leftPos" : 590,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "idea实体赋参",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "idea"
+        },
+        "name" : "Default ==> idea",
+        "paramAction" : "SETPARAMVALUE",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : -261
     } ],
     "getPSDEUILogicParams" : [ {
+      "codeName" : "view",
+      "logicName" : "视图对象",
+      "name" : "视图对象",
+      "activeViewParam" : true
+    }, {
+      "codeName" : "idea",
+      "logicName" : "idea",
+      "name" : "idea",
+      "entityParam" : true
+    }, {
       "codeName" : "form",
       "logicName" : "表单对象",
       "name" : "表单对象",
@@ -15203,21 +15213,11 @@
       "name" : "传入后台对象",
       "entityParam" : true
     }, {
-      "codeName" : "idea",
-      "logicName" : "idea",
-      "name" : "idea",
-      "entityParam" : true
-    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
-    }, {
-      "codeName" : "view",
-      "logicName" : "视图对象",
-      "name" : "视图对象",
-      "activeViewParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
