@@ -3,7 +3,7 @@
   "name" : "MySQL5",
   "getPSDEDataQueryCodeConds" : [ {
     "condType" : "CUSTOM",
-    "customCond" : "( t1.`IS_DELETED` = 0  AND  ( t21.`CATEGORIES` LIKE  CONCAT('%',${srfwebcontext('category_id','{\"defname\":\"CATEGORIES\",\"dename\":\"IDEA\"}')},'%')  OR  t1.`CATEGORY_ID` =  ${srfwebcontext('category_id','{\"defname\":\"CATEGORY_ID\",\"dename\":\"IDEA\"}')} ) )",
+    "customCond" : "( t1.`IS_DELETED` = 0  AND  ( <#assign _value=srfwebcontext('category_id','{\"defname\":\"CATEGORIES\",\"dename\":\"IDEA\",\"ignoreempty\":true}')><#if _value?length gt 0>t21.`CATEGORIES` LIKE  CONCAT('%',${_value},'%')<#else>1=1</#if>  OR  <#assign _value=srfwebcontext('category_id','{\"defname\":\"CATEGORY_ID\",\"dename\":\"IDEA\",\"ignoreempty\":true}')><#if _value?length gt 0>t1.`CATEGORY_ID` =  ${_value}<#else>1=1</#if> ) )",
     "name" : "查询条件"
   } ],
   "getPSDEDataQueryCodeExps" : [ {

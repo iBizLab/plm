@@ -296,11 +296,13 @@
     "enableBackend" : true,
     "enableFront" : true
   }, {
-    "actionHolder" : 1,
     "codeName" : "cur_reviewer",
-    "dataSetType" : "DELOGIC",
     "logicName" : "当前评审人",
     "name" : "cur_reviewer",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "Default"
+    } ],
     "getPSDEDataSetInput" : {
       "name" : "Cur_reviewerInput",
       "getPSDEFilterDTO" : {
@@ -317,13 +319,8 @@
       },
       "type" : "PAGE"
     },
-    "getPSDELogic" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_stage/PSDELOGICS/cur_reviewer.json"
-    },
-    "predefinedType" : "DELOGIC",
     "enableBackend" : true,
-    "enableFront" : false
+    "enableFront" : true
   } ],
   "getAllPSDEFields" : [ {
     "getAllPSDEFDTColumns" : [ {
@@ -1381,6 +1378,11 @@
       "leftPos" : 200,
       "logicNodeType" : "END",
       "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "temp"
+      },
+      "returnType" : "LOGICPARAM",
       "topPos" : 742
     } ],
     "getPSDELogicParams" : [ {
