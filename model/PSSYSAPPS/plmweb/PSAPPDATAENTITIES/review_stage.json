@@ -1584,7 +1584,7 @@
     "name" : "默认选中",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : -1606,
+      "leftPos" : -1826,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDEUILogicLinks" : [ {
@@ -1602,137 +1602,18 @@
       "topPos" : -98,
       "parallelOutput" : true
     }, {
-      "codeName" : "END1",
-      "leftPos" : -1384,
+      "code" : "uiLogic.list.ctx.parent.controllersMap.get(\"form\").state.modified = false;",
+      "codeName" : "RAWJSCODE7",
+      "leftPos" : -253,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "设置表单是否编辑",
+      "topPos" : -90
+    }, {
+      "codeName" : "END2",
+      "leftPos" : -1160,
       "logicNodeType" : "END",
       "name" : "结束",
       "topPos" : 104
-    }, {
-      "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : -1424,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "绑定父级页面/表单",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE4"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "EQ",
-            "dstFieldName" : "details.state.value",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "parent_form"
-            },
-            "logicType" : "SINGLE",
-            "name" : "parent_form[details.state.value] 等于(=) 20",
-            "paramValue" : "20",
-            "value" : "20"
-          } ]
-        },
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        }
-      }, {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "NOTEQ",
-            "dstFieldName" : "details.state.value",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "parent_form"
-            },
-            "logicType" : "SINGLE",
-            "name" : "parent_form[details.state.value] 不等于(<>) 20",
-            "paramValue" : "20",
-            "value" : "20"
-          } ]
-        },
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "parent_view"
-        },
-        "name" : "list[ctx.parent.controllersMap.get(\"reviewmain_view\")] ==> parent_view",
-        "paramAction" : "BINDPARAM",
-        "srcFieldName" : "ctx.parent.controllersMap.get(\"reviewmain_view\")",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "list"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "parent_form"
-        },
-        "name" : "list[ctx.parent.controllersMap.get(\"form\")] ==> parent_form",
-        "paramAction" : "BINDPARAM",
-        "srcFieldName" : "ctx.parent.controllersMap.get(\"form\")",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "list"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : -90
-    }, {
-      "code" : "const cur_reviewer_id = uiLogic.parent_form.details.cur_reviewer_id;\r\ncur_reviewer_id.setDataValue(uiLogic.review_info.cur_reviewer_id);\r\n\r\nconst curstage_id = uiLogic.parent_form.details.curstage_id;\r\ncurstage_id.setDataValue(uiLogic.default.id);",
-      "codeName" : "RAWJSCODE3",
-      "leftPos" : -500,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "设置选中值",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE7"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE3"
-        }
-      } ],
-      "topPos" : -90
-    }, {
-      "code" : "const cur_reviewer_id = uiLogic.parent_form.details.cur_reviewer_id;\r\ncur_reviewer_id.setDataValue(null);\r\nconst curstage_id = uiLogic.parent_form.details.curstage_id;\r\ncurstage_id.setDataValue(null);",
-      "codeName" : "RAWJSCODE2",
-      "leftPos" : -700,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "取消选中值",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE7"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        }
-      } ],
-      "topPos" : 8
     }, {
       "codeName" : "PREPAREJSPARAM3",
       "leftPos" : -700,
@@ -1781,15 +1662,205 @@
       } ],
       "topPos" : -90
     }, {
-      "code" : "uiLogic.list.ctx.parent.controllersMap.get(\"form\").state.modified = false;",
-      "codeName" : "RAWJSCODE7",
-      "leftPos" : -253,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "设置表单是否编辑",
+      "codeName" : "PREPAREJSPARAM4",
+      "leftPos" : -1704,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM4"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "parent_view"
+        },
+        "name" : "list[ctx.parent.controllersMap.get(\"reviewidea_main_view\")] ==> parent_view",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ctx.parent.controllersMap.get(\"reviewidea_main_view\")",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "list"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 8
+    }, {
+      "codeName" : "END1",
+      "leftPos" : -1384,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 104
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : -1704,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "绑定父级页面/表单",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM4"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "groupOP" : "OR",
+            "logicType" : "GROUP",
+            "name" : "OR",
+            "getPSDEUILogicLinkConds" : [ {
+              "condOP" : "EQ",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "parent_view"
+              },
+              "logicType" : "SINGLE",
+              "name" : "parent_view 等于(=) undefined",
+              "paramValue" : "undefined",
+              "value" : "undefined"
+            }, {
+              "condOP" : "ISNULL",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "parent_view"
+              },
+              "logicType" : "SINGLE",
+              "name" : "parent_view 值为空(Nil)"
+            } ]
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      }, {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "groupOP" : "OR",
+            "logicType" : "GROUP",
+            "name" : "OR",
+            "getPSDEUILogicLinkConds" : [ {
+              "condOP" : "ISNOTNULL",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "parent_view"
+              },
+              "logicType" : "SINGLE",
+              "name" : "parent_view 值不为空(NotNil)"
+            }, {
+              "condOP" : "NOTEQ",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "parent_view"
+              },
+              "logicType" : "SINGLE",
+              "name" : "parent_view 不等于(<>) undefined",
+              "paramValue" : "undefined",
+              "value" : "undefined"
+            } ]
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "parent_view"
+        },
+        "name" : "list[ctx.parent.controllersMap.get(\"reviewmain_view\")] ==> parent_view",
+        "paramAction" : "BINDPARAM",
+        "srcFieldName" : "ctx.parent.controllersMap.get(\"reviewmain_view\")",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "list"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "parent_form"
+        },
+        "name" : "list[ctx.parent.controllersMap.get(\"form\")] ==> parent_form",
+        "paramAction" : "BINDPARAM",
+        "srcFieldName" : "ctx.parent.controllersMap.get(\"form\")",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "list"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
       "topPos" : -90
     }, {
-      "code" : "const cur_reviewer_id = uiLogic.parent_form.details.cur_reviewer_id;\r\ncur_reviewer_id.setDataValue(uiLogic.default.reviewer);\r\n\r\nconst curstage_id = uiLogic.parent_form.details.curstage_id;\r\ncurstage_id.setDataValue(uiLogic.default.id);\r\n\r\n",
-      "codeName" : "RAWJSCODE1",
+      "codeName" : "PREPAREJSPARAM2",
+      "leftPos" : -700,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "context.curstage_id",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "parent_view"
+        },
+        "name" : "Default[id] ==> parent_view[context.curstage_id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "id",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "context.curstage_state",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "parent_view"
+        },
+        "name" : "Default[stage_state] ==> parent_view[context.curstage_state]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "stage_state",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : -190
+    }, {
+      "code" : "const cur_reviewer_id = uiLogic.parent_form.details.cur_reviewer_id;\r\ncur_reviewer_id.setDataValue(uiLogic.review_info.cur_reviewer_id);\r\n\r\nconst curstage_id = uiLogic.parent_form.details.curstage_id;\r\ncurstage_id.setDataValue(uiLogic.default.id);",
+      "codeName" : "RAWJSCODE3",
       "leftPos" : -500,
       "logicNodeType" : "RAWJSCODE",
       "name" : "设置选中值",
@@ -1802,10 +1873,105 @@
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE1"
+          "id" : "RAWJSCODE3"
         }
       } ],
-      "topPos" : -190
+      "topPos" : -90
+    }, {
+      "code" : "uiLogic.default = null;\r\nuiLogic.list.state.selectedData=[];\r\nlet items = uiLogic.list.state.items;\r\nlet srfpersonid = uiLogic.ctx.srfpersonid;\r\nfor (let i = 0; i < items.length; i++) {\r\n    if (items[i].reviewer === srfpersonid && items[i].stage_state === '20') {\r\n        uiLogic.default = items[i];\r\n        uiLogic.list.state.selectedData.push(items[i]);\r\n        break;\r\n    }\r\n}",
+      "codeName" : "RAWJSCODE4",
+      "leftPos" : -1200,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default 值不为空(NotNil)"
+          }, {
+            "condOP" : "NOTEQ",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default 不等于(<>) undefined",
+            "paramValue" : "undefined",
+            "value" : "undefined"
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE4"
+        }
+      }, {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "ISNULL",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default 值为空(Nil)"
+          }, {
+            "condOP" : "EQ",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default 等于(=) undefined",
+            "paramValue" : "undefined",
+            "value" : "undefined"
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE4"
+        }
+      } ],
+      "topPos" : -90
+    }, {
+      "code" : "const cur_reviewer_id = uiLogic.parent_form.details.cur_reviewer_id;\r\ncur_reviewer_id.setDataValue(null);\r\nconst curstage_id = uiLogic.parent_form.details.curstage_id;\r\ncurstage_id.setDataValue(null);",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : -700,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "取消选中值",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE7"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      } ],
+      "topPos" : 8
     }, {
       "codeName" : "DEACTION1",
       "getDstPSAppDEAction" : {
@@ -1927,15 +2093,18 @@
       },
       "topPos" : -90
     }, {
-      "code" : "uiLogic.default = null;\r\nuiLogic.list.state.selectedData=[];\r\nlet items = uiLogic.list.state.items;\r\nlet srfpersonid = uiLogic.ctx.srfpersonid;\r\nfor (let i = 0; i < items.length; i++) {\r\n    if (items[i].reviewer === srfpersonid && items[i].stage_state === '20') {\r\n        uiLogic.default = items[i];\r\n        uiLogic.list.state.selectedData.push(items[i]);\r\n        break;\r\n    }\r\n}",
-      "codeName" : "RAWJSCODE4",
-      "leftPos" : -1200,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : -1424,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEACTION1"
+          "id" : "RAWJSCODE4"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -1943,33 +2112,26 @@
           "groupOP" : "AND",
           "logicType" : "GROUP",
           "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "ISNOTNULL",
+            "condOP" : "EQ",
+            "dstFieldName" : "details.state.value",
             "getDstLogicParam" : {
               "modelref" : true,
-              "id" : "Default"
+              "id" : "parent_form"
             },
             "logicType" : "SINGLE",
-            "name" : "Default 值不为空(NotNil)"
-          }, {
-            "condOP" : "NOTEQ",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default 不等于(<>) undefined",
-            "paramValue" : "undefined",
-            "value" : "undefined"
+            "name" : "parent_form[details.state.value] 等于(=) 20",
+            "paramValue" : "20",
+            "value" : "20"
           } ]
         },
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE4"
+          "id" : "DEBUGPARAM1"
         }
       }, {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "END2"
+          "id" : "END1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -1977,96 +2139,45 @@
           "groupOP" : "AND",
           "logicType" : "GROUP",
           "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "ISNULL",
+            "condOP" : "NOTEQ",
+            "dstFieldName" : "details.state.value",
             "getDstLogicParam" : {
               "modelref" : true,
-              "id" : "Default"
+              "id" : "parent_form"
             },
             "logicType" : "SINGLE",
-            "name" : "Default 值为空(Nil)"
-          }, {
-            "condOP" : "EQ",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default 等于(=) undefined",
-            "paramValue" : "undefined",
-            "value" : "undefined"
+            "name" : "parent_form[details.state.value] 不等于(<>) 20",
+            "paramValue" : "20",
+            "value" : "20"
           } ]
         },
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE4"
+          "id" : "DEBUGPARAM1"
         }
       } ],
       "topPos" : -90
     }, {
-      "codeName" : "PREPAREJSPARAM2",
-      "leftPos" : -700,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "准备参数",
+      "code" : "const cur_reviewer_id = uiLogic.parent_form.details.cur_reviewer_id;\r\ncur_reviewer_id.setDataValue(uiLogic.default.reviewer);\r\n\r\nconst curstage_id = uiLogic.parent_form.details.curstage_id;\r\ncurstage_id.setDataValue(uiLogic.default.id);\r\n\r\n",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : -500,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "设置选中值",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE1"
+          "id" : "RAWJSCODE7"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
+          "id" : "RAWJSCODE1"
         }
       } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "context.curstage_id",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "parent_view"
-        },
-        "name" : "Default[id] ==> parent_view[context.curstage_id]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "id",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "context.curstage_state",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "parent_view"
-        },
-        "name" : "Default[stage_state] ==> parent_view[context.curstage_state]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "stage_state",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
       "topPos" : -190
-    }, {
-      "codeName" : "END2",
-      "leftPos" : -1160,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 104
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "review_info",
-      "logicName" : "评审信息",
-      "name" : "评审信息",
-      "entityParam" : true
-    }, {
-      "codeName" : "parent_view",
-      "logicName" : "父视图对象",
-      "name" : "父视图对象",
-      "entityParam" : true
-    }, {
       "codeName" : "view",
       "logicName" : "当前视图对象",
       "name" : "当前视图对象",
@@ -2083,15 +2194,25 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "parent_form",
-      "logicName" : "父表单",
-      "name" : "父表单",
+      "codeName" : "parent_view",
+      "logicName" : "父视图对象",
+      "name" : "父视图对象",
+      "entityParam" : true
+    }, {
+      "codeName" : "review_info",
+      "logicName" : "评审信息",
+      "name" : "评审信息",
       "entityParam" : true
     }, {
       "codeName" : "list",
       "logicName" : "列表对象",
       "name" : "列表对象",
       "ctrlParam" : true
+    }, {
+      "codeName" : "parent_form",
+      "logicName" : "父表单",
+      "name" : "父表单",
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
