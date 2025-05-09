@@ -11849,13 +11849,24 @@
     "frontProcessType" : "OTHER",
     "fullCodeName" : "idea_check_review_history",
     "name" : "查看评审历史",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "check_review_history"
+    },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
     },
+    "getPSNavigateParams" : [ {
+      "key" : "n_target_id_eq",
+      "name" : "n_target_id_eq",
+      "value" : "idea",
+      "rawValue" : false
+    } ],
     "uIActionMode" : "FRONT",
     "uIActionTag" : "check_review_history",
     "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
     "id" : "check_review_history@idea"
   }, {
     "actionTarget" : "NONE",
@@ -14467,6 +14478,54 @@
       "logicName" : "上下文",
       "name" : "上下文",
       "navContextParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "check_review_history",
+    "defaultParamName" : "Default",
+    "logicName" : "查看评审历史",
+    "memo" : "按钮触发，通过脚本切换显示组件",
+    "name" : "查看评审历史",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200
+    }, {
+      "code" : "uiLogic.view.ctx.controllersMap.get(\"form\").details.grouppanel8.state.visible=false;\r\nuiLogic.view.ctx.controllersMap.get(\"form\").details.grouppanel15.state.visible=true;",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "切换显示组件",
+      "topPos" : 350
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
