@@ -11412,6 +11412,49 @@
     "tempDataMode" : 2,
     "builtinMethod" : false
   }, {
+    "codeName" : "FetchTempReview_data",
+    "dataSetTag" : "review_data",
+    "dataSetType" : "DATAQUERY",
+    "memo" : "状态非删除，如果上下文传递了类别参数，显示该类别下数据",
+    "methodType" : "FETCHTEMP",
+    "name" : "review_data",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Review_dataInput",
+      "name" : "Review_dataInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "idea_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Review_dataResult",
+      "name" : "Review_dataResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "idea_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "review_data"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
     "codeName" : "FetchTempUser",
     "dataSetTag" : "user",
     "dataSetType" : "DATAQUERY",
