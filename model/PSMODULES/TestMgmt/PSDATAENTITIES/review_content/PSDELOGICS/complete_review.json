@@ -478,6 +478,17 @@
     "leftPos" : 1160,
     "logicNodeType" : "PREPAREPARAM",
     "name" : "附加到数组变量，且获取选中阶段的下一阶段数据",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM8"
+      }
+    } ],
     "getPSDELogicNodeParams" : [ {
       "getDstPSDELogicParam" : {
         "modelref" : true,
@@ -485,6 +496,20 @@
       },
       "name" : "for_stage ==> stage_arr",
       "paramAction" : "APPENDPARAM",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_stage"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "REVIEWER",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "review_detail"
+      },
+      "name" : "for_stage[REVIEWER] ==> review_detail[REVIEWER]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "REVIEWER",
       "getSrcPSDELogicParam" : {
         "modelref" : true,
         "id" : "for_stage"
@@ -511,6 +536,24 @@
       "srcValue" : "20",
       "srcValueType" : "SRCVALUE"
     } ],
+    "topPos" : 334
+  }, {
+    "codeName" : "DENOTIFY1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "review_detail"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDENOTIFIES/review_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "leftPos" : 1388,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "通知下一评审人",
     "topPos" : 334
   }, {
     "codeName" : "PREPAREPARAM3",

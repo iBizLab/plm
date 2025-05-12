@@ -219,9 +219,9 @@
           "id" : "fill_guideline"
         },
         "getPSDEFIUpdateDetails" : [ {
-          "name" : "review_stage"
-        }, {
           "name" : "review_guideline_id"
+        }, {
+          "name" : "review_stage"
         } ]
       } ],
       "getPSDEFormItems" : [ {
@@ -298,6 +298,28 @@
         "getPSAppDEField" : {
           "name" : "LIBRARY_ID",
           "codeName" : "library_id"
+        }
+      }, {
+        "id" : "principal_name",
+        "hidden" : true,
+        "dataType" : 25,
+        "createDVT" : "PARAM",
+        "createDV" : "library_name",
+        "updateDVT" : "PARAM",
+        "updateDV" : "library_name",
+        "getPSAppDEField" : {
+          "name" : "PRINCIPAL_NAME",
+          "codeName" : "principal_name"
+        }
+      }, {
+        "id" : "principal_type",
+        "hidden" : true,
+        "dataType" : 25,
+        "createDV" : "library",
+        "updateDV" : "library",
+        "getPSAppDEField" : {
+          "name" : "PRINCIPAL_TYPE",
+          "codeName" : "principal_type"
         }
       }, {
         "id" : "principal_id",
@@ -580,6 +602,64 @@
             },
             "updateDV" : "library",
             "updateDVT" : "APPDATA",
+            "allowEmpty" : true,
+            "hidden" : true
+          }, {
+            "caption" : "评审主体名称",
+            "codeName" : "principal_name",
+            "createDV" : "library_name",
+            "createDVT" : "PARAM",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "principal_name",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "PRINCIPAL_NAME",
+              "codeName" : "principal_name"
+            },
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "principal_name"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "updateDV" : "library_name",
+            "updateDVT" : "PARAM",
+            "allowEmpty" : true,
+            "hidden" : true
+          }, {
+            "caption" : "评审主体类型",
+            "codeName" : "principal_type",
+            "createDV" : "library",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "principal_type",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "PRINCIPAL_TYPE",
+              "codeName" : "principal_type"
+            },
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "principal_type"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "updateDV" : "library",
             "allowEmpty" : true,
             "hidden" : true
           }, {
