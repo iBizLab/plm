@@ -524,13 +524,36 @@
               "codeName" : "principal_name"
             },
             "getPSEditor" : {
-              "editorType" : "TEXTBOX",
-              "maxLength" : 100,
+              "editorParams" : {
+                "AC" : "TRUE",
+                "TRIGGER" : "TRUE",
+                "PICKUPVIEW" : "FALSE"
+              },
+              "editorType" : "PICKEREX_TRIGGER",
+              "handlerType" : "PickupText",
               "name" : "principal_name",
+              "getPSAppDEACMode" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "getPSAppDEDataSet" : {
+                "modelref" : true,
+                "id" : "fetch_quick"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
+              },
               "getPSEditorItems" : [ {
                 "name" : "principal_id"
               } ],
-              "placeHolder" : "选择所属测试库"
+              "placeHolder" : "选择所属测试库",
+              "valueItemName" : "principal_id",
+              "enableAC" : true,
+              "enablePickupView" : false,
+              "forceSelection" : true,
+              "showTrigger" : true,
+              "singleSelect" : true
             },
             "getPSLayoutPos" : {
               "colMD" : 24,
