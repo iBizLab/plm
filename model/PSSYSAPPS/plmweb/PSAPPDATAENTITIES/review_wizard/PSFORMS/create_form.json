@@ -121,7 +121,15 @@
       "codeName" : "description"
     }
   }, {
+    "id" : "principal_name",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "PRINCIPAL_NAME",
+      "codeName" : "principal_name"
+    }
+  }, {
     "id" : "library_name",
+    "hidden" : true,
     "dataType" : 25,
     "getPSAppDEField" : {
       "name" : "LIBRARY_NAME",
@@ -136,14 +144,6 @@
     "getPSAppDEField" : {
       "name" : "LIBRARY_ID",
       "codeName" : "library_id"
-    }
-  }, {
-    "id" : "principal_name",
-    "hidden" : true,
-    "dataType" : 25,
-    "getPSAppDEField" : {
-      "name" : "PRINCIPAL_NAME",
-      "codeName" : "principal_name"
     }
   }, {
     "id" : "principal_type",
@@ -346,6 +346,38 @@
       "detailType" : "GROUPPANEL",
       "name" : "grouppanel2",
       "getPSDEFormDetails" : [ {
+        "caption" : "所属测试库",
+        "codeName" : "principal_name",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 0,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "principal_name",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "PRINCIPAL_NAME",
+          "codeName" : "principal_name"
+        },
+        "getPSEditor" : {
+          "editorType" : "TEXTBOX",
+          "maxLength" : 100,
+          "name" : "principal_name",
+          "getPSEditorItems" : [ {
+            "name" : "principal_id"
+          } ],
+          "placeHolder" : "选择所属测试库"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "valueItemName" : "principal_id",
+        "allowEmpty" : false,
+        "showCaption" : true
+      }, {
         "getCapPSLanguageRes" : {
           "lanResTag" : "CONTROL.DEFORM.REVIEW_WIZARD.CREATE_FORM.FORMITEM.LIBRARY_NAME"
         },
@@ -365,40 +397,24 @@
           "codeName" : "library_name"
         },
         "getPSEditor" : {
-          "editorParams" : {
-            "AC" : "TRUE",
-            "PICKUPVIEW" : "TRUE"
-          },
-          "editorType" : "PICKER",
-          "handlerType" : "PickupText",
+          "editorType" : "HIDDEN",
           "name" : "library_name",
-          "getPSAppDEACMode" : {
-            "modelref" : true,
-            "id" : "Default"
-          },
-          "getPSAppDEDataSet" : {
-            "modelref" : true,
-            "id" : "fetch_default"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
-          },
           "getPSEditorItems" : [ {
-            "name" : "library_id"
+            "name" : "library_id",
+            "getPSAppDEACMode" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "getPSAppDEDataSet" : {
+              "modelref" : true,
+              "id" : "fetch_default"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
+            }
           } ],
-          "getPickupPSAppView" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_pick_up_view.json",
-            "viewType" : "DEPICKUPVIEW"
-          },
-          "placeHolder" : "选择所属测试库",
-          "valueItemName" : "library_id",
-          "enableAC" : true,
-          "enablePickupView" : true,
-          "forceSelection" : true,
-          "showTrigger" : true,
-          "singleSelect" : true
+          "placeHolder" : "选择所属测试库"
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
@@ -406,7 +422,7 @@
         },
         "valueItemName" : "library_id",
         "allowEmpty" : true,
-        "showCaption" : true
+        "hidden" : true
       }, {
         "getCapPSLanguageRes" : {
           "lanResTag" : "DEF.LNAME.LIBRARY_ID"
@@ -436,36 +452,6 @@
         },
         "updateDV" : "library",
         "updateDVT" : "APPDATA",
-        "allowEmpty" : true,
-        "hidden" : true
-      }, {
-        "caption" : "评审主体名称",
-        "codeName" : "principal_name",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "principal_name",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "PRINCIPAL_NAME",
-          "codeName" : "principal_name"
-        },
-        "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "principal_name",
-          "getPSEditorItems" : [ {
-            "name" : "principal_id"
-          } ]
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "valueItemName" : "principal_id",
         "allowEmpty" : true,
         "hidden" : true
       }, {
