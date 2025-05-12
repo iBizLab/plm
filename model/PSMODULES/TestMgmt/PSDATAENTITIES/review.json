@@ -105,6 +105,16 @@
   }, {
     "actionMode" : "UPDATE",
     "actionType" : "BUILTIN",
+    "getAfterPSDEActionLogics" : [ {
+      "actionLogicType" : 3,
+      "attachMode" : "AFTER",
+      "name" : "附加逻辑",
+      "getPSDENotify" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDENOTIFIES/review_notify.json"
+      },
+      "internalLogic" : false
+    } ],
     "codeName" : "Update",
     "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/Update.json",
@@ -11122,11 +11132,11 @@
     "name" : "评审通知",
     "getPSDENotifyTargets" : [ {
       "name" : "当前评审人",
-      "getPSSysMsgTarget" : {
-        "modelref" : true,
-        "path" : "PSSYSMSGTARGETS/cur_reviewer.json"
+      "getTargetPSDEField" : {
+        "name" : "REVIEWER",
+        "codeName" : "reviewer"
       },
-      "targetType" : "SYSMSGTARGET"
+      "targetType" : "DEFIELD"
     } ],
     "getPSSysMsgQueue" : {
       "modelref" : true,
