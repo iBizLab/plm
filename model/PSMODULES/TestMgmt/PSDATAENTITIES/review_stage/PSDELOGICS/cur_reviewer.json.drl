@@ -6,9 +6,10 @@ package cn.ibizlab.plm.testmgmt.logic.review_stagelogic.cur_reviewer;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.testmgmt.domain.review_stage review_stagecur_reviewerdefault;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_stage review_stagecur_reviewerpages;
                 global cn.ibizlab.plm.core.testmgmt.domain.review review_stagecur_reviewerreview;
-                global java.util.Map review_stagecur_reviewerreview_stage_list;
                     global cn.ibizlab.plm.core.testmgmt.service.IreviewService reviewservice;
+                    global cn.ibizlab.plm.core.testmgmt.service.Ireview_stageService review_stageservice;
         global cn.ibizlab.plm.core.testmgmt.service.Ireview_stageService iBzSysReview_stageDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
 
@@ -28,8 +29,8 @@ package cn.ibizlab.plm.testmgmt.logic.review_stagelogic.cur_reviewer;
             when
             then
                         update(review_stagecur_reviewerdefault);//更新fact中变量值
+                        update(review_stagecur_reviewerpages);//更新fact中变量值
                         update(review_stagecur_reviewerreview);//更新fact中变量值
-                        update(review_stagecur_reviewerreview_stage_list);//更新fact中变量值
             end
 
             //逻辑处理节点[实体行为]
@@ -39,18 +40,28 @@ package cn.ibizlab.plm.testmgmt.logic.review_stagelogic.cur_reviewer;
             then
                             cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(reviewservice.get(review_stagecur_reviewerreview.getId()),review_stagecur_reviewerreview);
                         update(review_stagecur_reviewerdefault);//更新fact中变量值
+                        update(review_stagecur_reviewerpages);//更新fact中变量值
                         update(review_stagecur_reviewerreview);//更新fact中变量值
-                        update(review_stagecur_reviewerreview_stage_list);//更新fact中变量值
             end
 
-            //逻辑处理节点[准备参数]
-            rule "prepareparam2"
-            ruleflow-group "review_stagecur_reviewerprepareparam2"
+            //逻辑处理节点[实体数据集]
+            rule "dedataset1"
+            ruleflow-group "review_stagecur_reviewerdedataset1"
             when
             then
                         update(review_stagecur_reviewerdefault);//更新fact中变量值
+                        update(review_stagecur_reviewerpages);//更新fact中变量值
                         update(review_stagecur_reviewerreview);//更新fact中变量值
-                        update(review_stagecur_reviewerreview_stage_list);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam1"
+            ruleflow-group "review_stagecur_reviewerbindparam1"
+            when
+            then
+                        update(review_stagecur_reviewerdefault);//更新fact中变量值
+                        update(review_stagecur_reviewerpages);//更新fact中变量值
+                        update(review_stagecur_reviewerreview);//更新fact中变量值
             end
 
             //逻辑处理节点[结束]
@@ -59,6 +70,6 @@ package cn.ibizlab.plm.testmgmt.logic.review_stagelogic.cur_reviewer;
             when
             then
                         update(review_stagecur_reviewerdefault);//更新fact中变量值
+                        update(review_stagecur_reviewerpages);//更新fact中变量值
                         update(review_stagecur_reviewerreview);//更新fact中变量值
-                        update(review_stagecur_reviewerreview_stage_list);//更新fact中变量值
             end

@@ -1379,8 +1379,7 @@
       "dBType" : "MYSQL5",
       "name" : "TARGET_TYPE",
       "queryCodeExp" : "t11.`TARGET_TYPE`",
-      "standardColumnName" : "`TARGET_TYPE`",
-      "valueAutoGen" : true
+      "standardColumnName" : "`TARGET_TYPE`"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
@@ -1435,7 +1434,6 @@
     "codeName" : "target_type",
     "dEFType" : 3,
     "dataType" : "INHERIT",
-    "defaultValue" : "TEST_CASE",
     "importOrder" : 1000,
     "length" : 100,
     "logicName" : "关联目标类型",
@@ -8512,6 +8510,32 @@
       "topPos" : -48,
       "parallelOutput" : true
     }, {
+      "codeName" : "BINDPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "reviewer_list"
+      },
+      "leftPos" : 16,
+      "logicNodeType" : "BINDPARAM",
+      "name" : "绑定参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "BINDPARAM1"
+        }
+      } ],
+      "srcFieldName" : "stage",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "review_detail"
+      },
+      "topPos" : -32
+    }, {
       "codeName" : "DEACTION4",
       "getDstPSDEAction" : {
         "modelref" : true,
@@ -8550,7 +8574,7 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREPARAM1"
+          "id" : "BINDPARAM1"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -8559,6 +8583,27 @@
         }
       } ],
       "topPos" : 90
+    }, {
+      "codeName" : "DEBUGPARAM2",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "reviewer_list"
+      },
+      "leftPos" : 202,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM2"
+        }
+      } ],
+      "topPos" : -32
     }, {
       "codeName" : "PREPAREPARAM1",
       "leftPos" : 202,
@@ -9280,6 +9325,11 @@
       },
       "entityParam" : true
     }, {
+      "codeName" : "reviewer_list",
+      "logicName" : "评审人列表",
+      "name" : "评审人列表",
+      "entityListParam" : true
+    }, {
       "codeName" : "stage",
       "logicName" : "阶段",
       "name" : "阶段",
@@ -9426,7 +9476,6 @@
       "stringLength" : 60,
       "type" : "SIMPLE"
     }, {
-      "defaultValue" : "TEST_CASE",
       "logicName" : "关联目标类型",
       "name" : "target_type",
       "getPSDEField" : {
