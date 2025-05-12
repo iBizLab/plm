@@ -98,6 +98,7 @@
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
       }
     },
+    "hookEventNames" : [ "ONCHANGE" ],
     "logicName" : "需求快速建立视图_表单",
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -182,6 +183,21 @@
       "enableDEFieldPrivilege" : false,
       "id" : "选项表单处理器"
     },
+    "getPSControlLogics" : [ {
+      "eventNames" : "onChange",
+      "itemName" : "product_name",
+      "logicTag" : "form",
+      "logicType" : "APPDEUILOGIC",
+      "name" : "reset_ctx",
+      "getPSAppDEUILogic" : {
+        "modelref" : true,
+        "id" : "reset_product_id"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
+      }
+    } ],
     "getPSControlParam" : {
       "autoLoad" : true,
       "showBusyIndicator" : true,
@@ -1093,7 +1109,6 @@
             "editorParams" : {
               "AC" : "TRUE",
               "TRIGGER" : "TRUE",
-              "SRFNAVCTX.product" : "%product_id%",
               "PICKUPVIEW" : "FALSE"
             },
             "editorType" : "PICKEREX_TRIGGER",
@@ -1113,12 +1128,6 @@
             },
             "getPSEditorItems" : [ {
               "name" : "product_id"
-            } ],
-            "getPSNavigateContexts" : [ {
-              "key" : "PRODUCT",
-              "name" : "PRODUCT",
-              "value" : "product_id",
-              "rawValue" : false
             } ],
             "placeHolder" : "选择所属产品",
             "valueItemName" : "product_id",
@@ -1459,7 +1468,6 @@
             "editorParams" : {
               "multiple" : "true",
               "DROPDOWNVIEW" : "TRUE",
-              "SRFNAVPARAM.product" : "%product%",
               "AC" : "FALSE",
               "TRIGGER" : "TRUE",
               "PICKUPVIEW" : "TRUE"
@@ -1468,12 +1476,6 @@
             "name" : "customer",
             "getPSEditorItems" : [ {
               "name" : "customer_id"
-            } ],
-            "getPSNavigateParams" : [ {
-              "key" : "product",
-              "name" : "product",
-              "value" : "product",
-              "rawValue" : false
             } ],
             "getPickupPSAppView" : {
               "modelref" : true,
