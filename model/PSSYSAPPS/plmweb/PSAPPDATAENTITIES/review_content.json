@@ -3110,6 +3110,12 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
     },
+    "getPSNavigateParams" : [ {
+      "key" : "target_type",
+      "name" : "target_type",
+      "value" : "IDEA",
+      "rawValue" : true
+    } ],
     "refreshMode" : 1,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "program_review_idea",
@@ -3137,6 +3143,12 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
     },
+    "getPSNavigateParams" : [ {
+      "key" : "target_type",
+      "name" : "target_type",
+      "value" : "TEST_CASE",
+      "rawValue" : true
+    } ],
     "refreshMode" : 1,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "program_review_test_case",
@@ -4310,25 +4322,6 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "code" : "const appDataEntityId = 'plmweb.review_content';\r\nconst context = uiLogic.ctx;\r\nconst data_arr = uiLogic.default;\r\n\r\nconst keyMapping = {\r\n    srfkey: 'target_id',\r\n};\r\n\r\nconst propertyMap = uiLogic.view.model.appViewParams?.find(\r\n    item => item.key.toLowerCase() === 'PROPERTYMAP'.toLowerCase(),\r\n);\r\n\r\nif (propertyMap) {\r\n    const keyValuePairs = propertyMap.value.split(',');\r\n    // 遍历键值对数组并添加到 keyMapping 映射对象中\r\n    for (const pair of keyValuePairs) {\r\n        const [sourceKey, targetKey] = pair.split(':');\r\n        if (sourceKey && targetKey) {\r\n            keyMapping[sourceKey] = targetKey;\r\n        }\r\n    }\r\n}\r\n\r\n// *转换属性\r\nconst addData = data_arr.map(item => {\r\n    const tempData = {};\r\n    // 遍历映射对象，将属性从 item 复制到 tempData\r\n    Object.keys(keyMapping).forEach(key => {\r\n        const targetKey = keyMapping[key];\r\n        tempData[targetKey] = item[key];\r\n    });\r\n    keyMapping['srfkey'] = item['id'];\r\n    return tempData;\r\n});\r\n\r\n// 获取实体服务并调用创建接口\r\nconst service = ibiz.hub.getApp(context.srfappid).deService;\r\nservice.exec(appDataEntityId, 'Create', context, addData);\r\n",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 296,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 208
-    }, {
       "codeName" : "END1",
       "leftPos" : 570,
       "logicNodeType" : "END",
@@ -4356,6 +4349,25 @@
         }
       } ],
       "topPos" : 208
+    }, {
+      "code" : "const appDataEntityId = 'plmweb.review_content';\r\nconst context = uiLogic.ctx;\r\nconst data_arr = uiLogic.default;\r\n\r\nconst keyMapping = {\r\n    srfkey: 'target_id',\r\n};\r\n\r\nconst propertyMap = uiLogic.view.model.appViewParams?.find(\r\n    item => item.key.toLowerCase() === 'PROPERTYMAP'.toLowerCase(),\r\n);\r\n\r\nif (propertyMap) {\r\n    const keyValuePairs = propertyMap.value.split(',');\r\n    // 遍历键值对数组并添加到 keyMapping 映射对象中\r\n    for (const pair of keyValuePairs) {\r\n        const [sourceKey, targetKey] = pair.split(':');\r\n        if (sourceKey && targetKey) {\r\n            keyMapping[sourceKey] = targetKey;\r\n        }\r\n    }\r\n}\r\n\r\n// *转换属性\r\nconst addData = data_arr.map(item => {\r\n    const tempData = {};\r\n    // 遍历映射对象，将属性从 item 复制到 tempData\r\n    Object.keys(keyMapping).forEach(key => {\r\n        const targetKey = keyMapping[key];\r\n        tempData[targetKey] = item[key];\r\n    });\r\n    tempData['target_type'] = 'idea';\r\n    keyMapping['srfkey'] = item['id'];\r\n    return tempData;\r\n});\r\n\r\n// 获取实体服务并调用创建接口\r\nconst service = ibiz.hub.getApp(context.srfappid).deService;\r\nservice.exec(appDataEntityId, 'Create', context, addData);\r\n",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 296,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
@@ -4364,15 +4376,15 @@
       "default" : true,
       "entityListParam" : true
     }, {
-      "codeName" : "view",
-      "logicName" : "view",
-      "name" : "view",
-      "activeViewParam" : true
-    }, {
       "codeName" : "ctx",
       "logicName" : "应用上下文",
       "name" : "应用上下文",
       "navContextParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "view",
+      "name" : "view",
+      "activeViewParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
