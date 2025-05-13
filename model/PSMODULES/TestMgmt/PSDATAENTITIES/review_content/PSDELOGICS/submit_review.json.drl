@@ -34,25 +34,6 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.submit_review;
             then
             end
 
-            //逻辑处理节点[绑定参数]
-            rule "bindparam1"
-            ruleflow-group "review_contentsubmit_reviewbindparam1"
-            when
-            then
-                        update(review_contentsubmit_reviewdefault);//更新fact中变量值
-                        update(review_contentsubmit_reviewfor_reltion);//更新fact中变量值
-                        update(review_contentsubmit_reviewidea);//更新fact中变量值
-                        update(review_contentsubmit_reviewrelation_page);//更新fact中变量值
-                        update(review_contentsubmit_reviewreltion_filter);//更新fact中变量值
-                        update(review_contentsubmit_reviewreview_content);//更新fact中变量值
-                        update(review_contentsubmit_reviewreview_detail);//更新fact中变量值
-                        update(review_contentsubmit_reviewreviewer_list);//更新fact中变量值
-                        update(review_contentsubmit_reviewreviewer_temp);//更新fact中变量值
-                        update(review_contentsubmit_reviewstage);//更新fact中变量值
-                        update(review_contentsubmit_reviewstages);//更新fact中变量值
-                        update(review_contentsubmit_reviewtest_case);//更新fact中变量值
-            end
-
             //逻辑处理节点[通知第一评审人（测试用例）]
             rule "denotify2"
             ruleflow-group "review_contentsubmit_reviewdenotify2"
@@ -78,6 +59,25 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.submit_review;
             when
             then
                             cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(reviewservice.get(review_contentsubmit_reviewreview_detail.getId()),review_contentsubmit_reviewreview_detail);
+                        update(review_contentsubmit_reviewdefault);//更新fact中变量值
+                        update(review_contentsubmit_reviewfor_reltion);//更新fact中变量值
+                        update(review_contentsubmit_reviewidea);//更新fact中变量值
+                        update(review_contentsubmit_reviewrelation_page);//更新fact中变量值
+                        update(review_contentsubmit_reviewreltion_filter);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_content);//更新fact中变量值
+                        update(review_contentsubmit_reviewreview_detail);//更新fact中变量值
+                        update(review_contentsubmit_reviewreviewer_list);//更新fact中变量值
+                        update(review_contentsubmit_reviewreviewer_temp);//更新fact中变量值
+                        update(review_contentsubmit_reviewstage);//更新fact中变量值
+                        update(review_contentsubmit_reviewstages);//更新fact中变量值
+                        update(review_contentsubmit_reviewtest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置提交时间]
+            rule "rawsfcode1"
+            ruleflow-group "review_contentsubmit_reviewrawsfcode1"
+            when
+            then
                         update(review_contentsubmit_reviewdefault);//更新fact中变量值
                         update(review_contentsubmit_reviewfor_reltion);//更新fact中变量值
                         update(review_contentsubmit_reviewidea);//更新fact中变量值
@@ -154,9 +154,9 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.submit_review;
                         update(review_contentsubmit_reviewtest_case);//更新fact中变量值
             end
 
-            //逻辑处理节点[设置提交时间]
-            rule "rawsfcode1"
-            ruleflow-group "review_contentsubmit_reviewrawsfcode1"
+            //逻辑处理节点[通知第一评审人（需求）]
+            rule "denotify1"
+            ruleflow-group "review_contentsubmit_reviewdenotify1"
             when
             then
                         update(review_contentsubmit_reviewdefault);//更新fact中变量值
@@ -173,9 +173,9 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.submit_review;
                         update(review_contentsubmit_reviewtest_case);//更新fact中变量值
             end
 
-            //逻辑处理节点[通知第一评审人（需求）]
-            rule "denotify1"
-            ruleflow-group "review_contentsubmit_reviewdenotify1"
+            //逻辑处理节点[绑定参数]
+            rule "bindparam1"
+            ruleflow-group "review_contentsubmit_reviewbindparam1"
             when
             then
                         update(review_contentsubmit_reviewdefault);//更新fact中变量值

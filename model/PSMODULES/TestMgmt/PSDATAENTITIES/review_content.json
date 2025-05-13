@@ -8613,32 +8613,6 @@
       "topPos" : -48,
       "parallelOutput" : true
     }, {
-      "codeName" : "BINDPARAM1",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "reviewer_list"
-      },
-      "leftPos" : 16,
-      "logicNodeType" : "BINDPARAM",
-      "name" : "绑定参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM2"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "BINDPARAM1"
-        }
-      } ],
-      "srcFieldName" : "stage",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "review_detail"
-      },
-      "topPos" : 206
-    }, {
       "codeName" : "DENOTIFY2",
       "getDstPSDELogicParam" : {
         "modelref" : true,
@@ -8697,10 +8671,29 @@
       } ],
       "topPos" : 90
     }, {
+      "code" : "var review_detail = logic.getParam(\"review_detail\");\r\nreview_detail.set(\"submitted_at\", new Date());",
+      "codeName" : "RAWSFCODE1",
+      "codeType" : "JavaScript",
+      "leftPos" : 16,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "设置提交时间",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "BINDPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        }
+      } ],
+      "topPos" : 90
+    }, {
       "codeName" : "DEBUGPARAM3",
       "getDstPSDELogicParam" : {
         "modelref" : true,
-        "id" : "reviewer_temp"
+        "id" : "Default"
       },
       "leftPos" : 202,
       "logicNodeType" : "DEBUGPARAM",
@@ -8850,25 +8843,6 @@
       } ],
       "topPos" : 90
     }, {
-      "code" : "var review_detail = logic.getParam(\"review_detail\");\r\nreview_detail.set(\"submitted_at\", new Date());",
-      "codeName" : "RAWSFCODE1",
-      "codeType" : "JavaScript",
-      "leftPos" : 16,
-      "logicNodeType" : "RAWSFCODE",
-      "name" : "设置提交时间",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "BINDPARAM1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSFCODE1"
-        }
-      } ],
-      "topPos" : 90
-    }, {
       "codeName" : "DENOTIFY1",
       "getDstPSDELogicParam" : {
         "modelref" : true,
@@ -8897,6 +8871,32 @@
         }
       } ],
       "topPos" : 150
+    }, {
+      "codeName" : "BINDPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "reviewer_list"
+      },
+      "leftPos" : 16,
+      "logicNodeType" : "BINDPARAM",
+      "name" : "绑定参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "BINDPARAM1"
+        }
+      } ],
+      "srcFieldName" : "stage",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "review_detail"
+      },
+      "topPos" : 206
     }, {
       "codeName" : "DEDATASET1",
       "getDstPSDEDataSet" : {
