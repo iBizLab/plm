@@ -3228,6 +3228,10 @@
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "dictionary_data_idea_dictionary_create",
     "name" : "需求字典新建",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "set_search_param"
+    },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
@@ -3236,6 +3240,7 @@
     "uIActionMode" : "FRONT",
     "uIActionTag" : "idea_dictionary_create",
     "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
     "reloadData" : true,
     "id" : "idea_dictionary_create@dictionary_data"
   }, {
@@ -3451,6 +3456,76 @@
       "logicName" : "表格",
       "name" : "表格",
       "activeCtrlParam" : true,
+      "ctrlParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "set_search_param",
+    "defaultParamName" : "Default",
+    "logicName" : "设置搜索参数",
+    "name" : "设置搜索参数",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "code" : "console.log(\"view\",view);\r\nconsole.log(\"control\",ctrl);\r\nvar searchbar = uiLogic.searchbar;\r\nconsole.log(\"searchbar\",searchbar);",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 405,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "topPos" : 360
+    }, {
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "searchbar"
+      },
+      "leftPos" : 170,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
+      } ],
+      "topPos" : 360
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "searchbar",
+      "logicName" : "searchbar",
+      "name" : "searchbar",
       "ctrlParam" : true
     }, {
       "codeName" : "Default",
