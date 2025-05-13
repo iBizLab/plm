@@ -3121,6 +3121,34 @@
   } ],
   "getAllPSAppDEUIActions" : [ {
     "actionTarget" : "NONE",
+    "caption" : "需求字典新建（行为）",
+    "codeName" : "create",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dictionary_data_idea_dictionary_create_view.json",
+      "viewType" : "DEOPTVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "dictionary_data_create",
+    "name" : "需求字典新建（行为）",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
+    },
+    "getPSNavigateParams" : [ {
+      "key" : "catalog",
+      "name" : "catalog",
+      "value" : "catalog",
+      "rawValue" : false
+    } ],
+    "refreshMode" : 1,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "create",
+    "uIActionType" : "DEUIACTION",
+    "reloadData" : true,
+    "id" : "create@dictionary_data"
+  }, {
+    "actionTarget" : "NONE",
     "caption" : "新建阶段",
     "codeName" : "create_global_type",
     "dialogResult" : "OK",
@@ -3493,6 +3521,25 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
+      "code" : "console.log(\"view\", view);\r\nconsole.log(\"control\", ctrl);\r\nvar tabsearchbar = uiLogic.tabsearchbar;\r\nconsole.log(\"tabsearchbar\", tabsearchbar);\r\nvar catalog = tabsearchbar.state.selectedGroupItem.id\r\nconsole.log(\"catalog\", catalog);\r\nuiLogic.default.catalog = catalog;\r\nconsole.log(\"default\", uiLogic.default);\r\n",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 425,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 360
+    }, {
       "codeName" : "DEBUGPARAM1",
       "getDstPSDEUILogicParam" : {
         "modelref" : true,
@@ -3515,25 +3562,6 @@
       } ],
       "topPos" : 360
     }, {
-      "code" : "console.log(\"view\", view);\r\nconsole.log(\"control\", ctrl);\r\nvar tabsearchbar = uiLogic.tabsearchbar;\r\nconsole.log(\"tabsearchbar\", tabsearchbar);\r\nvar param = tabsearchbar.state.selectedGroupItem.id\r\nconsole.log(\"param\", param);\r\n\r\n",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 405,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 360
-    }, {
       "codeName" : "DEUIACTION1",
       "getDstPSAppDEUIAction" : {
         "getPSAppDataEntity" : {
@@ -3541,13 +3569,17 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
         },
         "modelref" : true,
-        "id" : "idea_dictionary_create@dictionary_data"
+        "id" : "create@dictionary_data"
       },
       "getDstPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
       },
-      "leftPos" : 730,
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 740,
       "logicNodeType" : "DEUIACTION",
       "name" : "界面行为",
       "topPos" : 360
