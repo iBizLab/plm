@@ -3610,7 +3610,7 @@
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM1"
+          "id" : "RAWJSCODE1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -3622,53 +3622,9 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "codeName" : "DEBUGPARAM1",
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "tabsearchbar"
-      },
-      "leftPos" : 160,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        }
-      } ],
-      "topPos" : 360
-    }, {
-      "codeName" : "DEUIACTION1",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
-        },
-        "modelref" : true,
-        "id" : "idea_create@dictionary_data"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 900,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "需求字典新建（行为）",
-      "topPos" : 300
-    }, {
-      "code" : "console.log(\"view\", view);\r\nconsole.log(\"control\", ctrl);\r\nvar tabsearchbar = uiLogic.tabsearchbar;\r\nconsole.log(\"tabsearchbar\", tabsearchbar);\r\nvar catalog = tabsearchbar.state.selectedGroupItem.id\r\nconsole.log(\"catalog\", catalog);\r\nvar type = \"\"\r\nif (catalog == \"work_item_pro\") {\r\n    catalog = \"work_item_probability\";\r\n}\r\nuiLogic.default.catalog = catalog;\r\nif (catalog.include(\"idea\")) {\r\n    type = \"idea\"\r\n} else if (catalog.include(\"ticket\")) {\r\n    type = \"ticket\"\r\n} else if (catalog.include(\"work_item\")) {\r\n    type = \"work_item\"\r\n} else if (catalog.include(\"test_case\")) {\r\n    type = \"test_case\"\r\n}\r\nconsole.log(\"default\", uiLogic.default);\r\nuiLogic.default.type = type;",
+      "code" : "console.log(\"view\", view);\r\nvar tabsearchbar = uiLogic.tabsearchbar;\r\nconsole.log(\"tabsearchbar\", tabsearchbar);\r\nvar catalog = tabsearchbar.state.selectedGroupItem.id\r\nconsole.log(\"catalog\", catalog);\r\nvar type = \"\"\r\n\r\nif (catalog == \"work_item_pro\") {\r\n    catalog = \"work_item_probability\";\r\n}\r\nuiLogic.default.catalog = catalog;\r\n\r\nif (catalog.includes(\"idea\")) {\r\n    type = \"idea\"\r\n} else if (catalog.includes(\"ticket\")) {\r\n    type = \"ticket\"\r\n} else if (catalog.includes(\"work_item\")) {\r\n    type = \"work_item\"\r\n} else if (catalog.includes(\"test_case\")) {\r\n    type = \"test_case\"\r\n}\r\n\r\nuiLogic.default.type = type;\r\nconsole.log(\"default\", uiLogic.default);\r\n",
       "codeName" : "RAWJSCODE1",
-      "leftPos" : 350,
+      "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
       "name" : "注入脚本代码",
       "getPSDEUILogicLinks" : [ {
@@ -3780,7 +3736,7 @@
           "id" : "RAWJSCODE1"
         }
       } ],
-      "topPos" : 376
+      "topPos" : 426
     }, {
       "codeName" : "DEUIACTION2",
       "getDstPSAppDEUIAction" : {
@@ -3804,6 +3760,28 @@
       "name" : "工单字典新建（行为）",
       "topPos" : 436
     }, {
+      "codeName" : "DEUIACTION4",
+      "getDstPSAppDEUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
+        },
+        "modelref" : true,
+        "id" : "test_case_create@dictionary_data"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 900,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "测试用例字典新建（行为）",
+      "topPos" : 696
+    }, {
       "codeName" : "DEUIACTION3",
       "getDstPSAppDEUIAction" : {
         "getPSAppDataEntity" : {
@@ -3826,14 +3804,14 @@
       "name" : "工作项字典新建（行为）",
       "topPos" : 557
     }, {
-      "codeName" : "DEUIACTION4",
+      "codeName" : "DEUIACTION1",
       "getDstPSAppDEUIAction" : {
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
         },
         "modelref" : true,
-        "id" : "test_case_create@dictionary_data"
+        "id" : "idea_create@dictionary_data"
       },
       "getDstPSAppDataEntity" : {
         "modelref" : true,
@@ -3845,8 +3823,8 @@
       },
       "leftPos" : 900,
       "logicNodeType" : "DEUIACTION",
-      "name" : "测试用例字典新建（行为）",
-      "topPos" : 696
+      "name" : "需求字典新建（行为）",
+      "topPos" : 300
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
