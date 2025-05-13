@@ -484,6 +484,48 @@
         "id" : "DENOTIFY1"
       },
       "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "review_detail"
+          },
+          "logicType" : "SINGLE",
+          "name" : "review_detail[TYPE] 等于(=) IDEA",
+          "paramValue" : "IDEA"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM8"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY2"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "review_detail"
+          },
+          "logicType" : "SINGLE",
+          "name" : "review_detail[TYPE] 等于(=) TEST_CASE",
+          "paramValue" : "TEST_CASE"
+        } ]
+      },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
         "id" : "PREPAREPARAM8"
@@ -553,8 +595,26 @@
     },
     "leftPos" : 1388,
     "logicNodeType" : "DENOTIFY",
-    "name" : "通知下一评审人",
+    "name" : "通知下一评审人（需求）",
     "topPos" : 334
+  }, {
+    "codeName" : "DENOTIFY2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "review_detail"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDENOTIFIES/test_case_review_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "leftPos" : 1388,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "通知下一评审人（测试用例）",
+    "topPos" : 437
   }, {
     "codeName" : "PREPAREPARAM3",
     "leftPos" : 700,

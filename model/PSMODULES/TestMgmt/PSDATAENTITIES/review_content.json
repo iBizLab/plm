@@ -4743,6 +4743,48 @@
           "id" : "DENOTIFY1"
         },
         "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "TYPE",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "review_detail"
+            },
+            "logicType" : "SINGLE",
+            "name" : "review_detail[TYPE] 等于(=) IDEA",
+            "paramValue" : "IDEA"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM8"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DENOTIFY2"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "TYPE",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "review_detail"
+            },
+            "logicType" : "SINGLE",
+            "name" : "review_detail[TYPE] 等于(=) TEST_CASE",
+            "paramValue" : "TEST_CASE"
+          } ]
+        },
         "getSrcPSDELogicNode" : {
           "modelref" : true,
           "id" : "PREPAREPARAM8"
@@ -4812,8 +4854,26 @@
       },
       "leftPos" : 1388,
       "logicNodeType" : "DENOTIFY",
-      "name" : "通知下一评审人",
+      "name" : "通知下一评审人（需求）",
       "topPos" : 334
+    }, {
+      "codeName" : "DENOTIFY2",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "review_detail"
+      },
+      "getDstPSDENotify" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDENOTIFIES/test_case_review_notify.json"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+      },
+      "leftPos" : 1388,
+      "logicNodeType" : "DENOTIFY",
+      "name" : "通知下一评审人（测试用例）",
+      "topPos" : 437
     }, {
       "codeName" : "PREPAREPARAM3",
       "leftPos" : 700,
@@ -8577,7 +8637,36 @@
         "modelref" : true,
         "id" : "review_detail"
       },
-      "topPos" : -32
+      "topPos" : 206
+    }, {
+      "codeName" : "DENOTIFY2",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "review_detail"
+      },
+      "getDstPSDENotify" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDENOTIFIES/test_case_review_notify.json"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+      },
+      "leftPos" : 393,
+      "logicNodeType" : "DENOTIFY",
+      "name" : "通知第一评审人（测试用例）",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DENOTIFY2"
+        }
+      } ],
+      "topPos" : 28
     }, {
       "codeName" : "DEACTION4",
       "getDstPSDEAction" : {
@@ -8608,87 +8697,18 @@
       } ],
       "topPos" : 90
     }, {
-      "codeName" : "DEBUGPARAM2",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "reviewer_list"
-      },
-      "leftPos" : 16,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "LOOPSUBCALL2"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM2"
-        }
-      } ],
-      "topPos" : -162
-    }, {
-      "code" : "var review_detail = logic.getParam(\"review_detail\");\r\nreview_detail.set(\"submitted_at\", new Date());",
-      "codeName" : "RAWSFCODE1",
-      "codeType" : "JavaScript",
-      "leftPos" : 16,
-      "logicNodeType" : "RAWSFCODE",
-      "name" : "设置提交时间",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "BINDPARAM1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSFCODE1"
-        }
-      } ],
-      "topPos" : 90
-    }, {
-      "codeName" : "DENOTIFY1",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "review_detail"
-      },
-      "getDstPSDENotify" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDENOTIFIES/review_notify.json"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
-      },
-      "leftPos" : 202,
-      "logicNodeType" : "DENOTIFY",
-      "name" : "通知第一评审人",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DENOTIFY1"
-        }
-      } ],
-      "topPos" : -32
-    }, {
-      "codeName" : "LOOPSUBCALL2",
+      "codeName" : "DEBUGPARAM3",
       "getDstPSDELogicParam" : {
         "modelref" : true,
         "id" : "reviewer_temp"
       },
       "leftPos" : 202,
-      "logicNodeType" : "LOOPSUBCALL",
-      "name" : "循环子调用",
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREPARAM9"
+          "id" : "DENOTIFY1"
         },
         "name" : "连接名称",
         "getPSDELogicLinkGroupCond" : {
@@ -8697,40 +8717,51 @@
           "name" : "连接条件组",
           "getPSDELogicLinkConds" : [ {
             "condOP" : "EQ",
-            "dstFieldName" : "order",
+            "dstFieldName" : "TYPE",
             "getDstLogicParam" : {
               "modelref" : true,
-              "id" : "reviewer_temp"
+              "id" : "review_detail"
             },
             "logicType" : "SINGLE",
-            "name" : "reviewer_temp[order] 等于(=) 1",
-            "paramValue" : "1"
+            "name" : "review_detail[TYPE] 等于(=) IDEA",
+            "paramValue" : "IDEA"
           } ]
         },
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "LOOPSUBCALL2"
-        },
-        "subCallLink" : true
+          "id" : "DEBUGPARAM3"
+        }
       }, {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DENOTIFY1"
+          "id" : "DENOTIFY2"
         },
         "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "TYPE",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "review_detail"
+            },
+            "logicType" : "SINGLE",
+            "name" : "review_detail[TYPE] 等于(=) TEST_CASE",
+            "paramValue" : "TEST_CASE"
+          } ]
+        },
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "LOOPSUBCALL2"
+          "id" : "DEBUGPARAM3"
         }
       } ],
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "reviewer_list"
-      },
-      "topPos" : -162
+      "topPos" : 90
     }, {
       "codeName" : "PREPAREPARAM1",
-      "leftPos" : 202,
+      "leftPos" : 665,
       "logicNodeType" : "PREPAREPARAM",
       "name" : "设置提交人、状态",
       "getPSDELogicLinks" : [ {
@@ -8777,61 +8808,6 @@
       } ],
       "topPos" : 90
     }, {
-      "codeName" : "PREPAREPARAM2",
-      "leftPos" : 375,
-      "logicNodeType" : "PREPAREPARAM",
-      "memo" : "设置第一个阶段的状态为进行中",
-      "name" : "设置阶段的状态",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM2"
-        }
-      } ],
-      "getPSDELogicNodeParams" : [ {
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "stages"
-        },
-        "name" : "review_detail[STAGE] ==> stages",
-        "paramAction" : "BINDPARAM",
-        "srcFieldName" : "STAGE",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "review_detail"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "stage"
-        },
-        "name" : "stages[0] ==> stage",
-        "paramAction" : "BINDPARAM",
-        "srcFieldName" : "0",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "stages"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "STAGE_STATE",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "stage"
-        },
-        "name" : "直接值[undefined] ==> stage[STAGE_STATE]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "20",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : 90
-    }, {
       "codeName" : "PREPAREPARAM3",
       "leftPos" : -380,
       "logicNodeType" : "PREPAREPARAM",
@@ -8872,36 +8848,55 @@
         "srcValue" : "REVIEW",
         "srcValueType" : "SRCVALUE"
       } ],
-      "topPos" : 102
+      "topPos" : 90
     }, {
-      "codeName" : "DEACTION1",
-      "getDstPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/Update.json"
-      },
+      "code" : "var review_detail = logic.getParam(\"review_detail\");\r\nreview_detail.set(\"submitted_at\", new Date());",
+      "codeName" : "RAWSFCODE1",
+      "codeType" : "JavaScript",
+      "leftPos" : 16,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "设置提交时间",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "BINDPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        }
+      } ],
+      "topPos" : 90
+    }, {
+      "codeName" : "DENOTIFY1",
       "getDstPSDELogicParam" : {
         "modelref" : true,
         "id" : "review_detail"
+      },
+      "getDstPSDENotify" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDENOTIFIES/review_notify.json"
       },
       "getDstPSDataEntity" : {
         "modelref" : true,
         "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
       },
-      "leftPos" : 375,
-      "logicNodeType" : "DEACTION",
-      "name" : "更新评审",
+      "leftPos" : 393,
+      "logicNodeType" : "DENOTIFY",
+      "name" : "通知第一评审人（需求）",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "LOOPSUBCALL1"
+          "id" : "PREPAREPARAM1"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEACTION1"
+          "id" : "DENOTIFY1"
         }
       } ],
-      "topPos" : 216
+      "topPos" : 150
     }, {
       "codeName" : "DEDATASET1",
       "getDstPSDEDataSet" : {
@@ -8976,7 +8971,62 @@
         "modelref" : true,
         "id" : "relation_page"
       },
-      "topPos" : 216
+      "topPos" : 206
+    }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : 665,
+      "logicNodeType" : "PREPAREPARAM",
+      "memo" : "设置第一个阶段的状态为进行中",
+      "name" : "设置阶段的状态",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "stages"
+        },
+        "name" : "review_detail[STAGE] ==> stages",
+        "paramAction" : "BINDPARAM",
+        "srcFieldName" : "STAGE",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "review_detail"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "stage"
+        },
+        "name" : "stages[0] ==> stage",
+        "paramAction" : "BINDPARAM",
+        "srcFieldName" : "0",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "stages"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "STAGE_STATE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "stage"
+        },
+        "name" : "直接值[undefined] ==> stage[STAGE_STATE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "20",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 206
     }, {
       "codeName" : "PREPAREPARAM6",
       "leftPos" : -164,
@@ -9008,10 +9058,120 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 216
+      "topPos" : 206
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/Update.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "review_detail"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+      },
+      "leftPos" : 665,
+      "logicNodeType" : "DEACTION",
+      "name" : "更新评审",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "topPos" : 292
+    }, {
+      "codeName" : "DEBUGPARAM2",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "reviewer_list"
+      },
+      "leftPos" : 16,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM2"
+        }
+      } ],
+      "topPos" : 302
+    }, {
+      "codeName" : "LOOPSUBCALL2",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "reviewer_temp"
+      },
+      "leftPos" : 202,
+      "logicNodeType" : "LOOPSUBCALL",
+      "name" : "循环子调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM9"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "order",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "reviewer_temp"
+            },
+            "logicType" : "SINGLE",
+            "name" : "reviewer_temp[order] 等于(=) 1",
+            "paramValue" : "1"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL2"
+        },
+        "subCallLink" : true
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM3"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL2"
+        }
+      } ],
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "reviewer_list"
+      },
+      "topPos" : 302
+    }, {
+      "codeName" : "THROWEXCEPTION1",
+      "errorCode" : 0,
+      "errorInfo" : "请添加评审内容",
+      "leftPos" : -340,
+      "logicNodeType" : "THROWEXCEPTION",
+      "name" : "评审内容为空",
+      "topPos" : 390
     }, {
       "codeName" : "END1",
-      "leftPos" : 639,
+      "leftPos" : 997,
       "logicNodeType" : "END",
       "name" : "结束",
       "getReturnParam" : {
@@ -9019,14 +9179,35 @@
         "id" : "Default"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : 322
+      "topPos" : 448
+    }, {
+      "codeName" : "PREPAREPARAM9",
+      "leftPos" : 202,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "REVIEWER",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "review_detail"
+        },
+        "name" : "reviewer_temp[reviewer] ==> review_detail[REVIEWER]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "reviewer",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "reviewer_temp"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 456
     }, {
       "codeName" : "LOOPSUBCALL1",
       "getDstPSDELogicParam" : {
         "modelref" : true,
         "id" : "for_reltion"
       },
-      "leftPos" : 375,
+      "leftPos" : 665,
       "logicNodeType" : "LOOPSUBCALL",
       "name" : "循环子调用",
       "getPSDELogicLinks" : [ {
@@ -9055,22 +9236,14 @@
         "modelref" : true,
         "id" : "relation_page"
       },
-      "topPos" : 330
-    }, {
-      "codeName" : "THROWEXCEPTION1",
-      "errorCode" : 0,
-      "errorInfo" : "请添加评审内容",
-      "leftPos" : -340,
-      "logicNodeType" : "THROWEXCEPTION",
-      "name" : "评审内容为空",
-      "topPos" : 390
+      "topPos" : 456
     }, {
       "codeName" : "DEBUGPARAM1",
       "getDstPSDELogicParam" : {
         "modelref" : true,
         "id" : "for_reltion"
       },
-      "leftPos" : 375,
+      "leftPos" : 665,
       "logicNodeType" : "DEBUGPARAM",
       "name" : "调试逻辑参数",
       "getPSDELogicLinks" : [ {
@@ -9126,10 +9299,10 @@
           "id" : "DEBUGPARAM1"
         }
       } ],
-      "topPos" : 456
+      "topPos" : 590
     }, {
       "codeName" : "PREPAREPARAM7",
-      "leftPos" : 239,
+      "leftPos" : 529,
       "logicNodeType" : "PREPAREPARAM",
       "name" : "获取需求ID",
       "getPSDELogicLinks" : [ {
@@ -9158,10 +9331,10 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 570
+      "topPos" : 720
     }, {
       "codeName" : "PREPAREPARAM4",
-      "leftPos" : 511,
+      "leftPos" : 801,
       "logicNodeType" : "PREPAREPARAM",
       "name" : "获取测试用例ID",
       "getPSDELogicLinks" : [ {
@@ -9190,7 +9363,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 570
+      "topPos" : 720
     }, {
       "codeName" : "DEACTION5",
       "getDstPSDEAction" : {
@@ -9205,7 +9378,7 @@
         "modelref" : true,
         "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
       },
-      "leftPos" : 239,
+      "leftPos" : 529,
       "logicNodeType" : "DEACTION",
       "name" : "获取产品需求详情",
       "getPSDELogicLinks" : [ {
@@ -9219,7 +9392,7 @@
           "id" : "DEACTION5"
         }
       } ],
-      "topPos" : 660
+      "topPos" : 830
     }, {
       "codeName" : "DEACTION2",
       "getDstPSDEAction" : {
@@ -9234,7 +9407,7 @@
         "modelref" : true,
         "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
       },
-      "leftPos" : 511,
+      "leftPos" : 801,
       "logicNodeType" : "DEACTION",
       "name" : "获取测试用例详情",
       "getPSDELogicLinks" : [ {
@@ -9248,10 +9421,10 @@
           "id" : "DEACTION2"
         }
       } ],
-      "topPos" : 660
+      "topPos" : 830
     }, {
       "codeName" : "PREPAREPARAM8",
-      "leftPos" : 239,
+      "leftPos" : 529,
       "logicNodeType" : "PREPAREPARAM",
       "name" : "设置产品需求评审状态",
       "getPSDELogicLinks" : [ {
@@ -9276,10 +9449,10 @@
         "srcValue" : "2",
         "srcValueType" : "SRCVALUE"
       } ],
-      "topPos" : 759
+      "topPos" : 940
     }, {
       "codeName" : "PREPAREPARAM5",
-      "leftPos" : 511,
+      "leftPos" : 801,
       "logicNodeType" : "PREPAREPARAM",
       "name" : "设置测试用例评审状态",
       "getPSDELogicLinks" : [ {
@@ -9304,7 +9477,7 @@
         "srcValue" : "2",
         "srcValueType" : "SRCVALUE"
       } ],
-      "topPos" : 759
+      "topPos" : 940
     }, {
       "codeName" : "DEACTION6",
       "getDstPSDEAction" : {
@@ -9319,7 +9492,7 @@
         "modelref" : true,
         "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
       },
-      "leftPos" : 239,
+      "leftPos" : 529,
       "logicNodeType" : "DEACTION",
       "name" : "更新产品需求",
       "getPSDELogicLinks" : [ {
@@ -9333,7 +9506,7 @@
           "id" : "DEACTION6"
         }
       } ],
-      "topPos" : 859
+      "topPos" : 1040
     }, {
       "codeName" : "DEACTION3",
       "getDstPSDEAction" : {
@@ -9348,7 +9521,7 @@
         "modelref" : true,
         "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
       },
-      "leftPos" : 511,
+      "leftPos" : 801,
       "logicNodeType" : "DEACTION",
       "name" : "更新测试用例",
       "getPSDELogicLinks" : [ {
@@ -9362,48 +9535,27 @@
           "id" : "DEACTION3"
         }
       } ],
-      "topPos" : 859
+      "topPos" : 1040
     }, {
       "codeName" : "RESETPARAM2",
       "getDstPSDELogicParam" : {
         "modelref" : true,
         "id" : "idea"
       },
-      "leftPos" : 239,
+      "leftPos" : 529,
       "logicNodeType" : "RESETPARAM",
       "name" : "重置参数",
-      "topPos" : 948
-    }, {
-      "codeName" : "PREPAREPARAM9",
-      "leftPos" : 412,
-      "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备参数",
-      "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "REVIEWER",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "review_detail"
-        },
-        "name" : "reviewer_temp[reviewer] ==> review_detail[REVIEWER]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "reviewer",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "reviewer_temp"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : -162
+      "topPos" : 1140
     }, {
       "codeName" : "RESETPARAM1",
       "getDstPSDELogicParam" : {
         "modelref" : true,
         "id" : "test_case"
       },
-      "leftPos" : 511,
+      "leftPos" : 801,
       "logicNodeType" : "RESETPARAM",
       "name" : "重置测试用例参数",
-      "topPos" : 948
+      "topPos" : 1140
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",
