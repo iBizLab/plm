@@ -10,6 +10,8 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.submit_review;
                 global cn.ibizlab.plm.core.base.domain.relation reviewsubmit_reviewrelation_page;
                 global cn.ibizlab.plm.core.base.domain.relation reviewsubmit_reviewreltion_filter;
                 global cn.ibizlab.plm.core.testmgmt.domain.review_content reviewsubmit_reviewreview_content;
+                global java.util.Map reviewsubmit_reviewreviewer_list;
+                global java.util.Map reviewsubmit_reviewreviewer_temp;
                 global cn.ibizlab.plm.core.testmgmt.domain.review_stage reviewsubmit_reviewstage;
                 global cn.ibizlab.plm.core.testmgmt.domain.review_stage reviewsubmit_reviewstages;
                 global cn.ibizlab.plm.core.testmgmt.domain.test_case reviewsubmit_reviewtest_case;
@@ -29,9 +31,9 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.submit_review;
             then
             end
 
-            //逻辑处理节点[传入参数]
-            rule "debugparam1"
-            ruleflow-group "reviewsubmit_reviewdebugparam1"
+            //逻辑处理节点[通知第一评审人（测试用例）]
+            rule "denotify2"
+            ruleflow-group "reviewsubmit_reviewdenotify2"
             when
             then
                         update(reviewsubmit_reviewdefault);//更新fact中变量值
@@ -39,14 +41,16 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.submit_review;
                         update(reviewsubmit_reviewrelation_page);//更新fact中变量值
                         update(reviewsubmit_reviewreltion_filter);//更新fact中变量值
                         update(reviewsubmit_reviewreview_content);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_list);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_temp);//更新fact中变量值
                         update(reviewsubmit_reviewstage);//更新fact中变量值
                         update(reviewsubmit_reviewstages);//更新fact中变量值
                         update(reviewsubmit_reviewtest_case);//更新fact中变量值
             end
 
-            //逻辑处理节点[设置提交时间]
-            rule "rawsfcode1"
-            ruleflow-group "reviewsubmit_reviewrawsfcode1"
+            //逻辑处理节点[绑定参数]
+            rule "bindparam1"
+            ruleflow-group "reviewsubmit_reviewbindparam1"
             when
             then
                         update(reviewsubmit_reviewdefault);//更新fact中变量值
@@ -54,6 +58,42 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.submit_review;
                         update(reviewsubmit_reviewrelation_page);//更新fact中变量值
                         update(reviewsubmit_reviewreltion_filter);//更新fact中变量值
                         update(reviewsubmit_reviewreview_content);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_list);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_temp);//更新fact中变量值
+                        update(reviewsubmit_reviewstage);//更新fact中变量值
+                        update(reviewsubmit_reviewstages);//更新fact中变量值
+                        update(reviewsubmit_reviewtest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam2"
+            ruleflow-group "reviewsubmit_reviewdebugparam2"
+            when
+            then
+                        update(reviewsubmit_reviewdefault);//更新fact中变量值
+                        update(reviewsubmit_reviewfor_reltion);//更新fact中变量值
+                        update(reviewsubmit_reviewrelation_page);//更新fact中变量值
+                        update(reviewsubmit_reviewreltion_filter);//更新fact中变量值
+                        update(reviewsubmit_reviewreview_content);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_list);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_temp);//更新fact中变量值
+                        update(reviewsubmit_reviewstage);//更新fact中变量值
+                        update(reviewsubmit_reviewstages);//更新fact中变量值
+                        update(reviewsubmit_reviewtest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam3"
+            ruleflow-group "reviewsubmit_reviewdebugparam3"
+            when
+            then
+                        update(reviewsubmit_reviewdefault);//更新fact中变量值
+                        update(reviewsubmit_reviewfor_reltion);//更新fact中变量值
+                        update(reviewsubmit_reviewrelation_page);//更新fact中变量值
+                        update(reviewsubmit_reviewreltion_filter);//更新fact中变量值
+                        update(reviewsubmit_reviewreview_content);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_list);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_temp);//更新fact中变量值
                         update(reviewsubmit_reviewstage);//更新fact中变量值
                         update(reviewsubmit_reviewstages);//更新fact中变量值
                         update(reviewsubmit_reviewtest_case);//更新fact中变量值
@@ -72,6 +112,8 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.submit_review;
                         update(reviewsubmit_reviewrelation_page);//更新fact中变量值
                         update(reviewsubmit_reviewreltion_filter);//更新fact中变量值
                         update(reviewsubmit_reviewreview_content);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_list);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_temp);//更新fact中变量值
                         update(reviewsubmit_reviewstage);//更新fact中变量值
                         update(reviewsubmit_reviewstages);//更新fact中变量值
                         update(reviewsubmit_reviewtest_case);//更新fact中变量值
@@ -90,6 +132,8 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.submit_review;
                         update(reviewsubmit_reviewrelation_page);//更新fact中变量值
                         update(reviewsubmit_reviewreltion_filter);//更新fact中变量值
                         update(reviewsubmit_reviewreview_content);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_list);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_temp);//更新fact中变量值
                         update(reviewsubmit_reviewstage);//更新fact中变量值
                         update(reviewsubmit_reviewstages);//更新fact中变量值
                         update(reviewsubmit_reviewtest_case);//更新fact中变量值
@@ -106,14 +150,16 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.submit_review;
                         update(reviewsubmit_reviewrelation_page);//更新fact中变量值
                         update(reviewsubmit_reviewreltion_filter);//更新fact中变量值
                         update(reviewsubmit_reviewreview_content);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_list);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_temp);//更新fact中变量值
                         update(reviewsubmit_reviewstage);//更新fact中变量值
                         update(reviewsubmit_reviewstages);//更新fact中变量值
                         update(reviewsubmit_reviewtest_case);//更新fact中变量值
             end
 
-            //逻辑处理节点[获取关系信息]
-            rule "dedataset1"
-            ruleflow-group "reviewsubmit_reviewdedataset1"
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall2"
+            ruleflow-group "reviewsubmit_reviewloopsubcall2"
             when
             then
                         update(reviewsubmit_reviewdefault);//更新fact中变量值
@@ -121,6 +167,8 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.submit_review;
                         update(reviewsubmit_reviewrelation_page);//更新fact中变量值
                         update(reviewsubmit_reviewreltion_filter);//更新fact中变量值
                         update(reviewsubmit_reviewreview_content);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_list);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_temp);//更新fact中变量值
                         update(reviewsubmit_reviewstage);//更新fact中变量值
                         update(reviewsubmit_reviewstages);//更新fact中变量值
                         update(reviewsubmit_reviewtest_case);//更新fact中变量值
@@ -138,6 +186,77 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.submit_review;
                         update(reviewsubmit_reviewrelation_page);//更新fact中变量值
                         update(reviewsubmit_reviewreltion_filter);//更新fact中变量值
                         update(reviewsubmit_reviewreview_content);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_list);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_temp);//更新fact中变量值
+                        update(reviewsubmit_reviewstage);//更新fact中变量值
+                        update(reviewsubmit_reviewstages);//更新fact中变量值
+                        update(reviewsubmit_reviewtest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[通知第一评审人（需求）]
+            rule "denotify1"
+            ruleflow-group "reviewsubmit_reviewdenotify1"
+            when
+            then
+                        update(reviewsubmit_reviewdefault);//更新fact中变量值
+                        update(reviewsubmit_reviewfor_reltion);//更新fact中变量值
+                        update(reviewsubmit_reviewrelation_page);//更新fact中变量值
+                        update(reviewsubmit_reviewreltion_filter);//更新fact中变量值
+                        update(reviewsubmit_reviewreview_content);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_list);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_temp);//更新fact中变量值
+                        update(reviewsubmit_reviewstage);//更新fact中变量值
+                        update(reviewsubmit_reviewstages);//更新fact中变量值
+                        update(reviewsubmit_reviewtest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取关系信息]
+            rule "dedataset1"
+            ruleflow-group "reviewsubmit_reviewdedataset1"
+            when
+            then
+                        update(reviewsubmit_reviewdefault);//更新fact中变量值
+                        update(reviewsubmit_reviewfor_reltion);//更新fact中变量值
+                        update(reviewsubmit_reviewrelation_page);//更新fact中变量值
+                        update(reviewsubmit_reviewreltion_filter);//更新fact中变量值
+                        update(reviewsubmit_reviewreview_content);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_list);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_temp);//更新fact中变量值
+                        update(reviewsubmit_reviewstage);//更新fact中变量值
+                        update(reviewsubmit_reviewstages);//更新fact中变量值
+                        update(reviewsubmit_reviewtest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam6"
+            ruleflow-group "reviewsubmit_reviewprepareparam6"
+            when
+            then
+                            reviewsubmit_reviewdefault.set("reviewer",reviewsubmit_reviewreviewer_temp.get("reviewer"));
+                        update(reviewsubmit_reviewdefault);//更新fact中变量值
+                        update(reviewsubmit_reviewfor_reltion);//更新fact中变量值
+                        update(reviewsubmit_reviewrelation_page);//更新fact中变量值
+                        update(reviewsubmit_reviewreltion_filter);//更新fact中变量值
+                        update(reviewsubmit_reviewreview_content);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_list);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_temp);//更新fact中变量值
+                        update(reviewsubmit_reviewstage);//更新fact中变量值
+                        update(reviewsubmit_reviewstages);//更新fact中变量值
+                        update(reviewsubmit_reviewtest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置提交时间]
+            rule "rawsfcode1"
+            ruleflow-group "reviewsubmit_reviewrawsfcode1"
+            when
+            then
+                        update(reviewsubmit_reviewdefault);//更新fact中变量值
+                        update(reviewsubmit_reviewfor_reltion);//更新fact中变量值
+                        update(reviewsubmit_reviewrelation_page);//更新fact中变量值
+                        update(reviewsubmit_reviewreltion_filter);//更新fact中变量值
+                        update(reviewsubmit_reviewreview_content);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_list);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_temp);//更新fact中变量值
                         update(reviewsubmit_reviewstage);//更新fact中变量值
                         update(reviewsubmit_reviewstages);//更新fact中变量值
                         update(reviewsubmit_reviewtest_case);//更新fact中变量值
@@ -153,6 +272,8 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.submit_review;
                         update(reviewsubmit_reviewrelation_page);//更新fact中变量值
                         update(reviewsubmit_reviewreltion_filter);//更新fact中变量值
                         update(reviewsubmit_reviewreview_content);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_list);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_temp);//更新fact中变量值
                         update(reviewsubmit_reviewstage);//更新fact中变量值
                         update(reviewsubmit_reviewstages);//更新fact中变量值
                         update(reviewsubmit_reviewtest_case);//更新fact中变量值
@@ -168,6 +289,8 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.submit_review;
                         update(reviewsubmit_reviewrelation_page);//更新fact中变量值
                         update(reviewsubmit_reviewreltion_filter);//更新fact中变量值
                         update(reviewsubmit_reviewreview_content);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_list);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_temp);//更新fact中变量值
                         update(reviewsubmit_reviewstage);//更新fact中变量值
                         update(reviewsubmit_reviewstages);//更新fact中变量值
                         update(reviewsubmit_reviewtest_case);//更新fact中变量值
@@ -183,6 +306,8 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.submit_review;
                         update(reviewsubmit_reviewrelation_page);//更新fact中变量值
                         update(reviewsubmit_reviewreltion_filter);//更新fact中变量值
                         update(reviewsubmit_reviewreview_content);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_list);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_temp);//更新fact中变量值
                         update(reviewsubmit_reviewstage);//更新fact中变量值
                         update(reviewsubmit_reviewstages);//更新fact中变量值
                         update(reviewsubmit_reviewtest_case);//更新fact中变量值
@@ -199,6 +324,8 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.submit_review;
                         update(reviewsubmit_reviewrelation_page);//更新fact中变量值
                         update(reviewsubmit_reviewreltion_filter);//更新fact中变量值
                         update(reviewsubmit_reviewreview_content);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_list);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_temp);//更新fact中变量值
                         update(reviewsubmit_reviewstage);//更新fact中变量值
                         update(reviewsubmit_reviewstages);//更新fact中变量值
                         update(reviewsubmit_reviewtest_case);//更新fact中变量值
@@ -215,6 +342,8 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.submit_review;
                         update(reviewsubmit_reviewrelation_page);//更新fact中变量值
                         update(reviewsubmit_reviewreltion_filter);//更新fact中变量值
                         update(reviewsubmit_reviewreview_content);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_list);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_temp);//更新fact中变量值
                         update(reviewsubmit_reviewstage);//更新fact中变量值
                         update(reviewsubmit_reviewstages);//更新fact中变量值
                         update(reviewsubmit_reviewtest_case);//更新fact中变量值
@@ -231,6 +360,8 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.submit_review;
                         update(reviewsubmit_reviewrelation_page);//更新fact中变量值
                         update(reviewsubmit_reviewreltion_filter);//更新fact中变量值
                         update(reviewsubmit_reviewreview_content);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_list);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_temp);//更新fact中变量值
                         update(reviewsubmit_reviewstage);//更新fact中变量值
                         update(reviewsubmit_reviewstages);//更新fact中变量值
                         update(reviewsubmit_reviewtest_case);//更新fact中变量值
@@ -247,6 +378,8 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.submit_review;
                         update(reviewsubmit_reviewrelation_page);//更新fact中变量值
                         update(reviewsubmit_reviewreltion_filter);//更新fact中变量值
                         update(reviewsubmit_reviewreview_content);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_list);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_temp);//更新fact中变量值
                         update(reviewsubmit_reviewstage);//更新fact中变量值
                         update(reviewsubmit_reviewstages);//更新fact中变量值
                         update(reviewsubmit_reviewtest_case);//更新fact中变量值
@@ -262,6 +395,8 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.submit_review;
                         update(reviewsubmit_reviewrelation_page);//更新fact中变量值
                         update(reviewsubmit_reviewreltion_filter);//更新fact中变量值
                         update(reviewsubmit_reviewreview_content);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_list);//更新fact中变量值
+                        update(reviewsubmit_reviewreviewer_temp);//更新fact中变量值
                         update(reviewsubmit_reviewstage);//更新fact中变量值
                         update(reviewsubmit_reviewstages);//更新fact中变量值
                         update(reviewsubmit_reviewtest_case);//更新fact中变量值
