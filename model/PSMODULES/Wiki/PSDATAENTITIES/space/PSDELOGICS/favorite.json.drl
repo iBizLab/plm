@@ -1,0 +1,53 @@
+package cn.ibizlab.plm.wiki.logic.spacelogic.favorite;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.wiki.domain.space spacefavoritedefault;
+                global cn.ibizlab.plm.core.base.domain.favorite spacefavoritefavorite;
+                    global cn.ibizlab.plm.core.base.service.IfavoriteService favoriteservice;
+        global cn.ibizlab.plm.core.wiki.service.IspaceService iBzSysSpaceDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "spacefavoritebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[填充用户标识和收藏业务对象标识]
+            rule "prepareparam1"
+            ruleflow-group "spacefavoriteprepareparam1"
+            when
+            then
+                                spacefavoritefavorite.set("createman",curuser.getSessionParams().get("srfuserid"));
+                            spacefavoritefavorite.set("ownertype","space");
+                            spacefavoritefavorite.set("ownerid",spacefavoritedefault.get("owner_id"));
+                        update(spacefavoritedefault);//更新fact中变量值
+                        update(spacefavoritefavorite);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成收藏数据]
+            rule "deaction1"
+            ruleflow-group "spacefavoritedeaction1"
+            when
+            then
+                        favoriteservice.save(spacefavoritefavorite);
+                        update(spacefavoritedefault);//更新fact中变量值
+                        update(spacefavoritefavorite);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "spacefavoriteend1"
+            when
+            then
+                        update(spacefavoritedefault);//更新fact中变量值
+                        update(spacefavoritefavorite);//更新fact中变量值
+            end

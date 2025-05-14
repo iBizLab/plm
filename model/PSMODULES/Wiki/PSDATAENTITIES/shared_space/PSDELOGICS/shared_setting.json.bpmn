@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.wiki.service.logic.shared_spaceshared_setting" isClosed="false" isExecutable="true" name="wiki_shared_space_shared_setting_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.wiki.service.logic.shared_spaceshared_setting">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="shared_spaceshared_settingdefault" type="entity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.Ishared_spaceService))" name="shared_spaceservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.Ishared_spaceService))" name="iBzSysShared_spaceDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="shared_spaceshared_settingdefault" type="cn.ibizlab.plm.core.wiki.domain.shared_space" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="shared_spaceshared_settingprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="置空有效期"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="shared_spaceshared_settingthrowexception1" id="throwexception1" implementation="http://www.jboss.org/drools/rule" name="抛出异常"/>
+                        <endEvent id="throwexception1_end" name="end"/>
+                        <sequenceFlow id="throwexception1_end_line" sourceRef="throwexception1" targetRef="throwexception1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="shared_spaceshared_settingprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="共享范围"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="shared_spaceshared_settingthrowexception2" id="throwexception2" implementation="http://www.jboss.org/drools/rule" name="抛出异常"/>
+                        <endEvent id="throwexception2_end" name="end"/>
+                        <sequenceFlow id="throwexception2_end_line" sourceRef="throwexception2" targetRef="throwexception2_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="shared_spaceshared_settingprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="置空密码"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="shared_spaceshared_settingdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="更新页面共享设置"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="shared_spaceshared_settingend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="gateway-begin_prepareparam1" sourceRef="gateway-begin" targetRef="prepareparam1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $shared_spaceshared_settingdefault:shared_space();
+                                    eval($shared_spaceshared_settingdefault==shared_spaceshared_settingdefault);
+                                eval(((RuleUtils.test($shared_spaceshared_settingdefault.get("enable_expiration"),"ISNULL",""))||(RuleUtils.test($shared_spaceshared_settingdefault.get("enable_expiration"),"EQ","0"))))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-begin_prepareparam2" sourceRef="gateway-begin" targetRef="prepareparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $shared_spaceshared_settingdefault:shared_space();
+                                    eval($shared_spaceshared_settingdefault==shared_spaceshared_settingdefault);
+                                eval((RuleUtils.test($shared_spaceshared_settingdefault.get("expirationDate"),"ISNOTNULL",""))&&(RuleUtils.test($shared_spaceshared_settingdefault.get("enable_expiration"),"EQ","1")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-begin_throwexception1" sourceRef="gateway-begin" targetRef="throwexception1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $shared_spaceshared_settingdefault:shared_space();
+                                    eval($shared_spaceshared_settingdefault==shared_spaceshared_settingdefault);
+                                eval((RuleUtils.test($shared_spaceshared_settingdefault.get("enable_expiration"),"EQ","1"))&&(RuleUtils.test($shared_spaceshared_settingdefault.get("expirationDate"),"ISNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_prepareparam2" sourceRef="prepareparam1" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam2_prepareparam3" sourceRef="gateway-prepareparam2" targetRef="prepareparam3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $shared_spaceshared_settingdefault:shared_space();
+                                    eval($shared_spaceshared_settingdefault==shared_spaceshared_settingdefault);
+                                eval(((RuleUtils.test($shared_spaceshared_settingdefault.get("enable_password"),"EQ","0"))||(RuleUtils.test($shared_spaceshared_settingdefault.get("enable_password"),"ISNULL",""))))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam2_deaction1" sourceRef="gateway-prepareparam2" targetRef="deaction1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $shared_spaceshared_settingdefault:shared_space();
+                                    eval($shared_spaceshared_settingdefault==shared_spaceshared_settingdefault);
+                                eval((RuleUtils.test($shared_spaceshared_settingdefault.get("enable_password"),"EQ","1"))&&(RuleUtils.test($shared_spaceshared_settingdefault.get("accessPassword"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam2_throwexception2" sourceRef="gateway-prepareparam2" targetRef="throwexception2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $shared_spaceshared_settingdefault:shared_space();
+                                    eval($shared_spaceshared_settingdefault==shared_spaceshared_settingdefault);
+                                eval((RuleUtils.test($shared_spaceshared_settingdefault.get("enable_password"),"EQ","1"))&&(RuleUtils.test($shared_spaceshared_settingdefault.get("accessPassword"),"ISNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_deaction1" sourceRef="prepareparam3" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_end1" sourceRef="deaction1" targetRef="end1">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-begin" name="Gateway" gatewayDirection="Diverging" default="gateway-begin_end_line"></exclusiveGateway>
+                            <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>
+                            <sequenceFlow id="gateway-begin_end_line" sourceRef="gateway-begin" targetRef="gateway-begin_end"/>
+                            <endEvent id="gateway-begin_end" name="end"/>
+                            <exclusiveGateway id="gateway-prepareparam2" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam2_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam2_gateway-prepareparam2_gatewayline" sourceRef="prepareparam2" targetRef="gateway-prepareparam2"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam2_end_line" sourceRef="gateway-prepareparam2" targetRef="gateway-prepareparam2_end"/>
+                            <endEvent id="gateway-prepareparam2_end" name="end"/>
+        </process>
+    </definitions>

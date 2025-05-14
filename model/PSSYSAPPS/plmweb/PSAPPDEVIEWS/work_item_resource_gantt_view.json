@@ -1,0 +1,2230 @@
+{
+  "accUserMode" : 2,
+  "getCapPSLanguageRes" : {
+    "lanResTag" : "DE.LNAME.WORK_ITEM"
+  },
+  "caption" : "资源分配",
+  "codeName" : "work_item_resource_gantt_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_resource_gantt_view.json",
+  "mDCtrlActiveMode" : 1,
+  "name" : "work_itemresource_gantt_view",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+  },
+  "getPSAppModule" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProjMgmt.json"
+  },
+  "getPSAppViewLogics" : [ {
+    "eventNames" : "onBeforeLoadDraft",
+    "logicTrigger" : "CTRLEVENT",
+    "logicType" : "SCRIPT",
+    "name" : "LOGIC",
+    "getPSViewCtrlName" : "searchform",
+    "scriptCode" : "// 获取当前日期\r\nconst currentDate = new Date();\r\n// 根据指定日期获取该周的周一日期\r\nconst monday = new Date(currentDate);\r\nmonday.setDate(currentDate.getDate() - currentDate.getDay() + (currentDate.getDay() === 0 ? -6 : 1)); // 如果日期为周日，则减去6天\r\n// 根据周一日期获取周末日期\r\nconst sunday = new Date(monday);\r\nsunday.setDate(monday.getDate() + 6);\r\n// 格式化周一和周日的日期  \r\nconst n_date_scope_gtandeq = monday.getFullYear() + '-' + (monday.getMonth() + 1 < 10 ? '0' + (monday.getMonth() + 1) : monday.getMonth() + 1) + '-' + (monday.getDate() < 10 ? '0' + monday.getDate() : monday.getDate());\r\nconst n_date_scope_ltandeq = sunday.getFullYear() + '-' + (sunday.getMonth() + 1 < 10 ? '0' + (sunday.getMonth() + 1) : sunday.getMonth() + 1) + '-' + (sunday.getDate() < 10 ? '0' + sunday.getDate() : sunday.getDate());\r\n// 合并日期范围\r\nconst date_range = n_date_scope_gtandeq + ',' + n_date_scope_ltandeq;\r\nObject.assign(viewParam, {\r\n  n_date_scope_gtandeq,\r\n  n_date_scope_ltandeq,\r\n  date_range,\r\n});"
+  } ],
+  "getPSControls" : [ {
+    "beginDataItemName" : "begin",
+    "codeName" : "resource_gantt",
+    "controlStyle" : "RESOURCE_GANTT",
+    "controlType" : "GANTT",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item/PSGANTTS/resource_gantt.json",
+    "endDataItemName" : "end",
+    "finishDataItemName" : "finish",
+    "logicName" : "资源分配_甘特部件",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+    },
+    "getPSAppViewLogics" : [ {
+      "logicTrigger" : "CUSTOM",
+      "logicType" : "APPUILOGIC",
+      "name" : "node_opendata",
+      "getPSAppUILogic" : {
+        "logicType" : "PREDEFINED",
+        "name" : "打开数据",
+        "getOpenDataPSAppView" : {
+          "openMode" : "INDEXVIEWTAB_POPUPMODAL",
+          "getPSNavigateContexts" : [ {
+            "key" : "SRFDATATYPE",
+            "name" : "SRFDATATYPE",
+            "value" : "work_item_type_id",
+            "rawValue" : false
+          }, {
+            "key" : "PROJECT",
+            "name" : "PROJECT",
+            "value" : "project_id",
+            "rawValue" : false
+          }, {
+            "key" : "WORK_ITEM_TYPE_ID",
+            "name" : "WORK_ITEM_TYPE_ID",
+            "value" : "work_item_type_id",
+            "rawValue" : false
+          } ],
+          "getPSNavigateParams" : [ {
+            "key" : "srfdatatype",
+            "name" : "srfdatatype",
+            "value" : "work_item_type_id",
+            "rawValue" : false
+          } ],
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_main_view.json",
+            "viewType" : "DEEDITVIEW"
+          }
+        },
+        "getPSAppUILogicRefViews" : [ {
+          "openMode" : "INDEXVIEWTAB_POPUPMODAL",
+          "getPSNavigateContexts" : [ {
+            "key" : "SRFDATATYPE",
+            "name" : "SRFDATATYPE",
+            "value" : "work_item_type_id",
+            "rawValue" : false
+          }, {
+            "key" : "PROJECT",
+            "name" : "PROJECT",
+            "value" : "project_id",
+            "rawValue" : false
+          }, {
+            "key" : "WORK_ITEM_TYPE_ID",
+            "name" : "WORK_ITEM_TYPE_ID",
+            "value" : "work_item_type_id",
+            "rawValue" : false
+          } ],
+          "getPSNavigateParams" : [ {
+            "key" : "srfdatatype",
+            "name" : "srfdatatype",
+            "value" : "work_item_type_id",
+            "rawValue" : false
+          } ],
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_main_view.json",
+            "viewType" : "DEEDITVIEW"
+          }
+        } ],
+        "viewLogicType" : "APP_OPENDATA",
+        "editMode" : true
+      }
+    } ],
+    "getPSControlHandler" : {
+      "enableDEFieldPrivilege" : false,
+      "id" : "gantt"
+    },
+    "getPSControlParam" : {
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "ctrlParams" : {
+        "SLIDERSHOWCONTENT" : "\"${show_identifier}  ${title}\""
+      },
+      "id" : "GANTT"
+    },
+    "getPSControls" : [ {
+      "codeName" : "resource_gantt_view_root_cm",
+      "controlType" : "CONTEXTMENU",
+      "logicName" : "资源甘特图头部上下文菜单",
+      "name" : "root_cm",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/addon_resource.json"
+      },
+      "getPSControlParam" : {
+        "id" : "root_cm"
+      },
+      "getPSDEToolbarItems" : [ {
+        "caption" : "容量设置",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction1",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "root_cm_deuiaction1"
+        },
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"18\" height=\"18\">\n  <path d=\"M893.52083332 53.33333333h-660c-33 0-60 27-60 60v840c0 33 27 60 60 60h660c33 0 60-27 60-60V113.33333333c0-33-27-60-60-60z m0 60v435.9375c-18.75 14.15625001-68.0625 44.0625-150 44.0625-43.21875001 0-65.90625001-18.5625-97.3125-44.15625001-41.4375-33.75-92.90625001-75.84375001-202.6875-75.84374999-103.96875001 0-169.875 19.03125001-210 37.21875001V113.33333333h660z m-660 840V578.33333333c21-13.6875 82.59375001-45 210-45 88.40625001 0 125.4375 30.28125001 164.71875 62.25C643.02083332 623.98958334 678.92708332 653.33333333 743.52083332 653.33333333c66.46875001 0 116.4375-16.96875001 150-34.125V953.33333333h-660z\" fill=\"#878895\"></path>\n</svg>"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "容量设置",
+          "codeName" : "open_capacity",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/addon_resource_all_capacity_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "addon_resource_open_capacity",
+          "name" : "打开全局容量设置",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/addon_resource.json"
+          },
+          "getPSSysImage" : {
+            "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"18\" height=\"18\">\n  <path d=\"M893.52083332 53.33333333h-660c-33 0-60 27-60 60v840c0 33 27 60 60 60h660c33 0 60-27 60-60V113.33333333c0-33-27-60-60-60z m0 60v435.9375c-18.75 14.15625001-68.0625 44.0625-150 44.0625-43.21875001 0-65.90625001-18.5625-97.3125-44.15625001-41.4375-33.75-92.90625001-75.84375001-202.6875-75.84374999-103.96875001 0-169.875 19.03125001-210 37.21875001V113.33333333h660z m-660 840V578.33333333c21-13.6875 82.59375001-45 210-45 88.40625001 0 125.4375 30.28125001 164.71875 62.25C643.02083332 623.98958334 678.92708332 653.33333333 743.52083332 653.33333333c66.46875001 0 116.4375-16.96875001 150-34.125V953.33333333h-660z\" fill=\"#878895\"></path>\n</svg>"
+          },
+          "refreshMode" : 3,
+          "tooltip" : "容量设置",
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "open_capacity",
+          "uIActionType" : "DEUIACTION",
+          "reloadData" : true,
+          "id" : "open_capacity@addon_resource"
+        },
+        "tooltip" : "容量设置",
+        "uIActionTarget" : "NONE",
+        "showCaption" : false,
+        "showIcon" : true
+      }, {
+        "caption" : "成员管理",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction2",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "root_cm_deuiaction2"
+        },
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"18\" height=\"18\">\n  <path d=\"M13.4140625,11.93125 C13.11875,11.23125 12.69375,10.603125 12.1546875,10.0640625 C11.615625,9.525 10.9875,9.1015625 10.2875,8.8046875 C10.28125,8.8015625 10.275,8.8 10.26875,8.796875 C11.2421875,8.09375 11.875,6.9484375 11.875,5.65625 C11.875,3.515625 10.140625,1.78125 8,1.78125 C5.859375,1.78125 4.125,3.515625 4.125,5.65625 C4.125,6.9484375 4.7578125,8.09375 5.73125,8.7984375 C5.725,8.8015625 5.71875,8.803125 5.7125,8.80625 C5.0125,9.1015625 4.384375,9.525 3.8453125,10.065625 C3.30625,10.6046875 2.8828125,11.2328125 2.5859375,11.9328125 C2.2953125,12.6171875 2.140625,13.34375 2.12496822,14.090625 C2.1234375,14.1609375 2.1796875,14.21875 2.25,14.21875 L3.1875,14.21875 C3.25625,14.21875 3.3109375,14.1640625 3.3125,14.096875 C3.34375,12.890625 3.828125,11.7609375 4.684375,10.9046875 C5.5703125,10.01875 6.746875,9.53125 8,9.53125 C9.253125,9.53125 10.4296875,10.01875 11.315625,10.9046875 C12.171875,11.7609375 12.65625,12.890625 12.6875,14.096875 C12.6890625,14.165625 12.74375,14.21875 12.8125,14.21875 L13.75,14.21875 C13.8203125,14.21875 13.8765625,14.1609375 13.8750318,14.090625 C13.859375,13.34375 13.7046875,12.6171875 13.4140625,11.93125 Z M8,8.34375 C7.2828125,8.34375 6.6078125,8.0640625 6.1,7.55625 C5.5921875,7.0484375 5.3125,6.3734375 5.3125,5.65625 C5.3125,4.9390625 5.5921875,4.2640625 6.1,3.75625 C6.6078125,3.2484375 7.2828125,2.96875 8,2.96875 C8.7171875,2.96875 9.3921875,3.2484375 9.9,3.75625 C10.4078125,4.2640625 10.6875,4.9390625 10.6875,5.65625 C10.6875,6.3734375 10.4078125,7.0484375 9.9,7.55625 C9.3921875,8.0640625 8.7171875,8.34375 8,8.34375 Z\" fill=\"#888D91\" fill-rule=\"nonzero\"></path>\n</svg>"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "成员管理",
+          "codeName" : "resource_member_pre",
+          "frontProcessType" : "OTHER",
+          "fullCodeName" : "work_item_resource_member_pre",
+          "name" : "全局资源成员设置(设置回显数据)",
+          "getPSAppDEUILogic" : {
+            "modelref" : true,
+            "id" : "calc_resouce_member"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+          },
+          "refreshMode" : 3,
+          "tooltip" : "成员管理",
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "resource_member_pre",
+          "uIActionType" : "DEUIACTION",
+          "uILogicAttachMode" : "REPLACE",
+          "globalUIAction" : true,
+          "reloadData" : true,
+          "id" : "resource_member_pre@work_item"
+        },
+        "tooltip" : "成员管理",
+        "uIActionTarget" : "NONE",
+        "showCaption" : false,
+        "showIcon" : true
+      } ],
+      "modelid" : "c56a56312d998dacf1481f279d074449",
+      "modeltype" : "PSDETOOLBAR"
+    } ],
+    "getPSDETreeColumns" : [ {
+      "caption" : "成员",
+      "codeName" : "name",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "name",
+      "name" : "name",
+      "width" : 300,
+      "widthUnit" : "px",
+      "enableExpand" : false,
+      "enableSort" : false
+    }, {
+      "caption" : "开始时间",
+      "codeName" : "begin",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "begin",
+      "hideMode" : 1,
+      "name" : "begin",
+      "width" : 50,
+      "widthUnit" : "px",
+      "enableExpand" : false,
+      "enableSort" : false,
+      "hideDefault" : true
+    }, {
+      "caption" : "结束时间",
+      "codeName" : "end",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "end",
+      "hideMode" : 1,
+      "name" : "end",
+      "width" : 50,
+      "widthUnit" : "px",
+      "enableExpand" : false,
+      "enableSort" : false,
+      "hideDefault" : true
+    }, {
+      "caption" : "project_id",
+      "codeName" : "project_id",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "project_id",
+      "hideMode" : 1,
+      "name" : "project_id",
+      "width" : 50,
+      "widthUnit" : "px",
+      "enableExpand" : false,
+      "enableSort" : false,
+      "hideDefault" : true
+    }, {
+      "caption" : "工作项类型",
+      "codeName" : "work_item_type_id",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "work_item_type_id",
+      "hideMode" : 1,
+      "name" : "work_item_type_id",
+      "width" : 50,
+      "widthUnit" : "px",
+      "enableExpand" : false,
+      "enableSort" : false,
+      "hideDefault" : true
+    } ],
+    "getPSDETreeNodeRSs" : [ {
+      "getChildPSDETreeNode" : {
+        "modelref" : true,
+        "id" : "MEMBER_NODE"
+      },
+      "name" : "默认根节点 - 成员节点",
+      "getPSNavigateParams" : [ {
+        "key" : "addon_resource",
+        "name" : "addon_resource",
+        "value" : "addon_resource",
+        "rawValue" : false
+      } ],
+      "getParentPSDETreeNode" : {
+        "modelref" : true,
+        "id" : "ROOT"
+      },
+      "parentValueLevel" : 1,
+      "searchMode" : 3
+    }, {
+      "getChildPSDETreeNode" : {
+        "modelref" : true,
+        "id" : "NODE"
+      },
+      "name" : "成员节点 - 工作项节点",
+      "parentFilter" : "assignee_id",
+      "getParentPSDETreeNode" : {
+        "modelref" : true,
+        "id" : "MEMBER_NODE"
+      },
+      "parentValueLevel" : 1,
+      "searchMode" : 3
+    } ],
+    "getPSDETreeNodes" : [ {
+      "counterMode" : 0,
+      "dataSourceType" : "DEDATASET",
+      "getIdPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "maxSize" : -1,
+      "name" : "默认根节点",
+      "nodeType" : "ROOT",
+      "getPSAppDEDataSet" : {
+        "modelref" : true,
+        "id" : "fetch_empty"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/addon_resource.json"
+      },
+      "getPSDEContextMenu" : {
+        "codeName" : "resource_gantt_view_root_cm",
+        "controlType" : "CONTEXTMENU",
+        "logicName" : "资源甘特图头部上下文菜单",
+        "name" : "root_cm",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/addon_resource.json"
+        },
+        "getPSControlParam" : {
+          "id" : "root_cm"
+        },
+        "getPSDEToolbarItems" : [ {
+          "caption" : "容量设置",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction1",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "root_cm_deuiaction1"
+          },
+          "getPSSysImage" : {
+            "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"18\" height=\"18\">\n  <path d=\"M893.52083332 53.33333333h-660c-33 0-60 27-60 60v840c0 33 27 60 60 60h660c33 0 60-27 60-60V113.33333333c0-33-27-60-60-60z m0 60v435.9375c-18.75 14.15625001-68.0625 44.0625-150 44.0625-43.21875001 0-65.90625001-18.5625-97.3125-44.15625001-41.4375-33.75-92.90625001-75.84375001-202.6875-75.84374999-103.96875001 0-169.875 19.03125001-210 37.21875001V113.33333333h660z m-660 840V578.33333333c21-13.6875 82.59375001-45 210-45 88.40625001 0 125.4375 30.28125001 164.71875 62.25C643.02083332 623.98958334 678.92708332 653.33333333 743.52083332 653.33333333c66.46875001 0 116.4375-16.96875001 150-34.125V953.33333333h-660z\" fill=\"#878895\"></path>\n</svg>"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "NONE",
+            "caption" : "容量设置",
+            "codeName" : "open_capacity",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/addon_resource_all_capacity_view.json",
+              "viewType" : "DEOPTVIEW"
+            },
+            "frontProcessType" : "WIZARD",
+            "fullCodeName" : "addon_resource_open_capacity",
+            "name" : "打开全局容量设置",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/addon_resource.json"
+            },
+            "getPSSysImage" : {
+              "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"18\" height=\"18\">\n  <path d=\"M893.52083332 53.33333333h-660c-33 0-60 27-60 60v840c0 33 27 60 60 60h660c33 0 60-27 60-60V113.33333333c0-33-27-60-60-60z m0 60v435.9375c-18.75 14.15625001-68.0625 44.0625-150 44.0625-43.21875001 0-65.90625001-18.5625-97.3125-44.15625001-41.4375-33.75-92.90625001-75.84375001-202.6875-75.84374999-103.96875001 0-169.875 19.03125001-210 37.21875001V113.33333333h660z m-660 840V578.33333333c21-13.6875 82.59375001-45 210-45 88.40625001 0 125.4375 30.28125001 164.71875 62.25C643.02083332 623.98958334 678.92708332 653.33333333 743.52083332 653.33333333c66.46875001 0 116.4375-16.96875001 150-34.125V953.33333333h-660z\" fill=\"#878895\"></path>\n</svg>"
+            },
+            "refreshMode" : 3,
+            "tooltip" : "容量设置",
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "open_capacity",
+            "uIActionType" : "DEUIACTION",
+            "reloadData" : true,
+            "id" : "open_capacity@addon_resource"
+          },
+          "tooltip" : "容量设置",
+          "uIActionTarget" : "NONE",
+          "showCaption" : false,
+          "showIcon" : true
+        }, {
+          "caption" : "成员管理",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction2",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "root_cm_deuiaction2"
+          },
+          "getPSSysImage" : {
+            "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"18\" height=\"18\">\n  <path d=\"M13.4140625,11.93125 C13.11875,11.23125 12.69375,10.603125 12.1546875,10.0640625 C11.615625,9.525 10.9875,9.1015625 10.2875,8.8046875 C10.28125,8.8015625 10.275,8.8 10.26875,8.796875 C11.2421875,8.09375 11.875,6.9484375 11.875,5.65625 C11.875,3.515625 10.140625,1.78125 8,1.78125 C5.859375,1.78125 4.125,3.515625 4.125,5.65625 C4.125,6.9484375 4.7578125,8.09375 5.73125,8.7984375 C5.725,8.8015625 5.71875,8.803125 5.7125,8.80625 C5.0125,9.1015625 4.384375,9.525 3.8453125,10.065625 C3.30625,10.6046875 2.8828125,11.2328125 2.5859375,11.9328125 C2.2953125,12.6171875 2.140625,13.34375 2.12496822,14.090625 C2.1234375,14.1609375 2.1796875,14.21875 2.25,14.21875 L3.1875,14.21875 C3.25625,14.21875 3.3109375,14.1640625 3.3125,14.096875 C3.34375,12.890625 3.828125,11.7609375 4.684375,10.9046875 C5.5703125,10.01875 6.746875,9.53125 8,9.53125 C9.253125,9.53125 10.4296875,10.01875 11.315625,10.9046875 C12.171875,11.7609375 12.65625,12.890625 12.6875,14.096875 C12.6890625,14.165625 12.74375,14.21875 12.8125,14.21875 L13.75,14.21875 C13.8203125,14.21875 13.8765625,14.1609375 13.8750318,14.090625 C13.859375,13.34375 13.7046875,12.6171875 13.4140625,11.93125 Z M8,8.34375 C7.2828125,8.34375 6.6078125,8.0640625 6.1,7.55625 C5.5921875,7.0484375 5.3125,6.3734375 5.3125,5.65625 C5.3125,4.9390625 5.5921875,4.2640625 6.1,3.75625 C6.6078125,3.2484375 7.2828125,2.96875 8,2.96875 C8.7171875,2.96875 9.3921875,3.2484375 9.9,3.75625 C10.4078125,4.2640625 10.6875,4.9390625 10.6875,5.65625 C10.6875,6.3734375 10.4078125,7.0484375 9.9,7.55625 C9.3921875,8.0640625 8.7171875,8.34375 8,8.34375 Z\" fill=\"#888D91\" fill-rule=\"nonzero\"></path>\n</svg>"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "NONE",
+            "caption" : "成员管理",
+            "codeName" : "resource_member_pre",
+            "frontProcessType" : "OTHER",
+            "fullCodeName" : "work_item_resource_member_pre",
+            "name" : "全局资源成员设置(设置回显数据)",
+            "getPSAppDEUILogic" : {
+              "modelref" : true,
+              "id" : "calc_resouce_member"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+            },
+            "refreshMode" : 3,
+            "tooltip" : "成员管理",
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "resource_member_pre",
+            "uIActionType" : "DEUIACTION",
+            "uILogicAttachMode" : "REPLACE",
+            "globalUIAction" : true,
+            "reloadData" : true,
+            "id" : "resource_member_pre@work_item"
+          },
+          "tooltip" : "成员管理",
+          "uIActionTarget" : "NONE",
+          "showCaption" : false,
+          "showIcon" : true
+        } ],
+        "modelid" : "c56a56312d998dacf1481f279d074449",
+        "modeltype" : "PSDETOOLBAR"
+      },
+      "getTextPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      },
+      "treeNodeType" : "DE",
+      "hasPSDETreeNodeRSs" : true,
+      "appendPNodeId" : false,
+      "disableSelect" : false,
+      "enableCheck" : false,
+      "enableEditData" : false,
+      "enableNewData" : false,
+      "enableQuickCreate" : false,
+      "enableQuickSearch" : false,
+      "enableRemoveData" : false,
+      "enableViewData" : false,
+      "expandFirstOnly" : false,
+      "expanded" : false,
+      "rootNode" : true,
+      "selectFirstOnly" : false,
+      "selected" : false,
+      "id" : "ROOT"
+    }, {
+      "counterMode" : 0,
+      "dataSourceType" : "DEDATASET",
+      "getIdPSAppDEField" : {
+        "name" : "USER_ID",
+        "codeName" : "user_id"
+      },
+      "maxSize" : -1,
+      "name" : "成员节点",
+      "nodeType" : "MEMBER_NODE",
+      "getPSAppDEDataSet" : {
+        "modelref" : true,
+        "id" : "fetch_resource_member"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/member.json"
+      },
+      "getPSDETreeNodeColumns" : [ {
+        "cLConvertMode" : "NONE",
+        "codeName" : "name",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "name",
+        "name" : "name",
+        "getPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "name"
+        },
+        "enableItemPriv" : true
+      } ],
+      "getPSDETreeNodeDataItems" : [ {
+        "cLConvertMode" : "NONE",
+        "dataType" : 25,
+        "name" : "name",
+        "getPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "name"
+        },
+        "privilegeId" : "MEMBER|NAME",
+        "enableItemPriv" : true
+      } ],
+      "getTextPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      },
+      "treeNodeType" : "DE",
+      "hasPSDETreeNodeRSs" : true,
+      "appendPNodeId" : false,
+      "disableSelect" : false,
+      "enableCheck" : false,
+      "enableEditData" : false,
+      "enableNewData" : false,
+      "enableQuickCreate" : false,
+      "enableQuickSearch" : false,
+      "enableRemoveData" : false,
+      "enableViewData" : false,
+      "expandFirstOnly" : false,
+      "expanded" : true,
+      "rootNode" : false,
+      "selectFirstOnly" : false,
+      "selected" : false,
+      "id" : "MEMBER_NODE"
+    }, {
+      "counterMode" : 0,
+      "dataSourceType" : "DEDATASET",
+      "getIdPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "maxSize" : -1,
+      "name" : "工作项节点",
+      "nodeType" : "NODE",
+      "getPSAppDEDataSet" : {
+        "modelref" : true,
+        "id" : "fetch_resource"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+      },
+      "getPSDETreeNodeColumns" : [ {
+        "cLConvertMode" : "NONE",
+        "codeName" : "end_at",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "end_at",
+        "name" : "end_at",
+        "getPSAppDEField" : {
+          "name" : "END_AT",
+          "codeName" : "end_at"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "end"
+        },
+        "valueFormat" : "YYYY-MM-DD"
+      }, {
+        "cLConvertMode" : "NONE",
+        "codeName" : "project_id",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "project_id",
+        "name" : "project_id",
+        "getPSAppDEField" : {
+          "name" : "PROJECT_ID",
+          "codeName" : "project_id"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "project_id"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "codeName" : "project_name",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "project_name",
+        "name" : "project_name",
+        "getPSAppDEField" : {
+          "name" : "PROJECT_NAME",
+          "codeName" : "project_name"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "name"
+        },
+        "getPSDEUIAction" : {
+          "actionTarget" : "SINGLEDATA",
+          "caption" : "打开项目主视图",
+          "codeName" : "open_index_view",
+          "frontProcessType" : "OTHER",
+          "fullCodeName" : "work_item_open_index_view",
+          "name" : "打开项目主视图",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSNavigateContexts" : [ {
+            "key" : "PROJECT",
+            "name" : "PROJECT",
+            "value" : "project_id",
+            "rawValue" : false
+          } ],
+          "scriptCode" : "const srfkey = context.project ? context.project : data[0].project_id;\r\nwindow.location.hash=`/-/index/project=${srfkey}/project_redirect_view/srfnav=usrdrgroup1225572368/project_over_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D`",
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "open_index_view",
+          "uIActionType" : "DEUIACTION",
+          "id" : "open_index_view@work_item"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "codeName" : "start_at",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "start_at",
+        "name" : "start_at",
+        "getPSAppDEField" : {
+          "name" : "START_AT",
+          "codeName" : "start_at"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "begin"
+        },
+        "valueFormat" : "YYYY-MM-DD"
+      }, {
+        "cLConvertMode" : "FRONT",
+        "codeName" : "work_item_type_id",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "work_item_type_id",
+        "name" : "work_item_type_id",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__work_item_type.json"
+        },
+        "getPSAppDEField" : {
+          "name" : "WORK_ITEM_TYPE_ID",
+          "codeName" : "work_item_type_id"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "work_item_type_id"
+        }
+      } ],
+      "getPSDETreeNodeDataItems" : [ {
+        "cLConvertMode" : "NONE",
+        "dataType" : 5,
+        "name" : "end_at",
+        "getPSAppDEField" : {
+          "name" : "END_AT",
+          "codeName" : "end_at"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "end"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "dataType" : 25,
+        "name" : "project_id",
+        "getPSAppDEField" : {
+          "name" : "PROJECT_ID",
+          "codeName" : "project_id"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "project_id"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "dataType" : 25,
+        "name" : "project_name",
+        "getPSAppDEField" : {
+          "name" : "PROJECT_NAME",
+          "codeName" : "project_name"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "name"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "dataType" : 5,
+        "name" : "start_at",
+        "getPSAppDEField" : {
+          "name" : "START_AT",
+          "codeName" : "start_at"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "begin"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "dataType" : 25,
+        "name" : "work_item_type_id",
+        "getPSAppDEField" : {
+          "name" : "WORK_ITEM_TYPE_ID",
+          "codeName" : "work_item_type_id"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "work_item_type_id"
+        }
+      } ],
+      "getPSDETreeNodeRVs" : [ {
+        "name" : "editdata",
+        "getPSNavigateContexts" : [ {
+          "key" : "SRFDATATYPE",
+          "name" : "SRFDATATYPE",
+          "value" : "work_item_type_id",
+          "rawValue" : false
+        }, {
+          "key" : "PROJECT",
+          "name" : "PROJECT",
+          "value" : "project_id",
+          "rawValue" : false
+        }, {
+          "key" : "WORK_ITEM_TYPE_ID",
+          "name" : "WORK_ITEM_TYPE_ID",
+          "value" : "work_item_type_id",
+          "rawValue" : false
+        } ],
+        "getPSNavigateParams" : [ {
+          "key" : "srfdatatype",
+          "name" : "srfdatatype",
+          "value" : "work_item_type_id",
+          "rawValue" : false
+        } ],
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_main_view.json",
+          "viewType" : "DEEDITVIEW"
+        }
+      } ],
+      "getTextPSAppDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "treeNodeType" : "DE",
+      "hasPSDETreeNodeRSs" : false,
+      "appendPNodeId" : false,
+      "disableSelect" : false,
+      "enableCheck" : false,
+      "enableEditData" : false,
+      "enableNewData" : false,
+      "enableQuickCreate" : false,
+      "enableQuickSearch" : false,
+      "enableRemoveData" : false,
+      "enableViewData" : true,
+      "expandFirstOnly" : false,
+      "expanded" : true,
+      "rootNode" : false,
+      "selectFirstOnly" : false,
+      "selected" : false,
+      "id" : "NODE"
+    } ],
+    "getPSSysPFPlugin" : {
+      "pluginType" : "TREE_RENDER",
+      "pluginCode" : "RESOURCE_GANTT",
+      "runtimeObject" : true
+    },
+    "prevDataItemName" : "prev",
+    "sNDataItemName" : "sn",
+    "totalDataItemName" : "total",
+    "treeGridMode" : 2,
+    "enableEdit" : true,
+    "enableRootSelect" : false,
+    "outputIconDefault" : true,
+    "rootVisible" : false,
+    "name" : "gantt",
+    "modelid" : "b6573b7e5bca5f1b15e5db7fee0a8455",
+    "modeltype" : "PSDEGANTT"
+  }, {
+    "codeName" : "resource_search_form",
+    "controlType" : "SEARCHFORM",
+    "defaultLabelWidth" : 130,
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item/PSSEARCHFORMS/resource_search_form.json",
+    "logicName" : "资源分配搜索表单",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+    },
+    "getPSControlHandler" : {
+      "getPSHandlerActions" : [ {
+        "actionType" : "FILTERACTION",
+        "name" : "load",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "FilterGet"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+        }
+      }, {
+        "actionType" : "FILTERACTION",
+        "name" : "loaddraft",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "FilterGetDraft"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+        }
+      }, {
+        "actionType" : "FILTERACTION",
+        "name" : "search",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "FilterSearch"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+        }
+      } ],
+      "enableDEFieldPrivilege" : false,
+      "id" : "搜索表单处理器"
+    },
+    "getPSControlParam" : {
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "id" : "SEARCHFORM"
+    },
+    "getPSDEFormItems" : [ {
+      "id" : "data_range",
+      "dataType" : 25
+    }, {
+      "id" : "n_date_scope_gtandeq",
+      "hidden" : true,
+      "dataType" : 25
+    }, {
+      "id" : "n_date_scope_ltandeq",
+      "hidden" : true,
+      "dataType" : 25
+    } ],
+    "getPSDEFormPages" : [ {
+      "caption" : "常规条件",
+      "codeName" : "formpage1",
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMPAGE",
+      "name" : "formpage1",
+      "getPSDEFormDetails" : [ {
+        "caption" : "时间范围",
+        "codeName" : "data_range",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "data_range",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "dateTimeFormat" : "YYYY-MM-DD",
+          "editorParams" : {
+            "TIMEFMT" : "YYYY-MM-DD"
+          },
+          "editorType" : "DATERANGE_NOTIME",
+          "name" : "data_range",
+          "getPSEditorItems" : [ {
+            "name" : "n_date_scope_gtandeq"
+          }, {
+            "name" : "n_date_scope_ltandeq"
+          } ]
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "valueItemName" : "n_date_scope_gtandeq",
+        "allowEmpty" : true
+      }, {
+        "caption" : "大于等于",
+        "codeName" : "n_date_scope_gtandeq",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "n_date_scope_gtandeq",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "n_date_scope_gtandeq"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
+      }, {
+        "caption" : "小于等于",
+        "codeName" : "n_date_scope_ltandeq",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "n_date_scope_ltandeq",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "n_date_scope_ltandeq"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
+      } ],
+      "getPSLayout" : {
+        "childColMD" : 24,
+        "columnCount" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "infoGroupMode" : false
+    } ],
+    "getPSLayout" : {
+      "childColMD" : 24,
+      "columnCount" : 24,
+      "layout" : "TABLE_24COL"
+    },
+    "searchButtonStyle" : "NONE",
+    "tabHeaderPos" : "TOP",
+    "enableAdvanceSearch" : false,
+    "enableAutoSearch" : true,
+    "enableFilterSave" : false,
+    "noTabHeader" : true,
+    "name" : "searchform",
+    "modelid" : "e4424dc11efbb19547a3b91e9d48d7d4",
+    "modeltype" : "PSDEFORM_SEARCHFORM"
+  }, {
+    "codeName" : "resource",
+    "controlType" : "SEARCHBAR",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item/PSSEARCHBARS/resource.json",
+    "groupMoreText" : "更多",
+    "logicName" : "资源分配搜索栏",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+    },
+    "getPSControlParam" : {
+      "id" : "SEARCHBAR"
+    },
+    "getPSSearchBarFilters" : [ {
+      "dataType" : 25,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "state",
+      "getPSAppDEField" : {
+        "name" : "STATE",
+        "codeName" : "state"
+      },
+      "getPSEditor" : {
+        "editorType" : "DROPDOWNLIST",
+        "name" : "state",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__work_item_state.json"
+        },
+        "singleSelect" : true
+      },
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "needCodeListConfig" : true,
+      "showCaption" : false
+    }, {
+      "caption" : "描述",
+      "dataType" : 21,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "description",
+      "getPSAppDEField" : {
+        "name" : "DESCRIPTION",
+        "codeName" : "description"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_DESCRIPTION_LIKE",
+        "name" : "N_DESCRIPTION_LIKE",
+        "stdDataType" : 21,
+        "valueOP" : "LIKE"
+      },
+      "getPSEditor" : {
+        "editorType" : "TEXTBOX",
+        "name" : "description"
+      },
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "showCaption" : false
+    }, {
+      "dataType" : 25,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "work_item_type_id",
+      "getPSAppDEField" : {
+        "name" : "WORK_ITEM_TYPE_ID",
+        "codeName" : "work_item_type_id"
+      },
+      "getPSEditor" : {
+        "editorType" : "DROPDOWNLIST",
+        "name" : "work_item_type_id",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__work_item_type.json"
+        },
+        "singleSelect" : true
+      },
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "needCodeListConfig" : true,
+      "showCaption" : false
+    }, {
+      "dataType" : 25,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "priority",
+      "getPSAppDEField" : {
+        "name" : "PRIORITY",
+        "codeName" : "priority"
+      },
+      "getPSEditor" : {
+        "editorType" : "DROPDOWNLIST",
+        "name" : "priority",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__work_item_priority.json"
+        },
+        "singleSelect" : true
+      },
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "needCodeListConfig" : true,
+      "showCaption" : false
+    }, {
+      "dataType" : 9,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "is_archived",
+      "getPSAppDEField" : {
+        "name" : "IS_ARCHIVED",
+        "codeName" : "is_archived"
+      },
+      "getPSEditor" : {
+        "editorType" : "DROPDOWNLIST",
+        "name" : "is_archived",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
+        },
+        "singleSelect" : true
+      },
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "needCodeListConfig" : true,
+      "showCaption" : false
+    }, {
+      "caption" : "负责人",
+      "dataType" : 25,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "assignee_id_eq",
+      "getPSAppDEField" : {
+        "name" : "ASSIGNEE_ID",
+        "codeName" : "assignee_id"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_ASSIGNEE_ID_EQ",
+        "name" : "N_ASSIGNEE_ID_EQ",
+        "stdDataType" : 25,
+        "valueOP" : "EQ"
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+          "AC" : "TRUE",
+          "SRFNAVPARAM.n_status_eq" : "1",
+          "TRIGGER" : "TRUE",
+          "URL" : "projects/${context.project}/project_members/fetch_default",
+          "PICKUPVIEW" : "FALSE",
+          "USERMETHOD" : "post",
+          "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+          "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+          "DEPTMETHOD" : "get",
+          "DEPTURL" : "/users/fetch_default"
+        },
+        "editorStyle" : "PERSONEL_SELECT_PROJECT",
+        "editorType" : "PICKEREX_TRIGGER",
+        "name" : "assignee_id_eq",
+        "getPSAppDEACMode" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "getPSAppDEDataSet" : {
+          "modelref" : true,
+          "id" : "fetch_default"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+        },
+        "getPSNavigateParams" : [ {
+          "key" : "n_department_id_eq",
+          "name" : "n_department_id_eq",
+          "value" : "srforgsectorid",
+          "rawValue" : false
+        }, {
+          "key" : "n_status_eq",
+          "name" : "n_status_eq",
+          "value" : "1",
+          "rawValue" : true
+        } ],
+        "getPSSysPFPlugin" : {
+          "pluginType" : "EDITOR_CUSTOMSTYLE",
+          "pluginCode" : "PERSON_SELECT",
+          "runtimeObject" : true
+        },
+        "valueItemName" : "assignee_id",
+        "enableAC" : true,
+        "enablePickupView" : false,
+        "forceSelection" : true,
+        "showTrigger" : true,
+        "singleSelect" : true
+      },
+      "valueItemName" : "assignee_id",
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "showCaption" : false
+    }, {
+      "caption" : "创建人",
+      "dataType" : 25,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "create_man_eq",
+      "getPSAppDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_CREATE_MAN_EQ",
+        "name" : "N_CREATE_MAN_EQ",
+        "stdDataType" : 25,
+        "valueOP" : "EQ"
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+          "AC" : "TRUE",
+          "SRFNAVPARAM.n_status_eq" : "1",
+          "TRIGGER" : "TRUE",
+          "URL" : "projects/${context.project}/project_members/fetch_default",
+          "PICKUPVIEW" : "FALSE",
+          "USERMETHOD" : "post",
+          "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+          "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+          "DEPTMETHOD" : "get",
+          "DEPTURL" : "/users/fetch_default"
+        },
+        "editorStyle" : "PERSONEL_SELECT_PROJECT",
+        "editorType" : "PICKEREX_TRIGGER",
+        "name" : "create_man_eq",
+        "getPSNavigateParams" : [ {
+          "key" : "n_department_id_eq",
+          "name" : "n_department_id_eq",
+          "value" : "srforgsectorid",
+          "rawValue" : false
+        }, {
+          "key" : "n_status_eq",
+          "name" : "n_status_eq",
+          "value" : "1",
+          "rawValue" : true
+        } ],
+        "getPSSysPFPlugin" : {
+          "pluginType" : "EDITOR_CUSTOMSTYLE",
+          "pluginCode" : "PERSON_SELECT",
+          "runtimeObject" : true
+        },
+        "valueItemName" : "create_man",
+        "enableAC" : true,
+        "enablePickupView" : false,
+        "forceSelection" : true,
+        "showTrigger" : true,
+        "singleSelect" : true
+      },
+      "valueItemName" : "create_man",
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "showCaption" : false
+    }, {
+      "caption" : "创建人",
+      "dataType" : 25,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "create_man_in",
+      "getPSAppDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_CREATE_MAN_IN",
+        "name" : "N_CREATE_MAN_IN",
+        "stdDataType" : 25,
+        "valueOP" : "IN",
+        "array" : true
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "ISADDSYMBOL" : "true",
+          "MULTIPLE" : "true",
+          "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+          "AC" : "TRUE",
+          "SRFNAVPARAM.n_status_eq" : "1",
+          "TRIGGER" : "TRUE",
+          "URL" : "projects/${context.project}/project_members/fetch_default",
+          "PICKUPVIEW" : "FALSE",
+          "USERMETHOD" : "post",
+          "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+          "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+          "DEPTMETHOD" : "get",
+          "DEPTURL" : "/users/fetch_default"
+        },
+        "editorStyle" : "PERSONEL_SELECT_PROJECT",
+        "editorType" : "PICKEREX_TRIGGER",
+        "name" : "create_man_in",
+        "getPSNavigateParams" : [ {
+          "key" : "n_department_id_eq",
+          "name" : "n_department_id_eq",
+          "value" : "srforgsectorid",
+          "rawValue" : false
+        }, {
+          "key" : "n_status_eq",
+          "name" : "n_status_eq",
+          "value" : "1",
+          "rawValue" : true
+        } ],
+        "getPSSysPFPlugin" : {
+          "pluginType" : "EDITOR_CUSTOMSTYLE",
+          "pluginCode" : "PERSON_SELECT",
+          "runtimeObject" : true
+        },
+        "valueItemName" : "create_man",
+        "enableAC" : true,
+        "enablePickupView" : false,
+        "forceSelection" : true,
+        "showTrigger" : true,
+        "singleSelect" : true
+      },
+      "valueItemName" : "create_man",
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "showCaption" : false
+    }, {
+      "caption" : "创建人",
+      "dataType" : 25,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "create_man_not_in",
+      "getPSAppDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_CREATE_MAN_NOTIN",
+        "name" : "N_CREATE_MAN_NOTIN",
+        "stdDataType" : 25,
+        "valueOP" : "NOTIN",
+        "array" : true
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "ISADDSYMBOL" : "true",
+          "MULTIPLE" : "true",
+          "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+          "AC" : "TRUE",
+          "SRFNAVPARAM.n_status_eq" : "1",
+          "TRIGGER" : "TRUE",
+          "URL" : "projects/${context.project}/project_members/fetch_default",
+          "PICKUPVIEW" : "FALSE",
+          "USERMETHOD" : "post",
+          "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+          "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+          "DEPTMETHOD" : "get",
+          "DEPTURL" : "/users/fetch_default"
+        },
+        "editorStyle" : "PERSONEL_SELECT_PROJECT",
+        "editorType" : "PICKEREX_TRIGGER",
+        "name" : "create_man_not_in",
+        "getPSNavigateParams" : [ {
+          "key" : "n_department_id_eq",
+          "name" : "n_department_id_eq",
+          "value" : "srforgsectorid",
+          "rawValue" : false
+        }, {
+          "key" : "n_status_eq",
+          "name" : "n_status_eq",
+          "value" : "1",
+          "rawValue" : true
+        } ],
+        "getPSSysPFPlugin" : {
+          "pluginType" : "EDITOR_CUSTOMSTYLE",
+          "pluginCode" : "PERSON_SELECT",
+          "runtimeObject" : true
+        },
+        "valueItemName" : "create_man",
+        "enableAC" : true,
+        "enablePickupView" : false,
+        "forceSelection" : true,
+        "showTrigger" : true,
+        "singleSelect" : true
+      },
+      "valueItemName" : "create_man",
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "showCaption" : false
+    }, {
+      "caption" : "负责人",
+      "dataType" : 25,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "assignee_id_in",
+      "getPSAppDEField" : {
+        "name" : "ASSIGNEE_ID",
+        "codeName" : "assignee_id"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_ASSIGNEE_ID_IN",
+        "name" : "N_ASSIGNEE_ID_IN",
+        "stdDataType" : 25,
+        "valueOP" : "IN",
+        "array" : true
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "ISADDSYMBOL" : "true",
+          "MULTIPLE" : "true",
+          "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+          "AC" : "TRUE",
+          "SRFNAVPARAM.n_status_eq" : "1",
+          "TRIGGER" : "TRUE",
+          "URL" : "projects/${context.project}/project_members/fetch_default",
+          "PICKUPVIEW" : "FALSE",
+          "USERMETHOD" : "post",
+          "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+          "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+          "DEPTMETHOD" : "get",
+          "DEPTURL" : "/users/fetch_default"
+        },
+        "editorStyle" : "PERSONEL_SELECT_PROJECT",
+        "editorType" : "PICKEREX_TRIGGER",
+        "name" : "assignee_id_in",
+        "getPSAppDEACMode" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "getPSAppDEDataSet" : {
+          "modelref" : true,
+          "id" : "fetch_default"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+        },
+        "getPSNavigateParams" : [ {
+          "key" : "n_department_id_eq",
+          "name" : "n_department_id_eq",
+          "value" : "srforgsectorid",
+          "rawValue" : false
+        }, {
+          "key" : "n_status_eq",
+          "name" : "n_status_eq",
+          "value" : "1",
+          "rawValue" : true
+        } ],
+        "getPSSysPFPlugin" : {
+          "pluginType" : "EDITOR_CUSTOMSTYLE",
+          "pluginCode" : "PERSON_SELECT",
+          "runtimeObject" : true
+        },
+        "valueItemName" : "assignee_id",
+        "enableAC" : true,
+        "enablePickupView" : false,
+        "forceSelection" : true,
+        "showTrigger" : true,
+        "singleSelect" : true
+      },
+      "valueItemName" : "assignee_id",
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "showCaption" : false
+    }, {
+      "caption" : "负责人",
+      "dataType" : 25,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "assignee_id_not_in",
+      "getPSAppDEField" : {
+        "name" : "ASSIGNEE_ID",
+        "codeName" : "assignee_id"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_ASSIGNEE_ID_NOTIN",
+        "name" : "N_ASSIGNEE_ID_NOTIN",
+        "stdDataType" : 25,
+        "valueOP" : "NOTIN",
+        "array" : true
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "ISADDSYMBOL" : "true",
+          "MULTIPLE" : "true",
+          "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+          "AC" : "TRUE",
+          "SRFNAVPARAM.n_status_eq" : "1",
+          "TRIGGER" : "TRUE",
+          "URL" : "projects/${context.project}/project_members/fetch_default",
+          "PICKUPVIEW" : "FALSE",
+          "USERMETHOD" : "post",
+          "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+          "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+          "DEPTMETHOD" : "get",
+          "DEPTURL" : "/users/fetch_default"
+        },
+        "editorStyle" : "PERSONEL_SELECT_PROJECT",
+        "editorType" : "PICKEREX_TRIGGER",
+        "name" : "assignee_id_not_in",
+        "getPSAppDEACMode" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "getPSAppDEDataSet" : {
+          "modelref" : true,
+          "id" : "fetch_default"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+        },
+        "getPSNavigateParams" : [ {
+          "key" : "n_department_id_eq",
+          "name" : "n_department_id_eq",
+          "value" : "srforgsectorid",
+          "rawValue" : false
+        }, {
+          "key" : "n_status_eq",
+          "name" : "n_status_eq",
+          "value" : "1",
+          "rawValue" : true
+        } ],
+        "getPSSysPFPlugin" : {
+          "pluginType" : "EDITOR_CUSTOMSTYLE",
+          "pluginCode" : "PERSON_SELECT",
+          "runtimeObject" : true
+        },
+        "valueItemName" : "assignee_id",
+        "enableAC" : true,
+        "enablePickupView" : false,
+        "forceSelection" : true,
+        "showTrigger" : true,
+        "singleSelect" : true
+      },
+      "valueItemName" : "assignee_id",
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "showCaption" : false
+    }, {
+      "caption" : "建立人(Nil)",
+      "dataType" : 25,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "create_man_isnull",
+      "getPSAppDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_CREATE_MAN_ISNULL",
+        "name" : "N_CREATE_MAN_ISNULL",
+        "stdDataType" : 25,
+        "valueOP" : "ISNULL"
+      },
+      "getPSEditor" : {
+        "editorType" : "SPAN",
+        "name" : "create_man_isnull",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+        },
+        "enableLinkView" : false
+      },
+      "allowEmpty" : true,
+      "convertToCodeItemText" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "showCaption" : false
+    }, {
+      "caption" : "建立人(NotNil)",
+      "dataType" : 25,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "create_man_notnull",
+      "getPSAppDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_CREATE_MAN_ISNOTNULL",
+        "name" : "N_CREATE_MAN_ISNOTNULL",
+        "stdDataType" : 25,
+        "valueOP" : "ISNOTNULL"
+      },
+      "getPSEditor" : {
+        "editorType" : "SPAN",
+        "name" : "create_man_notnull",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+        },
+        "enableLinkView" : false
+      },
+      "allowEmpty" : true,
+      "convertToCodeItemText" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "showCaption" : false
+    }, {
+      "caption" : "负责人(Nil)",
+      "dataType" : 25,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "assignee_isnull",
+      "getPSAppDEField" : {
+        "name" : "ASSIGNEE_ID",
+        "codeName" : "assignee_id"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_ASSIGNEE_ID_ISNULL",
+        "name" : "N_ASSIGNEE_ID_ISNULL",
+        "stdDataType" : 25,
+        "valueOP" : "ISNULL"
+      },
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "assignee_isnull"
+      },
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : true,
+      "showCaption" : false
+    }, {
+      "caption" : "负责人(NotNil)",
+      "dataType" : 25,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "assignee_notnull",
+      "getPSAppDEField" : {
+        "name" : "ASSIGNEE_ID",
+        "codeName" : "assignee_id"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_ASSIGNEE_ID_ISNOTNULL",
+        "name" : "N_ASSIGNEE_ID_ISNOTNULL",
+        "stdDataType" : 25,
+        "valueOP" : "ISNOTNULL"
+      },
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "assignee_notnull"
+      },
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : true,
+      "showCaption" : false
+    }, {
+      "caption" : "开始时间",
+      "dataType" : 5,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "start_at_gt",
+      "getPSAppDEField" : {
+        "name" : "START_AT",
+        "codeName" : "start_at"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_START_AT_GTANDEQ",
+        "name" : "N_START_AT_GTANDEQ",
+        "stdDataType" : 5,
+        "valueOP" : "GTANDEQ"
+      },
+      "getPSEditor" : {
+        "dateTimeFormat" : "YYYY-MM-DD",
+        "editorParams" : {
+          "TIMEFMT" : "YYYY-MM-DD"
+        },
+        "editorType" : "DATEPICKEREX_NOTIME",
+        "name" : "start_at_gt"
+      },
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "showCaption" : false
+    }, {
+      "caption" : "开始时间",
+      "dataType" : 5,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "start_at_lt",
+      "getPSAppDEField" : {
+        "name" : "START_AT",
+        "codeName" : "start_at"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_START_AT_LTANDEQ",
+        "name" : "N_START_AT_LTANDEQ",
+        "stdDataType" : 5,
+        "valueOP" : "LTANDEQ"
+      },
+      "getPSEditor" : {
+        "dateTimeFormat" : "YYYY-MM-DD",
+        "editorParams" : {
+          "TIMEFMT" : "YYYY-MM-DD"
+        },
+        "editorType" : "DATEPICKEREX_NOTIME",
+        "name" : "start_at_lt"
+      },
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "showCaption" : false
+    }, {
+      "caption" : "截止时间",
+      "dataType" : 5,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "end_at_gt",
+      "getPSAppDEField" : {
+        "name" : "END_AT",
+        "codeName" : "end_at"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_END_AT_GTANDEQ",
+        "name" : "N_END_AT_GTANDEQ",
+        "stdDataType" : 5,
+        "valueOP" : "GTANDEQ"
+      },
+      "getPSEditor" : {
+        "dateTimeFormat" : "YYYY-MM-DD",
+        "editorParams" : {
+          "TIMEFMT" : "YYYY-MM-DD"
+        },
+        "editorType" : "DATEPICKEREX_NOTIME",
+        "name" : "end_at_gt"
+      },
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "showCaption" : false
+    }, {
+      "caption" : "截止时间",
+      "dataType" : 5,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "end_at_lt",
+      "getPSAppDEField" : {
+        "name" : "END_AT",
+        "codeName" : "end_at"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_END_AT_LTANDEQ",
+        "name" : "N_END_AT_LTANDEQ",
+        "stdDataType" : 5,
+        "valueOP" : "LTANDEQ"
+      },
+      "getPSEditor" : {
+        "dateTimeFormat" : "YYYY-MM-DD",
+        "editorParams" : {
+          "TIMEFMT" : "YYYY-MM-DD"
+        },
+        "editorType" : "DATEPICKEREX_NOTIME",
+        "name" : "end_at_lt"
+      },
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "showCaption" : false
+    } ],
+    "quickGroupCount" : 5,
+    "quickSearchMode" : 0,
+    "quickSearchWidth" : 0,
+    "searchBarStyle" : "SEARCHBAR2",
+    "enableFilter" : true,
+    "enableGroup" : false,
+    "enableQuickSearch" : false,
+    "mobileSearchBar" : false,
+    "name" : "searchbar",
+    "modelid" : "514a19693868922ffd1bbf4e46b2c1fd",
+    "modeltype" : "PSSYSSEARCHBAR"
+  }, {
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DE.LNAME.WORK_ITEM"
+    },
+    "caption" : "资源分配",
+    "codeName" : "resource_gantt_view_captionbar",
+    "controlType" : "CAPTIONBAR",
+    "name" : "captionbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+    },
+    "getPSControlParam" : { }
+  } ],
+  "getPSDEViewCodeName" : "resource_gantt_view",
+  "getPSDEViewId" : "31c317983cc10b1a0f951993328d06f4",
+  "getPSViewLayoutPanel" : {
+    "getAllPSPanelFields" : [ {
+      "id" : "route_picker"
+    } ],
+    "codeName" : "usr0529691589",
+    "controlType" : "VIEWLAYOUTPANEL",
+    "layoutMode" : "Flex",
+    "logicName" : "资源甘特布局",
+    "name" : "layoutpanel",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+    },
+    "getPSControlParam" : { },
+    "getPSLayout" : {
+      "layout" : "FLEX"
+    },
+    "getRootPSPanelItems" : [ {
+      "caption" : "容器",
+      "itemStyle" : "DEFAULT",
+      "itemType" : "CONTAINER",
+      "name" : "view_header",
+      "getPSLayout" : {
+        "align" : "space-between",
+        "dir" : "row",
+        "layout" : "FLEX",
+        "vAlign" : "center"
+      },
+      "getPSLayoutPos" : {
+        "grow" : -1,
+        "layout" : "FLEX",
+        "shrink" : 0
+      },
+      "getPSPanelItems" : [ {
+        "caption" : "容器",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "view_header_left",
+        "getPSLayout" : {
+          "layout" : "FLEX"
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "heightMode" : "FULL",
+          "layout" : "FLEX"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "容器",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "view_captionbar",
+          "getPSLayout" : {
+            "align" : "center",
+            "dir" : "row",
+            "layout" : "FLEX",
+            "vAlign" : "center"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "hAlignSelf" : "LEFT",
+            "heightMode" : "FULL",
+            "layout" : "FLEX",
+            "vAlignSelf" : "MIDDLE"
+          },
+          "getPSPanelItems" : [ {
+            "caption" : "页面标题",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CTRLPOS",
+            "name" : "captionbar",
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "showCaption" : true
+          }, {
+            "caption" : "文本(动态)",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "FIELD",
+            "name" : "route_picker",
+            "getPSEditor" : {
+              "editorParams" : {
+                "MODE" : "CONTEXTCHANGE",
+                "ENABLESEARCH" : "FALSE",
+                "AC" : "TRUE",
+                "SUFFIX" : "chevron-down-outline",
+                "PICKUPVIEW" : "TRUE",
+                "ENABLECACHE" : "true"
+              },
+              "editorStyle" : "ROUTE",
+              "editorType" : "PICKER",
+              "name" : "route_picker",
+              "getPSAppDEACMode" : {
+                "modelref" : true,
+                "id" : "create_resource"
+              },
+              "getPSAppDEDataSet" : {
+                "modelref" : true,
+                "id" : "fetch_all"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/addon_resource.json"
+              },
+              "getPSSysPFPlugin" : {
+                "pluginType" : "EDITOR_CUSTOMSTYLE",
+                "pluginCode" : "ROUTE",
+                "runtimeObject" : true
+              },
+              "getPSUIActionGroup" : {
+                "codeName" : "Usr0604788849",
+                "name" : "自填模式_界面行为组",
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/addon_resource.json"
+                },
+                "getPSUIActionGroupDetails" : [ {
+                  "caption" : "新建资源视图",
+                  "detailType" : "DEUIACTION",
+                  "name" : "u43b8ddd",
+                  "getPSSysImage" : {
+                    "glyph" : "xf067@FontAwesome",
+                    "cssClass" : "fa fa-plus"
+                  },
+                  "getPSUIAction" : {
+                    "actionTarget" : "NONE",
+                    "caption" : "新建资源视图",
+                    "codeName" : "new_resource",
+                    "getFrontPSAppView" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/addon_resource_quick_create_view.json",
+                      "viewType" : "DEOPTVIEW"
+                    },
+                    "frontProcessType" : "WIZARD",
+                    "fullCodeName" : "addon_resource_new_resource",
+                    "name" : "新建资源视图",
+                    "getNextPSUIAction" : {
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/addon_resource.json"
+                      },
+                      "modelref" : true,
+                      "id" : "open_new_resource@addon_resource"
+                    },
+                    "getPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/addon_resource.json"
+                    },
+                    "getPSNavigateContexts" : [ {
+                      "key" : "ADDON_RESOURCE",
+                      "name" : "ADDON_RESOURCE",
+                      "rawValue" : true
+                    } ],
+                    "getPSSysImage" : {
+                      "glyph" : "xf067@FontAwesome",
+                      "cssClass" : "fa fa-plus"
+                    },
+                    "uIActionMode" : "FRONT",
+                    "uIActionTag" : "new_resource",
+                    "uIActionType" : "DEUIACTION",
+                    "id" : "new_resource@addon_resource"
+                  },
+                  "addSeparator" : false,
+                  "showCaption" : true,
+                  "showIcon" : true
+                }, {
+                  "caption" : "资源视图管理",
+                  "detailType" : "DEUIACTION",
+                  "name" : "u793ef1d",
+                  "getPSSysImage" : {
+                    "glyph" : "xf185@FontAwesome",
+                    "cssClass" : "fa fa-sun-o"
+                  },
+                  "getPSUIAction" : {
+                    "actionTarget" : "NONE",
+                    "caption" : "资源视图管理",
+                    "codeName" : "resource_management",
+                    "getFrontPSAppView" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/addon_resource_all_grid_view.json",
+                      "viewType" : "DEGRIDVIEW"
+                    },
+                    "frontProcessType" : "WIZARD",
+                    "fullCodeName" : "addon_resource_resource_management",
+                    "name" : "资源视图管理",
+                    "getPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/addon_resource.json"
+                    },
+                    "getPSNavigateContexts" : [ {
+                      "key" : "CUR_RESOURCE",
+                      "name" : "CUR_RESOURCE",
+                      "value" : "addon_resource",
+                      "rawValue" : false
+                    } ],
+                    "getPSSysImage" : {
+                      "glyph" : "xf185@FontAwesome",
+                      "cssClass" : "fa fa-sun-o"
+                    },
+                    "refreshMode" : 1,
+                    "uIActionMode" : "FRONT",
+                    "uIActionTag" : "resource_management",
+                    "uIActionType" : "DEUIACTION",
+                    "reloadData" : true,
+                    "id" : "resource_management@addon_resource"
+                  },
+                  "addSeparator" : false,
+                  "showCaption" : true,
+                  "showIcon" : true
+                } ],
+                "uniqueTag" : "addon_resource__Usr0604788849"
+              },
+              "predefinedType" : "FIELD_TEXT_DYNAMIC",
+              "enableAC" : true,
+              "enablePickupView" : true,
+              "forceSelection" : true,
+              "showTrigger" : true,
+              "singleSelect" : true
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "getPSSysCss" : {
+              "cssName" : "choose-resource"
+            }
+          } ]
+        } ]
+      }, {
+        "caption" : "容器",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "view_header_right",
+        "getPSLayout" : {
+          "dir" : "row",
+          "layout" : "FLEX"
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "heightMode" : "FULL",
+          "layout" : "FLEX"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "容器",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "container1",
+          "getPSLayout" : {
+            "layout" : "FLEX"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "getPSPanelItems" : [ {
+            "caption" : "文本",
+            "contentType" : "RAW",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "RAWITEM",
+            "name" : "static_text",
+            "getPSLayoutPos" : {
+              "grow" : 1,
+              "layout" : "FLEX"
+            },
+            "getPSRawItem" : {
+              "caption" : "容量计算",
+              "contentType" : "RAW",
+              "name" : "static_text",
+              "predefinedType" : "STATIC_TEXT",
+              "renderMode" : "TEXT"
+            },
+            "getPSSysPFPlugin" : {
+              "pluginType" : "CUSTOM",
+              "pluginCode" : "RESOURCE_DROPDOWN_LIST"
+            },
+            "rawContent" : "容量计算",
+            "showCaption" : true
+          } ]
+        }, {
+          "caption" : "容器",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "resource_state_content",
+          "getPSLayout" : {
+            "layout" : "FLEX"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "getPSPanelItems" : [ {
+            "caption" : "文本",
+            "contentType" : "RAW",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "RAWITEM",
+            "name" : "resource_state",
+            "getPSLayoutPos" : {
+              "grow" : 1,
+              "layout" : "FLEX"
+            },
+            "getPSRawItem" : {
+              "caption" : "资源状态",
+              "contentType" : "RAW",
+              "name" : "resource_state",
+              "predefinedType" : "STATIC_TEXT",
+              "renderMode" : "TEXT"
+            },
+            "getPSSysPFPlugin" : {
+              "pluginType" : "CUSTOM",
+              "pluginCode" : "RESOURCE_STATE"
+            },
+            "rawContent" : "资源状态",
+            "showCaption" : true
+          } ]
+        }, {
+          "caption" : "容器",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "view_searchform",
+          "getPSLayout" : {
+            "layout" : "FLEX"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX",
+            "shrink" : 0
+          },
+          "getPSPanelItems" : [ {
+            "caption" : "搜索表单",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CTRLPOS",
+            "name" : "searchform",
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "getPSSysCss" : {
+              "cssName" : "resource-view-head"
+            },
+            "showCaption" : true
+          } ]
+        }, {
+          "caption" : "容器",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "view_searchbar",
+          "getPSLayout" : {
+            "align" : "center",
+            "layout" : "FLEX"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "heightMode" : "FULL",
+            "layout" : "FLEX"
+          },
+          "getPSPanelItems" : [ {
+            "caption" : "搜索栏",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CTRLPOS",
+            "name" : "searchbar",
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "showCaption" : true
+          } ]
+        }, {
+          "caption" : "容器",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "view_toolbar",
+          "getPSLayout" : {
+            "align" : "center",
+            "layout" : "FLEX"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "heightMode" : "FULL",
+            "layout" : "FLEX"
+          },
+          "getPSPanelItems" : [ {
+            "caption" : "工具栏",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CTRLPOS",
+            "name" : "toolbar",
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "showCaption" : true
+          } ]
+        } ],
+        "getPSSysCss" : {
+          "cssName" : "resource-view-head"
+        }
+      } ],
+      "getPSSysCss" : {
+        "cssName" : "resource-view-head"
+      },
+      "predefinedType" : "VIEWHEADER"
+    }, {
+      "caption" : "容器",
+      "itemStyle" : "DEFAULT",
+      "itemType" : "CONTAINER",
+      "name" : "container",
+      "getPSLayout" : {
+        "dir" : "row",
+        "layout" : "FLEX",
+        "vAlign" : "center"
+      },
+      "getPSLayoutPos" : {
+        "grow" : -1,
+        "layout" : "FLEX",
+        "shrink" : 0
+      }
+    }, {
+      "caption" : "容器",
+      "itemStyle" : "DEFAULT",
+      "itemType" : "CONTAINER",
+      "name" : "view_content",
+      "getPSLayout" : {
+        "layout" : "FLEX"
+      },
+      "getPSLayoutPos" : {
+        "grow" : 1,
+        "layout" : "FLEX"
+      },
+      "getPSPanelItems" : [ {
+        "caption" : "甘特图",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CTRLPOS",
+        "name" : "gantt",
+        "getPSLayoutPos" : {
+          "grow" : 1,
+          "layout" : "FLEX"
+        },
+        "showCaption" : true
+      } ],
+      "predefinedType" : "VIEWCONTENT"
+    } ],
+    "layoutBodyOnly" : false,
+    "layoutPanel" : true,
+    "useDefaultLayout" : false,
+    "modelid" : "358a7fe5326a656948449e2bff1aa853",
+    "modeltype" : "PSSYSVIEWLAYOUTPANEL"
+  },
+  "title" : "资源分配",
+  "viewStyle" : "DEFAULT",
+  "viewType" : "DEGANTTVIEW",
+  "xDataControlName" : "gantt",
+  "enableDP" : true,
+  "enableFilter" : true,
+  "enableSearch" : true,
+  "expandSearchForm" : true,
+  "modelid" : "1582b5143694a5aac4d17d264eb73a66",
+  "modeltype" : "PSAPPDEVIEW",
+  "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "work_items",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "project",
+    "majorDEName" : "PROJECT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "minorDECodeName" : "work_item",
+    "minorDEName" : "WORK_ITEM",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+    },
+    "name" : "DER1N_WORK_ITEM_PROJECT_PROJECT_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PROJECT_ID",
+      "codeName" : "project_id"
+    },
+    "rSMode" : 2
+  } ] ]
+}

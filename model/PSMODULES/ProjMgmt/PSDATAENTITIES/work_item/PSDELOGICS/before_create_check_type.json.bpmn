@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.projmgmt.service.logic.work_itembefore_create_check_type" isClosed="false" isExecutable="true" name="projmgmt_work_item_before_create_check_type_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.projmgmt.service.logic.work_itembefore_create_check_type">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="work_itembefore_create_check_typedefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_itembefore_create_check_typeparent_work_item" type="refentity"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="iBzSysWork_itemDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="work_itembefore_create_check_typedefault" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="work_itembefore_create_check_typeparent_work_item" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itembefore_create_check_typerawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="获取父工作项的子类型范围"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itembefore_create_check_typerawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="判断父子工作项类型是否正确"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itembefore_create_check_typethrowexception1" id="throwexception1" implementation="http://www.jboss.org/drools/rule" name="抛出异常"/>
+                        <endEvent id="throwexception1_end" name="end"/>
+                        <sequenceFlow id="throwexception1_end_line" sourceRef="throwexception1" targetRef="throwexception1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itembefore_create_check_typeend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="gateway-begin_rawsqlcall1" sourceRef="gateway-begin" targetRef="rawsqlcall1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_itembefore_create_check_typedefault:work_item();
+                                            $work_itembefore_create_check_typeparent_work_item:work_item();
+                                    eval($work_itembefore_create_check_typedefault==work_itembefore_create_check_typedefault && $work_itembefore_create_check_typeparent_work_item==work_itembefore_create_check_typeparent_work_item);
+                                eval((RuleUtils.test($work_itembefore_create_check_typedefault.get("pid"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall1_rawsfcode1" sourceRef="rawsqlcall1" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-rawsfcode1_end1" sourceRef="gateway-rawsfcode1" targetRef="end1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_itembefore_create_check_typedefault:work_item();
+                                            $work_itembefore_create_check_typeparent_work_item:work_item();
+                                    eval($work_itembefore_create_check_typedefault==work_itembefore_create_check_typedefault && $work_itembefore_create_check_typeparent_work_item==work_itembefore_create_check_typeparent_work_item);
+                                eval((RuleUtils.test($work_itembefore_create_check_typedefault.get("check_type"),"EQ","1")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-rawsfcode1_throwexception1" sourceRef="gateway-rawsfcode1" targetRef="throwexception1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_itembefore_create_check_typedefault:work_item();
+                                            $work_itembefore_create_check_typeparent_work_item:work_item();
+                                    eval($work_itembefore_create_check_typedefault==work_itembefore_create_check_typedefault && $work_itembefore_create_check_typeparent_work_item==work_itembefore_create_check_typeparent_work_item);
+                                eval((RuleUtils.test($work_itembefore_create_check_typedefault.get("check_type"),"EQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-begin" name="Gateway" gatewayDirection="Diverging" default="gateway-begin_end_line"></exclusiveGateway>
+                            <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>
+                            <sequenceFlow id="gateway-begin_end_line" sourceRef="gateway-begin" targetRef="gateway-begin_end"/>
+                            <endEvent id="gateway-begin_end" name="end"/>
+                            <exclusiveGateway id="gateway-rawsfcode1" name="Gateway" gatewayDirection="Diverging" default="gateway-rawsfcode1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="rawsfcode1_gateway-rawsfcode1_gatewayline" sourceRef="rawsfcode1" targetRef="gateway-rawsfcode1"></sequenceFlow>
+                            <sequenceFlow id="gateway-rawsfcode1_end_line" sourceRef="gateway-rawsfcode1" targetRef="gateway-rawsfcode1_end"/>
+                            <endEvent id="gateway-rawsfcode1_end" name="end"/>
+        </process>
+    </definitions>

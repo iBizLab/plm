@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.baselinecreate_plan_snapshot" isClosed="false" isExecutable="true" name="base_baseline_create_plan_snapshot_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.baselinecreate_plan_snapshot">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="baselinecreate_plan_snapshotdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="baselinecreate_plan_snapshotfor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="baselinecreate_plan_snapshotrelation" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.version()" name="baselinecreate_plan_snapshotversion" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="baselinecreate_plan_snapshotwork_item_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="baselinecreate_plan_snapshotwork_item_page" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IbaselineService))" name="baselineservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="work_itemservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IversionService))" name="versionservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IrelationService))" name="relationservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IbaselineService))" name="iBzSysBaselineDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="baselinecreate_plan_snapshotdefault" type="cn.ibizlab.plm.core.base.domain.baseline" />
+                            <tns:global identifier="baselinecreate_plan_snapshotfor_temp_obj" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="baselinecreate_plan_snapshotrelation" type="cn.ibizlab.plm.core.base.domain.relation" />
+                            <tns:global identifier="baselinecreate_plan_snapshotversion" type="cn.ibizlab.plm.core.base.domain.version" />
+                            <tns:global identifier="baselinecreate_plan_snapshotwork_item_filter" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="baselinecreate_plan_snapshotwork_item_page" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselinecreate_plan_snapshotprepareparam8" id="prepareparam8" implementation="http://www.jboss.org/drools/rule" name="设置快照类型"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselinecreate_plan_snapshotprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置基线状态"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselinecreate_plan_snapshotprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置快照状态"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselinecreate_plan_snapshotdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="创建规划快照"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselinecreate_plan_snapshotprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="传入项目标识至查询过滤器"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselinecreate_plan_snapshotdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取指定项目下的所有工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselinecreate_plan_snapshotloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselinecreate_plan_snapshotresetparam1" id="resetparam1" implementation="http://www.jboss.org/drools/rule" name="重置关联对象"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselinecreate_plan_snapshotprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="将工作项标识赋值于关联对象"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselinecreate_plan_snapshotprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="关联对象版本标识"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselinecreate_plan_snapshotresetparam2" id="resetparam2" implementation="http://www.jboss.org/drools/rule" name="重置版本对象"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselinecreate_plan_snapshotprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="准备初始化版本属性"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselinecreate_plan_snapshotdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="修复初始化版本"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselinecreate_plan_snapshotprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="关联对象版本标识"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselinecreate_plan_snapshotdeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="建立快照关联工作项数据"/>
+                        <endEvent id="deaction3_end" name="end"/>
+                        <sequenceFlow id="deaction3_end_line" sourceRef="deaction3" targetRef="deaction3_end"/>
+                    <sequenceFlow id="begin_prepareparam8" sourceRef="begin" targetRef="prepareparam8">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam8_prepareparam1" sourceRef="gateway-prepareparam8" targetRef="prepareparam1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $baselinecreate_plan_snapshotdefault:baseline();
+                                            $baselinecreate_plan_snapshotfor_temp_obj:work_item();
+                                            $baselinecreate_plan_snapshotrelation:relation();
+                                            $baselinecreate_plan_snapshotversion:version();
+                                            $baselinecreate_plan_snapshotwork_item_filter:work_item();
+                                            $baselinecreate_plan_snapshotwork_item_page:work_item();
+                                    eval($baselinecreate_plan_snapshotdefault==baselinecreate_plan_snapshotdefault && $baselinecreate_plan_snapshotfor_temp_obj==baselinecreate_plan_snapshotfor_temp_obj && $baselinecreate_plan_snapshotrelation==baselinecreate_plan_snapshotrelation && $baselinecreate_plan_snapshotversion==baselinecreate_plan_snapshotversion && $baselinecreate_plan_snapshotwork_item_filter==baselinecreate_plan_snapshotwork_item_filter && $baselinecreate_plan_snapshotwork_item_page==baselinecreate_plan_snapshotwork_item_page);
+                                eval((RuleUtils.test($baselinecreate_plan_snapshotdefault.get("set_baseline"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam8_prepareparam2" sourceRef="gateway-prepareparam8" targetRef="prepareparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $baselinecreate_plan_snapshotdefault:baseline();
+                                            $baselinecreate_plan_snapshotfor_temp_obj:work_item();
+                                            $baselinecreate_plan_snapshotrelation:relation();
+                                            $baselinecreate_plan_snapshotversion:version();
+                                            $baselinecreate_plan_snapshotwork_item_filter:work_item();
+                                            $baselinecreate_plan_snapshotwork_item_page:work_item();
+                                    eval($baselinecreate_plan_snapshotdefault==baselinecreate_plan_snapshotdefault && $baselinecreate_plan_snapshotfor_temp_obj==baselinecreate_plan_snapshotfor_temp_obj && $baselinecreate_plan_snapshotrelation==baselinecreate_plan_snapshotrelation && $baselinecreate_plan_snapshotversion==baselinecreate_plan_snapshotversion && $baselinecreate_plan_snapshotwork_item_filter==baselinecreate_plan_snapshotwork_item_filter && $baselinecreate_plan_snapshotwork_item_page==baselinecreate_plan_snapshotwork_item_page);
+                                eval((RuleUtils.test($baselinecreate_plan_snapshotdefault.get("set_baseline"),"ISNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_prepareparam3" sourceRef="deaction1" targetRef="prepareparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_dedataset1" sourceRef="prepareparam3" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset1_loopsubcall1" sourceRef="dedataset1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_resetparam1" sourceRef="loopsubcall1" targetRef="resetparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="resetparam1_prepareparam4" sourceRef="resetparam1" targetRef="prepareparam4">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam4_prepareparam5" sourceRef="gateway-prepareparam4" targetRef="prepareparam5">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $baselinecreate_plan_snapshotdefault:baseline();
+                                            $baselinecreate_plan_snapshotfor_temp_obj:work_item();
+                                            $baselinecreate_plan_snapshotrelation:relation();
+                                            $baselinecreate_plan_snapshotversion:version();
+                                            $baselinecreate_plan_snapshotwork_item_filter:work_item();
+                                            $baselinecreate_plan_snapshotwork_item_page:work_item();
+                                    eval($baselinecreate_plan_snapshotdefault==baselinecreate_plan_snapshotdefault && $baselinecreate_plan_snapshotfor_temp_obj==baselinecreate_plan_snapshotfor_temp_obj && $baselinecreate_plan_snapshotrelation==baselinecreate_plan_snapshotrelation && $baselinecreate_plan_snapshotversion==baselinecreate_plan_snapshotversion && $baselinecreate_plan_snapshotwork_item_filter==baselinecreate_plan_snapshotwork_item_filter && $baselinecreate_plan_snapshotwork_item_page==baselinecreate_plan_snapshotwork_item_page);
+                                eval((RuleUtils.test($baselinecreate_plan_snapshotfor_temp_obj.get("curVersionId"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam4_resetparam2" sourceRef="prepareparam4" targetRef="resetparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam5_deaction3" sourceRef="prepareparam5" targetRef="deaction3">
+                    </sequenceFlow>
+                    <sequenceFlow id="resetparam2_prepareparam6" sourceRef="resetparam2" targetRef="prepareparam6">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam6_deaction2" sourceRef="prepareparam6" targetRef="deaction2">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction2_prepareparam7" sourceRef="deaction2" targetRef="prepareparam7">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam7_deaction3" sourceRef="prepareparam7" targetRef="deaction3">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-prepareparam8" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam8_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam8_gateway-prepareparam8_gatewayline" sourceRef="prepareparam8" targetRef="gateway-prepareparam8"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam8_end_line" sourceRef="gateway-prepareparam8" targetRef="gateway-prepareparam8_end"/>
+                            <endEvent id="gateway-prepareparam8_end" name="end"/>
+                            <exclusiveGateway id="gateway-prepareparam4" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam4_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam4_gateway-prepareparam4_gatewayline" sourceRef="prepareparam4" targetRef="gateway-prepareparam4"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam4_end_line" sourceRef="gateway-prepareparam4" targetRef="gateway-prepareparam4_end"/>
+                            <endEvent id="gateway-prepareparam4_end" name="end"/>
+        </process>
+    </definitions>

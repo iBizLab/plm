@@ -1,0 +1,229 @@
+{
+  "codeName" : "after_create",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDELOGICS/after_create.json",
+  "logicName" : "新建后附加逻辑",
+  "memo" : "根据全局定义的阶段，生成发布阶段",
+  "name" : "新建后附加逻辑",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 160
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "system"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "stage_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/stage.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取全局发布阶段",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      },
+      "name" : "存在全局预定义阶段",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "GT",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "stages"
+          },
+          "logicType" : "SINGLE",
+          "name" : "stages[size] 大于(>) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "stages"
+    },
+    "topPos" : 278
+  }, {
+    "codeName" : "RAWSQLCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "获取首发布阶段标识",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "select id as first_stage_id from stage \r\nwhere  RELEASE_ID is null\r\norder by `SEQUENCE` asc limit 1\r\n",
+    "topPos" : 447,
+    "fillDstLogicParam" : true
+  }, {
+    "codeName" : "RAWSQLCALL2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "获取末发布阶段标识",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "select id as last_stage_id from stage \r\nwhere  RELEASE_ID is null\r\norder by `SEQUENCE` desc limit 1\r\n",
+    "topPos" : 540,
+    "fillDstLogicParam" : true
+  }, {
+    "code" : "def stages = logic.param('stages').getReal()\r\ndef _default = logic.param('Default').getReal()\r\ndef first_stage_id = _default.get('first_stage_id')\r\ndef last_stage_id = _default.get('last_stage_id')\r\n//获取实体运行对象 参数实体名\r\ndef stage_runtime = sys.dataentity('stage')\r\ndef release_runtime = sys.dataentity('release')\r\nstages.each { it ->\r\n    //构造阶段对象\r\n    def new_stage = stage_runtime.entity()\r\n    new_stage.set('release_id', _default.get('id'))\r\n    new_stage.set('pid', it.get('id'))\r\n    new_stage.set('name', it.get('name'))\r\n    new_stage.set('type', it.get('type'))\r\n    new_stage.set('sequence', it.get('sequence'))\r\n    new_stage.set('color', it.get('color'))\r\n    new_stage.set('style', it.get('style'))\r\n    new_stage.set('is_current', 0)\r\n    if(it.get('id') == first_stage_id){\r\n        new_stage.set('is_current', 1)\r\n        new_stage.set('operated_time', _default.get('start_at'))\r\n    }\r\n    if(it.get('id') == last_stage_id){\r\n        new_stage.set('operated_time', _default.get('end_at'))\r\n    }\r\n    //新建发布\r\n    stage_runtime.create(new_stage)\r\n}\r\n\r\n\r\n\r\n",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "Groovy",
+    "leftPos" : 160,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "根据全局预定义阶段生成发布阶段",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 640
+  }, {
+    "codeName" : "RAWSQLCALL3",
+    "leftPos" : 160,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "同步默认首阶段至初始阶段",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "update `project_release` t1, `stage` t2 \r\nset t1.`status` = t2.`id`\r\nwhere t1.`id` = ? and t1.`id` = t2.`RELEASE_ID` and t2.`is_current` = 1",
+    "topPos" : 732
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 200,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "topPos" : 846
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "stage_filter",
+    "logicName" : "全局发布阶段查询过滤器",
+    "name" : "全局发布阶段查询过滤器",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/stage.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "stages",
+    "logicName" : "全局发布阶段",
+    "name" : "全局发布阶段",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/stage.json"
+    },
+    "entityPageParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

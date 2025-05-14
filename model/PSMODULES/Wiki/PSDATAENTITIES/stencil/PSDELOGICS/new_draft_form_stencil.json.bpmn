@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.wiki.service.logic.stencilnew_draft_form_stencil" isClosed="false" isExecutable="true" name="wiki_stencil_new_draft_form_stencil_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.wiki.service.logic.stencilnew_draft_form_stencil">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="stencilnew_draft_form_stencildefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.article_page()" name="stencilnew_draft_form_stencilpage_info" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.stencil()" name="stencilnew_draft_form_stencilstencil_info" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.IstencilService))" name="stencilservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.Iarticle_pageService))" name="article_pageservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.IstencilService))" name="iBzSysStencilDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="stencilnew_draft_form_stencildefault" type="cn.ibizlab.plm.core.wiki.domain.stencil" />
+                            <tns:global identifier="stencilnew_draft_form_stencilpage_info" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
+                            <tns:global identifier="stencilnew_draft_form_stencilstencil_info" type="cn.ibizlab.plm.core.wiki.domain.stencil" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="stencilnew_draft_form_stencilend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="stencilnew_draft_form_stencilprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="获取模板ID"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="stencilnew_draft_form_stencildeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="根据模板ID获取模板信息"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="stencilnew_draft_form_stencilprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置返回数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="stencilnew_draft_form_stencildeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="创建草稿页面"/>
+                    <sequenceFlow id="begin_prepareparam2" sourceRef="begin" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_prepareparam1" sourceRef="deaction1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_deaction2" sourceRef="prepareparam1" targetRef="deaction2">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction2_end1" sourceRef="deaction2" targetRef="end1">
+                    </sequenceFlow>
+        </process>
+    </definitions>

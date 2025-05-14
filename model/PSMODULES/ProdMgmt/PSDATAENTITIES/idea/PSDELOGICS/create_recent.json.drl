@@ -1,0 +1,78 @@
+package cn.ibizlab.plm.prodmgmt.logic.idealogic.create_recent;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea ideacreate_recentdefault;
+                global cn.ibizlab.plm.core.base.domain.recent ideacreate_recentrecent;
+                    global cn.ibizlab.plm.core.base.service.IrecentService recentservice;
+        global cn.ibizlab.plm.core.prodmgmt.service.IideaService iBzSysIdeaDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ideacreate_recentbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备最近访问参数]
+            rule "prepareparam1"
+            ruleflow-group "ideacreate_recentprepareparam1"
+            when
+            then
+                            ideacreate_recentrecent.set("ownerid",ideacreate_recentdefault.get("id"));
+                            ideacreate_recentrecent.set("recentparentidentifier",ideacreate_recentdefault.get("productidentifier"));
+                            ideacreate_recentrecent.set("recentparentname",ideacreate_recentdefault.get("productname"));
+                            ideacreate_recentrecent.set("recentparent",ideacreate_recentdefault.get("productid"));
+                                ideacreate_recentrecent.set("createman",curuser.getSessionParams().get("srfpersonid"));
+                            ideacreate_recentrecent.set("identifier",ideacreate_recentdefault.get("identifier"));
+                            ideacreate_recentrecent.set("type","2");
+                            ideacreate_recentrecent.set("name",ideacreate_recentdefault.get("title"));
+                            ideacreate_recentrecent.set("ownertype","product");
+                            ideacreate_recentrecent.set("ownersubtype","idea");
+                        update(ideacreate_recentdefault);//更新fact中变量值
+                        update(ideacreate_recentrecent);//更新fact中变量值
+            end
+
+            //逻辑处理节点[保存最近访问]
+            rule "deaction1"
+            ruleflow-group "ideacreate_recentdeaction1"
+            when
+            then
+                        recentservice.save(ideacreate_recentrecent);
+                        update(ideacreate_recentdefault);//更新fact中变量值
+                        update(ideacreate_recentrecent);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新登记工时中的业务信息]
+            rule "rawsqlcall1"
+            ruleflow-group "ideacreate_recentrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",ideacreate_recentdefault.get("identifier"));
+        param.put("param1",ideacreate_recentdefault.get("productid"));
+        param.put("param2",ideacreate_recentdefault.get("productidentifier"));
+        param.put("param3",ideacreate_recentdefault.get("productname"));
+        param.put("param4",ideacreate_recentdefault.get("title"));
+        param.put("param5",ideacreate_recentdefault.get("id"));
+    String strSql="UPDATE `WORKLOAD` SET IDENTIFIER = #{et.param0}, RECENT_PARENT = #{et.param1}, RECENT_PARENT_IDENTIFIER = #{et.param2}, RECENT_PARENT_NAME= #{et.param3}, `NAME` = #{et.param4} WHERE PRINCIPAL_ID = #{et.param5} and PRINCIPAL_TYPE = 'IDEA'";
+                        iBzSysIdeaDefaultService.execute(strSql,param);//SQL调用
+                        update(ideacreate_recentdefault);//更新fact中变量值
+                        update(ideacreate_recentrecent);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "ideacreate_recentend1"
+            when
+            then
+                        update(ideacreate_recentdefault);//更新fact中变量值
+                        update(ideacreate_recentrecent);//更新fact中变量值
+            end

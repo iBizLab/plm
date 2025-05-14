@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.testmgmt.test_case.get.afterLogic" isClosed="false" isExecutable="true" name="testmgmt_test_case_get_afterLogic" processType="Private" tns:packageName="cn.ibizlab.plm.core.testmgmt.test_case.get.afterLogic">
+            <extensionElements>
+                <tns:import name="java.util.Map"/>
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                <tns:import name="cn.ibizlab.plm.core.testmgmt.domain.test_case"/>
+            </extensionElements>
+                <startEvent id="begin" isInterrupting="true"/>
+                <endEvent id="prepareparam1_end" name="end"/>
+                            <callActivity activiti:exclusive="true" calledElement="cn.ibizlab.plm.core.testmgmt.service.logic.test_casefill_latest_executed" id="26259ce038cf742de5bb60b1ba31a635" name="fill_latest_executed.json.bpmn"/>
+                        <sequenceFlow id="begin_26259ce038cf742de5bb60b1ba31a635" sourceRef="begin" targetRef="26259ce038cf742de5bb60b1ba31a635"/>
+                            <callActivity activiti:exclusive="true" calledElement="cn.ibizlab.plm.core.testmgmt.service.logic.test_casecreate_recent" id="009978134c084c9ffc7628a0f622021e" name="create_recent.json.bpmn"/>
+                        <sequenceFlow id="26259ce038cf742de5bb60b1ba31a635_009978134c084c9ffc7628a0f622021e" sourceRef="26259ce038cf742de5bb60b1ba31a635" targetRef="009978134c084c9ffc7628a0f622021e"/>
+                            <callActivity activiti:exclusive="true" calledElement="cn.ibizlab.plm.core.testmgmt.service.logic.test_caseget_library_member" id="a9e3b872349e1af42035f2d8c61762a4" name="get_library_member.json.bpmn"/>
+                        <sequenceFlow id="009978134c084c9ffc7628a0f622021e_a9e3b872349e1af42035f2d8c61762a4" sourceRef="009978134c084c9ffc7628a0f622021e" targetRef="a9e3b872349e1af42035f2d8c61762a4"/>
+                            <sequenceFlow id="a9e3b872349e1af42035f2d8c61762a4_prepareparam1_end" sourceRef="a9e3b872349e1af42035f2d8c61762a4" targetRef="prepareparam1_end"/>
+        </process>
+    </definitions>

@@ -1,0 +1,269 @@
+package cn.ibizlab.plm.base.logic.workloadlogic.workload_auto_cal;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.workload workloadworkload_auto_caldefault;
+                global cn.ibizlab.plm.core.base.domain.extend_storage workloadworkload_auto_calactual;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item workloadworkload_auto_calcur_work_item_filter;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item workloadworkload_auto_calcur_work_item_page;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item workloadworkload_auto_calcur_work_item_temp;
+                global cn.ibizlab.plm.core.base.domain.workload workloadworkload_auto_calnext_work_load;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item workloadworkload_auto_calp_work_item;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item workloadworkload_auto_calp_work_item_filter;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item workloadworkload_auto_calp_work_item_page;
+                global cn.ibizlab.plm.core.base.domain.extend_storage workloadworkload_auto_calremaining;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item workloadworkload_auto_caltarget_work_item;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item workloadworkload_auto_calworkload_data;
+                    global cn.ibizlab.plm.core.base.service.Iextend_storageService extend_storageservice;
+                    global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService work_itemservice;
+                    global cn.ibizlab.plm.core.base.service.IworkloadService workloadservice;
+        global cn.ibizlab.plm.core.base.service.IworkloadService iBzSysWorkloadDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "workloadworkload_auto_calbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[计算父工作项汇聚工时]
+            rule "rawsqlcall1"
+            ruleflow-group "workloadworkload_auto_calrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",workloadworkload_auto_caldefault.get("principalid"));
+    String strSql="select  IFNULL(sum(case when name='ACTUAL_WORKLOAD' then DECIMAL_VALUE else 0 end),0) as 'actual_workload', IFNULL(sum(case when name='ESTIMATED_WORKLOAD' then DECIMAL_VALUE else 0 end),0) as 'estimated_workload'  from extend_storage t where   exists (select 1 from work_item a where PID=#{et.param0} and t.owner_id=a.id)";
+                        java.util.List<JSONObject> entities=iBzSysWorkloadDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    cn.ibizlab.plm.core.projmgmt.domain.work_item targetEntity =new cn.ibizlab.plm.core.projmgmt.domain.work_item();
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    targetEntity.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                                    org.springframework.cglib.beans.BeanCopier copier= org.springframework.cglib.beans.BeanCopier.create(targetEntity.getClass(),workloadworkload_auto_calworkload_data.getClass(), false);
+                                    copier.copy(targetEntity,workloadworkload_auto_calworkload_data,null);
+                            }
+                        update(workloadworkload_auto_caldefault);//更新fact中变量值
+                        update(workloadworkload_auto_calactual);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_temp);//更新fact中变量值
+                        update(workloadworkload_auto_calnext_work_load);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calremaining);//更新fact中变量值
+                        update(workloadworkload_auto_caltarget_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calworkload_data);//更新fact中变量值
+            end
+
+            //逻辑处理节点[计算剩余工时]
+            rule "rawsfcode2"
+            ruleflow-group "workloadworkload_auto_calrawsfcode2"
+            when
+            then
+                        update(workloadworkload_auto_caldefault);//更新fact中变量值
+                        update(workloadworkload_auto_calactual);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_temp);//更新fact中变量值
+                        update(workloadworkload_auto_calnext_work_load);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calremaining);//更新fact中变量值
+                        update(workloadworkload_auto_caltarget_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calworkload_data);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置实际工时]
+            rule "prepareparam7"
+            ruleflow-group "workloadworkload_auto_calprepareparam7"
+            when
+            then
+                            workloadworkload_auto_calactual.set("decimalvalue",workloadworkload_auto_calworkload_data.get("actualworkload"));
+                            workloadworkload_auto_calactual.set("ownerid",workloadworkload_auto_caldefault.get("principalid"));
+                            workloadworkload_auto_calactual.set("ownertype","WORK_ITEM");
+                            workloadworkload_auto_calactual.set("name","ACTUAL_WORKLOAD");
+                        update(workloadworkload_auto_caldefault);//更新fact中变量值
+                        update(workloadworkload_auto_calactual);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_temp);//更新fact中变量值
+                        update(workloadworkload_auto_calnext_work_load);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calremaining);//更新fact中变量值
+                        update(workloadworkload_auto_caltarget_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calworkload_data);//更新fact中变量值
+            end
+
+            //逻辑处理节点[保存实际工时]
+            rule "deaction4"
+            ruleflow-group "workloadworkload_auto_caldeaction4"
+            when
+            then
+                        extend_storageservice.save(workloadworkload_auto_calactual);
+                        update(workloadworkload_auto_caldefault);//更新fact中变量值
+                        update(workloadworkload_auto_calactual);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_temp);//更新fact中变量值
+                        update(workloadworkload_auto_calnext_work_load);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calremaining);//更新fact中变量值
+                        update(workloadworkload_auto_caltarget_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calworkload_data);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置剩余工时]
+            rule "prepareparam8"
+            ruleflow-group "workloadworkload_auto_calprepareparam8"
+            when
+            then
+                            workloadworkload_auto_calremaining.set("decimalvalue",workloadworkload_auto_calworkload_data.get("remainingworkload"));
+                            workloadworkload_auto_calremaining.set("ownertype","WORK_ITEM");
+                            workloadworkload_auto_calremaining.set("name","REMAINING_WORKLOAD");
+                            workloadworkload_auto_calremaining.set("ownerid",workloadworkload_auto_caldefault.get("principalid"));
+                        update(workloadworkload_auto_caldefault);//更新fact中变量值
+                        update(workloadworkload_auto_calactual);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_temp);//更新fact中变量值
+                        update(workloadworkload_auto_calnext_work_load);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calremaining);//更新fact中变量值
+                        update(workloadworkload_auto_caltarget_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calworkload_data);//更新fact中变量值
+            end
+
+            //逻辑处理节点[保存剩余工时]
+            rule "deaction5"
+            ruleflow-group "workloadworkload_auto_caldeaction5"
+            when
+            then
+                        extend_storageservice.save(workloadworkload_auto_calremaining);
+                        update(workloadworkload_auto_caldefault);//更新fact中变量值
+                        update(workloadworkload_auto_calactual);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_temp);//更新fact中变量值
+                        update(workloadworkload_auto_calnext_work_load);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calremaining);//更新fact中变量值
+                        update(workloadworkload_auto_caltarget_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calworkload_data);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充递归调用参数]
+            rule "prepareparam9"
+            ruleflow-group "workloadworkload_auto_calprepareparam9"
+            when
+            then
+                            workloadworkload_auto_caldefault.set("principalid",workloadworkload_auto_calp_work_item.get("pid"));
+                        update(workloadworkload_auto_caldefault);//更新fact中变量值
+                        update(workloadworkload_auto_calactual);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_temp);//更新fact中变量值
+                        update(workloadworkload_auto_calnext_work_load);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calremaining);//更新fact中变量值
+                        update(workloadworkload_auto_caltarget_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calworkload_data);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取父工作项]
+            rule "deaction3"
+            ruleflow-group "workloadworkload_auto_caldeaction3"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(work_itemservice.get(workloadworkload_auto_calp_work_item.getId()),workloadworkload_auto_calp_work_item);
+                        update(workloadworkload_auto_caldefault);//更新fact中变量值
+                        update(workloadworkload_auto_calactual);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_temp);//更新fact中变量值
+                        update(workloadworkload_auto_calnext_work_load);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calremaining);//更新fact中变量值
+                        update(workloadworkload_auto_caltarget_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calworkload_data);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置父工作项id]
+            rule "prepareparam2"
+            ruleflow-group "workloadworkload_auto_calprepareparam2"
+            when
+            then
+                            workloadworkload_auto_calp_work_item.set("id",workloadworkload_auto_caldefault.get("principalid"));
+                        update(workloadworkload_auto_caldefault);//更新fact中变量值
+                        update(workloadworkload_auto_calactual);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_temp);//更新fact中变量值
+                        update(workloadworkload_auto_calnext_work_load);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calremaining);//更新fact中变量值
+                        update(workloadworkload_auto_caltarget_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calworkload_data);//更新fact中变量值
+            end
+
+            //逻辑处理节点[递归调用]
+            rule "delogic1"
+            ruleflow-group "workloadworkload_auto_caldelogic1"
+            when
+            then
+                        update(workloadworkload_auto_caldefault);//更新fact中变量值
+                        update(workloadworkload_auto_calactual);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_temp);//更新fact中变量值
+                        update(workloadworkload_auto_calnext_work_load);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calremaining);//更新fact中变量值
+                        update(workloadworkload_auto_caltarget_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calworkload_data);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "workloadworkload_auto_calend1"
+            when
+            then
+                        update(workloadworkload_auto_caldefault);//更新fact中变量值
+                        update(workloadworkload_auto_calactual);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_temp);//更新fact中变量值
+                        update(workloadworkload_auto_calnext_work_load);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calremaining);//更新fact中变量值
+                        update(workloadworkload_auto_caltarget_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calworkload_data);//更新fact中变量值
+            end

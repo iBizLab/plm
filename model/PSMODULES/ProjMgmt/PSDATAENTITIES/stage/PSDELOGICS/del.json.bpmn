@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.projmgmt.service.logic.stagedel" isClosed="false" isExecutable="true" name="projmgmt_stage_del_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.projmgmt.service.logic.stagedel">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="stagedeldefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.stage()" name="stagedelreplace" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.stage()" name="stagedelsrfactionparam" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.IstageService))" name="stageservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.IstageService))" name="iBzSysStageDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="stagedeldefault" type="cn.ibizlab.plm.core.projmgmt.domain.stage" />
+                            <tns:global identifier="stagedelreplace" type="cn.ibizlab.plm.core.projmgmt.domain.stage" />
+                            <tns:global identifier="stagedelsrfactionparam" type="cn.ibizlab.plm.core.projmgmt.domain.stage" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="stagedelbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="stagedelbindparam2" id="bindparam2" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="stagedelrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="替换发布阶段"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="stagedelrawsqlcall2" id="rawsqlcall2" implementation="http://www.jboss.org/drools/rule" name="替换阶段同步属性"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="stagedeldeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="删除阶段"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="stagedelend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="begin_bindparam1" sourceRef="begin" targetRef="bindparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_bindparam2" sourceRef="bindparam1" targetRef="bindparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-bindparam2_rawsqlcall1" sourceRef="gateway-bindparam2" targetRef="rawsqlcall1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $stagedeldefault:stage();
+                                            $stagedelreplace:stage();
+                                            $stagedelsrfactionparam:stage();
+                                    eval($stagedeldefault==stagedeldefault && $stagedelreplace==stagedelreplace && $stagedelsrfactionparam==stagedelsrfactionparam);
+                                eval((RuleUtils.test($stagedeldefault.get("id"),"NOTEQ","replace_id")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall1_rawsqlcall2" sourceRef="rawsqlcall1" targetRef="rawsqlcall2">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall2_deaction1" sourceRef="rawsqlcall2" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_end1" sourceRef="deaction1" targetRef="end1">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-bindparam2" name="Gateway" gatewayDirection="Diverging" default="gateway-bindparam2_end_line"></exclusiveGateway>
+                            <sequenceFlow id="bindparam2_gateway-bindparam2_gatewayline" sourceRef="bindparam2" targetRef="gateway-bindparam2"></sequenceFlow>
+                            <sequenceFlow id="gateway-bindparam2_end_line" sourceRef="gateway-bindparam2" targetRef="gateway-bindparam2_end"/>
+                            <endEvent id="gateway-bindparam2_end" name="end"/>
+        </process>
+    </definitions>

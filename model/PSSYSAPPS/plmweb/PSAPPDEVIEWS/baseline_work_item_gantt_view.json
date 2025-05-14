@@ -1,0 +1,798 @@
+{
+  "accUserMode" : 2,
+  "getCapPSLanguageRes" : {
+    "lanResTag" : "DE.LNAME.BASELINE_WORK_ITEM"
+  },
+  "caption" : "规划快照",
+  "codeName" : "baseline_work_item_gantt_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_work_item_gantt_view.json",
+  "mDCtrlActiveMode" : 1,
+  "name" : "baseline_work_itemgantt_view",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_work_item.json"
+  },
+  "getPSAppModule" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProjMgmt.json"
+  },
+  "getPSAppViewLogics" : [ {
+    "eventNames" : "onLoadSuccess",
+    "logicTrigger" : "VIEWEVENT",
+    "logicType" : "APPDEUILOGIC",
+    "name" : "LOGIC",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "plan_snapshot_check"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_work_item.json"
+    }
+  } ],
+  "getPSAppViewNavParams" : [ {
+    "key" : "baseline",
+    "name" : "baseline",
+    "value" : "baseline",
+    "rawValue" : false
+  } ],
+  "getPSControls" : [ {
+    "beginDataItemName" : "begin",
+    "codeName" : "gantt",
+    "controlType" : "GANTT",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_work_item/PSGANTTS/gantt.json",
+    "endDataItemName" : "end",
+    "finishDataItemName" : "finish",
+    "logicName" : "甘特图",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_work_item.json"
+    },
+    "getPSControlHandler" : {
+      "enableDEFieldPrivilege" : false,
+      "id" : "gantt"
+    },
+    "getPSControlParam" : {
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "ctrlParams" : {
+        "SLIDERDRAGGABLE" : "false"
+      },
+      "id" : "GANTT"
+    },
+    "getPSDETreeColumns" : [ {
+      "caption" : "编号",
+      "codeName" : "sn",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "sn",
+      "name" : "sn",
+      "width" : 150,
+      "widthUnit" : "px",
+      "enableExpand" : false,
+      "enableSort" : false
+    }, {
+      "caption" : "标题",
+      "codeName" : "name",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "name",
+      "name" : "name",
+      "width" : 250,
+      "widthUnit" : "px",
+      "enableExpand" : false,
+      "enableSort" : false
+    }, {
+      "caption" : "开始时间",
+      "codeName" : "begin",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "begin",
+      "name" : "begin",
+      "width" : 250,
+      "widthUnit" : "px",
+      "enableExpand" : false,
+      "enableSort" : false
+    }, {
+      "caption" : "结束时间",
+      "codeName" : "end",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "end",
+      "name" : "end",
+      "width" : 250,
+      "widthUnit" : "px",
+      "enableExpand" : false,
+      "enableSort" : false
+    } ],
+    "getPSDETreeNodeRSs" : [ {
+      "getChildPSDETreeNode" : {
+        "modelref" : true,
+        "id" : "TOP_NODE"
+      },
+      "name" : "默认根节点 - 顶层节点",
+      "getPSNavigateParams" : [ {
+        "key" : "n_pid_isnull",
+        "name" : "n_pid_isnull",
+        "value" : "1",
+        "rawValue" : true
+      } ],
+      "getParentPSDETreeNode" : {
+        "modelref" : true,
+        "id" : "ROOT"
+      },
+      "parentValueLevel" : 1,
+      "searchMode" : 3
+    }, {
+      "getChildPSDETreeNode" : {
+        "modelref" : true,
+        "id" : "NODE"
+      },
+      "name" : "顶层节点 - 子节点",
+      "parentFilter" : "pid",
+      "getParentPSDETreeNode" : {
+        "modelref" : true,
+        "id" : "TOP_NODE"
+      },
+      "parentValueLevel" : 1,
+      "searchMode" : 3
+    }, {
+      "getChildPSDETreeNode" : {
+        "modelref" : true,
+        "id" : "NODE"
+      },
+      "name" : "子节点 - 子节点",
+      "parentFilter" : "pid",
+      "getParentPSDETreeNode" : {
+        "modelref" : true,
+        "id" : "NODE"
+      },
+      "parentValueLevel" : 1,
+      "searchMode" : 3
+    } ],
+    "getPSDETreeNodes" : [ {
+      "counterMode" : 0,
+      "name" : "默认根节点",
+      "nodeType" : "ROOT",
+      "text" : "默认根节点",
+      "treeNodeType" : "STATIC",
+      "hasPSDETreeNodeRSs" : true,
+      "appendPNodeId" : false,
+      "disableSelect" : false,
+      "enableCheck" : false,
+      "enableEditData" : false,
+      "enableNewData" : false,
+      "enableQuickCreate" : false,
+      "enableQuickSearch" : false,
+      "enableRemoveData" : false,
+      "enableViewData" : false,
+      "expandFirstOnly" : false,
+      "expanded" : false,
+      "rootNode" : true,
+      "selectFirstOnly" : false,
+      "selected" : false,
+      "id" : "ROOT"
+    }, {
+      "counterMode" : 0,
+      "dataSourceType" : "DEDATASET",
+      "getIdPSAppDEField" : {
+        "name" : "TARGET_ID",
+        "codeName" : "target_id"
+      },
+      "getLeafFlagPSAppDEField" : {
+        "name" : "IS_LEAF",
+        "codeName" : "is_leaf"
+      },
+      "maxSize" : -1,
+      "name" : "子节点",
+      "nodeType" : "NODE",
+      "getPSAppDEDataSet" : {
+        "modelref" : true,
+        "id" : "fetch_fill_version_data"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_work_item.json"
+      },
+      "getPSDETreeNodeColumns" : [ {
+        "cLConvertMode" : "NONE",
+        "codeName" : "end_at",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "end_at",
+        "name" : "end_at",
+        "getPSAppDEField" : {
+          "name" : "END_AT",
+          "codeName" : "end_at"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "end"
+        },
+        "valueFormat" : "YYYY-MM-DD"
+      }, {
+        "cLConvertMode" : "NONE",
+        "codeName" : "identifier",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "identifier",
+        "name" : "identifier",
+        "getPSAppDEField" : {
+          "name" : "IDENTIFIER",
+          "codeName" : "identifier"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "sn"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "codeName" : "start_at",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "start_at",
+        "name" : "start_at",
+        "getPSAppDEField" : {
+          "name" : "START_AT",
+          "codeName" : "start_at"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "begin"
+        },
+        "valueFormat" : "YYYY-MM-DD"
+      }, {
+        "cLConvertMode" : "NONE",
+        "codeName" : "title",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "title",
+        "name" : "title",
+        "getPSAppDEField" : {
+          "name" : "TITLE",
+          "codeName" : "title"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "name"
+        }
+      } ],
+      "getPSDETreeNodeDataItems" : [ {
+        "cLConvertMode" : "NONE",
+        "dataType" : 5,
+        "name" : "end_at",
+        "getPSAppDEField" : {
+          "name" : "END_AT",
+          "codeName" : "end_at"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "end"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "dataType" : 25,
+        "name" : "identifier",
+        "getPSAppDEField" : {
+          "name" : "IDENTIFIER",
+          "codeName" : "identifier"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "sn"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "dataType" : 5,
+        "name" : "start_at",
+        "getPSAppDEField" : {
+          "name" : "START_AT",
+          "codeName" : "start_at"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "begin"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "dataType" : 25,
+        "name" : "title",
+        "getPSAppDEField" : {
+          "name" : "TITLE",
+          "codeName" : "title"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "name"
+        }
+      } ],
+      "getTextPSAppDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "treeNodeType" : "DE",
+      "hasPSDETreeNodeRSs" : true,
+      "appendPNodeId" : false,
+      "disableSelect" : false,
+      "enableCheck" : false,
+      "enableEditData" : false,
+      "enableNewData" : false,
+      "enableQuickCreate" : false,
+      "enableQuickSearch" : false,
+      "enableRemoveData" : false,
+      "enableViewData" : false,
+      "expandFirstOnly" : false,
+      "expanded" : false,
+      "rootNode" : false,
+      "selectFirstOnly" : false,
+      "selected" : false,
+      "id" : "NODE"
+    }, {
+      "counterMode" : 0,
+      "dataSourceType" : "DEDATASET",
+      "getIdPSAppDEField" : {
+        "name" : "TARGET_ID",
+        "codeName" : "target_id"
+      },
+      "getLeafFlagPSAppDEField" : {
+        "name" : "IS_LEAF",
+        "codeName" : "is_leaf"
+      },
+      "maxSize" : -1,
+      "name" : "顶层节点",
+      "nodeType" : "TOP_NODE",
+      "getPSAppDEDataSet" : {
+        "modelref" : true,
+        "id" : "fetch_fill_version_data"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_work_item.json"
+      },
+      "getPSDETreeNodeColumns" : [ {
+        "cLConvertMode" : "NONE",
+        "codeName" : "end_at",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "end_at",
+        "name" : "end_at",
+        "getPSAppDEField" : {
+          "name" : "END_AT",
+          "codeName" : "end_at"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "end"
+        },
+        "valueFormat" : "YYYY-MM-DD"
+      }, {
+        "cLConvertMode" : "NONE",
+        "codeName" : "identifier",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "identifier",
+        "name" : "identifier",
+        "getPSAppDEField" : {
+          "name" : "IDENTIFIER",
+          "codeName" : "identifier"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "sn"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "codeName" : "start_at",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "start_at",
+        "name" : "start_at",
+        "getPSAppDEField" : {
+          "name" : "START_AT",
+          "codeName" : "start_at"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "begin"
+        },
+        "valueFormat" : "YYYY-MM-DD"
+      }, {
+        "cLConvertMode" : "NONE",
+        "codeName" : "title",
+        "columnType" : "DEFGRIDCOLUMN",
+        "dataItemName" : "title",
+        "name" : "title",
+        "getPSAppDEField" : {
+          "name" : "TITLE",
+          "codeName" : "title"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "name"
+        }
+      } ],
+      "getPSDETreeNodeDataItems" : [ {
+        "cLConvertMode" : "NONE",
+        "dataType" : 5,
+        "name" : "end_at",
+        "getPSAppDEField" : {
+          "name" : "END_AT",
+          "codeName" : "end_at"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "end"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "dataType" : 25,
+        "name" : "identifier",
+        "getPSAppDEField" : {
+          "name" : "IDENTIFIER",
+          "codeName" : "identifier"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "sn"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "dataType" : 5,
+        "name" : "start_at",
+        "getPSAppDEField" : {
+          "name" : "START_AT",
+          "codeName" : "start_at"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "begin"
+        }
+      }, {
+        "cLConvertMode" : "NONE",
+        "dataType" : 25,
+        "name" : "title",
+        "getPSAppDEField" : {
+          "name" : "TITLE",
+          "codeName" : "title"
+        },
+        "getPSDETreeColumn" : {
+          "modelref" : true,
+          "id" : "name"
+        }
+      } ],
+      "getTextPSAppDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "treeNodeType" : "DE",
+      "hasPSDETreeNodeRSs" : true,
+      "appendPNodeId" : false,
+      "disableSelect" : false,
+      "enableCheck" : false,
+      "enableEditData" : true,
+      "enableNewData" : true,
+      "enableQuickCreate" : false,
+      "enableQuickSearch" : false,
+      "enableRemoveData" : true,
+      "enableViewData" : true,
+      "expandFirstOnly" : false,
+      "expanded" : false,
+      "rootNode" : false,
+      "selectFirstOnly" : false,
+      "selected" : false,
+      "id" : "TOP_NODE"
+    } ],
+    "prevDataItemName" : "prev",
+    "sNDataItemName" : "sn",
+    "totalDataItemName" : "total",
+    "treeGridMode" : 2,
+    "enableRootSelect" : false,
+    "outputIconDefault" : true,
+    "rootVisible" : false,
+    "name" : "gantt",
+    "modelid" : "0a760a0d63466da211ce49a8d5d4c153",
+    "modeltype" : "PSDEGANTT"
+  }, {
+    "codeName" : "gantt_view_toolbar",
+    "controlType" : "TOOLBAR",
+    "logicName" : "规划快照_工具栏",
+    "name" : "toolbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_work_item.json"
+    },
+    "getPSControlParam" : {
+      "id" : "TOOLBAR"
+    },
+    "getPSDEToolbarItems" : [ {
+      "caption" : "设立基线",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction1",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "toolbar_deuiaction1"
+      },
+      "getPSControlLogics" : [ {
+        "itemName" : "deuiaction1",
+        "logicTag" : "toolbar",
+        "logicType" : "SCRIPT",
+        "name" : "deuiaction1",
+        "scriptCode" : "context.srfreadonly != true",
+        "triggerType" : "ITEMVISIBLE"
+      } ],
+      "getPSSysImage" : {
+        "glyph" : "xf067@FontAwesome",
+        "cssClass" : "fa fa-plus"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "NONE",
+        "caption" : "设立基线",
+        "codeName" : "snapshot_set_baseline",
+        "fullCodeName" : "baseline_work_item_snapshot_set_baseline",
+        "name" : "快照设立基线",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "snapshot_set_baseline"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_work_item.json"
+        },
+        "getPSNavigateParams" : [ {
+          "key" : "baseline_id",
+          "name" : "baseline_id",
+          "value" : "baseline",
+          "rawValue" : false
+        } ],
+        "getPSSysImage" : {
+          "glyph" : "xf067@FontAwesome",
+          "cssClass" : "fa fa-plus"
+        },
+        "refreshMode" : 1,
+        "successMsg" : "设立成功",
+        "timeout" : 60000,
+        "uIActionMode" : "BACKEND",
+        "uIActionTag" : "snapshot_set_baseline",
+        "uIActionType" : "DEUIACTION",
+        "enableConfirm" : true,
+        "reloadData" : true,
+        "id" : "snapshot_set_baseline@baseline_work_item"
+      },
+      "tooltip" : "设立基线",
+      "uIActionTarget" : "NONE",
+      "showCaption" : true,
+      "showIcon" : true
+    } ],
+    "xDataControlName" : "gantt",
+    "modelid" : "65ab08308774e8158f818198d0073559",
+    "modeltype" : "PSDETOOLBAR"
+  }, {
+    "controlType" : "SEARCHBAR",
+    "name" : "searchbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_work_item.json"
+    },
+    "getPSControlParam" : {
+      "id" : "searchbar"
+    },
+    "quickGroupCount" : -1,
+    "quickSearchMode" : 0,
+    "quickSearchWidth" : 0,
+    "enableFilter" : false,
+    "enableGroup" : false,
+    "enableQuickSearch" : false,
+    "mobileSearchBar" : false
+  }, {
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DE.LNAME.BASELINE_WORK_ITEM"
+    },
+    "caption" : "规划快照",
+    "codeName" : "gantt_view_captionbar",
+    "controlType" : "CAPTIONBAR",
+    "name" : "captionbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_work_item.json"
+    },
+    "getPSControlParam" : { }
+  } ],
+  "getPSDEViewCodeName" : "gantt_view",
+  "getPSDEViewId" : "fdb6aedecf92a754925d28a73bfe5efc",
+  "getPSViewLayoutPanel" : {
+    "codeName" : "layoutpanel",
+    "controlStyle" : "APPDEGANTTVIEW",
+    "controlType" : "VIEWLAYOUTPANEL",
+    "name" : "layoutpanel",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_work_item.json"
+    },
+    "getPSControlParam" : { },
+    "layoutBodyOnly" : true,
+    "layoutPanel" : true,
+    "useDefaultLayout" : true
+  },
+  "refFlag" : false,
+  "title" : "规划快照甘特图",
+  "viewStyle" : "DEFAULT",
+  "viewType" : "DEGANTTVIEW",
+  "xDataControlName" : "gantt",
+  "enableDP" : true,
+  "enableFilter" : true,
+  "enableSearch" : true,
+  "modelid" : "712b12e501b66760d64b3b614eb855ba",
+  "modeltype" : "PSAPPDEVIEW",
+  "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "baselines",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "space",
+    "majorDEName" : "SPACE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+    },
+    "minorDECodeName" : "baseline",
+    "minorDEName" : "BASELINE",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_SPACE_OWNER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "baseline_work_items",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "baseline",
+    "majorDEName" : "BASELINE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "minorDECodeName" : "baseline_work_item",
+    "minorDEName" : "BASELINE_WORK_ITEM",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_work_item.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_WORK_ITEM_BASELINE",
+    "getParentPSAppDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "rSMode" : 2,
+    "majorDEMajor" : false
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "baselines",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "project",
+    "majorDEName" : "PROJECT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "minorDECodeName" : "baseline",
+    "minorDEName" : "BASELINE",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_PROJECT_OWNER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "baseline_work_items",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "baseline",
+    "majorDEName" : "BASELINE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "minorDECodeName" : "baseline_work_item",
+    "minorDEName" : "BASELINE_WORK_ITEM",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_work_item.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_WORK_ITEM_BASELINE",
+    "getParentPSAppDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "rSMode" : 2,
+    "majorDEMajor" : false
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "baselines",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "product",
+    "majorDEName" : "PRODUCT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+    },
+    "minorDECodeName" : "baseline",
+    "minorDEName" : "BASELINE",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_PRODUCT_OWNER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "baseline_work_items",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "baseline",
+    "majorDEName" : "BASELINE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "minorDECodeName" : "baseline_work_item",
+    "minorDEName" : "BASELINE_WORK_ITEM",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_work_item.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_WORK_ITEM_BASELINE",
+    "getParentPSAppDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "rSMode" : 2,
+    "majorDEMajor" : false
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "baselines",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "library",
+    "majorDEName" : "LIBRARY",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
+    },
+    "minorDECodeName" : "baseline",
+    "minorDEName" : "BASELINE",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_LIBRARY_OWNER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "baseline_work_items",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "baseline",
+    "majorDEName" : "BASELINE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "minorDECodeName" : "baseline_work_item",
+    "minorDEName" : "BASELINE_WORK_ITEM",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_work_item.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_WORK_ITEM_BASELINE",
+    "getParentPSAppDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "rSMode" : 2,
+    "majorDEMajor" : false
+  } ] ]
+}

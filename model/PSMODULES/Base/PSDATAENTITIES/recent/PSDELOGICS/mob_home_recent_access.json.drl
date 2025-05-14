@@ -1,0 +1,50 @@
+package cn.ibizlab.plm.base.logic.recentlogic.mob_home_recent_access;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.recent recentmob_home_recent_accessdefault;
+                global cn.ibizlab.plm.core.base.domain.recent recentmob_home_recent_accessrecent_page;
+                    global cn.ibizlab.plm.core.base.service.IrecentService recentservice;
+        global cn.ibizlab.plm.core.base.service.IrecentService iBzSysRecentDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "recentmob_home_recent_accessbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设置固定条数为5]
+            rule "prepareparam1"
+            ruleflow-group "recentmob_home_recent_accessprepareparam1"
+            when
+            then
+                            recentmob_home_recent_accessdefault.set("size","5");
+                        update(recentmob_home_recent_accessdefault);//更新fact中变量值
+                        update(recentmob_home_recent_accessrecent_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询最近访问记录]
+            rule "dedataset1"
+            ruleflow-group "recentmob_home_recent_accessdedataset1"
+            when
+            then
+                        update(recentmob_home_recent_accessdefault);//更新fact中变量值
+                        update(recentmob_home_recent_accessrecent_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "recentmob_home_recent_accessend1"
+            when
+            then
+                        update(recentmob_home_recent_accessdefault);//更新fact中变量值
+                        update(recentmob_home_recent_accessrecent_page);//更新fact中变量值
+            end

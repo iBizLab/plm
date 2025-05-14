@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.usernot_space_mmeber" isClosed="false" isExecutable="true" name="base_user_not_space_mmeber_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.usernot_space_mmeber">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="usernot_space_mmeberdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.member()" name="usernot_space_mmebershared_page_member_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.member()" name="usernot_space_mmebershared_page_members" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.space_member()" name="usernot_space_mmeberspace_member_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.space_member()" name="usernot_space_mmeberspace_members" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.user()" name="usernot_space_mmeberuser_page" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.Ispace_memberService))" name="space_memberservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.ImemberService))" name="memberservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IuserService))" name="userservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IuserService))" name="iBzSysUserDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="usernot_space_mmeberdefault" type="cn.ibizlab.plm.core.base.domain.user" />
+                            <tns:global identifier="usernot_space_mmebershared_page_member_filter" type="cn.ibizlab.plm.core.base.domain.member" />
+                            <tns:global identifier="usernot_space_mmebershared_page_members" type="cn.ibizlab.plm.core.base.domain.member" />
+                            <tns:global identifier="usernot_space_mmeberspace_member_filter" type="cn.ibizlab.plm.core.wiki.domain.space_member" />
+                            <tns:global identifier="usernot_space_mmeberspace_members" type="cn.ibizlab.plm.core.wiki.domain.space_member" />
+                            <tns:global identifier="usernot_space_mmeberuser_page" type="cn.ibizlab.plm.core.base.domain.user" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="usernot_space_mmeberprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备空间成员查询过滤器参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="usernot_space_mmeberdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取空间成员"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="usernot_space_mmeberdedataset3" id="dedataset3" implementation="http://www.jboss.org/drools/rule" name="获取已添加的共享页面成员"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="usernot_space_mmeberrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="填充user过滤器ni参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="usernot_space_mmeberdedataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="获取用户"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="usernot_space_mmeberend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="begin_prepareparam1" sourceRef="begin" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_dedataset1" sourceRef="prepareparam1" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset1_dedataset3" sourceRef="dedataset1" targetRef="dedataset3">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset3_rawsfcode1" sourceRef="dedataset3" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_dedataset2" sourceRef="rawsfcode1" targetRef="dedataset2">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset2_end1" sourceRef="dedataset2" targetRef="end1">
+                    </sequenceFlow>
+        </process>
+    </definitions>
