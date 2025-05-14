@@ -3373,13 +3373,13 @@
       "codeName" : "user_id"
     }
   }, {
-    "codeName" : "cur_reviewer",
-    "dynaModelFilePath" : "PSSYSMSGTARGETS/cur_reviewer.json",
+    "codeName" : "reviewers",
+    "dynaModelFilePath" : "PSSYSMSGTARGETS/reviewers.json",
     "msgTargetType" : "DE",
-    "name" : "当前评审人",
+    "name" : "参与评审人",
     "getPSDEDataSet" : {
       "modelref" : true,
-      "id" : "cur_reviewer"
+      "id" : "reviewers"
     },
     "getPSDataEntity" : {
       "modelref" : true,
@@ -3647,6 +3647,18 @@
     },
     "subject" : "移除测试库成员",
     "wXContent" : "${data.update_mantext}把你移除了测试库：${data.library_name}",
+    "mailGroupSend" : false
+  }, {
+    "codeName" : "idea_create_review",
+    "content" : "<div class=\"notice-card\" style=\"display: flex; align-items: flex-start;\">\n    <div class=\"notice-card__avatar\" style=\"flex-shrink: 0;\">\n        <span class=\"notice-card__avatar-icon\" style=\"background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;\">${data.create_mantext?substring(0,2)!}</span>\n    </div>\n    <div class=\"notice-card__content\" style=\"flex-grow: 1;width: calc(100% - 46px);\">\n        <div class=\"notice-card__event\">\n            <div class=\"notice-card__event-title\" style=\"font-size: 14px; color: #000;\">\n                <span class=\"notice-card__event-name\" style=\"color: #999; font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\">${data.create_mantext}</span> \n                <span class=\"notice-card__event-desc\" style=\"font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\">邀请您参加需求评审</span>\n            </div>\n        </div>\n        <div class=\"notice-card-object\" style=\"display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;\">\n            <#if data.identifier??>\n                <span class=\"notice-card__object-id\" style=\"color: #999; font-size:14px;\">${data.identifier}</span>\n            </#if>\n            <span class=\"notice-card__object-name\" title=\"${data.name}\">${data.name}</span>\n        </div>\n        <div class=\"notice-card-pilot\" style=\"font-size: 12px; color: #999; text-transform: lowercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;\">\n            <span class=\"notice-pilot-time\">${data.create_time?string(\"yyyy-MM-dd HH:mm:ss\")}</span>\n            <span class=\"notice-pilot-info\"> · 产品管理 · ${data.principal_name}</span>\n        </div>\n    </div>\n</div>",
+    "contentType" : "HTML",
+    "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSSYSMSGTEMPLS/idea_create_review.json",
+    "name" : "需求新建评审通知模板",
+    "getPSSystemModule" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt.json"
+    },
+    "taskUrl" : "view://review_idea_main_view?srfnavctx={\"review\":\"${data.id}\",\"product\":\"${data.principal_id}\"}",
     "mailGroupSend" : false
   }, {
     "codeName" : "idea_remove_or_recover",
@@ -4493,11 +4505,11 @@
     "codeName" : "review_inform_template",
     "content" : "<div class=\"notice-card\" style=\"display: flex; align-items: flex-start;\">\n    <div class=\"notice-card__avatar\" style=\"flex-shrink: 0;\">\n        <span class=\"notice-card__avatar-icon\" style=\"background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;\">${data.create_mantext?substring(0,2)!}</span>\n    </div>\n    <div class=\"notice-card__content\" style=\"flex-grow: 1;width: calc(100% - 46px);\">\n        <div class=\"notice-card__event\">\n            <div class=\"notice-card__event-title\" style=\"font-size: 14px; color: #000;\">\n                <span class=\"notice-card__event-name\" style=\"color: #999; font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\">${data.create_mantext}</span> \n                <span class=\"notice-card__event-desc\" style=\"font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\">邀请您参加需求评审</span>\n            </div>\n        </div>\n        <div class=\"notice-card-object\" style=\"display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;\">\n            <#if data.identifier??>\n                <span class=\"notice-card__object-id\" style=\"color: #999; font-size:14px;\">${data.identifier}</span>\n            </#if>\n            <span class=\"notice-card__object-name\" title=\"${data.name}\">${data.name}</span>\n        </div>\n        <div class=\"notice-card-pilot\" style=\"font-size: 12px; color: #999; text-transform: lowercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;\">\n            <span class=\"notice-pilot-time\">${data.create_time?string(\"yyyy-MM-dd HH:mm:ss\")}</span>\n            <span class=\"notice-pilot-info\"> · 产品管理 · ${data.principal_name}</span>\n        </div>\n    </div>\n</div>",
     "contentType" : "HTML",
-    "dynaModelFilePath" : "PSMODULES/Base/PSSYSMSGTEMPLS/review_inform_template.json",
+    "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSSYSMSGTEMPLS/review_inform_template.json",
     "name" : "评审通知模板",
     "getPSSystemModule" : {
       "modelref" : true,
-      "path" : "PSMODULES/Base.json"
+      "path" : "PSMODULES/ProdMgmt.json"
     },
     "taskUrl" : "view://review_idea_main_view?srfnavctx={\"review\":\"${data.id}\",\"product\":\"${data.principal_id}\"}",
     "mailGroupSend" : false

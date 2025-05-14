@@ -1,0 +1,45 @@
+package cn.ibizlab.plm.testmgmt.logic.reviewlogic.create_review_notify;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.review reviewcreate_review_notifydefault;
+                    global cn.ibizlab.plm.core.testmgmt.service.IreviewService reviewservice;
+        global cn.ibizlab.plm.core.testmgmt.service.IreviewService iBzSysReviewDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "reviewcreate_review_notifybegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "reviewcreate_review_notifyend1"
+            when
+            then
+                        update(reviewcreate_review_notifydefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam1"
+            ruleflow-group "reviewcreate_review_notifydebugparam1"
+            when
+            then
+                        update(reviewcreate_review_notifydefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体通知]
+            rule "denotify1"
+            ruleflow-group "reviewcreate_review_notifydenotify1"
+            when
+            then
+                        update(reviewcreate_review_notifydefault);//更新fact中变量值
+            end
