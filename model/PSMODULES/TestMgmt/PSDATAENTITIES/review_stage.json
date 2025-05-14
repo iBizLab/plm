@@ -1284,7 +1284,7 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREPARAM1"
+          "id" : "DEBUGPARAM2"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -1292,8 +1292,29 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 214,
+      "topPos" : 80,
       "parallelOutput" : true
+    }, {
+      "codeName" : "DEBUGPARAM2",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM2"
+        }
+      } ],
+      "topPos" : 215
     }, {
       "codeName" : "PREPAREPARAM1",
       "leftPos" : 160,
@@ -1316,10 +1337,14 @@
           "modelref" : true,
           "id" : "review"
         },
-        "name" : "数据上下文[id] ==> review[ID]",
+        "name" : "Default[id] ==> review[ID]",
         "paramAction" : "SETPARAMVALUE",
         "srcFieldName" : "id",
-        "srcValueType" : "DATACONTEXT"
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 330
     }, {
