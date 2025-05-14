@@ -6052,7 +6052,7 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "code" : "\tconst rows = uiLogic.grid.state.rows;\r\n    const ctx = uiLogic.ctx;\r\n\tif (rows && rows.length > 0) {\r\n\t\trows.forEach(row => {\r\n\t\t\tconst titleColumn = row.uiActionGroupStates.name;\r\n\t\t\tconst cur_user = ctx.srfuserid;\r\n\t\t\tconst state = row.data.state;\r\n\t\t\tconst create_man = row.data.create_man;\r\n\t\t\tif (titleColumn && Object.values(titleColumn).length > 0) {\r\n\t\t\t\tObject.values(titleColumn).forEach(action => {\r\n                    action.visible = false;\r\n                    if(action.uiActionId === 'delete@review'&& create_man == cur_user){\r\n                        action.visible = true;\r\n                    }else if (action.uiActionId === 'repeal_review@review'&& create_man == cur_user && state == '20' ) {\r\n\t\t\t\t\t\taction.visible = true;\r\n\t\t\t\t\t} else if (action.uiActionId === 'submit_review@review'&& create_man == cur_user && (state == '10'||state == '50') ) {\r\n\t\t\t\t\t\taction.visible = true;\r\n\t\t\t\t\t}else if (action.uiActionId === 'set_category@review'&& create_man == cur_user){\r\n                        action.visible = true;\r\n                    }\r\n\t\t\t\t})\r\n\t\t\t}\r\n\t\t})\r\n\t}\r\n",
+      "code" : "\tconst rows = uiLogic.grid.state.rows;\r\n    const ctx = uiLogic.ctx;\r\n\tif (rows && rows.length > 0) {\r\n\t\trows.forEach(row => {\r\n\t\t\tconst titleColumn = row.uiActionGroupStates.name;\r\n\t\t\tconst cur_user = ctx.srfuserid;\r\n\t\t\tconst state = row.data.state;\r\n            const type = row.data.type;\r\n\t\t\tconst create_man = row.data.create_man;\r\n\t\t\tif (titleColumn && Object.values(titleColumn).length > 0) {\r\n\t\t\t\tObject.values(titleColumn).forEach(action => {\r\n                    action.visible = false;\r\n                    if(action.uiActionId === 'delete@review'&& create_man == cur_user){\r\n                        action.visible = true;\r\n                    }else if (action.uiActionId === 'repeal_review@review'&& create_man == cur_user && state == '20' ) {\r\n\t\t\t\t\t\taction.visible = true;\r\n\t\t\t\t\t} else if (action.uiActionId === 'submit_review@review'&& create_man == cur_user && (state == '10'||state == '50') ) {\r\n\t\t\t\t\t\taction.visible = true;\r\n\t\t\t\t\t}else if (action.uiActionId === 'set_category@review'&& create_man == cur_user && type == 'TEST_CASE'){\r\n                        action.visible = true;\r\n                    }else if (action.uiActionId === 'set_idea_category@review'&& create_man == cur_user && type == 'IDEA'){\r\n                        action.visible = true;\r\n                    }\r\n\t\t\t\t})\r\n\t\t\t}\r\n\t\t})\r\n\t}\r\n",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
@@ -6083,17 +6083,17 @@
       "name" : "上下文",
       "navContextParam" : true
     }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
       "codeName" : "Grid",
       "logicName" : "表格",
       "name" : "表格",
       "activeCtrlParam" : true,
       "ctrlParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -7645,7 +7645,6 @@
         "glyph" : "xf044@FontAwesome",
         "cssClass" : "fa fa-edit"
       },
-      "visibleScriptCode" : "data.type=='TEST_CASE'",
       "addSeparator" : false,
       "showCaption" : true,
       "showIcon" : true,
@@ -7665,7 +7664,6 @@
         "glyph" : "xf044@FontAwesome",
         "cssClass" : "fa fa-edit"
       },
-      "visibleScriptCode" : "data.type=='IDEA'",
       "addSeparator" : false,
       "showCaption" : true,
       "showIcon" : true,
