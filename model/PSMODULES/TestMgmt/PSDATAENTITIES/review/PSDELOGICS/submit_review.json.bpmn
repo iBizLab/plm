@@ -116,7 +116,23 @@
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall2_debugparam3" sourceRef="loopsubcall2" targetRef="debugparam3">
                     </sequenceFlow>
-                    <sequenceFlow id="loopsubcall2_prepareparam6" sourceRef="loopsubcall2" targetRef="prepareparam6">
+                    <sequenceFlow id="gateway-loopsubcall2_prepareparam6" sourceRef="gateway-loopsubcall2" targetRef="prepareparam6">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $reviewsubmit_reviewdefault:review();
+                                            $reviewsubmit_reviewfor_reltion:relation();
+                                            $reviewsubmit_reviewidea:idea();
+                                            $reviewsubmit_reviewrelation_page:relation();
+                                            $reviewsubmit_reviewreltion_filter:relation();
+                                            $reviewsubmit_reviewreview_content:review_content();
+                                            $reviewsubmit_reviewreviewer_list:Map();
+                                            $reviewsubmit_reviewreviewer_temp:Map();
+                                            $reviewsubmit_reviewstage:review_stage();
+                                            $reviewsubmit_reviewstages:review_stage();
+                                            $reviewsubmit_reviewtest_case:test_case();
+                                    eval($reviewsubmit_reviewdefault==reviewsubmit_reviewdefault && $reviewsubmit_reviewfor_reltion==reviewsubmit_reviewfor_reltion && $reviewsubmit_reviewidea==reviewsubmit_reviewidea && $reviewsubmit_reviewrelation_page==reviewsubmit_reviewrelation_page && $reviewsubmit_reviewreltion_filter==reviewsubmit_reviewreltion_filter && $reviewsubmit_reviewreview_content==reviewsubmit_reviewreview_content && $reviewsubmit_reviewstage==reviewsubmit_reviewstage && $reviewsubmit_reviewstages==reviewsubmit_reviewstages && $reviewsubmit_reviewtest_case==reviewsubmit_reviewtest_case);
+                                eval((RuleUtils.test($reviewsubmit_reviewreviewer_temp.get("order"),"EQ","1")))
+                                ]]>
+                            </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_prepareparam2" sourceRef="prepareparam1" targetRef="prepareparam2">
                     </sequenceFlow>
@@ -226,6 +242,10 @@
                             <sequenceFlow id="debugparam3_gateway-debugparam3_gatewayline" sourceRef="debugparam3" targetRef="gateway-debugparam3"></sequenceFlow>
                             <sequenceFlow id="gateway-debugparam3_end_line" sourceRef="gateway-debugparam3" targetRef="gateway-debugparam3_end"/>
                             <endEvent id="gateway-debugparam3_end" name="end"/>
+                            <exclusiveGateway id="gateway-loopsubcall2" name="Gateway" gatewayDirection="Diverging" default="gateway-loopsubcall2_end_line"></exclusiveGateway>
+                            <sequenceFlow id="loopsubcall2_gateway-loopsubcall2_gatewayline" sourceRef="loopsubcall2" targetRef="gateway-loopsubcall2"></sequenceFlow>
+                            <sequenceFlow id="gateway-loopsubcall2_end_line" sourceRef="gateway-loopsubcall2" targetRef="gateway-loopsubcall2_end"/>
+                            <endEvent id="gateway-loopsubcall2_end" name="end"/>
                             <exclusiveGateway id="gateway-dedataset1" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset1_end_line"></exclusiveGateway>
                             <sequenceFlow id="dedataset1_gateway-dedataset1_gatewayline" sourceRef="dedataset1" targetRef="gateway-dedataset1"></sequenceFlow>
                             <sequenceFlow id="gateway-dedataset1_end_line" sourceRef="gateway-dedataset1" targetRef="gateway-dedataset1_end"/>

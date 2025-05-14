@@ -9441,6 +9441,22 @@
           "id" : "PREPAREPARAM6"
         },
         "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "order",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "reviewer_temp"
+            },
+            "logicType" : "SINGLE",
+            "name" : "reviewer_temp[order] 等于(=) 1",
+            "paramValue" : "1"
+          } ]
+        },
         "getSrcPSDELogicNode" : {
           "modelref" : true,
           "id" : "LOOPSUBCALL2"
@@ -9771,7 +9787,7 @@
         "modelref" : true,
         "id" : "relation_page"
       },
-      "topPos" : 340
+      "topPos" : 360
     }, {
       "codeName" : "PREPAREPARAM6",
       "leftPos" : -266,
@@ -9792,7 +9808,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 340
+      "topPos" : 360
     }, {
       "code" : "var default_obj = logic.getParam(\"default\");\r\ndefault_obj.set(\"submitted_at\", new Date());",
       "codeName" : "RAWSFCODE1",
@@ -9811,7 +9827,7 @@
           "id" : "RAWSFCODE1"
         }
       } ],
-      "topPos" : 340
+      "topPos" : 360
     }, {
       "codeName" : "DEBUGPARAM4",
       "getDstPSDELogicParam" : {
