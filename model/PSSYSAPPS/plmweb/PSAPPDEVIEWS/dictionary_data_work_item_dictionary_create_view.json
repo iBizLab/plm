@@ -249,6 +249,13 @@
         "codeName" : "color"
       }
     }, {
+      "id" : "style",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "STYLE",
+        "codeName" : "style"
+      }
+    }, {
       "id" : "id",
       "hidden" : true,
       "dataType" : 25,
@@ -442,6 +449,52 @@
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "背景样式",
+          "codeName" : "style",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "style",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "STYLE",
+            "codeName" : "style"
+          },
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "catalog",
+              "logicType" : "SINGLE",
+              "value" : "work_item_priority"
+            } ],
+            "relatedDetailNames" : [ "catalog" ],
+            "notMode" : false
+          } ],
+          "getPSEditor" : {
+            "editorType" : "DROPDOWNLIST",
+            "name" : "style",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__background_style.json"
+            },
+            "singleSelect" : true
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 12,
+            "colMD" : 12,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "needCodeListConfig" : true,
           "showCaption" : true
         } ],
         "getPSLayout" : {
