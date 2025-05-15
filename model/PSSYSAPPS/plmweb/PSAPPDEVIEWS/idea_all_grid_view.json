@@ -1178,7 +1178,7 @@
         "caption" : "优先级",
         "codeName" : "priority",
         "columnType" : "DEFGRIDCOLUMN",
-        "dataItemName" : "priority",
+        "dataItemName" : "priority_text",
         "excelCaption" : "优先级",
         "name" : "priority",
         "noPrivDisplayMode" : 1,
@@ -1392,6 +1392,13 @@
         }
       }, {
         "dataType" : 25,
+        "name" : "priority_text",
+        "getPSAppDEField" : {
+          "name" : "PRIORITY",
+          "codeName" : "priority"
+        }
+      }, {
+        "dataType" : 25,
         "name" : "priority",
         "getPSAppDEField" : {
           "name" : "PRIORITY",
@@ -1572,14 +1579,33 @@
           "codeName" : "priority"
         },
         "getPSEditor" : {
+          "editorParams" : {
+            "SRFNAVPARAM.product" : "%product%"
+          },
           "editorType" : "DROPDOWNLIST",
           "name" : "priority",
           "getPSAppCodeList" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__idea_priority.json"
           },
+          "getPSEditorItems" : [ {
+            "name" : "priority",
+            "getPSNavigateParams" : [ {
+              "key" : "product",
+              "name" : "product",
+              "value" : "product",
+              "rawValue" : false
+            } ]
+          } ],
+          "getPSNavigateParams" : [ {
+            "key" : "product",
+            "name" : "product",
+            "value" : "product",
+            "rawValue" : false
+          } ],
           "singleSelect" : true
         },
+        "valueItemName" : "priority",
         "allowEmpty" : true,
         "needCodeListConfig" : true
       }, {

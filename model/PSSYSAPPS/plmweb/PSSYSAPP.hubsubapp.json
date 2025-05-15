@@ -785,6 +785,103 @@
     } ],
     "uniqueTag" : "baseline__Usr0527240816"
   }, {
+    "codeName" : "Acdd62f6957a38db9ab",
+    "name" : "需求数据字典_编辑&删除",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
+    },
+    "getPSUIActionGroupDetails" : [ {
+      "detailType" : "DEUIACTION",
+      "name" : "uf0c2d11",
+      "getPSSysImage" : {
+        "glyph" : "xf044@FontAwesome",
+        "cssClass" : "fa fa-edit"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "SINGLEKEY",
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "TBB.TEXT.*.EDIT"
+        },
+        "caption" : "编辑",
+        "codeName" : "Edit",
+        "fullCodeName" : "Edit",
+        "name" : "表格界面_编辑操作",
+        "getPSSysImage" : {
+          "glyph" : "xf044@FontAwesome",
+          "cssClass" : "fa fa-edit"
+        },
+        "predefinedType" : "GRIDVIEW_EDITACTION",
+        "timeout" : 60000,
+        "tooltip" : "编辑",
+        "getTooltipPSLanguageRes" : {
+          "lanResTag" : "TBB.TOOLTIP.*.EDIT"
+        },
+        "uIActionMode" : "SYS",
+        "uIActionTag" : "Edit",
+        "uIActionType" : "DEUIACTION"
+      },
+      "tooltip" : "编辑",
+      "getTooltipPSLanguageRes" : {
+        "lanResTag" : "TBB.TOOLTIP.*.EDIT"
+      },
+      "addSeparator" : false,
+      "showCaption" : false,
+      "showIcon" : true
+    }, {
+      "detailType" : "DEUIACTION",
+      "name" : "ucbb1fc3",
+      "getPSSysImage" : {
+        "glyph" : "xf014@FontAwesome",
+        "cssClass" : "fa fa-trash-o"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "SINGLEKEY",
+        "caption" : "删除",
+        "codeName" : "delete",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dictionary_data_delete_confirm_option_view.json",
+          "viewType" : "DEOPTVIEW"
+        },
+        "fullCodeName" : "dictionary_data_delete",
+        "name" : "数据字典删除",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "remove"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
+        },
+        "getPSNavigateParams" : [ {
+          "key" : "name",
+          "name" : "name",
+          "value" : "name",
+          "rawValue" : false
+        } ],
+        "getPSSysImage" : {
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
+        },
+        "refreshMode" : 1,
+        "successMsg" : "删除成功",
+        "timeout" : 60000,
+        "tooltip" : "删除",
+        "uIActionMode" : "BACKEND",
+        "uIActionTag" : "delete",
+        "uIActionType" : "DEUIACTION",
+        "enableConfirm" : true,
+        "reloadData" : true,
+        "id" : "delete@dictionary_data"
+      },
+      "tooltip" : "删除",
+      "addSeparator" : false,
+      "showCaption" : false,
+      "showIcon" : true
+    } ],
+    "uniqueTag" : "dictionary_data__Acdd62f6957a38db9ab"
+  }, {
     "codeName" : "Usr0418096363",
     "name" : "编辑&删除",
     "getPSAppDataEntity" : {
@@ -19386,6 +19483,7 @@
         "dataAccessAction" : "SUBDATA",
         "frontProcessType" : "OTHER",
         "fullCodeName" : "review_submit_review",
+        "memo" : "SUBDATA",
         "name" : "提交评审",
         "getPSAppDEMethod" : {
           "modelref" : true,
@@ -19431,6 +19529,7 @@
         "codeName" : "repeal_review",
         "dataAccessAction" : "SUBDATA",
         "fullCodeName" : "review_repeal_review",
+        "memo" : "SUBDATA",
         "name" : "撤销评审",
         "getPSAppDEMethod" : {
           "modelref" : true,
@@ -19543,6 +19642,44 @@
         "uIActionType" : "DEUIACTION",
         "reloadData" : true,
         "id" : "set_category@review"
+      },
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true
+    }, {
+      "caption" : "设置类别",
+      "detailType" : "DEUIACTION",
+      "name" : "u3479786",
+      "getPSSysImage" : {
+        "glyph" : "xf044@FontAwesome",
+        "cssClass" : "fa fa-edit"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "SINGLEDATA",
+        "caption" : "设置类别",
+        "codeName" : "set_idea_category",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_idea_set_category_option_view.json",
+          "viewType" : "DEOPTVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "review_set_idea_category",
+        "name" : "设置需求评审类别",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf044@FontAwesome",
+          "cssClass" : "fa fa-edit"
+        },
+        "refreshMode" : 1,
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "set_idea_category",
+        "uIActionType" : "DEUIACTION",
+        "reloadData" : true,
+        "id" : "set_idea_category@review"
       },
       "addSeparator" : false,
       "showCaption" : true,
@@ -25805,7 +25942,7 @@
     "pluginCode" : "COMMENT",
     "pluginType" : "EDITOR_CUSTOMSTYLE",
     "rTObjectName" : "IBizHtmlComment",
-    "rTObjectRepo" : "@ibiz-template-plm/html-comment@0.0.3-alpha.205",
+    "rTObjectRepo" : "@ibiz-template-plm/html-comment@0.0.3-alpha.215",
     "refMode" : "EDITORSTYPE",
     "runtimeObject" : true
   }, {
@@ -25918,7 +26055,7 @@
     "pluginCode" : "PERSON_SELECT",
     "pluginType" : "EDITOR_CUSTOMSTYLE",
     "rTObjectName" : "IBizPersonelSelect",
-    "rTObjectRepo" : "@ibiz-template-plm/person-select@0.0.3-alpha.204",
+    "rTObjectRepo" : "@ibiz-template-plm/person-select@0.0.3-alpha.206",
     "refMode" : "EDITORSTYPE",
     "runtimeObject" : true
   }, {
@@ -26084,7 +26221,7 @@
     "pluginCode" : "CHECKBOX_GRID",
     "pluginType" : "GRID_RENDER",
     "rTObjectName" : "IBizCheckboxGrid",
-    "rTObjectRepo" : "@ibiz-template-plugin/checkbox-grid@0.0.3-alpha.111",
+    "rTObjectRepo" : "@ibiz-template-plugin/checkbox-grid@0.0.3-alpha.211",
     "refMode" : "CONTROL",
     "refTag" : "GRID",
     "runtimeObject" : true
@@ -26565,7 +26702,7 @@
     "pluginCode" : "COMMENT_ITEM",
     "pluginType" : "EDITOR_CUSTOMSTYLE",
     "rTObjectName" : "IBizCommentItemRawItem",
-    "rTObjectRepo" : "@ibiz-template-plm/comment-item@0.0.3-alpha.139",
+    "rTObjectRepo" : "@ibiz-template-plm/comment-item@0.0.3-alpha.209",
     "refMode" : "EDITORSTYPE",
     "runtimeObject" : true
   }, {

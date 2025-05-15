@@ -788,6 +788,65 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer/PSDEDATAQUERIES/cur_product_customer/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "cur_product_customer",
+    "logicName" : "当前产品客户",
+    "name" : "cur_product_customer",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "CUSTOMER",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "0",
+          "fieldName" : "IS_DELETED",
+          "name" : "(IS_DELETED) 等于(=) 0",
+          "getPSDEField" : {
+            "name" : "IS_DELETED",
+            "codeName" : "is_deleted"
+          }
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "n_product_id_eq",
+          "fieldName" : "PRODUCT_ID",
+          "name" : "(PRODUCT_ID) 等于(=) 网页请求上下文 n_product_id_eq",
+          "getPSDEField" : {
+            "name" : "PRODUCT_ID",
+            "codeName" : "Product_id"
+          },
+          "getPSVARTypeId" : "WEBCONTEXT"
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Cur_product_customerInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "customer_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Cur_product_customerResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "customer_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer/PSDEDATAQUERIES/idea_notre_customer/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "idea_notre_customer",
@@ -1165,6 +1224,32 @@
       "id" : "assignee"
     },
     "viewLevel" : 100,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "cur_product_customer",
+    "logicName" : "当前产品客户",
+    "name" : "cur_product_customer",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "cur_product_customer"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Cur_product_customerInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "customer_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Cur_product_customerResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "customer_dto"
+      },
+      "type" : "PAGE"
+    },
     "enableBackend" : true,
     "enableFront" : true
   }, {
@@ -6808,6 +6893,12 @@
     "realModelSubType" : "DEMOBMPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "customer_pick_up_tree_view",
+    "logicName" : "客户选择树视图",
+    "name" : "客户选择树视图",
+    "realModelSubType" : "DEPICKUPTREEVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "pick_up_view",
     "logicName" : "客户实体数据选择视图",
     "modelTag" : "PICKUPVIEW",
@@ -6829,8 +6920,8 @@
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "pick_up_tree_view",
-    "logicName" : "客户选择树视图",
-    "name" : "客户选择树视图",
+    "logicName" : "客户类别选择树视图",
+    "name" : "客户类别选择树视图",
     "realModelSubType" : "DEPICKUPTREEVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {

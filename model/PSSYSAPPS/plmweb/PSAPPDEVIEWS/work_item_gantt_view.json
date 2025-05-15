@@ -37,7 +37,7 @@
     "getPSAppViewLogics" : [ {
       "logicTrigger" : "CUSTOM",
       "logicType" : "APPUILOGIC",
-      "name" : "node_newdata",
+      "name" : "top_node_newdata",
       "getPSAppUILogic" : {
         "actionAfterWizard" : "DEFAULT",
         "logicType" : "PREDEFINED",
@@ -50,7 +50,7 @@
     }, {
       "logicTrigger" : "CUSTOM",
       "logicType" : "APPUILOGIC",
-      "name" : "node_opendata",
+      "name" : "top_node_opendata",
       "getPSAppUILogic" : {
         "logicType" : "PREDEFINED",
         "name" : "打开数据",
@@ -110,7 +110,7 @@
     }, {
       "logicTrigger" : "CUSTOM",
       "logicType" : "APPUILOGIC",
-      "name" : "top_node_newdata",
+      "name" : "node_newdata",
       "getPSAppUILogic" : {
         "actionAfterWizard" : "DEFAULT",
         "logicType" : "PREDEFINED",
@@ -123,7 +123,7 @@
     }, {
       "logicTrigger" : "CUSTOM",
       "logicType" : "APPUILOGIC",
-      "name" : "top_node_opendata",
+      "name" : "node_opendata",
       "getPSAppUILogic" : {
         "logicType" : "PREDEFINED",
         "name" : "打开数据",
@@ -195,128 +195,6 @@
       "id" : "GANTT"
     },
     "getPSControls" : [ {
-      "codeName" : "gantt_view_node_cm",
-      "controlType" : "CONTEXTMENU",
-      "logicName" : "甘特图节点上下文菜单",
-      "name" : "node_cm",
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-      },
-      "getPSControlParam" : {
-        "id" : "node_cm"
-      },
-      "getPSDEToolbarItems" : [ {
-        "caption" : "新建计划",
-        "groupExtractMode" : "ITEM",
-        "itemType" : "DEUIACTION",
-        "name" : "deuiaction1",
-        "noPrivDisplayMode" : 2,
-        "getPSAppViewUIAction" : {
-          "modelref" : true,
-          "id" : "node_cm_deuiaction1"
-        },
-        "getPSSysImage" : {
-          "cssClass" : "add"
-        },
-        "getPSUIAction" : {
-          "actionTarget" : "SINGLEDATA",
-          "caption" : "新建计划",
-          "codeName" : "new_waterfall_plan",
-          "dataAccessAction" : "SUBDATA",
-          "getFrontPSAppView" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
-            "viewType" : "DEOPTVIEW"
-          },
-          "frontProcessType" : "WIZARD",
-          "fullCodeName" : "work_item_new_waterfall_plan",
-          "name" : "新建计划（waterfall）",
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-          },
-          "getPSDEOPPriv" : {
-            "modelref" : true,
-            "id" : "SUBDATA"
-          },
-          "getPSNavigateContexts" : [ {
-            "key" : "WORK_ITEM",
-            "name" : "WORK_ITEM",
-            "rawValue" : true
-          } ],
-          "getPSNavigateParams" : [ {
-            "key" : "pid",
-            "name" : "pid",
-            "value" : "id",
-            "rawValue" : false
-          } ],
-          "getPSSysImage" : {
-            "cssClass" : "add"
-          },
-          "refreshMode" : 1,
-          "tooltip" : "新建计划",
-          "uIActionMode" : "FRONT",
-          "uIActionTag" : "new_waterfall_plan",
-          "uIActionType" : "DEUIACTION",
-          "reloadData" : true,
-          "id" : "new_waterfall_plan@work_item"
-        },
-        "tooltip" : "新建计划",
-        "uIActionTarget" : "SINGLEDATA",
-        "showCaption" : true,
-        "showIcon" : true
-      }, {
-        "caption" : "删除计划",
-        "groupExtractMode" : "ITEM",
-        "itemType" : "DEUIACTION",
-        "name" : "deuiaction2",
-        "noPrivDisplayMode" : 2,
-        "getPSAppViewUIAction" : {
-          "modelref" : true,
-          "id" : "node_cm_deuiaction2"
-        },
-        "getPSSysImage" : {
-          "glyph" : "xf014@FontAwesome",
-          "cssClass" : "fa fa-trash-o"
-        },
-        "getPSUIAction" : {
-          "actionTarget" : "SINGLEKEY",
-          "caption" : "删除计划",
-          "codeName" : "remove_waterfall_plan",
-          "confirmMsg" : "删除工作项会一起删除子工作项，确认删除工作项吗？",
-          "fullCodeName" : "work_item_remove_waterfall_plan",
-          "name" : "删除计划",
-          "getPSAppDEMethod" : {
-            "modelref" : true,
-            "id" : "remove"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
-          },
-          "getPSSysImage" : {
-            "glyph" : "xf014@FontAwesome",
-            "cssClass" : "fa fa-trash-o"
-          },
-          "refreshMode" : 2,
-          "successMsg" : "已删除工作项",
-          "timeout" : 60000,
-          "uIActionMode" : "BACKEND",
-          "uIActionTag" : "remove_waterfall_plan",
-          "uIActionType" : "DEUIACTION",
-          "enableConfirm" : true,
-          "reloadData" : true,
-          "id" : "remove_waterfall_plan@work_item"
-        },
-        "tooltip" : "删除计划",
-        "uIActionTarget" : "SINGLEKEY",
-        "showCaption" : true,
-        "showIcon" : true
-      } ],
-      "modelid" : "0a34a6f6b626c24922b75f3d9f736eb8",
-      "modeltype" : "PSDETOOLBAR"
-    }, {
       "codeName" : "gantt_view_top_node_cm",
       "controlType" : "CONTEXTMENU",
       "logicName" : "甘特图节点上下文菜单",
@@ -329,7 +207,7 @@
         "id" : "top_node_cm"
       },
       "getPSDEToolbarItems" : [ {
-        "caption" : "新建计划",
+        "caption" : "新建",
         "groupExtractMode" : "ITEM",
         "itemType" : "DEUIACTION",
         "name" : "deuiaction1",
@@ -389,7 +267,7 @@
         "showCaption" : true,
         "showIcon" : true
       }, {
-        "caption" : "删除计划",
+        "caption" : "删除",
         "groupExtractMode" : "ITEM",
         "itemType" : "DEUIACTION",
         "name" : "deuiaction2",
@@ -411,7 +289,7 @@
           "name" : "删除计划",
           "getPSAppDEMethod" : {
             "modelref" : true,
-            "id" : "remove"
+            "id" : "delete"
           },
           "getPSAppDataEntity" : {
             "modelref" : true,
@@ -431,7 +309,129 @@
           "reloadData" : true,
           "id" : "remove_waterfall_plan@work_item"
         },
-        "tooltip" : "删除计划",
+        "tooltip" : "删除",
+        "uIActionTarget" : "SINGLEKEY",
+        "showCaption" : true,
+        "showIcon" : true
+      } ],
+      "modelid" : "0a34a6f6b626c24922b75f3d9f736eb8",
+      "modeltype" : "PSDETOOLBAR"
+    }, {
+      "codeName" : "gantt_view_node_cm",
+      "controlType" : "CONTEXTMENU",
+      "logicName" : "甘特图节点上下文菜单",
+      "name" : "node_cm",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+      },
+      "getPSControlParam" : {
+        "id" : "node_cm"
+      },
+      "getPSDEToolbarItems" : [ {
+        "caption" : "新建",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction1",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "node_cm_deuiaction1"
+        },
+        "getPSSysImage" : {
+          "cssClass" : "add"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEDATA",
+          "caption" : "新建计划",
+          "codeName" : "new_waterfall_plan",
+          "dataAccessAction" : "SUBDATA",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "work_item_new_waterfall_plan",
+          "name" : "新建计划（waterfall）",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "SUBDATA"
+          },
+          "getPSNavigateContexts" : [ {
+            "key" : "WORK_ITEM",
+            "name" : "WORK_ITEM",
+            "rawValue" : true
+          } ],
+          "getPSNavigateParams" : [ {
+            "key" : "pid",
+            "name" : "pid",
+            "value" : "id",
+            "rawValue" : false
+          } ],
+          "getPSSysImage" : {
+            "cssClass" : "add"
+          },
+          "refreshMode" : 1,
+          "tooltip" : "新建计划",
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "new_waterfall_plan",
+          "uIActionType" : "DEUIACTION",
+          "reloadData" : true,
+          "id" : "new_waterfall_plan@work_item"
+        },
+        "tooltip" : "新建计划",
+        "uIActionTarget" : "SINGLEDATA",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "删除",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction2",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "node_cm_deuiaction2"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEKEY",
+          "caption" : "删除计划",
+          "codeName" : "remove_waterfall_plan",
+          "confirmMsg" : "删除工作项会一起删除子工作项，确认删除工作项吗？",
+          "fullCodeName" : "work_item_remove_waterfall_plan",
+          "name" : "删除计划",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "delete"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf014@FontAwesome",
+            "cssClass" : "fa fa-trash-o"
+          },
+          "refreshMode" : 2,
+          "successMsg" : "已删除工作项",
+          "timeout" : 60000,
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "remove_waterfall_plan",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "remove_waterfall_plan@work_item"
+        },
+        "tooltip" : "删除",
         "uIActionTarget" : "SINGLEKEY",
         "showCaption" : true,
         "showIcon" : true
@@ -1105,7 +1105,7 @@
           "id" : "node_cm"
         },
         "getPSDEToolbarItems" : [ {
-          "caption" : "新建计划",
+          "caption" : "新建",
           "groupExtractMode" : "ITEM",
           "itemType" : "DEUIACTION",
           "name" : "deuiaction1",
@@ -1165,7 +1165,7 @@
           "showCaption" : true,
           "showIcon" : true
         }, {
-          "caption" : "删除计划",
+          "caption" : "删除",
           "groupExtractMode" : "ITEM",
           "itemType" : "DEUIACTION",
           "name" : "deuiaction2",
@@ -1187,7 +1187,7 @@
             "name" : "删除计划",
             "getPSAppDEMethod" : {
               "modelref" : true,
-              "id" : "remove"
+              "id" : "delete"
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
@@ -1207,7 +1207,7 @@
             "reloadData" : true,
             "id" : "remove_waterfall_plan@work_item"
           },
-          "tooltip" : "删除计划",
+          "tooltip" : "删除",
           "uIActionTarget" : "SINGLEKEY",
           "showCaption" : true,
           "showIcon" : true
@@ -2112,7 +2112,7 @@
           "id" : "top_node_cm"
         },
         "getPSDEToolbarItems" : [ {
-          "caption" : "新建计划",
+          "caption" : "新建",
           "groupExtractMode" : "ITEM",
           "itemType" : "DEUIACTION",
           "name" : "deuiaction1",
@@ -2172,7 +2172,7 @@
           "showCaption" : true,
           "showIcon" : true
         }, {
-          "caption" : "删除计划",
+          "caption" : "删除",
           "groupExtractMode" : "ITEM",
           "itemType" : "DEUIACTION",
           "name" : "deuiaction2",
@@ -2194,7 +2194,7 @@
             "name" : "删除计划",
             "getPSAppDEMethod" : {
               "modelref" : true,
-              "id" : "remove"
+              "id" : "delete"
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
@@ -2214,7 +2214,7 @@
             "reloadData" : true,
             "id" : "remove_waterfall_plan@work_item"
           },
-          "tooltip" : "删除计划",
+          "tooltip" : "删除",
           "uIActionTarget" : "SINGLEKEY",
           "showCaption" : true,
           "showIcon" : true
