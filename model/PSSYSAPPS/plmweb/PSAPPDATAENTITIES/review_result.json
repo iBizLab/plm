@@ -1568,6 +1568,12 @@
       "topPos" : 284,
       "parallelOutput" : true
     }, {
+      "codeName" : "END1",
+      "leftPos" : 1500,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
       "codeName" : "DEACTION1",
       "getDstPSAppDEAction" : {
         "modelref" : true,
@@ -1664,25 +1670,24 @@
       } ],
       "topPos" : 292
     }, {
-      "code" : "const grid = uiLogic.content_grid;\r\nawait grid.load({ isInitialLoad: false, triggerSource: 'REFRESH' });\r\nif (uiLogic.next_content) {\r\n    const item = grid.state.items.find(x => x.id === uiLogic.next_content.id);\r\n    if (item) {\r\n        grid.setSelection([item], false);\r\n    }\r\n}",
-      "codeName" : "RAWJSCODE4",
-      "leftPos" : 1240,
+      "code" : "const rows = uiLogic.content_grid.state.rows;\r\nconst ctx = uiLogic.ctx;\r\n\r\nif (rows && rows.length > 0) {\r\n    const cur_content_id = ctx.review_content;\r\n    let next_content = null;\r\n    let foundMatch = false;\r\n\r\n    rows.forEach((row, index) => {\r\n        const for_id = row.data.id;\r\n        if (foundMatch) {\r\n            next_content = row.data;\r\n            foundMatch = false;\r\n        }\r\n        if (!foundMatch && for_id == cur_content_id) {\r\n            foundMatch = true;\r\n        }\r\n    });\r\n\r\n    const review_results_state = uiLogic.parent_form.control.details.review_results.state;\r\n    review_results_state.keepAlive = true;\r\n    review_results_state.visible = false;\r\n    const grouppanel6_state = uiLogic.parent_form.control.details.grouppanel6.state;\r\n\r\n    if (next_content) {\r\n        ctx.review_content = next_content.id;\r\n        grouppanel6_state.visible = false;\r\n        const choose_data = uiLogic.parent_form.control.details.choosed_content;\r\n        choose_data.setDataValue(next_content.id);\r\n    } else {\r\n        grouppanel6_state.visible = true;\r\n        const choose_data = uiLogic.parent_form.control.details.choosed_content;\r\n        choose_data.setDataValue(null);\r\n    }\r\n}",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 976,
       "logicNodeType" : "RAWJSCODE",
-      "memo" : "ibiz.mc.command.create.send({ srfdecodename: 'review_content'})",
-      "name" : "通知刷新",
+      "name" : "控制表单状态",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "END1"
+          "id" : "RAWJSCODE4"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE4"
+          "id" : "RAWJSCODE2"
         }
       } ],
-      "topPos" : 208
+      "topPos" : 140
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 222,
@@ -1820,57 +1825,37 @@
       } ],
       "topPos" : 292
     }, {
-      "code" : "const rows = uiLogic.content_grid.state.rows;\r\nconst ctx = uiLogic.ctx;\r\n\r\nif (rows && rows.length > 0) {\r\n    const cur_content_id = ctx.review_content;\r\n    let next_content = null;\r\n    let foundMatch = false;\r\n\r\n    rows.forEach((row, index) => {\r\n        const for_id = row.data.id;\r\n        if (foundMatch) {\r\n            next_content = row.data;\r\n            foundMatch = false;\r\n        }\r\n        if (!foundMatch && for_id == cur_content_id) {\r\n            foundMatch = true;\r\n        }\r\n    });\r\n\r\n    const review_results_state = uiLogic.parent_form.control.details.review_results.state;\r\n    review_results_state.keepAlive = true;\r\n    review_results_state.visible = false;\r\n    const grouppanel6_state = uiLogic.parent_form.control.details.grouppanel6.state;\r\n\r\n    if (next_content) {\r\n        ctx.review_content = next_content.id;\r\n        grouppanel6_state.visible = false;\r\n        const choose_data = uiLogic.parent_form.control.details.choosed_content;\r\n        choose_data.setDataValue(next_content.id);\r\n    } else {\r\n        grouppanel6_state.visible = true;\r\n        const choose_data = uiLogic.parent_form.control.details.choosed_content;\r\n        choose_data.setDataValue(null);\r\n    }\r\n}",
-      "codeName" : "RAWJSCODE2",
-      "leftPos" : 976,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "控制表单状态",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE4"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        }
-      } ],
-      "topPos" : 140
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 1500,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
-    }, {
       "code" : "util.message.error('请填写拒绝评审意见!');",
       "codeName" : "RAWJSCODE5",
       "leftPos" : 543,
       "logicNodeType" : "RAWJSCODE",
       "name" : "拒绝评审意见必填",
       "topPos" : 341
+    }, {
+      "code" : "const grid = uiLogic.content_grid;\r\nawait grid.load({ isInitialLoad: false, triggerSource: 'REFRESH' });\r\nif (uiLogic.next_content) {\r\n    const item = grid.state.items.find(x => x.id === uiLogic.next_content.id);\r\n    if (item) {\r\n        grid.setSelection([item], false);\r\n    }\r\n}",
+      "codeName" : "RAWJSCODE4",
+      "leftPos" : 1240,
+      "logicNodeType" : "RAWJSCODE",
+      "memo" : "ibiz.mc.command.create.send({ srfdecodename: 'review_content'})",
+      "name" : "通知刷新",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE4"
+        }
+      } ],
+      "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "review_content",
-      "logicName" : "评审内容",
-      "name" : "评审内容",
-      "entityParam" : true
-    }, {
-      "codeName" : "view",
-      "logicName" : "当前视图对象",
-      "name" : "当前视图对象",
-      "activeViewParam" : true
-    }, {
       "codeName" : "parent_form",
       "logicName" : "父表单",
       "name" : "父表单",
-      "entityParam" : true
-    }, {
-      "codeName" : "parentView",
-      "logicName" : "父视图",
-      "name" : "父视图",
       "entityParam" : true
     }, {
       "codeName" : "ctx",
@@ -1878,10 +1863,30 @@
       "name" : "上下文",
       "navContextParam" : true
     }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
+    }, {
       "codeName" : "form",
       "logicName" : "当前表单",
       "name" : "当前表单",
       "ctrlParam" : true
+    }, {
+      "codeName" : "next_content",
+      "logicName" : "下一条内容",
+      "name" : "下一条内容",
+      "entityParam" : true
+    }, {
+      "codeName" : "review_content",
+      "logicName" : "评审内容",
+      "name" : "评审内容",
+      "entityParam" : true
+    }, {
+      "codeName" : "content_grid",
+      "logicName" : "评审内容表格",
+      "name" : "评审内容表格",
+      "entityParam" : true
     }, {
       "codeName" : "grid_view",
       "logicName" : "评审内容表格视图",
@@ -1894,9 +1899,9 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "content_grid",
-      "logicName" : "评审内容表格",
-      "name" : "评审内容表格",
+      "codeName" : "parentView",
+      "logicName" : "父视图",
+      "name" : "父视图",
       "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
