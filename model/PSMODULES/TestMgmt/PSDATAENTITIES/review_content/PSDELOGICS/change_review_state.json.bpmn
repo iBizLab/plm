@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.testmgmt.service.logic.review_contentchange_review_state" isClosed="false" isExecutable="true" name="testmgmt_review_content_change_review_state_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.testmgmt.service.logic.review_contentchange_review_state">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="review_contentchange_review_statedefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.idea()" name="review_contentchange_review_stateidea" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.test_case()" name="review_contentchange_review_statetest_case" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Itest_caseService))" name="test_caseservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IideaService))" name="ideaservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Ireview_contentService))" name="iBzSysReview_contentDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="review_contentchange_review_statedefault" type="cn.ibizlab.plm.core.testmgmt.domain.review_content" />
+                            <tns:global identifier="review_contentchange_review_stateidea" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
+                            <tns:global identifier="review_contentchange_review_statetest_case" type="cn.ibizlab.plm.core.testmgmt.domain.test_case" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentchange_review_stateprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置评审状态为通过"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentchange_review_statedeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="更新测试用例"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentchange_review_stateprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="获取测试用例ID"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentchange_review_stateprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置评审状态为拒绝"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentchange_review_stateend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentchange_review_statedebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentchange_review_stateprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="设置评审状态为通过"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentchange_review_stateprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="获取产品需求ID"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentchange_review_statedeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentchange_review_stateprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="设置评审状态为拒绝"/>
+                    <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_end1" sourceRef="deaction1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam1_prepareparam2" sourceRef="gateway-prepareparam1" targetRef="prepareparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $review_contentchange_review_statedefault:review_content();
+                                            $review_contentchange_review_stateidea:idea();
+                                            $review_contentchange_review_statetest_case:test_case();
+                                    eval($review_contentchange_review_statedefault==review_contentchange_review_statedefault && $review_contentchange_review_stateidea==review_contentchange_review_stateidea && $review_contentchange_review_statetest_case==review_contentchange_review_statetest_case);
+                                eval((RuleUtils.test($review_contentchange_review_statedefault.get("finalStageResults"),"EQ","1")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam1_prepareparam3" sourceRef="gateway-prepareparam1" targetRef="prepareparam3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $review_contentchange_review_statedefault:review_content();
+                                            $review_contentchange_review_stateidea:idea();
+                                            $review_contentchange_review_statetest_case:test_case();
+                                    eval($review_contentchange_review_statedefault==review_contentchange_review_statedefault && $review_contentchange_review_stateidea==review_contentchange_review_stateidea && $review_contentchange_review_statetest_case==review_contentchange_review_statetest_case);
+                                eval((RuleUtils.test($review_contentchange_review_statedefault.get("finalStageResults"),"EQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_deaction1" sourceRef="prepareparam3" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam1_prepareparam1" sourceRef="gateway-debugparam1" targetRef="prepareparam1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $review_contentchange_review_statedefault:review_content();
+                                            $review_contentchange_review_stateidea:idea();
+                                            $review_contentchange_review_statetest_case:test_case();
+                                    eval($review_contentchange_review_statedefault==review_contentchange_review_statedefault && $review_contentchange_review_stateidea==review_contentchange_review_stateidea && $review_contentchange_review_statetest_case==review_contentchange_review_statetest_case);
+                                eval((RuleUtils.test($review_contentchange_review_statedefault.get("targetType"),"EQ","TEST_CASE")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam1_prepareparam4" sourceRef="gateway-debugparam1" targetRef="prepareparam4">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $review_contentchange_review_statedefault:review_content();
+                                            $review_contentchange_review_stateidea:idea();
+                                            $review_contentchange_review_statetest_case:test_case();
+                                    eval($review_contentchange_review_statedefault==review_contentchange_review_statedefault && $review_contentchange_review_stateidea==review_contentchange_review_stateidea && $review_contentchange_review_statetest_case==review_contentchange_review_statetest_case);
+                                eval((RuleUtils.test($review_contentchange_review_statedefault.get("targetType"),"EQ","IDEA")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam5_deaction2" sourceRef="prepareparam5" targetRef="deaction2">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam4_prepareparam5" sourceRef="gateway-prepareparam4" targetRef="prepareparam5">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $review_contentchange_review_statedefault:review_content();
+                                            $review_contentchange_review_stateidea:idea();
+                                            $review_contentchange_review_statetest_case:test_case();
+                                    eval($review_contentchange_review_statedefault==review_contentchange_review_statedefault && $review_contentchange_review_stateidea==review_contentchange_review_stateidea && $review_contentchange_review_statetest_case==review_contentchange_review_statetest_case);
+                                eval((RuleUtils.test($review_contentchange_review_statedefault.get("finalStageResults"),"EQ","1")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam4_prepareparam6" sourceRef="gateway-prepareparam4" targetRef="prepareparam6">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $review_contentchange_review_statedefault:review_content();
+                                            $review_contentchange_review_stateidea:idea();
+                                            $review_contentchange_review_statetest_case:test_case();
+                                    eval($review_contentchange_review_statedefault==review_contentchange_review_statedefault && $review_contentchange_review_stateidea==review_contentchange_review_stateidea && $review_contentchange_review_statetest_case==review_contentchange_review_statetest_case);
+                                eval((RuleUtils.test($review_contentchange_review_statedefault.get("finalStageResults"),"EQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction2_end1" sourceRef="deaction2" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam6_deaction2" sourceRef="prepareparam6" targetRef="deaction2">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-prepareparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam1_gateway-prepareparam1_gatewayline" sourceRef="prepareparam1" targetRef="gateway-prepareparam1"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam1_end_line" sourceRef="gateway-prepareparam1" targetRef="gateway-prepareparam1_end"/>
+                            <endEvent id="gateway-prepareparam1_end" name="end"/>
+                            <exclusiveGateway id="gateway-debugparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="debugparam1_gateway-debugparam1_gatewayline" sourceRef="debugparam1" targetRef="gateway-debugparam1"></sequenceFlow>
+                            <sequenceFlow id="gateway-debugparam1_end_line" sourceRef="gateway-debugparam1" targetRef="gateway-debugparam1_end"/>
+                            <endEvent id="gateway-debugparam1_end" name="end"/>
+                            <exclusiveGateway id="gateway-prepareparam4" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam4_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam4_gateway-prepareparam4_gatewayline" sourceRef="prepareparam4" targetRef="gateway-prepareparam4"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam4_end_line" sourceRef="gateway-prepareparam4" targetRef="gateway-prepareparam4_end"/>
+                            <endEvent id="gateway-prepareparam4_end" name="end"/>
+        </process>
+    </definitions>

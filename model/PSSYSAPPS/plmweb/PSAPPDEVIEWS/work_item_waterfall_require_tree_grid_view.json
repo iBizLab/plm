@@ -495,6 +495,12 @@
               "modelref" : true,
               "id" : "SUBDATA"
             },
+            "getPSNavigateParams" : [ {
+              "key" : "project_id",
+              "name" : "project_id",
+              "value" : "project",
+              "rawValue" : false
+            } ],
             "uIActionMode" : "FRONT",
             "uIActionTag" : "waterfall_upload_back",
             "uIActionType" : "DEUIACTION",
@@ -1887,7 +1893,7 @@
         "caption" : "优先级",
         "codeName" : "priority",
         "columnType" : "DEFGRIDCOLUMN",
-        "dataItemName" : "priority",
+        "dataItemName" : "priority_text",
         "excelCaption" : "优先级",
         "name" : "priority",
         "noPrivDisplayMode" : 1,
@@ -2262,6 +2268,13 @@
         "getPSAppDEField" : {
           "name" : "ASSIGNEE_NAME",
           "codeName" : "assignee_name"
+        }
+      }, {
+        "dataType" : 25,
+        "name" : "priority_text",
+        "getPSAppDEField" : {
+          "name" : "PRIORITY",
+          "codeName" : "priority"
         }
       }, {
         "dataType" : 25,
@@ -2690,14 +2703,33 @@
           "codeName" : "priority"
         },
         "getPSEditor" : {
+          "editorParams" : {
+            "SRFNAVPARAM.project_type" : "scrum"
+          },
           "editorType" : "DROPDOWNLIST",
           "name" : "priority",
           "getPSAppCodeList" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__work_item_priority.json"
           },
+          "getPSEditorItems" : [ {
+            "name" : "priority",
+            "getPSNavigateParams" : [ {
+              "key" : "project_type",
+              "name" : "project_type",
+              "value" : "scrum",
+              "rawValue" : true
+            } ]
+          } ],
+          "getPSNavigateParams" : [ {
+            "key" : "project_type",
+            "name" : "project_type",
+            "value" : "scrum",
+            "rawValue" : true
+          } ],
           "singleSelect" : true
         },
+        "valueItemName" : "priority",
         "allowEmpty" : true,
         "needCodeListConfig" : true
       }, {

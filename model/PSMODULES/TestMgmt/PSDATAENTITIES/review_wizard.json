@@ -18,6 +18,16 @@
   "getAllPSDEActions" : [ {
     "actionMode" : "CREATE",
     "actionType" : "BUILTIN",
+    "getAfterPSDEActionLogics" : [ {
+      "actionLogicType" : 1,
+      "attachMode" : "AFTER",
+      "name" : "附加逻辑",
+      "getPSDELogic" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_wizard/PSDELOGICS/create_review_notify.json"
+      },
+      "internalLogic" : true
+    } ],
     "codeName" : "Create",
     "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_wizard/PSDEACTIONS/Create.json",
@@ -757,8 +767,8 @@
     "dataType" : "TEXT",
     "dupCheckMode" : "ALL",
     "getDupCheckPSDEFields" : [ {
-      "name" : "LIBRARY_ID",
-      "codeName" : "library_id"
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
     } ],
     "importOrder" : 1000,
     "getLNPSLanguageRes" : {
@@ -777,7 +787,7 @@
     },
     "getPSSysSequence" : {
       "modelref" : true,
-      "path" : "PSSYSSEQUENCES/seq_review_id.json"
+      "path" : "PSSYSSEQUENCES/common_seq_review_id.json"
     },
     "sequenceMode" : "CREATE",
     "serviceCodeName" : "identifier",
@@ -968,6 +978,12 @@
       "name" : "PRINCIPAL_ID",
       "queryCodeExp" : "t1.`PRINCIPAL_ID`",
       "standardColumnName" : "`PRINCIPAL_ID`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_PRINCIPAL_ID_EQ",
+      "name" : "N_PRINCIPAL_ID_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -2103,7 +2119,7 @@
       "columnName" : "SHOW_IDENTIFIER",
       "dBType" : "MYSQL5",
       "name" : "SHOW_IDENTIFIER",
-      "queryCodeExp" : "concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`)",
+      "queryCodeExp" : "concat(t1.`IDENTIFIER`)",
       "standardColumnName" : "`SHOW_IDENTIFIER`"
     } ],
     "getAllPSDEFUIModes" : [ {
@@ -2165,8 +2181,8 @@
     "codeName" : "show_identifier",
     "dEFType" : 2,
     "dataType" : "TEXT",
-    "formulaColumns" : "library_identifier;identifier",
-    "formulaFormat" : "concat(%1$s,'-',%2$s)",
+    "formulaColumns" : "identifier",
+    "formulaFormat" : "concat(%1$s)",
     "importOrder" : 1000,
     "getLNPSLanguageRes" : {
       "lanResTag" : "DEF.LNAME.SHOW_IDENTIFIER"
@@ -3379,6 +3395,103 @@
     "enableBackend" : true,
     "enableFront" : false
   }, {
+    "codeName" : "create_review_notify",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_wizard/PSDELOGICS/create_review_notify.json",
+    "logicName" : "评审新建通知",
+    "name" : "评审新建通知",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 530,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 142,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DENOTIFY1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "DENOTIFY1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDENotify" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_wizard/PSDENOTIFIES/idea_review_notify.json"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_wizard.json"
+      },
+      "leftPos" : 337,
+      "logicNodeType" : "DENOTIFY",
+      "name" : "实体通知",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DENOTIFY1"
+        }
+      } ],
+      "topPos" : 208
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_wizard.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "fill_guideline",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_wizard/PSDELOGICS/fill_guideline.json",
@@ -4241,6 +4354,20 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "评审主体标识",
+      "name" : "n_principal_id_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_PRINCIPAL_ID_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "PRINCIPAL_ID",
+        "codeName" : "principal_id"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "defaultValue" : "10",
       "logicName" : "评审状态",
       "name" : "n_state_eq",
@@ -4273,6 +4400,29 @@
     "sourceType" : "DE",
     "type" : "DEFILTER",
     "defaultMode" : true
+  } ],
+  "getAllPSDENotifies" : [ {
+    "codeName" : "idea_review_notify",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_wizard/PSDENOTIFIES/idea_review_notify.json",
+    "msgType" : 1,
+    "name" : "新建需求评审通知",
+    "getPSDENotifyTargets" : [ {
+      "name" : "reviewers",
+      "getPSSysMsgTarget" : {
+        "modelref" : true,
+        "path" : "PSSYSMSGTARGETS/reviewers.json"
+      },
+      "targetType" : "SYSMSGTARGET"
+    } ],
+    "getPSSysMsgQueue" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSSYSMSGQUEUES/Default.json"
+    },
+    "getPSSysMsgTempl" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSSYSMSGTEMPLS/idea_create_review.json"
+    },
+    "taskMode" : 0
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "建立",
@@ -4553,6 +4703,38 @@
     "removeOrder" : -1,
     "serviceCodeName" : "review_wizard",
     "typeValue" : "REVIEW:REVIEW"
+  }, {
+    "codeName" : "review_wizard",
+    "dERSubType" : "DER1N",
+    "dERType" : "DERCUSTOM",
+    "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/review_content_idea/PSDERS/DERCUSTOM_REVIEW_CONTENT_IDEA_REVIEW_WIZARD.json",
+    "logicName" : "评审-评审内容",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_wizard.json"
+    },
+    "masterOrder" : 100,
+    "masterRS" : 3,
+    "minorCodeName" : "review_content_ideas",
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/review_content_idea.json"
+    },
+    "minorServiceCodeName" : "review_content_ideas",
+    "name" : "DERCUSTOM_REVIEW_CONTENT_IDEA_REVIEW_WIZARD",
+    "getNestedPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "all"
+    },
+    "orderValue" : 100,
+    "pickupDEFName" : "PRINCIPAL_ID",
+    "getPickupPSDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "removeActionType" : 1,
+    "removeOrder" : -1,
+    "serviceCodeName" : "review_wizard"
   }, {
     "codeName" : "review_wizard",
     "dERSubType" : "DER1N",

@@ -204,6 +204,10 @@
         "frontProcessType" : "WIZARD",
         "fullCodeName" : "review_new_idea_review",
         "name" : "新建需求评审",
+        "getPSAppDEUILogic" : {
+          "modelref" : true,
+          "id" : "notify_refresh"
+        },
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
@@ -216,6 +220,7 @@
         "uIActionMode" : "FRONT",
         "uIActionTag" : "new_idea_review",
         "uIActionType" : "DEUIACTION",
+        "uILogicAttachMode" : "AFTER",
         "closeEditView" : true,
         "closePopupView" : true,
         "reloadData" : true,
@@ -422,6 +427,7 @@
             "dataAccessAction" : "SUBDATA",
             "frontProcessType" : "OTHER",
             "fullCodeName" : "review_submit_review",
+            "memo" : "SUBDATA",
             "name" : "提交评审",
             "getPSAppDEMethod" : {
               "modelref" : true,
@@ -467,6 +473,7 @@
             "codeName" : "repeal_review",
             "dataAccessAction" : "SUBDATA",
             "fullCodeName" : "review_repeal_review",
+            "memo" : "SUBDATA",
             "name" : "撤销评审",
             "getPSAppDEMethod" : {
               "modelref" : true,
@@ -579,6 +586,44 @@
             "uIActionType" : "DEUIACTION",
             "reloadData" : true,
             "id" : "set_category@review"
+          },
+          "addSeparator" : false,
+          "showCaption" : true,
+          "showIcon" : true
+        }, {
+          "caption" : "设置类别",
+          "detailType" : "DEUIACTION",
+          "name" : "u3479786",
+          "getPSSysImage" : {
+            "glyph" : "xf044@FontAwesome",
+            "cssClass" : "fa fa-edit"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEDATA",
+            "caption" : "设置类别",
+            "codeName" : "set_idea_category",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_idea_set_category_option_view.json",
+              "viewType" : "DEOPTVIEW"
+            },
+            "frontProcessType" : "WIZARD",
+            "fullCodeName" : "review_set_idea_category",
+            "name" : "设置需求评审类别",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf044@FontAwesome",
+              "cssClass" : "fa fa-edit"
+            },
+            "refreshMode" : 1,
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "set_idea_category",
+            "uIActionType" : "DEUIACTION",
+            "reloadData" : true,
+            "id" : "set_idea_category@review"
           },
           "addSeparator" : false,
           "showCaption" : true,
@@ -1170,6 +1215,28 @@
   "modelid" : "72c95e53f6dea6e72e93d327145d534f",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "reviews",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "product",
+    "majorDEName" : "PRODUCT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+    },
+    "minorDECodeName" : "review",
+    "minorDEName" : "REVIEW",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+    },
+    "name" : "DERCUSTOM_REVIEW_PRODUCT_PRINCIPAL_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "rSMode" : 2
+  } ], [ {
     "actionRSMode" : 1,
     "codeName" : "reviews",
     "dataRSMode" : 0,

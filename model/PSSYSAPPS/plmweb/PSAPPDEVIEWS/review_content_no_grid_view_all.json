@@ -331,10 +331,10 @@
         "actionAfterWizard" : "DEFAULT",
         "getBatchAddPSAppViews" : [ {
           "openMode" : "POPUPMODAL",
-          "refMode" : "TEST_CASE",
+          "refMode" : "IDEA",
           "getRefPSAppView" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view2_review.json",
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_review_re_idea_view.json",
             "viewType" : "DEMPICKUPVIEW2"
           }
         } ],
@@ -359,10 +359,10 @@
           }
         }, {
           "openMode" : "POPUPMODAL",
-          "refMode" : "TEST_CASE",
+          "refMode" : "IDEA",
           "getRefPSAppView" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view2_review.json",
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_review_re_idea_view.json",
             "viewType" : "DEMPICKUPVIEW2"
           }
         } ],
@@ -438,16 +438,19 @@
         "viewType" : "DEEDITVIEW"
       }
     }, {
-      "name" : "MPICKUPVIEW:REVIEW_WIZARD"
-    }, {
-      "name" : "MPICKUPVIEW:TEST_CASE",
+      "name" : "MPICKUPVIEW:IDEA",
       "realOpenMode" : "POPUPMODAL",
-      "realTitle" : "用例实体数据多项选择",
+      "realTitle" : "计划关联需求多项数据选择视图",
+      "getRealTitlePSLanguageRes" : {
+        "lanResTag" : "PAGE.TITLE.IDEA.OTHERS_RELATION_IDEA_VIEW"
+      },
       "getRefPSAppView" : {
         "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view2_review.json",
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_review_re_idea_view.json",
         "viewType" : "DEMPICKUPVIEW2"
       }
+    }, {
+      "name" : "MPICKUPVIEW:REVIEW_WIZARD"
     } ],
     "getPSControls" : [ {
       "codeName" : "no_grid_view_all_toolbar",
@@ -1548,6 +1551,50 @@
   "modelid" : "83523b7767f2949141412f8265235d29",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "reviews",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "product",
+    "majorDEName" : "PRODUCT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+    },
+    "minorDECodeName" : "review",
+    "minorDEName" : "REVIEW",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+    },
+    "name" : "DERCUSTOM_REVIEW_PRODUCT_PRINCIPAL_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "review_contents",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "review",
+    "majorDEName" : "REVIEW",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+    },
+    "minorDECodeName" : "review_content",
+    "minorDEName" : "REVIEW_CONTENT",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
+    },
+    "name" : "DERCUSTOM_REVIEW_CONTENT_REVIEW",
+    "getParentPSAppDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "rSMode" : 2
+  } ], [ {
     "actionRSMode" : 1,
     "codeName" : "test_cases",
     "dataRSMode" : 0,

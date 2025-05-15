@@ -730,6 +730,45 @@
     "requestPath" : "/get_draft",
     "builtinMethod" : false
   }, {
+    "actionMode" : "READ",
+    "codeName" : "get_redirect_data",
+    "methodType" : "DEACTION",
+    "name" : "get_redirect_data",
+    "getPSAppDEMethodInput" : {
+      "getKeyPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "name" : "输入对象",
+      "type" : "KEYFIELD"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "review_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/get_redirect_data.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "get_redirect_data"
+    },
+    "requestField" : "ID",
+    "requestMethod" : "GET",
+    "requestParamType" : "FIELD",
+    "requestPath" : "/get_redirect_data",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "nothing",
@@ -1351,6 +1390,37 @@
     "name" : "DESCRIPTION",
     "stdDataType" : 25,
     "stringLength" : 2000
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[REVIEWER][评审人]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[REVIEWER][评审人]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[REVIEWER][评审人]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[REVIEWER][评审人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "codeName" : "reviewer",
+    "logicName" : "评审人",
+    "name" : "REVIEWER",
+    "stdDataType" : 25,
+    "stringLength" : 100
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "Default",
@@ -3193,6 +3263,17 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "codeName" : "reviewer",
+      "logicName" : "评审人",
+      "name" : "reviewer",
+      "getPSAppDEField" : {
+        "name" : "REVIEWER",
+        "codeName" : "reviewer"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "codeName" : "submitted_at",
       "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
       "logicName" : "提交时间",
@@ -4402,6 +4483,45 @@
     "requestPath" : "/get_draft",
     "builtinMethod" : false
   }, {
+    "actionMode" : "READ",
+    "codeName" : "get_redirect_data",
+    "methodType" : "DEACTION",
+    "name" : "get_redirect_data",
+    "getPSAppDEMethodInput" : {
+      "getKeyPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "name" : "输入对象",
+      "type" : "KEYFIELD"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "review_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/get_redirect_data.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "get_redirect_data"
+    },
+    "requestField" : "ID",
+    "requestMethod" : "GET",
+    "requestParamType" : "FIELD",
+    "requestPath" : "/get_redirect_data",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "nothing",
@@ -5002,6 +5122,45 @@
   }, {
     "actionTarget" : "NONE",
     "caption" : "添加内容",
+    "codeName" : "add_idea_review_content",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_review_re_idea_view.json",
+      "viewType" : "DEMPICKUPVIEW2"
+    },
+    "fullCodeName" : "review_add_idea_review_content",
+    "name" : "添加需求评审内容",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "add_review_content"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+    },
+    "getPSNavigateParams" : [ {
+      "key" : "tag",
+      "name" : "tag",
+      "value" : "IDEA",
+      "rawValue" : true
+    }, {
+      "key" : "review",
+      "name" : "review",
+      "value" : "review",
+      "rawValue" : false
+    } ],
+    "paramItem" : "review",
+    "refreshMode" : 1,
+    "timeout" : 60000,
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "add_idea_review_content",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "add_idea_review_content@review"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "添加内容",
     "codeName" : "add_review_content",
     "getFrontPSAppView" : {
       "modelref" : true,
@@ -5019,6 +5178,11 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
     },
     "getPSNavigateParams" : [ {
+      "key" : "tag",
+      "name" : "tag",
+      "value" : "TEST_CASE",
+      "rawValue" : true
+    }, {
       "key" : "review",
       "name" : "review",
       "value" : "review",
@@ -5151,6 +5315,10 @@
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "review_new_idea_review",
     "name" : "新建需求评审",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "notify_refresh"
+    },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
@@ -5163,6 +5331,7 @@
     "uIActionMode" : "FRONT",
     "uIActionTag" : "new_idea_review",
     "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "AFTER",
     "closeEditView" : true,
     "closePopupView" : true,
     "reloadData" : true,
@@ -5213,6 +5382,7 @@
     "codeName" : "repeal_review",
     "dataAccessAction" : "SUBDATA",
     "fullCodeName" : "review_repeal_review",
+    "memo" : "SUBDATA",
     "name" : "撤销评审",
     "getPSAppDEMethod" : {
       "modelref" : true,
@@ -5267,11 +5437,38 @@
     "id" : "set_category@review"
   }, {
     "actionTarget" : "SINGLEDATA",
+    "caption" : "设置类别",
+    "codeName" : "set_idea_category",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_idea_set_category_option_view.json",
+      "viewType" : "DEOPTVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "review_set_idea_category",
+    "name" : "设置需求评审类别",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf044@FontAwesome",
+      "cssClass" : "fa fa-edit"
+    },
+    "refreshMode" : 1,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "set_idea_category",
+    "uIActionType" : "DEUIACTION",
+    "reloadData" : true,
+    "id" : "set_idea_category@review"
+  }, {
+    "actionTarget" : "SINGLEDATA",
     "caption" : "提交评审",
     "codeName" : "submit_review",
     "dataAccessAction" : "SUBDATA",
     "frontProcessType" : "OTHER",
     "fullCodeName" : "review_submit_review",
+    "memo" : "SUBDATA",
     "name" : "提交评审",
     "getPSAppDEMethod" : {
       "modelref" : true,
@@ -5857,7 +6054,7 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "code" : "\tconst rows = uiLogic.grid.state.rows;\r\n    const ctx = uiLogic.ctx;\r\n\tif (rows && rows.length > 0) {\r\n\t\trows.forEach(row => {\r\n\t\t\tconst titleColumn = row.uiActionGroupStates.name;\r\n\t\t\tconst cur_user = ctx.srfuserid;\r\n\t\t\tconst state = row.data.state;\r\n\t\t\tconst create_man = row.data.create_man;\r\n\t\t\tif (titleColumn && Object.values(titleColumn).length > 0) {\r\n\t\t\t\tObject.values(titleColumn).forEach(action => {\r\n                    action.visible = false;\r\n                    if(action.uiActionId === 'delete@review'&& create_man == cur_user){\r\n                        action.visible = true;\r\n                    }else if (action.uiActionId === 'repeal_review@review'&& create_man == cur_user && state == '20' ) {\r\n\t\t\t\t\t\taction.visible = true;\r\n\t\t\t\t\t} else if (action.uiActionId === 'submit_review@review'&& create_man == cur_user && (state == '10'||state == '50') ) {\r\n\t\t\t\t\t\taction.visible = true;\r\n\t\t\t\t\t}else if (action.uiActionId === 'set_category@review'&& create_man == cur_user){\r\n                        action.visible = true;\r\n                    }\r\n\t\t\t\t})\r\n\t\t\t}\r\n\t\t})\r\n\t}\r\n",
+      "code" : "\tconst rows = uiLogic.grid.state.rows;\r\n    const ctx = uiLogic.ctx;\r\n\tif (rows && rows.length > 0) {\r\n\t\trows.forEach(row => {\r\n\t\t\tconst titleColumn = row.uiActionGroupStates.name;\r\n\t\t\tconst cur_user = ctx.srfuserid;\r\n\t\t\tconst state = row.data.state;\r\n            const type = row.data.type;\r\n\t\t\tconst create_man = row.data.create_man;\r\n\t\t\tif (titleColumn && Object.values(titleColumn).length > 0) {\r\n\t\t\t\tObject.values(titleColumn).forEach(action => {\r\n                    action.visible = false;\r\n                    if(action.uiActionId === 'delete@review'&& create_man == cur_user){\r\n                        action.visible = true;\r\n                    }else if (action.uiActionId === 'repeal_review@review'&& create_man == cur_user && state == '20' ) {\r\n\t\t\t\t\t\taction.visible = true;\r\n\t\t\t\t\t} else if (action.uiActionId === 'submit_review@review'&& create_man == cur_user && (state == '10'||state == '50') ) {\r\n\t\t\t\t\t\taction.visible = true;\r\n\t\t\t\t\t}else if (action.uiActionId === 'set_category@review'&& create_man == cur_user && type == 'TEST_CASE'){\r\n                        action.visible = true;\r\n                    }else if (action.uiActionId === 'set_idea_category@review'&& create_man == cur_user && type == 'IDEA'){\r\n                        action.visible = true;\r\n                    }\r\n\t\t\t\t})\r\n\t\t\t}\r\n\t\t})\r\n\t}\r\n",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
@@ -5888,17 +6085,17 @@
       "name" : "上下文",
       "navContextParam" : true
     }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
       "codeName" : "Grid",
       "logicName" : "表格",
       "name" : "表格",
       "activeCtrlParam" : true,
       "ctrlParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -6712,6 +6909,67 @@
       "id" : "Begin"
     }
   }, {
+    "codeName" : "notify_refresh",
+    "defaultParamName" : "Default",
+    "logicName" : "通知刷新",
+    "name" : "通知刷新",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 220,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 230,
+      "parallelOutput" : true
+    }, {
+      "code" : "ibiz.mc.command.create.send({ srfdecodename: 'review'})",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 399,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "通知刷新",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 238
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 650,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 230
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
     "codeName" : "portlet_refresh",
     "defaultParamName" : "Default",
     "logicName" : "门户刷新",
@@ -7106,6 +7364,10 @@
     "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_idea_main_view.json",
+    "viewType" : "DEEDITVIEW"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_edit_view.json",
     "viewType" : "DEEDITVIEW"
   }, {
@@ -7154,6 +7416,10 @@
     "viewType" : "DETREEEXPVIEW"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_idea_set_category_option_view.json",
+    "viewType" : "DEOPTVIEW"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_idea_pick_up_tree_view.json",
     "viewType" : "DEPICKUPTREEVIEW"
   }, {
@@ -7162,6 +7428,20 @@
     "viewType" : "DETREEEXPVIEW"
   } ],
   "getAllPSDEOPPrivs" : [ {
+    "logicName" : "建立",
+    "mapPSDEName" : "PRODUCT",
+    "mapPSDEOPPrivName" : "SUBDATA",
+    "getMapPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDERS/DERCUSTOM_REVIEW_PRODUCT_PRINCIPAL_ID.json"
+    },
+    "getMapPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+    },
+    "name" : "CREATE",
+    "id" : "PRODUCT__CREATE"
+  }, {
     "logicName" : "建立",
     "name" : "CREATE"
   }, {
@@ -7196,6 +7476,20 @@
     "name" : "DELETE",
     "id" : "library__DELETE"
   }, {
+    "logicName" : "删除",
+    "mapPSDEName" : "PRODUCT",
+    "mapPSDEOPPrivName" : "SUBDATA",
+    "getMapPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDERS/DERCUSTOM_REVIEW_PRODUCT_PRINCIPAL_ID.json"
+    },
+    "getMapPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+    },
+    "name" : "DELETE",
+    "id" : "PRODUCT__DELETE"
+  }, {
     "logicName" : "读取",
     "name" : "READ"
   }, {
@@ -7212,6 +7506,34 @@
     },
     "name" : "READ",
     "id" : "library__READ"
+  }, {
+    "logicName" : "读取",
+    "mapPSDEName" : "PRODUCT",
+    "mapPSDEOPPrivName" : "READ",
+    "getMapPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDERS/DERCUSTOM_REVIEW_PRODUCT_PRINCIPAL_ID.json"
+    },
+    "getMapPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+    },
+    "name" : "READ",
+    "id" : "PRODUCT__READ"
+  }, {
+    "logicName" : "更新",
+    "mapPSDEName" : "PRODUCT",
+    "mapPSDEOPPrivName" : "SUBDATA",
+    "getMapPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDERS/DERCUSTOM_REVIEW_PRODUCT_PRINCIPAL_ID.json"
+    },
+    "getMapPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+    },
+    "name" : "UPDATE",
+    "id" : "PRODUCT__UPDATE"
   }, {
     "logicName" : "更新",
     "mapPSDEName" : "LIBRARY",
@@ -7270,6 +7592,28 @@
     "getParentPSAppDEField" : {
       "name" : "LIBRARY_ID",
       "codeName" : "library_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "reviews",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "product",
+    "majorDEName" : "PRODUCT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+    },
+    "minorDECodeName" : "review",
+    "minorDEName" : "REVIEW",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+    },
+    "name" : "DERCUSTOM_REVIEW_PRODUCT_PRINCIPAL_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
     },
     "rSMode" : 2
   } ],
@@ -7391,6 +7735,25 @@
         },
         "modelref" : true,
         "id" : "set_category@review"
+      }
+    }, {
+      "caption" : "设置类别",
+      "detailType" : "DEUIACTION",
+      "name" : "u3479786",
+      "getPSSysImage" : {
+        "glyph" : "xf044@FontAwesome",
+        "cssClass" : "fa fa-edit"
+      },
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+        },
+        "modelref" : true,
+        "id" : "set_idea_category@review"
       }
     } ]
   }, {

@@ -40,8 +40,12 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentcomplete_reviewdelogic1" id="delogic1" implementation="http://www.jboss.org/drools/rule" name="生成最终评审结果"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentcomplete_reviewdebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="当前阶段数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentcomplete_reviewprepareparam8" id="prepareparam8" implementation="http://www.jboss.org/drools/rule" name="附加到数组变量，且获取选中阶段的下一阶段数据"/>
-                        <endEvent id="prepareparam8_end" name="end"/>
-                        <sequenceFlow id="prepareparam8_end_line" sourceRef="prepareparam8" targetRef="prepareparam8_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentcomplete_reviewdenotify1" id="denotify1" implementation="http://www.jboss.org/drools/rule" name="通知下一评审人（需求）"/>
+                        <endEvent id="denotify1_end" name="end"/>
+                        <sequenceFlow id="denotify1_end_line" sourceRef="denotify1" targetRef="denotify1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentcomplete_reviewdenotify2" id="denotify2" implementation="http://www.jboss.org/drools/rule" name="通知下一评审人（测试用例）"/>
+                        <endEvent id="denotify2_end" name="end"/>
+                        <sequenceFlow id="denotify2_end_line" sourceRef="denotify2" targetRef="denotify2_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentcomplete_reviewprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置阶段完成"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentcomplete_reviewprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="附加到数组变量"/>
                         <endEvent id="prepareparam4_end" name="end"/>
@@ -114,6 +118,34 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam8_denotify1" sourceRef="gateway-prepareparam8" targetRef="denotify1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $review_contentcomplete_reviewdefault:review_content();
+                                            $review_contentcomplete_reviewend_stage:review_stage();
+                                            $review_contentcomplete_reviewfor_stage:review_stage();
+                                            $review_contentcomplete_reviewnext_stage:review_stage();
+                                            $review_contentcomplete_reviewreview_detail:review();
+                                            $review_contentcomplete_reviewstage_arr:review_stage();
+                                            $review_contentcomplete_reviewstage_list:review_stage();
+                                    eval($review_contentcomplete_reviewdefault==review_contentcomplete_reviewdefault && $review_contentcomplete_reviewend_stage==review_contentcomplete_reviewend_stage && $review_contentcomplete_reviewfor_stage==review_contentcomplete_reviewfor_stage && $review_contentcomplete_reviewnext_stage==review_contentcomplete_reviewnext_stage && $review_contentcomplete_reviewreview_detail==review_contentcomplete_reviewreview_detail && $review_contentcomplete_reviewstage_arr==review_contentcomplete_reviewstage_arr && $review_contentcomplete_reviewstage_list==review_contentcomplete_reviewstage_list);
+                                eval((RuleUtils.test($review_contentcomplete_reviewreview_detail.get("type"),"EQ","IDEA")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam8_denotify2" sourceRef="gateway-prepareparam8" targetRef="denotify2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $review_contentcomplete_reviewdefault:review_content();
+                                            $review_contentcomplete_reviewend_stage:review_stage();
+                                            $review_contentcomplete_reviewfor_stage:review_stage();
+                                            $review_contentcomplete_reviewnext_stage:review_stage();
+                                            $review_contentcomplete_reviewreview_detail:review();
+                                            $review_contentcomplete_reviewstage_arr:review_stage();
+                                            $review_contentcomplete_reviewstage_list:review_stage();
+                                    eval($review_contentcomplete_reviewdefault==review_contentcomplete_reviewdefault && $review_contentcomplete_reviewend_stage==review_contentcomplete_reviewend_stage && $review_contentcomplete_reviewfor_stage==review_contentcomplete_reviewfor_stage && $review_contentcomplete_reviewnext_stage==review_contentcomplete_reviewnext_stage && $review_contentcomplete_reviewreview_detail==review_contentcomplete_reviewreview_detail && $review_contentcomplete_reviewstage_arr==review_contentcomplete_reviewstage_arr && $review_contentcomplete_reviewstage_list==review_contentcomplete_reviewstage_list);
+                                eval((RuleUtils.test($review_contentcomplete_reviewreview_detail.get("type"),"EQ","TEST_CASE")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
                     <sequenceFlow id="gateway-prepareparam3_prepareparam6" sourceRef="gateway-prepareparam3" targetRef="prepareparam6">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $review_contentcomplete_reviewdefault:review_content();
@@ -138,6 +170,10 @@
                             <sequenceFlow id="debugparam2_gateway-debugparam2_gatewayline" sourceRef="debugparam2" targetRef="gateway-debugparam2"></sequenceFlow>
                             <sequenceFlow id="gateway-debugparam2_end_line" sourceRef="gateway-debugparam2" targetRef="gateway-debugparam2_end"/>
                             <endEvent id="gateway-debugparam2_end" name="end"/>
+                            <exclusiveGateway id="gateway-prepareparam8" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam8_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam8_gateway-prepareparam8_gatewayline" sourceRef="prepareparam8" targetRef="gateway-prepareparam8"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam8_end_line" sourceRef="gateway-prepareparam8" targetRef="gateway-prepareparam8_end"/>
+                            <endEvent id="gateway-prepareparam8_end" name="end"/>
                             <exclusiveGateway id="gateway-prepareparam3" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam3_end_line"></exclusiveGateway>
                             <sequenceFlow id="prepareparam3_gateway-prepareparam3_gatewayline" sourceRef="prepareparam3" targetRef="gateway-prepareparam3"></sequenceFlow>
                             <sequenceFlow id="gateway-prepareparam3_end_line" sourceRef="gateway-prepareparam3" targetRef="gateway-prepareparam3_end"/>

@@ -1192,7 +1192,7 @@
     "caption" : "优先级",
     "codeName" : "priority",
     "columnType" : "DEFGRIDCOLUMN",
-    "dataItemName" : "priority",
+    "dataItemName" : "priority_text",
     "excelCaption" : "优先级",
     "name" : "priority",
     "noPrivDisplayMode" : 1,
@@ -1580,6 +1580,13 @@
     }
   }, {
     "dataType" : 25,
+    "name" : "priority_text",
+    "getPSAppDEField" : {
+      "name" : "PRIORITY",
+      "codeName" : "priority"
+    }
+  }, {
+    "dataType" : 25,
     "name" : "priority",
     "getPSAppDEField" : {
       "name" : "PRIORITY",
@@ -1819,7 +1826,8 @@
         "srfnavparam.project_id" : "%project_id%",
         "srfnavparam.work_item_type_id" : "%work_item_type_id%",
         "type" : "round",
-        "alwaysLoad" : "true"
+        "alwaysLoad" : "true",
+        "SRFNAVPARAM.project" : "%project%"
       },
       "editorType" : "DROPDOWNLIST",
       "name" : "state",
@@ -1856,6 +1864,11 @@
           "name" : "work_item_type_id",
           "value" : "work_item_type_id",
           "rawValue" : false
+        }, {
+          "key" : "project",
+          "name" : "project",
+          "value" : "project",
+          "rawValue" : false
         } ]
       } ],
       "getPSNavigateParams" : [ {
@@ -1872,6 +1885,11 @@
         "key" : "work_item_type_id",
         "name" : "work_item_type_id",
         "value" : "work_item_type_id",
+        "rawValue" : false
+      }, {
+        "key" : "project",
+        "name" : "project",
+        "value" : "project",
         "rawValue" : false
       } ],
       "singleSelect" : true
@@ -2005,14 +2023,33 @@
       "codeName" : "priority"
     },
     "getPSEditor" : {
+      "editorParams" : {
+        "SRFNAVPARAM.project_type" : "scrum"
+      },
       "editorType" : "DROPDOWNLIST",
       "name" : "priority",
       "getPSAppCodeList" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__work_item_priority.json"
       },
+      "getPSEditorItems" : [ {
+        "name" : "priority",
+        "getPSNavigateParams" : [ {
+          "key" : "project_type",
+          "name" : "project_type",
+          "value" : "scrum",
+          "rawValue" : true
+        } ]
+      } ],
+      "getPSNavigateParams" : [ {
+        "key" : "project_type",
+        "name" : "project_type",
+        "value" : "scrum",
+        "rawValue" : true
+      } ],
       "singleSelect" : true
     },
+    "valueItemName" : "priority",
     "allowEmpty" : true,
     "needCodeListConfig" : true
   }, {
