@@ -1380,6 +1380,91 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEDATAQUERIES/baseline_test_case/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "baseline_test_case",
+    "logicName" : "基线用例",
+    "name" : "baseline_test_case",
+    "getPSDEDQMain" : {
+      "getChildPSDEDQJoins" : [ {
+        "getDERPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+        },
+        "getJoinPSDER" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDERS/DERCUSTOM_RELATION_TARGET_TEST_CASE.json"
+        },
+        "getJoinPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+        },
+        "joinType" : "1N",
+        "name" : "RELATION存在1:N（EXISTS (SELECT)）DERCUSTOM_RELATION_TARGET_TEST_CASE",
+        "getPSDEDQGroupCondition" : {
+          "condOp" : "AND",
+          "condType" : "GROUP",
+          "name" : "连接条件",
+          "getPSDEDQConditions" : [ {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "test_case",
+            "fieldName" : "TARGET_TYPE",
+            "name" : "(TARGET_TYPE) 等于(=) test_case",
+            "getPSDEField" : {
+              "name" : "TARGET_TYPE",
+              "codeName" : "target_type"
+            }
+          }, {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "baseline",
+            "fieldName" : "PRINCIPAL_TYPE",
+            "name" : "(PRINCIPAL_TYPE) 等于(=) baseline",
+            "getPSDEField" : {
+              "name" : "PRINCIPAL_TYPE",
+              "codeName" : "principal_type"
+            }
+          }, {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "baseline",
+            "fieldName" : "PRINCIPAL_ID",
+            "name" : "(PRINCIPAL_ID) 等于(=) 网页请求上下文 baseline",
+            "getPSDEField" : {
+              "name" : "PRINCIPAL_ID",
+              "codeName" : "principal_id"
+            },
+            "getPSVARTypeId" : "WEBCONTEXT"
+          } ]
+        }
+      } ],
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "TEST_CASE"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Baseline_test_caseInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "test_case_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Baseline_test_caseResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEDATAQUERIES/bi_detail/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "bi_detail",
@@ -3474,6 +3559,32 @@
     "predefinedType" : "DELOGIC",
     "enableBackend" : true,
     "enableFront" : false
+  }, {
+    "codeName" : "baseline_test_case",
+    "logicName" : "基线用例",
+    "name" : "baseline_test_case",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "baseline_test_case"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Baseline_test_caseInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "test_case_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Baseline_test_caseResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
   }, {
     "codeName" : "bi_detail",
     "logicName" : "BI反查",
@@ -15954,6 +16065,71 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
+      "codeName" : "PREPAREPARAM4",
+      "leftPos" : 456,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET3"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM4"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "baseline",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "baseline_filter"
+        },
+        "name" : "Default[baseline] ==> baseline_filter[baseline]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "baseline",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 76
+    }, {
+      "codeName" : "DEDATASET3",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "baseline_test_case"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "baseline_filter"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+      },
+      "leftPos" : 620,
+      "logicNodeType" : "DEDATASET",
+      "name" : "实体数据集",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET3"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_results"
+      },
+      "topPos" : 113
+    }, {
       "codeName" : "DEBUGPARAM3",
       "getDstPSDELogicParam" : {
         "modelref" : true,
@@ -15981,6 +16157,24 @@
             },
             "logicType" : "SINGLE",
             "name" : "Default[review] 值为空(Nil)"
+          }, {
+            "condOP" : "ISNULL",
+            "dstFieldName" : "baseline",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[baseline] 值为空(Nil)"
+          }, {
+            "condOP" : "ISNULL",
+            "dstFieldName" : "tag",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[tag] 值为空(Nil)"
           } ]
         },
         "getSrcPSDELogicNode" : {
@@ -16006,6 +16200,64 @@
             },
             "logicType" : "SINGLE",
             "name" : "Default[review] 值不为空(NotNil)"
+          }, {
+            "condOP" : "ISNULL",
+            "dstFieldName" : "baseline",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[baseline] 值为空(Nil)"
+          }, {
+            "condOP" : "ISNULL",
+            "dstFieldName" : "tag",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[tag] 值为空(Nil)"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM3"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM4"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "groupOP" : "OR",
+            "logicType" : "GROUP",
+            "name" : "OR",
+            "getPSDELogicLinkConds" : [ {
+              "condOP" : "EQ",
+              "dstFieldName" : "tag",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "logicType" : "SINGLE",
+              "name" : "Default[tag] 等于(=) baseline",
+              "paramValue" : "baseline"
+            }, {
+              "condOP" : "ISNOTNULL",
+              "dstFieldName" : "baseline",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "logicType" : "SINGLE",
+              "name" : "Default[baseline] 值不为空(NotNil)"
+            } ]
           } ]
         },
         "getSrcPSDELogicNode" : {
@@ -16395,6 +16647,11 @@
         "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
       },
       "default" : true,
+      "filterParam" : true
+    }, {
+      "codeName" : "baseline_filter",
+      "logicName" : "基线过滤器",
+      "name" : "基线过滤器",
       "filterParam" : true
     }, {
       "codeName" : "change_version",

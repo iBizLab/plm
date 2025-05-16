@@ -6,6 +6,7 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.set_change_type;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.testmgmt.domain.test_case test_caseset_change_typedefault;
+                global java.util.Map test_caseset_change_typebaseline_filter;
                 global java.util.Map test_caseset_change_typechange_version;
                 global cn.ibizlab.plm.core.testmgmt.domain.test_case test_caseset_change_typefor_obj;
                 global cn.ibizlab.plm.core.testmgmt.domain.test_case test_caseset_change_typepage_results;
@@ -27,12 +28,44 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.set_change_type;
             then
             end
 
+            //逻辑处理节点[准备参数]
+            rule "prepareparam4"
+            ruleflow-group "test_caseset_change_typeprepareparam4"
+            when
+            then
+                            test_caseset_change_typebaseline_filter.set("baseline",test_caseset_change_typedefault.get("baseline"));
+                        update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typebaseline_filter);//更新fact中变量值
+                        update(test_caseset_change_typechange_version);//更新fact中变量值
+                        update(test_caseset_change_typefor_obj);//更新fact中变量值
+                        update(test_caseset_change_typepage_results);//更新fact中变量值
+                        update(test_caseset_change_typereview_detail);//更新fact中变量值
+                        update(test_caseset_change_typeversion_filter);//更新fact中变量值
+                        update(test_caseset_change_typeversion_pages_results);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体数据集]
+            rule "dedataset3"
+            ruleflow-group "test_caseset_change_typededataset3"
+            when
+            then
+                        update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typebaseline_filter);//更新fact中变量值
+                        update(test_caseset_change_typechange_version);//更新fact中变量值
+                        update(test_caseset_change_typefor_obj);//更新fact中变量值
+                        update(test_caseset_change_typepage_results);//更新fact中变量值
+                        update(test_caseset_change_typereview_detail);//更新fact中变量值
+                        update(test_caseset_change_typeversion_filter);//更新fact中变量值
+                        update(test_caseset_change_typeversion_pages_results);//更新fact中变量值
+            end
+
             //逻辑处理节点[调试逻辑参数]
             rule "debugparam3"
             ruleflow-group "test_caseset_change_typedebugparam3"
             when
             then
                         update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typebaseline_filter);//更新fact中变量值
                         update(test_caseset_change_typechange_version);//更新fact中变量值
                         update(test_caseset_change_typefor_obj);//更新fact中变量值
                         update(test_caseset_change_typepage_results);//更新fact中变量值
@@ -47,6 +80,7 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.set_change_type;
             when
             then
                         update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typebaseline_filter);//更新fact中变量值
                         update(test_caseset_change_typechange_version);//更新fact中变量值
                         update(test_caseset_change_typefor_obj);//更新fact中变量值
                         update(test_caseset_change_typepage_results);//更新fact中变量值
@@ -61,6 +95,7 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.set_change_type;
             when
             then
                         update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typebaseline_filter);//更新fact中变量值
                         update(test_caseset_change_typechange_version);//更新fact中变量值
                         update(test_caseset_change_typefor_obj);//更新fact中变量值
                         update(test_caseset_change_typepage_results);//更新fact中变量值
@@ -75,6 +110,7 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.set_change_type;
             when
             then
                         update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typebaseline_filter);//更新fact中变量值
                         update(test_caseset_change_typechange_version);//更新fact中变量值
                         update(test_caseset_change_typefor_obj);//更新fact中变量值
                         update(test_caseset_change_typepage_results);//更新fact中变量值
@@ -91,6 +127,7 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.set_change_type;
                             test_caseset_change_typeversion_filter.set("n_owner_id_eq",test_caseset_change_typefor_obj.get("id"));
                             test_caseset_change_typeversion_filter.set("size","2");
                         update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typebaseline_filter);//更新fact中变量值
                         update(test_caseset_change_typechange_version);//更新fact中变量值
                         update(test_caseset_change_typefor_obj);//更新fact中变量值
                         update(test_caseset_change_typepage_results);//更新fact中变量值
@@ -116,6 +153,7 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.set_change_type;
                                     }
                             }
                         update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typebaseline_filter);//更新fact中变量值
                         update(test_caseset_change_typechange_version);//更新fact中变量值
                         update(test_caseset_change_typefor_obj);//更新fact中变量值
                         update(test_caseset_change_typepage_results);//更新fact中变量值
@@ -130,6 +168,7 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.set_change_type;
             when
             then
                         update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typebaseline_filter);//更新fact中变量值
                         update(test_caseset_change_typechange_version);//更新fact中变量值
                         update(test_caseset_change_typefor_obj);//更新fact中变量值
                         update(test_caseset_change_typepage_results);//更新fact中变量值
@@ -144,6 +183,7 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.set_change_type;
             when
             then
                         update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typebaseline_filter);//更新fact中变量值
                         update(test_caseset_change_typechange_version);//更新fact中变量值
                         update(test_caseset_change_typefor_obj);//更新fact中变量值
                         update(test_caseset_change_typepage_results);//更新fact中变量值
@@ -159,6 +199,7 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.set_change_type;
             then
                             test_caseset_change_typefor_obj.set("change_type","0");
                         update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typebaseline_filter);//更新fact中变量值
                         update(test_caseset_change_typechange_version);//更新fact中变量值
                         update(test_caseset_change_typefor_obj);//更新fact中变量值
                         update(test_caseset_change_typepage_results);//更新fact中变量值
@@ -174,6 +215,7 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.set_change_type;
             then
                             test_caseset_change_typefor_obj.set("change_type","1");
                         update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typebaseline_filter);//更新fact中变量值
                         update(test_caseset_change_typechange_version);//更新fact中变量值
                         update(test_caseset_change_typefor_obj);//更新fact中变量值
                         update(test_caseset_change_typepage_results);//更新fact中变量值
@@ -188,6 +230,7 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.set_change_type;
             when
             then
                         update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typebaseline_filter);//更新fact中变量值
                         update(test_caseset_change_typechange_version);//更新fact中变量值
                         update(test_caseset_change_typefor_obj);//更新fact中变量值
                         update(test_caseset_change_typepage_results);//更新fact中变量值
@@ -202,6 +245,7 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.set_change_type;
             when
             then
                         update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typebaseline_filter);//更新fact中变量值
                         update(test_caseset_change_typechange_version);//更新fact中变量值
                         update(test_caseset_change_typefor_obj);//更新fact中变量值
                         update(test_caseset_change_typepage_results);//更新fact中变量值
@@ -216,6 +260,7 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.set_change_type;
             when
             then
                         update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typebaseline_filter);//更新fact中变量值
                         update(test_caseset_change_typechange_version);//更新fact中变量值
                         update(test_caseset_change_typefor_obj);//更新fact中变量值
                         update(test_caseset_change_typepage_results);//更新fact中变量值

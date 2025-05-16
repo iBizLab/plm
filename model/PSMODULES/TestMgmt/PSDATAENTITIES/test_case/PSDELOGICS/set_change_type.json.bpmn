@@ -6,6 +6,7 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="test_caseset_change_typedefault" type="entity"/>
+                                <tns:metaData express="new HashMap()" name="test_caseset_change_typebaseline_filter" type="refentity"/>
                                 <tns:metaData express="new HashMap()" name="test_caseset_change_typechange_version" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.test_case()" name="test_caseset_change_typefor_obj" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.test_case()" name="test_caseset_change_typepage_results" type="refentity"/>
@@ -24,6 +25,8 @@
                             <tns:global identifier="test_caseset_change_typeversion_pages_results" type="cn.ibizlab.plm.core.base.domain.version" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseset_change_typeprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseset_change_typededataset3" id="dedataset3" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseset_change_typedebugparam3" id="debugparam3" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseset_change_typededataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="查询用例分页数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseset_change_typeloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
@@ -41,9 +44,14 @@
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
                     <sequenceFlow id="begin_debugparam3" sourceRef="begin" targetRef="debugparam3">
                     </sequenceFlow>
+                    <sequenceFlow id="prepareparam4_dedataset3" sourceRef="prepareparam4" targetRef="dedataset3">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset3_loopsubcall1" sourceRef="dedataset3" targetRef="loopsubcall1">
+                    </sequenceFlow>
                     <sequenceFlow id="gateway-debugparam3_dedataset1" sourceRef="gateway-debugparam3" targetRef="dedataset1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $test_caseset_change_typedefault:test_case();
+                                            $test_caseset_change_typebaseline_filter:Map();
                                             $test_caseset_change_typechange_version:Map();
                                             $test_caseset_change_typefor_obj:test_case();
                                             $test_caseset_change_typepage_results:test_case();
@@ -51,13 +59,14 @@
                                             $test_caseset_change_typeversion_filter:version();
                                             $test_caseset_change_typeversion_pages_results:version();
                                     eval($test_caseset_change_typedefault==test_caseset_change_typedefault && $test_caseset_change_typefor_obj==test_caseset_change_typefor_obj && $test_caseset_change_typepage_results==test_caseset_change_typepage_results && $test_caseset_change_typereview_detail==test_caseset_change_typereview_detail && $test_caseset_change_typeversion_filter==test_caseset_change_typeversion_filter && $test_caseset_change_typeversion_pages_results==test_caseset_change_typeversion_pages_results);
-                                eval((RuleUtils.test($test_caseset_change_typedefault.get("review"),"ISNULL","")))
+                                eval((RuleUtils.test($test_caseset_change_typedefault.get("review"),"ISNULL",""))&&(RuleUtils.test($test_caseset_change_typedefault.get("baseline"),"ISNULL",""))&&(RuleUtils.test($test_caseset_change_typedefault.get("tag"),"ISNULL","")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="gateway-debugparam3_rawsqlcall1" sourceRef="gateway-debugparam3" targetRef="rawsqlcall1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $test_caseset_change_typedefault:test_case();
+                                            $test_caseset_change_typebaseline_filter:Map();
                                             $test_caseset_change_typechange_version:Map();
                                             $test_caseset_change_typefor_obj:test_case();
                                             $test_caseset_change_typepage_results:test_case();
@@ -65,7 +74,22 @@
                                             $test_caseset_change_typeversion_filter:version();
                                             $test_caseset_change_typeversion_pages_results:version();
                                     eval($test_caseset_change_typedefault==test_caseset_change_typedefault && $test_caseset_change_typefor_obj==test_caseset_change_typefor_obj && $test_caseset_change_typepage_results==test_caseset_change_typepage_results && $test_caseset_change_typereview_detail==test_caseset_change_typereview_detail && $test_caseset_change_typeversion_filter==test_caseset_change_typeversion_filter && $test_caseset_change_typeversion_pages_results==test_caseset_change_typeversion_pages_results);
-                                eval((RuleUtils.test($test_caseset_change_typedefault.get("review"),"ISNOTNULL","")))
+                                eval((RuleUtils.test($test_caseset_change_typedefault.get("review"),"ISNOTNULL",""))&&(RuleUtils.test($test_caseset_change_typedefault.get("baseline"),"ISNULL",""))&&(RuleUtils.test($test_caseset_change_typedefault.get("tag"),"ISNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam3_prepareparam4" sourceRef="gateway-debugparam3" targetRef="prepareparam4">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $test_caseset_change_typedefault:test_case();
+                                            $test_caseset_change_typebaseline_filter:Map();
+                                            $test_caseset_change_typechange_version:Map();
+                                            $test_caseset_change_typefor_obj:test_case();
+                                            $test_caseset_change_typepage_results:test_case();
+                                            $test_caseset_change_typereview_detail:review();
+                                            $test_caseset_change_typeversion_filter:version();
+                                            $test_caseset_change_typeversion_pages_results:version();
+                                    eval($test_caseset_change_typedefault==test_caseset_change_typedefault && $test_caseset_change_typefor_obj==test_caseset_change_typefor_obj && $test_caseset_change_typepage_results==test_caseset_change_typepage_results && $test_caseset_change_typereview_detail==test_caseset_change_typereview_detail && $test_caseset_change_typeversion_filter==test_caseset_change_typeversion_filter && $test_caseset_change_typeversion_pages_results==test_caseset_change_typeversion_pages_results);
+                                eval(((RuleUtils.test($test_caseset_change_typedefault.get("tag"),"EQ","baseline"))||(RuleUtils.test($test_caseset_change_typedefault.get("baseline"),"ISNOTNULL",""))))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
@@ -84,6 +108,7 @@
                     <sequenceFlow id="gateway-debugparam2_prepareparam2" sourceRef="gateway-debugparam2" targetRef="prepareparam2">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $test_caseset_change_typedefault:test_case();
+                                            $test_caseset_change_typebaseline_filter:Map();
                                             $test_caseset_change_typechange_version:Map();
                                             $test_caseset_change_typefor_obj:test_case();
                                             $test_caseset_change_typepage_results:test_case();
@@ -98,6 +123,7 @@
                     <sequenceFlow id="gateway-debugparam2_prepareparam3" sourceRef="gateway-debugparam2" targetRef="prepareparam3">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $test_caseset_change_typedefault:test_case();
+                                            $test_caseset_change_typebaseline_filter:Map();
                                             $test_caseset_change_typechange_version:Map();
                                             $test_caseset_change_typefor_obj:test_case();
                                             $test_caseset_change_typepage_results:test_case();
