@@ -717,6 +717,75 @@
       },
       "type" : "DTOS"
     }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDEDATAQUERIES/review_notify/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "review_notify",
+    "logicName" : "评审通知",
+    "name" : "review_notify",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/attention.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "ATTENTION",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "review",
+          "fieldName" : "OWNER_ID",
+          "name" : "(OWNER_ID) 等于(=) 网页请求上下文 review",
+          "getPSDEField" : {
+            "name" : "OWNER_ID",
+            "codeName" : "owner_id"
+          },
+          "getPSVARTypeId" : "WEBCONTEXT"
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "REVIEW",
+          "fieldName" : "OWNER_SUBTYPE",
+          "name" : "(OWNER_SUBTYPE) 等于(=) REVIEW",
+          "getPSDEField" : {
+            "name" : "OWNER_SUBTYPE",
+            "codeName" : "owner_subtype"
+          }
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "REVIEW",
+          "fieldName" : "OWNER_TYPE",
+          "name" : "(OWNER_TYPE) 等于(=) REVIEW",
+          "getPSDEField" : {
+            "name" : "OWNER_TYPE",
+            "codeName" : "owner_type"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Review_notifyInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "attention_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Review_notifyResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "attention_dto"
+      },
+      "type" : "DTOS"
+    }
   } ],
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
@@ -832,6 +901,32 @@
     },
     "getPSDEDataSetReturn" : {
       "name" : "NotifyResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "attention_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "review_notify",
+    "logicName" : "评审关注",
+    "name" : "review_notify",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "review_notify"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Review_notifyInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "attention_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Review_notifyResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "attention_dto"
