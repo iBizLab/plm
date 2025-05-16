@@ -53,6 +53,7 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentcomplete_reviewprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="变更阶段状态"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentcomplete_reviewdenotify3" id="denotify3" implementation="http://www.jboss.org/drools/rule" name="通知关注人（需求）"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentcomplete_reviewrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="完成时间"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentcomplete_reviewdebugparam3" id="debugparam3" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                     <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
                     </sequenceFlow>
                     <sequenceFlow id="debugparam1_prepareparam1" sourceRef="debugparam1" targetRef="prepareparam1">
@@ -163,11 +164,13 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam3_prepareparam4" sourceRef="prepareparam3" targetRef="prepareparam4">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam6_denotify3" sourceRef="prepareparam6" targetRef="denotify3">
+                    <sequenceFlow id="prepareparam6_debugparam3" sourceRef="prepareparam6" targetRef="debugparam3">
                     </sequenceFlow>
                     <sequenceFlow id="denotify3_rawsfcode1" sourceRef="denotify3" targetRef="rawsfcode1">
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode1_prepareparam4" sourceRef="rawsfcode1" targetRef="prepareparam4">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam3_denotify3" sourceRef="debugparam3" targetRef="denotify3">
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-debugparam2" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam2_end_line"></exclusiveGateway>
                             <sequenceFlow id="debugparam2_gateway-debugparam2_gatewayline" sourceRef="debugparam2" targetRef="gateway-debugparam2"></sequenceFlow>
