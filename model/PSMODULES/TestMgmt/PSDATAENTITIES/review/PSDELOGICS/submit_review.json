@@ -79,54 +79,6 @@
     },
     "topPos" : 208
   }, {
-    "codeName" : "PREPAREPARAM1",
-    "leftPos" : 282,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "设置提交人、状态",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM2"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM1"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "SUBMITTER_NAME",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "name" : "用户全局对象[srfpersonname] ==> Default[SUBMITTER_NAME]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "srfpersonname",
-      "srcValueType" : "SESSION"
-    }, {
-      "dstFieldName" : "SUBMITTER_ID",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "name" : "用户全局对象[srfpersonid] ==> Default[SUBMITTER_ID]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "srfpersonid",
-      "srcValueType" : "SESSION"
-    }, {
-      "dstFieldName" : "STATE",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "name" : "直接值[20] ==> Default[STATE]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcValue" : "20",
-      "srcValueType" : "SRCVALUE"
-    } ],
-    "topPos" : 208
-  }, {
     "codeName" : "DEACTION1",
     "getDstPSDEAction" : {
       "modelref" : true,
@@ -290,6 +242,54 @@
       "modelref" : true,
       "id" : "reviewer_list"
     },
+    "topPos" : 208
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 282,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置提交人、状态",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "SUBMITTER_NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "用户全局对象[srfpersonname] ==> Default[SUBMITTER_NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "srfpersonname",
+      "srcValueType" : "SESSION"
+    }, {
+      "dstFieldName" : "SUBMITTER_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "用户全局对象[srfpersonid] ==> Default[SUBMITTER_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "srfpersonid",
+      "srcValueType" : "SESSION"
+    }, {
+      "dstFieldName" : "STATE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "直接值[20] ==> Default[STATE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "20",
+      "srcValueType" : "SRCVALUE"
+    } ],
     "topPos" : 208
   }, {
     "codeName" : "PREPAREPARAM2",
@@ -540,17 +540,31 @@
     "logicNodeType" : "PREPAREPARAM",
     "name" : "准备参数",
     "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "REVIEWER",
+      "dstFieldName" : "NEXT_REVIEWER",
       "getDstPSDELogicParam" : {
         "modelref" : true,
         "id" : "Default"
       },
-      "name" : "reviewer_temp[reviewer] ==> Default[REVIEWER]",
+      "name" : "reviewer_temp[reviewer] ==> Default[NEXT_REVIEWER]",
       "paramAction" : "SETPARAMVALUE",
       "srcFieldName" : "reviewer",
       "getSrcPSDELogicParam" : {
         "modelref" : true,
         "id" : "reviewer_temp"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "REVIEWER",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "Default[CREATE_MAN] ==> Default[REVIEWER]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "CREATE_MAN",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
