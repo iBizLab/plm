@@ -8,7 +8,7 @@
 
 
 ### 关联视图
-  * [状态管理(dictionary_data_idea_state_grid_view)](app/view/dictionary_data_idea_state_grid_view)
+  * [数据字典(dictionary_data_idea_dictionary_grid_view)](app/view/dictionary_data_idea_dictionary_grid_view)
   * [需求(idea_global_setting_view)](app/view/idea_global_setting_view)
   * [实体属性(psde_field_global_idea_grid_view)](app/view/psde_field_global_idea_grid_view)
 

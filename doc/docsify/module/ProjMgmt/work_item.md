@@ -16,7 +16,7 @@
 |关注|ATTENTIONS|一对多关系数据集合|1048576|是||
 |关注人|ATTENTIONS_IMP|文本，可指定长度|100|是||
 |关注数|ATTENTION_COUNT|文本，可指定长度|200|是||
-|需求来源|BACKLOG_FROM|[单项选择(文本值)](index/dictionary_index#demand_sources "需求来源")|60|是||
+|需求来源|BACKLOG_FROM|单项选择(文本值)|60|是||
 |需求类型|BACKLOG_TYPE|[单项选择(文本值)](index/dictionary_index#requirement_type "需求类型")|60|是||
 |看板标识|BOARD_ID|外键值|100|是||
 |看板名称|BOARD_NAME|外键值文本|200|是||
@@ -45,11 +45,11 @@
 |是否已删除|IS_DELETED|是否逻辑||是||
 |是否叶子节点|IS_LEAF|是否逻辑||是||
 |是否超时|IS_OVERTIME|整型||是||
-|任务类别|JOB_TYPE|[单项选择(文本值)](index/dictionary_index#task_category "任务类别")|60|是||
+|任务类别|JOB_TYPE|单项选择(文本值)|60|是||
 |多人任务|MULTIPLE_PEOPLE|是否逻辑||是||
 |逾期天数|OVERDUE_TIME|文本，可指定长度|200|是||
 |父标识|PID|外键值|100|是||
-|优先级|PRIORITY|[单项选择(文本值)](index/dictionary_index#work_item_priority "优先级")|100|是||
+|优先级|PRIORITY|单项选择(文本值)|100|是||
 |项目|PROJECT_ID|外键值|100|否||
 |项目标识|PROJECT_IDENTIFIER|外键值附加数据|15|是||
 |项目是否归档|PROJECT_IS_ARCHIVED|外键值附加数据||是||
@@ -58,7 +58,7 @@
 |项目类型|PROJECT_TYPE|[外键值附加数据](index/dictionary_index#project_type "项目类型")|60|是||
 |父工作项|PTITLE|外键值文本|500|是||
 |父工作项类型|P_WORK_ITEM_TYPE_ID|外键值附加数据|100|是||
-|复现概率|REAPPEAR_PROBABILITY|[单项选择(文本值)](index/dictionary_index#reproduction_probability "复现概率")|60|是||
+|复现概率|REAPPEAR_PROBABILITY|单项选择(文本值)|60|是||
 |最近创建日期|RECENT_CREATE_DAYS|整型||是||
 |关联产品需求数|RELATION_TOTAL_IDEA|数值||是||
 |关联测试用例数|RELATION_TOTAL_TEST_CASE|数值||是||
@@ -75,9 +75,9 @@
 |报表值1|REP_VALUE_1|整型||是||
 |报表值2|REP_VALUE_2|整型||是||
 |报表值3|REP_VALUE_3|整型||是||
-|风险|RISK|[单项选择(文本值)](index/dictionary_index#risk "风险")|60|是||
+|风险|RISK|单项选择(文本值)|60|是||
 |序号|SEQUENCE|数值||是||
-|严重程度|SEVERITY|[单项选择(文本值)](index/dictionary_index#severity "严重程度")|60|是||
+|严重程度|SEVERITY|单项选择(文本值)|60|是||
 |编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
 |解决办法|SOLUTION_WAY|长文本，长度1000|2000|是||
 |迭代标识|SPRINT_ID|外键值|100|是||
@@ -170,7 +170,7 @@
 |当前版本标识|CUR_VERSION_ID|文本，可指定长度|100|是||
 |负责人|ASSIGNEE_ID|外键值|100|是||
 |项目|PROJECT_ID|外键值|100|否||
-|优先级|PRIORITY|[单项选择(文本值)](index/dictionary_index#work_item_priority "优先级")|100|是||
+|优先级|PRIORITY|单项选择(文本值)|100|是||
 |编号<sup class="footnote-symbol">[[序列]](index/sequence_index#seq_work_item_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
 |标题|TITLE|文本，可指定长度|500|否||
 |工作项类型|WORK_ITEM_TYPE_NAME|外键值文本|200|是||
@@ -210,13 +210,13 @@
 |负责人|ASSIGNEE_ID|外键值|100|是||
 |状态|STATE|外键值|100|否||
 |项目|PROJECT_ID|外键值|100|否||
-|任务类别|JOB_TYPE|[单项选择(文本值)](index/dictionary_index#task_category "任务类别")|60|是||
-|需求来源|BACKLOG_FROM|[单项选择(文本值)](index/dictionary_index#demand_sources "需求来源")|60|是||
-|复现概率|REAPPEAR_PROBABILITY|[单项选择(文本值)](index/dictionary_index#reproduction_probability "复现概率")|60|是||
-|优先级|PRIORITY|[单项选择(文本值)](index/dictionary_index#work_item_priority "优先级")|100|是||
+|任务类别|JOB_TYPE|单项选择(文本值)|60|是||
+|需求来源|BACKLOG_FROM|单项选择(文本值)|60|是||
+|复现概率|REAPPEAR_PROBABILITY|单项选择(文本值)|60|是||
+|优先级|PRIORITY|单项选择(文本值)|100|是||
 |需求类型|BACKLOG_TYPE|[单项选择(文本值)](index/dictionary_index#requirement_type "需求类型")|60|是||
-|严重程度|SEVERITY|[单项选择(文本值)](index/dictionary_index#severity "严重程度")|60|是||
-|风险|RISK|[单项选择(文本值)](index/dictionary_index#risk "风险")|60|是||
+|严重程度|SEVERITY|单项选择(文本值)|60|是||
+|风险|RISK|单项选择(文本值)|60|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |工作项状态类型|STATE_TYPE|[外键值附加数据](index/dictionary_index#state_type "工作项状态类型")|60|是||
 |迭代标识|SPRINT_ID|外键值|100|是||
@@ -296,21 +296,21 @@
 |工作项类型|WORK_ITEM_TYPE_ID|外键值|100|否||
 |负责人|ASSIGNEE_ID|外键值|100|是||
 |负责人|ASSIGNEE_NAME|外键值文本|100|是||
-|优先级|PRIORITY|[单项选择(文本值)](index/dictionary_index#work_item_priority "优先级")|100|是||
+|优先级|PRIORITY|单项选择(文本值)|100|是||
 |父标识|PID|外键值|100|是||
 |顶级工作项标识|TOP_ID|外键值|100|是||
 |项目|PROJECT_ID|外键值|100|否||
 |是否已归档|IS_ARCHIVED|是否逻辑||是||
 |父工作项|PTITLE|外键值文本|500|是||
-|复现概率|REAPPEAR_PROBABILITY|[单项选择(文本值)](index/dictionary_index#reproduction_probability "复现概率")|60|是||
-|严重程度|SEVERITY|[单项选择(文本值)](index/dictionary_index#severity "严重程度")|60|是||
+|复现概率|REAPPEAR_PROBABILITY|单项选择(文本值)|60|是||
+|严重程度|SEVERITY|单项选择(文本值)|60|是||
 |建立时间|CREATE_TIME|日期时间型||否||
 |编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
 |所属项目|PROJECT_NAME|外键值文本|200|是||
 |迭代标识|SPRINT_ID|外键值|100|是||
 |需求类型|BACKLOG_TYPE|[单项选择(文本值)](index/dictionary_index#requirement_type "需求类型")|60|是||
-|需求来源|BACKLOG_FROM|[单项选择(文本值)](index/dictionary_index#demand_sources "需求来源")|60|是||
-|风险|RISK|[单项选择(文本值)](index/dictionary_index#risk "风险")|60|是||
+|需求来源|BACKLOG_FROM|单项选择(文本值)|60|是||
+|风险|RISK|单项选择(文本值)|60|是||
 |迭代名称|SPRINT_NAME|外键值文本|200|是||
 |当前版本标识|CUR_VERSION_ID|文本，可指定长度|100|是||
 |截止时间|END_AT|日期型||是||
@@ -1072,7 +1072,7 @@
 | 瀑布需求导入 | waterfall_upload_back | 导入需求 |无数据|<details><summary>打开数据导入视图</summary>[瀑布需求导入]()</details>||
 | 移动（表单中） | move_in_form | 移动 |单项数据（主键）|<details><summary>后台调用</summary>[move_work_item](#行为)||
 | 添加实际工时（移动端） | mob_add_actual_workload | 添加实际工时 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[登记工时](app/view/workload_register_mob_edit_view)</details>||
-| 删除计划 | remove_waterfall_plan | 删除计划 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 删除计划 | remove_waterfall_plan | 删除计划 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 新建特性（kanban） | new_kanban_feature | 新建特性 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
 | 新建阶段（waterfall动态） | new_dyna_waterfall_stage | 新建阶段 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_waterfall_quick_create_view)</details>||
 | 关联需求（工具栏） | toolbar_link_idea | 关联需求 |无数据|用户自定义||

@@ -32,6 +32,8 @@ state "变更阶段状态" as PREPAREPARAM6  [[$./complete_review#prepareparam6 
 state "完成时间" as RAWSFCODE1  [[$./complete_review#rawsfcode1 {"完成时间"}]]
 state "附加到数组变量" as PREPAREPARAM4  [[$./complete_review#prepareparam4 {"附加到数组变量"}]]
 state "附加到数组变量，且获取选中阶段的下一阶段数据" as PREPAREPARAM8  [[$./complete_review#prepareparam8 {"附加到数组变量，且获取选中阶段的下一阶段数据"}]]
+state "通知下一评审人（需求）" as DENOTIFY1  [[$./complete_review#denotify1 {"通知下一评审人（需求）"}]]
+state "通知下一评审人（测试用例）" as DENOTIFY2  [[$./complete_review#denotify2 {"通知下一评审人（测试用例）"}]]
 }
 
 
@@ -54,6 +56,8 @@ RAWSFCODE1 --> PREPAREPARAM4
 PREPAREPARAM3 --> PREPAREPARAM4
 DEBUGPARAM2 --> PREPAREPARAM4 : [[$./complete_review#debugparam2-prepareparam4{非选中阶段} 非选中阶段]]
 DEBUGPARAM2 --> PREPAREPARAM8 : [[$./complete_review#debugparam2-prepareparam8{选中阶段的下一阶段} 选中阶段的下一阶段]]
+PREPAREPARAM8 --> DENOTIFY1 : [[$./complete_review#prepareparam8-denotify1{连接名称} 连接名称]]
+PREPAREPARAM8 --> DENOTIFY2 : [[$./complete_review#prepareparam8-denotify2{连接名称} 连接名称]]
 
 
 @enduml
@@ -149,9 +153,20 @@ DEBUGPARAM2 --> PREPAREPARAM8 : [[$./complete_review#debugparam2-prepareparam8{�
 
 
 1. 将`for_stage(当前循环阶段)` 追加到  `stage_arr(阶段数据)`
-2. 将`false` 设置给  `next_stage(下一阶段数据).is_next`
-3. 将`20` 设置给  `for_stage(当前循环阶段).STAGE_STATE(评审阶段状态)`
+2. 将`for_stage(当前循环阶段).REVIEWER(评审人)` 设置给  `review_detail(评审详情).REVIEWER(评审人)`
+3. 将`false` 设置给  `next_stage(下一阶段数据).is_next`
+4. 将`20` 设置给  `for_stage(当前循环阶段).STAGE_STATE(评审阶段状态)`
 
+#### 通知下一评审人（需求） :id=DENOTIFY1<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
+
+
+
+调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 通知 [评审通知(review_notify)](module/TestMgmt/review/notify/review_notify) ，参数为`review_detail(评审详情)`
+#### 通知下一评审人（测试用例） :id=DENOTIFY2<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
+
+
+
+调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 通知 [测试用例评审通知(test_case_review_notify)](module/TestMgmt/review/notify/test_case_review_notify) ，参数为`review_detail(评审详情)`
 #### 设置阶段完成 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -196,6 +211,12 @@ defaultObj.set("COMPLETED_AT", new Date());
 #### 选中阶段的下一阶段 :id=DEBUGPARAM2-PREPAREPARAM8
 
 `next_stage(下一阶段数据).is_next` EQ `true`
+#### 连接名称 :id=PREPAREPARAM8-DENOTIFY1
+
+`review_detail(评审详情).TYPE(评审类型)` EQ `IDEA`
+#### 连接名称 :id=PREPAREPARAM8-DENOTIFY2
+
+`review_detail(评审详情).TYPE(评审类型)` EQ `TEST_CASE`
 
 
 ### 实体逻辑参数

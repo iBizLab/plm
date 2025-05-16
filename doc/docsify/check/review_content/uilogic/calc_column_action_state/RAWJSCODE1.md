@@ -16,6 +16,10 @@ if (rows && rows.length > 0) {
                 }
 			})
 		}
+        row.editColStates.change_type.disabled = review_state == '60';
+        row.editColStates.change_version.disabled = review_state == '60';
+        row.editColStates.change_version.readonly = review_state == '60';
+        row.editColStates.change_version.editable = review_state == '60';
 	})
 }
 

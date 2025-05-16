@@ -93,6 +93,7 @@
 |[更新日志](app/view/article_page_updated_logs)|article_page_updated_logs|PLM系统更新日志|实体自定义视图||
 |[上传图标选项操作视图](app/view/article_page_upload_icon_option_view)|article_page_upload_icon_option_view|上传图标|实体选项操作视图||
 |[应用数据导入视图](app/view/article_page_upload_view)|article_page_upload_view|导入文档|应用数据导入视图||
+|[页面版本对比](app/view/article_page_version_comparison_view)|article_page_version_comparison_view|版本对比|实体编辑视图||
 |[页面](app/view/article_page_with_version_view)|article_page_with_version_view|页面|实体编辑视图||
 |[附件编辑视图](app/view/attachment_edit_view)|attachment_edit_view|附件|实体编辑视图|系统自动添加|
 |[快速建立交付目标视图](app/view/attachment_quick_create_deliver_target_view)|attachment_quick_create_deliver_target_view|新建交付目标|实体选项操作视图||
@@ -167,6 +168,7 @@
 |[添加至类别](app/view/customer_add_category_option_view)|customer_add_category_option_view|选择类别|实体选项操作视图||
 |[全部客户](app/view/customer_all_grid_view)|customer_all_grid_view|全部客户|实体表格视图||
 |[客户应用数据导入视图](app/view/customer_app_data_upload_view)|customer_app_data_upload_view||应用数据导入视图|客户自定义导入视图|
+|[客户选择树视图](app/view/customer_customer_pick_up_tree_view)|customer_customer_pick_up_tree_view|客户|实体选择树视图（部件视图）||
 |[客户编辑视图](app/view/customer_edit_view)|customer_edit_view|客户|实体编辑视图|系统自动添加|
 |[客户统计](app/view/customer_idea_customer_info_view)|customer_idea_customer_info_view|客户|实体编辑视图||
 |[需求关联客户](app/view/customer_idea_re_customer_grid_view)|customer_idea_re_customer_grid_view|需求关联客户|实体表格视图||
@@ -192,6 +194,7 @@
 |[部门选项操作视图](app/view/department_dept_option_view)|department_dept_option_view|部门|实体选项操作视图||
 |[部门选择表格视图](app/view/department_pick_up_grid_view)|department_pick_up_grid_view|部门|实体选择表格视图（部件视图）|系统自动添加|
 |[部门数据选择视图](app/view/department_pick_up_view)|department_pick_up_view|部门|实体数据选择视图|系统自动添加|
+|[数据字典确认删除视图](app/view/dictionary_data_delete_confirm_option_view)|dictionary_data_delete_confirm_option_view|数据字典|实体选项操作视图||
 |[数据字典编辑视图](app/view/dictionary_data_edit_view)|dictionary_data_edit_view|数据字典|实体编辑视图|系统自动添加|
 |[新建阶段](app/view/dictionary_data_global_create_view)|dictionary_data_global_create_view|新建阶段|实体选项操作视图||
 |[编辑阶段](app/view/dictionary_data_global_edit_view)|dictionary_data_global_edit_view|编辑阶段|实体选项操作视图||
@@ -199,12 +202,20 @@
 |[发布配置](app/view/dictionary_data_global_tab_exp_view)|dictionary_data_global_tab_exp_view|发布配置|实体分页导航视图||
 |[数据字典表格视图](app/view/dictionary_data_grid_view)|dictionary_data_grid_view|数据字典|实体表格视图||
 |[需求配置状态管理实体确认删除视图](app/view/dictionary_data_idea_confirm_remove_view)|dictionary_data_idea_confirm_remove_view|确认删除|实体选项操作视图|系统自动添加|
+|[需求字典新建视图](app/view/dictionary_data_idea_dictionary_create_view)|dictionary_data_idea_dictionary_create_view|数据字典|实体选项操作视图||
+|[需求字典表格视图](app/view/dictionary_data_idea_dictionary_grid_view)|dictionary_data_idea_dictionary_grid_view|数据字典|实体表格视图||
 |[状态管理](app/view/dictionary_data_idea_state_grid_view)|dictionary_data_idea_state_grid_view|状态管理|实体表格视图||
 |[新建状态](app/view/dictionary_data_quick_create_view)|dictionary_data_quick_create_view|新建状态|实体选项操作视图||
 |[数据字典数据重定向视图](app/view/dictionary_data_redirect_view)|dictionary_data_redirect_view|数据字典|实体数据重定向视图|系统自动添加|
 |[编辑状态](app/view/dictionary_data_state_edit_view)|dictionary_data_state_edit_view|编辑状态|实体选项操作视图||
+|[测试用例字典新建视图](app/view/dictionary_data_test_case_dictionary_create_view)|dictionary_data_test_case_dictionary_create_view|数据字典|实体选项操作视图||
+|[测试用例字典表格视图](app/view/dictionary_data_test_case_dictionary_grid_view)|dictionary_data_test_case_dictionary_grid_view|数据字典|实体表格视图||
 |[工单配置状态管理实体确认删除视图](app/view/dictionary_data_ticket_confirm_remove_view)|dictionary_data_ticket_confirm_remove_view|确认删除|实体选项操作视图|系统自动添加|
+|[工单字典新建视图](app/view/dictionary_data_ticket_dictionary_create_view)|dictionary_data_ticket_dictionary_create_view|数据字典|实体选项操作视图||
+|[工单字典表格视图](app/view/dictionary_data_ticket_dictionary_grid_view)|dictionary_data_ticket_dictionary_grid_view|数据字典|实体表格视图||
 |[状态管理](app/view/dictionary_data_ticket_state_grid_view)|dictionary_data_ticket_state_grid_view|状态管理|实体表格视图||
+|[工作项字典新建视图](app/view/dictionary_data_work_item_dictionary_create_view)|dictionary_data_work_item_dictionary_create_view|数据字典|实体选项操作视图||
+|[工作项字典表格视图](app/view/dictionary_data_work_item_dictionary_grid_view)|dictionary_data_work_item_dictionary_grid_view|数据字典|实体表格视图||
 |[协作成员绑定表格视图（嵌入）](app/view/discuss_member_bind_grid_view)|discuss_member_bind_grid_view|协作成员|实体表格视图||
 |[职位选择](app/view/discuss_member_choose_position_option_view)|discuss_member_choose_position_option_view|职位选择|实体选项操作视图||
 |[协作成员配置](app/view/discuss_member_config_grid_view)|discuss_member_config_grid_view|话题成员|实体表格视图||
@@ -276,6 +287,7 @@
 |[流程配置选项操作视图](app/view/guideline_config_option_view)|guideline_config_option_view|流程配置|实体选项操作视图||
 |[流程准则编辑视图](app/view/guideline_edit_view)|guideline_edit_view|流程准则|实体编辑视图|系统自动添加|
 |[测试库流程准则表格视图](app/view/guideline_library_all_grid_view)|guideline_library_all_grid_view|评审配置|实体表格视图||
+|[测试库流程准则表格视图](app/view/guideline_product_all_grid_view)|guideline_product_all_grid_view|评审配置|实体表格视图||
 |[流程准则数据重定向视图](app/view/guideline_redirect_view)|guideline_redirect_view|流程准则|实体数据重定向视图|系统自动添加|
 |[需求高级搜索表格视图](app/view/idea_advanced_search_grid_view)|idea_advanced_search_grid_view|需求|实体表格视图||
 |[全部需求](app/view/idea_all_grid_view)|idea_all_grid_view|全部需求|实体表格视图||
@@ -297,9 +309,11 @@
 |[需求排期](app/view/idea_idea_re_plan_option_view)|idea_idea_re_plan_option_view|需求|实体选项操作视图||
 |[需求](app/view/idea_main_view)|idea_main_view|需求|实体编辑视图||
 |[需求移动视图](app/view/idea_move_option_view)|idea_move_option_view|移动需求|实体选项操作视图||
+|[需求数据多项选择视图](app/view/idea_mpick_up_view)|idea_mpick_up_view|需求|实体数据多项选择视图||
 |[我负责的需求](app/view/idea_my_assign_grid_view)|idea_my_assign_grid_view|需求|实体表格视图||
 |[我关注的需求表格视图](app/view/idea_my_attention_grid_view)|idea_my_attention_grid_view|需求|实体表格视图||
 |[我创建的需求](app/view/idea_my_created_grid_view)|idea_my_created_grid_view|需求|实体表格视图||
+|[未添加的需求表格](app/view/idea_not_add_pick_up_grid_view_review)|idea_not_add_pick_up_grid_view_review|需求|实体选择表格视图（部件视图）||
 |[其他实体关联需求多项数据选择视图_选择数据视图](app/view/idea_others_re_mpick_up_grid_view)|idea_others_re_mpick_up_grid_view|需求|实体选择表格视图（部件视图）|系统自动添加|
 |[其他实体关联需求多项数据选择视图](app/view/idea_others_re_mpick_up_view)|idea_others_re_mpick_up_view|选择需求|实体多项数据选择视图（左右关系）||
 |[需求选择树视图](app/view/idea_pick_up_tree_view)|idea_pick_up_tree_view|需求选择树视图|实体选择树视图（部件视图）||
@@ -311,6 +325,7 @@
 |[关联需求多项选择视图](app/view/idea_re_self_mpick_up_view)|idea_re_self_mpick_up_view|选择需求|实体多项数据选择视图（左右关系）||
 |[需求回收站表格](app/view/idea_recycle_grid_view)|idea_recycle_grid_view|需求|实体表格视图||
 |[需求数据重定向视图](app/view/idea_redirect_view)|idea_redirect_view|需求|实体数据重定向视图|系统自动添加|
+|[计划关联需求多项数据选择视图](app/view/idea_review_re_idea_view)|idea_review_re_idea_view|选择需求|实体多项数据选择视图（左右关系）||
 |[需求展示](app/view/idea_show_edit_view)|idea_show_edit_view|需求|实体编辑视图||
 |[需求](app/view/idea_summary_idea_grid_view)|idea_summary_idea_grid_view|需求|实体表格视图||
 |[全部需求模板](app/view/idea_template_all_grid_view)|idea_template_all_grid_view|需求模板|实体表格视图||
@@ -759,6 +774,12 @@
 |[完成评审](app/view/review_complete_review_option_view)|review_complete_review_option_view|完成评审|实体选项操作视图||
 |[评审内容编辑视图](app/view/review_content_edit_view)|review_content_edit_view|评审内容|实体编辑视图|系统自动添加|
 |[评审内容表格](app/view/review_content_grid_view_all)|review_content_grid_view_all|评审内容|实体表格视图||
+|[产品需求评审内容编辑视图](app/view/review_content_idea_edit_view)|review_content_idea_edit_view|产品需求评审内容|实体编辑视图|系统自动添加|
+|[评审内容表格](app/view/review_content_idea_grid_view_all)|review_content_idea_grid_view_all|评审内容|实体表格视图||
+|[评审内容表格](app/view/review_content_idea_no_grid_view_all)|review_content_idea_no_grid_view_all|评审内容|实体表格视图||
+|[产品需求评审内容数据重定向视图](app/view/review_content_idea_redirect_view)|review_content_idea_redirect_view|产品需求评审内容|实体数据重定向视图|系统自动添加|
+|[设置评审结果](app/view/review_content_idea_set_result_edit_view)|review_content_idea_set_result_edit_view|评审结果|实体编辑视图||
+|[评审内容表格](app/view/review_content_idea_under_review_grid_view)|review_content_idea_under_review_grid_view|评审内容|实体表格视图||
 |[评审历史列表](app/view/review_content_list_view)|review_content_list_view|评审历史|实体列表视图||
 |[评审内容表格](app/view/review_content_no_grid_view_all)|review_content_no_grid_view_all|评审内容|实体表格视图||
 |[评审内容数据重定向视图](app/view/review_content_redirect_view)|review_content_redirect_view|评审内容|实体数据重定向视图|系统自动添加|
@@ -768,6 +789,10 @@
 |[评审新建向导](app/view/review_create_wizard_view)|review_create_wizard_view|新建评审|实体向导视图||
 |[评审反查表格](app/view/review_drill_detail_grid_view)|review_drill_detail_grid_view|评审反查|实体表格视图||
 |[评审编辑视图](app/view/review_edit_view)|review_edit_view|评审|实体编辑视图|系统自动添加|
+|[评审主视图](app/view/review_idea_main_view)|review_idea_main_view|评审|实体编辑视图||
+|[评审选择](app/view/review_idea_pick_up_tree_view)|review_idea_pick_up_tree_view|评审选择|实体选择树视图（部件视图）||
+|[设置类别](app/view/review_idea_set_category_option_view)|review_idea_set_category_option_view|设置类别|实体选项操作视图||
+|[评审实体树导航](app/view/review_idea_tree_exp_view)|review_idea_tree_exp_view|评审|实体树导航视图||
 |[评审主视图](app/view/review_main_view)|review_main_view|评审|实体编辑视图||
 |[我关注的评审表格](app/view/review_my_attention_grid_view)|review_my_attention_grid_view|我关注的|实体表格视图|系统自动添加|
 |[我创建的评审表格](app/view/review_my_created_grid_view)|review_my_created_grid_view|我创建的|实体表格视图|系统自动添加|
@@ -780,6 +805,7 @@
 |[用例评审表格](app/view/review_test_case_grid_view)|review_test_case_grid_view|用例评审|实体表格视图|系统自动添加|
 |[评审实体树导航](app/view/review_tree_exp_view)|review_tree_exp_view|评审|实体树导航视图||
 |[评审新建向导](app/view/review_wizard_create_wizard_view)|review_wizard_create_wizard_view|新建评审|实体向导视图||
+|[评审新建向导](app/view/review_wizard_idea_create_wizard_view)|review_wizard_idea_create_wizard_view|新建评审|实体向导视图||
 |[角色编辑视图](app/view/role_edit_view)|role_edit_view|角色|实体编辑视图|系统自动添加|
 |[角色配置](app/view/role_edit_view2)|role_edit_view2|角色配置|实体编辑视图（左右关系）||
 |[角色表格视图](app/view/role_grid_view)|role_grid_view|角色配置|实体表格视图|系统自动添加|
@@ -1146,7 +1172,7 @@
 |[选择工作项](app/view/work_item_depend_mpick_up_view)|work_item_depend_mpick_up_view|工作项|实体多项数据选择视图（左右关系）||
 |[工作项（动态）](app/view/work_item_dyna_create_view)|work_item_dyna_create_view|工作项|实体编辑视图|工作项新建视图（动态）|
 |[动态新建混合工作项](app/view/work_item_dyna_hybrid_quick_create_view)|work_item_dyna_hybrid_quick_create_view|工作项|实体选项操作视图||
-|[工作项树表格视图（hybrid动态）](app/view/work_item_dyna_hybrid_tree_grid_view)|work_item_dyna_hybrid_tree_grid_view|工作项|实体树表格视图||
+|[工作项树表格视图（hybrid动态）](app/view/work_item_dyna_hybrid_tree_grid_view)|work_item_dyna_hybrid_tree_grid_view|工作项|实体树表格视图|SRFNAVPARAM.srfcurtime=%srfcurtime%|
 |[工作项表格视图（动态）](app/view/work_item_dyna_kanban_grid_view)|work_item_dyna_kanban_grid_view|工作项|实体表格视图||
 |[动态新建看板工作项](app/view/work_item_dyna_kanban_quick_create_view)|work_item_dyna_kanban_quick_create_view|工作项|实体选项操作视图||
 |[工作项树表格视图（kanban动态）](app/view/work_item_dyna_kanban_tree_grid_view)|work_item_dyna_kanban_tree_grid_view|工作项|实体树表格视图||

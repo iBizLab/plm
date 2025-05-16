@@ -16,7 +16,7 @@
 |编号|IDENTIFIER|文本，可指定长度|100|是||
 |是否已归档|IS_ARCHIVED|文本，可指定长度|100|是||
 |是否已删除|IS_DELETED|文本，可指定长度|100|是||
-|重要程度|LEVEL|[文本，可指定长度](index/dictionary_index#test_case_level "用例重要程度")|100|是||
+|重要程度|LEVEL|文本，可指定长度|100|是||
 |维护人|MAINTENANCE_ID|文本，可指定长度|100|是||
 |维护人|MAINTENANCE_NAME|文本，可指定长度|100|是||
 |名称|NAME|继承属性|200|是||
@@ -34,9 +34,9 @@
 |目标对象版本标识|TARGET_VERSION_ID|继承属性|100|是||
 |测试库|TEST_LIBRARY_ID|文本，可指定长度|100|是||
 |所属测试库|TEST_LIBRARY_NAME|文本，可指定长度|100|是||
-|测试类型|TEST_TYPE|[单项选择(文本值)](index/dictionary_index#test_case_test_type "测试类型")|200|是||
+|测试类型|TEST_TYPE|单项选择(文本值)|200|是||
 |标题|TITLE|文本，可指定长度|100|是||
-|用例类型|TYPE|[文本，可指定长度](index/dictionary_index#test_case_type "用例类型")|100|是||
+|用例类型|TYPE|文本，可指定长度|100|是||
 |更新人|UPDATE_MAN|继承属性|100|否||
 |更新时间|UPDATE_TIME|继承属性||否||
 

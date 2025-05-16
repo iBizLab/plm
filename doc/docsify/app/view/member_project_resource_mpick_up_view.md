@@ -10,11 +10,11 @@
 
 
 ### 关联界面行为
-  * [成员(MEMBER)](module/Base/member) : [视图_取消](module/Base/member#界面行为)
   * [成员(MEMBER)](module/Base/member) : [移除选中数据（数据选择）](module/Base/member#界面行为)
-  * [成员(MEMBER)](module/Base/member) : [视图_确定](module/Base/member#界面行为)
   * [成员(MEMBER)](module/Base/member) : [移除全部数据（数据选择）](module/Base/member#界面行为)
+  * [成员(MEMBER)](module/Base/member) : [视图_取消](module/Base/member#界面行为)
   * [成员(MEMBER)](module/Base/member) : [添加选中数据（数据选择）](module/Base/member#界面行为)
+  * [成员(MEMBER)](module/Base/member) : [视图_确定](module/Base/member#界面行为)
   * [成员(MEMBER)](module/Base/member) : [添加全部数据（数据选择）](module/Base/member#界面行为)
 
 ### 关联视图

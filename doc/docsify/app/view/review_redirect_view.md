@@ -9,6 +9,10 @@
 #### CAPTIONBAR(captionbar)
 
 
+### 关联视图
+  * [评审(review_idea_main_view)](app/view/review_idea_main_view)
+  * [评审(review_main_view)](app/view/review_main_view)
+
 <script>
  const { createApp } = Vue
   createApp({

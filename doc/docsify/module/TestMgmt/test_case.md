@@ -28,7 +28,7 @@
 |是否已归档|IS_ARCHIVED|是否逻辑||是||
 |是否已删除|IS_DELETED|是否逻辑||是||
 |最新执行结果|LATEST_EXECUTED|一对多动态对象|1048576|是||
-|重要程度|LEVEL|[单项选择(文本值)](index/dictionary_index#test_case_level "用例重要程度")|60|是||
+|重要程度|LEVEL|单项选择(文本值)|60|是||
 |测试库标识|LIBRARY_IDENTIFIER|外键值附加数据|15|是||
 |测试库是否归档|LIBRARY_IS_ARCHIVED|外键值附加数据||是||
 |测试库是否删除|LIBRARY_IS_DELETED|外键值附加数据||是||
@@ -41,7 +41,7 @@
 |评审结果|REVIEW_RESULT_STATE|[单项选择(文本值)](index/dictionary_index#review_result "评审结果")|60|是||
 |执行结果|RUN_STATUS|[单项选择(文本值)](index/dictionary_index#run_status "执行用例状态")|200|是||
 |编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
-|状态|STATE|[单项选择(文本值)](index/dictionary_index#case_state "用例状态")|60|否||
+|状态|STATE|单项选择(文本值)|60|否||
 |步骤|STEPS|一对多关系数据集合|1048576|是||
 |步骤|STEPS_IMP|文本，可指定长度|100|是||
 |步骤描述|STEP_DESC_IMP|文本，可指定长度|100|是||
@@ -54,9 +54,9 @@
 |测试库|TEST_LIBRARY_ID|外键值|100|是||
 |所属测试库|TEST_LIBRARY_NAME|外键值文本|200|是||
 |测试计划名称|TEST_PLAN_NAME|文本，可指定长度|100|是||
-|测试类型|TEST_TYPE|[单项选择(文本值)](index/dictionary_index#test_case_test_type "测试类型")|60|是||
+|测试类型|TEST_TYPE|单项选择(文本值)|60|是||
 |标题|TITLE|文本，可指定长度|500|否||
-|用例类型|TYPE|[单项选择(文本值)](index/dictionary_index#test_case_type "用例类型")|60|是||
+|用例类型|TYPE|单项选择(文本值)|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 |工时进度|WORKLOAD_SCHEDULE|数值||是||
@@ -76,7 +76,7 @@
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |所属测试库|TEST_LIBRARY_NAME|外键值文本|200|是||
 |标题|TITLE|文本，可指定长度|500|否||
-|状态|STATE|[单项选择(文本值)](index/dictionary_index#case_state "用例状态")|60|否||
+|状态|STATE|单项选择(文本值)|60|否||
 
 </el-tab-pane>
 <el-tab-pane label="BI查询属性组" name="field_group_bi_search_group">
@@ -100,10 +100,10 @@
 |测试库|TEST_LIBRARY_ID|外键值|100|是||
 |用例模块标识|SUITE_ID|外键值|100|是||
 |执行结果|RUN_STATUS|[单项选择(文本值)](index/dictionary_index#run_status "执行用例状态")|200|是||
-|用例类型|TYPE|[单项选择(文本值)](index/dictionary_index#test_case_type "用例类型")|60|是||
-|重要程度|LEVEL|[单项选择(文本值)](index/dictionary_index#test_case_level "用例重要程度")|60|是||
-|测试类型|TEST_TYPE|[单项选择(文本值)](index/dictionary_index#test_case_test_type "测试类型")|60|是||
-|状态|STATE|[单项选择(文本值)](index/dictionary_index#case_state "用例状态")|60|否||
+|用例类型|TYPE|单项选择(文本值)|60|是||
+|重要程度|LEVEL|单项选择(文本值)|60|是||
+|测试类型|TEST_TYPE|单项选择(文本值)|60|是||
+|状态|STATE|单项选择(文本值)|60|否||
 |评审结果|REVIEW_RESULT_STATE|[单项选择(文本值)](index/dictionary_index#review_result "评审结果")|60|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |最新执行结果|LATEST_EXECUTED|一对多动态对象|1048576|是||
@@ -466,7 +466,7 @@
 | 查看工时明细（移动端） | mob_check_workload_detail | 查看工时明细 |无数据|<details><summary>打开视图或向导（模态）</summary>[工时记录](app/view/workload_mob_detail_view)</details>||
 | 复制 | copy_test_case | 复制 |多项数据（主键）|<details><summary>后台调用</summary>[copy_case](#行为)||
 | 添加实际工时（移动端） | mob_add_actual_workload | 添加实际工时 |单项数据|<details><summary>打开视图或向导（模态）</summary>[登记工时](app/view/workload_register_mob_edit_view)</details>||
-| 设置评审状态 | set_state | 设置评审状态 |多项数据（主键）|<details><summary>后台调用</summary>[set_state](#行为)||
+| 设置状态 | set_state | 设置状态 |多项数据（主键）|<details><summary>后台调用</summary>[set_state](#行为)||
 | 设置维护人 | set_maintenance | 设置维护人 |多项数据（主键）|<details><summary>后台调用</summary>[set_maintenance](#行为)||
 | 关联需求（工具栏） | toolbar_link_idea | 关联需求 |无数据|用户自定义||
 

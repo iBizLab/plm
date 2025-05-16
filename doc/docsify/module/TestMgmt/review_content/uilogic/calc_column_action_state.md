@@ -17,10 +17,12 @@ hide empty description
 state "开始" as Begin <<start>> [[$./calc_column_action_state#begin {开始}]]
 state "计算表格列行为状态" as RAWJSCODE1  [[$./calc_column_action_state#rawjscode1 {计算表格列行为状态}]]
 state "结束" as END1 <<end>> [[$./calc_column_action_state#end1 {结束}]]
+state "设置后的表格" as DEBUGPARAM1  [[$./calc_column_action_state#debugparam1 {设置后的表格}]]
 
 
 Begin --> RAWJSCODE1
-RAWJSCODE1 --> END1
+RAWJSCODE1 --> DEBUGPARAM1
+DEBUGPARAM1 --> END1
 
 
 @enduml
@@ -56,10 +58,21 @@ if (rows && rows.length > 0) {
                 }
 			})
 		}
+        row.editColStates.change_type.disabled = review_state == '60';
+        row.editColStates.change_version.disabled = review_state == '60';
+        row.editColStates.change_version.readonly = review_state == '60';
+        row.editColStates.change_version.editable = review_state == '60';
 	})
 }
 
 ```
+
+#### 设置后的表格 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
+
+
+
+> [!NOTE|label:调试信息|icon:fa fa-bug]
+> 调试输出参数`表格`的详细信息
 
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 
@@ -72,5 +85,5 @@ if (rows && rows.length > 0) {
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |表格|Grid|当前部件对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

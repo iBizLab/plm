@@ -14,8 +14,8 @@
 
 
 ### 关联界面行为
-  * [关注(ATTENTION)](module/Base/attention) : [添加工作项关注（移动端）](module/Base/attention#界面行为)
   * [关注(ATTENTION)](module/Base/attention) : [取消关注](module/Base/attention#界面行为)
+  * [关注(ATTENTION)](module/Base/attention) : [添加工作项关注（移动端）](module/Base/attention#界面行为)
 
 ### 关联视图
   * [项目成员(project_member_mob_attention_mpickup_view)](app/view/project_member_mob_attention_mpickup_view)

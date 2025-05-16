@@ -46,6 +46,8 @@
 |[流程准则(GUIDELINE)](module/TestMgmt/guideline)|[评审阶段(REVIEW_STAGE)](module/TestMgmt/review_stage)|[DER1N_REVIEW_STAGE_GUIDELINE_GUIDELINE_ID](der/DER1N_REVIEW_STAGE_GUIDELINE_GUIDELINE_ID)|1:N关系|嵌套操作、|
 |[流程准则(GUIDELINE)](module/TestMgmt/guideline)|[评审向导(REVIEW_WIZARD)](module/TestMgmt/review_wizard)|[DER1N_REVIEW_WIZARD_GUIDELINE_GUIDELINE_ID](der/DER1N_REVIEW_WIZARD_GUIDELINE_GUIDELINE_ID)|1:N关系||
 |[流程准则(GUIDELINE)](module/TestMgmt/guideline)|[评审(REVIEW)](module/TestMgmt/review)|[DER1N_REVIEW_GUIDELINE_GUIDELINE_ID](der/DER1N_REVIEW_GUIDELINE_GUIDELINE_ID)|1:N关系||
+|[需求(IDEA)](module/ProdMgmt/idea)|[评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)|[DERCUSTOM_IDEA_REVIEW_CONTENT](der/DERCUSTOM_IDEA_REVIEW_CONTENT)|自定义关系|附属关系、附属关系(N:N连接)、数据访问控制、|
+|[需求(IDEA)](module/ProdMgmt/idea)|[产品需求评审内容(REVIEW_CONTENT_IDEA)](module/ProdMgmt/review_content_idea)|[DERCUSTOM_IDEA_REVIEW_CONTENT_IDEA](der/DERCUSTOM_IDEA_REVIEW_CONTENT_IDEA)|自定义关系|附属关系、附属关系(N:N连接)、数据访问控制、|
 |[需求(IDEA)](module/ProdMgmt/idea)|[关注(ATTENTION)](module/Base/attention)|[DERCUSTOM_ATTENTION_IDEA_OWNER_ID](der/DERCUSTOM_ATTENTION_IDEA_OWNER_ID)|自定义关系|附属关系、数据访问控制、|
 |[需求(IDEA)](module/ProdMgmt/idea)|[版本(VERSION)](module/Base/version)|[DERCUSTOM_VERSION_IDEA](der/DERCUSTOM_VERSION_IDEA)|自定义关系|附属关系、数据访问控制、|
 |[需求(IDEA)](module/ProdMgmt/idea)|[评论搜索(SEARCH_COMMENT)](module/Base/search_comment)|[DERCUSTOM_IDEA_SEARCH_COMMENT](der/DERCUSTOM_IDEA_SEARCH_COMMENT)|自定义关系||
@@ -99,6 +101,7 @@
 |[产品(PRODUCT)](module/ProdMgmt/product)|[关联(RELATION)](module/Base/relation)|[DERCUSTOM_RELATION_PRODUCT](der/DERCUSTOM_RELATION_PRODUCT)|自定义关系||
 |[产品(PRODUCT)](module/ProdMgmt/product)|[产品工单类型(PRODUCT_TICKET_TYPE)](module/ProdMgmt/product_ticket_type)|[DER1N_PRODUCT_TICKET_TYPE_PRODUCT_PRODUCT_ID](der/DER1N_PRODUCT_TICKET_TYPE_PRODUCT_PRODUCT_ID)|1:N关系|附属关系、数据访问控制、|
 |[产品(PRODUCT)](module/ProdMgmt/product)|[组件(ADDON)](module/Base/addon)|[DERCUSTOM_ADDON_PRODUCT_OWNER_ID](der/DERCUSTOM_ADDON_PRODUCT_OWNER_ID)|自定义关系|附属关系、数据访问控制、|
+|[产品(PRODUCT)](module/ProdMgmt/product)|[流程准则(GUIDELINE)](module/TestMgmt/guideline)|[DERCUSTOM_GUIDELINE_PRODUCT_PRODUCT_ID](der/DERCUSTOM_GUIDELINE_PRODUCT_PRODUCT_ID)|自定义关系|附属关系、数据访问控制、|
 |[产品(PRODUCT)](module/ProdMgmt/product)|[产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member)|[DER1N_PRODUCT_MEMBER_PRODUCT_PRODUCT_ID](der/DER1N_PRODUCT_MEMBER_PRODUCT_PRODUCT_ID)|1:N关系|附属关系、附属关系(N:N连接)、数据访问控制、|
 |[产品(PRODUCT)](module/ProdMgmt/product)|[需求(IDEA)](module/ProdMgmt/idea)|[DER1N_IDEA_PRODUCT_PRODUCT_ID](der/DER1N_IDEA_PRODUCT_PRODUCT_ID)|1:N关系|附属关系、数据访问控制、附属扩展、|
 |[产品(PRODUCT)](module/ProdMgmt/product)|[需求模板(IDEA_TEMPLATE)](module/ProdMgmt/idea_template)|[DER1N_IDEA_TEMPLATE_PRODUCT_PRODUCT_ID](der/DER1N_IDEA_TEMPLATE_PRODUCT_PRODUCT_ID)|1:N关系|附属关系、数据访问控制、|
@@ -106,6 +109,7 @@
 |[产品(PRODUCT)](module/ProdMgmt/product)|[客户(CUSTOMER)](module/ProdMgmt/customer)|[DER1N_CUSTOMER_PRODUCT_PRODUCT_ID](der/DER1N_CUSTOMER_PRODUCT_PRODUCT_ID)|1:N关系|附属关系、数据访问控制、|
 |[产品(PRODUCT)](module/ProdMgmt/product)|[工单渠道(CHANNEL)](module/ProdMgmt/channel)|[DER1N_CHANNEL_PRODUCT_PRODUCT_ID](der/DER1N_CHANNEL_PRODUCT_PRODUCT_ID)|1:N关系||
 |[产品(PRODUCT)](module/ProdMgmt/product)|[排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan)|[DER1N_PLAN_PRODUCT_PRODUCT_ID](der/DER1N_PLAN_PRODUCT_PRODUCT_ID)|1:N关系|附属关系、数据访问控制、|
+|[产品(PRODUCT)](module/ProdMgmt/product)|[评审(REVIEW)](module/TestMgmt/review)|[DERCUSTOM_REVIEW_PRODUCT_PRINCIPAL_ID](der/DERCUSTOM_REVIEW_PRODUCT_PRINCIPAL_ID)|自定义关系|附属关系、数据访问控制、|
 |[产品(PRODUCT)](module/ProdMgmt/product)|[产品标签(PRODUCT_TAG)](module/ProdMgmt/product_tag)|[DER1N_PRODUCT_TAG_PRODUCT_PRODUCT_ID](der/DER1N_PRODUCT_TAG_PRODUCT_PRODUCT_ID)|1:N关系|附属关系、数据访问控制、|
 |[产品(PRODUCT)](module/ProdMgmt/product)|[收藏(FAVORITE)](module/Base/favorite)|[DERCUSTOM_FAVORITE_PRODUCT](der/DERCUSTOM_FAVORITE_PRODUCT)|自定义关系||
 |[产品(PRODUCT)](module/ProdMgmt/product)|[工单(TICKET)](module/ProdMgmt/ticket)|[DER1N_TICKET_PRODUCT_PRODUCT_ID](der/DER1N_TICKET_PRODUCT_PRODUCT_ID)|1:N关系|附属关系、数据访问控制、附属扩展、|
@@ -145,6 +149,7 @@
 |[引用索引(REFERENCES_INDEX)](module/Base/references_index)|[测试库(LIBRARY)](module/TestMgmt/library)|[DERINDEX_LIBRARY_REFERENCES_INDEX](der/DERINDEX_LIBRARY_REFERENCES_INDEX)|索引关系||
 |[引用索引(REFERENCES_INDEX)](module/Base/references_index)|[项目(PROJECT)](module/ProjMgmt/project)|[DERINDEX_PROJECT_REFERENCES_INDEX](der/DERINDEX_PROJECT_REFERENCES_INDEX)|索引关系||
 |[引用索引(REFERENCES_INDEX)](module/Base/references_index)|[产品(PRODUCT)](module/ProdMgmt/product)|[DERINDEX_PRODUCT_REFERENCES_INDEX](der/DERINDEX_PRODUCT_REFERENCES_INDEX)|索引关系||
+|[关联(RELATION)](module/Base/relation)|[产品需求评审内容(REVIEW_CONTENT_IDEA)](module/ProdMgmt/review_content_idea)|[DERMULINH_REVIEW_CONTENT_IDEA_RELATION](der/DERMULINH_REVIEW_CONTENT_IDEA_RELATION)|多继承关系（虚拟实体）||
 |[关联(RELATION)](module/Base/relation)|[基线工作项(BASELINE_WORK_ITEM)](module/ProjMgmt/baseline_work_item)|[DERMULINH_BASELINE_WORK_ITEM_RELATION](der/DERMULINH_BASELINE_WORK_ITEM_RELATION)|多继承关系（虚拟实体）||
 |[关联(RELATION)](module/Base/relation)|[基线页面(BASELINE_PAGE)](module/Wiki/baseline_page)|[DERMULINH_BASELINE_PAGE_RELATION](der/DERMULINH_BASELINE_PAGE_RELATION)|多继承关系（虚拟实体）||
 |[关联(RELATION)](module/Base/relation)|[基线需求(BASELINE_IDEA)](module/ProdMgmt/baseline_idea)|[DERMULINH_BASELINE_IDEA_RELATION](der/DERMULINH_BASELINE_IDEA_RELATION)|多继承关系（虚拟实体）||
@@ -160,6 +165,7 @@
 |[代码仓库(REPOSITORY)](module/DevOps/repository)|[代码分支(BRANCH)](module/DevOps/branch)|[DER1N_BRANCH_REPOSITORY_REPOSITORY_ID](der/DER1N_BRANCH_REPOSITORY_REPOSITORY_ID)|1:N关系||
 |[评审(REVIEW)](module/TestMgmt/review)|[关注(ATTENTION)](module/Base/attention)|[DERCUSTOM_ATTENTION_REVIEW_OWNER_ID](der/DERCUSTOM_ATTENTION_REVIEW_OWNER_ID)|自定义关系|附属关系、数据访问控制、|
 |[评审(REVIEW)](module/TestMgmt/review)|[附件(ATTACHMENT)](module/Base/attachment)|[DERCUSTOM_REVIEW_ATTACHMENT](der/DERCUSTOM_REVIEW_ATTACHMENT)|自定义关系|附属关系、嵌套操作、|
+|[评审(REVIEW)](module/TestMgmt/review)|[产品需求评审内容(REVIEW_CONTENT_IDEA)](module/ProdMgmt/review_content_idea)|[DERCUSTOM_REVIEW_CONTENT_IDEA_REVIEW](der/DERCUSTOM_REVIEW_CONTENT_IDEA_REVIEW)|自定义关系|数据访问控制、|
 |[评审(REVIEW)](module/TestMgmt/review)|[评论(COMMENT)](module/Base/comment)|[DERCUSTOM_COMMENT_REVIEW_PRINCIPAL_ID](der/DERCUSTOM_COMMENT_REVIEW_PRINCIPAL_ID)|自定义关系|附属关系、数据访问控制、|
 |[评审(REVIEW)](module/TestMgmt/review)|[评审后置动作(REVIEW_ACTION_RULE)](module/TestMgmt/review_action_rule)|[DERCUSTOM_REVIEW_REVIEW_ACTION_RULE_ACTION_RULE](der/DERCUSTOM_REVIEW_REVIEW_ACTION_RULE_ACTION_RULE)|自定义关系||
 |[评审(REVIEW)](module/TestMgmt/review)|[评审规则(REVIEW_RULE)](module/TestMgmt/review_rule)|[DERCUSTOM_REVIEW_REVIEW_RULE_RULE](der/DERCUSTOM_REVIEW_REVIEW_RULE_RULE)|自定义关系||
@@ -169,8 +175,11 @@
 |[评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)|[评审结果(REVIEW_RESULT)](module/TestMgmt/review_result)|[DERCUSTOM_REVIEW_RESULT_REVIEW_CONTENT_CONTENT_ID](der/DERCUSTOM_REVIEW_RESULT_REVIEW_CONTENT_CONTENT_ID)|自定义关系||
 |[评审内容扩展(REVIEW_CONTENT_EXTEND)](module/TestMgmt/review_content_extend)|[评审结果(REVIEW_RESULT)](module/TestMgmt/review_result)|[DER1N_REVIEW_RESULT_REVIEW_CONTENT_EXTEND_CONTENT_ID](der/DER1N_REVIEW_RESULT_REVIEW_CONTENT_EXTEND_CONTENT_ID)|1:N关系|嵌套操作、|
 |[评审内容扩展(REVIEW_CONTENT_EXTEND)](module/TestMgmt/review_content_extend)|[关联(RELATION)](module/Base/relation)|[DERCUSTOM_RELATION_REVIEW_CONTENT_EXTEND](der/DERCUSTOM_RELATION_REVIEW_CONTENT_EXTEND)|自定义关系||
+|[评审内容扩展(REVIEW_CONTENT_EXTEND)](module/TestMgmt/review_content_extend)|[产品需求评审内容(REVIEW_CONTENT_IDEA)](module/ProdMgmt/review_content_idea)|[DERMULINH_REVIEW_CONTENT_IDEA_REVIEW_CONTENT_EXTEND](der/DERMULINH_REVIEW_CONTENT_IDEA_REVIEW_CONTENT_EXTEND)|多继承关系（虚拟实体）||
 |[评审内容扩展(REVIEW_CONTENT_EXTEND)](module/TestMgmt/review_content_extend)|[评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)|[DERMULINH_REVIEW_CONTENT_REVIEW_CONTENT_EXTEND](der/DERMULINH_REVIEW_CONTENT_REVIEW_CONTENT_EXTEND)|多继承关系（虚拟实体）||
+|[产品需求评审内容(REVIEW_CONTENT_IDEA)](module/ProdMgmt/review_content_idea)|[评审结果(REVIEW_RESULT)](module/TestMgmt/review_result)|[DERCUSTOM_REVIEW_RESULT_REVIEW_CONTENT_IDEA_CONTENT_ID](der/DERCUSTOM_REVIEW_RESULT_REVIEW_CONTENT_IDEA_CONTENT_ID)|自定义关系||
 |[评审向导(REVIEW_WIZARD)](module/TestMgmt/review_wizard)|[关注(ATTENTION)](module/Base/attention)|[DERCUSTOM_ATTENTION_REVIEW_WIZARD](der/DERCUSTOM_ATTENTION_REVIEW_WIZARD)|自定义关系|附属关系、数据访问控制、|
+|[评审向导(REVIEW_WIZARD)](module/TestMgmt/review_wizard)|[产品需求评审内容(REVIEW_CONTENT_IDEA)](module/ProdMgmt/review_content_idea)|[DERCUSTOM_REVIEW_CONTENT_IDEA_REVIEW_WIZARD](der/DERCUSTOM_REVIEW_CONTENT_IDEA_REVIEW_WIZARD)|自定义关系|附属关系、附属关系(N:N连接)、|
 |[评审向导(REVIEW_WIZARD)](module/TestMgmt/review_wizard)|[评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)|[DERCUSTOM_REVIEW_CONTENT_REVIEW_WIZARD](der/DERCUSTOM_REVIEW_CONTENT_REVIEW_WIZARD)|自定义关系|附属关系、附属关系(N:N连接)、|
 |[角色(ROLE)](module/Base/role)|[系统角色成员(ROLE_MEMBER)](module/Base/role_member)|[ROLE_MEMBER_ROLE_ROLE_ID](der/ROLE_MEMBER_ROLE_ROLE_ID)|自定义关系|附属关系、附属关系(N:N连接)、数据访问控制、|
 |[执行用例(RUN)](module/TestMgmt/run)|[评论(COMMENT)](module/Base/comment)|[DERCOSTOM_COMMENT_RUN_PRINCIPAL_ID](der/DERCOSTOM_COMMENT_RUN_PRINCIPAL_ID)|自定义关系|附属关系、数据访问控制、|
@@ -245,6 +254,7 @@
 |[企业用户(USER)](module/Base/user)|[产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member)|[DER1N_PRODUCT_MEMBER_USER_USER_ID](der/DER1N_PRODUCT_MEMBER_USER_USER_ID)|1:N关系|附属关系、附属关系(N:N连接)、|
 |[企业用户(USER)](module/Base/user)|[成员(MEMBER)](module/Base/member)|[DER1N_MEMBER_USER_USER_ID](der/DER1N_MEMBER_USER_USER_ID)|1:N关系|附属关系、附属关系(N:N连接)、|
 |[企业用户(USER)](module/Base/user)|[空间成员(SPACE_MEMBER)](module/Wiki/space_member)|[DER1N_SPACE_MEMBER_USER_USER_ID](der/DER1N_SPACE_MEMBER_USER_USER_ID)|1:N关系|附属关系、附属关系(N:N连接)、|
+|[版本(VERSION)](module/Base/version)|[产品需求评审内容(REVIEW_CONTENT_IDEA)](module/ProdMgmt/review_content_idea)|[DERCUSTOM_REVIEW_CONTENT_IDEA_VERSION](der/DERCUSTOM_REVIEW_CONTENT_IDEA_VERSION)|自定义关系||
 |[版本(VERSION)](module/Base/version)|[基线工作项(BASELINE_WORK_ITEM)](module/ProjMgmt/baseline_work_item)|[DERCUSTOM_BASELINE_WORK_ITEM_VERSION](der/DERCUSTOM_BASELINE_WORK_ITEM_VERSION)|自定义关系||
 |[版本(VERSION)](module/Base/version)|[基线需求(BASELINE_IDEA)](module/ProdMgmt/baseline_idea)|[DERCUSTOM_BASELINE_IDEA_VERSION](der/DERCUSTOM_BASELINE_IDEA_VERSION)|自定义关系||
 |[版本(VERSION)](module/Base/version)|[基线页面(BASELINE_PAGE)](module/Wiki/baseline_page)|[DERCUSTOM_BASELINE_PAGE_VERSION](der/DERCUSTOM_BASELINE_PAGE_VERSION)|自定义关系||

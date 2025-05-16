@@ -202,6 +202,46 @@
 
 ##### 序列使用清单
 
+
+
+
+### 评审编号（复用） :id=common_seq_review_id
+
+
+<br>
+<p class="panel-title"><b>序列标记</b></p>
+
+* `common_seq_review_id`
+
+
+<p class="panel-title"><b>序列格式化</b></p>
+
+* `%1$04d`
+
+<p class="panel-title"><b>序列实体</b></p>
+
+* [序列(SEQUENCE_GENERATOR)](module/Base/sequence_generator.md)
+
+<p class="panel-title"><b>值存储属性</b></p>
+
+* `当前值(CURRENT_VALUE)` 值区间为`[1 , 9999]`
+
+<p class="panel-title"><b>标记存储属性</b></p>
+
+* `名称(NAME)`
+
+<p class="panel-title"><b>类型存储属性</b></p>
+
+* `分组标记(GROUP_TAG)`
+
+
+<p class="panel-title"><b>序列格式化时使用属性</b></p>
+
+* `PRINCIPAL_ID`
+
+
+##### 序列使用清单
+
 > [评审(REVIEW)](module/TestMgmt/review.md) `编号(IDENTIFIER)` <br>
 > [评审向导(REVIEW_WIZARD)](module/TestMgmt/review_wizard.md) `编号(IDENTIFIER)` <br>
 

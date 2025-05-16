@@ -21,17 +21,17 @@
 
 
 ### 关联界面行为
-  * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [新开窗口（话题）](module/Team/discuss_topic#界面行为)
-  * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [更多设置](module/Team/discuss_topic#界面行为)
-  * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [打开话题导航页](module/Team/discuss_topic#界面行为)
-  * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [编辑基本信息](module/Team/discuss_topic#界面行为)
-  * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [打开话题配置](module/Team/discuss_topic#界面行为)
   * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [设置星标](module/Team/discuss_topic#界面行为)
-  * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [话题信息](module/Team/discuss_topic#界面行为)
-  * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [打开话题首页视图](module/Team/discuss_topic#界面行为)
-  * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [回收站](module/Team/discuss_topic#界面行为)
   * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [取消星标](module/Team/discuss_topic#界面行为)
+  * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [回收站](module/Team/discuss_topic#界面行为)
   * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [话题成员](module/Team/discuss_topic#界面行为)
+  * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [打开话题导航页](module/Team/discuss_topic#界面行为)
+  * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [话题信息](module/Team/discuss_topic#界面行为)
+  * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [编辑基本信息](module/Team/discuss_topic#界面行为)
+  * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [新开窗口（话题）](module/Team/discuss_topic#界面行为)
+  * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [打开话题首页视图](module/Team/discuss_topic#界面行为)
+  * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [打开话题配置](module/Team/discuss_topic#界面行为)
+  * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [更多设置](module/Team/discuss_topic#界面行为)
 
 ### 关联界面逻辑
   * [话题(DISCUSS_TOPIC)](module/Team/discuss_topic) : [计算表格列行为状态(discuss_topic)](module/Team/discuss_topic/uilogic/calc_column_action_state)

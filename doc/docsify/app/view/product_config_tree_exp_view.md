@@ -18,8 +18,9 @@
 
 ### 关联视图
   * [组件设置(addon_setting_grid_view)](app/view/addon_setting_grid_view)
-  * [状态管理(dictionary_data_idea_state_grid_view)](app/view/dictionary_data_idea_state_grid_view)
-  * [状态管理(dictionary_data_ticket_state_grid_view)](app/view/dictionary_data_ticket_state_grid_view)
+  * [数据字典(dictionary_data_idea_dictionary_grid_view)](app/view/dictionary_data_idea_dictionary_grid_view)
+  * [数据字典(dictionary_data_ticket_dictionary_grid_view)](app/view/dictionary_data_ticket_dictionary_grid_view)
+  * [评审配置(guideline_all_grid_view)](app/view/guideline_all_grid_view)
   * [需求配置(idea_config_tab_exp_view)](app/view/idea_config_tab_exp_view)
   * [需求(idea_global_setting_view)](app/view/idea_global_setting_view)
   * [需求模板(idea_template_global_all_grid_view)](app/view/idea_template_global_all_grid_view)

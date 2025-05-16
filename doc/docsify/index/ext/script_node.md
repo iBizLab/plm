@@ -1,5 +1,5 @@
 
-## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[218]</font></sup>
+## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[222]</font></sup>
 
 #### [组件(ADDON)](module/Base/addon)的处理逻辑[组件权限计数器(addon_authority)](module/Base/addon/logic/addon_authority)
 
@@ -537,6 +537,21 @@ if(_default.get('user_id') == user.getUserid()){
     _default.set('is_current_user', '1')
 }
 ```
+#### [流程准则(GUIDELINE)](module/TestMgmt/guideline)的处理逻辑[生成阶段排序值(fill_stage_order)](module/TestMgmt/guideline/logic/fill_stage_order)
+
+节点：设置排序值
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def stage_list = logic.param('stage_list').getReal();
+def order = 1;
+stage_list.each { stage ->
+    println "Order: $order, Stage: $stage"
+    stage.set("order", order);
+    order++;
+}
+
+```
 #### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[基线规划需求数据查询(baseline_plan_idea)](module/ProdMgmt/idea/logic/baseline_plan_idea)
 
 节点：获取所选需求的版本ID信息
@@ -596,6 +611,49 @@ defaultObj.set("srfreadonly", true);
 var defaultObj = logic.getParam("default");
 
 defaultObj.set("srfreadonly", true);
+```
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[获取变更类型与变更版本(set_change_type)](module/ProdMgmt/idea/logic/set_change_type)
+
+节点：设置from-to都为最新版
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var version_pages_results = logic.getParam("version_pages_results");
+
+if (version_pages_results) {
+    var change_version = {};
+    var for_obj = logic.getParam("for_obj");
+    for (var i = 0; i < version_pages_results.length; i++) {
+        //新增只有to
+        if (i === 0) {
+            change_version["to"] = version_pages_results.get(i);
+        }
+    }
+
+    for_obj.set("change_version", change_version);
+}
+```
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[获取变更类型与变更版本(set_change_type)](module/ProdMgmt/idea/logic/set_change_type)
+
+节点：设置改变版本信息
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var version_pages_results = logic.getParam("version_pages_results");
+if (version_pages_results) {
+    var change_version = {};
+    var for_obj = logic.getParam("for_obj");
+    for (var i = 0; i < version_pages_results.length; i++) {
+        if (i === 0) {
+            change_version["from"] = version_pages_results.get(i);
+            change_version["to"] = version_pages_results.get(i);
+            sys.info("进入1");
+        } else if (i === 1) {
+            change_version["from"] = version_pages_results.get(i);
+            sys.info("进入2");
+        }
+    }
+    for_obj.set("change_version", change_version);}
 ```
 #### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[获取客户分数(get_customer_score)](module/ProdMgmt/idea/logic/get_customer_score)
 
@@ -1691,6 +1749,16 @@ if (cur_owner_addons.length == 0) {
     }
   }
 }
+```
+#### [产品(PRODUCT)](module/ProdMgmt/product)的处理逻辑[创建产品流程准则(auto_create_guideline)](module/ProdMgmt/product/logic/auto_create_guideline)
+
+节点：拼接guideline_ID
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var new_guideline = logic.getParam("new_guideline");
+var for_obj_guideline = logic.getParam("for_obj_guideline");
+new_guideline.set("id",new_guideline.get("scope_id")+"_"+for_obj_guideline.get("id"));
 ```
 #### [产品(PRODUCT)](module/ProdMgmt/product)的处理逻辑[获取产品成员(get_product_member_one)](module/ProdMgmt/product/logic/get_product_member_one)
 
@@ -4205,7 +4273,7 @@ change_page.each { it ->
 def rep_num = begin_count
 result_list.eachWithIndex { item, index ->
     def rep_date = dateFormatter.format(new Date(item.get('rep_date').time))
-    if(begin_count > 0){
+    if(begin_count > 0 && index != 0){
         // 计算递减步长
         def decrementStep = begin_count / (result_list.size() - 1)
         // 理想线 根据日期 从开始日期 逐天递减

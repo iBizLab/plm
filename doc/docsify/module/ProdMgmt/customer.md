@@ -128,6 +128,7 @@
 |[数据查询(DEFAULT)](module/ProdMgmt/customer/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/ProdMgmt/customer/query/View)|VIEW|否|否 |否 ||
 |[评论通知负责人(comment_notify_assignee)](module/ProdMgmt/customer/query/comment_notify_assignee)|comment_notify_assignee|否|否 |否 ||
+|[当前产品客户(cur_product_customer)](module/ProdMgmt/customer/query/cur_product_customer)|cur_product_customer|否|否 |否 ||
 |[需求未关联的客户(idea_notre_customer)](module/ProdMgmt/customer/query/idea_notre_customer)|idea_notre_customer|否|否 |否 ||
 |[需求关联客户(idea_relation_customer)](module/ProdMgmt/customer/query/idea_relation_customer)|idea_relation_customer|否|否 |否 ||
 |[正常状态(normal)](module/ProdMgmt/customer/query/normal)|normal|否|否 |否 ||
@@ -138,6 +139,7 @@
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/ProdMgmt/customer/dataset/Default)|DEFAULT|数据查询|是|||
 |[评论通知负责人(comment_notify_assignee)](module/ProdMgmt/customer/dataset/comment_notify_assignee)|comment_notify_assignee|数据查询|否|||
+|[当前产品客户(cur_product_customer)](module/ProdMgmt/customer/dataset/cur_product_customer)|cur_product_customer|数据查询|否|||
 |[需求未关联的客户(idea_noitre_customer)](module/ProdMgmt/customer/dataset/idea_notre_customer)|idea_noitre_customer|数据查询|否|||
 |[需求关联客户(idea_relation_customer)](module/ProdMgmt/customer/dataset/idea_relation_customer)|idea_relation_customer|数据查询|否|||
 |[正常状态(normal)](module/ProdMgmt/customer/dataset/normal)|normal|数据查询|否|||

@@ -165,6 +165,7 @@
 |  中文名col200 | 代码名col200 | 备注col500 |
 | --------|--------|------|
 |[判断操作列是否禁用](module/Base/dictionary_data/uilogic/judge_column_state)|judge_column_state|用于动态控制激活行为的禁用状态|
+|[获取搜索栏参数](module/Base/dictionary_data/uilogic/get_tabsearchbar_param)|get_tabsearchbar_param||
 
 
 ## [协作成员(DISCUSS_MEMBER)](module/Team/discuss_member.md) :id=discuss_member
@@ -265,6 +266,7 @@
 |[查看客户统计信息](module/ProdMgmt/idea/uilogic/check_customer_info)|check_customer_info|按钮触发，通过脚本切换显示组件|
 |[查看工单统计信息](module/ProdMgmt/idea/uilogic/check_ticket_info)|check_ticket_info|按钮触发，通过脚本切换显示组件|
 |[查看工时明细](module/ProdMgmt/idea/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
+|[查看评审历史](module/ProdMgmt/idea/uilogic/check_review_history)|check_review_history|按钮触发，通过脚本切换显示组件|
 |[添加附件数据](module/ProdMgmt/idea/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[用例关联需求](module/ProdMgmt/idea/uilogic/test_case_relation_idea)|test_case_relation_idea|值变更时触发，用例关联需求，调用处理逻辑生成正反向数据|
 |[编辑类别或分组](module/ProdMgmt/idea/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
@@ -275,6 +277,7 @@
 |[计算表格列行为状态(idea)](module/ProdMgmt/idea/uilogic/calc_column_action_state)|calc_column_action_state|动态识别readonly|
 |[选择需求模板](module/ProdMgmt/idea/uilogic/choose_case_template)|choose_case_template|选择需求模板后回填所选模板数据至表单|
 |[通知刷新](module/ProdMgmt/idea/uilogic/flush)|flush||
+|[重置上下文产品ID](module/ProdMgmt/idea/uilogic/reset_product_id)|reset_product_id||
 |[门户全屏](module/ProdMgmt/idea/uilogic/full_screen)|full_screen|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户刷新](module/ProdMgmt/idea/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户编辑](module/ProdMgmt/idea/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|
@@ -592,6 +595,7 @@
 |[添加附件数据（通用）](module/TestMgmt/review/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[编辑类别或分组](module/TestMgmt/review/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
 |[计算表格列行为状态(review)](module/TestMgmt/review/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制界面行为组按钮的显示隐藏状态|
+|[通知刷新](module/TestMgmt/review/uilogic/notify_refresh)|notify_refresh||
 |[门户全屏](module/TestMgmt/review/uilogic/full_screen)|full_screen|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户刷新](module/TestMgmt/review/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户编辑](module/TestMgmt/review/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|
@@ -607,10 +611,12 @@
 |[打开评审结果](module/TestMgmt/review_content/uilogic/open_result)|open_result|打开评审结果|
 |[提交评审](module/TestMgmt/review_content/uilogic/commit_review)|commit_review|提交评审|
 |[获取评审内容总条数](module/TestMgmt/review_content/uilogic/get_review_content_total)|get_review_content_total|获取评审内容总条数|
+|[获取评审数据](module/TestMgmt/review_content/uilogic/get_review_data)|get_review_data||
 |[计算表格列行为状态(review)](module/TestMgmt/review_content/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制界面行为组内界面行为的禁用状态|
 |[评审内容版本比对](module/TestMgmt/review_content/uilogic/review_content_version_comparison)|review_content_version_comparison|评审内容版本比对|
 |[返回](module/TestMgmt/review_content/uilogic/back)|back|查看评审结果后，返回主表单按钮使用|
 |[返回（历史）](module/TestMgmt/review_content/uilogic/back_history)|back_history|查看评审历史后，返回测试用例主表单按钮使用|
+
 
 
 
@@ -629,6 +635,7 @@
 | --------|--------|------|
 |[变更阶段评审人](module/TestMgmt/review_stage/uilogic/set_stage_reviewer)|set_stage_reviewer|变更阶段评审人|
 |[选中阶段](module/TestMgmt/review_stage/uilogic/choose_stage)|choose_stage|选中阶段|
+|[默认选中](module/TestMgmt/review_stage/uilogic/default_choose)|default_choose|默认选中|
 
 
 ## [评审向导(REVIEW_WIZARD)](module/TestMgmt/review_wizard.md) :id=review_wizard

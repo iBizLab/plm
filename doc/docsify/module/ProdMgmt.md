@@ -16,6 +16,7 @@
 |[排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan)|product_plan|主实体|SQL|PRODUCT_PLAN|否|否|附属主实体控制|否|规划产品的开发和发布时间表，包括各个阶段的开始和结束时间，包含需求。|
 |[产品标签(PRODUCT_TAG)](module/ProdMgmt/product_tag)|product_tag|主实体|SQL|PRODUCT_TAG|否|否|附属主实体控制（未映射自控）|否|为产品分配的标签，用于标识产品特性、类型和分类，便于管理和筛选。|
 |[产品工单类型(PRODUCT_TICKET_TYPE)](module/ProdMgmt/product_ticket_type)|product_ticket_type|主实体|SQL|PRODUCT_TICKET_TYPE|是|否|附属主实体控制（未映射自控）|否|区分产品工单的类型，如缺陷、需求等，用于工单管理。|
+|[产品需求评审内容(REVIEW_CONTENT_IDEA)](module/ProdMgmt/review_content_idea)|review_content_idea|关系实体|无存储||是|否|附属主实体控制（未映射自控）|否|记录产品需求的评审内容|
 |[工单(TICKET)](module/ProdMgmt/ticket)|ticket|主实体|SQL|TICKET|否|是|自控制|是|用于追踪和管理产品相关的客户请求和问题解决过程。|
 |[工单类型(TICKET_TYPE)](module/ProdMgmt/ticket_type)|ticket_type|主实体|SQL|TICKET_TYPE|否|否|自控制|否|定义不同的工单类别，用以区分各种客户请求或问题。|
 

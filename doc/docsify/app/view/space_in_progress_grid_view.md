@@ -16,13 +16,13 @@
 
 
 ### 关联界面行为
-  * [空间(SPACE)](module/Wiki/space) : [设置管理员](module/Wiki/space#界面行为)
-  * [空间(SPACE)](module/Wiki/space) : [打开空间配置](module/Wiki/space#界面行为)
   * [空间(SPACE)](module/Wiki/space) : [打开空间主页面](module/Wiki/space#界面行为)
   * [空间(SPACE)](module/Wiki/space) : [进行中_删除](module/Wiki/space#界面行为)
   * [空间(SPACE)](module/Wiki/space) : [取消星标](module/Wiki/space#界面行为)
-  * [空间(SPACE)](module/Wiki/space) : [进行中_归档](module/Wiki/space#界面行为)
   * [空间(SPACE)](module/Wiki/space) : [打开空间导航页](module/Wiki/space#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [打开空间配置](module/Wiki/space#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [设置管理员](module/Wiki/space#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [进行中_归档](module/Wiki/space#界面行为)
 
 ### 关联视图
   * [页面(article_page_filter_grid_view)](app/view/article_page_filter_grid_view)

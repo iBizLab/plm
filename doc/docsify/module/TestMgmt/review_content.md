@@ -14,6 +14,7 @@
 |当前版本标识|CUR_VERSION_ID|继承属性|100|是||
 |最终评审结果|FINAL_STAGE_RESULTS|[继承属性](index/dictionary_index#final_stage_results "最终评审结果")|60|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|继承属性|100|否||
+|产品需求|IDEA|外键值对象|1048576|是||
 |名称|NAME|继承属性|200|是||
 |所属数据对象|OWNER_TYPE|继承属性|100|是||
 |父对象版本标识|PARENT_VERSION_ID|继承属性|100|是||
@@ -56,6 +57,7 @@
 
 |  名称col350   | 主实体col200   | 关系类型col200   |    备注col500  |
 | -------- |---------- |-----------|----- |
+|[DERCUSTOM_IDEA_REVIEW_CONTENT](der/DERCUSTOM_IDEA_REVIEW_CONTENT)|[需求(IDEA)](module/ProdMgmt/idea)|自定义关系||
 |[DERCUSTOM_REVIEW_CONTENT_REVIEW](der/DERCUSTOM_REVIEW_CONTENT_REVIEW)|[评审(REVIEW)](module/TestMgmt/review)|自定义关系||
 |[DERCUSTOM_REVIEW_CONTENT_REVIEW_WIZARD](der/DERCUSTOM_REVIEW_CONTENT_REVIEW_WIZARD)|[评审向导(REVIEW_WIZARD)](module/TestMgmt/review_wizard)|自定义关系||
 |[DERCUSTOM_REVIEW_CONTENT_VERSION](der/DERCUSTOM_REVIEW_CONTENT_VERSION)|[版本(VERSION)](module/Base/version)|自定义关系||
@@ -79,6 +81,7 @@
 |Update|Update|内置方法|默认|不支持|[附加操作](index/action_logic_index#review_content_Update)|||
 |添加评审内容|add_review_content|[实体处理逻辑](module/TestMgmt/review_content/logic/add_review_content "添加内容")|默认|不支持||||
 |完成评审|complete_review|[实体处理逻辑](module/TestMgmt/review_content/logic/complete_review "完成评审")|默认|不支持||||
+|创建评审数据|create_review_data|[实体处理逻辑](module/TestMgmt/review_content/logic/create_review_data "创建评审数据")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/TestMgmt/review_content/logic/nothing "无操作")|默认|不支持||||
 |规划用例|program_test_case|[实体处理逻辑](module/TestMgmt/review_content/logic/program_test_case "规划用例")|默认|不支持||||
 |评审内容条数|review_content_total|[实体处理逻辑](module/TestMgmt/review_content/logic/review_content_total "评审结果条数")|默认|不支持||||
@@ -90,7 +93,8 @@
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
-|[变更测试用例](module/TestMgmt/review_content/logic/change_test_case)|change_test_case|无||完成评审后变更测试用例的评审状态|
+|[创建评审数据](module/TestMgmt/review_content/logic/create_review_data)|create_review_data|无|||
+|[变更评审状态](module/TestMgmt/review_content/logic/change_review_state)|change_review_state|无||完成评审后变更测试用例的评审状态|
 |[完成评审](module/TestMgmt/review_content/logic/complete_review)|complete_review|无||完成评审，判断是否为最终阶段，如果是变更评审的状态|
 |[开始评审](module/TestMgmt/review_content/logic/start_review)|start_review|无||开启当前阶段评审|
 |[提交评审](module/TestMgmt/review_content/logic/submit_review)|submit_review|无||测试|
@@ -110,6 +114,7 @@
 |[数据查询(DEFAULT)](module/TestMgmt/review_content/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/TestMgmt/review_content/query/View)|VIEW|否|否 |否 ||
 |[全部数据(all)](module/TestMgmt/review_content/query/all)|all|否|否 |否 ||
+|[当前评审历史(cur_history)](module/TestMgmt/review_content/query/cur_history)|cur_history|否|否 |否 ||
 |[评审历史列表(history_list)](module/TestMgmt/review_content/query/history_list)|history_list|否|否 |否 ||
 
 ## 数据集合
@@ -117,6 +122,7 @@
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/TestMgmt/review_content/dataset/Default)|DEFAULT|数据查询|是|||
 |[全部数据(all)](module/TestMgmt/review_content/dataset/all)|all|数据查询|否|||
+|[当前评审历史(cur_history)](module/TestMgmt/review_content/dataset/cur_history)|cur_history|数据查询|否|||
 |[评审历史列表(history_list)](module/TestMgmt/review_content/dataset/history_list)|history_list|数据查询|否|||
 
 ## 数据权限
@@ -162,9 +168,11 @@
 | --------| --------| -------- |------------|------------|------------|
 | 设置评审结果 | set_review_result | 设置评审结果 |单项数据（主键）|用户自定义||
 | 移出用例 | remove_case | 移出用例 |多项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 规划评审需求 | program_review_idea | 规划需求 |无数据|<details><summary>打开视图或向导（模态）</summary>[选择需求](app/view/idea_review_re_idea_view)</details>||
 | 移出用例（无权限） | remove_case_all | 移出用例 |多项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 | 评审内容版本比对 | review_content_version_comparison | 版本比对 |单项数据|用户自定义||
 | 返回 | back | 返回 |无数据|用户自定义||
+| 规划评审用例 | program_review_test_case | 规划用例 |无数据|<details><summary>打开视图或向导（模态）</summary>[选择用例](app/view/test_case_mpick_up_view2_review)</details>||
 | 提交评审 | submit_review | 提交评审 |无数据|用户自定义||
 | 完成当前阶段评审 | complete_review | 完成评审 |无数据|<details><summary>打开视图或向导（模态）</summary></details>||
 | 快速评审 | complete_review_quickly | 评审 |多项数据（主键）|<details><summary>后台调用</summary>[set_review_result_all](#行为)||
@@ -179,6 +187,7 @@
 |[打开评审结果](module/TestMgmt/review_content/uilogic/open_result)|open_result|打开评审结果|
 |[提交评审](module/TestMgmt/review_content/uilogic/commit_review)|commit_review|提交评审|
 |[获取评审内容总条数](module/TestMgmt/review_content/uilogic/get_review_content_total)|get_review_content_total|获取评审内容总条数|
+|[获取评审数据](module/TestMgmt/review_content/uilogic/get_review_data)|get_review_data||
 |[计算表格列行为状态(review)](module/TestMgmt/review_content/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制界面行为组内界面行为的禁用状态|
 |[评审内容版本比对](module/TestMgmt/review_content/uilogic/review_content_version_comparison)|review_content_version_comparison|评审内容版本比对|
 |[返回](module/TestMgmt/review_content/uilogic/back)|back|查看评审结果后，返回主表单按钮使用|

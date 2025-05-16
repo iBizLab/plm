@@ -18,7 +18,7 @@
 |原父工作项|ORIGIN_PARENT|文本，可指定长度|100|是||
 |原工作项状态|ORIGIN_STATE|单项选择(文本值)|100|是||
 |原工作项类型|ORIGIN_TYPE|单项选择(文本值)|60|是||
-|优先级|PRIORITY|[单项选择(文本值)](index/dictionary_index#work_item_priority "优先级")|60|是||
+|优先级|PRIORITY|单项选择(文本值)|60|是||
 |项目标识|PROJECT_ID|文本，可指定长度|100|是||
 |属性补充集合|PROPERTIES|一对多动态对象|1048576|是||
 |状态变更|STATES|一对多动态对象|1048576|是||

@@ -15,11 +15,14 @@
 |填充页面版本数据(fill_version_data)|[基线页面(BASELINE_PAGE)](module/Wiki/baseline_page)|PSDEDataSetImpl|[FillVersionDataDEDataSetRuntime](#UsrSFPlugin0421357755)|cn.ibizlab.plm.user.plugin.groovy.dataentity.ds.FillVersionDataDEDataSetRuntime|
 |填充测试用例版本数据(fill_version_data)|[基线用例(BASELINE_TEST_CASE)](module/TestMgmt/baseline_test_case)|PSDEDataSetImpl|[FillVersionDataDEDataSetRuntime](#UsrSFPlugin0421357755)|cn.ibizlab.plm.user.plugin.groovy.dataentity.ds.FillVersionDataDEDataSetRuntime|
 |填充工作项版本数据(fill_version_data)|[基线工作项(BASELINE_WORK_ITEM)](module/ProjMgmt/baseline_work_item)|PSDEDataSetImpl|[FillVersionDataDEDataSetRuntime](#UsrSFPlugin0421357755)|cn.ibizlab.plm.user.plugin.groovy.dataentity.ds.FillVersionDataDEDataSetRuntime|
+|产品需求导入|[需求(IDEA)](module/ProdMgmt/idea)|PSDEDataImportImpl|[DynaFieldDEDataImportRuntimeEx](#DynaFieldDEDataImportRuntimeEx)|支持动态属性导入|
 |空间页面(移动端)(normal_tree_page)|[页面(PAGE)](module/Wiki/article_page)|PSDEDataSetImpl|[TreeGridDEDataSetRuntime](#UsrSFPlugin0407757309)|数据集合获取树表格层级数据|
 |多类型页面数据导入|[页面(PAGE)](module/Wiki/article_page)|PSDEDataImportImpl|[PageDataImportRuntimeEx](#PageDataImportRuntimeEx)|页面导入使用|
 |version|[页面(PAGE)](module/Wiki/article_page)|PSDEUtilImpl|[DEVersionControlUtilRuntimeEx](#UsrSFPlugin0628633282)|排除新建模式行为自动建立版本|
 |版本数据存储|[关联(RELATION)](module/Base/relation)|PSDEUtilImpl|[DEVersionStorageUtilRuntimeEx](#UsrSFPlugin0425071911)|查询版本关联数据|
 |版本数据存储|[执行用例(RUN)](module/TestMgmt/run)|PSDEUtilImpl|[DEVersionStorageUtilRuntimeEx](#UsrSFPlugin0425071911)|查询版本关联数据|
+|测试用例导入|[用例(TEST_CASE)](module/TestMgmt/test_case)|PSDEDataImportImpl|[DynaFieldDEDataImportRuntimeEx](#DynaFieldDEDataImportRuntimeEx)|支持动态属性导入|
+|产品工单导入|[工单(TICKET)](module/ProdMgmt/ticket)|PSDEDataImportImpl|[DynaFieldDEDataImportRuntimeEx](#DynaFieldDEDataImportRuntimeEx)|支持动态属性导入|
 |提交版本(COMMIT)|[版本(VERSION)](module/Base/version)|PSDEUserCustomActionImpl|[CommitVersionDEActionRuntime](#UsrSFPlugin0324806543)|创建版本数据|
 |修复版本(FixCommit)|[版本(VERSION)](module/Base/version)|PSDEUserCustomActionImpl|[FixCommitVersionDEActionRuntime](#UsrSFPlugin0424197954)|初始化版本数据（修复版本）|
 |恢复指定版本(RESTORE)|[版本(VERSION)](module/Base/version)|PSDEUserCustomActionImpl|[RestoreVersionDEActionRuntime](#UsrSFPlugin0324899435)||
@@ -36,6 +39,135 @@
 |敏捷工作项导入|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|PSDEDataImportImpl|[NestedDataImportRuntimeEx](#NestedDataImportRuntimeEx)||
 |瀑布工作项导入|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|PSDEDataImportImpl|[NestedDataImportRuntimeEx](#NestedDataImportRuntimeEx)||
 
+### DynaFieldDEDataImportRuntimeEx :id=DynaFieldDEDataImportRuntimeEx
+支持动态属性导入
+
+```cn.ibizlab.plm.user.plugin.groovy.dataentity.dataimport.DynaFieldDEDataImportRuntimeEx```
+
+```groovy
+package cn.ibizlab.plm.user.plugin.groovy.dataentity.dataimport
+
+import com.fasterxml.jackson.databind.node.ObjectNode
+import groovy.transform.CompileStatic
+import net.ibizsys.central.cloud.core.dataentity.IDataEntityRuntime
+import net.ibizsys.central.cloud.core.dataentity.util.IDEExtensionUtilRuntime;
+import net.ibizsys.central.plugin.extension.dataentity.util.DEExtensionUtilRuntimeBase;
+import net.ibizsys.central.plugin.poi.dataentity.dataimport.POIDEDataImportRuntime
+import net.ibizsys.model.IPSModelObjectRuntime
+import net.ibizsys.model.PSModelEnums;
+import net.ibizsys.model.dataentity.dataimport.IPSDEDataImportItem
+import net.ibizsys.model.dataentity.dataimport.PSDEDataImportItemImpl;
+import net.ibizsys.model.dataentity.defield.IPSDEField
+import net.ibizsys.model.dataentity.der.IPSDER1N
+import net.ibizsys.model.dataentity.der.IPSDERBase
+import net.ibizsys.model.dataentity.der.IPSDERCustom;
+import net.ibizsys.runtime.security.IUserContext;
+import net.ibizsys.runtime.util.IWebContext
+import net.ibizsys.runtime.util.JsonUtils;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils
+
+@CompileStatic
+public class DynaFieldDEDataImportRuntimeEx extends POIDEDataImportRuntime  {
+    private static final org.apache.commons.logging.Log log = org.apache.commons.logging.LogFactory.getLog(DynaFieldDEDataImportRuntimeEx.class);
+
+    private List<String> extendParentKeys = new ArrayList<>();
+
+    private IDEExtensionUtilRuntime iDEExtensionUtilRuntime = null;
+
+    @Override
+    protected void onInit() throws Exception {
+        if(this.getDataEntityRuntime().isEnableExtension() && this.getDataEntityRuntime().getDEExtensionUtilRuntime()!=null) {
+            this.iDEExtensionUtilRuntime = this.getDataEntityRuntime().getDEExtensionUtilRuntime();
+        }
+
+        List<IPSDERBase> minorPSDERs = getDataEntityRuntime().getPSDataEntity().getMinorPSDERs();
+        if (!ObjectUtils.isEmpty(minorPSDERs)) {
+            for (IPSDERBase iPSDERBase : minorPSDERs) {
+                if (iPSDERBase instanceof IPSDER1N) {
+                    IPSDER1N iPSDER1N = (IPSDER1N) iPSDERBase;
+                    if ((iPSDER1N.getMasterRS() & PSModelEnums.DER1NMasterRS.EXTENSION.value) == PSModelEnums.DER1NMasterRS.EXTENSION.value) {
+                        extendParentKeys.add(iPSDER1N.getPSPickupDEFieldMust().getName());
+                    }
+                    continue;
+                }
+
+                if (iPSDERBase instanceof IPSDERCustom) {
+                    IPSDERCustom iPSDERCustom = (IPSDERCustom) iPSDERBase;
+                    if (PSModelEnums.DERSubType.DER1N.value.equals(iPSDERCustom.getDERSubType()) || PSModelEnums.DERSubType.DER11.value.equals(iPSDERCustom.getDERSubType())) {
+                        if (iPSDERCustom.getPickupPSDEField() != null && ((iPSDERCustom.getMasterRS() & PSModelEnums.DER1NMasterRS.EXTENSION.value) == PSModelEnums.DER1NMasterRS.EXTENSION.value)) {
+                            extendParentKeys.add(iPSDERCustom.getPickupPSDEField().getName());
+                        }
+                    }
+                    continue;
+                }
+            }
+        }
+        super.onInit();
+    }
+
+    @Override
+    public IDataEntityRuntime getDataEntityRuntime() {
+        return (IDataEntityRuntime)super.getDataEntityRuntime();
+    }
+    protected Map<String, IPSDEDataImportItem> getPSDEDataImportItems(IUserContext iUserContext) throws Throwable {
+        Map<String, IPSDEDataImportItem> map = super.getPSDEDataImportItems(iUserContext);
+        if(!ObjectUtils.isEmpty(extendParentKeys) && getDEExtensionUtilRuntime() != null) {
+            IWebContext iWebContext = iUserContext.getWebContext();
+            if(iWebContext != null) {
+                for (String extendParentKey : extendParentKeys) {
+                    String strDataType = iWebContext.getParameter(extendParentKey);
+                    if (!StringUtils.hasLength(strDataType)) {
+                        continue;
+                    }
+                    List<IPSDEField> psDEFieldList = this.getDEExtensionUtilRuntime().getPSDEFields(String.format(DEExtensionUtilRuntimeBase.FIELD_EXTENSION_FORMAT, extendParentKey.toUpperCase(), strDataType));
+                    int defaultOrderValue = 99900;
+                    if (!ObjectUtils.isEmpty(psDEFieldList)) {
+                        for (IPSDEField iPSDEField : psDEFieldList) {
+                            if (!StringUtils.hasLength(iPSDEField.getLogicName())) {
+                                continue;
+                            }
+                            if (map.containsKey(iPSDEField.getLogicName())) {
+                                log.warn(String.format("扩展属性[%s]标题[%s]已经存在，忽略导入", iPSDEField.getName(), iPSDEField.getLogicName()));
+                                continue;
+                            }
+
+                            ObjectNode objectNode = JsonUtils.createObjectNode();
+                            objectNode.put(PSDEDataImportItemImpl.ATTR_GETID, iPSDEField.getLowerCaseName());
+                            objectNode.put(PSDEDataImportItemImpl.ATTR_GETNAME, iPSDEField.getLowerCaseName());
+                            objectNode.put(PSDEDataImportItemImpl.ATTR_GETCAPTION, iPSDEField.getLogicName());
+
+                            // int iOrderValue = iPSDEField.getImportOrder() != 0 ? iPSDEField.getImportOrder() : iPSDEField.getOrderValue();
+                            int iOrderValue = iPSDEField.getImportOrder();
+                            if (iOrderValue == 0) {
+                                iOrderValue = defaultOrderValue++;
+                            }
+                            objectNode.put(PSDEDataImportItemImpl.ATTR_GETORDERVALUE, iOrderValue);
+
+                            IPSDEDataImportItem iPSDEDataImportItem = this.getSystemRuntime().getPSSystemService().createAndInitPSModelObject((IPSModelObjectRuntime) this.getPSDEDataImport(), IPSDEDataImportItem.class, objectNode);
+                            if (iPSDEDataImportItem instanceof PSDEDataImportItemImpl) {
+                                PSDEDataImportItemImpl psDEDataImportItemImpl = (PSDEDataImportItemImpl) iPSDEDataImportItem;
+                                psDEDataImportItemImpl.setPSDEField(iPSDEField);
+                                if (iPSDEField.getInlinePSCodeList() != null) {
+                                    psDEDataImportItemImpl.setPSCodeList(iPSDEField.getInlinePSCodeList());
+                                } else {
+                                    psDEDataImportItemImpl.setPSCodeList(iPSDEField.getPSCodeList());
+                                }
+                                map.put(psDEDataImportItemImpl.getCaption(), psDEDataImportItemImpl);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return map;
+    }
+
+    protected IDEExtensionUtilRuntime getDEExtensionUtilRuntime() {
+        return this.iDEExtensionUtilRuntime;
+    }
+}
+```
 ### EventHookDENotifyRuntimeEx :id=EventHookDENotifyRuntimeEx
 运行时事件通知增强插件
 
@@ -296,20 +428,30 @@ public class FieldChangeDENotifyRuntimeEx extends DENotifyRuntime{
 package cn.ibizlab.plm.user.plugin.groovy.dataentity.dataimport
 
 import com.fasterxml.jackson.databind.JsonNode
-import groovy.transform.CompileStatic;
-import net.ibizsys.central.cloud.core.util.domain.V2ImportSchema;
+import com.fasterxml.jackson.databind.node.ObjectNode
+import groovy.transform.CompileStatic
+import net.ibizsys.central.cloud.core.dataentity.IDataEntityRuntime
+import net.ibizsys.central.cloud.core.dataentity.util.IDEExtensionUtilRuntime;
+import net.ibizsys.central.cloud.core.util.domain.V2ImportSchema
+import net.ibizsys.central.plugin.extension.dataentity.util.DEExtensionUtilRuntimeBase;
 import net.ibizsys.central.plugin.poi.dataentity.dataimport.POIDEDataImportRuntime
-import net.ibizsys.central.util.IEntityDTO;
-import net.ibizsys.model.dataentity.dataimport.IPSDEDataImportItem;
-import net.ibizsys.model.dataentity.defield.IPSDEField;
-import net.ibizsys.runtime.dataentity.DataEntityRuntimeException;
-import net.ibizsys.runtime.util.IEntity;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.springframework.util.StringUtils;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import net.ibizsys.central.util.IEntityDTO
+import net.ibizsys.model.IPSModelObjectRuntime
+import net.ibizsys.model.PSModelEnums;
+import net.ibizsys.model.dataentity.dataimport.IPSDEDataImportItem
+import net.ibizsys.model.dataentity.dataimport.PSDEDataImportItemImpl;
+import net.ibizsys.model.dataentity.defield.IPSDEField
+import net.ibizsys.model.dataentity.der.IPSDER1N
+import net.ibizsys.model.dataentity.der.IPSDERBase
+import net.ibizsys.model.dataentity.der.IPSDERCustom;
+import net.ibizsys.runtime.dataentity.DataEntityRuntimeException
+import net.ibizsys.runtime.security.IUserContext;
+import net.ibizsys.runtime.util.IEntity
+import net.ibizsys.runtime.util.IWebContext
+import net.ibizsys.runtime.util.JsonUtils;
+import org.apache.poi.ss.usermodel.Workbook
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils
 
 @CompileStatic
 public class NestedDataImportRuntimeEx extends POIDEDataImportRuntime  {
@@ -323,18 +465,105 @@ public class NestedDataImportRuntimeEx extends POIDEDataImportRuntime  {
     private String strNestedPKeyField = null;
     private String strNestedSymbol = null;
 
+    private List<String> extendParentKeys = new ArrayList<>();
+
+    private IDEExtensionUtilRuntime iDEExtensionUtilRuntime = null;
+
     @Override
     protected void onInit() throws Exception {
         this.strNestedNameField =  this.getImportParam(PARAM_NESTEDNAMEFIELD,"");
         this.strNestedPKeyField =  this.getImportParam(PARAM_NESTEDPKEYFIELD,"pid");
         this.strNestedSymbol = this.getImportParam(PARAM_NESTEDSYMBOL, "→");
+        if(this.getDataEntityRuntime().isEnableExtension() && this.getDataEntityRuntime().getDEExtensionUtilRuntime()!=null) {
+            this.iDEExtensionUtilRuntime = this.getDataEntityRuntime().getDEExtensionUtilRuntime();
+        }
+
+        List<IPSDERBase> minorPSDERs = getDataEntityRuntime().getPSDataEntity().getMinorPSDERs();
+        if (!ObjectUtils.isEmpty(minorPSDERs)) {
+            for (IPSDERBase iPSDERBase : minorPSDERs) {
+                if (iPSDERBase instanceof IPSDER1N) {
+                    IPSDER1N iPSDER1N = (IPSDER1N) iPSDERBase;
+                    if ((iPSDER1N.getMasterRS() & PSModelEnums.DER1NMasterRS.EXTENSION.value) == PSModelEnums.DER1NMasterRS.EXTENSION.value) {
+                        extendParentKeys.add(iPSDER1N.getPSPickupDEFieldMust().getName());
+                    }
+                    continue;
+                }
+
+                if (iPSDERBase instanceof IPSDERCustom) {
+                    IPSDERCustom iPSDERCustom = (IPSDERCustom) iPSDERBase;
+                    if (PSModelEnums.DERSubType.DER1N.value.equals(iPSDERCustom.getDERSubType()) || PSModelEnums.DERSubType.DER11.value.equals(iPSDERCustom.getDERSubType())) {
+                        if (iPSDERCustom.getPickupPSDEField() != null && ((iPSDERCustom.getMasterRS() & PSModelEnums.DER1NMasterRS.EXTENSION.value) == PSModelEnums.DER1NMasterRS.EXTENSION.value)) {
+                            extendParentKeys.add(iPSDERCustom.getPickupPSDEField().getName());
+                        }
+                    }
+                    continue;
+                }
+            }
+        }
         super.onInit();
     }
 
     @Override
+    public IDataEntityRuntime getDataEntityRuntime() {
+        return (IDataEntityRuntime)super.getDataEntityRuntime();
+    }
+    protected Map<String, IPSDEDataImportItem> getPSDEDataImportItems(IUserContext iUserContext) throws Throwable {
+        Map<String, IPSDEDataImportItem> map = super.getPSDEDataImportItems(iUserContext);
+        if(!ObjectUtils.isEmpty(extendParentKeys) && getDEExtensionUtilRuntime() != null) {
+            IWebContext iWebContext = iUserContext.getWebContext();
+            if(iWebContext != null) {
+                for (String extendParentKey : extendParentKeys) {
+                    String strDataType = iWebContext.getParameter(extendParentKey);
+                    if (!StringUtils.hasLength(strDataType)) {
+                        continue;
+                    }
+                    List<IPSDEField> psDEFieldList = this.getDEExtensionUtilRuntime().getPSDEFields(String.format(DEExtensionUtilRuntimeBase.FIELD_EXTENSION_FORMAT, extendParentKey.toUpperCase(), strDataType));
+                    int defaultOrderValue = 99900;
+                    if (!ObjectUtils.isEmpty(psDEFieldList)) {
+                        for (IPSDEField iPSDEField : psDEFieldList) {
+                            if (!StringUtils.hasLength(iPSDEField.getLogicName())) {
+                                continue;
+                            }
+                            if (map.containsKey(iPSDEField.getLogicName())) {
+                                log.warn(String.format("扩展属性[%s]标题[%s]已经存在，忽略导入", iPSDEField.getName(), iPSDEField.getLogicName()));
+                                continue;
+                            }
+
+                            ObjectNode objectNode = JsonUtils.createObjectNode();
+                            objectNode.put(PSDEDataImportItemImpl.ATTR_GETID, iPSDEField.getLowerCaseName());
+                            objectNode.put(PSDEDataImportItemImpl.ATTR_GETNAME, iPSDEField.getLowerCaseName());
+                            objectNode.put(PSDEDataImportItemImpl.ATTR_GETCAPTION, iPSDEField.getLogicName());
+
+                            //int iOrderValue = iPSDEField.getImportOrder() != 0 ? iPSDEField.getImportOrder() : iPSDEField.getOrderValue();
+                            int iOrderValue = iPSDEField.getImportOrder();
+                            if (iOrderValue == 0) {
+                                iOrderValue = defaultOrderValue++;
+                            }
+                            objectNode.put(PSDEDataImportItemImpl.ATTR_GETORDERVALUE, iOrderValue);
+
+                            IPSDEDataImportItem iPSDEDataImportItem = this.getSystemRuntime().getPSSystemService().createAndInitPSModelObject((IPSModelObjectRuntime) this.getPSDEDataImport(), IPSDEDataImportItem.class, objectNode);
+                            if (iPSDEDataImportItem instanceof PSDEDataImportItemImpl) {
+                                PSDEDataImportItemImpl psDEDataImportItemImpl = (PSDEDataImportItemImpl) iPSDEDataImportItem;
+                                psDEDataImportItemImpl.setPSDEField(iPSDEField);
+                                if (iPSDEField.getInlinePSCodeList() != null) {
+                                    psDEDataImportItemImpl.setPSCodeList(iPSDEField.getInlinePSCodeList());
+                                } else {
+                                    psDEDataImportItemImpl.setPSCodeList(iPSDEField.getPSCodeList());
+                                }
+                                map.put(psDEDataImportItemImpl.getCaption(), psDEDataImportItemImpl);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return map;
+    }
+
+    @Override
     protected List<Map<String, Object>> doResolveData(IEntity baseEntity, Workbook wb, V2ImportSchema importSchema) throws Throwable {
-       List<Map<String, Object>> dataList = super.doResolveData(baseEntity, wb, importSchema);
-       //进一步解析1对多数据对象导入数据
+        List<Map<String, Object>> dataList = super.doResolveData(baseEntity, wb, importSchema);
+        //进一步解析1对多数据对象导入数据
         Map<String, IPSDEDataImportItem> psDEDataImportItemMap = getPSDEDataImportItems();
         if (psDEDataImportItemMap == null || psDEDataImportItemMap.size() == 0) {
             throw new DataEntityRuntimeException(this.getDataEntityRuntimeBase(), this, String.format("没有定义任何导入项"));
@@ -391,7 +620,7 @@ public class NestedDataImportRuntimeEx extends POIDEDataImportRuntime  {
             }
             paramMap.put(strNestedNameFieldTag,nestedContent);
         }
-       return dataList;
+        return dataList;
     }
 
     protected String getImportParam(String strKey, String strDefault) {
@@ -404,6 +633,9 @@ public class NestedDataImportRuntimeEx extends POIDEDataImportRuntime  {
         return strDefault;
     }
 
+    protected IDEExtensionUtilRuntime getDEExtensionUtilRuntime() {
+        return this.iDEExtensionUtilRuntime;
+    }
 }
 ```
 ### PLMSysPSDEModelUtilRuntime :id=PLMSysPSDEModelUtilRuntime
@@ -1007,6 +1239,7 @@ class MemberWorklaodDEDataSetRuntime extends DEDataSetRuntimeBase {
 		userSearchContextDTO.setPageable(iSearchContextDTO.getPageable());
 		userSearchContextDTO.sort("display_name,desc");
 		// 判断搜索条件中是否包含登记人
+        String objValue = null;
 		for (ISearchCond first : iSearchContextDTO.searchConds) {
 			SearchGroupCond firstSearchGroupCond = (SearchGroupCond)first;
 			if (firstSearchGroupCond.searchConds.size() > 0) {
@@ -1018,11 +1251,12 @@ class MemberWorklaodDEDataSetRuntime extends DEDataSetRuntimeBase {
 								if (third instanceof SearchFieldCond){
 									SearchFieldCond searchFieldCond = (SearchFieldCond)third;
 									if (searchFieldCond.getFieldName() == "create_man"){
-                                        String objValue = String.valueOf(searchFieldCond.getValue());
+                                        objValue = String.valueOf(searchFieldCond.getValue());
 										if (!Objects.isNull(objValue)){
 											objValue = objValue.replaceAll("'", "");
 										}
-										userSearchContextDTO.setFieldCond("id", searchFieldCond.getCondOp(), objValue);
+                                        print "连接符" + searchFieldCond.getCondOp();
+										//userSearchContextDTO.setFieldCond("id", searchFieldCond.getCondOp(), objValue);
 									}
 								}
 							}
@@ -1031,12 +1265,22 @@ class MemberWorklaodDEDataSetRuntime extends DEDataSetRuntimeBase {
 				}
 			}
 		}
-		Object[] args = [userSearchContextDTO];
+        if (!Objects.isNull(objValue)) {
+            List<IEntityDTO> dtos = new ArrayList<>();
+            String[] strArr= objValue.split(",");
+            for (int i = 0; i < strArr.length; i++){
+                IEntityDTO userDTO = userDERutime.createEntity();
+                userDTO.put("id", strArr[i]);
+                dtos.add(userDTO);
+            }
+            int pageNum = strArr.length == 0 ? 1 : (int)Math.ceil((double)strArr.length / (double)userSearchContextDTO.getPageable().getPageSize());
+            return new CustomPageImpl<IEntityDTO>(fillWorkloadData(dtos, iSearchContextDTO), userSearchContextDTO.getPageable(), strArr.length, pageNum);
+        }
         // 调用User的workload数据集合
+        Object[] args = [userSearchContextDTO];
 		Page<?> ret = (Page<?>)userDERutime.fetchDataSet("workload", null, args);
 		Page<IEntityDTO> page = userDERutime.getEntityDTOPage(ret, userDERutime.getDefaultPSDEDataSet(), userSearchContextDTO.getPageable());
-		return new CustomPageImpl<IEntityDTO>(fillWorkloadData(page.getContent(), iSearchContextDTO), userSearchContextDTO.getPageable(), ret.getTotalElements(), page.getTotalPages());;
-
+		return new CustomPageImpl<IEntityDTO>(fillWorkloadData(page.getContent(), iSearchContextDTO), userSearchContextDTO.getPageable(), ret.getTotalElements(), page.getTotalPages());
 	}
 
 	@Override
@@ -1050,7 +1294,7 @@ class MemberWorklaodDEDataSetRuntime extends DEDataSetRuntimeBase {
 		for (IEntityDTO dto : dtos) {
 			fetchUserIdList.add(dto.getString("id", ""));
 		}
-		iSearchContextDTO.count(false).limit(10000).in("create_man", fetchUserIdList);
+		iSearchContextDTO.count(false).limit(10000)//in("create_man", fetchUserIdList);
 		List<IEntityDTO> worklaodDTOList = this.getDataEntityRuntime().selectDataQuery("calendar", iSearchContextDTO);
 		if(worklaodDTOList != null && worklaodDTOList.size() > 0){
 			for (IEntityDTO user : dtos) {

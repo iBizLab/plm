@@ -14,11 +14,11 @@
 
 
 ### 关联界面行为
-  * [最近访问(RECENT)](module/Base/recent) : [打开移动端事项分页导航视图(我负责的事项)](module/Base/recent#界面行为)
-  * [最近访问(RECENT)](module/Base/recent) : [打开移动端事项分页导航视图(待完成事项)](module/Base/recent#界面行为)
+  * [最近访问(RECENT)](module/Base/recent) : [打开最近访问（移动端）](module/Base/recent#界面行为)
   * [最近访问(RECENT)](module/Base/recent) : [打开移动端事项分页导航视图(我关注的事项)](module/Base/recent#界面行为)
   * [最近访问(RECENT)](module/Base/recent) : [打开移动端事项分页导航视图(我创建的事项)](module/Base/recent#界面行为)
-  * [最近访问(RECENT)](module/Base/recent) : [打开最近访问（移动端）](module/Base/recent#界面行为)
+  * [最近访问(RECENT)](module/Base/recent) : [打开移动端事项分页导航视图(待完成事项)](module/Base/recent#界面行为)
+  * [最近访问(RECENT)](module/Base/recent) : [打开移动端事项分页导航视图(我负责的事项)](module/Base/recent#界面行为)
 
 ### 关联视图
   * [仪表盘(recent_mob_dashboard_view)](app/view/recent_mob_dashboard_view)

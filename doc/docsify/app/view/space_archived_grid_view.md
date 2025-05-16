@@ -16,8 +16,8 @@
 
 
 ### 关联界面行为
-  * [空间(SPACE)](module/Wiki/space) : [已归档_激活](module/Wiki/space#界面行为)
   * [空间(SPACE)](module/Wiki/space) : [已归档_删除](module/Wiki/space#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [已归档_激活](module/Wiki/space#界面行为)
 
 ### 关联视图
   * [空间(space_edit_view)](app/view/space_edit_view)

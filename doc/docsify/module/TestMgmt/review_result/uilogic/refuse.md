@@ -15,21 +15,23 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./refuse#begin {开始}]]
-state "结束" as END1 <<end>> [[$./refuse#end1 {结束}]]
-state "控制表单状态" as RAWJSCODE3  [[$./refuse#rawjscode3 {控制表单状态}]]
-state "获取父表单及评审内容表格" as PREPAREJSPARAM1  [[$./refuse#preparejsparam1 {获取父表单及评审内容表格}]]
+state "通知刷新" as RAWJSCODE4  [[$./refuse#rawjscode4 {通知刷新}]]
 state "实体行为" as DEACTION1  [[$./refuse#deaction1 {实体行为}]]
 state "控制表单状态" as RAWJSCODE2  [[$./refuse#rawjscode2 {控制表单状态}]]
-state "通知刷新" as RAWJSCODE4  [[$./refuse#rawjscode4 {通知刷新}]]
+state "获取父表单及评审内容表格" as PREPAREJSPARAM1  [[$./refuse#preparejsparam1 {获取父表单及评审内容表格}]]
+state "拒绝评审意见必填" as RAWJSCODE5  [[$./refuse#rawjscode5 {拒绝评审意见必填}]]
+state "控制表单状态" as RAWJSCODE3  [[$./refuse#rawjscode3 {控制表单状态}]]
+state "结束" as END1 <<end>> [[$./refuse#end1 {结束}]]
 
 
 Begin --> PREPAREJSPARAM1
-PREPAREJSPARAM1 --> DEACTION1
+PREPAREJSPARAM1 --> DEACTION1 : [[$./refuse#preparejsparam1-deaction1{连接名称} 连接名称]]
 DEACTION1 --> RAWJSCODE2 : [[$./refuse#deaction1-rawjscode2{连接名称} 连接名称]]
 RAWJSCODE2 --> RAWJSCODE4
 RAWJSCODE4 --> END1
 DEACTION1 --> RAWJSCODE3 : [[$./refuse#deaction1-rawjscode3{连接名称} 连接名称]]
 RAWJSCODE3 --> RAWJSCODE4
+PREPAREJSPARAM1 --> RAWJSCODE5 : [[$./refuse#preparejsparam1-rawjscode5{连接名称} 连接名称]]
 
 
 @enduml
@@ -74,6 +76,7 @@ if (rows && rows.length > 0) {
         grouppanel6_state.visible = false;
         const choose_data = uiLogic.parent_form.control.details.choosed_content;
         choose_data.setDataValue(next_content.id);
+        uiLogic.next_content = next_content;
     } else {
         grouppanel6_state.visible = true;
         const choose_data = uiLogic.parent_form.control.details.choosed_content;
@@ -82,12 +85,37 @@ if (rows && rows.length > 0) {
 }
 ```
 
-#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
-
-
-
-
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
+
+
+
+
+#### 实体行为 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+
+
+
+调用实体 [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content.md) 行为 [设置评审结果(set_review_result)](module/TestMgmt/review_content#行为) ，行为参数为`Default(传入变量)`
+
+将执行结果返回给参数`review_content(评审内容)`
+
+#### 通知刷新 :id=RAWJSCODE4<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+
+ibiz.mc.command.create.send({ srfdecodename: 'review_content'})
+
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+const grid = uiLogic.content_grid;
+await grid.load({ isInitialLoad: false, triggerSource: 'REFRESH' });
+if (uiLogic.next_content) {
+    const item = grid.state.items.find(x => x.id === uiLogic.next_content.id);
+    if (item) {
+        grid.setSelection([item], false);
+    }
+}
+```
+
+#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
 
 
 
@@ -101,24 +129,6 @@ if (rows && rows.length > 0) {
 3. 将`parentView(父视图).layoutPanel.panelItems.form` 绑定给  `parent_form(父表单)`
 4. 将`parent_form(父表单).control.details.druipart4.embedView` 设置给  `grid_view(评审内容表格视图)`
 5. 将`grid_view(评审内容表格视图).layoutPanel.panelItems.grid.control` 设置给  `content_grid(评审内容表格)`
-
-#### 实体行为 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
-
-
-
-调用实体 [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content.md) 行为 [设置评审结果(set_review_result)](module/TestMgmt/review_content#行为) ，行为参数为`Default(传入变量)`
-
-将执行结果返回给参数`review_content(评审内容)`
-
-#### 通知刷新 :id=RAWJSCODE4<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
-
-
-
-<p class="panel-title"><b>执行代码</b></p>
-
-```javascript
-ibiz.mc.command.create.send({ srfdecodename: 'review_content'})
-```
 
 #### 控制表单状态 :id=RAWJSCODE3<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
@@ -134,25 +144,42 @@ ibiz.mc.command.create.send({ srfdecodename: 'review_content'})
         choose_data.setDataValue(null);
 ```
 
+#### 拒绝评审意见必填 :id=RAWJSCODE5<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+
+
+
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+util.message.error('请填写拒绝评审意见!');
+```
+
 ### 连接条件说明
+#### 连接名称 :id=PREPAREJSPARAM1-DEACTION1
+
+```Default(传入变量).comment``` ISNOTNULL
 #### 连接名称 :id=DEACTION1-RAWJSCODE2
 
 ```Default(传入变量).next_review``` EQ ```1```
 #### 连接名称 :id=DEACTION1-RAWJSCODE3
 
 ```Default(传入变量).next_review``` NOTEQ ```1```
+#### 连接名称 :id=PREPAREJSPARAM1-RAWJSCODE5
+
+(```Default(传入变量).comment``` ISNULL OR ```Default(传入变量).comment``` EQ ```undefined```)
 
 
 ### 实体逻辑参数
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|上下文|ctx|导航视图参数绑定参数||
-|评审内容|review_content|数据对象||
-|当前表单|form|部件对象||
+|父表单|parent_form|数据对象||
+|下一条内容|next_content|数据对象||
 |当前视图对象|view|当前视图对象||
+|评审内容|review_content|数据对象||
 |父视图|parentView|数据对象||
 |评审内容表格视图|grid_view|数据对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|父表单|parent_form|数据对象||
 |评审内容表格|content_grid|数据对象||
+|上下文|ctx|导航视图参数绑定参数||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|当前表单|form|部件对象||

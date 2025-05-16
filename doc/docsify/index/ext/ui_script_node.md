@@ -1,5 +1,5 @@
 
-## 使用脚本的界面逻辑节点<sup class="footnote-symbol"> <font color=orange>[458]</font></sup>
+## 使用脚本的界面逻辑节点<sup class="footnote-symbol"> <font color=orange>[470]</font></sup>
 
 #### [资源组件(ADDON_RESOURCE)](module/Base/addon_resource)的处理逻辑[资源删除逻辑(resource_del)](module/Base/addon_resource/uilogic/resource_del)
 
@@ -956,6 +956,33 @@ ibiz.hub.getApp(context.srfappid).deService.exec(
 ```javascript
 uiLogic.view.layoutPanel.panelItems.container1.state.visible=true;
 ```
+#### [数据字典(DICTIONARY)](module/Base/dictionary_data)的处理逻辑[获取搜索栏参数(get_tabsearchbar_param)](module/Base/dictionary_data/uilogic/get_tabsearchbar_param)
+
+节点：设置选中搜索栏参数
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+var tabsearchbar = uiLogic.tabsearchbar;
+var catalog = tabsearchbar.state.selectedGroupItem.id
+var type = ""
+
+if (catalog == "work_item_pro") {
+    catalog = "work_item_probability";
+}
+uiLogic.default.catalog = catalog;
+
+if (catalog.includes("idea")) {
+    type = "idea"
+} else if (catalog.includes("ticket")) {
+    type = "ticket"
+} else if (catalog.includes("work_item")) {
+    type = "work_item"
+} else if (catalog.includes("test_case")) {
+    type = "test_case"
+}
+uiLogic.default.type = type;
+
+```
 #### [数据字典(DICTIONARY)](module/Base/dictionary_data)的处理逻辑[判断操作列是否禁用(judge_column_state)](module/Base/dictionary_data/uilogic/judge_column_state)
 
 节点：判断操作列是否禁用
@@ -1418,7 +1445,7 @@ view.layoutPanel.panelItems.board_title.setDataValue(uiLogic.ctrl.inputData.dyna
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
-let choose = uiLogic.default.customer;
+let choose = uiLogic.default.customer_id;
 if(choose != null && choose != ''){
     uiLogic.dto.srfactionparam = choose.split(',').map(id => ({ id }));
     uiLogic.dto.principal_id = uiLogic.idea.id;
@@ -1665,6 +1692,24 @@ uiLogic.default.choose_data = null;
 
 ```javascript
 ibiz.mc.command.update.send({ srfdecodename: context.principal_type})
+```
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[重置上下文产品ID(reset_product_id)](module/ProdMgmt/idea/uilogic/reset_product_id)
+
+节点：注入脚本代码
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+uiLogic.ctx.product=uiLogic.default.product_id;
+
+```
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[查看评审历史(check_review_history)](module/ProdMgmt/idea/uilogic/check_review_history)
+
+节点：切换显示组件
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+uiLogic.view.ctx.controllersMap.get("form").details.grouppanel8.state.visible=false;
+uiLogic.view.ctx.controllersMap.get("form").details.grouppanel15.state.visible=true;
 ```
 #### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[需求关联需求(idea_relation_idea)](module/ProdMgmt/idea/uilogic/idea_relation_idea)
 
@@ -3085,6 +3130,7 @@ if (uiLogic.ctrl) {
 			const titleColumn = row.uiActionGroupStates.name;
 			const cur_user = ctx.srfuserid;
 			const state = row.data.state;
+            const type = row.data.type;
 			const create_man = row.data.create_man;
 			if (titleColumn && Object.values(titleColumn).length > 0) {
 				Object.values(titleColumn).forEach(action => {
@@ -3095,7 +3141,9 @@ if (uiLogic.ctrl) {
 						action.visible = true;
 					} else if (action.uiActionId === 'submit_review@review'&& create_man == cur_user && (state == '10'||state == '50') ) {
 						action.visible = true;
-					}else if (action.uiActionId === 'set_category@review'&& create_man == cur_user){
+					}else if (action.uiActionId === 'set_category@review'&& create_man == cur_user && type == 'TEST_CASE'){
+                        action.visible = true;
+                    }else if (action.uiActionId === 'set_idea_category@review'&& create_man == cur_user && type == 'IDEA'){
                         action.visible = true;
                     }
 				})
@@ -3147,6 +3195,14 @@ uiLogic.attach = uiLogic.files.map(item =>
         }
     }
 )
+```
+#### [评审(REVIEW)](module/TestMgmt/review)的处理逻辑[通知刷新(notify_refresh)](module/TestMgmt/review/uilogic/notify_refresh)
+
+节点：通知刷新
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+ibiz.mc.command.create.send({ srfdecodename: 'review'})
 ```
 #### [评审(REVIEW)](module/TestMgmt/review)的处理逻辑[刷新评审主视图(refresh_main_view)](module/TestMgmt/review/uilogic/refresh_main_view)
 
@@ -3233,6 +3289,10 @@ if (rows && rows.length > 0) {
                 }
 			})
 		}
+        row.editColStates.change_type.disabled = review_state == '60';
+        row.editColStates.change_version.disabled = review_state == '60';
+        row.editColStates.change_version.readonly = review_state == '60';
+        row.editColStates.change_version.editable = review_state == '60';
 	})
 }
 
@@ -3283,6 +3343,56 @@ if (rows && rows.length > 0) {
     uiLogic.view.layoutPanel.state.data.total_already = 0;
     uiLogic.view.layoutPanel.state.data.schedule = 0;
 }
+
+```
+#### [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)的处理逻辑[获取评审数据(get_review_data)](module/TestMgmt/review_content/uilogic/get_review_data)
+
+节点：注入脚本代码
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+const appDataEntityId = 'plmweb.review_content';
+const context = uiLogic.ctx;
+const data_arr = uiLogic.default;
+
+const keyMapping = {
+    srfkey: 'target_id',
+};
+
+const propertyMap = uiLogic.view.model.appViewParams?.find(
+    item => item.key.toLowerCase() === 'PROPERTYMAP'.toLowerCase(),
+);
+
+if (propertyMap) {
+    const keyValuePairs = propertyMap.value.split(',');
+    // 遍历键值对数组并添加到 keyMapping 映射对象中
+    for (const pair of keyValuePairs) {
+        const [sourceKey, targetKey] = pair.split(':');
+        if (sourceKey && targetKey) {
+            keyMapping[sourceKey] = targetKey;
+        }
+    }
+}
+
+// *转换属性
+const addData = data_arr.map(item => {
+    const tempData = {};
+    // 遍历映射对象，将属性从 item 复制到 tempData
+    Object.keys(keyMapping).forEach(key => {
+        const targetKey = keyMapping[key];
+        tempData[targetKey] = item[key];
+    });
+    // 获取 change_version 中 from 对象的 owner_type
+    const ownerType = context.principal_type.toUpperCase();
+    // 将 target_type 字段设置为 owner_type
+    tempData['target_type'] = ownerType;
+    keyMapping['srfkey'] = item['id'];
+    return tempData;
+});
+
+// 获取实体服务并调用创建接口
+const service = ibiz.hub.getApp(context.srfappid).deService;
+service.exec(appDataEntityId, 'Create', context, addData);
 
 ```
 #### [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)的处理逻辑[评审内容版本比对(review_content_version_comparison)](module/TestMgmt/review_content/uilogic/review_content_version_comparison)
@@ -3435,6 +3545,7 @@ if (rows && rows.length > 0) {
         grouppanel6_state.visible = false;
         const choose_data = uiLogic.parent_form.control.details.choosed_content;
         choose_data.setDataValue(next_content.id);
+        uiLogic.next_content = next_content;
     } else {
         grouppanel6_state.visible = true;
         const choose_data = uiLogic.parent_form.control.details.choosed_content;
@@ -3448,7 +3559,14 @@ if (rows && rows.length > 0) {
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
-ibiz.mc.command.create.send({ srfdecodename: 'review_content'})
+const grid = uiLogic.content_grid;
+await grid.load({ isInitialLoad: false, triggerSource: 'REFRESH' });
+if (uiLogic.next_content) {
+    const item = grid.state.items.find(x => x.id === uiLogic.next_content.id);
+    if (item) {
+        grid.setSelection([item], false);
+    }
+}
 ```
 #### [评审结果(REVIEW_RESULT)](module/TestMgmt/review_result)的处理逻辑[拒绝(refuse)](module/TestMgmt/review_result/uilogic/refuse)
 
@@ -3461,6 +3579,14 @@ ibiz.mc.command.create.send({ srfdecodename: 'review_content'})
         uiLogic.parent_form.control.details.review_results.state.visible=false;
         const choose_data = uiLogic.parent_form.control.details.choosed_content;
         choose_data.setDataValue(null);
+```
+#### [评审结果(REVIEW_RESULT)](module/TestMgmt/review_result)的处理逻辑[拒绝(refuse)](module/TestMgmt/review_result/uilogic/refuse)
+
+节点：拒绝评审意见必填
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+util.message.error('请填写拒绝评审意见!');
 ```
 #### [评审结果(REVIEW_RESULT)](module/TestMgmt/review_result)的处理逻辑[通过(pass)](module/TestMgmt/review_result/uilogic/pass)
 
@@ -3497,6 +3623,7 @@ if (rows && rows.length > 0) {
         grouppanel6_state.visible = false;
         const choose_data = uiLogic.parent_form.control.details.choosed_content;
         choose_data.setDataValue(next_content.id);
+        uiLogic.next_content = next_content;
     } else {
         grouppanel6_state.visible = true;
         const choose_data = uiLogic.parent_form.control.details.choosed_content;
@@ -3510,7 +3637,14 @@ if (rows && rows.length > 0) {
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
-ibiz.mc.command.create.send({ srfdecodename: 'review_content'})
+const grid = uiLogic.content_grid;
+await grid.load({ isInitialLoad: false, triggerSource: 'REFRESH' });
+if (uiLogic.next_content) {
+    const item = grid.state.items.find(x => x.id === uiLogic.next_content.id);
+    if (item) {
+        grid.setSelection([item], false);
+    }
+}
 ```
 #### [评审结果(REVIEW_RESULT)](module/TestMgmt/review_result)的处理逻辑[通过(pass)](module/TestMgmt/review_result/uilogic/pass)
 
@@ -3552,6 +3686,14 @@ curstage_id.setDataValue(uiLogic.default.id);
 ```
 #### [评审阶段(REVIEW_STAGE)](module/TestMgmt/review_stage)的处理逻辑[选中阶段(choose_stage)](module/TestMgmt/review_stage/uilogic/choose_stage)
 
+节点：设置表单是否编辑
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+uiLogic.list.ctx.parent.controllersMap.get("form").state.modified = false;
+```
+#### [评审阶段(REVIEW_STAGE)](module/TestMgmt/review_stage)的处理逻辑[选中阶段(choose_stage)](module/TestMgmt/review_stage/uilogic/choose_stage)
+
 节点：取消选中值
 <p class="panel-title"><b>执行代码</b></p>
 
@@ -3559,6 +3701,69 @@ curstage_id.setDataValue(uiLogic.default.id);
 const cur_reviewer_id = uiLogic.parent_form.control.details.cur_reviewer_id;
 cur_reviewer_id.setDataValue(null);
 const curstage_id = uiLogic.parent_form.control.details.curstage_id;
+curstage_id.setDataValue(null);
+```
+#### [评审阶段(REVIEW_STAGE)](module/TestMgmt/review_stage)的处理逻辑[默认选中(default_choose)](module/TestMgmt/review_stage/uilogic/default_choose)
+
+节点：设置选中值
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+const cur_reviewer_id = uiLogic.parent_form.details.cur_reviewer_id;
+cur_reviewer_id.setDataValue(uiLogic.default.reviewer);
+
+const curstage_id = uiLogic.parent_form.details.curstage_id;
+curstage_id.setDataValue(uiLogic.default.id);
+
+
+```
+#### [评审阶段(REVIEW_STAGE)](module/TestMgmt/review_stage)的处理逻辑[默认选中(default_choose)](module/TestMgmt/review_stage/uilogic/default_choose)
+
+节点：注入脚本代码
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+uiLogic.default = null;
+uiLogic.list.state.selectedData=[];
+let items = uiLogic.list.state.items;
+let srfpersonid = uiLogic.ctx.srfpersonid;
+for (let i = 0; i < items.length; i++) {
+    if (items[i].reviewer === srfpersonid && items[i].stage_state === '20') {
+        uiLogic.default = items[i];
+        uiLogic.list.state.selectedData.push(items[i]);
+        break;
+    }
+}
+```
+#### [评审阶段(REVIEW_STAGE)](module/TestMgmt/review_stage)的处理逻辑[默认选中(default_choose)](module/TestMgmt/review_stage/uilogic/default_choose)
+
+节点：设置选中值
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+const cur_reviewer_id = uiLogic.parent_form.details.cur_reviewer_id;
+cur_reviewer_id.setDataValue(uiLogic.review_info.cur_reviewer_id);
+
+const curstage_id = uiLogic.parent_form.details.curstage_id;
+curstage_id.setDataValue(uiLogic.default.id);
+```
+#### [评审阶段(REVIEW_STAGE)](module/TestMgmt/review_stage)的处理逻辑[默认选中(default_choose)](module/TestMgmt/review_stage/uilogic/default_choose)
+
+节点：设置表单是否编辑
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+uiLogic.list.ctx.parent.controllersMap.get("form").state.modified = false;
+```
+#### [评审阶段(REVIEW_STAGE)](module/TestMgmt/review_stage)的处理逻辑[默认选中(default_choose)](module/TestMgmt/review_stage/uilogic/default_choose)
+
+节点：取消选中值
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+const cur_reviewer_id = uiLogic.parent_form.details.cur_reviewer_id;
+cur_reviewer_id.setDataValue(null);
+const curstage_id = uiLogic.parent_form.details.curstage_id;
 curstage_id.setDataValue(null);
 ```
 #### [评审向导(REVIEW_WIZARD)](module/TestMgmt/review_wizard)的处理逻辑[批量删除评审用例临时数据(remove_batch_temp)](module/TestMgmt/review_wizard/uilogic/remove_batch_temp)

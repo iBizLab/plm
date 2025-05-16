@@ -635,6 +635,9 @@
 <br>
 
 > [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [创建产品流程准则(auto_create_guideline)](module/ProdMgmt/product/logic/auto_create_guideline.md)
+
+> [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [生成产品工单类型(create_product_ticket)](module/ProdMgmt/product/logic/create_product_ticket.md)
 
 > [!NOTE|label:内部逻辑]
@@ -956,7 +959,22 @@
 <br>
 
 > [!NOTE|label:内部逻辑]
-> 执行处理逻辑 [变更测试用例(change_test_case)](module/TestMgmt/review_content/logic/change_test_case.md)
+> 执行处理逻辑 [变更评审状态(change_review_state)](module/TestMgmt/review_content/logic/change_review_state.md)
+
+
+
+## [评审向导(REVIEW_WIZARD)](module/TestMgmt/review_wizard.md)  :id=review_wizard
+
+#### [Create](module/TestMgmt/review_wizard#行为) :id=review_wizard_Create
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [评审新建通知(create_review_notify)](module/TestMgmt/review_wizard/logic/create_review_notify.md)
 
 
 

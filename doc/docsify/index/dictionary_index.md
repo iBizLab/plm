@@ -150,17 +150,6 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 |140|面积图|item_140||
 |150|交叉表|item_150||
 
-##### 严重程度 :id=severity
-
-iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。
-
-| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
-| --------   |------------|------------|------------|
-|10|致命|item_10||
-|20|严重|item_20||
-|30|一般|item_30||
-|40|建议|item_40||
-
 ##### 主状态逻辑设计呈现模式 :id=MSLogicDesignMode
 
 iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。
@@ -231,32 +220,6 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 |n_title_like|标题|n_title_like||
 |n_identifier_like|编号|n_identifier_like||
 |n_description_like|描述|n_description_like||
-
-##### 任务类别 :id=task_category
-
-iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。
-
-| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
-| --------   |------------|------------|------------|
-|10|设计|item_10||
-|20|研发|item_20||
-|30|部署|item_30||
-|40|测试|item_40||
-|50|文档|item_50||
-|60|产品|item_60||
-|70|调研|item_70||
-|80|其他|item_80||
-
-##### 优先级 :id=work_item_priority
-
-iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。
-
-| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
-| --------   |------------|------------|------------|
-|40|紧急|item_40||
-|30|高|item_30||
-|20|中|item_20||
-|10|低|item_10||
 
 ##### 关注类型 :id=attention_type
 
@@ -410,17 +373,6 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 |principal|基线|principal||
 |plan|快照|plan||
 
-##### 复现概率 :id=reproduction_probability
-
-iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。
-
-| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
-| --------   |------------|------------|------------|
-|10|必现|item_10||
-|20|大概率复现|item_20||
-|30|小概率复现|item_30||
-|40|仅出现一次|item_40||
-
 ##### 多人任务 :id=multiple_people
 
 iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。
@@ -454,8 +406,22 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 | 值col150        |    文本col150    |   代码名col150    |  备注col800     |
 | --------   |------------|------------|------------|
 |idea_state|需求状态|idea_state||
+|idea_priority|需求优先级|idea_priority||
+|idea_source|需求来源|idea_source||
+|idea_type|需求类型|idea_type||
 |ticket_state|工单状态|ticket_state||
+|ticket_solution|工单解决方案|ticket_solution||
+|ticket_priority|工单优先级|ticket_priority||
 |release_stage|发布阶段|release_stage||
+|work_item_probability|工作项复现概率|work_item_probability||
+|work_item_priority|工作项优先级|work_item_priority||
+|work_item_severity|工作项严重程度|work_item_severity||
+|work_item_risk|工作项风险|work_item_risk||
+|work_item_category|工作项任务类别|work_item_category||
+|test_case_type|测试用例类型|test_case_type||
+|test_case_level|测试用例重要程度|test_case_level||
+|test_case_test_type|测试用例测试类型|test_case_test_type||
+|test_case_status|测试用例状态|test_case_status||
 
 ##### 字典项类型 :id=dictionary_type
 
@@ -588,32 +554,6 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 |n_identifier_like|编号|n_identifier_like||
 |n_description_like|描述|n_description_like||
 
-##### 工单优先级 :id=ticket_priority
-
-iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。
-
-| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
-| --------   |------------|------------|------------|
-|P0|P0|p0||
-|P1|P1|p1||
-|P2|P2|p2||
-|P3|P3|p3||
-|P4|P4|p4||
-
-##### 工单解决方案 :id=solutions
-
-iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。
-
-| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
-| --------   |------------|------------|------------|
-|10|进入需求池|item_10||
-|20|技术排期|item_20||
-|30|待进一步确认|item_30||
-|40|方案调研|item_40||
-|50|暂时搁置|item_50||
-|60|功能已支持|item_60||
-|70|不予采纳|item_70||
-
 ##### 工单高级搜索属性 :id=ticket_advanced_search_field
 
 iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。
@@ -665,6 +605,17 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 |user_group|团队|user_group||
 
 ##### 执行用例状态 :id=run_status
+
+iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|10|通过|item_10||
+|20|受阻|item_20||
+|30|失败|item_30||
+|40|跳过|item_40||
+
+##### 执行用例状态（color） :id=run_status_color
 
 iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。
 
@@ -999,15 +950,6 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 |n_identifier_like|编号|n_identifier_like||
 |n_description_like|描述|n_description_like||
 
-##### 测试类型 :id=test_case_test_type
-
-iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。
-
-| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
-| --------   |------------|------------|------------|
-|automation|自动|automation||
-|manual|手动|manual||
-
 ##### 测试计划状态 :id=test_plan_status
 
 iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。
@@ -1028,16 +970,6 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 |in_progress|进行中|in_progress||
 |completed|已完成|completed||
 
-##### 用例状态 :id=case_state
-
-iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。
-
-| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
-| --------   |------------|------------|------------|
-|10|设计|item_10||
-|20|就绪|item_20||
-|30|废弃|item_30||
-
 ##### 用例状态（移动端） :id=mob_case_state
 
 iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。
@@ -1047,22 +979,6 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 |10|设计|item_10||
 |20|就绪|item_20||
 |30|废弃|item_30||
-
-##### 用例类型 :id=test_case_type
-
-iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。
-
-| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
-| --------   |------------|------------|------------|
-|10|功能测试|item_10||
-|20|性能测试|item_20||
-|30|配置相关|item_30||
-|40|安装部署|item_40||
-|50|接口测试|item_50||
-|60|安全相关|item_60||
-|70|兼容性测试|item_70||
-|80|UI测试|item_80||
-|90|其他|item_90||
 
 ##### 用例评审状态 :id=test_case_state
 
@@ -1076,18 +992,6 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 |40|不通过|item_40||
 |50|已撤回|item_50||
 |60|已完成|item_60||
-
-##### 用例重要程度 :id=test_case_level
-
-iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。
-
-| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
-| --------   |------------|------------|------------|
-|P0|P0|p0||
-|P1|P1|p1||
-|P2|P2|p2||
-|P3|P3|p3||
-|P4|P4|p4||
 
 ##### 登录结果 :id=AuthCode
 
@@ -1251,6 +1155,7 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 | --------   |------------|------------|------------|
 |TEST_CASE|用例评审|test_case||
 |BASELINE|基线评审|baseline||
+|IDEA|需求评审|idea||
 
 ##### 评审结果 :id=review_result
 
@@ -1440,17 +1345,16 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 |in_progress|进行中|in_progress||
 |published|已发布|published||
 
-##### 需求优先级 :id=idea_priority
+##### 需求字典 :id=idea_dictionary
 
 iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。
 
 | 值col150        |    文本col150    |   代码名col150    |  备注col800     |
 | --------   |------------|------------|------------|
-|P0|P0|p0||
-|P1|P1|p1||
-|P2|P2|p2||
-|P3|P3|p3||
-|P4|P4|p4||
+|idea_state|需求状态|idea_state||
+|idea_priority|需求优先级|idea_priority||
+|idea_source|需求来源|idea_source||
+|idea_type|需求类型|idea_type||
 
 ##### 需求属性分布 :id=work_item_group_field
 
@@ -1464,18 +1368,6 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 |backlog_type|需求类型|backlog_type||
 |backlog_from|需求来源|backlog_from||
 |sprint_name|迭代|sprint_name||
-
-##### 需求来源 :id=demand_sources
-
-iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。
-
-| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
-| --------   |------------|------------|------------|
-|10|产品规划|item_10||
-|20|用户反馈|item_20||
-|30|内部需求|item_30||
-|40|竞品调研|item_40||
-|50|其他|item_50||
 
 ##### 需求类型 :id=requirement_type
 
@@ -1558,14 +1450,4 @@ iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM
 |kanban|Kanban项目|kanban||
 |waterfall|瀑布项目|waterfall||
 |hybrid|混合项目|hybrid||
-
-##### 风险 :id=risk
-
-iBiz产品生命周期管理（iBiz Product Lifecycle Management，简称iBizPLM）作为新一代的研发管理平台，其设计宗旨在于通过简化操作界面，实现研发管理流程的自动化、数字化及智能化，以此帮助企业加快研发进度。
-
-| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
-| --------   |------------|------------|------------|
-|10|高|item_10||
-|20|中|item_20||
-|30|低|item_30||
 

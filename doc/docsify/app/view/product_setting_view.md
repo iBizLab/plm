@@ -11,6 +11,7 @@
 
 ### 关联视图
   * [产品组件(addon_product_setting_grid_view)](app/view/addon_product_setting_grid_view)
+  * [评审配置(guideline_product_all_grid_view)](app/view/guideline_product_all_grid_view)
   * [需求(idea_recycle_grid_view)](app/view/idea_recycle_grid_view)
   * [需求模板(idea_template_all_grid_view)](app/view/idea_template_all_grid_view)
   * [高级设置(product_advanced_setting_edit_view)](app/view/product_advanced_setting_edit_view)
