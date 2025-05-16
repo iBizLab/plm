@@ -35,14 +35,14 @@
                             <tns:global identifier="review_contentsubmit_reviewtest_case" type="cn.ibizlab.plm.core.testmgmt.domain.test_case" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdenotify2" id="denotify2" implementation="http://www.jboss.org/drools/rule" name="通知第一评审人（测试用例）"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdeaction4" id="deaction4" implementation="http://www.jboss.org/drools/rule" name="获取评审详情"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置关系过滤器参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="设置提交时间"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdebugparam3" id="debugparam3" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置提交人、状态"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置关系过滤器参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdenotify1" id="denotify1" implementation="http://www.jboss.org/drools/rule" name="通知第一评审人（需求）"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取关系数据集"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置阶段的状态"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentsubmit_reviewprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="获取评审ID"/>
@@ -76,11 +76,11 @@
                         <sequenceFlow id="resetparam1_end_line" sourceRef="resetparam1" targetRef="resetparam1_end"/>
                     <sequenceFlow id="begin_prepareparam3" sourceRef="begin" targetRef="prepareparam3">
                     </sequenceFlow>
-                    <sequenceFlow id="bindparam1_debugparam2" sourceRef="bindparam1" targetRef="debugparam2">
-                    </sequenceFlow>
                     <sequenceFlow id="denotify2_prepareparam1" sourceRef="denotify2" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="deaction4_rawsfcode1" sourceRef="deaction4" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_dedataset1" sourceRef="prepareparam3" targetRef="dedataset1">
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode1_bindparam1" sourceRef="rawsfcode1" targetRef="bindparam1">
                     </sequenceFlow>
@@ -124,9 +124,9 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_prepareparam2" sourceRef="prepareparam1" targetRef="prepareparam2">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam3_dedataset1" sourceRef="prepareparam3" targetRef="dedataset1">
-                    </sequenceFlow>
                     <sequenceFlow id="denotify1_prepareparam1" sourceRef="denotify1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_debugparam2" sourceRef="bindparam1" targetRef="debugparam2">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-dedataset1_prepareparam6" sourceRef="gateway-dedataset1" targetRef="prepareparam6">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
