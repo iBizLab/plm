@@ -14,6 +14,8 @@
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_stage()" name="review_contentgenerate_review_resultsreview_stage" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_stage()" name="review_contentgenerate_review_resultsreview_stage_filter" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_stage()" name="review_contentgenerate_review_resultsreview_stage_list" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="review_contentgenerate_review_resultsreviewer_list" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="review_contentgenerate_review_resultsreviewer_temp" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.test_case()" name="review_contentgenerate_review_resultstest_case" type="refentity"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IguidelineService))" name="guidelineservice" type="service"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Ireview_resultService))" name="review_resultservice" type="service"/>
@@ -44,6 +46,10 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="产品需求"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置新建的评审结果数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsdebugparam3" id="debugparam3" implementation="http://www.jboss.org/drools/rule" name="创建前的评审结果"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <endEvent id="prepareparam7_end" name="end"/>
+                        <sequenceFlow id="prepareparam7_end_line" sourceRef="prepareparam7" targetRef="prepareparam7_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsloopsubcall2" id="loopsubcall2" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="创建评审结果"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsrenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重置评审结果"/>
                         <endEvent id="renewparam1_end" name="end"/>
@@ -63,6 +69,8 @@
                                             $review_contentgenerate_review_resultsreview_stage:review_stage();
                                             $review_contentgenerate_review_resultsreview_stage_filter:review_stage();
                                             $review_contentgenerate_review_resultsreview_stage_list:review_stage();
+                                            $review_contentgenerate_review_resultsreviewer_list:Map();
+                                            $review_contentgenerate_review_resultsreviewer_temp:Map();
                                             $review_contentgenerate_review_resultstest_case:test_case();
                                     eval($review_contentgenerate_review_resultsdefault==review_contentgenerate_review_resultsdefault && $review_contentgenerate_review_resultsguideline==review_contentgenerate_review_resultsguideline && $review_contentgenerate_review_resultsguideline_filter==review_contentgenerate_review_resultsguideline_filter && $review_contentgenerate_review_resultsguideline_pages==review_contentgenerate_review_resultsguideline_pages && $review_contentgenerate_review_resultsidea==review_contentgenerate_review_resultsidea && $review_contentgenerate_review_resultsreview_result==review_contentgenerate_review_resultsreview_result && $review_contentgenerate_review_resultsreview_stage==review_contentgenerate_review_resultsreview_stage && $review_contentgenerate_review_resultsreview_stage_filter==review_contentgenerate_review_resultsreview_stage_filter && $review_contentgenerate_review_resultsreview_stage_list==review_contentgenerate_review_resultsreview_stage_list && $review_contentgenerate_review_resultstest_case==review_contentgenerate_review_resultstest_case);
                                 eval((RuleUtils.test($review_contentgenerate_review_resultsdefault.get("targetType"),"EQ","TEST_CASE")))
@@ -80,6 +88,8 @@
                                             $review_contentgenerate_review_resultsreview_stage:review_stage();
                                             $review_contentgenerate_review_resultsreview_stage_filter:review_stage();
                                             $review_contentgenerate_review_resultsreview_stage_list:review_stage();
+                                            $review_contentgenerate_review_resultsreviewer_list:Map();
+                                            $review_contentgenerate_review_resultsreviewer_temp:Map();
                                             $review_contentgenerate_review_resultstest_case:test_case();
                                     eval($review_contentgenerate_review_resultsdefault==review_contentgenerate_review_resultsdefault && $review_contentgenerate_review_resultsguideline==review_contentgenerate_review_resultsguideline && $review_contentgenerate_review_resultsguideline_filter==review_contentgenerate_review_resultsguideline_filter && $review_contentgenerate_review_resultsguideline_pages==review_contentgenerate_review_resultsguideline_pages && $review_contentgenerate_review_resultsidea==review_contentgenerate_review_resultsidea && $review_contentgenerate_review_resultsreview_result==review_contentgenerate_review_resultsreview_result && $review_contentgenerate_review_resultsreview_stage==review_contentgenerate_review_resultsreview_stage && $review_contentgenerate_review_resultsreview_stage_filter==review_contentgenerate_review_resultsreview_stage_filter && $review_contentgenerate_review_resultsreview_stage_list==review_contentgenerate_review_resultsreview_stage_list && $review_contentgenerate_review_resultstest_case==review_contentgenerate_review_resultstest_case);
                                 eval((RuleUtils.test($review_contentgenerate_review_resultsdefault.get("targetType"),"EQ","IDEA")))
@@ -102,7 +112,28 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam3_debugparam3" sourceRef="prepareparam3" targetRef="debugparam3">
                     </sequenceFlow>
-                    <sequenceFlow id="debugparam3_deaction1" sourceRef="debugparam3" targetRef="deaction1">
+                    <sequenceFlow id="debugparam3_loopsubcall2" sourceRef="debugparam3" targetRef="loopsubcall2">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall2_prepareparam7" sourceRef="gateway-loopsubcall2" targetRef="prepareparam7">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $review_contentgenerate_review_resultsdefault:review_content();
+                                            $review_contentgenerate_review_resultsguideline:guideline();
+                                            $review_contentgenerate_review_resultsguideline_filter:guideline();
+                                            $review_contentgenerate_review_resultsguideline_pages:guideline();
+                                            $review_contentgenerate_review_resultsidea:idea();
+                                            $review_contentgenerate_review_resultsreview_result:review_result();
+                                            $review_contentgenerate_review_resultsreview_stage:review_stage();
+                                            $review_contentgenerate_review_resultsreview_stage_filter:review_stage();
+                                            $review_contentgenerate_review_resultsreview_stage_list:review_stage();
+                                            $review_contentgenerate_review_resultsreviewer_list:Map();
+                                            $review_contentgenerate_review_resultsreviewer_temp:Map();
+                                            $review_contentgenerate_review_resultstest_case:test_case();
+                                    eval($review_contentgenerate_review_resultsdefault==review_contentgenerate_review_resultsdefault && $review_contentgenerate_review_resultsguideline==review_contentgenerate_review_resultsguideline && $review_contentgenerate_review_resultsguideline_filter==review_contentgenerate_review_resultsguideline_filter && $review_contentgenerate_review_resultsguideline_pages==review_contentgenerate_review_resultsguideline_pages && $review_contentgenerate_review_resultsidea==review_contentgenerate_review_resultsidea && $review_contentgenerate_review_resultsreview_result==review_contentgenerate_review_resultsreview_result && $review_contentgenerate_review_resultsreview_stage==review_contentgenerate_review_resultsreview_stage && $review_contentgenerate_review_resultsreview_stage_filter==review_contentgenerate_review_resultsreview_stage_filter && $review_contentgenerate_review_resultsreview_stage_list==review_contentgenerate_review_resultsreview_stage_list && $review_contentgenerate_review_resultstest_case==review_contentgenerate_review_resultstest_case);
+                                eval((RuleUtils.test($review_contentgenerate_review_resultsreview_stage.get("id"),"EQ","id")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall2_deaction1" sourceRef="loopsubcall2" targetRef="deaction1">
                     </sequenceFlow>
                     <sequenceFlow id="deaction1_renewparam1" sourceRef="deaction1" targetRef="renewparam1">
                     </sequenceFlow>
@@ -110,5 +141,9 @@
                             <sequenceFlow id="debugparam2_gateway-debugparam2_gatewayline" sourceRef="debugparam2" targetRef="gateway-debugparam2"></sequenceFlow>
                             <sequenceFlow id="gateway-debugparam2_end_line" sourceRef="gateway-debugparam2" targetRef="gateway-debugparam2_end"/>
                             <endEvent id="gateway-debugparam2_end" name="end"/>
+                            <exclusiveGateway id="gateway-loopsubcall2" name="Gateway" gatewayDirection="Diverging" default="gateway-loopsubcall2_end_line"></exclusiveGateway>
+                            <sequenceFlow id="loopsubcall2_gateway-loopsubcall2_gatewayline" sourceRef="loopsubcall2" targetRef="gateway-loopsubcall2"></sequenceFlow>
+                            <sequenceFlow id="gateway-loopsubcall2_end_line" sourceRef="gateway-loopsubcall2" targetRef="gateway-loopsubcall2_end"/>
+                            <endEvent id="gateway-loopsubcall2_end" name="end"/>
         </process>
     </definitions>
