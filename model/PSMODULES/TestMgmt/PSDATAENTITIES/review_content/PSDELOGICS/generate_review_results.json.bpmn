@@ -33,6 +33,7 @@
                             <tns:global identifier="review_contentgenerate_review_resultstest_case" type="cn.ibizlab.plm.core.testmgmt.domain.test_case" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsdebugparam4" id="debugparam4" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="测试用例"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_resultsend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
@@ -55,6 +56,8 @@
                         <endEvent id="renewparam1_end" name="end"/>
                         <sequenceFlow id="renewparam1_end_line" sourceRef="renewparam1" targetRef="renewparam1_end"/>
                     <sequenceFlow id="begin_debugparam2" sourceRef="begin" targetRef="debugparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam4_loopsubcall1" sourceRef="debugparam4" targetRef="loopsubcall1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam6_prepareparam1" sourceRef="prepareparam6" targetRef="prepareparam1">
                     </sequenceFlow>
@@ -102,7 +105,7 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam2_prepareparam4" sourceRef="prepareparam2" targetRef="prepareparam4">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam4_loopsubcall1" sourceRef="prepareparam4" targetRef="loopsubcall1">
+                    <sequenceFlow id="prepareparam4_debugparam4" sourceRef="prepareparam4" targetRef="debugparam4">
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall1_prepareparam3" sourceRef="loopsubcall1" targetRef="prepareparam3">
                     </sequenceFlow>
