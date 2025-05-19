@@ -2052,6 +2052,81 @@
                                 "notMode" : false
                               } ],
                               "getPSPanelItems" : [ {
+                                "caption" : "是否置顶",
+                                "itemStyle" : "DEFAULT",
+                                "itemType" : "BUTTONLIST",
+                                "name" : "is_top",
+                                "getPSLayoutPos" : {
+                                  "grow" : -1,
+                                  "layout" : "FLEX"
+                                },
+                                "getPSUIActionGroup" : {
+                                  "codeName" : "Usr0519465800",
+                                  "name" : "评论列表行为组",
+                                  "getPSAppDataEntity" : {
+                                    "modelref" : true,
+                                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
+                                  },
+                                  "getPSUIActionGroupDetails" : [ {
+                                    "caption" : "置顶",
+                                    "detailType" : "DEUIACTION",
+                                    "name" : "u738ead1",
+                                    "getPSUIAction" : {
+                                      "actionTarget" : "SINGLEKEY",
+                                      "caption" : "置顶",
+                                      "codeName" : "top",
+                                      "fullCodeName" : "comment_top",
+                                      "name" : "评论置顶",
+                                      "getPSAppDEMethod" : {
+                                        "modelref" : true,
+                                        "id" : "top"
+                                      },
+                                      "getPSAppDataEntity" : {
+                                        "modelref" : true,
+                                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
+                                      },
+                                      "timeout" : 60000,
+                                      "uIActionMode" : "BACKEND",
+                                      "uIActionTag" : "top",
+                                      "uIActionType" : "DEUIACTION",
+                                      "enableConfirm" : true,
+                                      "id" : "top@comment"
+                                    },
+                                    "addSeparator" : false,
+                                    "showCaption" : true,
+                                    "showIcon" : true
+                                  }, {
+                                    "caption" : "取消置顶",
+                                    "detailType" : "DEUIACTION",
+                                    "name" : "u42ab9a2",
+                                    "getPSUIAction" : {
+                                      "actionTarget" : "SINGLEKEY",
+                                      "caption" : "取消置顶",
+                                      "codeName" : "no_top",
+                                      "fullCodeName" : "comment_no_top",
+                                      "name" : "取消置顶",
+                                      "getPSAppDEMethod" : {
+                                        "modelref" : true,
+                                        "id" : "no_top"
+                                      },
+                                      "getPSAppDataEntity" : {
+                                        "modelref" : true,
+                                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
+                                      },
+                                      "timeout" : 60000,
+                                      "uIActionMode" : "BACKEND",
+                                      "uIActionTag" : "no_top",
+                                      "uIActionType" : "DEUIACTION",
+                                      "enableConfirm" : true,
+                                      "id" : "no_top@comment"
+                                    },
+                                    "addSeparator" : false,
+                                    "showCaption" : true,
+                                    "showIcon" : true
+                                  } ],
+                                  "uniqueTag" : "comment__Usr0519465800"
+                                }
+                              }, {
                                 "actionType" : "UIACTION",
                                 "buttonStyle" : "STYLE2",
                                 "caption" : "删除",
@@ -2441,33 +2516,19 @@
                         "id" : "LIST"
                       },
                       "getPSDEListDataItems" : [ {
-                        "dataType" : 25,
-                        "name" : "pid",
-                        "getPSAppDEField" : {
-                          "name" : "PID",
-                          "codeName" : "pid"
-                        }
-                      }, {
-                        "dataType" : 25,
-                        "name" : "id",
-                        "getPSAppDEField" : {
-                          "name" : "ID",
-                          "codeName" : "id"
-                        }
-                      }, {
-                        "dataType" : 21,
-                        "name" : "pcontent",
-                        "getPSAppDEField" : {
-                          "name" : "PCONTENT",
-                          "codeName" : "pcontent"
-                        }
-                      }, {
                         "dataType" : 5,
                         "format" : "YYYY-MM-DD HH:mm:ss",
                         "name" : "create_time",
                         "getPSAppDEField" : {
                           "name" : "CREATE_TIME",
                           "codeName" : "create_time"
+                        }
+                      }, {
+                        "dataType" : 25,
+                        "name" : "pid",
+                        "getPSAppDEField" : {
+                          "name" : "PID",
+                          "codeName" : "pid"
                         }
                       }, {
                         "dataType" : 25,
@@ -2481,6 +2542,27 @@
                           "codeName" : "pcreate_man"
                         }
                       }, {
+                        "dataType" : 21,
+                        "name" : "pcontent",
+                        "getPSAppDEField" : {
+                          "name" : "PCONTENT",
+                          "codeName" : "pcontent"
+                        }
+                      }, {
+                        "dataType" : 25,
+                        "name" : "id",
+                        "getPSAppDEField" : {
+                          "name" : "ID",
+                          "codeName" : "id"
+                        }
+                      }, {
+                        "dataType" : 21,
+                        "name" : "content",
+                        "getPSAppDEField" : {
+                          "name" : "CONTENT",
+                          "codeName" : "content"
+                        }
+                      }, {
                         "dataType" : 25,
                         "getFrontPSCodeList" : {
                           "modelref" : true,
@@ -2490,13 +2572,6 @@
                         "getPSAppDEField" : {
                           "name" : "CREATE_MAN",
                           "codeName" : "create_man"
-                        }
-                      }, {
-                        "dataType" : 21,
-                        "name" : "content",
-                        "getPSAppDEField" : {
-                          "name" : "CONTENT",
-                          "codeName" : "content"
                         }
                       }, {
                         "dataType" : 25,

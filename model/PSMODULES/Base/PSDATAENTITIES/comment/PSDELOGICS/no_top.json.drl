@@ -1,0 +1,47 @@
+package cn.ibizlab.plm.base.logic.commentlogic.no_top;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.comment commentno_topdefault;
+                    global cn.ibizlab.plm.core.base.service.IcommentService commentservice;
+        global cn.ibizlab.plm.core.base.service.IcommentService iBzSysCommentDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "commentno_topbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam1"
+            ruleflow-group "commentno_topprepareparam1"
+            when
+            then
+                            commentno_topdefault.set("istop","0");
+                        update(commentno_topdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体行为]
+            rule "deaction1"
+            ruleflow-group "commentno_topdeaction1"
+            when
+            then
+                        commentservice.update(commentno_topdefault);
+                        update(commentno_topdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "commentno_topend1"
+            when
+            then
+                        update(commentno_topdefault);//更新fact中变量值
+            end
