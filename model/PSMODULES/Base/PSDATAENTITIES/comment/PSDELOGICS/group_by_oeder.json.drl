@@ -1,0 +1,63 @@
+package cn.ibizlab.plm.base.logic.commentlogic.group_by_oeder;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.comment commentgroup_by_oederdefault;
+                global cn.ibizlab.plm.core.base.domain.comment commentgroup_by_oederlist;
+                global cn.ibizlab.plm.core.base.domain.comment commentgroup_by_oederpage;
+                    global cn.ibizlab.plm.core.base.service.IcommentService commentservice;
+        global cn.ibizlab.plm.core.base.service.IcommentService iBzSysCommentDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "commentgroup_by_oederbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[实体数据集]
+            rule "dedataset1"
+            ruleflow-group "commentgroup_by_oederdedataset1"
+            when
+            then
+                        update(commentgroup_by_oederdefault);//更新fact中变量值
+                        update(commentgroup_by_oederlist);//更新fact中变量值
+                        update(commentgroup_by_oederpage);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam1"
+            ruleflow-group "commentgroup_by_oederdebugparam1"
+            when
+            then
+                        update(commentgroup_by_oederdefault);//更新fact中变量值
+                        update(commentgroup_by_oederlist);//更新fact中变量值
+                        update(commentgroup_by_oederpage);//更新fact中变量值
+            end
+
+            //逻辑处理节点[执行脚本代码]
+            rule "rawsfcode1"
+            ruleflow-group "commentgroup_by_oederrawsfcode1"
+            when
+            then
+                        update(commentgroup_by_oederdefault);//更新fact中变量值
+                        update(commentgroup_by_oederlist);//更新fact中变量值
+                        update(commentgroup_by_oederpage);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "commentgroup_by_oederend1"
+            when
+            then
+                        update(commentgroup_by_oederdefault);//更新fact中变量值
+                        update(commentgroup_by_oederlist);//更新fact中变量值
+                        update(commentgroup_by_oederpage);//更新fact中变量值
+            end

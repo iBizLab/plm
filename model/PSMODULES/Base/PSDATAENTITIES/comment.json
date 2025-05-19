@@ -470,6 +470,35 @@
     "defaultMode" : true,
     "enableBackend" : true,
     "enableFront" : true
+  }, {
+    "actionHolder" : 1,
+    "codeName" : "group_by_oeder",
+    "dataSetType" : "DELOGIC",
+    "logicName" : "评论分组排序",
+    "name" : "group_by_oeder",
+    "getPSDEDataSetInput" : {
+      "name" : "Group_by_oederInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "comment_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Group_by_oederResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "comment_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment/PSDELOGICS/group_by_oeder.json"
+    },
+    "predefinedType" : "DELOGIC",
+    "enableBackend" : true,
+    "enableFront" : false
   } ],
   "getAllPSDEFields" : [ {
     "getAllPSDEFDTColumns" : [ {
@@ -2288,6 +2317,150 @@
       },
       "default" : true,
       "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
+    "codeName" : "group_by_oeder",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/comment/PSDELOGICS/group_by_oeder.json",
+    "logicName" : "评论分组排序",
+    "name" : "评论分组排序",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 60,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEDATASET1",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/comment.json"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEDATASET",
+      "name" : "实体数据集",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page"
+      },
+      "topPos" : 175
+    }, {
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
+      } ],
+      "topPos" : 303
+    }, {
+      "code" : "def page = logic.param('page').getReal()\r\n\r\n",
+      "codeName" : "RAWSFCODE1",
+      "codeType" : "Groovy",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "执行脚本代码",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        }
+      } ],
+      "topPos" : 446
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "page"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 572
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/comment.json"
+      },
+      "default" : true,
+      "filterParam" : true
+    }, {
+      "codeName" : "list",
+      "logicName" : "评论列表",
+      "name" : "评论列表",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/comment.json"
+      },
+      "entityListParam" : true
+    }, {
+      "codeName" : "page",
+      "logicName" : "评论数据集",
+      "name" : "评论数据集",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/comment.json"
+      },
+      "entityPageParam" : true
     } ],
     "getStartPSDELogicNode" : {
       "modelref" : true,
