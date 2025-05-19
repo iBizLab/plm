@@ -433,6 +433,14 @@
         "id" : "FORM"
       },
       "getPSDEFormItemUpdates" : [ {
+        "codeName" : "calc_parent_work_item_type",
+        "name" : "计算父工作项类型",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "work_item_type_name"
+        } ],
+        "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+        "customCode" : true
+      }, {
         "codeName" : "set_type_bug",
         "name" : "设置缺陷类型",
         "getPSAppDEMethod" : {
@@ -442,18 +450,10 @@
         "getPSDEFIUpdateDetails" : [ {
           "name" : "work_item_type_name"
         }, {
-          "name" : "project_type"
-        }, {
           "name" : "work_item_type_id"
+        }, {
+          "name" : "project_type"
         } ]
-      }, {
-        "codeName" : "calc_parent_work_item_type",
-        "name" : "计算父工作项类型",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "work_item_type_name"
-        } ],
-        "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-        "customCode" : true
       }, {
         "codeName" : "set_default_entry",
         "name" : "选择看板后填充默认看板栏",
@@ -707,9 +707,7 @@
       }, {
         "id" : "test_case",
         "hidden" : true,
-        "dataType" : 25,
-        "createDVT" : "APPDATA",
-        "createDV" : "test_case"
+        "dataType" : 25
       }, {
         "id" : "project_name",
         "dataType" : 25,
@@ -1845,8 +1843,6 @@
             }, {
               "caption" : "用例标识",
               "codeName" : "test_case",
-              "createDV" : "test_case",
-              "createDVT" : "APPDATA",
               "dataType" : 25,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
