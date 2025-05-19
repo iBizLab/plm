@@ -3430,6 +3430,10 @@
                               "hidden" : true,
                               "viewFieldName" : "PID"
                             }, {
+                              "id" : "is_top",
+                              "hidden" : true,
+                              "viewFieldName" : "IS_TOP"
+                            }, {
                               "id" : "field_text_dynamic2",
                               "viewFieldName" : "CONTENT"
                             }, {
@@ -3546,6 +3550,40 @@
                                     },
                                     "viewFieldName" : "CREATE_TIME"
                                   }, {
+                                    "caption" : "置顶",
+                                    "contentType" : "RAW",
+                                    "itemStyle" : "DEFAULT",
+                                    "itemType" : "RAWITEM",
+                                    "name" : "top_text",
+                                    "getPSLayoutPos" : {
+                                      "grow" : -1,
+                                      "layout" : "FLEX",
+                                      "spacingLeft" : "OUTERSMALL"
+                                    },
+                                    "getPSPanelItemGroupLogics" : [ {
+                                      "groupOP" : "AND",
+                                      "logicCat" : "PANELVISIBLE",
+                                      "logicType" : "GROUP",
+                                      "getPSPanelItemLogics" : [ {
+                                        "condOp" : "EQ",
+                                        "dstModelField" : "IS_TOP",
+                                        "logicType" : "SINGLE",
+                                        "name" : "逻辑项",
+                                        "value" : "1"
+                                      } ],
+                                      "relatedItemNames" : [ "is_top" ],
+                                      "notMode" : false
+                                    } ],
+                                    "getPSRawItem" : {
+                                      "caption" : "置顶",
+                                      "contentType" : "RAW",
+                                      "name" : "top_text",
+                                      "predefinedType" : "STATIC_TEXT",
+                                      "renderMode" : "TEXT"
+                                    },
+                                    "rawContent" : "置顶",
+                                    "showCaption" : true
+                                  }, {
                                     "caption" : "文本(动态)",
                                     "itemType" : "FIELD",
                                     "name" : "field_text_dynamic3",
@@ -3574,6 +3612,20 @@
                                       "layout" : "FLEX"
                                     },
                                     "viewFieldName" : "PID",
+                                    "hidden" : true
+                                  }, {
+                                    "caption" : "文本(动态)",
+                                    "itemType" : "FIELD",
+                                    "name" : "is_top",
+                                    "getPSEditor" : {
+                                      "editorType" : "HIDDEN",
+                                      "name" : "is_top"
+                                    },
+                                    "getPSLayoutPos" : {
+                                      "grow" : -1,
+                                      "layout" : "FLEX"
+                                    },
+                                    "viewFieldName" : "IS_TOP",
                                     "hidden" : true
                                   } ]
                                 }, {
@@ -3615,7 +3667,7 @@
                                     "caption" : "是否置顶",
                                     "itemStyle" : "DEFAULT",
                                     "itemType" : "BUTTONLIST",
-                                    "name" : "is_top",
+                                    "name" : "top",
                                     "getPSLayoutPos" : {
                                       "grow" : -1,
                                       "layout" : "FLEX"
@@ -4084,11 +4136,11 @@
                               "codeName" : "create_time"
                             }
                           }, {
-                            "dataType" : 25,
-                            "name" : "pid",
+                            "dataType" : 21,
+                            "name" : "content",
                             "getPSAppDEField" : {
-                              "name" : "PID",
-                              "codeName" : "pid"
+                              "name" : "CONTENT",
+                              "codeName" : "content"
                             }
                           }, {
                             "dataType" : 25,
@@ -4102,11 +4154,11 @@
                               "codeName" : "pcreate_man"
                             }
                           }, {
-                            "dataType" : 21,
-                            "name" : "pcontent",
+                            "dataType" : 25,
+                            "name" : "pid",
                             "getPSAppDEField" : {
-                              "name" : "PCONTENT",
-                              "codeName" : "pcontent"
+                              "name" : "PID",
+                              "codeName" : "pid"
                             }
                           }, {
                             "dataType" : 25,
@@ -4114,13 +4166,6 @@
                             "getPSAppDEField" : {
                               "name" : "ID",
                               "codeName" : "id"
-                            }
-                          }, {
-                            "dataType" : 21,
-                            "name" : "content",
-                            "getPSAppDEField" : {
-                              "name" : "CONTENT",
-                              "codeName" : "content"
                             }
                           }, {
                             "dataType" : 25,
@@ -4132,6 +4177,13 @@
                             "getPSAppDEField" : {
                               "name" : "CREATE_MAN",
                               "codeName" : "create_man"
+                            }
+                          }, {
+                            "dataType" : 21,
+                            "name" : "pcontent",
+                            "getPSAppDEField" : {
+                              "name" : "PCONTENT",
+                              "codeName" : "pcontent"
                             }
                           }, {
                             "dataType" : 25,
