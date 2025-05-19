@@ -433,6 +433,20 @@
         "id" : "FORM"
       },
       "getPSDEFormItemUpdates" : [ {
+        "codeName" : "set_type_bug",
+        "name" : "设置缺陷类型",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "set_type_bug"
+        },
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "work_item_type_name"
+        }, {
+          "name" : "project_type"
+        }, {
+          "name" : "work_item_type_id"
+        } ]
+      }, {
         "codeName" : "calc_parent_work_item_type",
         "name" : "计算父工作项类型",
         "getPSDEFIUpdateDetails" : [ {
@@ -449,20 +463,6 @@
         },
         "getPSDEFIUpdateDetails" : [ {
           "name" : "entry_id"
-        } ]
-      }, {
-        "codeName" : "set_type_bug",
-        "name" : "设置缺陷类型",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "set_type_bug"
-        },
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "project_type"
-        }, {
-          "name" : "work_item_type_id"
-        }, {
-          "name" : "work_item_type_name"
         } ]
       } ],
       "getPSDEFormItemVRs" : [ {
@@ -704,6 +704,12 @@
         "id" : "n_work_item_type_id_in",
         "hidden" : true,
         "dataType" : 25
+      }, {
+        "id" : "test_case",
+        "hidden" : true,
+        "dataType" : 25,
+        "createDVT" : "APPDATA",
+        "createDV" : "test_case"
       }, {
         "id" : "project_name",
         "dataType" : 25,
@@ -1829,6 +1835,30 @@
               "getPSEditor" : {
                 "editorType" : "HIDDEN",
                 "name" : "n_work_item_type_id_in"
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true,
+              "hidden" : true
+            }, {
+              "caption" : "用例标识",
+              "codeName" : "test_case",
+              "createDV" : "test_case",
+              "createDVT" : "APPDATA",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "LEFT",
+              "labelWidth" : 130,
+              "name" : "test_case",
+              "noPrivDisplayMode" : 1,
+              "getPSEditor" : {
+                "editorType" : "HIDDEN",
+                "name" : "test_case"
               },
               "getPSLayoutPos" : {
                 "colMD" : 24,
