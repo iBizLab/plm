@@ -11,32 +11,40 @@
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.run_history()" name="runcreate_resultrun_history" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.run_history()" name="runcreate_resultsteps" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.run()" name="runcreate_resulttemp_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.test_plan()" name="runcreate_resulttest_plan" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="runcreate_resultwork_item" type="refentity"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Irun_historyService))" name="run_historyservice" type="service"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IrunService))" name="runservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Itest_planService))" name="test_planservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IrunService))" name="iBzSysRunDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="runcreate_resultdefault" type="cn.ibizlab.plm.core.testmgmt.domain.run" />
                             <tns:global identifier="runcreate_resultrun_history" type="cn.ibizlab.plm.core.testmgmt.domain.run_history" />
                             <tns:global identifier="runcreate_resultsteps" type="cn.ibizlab.plm.core.testmgmt.domain.run_history" />
                             <tns:global identifier="runcreate_resulttemp_obj" type="cn.ibizlab.plm.core.testmgmt.domain.run" />
+                            <tns:global identifier="runcreate_resulttest_plan" type="cn.ibizlab.plm.core.testmgmt.domain.test_plan" />
                             <tns:global identifier="runcreate_resultwork_item" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction6" id="deaction6" implementation="http://www.jboss.org/drools/rule" name="创建执行结果"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultend3" id="end3" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end3_end" name="end"/>
                         <sequenceFlow id="end3_end_line" sourceRef="end3" targetRef="end3_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置执行人相关信息"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="执行结果数据准备"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction6" id="deaction6" implementation="http://www.jboss.org/drools/rule" name="创建执行结果"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="执行用例数据准备"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction7" id="deaction7" implementation="http://www.jboss.org/drools/rule" name="更新执行用例"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
-                        <endEvent id="prepareparam4_end" name="end"/>
-                        <sequenceFlow id="prepareparam4_end_line" sourceRef="prepareparam4" targetRef="prepareparam4_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="拼接描述字段"/>
+                        <endEvent id="rawsfcode1_end" name="end"/>
+                        <sequenceFlow id="rawsfcode1_end_line" sourceRef="rawsfcode1" targetRef="rawsfcode1_end"/>
                     <sequenceFlow id="begin_debugparam2" sourceRef="begin" targetRef="debugparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction6_prepareparam6" sourceRef="deaction6" targetRef="prepareparam6">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-debugparam2_prepareparam3" sourceRef="gateway-debugparam2" targetRef="prepareparam3">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
@@ -46,8 +54,9 @@
                                             $runcreate_resultrun_history:run_history();
                                             $runcreate_resultsteps:run_history();
                                             $runcreate_resulttemp_obj:run();
+                                            $runcreate_resulttest_plan:test_plan();
                                             $runcreate_resultwork_item:work_item();
-                                    eval($runcreate_resultdefault==runcreate_resultdefault && $runcreate_resultrun_history==runcreate_resultrun_history && $runcreate_resultsteps==runcreate_resultsteps && $runcreate_resulttemp_obj==runcreate_resulttemp_obj && $runcreate_resultwork_item==runcreate_resultwork_item);
+                                    eval($runcreate_resultdefault==runcreate_resultdefault && $runcreate_resultrun_history==runcreate_resultrun_history && $runcreate_resultsteps==runcreate_resultsteps && $runcreate_resulttemp_obj==runcreate_resulttemp_obj && $runcreate_resulttest_plan==runcreate_resulttest_plan && $runcreate_resultwork_item==runcreate_resultwork_item);
                                 eval((RuleUtils.test($runcreate_resultdefault.get("executorId"),"ISNULL","")))
                                 ]]>
                             </conditionExpression>
@@ -60,8 +69,9 @@
                                             $runcreate_resultrun_history:run_history();
                                             $runcreate_resultsteps:run_history();
                                             $runcreate_resulttemp_obj:run();
+                                            $runcreate_resulttest_plan:test_plan();
                                             $runcreate_resultwork_item:work_item();
-                                    eval($runcreate_resultdefault==runcreate_resultdefault && $runcreate_resultrun_history==runcreate_resultrun_history && $runcreate_resultsteps==runcreate_resultsteps && $runcreate_resulttemp_obj==runcreate_resulttemp_obj && $runcreate_resultwork_item==runcreate_resultwork_item);
+                                    eval($runcreate_resultdefault==runcreate_resultdefault && $runcreate_resultrun_history==runcreate_resultrun_history && $runcreate_resultsteps==runcreate_resultsteps && $runcreate_resulttemp_obj==runcreate_resulttemp_obj && $runcreate_resulttest_plan==runcreate_resulttest_plan && $runcreate_resultwork_item==runcreate_resultwork_item);
                                 eval((RuleUtils.test($runcreate_resultdefault.get("executorId"),"ISNOTNULL","")))
                                 ]]>
                             </conditionExpression>
@@ -74,8 +84,9 @@
                                             $runcreate_resultrun_history:run_history();
                                             $runcreate_resultsteps:run_history();
                                             $runcreate_resulttemp_obj:run();
+                                            $runcreate_resulttest_plan:test_plan();
                                             $runcreate_resultwork_item:work_item();
-                                    eval($runcreate_resultdefault==runcreate_resultdefault && $runcreate_resultrun_history==runcreate_resultrun_history && $runcreate_resultsteps==runcreate_resultsteps && $runcreate_resulttemp_obj==runcreate_resulttemp_obj && $runcreate_resultwork_item==runcreate_resultwork_item);
+                                    eval($runcreate_resultdefault==runcreate_resultdefault && $runcreate_resultrun_history==runcreate_resultrun_history && $runcreate_resultsteps==runcreate_resultsteps && $runcreate_resulttemp_obj==runcreate_resulttemp_obj && $runcreate_resulttest_plan==runcreate_resulttest_plan && $runcreate_resultwork_item==runcreate_resultwork_item);
                                 eval((RuleUtils.test($runcreate_resultdefault.get("status"),"EQ","30")))
                                 ]]>
                             </conditionExpression>
@@ -90,8 +101,9 @@
                                             $runcreate_resultrun_history:run_history();
                                             $runcreate_resultsteps:run_history();
                                             $runcreate_resulttemp_obj:run();
+                                            $runcreate_resulttest_plan:test_plan();
                                             $runcreate_resultwork_item:work_item();
-                                    eval($runcreate_resultdefault==runcreate_resultdefault && $runcreate_resultrun_history==runcreate_resultrun_history && $runcreate_resultsteps==runcreate_resultsteps && $runcreate_resulttemp_obj==runcreate_resulttemp_obj && $runcreate_resultwork_item==runcreate_resultwork_item);
+                                    eval($runcreate_resultdefault==runcreate_resultdefault && $runcreate_resultrun_history==runcreate_resultrun_history && $runcreate_resultsteps==runcreate_resultsteps && $runcreate_resulttemp_obj==runcreate_resulttemp_obj && $runcreate_resulttest_plan==runcreate_resulttest_plan && $runcreate_resultwork_item==runcreate_resultwork_item);
                                 eval((RuleUtils.test($runcreate_resultdefault.get("status"),"ISNOTNULL","")))
                                 ]]>
                             </conditionExpression>
@@ -104,19 +116,24 @@
                                             $runcreate_resultrun_history:run_history();
                                             $runcreate_resultsteps:run_history();
                                             $runcreate_resulttemp_obj:run();
+                                            $runcreate_resulttest_plan:test_plan();
                                             $runcreate_resultwork_item:work_item();
-                                    eval($runcreate_resultdefault==runcreate_resultdefault && $runcreate_resultrun_history==runcreate_resultrun_history && $runcreate_resultsteps==runcreate_resultsteps && $runcreate_resulttemp_obj==runcreate_resulttemp_obj && $runcreate_resultwork_item==runcreate_resultwork_item);
+                                    eval($runcreate_resultdefault==runcreate_resultdefault && $runcreate_resultrun_history==runcreate_resultrun_history && $runcreate_resultsteps==runcreate_resultsteps && $runcreate_resulttemp_obj==runcreate_resulttemp_obj && $runcreate_resulttest_plan==runcreate_resulttest_plan && $runcreate_resultwork_item==runcreate_resultwork_item);
                                 eval((RuleUtils.test($runcreate_resultdefault.get("status"),"ISNULL","")))
                                 ]]>
                             </conditionExpression>
-                    </sequenceFlow>
-                    <sequenceFlow id="deaction6_prepareparam6" sourceRef="deaction6" targetRef="prepareparam6">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam6_debugparam1" sourceRef="prepareparam6" targetRef="debugparam1">
                     </sequenceFlow>
                     <sequenceFlow id="deaction7_end3" sourceRef="deaction7" targetRef="end3">
                     </sequenceFlow>
                     <sequenceFlow id="debugparam1_deaction7" sourceRef="debugparam1" targetRef="deaction7">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam4_deaction3" sourceRef="prepareparam4" targetRef="deaction3">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction3_prepareparam7" sourceRef="deaction3" targetRef="prepareparam7">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam7_rawsfcode1" sourceRef="prepareparam7" targetRef="rawsfcode1">
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-debugparam2" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam2_end_line"></exclusiveGateway>
                             <sequenceFlow id="debugparam2_gateway-debugparam2_gatewayline" sourceRef="debugparam2" targetRef="gateway-debugparam2"></sequenceFlow>

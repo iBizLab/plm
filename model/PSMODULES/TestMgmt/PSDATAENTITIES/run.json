@@ -8119,6 +8119,39 @@
       "topPos" : 60,
       "parallelOutput" : true
     }, {
+      "codeName" : "DEACTION6",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run_history/PSDEACTIONS/Create.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "run_history"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run_history.json"
+      },
+      "leftPos" : 600,
+      "logicNodeType" : "DEACTION",
+      "name" : "创建执行结果",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM6"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION6"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "run_history"
+      },
+      "topPos" : -110
+    }, {
       "codeName" : "END3",
       "leftPos" : 1425,
       "logicNodeType" : "END",
@@ -8414,39 +8447,6 @@
       } ],
       "topPos" : 68
     }, {
-      "codeName" : "DEACTION6",
-      "getDstPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run_history/PSDEACTIONS/Create.json"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "run_history"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run_history.json"
-      },
-      "leftPos" : 600,
-      "logicNodeType" : "DEACTION",
-      "name" : "创建执行结果",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM6"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION6"
-        }
-      } ],
-      "getRetPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "run_history"
-      },
-      "topPos" : -110
-    }, {
       "codeName" : "PREPAREPARAM6",
       "leftPos" : 780,
       "logicNodeType" : "PREPAREPARAM",
@@ -8603,7 +8603,147 @@
       "leftPos" : -120,
       "logicNodeType" : "PREPAREPARAM",
       "name" : "准备参数",
-      "topPos" : 202
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION3"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM4"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "TITLE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "work_item"
+        },
+        "name" : "Default[TITLE] ==> work_item[TITLE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "TITLE",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "ATTENTIONS",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "work_item"
+        },
+        "name" : "Default[ATTENTIONS] ==> work_item[ATTENTIONS]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ATTENTIONS",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "test_plan"
+        },
+        "name" : "Default[PLAN_ID] ==> test_plan[ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "PLAN_ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 240
+    }, {
+      "codeName" : "DEACTION3",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDEACTIONS/Get.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "test_plan"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan.json"
+      },
+      "leftPos" : -120,
+      "logicNodeType" : "DEACTION",
+      "name" : "实体行为",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM7"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION3"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "test_plan"
+      },
+      "topPos" : 342
+    }, {
+      "codeName" : "PREPAREPARAM7",
+      "leftPos" : -120,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM7"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "PROJECT_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "work_item"
+        },
+        "name" : "test_plan[PROJECT_ID] ==> work_item[PROJECT_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "PROJECT_ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "test_plan"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "PROJECT_NAME",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "work_item"
+        },
+        "name" : "test_plan[PROJECT_NAME] ==> work_item[PROJECT_NAME]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "PROJECT_NAME",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "test_plan"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 438
+    }, {
+      "codeName" : "RAWSFCODE1",
+      "codeType" : "JavaScript",
+      "leftPos" : -120,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "拼接描述字段",
+      "topPos" : 550
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",
@@ -8652,6 +8792,15 @@
       "getParamPSDataEntity" : {
         "modelref" : true,
         "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "test_plan",
+      "logicName" : "测试计划",
+      "name" : "测试计划",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan.json"
       },
       "entityParam" : true
     }, {
