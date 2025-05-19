@@ -379,7 +379,17 @@
         "path" : "PSMODULES/Base/PSDATAENTITIES/comment.json"
       },
       "joinType" : "MAIN",
-      "name" : "COMMENT"
+      "name" : "COMMENT",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condType" : "CUSTOM",
+          "condition" : "<otherwise>\n    1=1\n    GROUP BY t1.`is_order`\n    ORDER BY t1.`is_order` DESC\n</otherwise>",
+          "name" : "是否置顶"
+        } ]
+      }
     },
     "getPSDEDataQueryInput" : {
       "name" : "DefaultInput",
@@ -438,7 +448,6 @@
   } ],
   "getAllPSDEDataSets" : [ {
     "codeName" : "Default",
-    "groupMode" : 1,
     "logicName" : "数据集",
     "majorSortDir" : "DESC",
     "getMajorSortPSDEField" : {
@@ -449,17 +458,6 @@
     "getPSDEDataQueries" : [ {
       "modelref" : true,
       "id" : "Default"
-    } ],
-    "getPSDEDataSetGroupParams" : [ {
-      "name" : "is_top",
-      "getPSDEField" : {
-        "name" : "IS_TOP",
-        "codeName" : "is_top"
-      },
-      "sortDir" : "DESC",
-      "stdDataType" : 9,
-      "enableGroup" : true,
-      "enableSort" : true
     } ],
     "getPSDEDataSetInput" : {
       "name" : "DefaultInput",
@@ -479,8 +477,7 @@
     },
     "defaultMode" : true,
     "enableBackend" : true,
-    "enableFront" : true,
-    "enableGroup" : true
+    "enableFront" : true
   } ],
   "getAllPSDEFields" : [ {
     "getAllPSDEFDTColumns" : [ {
