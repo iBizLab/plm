@@ -6,6 +6,8 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.fill_test_case_info;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemfill_test_case_infodefault;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case work_itemfill_test_case_infotest_case;
+                    global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService test_caseservice;
         global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService iBzSysWork_itemDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
 
@@ -25,6 +27,37 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.fill_test_case_info;
             when
             then
                         update(work_itemfill_test_case_infodefault);//更新fact中变量值
+                        update(work_itemfill_test_case_infotest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam1"
+            ruleflow-group "work_itemfill_test_case_infoprepareparam1"
+            when
+            then
+                            work_itemfill_test_case_infotest_case.set("id",work_itemfill_test_case_infodefault.get("test_case"));
+                        update(work_itemfill_test_case_infodefault);//更新fact中变量值
+                        update(work_itemfill_test_case_infotest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体行为]
+            rule "deaction1"
+            ruleflow-group "work_itemfill_test_case_infodeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(test_caseservice.get(work_itemfill_test_case_infotest_case.getId()),work_itemfill_test_case_infotest_case);
+                        update(work_itemfill_test_case_infodefault);//更新fact中变量值
+                        update(work_itemfill_test_case_infotest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam2"
+            ruleflow-group "work_itemfill_test_case_infoprepareparam2"
+            when
+            then
+                            work_itemfill_test_case_infodefault.set("description",work_itemfill_test_case_infotest_case.get("steps"));
+                        update(work_itemfill_test_case_infodefault);//更新fact中变量值
+                        update(work_itemfill_test_case_infotest_case);//更新fact中变量值
             end
 
             //逻辑处理节点[结束]
@@ -33,4 +66,5 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.fill_test_case_info;
             when
             then
                         update(work_itemfill_test_case_infodefault);//更新fact中变量值
+                        update(work_itemfill_test_case_infotest_case);//更新fact中变量值
             end
