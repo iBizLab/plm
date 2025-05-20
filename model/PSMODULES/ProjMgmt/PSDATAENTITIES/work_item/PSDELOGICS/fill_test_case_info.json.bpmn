@@ -18,6 +18,7 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_infoprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_infodeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_infoprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_inforawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="拼接描述字段"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_infoend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
@@ -36,7 +37,9 @@
                     </sequenceFlow>
                     <sequenceFlow id="deaction1_prepareparam2" sourceRef="deaction1" targetRef="prepareparam2">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam2_end1" sourceRef="prepareparam2" targetRef="end1">
+                    <sequenceFlow id="prepareparam2_rawsfcode1" sourceRef="prepareparam2" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_end1" sourceRef="rawsfcode1" targetRef="end1">
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-debugparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam1_end_line"></exclusiveGateway>
                             <sequenceFlow id="debugparam1_gateway-debugparam1_gatewayline" sourceRef="debugparam1" targetRef="gateway-debugparam1"></sequenceFlow>
