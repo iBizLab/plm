@@ -38,15 +38,11 @@ package cn.ibizlab.plm.testmgmt.logic.runlogic.create_result;
             then
             end
 
-            //逻辑处理节点[设置执行人相关信息]
-            rule "prepareparam3"
-            ruleflow-group "runcreate_resultprepareparam3"
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam2"
+            ruleflow-group "runcreate_resultdebugparam2"
             when
             then
-                                runcreate_resultrun_history.set("executorid",curuser.getSessionParams().get("srfpersonid"));
-                                runcreate_resultrun_history.set("executorname",curuser.getSessionParams().get("srfpersonname"));
-                                runcreate_resulttemp_obj.set("executorname",curuser.getSessionParams().get("srfpersonname"));
-                                runcreate_resulttemp_obj.set("executorid",curuser.getSessionParams().get("srfpersonid"));
                         update(runcreate_resultdefault);//更新fact中变量值
                         update(runcreate_resultid);//更新fact中变量值
                         update(runcreate_resultids);//更新fact中变量值
@@ -63,18 +59,15 @@ package cn.ibizlab.plm.testmgmt.logic.runlogic.create_result;
                         update(runcreate_resultwork_item_type_temp);//更新fact中变量值
             end
 
-            //逻辑处理节点[执行结果数据准备]
-            rule "prepareparam5"
-            ruleflow-group "runcreate_resultprepareparam5"
+            //逻辑处理节点[设置执行人相关信息]
+            rule "prepareparam3"
+            ruleflow-group "runcreate_resultprepareparam3"
             when
             then
-                            runcreate_resultrun_history.set("",runcreate_resultdefault.get(""));
-                            runcreate_resultrun_history.set("remark",runcreate_resultdefault.get("remark"));
-                            runcreate_resulttemp_obj.set("id",runcreate_resultdefault.get("id"));
-                                runcreate_resultrun_history.set("executedat",null);
-                            runcreate_resultrun_history.set("runid",runcreate_resultdefault.get("id"));
-                                runcreate_resultrun_history.set("id",null);
-                            runcreate_resultrun_history.set("steps",runcreate_resultdefault.get("steps"));
+                                runcreate_resultrun_history.set("executorid",curuser.getSessionParams().get("srfpersonid"));
+                                runcreate_resultrun_history.set("executorname",curuser.getSessionParams().get("srfpersonname"));
+                                runcreate_resulttemp_obj.set("executorname",curuser.getSessionParams().get("srfpersonname"));
+                                runcreate_resulttemp_obj.set("executorid",curuser.getSessionParams().get("srfpersonid"));
                         update(runcreate_resultdefault);//更新fact中变量值
                         update(runcreate_resultid);//更新fact中变量值
                         update(runcreate_resultids);//更新fact中变量值
@@ -118,6 +111,34 @@ package cn.ibizlab.plm.testmgmt.logic.runlogic.create_result;
             ruleflow-group "runcreate_resultend3"
             when
             then
+                        update(runcreate_resultdefault);//更新fact中变量值
+                        update(runcreate_resultid);//更新fact中变量值
+                        update(runcreate_resultids);//更新fact中变量值
+                        update(runcreate_resultrelation);//更新fact中变量值
+                        update(runcreate_resultrelation2);//更新fact中变量值
+                        update(runcreate_resultrun_history);//更新fact中变量值
+                        update(runcreate_resultsteps);//更新fact中变量值
+                        update(runcreate_resulttemp_obj);//更新fact中变量值
+                        update(runcreate_resulttest_plan);//更新fact中变量值
+                        update(runcreate_resultwork_item);//更新fact中变量值
+                        update(runcreate_resultwork_item_type);//更新fact中变量值
+                        update(runcreate_resultwork_item_type_filter);//更新fact中变量值
+                        update(runcreate_resultwork_item_type_page);//更新fact中变量值
+                        update(runcreate_resultwork_item_type_temp);//更新fact中变量值
+            end
+
+            //逻辑处理节点[执行结果数据准备]
+            rule "prepareparam5"
+            ruleflow-group "runcreate_resultprepareparam5"
+            when
+            then
+                            runcreate_resultrun_history.set("",runcreate_resultdefault.get(""));
+                            runcreate_resultrun_history.set("remark",runcreate_resultdefault.get("remark"));
+                            runcreate_resulttemp_obj.set("id",runcreate_resultdefault.get("id"));
+                                runcreate_resultrun_history.set("executedat",null);
+                            runcreate_resultrun_history.set("runid",runcreate_resultdefault.get("id"));
+                                runcreate_resultrun_history.set("id",null);
+                            runcreate_resultrun_history.set("steps",runcreate_resultdefault.get("steps"));
                         update(runcreate_resultdefault);//更新fact中变量值
                         update(runcreate_resultid);//更新fact中变量值
                         update(runcreate_resultids);//更新fact中变量值
@@ -204,27 +225,6 @@ package cn.ibizlab.plm.testmgmt.logic.runlogic.create_result;
                         update(runcreate_resultwork_item_type_temp);//更新fact中变量值
             end
 
-            //逻辑处理节点[调试逻辑参数]
-            rule "debugparam2"
-            ruleflow-group "runcreate_resultdebugparam2"
-            when
-            then
-                        update(runcreate_resultdefault);//更新fact中变量值
-                        update(runcreate_resultid);//更新fact中变量值
-                        update(runcreate_resultids);//更新fact中变量值
-                        update(runcreate_resultrelation);//更新fact中变量值
-                        update(runcreate_resultrelation2);//更新fact中变量值
-                        update(runcreate_resultrun_history);//更新fact中变量值
-                        update(runcreate_resultsteps);//更新fact中变量值
-                        update(runcreate_resulttemp_obj);//更新fact中变量值
-                        update(runcreate_resulttest_plan);//更新fact中变量值
-                        update(runcreate_resultwork_item);//更新fact中变量值
-                        update(runcreate_resultwork_item_type);//更新fact中变量值
-                        update(runcreate_resultwork_item_type_filter);//更新fact中变量值
-                        update(runcreate_resultwork_item_type_page);//更新fact中变量值
-                        update(runcreate_resultwork_item_type_temp);//更新fact中变量值
-            end
-
             //逻辑处理节点[结束]
             rule "end2"
             ruleflow-group "runcreate_resultend2"
@@ -256,6 +256,27 @@ package cn.ibizlab.plm.testmgmt.logic.runlogic.create_result;
                             runcreate_resultwork_item.set("priority",runcreate_resultdefault.get("priority"));
                             runcreate_resultwork_item.set("attentions",runcreate_resultdefault.get("attentions"));
                             runcreate_resulttest_plan.set("id",runcreate_resultdefault.get("planid"));
+                        update(runcreate_resultdefault);//更新fact中变量值
+                        update(runcreate_resultid);//更新fact中变量值
+                        update(runcreate_resultids);//更新fact中变量值
+                        update(runcreate_resultrelation);//更新fact中变量值
+                        update(runcreate_resultrelation2);//更新fact中变量值
+                        update(runcreate_resultrun_history);//更新fact中变量值
+                        update(runcreate_resultsteps);//更新fact中变量值
+                        update(runcreate_resulttemp_obj);//更新fact中变量值
+                        update(runcreate_resulttest_plan);//更新fact中变量值
+                        update(runcreate_resultwork_item);//更新fact中变量值
+                        update(runcreate_resultwork_item_type);//更新fact中变量值
+                        update(runcreate_resultwork_item_type_filter);//更新fact中变量值
+                        update(runcreate_resultwork_item_type_page);//更新fact中变量值
+                        update(runcreate_resultwork_item_type_temp);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam3"
+            ruleflow-group "runcreate_resultdebugparam3"
+            when
+            then
                         update(runcreate_resultdefault);//更新fact中变量值
                         update(runcreate_resultid);//更新fact中变量值
                         update(runcreate_resultids);//更新fact中变量值
