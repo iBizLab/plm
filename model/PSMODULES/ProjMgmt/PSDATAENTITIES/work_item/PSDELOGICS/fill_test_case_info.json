@@ -208,7 +208,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "BINDPARAM1"
+        "id" : "PREPAREPARAM5"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -216,7 +216,7 @@
         "id" : "RAWSFCODE1"
       }
     } ],
-    "topPos" : 650
+    "topPos" : 640
   }, {
     "code" : "def _default = logic.param('Default').getReal();\r\ndef run = logic.param('run').getReal();\r\n\r\n//获取代码表\r\ndef run_status = sys.codelist('TestMgmt__run_status');\r\n\r\n\r\ndef table_start = '<table style=\"width: auto;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"55\">#</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">步骤描述</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">预期结果</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">实际结果</th><th colSpan=\"1\" rowSpan=\"1\" width=\"65\">执行结果</th></tr>';\r\ndef table_end = '</tbody></table>';\r\ndef steps = run.get('steps');\r\ndef text = '<p><strong>前置条件：</strong></p>' + (run.get('precondition') ?: '') + '<p><strong>执行步骤：</strong></p>' + table_start;\r\n\r\n\r\ndef content = '<td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">';\r\ndef group = '<td colSpan=\"4\" rowSpan=\"1\" width=\"auto\">';\r\n\r\ndef order = 1;\r\ndef group_order = 0.1;\r\nsteps.each { item ->\r\n    println item;\r\n    if(item.get('is_group') == 0){\r\n        text += '<tr>' + content + order + '</td>';\r\n        text += content;\r\n        text += (item.get('description') ?: '') + '</td>';\r\n        text += content;\r\n        text += (item.get('expected_value') ?: '') + '</td>';\r\n        text += content;\r\n        text += (item.get('actual_value') ?: '') + '</td>';\r\n        text += content;\r\n        text += (run_status.getText(item.get('status1'))) ?: '' + '</td>' + '</tr>';\r\n    }else if(item.get('is_group') == 1){\r\n        text += '<tr>' + content + order + '</td>';\r\n        text += group;\r\n        text += (item.get('name') ?: '') + '</td>' + '</tr>';\r\n        group_order = 0.1;\r\n    }else{\r\n        group_order += order;\r\n        text += '<tr>' + content + group_order + '</td>';\r\n        text += content;\r\n        text += (item.get('description') ?: '') + '</td>';\r\n        text += content;\r\n        text += (item.get('expected_value') ?: '') + '</td>';\r\n        text += content;\r\n        text += (item.get('actual_value') ?: '') + '</td>';\r\n        text += content;\r\n        text += (run_status.getText(item.get('status1'))) ?: '' + '</td>' + '</tr>';\r\n        group_order += 0.1;\r\n    }\r\n    order++;\r\n}\r\ntext += table_end + (_default.get('description') ?: '');\r\n\r\n_default.set('description', text);",
     "codeName" : "RAWSFCODE2",
@@ -237,32 +237,6 @@
     } ],
     "topPos" : 650
   }, {
-    "codeName" : "BINDPARAM1",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "attachments"
-    },
-    "leftPos" : 160,
-    "logicNodeType" : "BINDPARAM",
-    "name" : "绑定参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "LOOPSUBCALL1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "BINDPARAM1"
-      }
-    } ],
-    "srcFieldName" : "attachments",
-    "getSrcPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "test_case"
-    },
-    "topPos" : 746
-  }, {
     "codeName" : "DEBUGPARAM2",
     "getDstPSDELogicParam" : {
       "modelref" : true,
@@ -271,6 +245,37 @@
     "leftPos" : -44,
     "logicNodeType" : "DEBUGPARAM",
     "name" : "调试逻辑参数",
+    "topPos" : 746
+  }, {
+    "codeName" : "PREPAREPARAM5",
+    "leftPos" : 160,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM5"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "attachments"
+      },
+      "name" : "test_case[ATTACHMENTS] ==> attachments",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ATTACHMENTS",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "test_case"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
     "topPos" : 746
   }, {
     "codeName" : "LOOPSUBCALL1",
@@ -284,7 +289,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM3"
+        "id" : "END1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -313,6 +318,17 @@
     "leftPos" : 377,
     "logicNodeType" : "PREPAREPARAM",
     "name" : "准备参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
     "getPSDELogicNodeParams" : [ {
       "dstFieldName" : "owner_id",
       "getDstPSDELogicParam" : {
@@ -343,57 +359,13 @@
     } ],
     "topPos" : 849
   }, {
-    "codeName" : "DEBUGPARAM3",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "attachments"
-    },
-    "leftPos" : 160,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "调试逻辑参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM2"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM3"
-      }
-    } ],
-    "topPos" : 987
-  }, {
-    "codeName" : "PREPAREPARAM2",
-    "leftPos" : 160,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "绑定用例附件",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "END1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM2"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "ATTACHMENTS",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "name" : "attachments ==> Default[ATTACHMENTS]",
-      "paramAction" : "SETPARAMVALUE",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "attachments"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    } ],
-    "topPos" : 1079
+    "code" : "def _default = logic.param('Default').getReal();\r\ndef attachment_temp = logic.param('attachment_temp').getReal();\r\n\r\n_default.get(attachments).add(attachment_temp)",
+    "codeName" : "RAWSFCODE3",
+    "codeType" : "Groovy",
+    "leftPos" : 551,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "添加附件",
+    "topPos" : 849
   }, {
     "codeName" : "END1",
     "leftPos" : 200,
@@ -404,7 +376,7 @@
       "id" : "Default"
     },
     "returnType" : "LOGICPARAM",
-    "topPos" : 1190
+    "topPos" : 1030
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",
