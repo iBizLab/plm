@@ -6,6 +6,8 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="runcreate_resultdefault" type="entity"/>
+                                <tns:metaData express="new HashMap()" name="runcreate_resultattachment_temp" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="runcreate_resultattachments" type="refentity"/>
                                 <tns:metaData express="new HashMap()" name="runcreate_resultid" type="refentity"/>
                                 <tns:metaData express="new HashMap()" name="runcreate_resultids" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="runcreate_resultrelation" type="refentity"/>
@@ -50,19 +52,24 @@
                         <endEvent id="end2_end" name="end"/>
                         <sequenceFlow id="end2_end_line" sourceRef="end2" targetRef="end2_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction7" id="deaction7" implementation="http://www.jboss.org/drools/rule" name="更新执行用例"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="执行用例数据准备"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction8" id="deaction8" implementation="http://www.jboss.org/drools/rule" name="反向关联"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction5" id="deaction5" implementation="http://www.jboss.org/drools/rule" name="正向关联"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam12" id="prepareparam12" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="执行用例数据准备"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam9" id="prepareparam9" implementation="http://www.jboss.org/drools/rule" name="准备关联数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction9" id="deaction9" implementation="http://www.jboss.org/drools/rule" name="获取测试用例"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction4" id="deaction4" implementation="http://www.jboss.org/drools/rule" name="创建工作项"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdebugparam3" id="debugparam3" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam10" id="prepareparam10" implementation="http://www.jboss.org/drools/rule" name="绑定用例附件"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="获取测试计划"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="拼接描述字段"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultloopsubcall2" id="loopsubcall2" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="工作项类型数据集"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam11" id="prepareparam11" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <endEvent id="prepareparam11_end" name="end"/>
+                        <sequenceFlow id="prepareparam11_end_line" sourceRef="prepareparam11" targetRef="prepareparam11_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam8" id="prepareparam8" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <endEvent id="prepareparam8_end" name="end"/>
                         <sequenceFlow id="prepareparam8_end_line" sourceRef="prepareparam8" targetRef="prepareparam8_end"/>
@@ -73,6 +80,8 @@
                     <sequenceFlow id="gateway-debugparam2_prepareparam3" sourceRef="gateway-debugparam2" targetRef="prepareparam3">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $runcreate_resultdefault:run();
+                                            $runcreate_resultattachment_temp:Map();
+                                            $runcreate_resultattachments:Map();
                                             $runcreate_resultid:Map();
                                             $runcreate_resultids:Map();
                                             $runcreate_resultrelation:relation();
@@ -95,6 +104,8 @@
                     <sequenceFlow id="gateway-debugparam2_prepareparam5" sourceRef="gateway-debugparam2" targetRef="prepareparam5">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $runcreate_resultdefault:run();
+                                            $runcreate_resultattachment_temp:Map();
+                                            $runcreate_resultattachments:Map();
                                             $runcreate_resultid:Map();
                                             $runcreate_resultids:Map();
                                             $runcreate_resultrelation:relation();
@@ -117,6 +128,8 @@
                     <sequenceFlow id="gateway-prepareparam5_deaction6" sourceRef="gateway-prepareparam5" targetRef="deaction6">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $runcreate_resultdefault:run();
+                                            $runcreate_resultattachment_temp:Map();
+                                            $runcreate_resultattachments:Map();
                                             $runcreate_resultid:Map();
                                             $runcreate_resultids:Map();
                                             $runcreate_resultrelation:relation();
@@ -139,6 +152,8 @@
                     <sequenceFlow id="gateway-prepareparam5_prepareparam6" sourceRef="gateway-prepareparam5" targetRef="prepareparam6">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $runcreate_resultdefault:run();
+                                            $runcreate_resultattachment_temp:Map();
+                                            $runcreate_resultattachments:Map();
                                             $runcreate_resultid:Map();
                                             $runcreate_resultids:Map();
                                             $runcreate_resultrelation:relation();
@@ -163,6 +178,8 @@
                     <sequenceFlow id="gateway-deaction7_end2" sourceRef="gateway-deaction7" targetRef="end2">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $runcreate_resultdefault:run();
+                                            $runcreate_resultattachment_temp:Map();
+                                            $runcreate_resultattachments:Map();
                                             $runcreate_resultid:Map();
                                             $runcreate_resultids:Map();
                                             $runcreate_resultrelation:relation();
@@ -185,6 +202,8 @@
                     <sequenceFlow id="gateway-deaction7_prepareparam4" sourceRef="gateway-deaction7" targetRef="prepareparam4">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $runcreate_resultdefault:run();
+                                            $runcreate_resultattachment_temp:Map();
+                                            $runcreate_resultattachments:Map();
                                             $runcreate_resultid:Map();
                                             $runcreate_resultids:Map();
                                             $runcreate_resultrelation:relation();
@@ -204,25 +223,29 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam6_deaction7" sourceRef="prepareparam6" targetRef="deaction7">
-                    </sequenceFlow>
                     <sequenceFlow id="deaction8_end2" sourceRef="deaction8" targetRef="end2">
                     </sequenceFlow>
                     <sequenceFlow id="deaction5_deaction8" sourceRef="deaction5" targetRef="deaction8">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam4_deaction9" sourceRef="prepareparam4" targetRef="deaction9">
                     </sequenceFlow>
+                    <sequenceFlow id="prepareparam12_deaction3" sourceRef="prepareparam12" targetRef="deaction3">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam6_deaction7" sourceRef="prepareparam6" targetRef="deaction7">
+                    </sequenceFlow>
                     <sequenceFlow id="prepareparam9_deaction5" sourceRef="prepareparam9" targetRef="deaction5">
                     </sequenceFlow>
-                    <sequenceFlow id="deaction9_debugparam3" sourceRef="deaction9" targetRef="debugparam3">
+                    <sequenceFlow id="deaction9_prepareparam10" sourceRef="deaction9" targetRef="prepareparam10">
                     </sequenceFlow>
                     <sequenceFlow id="deaction4_prepareparam9" sourceRef="deaction4" targetRef="prepareparam9">
                     </sequenceFlow>
-                    <sequenceFlow id="debugparam3_deaction3" sourceRef="debugparam3" targetRef="deaction3">
+                    <sequenceFlow id="prepareparam10_loopsubcall2" sourceRef="prepareparam10" targetRef="loopsubcall2">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-deaction3_prepareparam7" sourceRef="gateway-deaction3" targetRef="prepareparam7">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $runcreate_resultdefault:run();
+                                            $runcreate_resultattachment_temp:Map();
+                                            $runcreate_resultattachments:Map();
                                             $runcreate_resultid:Map();
                                             $runcreate_resultids:Map();
                                             $runcreate_resultrelation:relation();
@@ -245,6 +268,8 @@
                     <sequenceFlow id="gateway-deaction3_end2" sourceRef="gateway-deaction3" targetRef="end2">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $runcreate_resultdefault:run();
+                                            $runcreate_resultattachment_temp:Map();
+                                            $runcreate_resultattachments:Map();
                                             $runcreate_resultid:Map();
                                             $runcreate_resultids:Map();
                                             $runcreate_resultrelation:relation();
@@ -265,6 +290,10 @@
                             </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode1_deaction4" sourceRef="rawsfcode1" targetRef="deaction4">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall2_prepareparam11" sourceRef="loopsubcall2" targetRef="prepareparam11">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall2_prepareparam12" sourceRef="loopsubcall2" targetRef="prepareparam12">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam7_dedataset1" sourceRef="prepareparam7" targetRef="dedataset1">
                     </sequenceFlow>
