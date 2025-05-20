@@ -198,6 +198,9 @@
       "name" : "OWNER_TYPE",
       "codeName" : "owner_type"
     }, {
+      "name" : "VAL",
+      "codeName" : "val"
+    }, {
       "name" : "OWNER_SUBTYPE",
       "codeName" : "owner_subtype"
     }, {
@@ -483,6 +486,84 @@
     },
     "predefinedType" : "PARENTTYPE",
     "serviceCodeName" : "owner_type",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "VAL",
+      "dBType" : "MYSQL5",
+      "name" : "VAL",
+      "queryCodeExp" : "t1.`VAL`",
+      "standardColumnName" : "`VAL`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[VAL][值]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[VAL][值]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[VAL][值]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[VAL][值]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "VAL",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "val",
+    "dEFType" : 1,
+    "dataType" : "TEXT",
+    "defaultValueType" : "UNIQUEID",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "值",
+    "name" : "VAL",
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "VAL"
+    },
+    "serviceCodeName" : "val",
     "stdDataType" : 25,
     "stringLength" : 100,
     "valueFormat" : "%1$s"
@@ -1123,6 +1204,18 @@
       "getPSDEField" : {
         "name" : "OWNER_TYPE",
         "codeName" : "owner_type"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
+      "defaultValueType" : "UNIQUEID",
+      "logicName" : "值",
+      "name" : "val",
+      "getPSDEField" : {
+        "name" : "VAL",
+        "codeName" : "val"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
