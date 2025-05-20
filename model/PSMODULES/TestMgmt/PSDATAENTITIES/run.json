@@ -8119,6 +8119,67 @@
       "topPos" : 60,
       "parallelOutput" : true
     }, {
+      "codeName" : "DEBUGPARAM2",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : -120,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM3"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNULL",
+            "dstFieldName" : "EXECUTOR_ID",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[EXECUTOR_ID] 值为空(Nil)"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM2"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM5"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "EXECUTOR_ID",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[EXECUTOR_ID] 值不为空(NotNil)"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM2"
+        }
+      } ],
+      "topPos" : 68
+    }, {
       "codeName" : "PREPAREPARAM3",
       "leftPos" : 150,
       "logicNodeType" : "PREPAREPARAM",
@@ -8544,67 +8605,6 @@
         "getSrcPSDELogicNode" : {
           "modelref" : true,
           "id" : "DEACTION7"
-        }
-      } ],
-      "topPos" : 68
-    }, {
-      "codeName" : "DEBUGPARAM2",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : -120,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM3"
-        },
-        "name" : "连接名称",
-        "getPSDELogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "name" : "连接条件组",
-          "getPSDELogicLinkConds" : [ {
-            "condOP" : "ISNULL",
-            "dstFieldName" : "EXECUTOR_ID",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[EXECUTOR_ID] 值为空(Nil)"
-          } ]
-        },
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM2"
-        }
-      }, {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM5"
-        },
-        "name" : "连接名称",
-        "getPSDELogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "name" : "连接条件组",
-          "getPSDELogicLinkConds" : [ {
-            "condOP" : "ISNOTNULL",
-            "dstFieldName" : "EXECUTOR_ID",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[EXECUTOR_ID] 值不为空(NotNil)"
-          } ]
-        },
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM2"
         }
       } ],
       "topPos" : 68
@@ -9160,7 +9160,7 @@
       },
       "topPos" : 580
     }, {
-      "code" : "def _default = logic.param('Default').getReal();\r\ndef work_item = logic.param('work_item').getReal();\r\n\r\ndef table_start = '<table style=\"width: auto;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"56.32\">#</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">步骤描述</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">预期结果</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">实际结果</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">执行结果</th></tr>';\r\ndef table_end = '</tbody></table>';\r\ndef steps = _default.steps;\r\ndef text = '<p><strong>前置条件：</strong></p>' + _default.precondition + '<p><strong>执行步骤：</strong></p>' + table_start;\r\n\r\n\r\ndef content = '<td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">';\r\ndef group = '<td colSpan=\"4\" rowSpan=\"1\" width=\"auto\">';\r\n\r\nsteps.each { item ->\r\n    println item;\r\n    def order = 1;\r\n    if(item.is_group == 0){\r\n        text += '<tr>' + content + order + '</td>';\r\n        text += content;\r\n        text += (item?.description ?: '') + '</td>';\r\n        text += content;\r\n        text += (item?.expected_value ?: '') + '</td>'\r\n        text += content;\r\n        text += (item?.actual_value ?: '') + '</td>';\r\n        text += content;\r\n        text += (item?.status1 ?: '') + '</td>' + '</tr>';\r\n    }else{\r\n        text += '<tr>' + content + order + '</td>';\r\n        text += group;\r\n        text += (item?.name ?: '') + '</td>' + '</tr>';\r\n    }\r\n    order++;\r\n}\r\ntext +=table_end;\r\n\r\nwork_item.set('description', text);",
+      "code" : "def _default = logic.param('Default').getReal();\r\ndef work_item = logic.param('work_item').getReal();\r\n\r\ndef table_start = '<table style=\"width: auto;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"56.32\">#</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">步骤描述</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">预期结果</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">实际结果</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">执行结果</th></tr>';\r\ndef table_end = '</tbody></table>';\r\ndef steps = _default.steps;\r\ndef text = '<p><strong>前置条件：</strong></p>' + _default.precondition + '<p><strong>执行步骤：</strong></p>' + table_start;\r\n\r\n\r\ndef content = '<td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">';\r\ndef group = '<td colSpan=\"4\" rowSpan=\"1\" width=\"auto\">';\r\n\r\nsteps.each { item ->\r\n    println item;\r\n    def order = 1;\r\n    if(item.is_group == 0){\r\n        text += '<tr>' + content + order + '</td>';\r\n        text += content;\r\n        text += (item?.description ?: '') + '</td>';\r\n        text += content;\r\n        text += (item?.expected_value ?: '') + '</td>'\r\n        text += content;\r\n        text += (item?.actual_value ?: '') + '</td>';\r\n        text += content;\r\n        text += (item?.status1.toString() ?: '') + '</td>' + '</tr>';\r\n    }else{\r\n        text += '<tr>' + content + order + '</td>';\r\n        text += group;\r\n        text += (item?.name ?: '') + '</td>' + '</tr>';\r\n    }\r\n    order++;\r\n}\r\ntext +=table_end;\r\n\r\nwork_item.set('description', text);",
       "codeName" : "RAWSFCODE1",
       "codeType" : "Groovy",
       "leftPos" : 1630,
