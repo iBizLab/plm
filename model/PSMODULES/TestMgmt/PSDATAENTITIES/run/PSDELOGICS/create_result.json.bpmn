@@ -8,22 +8,35 @@
                                 <tns:metaData express="" name="runcreate_resultdefault" type="entity"/>
                                 <tns:metaData express="new HashMap()" name="runcreate_resultid" type="refentity"/>
                                 <tns:metaData express="new HashMap()" name="runcreate_resultids" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="runcreate_resultrelation" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="runcreate_resultrelation2" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.run_history()" name="runcreate_resultrun_history" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.run_history()" name="runcreate_resultsteps" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.run()" name="runcreate_resulttemp_obj" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.test_plan()" name="runcreate_resulttest_plan" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="runcreate_resultwork_item" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item_type()" name="runcreate_resultwork_item_type" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="runcreate_resultwork_item_type_filter" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="runcreate_resultwork_item_type_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item_type()" name="runcreate_resultwork_item_type_temp" type="refentity"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Irun_historyService))" name="run_historyservice" type="service"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IrunService))" name="runservice" type="service"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Itest_planService))" name="test_planservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_item_typeService))" name="work_item_typeservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="work_itemservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IrelationService))" name="relationservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IrunService))" name="iBzSysRunDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="runcreate_resultdefault" type="cn.ibizlab.plm.core.testmgmt.domain.run" />
+                            <tns:global identifier="runcreate_resultrelation" type="cn.ibizlab.plm.core.base.domain.relation" />
+                            <tns:global identifier="runcreate_resultrelation2" type="cn.ibizlab.plm.core.base.domain.relation" />
                             <tns:global identifier="runcreate_resultrun_history" type="cn.ibizlab.plm.core.testmgmt.domain.run_history" />
                             <tns:global identifier="runcreate_resultsteps" type="cn.ibizlab.plm.core.testmgmt.domain.run_history" />
                             <tns:global identifier="runcreate_resulttemp_obj" type="cn.ibizlab.plm.core.testmgmt.domain.run" />
                             <tns:global identifier="runcreate_resulttest_plan" type="cn.ibizlab.plm.core.testmgmt.domain.test_plan" />
                             <tns:global identifier="runcreate_resultwork_item" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="runcreate_resultwork_item_type" type="cn.ibizlab.plm.core.projmgmt.domain.work_item_type" />
+                            <tns:global identifier="runcreate_resultwork_item_type_temp" type="cn.ibizlab.plm.core.projmgmt.domain.work_item_type" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置执行人相关信息"/>
@@ -31,54 +44,31 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultend3" id="end3" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end3_end" name="end"/>
                         <sequenceFlow id="end3_end_line" sourceRef="end3" targetRef="end3_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="执行结果数据准备"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="执行用例数据准备"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction7" id="deaction7" implementation="http://www.jboss.org/drools/rule" name="更新执行用例"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="执行结果数据准备"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="执行用例数据准备"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="获取测试计划"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="工作项类型数据集"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam8" id="prepareparam8" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <endEvent id="prepareparam8_end" name="end"/>
+                        <sequenceFlow id="prepareparam8_end_line" sourceRef="prepareparam8" targetRef="prepareparam8_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="拼接描述字段"/>
-                        <endEvent id="rawsfcode1_end" name="end"/>
-                        <sequenceFlow id="rawsfcode1_end_line" sourceRef="rawsfcode1" targetRef="rawsfcode1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction4" id="deaction4" implementation="http://www.jboss.org/drools/rule" name="创建工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam9" id="prepareparam9" implementation="http://www.jboss.org/drools/rule" name="准备关联数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction5" id="deaction5" implementation="http://www.jboss.org/drools/rule" name="正向关联"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction8" id="deaction8" implementation="http://www.jboss.org/drools/rule" name="反向关联"/>
+                        <endEvent id="deaction8_end" name="end"/>
+                        <sequenceFlow id="deaction8_end_line" sourceRef="deaction8" targetRef="deaction8_end"/>
                     <sequenceFlow id="begin_debugparam2" sourceRef="begin" targetRef="debugparam2">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam3_prepareparam5" sourceRef="prepareparam3" targetRef="prepareparam5">
                     </sequenceFlow>
                     <sequenceFlow id="deaction6_prepareparam6" sourceRef="deaction6" targetRef="prepareparam6">
-                    </sequenceFlow>
-                    <sequenceFlow id="gateway-prepareparam5_deaction6" sourceRef="gateway-prepareparam5" targetRef="deaction6">
-                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
-                                            $runcreate_resultdefault:run();
-                                            $runcreate_resultid:Map();
-                                            $runcreate_resultids:Map();
-                                            $runcreate_resultrun_history:run_history();
-                                            $runcreate_resultsteps:run_history();
-                                            $runcreate_resulttemp_obj:run();
-                                            $runcreate_resulttest_plan:test_plan();
-                                            $runcreate_resultwork_item:work_item();
-                                    eval($runcreate_resultdefault==runcreate_resultdefault && $runcreate_resultrun_history==runcreate_resultrun_history && $runcreate_resultsteps==runcreate_resultsteps && $runcreate_resulttemp_obj==runcreate_resulttemp_obj && $runcreate_resulttest_plan==runcreate_resulttest_plan && $runcreate_resultwork_item==runcreate_resultwork_item);
-                                eval((RuleUtils.test($runcreate_resultdefault.get("status"),"ISNOTNULL","")))
-                                ]]>
-                            </conditionExpression>
-                    </sequenceFlow>
-                    <sequenceFlow id="gateway-prepareparam5_prepareparam6" sourceRef="gateway-prepareparam5" targetRef="prepareparam6">
-                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
-                                            $runcreate_resultdefault:run();
-                                            $runcreate_resultid:Map();
-                                            $runcreate_resultids:Map();
-                                            $runcreate_resultrun_history:run_history();
-                                            $runcreate_resultsteps:run_history();
-                                            $runcreate_resulttemp_obj:run();
-                                            $runcreate_resulttest_plan:test_plan();
-                                            $runcreate_resultwork_item:work_item();
-                                    eval($runcreate_resultdefault==runcreate_resultdefault && $runcreate_resultrun_history==runcreate_resultrun_history && $runcreate_resultsteps==runcreate_resultsteps && $runcreate_resulttemp_obj==runcreate_resulttemp_obj && $runcreate_resulttest_plan==runcreate_resulttest_plan && $runcreate_resultwork_item==runcreate_resultwork_item);
-                                eval((RuleUtils.test($runcreate_resultdefault.get("status"),"ISNULL","")))
-                                ]]>
-                            </conditionExpression>
-                    </sequenceFlow>
-                    <sequenceFlow id="prepareparam6_debugparam1" sourceRef="prepareparam6" targetRef="debugparam1">
                     </sequenceFlow>
                     <sequenceFlow id="deaction7_end3" sourceRef="deaction7" targetRef="end3">
                     </sequenceFlow>
@@ -87,12 +77,18 @@
                                             $runcreate_resultdefault:run();
                                             $runcreate_resultid:Map();
                                             $runcreate_resultids:Map();
+                                            $runcreate_resultrelation:relation();
+                                            $runcreate_resultrelation2:relation();
                                             $runcreate_resultrun_history:run_history();
                                             $runcreate_resultsteps:run_history();
                                             $runcreate_resulttemp_obj:run();
                                             $runcreate_resulttest_plan:test_plan();
                                             $runcreate_resultwork_item:work_item();
-                                    eval($runcreate_resultdefault==runcreate_resultdefault && $runcreate_resultrun_history==runcreate_resultrun_history && $runcreate_resultsteps==runcreate_resultsteps && $runcreate_resulttemp_obj==runcreate_resulttemp_obj && $runcreate_resulttest_plan==runcreate_resulttest_plan && $runcreate_resultwork_item==runcreate_resultwork_item);
+                                            $runcreate_resultwork_item_type:work_item_type();
+                                            $runcreate_resultwork_item_type_filter:Map();
+                                            $runcreate_resultwork_item_type_page:Map();
+                                            $runcreate_resultwork_item_type_temp:work_item_type();
+                                    eval($runcreate_resultdefault==runcreate_resultdefault && $runcreate_resultrelation==runcreate_resultrelation && $runcreate_resultrelation2==runcreate_resultrelation2 && $runcreate_resultrun_history==runcreate_resultrun_history && $runcreate_resultsteps==runcreate_resultsteps && $runcreate_resulttemp_obj==runcreate_resulttemp_obj && $runcreate_resulttest_plan==runcreate_resulttest_plan && $runcreate_resultwork_item==runcreate_resultwork_item && $runcreate_resultwork_item_type==runcreate_resultwork_item_type && $runcreate_resultwork_item_type_temp==runcreate_resultwork_item_type_temp);
                                 eval((RuleUtils.test($runcreate_resultdefault.get("executorId"),"ISNULL","")))
                                 ]]>
                             </conditionExpression>
@@ -102,12 +98,18 @@
                                             $runcreate_resultdefault:run();
                                             $runcreate_resultid:Map();
                                             $runcreate_resultids:Map();
+                                            $runcreate_resultrelation:relation();
+                                            $runcreate_resultrelation2:relation();
                                             $runcreate_resultrun_history:run_history();
                                             $runcreate_resultsteps:run_history();
                                             $runcreate_resulttemp_obj:run();
                                             $runcreate_resulttest_plan:test_plan();
                                             $runcreate_resultwork_item:work_item();
-                                    eval($runcreate_resultdefault==runcreate_resultdefault && $runcreate_resultrun_history==runcreate_resultrun_history && $runcreate_resultsteps==runcreate_resultsteps && $runcreate_resulttemp_obj==runcreate_resulttemp_obj && $runcreate_resulttest_plan==runcreate_resulttest_plan && $runcreate_resultwork_item==runcreate_resultwork_item);
+                                            $runcreate_resultwork_item_type:work_item_type();
+                                            $runcreate_resultwork_item_type_filter:Map();
+                                            $runcreate_resultwork_item_type_page:Map();
+                                            $runcreate_resultwork_item_type_temp:work_item_type();
+                                    eval($runcreate_resultdefault==runcreate_resultdefault && $runcreate_resultrelation==runcreate_resultrelation && $runcreate_resultrelation2==runcreate_resultrelation2 && $runcreate_resultrun_history==runcreate_resultrun_history && $runcreate_resultsteps==runcreate_resultsteps && $runcreate_resulttemp_obj==runcreate_resulttemp_obj && $runcreate_resulttest_plan==runcreate_resulttest_plan && $runcreate_resultwork_item==runcreate_resultwork_item && $runcreate_resultwork_item_type==runcreate_resultwork_item_type && $runcreate_resultwork_item_type_temp==runcreate_resultwork_item_type_temp);
                                 eval((RuleUtils.test($runcreate_resultdefault.get("executorId"),"ISNOTNULL","")))
                                 ]]>
                             </conditionExpression>
@@ -117,15 +119,65 @@
                                             $runcreate_resultdefault:run();
                                             $runcreate_resultid:Map();
                                             $runcreate_resultids:Map();
+                                            $runcreate_resultrelation:relation();
+                                            $runcreate_resultrelation2:relation();
                                             $runcreate_resultrun_history:run_history();
                                             $runcreate_resultsteps:run_history();
                                             $runcreate_resulttemp_obj:run();
                                             $runcreate_resulttest_plan:test_plan();
                                             $runcreate_resultwork_item:work_item();
-                                    eval($runcreate_resultdefault==runcreate_resultdefault && $runcreate_resultrun_history==runcreate_resultrun_history && $runcreate_resultsteps==runcreate_resultsteps && $runcreate_resulttemp_obj==runcreate_resulttemp_obj && $runcreate_resulttest_plan==runcreate_resulttest_plan && $runcreate_resultwork_item==runcreate_resultwork_item);
+                                            $runcreate_resultwork_item_type:work_item_type();
+                                            $runcreate_resultwork_item_type_filter:Map();
+                                            $runcreate_resultwork_item_type_page:Map();
+                                            $runcreate_resultwork_item_type_temp:work_item_type();
+                                    eval($runcreate_resultdefault==runcreate_resultdefault && $runcreate_resultrelation==runcreate_resultrelation && $runcreate_resultrelation2==runcreate_resultrelation2 && $runcreate_resultrun_history==runcreate_resultrun_history && $runcreate_resultsteps==runcreate_resultsteps && $runcreate_resulttemp_obj==runcreate_resulttemp_obj && $runcreate_resulttest_plan==runcreate_resulttest_plan && $runcreate_resultwork_item==runcreate_resultwork_item && $runcreate_resultwork_item_type==runcreate_resultwork_item_type && $runcreate_resultwork_item_type_temp==runcreate_resultwork_item_type_temp);
                                 eval((RuleUtils.test($runcreate_resultdefault.get("status"),"EQ","30")))
                                 ]]>
                             </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam5_deaction6" sourceRef="gateway-prepareparam5" targetRef="deaction6">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $runcreate_resultdefault:run();
+                                            $runcreate_resultid:Map();
+                                            $runcreate_resultids:Map();
+                                            $runcreate_resultrelation:relation();
+                                            $runcreate_resultrelation2:relation();
+                                            $runcreate_resultrun_history:run_history();
+                                            $runcreate_resultsteps:run_history();
+                                            $runcreate_resulttemp_obj:run();
+                                            $runcreate_resulttest_plan:test_plan();
+                                            $runcreate_resultwork_item:work_item();
+                                            $runcreate_resultwork_item_type:work_item_type();
+                                            $runcreate_resultwork_item_type_filter:Map();
+                                            $runcreate_resultwork_item_type_page:Map();
+                                            $runcreate_resultwork_item_type_temp:work_item_type();
+                                    eval($runcreate_resultdefault==runcreate_resultdefault && $runcreate_resultrelation==runcreate_resultrelation && $runcreate_resultrelation2==runcreate_resultrelation2 && $runcreate_resultrun_history==runcreate_resultrun_history && $runcreate_resultsteps==runcreate_resultsteps && $runcreate_resulttemp_obj==runcreate_resulttemp_obj && $runcreate_resulttest_plan==runcreate_resulttest_plan && $runcreate_resultwork_item==runcreate_resultwork_item && $runcreate_resultwork_item_type==runcreate_resultwork_item_type && $runcreate_resultwork_item_type_temp==runcreate_resultwork_item_type_temp);
+                                eval((RuleUtils.test($runcreate_resultdefault.get("status"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam5_prepareparam6" sourceRef="gateway-prepareparam5" targetRef="prepareparam6">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $runcreate_resultdefault:run();
+                                            $runcreate_resultid:Map();
+                                            $runcreate_resultids:Map();
+                                            $runcreate_resultrelation:relation();
+                                            $runcreate_resultrelation2:relation();
+                                            $runcreate_resultrun_history:run_history();
+                                            $runcreate_resultsteps:run_history();
+                                            $runcreate_resulttemp_obj:run();
+                                            $runcreate_resulttest_plan:test_plan();
+                                            $runcreate_resultwork_item:work_item();
+                                            $runcreate_resultwork_item_type:work_item_type();
+                                            $runcreate_resultwork_item_type_filter:Map();
+                                            $runcreate_resultwork_item_type_page:Map();
+                                            $runcreate_resultwork_item_type_temp:work_item_type();
+                                    eval($runcreate_resultdefault==runcreate_resultdefault && $runcreate_resultrelation==runcreate_resultrelation && $runcreate_resultrelation2==runcreate_resultrelation2 && $runcreate_resultrun_history==runcreate_resultrun_history && $runcreate_resultsteps==runcreate_resultsteps && $runcreate_resulttemp_obj==runcreate_resulttemp_obj && $runcreate_resulttest_plan==runcreate_resulttest_plan && $runcreate_resultwork_item==runcreate_resultwork_item && $runcreate_resultwork_item_type==runcreate_resultwork_item_type && $runcreate_resultwork_item_type_temp==runcreate_resultwork_item_type_temp);
+                                eval((RuleUtils.test($runcreate_resultdefault.get("status"),"ISNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam6_debugparam1" sourceRef="prepareparam6" targetRef="debugparam1">
                     </sequenceFlow>
                     <sequenceFlow id="debugparam1_deaction7" sourceRef="debugparam1" targetRef="deaction7">
                     </sequenceFlow>
@@ -133,15 +185,29 @@
                     </sequenceFlow>
                     <sequenceFlow id="deaction3_prepareparam7" sourceRef="deaction3" targetRef="prepareparam7">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam7_rawsfcode1" sourceRef="prepareparam7" targetRef="rawsfcode1">
+                    <sequenceFlow id="prepareparam7_dedataset1" sourceRef="prepareparam7" targetRef="dedataset1">
                     </sequenceFlow>
-                            <exclusiveGateway id="gateway-prepareparam5" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam5_end_line"></exclusiveGateway>
-                            <sequenceFlow id="prepareparam5_gateway-prepareparam5_gatewayline" sourceRef="prepareparam5" targetRef="gateway-prepareparam5"></sequenceFlow>
-                            <sequenceFlow id="gateway-prepareparam5_end_line" sourceRef="gateway-prepareparam5" targetRef="gateway-prepareparam5_end"/>
-                            <endEvent id="gateway-prepareparam5_end" name="end"/>
+                    <sequenceFlow id="dedataset1_loopsubcall1" sourceRef="dedataset1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_rawsfcode1" sourceRef="loopsubcall1" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_prepareparam8" sourceRef="loopsubcall1" targetRef="prepareparam8">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_deaction4" sourceRef="rawsfcode1" targetRef="deaction4">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction4_prepareparam9" sourceRef="deaction4" targetRef="prepareparam9">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam9_deaction5" sourceRef="prepareparam9" targetRef="deaction5">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction5_deaction8" sourceRef="deaction5" targetRef="deaction8">
+                    </sequenceFlow>
                             <exclusiveGateway id="gateway-debugparam2" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam2_end_line"></exclusiveGateway>
                             <sequenceFlow id="debugparam2_gateway-debugparam2_gatewayline" sourceRef="debugparam2" targetRef="gateway-debugparam2"></sequenceFlow>
                             <sequenceFlow id="gateway-debugparam2_end_line" sourceRef="gateway-debugparam2" targetRef="gateway-debugparam2_end"/>
                             <endEvent id="gateway-debugparam2_end" name="end"/>
+                            <exclusiveGateway id="gateway-prepareparam5" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam5_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam5_gateway-prepareparam5_gatewayline" sourceRef="prepareparam5" targetRef="gateway-prepareparam5"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam5_end_line" sourceRef="gateway-prepareparam5" targetRef="gateway-prepareparam5_end"/>
+                            <endEvent id="gateway-prepareparam5_end" name="end"/>
         </process>
     </definitions>
