@@ -2190,6 +2190,7 @@
                                       "reloadData" : true,
                                       "id" : "top@comment"
                                     },
+                                    "visibleScriptCode" : "data.is_top!=1",
                                     "addSeparator" : false,
                                     "showCaption" : true,
                                     "showIcon" : true
@@ -2220,6 +2221,7 @@
                                       "reloadData" : true,
                                       "id" : "no_top@comment"
                                     },
+                                    "visibleScriptCode" : "data.is_top==1",
                                     "addSeparator" : false,
                                     "showCaption" : true,
                                     "showIcon" : true
@@ -2532,11 +2534,6 @@
                         "modeltype" : "PSSYSVIEWPANEL"
                       },
                       "logicName" : "list",
-                      "minorSortDir" : "ASC",
-                      "getMinorSortPSAppDEField" : {
-                        "name" : "CREATE_TIME",
-                        "codeName" : "create_time"
-                      },
                       "getPSAppDataEntity" : {
                         "modelref" : true,
                         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
@@ -2617,14 +2614,24 @@
                       },
                       "getPSDEListDataItems" : [ {
                         "dataType" : 25,
-                        "getFrontPSCodeList" : {
-                          "modelref" : true,
-                          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-                        },
-                        "name" : "create_man",
+                        "name" : "id",
                         "getPSAppDEField" : {
-                          "name" : "CREATE_MAN",
-                          "codeName" : "create_man"
+                          "name" : "ID",
+                          "codeName" : "id"
+                        }
+                      }, {
+                        "dataType" : 21,
+                        "name" : "pcontent",
+                        "getPSAppDEField" : {
+                          "name" : "PCONTENT",
+                          "codeName" : "pcontent"
+                        }
+                      }, {
+                        "dataType" : 25,
+                        "name" : "pid",
+                        "getPSAppDEField" : {
+                          "name" : "PID",
+                          "codeName" : "pid"
                         }
                       }, {
                         "dataType" : 25,
@@ -2639,24 +2646,21 @@
                         }
                       }, {
                         "dataType" : 25,
-                        "name" : "pid",
+                        "getFrontPSCodeList" : {
+                          "modelref" : true,
+                          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+                        },
+                        "name" : "create_man",
                         "getPSAppDEField" : {
-                          "name" : "PID",
-                          "codeName" : "pid"
+                          "name" : "CREATE_MAN",
+                          "codeName" : "create_man"
                         }
                       }, {
                         "dataType" : 21,
-                        "name" : "pcontent",
+                        "name" : "content",
                         "getPSAppDEField" : {
-                          "name" : "PCONTENT",
-                          "codeName" : "pcontent"
-                        }
-                      }, {
-                        "dataType" : 25,
-                        "name" : "id",
-                        "getPSAppDEField" : {
-                          "name" : "ID",
-                          "codeName" : "id"
+                          "name" : "CONTENT",
+                          "codeName" : "content"
                         }
                       }, {
                         "dataType" : 5,
@@ -2665,13 +2669,6 @@
                         "getPSAppDEField" : {
                           "name" : "CREATE_TIME",
                           "codeName" : "create_time"
-                        }
-                      }, {
-                        "dataType" : 21,
-                        "name" : "content",
-                        "getPSAppDEField" : {
-                          "name" : "CONTENT",
-                          "codeName" : "content"
                         }
                       }, {
                         "dataType" : 25,
