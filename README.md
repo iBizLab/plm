@@ -135,6 +135,17 @@ iBizPLM使用了现代化软件架构，前端技术使用Vue，后端技术使�
 | 16	| 2025-04-28	| Modeling建模-进阶篇-实体、属性、关系	| https://www.bilibili.com/video/BV1YQL1zuECa |
 | 17	| 2025-04-29	| Modeling建模-进阶篇-权限1	| https://www.bilibili.com/video/BV1fiGmzjE2c |
 | 18	| 2025-04-30	| Modeling建模-进阶篇-权限2	| https://www.bilibili.com/video/BV1nAG9zPESa |
+| 19	| 2025-05-06	| Modeling建模-进阶篇-树	| https://www.bilibili.com/video/BV1FWVmzJEFo |
+| 20	| 2025-05-07	| Modeling建模-高级篇-甘特图	| https://www.bilibili.com/video/BV1puVazCEoz |
+| 21	| 2025-05-08	| Modeling建模-高级篇-看板	| https://www.bilibili.com/video/BV1u65KznExH |
+| 22	| 2025-05-09	| Modeling建模-高级篇-星标	| https://www.bilibili.com/video/BV1Md55zGEdp |
+| 23	| 2025-05-12	| Modeling建模-高级篇-消息通知	| https://www.bilibili.com/video/BV1VTEEzKEMk |
+| 24	| 2025-05-13	| Modeling建模-高级篇-数据审计	| https://www.bilibili.com/video/BV1tuEAzUETV |
+| 25	| 2025-05-14	| Modeling建模-高级篇-视图消息	| https://www.bilibili.com/video/BV1Z5EBzAETL |
+| 26	| 2025-05-15	| Modeling建模-高级篇-向导	| https://www.bilibili.com/video/BV1XBE2zmEWg |
+| 27	| 2025-05-16	| Modeling建模-进阶篇-递归	| https://www.bilibili.com/video/BV1w1E4zGEx2 |
+| 28	| 2025-05-19	| Modeling建模-进阶篇-计数器	| https://www.bilibili.com/video/BV193ERzuETV |
+| 29	| 2025-05-20	| Modeling建模-进阶篇-值规则	| https://www.bilibili.com/video/BV11QJ8zZEeS |
 
 
 
