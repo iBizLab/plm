@@ -223,33 +223,12 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM3"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE1"
-      }
-    } ],
-    "topPos" : 640
-  }, {
-    "codeName" : "DEBUGPARAM3",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "test_case"
-    },
-    "leftPos" : 458,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "调试逻辑参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
         "id" : "PREPAREPARAM5"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM3"
+        "id" : "RAWSFCODE1"
       }
     } ],
     "topPos" : 640
@@ -263,7 +242,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM2"
+        "id" : "PREPAREPARAM6"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -273,27 +252,6 @@
     } ],
     "topPos" : 650
   }, {
-    "codeName" : "DEBUGPARAM2",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "run"
-    },
-    "leftPos" : -44,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "调试逻辑参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM6"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM2"
-      }
-    } ],
-    "topPos" : 746
-  }, {
     "codeName" : "PREPAREPARAM5",
     "leftPos" : 160,
     "logicNodeType" : "PREPAREPARAM",
@@ -301,7 +259,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM4"
+        "id" : "RAWSFCODE3"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -324,27 +282,6 @@
       "srcValueType" : "SRCDLPARAM"
     } ],
     "topPos" : 746
-  }, {
-    "codeName" : "DEBUGPARAM4",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "attachments"
-    },
-    "leftPos" : 160,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "调试逻辑参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE3"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM4"
-      }
-    } ],
-    "topPos" : 849
   }, {
     "codeName" : "PREPAREPARAM6",
     "leftPos" : -44,
@@ -376,7 +313,7 @@
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
-    "topPos" : 849
+    "topPos" : 746
   }, {
     "codeName" : "DEACTION3",
     "getDstPSDEAction" : {
@@ -409,7 +346,7 @@
       "modelref" : true,
       "id" : "test_case"
     },
-    "topPos" : 955
+    "topPos" : 875
   }, {
     "code" : "def _default = logic.param('Default').getReal();\r\ndef attachments = logic.param('attachments').getReal();\r\n\r\ndef _default_list = _default.get('attachments');\r\ndef list = new ArrayList();\r\n\r\nattachments.each { item ->\r\n    println item;\r\n    item.set('owner_id',null);\r\n    item.set('owner_type',null);\r\n    item.set('id',null);\r\n    list.add(item);\r\n}\r\n\r\n_default_list.each { item ->\r\n    println item;\r\n    list.add(item);\r\n}\r\nprintln list;\r\n_default.set('attachments', list);",
     "codeName" : "RAWSFCODE3",
@@ -420,7 +357,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM5"
+        "id" : "END1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -428,28 +365,7 @@
         "id" : "RAWSFCODE3"
       }
     } ],
-    "topPos" : 955
-  }, {
-    "codeName" : "DEBUGPARAM5",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "leftPos" : 160,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "调试逻辑参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "END1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM5"
-      }
-    } ],
-    "topPos" : 1129
+    "topPos" : 875
   }, {
     "codeName" : "END1",
     "leftPos" : 200,
@@ -460,7 +376,7 @@
       "id" : "Default"
     },
     "returnType" : "LOGICPARAM",
-    "topPos" : 1280
+    "topPos" : 1000
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",
