@@ -8,8 +8,10 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.fill_test_case_info;
                 global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemfill_test_case_infodefault;
                 global java.util.Map work_itemfill_test_case_infoattachment_temp;
                 global java.util.Map work_itemfill_test_case_infoattachments;
+                global cn.ibizlab.plm.core.testmgmt.domain.run work_itemfill_test_case_inforun;
                 global cn.ibizlab.plm.core.testmgmt.domain.test_case work_itemfill_test_case_infotest_case;
                     global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService test_caseservice;
+                    global cn.ibizlab.plm.core.testmgmt.service.IrunService runservice;
         global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService iBzSysWork_itemDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
 
@@ -31,6 +33,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.fill_test_case_info;
                         update(work_itemfill_test_case_infodefault);//更新fact中变量值
                         update(work_itemfill_test_case_infoattachment_temp);//更新fact中变量值
                         update(work_itemfill_test_case_infoattachments);//更新fact中变量值
+                        update(work_itemfill_test_case_inforun);//更新fact中变量值
                         update(work_itemfill_test_case_infotest_case);//更新fact中变量值
             end
 
@@ -43,6 +46,19 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.fill_test_case_info;
                         update(work_itemfill_test_case_infodefault);//更新fact中变量值
                         update(work_itemfill_test_case_infoattachment_temp);//更新fact中变量值
                         update(work_itemfill_test_case_infoattachments);//更新fact中变量值
+                        update(work_itemfill_test_case_inforun);//更新fact中变量值
+                        update(work_itemfill_test_case_infotest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam4"
+            ruleflow-group "work_itemfill_test_case_infoprepareparam4"
+            when
+            then
+                        update(work_itemfill_test_case_infodefault);//更新fact中变量值
+                        update(work_itemfill_test_case_infoattachment_temp);//更新fact中变量值
+                        update(work_itemfill_test_case_infoattachments);//更新fact中变量值
+                        update(work_itemfill_test_case_inforun);//更新fact中变量值
                         update(work_itemfill_test_case_infotest_case);//更新fact中变量值
             end
 
@@ -55,6 +71,20 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.fill_test_case_info;
                         update(work_itemfill_test_case_infodefault);//更新fact中变量值
                         update(work_itemfill_test_case_infoattachment_temp);//更新fact中变量值
                         update(work_itemfill_test_case_infoattachments);//更新fact中变量值
+                        update(work_itemfill_test_case_inforun);//更新fact中变量值
+                        update(work_itemfill_test_case_infotest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体行为]
+            rule "deaction2"
+            ruleflow-group "work_itemfill_test_case_infodeaction2"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(runservice.get(work_itemfill_test_case_inforun.getId()),work_itemfill_test_case_inforun);
+                        update(work_itemfill_test_case_infodefault);//更新fact中变量值
+                        update(work_itemfill_test_case_infoattachment_temp);//更新fact中变量值
+                        update(work_itemfill_test_case_infoattachments);//更新fact中变量值
+                        update(work_itemfill_test_case_inforun);//更新fact中变量值
                         update(work_itemfill_test_case_infotest_case);//更新fact中变量值
             end
 
@@ -66,6 +96,19 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.fill_test_case_info;
                         update(work_itemfill_test_case_infodefault);//更新fact中变量值
                         update(work_itemfill_test_case_infoattachment_temp);//更新fact中变量值
                         update(work_itemfill_test_case_infoattachments);//更新fact中变量值
+                        update(work_itemfill_test_case_inforun);//更新fact中变量值
+                        update(work_itemfill_test_case_infotest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[拼接描述字段]
+            rule "rawsfcode2"
+            ruleflow-group "work_itemfill_test_case_inforawsfcode2"
+            when
+            then
+                        update(work_itemfill_test_case_infodefault);//更新fact中变量值
+                        update(work_itemfill_test_case_infoattachment_temp);//更新fact中变量值
+                        update(work_itemfill_test_case_infoattachments);//更新fact中变量值
+                        update(work_itemfill_test_case_inforun);//更新fact中变量值
                         update(work_itemfill_test_case_infotest_case);//更新fact中变量值
             end
 
@@ -77,6 +120,47 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.fill_test_case_info;
                         update(work_itemfill_test_case_infodefault);//更新fact中变量值
                         update(work_itemfill_test_case_infoattachment_temp);//更新fact中变量值
                         update(work_itemfill_test_case_infoattachments);//更新fact中变量值
+                        update(work_itemfill_test_case_inforun);//更新fact中变量值
+                        update(work_itemfill_test_case_infotest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "work_itemfill_test_case_infoloopsubcall1"
+            when
+            then
+                        update(work_itemfill_test_case_infodefault);//更新fact中变量值
+                        update(work_itemfill_test_case_infoattachment_temp);//更新fact中变量值
+                        update(work_itemfill_test_case_infoattachments);//更新fact中变量值
+                        update(work_itemfill_test_case_inforun);//更新fact中变量值
+                        update(work_itemfill_test_case_infotest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam3"
+            ruleflow-group "work_itemfill_test_case_infoprepareparam3"
+            when
+            then
+                                work_itemfill_test_case_infoattachment_temp.set("owner_id",null);
+                                work_itemfill_test_case_infoattachment_temp.set("owner_type",null);
+                                work_itemfill_test_case_infoattachment_temp.set("id",null);
+                        update(work_itemfill_test_case_infodefault);//更新fact中变量值
+                        update(work_itemfill_test_case_infoattachment_temp);//更新fact中变量值
+                        update(work_itemfill_test_case_infoattachments);//更新fact中变量值
+                        update(work_itemfill_test_case_inforun);//更新fact中变量值
+                        update(work_itemfill_test_case_infotest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定用例附件]
+            rule "prepareparam2"
+            ruleflow-group "work_itemfill_test_case_infoprepareparam2"
+            when
+            then
+                            work_itemfill_test_case_infodefault.set("attachments",work_itemfill_test_case_infoattachments.get(""));
+                        update(work_itemfill_test_case_infodefault);//更新fact中变量值
+                        update(work_itemfill_test_case_infoattachment_temp);//更新fact中变量值
+                        update(work_itemfill_test_case_infoattachments);//更新fact中变量值
+                        update(work_itemfill_test_case_inforun);//更新fact中变量值
                         update(work_itemfill_test_case_infotest_case);//更新fact中变量值
             end
 
@@ -88,5 +172,6 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.fill_test_case_info;
                         update(work_itemfill_test_case_infodefault);//更新fact中变量值
                         update(work_itemfill_test_case_infoattachment_temp);//更新fact中变量值
                         update(work_itemfill_test_case_infoattachments);//更新fact中变量值
+                        update(work_itemfill_test_case_inforun);//更新fact中变量值
                         update(work_itemfill_test_case_infotest_case);//更新fact中变量值
             end
