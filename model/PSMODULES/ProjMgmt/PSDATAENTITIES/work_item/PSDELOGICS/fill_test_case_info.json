@@ -131,6 +131,21 @@
         "id" : "PREPAREPARAM4"
       }
     } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "run"
+      },
+      "name" : "Default[run_id] ==> run[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "run_id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
     "topPos" : 448
   }, {
     "codeName" : "DEACTION1",
@@ -148,7 +163,7 @@
     },
     "leftPos" : 160,
     "logicNodeType" : "DEACTION",
-    "name" : "实体行为",
+    "name" : "获取测试用例",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -181,7 +196,7 @@
     },
     "leftPos" : -44,
     "logicNodeType" : "DEACTION",
-    "name" : "实体行为",
+    "name" : "获取执行用例",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -245,6 +260,17 @@
     "leftPos" : -44,
     "logicNodeType" : "DEBUGPARAM",
     "name" : "调试逻辑参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM6"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM2"
+      }
+    } ],
     "topPos" : 746
   }, {
     "codeName" : "PREPAREPARAM5",
@@ -268,7 +294,7 @@
         "id" : "attachments"
       },
       "name" : "test_case[ATTACHMENTS] ==> attachments",
-      "paramAction" : "SETPARAMVALUE",
+      "paramAction" : "BINDPARAM",
       "srcFieldName" : "ATTACHMENTS",
       "getSrcPSDELogicParam" : {
         "modelref" : true,
@@ -359,6 +385,38 @@
     } ],
     "topPos" : 849
   }, {
+    "codeName" : "PREPAREPARAM6",
+    "leftPos" : -44,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置用例ID",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM6"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "test_case"
+      },
+      "name" : "run[CASE_ID] ==> test_case[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "CASE_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "run"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 849
+  }, {
     "code" : "def _default = logic.param('Default').getReal();\r\ndef attachment_temp = logic.param('attachment_temp').getReal();\r\n\r\n_default.get(attachments).add(attachment_temp)",
     "codeName" : "RAWSFCODE3",
     "codeType" : "Groovy",
@@ -366,6 +424,39 @@
     "logicNodeType" : "RAWSFCODE",
     "name" : "添加附件",
     "topPos" : 849
+  }, {
+    "codeName" : "DEACTION3",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "test_case"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+    },
+    "leftPos" : -44,
+    "logicNodeType" : "DEACTION",
+    "name" : "获取测试用例",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM5"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION3"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "test_case"
+    },
+    "topPos" : 955
   }, {
     "codeName" : "END1",
     "leftPos" : 200,

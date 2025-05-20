@@ -55,6 +55,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.fill_test_case_info;
             ruleflow-group "work_itemfill_test_case_infoprepareparam4"
             when
             then
+                            work_itemfill_test_case_inforun.set("id",work_itemfill_test_case_infodefault.get("run_id"));
                         update(work_itemfill_test_case_infodefault);//更新fact中变量值
                         update(work_itemfill_test_case_infoattachment_temp);//更新fact中变量值
                         update(work_itemfill_test_case_infoattachments);//更新fact中变量值
@@ -62,7 +63,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.fill_test_case_info;
                         update(work_itemfill_test_case_infotest_case);//更新fact中变量值
             end
 
-            //逻辑处理节点[实体行为]
+            //逻辑处理节点[获取测试用例]
             rule "deaction1"
             ruleflow-group "work_itemfill_test_case_infodeaction1"
             when
@@ -75,7 +76,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.fill_test_case_info;
                         update(work_itemfill_test_case_infotest_case);//更新fact中变量值
             end
 
-            //逻辑处理节点[实体行为]
+            //逻辑处理节点[获取执行用例]
             rule "deaction2"
             ruleflow-group "work_itemfill_test_case_infodeaction2"
             when
@@ -164,11 +165,37 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.fill_test_case_info;
                         update(work_itemfill_test_case_infotest_case);//更新fact中变量值
             end
 
+            //逻辑处理节点[设置用例id]
+            rule "prepareparam6"
+            ruleflow-group "work_itemfill_test_case_infoprepareparam6"
+            when
+            then
+                            work_itemfill_test_case_infotest_case.set("id",work_itemfill_test_case_inforun.get("caseid"));
+                        update(work_itemfill_test_case_infodefault);//更新fact中变量值
+                        update(work_itemfill_test_case_infoattachment_temp);//更新fact中变量值
+                        update(work_itemfill_test_case_infoattachments);//更新fact中变量值
+                        update(work_itemfill_test_case_inforun);//更新fact中变量值
+                        update(work_itemfill_test_case_infotest_case);//更新fact中变量值
+            end
+
             //逻辑处理节点[添加附件]
             rule "rawsfcode3"
             ruleflow-group "work_itemfill_test_case_inforawsfcode3"
             when
             then
+                        update(work_itemfill_test_case_infodefault);//更新fact中变量值
+                        update(work_itemfill_test_case_infoattachment_temp);//更新fact中变量值
+                        update(work_itemfill_test_case_infoattachments);//更新fact中变量值
+                        update(work_itemfill_test_case_inforun);//更新fact中变量值
+                        update(work_itemfill_test_case_infotest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取测试用例]
+            rule "deaction3"
+            ruleflow-group "work_itemfill_test_case_infodeaction3"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(test_caseservice.get(work_itemfill_test_case_infotest_case.getId()),work_itemfill_test_case_infotest_case);
                         update(work_itemfill_test_case_infodefault);//更新fact中变量值
                         update(work_itemfill_test_case_infoattachment_temp);//更新fact中变量值
                         update(work_itemfill_test_case_infoattachments);//更新fact中变量值
