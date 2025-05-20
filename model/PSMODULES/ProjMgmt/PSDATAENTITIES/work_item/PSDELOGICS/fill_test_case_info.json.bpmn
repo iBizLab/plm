@@ -6,6 +6,8 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="work_itemfill_test_case_infodefault" type="entity"/>
+                                <tns:metaData express="new HashMap()" name="work_itemfill_test_case_infoattachment_temp" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="work_itemfill_test_case_infoattachments" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.test_case()" name="work_itemfill_test_case_infotest_case" type="refentity"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Itest_caseService))" name="test_caseservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="iBzSysWork_itemDefaultService" type="service"/>
@@ -17,8 +19,8 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_infodebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_infoprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_infodeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_infoprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_inforawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="拼接描述字段"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_infobindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_infoend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
@@ -27,6 +29,8 @@
                     <sequenceFlow id="gateway-debugparam1_prepareparam1" sourceRef="gateway-debugparam1" targetRef="prepareparam1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $work_itemfill_test_case_infodefault:work_item();
+                                            $work_itemfill_test_case_infoattachment_temp:Map();
+                                            $work_itemfill_test_case_infoattachments:Map();
                                             $work_itemfill_test_case_infotest_case:test_case();
                                     eval($work_itemfill_test_case_infodefault==work_itemfill_test_case_infodefault && $work_itemfill_test_case_infotest_case==work_itemfill_test_case_infotest_case);
                                 eval((RuleUtils.test($work_itemfill_test_case_infodefault.get("test_case"),"ISNOTNULL","")))
@@ -35,11 +39,11 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
                     </sequenceFlow>
-                    <sequenceFlow id="deaction1_prepareparam2" sourceRef="deaction1" targetRef="prepareparam2">
+                    <sequenceFlow id="deaction1_rawsfcode1" sourceRef="deaction1" targetRef="rawsfcode1">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam2_rawsfcode1" sourceRef="prepareparam2" targetRef="rawsfcode1">
+                    <sequenceFlow id="rawsfcode1_bindparam1" sourceRef="rawsfcode1" targetRef="bindparam1">
                     </sequenceFlow>
-                    <sequenceFlow id="rawsfcode1_end1" sourceRef="rawsfcode1" targetRef="end1">
+                    <sequenceFlow id="bindparam1_end1" sourceRef="bindparam1" targetRef="end1">
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-debugparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam1_end_line"></exclusiveGateway>
                             <sequenceFlow id="debugparam1_gateway-debugparam1_gatewayline" sourceRef="debugparam1" targetRef="gateway-debugparam1"></sequenceFlow>
