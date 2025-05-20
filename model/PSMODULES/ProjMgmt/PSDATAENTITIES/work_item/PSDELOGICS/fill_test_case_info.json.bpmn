@@ -25,9 +25,11 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_infodeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取测试用例"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_infodeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="获取执行用例"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_inforawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="拼接描述字段"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_infodebugparam3" id="debugparam3" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_inforawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="拼接描述字段"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_infodebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_infoprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_infodebugparam4" id="debugparam4" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_infoloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_infoprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_infoprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="设置用例ID"/>
@@ -35,6 +37,7 @@
                         <endEvent id="rawsfcode3_end" name="end"/>
                         <sequenceFlow id="rawsfcode3_end_line" sourceRef="rawsfcode3" targetRef="rawsfcode3_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_infodeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="获取测试用例"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_infodebugparam5" id="debugparam5" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemfill_test_case_infoend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
@@ -72,23 +75,29 @@
                     </sequenceFlow>
                     <sequenceFlow id="deaction2_rawsfcode2" sourceRef="deaction2" targetRef="rawsfcode2">
                     </sequenceFlow>
-                    <sequenceFlow id="rawsfcode1_prepareparam5" sourceRef="rawsfcode1" targetRef="prepareparam5">
+                    <sequenceFlow id="rawsfcode1_debugparam3" sourceRef="rawsfcode1" targetRef="debugparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam3_prepareparam5" sourceRef="debugparam3" targetRef="prepareparam5">
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode2_debugparam2" sourceRef="rawsfcode2" targetRef="debugparam2">
                     </sequenceFlow>
                     <sequenceFlow id="debugparam2_prepareparam6" sourceRef="debugparam2" targetRef="prepareparam6">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam5_loopsubcall1" sourceRef="prepareparam5" targetRef="loopsubcall1">
+                    <sequenceFlow id="prepareparam5_debugparam4" sourceRef="prepareparam5" targetRef="debugparam4">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam4_loopsubcall1" sourceRef="debugparam4" targetRef="loopsubcall1">
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
                     </sequenceFlow>
-                    <sequenceFlow id="loopsubcall1_prepareparam3" sourceRef="loopsubcall1" targetRef="prepareparam3">
+                    <sequenceFlow id="loopsubcall1_debugparam5" sourceRef="loopsubcall1" targetRef="debugparam5">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam3_rawsfcode3" sourceRef="prepareparam3" targetRef="rawsfcode3">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam6_deaction3" sourceRef="prepareparam6" targetRef="deaction3">
                     </sequenceFlow>
                     <sequenceFlow id="deaction3_prepareparam5" sourceRef="deaction3" targetRef="prepareparam5">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam5_prepareparam3" sourceRef="debugparam5" targetRef="prepareparam3">
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-debugparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam1_end_line"></exclusiveGateway>
                             <sequenceFlow id="debugparam1_gateway-debugparam1_gatewayline" sourceRef="debugparam1" targetRef="gateway-debugparam1"></sequenceFlow>
