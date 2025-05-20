@@ -936,6 +936,9 @@
     "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEDRITEMS/UsrDRItem0510067711.json"
   }, {
     "modelref" : true,
+    "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEDRITEMS/UsrDRItem0520769238.json"
+  }, {
+    "modelref" : true,
     "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEDRITEMS/UsrDRItem0524687602.json"
   }, {
     "modelref" : true,
@@ -3146,6 +3149,76 @@
     "stdDataType" : 25,
     "stringLength" : 100,
     "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[RUN_PARAMETER][执行用例参数]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[RUN_PARAMETER][执行用例参数]",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[RUN_PARAMETER][执行用例参数]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "HIDDEN",
+        "name" : "[RUN_PARAMETER][执行用例参数]移动端默认",
+        "stringLength" : 1048576,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "RUN_PARAMETER",
+          "maxValue" : 1048576,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[1048576]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[1048576]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[1048576]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "run_parameter",
+    "dEFType" : 5,
+    "dataType" : "ONE2MANYDATA",
+    "importOrder" : 1000,
+    "length" : 1048576,
+    "logicName" : "执行用例参数",
+    "name" : "RUN_PARAMETER",
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/parameter/PSDERS/DERCUSTOM_PARAMETER_LIBRARY_LIBRARY_ID.json"
+    },
+    "serviceCodeName" : "run_parameter",
+    "stdDataType" : 21,
+    "stringLength" : 1048576,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "phisicalDEField" : false,
+    "queryColumn" : false,
+    "uIAssistDEField" : true
   }, {
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -7578,6 +7651,28 @@
       "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "执行用例参数",
+      "name" : "run_parameter",
+      "getPSDEField" : {
+        "name" : "RUN_PARAMETER",
+        "codeName" : "run_parameter"
+      },
+      "getPSDER" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/parameter/PSDERS/DERCUSTOM_PARAMETER_LIBRARY_LIBRARY_ID.json"
+      },
+      "getRefPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "parameter_dto"
+      },
+      "getRefPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/parameter.json"
+      },
+      "sourceType" : "DEFIELD",
+      "stringLength" : 1048576,
+      "type" : "DTOS"
+    }, {
       "logicName" : "成员",
       "name" : "members",
       "getPSDEField" : {
@@ -8839,6 +8934,42 @@
     "removeActionType" : 0,
     "removeOrder" : -1,
     "serviceCodeName" : "library"
+  }, {
+    "codeName" : "LIBRARY",
+    "dERSubType" : "DER11",
+    "dERType" : "DERCUSTOM",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/parameter/PSDERS/DERCUSTOM_PARAMETER_LIBRARY_LIBRARY_ID.json",
+    "logicName" : "配置参数",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
+    },
+    "masterOrder" : 100,
+    "masterRS" : 5,
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/parameter.json"
+    },
+    "name" : "DERCUSTOM_PARAMETER_LIBRARY_LIBRARY_ID",
+    "getNestedPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getOne2XDataPSDEField" : {
+      "name" : "RUN_PARAMETER",
+      "codeName" : "run_parameter"
+    },
+    "orderValue" : 100,
+    "parentSubType" : "LIBRARY_RUNFAILURE",
+    "pickupDEFName" : "OWNER_ID",
+    "getPickupPSDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "removeActionType" : 0,
+    "removeOrder" : -1,
+    "serviceCodeName" : "library",
+    "typeValue" : "LIBRARY_RUNFAILURE"
   } ],
   "memo" : "测试管理核心实体，包含测试的基本信息、生命周期状态等。",
   "getMinorPSDERs" : [ {
