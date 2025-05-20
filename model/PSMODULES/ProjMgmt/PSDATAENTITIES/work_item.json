@@ -33159,7 +33159,7 @@
     "name" : "新建工作项前填充用例信息",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : 200,
+      "leftPos" : 104,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDELogicLinks" : [ {
@@ -33173,7 +33173,7 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 200,
+      "topPos" : 160,
       "parallelOutput" : true
     }, {
       "codeName" : "DEBUGPARAM1",
@@ -33181,7 +33181,7 @@
         "modelref" : true,
         "id" : "Default"
       },
-      "leftPos" : 160,
+      "leftPos" : 64,
       "logicNodeType" : "DEBUGPARAM",
       "name" : "调试逻辑参数",
       "getPSDELogicLinks" : [ {
@@ -33209,8 +33209,33 @@
           "modelref" : true,
           "id" : "DEBUGPARAM1"
         }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM4"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "run_id",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[run_id] 值不为空(NotNil)"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
       } ],
-      "topPos" : 320
+      "topPos" : 280
     }, {
       "codeName" : "PREPAREPARAM1",
       "leftPos" : 160,
@@ -33327,7 +33352,7 @@
       },
       "topPos" : 550
     }, {
-      "code" : "def _default = logic.param('Default').getReal();\r\ndef test_case = logic.param('test_case').getReal();\r\n\r\ndef table_start = '<table style=\"width: auto;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"56.32\">#</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">步骤描述</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">预期结果</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">实际结果</th></tr>';\r\ndef table_end = '</tbody></table>';\r\ndef steps = test_case.get('steps');\r\ndef text = '<p><strong>前置条件：</strong></p>' + test_case.get('precondition') + '<p><strong>执行步骤：</strong></p>' + table_start;\r\n\r\n\r\ndef content = '<td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">';\r\ndef group = '<td colSpan=\"4\" rowSpan=\"1\" width=\"auto\">';\r\n\r\ndef order = 1;\r\ndef group_order = 0.1;\r\nsteps.each { item ->\r\n    println item;\r\n    if(item.get('is_group') == 0){\r\n        text += '<tr>' + content + order + '</td>';\r\n        text += content;\r\n        text += (item.get('description') ?: '') + '</td>';\r\n        text += content;\r\n        text += (item.get('expected_value') ?: '') + '</td>'\r\n        text += content;\r\n        text += (item.get('actual_value') ?: '') + '</td>' + '</tr>';\r\n    }else if(item.get('is_group') == 1){\r\n        text += '<tr>' + content + order + '</td>';\r\n        text += group;\r\n        text += (item.get('name') ?: '') + '</td>' + '</tr>';\r\n        group_order = 0.1;\r\n    }else{\r\n        group_order += order;\r\n        text += '<tr>' + content + group_order + '</td>';\r\n        text += content;\r\n        text += (item.get('description') ?: '') + '</td>';\r\n        text += content;\r\n        text += (item.get('expected_value') ?: '') + '</td>'\r\n        text += content;\r\n        text += (item.get('actual_value') ?: '') + '</td>' + '</tr>';\r\n        group_order += 0.1;\r\n    }\r\n    order++;\r\n}\r\ntext +=table_end;\r\n\r\n_default.set('description', text);",
+      "code" : "def _default = logic.param('Default').getReal();\r\ndef test_case = logic.param('test_case').getReal();\r\n\r\ndef table_start = '<table style=\"width: auto;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"56.32\">#</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">步骤描述</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">预期结果</th></tr>';\r\ndef table_end = '</tbody></table>';\r\ndef steps = test_case.get('steps');\r\ndef text = '<p><strong>前置条件：</strong></p>' + (test_case.get('precondition') ?: '') + '<p><strong>执行步骤：</strong></p>' + table_start;\r\n\r\n\r\ndef content = '<td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">';\r\ndef group = '<td colSpan=\"4\" rowSpan=\"1\" width=\"auto\">';\r\n\r\ndef order = 1;\r\ndef group_order = 0.1;\r\nsteps.each { item ->\r\n    println item;\r\n    if(item.get('is_group') == 0){\r\n        text += '<tr>' + content + order + '</td>';\r\n        text += content;\r\n        text += (item.get('description') ?: '') + '</td>';\r\n        text += content;\r\n        text += (item.get('expected_value') ?: '') + '</td>' + '</tr>';\r\n    }else if(item.get('is_group') == 1){\r\n        text += '<tr>' + content + order + '</td>';\r\n        text += group;\r\n        text += (item.get('name') ?: '') + '</td>' + '</tr>';\r\n        group_order = 0.1;\r\n    }else{\r\n        group_order += order;\r\n        text += '<tr>' + content + group_order + '</td>';\r\n        text += content;\r\n        text += (item.get('description') ?: '') + '</td>';\r\n        text += content;\r\n        text += (item.get('expected_value') ?: '') + '</td>' + '</tr>';\r\n        group_order += 0.1;\r\n    }\r\n    order++;\r\n}\r\ntext += table_end + (_default.get('description') ?: '');\r\n\r\n_default.set('description', text);",
       "codeName" : "RAWSFCODE1",
       "codeType" : "Groovy",
       "leftPos" : 160,
@@ -33346,12 +33371,23 @@
       } ],
       "topPos" : 650
     }, {
-      "code" : "def _default = logic.param('Default').getReal();\r\ndef run = logic.param('run').getReal();\r\n\r\n//获取代码表\r\ndef run_status = sys.codelist('TestMgmt__run_status');\r\n\r\n\r\ndef table_start = '<table style=\"width: auto;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"56.32\">#</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">步骤描述</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">预期结果</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">实际结果</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">执行结果</th></tr>';\r\ndef table_end = '</tbody></table>';\r\ndef steps = run.get('steps');\r\ndef text = '<p><strong>前置条件：</strong></p>' + run.get('precondition') + '<p><strong>执行步骤：</strong></p>' + table_start;\r\n\r\n\r\ndef content = '<td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">';\r\ndef group = '<td colSpan=\"4\" rowSpan=\"1\" width=\"auto\">';\r\n\r\ndef order = 1;\r\ndef group_order = 0.1;\r\nsteps.each { item ->\r\n    println item;\r\n    if(item.get('is_group') == 0){\r\n        text += '<tr>' + content + order + '</td>';\r\n        text += content;\r\n        text += (item.get('description') ?: '') + '</td>';\r\n        text += content;\r\n        text += (item.get('expected_value') ?: '') + '</td>'\r\n        text += content;\r\n        text += (item.get('actual_value') ?: '') + '</td>';\r\n        text += content;\r\n        text += (run_status.getText(item.get('status1'))) ?: '' + '</td>' + '</tr>';\r\n    }else if(item.get('is_group') == 1){\r\n        text += '<tr>' + content + order + '</td>';\r\n        text += group;\r\n        text += (item.get('name') ?: '') + '</td>' + '</tr>';\r\n        group_order = 0.1;\r\n    }else{\r\n        group_order += order;\r\n        text += '<tr>' + content + group_order + '</td>';\r\n        text += content;\r\n        text += (item.get('description') ?: '') + '</td>';\r\n        text += content;\r\n        text += (item.get('expected_value') ?: '') + '</td>'\r\n        text += content;\r\n        text += (item.get('actual_value') ?: '') + '</td>';\r\n        text += content;\r\n        text += (run_status.getText(item.get('status1'))) ?: '' + '</td>' + '</tr>';\r\n        group_order += 0.1;\r\n    }\r\n    order++;\r\n}\r\ntext +=table_end;\r\n\r\n_default.set('description', text);",
+      "code" : "def _default = logic.param('Default').getReal();\r\ndef run = logic.param('run').getReal();\r\n\r\n//获取代码表\r\ndef run_status = sys.codelist('TestMgmt__run_status');\r\n\r\n\r\ndef table_start = '<table style=\"width: auto;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"55\">#</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">步骤描述</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">预期结果</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">实际结果</th><th colSpan=\"1\" rowSpan=\"1\" width=\"65\">执行结果</th></tr>';\r\ndef table_end = '</tbody></table>';\r\ndef steps = run.get('steps');\r\ndef text = '<p><strong>前置条件：</strong></p>' + (run.get('precondition') ?: '') + '<p><strong>执行步骤：</strong></p>' + table_start;\r\n\r\n\r\ndef content = '<td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">';\r\ndef group = '<td colSpan=\"4\" rowSpan=\"1\" width=\"auto\">';\r\n\r\ndef order = 1;\r\ndef group_order = 0.1;\r\nsteps.each { item ->\r\n    println item;\r\n    if(item.get('is_group') == 0){\r\n        text += '<tr>' + content + order + '</td>';\r\n        text += content;\r\n        text += (item.get('description') ?: '') + '</td>';\r\n        text += content;\r\n        text += (item.get('expected_value') ?: '') + '</td>';\r\n        text += content;\r\n        text += (item.get('actual_value') ?: '') + '</td>';\r\n        text += content;\r\n        text += (run_status.getText(item.get('status1'))) ?: '' + '</td>' + '</tr>';\r\n    }else if(item.get('is_group') == 1){\r\n        text += '<tr>' + content + order + '</td>';\r\n        text += group;\r\n        text += (item.get('name') ?: '') + '</td>' + '</tr>';\r\n        group_order = 0.1;\r\n    }else{\r\n        group_order += order;\r\n        text += '<tr>' + content + group_order + '</td>';\r\n        text += content;\r\n        text += (item.get('description') ?: '') + '</td>';\r\n        text += content;\r\n        text += (item.get('expected_value') ?: '') + '</td>';\r\n        text += content;\r\n        text += (item.get('actual_value') ?: '') + '</td>';\r\n        text += content;\r\n        text += (run_status.getText(item.get('status1'))) ?: '' + '</td>' + '</tr>';\r\n        group_order += 0.1;\r\n    }\r\n    order++;\r\n}\r\ntext += table_end + (_default.get('description') ?: '');\r\n\r\n_default.set('description', text);",
       "codeName" : "RAWSFCODE2",
       "codeType" : "JavaScript",
       "leftPos" : -44,
       "logicNodeType" : "RAWSFCODE",
       "name" : "拼接描述字段",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE2"
+        }
+      } ],
       "topPos" : 650
     }, {
       "codeName" : "BINDPARAM1",
@@ -33380,6 +33416,16 @@
       },
       "topPos" : 746
     }, {
+      "codeName" : "DEBUGPARAM2",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "run"
+      },
+      "leftPos" : -44,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "topPos" : 746
+    }, {
       "codeName" : "LOOPSUBCALL1",
       "getDstPSDELogicParam" : {
         "modelref" : true,
@@ -33391,7 +33437,7 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREPARAM2"
+          "id" : "DEBUGPARAM3"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -33450,6 +33496,27 @@
       } ],
       "topPos" : 849
     }, {
+      "codeName" : "DEBUGPARAM3",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "attachments"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM3"
+        }
+      } ],
+      "topPos" : 987
+    }, {
       "codeName" : "PREPAREPARAM2",
       "leftPos" : 160,
       "logicNodeType" : "PREPAREPARAM",
@@ -33479,7 +33546,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 969
+      "topPos" : 1079
     }, {
       "codeName" : "END1",
       "leftPos" : 200,
@@ -33490,7 +33557,7 @@
         "id" : "Default"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : 1090
+      "topPos" : 1190
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",

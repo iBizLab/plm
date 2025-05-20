@@ -52,15 +52,15 @@
                         <endEvent id="end2_end" name="end"/>
                         <sequenceFlow id="end2_end_line" sourceRef="end2" targetRef="end2_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction7" id="deaction7" implementation="http://www.jboss.org/drools/rule" name="更新执行用例"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction8" id="deaction8" implementation="http://www.jboss.org/drools/rule" name="反向关联"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction5" id="deaction5" implementation="http://www.jboss.org/drools/rule" name="正向关联"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam9" id="prepareparam9" implementation="http://www.jboss.org/drools/rule" name="准备关联数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction9" id="deaction9" implementation="http://www.jboss.org/drools/rule" name="获取测试用例"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="执行用例数据准备"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction8" id="deaction8" implementation="http://www.jboss.org/drools/rule" name="反向关联"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam9" id="prepareparam9" implementation="http://www.jboss.org/drools/rule" name="准备关联数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction4" id="deaction4" implementation="http://www.jboss.org/drools/rule" name="创建工作项"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam10" id="prepareparam10" implementation="http://www.jboss.org/drools/rule" name="绑定用例附件"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam12" id="prepareparam12" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="执行用例数据准备"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="获取测试计划"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="拼接描述字段"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultloopsubcall2" id="loopsubcall2" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
@@ -223,23 +223,23 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="deaction8_end2" sourceRef="deaction8" targetRef="end2">
-                    </sequenceFlow>
                     <sequenceFlow id="deaction5_deaction8" sourceRef="deaction5" targetRef="deaction8">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam4_deaction9" sourceRef="prepareparam4" targetRef="deaction9">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam9_deaction5" sourceRef="prepareparam9" targetRef="deaction5">
-                    </sequenceFlow>
                     <sequenceFlow id="deaction9_prepareparam10" sourceRef="deaction9" targetRef="prepareparam10">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam6_deaction7" sourceRef="prepareparam6" targetRef="deaction7">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction8_end2" sourceRef="deaction8" targetRef="end2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam9_deaction5" sourceRef="prepareparam9" targetRef="deaction5">
                     </sequenceFlow>
                     <sequenceFlow id="deaction4_prepareparam9" sourceRef="deaction4" targetRef="prepareparam9">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam10_loopsubcall2" sourceRef="prepareparam10" targetRef="loopsubcall2">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam12_deaction3" sourceRef="prepareparam12" targetRef="deaction3">
-                    </sequenceFlow>
-                    <sequenceFlow id="prepareparam6_deaction7" sourceRef="prepareparam6" targetRef="deaction7">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-deaction3_prepareparam7" sourceRef="gateway-deaction3" targetRef="prepareparam7">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[

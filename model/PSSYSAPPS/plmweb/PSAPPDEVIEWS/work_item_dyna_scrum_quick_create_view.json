@@ -433,14 +433,6 @@
         "id" : "FORM"
       },
       "getPSDEFormItemUpdates" : [ {
-        "codeName" : "calc_parent_work_item_type",
-        "name" : "计算父工作项类型",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "work_item_type_name"
-        } ],
-        "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-        "customCode" : true
-      }, {
         "codeName" : "set_type_bug",
         "name" : "设置缺陷类型",
         "getPSAppDEMethod" : {
@@ -448,12 +440,20 @@
           "id" : "set_type_bug"
         },
         "getPSDEFIUpdateDetails" : [ {
-          "name" : "work_item_type_name"
+          "name" : "project_type"
         }, {
           "name" : "work_item_type_id"
         }, {
-          "name" : "project_type"
+          "name" : "work_item_type_name"
         } ]
+      }, {
+        "codeName" : "calc_parent_work_item_type",
+        "name" : "计算父工作项类型",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "work_item_type_name"
+        } ],
+        "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+        "customCode" : true
       }, {
         "codeName" : "set_default_entry",
         "name" : "选择看板后填充默认看板栏",
@@ -706,6 +706,10 @@
         "dataType" : 25
       }, {
         "id" : "test_case",
+        "hidden" : true,
+        "dataType" : 25
+      }, {
+        "id" : "run_id",
         "hidden" : true,
         "dataType" : 25
       }, {
@@ -1855,6 +1859,28 @@
               "getPSEditor" : {
                 "editorType" : "HIDDEN",
                 "name" : "test_case"
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true,
+              "hidden" : true
+            }, {
+              "caption" : "执行用例标识",
+              "codeName" : "run_id",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "LEFT",
+              "labelWidth" : 130,
+              "name" : "run_id",
+              "noPrivDisplayMode" : 1,
+              "getPSEditor" : {
+                "editorType" : "HIDDEN",
+                "name" : "run_id"
               },
               "getPSLayoutPos" : {
                 "colMD" : 24,
