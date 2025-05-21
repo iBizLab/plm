@@ -320,6 +320,108 @@
     },
     "topPos" : -220
   }, {
+    "codeName" : "PREPAREPARAM6",
+    "leftPos" : 644,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "执行用例数据准备",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION7"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM6"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "EXECUTED_AT",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_obj"
+      },
+      "name" : "run_history[EXECUTED_AT] ==> temp_obj[EXECUTED_AT]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "EXECUTED_AT",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "run_history"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "ATTACHMENTS",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_obj"
+      },
+      "name" : "Default[ATTACHMENTS] ==> temp_obj[ATTACHMENTS]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ATTACHMENTS",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "STEPS",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_obj"
+      },
+      "name" : "run_history[STEPS] ==> temp_obj[STEPS]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "STEPS",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "run_history"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "STATUS",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_obj"
+      },
+      "name" : "run_history[STATUS] ==> temp_obj[STATUS]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "STATUS",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "run_history"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_obj"
+      },
+      "name" : "run_history[RUN_ID] ==> temp_obj[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "RUN_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "run_history"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "EXECUTOR_NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_obj"
+      },
+      "name" : "run_history[EXECUTOR_NAME] ==> temp_obj[EXECUTOR_NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "EXECUTOR_NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "run_history"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : -80
+  }, {
     "codeName" : "END2",
     "leftPos" : 860,
     "logicNodeType" : "END",
@@ -371,7 +473,7 @@
     }, {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "PREPAREPARAM4"
+        "id" : "DEBUGPARAM3"
       },
       "name" : "执行失败创建用例",
       "getPSDELogicLinkGroupCond" : {
@@ -454,6 +556,27 @@
       }
     } ],
     "topPos" : 36
+  }, {
+    "codeName" : "DEBUGPARAM3",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 410,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "调试逻辑参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM3"
+      }
+    } ],
+    "topPos" : 180
   }, {
     "codeName" : "PREPAREPARAM4",
     "leftPos" : 644,
@@ -1002,142 +1125,6 @@
     },
     "topPos" : 598
   }, {
-    "codeName" : "PREPAREPARAM11",
-    "leftPos" : 464,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备参数",
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "owner_id",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "attachment_temp"
-      },
-      "name" : "空值（NULL） ==> attachment_temp[owner_id]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcValueType" : "NULLVALUE"
-    }, {
-      "dstFieldName" : "owner_type",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "attachment_temp"
-      },
-      "name" : "空值（NULL） ==> attachment_temp[owner_type]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcValueType" : "NULLVALUE"
-    }, {
-      "dstFieldName" : "id",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "attachment_temp"
-      },
-      "name" : "空值（NULL） ==> attachment_temp[id]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcValueType" : "NULLVALUE"
-    } ],
-    "topPos" : 648
-  }, {
-    "codeName" : "PREPAREPARAM6",
-    "leftPos" : 644,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "执行用例数据准备",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEACTION7"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM6"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "EXECUTED_AT",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "temp_obj"
-      },
-      "name" : "run_history[EXECUTED_AT] ==> temp_obj[EXECUTED_AT]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "EXECUTED_AT",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "run_history"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "ATTACHMENTS",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "temp_obj"
-      },
-      "name" : "Default[ATTACHMENTS] ==> temp_obj[ATTACHMENTS]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "ATTACHMENTS",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "STEPS",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "temp_obj"
-      },
-      "name" : "run_history[STEPS] ==> temp_obj[STEPS]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "STEPS",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "run_history"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "STATUS",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "temp_obj"
-      },
-      "name" : "run_history[STATUS] ==> temp_obj[STATUS]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "STATUS",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "run_history"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "ID",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "temp_obj"
-      },
-      "name" : "run_history[RUN_ID] ==> temp_obj[ID]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "RUN_ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "run_history"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "EXECUTOR_NAME",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "temp_obj"
-      },
-      "name" : "run_history[EXECUTOR_NAME] ==> temp_obj[EXECUTOR_NAME]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "EXECUTOR_NAME",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "run_history"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    } ],
-    "topPos" : -80
-  }, {
     "codeName" : "LOOPSUBCALL1",
     "getDstPSDELogicParam" : {
       "modelref" : true,
@@ -1173,6 +1160,40 @@
       "id" : "work_item_type_page"
     },
     "topPos" : 598
+  }, {
+    "codeName" : "PREPAREPARAM11",
+    "leftPos" : 464,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "owner_id",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "attachment_temp"
+      },
+      "name" : "空值（NULL） ==> attachment_temp[owner_id]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValueType" : "NULLVALUE"
+    }, {
+      "dstFieldName" : "owner_type",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "attachment_temp"
+      },
+      "name" : "空值（NULL） ==> attachment_temp[owner_type]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValueType" : "NULLVALUE"
+    }, {
+      "dstFieldName" : "id",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "attachment_temp"
+      },
+      "name" : "空值（NULL） ==> attachment_temp[id]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValueType" : "NULLVALUE"
+    } ],
+    "topPos" : 648
   }, {
     "codeName" : "PREPAREPARAM8",
     "leftPos" : 1196,
