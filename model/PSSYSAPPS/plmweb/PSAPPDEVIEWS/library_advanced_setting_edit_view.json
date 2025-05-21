@@ -21,7 +21,6 @@
     "name" : "engine"
   } ],
   "getPSControls" : [ {
-    "autoSaveMode" : 3,
     "codeName" : "advanced_setting",
     "controlType" : "FORM",
     "getCreatePSControlAction" : {
@@ -172,6 +171,7 @@
     },
     "getPSControlParam" : {
       "autoLoad" : true,
+      "enableAutoSave" : false,
       "showBusyIndicator" : true,
       "id" : "FORM"
     },
@@ -513,9 +513,30 @@
         "detailType" : "GROUPPANEL",
         "name" : "grouppanel3",
         "getPSDEFormDetails" : [ {
+          "codeName" : "rawitem4",
+          "contentType" : "RAW",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "RAWITEM",
+          "name" : "rawitem4",
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSRawItem" : {
+            "caption" : "如果执行用例执行失败，你可以开启自动创建缺陷工作项。",
+            "contentType" : "RAW",
+            "name" : "rawitem4",
+            "rawItemHeight" : -1.0,
+            "rawItemWidth" : -1.0
+          },
+          "rawContent" : "如果执行用例执行失败，你可以开启自动创建缺陷工作项。",
+          "rawItemHeight" : -1.0,
+          "rawItemWidth" : -1.0,
+          "showCaption" : true
+        }, {
           "codeName" : "mdctrl1",
           "getContentPSControl" : {
-            "autoSaveMode" : 3,
+            "autoSaveMode" : 1,
             "codeName" : "main",
             "controlType" : "FORM",
             "getCreatePSControlAction" : {
@@ -747,7 +768,7 @@
                 "detailType" : "GROUPPANEL",
                 "name" : "group1",
                 "getPSDEFormDetails" : [ {
-                  "caption" : "值",
+                  "caption" : "是否自动创建缺陷",
                   "codeName" : "val",
                   "dataType" : 25,
                   "detailStyle" : "DEFAULT",
@@ -763,8 +784,7 @@
                     "codeName" : "val"
                   },
                   "getPSEditor" : {
-                    "editorType" : "TEXTBOX",
-                    "maxLength" : 100,
+                    "editorType" : "SWITCH",
                     "name" : "val"
                   },
                   "getPSLayoutPos" : {
@@ -972,7 +992,6 @@
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
       }
     },
-    "enableAutoSave" : true,
     "noTabHeader" : true,
     "name" : "form",
     "modelid" : "c8dc2e0eb532be5f81f0ef3ed390fefe",
