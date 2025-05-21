@@ -29,23 +29,6 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.set_change_type;
             then
             end
 
-            //逻辑处理节点[准备基线参数]
-            rule "prepareparam4"
-            ruleflow-group "test_caseset_change_typeprepareparam4"
-            when
-            then
-                            test_caseset_change_typebaseline_filter.set("baseline",test_caseset_change_typedefault.get("baseline"));
-                        update(test_caseset_change_typedefault);//更新fact中变量值
-                        update(test_caseset_change_typebaseline_filter);//更新fact中变量值
-                        update(test_caseset_change_typechange_version);//更新fact中变量值
-                        update(test_caseset_change_typefor_obj);//更新fact中变量值
-                        update(test_caseset_change_typepage_results);//更新fact中变量值
-                        update(test_caseset_change_typeplan_filter);//更新fact中变量值
-                        update(test_caseset_change_typereview_detail);//更新fact中变量值
-                        update(test_caseset_change_typeversion_filter);//更新fact中变量值
-                        update(test_caseset_change_typeversion_pages_results);//更新fact中变量值
-            end
-
             //逻辑处理节点[准备计划参数]
             rule "prepareparam5"
             ruleflow-group "test_caseset_change_typeprepareparam5"
@@ -63,7 +46,7 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.set_change_type;
                         update(test_caseset_change_typeversion_pages_results);//更新fact中变量值
             end
 
-            //逻辑处理节点[实体数据集]
+            //逻辑处理节点[获取计划用例]
             rule "dedataset4"
             ruleflow-group "test_caseset_change_typededataset4"
             when
@@ -84,6 +67,23 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.set_change_type;
             ruleflow-group "test_caseset_change_typedebugparam3"
             when
             then
+                        update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typebaseline_filter);//更新fact中变量值
+                        update(test_caseset_change_typechange_version);//更新fact中变量值
+                        update(test_caseset_change_typefor_obj);//更新fact中变量值
+                        update(test_caseset_change_typepage_results);//更新fact中变量值
+                        update(test_caseset_change_typeplan_filter);//更新fact中变量值
+                        update(test_caseset_change_typereview_detail);//更新fact中变量值
+                        update(test_caseset_change_typeversion_filter);//更新fact中变量值
+                        update(test_caseset_change_typeversion_pages_results);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备基线参数]
+            rule "prepareparam4"
+            ruleflow-group "test_caseset_change_typeprepareparam4"
+            when
+            then
+                            test_caseset_change_typebaseline_filter.set("baseline",test_caseset_change_typedefault.get("baseline"));
                         update(test_caseset_change_typedefault);//更新fact中变量值
                         update(test_caseset_change_typebaseline_filter);//更新fact中变量值
                         update(test_caseset_change_typechange_version);//更新fact中变量值
@@ -204,7 +204,7 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.set_change_type;
                         update(test_caseset_change_typeversion_pages_results);//更新fact中变量值
             end
 
-            //逻辑处理节点[实体数据集]
+            //逻辑处理节点[获取基线用例]
             rule "dedataset3"
             ruleflow-group "test_caseset_change_typededataset3"
             when
