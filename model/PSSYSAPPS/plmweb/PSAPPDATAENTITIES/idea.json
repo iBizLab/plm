@@ -16830,13 +16830,7 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "codeName" : "END1",
-      "leftPos" : 909,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
-    }, {
-      "code" : "console.log('创建需求视图执行了');\r\nconst ctrl = uiLogic.curctrl;\r\nif (!ctrl) return;\r\nconst oldData = ctrl.oldData;\r\nconst newData = ctrl.state.data;\r\nif (newData.product_id && newData.product_id !== oldData.product_id) {\r\n    // 更新数据\r\n    oldData.product_id = newData.product_id;\r\n    uiLogic.ideacreateformdata = newData;\r\n    \r\n    // 重绘视图\r\n    const srfparentkey = newData.product_id;\r\n    const srfparentdename = view.model.appDataEntityId.split('.').pop();\r\n    view.redrawView({\r\n        context: view.context,\r\n        params: { srfparentkey,srfparentdename },\r\n        isReloadModel: true,\r\n    });\r\n\r\n    // 视图关闭前，清空全局变量\r\n    view._evt.on('onCloseView', () => {\r\n        uiLogic.ideacreateformdata = undefined;\r\n    })\r\n}\r\n",
+      "code" : "console.log('创建需求视图执行了');\r\nconst ctrl = uiLogic.curctrl;\r\nif (!ctrl) return;\r\nconst oldData = ctrl.oldData;\r\nconst newData = ctrl.state.data;\r\nif (newData.product_id && newData.product_id !== oldData.product_id) {\r\n    // 更新数据\r\n    oldData.product_id = newData.product_id;\r\n    uiLogic.ideacreateformdata = newData.clone();\r\n    \r\n    // 重绘视图\r\n    const srfparentkey = newData.product_id;\r\n    const srfparentdename = view.model.appDataEntityId.split('.').pop();\r\n    view.redrawView({\r\n        context: view.context,\r\n        params: { srfparentkey,srfparentdename },\r\n        isReloadModel: true,\r\n    });\r\n\r\n    // 视图关闭前，清空全局变量\r\n    view._evt.on('onCloseView', () => {\r\n        uiLogic.ideacreateformdata = undefined;\r\n    })\r\n}\r\n",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 500,
       "logicNodeType" : "RAWJSCODE",
@@ -16854,6 +16848,12 @@
         }
       } ],
       "topPos" : 208
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 909,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
@@ -16862,17 +16862,17 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "curCtrl",
-      "logicName" : "当前部件对象",
-      "name" : "当前部件对象",
-      "activeCtrlParam" : true,
-      "ctrlParam" : true
-    }, {
       "codeName" : "IdeaCreateFormData",
       "logicName" : "需求新建表单数据",
       "name" : "需求新建表单数据",
       "paramFieldName" : "IdeaCreateFormData",
       "appGlobalParam" : true
+    }, {
+      "codeName" : "curCtrl",
+      "logicName" : "当前部件对象",
+      "name" : "当前部件对象",
+      "activeCtrlParam" : true,
+      "ctrlParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -16903,7 +16903,13 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "code" : "console.log('更新需求新建表单执行了');\r\nconst ctrl = uiLogic.curctrl;\r\nif(!ctrl || !uiLogic.createideaformdata) return;\r\nctrl.state.data = uiLogic.createideaformdata;",
+      "codeName" : "END1",
+      "leftPos" : 758,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
+      "code" : "console.log('更新需求新建表单执行了');\r\nconst ctrl = uiLogic.curctrl;\r\nif(!ctrl || !uiLogic.createideaformdata) return;\r\nctrl.state.data = uiLogic.createideaformdata.clone();\r\nctrl.formStateNotify('LOAD')",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 445,
       "logicNodeType" : "RAWJSCODE",
@@ -16921,12 +16927,6 @@
         }
       } ],
       "topPos" : 208
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 758,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "ideacreateformdata",
@@ -16935,17 +16935,17 @@
       "paramFieldName" : "ideacreateformdata",
       "appGlobalParam" : true
     }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
       "codeName" : "curctrl",
       "logicName" : "表单部件",
       "name" : "表单部件",
       "activeCtrlParam" : true,
       "ctrlParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
