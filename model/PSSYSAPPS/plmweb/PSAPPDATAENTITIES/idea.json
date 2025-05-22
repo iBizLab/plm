@@ -16957,13 +16957,7 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "codeName" : "END1",
-      "leftPos" : 909,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
-    }, {
-      "code" : "const ctrl = uiLogic.curctrl;\r\nif (!ctrl) return;\r\nconst oldData = ibiz.util.getGlobalParam().ideacreateformdata;\r\nconst newData = ctrl.data.clone();\r\nif (oldData && newData && newData.product_id && (!oldData || newData.product_id !== oldData.product_id)) {\r\n    // 更新数据\r\n    ibiz.util.getGlobalParam().ideacreateformdata = {};\r\n    Object.assign(ibiz.util.getGlobalParam().ideacreateformdata, {\r\n      product_id: newData.product_id,\r\n      product_name: newData.product_name,\r\n    });\r\n\r\n    // 重绘视图\r\n    const srfparentkey = newData.product_id;\r\n    const srfparentdename = view.model.appDataEntityId.split('.').pop();\r\n    view.redrawView({\r\n        context: view.context,\r\n        params: { srfparentkey, srfparentdename },\r\n        isReloadModel: true,\r\n    });\r\n\r\n    // 视图关闭前，清空全局变量\r\n    // 清空逻辑由（需求更新新建表单数据）界面逻辑完成\r\n}",
+      "code" : "const ctrl = uiLogic.curctrl;\r\nif (!ctrl) return;\r\nconst oldData = ibiz.util.getGlobalParam().ideacreateformdata;\r\nconst newData = ctrl.data.clone();\r\n// 用于过滤出正确更新的表单项\r\nif (newData && (!oldData || (!newData.product_id && oldData.product_id) || newData.product_id !== oldData.product_id)) {\r\n    // 更新数据\r\n    ibiz.util.getGlobalParam().ideacreateformdata = {};\r\n    Object.assign(ibiz.util.getGlobalParam().ideacreateformdata, {\r\n      product_id: newData.product_id,\r\n      product_name: newData.product_name,\r\n    });\r\n\r\n    // 重绘视图\r\n    const srfparentkey = newData.product_id;\r\n    const srfparentdename = view.model.appDataEntityId.split('.').pop();\r\n    view.redrawView({\r\n        context: view.context,\r\n        params: { srfparentkey, srfparentdename },\r\n        isReloadModel: true,\r\n    });\r\n\r\n    // 视图关闭前，清空全局变量\r\n    // 清空逻辑由（需求更新新建表单数据）界面逻辑完成\r\n}",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 490,
       "logicNodeType" : "RAWJSCODE",
@@ -16981,6 +16975,12 @@
         }
       } ],
       "topPos" : 208
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 909,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
