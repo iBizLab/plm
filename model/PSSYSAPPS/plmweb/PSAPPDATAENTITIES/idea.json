@@ -16903,13 +16903,7 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "codeName" : "END1",
-      "leftPos" : 758,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
-    }, {
-      "code" : "console.log('更新需求新建表单执行了');\r\nconst ctrl = uiLogic.curctrl;\r\nif(!ctrl || !uiLogic.ideacreateformdata) return;\r\nctrl.state.data = uiLogic.ideacreateformdata.clone();\r\nctrl.formStateNotify('LOAD')\r\n\r\n// 视图关闭前，清空全局变量\r\nview._evt.on('onCloseView', () => {\r\n    uiLogic.ideacreateformdata = undefined;\r\n})",
+      "code" : "const ctrl = uiLogic.curctrl;\r\nconst { ideacreateformdata } = ibiz.util.getGlobalParam()\r\nif(!ctrl || !ideacreateformdata) return;\r\n\r\nObject.assign(ctrl.state.data, ideacreateformdata);\r\nctrl.formStateNotify('LOAD')\r\n\r\n// 视图关闭前，清空全局变量\r\nview._evt.on('onCloseView', () => {\r\n    ibiz.util.getGlobalParam().ideacreateformdata = undefined;\r\n})",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 445,
       "logicNodeType" : "RAWJSCODE",
@@ -16927,13 +16921,19 @@
         }
       } ],
       "topPos" : 208
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 758,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "ideacreateformdata",
-      "logicName" : "新建需求表单数据",
-      "name" : "新建需求表单数据",
-      "paramFieldName" : "ideacreateformdata",
-      "appGlobalParam" : true
+      "codeName" : "curctrl",
+      "logicName" : "表单部件",
+      "name" : "表单部件",
+      "activeCtrlParam" : true,
+      "ctrlParam" : true
     }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
@@ -16941,11 +16941,11 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "curctrl",
-      "logicName" : "表单部件",
-      "name" : "表单部件",
-      "activeCtrlParam" : true,
-      "ctrlParam" : true
+      "codeName" : "ideacreateformdata",
+      "logicName" : "新建需求表单数据",
+      "name" : "新建需求表单数据",
+      "paramFieldName" : "ideacreateformdata",
+      "appGlobalParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
