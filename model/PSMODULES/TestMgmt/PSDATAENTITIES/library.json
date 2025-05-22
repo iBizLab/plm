@@ -4106,7 +4106,7 @@
     "name" : "创建测试库流程准则",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : 100,
+      "leftPos" : -52,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDELogicLinks" : [ {
@@ -4120,8 +4120,26 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 120,
+      "topPos" : 144,
       "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION2",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/parameter/PSDEACTIONS/Create.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "parameter"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/parameter.json"
+      },
+      "leftPos" : 208,
+      "logicNodeType" : "DEACTION",
+      "name" : "创建配置参数",
+      "topPos" : 20
     }, {
       "codeName" : "PREPAREPARAM2",
       "leftPos" : 208,
@@ -4160,6 +4178,23 @@
         "srcValueType" : "SRCVALUE"
       } ],
       "topPos" : 128
+    }, {
+      "codeName" : "PREPAREPARAM7",
+      "leftPos" : 208,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置配置参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM7"
+        }
+      } ],
+      "topPos" : -90
     }, {
       "codeName" : "DEDATASET1",
       "getDstPSDEDataSet" : {
@@ -4611,6 +4646,15 @@
       "getParamPSDataEntity" : {
         "modelref" : true,
         "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_stage.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "parameter",
+      "logicName" : "系统参数",
+      "name" : "系统参数",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/parameter.json"
       },
       "entityParam" : true
     }, {

@@ -13,8 +13,10 @@ package cn.ibizlab.plm.testmgmt.logic.librarylogic.auto_create_guideline;
                 global cn.ibizlab.plm.core.testmgmt.domain.guideline libraryauto_create_guidelineguideline_pages;
                 global cn.ibizlab.plm.core.testmgmt.domain.guideline libraryauto_create_guidelinenew_guideline;
                 global cn.ibizlab.plm.core.testmgmt.domain.review_stage libraryauto_create_guidelinenew_review_stage;
+                global cn.ibizlab.plm.core.base.domain.parameter libraryauto_create_guidelineparameter;
                 global cn.ibizlab.plm.core.testmgmt.domain.review_stage libraryauto_create_guidelinereview_stage_list;
                 global cn.ibizlab.plm.core.testmgmt.domain.review_stage libraryauto_create_guidelinestage_arr;
+                    global cn.ibizlab.plm.core.base.service.IparameterService parameterservice;
                     global cn.ibizlab.plm.core.testmgmt.service.IguidelineService guidelineservice;
         global cn.ibizlab.plm.core.testmgmt.service.IlibraryService iBzSysLibraryDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
@@ -27,6 +29,25 @@ package cn.ibizlab.plm.testmgmt.logic.librarylogic.auto_create_guideline;
             ruleflow-group "libraryauto_create_guidelinebegin"
             when
             then
+            end
+
+            //逻辑处理节点[创建配置参数]
+            rule "deaction2"
+            ruleflow-group "libraryauto_create_guidelinedeaction2"
+            when
+            then
+                        parameterservice.create(libraryauto_create_guidelineparameter);
+                        update(libraryauto_create_guidelinedefault);//更新fact中变量值
+                        update(libraryauto_create_guidelinefor_obj_guideline);//更新fact中变量值
+                        update(libraryauto_create_guidelinefor_obj_review_stage);//更新fact中变量值
+                        update(libraryauto_create_guidelineguideline);//更新fact中变量值
+                        update(libraryauto_create_guidelineguideline_filter);//更新fact中变量值
+                        update(libraryauto_create_guidelineguideline_pages);//更新fact中变量值
+                        update(libraryauto_create_guidelinenew_guideline);//更新fact中变量值
+                        update(libraryauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(libraryauto_create_guidelineparameter);//更新fact中变量值
+                        update(libraryauto_create_guidelinereview_stage_list);//更新fact中变量值
+                        update(libraryauto_create_guidelinestage_arr);//更新fact中变量值
             end
 
             //逻辑处理节点[设置过滤参数]
@@ -44,6 +65,25 @@ package cn.ibizlab.plm.testmgmt.logic.librarylogic.auto_create_guideline;
                         update(libraryauto_create_guidelineguideline_pages);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_guideline);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(libraryauto_create_guidelineparameter);//更新fact中变量值
+                        update(libraryauto_create_guidelinereview_stage_list);//更新fact中变量值
+                        update(libraryauto_create_guidelinestage_arr);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置配置参数]
+            rule "prepareparam7"
+            ruleflow-group "libraryauto_create_guidelineprepareparam7"
+            when
+            then
+                        update(libraryauto_create_guidelinedefault);//更新fact中变量值
+                        update(libraryauto_create_guidelinefor_obj_guideline);//更新fact中变量值
+                        update(libraryauto_create_guidelinefor_obj_review_stage);//更新fact中变量值
+                        update(libraryauto_create_guidelineguideline);//更新fact中变量值
+                        update(libraryauto_create_guidelineguideline_filter);//更新fact中变量值
+                        update(libraryauto_create_guidelineguideline_pages);//更新fact中变量值
+                        update(libraryauto_create_guidelinenew_guideline);//更新fact中变量值
+                        update(libraryauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(libraryauto_create_guidelineparameter);//更新fact中变量值
                         update(libraryauto_create_guidelinereview_stage_list);//更新fact中变量值
                         update(libraryauto_create_guidelinestage_arr);//更新fact中变量值
             end
@@ -61,6 +101,7 @@ package cn.ibizlab.plm.testmgmt.logic.librarylogic.auto_create_guideline;
                         update(libraryauto_create_guidelineguideline_pages);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_guideline);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(libraryauto_create_guidelineparameter);//更新fact中变量值
                         update(libraryauto_create_guidelinereview_stage_list);//更新fact中变量值
                         update(libraryauto_create_guidelinestage_arr);//更新fact中变量值
             end
@@ -78,6 +119,7 @@ package cn.ibizlab.plm.testmgmt.logic.librarylogic.auto_create_guideline;
                         update(libraryauto_create_guidelineguideline_pages);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_guideline);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(libraryauto_create_guidelineparameter);//更新fact中变量值
                         update(libraryauto_create_guidelinereview_stage_list);//更新fact中变量值
                         update(libraryauto_create_guidelinestage_arr);//更新fact中变量值
             end
@@ -101,6 +143,7 @@ package cn.ibizlab.plm.testmgmt.logic.librarylogic.auto_create_guideline;
                         update(libraryauto_create_guidelineguideline_pages);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_guideline);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(libraryauto_create_guidelineparameter);//更新fact中变量值
                         update(libraryauto_create_guidelinereview_stage_list);//更新fact中变量值
                         update(libraryauto_create_guidelinestage_arr);//更新fact中变量值
             end
@@ -118,6 +161,7 @@ package cn.ibizlab.plm.testmgmt.logic.librarylogic.auto_create_guideline;
                         update(libraryauto_create_guidelineguideline_pages);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_guideline);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(libraryauto_create_guidelineparameter);//更新fact中变量值
                         update(libraryauto_create_guidelinereview_stage_list);//更新fact中变量值
                         update(libraryauto_create_guidelinestage_arr);//更新fact中变量值
             end
@@ -136,6 +180,7 @@ package cn.ibizlab.plm.testmgmt.logic.librarylogic.auto_create_guideline;
                         update(libraryauto_create_guidelineguideline_pages);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_guideline);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(libraryauto_create_guidelineparameter);//更新fact中变量值
                         update(libraryauto_create_guidelinereview_stage_list);//更新fact中变量值
                         update(libraryauto_create_guidelinestage_arr);//更新fact中变量值
             end
@@ -153,6 +198,7 @@ package cn.ibizlab.plm.testmgmt.logic.librarylogic.auto_create_guideline;
                         update(libraryauto_create_guidelineguideline_pages);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_guideline);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(libraryauto_create_guidelineparameter);//更新fact中变量值
                         update(libraryauto_create_guidelinereview_stage_list);//更新fact中变量值
                         update(libraryauto_create_guidelinestage_arr);//更新fact中变量值
             end
@@ -171,6 +217,7 @@ package cn.ibizlab.plm.testmgmt.logic.librarylogic.auto_create_guideline;
                         update(libraryauto_create_guidelineguideline_pages);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_guideline);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(libraryauto_create_guidelineparameter);//更新fact中变量值
                         update(libraryauto_create_guidelinereview_stage_list);//更新fact中变量值
                         update(libraryauto_create_guidelinestage_arr);//更新fact中变量值
             end
@@ -188,6 +235,7 @@ package cn.ibizlab.plm.testmgmt.logic.librarylogic.auto_create_guideline;
                         update(libraryauto_create_guidelineguideline_pages);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_guideline);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(libraryauto_create_guidelineparameter);//更新fact中变量值
                         update(libraryauto_create_guidelinereview_stage_list);//更新fact中变量值
                         update(libraryauto_create_guidelinestage_arr);//更新fact中变量值
             end
@@ -205,6 +253,7 @@ package cn.ibizlab.plm.testmgmt.logic.librarylogic.auto_create_guideline;
                         update(libraryauto_create_guidelineguideline_pages);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_guideline);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(libraryauto_create_guidelineparameter);//更新fact中变量值
                         update(libraryauto_create_guidelinereview_stage_list);//更新fact中变量值
                         update(libraryauto_create_guidelinestage_arr);//更新fact中变量值
             end
@@ -222,6 +271,7 @@ package cn.ibizlab.plm.testmgmt.logic.librarylogic.auto_create_guideline;
                         update(libraryauto_create_guidelineguideline_pages);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_guideline);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(libraryauto_create_guidelineparameter);//更新fact中变量值
                         update(libraryauto_create_guidelinereview_stage_list);//更新fact中变量值
                         update(libraryauto_create_guidelinestage_arr);//更新fact中变量值
             end
@@ -240,6 +290,7 @@ package cn.ibizlab.plm.testmgmt.logic.librarylogic.auto_create_guideline;
                         update(libraryauto_create_guidelineguideline_pages);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_guideline);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(libraryauto_create_guidelineparameter);//更新fact中变量值
                         update(libraryauto_create_guidelinereview_stage_list);//更新fact中变量值
                         update(libraryauto_create_guidelinestage_arr);//更新fact中变量值
             end
@@ -257,6 +308,7 @@ package cn.ibizlab.plm.testmgmt.logic.librarylogic.auto_create_guideline;
                         update(libraryauto_create_guidelineguideline_pages);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_guideline);//更新fact中变量值
                         update(libraryauto_create_guidelinenew_review_stage);//更新fact中变量值
+                        update(libraryauto_create_guidelineparameter);//更新fact中变量值
                         update(libraryauto_create_guidelinereview_stage_list);//更新fact中变量值
                         update(libraryauto_create_guidelinestage_arr);//更新fact中变量值
             end

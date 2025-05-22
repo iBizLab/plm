@@ -13,8 +13,10 @@
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.guideline()" name="libraryauto_create_guidelineguideline_pages" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.guideline()" name="libraryauto_create_guidelinenew_guideline" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_stage()" name="libraryauto_create_guidelinenew_review_stage" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.parameter()" name="libraryauto_create_guidelineparameter" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_stage()" name="libraryauto_create_guidelinereview_stage_list" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_stage()" name="libraryauto_create_guidelinestage_arr" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IparameterService))" name="parameterservice" type="service"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IguidelineService))" name="guidelineservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IlibraryService))" name="iBzSysLibraryDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
@@ -26,11 +28,16 @@
                             <tns:global identifier="libraryauto_create_guidelineguideline_pages" type="cn.ibizlab.plm.core.testmgmt.domain.guideline" />
                             <tns:global identifier="libraryauto_create_guidelinenew_guideline" type="cn.ibizlab.plm.core.testmgmt.domain.guideline" />
                             <tns:global identifier="libraryauto_create_guidelinenew_review_stage" type="cn.ibizlab.plm.core.testmgmt.domain.review_stage" />
+                            <tns:global identifier="libraryauto_create_guidelineparameter" type="cn.ibizlab.plm.core.base.domain.parameter" />
                             <tns:global identifier="libraryauto_create_guidelinereview_stage_list" type="cn.ibizlab.plm.core.testmgmt.domain.review_stage" />
                             <tns:global identifier="libraryauto_create_guidelinestage_arr" type="cn.ibizlab.plm.core.testmgmt.domain.review_stage" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="libraryauto_create_guidelinedeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="创建配置参数"/>
+                        <endEvent id="deaction2_end" name="end"/>
+                        <sequenceFlow id="deaction2_end_line" sourceRef="deaction2" targetRef="deaction2_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="libraryauto_create_guidelineprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置过滤参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="libraryauto_create_guidelineprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="设置配置参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="libraryauto_create_guidelinededataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="查询测试库全局流程规则"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="libraryauto_create_guidelineloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="libraryauto_create_guidelineprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="绑定阶段用于后续循环，设置新建流程准则参数"/>
@@ -52,6 +59,8 @@
                     <sequenceFlow id="begin_prepareparam2" sourceRef="begin" targetRef="prepareparam2">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam2_dedataset1" sourceRef="prepareparam2" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam7_deaction2" sourceRef="prepareparam7" targetRef="deaction2">
                     </sequenceFlow>
                     <sequenceFlow id="dedataset1_loopsubcall1" sourceRef="dedataset1" targetRef="loopsubcall1">
                     </sequenceFlow>
