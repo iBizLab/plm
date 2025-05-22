@@ -34,8 +34,6 @@
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="libraryauto_create_guidelinedeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="创建配置参数"/>
-                        <endEvent id="deaction2_end" name="end"/>
-                        <sequenceFlow id="deaction2_end_line" sourceRef="deaction2" targetRef="deaction2_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="libraryauto_create_guidelineprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置过滤参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="libraryauto_create_guidelineprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="设置配置参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="libraryauto_create_guidelinededataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="查询测试库全局流程规则"/>
@@ -56,7 +54,9 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="libraryauto_create_guidelinerenewparam2" id="renewparam2" implementation="http://www.jboss.org/drools/rule" name="重新建立参数"/>
                         <endEvent id="renewparam2_end" name="end"/>
                         <sequenceFlow id="renewparam2_end_line" sourceRef="renewparam2" targetRef="renewparam2_end"/>
-                    <sequenceFlow id="begin_prepareparam2" sourceRef="begin" targetRef="prepareparam2">
+                    <sequenceFlow id="begin_prepareparam7" sourceRef="begin" targetRef="prepareparam7">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction2_prepareparam2" sourceRef="deaction2" targetRef="prepareparam2">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam2_dedataset1" sourceRef="prepareparam2" targetRef="dedataset1">
                     </sequenceFlow>

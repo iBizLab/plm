@@ -4106,13 +4106,13 @@
     "name" : "创建测试库流程准则",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : -52,
+      "leftPos" : 248,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREPARAM2"
+          "id" : "PREPAREPARAM7"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -4120,7 +4120,7 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 144,
+      "topPos" : -256,
       "parallelOutput" : true
     }, {
       "codeName" : "DEACTION2",
@@ -4139,6 +4139,17 @@
       "leftPos" : 208,
       "logicNodeType" : "DEACTION",
       "name" : "创建配置参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION2"
+        }
+      } ],
       "topPos" : 20
     }, {
       "codeName" : "PREPAREPARAM2",
@@ -4193,6 +4204,41 @@
           "modelref" : true,
           "id" : "PREPAREPARAM7"
         }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "OWNER_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "parameter"
+        },
+        "name" : "Default[ID] ==> parameter[OWNER_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "OWNER_TYPE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "parameter"
+        },
+        "name" : "直接值[LIBRARY] ==> parameter[OWNER_TYPE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "LIBRARY",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "OWNER_SUBTYPE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "parameter"
+        },
+        "name" : "直接值[LIBRARY_RUNFAILURE] ==> parameter[OWNER_SUBTYPE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "LIBRARY_RUNFAILURE",
+        "srcValueType" : "SRCVALUE"
       } ],
       "topPos" : -90
     }, {
