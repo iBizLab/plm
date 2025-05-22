@@ -164,23 +164,23 @@
     }
   } ],
   "getPSDEFormItemUpdates" : [ {
+    "codeName" : "estimated_update",
+    "name" : "预估工时表单项更新",
+    "getPSDEFIUpdateDetails" : [ {
+      "name" : "workload_schedule"
+    }, {
+      "name" : "remaining_workload"
+    } ],
+    "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nvar remaining = 0; // 剩余工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n\tif(estimated_workload){\r\n\t\t// 计算剩余工时\r\n\t\tremaining = (estimated - actual) >= 0 ? (estimated - actual) : 0;\r\n\t\tform_data.remaining_workload = remaining;\r\n\t}\r\n} else {\r\n\tremaining = estimated;\r\n\tform_data.remaining_workload = estimated_workload;\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
+    "customCode" : true,
+    "showBusyIndicator" : false
+  }, {
     "codeName" : "remaining_update",
     "name" : "剩余工时表单项更新",
     "getPSDEFIUpdateDetails" : [ {
       "name" : "workload_schedule"
     } ],
     "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload; \r\nvar remaining_workload = form_data.remaining_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n}\r\nvar remaining = 0;\r\nif(remaining_workload){\r\n\tremaining = Number(remaining_workload);\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}\r\n",
-    "customCode" : true,
-    "showBusyIndicator" : false
-  }, {
-    "codeName" : "estimated_update",
-    "name" : "预估工时表单项更新",
-    "getPSDEFIUpdateDetails" : [ {
-      "name" : "remaining_workload"
-    }, {
-      "name" : "workload_schedule"
-    } ],
-    "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nvar remaining = 0; // 剩余工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n\tif(estimated_workload){\r\n\t\t// 计算剩余工时\r\n\t\tremaining = (estimated - actual) >= 0 ? (estimated - actual) : 0;\r\n\t\tform_data.remaining_workload = remaining;\r\n\t}\r\n} else {\r\n\tremaining = estimated;\r\n\tform_data.remaining_workload = estimated_workload;\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
     "customCode" : true,
     "showBusyIndicator" : false
   } ],
@@ -16866,6 +16866,10 @@
                 "colMD" : 12,
                 "layout" : "TABLE_24COL"
               },
+              "getPSSysImage" : {
+                "glyph" : "xf18e@FontAwesome",
+                "cssClass" : "fa fa-arrow-circle-o-right"
+              },
               "getPSUIAction" : {
                 "actionTarget" : "NONE",
                 "caption" : "查看预估工时明细",
@@ -18426,6 +18430,12 @@
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
+          "getPSNavigateParams" : [ {
+            "key" : "n_category_eq",
+            "name" : "n_category_eq",
+            "value" : "ACTUAL_WORKLOAD",
+            "rawValue" : true
+          } ],
           "parentDataJO" : {
             "srfparentdename" : "IDEA",
             "SRFPARENTTYPE" : "CUSTOM"
@@ -19245,6 +19255,12 @@
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
+          "getPSNavigateParams" : [ {
+            "key" : "n_category_eq",
+            "name" : "n_category_eq",
+            "value" : "ESTIMATED_WORKLOAD",
+            "rawValue" : true
+          } ],
           "parentDataJO" : {
             "srfparentdename" : "IDEA",
             "SRFPARENTTYPE" : "CUSTOM"
