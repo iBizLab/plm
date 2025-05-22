@@ -16836,7 +16836,7 @@
       "name" : "结束",
       "topPos" : 200
     }, {
-      "code" : "console.log('创建需求视图执行了');\r\nif (!ctrl) return;\r\nconst oldData = ctrl.oldData;\r\nconst newData = ctrl.state.data;\r\nif (newData.product_id && newData.product_id !== oldData.product_id) {\r\n    // 旧数据\r\n    oldData.product_id = newData.product_id;\r\n    uiLogic.createideaformdata = newData;\r\n    \r\n    // 重绘视图\r\n    const srfparentkey = newData.product_id;\r\n    const srfparentdename = view.model.appDataEntityId.split('.').pop();\r\n    view.redrawView({\r\n        context: view.context,\r\n        params: { srfparentkey,srfparentdename },\r\n        isReloadModel: true,\r\n    });\r\n}",
+      "code" : "console.log('创建需求视图执行了');\r\nif (!ctrl) return;\r\nconst oldData = ctrl.oldData;\r\nconst newData = ctrl.state.data;\r\nif (newData.product_id && newData.product_id !== oldData.product_id) {\r\n    // 旧数据\r\n    oldData.product_id = newData.product_id;\r\n    uiLogic.createideaformdata = newData;\r\n    \r\n    // 重绘视图\r\n    const srfparentkey = newData.product_id;\r\n    const srfparentdename = view.model.appDataEntityId.split('.').pop();\r\n    view.redrawView({\r\n        context: view.context,\r\n        params: { srfparentkey,srfparentdename },\r\n        isReloadModel: true,\r\n    });\r\n\r\n    // 拿到表单加载成功事件，回显表单数据\r\n    view.layoutPanel.evt.on('onControlEvent', event => {\r\n        if (event.triggerEventName === 'onLoadDraftSuccess') {\r\n            console.log('表单加载数据成功');\r\n        }\r\n    })\r\n}\r\n",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 510,
       "logicNodeType" : "RAWJSCODE",
@@ -16856,17 +16856,17 @@
       "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "CreateIdeaFormData",
-      "logicName" : "新建需求表单",
-      "name" : "新建需求表单",
-      "paramFieldName" : "CreateIdeaFormData",
-      "appGlobalParam" : true
-    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
+    }, {
+      "codeName" : "CreateIdeaFormData",
+      "logicName" : "新建需求表单",
+      "name" : "新建需求表单",
+      "paramFieldName" : "CreateIdeaFormData",
+      "appGlobalParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
