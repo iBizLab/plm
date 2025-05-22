@@ -8743,6 +8743,64 @@
     "id" : "add_attachments@test_case"
   }, {
     "actionTarget" : "NONE",
+    "caption" : "添加预估工时",
+    "codeName" : "add_estimated_workload",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_forecast_quick_create_view.json",
+      "viewType" : "DEOPTVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "test_case_add_estimated_workload",
+    "name" : "添加预估工时",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+    },
+    "getPSNavigateParams" : [ {
+      "key" : "estimated_workload",
+      "name" : "estimated_workload",
+      "value" : "estimated_workload",
+      "rawValue" : false
+    }, {
+      "key" : "remaining_workload",
+      "name" : "remaining_workload",
+      "value" : "remaining_workload",
+      "rawValue" : false
+    }, {
+      "key" : "name",
+      "name" : "name",
+      "value" : "title",
+      "rawValue" : false
+    }, {
+      "key" : "principal_id",
+      "name" : "principal_id",
+      "value" : "principal_id",
+      "rawValue" : false
+    }, {
+      "key" : "actual_workload",
+      "name" : "actual_workload",
+      "value" : "actual_workload",
+      "rawValue" : false
+    }, {
+      "key" : "workload_kind",
+      "name" : "workload_kind",
+      "value" : "测试用例",
+      "rawValue" : true
+    } ],
+    "getPSSysImage" : {
+      "glyph" : "xf067@FontAwesome",
+      "cssClass" : "fa fa-plus"
+    },
+    "refreshMode" : 1,
+    "tooltip" : "添加预估工时",
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "add_estimated_workload",
+    "uIActionType" : "DEUIACTION",
+    "reloadData" : true,
+    "id" : "add_estimated_workload@test_case"
+  }, {
+    "actionTarget" : "NONE",
     "caption" : "全屏",
     "codeName" : "bi_full_screen",
     "frontProcessType" : "OTHER",
@@ -8874,6 +8932,27 @@
     "uILogicAttachMode" : "REPLACE",
     "globalUIAction" : true,
     "id" : "check_baseline_version@test_case"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "查看预估工时明细",
+    "codeName" : "check_estimated_workload_detail",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "test_case_check_estimated_workload_detail",
+    "name" : "查看预估工时明细",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "check_estimated_workload_detail"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+    },
+    "tooltip" : "查看预估工时明细",
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "check_estimated_workload_detail",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "id" : "check_estimated_workload_detail@test_case"
   }, {
     "actionTarget" : "NONE",
     "caption" : "查看评审历史",
@@ -10647,6 +10726,54 @@
       "topPos" : 200
     }, {
       "code" : "uiLogic.view.ctx.controllersMap.get(\"form\").details.grouppanel8.state.visible=false;\r\nuiLogic.view.ctx.controllersMap.get(\"form\").details.baseline.state.visible=true;",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "切换显示组件",
+      "topPos" : 350
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "check_estimated_workload_detail",
+    "defaultParamName" : "Default",
+    "logicName" : "查看预估工时明细",
+    "memo" : "按钮触发，通过脚本切换显示组件",
+    "name" : "查看预估工时明细",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200
+    }, {
+      "code" : "uiLogic.view.ctx.controllersMap.get(\"form\").details.grouppanel8.state.visible=false;\r\nuiLogic.view.ctx.controllersMap.get(\"form\").details.grouppanel14.state.visible=true;",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",

@@ -11909,7 +11909,7 @@
     "name" : "查看预估工时明细",
     "getPSAppDEUILogic" : {
       "modelref" : true,
-      "id" : "check_workload_detail"
+      "id" : "check_estimated_workload_detail"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -14557,6 +14557,54 @@
       "logicName" : "上下文",
       "name" : "上下文",
       "navContextParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "check_estimated_workload_detail",
+    "defaultParamName" : "Default",
+    "logicName" : "查看预估工时明细",
+    "memo" : "按钮触发，通过脚本切换显示组件",
+    "name" : "查看预估工时明细",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200
+    }, {
+      "code" : "uiLogic.view.ctx.controllersMap.get(\"form\").details.grouppanel8.state.visible=false;\r\nuiLogic.view.ctx.controllersMap.get(\"form\").details.grouppanel17.state.visible=true;",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "切换显示组件",
+      "topPos" : 350
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
