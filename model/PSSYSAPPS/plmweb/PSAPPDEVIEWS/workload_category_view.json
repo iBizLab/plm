@@ -286,10 +286,18 @@
                 "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_log_management_view.json",
                 "viewType" : "DEGRIDVIEW"
               }
+            }, {
+              "name" : "EXPITEM:estimated_calendar",
+              "realTitle" : "预估工时日历分页搜索视图（管理）",
+              "getRefPSAppView" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_estimated_management_tab_search_view.json",
+                "viewType" : "DETABSEARCHVIEW"
+              }
             } ],
             "getPSControlParam" : { },
             "getPSControls" : [ {
-              "caption" : "工时日历",
+              "caption" : "实际工时日历",
               "codeName" : "management_view_calendar",
               "controlType" : "TABVIEWPANEL",
               "name" : "calendar",
@@ -571,9 +579,6 @@
                     "getPSControlParam" : {
                       "autoLoad" : true,
                       "showBusyIndicator" : true,
-                      "ctrlParams" : {
-                        "SRFNAVPARAM.N_CATEGORY_EQ" : "ACTUAL_WORKLOAD"
-                      },
                       "id" : "TABEXPPANEL"
                     },
                     "getPSDEDRTabPages" : [ {
@@ -747,7 +752,7 @@
                 } ] ]
               }
             }, {
-              "caption" : "工时日志",
+              "caption" : "实际工时日志",
               "codeName" : "management_view_log",
               "controlType" : "TABVIEWPANEL",
               "getEmbeddedPSAppDEView" : {
@@ -765,11 +770,32 @@
               },
               "modelid" : "e3005ae28b4e8e929b4273186b02c055_log",
               "modeltype" : "PSVIEWPANEL"
+            }, {
+              "caption" : "预估工时日历",
+              "codeName" : "management_view_estimated_calendar",
+              "controlType" : "TABVIEWPANEL",
+              "getEmbeddedPSAppDEView" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_estimated_management_tab_search_view.json",
+                "viewType" : "DETABSEARCHVIEW"
+              },
+              "name" : "estimated_calendar",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+              },
+              "getPSControlParam" : {
+                "id" : "estimated_calendar"
+              },
+              "modelid" : "e3005ae28b4e8e929b4273186b02c055_estimated_calendar",
+              "modeltype" : "PSVIEWPANEL"
             } ],
             "getPSTabExpPages" : [ {
               "name" : "calendar"
             }, {
               "name" : "log"
+            }, {
+              "name" : "estimated_calendar"
             } ],
             "tabLayout" : "TOP",
             "uniqueTag" : "workload_management_view__tabexppanel",
@@ -885,6 +911,7 @@
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
+  "refFlag" : false,
   "tabLayout" : "TOP",
   "title" : "工时类别分页导航视图",
   "viewStyle" : "DEFAULT",
