@@ -235,17 +235,6 @@
       }
     } ],
     "getPSAppViewRefs" : [ {
-      "name" : "NEWDATA",
-      "realTitle" : "工时编辑视图",
-      "getRealTitlePSLanguageRes" : {
-        "lanResTag" : "PAGE.TITLE.WORKLOAD.EDITVIEW"
-      },
-      "getRefPSAppView" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_edit_view.json",
-        "viewType" : "DEEDITVIEW"
-      }
-    }, {
       "name" : "EDITDATA",
       "realTitle" : "工时数据重定向视图",
       "getRealTitlePSLanguageRes" : {
@@ -255,6 +244,17 @@
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_redirect_view.json",
         "viewType" : "DEREDIRECTVIEW"
+      }
+    }, {
+      "name" : "NEWDATA",
+      "realTitle" : "工时编辑视图",
+      "getRealTitlePSLanguageRes" : {
+        "lanResTag" : "PAGE.TITLE.WORKLOAD.EDITVIEW"
+      },
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_edit_view.json",
+        "viewType" : "DEEDITVIEW"
       }
     } ],
     "getPSControls" : [ {
@@ -376,6 +376,11 @@
         "id" : "数据表格处理器"
       },
       "getPSControlNavParams" : [ {
+        "key" : "n_category_eq",
+        "name" : "n_category_eq",
+        "value" : "CATEGORY",
+        "rawValue" : false
+      }, {
         "key" : "n_register_date_eq",
         "name" : "n_register_date_eq",
         "value" : "date",
@@ -390,6 +395,7 @@
         "autoLoad" : true,
         "showBusyIndicator" : true,
         "ctrlParams" : {
+          "SRFNAVPARAM.N_CATEGORY_EQ" : "%CATEGORY%",
           "DATERANGE" : "date_range",
           "SRFNAVPARAM.N_REGISTER_DATE_EQ" : "%date%",
           "SRFNAVPARAM.TYPE_ID" : "%type_id%",
