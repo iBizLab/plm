@@ -3367,6 +3367,20 @@
       "id" : "_FORM_HYBRID_BUG"
     },
     "getPSDEFormItemUpdates" : [ {
+      "codeName" : "set_type_bug",
+      "name" : "设置缺陷类型",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "set_type_bug"
+      },
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "work_item_type_name"
+      }, {
+        "name" : "work_item_type_id"
+      }, {
+        "name" : "project_type"
+      } ]
+    }, {
       "codeName" : "calc_parent_work_item_type",
       "name" : "计算父工作项类型",
       "getPSDEFIUpdateDetails" : [ {
@@ -3383,20 +3397,6 @@
       },
       "getPSDEFIUpdateDetails" : [ {
         "name" : "entry_id"
-      } ]
-    }, {
-      "codeName" : "set_type_bug",
-      "name" : "设置缺陷类型",
-      "getPSAppDEMethod" : {
-        "modelref" : true,
-        "id" : "set_type_bug"
-      },
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_name"
-      }, {
-        "name" : "work_item_type_id"
-      }, {
-        "name" : "project_type"
       } ]
     } ],
     "getPSDEFormItemVRs" : [ {
@@ -3778,11 +3778,11 @@
         "modelState" : 16384,
         "name" : "group1",
         "getPSDEFormDetails" : [ {
-          "codeName" : "grouppanel2",
+          "codeName" : "left_group",
           "detailStyle" : "DEFAULT",
           "detailType" : "GROUPPANEL",
           "modelState" : 507904,
-          "name" : "grouppanel2",
+          "name" : "left_group",
           "getPSDEFormDetails" : [ {
             "caption" : "标题",
             "codeName" : "title",
@@ -3819,11 +3819,11 @@
             "showCaption" : true
           }, {
             "caption" : "描述",
-            "codeName" : "grouppanel7",
+            "codeName" : "description_group",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
             "modelState" : 540672,
-            "name" : "grouppanel7",
+            "name" : "description_group",
             "getPSDEFormDetails" : [ {
               "caption" : "描述",
               "codeName" : "description",
@@ -3889,11 +3889,11 @@
           }, {
             "actionGroupExtractMode" : "ITEM",
             "caption" : "附件",
-            "codeName" : "grouppanel6",
+            "codeName" : "attachment",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
             "modelState" : 606208,
-            "name" : "grouppanel6",
+            "name" : "attachment",
             "getPSDEFormDetails" : [ {
               "codeName" : "attachments",
               "getContentPSControl" : {
@@ -5932,24 +5932,6 @@
       "id" : "_FORM_HYBRID_EPIC"
     },
     "getPSDEFormItemUpdates" : [ {
-      "codeName" : "set_default_entry",
-      "name" : "选择看板后填充默认看板栏",
-      "getPSAppDEMethod" : {
-        "modelref" : true,
-        "id" : "set_default_entry"
-      },
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "entry_id"
-      } ]
-    }, {
-      "codeName" : "calc_parent_work_item_type",
-      "name" : "计算父工作项类型",
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_name"
-      } ],
-      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-      "customCode" : true
-    }, {
       "codeName" : "set_type_bug",
       "name" : "设置缺陷类型",
       "getPSAppDEMethod" : {
@@ -5962,6 +5944,24 @@
         "name" : "project_type"
       }, {
         "name" : "work_item_type_id"
+      } ]
+    }, {
+      "codeName" : "calc_parent_work_item_type",
+      "name" : "计算父工作项类型",
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "work_item_type_name"
+      } ],
+      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+      "customCode" : true
+    }, {
+      "codeName" : "set_default_entry",
+      "name" : "选择看板后填充默认看板栏",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "set_default_entry"
+      },
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "entry_id"
       } ]
     } ],
     "getPSDEFormItemVRs" : [ {
@@ -6343,11 +6343,11 @@
         "modelState" : 16384,
         "name" : "group1",
         "getPSDEFormDetails" : [ {
-          "codeName" : "grouppanel2",
+          "codeName" : "left_group",
           "detailStyle" : "DEFAULT",
           "detailType" : "GROUPPANEL",
           "modelState" : 507904,
-          "name" : "grouppanel2",
+          "name" : "left_group",
           "getPSDEFormDetails" : [ {
             "caption" : "标题",
             "codeName" : "title",
@@ -6384,11 +6384,11 @@
             "showCaption" : true
           }, {
             "caption" : "描述",
-            "codeName" : "grouppanel7",
+            "codeName" : "description_group",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
             "modelState" : 540672,
-            "name" : "grouppanel7",
+            "name" : "description_group",
             "getPSDEFormDetails" : [ {
               "caption" : "描述",
               "codeName" : "description",
@@ -6454,11 +6454,11 @@
           }, {
             "actionGroupExtractMode" : "ITEM",
             "caption" : "附件",
-            "codeName" : "grouppanel6",
+            "codeName" : "attachment",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
             "modelState" : 606208,
-            "name" : "grouppanel6",
+            "name" : "attachment",
             "getPSDEFormDetails" : [ {
               "codeName" : "attachments",
               "getContentPSControl" : {
@@ -8430,6 +8430,24 @@
       "id" : "_FORM_HYBRID_FEATURE"
     },
     "getPSDEFormItemUpdates" : [ {
+      "codeName" : "set_default_entry",
+      "name" : "选择看板后填充默认看板栏",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "set_default_entry"
+      },
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "entry_id"
+      } ]
+    }, {
+      "codeName" : "calc_parent_work_item_type",
+      "name" : "计算父工作项类型",
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "work_item_type_name"
+      } ],
+      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+      "customCode" : true
+    }, {
       "codeName" : "set_type_bug",
       "name" : "设置缺陷类型",
       "getPSAppDEMethod" : {
@@ -8442,24 +8460,6 @@
         "name" : "work_item_type_name"
       }, {
         "name" : "work_item_type_id"
-      } ]
-    }, {
-      "codeName" : "calc_parent_work_item_type",
-      "name" : "计算父工作项类型",
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_name"
-      } ],
-      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-      "customCode" : true
-    }, {
-      "codeName" : "set_default_entry",
-      "name" : "选择看板后填充默认看板栏",
-      "getPSAppDEMethod" : {
-        "modelref" : true,
-        "id" : "set_default_entry"
-      },
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "entry_id"
       } ]
     } ],
     "getPSDEFormItemVRs" : [ {
@@ -8848,11 +8848,11 @@
         "modelState" : 16384,
         "name" : "group1",
         "getPSDEFormDetails" : [ {
-          "codeName" : "grouppanel2",
+          "codeName" : "left_group",
           "detailStyle" : "DEFAULT",
           "detailType" : "GROUPPANEL",
           "modelState" : 507904,
-          "name" : "grouppanel2",
+          "name" : "left_group",
           "getPSDEFormDetails" : [ {
             "caption" : "标题",
             "codeName" : "title",
@@ -8889,11 +8889,11 @@
             "showCaption" : true
           }, {
             "caption" : "描述",
-            "codeName" : "grouppanel7",
+            "codeName" : "description_group",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
             "modelState" : 540672,
-            "name" : "grouppanel7",
+            "name" : "description_group",
             "getPSDEFormDetails" : [ {
               "caption" : "描述",
               "codeName" : "description",
@@ -8959,11 +8959,11 @@
           }, {
             "actionGroupExtractMode" : "ITEM",
             "caption" : "附件",
-            "codeName" : "grouppanel6",
+            "codeName" : "attachment",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
             "modelState" : 606208,
-            "name" : "grouppanel6",
+            "name" : "attachment",
             "getPSDEFormDetails" : [ {
               "codeName" : "attachments",
               "getContentPSControl" : {
@@ -11045,14 +11045,6 @@
       "id" : "_FORM_HYBRID_ISSUE"
     },
     "getPSDEFormItemUpdates" : [ {
-      "codeName" : "calc_parent_work_item_type",
-      "name" : "计算父工作项类型",
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_name"
-      } ],
-      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-      "customCode" : true
-    }, {
       "codeName" : "set_type_bug",
       "name" : "设置缺陷类型",
       "getPSAppDEMethod" : {
@@ -11066,6 +11058,14 @@
       }, {
         "name" : "work_item_type_id"
       } ]
+    }, {
+      "codeName" : "calc_parent_work_item_type",
+      "name" : "计算父工作项类型",
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "work_item_type_name"
+      } ],
+      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+      "customCode" : true
     }, {
       "codeName" : "set_default_entry",
       "name" : "选择看板后填充默认看板栏",
@@ -11435,11 +11435,11 @@
         "modelState" : 16384,
         "name" : "group1",
         "getPSDEFormDetails" : [ {
-          "codeName" : "grouppanel2",
+          "codeName" : "left_group",
           "detailStyle" : "DEFAULT",
           "detailType" : "GROUPPANEL",
           "modelState" : 507904,
-          "name" : "grouppanel2",
+          "name" : "left_group",
           "getPSDEFormDetails" : [ {
             "caption" : "标题",
             "codeName" : "title",
@@ -11476,11 +11476,11 @@
             "showCaption" : true
           }, {
             "caption" : "描述",
-            "codeName" : "grouppanel7",
+            "codeName" : "description_group",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
             "modelState" : 540672,
-            "name" : "grouppanel7",
+            "name" : "description_group",
             "getPSDEFormDetails" : [ {
               "caption" : "描述",
               "codeName" : "description",
@@ -11546,11 +11546,11 @@
           }, {
             "actionGroupExtractMode" : "ITEM",
             "caption" : "附件",
-            "codeName" : "grouppanel6",
+            "codeName" : "attachment",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
             "modelState" : 606208,
-            "name" : "grouppanel6",
+            "name" : "attachment",
             "getPSDEFormDetails" : [ {
               "codeName" : "attachments",
               "getContentPSControl" : {
@@ -13423,6 +13423,24 @@
       "id" : "_FORM_HYBRID_MILESTONE"
     },
     "getPSDEFormItemUpdates" : [ {
+      "codeName" : "set_default_entry",
+      "name" : "选择看板后填充默认看板栏",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "set_default_entry"
+      },
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "entry_id"
+      } ]
+    }, {
+      "codeName" : "calc_parent_work_item_type",
+      "name" : "计算父工作项类型",
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "work_item_type_name"
+      } ],
+      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+      "customCode" : true
+    }, {
       "codeName" : "set_type_bug",
       "name" : "设置缺陷类型",
       "getPSAppDEMethod" : {
@@ -13435,24 +13453,6 @@
         "name" : "work_item_type_id"
       }, {
         "name" : "work_item_type_name"
-      } ]
-    }, {
-      "codeName" : "calc_parent_work_item_type",
-      "name" : "计算父工作项类型",
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_name"
-      } ],
-      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-      "customCode" : true
-    }, {
-      "codeName" : "set_default_entry",
-      "name" : "选择看板后填充默认看板栏",
-      "getPSAppDEMethod" : {
-        "modelref" : true,
-        "id" : "set_default_entry"
-      },
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "entry_id"
       } ]
     } ],
     "getPSDEFormItemVRs" : [ {
@@ -13820,11 +13820,11 @@
         "modelState" : 16384,
         "name" : "group1",
         "getPSDEFormDetails" : [ {
-          "codeName" : "grouppanel2",
+          "codeName" : "left_group",
           "detailStyle" : "DEFAULT",
           "detailType" : "GROUPPANEL",
           "modelState" : 507904,
-          "name" : "grouppanel2",
+          "name" : "left_group",
           "getPSDEFormDetails" : [ {
             "caption" : "标题",
             "codeName" : "title",
@@ -13861,11 +13861,11 @@
             "showCaption" : true
           }, {
             "caption" : "描述",
-            "codeName" : "grouppanel7",
+            "codeName" : "description_group",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
             "modelState" : 540672,
-            "name" : "grouppanel7",
+            "name" : "description_group",
             "getPSDEFormDetails" : [ {
               "caption" : "描述",
               "codeName" : "description",
@@ -13931,11 +13931,11 @@
           }, {
             "actionGroupExtractMode" : "ITEM",
             "caption" : "附件",
-            "codeName" : "grouppanel6",
+            "codeName" : "attachment",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
             "modelState" : 606208,
-            "name" : "grouppanel6",
+            "name" : "attachment",
             "getPSDEFormDetails" : [ {
               "codeName" : "attachments",
               "getContentPSControl" : {
@@ -15908,24 +15908,6 @@
       "id" : "_FORM_HYBRID_REQUIREMENT"
     },
     "getPSDEFormItemUpdates" : [ {
-      "codeName" : "calc_parent_work_item_type",
-      "name" : "计算父工作项类型",
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_name"
-      } ],
-      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-      "customCode" : true
-    }, {
-      "codeName" : "set_default_entry",
-      "name" : "选择看板后填充默认看板栏",
-      "getPSAppDEMethod" : {
-        "modelref" : true,
-        "id" : "set_default_entry"
-      },
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "entry_id"
-      } ]
-    }, {
       "codeName" : "set_type_bug",
       "name" : "设置缺陷类型",
       "getPSAppDEMethod" : {
@@ -15939,6 +15921,24 @@
       }, {
         "name" : "work_item_type_id"
       } ]
+    }, {
+      "codeName" : "set_default_entry",
+      "name" : "选择看板后填充默认看板栏",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "set_default_entry"
+      },
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "entry_id"
+      } ]
+    }, {
+      "codeName" : "calc_parent_work_item_type",
+      "name" : "计算父工作项类型",
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "work_item_type_name"
+      } ],
+      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+      "customCode" : true
     } ],
     "getPSDEFormItemVRs" : [ {
       "checkMode" : 1,
@@ -16326,11 +16326,11 @@
         "modelState" : 16384,
         "name" : "group1",
         "getPSDEFormDetails" : [ {
-          "codeName" : "grouppanel2",
+          "codeName" : "left_group",
           "detailStyle" : "DEFAULT",
           "detailType" : "GROUPPANEL",
           "modelState" : 507904,
-          "name" : "grouppanel2",
+          "name" : "left_group",
           "getPSDEFormDetails" : [ {
             "caption" : "标题",
             "codeName" : "title",
@@ -16367,11 +16367,11 @@
             "showCaption" : true
           }, {
             "caption" : "描述",
-            "codeName" : "grouppanel7",
+            "codeName" : "description_group",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
             "modelState" : 540672,
-            "name" : "grouppanel7",
+            "name" : "description_group",
             "getPSDEFormDetails" : [ {
               "caption" : "描述",
               "codeName" : "description",
@@ -16437,11 +16437,11 @@
           }, {
             "actionGroupExtractMode" : "ITEM",
             "caption" : "附件",
-            "codeName" : "grouppanel6",
+            "codeName" : "attachment",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
             "modelState" : 606208,
-            "name" : "grouppanel6",
+            "name" : "attachment",
             "getPSDEFormDetails" : [ {
               "codeName" : "attachments",
               "getContentPSControl" : {
@@ -18513,6 +18513,20 @@
       "id" : "_FORM_HYBRID_STAGE"
     },
     "getPSDEFormItemUpdates" : [ {
+      "codeName" : "set_type_bug",
+      "name" : "设置缺陷类型",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "set_type_bug"
+      },
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "work_item_type_name"
+      }, {
+        "name" : "work_item_type_id"
+      }, {
+        "name" : "project_type"
+      } ]
+    }, {
       "codeName" : "set_default_entry",
       "name" : "选择看板后填充默认看板栏",
       "getPSAppDEMethod" : {
@@ -18530,20 +18544,6 @@
       } ],
       "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
       "customCode" : true
-    }, {
-      "codeName" : "set_type_bug",
-      "name" : "设置缺陷类型",
-      "getPSAppDEMethod" : {
-        "modelref" : true,
-        "id" : "set_type_bug"
-      },
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_name"
-      }, {
-        "name" : "work_item_type_id"
-      }, {
-        "name" : "project_type"
-      } ]
     } ],
     "getPSDEFormItemVRs" : [ {
       "checkMode" : 1,
@@ -18910,11 +18910,11 @@
         "modelState" : 16384,
         "name" : "group1",
         "getPSDEFormDetails" : [ {
-          "codeName" : "grouppanel2",
+          "codeName" : "left_group",
           "detailStyle" : "DEFAULT",
           "detailType" : "GROUPPANEL",
           "modelState" : 507904,
-          "name" : "grouppanel2",
+          "name" : "left_group",
           "getPSDEFormDetails" : [ {
             "caption" : "标题",
             "codeName" : "title",
@@ -18951,11 +18951,11 @@
             "showCaption" : true
           }, {
             "caption" : "描述",
-            "codeName" : "grouppanel7",
+            "codeName" : "description_group",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
             "modelState" : 540672,
-            "name" : "grouppanel7",
+            "name" : "description_group",
             "getPSDEFormDetails" : [ {
               "caption" : "描述",
               "codeName" : "description",
@@ -19021,11 +19021,11 @@
           }, {
             "actionGroupExtractMode" : "ITEM",
             "caption" : "附件",
-            "codeName" : "grouppanel6",
+            "codeName" : "attachment",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
             "modelState" : 606208,
-            "name" : "grouppanel6",
+            "name" : "attachment",
             "getPSDEFormDetails" : [ {
               "codeName" : "attachments",
               "getContentPSControl" : {
@@ -20998,15 +20998,13 @@
       "id" : "_FORM_HYBRID_STORY"
     },
     "getPSDEFormItemUpdates" : [ {
-      "codeName" : "set_default_entry",
-      "name" : "选择看板后填充默认看板栏",
-      "getPSAppDEMethod" : {
-        "modelref" : true,
-        "id" : "set_default_entry"
-      },
+      "codeName" : "calc_parent_work_item_type",
+      "name" : "计算父工作项类型",
       "getPSDEFIUpdateDetails" : [ {
-        "name" : "entry_id"
-      } ]
+        "name" : "work_item_type_name"
+      } ],
+      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+      "customCode" : true
     }, {
       "codeName" : "set_type_bug",
       "name" : "设置缺陷类型",
@@ -21022,13 +21020,15 @@
         "name" : "work_item_type_name"
       } ]
     }, {
-      "codeName" : "calc_parent_work_item_type",
-      "name" : "计算父工作项类型",
+      "codeName" : "set_default_entry",
+      "name" : "选择看板后填充默认看板栏",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "set_default_entry"
+      },
       "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_name"
-      } ],
-      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-      "customCode" : true
+        "name" : "entry_id"
+      } ]
     } ],
     "getPSDEFormItemVRs" : [ {
       "checkMode" : 1,
@@ -21416,11 +21416,11 @@
         "modelState" : 16384,
         "name" : "group1",
         "getPSDEFormDetails" : [ {
-          "codeName" : "grouppanel2",
+          "codeName" : "left_group",
           "detailStyle" : "DEFAULT",
           "detailType" : "GROUPPANEL",
           "modelState" : 507904,
-          "name" : "grouppanel2",
+          "name" : "left_group",
           "getPSDEFormDetails" : [ {
             "caption" : "标题",
             "codeName" : "title",
@@ -21457,11 +21457,11 @@
             "showCaption" : true
           }, {
             "caption" : "描述",
-            "codeName" : "grouppanel7",
+            "codeName" : "description_group",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
             "modelState" : 540672,
-            "name" : "grouppanel7",
+            "name" : "description_group",
             "getPSDEFormDetails" : [ {
               "caption" : "描述",
               "codeName" : "description",
@@ -21527,11 +21527,11 @@
           }, {
             "actionGroupExtractMode" : "ITEM",
             "caption" : "附件",
-            "codeName" : "grouppanel6",
+            "codeName" : "attachment",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
             "modelState" : 606208,
-            "name" : "grouppanel6",
+            "name" : "attachment",
             "getPSDEFormDetails" : [ {
               "codeName" : "attachments",
               "getContentPSControl" : {
@@ -23610,6 +23610,14 @@
       "id" : "_FORM_HYBRID_TASK"
     },
     "getPSDEFormItemUpdates" : [ {
+      "codeName" : "calc_parent_work_item_type",
+      "name" : "计算父工作项类型",
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "work_item_type_name"
+      } ],
+      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+      "customCode" : true
+    }, {
       "codeName" : "set_default_entry",
       "name" : "选择看板后填充默认看板栏",
       "getPSAppDEMethod" : {
@@ -23619,14 +23627,6 @@
       "getPSDEFIUpdateDetails" : [ {
         "name" : "entry_id"
       } ]
-    }, {
-      "codeName" : "calc_parent_work_item_type",
-      "name" : "计算父工作项类型",
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_name"
-      } ],
-      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-      "customCode" : true
     }, {
       "codeName" : "set_type_bug",
       "name" : "设置缺陷类型",
@@ -24028,11 +24028,11 @@
         "modelState" : 16384,
         "name" : "group1",
         "getPSDEFormDetails" : [ {
-          "codeName" : "grouppanel2",
+          "codeName" : "left_group",
           "detailStyle" : "DEFAULT",
           "detailType" : "GROUPPANEL",
           "modelState" : 507904,
-          "name" : "grouppanel2",
+          "name" : "left_group",
           "getPSDEFormDetails" : [ {
             "caption" : "标题",
             "codeName" : "title",
@@ -24069,11 +24069,11 @@
             "showCaption" : true
           }, {
             "caption" : "描述",
-            "codeName" : "grouppanel7",
+            "codeName" : "description_group",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
             "modelState" : 540672,
-            "name" : "grouppanel7",
+            "name" : "description_group",
             "getPSDEFormDetails" : [ {
               "caption" : "描述",
               "codeName" : "description",
@@ -24139,11 +24139,11 @@
           }, {
             "actionGroupExtractMode" : "ITEM",
             "caption" : "附件",
-            "codeName" : "grouppanel6",
+            "codeName" : "attachment",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
             "modelState" : 606208,
-            "name" : "grouppanel6",
+            "name" : "attachment",
             "getPSDEFormDetails" : [ {
               "codeName" : "attachments",
               "getContentPSControl" : {
@@ -26255,6 +26255,9 @@
   } ],
   "getPSDEViewCodeName" : "dyna_hybrid_quick_create_view",
   "getPSDEViewId" : "9529fafca02968a7ec24a199e2086970",
+  "getPSSysCss" : {
+    "cssName" : "grouppanel_style"
+  },
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEOPTVIEW",
