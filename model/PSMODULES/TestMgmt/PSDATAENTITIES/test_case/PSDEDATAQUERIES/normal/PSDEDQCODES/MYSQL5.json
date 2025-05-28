@@ -3,7 +3,7 @@
   "name" : "MySQL5",
   "getPSDEDataQueryCodeConds" : [ {
     "condType" : "CUSTOM",
-    "customCond" : "( t1.`IS_DELETED` = 0  AND  ( <choose><when test=\"ctx.webcontext.suite_id !=null \">  t11.`SUITES` LIKE CONCAT('%',#{ctx.webcontext.suite_id},'%')  </when><otherwise>1=1</otherwise></choose>  OR  <choose><when test=\"ctx.webcontext.suite_id !=null \">  t1.`SUITE_ID` = #{ctx.webcontext.suite_id}  </when><otherwise>1=1</otherwise></choose> )  AND  <choose><when test=\"ctx.webcontext.srkeys !=null \">  t1.`ID` IN ({ctx.webcontext.srkeys})  </when><otherwise>1=1</otherwise></choose> )",
+    "customCond" : "( t1.`IS_DELETED` = 0  AND  ( <choose><when test=\"ctx.webcontext.suite_id !=null \">  t11.`SUITES` LIKE CONCAT('%',#{ctx.webcontext.suite_id},'%')  </when><otherwise>1=1</otherwise></choose>  OR  <choose><when test=\"ctx.webcontext.suite_id !=null \">  t1.`SUITE_ID` = #{ctx.webcontext.suite_id}  </when><otherwise>1=1</otherwise></choose> )  AND  <choose><when test=\"ctx.datacontext.srkeys !=null \">  t1.`ID` IN ({ctx.datacontext.srkeys})  </when><otherwise>1=1</otherwise></choose> )",
     "name" : "查询条件"
   } ],
   "getPSDEDataQueryCodeExps" : [ {
