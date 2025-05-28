@@ -284,69 +284,53 @@
         "showCaption" : true
       }, {
         "caption" : "前置条件",
-        "codeName" : "precondition_group",
+        "codeName" : "precondition",
+        "dataType" : 21,
         "detailStyle" : "DEFAULT",
-        "detailType" : "GROUPPANEL",
-        "modelState" : 540672,
-        "name" : "precondition_group",
-        "getPSDEFormDetails" : [ {
-          "caption" : "前置条件",
-          "codeName" : "precondition",
-          "dataType" : 21,
-          "detailStyle" : "DEFAULT",
-          "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 0,
-          "labelPos" : "NONE",
-          "labelWidth" : 0,
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "itemHeight" : 470.0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "precondition",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "PRECONDITION",
+          "codeName" : "precondition"
+        },
+        "getPSEditor" : {
+          "editorHeight" : 450.0,
+          "editorParams" : {
+            "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
+            "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
+            "MAXHEIGHT" : "450",
+            "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
+            "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
+            "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
+            "MODE" : "default",
+            "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
+            "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
+            "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
+            "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : context.discuss_topic? `discuss_topics/${context.discuss_topic}/discuss_members/fetch_default` : ''}`",
+            "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+            "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
+            "QUOTEURL" : "`recents/fetch_recent_access`"
+          },
+          "editorStyle" : "COLLAPSE",
+          "editorType" : "HTMLEDITOR",
           "name" : "precondition",
-          "noPrivDisplayMode" : 1,
-          "getPSAppDEField" : {
-            "name" : "PRECONDITION",
-            "codeName" : "precondition"
-          },
-          "getPSEditor" : {
-            "editorParams" : {
-              "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
-              "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
-              "MAXHEIGHT" : "450",
-              "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
-              "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
-              "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
-              "MODE" : "default",
-              "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
-              "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
-              "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
-              "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : context.discuss_topic? `discuss_topics/${context.discuss_topic}/discuss_members/fetch_default` : ''}`",
-              "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
-              "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
-              "QUOTEURL" : "`recents/fetch_recent_access`"
-            },
-            "editorStyle" : "COLLAPSE",
-            "editorType" : "HTMLEDITOR",
-            "name" : "precondition",
-            "getPSSysPFPlugin" : {
-              "pluginType" : "EDITOR_CUSTOMSTYLE",
-              "pluginCode" : "COMMENT",
-              "runtimeObject" : true
-            }
-          },
-          "getPSLayoutPos" : {
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "allowEmpty" : true
-        } ],
-        "getPSLayout" : {
-          "childColMD" : 24,
-          "columnCount" : 24,
-          "layout" : "TABLE_24COL"
+          "getPSSysPFPlugin" : {
+            "pluginType" : "EDITOR_CUSTOMSTYLE",
+            "pluginCode" : "COMMENT",
+            "runtimeObject" : true
+          }
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "infoGroupMode" : false,
+        "allowEmpty" : true,
         "showCaption" : true
       }, {
         "caption" : "用例步骤",
@@ -580,69 +564,53 @@
         "showCaption" : true
       }, {
         "caption" : "描述",
-        "codeName" : "description_group",
+        "codeName" : "case_description",
+        "dataType" : 21,
         "detailStyle" : "DEFAULT",
-        "detailType" : "GROUPPANEL",
-        "modelState" : 540672,
-        "name" : "description_group",
-        "getPSDEFormDetails" : [ {
-          "caption" : "描述",
-          "codeName" : "case_description",
-          "dataType" : 21,
-          "detailStyle" : "DEFAULT",
-          "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 0,
-          "labelPos" : "NONE",
-          "labelWidth" : 0,
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "itemHeight" : 470.0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "case_description",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "DESCRIPTION",
+          "codeName" : "description"
+        },
+        "getPSEditor" : {
+          "editorHeight" : 450.0,
+          "editorParams" : {
+            "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
+            "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
+            "MAXHEIGHT" : "450",
+            "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
+            "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
+            "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
+            "MODE" : "default",
+            "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
+            "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
+            "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
+            "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : context.discuss_topic? `discuss_topics/${context.discuss_topic}/discuss_members/fetch_default` : ''}`",
+            "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+            "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
+            "QUOTEURL" : "`recents/fetch_recent_access`"
+          },
+          "editorStyle" : "COLLAPSE",
+          "editorType" : "HTMLEDITOR",
           "name" : "case_description",
-          "noPrivDisplayMode" : 1,
-          "getPSAppDEField" : {
-            "name" : "DESCRIPTION",
-            "codeName" : "description"
-          },
-          "getPSEditor" : {
-            "editorParams" : {
-              "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
-              "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
-              "MAXHEIGHT" : "450",
-              "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
-              "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
-              "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
-              "MODE" : "default",
-              "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
-              "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
-              "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
-              "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : context.discuss_topic? `discuss_topics/${context.discuss_topic}/discuss_members/fetch_default` : ''}`",
-              "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
-              "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
-              "QUOTEURL" : "`recents/fetch_recent_access`"
-            },
-            "editorStyle" : "COLLAPSE",
-            "editorType" : "HTMLEDITOR",
-            "name" : "case_description",
-            "getPSSysPFPlugin" : {
-              "pluginType" : "EDITOR_CUSTOMSTYLE",
-              "pluginCode" : "COMMENT",
-              "runtimeObject" : true
-            }
-          },
-          "getPSLayoutPos" : {
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "allowEmpty" : true
-        } ],
-        "getPSLayout" : {
-          "childColMD" : 24,
-          "columnCount" : 24,
-          "layout" : "TABLE_24COL"
+          "getPSSysPFPlugin" : {
+            "pluginType" : "EDITOR_CUSTOMSTYLE",
+            "pluginCode" : "COMMENT",
+            "runtimeObject" : true
+          }
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "infoGroupMode" : false,
+        "allowEmpty" : true,
         "showCaption" : true
       }, {
         "actionGroupExtractMode" : "ITEM",
