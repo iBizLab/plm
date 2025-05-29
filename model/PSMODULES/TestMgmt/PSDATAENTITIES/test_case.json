@@ -3262,6 +3262,38 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEDATAQUERIES/test_case_export/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "test_case_export",
+    "logicName" : "用例导出",
+    "name" : "test_case_export",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "TEST_CASE"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Test_case_exportInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "test_case_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Test_case_exportResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEDATAQUERIES/test_case_maneuver_context/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "test_case_maneuver_context",
@@ -4703,6 +4735,32 @@
     "enableBackend" : true,
     "enableFront" : true
   }, {
+    "codeName" : "test_case_export",
+    "logicName" : "用例导出",
+    "name" : "test_case_export",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "test_case_export"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Test_case_exportInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "test_case_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Test_case_exportResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
     "actionHolder" : 1,
     "codeName" : "test_case_maneuver_context",
     "dataSetType" : "DELOGIC",
@@ -5317,6 +5375,159 @@
         "codeName" : "maintenance_name"
       },
       "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    } ]
+  }, {
+    "codeName" : "test_case_export",
+    "groupType" : "GRIDCOLUMNS",
+    "name" : "用例导出",
+    "orderValue" : 99999,
+    "getPSDEFGroupDetails" : [ {
+      "codeName" : "identifier",
+      "logicName" : "编号",
+      "name" : "identifier",
+      "orderValue" : 110,
+      "getPSDEField" : {
+        "name" : "IDENTIFIER",
+        "codeName" : "identifier"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "title",
+      "logicName" : "标题",
+      "name" : "title",
+      "orderValue" : 120,
+      "getPSDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "stringLength" : 500,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "level",
+      "logicName" : "重要程度",
+      "name" : "level",
+      "orderValue" : 130,
+      "getPSDEField" : {
+        "name" : "LEVEL",
+        "codeName" : "level"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "type",
+      "logicName" : "用例类型",
+      "name" : "type",
+      "orderValue" : 150,
+      "getPSDEField" : {
+        "name" : "TYPE",
+        "codeName" : "type"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "precondition",
+      "logicName" : "前置条件",
+      "name" : "precondition",
+      "orderValue" : 190,
+      "getPSDEField" : {
+        "name" : "PRECONDITION",
+        "codeName" : "precondition"
+      },
+      "stringLength" : 1048576,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "state",
+      "logicName" : "状态",
+      "name" : "state",
+      "orderValue" : 300,
+      "getPSDEField" : {
+        "name" : "STATE",
+        "codeName" : "state"
+      },
+      "stringLength" : 60,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "steps",
+      "logicName" : "步骤描述",
+      "name" : "step_desc",
+      "orderValue" : 310,
+      "getPSDEField" : {
+        "name" : "STEPS",
+        "codeName" : "steps"
+      },
+      "stringLength" : 1048576,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "maintenance_id",
+      "logicName" : "维护人",
+      "name" : "MAINTENANCE_ID",
+      "orderValue" : 320,
+      "getPSDEField" : {
+        "name" : "MAINTENANCE_ID",
+        "codeName" : "maintenance_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "maintenance_name",
+      "logicName" : "维护人",
+      "name" : "maintenance_name",
+      "orderValue" : 330,
+      "getPSDEField" : {
+        "name" : "MAINTENANCE_NAME",
+        "codeName" : "maintenance_name"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "Suite_id",
+      "logicName" : "所属模块",
+      "name" : "SUITE_ID",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "SUITE_ID",
+        "codeName" : "Suite_id"
+      },
+      "stringLength" : 100,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "Suite_name",
+      "logicName" : "所属模块",
+      "name" : "suite_name",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "SUITE_NAME",
+        "codeName" : "Suite_name"
+      },
+      "stringLength" : 200,
+      "enableUserInsert" : true,
+      "enableUserUpdate" : true
+    }, {
+      "codeName" : "update_time",
+      "getLNPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+      },
+      "logicName" : "更新时间",
+      "name" : "update_time",
+      "orderValue" : 1000,
+      "getPSDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
+      "allowEmpty" : false,
       "enableUserInsert" : true,
       "enableUserUpdate" : true
     } ]
@@ -6018,7 +6229,8 @@
     "stdDataType" : 21,
     "stringLength" : 1048576,
     "valueFormat" : "%1$s",
-    "enableAudit" : true
+    "enableAudit" : true,
+    "queryColumn" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "IS_ARCHIVED",
@@ -6359,7 +6571,8 @@
     "stdDataType" : 21,
     "stringLength" : 1048576,
     "valueFormat" : "%1$s",
-    "enableAudit" : true
+    "enableAudit" : true,
+    "queryColumn" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "MAINTENANCE_ID",

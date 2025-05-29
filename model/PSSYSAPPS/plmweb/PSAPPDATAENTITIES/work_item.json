@@ -39970,6 +39970,128 @@
       "modelref" : true,
       "id" : "Begin"
     }
+  }, {
+    "codeName" : "work_item_switch_dynamic_form",
+    "defaultParamName" : "Default",
+    "logicName" : "工作项切换动态表单",
+    "name" : "工作项切换动态表单",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "code" : "const ctrl = uiLogic.curctrl;\r\nconsole.log('工作项数据变化执行了');\r\nif (!ctrl) return;\r\nconst oldData = ibiz.util.getGlobalParam().workitemcreateformdata;\r\nconst newData = ctrl.data.clone();\r\n// 所属项目标识及工作项类型标识属性名\r\nconst projectType = 'project_type';\r\nconst workItemTypeId = 'work_item_type_id';\r\n// 所属项目名称及工作项类型名称属性名\r\nconst projectName = 'project_name';\r\nconst workItemTypeName = 'work_item_type_name';\r\n// 检查项目类型标识及工作项类型标识是否发生变更\r\nconst hasProjectTypeChanged = newData && newData.hasOwnProperty(projectType) && (!oldData || (!newData[projectType] && oldData[projectType]) || newData[projectType] !== oldData[projectType]);\r\nconst hasWorkItemTypeIdChanged = newData && newData.hasOwnProperty(workItemTypeId) && (!oldData || (!newData[workItemTypeId] && oldData[workItemTypeId]) || newData[workItemTypeId] !== oldData[workItemTypeId]);\r\n// 检查新项目数据中是否包含有效的项目类型及工作项类型ID\r\nconst hasProjectType = newData && newData[projectType];\r\nconst hasWorkItemTypeId = newData && newData[workItemTypeId];\r\n// 所属项目及工作项类型都有值并且其中一个的值发生了变化时，通知视图重绘\r\nif (hasProjectType && hasWorkItemTypeId && (hasProjectTypeChanged || hasWorkItemTypeIdChanged)) {\r\n    // 更新数据\r\n    ibiz.util.getGlobalParam().workitemcreateformdata = {};\r\n    Object.assign(ibiz.util.getGlobalParam().workitemcreateformdata, {\r\n        [projectType]: newData[projectType],\r\n        [projectName]: newData[projectName],\r\n        [workItemTypeName]: newData[workItemTypeName],\r\n        [workItemTypeId]: newData[workItemTypeId],\r\n    });\r\n\r\n    // 重绘视图\r\n    const srfparentkey = newData[projectType];\r\n    const srfdatatype = newData[workItemTypeId];\r\n    const srfparentdename = 'project';\r\n    view.redrawView({\r\n        context: view.context,\r\n        params: { srfparentkey, srfparentdename, srfdatatype },\r\n        isReloadModel: true,\r\n    });\r\n\r\n    // 视图关闭前，清空全局变量\r\n    // 清空 workitemcreateformdata 逻辑由（工作项更新新建表单数据）界面逻辑完成\r\n}",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 444,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 763,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "work_item_update_formdata",
+    "defaultParamName" : "Default",
+    "logicName" : "工作项更新新建表单数据",
+    "name" : "工作项更新新建表单数据",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "code" : "const ctrl = uiLogic.curctrl;\r\nconsole.log('工作项数据准备更新了');\r\nconst { workitemcreateformdata } = ibiz.util.getGlobalParam();\r\nif (!ctrl || !workitemcreateformdata) return;\r\n\r\n// 新建表单则更新数据，如果表单属于编辑表单，则不需要设置回显数据\r\nif (ctrl.data.srfuf === 0) {\r\n    Object.keys(workitemcreateformdata).forEach(_key => {\r\n        ctrl.setDataValue(_key, workitemcreateformdata[_key]);\r\n    })\r\n}\r\n\r\n// 视图关闭前，清空全局变量\r\nview._evt.on('onCloseView', () => {\r\n    ibiz.util.getGlobalParam().workitemcreateformdata = undefined;\r\n})",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 440,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 210
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 796,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
   } ],
   "getAllPSAppPortletCats" : [ {
     "codeName" : "ProjMgmt__index_project_management",
