@@ -3979,6 +3979,35 @@
     "enableBackend" : true,
     "enableFront" : true
   }, {
+    "actionHolder" : 1,
+    "codeName" : "common",
+    "dataSetType" : "DELOGIC",
+    "logicName" : "测试用例",
+    "name" : "common",
+    "getPSDEDataSetInput" : {
+      "name" : "CommonInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "test_case_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "CommonResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDELOGICS/common.json"
+    },
+    "predefinedType" : "DELOGIC",
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "dailyTendencies",
     "groupMode" : 1,
     "logicName" : "每日执行用例趋势",
@@ -4702,35 +4731,6 @@
     },
     "enableBackend" : true,
     "enableFront" : true
-  }, {
-    "actionHolder" : 1,
-    "codeName" : "test_case_export",
-    "dataSetType" : "DELOGIC",
-    "logicName" : "用例导出",
-    "name" : "test_case_export",
-    "getPSDEDataSetInput" : {
-      "name" : "Test_case_exportInput",
-      "getPSDEFilterDTO" : {
-        "modelref" : true,
-        "id" : "test_case_filter_dto"
-      },
-      "type" : "DTO"
-    },
-    "getPSDEDataSetReturn" : {
-      "name" : "Test_case_exportResult",
-      "getPSDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "test_case_dto"
-      },
-      "type" : "PAGE"
-    },
-    "getPSDELogic" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDELOGICS/common.json"
-    },
-    "predefinedType" : "DELOGIC",
-    "enableBackend" : true,
-    "enableFront" : false
   }, {
     "actionHolder" : 1,
     "codeName" : "test_case_maneuver_context",
@@ -11251,7 +11251,7 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "RAWSFCODE1"
+          "id" : "PREPAREPARAM2"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -11259,14 +11259,13 @@
           "id" : "Begin"
         }
       } ],
+      "topPos" : -200,
       "parallelOutput" : true
     }, {
-      "code" : "def _default = logic.param('Default').getReal();\r\n\r\ndef srfkeys = _default.get(\"srfkeys\");\r\nif(srfkeys != null && srfkeys != ''){\r\n    _default.set(\"n_id_in\", srfkeys);\r\n}\r\n",
-      "codeName" : "RAWSFCODE1",
-      "codeType" : "Groovy",
+      "codeName" : "PREPAREPARAM2",
       "leftPos" : 160,
-      "logicNodeType" : "RAWSFCODE",
-      "name" : "执行脚本代码",
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -11275,20 +11274,50 @@
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "RAWSFCODE1"
+          "id" : "PREPAREPARAM2"
         }
       } ],
-      "topPos" : 148
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "n_id_in",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "name" : "直接值[9eebd256-d1dd-df15-0...] ==> Default[n_id_in]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "9eebd256-d1dd-df15-0106-be20198c32d5",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 120
     }, {
-      "codeName" : "DEBUGPARAM1",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : -150,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "topPos" : 208
+      "codeName" : "PREPAREPARAM3",
+      "leftPos" : 434,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "n_id_in",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "name" : "Default[srfkeys] ==> Default[n_id_in]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "srfkeys",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 120
+    }, {
+      "code" : "def _default = logic.param('Default').getReal();\r\n\r\ndef srfkeys = _default.get(\"srfkeys\");\r\nif(srfkeys != null && srfkeys != ''){\r\n    _default.set(\"n_id_in\", srfkeys);\r\n}\r\n",
+      "codeName" : "RAWSFCODE1",
+      "codeType" : "Groovy",
+      "leftPos" : 670,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "执行脚本代码",
+      "topPos" : 148
     }, {
       "codeName" : "DEDATASET1",
       "getDstPSDEDataSet" : {

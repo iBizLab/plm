@@ -15,10 +15,13 @@
                             <tns:global identifier="test_casecommonpage" type="cn.ibizlab.plm.core.testmgmt.domain.test_case" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommonprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommonprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <endEvent id="prepareparam3_end" name="end"/>
+                        <sequenceFlow id="prepareparam3_end_line" sourceRef="prepareparam3" targetRef="prepareparam3_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommonrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommondebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
-                        <endEvent id="debugparam1_end" name="end"/>
-                        <sequenceFlow id="debugparam1_end_line" sourceRef="debugparam1" targetRef="debugparam1_end"/>
+                        <endEvent id="rawsfcode1_end" name="end"/>
+                        <sequenceFlow id="rawsfcode1_end_line" sourceRef="rawsfcode1" targetRef="rawsfcode1_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommondedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommonprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <endEvent id="prepareparam1_end" name="end"/>
@@ -26,9 +29,9 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommonend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
-                    <sequenceFlow id="begin_rawsfcode1" sourceRef="begin" targetRef="rawsfcode1">
+                    <sequenceFlow id="begin_prepareparam2" sourceRef="begin" targetRef="prepareparam2">
                     </sequenceFlow>
-                    <sequenceFlow id="rawsfcode1_dedataset1" sourceRef="rawsfcode1" targetRef="dedataset1">
+                    <sequenceFlow id="prepareparam2_dedataset1" sourceRef="prepareparam2" targetRef="dedataset1">
                     </sequenceFlow>
                     <sequenceFlow id="dedataset1_end1" sourceRef="dedataset1" targetRef="end1">
                     </sequenceFlow>
