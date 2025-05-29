@@ -3273,7 +3273,64 @@
         "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
       },
       "joinType" : "MAIN",
-      "name" : "TEST_CASE"
+      "name" : "TEST_CASE",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "0",
+          "fieldName" : "IS_DELETED",
+          "name" : "(IS_DELETED) 等于(=) 0",
+          "getPSDEField" : {
+            "name" : "IS_DELETED",
+            "codeName" : "is_deleted"
+          }
+        }, {
+          "condOp" : "OR",
+          "condType" : "GROUP",
+          "name" : "OR",
+          "getPSDEDQConditions" : [ {
+            "condOp" : "LIKE",
+            "condType" : "SINGLE",
+            "condValue" : "suite_id",
+            "fieldName" : "SUITES",
+            "name" : "(SUITES) 文本包含(%) 网页请求上下文 suite_id",
+            "getPSDEField" : {
+              "name" : "SUITES",
+              "codeName" : "suites"
+            },
+            "getPSVARTypeId" : "WEBCONTEXT",
+            "ignoreEmpty" : true
+          }, {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "suite_id",
+            "fieldName" : "SUITE_ID",
+            "name" : "(SUITE_ID) 等于(=) 网页请求上下文 suite_id",
+            "getPSDEField" : {
+              "name" : "SUITE_ID",
+              "codeName" : "Suite_id"
+            },
+            "getPSVARTypeId" : "WEBCONTEXT",
+            "ignoreEmpty" : true
+          }, {
+            "condOp" : "IN",
+            "condType" : "SINGLE",
+            "condValue" : "srfkeys",
+            "fieldName" : "ID",
+            "name" : "(ID) 值在范围中(In) 网页请求上下文 srfkeys",
+            "getPSDEField" : {
+              "name" : "ID",
+              "codeName" : "id"
+            },
+            "getPSVARTypeId" : "WEBCONTEXT",
+            "ignoreEmpty" : true
+          } ]
+        } ]
+      }
     },
     "getPSDEDataQueryInput" : {
       "name" : "Test_case_exportInput",
@@ -6076,8 +6133,7 @@
     "stdDataType" : 21,
     "stringLength" : 1048576,
     "valueFormat" : "%1$s",
-    "enableAudit" : true,
-    "queryColumn" : false
+    "enableAudit" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "IS_ARCHIVED",
@@ -6418,8 +6474,7 @@
     "stdDataType" : 21,
     "stringLength" : 1048576,
     "valueFormat" : "%1$s",
-    "enableAudit" : true,
-    "queryColumn" : false
+    "enableAudit" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "MAINTENANCE_ID",
