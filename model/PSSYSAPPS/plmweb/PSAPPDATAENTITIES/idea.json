@@ -16961,7 +16961,7 @@
       "name" : "结束",
       "topPos" : 200
     }, {
-      "code" : "const ctrl = uiLogic.curctrl;\r\nif (!ctrl) return;\r\nconst oldData = ibiz.util.getGlobalParam().ideacreateformdata;\r\nconst newData = ctrl.data.clone();\r\n// 所属产品标识及所属产品名称属性名\r\nconst productId = 'product_id';\r\nconst productName = 'product_name';\r\n// 检查产品标识是否发生变更\r\nconst newProductId = newData[productId] || null;\r\nconst hasProductIdChanged = newData && newData.hasOwnProperty(productId) && ((!oldData && newProductId) || oldData && ((!newProductId && oldData[productId]) || (newProductId !== oldData[productId])));\r\n// 当 产品标识 发生变化时通知视图重新加载模型\r\nif (hasProductIdChanged) {\r\n    // 更新数据\r\n    ibiz.util.getGlobalParam().ideacreateformdata = {};\r\n    Object.assign(ibiz.util.getGlobalParam().ideacreateformdata, {\r\n        [productId]: newProductId,\r\n        [productName]: newData[productName],\r\n    });\r\n    // 重绘视图\r\n    const srfparentkey = newProductId;\r\n    const srfparentdename = 'product';\r\n    view.redrawView({\r\n        context: view.context,\r\n        params: { srfparentkey, srfparentdename },\r\n        isReloadModel: true,\r\n    });\r\n\r\n    // 视图关闭前，清空全局变量\r\n    // 清空 ideacreateformdata 逻辑由（需求更新新建表单数据）界面逻辑完成\r\n}",
+      "code" : "/** 需求 */\r\nconst ctrl = uiLogic.curctrl;\r\nif (!ctrl) return;\r\nconst oldData = ibiz.util.getGlobalParam().ideacreateformdata;\r\nconst newData = ctrl.data.clone();\r\n// 所属产品标识及所属产品名称属性名\r\nconst productId = 'product_id';\r\nconst productName = 'product_name';\r\n// 检查产品标识是否发生变更\r\nconst newProductId = newData[productId] || null;\r\nconst hasProductIdChanged = newData && newData.hasOwnProperty(productId) && ((!oldData && newProductId) || oldData && ((!newProductId && oldData[productId]) || (newProductId !== oldData[productId])));\r\n// 当 产品标识 发生变化时通知视图重新加载模型\r\nif (newProductId && hasProductIdChanged) {\r\n    // 更新数据\r\n    ibiz.util.getGlobalParam().ideacreateformdata = {};\r\n    Object.assign(ibiz.util.getGlobalParam().ideacreateformdata, {\r\n        [productId]: newProductId,\r\n        [productName]: newData[productName],\r\n    });\r\n    // 重绘视图\r\n    const srfparentkey = newProductId;\r\n    const srfparentdename = 'product';\r\n    view.redrawView({\r\n        context: view.context,\r\n        params: { srfparentkey, srfparentdename },\r\n        isReloadModel: true,\r\n    });\r\n\r\n    // 视图关闭前，清空全局变量\r\n    // 清空 ideacreateformdata 逻辑由（需求更新新建表单数据）界面逻辑完成\r\n}",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 490,
       "logicNodeType" : "RAWJSCODE",
@@ -16982,17 +16982,17 @@
       "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "curctrl",
-      "logicName" : "表单部件",
-      "name" : "表单部件",
-      "activeCtrlParam" : true,
-      "ctrlParam" : true
-    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
+    }, {
+      "codeName" : "curctrl",
+      "logicName" : "表单部件",
+      "name" : "表单部件",
+      "activeCtrlParam" : true,
+      "ctrlParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -17029,7 +17029,7 @@
       "name" : "结束",
       "topPos" : 200
     }, {
-      "code" : "const ctrl = uiLogic.curctrl;\r\nconst { ideacreateformdata } = ibiz.util.getGlobalParam();\r\nif (!ctrl || !ideacreateformdata) return;\r\n\r\n// 新建表单则更新数据，如果表单属于编辑表单，则不需要设置回显数据\r\nif (ctrl.data.srfuf === 0) {\r\n    Object.keys(ideacreateformdata).forEach(_key => {\r\n        ctrl.setDataValue(_key, ideacreateformdata[_key]);\r\n    })\r\n}\r\n\r\n// 视图关闭前，清空全局变量\r\nview._evt.on('onCloseView', () => {\r\n    ibiz.util.getGlobalParam().ideacreateformdata = undefined;\r\n})",
+      "code" : "const ctrl = uiLogic.curctrl;\r\nconst { ideacreateformdata } = ibiz.util.getGlobalParam();\r\nif (!ctrl || !ideacreateformdata) return;\r\n\r\n// 新建表单则更新数据，如果表单属于编辑表单，则不需要设置回显数据\r\nif (ctrl.data.srfuf === 0) {\r\n    Object.assign(ctrl.state.data, ideacreateformdata);\r\n}\r\n\r\n// 视图关闭前，清空全局变量\r\nview._evt.on('onCloseView', () => {\r\n    ibiz.util.getGlobalParam().ideacreateformdata = undefined;\r\n})",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 445,
       "logicNodeType" : "RAWJSCODE",
