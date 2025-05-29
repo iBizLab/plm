@@ -15,12 +15,15 @@
                             <tns:global identifier="test_casecommonpage" type="cn.ibizlab.plm.core.testmgmt.domain.test_case" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommondebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommonprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommondedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommonend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
-                    <sequenceFlow id="gateway-begin_prepareparam1" sourceRef="gateway-begin" targetRef="prepareparam1">
+                    <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam1_prepareparam1" sourceRef="gateway-debugparam1" targetRef="prepareparam1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $test_casecommondefault:test_case();
                                             $test_casecommonfilter:Map();
@@ -30,7 +33,7 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-begin_dedataset1" sourceRef="gateway-begin" targetRef="dedataset1">
+                    <sequenceFlow id="gateway-debugparam1_dedataset1" sourceRef="gateway-debugparam1" targetRef="dedataset1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $test_casecommondefault:test_case();
                                             $test_casecommonfilter:Map();
@@ -44,9 +47,9 @@
                     </sequenceFlow>
                     <sequenceFlow id="dedataset1_end1" sourceRef="dedataset1" targetRef="end1">
                     </sequenceFlow>
-                            <exclusiveGateway id="gateway-begin" name="Gateway" gatewayDirection="Diverging" default="gateway-begin_end_line"></exclusiveGateway>
-                            <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>
-                            <sequenceFlow id="gateway-begin_end_line" sourceRef="gateway-begin" targetRef="gateway-begin_end"/>
-                            <endEvent id="gateway-begin_end" name="end"/>
+                            <exclusiveGateway id="gateway-debugparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="debugparam1_gateway-debugparam1_gatewayline" sourceRef="debugparam1" targetRef="gateway-debugparam1"></sequenceFlow>
+                            <sequenceFlow id="gateway-debugparam1_end_line" sourceRef="gateway-debugparam1" targetRef="gateway-debugparam1_end"/>
+                            <endEvent id="gateway-debugparam1_end" name="end"/>
         </process>
     </definitions>
