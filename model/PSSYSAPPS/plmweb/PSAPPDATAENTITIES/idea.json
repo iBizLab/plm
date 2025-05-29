@@ -16955,10 +16955,17 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "code" : "const ctrl = uiLogic.curctrl;\r\nif (!ctrl) return;\r\nconst oldData = ibiz.util.getGlobalParam().ideacreateformdata;\r\nconst newData = ctrl.data.clone();\r\n// 所属产品标识及所属产品名称属性名\r\nconst productId = 'product_id';\r\nconst productName = 'product_name';\r\n// 检查产品标识是否发生变更\r\nconst hasProductIdChanged = newData && newData.hasOwnProperty(productId) && ((!oldData && newData[productId]) || (!newData[productId] && oldData[productId]) || (oldData && newData[productId] !== oldData[productId]));\r\n// 当 产品标识 发生变化时通知视图重新加载模型\r\nif (hasProductIdChanged) {\r\n    // 更新数据\r\n    ibiz.util.getGlobalParam().ideacreateformdata = {};\r\n    Object.assign(ibiz.util.getGlobalParam().ideacreateformdata, {\r\n        [productId]: newData[productId],\r\n        [productName]: newData[productName],\r\n    });\r\n    // 重绘视图\r\n    const srfparentkey = newData[productId];\r\n    const srfparentdename = 'product';\r\n    view.redrawView({\r\n        context: view.context,\r\n        params: { srfparentkey, srfparentdename },\r\n        isReloadModel: true,\r\n    });\r\n\r\n    // 视图关闭前，清空全局变量\r\n    // 清空 ideacreateformdata 逻辑由（需求更新新建表单数据）界面逻辑完成\r\n}",
+      "codeName" : "END1",
+      "leftPos" : 909,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
+      "code" : "const ctrl = uiLogic.curctrl;\r\nif (!ctrl) return;\r\nconst oldData = ibiz.util.getGlobalParam().ideacreateformdata;\r\nconst newData = ctrl.data.clone();\r\n// 所属产品标识及所属产品名称属性名\r\nconst productId = 'product_id';\r\nconst productName = 'product_name';\r\n// 检查产品标识是否发生变更\r\nconst newProductId = newData[productId] || null;\r\nconst hasProductIdChanged = newData && newData.hasOwnProperty(productId) && ((!oldData && newProductId) || oldData && ((!newProductId && oldData[productId]) || (newProductId !== oldData[productId])));\r\n// 当 产品标识 发生变化时通知视图重新加载模型\r\nif (hasProductIdChanged) {\r\n    // 更新数据\r\n    ibiz.util.getGlobalParam().ideacreateformdata = {};\r\n    Object.assign(ibiz.util.getGlobalParam().ideacreateformdata, {\r\n        [productId]: newProductId,\r\n        [productName]: newData[productName],\r\n    });\r\n    // 重绘视图\r\n    const srfparentkey = newProductId;\r\n    const srfparentdename = 'product';\r\n    view.redrawView({\r\n        context: view.context,\r\n        params: { srfparentkey, srfparentdename },\r\n        isReloadModel: true,\r\n    });\r\n\r\n    // 视图关闭前，清空全局变量\r\n    // 清空 ideacreateformdata 逻辑由（需求更新新建表单数据）界面逻辑完成\r\n}",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 490,
       "logicNodeType" : "RAWJSCODE",
+      "memo" : "\t",
       "name" : "注入脚本代码",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
@@ -16973,12 +16980,6 @@
         }
       } ],
       "topPos" : 208
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 909,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "curctrl",

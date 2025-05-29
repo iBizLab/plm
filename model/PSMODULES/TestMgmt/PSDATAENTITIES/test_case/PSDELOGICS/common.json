@@ -63,10 +63,54 @@
     "topPos" : -200,
     "parallelOutput" : true
   }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "normal"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取测试用例",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "page"
+    },
+    "topPos" : 50
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 200,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "page"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 204
+  }, {
     "codeName" : "PREPAREPARAM2",
-    "leftPos" : 330,
+    "leftPos" : 320,
     "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备参数",
+    "name" : "设置过滤参数",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -94,101 +138,7 @@
       "srcValue" : "9eebd256-d1dd-df15-0106-be20198c32d5",
       "srcValueType" : "SRCDLPARAM"
     } ],
-    "topPos" : 20
-  }, {
-    "code" : "def _default = logic.param('Default').getReal();\r\n\r\ndef srfkeys = _default.get(\"srfkeys\");\r\nif(srfkeys != null && srfkeys != ''){\r\n    _default.set(\"n_id_in\", srfkeys);\r\n}\r\n",
-    "codeName" : "RAWSFCODE1",
-    "codeType" : "Groovy",
-    "leftPos" : 670,
-    "logicNodeType" : "RAWSFCODE",
-    "name" : "执行脚本代码",
-    "topPos" : 148
-  }, {
-    "codeName" : "DEDATASET1",
-    "getDstPSDEDataSet" : {
-      "modelref" : true,
-      "id" : "normal"
-    },
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
-    },
-    "leftPos" : 160,
-    "logicNodeType" : "DEDATASET",
-    "name" : "实体数据集",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "END1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET1"
-      }
-    } ],
-    "getRetPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "page"
-    },
-    "topPos" : 268
-  }, {
-    "codeName" : "PREPAREPARAM1",
-    "leftPos" : 550,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备参数",
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "n_id_in",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "filter"
-      },
-      "name" : "Default[srfkeys] ==> filter[n_id_in]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "srfkeys",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    } ],
-    "topPos" : 310
-  }, {
-    "codeName" : "END1",
-    "leftPos" : 200,
-    "logicNodeType" : "END",
-    "name" : "结束",
-    "getReturnParam" : {
-      "modelref" : true,
-      "id" : "page"
-    },
-    "returnType" : "LOGICPARAM",
-    "topPos" : 404
-  }, {
-    "codeName" : "PREPAREPARAM3",
-    "leftPos" : 790,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备参数",
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "n_id_in",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "name" : "Default[srfkeys] ==> Default[n_id_in]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "srfkeys",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    } ],
-    "topPos" : -110
+    "topPos" : -70
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",
@@ -199,11 +149,6 @@
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
     },
     "default" : true,
-    "filterParam" : true
-  }, {
-    "codeName" : "filter",
-    "logicName" : "过滤器",
-    "name" : "过滤器",
     "filterParam" : true
   }, {
     "codeName" : "page",

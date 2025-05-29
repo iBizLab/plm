@@ -6,7 +6,6 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="test_casecommondefault" type="entity"/>
-                                <tns:metaData express="new HashMap()" name="test_casecommonfilter" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.test_case()" name="test_casecommonpage" type="refentity"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Itest_caseService))" name="test_caseservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Itest_caseService))" name="iBzSysTest_caseDefaultService" type="service"/>
@@ -15,24 +14,14 @@
                             <tns:global identifier="test_casecommonpage" type="cn.ibizlab.plm.core.testmgmt.domain.test_case" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommonprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommonrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
-                        <endEvent id="rawsfcode1_end" name="end"/>
-                        <sequenceFlow id="rawsfcode1_end_line" sourceRef="rawsfcode1" targetRef="rawsfcode1_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommondedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommonprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
-                        <endEvent id="prepareparam1_end" name="end"/>
-                        <sequenceFlow id="prepareparam1_end_line" sourceRef="prepareparam1" targetRef="prepareparam1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommondedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取测试用例"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommonend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommonprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
-                        <endEvent id="prepareparam3_end" name="end"/>
-                        <sequenceFlow id="prepareparam3_end_line" sourceRef="prepareparam3" targetRef="prepareparam3_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommonprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置过滤参数"/>
                     <sequenceFlow id="gateway-begin_prepareparam2" sourceRef="gateway-begin" targetRef="prepareparam2">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $test_casecommondefault:test_case();
-                                            $test_casecommonfilter:Map();
                                             $test_casecommonpage:test_case();
                                     eval($test_casecommondefault==test_casecommondefault && $test_casecommonpage==test_casecommonpage);
                                 eval((RuleUtils.test($test_casecommondefault.get("srfkeys"),"ISNOTNULL","")))
@@ -42,16 +31,15 @@
                     <sequenceFlow id="gateway-begin_dedataset1" sourceRef="gateway-begin" targetRef="dedataset1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $test_casecommondefault:test_case();
-                                            $test_casecommonfilter:Map();
                                             $test_casecommonpage:test_case();
                                     eval($test_casecommondefault==test_casecommondefault && $test_casecommonpage==test_casecommonpage);
                                 eval((RuleUtils.test($test_casecommondefault.get("srfkeys"),"ISNULL","")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam2_dedataset1" sourceRef="prepareparam2" targetRef="dedataset1">
-                    </sequenceFlow>
                     <sequenceFlow id="dedataset1_end1" sourceRef="dedataset1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_dedataset1" sourceRef="prepareparam2" targetRef="dedataset1">
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-begin" name="Gateway" gatewayDirection="Diverging" default="gateway-begin_end_line"></exclusiveGateway>
                             <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>

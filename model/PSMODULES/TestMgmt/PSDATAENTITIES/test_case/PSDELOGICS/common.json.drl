@@ -6,7 +6,6 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.common;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.testmgmt.domain.test_case test_casecommondefault;
-                global java.util.Map test_casecommonfilter;
                 global cn.ibizlab.plm.core.testmgmt.domain.test_case test_casecommonpage;
                     global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService test_caseservice;
         global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService iBzSysTest_caseDefaultService;
@@ -22,45 +21,12 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.common;
             then
             end
 
-            //逻辑处理节点[准备参数]
-            rule "prepareparam2"
-            ruleflow-group "test_casecommonprepareparam2"
-            when
-            then
-                            test_casecommondefault.set("n_id_in",test_casecommondefault.get("srfkeys"));
-                        update(test_casecommondefault);//更新fact中变量值
-                        update(test_casecommonfilter);//更新fact中变量值
-                        update(test_casecommonpage);//更新fact中变量值
-            end
-
-            //逻辑处理节点[执行脚本代码]
-            rule "rawsfcode1"
-            ruleflow-group "test_casecommonrawsfcode1"
-            when
-            then
-                        update(test_casecommondefault);//更新fact中变量值
-                        update(test_casecommonfilter);//更新fact中变量值
-                        update(test_casecommonpage);//更新fact中变量值
-            end
-
-            //逻辑处理节点[实体数据集]
+            //逻辑处理节点[获取测试用例]
             rule "dedataset1"
             ruleflow-group "test_casecommondedataset1"
             when
             then
                         update(test_casecommondefault);//更新fact中变量值
-                        update(test_casecommonfilter);//更新fact中变量值
-                        update(test_casecommonpage);//更新fact中变量值
-            end
-
-            //逻辑处理节点[准备参数]
-            rule "prepareparam1"
-            ruleflow-group "test_casecommonprepareparam1"
-            when
-            then
-                            test_casecommonfilter.set("n_id_in",test_casecommondefault.get("srfkeys"));
-                        update(test_casecommondefault);//更新fact中变量值
-                        update(test_casecommonfilter);//更新fact中变量值
                         update(test_casecommonpage);//更新fact中变量值
             end
 
@@ -70,17 +36,15 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.common;
             when
             then
                         update(test_casecommondefault);//更新fact中变量值
-                        update(test_casecommonfilter);//更新fact中变量值
                         update(test_casecommonpage);//更新fact中变量值
             end
 
-            //逻辑处理节点[准备参数]
-            rule "prepareparam3"
-            ruleflow-group "test_casecommonprepareparam3"
+            //逻辑处理节点[设置过滤参数]
+            rule "prepareparam2"
+            ruleflow-group "test_casecommonprepareparam2"
             when
             then
                             test_casecommondefault.set("n_id_in",test_casecommondefault.get("srfkeys"));
                         update(test_casecommondefault);//更新fact中变量值
-                        update(test_casecommonfilter);//更新fact中变量值
                         update(test_casecommonpage);//更新fact中变量值
             end

@@ -40001,7 +40001,7 @@
       "name" : "结束",
       "topPos" : 200
     }, {
-      "code" : "const ctrl = uiLogic.curctrl;\r\nconsole.log('工作项数据变化执行了');\r\nif (!ctrl) return;\r\nconst oldData = ibiz.util.getGlobalParam().workitemcreateformdata;\r\nconst newData = ctrl.data.clone();\r\n// 所属项目标识及工作项类型标识属性名\r\nconst projectType = 'project_type';\r\nconst workItemTypeId = 'work_item_type_id';\r\n// 所属项目名称及工作项类型名称属性名\r\nconst projectName = 'project_name';\r\nconst workItemTypeName = 'work_item_type_name';\r\n// 检查项目类型标识及工作项类型标识是否发生变更\r\nconst hasProjectTypeChanged = newData && newData.hasOwnProperty(projectType) && ((!oldData && newData[projectType]) || (!newData[projectType] && oldData[projectType]) || (oldData && newData[projectType] !== oldData[projectType]));\r\nconst hasWorkItemTypeIdChanged = newData && newData.hasOwnProperty(workItemTypeId) && ((!oldData && newData[workItemTypeId]) || (!newData[workItemTypeId] && oldData[workItemTypeId]) || (oldData && newData[workItemTypeId] !== oldData[workItemTypeId]));\r\n// 所属项目及工作项类型都有值并且其中一个的值发生了变化时，通知视图重绘\r\nif (hasProjectTypeChanged || hasWorkItemTypeIdChanged) {\r\n    // 更新数据\r\n    ibiz.util.getGlobalParam().workitemcreateformdata = {};\r\n    Object.assign(ibiz.util.getGlobalParam().workitemcreateformdata, {\r\n        [projectType]: newData[projectType],\r\n        [projectName]: newData[projectName],\r\n        [workItemTypeName]: newData[workItemTypeName],\r\n        [workItemTypeId]: newData[workItemTypeId],\r\n    });\r\n\r\n    // 重绘视图\r\n    const srfparentkey = newData[projectType];\r\n    const srfdatatype = newData[workItemTypeId];\r\n    const srfparentdename = 'project';\r\n    view.redrawView({\r\n        context: view.context,\r\n        params: { srfparentkey, srfparentdename, srfdatatype },\r\n        isReloadModel: true,\r\n    });\r\n\r\n    // 视图关闭前，清空全局变量\r\n    // 清空 workitemcreateformdata 逻辑由（工作项更新新建表单数据）界面逻辑完成\r\n}",
+      "code" : "const ctrl = uiLogic.curctrl;\r\nif (!ctrl) return;\r\nconst oldData = ibiz.util.getGlobalParam().workitemcreateformdata;\r\nconst newData = ctrl.data.clone();\r\n// 所属项目标识及工作项类型标识属性名\r\nconst projectId = 'project_id';\r\nconst workItemTypeId = 'work_item_type_id';\r\n// 所属项目名称及工作项类型名称属性名\r\nconst projectName = 'project_name';\r\nconst workItemTypeName = 'work_item_type_name';\r\n// 检查项目类型标识及工作项类型标识是否发生变更\r\nconst newProjectId = newData[projectId] || null;\r\nconst newWorkItemTypeId = newData[workItemTypeId] || null;\r\nconst hasProjectIdChanged = newData && newData.hasOwnProperty(projectId) && ((!oldData && newProjectId) || oldData && ((!newProjectId && oldData[projectId]) || (newProjectId !== oldData[projectId])));\r\nconst hasWorkItemTypeIdChanged = newData && newData.hasOwnProperty(workItemTypeId) && ((!oldData && newWorkItemTypeId) || oldData && ((!newWorkItemTypeId && oldData[workItemTypeId]) || (newWorkItemTypeId !== oldData[workItemTypeId])));\r\n// 所属项目及工作项类型都有值并且其中一个的值发生了变化时，通知视图重绘\r\nif (hasProjectIdChanged || hasWorkItemTypeIdChanged) {\r\n    console.log('工作项数据变化执行了');\r\n    // 更新数据\r\n    ibiz.util.getGlobalParam().workitemcreateformdata = {};\r\n    Object.assign(ibiz.util.getGlobalParam().workitemcreateformdata, {\r\n        [projectId]: newProjectId,\r\n        [projectName]: newData[projectName],\r\n        [workItemTypeName]: newData[workItemTypeName],\r\n        [workItemTypeId]: newWorkItemTypeId,\r\n    });\r\n\r\n    // 重绘视图\r\n    const srfparentkey = newProjectId;\r\n    const srfdatatype = newWorkItemTypeId;\r\n    const srfparentdename = 'project';\r\n    view.redrawView({\r\n        context: view.context,\r\n        params: { srfparentkey, srfparentdename, srfdatatype },\r\n        isReloadModel: true,\r\n    });\r\n\r\n    // 视图关闭前，清空全局变量\r\n    // 清空 workitemcreateformdata 逻辑由（工作项更新新建表单数据）界面逻辑完成\r\n}",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 444,
       "logicNodeType" : "RAWJSCODE",
@@ -40021,17 +40021,17 @@
       "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "curctrl",
-      "logicName" : "表单部件",
-      "name" : "表单部件",
-      "activeCtrlParam" : true,
-      "ctrlParam" : true
-    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
+    }, {
+      "codeName" : "curctrl",
+      "logicName" : "表单部件",
+      "name" : "表单部件",
+      "activeCtrlParam" : true,
+      "ctrlParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
