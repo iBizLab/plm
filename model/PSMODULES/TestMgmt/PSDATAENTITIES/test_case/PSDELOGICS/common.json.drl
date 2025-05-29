@@ -32,22 +32,11 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.common;
                         update(test_casecommonpage);//更新fact中变量值
             end
 
-            //逻辑处理节点[实体数据集]
-            rule "dedataset1"
-            ruleflow-group "test_casecommondedataset1"
+            //逻辑处理节点[执行脚本代码]
+            rule "rawsfcode1"
+            ruleflow-group "test_casecommonrawsfcode1"
             when
             then
-                        update(test_casecommondefault);//更新fact中变量值
-                        update(test_casecommonfilter);//更新fact中变量值
-                        update(test_casecommonpage);//更新fact中变量值
-            end
-
-            //逻辑处理节点[准备参数]
-            rule "prepareparam1"
-            ruleflow-group "test_casecommonprepareparam1"
-            when
-            then
-                            test_casecommonfilter.set("n_id_in",test_casecommondefault.get("srfkeys"));
                         update(test_casecommondefault);//更新fact中变量值
                         update(test_casecommonfilter);//更新fact中变量值
                         update(test_casecommonpage);//更新fact中变量值
@@ -56,6 +45,16 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.common;
             //逻辑处理节点[调试逻辑参数]
             rule "debugparam2"
             ruleflow-group "test_casecommondebugparam2"
+            when
+            then
+                        update(test_casecommondefault);//更新fact中变量值
+                        update(test_casecommonfilter);//更新fact中变量值
+                        update(test_casecommonpage);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体数据集]
+            rule "dedataset1"
+            ruleflow-group "test_casecommondedataset1"
             when
             then
                         update(test_casecommondefault);//更新fact中变量值
