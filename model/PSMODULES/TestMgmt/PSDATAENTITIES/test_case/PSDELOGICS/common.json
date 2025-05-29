@@ -15,6 +15,46 @@
         "id" : "PREPAREPARAM2"
       },
       "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "srfkeys",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[srfkeys] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNULL",
+          "dstFieldName" : "srfkeys",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[srfkeys] 值为空(Nil)"
+        } ]
+      },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
         "id" : "Begin"
@@ -22,55 +62,6 @@
     } ],
     "topPos" : -200,
     "parallelOutput" : true
-  }, {
-    "codeName" : "PREPAREPARAM2",
-    "leftPos" : 160,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM2"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "n_id_in",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "name" : "直接值[9eebd256-d1dd-df15-0...] ==> Default[n_id_in]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcValue" : "9eebd256-d1dd-df15-0106-be20198c32d5",
-      "srcValueType" : "SRCVALUE"
-    } ],
-    "topPos" : 120
-  }, {
-    "codeName" : "PREPAREPARAM3",
-    "leftPos" : 434,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备参数",
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "n_id_in",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "name" : "Default[srfkeys] ==> Default[n_id_in]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "srfkeys",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    } ],
-    "topPos" : 120
   }, {
     "code" : "def _default = logic.param('Default').getReal();\r\n\r\ndef srfkeys = _default.get(\"srfkeys\");\r\nif(srfkeys != null && srfkeys != ''){\r\n    _default.set(\"n_id_in\", srfkeys);\r\n}\r\n",
     "codeName" : "RAWSFCODE1",
@@ -113,6 +104,34 @@
     },
     "topPos" : 268
   }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 330,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "n_id_in",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "直接值[9eebd256-d1dd-df15-0...] ==> Default[n_id_in]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "9eebd256-d1dd-df15-0106-be20198c32d5",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 20
+  }, {
     "codeName" : "PREPAREPARAM1",
     "leftPos" : 550,
     "logicNodeType" : "PREPAREPARAM",
@@ -144,6 +163,27 @@
     },
     "returnType" : "LOGICPARAM",
     "topPos" : 404
+  }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : 790,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "n_id_in",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "Default[srfkeys] ==> Default[n_id_in]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "srfkeys",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : -110
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",
