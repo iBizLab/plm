@@ -3289,6 +3289,10 @@
             "codeName" : "is_deleted"
           }
         }, {
+          "condType" : "CUSTOM",
+          "condition" : "<choose>\n    <when test=\"ctx.webcontext.srfkeys != null\">  \n        (t1.`ID` IN (#{ctx.webcontext.srfkeys}))\n    </when>\n    <otherwise>1=1</otherwise>\n</choose>",
+          "name" : "1"
+        }, {
           "condOp" : "OR",
           "condType" : "GROUP",
           "name" : "OR",
@@ -3317,18 +3321,6 @@
             "getPSVARTypeId" : "WEBCONTEXT",
             "ignoreEmpty" : true
           } ]
-        }, {
-          "condOp" : "IN",
-          "condType" : "SINGLE",
-          "condValue" : "srfkeys",
-          "fieldName" : "ID",
-          "name" : "(ID) 值在范围中(In) 网页请求上下文 srfkeys",
-          "getPSDEField" : {
-            "name" : "ID",
-            "codeName" : "id"
-          },
-          "getPSVARTypeId" : "WEBCONTEXT",
-          "ignoreEmpty" : true
         } ]
       }
     },
