@@ -16955,7 +16955,7 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "code" : "const ctrl = uiLogic.curctrl;\r\nif (!ctrl) return;\r\nconst oldData = ibiz.util.getGlobalParam().ideacreateformdata;\r\nconst newData = ctrl.data.clone();\r\n\r\n// 当 产品标识 发生变化时通知视图重新加载模型\r\nif (newData && newData.hasOwnProperty('product_id') && (!oldData || (!newData.product_id && oldData.product_id) || newData.product_id !== oldData.product_id)) {\r\n    // 更新数据\r\n    ibiz.util.getGlobalParam().ideacreateformdata = {};\r\n    Object.assign(ibiz.util.getGlobalParam().ideacreateformdata, {\r\n        product_id: newData.product_id,\r\n        product_name: newData.product_name,\r\n    });\r\n    // 重绘视图\r\n    const srfparentkey = newData.product_id;\r\n    const srfparentdename = 'product';\r\n    view.redrawView({\r\n        context: view.context,\r\n        params: { srfparentkey, srfparentdename },\r\n        isReloadModel: true,\r\n    });\r\n\r\n    // 视图关闭前，清空全局变量\r\n    // 清空逻辑由（需求更新新建表单数据）界面逻辑完成\r\n}",
+      "code" : "const ctrl = uiLogic.curctrl;\r\nif (!ctrl) return;\r\nconst oldData = ibiz.util.getGlobalParam().ideacreateformdata;\r\nconst newData = ctrl.data.clone();\r\n// 所属产品标识及所属产品名称属性名\r\nconst productId = 'product_id';\r\nconst productName = 'product_name';\r\n// 检查产品标识是否发生变更\r\nconst hasProductIdChanged = newData && newData.hasOwnProperty(productId) && (!oldData || (!newData[productId] && oldData[productId]) || newData[productId] !== oldData[productId]);\r\n// 当 产品标识 发生变化时通知视图重新加载模型\r\nif (hasProductIdChanged) {\r\n    // 更新数据\r\n    ibiz.util.getGlobalParam().ideacreateformdata = {};\r\n    Object.assign(ibiz.util.getGlobalParam().ideacreateformdata, {\r\n        [productId]: newData[productId],\r\n        [productName]: newData[productName],\r\n    });\r\n    // 重绘视图\r\n    const srfparentkey = newData[productId];\r\n    const srfparentdename = 'product';\r\n    view.redrawView({\r\n        context: view.context,\r\n        params: { srfparentkey, srfparentdename },\r\n        isReloadModel: true,\r\n    });\r\n\r\n    // 视图关闭前，清空全局变量\r\n    // 清空 ideacreateformdata 逻辑由（需求更新新建表单数据）界面逻辑完成\r\n}",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 490,
       "logicNodeType" : "RAWJSCODE",
@@ -16981,17 +16981,17 @@
       "topPos" : 200
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "curctrl",
-      "logicName" : "当前部件对象",
-      "name" : "当前部件对象",
-      "activeCtrlParam" : true,
-      "ctrlParam" : true
-    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
+    }, {
+      "codeName" : "curctrl",
+      "logicName" : "当前部件对象",
+      "name" : "当前部件对象",
+      "activeCtrlParam" : true,
+      "ctrlParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
