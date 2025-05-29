@@ -34,31 +34,6 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "PREPAREPARAM1"
-      },
-      "name" : "连接名称",
-      "getPSDELogicLinkGroupCond" : {
-        "groupOP" : "AND",
-        "logicType" : "GROUP",
-        "name" : "连接条件组",
-        "getPSDELogicLinkConds" : [ {
-          "condOP" : "ISNOTNULL",
-          "dstFieldName" : "srfkeys",
-          "getDstLogicParam" : {
-            "modelref" : true,
-            "id" : "Default"
-          },
-          "logicType" : "SINGLE",
-          "name" : "Default[srfkeys] 值不为空(NotNil)"
-        } ]
-      },
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM1"
-      }
-    }, {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
         "id" : "DEDATASET1"
       },
       "name" : "连接名称",
@@ -81,6 +56,31 @@
         "modelref" : true,
         "id" : "DEBUGPARAM1"
       }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "srfkeys",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[srfkeys] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM1"
+      }
     } ],
     "topPos" : 30
   }, {
@@ -91,7 +91,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEDATASET1"
+        "id" : "DEBUGPARAM2"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -115,6 +115,27 @@
       "srcValueType" : "SRCDLPARAM"
     } ],
     "topPos" : 160
+  }, {
+    "codeName" : "DEBUGPARAM2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "filter"
+    },
+    "leftPos" : 256,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "调试逻辑参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM2"
+      }
+    } ],
+    "topPos" : 268
   }, {
     "codeName" : "DEDATASET1",
     "getDstPSDEDataSet" : {
@@ -147,7 +168,7 @@
       "modelref" : true,
       "id" : "page"
     },
-    "topPos" : 282
+    "topPos" : 402
   }, {
     "codeName" : "END1",
     "leftPos" : 200,
@@ -158,7 +179,7 @@
       "id" : "page"
     },
     "returnType" : "LOGICPARAM",
-    "topPos" : 434
+    "topPos" : 634
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",
