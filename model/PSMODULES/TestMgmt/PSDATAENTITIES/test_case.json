@@ -11302,6 +11302,39 @@
       "topPos" : -200,
       "parallelOutput" : true
     }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : 330,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "n_id_in",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "name" : "Default[srfkeys] ==> Default[n_id_in]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "srfkeys",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValue" : "9eebd256-d1dd-df15-0106-be20198c32d5",
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 20
+    }, {
       "code" : "def _default = logic.param('Default').getReal();\r\n\r\ndef srfkeys = _default.get(\"srfkeys\");\r\nif(srfkeys != null && srfkeys != ''){\r\n    _default.set(\"n_id_in\", srfkeys);\r\n}\r\n",
       "codeName" : "RAWSFCODE1",
       "codeType" : "Groovy",
@@ -11342,34 +11375,6 @@
         "id" : "page"
       },
       "topPos" : 268
-    }, {
-      "codeName" : "PREPAREPARAM2",
-      "leftPos" : 330,
-      "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEDATASET1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM2"
-        }
-      } ],
-      "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "n_id_in",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "name" : "直接值[9eebd256-d1dd-df15-0...] ==> Default[n_id_in]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "9eebd256-d1dd-df15-0106-be20198c32d5",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : 20
     }, {
       "codeName" : "PREPAREPARAM1",
       "leftPos" : 550,
