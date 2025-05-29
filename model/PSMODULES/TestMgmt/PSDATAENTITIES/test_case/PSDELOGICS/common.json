@@ -84,40 +84,7 @@
     } ],
     "topPos" : 30
   }, {
-    "codeName" : "DEDATASET1",
-    "getDstPSDEDataSet" : {
-      "modelref" : true,
-      "id" : "normal"
-    },
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "filter"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
-    },
-    "leftPos" : 160,
-    "logicNodeType" : "DEDATASET",
-    "name" : "实体数据集",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "END1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET1"
-      }
-    } ],
-    "getRetPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "page"
-    },
-    "topPos" : 402
-  }, {
-    "code" : "def _default = logic.param('Default').getReal();\r\ndef filter = logic.param('filter').getReal();\r\n\r\ndef input = _default.get(\"srfkeys\");\r\ndef output = input.replaceAll(/([^,]+)/, '\"\\$1\"');\r\nfilter.set(\"n_id_in\",output);",
+    "code" : "def _default = logic.param('Default').getReal();\r\ndef filter = logic.param('filter').getReal();\r\n\r\ndef input = _default.get(\"srfkeys\");\r\ndef output = \"(${input.replaceAll(/([^,]+)/, '\"\\$1\"')})\"\r\nfilter.set(\"n_id_in\",output);",
     "codeName" : "RAWSFCODE1",
     "codeType" : "Groovy",
     "leftPos" : 360,
@@ -156,6 +123,39 @@
       }
     } ],
     "topPos" : 268
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "normal"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEDATASET",
+    "name" : "实体数据集",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "page"
+    },
+    "topPos" : 402
   }, {
     "codeName" : "END1",
     "leftPos" : 200,
