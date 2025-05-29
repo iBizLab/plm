@@ -15,44 +15,22 @@
                             <tns:global identifier="test_casecommonpage" type="cn.ibizlab.plm.core.testmgmt.domain.test_case" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommondebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommonrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommondebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommondebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <endEvent id="debugparam1_end" name="end"/>
+                        <sequenceFlow id="debugparam1_end_line" sourceRef="debugparam1" targetRef="debugparam1_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommondedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommonprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <endEvent id="prepareparam1_end" name="end"/>
+                        <sequenceFlow id="prepareparam1_end_line" sourceRef="prepareparam1" targetRef="prepareparam1_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommonend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
-                    <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
+                    <sequenceFlow id="begin_rawsfcode1" sourceRef="begin" targetRef="rawsfcode1">
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-debugparam1_dedataset1" sourceRef="gateway-debugparam1" targetRef="dedataset1">
-                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
-                                            $test_casecommondefault:test_case();
-                                            $test_casecommonfilter:Map();
-                                            $test_casecommonpage:test_case();
-                                    eval($test_casecommondefault==test_casecommondefault && $test_casecommonpage==test_casecommonpage);
-                                eval((RuleUtils.test($test_casecommondefault.get("srfkeys"),"ISNULL","")))
-                                ]]>
-                            </conditionExpression>
-                    </sequenceFlow>
-                    <sequenceFlow id="gateway-debugparam1_rawsfcode1" sourceRef="gateway-debugparam1" targetRef="rawsfcode1">
-                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
-                                            $test_casecommondefault:test_case();
-                                            $test_casecommonfilter:Map();
-                                            $test_casecommonpage:test_case();
-                                    eval($test_casecommondefault==test_casecommondefault && $test_casecommonpage==test_casecommonpage);
-                                eval((RuleUtils.test($test_casecommondefault.get("srfkeys"),"ISNOTNULL","")))
-                                ]]>
-                            </conditionExpression>
-                    </sequenceFlow>
-                    <sequenceFlow id="rawsfcode1_debugparam2" sourceRef="rawsfcode1" targetRef="debugparam2">
-                    </sequenceFlow>
-                    <sequenceFlow id="debugparam2_dedataset1" sourceRef="debugparam2" targetRef="dedataset1">
+                    <sequenceFlow id="rawsfcode1_dedataset1" sourceRef="rawsfcode1" targetRef="dedataset1">
                     </sequenceFlow>
                     <sequenceFlow id="dedataset1_end1" sourceRef="dedataset1" targetRef="end1">
                     </sequenceFlow>
-                            <exclusiveGateway id="gateway-debugparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam1_end_line"></exclusiveGateway>
-                            <sequenceFlow id="debugparam1_gateway-debugparam1_gatewayline" sourceRef="debugparam1" targetRef="gateway-debugparam1"></sequenceFlow>
-                            <sequenceFlow id="gateway-debugparam1_end_line" sourceRef="gateway-debugparam1" targetRef="gateway-debugparam1_end"/>
-                            <endEvent id="gateway-debugparam1_end" name="end"/>
         </process>
     </definitions>

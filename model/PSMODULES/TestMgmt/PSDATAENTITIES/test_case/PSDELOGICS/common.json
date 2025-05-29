@@ -12,7 +12,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM1"
+        "id" : "RAWSFCODE1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -20,109 +20,36 @@
         "id" : "Begin"
       }
     } ],
-    "topPos" : -110,
     "parallelOutput" : true
+  }, {
+    "code" : "def _default = logic.param('Default').getReal();\r\n\r\ndef srfkeys = _default.get(\"srfkeys\");\r\nif(srfkeys != null && srfkeys != ''){\r\n    _default.set(\"n_id_in\", srfkeys);\r\n}\r\n",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "Groovy",
+    "leftPos" : 160,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "执行脚本代码",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 148
   }, {
     "codeName" : "DEBUGPARAM1",
     "getDstPSDELogicParam" : {
       "modelref" : true,
       "id" : "Default"
     },
-    "leftPos" : 160,
+    "leftPos" : -150,
     "logicNodeType" : "DEBUGPARAM",
     "name" : "调试逻辑参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET1"
-      },
-      "name" : "连接名称",
-      "getPSDELogicLinkGroupCond" : {
-        "groupOP" : "AND",
-        "logicType" : "GROUP",
-        "name" : "连接条件组",
-        "getPSDELogicLinkConds" : [ {
-          "condOP" : "ISNULL",
-          "dstFieldName" : "srfkeys",
-          "getDstLogicParam" : {
-            "modelref" : true,
-            "id" : "Default"
-          },
-          "logicType" : "SINGLE",
-          "name" : "Default[srfkeys] 值为空(Nil)"
-        } ]
-      },
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM1"
-      }
-    }, {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE1"
-      },
-      "name" : "连接名称",
-      "getPSDELogicLinkGroupCond" : {
-        "groupOP" : "AND",
-        "logicType" : "GROUP",
-        "name" : "连接条件组",
-        "getPSDELogicLinkConds" : [ {
-          "condOP" : "ISNOTNULL",
-          "dstFieldName" : "srfkeys",
-          "getDstLogicParam" : {
-            "modelref" : true,
-            "id" : "Default"
-          },
-          "logicType" : "SINGLE",
-          "name" : "Default[srfkeys] 值不为空(NotNil)"
-        } ]
-      },
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM1"
-      }
-    } ],
-    "topPos" : 30
-  }, {
-    "code" : "def _default = logic.param('Default').getReal();\r\ndef filter = logic.param('filter').getReal();\r\n\r\ndef input = _default.get(\"srfkeys\");\r\ndef output = \"(${input.replaceAll(/([^,]+)/, '\"\\$1\"')})\"\r\nfilter.set(\"n_id_in\",output);",
-    "codeName" : "RAWSFCODE1",
-    "codeType" : "Groovy",
-    "leftPos" : 360,
-    "logicNodeType" : "RAWSFCODE",
-    "name" : "执行脚本代码",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM2"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE1"
-      }
-    } ],
-    "topPos" : 170
-  }, {
-    "codeName" : "DEBUGPARAM2",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "filter"
-    },
-    "leftPos" : 256,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "调试逻辑参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM2"
-      }
-    } ],
-    "topPos" : 268
+    "topPos" : 208
   }, {
     "codeName" : "DEDATASET1",
     "getDstPSDEDataSet" : {
@@ -131,7 +58,7 @@
     },
     "getDstPSDELogicParam" : {
       "modelref" : true,
-      "id" : "filter"
+      "id" : "Default"
     },
     "getDstPSDataEntity" : {
       "modelref" : true,
@@ -155,7 +82,28 @@
       "modelref" : true,
       "id" : "page"
     },
-    "topPos" : 402
+    "topPos" : 268
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 550,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "n_id_in",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : "Default[srfkeys] ==> filter[n_id_in]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "srfkeys",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 310
   }, {
     "codeName" : "END1",
     "leftPos" : 200,
@@ -166,7 +114,7 @@
       "id" : "page"
     },
     "returnType" : "LOGICPARAM",
-    "topPos" : 634
+    "topPos" : 404
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",
