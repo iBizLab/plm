@@ -16,9 +16,9 @@
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommondebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommondedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommonrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommondebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommondedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecommonend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
@@ -44,11 +44,11 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
+                    <sequenceFlow id="dedataset1_end1" sourceRef="dedataset1" targetRef="end1">
+                    </sequenceFlow>
                     <sequenceFlow id="rawsfcode1_debugparam2" sourceRef="rawsfcode1" targetRef="debugparam2">
                     </sequenceFlow>
                     <sequenceFlow id="debugparam2_dedataset1" sourceRef="debugparam2" targetRef="dedataset1">
-                    </sequenceFlow>
-                    <sequenceFlow id="dedataset1_end1" sourceRef="dedataset1" targetRef="end1">
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-debugparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam1_end_line"></exclusiveGateway>
                             <sequenceFlow id="debugparam1_gateway-debugparam1_gatewayline" sourceRef="debugparam1" targetRef="gateway-debugparam1"></sequenceFlow>
