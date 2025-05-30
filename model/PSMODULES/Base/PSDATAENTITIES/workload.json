@@ -9221,18 +9221,6 @@
         },
         "srcValueType" : "SRCDLPARAM"
       }, {
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "estimated"
-        },
-        "name" : "actual ==> estimated",
-        "paramAction" : "COPYPARAM",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "actual"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
         "dstFieldName" : "OWNER_TYPE",
         "getDstPSDELogicParam" : {
           "modelref" : true,
@@ -9323,6 +9311,30 @@
         "paramAction" : "SETPARAMVALUE",
         "srcValue" : "ESTIMATED_WORKLOAD",
         "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "OWNER_TYPE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "estimated"
+        },
+        "name" : "直接值[WORK_ITEM] ==> estimated[OWNER_TYPE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "WORK_ITEM",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "OWNER_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "estimated"
+        },
+        "name" : "Default[PRINCIPAL_ID] ==> estimated[OWNER_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "PRINCIPAL_ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
       }, {
         "dstFieldName" : "DECIMAL_VALUE",
         "getDstPSDELogicParam" : {

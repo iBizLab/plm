@@ -138,7 +138,6 @@ package cn.ibizlab.plm.base.logic.workloadlogic.workload_auto_cal;
             when
             then
                             workloadworkload_auto_calremaining.set("decimalvalue",workloadworkload_auto_calworkload_data.get("remainingworkload"));
-                            workloadworkload_auto_calestimated.set("",workloadworkload_auto_calactual.get(""));
                             workloadworkload_auto_calremaining.set("ownertype","WORK_ITEM");
                             workloadworkload_auto_calremaining.set("name","REMAINING_WORKLOAD");
                             workloadworkload_auto_calremaining.set("ownerid",workloadworkload_auto_caldefault.get("principalid"));
@@ -184,6 +183,8 @@ package cn.ibizlab.plm.base.logic.workloadlogic.workload_auto_cal;
             when
             then
                             workloadworkload_auto_calestimated.set("name","ESTIMATED_WORKLOAD");
+                            workloadworkload_auto_calestimated.set("ownertype","WORK_ITEM");
+                            workloadworkload_auto_calestimated.set("ownerid",workloadworkload_auto_caldefault.get("principalid"));
                             workloadworkload_auto_calestimated.set("decimalvalue",workloadworkload_auto_calworkload_data.get("estimatedworkload"));
                         update(workloadworkload_auto_caldefault);//更新fact中变量值
                         update(workloadworkload_auto_calactual);//更新fact中变量值
