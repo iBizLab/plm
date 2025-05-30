@@ -29,7 +29,7 @@
     "logicType" : "SCRIPT",
     "name" : "LOGIC_REDRAW_VIEW",
     "getPSViewCtrlName" : "form",
-    "scriptCode" : "console.log('需求新建视图创建完成执行了');"
+    "scriptCode" : "ctrl.evt.on('onFormDataChange', evt => {\r\n    const { name, value } = evt;\r\n    if (name === 'product_id') {\r\n        view.redrawView({\r\n            context: { product: value, dynamicnew: true },\r\n            params: {},\r\n            isReloadModel: true,\r\n        });\r\n    }\r\n});"
   } ],
   "getPSAppViewNavContexts" : [ {
     "key" : "PRODUCT",
