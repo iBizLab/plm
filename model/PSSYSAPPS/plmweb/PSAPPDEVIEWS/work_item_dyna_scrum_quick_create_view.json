@@ -256,6 +256,13 @@
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
       },
       "getPSViewCtrlName" : "form"
+    }, {
+      "eventNames" : "onCreated",
+      "logicTrigger" : "CTRLEVENT",
+      "logicType" : "SCRIPT",
+      "name" : "LOGIC_REDRAW_VIEW",
+      "getPSViewCtrlName" : "form",
+      "scriptCode" : "ctrl.evt.on('onFormDataChange', evt => {\r\n  const { name } = evt;\r\n  const data = ctrl.state.data;\r\n  if (['project_id', 'work_item_type_id'].includes(name) && data.work_item_type_id) {\r\n\tview.redrawView({\r\n\t  context: { project: data.project_id, dynamicnew: true },\r\n\t  params: { srfdatatype: data.work_item_type_id, work_item_type_id: data.work_item_type_id },\r\n\t  isReloadModel: true,\r\n\t});\r\n  }\r\n});"
     } ],
     "getPSControls" : [ {
       "codeName" : "quick_create_story",
