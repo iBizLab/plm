@@ -13,14 +13,36 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "PREPAREPARAM2"
+        "id" : "DEBUGPARAM1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
         "modelref" : true,
         "id" : "Begin"
       }
-    } ]
+    } ],
+    "topPos" : -90
+  }, {
+    "codeName" : "DEBUGPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "调试逻辑参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM1"
+      }
+    } ],
+    "topPos" : 19
   }, {
     "codeName" : "PREPAREPARAM2",
     "leftPos" : 160,
@@ -446,7 +468,7 @@
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
-    "topPos" : 420
+    "topPos" : 430
   }, {
     "codeName" : "PREPAREPARAM4",
     "leftPos" : -90,
@@ -776,33 +798,6 @@
     } ],
     "topPos" : 750
   }, {
-    "codeName" : "PREPAREPARAM6",
-    "leftPos" : 460,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "工时为0时置为NULL",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEACTION7"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM6"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "DECIMAL_VALUE",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "actual"
-      },
-      "name" : "空值（NULL） ==> actual[DECIMAL_VALUE]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcValueType" : "NULLVALUE"
-    } ],
-    "topPos" : 910
-  }, {
     "codeName" : "RAWSQLCALL1",
     "getDstPSDELogicParam" : {
       "modelref" : true,
@@ -993,6 +988,33 @@
     "logicNodeType" : "DELOGIC",
     "name" : "自动计算父工时",
     "topPos" : 1519
+  }, {
+    "codeName" : "PREPAREPARAM6",
+    "leftPos" : 460,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "工时为0时置为NULL",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION7"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM6"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "DECIMAL_VALUE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "actual"
+      },
+      "name" : "空值（NULL） ==> actual[DECIMAL_VALUE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValueType" : "NULLVALUE"
+    } ],
+    "topPos" : 910
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",
