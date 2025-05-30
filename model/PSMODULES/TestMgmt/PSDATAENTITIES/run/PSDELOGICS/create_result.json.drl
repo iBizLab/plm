@@ -24,13 +24,13 @@ package cn.ibizlab.plm.testmgmt.logic.runlogic.create_result;
                 global java.util.Map runcreate_resultwork_item_type_page;
                 global cn.ibizlab.plm.core.projmgmt.domain.work_item_type runcreate_resultwork_item_type_temp;
                     global cn.ibizlab.plm.core.testmgmt.service.Irun_historyService run_historyservice;
+                    global cn.ibizlab.plm.core.base.service.IparameterService parameterservice;
                     global cn.ibizlab.plm.core.testmgmt.service.IrunService runservice;
                     global cn.ibizlab.plm.core.base.service.IrelationService relationservice;
                     global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService test_caseservice;
                     global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService work_itemservice;
                     global cn.ibizlab.plm.core.testmgmt.service.Itest_planService test_planservice;
                     global cn.ibizlab.plm.core.projmgmt.service.Iwork_item_typeService work_item_typeservice;
-                    global cn.ibizlab.plm.core.base.service.IparameterService parameterservice;
         global cn.ibizlab.plm.core.testmgmt.service.IrunService iBzSysRunDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
 
@@ -130,12 +130,63 @@ package cn.ibizlab.plm.testmgmt.logic.runlogic.create_result;
                         update(runcreate_resultwork_item_type_temp);//更新fact中变量值
             end
 
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall2"
+            ruleflow-group "runcreate_resultloopsubcall2"
+            when
+            then
+                        update(runcreate_resultdefault);//更新fact中变量值
+                        update(runcreate_resultattachment_temp);//更新fact中变量值
+                        update(runcreate_resultattachments);//更新fact中变量值
+                        update(runcreate_resultid);//更新fact中变量值
+                        update(runcreate_resultids);//更新fact中变量值
+                        update(runcreate_resultparameter);//更新fact中变量值
+                        update(runcreate_resultrelation);//更新fact中变量值
+                        update(runcreate_resultrelation2);//更新fact中变量值
+                        update(runcreate_resultrun_history);//更新fact中变量值
+                        update(runcreate_resultsteps);//更新fact中变量值
+                        update(runcreate_resulttemp_obj);//更新fact中变量值
+                        update(runcreate_resulttest_case);//更新fact中变量值
+                        update(runcreate_resulttest_plan);//更新fact中变量值
+                        update(runcreate_resultwork_item);//更新fact中变量值
+                        update(runcreate_resultwork_item_type);//更新fact中变量值
+                        update(runcreate_resultwork_item_type_filter);//更新fact中变量值
+                        update(runcreate_resultwork_item_type_page);//更新fact中变量值
+                        update(runcreate_resultwork_item_type_temp);//更新fact中变量值
+            end
+
             //逻辑处理节点[创建执行结果]
             rule "deaction6"
             ruleflow-group "runcreate_resultdeaction6"
             when
             then
                         run_historyservice.create(runcreate_resultrun_history);
+                        update(runcreate_resultdefault);//更新fact中变量值
+                        update(runcreate_resultattachment_temp);//更新fact中变量值
+                        update(runcreate_resultattachments);//更新fact中变量值
+                        update(runcreate_resultid);//更新fact中变量值
+                        update(runcreate_resultids);//更新fact中变量值
+                        update(runcreate_resultparameter);//更新fact中变量值
+                        update(runcreate_resultrelation);//更新fact中变量值
+                        update(runcreate_resultrelation2);//更新fact中变量值
+                        update(runcreate_resultrun_history);//更新fact中变量值
+                        update(runcreate_resultsteps);//更新fact中变量值
+                        update(runcreate_resulttemp_obj);//更新fact中变量值
+                        update(runcreate_resulttest_case);//更新fact中变量值
+                        update(runcreate_resulttest_plan);//更新fact中变量值
+                        update(runcreate_resultwork_item);//更新fact中变量值
+                        update(runcreate_resultwork_item_type);//更新fact中变量值
+                        update(runcreate_resultwork_item_type_filter);//更新fact中变量值
+                        update(runcreate_resultwork_item_type_page);//更新fact中变量值
+                        update(runcreate_resultwork_item_type_temp);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取系统参数]
+            rule "deaction10"
+            ruleflow-group "runcreate_resultdeaction10"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(parameterservice.get(runcreate_resultparameter.getId()),runcreate_resultparameter);
                         update(runcreate_resultdefault);//更新fact中变量值
                         update(runcreate_resultattachment_temp);//更新fact中变量值
                         update(runcreate_resultattachments);//更新fact中变量值
@@ -207,6 +258,94 @@ package cn.ibizlab.plm.testmgmt.logic.runlogic.create_result;
                         update(runcreate_resultwork_item_type_temp);//更新fact中变量值
             end
 
+            //逻辑处理节点[准备参数]
+            rule "prepareparam4"
+            ruleflow-group "runcreate_resultprepareparam4"
+            when
+            then
+                            runcreate_resultwork_item.set("title",runcreate_resultdefault.get("title"));
+                            runcreate_resulttest_case.set("id",runcreate_resultdefault.get("caseid"));
+                            runcreate_resultwork_item_type_filter.set("n_group_eq","bug");
+                            runcreate_resultwork_item.set("priority",runcreate_resultdefault.get("priority"));
+                            runcreate_resultwork_item.set("attentions",runcreate_resultdefault.get("attentions"));
+                            runcreate_resulttest_plan.set("id",runcreate_resultdefault.get("planid"));
+                        update(runcreate_resultdefault);//更新fact中变量值
+                        update(runcreate_resultattachment_temp);//更新fact中变量值
+                        update(runcreate_resultattachments);//更新fact中变量值
+                        update(runcreate_resultid);//更新fact中变量值
+                        update(runcreate_resultids);//更新fact中变量值
+                        update(runcreate_resultparameter);//更新fact中变量值
+                        update(runcreate_resultrelation);//更新fact中变量值
+                        update(runcreate_resultrelation2);//更新fact中变量值
+                        update(runcreate_resultrun_history);//更新fact中变量值
+                        update(runcreate_resultsteps);//更新fact中变量值
+                        update(runcreate_resulttemp_obj);//更新fact中变量值
+                        update(runcreate_resulttest_case);//更新fact中变量值
+                        update(runcreate_resulttest_plan);//更新fact中变量值
+                        update(runcreate_resultwork_item);//更新fact中变量值
+                        update(runcreate_resultwork_item_type);//更新fact中变量值
+                        update(runcreate_resultwork_item_type_filter);//更新fact中变量值
+                        update(runcreate_resultwork_item_type_page);//更新fact中变量值
+                        update(runcreate_resultwork_item_type_temp);//更新fact中变量值
+            end
+
+            //逻辑处理节点[执行用例数据准备]
+            rule "prepareparam6"
+            ruleflow-group "runcreate_resultprepareparam6"
+            when
+            then
+                            runcreate_resulttemp_obj.set("executedat",runcreate_resultrun_history.get("executedat"));
+                            runcreate_resulttemp_obj.set("attachments",runcreate_resultdefault.get("attachments"));
+                            runcreate_resulttemp_obj.set("steps",runcreate_resultrun_history.get("steps"));
+                            runcreate_resulttemp_obj.set("status",runcreate_resultrun_history.get("status"));
+                            runcreate_resulttemp_obj.set("id",runcreate_resultrun_history.get("runid"));
+                            runcreate_resulttemp_obj.set("executorname",runcreate_resultrun_history.get("executorname"));
+                        update(runcreate_resultdefault);//更新fact中变量值
+                        update(runcreate_resultattachment_temp);//更新fact中变量值
+                        update(runcreate_resultattachments);//更新fact中变量值
+                        update(runcreate_resultid);//更新fact中变量值
+                        update(runcreate_resultids);//更新fact中变量值
+                        update(runcreate_resultparameter);//更新fact中变量值
+                        update(runcreate_resultrelation);//更新fact中变量值
+                        update(runcreate_resultrelation2);//更新fact中变量值
+                        update(runcreate_resultrun_history);//更新fact中变量值
+                        update(runcreate_resultsteps);//更新fact中变量值
+                        update(runcreate_resulttemp_obj);//更新fact中变量值
+                        update(runcreate_resulttest_case);//更新fact中变量值
+                        update(runcreate_resulttest_plan);//更新fact中变量值
+                        update(runcreate_resultwork_item);//更新fact中变量值
+                        update(runcreate_resultwork_item_type);//更新fact中变量值
+                        update(runcreate_resultwork_item_type_filter);//更新fact中变量值
+                        update(runcreate_resultwork_item_type_page);//更新fact中变量值
+                        update(runcreate_resultwork_item_type_temp);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备系统参数]
+            rule "prepareparam13"
+            ruleflow-group "runcreate_resultprepareparam13"
+            when
+            then
+                            runcreate_resultparameter.set("ownerid",runcreate_resultdefault.get("libraryid"));
+                        update(runcreate_resultdefault);//更新fact中变量值
+                        update(runcreate_resultattachment_temp);//更新fact中变量值
+                        update(runcreate_resultattachments);//更新fact中变量值
+                        update(runcreate_resultid);//更新fact中变量值
+                        update(runcreate_resultids);//更新fact中变量值
+                        update(runcreate_resultparameter);//更新fact中变量值
+                        update(runcreate_resultrelation);//更新fact中变量值
+                        update(runcreate_resultrelation2);//更新fact中变量值
+                        update(runcreate_resultrun_history);//更新fact中变量值
+                        update(runcreate_resultsteps);//更新fact中变量值
+                        update(runcreate_resulttemp_obj);//更新fact中变量值
+                        update(runcreate_resulttest_case);//更新fact中变量值
+                        update(runcreate_resulttest_plan);//更新fact中变量值
+                        update(runcreate_resultwork_item);//更新fact中变量值
+                        update(runcreate_resultwork_item_type);//更新fact中变量值
+                        update(runcreate_resultwork_item_type_filter);//更新fact中变量值
+                        update(runcreate_resultwork_item_type_page);//更新fact中变量值
+                        update(runcreate_resultwork_item_type_temp);//更新fact中变量值
+            end
+
             //逻辑处理节点[反向关联]
             rule "deaction8"
             ruleflow-group "runcreate_resultdeaction8"
@@ -239,37 +378,6 @@ package cn.ibizlab.plm.testmgmt.logic.runlogic.create_result;
             when
             then
                         relationservice.create(runcreate_resultrelation);
-                        update(runcreate_resultdefault);//更新fact中变量值
-                        update(runcreate_resultattachment_temp);//更新fact中变量值
-                        update(runcreate_resultattachments);//更新fact中变量值
-                        update(runcreate_resultid);//更新fact中变量值
-                        update(runcreate_resultids);//更新fact中变量值
-                        update(runcreate_resultparameter);//更新fact中变量值
-                        update(runcreate_resultrelation);//更新fact中变量值
-                        update(runcreate_resultrelation2);//更新fact中变量值
-                        update(runcreate_resultrun_history);//更新fact中变量值
-                        update(runcreate_resultsteps);//更新fact中变量值
-                        update(runcreate_resulttemp_obj);//更新fact中变量值
-                        update(runcreate_resulttest_case);//更新fact中变量值
-                        update(runcreate_resulttest_plan);//更新fact中变量值
-                        update(runcreate_resultwork_item);//更新fact中变量值
-                        update(runcreate_resultwork_item_type);//更新fact中变量值
-                        update(runcreate_resultwork_item_type_filter);//更新fact中变量值
-                        update(runcreate_resultwork_item_type_page);//更新fact中变量值
-                        update(runcreate_resultwork_item_type_temp);//更新fact中变量值
-            end
-
-            //逻辑处理节点[准备参数]
-            rule "prepareparam4"
-            ruleflow-group "runcreate_resultprepareparam4"
-            when
-            then
-                            runcreate_resultwork_item.set("title",runcreate_resultdefault.get("title"));
-                            runcreate_resulttest_case.set("id",runcreate_resultdefault.get("caseid"));
-                            runcreate_resultwork_item_type_filter.set("n_group_eq","bug");
-                            runcreate_resultwork_item.set("priority",runcreate_resultdefault.get("priority"));
-                            runcreate_resultwork_item.set("attentions",runcreate_resultdefault.get("attentions"));
-                            runcreate_resulttest_plan.set("id",runcreate_resultdefault.get("planid"));
                         update(runcreate_resultdefault);//更新fact中变量值
                         update(runcreate_resultattachment_temp);//更新fact中变量值
                         update(runcreate_resultattachments);//更新fact中变量值
@@ -453,9 +561,9 @@ package cn.ibizlab.plm.testmgmt.logic.runlogic.create_result;
                         update(runcreate_resultwork_item_type_temp);//更新fact中变量值
             end
 
-            //逻辑处理节点[循环子调用]
-            rule "loopsubcall2"
-            ruleflow-group "runcreate_resultloopsubcall2"
+            //逻辑处理节点[拼接描述字段]
+            rule "rawsfcode1"
+            ruleflow-group "runcreate_resultrawsfcode1"
             when
             then
                         update(runcreate_resultdefault);//更新fact中变量值
@@ -530,6 +638,31 @@ package cn.ibizlab.plm.testmgmt.logic.runlogic.create_result;
                         update(runcreate_resultwork_item_type_temp);//更新fact中变量值
             end
 
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "runcreate_resultloopsubcall1"
+            when
+            then
+                        update(runcreate_resultdefault);//更新fact中变量值
+                        update(runcreate_resultattachment_temp);//更新fact中变量值
+                        update(runcreate_resultattachments);//更新fact中变量值
+                        update(runcreate_resultid);//更新fact中变量值
+                        update(runcreate_resultids);//更新fact中变量值
+                        update(runcreate_resultparameter);//更新fact中变量值
+                        update(runcreate_resultrelation);//更新fact中变量值
+                        update(runcreate_resultrelation2);//更新fact中变量值
+                        update(runcreate_resultrun_history);//更新fact中变量值
+                        update(runcreate_resultsteps);//更新fact中变量值
+                        update(runcreate_resulttemp_obj);//更新fact中变量值
+                        update(runcreate_resulttest_case);//更新fact中变量值
+                        update(runcreate_resulttest_plan);//更新fact中变量值
+                        update(runcreate_resultwork_item);//更新fact中变量值
+                        update(runcreate_resultwork_item_type);//更新fact中变量值
+                        update(runcreate_resultwork_item_type_filter);//更新fact中变量值
+                        update(runcreate_resultwork_item_type_page);//更新fact中变量值
+                        update(runcreate_resultwork_item_type_temp);//更新fact中变量值
+            end
+
             //逻辑处理节点[准备参数]
             rule "prepareparam11"
             ruleflow-group "runcreate_resultprepareparam11"
@@ -538,164 +671,6 @@ package cn.ibizlab.plm.testmgmt.logic.runlogic.create_result;
                                 runcreate_resultattachment_temp.set("owner_id",null);
                                 runcreate_resultattachment_temp.set("owner_type",null);
                                 runcreate_resultattachment_temp.set("id",null);
-                        update(runcreate_resultdefault);//更新fact中变量值
-                        update(runcreate_resultattachment_temp);//更新fact中变量值
-                        update(runcreate_resultattachments);//更新fact中变量值
-                        update(runcreate_resultid);//更新fact中变量值
-                        update(runcreate_resultids);//更新fact中变量值
-                        update(runcreate_resultparameter);//更新fact中变量值
-                        update(runcreate_resultrelation);//更新fact中变量值
-                        update(runcreate_resultrelation2);//更新fact中变量值
-                        update(runcreate_resultrun_history);//更新fact中变量值
-                        update(runcreate_resultsteps);//更新fact中变量值
-                        update(runcreate_resulttemp_obj);//更新fact中变量值
-                        update(runcreate_resulttest_case);//更新fact中变量值
-                        update(runcreate_resulttest_plan);//更新fact中变量值
-                        update(runcreate_resultwork_item);//更新fact中变量值
-                        update(runcreate_resultwork_item_type);//更新fact中变量值
-                        update(runcreate_resultwork_item_type_filter);//更新fact中变量值
-                        update(runcreate_resultwork_item_type_page);//更新fact中变量值
-                        update(runcreate_resultwork_item_type_temp);//更新fact中变量值
-            end
-
-            //逻辑处理节点[执行用例数据准备]
-            rule "prepareparam6"
-            ruleflow-group "runcreate_resultprepareparam6"
-            when
-            then
-                            runcreate_resulttemp_obj.set("executedat",runcreate_resultrun_history.get("executedat"));
-                            runcreate_resulttemp_obj.set("attachments",runcreate_resultdefault.get("attachments"));
-                            runcreate_resulttemp_obj.set("steps",runcreate_resultrun_history.get("steps"));
-                            runcreate_resulttemp_obj.set("status",runcreate_resultrun_history.get("status"));
-                            runcreate_resulttemp_obj.set("id",runcreate_resultrun_history.get("runid"));
-                            runcreate_resulttemp_obj.set("executorname",runcreate_resultrun_history.get("executorname"));
-                        update(runcreate_resultdefault);//更新fact中变量值
-                        update(runcreate_resultattachment_temp);//更新fact中变量值
-                        update(runcreate_resultattachments);//更新fact中变量值
-                        update(runcreate_resultid);//更新fact中变量值
-                        update(runcreate_resultids);//更新fact中变量值
-                        update(runcreate_resultparameter);//更新fact中变量值
-                        update(runcreate_resultrelation);//更新fact中变量值
-                        update(runcreate_resultrelation2);//更新fact中变量值
-                        update(runcreate_resultrun_history);//更新fact中变量值
-                        update(runcreate_resultsteps);//更新fact中变量值
-                        update(runcreate_resulttemp_obj);//更新fact中变量值
-                        update(runcreate_resulttest_case);//更新fact中变量值
-                        update(runcreate_resulttest_plan);//更新fact中变量值
-                        update(runcreate_resultwork_item);//更新fact中变量值
-                        update(runcreate_resultwork_item_type);//更新fact中变量值
-                        update(runcreate_resultwork_item_type_filter);//更新fact中变量值
-                        update(runcreate_resultwork_item_type_page);//更新fact中变量值
-                        update(runcreate_resultwork_item_type_temp);//更新fact中变量值
-            end
-
-            //逻辑处理节点[获取系统参数]
-            rule "deaction10"
-            ruleflow-group "runcreate_resultdeaction10"
-            when
-            then
-                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(parameterservice.get(runcreate_resultparameter.getId()),runcreate_resultparameter);
-                        update(runcreate_resultdefault);//更新fact中变量值
-                        update(runcreate_resultattachment_temp);//更新fact中变量值
-                        update(runcreate_resultattachments);//更新fact中变量值
-                        update(runcreate_resultid);//更新fact中变量值
-                        update(runcreate_resultids);//更新fact中变量值
-                        update(runcreate_resultparameter);//更新fact中变量值
-                        update(runcreate_resultrelation);//更新fact中变量值
-                        update(runcreate_resultrelation2);//更新fact中变量值
-                        update(runcreate_resultrun_history);//更新fact中变量值
-                        update(runcreate_resultsteps);//更新fact中变量值
-                        update(runcreate_resulttemp_obj);//更新fact中变量值
-                        update(runcreate_resulttest_case);//更新fact中变量值
-                        update(runcreate_resulttest_plan);//更新fact中变量值
-                        update(runcreate_resultwork_item);//更新fact中变量值
-                        update(runcreate_resultwork_item_type);//更新fact中变量值
-                        update(runcreate_resultwork_item_type_filter);//更新fact中变量值
-                        update(runcreate_resultwork_item_type_page);//更新fact中变量值
-                        update(runcreate_resultwork_item_type_temp);//更新fact中变量值
-            end
-
-            //逻辑处理节点[准备系统参数]
-            rule "prepareparam13"
-            ruleflow-group "runcreate_resultprepareparam13"
-            when
-            then
-                            runcreate_resultparameter.set("id",runcreate_resultdefault.get("libraryid"));
-                        update(runcreate_resultdefault);//更新fact中变量值
-                        update(runcreate_resultattachment_temp);//更新fact中变量值
-                        update(runcreate_resultattachments);//更新fact中变量值
-                        update(runcreate_resultid);//更新fact中变量值
-                        update(runcreate_resultids);//更新fact中变量值
-                        update(runcreate_resultparameter);//更新fact中变量值
-                        update(runcreate_resultrelation);//更新fact中变量值
-                        update(runcreate_resultrelation2);//更新fact中变量值
-                        update(runcreate_resultrun_history);//更新fact中变量值
-                        update(runcreate_resultsteps);//更新fact中变量值
-                        update(runcreate_resulttemp_obj);//更新fact中变量值
-                        update(runcreate_resulttest_case);//更新fact中变量值
-                        update(runcreate_resulttest_plan);//更新fact中变量值
-                        update(runcreate_resultwork_item);//更新fact中变量值
-                        update(runcreate_resultwork_item_type);//更新fact中变量值
-                        update(runcreate_resultwork_item_type_filter);//更新fact中变量值
-                        update(runcreate_resultwork_item_type_page);//更新fact中变量值
-                        update(runcreate_resultwork_item_type_temp);//更新fact中变量值
-            end
-
-            //逻辑处理节点[调试逻辑参数]
-            rule "debugparam3"
-            ruleflow-group "runcreate_resultdebugparam3"
-            when
-            then
-                        update(runcreate_resultdefault);//更新fact中变量值
-                        update(runcreate_resultattachment_temp);//更新fact中变量值
-                        update(runcreate_resultattachments);//更新fact中变量值
-                        update(runcreate_resultid);//更新fact中变量值
-                        update(runcreate_resultids);//更新fact中变量值
-                        update(runcreate_resultparameter);//更新fact中变量值
-                        update(runcreate_resultrelation);//更新fact中变量值
-                        update(runcreate_resultrelation2);//更新fact中变量值
-                        update(runcreate_resultrun_history);//更新fact中变量值
-                        update(runcreate_resultsteps);//更新fact中变量值
-                        update(runcreate_resulttemp_obj);//更新fact中变量值
-                        update(runcreate_resulttest_case);//更新fact中变量值
-                        update(runcreate_resulttest_plan);//更新fact中变量值
-                        update(runcreate_resultwork_item);//更新fact中变量值
-                        update(runcreate_resultwork_item_type);//更新fact中变量值
-                        update(runcreate_resultwork_item_type_filter);//更新fact中变量值
-                        update(runcreate_resultwork_item_type_page);//更新fact中变量值
-                        update(runcreate_resultwork_item_type_temp);//更新fact中变量值
-            end
-
-            //逻辑处理节点[拼接描述字段]
-            rule "rawsfcode1"
-            ruleflow-group "runcreate_resultrawsfcode1"
-            when
-            then
-                        update(runcreate_resultdefault);//更新fact中变量值
-                        update(runcreate_resultattachment_temp);//更新fact中变量值
-                        update(runcreate_resultattachments);//更新fact中变量值
-                        update(runcreate_resultid);//更新fact中变量值
-                        update(runcreate_resultids);//更新fact中变量值
-                        update(runcreate_resultparameter);//更新fact中变量值
-                        update(runcreate_resultrelation);//更新fact中变量值
-                        update(runcreate_resultrelation2);//更新fact中变量值
-                        update(runcreate_resultrun_history);//更新fact中变量值
-                        update(runcreate_resultsteps);//更新fact中变量值
-                        update(runcreate_resulttemp_obj);//更新fact中变量值
-                        update(runcreate_resulttest_case);//更新fact中变量值
-                        update(runcreate_resulttest_plan);//更新fact中变量值
-                        update(runcreate_resultwork_item);//更新fact中变量值
-                        update(runcreate_resultwork_item_type);//更新fact中变量值
-                        update(runcreate_resultwork_item_type_filter);//更新fact中变量值
-                        update(runcreate_resultwork_item_type_page);//更新fact中变量值
-                        update(runcreate_resultwork_item_type_temp);//更新fact中变量值
-            end
-
-            //逻辑处理节点[循环子调用]
-            rule "loopsubcall1"
-            ruleflow-group "runcreate_resultloopsubcall1"
-            when
-            then
                         update(runcreate_resultdefault);//更新fact中变量值
                         update(runcreate_resultattachment_temp);//更新fact中变量值
                         update(runcreate_resultattachments);//更新fact中变量值
