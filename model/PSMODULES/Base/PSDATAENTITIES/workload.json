@@ -273,6 +273,36 @@
     "actionHolder" : 1,
     "actionMode" : "READ",
     "actionType" : "DELOGIC",
+    "codeName" : "get_redirect_data",
+    "dataAccessAction" : "READ",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEACTIONS/get_redirect_data.json",
+    "logicName" : "获取重定向数据",
+    "name" : "get_redirect_data",
+    "getPSDEActionInput" : {
+      "getKeyPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "name" : "Get_redirect_dataInput",
+      "type" : "KEYFIELD"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Get_redirect_dataResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "workload_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDELOGICS/get_redirect_data.json"
+    },
+    "enableFront" : false
+  }, {
+    "actionHolder" : 1,
+    "actionMode" : "READ",
+    "actionType" : "DELOGIC",
     "codeName" : "get_register_workload",
     "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEACTIONS/get_register_workload.json",
@@ -6165,6 +6195,92 @@
         "modelref" : true,
         "path" : "PSMODULES/Base/PSDATAENTITIES/workload.json"
       },
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
+    "codeName" : "get_redirect_data",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDELOGICS/get_redirect_data.json",
+    "logicName" : "获取重定向数据",
+    "name" : "获取重定向数据",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEACTIONS/Get.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/workload.json"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEACTION",
+      "name" : "获取重定向数据",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "topPos" : 392
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 556
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/workload.json"
+      },
+      "default" : true,
       "entityParam" : true
     } ],
     "getStartPSDELogicNode" : {
