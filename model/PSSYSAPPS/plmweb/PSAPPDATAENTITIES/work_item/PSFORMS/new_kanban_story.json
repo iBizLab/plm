@@ -93,11 +93,11 @@
       "id" : "set_type_bug"
     },
     "getPSDEFIUpdateDetails" : [ {
-      "name" : "project_type"
+      "name" : "work_item_type_name"
     }, {
       "name" : "work_item_type_id"
     }, {
-      "name" : "work_item_type_name"
+      "name" : "project_type"
     } ]
   }, {
     "codeName" : "calc_parent_work_item_type",
@@ -1623,6 +1623,17 @@
           "codeName" : "project_name"
         },
         "getPSDEFDGroupLogics" : [ {
+          "groupOP" : "AND",
+          "logicCat" : "ITEMENABLE",
+          "logicType" : "GROUP",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "ISNOTNULL",
+            "dEFDName" : "need_fill_form",
+            "logicType" : "SINGLE"
+          } ],
+          "relatedDetailNames" : [ "need_fill_form" ],
+          "notMode" : false
+        }, {
           "groupOP" : "AND",
           "logicCat" : "SCRIPTCODE_CHANGE",
           "logicType" : "GROUP",
