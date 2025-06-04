@@ -6,6 +6,7 @@
   "caption" : "新建工单",
   "codeName" : "ticket_quick_create_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_quick_create_view.json",
+  "dynaSysMode" : 1,
   "height" : 90,
   "name" : "ticketquick_create_view",
   "openMode" : "POPUPMODAL",
@@ -21,6 +22,14 @@
     "engineCat" : "VIEW",
     "engineType" : "OptionView",
     "name" : "engine"
+  } ],
+  "getPSAppViewLogics" : [ {
+    "eventNames" : "onCreated",
+    "logicTrigger" : "CTRLEVENT",
+    "logicType" : "SCRIPT",
+    "name" : "LOGIC",
+    "getPSViewCtrlName" : "form",
+    "scriptCode" : "ctrl.evt.on('onFormDataChange', evt => {\r\n    const { name, value } = evt;\r\n    if (name === 'product_id') {\r\n        view.redrawView({\r\n            context: { product: value, dynamicnew: true },\r\n            params: {},\r\n            isReloadModel: true,\r\n        });\r\n    }\r\n});"
   } ],
   "getPSControls" : [ {
     "codeName" : "quick_create",
@@ -43,6 +52,7 @@
     },
     "defaultLabelWidth" : 130,
     "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket/PSFORMS/quick_create.json",
+    "dynaSysMode" : 1,
     "getGetDraftFromPSControlAction" : {
       "modelref" : true,
       "id" : "loaddraftfrom",
