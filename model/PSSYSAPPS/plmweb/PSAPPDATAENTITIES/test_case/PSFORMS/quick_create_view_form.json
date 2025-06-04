@@ -144,6 +144,12 @@
       "codeName" : "test_library_name"
     }
   }, {
+    "id" : "dynamic_new",
+    "hidden" : true,
+    "dataType" : 25,
+    "createDVT" : "APPDATA",
+    "createDV" : "dynamicnew"
+  }, {
     "id" : "checkid",
     "hidden" : true,
     "dataType" : 25,
@@ -1220,11 +1226,20 @@
           "logicCat" : "ITEMENABLE",
           "logicType" : "GROUP",
           "getPSDEFDLogics" : [ {
-            "condOP" : "ISNULL",
-            "dEFDName" : "checkid",
-            "logicType" : "SINGLE"
+            "groupOP" : "OR",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "ISNULL",
+              "dEFDName" : "checkid",
+              "logicType" : "SINGLE"
+            }, {
+              "condOP" : "ISNOTNULL",
+              "dEFDName" : "dynamic_new",
+              "logicType" : "SINGLE"
+            } ],
+            "notMode" : false
           } ],
-          "relatedDetailNames" : [ "checkid" ],
+          "relatedDetailNames" : [ "checkid", "dynamic_new" ],
           "notMode" : false
         } ],
         "getPSEditor" : {
@@ -1266,6 +1281,29 @@
         "valueItemName" : "test_library_id",
         "allowEmpty" : false,
         "showCaption" : true
+      }, {
+        "codeName" : "dynamic_new",
+        "createDV" : "dynamicnew",
+        "createDVT" : "APPDATA",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "dynamic_new",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "dynamic_new"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
       }, {
         "caption" : "上下文ID",
         "codeName" : "checkid",
