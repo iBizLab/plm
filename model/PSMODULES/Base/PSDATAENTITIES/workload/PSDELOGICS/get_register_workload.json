@@ -13,7 +13,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEACTION1"
+        "id" : "DEBUGPARAM1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -21,8 +21,29 @@
         "id" : "Begin"
       }
     } ],
-    "topPos" : 40,
+    "topPos" : -30,
     "parallelOutput" : true
+  }, {
+    "codeName" : "DEBUGPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "调试逻辑参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM1"
+      }
+    } ],
+    "topPos" : 81
   }, {
     "codeName" : "DEACTION1",
     "getDstPSDEAction" : {
@@ -43,7 +64,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "RAWSQLCALL1"
+        "id" : "DEBUGPARAM2"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -55,7 +76,28 @@
       "modelref" : true,
       "id" : "Default"
     },
-    "topPos" : 208
+    "topPos" : 168
+  }, {
+    "codeName" : "DEBUGPARAM2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : -76,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "调试逻辑参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM2"
+      }
+    } ],
+    "topPos" : 228
   }, {
     "codeName" : "RAWSQLCALL1",
     "getDstPSDELogicParam" : {
@@ -94,8 +136,17 @@
         "id" : "Default"
       },
       "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[CATEGORY]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "CATEGORY",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
     } ],
-    "sql" : "select sum(DURATION) as `ACTUAL_WORKLOAD` from workload where  PRINCIPAL_TYPE = ? and PRINCIPAL_ID = ?",
+    "sql" : "select sum(DURATION) as `ACTUAL_WORKLOAD` from workload where  PRINCIPAL_TYPE = ? and PRINCIPAL_ID = ? and CATEGORY = ?",
     "topPos" : 322,
     "fillDstLogicParam" : true
   }, {
