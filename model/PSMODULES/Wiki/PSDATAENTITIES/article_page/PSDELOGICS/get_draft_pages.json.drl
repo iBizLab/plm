@@ -1,0 +1,55 @@
+package cn.ibizlab.plm.wiki.logic.article_pagelogic.get_draft_pages;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pageget_draft_pagesdefault;
+                global java.util.Map article_pageget_draft_pagesfilter;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pageget_draft_pagespage_list;
+                global java.util.Map article_pageget_draft_pagespages;
+        global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService iBzSysArticle_pageDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "article_pageget_draft_pagesbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[返回查询结果]
+            rule "end1"
+            ruleflow-group "article_pageget_draft_pagesend1"
+            when
+            then
+                        update(article_pageget_draft_pagesdefault);//更新fact中变量值
+                        update(article_pageget_draft_pagesfilter);//更新fact中变量值
+                        update(article_pageget_draft_pagespage_list);//更新fact中变量值
+                        update(article_pageget_draft_pagespages);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询草稿数据]
+            rule "rawsqlcall1"
+            ruleflow-group "article_pageget_draft_pagesrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",article_pageget_draft_pagesdefault.get("spaceid"));
+    String strSql="select * from page where page.SPACE_ID = #{et.param0} and page.IS_PUBLISHED = 0;";
+                        java.util.List<JSONObject> entities=iBzSysArticle_pageDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    article_pageget_draft_pagespage_list.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(article_pageget_draft_pagesdefault);//更新fact中变量值
+                        update(article_pageget_draft_pagesfilter);//更新fact中变量值
+                        update(article_pageget_draft_pagespage_list);//更新fact中变量值
+                        update(article_pageget_draft_pagespages);//更新fact中变量值
+            end

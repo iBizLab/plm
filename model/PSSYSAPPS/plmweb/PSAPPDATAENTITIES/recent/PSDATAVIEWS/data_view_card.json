@@ -1,0 +1,241 @@
+{
+  "cardHeight" : 120,
+  "cardWidth" : 150,
+  "codeName" : "data_view_card",
+  "controlType" : "DATAVIEW",
+  "getCreatePSControlAction" : {
+    "modelref" : true,
+    "id" : "create",
+    "actionName" : "Create",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "CREATE",
+    "name" : "create",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "create"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/recent.json"
+    }
+  },
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/recent/PSDATAVIEWS/data_view_card.json",
+  "getFetchPSControlAction" : {
+    "modelref" : true,
+    "id" : "fetch",
+    "actionType" : "DEDATASET",
+    "customCond" : "SRFNAVPARAM.SIZE=8",
+    "name" : "fetch",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "fetch_recent_use"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/recent.json"
+    }
+  },
+  "getGetPSControlAction" : {
+    "modelref" : true,
+    "id" : "load",
+    "actionName" : "Get",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "READ",
+    "name" : "load",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "get"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/recent.json"
+    }
+  },
+  "groupMode" : "NONE",
+  "getItemPSLayoutPanel" : {
+    "getAllPSPanelFields" : [ {
+      "id" : "owner_subtype",
+      "viewFieldName" : "owner_subtype"
+    }, {
+      "id" : "name",
+      "viewFieldName" : "name"
+    }, {
+      "id" : "owner_type",
+      "viewFieldName" : "owner_type"
+    } ],
+    "codeName" : "usr0103233849",
+    "controlType" : "PANEL",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/recent/PSPANELS/usr0103233849.json",
+    "layoutMode" : "FLEX",
+    "logicName" : "data_view_card卡片视图",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/recent.json"
+    },
+    "getPSControlParam" : { },
+    "getPSLayout" : {
+      "layout" : "FLEX"
+    },
+    "getRootPSPanelItems" : [ {
+      "itemStyle" : "DEFAULT",
+      "itemType" : "CONTAINER",
+      "name" : "container1",
+      "getPSLayout" : {
+        "layout" : "FLEX"
+      },
+      "getPSLayoutPos" : {
+        "grow" : -1,
+        "layout" : "FLEX"
+      },
+      "getPSPanelItems" : [ {
+        "caption" : "图片(动态)",
+        "contentHeight" : 20.0,
+        "height" : 20.0,
+        "itemStyle" : "DEFAULT",
+        "itemType" : "FIELD",
+        "name" : "owner_subtype",
+        "getPSEditor" : {
+          "editorHeight" : 20.0,
+          "editorType" : "SPAN",
+          "name" : "owner_subtype",
+          "getPSAppCodeList" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__recent_use.json"
+          },
+          "predefinedType" : "FIELD_IMAGE",
+          "enableLinkView" : false
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "height" : 20,
+          "heightMode" : "PX",
+          "layout" : "FLEX"
+        },
+        "viewFieldName" : "owner_subtype",
+        "convertToCodeItemText" : true
+      }, {
+        "caption" : "文本(动态)",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "FIELD",
+        "name" : "name",
+        "getPSControlRenders" : [ {
+          "layoutPanelModel" : "`<div class='ibiz-span' title='${data?.name}'>${data?.name}</div>`",
+          "name" : "logic",
+          "renderType" : "LAYOUTPANEL_MODEL"
+        } ],
+        "getPSEditor" : {
+          "editorType" : "SPAN",
+          "name" : "name",
+          "predefinedType" : "FIELD_TEXT_DYNAMIC",
+          "renderMode" : "TEXT_DYNAMIC",
+          "enableLinkView" : false
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "layout" : "FLEX"
+        },
+        "viewFieldName" : "name"
+      }, {
+        "caption" : "文本(动态)",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "FIELD",
+        "name" : "owner_type",
+        "getPSEditor" : {
+          "editorType" : "SPAN",
+          "name" : "owner_type",
+          "getPSAppCodeList" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__recent_type.json"
+          },
+          "predefinedType" : "FIELD_TEXT_DYNAMIC",
+          "renderMode" : "TEXT_DYNAMIC",
+          "enableLinkView" : false
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "layout" : "FLEX"
+        },
+        "viewFieldName" : "owner_type",
+        "convertToCodeItemText" : true
+      } ]
+    } ],
+    "layoutPanel" : true,
+    "name" : "itemlayoutpanel",
+    "modelid" : "6d73f3e6ea69e7999c4fc03af95a49b5",
+    "modeltype" : "PSSYSVIEWPANEL"
+  },
+  "logicName" : "最近使用",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/recent.json"
+  },
+  "getPSControlNavParams" : [ {
+    "key" : "size",
+    "name" : "size",
+    "value" : "8",
+    "rawValue" : true
+  } ],
+  "getPSDEDataViewDataItems" : [ {
+    "dataType" : 25,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfmajortext",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  } ],
+  "getPSSysCss" : {
+    "cssName" : "recentdata-screen-auto-item"
+  },
+  "pagingSize" : 1000,
+  "getRemovePSControlAction" : {
+    "modelref" : true,
+    "id" : "remove",
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/recent.json"
+    }
+  },
+  "getUpdatePSControlAction" : {
+    "modelref" : true,
+    "id" : "update",
+    "actionName" : "Update",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "UPDATE",
+    "name" : "update",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "update"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/recent.json"
+    }
+  },
+  "hasWFDataItems" : false,
+  "appendDEItems" : true,
+  "enableCardEdit" : false,
+  "enableCardEditGroup" : false,
+  "enableCardEditOrder" : false,
+  "enableCardNew" : false,
+  "enableGroup" : false,
+  "enablePagingBar" : false,
+  "noSort" : false,
+  "singleSelect" : false,
+  "modelid" : "d59f398379dc14c0c0758de4c7186e4a",
+  "modeltype" : "PSDEDATAVIEW"
+}

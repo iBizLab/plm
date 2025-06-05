@@ -1,0 +1,940 @@
+{
+  "codeName" : "before_remove",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDELOGICS/before_remove.json",
+  "logicName" : "删除工时记录前附加逻辑",
+  "memo" : "更新动态存储中的剩余工时",
+  "name" : "删除工时记录前附加逻辑",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 310,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : -80,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/workload.json"
+    },
+    "leftPos" : 270,
+    "logicNodeType" : "DEACTION",
+    "name" : "获取工时明细",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "topPos" : 38
+  }, {
+    "codeName" : "BINDPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "estimated"
+    },
+    "leftPos" : 680,
+    "logicNodeType" : "BINDPARAM",
+    "name" : "绑定预估工时",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      }
+    } ],
+    "srcFieldName" : "0",
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "workload_page"
+    },
+    "topPos" : 80
+  }, {
+    "codeName" : "RAWSQLCALL2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "total_register"
+    },
+    "leftPos" : 270,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "获取已登记工时",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[PRINCIPAL_TYPE]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "PRINCIPAL_TYPE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[PRINCIPAL_ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "PRINCIPAL_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[CATEGORY]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "CATEGORY",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "select sum(DURATION) as `DURATION` from workload where  PRINCIPAL_TYPE = ? and PRINCIPAL_ID = ? and CATEGORY = ?",
+    "topPos" : 150,
+    "fillDstLogicParam" : true
+  }, {
+    "codeName" : "PREPAREPARAM7",
+    "leftPos" : 490,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "预估工时",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM7"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "n_name_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : "直接值[ESTIMATED_WORKLOAD] ==> filter[n_name_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "ESTIMATED_WORKLOAD",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 196
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage.json"
+    },
+    "leftPos" : 680,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取预估/实际工时",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "工时不存在",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "workload_page"
+          },
+          "logicType" : "SINGLE",
+          "name" : "workload_page[size] 等于(=) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      },
+      "name" : "工时存在",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "GT",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "workload_page"
+          },
+          "logicType" : "SINGLE",
+          "name" : "workload_page[size] 大于(>) 0",
+          "paramValue" : "0"
+        }, {
+          "condOP" : "EQ",
+          "dstFieldName" : "CATEGORY",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[CATEGORY] 等于(=) ACTUAL_WORKLOAD",
+          "paramValue" : "ACTUAL_WORKLOAD"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM3"
+      },
+      "name" : "工时存在",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "GT",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "workload_page"
+          },
+          "logicType" : "SINGLE",
+          "name" : "workload_page[size] 大于(>) 0",
+          "paramValue" : "0"
+        }, {
+          "condOP" : "EQ",
+          "dstFieldName" : "CATEGORY",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[CATEGORY] 等于(=) ESTIMATED_WORKLOAD",
+          "paramValue" : "ESTIMATED_WORKLOAD"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "workload_page"
+    },
+    "topPos" : 256
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 910,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "填充实际/预估/剩余工时",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "n_name_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : "直接值[REMAINING_WORKLOAD] ==> filter[n_name_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "REMAINING_WORKLOAD",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "OWNER_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "common_workload"
+      },
+      "name" : "Default[PRINCIPAL_ID] ==> common_workload[OWNER_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRINCIPAL_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "common_workload"
+      },
+      "name" : "Default[CATEGORY] ==> common_workload[NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "CATEGORY",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValue" : "ACTUAL_WORKLOAD",
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "common_workload"
+      },
+      "name" : "Default[PRINCIPAL_TYPE] ==> common_workload[OWNER_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRINCIPAL_TYPE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "remaining"
+      },
+      "name" : "Default[PRINCIPAL_ID] ==> remaining[OWNER_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRINCIPAL_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "remaining"
+      },
+      "name" : "Default[PRINCIPAL_TYPE] ==> remaining[OWNER_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRINCIPAL_TYPE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "remaining"
+      },
+      "name" : "直接值[REMAINING_WORKLOAD] ==> remaining[NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "REMAINING_WORKLOAD",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 256
+  }, {
+    "code" : "var defaultObj = logic.getParam(\"default\");\r\nvar remainingObj = logic.getParam(\"remaining\"); // 剩余工时对象\r\nvar estimatedObj = logic.getParam(\"estimated\"); // 预估工时对象\r\nvar commonWorkloadObj = logic.getParam(\"common_workload\"); // 通用工时对象\r\nvar actualObj = logic.getParam(\"actual\"); // 实际工时对象\r\n\r\nvar total_register = logic.getParam(\"total_register\"); // 总登记时长\r\nif (defaultObj.get(\"category\") === 'ACTUAL_WORKLOAD') {\r\n    var actual_workload = total_register.get(\"duration\") == null ? 0 : Number(total_register.get(\"duration\"));\r\n    var estimated_workload = estimatedObj.get(\"decimal_value\") == null ? 0 : Number(estimatedObj.get(\"decimal_value\"));\r\n    var duration = defaultObj.get(\"duration\") == null ? 0 : Number(defaultObj.get(\"duration\"));\r\n    sys.info(\"查询预估工时=\", estimated_workload);\r\n    sys.info(\"查询总登记实际工时=\", actual_workload);\r\n    // 重新计算剩余工时\r\n    var remaining = estimated_workload - (actual_workload - duration);\r\n    if(remaining < 0){\r\n        remaining = 0;\r\n    }\r\n    remainingObj.set(\"decimal_value\", remaining);\r\n    // 计算实际工时\r\n    var actual = (actual_workload - duration) <= 0 ? 0 : actual_workload - duration;\r\n    commonWorkloadObj.set(\"decimal_value\", actual);\r\n} else {\r\n    var estimated_workload = total_register.get(\"duration\") == null ? 0 : Number(total_register.get(\"duration\"));\r\n    var actual_workload = actualObj.get(\"decimal_value\") == null ? 0 : Number(actualObj.get(\"decimal_value\"));\r\n    var duration = defaultObj.get(\"duration\") == null ? 0 : Number(defaultObj.get(\"duration\"));\r\n    sys.info(\"查询实际工时=\", actual_workload);\r\n    sys.info(\"查询总登记预估工时=\", estimated_workload);\r\n    // 重新计算剩余工时\r\n    var remaining = estimated_workload - duration - actual_workload;\r\n    if(remaining < 0){\r\n        remaining = 0;\r\n    }\r\n    remainingObj.set(\"decimal_value\", remaining);\r\n    // 计算预估工时\r\n    var estimated = (estimated_workload - duration) <= 0 ? 0 : estimated_workload - duration;\r\n    commonWorkloadObj.set(\"decimal_value\", estimated);\r\n}",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "JavaScript",
+    "leftPos" : 1400,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "计算剩余工时",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 256
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 270,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备查询过滤器参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM6"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "CATEGORY",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[CATEGORY] 等于(=) ESTIMATED_WORKLOAD",
+          "paramValue" : "ESTIMATED_WORKLOAD"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM7"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "CATEGORY",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[CATEGORY] 等于(=) ACTUAL_WORKLOAD",
+          "paramValue" : "ACTUAL_WORKLOAD"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "n_owner_id_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : "Default[PRINCIPAL_ID] ==> filter[n_owner_id_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRINCIPAL_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "n_owner_type_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : "Default[PRINCIPAL_TYPE] ==> filter[n_owner_type_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRINCIPAL_TYPE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 270
+  }, {
+    "codeName" : "PREPAREPARAM6",
+    "leftPos" : 490,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "实际工时",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM6"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "n_name_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : "直接值[ACTUAL_WORKLOAD] ==> filter[n_name_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "ACTUAL_WORKLOAD",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 316
+  }, {
+    "codeName" : "PREPAREPARAM4",
+    "leftPos" : 910,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置工作项标识",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION4"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "work_item"
+      },
+      "name" : "Default[PRINCIPAL_ID] ==> work_item[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRINCIPAL_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 360
+  }, {
+    "codeName" : "DEACTION3",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage/PSDEACTIONS/Save.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "common_workload"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage.json"
+    },
+    "leftPos" : 1130,
+    "logicNodeType" : "DEACTION",
+    "name" : "更新实际/预估工时",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "PRINCIPAL_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[PRINCIPAL_TYPE] 等于(=) WORK_ITEM",
+          "paramValue" : "WORK_ITEM"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION3"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "common_workload"
+    },
+    "topPos" : 360
+  }, {
+    "codeName" : "DEACTION2",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage/PSDEACTIONS/Save.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "remaining"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage.json"
+    },
+    "leftPos" : 1400,
+    "logicNodeType" : "DEACTION",
+    "name" : "更新剩余工时",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      },
+      "name" : "实际登记工时为0是置为NULL",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "DECIMAL_VALUE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "common_workload"
+          },
+          "logicType" : "SINGLE",
+          "name" : "common_workload 等于(=) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION3"
+      },
+      "name" : "实际登记工时不等于0",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "DECIMAL_VALUE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "common_workload"
+          },
+          "logicType" : "SINGLE",
+          "name" : "common_workload 不等于(<>) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      }
+    } ],
+    "topPos" : 360
+  }, {
+    "codeName" : "BINDPARAM3",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "actual"
+    },
+    "leftPos" : 680,
+    "logicNodeType" : "BINDPARAM",
+    "name" : "绑定实际工时",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM3"
+      }
+    } ],
+    "srcFieldName" : "0",
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "workload_page"
+    },
+    "topPos" : 420
+  }, {
+    "codeName" : "DEACTION4",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "work_item"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "leftPos" : 910,
+    "logicNodeType" : "DEACTION",
+    "name" : "获取工作项",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM5"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "PID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "work_item"
+          },
+          "logicType" : "SINGLE",
+          "name" : "work_item[PID] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION4"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "work_item"
+    },
+    "topPos" : 490
+  }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : 1400,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "置空实际工时",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "DECIMAL_VALUE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "common_workload"
+      },
+      "name" : "空值（NULL） ==> common_workload[DECIMAL_VALUE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValueType" : "NULLVALUE"
+    } ],
+    "topPos" : 510
+  }, {
+    "codeName" : "PREPAREPARAM5",
+    "leftPos" : 910,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "填充父工作项标识",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DELOGIC1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM5"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "PRINCIPAL_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "workload"
+      },
+      "name" : "work_item[PID] ==> workload[PRINCIPAL_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "work_item"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 610
+  }, {
+    "codeName" : "DELOGIC1",
+    "getDstPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDELOGICS/workload_auto_cal.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "workload"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/workload.json"
+    },
+    "leftPos" : 910,
+    "logicNodeType" : "DELOGIC",
+    "name" : "自动计算父工时",
+    "topPos" : 730
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/workload.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "actual",
+    "logicName" : "实际工时",
+    "name" : "实际工时",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "common_workload",
+    "logicName" : "实际/预估工时",
+    "name" : "实际/预估工时",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "estimated",
+    "logicName" : "预估工时",
+    "name" : "预估工时",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "filter",
+    "logicName" : "过滤器",
+    "name" : "过滤器",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "remaining",
+    "logicName" : "剩余工时",
+    "name" : "剩余工时",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "remaining_page",
+    "logicName" : "剩余工时查询结果对象",
+    "name" : "剩余工时查询结果对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage.json"
+    },
+    "entityPageParam" : true
+  }, {
+    "codeName" : "total_register",
+    "logicName" : "已登记总工时",
+    "name" : "已登记总工时",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/workload.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "work_item",
+    "logicName" : "work_item",
+    "name" : "work_item",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "workload",
+    "logicName" : "workload",
+    "name" : "workload",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/workload.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "workload_page",
+    "logicName" : "预估工时查询结果对象",
+    "name" : "预估工时查询结果对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage.json"
+    },
+    "entityPageParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

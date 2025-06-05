@@ -1,0 +1,89 @@
+{
+  "codeName" : "add_shared_page_member",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/member/PSDELOGICS/add_shared_page_member.json",
+  "logicName" : "添加共享页面非空间下成员",
+  "memo" : "添加共享页面非空间下成员",
+  "name" : "添加共享页面非空间下成员",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "已选择用户",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "choose_member_ids",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[choose_member_ids] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "code" : "def _default = logic.param('Default').getReal()\r\ndef choose_member = _default.get('choose_member')\r\ndef choose_member_ids = _default.get('choose_member_ids')\r\ndef member_ids = choose_member_ids.split(',')\r\ndef member_names = choose_member.split(',')\r\ndef member_runtime = sys.dataentity('member')\r\nif(_default.get('shared_page') != null){\r\n    member_ids.eachWithIndex { item, index ->\r\n        def newMember = member_runtime.entity()\r\n        newMember.set('owner_type', 'PAGE')\r\n        newMember.set('role_id', _default.get('check_type', 'reader'))\r\n        newMember.set('owner_subtype', 'SHARED')\r\n        newMember.set('owner_id', _default.get('shared_page'))\r\n        newMember.set('user_id', item) \r\n        newMember.set('name', member_names[index])\r\n        member_runtime.save(newMember)\r\n    }\r\n\r\n}\r\n",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "Groovy",
+    "leftPos" : 160,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "添加共享页面成员",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 392
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 200,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 537
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/member.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

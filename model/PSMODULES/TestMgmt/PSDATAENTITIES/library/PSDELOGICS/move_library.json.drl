@@ -1,0 +1,102 @@
+package cn.ibizlab.plm.testmgmt.logic.librarylogic.move_library;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.library librarymove_librarydefault;
+                global cn.ibizlab.plm.core.testmgmt.domain.library librarymove_libraryfor_temp;
+                global java.util.Map librarymove_libraryid;
+                global cn.ibizlab.plm.core.testmgmt.domain.library librarymove_librarysrfactionparam;
+                global cn.ibizlab.plm.core.testmgmt.domain.library librarymove_librarytemp_lirbary;
+                    global cn.ibizlab.plm.core.testmgmt.service.IlibraryService libraryservice;
+        global cn.ibizlab.plm.core.testmgmt.service.IlibraryService iBzSysLibraryDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "librarymove_librarybegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定要更改的测试库数据]
+            rule "bindparam1"
+            ruleflow-group "librarymove_librarybindparam1"
+            when
+            then
+                        update(librarymove_librarydefault);//更新fact中变量值
+                        update(librarymove_libraryfor_temp);//更新fact中变量值
+                        update(librarymove_libraryid);//更新fact中变量值
+                        update(librarymove_librarysrfactionparam);//更新fact中变量值
+                        update(librarymove_librarytemp_lirbary);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定测试库id]
+            rule "bindparam2"
+            ruleflow-group "librarymove_librarybindparam2"
+            when
+            then
+                        update(librarymove_librarydefault);//更新fact中变量值
+                        update(librarymove_libraryfor_temp);//更新fact中变量值
+                        update(librarymove_libraryid);//更新fact中变量值
+                        update(librarymove_librarysrfactionparam);//更新fact中变量值
+                        update(librarymove_librarytemp_lirbary);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "librarymove_libraryend1"
+            when
+            then
+                        update(librarymove_librarydefault);//更新fact中变量值
+                        update(librarymove_libraryfor_temp);//更新fact中变量值
+                        update(librarymove_libraryid);//更新fact中变量值
+                        update(librarymove_librarysrfactionparam);//更新fact中变量值
+                        update(librarymove_librarytemp_lirbary);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "librarymove_libraryloopsubcall1"
+            when
+            then
+                        update(librarymove_librarydefault);//更新fact中变量值
+                        update(librarymove_libraryfor_temp);//更新fact中变量值
+                        update(librarymove_libraryid);//更新fact中变量值
+                        update(librarymove_librarysrfactionparam);//更新fact中变量值
+                        update(librarymove_librarytemp_lirbary);//更新fact中变量值
+            end
+
+            //逻辑处理节点[组装待更新的测试库数据]
+            rule "prepareparam1"
+            ruleflow-group "librarymove_libraryprepareparam1"
+            when
+            then
+                            librarymove_librarytemp_lirbary.set("scopeid",librarymove_libraryfor_temp.get("scopeid"));
+                            librarymove_librarytemp_lirbary.set("scopetype",librarymove_libraryfor_temp.get("scopetype"));
+                            librarymove_librarytemp_lirbary.set("visibility",librarymove_libraryfor_temp.get("visibility"));
+                            librarymove_librarytemp_lirbary.set("id",librarymove_libraryid.get(""));
+                        update(librarymove_librarydefault);//更新fact中变量值
+                        update(librarymove_libraryfor_temp);//更新fact中变量值
+                        update(librarymove_libraryid);//更新fact中变量值
+                        update(librarymove_librarysrfactionparam);//更新fact中变量值
+                        update(librarymove_librarytemp_lirbary);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新测试库数据]
+            rule "deaction1"
+            ruleflow-group "librarymove_librarydeaction1"
+            when
+            then
+                        libraryservice.update(librarymove_librarytemp_lirbary);
+                        update(librarymove_librarydefault);//更新fact中变量值
+                        update(librarymove_libraryfor_temp);//更新fact中变量值
+                        update(librarymove_libraryid);//更新fact中变量值
+                        update(librarymove_librarysrfactionparam);//更新fact中变量值
+                        update(librarymove_librarytemp_lirbary);//更新fact中变量值
+            end

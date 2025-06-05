@@ -1,0 +1,194 @@
+{
+  "aggMode" : "NONE",
+  "codeName" : "assigned_grid_view_grid",
+  "columnEnableFilter" : 2,
+  "columnEnableLink" : 2,
+  "controlType" : "GRID",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member/PSGRIDS/assigned_grid_view_grid.json",
+  "getFetchPSControlAction" : {
+    "modelref" : true,
+    "id" : "fetch",
+    "actionType" : "DEDATASET",
+    "name" : "fetch",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "fetch_default"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+    }
+  },
+  "groupMode" : "NONE",
+  "logicName" : "效能成员绑定_表格",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+  },
+  "getPSDEGridColumns" : [ {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "CONTROL.DEGRID.INSIGHT_MEMBER.ASSIGNED_GRID_VIEW_GRID.DEFGRIDCOLUMN.NAME"
+    },
+    "caption" : "姓名",
+    "codeName" : "name",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "name",
+    "excelCaption" : "姓名",
+    "name" : "name",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "width" : 200,
+    "widthUnit" : "STAR",
+    "enableSort" : true
+  }, {
+    "align" : "CENTER",
+    "caption" : "操作",
+    "codeName" : "uagridcolumn1",
+    "columnType" : "UAGRIDCOLUMN",
+    "name" : "uagridcolumn1",
+    "noPrivDisplayMode" : 1,
+    "getPSDEUIActionGroup" : {
+      "codeName" : "Usr0702314164",
+      "name" : "效能成员配置",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+      },
+      "getPSUIActionGroupDetails" : [ {
+        "detailType" : "DEUIACTION",
+        "name" : "u806005d",
+        "getPSSysImage" : {
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEKEY",
+          "caption" : "移除成员",
+          "codeName" : "remove_member",
+          "confirmMsg" : "确认删除该成员？",
+          "fullCodeName" : "insight_member_remove_member",
+          "name" : "移除成员",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "remove"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+          },
+          "refreshMode" : 1,
+          "successMsg" : "删除成功",
+          "timeout" : 60000,
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "remove_member",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "remove_member@insight_member"
+        },
+        "addSeparator" : false,
+        "showCaption" : false,
+        "showIcon" : true
+      } ],
+      "uniqueTag" : "insight_member__Usr0702314164"
+    },
+    "width" : 100,
+    "widthUnit" : "PX",
+    "enableSort" : false
+  } ],
+  "getPSDEGridDataItems" : [ {
+    "dataType" : 25,
+    "name" : "name",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfdataaccaction",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "dataAccessAction" : true
+  }, {
+    "dataType" : 25,
+    "name" : "user_id",
+    "getPSAppDEField" : {
+      "name" : "USER_ID",
+      "codeName" : "user_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "owner_id",
+    "getPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfmajortext",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  } ],
+  "getPSDEGridEditItems" : [ {
+    "caption" : "标识",
+    "codeName" : "srfkey",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getPSEditor" : {
+      "editorType" : "HIDDEN",
+      "name" : "srfkey"
+    },
+    "allowEmpty" : true
+  } ],
+  "pagingSize" : 20,
+  "getRemovePSControlAction" : {
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+    }
+  },
+  "sortMode" : "REMOTE",
+  "hasWFDataItems" : false,
+  "enableColFilter" : false,
+  "enableCustomized" : true,
+  "enableGroup" : false,
+  "enablePagingBar" : false,
+  "enableRowEdit" : false,
+  "enableRowEditOrder" : false,
+  "enableRowNew" : false,
+  "forceFit" : false,
+  "hideHeader" : false,
+  "noSort" : false,
+  "singleSelect" : true,
+  "modelid" : "d21f6ab8ebbbcff6b27dfe1d3ef90a49",
+  "modeltype" : "PSDEGRID"
+}

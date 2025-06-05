@@ -1,0 +1,110 @@
+package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.complete_trend;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemcomplete_trenddefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemcomplete_trendresult_list;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemcomplete_trendresult_page;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemcomplete_trendwork_item;
+                    global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService work_itemservice;
+        global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService iBzSysWork_itemDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "work_itemcomplete_trendbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[七天前创建且未完成的工作项数量]
+            rule "rawsqlcall1"
+            ruleflow-group "work_itemcomplete_trendrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",work_itemcomplete_trenddefault.get("n_project_id_eq"));
+    String strSql="select count(1) as `seven_ago_not_completed`  from work_item t1, work_item_state t2  where t1.`STATE` = t2.ID and t2.`TYPE`  <> 'completed' and datediff(curdate(), t1.CREATE_TIME) >= 7   and t1.PROJECT_ID = #{et.param0} and t1.IS_DELETED = 0";
+                        java.util.List<JSONObject> entities=iBzSysWork_itemDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    work_itemcomplete_trendwork_item.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(work_itemcomplete_trenddefault);//更新fact中变量值
+                        update(work_itemcomplete_trendresult_list);//更新fact中变量值
+                        update(work_itemcomplete_trendresult_page);//更新fact中变量值
+                        update(work_itemcomplete_trendwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[七天前完成的工作项数量]
+            rule "rawsqlcall2"
+            ruleflow-group "work_itemcomplete_trendrawsqlcall2"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",work_itemcomplete_trenddefault.get("n_project_id_eq"));
+    String strSql="select count(1) as `seven_ago_completed` from work_item t1, work_item_state t2  where t1.STATE = t2.id and t2.`TYPE` = 'completed' and datediff(curdate(), t1.COMPLETED_AT) >= 7   and t1.PROJECT_ID = #{et.param0}  and t1.IS_DELETED = 0";
+                        java.util.List<JSONObject> entities=iBzSysWork_itemDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    work_itemcomplete_trendwork_item.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(work_itemcomplete_trenddefault);//更新fact中变量值
+                        update(work_itemcomplete_trendresult_list);//更新fact中变量值
+                        update(work_itemcomplete_trendresult_page);//更新fact中变量值
+                        update(work_itemcomplete_trendwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取七天内创建或完成的工作项]
+            rule "dedataset1"
+            ruleflow-group "work_itemcomplete_trenddedataset1"
+            when
+            then
+                        update(work_itemcomplete_trenddefault);//更新fact中变量值
+                        update(work_itemcomplete_trendresult_list);//更新fact中变量值
+                        update(work_itemcomplete_trendresult_page);//更新fact中变量值
+                        update(work_itemcomplete_trendwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[统计七天内的完成/未完成数量]
+            rule "rawsfcode1"
+            ruleflow-group "work_itemcomplete_trendrawsfcode1"
+            when
+            then
+                        update(work_itemcomplete_trenddefault);//更新fact中变量值
+                        update(work_itemcomplete_trendresult_list);//更新fact中变量值
+                        update(work_itemcomplete_trendresult_page);//更新fact中变量值
+                        update(work_itemcomplete_trendwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定返回统计结果]
+            rule "bindparam1"
+            ruleflow-group "work_itemcomplete_trendbindparam1"
+            when
+            then
+                        update(work_itemcomplete_trenddefault);//更新fact中变量值
+                        update(work_itemcomplete_trendresult_list);//更新fact中变量值
+                        update(work_itemcomplete_trendresult_page);//更新fact中变量值
+                        update(work_itemcomplete_trendwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定返回结果]
+            rule "end1"
+            ruleflow-group "work_itemcomplete_trendend1"
+            when
+            then
+                        update(work_itemcomplete_trenddefault);//更新fact中变量值
+                        update(work_itemcomplete_trendresult_list);//更新fact中变量值
+                        update(work_itemcomplete_trendresult_page);//更新fact中变量值
+                        update(work_itemcomplete_trendwork_item);//更新fact中变量值
+            end

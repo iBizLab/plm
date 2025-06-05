@@ -1,0 +1,158 @@
+{
+  "codeName" : "remove_space_member_notify",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/space_member/PSDELOGICS/remove_space_member_notify.json",
+  "logicName" : "移除空间成员发送通知",
+  "memo" : "移除空间成员时向对应用户发送通知消息",
+  "name" : "移除空间成员发送通知",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 440,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 210,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space_member/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space_member.json"
+    },
+    "leftPos" : 400,
+    "logicNodeType" : "DEACTION",
+    "name" : "获取空间成员数据",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "topPos" : 354
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 400,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "绑定当前操作人",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "UPDATE_MAN",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "用户全局对象[srfpersonid] ==> Default[UPDATE_MAN]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "srfpersonid",
+      "srcValueType" : "SESSION"
+    } ],
+    "topPos" : 460
+  }, {
+    "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"update_time\", new Date());",
+    "codeName" : "RAWSFCODE1",
+    "leftPos" : 400,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "获取当前操作时间",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 550
+  }, {
+    "codeName" : "DENOTIFY1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space_member/PSDENOTIFIES/remover_member_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space_member.json"
+    },
+    "leftPos" : 400,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "移除空间成员通知",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY1"
+      }
+    } ],
+    "topPos" : 650
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 440,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "topPos" : 790
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/space_member.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

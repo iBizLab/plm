@@ -1,0 +1,384 @@
+{
+  "codeName" : "tree_exp_view_tree_view",
+  "controlStyle" : "LIST_TREE",
+  "controlType" : "TREEVIEW",
+  "getCreatePSControlAction" : {
+    "modelref" : true,
+    "id" : "create",
+    "actionName" : "Create",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "CREATE",
+    "name" : "create",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "Create"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSDELogic.json"
+    }
+  },
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSDELogic/PSTREEVIEWS/tree_exp_view_tree_view.json",
+  "getFetchPSControlAction" : {
+    "modelref" : true,
+    "id" : "fetch",
+    "actionType" : "DEDATASET",
+    "name" : "fetch",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSDELogic.json"
+    }
+  },
+  "getGetPSControlAction" : {
+    "modelref" : true,
+    "id" : "load",
+    "actionName" : "Get",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "READ",
+    "name" : "load",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "Get"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSDELogic.json"
+    }
+  },
+  "hookEventNames" : [ "SELECTIONCHANGE", "LOAD" ],
+  "logicName" : "自动化规则树导航视图_树视图",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSDELogic.json"
+  },
+  "getPSControlLogics" : [ {
+    "eventNames" : "SELECTIONCHANGE",
+    "logicTag" : "treeexpbar_tree",
+    "logicType" : "CUSTOM",
+    "name" : "treeexpbar_selectionchange"
+  }, {
+    "eventNames" : "LOAD",
+    "logicTag" : "treeexpbar_tree",
+    "logicType" : "CUSTOM",
+    "name" : "treeexpbar_load"
+  } ],
+  "getPSDETreeNodeRSs" : [ {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "all"
+    },
+    "name" : "规则 - 全部规则",
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node"
+    },
+    "name" : "默认根节点 - 规则",
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "ROOT"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "auto"
+    },
+    "name" : "规则 - 自动化规则",
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "schedule"
+    },
+    "name" : "规则 - 计划规则",
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "immediately"
+    },
+    "name" : "规则 - 即时规则",
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  } ],
+  "getPSDETreeNodes" : [ {
+    "counterMode" : 0,
+    "name" : "默认根节点",
+    "nodeType" : "ROOT",
+    "nodeValue" : "root",
+    "text" : "默认根节点",
+    "treeNodeType" : "STATIC",
+    "hasPSDETreeNodeRSs" : true,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : false,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : true,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "ROOT"
+  }, {
+    "counterMode" : 0,
+    "name" : "全部规则",
+    "getNavPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/psdelogicglobal_flow_grid_view.json",
+      "viewType" : "DEGRIDVIEW"
+    },
+    "nodeType" : "all",
+    "getPSNavigateParams" : [ {
+      "key" : "n_dynamodelflag_eq",
+      "name" : "n_dynamodelflag_eq",
+      "value" : "1",
+      "rawValue" : true
+    } ],
+    "getPSSysImage" : {
+      "glyph" : "xf0ca@FontAwesome",
+      "cssClass" : "fa fa-list-ul"
+    },
+    "text" : "全部规则",
+    "treeNodeType" : "STATIC",
+    "hasPSDETreeNodeRSs" : false,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : false,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "all"
+  }, {
+    "counterMode" : 0,
+    "name" : "自动化规则",
+    "getNavPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/psdelogicglobal_flow_grid_view.json",
+      "viewType" : "DEGRIDVIEW"
+    },
+    "nodeType" : "auto",
+    "getPSNavigateParams" : [ {
+      "key" : "n_logicsubtype_in",
+      "name" : "n_logicsubtype_in",
+      "value" : "EVENTHOOK,FIELDCHANGEHOOK,WEBHOOK",
+      "rawValue" : true
+    }, {
+      "key" : "n_dynamodelflag_eq",
+      "name" : "n_dynamodelflag_eq",
+      "value" : "1",
+      "rawValue" : true
+    } ],
+    "getPSSysImage" : {
+      "glyph" : "xf031@FontAwesome",
+      "cssClass" : "fa fa-font"
+    },
+    "text" : "自动化规则",
+    "treeNodeType" : "STATIC",
+    "hasPSDETreeNodeRSs" : false,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : false,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "auto"
+  }, {
+    "counterMode" : 0,
+    "name" : "即时规则",
+    "nodeType" : "immediately",
+    "getPSSysImage" : {
+      "glyph" : "xf1d9@FontAwesome",
+      "cssClass" : "fa fa-paper-plane-o"
+    },
+    "text" : "即时规则",
+    "treeNodeType" : "STATIC",
+    "hasPSDETreeNodeRSs" : false,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : false,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "immediately"
+  }, {
+    "counterMode" : 0,
+    "name" : "规则",
+    "nodeType" : "node",
+    "text" : "规则",
+    "treeNodeType" : "STATIC",
+    "hasPSDETreeNodeRSs" : true,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : false,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : true,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "node"
+  }, {
+    "counterMode" : 0,
+    "name" : "组织模板",
+    "nodeType" : "org_temp",
+    "text" : "组织模板",
+    "treeNodeType" : "STATIC",
+    "hasPSDETreeNodeRSs" : false,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : false,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "org_temp"
+  }, {
+    "counterMode" : 0,
+    "name" : "计划规则",
+    "getNavPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/psdelogicglobal_flow_grid_view.json",
+      "viewType" : "DEGRIDVIEW"
+    },
+    "nodeType" : "schedule",
+    "getPSNavigateParams" : [ {
+      "key" : "n_logicsubtype_eq",
+      "name" : "n_logicsubtype_eq",
+      "value" : "TIMERTASK",
+      "rawValue" : true
+    }, {
+      "key" : "n_dynamodelflag_eq",
+      "name" : "n_dynamodelflag_eq",
+      "value" : "1",
+      "rawValue" : true
+    } ],
+    "getPSSysImage" : {
+      "glyph" : "xf017@FontAwesome",
+      "cssClass" : "fa fa-clock-o"
+    },
+    "text" : "计划规则",
+    "treeNodeType" : "STATIC",
+    "hasPSDETreeNodeRSs" : false,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : false,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "schedule"
+  } ],
+  "getPSSysPFPlugin" : {
+    "pluginType" : "TREE_RENDER",
+    "pluginCode" : "LIST_TREE",
+    "runtimeObject" : true
+  },
+  "getRemovePSControlAction" : {
+    "modelref" : true,
+    "id" : "remove",
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "Remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSDELogic.json"
+    }
+  },
+  "treeGridMode" : 0,
+  "getUpdatePSControlAction" : {
+    "modelref" : true,
+    "id" : "update",
+    "actionName" : "Update",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "UPDATE",
+    "name" : "update",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "Update"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSDELogic.json"
+    }
+  },
+  "enableRootSelect" : false,
+  "outputIconDefault" : true,
+  "rootVisible" : false,
+  "modelid" : "a006646ecc80d685e7844467cee396f2",
+  "modeltype" : "PSDETREEVIEW"
+}

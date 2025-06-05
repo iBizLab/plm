@@ -1,0 +1,269 @@
+{
+  "codeName" : "change_stage",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDELOGICS/change_stage.json",
+  "logicName" : "修改发布当前阶段",
+  "memo" : "修改发布当前阶段",
+  "name" : "修改发布当前阶段",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : -90,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "BINDPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "stage_transitions"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "BINDPARAM",
+    "name" : "绑定发布阶段列表参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      }
+    } ],
+    "srcFieldName" : "STAGE_TRANSITIONS",
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "topPos" : 20
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 160,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置发布更新对象的标识",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "update_obj"
+      },
+      "name" : "Default[release] ==> update_obj[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "release",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 120
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 160,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备阶段查询参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "release",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "stage_filter"
+      },
+      "name" : "Default[release] ==> stage_filter[release]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "release",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 210
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "cur_stage"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "stage_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/stage.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEDATASET",
+    "name" : "查询发布阶段",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "stages"
+    },
+    "topPos" : 300
+  }, {
+    "code" : "def stage_transitions = logic.param('stage_transitions').getReal()\r\ndef stages = logic.param('stages').getReal()\r\ndef update_obj = logic.param('update_obj').getReal()\r\n\r\ndef first_stage = logic.param('first_stage').getReal()\r\ndef last_stage = logic.param('last_stage').getReal()\r\ndef current_stage = logic.param('current_stage').getReal()\r\ndef target_stage = logic.param('target_stage').getReal()\r\n\r\nfirst_stage = stages.min { it.get('p_sequence') }\r\nlast_stage = stages.max { it.get('p_sequence') }\r\n//首阶段标识\r\ndef first_stage_id = first_stage.get('id')\r\n//末阶段标识\r\ndef last_stage_id = last_stage.get('id')\r\n//获取实体运行对象\r\ndef stage_runtime = sys.dataentity('stage')\r\ndef release_runtime = sys.dataentity('release')\r\n//循环处理\r\nstage_transitions.each { it ->\r\n    def stage_id = it.get('id')\r\n    if(it.get('target') == 1){\r\n        it.set('is_current', 1)\r\n        target_stage = it\r\n        if(first_stage_id != null){\r\n            if(first_stage_id == stage_id){\r\n                update_obj.set('start_at', it.get('operated_time'))\r\n            }\r\n        }\r\n        if(last_stage_id != null){\r\n            if(last_stage_id == stage_id){\r\n                update_obj.set('end_at', it.get('operated_time'))\r\n            }\r\n        }\r\n        update_obj.set('status', stage_id) \r\n    }\r\n    if(it.get('current') == 1){\r\n        it.set('is_current', 0)\r\n        current_stage = it\r\n    }\r\n    //更新阶段\r\n    stage_runtime.update(it)\r\n}\r\n// 向前变动阶段时, 从当前阶段 -> 目标阶段 的中间阶段将操作时间置空\r\nif(target_stage.get('p_sequence') < current_stage.get('p_sequence')){\r\n    stages.each { it ->\r\n        if(it.get('p_sequence') > target_stage.get('p_sequence')){\r\n            // 构造阶段更新对象\r\n            def update_stage = stage_runtime.entity()\r\n            update_stage.set('id', it.get('id'))\r\n            if(current_stage.get('id') == last_stage_id){\r\n                if(it.get('p_sequence') < current_stage.get('p_sequence')){\r\n                    update_stage.set('operated_time', null)\r\n                    stage_runtime.update(update_stage)\r\n                }\r\n            } else {\r\n                if(it.get('p_sequence') <= current_stage.get('p_sequence')){\r\n                    update_stage.set('operated_time', null)\r\n                    stage_runtime.update(update_stage)\r\n                }\r\n            }\r\n        }\r\n    }\r\n}\r\nrelease_runtime.update(update_obj)\r\n",
+    "codeName" : "RAWSFCODE2",
+    "codeType" : "Groovy",
+    "leftPos" : 160,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "修改发布当前阶段",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE2"
+      }
+    } ],
+    "topPos" : 400
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 200,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "update_obj"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 618
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "current_stage",
+    "logicName" : "当前阶段对象",
+    "name" : "当前阶段对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/stage.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "first_stage",
+    "logicName" : "首阶段对象",
+    "name" : "首阶段对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/stage.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "last_stage",
+    "logicName" : "末阶段对象",
+    "name" : "末阶段对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/stage.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "stage_filter",
+    "logicName" : "阶段查询过滤器",
+    "name" : "阶段查询过滤器",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/stage.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "stage_transitions",
+    "logicName" : "发布阶段列表",
+    "name" : "发布阶段列表",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/stage.json"
+    },
+    "entityListParam" : true
+  }, {
+    "codeName" : "stages",
+    "logicName" : "阶段集合",
+    "name" : "阶段集合",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/stage.json"
+    },
+    "entityPageParam" : true
+  }, {
+    "codeName" : "target_stage",
+    "logicName" : "目标阶段对象",
+    "name" : "目标阶段对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/stage.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "update_obj",
+    "logicName" : "发布更新对象",
+    "name" : "发布更新对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

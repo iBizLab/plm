@@ -1,0 +1,282 @@
+{
+  "codeName" : "list_exp_view_list",
+  "controlType" : "LIST",
+  "getCreatePSControlAction" : {
+    "modelref" : true,
+    "id" : "create",
+    "actionName" : "Create",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "CREATE",
+    "name" : "create",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "create"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+    }
+  },
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard/PSLISTS/list_exp_view_list.json",
+  "getFetchPSControlAction" : {
+    "modelref" : true,
+    "id" : "fetch",
+    "actionType" : "DEDATASET",
+    "name" : "fetch",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "fetch_example_chart"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+    }
+  },
+  "getGetPSControlAction" : {
+    "modelref" : true,
+    "id" : "load",
+    "actionName" : "Get",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "READ",
+    "name" : "load",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "get"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+    }
+  },
+  "groupMode" : "NONE",
+  "hookEventNames" : [ "ONLOADSUCCESS", "SELECTIONCHANGE", "LOAD" ],
+  "getItemPSLayoutPanel" : {
+    "getAllPSPanelFields" : [ {
+      "id" : "dyna_dashboard_name",
+      "viewFieldName" : "dyna_dashboard_name"
+    } ],
+    "codeName" : "usr0702974395",
+    "controlType" : "PANEL",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard/PSPANELS/usr0702974395.json",
+    "hookEventNames" : [ "ONCLICK" ],
+    "layoutMode" : "TABLE_24COL",
+    "logicName" : "List_列表项面板",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+    },
+    "getPSControlLogics" : [ {
+      "eventNames" : "onClick",
+      "itemName" : "page_container",
+      "logicTag" : "listexpbar_list_itempanel",
+      "logicType" : "APPDEUILOGIC",
+      "name" : "logic",
+      "getPSAppDEUILogic" : {
+        "modelref" : true,
+        "id" : "fill_choosed_board_name"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+      }
+    } ],
+    "getPSControlParam" : { },
+    "getPSLayout" : {
+      "childColMD" : 24,
+      "columnCount" : 24,
+      "layout" : "TABLE_24COL"
+    },
+    "getRootPSPanelItems" : [ {
+      "itemStyle" : "DEFAULT",
+      "itemType" : "CONTAINER",
+      "name" : "page_container",
+      "getPSLayout" : {
+        "dir" : "column",
+        "layout" : "FLEX"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "getPSPanelItems" : [ {
+        "caption" : "容器",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "container",
+        "getPSLayout" : {
+          "align" : "flex-start",
+          "dir" : "row",
+          "layout" : "FLEX",
+          "vAlign" : "center"
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "layout" : "FLEX"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "图片",
+          "contentType" : "IMAGE",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "RAWITEM",
+          "name" : "static_image",
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "getPSRawItem" : {
+            "contentType" : "IMAGE",
+            "name" : "static_image",
+            "getPSSysImage" : {
+              "glyph" : "xf0e4@FontAwesome",
+              "cssClass" : "fa fa-dashboard"
+            },
+            "predefinedType" : "STATIC_IMAGE"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf0e4@FontAwesome",
+            "cssClass" : "fa fa-dashboard"
+          },
+          "showCaption" : true
+        }, {
+          "caption" : "文本(动态)",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "FIELD",
+          "name" : "dyna_dashboard_name",
+          "getPSEditor" : {
+            "editorType" : "SPAN",
+            "name" : "dyna_dashboard_name",
+            "predefinedType" : "FIELD_TEXT_DYNAMIC",
+            "renderMode" : "TEXT_DYNAMIC",
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX",
+            "spacingLeft" : "OUTERMEDIUM"
+          },
+          "viewFieldName" : "dyna_dashboard_name"
+        } ]
+      } ]
+    } ],
+    "name" : "listexpbar_list_itempanel",
+    "modelid" : "0e262f115808f63fb3cfbef3efebffc2",
+    "modeltype" : "PSSYSVIEWPANEL"
+  },
+  "logicName" : "List",
+  "getNavPSAppView" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dyna_dashboard_show_edit_view.json",
+    "viewType" : "DEEDITVIEW"
+  },
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+  },
+  "getPSControlLogics" : [ {
+    "eventNames" : "onLoadSuccess",
+    "logicTag" : "listexpbar_list",
+    "logicType" : "APPDEUIACTION",
+    "name" : "logic",
+    "getPSAppDEUIAction" : {
+      "actionTarget" : "SINGLEDATA",
+      "caption" : "列表导航加载完成",
+      "codeName" : "load_success",
+      "frontProcessType" : "OTHER",
+      "fullCodeName" : "dyna_dashboard_load_success",
+      "name" : "列表导航加载完成",
+      "getPSAppDEUILogic" : {
+        "modelref" : true,
+        "id" : "list_load_success"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+      },
+      "uIActionMode" : "FRONT",
+      "uIActionTag" : "load_success",
+      "uIActionType" : "DEUIACTION",
+      "uILogicAttachMode" : "REPLACE",
+      "id" : "load_success@dyna_dashboard"
+    }
+  }, {
+    "eventNames" : "SELECTIONCHANGE",
+    "logicTag" : "listexpbar_list",
+    "logicType" : "CUSTOM",
+    "name" : "listexpbar_selectionchange"
+  }, {
+    "eventNames" : "LOAD",
+    "logicTag" : "listexpbar_list",
+    "logicType" : "CUSTOM",
+    "name" : "listexpbar_load"
+  } ],
+  "getPSDEListDataItems" : [ {
+    "dataType" : 25,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "DYNADASHBOARDID",
+      "codeName" : "dyna_dashboard_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfmajortext",
+    "getPSAppDEField" : {
+      "name" : "DYNADASHBOARDNAME",
+      "codeName" : "dyna_dashboard_name"
+    }
+  } ],
+  "getPSNavigateParams" : [ {
+    "key" : "only_get",
+    "name" : "only_get",
+    "value" : "true",
+    "rawValue" : true
+  }, {
+    "key" : "board_name",
+    "name" : "board_name",
+    "value" : "dyna_dashboard_name",
+    "rawValue" : false
+  } ],
+  "pagingSize" : 1000,
+  "getRemovePSControlAction" : {
+    "modelref" : true,
+    "id" : "remove",
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+    }
+  },
+  "getUpdatePSControlAction" : {
+    "modelref" : true,
+    "id" : "update",
+    "actionName" : "Update",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "UPDATE",
+    "name" : "update",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "update"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+    }
+  },
+  "hasWFDataItems" : false,
+  "enableGroup" : false,
+  "enableRowEdit" : false,
+  "enableRowEditGroup" : false,
+  "enableRowEditOrder" : false,
+  "enableRowNew" : false,
+  "noSort" : false,
+  "showHeader" : true,
+  "singleSelect" : false,
+  "modelid" : "3ef36f0d5009d11e04e9b22b6516a788",
+  "modeltype" : "PSDELIST"
+}

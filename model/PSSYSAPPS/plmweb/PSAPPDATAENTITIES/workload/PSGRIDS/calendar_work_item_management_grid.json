@@ -1,0 +1,247 @@
+{
+  "aggMode" : "NONE",
+  "codeName" : "calendar_work_item_management_grid",
+  "columnEnableFilter" : 2,
+  "columnEnableLink" : 2,
+  "controlStyle" : "WORKLOAD_TABLE",
+  "controlType" : "GRID",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload/PSGRIDS/calendar_work_item_management_grid.json",
+  "getFetchPSControlAction" : {
+    "modelref" : true,
+    "id" : "fetch",
+    "actionType" : "DEDATASET",
+    "name" : "fetch",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "fetch_work_item_management_dimension"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+    }
+  },
+  "groupMode" : "AUTO",
+  "getGroupPSAppDEField" : {
+    "name" : "PRINCIPAL_ID",
+    "codeName" : "principal_id"
+  },
+  "getGroupPSDEField" : {
+    "name" : "PRINCIPAL_ID",
+    "codeName" : "principal_id"
+  },
+  "logicName" : "工时日历_工作项管理表格",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+  },
+  "getPSControlNavParams" : [ {
+    "key" : "n_category_eq",
+    "name" : "n_category_eq",
+    "value" : "CATEGORY",
+    "rawValue" : false
+  }, {
+    "key" : "n_principal_id_eq",
+    "name" : "n_principal_id_eq",
+    "value" : "principal_id",
+    "rawValue" : false
+  }, {
+    "key" : "n_register_date_eq",
+    "name" : "n_register_date_eq",
+    "value" : "date",
+    "rawValue" : false
+  } ],
+  "getPSDEGridColumns" : [ {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "编号",
+    "codeName" : "show_identifier",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "show_identifier",
+    "excelCaption" : "编号",
+    "name" : "show_identifier",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "SHOW_IDENTIFIER",
+      "codeName" : "show_identifier"
+    },
+    "width" : 150,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.NAME"
+    },
+    "caption" : "工作项",
+    "codeName" : "name",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "name",
+    "excelCaption" : "工作项",
+    "name" : "name",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "width" : 200,
+    "widthUnit" : "STAR",
+    "enableSort" : true
+  }, {
+    "align" : "RIGHT",
+    "cLConvertMode" : "NONE",
+    "caption" : "总登记工时",
+    "codeName" : "duration",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "duration",
+    "excelCaption" : "总登记工时",
+    "name" : "duration",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "DURATION",
+      "codeName" : "duration"
+    },
+    "getPSDEUIAction" : {
+      "actionTarget" : "SINGLEKEY",
+      "caption" : "工时日历时长链接（管理）",
+      "codeName" : "calendar_duration_management_link",
+      "frontProcessType" : "OTHER",
+      "fullCodeName" : "workload_calendar_duration_management_link",
+      "name" : "工时日历时长链接（管理）",
+      "getPSAppDEUILogic" : {
+        "modelref" : true,
+        "id" : "calendar_management_link_log_view"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+      },
+      "uIActionMode" : "FRONT",
+      "uIActionTag" : "calendar_duration_management_link",
+      "uIActionType" : "DEUIACTION",
+      "uILogicAttachMode" : "REPLACE",
+      "id" : "calendar_duration_management_link@workload"
+    },
+    "valueFormat" : "#0.0",
+    "width" : 150,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  } ],
+  "getPSDEGridDataItems" : [ {
+    "dataType" : 25,
+    "name" : "show_identifier",
+    "getPSAppDEField" : {
+      "name" : "SHOW_IDENTIFIER",
+      "codeName" : "show_identifier"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "name",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  }, {
+    "format" : "#0.0",
+    "dataType" : 6,
+    "name" : "duration",
+    "getPSAppDEField" : {
+      "name" : "DURATION",
+      "codeName" : "duration"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "principal_id",
+    "getPSAppDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "recent_parent",
+    "getPSAppDEField" : {
+      "name" : "RECENT_PARENT",
+      "codeName" : "recent_parent"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfdataaccaction",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "dataAccessAction" : true
+  }, {
+    "dataType" : 25,
+    "name" : "type_id",
+    "getPSAppDEField" : {
+      "name" : "TYPE_ID",
+      "codeName" : "type_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfmajortext",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  } ],
+  "getPSDEGridEditItems" : [ {
+    "caption" : "标识",
+    "codeName" : "srfkey",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getPSEditor" : {
+      "editorType" : "HIDDEN",
+      "name" : "srfkey"
+    },
+    "allowEmpty" : true
+  } ],
+  "getPSSysPFPlugin" : {
+    "pluginType" : "GRID_RENDER",
+    "pluginCode" : "WORKLOAD_TABLE",
+    "runtimeObject" : true
+  },
+  "pagingSize" : 20,
+  "getRemovePSControlAction" : {
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+    }
+  },
+  "sortMode" : "REMOTE",
+  "hasWFDataItems" : false,
+  "enableColFilter" : false,
+  "enableCustomized" : false,
+  "enableGroup" : true,
+  "enablePagingBar" : false,
+  "enableRowEdit" : false,
+  "enableRowEditOrder" : false,
+  "enableRowNew" : false,
+  "forceFit" : false,
+  "hideHeader" : false,
+  "noSort" : false,
+  "singleSelect" : true,
+  "modelid" : "2a20f16e64cf9b90db6109a832133946",
+  "modeltype" : "PSDEGRID"
+}

@@ -1,0 +1,384 @@
+{
+  "codeName" : "fill_guideline",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_wizard/PSDELOGICS/fill_guideline.json",
+  "logicName" : "填充评审规则",
+  "memo" : "获取评审规则并返回",
+  "name" : "填充评审规则",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : -380,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM1"
+      },
+      "name" : "测试用例",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[TYPE] 等于(=) TEST_CASE",
+          "paramValue" : "TEST_CASE"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM2"
+      },
+      "name" : "产品需求",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[TYPE] 等于(=) IDEA",
+          "paramValue" : "IDEA"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 260,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 170,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "测试库参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "N_OBJECT_TYPE_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "guideline_filter"
+      },
+      "name" : "直接值[LIBRARY] ==> guideline_filter[N_OBJECT_TYPE_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "LIBRARY",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "N_SCOPE_ID_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "guideline_filter"
+      },
+      "name" : "Default[LIBRARY_ID] ==> guideline_filter[N_SCOPE_ID_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "LIBRARY_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 200
+  }, {
+    "codeName" : "DEBUGPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : -50,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "调试逻辑参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM1"
+      }
+    } ],
+    "topPos" : 230
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 1049,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "guideline_detail"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 239
+  }, {
+    "codeName" : "PREPAREPARAM4",
+    "leftPos" : 410,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "通用参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "N_SUBJECT_TYPE_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "guideline_filter"
+      },
+      "name" : "Default[TYPE] ==> guideline_filter[N_SUBJECT_TYPE_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "TYPE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 247
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "guideline_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline.json"
+    },
+    "leftPos" : 650,
+    "logicNodeType" : "DEDATASET",
+    "name" : "查询当前指定类型的规则",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "guideline_page"
+    },
+    "topPos" : 247
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 842,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置返回的guideline_id",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "guideline_id",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "guideline_detail"
+      },
+      "name" : "guideline_page[0] ==> guideline_detail[guideline_id]",
+      "paramAction" : "BINDPARAM",
+      "srcFieldName" : "0",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "guideline_page"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "stage",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "guideline_detail"
+      },
+      "name" : "guideline_detail[REVIEW_STAGE] ==> guideline_detail[stage]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "REVIEW_STAGE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "guideline_detail"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "guideline_id",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "guideline_detail"
+      },
+      "name" : "guideline_detail[ID] ==> guideline_detail[guideline_id]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "guideline_detail"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 247
+  }, {
+    "codeName" : "DEBUGPARAM2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : -50,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "调试逻辑参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM2"
+      }
+    } ],
+    "topPos" : 290
+  }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : 170,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "需求参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "N_OBJECT_TYPE_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "guideline_filter"
+      },
+      "name" : "直接值[PRODUCT] ==> guideline_filter[N_OBJECT_TYPE_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "PRODUCT",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "N_SCOPE_ID_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "guideline_filter"
+      },
+      "name" : "Default[PRINCIPAL_ID] ==> guideline_filter[N_SCOPE_ID_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRINCIPAL_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 315
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_wizard.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "guideline_detail",
+    "logicName" : "规则详情",
+    "name" : "规则详情",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "guideline_filter",
+    "logicName" : "规则过滤器",
+    "name" : "规则过滤器",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "guideline_id",
+    "logicName" : "流程准则ID",
+    "name" : "流程准则ID",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "guideline_page",
+    "logicName" : "规则分页结果",
+    "name" : "规则分页结果",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline.json"
+    },
+    "entityPageParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

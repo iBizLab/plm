@@ -1,0 +1,46 @@
+{
+  "dBType" : "MYSQL5",
+  "name" : "MySQL5",
+  "getPSDEDataQueryCodeExps" : [ {
+    "expression" : "t1.`COMMENT`",
+    "name" : "COMMENT"
+  }, {
+    "expression" : "t1.`CONTENT_ID`",
+    "name" : "CONTENT_ID"
+  }, {
+    "expression" : "t1.`CREATE_MAN`",
+    "name" : "CREATE_MAN"
+  }, {
+    "expression" : "t1.`CREATE_TIME`",
+    "name" : "CREATE_TIME"
+  }, {
+    "expression" : "t1.`ID`",
+    "name" : "ID"
+  }, {
+    "expression" : "t1.`NAME`",
+    "name" : "NAME"
+  }, {
+    "expression" : "t1.`RESULT_STATE`",
+    "name" : "RESULT_STATE"
+  }, {
+    "expression" : "t1.`REVIEWER`",
+    "name" : "REVIEWER"
+  }, {
+    "expression" : "t1.`SEQUENCES`",
+    "name" : "SEQUENCES"
+  }, {
+    "expression" : "t1.`STAGE_ID`",
+    "name" : "STAGE_ID"
+  }, {
+    "expression" : "t1.`UPDATE_MAN`",
+    "name" : "UPDATE_MAN"
+  }, {
+    "expression" : "t1.`UPDATE_TIME`",
+    "name" : "UPDATE_TIME"
+  }, {
+    "expression" : "(SELECT CASE WHEN EXISTS (SELECT 1 FROM review_content_extend t1 JOIN relation t2 ON t2.id = t1.id JOIN review t3 ON t3.id = t2.PRINCIPAL_ID  WHERE t1.id = t1.`CONTENT_ID`  AND t3.state = '20') THEN 1 ELSE 0 END AS result)",
+    "name" : "WHETHER_REVIEW"
+  } ],
+  "queryCode" : "SELECT\nt1.`COMMENT`,\nt1.`CONTENT_ID`,\nt1.`CREATE_MAN`,\nt1.`CREATE_TIME`,\nt1.`ID`,\nt1.`NAME`,\nt1.`RESULT_STATE`,\nt1.`REVIEWER`,\nt1.`SEQUENCES`,\nt1.`STAGE_ID`,\nt1.`UPDATE_MAN`,\nt1.`UPDATE_TIME`,\n(SELECT CASE WHEN EXISTS (SELECT 1 FROM review_content_extend t1 JOIN relation t2 ON t2.id = t1.id JOIN review t3 ON t3.id = t2.PRINCIPAL_ID  WHERE t1.id = t1.`CONTENT_ID`  AND t3.state = '20') THEN 1 ELSE 0 END AS result) AS `WHETHER_REVIEW`\nFROM `REVIEW_RESULT` t1 \n",
+  "id" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_result/PSDEDATAQUERIES/Default/PSDEDQCODES/MYSQL5.json"
+}

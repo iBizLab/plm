@@ -1,0 +1,1001 @@
+{
+  "cardHeight" : 400,
+  "cardWidth" : 372,
+  "codeName" : "market_application_view_data_view",
+  "controlType" : "DATAVIEW",
+  "getCreatePSControlAction" : {
+    "modelref" : true,
+    "id" : "create",
+    "actionName" : "Create",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "CREATE",
+    "name" : "create",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "Create"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+    }
+  },
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc/PSDATAVIEWS/market_application_view_data_view.json",
+  "getFetchPSControlAction" : {
+    "modelref" : true,
+    "id" : "fetch",
+    "actionType" : "DEDATASET",
+    "name" : "fetch",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "FetchDefault"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+    }
+  },
+  "getGetPSControlAction" : {
+    "modelref" : true,
+    "id" : "load",
+    "actionName" : "Get",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "READ",
+    "name" : "load",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "Get"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+    }
+  },
+  "groupLayout" : "ROW",
+  "groupMode" : "AUTO",
+  "getGroupPSAppDEField" : {
+    "name" : "CATEGORY",
+    "codeName" : "category"
+  },
+  "getGroupPSCodeList" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/extension__pscoreprdfunc_category.json"
+  },
+  "getItemPSLayoutPanel" : {
+    "getAllPSPanelFields" : [ {
+      "id" : "avatarurl",
+      "viewFieldName" : "AVATARURL"
+    }, {
+      "id" : "title",
+      "viewFieldName" : "PSCOREPRDFUNCNAME"
+    }, {
+      "id" : "version",
+      "viewFieldName" : "CURRENTVERSION"
+    }, {
+      "id" : "memo",
+      "viewFieldName" : "MEMO"
+    }, {
+      "id" : "funcstate",
+      "hidden" : true,
+      "viewFieldName" : "FUNCSTATE"
+    }, {
+      "id" : "settingurl",
+      "hidden" : true,
+      "viewFieldName" : "SETTINGURL"
+    }, {
+      "id" : "pscoreprdfuncid",
+      "hidden" : true,
+      "viewFieldName" : "PSCOREPRDFUNCID"
+    }, {
+      "id" : "httpurltorepo",
+      "hidden" : true,
+      "viewFieldName" : "HTTPURLTOREPO"
+    }, {
+      "id" : "functype",
+      "hidden" : true,
+      "viewFieldName" : "FUNCTYPE"
+    } ],
+    "codeName" : "usr0715754338",
+    "controlType" : "PANEL",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc/PSPANELS/usr0715754338.json",
+    "hookEventNames" : [ "ONCLICK" ],
+    "layoutMode" : "TABLE_24COL",
+    "logicName" : "应用市场_卡片视图_卡片面板",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+    },
+    "getPSControlLogics" : [ {
+      "eventNames" : "onClick",
+      "itemName" : "AVATARURL",
+      "logicTag" : "itemlayoutpanel",
+      "logicType" : "APPDEUILOGIC",
+      "name" : "logic",
+      "getPSAppDEUILogic" : {
+        "modelref" : true,
+        "id" : "open_app_info"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+      }
+    } ],
+    "getPSControlParam" : { },
+    "getPSLayout" : {
+      "childColMD" : 24,
+      "columnCount" : 24,
+      "layout" : "TABLE_24COL"
+    },
+    "getRootPSPanelItems" : [ {
+      "itemStyle" : "DEFAULT",
+      "itemType" : "CONTAINER",
+      "name" : "page_container",
+      "getPSLayout" : {
+        "dir" : "column",
+        "layout" : "FLEX"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "getPSPanelItems" : [ {
+        "caption" : "背景",
+        "contentHeight" : 230.0,
+        "height" : 230.0,
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "background",
+        "getPSLayout" : {
+          "layout" : "FLEX"
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "height" : 230,
+          "heightMode" : "PX",
+          "layout" : "FLEX"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "图片(动态)",
+          "contentHeight" : 230.0,
+          "height" : 230.0,
+          "itemStyle" : "DEFAULT",
+          "itemType" : "FIELD",
+          "memo" : "图片控件（单项-直接内容）编辑器提供一个编辑器参数: STOPPROPAGATION=false | true\n当设置为false时，点击图片不会进行预览，会正常向上抛出点击事件;\n不设置或者设置为true时，点击图片会进行预览，并阻止点击事件冒泡",
+          "name" : "avatarurl",
+          "getPSEditor" : {
+            "editorHeight" : 230.0,
+            "editorParams" : {
+              "RAWCONTENT" : "TRUE",
+              "MAXCOUNT" : "1",
+              "STOPPROPAGATION" : "false"
+            },
+            "editorType" : "PICTURE_ONE_RAW",
+            "maxFileCount" : 1,
+            "maxFileSize" : -1,
+            "minFileCount" : 0,
+            "name" : "avatarurl",
+            "predefinedType" : "FIELD_IMAGE",
+            "rawContent" : true
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "height" : 230,
+            "heightMode" : "PX",
+            "layout" : "FLEX",
+            "widthMode" : "FULL"
+          },
+          "viewFieldName" : "AVATARURL"
+        } ]
+      }, {
+        "caption" : "容器",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "container",
+        "getPSLayout" : {
+          "align" : "space-between",
+          "dir" : "column",
+          "layout" : "FLEX",
+          "vAlign" : "flex-start"
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "layout" : "FLEX",
+          "spacingLeft" : "OUTERLARGE",
+          "spacingRight" : "OUTERLARGE",
+          "spacingTop" : "OUTERMEDIUM"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "主要内容",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "content",
+          "getPSLayout" : {
+            "layout" : "FLEX"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX",
+            "widthMode" : "FULL"
+          },
+          "getPSPanelItems" : [ {
+            "caption" : "容器",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CONTAINER",
+            "name" : "container3",
+            "getPSLayout" : {
+              "align" : "flex-start",
+              "dir" : "row",
+              "layout" : "FLEX",
+              "vAlign" : "center"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX",
+              "spacingBottom" : "OUTERSMALL",
+              "spacingTop" : "OUTERSMALL"
+            },
+            "getPSPanelItems" : [ {
+              "caption" : "文本(动态)",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "FIELD",
+              "name" : "title",
+              "getPSEditor" : {
+                "editorType" : "SPAN",
+                "name" : "title",
+                "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                "renderMode" : "TEXT_DYNAMIC",
+                "enableLinkView" : false
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "viewFieldName" : "PSCOREPRDFUNCNAME"
+            }, {
+              "caption" : "文本(动态)",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "FIELD",
+              "name" : "version",
+              "getPSEditor" : {
+                "editorType" : "SPAN",
+                "name" : "version",
+                "predefinedType" : "FIELD_TEXT_DYNAMIC",
+                "renderMode" : "TEXT_DYNAMIC",
+                "enableLinkView" : false
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX",
+                "shrink" : 0,
+                "spacingLeft" : "OUTERMEDIUM"
+              },
+              "getPSPanelItemGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "getPSPanelItemLogics" : [ {
+                  "condOp" : "EQ",
+                  "dstModelField" : "version",
+                  "logicType" : "SINGLE",
+                  "name" : "逻辑项",
+                  "value" : "-1"
+                } ],
+                "relatedItemNames" : [ "version" ],
+                "notMode" : false
+              } ],
+              "viewFieldName" : "CURRENTVERSION"
+            } ]
+          }, {
+            "caption" : "文本(动态)",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "FIELD",
+            "name" : "memo",
+            "getPSEditor" : {
+              "editorType" : "SPAN",
+              "name" : "memo",
+              "predefinedType" : "FIELD_TEXT_DYNAMIC",
+              "renderMode" : "TEXT_DYNAMIC",
+              "enableLinkView" : false
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "viewFieldName" : "MEMO"
+          } ]
+        }, {
+          "caption" : "底部按钮",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "footer",
+          "getPSLayout" : {
+            "align" : "space-between",
+            "dir" : "row",
+            "layout" : "FLEX",
+            "vAlign" : "flex-start"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX",
+            "spacingTop" : "OUTERMEDIUM",
+            "widthMode" : "FULL"
+          },
+          "getPSPanelItems" : [ {
+            "caption" : "容器",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CONTAINER",
+            "name" : "footer_left",
+            "getPSLayout" : {
+              "align" : "flex-start",
+              "dir" : "row",
+              "layout" : "FLEX",
+              "vAlign" : "center"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "getPSPanelItems" : [ {
+              "caption" : "容器",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "CONTAINER",
+              "name" : "type_extension",
+              "getPSLayout" : {
+                "align" : "flex-start",
+                "dir" : "row",
+                "layout" : "FLEX",
+                "vAlign" : "center"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSPanelItemGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "getPSPanelItemLogics" : [ {
+                  "condOp" : "NOTEQ",
+                  "dstModelField" : "FUNCTYPE",
+                  "logicType" : "SINGLE",
+                  "name" : "逻辑项",
+                  "value" : "COMPONENT"
+                } ],
+                "relatedItemNames" : [ "functype" ],
+                "notMode" : false
+              } ],
+              "getPSPanelItems" : [ {
+                "actionType" : "UIACTION",
+                "buttonStyle" : "DEFAULT",
+                "caption" : "安装",
+                "itemStyle" : "DEFAULT",
+                "itemType" : "BUTTON",
+                "name" : "enabled",
+                "getPSAppViewUIAction" : {
+                  "modelref" : true,
+                  "id" : "itemlayoutpanel_enabled"
+                },
+                "getPSControlLogics" : [ {
+                  "itemName" : "enabled",
+                  "logicTag" : "itemlayoutpanel",
+                  "logicType" : "SCRIPT",
+                  "name" : "logic2",
+                  "scriptCode" : "data.funcstate == 0 || data.funcstate == 2",
+                  "triggerType" : "ITEMVISIBLE"
+                } ],
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "getPSPanelItemGroupLogics" : [ {
+                  "groupOP" : "AND",
+                  "logicCat" : "PANELVISIBLE",
+                  "logicType" : "GROUP",
+                  "getPSPanelItemLogics" : [ {
+                    "condOp" : "ISNOTNULL",
+                    "dstModelField" : "HTTPURLTOREPO",
+                    "logicType" : "SINGLE",
+                    "name" : "逻辑项"
+                  } ],
+                  "relatedItemNames" : [ "httpurltorepo" ],
+                  "notMode" : false
+                } ],
+                "getPSUIAction" : {
+                  "actionTarget" : "SINGLEKEY",
+                  "caption" : "启用",
+                  "codeName" : "Install",
+                  "fullCodeName" : "PSCorePrdFunc_Install",
+                  "name" : "启用",
+                  "getPSAppDEMethod" : {
+                    "modelref" : true,
+                    "id" : "install"
+                  },
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+                  },
+                  "getPSNavigateContexts" : [ {
+                    "key" : "PSCOREPRDFUNC",
+                    "name" : "PSCOREPRDFUNC",
+                    "value" : "pscoreprdfuncid",
+                    "rawValue" : false
+                  } ],
+                  "getPSNavigateParams" : [ {
+                    "key" : "n_pscoreprdid_eq",
+                    "name" : "n_pscoreprdid_eq",
+                    "value" : "srfv2systemid",
+                    "rawValue" : false
+                  } ],
+                  "refreshMode" : 1,
+                  "successMsg" : "安装成功！",
+                  "timeout" : 60000,
+                  "uIActionMode" : "BACKEND",
+                  "uIActionTag" : "Install",
+                  "uIActionType" : "DEUIACTION",
+                  "enableConfirm" : true,
+                  "reloadData" : true,
+                  "id" : "Install@PSCorePrdFunc"
+                },
+                "tooltip" : "安装",
+                "uIActionTarget" : "SINGLEKEY",
+                "showCaption" : true
+              }, {
+                "actionGroupExtractMode" : "ITEMX",
+                "caption" : "卸载",
+                "itemStyle" : "DEFAULT",
+                "itemType" : "BUTTONLIST",
+                "name" : "disabled",
+                "getPSControlLogics" : [ {
+                  "itemName" : "disabled",
+                  "logicTag" : "itemlayoutpanel",
+                  "logicType" : "SCRIPT",
+                  "name" : "logic3",
+                  "scriptCode" : "data.funcstate == 1",
+                  "triggerType" : "ITEMVISIBLE"
+                } ],
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "getPSUIActionGroup" : {
+                  "codeName" : "Usr1204311237",
+                  "name" : "卸载界面行为组",
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+                  },
+                  "getPSUIActionGroupDetails" : [ {
+                    "caption" : "卸载",
+                    "detailType" : "DEUIACTION",
+                    "name" : "u01c1392",
+                    "getPSUIAction" : {
+                      "actionTarget" : "SINGLEKEY",
+                      "caption" : "卸载",
+                      "codeName" : "Uninstall",
+                      "fullCodeName" : "PSCorePrdFunc_Uninstall",
+                      "name" : "禁用",
+                      "getPSAppDEMethod" : {
+                        "modelref" : true,
+                        "id" : "uninstall"
+                      },
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+                      },
+                      "getPSNavigateContexts" : [ {
+                        "key" : "PSCOREPRDFUNC",
+                        "name" : "PSCOREPRDFUNC",
+                        "value" : "pscoreprdfuncid",
+                        "rawValue" : false
+                      } ],
+                      "getPSNavigateParams" : [ {
+                        "key" : "n_pscoreprdid_eq",
+                        "name" : "n_pscoreprdid_eq",
+                        "value" : "srfv2systemid",
+                        "rawValue" : false
+                      } ],
+                      "refreshMode" : 1,
+                      "successMsg" : "卸载成功！",
+                      "timeout" : 60000,
+                      "uIActionMode" : "BACKEND",
+                      "uIActionTag" : "Uninstall",
+                      "uIActionType" : "DEUIACTION",
+                      "enableConfirm" : true,
+                      "reloadData" : true,
+                      "id" : "Uninstall@PSCorePrdFunc"
+                    },
+                    "addSeparator" : false,
+                    "showCaption" : true,
+                    "showIcon" : false
+                  }, {
+                    "caption" : "安装特定版本",
+                    "detailType" : "DEUIACTION",
+                    "name" : "u82d5972",
+                    "getPSUIAction" : {
+                      "actionTarget" : "SINGLEDATA",
+                      "caption" : "安装特定版本",
+                      "codeName" : "install_specific_ver_test",
+                      "frontProcessType" : "OTHER",
+                      "fullCodeName" : "PSCorePrdFunc_install_specific_ver_test",
+                      "name" : "安装特定版本_提示开发中",
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+                      },
+                      "scriptCode" : "util.message.info(\"功能正在开发中\");",
+                      "uIActionMode" : "FRONT",
+                      "uIActionTag" : "install_specific_ver_test",
+                      "uIActionType" : "DEUIACTION",
+                      "id" : "install_specific_ver_test@PSCorePrdFunc"
+                    },
+                    "addSeparator" : false,
+                    "showCaption" : true,
+                    "showIcon" : true
+                  } ],
+                  "uniqueTag" : "PSCorePrdFunc__Usr1204311237"
+                }
+              }, {
+                "actionType" : "NONE",
+                "buttonStyle" : "DEFAULT",
+                "caption" : "更新",
+                "itemStyle" : "DEFAULT",
+                "itemType" : "BUTTON",
+                "name" : "update_func",
+                "getPSControlLogics" : [ {
+                  "itemName" : "update_func",
+                  "logicTag" : "itemlayoutpanel",
+                  "logicType" : "SCRIPT",
+                  "name" : "logic4",
+                  "scriptCode" : "data.funcstate == 1",
+                  "triggerType" : "ITEMVISIBLE"
+                } ],
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "getPSPanelItemGroupLogics" : [ {
+                  "groupOP" : "AND",
+                  "logicCat" : "PANELVISIBLE",
+                  "logicType" : "GROUP",
+                  "getPSPanelItemLogics" : [ {
+                    "condOp" : "EQ",
+                    "dstModelField" : "version",
+                    "logicType" : "SINGLE",
+                    "name" : "逻辑项",
+                    "value" : "-1"
+                  } ],
+                  "relatedItemNames" : [ "version" ],
+                  "notMode" : false
+                } ],
+                "tooltip" : "更新",
+                "uIActionTarget" : "NONE",
+                "showCaption" : true
+              } ]
+            }, {
+              "caption" : "容器",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "CONTAINER",
+              "name" : "type_base",
+              "getPSLayout" : {
+                "align" : "flex-start",
+                "dir" : "row",
+                "layout" : "FLEX",
+                "vAlign" : "center"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSPanelItemGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "getPSPanelItemLogics" : [ {
+                  "condOp" : "EQ",
+                  "dstModelField" : "FUNCTYPE",
+                  "logicType" : "SINGLE",
+                  "name" : "逻辑项",
+                  "value" : "COMPONENT"
+                } ],
+                "relatedItemNames" : [ "functype" ],
+                "notMode" : false
+              } ],
+              "getPSPanelItems" : [ {
+                "caption" : "正在使用",
+                "contentType" : "RAW",
+                "itemStyle" : "DEFAULT",
+                "itemType" : "RAWITEM",
+                "name" : "using",
+                "getPSLayoutPos" : {
+                  "grow" : -1,
+                  "layout" : "FLEX"
+                },
+                "getPSRawItem" : {
+                  "caption" : "正在使用",
+                  "contentType" : "RAW",
+                  "name" : "using",
+                  "predefinedType" : "STATIC_LABEL",
+                  "renderMode" : "PARAGRAPH"
+                },
+                "rawContent" : "正在使用",
+                "showCaption" : true
+              } ]
+            } ]
+          }, {
+            "caption" : "容器",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CONTAINER",
+            "name" : "footer_right",
+            "getPSLayout" : {
+              "align" : "flex-end",
+              "dir" : "row-reverse",
+              "layout" : "FLEX",
+              "vAlign" : "center"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "getPSPanelItemGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "PANELVISIBLE",
+              "logicType" : "GROUP",
+              "getPSPanelItemLogics" : [ {
+                "condOp" : "NOTEQ",
+                "dstModelField" : "FUNCTYPE",
+                "logicType" : "SINGLE",
+                "name" : "逻辑项",
+                "value" : "COMPONENT"
+              } ],
+              "relatedItemNames" : [ "functype" ],
+              "notMode" : false
+            } ],
+            "getPSPanelItems" : [ {
+              "actionType" : "UIACTION",
+              "buttonStyle" : "DEFAULT",
+              "caption" : "设置",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "BUTTON",
+              "name" : "button_calluilogic4",
+              "getPSAppViewUIAction" : {
+                "modelref" : true,
+                "id" : "itemlayoutpanel_button_calluilogic4"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSPanelItemGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "getPSPanelItemLogics" : [ {
+                  "condOp" : "ISNOTNULL",
+                  "dstModelField" : "SETTINGURL",
+                  "logicType" : "SINGLE",
+                  "name" : "逻辑项"
+                }, {
+                  "condOp" : "EQ",
+                  "dstModelField" : "FUNCSTATE",
+                  "logicType" : "SINGLE",
+                  "name" : "逻辑项",
+                  "value" : "1"
+                } ],
+                "relatedItemNames" : [ "settingurl", "funcstate" ],
+                "notMode" : false
+              } ],
+              "getPSSysImage" : {
+                "rawContent" : "<svg t=\"1733277684475\" class=\"icon\" viewBox=\"0 0 1066 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"9658\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"24.65625\" height=\"24\">\r\n    <path d=\"M290.557249 132.463058c-26.01496-25.887018-67.169774-30.151765-94.805337-5.970646a514.755027 514.755027 0 0 0-73.865428 79.878721c-18.295767 24.564946-13.732487 58.512336 8.017726 80.091959l1.961784 1.961783c41.495993 41.282756 12.239825 112.077565-46.272511 112.077566-30.74883 0-57.829977 21.323738-61.369717 51.901977a517.143286 517.143286 0 0 0-1.023539 108.836357c3.497093 36.420944 35.781232 61.796192 72.330118 61.796192h3.838272c68.150666 0 102.183351 82.480217 53.863762 130.543922-26.01496 25.887018-30.40765 66.999184-6.269179 94.677395 23.882586 27.337032 50.665201 52.157862 79.836074 73.908074 24.564946 18.338414 58.512336 13.860429 80.262548-7.76184l2.302964-2.260316c41.410699-41.240109 111.99227-11.898646 111.99227 46.571043 0 30.791477 21.366385 57.915271 51.987272 61.412364a517.015343 517.015343 0 0 0 117.792327 0.085295c31.047362-3.53974 52.712279-31.047362 52.71228-62.265314 0-59.279991 71.647759-89.047928 113.612874-47.253402l2.004431 1.961783c22.048745 21.96345 56.550552 26.441435 81.371383 7.676546 29.042931-21.96345 55.654955-46.912223 79.409599-74.419844 23.669349-27.422327 19.234011-68.022723-6.439769-93.568561-47.893115-47.594582-14.158962-129.307145 53.351992-129.307145h3.241208c36.122412 0 68.022723-25.076715 71.519816-60.98589a517.527113 517.527113 0 0 0-1.066187-110.414314c-3.497093-30.109118-30.194413-51.134323-60.47412-51.134322-57.702034 0-86.48908-69.77127-45.632798-110.456961l2.302963-2.217669c21.366385-21.323738 25.972312-54.674063 8.103021-78.983124a514.755027 514.755027 0 0 0-73.396305-80.347844c-27.848801-24.650241-69.558032-20.385493-95.914172 5.800057-48.831359 48.575474-131.993936 13.988372-131.993936-54.844654V75.486031c0-37.018009-25.716428-69.77127-62.563847-73.225715a518.038883 518.038883 0 0 0-98.089193 0.042648c-36.420944 3.497093-61.838839 35.823879-61.838839 72.45806v3.283856c0 68.23596-82.394922 102.481883-130.799807 54.375531zM532.666967 682.359605a170.589901 170.589901 0 1 1 0-341.179803 170.589901 170.589901 0 0 1 0 341.179803z\" p-id=\"9659\" fill=\"currentColor\"></path>\r\n</svg>"
+              },
+              "getPSUIAction" : {
+                "actionTarget" : "NONE",
+                "caption" : "设置",
+                "codeName" : "skip_setting",
+                "frontProcessType" : "OTHER",
+                "fullCodeName" : "PSCorePrdFunc_skip_setting",
+                "name" : "跳转插件设置页面",
+                "getPSAppDEUILogic" : {
+                  "modelref" : true,
+                  "id" : "skip_setting"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+                },
+                "uIActionMode" : "FRONT",
+                "uIActionTag" : "skip_setting",
+                "uIActionType" : "DEUIACTION",
+                "uILogicAttachMode" : "REPLACE",
+                "id" : "skip_setting@PSCorePrdFunc"
+              },
+              "tooltip" : "设置",
+              "uIActionTarget" : "NONE"
+            }, {
+              "actionType" : "UIACTION",
+              "buttonStyle" : "DEFAULT",
+              "caption" : "详情",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "BUTTON",
+              "name" : "button_calluilogic3",
+              "getPSAppViewUIAction" : {
+                "modelref" : true,
+                "id" : "itemlayoutpanel_button_calluilogic3"
+              },
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX",
+                "spacingRight" : "OUTERMEDIUM"
+              },
+              "getPSPanelItemGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "getPSPanelItemLogics" : [ {
+                  "condOp" : "EQ",
+                  "dstModelField" : "version",
+                  "logicType" : "SINGLE",
+                  "name" : "逻辑项",
+                  "value" : "-1"
+                } ],
+                "relatedItemNames" : [ "version" ],
+                "notMode" : false
+              } ],
+              "getPSSysImage" : {
+                "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1733278036305\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"55968\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"24\" height=\"24\"><path d=\"M780.672 964.8H193.856A129.92 129.92 0 0 1 64 835.008V248.064a130.048 130.048 0 0 1 129.856-129.856h224.768a43.968 43.968 0 1 1 0 88H193.856a41.856 41.856 0 0 0-41.856 41.856v586.944c0 23.104 18.752 41.856 41.856 41.856h586.816a41.856 41.856 0 0 0 41.856-41.856V596.608a43.968 43.968 0 1 1 87.936 0v238.464a129.92 129.92 0 0 1-129.792 129.728z\" p-id=\"55969\" fill=\"#cdcdcd\"></path><path d=\"M497.024 554.752a43.968 43.968 0 0 1-31.104-75.136l384.896-384.896a44.032 44.032 0 0 1 62.208 62.208L528.128 541.888a43.712 43.712 0 0 1-31.104 12.864z\" p-id=\"55970\" fill=\"#cdcdcd\"></path><path d=\"M916.032 412.672a43.968 43.968 0 0 1-43.968-43.968V147.136H627.456a43.968 43.968 0 1 1 0-87.936h267.456c35.904 0 65.024 29.12 65.088 65.088V368.64c0 24.32-19.712 44.032-43.968 44.032z\" p-id=\"55971\" fill=\"#cdcdcd\"></path></svg>"
+              },
+              "getPSUIAction" : {
+                "actionTarget" : "SINGLEDATA",
+                "caption" : "打开卡片详情页面",
+                "codeName" : "open_info_view",
+                "getFrontPSAppView" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ps_core_prd_func_info_view.json",
+                  "viewType" : "DEEDITVIEW"
+                },
+                "frontProcessType" : "WIZARD",
+                "fullCodeName" : "PSCorePrdFunc_open_info_view",
+                "name" : "打开卡片详情页面",
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+                },
+                "uIActionMode" : "FRONT",
+                "uIActionTag" : "open_info_view",
+                "uIActionType" : "DEUIACTION",
+                "id" : "open_info_view@PSCorePrdFunc"
+              },
+              "tooltip" : "详情",
+              "uIActionTarget" : "SINGLEDATA"
+            } ],
+            "getPSSysCss" : {
+              "cssName" : "button_container_style"
+            }
+          } ]
+        } ]
+      } ]
+    }, {
+      "caption" : "文本(动态)",
+      "itemType" : "FIELD",
+      "name" : "funcstate",
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "funcstate"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "viewFieldName" : "FUNCSTATE",
+      "hidden" : true
+    }, {
+      "caption" : "文本(动态)",
+      "itemType" : "FIELD",
+      "name" : "settingurl",
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "settingurl",
+        "predefinedType" : "FIELD_TEXT_DYNAMIC"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "viewFieldName" : "SETTINGURL",
+      "hidden" : true
+    }, {
+      "caption" : "文本(动态)",
+      "itemType" : "FIELD",
+      "name" : "pscoreprdfuncid",
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "pscoreprdfuncid",
+        "predefinedType" : "FIELD_TEXT_DYNAMIC"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "viewFieldName" : "PSCOREPRDFUNCID",
+      "hidden" : true
+    }, {
+      "caption" : "文本(动态)",
+      "itemType" : "FIELD",
+      "name" : "httpurltorepo",
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "httpurltorepo"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "viewFieldName" : "HTTPURLTOREPO",
+      "hidden" : true
+    }, {
+      "caption" : "文本(动态)",
+      "itemType" : "FIELD",
+      "name" : "functype",
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "functype"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "viewFieldName" : "FUNCTYPE",
+      "hidden" : true
+    } ],
+    "name" : "itemlayoutpanel",
+    "modelid" : "9f37a7d0bdfbeb78fede3c3e7f5265e9",
+    "modeltype" : "PSSYSVIEWPANEL"
+  },
+  "logicName" : "应用市场_卡片视图",
+  "getOrderValuePSAppDEField" : {
+    "name" : "ORDERVALUE",
+    "codeName" : "OrderValue"
+  },
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+  },
+  "getPSDEDataViewDataItems" : [ {
+    "dataType" : 25,
+    "name" : "memo"
+  }, {
+    "dataType" : 25,
+    "name" : "avatarurl"
+  }, {
+    "dataType" : 25,
+    "name" : "pscoreprdfuncname"
+  }, {
+    "dataType" : 25,
+    "getFrontPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/extension__product_func_state.json"
+    },
+    "name" : "funcstate"
+  }, {
+    "dataType" : 5,
+    "format" : "YYYY-MM-DD HH:mm:ss",
+    "name" : "updatedate"
+  }, {
+    "dataType" : 25,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "PSCOREPRDFUNCID",
+      "codeName" : "PSCorePrdFuncId"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfmajortext",
+    "getPSAppDEField" : {
+      "name" : "PSCOREPRDFUNCNAME",
+      "codeName" : "PSCorePrdFuncName"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfmstag"
+  } ],
+  "getPSDEDataViewItems" : [ {
+    "caption" : "备注",
+    "dataItemName" : "memo",
+    "itemType" : "DATAITEM",
+    "name" : "MEMO",
+    "getPSAppDEField" : {
+      "name" : "MEMO",
+      "codeName" : "Memo"
+    },
+    "enableSort" : false
+  }, {
+    "caption" : "图标路径",
+    "dataItemName" : "avatarurl",
+    "itemType" : "DATAITEM",
+    "name" : "AVATARURL",
+    "getPSAppDEField" : {
+      "name" : "AVATARURL",
+      "codeName" : "AvatarUrl"
+    },
+    "enableSort" : false
+  }, {
+    "caption" : "应用名称",
+    "dataItemName" : "pscoreprdfuncname",
+    "itemType" : "DATAITEM",
+    "name" : "PSCOREPRDFUNCNAME",
+    "getPSAppDEField" : {
+      "name" : "PSCOREPRDFUNCNAME",
+      "codeName" : "PSCorePrdFuncName"
+    },
+    "enableSort" : false
+  }, {
+    "cLConvertMode" : "FRONT",
+    "caption" : "功能状态",
+    "dataItemName" : "funcstate",
+    "itemType" : "DATAITEM",
+    "name" : "FUNCSTATE",
+    "getPSAppDEField" : {
+      "name" : "FUNCSTATE",
+      "codeName" : "FuncState"
+    },
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/extension__product_func_state.json"
+    },
+    "enableSort" : false
+  }, {
+    "caption" : "更新时间",
+    "dataItemName" : "updatedate",
+    "itemType" : "DATAITEM",
+    "name" : "UPDATEDATE",
+    "getPSAppDEField" : {
+      "name" : "UPDATEDATE",
+      "codeName" : "UpdateDate"
+    },
+    "valueFormat" : "YYYY-MM-DD HH:mm:ss",
+    "enableSort" : false
+  } ],
+  "pagingSize" : 1000,
+  "getRemovePSControlAction" : {
+    "modelref" : true,
+    "id" : "remove",
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "Remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+    }
+  },
+  "getUpdatePSControlAction" : {
+    "modelref" : true,
+    "id" : "update",
+    "actionName" : "Update",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "UPDATE",
+    "name" : "update",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "Update"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSCorePrdFunc.json"
+    }
+  },
+  "hasWFDataItems" : false,
+  "appendDEItems" : true,
+  "enableCardEdit" : false,
+  "enableCardEditGroup" : false,
+  "enableCardEditOrder" : false,
+  "enableCardNew" : false,
+  "enableGroup" : true,
+  "enablePagingBar" : false,
+  "noSort" : false,
+  "singleSelect" : false,
+  "modelid" : "45dd29ee29f4360239997fdd863fe96a",
+  "modeltype" : "PSDEDATAVIEW"
+}

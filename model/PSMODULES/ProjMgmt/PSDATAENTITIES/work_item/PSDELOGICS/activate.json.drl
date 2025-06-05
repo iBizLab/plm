@@ -1,0 +1,139 @@
+package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.activate;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemactivatedefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemactivatefor_temp_obj;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemactivatep_work_item;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemactivatework_item_filter;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemactivatework_item_page;
+                    global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService work_itemservice;
+        global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService iBzSysWork_itemDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "work_itemactivatebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设置是否归档状态]
+            rule "prepareparam2"
+            ruleflow-group "work_itemactivateprepareparam2"
+            when
+            then
+                            work_itemactivatedefault.set("isarchived","0");
+                        update(work_itemactivatedefault);//更新fact中变量值
+                        update(work_itemactivatefor_temp_obj);//更新fact中变量值
+                        update(work_itemactivatep_work_item);//更新fact中变量值
+                        update(work_itemactivatework_item_filter);//更新fact中变量值
+                        update(work_itemactivatework_item_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新是否归档状态]
+            rule "deaction1"
+            ruleflow-group "work_itemactivatedeaction1"
+            when
+            then
+                        work_itemservice.update(work_itemactivatedefault);
+                        update(work_itemactivatedefault);//更新fact中变量值
+                        update(work_itemactivatefor_temp_obj);//更新fact中变量值
+                        update(work_itemactivatep_work_item);//更新fact中变量值
+                        update(work_itemactivatework_item_filter);//更新fact中变量值
+                        update(work_itemactivatework_item_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置父工作项非叶子节点]
+            rule "prepareparam3"
+            ruleflow-group "work_itemactivateprepareparam3"
+            when
+            then
+                            work_itemactivatep_work_item.set("id",work_itemactivatedefault.get("pid"));
+                            work_itemactivatep_work_item.set("isleaf","0");
+                        update(work_itemactivatedefault);//更新fact中变量值
+                        update(work_itemactivatefor_temp_obj);//更新fact中变量值
+                        update(work_itemactivatep_work_item);//更新fact中变量值
+                        update(work_itemactivatework_item_filter);//更新fact中变量值
+                        update(work_itemactivatework_item_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新父工作项非叶子节点]
+            rule "deaction2"
+            ruleflow-group "work_itemactivatedeaction2"
+            when
+            then
+                        work_itemservice.update(work_itemactivatep_work_item);
+                        update(work_itemactivatedefault);//更新fact中变量值
+                        update(work_itemactivatefor_temp_obj);//更新fact中变量值
+                        update(work_itemactivatep_work_item);//更新fact中变量值
+                        update(work_itemactivatework_item_filter);//更新fact中变量值
+                        update(work_itemactivatework_item_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置工作项过滤器参数]
+            rule "prepareparam1"
+            ruleflow-group "work_itemactivateprepareparam1"
+            when
+            then
+                            work_itemactivatework_item_filter.set("n_pid_eq",work_itemactivatedefault.get("id"));
+                        update(work_itemactivatedefault);//更新fact中变量值
+                        update(work_itemactivatefor_temp_obj);//更新fact中变量值
+                        update(work_itemactivatep_work_item);//更新fact中变量值
+                        update(work_itemactivatework_item_filter);//更新fact中变量值
+                        update(work_itemactivatework_item_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询下级工作项]
+            rule "dedataset1"
+            ruleflow-group "work_itemactivatededataset1"
+            when
+            then
+                        update(work_itemactivatedefault);//更新fact中变量值
+                        update(work_itemactivatefor_temp_obj);//更新fact中变量值
+                        update(work_itemactivatep_work_item);//更新fact中变量值
+                        update(work_itemactivatework_item_filter);//更新fact中变量值
+                        update(work_itemactivatework_item_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "work_itemactivateloopsubcall1"
+            when
+            then
+                        update(work_itemactivatedefault);//更新fact中变量值
+                        update(work_itemactivatefor_temp_obj);//更新fact中变量值
+                        update(work_itemactivatep_work_item);//更新fact中变量值
+                        update(work_itemactivatework_item_filter);//更新fact中变量值
+                        update(work_itemactivatework_item_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[递归调用]
+            rule "delogic1"
+            ruleflow-group "work_itemactivatedelogic1"
+            when
+            then
+                        update(work_itemactivatedefault);//更新fact中变量值
+                        update(work_itemactivatefor_temp_obj);//更新fact中变量值
+                        update(work_itemactivatep_work_item);//更新fact中变量值
+                        update(work_itemactivatework_item_filter);//更新fact中变量值
+                        update(work_itemactivatework_item_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "work_itemactivateend1"
+            when
+            then
+                        update(work_itemactivatedefault);//更新fact中变量值
+                        update(work_itemactivatefor_temp_obj);//更新fact中变量值
+                        update(work_itemactivatep_work_item);//更新fact中变量值
+                        update(work_itemactivatework_item_filter);//更新fact中变量值
+                        update(work_itemactivatework_item_page);//更新fact中变量值
+            end

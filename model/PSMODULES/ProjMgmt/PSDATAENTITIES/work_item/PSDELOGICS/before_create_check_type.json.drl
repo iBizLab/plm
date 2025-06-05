@@ -1,0 +1,70 @@
+package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.before_create_check_type;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itembefore_create_check_typedefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itembefore_create_check_typeparent_work_item;
+        global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService iBzSysWork_itemDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "work_itembefore_create_check_typebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[获取父工作项的子类型范围]
+            rule "rawsqlcall1"
+            ruleflow-group "work_itembefore_create_check_typerawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",work_itembefore_create_check_typedefault.get("pid"));
+    String strSql="select sub_type as work_item_sub_type from work_item_type t1 where exists(select 1 from work_item t2 where t1.id = t2.work_item_type_id and t2.id = #{et.param0})";
+                        java.util.List<JSONObject> entities=iBzSysWork_itemDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    cn.ibizlab.plm.core.projmgmt.domain.work_item targetEntity =new cn.ibizlab.plm.core.projmgmt.domain.work_item();
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    targetEntity.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                                    org.springframework.cglib.beans.BeanCopier copier= org.springframework.cglib.beans.BeanCopier.create(targetEntity.getClass(),work_itembefore_create_check_typeparent_work_item.getClass(), false);
+                                    copier.copy(targetEntity,work_itembefore_create_check_typeparent_work_item,null);
+                            }
+                        update(work_itembefore_create_check_typedefault);//更新fact中变量值
+                        update(work_itembefore_create_check_typeparent_work_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[判断父子工作项类型是否正确]
+            rule "rawsfcode1"
+            ruleflow-group "work_itembefore_create_check_typerawsfcode1"
+            when
+            then
+                        update(work_itembefore_create_check_typedefault);//更新fact中变量值
+                        update(work_itembefore_create_check_typeparent_work_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[抛出异常]
+            rule "throwexception1"
+            ruleflow-group "work_itembefore_create_check_typethrowexception1"
+            when
+            then
+                        update(work_itembefore_create_check_typedefault);//更新fact中变量值
+                        update(work_itembefore_create_check_typeparent_work_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "work_itembefore_create_check_typeend1"
+            when
+            then
+                        update(work_itembefore_create_check_typedefault);//更新fact中变量值
+                        update(work_itembefore_create_check_typeparent_work_item);//更新fact中变量值
+            end

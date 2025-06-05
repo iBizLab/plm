@@ -1,0 +1,404 @@
+package cn.ibizlab.plm.base.logic.notify_settinglogic.get_by_user;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.notify_setting notify_settingget_by_userdefault;
+                global java.util.Map notify_settingget_by_usercontext;
+                global cn.ibizlab.plm.core.extension.domain.notify_event notify_settingget_by_userloop_event;
+                global cn.ibizlab.plm.core.extension.domain.PSDENotify notify_settingget_by_usernotify;
+                global cn.ibizlab.plm.core.extension.domain.notify_event notify_settingget_by_usernotify_event;
+                global cn.ibizlab.plm.core.extension.domain.notify_event notify_settingget_by_usernotify_events;
+                global cn.ibizlab.plm.core.extension.domain.PSDENotify notify_settingget_by_usernotify_filter;
+                global cn.ibizlab.plm.core.base.domain.notify_setting notify_settingget_by_usernotify_setting_filter;
+                global cn.ibizlab.plm.core.extension.domain.PSDENotify notify_settingget_by_usernotifys;
+                global cn.ibizlab.plm.core.extension.domain.notify_event notify_settingget_by_userorigin_events;
+                global java.util.Map notify_settingget_by_usersession_param;
+                global cn.ibizlab.plm.core.base.domain.notify_setting notify_settingget_by_useruser_setting;
+                global java.util.Map notify_settingget_by_useruser_settings;
+                    global cn.ibizlab.plm.core.base.service.Inotify_settingService notify_settingservice;
+                    global cn.ibizlab.plm.core.extension.service.IPSDENotifyService psdenotifyservice;
+        global cn.ibizlab.plm.core.base.service.Inotify_settingService iBzSysNotify_settingDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "notify_settingget_by_userbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设置通知过滤分页]
+            rule "prepareparam5"
+            ruleflow-group "notify_settingget_by_userprepareparam5"
+            when
+            then
+                            notify_settingget_by_usernotify_setting_filter.set("size","1000");
+                            notify_settingget_by_usernotify_filter.set("size","1000");
+                        update(notify_settingget_by_userdefault);//更新fact中变量值
+                        update(notify_settingget_by_usercontext);//更新fact中变量值
+                        update(notify_settingget_by_userloop_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_events);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_setting_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotifys);//更新fact中变量值
+                        update(notify_settingget_by_userorigin_events);//更新fact中变量值
+                        update(notify_settingget_by_usersession_param);//更新fact中变量值
+                        update(notify_settingget_by_useruser_setting);//更新fact中变量值
+                        update(notify_settingget_by_useruser_settings);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取用户通知]
+            rule "dedataset1"
+            ruleflow-group "notify_settingget_by_userdedataset1"
+            when
+            then
+                        update(notify_settingget_by_userdefault);//更新fact中变量值
+                        update(notify_settingget_by_usercontext);//更新fact中变量值
+                        update(notify_settingget_by_userloop_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_events);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_setting_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotifys);//更新fact中变量值
+                        update(notify_settingget_by_userorigin_events);//更新fact中变量值
+                        update(notify_settingget_by_usersession_param);//更新fact中变量值
+                        update(notify_settingget_by_useruser_setting);//更新fact中变量值
+                        update(notify_settingget_by_useruser_settings);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取通知列表]
+            rule "dedataset2"
+            ruleflow-group "notify_settingget_by_userdedataset2"
+            when
+            then
+                        update(notify_settingget_by_userdefault);//更新fact中变量值
+                        update(notify_settingget_by_usercontext);//更新fact中变量值
+                        update(notify_settingget_by_userloop_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_events);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_setting_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotifys);//更新fact中变量值
+                        update(notify_settingget_by_userorigin_events);//更新fact中变量值
+                        update(notify_settingget_by_usersession_param);//更新fact中变量值
+                        update(notify_settingget_by_useruser_setting);//更新fact中变量值
+                        update(notify_settingget_by_useruser_settings);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "notify_settingget_by_userend1"
+            when
+            then
+                        update(notify_settingget_by_userdefault);//更新fact中变量值
+                        update(notify_settingget_by_usercontext);//更新fact中变量值
+                        update(notify_settingget_by_userloop_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_events);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_setting_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotifys);//更新fact中变量值
+                        update(notify_settingget_by_userorigin_events);//更新fact中变量值
+                        update(notify_settingget_by_usersession_param);//更新fact中变量值
+                        update(notify_settingget_by_useruser_setting);//更新fact中变量值
+                        update(notify_settingget_by_useruser_settings);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环构建通知事件]
+            rule "loopsubcall1"
+            ruleflow-group "notify_settingget_by_userloopsubcall1"
+            when
+            then
+                        update(notify_settingget_by_userdefault);//更新fact中变量值
+                        update(notify_settingget_by_usercontext);//更新fact中变量值
+                        update(notify_settingget_by_userloop_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_events);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_setting_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotifys);//更新fact中变量值
+                        update(notify_settingget_by_userorigin_events);//更新fact中变量值
+                        update(notify_settingget_by_usersession_param);//更新fact中变量值
+                        update(notify_settingget_by_useruser_setting);//更新fact中变量值
+                        update(notify_settingget_by_useruser_settings);//更新fact中变量值
+            end
+
+            //逻辑处理节点[排序数组参数]
+            rule "sortparam1"
+            ruleflow-group "notify_settingget_by_usersortparam1"
+            when
+            then
+                        update(notify_settingget_by_userdefault);//更新fact中变量值
+                        update(notify_settingget_by_usercontext);//更新fact中变量值
+                        update(notify_settingget_by_userloop_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_events);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_setting_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotifys);//更新fact中变量值
+                        update(notify_settingget_by_userorigin_events);//更新fact中变量值
+                        update(notify_settingget_by_usersession_param);//更新fact中变量值
+                        update(notify_settingget_by_useruser_setting);//更新fact中变量值
+                        update(notify_settingget_by_useruser_settings);//更新fact中变量值
+            end
+
+            //逻辑处理节点[将通知事件集填充]
+            rule "prepareparam2"
+            ruleflow-group "notify_settingget_by_userprepareparam2"
+            when
+            then
+                            notify_settingget_by_useruser_setting.set("settingmodel",notify_settingget_by_usernotify_events.get(""));
+                        update(notify_settingget_by_userdefault);//更新fact中变量值
+                        update(notify_settingget_by_usercontext);//更新fact中变量值
+                        update(notify_settingget_by_userloop_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_events);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_setting_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotifys);//更新fact中变量值
+                        update(notify_settingget_by_userorigin_events);//更新fact中变量值
+                        update(notify_settingget_by_usersession_param);//更新fact中变量值
+                        update(notify_settingget_by_useruser_setting);//更新fact中变量值
+                        update(notify_settingget_by_useruser_settings);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定用户配置]
+            rule "bindparam1"
+            ruleflow-group "notify_settingget_by_userbindparam1"
+            when
+            then
+                        update(notify_settingget_by_userdefault);//更新fact中变量值
+                        update(notify_settingget_by_usercontext);//更新fact中变量值
+                        update(notify_settingget_by_userloop_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_events);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_setting_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotifys);//更新fact中变量值
+                        update(notify_settingget_by_userorigin_events);//更新fact中变量值
+                        update(notify_settingget_by_usersession_param);//更新fact中变量值
+                        update(notify_settingget_by_useruser_setting);//更新fact中变量值
+                        update(notify_settingget_by_useruser_settings);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新初始化事件]
+            rule "renewparam1"
+            ruleflow-group "notify_settingget_by_userrenewparam1"
+            when
+            then
+                        update(notify_settingget_by_userdefault);//更新fact中变量值
+                        update(notify_settingget_by_usercontext);//更新fact中变量值
+                        update(notify_settingget_by_userloop_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_events);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_setting_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotifys);//更新fact中变量值
+                        update(notify_settingget_by_userorigin_events);//更新fact中变量值
+                        update(notify_settingget_by_usersession_param);//更新fact中变量值
+                        update(notify_settingget_by_useruser_setting);//更新fact中变量值
+                        update(notify_settingget_by_useruser_settings);//更新fact中变量值
+            end
+
+            //逻辑处理节点[构建事件]
+            rule "prepareparam1"
+            ruleflow-group "notify_settingget_by_userprepareparam1"
+            when
+            then
+                            notify_settingget_by_usernotify_event.set("name",notify_settingget_by_usernotify.get("psdenotifyname"));
+                            notify_settingget_by_usernotify_event.set("group",notify_settingget_by_usernotify.get("notifytag2"));
+                            notify_settingget_by_usernotify_event.set("msgtype",notify_settingget_by_usernotify.get("msgtype"));
+                            notify_settingget_by_usernotify_event.set("id",notify_settingget_by_usernotify.get("psdenotifyid"));
+                        update(notify_settingget_by_userdefault);//更新fact中变量值
+                        update(notify_settingget_by_usercontext);//更新fact中变量值
+                        update(notify_settingget_by_userloop_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_events);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_setting_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotifys);//更新fact中变量值
+                        update(notify_settingget_by_userorigin_events);//更新fact中变量值
+                        update(notify_settingget_by_usersession_param);//更新fact中变量值
+                        update(notify_settingget_by_useruser_setting);//更新fact中变量值
+                        update(notify_settingget_by_useruser_settings);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取完整用户配置]
+            rule "deaction1"
+            ruleflow-group "notify_settingget_by_userdeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(notify_settingservice.get(notify_settingget_by_useruser_setting.getId()),notify_settingget_by_useruser_setting);
+                        update(notify_settingget_by_userdefault);//更新fact中变量值
+                        update(notify_settingget_by_usercontext);//更新fact中变量值
+                        update(notify_settingget_by_userloop_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_events);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_setting_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotifys);//更新fact中变量值
+                        update(notify_settingget_by_userorigin_events);//更新fact中变量值
+                        update(notify_settingget_by_usersession_param);//更新fact中变量值
+                        update(notify_settingget_by_useruser_setting);//更新fact中变量值
+                        update(notify_settingget_by_useruser_settings);//更新fact中变量值
+            end
+
+            //逻辑处理节点[提取原事件数组]
+            rule "bindparam3"
+            ruleflow-group "notify_settingget_by_userbindparam3"
+            when
+            then
+                        update(notify_settingget_by_userdefault);//更新fact中变量值
+                        update(notify_settingget_by_usercontext);//更新fact中变量值
+                        update(notify_settingget_by_userloop_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_events);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_setting_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotifys);//更新fact中变量值
+                        update(notify_settingget_by_userorigin_events);//更新fact中变量值
+                        update(notify_settingget_by_usersession_param);//更新fact中变量值
+                        update(notify_settingget_by_useruser_setting);//更新fact中变量值
+                        update(notify_settingget_by_useruser_settings);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重置存在flag]
+            rule "prepareparam4"
+            ruleflow-group "notify_settingget_by_userprepareparam4"
+            when
+            then
+                            notify_settingget_by_usersession_param.set("exist_flag","0");
+                        update(notify_settingget_by_userdefault);//更新fact中变量值
+                        update(notify_settingget_by_usercontext);//更新fact中变量值
+                        update(notify_settingget_by_userloop_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_events);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_setting_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotifys);//更新fact中变量值
+                        update(notify_settingget_by_userorigin_events);//更新fact中变量值
+                        update(notify_settingget_by_usersession_param);//更新fact中变量值
+                        update(notify_settingget_by_useruser_setting);//更新fact中变量值
+                        update(notify_settingget_by_useruser_settings);//更新fact中变量值
+            end
+
+            //逻辑处理节点[原事件数组附加]
+            rule "appendparam2"
+            ruleflow-group "notify_settingget_by_userappendparam2"
+            when
+            then
+                        update(notify_settingget_by_userdefault);//更新fact中变量值
+                        update(notify_settingget_by_usercontext);//更新fact中变量值
+                        update(notify_settingget_by_userloop_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_events);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_setting_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotifys);//更新fact中变量值
+                        update(notify_settingget_by_userorigin_events);//更新fact中变量值
+                        update(notify_settingget_by_usersession_param);//更新fact中变量值
+                        update(notify_settingget_by_useruser_setting);//更新fact中变量值
+                        update(notify_settingget_by_useruser_settings);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall2"
+            ruleflow-group "notify_settingget_by_userloopsubcall2"
+            when
+            then
+                        update(notify_settingget_by_userdefault);//更新fact中变量值
+                        update(notify_settingget_by_usercontext);//更新fact中变量值
+                        update(notify_settingget_by_userloop_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_events);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_setting_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotifys);//更新fact中变量值
+                        update(notify_settingget_by_userorigin_events);//更新fact中变量值
+                        update(notify_settingget_by_usersession_param);//更新fact中变量值
+                        update(notify_settingget_by_useruser_setting);//更新fact中变量值
+                        update(notify_settingget_by_useruser_settings);//更新fact中变量值
+            end
+
+            //逻辑处理节点[插入事件]
+            rule "appendparam1"
+            ruleflow-group "notify_settingget_by_userappendparam1"
+            when
+            then
+                        update(notify_settingget_by_userdefault);//更新fact中变量值
+                        update(notify_settingget_by_usercontext);//更新fact中变量值
+                        update(notify_settingget_by_userloop_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_events);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_setting_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotifys);//更新fact中变量值
+                        update(notify_settingget_by_userorigin_events);//更新fact中变量值
+                        update(notify_settingget_by_usersession_param);//更新fact中变量值
+                        update(notify_settingget_by_useruser_setting);//更新fact中变量值
+                        update(notify_settingget_by_useruser_settings);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置存在标识]
+            rule "prepareparam3"
+            ruleflow-group "notify_settingget_by_userprepareparam3"
+            when
+            then
+                            notify_settingget_by_usersession_param.set("exist_flag","1");
+                        update(notify_settingget_by_userdefault);//更新fact中变量值
+                        update(notify_settingget_by_usercontext);//更新fact中变量值
+                        update(notify_settingget_by_userloop_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_events);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_setting_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotifys);//更新fact中变量值
+                        update(notify_settingget_by_userorigin_events);//更新fact中变量值
+                        update(notify_settingget_by_usersession_param);//更新fact中变量值
+                        update(notify_settingget_by_useruser_setting);//更新fact中变量值
+                        update(notify_settingget_by_useruser_settings);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end2"
+            ruleflow-group "notify_settingget_by_userend2"
+            when
+            then
+                        update(notify_settingget_by_userdefault);//更新fact中变量值
+                        update(notify_settingget_by_usercontext);//更新fact中变量值
+                        update(notify_settingget_by_userloop_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_events);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_setting_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotifys);//更新fact中变量值
+                        update(notify_settingget_by_userorigin_events);//更新fact中变量值
+                        update(notify_settingget_by_usersession_param);//更新fact中变量值
+                        update(notify_settingget_by_useruser_setting);//更新fact中变量值
+                        update(notify_settingget_by_useruser_settings);//更新fact中变量值
+            end

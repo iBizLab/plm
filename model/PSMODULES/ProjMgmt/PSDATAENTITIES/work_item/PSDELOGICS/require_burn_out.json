@@ -1,0 +1,319 @@
+{
+  "codeName" : "require_burn_out",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDELOGICS/require_burn_out.json",
+  "logicName" : "需求数量燃尽图",
+  "memo" : "需求数量燃尽图",
+  "name" : "需求数量燃尽图",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "BEGIN1",
+    "leftPos" : 1,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BEGIN1"
+      }
+    } ],
+    "topPos" : 240
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : -39,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "填充迭代标识",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "sprint"
+      },
+      "name" : "Default[sprint] ==> sprint[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "sprint",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "n_sprint_id_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "work_item_filter"
+      },
+      "name" : "Default[sprint] ==> work_item_filter[n_sprint_id_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "sprint",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "n_sprint_id_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "change_filter"
+      },
+      "name" : "Default[sprint] ==> change_filter[n_sprint_id_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "sprint",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 388
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "sprint"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint.json"
+    },
+    "leftPos" : -39,
+    "logicNodeType" : "DEACTION",
+    "name" : "获取迭代",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "sprint"
+    },
+    "topPos" : 507
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "change"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "change_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint_alteration.json"
+    },
+    "leftPos" : -39,
+    "logicNodeType" : "DEDATASET",
+    "name" : "查询迭代变更记录",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "change_page"
+    },
+    "topPos" : 603
+  }, {
+    "codeName" : "DEDATASET2",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "sprint_completed"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "work_item_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "leftPos" : -39,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取迭代下的已完成工作项",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET2"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "work_item_page"
+    },
+    "topPos" : 683
+  }, {
+    "code" : "def change_page = logic.param('change_page').getReal()\r\ndef work_item_page = logic.param('work_item_page').getReal()\r\ndef sprint = logic.param('sprint').getReal()\r\ndef result_list = logic.param('result_list').getReal()\r\n\r\n\r\ndef startDate = new Date(sprint.get('start_at').time)\r\ndef endDate = new Date(sprint.get('end_at').time)\r\n\r\ndef dateFormatter = new java.text.SimpleDateFormat(\"yyyy-MM-dd\")\r\ndef calendar = java.util.Calendar.getInstance()\r\ncalendar.time = startDate\r\n// 从开始到结束的所有日期\r\nwhile (!calendar.time.after(endDate)) {\r\n    def rep_date = dateFormatter.format(calendar.time)\r\n    def rep_obj = sys.entity('work_item')    \r\n    rep_obj.set('rep_date', rep_date)\r\n    result_list.add(rep_obj)\r\n    calendar.add(java.util.Calendar.DATE, 1)\r\n}\r\n\r\n// 计算开始迭代时的移入工作项数量\r\ndef begin_count = 0\r\nchange_page.each { it ->\r\n    // 迭代未开始 移入的记录\r\n    if(it.get('type') == '1' && it.get('sprint_status') == '1'){\r\n        begin_count++\r\n    }\r\n    if(it.get('type') == '2' && it.get('sprint_status') == '1' ){\r\n        begin_count--\r\n    }\r\n}\r\ndef rep_num = begin_count\r\nresult_list.eachWithIndex { item, index ->\r\n    def rep_date = dateFormatter.format(new Date(item.get('rep_date').time))\r\n    if(begin_count > 0 && index != 0){\r\n        // 计算递减步长\r\n        def decrementStep = begin_count / (result_list.size() - 1)\r\n        // 理想线 根据日期 从开始日期 逐天递减\r\n        def rep_value1 =  begin_count - (decrementStep * index)        \r\n        def formattedValue = String.format('%.2f', rep_value1)\r\n        item.set('rep_value1', formattedValue)\r\n    } else {\r\n        item.set('rep_value1', 0)\r\n    }\r\n    if(index == 0){\r\n        item.set('rep_value1', begin_count)\r\n    }\r\n    item.set('rep_value2', rep_num)\r\n    work_item_page.each { it ->\r\n        if(it.get('completed_at') != null){\r\n            // 工作项完成时间\r\n            def completed_at = dateFormatter.format(new Date(it.get('completed_at').time))\r\n            if(completed_at == rep_date){\r\n                rep_num--\r\n                if(rep_num < 0){\r\n                    rep_num = 0\r\n                }\r\n                item.set('rep_value2', rep_num)\r\n            }  \r\n        }    \r\n    }\r\n    change_page.each { it ->\r\n        if(it.get('create_time') != null){\r\n           // 移入移出迭代时间\r\n            def change_date = dateFormatter.format(new Date(it.get('create_time').time))\r\n            if(change_date == rep_date){\r\n                // 迭代开始后 移入的记录\r\n                if(it.get('type') == '1' && it.get('sprint_status') == '2'){\r\n                    rep_num++\r\n                    item.set('rep_value2', rep_num)\r\n                }\r\n                if(it.get('type') == '2' && it.get('sprint_status') == '2'){\r\n                    rep_num--\r\n                    if(rep_num < 0){\r\n                        rep_num = 0\r\n                    }\r\n                    item.set('rep_value2', rep_num)\r\n                }\r\n            } \r\n        }\r\n    }\r\n}\r\n\r\n",
+    "codeName" : "RAWSFCODE2",
+    "codeType" : "Groovy",
+    "leftPos" : -39,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "根据迭代日期，计算统计数量",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE2"
+      }
+    } ],
+    "topPos" : 780
+  }, {
+    "codeName" : "BINDPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "result_page"
+    },
+    "leftPos" : -39,
+    "logicNodeType" : "BINDPARAM",
+    "name" : "绑定返回结果",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      }
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "result_list"
+    },
+    "topPos" : 890
+  }, {
+    "codeName" : "END1",
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "result_page"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 1024
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "default" : true,
+    "filterParam" : true
+  }, {
+    "codeName" : "change_filter",
+    "logicName" : "迭代变更记录查询过滤器",
+    "name" : "迭代变更记录查询过滤器",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint_alteration.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "change_page",
+    "logicName" : "迭代变更记录",
+    "name" : "迭代变更记录",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint_alteration.json"
+    },
+    "entityPageParam" : true
+  }, {
+    "codeName" : "result_list",
+    "logicName" : "燃尽图返回结果",
+    "name" : "燃尽图返回结果",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "entityListParam" : true
+  }, {
+    "codeName" : "result_page",
+    "logicName" : "返回结果",
+    "name" : "返回结果",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "entityPageParam" : true
+  }, {
+    "codeName" : "sprint",
+    "logicName" : "迭代",
+    "name" : "迭代",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "work_item_filter",
+    "logicName" : "工作项查询过滤器",
+    "name" : "工作项查询过滤器",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "work_item_page",
+    "logicName" : "工作项查询结果变量",
+    "name" : "工作项查询结果变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "entityPageParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "BEGIN1"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

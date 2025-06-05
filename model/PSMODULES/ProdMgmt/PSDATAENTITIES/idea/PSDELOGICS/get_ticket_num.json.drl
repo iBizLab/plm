@@ -1,0 +1,55 @@
+package cn.ibizlab.plm.prodmgmt.logic.idealogic.get_ticket_num;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea ideaget_ticket_numdefault;
+                global cn.ibizlab.plm.core.base.domain.relation ideaget_ticket_numfilter;
+                global cn.ibizlab.plm.core.base.domain.relation ideaget_ticket_numrelation_page;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea ideaget_ticket_numresult;
+        global cn.ibizlab.plm.core.prodmgmt.service.IideaService iBzSysIdeaDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ideaget_ticket_numbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "ideaget_ticket_numend1"
+            when
+            then
+                        update(ideaget_ticket_numdefault);//更新fact中变量值
+                        update(ideaget_ticket_numfilter);//更新fact中变量值
+                        update(ideaget_ticket_numrelation_page);//更新fact中变量值
+                        update(ideaget_ticket_numresult);//更新fact中变量值
+            end
+
+            //逻辑处理节点[直接sql调用]
+            rule "rawsqlcall1"
+            ruleflow-group "ideaget_ticket_numrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",ideaget_ticket_numdefault.get("id"));
+    String strSql="select count(num) count_num, sum(num) sum_num  from (select CASE                  WHEN t2.TYPE = 'completed' THEN 1                  ELSE 0                  END num       from ticket t1                left join dictionary t2 on t1.STATE = t2.VAL and t2.CATALOG = 'ticket_state'       where t1.id in (select TARGET_ID ticket_id                       from relation                       where PRINCIPAL_ID = #{et.param0}                         and PRINCIPAL_TYPE = 'idea'                         and TARGET_TYPE = 'ticket')       and t1.IS_DELETED = 0) as t1";
+                        java.util.List<JSONObject> entities=iBzSysIdeaDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    ideaget_ticket_numresult.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(ideaget_ticket_numdefault);//更新fact中变量值
+                        update(ideaget_ticket_numfilter);//更新fact中变量值
+                        update(ideaget_ticket_numrelation_page);//更新fact中变量值
+                        update(ideaget_ticket_numresult);//更新fact中变量值
+            end

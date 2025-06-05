@@ -1,0 +1,166 @@
+package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.get_review_context_list;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_content review_contentget_review_context_listdefault;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_content review_contentget_review_context_listfilter;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_content review_contentget_review_context_listfor_obj;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_result review_contentget_review_context_listresult_filter;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_result review_contentget_review_context_listresult_list;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_result review_contentget_review_context_listresult_obj;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_content review_contentget_review_context_listreturn_context;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_content review_contentget_review_context_listreview_contexts;
+                    global cn.ibizlab.plm.core.testmgmt.service.Ireview_contentService review_contentservice;
+        global cn.ibizlab.plm.core.testmgmt.service.Ireview_contentService iBzSysReview_contentDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "review_contentget_review_context_listbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "review_contentget_review_context_listend1"
+            when
+            then
+                        update(review_contentget_review_context_listdefault);//更新fact中变量值
+                        update(review_contentget_review_context_listfilter);//更新fact中变量值
+                        update(review_contentget_review_context_listfor_obj);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_filter);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_list);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_obj);//更新fact中变量值
+                        update(review_contentget_review_context_listreturn_context);//更新fact中变量值
+                        update(review_contentget_review_context_listreview_contexts);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置评审id]
+            rule "prepareparam1"
+            ruleflow-group "review_contentget_review_context_listprepareparam1"
+            when
+            then
+                            review_contentget_review_context_listfilter.set("n_principal_id_eq",review_contentget_review_context_listdefault.get("review_id"));
+                        update(review_contentget_review_context_listdefault);//更新fact中变量值
+                        update(review_contentget_review_context_listfilter);//更新fact中变量值
+                        update(review_contentget_review_context_listfor_obj);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_filter);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_list);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_obj);//更新fact中变量值
+                        update(review_contentget_review_context_listreturn_context);//更新fact中变量值
+                        update(review_contentget_review_context_listreview_contexts);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取评审内容]
+            rule "dedataset1"
+            ruleflow-group "review_contentget_review_context_listdedataset1"
+            when
+            then
+                        update(review_contentget_review_context_listdefault);//更新fact中变量值
+                        update(review_contentget_review_context_listfilter);//更新fact中变量值
+                        update(review_contentget_review_context_listfor_obj);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_filter);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_list);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_obj);//更新fact中变量值
+                        update(review_contentget_review_context_listreturn_context);//更新fact中变量值
+                        update(review_contentget_review_context_listreview_contexts);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环评审内容]
+            rule "loopsubcall1"
+            ruleflow-group "review_contentget_review_context_listloopsubcall1"
+            when
+            then
+                        update(review_contentget_review_context_listdefault);//更新fact中变量值
+                        update(review_contentget_review_context_listfilter);//更新fact中变量值
+                        update(review_contentget_review_context_listfor_obj);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_filter);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_list);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_obj);//更新fact中变量值
+                        update(review_contentget_review_context_listreturn_context);//更新fact中变量值
+                        update(review_contentget_review_context_listreview_contexts);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam2"
+            ruleflow-group "review_contentget_review_context_listdebugparam2"
+            when
+            then
+                        update(review_contentget_review_context_listdefault);//更新fact中变量值
+                        update(review_contentget_review_context_listfilter);//更新fact中变量值
+                        update(review_contentget_review_context_listfor_obj);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_filter);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_list);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_obj);//更新fact中变量值
+                        update(review_contentget_review_context_listreturn_context);//更新fact中变量值
+                        update(review_contentget_review_context_listreview_contexts);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取评审结果]
+            rule "prepareparam2"
+            ruleflow-group "review_contentget_review_context_listprepareparam2"
+            when
+            then
+                            review_contentget_review_context_listresult_list.set("",review_contentget_review_context_listfor_obj.get("stageresults"));
+                            review_contentget_review_context_listresult_filter.set("n_stage_id_eq",review_contentget_review_context_listdefault.get("stage_id"));
+                        update(review_contentget_review_context_listdefault);//更新fact中变量值
+                        update(review_contentget_review_context_listfilter);//更新fact中变量值
+                        update(review_contentget_review_context_listfor_obj);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_filter);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_list);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_obj);//更新fact中变量值
+                        update(review_contentget_review_context_listreturn_context);//更新fact中变量值
+                        update(review_contentget_review_context_listreview_contexts);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam1"
+            ruleflow-group "review_contentget_review_context_listdebugparam1"
+            when
+            then
+                        update(review_contentget_review_context_listdefault);//更新fact中变量值
+                        update(review_contentget_review_context_listfilter);//更新fact中变量值
+                        update(review_contentget_review_context_listfor_obj);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_filter);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_list);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_obj);//更新fact中变量值
+                        update(review_contentget_review_context_listreturn_context);//更新fact中变量值
+                        update(review_contentget_review_context_listreview_contexts);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环评审结果]
+            rule "loopsubcall2"
+            ruleflow-group "review_contentget_review_context_listloopsubcall2"
+            when
+            then
+                        update(review_contentget_review_context_listdefault);//更新fact中变量值
+                        update(review_contentget_review_context_listfilter);//更新fact中变量值
+                        update(review_contentget_review_context_listfor_obj);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_filter);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_list);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_obj);//更新fact中变量值
+                        update(review_contentget_review_context_listreturn_context);//更新fact中变量值
+                        update(review_contentget_review_context_listreview_contexts);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充返回结果]
+            rule "appendparam1"
+            ruleflow-group "review_contentget_review_context_listappendparam1"
+            when
+            then
+                        update(review_contentget_review_context_listdefault);//更新fact中变量值
+                        update(review_contentget_review_context_listfilter);//更新fact中变量值
+                        update(review_contentget_review_context_listfor_obj);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_filter);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_list);//更新fact中变量值
+                        update(review_contentget_review_context_listresult_obj);//更新fact中变量值
+                        update(review_contentget_review_context_listreturn_context);//更新fact中变量值
+                        update(review_contentget_review_context_listreview_contexts);//更新fact中变量值
+            end

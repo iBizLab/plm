@@ -1,0 +1,48 @@
+package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.count_my_todo;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemcount_my_tododefault;
+                global java.util.Map work_itemcount_my_todoresult;
+        global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService iBzSysWork_itemDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "work_itemcount_my_todobegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "work_itemcount_my_todoend1"
+            when
+            then
+                        update(work_itemcount_my_tododefault);//更新fact中变量值
+                        update(work_itemcount_my_todoresult);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询我的待完成]
+            rule "rawsqlcall1"
+            ruleflow-group "work_itemcount_my_todorawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",curuser.getSessionParams().get("srfpersonid"));
+        param.put("param1",curuser.getSessionParams().get("srfpersonid"));
+    String strSql="SELECT count(1) my_todo_count FROM `WORK_ITEM` t1          LEFT JOIN `WORK_ITEM_STATE` t3 ON t1.`STATE` = t3.`ID` WHERE ((t1.`ASSIGNEE_ID` = #{et.param0} OR exists(select 1                                        from executor t2                                        where t1.id = t2.owner_id                                          and t2.owner_type = 'WORK_ITEM'                                          and t2.owner_subtype = 'WORK_ITEM'                                          and t2.user_id = #{et.param1})) AND t1.`IS_ARCHIVED` = 0 AND t1.`IS_DELETED` = 0 AND        t3.`TYPE` <> 'completed')";
+                        java.util.List<JSONObject> entities=iBzSysWork_itemDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                work_itemcount_my_todoresult.putAll(entity);
+                            }
+                        update(work_itemcount_my_tododefault);//更新fact中变量值
+                        update(work_itemcount_my_todoresult);//更新fact中变量值
+            end

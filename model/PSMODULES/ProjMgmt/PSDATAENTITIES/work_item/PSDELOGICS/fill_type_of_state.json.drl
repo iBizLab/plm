@@ -1,0 +1,61 @@
+package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.fill_type_of_state;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemfill_type_of_statedefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item_state work_itemfill_type_of_stateitem_state;
+                    global cn.ibizlab.plm.core.projmgmt.service.Iwork_item_stateService work_item_stateservice;
+        global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService iBzSysWork_itemDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "work_itemfill_type_of_statebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "work_itemfill_type_of_stateend1"
+            when
+            then
+                        update(work_itemfill_type_of_statedefault);//更新fact中变量值
+                        update(work_itemfill_type_of_stateitem_state);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备id]
+            rule "prepareparam1"
+            ruleflow-group "work_itemfill_type_of_stateprepareparam1"
+            when
+            then
+                            work_itemfill_type_of_stateitem_state.set("id",work_itemfill_type_of_statedefault.get("state"));
+                        update(work_itemfill_type_of_statedefault);//更新fact中变量值
+                        update(work_itemfill_type_of_stateitem_state);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取工作项状态]
+            rule "deaction1"
+            ruleflow-group "work_itemfill_type_of_statedeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(work_item_stateservice.get(work_itemfill_type_of_stateitem_state.getId()),work_itemfill_type_of_stateitem_state);
+                        update(work_itemfill_type_of_statedefault);//更新fact中变量值
+                        update(work_itemfill_type_of_stateitem_state);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置工作项状态]
+            rule "prepareparam2"
+            ruleflow-group "work_itemfill_type_of_stateprepareparam2"
+            when
+            then
+                            work_itemfill_type_of_stateitem_state.set("type_of_state",work_itemfill_type_of_stateitem_state.get("type"));
+                        update(work_itemfill_type_of_statedefault);//更新fact中变量值
+                        update(work_itemfill_type_of_stateitem_state);//更新fact中变量值
+            end

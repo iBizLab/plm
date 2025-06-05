@@ -1,0 +1,249 @@
+{
+  "codeName" : "create_bi_report",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Insight/PSDATAENTITIES/insight_report/PSDELOGICS/create_bi_report.json",
+  "logicName" : "建立报表扩展模型",
+  "memo" : "建立报表扩展模型",
+  "name" : "建立报表扩展模型",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNULL",
+          "dstFieldName" : "TEMPLATE_MODEL",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[TEMPLATE_MODEL] 值为空(Nil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "TEMPLATE_MODEL",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[TEMPLATE_MODEL] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200
+  }, {
+    "code" : "var _default = logic.getParam(\"default\");\r\nvar bireport = logic.getParam(\"bireport\");\r\nvar templateModel = _default.get(\"template_model\");\r\nif(templateModel != null){\r\n    bireport.from(templateModel);\r\n    bireport.reset(\"pssysbireportid\");\r\n    bireport.reset(\"codename\");\r\n}",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "JavaScript",
+    "leftPos" : 450,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "从模板初始化模型",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 208
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 450,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "构造智能报表默认参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "VALIDFLAG",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "bireport"
+      },
+      "name" : "直接值[1] ==> bireport[VALIDFLAG]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "1",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "PSSYSBISCHEMEID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "bireport"
+      },
+      "name" : "直接值[BIScheme] ==> bireport[PSSYSBISCHEMEID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "BIScheme",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "PSSYSBICUBEID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "bireport"
+      },
+      "name" : "直接值[BIScheme.work_item] ==> bireport[PSSYSBICUBEID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "BIScheme.work_item",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "PSSYSBIREPORTNAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "bireport"
+      },
+      "name" : "Default[NAME] ==> bireport[PSSYSBIREPORTNAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 340
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBIReport/PSDEACTIONS/Create.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "bireport"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBIReport.json"
+    },
+    "leftPos" : 680,
+    "logicNodeType" : "DEACTION",
+    "name" : "建立bi报表扩展模型",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "bireport"
+    },
+    "topPos" : 340
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 1264,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 350
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 997,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "回写ID",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "bireport[PSSYSBIREPORTID] ==> Default[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PSSYSBIREPORTID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "bireport"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 358
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_report.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "bireport",
+    "logicName" : "智能报表",
+    "name" : "智能报表",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSSysBIReport.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

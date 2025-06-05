@@ -1,0 +1,94 @@
+package cn.ibizlab.plm.testmgmt.logic.library_memberlogic.create_library_member;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.library_member library_membercreate_library_memberdefault;
+                global cn.ibizlab.plm.core.base.domain.user library_membercreate_library_memberfor_temp_obj;
+                global cn.ibizlab.plm.core.testmgmt.domain.library_member library_membercreate_library_membermember_obj;
+                global cn.ibizlab.plm.core.base.domain.user library_membercreate_library_memberselectdata;
+                    global cn.ibizlab.plm.core.testmgmt.service.Ilibrary_memberService library_memberservice;
+        global cn.ibizlab.plm.core.testmgmt.service.Ilibrary_memberService iBzSysLibrary_memberDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "library_membercreate_library_memberbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定选中成员参数]
+            rule "bindparam1"
+            ruleflow-group "library_membercreate_library_memberbindparam1"
+            when
+            then
+                        update(library_membercreate_library_memberdefault);//更新fact中变量值
+                        update(library_membercreate_library_memberfor_temp_obj);//更新fact中变量值
+                        update(library_membercreate_library_membermember_obj);//更新fact中变量值
+                        update(library_membercreate_library_memberselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "library_membercreate_library_memberloopsubcall1"
+            when
+            then
+                        update(library_membercreate_library_memberdefault);//更新fact中变量值
+                        update(library_membercreate_library_memberfor_temp_obj);//更新fact中变量值
+                        update(library_membercreate_library_membermember_obj);//更新fact中变量值
+                        update(library_membercreate_library_memberselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新建立成员参数]
+            rule "renewparam1"
+            ruleflow-group "library_membercreate_library_memberrenewparam1"
+            when
+            then
+                        update(library_membercreate_library_memberdefault);//更新fact中变量值
+                        update(library_membercreate_library_memberfor_temp_obj);//更新fact中变量值
+                        update(library_membercreate_library_membermember_obj);//更新fact中变量值
+                        update(library_membercreate_library_memberselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充测试库成员属性]
+            rule "prepareparam1"
+            ruleflow-group "library_membercreate_library_memberprepareparam1"
+            when
+            then
+                            library_membercreate_library_membermember_obj.set("userid",library_membercreate_library_memberfor_temp_obj.get("userid"));
+                            library_membercreate_library_membermember_obj.set("name",library_membercreate_library_memberfor_temp_obj.get("displayname"));
+                            library_membercreate_library_membermember_obj.set("libraryid",library_membercreate_library_memberdefault.get("libraryid"));
+                        update(library_membercreate_library_memberdefault);//更新fact中变量值
+                        update(library_membercreate_library_memberfor_temp_obj);//更新fact中变量值
+                        update(library_membercreate_library_membermember_obj);//更新fact中变量值
+                        update(library_membercreate_library_memberselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[建立测试库成员]
+            rule "deaction1"
+            ruleflow-group "library_membercreate_library_memberdeaction1"
+            when
+            then
+                        library_memberservice.save(library_membercreate_library_membermember_obj);
+                        update(library_membercreate_library_memberdefault);//更新fact中变量值
+                        update(library_membercreate_library_memberfor_temp_obj);//更新fact中变量值
+                        update(library_membercreate_library_membermember_obj);//更新fact中变量值
+                        update(library_membercreate_library_memberselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "library_membercreate_library_memberend1"
+            when
+            then
+                        update(library_membercreate_library_memberdefault);//更新fact中变量值
+                        update(library_membercreate_library_memberfor_temp_obj);//更新fact中变量值
+                        update(library_membercreate_library_membermember_obj);//更新fact中变量值
+                        update(library_membercreate_library_memberselectdata);//更新fact中变量值
+            end

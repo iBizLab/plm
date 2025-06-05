@@ -1,0 +1,132 @@
+package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.move_work_item;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemmove_work_itemdefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemmove_work_itemfor_temp_obj;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemmove_work_itemparent_work_item;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemmove_work_itemsrfactionparam;
+                    global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService work_itemservice;
+        global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService iBzSysWork_itemDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "work_itemmove_work_itembegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[填充父工作项的标识]
+            rule "prepareparam5"
+            ruleflow-group "work_itemmove_work_itemprepareparam5"
+            when
+            then
+                            work_itemmove_work_itemparent_work_item.set("id",work_itemmove_work_itemfor_temp_obj.get("pid"));
+                        update(work_itemmove_work_itemdefault);//更新fact中变量值
+                        update(work_itemmove_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemmove_work_itemparent_work_item);//更新fact中变量值
+                        update(work_itemmove_work_itemsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取选中父工作项]
+            rule "deaction2"
+            ruleflow-group "work_itemmove_work_itemdeaction2"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(work_itemservice.get(work_itemmove_work_itemparent_work_item.getId()),work_itemmove_work_itemparent_work_item);
+                        update(work_itemmove_work_itemdefault);//更新fact中变量值
+                        update(work_itemmove_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemmove_work_itemparent_work_item);//更新fact中变量值
+                        update(work_itemmove_work_itemsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定传入的列表参数]
+            rule "bindparam1"
+            ruleflow-group "work_itemmove_work_itembindparam1"
+            when
+            then
+                        update(work_itemmove_work_itemdefault);//更新fact中变量值
+                        update(work_itemmove_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemmove_work_itemparent_work_item);//更新fact中变量值
+                        update(work_itemmove_work_itemsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充父工作项标识]
+            rule "prepareparam2"
+            ruleflow-group "work_itemmove_work_itemprepareparam2"
+            when
+            then
+                            work_itemmove_work_itemdefault.set("pid",work_itemmove_work_itemparent_work_item.get("id"));
+                        update(work_itemmove_work_itemdefault);//更新fact中变量值
+                        update(work_itemmove_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemmove_work_itemparent_work_item);//更新fact中变量值
+                        update(work_itemmove_work_itemsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "work_itemmove_work_itemloopsubcall1"
+            when
+            then
+                        update(work_itemmove_work_itemdefault);//更新fact中变量值
+                        update(work_itemmove_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemmove_work_itemparent_work_item);//更新fact中变量值
+                        update(work_itemmove_work_itemsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置移动参数]
+            rule "prepareparam3"
+            ruleflow-group "work_itemmove_work_itemprepareparam3"
+            when
+            then
+                            work_itemmove_work_itemdefault.set("projectid",work_itemmove_work_itemfor_temp_obj.get("target_project_id"));
+                                work_itemmove_work_itemdefault.set("boardid",null);
+                                work_itemmove_work_itemdefault.set("entryid",null);
+                                work_itemmove_work_itemdefault.set("swimlaneid",null);
+                                work_itemmove_work_itemdefault.set("pid",null);
+                        update(work_itemmove_work_itemdefault);//更新fact中变量值
+                        update(work_itemmove_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemmove_work_itemparent_work_item);//更新fact中变量值
+                        update(work_itemmove_work_itemsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[执行更新]
+            rule "deaction1"
+            ruleflow-group "work_itemmove_work_itemdeaction1"
+            when
+            then
+                        work_itemservice.update(work_itemmove_work_itemdefault);
+                        update(work_itemmove_work_itemdefault);//更新fact中变量值
+                        update(work_itemmove_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemmove_work_itemparent_work_item);//更新fact中变量值
+                        update(work_itemmove_work_itemsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[移动时子工作项的处理]
+            rule "delogic1"
+            ruleflow-group "work_itemmove_work_itemdelogic1"
+            when
+            then
+                        update(work_itemmove_work_itemdefault);//更新fact中变量值
+                        update(work_itemmove_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemmove_work_itemparent_work_item);//更新fact中变量值
+                        update(work_itemmove_work_itemsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "work_itemmove_work_itemend1"
+            when
+            then
+                        update(work_itemmove_work_itemdefault);//更新fact中变量值
+                        update(work_itemmove_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemmove_work_itemparent_work_item);//更新fact中变量值
+                        update(work_itemmove_work_itemsrfactionparam);//更新fact中变量值
+            end

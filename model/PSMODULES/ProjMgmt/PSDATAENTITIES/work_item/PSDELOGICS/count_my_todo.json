@@ -1,0 +1,94 @@
+{
+  "codeName" : "count_my_todo",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDELOGICS/count_my_todo.json",
+  "logicName" : "首页待完成项计数器",
+  "memo" : "首页待完成项计数器",
+  "name" : "首页待完成项计数器",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 532,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "result"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 200
+  }, {
+    "codeName" : "RAWSQLCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "result"
+    },
+    "leftPos" : 314,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "查询我的待完成",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "用户全局对象[srfpersonid]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "srfpersonid",
+      "srcValueType" : "SESSION"
+    }, {
+      "name" : "用户全局对象[srfpersonid]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "srfpersonid",
+      "srcValueType" : "SESSION"
+    } ],
+    "sql" : "SELECT count(1) my_todo_count\r\nFROM `WORK_ITEM` t1\r\n         LEFT JOIN `WORK_ITEM_STATE` t3 ON t1.`STATE` = t3.`ID`\r\nWHERE ((t1.`ASSIGNEE_ID` = ? OR exists(select 1\r\n                                       from executor t2\r\n                                       where t1.id = t2.owner_id\r\n                                         and t2.owner_type = 'WORK_ITEM'\r\n                                         and t2.owner_subtype = 'WORK_ITEM'\r\n                                         and t2.user_id = ?)) AND t1.`IS_ARCHIVED` = 0 AND t1.`IS_DELETED` = 0 AND\r\n       t3.`TYPE` <> 'completed')",
+    "topPos" : 208,
+    "fillDstLogicParam" : true
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "result",
+    "logicName" : "result",
+    "name" : "result",
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

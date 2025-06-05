@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.prodmgmt.product.get.afterLogic" isClosed="false" isExecutable="true" name="prodmgmt_product_get_afterLogic" processType="Private" tns:packageName="cn.ibizlab.plm.core.prodmgmt.product.get.afterLogic">
+            <extensionElements>
+                <tns:import name="java.util.Map"/>
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                <tns:import name="cn.ibizlab.plm.core.prodmgmt.domain.product"/>
+            </extensionElements>
+                <startEvent id="begin" isInterrupting="true"/>
+                <endEvent id="prepareparam1_end" name="end"/>
+                            <callActivity activiti:exclusive="true" calledElement="cn.ibizlab.plm.core.prodmgmt.service.logic.productget_product_member_one" id="031a78982299a3bf24944d5d71441c6b" name="get_product_member_one.json.bpmn"/>
+                        <sequenceFlow id="begin_031a78982299a3bf24944d5d71441c6b" sourceRef="begin" targetRef="031a78982299a3bf24944d5d71441c6b"/>
+                            <callActivity activiti:exclusive="true" calledElement="cn.ibizlab.plm.core.prodmgmt.service.logic.productcreate_recent" id="8ccb4a80b59a422a974c78e01ba6ce9b" name="create_recent.json.bpmn"/>
+                        <sequenceFlow id="031a78982299a3bf24944d5d71441c6b_8ccb4a80b59a422a974c78e01ba6ce9b" sourceRef="031a78982299a3bf24944d5d71441c6b" targetRef="8ccb4a80b59a422a974c78e01ba6ce9b"/>
+                            <sequenceFlow id="8ccb4a80b59a422a974c78e01ba6ce9b_prepareparam1_end" sourceRef="8ccb4a80b59a422a974c78e01ba6ce9b" targetRef="prepareparam1_end"/>
+        </process>
+    </definitions>

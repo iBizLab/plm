@@ -1,0 +1,295 @@
+package cn.ibizlab.plm.wiki.logic.article_pagelogic.copy_page;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pagecopy_pagedefault;
+                global cn.ibizlab.plm.core.base.domain.attachment article_pagecopy_pageattachment;
+                global cn.ibizlab.plm.core.base.domain.attachment article_pagecopy_pageattachments;
+                global java.util.Map article_pagecopy_pagechild_data;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pagecopy_pagefor_tmp_obj;
+                global java.util.Map article_pagecopy_pageis_child;
+                global java.util.Map article_pagecopy_pagepage_id;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pagecopy_pagepage_obj;
+                global java.util.Map article_pagecopy_pagesrfactionparam;
+                global java.util.Map article_pagecopy_pagetarget_page_id;
+                global java.util.Map article_pagecopy_pagetarget_space_id;
+                    global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService article_pageservice;
+                    global cn.ibizlab.plm.core.base.service.IattachmentService attachmentservice;
+        global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService iBzSysArticle_pageDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "article_pagecopy_pagebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设置待复制页面id]
+            rule "prepareparam1"
+            ruleflow-group "article_pagecopy_pageprepareparam1"
+            when
+            then
+                            article_pagecopy_pagepage_id.set("",article_pagecopy_pagedefault.get("id"));
+                        update(article_pagecopy_pagedefault);//更新fact中变量值
+                        update(article_pagecopy_pageattachment);//更新fact中变量值
+                        update(article_pagecopy_pageattachments);//更新fact中变量值
+                        update(article_pagecopy_pagechild_data);//更新fact中变量值
+                        update(article_pagecopy_pagefor_tmp_obj);//更新fact中变量值
+                        update(article_pagecopy_pageis_child);//更新fact中变量值
+                        update(article_pagecopy_pagepage_id);//更新fact中变量值
+                        update(article_pagecopy_pagepage_obj);//更新fact中变量值
+                        update(article_pagecopy_pagesrfactionparam);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_page_id);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_space_id);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定视图数据]
+            rule "bindparam1"
+            ruleflow-group "article_pagecopy_pagebindparam1"
+            when
+            then
+                        update(article_pagecopy_pagedefault);//更新fact中变量值
+                        update(article_pagecopy_pageattachment);//更新fact中变量值
+                        update(article_pagecopy_pageattachments);//更新fact中变量值
+                        update(article_pagecopy_pagechild_data);//更新fact中变量值
+                        update(article_pagecopy_pagefor_tmp_obj);//更新fact中变量值
+                        update(article_pagecopy_pageis_child);//更新fact中变量值
+                        update(article_pagecopy_pagepage_id);//更新fact中变量值
+                        update(article_pagecopy_pagepage_obj);//更新fact中变量值
+                        update(article_pagecopy_pagesrfactionparam);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_page_id);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_space_id);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "article_pagecopy_pageloopsubcall1"
+            when
+            then
+                        update(article_pagecopy_pagedefault);//更新fact中变量值
+                        update(article_pagecopy_pageattachment);//更新fact中变量值
+                        update(article_pagecopy_pageattachments);//更新fact中变量值
+                        update(article_pagecopy_pagechild_data);//更新fact中变量值
+                        update(article_pagecopy_pagefor_tmp_obj);//更新fact中变量值
+                        update(article_pagecopy_pageis_child);//更新fact中变量值
+                        update(article_pagecopy_pagepage_id);//更新fact中变量值
+                        update(article_pagecopy_pagepage_obj);//更新fact中变量值
+                        update(article_pagecopy_pagesrfactionparam);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_page_id);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_space_id);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置待复制页面数据]
+            rule "prepareparam2"
+            ruleflow-group "article_pagecopy_pageprepareparam2"
+            when
+            then
+                            article_pagecopy_pagetarget_page_id.set("",article_pagecopy_pagefor_tmp_obj.get("parentid"));
+                            article_pagecopy_pagetarget_space_id.set("",article_pagecopy_pagefor_tmp_obj.get("spaceid"));
+                            article_pagecopy_pageis_child.set("",article_pagecopy_pagefor_tmp_obj.get("is_child"));
+                        update(article_pagecopy_pagedefault);//更新fact中变量值
+                        update(article_pagecopy_pageattachment);//更新fact中变量值
+                        update(article_pagecopy_pageattachments);//更新fact中变量值
+                        update(article_pagecopy_pagechild_data);//更新fact中变量值
+                        update(article_pagecopy_pagefor_tmp_obj);//更新fact中变量值
+                        update(article_pagecopy_pageis_child);//更新fact中变量值
+                        update(article_pagecopy_pagepage_id);//更新fact中变量值
+                        update(article_pagecopy_pagepage_obj);//更新fact中变量值
+                        update(article_pagecopy_pagesrfactionparam);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_page_id);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_space_id);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取待复制的页面]
+            rule "deaction1"
+            ruleflow-group "article_pagecopy_pagedeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(article_pageservice.get(article_pagecopy_pagepage_id.getId()),article_pagecopy_pagepage_id);
+                        update(article_pagecopy_pagedefault);//更新fact中变量值
+                        update(article_pagecopy_pageattachment);//更新fact中变量值
+                        update(article_pagecopy_pageattachments);//更新fact中变量值
+                        update(article_pagecopy_pagechild_data);//更新fact中变量值
+                        update(article_pagecopy_pagefor_tmp_obj);//更新fact中变量值
+                        update(article_pagecopy_pageis_child);//更新fact中变量值
+                        update(article_pagecopy_pagepage_id);//更新fact中变量值
+                        update(article_pagecopy_pagepage_obj);//更新fact中变量值
+                        update(article_pagecopy_pagesrfactionparam);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_page_id);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_space_id);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置待保存的页面]
+            rule "prepareparam3"
+            ruleflow-group "article_pagecopy_pageprepareparam3"
+            when
+            then
+                            article_pagecopy_pagepage_obj.set("formattype",article_pagecopy_pagefor_tmp_obj.get("formattype"));
+                                article_pagecopy_pagepage_obj.set("publishman",curuser.getSessionParams().get("srfpersonid"));
+                            article_pagecopy_pagepage_obj.set("ispublished",article_pagecopy_pagefor_tmp_obj.get("ispublished"));
+                            article_pagecopy_pagepage_obj.set("published",article_pagecopy_pagefor_tmp_obj.get("published"));
+                            article_pagecopy_pagepage_obj.set("isdeleted",article_pagecopy_pagefor_tmp_obj.get("isdeleted"));
+                            article_pagecopy_pagepage_obj.set("publishcontent",article_pagecopy_pagefor_tmp_obj.get("publishcontent"));
+                            article_pagecopy_pagepage_obj.set("type",article_pagecopy_pagefor_tmp_obj.get("type"));
+                            article_pagecopy_pagepage_obj.set("isarchived",article_pagecopy_pagefor_tmp_obj.get("isarchived"));
+                            article_pagecopy_pagepage_obj.set("islock",article_pagecopy_pagefor_tmp_obj.get("islock"));
+                            article_pagecopy_pagepage_obj.set("publishname",article_pagecopy_pagefor_tmp_obj.get("publishname"));
+                            article_pagecopy_pagepage_obj.set("content",article_pagecopy_pagefor_tmp_obj.get("content"));
+                            article_pagecopy_pagepage_obj.set("spaceid",article_pagecopy_pagetarget_space_id.get(""));
+                            article_pagecopy_pagepage_obj.set("parentid",article_pagecopy_pagetarget_page_id.get(""));
+                            article_pagecopy_pagepage_obj.set("name",article_pagecopy_pagefor_tmp_obj.get("name"));
+                            article_pagecopy_pagepage_obj.set("isleaf",article_pagecopy_pagefor_tmp_obj.get("isleaf"));
+                            article_pagecopy_pageattachments.set("",article_pagecopy_pagefor_tmp_obj.get("attachments"));
+                        update(article_pagecopy_pagedefault);//更新fact中变量值
+                        update(article_pagecopy_pageattachment);//更新fact中变量值
+                        update(article_pagecopy_pageattachments);//更新fact中变量值
+                        update(article_pagecopy_pagechild_data);//更新fact中变量值
+                        update(article_pagecopy_pagefor_tmp_obj);//更新fact中变量值
+                        update(article_pagecopy_pageis_child);//更新fact中变量值
+                        update(article_pagecopy_pagepage_id);//更新fact中变量值
+                        update(article_pagecopy_pagepage_obj);//更新fact中变量值
+                        update(article_pagecopy_pagesrfactionparam);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_page_id);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_space_id);//更新fact中变量值
+            end
+
+            //逻辑处理节点[保存页面]
+            rule "deaction2"
+            ruleflow-group "article_pagecopy_pagedeaction2"
+            when
+            then
+                        article_pageservice.create(article_pagecopy_pagepage_obj);
+                        update(article_pagecopy_pagedefault);//更新fact中变量值
+                        update(article_pagecopy_pageattachment);//更新fact中变量值
+                        update(article_pagecopy_pageattachments);//更新fact中变量值
+                        update(article_pagecopy_pagechild_data);//更新fact中变量值
+                        update(article_pagecopy_pagefor_tmp_obj);//更新fact中变量值
+                        update(article_pagecopy_pageis_child);//更新fact中变量值
+                        update(article_pagecopy_pagepage_id);//更新fact中变量值
+                        update(article_pagecopy_pagepage_obj);//更新fact中变量值
+                        update(article_pagecopy_pagesrfactionparam);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_page_id);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_space_id);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall2"
+            ruleflow-group "article_pagecopy_pageloopsubcall2"
+            when
+            then
+                        update(article_pagecopy_pagedefault);//更新fact中变量值
+                        update(article_pagecopy_pageattachment);//更新fact中变量值
+                        update(article_pagecopy_pageattachments);//更新fact中变量值
+                        update(article_pagecopy_pagechild_data);//更新fact中变量值
+                        update(article_pagecopy_pagefor_tmp_obj);//更新fact中变量值
+                        update(article_pagecopy_pageis_child);//更新fact中变量值
+                        update(article_pagecopy_pagepage_id);//更新fact中变量值
+                        update(article_pagecopy_pagepage_obj);//更新fact中变量值
+                        update(article_pagecopy_pagesrfactionparam);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_page_id);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_space_id);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置附件数据]
+            rule "prepareparam4"
+            ruleflow-group "article_pagecopy_pageprepareparam4"
+            when
+            then
+                                article_pagecopy_pageattachment.set("id",null);
+                            article_pagecopy_pageattachment.set("ownerid",article_pagecopy_pagepage_obj.get("id"));
+                            article_pagecopy_pageattachment.set("ownertype","PAGE");
+                        update(article_pagecopy_pagedefault);//更新fact中变量值
+                        update(article_pagecopy_pageattachment);//更新fact中变量值
+                        update(article_pagecopy_pageattachments);//更新fact中变量值
+                        update(article_pagecopy_pagechild_data);//更新fact中变量值
+                        update(article_pagecopy_pagefor_tmp_obj);//更新fact中变量值
+                        update(article_pagecopy_pageis_child);//更新fact中变量值
+                        update(article_pagecopy_pagepage_id);//更新fact中变量值
+                        update(article_pagecopy_pagepage_obj);//更新fact中变量值
+                        update(article_pagecopy_pagesrfactionparam);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_page_id);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_space_id);//更新fact中变量值
+            end
+
+            //逻辑处理节点[新建附件数据]
+            rule "deaction3"
+            ruleflow-group "article_pagecopy_pagedeaction3"
+            when
+            then
+                        attachmentservice.create(article_pagecopy_pageattachment);
+                        update(article_pagecopy_pagedefault);//更新fact中变量值
+                        update(article_pagecopy_pageattachment);//更新fact中变量值
+                        update(article_pagecopy_pageattachments);//更新fact中变量值
+                        update(article_pagecopy_pagechild_data);//更新fact中变量值
+                        update(article_pagecopy_pagefor_tmp_obj);//更新fact中变量值
+                        update(article_pagecopy_pageis_child);//更新fact中变量值
+                        update(article_pagecopy_pagepage_id);//更新fact中变量值
+                        update(article_pagecopy_pagepage_obj);//更新fact中变量值
+                        update(article_pagecopy_pagesrfactionparam);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_page_id);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_space_id);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "article_pagecopy_pageend1"
+            when
+            then
+                        update(article_pagecopy_pagedefault);//更新fact中变量值
+                        update(article_pagecopy_pageattachment);//更新fact中变量值
+                        update(article_pagecopy_pageattachments);//更新fact中变量值
+                        update(article_pagecopy_pagechild_data);//更新fact中变量值
+                        update(article_pagecopy_pagefor_tmp_obj);//更新fact中变量值
+                        update(article_pagecopy_pageis_child);//更新fact中变量值
+                        update(article_pagecopy_pagepage_id);//更新fact中变量值
+                        update(article_pagecopy_pagepage_obj);//更新fact中变量值
+                        update(article_pagecopy_pagesrfactionparam);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_page_id);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_space_id);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备子页面复制参数]
+            rule "prepareparam5"
+            ruleflow-group "article_pagecopy_pageprepareparam5"
+            when
+            then
+                            article_pagecopy_pagechild_data.set("old_parent_id",article_pagecopy_pagepage_id.get(""));
+                            article_pagecopy_pagechild_data.set("new_parent_id",article_pagecopy_pagepage_obj.get("id"));
+                            article_pagecopy_pagechild_data.set("new_space_id",article_pagecopy_pagetarget_space_id.get(""));
+                        update(article_pagecopy_pagedefault);//更新fact中变量值
+                        update(article_pagecopy_pageattachment);//更新fact中变量值
+                        update(article_pagecopy_pageattachments);//更新fact中变量值
+                        update(article_pagecopy_pagechild_data);//更新fact中变量值
+                        update(article_pagecopy_pagefor_tmp_obj);//更新fact中变量值
+                        update(article_pagecopy_pageis_child);//更新fact中变量值
+                        update(article_pagecopy_pagepage_id);//更新fact中变量值
+                        update(article_pagecopy_pagepage_obj);//更新fact中变量值
+                        update(article_pagecopy_pagesrfactionparam);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_page_id);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_space_id);//更新fact中变量值
+            end
+
+            //逻辑处理节点[复制子页面]
+            rule "delogic1"
+            ruleflow-group "article_pagecopy_pagedelogic1"
+            when
+            then
+                        update(article_pagecopy_pagedefault);//更新fact中变量值
+                        update(article_pagecopy_pageattachment);//更新fact中变量值
+                        update(article_pagecopy_pageattachments);//更新fact中变量值
+                        update(article_pagecopy_pagechild_data);//更新fact中变量值
+                        update(article_pagecopy_pagefor_tmp_obj);//更新fact中变量值
+                        update(article_pagecopy_pageis_child);//更新fact中变量值
+                        update(article_pagecopy_pagepage_id);//更新fact中变量值
+                        update(article_pagecopy_pagepage_obj);//更新fact中变量值
+                        update(article_pagecopy_pagesrfactionparam);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_page_id);//更新fact中变量值
+                        update(article_pagecopy_pagetarget_space_id);//更新fact中变量值
+            end

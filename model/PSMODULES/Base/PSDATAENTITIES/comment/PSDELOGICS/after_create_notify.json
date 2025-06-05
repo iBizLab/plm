@@ -1,0 +1,342 @@
+{
+  "codeName" : "after_create_notify",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/comment/PSDELOGICS/after_create_notify.json",
+  "logicName" : "新建评论后通知",
+  "memo" : "发表评论后，发送通知消息至相应负责人员、关注人员",
+  "name" : "新建评论后通知",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 546,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY1"
+      },
+      "name" : "评论工作项",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "PRINCIPAL_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[PRINCIPAL_TYPE] 等于(=) WORK_ITEM",
+          "paramValue" : "WORK_ITEM"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY2"
+      },
+      "name" : "评论产品需求",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "PRINCIPAL_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[PRINCIPAL_TYPE] 等于(=) IDEA",
+          "paramValue" : "IDEA"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY3"
+      },
+      "name" : "评论工单",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "PRINCIPAL_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[PRINCIPAL_TYPE] 等于(=) TICKET",
+          "paramValue" : "TICKET"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY4"
+      },
+      "name" : "评论客户",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "PRINCIPAL_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[PRINCIPAL_TYPE] 等于(=) CUSTOMER",
+          "paramValue" : "CUSTOMER"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY5"
+      },
+      "name" : "评论测试用例",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "PRINCIPAL_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[PRINCIPAL_TYPE] 等于(=) TEST_CASE",
+          "paramValue" : "TEST_CASE"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY6"
+      },
+      "name" : "评论执行用例",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "PRINCIPAL_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[PRINCIPAL_TYPE] 等于(=) RUN",
+          "paramValue" : "RUN"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY7"
+      },
+      "name" : "评论页面",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "PRINCIPAL_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[PRINCIPAL_TYPE] 等于(=) PAGE",
+          "paramValue" : "PAGE"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : -100,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DENOTIFY1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment/PSDENOTIFIES/work_item_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment.json"
+    },
+    "leftPos" : 20,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "评论工作项通知",
+    "topPos" : 396
+  }, {
+    "codeName" : "DENOTIFY2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment/PSDENOTIFIES/idea_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment.json"
+    },
+    "leftPos" : 239,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "评论产品需求通知",
+    "topPos" : 396
+  }, {
+    "codeName" : "DENOTIFY3",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment/PSDENOTIFIES/ticket_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment.json"
+    },
+    "leftPos" : 466,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "评论工单通知",
+    "topPos" : 396
+  }, {
+    "codeName" : "DENOTIFY4",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment/PSDENOTIFIES/customer_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment.json"
+    },
+    "leftPos" : 654,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "评论客户通知",
+    "topPos" : 396
+  }, {
+    "codeName" : "DENOTIFY5",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment/PSDENOTIFIES/test_case_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment.json"
+    },
+    "leftPos" : 842,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "评论测试用例通知",
+    "topPos" : 396
+  }, {
+    "codeName" : "DENOTIFY6",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment/PSDENOTIFIES/run_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment.json"
+    },
+    "leftPos" : 1021,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "评论执行用例通知",
+    "topPos" : 396
+  }, {
+    "codeName" : "DENOTIFY7",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment/PSDENOTIFIES/page_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment.json"
+    },
+    "leftPos" : 1210,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "评论页面通知",
+    "topPos" : 396
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}
