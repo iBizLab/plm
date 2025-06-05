@@ -5241,13 +5241,13 @@
     "name" : "删除工时记录前附加逻辑",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : 340,
+      "leftPos" : 230,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEACTION1"
+          "id" : "DEBUGPARAM1"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -5257,6 +5257,27 @@
       } ],
       "topPos" : 22,
       "parallelOutput" : true
+    }, {
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 303,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
+      } ],
+      "topPos" : 30
     }, {
       "codeName" : "DEACTION1",
       "getDstPSDEAction" : {
@@ -5979,6 +6000,33 @@
       },
       "topPos" : 490
     }, {
+      "codeName" : "PREPAREPARAM3",
+      "leftPos" : 1400,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "置空实际工时",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION3"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM3"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "DECIMAL_VALUE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "common_workload"
+        },
+        "name" : "空值（NULL） ==> common_workload[DECIMAL_VALUE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValueType" : "NULLVALUE"
+      } ],
+      "topPos" : 510
+    }, {
       "codeName" : "PREPAREPARAM5",
       "leftPos" : 910,
       "logicNodeType" : "PREPAREPARAM",
@@ -6054,33 +6102,6 @@
         "id" : "remaining_page"
       },
       "topPos" : -38
-    }, {
-      "codeName" : "PREPAREPARAM3",
-      "leftPos" : 1400,
-      "logicNodeType" : "PREPAREPARAM",
-      "name" : "置空实际工时",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION3"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM3"
-        }
-      } ],
-      "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "DECIMAL_VALUE",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "common_workload"
-        },
-        "name" : "空值（NULL） ==> common_workload[DECIMAL_VALUE]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValueType" : "NULLVALUE"
-      } ],
-      "topPos" : 510
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",

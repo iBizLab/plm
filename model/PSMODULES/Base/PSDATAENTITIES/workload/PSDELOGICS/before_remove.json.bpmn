@@ -34,6 +34,7 @@
                             <tns:global identifier="workloadbefore_removeworkload_page" type="cn.ibizlab.plm.core.base.domain.extend_storage" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadbefore_removedebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadbefore_removedeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取工时明细"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadbefore_removededataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="获取剩余工时"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadbefore_removebindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定预估工时"/>
@@ -47,13 +48,15 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadbefore_removedeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="更新剩余工时"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadbefore_removebindparam3" id="bindparam3" implementation="http://www.jboss.org/drools/rule" name="绑定实际工时"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadbefore_removedeaction4" id="deaction4" implementation="http://www.jboss.org/drools/rule" name="获取工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadbefore_removeprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="置空实际工时"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadbefore_removeprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="填充父工作项标识"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadbefore_removedelogic1" id="delogic1" implementation="http://www.jboss.org/drools/rule" name="自动计算父工时"/>
                         <endEvent id="delogic1_end" name="end"/>
                         <sequenceFlow id="delogic1_end_line" sourceRef="delogic1" targetRef="delogic1_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadbefore_removebindparam2" id="bindparam2" implementation="http://www.jboss.org/drools/rule" name="绑定剩余工时"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadbefore_removeprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="置空实际工时"/>
-                    <sequenceFlow id="begin_deaction1" sourceRef="begin" targetRef="deaction1">
+                    <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam1_deaction1" sourceRef="debugparam1" targetRef="deaction1">
                     </sequenceFlow>
                     <sequenceFlow id="deaction1_rawsqlcall2" sourceRef="deaction1" targetRef="rawsqlcall2">
                     </sequenceFlow>
@@ -233,11 +236,11 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_deaction3" sourceRef="prepareparam3" targetRef="deaction3">
+                    </sequenceFlow>
                     <sequenceFlow id="prepareparam5_delogic1" sourceRef="prepareparam5" targetRef="delogic1">
                     </sequenceFlow>
                     <sequenceFlow id="bindparam2_rawsfcode1" sourceRef="bindparam2" targetRef="rawsfcode1">
-                    </sequenceFlow>
-                    <sequenceFlow id="prepareparam3_deaction3" sourceRef="prepareparam3" targetRef="deaction3">
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-dedataset2" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset2_end_line"></exclusiveGateway>
                             <sequenceFlow id="dedataset2_gateway-dedataset2_gatewayline" sourceRef="dedataset2" targetRef="gateway-dedataset2"></sequenceFlow>
