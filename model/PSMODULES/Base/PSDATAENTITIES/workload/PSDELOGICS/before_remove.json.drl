@@ -87,24 +87,6 @@ package cn.ibizlab.plm.base.logic.workloadlogic.before_remove;
                         update(workloadbefore_removeworkload_page);//更新fact中变量值
             end
 
-            //逻辑处理节点[调试逻辑参数]
-            rule "debugparam1"
-            ruleflow-group "workloadbefore_removedebugparam1"
-            when
-            then
-                        update(workloadbefore_removedefault);//更新fact中变量值
-                        update(workloadbefore_removeactual);//更新fact中变量值
-                        update(workloadbefore_removecommon_workload);//更新fact中变量值
-                        update(workloadbefore_removeestimated);//更新fact中变量值
-                        update(workloadbefore_removefilter);//更新fact中变量值
-                        update(workloadbefore_removeremaining);//更新fact中变量值
-                        update(workloadbefore_removeremaining_page);//更新fact中变量值
-                        update(workloadbefore_removetotal_register);//更新fact中变量值
-                        update(workloadbefore_removework_item);//更新fact中变量值
-                        update(workloadbefore_removeworkload);//更新fact中变量值
-                        update(workloadbefore_removeworkload_page);//更新fact中变量值
-            end
-
             //逻辑处理节点[获取已登记工时]
             rule "rawsqlcall2"
             ruleflow-group "workloadbefore_removerawsqlcall2"
@@ -135,14 +117,12 @@ package cn.ibizlab.plm.base.logic.workloadlogic.before_remove;
                         update(workloadbefore_removeworkload_page);//更新fact中变量值
             end
 
-            //逻辑处理节点[准备查询过滤器参数]
-            rule "prepareparam1"
-            ruleflow-group "workloadbefore_removeprepareparam1"
+            //逻辑处理节点[预估工时]
+            rule "prepareparam7"
+            ruleflow-group "workloadbefore_removeprepareparam7"
             when
             then
-                            workloadbefore_removefilter.set("n_owner_id_eq",workloadbefore_removedefault.get("principalid"));
-                            workloadbefore_removefilter.set("n_owner_type_eq",workloadbefore_removedefault.get("principaltype"));
-                            workloadbefore_removefilter.set("n_name_eq",workloadbefore_removedefault.get("category"));
+                            workloadbefore_removefilter.set("n_name_eq","ESTIMATED_WORKLOAD");
                         update(workloadbefore_removedefault);//更新fact中变量值
                         update(workloadbefore_removeactual);//更新fact中变量值
                         update(workloadbefore_removecommon_workload);//更新fact中变量值
@@ -222,6 +202,45 @@ package cn.ibizlab.plm.base.logic.workloadlogic.before_remove;
             ruleflow-group "workloadbefore_removerawsfcode1"
             when
             then
+                        update(workloadbefore_removedefault);//更新fact中变量值
+                        update(workloadbefore_removeactual);//更新fact中变量值
+                        update(workloadbefore_removecommon_workload);//更新fact中变量值
+                        update(workloadbefore_removeestimated);//更新fact中变量值
+                        update(workloadbefore_removefilter);//更新fact中变量值
+                        update(workloadbefore_removeremaining);//更新fact中变量值
+                        update(workloadbefore_removeremaining_page);//更新fact中变量值
+                        update(workloadbefore_removetotal_register);//更新fact中变量值
+                        update(workloadbefore_removework_item);//更新fact中变量值
+                        update(workloadbefore_removeworkload);//更新fact中变量值
+                        update(workloadbefore_removeworkload_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备查询过滤器参数]
+            rule "prepareparam1"
+            ruleflow-group "workloadbefore_removeprepareparam1"
+            when
+            then
+                            workloadbefore_removefilter.set("n_owner_id_eq",workloadbefore_removedefault.get("principalid"));
+                            workloadbefore_removefilter.set("n_owner_type_eq",workloadbefore_removedefault.get("principaltype"));
+                        update(workloadbefore_removedefault);//更新fact中变量值
+                        update(workloadbefore_removeactual);//更新fact中变量值
+                        update(workloadbefore_removecommon_workload);//更新fact中变量值
+                        update(workloadbefore_removeestimated);//更新fact中变量值
+                        update(workloadbefore_removefilter);//更新fact中变量值
+                        update(workloadbefore_removeremaining);//更新fact中变量值
+                        update(workloadbefore_removeremaining_page);//更新fact中变量值
+                        update(workloadbefore_removetotal_register);//更新fact中变量值
+                        update(workloadbefore_removework_item);//更新fact中变量值
+                        update(workloadbefore_removeworkload);//更新fact中变量值
+                        update(workloadbefore_removeworkload_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实际工时]
+            rule "prepareparam6"
+            ruleflow-group "workloadbefore_removeprepareparam6"
+            when
+            then
+                            workloadbefore_removefilter.set("n_name_eq","ACTUAL_WORKLOAD");
                         update(workloadbefore_removedefault);//更新fact中变量值
                         update(workloadbefore_removeactual);//更新fact中变量值
                         update(workloadbefore_removecommon_workload);//更新fact中变量值

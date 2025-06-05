@@ -5241,7 +5241,7 @@
     "name" : "删除工时记录前附加逻辑",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : 230,
+      "leftPos" : 310,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDELogicLinks" : [ {
@@ -5255,7 +5255,7 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 22,
+      "topPos" : -80,
       "parallelOutput" : true
     }, {
       "codeName" : "DEACTION1",
@@ -5271,13 +5271,13 @@
         "modelref" : true,
         "path" : "PSMODULES/Base/PSDATAENTITIES/workload.json"
       },
-      "leftPos" : 470,
+      "leftPos" : 270,
       "logicNodeType" : "DEACTION",
       "name" : "获取工时明细",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM1"
+          "id" : "RAWSQLCALL2"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -5289,7 +5289,7 @@
         "modelref" : true,
         "id" : "Default"
       },
-      "topPos" : 30
+      "topPos" : 38
     }, {
       "codeName" : "DEDATASET2",
       "getDstPSDEDataSet" : {
@@ -5392,33 +5392,12 @@
       },
       "topPos" : 80
     }, {
-      "codeName" : "DEBUGPARAM1",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 210,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSQLCALL2"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        }
-      } ],
-      "topPos" : 140
-    }, {
       "codeName" : "RAWSQLCALL2",
       "getDstPSDELogicParam" : {
         "modelref" : true,
         "id" : "total_register"
       },
-      "leftPos" : 470,
+      "leftPos" : 270,
       "logicNodeType" : "RAWSQLCALL",
       "name" : "获取已登记工时",
       "getPSDELogicLinks" : [ {
@@ -5461,13 +5440,13 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "sql" : "select sum(DURATION) as `DURATION` from workload where  PRINCIPAL_TYPE = ? and PRINCIPAL_ID = ? and CATEGORY = ?",
-      "topPos" : 140,
+      "topPos" : 150,
       "fillDstLogicParam" : true
     }, {
-      "codeName" : "PREPAREPARAM1",
-      "leftPos" : 470,
+      "codeName" : "PREPAREPARAM7",
+      "leftPos" : 490,
       "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备查询过滤器参数",
+      "name" : "预估工时",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -5476,54 +5455,21 @@
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREPARAM1"
+          "id" : "PREPAREPARAM7"
         }
       } ],
       "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "n_owner_id_eq",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "filter"
-        },
-        "name" : "Default[PRINCIPAL_ID] ==> filter[n_owner_id_eq]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "PRINCIPAL_ID",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "n_owner_type_eq",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "filter"
-        },
-        "name" : "Default[PRINCIPAL_TYPE] ==> filter[n_owner_type_eq]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "PRINCIPAL_TYPE",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
         "dstFieldName" : "n_name_eq",
         "getDstPSDELogicParam" : {
           "modelref" : true,
           "id" : "filter"
         },
-        "name" : "Default[CATEGORY] ==> filter[n_name_eq]",
+        "name" : "直接值[ESTIMATED_WORKLOAD] ==> filter[n_name_eq]",
         "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "CATEGORY",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
         "srcValue" : "ESTIMATED_WORKLOAD",
-        "srcValueType" : "SRCDLPARAM"
+        "srcValueType" : "SRCVALUE"
       } ],
-      "topPos" : 256
+      "topPos" : 196
     }, {
       "codeName" : "DEDATASET1",
       "getDstPSDEDataSet" : {
@@ -5799,6 +5745,122 @@
         }
       } ],
       "topPos" : 256
+    }, {
+      "codeName" : "PREPAREPARAM1",
+      "leftPos" : 270,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备查询过滤器参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM6"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "CATEGORY",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[CATEGORY] 等于(=) ESTIMATED_WORKLOAD",
+            "paramValue" : "ESTIMATED_WORKLOAD"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM7"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "CATEGORY",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[CATEGORY] 等于(=) ACTUAL_WORKLOAD",
+            "paramValue" : "ACTUAL_WORKLOAD"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "n_owner_id_eq",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "filter"
+        },
+        "name" : "Default[PRINCIPAL_ID] ==> filter[n_owner_id_eq]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "PRINCIPAL_ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "n_owner_type_eq",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "filter"
+        },
+        "name" : "Default[PRINCIPAL_TYPE] ==> filter[n_owner_type_eq]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "PRINCIPAL_TYPE",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 270
+    }, {
+      "codeName" : "PREPAREPARAM6",
+      "leftPos" : 490,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "实际工时",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM6"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "n_name_eq",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "filter"
+        },
+        "name" : "直接值[ACTUAL_WORKLOAD] ==> filter[n_name_eq]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "ACTUAL_WORKLOAD",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 316
     }, {
       "codeName" : "PREPAREPARAM4",
       "leftPos" : 910,
