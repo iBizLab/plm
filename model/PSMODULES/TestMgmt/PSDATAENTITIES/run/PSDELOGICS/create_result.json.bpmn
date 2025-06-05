@@ -26,13 +26,13 @@
                                 <tns:metaData express="new HashMap()" name="runcreate_resultwork_item_type_page" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item_type()" name="runcreate_resultwork_item_type_temp" type="refentity"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IrunService))" name="runservice" type="service"/>
-                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Itest_caseService))" name="test_caseservice" type="service"/>
-                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Irun_historyService))" name="run_historyservice" type="service"/>
-                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Itest_planService))" name="test_planservice" type="service"/>
-                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IparameterService))" name="parameterservice" type="service"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IrelationService))" name="relationservice" type="service"/>
-                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_item_typeService))" name="work_item_typeservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Itest_caseService))" name="test_caseservice" type="service"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="work_itemservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Itest_planService))" name="test_planservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Irun_historyService))" name="run_historyservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IparameterService))" name="parameterservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_item_typeService))" name="work_item_typeservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IrunService))" name="iBzSysRunDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="runcreate_resultdefault" type="cn.ibizlab.plm.core.testmgmt.domain.run" />
@@ -54,32 +54,32 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置执行人相关信息"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="执行结果数据准备"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction7" id="deaction7" implementation="http://www.jboss.org/drools/rule" name="更新执行用例"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction9" id="deaction9" implementation="http://www.jboss.org/drools/rule" name="获取测试用例"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam10" id="prepareparam10" implementation="http://www.jboss.org/drools/rule" name="绑定用例附件"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam12" id="prepareparam12" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultloopsubcall2" id="loopsubcall2" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction6" id="deaction6" implementation="http://www.jboss.org/drools/rule" name="创建执行结果"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="执行用例数据准备"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="获取测试计划"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdedataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam13" id="prepareparam13" implementation="http://www.jboss.org/drools/rule" name="准备系统参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultend2" id="end2" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end2_end" name="end"/>
                         <sequenceFlow id="end2_end_line" sourceRef="end2" targetRef="end2_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction7" id="deaction7" implementation="http://www.jboss.org/drools/rule" name="更新执行用例"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="执行用例数据准备"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction8" id="deaction8" implementation="http://www.jboss.org/drools/rule" name="反向关联"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="拼接描述字段"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="工作项类型数据集"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultloopsubcall3" id="loopsubcall3" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction5" id="deaction5" implementation="http://www.jboss.org/drools/rule" name="正向关联"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam9" id="prepareparam9" implementation="http://www.jboss.org/drools/rule" name="准备关联数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction9" id="deaction9" implementation="http://www.jboss.org/drools/rule" name="获取测试用例"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction4" id="deaction4" implementation="http://www.jboss.org/drools/rule" name="创建工作项"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam10" id="prepareparam10" implementation="http://www.jboss.org/drools/rule" name="绑定用例附件"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam12" id="prepareparam12" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="获取测试计划"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="拼接描述字段"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultloopsubcall2" id="loopsubcall2" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam11" id="prepareparam11" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <endEvent id="prepareparam11_end" name="end"/>
                         <sequenceFlow id="prepareparam11_end_line" sourceRef="prepareparam11" targetRef="prepareparam11_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdeaction6" id="deaction6" implementation="http://www.jboss.org/drools/rule" name="创建执行结果"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdedataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam13" id="prepareparam13" implementation="http://www.jboss.org/drools/rule" name="准备系统参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="工作项类型数据集"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultloopsubcall3" id="loopsubcall3" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runcreate_resultprepareparam8" id="prepareparam8" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <endEvent id="prepareparam8_end" name="end"/>
                         <sequenceFlow id="prepareparam8_end_line" sourceRef="prepareparam8" targetRef="prepareparam8_end"/>
@@ -249,21 +249,23 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
+                    <sequenceFlow id="prepareparam6_prepareparam13" sourceRef="prepareparam6" targetRef="prepareparam13">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction8_end2" sourceRef="deaction8" targetRef="end2">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction5_deaction8" sourceRef="deaction5" targetRef="deaction8">
+                    </sequenceFlow>
                     <sequenceFlow id="prepareparam4_deaction9" sourceRef="prepareparam4" targetRef="deaction9">
                     </sequenceFlow>
+                    <sequenceFlow id="prepareparam9_deaction5" sourceRef="prepareparam9" targetRef="deaction5">
+                    </sequenceFlow>
                     <sequenceFlow id="deaction9_prepareparam10" sourceRef="deaction9" targetRef="prepareparam10">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction4_prepareparam9" sourceRef="deaction4" targetRef="prepareparam9">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam10_loopsubcall2" sourceRef="prepareparam10" targetRef="loopsubcall2">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam12_deaction3" sourceRef="prepareparam12" targetRef="deaction3">
-                    </sequenceFlow>
-                    <sequenceFlow id="loopsubcall2_prepareparam11" sourceRef="loopsubcall2" targetRef="prepareparam11">
-                    </sequenceFlow>
-                    <sequenceFlow id="loopsubcall2_prepareparam12" sourceRef="loopsubcall2" targetRef="prepareparam12">
-                    </sequenceFlow>
-                    <sequenceFlow id="deaction6_prepareparam6" sourceRef="deaction6" targetRef="prepareparam6">
-                    </sequenceFlow>
-                    <sequenceFlow id="prepareparam6_prepareparam13" sourceRef="prepareparam6" targetRef="prepareparam13">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-deaction3_prepareparam7" sourceRef="gateway-deaction3" targetRef="prepareparam7">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
@@ -319,29 +321,52 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_deaction4" sourceRef="rawsfcode1" targetRef="deaction4">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall2_prepareparam11" sourceRef="loopsubcall2" targetRef="prepareparam11">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall2_prepareparam12" sourceRef="loopsubcall2" targetRef="prepareparam12">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction6_prepareparam6" sourceRef="deaction6" targetRef="prepareparam6">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam7_dedataset1" sourceRef="prepareparam7" targetRef="dedataset1">
+                    </sequenceFlow>
                     <sequenceFlow id="dedataset2_loopsubcall3" sourceRef="dedataset2" targetRef="loopsubcall3">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam13_dedataset2" sourceRef="prepareparam13" targetRef="dedataset2">
-                    </sequenceFlow>
-                    <sequenceFlow id="deaction8_end2" sourceRef="deaction8" targetRef="end2">
-                    </sequenceFlow>
-                    <sequenceFlow id="rawsfcode1_deaction4" sourceRef="rawsfcode1" targetRef="deaction4">
-                    </sequenceFlow>
-                    <sequenceFlow id="prepareparam7_dedataset1" sourceRef="prepareparam7" targetRef="dedataset1">
                     </sequenceFlow>
                     <sequenceFlow id="dedataset1_loopsubcall1" sourceRef="dedataset1" targetRef="loopsubcall1">
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall3_deaction7" sourceRef="loopsubcall3" targetRef="deaction7">
                     </sequenceFlow>
-                    <sequenceFlow id="deaction5_deaction8" sourceRef="deaction5" targetRef="deaction8">
-                    </sequenceFlow>
-                    <sequenceFlow id="prepareparam9_deaction5" sourceRef="prepareparam9" targetRef="deaction5">
-                    </sequenceFlow>
-                    <sequenceFlow id="deaction4_prepareparam9" sourceRef="deaction4" targetRef="prepareparam9">
-                    </sequenceFlow>
                     <sequenceFlow id="loopsubcall1_rawsfcode1" sourceRef="loopsubcall1" targetRef="rawsfcode1">
                     </sequenceFlow>
-                    <sequenceFlow id="loopsubcall1_prepareparam8" sourceRef="loopsubcall1" targetRef="prepareparam8">
+                    <sequenceFlow id="gateway-loopsubcall1_prepareparam8" sourceRef="gateway-loopsubcall1" targetRef="prepareparam8">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $runcreate_resultdefault:run();
+                                            $runcreate_resultattachment_temp:Map();
+                                            $runcreate_resultattachments:Map();
+                                            $runcreate_resultid:Map();
+                                            $runcreate_resultids:Map();
+                                            $runcreate_resultparameter:parameter();
+                                            $runcreate_resultparameter_filter:parameter();
+                                            $runcreate_resultparameter_page:parameter();
+                                            $runcreate_resultrelation:relation();
+                                            $runcreate_resultrelation2:relation();
+                                            $runcreate_resultrun_history:run_history();
+                                            $runcreate_resultsteps:run_history();
+                                            $runcreate_resulttemp_obj:run();
+                                            $runcreate_resulttest_case:test_case();
+                                            $runcreate_resulttest_plan:test_plan();
+                                            $runcreate_resultwork_item:work_item();
+                                            $runcreate_resultwork_item_type:work_item_type();
+                                            $runcreate_resultwork_item_type_filter:Map();
+                                            $runcreate_resultwork_item_type_page:Map();
+                                            $runcreate_resultwork_item_type_temp:work_item_type();
+                                    eval($runcreate_resultdefault==runcreate_resultdefault && $runcreate_resultparameter==runcreate_resultparameter && $runcreate_resultparameter_filter==runcreate_resultparameter_filter && $runcreate_resultparameter_page==runcreate_resultparameter_page && $runcreate_resultrelation==runcreate_resultrelation && $runcreate_resultrelation2==runcreate_resultrelation2 && $runcreate_resultrun_history==runcreate_resultrun_history && $runcreate_resultsteps==runcreate_resultsteps && $runcreate_resulttemp_obj==runcreate_resulttemp_obj && $runcreate_resulttest_case==runcreate_resulttest_case && $runcreate_resulttest_plan==runcreate_resulttest_plan && $runcreate_resultwork_item==runcreate_resultwork_item && $runcreate_resultwork_item_type==runcreate_resultwork_item_type && $runcreate_resultwork_item_type_temp==runcreate_resultwork_item_type_temp);
+                                eval((RuleUtils.test($runcreate_resultwork_item_type_temp.get("orginState"),"EQ","bug")))
+                                ]]>
+                            </conditionExpression>
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-debugparam2" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam2_end_line"></exclusiveGateway>
                             <sequenceFlow id="debugparam2_gateway-debugparam2_gatewayline" sourceRef="debugparam2" targetRef="gateway-debugparam2"></sequenceFlow>
@@ -359,5 +384,9 @@
                             <sequenceFlow id="deaction3_gateway-deaction3_gatewayline" sourceRef="deaction3" targetRef="gateway-deaction3"></sequenceFlow>
                             <sequenceFlow id="gateway-deaction3_end_line" sourceRef="gateway-deaction3" targetRef="gateway-deaction3_end"/>
                             <endEvent id="gateway-deaction3_end" name="end"/>
+                            <exclusiveGateway id="gateway-loopsubcall1" name="Gateway" gatewayDirection="Diverging" default="gateway-loopsubcall1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="loopsubcall1_gateway-loopsubcall1_gatewayline" sourceRef="loopsubcall1" targetRef="gateway-loopsubcall1"></sequenceFlow>
+                            <sequenceFlow id="gateway-loopsubcall1_end_line" sourceRef="gateway-loopsubcall1" targetRef="gateway-loopsubcall1_end"/>
+                            <endEvent id="gateway-loopsubcall1_end" name="end"/>
         </process>
     </definitions>
