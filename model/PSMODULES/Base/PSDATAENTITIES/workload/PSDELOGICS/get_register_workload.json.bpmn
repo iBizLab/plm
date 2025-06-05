@@ -14,8 +14,8 @@
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadget_register_workloaddebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadget_register_workloaddeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取工时明细"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadget_register_workloaddebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadget_register_workloadrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="获取已登记工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadget_register_workloadrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="获取已登记实际工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadget_register_workloadrawsqlcall4" id="rawsqlcall4" implementation="http://www.jboss.org/drools/rule" name="获取已登记预估工时"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadget_register_workloadrawsqlcall2" id="rawsqlcall2" implementation="http://www.jboss.org/drools/rule" name="获取剩余工时"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadget_register_workloadrawsqlcall3" id="rawsqlcall3" implementation="http://www.jboss.org/drools/rule" name="获取预估工时"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadget_register_workloadrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="计算进度"/>
@@ -26,11 +26,11 @@
                     </sequenceFlow>
                     <sequenceFlow id="debugparam1_deaction1" sourceRef="debugparam1" targetRef="deaction1">
                     </sequenceFlow>
-                    <sequenceFlow id="deaction1_debugparam2" sourceRef="deaction1" targetRef="debugparam2">
+                    <sequenceFlow id="deaction1_rawsqlcall1" sourceRef="deaction1" targetRef="rawsqlcall1">
                     </sequenceFlow>
-                    <sequenceFlow id="debugparam2_rawsqlcall1" sourceRef="debugparam2" targetRef="rawsqlcall1">
+                    <sequenceFlow id="rawsqlcall1_rawsqlcall4" sourceRef="rawsqlcall1" targetRef="rawsqlcall4">
                     </sequenceFlow>
-                    <sequenceFlow id="rawsqlcall1_rawsqlcall2" sourceRef="rawsqlcall1" targetRef="rawsqlcall2">
+                    <sequenceFlow id="rawsqlcall4_rawsqlcall2" sourceRef="rawsqlcall4" targetRef="rawsqlcall2">
                     </sequenceFlow>
                     <sequenceFlow id="rawsqlcall2_rawsqlcall3" sourceRef="rawsqlcall2" targetRef="rawsqlcall3">
                     </sequenceFlow>

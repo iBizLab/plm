@@ -6467,7 +6467,7 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM2"
+          "id" : "RAWSQLCALL1"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -6481,27 +6481,6 @@
       },
       "topPos" : 168
     }, {
-      "codeName" : "DEBUGPARAM2",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : -76,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSQLCALL1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM2"
-        }
-      } ],
-      "topPos" : 228
-    }, {
       "codeName" : "RAWSQLCALL1",
       "getDstPSDELogicParam" : {
         "modelref" : true,
@@ -6509,11 +6488,11 @@
       },
       "leftPos" : 160,
       "logicNodeType" : "RAWSQLCALL",
-      "name" : "获取已登记工时",
+      "name" : "获取已登记实际工时",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "RAWSQLCALL2"
+          "id" : "RAWSQLCALL4"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -6539,19 +6518,47 @@
           "id" : "Default"
         },
         "srcValueType" : "SRCDLPARAM"
-      }, {
-        "name" : "Default[CATEGORY]",
+      } ],
+      "sql" : "select sum(DURATION) as `ACTUAL_WORKLOAD` from workload where  PRINCIPAL_TYPE = ? and PRINCIPAL_ID = ? and CATEGORY = 'ACTUAL_WORKLOAD'",
+      "topPos" : 322,
+      "fillDstLogicParam" : true
+    }, {
+      "codeName" : "RAWSQLCALL4",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "获取已登记预估工时",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL4"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "name" : "Default[PRINCIPAL_TYPE]",
         "paramAction" : "SQLPARAM",
-        "srcFieldName" : "CATEGORY",
+        "srcFieldName" : "PRINCIPAL_TYPE",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "name" : "Default[PRINCIPAL_ID]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "PRINCIPAL_ID",
         "getSrcPSDELogicParam" : {
           "modelref" : true,
           "id" : "Default"
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "sql" : "select sum(DURATION) as `ACTUAL_WORKLOAD` from workload where  PRINCIPAL_TYPE = ? and PRINCIPAL_ID = ? and CATEGORY = ?",
-      "topPos" : 322,
-      "fillDstLogicParam" : true
+      "sql" : "select sum(DURATION) as `ESTIMATED_WORKLOAD` from workload where  PRINCIPAL_TYPE = ? and PRINCIPAL_ID = ? and CATEGORY = 'ESTIMATED_WORKLOAD'",
+      "topPos" : 430
     }, {
       "codeName" : "RAWSQLCALL2",
       "getDstPSDELogicParam" : {
@@ -6592,7 +6599,7 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "sql" : "select DECIMAL_VALUE as `REMAINING_WORKLOAD` from `extend_storage` where  OWNER_ID = ? and OWNER_TYPE = ? and `NAME` = 'REMAINING_WORKLOAD'",
-      "topPos" : 430,
+      "topPos" : 530,
       "fillDstLogicParam" : true
     }, {
       "codeName" : "RAWSQLCALL3",
@@ -6634,10 +6641,10 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "sql" : "select DECIMAL_VALUE as `ESTIMATED_WORKLOAD` from `extend_storage` where  OWNER_ID = ? and OWNER_TYPE = ? and `NAME` = 'ESTIMATED_WORKLOAD'",
-      "topPos" : 535,
+      "topPos" : 640,
       "fillDstLogicParam" : true
     }, {
-      "code" : "var defaultObj = logic.getParam(\"default\");\r\nvar remaining_workload = defaultObj.get(\"remaining_workload\") == null ? 0 : Number(defaultObj.get(\"remaining_workload\"));\r\nvar actual_workload = defaultObj.get(\"actual_workload\") == null ? 0 : Number(defaultObj.get(\"actual_workload\"));\r\nvar estimated_workload = defaultObj.get(\"estimated_workload\") == null ? 0 : Number(defaultObj.get(\"estimated_workload\"));\r\nvar duration = defaultObj.get(\"duration\") == null ? 0 : Number(defaultObj.get(\"duration\"));\r\nvar actual = actual_workload - duration;\r\nif(actual <= 0){\r\n    defaultObj.set(\"actual_workload\", null);\r\n} else {\r\n    defaultObj.set(\"actual_workload\", actual);\r\n}\r\n// 计算工时进度\r\nif((actual_workload + remaining_workload) != 0){\r\n    var schedule = ((actual_workload / (actual_workload + remaining_workload)) * 100).toFixed(1);\r\n    defaultObj.set(\"workload_schedule\", schedule);\r\n}\r\nvar principal_type = defaultObj.get(\"principal_type\");\r\nif(principal_type == 'WORK_ITEM'){\r\n    defaultObj.set(\"workload_kind\", \"工作项\");\r\n}\r\nif(principal_type == 'IDEA'){\r\n    defaultObj.set(\"workload_kind\", \"产品需求\");\r\n}\r\nif(principal_type == 'TEST_CASE'){\r\n    defaultObj.set(\"workload_kind\", \"测试用例\");\r\n}\r\n",
+      "code" : "var defaultObj = logic.getParam(\"default\");\r\nvar remaining_workload = defaultObj.get(\"remaining_workload\") == null ? 0 : Number(defaultObj.get(\"remaining_workload\"));\r\nvar actual_workload = defaultObj.get(\"actual_workload\") == null ? 0 : Number(defaultObj.get(\"actual_workload\"));\r\nvar estimated_workload = defaultObj.get(\"estimated_workload\") == null ? 0 : Number(defaultObj.get(\"estimated_workload\"));\r\nconsole.log('测试数据1');\r\nvar duration = defaultObj.get(\"duration\") == null ? 0 : Number(defaultObj.get(\"duration\"));\r\nvar actual = actual_workload - duration;\r\nif(actual <= 0){\r\n    defaultObj.set(\"actual_workload\", null);\r\n} else {\r\n    defaultObj.set(\"actual_workload\", actual);\r\n}\r\nconsole.log('测试数据2');\r\n// 计算工时进度\r\nif((actual_workload + remaining_workload) != 0){\r\n    var schedule = ((actual_workload / (actual_workload + remaining_workload)) * 100).toFixed(1);\r\n    defaultObj.set(\"workload_schedule\", schedule);\r\n}\r\nconsole.log('测试数据3');\r\nvar principal_type = defaultObj.get(\"principal_type\");\r\nif(principal_type == 'WORK_ITEM'){\r\n    defaultObj.set(\"workload_kind\", \"工作项\");\r\n}\r\nif(principal_type == 'IDEA'){\r\n    defaultObj.set(\"workload_kind\", \"产品需求\");\r\n}\r\nif(principal_type == 'TEST_CASE'){\r\n    defaultObj.set(\"workload_kind\", \"测试用例\");\r\n}\r\n",
       "codeName" : "RAWSFCODE1",
       "leftPos" : 160,
       "logicNodeType" : "RAWSFCODE",
@@ -6653,7 +6660,7 @@
           "id" : "RAWSFCODE1"
         }
       } ],
-      "topPos" : 630
+      "topPos" : 770
     }, {
       "codeName" : "END1",
       "leftPos" : 200,
@@ -6664,7 +6671,7 @@
         "id" : "Default"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : 740
+      "topPos" : 910
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",
