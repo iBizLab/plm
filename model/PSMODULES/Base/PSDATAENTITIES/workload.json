@@ -5368,81 +5368,6 @@
       "topPos" : 150,
       "fillDstLogicParam" : true
     }, {
-      "codeName" : "DEDATASET2",
-      "getDstPSDEDataSet" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "filter"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage.json"
-      },
-      "leftPos" : 1090,
-      "logicNodeType" : "DEDATASET",
-      "name" : "获取剩余工时",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "BINDPARAM2"
-        },
-        "name" : "存在剩余工时",
-        "getPSDELogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "name" : "连接条件组",
-          "getPSDELogicLinkConds" : [ {
-            "condOP" : "GT",
-            "dstFieldName" : "size",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "remaining_page"
-            },
-            "logicType" : "SINGLE",
-            "name" : "remaining_page[size] 大于(>) 0",
-            "paramValue" : "0"
-          } ]
-        },
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEDATASET2"
-        }
-      }, {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSFCODE1"
-        },
-        "name" : "不存在剩余工时",
-        "getPSDELogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "name" : "连接条件组",
-          "getPSDELogicLinkConds" : [ {
-            "condOP" : "EQ",
-            "dstFieldName" : "size",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "remaining_page"
-            },
-            "logicType" : "SINGLE",
-            "name" : "remaining_page[size] 等于(=) 0",
-            "paramValue" : "0"
-          } ]
-        },
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEDATASET2"
-        }
-      } ],
-      "getRetPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "remaining_page"
-      },
-      "topPos" : 70
-    }, {
       "codeName" : "PREPAREPARAM7",
       "leftPos" : 490,
       "logicNodeType" : "PREPAREPARAM",
@@ -5917,6 +5842,77 @@
       },
       "topPos" : 360
     }, {
+      "codeName" : "DEACTION2",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage/PSDEACTIONS/Save.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "remaining"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage.json"
+      },
+      "leftPos" : 1400,
+      "logicNodeType" : "DEACTION",
+      "name" : "更新剩余工时",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM3"
+        },
+        "name" : "实际登记工时为0是置为NULL",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "DECIMAL_VALUE",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "common_workload"
+            },
+            "logicType" : "SINGLE",
+            "name" : "common_workload 等于(=) 0",
+            "paramValue" : "0"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION2"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION3"
+        },
+        "name" : "实际登记工时不等于0",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "NOTEQ",
+            "dstFieldName" : "DECIMAL_VALUE",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "common_workload"
+            },
+            "logicType" : "SINGLE",
+            "name" : "common_workload 不等于(<>) 0",
+            "paramValue" : "0"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION2"
+        }
+      } ],
+      "topPos" : 360
+    }, {
       "codeName" : "BINDPARAM3",
       "getDstPSDELogicParam" : {
         "modelref" : true,
@@ -6049,103 +6045,6 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 610
-    }, {
-      "codeName" : "BINDPARAM2",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "remaining"
-      },
-      "leftPos" : 1350,
-      "logicNodeType" : "BINDPARAM",
-      "name" : "绑定剩余工时",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSFCODE1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "BINDPARAM2"
-        }
-      } ],
-      "srcFieldName" : "0",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "remaining_page"
-      },
-      "topPos" : -38
-    }, {
-      "codeName" : "DEACTION2",
-      "getDstPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage/PSDEACTIONS/Save.json"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "remaining"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage.json"
-      },
-      "leftPos" : 1400,
-      "logicNodeType" : "DEACTION",
-      "name" : "更新剩余工时",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM3"
-        },
-        "name" : "实际登记工时为0是置为NULL",
-        "getPSDELogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "name" : "连接条件组",
-          "getPSDELogicLinkConds" : [ {
-            "condOP" : "EQ",
-            "dstFieldName" : "DECIMAL_VALUE",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "common_workload"
-            },
-            "logicType" : "SINGLE",
-            "name" : "common_workload 等于(=) 0",
-            "paramValue" : "0"
-          } ]
-        },
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION2"
-        }
-      }, {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION3"
-        },
-        "name" : "实际登记工时不等于0",
-        "getPSDELogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "name" : "连接条件组",
-          "getPSDELogicLinkConds" : [ {
-            "condOP" : "NOTEQ",
-            "dstFieldName" : "DECIMAL_VALUE",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "common_workload"
-            },
-            "logicType" : "SINGLE",
-            "name" : "common_workload 不等于(<>) 0",
-            "paramValue" : "0"
-          } ]
-        },
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION2"
-        }
-      } ],
-      "topPos" : 360
     }, {
       "codeName" : "DELOGIC1",
       "getDstPSDELogic" : {
