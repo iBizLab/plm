@@ -13,7 +13,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM1"
+        "id" : "DEACTION1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -23,27 +23,6 @@
     } ],
     "topPos" : 22,
     "parallelOutput" : true
-  }, {
-    "codeName" : "DEBUGPARAM1",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "leftPos" : 303,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "调试逻辑参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEACTION1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM1"
-      }
-    } ],
-    "topPos" : 30
   }, {
     "codeName" : "DEACTION1",
     "getDstPSDEAction" : {
@@ -64,7 +43,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "RAWSQLCALL2"
+        "id" : "DEBUGPARAM1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -178,6 +157,27 @@
       "id" : "workload_page"
     },
     "topPos" : 80
+  }, {
+    "codeName" : "DEBUGPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 210,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "调试逻辑参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM1"
+      }
+    } ],
+    "topPos" : 140
   }, {
     "codeName" : "RAWSQLCALL2",
     "getDstPSDELogicParam" : {
@@ -521,6 +521,32 @@
     } ],
     "topPos" : 256
   }, {
+    "codeName" : "BINDPARAM2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "remaining"
+    },
+    "leftPos" : 1350,
+    "logicNodeType" : "BINDPARAM",
+    "name" : "绑定剩余工时",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM2"
+      }
+    } ],
+    "srcFieldName" : "0",
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "remaining_page"
+    },
+    "topPos" : -38
+  }, {
     "code" : "var defaultObj = logic.getParam(\"default\");\r\nvar remainingObj = logic.getParam(\"remaining\"); // 剩余工时对象\r\nvar estimatedObj = logic.getParam(\"estimated\"); // 预估工时对象\r\nvar commonWorkloadObj = logic.getParam(\"common_workload\"); // 通用工时对象\r\nvar actualObj = logic.getParam(\"actual\"); // 实际工时对象\r\n\r\nvar total_register = logic.getParam(\"total_register\"); // 总登记时长\r\nif (defaultObj.category == 'ACTUAL_WORKLOAD') {\r\n    var actual_workload = total_register.get(\"duration\") == null ? 0 : Number(total_register.get(\"duration\"));\r\n    var estimated_workload = estimatedObj.get(\"decimal_value\") == null ? 0 : Number(estimatedObj.get(\"decimal_value\"));\r\n    var duration = defaultObj.get(\"duration\") == null ? 0 : Number(defaultObj.get(\"duration\"));\r\n    sys.info(\"查询预估工时=\", estimated_workload);\r\n    sys.info(\"查询总登记实际工时=\", actual_workload);\r\n    // 重新计算剩余工时\r\n    var remaining = estimated_workload - (actual_workload - duration);\r\n    if(remaining < 0){\r\n        remaining = 0;\r\n    }\r\n    remainingObj.set(\"decimal_value\", remaining);\r\n    // 计算实际工时\r\n    var actual = (actual_workload - duration) <= 0 ? 0 : actual_workload - duration;\r\n    commonWorkloadObj.set(\"decimal_value\", actual);\r\n} else {\r\n    var estimated_workload = total_register.get(\"duration\") == null ? 0 : Number(total_register.get(\"duration\"));\r\n    var actual_workload = actualObj.get(\"decimal_value\") == null ? 0 : Number(estimatedObj.get(\"decimal_value\"));\r\n    var duration = defaultObj.get(\"duration\") == null ? 0 : Number(defaultObj.get(\"duration\"));\r\n    sys.info(\"查询实际工时=\", actual_workload);\r\n    sys.info(\"查询总登记预估工时=\", estimated_workload);\r\n    // 重新计算剩余工时\r\n    var remaining = estimated_workload - (estimated_workload - duration - actual_workload);\r\n    if(remaining < 0){\r\n        remaining = 0;\r\n    }\r\n    remainingObj.set(\"decimal_value\", remaining);\r\n    // 计算预估工时\r\n    var estimated = (estimated_workload - duration) <= 0 ? 0 : estimated_workload - duration;\r\n    commonWorkloadObj.set(\"decimal_value\", estimated);\r\n}\r\n\r\n",
     "codeName" : "RAWSFCODE1",
     "codeType" : "JavaScript",
@@ -842,32 +868,6 @@
     "logicNodeType" : "DELOGIC",
     "name" : "自动计算父工时",
     "topPos" : 730
-  }, {
-    "codeName" : "BINDPARAM2",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "remaining"
-    },
-    "leftPos" : 1350,
-    "logicNodeType" : "BINDPARAM",
-    "name" : "绑定剩余工时",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "BINDPARAM2"
-      }
-    } ],
-    "srcFieldName" : "0",
-    "getSrcPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "remaining_page"
-    },
-    "topPos" : -38
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",
