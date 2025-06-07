@@ -242,13 +242,15 @@
       "id" : "FORM"
     },
     "getPSDEFormItemUpdates" : [ {
-      "codeName" : "calc_parent_work_item_type",
-      "name" : "计算父工作项类型",
+      "codeName" : "set_default_entry",
+      "name" : "选择看板后填充默认看板栏",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "set_default_entry"
+      },
       "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_name"
-      } ],
-      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-      "customCode" : true
+        "name" : "entry_id"
+      } ]
     }, {
       "codeName" : "set_type_bug",
       "name" : "设置缺陷类型",
@@ -264,15 +266,13 @@
         "name" : "work_item_type_id"
       } ]
     }, {
-      "codeName" : "set_default_entry",
-      "name" : "选择看板后填充默认看板栏",
-      "getPSAppDEMethod" : {
-        "modelref" : true,
-        "id" : "set_default_entry"
-      },
+      "codeName" : "calc_parent_work_item_type",
+      "name" : "计算父工作项类型",
       "getPSDEFIUpdateDetails" : [ {
-        "name" : "entry_id"
-      } ]
+        "name" : "work_item_type_name"
+      } ],
+      "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+      "customCode" : true
     } ],
     "getPSDEFormItemVRs" : [ {
       "checkMode" : 1,

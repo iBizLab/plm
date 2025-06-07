@@ -436,13 +436,15 @@
         "id" : "FORM"
       },
       "getPSDEFormItemUpdates" : [ {
-        "codeName" : "calc_parent_work_item_type",
-        "name" : "计算父工作项类型",
+        "codeName" : "set_default_entry",
+        "name" : "选择看板后填充默认看板栏",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "set_default_entry"
+        },
         "getPSDEFIUpdateDetails" : [ {
-          "name" : "work_item_type_name"
-        } ],
-        "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-        "customCode" : true
+          "name" : "entry_id"
+        } ]
       }, {
         "codeName" : "set_type_bug",
         "name" : "设置缺陷类型",
@@ -458,15 +460,13 @@
           "name" : "work_item_type_id"
         } ]
       }, {
-        "codeName" : "set_default_entry",
-        "name" : "选择看板后填充默认看板栏",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "set_default_entry"
-        },
+        "codeName" : "calc_parent_work_item_type",
+        "name" : "计算父工作项类型",
         "getPSDEFIUpdateDetails" : [ {
-          "name" : "entry_id"
-        } ]
+          "name" : "work_item_type_name"
+        } ],
+        "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+        "customCode" : true
       } ],
       "getPSDEFormItemVRs" : [ {
         "checkMode" : 1,
@@ -3895,6 +3895,12 @@
         "createDVT" : "APPDATA",
         "createDV" : "need_fill_form"
       }, {
+        "id" : "dynamicnew",
+        "hidden" : true,
+        "dataType" : 25,
+        "createDVT" : "APPDATA",
+        "createDV" : "dynamicnew"
+      }, {
         "id" : "project_name",
         "dataType" : 25,
         "getPSAppDEField" : {
@@ -5020,6 +5026,31 @@
             },
             "allowEmpty" : true,
             "hidden" : true
+          }, {
+            "caption" : "动态新建",
+            "codeName" : "dynamicnew",
+            "createDV" : "dynamicnew",
+            "createDVT" : "APPDATA",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "TOP",
+            "labelWidth" : 130,
+            "name" : "dynamicnew",
+            "noPrivDisplayMode" : 1,
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "dynamicnew"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 6,
+              "colMD" : 6,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "hidden" : true
           } ],
           "getPSLayout" : {
             "childColMD" : 24,
@@ -5061,11 +5092,20 @@
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
               "getPSDEFDLogics" : [ {
-                "condOP" : "ISNOTNULL",
-                "dEFDName" : "need_fill_form",
-                "logicType" : "SINGLE"
+                "groupOP" : "OR",
+                "logicType" : "GROUP",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "ISNULL",
+                  "dEFDName" : "checkid",
+                  "logicType" : "SINGLE"
+                }, {
+                  "condOP" : "ISNOTNULL",
+                  "dEFDName" : "dynamic_new",
+                  "logicType" : "SINGLE"
+                } ],
+                "notMode" : false
               } ],
-              "relatedDetailNames" : [ "need_fill_form" ],
+              "relatedDetailNames" : [ "checkid", "dynamic_new" ],
               "notMode" : false
             }, {
               "groupOP" : "AND",
@@ -5209,6 +5249,8 @@
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
+            "resetItemName" : "project_name",
+            "resetItemNames" : [ "project_name" ],
             "valueItemName" : "work_item_type_id",
             "allowEmpty" : false,
             "showCaption" : true
@@ -6244,14 +6286,6 @@
         "id" : "_FORM_WATERFALL_STAGE"
       },
       "getPSDEFormItemUpdates" : [ {
-        "codeName" : "calc_parent_work_item_type",
-        "name" : "计算父工作项类型",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "work_item_type_name"
-        } ],
-        "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-        "customCode" : true
-      }, {
         "codeName" : "set_type_bug",
         "name" : "设置缺陷类型",
         "getPSAppDEMethod" : {
@@ -6259,12 +6293,20 @@
           "id" : "set_type_bug"
         },
         "getPSDEFIUpdateDetails" : [ {
+          "name" : "project_type"
+        }, {
           "name" : "work_item_type_id"
         }, {
           "name" : "work_item_type_name"
-        }, {
-          "name" : "project_type"
         } ]
+      }, {
+        "codeName" : "calc_parent_work_item_type",
+        "name" : "计算父工作项类型",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "work_item_type_name"
+        } ],
+        "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+        "customCode" : true
       } ],
       "getPSDEFormItemVRs" : [ {
         "checkMode" : 1,
@@ -6525,6 +6567,12 @@
         "dataType" : 25,
         "createDVT" : "APPDATA",
         "createDV" : "need_fill_form"
+      }, {
+        "id" : "dynamicnew",
+        "hidden" : true,
+        "dataType" : 25,
+        "createDVT" : "APPDATA",
+        "createDV" : "dynamicnew"
       }, {
         "id" : "project_name",
         "dataType" : 25,
@@ -7630,6 +7678,31 @@
             },
             "allowEmpty" : true,
             "hidden" : true
+          }, {
+            "caption" : "动态新建",
+            "codeName" : "dynamicnew",
+            "createDV" : "dynamicnew",
+            "createDVT" : "APPDATA",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "TOP",
+            "labelWidth" : 130,
+            "name" : "dynamicnew",
+            "noPrivDisplayMode" : 1,
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "dynamicnew"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 6,
+              "colMD" : 6,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "hidden" : true
           } ],
           "getPSLayout" : {
             "childColMD" : 24,
@@ -7671,11 +7744,20 @@
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
               "getPSDEFDLogics" : [ {
-                "condOP" : "ISNOTNULL",
-                "dEFDName" : "need_fill_form",
-                "logicType" : "SINGLE"
+                "groupOP" : "OR",
+                "logicType" : "GROUP",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "ISNULL",
+                  "dEFDName" : "checkid",
+                  "logicType" : "SINGLE"
+                }, {
+                  "condOP" : "ISNOTNULL",
+                  "dEFDName" : "dynamic_new",
+                  "logicType" : "SINGLE"
+                } ],
+                "notMode" : false
               } ],
-              "relatedDetailNames" : [ "need_fill_form" ],
+              "relatedDetailNames" : [ "checkid", "dynamic_new" ],
               "notMode" : false
             }, {
               "groupOP" : "AND",
@@ -7819,6 +7901,8 @@
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
+            "resetItemName" : "project_name",
+            "resetItemNames" : [ "project_name" ],
             "valueItemName" : "work_item_type_id",
             "allowEmpty" : false,
             "showCaption" : true
@@ -8527,6 +8611,14 @@
         "id" : "_FORM_WATERFALL_REQUIREMENT"
       },
       "getPSDEFormItemUpdates" : [ {
+        "codeName" : "calc_parent_work_item_type",
+        "name" : "计算父工作项类型",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "work_item_type_name"
+        } ],
+        "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+        "customCode" : true
+      }, {
         "codeName" : "set_type_bug",
         "name" : "设置缺陷类型",
         "getPSAppDEMethod" : {
@@ -8540,14 +8632,6 @@
         }, {
           "name" : "project_type"
         } ]
-      }, {
-        "codeName" : "calc_parent_work_item_type",
-        "name" : "计算父工作项类型",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "work_item_type_name"
-        } ],
-        "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-        "customCode" : true
       } ],
       "getPSDEFormItemVRs" : [ {
         "checkMode" : 1,
@@ -8808,6 +8892,12 @@
         "dataType" : 25,
         "createDVT" : "APPDATA",
         "createDV" : "need_fill_form"
+      }, {
+        "id" : "dynamicnew",
+        "hidden" : true,
+        "dataType" : 25,
+        "createDVT" : "APPDATA",
+        "createDV" : "dynamicnew"
       }, {
         "id" : "project_name",
         "dataType" : 25,
@@ -9934,6 +10024,31 @@
             },
             "allowEmpty" : true,
             "hidden" : true
+          }, {
+            "caption" : "动态新建",
+            "codeName" : "dynamicnew",
+            "createDV" : "dynamicnew",
+            "createDVT" : "APPDATA",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "TOP",
+            "labelWidth" : 130,
+            "name" : "dynamicnew",
+            "noPrivDisplayMode" : 1,
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "dynamicnew"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 6,
+              "colMD" : 6,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "hidden" : true
           } ],
           "getPSLayout" : {
             "childColMD" : 24,
@@ -9975,11 +10090,20 @@
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
               "getPSDEFDLogics" : [ {
-                "condOP" : "ISNOTNULL",
-                "dEFDName" : "need_fill_form",
-                "logicType" : "SINGLE"
+                "groupOP" : "OR",
+                "logicType" : "GROUP",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "ISNULL",
+                  "dEFDName" : "checkid",
+                  "logicType" : "SINGLE"
+                }, {
+                  "condOP" : "ISNOTNULL",
+                  "dEFDName" : "dynamic_new",
+                  "logicType" : "SINGLE"
+                } ],
+                "notMode" : false
               } ],
-              "relatedDetailNames" : [ "need_fill_form" ],
+              "relatedDetailNames" : [ "checkid", "dynamic_new" ],
               "notMode" : false
             }, {
               "groupOP" : "AND",
@@ -10123,6 +10247,8 @@
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
+            "resetItemName" : "project_name",
+            "resetItemNames" : [ "project_name" ],
             "valueItemName" : "work_item_type_id",
             "allowEmpty" : false,
             "showCaption" : true
@@ -10930,20 +11056,6 @@
         "id" : "_FORM_WATERFALL_MILESTONE"
       },
       "getPSDEFormItemUpdates" : [ {
-        "codeName" : "set_type_bug",
-        "name" : "设置缺陷类型",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "set_type_bug"
-        },
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "work_item_type_name"
-        }, {
-          "name" : "work_item_type_id"
-        }, {
-          "name" : "project_type"
-        } ]
-      }, {
         "codeName" : "calc_parent_work_item_type",
         "name" : "计算父工作项类型",
         "getPSDEFIUpdateDetails" : [ {
@@ -10951,6 +11063,20 @@
         } ],
         "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
         "customCode" : true
+      }, {
+        "codeName" : "set_type_bug",
+        "name" : "设置缺陷类型",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "set_type_bug"
+        },
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "work_item_type_id"
+        }, {
+          "name" : "project_type"
+        }, {
+          "name" : "work_item_type_name"
+        } ]
       } ],
       "getPSDEFormItemVRs" : [ {
         "checkMode" : 1,
@@ -11211,6 +11337,12 @@
         "dataType" : 25,
         "createDVT" : "APPDATA",
         "createDV" : "need_fill_form"
+      }, {
+        "id" : "dynamicnew",
+        "hidden" : true,
+        "dataType" : 25,
+        "createDVT" : "APPDATA",
+        "createDV" : "dynamicnew"
       }, {
         "id" : "project_name",
         "dataType" : 25,
@@ -12316,6 +12448,31 @@
             },
             "allowEmpty" : true,
             "hidden" : true
+          }, {
+            "caption" : "动态新建",
+            "codeName" : "dynamicnew",
+            "createDV" : "dynamicnew",
+            "createDVT" : "APPDATA",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "TOP",
+            "labelWidth" : 130,
+            "name" : "dynamicnew",
+            "noPrivDisplayMode" : 1,
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "dynamicnew"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 6,
+              "colMD" : 6,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "hidden" : true
           } ],
           "getPSLayout" : {
             "childColMD" : 24,
@@ -12357,11 +12514,20 @@
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
               "getPSDEFDLogics" : [ {
-                "condOP" : "ISNOTNULL",
-                "dEFDName" : "need_fill_form",
-                "logicType" : "SINGLE"
+                "groupOP" : "OR",
+                "logicType" : "GROUP",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "ISNULL",
+                  "dEFDName" : "checkid",
+                  "logicType" : "SINGLE"
+                }, {
+                  "condOP" : "ISNOTNULL",
+                  "dEFDName" : "dynamic_new",
+                  "logicType" : "SINGLE"
+                } ],
+                "notMode" : false
               } ],
-              "relatedDetailNames" : [ "need_fill_form" ],
+              "relatedDetailNames" : [ "checkid", "dynamic_new" ],
               "notMode" : false
             }, {
               "groupOP" : "AND",
@@ -12505,6 +12671,8 @@
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
+            "resetItemName" : "project_name",
+            "resetItemNames" : [ "project_name" ],
             "valueItemName" : "work_item_type_id",
             "allowEmpty" : false,
             "showCaption" : true
@@ -13228,9 +13396,9 @@
           "id" : "set_type_bug"
         },
         "getPSDEFIUpdateDetails" : [ {
-          "name" : "work_item_type_id"
-        }, {
           "name" : "project_type"
+        }, {
+          "name" : "work_item_type_id"
         }, {
           "name" : "work_item_type_name"
         } ]
@@ -13494,6 +13662,12 @@
         "dataType" : 25,
         "createDVT" : "APPDATA",
         "createDV" : "need_fill_form"
+      }, {
+        "id" : "dynamicnew",
+        "hidden" : true,
+        "dataType" : 25,
+        "createDVT" : "APPDATA",
+        "createDV" : "dynamicnew"
       }, {
         "id" : "project_name",
         "dataType" : 25,
@@ -14613,6 +14787,31 @@
             },
             "allowEmpty" : true,
             "hidden" : true
+          }, {
+            "caption" : "动态新建",
+            "codeName" : "dynamicnew",
+            "createDV" : "dynamicnew",
+            "createDVT" : "APPDATA",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "TOP",
+            "labelWidth" : 130,
+            "name" : "dynamicnew",
+            "noPrivDisplayMode" : 1,
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "dynamicnew"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 6,
+              "colMD" : 6,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "hidden" : true
           } ],
           "getPSLayout" : {
             "childColMD" : 24,
@@ -14654,11 +14853,20 @@
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
               "getPSDEFDLogics" : [ {
-                "condOP" : "ISNOTNULL",
-                "dEFDName" : "need_fill_form",
-                "logicType" : "SINGLE"
+                "groupOP" : "OR",
+                "logicType" : "GROUP",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "ISNULL",
+                  "dEFDName" : "checkid",
+                  "logicType" : "SINGLE"
+                }, {
+                  "condOP" : "ISNOTNULL",
+                  "dEFDName" : "dynamic_new",
+                  "logicType" : "SINGLE"
+                } ],
+                "notMode" : false
               } ],
-              "relatedDetailNames" : [ "need_fill_form" ],
+              "relatedDetailNames" : [ "checkid", "dynamic_new" ],
               "notMode" : false
             }, {
               "groupOP" : "AND",
@@ -14802,6 +15010,8 @@
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
+            "resetItemName" : "project_name",
+            "resetItemNames" : [ "project_name" ],
             "valueItemName" : "work_item_type_id",
             "allowEmpty" : false,
             "showCaption" : true
