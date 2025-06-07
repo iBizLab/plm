@@ -3652,11 +3652,11 @@
           "id" : "set_type_bug"
         },
         "getPSDEFIUpdateDetails" : [ {
+          "name" : "work_item_type_id"
+        }, {
           "name" : "project_type"
         }, {
           "name" : "work_item_type_name"
-        }, {
-          "name" : "work_item_type_id"
         } ]
       } ],
       "getPSDEFormItemVRs" : [ {
@@ -4883,8 +4883,8 @@
               "colMD" : 6,
               "layout" : "TABLE_24COL"
             },
-            "resetItemName" : "project_name",
-            "resetItemNames" : [ "project_name" ],
+            "resetItemName" : "project_id",
+            "resetItemNames" : [ "project_id" ],
             "allowEmpty" : true,
             "hidden" : true
           }, {
@@ -6052,14 +6052,6 @@
         "id" : "_FORM_SCRUM_EPIC"
       },
       "getPSDEFormItemUpdates" : [ {
-        "codeName" : "calc_parent_work_item_type",
-        "name" : "计算父工作项类型",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "work_item_type_name"
-        } ],
-        "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-        "customCode" : true
-      }, {
         "codeName" : "set_type_bug",
         "name" : "设置缺陷类型",
         "getPSAppDEMethod" : {
@@ -6067,12 +6059,20 @@
           "id" : "set_type_bug"
         },
         "getPSDEFIUpdateDetails" : [ {
-          "name" : "project_type"
-        }, {
           "name" : "work_item_type_name"
         }, {
           "name" : "work_item_type_id"
+        }, {
+          "name" : "project_type"
         } ]
+      }, {
+        "codeName" : "calc_parent_work_item_type",
+        "name" : "计算父工作项类型",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "work_item_type_name"
+        } ],
+        "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+        "customCode" : true
       } ],
       "getPSDEFormItemVRs" : [ {
         "checkMode" : 1,
@@ -7526,20 +7526,11 @@
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
               "getPSDEFDLogics" : [ {
-                "groupOP" : "OR",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "ISNULL",
-                  "dEFDName" : "checkid",
-                  "logicType" : "SINGLE"
-                }, {
-                  "condOP" : "ISNOTNULL",
-                  "dEFDName" : "dynamic_new",
-                  "logicType" : "SINGLE"
-                } ],
-                "notMode" : false
+                "condOP" : "ISNOTNULL",
+                "dEFDName" : "dynamic_new",
+                "logicType" : "SINGLE"
               } ],
-              "relatedDetailNames" : [ "checkid", "dynamic_new" ],
+              "relatedDetailNames" : [ "dynamic_new" ],
               "notMode" : false
             }, {
               "groupOP" : "AND",
@@ -15969,6 +15960,14 @@
         "id" : "_FORM_KANBAN_BUG"
       },
       "getPSDEFormItemUpdates" : [ {
+        "codeName" : "calc_parent_work_item_type",
+        "name" : "计算父工作项类型",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "work_item_type_name"
+        } ],
+        "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+        "customCode" : true
+      }, {
         "codeName" : "set_default_entry",
         "name" : "选择看板后填充默认看板栏",
         "getPSAppDEMethod" : {
@@ -15986,20 +15985,12 @@
           "id" : "set_type_bug"
         },
         "getPSDEFIUpdateDetails" : [ {
+          "name" : "work_item_type_name"
+        }, {
           "name" : "project_type"
         }, {
           "name" : "work_item_type_id"
-        }, {
-          "name" : "work_item_type_name"
         } ]
-      }, {
-        "codeName" : "calc_parent_work_item_type",
-        "name" : "计算父工作项类型",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "work_item_type_name"
-        } ],
-        "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-        "customCode" : true
       } ],
       "getPSDEFormItemVRs" : [ {
         "checkMode" : 1,
@@ -17308,8 +17299,8 @@
               "colMD" : 6,
               "layout" : "TABLE_24COL"
             },
-            "resetItemName" : "project_name",
-            "resetItemNames" : [ "project_name" ],
+            "resetItemName" : "project_id",
+            "resetItemNames" : [ "project_id" ],
             "allowEmpty" : true,
             "hidden" : true
           }, {
@@ -17536,20 +17527,11 @@
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
               "getPSDEFDLogics" : [ {
-                "groupOP" : "OR",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "ISNULL",
-                  "dEFDName" : "checkid",
-                  "logicType" : "SINGLE"
-                }, {
-                  "condOP" : "ISNOTNULL",
-                  "dEFDName" : "dynamic_new",
-                  "logicType" : "SINGLE"
-                } ],
-                "notMode" : false
+                "condOP" : "ISNOTNULL",
+                "dEFDName" : "dynamic_new",
+                "logicType" : "SINGLE"
               } ],
-              "relatedDetailNames" : [ "checkid", "dynamic_new" ],
+              "relatedDetailNames" : [ "dynamic_new" ],
               "notMode" : false
             }, {
               "groupOP" : "AND",
@@ -18541,20 +18523,6 @@
         "id" : "_FORM_KANBAN_EPIC"
       },
       "getPSDEFormItemUpdates" : [ {
-        "codeName" : "set_type_bug",
-        "name" : "设置缺陷类型",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "set_type_bug"
-        },
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "work_item_type_name"
-        }, {
-          "name" : "work_item_type_id"
-        }, {
-          "name" : "project_type"
-        } ]
-      }, {
         "codeName" : "set_default_entry",
         "name" : "选择看板后填充默认看板栏",
         "getPSAppDEMethod" : {
@@ -18563,6 +18531,20 @@
         },
         "getPSDEFIUpdateDetails" : [ {
           "name" : "entry_id"
+        } ]
+      }, {
+        "codeName" : "set_type_bug",
+        "name" : "设置缺陷类型",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "set_type_bug"
+        },
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "project_type"
+        }, {
+          "name" : "work_item_type_id"
+        }, {
+          "name" : "work_item_type_name"
         } ]
       }, {
         "codeName" : "calc_parent_work_item_type",
@@ -20108,20 +20090,11 @@
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
               "getPSDEFDLogics" : [ {
-                "groupOP" : "OR",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "ISNULL",
-                  "dEFDName" : "checkid",
-                  "logicType" : "SINGLE"
-                }, {
-                  "condOP" : "ISNOTNULL",
-                  "dEFDName" : "dynamic_new",
-                  "logicType" : "SINGLE"
-                } ],
-                "notMode" : false
+                "condOP" : "ISNOTNULL",
+                "dEFDName" : "dynamic_new",
+                "logicType" : "SINGLE"
               } ],
-              "relatedDetailNames" : [ "checkid", "dynamic_new" ],
+              "relatedDetailNames" : [ "dynamic_new" ],
               "notMode" : false
             }, {
               "groupOP" : "AND",
@@ -41302,11 +41275,11 @@
           "id" : "set_type_bug"
         },
         "getPSDEFIUpdateDetails" : [ {
-          "name" : "project_type"
-        }, {
           "name" : "work_item_type_id"
         }, {
           "name" : "work_item_type_name"
+        }, {
+          "name" : "project_type"
         } ]
       }, {
         "codeName" : "calc_parent_work_item_type",
@@ -42769,20 +42742,11 @@
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
               "getPSDEFDLogics" : [ {
-                "groupOP" : "OR",
-                "logicType" : "GROUP",
-                "getPSDEFDLogics" : [ {
-                  "condOP" : "ISNULL",
-                  "dEFDName" : "checkid",
-                  "logicType" : "SINGLE"
-                }, {
-                  "condOP" : "ISNOTNULL",
-                  "dEFDName" : "dynamic_new",
-                  "logicType" : "SINGLE"
-                } ],
-                "notMode" : false
+                "condOP" : "ISNOTNULL",
+                "dEFDName" : "dynamic_new",
+                "logicType" : "SINGLE"
               } ],
-              "relatedDetailNames" : [ "checkid", "dynamic_new" ],
+              "relatedDetailNames" : [ "dynamic_new" ],
               "notMode" : false
             }, {
               "groupOP" : "AND",

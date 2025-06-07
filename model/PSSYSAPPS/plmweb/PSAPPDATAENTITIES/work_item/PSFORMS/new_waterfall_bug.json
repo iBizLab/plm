@@ -93,11 +93,11 @@
       "id" : "set_type_bug"
     },
     "getPSDEFIUpdateDetails" : [ {
-      "name" : "project_type"
-    }, {
       "name" : "work_item_type_id"
     }, {
       "name" : "work_item_type_name"
+    }, {
+      "name" : "project_type"
     } ]
   }, {
     "codeName" : "calc_parent_work_item_type",
@@ -1560,20 +1560,11 @@
           "logicCat" : "ITEMENABLE",
           "logicType" : "GROUP",
           "getPSDEFDLogics" : [ {
-            "groupOP" : "OR",
-            "logicType" : "GROUP",
-            "getPSDEFDLogics" : [ {
-              "condOP" : "ISNULL",
-              "dEFDName" : "checkid",
-              "logicType" : "SINGLE"
-            }, {
-              "condOP" : "ISNOTNULL",
-              "dEFDName" : "dynamic_new",
-              "logicType" : "SINGLE"
-            } ],
-            "notMode" : false
+            "condOP" : "ISNOTNULL",
+            "dEFDName" : "dynamic_new",
+            "logicType" : "SINGLE"
           } ],
-          "relatedDetailNames" : [ "checkid", "dynamic_new" ],
+          "relatedDetailNames" : [ "dynamic_new" ],
           "notMode" : false
         }, {
           "groupOP" : "AND",
