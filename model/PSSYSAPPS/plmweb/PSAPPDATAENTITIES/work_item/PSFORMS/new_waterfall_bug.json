@@ -86,14 +86,6 @@
     }
   } ],
   "getPSDEFormItemUpdates" : [ {
-    "codeName" : "calc_parent_work_item_type",
-    "name" : "计算父工作项类型",
-    "getPSDEFIUpdateDetails" : [ {
-      "name" : "work_item_type_name"
-    } ],
-    "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-    "customCode" : true
-  }, {
     "codeName" : "set_type_bug",
     "name" : "设置缺陷类型",
     "getPSAppDEMethod" : {
@@ -107,6 +99,14 @@
     }, {
       "name" : "work_item_type_name"
     } ]
+  }, {
+    "codeName" : "calc_parent_work_item_type",
+    "name" : "计算父工作项类型",
+    "getPSDEFIUpdateDetails" : [ {
+      "name" : "work_item_type_name"
+    } ],
+    "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+    "customCode" : true
   } ],
   "getPSDEFormItemVRs" : [ {
     "checkMode" : 1,
@@ -1332,6 +1332,8 @@
           "colMD" : 6,
           "layout" : "TABLE_24COL"
         },
+        "resetItemName" : "project_name",
+        "resetItemNames" : [ "project_name" ],
         "allowEmpty" : true,
         "hidden" : true
       }, {
