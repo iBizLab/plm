@@ -209,7 +209,7 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.complete_review;
             when
             then
                             review_contentcomplete_reviewstage_arr.set("",review_contentcomplete_reviewfor_stage.get(""));
-                            review_contentcomplete_reviewreview_detail.set("reviewer",review_contentcomplete_reviewfor_stage.get("reviewer"));
+                            review_contentcomplete_reviewreview_detail.set("nextreviewer",review_contentcomplete_reviewfor_stage.get("reviewer"));
                             review_contentcomplete_reviewnext_stage.set("is_next","false");
                             review_contentcomplete_reviewfor_stage.set("stagestate","20");
                         update(review_contentcomplete_reviewdefault);//更新fact中变量值
@@ -255,6 +255,7 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.complete_review;
             when
             then
                             review_contentcomplete_reviewfor_stage.set("stagestate","30");
+                            review_contentcomplete_reviewreview_detail.set("reviewer",review_contentcomplete_reviewfor_stage.get("reviewer"));
                             review_contentcomplete_reviewnext_stage.set("is_next","true");
                         update(review_contentcomplete_reviewdefault);//更新fact中变量值
                         update(review_contentcomplete_reviewend_stage);//更新fact中变量值
@@ -271,6 +272,20 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.complete_review;
             when
             then
                             review_contentcomplete_reviewstage_arr.set("",review_contentcomplete_reviewfor_stage.get(""));
+                        update(review_contentcomplete_reviewdefault);//更新fact中变量值
+                        update(review_contentcomplete_reviewend_stage);//更新fact中变量值
+                        update(review_contentcomplete_reviewfor_stage);//更新fact中变量值
+                        update(review_contentcomplete_reviewnext_stage);//更新fact中变量值
+                        update(review_contentcomplete_reviewreview_detail);//更新fact中变量值
+                        update(review_contentcomplete_reviewstage_arr);//更新fact中变量值
+                        update(review_contentcomplete_reviewstage_list);//更新fact中变量值
+            end
+
+            //逻辑处理节点[通知关注人（需求）]
+            rule "denotify3"
+            ruleflow-group "review_contentcomplete_reviewdenotify3"
+            when
+            then
                         update(review_contentcomplete_reviewdefault);//更新fact中变量值
                         update(review_contentcomplete_reviewend_stage);//更新fact中变量值
                         update(review_contentcomplete_reviewfor_stage);//更新fact中变量值
@@ -298,6 +313,20 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.complete_review;
             //逻辑处理节点[完成时间]
             rule "rawsfcode1"
             ruleflow-group "review_contentcomplete_reviewrawsfcode1"
+            when
+            then
+                        update(review_contentcomplete_reviewdefault);//更新fact中变量值
+                        update(review_contentcomplete_reviewend_stage);//更新fact中变量值
+                        update(review_contentcomplete_reviewfor_stage);//更新fact中变量值
+                        update(review_contentcomplete_reviewnext_stage);//更新fact中变量值
+                        update(review_contentcomplete_reviewreview_detail);//更新fact中变量值
+                        update(review_contentcomplete_reviewstage_arr);//更新fact中变量值
+                        update(review_contentcomplete_reviewstage_list);//更新fact中变量值
+            end
+
+            //逻辑处理节点[通知关注人（用例）]
+            rule "denotify4"
+            ruleflow-group "review_contentcomplete_reviewdenotify4"
             when
             then
                         update(review_contentcomplete_reviewdefault);//更新fact中变量值

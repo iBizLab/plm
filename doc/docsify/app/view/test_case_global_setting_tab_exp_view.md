@@ -8,6 +8,7 @@
 
 
 ### 关联视图
+  * [数据字典(dictionary_data_test_case_dictionary_grid_view)](app/view/dictionary_data_test_case_dictionary_grid_view)
   * [实体属性(psde_field_global_test_case_grid_view)](app/view/psde_field_global_test_case_grid_view)
   * [用例(test_case_global_setting_view)](app/view/test_case_global_setting_view)
 

@@ -186,6 +186,40 @@
     "requestPath" : "/get_draft",
     "builtinMethod" : false
   }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "no_top",
+    "methodType" : "DEACTION",
+    "name" : "no_top",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "comment_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment/PSDEACTIONS/no_top.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "no_top"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/no_top",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "DELETE",
     "actionTag" : "Remove",
     "batchActionMode" : 1,
@@ -262,6 +296,40 @@
     "requestParamType" : "ENTITY",
     "requestPath" : "/save",
     "builtinMethod" : false
+  }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "top",
+    "methodType" : "DEACTION",
+    "name" : "top",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "comment_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment/PSDEACTIONS/top.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "top"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/top",
+    "builtinMethod" : false,
+    "needResourceKey" : true
   }, {
     "actionMode" : "UPDATE",
     "actionTag" : "Update",
@@ -371,6 +439,7 @@
     "codeName" : "principal_id",
     "logicName" : "评论主体标识",
     "name" : "PRINCIPAL_ID",
+    "predefinedType" : "PARENTID",
     "stdDataType" : 25,
     "stringLength" : 100
   }, {
@@ -402,6 +471,7 @@
     "codeName" : "principal_name",
     "logicName" : "评论主体名称",
     "name" : "PRINCIPAL_NAME",
+    "predefinedType" : "PARENTNAME",
     "stdDataType" : 25,
     "stringLength" : 100
   }, {
@@ -433,6 +503,7 @@
     "codeName" : "owner_type",
     "logicName" : "所属数据对象",
     "name" : "OWNER_TYPE",
+    "predefinedType" : "PARENTTYPE",
     "stdDataType" : 25,
     "stringLength" : 100
   }, {
@@ -464,6 +535,7 @@
     "codeName" : "principal_type",
     "logicName" : "评论主体类型",
     "name" : "PRINCIPAL_TYPE",
+    "predefinedType" : "PARENTSUBTYPE",
     "stdDataType" : 25,
     "stringLength" : 100
   }, {
@@ -594,6 +666,36 @@
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "MobileDefault",
+      "name" : "[IS_TOP][是否置顶]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBSWITCH",
+        "name" : "[IS_TOP][是否置顶]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[IS_TOP][是否置顶]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "[IS_TOP][是否置顶]",
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    } ],
+    "codeName" : "is_top",
+    "logicName" : "是否置顶",
+    "name" : "IS_TOP",
+    "stdDataType" : 9
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
       "name" : "[ID][标识]移动端默认",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
@@ -716,6 +818,7 @@
     },
     "logicName" : "建立人",
     "name" : "CREATE_MAN",
+    "predefinedType" : "CREATEMAN",
     "stdDataType" : 25,
     "stringLength" : 100
   }, {
@@ -758,6 +861,7 @@
     },
     "logicName" : "建立时间",
     "name" : "CREATE_TIME",
+    "predefinedType" : "CREATEDATE",
     "stdDataType" : 5,
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   }, {
@@ -800,6 +904,7 @@
     },
     "logicName" : "更新人",
     "name" : "UPDATE_MAN",
+    "predefinedType" : "UPDATEMAN",
     "stdDataType" : 25,
     "stringLength" : 100
   }, {
@@ -842,6 +947,7 @@
     },
     "logicName" : "更新时间",
     "name" : "UPDATE_TIME",
+    "predefinedType" : "UPDATEDATE",
     "stdDataType" : 5,
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   }, {
@@ -963,6 +1069,17 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "is_top",
+      "logicName" : "是否置顶",
+      "name" : "is_top",
+      "getPSAppDEField" : {
+        "name" : "IS_TOP",
+        "codeName" : "is_top"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
       "type" : "SIMPLE"
     }, {
       "codeName" : "create_man",
@@ -1347,6 +1464,40 @@
     "requestPath" : "/get_draft",
     "builtinMethod" : false
   }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "no_top",
+    "methodType" : "DEACTION",
+    "name" : "no_top",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "comment_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment/PSDEACTIONS/no_top.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "no_top"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/no_top",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "DELETE",
     "actionTag" : "Remove",
     "batchActionMode" : 1,
@@ -1423,6 +1574,40 @@
     "requestParamType" : "ENTITY",
     "requestPath" : "/save",
     "builtinMethod" : false
+  }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "top",
+    "methodType" : "DEACTION",
+    "name" : "top",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "comment_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/comment/PSDEACTIONS/top.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "top"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/top",
+    "builtinMethod" : false,
+    "needResourceKey" : true
   }, {
     "actionMode" : "UPDATE",
     "actionTag" : "Update",
@@ -1622,7 +1807,7 @@
     "id" : "clear_comment_wiki@comment"
   }, {
     "actionTarget" : "SINGLEKEY",
-    "caption" : "删除评论",
+    "caption" : "删除",
     "codeName" : "del_comment",
     "confirmMsg" : "确认删除该评论？",
     "fullCodeName" : "comment_del_comment",
@@ -1679,6 +1864,28 @@
     "uIActionType" : "DEUIACTION",
     "enableConfirm" : true,
     "id" : "delete_comment_space@comment"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "取消置顶",
+    "codeName" : "no_top",
+    "fullCodeName" : "comment_no_top",
+    "name" : "取消置顶",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "no_top"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
+    },
+    "refreshMode" : 1,
+    "timeout" : 60000,
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "no_top",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "no_top@comment"
   }, {
     "actionTarget" : "SINGLEDATA",
     "caption" : "编辑",
@@ -1893,6 +2100,28 @@
     "uILogicAttachMode" : "REPLACE",
     "reloadData" : true,
     "id" : "send_comment_wiki@comment"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "置顶",
+    "codeName" : "top",
+    "fullCodeName" : "comment_top",
+    "name" : "评论置顶",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "top"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
+    },
+    "refreshMode" : 1,
+    "timeout" : 60000,
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "top",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "top@comment"
   } ],
   "getAllPSAppDEUILogics" : [ {
     "codeName" : "add_comment_client",
@@ -5649,5 +5878,73 @@
   "enableUIModify" : true,
   "enableUIRemove" : true,
   "enableWFActions" : false,
-  "major" : false
+  "major" : false,
+  "getAllPSAppDEUIActionGroups" : [ {
+    "codeName" : "Usr0519465800",
+    "name" : "评论列表行为组",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
+    },
+    "uniqueTag" : "comment__Usr0519465800",
+    "getPSUIActionGroupDetails" : [ {
+      "caption" : "置顶",
+      "detailType" : "DEUIACTION",
+      "name" : "u97e6419",
+      "getPSSysImage" : {
+        "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1747741120326\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"4339\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\"><path d=\"M576 452.266667v422.4h-85.333333v-422.4l-89.6 89.6L341.333333 477.866667l192-192 192 192-59.733333 59.733333-89.6-85.333333z m213.333333-217.6h-512v-85.333334h512v85.333334z\" fill=\"#444444\" p-id=\"4340\"></path></svg>"
+      },
+      "visibleScriptCode" : "data.is_top!=1",
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
+        },
+        "modelref" : true,
+        "id" : "top@comment"
+      }
+    }, {
+      "caption" : "取消置顶",
+      "detailType" : "DEUIACTION",
+      "name" : "uaa719ea",
+      "getPSSysImage" : {
+        "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1747741189924\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"8698\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"16\" height=\"16\"><path d=\"M228.43 433.23l70.893 63.016-47.261 39.385-78.77-63.016 55.139-39.384z m141.785-118.153L512 196.923l330.83 267.815-78.768 63.016-196.924-165.416v141.785L456.862 393.846v-23.63l-15.754 7.876-70.893-63.015z m196.923 441.108V1024H456.862V653.785l110.276 102.4zM39.385 86.646V0h945.23v86.646H39.385zM102.4 252.062l63.015-70.893 748.308 716.8-63.015 70.893-748.308-716.8z\" p-id=\"8699\"></path></svg>"
+      },
+      "visibleScriptCode" : "data.is_top==1",
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
+        },
+        "modelref" : true,
+        "id" : "no_top@comment"
+      }
+    }, {
+      "caption" : "删除",
+      "detailType" : "DEUIACTION",
+      "name" : "ue61f196",
+      "getPSSysImage" : {
+        "glyph" : "xf014@FontAwesome",
+        "cssClass" : "fa fa-trash-o"
+      },
+      "visibleScriptCode" : "data.create_man === context.srfuserid",
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/comment.json"
+        },
+        "modelref" : true,
+        "id" : "del_comment@comment"
+      }
+    } ]
+  } ]
 }

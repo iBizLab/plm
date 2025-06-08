@@ -11,7 +11,6 @@
   * [评审向导(REVIEW_WIZARD)](module/TestMgmt/review_wizard) : [批量删除评审用例临时数据](module/TestMgmt/review_wizard/uilogic/remove_batch_temp)
 
 ### 关联视图
-  * [测试库(library_pick_up_view)](app/view/library_pick_up_view)
   * [评审内容(review_content_under_review_grid_view)](app/view/review_content_under_review_grid_view)
   * [评审选择(review_pick_up_tree_view)](app/view/review_pick_up_tree_view)
 

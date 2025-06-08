@@ -47,8 +47,10 @@
 |[DERCUSTOM_ADDON_PRODUCT_OWNER_ID](der/DERCUSTOM_ADDON_PRODUCT_OWNER_ID)|[组件(ADDON)](module/Base/addon)|自定义关系||
 |[DERCUSTOM_BASELINE_PRODUCT_OWNER_ID](der/DERCUSTOM_BASELINE_PRODUCT_OWNER_ID)|[基线(BASELINE)](module/Base/baseline)|自定义关系||
 |[DERCUSTOM_FAVORITE_PRODUCT](der/DERCUSTOM_FAVORITE_PRODUCT)|[收藏(FAVORITE)](module/Base/favorite)|自定义关系||
+|[DERCUSTOM_GUIDELINE_PRODUCT_PRODUCT_ID](der/DERCUSTOM_GUIDELINE_PRODUCT_PRODUCT_ID)|[流程准则(GUIDELINE)](module/TestMgmt/guideline)|自定义关系||
 |[DERCUSTOM_RELATION_PRODUCT](der/DERCUSTOM_RELATION_PRODUCT)|[关联(RELATION)](module/Base/relation)|自定义关系||
 |[DERCUSTOM_RELATION_TARGET_PRODUCT](der/DERCUSTOM_RELATION_TARGET_PRODUCT)|[关联(RELATION)](module/Base/relation)|自定义关系||
+|[DERCUSTOM_REVIEW_PRODUCT_PRINCIPAL_ID](der/DERCUSTOM_REVIEW_PRODUCT_PRINCIPAL_ID)|[评审(REVIEW)](module/TestMgmt/review)|自定义关系||
 
 
 </el-tab-pane>
@@ -106,6 +108,7 @@
 |[产品组件权限计数器](module/ProdMgmt/product/logic/product_addon_authority)|product_addon_authority|无||获取产品组件权限|
 |[其他实体关联产品](module/ProdMgmt/product/logic/other_re_product)|other_re_product|无||产品实体关联操作，生成正向，反向关联数据|
 |[创建之前](module/ProdMgmt/product/logic/before_create)|before_create|无||创建产品之前，对添加的产品成员进行处理|
+|[创建产品流程准则](module/ProdMgmt/product/logic/auto_create_guideline)|auto_create_guideline|无||创建产品后，自动生成产品内的评审规则|
 |[删除](module/ProdMgmt/product/logic/delete)|delete|无||产品数据的逻辑删除，修改产品的是否删除属性值|
 |[取消星标](module/ProdMgmt/product/logic/un_favorite)|un_favorite|无||产品取消星标|
 |[变更管理员角色](module/ProdMgmt/product/logic/change_admin_role)|change_admin_role|无||批量变更管理员角色身份（role_id）|

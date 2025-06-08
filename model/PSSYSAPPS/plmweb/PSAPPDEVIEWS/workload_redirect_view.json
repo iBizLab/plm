@@ -7,6 +7,10 @@
   "codeName" : "workload_redirect_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_redirect_view.json",
   "funcViewMode" : "REDIRECTVIEW",
+  "getGetDataPSAppDEAction" : {
+    "modelref" : true,
+    "id" : "get_redirect_data"
+  },
   "name" : "workloadRedirectView",
   "getPSAppDataEntity" : {
     "modelref" : true,
@@ -16,6 +20,25 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/Base.json"
   },
+  "getPSAppViewRefs" : [ {
+    "name" : "ACTUAL_WORKLOAD",
+    "realOpenMode" : "POPUPMODAL",
+    "realTitle" : "修改实际工时视图",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_update_view.json",
+      "viewType" : "DEOPTVIEW"
+    }
+  }, {
+    "name" : "ESTIMATED_WORKLOAD",
+    "realOpenMode" : "POPUPMODAL",
+    "realTitle" : "预估工时快速修改视图",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_forecast_quick_update_view.json",
+      "viewType" : "DEOPTVIEW"
+    }
+  } ],
   "getPSControls" : [ {
     "getCapPSLanguageRes" : {
       "lanResTag" : "DE.LNAME.WORKLOAD"
@@ -73,9 +96,13 @@
   "getTitlePSLanguageRes" : {
     "lanResTag" : "PAGE.TITLE.WORKLOAD.REDIRECTVIEW"
   },
+  "getTypePSAppDEField" : {
+    "name" : "CATEGORY",
+    "codeName" : "category"
+  },
   "viewStyle" : "DEFAULT",
   "viewType" : "DEREDIRECTVIEW",
-  "enableCustomGetDataAction" : false,
+  "enableCustomGetDataAction" : true,
   "enableDP" : true,
   "enableWorkflow" : true,
   "redirectView" : true,

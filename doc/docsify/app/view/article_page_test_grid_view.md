@@ -15,9 +15,9 @@
 
 
 ### 关联界面行为
+  * [页面(PAGE)](module/Wiki/article_page) : [共享设置（管理表格操作列）](module/Wiki/article_page#界面行为)
   * [页面(PAGE)](module/Wiki/article_page) : [快速新建文档](module/Wiki/article_page#界面行为)
   * [页面(PAGE)](module/Wiki/article_page) : [页面导入](module/Wiki/article_page#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [共享设置（管理表格操作列）](module/Wiki/article_page#界面行为)
   * [页面(PAGE)](module/Wiki/article_page) : [关闭共享（管理表格操作列）](module/Wiki/article_page#界面行为)
 
 ### 关联视图

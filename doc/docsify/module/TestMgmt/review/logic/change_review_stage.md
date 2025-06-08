@@ -117,7 +117,7 @@ DEACTION2 --> END1
 
 
 
-1. 将`Default(传入变量).reviewer` 设置给  `cur_stage(当前阶段).REVIEWER(评审人)`
+1. 将`Default(传入变量).reviewer(评审人)` 设置给  `cur_stage(当前阶段).REVIEWER(评审人)`
 2. 将`Default(传入变量).reviewer_name` 设置给  `cur_stage(当前阶段).REVIEWER_NAME(评审人名称)`
 
 #### 当前循环阶段 :id=DEBUGPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>

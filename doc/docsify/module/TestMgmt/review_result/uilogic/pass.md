@@ -15,11 +15,11 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./pass#begin {开始}]]
-state "控制非下一阶段" as RAWJSCODE3  [[$./pass#rawjscode3 {控制非下一阶段}]]
 state "下一阶段评审" as RAWJSCODE2  [[$./pass#rawjscode2 {下一阶段评审}]]
+state "控制非下一阶段" as RAWJSCODE3  [[$./pass#rawjscode3 {控制非下一阶段}]]
 state "结束" as END1 <<end>> [[$./pass#end1 {结束}]]
-state "实体行为" as DEACTION1  [[$./pass#deaction1 {实体行为}]]
 state "获取父表单及评审内容表格" as PREPAREJSPARAM1  [[$./pass#preparejsparam1 {获取父表单及评审内容表格}]]
+state "实体行为" as DEACTION1  [[$./pass#deaction1 {实体行为}]]
 state "通知刷新" as RAWJSCODE4  [[$./pass#rawjscode4 {通知刷新}]]
 
 
@@ -74,6 +74,7 @@ if (rows && rows.length > 0) {
         grouppanel6_state.visible = false;
         const choose_data = uiLogic.parent_form.control.details.choosed_content;
         choose_data.setDataValue(next_content.id);
+        uiLogic.next_content = next_content;
     } else {
         grouppanel6_state.visible = true;
         const choose_data = uiLogic.parent_form.control.details.choosed_content;
@@ -117,7 +118,14 @@ if (rows && rows.length > 0) {
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
-ibiz.mc.command.create.send({ srfdecodename: 'review_content'})
+const grid = uiLogic.content_grid;
+await grid.load({ isInitialLoad: false, triggerSource: 'REFRESH' });
+if (uiLogic.next_content) {
+    const item = grid.state.items.find(x => x.id === uiLogic.next_content.id);
+    if (item) {
+        grid.setSelection([item], false);
+    }
+}
 ```
 
 #### 控制非下一阶段 :id=RAWJSCODE3<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
@@ -147,12 +155,13 @@ ibiz.mc.command.create.send({ srfdecodename: 'review_content'})
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|当前视图对象|view|当前视图对象||
-|父视图|parentView|数据对象||
-|当前表单|form|部件对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|父表单|parent_form|数据对象||
-|评审内容|review_content|数据对象||
-|评审内容表格|content_grid|数据对象||
-|上下文|ctx|导航视图参数绑定参数||
 |评审内容表格视图|grid_view|数据对象||
+|父视图|parentView|数据对象||
+|上下文|ctx|导航视图参数绑定参数||
+|父表单|parent_form|数据对象||
+|当前表单|form|部件对象||
+|评审内容表格|content_grid|数据对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|评审内容|review_content|数据对象||
+|下一条内容|next_content|数据对象||
+|当前视图对象|view|当前视图对象||

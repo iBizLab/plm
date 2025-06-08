@@ -50,8 +50,10 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentcomplete_reviewprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="附加到数组变量"/>
                         <endEvent id="prepareparam4_end" name="end"/>
                         <sequenceFlow id="prepareparam4_end_line" sourceRef="prepareparam4" targetRef="prepareparam4_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentcomplete_reviewdenotify3" id="denotify3" implementation="http://www.jboss.org/drools/rule" name="通知关注人（需求）"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentcomplete_reviewprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="变更阶段状态"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentcomplete_reviewrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="完成时间"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentcomplete_reviewdenotify4" id="denotify4" implementation="http://www.jboss.org/drools/rule" name="通知关注人（用例）"/>
                     <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
                     </sequenceFlow>
                     <sequenceFlow id="debugparam1_prepareparam1" sourceRef="debugparam1" targetRef="prepareparam1">
@@ -162,9 +164,39 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam3_prepareparam4" sourceRef="prepareparam3" targetRef="prepareparam4">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam6_rawsfcode1" sourceRef="prepareparam6" targetRef="rawsfcode1">
+                    <sequenceFlow id="denotify3_rawsfcode1" sourceRef="denotify3" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam6_denotify3" sourceRef="gateway-prepareparam6" targetRef="denotify3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $review_contentcomplete_reviewdefault:review_content();
+                                            $review_contentcomplete_reviewend_stage:review_stage();
+                                            $review_contentcomplete_reviewfor_stage:review_stage();
+                                            $review_contentcomplete_reviewnext_stage:review_stage();
+                                            $review_contentcomplete_reviewreview_detail:review();
+                                            $review_contentcomplete_reviewstage_arr:review_stage();
+                                            $review_contentcomplete_reviewstage_list:review_stage();
+                                    eval($review_contentcomplete_reviewdefault==review_contentcomplete_reviewdefault && $review_contentcomplete_reviewend_stage==review_contentcomplete_reviewend_stage && $review_contentcomplete_reviewfor_stage==review_contentcomplete_reviewfor_stage && $review_contentcomplete_reviewnext_stage==review_contentcomplete_reviewnext_stage && $review_contentcomplete_reviewreview_detail==review_contentcomplete_reviewreview_detail && $review_contentcomplete_reviewstage_arr==review_contentcomplete_reviewstage_arr && $review_contentcomplete_reviewstage_list==review_contentcomplete_reviewstage_list);
+                                eval((RuleUtils.test($review_contentcomplete_reviewreview_detail.get("type"),"EQ","IDEA")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam6_denotify4" sourceRef="gateway-prepareparam6" targetRef="denotify4">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $review_contentcomplete_reviewdefault:review_content();
+                                            $review_contentcomplete_reviewend_stage:review_stage();
+                                            $review_contentcomplete_reviewfor_stage:review_stage();
+                                            $review_contentcomplete_reviewnext_stage:review_stage();
+                                            $review_contentcomplete_reviewreview_detail:review();
+                                            $review_contentcomplete_reviewstage_arr:review_stage();
+                                            $review_contentcomplete_reviewstage_list:review_stage();
+                                    eval($review_contentcomplete_reviewdefault==review_contentcomplete_reviewdefault && $review_contentcomplete_reviewend_stage==review_contentcomplete_reviewend_stage && $review_contentcomplete_reviewfor_stage==review_contentcomplete_reviewfor_stage && $review_contentcomplete_reviewnext_stage==review_contentcomplete_reviewnext_stage && $review_contentcomplete_reviewreview_detail==review_contentcomplete_reviewreview_detail && $review_contentcomplete_reviewstage_arr==review_contentcomplete_reviewstage_arr && $review_contentcomplete_reviewstage_list==review_contentcomplete_reviewstage_list);
+                                eval((RuleUtils.test($review_contentcomplete_reviewreview_detail.get("type"),"EQ","TEST_CASE")))
+                                ]]>
+                            </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode1_prepareparam4" sourceRef="rawsfcode1" targetRef="prepareparam4">
+                    </sequenceFlow>
+                    <sequenceFlow id="denotify4_rawsfcode1" sourceRef="denotify4" targetRef="rawsfcode1">
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-debugparam2" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam2_end_line"></exclusiveGateway>
                             <sequenceFlow id="debugparam2_gateway-debugparam2_gatewayline" sourceRef="debugparam2" targetRef="gateway-debugparam2"></sequenceFlow>
@@ -178,5 +210,9 @@
                             <sequenceFlow id="prepareparam3_gateway-prepareparam3_gatewayline" sourceRef="prepareparam3" targetRef="gateway-prepareparam3"></sequenceFlow>
                             <sequenceFlow id="gateway-prepareparam3_end_line" sourceRef="gateway-prepareparam3" targetRef="gateway-prepareparam3_end"/>
                             <endEvent id="gateway-prepareparam3_end" name="end"/>
+                            <exclusiveGateway id="gateway-prepareparam6" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam6_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam6_gateway-prepareparam6_gatewayline" sourceRef="prepareparam6" targetRef="gateway-prepareparam6"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam6_end_line" sourceRef="gateway-prepareparam6" targetRef="gateway-prepareparam6_end"/>
+                            <endEvent id="gateway-prepareparam6_end" name="end"/>
         </process>
     </definitions>

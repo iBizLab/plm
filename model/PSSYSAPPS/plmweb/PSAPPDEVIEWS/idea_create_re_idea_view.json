@@ -287,6 +287,12 @@
       "createDVT" : "APPDATA",
       "createDV" : "product"
     }, {
+      "id" : "dynamic_new",
+      "hidden" : true,
+      "dataType" : 25,
+      "createDVT" : "APPDATA",
+      "createDV" : "dynamicnew"
+    }, {
       "id" : "category_name",
       "dataType" : 25,
       "getPSAppDEField" : {
@@ -358,15 +364,15 @@
         "lanResTag" : "CONTROL.DEFORM.IDEA.QUICK_CREATE.FORMPAGE.FORMPAGE1"
       },
       "caption" : "基本信息",
-      "codeName" : "formpage1",
+      "codeName" : "formpage",
       "detailStyle" : "DEFAULT",
       "detailType" : "FORMPAGE",
-      "name" : "formpage1",
+      "name" : "formpage",
       "getPSDEFormDetails" : [ {
-        "codeName" : "grouppanel1",
+        "codeName" : "left_group",
         "detailStyle" : "DEFAULT",
         "detailType" : "GROUPPANEL",
-        "name" : "grouppanel1",
+        "name" : "left_group",
         "getPSDEFormDetails" : [ {
           "getCapPSLanguageRes" : {
             "lanResTag" : "DEF.LNAME.TITLE"
@@ -406,78 +412,57 @@
           "showCaption" : true
         }, {
           "getCapPSLanguageRes" : {
-            "lanResTag" : "CONTROL.DEFORM.IDEA.QUICK_CREATE.GROUPPANEL.GROUPPANEL3"
+            "lanResTag" : "CONTROL.DEFORM.IDEA.QUICK_CREATE.FORMITEM.DESCRIPTION"
           },
           "caption" : "描述",
-          "codeName" : "grouppanel3",
+          "codeName" : "description",
+          "dataType" : 21,
           "detailStyle" : "DEFAULT",
-          "detailType" : "GROUPPANEL",
-          "modelState" : 540672,
-          "name" : "grouppanel3",
-          "getPSDEFormDetails" : [ {
-            "getCapPSLanguageRes" : {
-              "lanResTag" : "CONTROL.DEFORM.IDEA.QUICK_CREATE.FORMITEM.DESCRIPTION"
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "itemHeight" : 470.0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "description",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "DESCRIPTION",
+            "codeName" : "description"
+          },
+          "getPSEditor" : {
+            "editorHeight" : 450.0,
+            "editorParams" : {
+              "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
+              "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
+              "MAXHEIGHT" : "450",
+              "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
+              "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
+              "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
+              "MODE" : "default",
+              "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
+              "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
+              "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
+              "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : context.discuss_topic? `discuss_topics/${context.discuss_topic}/discuss_members/fetch_default` : ''}`",
+              "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+              "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
+              "QUOTEURL" : "`recents/fetch_recent_access`"
             },
-            "caption" : "描述",
-            "codeName" : "description",
-            "dataType" : 21,
-            "detailStyle" : "DEFAULT",
-            "detailType" : "FORMITEM",
-            "enableCond" : 3,
-            "ignoreInput" : 0,
-            "itemHeight" : 450.0,
-            "labelPos" : "NONE",
-            "labelWidth" : 0,
+            "editorStyle" : "COLLAPSE",
+            "editorType" : "HTMLEDITOR",
             "name" : "description",
-            "noPrivDisplayMode" : 1,
-            "getPSAppDEField" : {
-              "name" : "DESCRIPTION",
-              "codeName" : "description"
+            "getPSSysPFPlugin" : {
+              "pluginType" : "EDITOR_CUSTOMSTYLE",
+              "pluginCode" : "COMMENT",
+              "runtimeObject" : true
             },
-            "getPSEditor" : {
-              "editorHeight" : 450.0,
-              "editorParams" : {
-                "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
-                "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
-                "MAXHEIGHT" : "450",
-                "QUOTECODELISTMAP" : "{\"type\":\"plmweb.base__recent_visite\"}",
-                "QUOTEFIELDMAP" : "{\"identifier\":\"show_identifier\",\"name\":\"name\",\"id\":\"id\",\"owner_subtype\":\"owner_subtype\",\"owner_id\":\"owner_id\",\"owner_type\":\"owner_type\",\"recent_parent\":\"recent_parent\"}",
-                "QUOTEPARAMS" : "{\"sort\":\"update_time,desc\"}",
-                "MODE" : "default",
-                "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1); } return controller.getNodeInfo({ icon, ...item })})",
-                "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
-                "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"owner_id\":\"${data.owner_id}\",\"owner_type\":\"${data.owner_type}\",\"owner_subtype\":\"${data.owner_subtype}\",\"recent_parent\":\"${data.recent_parent}\"}`",
-                "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : context.discuss_topic? `discuss_topics/${context.discuss_topic}/discuss_members/fetch_default` : ''}`",
-                "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
-                "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
-                "QUOTEURL" : "`recents/fetch_recent_access`"
-              },
-              "editorStyle" : "COLLAPSE",
-              "editorType" : "HTMLEDITOR",
-              "name" : "description",
-              "getPSSysPFPlugin" : {
-                "pluginType" : "EDITOR_CUSTOMSTYLE",
-                "pluginCode" : "COMMENT",
-                "runtimeObject" : true
-              },
-              "placeHolder" : "输入描述"
-            },
-            "getPSLayoutPos" : {
-              "colMD" : 24,
-              "layout" : "TABLE_24COL"
-            },
-            "allowEmpty" : true
-          } ],
-          "getPSLayout" : {
-            "childColMD" : 24,
-            "columnCount" : 24,
-            "layout" : "TABLE_24COL"
+            "placeHolder" : "输入描述"
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "infoGroupMode" : false,
+          "allowEmpty" : true,
           "showCaption" : true
         }, {
           "actionGroupExtractMode" : "ITEM",
@@ -485,11 +470,11 @@
             "lanResTag" : "CONTROL.DEFORM.IDEA.QUICK_CREATE.GROUPPANEL.GROUPPANEL2"
           },
           "caption" : "附件",
-          "codeName" : "grouppanel2",
+          "codeName" : "attachment",
           "detailStyle" : "DEFAULT",
           "detailType" : "GROUPPANEL",
           "modelState" : 540672,
-          "name" : "grouppanel2",
+          "name" : "attachment",
           "getPSDEFormDetails" : [ {
             "codeName" : "attachments",
             "getContentPSControl" : {
@@ -1062,6 +1047,9 @@
           "colXS" : 16,
           "layout" : "TABLE_24COL"
         },
+        "getPSSysCss" : {
+          "cssName" : "new_create_style"
+        },
         "infoGroupMode" : false,
         "showCaption" : false
       }, {
@@ -1069,10 +1057,10 @@
           "lanResTag" : "CONTROL.DEFORM.IDEA.QUICK_CREATE.GROUPPANEL.GROUP1"
         },
         "caption" : "需求基本信息",
-        "codeName" : "group1",
+        "codeName" : "right_group",
         "detailStyle" : "DEFAULT",
         "detailType" : "GROUPPANEL",
-        "name" : "group1",
+        "name" : "right_group",
         "getPSDEFormDetails" : [ {
           "getCapPSLanguageRes" : {
             "lanResTag" : "DEF.LNAME.PRODUCT_NAME"
@@ -1097,12 +1085,21 @@
             "logicCat" : "ITEMENABLE",
             "logicType" : "GROUP",
             "getPSDEFDLogics" : [ {
-              "condOP" : "ISNULL",
-              "dEFDName" : "checkid",
-              "logicType" : "SINGLE",
-              "name" : "checkid值为空(Nil)"
+              "groupOP" : "OR",
+              "logicType" : "GROUP",
+              "getPSDEFDLogics" : [ {
+                "condOP" : "ISNULL",
+                "dEFDName" : "checkid",
+                "logicType" : "SINGLE",
+                "name" : "checkid值为空(Nil)"
+              }, {
+                "condOP" : "ISNOTNULL",
+                "dEFDName" : "dynamic_new",
+                "logicType" : "SINGLE"
+              } ],
+              "notMode" : false
             } ],
-            "relatedDetailNames" : [ "checkid" ],
+            "relatedDetailNames" : [ "checkid", "dynamic_new" ],
             "notMode" : false
           } ],
           "getPSEditor" : {
@@ -1164,6 +1161,30 @@
           "getPSEditor" : {
             "editorType" : "HIDDEN",
             "name" : "checkid"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true
+        }, {
+          "caption" : "动态新建",
+          "codeName" : "dynamic_new",
+          "createDV" : "dynamicnew",
+          "createDVT" : "APPDATA",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "NONE",
+          "labelWidth" : 0,
+          "name" : "dynamic_new",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "dynamic_new"
           },
           "getPSLayoutPos" : {
             "colMD" : 24,

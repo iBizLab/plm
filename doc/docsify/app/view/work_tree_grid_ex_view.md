@@ -10,8 +10,8 @@
 
 
 ### 关联界面行为
-  * [工作(WORK)](module/Base/work) : [选择项目集](module/Base/work#界面行为)
   * [工作(WORK)](module/Base/work) : [选择项目](module/Base/work#界面行为)
+  * [工作(WORK)](module/Base/work) : [选择项目集](module/Base/work#界面行为)
 
 ### 关联视图
   * [选择项目集(portfolio_mpick_up_view)](app/view/portfolio_mpick_up_view)

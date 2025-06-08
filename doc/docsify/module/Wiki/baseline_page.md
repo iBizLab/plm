@@ -95,6 +95,7 @@
 | --------| --------| -------- |------------|------------|------------|
 | 移出基线 | shift_out_baseline | 移出 |多项数据（主键）|<details><summary>后台调用</summary>[shift_out_baseline](#行为)||
 | 基线规划页面 | baseline_page | 基线规划页面 |无数据|<details><summary>后台调用</summary>[shift_in_baseline](#行为)||
+| 页面版本对比 | page_version_comparison | 版本对比 |单项数据|<details><summary>打开视图或向导（模态）</summary>[版本对比](app/view/article_page_version_comparison_view)</details>||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

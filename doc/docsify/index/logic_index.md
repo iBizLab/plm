@@ -295,6 +295,7 @@
 |[状态变更附加逻辑](module/ProdMgmt/idea/logic/state_onchange)|state_onchange|属性逻辑||需求数据状态变更时触发相应的通知消息，同时生成流转记录|
 |[生成最近访问](module/ProdMgmt/idea/logic/create_recent)|create_recent|无||在用户对需求数据进行了get或update操作时生成相应的访问记录|
 |[获取产品成员](module/ProdMgmt/idea/logic/get_product_member)|get_product_member|无||获取产品成员信息，用于判断当前用户权限|
+|[获取变更类型与变更版本](module/ProdMgmt/idea/logic/set_change_type)|set_change_type|无|||
 |[获取基线名称](module/ProdMgmt/idea/logic/get_baseline_name)|get_baseline_name|无||需求主视图获取所属基线|
 |[获取客户分数](module/ProdMgmt/idea/logic/get_customer_score)|get_customer_score|无||获取客户分数数据|
 |[获取工单数量](module/ProdMgmt/idea/logic/get_ticket_num)|get_ticket_num|无||获取工单数量数据|
@@ -525,6 +526,7 @@
 |[产品组件权限计数器](module/ProdMgmt/product/logic/product_addon_authority)|product_addon_authority|无||获取产品组件权限|
 |[其他实体关联产品](module/ProdMgmt/product/logic/other_re_product)|other_re_product|无||产品实体关联操作，生成正向，反向关联数据|
 |[创建之前](module/ProdMgmt/product/logic/before_create)|before_create|无||创建产品之前，对添加的产品成员进行处理|
+|[创建产品流程准则](module/ProdMgmt/product/logic/auto_create_guideline)|auto_create_guideline|无||创建产品后，自动生成产品内的评审规则|
 |[删除](module/ProdMgmt/product/logic/delete)|delete|无||产品数据的逻辑删除，修改产品的是否删除属性值|
 |[取消星标](module/ProdMgmt/product/logic/un_favorite)|un_favorite|无||产品取消星标|
 |[变更管理员角色](module/ProdMgmt/product/logic/change_admin_role)|change_admin_role|无||批量变更管理员角色身份（role_id）|
@@ -763,6 +765,7 @@
 |[撤销评审](module/TestMgmt/review/logic/repeal_review)|repeal_review|无||撤销评审，并重置评审结果|
 |[添加内容](module/TestMgmt/review/logic/add_review_content)|add_review_content|无||规划用例，将用例规划至评审内，生成正反向关联数据|
 |[获取当前阶段信息](module/TestMgmt/review/logic/get_current_stage_info)|get_current_stage_info|无||获取当前阶段信息，用于完成评审按钮使用|
+|[获取重定向数据](module/TestMgmt/review/logic/get_redirect_data)|get_redirect_data|无|||
 
 
 
@@ -770,7 +773,8 @@
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
-|[变更测试用例](module/TestMgmt/review_content/logic/change_test_case)|change_test_case|无||完成评审后变更测试用例的评审状态|
+|[创建评审数据](module/TestMgmt/review_content/logic/create_review_data)|create_review_data|无|||
+|[变更评审状态](module/TestMgmt/review_content/logic/change_review_state)|change_review_state|无||完成评审后变更测试用例的评审状态|
 |[完成评审](module/TestMgmt/review_content/logic/complete_review)|complete_review|无||完成评审，判断是否为最终阶段，如果是变更评审的状态|
 |[开始评审](module/TestMgmt/review_content/logic/start_review)|start_review|无||开启当前阶段评审|
 |[提交评审](module/TestMgmt/review_content/logic/submit_review)|submit_review|无||测试|
@@ -786,6 +790,14 @@
 
 
 
+## [产品需求评审内容(REVIEW_CONTENT_IDEA)](module/ProdMgmt/review_content_idea.md) :id=review_content_idea
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[无操作](module/ProdMgmt/review_content_idea/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
+|[评审结果条数](module/ProdMgmt/review_content_idea/logic/review_content_total)|review_content_total|无||查询评审结果总条数与已评审条数|
+
+
 ## [评审结果(REVIEW_RESULT)](module/TestMgmt/review_result.md) :id=review_result
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
@@ -793,6 +805,12 @@
 |[设置评审结果](module/TestMgmt/review_result/logic/set_result)|set_result|无||设置评审结果|
 
 
+
+## [评审阶段(REVIEW_STAGE)](module/TestMgmt/review_stage.md) :id=review_stage
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[参与评审人](module/TestMgmt/review_stage/logic/reviewers)|reviewers|无|||
 
 
 ## [评审向导(REVIEW_WIZARD)](module/TestMgmt/review_wizard.md) :id=review_wizard
@@ -802,6 +820,7 @@
 |[创建后修改附加数据归属](module/TestMgmt/review_wizard/logic/fix_nested_data)|fix_nested_data|无||创建后修改附加数据归属|
 |[创建后附加评审规则](module/TestMgmt/review_wizard/logic/add_guideline_after_created)|add_guideline_after_created|无|| 进行中|
 |[填充评审规则](module/TestMgmt/review_wizard/logic/fill_guideline)|fill_guideline|无||获取评审规则并返回|
+|[评审新建通知](module/TestMgmt/review_wizard/logic/create_review_notify)|create_review_notify|无|||
 
 
 

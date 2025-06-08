@@ -79,6 +79,35 @@
     },
     "topPos" : 208
   }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/Update.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "leftPos" : 639,
+    "logicNodeType" : "DEACTION",
+    "name" : "更新评审",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "topPos" : 208
+  }, {
     "codeName" : "DEBUGPARAM2",
     "getDstPSDELogicParam" : {
       "modelref" : true,
@@ -318,35 +347,6 @@
     } ],
     "topPos" : 208
   }, {
-    "codeName" : "DEACTION1",
-    "getDstPSDEAction" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/Update.json"
-    },
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
-    },
-    "leftPos" : 639,
-    "logicNodeType" : "DEACTION",
-    "name" : "更新评审",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "LOOPSUBCALL1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEACTION1"
-      }
-    } ],
-    "topPos" : 208
-  }, {
     "codeName" : "PREPAREPARAM3",
     "leftPos" : -890,
     "logicNodeType" : "PREPAREPARAM",
@@ -540,17 +540,31 @@
     "logicNodeType" : "PREPAREPARAM",
     "name" : "准备参数",
     "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "REVIEWER",
+      "dstFieldName" : "NEXT_REVIEWER",
       "getDstPSDELogicParam" : {
         "modelref" : true,
         "id" : "Default"
       },
-      "name" : "reviewer_temp[reviewer] ==> Default[REVIEWER]",
+      "name" : "reviewer_temp[reviewer] ==> Default[NEXT_REVIEWER]",
       "paramAction" : "SETPARAMVALUE",
       "srcFieldName" : "reviewer",
       "getSrcPSDELogicParam" : {
         "modelref" : true,
         "id" : "reviewer_temp"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "REVIEWER",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "Default[CREATE_MAN] ==> Default[REVIEWER]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "CREATE_MAN",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
       },
       "srcValueType" : "SRCDLPARAM"
     } ],

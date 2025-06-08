@@ -7,9 +7,39 @@
   "name" : "创建测试库流程准则",
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
-    "leftPos" : 100,
+    "leftPos" : 248,
     "logicNodeType" : "BEGIN",
     "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM7"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : -256,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEACTION2",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/parameter/PSDEACTIONS/Create.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "parameter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/parameter.json"
+    },
+    "leftPos" : 208,
+    "logicNodeType" : "DEACTION",
+    "name" : "创建配置参数",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -18,11 +48,10 @@
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "Begin"
+        "id" : "DEACTION2"
       }
     } ],
-    "topPos" : 120,
-    "parallelOutput" : true
+    "topPos" : 20
   }, {
     "codeName" : "PREPAREPARAM2",
     "leftPos" : 208,
@@ -61,6 +90,58 @@
       "srcValueType" : "SRCVALUE"
     } ],
     "topPos" : 128
+  }, {
+    "codeName" : "PREPAREPARAM7",
+    "leftPos" : 208,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置配置参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM7"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "OWNER_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "parameter"
+      },
+      "name" : "Default[ID] ==> parameter[OWNER_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "parameter"
+      },
+      "name" : "直接值[LIBRARY] ==> parameter[OWNER_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "LIBRARY",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "OWNER_SUBTYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "parameter"
+      },
+      "name" : "直接值[RUNFAILURE] ==> parameter[OWNER_SUBTYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "RUNFAILURE",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : -90
   }, {
     "codeName" : "DEDATASET1",
     "getDstPSDEDataSet" : {
@@ -512,6 +593,15 @@
     "getParamPSDataEntity" : {
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_stage.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "parameter",
+    "logicName" : "系统参数",
+    "name" : "系统参数",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/parameter.json"
     },
     "entityParam" : true
   }, {

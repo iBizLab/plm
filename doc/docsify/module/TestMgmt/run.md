@@ -25,7 +25,7 @@
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |编号|IDENTIFIER|外键值附加数据|100|是||
 |是否最新|IS_NEWEST|是否逻辑||是||
-|重要程度|LEVEL|[外键值附加数据](index/dictionary_index#test_case_level "用例重要程度")|60|是||
+|重要程度|LEVEL|外键值附加数据|60|是||
 |测试库标识|LIBRARY_ID|外键值附加数据|100|是||
 |测试库编号|LIBRARY_IDENTIFIER|外键值附加数据|15|是||
 |测试库是否归档|LIBRARY_IS_ARCHIVED|外键值附加数据||是||
@@ -37,23 +37,24 @@
 |测试计划标识|PLAN_ID|外键值|100|是||
 |测试计划|PLAN_NAME|外键值文本|200|是||
 |前置条件|PRECONDITION|外键值附加数据|1048576|是||
-|优先级|PRIORITY|[单项选择(文本值)](index/dictionary_index#work_item_priority "优先级")|60|是||
+|优先级|PRIORITY|单项选择(文本值)|60|是||
 |最近创建日期|RECENT_CREATE_DAYS|整型||是||
 |关联缺陷数|RELATION_TOTAL_BUG|数值||是||
 |关联执行结果数|RELATION_TOTAL_HISTORY|数值||是||
 |剩余工时|REMAINING_WORKLOAD|数值||是||
 |备注|REMARK|长文本，长度1000|2000|是||
+|评审结果|REVIEW_RESULT_STATE|[外键值附加数据](index/dictionary_index#review_result "评审结果")|60|是||
 |结果附件|RUN_ATTACHMENT|一对多关系数据集合|1048576|是||
 |编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
-|评审状态|STATE|[外键值附加数据](index/dictionary_index#case_state "用例状态")|60|是||
+|用例状态|STATE|外键值附加数据|60|是||
 |执行结果|STATUS|[单项选择(文本值)](index/dictionary_index#run_status "执行用例状态")|60|是||
 |步骤|STEPS|一对多关系数据集合|1048576|是||
 |模块路径|SUITES|外键值附加数据|500|是||
 |用例模块标识|SUITE_ID|外键值附加数据|100|是||
 |所属模块|SUITE_NAME|外键值附加数据|200|是||
-|测试类型|TEST_TYPE|[外键值附加数据](index/dictionary_index#test_case_test_type "测试类型")|60|是||
+|测试类型|TEST_TYPE|外键值附加数据|60|是||
 |标题|TITLE|外键值附加数据|500|是||
-|用例类型|TYPE|[外键值附加数据](index/dictionary_index#test_case_type "用例类型")|60|是||
+|用例类型|TYPE|外键值附加数据|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 |工时进度|WORKLOAD_SCHEDULE|数值||是||
@@ -89,11 +90,11 @@
 |预估工时|ESTIMATED_WORKLOAD|数值||是||
 |实际工时|ACTUAL_WORKLOAD|数值||是||
 |所属测试库|LIBRARY_NAME|外键值附加数据|200|是||
-|用例类型|TYPE|[外键值附加数据](index/dictionary_index#test_case_type "用例类型")|60|是||
-|重要程度|LEVEL|[外键值附加数据](index/dictionary_index#test_case_level "用例重要程度")|60|是||
-|评审状态|STATE|[外键值附加数据](index/dictionary_index#case_state "用例状态")|60|是||
+|用例类型|TYPE|外键值附加数据|60|是||
+|重要程度|LEVEL|外键值附加数据|60|是||
+|用例状态|STATE|外键值附加数据|60|是||
 |维护人|MAINTENANCE_NAME|外键值附加数据|200|是||
-|测试类型|TEST_TYPE|[外键值附加数据](index/dictionary_index#test_case_test_type "测试类型")|60|是||
+|测试类型|TEST_TYPE|外键值附加数据|60|是||
 |编号|IDENTIFIER|外键值附加数据|100|是||
 |测试库标识|LIBRARY_ID|外键值附加数据|100|是||
 |标题|TITLE|外键值附加数据|500|是||
@@ -103,7 +104,7 @@
 |测试计划标识|PLAN_ID|外键值|100|是||
 |测试用例标识|CASE_ID|外键值|100|是||
 |执行结果|STATUS|[单项选择(文本值)](index/dictionary_index#run_status "执行用例状态")|60|是||
-|优先级|PRIORITY|[单项选择(文本值)](index/dictionary_index#work_item_priority "优先级")|60|是||
+|优先级|PRIORITY|单项选择(文本值)|60|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |bi测试计划名称|BI_PLAN_NAME|文本，可指定长度|200|是||
 |测试库是否删除|LIBRARY_IS_DELETED|外键值附加数据||是||

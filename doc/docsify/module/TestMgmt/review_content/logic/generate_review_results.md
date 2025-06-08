@@ -15,12 +15,14 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./generate_review_results#begin {"开始"}]]
+state "测试用例" as PREPAREPARAM6  [[$./generate_review_results#prepareparam6 {"测试用例"}]]
 state "结束" as END1 <<end>> [[$./generate_review_results#end1 {"结束"}]]
 state "调试逻辑参数" as DEBUGPARAM2  [[$./generate_review_results#debugparam2 {"调试逻辑参数"}]]
-state "获取所属测试库设置流程准则的过滤参数" as PREPAREPARAM1  [[$./generate_review_results#prepareparam1 {"获取所属测试库设置流程准则的过滤参数"}]]
+state "通用参数" as PREPAREPARAM1  [[$./generate_review_results#prepareparam1 {"通用参数"}]]
 state "查询流程准则" as DEDATASET1  [[$./generate_review_results#dedataset1 {"查询流程准则"}]]
 state "获取流程准则信息，设置评审阶段过滤参数" as PREPAREPARAM2  [[$./generate_review_results#prepareparam2 {"获取流程准则信息，设置评审阶段过滤参数"}]]
 state "绑定评审阶段数据" as PREPAREPARAM4  [[$./generate_review_results#prepareparam4 {"绑定评审阶段数据"}]]
+state "产品需求" as PREPAREPARAM5  [[$./generate_review_results#prepareparam5 {"产品需求"}]]
 state "循环评审阶段" as LOOPSUBCALL1  [[$./generate_review_results#loopsubcall1 {"循环评审阶段"}]] #green {
 state "设置新建的评审结果数据" as PREPAREPARAM3  [[$./generate_review_results#prepareparam3 {"设置新建的评审结果数据"}]]
 state "创建前的评审结果" as DEBUGPARAM3  [[$./generate_review_results#debugparam3 {"创建前的评审结果"}]]
@@ -30,7 +32,8 @@ state "重置评审结果" as RENEWPARAM1  [[$./generate_review_results#renewpar
 
 
 Begin --> DEBUGPARAM2
-DEBUGPARAM2 --> PREPAREPARAM1
+DEBUGPARAM2 --> PREPAREPARAM6 : [[$./generate_review_results#debugparam2-prepareparam6{连接名称} 连接名称]]
+PREPAREPARAM6 --> PREPAREPARAM1
 PREPAREPARAM1 --> DEDATASET1
 DEDATASET1 --> PREPAREPARAM2
 PREPAREPARAM2 --> PREPAREPARAM4
@@ -40,6 +43,8 @@ PREPAREPARAM3 --> DEBUGPARAM3
 DEBUGPARAM3 --> DEACTION1
 DEACTION1 --> RENEWPARAM1
 LOOPSUBCALL1 --> END1
+DEBUGPARAM2 --> PREPAREPARAM5 : [[$./generate_review_results#debugparam2-prepareparam5{连接名称} 连接名称]]
+PREPAREPARAM5 --> PREPAREPARAM1
 
 
 @enduml
@@ -47,6 +52,14 @@ LOOPSUBCALL1 --> END1
 
 
 ### 处理步骤说明
+
+#### 测试用例 :id=PREPAREPARAM6<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`Default(传入变量).TEST_CASE(测试用例)` 绑定给  `test_case(测试用例)`
+2. 将`test_case(测试用例).TEST_LIBRARY_ID(测试库)` 设置给  `guideline_filter(流程准则过滤器).N_SCOPE_ID_EQ`
+3. 将`LIBRARY` 设置给  `guideline_filter(流程准则过滤器).N_OBJECT_TYPE_EQ`
 
 #### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
 
@@ -67,14 +80,11 @@ LOOPSUBCALL1 --> END1
 > 调试输出参数`Default(传入变量)`的详细信息
 
 
-#### 获取所属测试库设置流程准则的过滤参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 通用参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
-1. 将`Default(传入变量).TEST_CASE(测试用例)` 绑定给  `test_case(测试用例)`
-2. 将`test_case(测试用例).TEST_LIBRARY_ID(测试库)` 设置给  `guideline_filter(流程准则过滤器).N_SCOPE_ID_EQ`
-3. 将`LIBRARY` 设置给  `guideline_filter(流程准则过滤器).N_OBJECT_TYPE_EQ`
-4. 将`Default(传入变量).TARGET_TYPE(关联目标类型)` 设置给  `guideline_filter(流程准则过滤器).N_SUBJECT_TYPE_EQ`
+1. 将`Default(传入变量).TARGET_TYPE(关联目标类型)` 设置给  `guideline_filter(流程准则过滤器).N_SUBJECT_TYPE_EQ`
 
 #### 查询流程准则 :id=DEDATASET1<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
 
@@ -102,6 +112,14 @@ LOOPSUBCALL1 --> END1
 
 
 循环参数`review_stage_list(评审阶段对象列表)`，子循环参数使用`review_stage(评审阶段)`
+#### 产品需求 :id=PREPAREPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`Default(传入变量).IDEA(产品需求)` 绑定给  `idea(产品需求)`
+2. 将`idea(产品需求).PRODUCT_ID(产品)` 设置给  `guideline_filter(流程准则过滤器).N_SCOPE_ID_EQ`
+3. 将`PRODUCT` 设置给  `guideline_filter(流程准则过滤器).N_OBJECT_TYPE_EQ`
+
 #### 设置新建的评审结果数据 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -132,6 +150,14 @@ LOOPSUBCALL1 --> END1
 
 重建参数```review_result(评审结果)```
 
+### 连接条件说明
+#### 连接名称 :id=DEBUGPARAM2-PREPAREPARAM6
+
+`Default(传入变量).target_type(关联目标类型)` EQ `TEST_CASE`
+#### 连接名称 :id=DEBUGPARAM2-PREPAREPARAM5
+
+`Default(传入变量).target_type(关联目标类型)` EQ `IDEA`
+
 
 ### 实体逻辑参数
 
@@ -141,6 +167,7 @@ LOOPSUBCALL1 --> END1
 |流程准则|guideline|数据对象|[流程准则(GUIDELINE)](module/TestMgmt/guideline.md)||
 |流程准则过滤器|guideline_filter|过滤器|||
 |流程准则分页查询结果|guideline_pages|分页查询|||
+|产品需求|idea|数据对象|[需求(IDEA)](module/ProdMgmt/idea.md)||
 |评审结果|review_result|数据对象|[评审结果(REVIEW_RESULT)](module/TestMgmt/review_result.md)||
 |评审阶段|review_stage|数据对象|[评审阶段(REVIEW_STAGE)](module/TestMgmt/review_stage.md)||
 |过滤器|review_stage_filter|过滤器|||

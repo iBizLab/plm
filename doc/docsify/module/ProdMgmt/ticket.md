@@ -26,7 +26,7 @@
 |是否已归档|IS_ARCHIVED|是否逻辑||是||
 |是否已删除|IS_DELETED|是否逻辑||是||
 |名称|NAME|文本，可指定长度|200|是||
-|优先级|PRIORITY|[单项选择(文本值)](index/dictionary_index#ticket_priority "工单优先级")|60|是||
+|优先级|PRIORITY|单项选择(文本值)|60|是||
 |产品标识|PRODUCT_ID|外键值|100|否||
 |产品标识|PRODUCT_IDENTIFIER|外键值附加数据|15|是||
 |产品是否归档|PRODUCT_IS_ARCHIVED|外键值附加数据||是||
@@ -35,7 +35,7 @@
 |最近创建日期|RECENT_CREATE_DAYS|整型||是||
 |工单数|REP_NUM|文本，可指定长度|200|是||
 |编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
-|解决方案|SOLUTION|[单项选择(文本值)](index/dictionary_index#solutions "工单解决方案")|60|是||
+|解决方案|SOLUTION|单项选择(文本值)|60|是||
 |解决办法|SOLUTION_WAY|长文本，长度1000|2000|是||
 |状态|STATE|单项选择(文本值)|60|否||
 |提交时间|SUBMITTED_AT|日期时间型||是||
@@ -98,8 +98,8 @@
 |产品标识|PRODUCT_ID|外键值|100|否||
 |负责人标识|ASSIGNEE_ID|外键值|100|是||
 |类型|TYPE|单项选择(文本值)|100|是||
-|解决方案|SOLUTION|[单项选择(文本值)](index/dictionary_index#solutions "工单解决方案")|60|是||
-|优先级|PRIORITY|[单项选择(文本值)](index/dictionary_index#ticket_priority "工单优先级")|60|是||
+|解决方案|SOLUTION|单项选择(文本值)|60|是||
+|优先级|PRIORITY|单项选择(文本值)|60|是||
 |状态|STATE|单项选择(文本值)|60|否||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |所属产品|PRODUCT_NAME|外键值文本|200|是||

@@ -45,8 +45,8 @@ view.layoutPanel.panelItems.button_calluilogic.state.visible = false
 
 
 ### 关联界面行为
-  * [关联(RELATION)](module/Base/relation) : [工作项取消关联测试用例](module/Base/relation#界面行为)
   * [关联(RELATION)](module/Base/relation) : [添加关联](module/Base/relation#界面行为)
+  * [关联(RELATION)](module/Base/relation) : [工作项取消关联测试用例](module/Base/relation#界面行为)
 
 ### 关联界面逻辑
   * [用例(TEST_CASE)](module/TestMgmt/test_case) : [工作项关联用例](module/TestMgmt/test_case/uilogic/work_item_relation_test_case)

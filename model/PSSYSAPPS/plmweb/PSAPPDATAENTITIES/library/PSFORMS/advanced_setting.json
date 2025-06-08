@@ -1,4 +1,5 @@
 {
+  "autoSaveMode" : 1,
   "codeName" : "advanced_setting",
   "controlType" : "FORM",
   "getCreatePSControlAction" : {
@@ -63,11 +64,19 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
     }
   },
+  "hookEventNames" : [ "ONLOADSUCCESS" ],
   "logicName" : "高级设置",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
   },
+  "getPSControlLogics" : [ {
+    "eventNames" : "onLoadSuccess",
+    "logicTag" : "form",
+    "logicType" : "SCRIPT",
+    "name" : "loadsuccess",
+    "scriptCode" : "console.log('ctrl', ctrl);"
+  } ],
   "getPSDEFormItems" : [ {
     "id" : "srfupdatedate",
     "hidden" : true,
@@ -400,6 +409,240 @@
       "infoGroupMode" : false,
       "showCaption" : true
     }, {
+      "caption" : "配置参数",
+      "codeName" : "grouppanel3",
+      "detailStyle" : "DEFAULT",
+      "detailType" : "GROUPPANEL",
+      "name" : "grouppanel3",
+      "getPSDEFormDetails" : [ {
+        "codeName" : "grouppanel4",
+        "detailStyle" : "DEFAULT",
+        "detailType" : "GROUPPANEL",
+        "name" : "grouppanel4",
+        "getPSDEFormDetails" : [ {
+          "codeName" : "rawitem4",
+          "contentType" : "RAW",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "RAWITEM",
+          "name" : "rawitem4",
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSRawItem" : {
+            "caption" : "测试用例执行失败，是否自动触发缺陷工作项。",
+            "contentType" : "RAW",
+            "name" : "rawitem4",
+            "rawItemHeight" : -1.0,
+            "rawItemWidth" : -1.0
+          },
+          "rawContent" : "测试用例执行失败，是否自动触发缺陷工作项。",
+          "rawItemHeight" : -1.0,
+          "rawItemWidth" : -1.0,
+          "showCaption" : true
+        }, {
+          "codeName" : "rawitem5",
+          "contentType" : "HTML",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "RAWITEM",
+          "htmlContent" : "<p><span style=\"font-size: 8pt; color: #e03e2d;\">温馨提示：测试计划需绑定项目后，此配置才会生效</span></p>",
+          "name" : "rawitem5",
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSRawItem" : {
+            "content" : "<p><span style=\"font-size: 8pt; color: #e03e2d;\">温馨提示：测试计划需绑定项目后，此配置才会生效</span></p>",
+            "contentType" : "HTML",
+            "name" : "rawitem5",
+            "rawItemHeight" : -1.0,
+            "rawItemWidth" : -1.0
+          },
+          "rawItemHeight" : -1.0,
+          "rawItemWidth" : -1.0,
+          "showCaption" : true
+        } ],
+        "getPSLayout" : {
+          "childColMD" : 24,
+          "columnCount" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 4,
+          "colMD" : 4,
+          "layout" : "TABLE_24COL"
+        },
+        "getPSSysCss" : {
+          "cssName" : "library_setting_style"
+        },
+        "infoGroupMode" : false,
+        "showCaption" : false
+      }, {
+        "buildInActions" : 2,
+        "codeName" : "run_parameter",
+        "contentType" : "REPEATER",
+        "detailStyle" : "DEFAULT",
+        "detailType" : "MDCTRL",
+        "fieldName" : "run_parameter",
+        "name" : "run_parameter",
+        "getPSAppDEField" : {
+          "name" : "RUN_PARAMETER",
+          "codeName" : "run_parameter"
+        },
+        "getPSDEFormDetails" : [ {
+          "caption" : "是否开启自动创建缺陷",
+          "codeName" : "val",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "fieldName" : "val",
+          "ignoreInput" : 0,
+          "labelPos" : "NONE",
+          "labelWidth" : 0,
+          "name" : "val",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "SWITCH",
+            "name" : "val"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "repeatContent" : true
+        }, {
+          "caption" : "参数标识",
+          "codeName" : "parameter_id",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "fieldName" : "id",
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "parameter_id",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "parameter_id"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true,
+          "repeatContent" : true
+        }, {
+          "caption" : "所属标识",
+          "codeName" : "owner_id",
+          "createDV" : "library",
+          "createDVT" : "APPDATA",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "fieldName" : "owner_id",
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "owner_id",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "owner_id"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "updateDV" : "library",
+          "updateDVT" : "APPDATA",
+          "allowEmpty" : true,
+          "hidden" : true,
+          "repeatContent" : true
+        }, {
+          "caption" : "所属类型",
+          "codeName" : "owner_type",
+          "createDV" : "LIBRARY",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "fieldName" : "owner_type",
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "owner_type",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "owner_type"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "updateDV" : "LIBRARY",
+          "allowEmpty" : true,
+          "hidden" : true,
+          "repeatContent" : true
+        }, {
+          "caption" : "所属对象子类型",
+          "codeName" : "owner_subtype",
+          "createDV" : "LIBRARY_RUNFAILURE",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "fieldName" : "owner_subtype",
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "owner_subtype",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "owner_subtype"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "updateDV" : "LIBRARY_RUNFAILURE",
+          "allowEmpty" : true,
+          "hidden" : true,
+          "repeatContent" : true
+        } ],
+        "getPSLayout" : {
+          "childColMD" : 24,
+          "columnCount" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 20,
+          "colMD" : 20,
+          "layout" : "TABLE_24COL"
+        },
+        "infoGroupMode" : false,
+        "showCaption" : true
+      } ],
+      "getPSLayout" : {
+        "childColLG" : 12,
+        "childColMD" : 12,
+        "columnCount" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "infoGroupMode" : false,
+      "showCaption" : true
+    }, {
       "getCapPSLanguageRes" : {
         "lanResTag" : "DEF.LNAME.ID"
       },
@@ -474,6 +717,7 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
     }
   },
+  "enableAutoSave" : true,
   "noTabHeader" : true,
   "modelid" : "c8dc2e0eb532be5f81f0ef3ed390fefe",
   "modeltype" : "PSDEFORM_EDITFORM"

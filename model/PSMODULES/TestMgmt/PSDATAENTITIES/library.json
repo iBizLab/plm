@@ -5,10 +5,18 @@
     "name" : "DEFAULT",
     "getPSDEACModeDataItems" : [ {
       "dataType" : 25,
-      "name" : "value"
+      "name" : "value",
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
     }, {
       "dataType" : 25,
-      "name" : "text"
+      "name" : "text",
+      "getPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
     } ],
     "pagingSize" : 50,
     "defaultMode" : true,
@@ -20,18 +28,34 @@
     "name" : "DEFAULT2",
     "getPSDEACModeDataItems" : [ {
       "dataType" : 25,
-      "name" : "value"
+      "name" : "value",
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
     }, {
       "dataType" : 25,
-      "name" : "text"
+      "name" : "text",
+      "getPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
     }, {
       "format" : "%1$s",
       "dataType" : 25,
-      "name" : "id"
+      "name" : "id",
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
     }, {
       "format" : "%1$s",
       "dataType" : 25,
-      "name" : "name"
+      "name" : "name",
+      "getPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
     } ],
     "pagingSize" : 50,
     "defaultMode" : false,
@@ -934,6 +958,9 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEDRITEMS/UsrDRItem0510067711.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEDRITEMS/UsrDRItem0520769238.json"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEDRITEMS/UsrDRItem0524687602.json"
@@ -2481,6 +2508,7 @@
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEFLOGICS/recent_parent_identifier.json"
     },
+    "orderValue" : 110,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -2571,6 +2599,7 @@
     "length" : 60,
     "logicName" : "可见范围",
     "name" : "VISIBILITY",
+    "orderValue" : 120,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/visibility.json"
@@ -2653,6 +2682,7 @@
     "length" : 100,
     "logicName" : "主题色",
     "name" : "COLOR",
+    "orderValue" : 130,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -2730,6 +2760,7 @@
     "length" : 2000,
     "logicName" : "描述",
     "name" : "DESCRIPTION",
+    "orderValue" : 140,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -2807,6 +2838,7 @@
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEFLOGICS/is_archived_onchange.json"
     },
+    "orderValue" : 150,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/YesNo.json"
@@ -2887,6 +2919,7 @@
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEFLOGICS/is_deleted_onchange.json"
     },
+    "orderValue" : 160,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/YesNo.json"
@@ -2969,6 +3002,7 @@
     "length" : 200,
     "logicName" : "是否星标",
     "name" : "IS_FAVORITE",
+    "orderValue" : 230,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/YesNo.json"
@@ -3053,6 +3087,7 @@
     "length" : 60,
     "logicName" : "所属",
     "name" : "SCOPE_TYPE",
+    "orderValue" : 250,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSCODELISTS/scope_type.json"
@@ -3134,6 +3169,7 @@
     "length" : 100,
     "logicName" : "所属对象",
     "name" : "SCOPE_ID",
+    "orderValue" : 260,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -3146,6 +3182,77 @@
     "stdDataType" : 25,
     "stringLength" : 100,
     "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[RUN_PARAMETER][执行用例参数]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[RUN_PARAMETER][执行用例参数]",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[RUN_PARAMETER][执行用例参数]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "HIDDEN",
+        "name" : "[RUN_PARAMETER][执行用例参数]移动端默认",
+        "stringLength" : 1048576,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "RUN_PARAMETER",
+          "maxValue" : 1048576,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[1048576]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[1048576]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[1048576]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "run_parameter",
+    "dEFType" : 5,
+    "dataType" : "ONE2MANYDATA",
+    "importOrder" : 1000,
+    "length" : 1048576,
+    "logicName" : "执行用例参数",
+    "name" : "RUN_PARAMETER",
+    "orderValue" : 270,
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/parameter/PSDERS/DERCUSTOM_PARAMETER_LIBRARY_LIBRARY_ID.json"
+    },
+    "serviceCodeName" : "run_parameter",
+    "stdDataType" : 21,
+    "stringLength" : 1048576,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "phisicalDEField" : false,
+    "queryColumn" : false,
+    "uIAssistDEField" : true
   }, {
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -3204,6 +3311,7 @@
     "length" : 1048576,
     "logicName" : "成员",
     "name" : "MEMBERS",
+    "orderValue" : 300,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDERS/DER1N_LIBRARY_MEMBER_LIBRARY_LIBRARY_ID.json"
@@ -3303,6 +3411,7 @@
     "length" : 100,
     "logicName" : "标识",
     "name" : "ID",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -3404,6 +3513,7 @@
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEFLOGICS/recent_parent_name.json"
     },
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -3495,6 +3605,7 @@
     "length" : 100,
     "logicName" : "建立人",
     "name" : "CREATE_MAN",
+    "orderValue" : 1000,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/SysOperator.json"
@@ -3579,6 +3690,7 @@
     },
     "logicName" : "建立时间",
     "name" : "CREATE_TIME",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -3669,6 +3781,7 @@
     "length" : 100,
     "logicName" : "更新人",
     "name" : "UPDATE_MAN",
+    "orderValue" : 1000,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/SysOperator.json"
@@ -3753,6 +3866,7 @@
     },
     "logicName" : "更新时间",
     "name" : "UPDATE_TIME",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -4033,9 +4147,39 @@
     "name" : "创建测试库流程准则",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : 100,
+      "leftPos" : 248,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM7"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : -256,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEACTION2",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/parameter/PSDEACTIONS/Create.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "parameter"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/parameter.json"
+      },
+      "leftPos" : 208,
+      "logicNodeType" : "DEACTION",
+      "name" : "创建配置参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -4044,11 +4188,10 @@
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "Begin"
+          "id" : "DEACTION2"
         }
       } ],
-      "topPos" : 120,
-      "parallelOutput" : true
+      "topPos" : 20
     }, {
       "codeName" : "PREPAREPARAM2",
       "leftPos" : 208,
@@ -4087,6 +4230,58 @@
         "srcValueType" : "SRCVALUE"
       } ],
       "topPos" : 128
+    }, {
+      "codeName" : "PREPAREPARAM7",
+      "leftPos" : 208,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置配置参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM7"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "OWNER_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "parameter"
+        },
+        "name" : "Default[ID] ==> parameter[OWNER_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "OWNER_TYPE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "parameter"
+        },
+        "name" : "直接值[LIBRARY] ==> parameter[OWNER_TYPE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "LIBRARY",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "OWNER_SUBTYPE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "parameter"
+        },
+        "name" : "直接值[RUNFAILURE] ==> parameter[OWNER_SUBTYPE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "RUNFAILURE",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : -90
     }, {
       "codeName" : "DEDATASET1",
       "getDstPSDEDataSet" : {
@@ -4538,6 +4733,15 @@
       "getParamPSDataEntity" : {
         "modelref" : true,
         "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_stage.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "parameter",
+      "logicName" : "系统参数",
+      "name" : "系统参数",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/parameter.json"
       },
       "entityParam" : true
     }, {
@@ -7578,6 +7782,28 @@
       "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "执行用例参数",
+      "name" : "run_parameter",
+      "getPSDEField" : {
+        "name" : "RUN_PARAMETER",
+        "codeName" : "run_parameter"
+      },
+      "getPSDER" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/parameter/PSDERS/DERCUSTOM_PARAMETER_LIBRARY_LIBRARY_ID.json"
+      },
+      "getRefPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "parameter_dto"
+      },
+      "getRefPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/parameter.json"
+      },
+      "sourceType" : "DEFIELD",
+      "stringLength" : 1048576,
+      "type" : "DTOS"
+    }, {
       "logicName" : "成员",
       "name" : "members",
       "getPSDEField" : {
@@ -8839,6 +9065,42 @@
     "removeActionType" : 0,
     "removeOrder" : -1,
     "serviceCodeName" : "library"
+  }, {
+    "codeName" : "LIBRARY",
+    "dERSubType" : "DER1N",
+    "dERType" : "DERCUSTOM",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/parameter/PSDERS/DERCUSTOM_PARAMETER_LIBRARY_LIBRARY_ID.json",
+    "logicName" : "配置参数",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
+    },
+    "masterOrder" : 100,
+    "masterRS" : 13,
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/parameter.json"
+    },
+    "name" : "DERCUSTOM_PARAMETER_LIBRARY_LIBRARY_ID",
+    "getNestedPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getOne2XDataPSDEField" : {
+      "name" : "RUN_PARAMETER",
+      "codeName" : "run_parameter"
+    },
+    "orderValue" : 100,
+    "parentSubType" : "RUNFAILURE",
+    "pickupDEFName" : "OWNER_ID",
+    "getPickupPSDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "removeActionType" : 0,
+    "removeOrder" : -1,
+    "serviceCodeName" : "library",
+    "typeValue" : "RUNFAILURE"
   } ],
   "memo" : "测试管理核心实体，包含测试的基本信息、生命周期状态等。",
   "getMinorPSDERs" : [ {

@@ -254,6 +254,45 @@
     "builtinMethod" : false
   }, {
     "actionMode" : "READ",
+    "codeName" : "get_redirect_data",
+    "methodType" : "DEACTION",
+    "name" : "get_redirect_data",
+    "getPSAppDEMethodInput" : {
+      "getKeyPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "name" : "输入对象",
+      "type" : "KEYFIELD"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "workload_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEACTIONS/get_redirect_data.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "get_redirect_data"
+    },
+    "requestField" : "ID",
+    "requestMethod" : "GET",
+    "requestParamType" : "FIELD",
+    "requestPath" : "/get_redirect_data",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
+    "actionMode" : "READ",
     "codeName" : "get_register_workload",
     "methodType" : "DEACTION",
     "name" : "get_register_workload",
@@ -1687,6 +1726,7 @@
     "codeName" : "principal_id",
     "logicName" : "工时主体标识",
     "name" : "PRINCIPAL_ID",
+    "predefinedType" : "PARENTID",
     "stdDataType" : 25,
     "stringLength" : 100
   }, {
@@ -1749,6 +1789,37 @@
     "codeName" : "owner_type",
     "logicName" : "所属数据对象",
     "name" : "OWNER_TYPE",
+    "stdDataType" : 25,
+    "stringLength" : 100
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[CATEGORY][工时类别]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[CATEGORY][工时类别]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[CATEGORY][工时类别]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[CATEGORY][工时类别]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "category",
+    "logicName" : "工时类别",
+    "name" : "CATEGORY",
     "stdDataType" : 25,
     "stringLength" : 100
   }, {
@@ -2194,6 +2265,7 @@
     },
     "logicName" : "建立人",
     "name" : "CREATE_MAN",
+    "predefinedType" : "CREATEMAN",
     "stdDataType" : 25,
     "stringLength" : 100
   }, {
@@ -2236,6 +2308,7 @@
     },
     "logicName" : "建立时间",
     "name" : "CREATE_TIME",
+    "predefinedType" : "CREATEDATE",
     "stdDataType" : 5,
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   }, {
@@ -2278,6 +2351,7 @@
     },
     "logicName" : "更新人",
     "name" : "UPDATE_MAN",
+    "predefinedType" : "UPDATEMAN",
     "stdDataType" : 25,
     "stringLength" : 100
   }, {
@@ -2320,6 +2394,7 @@
     },
     "logicName" : "更新时间",
     "name" : "UPDATE_TIME",
+    "predefinedType" : "UPDATEDATE",
     "stdDataType" : 5,
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   }, {
@@ -2699,6 +2774,17 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "codeName" : "category",
+      "logicName" : "工时类别",
+      "name" : "category",
+      "getPSAppDEField" : {
+        "name" : "CATEGORY",
+        "codeName" : "category"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "codeName" : "owner_type",
       "logicName" : "所属数据对象",
       "name" : "owner_type",
@@ -2957,6 +3043,17 @@
     "codeName" : "workload_filter_dto",
     "name" : "workload_filter_dto",
     "getPSAppDEMethodDTOFields" : [ {
+      "codeName" : "n_category_eq",
+      "logicName" : "工时类别",
+      "name" : "n_category_eq",
+      "getPSAppDEField" : {
+        "name" : "CATEGORY",
+        "codeName" : "category"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "codeName" : "n_create_man_eq",
       "logicName" : "建立人",
       "name" : "n_create_man_eq",
@@ -3755,6 +3852,45 @@
     "requestParamType" : "NONE",
     "requestPath" : "/get_draft",
     "builtinMethod" : false
+  }, {
+    "actionMode" : "READ",
+    "codeName" : "get_redirect_data",
+    "methodType" : "DEACTION",
+    "name" : "get_redirect_data",
+    "getPSAppDEMethodInput" : {
+      "getKeyPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "name" : "输入对象",
+      "type" : "KEYFIELD"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "workload_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/workload/PSDEACTIONS/get_redirect_data.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "get_redirect_data"
+    },
+    "requestField" : "ID",
+    "requestMethod" : "GET",
+    "requestParamType" : "FIELD",
+    "requestPath" : "/get_redirect_data",
+    "builtinMethod" : false,
+    "needResourceKey" : true
   }, {
     "actionMode" : "READ",
     "codeName" : "get_register_workload",

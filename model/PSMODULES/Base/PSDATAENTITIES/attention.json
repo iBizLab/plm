@@ -5,10 +5,18 @@
     "name" : "DEFAULT",
     "getPSDEACModeDataItems" : [ {
       "dataType" : 25,
-      "name" : "value"
+      "name" : "value",
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
     }, {
       "dataType" : 25,
-      "name" : "text"
+      "name" : "text",
+      "getPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
     } ],
     "pagingSize" : 50,
     "defaultMode" : true,
@@ -717,6 +725,86 @@
       },
       "type" : "DTOS"
     }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDEDATAQUERIES/review_notify/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "review_notify",
+    "logicName" : "评审通知",
+    "name" : "review_notify",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/attention.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "ATTENTION",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "id",
+          "fieldName" : "OWNER_ID",
+          "name" : "(OWNER_ID) 等于(=) 网页请求上下文 id",
+          "getPSDEField" : {
+            "name" : "OWNER_ID",
+            "codeName" : "owner_id"
+          },
+          "getPSVARTypeId" : "WEBCONTEXT"
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "REVIEW",
+          "fieldName" : "OWNER_SUBTYPE",
+          "name" : "(OWNER_SUBTYPE) 等于(=) REVIEW",
+          "getPSDEField" : {
+            "name" : "OWNER_SUBTYPE",
+            "codeName" : "owner_subtype"
+          }
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "REVIEW",
+          "fieldName" : "OWNER_TYPE",
+          "name" : "(OWNER_TYPE) 等于(=) REVIEW",
+          "getPSDEField" : {
+            "name" : "OWNER_TYPE",
+            "codeName" : "owner_type"
+          }
+        }, {
+          "condOp" : "NOTEQ",
+          "condType" : "SINGLE",
+          "condValue" : "srfpersonid",
+          "fieldName" : "USER_ID",
+          "name" : "(USER_ID) 不等于(<>) 用户上下文 srfpersonid",
+          "getPSDEField" : {
+            "name" : "USER_ID",
+            "codeName" : "user_id"
+          },
+          "getPSVARTypeId" : "SESSIONCONTEXT"
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Review_notifyInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "attention_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Review_notifyResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "attention_dto"
+      },
+      "type" : "DTOS"
+    }
   } ],
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
@@ -840,6 +928,32 @@
     },
     "enableBackend" : true,
     "enableFront" : true
+  }, {
+    "codeName" : "review_notify",
+    "logicName" : "评审关注",
+    "name" : "review_notify",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "review_notify"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Review_notifyInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "attention_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Review_notifyResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "attention_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
   } ],
   "getAllPSDEFGroups" : [ {
     "codeName" : "user_id",
@@ -948,6 +1062,7 @@
     "length" : 100,
     "logicName" : "所属数据标识",
     "name" : "OWNER_ID",
+    "orderValue" : 160,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -1033,6 +1148,7 @@
     "length" : 100,
     "logicName" : "所属数据对象",
     "name" : "OWNER_TYPE",
+    "orderValue" : 170,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -1117,6 +1233,7 @@
     "length" : 100,
     "logicName" : "所属对象子类型",
     "name" : "OWNER_SUBTYPE",
+    "orderValue" : 180,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -1201,6 +1318,7 @@
     "length" : 100,
     "logicName" : "关注人",
     "name" : "USER_ID",
+    "orderValue" : 190,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -1289,6 +1407,7 @@
     "length" : 60,
     "logicName" : "关注类型",
     "name" : "TYPE",
+    "orderValue" : 200,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/Base/PSCODELISTS/attention_type.json"
@@ -1370,6 +1489,7 @@
     "length" : 100,
     "logicName" : "职位",
     "name" : "TITLE",
+    "orderValue" : 210,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -1464,6 +1584,7 @@
     "length" : 100,
     "logicName" : "标识",
     "name" : "ID",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -1559,6 +1680,7 @@
     "length" : 200,
     "logicName" : "名称",
     "name" : "NAME",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -1649,6 +1771,7 @@
     "length" : 100,
     "logicName" : "建立人",
     "name" : "CREATE_MAN",
+    "orderValue" : 1000,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/SysOperator.json"
@@ -1733,6 +1856,7 @@
     },
     "logicName" : "建立时间",
     "name" : "CREATE_TIME",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -1823,6 +1947,7 @@
     "length" : 100,
     "logicName" : "更新人",
     "name" : "UPDATE_MAN",
+    "orderValue" : 1000,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/SysOperator.json"
@@ -1907,6 +2032,7 @@
     },
     "logicName" : "更新时间",
     "name" : "UPDATE_TIME",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"

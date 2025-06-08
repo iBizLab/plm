@@ -29,6 +29,7 @@ state "循环评审结果" as LOOPSUBCALL2  [[$./completed_review#loopsubcall2 {
 state "输出循环数据" as DEBUGPARAM1  [[$./completed_review#debugparam1 {"输出循环数据"}]]
 state "通过" as PREPAREPARAM4  [[$./completed_review#prepareparam4 {"通过"}]]
 state "拒绝" as PREPAREPARAM5  [[$./completed_review#prepareparam5 {"拒绝"}]]
+state "设置评审建议" as PREPAREPARAM8  [[$./completed_review#prepareparam8 {"设置评审建议"}]]
 state "更新" as DEACTION1  [[$./completed_review#deaction1 {"更新"}]]
 }
 
@@ -43,9 +44,10 @@ LOOPSUBCALL1 --> PREPAREPARAM2
 PREPAREPARAM2 --> LOOPSUBCALL2
 LOOPSUBCALL2 --> DEBUGPARAM1 : [[$./completed_review#loopsubcall2-debugparam1{连接名称} 连接名称]]
 DEBUGPARAM1 --> PREPAREPARAM4 : [[$./completed_review#debugparam1-prepareparam4{通过} 通过]]
-PREPAREPARAM4 --> DEACTION1
+PREPAREPARAM4 --> PREPAREPARAM8
+PREPAREPARAM8 --> DEACTION1
 DEBUGPARAM1 --> PREPAREPARAM5 : [[$./completed_review#debugparam1-prepareparam5{拒绝} 拒绝]]
-PREPAREPARAM5 --> DEACTION1
+PREPAREPARAM5 --> PREPAREPARAM8
 LOOPSUBCALL1 --> DEACTION2
 LOOPSUBCALL3 --> DEACTION2 : [[$./completed_review#loopsubcall3-deaction2{不需要设置评审结果} 不需要设置评审结果]]
 
@@ -102,10 +104,11 @@ LOOPSUBCALL3 --> DEACTION2 : [[$./completed_review#loopsubcall3-deaction2{不需
 
 
 1. 将`Default(传入变量).ID(标识)` 设置给  `review_obj(评审).ID(标识)`
-2. 将`tmp_obj(循环变量).stage_id` 设置给  `Default(传入变量).curstage_id`
-3. 将`Default(传入变量).ID(标识)` 设置给  `Default(传入变量).principal_id`
-4. 将`tmp_obj(循环变量).result` 绑定给  `result(评审结果)`
-5. 将`tmp_obj(循环变量).case_number` 绑定给  `case_number(未完成评审用例数量)`
+2. 将`tmp_obj(循环变量).comment` 绑定给  `comment(评审意见)`
+3. 将`tmp_obj(循环变量).stage_id` 设置给  `Default(传入变量).curstage_id`
+4. 将`Default(传入变量).ID(标识)` 设置给  `Default(传入变量).principal_id(评审主体标识)`
+5. 将`tmp_obj(循环变量).result` 绑定给  `result(评审结果)`
+6. 将`tmp_obj(循环变量).case_number` 绑定给  `case_number(未完成评审用例数量)`
 
 #### 设置评审结果 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
@@ -138,6 +141,12 @@ LOOPSUBCALL3 --> DEACTION2 : [[$./completed_review#loopsubcall3-deaction2{不需
 
 1. 将`4` 设置给  `result_obj(评审结果循环变量).RESULT_STATE(状态)`
 
+#### 设置评审建议 :id=PREPAREPARAM8<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`comment(评审意见)` 设置给  `result_obj(评审结果循环变量).COMMENT(评审意见)`
+
 #### 更新 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
@@ -169,6 +178,7 @@ LOOPSUBCALL3 --> DEACTION2 : [[$./completed_review#loopsubcall3-deaction2{不需
 | --------| --------| -------- | -------- | --------   |
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象|[评审(REVIEW)](module/TestMgmt/review.md)||
 |未完成评审用例数量|case_number|简单数据|||
+|评审意见|comment|简单数据|||
 |评审内容过滤器|content_fliter|过滤器|||
 |评审内容分页结果|content_list|数据对象列表|[评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content.md)||
 |评审内容循环变量|content_obj|数据对象|[评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content.md)||

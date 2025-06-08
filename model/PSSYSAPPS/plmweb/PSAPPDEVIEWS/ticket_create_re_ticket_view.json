@@ -486,6 +486,12 @@
         "createDVT" : "APPDATA",
         "createDV" : "product"
       }, {
+        "id" : "dynamic_new",
+        "hidden" : true,
+        "dataType" : 25,
+        "createDVT" : "APPDATA",
+        "createDV" : "dynamicnew"
+      }, {
         "id" : "product_id",
         "hidden" : true,
         "dataType" : 25,
@@ -562,16 +568,16 @@
       } ],
       "getPSDEFormPages" : [ {
         "caption" : "基本信息",
-        "codeName" : "formpage1",
+        "codeName" : "formpage",
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMPAGE",
-        "name" : "formpage1",
+        "name" : "formpage",
         "getPSDEFormDetails" : [ {
           "caption" : "工单基本信息",
-          "codeName" : "group1",
+          "codeName" : "left_group",
           "detailStyle" : "DEFAULT",
           "detailType" : "GROUPPANEL",
-          "name" : "group1",
+          "name" : "left_group",
           "getPSDEFormDetails" : [ {
             "caption" : "标题",
             "codeName" : "title",
@@ -659,10 +665,10 @@
           }, {
             "actionGroupExtractMode" : "ITEM",
             "caption" : "附件",
-            "codeName" : "grouppanel2",
+            "codeName" : "attachment",
             "detailStyle" : "DEFAULT",
             "detailType" : "GROUPPANEL",
-            "name" : "grouppanel2",
+            "name" : "attachment",
             "getPSDEFormDetails" : [ {
               "codeName" : "attachments",
               "getContentPSControl" : {
@@ -1236,10 +1242,10 @@
           "infoGroupMode" : false,
           "showCaption" : false
         }, {
-          "codeName" : "grouppanel1",
+          "codeName" : "right_group",
           "detailStyle" : "DEFAULT",
           "detailType" : "GROUPPANEL",
-          "name" : "grouppanel1",
+          "name" : "right_group",
           "getPSDEFormDetails" : [ {
             "caption" : "所属产品",
             "codeName" : "product_name",
@@ -1261,11 +1267,20 @@
               "logicCat" : "ITEMENABLE",
               "logicType" : "GROUP",
               "getPSDEFDLogics" : [ {
-                "condOP" : "ISNULL",
-                "dEFDName" : "checkid",
-                "logicType" : "SINGLE"
+                "groupOP" : "OR",
+                "logicType" : "GROUP",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "ISNULL",
+                  "dEFDName" : "checkid",
+                  "logicType" : "SINGLE"
+                }, {
+                  "condOP" : "ISNOTNULL",
+                  "dEFDName" : "dynamic_new",
+                  "logicType" : "SINGLE"
+                } ],
+                "notMode" : false
               } ],
-              "relatedDetailNames" : [ "checkid" ],
+              "relatedDetailNames" : [ "checkid", "dynamic_new" ],
               "notMode" : false
             } ],
             "getPSEditor" : {
@@ -1324,6 +1339,29 @@
             "getPSEditor" : {
               "editorType" : "HIDDEN",
               "name" : "checkid"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "hidden" : true
+          }, {
+            "codeName" : "dynamic_new",
+            "createDV" : "dynamicnew",
+            "createDVT" : "APPDATA",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "NONE",
+            "labelWidth" : 0,
+            "name" : "dynamic_new",
+            "noPrivDisplayMode" : 1,
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "dynamic_new"
             },
             "getPSLayoutPos" : {
               "colMD" : 24,

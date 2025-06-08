@@ -5,10 +5,18 @@
     "name" : "DEFAULT",
     "getPSDEACModeDataItems" : [ {
       "dataType" : 25,
-      "name" : "value"
+      "name" : "value",
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
     }, {
       "dataType" : 25,
-      "name" : "text"
+      "name" : "text",
+      "getPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
     } ],
     "pagingSize" : 50,
     "defaultMode" : true,
@@ -20,14 +28,26 @@
     "name" : "end_time",
     "getPSDEACModeDataItems" : [ {
       "dataType" : 25,
-      "name" : "value"
+      "name" : "value",
+      "getPSDEField" : {
+        "name" : "END_AT",
+        "codeName" : "end_at"
+      }
     }, {
       "dataType" : 25,
-      "name" : "text"
+      "name" : "text",
+      "getPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
     }, {
       "format" : "%1$tY-%1$tm-%1$td",
       "dataType" : 25,
-      "name" : "n_create_time_ltandeq"
+      "name" : "n_create_time_ltandeq",
+      "getPSDEField" : {
+        "name" : "END_AT",
+        "codeName" : "end_at"
+      }
     } ],
     "pagingSize" : 50,
     "defaultMode" : false,
@@ -39,14 +59,26 @@
     "name" : "star_time",
     "getPSDEACModeDataItems" : [ {
       "dataType" : 25,
-      "name" : "value"
+      "name" : "value",
+      "getPSDEField" : {
+        "name" : "START_AT",
+        "codeName" : "start_at"
+      }
     }, {
       "dataType" : 25,
-      "name" : "text"
+      "name" : "text",
+      "getPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
     }, {
       "format" : "%1$tY-%1$tm-%1$td",
       "dataType" : 25,
-      "name" : "n_create_time_gtandeq"
+      "name" : "n_create_time_gtandeq",
+      "getPSDEField" : {
+        "name" : "START_AT",
+        "codeName" : "start_at"
+      }
     } ],
     "getPSDEDataSet" : {
       "modelref" : true,
@@ -1924,6 +1956,7 @@
     "jsonFormat" : "yyyy-MM-dd",
     "logicName" : "开始时间",
     "name" : "START_AT",
+    "orderValue" : 120,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -2037,6 +2070,7 @@
     "jsonFormat" : "yyyy-MM-dd",
     "logicName" : "结束时间",
     "name" : "END_AT",
+    "orderValue" : 130,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -2114,6 +2148,7 @@
     "length" : 2000,
     "logicName" : "描述",
     "name" : "DESCRIPTION",
+    "orderValue" : 140,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -2207,6 +2242,7 @@
     "length" : 60,
     "logicName" : "状态",
     "name" : "STATUS",
+    "orderValue" : 150,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSCODELISTS/sprint_status.json"
@@ -2321,6 +2357,7 @@
     "length" : 200,
     "logicName" : "父名称",
     "name" : "PNAME",
+    "orderValue" : 230,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint/PSDERS/DER1N_SPRINT_SPRINT_PID.json"
@@ -2450,6 +2487,7 @@
     "length" : 200,
     "logicName" : "项目名称",
     "name" : "PROJECT_NAME",
+    "orderValue" : 250,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint/PSDERS/DER1N_SPRINT_PROJECT_PROJECT_ID.json"
@@ -2554,6 +2592,7 @@
     "length" : 2000,
     "logicName" : "类别",
     "name" : "CATEGORIES",
+    "orderValue" : 270,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/ProdMgmt/PSCODELISTS/category.json"
@@ -2628,6 +2667,7 @@
     "length" : 2000,
     "logicName" : "类别",
     "name" : "CATEGORIES_NAME",
+    "orderValue" : 270,
     "serviceCodeName" : "categories_name",
     "stdDataType" : 25,
     "stringLength" : 2000,
@@ -2679,6 +2719,7 @@
     "importOrder" : 1000,
     "logicName" : "进度",
     "name" : "SCHEDULE",
+    "orderValue" : 300,
     "serviceCodeName" : "schedule",
     "stdDataType" : 6,
     "valueFormat" : "%1$s",
@@ -2763,6 +2804,7 @@
     "length" : 100,
     "logicName" : "负责人",
     "name" : "ASSIGNEE_NAME",
+    "orderValue" : 310,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -2868,6 +2910,7 @@
     "length" : 100,
     "logicName" : "负责人标识",
     "name" : "ASSIGNEE_ID",
+    "orderValue" : 320,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/SysOperator.json"
@@ -2937,6 +2980,7 @@
     "importOrder" : 1000,
     "logicName" : "已完成工作项数",
     "name" : "COMPLETED_WORK_ITEMS",
+    "orderValue" : 330,
     "serviceCodeName" : "completed_work_items",
     "stdDataType" : 6,
     "userTag4" : "INTENAL",
@@ -2997,6 +3041,7 @@
     "importOrder" : 1000,
     "logicName" : "全部工作项数",
     "name" : "ALL_WORK_ITEMS",
+    "orderValue" : 340,
     "serviceCodeName" : "all_work_items",
     "stdDataType" : 6,
     "userTag4" : "INTENAL",
@@ -3048,6 +3093,7 @@
     "importOrder" : 1000,
     "logicName" : "迭代已过天数",
     "name" : "PAST_DAYS",
+    "orderValue" : 350,
     "serviceCodeName" : "past_days",
     "stdDataType" : 6,
     "valueFormat" : "%1$s",
@@ -3121,6 +3167,7 @@
     "importOrder" : 1000,
     "logicName" : "项目是否删除",
     "name" : "PROJECT_IS_DELETED",
+    "orderValue" : 360,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/YesNo.json"
@@ -3232,6 +3279,7 @@
     "length" : 60,
     "logicName" : "项目类型",
     "name" : "PROJECT_TYPE",
+    "orderValue" : 370,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSCODELISTS/project_type.json"
@@ -3345,6 +3393,7 @@
     "length" : 100,
     "logicName" : "标识",
     "name" : "ID",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -3442,6 +3491,7 @@
     "length" : 200,
     "logicName" : "名称",
     "name" : "NAME",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -3561,6 +3611,7 @@
     "length" : 100,
     "logicName" : "建立人",
     "name" : "CREATE_MAN",
+    "orderValue" : 1000,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/SysOperator.json"
@@ -3645,6 +3696,7 @@
     },
     "logicName" : "建立时间",
     "name" : "CREATE_TIME",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -3735,6 +3787,7 @@
     "length" : 100,
     "logicName" : "更新人",
     "name" : "UPDATE_MAN",
+    "orderValue" : 1000,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/SysOperator.json"
@@ -3819,6 +3872,7 @@
     },
     "logicName" : "更新时间",
     "name" : "UPDATE_TIME",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -3914,6 +3968,7 @@
     "length" : 100,
     "logicName" : "项目标识",
     "name" : "PROJECT_ID",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -4027,6 +4082,7 @@
     "length" : 100,
     "logicName" : "父标识",
     "name" : "PID",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"

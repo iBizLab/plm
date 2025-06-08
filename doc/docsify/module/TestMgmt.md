@@ -18,7 +18,7 @@
 |[评审结果(REVIEW_RESULT)](module/TestMgmt/review_result)|review_result|主实体|SQL|REVIEW_RESULT|否|否|自控制|否|存储评审的评审结果|
 |[评审规则(REVIEW_RULE)](module/TestMgmt/review_rule)|review_rule|主实体|无存储||否|否|自控制|否|记录评审规则相关信息。|
 |[评审阶段(REVIEW_STAGE)](module/TestMgmt/review_stage)|review_stage|主实体|无存储||否|否|自控制|否|存储评审阶段的信息|
-|[评审向导(REVIEW_WIZARD)](module/TestMgmt/review_wizard)|review_wizard|主实体|SQL|REVIEW|否|否|附属主实体控制|否|评审向导信息|
+|[评审向导(REVIEW_WIZARD)](module/TestMgmt/review_wizard)|review_wizard|主实体|SQL|REVIEW|否|否|附属主实体控制（未映射自控）|否|评审向导信息|
 |[执行用例(RUN)](module/TestMgmt/run)|run|关系实体|SQL|RUN|是|否|附属主实体控制（未映射自控）|是|用于记录测试库中测试用例的执行情况，包括测试类型、执行者和执行时间。|
 |[执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment)|run_attachment|动态附属实体|SQL|ATTACHMENT|否|是|附属主实体控制|否|执行用例中产出的具体成果物，包括文档、软件代码、报告等。|
 |[执行结果(RUN_HISTORY)](module/TestMgmt/run_history)|run_history|主实体|SQL|RUN_HISTORY|否|否|自控制|否|记录用例的执行结果，包括执行人，执行步骤，实际结果等。|

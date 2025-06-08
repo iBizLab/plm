@@ -10,6 +10,7 @@
                                 <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="workloadworkload_auto_calcur_work_item_filter" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="workloadworkload_auto_calcur_work_item_page" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="workloadworkload_auto_calcur_work_item_temp" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.extend_storage()" name="workloadworkload_auto_calestimated" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.workload()" name="workloadworkload_auto_calnext_work_load" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="workloadworkload_auto_calp_work_item" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="workloadworkload_auto_calp_work_item_filter" type="refentity"/>
@@ -27,6 +28,7 @@
                             <tns:global identifier="workloadworkload_auto_calcur_work_item_filter" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
                             <tns:global identifier="workloadworkload_auto_calcur_work_item_page" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
                             <tns:global identifier="workloadworkload_auto_calcur_work_item_temp" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="workloadworkload_auto_calestimated" type="cn.ibizlab.plm.core.base.domain.extend_storage" />
                             <tns:global identifier="workloadworkload_auto_calnext_work_load" type="cn.ibizlab.plm.core.base.domain.workload" />
                             <tns:global identifier="workloadworkload_auto_calp_work_item" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
                             <tns:global identifier="workloadworkload_auto_calp_work_item_filter" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
@@ -42,6 +44,8 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadworkload_auto_caldeaction4" id="deaction4" implementation="http://www.jboss.org/drools/rule" name="保存实际工时"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadworkload_auto_calprepareparam8" id="prepareparam8" implementation="http://www.jboss.org/drools/rule" name="设置剩余工时"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadworkload_auto_caldeaction5" id="deaction5" implementation="http://www.jboss.org/drools/rule" name="保存剩余工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadworkload_auto_calprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="设置预估工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadworkload_auto_caldeaction6" id="deaction6" implementation="http://www.jboss.org/drools/rule" name="保存预估工时"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadworkload_auto_calprepareparam9" id="prepareparam9" implementation="http://www.jboss.org/drools/rule" name="填充递归调用参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadworkload_auto_caldeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="获取父工作项"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadworkload_auto_calprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置父工作项ID"/>
@@ -61,7 +65,11 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam8_deaction5" sourceRef="prepareparam8" targetRef="deaction5">
                     </sequenceFlow>
-                    <sequenceFlow id="deaction5_prepareparam2" sourceRef="deaction5" targetRef="prepareparam2">
+                    <sequenceFlow id="deaction5_prepareparam5" sourceRef="deaction5" targetRef="prepareparam5">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam5_deaction6" sourceRef="prepareparam5" targetRef="deaction6">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction6_prepareparam2" sourceRef="deaction6" targetRef="prepareparam2">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam9_delogic1" sourceRef="prepareparam9" targetRef="delogic1">
                     </sequenceFlow>
@@ -72,6 +80,7 @@
                                             $workloadworkload_auto_calcur_work_item_filter:work_item();
                                             $workloadworkload_auto_calcur_work_item_page:work_item();
                                             $workloadworkload_auto_calcur_work_item_temp:work_item();
+                                            $workloadworkload_auto_calestimated:extend_storage();
                                             $workloadworkload_auto_calnext_work_load:workload();
                                             $workloadworkload_auto_calp_work_item:work_item();
                                             $workloadworkload_auto_calp_work_item_filter:work_item();
@@ -79,7 +88,7 @@
                                             $workloadworkload_auto_calremaining:extend_storage();
                                             $workloadworkload_auto_caltarget_work_item:work_item();
                                             $workloadworkload_auto_calworkload_data:work_item();
-                                    eval($workloadworkload_auto_caldefault==workloadworkload_auto_caldefault && $workloadworkload_auto_calactual==workloadworkload_auto_calactual && $workloadworkload_auto_calcur_work_item_filter==workloadworkload_auto_calcur_work_item_filter && $workloadworkload_auto_calcur_work_item_page==workloadworkload_auto_calcur_work_item_page && $workloadworkload_auto_calcur_work_item_temp==workloadworkload_auto_calcur_work_item_temp && $workloadworkload_auto_calnext_work_load==workloadworkload_auto_calnext_work_load && $workloadworkload_auto_calp_work_item==workloadworkload_auto_calp_work_item && $workloadworkload_auto_calp_work_item_filter==workloadworkload_auto_calp_work_item_filter && $workloadworkload_auto_calp_work_item_page==workloadworkload_auto_calp_work_item_page && $workloadworkload_auto_calremaining==workloadworkload_auto_calremaining && $workloadworkload_auto_caltarget_work_item==workloadworkload_auto_caltarget_work_item && $workloadworkload_auto_calworkload_data==workloadworkload_auto_calworkload_data);
+                                    eval($workloadworkload_auto_caldefault==workloadworkload_auto_caldefault && $workloadworkload_auto_calactual==workloadworkload_auto_calactual && $workloadworkload_auto_calcur_work_item_filter==workloadworkload_auto_calcur_work_item_filter && $workloadworkload_auto_calcur_work_item_page==workloadworkload_auto_calcur_work_item_page && $workloadworkload_auto_calcur_work_item_temp==workloadworkload_auto_calcur_work_item_temp && $workloadworkload_auto_calestimated==workloadworkload_auto_calestimated && $workloadworkload_auto_calnext_work_load==workloadworkload_auto_calnext_work_load && $workloadworkload_auto_calp_work_item==workloadworkload_auto_calp_work_item && $workloadworkload_auto_calp_work_item_filter==workloadworkload_auto_calp_work_item_filter && $workloadworkload_auto_calp_work_item_page==workloadworkload_auto_calp_work_item_page && $workloadworkload_auto_calremaining==workloadworkload_auto_calremaining && $workloadworkload_auto_caltarget_work_item==workloadworkload_auto_caltarget_work_item && $workloadworkload_auto_calworkload_data==workloadworkload_auto_calworkload_data);
                                 eval((RuleUtils.test($workloadworkload_auto_calp_work_item.get("pid"),"ISNOTNULL","")))
                                 ]]>
                             </conditionExpression>

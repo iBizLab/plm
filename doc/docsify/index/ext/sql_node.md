@@ -1,5 +1,5 @@
 
-## 存在直接SQL调用的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[221]</font></sup>
+## 存在直接SQL调用的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[223]</font></sup>
 
 #### [基线(BASELINE)](module/Base/baseline)的处理逻辑[删除基线前附加逻辑(before_remove)](module/Base/baseline/logic/before_remove)
 
@@ -791,6 +791,39 @@ WHERE PRINCIPAL_ID = ? and PRINCIPAL_TYPE = 'IDEA'
 5. `Default(传入变量).TITLE(标题)`
 6. `Default(传入变量).ID(标识)`
 
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[获取变更类型与变更版本(set_change_type)](module/ProdMgmt/idea/logic/set_change_type)
+
+节点：获取评审需求
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+	SELECT
+		* 
+	FROM
+		idea t1 
+	WHERE
+		NOT EXISTS (
+		SELECT
+			* 
+		FROM
+			relation t2
+			JOIN review_content_extend t3 ON t3.id = t2.id
+			JOIN review t4 ON t4.id = t2.PRINCIPAL_ID 
+		WHERE
+			t2.TARGET_ID = t1.id 
+			AND t4.id = ? 
+		) 
+		AND t1.product_id = ?  AND t1.IS_DELETED = 0
+	ORDER BY
+	t1.IDENTIFIER;
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).review`
+2. `Default(传入变量).n_test_library_id_eq`
+
+重置参数`page_results(分页查询结果)`，并将执行sql结果赋值给参数`page_results(分页查询结果)`
 #### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[获取工单数量(get_ticket_num)](module/ProdMgmt/idea/logic/get_ticket_num)
 
 节点：直接SQL调用
@@ -1959,6 +1992,35 @@ WHERE
 
 重置参数`info(返回前端的信息)`，并将执行sql结果赋值给参数`info(返回前端的信息)`
 #### [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)的处理逻辑[评审结果条数(review_content_total)](module/TestMgmt/review_content/logic/review_content_total)
+
+节点：查询评审结果总条数与已评审条数
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+    query1.count1 AS total,
+    query2.count2 AS total_already,
+    (CONVERT(query2.count2, DECIMAL) / query1.count1 * 100) AS schedule
+FROM
+    (SELECT COUNT(1) AS count1
+     FROM review rv
+              LEFT JOIN relation re ON re.PRINCIPAL_ID = rv.ID AND re.PRINCIPAL_TYPE = 'REVIEW'
+     WHERE rv.ID = ?) AS query1,
+
+    (SELECT COUNT(*) AS count2
+     FROM review rv
+              INNER JOIN relation re ON re.PRINCIPAL_ID = rv.ID AND re.PRINCIPAL_TYPE = 'REVIEW'
+              INNER JOIN review_content_extend rc ON re.ID = rc.ID AND rc.review_result = 'pass'
+     WHERE rv.ID = ?) AS query2;
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+2. `Default(传入变量).ID(标识)`
+
+重置参数`result(结果)`，并将执行sql结果赋值给参数`result(结果)`
+#### [产品需求评审内容(REVIEW_CONTENT_IDEA)](module/ProdMgmt/review_content_idea)的处理逻辑[评审结果条数(review_content_total)](module/ProdMgmt/review_content_idea/logic/review_content_total)
 
 节点：查询评审结果总条数与已评审条数
 <p class="panel-title"><b>执行sql语句</b></p>

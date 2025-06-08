@@ -17,6 +17,7 @@
 
 ### 关联视图
   * [组件设置(addon_setting_grid_view)](app/view/addon_setting_grid_view)
+  * [数据字典(dictionary_data_test_case_dictionary_grid_view)](app/view/dictionary_data_test_case_dictionary_grid_view)
   * [评审配置(guideline_all_grid_view)](app/view/guideline_all_grid_view)
   * [测试库管理(library_archived_grid_view)](app/view/library_archived_grid_view)
   * [测试库管理(library_config_tab_exp_view)](app/view/library_config_tab_exp_view)

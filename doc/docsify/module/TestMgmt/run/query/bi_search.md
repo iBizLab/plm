@@ -45,7 +45,7 @@
   * `LIBRARY_NAME(所属测试库)`
   * `TYPE(用例类型)`
   * `LEVEL(重要程度)`
-  * `STATE(评审状态)`
+  * `STATE(用例状态)`
   * `MAINTENANCE_NAME(维护人)`
   * `TEST_TYPE(测试类型)`
   * `IDENTIFIER(编号)`

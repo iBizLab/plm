@@ -51,6 +51,7 @@
 |[DERCUSTOM_BASELINE_PAGE_VERSION](der/DERCUSTOM_BASELINE_PAGE_VERSION)|[基线页面(BASELINE_PAGE)](module/Wiki/baseline_page)|自定义关系||
 |[DERCUSTOM_BASELINE_TEST_CASE_VERSION](der/DERCUSTOM_BASELINE_TEST_CASE_VERSION)|[基线用例(BASELINE_TEST_CASE)](module/TestMgmt/baseline_test_case)|自定义关系||
 |[DERCUSTOM_BASELINE_WORK_ITEM_VERSION](der/DERCUSTOM_BASELINE_WORK_ITEM_VERSION)|[基线工作项(BASELINE_WORK_ITEM)](module/ProjMgmt/baseline_work_item)|自定义关系||
+|[DERCUSTOM_REVIEW_CONTENT_IDEA_VERSION](der/DERCUSTOM_REVIEW_CONTENT_IDEA_VERSION)|[产品需求评审内容(REVIEW_CONTENT_IDEA)](module/ProdMgmt/review_content_idea)|自定义关系||
 |[DERCUSTOM_REVIEW_CONTENT_VERSION](der/DERCUSTOM_REVIEW_CONTENT_VERSION)|[评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)|自定义关系||
 
 
@@ -149,6 +150,7 @@
 | --------| --------| -------- |------------|------------|------------|
 | 需求版本对比 | idea_version_comparison | 版本对比 |单项数据|<details><summary>打开视图或向导（模态）</summary>[版本对比](app/view/idea_version_comparison_view)</details>||
 | 编辑版本 | edit_version | 编辑版本 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑版本](app/view/version_edit_version_view)</details>||
+| 需求评审内容版本对比 | idea_review_content_version_comparison | 版本对比 |单项数据|<details><summary>打开视图或向导（模态）</summary>[版本对比](app/view/idea_version_comparison_view)</details>||
 | 恢复版本 | restore | 恢复版本 |单项数据|<details><summary>后台调用</summary>[Restore](#行为)||
 | 评审内容版本对比 | review_content_version_comparison | 版本对比 |单项数据|<details><summary>打开视图或向导（模态）</summary>[版本对比](app/view/test_case_version_comparison_view)</details>||
 | 建立版本 | create_new_version | 创建新版本 |无数据|<details><summary>打开视图或向导（模态）</summary>[建立版本](app/view/version_quick_create_view)</details>||

@@ -15,8 +15,8 @@
 
 
 ### 关联界面行为
-  * [智能报表立方体指标(PSSYSBICUBEMEASURE)](module/extension/PSSysBICubeMeasure) : [删除指标](module/extension/PSSysBICubeMeasure#界面行为)
   * [智能报表立方体指标(PSSYSBICUBEMEASURE)](module/extension/PSSysBICubeMeasure) : [编辑指标](module/extension/PSSysBICubeMeasure#界面行为)
+  * [智能报表立方体指标(PSSYSBICUBEMEASURE)](module/extension/PSSysBICubeMeasure) : [删除指标](module/extension/PSSysBICubeMeasure#界面行为)
   * [智能报表立方体指标(PSSYSBICUBEMEASURE)](module/extension/PSSysBICubeMeasure) : [表格界面_新建操作](module/extension/PSSysBICubeMeasure#界面行为)
 
 ### 关联视图

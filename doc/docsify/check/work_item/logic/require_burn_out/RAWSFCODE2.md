@@ -36,7 +36,7 @@ change_page.each { it ->
 def rep_num = begin_count
 result_list.eachWithIndex { item, index ->
     def rep_date = dateFormatter.format(new Date(item.get('rep_date').time))
-    if(begin_count > 0){
+    if(begin_count > 0 && index != 0){
         // 计算递减步长
         def decrementStep = begin_count / (result_list.size() - 1)
         // 理想线 根据日期 从开始日期 逐天递减

@@ -713,7 +713,7 @@
         },
         "getPSControlAttributes" : [ {
           "attrName" : "disabledDate",
-          "attrValue" : "(time) => {\r\n    if (!data.end_at) {\r\n        return false;\r\n    }\r\n    const end_at = new Date(data.end_at);\r\n    // 比对天\r\n    time.setHours(0, 0, 0, 0);\r\n    end_at.setHours(0, 0, 0, 0);\r\n    return time.getTime() > end_at.getTime();\r\n}",
+          "attrValue" : "(time) => {\r\n    const formC = view.getController('form');\r\n    if (!formC) {\r\n        return false;\r\n    }\r\n    if(!formC.state.data.end_at){\r\n        return false;\r\n    }\r\n    const end_at = new Date(formC.state.data.end_at);\r\n    // 比对天\r\n    end_at.setHours(0, 0, 0, 0);\r\n    time.setHours(0, 0, 0, 0);\r\n    return time.getTime() > end_at.getTime();\r\n}",
           "name" : "start_at_disabledDate"
         } ],
         "getPSEditor" : {
@@ -753,7 +753,7 @@
         },
         "getPSControlAttributes" : [ {
           "attrName" : "disabledDate",
-          "attrValue" : "(time) => {\r\n    if (!data.start_at) {\r\n        return false;\r\n    }\r\n    const start_at = new Date(data.start_at);\r\n    // 比对天\r\n    start_at.setHours(0, 0, 0, 0);\r\n    time.setHours(0, 0, 0, 0);\r\n    return time.getTime() < start_at.getTime();\r\n}",
+          "attrValue" : "(time) => {\r\n    const formC = view.getController('form');\r\n    if (!formC) {\r\n        return false;\r\n    }\r\n    if(!formC.state.data.start_at){\r\n        return false;\r\n    }\r\n    const start_at = new Date(formC.state.data.start_at);\r\n    // 比对天\r\n    start_at.setHours(0, 0, 0, 0);\r\n    time.setHours(0, 0, 0, 0);\r\n    return time.getTime() < start_at.getTime();\r\n}",
           "name" : "end_at_disabledDate"
         } ],
         "getPSEditor" : {

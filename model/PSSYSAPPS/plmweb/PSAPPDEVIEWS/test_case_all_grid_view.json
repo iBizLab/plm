@@ -78,16 +78,6 @@
     }
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "EDITDATA",
-    "openMode" : "INDEXVIEWTAB_POPUPMODAL",
-    "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
-    "realTitle" : "用例",
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_main_view.json",
-      "viewType" : "DEEDITVIEW"
-    }
-  }, {
     "name" : "NEWDATA",
     "openMode" : "POPUPMODAL",
     "realOpenMode" : "POPUPMODAL",
@@ -96,6 +86,16 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_quick_create_view.json",
       "viewType" : "DEOPTVIEW"
+    }
+  }, {
+    "name" : "EDITDATA",
+    "openMode" : "INDEXVIEWTAB_POPUPMODAL",
+    "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
+    "realTitle" : "用例",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_main_view.json",
+      "viewType" : "DEEDITVIEW"
     }
   } ],
   "getPSControls" : [ {
@@ -323,7 +323,7 @@
       "name" : "fetch",
       "getPSAppDEMethod" : {
         "modelref" : true,
-        "id" : "fetch_normal"
+        "id" : "fetch_common"
       },
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -436,7 +436,7 @@
         "name" : "fetch",
         "getPSAppDEMethod" : {
           "modelref" : true,
-          "id" : "fetch_normal"
+          "id" : "fetch_common"
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
@@ -890,6 +890,10 @@
       "modelid" : "53c82b535f8b4f3e0767aad6c75cb2fe",
       "modeltype" : "PSDETOOLBAR"
     } ],
+    "getPSDEDataExport" : {
+      "modelref" : true,
+      "id" : "test_case_export"
+    },
     "getPSDEDataImport" : {
       "modelref" : true,
       "id" : "import_test_case"
@@ -1268,6 +1272,29 @@
     }, {
       "align" : "LEFT",
       "cLConvertMode" : "FRONT",
+      "caption" : "评审结果",
+      "codeName" : "review_result_state",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "review_result_state",
+      "excelCaption" : "评审结果",
+      "hideMode" : 1,
+      "name" : "review_result_state",
+      "noPrivDisplayMode" : 1,
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__review_result.json"
+      },
+      "getPSAppDEField" : {
+        "name" : "REVIEW_RESULT_STATE",
+        "codeName" : "review_result_state"
+      },
+      "width" : 250,
+      "widthUnit" : "PX",
+      "enableSort" : true,
+      "hideDefault" : true
+    }, {
+      "align" : "LEFT",
+      "cLConvertMode" : "FRONT",
       "getCapPSLanguageRes" : {
         "lanResTag" : "DEF.LNAME.UPDATE_MAN"
       },
@@ -1438,6 +1465,13 @@
       "getPSAppDEField" : {
         "name" : "SUITE_ID",
         "codeName" : "suite_id"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "review_result_state",
+      "getPSAppDEField" : {
+        "name" : "REVIEW_RESULT_STATE",
+        "codeName" : "review_result_state"
       }
     }, {
       "dataType" : 25,
@@ -2434,6 +2468,37 @@
       "allowEmpty" : true,
       "emptyCaption" : false,
       "hidden" : false,
+      "showCaption" : false
+    }, {
+      "caption" : "评审结果",
+      "dataType" : 25,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "review_result_eq",
+      "getPSAppDEField" : {
+        "name" : "REVIEW_RESULT_STATE",
+        "codeName" : "review_result_state"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_REVIEW_RESULT_STATE_EQ",
+        "name" : "N_REVIEW_RESULT_STATE_EQ",
+        "stdDataType" : 25,
+        "valueOP" : "EQ"
+      },
+      "getPSEditor" : {
+        "editorType" : "DROPDOWNLIST",
+        "name" : "review_result_eq",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__review_result.json"
+        },
+        "singleSelect" : true
+      },
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "needCodeListConfig" : true,
       "showCaption" : false
     } ],
     "quickGroupCount" : -1,

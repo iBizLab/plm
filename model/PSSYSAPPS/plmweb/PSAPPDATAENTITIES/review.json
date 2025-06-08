@@ -1286,6 +1286,7 @@
     "codeName" : "principal_id",
     "logicName" : "评审主体标识",
     "name" : "PRINCIPAL_ID",
+    "predefinedType" : "PARENTID",
     "stdDataType" : 25,
     "stringLength" : 100
   }, {
@@ -1317,6 +1318,7 @@
     "codeName" : "principal_name",
     "logicName" : "评审主体名称",
     "name" : "PRINCIPAL_NAME",
+    "predefinedType" : "PARENTNAME",
     "stdDataType" : 25,
     "stringLength" : 100
   }, {
@@ -1348,6 +1350,7 @@
     "codeName" : "principal_type",
     "logicName" : "评审主体类型",
     "name" : "PRINCIPAL_TYPE",
+    "predefinedType" : "PARENTSUBTYPE",
     "stdDataType" : 25,
     "stringLength" : 100
   }, {
@@ -1396,7 +1399,7 @@
       "name" : "[REVIEWER][评审人]移动端默认",
       "getPSDEFFormItem" : {
         "codeName" : "MobileDefault",
-        "editorType" : "MOBTEXT",
+        "editorType" : "SPAN",
         "name" : "[REVIEWER][评审人]移动端默认",
         "stringLength" : 100,
         "uIMode" : "MOBILEDEFAULT",
@@ -1409,7 +1412,7 @@
       "name" : "[REVIEWER][评审人]",
       "getPSDEFFormItem" : {
         "codeName" : "Default",
-        "editorType" : "TEXTBOX",
+        "editorType" : "SPAN",
         "name" : "[REVIEWER][评审人]",
         "stringLength" : 100,
         "uIMode" : "DEFAULT"
@@ -1419,6 +1422,37 @@
     "codeName" : "reviewer",
     "logicName" : "评审人",
     "name" : "REVIEWER",
+    "stdDataType" : 25,
+    "stringLength" : 100
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[NEXT_REVIEWER][下一个评审人]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[NEXT_REVIEWER][下一个评审人]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[NEXT_REVIEWER][下一个评审人]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[NEXT_REVIEWER][下一个评审人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "codeName" : "next_reviewer",
+    "logicName" : "下一个评审人",
+    "name" : "NEXT_REVIEWER",
     "stdDataType" : 25,
     "stringLength" : 100
   }, {
@@ -2238,6 +2272,7 @@
     },
     "logicName" : "建立人",
     "name" : "CREATE_MAN",
+    "predefinedType" : "CREATEMAN",
     "stdDataType" : 25,
     "stringLength" : 100
   }, {
@@ -2295,6 +2330,7 @@
     },
     "logicName" : "建立时间",
     "name" : "CREATE_TIME",
+    "predefinedType" : "CREATEDATE",
     "stdDataType" : 5,
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   }, {
@@ -2352,6 +2388,7 @@
     },
     "logicName" : "更新人",
     "name" : "UPDATE_MAN",
+    "predefinedType" : "UPDATEMAN",
     "stdDataType" : 25,
     "stringLength" : 100
   }, {
@@ -2409,6 +2446,7 @@
     },
     "logicName" : "更新时间",
     "name" : "UPDATE_TIME",
+    "predefinedType" : "UPDATEDATE",
     "stdDataType" : 5,
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   }, {
@@ -3258,6 +3296,17 @@
       "getPSAppDEField" : {
         "name" : "DESCRIPTION",
         "codeName" : "description"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "next_reviewer",
+      "logicName" : "下一个评审人",
+      "name" : "next_reviewer",
+      "getPSAppDEField" : {
+        "name" : "NEXT_REVIEWER",
+        "codeName" : "next_reviewer"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,

@@ -20,12 +20,16 @@
 |描述|DESCRIPTION|长文本，长度1000|2000|是||
 |流程准则标识|GUIDELINE_ID|外键值|100|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
-|编号<sup class="footnote-symbol">[[序列]](index/sequence_index#seq_review_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
+|编号<sup class="footnote-symbol">[[序列]](index/sequence_index#common_seq_review_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
 |测试库标识|LIBRARY_ID|外键值|100|是||
 |测试库标识|LIBRARY_IDENTIFIER|外键值附加数据|15|是||
 |测试库是否删除|LIBRARY_IS_DELETED|外键值附加数据||是||
 |测试库名称|LIBRARY_NAME|外键值文本|200|是||
 |名称|NAME|文本，可指定长度|200|是||
+|评审主体标识|PRINCIPAL_ID|文本，可指定长度|100|是||
+|评审主体名称|PRINCIPAL_NAME|文本，可指定长度|100|是||
+|评审主体类型|PRINCIPAL_TYPE|文本，可指定长度|100|是||
+|评审人|REVIEWER|文本，可指定长度|100|是||
 |规则|RULE|一对多关系数据集合|1048576|是||
 |编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
 |阶段|STAGE|一对多关系数据集合|1048576|是||
@@ -56,7 +60,7 @@
 |建立时间|CREATE_TIME|日期时间型||否||
 |描述|DESCRIPTION|长文本，长度1000|2000|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
-|编号<sup class="footnote-symbol">[[序列]](index/sequence_index#seq_review_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
+|编号<sup class="footnote-symbol">[[序列]](index/sequence_index#common_seq_review_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
 |测试库标识|LIBRARY_ID|外键值|100|是||
 |测试库标识|LIBRARY_IDENTIFIER|外键值附加数据|15|是||
 |测试库名称|LIBRARY_NAME|外键值文本|200|是||
@@ -90,7 +94,7 @@
 |名称|NAME|文本，可指定长度|200|是||
 |提交人标识|SUBMITTER_ID|文本，可指定长度|100|是||
 |编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
-|编号<sup class="footnote-symbol">[[序列]](index/sequence_index#seq_review_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
+|编号<sup class="footnote-symbol">[[序列]](index/sequence_index#common_seq_review_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |测试库名称|LIBRARY_NAME|外键值文本|200|是||
 |测试库标识|LIBRARY_ID|外键值|100|是||
@@ -117,6 +121,7 @@
 |[DERCUSTOM_COMMENT_REVIEW_PRINCIPAL_ID](der/DERCUSTOM_COMMENT_REVIEW_PRINCIPAL_ID)|[评论(COMMENT)](module/Base/comment)|自定义关系||
 |[DERCUSTOM_RELATION_REVIEW](der/DERCUSTOM_RELATION_REVIEW)|[关联(RELATION)](module/Base/relation)|自定义关系||
 |[DERCUSTOM_REVIEW_ATTACHMENT](der/DERCUSTOM_REVIEW_ATTACHMENT)|[附件(ATTACHMENT)](module/Base/attachment)|自定义关系||
+|[DERCUSTOM_REVIEW_CONTENT_IDEA_REVIEW](der/DERCUSTOM_REVIEW_CONTENT_IDEA_REVIEW)|[产品需求评审内容(REVIEW_CONTENT_IDEA)](module/ProdMgmt/review_content_idea)|自定义关系||
 |[DERCUSTOM_REVIEW_CONTENT_REVIEW](der/DERCUSTOM_REVIEW_CONTENT_REVIEW)|[评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)|自定义关系||
 |[DERCUSTOM_REVIEW_REVIEW_ACTION_RULE_ACTION_RULE](der/DERCUSTOM_REVIEW_REVIEW_ACTION_RULE_ACTION_RULE)|[评审后置动作(REVIEW_ACTION_RULE)](module/TestMgmt/review_action_rule)|自定义关系||
 |[DERCUSTOM_REVIEW_REVIEW_RULE_RULE](der/DERCUSTOM_REVIEW_REVIEW_RULE_RULE)|[评审规则(REVIEW_RULE)](module/TestMgmt/review_rule)|自定义关系||
@@ -130,6 +135,7 @@
 | -------- |---------- |-----------|----- |
 |[DER1N_REVIEW_GUIDELINE_GUIDELINE_ID](der/DER1N_REVIEW_GUIDELINE_GUIDELINE_ID)|[流程准则(GUIDELINE)](module/TestMgmt/guideline)|1:N关系||
 |[DER1N_REVIEW_LIBRARY_LIBRARY_ID](der/DER1N_REVIEW_LIBRARY_LIBRARY_ID)|[测试库(LIBRARY)](module/TestMgmt/library)|1:N关系||
+|[DERCUSTOM_REVIEW_PRODUCT_PRINCIPAL_ID](der/DERCUSTOM_REVIEW_PRODUCT_PRINCIPAL_ID)|[产品(PRODUCT)](module/ProdMgmt/product)|自定义关系||
 
 </el-tab-pane>
 </el-tabs>
@@ -162,6 +168,7 @@
 |填充评审规则|fill_guideline|[实体处理逻辑](module/TestMgmt/review/logic/fill_guideline "填充评审规则")|默认|不支持||||
 |填充阶段评审人|fill_stage_reviewer|[实体处理逻辑](module/TestMgmt/review/logic/fill_stage_reviewer "填充阶段评审人")|默认|不支持||||
 |获取关注人|get_attention|内置方法|默认|不支持||||
+|获取重定向数据|get_redirect_data|[实体处理逻辑](module/TestMgmt/review/logic/get_redirect_data "获取重定向数据")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/TestMgmt/review/logic/nothing "nothing")|默认|不支持||||
 |撤销评审|repeal_review|[实体处理逻辑](module/TestMgmt/review/logic/repeal_review "撤销评审")|默认|不支持||||
 |提交评审|submit_review|[实体处理逻辑](module/TestMgmt/review/logic/submit_review "提交评审")|默认|不支持||||
@@ -181,6 +188,7 @@
 |[撤销评审](module/TestMgmt/review/logic/repeal_review)|repeal_review|无||撤销评审，并重置评审结果|
 |[添加内容](module/TestMgmt/review/logic/add_review_content)|add_review_content|无||规划用例，将用例规划至评审内，生成正反向关联数据|
 |[获取当前阶段信息](module/TestMgmt/review/logic/get_current_stage_info)|get_current_stage_info|无||获取当前阶段信息，用于完成评审按钮使用|
+|[获取重定向数据](module/TestMgmt/review/logic/get_redirect_data)|get_redirect_data|无|||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -200,6 +208,42 @@
 |[我关注的(my_attention)](module/TestMgmt/review/dataset/my_attention)|my_attention|数据查询|否||查询我关注的评审|
 |[我评审的(my_reviewed)](module/TestMgmt/review/dataset/my_reviewed)|my_reviewed|数据查询|否|||
 
+## 数据权限
+
+##### 全部数据（读写） :id=review-ALL_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `UPDATE(测试库(SUBDATA))`
+* `READ`
+* `DELETE`
+* `CREATE`
+
+
+
+##### 全部数据（写） :id=review-ALL_W
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `无`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `CREATE`
+
+
+
+## 消息通知
+
+|    中文名col200   | 代码名col150       |  消息队列col200   |  消息模板col200 |  通知目标col150     |  备注col350  |
+|------------| -----   |  -------- | -------- |-------- |-------- |
+|[评审通知](module/TestMgmt/review/notify/review_notify)|review_notify|[默认消息队列](index/notify_index)|[评审通知模板](index/notify_index#review_inform_template)|当前评审人 ||
+|[测试用例评审通知](module/TestMgmt/review/notify/test_case_review_notify)|test_case_review_notify|[默认消息队列](index/notify_index)|[测试用例评审通知模板](index/notify_index#tc_review_inform_template)|当前评审人 ||
+
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
@@ -211,31 +255,44 @@
 |N_LIBRARY_NAME_EQ|测试库名称|EQ||
 |N_LIBRARY_NAME_LIKE|测试库名称|LIKE||
 |N_NAME_LIKE|名称|LIKE||
+|N_PRINCIPAL_ID_EQ|评审主体标识|EQ||
+|N_PRINCIPAL_TYPE_EQ|评审主体类型|EQ||
 |N_STATE_EQ|评审状态|EQ||
 |N_TYPE_EQ|评审类型|EQ||
 
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 编辑 | toolbar_tree_exp_view_node8_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
+| 删除 | toolbar_idea_tree_exp_view_node10_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 设置需求评审类别 | set_idea_category | 设置类别 |单项数据|<details><summary>打开视图或向导（模态）</summary>[设置类别](app/view/review_idea_set_category_option_view)</details>||
 | 添加附件 | add_attachments | 添加附件 |无数据|用户自定义||
-| 撤销评审 | repeal_review | 撤销评审 |单项数据|<details><summary>后台调用</summary>[repeal_review](#行为)||
 | BI编辑 | bi_report_view | 编辑 |无数据|用户自定义||
-| 提交评审 | submit_review | 提交评审 |单项数据|<details><summary>后台调用</summary>[submit_review](#行为)||
 | 设置类别 | set_category | 设置类别 |单项数据|<details><summary>打开视图或向导（模态）</summary>[设置类别](app/view/review_set_category_option_view)</details>||
 | 添加评审内容 | add_review_content | 添加内容 |无数据|<details><summary>后台调用</summary>[add_review_content](#行为)||
 | 删除 | delete | 删除 |单项数据|<details><summary>后台调用</summary>[Remove](#行为)||
-| 上传附件 | upload_attachment | 上传 |无数据|用户自定义||
 | BI全屏 | bi_full_screen | 全屏 |无数据|用户自定义||
+| 删除 | toolbar_idea_tree_exp_view_node9_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | BI刷新 | bi_refresh | 刷新 |无数据|用户自定义||
-| 删除 | toolbar_tree_exp_view_node10_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 新建分组 | toolbar_idea_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建分组 |单项数据|用户自定义||
 | 删除 | toolbar_tree_exp_view_node9_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
-| 新建类别 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建类别 |单项数据|用户自定义||
-| 编辑 | toolbar_tree_exp_view_node9_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 新建分组 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建分组 |单项数据|用户自定义||
 | 编辑 | toolbar_tree_exp_view_node10_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
-| 删除 | toolbar_tree_exp_view_node8_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 编辑 | toolbar_idea_tree_exp_view_node8_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 打开完成评审视图 | open_complete_review | 完成评审 |无数据|<details><summary>后台调用</summary>[completed_review](#行为)||
+| 编辑 | toolbar_tree_exp_view_node8_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
+| 添加需求评审内容 | add_idea_review_content | 添加内容 |无数据|<details><summary>后台调用</summary>[add_review_content](#行为)||
+| 撤销评审 | repeal_review | 撤销评审 |单项数据|<details><summary>后台调用</summary>[repeal_review](#行为)|SUBDATA|
+| 提交评审 | submit_review | 提交评审 |单项数据|<details><summary>后台调用</summary>[submit_review](#行为)|SUBDATA|
+| 编辑 | toolbar_idea_tree_exp_view_node10_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
+| 新建类别 | toolbar_idea_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建类别 |单项数据|用户自定义||
+| 新建需求评审 | new_idea_review | 新建评审 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建评审](app/view/review_wizard_idea_create_wizard_view)</details>||
+| 上传附件 | upload_attachment | 上传 |无数据|用户自定义||
+| 删除 | toolbar_tree_exp_view_node10_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 新建类别 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建类别 |单项数据|用户自定义||
+| 编辑 | toolbar_idea_tree_exp_view_node9_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
+| 删除 | toolbar_idea_tree_exp_view_node8_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 编辑 | toolbar_tree_exp_view_node9_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
+| 删除 | toolbar_tree_exp_view_node8_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
@@ -248,6 +305,7 @@
 |[添加附件数据（通用）](module/TestMgmt/review/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[编辑类别或分组](module/TestMgmt/review/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
 |[计算表格列行为状态(review)](module/TestMgmt/review/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制界面行为组按钮的显示隐藏状态|
+|[通知刷新](module/TestMgmt/review/uilogic/notify_refresh)|notify_refresh||
 |[门户全屏](module/TestMgmt/review/uilogic/full_screen)|full_screen|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户刷新](module/TestMgmt/review/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户编辑](module/TestMgmt/review/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|
@@ -273,6 +331,12 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/TestMgmt/review?id=数据集合`">
   数据集合
+</el-anchor-link>
+<el-anchor-link :href="`#/module/TestMgmt/review?id=数据权限`">
+  数据权限
+</el-anchor-link>
+<el-anchor-link :href="`#/module/TestMgmt/review?id=消息通知`">
+  消息通知
 </el-anchor-link>
 <el-anchor-link :href="`#/module/TestMgmt/review?id=搜索模式`">
   搜索模式

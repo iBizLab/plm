@@ -30,6 +30,20 @@ package cn.ibizlab.plm.base.logic.workloadlogic.save_workload;
             then
             end
 
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam1"
+            ruleflow-group "workloadsave_workloaddebugparam1"
+            when
+            then
+                        update(workloadsave_workloaddefault);//更新fact中变量值
+                        update(workloadsave_workloadactual);//更新fact中变量值
+                        update(workloadsave_workloadidea);//更新fact中变量值
+                        update(workloadsave_workloadremaining);//更新fact中变量值
+                        update(workloadsave_workloadtest_case);//更新fact中变量值
+                        update(workloadsave_workloadu_workload);//更新fact中变量值
+                        update(workloadsave_workloadwork_item);//更新fact中变量值
+            end
+
             //逻辑处理节点[绑定所属对象标识]
             rule "prepareparam2"
             ruleflow-group "workloadsave_workloadprepareparam2"
@@ -103,7 +117,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.save_workload;
             when
             then
                             workloadsave_workloaddefault.set("identifier",workloadsave_workloadwork_item.get("identifier"));
-                            workloadsave_workloadactual.set("name","ACTUAL_WORKLOAD");
+                            workloadsave_workloadactual.set("name",workloadsave_workloaddefault.get("category"));
                             workloadsave_workloadactual.set("ownertype","WORK_ITEM");
                             workloadsave_workloadremaining.set("ownertype","WORK_ITEM");
                             workloadsave_workloaddefault.set("principaltype","WORK_ITEM");
@@ -127,7 +141,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.save_workload;
             then
                             workloadsave_workloaddefault.set("identifier",workloadsave_workloadidea.get("identifier"));
                             workloadsave_workloadactual.set("ownertype","IDEA");
-                            workloadsave_workloadactual.set("name","ACTUAL_WORKLOAD");
+                            workloadsave_workloadactual.set("name",workloadsave_workloaddefault.get("category"));
                             workloadsave_workloadremaining.set("ownertype","IDEA");
                             workloadsave_workloaddefault.set("recentparent",workloadsave_workloadidea.get("productid"));
                             workloadsave_workloaddefault.set("recentparentname",workloadsave_workloadidea.get("productname"));
@@ -150,7 +164,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.save_workload;
             then
                             workloadsave_workloaddefault.set("identifier",workloadsave_workloadtest_case.get("identifier"));
                             workloadsave_workloadactual.set("ownertype","TEST_CASE");
-                            workloadsave_workloadactual.set("name","ACTUAL_WORKLOAD");
+                            workloadsave_workloadactual.set("name",workloadsave_workloaddefault.get("category"));
                             workloadsave_workloadremaining.set("ownertype","TEST_CASE");
                             workloadsave_workloaddefault.set("recentparentidentifier",workloadsave_workloadtest_case.get("libraryidentifier"));
                             workloadsave_workloaddefault.set("recentparent",workloadsave_workloadtest_case.get("testlibraryid"));
@@ -196,21 +210,6 @@ package cn.ibizlab.plm.base.logic.workloadlogic.save_workload;
                         update(workloadsave_workloadwork_item);//更新fact中变量值
             end
 
-            //逻辑处理节点[工时为0时置为null]
-            rule "prepareparam6"
-            ruleflow-group "workloadsave_workloadprepareparam6"
-            when
-            then
-                                workloadsave_workloadactual.set("decimalvalue",null);
-                        update(workloadsave_workloaddefault);//更新fact中变量值
-                        update(workloadsave_workloadactual);//更新fact中变量值
-                        update(workloadsave_workloadidea);//更新fact中变量值
-                        update(workloadsave_workloadremaining);//更新fact中变量值
-                        update(workloadsave_workloadtest_case);//更新fact中变量值
-                        update(workloadsave_workloadu_workload);//更新fact中变量值
-                        update(workloadsave_workloadwork_item);//更新fact中变量值
-            end
-
             //逻辑处理节点[合计已登记工时]
             rule "rawsqlcall1"
             ruleflow-group "workloadsave_workloadrawsqlcall1"
@@ -219,7 +218,8 @@ package cn.ibizlab.plm.base.logic.workloadlogic.save_workload;
     Map param =new HashMap();
         param.put("param0",workloadsave_workloadactual.get("ownerid"));
         param.put("param1",workloadsave_workloadactual.get("ownertype"));
-    String strSql="select sum(DURATION) as `DECIMAL_VALUE` from `workload` where PRINCIPAL_ID = #{et.param0} and PRINCIPAL_TYPE = #{et.param1}";
+        param.put("param2",workloadsave_workloadactual.get("name"));
+    String strSql="select sum(DURATION) as `DECIMAL_VALUE` from `workload` where PRINCIPAL_ID = #{et.param0} and PRINCIPAL_TYPE = #{et.param1} and CATEGORY = #{et.param2}";
                         java.util.List<JSONObject> entities=iBzSysWorkloadDefaultService.select(strSql,param);//SQL调用
                             if(entities.size()>0){
                             JSONObject entity=entities.get(0);
@@ -271,6 +271,21 @@ package cn.ibizlab.plm.base.logic.workloadlogic.save_workload;
             ruleflow-group "workloadsave_workloaddelogic1"
             when
             then
+                        update(workloadsave_workloaddefault);//更新fact中变量值
+                        update(workloadsave_workloadactual);//更新fact中变量值
+                        update(workloadsave_workloadidea);//更新fact中变量值
+                        update(workloadsave_workloadremaining);//更新fact中变量值
+                        update(workloadsave_workloadtest_case);//更新fact中变量值
+                        update(workloadsave_workloadu_workload);//更新fact中变量值
+                        update(workloadsave_workloadwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[工时为0时置为null]
+            rule "prepareparam6"
+            ruleflow-group "workloadsave_workloadprepareparam6"
+            when
+            then
+                                workloadsave_workloadactual.set("decimalvalue",null);
                         update(workloadsave_workloaddefault);//更新fact中变量值
                         update(workloadsave_workloadactual);//更新fact中变量值
                         update(workloadsave_workloadidea);//更新fact中变量值

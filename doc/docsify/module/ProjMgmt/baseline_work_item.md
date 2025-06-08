@@ -10,7 +10,7 @@
 |实际工时|ACTUAL_WORKLOAD|数值||是||
 |负责人|ASSIGNEE_ID|文本，可指定长度|100|是||
 |负责人|ASSIGNEE_NAME|文本，可指定长度|100|是||
-|需求来源|BACKLOG_FROM|[单项选择(文本值)](index/dictionary_index#demand_sources "需求来源")|200|是||
+|需求来源|BACKLOG_FROM|单项选择(文本值)|200|是||
 |需求类型|BACKLOG_TYPE|单项选择(文本值)|200|是||
 |基线|BASELINE|外键值对象|1048576|是||
 |看板标识|BOARD_ID|文本，可指定长度|100|是||
@@ -40,7 +40,7 @@
 |项目发布标识|RELEASE_ID|文本，可指定长度|100|是||
 |项目发布名称|RELEASE_NAME|文本，可指定长度|100|是||
 |剩余工时|REMAINING_WORKLOAD|数值||是||
-|风险|RISK|[单项选择(文本值)](index/dictionary_index#risk "风险")|200|是||
+|风险|RISK|单项选择(文本值)|200|是||
 |编号|SHOW_IDENTIFIER|文本，可指定长度|100|是||
 |迭代标识|SPRINT_ID|文本，可指定长度|100|是||
 |迭代名称|SPRINT_NAME|文本，可指定长度|100|是||

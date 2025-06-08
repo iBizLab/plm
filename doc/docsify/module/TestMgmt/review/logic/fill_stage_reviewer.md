@@ -53,7 +53,7 @@ LOOPSUBCALL1 --> END1
 
 
 
-1. 将`Default(传入变量).reviewer` 设置给  `filter(过滤器).N_OWNER_ID_EQ`
+1. 将`Default(传入变量).reviewer(评审人)` 设置给  `filter(过滤器).N_OWNER_ID_EQ`
 2. 将`用户全局对象.srfpersonid` 设置给  `Default(传入变量).cur_user_id`
 3. 将`GROUP` 设置给  `filter(过滤器).N_OWNER_TYPE_EQ`
 

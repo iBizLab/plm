@@ -71,6 +71,7 @@
 |  名称col350   | 主实体col200   | 关系类型col200   |    备注col500  |
 | -------- |---------- |-----------|----- |
 |[DERCUSTOM_GUIDELINE_LIBRARY_LIBRARY_ID](der/DERCUSTOM_GUIDELINE_LIBRARY_LIBRARY_ID)|[测试库(LIBRARY)](module/TestMgmt/library)|自定义关系||
+|[DERCUSTOM_GUIDELINE_PRODUCT_PRODUCT_ID](der/DERCUSTOM_GUIDELINE_PRODUCT_PRODUCT_ID)|[产品(PRODUCT)](module/ProdMgmt/product)|自定义关系||
 
 </el-tab-pane>
 </el-tabs>

@@ -30,6 +30,7 @@ if (rows && rows.length > 0) {
         grouppanel6_state.visible = false;
         const choose_data = uiLogic.parent_form.control.details.choosed_content;
         choose_data.setDataValue(next_content.id);
+        uiLogic.next_content = next_content;
     } else {
         grouppanel6_state.visible = true;
         const choose_data = uiLogic.parent_form.control.details.choosed_content;

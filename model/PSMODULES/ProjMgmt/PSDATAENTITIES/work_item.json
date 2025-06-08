@@ -10,10 +10,18 @@
     "name" : "AIChat",
     "getPSDEACModeDataItems" : [ {
       "dataType" : 25,
-      "name" : "value"
+      "name" : "value",
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
     }, {
       "dataType" : 25,
-      "name" : "text"
+      "name" : "text",
+      "getPSDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      }
     } ],
     "pagingSize" : 50,
     "defaultMode" : false,
@@ -26,10 +34,18 @@
     "name" : "DEFAULT",
     "getPSDEACModeDataItems" : [ {
       "dataType" : 25,
-      "name" : "value"
+      "name" : "value",
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
     }, {
       "dataType" : 25,
-      "name" : "text"
+      "name" : "text",
+      "getPSDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      }
     } ],
     "pagingSize" : 50,
     "defaultMode" : true,
@@ -253,6 +269,15 @@
       "getPSDELogic" : {
         "modelref" : true,
         "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDELOGICS/fill_idea_form.json"
+      },
+      "internalLogic" : true
+    }, {
+      "actionLogicType" : 1,
+      "attachMode" : "AFTER",
+      "name" : "附加逻辑",
+      "getPSDELogic" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDELOGICS/fill_test_case_info.json"
       },
       "internalLogic" : true
     } ],
@@ -1693,6 +1718,9 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEDRITEMS/UsrDRItem0508162980.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEDRITEMS/UsrDRItem0522607524.json"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEDRITEMS/UsrDRItem0711738065.json"
@@ -12638,6 +12666,7 @@
     "length" : 200,
     "logicName" : "编号",
     "name" : "SHOW_IDENTIFIER",
+    "orderValue" : 90,
     "serviceCodeName" : "show_identifier",
     "stdDataType" : 25,
     "stringLength" : 200,
@@ -12727,6 +12756,7 @@
     "length" : 100,
     "logicName" : "编号",
     "name" : "IDENTIFIER",
+    "orderValue" : 110,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -12817,6 +12847,7 @@
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEFLOGICS/is_archived_onchange.json"
     },
+    "orderValue" : 170,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/YesNo.json"
@@ -12907,6 +12938,7 @@
     "length" : 500,
     "logicName" : "标题",
     "name" : "TITLE",
+    "orderValue" : 180,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -12994,6 +13026,7 @@
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEFLOGICS/is_deleted_onchange.json"
     },
+    "orderValue" : 180,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/YesNo.json"
@@ -13130,6 +13163,7 @@
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEFLOGICS/aggregate_start_at.json"
     },
+    "orderValue" : 190,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -13262,6 +13296,7 @@
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEFLOGICS/aggregate_end_at.json"
     },
+    "orderValue" : 200,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -13424,6 +13459,7 @@
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEFLOGICS/state_onchange.json"
     },
+    "orderValue" : 210,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSCODELISTS/work_item_state2.json"
@@ -13538,6 +13574,7 @@
     "length" : 100,
     "logicName" : "优先级",
     "name" : "PRIORITY",
+    "orderValue" : 220,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSCODELISTS/work_item_priority.json"
@@ -13610,6 +13647,7 @@
     "importOrder" : 1000,
     "logicName" : "是否叶子节点",
     "name" : "IS_LEAF",
+    "orderValue" : 240,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/YesNo.json"
@@ -13700,6 +13738,7 @@
     "length" : 60,
     "logicName" : "需求类型",
     "name" : "BACKLOG_TYPE",
+    "orderValue" : 290,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSCODELISTS/requirement_type.json"
@@ -13790,6 +13829,7 @@
     "length" : 60,
     "logicName" : "需求来源",
     "name" : "BACKLOG_FROM",
+    "orderValue" : 300,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSCODELISTS/demand_sources.json"
@@ -13886,6 +13926,7 @@
     "length" : 1048576,
     "logicName" : "描述",
     "name" : "DESCRIPTION",
+    "orderValue" : 310,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -13989,6 +14030,7 @@
     "length" : 100,
     "logicName" : "负责人",
     "name" : "ASSIGNEE_NAME",
+    "orderValue" : 310,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -14100,6 +14142,7 @@
     "length" : 60,
     "logicName" : "复现概率",
     "name" : "REAPPEAR_PROBABILITY",
+    "orderValue" : 320,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSCODELISTS/reproduction_probability.json"
@@ -14227,6 +14270,7 @@
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEFLOGICS/assignee_onchange.json"
     },
+    "orderValue" : 320,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -14326,6 +14370,7 @@
     "length" : 100,
     "logicName" : "当前版本标识",
     "name" : "CUR_VERSION_ID",
+    "orderValue" : 320,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -14414,6 +14459,7 @@
     "length" : 60,
     "logicName" : "严重程度",
     "name" : "SEVERITY",
+    "orderValue" : 330,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSCODELISTS/severity.json"
@@ -14504,6 +14550,7 @@
     "length" : 60,
     "logicName" : "风险",
     "name" : "RISK",
+    "orderValue" : 340,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSCODELISTS/risk.json"
@@ -14602,6 +14649,7 @@
     "length" : 60,
     "logicName" : "项目类型",
     "name" : "PROJECT_TYPE",
+    "orderValue" : 350,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSCODELISTS/project_type.json"
@@ -14720,6 +14768,7 @@
     "length" : 60,
     "logicName" : "工作项类型分组",
     "name" : "WORK_ITEM_TYPE_GROUP",
+    "orderValue" : 360,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSCODELISTS/work_item_type_group.json"
@@ -14823,6 +14872,7 @@
     "length" : 2000,
     "logicName" : "标签",
     "name" : "TAGS",
+    "orderValue" : 370,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -14901,6 +14951,7 @@
     "length" : 100,
     "logicName" : "看板栏状态",
     "name" : "ENTRY_STATUS",
+    "orderValue" : 380,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -14966,6 +15017,7 @@
     "importOrder" : 1000,
     "logicName" : "所在看板栏位置",
     "name" : "ENTRY_POSITION",
+    "orderValue" : 390,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -15031,6 +15083,7 @@
     "importOrder" : 1000,
     "logicName" : "统计数",
     "name" : "REP_NUM",
+    "orderValue" : 400,
     "serviceCodeName" : "rep_num",
     "stdDataType" : 6,
     "userTag4" : "INTENAL",
@@ -15103,6 +15156,7 @@
     "length" : 2000,
     "logicName" : "解决办法",
     "name" : "SOLUTION_WAY",
+    "orderValue" : 400,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -15183,6 +15237,7 @@
     "importOrder" : 1000,
     "logicName" : "工作项类型序号",
     "name" : "WORK_ITEM_TYPE_SEQUENCE",
+    "orderValue" : 410,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDERS/DER1N_WORK_ITEM_WORK_ITEM_TYPE_WORK_ITEM_TYPE_ID.json"
@@ -15264,6 +15319,7 @@
     "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
     "logicName" : "完成时间",
     "name" : "COMPLETED_AT",
+    "orderValue" : 420,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -15322,6 +15378,7 @@
     "importOrder" : 1000,
     "logicName" : "工时进度",
     "name" : "WORKLOAD_SCHEDULE",
+    "orderValue" : 430,
     "precision" : 1,
     "serviceCodeName" : "workload_schedule",
     "stdDataType" : 6,
@@ -15380,6 +15437,7 @@
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEFLOGICS/aggregate_estimated_work_load.json"
     },
+    "orderValue" : 440,
     "precision" : 1,
     "serviceCodeName" : "estimated_workload",
     "stdDataType" : 6,
@@ -15459,6 +15517,7 @@
     "length" : 60,
     "logicName" : "任务类别",
     "name" : "JOB_TYPE",
+    "orderValue" : 450,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSCODELISTS/task_category.json"
@@ -15534,6 +15593,7 @@
     "length" : 100,
     "logicName" : "测试计划ID",
     "name" : "TEST_PLAN_ID",
+    "orderValue" : 460,
     "serviceCodeName" : "test_plan_id",
     "stdDataType" : 25,
     "stringLength" : 100,
@@ -15589,6 +15649,7 @@
     "importOrder" : 1000,
     "logicName" : "剩余工时",
     "name" : "REMAINING_WORKLOAD",
+    "orderValue" : 470,
     "precision" : 1,
     "serviceCodeName" : "remaining_workload",
     "stdDataType" : 6,
@@ -15653,6 +15714,7 @@
     "length" : 1048576,
     "logicName" : "附件",
     "name" : "ATTACHMENTS",
+    "orderValue" : 480,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/attachment/PSDERS/DERCUSTOM_WORK_ITEM_ATTACHMENT.json"
@@ -15712,6 +15774,7 @@
     "importOrder" : 1000,
     "logicName" : "实际工时",
     "name" : "ACTUAL_WORKLOAD",
+    "orderValue" : 490,
     "precision" : 1,
     "serviceCodeName" : "actual_workload",
     "stdDataType" : 6,
@@ -15776,6 +15839,7 @@
     "length" : 1048576,
     "logicName" : "交付物",
     "name" : "DELIVERABLE",
+    "orderValue" : 500,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/deliverable/PSDERS/DERCUSTOM_WORK_ITEM_DELIVERABLE.json"
@@ -15870,6 +15934,7 @@
     "length" : 100,
     "logicName" : "父工作项类型",
     "name" : "P_WORK_ITEM_TYPE_ID",
+    "orderValue" : 510,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDERS/DER1N_WORK_ITEM_WORK_ITEM_PID.json"
@@ -15963,6 +16028,7 @@
     "length" : 200,
     "logicName" : "关注数",
     "name" : "ATTENTION_COUNT",
+    "orderValue" : 510,
     "serviceCodeName" : "attention_count",
     "stdDataType" : 25,
     "stringLength" : 200,
@@ -16052,6 +16118,7 @@
     "length" : 15,
     "logicName" : "项目标识",
     "name" : "PROJECT_IDENTIFIER",
+    "orderValue" : 520,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDERS/DER1N_WORK_ITEM_PROJECT_PROJECT_ID.json"
@@ -16146,6 +16213,7 @@
     "length" : 200,
     "logicName" : "评论数",
     "name" : "COMMENT_COUNT",
+    "orderValue" : 520,
     "serviceCodeName" : "comment_count",
     "stdDataType" : 25,
     "stringLength" : 200,
@@ -16318,6 +16386,7 @@
     "length" : 1048576,
     "logicName" : "关注",
     "name" : "ATTENTIONS",
+    "orderValue" : 530,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/SysOperator.json"
@@ -16393,6 +16462,7 @@
     "length" : 100,
     "logicName" : "报表分组属性",
     "name" : "REP_GROUP_VALUE",
+    "orderValue" : 540,
     "serviceCodeName" : "rep_group_value",
     "stdDataType" : 25,
     "stringLength" : 100,
@@ -16445,6 +16515,7 @@
     "importOrder" : 1000,
     "logicName" : "报表百分值",
     "name" : "REP_PERCENT_VALUE",
+    "orderValue" : 550,
     "serviceCodeName" : "rep_percent_value",
     "stdDataType" : 7,
     "userTag4" : "INTENAL",
@@ -16496,6 +16567,7 @@
     "importOrder" : 1000,
     "logicName" : "报表值1",
     "name" : "REP_VALUE_1",
+    "orderValue" : 560,
     "stdDataType" : 9,
     "userTag4" : "INTENAL",
     "valueFormat" : "%1$s",
@@ -16547,6 +16619,7 @@
     "importOrder" : 1000,
     "logicName" : "报表值3",
     "name" : "REP_VALUE_3",
+    "orderValue" : 560,
     "stdDataType" : 9,
     "userTag4" : "INTENAL",
     "valueFormat" : "%1$s",
@@ -16598,6 +16671,7 @@
     "importOrder" : 1000,
     "logicName" : "报表值2",
     "name" : "REP_VALUE_2",
+    "orderValue" : 570,
     "stdDataType" : 9,
     "userTag4" : "INTENAL",
     "valueFormat" : "%1$s",
@@ -16701,6 +16775,7 @@
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEFLOGICS/state_type_onchange.json"
     },
+    "orderValue" : 580,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSCODELISTS/state_type.json"
@@ -16766,6 +16841,7 @@
     "length" : 100,
     "logicName" : "当前版本名称",
     "name" : "CUR_VERSION_NAME",
+    "orderValue" : 590,
     "serviceCodeName" : "cur_version_name",
     "stdDataType" : 25,
     "stringLength" : 100,
@@ -16832,6 +16908,7 @@
     "length" : 100,
     "logicName" : "选择版本标识",
     "name" : "CHOOSE_VERSION_ID",
+    "orderValue" : 600,
     "serviceCodeName" : "choose_version_id",
     "stdDataType" : 25,
     "stringLength" : 100,
@@ -16898,6 +16975,7 @@
     "length" : 100,
     "logicName" : "选择版本名称",
     "name" : "CHOOSE_VERSION_NAME",
+    "orderValue" : 610,
     "serviceCodeName" : "choose_version_name",
     "stdDataType" : 25,
     "stringLength" : 100,
@@ -16964,6 +17042,7 @@
     "length" : 100,
     "logicName" : "关注人",
     "name" : "ATTENTIONS_IMP",
+    "orderValue" : 620,
     "getPSSysTranslator" : {
       "modelref" : true,
       "path" : "PSSYSTRANSLATORS/UserImp.json"
@@ -17058,6 +17137,7 @@
     "length" : 60,
     "logicName" : "迭代状态",
     "name" : "SPRINT_STATUS",
+    "orderValue" : 630,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSCODELISTS/sprint_status.json"
@@ -17170,6 +17250,7 @@
     "length" : 60,
     "logicName" : "发布阶段",
     "name" : "RELEASE_STATUS",
+    "orderValue" : 640,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSCODELISTS/cur_release_stage.json"
@@ -17282,6 +17363,7 @@
     "length" : 200,
     "logicName" : "工作项下级类型",
     "name" : "WORK_ITEM_SUB_TYPE",
+    "orderValue" : 650,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDERS/DER1N_WORK_ITEM_WORK_ITEM_TYPE_WORK_ITEM_TYPE_ID.json"
@@ -17357,6 +17439,7 @@
     "jsonFormat" : "yyyy-MM-dd",
     "logicName" : "统计日期字段",
     "name" : "REP_DATE",
+    "orderValue" : 660,
     "serviceCodeName" : "rep_date",
     "stdDataType" : 5,
     "valueFormat" : "%1$tY-%1$tm-%1$td",
@@ -17422,6 +17505,7 @@
     "importOrder" : 1000,
     "logicName" : "最近创建日期",
     "name" : "RECENT_CREATE_DAYS",
+    "orderValue" : 670,
     "serviceCodeName" : "recent_create_days",
     "stdDataType" : 9,
     "userTag4" : "INTENAL",
@@ -17480,6 +17564,7 @@
     "importOrder" : 1000,
     "logicName" : "序号",
     "name" : "SEQUENCE",
+    "orderValue" : 680,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -17545,6 +17630,7 @@
     "importOrder" : 1000,
     "logicName" : "关联产品需求数",
     "name" : "RELATION_TOTAL_IDEA",
+    "orderValue" : 690,
     "serviceCodeName" : "relation_total_idea",
     "stdDataType" : 6,
     "userTag4" : "INTENAL",
@@ -17605,6 +17691,7 @@
     "importOrder" : 1000,
     "logicName" : "关联测试用例数",
     "name" : "RELATION_TOTAL_TEST_CASE",
+    "orderValue" : 700,
     "serviceCodeName" : "relation_total_test_case",
     "stdDataType" : 6,
     "userTag4" : "INTENAL",
@@ -17665,6 +17752,7 @@
     "importOrder" : 1000,
     "logicName" : "关联工单数",
     "name" : "RELATION_TOTAL_TICKET",
+    "orderValue" : 710,
     "serviceCodeName" : "relation_total_ticket",
     "stdDataType" : 6,
     "userTag4" : "INTENAL",
@@ -17725,6 +17813,7 @@
     "importOrder" : 1000,
     "logicName" : "关联工作项数",
     "name" : "RELATION_TOTAL_WORK_ITEM",
+    "orderValue" : 720,
     "serviceCodeName" : "relation_total_work_item",
     "stdDataType" : 6,
     "userTag4" : "INTENAL",
@@ -17820,6 +17909,7 @@
     "length" : 100,
     "logicName" : "原始状态",
     "name" : "WORK_ITEM_ORIGIN_STATE",
+    "orderValue" : 730,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSCODELISTS/work_item_origin_state.json"
@@ -17904,6 +17994,7 @@
     "importOrder" : 1000,
     "logicName" : "是否超时",
     "name" : "IS_OVERTIME",
+    "orderValue" : 740,
     "serviceCodeName" : "is_overtime",
     "stdDataType" : 9,
     "valueFormat" : "%1$s",
@@ -17990,6 +18081,7 @@
     "length" : 1048576,
     "logicName" : "执行人",
     "name" : "EXECUTORS",
+    "orderValue" : 750,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/executor/PSDERS/DERCUSTOM_EXECUTOR_WORK_ITEM_OWNER_ID.json"
@@ -18057,6 +18149,7 @@
     "importOrder" : 1000,
     "logicName" : "多人任务",
     "name" : "MULTIPLE_PEOPLE",
+    "orderValue" : 760,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/YesNo.json"
@@ -18131,6 +18224,7 @@
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEFLOGICS/aggregate_actual_start_at.json"
     },
+    "orderValue" : 770,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -18201,6 +18295,7 @@
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEFLOGICS/aggregate_actual_end_at.json"
     },
+    "orderValue" : 780,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -18278,6 +18373,7 @@
     "length" : 100,
     "logicName" : "完成人",
     "name" : "FINISHER",
+    "orderValue" : 790,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -18379,6 +18475,7 @@
     "length" : 200,
     "logicName" : "逾期天数",
     "name" : "OVERDUE_TIME",
+    "orderValue" : 800,
     "serviceCodeName" : "overdue_time",
     "stdDataType" : 25,
     "stringLength" : 200,
@@ -18444,6 +18541,7 @@
     "length" : 100,
     "logicName" : "交付物",
     "name" : "DELIVERABLE_IMP",
+    "orderValue" : 810,
     "getPSSysTranslator" : {
       "modelref" : true,
       "path" : "PSSYSTRANSLATORS/DeliverableImp.json"
@@ -18523,6 +18621,7 @@
     "importOrder" : 1000,
     "logicName" : "项目是否删除",
     "name" : "PROJECT_IS_DELETED",
+    "orderValue" : 820,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/YesNo.json"
@@ -18620,6 +18719,7 @@
     "importOrder" : 1000,
     "logicName" : "项目是否归档",
     "name" : "PROJECT_IS_ARCHIVED",
+    "orderValue" : 830,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/YesNo.json"
@@ -18766,6 +18866,7 @@
     "length" : 100,
     "logicName" : "标识",
     "name" : "ID",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -18891,6 +18992,7 @@
     "length" : 100,
     "logicName" : "建立人",
     "name" : "CREATE_MAN",
+    "orderValue" : 1000,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/SysOperator.json"
@@ -18995,6 +19097,7 @@
     },
     "logicName" : "建立时间",
     "name" : "CREATE_TIME",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -19085,6 +19188,7 @@
     "length" : 100,
     "logicName" : "更新人",
     "name" : "UPDATE_MAN",
+    "orderValue" : 1000,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/SysOperator.json"
@@ -19180,6 +19284,7 @@
     },
     "logicName" : "更新时间",
     "name" : "UPDATE_TIME",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -19281,6 +19386,7 @@
     "length" : 100,
     "logicName" : "项目",
     "name" : "PROJECT_ID",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -19441,6 +19547,7 @@
     "length" : 100,
     "logicName" : "工作项类型",
     "name" : "WORK_ITEM_TYPE_ID",
+    "orderValue" : 1000,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSCODELISTS/work_item_type.json"
@@ -19581,6 +19688,7 @@
     "length" : 200,
     "logicName" : "所属项目",
     "name" : "PROJECT_NAME",
+    "orderValue" : 1000,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDERS/DER1N_WORK_ITEM_PROJECT_PROJECT_ID.json"
@@ -19710,6 +19818,7 @@
     "length" : 200,
     "logicName" : "工作项类型",
     "name" : "WORK_ITEM_TYPE_NAME",
+    "orderValue" : 1000,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDERS/DER1N_WORK_ITEM_WORK_ITEM_TYPE_WORK_ITEM_TYPE_ID.json"
@@ -19820,6 +19929,7 @@
     "length" : 100,
     "logicName" : "父标识",
     "name" : "PID",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -19951,6 +20061,7 @@
     "length" : 500,
     "logicName" : "父工作项",
     "name" : "PTITLE",
+    "orderValue" : 1000,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDERS/DER1N_WORK_ITEM_WORK_ITEM_PID.json"
@@ -20070,6 +20181,7 @@
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEFLOGICS/sprint_id_onchange.json"
     },
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -20184,6 +20296,7 @@
     "length" : 100,
     "logicName" : "看板标识",
     "name" : "BOARD_ID",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -20298,6 +20411,7 @@
     "length" : 100,
     "logicName" : "看板栏标识",
     "name" : "ENTRY_ID",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -20412,6 +20526,7 @@
     "length" : 100,
     "logicName" : "泳道标识",
     "name" : "SWIMLANE_ID",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -20545,6 +20660,7 @@
     "length" : 200,
     "logicName" : "看板栏名称",
     "name" : "ENTRY_NAME",
+    "orderValue" : 1000,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDERS/DER1N_WORK_ITEM_ENTRY_ENTRY_ID.json"
@@ -20674,6 +20790,7 @@
     "length" : 200,
     "logicName" : "看板名称",
     "name" : "BOARD_NAME",
+    "orderValue" : 1000,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDERS/DER1N_WORK_ITEM_BOARD_BOARD_ID.json"
@@ -20790,6 +20907,7 @@
     "length" : 100,
     "logicName" : "顶级工作项标识",
     "name" : "TOP_ID",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -20921,6 +21039,7 @@
     "length" : 500,
     "logicName" : "顶级工作项标题",
     "name" : "TOP_TITLE",
+    "orderValue" : 1000,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDERS/DER1N_WORK_ITEM_WORK_ITEM_TOP_ID.json"
@@ -21051,6 +21170,7 @@
     "length" : 200,
     "logicName" : "迭代名称",
     "name" : "SPRINT_NAME",
+    "orderValue" : 1000,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDERS/DER1N_WORK_ITEM_SPRINT_SPRINT_ID.json"
@@ -21161,6 +21281,7 @@
     "length" : 100,
     "logicName" : "项目发布标识",
     "name" : "RELEASE_ID",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -21294,6 +21415,7 @@
     "length" : 200,
     "logicName" : "项目发布名称",
     "name" : "RELEASE_NAME",
+    "orderValue" : 1000,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDERS/DER1N_WORK_ITEM_RELEASE_RELEASE_ID.json"
@@ -33143,6 +33265,426 @@
     "enableBackend" : true,
     "enableFront" : false
   }, {
+    "codeName" : "fill_test_case_info",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDELOGICS/fill_test_case_info.json",
+    "logicName" : "填充用例信息",
+    "name" : "填充用例信息",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 104,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 160,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 64,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "test_case",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[test_case] 值不为空(NotNil)"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM4"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "run_id",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[run_id] 值不为空(NotNil)"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
+      } ],
+      "topPos" : 280
+    }, {
+      "codeName" : "PREPAREPARAM1",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "test_case"
+        },
+        "name" : "Default[test_case] ==> test_case[ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "test_case",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 448
+    }, {
+      "codeName" : "PREPAREPARAM4",
+      "leftPos" : -44,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM4"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "run"
+        },
+        "name" : "Default[run_id] ==> run[ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "run_id",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 448
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/Get.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "test_case"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEACTION",
+      "name" : "获取测试用例",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "test_case"
+      },
+      "topPos" : 550
+    }, {
+      "codeName" : "DEACTION2",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDEACTIONS/Get.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "run"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
+      },
+      "leftPos" : -44,
+      "logicNodeType" : "DEACTION",
+      "name" : "获取执行用例",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION2"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "run"
+      },
+      "topPos" : 550
+    }, {
+      "code" : "def _default = logic.param('Default').getReal();\r\ndef test_case = logic.param('test_case').getReal();\r\n\r\ndef table_start = '<table style=\"width: auto;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"56.32\">#</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">步骤描述</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">预期结果</th></tr>';\r\ndef table_end = '</tbody></table>';\r\ndef steps = test_case.get('steps');\r\ndef text = '<p><strong>前置条件：</strong></p>' + (test_case.get('precondition') ?: '') + '<p><strong>执行步骤：</strong></p>' + table_start;\r\n\r\n\r\ndef content = '<td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">';\r\ndef group = '<td colSpan=\"4\" rowSpan=\"1\" width=\"auto\">';\r\n\r\ndef order = 1;\r\ndef group_order = 0.1;\r\nsteps.each { item ->\r\n    println item;\r\n    if(item.get('is_group') == 0){\r\n        text += '<tr>' + content + order + '</td>';\r\n        text += content;\r\n        text += (item.get('description') ?: '') + '</td>';\r\n        text += content;\r\n        text += (item.get('expected_value') ?: '') + '</td>' + '</tr>';\r\n    }else if(item.get('is_group') == 1){\r\n        text += '<tr>' + content + order + '</td>';\r\n        text += group;\r\n        text += (item.get('name') ?: '') + '</td>' + '</tr>';\r\n        group_order = 0.1;\r\n    }else{\r\n        group_order += order;\r\n        text += '<tr>' + content + group_order + '</td>';\r\n        text += content;\r\n        text += (item.get('description') ?: '') + '</td>';\r\n        text += content;\r\n        text += (item.get('expected_value') ?: '') + '</td>' + '</tr>';\r\n        group_order += 0.1;\r\n    }\r\n    order++;\r\n}\r\ntext += table_end + (_default.get('description') ?: '');\r\n\r\n_default.set('description', text);",
+      "codeName" : "RAWSFCODE1",
+      "codeType" : "Groovy",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "拼接描述字段",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM5"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        }
+      } ],
+      "topPos" : 640
+    }, {
+      "code" : "def _default = logic.param('Default').getReal();\r\ndef run = logic.param('run').getReal();\r\n\r\n//获取代码表\r\ndef run_status = sys.codelist('TestMgmt__run_status');\r\n\r\n\r\ndef table_start = '<table style=\"width: auto;\"><tbody><tr><th colSpan=\"1\" rowSpan=\"1\" width=\"55\">#</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">步骤描述</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">预期结果</th><th colSpan=\"1\" rowSpan=\"1\" width=\"auto\">实际结果</th><th colSpan=\"1\" rowSpan=\"1\" width=\"80\">执行结果</th></tr>';\r\ndef table_end = '</tbody></table>';\r\ndef steps = run.get('steps');\r\ndef text = '<p><strong>前置条件：</strong></p>' + (run.get('precondition') ?: '') + '<p><strong>执行步骤：</strong></p>' + table_start;\r\n\r\n\r\ndef content = '<td colSpan=\"1\" rowSpan=\"1\" width=\"auto\">';\r\ndef group = '<td colSpan=\"4\" rowSpan=\"1\" width=\"auto\">';\r\n\r\ndef order = 1;\r\ndef group_order = 0.1;\r\nsteps.each { item ->\r\n    println item;\r\n    if(item.get('is_group') == 0){\r\n        text += '<tr>' + content + order + '</td>';\r\n        text += content;\r\n        text += (item.get('description') ?: '') + '</td>';\r\n        text += content;\r\n        text += (item.get('expected_value') ?: '') + '</td>';\r\n        text += content;\r\n        text += (item.get('actual_value') ?: '') + '</td>';\r\n        text += content;\r\n        text += (run_status.getText(item.get('status1'))) ?: '' + '</td>' + '</tr>';\r\n    }else if(item.get('is_group') == 1){\r\n        text += '<tr>' + content + order + '</td>';\r\n        text += group;\r\n        text += (item.get('name') ?: '') + '</td>' + '</tr>';\r\n        group_order = 0.1;\r\n    }else{\r\n        group_order += order;\r\n        text += '<tr>' + content + group_order + '</td>';\r\n        text += content;\r\n        text += (item.get('description') ?: '') + '</td>';\r\n        text += content;\r\n        text += (item.get('expected_value') ?: '') + '</td>';\r\n        text += content;\r\n        text += (item.get('actual_value') ?: '') + '</td>';\r\n        text += content;\r\n        text += (run_status.getText(item.get('status1'))) ?: '' + '</td>' + '</tr>';\r\n        group_order += 0.1;\r\n    }\r\n    order++;\r\n}\r\ntext += table_end + (_default.get('description') ?: '');\r\n\r\n_default.set('description', text);",
+      "codeName" : "RAWSFCODE2",
+      "codeType" : "Groovy",
+      "leftPos" : -44,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "拼接描述字段",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM6"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE2"
+        }
+      } ],
+      "topPos" : 650
+    }, {
+      "codeName" : "PREPAREPARAM5",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE3"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM5"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "attachments"
+        },
+        "name" : "test_case[ATTACHMENTS] ==> attachments",
+        "paramAction" : "BINDPARAM",
+        "srcFieldName" : "ATTACHMENTS",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "test_case"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 746
+    }, {
+      "codeName" : "PREPAREPARAM6",
+      "leftPos" : -44,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置用例ID",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION3"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM6"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "test_case"
+        },
+        "name" : "run[CASE_ID] ==> test_case[ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "CASE_ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "run"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 746
+    }, {
+      "codeName" : "DEACTION3",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/Get.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "test_case"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+      },
+      "leftPos" : -44,
+      "logicNodeType" : "DEACTION",
+      "name" : "获取测试用例",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM5"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION3"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "test_case"
+      },
+      "topPos" : 875
+    }, {
+      "code" : "def _default = logic.param('Default').getReal();\r\ndef attachments = logic.param('attachments').getReal();\r\n\r\ndef _default_list = _default.get('attachments');\r\ndef list = new ArrayList();\r\n\r\nattachments.each { item ->\r\n    println item;\r\n    item.set('owner_id',null);\r\n    item.set('owner_type',null);\r\n    item.set('id',null);\r\n    list.add(item);\r\n}\r\n\r\n_default_list.each { item ->\r\n    println item;\r\n    list.add(item);\r\n}\r\nprintln list;\r\n_default.set('attachments', list);",
+      "codeName" : "RAWSFCODE3",
+      "codeType" : "Groovy",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "附件操作",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE3"
+        }
+      } ],
+      "topPos" : 875
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 1000
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "attachments",
+      "logicName" : "附件列表",
+      "name" : "附件列表",
+      "entityListParam" : true
+    }, {
+      "codeName" : "run",
+      "logicName" : "执行用例",
+      "name" : "执行用例",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "test_case",
+      "logicName" : "用例",
+      "name" : "用例",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+      },
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "fill_type_of_state",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDELOGICS/fill_type_of_state.json",
@@ -40010,7 +40552,7 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 160,
+      "topPos" : 80,
       "parallelOutput" : true
     }, {
       "codeName" : "PREPAREPARAM1",
@@ -40043,7 +40585,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 402
+      "topPos" : 312
     }, {
       "codeName" : "DEACTION1",
       "getDstPSDEAction" : {
@@ -40064,7 +40606,7 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREPARAM2"
+          "id" : "DEBUGPARAM1"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -40076,7 +40618,28 @@
         "modelref" : true,
         "id" : "project"
       },
-      "topPos" : 510
+      "topPos" : 410
+    }, {
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "project"
+      },
+      "leftPos" : 570,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
+      } ],
+      "topPos" : 535
     }, {
       "codeName" : "PREPAREPARAM2",
       "leftPos" : 570,
@@ -48818,6 +49381,12 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "dyna_quick_create_bug_view",
+    "logicName" : "缺陷工作项快速建立视图（动态）",
+    "name" : "缺陷工作项快速建立视图（动态）",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "scrum_defect_age_report_view",
     "logicName" : "Scrum缺陷年龄报告报表",
     "name" : "Scrum缺陷年龄报告报表",
@@ -48912,6 +49481,12 @@
     "logicName" : "工作项表格视图（全部缺陷scrum）",
     "name" : "工作项表格视图（全部缺陷scrum）",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "Usr05300078PanelView",
+    "logicName" : "测试实体面板视图消息",
+    "name" : "测试实体面板视图消息",
+    "realModelSubType" : "DEPANELVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "waterfall_require_tree_grid_view",
@@ -49576,6 +50151,13 @@
     "logicName" : "移入看板_表单",
     "modelTag2" : "0",
     "name" : "移入看板_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "Usr06077116_Form",
+    "logicName" : "缺陷工作项快速建立视图（动态）_表单",
+    "modelTag2" : "0",
+    "name" : "缺陷工作项快速建立视图（动态）_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {

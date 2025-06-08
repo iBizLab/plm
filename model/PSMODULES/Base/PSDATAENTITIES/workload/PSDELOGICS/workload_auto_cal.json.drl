@@ -10,6 +10,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.workload_auto_cal;
                 global cn.ibizlab.plm.core.projmgmt.domain.work_item workloadworkload_auto_calcur_work_item_filter;
                 global cn.ibizlab.plm.core.projmgmt.domain.work_item workloadworkload_auto_calcur_work_item_page;
                 global cn.ibizlab.plm.core.projmgmt.domain.work_item workloadworkload_auto_calcur_work_item_temp;
+                global cn.ibizlab.plm.core.base.domain.extend_storage workloadworkload_auto_calestimated;
                 global cn.ibizlab.plm.core.base.domain.workload workloadworkload_auto_calnext_work_load;
                 global cn.ibizlab.plm.core.projmgmt.domain.work_item workloadworkload_auto_calp_work_item;
                 global cn.ibizlab.plm.core.projmgmt.domain.work_item workloadworkload_auto_calp_work_item_filter;
@@ -56,6 +57,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.workload_auto_cal;
                         update(workloadworkload_auto_calcur_work_item_filter);//更新fact中变量值
                         update(workloadworkload_auto_calcur_work_item_page);//更新fact中变量值
                         update(workloadworkload_auto_calcur_work_item_temp);//更新fact中变量值
+                        update(workloadworkload_auto_calestimated);//更新fact中变量值
                         update(workloadworkload_auto_calnext_work_load);//更新fact中变量值
                         update(workloadworkload_auto_calp_work_item);//更新fact中变量值
                         update(workloadworkload_auto_calp_work_item_filter);//更新fact中变量值
@@ -75,6 +77,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.workload_auto_cal;
                         update(workloadworkload_auto_calcur_work_item_filter);//更新fact中变量值
                         update(workloadworkload_auto_calcur_work_item_page);//更新fact中变量值
                         update(workloadworkload_auto_calcur_work_item_temp);//更新fact中变量值
+                        update(workloadworkload_auto_calestimated);//更新fact中变量值
                         update(workloadworkload_auto_calnext_work_load);//更新fact中变量值
                         update(workloadworkload_auto_calp_work_item);//更新fact中变量值
                         update(workloadworkload_auto_calp_work_item_filter);//更新fact中变量值
@@ -98,6 +101,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.workload_auto_cal;
                         update(workloadworkload_auto_calcur_work_item_filter);//更新fact中变量值
                         update(workloadworkload_auto_calcur_work_item_page);//更新fact中变量值
                         update(workloadworkload_auto_calcur_work_item_temp);//更新fact中变量值
+                        update(workloadworkload_auto_calestimated);//更新fact中变量值
                         update(workloadworkload_auto_calnext_work_load);//更新fact中变量值
                         update(workloadworkload_auto_calp_work_item);//更新fact中变量值
                         update(workloadworkload_auto_calp_work_item_filter);//更新fact中变量值
@@ -118,6 +122,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.workload_auto_cal;
                         update(workloadworkload_auto_calcur_work_item_filter);//更新fact中变量值
                         update(workloadworkload_auto_calcur_work_item_page);//更新fact中变量值
                         update(workloadworkload_auto_calcur_work_item_temp);//更新fact中变量值
+                        update(workloadworkload_auto_calestimated);//更新fact中变量值
                         update(workloadworkload_auto_calnext_work_load);//更新fact中变量值
                         update(workloadworkload_auto_calp_work_item);//更新fact中变量值
                         update(workloadworkload_auto_calp_work_item_filter);//更新fact中变量值
@@ -141,6 +146,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.workload_auto_cal;
                         update(workloadworkload_auto_calcur_work_item_filter);//更新fact中变量值
                         update(workloadworkload_auto_calcur_work_item_page);//更新fact中变量值
                         update(workloadworkload_auto_calcur_work_item_temp);//更新fact中变量值
+                        update(workloadworkload_auto_calestimated);//更新fact中变量值
                         update(workloadworkload_auto_calnext_work_load);//更新fact中变量值
                         update(workloadworkload_auto_calp_work_item);//更新fact中变量值
                         update(workloadworkload_auto_calp_work_item_filter);//更新fact中变量值
@@ -161,6 +167,52 @@ package cn.ibizlab.plm.base.logic.workloadlogic.workload_auto_cal;
                         update(workloadworkload_auto_calcur_work_item_filter);//更新fact中变量值
                         update(workloadworkload_auto_calcur_work_item_page);//更新fact中变量值
                         update(workloadworkload_auto_calcur_work_item_temp);//更新fact中变量值
+                        update(workloadworkload_auto_calestimated);//更新fact中变量值
+                        update(workloadworkload_auto_calnext_work_load);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calremaining);//更新fact中变量值
+                        update(workloadworkload_auto_caltarget_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calworkload_data);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置预估工时]
+            rule "prepareparam5"
+            ruleflow-group "workloadworkload_auto_calprepareparam5"
+            when
+            then
+                            workloadworkload_auto_calestimated.set("name","ESTIMATED_WORKLOAD");
+                            workloadworkload_auto_calestimated.set("ownertype","WORK_ITEM");
+                            workloadworkload_auto_calestimated.set("ownerid",workloadworkload_auto_caldefault.get("principalid"));
+                            workloadworkload_auto_calestimated.set("decimalvalue",workloadworkload_auto_calworkload_data.get("estimatedworkload"));
+                        update(workloadworkload_auto_caldefault);//更新fact中变量值
+                        update(workloadworkload_auto_calactual);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_temp);//更新fact中变量值
+                        update(workloadworkload_auto_calestimated);//更新fact中变量值
+                        update(workloadworkload_auto_calnext_work_load);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calp_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calremaining);//更新fact中变量值
+                        update(workloadworkload_auto_caltarget_work_item);//更新fact中变量值
+                        update(workloadworkload_auto_calworkload_data);//更新fact中变量值
+            end
+
+            //逻辑处理节点[保存预估工时]
+            rule "deaction6"
+            ruleflow-group "workloadworkload_auto_caldeaction6"
+            when
+            then
+                        extend_storageservice.save(workloadworkload_auto_calestimated);
+                        update(workloadworkload_auto_caldefault);//更新fact中变量值
+                        update(workloadworkload_auto_calactual);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_filter);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_page);//更新fact中变量值
+                        update(workloadworkload_auto_calcur_work_item_temp);//更新fact中变量值
+                        update(workloadworkload_auto_calestimated);//更新fact中变量值
                         update(workloadworkload_auto_calnext_work_load);//更新fact中变量值
                         update(workloadworkload_auto_calp_work_item);//更新fact中变量值
                         update(workloadworkload_auto_calp_work_item_filter);//更新fact中变量值
@@ -181,6 +233,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.workload_auto_cal;
                         update(workloadworkload_auto_calcur_work_item_filter);//更新fact中变量值
                         update(workloadworkload_auto_calcur_work_item_page);//更新fact中变量值
                         update(workloadworkload_auto_calcur_work_item_temp);//更新fact中变量值
+                        update(workloadworkload_auto_calestimated);//更新fact中变量值
                         update(workloadworkload_auto_calnext_work_load);//更新fact中变量值
                         update(workloadworkload_auto_calp_work_item);//更新fact中变量值
                         update(workloadworkload_auto_calp_work_item_filter);//更新fact中变量值
@@ -201,6 +254,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.workload_auto_cal;
                         update(workloadworkload_auto_calcur_work_item_filter);//更新fact中变量值
                         update(workloadworkload_auto_calcur_work_item_page);//更新fact中变量值
                         update(workloadworkload_auto_calcur_work_item_temp);//更新fact中变量值
+                        update(workloadworkload_auto_calestimated);//更新fact中变量值
                         update(workloadworkload_auto_calnext_work_load);//更新fact中变量值
                         update(workloadworkload_auto_calp_work_item);//更新fact中变量值
                         update(workloadworkload_auto_calp_work_item_filter);//更新fact中变量值
@@ -221,6 +275,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.workload_auto_cal;
                         update(workloadworkload_auto_calcur_work_item_filter);//更新fact中变量值
                         update(workloadworkload_auto_calcur_work_item_page);//更新fact中变量值
                         update(workloadworkload_auto_calcur_work_item_temp);//更新fact中变量值
+                        update(workloadworkload_auto_calestimated);//更新fact中变量值
                         update(workloadworkload_auto_calnext_work_load);//更新fact中变量值
                         update(workloadworkload_auto_calp_work_item);//更新fact中变量值
                         update(workloadworkload_auto_calp_work_item_filter);//更新fact中变量值
@@ -240,6 +295,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.workload_auto_cal;
                         update(workloadworkload_auto_calcur_work_item_filter);//更新fact中变量值
                         update(workloadworkload_auto_calcur_work_item_page);//更新fact中变量值
                         update(workloadworkload_auto_calcur_work_item_temp);//更新fact中变量值
+                        update(workloadworkload_auto_calestimated);//更新fact中变量值
                         update(workloadworkload_auto_calnext_work_load);//更新fact中变量值
                         update(workloadworkload_auto_calp_work_item);//更新fact中变量值
                         update(workloadworkload_auto_calp_work_item_filter);//更新fact中变量值
@@ -259,6 +315,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.workload_auto_cal;
                         update(workloadworkload_auto_calcur_work_item_filter);//更新fact中变量值
                         update(workloadworkload_auto_calcur_work_item_page);//更新fact中变量值
                         update(workloadworkload_auto_calcur_work_item_temp);//更新fact中变量值
+                        update(workloadworkload_auto_calestimated);//更新fact中变量值
                         update(workloadworkload_auto_calnext_work_load);//更新fact中变量值
                         update(workloadworkload_auto_calp_work_item);//更新fact中变量值
                         update(workloadworkload_auto_calp_work_item_filter);//更新fact中变量值

@@ -15,9 +15,9 @@
 
 
 ### 关联界面行为
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建任务（kanban）（工具栏）](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建缺陷（kanban）（工具栏）](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建用户故事（kanban）（工具栏）](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建缺陷（kanban）（工具栏）](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建任务（kanban）（工具栏）](module/ProjMgmt/work_item#界面行为)
 
 ### 关联视图
   * [工作项(work_item_dyna_main_view)](app/view/work_item_dyna_main_view)

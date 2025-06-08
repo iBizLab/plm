@@ -544,12 +544,12 @@
       },
       "srcValueType" : "SRCDLPARAM"
     }, {
-      "dstFieldName" : "REVIEWER",
+      "dstFieldName" : "NEXT_REVIEWER",
       "getDstPSDELogicParam" : {
         "modelref" : true,
         "id" : "review_detail"
       },
-      "name" : "for_stage[REVIEWER] ==> review_detail[REVIEWER]",
+      "name" : "for_stage[REVIEWER] ==> review_detail[NEXT_REVIEWER]",
       "paramAction" : "SETPARAMVALUE",
       "srcFieldName" : "REVIEWER",
       "getSrcPSDELogicParam" : {
@@ -673,6 +673,20 @@
       "srcValue" : "30",
       "srcValueType" : "SRCVALUE"
     }, {
+      "dstFieldName" : "REVIEWER",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "review_detail"
+      },
+      "name" : "for_stage[REVIEWER] ==> review_detail[REVIEWER]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "REVIEWER",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_stage"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
       "dstFieldName" : "is_next",
       "getDstPSDELogicParam" : {
         "modelref" : true,
@@ -704,6 +718,35 @@
     } ],
     "topPos" : 460
   }, {
+    "codeName" : "DENOTIFY3",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "review_detail"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDENOTIFIES/idea_review_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "leftPos" : 905,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "通知关注人（需求）",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY3"
+      }
+    } ],
+    "topPos" : 612
+  }, {
     "codeName" : "PREPAREPARAM6",
     "leftPos" : 700,
     "logicNodeType" : "PREPAREPARAM",
@@ -711,9 +754,51 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "RAWSFCODE1"
+        "id" : "DENOTIFY3"
       },
       "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "review_detail"
+          },
+          "logicType" : "SINGLE",
+          "name" : "review_detail[TYPE] 等于(=) IDEA",
+          "paramValue" : "IDEA"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM6"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY4"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "review_detail"
+          },
+          "logicType" : "SINGLE",
+          "name" : "review_detail[TYPE] 等于(=) TEST_CASE",
+          "paramValue" : "TEST_CASE"
+        } ]
+      },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
         "id" : "PREPAREPARAM6"
@@ -750,6 +835,35 @@
       }
     } ],
     "topPos" : 672
+  }, {
+    "codeName" : "DENOTIFY4",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "review_detail"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDENOTIFIES/test_case_complete_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "leftPos" : 905,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "通知关注人（用例）",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY4"
+      }
+    } ],
+    "topPos" : 732
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",

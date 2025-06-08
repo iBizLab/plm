@@ -5,10 +5,18 @@
     "name" : "DEFAULT",
     "getPSDEACModeDataItems" : [ {
       "dataType" : 25,
-      "name" : "value"
+      "name" : "value",
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
     }, {
       "dataType" : 25,
-      "name" : "text"
+      "name" : "text",
+      "getPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
     } ],
     "pagingSize" : 50,
     "defaultMode" : true,
@@ -18,16 +26,6 @@
   "getAllPSDEActions" : [ {
     "actionMode" : "CREATE",
     "actionType" : "BUILTIN",
-    "getAfterPSDEActionLogics" : [ {
-      "actionLogicType" : 1,
-      "attachMode" : "AFTER",
-      "name" : "附加逻辑",
-      "getPSDELogic" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_wizard/PSDELOGICS/create_review_notify.json"
-      },
-      "internalLogic" : true
-    } ],
     "codeName" : "Create",
     "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_wizard/PSDEACTIONS/Create.json",
@@ -777,6 +775,7 @@
     "length" : 100,
     "logicName" : "编号",
     "name" : "IDENTIFIER",
+    "orderValue" : 110,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -877,6 +876,7 @@
     "length" : 60,
     "logicName" : "评审类型",
     "name" : "TYPE",
+    "orderValue" : 150,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSCODELISTS/review_type.json"
@@ -958,6 +958,7 @@
     "length" : 100,
     "logicName" : "评审主体名称",
     "name" : "PRINCIPAL_NAME",
+    "orderValue" : 160,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -1042,6 +1043,7 @@
     "length" : 100,
     "logicName" : "评审主体标识",
     "name" : "PRINCIPAL_ID",
+    "orderValue" : 160,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -1120,6 +1122,7 @@
     "length" : 100,
     "logicName" : "评审主体类型",
     "name" : "PRINCIPAL_TYPE",
+    "orderValue" : 170,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -1207,6 +1210,7 @@
     "length" : 2000,
     "logicName" : "描述",
     "name" : "DESCRIPTION",
+    "orderValue" : 180,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -1293,6 +1297,7 @@
     "length" : 2000,
     "logicName" : "类别",
     "name" : "CATEGORIES",
+    "orderValue" : 270,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -1395,6 +1400,7 @@
     "length" : 15,
     "logicName" : "测试库标识",
     "name" : "LIBRARY_IDENTIFIER",
+    "orderValue" : 280,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_wizard/PSDERS/DER1N_REVIEW_WIZARD_LIBRARY_LIBRARY_ID.json"
@@ -1489,6 +1495,7 @@
     "length" : 1048576,
     "logicName" : "关注",
     "name" : "ATTENTIONS",
+    "orderValue" : 290,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDERS/DERCUSTOM_ATTENTION_REVIEW_WIZARD.json"
@@ -1585,6 +1592,7 @@
     "length" : 60,
     "logicName" : "评审状态",
     "name" : "STATE",
+    "orderValue" : 300,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSCODELISTS/test_case_state.json"
@@ -1668,6 +1676,7 @@
     "length" : 1048576,
     "logicName" : "评审内容",
     "name" : "CONTENTS",
+    "orderValue" : 320,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_content/PSDERS/DERCUSTOM_REVIEW_CONTENT_REVIEW_WIZARD.json"
@@ -1755,6 +1764,7 @@
     "length" : 100,
     "logicName" : "提交人标识",
     "name" : "SUBMITTER_ID",
+    "orderValue" : 330,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -1841,6 +1851,7 @@
     "length" : 100,
     "logicName" : "提交人",
     "name" : "SUBMITTER_NAME",
+    "orderValue" : 340,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -1927,6 +1938,7 @@
     "length" : 1048576,
     "logicName" : "规则",
     "name" : "RULE",
+    "orderValue" : 350,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -2014,6 +2026,7 @@
     "length" : 1048576,
     "logicName" : "阶段",
     "name" : "STAGE",
+    "orderValue" : 360,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -2101,6 +2114,7 @@
     "length" : 1048576,
     "logicName" : "后置动作",
     "name" : "ACTION_RULE",
+    "orderValue" : 370,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -2190,6 +2204,7 @@
     "length" : 200,
     "logicName" : "编号",
     "name" : "SHOW_IDENTIFIER",
+    "orderValue" : 510,
     "serviceCodeName" : "show_identifier",
     "stdDataType" : 25,
     "stringLength" : 200,
@@ -2264,6 +2279,7 @@
     "length" : 100,
     "logicName" : "关注人",
     "name" : "ATTENTIONS_IMP",
+    "orderValue" : 620,
     "getPSSysTranslator" : {
       "modelref" : true,
       "path" : "PSSYSTRANSLATORS/UserImp.json"
@@ -2358,6 +2374,7 @@
     "length" : 100,
     "logicName" : "标识",
     "name" : "ID",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -2453,6 +2470,7 @@
     "length" : 200,
     "logicName" : "名称",
     "name" : "NAME",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -2543,6 +2561,7 @@
     "length" : 100,
     "logicName" : "建立人",
     "name" : "CREATE_MAN",
+    "orderValue" : 1000,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/SysOperator.json"
@@ -2627,6 +2646,7 @@
     },
     "logicName" : "建立时间",
     "name" : "CREATE_TIME",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -2717,6 +2737,7 @@
     "length" : 100,
     "logicName" : "更新人",
     "name" : "UPDATE_MAN",
+    "orderValue" : 1000,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/SysOperator.json"
@@ -2801,6 +2822,7 @@
     },
     "logicName" : "更新时间",
     "name" : "UPDATE_TIME",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -2903,6 +2925,7 @@
     "length" : 100,
     "logicName" : "流程准则标识",
     "name" : "GUIDELINE_ID",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -3043,6 +3066,7 @@
     "length" : 200,
     "logicName" : "测试库名称",
     "name" : "LIBRARY_NAME",
+    "orderValue" : 1000,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_wizard/PSDERS/DER1N_REVIEW_WIZARD_LIBRARY_LIBRARY_ID.json"
@@ -3162,6 +3186,7 @@
     "length" : 100,
     "logicName" : "测试库标识",
     "name" : "LIBRARY_ID",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -3386,103 +3411,6 @@
         "modelref" : true,
         "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/guideline.json"
       },
-      "entityParam" : true
-    } ],
-    "getStartPSDELogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    },
-    "enableBackend" : true,
-    "enableFront" : false
-  }, {
-    "codeName" : "create_review_notify",
-    "defaultParamName" : "Default",
-    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_wizard/PSDELOGICS/create_review_notify.json",
-    "logicName" : "评审新建通知",
-    "name" : "评审新建通知",
-    "getPSDELogicNodes" : [ {
-      "codeName" : "Begin",
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 200,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 530,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
-    }, {
-      "codeName" : "DEBUGPARAM1",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 142,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DENOTIFY1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        }
-      } ],
-      "topPos" : 208
-    }, {
-      "codeName" : "DENOTIFY1",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "getDstPSDENotify" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_wizard/PSDENOTIFIES/idea_review_notify.json"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_wizard.json"
-      },
-      "leftPos" : 337,
-      "logicNodeType" : "DENOTIFY",
-      "name" : "实体通知",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DENOTIFY1"
-        }
-      } ],
-      "topPos" : 208
-    } ],
-    "getPSDELogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "getParamPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_wizard.json"
-      },
-      "default" : true,
       "entityParam" : true
     } ],
     "getStartPSDELogicNode" : {
@@ -4400,29 +4328,6 @@
     "sourceType" : "DE",
     "type" : "DEFILTER",
     "defaultMode" : true
-  } ],
-  "getAllPSDENotifies" : [ {
-    "codeName" : "idea_review_notify",
-    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_wizard/PSDENOTIFIES/idea_review_notify.json",
-    "msgType" : 1,
-    "name" : "新建需求评审通知",
-    "getPSDENotifyTargets" : [ {
-      "name" : "reviewers",
-      "getPSSysMsgTarget" : {
-        "modelref" : true,
-        "path" : "PSSYSMSGTARGETS/reviewers.json"
-      },
-      "targetType" : "SYSMSGTARGET"
-    } ],
-    "getPSSysMsgQueue" : {
-      "modelref" : true,
-      "path" : "PSMODULES/Base/PSSYSMSGQUEUES/Default.json"
-    },
-    "getPSSysMsgTempl" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProdMgmt/PSSYSMSGTEMPLS/idea_create_review.json"
-    },
-    "taskMode" : 0
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "建立",

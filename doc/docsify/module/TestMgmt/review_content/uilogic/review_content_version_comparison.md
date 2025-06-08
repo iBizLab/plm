@@ -15,20 +15,28 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./review_content_version_comparison#begin {开始}]]
+state "准备参数" as PREPAREJSPARAM4  [[$./review_content_version_comparison#preparejsparam4 {准备参数}]]
+state "准备参数" as PREPAREJSPARAM2  [[$./review_content_version_comparison#preparejsparam2 {准备参数}]]
+state "结束" as END1 <<end>> [[$./review_content_version_comparison#end1 {结束}]]
+state "调试逻辑参数" as DEBUGPARAM1  [[$./review_content_version_comparison#debugparam1 {调试逻辑参数}]]
 state "界面行为" as DEUIACTION1  [[$./review_content_version_comparison#deuiaction1 {界面行为}]]
 state "注入脚本代码" as RAWJSCODE1  [[$./review_content_version_comparison#rawjscode1 {注入脚本代码}]]
-state "结束" as END1 <<end>> [[$./review_content_version_comparison#end1 {结束}]]
-state "准备参数" as PREPAREJSPARAM2  [[$./review_content_version_comparison#preparejsparam2 {准备参数}]]
+state "界面行为" as DEUIACTION2  [[$./review_content_version_comparison#deuiaction2 {界面行为}]]
+state "准备参数" as PREPAREJSPARAM3  [[$./review_content_version_comparison#preparejsparam3 {准备参数}]]
 state "准备参数" as PREPAREJSPARAM1  [[$./review_content_version_comparison#preparejsparam1 {准备参数}]]
-state "调试逻辑参数" as DEBUGPARAM1  [[$./review_content_version_comparison#debugparam1 {调试逻辑参数}]]
 
 
 Begin --> DEBUGPARAM1
-DEBUGPARAM1 --> PREPAREJSPARAM1
-PREPAREJSPARAM1 --> RAWJSCODE1
-RAWJSCODE1 --> DEUIACTION1
+DEBUGPARAM1 --> PREPAREJSPARAM1 : [[$./review_content_version_comparison#debugparam1-preparejsparam1{连接名称} 连接名称]]
+PREPAREJSPARAM1 --> PREPAREJSPARAM4
+PREPAREJSPARAM4 --> RAWJSCODE1
+RAWJSCODE1 --> DEUIACTION1 : [[$./review_content_version_comparison#rawjscode1-deuiaction1{连接名称} 连接名称]]
 DEUIACTION1 --> PREPAREJSPARAM2
 PREPAREJSPARAM2 --> END1
+RAWJSCODE1 --> DEUIACTION2 : [[$./review_content_version_comparison#rawjscode1-deuiaction2{连接名称} 连接名称]]
+DEUIACTION2 --> PREPAREJSPARAM2
+DEBUGPARAM1 --> PREPAREJSPARAM3 : [[$./review_content_version_comparison#debugparam1-preparejsparam3{连接名称} 连接名称]]
+PREPAREJSPARAM3 --> PREPAREJSPARAM4
 
 
 @enduml
@@ -36,6 +44,18 @@ PREPAREJSPARAM2 --> END1
 
 
 ### 处理步骤说明
+
+#### 界面行为 :id=DEUIACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体界面行为调用]</font></sup>
+
+
+
+调用实体 [版本(VERSION)](module/Base/version.md) 界面行为 [评审内容版本对比](module/Base/version#界面行为) ，行为参数为`review_content(评审内容)`
+
+#### 准备参数 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`Default(传入变量).target_id` 设置给  `ctx(上下文).test_case`
 
 #### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
 
@@ -53,6 +73,12 @@ PREPAREJSPARAM2 --> END1
 
 > [!NOTE|label:调试信息|icon:fa fa-bug]
 > 调试输出参数`传入变量`的详细信息
+
+#### 准备参数 :id=PREPAREJSPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`Default(传入变量)` 拷贝到  `review_content(评审内容)`
 
 #### 注入脚本代码 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
@@ -80,25 +106,38 @@ if(content_version && content_version.length >0){
 
 ```
 
-#### 界面行为 :id=DEUIACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体界面行为调用]</font></sup>
-
-
-
-调用实体 [版本(VERSION)](module/Base/version.md) 界面行为 [评审内容版本对比](module/Base/version#界面行为) ，行为参数为`review_content(评审内容)`
-
 #### 准备参数 :id=PREPAREJSPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`无值（NONE）` 设置给  `ctx(上下文).test_case`
+2. 将`无值（NONE）` 设置给  `ctx(上下文).idea`
 
-#### 准备参数 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备参数 :id=PREPAREJSPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
-1. 将`Default(传入变量)` 拷贝到  `review_content(评审内容)`
-2. 将`Default(传入变量).target_id` 设置给  `ctx(上下文).test_case`
+1. 将`Default(传入变量).target_id` 设置给  `ctx(上下文).idea`
 
+#### 界面行为 :id=DEUIACTION2<sup class="footnote-symbol"> <font color=gray size=1>[实体界面行为调用]</font></sup>
+
+
+
+调用实体 [版本(VERSION)](module/Base/version.md) 界面行为 [需求评审内容版本对比](module/Base/version#界面行为) ，行为参数为`review_content(评审内容)`
+
+### 连接条件说明
+#### 连接名称 :id=DEBUGPARAM1-PREPAREJSPARAM1
+
+(```ctx(上下文).principal_type``` EQ ```test_case``` OR ```Default(传入变量).target_type``` EQ ```TEST_CASE```)
+#### 连接名称 :id=RAWJSCODE1-DEUIACTION1
+
+(```Default(传入变量).target_type``` EQ ```TEST_CASE``` OR ```ctx(上下文).principal_type``` EQ ```test_case```)
+#### 连接名称 :id=RAWJSCODE1-DEUIACTION2
+
+(```Default(传入变量).target_type``` EQ ```IDEA``` OR ```ctx(上下文).principal_type``` EQ ```idea```)
+#### 连接名称 :id=DEBUGPARAM1-PREPAREJSPARAM3
+
+(```Default(传入变量).target_type``` EQ ```IDEA``` OR ```ctx(上下文).principal_type``` EQ ```idea```)
 
 
 ### 实体逻辑参数

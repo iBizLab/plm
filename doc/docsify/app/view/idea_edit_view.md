@@ -23,8 +23,8 @@ false
 
 
 ### 关联界面行为
-  * [需求(IDEA)](module/ProdMgmt/idea) : [查看客户统计信息](module/ProdMgmt/idea#界面行为)
   * [需求(IDEA)](module/ProdMgmt/idea) : [编辑界面_保存并退出操作](module/ProdMgmt/idea#界面行为)
+  * [需求(IDEA)](module/ProdMgmt/idea) : [查看客户统计信息](module/ProdMgmt/idea#界面行为)
   * [需求(IDEA)](module/ProdMgmt/idea) : [查看工单统计信息](module/ProdMgmt/idea#界面行为)
 
 ### 关联界面逻辑
@@ -41,6 +41,7 @@ false
   * [关联(relation_idea_re_test_case_grid_view)](app/view/relation_idea_re_test_case_grid_view)
   * [关联(relation_idea_re_ticket_grid_view)](app/view/relation_idea_re_ticket_grid_view)
   * [关联(relation_idea_re_work_item_grid_view)](app/view/relation_idea_re_work_item_grid_view)
+  * [评审历史(review_content_list_view)](app/view/review_content_list_view)
   * [工单(ticket_idea_re_ticket_statistics_view)](app/view/ticket_idea_re_ticket_statistics_view)
   * [流转记录(transition_history_work_item_calendar_view)](app/view/transition_history_work_item_calendar_view)
   * [版本(version_idea_grid_view)](app/view/version_idea_grid_view)

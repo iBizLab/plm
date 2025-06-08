@@ -5,10 +5,18 @@
     "name" : "DEFAULT",
     "getPSDEACModeDataItems" : [ {
       "dataType" : 25,
-      "name" : "value"
+      "name" : "value",
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
     }, {
       "dataType" : 25,
-      "name" : "text"
+      "name" : "text",
+      "getPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
     } ],
     "pagingSize" : 50,
     "defaultMode" : true,
@@ -295,35 +303,6 @@
     "defaultMode" : true,
     "enableBackend" : true,
     "enableFront" : true
-  }, {
-    "actionHolder" : 1,
-    "codeName" : "reviewers",
-    "dataSetType" : "DELOGIC",
-    "logicName" : "参与评审人",
-    "name" : "reviewers",
-    "getPSDEDataSetInput" : {
-      "name" : "ReviewersInput",
-      "getPSDEFilterDTO" : {
-        "modelref" : true,
-        "id" : "review_stage_filter_dto"
-      },
-      "type" : "DTO"
-    },
-    "getPSDEDataSetReturn" : {
-      "name" : "ReviewersResult",
-      "getPSDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "review_stage_dto"
-      },
-      "type" : "PAGE"
-    },
-    "getPSDELogic" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_stage/PSDELOGICS/reviewers.json"
-    },
-    "predefinedType" : "DELOGIC",
-    "enableBackend" : true,
-    "enableFront" : false
   } ],
   "getAllPSDEFields" : [ {
     "getAllPSDEFDTColumns" : [ {
@@ -390,6 +369,7 @@
     "length" : 100,
     "logicName" : "评审人类型",
     "name" : "REVIEWER_TYPE",
+    "orderValue" : 180,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSCODELISTS/reviewer_type.json"
@@ -411,7 +391,7 @@
       "name" : "[REVIEWER][评审人]移动端默认",
       "getPSDEFFormItem" : {
         "codeName" : "MobileDefault",
-        "editorType" : "MOBTEXT",
+        "editorType" : "SPAN",
         "name" : "[REVIEWER][评审人]移动端默认",
         "stringLength" : 100,
         "uIMode" : "MOBILEDEFAULT",
@@ -424,7 +404,7 @@
       "name" : "[REVIEWER][评审人]",
       "getPSDEFFormItem" : {
         "codeName" : "Default",
-        "editorType" : "TEXTBOX",
+        "editorType" : "SPAN",
         "name" : "[REVIEWER][评审人]",
         "stringLength" : 100,
         "uIMode" : "DEFAULT"
@@ -463,6 +443,11 @@
     "length" : 100,
     "logicName" : "评审人",
     "name" : "REVIEWER",
+    "orderValue" : 190,
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSCODELISTS/SysOperator.json"
+    },
     "serviceCodeName" : "reviewer",
     "stdDataType" : 25,
     "stringLength" : 100,
@@ -532,6 +517,7 @@
     "length" : 100,
     "logicName" : "评审人名称",
     "name" : "REVIEWER_NAME",
+    "orderValue" : 200,
     "serviceCodeName" : "reviewer_name",
     "stdDataType" : 25,
     "stringLength" : 100,
@@ -611,6 +597,7 @@
     "length" : 60,
     "logicName" : "评审阶段状态",
     "name" : "STAGE_STATE",
+    "orderValue" : 210,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSCODELISTS/stage_state.json"
@@ -671,6 +658,7 @@
     "length" : 100,
     "logicName" : "顺序",
     "name" : "ORDER",
+    "orderValue" : 220,
     "serviceCodeName" : "order",
     "stdDataType" : 9,
     "valueFormat" : "%1$s"
@@ -756,6 +744,7 @@
     "length" : 100,
     "logicName" : "标识",
     "name" : "ID",
+    "orderValue" : 1000,
     "serviceCodeName" : "id",
     "stdDataType" : 25,
     "stringLength" : 100,
@@ -843,6 +832,7 @@
     "length" : 200,
     "logicName" : "名称",
     "name" : "NAME",
+    "orderValue" : 1000,
     "serviceCodeName" : "name",
     "stdDataType" : 25,
     "stringLength" : 200,
@@ -925,6 +915,7 @@
     "length" : 100,
     "logicName" : "建立人",
     "name" : "CREATE_MAN",
+    "orderValue" : 1000,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/SysOperator.json"
@@ -1001,6 +992,7 @@
     },
     "logicName" : "建立时间",
     "name" : "CREATE_TIME",
+    "orderValue" : 1000,
     "predefinedType" : "CREATEDATE",
     "serviceCodeName" : "create_time",
     "stdDataType" : 5,
@@ -1083,6 +1075,7 @@
     "length" : 100,
     "logicName" : "更新人",
     "name" : "UPDATE_MAN",
+    "orderValue" : 1000,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/SysOperator.json"
@@ -1159,6 +1152,7 @@
     },
     "logicName" : "更新时间",
     "name" : "UPDATE_TIME",
+    "orderValue" : 1000,
     "predefinedType" : "UPDATEDATE",
     "serviceCodeName" : "update_time",
     "stdDataType" : 5,
@@ -1244,6 +1238,7 @@
     "length" : 100,
     "logicName" : "准则标识",
     "name" : "GUIDELINE_ID",
+    "orderValue" : 1000,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_stage/PSDERS/DER1N_REVIEW_STAGE_GUIDELINE_GUIDELINE_ID.json"
@@ -1269,242 +1264,6 @@
     "valueFormat" : "%1$s",
     "linkDEField" : true,
     "serviceCodeName" : "guideline_id"
-  } ],
-  "getAllPSDELogics" : [ {
-    "codeName" : "reviewers",
-    "defaultParamName" : "Default",
-    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_stage/PSDELOGICS/reviewers.json",
-    "logicName" : "参与评审人",
-    "name" : "参与评审人",
-    "getPSDELogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : -170,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM2"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 207,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 740,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "getReturnParam" : {
-        "modelref" : true,
-        "id" : "pages"
-      },
-      "returnType" : "LOGICPARAM",
-      "topPos" : 207
-    }, {
-      "codeName" : "DEBUGPARAM2",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : -60,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM2"
-        }
-      } ],
-      "topPos" : 215
-    }, {
-      "codeName" : "PREPAREPARAM1",
-      "leftPos" : 140,
-      "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEDATASET1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM1"
-        }
-      } ],
-      "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "ID",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "review"
-        },
-        "name" : "Default[id] ==> review[ID]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "id",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 215
-    }, {
-      "codeName" : "DEDATASET1",
-      "getDstPSDEDataSet" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_stage.json"
-      },
-      "leftPos" : 350,
-      "logicNodeType" : "DEDATASET",
-      "name" : "实体数据集",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEDATASET1"
-        }
-      } ],
-      "getRetPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "pages"
-      },
-      "topPos" : 215
-    }, {
-      "codeName" : "DEBUGPARAM1",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "pages"
-      },
-      "leftPos" : 540,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        }
-      } ],
-      "topPos" : 215
-    }, {
-      "codeName" : "DEACTION1",
-      "getDstPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/Get.json"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "review"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
-      },
-      "leftPos" : 140,
-      "logicNodeType" : "DEACTION",
-      "name" : "实体行为",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "BINDPARAM1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        }
-      } ],
-      "getRetPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "review"
-      },
-      "topPos" : 329
-    }, {
-      "codeName" : "BINDPARAM1",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "reviewer_list"
-      },
-      "leftPos" : 140,
-      "logicNodeType" : "BINDPARAM",
-      "name" : "绑定参数",
-      "srcFieldName" : "stage",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "review"
-      },
-      "topPos" : 434
-    } ],
-    "getPSDELogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "getParamPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_stage.json"
-      },
-      "default" : true,
-      "filterParam" : true
-    }, {
-      "codeName" : "pages",
-      "logicName" : "pages",
-      "name" : "pages",
-      "getParamPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_stage.json"
-      },
-      "entityPageParam" : true
-    }, {
-      "codeName" : "review",
-      "logicName" : "review",
-      "name" : "review",
-      "getParamPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
-      },
-      "entityParam" : true
-    }, {
-      "codeName" : "reviewer_list",
-      "logicName" : "评审人列表",
-      "name" : "评审人列表",
-      "getParamPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_stage.json"
-      },
-      "entityListParam" : true
-    } ],
-    "getStartPSDELogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    },
-    "enableBackend" : true,
-    "enableFront" : false
   } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "review_stage_dto",

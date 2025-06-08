@@ -8,10 +8,18 @@
     },
     "logicName" : "工作项助手",
     "name" : "AIChat",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+    },
     "getPSDEACModeDataItems" : [ {
       "dataType" : 25,
       "name" : "value",
       "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "getPSDEField" : {
         "name" : "ID",
         "codeName" : "id"
       }
@@ -19,6 +27,10 @@
       "dataType" : 25,
       "name" : "text",
       "getPSAppDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "getPSDEField" : {
         "name" : "TITLE",
         "codeName" : "title"
       }
@@ -123,10 +135,18 @@
     },
     "logicName" : "DEFAULT",
     "name" : "DEFAULT",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+    },
     "getPSDEACModeDataItems" : [ {
       "dataType" : 25,
       "name" : "value",
       "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "getPSDEField" : {
         "name" : "ID",
         "codeName" : "id"
       }
@@ -134,6 +154,10 @@
       "dataType" : 25,
       "name" : "text",
       "getPSAppDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "getPSDEField" : {
         "name" : "TITLE",
         "codeName" : "title"
       }
@@ -7443,6 +7467,7 @@
     "codeName" : "cur_version_id",
     "logicName" : "当前版本标识",
     "name" : "CUR_VERSION_ID",
+    "predefinedType" : "VERSIONID",
     "stdDataType" : 25,
     "stringLength" : 100,
     "userTag4" : "INTENAL"
@@ -8807,6 +8832,7 @@
     "codeName" : "sequence",
     "logicName" : "序号",
     "name" : "SEQUENCE",
+    "predefinedType" : "ORDERVALUE",
     "stdDataType" : 6
   }, {
     "getAllPSAppDEFUIModes" : [ {
@@ -9387,6 +9413,7 @@
     },
     "logicName" : "建立人",
     "name" : "CREATE_MAN",
+    "predefinedType" : "CREATEMAN",
     "stdDataType" : 25,
     "stringLength" : 100
   }, {
@@ -9429,6 +9456,7 @@
     },
     "logicName" : "建立时间",
     "name" : "CREATE_TIME",
+    "predefinedType" : "CREATEDATE",
     "stdDataType" : 5,
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   }, {
@@ -9471,6 +9499,7 @@
     },
     "logicName" : "更新人",
     "name" : "UPDATE_MAN",
+    "predefinedType" : "UPDATEMAN",
     "stdDataType" : 25,
     "stringLength" : 100
   }, {
@@ -9513,6 +9542,7 @@
     },
     "logicName" : "更新时间",
     "name" : "UPDATE_TIME",
+    "predefinedType" : "UPDATEDATE",
     "stdDataType" : 5,
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   }, {
@@ -22304,6 +22334,64 @@
     "uILogicAttachMode" : "REPLACE",
     "id" : "add_attachments@work_item"
   }, {
+    "actionTarget" : "NONE",
+    "caption" : "添加预估工时",
+    "codeName" : "add_estimated_workload",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_forecast_quick_create_view.json",
+      "viewType" : "DEOPTVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "work_item_add_estimated_workload",
+    "name" : "添加预估工时",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+    },
+    "getPSNavigateParams" : [ {
+      "key" : "estimated_workload",
+      "name" : "estimated_workload",
+      "value" : "estimated_workload",
+      "rawValue" : false
+    }, {
+      "key" : "remaining_workload",
+      "name" : "remaining_workload",
+      "value" : "remaining_workload",
+      "rawValue" : false
+    }, {
+      "key" : "name",
+      "name" : "name",
+      "value" : "title",
+      "rawValue" : false
+    }, {
+      "key" : "principal_id",
+      "name" : "principal_id",
+      "value" : "principal_id",
+      "rawValue" : false
+    }, {
+      "key" : "actual_workload",
+      "name" : "actual_workload",
+      "value" : "actual_workload",
+      "rawValue" : false
+    }, {
+      "key" : "workload_kind",
+      "name" : "workload_kind",
+      "value" : "工作项",
+      "rawValue" : true
+    } ],
+    "getPSSysImage" : {
+      "glyph" : "xf067@FontAwesome",
+      "cssClass" : "fa fa-plus"
+    },
+    "refreshMode" : 1,
+    "tooltip" : "添加预估工时",
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "add_estimated_workload",
+    "uIActionType" : "DEUIACTION",
+    "reloadData" : true,
+    "id" : "add_estimated_workload@work_item"
+  }, {
     "actionTarget" : "SINGLEKEY",
     "caption" : "新建缺陷执行后（测试计划关联)",
     "codeName" : "after_new_test_plan_bug",
@@ -23486,6 +23574,27 @@
     "uIActionTag" : "change_work_item_state",
     "uIActionType" : "DEUIACTION",
     "id" : "change_work_item_state@work_item"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "查看预估工时明细",
+    "codeName" : "check_estimated_workload_detail",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "work_item_check_estimated_workload_detail",
+    "name" : "查看预估工时明细",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "check_estimated_workload_detail"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+    },
+    "tooltip" : "查看预估工时明细",
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "check_estimated_workload_detail",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "id" : "check_estimated_workload_detail@work_item"
   }, {
     "actionTarget" : "NONE",
     "caption" : "查看工时明细",
@@ -26471,7 +26580,7 @@
     "codeName" : "new_test_plan_bug",
     "getFrontPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_quick_create_bug_view.json",
       "viewType" : "DEOPTVIEW"
     },
     "frontProcessType" : "WIZARD",
@@ -34321,6 +34430,54 @@
       "id" : "Begin"
     }
   }, {
+    "codeName" : "check_estimated_workload_detail",
+    "defaultParamName" : "Default",
+    "logicName" : "查看预估工时明细",
+    "memo" : "按钮触发，通过脚本切换显示组件",
+    "name" : "查看预估工时明细",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200
+    }, {
+      "code" : "uiLogic.view.ctx.controllersMap.get(\"form\").details.grouppanel8.state.visible=false;\r\nuiLogic.view.ctx.controllersMap.get(\"form\").details.grouppanel17.state.visible=true;",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "切换显示组件",
+      "topPos" : 350
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
     "codeName" : "check_workload_detail",
     "defaultParamName" : "Default",
     "logicName" : "查看工时明细",
@@ -39970,6 +40127,10 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_work_item_test.json",
     "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_quick_create_bug_view.json",
+    "viewType" : "DEOPTVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_waterfall_bug_grid_view.json",

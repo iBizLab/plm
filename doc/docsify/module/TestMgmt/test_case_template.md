@@ -17,7 +17,7 @@
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |是否已归档|IS_ARCHIVED|是否逻辑||是||
 |是否已删除|IS_DELETED|是否逻辑||是||
-|重要程度|LEVEL|[单项选择(文本值)](index/dictionary_index#test_case_level "用例重要程度")|60|是||
+|重要程度|LEVEL|单项选择(文本值)|60|是||
 |名称|NAME|文本，可指定长度|200|是||
 |前置条件|PRECONDITION|长文本，没有长度限制|1048576|是||
 |剩余工时|REMAINING_WORKLOAD|数值||是||
@@ -31,9 +31,9 @@
 |测试库标识|TEST_LIBRARY_ID|外键值|100|是||
 |测试库名称|TEST_LIBRARY_NAME|外键值文本|200|是||
 |测试计划名称|TEST_PLAN_NAME|文本，可指定长度|100|是||
-|测试类型|TEST_TYPE|[单项选择(文本值)](index/dictionary_index#test_case_test_type "测试类型")|60|是||
+|测试类型|TEST_TYPE|单项选择(文本值)|60|是||
 |标题|TITLE|文本，可指定长度|500|是||
-|用例类型|TYPE|[单项选择(文本值)](index/dictionary_index#test_case_type "用例类型")|60|是||
+|用例类型|TYPE|单项选择(文本值)|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 |工时进度|WORKLOAD_SCHEDULE|数值||是||

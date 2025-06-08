@@ -87,6 +87,7 @@
     "modelid" : "48c8f789be8a5522d3003293c1cf2ffb",
     "modeltype" : "PSDETOOLBAR"
   }, {
+    "autoSaveMode" : 1,
     "codeName" : "main",
     "controlType" : "FORM",
     "getCreatePSControlAction" : {
@@ -285,15 +286,34 @@
       "hidden" : true,
       "dataType" : 25
     }, {
-      "id" : "name",
+      "id" : "val",
       "dataType" : 25,
       "getPSAppDEField" : {
-        "name" : "NAME",
-        "codeName" : "name"
+        "name" : "VAL",
+        "codeName" : "val"
+      }
+    }, {
+      "id" : "owner_id",
+      "dataType" : 25,
+      "createDVT" : "APPDATA",
+      "createDV" : "library",
+      "updateDVT" : "APPDATA",
+      "updateDV" : "library",
+      "getPSAppDEField" : {
+        "name" : "OWNER_ID",
+        "codeName" : "owner_id"
+      }
+    }, {
+      "id" : "owner_type",
+      "dataType" : 25,
+      "createDV" : "LIBRARY_RUNFAILURE",
+      "updateDV" : "LIBRARY_RUNFAILURE",
+      "getPSAppDEField" : {
+        "name" : "OWNER_TYPE",
+        "codeName" : "owner_type"
       }
     }, {
       "id" : "id",
-      "hidden" : true,
       "dataType" : 25,
       "getPSAppDEField" : {
         "name" : "ID",
@@ -319,11 +339,8 @@
         "detailType" : "GROUPPANEL",
         "name" : "group1",
         "getPSDEFormDetails" : [ {
-          "getCapPSLanguageRes" : {
-            "lanResTag" : "DEF.LNAME.NAME"
-          },
-          "caption" : "名称",
-          "codeName" : "name",
+          "caption" : "是否自动创建缺陷",
+          "codeName" : "val",
           "dataType" : 25,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
@@ -331,16 +348,114 @@
           "ignoreInput" : 0,
           "labelPos" : "LEFT",
           "labelWidth" : 130,
-          "name" : "name",
+          "name" : "val",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
-            "name" : "NAME",
-            "codeName" : "name"
+            "name" : "VAL",
+            "codeName" : "val"
+          },
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "SCRIPTCODE_CHANGE",
+            "logicType" : "GROUP",
+            "getPSDEFDLogics" : [ {
+              "logicType" : "SINGLE"
+            } ],
+            "notMode" : false
+          } ],
+          "getPSEditor" : {
+            "editorType" : "SWITCH",
+            "name" : "val"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "所属数据标识",
+          "codeName" : "owner_id",
+          "createDV" : "library",
+          "createDVT" : "APPDATA",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "owner_id",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "OWNER_ID",
+            "codeName" : "owner_id"
           },
           "getPSEditor" : {
             "editorType" : "TEXTBOX",
-            "maxLength" : 200,
-            "name" : "name"
+            "maxLength" : 100,
+            "name" : "owner_id"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "updateDV" : "library",
+          "updateDVT" : "APPDATA",
+          "allowEmpty" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "所属数据对象",
+          "codeName" : "owner_type",
+          "createDV" : "LIBRARY_RUNFAILURE",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "owner_type",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "OWNER_TYPE",
+            "codeName" : "owner_type"
+          },
+          "getPSEditor" : {
+            "editorType" : "TEXTBOX",
+            "maxLength" : 100,
+            "name" : "owner_type"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "updateDV" : "LIBRARY_RUNFAILURE",
+          "allowEmpty" : true,
+          "showCaption" : true
+        }, {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "DEF.LNAME.ID"
+          },
+          "caption" : "标识",
+          "codeName" : "id",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "id",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "ID",
+            "codeName" : "id"
+          },
+          "getPSEditor" : {
+            "editorType" : "SPAN",
+            "name" : "id",
+            "enableLinkView" : false
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
@@ -359,72 +474,7 @@
           "layout" : "TABLE_24COL"
         },
         "infoGroupMode" : false,
-        "showCaption" : true
-      }, {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.ID"
-        },
-        "caption" : "标识",
-        "codeName" : "id",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "id",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "ID",
-          "codeName" : "id"
-        },
-        "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "id"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "hidden" : true
-      } ],
-      "getPSLayout" : {
-        "childColMD" : 24,
-        "columnCount" : 24,
-        "layout" : "TABLE_24COL"
-      },
-      "infoGroupMode" : false
-    }, {
-      "getCapPSLanguageRes" : {
-        "lanResTag" : "CONTROL.DEFORM.PARAMETER.MAIN.FORMPAGE.FORMPAGE2"
-      },
-      "caption" : "其它",
-      "codeName" : "formpage2",
-      "detailStyle" : "DEFAULT",
-      "detailType" : "FORMPAGE",
-      "name" : "formpage2",
-      "getPSDEFormDetails" : [ {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "CONTROL.DEFORM.PARAMETER.MAIN.GROUPPANEL.GROUP2"
-        },
-        "caption" : "操作信息",
-        "codeName" : "group2",
-        "detailStyle" : "DEFAULT",
-        "detailType" : "GROUPPANEL",
-        "name" : "group2",
-        "getPSLayout" : {
-          "childColMD" : 24,
-          "columnCount" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "infoGroupMode" : false,
-        "showCaption" : true
+        "showCaption" : false
       } ],
       "getPSLayout" : {
         "childColMD" : 24,
@@ -471,7 +521,8 @@
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/parameter.json"
       }
     },
-    "noTabHeader" : false,
+    "enableAutoSave" : true,
+    "noTabHeader" : true,
     "name" : "form",
     "modelid" : "8f6c2887a27efeef9253bb5b1506257d",
     "modeltype" : "PSDEFORM_EDITFORM"

@@ -5,10 +5,18 @@
     "name" : "DEFAULT",
     "getPSDEACModeDataItems" : [ {
       "dataType" : 25,
-      "name" : "value"
+      "name" : "value",
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
     }, {
       "dataType" : 25,
-      "name" : "text"
+      "name" : "text",
+      "getPSDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
     } ],
     "pagingSize" : 50,
     "defaultMode" : true,
@@ -949,6 +957,38 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDEDATAQUERIES/test_plan/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "test_plan",
+    "logicName" : "测试计划",
+    "name" : "test_plan",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "TEST_PLAN"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Test_planInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "test_plan_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Test_planResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_plan_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDEDATAQUERIES/un_join_plan/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "un_join_plan",
@@ -1243,6 +1283,32 @@
     },
     "getPSDEDataSetReturn" : {
       "name" : "Query_no_shift_inResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_plan_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "test_plan",
+    "logicName" : "测试计划",
+    "name" : "test_plan",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "test_plan"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Test_planInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "test_plan_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Test_planResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "test_plan_dto"
@@ -1715,6 +1781,7 @@
     "length" : 60,
     "logicName" : "状态",
     "name" : "STATUS",
+    "orderValue" : 110,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSCODELISTS/test_plan_status.json"
@@ -1806,6 +1873,7 @@
     "length" : 60,
     "logicName" : "测试分类",
     "name" : "TYPE",
+    "orderValue" : 120,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSCODELISTS/test_plan_type.json"
@@ -1922,6 +1990,7 @@
     "jsonFormat" : "yyyy-MM-dd",
     "logicName" : "计划开始",
     "name" : "START_AT",
+    "orderValue" : 130,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -2032,6 +2101,7 @@
     "jsonFormat" : "yyyy-MM-dd",
     "logicName" : "计划结束",
     "name" : "END_AT",
+    "orderValue" : 140,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -2108,6 +2178,7 @@
     "length" : 1048576,
     "logicName" : "测试报告概要",
     "name" : "SUMMARY",
+    "orderValue" : 160,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -2194,6 +2265,7 @@
     "length" : 2000,
     "logicName" : "类别",
     "name" : "CATEGORIES",
+    "orderValue" : 270,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/ProdMgmt/PSCODELISTS/category.json"
@@ -2268,6 +2340,7 @@
     "length" : 2000,
     "logicName" : "类别",
     "name" : "CATEGORIES_NAME",
+    "orderValue" : 270,
     "serviceCodeName" : "categories_name",
     "stdDataType" : 25,
     "stringLength" : 2000,
@@ -2333,6 +2406,7 @@
     "length" : 1048576,
     "logicName" : "关联缺陷",
     "name" : "WORK_ITEM_RELATIONS",
+    "orderValue" : 300,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDERS/DERCUSTOM_RELATION_TEST_PLAN.json"
@@ -2416,6 +2490,7 @@
     "length" : 100,
     "logicName" : "负责人",
     "name" : "ASSIGNEE_NAME",
+    "orderValue" : 310,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -2527,6 +2602,7 @@
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDEFLOGICS/assignee_onchange.json"
     },
+    "orderValue" : 320,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/SysOperator.json"
@@ -2625,6 +2701,7 @@
     "length" : 60,
     "logicName" : "项目类型",
     "name" : "PROJECT_TYPE",
+    "orderValue" : 330,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSCODELISTS/project_type.json"
@@ -2737,6 +2814,7 @@
     "length" : 15,
     "logicName" : "测试库名称",
     "name" : "LIBRARY_IDENTIFIER",
+    "orderValue" : 340,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDERS/DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID.json"
@@ -2831,6 +2909,7 @@
     "importOrder" : 1000,
     "logicName" : "测试库是否删除",
     "name" : "LIBRARY_IS_DELETED",
+    "orderValue" : 350,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/YesNo.json"
@@ -2943,6 +3022,7 @@
     "length" : 100,
     "logicName" : "标识",
     "name" : "ID",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -3040,6 +3120,7 @@
     "length" : 200,
     "logicName" : "计划名称",
     "name" : "NAME",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -3159,6 +3240,7 @@
     "length" : 100,
     "logicName" : "建立人",
     "name" : "CREATE_MAN",
+    "orderValue" : 1000,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/SysOperator.json"
@@ -3254,6 +3336,7 @@
     },
     "logicName" : "建立时间",
     "name" : "CREATE_TIME",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -3344,6 +3427,7 @@
     "length" : 100,
     "logicName" : "更新人",
     "name" : "UPDATE_MAN",
+    "orderValue" : 1000,
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/SysOperator.json"
@@ -3439,6 +3523,7 @@
     },
     "logicName" : "更新时间",
     "name" : "UPDATE_TIME",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -3534,6 +3619,7 @@
     "length" : 100,
     "logicName" : "测试库标识",
     "name" : "LIBRARY_ID",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -3647,6 +3733,7 @@
     "length" : 100,
     "logicName" : "关联项目",
     "name" : "PROJECT_ID",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -3759,6 +3846,7 @@
     "length" : 100,
     "logicName" : "关联迭代",
     "name" : "SPRINT_ID",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -3890,6 +3978,7 @@
     "length" : 200,
     "logicName" : "关联项目",
     "name" : "PROJECT_NAME",
+    "orderValue" : 1000,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDERS/DER1N_TEST_PLAN_PROJECT_PROJECT_ID.json"
@@ -4019,6 +4108,7 @@
     "length" : 200,
     "logicName" : "关联迭代",
     "name" : "SPRINT_NAME",
+    "orderValue" : 1000,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDERS/DER1N_TEST_PLAN_SPRINT_SPRINT_ID.json"
@@ -4148,6 +4238,7 @@
     "length" : 200,
     "logicName" : "所属测试库",
     "name" : "LIBRARY_NAME",
+    "orderValue" : 1000,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDERS/DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID.json"
@@ -4258,6 +4349,7 @@
     "length" : 100,
     "logicName" : "项目发布标识",
     "name" : "RELEASE_ID",
+    "orderValue" : 1000,
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -4389,6 +4481,7 @@
     "length" : 200,
     "logicName" : "名称",
     "name" : "RELEASE_NAME",
+    "orderValue" : 1000,
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDERS/DER1N_TEST_PLAN_RELEASE_RELEASE_ID.json"

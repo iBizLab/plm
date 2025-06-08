@@ -23,7 +23,7 @@
 |更新时间|UPDATE_TIME|日期时间型||否||
 |工作项完成时间|WORK_ITEM_COMPLETED_AT|外键值附加数据||是||
 |工作项标识|WORK_ITEM_ID|外键值|100|是||
-|工作项优先级|WORK_ITEM_PRIORITY|[外键值附加数据](index/dictionary_index#work_item_priority "优先级")|100|是||
+|工作项优先级|WORK_ITEM_PRIORITY|外键值附加数据|100|是||
 |标题|WORK_ITEM_TITLE|外键值文本|500|是||
 
 

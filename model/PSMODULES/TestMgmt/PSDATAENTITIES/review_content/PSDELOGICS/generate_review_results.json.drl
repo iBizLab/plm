@@ -10,10 +10,13 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
                 global cn.ibizlab.plm.core.testmgmt.domain.guideline review_contentgenerate_review_resultsguideline_filter;
                 global cn.ibizlab.plm.core.testmgmt.domain.guideline review_contentgenerate_review_resultsguideline_pages;
                 global cn.ibizlab.plm.core.prodmgmt.domain.idea review_contentgenerate_review_resultsidea;
+                global cn.ibizlab.plm.core.testmgmt.domain.review review_contentgenerate_review_resultsreview;
                 global cn.ibizlab.plm.core.testmgmt.domain.review_result review_contentgenerate_review_resultsreview_result;
                 global cn.ibizlab.plm.core.testmgmt.domain.review_stage review_contentgenerate_review_resultsreview_stage;
                 global cn.ibizlab.plm.core.testmgmt.domain.review_stage review_contentgenerate_review_resultsreview_stage_filter;
                 global cn.ibizlab.plm.core.testmgmt.domain.review_stage review_contentgenerate_review_resultsreview_stage_list;
+                global java.util.Map review_contentgenerate_review_resultsreviewer_list;
+                global java.util.Map review_contentgenerate_review_resultsreviewer_temp;
                 global cn.ibizlab.plm.core.testmgmt.domain.test_case review_contentgenerate_review_resultstest_case;
                     global cn.ibizlab.plm.core.testmgmt.service.IguidelineService guidelineservice;
                     global cn.ibizlab.plm.core.testmgmt.service.Ireview_resultService review_resultservice;
@@ -30,6 +33,26 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
             then
             end
 
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam4"
+            ruleflow-group "review_contentgenerate_review_resultsdebugparam4"
+            when
+            then
+                        update(review_contentgenerate_review_resultsdefault);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsguideline);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsidea);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview_stage_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_temp);//更新fact中变量值
+                        update(review_contentgenerate_review_resultstest_case);//更新fact中变量值
+            end
+
             //逻辑处理节点[测试用例]
             rule "prepareparam6"
             ruleflow-group "review_contentgenerate_review_resultsprepareparam6"
@@ -43,10 +66,13 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
                         update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
                         update(review_contentgenerate_review_resultsidea);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_temp);//更新fact中变量值
                         update(review_contentgenerate_review_resultstest_case);//更新fact中变量值
             end
 
@@ -60,10 +86,13 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
                         update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
                         update(review_contentgenerate_review_resultsidea);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_temp);//更新fact中变量值
                         update(review_contentgenerate_review_resultstest_case);//更新fact中变量值
             end
 
@@ -77,10 +106,13 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
                         update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
                         update(review_contentgenerate_review_resultsidea);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_temp);//更新fact中变量值
                         update(review_contentgenerate_review_resultstest_case);//更新fact中变量值
             end
 
@@ -90,15 +122,19 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
             when
             then
                             review_contentgenerate_review_resultsguideline_filter.set("n_subject_type_eq",review_contentgenerate_review_resultsdefault.get("targettype"));
+                            review_contentgenerate_review_resultsreview.set("",review_contentgenerate_review_resultsdefault.get("reviewdata"));
                         update(review_contentgenerate_review_resultsdefault);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
                         update(review_contentgenerate_review_resultsidea);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_temp);//更新fact中变量值
                         update(review_contentgenerate_review_resultstest_case);//更新fact中变量值
             end
 
@@ -112,10 +148,13 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
                         update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
                         update(review_contentgenerate_review_resultsidea);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_temp);//更新fact中变量值
                         update(review_contentgenerate_review_resultstest_case);//更新fact中变量值
             end
 
@@ -131,10 +170,13 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
                         update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
                         update(review_contentgenerate_review_resultsidea);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_temp);//更新fact中变量值
                         update(review_contentgenerate_review_resultstest_case);//更新fact中变量值
             end
 
@@ -144,15 +186,19 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
             when
             then
                             review_contentgenerate_review_resultsreview_stage_list.set("",review_contentgenerate_review_resultsguideline.get("reviewstage"));
+                            review_contentgenerate_review_resultsreviewer_list.set("",review_contentgenerate_review_resultsreview.get("stage"));
                         update(review_contentgenerate_review_resultsdefault);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
                         update(review_contentgenerate_review_resultsidea);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_temp);//更新fact中变量值
                         update(review_contentgenerate_review_resultstest_case);//更新fact中变量值
             end
 
@@ -166,10 +212,13 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
                         update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
                         update(review_contentgenerate_review_resultsidea);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_temp);//更新fact中变量值
                         update(review_contentgenerate_review_resultstest_case);//更新fact中变量值
             end
 
@@ -186,10 +235,13 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
                         update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
                         update(review_contentgenerate_review_resultsidea);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_temp);//更新fact中变量值
                         update(review_contentgenerate_review_resultstest_case);//更新fact中变量值
             end
 
@@ -208,10 +260,13 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
                         update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
                         update(review_contentgenerate_review_resultsidea);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_temp);//更新fact中变量值
                         update(review_contentgenerate_review_resultstest_case);//更新fact中变量值
             end
 
@@ -225,10 +280,54 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
                         update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
                         update(review_contentgenerate_review_resultsidea);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_temp);//更新fact中变量值
+                        update(review_contentgenerate_review_resultstest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam7"
+            ruleflow-group "review_contentgenerate_review_resultsprepareparam7"
+            when
+            then
+                            review_contentgenerate_review_resultsreview_result.set("reviewer",review_contentgenerate_review_resultsreviewer_temp.get("reviewer"));
+                        update(review_contentgenerate_review_resultsdefault);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsguideline);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsidea);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview_stage_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_temp);//更新fact中变量值
+                        update(review_contentgenerate_review_resultstest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall2"
+            ruleflow-group "review_contentgenerate_review_resultsloopsubcall2"
+            when
+            then
+                        update(review_contentgenerate_review_resultsdefault);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsguideline);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsidea);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview_stage_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_temp);//更新fact中变量值
                         update(review_contentgenerate_review_resultstest_case);//更新fact中变量值
             end
 
@@ -243,10 +342,13 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
                         update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
                         update(review_contentgenerate_review_resultsidea);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_temp);//更新fact中变量值
                         update(review_contentgenerate_review_resultstest_case);//更新fact中变量值
             end
 
@@ -260,9 +362,12 @@ package cn.ibizlab.plm.testmgmt.logic.review_contentlogic.generate_review_result
                         update(review_contentgenerate_review_resultsguideline_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsguideline_pages);//更新fact中变量值
                         update(review_contentgenerate_review_resultsidea);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreview);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_result);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_filter);//更新fact中变量值
                         update(review_contentgenerate_review_resultsreview_stage_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_list);//更新fact中变量值
+                        update(review_contentgenerate_review_resultsreviewer_temp);//更新fact中变量值
                         update(review_contentgenerate_review_resultstest_case);//更新fact中变量值
             end

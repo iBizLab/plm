@@ -12,7 +12,7 @@
 |准则标识|GUIDELINE_ID|外键值|100|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |名称|NAME|文本，可指定长度|200|是||
-|顺序|ORDER|自增标识，整数类型，用户不可见|100|是||
+|顺序|ORDER|整型|100|是||
 |评审人|REVIEWER|文本，可指定长度|100|是||
 |评审人名称|REVIEWER_NAME|文本，可指定长度|100|是||
 |评审人类型|REVIEWER_TYPE|[文本，可指定长度](index/dictionary_index#reviewer_type "评审人类型")|100|是||
@@ -47,6 +47,11 @@
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
 
+## 处理逻辑
+| 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
+| -------- |---------- |----------- |------------|----------|
+|[参与评审人](module/TestMgmt/review_stage/logic/reviewers)|reviewers|无|||
+
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
@@ -57,6 +62,7 @@
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/TestMgmt/review_stage/dataset/Default)|DEFAULT|数据查询|是|||
+|[参与评审人(reviewers)](module/TestMgmt/review_stage/dataset/reviewers)|reviewers|[实体逻辑](module/TestMgmt/review_stage/logic/reviewers)|否|||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -71,6 +77,7 @@
 | --------|--------|--------|
 |[变更阶段评审人](module/TestMgmt/review_stage/uilogic/set_stage_reviewer)|set_stage_reviewer|变更阶段评审人|
 |[选中阶段](module/TestMgmt/review_stage/uilogic/choose_stage)|choose_stage|选中阶段|
+|[默认选中](module/TestMgmt/review_stage/uilogic/default_choose)|default_choose|默认选中|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -84,6 +91,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/TestMgmt/review_stage?id=行为`">
   行为
+</el-anchor-link>
+<el-anchor-link :href="`#/module/TestMgmt/review_stage?id=处理逻辑`">
+  处理逻辑
 </el-anchor-link>
 <el-anchor-link :href="`#/module/TestMgmt/review_stage?id=数据查询`">
   数据查询

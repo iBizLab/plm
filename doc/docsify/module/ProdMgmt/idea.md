@@ -27,7 +27,7 @@
 |描述|DESCRIPTION|长文本，没有长度限制|1048576|是||
 |预估工时|ESTIMATED_WORKLOAD|数值||是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
-|需求来源|IDEA_FROM|[单项选择(文本值)](index/dictionary_index#demand_sources "需求来源")|60|是||
+|需求来源|IDEA_FROM|单项选择(文本值)|60|是||
 |需求类型|IDEA_TYPE|[单项选择(文本值)](index/dictionary_index#requirement_type "需求类型")|60|是||
 |编号<sup class="footnote-symbol">[[序列]](index/sequence_index#seq_idea_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
 |是否已归档|IS_ARCHIVED|是否逻辑||是||
@@ -37,7 +37,7 @@
 |计划开始时间|PLAN_AT_FROM|日期时间型||是||
 |计划时间周期单位|PLAN_AT_GRANULARITY|单项选择(文本值)|60|是||
 |计划结束时间|PLAN_AT_TO|日期时间型||是||
-|优先级|PRIORITY|[单项选择(文本值)](index/dictionary_index#idea_priority "需求优先级")|60|是||
+|优先级|PRIORITY|单项选择(文本值)|60|是||
 |产品|PRODUCT_ID|外键值|100|否||
 |产品标识|PRODUCT_IDENTIFIER|外键值附加数据|15|是||
 |产品是否归档|PRODUCT_IS_ARCHIVED|外键值附加数据||是||
@@ -55,6 +55,7 @@
 |关联工单数|RELATION_TOTAL_TICKET|数值||是||
 |关联工作项数|RELATION_TOTAL_WORK_ITEM|数值||是||
 |剩余工时|REMAINING_WORKLOAD|数值||是||
+|评审结果|REVIEW_RESULT_STATE|[单项选择(文本值)](index/dictionary_index#review_result "评审结果")|60|是||
 |子产品标识|SECTION_ID|外键值附加数据|100|是||
 |子产品名称|SECTION_NAME|外键值附加数据|200|是||
 |序号|SEQUENCE|数值||是||
@@ -151,9 +152,9 @@
 |产品|PRODUCT_ID|外键值|100|否||
 |负责人|ASSIGNEE_ID|外键值|100|是||
 |类别标识|CATEGORY_ID|外键值|100|是||
-|需求来源|IDEA_FROM|[单项选择(文本值)](index/dictionary_index#demand_sources "需求来源")|60|是||
+|需求来源|IDEA_FROM|单项选择(文本值)|60|是||
 |状态|STATE|单项选择(文本值)|60|否||
-|优先级|PRIORITY|[单项选择(文本值)](index/dictionary_index#idea_priority "需求优先级")|60|是||
+|优先级|PRIORITY|单项选择(文本值)|60|是||
 |需求类型|IDEA_TYPE|[单项选择(文本值)](index/dictionary_index#requirement_type "需求类型")|60|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |子产品名称|SECTION_NAME|外键值附加数据|200|是||
@@ -188,6 +189,8 @@
 |[DERCUSTOM_ATTENTION_IDEA_OWNER_ID](der/DERCUSTOM_ATTENTION_IDEA_OWNER_ID)|[关注(ATTENTION)](module/Base/attention)|自定义关系||
 |[DERCUSTOM_COMMENT_IDEA_PRINCIPAL_ID](der/DERCUSTOM_COMMENT_IDEA_PRINCIPAL_ID)|[评论(COMMENT)](module/Base/comment)|自定义关系||
 |[DERCUSTOM_IDEA_ATTACHMENT](der/DERCUSTOM_IDEA_ATTACHMENT)|[附件(ATTACHMENT)](module/Base/attachment)|自定义关系||
+|[DERCUSTOM_IDEA_REVIEW_CONTENT](der/DERCUSTOM_IDEA_REVIEW_CONTENT)|[评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)|自定义关系||
+|[DERCUSTOM_IDEA_REVIEW_CONTENT_IDEA](der/DERCUSTOM_IDEA_REVIEW_CONTENT_IDEA)|[产品需求评审内容(REVIEW_CONTENT_IDEA)](module/ProdMgmt/review_content_idea)|自定义关系||
 |[DERCUSTOM_IDEA_SEARCH_ATTACHMENT](der/DERCUSTOM_IDEA_SEARCH_ATTACHMENT)|[附件搜索(SEARCH_ATTACHMENT)](module/Base/search_attachment)|自定义关系||
 |[DERCUSTOM_IDEA_SEARCH_COMMENT](der/DERCUSTOM_IDEA_SEARCH_COMMENT)|[评论搜索(SEARCH_COMMENT)](module/Base/search_comment)|自定义关系||
 |[DERCUSTOM_IDEA_WORKLOAD](der/DERCUSTOM_IDEA_WORKLOAD)|[工时(WORKLOAD)](module/Base/workload)|自定义关系||
@@ -264,6 +267,7 @@
 |[状态变更附加逻辑](module/ProdMgmt/idea/logic/state_onchange)|state_onchange|属性逻辑||需求数据状态变更时触发相应的通知消息，同时生成流转记录|
 |[生成最近访问](module/ProdMgmt/idea/logic/create_recent)|create_recent|无||在用户对需求数据进行了get或update操作时生成相应的访问记录|
 |[获取产品成员](module/ProdMgmt/idea/logic/get_product_member)|get_product_member|无||获取产品成员信息，用于判断当前用户权限|
+|[获取变更类型与变更版本](module/ProdMgmt/idea/logic/set_change_type)|set_change_type|无|||
 |[获取基线名称](module/ProdMgmt/idea/logic/get_baseline_name)|get_baseline_name|无||需求主视图获取所属基线|
 |[获取客户分数](module/ProdMgmt/idea/logic/get_customer_score)|get_customer_score|无||获取客户分数数据|
 |[获取工单数量](module/ProdMgmt/idea/logic/get_ticket_num)|get_ticket_num|无||获取工单数量数据|
@@ -364,6 +368,7 @@
 |[高级搜索(advanced_search)](module/ProdMgmt/idea/query/advanced_search)|advanced_search|否|否 |否 |指定属性组；查询未删除的需求数据|
 |[已归档(archived)](module/ProdMgmt/idea/query/archived)|archived|否|否 |否 |查询已归档且未删除的需求数据|
 |[基线选择需求(baseline_choose_idea)](module/ProdMgmt/idea/query/baseline_choose_idea)|baseline_choose_idea|否|否 |否 |基线选择需求|
+|[基线需求(baseline_idea)](module/ProdMgmt/idea/query/baseline_idea)|baseline_idea|否|否 |否 ||
 |[BI反查(bi_detail)](module/ProdMgmt/idea/query/bi_detail)|bi_detail|否|否 |否 ||
 |[BI查询(bi_search)](module/ProdMgmt/idea/query/bi_search)|bi_search|否|否 |否 ||
 |[评论通知负责人(comment_notify_assignee)](module/ProdMgmt/idea/query/comment_notify_assignee)|comment_notify_assignee|否|否 |否 |查询指定属性组；评论负责人|
@@ -395,6 +400,7 @@
 |[高级搜索(advanced_search)](module/ProdMgmt/idea/dataset/advanced_search)|advanced_search|数据查询|否||指定属性组；查询未删除的需求数据|
 |[已归档(archived)](module/ProdMgmt/idea/dataset/archived)|archived|数据查询|否||查询已归档且未删除的需求数据|
 |[基线选择需求(baseline_choose_idea)](module/ProdMgmt/idea/dataset/baseline_choose_idea)|baseline_choose_idea|数据查询|否||基线选择需求|
+|[基线需求(baseline_idea)](module/ProdMgmt/idea/dataset/baseline_idea)|baseline_idea|数据查询|否|||
 |[基线规划需求数据查询(baseline_plan_idea)](module/ProdMgmt/idea/dataset/baseline_plan_idea)|baseline_plan_idea|[实体逻辑](module/ProdMgmt/idea/logic/baseline_plan_idea)|否|||
 |[BI反查(bi_detail)](module/ProdMgmt/idea/dataset/bi_detail)|bi_detail|数据查询|否|||
 |[BI查询(bi_search)](module/ProdMgmt/idea/dataset/bi_search)|bi_search|数据查询|否|||
@@ -418,6 +424,7 @@
 |[只读用户(reader)](module/ProdMgmt/idea/dataset/reader)|reader|数据查询|否|||
 |[最近浏览(recent_idea)](module/ProdMgmt/idea/dataset/recent_idea)|recent_idea|数据查询|否||最近浏览的且未关联当前主体且非归档非删除的数据|
 |[关联需求(relation_idea)](module/ProdMgmt/idea/dataset/relation_idea)|relation_idea|数据查询|否|||
+|[评审数据(review_data)](module/ProdMgmt/idea/dataset/review_data)|review_data|[实体逻辑](module/ProdMgmt/idea/logic/set_change_type)|否|||
 |[普通用户(user)](module/ProdMgmt/idea/dataset/user)|user|数据查询|否|||
 
 ## 数据权限
@@ -564,6 +571,7 @@
 |N_PRODUCT_NAME_LIKE|所属产品|LIKE||
 |N_REAL_AT_GRANULARITY_EQ|计划时间周期单位|EQ||
 |N_RECENT_CREATE_DAYS_LTANDEQ|最近创建日期|LTANDEQ||
+|N_REVIEW_RESULT_STATE_EQ|评审结果|EQ||
 |N_SECTION_ID_EQ|子产品标识|EQ||
 |N_SHOW_IDENTIFIER_LIKE|编号|LIKE||
 |N_STATE_EQ|状态|EQ||
@@ -627,7 +635,7 @@
 | 编辑 | toolbar_tree_exp_view_node1_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 关联测试用例（工具栏） | toolbar_link_test_case | 关联测试用例 |无数据|用户自定义||
 | 新建子产品 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建子产品 |单项数据|用户自定义||
-| 新建需求并关联客户 | create_idea_and_relation_customer | 新建需求（测试） |无数据|<details><summary>打开视图或向导（模态）</summary>[新建需求](app/view/idea_quick_create_view)</details>||
+| 新建需求并关联客户 | create_idea_and_relation_customer | 新建需求 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建需求](app/view/idea_quick_create_view)</details>||
 | 取消关联（计划批操作） | del_relation_more | 取消关联 |多项数据（主键）|<details><summary>后台调用</summary>[plan_delete_idea](#行为)|批操作工具栏上按钮调用|
 | 关联客户不重要（移动端） | mob_add_customer_un_important | 关联客户不重要 |无数据|<details><summary>后台调用</summary>[others_relation_idea](#行为)||
 | 编辑 | toolbar_tree_exp_view_node3_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
@@ -635,6 +643,7 @@
 | 新建子模块 | toolbar_tree_exp_view_node1_cm_deuiaction3_click | 新建子模块 |单项数据|用户自定义||
 | 删除 | toolbar_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 需求归档 | idea_archive | 需求归档 |多项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)|批操作工具栏上按钮调用|
+| 查看评审历史 | check_review_history | 查看评审历史 |无数据|用户自定义||
 | 选择模板 | choose_case_template | 选择模板 |无数据|<details><summary>打开编辑表单</summary></details>||
 | 刷新 | toolbar_idea_grid_parts_toolbar_deuiaction2_click | 刷新 |单项数据|用户自定义||
 | 关联客户一般（移动端） | mob_add_customer_normal | 关联客户一般 |无数据|<details><summary>后台调用</summary>[others_relation_idea](#行为)||
@@ -673,6 +682,7 @@
 |[查看客户统计信息](module/ProdMgmt/idea/uilogic/check_customer_info)|check_customer_info|按钮触发，通过脚本切换显示组件|
 |[查看工单统计信息](module/ProdMgmt/idea/uilogic/check_ticket_info)|check_ticket_info|按钮触发，通过脚本切换显示组件|
 |[查看工时明细](module/ProdMgmt/idea/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
+|[查看评审历史](module/ProdMgmt/idea/uilogic/check_review_history)|check_review_history|按钮触发，通过脚本切换显示组件|
 |[添加附件数据](module/ProdMgmt/idea/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[用例关联需求](module/ProdMgmt/idea/uilogic/test_case_relation_idea)|test_case_relation_idea|值变更时触发，用例关联需求，调用处理逻辑生成正反向数据|
 |[编辑类别或分组](module/ProdMgmt/idea/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
@@ -683,6 +693,7 @@
 |[计算表格列行为状态(idea)](module/ProdMgmt/idea/uilogic/calc_column_action_state)|calc_column_action_state|动态识别readonly|
 |[选择需求模板](module/ProdMgmt/idea/uilogic/choose_case_template)|choose_case_template|选择需求模板后回填所选模板数据至表单|
 |[通知刷新](module/ProdMgmt/idea/uilogic/flush)|flush||
+|[重置上下文产品ID](module/ProdMgmt/idea/uilogic/reset_product_id)|reset_product_id||
 |[门户全屏](module/ProdMgmt/idea/uilogic/full_screen)|full_screen|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户刷新](module/ProdMgmt/idea/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户编辑](module/ProdMgmt/idea/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|

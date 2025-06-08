@@ -17,7 +17,7 @@
 
 运行对象：`IBizHtmlComment`
 
-远程仓库：`@ibiz-template-plm/html-comment@0.0.3-alpha.205`
+远程仓库：`@ibiz-template-plm/html-comment@0.0.3-alpha.215`
 
 ### LuckySheet编辑 :id=LUCKYSHEET
 
@@ -90,7 +90,7 @@
 
 运行对象：`IBizPersonelSelect`
 
-远程仓库：`@ibiz-template-plm/person-select@0.0.3-alpha.204`
+远程仓库：`@ibiz-template-plm/person-select@0.0.3-alpha.206`
 
 ### 人员选择（移动端） :id=MOB_PERSONEL_SELECT
 
@@ -248,7 +248,7 @@
 
 运行对象：`IBizCheckboxGrid`
 
-远程仓库：`@ibiz-template-plugin/checkbox-grid@0.0.3-alpha.111`
+远程仓库：`@ibiz-template-plugin/checkbox-grid@0.0.3-alpha.211`
 
 ### 工时表格 :id=WORKLOAD_TABLE
 
@@ -599,7 +599,7 @@
 
 运行对象：`IBizCommentItemRawItem`
 
-远程仓库：`@ibiz-template-plm/comment-item@0.0.3-alpha.139`
+远程仓库：`@ibiz-template-plm/comment-item@0.0.3-alpha.209`
 
 ### 评论回复列表 :id=COMMENT_LIST
 

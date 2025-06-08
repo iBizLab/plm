@@ -1405,7 +1405,7 @@
         "id" : "TREEEXPBAR"
       },
       "getPSControls" : [ {
-        "codeName" : "choose_case_tree_exp_view",
+        "codeName" : "review_case_tree_exp_view",
         "controlStyle" : "GROUP_TREE",
         "controlType" : "TREEVIEW",
         "getCreatePSControlAction" : {
@@ -1424,7 +1424,7 @@
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
           }
         },
-        "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case/PSTREEVIEWS/choose_case_tree_exp_view.json",
+        "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case/PSTREEVIEWS/review_case_tree_exp_view.json",
         "getFetchPSControlAction" : {
           "modelref" : true,
           "id" : "fetch",
@@ -1452,7 +1452,7 @@
           }
         },
         "hookEventNames" : [ "SELECTIONCHANGE", "LOAD" ],
-        "logicName" : "计划关联用例多选树导航",
+        "logicName" : "评审用例多选树导航",
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
@@ -1557,6 +1557,30 @@
         }, {
           "getChildPSDETreeNode" : {
             "modelref" : true,
+            "id" : "node_8"
+          },
+          "name" : "全部计划 - 计划",
+          "getParentPSDETreeNode" : {
+            "modelref" : true,
+            "id" : "node_7"
+          },
+          "parentValueLevel" : 1,
+          "searchMode" : 3
+        }, {
+          "getChildPSDETreeNode" : {
+            "modelref" : true,
+            "id" : "node_6"
+          },
+          "name" : "全部基线 - 基线",
+          "getParentPSDETreeNode" : {
+            "modelref" : true,
+            "id" : "node_5"
+          },
+          "parentValueLevel" : 1,
+          "searchMode" : 3
+        }, {
+          "getChildPSDETreeNode" : {
+            "modelref" : true,
             "id" : "node_2"
           },
           "name" : "用例模块 - 主模块",
@@ -1632,6 +1656,30 @@
             "id" : "node_1"
           },
           "name" : "默认根节点 - 用例模块",
+          "getParentPSDETreeNode" : {
+            "modelref" : true,
+            "id" : "ROOT"
+          },
+          "parentValueLevel" : 1,
+          "searchMode" : 3
+        }, {
+          "getChildPSDETreeNode" : {
+            "modelref" : true,
+            "id" : "node_5"
+          },
+          "name" : "默认根节点 - 全部基线",
+          "getParentPSDETreeNode" : {
+            "modelref" : true,
+            "id" : "ROOT"
+          },
+          "parentValueLevel" : 1,
+          "searchMode" : 3
+        }, {
+          "getChildPSDETreeNode" : {
+            "modelref" : true,
+            "id" : "node_7"
+          },
+          "name" : "默认根节点 - 全部计划",
           "getParentPSDETreeNode" : {
             "modelref" : true,
             "id" : "ROOT"
@@ -1843,6 +1891,152 @@
           "selectFirstOnly" : false,
           "selected" : false,
           "id" : "node_4"
+        }, {
+          "counterMode" : 0,
+          "name" : "全部基线",
+          "nodeType" : "node_5",
+          "getPSNavigateParams" : [ {
+            "key" : "tag",
+            "name" : "tag",
+            "value" : "baseline",
+            "rawValue" : true
+          } ],
+          "text" : "全部基线",
+          "treeNodeType" : "STATIC",
+          "hasPSDETreeNodeRSs" : true,
+          "appendPNodeId" : false,
+          "disableSelect" : false,
+          "enableCheck" : false,
+          "enableEditData" : false,
+          "enableNewData" : false,
+          "enableQuickCreate" : false,
+          "enableQuickSearch" : false,
+          "enableRemoveData" : false,
+          "enableViewData" : false,
+          "expandFirstOnly" : false,
+          "expanded" : false,
+          "rootNode" : false,
+          "selectFirstOnly" : false,
+          "selected" : false,
+          "id" : "node_5"
+        }, {
+          "counterMode" : 0,
+          "dataSourceType" : "DEDATASET",
+          "getIdPSAppDEField" : {
+            "name" : "ID",
+            "codeName" : "id"
+          },
+          "maxSize" : -1,
+          "name" : "基线",
+          "nodeType" : "node_6",
+          "getPSAppDEDataSet" : {
+            "modelref" : true,
+            "id" : "fetch_baseline"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "baseline",
+            "name" : "baseline",
+            "value" : "id",
+            "rawValue" : false
+          } ],
+          "getTextPSAppDEField" : {
+            "name" : "NAME",
+            "codeName" : "name"
+          },
+          "treeNodeType" : "DE",
+          "hasPSDETreeNodeRSs" : false,
+          "appendPNodeId" : false,
+          "disableSelect" : false,
+          "enableCheck" : false,
+          "enableEditData" : false,
+          "enableNewData" : false,
+          "enableQuickCreate" : false,
+          "enableQuickSearch" : false,
+          "enableRemoveData" : false,
+          "enableViewData" : false,
+          "expandFirstOnly" : false,
+          "expanded" : false,
+          "rootNode" : false,
+          "selectFirstOnly" : false,
+          "selected" : false,
+          "id" : "node_6"
+        }, {
+          "counterMode" : 0,
+          "name" : "全部计划",
+          "nodeType" : "node_7",
+          "getPSNavigateParams" : [ {
+            "key" : "tag",
+            "name" : "tag",
+            "value" : "test_plan",
+            "rawValue" : true
+          } ],
+          "text" : "全部计划",
+          "treeNodeType" : "STATIC",
+          "hasPSDETreeNodeRSs" : true,
+          "appendPNodeId" : false,
+          "disableSelect" : false,
+          "enableCheck" : false,
+          "enableEditData" : false,
+          "enableNewData" : false,
+          "enableQuickCreate" : false,
+          "enableQuickSearch" : false,
+          "enableRemoveData" : false,
+          "enableViewData" : false,
+          "expandFirstOnly" : false,
+          "expanded" : false,
+          "rootNode" : false,
+          "selectFirstOnly" : false,
+          "selected" : false,
+          "id" : "node_7"
+        }, {
+          "counterMode" : 0,
+          "dataSourceType" : "DEDATASET",
+          "getIdPSAppDEField" : {
+            "name" : "ID",
+            "codeName" : "id"
+          },
+          "maxSize" : -1,
+          "name" : "计划",
+          "nodeType" : "node_8",
+          "getPSAppDEDataSet" : {
+            "modelref" : true,
+            "id" : "fetch_test_plan"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "test_plan",
+            "name" : "test_plan",
+            "value" : "id",
+            "rawValue" : false
+          } ],
+          "getTextPSAppDEField" : {
+            "name" : "NAME",
+            "codeName" : "name"
+          },
+          "treeNodeType" : "DE",
+          "hasPSDETreeNodeRSs" : false,
+          "appendPNodeId" : false,
+          "disableSelect" : false,
+          "enableCheck" : false,
+          "enableEditData" : false,
+          "enableNewData" : false,
+          "enableQuickCreate" : false,
+          "enableQuickSearch" : false,
+          "enableRemoveData" : false,
+          "enableViewData" : false,
+          "expandFirstOnly" : false,
+          "expanded" : false,
+          "rootNode" : false,
+          "selectFirstOnly" : false,
+          "selected" : false,
+          "id" : "node_8"
         } ],
         "getPSSysPFPlugin" : {
           "pluginType" : "TREE_RENDER",
@@ -1886,7 +2080,7 @@
         "outputIconDefault" : true,
         "rootVisible" : false,
         "name" : "treeexpbar_tree",
-        "modelid" : "74da436714f3d00de3e4a48286b1c1c1",
+        "modelid" : "c7de092c8dac243c87aa090528cdcd2a",
         "modeltype" : "PSDETREEVIEW"
       } ],
       "title" : "选择用例",

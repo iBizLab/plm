@@ -18,6 +18,7 @@
 |CL.ITEM.LNAME.IDEA_STATE.30|进行中| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CL.ITEM.LNAME.IDEA_STATE.40|已完成| <el-tooltip content="Completed" placement="top"  effect="light"><el-tag effect="dark">英文</el-tag></el-tooltip>  <el-tooltip content="已完成" placement="top"  effect="light"><el-tag effect="dark">中文简体</el-tag></el-tooltip> |
 |CL.ITEM.LNAME.IDEA_STATE.50|已关闭| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CL.ITEM.LNAME.RUN_STATUS_COLOR._EMTPY_|未设置| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |COMMON.CONDITION.ABSEQ|| <el-tooltip content="=" placement="top"  effect="light"><el-tag effect="dark">英文</el-tag></el-tooltip>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |COMMON.CONDITION.ABSGT|| <el-tooltip content=">" placement="top"  effect="light"><el-tag effect="dark">英文</el-tag></el-tooltip>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |COMMON.CONDITION.AND|| <el-tooltip content="And" placement="top"  effect="light"><el-tag effect="dark">英文</el-tag></el-tooltip>  <el-tag effect="dark" type="info">中文简体</el-tag> |
@@ -824,6 +825,11 @@
 |CONTROL.DEFORM.REVIEW_CONTENT_EXTEND.MAIN.FORMPAGE.FORMPAGE2|其它| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.REVIEW_CONTENT_EXTEND.MAIN.GROUPPANEL.GROUP1|评审内容扩展基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.REVIEW_CONTENT_EXTEND.MAIN.GROUPPANEL.GROUP2|操作信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.REVIEW_CONTENT_IDEA.DEFAULT.FORMPAGE.FORMPAGE1|常规条件| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.REVIEW_CONTENT_IDEA.MAIN.FORMPAGE.FORMPAGE1|基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.REVIEW_CONTENT_IDEA.MAIN.FORMPAGE.FORMPAGE2|其它| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.REVIEW_CONTENT_IDEA.MAIN.GROUPPANEL.GROUP1|产品需求评审内容基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|CONTROL.DEFORM.REVIEW_CONTENT_IDEA.MAIN.GROUPPANEL.GROUP2|操作信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.REVIEW_RESULT.DEFAULT.FORMPAGE.FORMPAGE1|常规条件| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.REVIEW_RESULT.MAIN.FORMPAGE.FORMPAGE1|基本信息| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |CONTROL.DEFORM.REVIEW_RESULT.MAIN.FORMPAGE.FORMPAGE2|其它| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
@@ -1633,6 +1639,7 @@
 |DE.LNAME.REVIEW_ACTION_RULE|评审后置动作| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.REVIEW_CONTENT|评审内容| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.REVIEW_CONTENT_EXTEND|评审内容扩展| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|DE.LNAME.REVIEW_CONTENT_IDEA|产品需求评审内容| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.REVIEW_RESULT|评审结果| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.REVIEW_RULE|评审规则| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |DE.LNAME.REVIEW_STAGE|评审阶段| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
@@ -2838,6 +2845,13 @@
 |PAGE.TITLE.REVIEW_CONTENT_EXTEND.PICKUPGRIDVIEW|评审内容扩展选择表格视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |PAGE.TITLE.REVIEW_CONTENT_EXTEND.PICKUPVIEW|评审内容扩展数据选择视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |PAGE.TITLE.REVIEW_CONTENT_EXTEND.REDIRECTVIEW|评审内容扩展数据重定向视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|PAGE.TITLE.REVIEW_CONTENT_IDEA.EDITVIEW|产品需求评审内容编辑视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|PAGE.TITLE.REVIEW_CONTENT_IDEA.EDITVIEW2|产品需求评审内容编辑视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|PAGE.TITLE.REVIEW_CONTENT_IDEA.GRIDVIEW|产品需求评审内容表格视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|PAGE.TITLE.REVIEW_CONTENT_IDEA.MPICKUPVIEW|产品需求评审内容数据多项选择视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|PAGE.TITLE.REVIEW_CONTENT_IDEA.PICKUPGRIDVIEW|产品需求评审内容选择表格视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|PAGE.TITLE.REVIEW_CONTENT_IDEA.PICKUPVIEW|产品需求评审内容数据选择视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
+|PAGE.TITLE.REVIEW_CONTENT_IDEA.REDIRECTVIEW|产品需求评审内容数据重定向视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |PAGE.TITLE.REVIEW_RESULT.EDITVIEW|评审结果编辑视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |PAGE.TITLE.REVIEW_RESULT.EDITVIEW2|评审结果编辑视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |
 |PAGE.TITLE.REVIEW_RESULT.GRIDVIEW|评审结果表格视图| <el-tag effect="dark" type="info">英文</el-tag>  <el-tag effect="dark" type="info">中文简体</el-tag> |

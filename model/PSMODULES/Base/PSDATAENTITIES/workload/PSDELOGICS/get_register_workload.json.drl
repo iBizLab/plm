@@ -20,6 +20,14 @@ package cn.ibizlab.plm.base.logic.workloadlogic.get_register_workload;
             then
             end
 
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam1"
+            ruleflow-group "workloadget_register_workloaddebugparam1"
+            when
+            then
+                        update(workloadget_register_workloaddefault);//更新fact中变量值
+            end
+
             //逻辑处理节点[获取工时明细]
             rule "deaction1"
             ruleflow-group "workloadget_register_workloaddeaction1"
@@ -29,7 +37,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.get_register_workload;
                         update(workloadget_register_workloaddefault);//更新fact中变量值
             end
 
-            //逻辑处理节点[获取已登记工时]
+            //逻辑处理节点[获取已登记实际工时]
             rule "rawsqlcall1"
             ruleflow-group "workloadget_register_workloadrawsqlcall1"
             when
@@ -37,7 +45,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.get_register_workload;
     Map param =new HashMap();
         param.put("param0",workloadget_register_workloaddefault.get("principaltype"));
         param.put("param1",workloadget_register_workloaddefault.get("principalid"));
-    String strSql="select sum(DURATION) as `ACTUAL_WORKLOAD` from workload where  PRINCIPAL_TYPE = #{et.param0} and PRINCIPAL_ID = #{et.param1}";
+    String strSql="select sum(DURATION) as `ACTUAL_WORKLOAD` from workload where  PRINCIPAL_TYPE = #{et.param0} and PRINCIPAL_ID = #{et.param1} and CATEGORY = 'ACTUAL_WORKLOAD'";
                         java.util.List<JSONObject> entities=iBzSysWorkloadDefaultService.select(strSql,param);//SQL调用
                             if(entities.size()>0){
                             JSONObject entity=entities.get(0);
@@ -45,6 +53,19 @@ package cn.ibizlab.plm.base.logic.workloadlogic.get_register_workload;
                                     workloadget_register_workloaddefault.set(String.valueOf(entry.getKey()),entry.getValue());
                                     }
                             }
+                        update(workloadget_register_workloaddefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取已登记预估工时]
+            rule "rawsqlcall4"
+            ruleflow-group "workloadget_register_workloadrawsqlcall4"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",workloadget_register_workloaddefault.get("principaltype"));
+        param.put("param1",workloadget_register_workloaddefault.get("principalid"));
+    String strSql="select sum(DURATION) as `ESTIMATED_WORKLOAD` from workload where  PRINCIPAL_TYPE = #{et.param0} and PRINCIPAL_ID = #{et.param1} and CATEGORY = 'ESTIMATED_WORKLOAD'";
+                        iBzSysWorkloadDefaultService.execute(strSql,param);//SQL调用
                         update(workloadget_register_workloaddefault);//更新fact中变量值
             end
 

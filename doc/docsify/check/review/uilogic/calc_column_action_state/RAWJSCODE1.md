@@ -8,6 +8,7 @@
 			const titleColumn = row.uiActionGroupStates.name;
 			const cur_user = ctx.srfuserid;
 			const state = row.data.state;
+            const type = row.data.type;
 			const create_man = row.data.create_man;
 			if (titleColumn && Object.values(titleColumn).length > 0) {
 				Object.values(titleColumn).forEach(action => {
@@ -18,7 +19,9 @@
 						action.visible = true;
 					} else if (action.uiActionId === 'submit_review@review'&& create_man == cur_user && (state == '10'||state == '50') ) {
 						action.visible = true;
-					}else if (action.uiActionId === 'set_category@review'&& create_man == cur_user){
+					}else if (action.uiActionId === 'set_category@review'&& create_man == cur_user && type == 'TEST_CASE'){
+                        action.visible = true;
+                    }else if (action.uiActionId === 'set_idea_category@review'&& create_man == cur_user && type == 'IDEA'){
                         action.visible = true;
                     }
 				})

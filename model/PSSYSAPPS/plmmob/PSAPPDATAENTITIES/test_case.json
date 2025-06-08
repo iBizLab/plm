@@ -893,6 +893,169 @@
     "needResourceKey" : true,
     "noServiceCodeName" : true
   } ],
+  "getAllPSAppDEDataExports" : [ {
+    "codeName" : "test_case_export",
+    "maxRowCount" : 1000,
+    "name" : "用例导出",
+    "getPSDEDataExportItems" : [ {
+      "align" : "LEFT",
+      "caption" : "编号",
+      "format" : "%1$s",
+      "name" : "identifier",
+      "getPSAppDEField" : {
+        "name" : "IDENTIFIER",
+        "codeName" : "identifier"
+      },
+      "getPSDEField" : {
+        "name" : "IDENTIFIER",
+        "codeName" : "identifier"
+      }
+    }, {
+      "align" : "LEFT",
+      "caption" : "标题",
+      "format" : "%1$s",
+      "name" : "title",
+      "getPSAppDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      },
+      "getPSDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      }
+    }, {
+      "caption" : "状态",
+      "format" : "%1$s",
+      "name" : "state",
+      "getPSAppDEField" : {
+        "name" : "STATE",
+        "codeName" : "state"
+      },
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/TestMgmt__case_state.json"
+      },
+      "getPSDEField" : {
+        "name" : "STATE",
+        "codeName" : "state"
+      }
+    }, {
+      "caption" : "维护人",
+      "format" : "%1$s",
+      "name" : "maintenance_name",
+      "getPSAppDEField" : {
+        "name" : "MAINTENANCE_NAME",
+        "codeName" : "maintenance_name"
+      },
+      "getPSDEField" : {
+        "name" : "MAINTENANCE_NAME",
+        "codeName" : "maintenance_name"
+      }
+    }, {
+      "caption" : "重要程度",
+      "format" : "%1$s",
+      "memo" : "允许值: P0, P1, P2, P3, P4",
+      "name" : "level",
+      "getPSAppDEField" : {
+        "name" : "LEVEL",
+        "codeName" : "level"
+      },
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/TestMgmt__test_case_level.json"
+      },
+      "getPSDEField" : {
+        "name" : "LEVEL",
+        "codeName" : "level"
+      }
+    }, {
+      "caption" : "用例类型",
+      "format" : "%1$s",
+      "name" : "type",
+      "getPSAppDEField" : {
+        "name" : "TYPE",
+        "codeName" : "type"
+      },
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/TestMgmt__test_case_type.json"
+      },
+      "getPSDEField" : {
+        "name" : "TYPE",
+        "codeName" : "type"
+      }
+    }, {
+      "caption" : "所属模块",
+      "format" : "%1$s",
+      "name" : "suite_name",
+      "getPSAppDEField" : {
+        "name" : "SUITE_NAME",
+        "codeName" : "suite_name"
+      },
+      "getPSDEField" : {
+        "name" : "SUITE_NAME",
+        "codeName" : "Suite_name"
+      }
+    }, {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+      },
+      "caption" : "更新时间",
+      "format" : "%1$s",
+      "name" : "update_time",
+      "getPSAppDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
+      "getPSDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      }
+    }, {
+      "caption" : "前置条件",
+      "format" : "%1$s",
+      "name" : "precondition",
+      "getPSAppDEField" : {
+        "name" : "PRECONDITION",
+        "codeName" : "precondition"
+      },
+      "getPSDEField" : {
+        "name" : "PRECONDITION",
+        "codeName" : "precondition"
+      }
+    }, {
+      "caption" : "步骤描述",
+      "format" : "%1$s",
+      "name" : "step_desc",
+      "getPSAppDEField" : {
+        "name" : "STEPS",
+        "codeName" : "steps"
+      },
+      "getPSDEField" : {
+        "name" : "STEPS",
+        "codeName" : "steps"
+      }
+    }, {
+      "caption" : "预期结果",
+      "format" : "%1$s",
+      "name" : "expected_result",
+      "getPSAppDEField" : {
+        "name" : "STEPS",
+        "codeName" : "steps"
+      },
+      "getPSDEField" : {
+        "name" : "STEPS",
+        "codeName" : "steps"
+      }
+    } ],
+    "getPSSysSFPlugin" : {
+      "modelref" : true,
+      "path" : "PSSYSSFPLUGINS/UsrSFPlugin0521277606.json"
+    },
+    "defaultMode" : true,
+    "enableBackend" : true,
+    "enableFront" : false
+  } ],
   "getAllPSAppDEDataImports" : [ {
     "batchSize" : 1000,
     "codeName" : "import_test_case",
@@ -1238,6 +1401,44 @@
     "requestPath" : "/fetch_baseline_plan_case",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_baseline_test_case",
+    "dataSetName" : "baseline_test_case",
+    "dataSetTag" : "baseline_test_case",
+    "methodType" : "FETCH",
+    "name" : "fetch_baseline_test_case",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "baseline_test_case"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_baseline_test_case"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_baseline_test_case",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_bi_detail",
     "dataSetName" : "bi_detail",
     "dataSetTag" : "bi_detail",
@@ -1464,6 +1665,44 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetch_comment_notify_maintenance",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_common",
+    "dataSetName" : "common",
+    "dataSetTag" : "common",
+    "methodType" : "FETCH",
+    "name" : "fetch_common",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "common"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_common"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_common",
     "builtinMethod" : false
   }, {
     "codeName" : "fetch_daily_tendencies",
@@ -2492,6 +2731,44 @@
     "requestPath" : "/fetch_test_case_maneuver_context",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_test_plan_test_case",
+    "dataSetName" : "test_plan_test_case",
+    "dataSetTag" : "test_plan_test_case",
+    "methodType" : "FETCH",
+    "name" : "fetch_test_plan_test_case",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "test_plan_test_case"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_test_plan_test_case"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_test_plan_test_case",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_work_item_relation_test_case",
     "dataSetName" : "work_item_relation_test_case",
     "dataSetTag" : "work_item_relation_test_case",
@@ -2952,6 +3229,7 @@
     "codeName" : "cur_version_id",
     "logicName" : "当前版本标识",
     "name" : "CUR_VERSION_ID",
+    "predefinedType" : "VERSIONID",
     "stdDataType" : 25,
     "stringLength" : 100
   }, {
@@ -4052,6 +4330,7 @@
     },
     "logicName" : "建立人",
     "name" : "CREATE_MAN",
+    "predefinedType" : "CREATEMAN",
     "stdDataType" : 25,
     "stringLength" : 100
   }, {
@@ -4094,6 +4373,7 @@
     },
     "logicName" : "建立时间",
     "name" : "CREATE_TIME",
+    "predefinedType" : "CREATEDATE",
     "stdDataType" : 5,
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   }, {
@@ -4136,6 +4416,7 @@
     },
     "logicName" : "更新人",
     "name" : "UPDATE_MAN",
+    "predefinedType" : "UPDATEMAN",
     "stdDataType" : 25,
     "stringLength" : 100
   }, {
@@ -4178,6 +4459,7 @@
     },
     "logicName" : "更新时间",
     "name" : "UPDATE_TIME",
+    "predefinedType" : "UPDATEDATE",
     "stdDataType" : 5,
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   }, {
@@ -6984,6 +7266,44 @@
     "requestPath" : "/fetch_baseline_plan_case",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_baseline_test_case",
+    "dataSetName" : "baseline_test_case",
+    "dataSetTag" : "baseline_test_case",
+    "methodType" : "FETCH",
+    "name" : "fetch_baseline_test_case",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "baseline_test_case"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_baseline_test_case"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_baseline_test_case",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_bi_detail",
     "dataSetName" : "bi_detail",
     "dataSetTag" : "bi_detail",
@@ -7210,6 +7530,44 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetch_comment_notify_maintenance",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_common",
+    "dataSetName" : "common",
+    "dataSetTag" : "common",
+    "methodType" : "FETCH",
+    "name" : "fetch_common",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "common"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_common"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_common",
     "builtinMethod" : false
   }, {
     "codeName" : "fetch_daily_tendencies",
@@ -8238,6 +8596,44 @@
     "requestPath" : "/fetch_test_case_maneuver_context",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_test_plan_test_case",
+    "dataSetName" : "test_plan_test_case",
+    "dataSetTag" : "test_plan_test_case",
+    "methodType" : "FETCH",
+    "name" : "fetch_test_plan_test_case",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "test_plan_test_case"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_test_plan_test_case"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_test_plan_test_case",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_work_item_relation_test_case",
     "dataSetName" : "work_item_relation_test_case",
     "dataSetTag" : "work_item_relation_test_case",
@@ -9149,6 +9545,10 @@
   "dEAPITag" : "TEST_CASE",
   "dataAccCtrlArch" : 1,
   "dataAccCtrlMode" : 3,
+  "getDefaultPSAppDEDataExport" : {
+    "modelref" : true,
+    "id" : "test_case_export"
+  },
   "getDefaultPSAppDEDataImport" : {
     "modelref" : true,
     "id" : "import_test_case"
