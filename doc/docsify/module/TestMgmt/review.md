@@ -26,6 +26,7 @@
 |测试库是否删除|LIBRARY_IS_DELETED|外键值附加数据||是||
 |测试库名称|LIBRARY_NAME|外键值文本|200|是||
 |名称|NAME|文本，可指定长度|200|是||
+|下一个评审人|NEXT_REVIEWER|文本，可指定长度|100|是||
 |评审主体标识|PRINCIPAL_ID|文本，可指定长度|100|是||
 |评审主体名称|PRINCIPAL_NAME|文本，可指定长度|100|是||
 |评审主体类型|PRINCIPAL_TYPE|文本，可指定长度|100|是||
@@ -241,7 +242,9 @@
 
 |    中文名col200   | 代码名col150       |  消息队列col200   |  消息模板col200 |  通知目标col150     |  备注col350  |
 |------------| -----   |  -------- | -------- |-------- |-------- |
+|[完成需求评审通知](module/TestMgmt/review/notify/idea_review_notify)|idea_review_notify|[默认消息队列](index/notify_index)|[评审完成通知模板(产品需求)](index/notify_index#idea_review_complete)|评审关注人 ||
 |[评审通知](module/TestMgmt/review/notify/review_notify)|review_notify|[默认消息队列](index/notify_index)|[评审通知模板](index/notify_index#review_inform_template)|当前评审人 ||
+|[完成用例评审通知](module/TestMgmt/review/notify/test_case_complete_notify)|test_case_complete_notify|[默认消息队列](index/notify_index)|[评审完成通知模板(测试用例)](index/notify_index#tc_review_complete_template)|通知关注人 ||
 |[测试用例评审通知](module/TestMgmt/review/notify/test_case_review_notify)|test_case_review_notify|[默认消息队列](index/notify_index)|[测试用例评审通知模板](index/notify_index#tc_review_inform_template)|当前评审人 ||
 
 ## 搜索模式

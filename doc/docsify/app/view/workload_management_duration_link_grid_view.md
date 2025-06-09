@@ -18,6 +18,8 @@
 
 ### 关联视图
   * [工时(workload_edit_view)](app/view/workload_edit_view)
+  * [修改预估工时(workload_forecast_quick_update_view)](app/view/workload_forecast_quick_update_view)
+  * [工时(workload_redirect_view)](app/view/workload_redirect_view)
   * [修改实际工时(workload_update_view)](app/view/workload_update_view)
 
 <script>

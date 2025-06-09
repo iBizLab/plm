@@ -15,8 +15,8 @@
 
 
 ### 关联界面行为
-  * [关联(RELATION)](module/Base/relation) : [添加依赖后置任务（移动端）](module/Base/relation#界面行为)
   * [关联(RELATION)](module/Base/relation) : [添加依赖前置任务（移动端）](module/Base/relation#界面行为)
+  * [关联(RELATION)](module/Base/relation) : [添加依赖后置任务（移动端）](module/Base/relation#界面行为)
 
 ### 关联视图
   * [选择工作项(work_item_mob_depend_mpick_up_view)](app/view/work_item_mob_depend_mpick_up_view)

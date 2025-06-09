@@ -56,6 +56,5 @@ uiLogic.ctx.product=uiLogic.default.product_id;
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|view|view|当前视图对象||
 |ctx|ctx|导航视图参数绑定参数||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

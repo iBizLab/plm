@@ -68,6 +68,7 @@
 |[测试库(LIBRARY)](module/TestMgmt/library)|[流程准则(GUIDELINE)](module/TestMgmt/guideline)|[DERCUSTOM_GUIDELINE_LIBRARY_LIBRARY_ID](der/DERCUSTOM_GUIDELINE_LIBRARY_LIBRARY_ID)|自定义关系|附属关系、数据访问控制、|
 |[测试库(LIBRARY)](module/TestMgmt/library)|[用例模块(TEST_SUITE)](module/TestMgmt/test_suite)|[DER1N_TEST_SUITE_LIBRARY_LIBRARY_ID](der/DER1N_TEST_SUITE_LIBRARY_LIBRARY_ID)|1:N关系|附属关系、数据访问控制、|
 |[测试库(LIBRARY)](module/TestMgmt/library)|[组件(ADDON)](module/Base/addon)|[DERCUSTOM_ADDON_LIBRARY_OWNER_ID](der/DERCUSTOM_ADDON_LIBRARY_OWNER_ID)|自定义关系|附属关系、数据访问控制、|
+|[测试库(LIBRARY)](module/TestMgmt/library)|[系统参数(PARAMETER)](module/Base/parameter)|[DERCUSTOM_PARAMETER_LIBRARY_LIBRARY_ID](der/DERCUSTOM_PARAMETER_LIBRARY_LIBRARY_ID)|自定义关系|附属关系、数据访问控制、嵌套操作、|
 |[测试库(LIBRARY)](module/TestMgmt/library)|[基线(BASELINE)](module/Base/baseline)|[DERCUSTOM_BASELINE_LIBRARY_OWNER_ID](der/DERCUSTOM_BASELINE_LIBRARY_OWNER_ID)|自定义关系|附属关系、数据访问控制、|
 |[测试库(LIBRARY)](module/TestMgmt/library)|[评审(REVIEW)](module/TestMgmt/review)|[DER1N_REVIEW_LIBRARY_LIBRARY_ID](der/DER1N_REVIEW_LIBRARY_LIBRARY_ID)|1:N关系|附属关系、数据访问控制、|
 |[测试库(LIBRARY)](module/TestMgmt/library)|[测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member)|[DER1N_LIBRARY_MEMBER_LIBRARY_LIBRARY_ID](der/DER1N_LIBRARY_MEMBER_LIBRARY_LIBRARY_ID)|1:N关系|附属关系、附属关系(N:N连接)、数据访问控制、|

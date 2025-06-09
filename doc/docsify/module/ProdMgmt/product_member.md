@@ -123,8 +123,8 @@
 | --------| --------| -------- |------------|------------|------------|
 | 产品添加成员（移动端） | mob_add_member | 添加成员 |无数据|<details><summary>后台调用</summary>[mob_create_product_member](#行为)||
 | 设置角色 | setting_role | 设置 |多项数据（主键）|<details><summary>后台调用</summary>[change_role](#行为)||
-| 设置角色（移动端） | mob_seting_role | 设置角色 |单项数据（主键）|<details><summary>后台调用</summary>[change_role](#行为)||
 | 职位变更 | choose_position | 职位变更 |多项数据（主键）|<details><summary>后台调用</summary>[change_position](#行为)||
+| 设置角色（移动端） | mob_seting_role | 设置角色 |单项数据（主键）|<details><summary>后台调用</summary>[change_role](#行为)||
 | 跳转至成员设置 | jump_to_member_set | 跳转至成员设置 |无数据|用户自定义||
 | 移除成员 | remove_member | 移除成员 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 

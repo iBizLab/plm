@@ -17,11 +17,11 @@ hide empty description
 state "开始" as Begin <<start>> [[$./submit_review#begin {"开始"}]]
 state "通知第一评审人（测试用例）" as DENOTIFY2  [[$./submit_review#denotify2 {"通知第一评审人（测试用例）"}]]
 state "绑定参数" as BINDPARAM1  [[$./submit_review#bindparam1 {"绑定参数"}]]
+state "更新评审" as DEACTION1  [[$./submit_review#deaction1 {"更新评审"}]]
 state "调试逻辑参数" as DEBUGPARAM2  [[$./submit_review#debugparam2 {"调试逻辑参数"}]]
 state "调试逻辑参数" as DEBUGPARAM3  [[$./submit_review#debugparam3 {"调试逻辑参数"}]]
 state "设置提交人、状态" as PREPAREPARAM1  [[$./submit_review#prepareparam1 {"设置提交人、状态"}]]
 state "设置阶段的状态" as PREPAREPARAM2  [[$./submit_review#prepareparam2 {"设置阶段的状态"}]]
-state "更新评审" as DEACTION1  [[$./submit_review#deaction1 {"更新评审"}]]
 state "设置关系过滤参数" as PREPAREPARAM3  [[$./submit_review#prepareparam3 {"设置关系过滤参数"}]]
 state "通知第一评审人（需求）" as DENOTIFY1  [[$./submit_review#denotify1 {"通知第一评审人（需求）"}]]
 state "结束" as END1 <<end>> [[$./submit_review#end1 {"结束"}]]
@@ -186,7 +186,8 @@ default_obj.set("submitted_at", new Date());
 
 
 
-1. 将`reviewer_temp(评审人临时变量).reviewer` 设置给  `Default(传入变量).REVIEWER(评审人)`
+1. 将`reviewer_temp(评审人临时变量).reviewer` 设置给  `Default(传入变量).NEXT_REVIEWER(下一个评审人)`
+2. 将`Default(传入变量).CREATE_MAN(建立人)` 设置给  `Default(传入变量).REVIEWER(评审人)`
 
 #### 调试逻辑参数 :id=DEBUGPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
 

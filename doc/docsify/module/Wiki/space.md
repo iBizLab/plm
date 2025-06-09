@@ -289,8 +289,8 @@
 | 新开窗口（空间） | open_new | 新窗口打开 |单项数据（主键）|<details><summary>打开HTML页面</summary>*./#/-/index/space=${data.id}/space_index_view/srfnav=drgroup/article_page_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;*</details>||
 | 打开空间主页面 | open_space_index | 打开空间主页面 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[空间](app/view/space_index_view)</details>||
 | 取消星标 | cancel_favorite | 取消星标 |单项数据（主键）|<details><summary>后台调用</summary>[un_favorite](#行为)||
-| 移动端移动空间 | mob_move_space | 移动空间 |单项数据（主键）|<details><summary>后台调用</summary>[move_space](#行为)||
 | 已删除_恢复 | recover | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
+| 移动端移动空间 | mob_move_space | 移动空间 |单项数据（主键）|<details><summary>后台调用</summary>[move_space](#行为)||
 | 回收站 | open_deleted_view | 回收站 |单项数据（主键）|用户自定义||
 | 设置星标 | add_favorite | 设置星标 |单项数据（主键）|<details><summary>后台调用</summary>[favorite](#行为)||
 | 空间成员(移动端) | mob_space_member | 空间成员 |无数据|<details><summary>打开视图或向导（模态）</summary>[空间成员](app/view/space_member_mob_list_view)</details>||
@@ -303,8 +303,8 @@
 | 打开新建空间 | open_new_space | 打开新建空间 |单项数据|<details><summary>打开顶级视图</summary>[空间](app/view/space_index_view)</details>||
 | 新建空间 | create_space | 新建空间 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建空间](app/view/space_create_wizard_view)</details>||
 | 已归档_激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
-| 高级设置（移动端） | mob_advanced_setting | 高级设置 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[高级设置](app/view/space_mob_advanced_set_view)</details>||
 | 添加空间成员 | add_space_member | 添加成员 |无数据|系统预定义||
+| 高级设置（移动端） | mob_advanced_setting | 高级设置 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[高级设置](app/view/space_mob_advanced_set_view)</details>||
 | 移动端进行中_归档 | mob_in_progress_into_archived | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 
 ## 界面逻辑

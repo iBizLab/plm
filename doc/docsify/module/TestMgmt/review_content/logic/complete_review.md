@@ -29,6 +29,8 @@ state "循环子调用" as LOOPSUBCALL1  [[$./complete_review#loopsubcall1 {"循
 state "当前阶段数据" as DEBUGPARAM2  [[$./complete_review#debugparam2 {"当前阶段数据"}]]
 state "设置阶段完成" as PREPAREPARAM3  [[$./complete_review#prepareparam3 {"设置阶段完成"}]]
 state "变更阶段状态" as PREPAREPARAM6  [[$./complete_review#prepareparam6 {"变更阶段状态"}]]
+state "通知关注人（需求）" as DENOTIFY3  [[$./complete_review#denotify3 {"通知关注人（需求）"}]]
+state "通知关注人（用例）" as DENOTIFY4  [[$./complete_review#denotify4 {"通知关注人（用例）"}]]
 state "完成时间" as RAWSFCODE1  [[$./complete_review#rawsfcode1 {"完成时间"}]]
 state "附加到数组变量" as PREPAREPARAM4  [[$./complete_review#prepareparam4 {"附加到数组变量"}]]
 state "附加到数组变量，且获取选中阶段的下一阶段数据" as PREPAREPARAM8  [[$./complete_review#prepareparam8 {"附加到数组变量，且获取选中阶段的下一阶段数据"}]]
@@ -51,8 +53,11 @@ DELOGIC1 --> END1
 LOOPSUBCALL1 --> DEBUGPARAM2
 DEBUGPARAM2 --> PREPAREPARAM3
 PREPAREPARAM3 --> PREPAREPARAM6
-PREPAREPARAM6 --> RAWSFCODE1
+PREPAREPARAM6 --> DENOTIFY3 : [[$./complete_review#prepareparam6-denotify3{连接名称} 连接名称]]
+DENOTIFY3 --> RAWSFCODE1
 RAWSFCODE1 --> PREPAREPARAM4
+PREPAREPARAM6 --> DENOTIFY4 : [[$./complete_review#prepareparam6-denotify4{连接名称} 连接名称]]
+DENOTIFY4 --> RAWSFCODE1
 PREPAREPARAM3 --> PREPAREPARAM4
 DEBUGPARAM2 --> PREPAREPARAM4 : [[$./complete_review#debugparam2-prepareparam4{非选中阶段} 非选中阶段]]
 DEBUGPARAM2 --> PREPAREPARAM8 : [[$./complete_review#debugparam2-prepareparam8{选中阶段的下一阶段} 选中阶段的下一阶段]]
@@ -153,7 +158,7 @@ PREPAREPARAM8 --> DENOTIFY2 : [[$./complete_review#prepareparam8-denotify2{连�
 
 
 1. 将`for_stage(当前循环阶段)` 追加到  `stage_arr(阶段数据)`
-2. 将`for_stage(当前循环阶段).REVIEWER(评审人)` 设置给  `review_detail(评审详情).REVIEWER(评审人)`
+2. 将`for_stage(当前循环阶段).REVIEWER(评审人)` 设置给  `review_detail(评审详情).NEXT_REVIEWER(下一个评审人)`
 3. 将`false` 设置给  `next_stage(下一阶段数据).is_next`
 4. 将`20` 设置给  `for_stage(当前循环阶段).STAGE_STATE(评审阶段状态)`
 
@@ -172,7 +177,8 @@ PREPAREPARAM8 --> DENOTIFY2 : [[$./complete_review#prepareparam8-denotify2{连�
 
 
 1. 将`30` 设置给  `for_stage(当前循环阶段).STAGE_STATE(评审阶段状态)`
-2. 将`true` 设置给  `next_stage(下一阶段数据).is_next`
+2. 将`for_stage(当前循环阶段).REVIEWER(评审人)` 设置给  `review_detail(评审详情).REVIEWER(评审人)`
+3. 将`true` 设置给  `next_stage(下一阶段数据).is_next`
 
 #### 附加到数组变量 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
@@ -180,6 +186,11 @@ PREPAREPARAM8 --> DENOTIFY2 : [[$./complete_review#prepareparam8-denotify2{连�
 
 1. 将`for_stage(当前循环阶段)` 追加到  `stage_arr(阶段数据)`
 
+#### 通知关注人（需求） :id=DENOTIFY3<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
+
+
+
+调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 通知 [完成需求评审通知(idea_review_notify)](module/TestMgmt/review/notify/idea_review_notify) ，参数为`review_detail(评审详情)`
 #### 变更阶段状态 :id=PREPAREPARAM6<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -197,6 +208,11 @@ var defaultObj = logic.getParam("review_detail");
 defaultObj.set("COMPLETED_AT", new Date());
 ```
 
+#### 通知关注人（用例） :id=DENOTIFY4<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
+
+
+
+调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 通知 [完成用例评审通知(test_case_complete_notify)](module/TestMgmt/review/notify/test_case_complete_notify) ，参数为`review_detail(评审详情)`
 
 ### 连接条件说明
 #### 当前循环阶段为选中阶段 
@@ -205,6 +221,12 @@ defaultObj.set("COMPLETED_AT", new Date());
 #### 当前阶段为最后阶段 
 
 
+#### 连接名称 :id=PREPAREPARAM6-DENOTIFY3
+
+`review_detail(评审详情).TYPE(评审类型)` EQ `IDEA`
+#### 连接名称 :id=PREPAREPARAM6-DENOTIFY4
+
+`review_detail(评审详情).TYPE(评审类型)` EQ `TEST_CASE`
 #### 非选中阶段 :id=DEBUGPARAM2-PREPAREPARAM4
 
 ( AND `next_stage(下一阶段数据).is_next` EQ `false`)

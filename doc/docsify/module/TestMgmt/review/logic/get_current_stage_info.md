@@ -109,7 +109,8 @@ WHERE
 
 
 1. 将`for_stage_obj(循环数据).NAME(名称)` 设置给  `info(返回前端的信息).stage_name1`
-2. 将`for_stage_obj(循环数据).NAME(名称)` 设置给  `info(返回前端的信息).stage_name2`
+2. 将`review_obj(评审数据).TYPE(评审类型)` 设置给  `info(返回前端的信息).type`
+3. 将`for_stage_obj(循环数据).NAME(名称)` 设置给  `info(返回前端的信息).stage_name2`
 
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 

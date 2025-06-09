@@ -29,6 +29,8 @@
 
 |  中文名     |   代码名  |  视图标题 | 视图类型   |   备注  |
 |  --------   |------------| -----------|  -----   |  -----   |
+|[引用索引数据选择视图](app/view/INDEX)|INDEX|引用索引|实体数据选择视图|系统自动添加|
+|[引用索引数据选择视图](app/view/INDEX)|INDEX|引用索引|实体数据选择视图|系统自动添加|
 |[活动历史列表](app/view/activity_history_list_view)|activity_history_list_view|活动历史列表|实体列表视图||
 |[活动选择表格视图](app/view/activity_pick_up_grid_view)|activity_pick_up_grid_view|活动|实体选择表格视图（部件视图）|系统自动添加|
 |[活动数据选择视图](app/view/activity_pick_up_view)|activity_pick_up_view|活动|实体数据选择视图|系统自动添加|
@@ -698,8 +700,6 @@
 |[首页](app/view/recent_tree_exp_view)|recent_tree_exp_view|首页|实体树导航视图||
 |[引用索引编辑视图](app/view/references_index_edit_view)|references_index_edit_view|引用索引|实体编辑视图|系统自动添加|
 |[引用索引表格视图](app/view/references_index_grid_view)|references_index_grid_view|引用索引|实体表格视图||
-|[引用索引索引关系选择数据视图](app/view/references_index_index_pick_up_data_view)|references_index_index_pick_up_data_view|引用索引|实体索引关系选择数据视图（部件视图）|系统自动添加|
-|[引用索引数据选择视图](app/view/references_index_index_pick_up_view)|references_index_index_pick_up_view|引用索引|实体数据选择视图|系统自动添加|
 |[工作项依赖](app/view/relation_depend_on_list_view)|relation_depend_on_list_view|关联|实体列表视图||
 |[工作项关联编辑视图](app/view/relation_edit_view)|relation_edit_view|关联|实体编辑视图||
 |[工作项关联表格视图](app/view/relation_grid_view)|relation_grid_view|关联|实体表格视图||
@@ -1177,6 +1177,7 @@
 |[动态新建看板工作项](app/view/work_item_dyna_kanban_quick_create_view)|work_item_dyna_kanban_quick_create_view|工作项|实体选项操作视图||
 |[工作项树表格视图（kanban动态）](app/view/work_item_dyna_kanban_tree_grid_view)|work_item_dyna_kanban_tree_grid_view|工作项|实体树表格视图||
 |[工作项（动态）](app/view/work_item_dyna_main_view)|work_item_dyna_main_view|工作项|实体编辑视图|工作项主视图（动态）|
+|[工作项](app/view/work_item_dyna_quick_create_bug_view)|work_item_dyna_quick_create_bug_view|工作项|实体选项操作视图||
 |[工作项快速建立视图](app/view/work_item_dyna_quick_create_view)|work_item_dyna_quick_create_view|工作项|实体选项操作视图|快速新建使用|
 |[工作项表格视图（动态）](app/view/work_item_dyna_scrum_grid_view)|work_item_dyna_scrum_grid_view|工作项|实体表格视图|系统自动添加|
 |[动态新建敏捷工作项](app/view/work_item_dyna_scrum_quick_create_view)|work_item_dyna_scrum_quick_create_view|工作项|实体选项操作视图||
@@ -1323,6 +1324,9 @@
 |[工时记录列表视图](app/view/workload_detail_list_view)|workload_detail_list_view|工时记录|实体列表视图||
 |[工时反查表格](app/view/workload_drill_detail_grid_view)|workload_drill_detail_grid_view|工时反查|实体表格视图||
 |[工时编辑视图](app/view/workload_edit_view)|workload_edit_view|工时|实体编辑视图||
+|[预估工时日历分页搜索视图（管理）](app/view/workload_estimated_management_tab_search_view)|workload_estimated_management_tab_search_view|工时|实体分页搜索视图||
+|[预估工时快速建立视图](app/view/workload_forecast_quick_create_view)|workload_forecast_quick_create_view|登记预估工时|实体选项操作视图|系统自动添加|
+|[预估工时快速修改视图](app/view/workload_forecast_quick_update_view)|workload_forecast_quick_update_view|修改预估工时|实体选项操作视图||
 |[团队日工时链接表格视图](app/view/workload_group_day_link_grid_view)|workload_group_day_link_grid_view|工时日志|实体表格视图||
 |[团队总登记时长链接表格视图](app/view/workload_group_duration_link_grid_view)|workload_group_duration_link_grid_view|工时日志|实体表格视图||
 |[团队下成员工时日历表格视图](app/view/workload_group_member_grid_view)|workload_group_member_grid_view|团队成员|实体表格视图||

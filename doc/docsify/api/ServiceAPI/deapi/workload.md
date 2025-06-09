@@ -18,6 +18,7 @@
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体类型|
 |<el-row justify="space-between"><el-col :span="20">duration</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|BigDecimal|时长|
@@ -42,6 +43,7 @@
 {
   "identifier" : null,
   "principal_id" : null,
+  "category" : null,
   "owner_type" : null,
   "principal_type" : null,
   "duration" : null,
@@ -72,6 +74,7 @@
 {
   "identifier" : null,
   "principal_id" : null,
+  "category" : null,
   "owner_type" : null,
   "principal_type" : null,
   "duration" : null,
@@ -122,6 +125,7 @@
 {
   "identifier" : null,
   "principal_id" : null,
+  "category" : null,
   "owner_type" : null,
   "principal_type" : null,
   "duration" : null,
@@ -191,6 +195,7 @@
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体类型|
 |<el-row justify="space-between"><el-col :span="20">duration</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|BigDecimal|时长|
@@ -215,6 +220,7 @@
 {
   "identifier" : null,
   "principal_id" : null,
+  "category" : null,
   "owner_type" : null,
   "principal_type" : null,
   "duration" : null,
@@ -245,6 +251,7 @@
 {
   "identifier" : null,
   "principal_id" : null,
+  "category" : null,
   "owner_type" : null,
   "principal_type" : null,
   "duration" : null,
@@ -288,6 +295,7 @@
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体类型|
 |<el-row justify="space-between"><el-col :span="20">duration</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|BigDecimal|时长|
@@ -312,6 +320,7 @@
 {
   "identifier" : null,
   "principal_id" : null,
+  "category" : null,
   "owner_type" : null,
   "principal_type" : null,
   "duration" : null,
@@ -360,6 +369,7 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体类型|
 |<el-row justify="space-between"><el-col :span="20">duration</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|BigDecimal|时长|
@@ -384,6 +394,7 @@ Integer
 {
   "identifier" : null,
   "principal_id" : null,
+  "category" : null,
   "owner_type" : null,
   "principal_type" : null,
   "duration" : null,
@@ -414,6 +425,7 @@ Integer
 {
   "identifier" : null,
   "principal_id" : null,
+  "category" : null,
   "owner_type" : null,
   "principal_type" : null,
   "duration" : null,
@@ -462,6 +474,7 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体类型|
 |<el-row justify="space-between"><el-col :span="20">duration</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|BigDecimal|时长|
@@ -486,6 +499,7 @@ Integer
 {
   "identifier" : null,
   "principal_id" : null,
+  "category" : null,
   "owner_type" : null,
   "principal_type" : null,
   "duration" : null,
@@ -530,6 +544,7 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体类型|
 |<el-row justify="space-between"><el-col :span="20">duration</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|BigDecimal|时长|
@@ -554,6 +569,7 @@ Integer
 {
   "identifier" : null,
   "principal_id" : null,
+  "category" : null,
   "owner_type" : null,
   "principal_type" : null,
   "duration" : null,
@@ -584,6 +600,58 @@ Integer
 {
   "identifier" : null,
   "principal_id" : null,
+  "category" : null,
+  "owner_type" : null,
+  "principal_type" : null,
+  "duration" : null,
+  "description" : null,
+  "recent_parent_name" : null,
+  "register_date" : null,
+  "recent_parent" : null,
+  "show_identifier" : null,
+  "recent_parent_identifier" : null,
+  "work_item" : null,
+  "idea" : null,
+  "test_case" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "type_id" : null,
+  "type_name" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+
+```
+
+## 获取重定向数据
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="GET" type="success" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/workloads/{key}/get_redirect_data" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|标识|
+
+
+
+
+##### 响应示例： {docsify-ignore}
+```json
+
+{
+  "identifier" : null,
+  "principal_id" : null,
+  "category" : null,
   "owner_type" : null,
   "principal_type" : null,
   "duration" : null,
@@ -635,6 +703,7 @@ Integer
 {
   "identifier" : null,
   "principal_id" : null,
+  "category" : null,
   "owner_type" : null,
   "principal_type" : null,
   "duration" : null,
@@ -678,6 +747,7 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体类型|
 |<el-row justify="space-between"><el-col :span="20">duration</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|BigDecimal|时长|
@@ -702,6 +772,7 @@ Integer
 {
   "identifier" : null,
   "principal_id" : null,
+  "category" : null,
   "owner_type" : null,
   "principal_type" : null,
   "duration" : null,
@@ -732,6 +803,7 @@ Integer
 {
   "identifier" : null,
   "principal_id" : null,
+  "category" : null,
   "owner_type" : null,
   "principal_type" : null,
   "duration" : null,
@@ -780,6 +852,7 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体类型|
 |<el-row justify="space-between"><el-col :span="20">duration</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|BigDecimal|时长|
@@ -804,6 +877,7 @@ Integer
 {
   "identifier" : null,
   "principal_id" : null,
+  "category" : null,
   "owner_type" : null,
   "principal_type" : null,
   "duration" : null,
@@ -834,6 +908,7 @@ Integer
 {
   "identifier" : null,
   "principal_id" : null,
+  "category" : null,
   "owner_type" : null,
   "principal_type" : null,
   "duration" : null,
@@ -875,6 +950,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -931,6 +1007,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -990,6 +1067,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -1031,6 +1109,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -1087,6 +1166,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -1184,6 +1264,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -1240,6 +1321,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -1299,6 +1381,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -1340,6 +1423,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -1396,6 +1480,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -1455,6 +1540,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -1496,6 +1582,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -1552,6 +1639,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -1611,6 +1699,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -1652,6 +1741,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -1708,6 +1798,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -1767,6 +1858,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -1808,6 +1900,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -1864,6 +1957,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -1923,6 +2017,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -1964,6 +2059,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -2020,6 +2116,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -2079,6 +2176,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -2120,6 +2218,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -2176,6 +2275,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -2235,6 +2335,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -2276,6 +2377,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -2332,6 +2434,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -2391,6 +2494,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -2432,6 +2536,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -2488,6 +2593,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -2547,6 +2653,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -2588,6 +2695,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -2644,6 +2752,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -2703,6 +2812,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -2744,6 +2854,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -2800,6 +2911,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -2859,6 +2971,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -2900,6 +3013,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -2956,6 +3070,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -3015,6 +3130,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -3057,6 +3173,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -3113,6 +3230,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -3172,6 +3290,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -3213,6 +3332,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -3269,6 +3389,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -3328,6 +3449,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -3369,6 +3491,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -3425,6 +3548,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -3484,6 +3608,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -3525,6 +3650,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -3581,6 +3707,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -3640,6 +3767,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -3681,6 +3809,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -3737,6 +3866,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -3796,6 +3926,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -3837,6 +3968,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -3893,6 +4025,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -3952,6 +4085,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -3993,6 +4127,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -4049,6 +4184,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -4108,6 +4244,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -4149,6 +4286,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -4205,6 +4343,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -4264,6 +4403,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -4305,6 +4445,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -4361,6 +4502,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -4420,6 +4562,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -4461,6 +4604,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -4517,6 +4661,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -4576,6 +4721,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -4617,6 +4763,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -4673,6 +4820,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -4732,6 +4880,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -4773,6 +4922,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -4829,6 +4979,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -4888,6 +5039,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -4929,6 +5081,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -4985,6 +5138,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -5044,6 +5198,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -5085,6 +5240,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -5141,6 +5297,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -5200,6 +5357,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -5241,6 +5399,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -5297,6 +5456,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -5356,6 +5516,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -5397,6 +5558,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -5453,6 +5615,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -5512,6 +5675,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -5553,6 +5717,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -5609,6 +5774,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_category_eq" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_duration_eq" : null,
@@ -5668,6 +5834,7 @@ Integer
   {
     "identifier" : null,
     "principal_id" : null,
+    "category" : null,
     "owner_type" : null,
     "principal_type" : null,
     "duration" : null,
@@ -5879,6 +6046,7 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体类型|
 |<el-row justify="space-between"><el-col :span="20">duration</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|BigDecimal|时长|
@@ -5966,6 +6134,7 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体类型|
 |<el-row justify="space-between"><el-col :span="20">duration</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|BigDecimal|时长|
@@ -6010,6 +6179,7 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体类型|
 |<el-row justify="space-between"><el-col :span="20">duration</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|BigDecimal|时长|
@@ -6054,6 +6224,7 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体类型|
 |<el-row justify="space-between"><el-col :span="20">duration</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|BigDecimal|时长|
@@ -6099,6 +6270,7 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体类型|
 |<el-row justify="space-between"><el-col :span="20">duration</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|BigDecimal|时长|
@@ -6143,6 +6315,7 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体类型|
 |<el-row justify="space-between"><el-col :span="20">duration</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|BigDecimal|时长|
@@ -6159,6 +6332,27 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">type_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
 |<el-row justify="space-between"><el-col :span="20">type_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+
+
+
+## 根据工时类别获取重定向数据
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="GET" type="success" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/workload_types/{pkey}/workloads/{key}/get_redirect_data" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|工时类别主键|
+|key|String|标识|
+
 
 
 
@@ -6208,6 +6402,7 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体类型|
 |<el-row justify="space-between"><el-col :span="20">duration</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|BigDecimal|时长|
@@ -6253,6 +6448,7 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
+|<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体类型|
 |<el-row justify="space-between"><el-col :span="20">duration</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|BigDecimal|时长|
@@ -6295,6 +6491,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -6368,6 +6565,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -6441,6 +6639,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -6514,6 +6713,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -6587,6 +6787,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -6660,6 +6861,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -6733,6 +6935,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -6806,6 +7009,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -6879,6 +7083,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -6952,6 +7157,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -7025,6 +7231,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -7098,6 +7305,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -7171,6 +7379,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -7244,6 +7453,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -7317,6 +7527,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -7390,6 +7601,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -7463,6 +7675,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -7536,6 +7749,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -7609,6 +7823,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -7682,6 +7897,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -7755,6 +7971,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -7828,6 +8045,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -7901,6 +8119,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -7974,6 +8193,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -8047,6 +8267,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -8120,6 +8341,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -8193,6 +8415,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -8266,6 +8489,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -8339,6 +8563,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -8412,6 +8637,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
@@ -8485,6 +8711,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时类别|
 |<el-row justify="space-between"><el-col :span="20">n_duration_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gt</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|
 |<el-row justify="space-between"><el-col :span="20">n_duration_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|时长|

@@ -11,9 +11,27 @@
 |建立时间|CREATE_TIME|日期时间型||否||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |名称|NAME|文本，可指定长度|200|是||
+|所属数据标识|OWNER_ID|文本，可指定长度|100|是||
+|所属对象子类型|OWNER_SUBTYPE|文本，可指定长度|100|是||
+|所属数据对象|OWNER_TYPE|文本，可指定长度|100|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
+|值|VAL|文本，可指定长度|100|是||
 
+
+## 关系
+
+<el-row>
+<el-tabs v-model="show_der">
+<el-tab-pane label="从关系" name="minor">
+
+|  名称col350   | 主实体col200   | 关系类型col200   |    备注col500  |
+| -------- |---------- |-----------|----- |
+|[DERCUSTOM_PARAMETER_LIBRARY_LIBRARY_ID](der/DERCUSTOM_PARAMETER_LIBRARY_LIBRARY_ID)|[测试库(LIBRARY)](module/TestMgmt/library)|自定义关系||
+
+</el-tab-pane>
+</el-tabs>
+</el-row>
 
 ## 行为
 | 中文名col200    | 代码名col150    | 类型col150    | 事务col100   | 批处理col100   | 附加操作col100  | 插件col150    |  备注col300  |
@@ -42,6 +60,9 @@
 | -------- |------------|------------|------|
 |N_ID_EQ|标识|EQ||
 |N_NAME_LIKE|名称|LIKE||
+|N_OWNER_ID_EQ|所属数据标识|EQ||
+|N_OWNER_SUBTYPE_EQ|所属对象子类型|EQ||
+|N_OWNER_TYPE_EQ|所属数据对象|EQ||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -49,6 +70,9 @@
 <el-anchor >
 <el-anchor-link :href="`#/module/Base/parameter?id=属性`">
   属性
+</el-anchor-link>
+<el-anchor-link :href="`#/module/Base/parameter?id=关系`">
+  关系
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/parameter?id=行为`">
   行为
@@ -70,7 +94,7 @@
   createApp({
     data() {
       return {
-
+show_der:'minor',
 
 
       }

@@ -15,7 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./auto_create_guideline#begin {"开始"}]]
+state "创建配置参数" as DEACTION2  [[$./auto_create_guideline#deaction2 {"创建配置参数"}]]
 state "设置过滤参数" as PREPAREPARAM2  [[$./auto_create_guideline#prepareparam2 {"设置过滤参数"}]]
+state "设置配置参数" as PREPAREPARAM7  [[$./auto_create_guideline#prepareparam7 {"设置配置参数"}]]
 state "查询测试库全局流程规则" as DEDATASET1  [[$./auto_create_guideline#dedataset1 {"查询测试库全局流程规则"}]]
 state "将阶段数据设置进guideline" as PREPAREPARAM6  [[$./auto_create_guideline#prepareparam6 {"将阶段数据设置进guideline"}]]
 state "拼接guideline_ID" as RAWSFCODE1  [[$./auto_create_guideline#rawsfcode1 {"拼接guideline_ID"}]]
@@ -32,7 +34,9 @@ state "设置阶段至流程准则" as PREPAREPARAM5  [[$./auto_create_guideline
 }
 
 
-Begin --> PREPAREPARAM2
+Begin --> PREPAREPARAM7
+PREPAREPARAM7 --> DEACTION2
+DEACTION2 --> PREPAREPARAM2
 PREPAREPARAM2 --> DEDATASET1
 DEDATASET1 --> LOOPSUBCALL1
 LOOPSUBCALL1 --> END1
@@ -58,6 +62,20 @@ RENEWPARAM1 --> RENEWPARAM2
 
 
 *- N/A*
+#### 设置配置参数 :id=PREPAREPARAM7<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`Default(传入变量).ID(标识)` 设置给  `parameter(系统参数).OWNER_ID(所属数据标识)`
+2. 将`LIBRARY` 设置给  `parameter(系统参数).OWNER_TYPE(所属数据对象)`
+3. 将`RUNFAILURE` 设置给  `parameter(系统参数).OWNER_SUBTYPE(所属对象子类型)`
+
+#### 创建配置参数 :id=DEACTION2<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+
+
+
+调用实体 [系统参数(PARAMETER)](module/Base/parameter.md) 行为 [Create](module/Base/parameter#行为) ，行为参数为`parameter(系统参数)`
+
 #### 设置过滤参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -161,5 +179,6 @@ new_guideline.set("id",new_guideline.get("scope_id")+"_"+for_obj_guideline.get("
 |评审准则分页结果|guideline_pages|分页查询|||
 |新评审规则|new_guideline|数据对象|[流程准则(GUIDELINE)](module/TestMgmt/guideline.md)||
 |新评审阶段|new_review_stage|数据对象|[评审阶段(REVIEW_STAGE)](module/TestMgmt/review_stage.md)||
+|系统参数|parameter|数据对象|[系统参数(PARAMETER)](module/Base/parameter.md)||
 |评审阶段列表|review_stage_list|数据对象列表|[评审阶段(REVIEW_STAGE)](module/TestMgmt/review_stage.md)||
 |阶段集合|stage_arr|数据对象列表|[评审阶段(REVIEW_STAGE)](module/TestMgmt/review_stage.md)||

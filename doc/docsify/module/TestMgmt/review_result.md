@@ -14,6 +14,7 @@
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |名称|NAME|文本，可指定长度|200|是||
 |状态|RESULT_STATE|[单项选择(数值)](index/dictionary_index#review_result "评审结果")||是||
+|评审人|REVIEWER|文本，可指定长度|100|是||
 |顺序|SEQUENCES|整型||是||
 |阶段标识|STAGE_ID|文本，可指定长度|100|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||

@@ -38,7 +38,46 @@
 
 <tr>
 
-<td rowspan="42">统一资源</td>
+<td rowspan="43">统一资源</td>
+
+<td>PLM社区插件</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+
+</tr>
+<tr>
 
 <td>主状态逻辑模型扩展</td>
 <td align="center">

@@ -15,26 +15,26 @@ root {
 
 state "start" as start  <<start>>
 state "end" as end <<end>>
-state "[条件组]OR" as fe30b593bd3e30b4b262512686801f0a [[$./password#afe30b593bd3e30b4b262512686801f0a {"[条件组]OR"}]] {
-state " " as fe30b593bd3e30b4b262512686801f0a_entry  <<entryPoint>>
-state "(sure_password) 值为空(Nil)" as 3e4d1303e31b577f7e8d4674afcfe78e [[$./password#a3e4d1303e31b577f7e8d4674afcfe78e {"[常规条件] 值为空(Nil)"}]]
-state "(new_password) 值为空(Nil)" as 7a37053c915ca1195fb7333b6f19137f [[$./password#a7a37053c915ca1195fb7333b6f19137f {"[常规条件] 值为空(Nil)"}]]
-state "(sure_password) 等于(=) 数据对象属性 (new_password)" as 592922bb4b34342b3f3f7b94eba06348 [[$./password#a592922bb4b34342b3f3f7b94eba06348 {"[常规条件] 等于(=) 数据对象属性 (new_password)"}]]
-state " " as fe30b593bd3e30b4b262512686801f0a_exit  <<exitPoint>>
+state "[条件组]OR" as 7019440a58614e1e77d209cce85d6dea [[$./password#a7019440a58614e1e77d209cce85d6dea {"[条件组]OR"}]] {
+state " " as 7019440a58614e1e77d209cce85d6dea_entry  <<entryPoint>>
+state "(sure_password) 值为空(Nil)" as 7f672107364d6a5349e7be9b4f0052ee [[$./password#a7f672107364d6a5349e7be9b4f0052ee {"[常规条件] 值为空(Nil)"}]]
+state "(new_password) 值为空(Nil)" as aace34542e40c0d01abf4a0d38c4a604 [[$./password#aaace34542e40c0d01abf4a0d38c4a604 {"[常规条件] 值为空(Nil)"}]]
+state "(sure_password) 等于(=) 数据对象属性 (new_password)" as e860ef4f6d5c02b66d6b0f54c7a5e21c [[$./password#ae860ef4f6d5c02b66d6b0f54c7a5e21c {"[常规条件] 等于(=) 数据对象属性 (new_password)"}]]
+state " " as 7019440a58614e1e77d209cce85d6dea_exit  <<exitPoint>>
 }
 
 
-start --> fe30b593bd3e30b4b262512686801f0a_entry 
-fe30b593bd3e30b4b262512686801f0a_entry --> 3e4d1303e31b577f7e8d4674afcfe78e 
-3e4d1303e31b577f7e8d4674afcfe78e --> fe30b593bd3e30b4b262512686801f0a_exit  : yes
-3e4d1303e31b577f7e8d4674afcfe78e -[#red]-> 7a37053c915ca1195fb7333b6f19137f  : no
+start --> 7019440a58614e1e77d209cce85d6dea_entry 
+7019440a58614e1e77d209cce85d6dea_entry --> 7f672107364d6a5349e7be9b4f0052ee 
+7f672107364d6a5349e7be9b4f0052ee --> 7019440a58614e1e77d209cce85d6dea_exit  : yes
+7f672107364d6a5349e7be9b4f0052ee -[#red]-> aace34542e40c0d01abf4a0d38c4a604  : no
 
-7a37053c915ca1195fb7333b6f19137f --> fe30b593bd3e30b4b262512686801f0a_exit  : yes
-7a37053c915ca1195fb7333b6f19137f -[#red]-> 592922bb4b34342b3f3f7b94eba06348  : no
+aace34542e40c0d01abf4a0d38c4a604 --> 7019440a58614e1e77d209cce85d6dea_exit  : yes
+aace34542e40c0d01abf4a0d38c4a604 -[#red]-> e860ef4f6d5c02b66d6b0f54c7a5e21c  : no
 
-592922bb4b34342b3f3f7b94eba06348 --> fe30b593bd3e30b4b262512686801f0a_exit  : yes
-592922bb4b34342b3f3f7b94eba06348 -[#red]-> end  : no
-fe30b593bd3e30b4b262512686801f0a_exit --> end 
+e860ef4f6d5c02b66d6b0f54c7a5e21c --> 7019440a58614e1e77d209cce85d6dea_exit  : yes
+e860ef4f6d5c02b66d6b0f54c7a5e21c -[#red]-> end  : no
+7019440a58614e1e77d209cce85d6dea_exit --> end 
 
 
 @enduml
@@ -42,19 +42,7 @@ fe30b593bd3e30b4b262512686801f0a_exit --> end
 
 #### 条件说明
 
-##### (sure_password) 值为空(Nil) :id=a3e4d1303e31b577f7e8d4674afcfe78e
-
-
-
-`sure_password` ISNULL 
-
-##### (new_password) 值为空(Nil) :id=a7a37053c915ca1195fb7333b6f19137f
-
-
-
-`new_password` ISNULL 
-
-##### (sure_password) 等于(=) 数据对象属性 (new_password) :id=a592922bb4b34342b3f3f7b94eba06348
+##### (sure_password) 等于(=) 数据对象属性 (new_password) :id=ae860ef4f6d5c02b66d6b0f54c7a5e21c
 
 
 
@@ -63,6 +51,18 @@ fe30b593bd3e30b4b262512686801f0a_exit --> end
 > [!ATTENTION|label:规则信息|icon:fa fa-warning]
 > 两次输入的密码不一致
 
+
+##### (sure_password) 值为空(Nil) :id=a7f672107364d6a5349e7be9b4f0052ee
+
+
+
+`sure_password` ISNULL 
+
+##### (new_password) 值为空(Nil) :id=aaace34542e40c0d01abf4a0d38c4a604
+
+
+
+`new_password` ISNULL 
 
 
 ### 默认规则 :id=Default
@@ -78,11 +78,11 @@ root {
 
 state "start" as start  <<start>>
 state "end" as end <<end>>
-state "默认字符串长度" as 7cff8ef83934fdc1003d770e18caef07 [[$./password#a7cff8ef83934fdc1003d770e18caef07 {"默认字符串长度"}]]
+state "默认字符串长度" as 47e6253fb60637aed99633d975cf9a2b [[$./password#a47e6253fb60637aed99633d975cf9a2b {"默认字符串长度"}]]
 
 
-start --> 7cff8ef83934fdc1003d770e18caef07 
-7cff8ef83934fdc1003d770e18caef07 --> end 
+start --> 47e6253fb60637aed99633d975cf9a2b 
+47e6253fb60637aed99633d975cf9a2b --> end 
 
 
 @enduml
@@ -90,7 +90,7 @@ start --> 7cff8ef83934fdc1003d770e18caef07
 
 #### 条件说明
 
-##### 默认字符串长度 :id=a7cff8ef83934fdc1003d770e18caef07
+##### 默认字符串长度 :id=a47e6253fb60637aed99633d975cf9a2b
 
 
 *关键条件*

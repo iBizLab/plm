@@ -416,9 +416,9 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 | 更多设置 | open_setting_view | 更多设置 |单项数据（主键）|用户自定义||
 | BI全屏 | bi_full_screen | 全屏 |无数据|用户自定义||
 | 编辑公告 | edit_notice | 编辑公告 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑公告](app/view/project_notice_edit_view)</details>||
-| 项目成员（移动端） | mob_project_member | 项目成员 |无数据|<details><summary>打开视图或向导（模态）</summary>[项目成员](app/view/project_member_mob_list_view)</details>||
 | BI刷新 | bi_refresh | 刷新 |无数据|用户自定义||
 | 回收站 | open_deleted_project | 回收站 |单项数据（主键）|用户自定义||
+| 项目成员（移动端） | mob_project_member | 项目成员 |无数据|<details><summary>打开视图或向导（模态）</summary>[项目成员](app/view/project_member_mob_list_view)</details>||
 | 添加项目成员 | add_project_member | 添加成员 |无数据|系统预定义||
 | 新建项目 | create_project | 新建项目 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建项目](app/view/project_create_wizard_view)</details>||
 | 项目信息 | open_show_view | 项目信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[项目信息](app/view/project_show_edit_view)</details>||
@@ -426,8 +426,8 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 | 新开窗口（项目） | open_new | 新窗口打开 |单项数据（主键）|<details><summary>打开HTML页面</summary>*./#/-/index/project=${data.id}/project_redirect_view/-*</details>||
 | 查看三日到期预警 | open_three_day_warning | 查看三日到期预警 |无数据|<details><summary>打开视图或向导（模态）</summary>[三日到期预警](app/view/work_item_three_day_warning_grid_view)</details>||
 | 调用自动化刷新项目逾期状态 | refresh_project_state | 刷新 |单项数据|用户自定义||
-| 进行中_归档（移动端） | mob_archive | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 | 打开新建项目 | open_new_project | 打开新建项目 |单项数据|<details><summary>打开顶级视图</summary>[项目](app/view/project_redirect_view)</details>||
+| 进行中_归档（移动端） | mob_archive | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 | 取消星标 | cancel_favorite | 取消星标 |单项数据（主键）|<details><summary>后台调用</summary>[un_favorite](#行为)||
 | 已删除_恢复 | recover | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
 | 编辑基本信息 | open_edit_view | 编辑基本信息 |单项数据（主键）|用户自定义||

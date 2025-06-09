@@ -10,6 +10,19 @@
 
 ## 视图界面逻辑
   * [清空表单关注人](module/TestMgmt/test_case/uilogic/clean_attentions)
+* `onCreated`
+```javascript
+ctrl.evt.on('onFormDataChange', evt => {
+    const { name, value } = evt;
+    if (name === 'test_library_id') {
+        view.redrawView({
+            context: { library: value, dynamicnew: true },
+            params: {},
+            isReloadModel: true,
+        });
+    }
+});
+```
 
 
 ### 关联界面行为

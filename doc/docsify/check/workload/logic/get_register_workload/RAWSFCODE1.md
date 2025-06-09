@@ -6,11 +6,21 @@ var remaining_workload = defaultObj.get("remaining_workload") == null ? 0 : Numb
 var actual_workload = defaultObj.get("actual_workload") == null ? 0 : Number(defaultObj.get("actual_workload"));
 var estimated_workload = defaultObj.get("estimated_workload") == null ? 0 : Number(defaultObj.get("estimated_workload"));
 var duration = defaultObj.get("duration") == null ? 0 : Number(defaultObj.get("duration"));
-var actual = actual_workload - duration;
-if(actual <= 0){
-    defaultObj.set("actual_workload", null);
-} else {
-    defaultObj.set("actual_workload", actual);
+
+if (defaultObj.get('category') === 'ACTUAL_WORKLOAD') {
+    var actual = actual_workload - duration;
+    if(actual <= 0){
+        defaultObj.set("actual_workload", null);
+    } else {
+        defaultObj.set("actual_workload", actual);
+    }
+}else{
+    var estimated = estimated_workload - duration;
+    if(estimated <= 0){
+        defaultObj.set("estimated_workload", null);
+    } else {
+        defaultObj.set("estimated_workload", estimated);
+    }
 }
 // 计算工时进度
 if((actual_workload + remaining_workload) != 0){

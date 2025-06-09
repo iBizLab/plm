@@ -80,8 +80,8 @@
 | 附件下载 | download | 下载 |单项数据|用户自定义||
 | 附件删除（移动端） | mob_attachment_delete | 删除 |单项数据（主键）|用户自定义||
 | 添加附件 | add_attachments | 添加附件 |无数据|用户自定义||
-| 添加附件(移动端) | mob_add_attachments | 添加附件 |无数据|用户自定义||
 | 删除 | del | 删除 |单项数据（主键）|用户自定义||
+| 添加附件(移动端) | mob_add_attachments | 添加附件 |无数据|用户自定义||
 | 上传附件 | upload_attachment | 上传 |无数据|用户自定义||
 
 ## 界面逻辑

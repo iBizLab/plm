@@ -167,7 +167,7 @@
 
 运行对象：`IBizListTreeControl`
 
-远程仓库：`@ibiz-template-plm/list-tree@0.0.3-dev.198`
+远程仓库：`@ibiz-template-plm/list-tree@0.0.3-alpha.225`
 
 ### 团队选择 :id=TEAM_PICKER
 
@@ -266,7 +266,7 @@
 
 运行对象：`IBizNumberGridControl`
 
-远程仓库：`@ibiz-template-plugin/number-grid@0.0.3-alpha.167`
+远程仓库：`@ibiz-template-plugin/number-grid@0.0.3-alpha.220`
 
 ### 搜索栏过滤条件编辑器 :id=SEARCH_BAR_FILTER_CONDITION
 
@@ -500,7 +500,7 @@
 
 运行对象：`IBizFormDataComparison`
 
-远程仓库：`@ibiz-template-plm/form-data-comparison@0.0.3-dev.262`
+远程仓库：`@ibiz-template-plm/form-data-comparison@0.0.3-alpha.223`
 
 ### 自动规则 :id=AUTO_RULES
 
@@ -699,7 +699,7 @@
 
 运行对象：`AnchoHtml`
 
-远程仓库：`@ibiz-template-plm/ancho-html@0.0.3-alpha.186`
+远程仓库：`@ibiz-template-plm/ancho-html@0.0.3-alpha.216`
 
 ### 阶段进度条 :id=STAGE_PROGRESS_BAR
 
@@ -726,7 +726,7 @@
 
 运行对象：`IBizAttachmentGridControl`
 
-远程仓库：`@ibiz-template-plm/attachment-grid@0.0.3-dev.48`
+远程仓库：`@ibiz-template-plm/attachment-grid@0.0.3-alpha.219`
 
 ### 面包屑导航 :id=BREADCRUMB_EXP
 

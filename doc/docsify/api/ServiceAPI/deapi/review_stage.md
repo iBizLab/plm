@@ -443,64 +443,6 @@ Integer
 ]
 ```
 
-## 参与评审人
-
-<el-row>
-<div style="width: 80px">
-<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
-</div>
-<div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/review_stages/fetch_reviewers" type="info" :closable="false" ></el-alert>
-</div>
-</el-row>
-权限标识：`READ`
-
-
-
-##### 请求参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|<el-row justify="space-between"><el-col :span="20">n_guideline_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|准则标识|
-|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">n_stage_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审阶段状态|
-
-
-
-##### 请求示例： {docsify-ignore}
-```json
-{
-  "page" : 0,
-  "size" : 20,
-  "sort" : null,
-  "n_guideline_id_eq" : null,
-  "n_id_eq" : null,
-  "n_name_like" : null,
-  "n_stage_state_eq" : null,
-}
-```
-
-
-##### 响应示例： {docsify-ignore}
-```json
-[
-  {
-    "reviewer_type" : null,
-    "reviewer" : null,
-    "reviewer_name" : null,
-    "stage_state" : null,
-    "order" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "guideline_id" : null,
-    "id" : null,
-    "name" : null,
-    "update_man" : null,
-    "update_time" : null,
-  }
-]
-```
-
 
 
 ## 下载导入模板
