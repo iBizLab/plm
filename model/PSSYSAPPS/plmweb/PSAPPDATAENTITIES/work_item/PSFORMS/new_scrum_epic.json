@@ -101,11 +101,11 @@
       "id" : "set_type_bug"
     },
     "getPSDEFIUpdateDetails" : [ {
-      "name" : "work_item_type_name"
-    }, {
       "name" : "work_item_type_id"
     }, {
       "name" : "project_type"
+    }, {
+      "name" : "work_item_type_name"
     } ]
   } ],
   "getPSDEFormItemVRs" : [ {
@@ -1562,14 +1562,17 @@
           "getPSDEFDLogics" : [ {
             "groupOP" : "OR",
             "logicType" : "GROUP",
+            "name" : "OR",
             "getPSDEFDLogics" : [ {
               "condOP" : "ISNULL",
               "dEFDName" : "checkid",
-              "logicType" : "SINGLE"
+              "logicType" : "SINGLE",
+              "name" : "checkid值为空(Nil)"
             }, {
               "condOP" : "ISNOTNULL",
               "dEFDName" : "dynamic_new",
-              "logicType" : "SINGLE"
+              "logicType" : "SINGLE",
+              "name" : "dynamic_new值不为空(NotNil)"
             } ],
             "notMode" : false
           } ],
@@ -1581,6 +1584,7 @@
           "logicType" : "GROUP",
           "getPSDEFDLogics" : [ {
             "logicType" : "SINGLE",
+            "name" : " view.params.srfparentkey = data.project_id;",
             "value" : "view.params.srfparentkey = data.project_id;"
           } ],
           "notMode" : false
@@ -1591,6 +1595,7 @@
         },
         "getPSEditor" : {
           "editorParams" : {
+            "SRFNAVCTX.project" : "%project_id%",
             "overflowMode" : "ellipsis",
             "AC" : "TRUE",
             "TRIGGER" : "TRUE",
@@ -1613,6 +1618,12 @@
           },
           "getPSEditorItems" : [ {
             "name" : "project_id"
+          } ],
+          "getPSNavigateContexts" : [ {
+            "key" : "PROJECT",
+            "name" : "PROJECT",
+            "value" : "project_id",
+            "rawValue" : false
           } ],
           "placeHolder" : "选择所属项目",
           "valueItemName" : "project_id",
@@ -1653,7 +1664,8 @@
           "getPSDEFDLogics" : [ {
             "condOP" : "ISNOTNULL",
             "dEFDName" : "project_name",
-            "logicType" : "SINGLE"
+            "logicType" : "SINGLE",
+            "name" : "project_name值不为空(NotNil)"
           } ],
           "relatedDetailNames" : [ "project_name" ],
           "notMode" : false
@@ -1746,7 +1758,8 @@
           "getPSDEFDLogics" : [ {
             "condOP" : "ISNOTNULL",
             "dEFDName" : "project_name",
-            "logicType" : "SINGLE"
+            "logicType" : "SINGLE",
+            "name" : "project_name值不为空(NotNil)"
           } ],
           "relatedDetailNames" : [ "project_name" ],
           "notMode" : false
