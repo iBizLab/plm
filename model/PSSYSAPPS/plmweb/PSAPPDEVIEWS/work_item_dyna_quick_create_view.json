@@ -280,6 +280,14 @@
       "engineType" : "OptionView",
       "name" : "engine"
     } ],
+    "getPSAppViewLogics" : [ {
+      "eventNames" : "onCreated",
+      "logicTrigger" : "CTRLEVENT",
+      "logicType" : "SCRIPT",
+      "name" : "LOGIC_REDRAW_VIEW",
+      "getPSViewCtrlName" : "form",
+      "scriptCode" : "ctrl.evt.on('onFormDataChange', evt => {\r\n    const { name } = evt;\r\n    const data = ctrl.state.data;\r\n    console.log('测试', name, data);\r\n    if (['work_item_type_id'].includes(name) && data.work_item_type_id && data.project_id) {\r\n        view.redrawView({\r\n            context: { project: data.project_id, dynamicnew: true },\r\n            params: { srfdatatype: data.work_item_type_id, work_item_type_id: data.work_item_type_id },\r\n            isReloadModel: true,\r\n        });\r\n    }\r\n});"
+    } ],
     "getPSControls" : [ {
       "codeName" : "quick_create_story",
       "controlType" : "FORM",
@@ -2154,8 +2162,6 @@
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
-            "resetItemName" : "project_name",
-            "resetItemNames" : [ "project_name" ],
             "valueItemName" : "work_item_type_id",
             "allowEmpty" : false,
             "showCaption" : true
