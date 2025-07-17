@@ -1549,6 +1549,76 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "OPEN_USER_TAG",
+      "dBType" : "MYSQL5",
+      "name" : "OPEN_USER_TAG",
+      "queryCodeExp" : "t1.`OPEN_USER_TAG`",
+      "standardColumnName" : "`OPEN_USER_TAG`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[OPEN_USER_TAG][第三方用户标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[OPEN_USER_TAG][第三方用户标识]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[OPEN_USER_TAG][第三方用户标识]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[OPEN_USER_TAG][第三方用户标识]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "OPEN_USER_TAG",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "open_user_tag",
+    "dEFType" : 1,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "第三方用户标识",
+    "name" : "OPEN_USER_TAG",
+    "orderValue" : 320,
+    "serviceCodeName" : "open_user_tag",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "ID",
       "dBType" : "MYSQL5",
       "name" : "ID",
@@ -4579,6 +4649,18 @@
         "codeName" : "id"
       }
     }, {
+      "dstFieldName" : "IDENTIFICATION_NUMBER",
+      "getDstPSDEField" : {
+        "name" : "IDENTIFICATION_NUMBER",
+        "codeName" : "identification_number"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "OPEN_USER_TAG",
+      "getSrcPSDEField" : {
+        "name" : "OPEN_USER_TAG",
+        "codeName" : "open_user_tag"
+      }
+    }, {
       "dstFieldName" : "MAIL",
       "getDstPSDEField" : {
         "name" : "MAIL",
@@ -4751,6 +4833,17 @@
       "getPSDEField" : {
         "name" : "TITLE",
         "codeName" : "title"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "第三方用户标识",
+      "name" : "open_user_tag",
+      "getPSDEField" : {
+        "name" : "OPEN_USER_TAG",
+        "codeName" : "open_user_tag"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
