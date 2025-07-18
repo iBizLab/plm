@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="../../favicon.ico">
+    <title>钉钉登录</title>
+
+    <script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
+    <script>
+
+        /**
+         * 初始化
+         */
+        $(function () {
+            var code = getUrlParam('code');
+            var id = getUrlParam('id');
+            var srfdcsystem = getUrlParam('srfdcsystem');
+            var state = getUrlParam('state');
+            var baseUrl = getUrlParam('baseUrl');
+            var srfcookiedomain = getUrlParam('srfcookiedomain');
+            if (code && id && state) {
+                // 通过授权code请求后台
+                $.ajax({
+                    type: "get",
+                    url: baseUrl + "/uaa/open/dingtalk/sns/" + code + "?id="+id+"&state=" + state,
+                    dataType: "json",
+                    contentType: 'application/json',
+                    headers: {
+                        srfdcsystem: srfdcsystem
+                    },
+                    success: function (data) {
+                        if (data) {
+                            const expiredDate = new Date().getTime() + 7199 * 1000;
+                            if(srfcookiedomain){
+                                setCookie('ibzuaa-token', data.token, 0, false, srfcookiedomain);
+                                setCookie('ibzuaa-token-expires', `${expiredDate}`, 0, false, srfcookiedomain);
+                            }else{
+                                setCookie('ibzuaa-token', data.token, 0, true);
+                                setCookie('ibzuaa-token-expires', `${expiredDate}`, 0, true);
+                            }
+                            window.location.href = "./";
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.error(XMLHttpRequest.readyState + XMLHttpRequest.status + XMLHttpRequest.responseText);
+                        // 回到登录页
+                        window.location.href = "./?srfthird_auth_success=false";
+                    }
+                });
+            } else {
+                // 回到登录页
+                window.location.href = "./?srfthird_auth_success=false";
+            }
+
+        });
+
+        /**
+         * 获取url中的参数
+         * @param name
+         * @returns {*}
+         */
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg); //匹配目标参数
+            if (r != null) return unescape(r[2]);
+            return null; //返回参数值
+        }
+
+        /**
+         * 设置Cookie
+         * @param name
+         * @param value
+         * @param day
+         */
+        function setCookie(name, value, day, isDomain, childDomain) {
+            var domain = '';
+            // 设置cookie到主域下
+            if (isDomain) {
+                // 是否为ip正则
+                var regExpr = /^(25[0-5]|2[0-4]\d|[0-1]\d{2}|[1-9]?\d)\.(25[0-5]|2[0-4]\d|[0-1]\d{2}|[1-9]?\d)\.(25[0-5]|2[0-4]\d|[0-1]\d{2}|[1-9]?\d)\.(25[0-5]|2[0-4]\d|[0-1]\d{2}|[1-9]?\d)$/;
+                // 为ip时忽略
+                if (!regExpr.test(location.hostname)) {
+                    var host = location.hostname;
+                    if (host.indexOf('.') !== host.lastIndexOf('.')) {
+                        domain = ';domain=' + host.substring(host.indexOf('.'), host.length);
+                    }
+                }
+            }else{
+                if(childDomain){
+                    domain = ';domain=' + childDomain;
+                }
+            }
+            if (day !== 0) { //当设置的时间等于0时，不设置expires属性，cookie在浏览器关闭后删除
+                var curDate = new Date();
+                var curTamp = curDate.getTime();
+                var curWeeHours = new Date(curDate.toLocaleDateString()).getTime() - 1;
+                var passedTamp = curTamp - curWeeHours;
+                var leftTamp = 24 * 60 * 60 * 1000 - passedTamp;
+                var leftTime = new Date();
+                leftTime.setTime(leftTamp + curTamp);
+                document.cookie = name + "=" + escape(value) + ";expires=" + leftTime.toUTCString() + ";path=/"+domain;
+            } else {
+                document.cookie = name + "=" + escape(value)+domain;
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

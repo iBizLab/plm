@@ -1,0 +1,26 @@
+version: "3.2"
+services:
+  plm-app-plmmob:
+    image: dstimage
+    ports:
+      - "18080:80"
+    networks:
+      - agent_network
+    environment:
+      - APP_ID=ibizplm__plmmob
+      - APPCODE=plmmob
+    deploy:
+      resources:
+           limits:
+               memory: 800M
+           reservations:
+               memory: 400M
+      mode: replicated
+      replicas: 1
+    extra_hosts:
+      - "gateway.ibizcloud.cn:172.16.240.140"
+
+networks:
+  agent_network:
+    driver: overlay
+    attachable: true

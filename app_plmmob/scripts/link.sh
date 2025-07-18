@@ -1,0 +1,8 @@
+pnpm link --global "@ibiz-template/vue3-util"
+pnpm link --global "@ibiz-template/model-helper"
+pnpm link --global "@ibiz-template/runtime"
+pnpm link --global "@ibiz-template/core"
+pnpm link --global "@ibiz-template/theme"
+pnpm link --global "@ibiz-template/mob-vue3-components"
+pnpm link --global "@ibiz-template/mob-theme"
+# pnpm link --global "@ibiz-template-plugin/sy-zhbg-mob"
