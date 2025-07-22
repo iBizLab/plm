@@ -188,6 +188,17 @@
         "name" : "UPDATESUCCESS_HIDDEN"
       } ]
     },
+    "getPSDEFormItemUpdates" : [ {
+      "codeName" : "toggle",
+      "name" : "切换选项",
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "choose_move"
+      }, {
+        "name" : "choose_finish"
+      } ],
+      "scriptCode" : "if (data.choose_move) {\r\n    data.choose_finish = null;\r\n}\r\nif (data.choose_finish) {\r\n    data.choose_move = null;\r\n}",
+      "customCode" : true
+    } ],
     "getPSDEFormItems" : [ {
       "id" : "srfupdatedate",
       "hidden" : true,
@@ -334,6 +345,10 @@
             "labelWidth" : 0,
             "name" : "choose_move",
             "noPrivDisplayMode" : 1,
+            "getPSDEFormItemUpdate" : {
+              "modelref" : true,
+              "id" : "toggle"
+            },
             "getPSEditor" : {
               "editorType" : "CHECKBOX",
               "name" : "choose_move"
@@ -342,8 +357,6 @@
               "grow" : -1,
               "layout" : "FLEX"
             },
-            "resetItemName" : "choose_finish",
-            "resetItemNames" : [ "choose_finish" ],
             "updateDV" : "1",
             "allowEmpty" : true
           }, {
@@ -482,6 +495,10 @@
             "labelWidth" : 0,
             "name" : "choose_finish",
             "noPrivDisplayMode" : 1,
+            "getPSDEFormItemUpdate" : {
+              "modelref" : true,
+              "id" : "toggle"
+            },
             "getPSEditor" : {
               "editorType" : "CHECKBOX",
               "name" : "choose_finish"
@@ -490,8 +507,6 @@
               "grow" : -1,
               "layout" : "FLEX"
             },
-            "resetItemName" : "choose_move",
-            "resetItemNames" : [ "choose_move" ],
             "allowEmpty" : true
           }, {
             "codeName" : "formitem",
