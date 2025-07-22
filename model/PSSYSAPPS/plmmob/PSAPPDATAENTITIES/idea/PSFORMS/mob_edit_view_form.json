@@ -111,16 +111,13 @@
     }
   } ],
   "getPSDEFormItemUpdates" : [ {
-    "codeName" : "mob_estimated_update",
-    "name" : "预估工时表单项刷新",
+    "codeName" : "check_palntime",
+    "name" : "校验计划时间",
     "getPSDEFIUpdateDetails" : [ {
-      "name" : "remaining_workload"
-    }, {
-      "name" : "workload_schedule"
+      "name" : "plan_at"
     } ],
-    "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nvar remaining = 0; // 剩余工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n\tif(estimated_workload){\r\n\t\t// 计算剩余工时\r\n\t\tremaining = (estimated - actual) >= 0 ? (estimated - actual) : 0;\r\n\t\tform_data.remaining_workload = remaining;\r\n\t}\r\n} else {\r\n\tremaining = estimated;\r\n\tform_data.remaining_workload = estimated_workload;\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
-    "customCode" : true,
-    "showBusyIndicator" : false
+    "scriptCode" : "console.log('进入计划时间的校验...');\r\nvar form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar plan_at = form_data.plan_at;\r\nconsole.log('plan_at:'+plan_at);\r\n\r\n//计划时间\r\nvar planAtArr=plan_at.split(',').map(dateStr => new Date(dateStr));\r\nif(planAtArr.length > 1){\r\n    var startTime=planAtArr[0];\r\n    var endTime=planAtArr[1];;\r\n    console.log('startTime:'+startTime);\r\n    console.log('endTime:'+endTime);\r\n    if(startTime > endTime){\r\n        form_data.plan_at='';\r\n        util.message.error('计划开始时间不能大于结束时间!');\r\n    }\r\n}",
+    "customCode" : true
   }, {
     "codeName" : "mob_remaining_update",
     "name" : "剩余工时表单项更新",
@@ -139,13 +136,16 @@
     "scriptCode" : "console.log('进入实际时间的校验...');\r\nvar form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar real_at = form_data.real_at;\r\nvar realAtArr=real_at.split(',').map(dateStr => new Date(dateStr));\r\nif(realAtArr.length > 1){\r\n    var startTime=realAtArr[0];\r\n    var endTime=realAtArr[1];;\r\n    console.log('startTime:'+startTime);\r\n    console.log('endTime:'+endTime);\r\n    if(startTime > endTime){\r\n        form_data.real_at='';\r\n        util.message.error('实际开始时间不能大于结束时间!');\r\n    }\r\n\r\n}\r\n",
     "customCode" : true
   }, {
-    "codeName" : "check_palntime",
-    "name" : "校验计划时间",
+    "codeName" : "mob_estimated_update",
+    "name" : "预估工时表单项刷新",
     "getPSDEFIUpdateDetails" : [ {
-      "name" : "plan_at"
+      "name" : "remaining_workload"
+    }, {
+      "name" : "workload_schedule"
     } ],
-    "scriptCode" : "console.log('进入计划时间的校验...');\r\nvar form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar plan_at = form_data.plan_at;\r\nconsole.log('plan_at:'+plan_at);\r\n\r\n//计划时间\r\nvar planAtArr=plan_at.split(',').map(dateStr => new Date(dateStr));\r\nif(planAtArr.length > 1){\r\n    var startTime=planAtArr[0];\r\n    var endTime=planAtArr[1];;\r\n    console.log('startTime:'+startTime);\r\n    console.log('endTime:'+endTime);\r\n    if(startTime > endTime){\r\n        form_data.plan_at='';\r\n        util.message.error('计划开始时间不能大于结束时间!');\r\n    }\r\n}",
-    "customCode" : true
+    "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nvar remaining = 0; // 剩余工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n\tif(estimated_workload){\r\n\t\t// 计算剩余工时\r\n\t\tremaining = (estimated - actual) >= 0 ? (estimated - actual) : 0;\r\n\t\tform_data.remaining_workload = remaining;\r\n\t}\r\n} else {\r\n\tremaining = estimated;\r\n\tform_data.remaining_workload = estimated_workload;\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
+    "customCode" : true,
+    "showBusyIndicator" : false
   } ],
   "getPSDEFormItems" : [ {
     "id" : "srfupdatedate",
@@ -2275,7 +2275,7 @@
               "dataType" : 6,
               "detailStyle" : "DEFAULT",
               "detailType" : "FORMITEM",
-              "enableCond" : 3,
+              "enableCond" : 0,
               "ignoreInput" : 0,
               "labelPos" : "LEFT",
               "labelWidth" : 130,
@@ -2300,7 +2300,8 @@
                 "precision" : 1
               },
               "getPSLayoutPos" : {
-                "colMD" : 24,
+                "colLG" : 18,
+                "colMD" : 18,
                 "layout" : "TABLE_24COL"
               },
               "allowEmpty" : true,
