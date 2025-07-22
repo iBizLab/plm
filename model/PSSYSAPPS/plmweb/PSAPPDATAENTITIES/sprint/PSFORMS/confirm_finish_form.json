@@ -63,11 +63,27 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/sprint.json"
     }
   },
+  "hookEventNames" : [ "ONCHANGE" ],
   "logicName" : "迭代确认完成视图_表单",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/sprint.json"
   },
+  "getPSControlLogics" : [ {
+    "eventNames" : "onChange",
+    "itemName" : "choose_move",
+    "logicTag" : "form",
+    "logicType" : "SCRIPT",
+    "name" : "logic1",
+    "scriptCode" : "if (data.choose_move) {\r\n    data.choose_finish = null\r\n}"
+  }, {
+    "eventNames" : "onChange",
+    "itemName" : "choose_finish",
+    "logicTag" : "form",
+    "logicType" : "SCRIPT",
+    "name" : "logic2",
+    "scriptCode" : "if (data.choose_finish) {\r\n    data.choose_move = null\r\n}"
+  } ],
   "getPSCtrlMsg" : {
     "codeName" : "UsrCtrlMsg0228593610",
     "dynaModelFilePath" : "PSCTRLMSGS/UsrCtrlMsg0228593610.json",
@@ -80,17 +96,6 @@
       "name" : "UPDATESUCCESS_HIDDEN"
     } ]
   },
-  "getPSDEFormItemUpdates" : [ {
-    "codeName" : "toggle",
-    "name" : "切换选项",
-    "getPSDEFIUpdateDetails" : [ {
-      "name" : "choose_move"
-    }, {
-      "name" : "choose_finish"
-    } ],
-    "scriptCode" : "if (data.choose_move) {\r\n    data.choose_finish = null;\r\n}\r\nif (data.choose_finish) {\r\n    data.choose_move = null;\r\n}",
-    "customCode" : true
-  } ],
   "getPSDEFormItems" : [ {
     "id" : "srfupdatedate",
     "hidden" : true,
@@ -237,10 +242,6 @@
           "labelWidth" : 0,
           "name" : "choose_move",
           "noPrivDisplayMode" : 1,
-          "getPSDEFormItemUpdate" : {
-            "modelref" : true,
-            "id" : "toggle"
-          },
           "getPSEditor" : {
             "editorType" : "CHECKBOX",
             "name" : "choose_move"
@@ -387,10 +388,6 @@
           "labelWidth" : 0,
           "name" : "choose_finish",
           "noPrivDisplayMode" : 1,
-          "getPSDEFormItemUpdate" : {
-            "modelref" : true,
-            "id" : "toggle"
-          },
           "getPSEditor" : {
             "editorType" : "CHECKBOX",
             "name" : "choose_finish"
