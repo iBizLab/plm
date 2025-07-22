@@ -913,6 +913,17 @@
         "id" : "FORM"
       },
       "getPSDEFormItemUpdates" : [ {
+        "codeName" : "mob_estimated_update",
+        "name" : "预估工时表单项刷新",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "remaining_workload"
+        }, {
+          "name" : "workload_schedule"
+        } ],
+        "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nvar remaining = 0; // 剩余工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n\tif(estimated_workload){\r\n\t\t// 计算剩余工时\r\n\t\tremaining = (estimated - actual) >= 0 ? (estimated - actual) : 0;\r\n\t\tform_data.remaining_workload = remaining;\r\n\t}\r\n} else {\r\n\tremaining = estimated;\r\n\tform_data.remaining_workload = estimated_workload;\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
+        "customCode" : true,
+        "showBusyIndicator" : false
+      }, {
         "codeName" : "mob_remaining_update",
         "name" : "剩余工时表单项更新",
         "getPSDEFIUpdateDetails" : [ {
@@ -937,17 +948,6 @@
         } ],
         "scriptCode" : "console.log('进入计划时间的校验...');\r\nvar form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar plan_at = form_data.plan_at;\r\nconsole.log('plan_at:'+plan_at);\r\n\r\n//计划时间\r\nvar planAtArr=plan_at.split(',').map(dateStr => new Date(dateStr));\r\nif(planAtArr.length > 1){\r\n    var startTime=planAtArr[0];\r\n    var endTime=planAtArr[1];;\r\n    console.log('startTime:'+startTime);\r\n    console.log('endTime:'+endTime);\r\n    if(startTime > endTime){\r\n        form_data.plan_at='';\r\n        util.message.error('计划开始时间不能大于结束时间!');\r\n    }\r\n}",
         "customCode" : true
-      }, {
-        "codeName" : "mob_estimated_update",
-        "name" : "预估工时表单项刷新",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "remaining_workload"
-        }, {
-          "name" : "workload_schedule"
-        } ],
-        "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 已登记的实际工时\r\nvar remaining = 0; // 剩余工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n\tif(estimated_workload){\r\n\t\t// 计算剩余工时\r\n\t\tremaining = (estimated - actual) >= 0 ? (estimated - actual) : 0;\r\n\t\tform_data.remaining_workload = remaining;\r\n\t}\r\n} else {\r\n\tremaining = estimated;\r\n\tform_data.remaining_workload = estimated_workload;\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
-        "customCode" : true,
-        "showBusyIndicator" : false
       } ],
       "getPSDEFormItems" : [ {
         "id" : "srfupdatedate",
@@ -3107,6 +3107,162 @@
                   },
                   "allowEmpty" : true,
                   "showCaption" : true
+                }, {
+                  "codeName" : "grouppanel6",
+                  "detailStyle" : "DEFAULT",
+                  "detailType" : "GROUPPANEL",
+                  "name" : "grouppanel6",
+                  "getPSDEFormDetails" : [ {
+                    "actionType" : "UIACTION",
+                    "buttonStyle" : "STYLE2",
+                    "caption" : "添加预估工时",
+                    "codeName" : "button4",
+                    "detailStyle" : "STYLE2",
+                    "detailType" : "BUTTON",
+                    "name" : "button4",
+                    "getPSAppViewUIAction" : {
+                      "modelref" : true,
+                      "id" : "form_button4"
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX"
+                    },
+                    "getPSSysImage" : {
+                      "glyph" : "xf067@FontAwesome",
+                      "cssClass" : "fa fa-plus"
+                    },
+                    "getPSUIAction" : {
+                      "actionTarget" : "SINGLEKEY",
+                      "caption" : "添加预估工时",
+                      "codeName" : "mob_add_forecast_workload",
+                      "dataAccessAction" : "UPDATE",
+                      "getFrontPSAppView" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/workload_mob_forecast_edit_view.json",
+                        "viewType" : "DEMOBEDITVIEW"
+                      },
+                      "frontProcessType" : "WIZARD",
+                      "fullCodeName" : "idea_mob_add_forecast_workload",
+                      "name" : "添加预估工时（移动端）",
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/idea.json"
+                      },
+                      "getPSDEOPPriv" : {
+                        "modelref" : true,
+                        "id" : "product__UPDATE"
+                      },
+                      "getPSNavigateParams" : [ {
+                        "key" : "estimated_workload",
+                        "name" : "estimated_workload",
+                        "value" : "estimated_workload",
+                        "rawValue" : false
+                      }, {
+                        "key" : "remaining_workload",
+                        "name" : "remaining_workload",
+                        "value" : "remaining_workload",
+                        "rawValue" : false
+                      }, {
+                        "key" : "name",
+                        "name" : "name",
+                        "value" : "title",
+                        "rawValue" : false
+                      }, {
+                        "key" : "principal_id",
+                        "name" : "principal_id",
+                        "value" : "principal_id",
+                        "rawValue" : false
+                      }, {
+                        "key" : "actual_workload",
+                        "name" : "actual_workload",
+                        "value" : "actual_workload",
+                        "rawValue" : false
+                      }, {
+                        "key" : "workload_kind",
+                        "name" : "workload_kind",
+                        "value" : "产品需求",
+                        "rawValue" : true
+                      } ],
+                      "getPSSysImage" : {
+                        "glyph" : "xf067@FontAwesome",
+                        "cssClass" : "fa fa-plus"
+                      },
+                      "refreshMode" : 1,
+                      "tooltip" : "添加预估工时",
+                      "uIActionMode" : "FRONT",
+                      "uIActionTag" : "mob_add_forecast_workload",
+                      "uIActionType" : "DEUIACTION",
+                      "reloadData" : true,
+                      "id" : "mob_add_forecast_workload@idea"
+                    },
+                    "tooltip" : "添加预估工时",
+                    "uIActionTarget" : "SINGLEKEY",
+                    "showCaption" : false
+                  }, {
+                    "actionType" : "UIACTION",
+                    "caption" : "查看预估工时明细",
+                    "codeName" : "button3",
+                    "detailStyle" : "DEFAULT",
+                    "detailType" : "BUTTON",
+                    "name" : "button3",
+                    "getPSAppViewUIAction" : {
+                      "modelref" : true,
+                      "id" : "form_button3"
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX"
+                    },
+                    "getPSSysImage" : {
+                      "glyph" : "xf18e@FontAwesome",
+                      "cssClass" : "fa fa-arrow-circle-o-right"
+                    },
+                    "getPSUIAction" : {
+                      "actionTarget" : "NONE",
+                      "caption" : "查看预估工时明细",
+                      "codeName" : "mob_check_forecast_workload_detail",
+                      "getFrontPSAppView" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/workload_mob_forecast_detail_view.json",
+                        "viewType" : "DEMOBMDVIEW"
+                      },
+                      "frontProcessType" : "WIZARD",
+                      "fullCodeName" : "idea_mob_check_forecast_workload_detail",
+                      "name" : "查看预估工时明细（移动端）",
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/idea.json"
+                      },
+                      "getPSNavigateParams" : [ {
+                        "key" : "n_principal_id_eq",
+                        "name" : "n_principal_id_eq",
+                        "value" : "idea",
+                        "rawValue" : false
+                      } ],
+                      "tooltip" : "查看预估工时明细",
+                      "uIActionMode" : "FRONT",
+                      "uIActionTag" : "mob_check_forecast_workload_detail",
+                      "uIActionType" : "DEUIACTION",
+                      "id" : "mob_check_forecast_workload_detail@idea"
+                    },
+                    "tooltip" : "查看预估工时明细",
+                    "uIActionTarget" : "NONE",
+                    "showCaption" : false
+                  } ],
+                  "getPSLayout" : {
+                    "align" : "center",
+                    "dir" : "row",
+                    "layout" : "FLEX",
+                    "vAlign" : "center"
+                  },
+                  "getPSLayoutPos" : {
+                    "colLG" : 6,
+                    "colMD" : 6,
+                    "layout" : "TABLE_24COL"
+                  },
+                  "infoGroupMode" : false,
+                  "showCaption" : false
                 }, {
                   "getCapPSLanguageRes" : {
                     "lanResTag" : "DEF.LNAME.ACTUAL_WORKLOAD"
