@@ -3199,7 +3199,7 @@
                   "dataType" : 6,
                   "detailStyle" : "DEFAULT",
                   "detailType" : "FORMITEM",
-                  "enableCond" : 3,
+                  "enableCond" : 0,
                   "ignoreInput" : 0,
                   "labelPos" : "LEFT",
                   "labelWidth" : 130,
@@ -3224,11 +3224,168 @@
                     "precision" : 1
                   },
                   "getPSLayoutPos" : {
-                    "colMD" : 24,
+                    "colLG" : 18,
+                    "colMD" : 18,
                     "layout" : "TABLE_24COL"
                   },
                   "allowEmpty" : true,
                   "showCaption" : true
+                }, {
+                  "codeName" : "grouppanel6",
+                  "detailStyle" : "DEFAULT",
+                  "detailType" : "GROUPPANEL",
+                  "name" : "grouppanel6",
+                  "getPSDEFormDetails" : [ {
+                    "actionType" : "UIACTION",
+                    "buttonStyle" : "STYLE2",
+                    "caption" : "添加预估工时",
+                    "codeName" : "button4",
+                    "detailStyle" : "STYLE2",
+                    "detailType" : "BUTTON",
+                    "name" : "button4",
+                    "getPSAppViewUIAction" : {
+                      "modelref" : true,
+                      "id" : "form_button4"
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX"
+                    },
+                    "getPSSysImage" : {
+                      "glyph" : "xf067@FontAwesome",
+                      "cssClass" : "fa fa-plus"
+                    },
+                    "getPSUIAction" : {
+                      "actionTarget" : "SINGLEKEY",
+                      "caption" : "添加预估工时",
+                      "codeName" : "mob_add_forecast_workload",
+                      "dataAccessAction" : "UPDATE",
+                      "getFrontPSAppView" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/workload_mob_forecast_edit_view.json",
+                        "viewType" : "DEMOBEDITVIEW"
+                      },
+                      "frontProcessType" : "WIZARD",
+                      "fullCodeName" : "test_case_mob_add_forecast_workload",
+                      "name" : "添加预估工时（移动端）",
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/test_case.json"
+                      },
+                      "getPSDEOPPriv" : {
+                        "modelref" : true,
+                        "id" : "library__UPDATE"
+                      },
+                      "getPSNavigateParams" : [ {
+                        "key" : "estimated_workload",
+                        "name" : "estimated_workload",
+                        "value" : "estimated_workload",
+                        "rawValue" : false
+                      }, {
+                        "key" : "remaining_workload",
+                        "name" : "remaining_workload",
+                        "value" : "remaining_workload",
+                        "rawValue" : false
+                      }, {
+                        "key" : "name",
+                        "name" : "name",
+                        "value" : "title",
+                        "rawValue" : false
+                      }, {
+                        "key" : "principal_id",
+                        "name" : "principal_id",
+                        "value" : "principal_id",
+                        "rawValue" : false
+                      }, {
+                        "key" : "actual_workload",
+                        "name" : "actual_workload",
+                        "value" : "actual_workload",
+                        "rawValue" : false
+                      }, {
+                        "key" : "workload_kind",
+                        "name" : "workload_kind",
+                        "value" : "测试用例",
+                        "rawValue" : true
+                      } ],
+                      "getPSSysImage" : {
+                        "glyph" : "xf067@FontAwesome",
+                        "cssClass" : "fa fa-plus"
+                      },
+                      "refreshMode" : 3,
+                      "tooltip" : "添加预估工时",
+                      "uIActionMode" : "FRONT",
+                      "uIActionTag" : "mob_add_forecast_workload",
+                      "uIActionType" : "DEUIACTION",
+                      "reloadData" : true,
+                      "id" : "mob_add_forecast_workload@test_case"
+                    },
+                    "tooltip" : "添加预估工时",
+                    "uIActionTarget" : "SINGLEKEY",
+                    "showCaption" : false
+                  }, {
+                    "actionType" : "UIACTION",
+                    "caption" : "查看工时明细",
+                    "codeName" : "button3",
+                    "detailStyle" : "DEFAULT",
+                    "detailType" : "BUTTON",
+                    "name" : "button3",
+                    "getPSAppViewUIAction" : {
+                      "modelref" : true,
+                      "id" : "form_button3"
+                    },
+                    "getPSLayoutPos" : {
+                      "grow" : -1,
+                      "layout" : "FLEX"
+                    },
+                    "getPSSysImage" : {
+                      "glyph" : "xf18e@FontAwesome",
+                      "cssClass" : "fa fa-arrow-circle-o-right"
+                    },
+                    "getPSUIAction" : {
+                      "actionTarget" : "NONE",
+                      "caption" : "查看工时明细",
+                      "codeName" : "mob_check_forecast_workload_detail",
+                      "getFrontPSAppView" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPDEVIEWS/workload_mob_forecast_detail_view.json",
+                        "viewType" : "DEMOBMDVIEW"
+                      },
+                      "frontProcessType" : "WIZARD",
+                      "fullCodeName" : "test_case_mob_check_forecast_workload_detail",
+                      "name" : "查看预估工时明细（移动端）",
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/test_case.json"
+                      },
+                      "getPSNavigateParams" : [ {
+                        "key" : "n_principal_id_eq",
+                        "name" : "n_principal_id_eq",
+                        "value" : "test_case",
+                        "rawValue" : false
+                      } ],
+                      "tooltip" : "查看工时明细",
+                      "uIActionMode" : "FRONT",
+                      "uIActionTag" : "mob_check_forecast_workload_detail",
+                      "uIActionType" : "DEUIACTION",
+                      "id" : "mob_check_forecast_workload_detail@test_case"
+                    },
+                    "tooltip" : "查看工时明细",
+                    "uIActionTarget" : "NONE",
+                    "showCaption" : false
+                  } ],
+                  "getPSLayout" : {
+                    "align" : "center",
+                    "dir" : "row",
+                    "layout" : "FLEX",
+                    "vAlign" : "center"
+                  },
+                  "getPSLayoutPos" : {
+                    "colLG" : 6,
+                    "colMD" : 6,
+                    "layout" : "TABLE_24COL"
+                  },
+                  "infoGroupMode" : false,
+                  "showCaption" : false
                 }, {
                   "caption" : "实际工时",
                   "codeName" : "actual_workload",
