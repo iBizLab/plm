@@ -8,21 +8,32 @@
                                 <tns:metaData express="" name="ideaget_ticket_numdefault" type="entity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="ideaget_ticket_numfilter" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="ideaget_ticket_numrelation_page" type="refentity"/>
-                                <tns:metaData express="new HashMap()" name="ideaget_ticket_numresult" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.idea()" name="ideaget_ticket_numresult" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IideaService))" name="ideaservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IideaService))" name="iBzSysIdeaDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="ideaget_ticket_numdefault" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
                             <tns:global identifier="ideaget_ticket_numfilter" type="cn.ibizlab.plm.core.base.domain.relation" />
                             <tns:global identifier="ideaget_ticket_numrelation_page" type="cn.ibizlab.plm.core.base.domain.relation" />
+                            <tns:global identifier="ideaget_ticket_numresult" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaget_ticket_numend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaget_ticket_numdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaget_ticket_numrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="直接SQL调用"/>
-                    <sequenceFlow id="begin_rawsqlcall1" sourceRef="begin" targetRef="rawsqlcall1">
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaget_ticket_numprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaget_ticket_numdebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                    <sequenceFlow id="begin_deaction1" sourceRef="begin" targetRef="deaction1">
                     </sequenceFlow>
-                    <sequenceFlow id="rawsqlcall1_end1" sourceRef="rawsqlcall1" targetRef="end1">
+                    <sequenceFlow id="deaction1_debugparam1" sourceRef="deaction1" targetRef="debugparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall1_prepareparam1" sourceRef="rawsqlcall1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_end1" sourceRef="prepareparam1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam1_rawsqlcall1" sourceRef="debugparam1" targetRef="rawsqlcall1">
                     </sequenceFlow>
         </process>
     </definitions>
