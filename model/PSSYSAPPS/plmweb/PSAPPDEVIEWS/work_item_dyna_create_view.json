@@ -25756,14 +25756,6 @@
         "id" : "_FORM_SCRUM_TASK"
       },
       "getPSDEFormItemUpdates" : [ {
-        "codeName" : "calc_parent_work_item_type",
-        "name" : "计算父工作项类型",
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "work_item_type_name"
-        } ],
-        "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-        "customCode" : true
-      }, {
         "codeName" : "set_type_bug",
         "name" : "设置缺陷类型",
         "getPSAppDEMethod" : {
@@ -25771,12 +25763,20 @@
           "id" : "set_type_bug"
         },
         "getPSDEFIUpdateDetails" : [ {
+          "name" : "project_type"
+        }, {
           "name" : "work_item_type_name"
         }, {
           "name" : "work_item_type_id"
-        }, {
-          "name" : "project_type"
         } ]
+      }, {
+        "codeName" : "calc_parent_work_item_type",
+        "name" : "计算父工作项类型",
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "work_item_type_name"
+        } ],
+        "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+        "customCode" : true
       } ],
       "getPSDEFormItemVRs" : [ {
         "checkMode" : 1,
@@ -27009,6 +27009,8 @@
               "colMD" : 6,
               "layout" : "TABLE_24COL"
             },
+            "resetItemName" : "project_name",
+            "resetItemNames" : [ "project_name" ],
             "allowEmpty" : true,
             "hidden" : true
           }, {
@@ -27397,6 +27399,8 @@
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
+            "resetItemName" : "project_name",
+            "resetItemNames" : [ "project_name" ],
             "valueItemName" : "work_item_type_id",
             "allowEmpty" : false,
             "showCaption" : true
@@ -28455,11 +28459,11 @@
           "id" : "set_type_bug"
         },
         "getPSDEFIUpdateDetails" : [ {
-          "name" : "work_item_type_id"
-        }, {
           "name" : "work_item_type_name"
         }, {
           "name" : "project_type"
+        }, {
+          "name" : "work_item_type_id"
         } ]
       }, {
         "codeName" : "calc_parent_work_item_type",
@@ -29694,6 +29698,8 @@
               "colMD" : 6,
               "layout" : "TABLE_24COL"
             },
+            "resetItemName" : "project_name",
+            "resetItemNames" : [ "project_name" ],
             "allowEmpty" : true,
             "hidden" : true
           }, {
@@ -30090,6 +30096,8 @@
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
+            "resetItemName" : "project_name",
+            "resetItemNames" : [ "project_name" ],
             "valueItemName" : "work_item_type_id",
             "allowEmpty" : false,
             "showCaption" : true
@@ -30883,9 +30891,9 @@
         "getPSDEFIUpdateDetails" : [ {
           "name" : "work_item_type_id"
         }, {
-          "name" : "project_type"
-        }, {
           "name" : "work_item_type_name"
+        }, {
+          "name" : "project_type"
         } ]
       } ],
       "getPSDEFormItemVRs" : [ {
@@ -32112,6 +32120,8 @@
               "colMD" : 6,
               "layout" : "TABLE_24COL"
             },
+            "resetItemName" : "project_name",
+            "resetItemNames" : [ "project_name" ],
             "allowEmpty" : true,
             "hidden" : true
           }, {
@@ -32500,6 +32510,8 @@
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
+            "resetItemName" : "project_name",
+            "resetItemNames" : [ "project_name" ],
             "valueItemName" : "work_item_type_id",
             "allowEmpty" : false,
             "showCaption" : true
@@ -33207,20 +33219,6 @@
         "id" : "_FORM_SCRUM_FEATURE"
       },
       "getPSDEFormItemUpdates" : [ {
-        "codeName" : "set_type_bug",
-        "name" : "设置缺陷类型",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "set_type_bug"
-        },
-        "getPSDEFIUpdateDetails" : [ {
-          "name" : "project_type"
-        }, {
-          "name" : "work_item_type_name"
-        }, {
-          "name" : "work_item_type_id"
-        } ]
-      }, {
         "codeName" : "calc_parent_work_item_type",
         "name" : "计算父工作项类型",
         "getPSDEFIUpdateDetails" : [ {
@@ -33228,6 +33226,20 @@
         } ],
         "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
         "customCode" : true
+      }, {
+        "codeName" : "set_type_bug",
+        "name" : "设置缺陷类型",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "set_type_bug"
+        },
+        "getPSDEFIUpdateDetails" : [ {
+          "name" : "work_item_type_id"
+        }, {
+          "name" : "project_type"
+        }, {
+          "name" : "work_item_type_name"
+        } ]
       } ],
       "getPSDEFormItemVRs" : [ {
         "checkMode" : 1,
@@ -34460,6 +34472,8 @@
               "colMD" : 6,
               "layout" : "TABLE_24COL"
             },
+            "resetItemName" : "project_name",
+            "resetItemNames" : [ "project_name" ],
             "allowEmpty" : true,
             "hidden" : true
           }, {
@@ -34848,6 +34862,8 @@
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
+            "resetItemName" : "project_name",
+            "resetItemNames" : [ "project_name" ],
             "valueItemName" : "work_item_type_id",
             "allowEmpty" : false,
             "showCaption" : true
@@ -35674,9 +35690,9 @@
         "getPSDEFIUpdateDetails" : [ {
           "name" : "work_item_type_name"
         }, {
-          "name" : "work_item_type_id"
-        }, {
           "name" : "project_type"
+        }, {
+          "name" : "work_item_type_id"
         } ]
       } ],
       "getPSDEFormItemVRs" : [ {
@@ -36910,6 +36926,8 @@
               "colMD" : 6,
               "layout" : "TABLE_24COL"
             },
+            "resetItemName" : "project_name",
+            "resetItemNames" : [ "project_name" ],
             "allowEmpty" : true,
             "hidden" : true
           }, {
@@ -37298,6 +37316,8 @@
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
+            "resetItemName" : "project_name",
+            "resetItemNames" : [ "project_name" ],
             "valueItemName" : "work_item_type_id",
             "allowEmpty" : false,
             "showCaption" : true
