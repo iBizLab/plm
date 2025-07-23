@@ -24,6 +24,7 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaget_ticket_numdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaget_ticket_numrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="直接SQL调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaget_ticket_numprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaget_ticket_numdebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaget_ticket_numdebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                     <sequenceFlow id="begin_deaction1" sourceRef="begin" targetRef="deaction1">
                     </sequenceFlow>
@@ -31,7 +32,9 @@
                     </sequenceFlow>
                     <sequenceFlow id="rawsqlcall1_prepareparam1" sourceRef="rawsqlcall1" targetRef="prepareparam1">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam1_end1" sourceRef="prepareparam1" targetRef="end1">
+                    <sequenceFlow id="prepareparam1_debugparam2" sourceRef="prepareparam1" targetRef="debugparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam2_end1" sourceRef="debugparam2" targetRef="end1">
                     </sequenceFlow>
                     <sequenceFlow id="debugparam1_rawsqlcall1" sourceRef="debugparam1" targetRef="rawsqlcall1">
                     </sequenceFlow>
