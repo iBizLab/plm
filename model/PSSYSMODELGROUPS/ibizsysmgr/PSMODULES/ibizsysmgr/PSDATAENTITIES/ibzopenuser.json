@@ -10,6 +10,13 @@
         "name" : "OPENUSERID",
         "codeName" : "openuserid"
       }
+    }, {
+      "dataType" : 25,
+      "name" : "text",
+      "getPSDEField" : {
+        "name" : "OPENUSERNAME",
+        "codeName" : "openusername"
+      }
     } ],
     "pagingSize" : 50,
     "defaultMode" : true,
@@ -287,64 +294,6 @@
       "type" : "DTOS"
     },
     "viewLevel" : 0
-  }, {
-    "getAllPSDEDataQueryCodes" : [ {
-      "modelref" : true,
-      "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/ibzopenuser/PSDEDATAQUERIES/wxwork/PSDEDQCODES/MYSQL5.json"
-    } ],
-    "codeName" : "wxwork",
-    "logicName" : "企业微信",
-    "name" : "wxwork",
-    "getPSDEDQMain" : {
-      "getJoinPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/ibzopenuser.json"
-      },
-      "joinType" : "MAIN",
-      "name" : "IBZOPENUSER",
-      "getPSDEDQGroupCondition" : {
-        "condOp" : "AND",
-        "condType" : "GROUP",
-        "name" : "连接条件",
-        "getPSDEDQConditions" : [ {
-          "condOp" : "EQ",
-          "condType" : "SINGLE",
-          "condValue" : "wxwork",
-          "fieldName" : "OPEN_TYPE",
-          "name" : "(OPEN_TYPE) 等于(=) wxwork",
-          "getPSDEField" : {
-            "name" : "OPEN_TYPE",
-            "codeName" : "open_type"
-          }
-        }, {
-          "condOp" : "EQ",
-          "condType" : "SINGLE",
-          "condValue" : "0",
-          "fieldName" : "ISBINDING",
-          "name" : "(ISBINDING) 等于(=) 0",
-          "getPSDEField" : {
-            "name" : "ISBINDING",
-            "codeName" : "isbinding"
-          }
-        } ]
-      }
-    },
-    "getPSDEDataQueryInput" : {
-      "name" : "WxworkInput",
-      "getPSDEFilterDTO" : {
-        "modelref" : true,
-        "id" : "ibzopenuserFilterDTO"
-      },
-      "type" : "DTO"
-    },
-    "getPSDEDataQueryReturn" : {
-      "name" : "WxworkResult",
-      "getPSDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "ibzopenuserDTO"
-      },
-      "type" : "DTOS"
-    }
   } ],
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
@@ -379,36 +328,6 @@
       "id" : "FetchDefault"
     },
     "defaultMode" : true,
-    "enableBackend" : true,
-    "enableFront" : true
-  }, {
-    "codeName" : "wxwork",
-    "logicName" : "企业微信",
-    "name" : "wxwork",
-    "getPSDEDataQueries" : [ {
-      "modelref" : true,
-      "id" : "wxwork"
-    } ],
-    "getPSDEDataSetInput" : {
-      "name" : "WxworkInput",
-      "getPSDEFilterDTO" : {
-        "modelref" : true,
-        "id" : "ibzopenuserFilterDTO"
-      },
-      "type" : "DTO"
-    },
-    "getPSDEDataSetReturn" : {
-      "name" : "WxworkResult",
-      "getPSDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "ibzopenuserDTO"
-      },
-      "type" : "PAGE"
-    },
-    "getPSSubSysServiceAPIDEMethod" : {
-      "modelref" : true,
-      "id" : "FetchWxwork"
-    },
     "enableBackend" : true,
     "enableFront" : true
   } ],
@@ -931,7 +850,9 @@
     "serviceCodeName" : "openusername",
     "stdDataType" : 25,
     "stringLength" : 100,
-    "valueFormat" : "%1$s"
+    "valueFormat" : "%1$s",
+    "enableQuickSearch" : true,
+    "majorDEField" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "OPEN_TYPE",
@@ -1625,6 +1546,10 @@
     "lanResTag" : "DE.LNAME.IBZOPENUSER"
   },
   "logicName" : "第三方用户",
+  "getMajorPSDEField" : {
+    "name" : "OPENUSERNAME",
+    "codeName" : "openusername"
+  },
   "memo" : "第三方用户实体",
   "name" : "IBZOPENUSER",
   "getOrgIdPSDEField" : {
