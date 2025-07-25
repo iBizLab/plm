@@ -91,11 +91,19 @@
     "getPSDEFIUpdateDetails" : [ {
       "name" : "work_item_type_id"
     }, {
-      "name" : "project_type"
+      "name" : "work_item_type_name"
     }, {
+      "name" : "project_type"
+    } ],
+    "scriptCode" : "// 每次设置缺陷类型前手动置空工作项类型数据，使得表单项更新后必定触发类型变更\r\nctrl.state.data.work_item_type_id = null;\r\nctrl.state.data.work_item_type_name = null;\r\n\r\n// 调用表单项更新设置缺陷类型\r\nconst params = { ...ctrl.params, ...ctrl.data.getOrigin() };\r\nconst tempContext = Object.assign(ctrl.context,{project:ctrl.data.project_id})\r\nconst res = await ctrl.service.updateFormItem(\r\n    'set_type_bug',\r\n    tempContext,\r\n    params,\r\n);\r\n\r\nreturn res.data\r\n",
+    "customCode" : true
+  }, {
+    "codeName" : "calc_parent_work_item_type",
+    "name" : "计算父工作项类型",
+    "getPSDEFIUpdateDetails" : [ {
       "name" : "work_item_type_name"
     } ],
-    "scriptCode" : "// 每次设置缺陷类型前手动置空工作项类型数据，使得表单项更新后必定触发类型变更\r\nctrl.state.data.work_item_type_id = null;\r\nctrl.state.data.work_item_type_name = null;\r\n\r\n// 调用表单项更新设置缺陷类型\r\nconst params = { ...ctrl.params, ...ctrl.data.getOrigin() };\r\n\r\nconst res = await ctrl.service.updateFormItem(\r\n    'set_type_bug',\r\n    ctrl.context,\r\n    params,\r\n);\r\n\r\nreturn res.data\r\n",
+    "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
     "customCode" : true
   }, {
     "codeName" : "set_default_entry",
@@ -107,14 +115,6 @@
     "getPSDEFIUpdateDetails" : [ {
       "name" : "entry_id"
     } ]
-  }, {
-    "codeName" : "calc_parent_work_item_type",
-    "name" : "计算父工作项类型",
-    "getPSDEFIUpdateDetails" : [ {
-      "name" : "work_item_type_name"
-    } ],
-    "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-    "customCode" : true
   } ],
   "getPSDEFormItemVRs" : [ {
     "checkMode" : 1,
