@@ -1,5 +1,5 @@
 {
-  "codeName" : "show_edit_view_form",
+  "codeName" : "wiki_show_edit_view_form",
   "controlType" : "FORM",
   "getCreatePSControlAction" : {
     "modelref" : true,
@@ -18,7 +18,7 @@
     }
   },
   "defaultLabelWidth" : 130,
-  "dynaModelFilePath" : "PSSYSAPPS/plmwiki/PSAPPDATAENTITIES/article_page/PSFORMS/show_edit_view_form.json",
+  "dynaModelFilePath" : "PSSYSAPPS/plmwiki/PSAPPDATAENTITIES/article_page/PSFORMS/wiki_show_edit_view_form.json",
   "getGetDraftFromPSControlAction" : {
     "modelref" : true,
     "id" : "loaddraftfrom",
@@ -63,7 +63,7 @@
       "path" : "PSSYSAPPS/plmwiki/PSAPPDATAENTITIES/article_page.json"
     }
   },
-  "logicName" : "页面实体编辑视图（展示）_表单",
+  "logicName" : "页面实体共享表单",
   "memo" : "![image.png](1)![image.png](2)",
   "getPSAppDataEntity" : {
     "modelref" : true,
@@ -335,6 +335,7 @@
             "cssStyle" : "min-height: 500px;",
             "editorParams" : {
               "contenttype" : "HTML",
+              "ICONCODELISTID" : "plmwiki.base__recent_visite",
               "LINKVIEWID" : "plmweb.recent_custom_redirect_view",
               "TITLE" : "name",
               "PARSESCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replaceAll(/\\#\\{(\\\".+?\\\":\\\".+?\\\")(,\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\")*\\}/g,(x, value, icon) => { const item = JSON.parse(\"{\" + value + \"}\"); if (icon) { icon = icon.slice(8).slice(1, -1).trim(); } return controller.parseCommentTag({icon, ...item});}).replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
@@ -1253,6 +1254,6 @@
   },
   "infoFormMode" : true,
   "noTabHeader" : true,
-  "modelid" : "4e0904462538e4af00965741988ded54",
+  "modelid" : "d77bf1a8cabb8169b44ede6b3b8e6254",
   "modeltype" : "PSDEFORM_EDITFORM"
 }
