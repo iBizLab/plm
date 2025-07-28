@@ -3,7 +3,7 @@
   "name" : "MySQL5",
   "getPSDEDataQueryCodeConds" : [ {
     "condType" : "CUSTOM",
-    "customCond" : "( ( exists(select 1 from work_item t2 where t1.principal_id = t2.id and t1.principal_id = #{ctx.webcontext.principal_id} and t2.is_deleted = 0)  OR  exists(select 1 from work_item t2 where t1.target_id= t2.id and t1.target_id= #{ctx.webcontext.principal_id} and t2.is_deleted = 0) )  AND  t1.`PRINCIPAL_TYPE` = 'dependency' )",
+    "customCond" : "( t1.`PRINCIPAL_TYPE` = 'dependency' )",
     "name" : "查询条件"
   } ],
   "getPSDEDataQueryCodeExps" : [ {

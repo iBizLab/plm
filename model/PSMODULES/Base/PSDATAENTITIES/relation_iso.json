@@ -346,19 +346,6 @@
         "condType" : "GROUP",
         "name" : "连接条件",
         "getPSDEDQConditions" : [ {
-          "condOp" : "OR",
-          "condType" : "GROUP",
-          "name" : "OR",
-          "getPSDEDQConditions" : [ {
-            "condType" : "CUSTOM",
-            "condition" : "exists(select 1 from work_item t2 where t1.principal_id = t2.id and t1.principal_id = #{ctx.webcontext.principal_id} and t2.is_deleted = 0)",
-            "name" : "后置任务"
-          }, {
-            "condType" : "CUSTOM",
-            "condition" : "exists(select 1 from work_item t2 where t1.target_id= t2.id and t1.target_id= #{ctx.webcontext.principal_id} and t2.is_deleted = 0)",
-            "name" : "前置任务"
-          } ]
-        }, {
           "condOp" : "EQ",
           "condType" : "SINGLE",
           "condValue" : "dependency",
@@ -2506,12 +2493,16 @@
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
     },
-    "masterRS" : 0,
+    "masterRS" : 128,
     "getMinorPSDataEntity" : {
       "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/relation_iso.json"
     },
     "name" : "DERCUSTOM_RELATION_DEPENDENCIES_WORK_ITEM",
+    "getNestedPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "dependency_work_items"
+    },
     "getOne2XDataPSDEField" : {
       "name" : "DEPENDENCIES",
       "codeName" : "dependencies"
