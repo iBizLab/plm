@@ -326,6 +326,68 @@
       "type" : "DTOS"
     },
     "viewLevel" : 0
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation_iso/PSDEDATAQUERIES/dependency_work_items/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "dependency_work_items",
+    "logicName" : "工作项依赖",
+    "name" : "dependency_work_items",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/relation_iso.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "RELATION",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "OR",
+          "condType" : "GROUP",
+          "name" : "OR",
+          "getPSDEDQConditions" : [ {
+            "condType" : "CUSTOM",
+            "condition" : "exists(select 1 from work_item t2 where t1.principal_id = t2.id and t1.principal_id = #{ctx.webcontext.principal_id} and t2.is_deleted = 0)",
+            "name" : "后置任务"
+          }, {
+            "condType" : "CUSTOM",
+            "condition" : "exists(select 1 from work_item t2 where t1.target_id= t2.id and t1.target_id= #{ctx.webcontext.principal_id} and t2.is_deleted = 0)",
+            "name" : "前置任务"
+          } ]
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "dependency",
+          "fieldName" : "PRINCIPAL_TYPE",
+          "name" : "(PRINCIPAL_TYPE) 等于(=) dependency",
+          "getPSDEField" : {
+            "name" : "PRINCIPAL_TYPE",
+            "codeName" : "principal_type"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Dependency_work_itemsInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "relation_iso_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Dependency_work_itemsResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "relation_iso_dto"
+      },
+      "type" : "DTOS"
+    },
+    "viewLevel" : 0
   } ],
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
@@ -356,6 +418,63 @@
       "type" : "PAGE"
     },
     "defaultMode" : true,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "actionHolder" : 1,
+    "codeName" : "dependency",
+    "dataSetType" : "DELOGIC",
+    "logicName" : "工作项依赖",
+    "memo" : "工作项依赖",
+    "name" : "dependency",
+    "getPSDEDataSetInput" : {
+      "name" : "DependencyInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "relation_iso_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "DependencyResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "relation_iso_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation_iso/PSDELOGICS/differentiate_job_type.json"
+    },
+    "predefinedType" : "DELOGIC",
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
+    "codeName" : "dependency_work_items",
+    "logicName" : "工作项依赖",
+    "name" : "dependency_work_items",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "dependency_work_items"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Dependency_work_itemsInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "relation_iso_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Dependency_work_itemsResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "relation_iso_dto"
+      },
+      "type" : "PAGE"
+    },
+    "viewLevel" : 0,
     "enableBackend" : true,
     "enableFront" : true
   } ],
@@ -1726,6 +1845,264 @@
     "allowEmpty" : false,
     "systemReserver" : true
   } ],
+  "getAllPSDELogics" : [ {
+    "codeName" : "differentiate_job_type",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/relation_iso/PSDELOGICS/differentiate_job_type.json",
+    "logicName" : "区分前后置任务",
+    "memo" : "工作项依赖：区分前后置任务",
+    "name" : "区分前后置任务",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEDATASET1",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "dependency_work_items"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/relation_iso.json"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEDATASET",
+      "name" : "查询工作项依赖",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "result_page"
+      },
+      "topPos" : 383
+    }, {
+      "codeName" : "PREPAREPARAM1",
+      "leftPos" : 460,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "填充任务类型",
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "JOB_TYPE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_obj"
+        },
+        "name" : "直接值[after] ==> for_obj[JOB_TYPE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "after",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "link_id",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_obj"
+        },
+        "name" : "for_obj[TARGET_ID] ==> for_obj[link_id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "TARGET_ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_obj"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 430
+    }, {
+      "codeName" : "LOOPSUBCALL1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_obj"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "LOOPSUBCALL",
+      "name" : "循环子调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "后置任务",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "PRINCIPAL_ID",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "for_obj"
+            },
+            "logicType" : "SINGLE",
+            "name" : "for_obj[PRINCIPAL_ID] 等于(=) principal_id",
+            "paramType" : "SRCENTITYFIELD",
+            "paramValue" : "principal_id",
+            "getSrcLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            }
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "subCallLink" : true
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        },
+        "name" : "前置任务",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "TARGET_ID",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "for_obj"
+            },
+            "logicType" : "SINGLE",
+            "name" : "for_obj[TARGET_ID] 等于(=) principal_id",
+            "paramType" : "SRCENTITYFIELD",
+            "paramValue" : "principal_id",
+            "getSrcLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            }
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "subCallLink" : true
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        }
+      } ],
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "result_page"
+      },
+      "topPos" : 508,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : 460,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "填充任务类型",
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "JOB_TYPE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_obj"
+        },
+        "name" : "直接值[front] ==> for_obj[JOB_TYPE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "front",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "link_id",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_obj"
+        },
+        "name" : "for_obj[PRINCIPAL_ID] ==> for_obj[link_id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "PRINCIPAL_ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_obj"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 568
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "result_page"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 794
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/relation_iso.json"
+      },
+      "default" : true,
+      "filterParam" : true
+    }, {
+      "codeName" : "for_obj",
+      "logicName" : "循环临时变量对象",
+      "name" : "循环临时变量对象",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/relation_iso.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "result_page",
+      "logicName" : "分页查询结果变量",
+      "name" : "分页查询结果变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/relation_iso.json"
+      },
+      "entityPageParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "relation_iso_dto",
     "getPSDEMethodDTOFields" : [ {
@@ -2135,6 +2512,10 @@
       "path" : "PSMODULES/Base/PSDATAENTITIES/relation_iso.json"
     },
     "name" : "DERCUSTOM_RELATION_DEPENDENCIES_WORK_ITEM",
+    "getNestedPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "dependency_work_items"
+    },
     "getOne2XDataPSDEField" : {
       "name" : "DEPENDENCIES",
       "codeName" : "dependencies"

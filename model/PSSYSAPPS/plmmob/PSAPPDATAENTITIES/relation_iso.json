@@ -246,6 +246,60 @@
       "id" : "Default"
     },
     "builtinMethod" : false
+  }, {
+    "codeName" : "FetchDependency_work_items",
+    "dataSetTag" : "dependency_work_items",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCH",
+    "name" : "dependency_work_items",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Dependency_work_itemsInput",
+      "name" : "Dependency_work_itemsInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "relation_iso_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Dependency_work_itemsResult",
+      "name" : "Dependency_work_itemsResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "relation_iso_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "OR",
+        "condType" : "GROUP",
+        "name" : "OR",
+        "getPSDEDQConditions" : [ {
+          "condType" : "CUSTOM",
+          "condition" : "exists(select 1 from work_item t2 where t1.principal_id = t2.id and t1.principal_id = #{ctx.webcontext.principal_id} and t2.is_deleted = 0)",
+          "name" : "后置任务"
+        }, {
+          "condType" : "CUSTOM",
+          "condition" : "exists(select 1 from work_item t2 where t1.target_id= t2.id and t1.target_id= #{ctx.webcontext.principal_id} and t2.is_deleted = 0)",
+          "name" : "前置任务"
+        } ]
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "dependency",
+        "fieldName" : "PRINCIPAL_TYPE",
+        "name" : "(PRINCIPAL_TYPE) 等于(=) dependency"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "dependency_work_items"
+    },
+    "builtinMethod" : false
   } ],
   "getAllPSAppDEFields" : [ {
     "getAllPSAppDEFUIModes" : [ {
@@ -1347,6 +1401,60 @@
     "getPSDEDataSet" : {
       "modelref" : true,
       "id" : "Default"
+    },
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchDependency_work_items",
+    "dataSetTag" : "dependency_work_items",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCH",
+    "name" : "dependency_work_items",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Dependency_work_itemsInput",
+      "name" : "Dependency_work_itemsInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "relation_iso_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Dependency_work_itemsResult",
+      "name" : "Dependency_work_itemsResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "relation_iso_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "OR",
+        "condType" : "GROUP",
+        "name" : "OR",
+        "getPSDEDQConditions" : [ {
+          "condType" : "CUSTOM",
+          "condition" : "exists(select 1 from work_item t2 where t1.principal_id = t2.id and t1.principal_id = #{ctx.webcontext.principal_id} and t2.is_deleted = 0)",
+          "name" : "后置任务"
+        }, {
+          "condType" : "CUSTOM",
+          "condition" : "exists(select 1 from work_item t2 where t1.target_id= t2.id and t1.target_id= #{ctx.webcontext.principal_id} and t2.is_deleted = 0)",
+          "name" : "前置任务"
+        } ]
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "dependency",
+        "fieldName" : "PRINCIPAL_TYPE",
+        "name" : "(PRINCIPAL_TYPE) 等于(=) dependency"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "dependency_work_items"
     },
     "builtinMethod" : false
   }, {
