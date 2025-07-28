@@ -5643,6 +5643,12 @@
       "queryCodeExp" : "t1.`RELATION_TYPE`",
       "standardColumnName" : "`RELATION_TYPE`"
     } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_RELATION_TYPE_EQ",
+      "name" : "N_RELATION_TYPE_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
       "name" : "[RELATION_TYPE][关联类型]",
@@ -10261,6 +10267,20 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "关联类型",
+      "name" : "n_relation_type_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_RELATION_TYPE_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "RELATION_TYPE",
+        "codeName" : "relation_type"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "目标主体标识",
       "name" : "n_target_id_eq",
       "getPSDEFSearchMode" : {
@@ -11006,6 +11026,37 @@
     "serviceCodeName" : "principal_baseline",
     "typeValue" : "baseline"
   }, {
+    "codeName" : "DERCUSTOM_RELATION_DEPENDENCIES_WORK_ITEM",
+    "dERSubType" : "DER1N",
+    "dERType" : "DERCUSTOM",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDERS/DERCUSTOM_RELATION_DEPENDENCIES_WORK_ITEM.json",
+    "logicName" : "名称",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "masterRS" : 0,
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+    },
+    "name" : "DERCUSTOM_RELATION_DEPENDENCIES_WORK_ITEM",
+    "getOne2XDataPSDEField" : {
+      "name" : "DEPENDENCIES",
+      "codeName" : "dependencies"
+    },
+    "orderValue" : 100,
+    "parentSubType" : "dependency",
+    "pickupDEFName" : "RELATION_TYPE",
+    "getPickupPSDEField" : {
+      "name" : "RELATION_TYPE",
+      "codeName" : "relation_type"
+    },
+    "removeActionType" : 0,
+    "removeOrder" : -1,
+    "serviceCodeName" : "dercustom_relation_dependencies_work_item",
+    "typeValue" : "dependency"
+  }, {
     "codeName" : "principal_idea",
     "dERSubType" : "DER1N",
     "dERType" : "DERCUSTOM",
@@ -11572,10 +11623,6 @@
     "getNestedPSDEDataSet" : {
       "modelref" : true,
       "id" : "work_item_version_relation"
-    },
-    "getOne2XDataPSDEField" : {
-      "name" : "DEPENDENCIES",
-      "codeName" : "dependencies"
     },
     "orderValue" : 100,
     "parentSubType" : "work_item",
