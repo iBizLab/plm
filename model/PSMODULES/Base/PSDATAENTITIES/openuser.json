@@ -903,6 +903,12 @@
       "queryCodeExp" : "t1.`OPEN_TYPE`",
       "standardColumnName" : "`OPEN_TYPE`"
     } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_OPEN_TYPE_EQ",
+      "name" : "N_OPEN_TYPE_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
       "name" : "[OPEN_TYPE][第三方用户类型]",
@@ -1392,7 +1398,7 @@
       "name" : "PSDEMAPDQ",
       "getSrcPSDEDataQuery" : {
         "modelref" : true,
-        "id" : "wxwork"
+        "id" : "Default"
       },
       "enableDQCond" : true
     }, {
@@ -1415,7 +1421,7 @@
       "name" : "PSDEMAPDS",
       "getSrcPSDEDataSet" : {
         "modelref" : true,
-        "id" : "wxwork"
+        "id" : "Default"
       },
       "enableDQCond" : true
     } ],
@@ -1750,6 +1756,20 @@
   }, {
     "name" : "openuser_filter_dto",
     "getPSDEFilterDTOFields" : [ {
+      "logicName" : "第三方用户类型",
+      "name" : "n_open_type_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_OPEN_TYPE_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "OPEN_TYPE",
+        "codeName" : "open_type"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "第三方用户标识",
       "name" : "n_openuserid_eq",
       "getPSDEFSearchMode" : {
