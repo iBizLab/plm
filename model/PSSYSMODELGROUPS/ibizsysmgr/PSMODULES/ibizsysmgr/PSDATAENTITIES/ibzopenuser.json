@@ -539,17 +539,6 @@
       "standardColumnName" : "`USERID`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[USERID][用户标识]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[USERID][用户标识]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[USERID][用户标识]移动端默认",
       "getPSDEFFormItem" : {
@@ -562,6 +551,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[USERID][用户标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[USERID][用户标识]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -759,6 +759,12 @@
       "queryCodeExp" : "t1.`OPENUSERNAME`",
       "standardColumnName" : "`OPENUSERNAME`"
     } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_OPENUSERNAME_LIKE",
+      "name" : "N_OPENUSERNAME_LIKE",
+      "stdDataType" : 25,
+      "valueOP" : "LIKE"
+    } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
       "name" : "[OPENUSERNAME][第三方用户名称]移动端默认",
@@ -832,17 +838,6 @@
       "standardColumnName" : "`OPEN_TYPE`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[OPEN_TYPE][第三方用户类型]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[OPEN_TYPE][第三方用户类型]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[OPEN_TYPE][第三方用户类型]移动端默认",
       "getPSDEFFormItem" : {
@@ -855,6 +850,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[OPEN_TYPE][第三方用户类型]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[OPEN_TYPE][第三方用户类型]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1027,17 +1033,6 @@
       "standardColumnName" : "`DEPTS`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[DEPTS][部门]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[DEPTS][部门]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[DEPTS][部门]移动端默认",
       "getPSDEFFormItem" : {
@@ -1050,6 +1045,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[DEPTS][部门]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[DEPTS][部门]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1406,6 +1412,20 @@
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
+    }, {
+      "logicName" : "第三方用户名称",
+      "name" : "N_OPENUSERNAME_LIKE",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_OPENUSERNAME_LIKE"
+      },
+      "getPSDEField" : {
+        "name" : "OPENUSERNAME",
+        "codeName" : "openusername"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
     } ],
     "sourceType" : "DE",
     "type" : "DEFILTER",
@@ -1423,58 +1443,6 @@
   }, {
     "logicName" : "更新",
     "name" : "UPDATE"
-  } ],
-  "getAllPSDEUserRoles" : [ {
-    "dynaModelFilePath" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/ibzopenuser/PSDEUSERROLES/ALL_R.json",
-    "name" : "全部数据（读）",
-    "getPSDEUserRoleOPPrivs" : [ {
-      "dataAccessAction" : "READ",
-      "name" : "READ",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "READ"
-      }
-    } ],
-    "roleTag" : "ALL_R",
-    "userCat" : "CAT1",
-    "userDRAction" : "READ",
-    "allData" : true
-  }, {
-    "dynaModelFilePath" : "PSSYSMODELGROUPS/ibizsysmgr/PSMODULES/ibizsysmgr/PSDATAENTITIES/ibzopenuser/PSDEUSERROLES/ALL_RW.json",
-    "name" : "全部数据（读写）",
-    "getPSDEUserRoleOPPrivs" : [ {
-      "dataAccessAction" : "UPDATE",
-      "name" : "UPDATE",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "UPDATE"
-      }
-    }, {
-      "dataAccessAction" : "DELETE",
-      "name" : "DELETE",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "DELETE"
-      }
-    }, {
-      "dataAccessAction" : "READ",
-      "name" : "READ",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "READ"
-      }
-    }, {
-      "dataAccessAction" : "CREATE",
-      "name" : "CREATE",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "CREATE"
-      }
-    } ],
-    "roleTag" : "ALL_RW",
-    "userCat" : "CAT1",
-    "userDRAction" : "READ",
-    "allData" : true
   } ],
   "getAllPSModelDatas" : [ {
     "codeName" : "EditView2",
@@ -1564,15 +1532,11 @@
     "name" : "OPENUSERID",
     "codeName" : "openuserid"
   },
-  "getLNPSLanguageRes" : {
-    "lanResTag" : "DE.LNAME.IBZOPENUSER"
-  },
   "logicName" : "第三方用户",
   "getMajorPSDEField" : {
     "name" : "OPENUSERNAME",
     "codeName" : "openusername"
   },
-  "memo" : "第三方用户实体",
   "name" : "IBZOPENUSER",
   "getOrgIdPSDEField" : {
     "name" : "ORGID",
