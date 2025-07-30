@@ -17,6 +17,8 @@
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberresource_memberprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置全局资源组件标识"/>
+                        <endEvent id="prepareparam1_end" name="end"/>
+                        <sequenceFlow id="prepareparam1_end_line" sourceRef="prepareparam1" targetRef="prepareparam1_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberresource_memberdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取资源组件"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberresource_memberbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberresource_memberend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
@@ -31,8 +33,6 @@
                                 eval((RuleUtils.test($memberresource_memberdefault.get("addon_resource"),"ISNOTNULL","")))
                                 ]]>
                             </conditionExpression>
-                    </sequenceFlow>
-                    <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-deaction1_bindparam1" sourceRef="gateway-deaction1" targetRef="bindparam1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
