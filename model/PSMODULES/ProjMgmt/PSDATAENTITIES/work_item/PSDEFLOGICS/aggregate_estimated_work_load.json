@@ -1,0 +1,475 @@
+{
+  "codeName" : "aggregate_estimated_work_load",
+  "dEFLogicMode" : "ONCHANGE",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEFLOGICS/aggregate_estimated_work_load.json",
+  "logicName" : "汇聚预估工时",
+  "logicSubType" : "DEFIELD",
+  "memo" : "预估工时属性变更触发",
+  "name" : "汇聚预估工时",
+  "getPSDEField" : {
+    "name" : "ESTIMATED_WORKLOAD",
+    "codeName" : "estimated_workload"
+  },
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 320,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "PID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[PID] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 198,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 490,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置父工作项过滤条件",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "N_ID_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "p_work_item_filter"
+      },
+      "name" : "Default[PID] ==> p_work_item_filter[N_ID_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 206
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "normal"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "p_work_item_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "leftPos" : 490,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取父工作项",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "GT",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "p_work_item_page"
+          },
+          "logicType" : "SINGLE",
+          "name" : "p_work_item_page[size] 大于(>) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "p_work_item_page"
+    },
+    "topPos" : 296
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 490,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置父工作项",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "p_work_item"
+      },
+      "name" : "p_work_item_page[0] ==> p_work_item",
+      "paramAction" : "BINDPARAM",
+      "srcFieldName" : "0",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "p_work_item_page"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 406
+  }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : 490,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置当前同级工作项过滤条件",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "N_PID_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "cur_child_work_item_filter"
+      },
+      "name" : "p_work_item[ID] ==> cur_child_work_item_filter[N_PID_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "p_work_item"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 526
+  }, {
+    "codeName" : "DEDATASET2",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "normal"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "cur_child_work_item_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "leftPos" : 490,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取同级数据",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET2"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "cur_child_work_item_page"
+    },
+    "topPos" : 646
+  }, {
+    "codeName" : "LOOPSUBCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "cur_work_item_temp"
+    },
+    "leftPos" : 490,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE2"
+      },
+      "name" : "结束循环",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      }
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "cur_child_work_item_page"
+    },
+    "topPos" : 758,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM4",
+    "leftPos" : 740,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ACTUAL_WORKLOAD",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "p_work_item"
+      },
+      "name" : "workload_data[actual_workload] ==> p_work_item[ACTUAL_WORKLOAD]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "actual_workload",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "workload_data"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "REMAINING_WORKLOAD",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "p_work_item"
+      },
+      "name" : "workload_data[REMAINING_WORKLOAD] ==> p_work_item[REMAINING_WORKLOAD]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "REMAINING_WORKLOAD",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "workload_data"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "ESTIMATED_WORKLOAD",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "p_work_item"
+      },
+      "name" : "workload_data[estimated_workload] ==> p_work_item[ESTIMATED_WORKLOAD]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "estimated_workload",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "workload_data"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 758
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/Update.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "p_work_item"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "leftPos" : 960,
+    "logicNodeType" : "DEACTION",
+    "name" : "更新父工作项",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "topPos" : 758
+  }, {
+    "code" : "var work_item_temp = logic.getParam(\"cur_work_item_temp\");\r\nvar p_work_item = logic.getParam(\"p_work_item\");\r\nvar workload_data = logic.getParam(\"workload_data\");\r\nvar cur_estimated_workload = parseFloat(work_item_temp && work_item_temp.get(\"estimated_workload\")) || 0;\r\nvar cur_actual_workload = parseFloat(work_item_temp && work_item_temp.get(\"actual_workload\")) || 0;\r\n\r\nworkload_data.set(\"estimated_workload\", cur_estimated_workload + workload_data.get(\"estimated_workload\"));\r\n\r\nworkload_data.set(\"actual_workload\",cur_actual_workload + workload_data.get(\"actual_workload\")) ;\r\n\r\n",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "JavaScript",
+    "leftPos" : 490,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "获取当前级的工时，赋值给父",
+    "topPos" : 938
+  }, {
+    "code" : "var workload_data = logic.getParam(\"workload_data\");\r\nvar actual_workload = workload_data.get(\"actual_workload\");\r\nvar estimated_workload =workload_data.get(\"estimated_workload\");\r\nvar remaining_workload = null;\r\nif(estimated_workload){\r\n    if(actual_workload){\r\n        remaining_workload = estimated_workload-actual_workload;\r\n        if(remaining_workload>0){\r\n            workload_data.set(\"remaining_workload\",remaining_workload);\r\n        }\r\n    }else{\r\n        workload_data.set(\"remaining_workload\",estimated_workload);\r\n    }\r\n}\r\n\r\n",
+    "codeName" : "RAWSFCODE2",
+    "leftPos" : 740,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "执行脚本代码",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE2"
+      }
+    } ],
+    "topPos" : 942
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 1000,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "topPos" : 942
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "actual_workload",
+    "logicName" : "实际工时",
+    "name" : "实际工时",
+    "stdDataType" : 14,
+    "simpleParam" : true
+  }, {
+    "codeName" : "cur_child_work_item_filter",
+    "logicName" : "当前级子工作项过滤器",
+    "name" : "当前级子工作项过滤器",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "cur_child_work_item_page",
+    "logicName" : "当前级子工作项",
+    "name" : "当前级子工作项",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "entityPageParam" : true
+  }, {
+    "codeName" : "cur_work_item_temp",
+    "logicName" : "当前级工作项临时对象",
+    "name" : "当前级工作项临时对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "estimated_workload",
+    "logicName" : "预估工时",
+    "name" : "预估工时",
+    "stdDataType" : 6,
+    "simpleParam" : true
+  }, {
+    "codeName" : "p_work_item",
+    "logicName" : "父工作项",
+    "name" : "父工作项",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "p_work_item_filter",
+    "logicName" : "父工作项过滤器",
+    "name" : "父工作项过滤器",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "p_work_item_page",
+    "logicName" : "父工作项分页",
+    "name" : "父工作项分页",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "entityPageParam" : true
+  }, {
+    "codeName" : "workload_data",
+    "logicName" : "工时数据",
+    "name" : "工时数据",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

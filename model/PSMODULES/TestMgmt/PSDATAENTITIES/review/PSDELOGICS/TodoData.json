@@ -1,0 +1,701 @@
+{
+  "codeName" : "TodoData",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDELOGICS/TodoData.json",
+  "logicName" : "待办数据",
+  "memo" : "测试",
+  "name" : "待办数据",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : -110,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM5"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 118,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM5",
+    "leftPos" : 26,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置过滤器参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM5"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "searchconds",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "空值（NULL） ==> Default[searchconds]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValueType" : "NULLVALUE"
+    }, {
+      "dstFieldName" : "N_BIZTYPE_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "直接值[review] ==> Default[N_BIZTYPE_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "review",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 126
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "CurUser"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysTodo.json"
+    },
+    "leftPos" : 270,
+    "logicNodeType" : "DEDATASET",
+    "name" : "查询待办数据",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "待办数据为空",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "sq_todo_data"
+          },
+          "logicType" : "SINGLE",
+          "name" : "sq_todo_data[size] 等于(=) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "待办数据不为空",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "GT",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "sq_todo_data"
+          },
+          "logicType" : "SINGLE",
+          "name" : "sq_todo_data[size] 大于(>) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "sq_todo_data"
+    },
+    "topPos" : 126
+  }, {
+    "codeName" : "LOOPSUBCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "temp_todo_obj"
+    },
+    "leftPos" : 810,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RENEWPARAM1"
+      },
+      "name" : "进入子循环",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      },
+      "name" : "循环结束",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      }
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "sq_todo_data"
+    },
+    "topPos" : 126,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "RENEWPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "temp_sq_obj"
+    },
+    "leftPos" : 1150,
+    "logicNodeType" : "RENEWPARAM",
+    "name" : "重新建立临时待办对象",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RENEWPARAM1"
+      }
+    } ],
+    "topPos" : 126
+  }, {
+    "codeName" : "BINDPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "sq_data_page"
+    },
+    "leftPos" : 810,
+    "logicNodeType" : "BINDPARAM",
+    "name" : "设置分页查询结果",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      }
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "sq_data"
+    },
+    "topPos" : 290
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 1150,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备查询参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_sq_obj"
+      },
+      "name" : "temp_todo_obj[BIZKEY] ==> temp_sq_obj[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "BIZKEY",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_todo_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 330
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 310,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "sq_data"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 414
+  }, {
+    "codeName" : "PREPAREPARAM4",
+    "leftPos" : 810,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "拷贝查询参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_todo_filter"
+      },
+      "name" : "Default ==> temp_todo_filter",
+      "paramAction" : "COPYPARAM",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "page",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_todo_filter"
+      },
+      "name" : "直接值[0] ==> temp_todo_filter[page]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "0",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "size",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_todo_filter"
+      },
+      "name" : "直接值[100000000] ==> temp_todo_filter[size]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "100000000",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 430
+  }, {
+    "codeName" : "DEACTION2",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/CheckKey.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "temp_sq_obj"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "leftPos" : 1150,
+    "logicNodeType" : "DEACTION",
+    "name" : "判断业务数据是否存在",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "判断是否存在数据",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "NOTEQ",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "check_key_ret"
+          },
+          "logicType" : "SINGLE",
+          "name" : "ret 不等于(<>) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "check_key_ret"
+    },
+    "topPos" : 470
+  }, {
+    "codeName" : "DEDATASET2",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "CurUser"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "temp_todo_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysTodo.json"
+    },
+    "leftPos" : 810,
+    "logicNodeType" : "DEDATASET",
+    "name" : "查询全部待办数据",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET2"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "all_sq_data_page"
+    },
+    "topPos" : 600
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "temp_sq_obj"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "leftPos" : 1150,
+    "logicNodeType" : "DEACTION",
+    "name" : "查询申请对象",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "temp_sq_obj"
+    },
+    "topPos" : 632
+  }, {
+    "codeName" : "END2",
+    "leftPos" : 490,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "sq_data_page"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 760
+  }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : 810,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置分页参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "total",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "sq_data_page"
+      },
+      "name" : "all_sq_data_page[total] ==> sq_data_page[total]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "total",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "all_sq_data_page"
+      },
+      "srcValue" : "1000",
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 768
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 1150,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置申请对象参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "APPENDPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "PARAM01",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_sq_obj"
+      },
+      "name" : "temp_todo_obj[PARAM01] ==> temp_sq_obj[PARAM01]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PARAM01",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_todo_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "PARAM02",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_sq_obj"
+      },
+      "name" : "temp_todo_obj[PARAM02] ==> temp_sq_obj[PARAM02]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PARAM02",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_todo_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "PARAM03",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_sq_obj"
+      },
+      "name" : "temp_todo_obj[PARAM03] ==> temp_sq_obj[PARAM03]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PARAM03",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_todo_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "PARAM04",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_sq_obj"
+      },
+      "name" : "temp_todo_obj[PARAM04] ==> temp_sq_obj[PARAM04]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PARAM04",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_todo_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "PARAM05",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_sq_obj"
+      },
+      "name" : "temp_todo_obj[PARAM05] ==> temp_sq_obj[PARAM05]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PARAM05",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_todo_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "BIZKEY",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_sq_obj"
+      },
+      "name" : "temp_todo_obj[BIZKEY] ==> temp_sq_obj[BIZKEY]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "BIZKEY",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_todo_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "BIZTYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_sq_obj"
+      },
+      "name" : "temp_todo_obj[BIZTYPE] ==> temp_sq_obj[BIZTYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "BIZTYPE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_todo_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "TODOID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_sq_obj"
+      },
+      "name" : "temp_todo_obj[TODOID] ==> temp_sq_obj[TODOID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "TODOID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_todo_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 810
+  }, {
+    "codeName" : "APPENDPARAM1",
+    "dstIndex" : 0,
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "sq_data"
+    },
+    "leftPos" : 1150,
+    "logicNodeType" : "APPENDPARAM",
+    "name" : "附加到数组参数",
+    "srcIndex" : 0,
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "temp_sq_obj"
+    },
+    "topPos" : 980
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "default" : true,
+    "filterParam" : true
+  }, {
+    "codeName" : "all_sq_data_page",
+    "logicName" : "全部待办对象",
+    "name" : "全部待办对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysTodo.json"
+    },
+    "entityPageParam" : true
+  }, {
+    "codeName" : "check_key_ret",
+    "logicName" : "返回结果",
+    "name" : "返回结果",
+    "stdDataType" : 9,
+    "simpleParam" : true
+  }, {
+    "codeName" : "sq_data",
+    "logicName" : "申请工作流数据",
+    "name" : "申请工作流数据",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "entityListParam" : true
+  }, {
+    "codeName" : "sq_data_page",
+    "logicName" : "申请数据分页对象",
+    "name" : "申请数据分页对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "entityPageParam" : true
+  }, {
+    "codeName" : "sq_todo_data",
+    "logicName" : "申请待办数据",
+    "name" : "申请待办数据",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysTodo.json"
+    },
+    "entityListParam" : true
+  }, {
+    "codeName" : "temp_sq_obj",
+    "logicName" : "临时申请对象",
+    "name" : "临时申请对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "temp_todo_filter",
+    "logicName" : "临时待办过滤器",
+    "name" : "临时待办过滤器",
+    "filterParam" : true
+  }, {
+    "codeName" : "temp_todo_obj",
+    "logicName" : "临时待办对象",
+    "name" : "临时待办对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysTodo.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

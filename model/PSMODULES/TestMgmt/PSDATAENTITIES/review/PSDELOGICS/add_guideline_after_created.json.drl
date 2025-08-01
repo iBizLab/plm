@@ -1,0 +1,115 @@
+package cn.ibizlab.plm.testmgmt.logic.reviewlogic.add_guideline_after_created;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.review reviewadd_guideline_after_createddefault;
+                global cn.ibizlab.plm.core.base.domain.attention reviewadd_guideline_after_createdattentions;
+                global cn.ibizlab.plm.core.base.domain.attention reviewadd_guideline_after_createdcur_user;
+                global cn.ibizlab.plm.core.testmgmt.domain.guideline reviewadd_guideline_after_createdguideline_detail;
+                    global cn.ibizlab.plm.core.testmgmt.service.IguidelineService guidelineservice;
+                    global cn.ibizlab.plm.core.testmgmt.service.IreviewService reviewservice;
+        global cn.ibizlab.plm.core.testmgmt.service.IreviewService iBzSysReviewDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "reviewadd_guideline_after_createdbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[获取规则id]
+            rule "prepareparam3"
+            ruleflow-group "reviewadd_guideline_after_createdprepareparam3"
+            when
+            then
+                            reviewadd_guideline_after_createdguideline_detail.set("id",reviewadd_guideline_after_createddefault.get("guidelineid"));
+                        update(reviewadd_guideline_after_createddefault);//更新fact中变量值
+                        update(reviewadd_guideline_after_createdattentions);//更新fact中变量值
+                        update(reviewadd_guideline_after_createdcur_user);//更新fact中变量值
+                        update(reviewadd_guideline_after_createdguideline_detail);//更新fact中变量值
+            end
+
+            //逻辑处理节点[根据id获取规则]
+            rule "deaction1"
+            ruleflow-group "reviewadd_guideline_after_createddeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(guidelineservice.get(reviewadd_guideline_after_createdguideline_detail.getId()),reviewadd_guideline_after_createdguideline_detail);
+                        update(reviewadd_guideline_after_createddefault);//更新fact中变量值
+                        update(reviewadd_guideline_after_createdattentions);//更新fact中变量值
+                        update(reviewadd_guideline_after_createdcur_user);//更新fact中变量值
+                        update(reviewadd_guideline_after_createdguideline_detail);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置阶段数据]
+            rule "prepareparam2"
+            ruleflow-group "reviewadd_guideline_after_createdprepareparam2"
+            when
+            then
+                            reviewadd_guideline_after_createddefault.set("stage",reviewadd_guideline_after_createdguideline_detail.get("reviewstage"));
+                            reviewadd_guideline_after_createddefault.set("type",reviewadd_guideline_after_createdguideline_detail.get("subjecttype"));
+                        update(reviewadd_guideline_after_createddefault);//更新fact中变量值
+                        update(reviewadd_guideline_after_createdattentions);//更新fact中变量值
+                        update(reviewadd_guideline_after_createdcur_user);//更新fact中变量值
+                        update(reviewadd_guideline_after_createdguideline_detail);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置默认关注人]
+            rule "prepareparam4"
+            ruleflow-group "reviewadd_guideline_after_createdprepareparam4"
+            when
+            then
+                            reviewadd_guideline_after_createdcur_user.set("ownerid",reviewadd_guideline_after_createddefault.get("id"));
+                            reviewadd_guideline_after_createdcur_user.set("type","40");
+                            reviewadd_guideline_after_createdcur_user.set("ownersubtype","REVIEW");
+                                reviewadd_guideline_after_createdcur_user.set("userid",curuser.getSessionParams().get("srfpersonid"));
+                                reviewadd_guideline_after_createdcur_user.set("name",curuser.getSessionParams().get("srfpersonname"));
+                            reviewadd_guideline_after_createdcur_user.set("ownertype","REVIEW");
+                        update(reviewadd_guideline_after_createddefault);//更新fact中变量值
+                        update(reviewadd_guideline_after_createdattentions);//更新fact中变量值
+                        update(reviewadd_guideline_after_createdcur_user);//更新fact中变量值
+                        update(reviewadd_guideline_after_createdguideline_detail);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备评审参数]
+            rule "prepareparam5"
+            ruleflow-group "reviewadd_guideline_after_createdprepareparam5"
+            when
+            then
+                            reviewadd_guideline_after_createdattentions.set("",reviewadd_guideline_after_createdcur_user.get(""));
+                            reviewadd_guideline_after_createddefault.set("attentions",reviewadd_guideline_after_createdattentions.get(""));
+                        update(reviewadd_guideline_after_createddefault);//更新fact中变量值
+                        update(reviewadd_guideline_after_createdattentions);//更新fact中变量值
+                        update(reviewadd_guideline_after_createdcur_user);//更新fact中变量值
+                        update(reviewadd_guideline_after_createdguideline_detail);//更新fact中变量值
+            end
+
+            //逻辑处理节点[保存评审数据]
+            rule "deaction2"
+            ruleflow-group "reviewadd_guideline_after_createddeaction2"
+            when
+            then
+                        reviewservice.save(reviewadd_guideline_after_createddefault);
+                        update(reviewadd_guideline_after_createddefault);//更新fact中变量值
+                        update(reviewadd_guideline_after_createdattentions);//更新fact中变量值
+                        update(reviewadd_guideline_after_createdcur_user);//更新fact中变量值
+                        update(reviewadd_guideline_after_createdguideline_detail);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "reviewadd_guideline_after_createdend1"
+            when
+            then
+                        update(reviewadd_guideline_after_createddefault);//更新fact中变量值
+                        update(reviewadd_guideline_after_createdattentions);//更新fact中变量值
+                        update(reviewadd_guideline_after_createdcur_user);//更新fact中变量值
+                        update(reviewadd_guideline_after_createdguideline_detail);//更新fact中变量值
+            end

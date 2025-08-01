@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.prodmgmt.service.logic.ideaplan_track_data" isClosed="false" isExecutable="true" name="prodmgmt_idea_plan_track_data_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.prodmgmt.service.logic.ideaplan_track_data">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="ideaplan_track_datadefault" type="entity"/>
+                                <tns:metaData express="new HashMap()" name="ideaplan_track_database_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.idea()" name="ideaplan_track_dataidea" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.idea()" name="ideaplan_track_datapage_ideas" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.test_case()" name="ideaplan_track_datare_page_case" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.idea()" name="ideaplan_track_datare_page_idea" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="ideaplan_track_datare_page_item" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.ticket()" name="ideaplan_track_datare_page_ticket" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="ideaplan_track_dataresult" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IideaService))" name="ideaservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IticketService))" name="ticketservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Itest_caseService))" name="test_caseservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="work_itemservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IideaService))" name="iBzSysIdeaDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="ideaplan_track_datadefault" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
+                            <tns:global identifier="ideaplan_track_dataidea" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
+                            <tns:global identifier="ideaplan_track_datapage_ideas" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
+                            <tns:global identifier="ideaplan_track_datare_page_case" type="cn.ibizlab.plm.core.testmgmt.domain.test_case" />
+                            <tns:global identifier="ideaplan_track_datare_page_idea" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
+                            <tns:global identifier="ideaplan_track_datare_page_item" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="ideaplan_track_datare_page_ticket" type="cn.ibizlab.plm.core.prodmgmt.domain.ticket" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_track_datadedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取所有需求"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_track_dataend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_track_dataloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环所有的需求"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_track_dataprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置基础过滤器"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_track_datadedataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="获取关联需求"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_track_datadedataset4" id="dedataset4" implementation="http://www.jboss.org/drools/rule" name="获取关联工单"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_track_datadedataset5" id="dedataset5" implementation="http://www.jboss.org/drools/rule" name="获取关联测试用例"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_track_dataprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="组装数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_track_dataappendparam1" id="appendparam1" implementation="http://www.jboss.org/drools/rule" name="附加到数组参数"/>
+                        <endEvent id="appendparam1_end" name="end"/>
+                        <sequenceFlow id="appendparam1_end_line" sourceRef="appendparam1" targetRef="appendparam1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_track_datadedataset3" id="dedataset3" implementation="http://www.jboss.org/drools/rule" name="获取关联工作项"/>
+                    <sequenceFlow id="begin_dedataset1" sourceRef="begin" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset1_loopsubcall1" sourceRef="dedataset1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_prepareparam2" sourceRef="loopsubcall1" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_dedataset2" sourceRef="prepareparam2" targetRef="dedataset2">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset2_dedataset3" sourceRef="dedataset2" targetRef="dedataset3">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset4_dedataset5" sourceRef="dedataset4" targetRef="dedataset5">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset5_prepareparam1" sourceRef="dedataset5" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_appendparam1" sourceRef="prepareparam1" targetRef="appendparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset3_dedataset4" sourceRef="dedataset3" targetRef="dedataset4">
+                    </sequenceFlow>
+        </process>
+    </definitions>
