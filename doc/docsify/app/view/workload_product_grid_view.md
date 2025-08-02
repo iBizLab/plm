@@ -27,8 +27,8 @@ Object.assign(viewParam, { n_register_date_gtandeq, n_register_date_ltandeq, dat
 
 
 ### 关联界面行为
-  * [工时(WORKLOAD)](module/Base/workload) : [表格界面_导出操作（Excel）](module/Base/workload#界面行为)
   * [工时(WORKLOAD)](module/Base/workload) : [所属维度表格列行为](module/Base/workload#界面行为)
+  * [工时(WORKLOAD)](module/Base/workload) : [表格界面_导出操作（Excel）](module/Base/workload#界面行为)
 
 ### 关联界面逻辑
   * [工时(WORKLOAD)](module/Base/workload) : [重置上下文工时类型](module/Base/workload/uilogic/reset_workload_category)

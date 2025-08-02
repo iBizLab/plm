@@ -1,5 +1,5 @@
 
-## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[226]</font></sup>
+## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[227]</font></sup>
 
 #### [组件(ADDON)](module/Base/addon)的处理逻辑[组件权限计数器(addon_authority)](module/Base/addon/logic/addon_authority)
 
@@ -1311,6 +1311,26 @@ if(_default.get('shared_page') != null){
 }
 
 ```
+#### [成员(MEMBER)](module/Base/member)的处理逻辑[获取资源成员（全局）(resource_member)](module/Base/member/logic/resource_member)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal();
+def member_list = logic.param('member_list').getReal();
+
+def id = _default.get('addon_resource');
+
+def runtime = sys.dataentity('addon_resource');
+def addon_resource = runtime.get(id)
+def members = addon_resource.get('members');
+if (members != null ) {
+    members.each { item ->
+        member_list.add(item)
+    }
+}
+```
 #### [成员(MEMBER)](module/Base/member)的处理逻辑[选择资源成员（全局）(choose_resource_member)](module/Base/member/logic/choose_resource_member)
 
 节点：分页参数
@@ -1545,7 +1565,7 @@ if(_default.get('id') != null && plm_wiki != '') {
   if(_default.get('is_shared_subset') == '1'){
       _url = plm_wiki + '/plmwiki/#/-/index/-/article_page_shared_with_sub_view/srfnavctx=%257B%2522shared_page%2522%253A%2522' + _default.get('id') + '%2522%257D'
   } else {
-      _url = plm_wiki + '/plmwiki/#/-/index/-/article_page_shared_view/srfnavctx=%257B%2522shared_page%2522%253A%2522' + _default.get('id') + '%2522%257D'
+      _url = plm_wiki + '/plmwiki/#/-/index/-/article_page_wiki_shared_view/srfnavctx=%257B%2522shared_page%2522%253A%2522' + _default.get('id') + '%2522%257D'
   }
   _default.set('shared_page_url', _url)
 }

@@ -14,8 +14,8 @@
 
 
 ### 关联界面行为
-  * [空间(SPACE)](module/Wiki/space) : [取消星标](module/Wiki/space#界面行为)
   * [空间(SPACE)](module/Wiki/space) : [设置星标](module/Wiki/space#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [取消星标](module/Wiki/space#界面行为)
   * [空间(SPACE)](module/Wiki/space) : [新建空间（移动端）](module/Wiki/space#界面行为)
 
 ### 关联视图

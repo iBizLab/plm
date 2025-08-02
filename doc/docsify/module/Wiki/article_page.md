@@ -215,6 +215,7 @@
 |移动需求|move_order|用户自定义|默认|不支持||||
 |移动页面|move_page|[实体处理逻辑](module/Wiki/article_page/logic/move_page "移动页面")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/Wiki/article_page/logic/nothing "无操作")|默认|不支持||||
+|发布名称|publish_name|[实体处理逻辑](module/Wiki/article_page/logic/publish_name "发布名称")|默认|不支持||||
 |发布页面|publish_page|[实体处理逻辑](module/Wiki/article_page/logic/publish_page "发布页面")|默认|不支持||||
 |恢复|recover|[实体处理逻辑](module/Wiki/article_page/logic/recover "恢复")|默认|不支持||||
 |恢复到历史版本|recover_version|[实体处理逻辑](module/Wiki/article_page/logic/recover_version "恢复历史版本")|默认|不支持||||
@@ -236,6 +237,7 @@
 |[共享设置](module/Wiki/article_page/logic/shared_setting)|shared_setting|无||共享设置|
 |[关闭共享](module/Wiki/article_page/logic/closed_shared)|closed_shared|无||页面关闭共享|
 |[删除](module/Wiki/article_page/logic/delete)|delete|无||页面数据的逻辑删除，修改页面的是否删除属性值|
+|[发布名称](module/Wiki/article_page/logic/publish_name)|publish_name|无||页面树更新发布名称，同步更新名称|
 |[发布页面](module/Wiki/article_page/logic/publish_page)|publish_page|无||页面发布，设置发布状态及发布人，发布时间|
 |[发布页面（测试）](module/Wiki/article_page/logic/publish_page_test)|publish_page_test|无||（测试）页面发布，设置发布状态及发布人，发布时间|
 |[取消星标](module/Wiki/article_page/logic/un_favorite)|un_favorite|无||页面取消收藏|

@@ -170,6 +170,7 @@
 |[部门过滤](module/Base/department/logic/dept_filter)|dept_filter|无|||
 
 
+
 ## [数据字典(DICTIONARY)](module/Base/dictionary_data.md) :id=dictionary_data
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
@@ -444,6 +445,7 @@
 
 
 
+
 ## [页面(PAGE)](module/Wiki/article_page.md) :id=article_page
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
@@ -455,6 +457,7 @@
 |[共享设置](module/Wiki/article_page/logic/shared_setting)|shared_setting|无||共享设置|
 |[关闭共享](module/Wiki/article_page/logic/closed_shared)|closed_shared|无||页面关闭共享|
 |[删除](module/Wiki/article_page/logic/delete)|delete|无||页面数据的逻辑删除，修改页面的是否删除属性值|
+|[发布名称](module/Wiki/article_page/logic/publish_name)|publish_name|无||页面树更新发布名称，同步更新名称|
 |[发布页面](module/Wiki/article_page/logic/publish_page)|publish_page|无||页面发布，设置发布状态及发布人，发布时间|
 |[发布页面（测试）](module/Wiki/article_page/logic/publish_page_test)|publish_page_test|无||（测试）页面发布，设置发布状态及发布人，发布时间|
 |[取消星标](module/Wiki/article_page/logic/un_favorite)|un_favorite|无||页面取消收藏|

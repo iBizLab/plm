@@ -432,6 +432,7 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 添加预估工时（移动端） | mob_add_forecast_workload | 添加预估工时 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[登记预估工时](app/view/workload_mob_forecast_edit_view)</details>||
 | 新建测试用例（快速新建） | quick_new_test_case | 新建测试用例 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建用例](app/view/test_case_quick_create_view)</details>||
 | 设置重要程度 | set_level | 设置重要程度 |多项数据（主键）|<details><summary>后台调用</summary>[set_level](#行为)||
 | 关联工作项（工具栏） | toolbar_link_work_item | 关联工作项 |无数据|用户自定义||
@@ -447,6 +448,7 @@
 | BI全屏 | bi_full_screen | 全屏 |无数据|用户自定义||
 | 打开BI报表配置表单_用例_用例占比 | open_bi_form_case_case_ratio | 配置 |无数据|<details><summary>打开快捷编辑</summary></details>||
 | 移动（工具栏） | toolbar_move | 移动 |单项数据（主键）|<details><summary>后台调用</summary>[move_case](#行为)||
+| 查看预估工时明细（移动端） | mob_check_forecast_workload_detail | 查看工时明细 |无数据|<details><summary>打开视图或向导（模态）</summary>[工时记录](app/view/workload_mob_forecast_detail_view)</details>||
 | 关联缺陷（工具栏） | toolbar_link_bug | 关联缺陷 |无数据|用户自定义||
 | 工具栏上传附件 | toolbar_update_file | 工具栏上传附件 |无数据|用户自定义||
 | BI刷新 | bi_refresh | 刷新 |无数据|用户自定义||
@@ -472,7 +474,7 @@
 | 上传附件 | upload_attachment | 上传 |无数据|用户自定义||
 | 复制 | copy_test_case | 复制 |多项数据（主键）|<details><summary>后台调用</summary>[copy_case](#行为)||
 | 查看工时明细（移动端） | mob_check_workload_detail | 查看工时明细 |无数据|<details><summary>打开视图或向导（模态）</summary>[工时记录](app/view/workload_mob_detail_view)</details>||
-| 添加实际工时（移动端） | mob_add_actual_workload | 添加实际工时 |单项数据|<details><summary>打开视图或向导（模态）</summary>[登记工时](app/view/workload_register_mob_edit_view)</details>||
+| 添加实际工时（移动端） | mob_add_actual_workload | 添加实际工时 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[登记工时](app/view/workload_register_mob_edit_view)</details>||
 | 查看预估工时明细 | check_estimated_workload_detail | 查看预估工时明细 |无数据|用户自定义||
 | 设置状态 | set_state | 设置状态 |多项数据（主键）|<details><summary>后台调用</summary>[set_state](#行为)||
 | 设置维护人 | set_maintenance | 设置维护人 |多项数据（主键）|<details><summary>后台调用</summary>[set_maintenance](#行为)||

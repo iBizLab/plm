@@ -32,6 +32,22 @@
 |USERAGENT|客户端|VARCHAR|是|500|||
 |USERID|用户全局标识|VARCHAR|是|100|||
 |USERNAME|用户全局名|VARCHAR|是|100|||
+#### 第三方用户(IBZOPENUSER)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CREATEDATE|建立时间|DATETIME|是||||
+|CREATEMAN|创建人|VARCHAR|是|100|||
+|DEPTS|部门|VARCHAR|是|100|||
+|ISBINDING|是否绑定|INT|是||||
+|MOBILE|手机|VARCHAR|是|100|||
+|OPENUSERCODE|第三方用户代码|VARCHAR|是|100|||
+|OPENUSERID<i class="fa fa-key"></i>|第三方用户标识|VARCHAR|否|60|||
+|OPENUSERNAME|第三方用户名称|VARCHAR|是|100|||
+|OPEN_TYPE|第三方用户类型|VARCHAR|是|100|||
+|ORGID|组织标识|VARCHAR|是|100|||
+|UPDATEDATE|更新时间|DATETIME|是||||
+|UPDATEMAN|最后更新人|VARCHAR|是|100|||
+|USERID|用户标识|VARCHAR|是|100|||
 ### 默认数据库架构
 #### 活动(ACTIVITY)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
@@ -1225,6 +1241,7 @@
 |PROJECT_ID|项目标识|VARCHAR|是|100|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
+#### test(TEST)
 #### 用例(TEST_CASE)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |

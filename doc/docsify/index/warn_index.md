@@ -1,7 +1,7 @@
 # 模型预警 <!-- {docsify-ignore-all} -->
 
 
-### 处理逻辑中使用脚本<sup class="footnote-symbol"> <font color=orange>[162]</font></sup>
+### 处理逻辑中使用脚本<sup class="footnote-symbol"> <font color=orange>[163]</font></sup>
 | 实体col200   | 处理逻辑col300  | 脚本模式col100  |
 | --------   |------------|----------|
 |[组件(ADDON)](module/Base/addon#处理逻辑)|[组件权限计数器(addon_authority)](module/Base/addon/logic/addon_authority.md)|否|
@@ -49,6 +49,7 @@
 |[登录日志(LOGIN_LOG)](module/Base/login_log#处理逻辑)|[计算活跃成员数据信息(calc_active_member_info)](module/Base/login_log/logic/calc_active_member_info.md)|否|
 |[成员(MEMBER)](module/Base/member#处理逻辑)|[添加共享页面非空间下成员(add_shared_page_member)](module/Base/member/logic/add_shared_page_member.md)|否|
 |[成员(MEMBER)](module/Base/member#处理逻辑)|[添加共享页面非空间下成员（移动端）(mob_add_shared_page_member)](module/Base/member/logic/mob_add_shared_page_member.md)|否|
+|[成员(MEMBER)](module/Base/member#处理逻辑)|[获取资源成员（全局）(resource_member)](module/Base/member/logic/resource_member.md)|否|
 |[成员(MEMBER)](module/Base/member#处理逻辑)|[选择资源成员（全局）(choose_resource_member)](module/Base/member/logic/choose_resource_member.md)|否|
 |[成员(MEMBER)](module/Base/member#处理逻辑)|[非空间下成员(not_space_mmeber)](module/Base/member/logic/not_space_mmeber.md)|否|
 |[页面(PAGE)](module/Wiki/article_page#处理逻辑)|[共享设置(shared_setting)](module/Wiki/article_page/logic/shared_setting.md)|否|
@@ -865,14 +866,14 @@
 ### 操作标识未配置映射<sup class="footnote-symbol"> <font color=orange>[6]</font></sup>
 | 实体col200   | 操作标识col300  |
 | --------   |------------|
-|[页面版本(PAGE_VERSION)](module/Wiki/page_version.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
-|[评论(COMMENT)](module/Base/comment.md)|READ<br>DELETE<br>UPDATE|
-|[执行人(EXECUTOR)](module/Base/executor.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
-|[关注(ATTENTION)](module/Base/attention.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
 |[执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
+|[关注(ATTENTION)](module/Base/attention.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
+|[评论(COMMENT)](module/Base/comment.md)|READ<br>DELETE<br>UPDATE|
 |[迭代变更(SPRINT_ALTERATION)](module/ProjMgmt/sprint_alteration.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
+|[页面版本(PAGE_VERSION)](module/Wiki/page_version.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
+|[执行人(EXECUTOR)](module/Base/executor.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
 
-### 除主键、主信息、预置属性外，不包含其他配置的表格<sup class="footnote-symbol"> <font color=orange>[29]</font></sup>
+### 除主键、主信息、预置属性外，不包含其他配置的表格<sup class="footnote-symbol"> <font color=orange>[30]</font></sup>
 | 实体col200   |   视图col400 | 表格col400  |
 | --------   |------------|------------|
 |[活动(ACTIVITY)](module/Base/activity)|主表格(main)|[活动(activity_pick_up_grid_view)](app/view/activity_pick_up_grid_view)|
@@ -886,6 +887,7 @@
 |[效能成员(INSIGHT_MEMBER)](module/Insight/insight_member)|主表格(main)|[效能成员(insight_member_grid_view)](app/view/insight_member_grid_view)|
 |[岗位(JOB)](module/Base/job)|主表格(main)|[岗位(job_pick_up_grid_view)](app/view/job_pick_up_grid_view)|
 |[成员(MEMBER)](module/Base/member)|资源成员多项选择视图_表格(resource_mpick_up_grid)|[成员(member_portfolio_resource_mpick_up_grid_view)](app/view/member_portfolio_resource_mpick_up_grid_view)|
+|[第三方用户(OPENUSER)](module/ebsx/openuser)|主表格(main)|[第三方用户(openuser_grid_view)](app/view/openuser_grid_view)|
 |[页面(PAGE)](module/Wiki/article_page)|页面回收站表格视图_表格(recycle_grid_view_grid)|[回收站(article_page_recycle_grid_view)](app/view/article_page_recycle_grid_view)|
 |[系统参数(PARAMETER)](module/Base/parameter)|系统参数表格部件(all_parameter_grid)|[系统参数(parameter_grid_view)](app/view/parameter_grid_view)|
 |[文件夹(PORTFOLIO)](module/Base/portfolio)|选择项目集表格(choose_project_grid)|[文件夹(portfolio_pick_up_grid_view)](app/view/portfolio_pick_up_grid_view)|
@@ -905,7 +907,7 @@
 |[工时类别(WORKLOAD_TYPE)](module/Base/workload_type)|主表格(main)|[工时类别(workload_type_pick_up_grid_view)](app/view/workload_type_pick_up_grid_view)|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|回收站_表格(recycle_bin_grid)|[工作项(work_item_case_re_bug_mpick_up_grid_view)](app/view/work_item_case_re_bug_mpick_up_grid_view)|
 
-### 无搜索项的搜索表单<sup class="footnote-symbol"> <font color=orange>[73]</font></sup>
+### 无搜索项的搜索表单<sup class="footnote-symbol"> <font color=orange>[74]</font></sup>
 | 实体col200   |   视图col400 | 搜索表单col400  |
 | --------   |------------|-----------|
 |[活动(ACTIVITY)](module/Base/activity)|全部活动列表（测试）_搜索表单(test_all_list_view_search_form)|[活动(activity_pick_up_grid_view)](app/view/activity_pick_up_grid_view)|
@@ -937,6 +939,7 @@
 |[测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member)|默认搜索表单(default)|[测试库成员(library_member_assigned_grid_view)](app/view/library_member_assigned_grid_view)|
 |[登录日志(LOGIN_LOG)](module/Base/login_log)|默认搜索表单(default)|[登录日志(login_log_grid_view)](app/view/login_log_grid_view)|
 |[成员(MEMBER)](module/Base/member)|成员职位表格视图_搜索表单(position_grid_view_search_form)|[成员(member_grid_view)](app/view/member_grid_view)|
+|[第三方用户(OPENUSER)](module/ebsx/openuser)|默认搜索表单(default)|[第三方用户(openuser_grid_view)](app/view/openuser_grid_view)|
 |[页面(PAGE)](module/Wiki/article_page)|默认搜索表单(default)|[我的收藏(article_page_my_favorite_page_grid_view)](app/view/article_page_my_favorite_page_grid_view)|
 |[系统参数(PARAMETER)](module/Base/parameter)|默认搜索表单(default)|[系统参数(parameter_grid_view)](app/view/parameter_grid_view)|
 |[文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member)|默认搜索表单(default)|[文件夹成员(portfolio_member_project_bind_member_grid_view)](app/view/portfolio_member_project_bind_member_grid_view)|
@@ -982,7 +985,7 @@
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|工时反查表格视图_搜索表单(usr07223309_search_form)|[工作项完成率(work_item_completed_drill_detail_grid_view)](app/view/work_item_completed_drill_detail_grid_view)|
 |[工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type)|默认搜索表单(default)|[工作项配置(work_item_type_global_setting_mixed)](app/view/work_item_type_global_setting_mixed)|
 
-### 除主键、主信息、预置属性外，不包含其他配置的表单<sup class="footnote-symbol"> <font color=orange>[69]</font></sup>
+### 除主键、主信息、预置属性外，不包含其他配置的表单<sup class="footnote-symbol"> <font color=orange>[70]</font></sup>
 | 实体col200   |   视图col400 |表单col400  |
 | --------   |------------|------------|
 |[资源组件(ADDON_RESOURCE)](module/Base/addon_resource)|容量设置表单(capacity_form)|[容量设置(addon_resource_all_capacity_view)](app/view/addon_resource_all_capacity_view)|
@@ -1011,6 +1014,7 @@
 |[登录日志(LOGIN_LOG)](module/Base/login_log)|主编辑表单(main)|[登录日志(login_log_edit_view)](app/view/login_log_edit_view)|
 |[后台管理(MANAGEMENT)](module/Base/management)|主编辑表单(main)|[配置中心(management_test_setting_view)](app/view/management_test_setting_view)|
 |[通知设置(NOTIFY_SETTING)](module/Base/notify_setting)|config_view_表单(测试)(config_view_test_form)|[通知设置(notify_setting_config_view)](app/view/notify_setting_config_view)|
+|[第三方用户(OPENUSER)](module/ebsx/openuser)|主编辑表单(main)|[第三方用户(openuser_edit_view)](app/view/openuser_edit_view)|
 |[页面(PAGE)](module/Wiki/article_page)|引用代码表_表单(test_view_form)|[页面(article_page_edit_view)](app/view/article_page_edit_view)|
 |[文件夹(PORTFOLIO)](module/Base/portfolio)|项目集首页视图_表单(project_index_view_form)|[高级设置(portfolio_project_set_advanced_view)](app/view/portfolio_project_set_advanced_view)|
 |[产品(PRODUCT)](module/ProdMgmt/product)|产品首页视图_表单(index_view_form)|[高级设置(product_advanced_setting_edit_view)](app/view/product_advanced_setting_edit_view)|

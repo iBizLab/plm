@@ -17,7 +17,7 @@
 |关注人|ATTENTIONS_IMP|文本，可指定长度|100|是||
 |关注数|ATTENTION_COUNT|文本，可指定长度|200|是||
 |需求来源|BACKLOG_FROM|单项选择(文本值)|60|是||
-|需求类型|BACKLOG_TYPE|[单项选择(文本值)](index/dictionary_index#requirement_type "需求类型")|60|是||
+|需求类型|BACKLOG_TYPE|单项选择(文本值)|60|是||
 |看板标识|BOARD_ID|外键值|100|是||
 |看板名称|BOARD_NAME|外键值文本|200|是||
 |选择版本标识|CHOOSE_VERSION_ID|文本，可指定长度|100|是||
@@ -30,6 +30,7 @@
 |当前版本名称|CUR_VERSION_NAME|文本，可指定长度|100|是||
 |交付物|DELIVERABLE|一对多关系数据集合|1048576|是||
 |交付物|DELIVERABLE_IMP|文本，可指定长度|100|是||
+|依赖|DEPENDENCIES|一对多关系数据集合|1048576|是||
 |描述|DESCRIPTION|长文本，没有长度限制|1048576|是||
 |截止时间|END_AT|日期型||是||
 |看板栏标识|ENTRY_ID|外键值|100|是||
@@ -214,7 +215,7 @@
 |需求来源|BACKLOG_FROM|单项选择(文本值)|60|是||
 |复现概率|REAPPEAR_PROBABILITY|单项选择(文本值)|60|是||
 |优先级|PRIORITY|单项选择(文本值)|100|是||
-|需求类型|BACKLOG_TYPE|[单项选择(文本值)](index/dictionary_index#requirement_type "需求类型")|60|是||
+|需求类型|BACKLOG_TYPE|单项选择(文本值)|60|是||
 |严重程度|SEVERITY|单项选择(文本值)|60|是||
 |风险|RISK|单项选择(文本值)|60|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
@@ -259,6 +260,100 @@
 | --------   |------------| -----  | -----  | :----: | -------- |
 |开始时间|START_AT|日期型||是||
 |截止时间|END_AT|日期型||是||
+
+</el-tab-pane>
+<el-tab-pane label="规划" name="field_group_plan">
+
+|    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|看板标识|BOARD_ID|外键值|100|是||
+|项目是否归档|PROJECT_IS_ARCHIVED|外键值附加数据||是||
+|项目是否删除|PROJECT_IS_DELETED|外键值附加数据||是||
+|交付物|DELIVERABLE_IMP|文本，可指定长度|100|是||
+|逾期天数|OVERDUE_TIME|文本，可指定长度|200|是||
+|完成人|FINISHER|文本，可指定长度|100|是||
+|实际结束时间|ACTUAL_END_AT|日期时间型||是||
+|实际开始时间|ACTUAL_START_AT|日期时间型||是||
+|多人任务|MULTIPLE_PEOPLE|是否逻辑||是||
+|执行人|EXECUTORS|一对多关系数据集合|1048576|是||
+|是否超时|IS_OVERTIME|整型||是||
+|解决办法|SOLUTION_WAY|长文本，长度1000|2000|是||
+|标签|TAGS|长文本，长度1000|2000|是||
+|父工作项类型|P_WORK_ITEM_TYPE_ID|外键值附加数据|100|是||
+|编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
+|编号<sup class="footnote-symbol">[[序列]](index/sequence_index#seq_work_item_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
+|关注|ATTENTIONS|一对多关系数据集合|1048576|是||
+|原始状态|WORK_ITEM_ORIGIN_STATE|外键值附加数据|100|是||
+|状态|STATE|外键值|100|否||
+|发布阶段|RELEASE_STATUS|外键值附加数据|60|是||
+|工作项状态类型|STATE_TYPE|[外键值附加数据](index/dictionary_index#state_type "工作项状态类型")|60|是||
+|序号|SEQUENCE|数值||是||
+|所在看板栏位置|ENTRY_POSITION|整型||是||
+|统计日期字段|REP_DATE|日期型||是||
+|截止时间|END_AT|日期型||是||
+|报表值3|REP_VALUE_3|整型||是||
+|最近创建日期|RECENT_CREATE_DAYS|整型||是||
+|报表值2|REP_VALUE_2|整型||是||
+|工作项类型序号|WORK_ITEM_TYPE_SEQUENCE|外键值附加数据||是||
+|工作项类型|WORK_ITEM_TYPE_ID|外键值|100|否||
+|工作项类型分组|WORK_ITEM_TYPE_GROUP|[外键值附加数据](index/dictionary_index#work_item_type_group "工作项类型分组")|60|是||
+|工作项下级类型|WORK_ITEM_SUB_TYPE|外键值附加数据|200|是||
+|顶级工作项标题|TOP_TITLE|外键值文本|500|是||
+|顶级工作项标识|TOP_ID|外键值|100|是||
+|测试计划ID|TEST_PLAN_ID|文本，可指定长度|100|是||
+|泳道标识|SWIMLANE_ID|外键值|100|是||
+|迭代标识|SPRINT_ID|外键值|100|是||
+|报表值1|REP_VALUE_1|整型||是||
+|报表百分值|REP_PERCENT_VALUE|浮点||是||
+|报表分组属性|REP_GROUP_VALUE|文本，可指定长度|100|是||
+|项目发布标识|RELEASE_ID|外键值|100|是||
+|项目标识|PROJECT_IDENTIFIER|外键值附加数据|15|是||
+|项目|PROJECT_ID|外键值|100|否||
+|父标识|PID|外键值|100|是||
+|是否叶子节点|IS_LEAF|是否逻辑||是||
+|是否已删除|IS_DELETED|是否逻辑||是||
+|是否已归档|IS_ARCHIVED|是否逻辑||是||
+|标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|看板栏状态|ENTRY_STATUS|文本，可指定长度|100|是||
+|看板栏标识|ENTRY_ID|外键值|100|是||
+|交付物|DELIVERABLE|一对多关系数据集合|1048576|是||
+|当前版本名称|CUR_VERSION_NAME|文本，可指定长度|100|是||
+|当前版本标识|CUR_VERSION_ID|文本，可指定长度|100|是||
+|选择版本名称|CHOOSE_VERSION_NAME|文本，可指定长度|100|是||
+|选择版本标识|CHOOSE_VERSION_ID|文本，可指定长度|100|是||
+|关注人|ATTENTIONS_IMP|文本，可指定长度|100|是||
+|负责人|ASSIGNEE_ID|外键值|100|是||
+|统计数|REP_NUM|数值||是||
+|看板栏名称|ENTRY_NAME|外键值文本|200|是||
+|迭代状态|SPRINT_STATUS|[外键值附加数据](index/dictionary_index#sprint_status "迭代状态")|60|是||
+|迭代名称|SPRINT_NAME|外键值文本|200|是||
+|项目发布名称|RELEASE_NAME|外键值文本|200|是||
+|剩余工时|REMAINING_WORKLOAD|数值||是||
+|风险|RISK|单项选择(文本值)|60|是||
+|建立时间|CREATE_TIME|日期时间型||否||
+|严重程度|SEVERITY|单项选择(文本值)|60|是||
+|开始时间|START_AT|日期型||是||
+|建立人|CREATE_MAN|文本，可指定长度|100|否||
+|标题|TITLE|文本，可指定长度|500|否||
+|需求来源|BACKLOG_FROM|单项选择(文本值)|60|是||
+|任务类别|JOB_TYPE|单项选择(文本值)|60|是||
+|附件|ATTACHMENTS|一对多关系数据集合|1048576|是||
+|实际工时|ACTUAL_WORKLOAD|数值||是||
+|项目类型|PROJECT_TYPE|[外键值附加数据](index/dictionary_index#project_type "项目类型")|60|是||
+|完成时间|COMPLETED_AT|日期时间型||是||
+|复现概率|REAPPEAR_PROBABILITY|单项选择(文本值)|60|是||
+|需求类型|BACKLOG_TYPE|单项选择(文本值)|60|是||
+|负责人|ASSIGNEE_NAME|外键值文本|100|是||
+|优先级|PRIORITY|单项选择(文本值)|100|是||
+|看板名称|BOARD_NAME|外键值文本|200|是||
+|更新人|UPDATE_MAN|文本，可指定长度|100|否||
+|更新时间|UPDATE_TIME|日期时间型||否||
+|预估工时|ESTIMATED_WORKLOAD|数值||是||
+|工时进度|WORKLOAD_SCHEDULE|数值||是||
+|所属项目|PROJECT_NAME|外键值文本|200|是||
+|工作项类型|WORK_ITEM_TYPE_NAME|外键值文本|200|是||
+|父工作项|PTITLE|外键值文本|500|是||
+|依赖|DEPENDENCIES|一对多关系数据集合|1048576|是||
 
 </el-tab-pane>
 <el-tab-pane label="资源分配" name="field_group_resource_assignment">
@@ -308,7 +403,7 @@
 |编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
 |所属项目|PROJECT_NAME|外键值文本|200|是||
 |迭代标识|SPRINT_ID|外键值|100|是||
-|需求类型|BACKLOG_TYPE|[单项选择(文本值)](index/dictionary_index#requirement_type "需求类型")|60|是||
+|需求类型|BACKLOG_TYPE|单项选择(文本值)|60|是||
 |需求来源|BACKLOG_FROM|单项选择(文本值)|60|是||
 |风险|RISK|单项选择(文本值)|60|是||
 |迭代名称|SPRINT_NAME|外键值文本|200|是||
@@ -365,6 +460,7 @@
 |[DERCUSTOM_APP_VIEW_THEME_WORK_ITEM](der/DERCUSTOM_APP_VIEW_THEME_WORK_ITEM)|[应用视图主题(APP_VIEW_THEME)](module/ebsx/app_view_theme)|自定义关系||
 |[DERCUSTOM_ATTENTION_WORK_ITEM_OWNER_ID](der/DERCUSTOM_ATTENTION_WORK_ITEM_OWNER_ID)|[关注(ATTENTION)](module/Base/attention)|自定义关系||
 |[DERCUSTOM_COMMENT_WORK_ITEM_PRINCIPAL_ID](der/DERCUSTOM_COMMENT_WORK_ITEM_PRINCIPAL_ID)|[评论(COMMENT)](module/Base/comment)|自定义关系||
+|[DERCUSTOM_DEPENDENCY_WORK_ITEM](der/DERCUSTOM_DEPENDENCY_WORK_ITEM)|[依赖(DEPENDENCY)](module/Base/dependency)|自定义关系||
 |[DERCUSTOM_EXECUTOR_WORK_ITEM_OWNER_ID](der/DERCUSTOM_EXECUTOR_WORK_ITEM_OWNER_ID)|[执行人(EXECUTOR)](module/Base/executor)|自定义关系||
 |[DERCUSTOM_RECENT_WORK_ITEM](der/DERCUSTOM_RECENT_WORK_ITEM)|[最近访问(RECENT)](module/Base/recent)|自定义关系||
 |[DERCUSTOM_RELATION_TARGET_WORK_ITEM](der/DERCUSTOM_RELATION_TARGET_WORK_ITEM)|[关联(RELATION)](module/Base/relation)|自定义关系||
@@ -893,6 +989,7 @@
 | 新建用户故事（移动端scrum） | mob_create_scrum_story | 新建用户故事 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
 | 打开评论列表（移动端） | open_comment_list | 打开评论列表 |单项数据|<details><summary>打开视图或向导（模态）</summary>[评论](app/view/comment_mob_comment_md_view)</details>||
 | 删除（移动端工具栏） | mob_toolbar_delete | 删除 |多项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
+| 查看预估工时明细（移动端） | mob_check_forecast_workload_detail | 查看工时明细 |无数据|<details><summary>打开视图或向导（模态）</summary>[工时记录](app/view/workload_mob_forecast_detail_view)</details>||
 | 打开更多我创建的工作项 | open_more_my_create | 打开更多我创建的工作项 |无数据|用户自定义||
 | 新建缺陷（测试计划关联） | new_test_plan_bug | 新建缺陷 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_quick_create_bug_view)</details>|测试计划分页导航 → 缺陷分页 → 表格工具栏 「 新建缺陷 」|
 | 新建任务（移动端waterfall） | mob_create_waterfall_task | 新建任务 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
@@ -1002,6 +1099,7 @@
 | 查看预估工时明细 | check_estimated_workload_detail | 查看预估工时明细 |无数据|用户自定义||
 | 分配负责人 | change_assignee | 分配负责人 |多项数据（主键）|<details><summary>后台调用</summary>[change_assignee](#行为)||
 | 复制链接 | copy_link | 复制链接 |单项数据|用户自定义||
+| 添加预估工时（移动端） | mob_add_forecast_workload | 添加预估工时 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[登记预估工时](app/view/workload_mob_forecast_edit_view)</details>||
 | 新建缺陷（kanban动态） | new_dyna_kanban_bug | 新建缺陷 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_kanban_quick_create_view)</details>||
 | 新建里程碑（waterfall） | new_waterfall_milestone | 新建里程碑 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
 | 更改工作项状态 | change_work_item_state | 更改状态 |单项数据（主键）|<details><summary>打开编辑表单</summary></details>||

@@ -2662,6 +2662,79 @@ and exists(select 1 from `project` t3 where t3.id = t2.project_id and t3.id = #{
 ```
 
 
+## [依赖(DEPENDENCY)](module/Base/dependency.md) :id=dependency
+
+#### DEFAULT :id=dependency-Default
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`ID`,
+t1.`LEVEL`,
+t1.`NAME`,
+t1.`OWNER_TYPE`,
+t1.`PARENT_VERSION_ID`,
+t1.`PRINCIPAL_ID`,
+t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
+t1.`TARGET_ID`,
+t1.`TARGET_TYPE`,
+t1.`TARGET_VERSION_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `relation` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=dependency-View
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`ID`,
+t1.`LEVEL`,
+t1.`NAME`,
+t1.`OWNER_TYPE`,
+t1.`PARENT_VERSION_ID`,
+t1.`PRINCIPAL_ID`,
+t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
+t1.`TARGET_ID`,
+t1.`TARGET_TYPE`,
+t1.`TARGET_VERSION_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `relation` t1 
+
+```
+
+#### 工作项依赖(dependency_work_items) :id=dependency-dependency_work_items
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`ID`,
+t1.`LEVEL`,
+t1.`NAME`,
+t1.`OWNER_TYPE`,
+t1.`PARENT_VERSION_ID`,
+t1.`PRINCIPAL_ID`,
+t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
+t1.`TARGET_ID`,
+t1.`TARGET_TYPE`,
+t1.`TARGET_VERSION_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `relation` t1 
+
+WHERE ( t1.`PRINCIPAL_TYPE` = 'dependency' )
+```
+
+
 ## [数据字典(DICTIONARY)](module/Base/dictionary_data.md) :id=dictionary_data
 
 #### 数据查询(DEFAULT) :id=dictionary_data-Default
@@ -7408,6 +7481,70 @@ t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `OBJECTIVE` t1 
 
+```
+
+
+## [第三方用户(OPENUSER)](module/ebsx/openuser.md) :id=openuser
+
+#### 数据查询(DEFAULT) :id=openuser-Default
+```sql
+SELECT
+t1.`CREATEDATE`,
+t1.`CREATEMAN`,
+t1.`DEPTS`,
+t1.`ISBINDING`,
+t1.`MOBILE`,
+t1.`OPENUSERCODE`,
+t1.`OPENUSERID`,
+t1.`OPENUSERNAME`,
+t1.`OPEN_TYPE`,
+t1.`ORGID`,
+t1.`UPDATEDATE`,
+t1.`UPDATEMAN`,
+t1.`USERID`
+FROM `IBZOPENUSER` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=openuser-View
+```sql
+SELECT
+t1.`CREATEDATE`,
+t1.`CREATEMAN`,
+t1.`DEPTS`,
+t1.`ISBINDING`,
+t1.`MOBILE`,
+t1.`OPENUSERCODE`,
+t1.`OPENUSERID`,
+t1.`OPENUSERNAME`,
+t1.`OPEN_TYPE`,
+t1.`ORGID`,
+t1.`UPDATEDATE`,
+t1.`UPDATEMAN`,
+t1.`USERID`
+FROM `IBZOPENUSER` t1 
+
+```
+
+#### 企业微信(wxwork) :id=openuser-wxwork
+```sql
+SELECT
+t1.`CREATEDATE`,
+t1.`CREATEMAN`,
+t1.`DEPTS`,
+t1.`ISBINDING`,
+t1.`MOBILE`,
+t1.`OPENUSERCODE`,
+t1.`OPENUSERID`,
+t1.`OPENUSERNAME`,
+t1.`OPEN_TYPE`,
+t1.`ORGID`,
+t1.`UPDATEDATE`,
+t1.`UPDATEMAN`,
+t1.`USERID`
+FROM `IBZOPENUSER` t1 
+
+WHERE ( t1.`OPEN_TYPE` = 'wxwork' )
 ```
 
 

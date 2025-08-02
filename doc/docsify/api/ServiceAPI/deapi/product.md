@@ -16,6 +16,8 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|主题色|
@@ -26,8 +28,6 @@
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
 |<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 |<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
@@ -36,6 +36,12 @@
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
   "identifier" : null,
   "visibility" : null,
   "color" : null,
@@ -46,12 +52,6 @@
   "members" : null,
   "scope_type" : null,
   "scope_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
   "user_tag" : null,
   "user_tag2" : null,
 }
@@ -62,6 +62,12 @@
 ```json
 
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
   "identifier" : null,
   "visibility" : null,
   "color" : null,
@@ -72,12 +78,6 @@
   "members" : null,
   "scope_type" : null,
   "scope_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
   "user_tag" : null,
   "user_tag2" : null,
 }
@@ -108,6 +108,12 @@
 ```json
 
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
   "identifier" : null,
   "visibility" : null,
   "color" : null,
@@ -118,12 +124,6 @@
   "members" : null,
   "scope_type" : null,
   "scope_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
   "user_tag" : null,
   "user_tag2" : null,
 }
@@ -173,6 +173,8 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|主题色|
@@ -183,8 +185,6 @@
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
 |<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 |<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
@@ -193,6 +193,12 @@
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
   "identifier" : null,
   "visibility" : null,
   "color" : null,
@@ -203,12 +209,6 @@
   "members" : null,
   "scope_type" : null,
   "scope_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
   "user_tag" : null,
   "user_tag2" : null,
 }
@@ -219,6 +219,12 @@
 ```json
 
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
   "identifier" : null,
   "visibility" : null,
   "color" : null,
@@ -229,12 +235,6 @@
   "members" : null,
   "scope_type" : null,
   "scope_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
   "user_tag" : null,
   "user_tag2" : null,
 }
@@ -263,6 +263,8 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|主题色|
@@ -273,8 +275,6 @@
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
 |<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 |<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
@@ -283,6 +283,12 @@
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
   "identifier" : null,
   "visibility" : null,
   "color" : null,
@@ -293,12 +299,6 @@
   "members" : null,
   "scope_type" : null,
   "scope_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
   "user_tag" : null,
   "user_tag2" : null,
 }
@@ -328,6 +328,8 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|主题色|
@@ -338,8 +340,6 @@
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
 |<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 |<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
@@ -348,6 +348,12 @@
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
   "identifier" : null,
   "visibility" : null,
   "color" : null,
@@ -358,12 +364,6 @@
   "members" : null,
   "scope_type" : null,
   "scope_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
   "user_tag" : null,
   "user_tag2" : null,
 }
@@ -393,6 +393,8 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|主题色|
@@ -403,8 +405,6 @@
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
 |<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 |<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
@@ -413,6 +413,12 @@
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
   "identifier" : null,
   "visibility" : null,
   "color" : null,
@@ -423,12 +429,6 @@
   "members" : null,
   "scope_type" : null,
   "scope_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
   "user_tag" : null,
   "user_tag2" : null,
 }
@@ -453,6 +453,8 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|主题色|
@@ -463,8 +465,6 @@
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
 |<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 |<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
@@ -473,6 +473,12 @@
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
   "identifier" : null,
   "visibility" : null,
   "color" : null,
@@ -483,12 +489,6 @@
   "members" : null,
   "scope_type" : null,
   "scope_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
   "user_tag" : null,
   "user_tag2" : null,
 }
@@ -522,6 +522,8 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|主题色|
@@ -532,8 +534,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
 |<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 |<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
@@ -542,6 +542,12 @@ Integer
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
   "identifier" : null,
   "visibility" : null,
   "color" : null,
@@ -552,12 +558,6 @@ Integer
   "members" : null,
   "scope_type" : null,
   "scope_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
   "user_tag" : null,
   "user_tag2" : null,
 }
@@ -587,6 +587,8 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|主题色|
@@ -597,8 +599,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
 |<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 |<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
@@ -607,6 +607,12 @@ Integer
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
   "identifier" : null,
   "visibility" : null,
   "color" : null,
@@ -617,12 +623,6 @@ Integer
   "members" : null,
   "scope_type" : null,
   "scope_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
   "user_tag" : null,
   "user_tag2" : null,
 }
@@ -647,6 +647,8 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|主题色|
@@ -657,8 +659,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
 |<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 |<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
@@ -667,6 +667,12 @@ Integer
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
   "identifier" : null,
   "visibility" : null,
   "color" : null,
@@ -677,12 +683,6 @@ Integer
   "members" : null,
   "scope_type" : null,
   "scope_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
   "user_tag" : null,
   "user_tag2" : null,
 }
@@ -693,6 +693,12 @@ Integer
 ```json
 
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
   "identifier" : null,
   "visibility" : null,
   "color" : null,
@@ -703,12 +709,6 @@ Integer
   "members" : null,
   "scope_type" : null,
   "scope_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
   "user_tag" : null,
   "user_tag2" : null,
 }
@@ -737,6 +737,8 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|主题色|
@@ -747,8 +749,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
 |<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 |<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
@@ -757,6 +757,12 @@ Integer
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
   "identifier" : null,
   "visibility" : null,
   "color" : null,
@@ -767,12 +773,6 @@ Integer
   "members" : null,
   "scope_type" : null,
   "scope_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
   "user_tag" : null,
   "user_tag2" : null,
 }
@@ -802,6 +802,8 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|主题色|
@@ -812,8 +814,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
 |<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 |<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
@@ -822,6 +822,12 @@ Integer
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
   "identifier" : null,
   "visibility" : null,
   "color" : null,
@@ -832,12 +838,6 @@ Integer
   "members" : null,
   "scope_type" : null,
   "scope_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
   "user_tag" : null,
   "user_tag2" : null,
 }
@@ -848,6 +848,12 @@ Integer
 ```json
 
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
   "identifier" : null,
   "visibility" : null,
   "color" : null,
@@ -858,12 +864,6 @@ Integer
   "members" : null,
   "scope_type" : null,
   "scope_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
   "user_tag" : null,
   "user_tag2" : null,
 }
@@ -892,6 +892,8 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|主题色|
@@ -902,8 +904,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
 |<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 |<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
@@ -912,6 +912,12 @@ Integer
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
   "identifier" : null,
   "visibility" : null,
   "color" : null,
@@ -922,12 +928,6 @@ Integer
   "members" : null,
   "scope_type" : null,
   "scope_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
   "user_tag" : null,
   "user_tag2" : null,
 }
@@ -957,6 +957,8 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|主题色|
@@ -967,8 +969,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
 |<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 |<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
@@ -977,6 +977,12 @@ Integer
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
   "identifier" : null,
   "visibility" : null,
   "color" : null,
@@ -987,12 +993,6 @@ Integer
   "members" : null,
   "scope_type" : null,
   "scope_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
   "user_tag" : null,
   "user_tag2" : null,
 }
@@ -1022,6 +1022,8 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|主题色|
@@ -1032,8 +1034,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
 |<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 |<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
@@ -1042,6 +1042,12 @@ Integer
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
   "identifier" : null,
   "visibility" : null,
   "color" : null,
@@ -1052,12 +1058,6 @@ Integer
   "members" : null,
   "scope_type" : null,
   "scope_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
   "user_tag" : null,
   "user_tag2" : null,
 }
@@ -1068,6 +1068,12 @@ Integer
 ```json
 
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
   "identifier" : null,
   "visibility" : null,
   "color" : null,
@@ -1078,12 +1084,6 @@ Integer
   "members" : null,
   "scope_type" : null,
   "scope_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
   "user_tag" : null,
   "user_tag2" : null,
 }
@@ -1112,6 +1112,8 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|主题色|
@@ -1122,8 +1124,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
 |<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 |<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
@@ -1132,6 +1132,12 @@ Integer
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
   "identifier" : null,
   "visibility" : null,
   "color" : null,
@@ -1142,12 +1148,6 @@ Integer
   "members" : null,
   "scope_type" : null,
   "scope_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
   "user_tag" : null,
   "user_tag2" : null,
 }
@@ -1177,6 +1177,8 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|主题色|
@@ -1187,8 +1189,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
 |<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 |<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
@@ -1197,6 +1197,12 @@ Integer
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
   "identifier" : null,
   "visibility" : null,
   "color" : null,
@@ -1207,12 +1213,6 @@ Integer
   "members" : null,
   "scope_type" : null,
   "scope_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
   "user_tag" : null,
   "user_tag2" : null,
 }
@@ -1237,6 +1237,8 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|主题色|
@@ -1247,8 +1249,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
 |<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 |<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
@@ -1257,6 +1257,12 @@ Integer
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
   "identifier" : null,
   "visibility" : null,
   "color" : null,
@@ -1267,12 +1273,6 @@ Integer
   "members" : null,
   "scope_type" : null,
   "scope_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
   "user_tag" : null,
   "user_tag2" : null,
 }
@@ -1283,6 +1283,12 @@ Integer
 ```json
 
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
   "identifier" : null,
   "visibility" : null,
   "color" : null,
@@ -1293,12 +1299,6 @@ Integer
   "members" : null,
   "scope_type" : null,
   "scope_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
   "user_tag" : null,
   "user_tag2" : null,
 }
@@ -1327,6 +1327,8 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">color</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|主题色|
@@ -1337,8 +1339,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
 |<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 |<el-row justify="space-between"><el-col :span="20">user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 |<el-row justify="space-between"><el-col :span="20">user_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
 
@@ -1347,6 +1347,12 @@ Integer
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
   "identifier" : null,
   "visibility" : null,
   "color" : null,
@@ -1357,12 +1363,6 @@ Integer
   "members" : null,
   "scope_type" : null,
   "scope_id" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
   "user_tag" : null,
   "user_tag2" : null,
 }
@@ -1424,6 +1424,12 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
     "identifier" : null,
     "visibility" : null,
     "color" : null,
@@ -1434,12 +1440,6 @@ Integer
     "members" : null,
     "scope_type" : null,
     "scope_id" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "id" : null,
-    "name" : null,
-    "update_man" : null,
-    "update_time" : null,
     "user_tag" : null,
     "user_tag2" : null,
   }
@@ -1500,6 +1500,12 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
     "identifier" : null,
     "visibility" : null,
     "color" : null,
@@ -1510,12 +1516,6 @@ Integer
     "members" : null,
     "scope_type" : null,
     "scope_id" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "id" : null,
-    "name" : null,
-    "update_man" : null,
-    "update_time" : null,
     "user_tag" : null,
     "user_tag2" : null,
   }
@@ -1576,6 +1576,12 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
     "identifier" : null,
     "visibility" : null,
     "color" : null,
@@ -1586,12 +1592,6 @@ Integer
     "members" : null,
     "scope_type" : null,
     "scope_id" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "id" : null,
-    "name" : null,
-    "update_man" : null,
-    "update_time" : null,
     "user_tag" : null,
     "user_tag2" : null,
   }
@@ -1652,6 +1652,12 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
     "identifier" : null,
     "visibility" : null,
     "color" : null,
@@ -1662,12 +1668,6 @@ Integer
     "members" : null,
     "scope_type" : null,
     "scope_id" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "id" : null,
-    "name" : null,
-    "update_man" : null,
-    "update_time" : null,
     "user_tag" : null,
     "user_tag2" : null,
   }
@@ -1728,6 +1728,12 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
     "identifier" : null,
     "visibility" : null,
     "color" : null,
@@ -1738,12 +1744,6 @@ Integer
     "members" : null,
     "scope_type" : null,
     "scope_id" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "id" : null,
-    "name" : null,
-    "update_man" : null,
-    "update_time" : null,
     "user_tag" : null,
     "user_tag2" : null,
   }
@@ -1804,6 +1804,12 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
     "identifier" : null,
     "visibility" : null,
     "color" : null,
@@ -1814,12 +1820,6 @@ Integer
     "members" : null,
     "scope_type" : null,
     "scope_id" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "id" : null,
-    "name" : null,
-    "update_man" : null,
-    "update_time" : null,
     "user_tag" : null,
     "user_tag2" : null,
   }
@@ -1880,6 +1880,12 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
     "identifier" : null,
     "visibility" : null,
     "color" : null,
@@ -1890,12 +1896,6 @@ Integer
     "members" : null,
     "scope_type" : null,
     "scope_id" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "id" : null,
-    "name" : null,
-    "update_man" : null,
-    "update_time" : null,
     "user_tag" : null,
     "user_tag2" : null,
   }
@@ -1956,6 +1956,12 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
     "identifier" : null,
     "visibility" : null,
     "color" : null,
@@ -1966,12 +1972,6 @@ Integer
     "members" : null,
     "scope_type" : null,
     "scope_id" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "id" : null,
-    "name" : null,
-    "update_man" : null,
-    "update_time" : null,
     "user_tag" : null,
     "user_tag2" : null,
   }
@@ -2032,6 +2032,12 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
     "identifier" : null,
     "visibility" : null,
     "color" : null,
@@ -2042,12 +2048,6 @@ Integer
     "members" : null,
     "scope_type" : null,
     "scope_id" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "id" : null,
-    "name" : null,
-    "update_man" : null,
-    "update_time" : null,
     "user_tag" : null,
     "user_tag2" : null,
   }
@@ -2108,6 +2108,12 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
     "identifier" : null,
     "visibility" : null,
     "color" : null,
@@ -2118,12 +2124,6 @@ Integer
     "members" : null,
     "scope_type" : null,
     "scope_id" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "id" : null,
-    "name" : null,
-    "update_man" : null,
-    "update_time" : null,
     "user_tag" : null,
     "user_tag2" : null,
   }
@@ -2184,6 +2184,12 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
     "identifier" : null,
     "visibility" : null,
     "color" : null,
@@ -2194,12 +2200,6 @@ Integer
     "members" : null,
     "scope_type" : null,
     "scope_id" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "id" : null,
-    "name" : null,
-    "update_man" : null,
-    "update_time" : null,
     "user_tag" : null,
     "user_tag2" : null,
   }
@@ -2260,6 +2260,12 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
     "identifier" : null,
     "visibility" : null,
     "color" : null,
@@ -2270,12 +2276,6 @@ Integer
     "members" : null,
     "scope_type" : null,
     "scope_id" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "id" : null,
-    "name" : null,
-    "update_man" : null,
-    "update_time" : null,
     "user_tag" : null,
     "user_tag2" : null,
   }
@@ -2336,6 +2336,12 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
     "identifier" : null,
     "visibility" : null,
     "color" : null,
@@ -2346,12 +2352,6 @@ Integer
     "members" : null,
     "scope_type" : null,
     "scope_id" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "id" : null,
-    "name" : null,
-    "update_man" : null,
-    "update_time" : null,
     "user_tag" : null,
     "user_tag2" : null,
   }
@@ -2412,6 +2412,12 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
     "identifier" : null,
     "visibility" : null,
     "color" : null,
@@ -2422,12 +2428,6 @@ Integer
     "members" : null,
     "scope_type" : null,
     "scope_id" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "id" : null,
-    "name" : null,
-    "update_man" : null,
-    "update_time" : null,
     "user_tag" : null,
     "user_tag2" : null,
   }
@@ -2488,6 +2488,12 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
     "identifier" : null,
     "visibility" : null,
     "color" : null,
@@ -2498,12 +2504,6 @@ Integer
     "members" : null,
     "scope_type" : null,
     "scope_id" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "id" : null,
-    "name" : null,
-    "update_man" : null,
-    "update_time" : null,
     "user_tag" : null,
     "user_tag2" : null,
   }

@@ -28,7 +28,7 @@
 |预估工时|ESTIMATED_WORKLOAD|数值||是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |需求来源|IDEA_FROM|单项选择(文本值)|60|是||
-|需求类型|IDEA_TYPE|[单项选择(文本值)](index/dictionary_index#requirement_type "需求类型")|60|是||
+|需求类型|IDEA_TYPE|单项选择(文本值)|60|是||
 |编号<sup class="footnote-symbol">[[序列]](index/sequence_index#seq_idea_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
 |是否已归档|IS_ARCHIVED|是否逻辑||是||
 |是否已删除|IS_DELETED|是否逻辑||是||
@@ -155,7 +155,7 @@
 |需求来源|IDEA_FROM|单项选择(文本值)|60|是||
 |状态|STATE|单项选择(文本值)|60|否||
 |优先级|PRIORITY|单项选择(文本值)|60|是||
-|需求类型|IDEA_TYPE|[单项选择(文本值)](index/dictionary_index#requirement_type "需求类型")|60|是||
+|需求类型|IDEA_TYPE|单项选择(文本值)|60|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |子产品名称|SECTION_NAME|外键值附加数据|200|是||
 |子产品标识|SECTION_ID|外键值附加数据|100|是||
@@ -594,6 +594,7 @@
 | 激活（工具栏） | toolbar_activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)|工具栏上按钮调用；|
 | 打开BI报表配置表单_需求占比 | open_bi_form_idea_ratio | 配置 |无数据|<details><summary>打开快捷编辑</summary></details>||
 | 新建子模块 | toolbar_tree_exp_view_node2_cm_deuiaction3_click | 新建子模块 |单项数据|用户自定义||
+| 查看预估工时明细（移动端） | mob_check_forecast_workload_detail | 查看预估工时明细 |无数据|<details><summary>打开视图或向导（模态）</summary>[工时记录](app/view/workload_mob_forecast_detail_view)</details>||
 | 关闭 | toolbar_show_edit_view_toolbar_deuiaction3_click | 关闭 |单项数据|用户自定义||
 | BI刷新 | bi_refresh | 刷新 |无数据|用户自定义||
 | 需求排期 | idea_re_plan | 需求排期 |多项数据（主键）|<details><summary>后台调用</summary>[idea_re_plan](#行为)|批操作工具栏上按钮调用|
@@ -621,6 +622,7 @@
 | 打开动态需求 | open_dyna_idea | 打开动态需求 |单项数据|<details><summary>打开视图或向导（模态）</summary>[需求](app/view/idea_main_view)</details>||
 | 关联测试用例（移动端） | mob_re_case | 关联测试用例 |无数据|<details><summary>后台调用</summary>[others_relation_idea](#行为)||
 | 恢复（工具栏） | recover_toolbar | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)|已删除需求详情页恢复按钮调用；恢复已删除的需求|
+| 添加预估工时（移动端） | mob_add_forecast_workload | 添加预估工时 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[登记预估工时](app/view/workload_mob_forecast_edit_view)</details>||
 | 关联工单（工具栏） | toolbar_link_ticket | 关联工单 |无数据|用户自定义||
 | 更新需求进度 | update_idea_progress | 更新需求进度 |单项数据（主键）|<details><summary>后台调用</summary>[update_idea_progress](#行为)||
 | 关联工作项（工具栏） | toolbar_link_work_item | 关联工作项 |无数据|用户自定义||

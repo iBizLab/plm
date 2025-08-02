@@ -492,7 +492,6 @@
 | 关联工单（工具栏） | toolbar_link_ticket | 关联工单 |无数据|用户自定义||
 | 客户新建工单（移动端） | mob_customer_create_ticket | 新建工单 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工单](app/view/ticket_mob_ticket_create_option_view)</details>||
 | 工单删除 | ticket_delete | 删除 |多项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
-| 关联工作项（工具栏） | toolbar_link_work_item | 关联工作项 |无数据|用户自定义||
 | 添加附件 | add_attachments | 添加附件 |无数据|用户自定义||
 | 确定 | panel_usr1226376706_button_okaction_click | 确定 |单项数据|用户自定义||
 | BI编辑 | bi_report_view | 编辑 |无数据|用户自定义||
@@ -510,12 +509,14 @@
 | 工单归档（工具栏） | toolbar_ticket_archive | 归档 |多项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 | 工单关联产品需求（移动端） | mob_ticket_relation_idea | 添加关联 |无数据|<details><summary>后台调用</summary>[others_relation_ticket](#行为)||
 | 工单关联工作项（移动端） | mob_add_work_item | 工单关联工作项 |无数据|<details><summary>后台调用</summary>[others_relation_ticket](#行为)||
+| 工作项 | toolbar_main_view_toolbar_deuiaction2_click | 工作项 |单项数据|用户自定义||
 | 刷新 | toolbar_ticket_grid_parts_toolbar_deuiaction2_click | 刷新 |单项数据|用户自定义||
 | 查看所有工单 | query_all_ticket | 查看所有工单 |无数据|<details><summary>打开视图或向导（模态）</summary>[全部工单](app/view/ticket_all_grid_view)</details>||
 | 新建工单（快速新建） | quick_new_ticket | 新建工单 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工单](app/view/ticket_quick_create_view)</details>||
 | 工单自定义导入 | ticket_custom_import_data | 导入 |无数据|<details><summary>打开数据导入视图</summary>[产品工单导入]()</details>||
 | 分配负责人 | allocate_person | 分配负责人 |多项数据（主键）|<details><summary>后台调用</summary>[allocate_person](#行为)||
 | 客户关联工单（移动端） | mob_customer_add_ticket | 关联工单 |无数据|<details><summary>后台调用</summary>[customer_choose_ticket](#行为)||
+| 工作项 | toolbar_test_main_view_toolbar_deuiaction2_click | 工作项 |单项数据|用户自定义||
 | 工单恢复 | ticket_recover | 恢复 |多项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
 | 配置 | panel_usr1022695769_button_calluilogic1_click | 工单设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[工单设计](app/view/ticket_dyna_tab_exp_view)</details>||
 | 关联产品需求（工具栏） | toolbar_link_product | 关联产品需求 |无数据|用户自定义||

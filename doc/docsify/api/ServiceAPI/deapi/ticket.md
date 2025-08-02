@@ -16,6 +16,12 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -45,18 +51,22 @@
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -86,16 +96,6 @@
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 ```
 
@@ -104,6 +104,16 @@
 ```json
 
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -133,16 +143,6 @@
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 
 ```
@@ -171,6 +171,16 @@
 ```json
 
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -200,16 +210,6 @@
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 
 ```
@@ -257,6 +257,12 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -286,18 +292,22 @@
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -327,16 +337,6 @@
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 ```
 
@@ -345,6 +345,16 @@
 ```json
 
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -374,16 +384,6 @@
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 
 ```
@@ -410,6 +410,12 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -439,18 +445,22 @@
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -480,16 +490,6 @@
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 ```
 
@@ -517,6 +517,12 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -546,18 +552,22 @@
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -587,16 +597,6 @@
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 ```
 
@@ -624,6 +624,12 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -653,18 +659,22 @@
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -694,16 +704,6 @@
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 ```
 
@@ -726,6 +726,12 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -755,18 +761,22 @@
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -796,16 +806,6 @@
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 ```
 
@@ -837,6 +837,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -866,18 +872,22 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -907,16 +917,6 @@ Integer
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 ```
 
@@ -944,6 +944,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -973,18 +979,22 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -1014,16 +1024,6 @@ Integer
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 ```
 
@@ -1032,6 +1032,16 @@ Integer
 ```json
 
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -1061,16 +1071,6 @@ Integer
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 
 ```
@@ -1097,6 +1097,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -1126,18 +1132,22 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -1167,16 +1177,6 @@ Integer
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 ```
 
@@ -1204,6 +1204,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -1233,18 +1239,22 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -1274,16 +1284,6 @@ Integer
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 ```
 
@@ -1313,6 +1313,16 @@ Integer
 ```json
 
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -1342,16 +1352,6 @@ Integer
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 
 ```
@@ -1373,6 +1373,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -1402,18 +1408,22 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -1443,16 +1453,6 @@ Integer
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 ```
 
@@ -1461,6 +1461,16 @@ Integer
 ```json
 
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -1490,16 +1500,6 @@ Integer
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 
 ```
@@ -1526,6 +1526,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -1555,18 +1561,22 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -1596,16 +1606,6 @@ Integer
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 ```
 
@@ -1633,6 +1633,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -1662,18 +1668,22 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -1703,16 +1713,6 @@ Integer
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 ```
 
@@ -1721,6 +1721,16 @@ Integer
 ```json
 
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -1750,16 +1760,6 @@ Integer
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 
 ```
@@ -1786,6 +1786,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -1815,18 +1821,22 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -1856,16 +1866,6 @@ Integer
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 ```
 
@@ -1893,6 +1893,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -1922,18 +1928,22 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -1963,16 +1973,6 @@ Integer
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 ```
 
@@ -1995,6 +1995,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -2024,18 +2030,22 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -2065,16 +2075,6 @@ Integer
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 ```
 
@@ -2083,6 +2083,16 @@ Integer
 ```json
 
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -2112,16 +2122,6 @@ Integer
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 
 ```
@@ -2150,6 +2150,16 @@ Integer
 ```json
 
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -2179,16 +2189,6 @@ Integer
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 
 ```
@@ -2215,6 +2215,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -2244,18 +2250,22 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "id" : null,
+  "name" : null,
+  "create_time" : null,
+  "create_man" : null,
+  "update_time" : null,
+  "update_man" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "customer_id" : null,
+  "customer_name" : null,
   "identifier" : null,
   "title" : null,
   "state" : null,
@@ -2285,16 +2295,6 @@ Integer
   "product_is_archived" : null,
   "attentions_imp" : null,
   "recent_create_days" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "customer_id" : null,
-  "customer_name" : null,
-  "id" : null,
-  "name" : null,
-  "product_id" : null,
-  "product_name" : null,
-  "update_man" : null,
-  "update_time" : null,
 }
 ```
 
@@ -2408,6 +2408,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -2437,16 +2447,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -2677,6 +2677,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -2706,16 +2716,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -2828,6 +2828,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -2857,16 +2867,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -3235,6 +3235,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -3264,16 +3274,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -3387,6 +3387,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -3416,16 +3426,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -3538,6 +3538,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -3567,16 +3577,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -3689,6 +3689,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -3718,16 +3728,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -3840,6 +3840,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -3869,16 +3879,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -3991,6 +3991,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -4020,16 +4030,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -4143,6 +4143,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -4172,16 +4182,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -4294,6 +4294,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -4323,16 +4333,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -4446,6 +4446,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -4475,16 +4485,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -4598,6 +4598,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -4627,16 +4637,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -4749,6 +4749,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -4778,16 +4788,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -4900,6 +4900,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -4929,16 +4939,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -5051,6 +5051,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -5080,16 +5090,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -5202,6 +5202,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -5231,16 +5241,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -5354,6 +5354,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -5383,16 +5393,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -5505,6 +5505,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -5534,16 +5544,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -5771,6 +5771,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -5800,16 +5810,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -5922,6 +5922,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -5951,16 +5961,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -6073,6 +6073,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -6102,16 +6112,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -6225,6 +6225,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -6254,16 +6264,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -6376,6 +6376,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -6405,16 +6415,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -6529,6 +6529,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -6558,16 +6568,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -6680,6 +6680,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -6709,16 +6719,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -6831,6 +6831,16 @@ Integer
 ```json
 [
   {
+    "id" : null,
+    "name" : null,
+    "create_time" : null,
+    "create_man" : null,
+    "update_time" : null,
+    "update_man" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "customer_id" : null,
+    "customer_name" : null,
     "identifier" : null,
     "title" : null,
     "state" : null,
@@ -6860,16 +6870,6 @@ Integer
     "product_is_archived" : null,
     "attentions_imp" : null,
     "recent_create_days" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "customer_id" : null,
-    "customer_name" : null,
-    "id" : null,
-    "name" : null,
-    "product_id" : null,
-    "product_name" : null,
-    "update_man" : null,
-    "update_time" : null,
   }
 ]
 ```
@@ -7059,6 +7059,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -7088,12 +7094,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
@@ -7163,6 +7163,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -7192,12 +7198,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
@@ -7225,6 +7225,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -7254,12 +7260,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
@@ -7287,6 +7287,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -7316,12 +7322,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
@@ -7349,6 +7349,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -7378,12 +7384,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
@@ -7410,6 +7410,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -7439,12 +7445,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
@@ -7472,6 +7472,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -7501,12 +7507,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
@@ -7534,6 +7534,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -7563,12 +7569,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
@@ -7596,6 +7596,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -7625,12 +7631,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
@@ -7658,6 +7658,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -7687,12 +7693,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
@@ -7740,6 +7740,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -7769,12 +7775,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
@@ -7802,6 +7802,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -7831,12 +7837,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
@@ -7864,6 +7864,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -7893,12 +7899,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
@@ -7926,6 +7926,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -7955,12 +7961,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
@@ -7988,6 +7988,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -8017,12 +8023,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
@@ -8049,6 +8049,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -8078,12 +8084,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 
@@ -8132,6 +8132,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
+|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
@@ -8161,12 +8167,6 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">product_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|产品是否归档|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
 |<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
-|<el-row justify="space-between"><el-col :span="20">customer_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户标识|
-|<el-row justify="space-between"><el-col :span="20">customer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品标识|
-|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 
 
 

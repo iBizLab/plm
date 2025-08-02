@@ -1219,7 +1219,7 @@ if(executors != null && executors != undefined && executors.length > 0){
 ctrl.evt.on('onFormDataChange', evt => {
     const { name } = evt;
     const data = ctrl.state.data;
-    if (['project_id', 'work_item_type_id'].includes(name) && data.work_item_type_id) {
+    if (['work_item_type_id'].includes(name) && data.work_item_type_id && data.project_id) {
         view.redrawView({
             context: { project: data.project_id, dynamicnew: true },
             params: { srfdatatype: data.work_item_type_id, work_item_type_id: data.work_item_type_id },

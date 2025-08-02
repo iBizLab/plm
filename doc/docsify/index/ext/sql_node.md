@@ -849,7 +849,7 @@ from (select CASE
 
 1. `Default(传入变量).ID(标识)`
 
-重置参数`result(返回结果)`，并将执行sql结果赋值给参数`result(返回结果)`
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
 #### [效能报表(INSIGHT_REPORT)](module/Insight/insight_report)的处理逻辑[删除类别(delete_categories)](module/Insight/insight_report/logic/delete_categories)
 
 节点：直接SQL调用当类别删除时修改发布的类别属性

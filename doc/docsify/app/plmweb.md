@@ -81,6 +81,7 @@
 |[保存命名版本](app/view/article_page_set_name_version_option_view)|article_page_set_name_version_option_view|保存命名版本|实体选项操作视图||
 |[共享页面表格视图](app/view/article_page_shared_grid_view)|article_page_shared_grid_view|共享页面|实体表格视图||
 |[共享设置](app/view/article_page_shared_setting_view)|article_page_shared_setting_view|共享设置|实体选项操作视图||
+|[共享](app/view/article_page_shared_view)|article_page_shared_view|页面|实体编辑视图||
 |[与我共享](app/view/article_page_shared_with_me_grid_view)|article_page_shared_with_me_grid_view|与我共享|实体表格视图||
 |[页面](app/view/article_page_shared_with_me_view)|article_page_shared_with_me_view|页面|实体编辑视图||
 |[页面实体自定义视图（展示）](app/view/article_page_show_custom_view)|article_page_show_custom_view|页面|实体自定义视图||
@@ -91,6 +92,7 @@
 |[页面数据统计表格](app/view/article_page_statistical_grid_view)|article_page_statistical_grid_view|数据统计|实体表格视图||
 |[测试协同编辑视图](app/view/article_page_test_edit_view)|article_page_test_edit_view|测试协同编辑视图|实体编辑视图||
 |[测试页面导入](app/view/article_page_test_grid_view)|article_page_test_grid_view|测试页面导入|实体表格视图||
+|[测试页面-引用代码表](app/view/article_page_test_view)|article_page_test_view|页面|实体编辑视图||
 |[空间页面](app/view/article_page_tree_exp_view)|article_page_tree_exp_view|空间页面|实体树导航视图||
 |[更新日志](app/view/article_page_updated_logs)|article_page_updated_logs|PLM系统更新日志|实体自定义视图||
 |[上传图标选项操作视图](app/view/article_page_upload_icon_option_view)|article_page_upload_icon_option_view|上传图标|实体选项操作视图||
@@ -457,6 +459,8 @@
 |[成员](app/view/member_shared_page_list_view)|member_shared_page_list_view|成员|实体列表视图||
 |[通知设置](app/view/notify_setting_config_view)|notify_setting_config_view|通知设置|实体编辑视图||
 |[消息设置](app/view/notify_setting_config_view_test)|notify_setting_config_view_test|消息设置|实体编辑视图||
+|[第三方用户编辑视图](app/view/openuser_edit_view)|openuser_edit_view|第三方用户|实体编辑视图|系统自动添加|
+|[第三方用户表格视图](app/view/openuser_grid_view)|openuser_grid_view|第三方用户|实体表格视图||
 |[组织编辑](app/view/organization_org_option_view)|organization_org_option_view|组织|实体选项操作视图||
 |[历史版本](app/view/page_version_list_exp_view)|page_version_list_exp_view|历史版本|实体列表导航视图||
 |[系统参数编辑视图](app/view/parameter_edit_view)|parameter_edit_view|系统参数|实体编辑视图|系统自动添加|

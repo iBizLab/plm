@@ -70,9 +70,9 @@ entity "PRODUCT_TICKET_TYPE\n产品工单类型" as PRODUCT_TICKET_TYPE [[$../mo
 entity "TICKET\n工单" as TICKET [[$../module/ProdMgmt/ticket {工单}]] {
         <&key> ID - 标识
         --
-        <&link-intact> ASSIGNEE_ID - 负责人标识
         <&link-intact> PRODUCT_ID - 产品标识
         <&link-intact> CUSTOMER_ID - 客户标识
+        <&link-intact> ASSIGNEE_ID - 负责人标识
 }
 entity "TICKET_TYPE\n工单类型" as TICKET_TYPE [[$../module/ProdMgmt/ticket_type {工单类型}]] {
         <&key> ID - 标识

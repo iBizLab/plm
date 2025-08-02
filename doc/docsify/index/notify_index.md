@@ -129,7 +129,7 @@
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -183,7 +183,7 @@ ${data.update_mantext}给你分配了工单：${data.title}
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.create_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.create_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -234,7 +234,7 @@ route://-/home/product=${data.id}/product_mob_product_tree/srfnavctx=%257B%2522s
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -289,7 +289,7 @@ srfnavctx={"customer":"${data.parent("owner_id").id}","product":"${data.parent("
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
 			    <div class="notice-card__avatar" style="flex-shrink: 0;">
-			        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+			        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
 			    </div>
 			    <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
 			        <div class="notice-card__event">
@@ -353,7 +353,7 @@ ${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -403,7 +403,7 @@ ${data.update_mantext}取消分配了需求：${data.title}
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -450,7 +450,7 @@ ${data.update_mantext}把你移除了测试库：${data.library_name}
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.reviewertext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.reviewertext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -489,7 +489,7 @@ ${data.update_mantext}把你移除了测试库：${data.library_name}
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -539,7 +539,7 @@ ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了需求
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -597,7 +597,7 @@ view://work_item_mob_common_edit_view?srfnavctx={"work_item":"${data.parent("pri
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -685,7 +685,7 @@ ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.pa
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -745,7 +745,7 @@ srfnavctx={"idea":"${data.parent("principal_id").id}","product":"${data.parent("
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -838,7 +838,7 @@ ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.pa
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.create_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.create_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -887,7 +887,7 @@ ${data.create_mantext}把你加入了项目：${data.project_name}
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -934,7 +934,7 @@ ${data.update_mantext}取消分配了测试计划：${data.name}
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -985,7 +985,7 @@ route://-/home/product=${data.id}/product_mob_product_tree/srfnavctx=%257B%2522s
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -1034,7 +1034,7 @@ ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了产�
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.create_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.create_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -1080,7 +1080,7 @@ ${data.create_mantext}把你加入了空间：${data.space_name}
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -1187,7 +1187,7 @@ ${it.get("content", "")}
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -1247,7 +1247,7 @@ srfnavctx={"ticket":"${data.parent("principal_id").id}","product":"${data.parent
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -1335,7 +1335,7 @@ ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.pa
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -1384,7 +1384,7 @@ route://-/home/project=${data.id}/project_mob_${data.type}_tree_exp_view/srfnavc
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -1433,7 +1433,7 @@ ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了项目
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -1482,7 +1482,7 @@ ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了${dat
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -1531,7 +1531,7 @@ ${data.update_mantext}变更了需求：${data.title}的负责人
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -1584,7 +1584,7 @@ srfnavctx={"test_case":"${data.parent("owner_id").id}","library":"${data.parent(
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
 			    <div class="notice-card__avatar" style="flex-shrink: 0;">
-			        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+			        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
 			    </div>
 			    <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
 			        <div class="notice-card__event">
@@ -1648,7 +1648,7 @@ ${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -1707,7 +1707,7 @@ ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了测试
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -1800,7 +1800,7 @@ ${data.update_mantext}在<#if data.principal_type == 'WORK_ITEM'>${data.parent("
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -1870,7 +1870,7 @@ ${data.update_mantext}更改了工单 ${data.title}状态：<#if last.codeitem("
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.reviewertext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.reviewertext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -1915,7 +1915,7 @@ srfnavctx={"work_item":"${data.parent("owner_id").id}","project":"${data.parent(
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
 			    <div class="notice-card__avatar" style="flex-shrink: 0;">
-			        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+			        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
 			    </div>
 			    <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
 			        <div class="notice-card__event">
@@ -1984,7 +1984,7 @@ ${data.update_mantext}给你分配执行<#if data.owner_type == 'WORK_ITEM'>${da
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${sys.codelist("SysOperator").text(eventdata.update_man)?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${sys.codelist("SysOperator").text(eventdata.update_man)!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -2023,7 +2023,7 @@ ${data.update_mantext}给你分配执行<#if data.owner_type == 'WORK_ITEM'>${da
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -2072,7 +2072,7 @@ ${data.update_mantext}取消分配了${data.work_item_type_name}：${data.title}
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -2126,7 +2126,7 @@ ${data.update_mantext}给你分配了需求：${data.title}
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
 			    <div class="notice-card__avatar" style="flex-shrink: 0;">
-			        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.create_mantext?substring(0,2)!}</span>
+			        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.create_mantext!?right_pad(2)?substring(0,2)?trim}</span>
 			    </div>
 			    <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
 			        <div class="notice-card__event">
@@ -2167,7 +2167,7 @@ route://-/home/space=${data.id}/article_page_mob_list_view/srfnavctx=%257B%2522s
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -2222,7 +2222,7 @@ srfnavctx={"work_item":"${data.parent("owner_id").id}","project":"${data.parent(
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
 			    <div class="notice-card__avatar" style="flex-shrink: 0;">
-			        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+			        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
 			    </div>
 			    <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
 			        <div class="notice-card__event">
@@ -2286,7 +2286,7 @@ ${data.update_mantext}取消分配执行<#if data.owner_type == 'WORK_ITEM'>${da
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -2348,7 +2348,7 @@ route://-/index/portfolio=${data.id}/portfolio_project_index_view/srfnavctx=%257
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -2402,7 +2402,7 @@ ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了项�
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -2472,7 +2472,7 @@ ${data.update_mantext}评论了页面：${data.parent("principal_id").name}
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -2521,7 +2521,7 @@ ${data.update_mantext}取消分配了工单：${data.title}
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -2570,7 +2570,7 @@ ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了需�
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
 			    <div class="notice-card__avatar" style="flex-shrink: 0;">
-			        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+			        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
 			    </div>
 			    <div class="notice-card__content" style="flex-grow: 1;">
 			        <div class="notice-card__event">
@@ -2617,7 +2617,7 @@ ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了需�
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.create_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.create_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -2666,7 +2666,7 @@ ${data.create_mantext}把你加入了项目集：${data.portfolio_name}
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -2721,7 +2721,7 @@ srfnavctx={"idea":"${data.parent("owner_id").id}","product":"${data.parent("owne
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
 			    <div class="notice-card__avatar" style="flex-shrink: 0;">
-			        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+			        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
 			    </div>
 			    <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
 			        <div class="notice-card__event">
@@ -2791,7 +2791,7 @@ srfnavctx={"work_item":"${data.parent("owner_id").id}","project":"${data.parent(
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
 			    <div class="notice-card__avatar" style="flex-shrink: 0;">
-			        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+			        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
 			    </div>
 			    <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
 			        <div class="notice-card__event">
@@ -2872,7 +2872,7 @@ ${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -2949,7 +2949,7 @@ ${data.update_mantext}更改了${data.work_item_type_name} ${data.title}状态�
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -3001,7 +3001,7 @@ route://-/home/space=${data.id}/article_page_mob_list_view/srfnavctx=%257B%2522s
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -3061,7 +3061,7 @@ srfnavctx={"customer":"${data.parent("principal_id").id}","product":"${data.pare
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -3154,7 +3154,7 @@ ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.pa
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.create_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.create_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -3203,7 +3203,7 @@ ${data.create_mantext}把你加入了测试库：${data.library_name}
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -3260,7 +3260,7 @@ srfnavctx={"run":"${parent.id}","test_case": "${parent.parent("case_id").id}", "
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
 			    <div class="notice-card__avatar" style="flex-shrink: 0;">
-			        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+			        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
 			    </div>
 			    <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
 			        <div class="notice-card__event">
@@ -3329,7 +3329,7 @@ ${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -3376,7 +3376,7 @@ ${data.update_mantext}变更了客户：${data.name}的负责人
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -3438,7 +3438,7 @@ srfnavctx={"run":"${parent.id}","test_case": "${parent.parent("case_id").id}", "
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -3524,7 +3524,7 @@ ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.pa
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.reviewertext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.reviewertext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -3559,7 +3559,7 @@ ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.pa
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -3606,7 +3606,7 @@ ${data.update_mantext}删除了客户：${data.name}
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -3657,7 +3657,7 @@ route://-/home/project=${data.id}/project_mob_${data.type}_tree_exp_view/srfnavc
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -3706,7 +3706,7 @@ ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了项�
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -3751,7 +3751,7 @@ ${data.update_mantext}给你分配了测试计划：${data.name}
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.reviewertext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.reviewertext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -3790,7 +3790,7 @@ ${data.update_mantext}给你分配了测试计划：${data.name}
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -3836,7 +3836,7 @@ ${data.update_mantext}取消分配了测试用例：${data.title}
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -3889,7 +3889,7 @@ route://-/home/library=${data.id}/library_test_mob_tab_exp_view/srfnavctx=%257B%
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -3943,7 +3943,7 @@ ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了测试
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -4015,7 +4015,7 @@ ${data.update_mantext}更改了需求 ${data.title}状态：<#if last.codeitem("
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -4065,7 +4065,7 @@ ${data.update_mantext}给你分配了执行用例：${data.title}
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -4119,7 +4119,7 @@ ${data.update_mantext}把你移除了项目：${data.project_name}
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -4198,7 +4198,7 @@ route://-/home/library=${data.id}/library_test_mob_tab_exp_view/srfnavctx=%257B%
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -4253,7 +4253,7 @@ srfnavctx={"ticket":"${data.parent("owner_id").id}","product":"${data.parent("ow
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
 			    <div class="notice-card__avatar" style="flex-shrink: 0;">
-			        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+			        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
 			    </div>
 			    <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
 			        <div class="notice-card__event">
@@ -4323,7 +4323,7 @@ ${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
@@ -4383,7 +4383,7 @@ srfnavctx={"test_case":"${data.parent("principal_id").id}","library":"${data.par
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
     <div class="notice-card__avatar" style="flex-shrink: 0;">
-        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext!?right_pad(2)?substring(0,2)?trim}</span>
     </div>
     <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
         <div class="notice-card__event">
