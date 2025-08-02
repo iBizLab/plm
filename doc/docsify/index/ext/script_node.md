@@ -1,5 +1,5 @@
 
-## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[222]</font></sup>
+## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[227]</font></sup>
 
 #### [组件(ADDON)](module/Base/addon)的处理逻辑[组件权限计数器(addon_authority)](module/Base/addon/logic/addon_authority)
 
@@ -1311,6 +1311,26 @@ if(_default.get('shared_page') != null){
 }
 
 ```
+#### [成员(MEMBER)](module/Base/member)的处理逻辑[获取资源成员（全局）(resource_member)](module/Base/member/logic/resource_member)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal();
+def member_list = logic.param('member_list').getReal();
+
+def id = _default.get('addon_resource');
+
+def runtime = sys.dataentity('addon_resource');
+def addon_resource = runtime.get(id)
+def members = addon_resource.get('members');
+if (members != null ) {
+    members.each { item ->
+        member_list.add(item)
+    }
+}
+```
 #### [成员(MEMBER)](module/Base/member)的处理逻辑[选择资源成员（全局）(choose_resource_member)](module/Base/member/logic/choose_resource_member)
 
 节点：分页参数
@@ -1545,7 +1565,7 @@ if(_default.get('id') != null && plm_wiki != '') {
   if(_default.get('is_shared_subset') == '1'){
       _url = plm_wiki + '/plmwiki/#/-/index/-/article_page_shared_with_sub_view/srfnavctx=%257B%2522shared_page%2522%253A%2522' + _default.get('id') + '%2522%257D'
   } else {
-      _url = plm_wiki + '/plmwiki/#/-/index/-/article_page_shared_view/srfnavctx=%257B%2522shared_page%2522%253A%2522' + _default.get('id') + '%2522%257D'
+      _url = plm_wiki + '/plmwiki/#/-/index/-/article_page_wiki_shared_view/srfnavctx=%257B%2522shared_page%2522%253A%2522' + _default.get('id') + '%2522%257D'
   }
   _default.set('shared_page_url', _url)
 }
@@ -2765,6 +2785,66 @@ var defaultObj = logic.getParam("default");
 
 defaultObj.set("srfreadonly", true);
 ```
+#### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[记录执行结果(create_result)](module/TestMgmt/run/logic/create_result)
+
+节点：拼接描述字段
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal();
+def work_item = logic.param('work_item').getReal();
+
+//获取代码表
+def run_status = sys.codelist('TestMgmt__run_status');
+
+
+def table_start = '<table style="width: auto;"><tbody><tr><th colSpan="1" rowSpan="1" width="56.32">#</th><th colSpan="1" rowSpan="1" width="auto">步骤描述</th><th colSpan="1" rowSpan="1" width="auto">预期结果</th><th colSpan="1" rowSpan="1" width="auto">实际结果</th><th colSpan="1" rowSpan="1" width="80">执行结果</th></tr>';
+def table_end = '</tbody></table>';
+def steps = _default.get('steps');
+def text = '<p><strong>前置条件：</strong></p>' + (_default.get('precondition') ?: '') + '<p><strong>执行步骤：</strong></p>' + table_start;
+
+
+def content = '<td colSpan="1" rowSpan="1" width="auto">';
+def group = '<td colSpan="4" rowSpan="1" width="auto">';
+
+def order = 1;
+def group_order = 0.1;
+steps.each { item ->
+    println item;
+    if(item.get('is_group') == 0){
+        text += '<tr>' + content + order + '</td>';
+        text += content;
+        text += (item.get('description') ?: '') + '</td>';
+        text += content;
+        text += (item.get('expected_value') ?: '') + '</td>'
+        text += content;
+        text += (item.get('actual_value') ?: '') + '</td>';
+        text += content;
+        text += (run_status.getText(item.get('status1'))) ?: '' + '</td>' + '</tr>';
+    }else if(item.get('is_group') == 1){
+        text += '<tr>' + content + order + '</td>';
+        text += group;
+        text += (item.get('name') ?: '') + '</td>' + '</tr>';
+        group_order = 0.1;
+    }else{
+        group_order += order;
+        text += '<tr>' + content + group_order + '</td>';
+        text += content;
+        text += (item.get('description') ?: '') + '</td>';
+        text += content;
+        text += (item.get('expected_value') ?: '') + '</td>'
+        text += content;
+        text += (item.get('actual_value') ?: '') + '</td>';
+        text += content;
+        text += (run_status.getText(item.get('status1'))) ?: '' + '</td>' + '</tr>';
+        group_order += 0.1;
+    }
+    order++;
+}
+text +=table_end;
+
+work_item.set('description', text);
+```
 #### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[重置为未测(reset_not_test)](module/TestMgmt/run/logic/reset_not_test)
 
 节点：获取选中的用例ID
@@ -3580,24 +3660,41 @@ _default.set("search_conds",themeModel.get("searchconds"))
 var defaultObj = logic.getParam("default");
 var remainingObj = logic.getParam("remaining"); // 剩余工时对象
 var estimatedObj = logic.getParam("estimated"); // 预估工时对象
+var commonWorkloadObj = logic.getParam("common_workload"); // 通用工时对象
 var actualObj = logic.getParam("actual"); // 实际工时对象
 
 var total_register = logic.getParam("total_register"); // 总登记时长
-var actual_workload = total_register.get("duration") == null ? 0 : Number(total_register.get("duration"));
-var estimated_workload = estimatedObj.get("decimal_value") == null ? 0 : Number(estimatedObj.get("decimal_value"));
-var duration = defaultObj.get("duration") == null ? 0 : Number(defaultObj.get("duration"));
-sys.info("查询预估工时=", estimated_workload);
-sys.info("查询总登记工时=", actual_workload);
-// 重新计算剩余工时
-var remaining = estimated_workload - (actual_workload - duration);
-if(remaining < 0){
-    remaining = 0;
+if (defaultObj.get("category") === 'ACTUAL_WORKLOAD') {
+    var actual_workload = total_register.get("duration") == null ? 0 : Number(total_register.get("duration"));
+    var estimated_workload = estimatedObj.get("decimal_value") == null ? 0 : Number(estimatedObj.get("decimal_value"));
+    var duration = defaultObj.get("duration") == null ? 0 : Number(defaultObj.get("duration"));
+    sys.info("查询预估工时=", estimated_workload);
+    sys.info("查询总登记实际工时=", actual_workload);
+    // 重新计算剩余工时
+    var remaining = estimated_workload - (actual_workload - duration);
+    if(remaining < 0){
+        remaining = 0;
+    }
+    remainingObj.set("decimal_value", remaining);
+    // 计算实际工时
+    var actual = (actual_workload - duration) <= 0 ? 0 : actual_workload - duration;
+    commonWorkloadObj.set("decimal_value", actual);
+} else {
+    var estimated_workload = total_register.get("duration") == null ? 0 : Number(total_register.get("duration"));
+    var actual_workload = actualObj.get("decimal_value") == null ? 0 : Number(actualObj.get("decimal_value"));
+    var duration = defaultObj.get("duration") == null ? 0 : Number(defaultObj.get("duration"));
+    sys.info("查询实际工时=", actual_workload);
+    sys.info("查询总登记预估工时=", estimated_workload);
+    // 重新计算剩余工时
+    var remaining = estimated_workload - duration - actual_workload;
+    if(remaining < 0){
+        remaining = 0;
+    }
+    remainingObj.set("decimal_value", remaining);
+    // 计算预估工时
+    var estimated = (estimated_workload - duration) <= 0 ? 0 : estimated_workload - duration;
+    commonWorkloadObj.set("decimal_value", estimated);
 }
-remainingObj.set("decimal_value", remaining);
-// 计算实际工时
-var actual = (actual_workload - duration) <= 0 ? 0 : actual_workload - duration;
-actualObj.set("decimal_value", actual);
-
 ```
 #### [工时(WORKLOAD)](module/Base/workload)的处理逻辑[工时自动计算(workload_auto_cal)](module/Base/workload/logic/workload_auto_cal)
 
@@ -3633,11 +3730,21 @@ var remaining_workload = defaultObj.get("remaining_workload") == null ? 0 : Numb
 var actual_workload = defaultObj.get("actual_workload") == null ? 0 : Number(defaultObj.get("actual_workload"));
 var estimated_workload = defaultObj.get("estimated_workload") == null ? 0 : Number(defaultObj.get("estimated_workload"));
 var duration = defaultObj.get("duration") == null ? 0 : Number(defaultObj.get("duration"));
-var actual = actual_workload - duration;
-if(actual <= 0){
-    defaultObj.set("actual_workload", null);
-} else {
-    defaultObj.set("actual_workload", actual);
+
+if (defaultObj.get('category') === 'ACTUAL_WORKLOAD') {
+    var actual = actual_workload - duration;
+    if(actual <= 0){
+        defaultObj.set("actual_workload", null);
+    } else {
+        defaultObj.set("actual_workload", actual);
+    }
+}else{
+    var estimated = estimated_workload - duration;
+    if(estimated <= 0){
+        defaultObj.set("estimated_workload", null);
+    } else {
+        defaultObj.set("estimated_workload", estimated);
+    }
 }
 // 计算工时进度
 if((actual_workload + remaining_workload) != 0){
@@ -3726,6 +3833,141 @@ if (updated_data.get('state_type') == 'in_progress' && updated_data.get('actual_
 if (updated_data.get('state_type') == 'completed' && updated_data.get('actual_end_at') == null) {
     updated_data.set('actual_end_at', new Date());
 }
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[填充用例信息(fill_test_case_info)](module/ProjMgmt/work_item/logic/fill_test_case_info)
+
+节点：拼接描述字段
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal();
+def test_case = logic.param('test_case').getReal();
+
+def table_start = '<table style="width: auto;"><tbody><tr><th colSpan="1" rowSpan="1" width="56.32">#</th><th colSpan="1" rowSpan="1" width="auto">步骤描述</th><th colSpan="1" rowSpan="1" width="auto">预期结果</th></tr>';
+def table_end = '</tbody></table>';
+def steps = test_case.get('steps');
+def text = '<p><strong>前置条件：</strong></p>' + (test_case.get('precondition') ?: '') + '<p><strong>执行步骤：</strong></p>' + table_start;
+
+
+def content = '<td colSpan="1" rowSpan="1" width="auto">';
+def group = '<td colSpan="4" rowSpan="1" width="auto">';
+
+def order = 1;
+def group_order = 0.1;
+steps.each { item ->
+    println item;
+    if(item.get('is_group') == 0){
+        text += '<tr>' + content + order + '</td>';
+        text += content;
+        text += (item.get('description') ?: '') + '</td>';
+        text += content;
+        text += (item.get('expected_value') ?: '') + '</td>' + '</tr>';
+    }else if(item.get('is_group') == 1){
+        text += '<tr>' + content + order + '</td>';
+        text += group;
+        text += (item.get('name') ?: '') + '</td>' + '</tr>';
+        group_order = 0.1;
+    }else{
+        group_order += order;
+        text += '<tr>' + content + group_order + '</td>';
+        text += content;
+        text += (item.get('description') ?: '') + '</td>';
+        text += content;
+        text += (item.get('expected_value') ?: '') + '</td>' + '</tr>';
+        group_order += 0.1;
+    }
+    order++;
+}
+text += table_end + (_default.get('description') ?: '');
+
+_default.set('description', text);
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[填充用例信息(fill_test_case_info)](module/ProjMgmt/work_item/logic/fill_test_case_info)
+
+节点：拼接描述字段
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal();
+def run = logic.param('run').getReal();
+
+//获取代码表
+def run_status = sys.codelist('TestMgmt__run_status');
+
+
+def table_start = '<table style="width: auto;"><tbody><tr><th colSpan="1" rowSpan="1" width="55">#</th><th colSpan="1" rowSpan="1" width="auto">步骤描述</th><th colSpan="1" rowSpan="1" width="auto">预期结果</th><th colSpan="1" rowSpan="1" width="auto">实际结果</th><th colSpan="1" rowSpan="1" width="80">执行结果</th></tr>';
+def table_end = '</tbody></table>';
+def steps = run.get('steps');
+def text = '<p><strong>前置条件：</strong></p>' + (run.get('precondition') ?: '') + '<p><strong>执行步骤：</strong></p>' + table_start;
+
+
+def content = '<td colSpan="1" rowSpan="1" width="auto">';
+def group = '<td colSpan="4" rowSpan="1" width="auto">';
+
+def order = 1;
+def group_order = 0.1;
+steps.each { item ->
+    println item;
+    if(item.get('is_group') == 0){
+        text += '<tr>' + content + order + '</td>';
+        text += content;
+        text += (item.get('description') ?: '') + '</td>';
+        text += content;
+        text += (item.get('expected_value') ?: '') + '</td>';
+        text += content;
+        text += (item.get('actual_value') ?: '') + '</td>';
+        text += content;
+        text += (run_status.getText(item.get('status1'))) ?: '' + '</td>' + '</tr>';
+    }else if(item.get('is_group') == 1){
+        text += '<tr>' + content + order + '</td>';
+        text += group;
+        text += (item.get('name') ?: '') + '</td>' + '</tr>';
+        group_order = 0.1;
+    }else{
+        group_order += order;
+        text += '<tr>' + content + group_order + '</td>';
+        text += content;
+        text += (item.get('description') ?: '') + '</td>';
+        text += content;
+        text += (item.get('expected_value') ?: '') + '</td>';
+        text += content;
+        text += (item.get('actual_value') ?: '') + '</td>';
+        text += content;
+        text += (run_status.getText(item.get('status1'))) ?: '' + '</td>' + '</tr>';
+        group_order += 0.1;
+    }
+    order++;
+}
+text += table_end + (_default.get('description') ?: '');
+
+_default.set('description', text);
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[填充用例信息(fill_test_case_info)](module/ProjMgmt/work_item/logic/fill_test_case_info)
+
+节点：附件操作
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal();
+def attachments = logic.param('attachments').getReal();
+
+def _default_list = _default.get('attachments');
+def list = new ArrayList();
+
+attachments.each { item ->
+    println item;
+    item.set('owner_id',null);
+    item.set('owner_type',null);
+    item.set('id',null);
+    list.add(item);
+}
+
+_default_list.each { item ->
+    println item;
+    list.add(item);
+}
+println list;
+_default.set('attachments', list);
 ```
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[工作项完成趋势(complete_trend)](module/ProjMgmt/work_item/logic/complete_trend)
 

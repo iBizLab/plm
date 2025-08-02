@@ -41,6 +41,7 @@ DEACTION1 --> END1
 
 
 1. 将`<p><del>该评论已删除</del></p>` 设置给  `Default(传入变量).CONTENT(内容)`
+2. 将`0` 设置给  `Default(传入变量).IS_TOP(是否置顶)`
 
 #### 将评论内容修改为"已删除" :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 

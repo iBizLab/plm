@@ -9,6 +9,7 @@
 ##### 部件逻辑
 * `onLoadSuccess` : [图表显示总数](module/ProjMgmt/work_item/uilogic/chart_show_count)
 * `onActive` : [我负责的工作项图表跳转](module/ProjMgmt/work_item/uilogic/my_assign_chart_jump)
+#### 搜索栏(searchbar)
 
 
 ### 关联界面逻辑

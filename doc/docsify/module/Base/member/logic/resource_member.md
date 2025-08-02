@@ -16,9 +16,10 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./resource_member#begin {"开始"}]]
 state "设置全局资源组件标识" as PREPAREPARAM1  [[$./resource_member#prepareparam1 {"设置全局资源组件标识"}]]
-state "获取资源组件" as DEACTION1  [[$./resource_member#deaction1 {"获取资源组件"}]]
 state "绑定参数" as BINDPARAM1  [[$./resource_member#bindparam1 {"绑定参数"}]]
+state "获取资源组件" as DEACTION1  [[$./resource_member#deaction1 {"获取资源组件"}]]
 state "结束" as END1 <<end>> [[$./resource_member#end1 {"结束"}]]
+state "执行脚本代码" as RAWSFCODE1  [[$./resource_member#rawsfcode1 {"执行脚本代码"}]]
 
 
 Begin --> PREPAREPARAM1 : [[$./resource_member#begin-prepareparam1{存在全局资源标识} 存在全局资源标识]]
@@ -64,6 +65,28 @@ DEACTION1 --> END1 : [[$./resource_member#deaction1-end1{未设置资源成员} 
 
 返回 `member_page(资源成员结果变量)`
 
+#### 执行脚本代码 :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
+
+
+
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal();
+def member_list = logic.param('member_list').getReal();
+
+def id = _default.get('addon_resource');
+
+def runtime = sys.dataentity('addon_resource');
+def addon_resource = runtime.get(id)
+def members = addon_resource.get('members');
+if (members != null ) {
+    members.each { item ->
+        member_list.add(item)
+    }
+}
+```
+
 
 ### 连接条件说明
 #### 存在全局资源标识 :id=Begin-PREPAREPARAM1
@@ -83,4 +106,5 @@ DEACTION1 --> END1 : [[$./resource_member#deaction1-end1{未设置资源成员} 
 | --------| --------| -------- | -------- | --------   |
 |传入变量(<i class="fa fa-check"/></i>)|Default|过滤器|||
 |资源组件|addon_resource|数据对象|[资源组件(ADDON_RESOURCE)](module/Base/addon_resource.md)||
+|数据对象列表变量|member_list|数据对象列表|[成员(MEMBER)](module/Base/member.md)||
 |资源成员结果变量|member_page|分页查询|||

@@ -43,8 +43,10 @@ RAWJSCODE1 --> DEUIACTION1
 ```javascript
 var n_register_date_gtandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_gtandeq;
 var n_register_date_ltandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_ltandeq;
+var n_category_eq = view.layoutPanel.panelItems.searchform.control.data.n_category_eq;
 uiLogic.default.n_register_date_gtandeq=n_register_date_gtandeq;
 uiLogic.default.n_register_date_ltandeq=n_register_date_ltandeq;
+uiLogic.default.n_category_eq=n_category_eq;
 ```
 
 #### 打开团队工时日志链接表格视图 :id=DEUIACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体界面行为调用]</font></sup>

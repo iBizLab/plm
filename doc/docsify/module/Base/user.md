@@ -20,6 +20,7 @@
 |职位名称|JOB_NAME|外键值文本|200|是||
 |手机号|MOBILE|文本，可指定长度|100|是||
 |登录名|NAME|文本，可指定长度|200|否||
+|第三方用户标识|OPEN_USER_TAG|文本，可指定长度|100|是||
 |组织标识|ORGANIZATION_ID|外键值|100|是||
 |组织名称|ORGANIZATION_NAME|外键值文本|200|是||
 |密码|PASSWORD|文本，可指定长度|200|是||
@@ -201,8 +202,8 @@
 | 停止统计 | cancel_report_flag | 停止统计 |多项数据（主键）|<details><summary>后台调用</summary>[cancel_report_flag](#行为)||
 | 新建下级部门 | toolbar_tree_exp_view_dept_cm_deuiaction1_click | 新建下级部门 |单项数据|用户自定义||
 | 开启统计 | set_report_flag | 开启统计 |多项数据（主键）|<details><summary>后台调用</summary>[set_report_flag](#行为)||
-| 修改密码（移动端表单） | mob_chang_pas | 确认 |无数据|用户自定义||
 | 帐号设置 | account_setting | 帐号设置 |无数据|<details><summary>打开顶级视图</summary>[帐号设置](app/view/user_setting_view)</details>|当前用户帐号设置|
+| 修改密码（移动端表单） | mob_chang_pas | 确认 |无数据|用户自定义||
 | 主题设置 | theme_setting | 主题设置 |无数据|用户自定义||
 | 新建下级部门 | toolbar_choose_mpick_up_view_node_cm_deuiaction1_click | 新建下级部门 |单项数据|用户自定义||
 | 删除部门 | toolbar_tree_exp_view_node_cm_deuiaction3_click | 删除部门 |单项数据|用户自定义||

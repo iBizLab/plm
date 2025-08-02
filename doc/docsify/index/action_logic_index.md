@@ -963,21 +963,6 @@
 
 
 
-## [评审向导(REVIEW_WIZARD)](module/TestMgmt/review_wizard.md)  :id=review_wizard
-
-#### [Create](module/TestMgmt/review_wizard#行为) :id=review_wizard_Create
-
-
-
-
-<p class="panel-title"><b>操作之后</b></p>
-<br>
-
-> [!NOTE|label:内部逻辑]
-> 执行处理逻辑 [评审新建通知(create_review_notify)](module/TestMgmt/review_wizard/logic/create_review_notify.md)
-
-
-
 ## [执行用例(RUN)](module/TestMgmt/run.md)  :id=run
 
 #### [Get](module/TestMgmt/run#行为) :id=run_Get
@@ -1364,6 +1349,9 @@
 
 > [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [填充表单(fill_idea_form)](module/ProjMgmt/work_item/logic/fill_idea_form.md)
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [填充用例信息(fill_test_case_info)](module/ProjMgmt/work_item/logic/fill_test_case_info.md)
 
 
 #### [Update](module/ProjMgmt/work_item#行为) :id=work_item_Update

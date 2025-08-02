@@ -26,6 +26,7 @@
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">open_user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|第三方用户标识|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|部门|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -50,6 +51,7 @@
   "report_flag" : null,
   "user_id" : null,
   "title" : null,
+  "open_user_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -80,6 +82,7 @@
   "report_flag" : null,
   "user_id" : null,
   "title" : null,
+  "open_user_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -130,6 +133,7 @@
   "report_flag" : null,
   "user_id" : null,
   "title" : null,
+  "open_user_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -199,6 +203,7 @@
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">open_user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|第三方用户标识|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|部门|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -223,6 +228,7 @@
   "report_flag" : null,
   "user_id" : null,
   "title" : null,
+  "open_user_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -253,6 +259,7 @@
   "report_flag" : null,
   "user_id" : null,
   "title" : null,
+  "open_user_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -301,6 +308,7 @@
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">open_user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|第三方用户标识|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|部门|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -325,6 +333,7 @@
   "report_flag" : null,
   "user_id" : null,
   "title" : null,
+  "open_user_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -374,6 +383,7 @@
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">open_user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|第三方用户标识|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|部门|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -398,6 +408,7 @@
   "report_flag" : null,
   "user_id" : null,
   "title" : null,
+  "open_user_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -447,6 +458,7 @@
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">open_user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|第三方用户标识|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|部门|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -471,6 +483,7 @@
   "report_flag" : null,
   "user_id" : null,
   "title" : null,
+  "open_user_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -515,6 +528,7 @@
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">open_user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|第三方用户标识|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|部门|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -539,6 +553,7 @@
   "report_flag" : null,
   "user_id" : null,
   "title" : null,
+  "open_user_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -592,6 +607,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">open_user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|第三方用户标识|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|部门|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -616,6 +632,7 @@ Integer
   "report_flag" : null,
   "user_id" : null,
   "title" : null,
+  "open_user_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -660,6 +677,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">open_user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|第三方用户标识|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|部门|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -684,6 +702,7 @@ Integer
   "report_flag" : null,
   "user_id" : null,
   "title" : null,
+  "open_user_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -714,6 +733,7 @@ Integer
   "report_flag" : null,
   "user_id" : null,
   "title" : null,
+  "open_user_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -764,6 +784,7 @@ Integer
   "report_flag" : null,
   "user_id" : null,
   "title" : null,
+  "open_user_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -812,6 +833,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">open_user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|第三方用户标识|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|部门|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -836,6 +858,7 @@ Integer
   "report_flag" : null,
   "user_id" : null,
   "title" : null,
+  "open_user_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -885,6 +908,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">open_user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|第三方用户标识|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|部门|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -909,6 +933,7 @@ Integer
   "report_flag" : null,
   "user_id" : null,
   "title" : null,
+  "open_user_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -953,6 +978,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">open_user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|第三方用户标识|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|部门|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -977,6 +1003,7 @@ Integer
   "report_flag" : null,
   "user_id" : null,
   "title" : null,
+  "open_user_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -1007,6 +1034,7 @@ Integer
   "report_flag" : null,
   "user_id" : null,
   "title" : null,
+  "open_user_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -1055,6 +1083,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">open_user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|第三方用户标识|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|部门|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -1079,6 +1108,7 @@ Integer
   "report_flag" : null,
   "user_id" : null,
   "title" : null,
+  "open_user_tag" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -1174,6 +1204,7 @@ Integer
     "report_flag" : null,
     "user_id" : null,
     "title" : null,
+    "open_user_tag" : null,
     "create_man" : null,
     "create_time" : null,
     "department_id" : null,
@@ -1268,6 +1299,7 @@ Integer
     "report_flag" : null,
     "user_id" : null,
     "title" : null,
+    "open_user_tag" : null,
     "create_man" : null,
     "create_time" : null,
     "department_id" : null,
@@ -1362,6 +1394,7 @@ Integer
     "report_flag" : null,
     "user_id" : null,
     "title" : null,
+    "open_user_tag" : null,
     "create_man" : null,
     "create_time" : null,
     "department_id" : null,
@@ -1456,6 +1489,7 @@ Integer
     "report_flag" : null,
     "user_id" : null,
     "title" : null,
+    "open_user_tag" : null,
     "create_man" : null,
     "create_time" : null,
     "department_id" : null,
@@ -1550,6 +1584,7 @@ Integer
     "report_flag" : null,
     "user_id" : null,
     "title" : null,
+    "open_user_tag" : null,
     "create_man" : null,
     "create_time" : null,
     "department_id" : null,
@@ -1761,6 +1796,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">open_user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|第三方用户标识|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|部门|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -1848,6 +1884,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">open_user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|第三方用户标识|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|部门|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -1893,6 +1930,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">open_user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|第三方用户标识|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|部门|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -1938,6 +1976,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">open_user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|第三方用户标识|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|部门|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -1983,6 +2022,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">open_user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|第三方用户标识|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|部门|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -2027,6 +2067,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">open_user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|第三方用户标识|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|部门|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -2072,6 +2113,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">open_user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|第三方用户标识|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|部门|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -2116,6 +2158,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">open_user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|第三方用户标识|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|部门|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -2182,6 +2225,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">open_user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|第三方用户标识|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|部门|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -2227,6 +2271,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">open_user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|第三方用户标识|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|部门|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -2271,6 +2316,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">open_user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|第三方用户标识|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|部门|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -2316,6 +2362,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
 |<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位|
+|<el-row justify="space-between"><el-col :span="20">open_user_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|第三方用户标识|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|部门|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|

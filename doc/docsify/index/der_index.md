@@ -68,6 +68,7 @@
 |[测试库(LIBRARY)](module/TestMgmt/library)|[流程准则(GUIDELINE)](module/TestMgmt/guideline)|[DERCUSTOM_GUIDELINE_LIBRARY_LIBRARY_ID](der/DERCUSTOM_GUIDELINE_LIBRARY_LIBRARY_ID)|自定义关系|附属关系、数据访问控制、|
 |[测试库(LIBRARY)](module/TestMgmt/library)|[用例模块(TEST_SUITE)](module/TestMgmt/test_suite)|[DER1N_TEST_SUITE_LIBRARY_LIBRARY_ID](der/DER1N_TEST_SUITE_LIBRARY_LIBRARY_ID)|1:N关系|附属关系、数据访问控制、|
 |[测试库(LIBRARY)](module/TestMgmt/library)|[组件(ADDON)](module/Base/addon)|[DERCUSTOM_ADDON_LIBRARY_OWNER_ID](der/DERCUSTOM_ADDON_LIBRARY_OWNER_ID)|自定义关系|附属关系、数据访问控制、|
+|[测试库(LIBRARY)](module/TestMgmt/library)|[系统参数(PARAMETER)](module/Base/parameter)|[DERCUSTOM_PARAMETER_LIBRARY_LIBRARY_ID](der/DERCUSTOM_PARAMETER_LIBRARY_LIBRARY_ID)|自定义关系|附属关系、数据访问控制、嵌套操作、|
 |[测试库(LIBRARY)](module/TestMgmt/library)|[基线(BASELINE)](module/Base/baseline)|[DERCUSTOM_BASELINE_LIBRARY_OWNER_ID](der/DERCUSTOM_BASELINE_LIBRARY_OWNER_ID)|自定义关系|附属关系、数据访问控制、|
 |[测试库(LIBRARY)](module/TestMgmt/library)|[评审(REVIEW)](module/TestMgmt/review)|[DER1N_REVIEW_LIBRARY_LIBRARY_ID](der/DER1N_REVIEW_LIBRARY_LIBRARY_ID)|1:N关系|附属关系、数据访问控制、|
 |[测试库(LIBRARY)](module/TestMgmt/library)|[测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member)|[DER1N_LIBRARY_MEMBER_LIBRARY_LIBRARY_ID](der/DER1N_LIBRARY_MEMBER_LIBRARY_LIBRARY_ID)|1:N关系|附属关系、附属关系(N:N连接)、数据访问控制、|
@@ -278,6 +279,7 @@
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[关联(RELATION)](module/Base/relation)|[DERCUSTOM_RELATION_WORK_ITEM](der/DERCUSTOM_RELATION_WORK_ITEM)|自定义关系||
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[评论(COMMENT)](module/Base/comment)|[DERCUSTOM_COMMENT_WORK_ITEM_PRINCIPAL_ID](der/DERCUSTOM_COMMENT_WORK_ITEM_PRINCIPAL_ID)|自定义关系|附属关系、数据访问控制、|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[附件搜索(SEARCH_ATTACHMENT)](module/Base/search_attachment)|[DERCUSTOM_WORK_ITEM_SEARCH_ATTACHMENT](der/DERCUSTOM_WORK_ITEM_SEARCH_ATTACHMENT)|自定义关系||
+|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[依赖(DEPENDENCY)](module/Base/dependency)|[DERCUSTOM_DEPENDENCY_WORK_ITEM](der/DERCUSTOM_DEPENDENCY_WORK_ITEM)|自定义关系||
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[交付物(DELIVERABLE)](module/Base/deliverable)|[DERCUSTOM_WORK_ITEM_DELIVERABLE](der/DERCUSTOM_WORK_ITEM_DELIVERABLE)|自定义关系|附属关系、数据访问控制、|
 |[工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state)|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[DER1N_WORK_ITEM_WORK_ITEM_STATE_STATE](der/DER1N_WORK_ITEM_WORK_ITEM_STATE_STATE)|1:N关系||
 |[工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type)|[工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state)|[DER1N_WORK_ITEM_STATE_WORK_ITEM_TYPE_WORK_ITEM_TYPE_ID](der/DER1N_WORK_ITEM_STATE_WORK_ITEM_TYPE_WORK_ITEM_TYPE_ID)|1:N关系||

@@ -9,6 +9,7 @@
 ##### 部件逻辑
 * `onCreated` : [设置门户默认搜索时间](module/TestMgmt/test_plan/uilogic/set_portlet_search_date)
 * `onResetPortlet` : [设置门户默认搜索时间](module/TestMgmt/test_plan/uilogic/set_portlet_search_date)
+#### 搜索栏(searchbar)
 
 
 ### 关联界面逻辑

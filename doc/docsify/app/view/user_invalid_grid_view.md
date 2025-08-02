@@ -18,9 +18,9 @@
 
 
 ### 关联界面行为
-  * [企业用户(USER)](module/Base/user) : [激活成员](module/Base/user#界面行为)
   * [企业用户(USER)](module/Base/user) : [表格界面_编辑操作](module/Base/user#界面行为)
   * [企业用户(USER)](module/Base/user) : [停止统计](module/Base/user#界面行为)
+  * [企业用户(USER)](module/Base/user) : [激活成员](module/Base/user#界面行为)
   * [企业用户(USER)](module/Base/user) : [开启统计](module/Base/user#界面行为)
 
 ### 关联视图

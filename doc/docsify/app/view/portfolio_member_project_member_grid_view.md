@@ -19,8 +19,8 @@
 
 ### 关联界面行为
   * [文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member) : [表格界面_新建操作_通用](module/Base/portfolio_member#界面行为)
-  * [文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member) : [设置角色](module/Base/portfolio_member#界面行为)
   * [文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member) : [表格界面_删除操作](module/Base/portfolio_member#界面行为)
+  * [文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member) : [设置角色](module/Base/portfolio_member#界面行为)
 
 ### 关联视图
   * [文件夹成员(portfolio_member_edit_view)](app/view/portfolio_member_edit_view)

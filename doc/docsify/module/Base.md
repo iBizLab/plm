@@ -20,6 +20,7 @@
 |[数据同步任务(DATA_SYNC_TASK)](module/Base/data_sync_task)|data_sync_task|主实体|SQL|DATA_SYNC_TASK|否|否|自控制|否|记录数据同步任务|
 |[交付物(DELIVERABLE)](module/Base/deliverable)|deliverable|主实体|SQL|ATTACHMENT|否|否|附属主实体控制（未映射自控）|否|工作项中产出的具体成果物，包括文档、软件代码、报告等。|
 |[部门(DEPARTMENT)](module/Base/department)|department|主实体|无存储||否|否|自控制|否|用于查看和管理企业的部门信息。|
+|[依赖(DEPENDENCY)](module/Base/dependency)|dependency|主实体|SQL|relation|是|否|自控制|否||
 |[数据字典(DICTIONARY)](module/Base/dictionary_data)|dictionary_data|主实体|SQL|DICTIONARY|否|否|自控制|否|用于记录基础数据字典。|
 |[动态应用菜单(DYNA_APPMENU)](module/Base/dyna_appmenu)|dyna_appmenu|主实体|SQL|DYNA_APPMENU|否|否|自控制|否|配置动态菜单功能必备。|
 |[动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard)|dyna_dashboard|主实体|SQL|DYNADASHBOARD|否|否|附属主实体控制（未映射自控）|否|配置动态数据看板功能必备。|

@@ -7,6 +7,7 @@ package cn.ibizlab.plm.base.logic.memberlogic.resource_member;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.base.domain.member memberresource_memberdefault;
                 global cn.ibizlab.plm.core.base.domain.addon_resource memberresource_memberaddon_resource;
+                global cn.ibizlab.plm.core.base.domain.member memberresource_membermember_list;
                 global cn.ibizlab.plm.core.base.domain.member memberresource_membermember_page;
                     global cn.ibizlab.plm.core.base.service.Iaddon_resourceService addon_resourceservice;
         global cn.ibizlab.plm.core.base.service.ImemberService iBzSysMemberDefaultService;
@@ -30,6 +31,18 @@ package cn.ibizlab.plm.base.logic.memberlogic.resource_member;
                             memberresource_memberaddon_resource.set("id",memberresource_memberdefault.get("addon_resource"));
                         update(memberresource_memberdefault);//更新fact中变量值
                         update(memberresource_memberaddon_resource);//更新fact中变量值
+                        update(memberresource_membermember_list);//更新fact中变量值
+                        update(memberresource_membermember_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam1"
+            ruleflow-group "memberresource_memberbindparam1"
+            when
+            then
+                        update(memberresource_memberdefault);//更新fact中变量值
+                        update(memberresource_memberaddon_resource);//更新fact中变量值
+                        update(memberresource_membermember_list);//更新fact中变量值
                         update(memberresource_membermember_page);//更新fact中变量值
             end
 
@@ -41,16 +54,7 @@ package cn.ibizlab.plm.base.logic.memberlogic.resource_member;
                             cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(addon_resourceservice.get(memberresource_memberaddon_resource.getId()),memberresource_memberaddon_resource);
                         update(memberresource_memberdefault);//更新fact中变量值
                         update(memberresource_memberaddon_resource);//更新fact中变量值
-                        update(memberresource_membermember_page);//更新fact中变量值
-            end
-
-            //逻辑处理节点[绑定参数]
-            rule "bindparam1"
-            ruleflow-group "memberresource_memberbindparam1"
-            when
-            then
-                        update(memberresource_memberdefault);//更新fact中变量值
-                        update(memberresource_memberaddon_resource);//更新fact中变量值
+                        update(memberresource_membermember_list);//更新fact中变量值
                         update(memberresource_membermember_page);//更新fact中变量值
             end
 
@@ -61,5 +65,17 @@ package cn.ibizlab.plm.base.logic.memberlogic.resource_member;
             then
                         update(memberresource_memberdefault);//更新fact中变量值
                         update(memberresource_memberaddon_resource);//更新fact中变量值
+                        update(memberresource_membermember_list);//更新fact中变量值
+                        update(memberresource_membermember_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[执行脚本代码]
+            rule "rawsfcode1"
+            ruleflow-group "memberresource_memberrawsfcode1"
+            when
+            then
+                        update(memberresource_memberdefault);//更新fact中变量值
+                        update(memberresource_memberaddon_resource);//更新fact中变量值
+                        update(memberresource_membermember_list);//更新fact中变量值
                         update(memberresource_membermember_page);//更新fact中变量值
             end

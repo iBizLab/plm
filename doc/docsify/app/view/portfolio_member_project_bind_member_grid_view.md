@@ -16,8 +16,8 @@
 
 
 ### 关联界面行为
-  * [文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member) : [表格界面_新建操作](module/Base/portfolio_member#界面行为)
   * [文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member) : [移除成员](module/Base/portfolio_member#界面行为)
+  * [文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member) : [表格界面_新建操作](module/Base/portfolio_member#界面行为)
 
 ### 关联界面逻辑
   * [文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member) : [新建项目集默认临时成员](module/Base/portfolio_member/uilogic/default_project_member)

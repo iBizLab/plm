@@ -11,6 +11,7 @@
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|是否置顶|IS_TOP|是否逻辑||是||
 |名称|NAME|文本，可指定长度|200|是||
 |所属数据对象|OWNER_TYPE|文本，可指定长度|100|是||
 |父内容|PCONTENT|外键值附加数据|1048576|是||
@@ -83,12 +84,16 @@
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
 |删除评论|delete|[实体处理逻辑](module/Base/comment/logic/delete "删除评论")|默认|不支持||||
+|取消置顶|no_top|[实体处理逻辑](module/Base/comment/logic/no_top "取消置顶")|默认|不支持||||
+|评论置顶|top|[实体处理逻辑](module/Base/comment/logic/top "评论置顶")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
 |[删除评论](module/Base/comment/logic/delete)|delete|无||评论数据的删除，将评论内容重置为：该评论已删除|
+|[取消置顶](module/Base/comment/logic/no_top)|no_top|无|||
 |[新建评论后通知](module/Base/comment/logic/after_create_notify)|after_create_notify|无||发表评论后，发送通知消息至相应负责人员、关注人员|
+|[评论置顶](module/Base/comment/logic/top)|top|无|||
 
 ## 功能配置
 | 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
@@ -151,20 +156,22 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 打开最近访问选择视图（移动端） | open_recent_pickup_view | 选择事项 |无数据|<details><summary>打开视图或向导（模态）</summary>[最近访问](app/view/recent_mob_pickup_view)</details>||
 | 编辑 | panel_usr0322433346_button_calluilogic1_click | 编辑 |单项数据|用户自定义||
+| 打开最近访问选择视图（移动端） | open_recent_pickup_view | 选择事项 |无数据|<details><summary>打开视图或向导（模态）</summary>[最近访问](app/view/recent_mob_pickup_view)</details>||
 | 打开人员选择视图（移动端） | open_project_member | 选择人员 |无数据|<details><summary>打开视图或向导（模态）</summary>[空间成员](app/view/space_member_mob_pickup_view)</details>||
 | 添加回复（客户沟通） | add_comment_client | 添加回复 |无数据|用户自定义||
 | 编辑 | panel_usr0228764297_button_calluilogic1_click | 编辑 |单项数据|用户自定义||
 | 回复 | panel_usr0322433346_button_calluilogic2_click | 回复 |单项数据|用户自定义||
 | 回复 | panel_usr1009329700_button_calluilogic1_click | 回复 |单项数据|用户自定义||
-| 删除评论 | del_comment | 删除评论 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
+| 删除评论 | del_comment | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 回复 | panel_usr0103471499_button_calluilogic2_click | 回复 |单项数据|用户自定义||
+| 取消置顶 | no_top | 取消置顶 |单项数据（主键）|<details><summary>后台调用</summary>[no_top](#行为)||
 | 回复 | panel_usr0322433347_button_calluilogic2_click | 回复 |单项数据|用户自定义||
-| 发送评论（移动端） | send_comment_mob | 发送评论 |无数据|用户自定义||
 | 刷新评论列表 | refresh_comment_list | 刷新评论列表 |无数据|用户自定义||
+| 发送评论（移动端） | send_comment_mob | 发送评论 |无数据|用户自定义||
 | 发送评论 | send_comment | 发送评论 |无数据|用户自定义||
 | 编辑 | panel_usr0322433347_button_calluilogic1_click | 编辑 |单项数据|用户自定义||
+| 评论置顶 | top | 置顶 |单项数据（主键）|<details><summary>后台调用</summary>[top](#行为)||
 | 清空评论(客户沟通) | clear_comment_client | 清空 |无数据|用户自定义||
 | 发送评论（知识库） | send_comment_wiki | 发送评论 |无数据|用户自定义||
 | 清空评论（知识库） | clear_comment_wiki | 清空 |无数据|用户自定义||

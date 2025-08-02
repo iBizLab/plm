@@ -86,14 +86,6 @@
     }
   } ],
   "getPSDEFormItemUpdates" : [ {
-    "codeName" : "calc_parent_work_item_type",
-    "name" : "计算父工作项类型",
-    "getPSDEFIUpdateDetails" : [ {
-      "name" : "work_item_type_name"
-    } ],
-    "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
-    "customCode" : true
-  }, {
     "codeName" : "set_default_entry",
     "name" : "选择看板后填充默认看板栏",
     "getPSAppDEMethod" : {
@@ -104,19 +96,25 @@
       "name" : "entry_id"
     } ]
   }, {
-    "codeName" : "set_type_bug",
-    "name" : "设置缺陷类型",
-    "getPSAppDEMethod" : {
-      "modelref" : true,
-      "id" : "set_type_bug"
-    },
+    "codeName" : "calc_parent_work_item_type",
+    "name" : "计算父工作项类型",
     "getPSDEFIUpdateDetails" : [ {
       "name" : "work_item_type_name"
+    } ],
+    "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
+    "customCode" : true
+  }, {
+    "codeName" : "set_type_bug",
+    "name" : "设置缺陷类型",
+    "getPSDEFIUpdateDetails" : [ {
+      "name" : "work_item_type_id"
     }, {
       "name" : "project_type"
     }, {
-      "name" : "work_item_type_id"
-    } ]
+      "name" : "work_item_type_name"
+    } ],
+    "scriptCode" : "// 每次设置缺陷类型前手动置空工作项类型数据，使得表单项更新后必定触发类型变更\r\nctrl.state.data.work_item_type_id = null;\r\nctrl.state.data.work_item_type_name = null;\r\n\r\n// 调用表单项更新设置缺陷类型\r\nconst params = { ...ctrl.params, ...ctrl.data.getOrigin() };\r\nconst tempContext = Object.assign(ctrl.context,{project:ctrl.data.project_id})\r\nconst res = await ctrl.service.updateFormItem(\r\n    'set_type_bug',\r\n    tempContext,\r\n    params,\r\n);\r\n\r\nreturn res.data\r\n",
+    "customCode" : true
   } ],
   "getPSDEFormItemVRs" : [ {
     "checkMode" : 1,
@@ -1432,8 +1430,6 @@
           "colMD" : 6,
           "layout" : "TABLE_24COL"
         },
-        "resetItemName" : "project_name",
-        "resetItemNames" : [ "project_name" ],
         "allowEmpty" : true,
         "hidden" : true
       }, {
@@ -1662,14 +1658,17 @@
           "getPSDEFDLogics" : [ {
             "groupOP" : "OR",
             "logicType" : "GROUP",
+            "name" : "OR",
             "getPSDEFDLogics" : [ {
               "condOP" : "ISNULL",
               "dEFDName" : "checkid",
-              "logicType" : "SINGLE"
+              "logicType" : "SINGLE",
+              "name" : "checkid值为空(Nil)"
             }, {
               "condOP" : "ISNOTNULL",
               "dEFDName" : "dynamic_new",
-              "logicType" : "SINGLE"
+              "logicType" : "SINGLE",
+              "name" : "dynamic_new值不为空(NotNil)"
             } ],
             "notMode" : false
           } ],
@@ -1681,6 +1680,7 @@
           "logicType" : "GROUP",
           "getPSDEFDLogics" : [ {
             "logicType" : "SINGLE",
+            "name" : " view.params.srfparentkey = data.project_id;",
             "value" : "view.params.srfparentkey = data.project_id;"
           } ],
           "notMode" : false
@@ -1753,7 +1753,8 @@
           "getPSDEFDLogics" : [ {
             "condOP" : "ISNOTNULL",
             "dEFDName" : "project_name",
-            "logicType" : "SINGLE"
+            "logicType" : "SINGLE",
+            "name" : "project_name值不为空(NotNil)"
           } ],
           "relatedDetailNames" : [ "project_name" ],
           "notMode" : false
@@ -1817,8 +1818,6 @@
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "resetItemName" : "project_name",
-        "resetItemNames" : [ "project_name" ],
         "valueItemName" : "work_item_type_id",
         "allowEmpty" : false,
         "showCaption" : true
@@ -1918,6 +1917,7 @@
             "condOP" : "NOTEQ",
             "dEFDName" : "work_item_type_name",
             "logicType" : "SINGLE",
+            "name" : "work_item_type_name不等于(<>) 史诗",
             "value" : "史诗"
           } ],
           "relatedDetailNames" : [ "work_item_type_name" ],
@@ -1929,7 +1929,8 @@
           "getPSDEFDLogics" : [ {
             "condOP" : "ISNOTNULL",
             "dEFDName" : "project_name",
-            "logicType" : "SINGLE"
+            "logicType" : "SINGLE",
+            "name" : "project_name值不为空(NotNil)"
           } ],
           "relatedDetailNames" : [ "project_name" ],
           "notMode" : false
@@ -2018,7 +2019,8 @@
           "getPSDEFDLogics" : [ {
             "condOP" : "ISNOTNULL",
             "dEFDName" : "project_name",
-            "logicType" : "SINGLE"
+            "logicType" : "SINGLE",
+            "name" : "project_name值不为空(NotNil)"
           } ],
           "relatedDetailNames" : [ "project_name" ],
           "notMode" : false

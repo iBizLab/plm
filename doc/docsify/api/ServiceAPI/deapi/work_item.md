@@ -88,6 +88,7 @@
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -184,6 +185,7 @@
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -286,6 +288,7 @@
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -408,6 +411,7 @@
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -549,6 +553,7 @@
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -645,6 +650,7 @@
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -747,6 +753,7 @@
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -867,6 +874,7 @@
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -963,6 +971,7 @@
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -1084,6 +1093,7 @@
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -1180,6 +1190,7 @@
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -1301,6 +1312,7 @@
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -1397,6 +1409,7 @@
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -1499,6 +1512,7 @@
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -1619,6 +1633,7 @@
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -1715,6 +1730,7 @@
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -1836,6 +1852,7 @@
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -1932,6 +1949,7 @@
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -2053,6 +2071,7 @@
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -2149,6 +2168,7 @@
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -2270,6 +2290,7 @@
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -2366,6 +2387,7 @@
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -2482,6 +2504,7 @@
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -2578,6 +2601,7 @@
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -2703,6 +2727,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -2799,6 +2824,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -2920,6 +2946,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -3016,6 +3043,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -3118,6 +3146,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -3238,6 +3267,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -3334,6 +3364,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -3450,6 +3481,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -3546,6 +3578,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -3648,6 +3681,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -3763,6 +3797,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -3859,6 +3894,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -3961,6 +3997,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -4076,6 +4113,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -4172,6 +4210,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -4274,6 +4313,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -4394,6 +4434,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -4490,6 +4531,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -4606,6 +4648,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -4702,6 +4745,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -4804,6 +4848,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -4919,6 +4964,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -5015,6 +5061,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -5117,6 +5164,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -5237,6 +5285,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -5333,6 +5382,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -5456,6 +5506,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -5578,6 +5629,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -5693,6 +5745,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -5789,6 +5842,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -5891,6 +5945,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -6011,6 +6066,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -6107,6 +6163,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -6209,6 +6266,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -6329,6 +6387,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -6425,6 +6484,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -6546,6 +6606,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -6642,6 +6703,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -6744,6 +6806,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -6864,6 +6927,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -6960,6 +7024,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -7062,6 +7127,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -7177,6 +7243,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -7273,6 +7340,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -7375,6 +7443,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -7495,6 +7564,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -7591,6 +7661,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -7707,6 +7778,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -7803,6 +7875,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -7905,6 +7978,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -8025,6 +8099,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -8121,6 +8196,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -8237,6 +8313,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -8333,6 +8410,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -8435,6 +8513,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -8550,6 +8629,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -8646,6 +8726,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -8748,6 +8829,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -8863,6 +8945,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -8959,6 +9042,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -9061,6 +9145,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -9181,6 +9266,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -9277,6 +9363,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -9398,6 +9485,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -9494,6 +9582,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -9615,6 +9704,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -9711,6 +9801,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -9832,6 +9923,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -9928,6 +10020,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -10049,6 +10142,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -10145,6 +10239,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -10266,6 +10361,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -10362,6 +10458,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -10483,6 +10580,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -10579,6 +10677,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -10700,6 +10799,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -10796,6 +10896,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -10919,6 +11020,7 @@ Integer
   "deliverable_imp" : null,
   "project_is_deleted" : null,
   "project_is_archived" : null,
+  "dependencies" : null,
   "board_id" : null,
   "board_name" : null,
   "create_man" : null,
@@ -11230,6 +11332,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -11541,6 +11644,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -11852,6 +11956,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -12163,6 +12268,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -12474,6 +12580,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -13521,6 +13628,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -14368,6 +14476,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -14679,6 +14788,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -14990,6 +15100,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -15301,6 +15412,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -15833,6 +15945,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -16144,6 +16257,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -16455,6 +16569,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -16766,6 +16881,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -17806,6 +17922,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -18117,6 +18234,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -18428,6 +18546,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -18739,6 +18858,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -19050,6 +19170,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -19361,6 +19482,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -19672,6 +19794,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -19983,6 +20106,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -20294,6 +20418,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -20605,6 +20730,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -20916,6 +21042,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -21227,6 +21354,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -21538,6 +21666,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -21849,6 +21978,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -22160,6 +22290,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -22471,6 +22602,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -22782,6 +22914,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -23093,6 +23226,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -23404,6 +23538,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -23715,6 +23850,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -24208,100 +24344,94 @@ Integer
 ```json
 [
   {
+    "board_id" : null,
+    "project_is_archived" : null,
+    "project_is_deleted" : null,
+    "deliverable_imp" : null,
+    "overdue_time" : null,
+    "finisher" : null,
+    "actual_end_at" : null,
+    "actual_start_at" : null,
+    "multiple_people" : null,
+    "executors" : null,
+    "is_overtime" : null,
+    "solution_way" : null,
+    "tags" : null,
+    "p_work_item_type_id" : null,
     "show_identifier" : null,
     "identifier" : null,
-    "is_archived" : null,
-    "is_deleted" : null,
-    "title" : null,
-    "start_at" : null,
-    "end_at" : null,
+    "attentions" : null,
+    "work_item_origin_state" : null,
     "state" : null,
-    "priority" : null,
-    "is_leaf" : null,
-    "backlog_type" : null,
-    "backlog_from" : null,
-    "assignee_name" : null,
-    "description" : null,
-    "assignee_id" : null,
-    "cur_version_id" : null,
-    "reappear_probability" : null,
-    "severity" : null,
-    "risk" : null,
-    "project_type" : null,
-    "work_item_type_group" : null,
-    "tags" : null,
-    "entry_status" : null,
+    "release_status" : null,
+    "state_type" : null,
+    "sequence" : null,
     "entry_position" : null,
-    "rep_num" : null,
-    "solution_way" : null,
+    "rep_date" : null,
+    "end_at" : null,
+    "rep_value3" : null,
+    "recent_create_days" : null,
+    "rep_value2" : null,
     "work_item_type_sequence" : null,
-    "completed_at" : null,
-    "workload_schedule" : null,
-    "estimated_workload" : null,
-    "job_type" : null,
+    "work_item_type_id" : null,
+    "work_item_type_group" : null,
+    "work_item_sub_type" : null,
+    "top_title" : null,
+    "top_id" : null,
     "test_plan_id" : null,
+    "swimlane_id" : null,
+    "sprint_id" : null,
+    "rep_value1" : null,
+    "rep_percent_value" : null,
+    "rep_group_value" : null,
+    "release_id" : null,
+    "project_identifier" : null,
+    "project_id" : null,
+    "pid" : null,
+    "is_leaf" : null,
+    "is_deleted" : null,
+    "is_archived" : null,
+    "id" : null,
+    "entry_status" : null,
+    "entry_id" : null,
+    "deliverable" : null,
+    "cur_version_name" : null,
+    "cur_version_id" : null,
+    "choose_version_name" : null,
+    "choose_version_id" : null,
+    "attentions_imp" : null,
+    "assignee_id" : null,
+    "rep_num" : null,
+    "entry_name" : null,
+    "sprint_status" : null,
+    "sprint_name" : null,
+    "release_name" : null,
     "remaining_workload" : null,
+    "risk" : null,
+    "create_time" : null,
+    "severity" : null,
+    "start_at" : null,
+    "create_man" : null,
+    "title" : null,
+    "backlog_from" : null,
+    "job_type" : null,
     "attachments" : null,
     "actual_workload" : null,
-    "deliverable" : null,
-    "attention_count" : null,
-    "p_work_item_type_id" : null,
-    "comment_count" : null,
-    "project_identifier" : null,
-    "attentions" : null,
-    "rep_group_value" : null,
-    "rep_percent_value" : null,
-    "rep_value1" : null,
-    "rep_value3" : null,
-    "rep_value2" : null,
-    "state_type" : null,
-    "cur_version_name" : null,
-    "choose_version_id" : null,
-    "choose_version_name" : null,
-    "attentions_imp" : null,
-    "sprint_status" : null,
-    "release_status" : null,
-    "work_item_sub_type" : null,
-    "rep_date" : null,
-    "recent_create_days" : null,
-    "sequence" : null,
-    "relation_total_idea" : null,
-    "relation_total_test_case" : null,
-    "relation_total_ticket" : null,
-    "relation_total_work_item" : null,
-    "work_item_origin_state" : null,
-    "is_overtime" : null,
-    "executors" : null,
-    "multiple_people" : null,
-    "actual_start_at" : null,
-    "actual_end_at" : null,
-    "finisher" : null,
-    "overdue_time" : null,
-    "deliverable_imp" : null,
-    "project_is_deleted" : null,
-    "project_is_archived" : null,
-    "board_id" : null,
+    "project_type" : null,
+    "completed_at" : null,
+    "reappear_probability" : null,
+    "backlog_type" : null,
+    "assignee_name" : null,
+    "priority" : null,
     "board_name" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "entry_id" : null,
-    "entry_name" : null,
-    "id" : null,
-    "pid" : null,
-    "project_id" : null,
-    "project_name" : null,
-    "ptitle" : null,
-    "release_id" : null,
-    "release_name" : null,
-    "sprint_id" : null,
-    "sprint_name" : null,
-    "swimlane_id" : null,
-    "top_id" : null,
-    "top_title" : null,
     "update_man" : null,
     "update_time" : null,
-    "work_item_type_id" : null,
+    "estimated_workload" : null,
+    "workload_schedule" : null,
+    "project_name" : null,
     "work_item_type_name" : null,
+    "ptitle" : null,
+    "dependencies" : null,
   }
 ]
 ```
@@ -24592,6 +24722,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -24903,6 +25034,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -25215,6 +25347,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -26000,6 +26133,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -27018,6 +27152,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -27329,6 +27464,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -27640,6 +27776,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -28205,6 +28342,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -28516,6 +28654,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -28827,6 +28966,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -29646,6 +29786,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -29957,6 +30098,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -30269,6 +30411,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -30580,6 +30723,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -30891,6 +31035,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -31202,6 +31347,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -31513,6 +31659,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -31824,6 +31971,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -32135,6 +32283,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -32446,6 +32595,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -32685,100 +32835,94 @@ Integer
 ```json
 [
   {
+    "board_id" : null,
+    "project_is_archived" : null,
+    "project_is_deleted" : null,
+    "deliverable_imp" : null,
+    "overdue_time" : null,
+    "finisher" : null,
+    "actual_end_at" : null,
+    "actual_start_at" : null,
+    "multiple_people" : null,
+    "executors" : null,
+    "is_overtime" : null,
+    "solution_way" : null,
+    "tags" : null,
+    "p_work_item_type_id" : null,
     "show_identifier" : null,
     "identifier" : null,
-    "is_archived" : null,
-    "is_deleted" : null,
-    "title" : null,
-    "start_at" : null,
-    "end_at" : null,
+    "attentions" : null,
+    "work_item_origin_state" : null,
     "state" : null,
-    "priority" : null,
-    "is_leaf" : null,
-    "backlog_type" : null,
-    "backlog_from" : null,
-    "assignee_name" : null,
-    "description" : null,
-    "assignee_id" : null,
-    "cur_version_id" : null,
-    "reappear_probability" : null,
-    "severity" : null,
-    "risk" : null,
-    "project_type" : null,
-    "work_item_type_group" : null,
-    "tags" : null,
-    "entry_status" : null,
+    "release_status" : null,
+    "state_type" : null,
+    "sequence" : null,
     "entry_position" : null,
-    "rep_num" : null,
-    "solution_way" : null,
+    "rep_date" : null,
+    "end_at" : null,
+    "rep_value3" : null,
+    "recent_create_days" : null,
+    "rep_value2" : null,
     "work_item_type_sequence" : null,
-    "completed_at" : null,
-    "workload_schedule" : null,
-    "estimated_workload" : null,
-    "job_type" : null,
+    "work_item_type_id" : null,
+    "work_item_type_group" : null,
+    "work_item_sub_type" : null,
+    "top_title" : null,
+    "top_id" : null,
     "test_plan_id" : null,
+    "swimlane_id" : null,
+    "sprint_id" : null,
+    "rep_value1" : null,
+    "rep_percent_value" : null,
+    "rep_group_value" : null,
+    "release_id" : null,
+    "project_identifier" : null,
+    "project_id" : null,
+    "pid" : null,
+    "is_leaf" : null,
+    "is_deleted" : null,
+    "is_archived" : null,
+    "id" : null,
+    "entry_status" : null,
+    "entry_id" : null,
+    "deliverable" : null,
+    "cur_version_name" : null,
+    "cur_version_id" : null,
+    "choose_version_name" : null,
+    "choose_version_id" : null,
+    "attentions_imp" : null,
+    "assignee_id" : null,
+    "rep_num" : null,
+    "entry_name" : null,
+    "sprint_status" : null,
+    "sprint_name" : null,
+    "release_name" : null,
     "remaining_workload" : null,
+    "risk" : null,
+    "create_time" : null,
+    "severity" : null,
+    "start_at" : null,
+    "create_man" : null,
+    "title" : null,
+    "backlog_from" : null,
+    "job_type" : null,
     "attachments" : null,
     "actual_workload" : null,
-    "deliverable" : null,
-    "attention_count" : null,
-    "p_work_item_type_id" : null,
-    "comment_count" : null,
-    "project_identifier" : null,
-    "attentions" : null,
-    "rep_group_value" : null,
-    "rep_percent_value" : null,
-    "rep_value1" : null,
-    "rep_value3" : null,
-    "rep_value2" : null,
-    "state_type" : null,
-    "cur_version_name" : null,
-    "choose_version_id" : null,
-    "choose_version_name" : null,
-    "attentions_imp" : null,
-    "sprint_status" : null,
-    "release_status" : null,
-    "work_item_sub_type" : null,
-    "rep_date" : null,
-    "recent_create_days" : null,
-    "sequence" : null,
-    "relation_total_idea" : null,
-    "relation_total_test_case" : null,
-    "relation_total_ticket" : null,
-    "relation_total_work_item" : null,
-    "work_item_origin_state" : null,
-    "is_overtime" : null,
-    "executors" : null,
-    "multiple_people" : null,
-    "actual_start_at" : null,
-    "actual_end_at" : null,
-    "finisher" : null,
-    "overdue_time" : null,
-    "deliverable_imp" : null,
-    "project_is_deleted" : null,
-    "project_is_archived" : null,
-    "board_id" : null,
+    "project_type" : null,
+    "completed_at" : null,
+    "reappear_probability" : null,
+    "backlog_type" : null,
+    "assignee_name" : null,
+    "priority" : null,
     "board_name" : null,
-    "create_man" : null,
-    "create_time" : null,
-    "entry_id" : null,
-    "entry_name" : null,
-    "id" : null,
-    "pid" : null,
-    "project_id" : null,
-    "project_name" : null,
-    "ptitle" : null,
-    "release_id" : null,
-    "release_name" : null,
-    "sprint_id" : null,
-    "sprint_name" : null,
-    "swimlane_id" : null,
-    "top_id" : null,
-    "top_title" : null,
     "update_man" : null,
     "update_time" : null,
-    "work_item_type_id" : null,
+    "estimated_workload" : null,
+    "workload_schedule" : null,
+    "project_name" : null,
     "work_item_type_name" : null,
+    "ptitle" : null,
+    "dependencies" : null,
   }
 ]
 ```
@@ -33323,6 +33467,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -33634,6 +33779,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -34179,6 +34325,7 @@ Integer
     "deliverable_imp" : null,
     "project_is_deleted" : null,
     "project_is_archived" : null,
+    "dependencies" : null,
     "board_id" : null,
     "board_name" : null,
     "create_man" : null,
@@ -34681,6 +34828,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -34840,6 +34988,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -34957,6 +35106,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -35074,6 +35224,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -35191,6 +35342,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -35308,6 +35460,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -35425,6 +35578,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -35542,6 +35696,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -35659,6 +35814,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -35775,6 +35931,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -35892,6 +36049,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -36009,6 +36167,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -36126,6 +36285,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -36242,6 +36402,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -36358,6 +36519,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -36474,6 +36636,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -36591,6 +36754,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -36707,6 +36871,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -36823,6 +36988,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -36940,6 +37106,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -37098,6 +37265,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -37215,6 +37383,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -37332,6 +37501,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -37449,6 +37619,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -37566,6 +37737,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -37682,6 +37854,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -37799,6 +37972,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -37915,6 +38089,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -38032,6 +38207,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -38148,6 +38324,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -38264,6 +38441,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -38380,6 +38558,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -38497,6 +38676,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -38614,6 +38794,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -38731,6 +38912,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -38848,6 +39030,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -38965,6 +39148,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -39082,6 +39266,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -39199,6 +39384,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -39316,6 +39502,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -48441,6 +48628,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -48600,6 +48788,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -48717,6 +48906,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -48834,6 +49024,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -48951,6 +49142,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -49068,6 +49260,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -49185,6 +49378,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -49302,6 +49496,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -49419,6 +49614,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -49535,6 +49731,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -49652,6 +49849,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -49769,6 +49967,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -49886,6 +50085,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -50002,6 +50202,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -50118,6 +50319,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -50234,6 +50436,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -50351,6 +50554,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -50467,6 +50671,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -50583,6 +50788,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -50700,6 +50906,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -50858,6 +51065,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -50975,6 +51183,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -51092,6 +51301,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -51209,6 +51419,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -51326,6 +51537,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -51442,6 +51654,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -51559,6 +51772,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -51675,6 +51889,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -51792,6 +52007,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -51908,6 +52124,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -52024,6 +52241,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -52140,6 +52358,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -52257,6 +52476,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -52374,6 +52594,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -52491,6 +52712,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -52608,6 +52830,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -52725,6 +52948,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -52842,6 +53066,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -52959,6 +53184,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|
@@ -53076,6 +53302,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">deliverable_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|交付物|
 |<el-row justify="space-between"><el-col :span="20">project_is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否删除|
 |<el-row justify="space-between"><el-col :span="20">project_is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|项目是否归档|
+|<el-row justify="space-between"><el-col :span="20">dependencies</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|依赖|
 |<el-row justify="space-between"><el-col :span="20">board_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板标识|
 |<el-row justify="space-between"><el-col :span="20">board_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板名称|
 |<el-row justify="space-between"><el-col :span="20">entry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板栏标识|

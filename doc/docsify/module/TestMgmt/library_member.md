@@ -126,9 +126,9 @@
 | 设置角色（移动端） | mob_setting_role | 设置角色 |单项数据（主键）|<details><summary>后台调用</summary>[change_role](#行为)||
 | 设置角色 | setting_role | 设置角色 |多项数据（主键）|<details><summary>后台调用</summary>[change_role](#行为)||
 | 跳转至成员设置 | jump_to_member_set | 跳转至成员设置 |无数据|用户自定义||
-| 删除成员（移动端） | mob_delete_member | 删除成员 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 | 变更职位 | change_position | 变更职位 |多项数据（主键）|<details><summary>后台调用</summary>[change_position](#行为)||
 | 删除成员 | delete_member | 删除成员 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 删除成员（移动端） | mob_delete_member | 删除成员 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |

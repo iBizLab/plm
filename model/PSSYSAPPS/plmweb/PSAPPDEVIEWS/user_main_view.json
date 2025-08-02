@@ -6,7 +6,7 @@
   "caption" : "设置成员信息",
   "codeName" : "user_main_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_main_view.json",
-  "height" : 700,
+  "height" : 765,
   "name" : "usermain_view",
   "openMode" : "POPUPMODAL",
   "getPSAppDataEntity" : {
@@ -304,6 +304,13 @@
       "getPSAppDEField" : {
         "name" : "AVATAR",
         "codeName" : "avatar"
+      }
+    }, {
+      "id" : "open_user_tag",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "OPEN_USER_TAG",
+        "codeName" : "open_user_tag"
       }
     }, {
       "id" : "report_flag",
@@ -765,6 +772,87 @@
         "infoGroupMode" : false,
         "showCaption" : true
       }, {
+        "caption" : "第三方认证",
+        "codeName" : "grouppanel1",
+        "detailStyle" : "DEFAULT",
+        "detailType" : "GROUPPANEL",
+        "name" : "grouppanel1",
+        "getPSDEFormDetails" : [ {
+          "codeName" : "rawitem1",
+          "contentType" : "RAW",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "RAWITEM",
+          "name" : "rawitem1",
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSRawItem" : {
+            "caption" : "由于企业微信用户接口安全性限制，企业微信用户与PLM用户需手动绑定对应关系以实现统一认证",
+            "contentType" : "RAW",
+            "name" : "rawitem1",
+            "rawItemHeight" : -1.0,
+            "rawItemWidth" : -1.0
+          },
+          "rawContent" : "由于企业微信用户接口安全性限制，企业微信用户与PLM用户需手动绑定对应关系以实现统一认证",
+          "rawItemHeight" : -1.0,
+          "rawItemWidth" : -1.0,
+          "showCaption" : true
+        }, {
+          "caption" : "企业微信绑定",
+          "codeName" : "open_user_tag",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "NONE",
+          "labelWidth" : 0,
+          "name" : "open_user_tag",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "OPEN_USER_TAG",
+            "codeName" : "open_user_tag"
+          },
+          "getPSEditor" : {
+            "editorParams" : {
+              "SRFNAVPARAM.N_OPEN_TYPE_EQ" : "wxwork"
+            },
+            "editorType" : "DROPDOWNLIST",
+            "name" : "open_user_tag",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__wxwork.json"
+            },
+            "getPSNavigateParams" : [ {
+              "key" : "n_open_type_eq",
+              "name" : "n_open_type_eq",
+              "value" : "wxwork",
+              "rawValue" : true
+            } ],
+            "placeHolder" : "请选择企业微信账号",
+            "singleSelect" : true
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "needCodeListConfig" : true
+        } ],
+        "getPSLayout" : {
+          "childColMD" : 24,
+          "columnCount" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "titleBarCloseMode" : 2,
+        "infoGroupMode" : false,
+        "showCaption" : true
+      }, {
         "caption" : "统计",
         "codeName" : "report_flag",
         "dataType" : 9,
@@ -939,6 +1027,10 @@
     "getParentPSAppDEField" : {
       "name" : "DEPARTMENT_ID",
       "codeName" : "department_id"
+    },
+    "getParentTextPSAppDEField" : {
+      "name" : "DEPARTMENT_NAME",
+      "codeName" : "department_name"
     },
     "rSMode" : 2
   } ] ]

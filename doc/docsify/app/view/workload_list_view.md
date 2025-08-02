@@ -15,11 +15,13 @@
 
 ### 关联界面行为
   * [工时(WORKLOAD)](module/Base/workload) : [工时明细返回主表单](module/Base/workload#界面行为)
-  * [工时(WORKLOAD)](module/Base/workload) : [删除工时](module/Base/workload#界面行为)
   * [工时(WORKLOAD)](module/Base/workload) : [表格界面_编辑操作](module/Base/workload#界面行为)
+  * [工时(WORKLOAD)](module/Base/workload) : [删除工时](module/Base/workload#界面行为)
 
 ### 关联视图
   * [工时(workload_edit_view)](app/view/workload_edit_view)
+  * [修改预估工时(workload_forecast_quick_update_view)](app/view/workload_forecast_quick_update_view)
+  * [工时(workload_redirect_view)](app/view/workload_redirect_view)
   * [修改实际工时(workload_update_view)](app/view/workload_update_view)
 
 <script>

@@ -16,8 +16,8 @@
 
 ### 关联界面行为
   * [基线页面(BASELINE_PAGE)](module/Wiki/baseline_page) : [表格界面_导出操作（Excel）](module/Wiki/baseline_page#界面行为)
-  * [基线页面(BASELINE_PAGE)](module/Wiki/baseline_page) : [基线规划页面](module/Wiki/baseline_page#界面行为)
   * [基线页面(BASELINE_PAGE)](module/Wiki/baseline_page) : [移出基线](module/Wiki/baseline_page#界面行为)
+  * [基线页面(BASELINE_PAGE)](module/Wiki/baseline_page) : [基线规划页面](module/Wiki/baseline_page#界面行为)
 
 ### 关联视图
   * [页面(article_page_baseline_mpick_up_view)](app/view/article_page_baseline_mpick_up_view)

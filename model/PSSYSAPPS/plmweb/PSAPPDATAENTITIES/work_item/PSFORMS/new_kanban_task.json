@@ -93,15 +93,17 @@
     "scriptCode" : "console.log('执行人发生变化!', ctrl)\r\nvar assignee_id = ctrl.details.assignee_id;\r\nvar assignee_name = ctrl.details.assignee_name;\r\nvar estimated_workload = ctrl.details.estimated_workload;\r\nvar remaining_workload = ctrl.details.remaining_workload;\r\nvar executors = ctrl.details.executors.value;\r\nvar total_estimated_workload = 0;\r\nif(executors != null && executors != undefined && executors.length > 0){\r\n    // 默认取第一个执行人作为负责人\r\n    var first_executor = executors[0];\r\n    if(first_executor.user_id != null){\r\n        assignee_id.setDataValue(first_executor.user_id)\r\n    }\r\n    if(first_executor.user_name != null){\r\n        assignee_name.setDataValue(first_executor.user_name)\r\n    }\r\n    for (var i = 0; i < executors.length; i++) {\r\n        var executor_estimated_workload = executors[i].estimated_workload;\r\n        if(executor_estimated_workload != null && executor_estimated_workload != undefined){\r\n            total_estimated_workload =  total_estimated_workload + Number(executor_estimated_workload)\r\n        }\r\n        if(executors[i].is_assignee != null && executors[i].is_assignee != undefined && executors[i].is_assignee == 1) {\r\n            // 根据重复器中的是否负责人按钮，进行设置。只会有一个\r\n            assignee_id.setDataValue(executors[i].user_id)\r\n            assignee_name.setDataValue(executors[i].user_name)\r\n        }\r\n    }\r\n    estimated_workload.setDataValue(total_estimated_workload)\r\n    remaining_workload.setDataValue(total_estimated_workload)\r\n} else {\r\n    assignee_id.setDataValue(null)\r\n    assignee_name.setDataValue(null)\r\n    estimated_workload.setDataValue(null)\r\n}\r\n"
   } ],
   "getPSDEFormItemUpdates" : [ {
-    "codeName" : "set_default_entry",
-    "name" : "选择看板后填充默认看板栏",
-    "getPSAppDEMethod" : {
-      "modelref" : true,
-      "id" : "set_default_entry"
-    },
+    "codeName" : "set_type_bug",
+    "name" : "设置缺陷类型",
     "getPSDEFIUpdateDetails" : [ {
-      "name" : "entry_id"
-    } ]
+      "name" : "work_item_type_name"
+    }, {
+      "name" : "work_item_type_id"
+    }, {
+      "name" : "project_type"
+    } ],
+    "scriptCode" : "// 每次设置缺陷类型前手动置空工作项类型数据，使得表单项更新后必定触发类型变更\r\nctrl.state.data.work_item_type_id = null;\r\nctrl.state.data.work_item_type_name = null;\r\n\r\n// 调用表单项更新设置缺陷类型\r\nconst params = { ...ctrl.params, ...ctrl.data.getOrigin() };\r\nconst tempContext = Object.assign(ctrl.context,{project:ctrl.data.project_id})\r\nconst res = await ctrl.service.updateFormItem(\r\n    'set_type_bug',\r\n    tempContext,\r\n    params,\r\n);\r\n\r\nreturn res.data\r\n",
+    "customCode" : true
   }, {
     "codeName" : "calc_parent_work_item_type",
     "name" : "计算父工作项类型",
@@ -111,18 +113,14 @@
     "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}",
     "customCode" : true
   }, {
-    "codeName" : "set_type_bug",
-    "name" : "设置缺陷类型",
+    "codeName" : "set_default_entry",
+    "name" : "选择看板后填充默认看板栏",
     "getPSAppDEMethod" : {
       "modelref" : true,
-      "id" : "set_type_bug"
+      "id" : "set_default_entry"
     },
     "getPSDEFIUpdateDetails" : [ {
-      "name" : "work_item_type_name"
-    }, {
-      "name" : "work_item_type_id"
-    }, {
-      "name" : "project_type"
+      "name" : "entry_id"
     } ]
   } ],
   "getPSDEFormItemVRs" : [ {
@@ -1438,8 +1436,6 @@
           "colMD" : 6,
           "layout" : "TABLE_24COL"
         },
-        "resetItemName" : "project_name",
-        "resetItemNames" : [ "project_name" ],
         "allowEmpty" : true,
         "hidden" : true
       }, {
@@ -1668,14 +1664,17 @@
           "getPSDEFDLogics" : [ {
             "groupOP" : "OR",
             "logicType" : "GROUP",
+            "name" : "OR",
             "getPSDEFDLogics" : [ {
               "condOP" : "ISNULL",
               "dEFDName" : "checkid",
-              "logicType" : "SINGLE"
+              "logicType" : "SINGLE",
+              "name" : "checkid值为空(Nil)"
             }, {
               "condOP" : "ISNOTNULL",
               "dEFDName" : "dynamic_new",
-              "logicType" : "SINGLE"
+              "logicType" : "SINGLE",
+              "name" : "dynamic_new值不为空(NotNil)"
             } ],
             "notMode" : false
           } ],
@@ -1687,6 +1686,7 @@
           "logicType" : "GROUP",
           "getPSDEFDLogics" : [ {
             "logicType" : "SINGLE",
+            "name" : " view.params.srfparentkey = data.project_id;",
             "value" : "view.params.srfparentkey = data.project_id;"
           } ],
           "notMode" : false
@@ -1759,7 +1759,8 @@
           "getPSDEFDLogics" : [ {
             "condOP" : "ISNOTNULL",
             "dEFDName" : "project_name",
-            "logicType" : "SINGLE"
+            "logicType" : "SINGLE",
+            "name" : "project_name值不为空(NotNil)"
           } ],
           "relatedDetailNames" : [ "project_name" ],
           "notMode" : false
@@ -1823,8 +1824,6 @@
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
-        "resetItemName" : "project_name",
-        "resetItemNames" : [ "project_name" ],
         "valueItemName" : "work_item_type_id",
         "allowEmpty" : false,
         "showCaption" : true
@@ -1924,6 +1923,7 @@
             "condOP" : "NOTEQ",
             "dEFDName" : "work_item_type_name",
             "logicType" : "SINGLE",
+            "name" : "work_item_type_name不等于(<>) 史诗",
             "value" : "史诗"
           } ],
           "relatedDetailNames" : [ "work_item_type_name" ],
@@ -1935,7 +1935,8 @@
           "getPSDEFDLogics" : [ {
             "condOP" : "ISNOTNULL",
             "dEFDName" : "project_name",
-            "logicType" : "SINGLE"
+            "logicType" : "SINGLE",
+            "name" : "project_name值不为空(NotNil)"
           } ],
           "relatedDetailNames" : [ "project_name" ],
           "notMode" : false
@@ -2018,20 +2019,24 @@
             "getPSDEFDLogics" : [ {
               "groupOP" : "OR",
               "logicType" : "GROUP",
+              "name" : "OR",
               "getPSDEFDLogics" : [ {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) scrum_task",
                 "value" : "scrum_task"
               }, {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) waterfall_task",
                 "value" : "waterfall_task"
               }, {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) kanban_task",
                 "value" : "kanban_task"
               } ],
               "notMode" : false
@@ -2088,6 +2093,7 @@
                 "condOP" : "EQ",
                 "dEFDName" : "multiple_people",
                 "logicType" : "SINGLE",
+                "name" : "multiple_people等于(=) 1",
                 "value" : "1"
               } ],
               "relatedDetailNames" : [ "multiple_people" ],
@@ -2177,14 +2183,17 @@
             "getPSDEFDLogics" : [ {
               "groupOP" : "OR",
               "logicType" : "GROUP",
+              "name" : "OR",
               "getPSDEFDLogics" : [ {
                 "condOP" : "ISNULL",
                 "dEFDName" : "multiple_people",
-                "logicType" : "SINGLE"
+                "logicType" : "SINGLE",
+                "name" : "multiple_people值为空(Nil)"
               }, {
                 "condOP" : "EQ",
                 "dEFDName" : "multiple_people",
                 "logicType" : "SINGLE",
+                "name" : "multiple_people等于(=) 0",
                 "value" : "0"
               } ],
               "notMode" : false
@@ -2198,7 +2207,8 @@
             "getPSDEFDLogics" : [ {
               "condOP" : "ISNOTNULL",
               "dEFDName" : "project_name",
-              "logicType" : "SINGLE"
+              "logicType" : "SINGLE",
+              "name" : "project_name值不为空(NotNil)"
             } ],
             "relatedDetailNames" : [ "project_name" ],
             "notMode" : false
@@ -2360,24 +2370,29 @@
               "condOP" : "EQ",
               "dEFDName" : "multiple_people",
               "logicType" : "SINGLE",
+              "name" : "multiple_people等于(=) 1",
               "value" : "1"
             }, {
               "groupOP" : "OR",
               "logicType" : "GROUP",
+              "name" : "OR",
               "getPSDEFDLogics" : [ {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) scrum_task",
                 "value" : "scrum_task"
               }, {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) kanban_task",
                 "value" : "kanban_task"
               }, {
                 "condOP" : "EQ",
                 "dEFDName" : "work_item_type_id",
                 "logicType" : "SINGLE",
+                "name" : "work_item_type_id等于(=) waterfall_task",
                 "value" : "waterfall_task"
               } ],
               "notMode" : false

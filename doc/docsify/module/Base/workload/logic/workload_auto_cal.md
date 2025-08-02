@@ -21,6 +21,8 @@ state "设置实际工时" as PREPAREPARAM7  [[$./workload_auto_cal#prepareparam
 state "保存实际工时" as DEACTION4  [[$./workload_auto_cal#deaction4 {"保存实际工时"}]]
 state "设置剩余工时" as PREPAREPARAM8  [[$./workload_auto_cal#prepareparam8 {"设置剩余工时"}]]
 state "保存剩余工时" as DEACTION5  [[$./workload_auto_cal#deaction5 {"保存剩余工时"}]]
+state "设置预估工时" as PREPAREPARAM5  [[$./workload_auto_cal#prepareparam5 {"设置预估工时"}]]
+state "保存预估工时" as DEACTION6  [[$./workload_auto_cal#deaction6 {"保存预估工时"}]]
 state "填充递归调用参数" as PREPAREPARAM9  [[$./workload_auto_cal#prepareparam9 {"填充递归调用参数"}]]
 state "获取父工作项" as DEACTION3  [[$./workload_auto_cal#deaction3 {"获取父工作项"}]]
 state "设置父工作项ID" as PREPAREPARAM2  [[$./workload_auto_cal#prepareparam2 {"设置父工作项ID"}]]
@@ -34,7 +36,9 @@ RAWSFCODE2 --> PREPAREPARAM7
 PREPAREPARAM7 --> DEACTION4
 DEACTION4 --> PREPAREPARAM8
 PREPAREPARAM8 --> DEACTION5
-DEACTION5 --> PREPAREPARAM2
+DEACTION5 --> PREPAREPARAM5
+PREPAREPARAM5 --> DEACTION6
+DEACTION6 --> PREPAREPARAM2
 PREPAREPARAM2 --> DEACTION3
 DEACTION3 --> PREPAREPARAM9 : [[$./workload_auto_cal#deaction3-prepareparam9{父工作项存在父} 父工作项存在父]]
 PREPAREPARAM9 --> DELOGIC1
@@ -126,6 +130,21 @@ if(estimated_workload){
 
 调用实体 [扩展存储(EXTEND_STORAGE)](module/Base/extend_storage.md) 行为 [Save](module/Base/extend_storage#行为) ，行为参数为`remaining(剩余工时)`
 
+#### 设置预估工时 :id=PREPAREPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`ESTIMATED_WORKLOAD` 设置给  `estimated(预估工时).NAME(名称)`
+2. 将`WORK_ITEM` 设置给  `estimated(预估工时).OWNER_TYPE(所属数据对象)`
+3. 将`Default(传入变量).PRINCIPAL_ID(工时主体标识)` 设置给  `estimated(预估工时).OWNER_ID(所属数据标识)`
+4. 将`workload_data(工时数据).ESTIMATED_WORKLOAD(预估工时)` 设置给  `estimated(预估工时).DECIMAL_VALUE(数值值)`
+
+#### 保存预估工时 :id=DEACTION6<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+
+
+
+调用实体 [扩展存储(EXTEND_STORAGE)](module/Base/extend_storage.md) 行为 [Save](module/Base/extend_storage#行为) ，行为参数为`estimated(预估工时)`
+
 #### 填充递归调用参数 :id=PREPAREPARAM9<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -174,6 +193,7 @@ if(estimated_workload){
 |当前级工作项过滤器|cur_work_item_filter|过滤器|||
 |当前级工作项分页结果|cur_work_item_page|分页查询|||
 |当前工作项临时对象|cur_work_item_temp|数据对象|[工作项(WORK_ITEM)](module/ProjMgmt/work_item.md)||
+|预估工时|estimated|数据对象|[扩展存储(EXTEND_STORAGE)](module/Base/extend_storage.md)||
 |下次执行工时|next_work_load|数据对象|[工时(WORKLOAD)](module/Base/workload.md)||
 |父工作项|p_work_item|数据对象|[工作项(WORK_ITEM)](module/ProjMgmt/work_item.md)||
 |父工作项过滤器|p_work_item_filter|过滤器|||

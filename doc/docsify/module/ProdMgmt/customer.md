@@ -214,8 +214,8 @@
 | 添加至类别（多选） | add_categories | 设置类别 |多项数据（主键）|<details><summary>后台调用</summary>[add_categories](#行为)||
 | 编辑 | toolbar_tree_exp_view_node2_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 新建分组 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建分组 |单项数据|用户自定义||
-| 新建客户（移动端） | mob_add_customer | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[客户](app/view/customer_mob_edit_view)</details>||
 | 删除 | toolbar_tree_exp_view_node1_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 新建客户（移动端） | mob_add_customer | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[客户](app/view/customer_mob_edit_view)</details>||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |

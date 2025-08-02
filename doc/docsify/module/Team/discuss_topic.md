@@ -225,8 +225,8 @@
 | 已归档-删除（移动端） | mob_archived_delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 归档话题 | archived | 归档话题 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 | 打开话题配置 | open_discuss_topic_setting | 打开话题配置 |无数据|用户自定义||
-| 设置管理员（移动端） | mob_set_admin | 设置管理员 |单项数据（主键）|<details><summary>后台调用</summary>[mob_change_admin_role](#行为)||
 | 打开话题导航页 | open_topic_exp_page | 打开话题导航页 |无数据|<details><summary>打开顶级视图</summary>[协助空间](app/view/discuss_topic_tree_exp_view)</details>||
+| 设置管理员（移动端） | mob_set_admin | 设置管理员 |单项数据（主键）|<details><summary>后台调用</summary>[mob_change_admin_role](#行为)||
 | 已归档_删除 | archived_delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 新建话题 | create_discuss_topic | 新建话题 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建话题](app/view/discuss_topic_create_wizard_view)</details>||
 | 新开窗口（话题） | open_new | 新窗口打开 |单项数据（主键）|<details><summary>打开HTML页面</summary>*./#/-/index/discuss_topic=${data.id}/discuss_topic_index_view/srfnav=usrdrgroup0515813208/discuss_post_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_4%3Anode/discuss_post_all_grid_view/-*</details>||

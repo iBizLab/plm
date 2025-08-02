@@ -24,7 +24,96 @@
 
 <p class="panel-title"><b>查询列级别</b></p>
 
-* `默认（全部查询列）`
+* `指定属性组`
+*  **属性组：**[规划](#)
+  * `BOARD_ID(看板标识)`
+  * `PROJECT_IS_ARCHIVED(项目是否归档)`
+  * `PROJECT_IS_DELETED(项目是否删除)`
+  * `DELIVERABLE_IMP(交付物)`
+  * `OVERDUE_TIME(逾期天数)`
+  * `FINISHER(完成人)`
+  * `ACTUAL_END_AT(实际结束时间)`
+  * `ACTUAL_START_AT(实际开始时间)`
+  * `MULTIPLE_PEOPLE(多人任务)`
+  * `EXECUTORS(执行人)`
+  * `IS_OVERTIME(是否超时)`
+  * `SOLUTION_WAY(解决办法)`
+  * `TAGS(标签)`
+  * `P_WORK_ITEM_TYPE_ID(父工作项类型)`
+  * `SHOW_IDENTIFIER(编号)`
+  * `IDENTIFIER(编号)`
+  * `ATTENTIONS(关注)`
+  * `WORK_ITEM_ORIGIN_STATE(原始状态)`
+  * `STATE(状态)`
+  * `RELEASE_STATUS(发布阶段)`
+  * `STATE_TYPE(工作项状态类型)`
+  * `SEQUENCE(序号)`
+  * `ENTRY_POSITION(所在看板栏位置)`
+  * `REP_DATE(统计日期字段)`
+  * `END_AT(截止时间)`
+  * `REP_VALUE_3(报表值3)`
+  * `RECENT_CREATE_DAYS(最近创建日期)`
+  * `REP_VALUE_2(报表值2)`
+  * `WORK_ITEM_TYPE_SEQUENCE(工作项类型序号)`
+  * `WORK_ITEM_TYPE_ID(工作项类型)`
+  * `WORK_ITEM_TYPE_GROUP(工作项类型分组)`
+  * `WORK_ITEM_SUB_TYPE(工作项下级类型)`
+  * `TOP_TITLE(顶级工作项标题)`
+  * `TOP_ID(顶级工作项标识)`
+  * `TEST_PLAN_ID(测试计划ID)`
+  * `SWIMLANE_ID(泳道标识)`
+  * `SPRINT_ID(迭代标识)`
+  * `REP_VALUE_1(报表值1)`
+  * `REP_PERCENT_VALUE(报表百分值)`
+  * `REP_GROUP_VALUE(报表分组属性)`
+  * `RELEASE_ID(项目发布标识)`
+  * `PROJECT_IDENTIFIER(项目标识)`
+  * `PROJECT_ID(项目)`
+  * `PID(父标识)`
+  * `IS_LEAF(是否叶子节点)`
+  * `IS_DELETED(是否已删除)`
+  * `IS_ARCHIVED(是否已归档)`
+  * `ID(标识)`
+  * `ENTRY_STATUS(看板栏状态)`
+  * `ENTRY_ID(看板栏标识)`
+  * `DELIVERABLE(交付物)`
+  * `CUR_VERSION_NAME(当前版本名称)`
+  * `CUR_VERSION_ID(当前版本标识)`
+  * `CHOOSE_VERSION_NAME(选择版本名称)`
+  * `CHOOSE_VERSION_ID(选择版本标识)`
+  * `ATTENTIONS_IMP(关注人)`
+  * `ASSIGNEE_ID(负责人)`
+  * `REP_NUM(统计数)`
+  * `ENTRY_NAME(看板栏名称)`
+  * `SPRINT_STATUS(迭代状态)`
+  * `SPRINT_NAME(迭代名称)`
+  * `RELEASE_NAME(项目发布名称)`
+  * `REMAINING_WORKLOAD(剩余工时)`
+  * `RISK(风险)`
+  * `CREATE_TIME(建立时间)`
+  * `SEVERITY(严重程度)`
+  * `START_AT(开始时间)`
+  * `CREATE_MAN(建立人)`
+  * `TITLE(标题)`
+  * `BACKLOG_FROM(需求来源)`
+  * `JOB_TYPE(任务类别)`
+  * `ATTACHMENTS(附件)`
+  * `ACTUAL_WORKLOAD(实际工时)`
+  * `PROJECT_TYPE(项目类型)`
+  * `COMPLETED_AT(完成时间)`
+  * `REAPPEAR_PROBABILITY(复现概率)`
+  * `BACKLOG_TYPE(需求类型)`
+  * `ASSIGNEE_NAME(负责人)`
+  * `PRIORITY(优先级)`
+  * `BOARD_NAME(看板名称)`
+  * `UPDATE_MAN(更新人)`
+  * `UPDATE_TIME(更新时间)`
+  * `ESTIMATED_WORKLOAD(预估工时)`
+  * `WORKLOAD_SCHEDULE(工时进度)`
+  * `PROJECT_NAME(所属项目)`
+  * `WORK_ITEM_TYPE_NAME(工作项类型)`
+  * `PTITLE(父工作项)`
+  * `DEPENDENCIES(依赖)`
 
 
 

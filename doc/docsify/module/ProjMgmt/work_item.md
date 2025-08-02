@@ -17,7 +17,7 @@
 |关注人|ATTENTIONS_IMP|文本，可指定长度|100|是||
 |关注数|ATTENTION_COUNT|文本，可指定长度|200|是||
 |需求来源|BACKLOG_FROM|单项选择(文本值)|60|是||
-|需求类型|BACKLOG_TYPE|[单项选择(文本值)](index/dictionary_index#requirement_type "需求类型")|60|是||
+|需求类型|BACKLOG_TYPE|单项选择(文本值)|60|是||
 |看板标识|BOARD_ID|外键值|100|是||
 |看板名称|BOARD_NAME|外键值文本|200|是||
 |选择版本标识|CHOOSE_VERSION_ID|文本，可指定长度|100|是||
@@ -30,6 +30,7 @@
 |当前版本名称|CUR_VERSION_NAME|文本，可指定长度|100|是||
 |交付物|DELIVERABLE|一对多关系数据集合|1048576|是||
 |交付物|DELIVERABLE_IMP|文本，可指定长度|100|是||
+|依赖|DEPENDENCIES|一对多关系数据集合|1048576|是||
 |描述|DESCRIPTION|长文本，没有长度限制|1048576|是||
 |截止时间|END_AT|日期型||是||
 |看板栏标识|ENTRY_ID|外键值|100|是||
@@ -214,7 +215,7 @@
 |需求来源|BACKLOG_FROM|单项选择(文本值)|60|是||
 |复现概率|REAPPEAR_PROBABILITY|单项选择(文本值)|60|是||
 |优先级|PRIORITY|单项选择(文本值)|100|是||
-|需求类型|BACKLOG_TYPE|[单项选择(文本值)](index/dictionary_index#requirement_type "需求类型")|60|是||
+|需求类型|BACKLOG_TYPE|单项选择(文本值)|60|是||
 |严重程度|SEVERITY|单项选择(文本值)|60|是||
 |风险|RISK|单项选择(文本值)|60|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
@@ -259,6 +260,100 @@
 | --------   |------------| -----  | -----  | :----: | -------- |
 |开始时间|START_AT|日期型||是||
 |截止时间|END_AT|日期型||是||
+
+</el-tab-pane>
+<el-tab-pane label="规划" name="field_group_plan">
+
+|    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|看板标识|BOARD_ID|外键值|100|是||
+|项目是否归档|PROJECT_IS_ARCHIVED|外键值附加数据||是||
+|项目是否删除|PROJECT_IS_DELETED|外键值附加数据||是||
+|交付物|DELIVERABLE_IMP|文本，可指定长度|100|是||
+|逾期天数|OVERDUE_TIME|文本，可指定长度|200|是||
+|完成人|FINISHER|文本，可指定长度|100|是||
+|实际结束时间|ACTUAL_END_AT|日期时间型||是||
+|实际开始时间|ACTUAL_START_AT|日期时间型||是||
+|多人任务|MULTIPLE_PEOPLE|是否逻辑||是||
+|执行人|EXECUTORS|一对多关系数据集合|1048576|是||
+|是否超时|IS_OVERTIME|整型||是||
+|解决办法|SOLUTION_WAY|长文本，长度1000|2000|是||
+|标签|TAGS|长文本，长度1000|2000|是||
+|父工作项类型|P_WORK_ITEM_TYPE_ID|外键值附加数据|100|是||
+|编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
+|编号<sup class="footnote-symbol">[[序列]](index/sequence_index#seq_work_item_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
+|关注|ATTENTIONS|一对多关系数据集合|1048576|是||
+|原始状态|WORK_ITEM_ORIGIN_STATE|外键值附加数据|100|是||
+|状态|STATE|外键值|100|否||
+|发布阶段|RELEASE_STATUS|外键值附加数据|60|是||
+|工作项状态类型|STATE_TYPE|[外键值附加数据](index/dictionary_index#state_type "工作项状态类型")|60|是||
+|序号|SEQUENCE|数值||是||
+|所在看板栏位置|ENTRY_POSITION|整型||是||
+|统计日期字段|REP_DATE|日期型||是||
+|截止时间|END_AT|日期型||是||
+|报表值3|REP_VALUE_3|整型||是||
+|最近创建日期|RECENT_CREATE_DAYS|整型||是||
+|报表值2|REP_VALUE_2|整型||是||
+|工作项类型序号|WORK_ITEM_TYPE_SEQUENCE|外键值附加数据||是||
+|工作项类型|WORK_ITEM_TYPE_ID|外键值|100|否||
+|工作项类型分组|WORK_ITEM_TYPE_GROUP|[外键值附加数据](index/dictionary_index#work_item_type_group "工作项类型分组")|60|是||
+|工作项下级类型|WORK_ITEM_SUB_TYPE|外键值附加数据|200|是||
+|顶级工作项标题|TOP_TITLE|外键值文本|500|是||
+|顶级工作项标识|TOP_ID|外键值|100|是||
+|测试计划ID|TEST_PLAN_ID|文本，可指定长度|100|是||
+|泳道标识|SWIMLANE_ID|外键值|100|是||
+|迭代标识|SPRINT_ID|外键值|100|是||
+|报表值1|REP_VALUE_1|整型||是||
+|报表百分值|REP_PERCENT_VALUE|浮点||是||
+|报表分组属性|REP_GROUP_VALUE|文本，可指定长度|100|是||
+|项目发布标识|RELEASE_ID|外键值|100|是||
+|项目标识|PROJECT_IDENTIFIER|外键值附加数据|15|是||
+|项目|PROJECT_ID|外键值|100|否||
+|父标识|PID|外键值|100|是||
+|是否叶子节点|IS_LEAF|是否逻辑||是||
+|是否已删除|IS_DELETED|是否逻辑||是||
+|是否已归档|IS_ARCHIVED|是否逻辑||是||
+|标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|看板栏状态|ENTRY_STATUS|文本，可指定长度|100|是||
+|看板栏标识|ENTRY_ID|外键值|100|是||
+|交付物|DELIVERABLE|一对多关系数据集合|1048576|是||
+|当前版本名称|CUR_VERSION_NAME|文本，可指定长度|100|是||
+|当前版本标识|CUR_VERSION_ID|文本，可指定长度|100|是||
+|选择版本名称|CHOOSE_VERSION_NAME|文本，可指定长度|100|是||
+|选择版本标识|CHOOSE_VERSION_ID|文本，可指定长度|100|是||
+|关注人|ATTENTIONS_IMP|文本，可指定长度|100|是||
+|负责人|ASSIGNEE_ID|外键值|100|是||
+|统计数|REP_NUM|数值||是||
+|看板栏名称|ENTRY_NAME|外键值文本|200|是||
+|迭代状态|SPRINT_STATUS|[外键值附加数据](index/dictionary_index#sprint_status "迭代状态")|60|是||
+|迭代名称|SPRINT_NAME|外键值文本|200|是||
+|项目发布名称|RELEASE_NAME|外键值文本|200|是||
+|剩余工时|REMAINING_WORKLOAD|数值||是||
+|风险|RISK|单项选择(文本值)|60|是||
+|建立时间|CREATE_TIME|日期时间型||否||
+|严重程度|SEVERITY|单项选择(文本值)|60|是||
+|开始时间|START_AT|日期型||是||
+|建立人|CREATE_MAN|文本，可指定长度|100|否||
+|标题|TITLE|文本，可指定长度|500|否||
+|需求来源|BACKLOG_FROM|单项选择(文本值)|60|是||
+|任务类别|JOB_TYPE|单项选择(文本值)|60|是||
+|附件|ATTACHMENTS|一对多关系数据集合|1048576|是||
+|实际工时|ACTUAL_WORKLOAD|数值||是||
+|项目类型|PROJECT_TYPE|[外键值附加数据](index/dictionary_index#project_type "项目类型")|60|是||
+|完成时间|COMPLETED_AT|日期时间型||是||
+|复现概率|REAPPEAR_PROBABILITY|单项选择(文本值)|60|是||
+|需求类型|BACKLOG_TYPE|单项选择(文本值)|60|是||
+|负责人|ASSIGNEE_NAME|外键值文本|100|是||
+|优先级|PRIORITY|单项选择(文本值)|100|是||
+|看板名称|BOARD_NAME|外键值文本|200|是||
+|更新人|UPDATE_MAN|文本，可指定长度|100|否||
+|更新时间|UPDATE_TIME|日期时间型||否||
+|预估工时|ESTIMATED_WORKLOAD|数值||是||
+|工时进度|WORKLOAD_SCHEDULE|数值||是||
+|所属项目|PROJECT_NAME|外键值文本|200|是||
+|工作项类型|WORK_ITEM_TYPE_NAME|外键值文本|200|是||
+|父工作项|PTITLE|外键值文本|500|是||
+|依赖|DEPENDENCIES|一对多关系数据集合|1048576|是||
 
 </el-tab-pane>
 <el-tab-pane label="资源分配" name="field_group_resource_assignment">
@@ -308,7 +403,7 @@
 |编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
 |所属项目|PROJECT_NAME|外键值文本|200|是||
 |迭代标识|SPRINT_ID|外键值|100|是||
-|需求类型|BACKLOG_TYPE|[单项选择(文本值)](index/dictionary_index#requirement_type "需求类型")|60|是||
+|需求类型|BACKLOG_TYPE|单项选择(文本值)|60|是||
 |需求来源|BACKLOG_FROM|单项选择(文本值)|60|是||
 |风险|RISK|单项选择(文本值)|60|是||
 |迭代名称|SPRINT_NAME|外键值文本|200|是||
@@ -365,6 +460,7 @@
 |[DERCUSTOM_APP_VIEW_THEME_WORK_ITEM](der/DERCUSTOM_APP_VIEW_THEME_WORK_ITEM)|[应用视图主题(APP_VIEW_THEME)](module/ebsx/app_view_theme)|自定义关系||
 |[DERCUSTOM_ATTENTION_WORK_ITEM_OWNER_ID](der/DERCUSTOM_ATTENTION_WORK_ITEM_OWNER_ID)|[关注(ATTENTION)](module/Base/attention)|自定义关系||
 |[DERCUSTOM_COMMENT_WORK_ITEM_PRINCIPAL_ID](der/DERCUSTOM_COMMENT_WORK_ITEM_PRINCIPAL_ID)|[评论(COMMENT)](module/Base/comment)|自定义关系||
+|[DERCUSTOM_DEPENDENCY_WORK_ITEM](der/DERCUSTOM_DEPENDENCY_WORK_ITEM)|[依赖(DEPENDENCY)](module/Base/dependency)|自定义关系||
 |[DERCUSTOM_EXECUTOR_WORK_ITEM_OWNER_ID](der/DERCUSTOM_EXECUTOR_WORK_ITEM_OWNER_ID)|[执行人(EXECUTOR)](module/Base/executor)|自定义关系||
 |[DERCUSTOM_RECENT_WORK_ITEM](der/DERCUSTOM_RECENT_WORK_ITEM)|[最近访问(RECENT)](module/Base/recent)|自定义关系||
 |[DERCUSTOM_RELATION_TARGET_WORK_ITEM](der/DERCUSTOM_RELATION_TARGET_WORK_ITEM)|[关联(RELATION)](module/Base/relation)|自定义关系||
@@ -469,6 +565,7 @@
 |[填充实际开始/完成时间](module/ProjMgmt/work_item/logic/fill_actual_time)|fill_actual_time|无|||
 |[填充待完成事项数量](module/ProjMgmt/work_item/logic/fill_not_completed_num)|fill_not_completed_num|无||移动端工作台首页：获取待完成事项数量|
 |[填充状态的类型](module/ProjMgmt/work_item/logic/fill_type_of_state)|fill_type_of_state|无||根据工作项状态的id获取对应的type值|
+|[填充用例信息](module/ProjMgmt/work_item/logic/fill_test_case_info)|fill_test_case_info|无|||
 |[填充表单](module/ProjMgmt/work_item/logic/fill_idea_form)|fill_idea_form|无|||
 |[复制子工作项](module/ProjMgmt/work_item/logic/copy_child_work_item)|copy_child_work_item|无||复制工作项时，同时复制子工作项|
 |[复制工作项](module/ProjMgmt/work_item/logic/copy_work_item)|copy_work_item|无||复制工作项到其他的同类型项目|
@@ -892,9 +989,10 @@
 | 新建用户故事（移动端scrum） | mob_create_scrum_story | 新建用户故事 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
 | 打开评论列表（移动端） | open_comment_list | 打开评论列表 |单项数据|<details><summary>打开视图或向导（模态）</summary>[评论](app/view/comment_mob_comment_md_view)</details>||
 | 删除（移动端工具栏） | mob_toolbar_delete | 删除 |多项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
+| 查看预估工时明细（移动端） | mob_check_forecast_workload_detail | 查看工时明细 |无数据|<details><summary>打开视图或向导（模态）</summary>[工时记录](app/view/workload_mob_forecast_detail_view)</details>||
 | 打开更多我创建的工作项 | open_more_my_create | 打开更多我创建的工作项 |无数据|用户自定义||
+| 新建缺陷（测试计划关联） | new_test_plan_bug | 新建缺陷 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_quick_create_bug_view)</details>|测试计划分页导航 → 缺陷分页 → 表格工具栏 「 新建缺陷 」|
 | 新建任务（移动端waterfall） | mob_create_waterfall_task | 新建任务 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
-| 新建缺陷（测试计划关联） | new_test_plan_bug | 新建缺陷 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>|测试计划分页导航 → 缺陷分页 → 表格工具栏 「 新建缺陷 」|
 | 新建并添加子工作项（移动端） | create_and_child_work_item | 新建子工作项 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_mob_create_option_view)</details>||
 | 打开我的事项其他工作项 | open_summary_other_item | 其他工作项 |无数据|<details><summary>打开视图或向导（模态）</summary>[其他工作项](app/view/work_item_summary_other_grid_view)</details>||
 | 打开更多我负责的工作项 | query_more_my_assignee | 打开更多我负责的工作项 |无数据|用户自定义||
@@ -910,7 +1008,7 @@
 | 刷新子工作项列表（移动端） | mob_refresh_work_item | 刷新子工作项列表（移动端） |无数据|用户自定义||
 | 新建计划（waterfall） | new_waterfall_plan | 新建计划 |单项数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
 | 全局资源成员设置 | resource_member | 成员设置 |无数据|<details><summary>后台调用</summary>[resource_member_setting](#行为)||
-| 跳转进行中的工作项 | jump_in_progress_work_item | 跳转进行中的工作项 |无数据|<details><summary>打开视图或向导（模态）</summary></details>||
+| 跳转进行中的工作项 | jump_in_progress_work_item | 跳转进行中的工作项 |无数据|<details><summary>打开视图或向导（模态）</summary>[个人工作项](app/view/work_item_my_assignee_gird_view_show)</details>||
 | 新建用户故事（scrum） | new_scrum_story | 新建用户故事 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
 | 关联工单（工具栏） | toolbar_link_ticket | 关联工单 |无数据|用户自定义||
 | 导出为图片（甘特图） | export_gantt_image | 导出为图片 |无数据|用户自定义||
@@ -923,8 +1021,8 @@
 | 新建任务（kanban）（工具栏） | new_kanban_task_toolbar | 新建工作项 |无数据|用户自定义||
 | 打开BI报表设计界面 | open_bi_report_design | 打开BI报表设计界面 |无数据|用户自定义|后续需删除|
 | 新建需求（hybrid） | new_hybrid_requirement | 新建需求 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
-| 刷新 | refresh | 刷新 |无数据|用户自定义||
 | 新建事务（hybrid）（工具栏） | new_hybrid_issue_toolbar | 新建事务 |无数据|用户自定义||
+| 刷新 | refresh | 刷新 |无数据|用户自定义||
 | 移出迭代 | shift_out_sprint | 移出迭代 |单项数据（主键）|<details><summary>后台调用</summary>[shift_out_sprint](#行为)||
 | 瀑布缺陷导入 | waterfall_upload_bug | 导入缺陷 |无数据|<details><summary>打开数据导入视图</summary>[瀑布缺陷导入]()</details>||
 | 新建史诗（hybrid） | new_hybrid_epic | 新建史诗 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
@@ -946,28 +1044,29 @@
 | 新建用户故事（移动端hybrid） | mob_create_hybrid_story | 新建用户故事 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
 | 打开BI报表配置表单_工作项_time | open_bi_form_time | 配置 |无数据|<details><summary>打开快捷编辑</summary></details>|只含有"含截止时间为空"|
 | 添加工作项重复关系（移动端） | mob_add_duplicates | 重复 |无数据|<details><summary>后台调用</summary>[others_relation_work_item](#行为)||
-| 新建缺陷（移动端hybrid） | mob_create_hybrid_bug | 新建缺陷 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
 | 新建需求（hybrid动态） | dyna_new_hybrid_requirement | 新建需求 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_hybrid_quick_create_view)</details>||
 | 新建用户故事（kanban） | new_kanban_story | 新建用户故事 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
+| 新建缺陷（移动端hybrid） | mob_create_hybrid_bug | 新建缺陷 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
+| 添加预估工时 | add_estimated_workload | 添加预估工时 |无数据|<details><summary>打开视图或向导（模态）</summary>[登记预估工时](app/view/workload_forecast_quick_create_view)</details>||
 | 工作项关联产品需求（移动端） | mob_relation_idea | 添加关联 |无数据|<details><summary>后台调用</summary>[others_relation_work_item](#行为)||
 | 新建阶段（移动端hybrid） | mob_create_hybrid_stage | 新建阶段 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
 | 新建任务（移动端scrum） | mob_create_scrum_task | 新建任务 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
 | 新建特性（scrum） | new_scrum_feature | 新建特性 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
-| 添加工作项原因关系（移动端） | mob_add_causes | 原因 |无数据|<details><summary>后台调用</summary>[others_relation_work_item](#行为)||
 | 新建任务（hybrid动态） | dyna_new_hybrid_task | 新建任务 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_hybrid_quick_create_view)</details>||
 | 添加控件显示 | show_add_input | 添加工作项 |无数据|用户自定义||
+| 添加工作项原因关系（移动端） | mob_add_causes | 原因 |无数据|<details><summary>后台调用</summary>[others_relation_work_item](#行为)||
 | 新建需求（waterfall） | new_waterfall_requirement | 新建需求 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
 | 新建特性（移动端kanban） | mob_create_kanban_feature | 新建特性 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
 | 显示下拉并展开数据（嵌入视图） | show_dorpdown_data | 显示下拉并展开数据 |无数据|用户自定义||
 | 添加实际工时 | add_actual_workload | 添加实际工时 |无数据|<details><summary>打开视图或向导（模态）</summary>[登记工时](app/view/workload_quick_create_view)</details>||
-| 新建任务（移动端kanban） | mob_create_kanban_task | 新建任务 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
 | 新建史诗（scrum动态） | new_dyna_scrum_epic | 新建史诗 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_scrum_quick_create_view)</details>||
-| 新建缺陷（移动端scrum） | mob_create_scrum_bug | 新建缺陷 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
+| 新建任务（移动端kanban） | mob_create_kanban_task | 新建任务 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
 | 新建子工作项 | newrow_test | 新建子工作项 |单项数据|用户自定义||
+| 新建缺陷（移动端scrum） | mob_create_scrum_bug | 新建缺陷 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
 | 新建事务（kanban动态） | new_dyna_kanban_issue | 新建事务 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_kanban_quick_create_view)</details>||
 | 新建用户故事（scrum动态） | new_dyna_scrum_story | 新建用户故事 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_scrum_quick_create_view)</details>||
 | 新建缺陷（waterfall） | new_waterfall_bug | 新建缺陷 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
-| 跳转未开始的工作项 | jump_pending_work_item | 跳转未开始的工作项 |无数据|<details><summary>打开视图或向导（模态）</summary></details>||
+| 跳转未开始的工作项 | jump_pending_work_item | 跳转未开始的工作项 |无数据|<details><summary>打开视图或向导（模态）</summary>[个人工作项](app/view/work_item_my_assignee_gird_view_show)</details>||
 | 新建任务（hybrid） | new_hybrid_task | 新建任务 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
 | 新建特性（kanban动态） | new_dyna_kanban_feature | 新建特性 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_kanban_quick_create_view)</details>||
 | 新建用户故事（hybrid） | new_hybrid_story | 新建用户故事 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
@@ -977,7 +1076,7 @@
 | 新建任务（hybrid）（工具栏） | new_hybrid_task_toolbar | 新建任务 |无数据|用户自定义||
 | 打开人员选择视图（移动端） | open_mob_choose_assignee | 打开人员选择视图（移动端） |无数据|<details><summary>打开视图或向导（模态）</summary>[项目成员](app/view/project_member_mob_select_tap_exp_view)</details>||
 | Scrum需求导入 | scrum_backlog_import_data | 自定义导入需求 |无数据|<details><summary>打开数据导入视图</summary>[Scrum工作项需求导入]()</details>||
-| 跳转已关闭的工作项 | jump_closed_work_item | 跳转已关闭的工作项 |无数据|<details><summary>打开视图或向导（模态）</summary></details>||
+| 跳转已关闭的工作项 | jump_closed_work_item | 跳转已关闭的工作项 |无数据|<details><summary>打开视图或向导（模态）</summary>[个人工作项](app/view/work_item_my_assignee_gird_view_show)</details>||
 | 打开我的事项缺陷 | open_summary_bug | 缺陷 |无数据|<details><summary>打开视图或向导（模态）</summary>[缺陷](app/view/work_item_summary_bug_grid_view)</details>||
 | 移入迭代 | shift_in_sprint | 移入迭代 |多项数据（主键）|<details><summary>后台调用</summary>[shift_in_sprint](#行为)||
 | 导出报表excel | export_report_excel | 导出表格 |无数据|用户自定义||
@@ -997,13 +1096,15 @@
 | 打开我的事项任务 | open_summary_task | 任务 |无数据|<details><summary>打开视图或向导（模态）</summary>[任务](app/view/work_item_summary_task_grid_view)</details>||
 | 新建任务（移动端hybrid） | mob_create_hybrid_task | 新建任务 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
 | 新建工作项（快速新建） | quick_new_work_item | 新建工作项 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>|SRFNAVPARAM.srfdatatype=%srfdatatype%<br>SRFNAVPARAM.work_item_type_id=%srfdatatype%<br>SRFNAVPARAM.srfparentdename=%srfparentdename%<br>SRFNAVPARAM.srfparentkey=%srfparentkey%<br>SRFNAVPARAM.project_name=%project_name%<br>SRFNAVPARAM.need_fill_form=true|
+| 查看预估工时明细 | check_estimated_workload_detail | 查看预估工时明细 |无数据|用户自定义||
 | 分配负责人 | change_assignee | 分配负责人 |多项数据（主键）|<details><summary>后台调用</summary>[change_assignee](#行为)||
 | 复制链接 | copy_link | 复制链接 |单项数据|用户自定义||
+| 添加预估工时（移动端） | mob_add_forecast_workload | 添加预估工时 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[登记预估工时](app/view/workload_mob_forecast_edit_view)</details>||
 | 新建缺陷（kanban动态） | new_dyna_kanban_bug | 新建缺陷 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_kanban_quick_create_view)</details>||
 | 新建里程碑（waterfall） | new_waterfall_milestone | 新建里程碑 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
 | 更改工作项状态 | change_work_item_state | 更改状态 |单项数据（主键）|<details><summary>打开编辑表单</summary></details>||
-| 新建史诗（移动端kanban） | mob_create_kanban_epic | 新建史诗 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
 | 新建需求（hybrid）（工具栏） | new_hybrid_requirement_toolbar | 新建需求 |无数据|用户自定义||
+| 新建史诗（移动端kanban） | mob_create_kanban_epic | 新建史诗 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
 | 添加工作项被阻塞关系（移动端） | mob_add_is_blocked_by | 被阻塞 |无数据|<details><summary>后台调用</summary>[others_relation_work_item](#行为)||
 | 添加子工作项（移动端） | mob_add_child | 添加子工作项 |无数据|<details><summary>后台调用</summary>[choose_child](#行为)||
 | BI全屏 | bi_full_screen | 全屏 |无数据|用户自定义||
@@ -1011,14 +1112,14 @@
 | 复制工作项 | copy | 复制 |多项数据（主键）|<details><summary>后台调用</summary>[copy](#行为)||
 | 新建缺陷（hybrid）（工具栏） | new_hybrid_bug_toolbar | 新建缺陷 |无数据|用户自定义||
 | 移出发布 | shift_out_release | 移出发布 |单项数据（主键）|<details><summary>后台调用</summary>[shift_out_release](#行为)||
-| 跳转已完成的工作项 | jump_completed_work_item | 跳转已完成的工作项 |无数据|<details><summary>打开视图或向导（模态）</summary></details>||
+| 跳转已完成的工作项 | jump_completed_work_item | 跳转已完成的工作项 |无数据|<details><summary>打开视图或向导（模态）</summary>[个人工作项](app/view/work_item_my_assignee_gird_view_show)</details>||
 | 打开BI报表配置表单_工作项_all | open_bi_form_all | 配置 |无数据|<details><summary>打开快捷编辑</summary></details>|含有状态类型、状态和"含截止时间为空"|
 | Scrum缺陷导入 | scrum_bug_import_data | 自定义缺陷导入 |无数据|<details><summary>打开数据导入视图</summary>[Scrum工作项缺陷导入]()</details>||
-| 打开关注列表（移动端） | open_attention_list | 打开关注列表 |单项数据|<details><summary>打开视图或向导（模态）</summary>[工作项关注](app/view/attention_mob_work_item_md_view)</details>||
 | 移入看板 | shift_in_kanban | 移入看板 |单项数据（主键）|<details><summary>打开编辑表单</summary></details>||
+| 打开关注列表（移动端） | open_attention_list | 打开关注列表 |单项数据|<details><summary>打开视图或向导（模态）</summary>[工作项关注](app/view/attention_mob_work_item_md_view)</details>||
 | 打开BI报表配置表单_工作项_state | open_bi_form_state | 配置 |无数据|<details><summary>打开快捷编辑</summary></details>|只含有状态类型和状态|
-| 新建用户故事（移动端kanban） | mob_create_kanban_story | 新建用户故事 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
 | 新建里程碑（hybrid） | new_hybrid_milestone | 新建里程碑 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
+| 新建用户故事（移动端kanban） | mob_create_kanban_story | 新建用户故事 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
 | 新建任务（kanban） | new_kanban_task | 新建任务 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
 | 新建缺陷（kanban）（工具栏） | new_kanban_bug_toolbar | 新建工作项 |无数据|用户自定义||
 | 新建用户故事（kanban）（工具栏） | new_kanban_story_toolbar | 新建工作项 |无数据|用户自定义||
@@ -1041,8 +1142,8 @@
 | 归档 | archive | 归档 |多项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 | 变更状态 | change_state | 变更状态 |多项数据（主键）|<details><summary>后台调用</summary>[change_state](#行为)||
 | 查看工时明细（移动端） | mob_check_workload_detail | 查看工时明细 |无数据|<details><summary>打开视图或向导（模态）</summary>[工时记录](app/view/workload_mob_detail_view)</details>||
-| 显示更多_我负责的工作项(移动端仪表盘) | show_more_assignee_item | 显示更多 |无数据|<details><summary>打开视图或向导（模态）</summary>[我负责的工作项](app/view/work_item_my_assignee_mobboard)</details>||
 | 导出报表PDF | export_report_pdf | 导出为PDF |无数据|用户自定义||
+| 显示更多_我负责的工作项(移动端仪表盘) | show_more_assignee_item | 显示更多 |无数据|<details><summary>打开视图或向导（模态）</summary>[我负责的工作项](app/view/work_item_my_assignee_mobboard)</details>||
 | 激活 | activate | 激活 |多项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
 | 新建里程碑（waterfall动态） | new_dyna_waterfall_milestone | 新建里程碑 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_waterfall_quick_create_view)</details>||
 | 新建任务（scrum） | new_scrum_task | 新建任务 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_create_view)</details>||
@@ -1064,11 +1165,11 @@
 | 恢复 | recover | 恢复 |多项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
 | 打开BI报表配置表单_工作项缺陷 | open_bi_form_item_bug | 配置 |无数据|<details><summary>打开快捷编辑</summary></details>|缺陷占比专用|
 | 新建事务（kanban） | new_kanban_issue | 新建事务 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
-| 新建需求（移动端waterfall） | mob_create_waterfall_requirement | 新建需求 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
 | 新建特性（hybrid） | new_hybrid_feature | 新建特性 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
+| 新建需求（移动端waterfall） | mob_create_waterfall_requirement | 新建需求 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/work_item_mob_create_view)</details>||
 | 添加工作项阻塞关系（移动端） | mob_add_blocks | 阻塞 |无数据|<details><summary>后台调用</summary>[others_relation_work_item](#行为)||
-| 工作项关联产品工单（移动端） | mob_add_ticket | 添加工单 |无数据|<details><summary>后台调用</summary>[others_relation_work_item](#行为)||
 | 新建里程碑（hybrid）（工具栏） | new_hybrid_milestone_toolbar | 新建里程碑 |无数据|用户自定义||
+| 工作项关联产品工单（移动端） | mob_add_ticket | 添加工单 |无数据|<details><summary>后台调用</summary>[others_relation_work_item](#行为)||
 | 瀑布需求导入 | waterfall_upload_back | 导入需求 |无数据|<details><summary>打开数据导入视图</summary>[瀑布需求导入]()</details>||
 | 移动（表单中） | move_in_form | 移动 |单项数据（主键）|<details><summary>后台调用</summary>[move_work_item](#行为)||
 | 添加实际工时（移动端） | mob_add_actual_workload | 添加实际工时 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[登记工时](app/view/workload_register_mob_edit_view)</details>||
@@ -1121,6 +1222,7 @@
 |[显示下拉并展开选项（嵌入视图）](module/ProjMgmt/work_item/uilogic/toolbar_show_dorpdown_data)|toolbar_show_dorpdown_data|显示下拉区域并展开选项（工具栏）|
 |[显示表单侧边栏](module/ProjMgmt/work_item/uilogic/show_form_sidebar)|show_form_sidebar|每次工作项主表单刷新时，将右侧侧边栏默认显示出来。|
 |[查看工时明细](module/ProjMgmt/work_item/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
+|[查看预估工时明细](module/ProjMgmt/work_item/uilogic/check_estimated_workload_detail)|check_estimated_workload_detail|按钮触发，通过脚本切换显示组件|
 |[添加子工作项值变更](module/ProjMgmt/work_item/uilogic/add_child_change)|add_child_change|子工作项值变更触发更新父标识|
 |[添加附件数据](module/ProjMgmt/work_item/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[状态变更前逻辑](module/ProjMgmt/work_item/uilogic/before_state_change)|before_state_change|检测变更状态前选中的数据是否为同一类型，不同则禁用|

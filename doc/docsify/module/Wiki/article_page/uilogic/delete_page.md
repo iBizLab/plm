@@ -29,11 +29,6 @@ DEUIACTION1 --> VIEWCTRLINVOKE1
 
 ### 处理步骤说明
 
-#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
-
-
-
-
 #### 界面行为 :id=DEUIACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体界面行为调用]</font></sup>
 
 
@@ -45,6 +40,11 @@ DEUIACTION1 --> VIEWCTRLINVOKE1
 
 
 调用`treeexpbar_tree(树部件)`的方法`refresh`，参数为`treeexpbar_tree(树部件)`
+#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
+
+
+
+
 
 
 ### 实体逻辑参数

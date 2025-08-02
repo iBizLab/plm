@@ -29,6 +29,8 @@
 
 |  中文名     |   代码名  |  视图标题 | 视图类型   |   备注  |
 |  --------   |------------| -----------|  -----   |  -----   |
+|[引用索引数据选择视图](app/view/INDEX)|INDEX|引用索引|实体数据选择视图|系统自动添加|
+|[引用索引数据选择视图](app/view/INDEX)|INDEX|引用索引|实体数据选择视图|系统自动添加|
 |[活动历史列表](app/view/activity_history_list_view)|activity_history_list_view|活动历史列表|实体列表视图||
 |[活动选择表格视图](app/view/activity_pick_up_grid_view)|activity_pick_up_grid_view|活动|实体选择表格视图（部件视图）|系统自动添加|
 |[活动数据选择视图](app/view/activity_pick_up_view)|activity_pick_up_view|活动|实体数据选择视图|系统自动添加|
@@ -79,6 +81,7 @@
 |[保存命名版本](app/view/article_page_set_name_version_option_view)|article_page_set_name_version_option_view|保存命名版本|实体选项操作视图||
 |[共享页面表格视图](app/view/article_page_shared_grid_view)|article_page_shared_grid_view|共享页面|实体表格视图||
 |[共享设置](app/view/article_page_shared_setting_view)|article_page_shared_setting_view|共享设置|实体选项操作视图||
+|[共享](app/view/article_page_shared_view)|article_page_shared_view|页面|实体编辑视图||
 |[与我共享](app/view/article_page_shared_with_me_grid_view)|article_page_shared_with_me_grid_view|与我共享|实体表格视图||
 |[页面](app/view/article_page_shared_with_me_view)|article_page_shared_with_me_view|页面|实体编辑视图||
 |[页面实体自定义视图（展示）](app/view/article_page_show_custom_view)|article_page_show_custom_view|页面|实体自定义视图||
@@ -89,6 +92,7 @@
 |[页面数据统计表格](app/view/article_page_statistical_grid_view)|article_page_statistical_grid_view|数据统计|实体表格视图||
 |[测试协同编辑视图](app/view/article_page_test_edit_view)|article_page_test_edit_view|测试协同编辑视图|实体编辑视图||
 |[测试页面导入](app/view/article_page_test_grid_view)|article_page_test_grid_view|测试页面导入|实体表格视图||
+|[测试页面-引用代码表](app/view/article_page_test_view)|article_page_test_view|页面|实体编辑视图||
 |[空间页面](app/view/article_page_tree_exp_view)|article_page_tree_exp_view|空间页面|实体树导航视图||
 |[更新日志](app/view/article_page_updated_logs)|article_page_updated_logs|PLM系统更新日志|实体自定义视图||
 |[上传图标选项操作视图](app/view/article_page_upload_icon_option_view)|article_page_upload_icon_option_view|上传图标|实体选项操作视图||
@@ -455,6 +459,8 @@
 |[成员](app/view/member_shared_page_list_view)|member_shared_page_list_view|成员|实体列表视图||
 |[通知设置](app/view/notify_setting_config_view)|notify_setting_config_view|通知设置|实体编辑视图||
 |[消息设置](app/view/notify_setting_config_view_test)|notify_setting_config_view_test|消息设置|实体编辑视图||
+|[第三方用户编辑视图](app/view/openuser_edit_view)|openuser_edit_view|第三方用户|实体编辑视图|系统自动添加|
+|[第三方用户表格视图](app/view/openuser_grid_view)|openuser_grid_view|第三方用户|实体表格视图||
 |[组织编辑](app/view/organization_org_option_view)|organization_org_option_view|组织|实体选项操作视图||
 |[历史版本](app/view/page_version_list_exp_view)|page_version_list_exp_view|历史版本|实体列表导航视图||
 |[系统参数编辑视图](app/view/parameter_edit_view)|parameter_edit_view|系统参数|实体编辑视图|系统自动添加|
@@ -698,8 +704,6 @@
 |[首页](app/view/recent_tree_exp_view)|recent_tree_exp_view|首页|实体树导航视图||
 |[引用索引编辑视图](app/view/references_index_edit_view)|references_index_edit_view|引用索引|实体编辑视图|系统自动添加|
 |[引用索引表格视图](app/view/references_index_grid_view)|references_index_grid_view|引用索引|实体表格视图||
-|[引用索引索引关系选择数据视图](app/view/references_index_index_pick_up_data_view)|references_index_index_pick_up_data_view|引用索引|实体索引关系选择数据视图（部件视图）|系统自动添加|
-|[引用索引数据选择视图](app/view/references_index_index_pick_up_view)|references_index_index_pick_up_view|引用索引|实体数据选择视图|系统自动添加|
 |[工作项依赖](app/view/relation_depend_on_list_view)|relation_depend_on_list_view|关联|实体列表视图||
 |[工作项关联编辑视图](app/view/relation_edit_view)|relation_edit_view|关联|实体编辑视图||
 |[工作项关联表格视图](app/view/relation_grid_view)|relation_grid_view|关联|实体表格视图||
@@ -1177,6 +1181,7 @@
 |[动态新建看板工作项](app/view/work_item_dyna_kanban_quick_create_view)|work_item_dyna_kanban_quick_create_view|工作项|实体选项操作视图||
 |[工作项树表格视图（kanban动态）](app/view/work_item_dyna_kanban_tree_grid_view)|work_item_dyna_kanban_tree_grid_view|工作项|实体树表格视图||
 |[工作项（动态）](app/view/work_item_dyna_main_view)|work_item_dyna_main_view|工作项|实体编辑视图|工作项主视图（动态）|
+|[工作项](app/view/work_item_dyna_quick_create_bug_view)|work_item_dyna_quick_create_bug_view|工作项|实体选项操作视图||
 |[工作项快速建立视图](app/view/work_item_dyna_quick_create_view)|work_item_dyna_quick_create_view|工作项|实体选项操作视图|快速新建使用|
 |[工作项表格视图（动态）](app/view/work_item_dyna_scrum_grid_view)|work_item_dyna_scrum_grid_view|工作项|实体表格视图|系统自动添加|
 |[动态新建敏捷工作项](app/view/work_item_dyna_scrum_quick_create_view)|work_item_dyna_scrum_quick_create_view|工作项|实体选项操作视图||
@@ -1323,6 +1328,9 @@
 |[工时记录列表视图](app/view/workload_detail_list_view)|workload_detail_list_view|工时记录|实体列表视图||
 |[工时反查表格](app/view/workload_drill_detail_grid_view)|workload_drill_detail_grid_view|工时反查|实体表格视图||
 |[工时编辑视图](app/view/workload_edit_view)|workload_edit_view|工时|实体编辑视图||
+|[预估工时日历分页搜索视图（管理）](app/view/workload_estimated_management_tab_search_view)|workload_estimated_management_tab_search_view|工时|实体分页搜索视图||
+|[预估工时快速建立视图](app/view/workload_forecast_quick_create_view)|workload_forecast_quick_create_view|登记预估工时|实体选项操作视图|系统自动添加|
+|[预估工时快速修改视图](app/view/workload_forecast_quick_update_view)|workload_forecast_quick_update_view|修改预估工时|实体选项操作视图||
 |[团队日工时链接表格视图](app/view/workload_group_day_link_grid_view)|workload_group_day_link_grid_view|工时日志|实体表格视图||
 |[团队总登记时长链接表格视图](app/view/workload_group_duration_link_grid_view)|workload_group_duration_link_grid_view|工时日志|实体表格视图||
 |[团队下成员工时日历表格视图](app/view/workload_group_member_grid_view)|workload_group_member_grid_view|团队成员|实体表格视图||
