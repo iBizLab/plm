@@ -158,6 +158,34 @@ iBizPLM使用了现代化软件架构，前端技术使用Vue，后端技术使�
 | 39  | 2025-06-04  | Modeling建模-高级篇-应用市场 | https://www.bilibili.com/video/BV1ZCTjzkEgf |
 | 40  | 2025-06-05  | Modeling建模-进阶篇-多数据部件  | https://www.bilibili.com/video/BV1zrTtzCENC |
 | 41  | 2025-06-06  | Modeling建模-高级篇-智能报表 | https://www.bilibili.com/video/BV1rFTuzfEUP |
+| 42  | 2025-06-09  | Modeling建模-高级篇-动态扩展属性 https://www.bilibili.com/video/BV1F5TizNEJt |
+| 43  | 2025-06-10  | Modeling建模-高级篇-动态表单 https://www.bilibili.com/video/BV15UM3zZEMR |
+| 44  | 2025-06-11  | Modeling建模-进阶篇-多选视图 https://www.bilibili.com/video/BV12oMEzvEKh |
+| 45  | 2025-06-12  | Modeling建模-进阶篇-表单项更新  https://www.bilibili.com/video/BV1pVMAzSEQg |
+| 46  | 2025-06-13  | Modeling建模-高级篇-值转换器 https://www.bilibili.com/video/BV1x5MzzREMo |
+| 47  | 2025-06-16  | Modeling建模-进阶篇-自填模式 https://www.bilibili.com/video/BV1afNbzPE1T |
+| 48  | 2025-06-17  | Modeling建模-进阶篇-多数据源 https://www.bilibili.com/video/BV18BNqzSEBm |
+| 49  | 2025-06-18  | Modeling建模-进阶篇-属性提示+界面模式  https://www.bilibili.com/video/BV1TDNEzfEHK |
+| 50  | 2025-06-19  | Modeling建模-进阶篇-树表格  https://www.bilibili.com/video/BV1bHN4zDEgT |
+| 51  | 2025-06-20  | Modeling建模-进阶篇-搜索项  https://www.bilibili.com/video/BV1DbKNz8EuK |
+| 52  | 2025-06-23  | Modeling建模-高级篇-评审 https://www.bilibili.com/video/BV1myKazPENq |
+| 53  | 2025-06-24  | Modeling建模-进阶篇-预置处理 https://www.bilibili.com/video/BV1U1KVzDE2p |
+| 54  | 2025-06-25  | Modeling建模-高级篇-自动化  https://www.bilibili.com/video/BV1PmKnzYEki |
+| 55  | 2025-06-26  | Modeling建模-高级篇-移动端  https://www.bilibili.com/video/BV1jbKozHEFf |
+| 56  | 2025-06-27  | Modeling建模-进阶篇-主状态  https://www.bilibili.com/video/BV1J2KqzMEUV |
+| 57  | 2025-07-02  | Modeling建模-AI篇-表单 https://www.bilibili.com/video/BV1Ws3tzFELX |
+| 58  | 2025-07-03  | Modeling建模-AI篇-数据查询 https://www.bilibili.com/video/BV1H93MzBELu |
+| 59  | 2025-07-04  | Modeling建模-AI篇-处理逻辑 https://www.bilibili.com/video/BV1Vx37zUENT |
+| 60  | 2025-07-07  | Modeling建模-AI篇-功能设计 https://www.bilibili.com/video/BV19v3yz4Ej5 |
+| 61  | 2025-07-08  | Modeling建模-高级篇-主状态逻辑动态扩展  https://www.bilibili.com/video/BV1L5GJzZEPv |
+| 62  | 2025-07-09  | Modeling建模-进阶篇-外键值对象  https://www.bilibili.com/video/BV16VGAzsERx |
+| 63  | 2025-07-10  | Modeling建模-高级篇-功能组件 https://www.bilibili.com/video/BV1n4G3zmEDN |
+| 64  | 2025-07-11  | Modeling建模-高级篇-跟踪图  https://www.bilibili.com/video/BV1duugzbEBN |
+| 65  | 2025-07-14  | Modeling建模-高级篇-页面共享 https://www.bilibili.com/video/BV1J9uqz5EDg |
+| 66  | 2025-07-15  | Modeling建模-高级篇-Wiki+匿名访问  https://www.bilibili.com/video/BV1wVuEzfEY5 |
+| 67  | 2025-07-16  | Modeling建模-基础篇-主题 https://www.bilibili.com/video/BV1v4u8zUEHJ |
+| 68  | 2025-07-24  | iBizModeling 实验室重磅上线 AI 智能建模功能  https://www.bilibili.com/video/BV1uAbyzcE6j |
+
 
 
 ### 演示图
@@ -374,6 +402,7 @@ PLM业务扩展的核心目标是将iBizPLM转化为不仅仅是一个标准的�
 | 26   | 2025-04-30    | V1.0.20250430      | 优化：知识基线比对、用例相关界面元素等；修复工时查询、产品状态新增等问题     |
 | 27   | 2025-05-14    | V1.0.20250514      | 新增：产品需求评审、自定义导入导出等；优化评审发送通知；修复权限相关问题     |
 | 28   | 2025-06-05    | V1.0.20250605      | 新增：测试用例执行失败自动创建缺陷及界面优化、预估工时管理、评论置顶等   |
+| 29   | 2025-08-02    | V1.0.20250802      | 新增：wiki、企业微信集成认证、知识库导出等   |
 
 
 
