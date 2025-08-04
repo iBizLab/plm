@@ -155,72 +155,6 @@
     },
     "topPos" : 428
   }, {
-    "codeName" : "DEDATASET3",
-    "getDstPSDEDataSet" : {
-      "modelref" : true,
-      "id" : "ideas_relation_work_item"
-    },
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "base_filter"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
-    },
-    "leftPos" : 540,
-    "logicNodeType" : "DEDATASET",
-    "name" : "获取关联工作项",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET4"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET3"
-      }
-    } ],
-    "getRetPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "re_page_item"
-    },
-    "topPos" : 428
-  }, {
-    "codeName" : "DEDATASET4",
-    "getDstPSDEDataSet" : {
-      "modelref" : true,
-      "id" : "ideas_relation_ticket"
-    },
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "base_filter"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
-    },
-    "leftPos" : 740,
-    "logicNodeType" : "DEDATASET",
-    "name" : "获取关联工单",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET5"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET4"
-      }
-    } ],
-    "getRetPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "re_page_ticket"
-    },
-    "topPos" : 428
-  }, {
     "codeName" : "PREPAREPARAM1",
     "leftPos" : 10,
     "logicNodeType" : "PREPAREPARAM",
@@ -347,6 +281,98 @@
     } ],
     "topPos" : 540
   }, {
+    "codeName" : "END",
+    "leftPos" : 750,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "result"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 720
+  }, {
+    "codeName" : "APPENDPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "result"
+    },
+    "leftPos" : 330,
+    "logicNodeType" : "APPENDPARAM",
+    "name" : "附加到数组参数",
+    "srcIndex" : 0,
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "idea"
+    },
+    "topPos" : 770
+  }, {
+    "codeName" : "DEDATASET3",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "ideas_relation_work_item"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "base_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "leftPos" : 540,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取关联工作项",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET4"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET3"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "re_page_item"
+    },
+    "topPos" : 428
+  }, {
+    "codeName" : "DEDATASET4",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "ideas_relation_ticket"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "base_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
+    },
+    "leftPos" : 740,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取关联工单",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET5"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET4"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "re_page_ticket"
+    },
+    "topPos" : 428
+  }, {
     "codeName" : "DEDATASET5",
     "getDstPSDEDataSet" : {
       "modelref" : true,
@@ -380,7 +406,7 @@
     },
     "topPos" : 428
   }, {
-    "code" : "def page_ideas = logic.param('page_ideas').getReal()\r\ndef relation_idea = logic.param('re_page_idea').getReal()\r\ndef relation_work_item = logic.param('re_page_item').getReal()\r\ndef relation_ticket = logic.param('re_page_ticket').getReal()\r\ndef relation_test_case = logic.param('re_page_case').getReal()\r\ndef result = logic.param('result').getReal()\r\n\r\nprintln(\"规划 relation_idea.size()\" + relation_idea.size())\r\nprintln(\"规划 relation_idea\" + relation_idea)\r\nprintln(\"规划 relation_work_item.size()\" + relation_work_item.size())\r\nprintln(\"规划 relation_work_item\" + relation_work_item)\r\nprintln(\"规划 relation_ticket.size()\" + relation_ticket.size())\r\nprintln(\"规划 relation_ticket\" + relation_ticket)\r\nprintln(\"规划 relation_test_case.size()\" + relation_test_case.size())\r\nprintln(\"规划 relation_test_case\" + relation_test_case)\r\n\r\n// 1. 构建需求映射表（id -> 需求列表）\r\nMap<String, List<Object>> ideaMap = relation_idea.groupBy { it.get(\"ID\") }\r\n\r\n// 2. 构建工作项映射表（id -> 工作项列表）\r\nMap<String, List<Object>> workItemMap = relation_work_item.groupBy { it.get(\"ID\") }\r\n\r\n// 3. 构建工单映射表（id -> 工单列表）\r\nMap<String, List<Object>> ticketMap = relation_ticket.groupBy { it.get(\"ID\") }\r\n\r\n// 4. 构建测试用例映射表（id -> 测试用例列表）\r\nMap<String, List<Object>> testCaseMap = relation_test_case.groupBy { it.get(\"ID\") }\r\n\r\nprintln(\"规划 ideaMap\" + ideaMap)\r\nprintln(\"规划 workItemMap\" + workItemMap)\r\nprintln(\"规划 ticketMap\" + ticketMap)\r\nprintln(\"规划 testCaseMap\" + testCaseMap)\r\n\r\n// 5. 主循环处理\r\npage_ideas.each { idea ->\r\n    String id = idea.get(\"id\")\r\n\r\n    // 获取各关联数据\r\n    List<Object> relatedIdeas = ideaMap.getOrDefault(id, [])\r\n    List<Object> relatedWorkItems = workItemMap.getOrDefault(id, [])\r\n    List<Object> relatedTickets = ticketMap.getOrDefault(id, [])\r\n    List<Object> relatedTestCases = testCaseMap.getOrDefault(id, [])\r\n\r\n    // 调试打印每个idea的关联数据量\r\n    println(\"Processing idea $id:\")\r\n    println(\" - Related ideas: \" + relatedIdeas.size())\r\n    println(\" - Related work items: \" + relatedWorkItems.size())\r\n    println(\" - Related tickets: \" + relatedTickets.size())\r\n    println(\" - Related test cases: \" + relatedTestCases.size())\r\n\r\n    // 组装数据\r\n    idea.set(\"re_idea\", relatedIdeas)\r\n    idea.set(\"re_item\", relatedWorkItems)\r\n    idea.set(\"re_ticket\", relatedTickets)\r\n    idea.set(\"re_case\", relatedTestCases)\r\n    idea.set(\"idea_sum\", relatedIdeas.size())\r\n    idea.set(\"ticket_sum\", relatedTickets.size())\r\n    idea.set(\"work_item_sum\", relatedWorkItems.size())\r\n    idea.set(\"test_case_sum\", relatedTestCases.size())\r\n\r\n    // 添加到结果集\r\n    result << idea\r\n}",
+    "code" : "def page_ideas = logic.param('page_ideas').getReal()\r\ndef relation_idea = logic.param('re_page_idea').getReal()\r\ndef relation_work_item = logic.param('re_page_item').getReal()\r\ndef relation_ticket = logic.param('re_page_ticket').getReal()\r\ndef relation_test_case = logic.param('re_page_case').getReal()\r\ndef result = logic.param('result').getReal()\r\n\r\nprintln(\"规划 relation_idea.size()\" + relation_idea.size())\r\nprintln(\"规划 relation_idea\" + relation_idea)\r\nprintln(\"规划 relation_work_item.size()\" + relation_work_item.size())\r\nprintln(\"规划 relation_work_item\" + relation_work_item)\r\nprintln(\"规划 relation_ticket.size()\" + relation_ticket.size())\r\nprintln(\"规划 relation_ticket\" + relation_ticket)\r\nprintln(\"规划 relation_test_case.size()\" + relation_test_case.size())\r\nprintln(\"规划 relation_test_case\" + relation_test_case)\r\n\r\n// 1. 构建需求映射表（id -> 需求列表）\r\nMap<String, List<Object>> ideaMap = relation_idea.groupBy { it.get(\"ID\") }\r\n\r\n// 2. 构建工作项映射表（id -> 工作项列表）\r\nMap<String, List<Object>> workItemMap = relation_work_item.groupBy { it.get(\"ID\") }\r\n\r\n// 3. 构建工单映射表（id -> 工单列表）\r\nMap<String, List<Object>> ticketMap = relation_ticket.groupBy { it.get(\"ID\") }\r\n\r\n// 4. 构建测试用例映射表（id -> 测试用例列表）\r\nMap<String, List<Object>> testCaseMap = relation_test_case.groupBy { it.get(\"ID\") }\r\n\r\n// 5. 主循环处理\r\npage_ideas.each { idea ->\r\n    String id = idea.get(\"id\")\r\n    \r\n    List<Object> relatedIdeas = relation_idea.findAll { it.get(\"id\") == id }\r\n    List<Object> relatedWorkItems = relation_work_item.findAll { it.get(\"id\") == id }\r\n    List<Object> relatedTickets = relation_ticket.findAll { it.get(\"id\") == id }\r\n    List<Object> relatedTestCases = relation_test_case.findAll { it.get(\"id\") == id }\r\n\r\n    // 组装数据\r\n    idea.set(\"re_idea\", relatedIdeas)\r\n    idea.set(\"re_item\", relatedWorkItems)\r\n    idea.set(\"re_ticket\", relatedTickets)\r\n    idea.set(\"re_case\", relatedTestCases)\r\n    idea.set(\"idea_sum\", relatedIdeas.size())\r\n    idea.set(\"ticket_sum\", relatedTickets.size())\r\n    idea.set(\"work_item_sum\", relatedWorkItems.size())\r\n    idea.set(\"test_case_sum\", relatedTestCases.size())\r\n\r\n    // 添加到结果集\r\n    result << idea\r\n}",
     "codeName" : "RAWSFCODE2",
     "codeType" : "Groovy",
     "leftPos" : 950,
@@ -398,32 +424,6 @@
       }
     } ],
     "topPos" : 570
-  }, {
-    "codeName" : "END",
-    "leftPos" : 750,
-    "logicNodeType" : "END",
-    "name" : "结束",
-    "getReturnParam" : {
-      "modelref" : true,
-      "id" : "result"
-    },
-    "returnType" : "LOGICPARAM",
-    "topPos" : 720
-  }, {
-    "codeName" : "APPENDPARAM1",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "result"
-    },
-    "leftPos" : 330,
-    "logicNodeType" : "APPENDPARAM",
-    "name" : "附加到数组参数",
-    "srcIndex" : 0,
-    "getSrcPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "idea"
-    },
-    "topPos" : 770
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",
