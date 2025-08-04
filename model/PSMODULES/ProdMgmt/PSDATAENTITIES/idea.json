@@ -18134,39 +18134,6 @@
       },
       "topPos" : 428
     }, {
-      "codeName" : "DEDATASET5",
-      "getDstPSDEDataSet" : {
-        "modelref" : true,
-        "id" : "ideas_relation_test_case"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "base_filter"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
-      },
-      "leftPos" : 950,
-      "logicNodeType" : "DEDATASET",
-      "name" : "获取关联测试用例",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSFCODE2"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEDATASET5"
-        }
-      } ],
-      "getRetPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "re_page_case"
-      },
-      "topPos" : 428
-    }, {
       "codeName" : "PREPAREPARAM1",
       "leftPos" : 10,
       "logicNodeType" : "PREPAREPARAM",
@@ -18293,6 +18260,58 @@
       } ],
       "topPos" : 540
     }, {
+      "codeName" : "DEDATASET5",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "ideas_relation_test_case"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "base_filter"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+      },
+      "leftPos" : 950,
+      "logicNodeType" : "DEDATASET",
+      "name" : "获取关联测试用例",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET5"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "re_page_case"
+      },
+      "topPos" : 428
+    }, {
+      "code" : "def page_ideas = logic.param('page_ideas').getReal()\r\ndef relation_idea = logic.param('re_page_idea').getReal()\r\ndef relation_work_item = logic.param('re_page_item').getReal()\r\ndef relation_ticket = logic.param('re_page_ticket').getReal()\r\ndef relation_test_case = logic.param('re_page_case').getReal()\r\ndef result = logic.param('result').getReal()\r\n\r\nprintln(\"规划 relation_idea.size()\" + relation_idea.size())\r\nprintln(\"规划 relation_idea\" + relation_idea)\r\nprintln(\"规划 relation_work_item.size()\" + relation_work_item.size())\r\nprintln(\"规划 relation_work_item\" + relation_work_item)\r\nprintln(\"规划 relation_ticket.size()\" + relation_ticket.size())\r\nprintln(\"规划 relation_ticket\" + relation_ticket)\r\nprintln(\"规划 relation_test_case.size()\" + relation_test_case.size())\r\nprintln(\"规划 relation_test_case\" + relation_test_case)\r\n\r\n// 1. 构建需求映射表（id -> 需求列表）\r\nMap<String, List<Object>> ideaMap = relation_idea.groupBy { it.get(\"ID\") }\r\n\r\n// 2. 构建工作项映射表（id -> 工作项列表）\r\nMap<String, List<Object>> workItemMap = relation_work_item.groupBy { it.get(\"ID\") }\r\n\r\n// 3. 构建工单映射表（id -> 工单列表）\r\nMap<String, List<Object>> ticketMap = relation_ticket.groupBy { it.get(\"ID\") }\r\n\r\n// 4. 构建测试用例映射表（id -> 测试用例列表）\r\nMap<String, List<Object>> testCaseMap = relation_test_case.groupBy { it.get(\"ID\") }\r\n\r\nprintln(\"规划 ideaMap\" + ideaMap)\r\nprintln(\"规划 workItemMap\" + workItemMap)\r\nprintln(\"规划 ticketMap\" + ticketMap)\r\nprintln(\"规划 testCaseMap\" + testCaseMap)\r\n\r\n// 5. 主循环处理\r\npage_ideas.each { idea ->\r\n    String id = idea.get(\"id\")\r\n\r\n    // 获取各关联数据\r\n    List<Object> relatedIdeas = ideaMap.getOrDefault(id, [])\r\n    List<Object> relatedWorkItems = workItemMap.getOrDefault(id, [])\r\n    List<Object> relatedTickets = ticketMap.getOrDefault(id, [])\r\n    List<Object> relatedTestCases = testCaseMap.getOrDefault(id, [])\r\n\r\n    // 调试打印每个idea的关联数据量\r\n    println(\"Processing idea $id:\")\r\n    println(\" - Related ideas: \" + relatedIdeas.size())\r\n    println(\" - Related work items: \" + relatedWorkItems.size())\r\n    println(\" - Related tickets: \" + relatedTickets.size())\r\n    println(\" - Related test cases: \" + relatedTestCases.size())\r\n\r\n    // 组装数据\r\n    idea.set(\"re_idea\", relatedIdeas)\r\n    idea.set(\"re_item\", relatedWorkItems)\r\n    idea.set(\"re_ticket\", relatedTickets)\r\n    idea.set(\"re_case\", relatedTestCases)\r\n    idea.set(\"idea_sum\", relatedIdeas.size())\r\n    idea.set(\"ticket_sum\", relatedTickets.size())\r\n    idea.set(\"work_item_sum\", relatedWorkItems.size())\r\n    idea.set(\"test_case_sum\", relatedTestCases.size())\r\n\r\n    // 添加到结果集\r\n    result << idea\r\n}",
+      "codeName" : "RAWSFCODE2",
+      "codeType" : "Groovy",
+      "leftPos" : 950,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "处理返回结果",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE2"
+        }
+      } ],
+      "topPos" : 570
+    }, {
       "codeName" : "END",
       "leftPos" : 750,
       "logicNodeType" : "END",
@@ -18318,25 +18337,6 @@
         "id" : "idea"
       },
       "topPos" : 770
-    }, {
-      "code" : "def page_ideas = logic.param('page_ideas').getReal()\r\ndef relation_idea = logic.param('re_page_idea').getReal()\r\ndef relation_work_item = logic.param('re_page_item').getReal()\r\ndef relation_ticket = logic.param('re_page_ticket').getReal()\r\ndef relation_test_case = logic.param('re_page_case').getReal()\r\ndef result = logic.param('result').getReal()\r\n\r\nprintln(\"规划 relation_idea.size()\" + relation_idea.size())\r\nprintln(\"规划 relation_idea\" + relation_idea)\r\nprintln(\"规划 relation_work_item.size()\" + relation_work_item.size())\r\nprintln(\"规划 relation_work_item\" + relation_work_item)\r\nprintln(\"规划 relation_ticket.size()\" + relation_ticket.size())\r\nprintln(\"规划 relation_ticket\" + relation_ticket)\r\nprintln(\"规划 relation_test_case.size()\" + relation_test_case.size())\r\nprintln(\"规划 relation_test_case\" + relation_test_case)\r\n\r\n// 构建需求映射表（id -> 需求列表）\r\nMap<String, List<Object>> ideaMap = [:]\r\nrelation_idea.each { item ->\r\n    String id = item.get(\"ID\")\r\n    if (!ideaMap.containsKey(id)) {\r\n        ideaMap[id] = []\r\n    }\r\n    ideaMap[id] << item\r\n}\r\n\r\n// 构建工作项映射表（id -> 工作项列表）\r\nMap<String, List<Object>> workItemMap = [:]\r\nrelation_work_item.each { item ->\r\n    String id = item.get(\"ID\")\r\n    if (!workItemMap.containsKey(id)) {\r\n        workItemMap[id] = []\r\n    }\r\n    workItemMap[id] << item\r\n}\r\n\r\n// 构建工单映射表（id -> 工单列表）\r\nMap<String, List<Object>> ticketMap = [:]\r\nrelation_ticket.each { item ->\r\n    String id = item.get(\"ID\")\r\n    if (!ticketMap.containsKey(id)) {\r\n        ticketMap[id] = []\r\n    }\r\n    ticketMap[id] << item\r\n}\r\n\r\n// 构建测试用例映射表（id -> 测试用例列表）\r\nMap<String, List<Object>> testCaseMap = [:]\r\nrelation_test_case.each { item ->\r\n    String id = item.get(\"ID\")\r\n    if (!testCaseMap.containsKey(id)) {\r\n        testCaseMap[id] = []\r\n    }\r\n    testCaseMap[id] << item\r\n}\r\n\r\nprintln(\"规划 ideaMap\" + ideaMap)\r\nprintln(\"规划 workItemMap\" + workItemMap)\r\nprintln(\"规划 ticketMap\" + ticketMap)\r\nprintln(\"规划 testCaseMap\" + testCaseMap)\r\n\r\n// 主循环处理\r\npage_ideas.each { idea ->\r\n    String id = idea.get(\"id\")\r\n\r\n    // a. 获取关联需求（principal_id匹配）\r\n    List<Object> relatedIdeas = ideaMap.getOrDefault(id, [])\r\n\r\n    // b. 获取关联工作项\r\n    List<Object> relatedWorkItems = workItemMap.getOrDefault(id, [])\r\n\r\n    // c. 获取关联工单\r\n    List<Object> relatedTickets = ticketMap.getOrDefault(id, [])\r\n\r\n    // d. 获取关联测试用例\r\n    List<Object> relatedTestCases = testCaseMap.getOrDefault(id, [])\r\n\r\n    // 5. 组装数据\r\n    idea.set(\"re_idea\", relatedIdeas)\r\n    idea.set(\"re_item\", relatedWorkItems)\r\n    idea.set(\"re_ticket\", relatedTickets)\r\n    idea.set(\"re_case\", relatedTestCases)\r\n    idea.set(\"idea_sum\", relatedIdeas.size())\r\n    idea.set(\"ticket_sum\", relatedTickets.size())\r\n    idea.set(\"work_item_sum\", relatedWorkItems.size())\r\n    idea.set(\"test_case_sum\", relatedTestCases.size())\r\n\r\n    // 6. 添加到结果集\r\n    result << idea\r\n}",
-      "codeName" : "RAWSFCODE2",
-      "codeType" : "Groovy",
-      "leftPos" : 950,
-      "logicNodeType" : "RAWSFCODE",
-      "name" : "处理返回结果",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "END"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSFCODE2"
-        }
-      } ],
-      "topPos" : 570
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",
