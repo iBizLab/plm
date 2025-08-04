@@ -1979,6 +1979,107 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEDATAQUERIES/ideas_relation_ticket/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "ideas_relation_ticket",
+    "logicName" : "关联工单（多需求）",
+    "name" : "ideas_relation_ticket",
+    "getPSDEDQMain" : {
+      "getChildPSDEDQJoins" : [ {
+        "getDERPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+        },
+        "getJoinPSDER" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDERS/DERCUSTOM_RELATION_TARGET_TICKET.json"
+        },
+        "getJoinPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+        },
+        "joinType" : "1N",
+        "name" : "RELATION存在1:N（EXISTS (SELECT)）DERCUSTOM_RELATION_TARGET_TICKET",
+        "getPSDEDQGroupCondition" : {
+          "condOp" : "AND",
+          "condType" : "GROUP",
+          "name" : "连接条件",
+          "getPSDEDQConditions" : [ {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "ticket",
+            "fieldName" : "TARGET_TYPE",
+            "name" : "(TARGET_TYPE) 等于(=) ticket",
+            "getPSDEField" : {
+              "name" : "TARGET_TYPE",
+              "codeName" : "target_type"
+            }
+          }, {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "idea",
+            "fieldName" : "PRINCIPAL_TYPE",
+            "name" : "(PRINCIPAL_TYPE) 等于(=) idea",
+            "getPSDEField" : {
+              "name" : "PRINCIPAL_TYPE",
+              "codeName" : "principal_type"
+            }
+          }, {
+            "condOp" : "IN",
+            "condType" : "SINGLE",
+            "condValue" : "principal_id",
+            "fieldName" : "PRINCIPAL_ID",
+            "name" : "(PRINCIPAL_ID) 值在范围中(In) 网页请求上下文 principal_id",
+            "getPSDEField" : {
+              "name" : "PRINCIPAL_ID",
+              "codeName" : "principal_id"
+            },
+            "getPSVARTypeId" : "WEBCONTEXT"
+          } ]
+        }
+      } ],
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "TICKET",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "NOTEQ",
+          "condType" : "SINGLE",
+          "condValue" : "1",
+          "fieldName" : "IS_DELETED",
+          "name" : "(IS_DELETED) 不等于(<>) 1",
+          "getPSDEField" : {
+            "name" : "IS_DELETED",
+            "codeName" : "is_deleted"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Ideas_relation_ticketInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ticket_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Ideas_relation_ticketResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEDATAQUERIES/mob_ticket_list/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "mob_ticket_list",
@@ -3246,107 +3347,6 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
-      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEDATAQUERIES/tickets_relation_ticket/PSDEDQCODES/MYSQL5.json"
-    } ],
-    "codeName" : "tickets_relation_ticket",
-    "logicName" : "关联工单（多工单）",
-    "name" : "tickets_relation_ticket",
-    "getPSDEDQMain" : {
-      "getChildPSDEDQJoins" : [ {
-        "getDERPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
-        },
-        "getJoinPSDER" : {
-          "modelref" : true,
-          "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDERS/DERCUSTOM_RELATION_TARGET_TICKET.json"
-        },
-        "getJoinPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
-        },
-        "joinType" : "1N",
-        "name" : "RELATION存在1:N（EXISTS (SELECT)）DERCUSTOM_RELATION_TARGET_TICKET",
-        "getPSDEDQGroupCondition" : {
-          "condOp" : "AND",
-          "condType" : "GROUP",
-          "name" : "连接条件",
-          "getPSDEDQConditions" : [ {
-            "condOp" : "EQ",
-            "condType" : "SINGLE",
-            "condValue" : "ticket",
-            "fieldName" : "TARGET_TYPE",
-            "name" : "(TARGET_TYPE) 等于(=) ticket",
-            "getPSDEField" : {
-              "name" : "TARGET_TYPE",
-              "codeName" : "target_type"
-            }
-          }, {
-            "condOp" : "EQ",
-            "condType" : "SINGLE",
-            "condValue" : "idea",
-            "fieldName" : "PRINCIPAL_TYPE",
-            "name" : "(PRINCIPAL_TYPE) 等于(=) idea",
-            "getPSDEField" : {
-              "name" : "PRINCIPAL_TYPE",
-              "codeName" : "principal_type"
-            }
-          }, {
-            "condOp" : "IN",
-            "condType" : "SINGLE",
-            "condValue" : "principal_id",
-            "fieldName" : "PRINCIPAL_ID",
-            "name" : "(PRINCIPAL_ID) 值在范围中(In) 网页请求上下文 principal_id",
-            "getPSDEField" : {
-              "name" : "PRINCIPAL_ID",
-              "codeName" : "principal_id"
-            },
-            "getPSVARTypeId" : "WEBCONTEXT"
-          } ]
-        }
-      } ],
-      "getJoinPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
-      },
-      "joinType" : "MAIN",
-      "name" : "TICKET",
-      "getPSDEDQGroupCondition" : {
-        "condOp" : "AND",
-        "condType" : "GROUP",
-        "name" : "连接条件",
-        "getPSDEDQConditions" : [ {
-          "condOp" : "NOTEQ",
-          "condType" : "SINGLE",
-          "condValue" : "1",
-          "fieldName" : "IS_DELETED",
-          "name" : "(IS_DELETED) 不等于(<>) 1",
-          "getPSDEField" : {
-            "name" : "IS_DELETED",
-            "codeName" : "is_deleted"
-          }
-        } ]
-      }
-    },
-    "getPSDEDataQueryInput" : {
-      "name" : "Tickets_relation_ticketInput",
-      "getPSDEFilterDTO" : {
-        "modelref" : true,
-        "id" : "ticket_filter_dto"
-      },
-      "type" : "DTO"
-    },
-    "getPSDEDataQueryReturn" : {
-      "name" : "Tickets_relation_ticketResult",
-      "getPSDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "ticket_dto"
-      },
-      "type" : "DTOS"
-    }
-  }, {
-    "getAllPSDEDataQueryCodes" : [ {
-      "modelref" : true,
       "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEDATAQUERIES/user/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "user",
@@ -3949,6 +3949,32 @@
     "enableBackend" : true,
     "enableFront" : true
   }, {
+    "codeName" : "ideas_relation_ticket",
+    "logicName" : "关联工单（多需求）",
+    "name" : "ideas_relation_ticket",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "ideas_relation_ticket"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Ideas_relation_ticketInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "ticket_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Ideas_relation_ticketResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ticket_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
     "codeName" : "mob_ticket_list",
     "logicName" : "产品工单集合（移动端）",
     "name" : "mob_ticket_list",
@@ -4459,32 +4485,6 @@
     "enableBackend" : true,
     "enableFront" : true,
     "enableGroup" : true
-  }, {
-    "codeName" : "tickets_relation_ticket",
-    "logicName" : "关联工单（多工单）",
-    "name" : "tickets_relation_ticket",
-    "getPSDEDataQueries" : [ {
-      "modelref" : true,
-      "id" : "tickets_relation_ticket"
-    } ],
-    "getPSDEDataSetInput" : {
-      "name" : "Tickets_relation_ticketInput",
-      "getPSDEFilterDTO" : {
-        "modelref" : true,
-        "id" : "ticket_filter_dto"
-      },
-      "type" : "DTO"
-    },
-    "getPSDEDataSetReturn" : {
-      "name" : "Tickets_relation_ticketResult",
-      "getPSDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "ticket_dto"
-      },
-      "type" : "PAGE"
-    },
-    "enableBackend" : true,
-    "enableFront" : true
   }, {
     "codeName" : "user",
     "logicName" : "普通用户",
