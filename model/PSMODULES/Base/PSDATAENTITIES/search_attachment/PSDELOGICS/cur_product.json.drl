@@ -1,0 +1,117 @@
+package cn.ibizlab.plm.base.logic.search_attachmentlogic.cur_product;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.search_attachment search_attachmentcur_productdefault;
+                global cn.ibizlab.plm.core.base.domain.search_attachment search_attachmentcur_productfor_temp_obj;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea search_attachmentcur_productidea;
+                global cn.ibizlab.plm.core.base.domain.search_attachment search_attachmentcur_productresult_page;
+                global cn.ibizlab.plm.core.prodmgmt.domain.ticket search_attachmentcur_productticket;
+                    global cn.ibizlab.plm.core.base.service.Isearch_attachmentService search_attachmentservice;
+        global cn.ibizlab.plm.core.base.service.Isearch_attachmentService iBzSysSearch_attachmentDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "search_attachmentcur_productbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[当前产品下的全部附件]
+            rule "dedataset1"
+            ruleflow-group "search_attachmentcur_productdedataset1"
+            when
+            then
+                        update(search_attachmentcur_productdefault);//更新fact中变量值
+                        update(search_attachmentcur_productfor_temp_obj);//更新fact中变量值
+                        update(search_attachmentcur_productidea);//更新fact中变量值
+                        update(search_attachmentcur_productresult_page);//更新fact中变量值
+                        update(search_attachmentcur_productticket);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定产品需求参数]
+            rule "bindparam2"
+            ruleflow-group "search_attachmentcur_productbindparam2"
+            when
+            then
+                        update(search_attachmentcur_productdefault);//更新fact中变量值
+                        update(search_attachmentcur_productfor_temp_obj);//更新fact中变量值
+                        update(search_attachmentcur_productidea);//更新fact中变量值
+                        update(search_attachmentcur_productresult_page);//更新fact中变量值
+                        update(search_attachmentcur_productticket);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充产品需求展示属性]
+            rule "prepareparam2"
+            ruleflow-group "search_attachmentcur_productprepareparam2"
+            when
+            then
+                            search_attachmentcur_productfor_temp_obj.set("owneridentifier",search_attachmentcur_productidea.get("identifier"));
+                            search_attachmentcur_productfor_temp_obj.set("ownerparentid",search_attachmentcur_productidea.get("productid"));
+                            search_attachmentcur_productfor_temp_obj.set("ownerparentname",search_attachmentcur_productidea.get("productname"));
+                            search_attachmentcur_productfor_temp_obj.set("ownertitle",search_attachmentcur_productidea.get("title"));
+                        update(search_attachmentcur_productdefault);//更新fact中变量值
+                        update(search_attachmentcur_productfor_temp_obj);//更新fact中变量值
+                        update(search_attachmentcur_productidea);//更新fact中变量值
+                        update(search_attachmentcur_productresult_page);//更新fact中变量值
+                        update(search_attachmentcur_productticket);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "search_attachmentcur_productloopsubcall1"
+            when
+            then
+                        update(search_attachmentcur_productdefault);//更新fact中变量值
+                        update(search_attachmentcur_productfor_temp_obj);//更新fact中变量值
+                        update(search_attachmentcur_productidea);//更新fact中变量值
+                        update(search_attachmentcur_productresult_page);//更新fact中变量值
+                        update(search_attachmentcur_productticket);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定工单参数]
+            rule "bindparam3"
+            ruleflow-group "search_attachmentcur_productbindparam3"
+            when
+            then
+                        update(search_attachmentcur_productdefault);//更新fact中变量值
+                        update(search_attachmentcur_productfor_temp_obj);//更新fact中变量值
+                        update(search_attachmentcur_productidea);//更新fact中变量值
+                        update(search_attachmentcur_productresult_page);//更新fact中变量值
+                        update(search_attachmentcur_productticket);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充工单展示属性]
+            rule "prepareparam3"
+            ruleflow-group "search_attachmentcur_productprepareparam3"
+            when
+            then
+                            search_attachmentcur_productfor_temp_obj.set("ownertitle",search_attachmentcur_productticket.get("title"));
+                            search_attachmentcur_productfor_temp_obj.set("ownerparentid",search_attachmentcur_productticket.get("productid"));
+                            search_attachmentcur_productfor_temp_obj.set("ownerparentname",search_attachmentcur_productticket.get("productname"));
+                            search_attachmentcur_productfor_temp_obj.set("owneridentifier",search_attachmentcur_productticket.get("identifier"));
+                        update(search_attachmentcur_productdefault);//更新fact中变量值
+                        update(search_attachmentcur_productfor_temp_obj);//更新fact中变量值
+                        update(search_attachmentcur_productidea);//更新fact中变量值
+                        update(search_attachmentcur_productresult_page);//更新fact中变量值
+                        update(search_attachmentcur_productticket);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "search_attachmentcur_productend1"
+            when
+            then
+                        update(search_attachmentcur_productdefault);//更新fact中变量值
+                        update(search_attachmentcur_productfor_temp_obj);//更新fact中变量值
+                        update(search_attachmentcur_productidea);//更新fact中变量值
+                        update(search_attachmentcur_productresult_page);//更新fact中变量值
+                        update(search_attachmentcur_productticket);//更新fact中变量值
+            end

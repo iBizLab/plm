@@ -1,0 +1,108 @@
+{
+  "codeName" : "fill_categories_name",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint/PSDELOGICS/fill_categories_name.json",
+  "logicName" : "填充类别文本",
+  "memo" : "填充类别对应文本",
+  "name" : "填充类别文本",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 150,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 342,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 711,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 342
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 310,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "类别转换",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "正常转换",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END2"
+      },
+      "name" : "异常处理",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "catchLink" : true
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "CATEGORIES_NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "Default[CATEGORIES] ==> Default[CATEGORIES_NAME]",
+      "getPSSysTranslator" : {
+        "modelref" : true,
+        "path" : "PSSYSTRANSLATORS/Category.json"
+      },
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "CATEGORIES",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 350
+  }, {
+    "codeName" : "END2",
+    "leftPos" : 711,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "topPos" : 478
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

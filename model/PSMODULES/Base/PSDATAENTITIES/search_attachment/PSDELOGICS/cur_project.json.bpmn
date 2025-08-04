@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.search_attachmentcur_project" isClosed="false" isExecutable="true" name="base_search_attachment_cur_project_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.search_attachmentcur_project">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="search_attachmentcur_projectdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.customer()" name="search_attachmentcur_projectcustomer" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.search_attachment()" name="search_attachmentcur_projectfor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.idea()" name="search_attachmentcur_projectidea" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.article_page()" name="search_attachmentcur_projectpage" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.search_attachment()" name="search_attachmentcur_projectresult_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.test_case()" name="search_attachmentcur_projecttest_case" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.ticket()" name="search_attachmentcur_projectticket" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="search_attachmentcur_projectwork_item" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Isearch_attachmentService))" name="search_attachmentservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Isearch_attachmentService))" name="iBzSysSearch_attachmentDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="search_attachmentcur_projectdefault" type="cn.ibizlab.plm.core.base.domain.search_attachment" />
+                            <tns:global identifier="search_attachmentcur_projectcustomer" type="cn.ibizlab.plm.core.prodmgmt.domain.customer" />
+                            <tns:global identifier="search_attachmentcur_projectfor_temp_obj" type="cn.ibizlab.plm.core.base.domain.search_attachment" />
+                            <tns:global identifier="search_attachmentcur_projectidea" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
+                            <tns:global identifier="search_attachmentcur_projectpage" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
+                            <tns:global identifier="search_attachmentcur_projectresult_page" type="cn.ibizlab.plm.core.base.domain.search_attachment" />
+                            <tns:global identifier="search_attachmentcur_projecttest_case" type="cn.ibizlab.plm.core.testmgmt.domain.test_case" />
+                            <tns:global identifier="search_attachmentcur_projectticket" type="cn.ibizlab.plm.core.prodmgmt.domain.ticket" />
+                            <tns:global identifier="search_attachmentcur_projectwork_item" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_attachmentcur_projectdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="当前项目下的全部附件"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_attachmentcur_projectloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_attachmentcur_projectbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定工作项参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_attachmentcur_projectprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充工作项展示属性"/>
+                        <endEvent id="prepareparam1_end" name="end"/>
+                        <sequenceFlow id="prepareparam1_end_line" sourceRef="prepareparam1" targetRef="prepareparam1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="search_attachmentcur_projectend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="begin_dedataset1" sourceRef="begin" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset1_loopsubcall1" sourceRef="dedataset1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall1_bindparam1" sourceRef="gateway-loopsubcall1" targetRef="bindparam1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $search_attachmentcur_projectdefault:search_attachment();
+                                            $search_attachmentcur_projectcustomer:customer();
+                                            $search_attachmentcur_projectfor_temp_obj:search_attachment();
+                                            $search_attachmentcur_projectidea:idea();
+                                            $search_attachmentcur_projectpage:article_page();
+                                            $search_attachmentcur_projectresult_page:search_attachment();
+                                            $search_attachmentcur_projecttest_case:test_case();
+                                            $search_attachmentcur_projectticket:ticket();
+                                            $search_attachmentcur_projectwork_item:work_item();
+                                    eval($search_attachmentcur_projectdefault==search_attachmentcur_projectdefault && $search_attachmentcur_projectcustomer==search_attachmentcur_projectcustomer && $search_attachmentcur_projectfor_temp_obj==search_attachmentcur_projectfor_temp_obj && $search_attachmentcur_projectidea==search_attachmentcur_projectidea && $search_attachmentcur_projectpage==search_attachmentcur_projectpage && $search_attachmentcur_projectresult_page==search_attachmentcur_projectresult_page && $search_attachmentcur_projecttest_case==search_attachmentcur_projecttest_case && $search_attachmentcur_projectticket==search_attachmentcur_projectticket && $search_attachmentcur_projectwork_item==search_attachmentcur_projectwork_item);
+                                eval((RuleUtils.test($search_attachmentcur_projectfor_temp_obj.get("ownerType"),"EQ","WORK_ITEM")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_prepareparam1" sourceRef="bindparam1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-loopsubcall1" name="Gateway" gatewayDirection="Diverging" default="gateway-loopsubcall1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="loopsubcall1_gateway-loopsubcall1_gatewayline" sourceRef="loopsubcall1" targetRef="gateway-loopsubcall1"></sequenceFlow>
+                            <sequenceFlow id="gateway-loopsubcall1_end_line" sourceRef="gateway-loopsubcall1" targetRef="gateway-loopsubcall1_end"/>
+                            <endEvent id="gateway-loopsubcall1_end" name="end"/>
+        </process>
+    </definitions>
