@@ -2025,16 +2025,9 @@
               "codeName" : "principal_type"
             }
           }, {
-            "condOp" : "IN",
-            "condType" : "SINGLE",
-            "condValue" : "principal_id",
-            "fieldName" : "PRINCIPAL_ID",
-            "name" : "(PRINCIPAL_ID) 值在范围中(In) 数据上下文 principal_id",
-            "getPSDEField" : {
-              "name" : "PRINCIPAL_ID",
-              "codeName" : "principal_id"
-            },
-            "getPSVARTypeId" : "DATACONTEXT"
+            "condType" : "CUSTOM",
+            "condition" : " t31.`PRINCIPAL_ID` IN (${ctx.datacontext.principal_id})",
+            "name" : "关联"
           } ]
         }
       } ],
