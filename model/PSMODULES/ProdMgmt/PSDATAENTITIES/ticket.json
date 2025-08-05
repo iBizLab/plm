@@ -1998,23 +1998,13 @@
           "modelref" : true,
           "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
         },
-        "joinType" : "1N",
-        "name" : "RELATION存在1:N（EXISTS (SELECT)）DERCUSTOM_RELATION_TARGET_TICKET",
+        "joinType" : "1NLEFTOUT",
+        "name" : "RELATION左外联接 1:NDERCUSTOM_RELATION_TARGET_TICKET",
         "getPSDEDQGroupCondition" : {
           "condOp" : "AND",
           "condType" : "GROUP",
           "name" : "连接条件",
           "getPSDEDQConditions" : [ {
-            "condOp" : "EQ",
-            "condType" : "SINGLE",
-            "condValue" : "ticket",
-            "fieldName" : "TARGET_TYPE",
-            "name" : "(TARGET_TYPE) 等于(=) ticket",
-            "getPSDEField" : {
-              "name" : "TARGET_TYPE",
-              "codeName" : "target_type"
-            }
-          }, {
             "condOp" : "EQ",
             "condType" : "SINGLE",
             "condValue" : "idea",
@@ -2023,6 +2013,16 @@
             "getPSDEField" : {
               "name" : "PRINCIPAL_TYPE",
               "codeName" : "principal_type"
+            }
+          }, {
+            "condOp" : "EQ",
+            "condType" : "SINGLE",
+            "condValue" : "ticket",
+            "fieldName" : "TARGET_TYPE",
+            "name" : "(TARGET_TYPE) 等于(=) ticket",
+            "getPSDEField" : {
+              "name" : "TARGET_TYPE",
+              "codeName" : "target_type"
             }
           }, {
             "condType" : "CUSTOM",
