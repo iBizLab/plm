@@ -17938,6 +17938,39 @@
       "topPos" : -188,
       "parallelOutput" : true
     }, {
+      "codeName" : "DEDATASET1",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "plan_relation_idea"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+      },
+      "leftPos" : 330,
+      "logicNodeType" : "DEDATASET",
+      "name" : "获取所有需求",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_ideas"
+      },
+      "topPos" : 40
+    }, {
       "codeName" : "LOOPSUBCALL1",
       "getDstPSDELogicParam" : {
         "modelref" : true,
@@ -17985,56 +18018,7 @@
       } ],
       "topPos" : -87
     }, {
-      "codeName" : "DEDATASET1",
-      "getDstPSDEDataSet" : {
-        "modelref" : true,
-        "id" : "plan_relation_idea"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
-      },
-      "leftPos" : 330,
-      "logicNodeType" : "DEDATASET",
-      "name" : "获取所有需求",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSFCODE1"
-        },
-        "name" : "计划中存在需求",
-        "getPSDELogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "name" : "连接条件组",
-          "getPSDELogicLinkConds" : [ {
-            "condOP" : "GT",
-            "dstFieldName" : "size",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "page_ideas"
-            },
-            "logicType" : "SINGLE",
-            "name" : "page_ideas[size] 大于(>) 0",
-            "paramValue" : "0"
-          } ]
-        },
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEDATASET1"
-        }
-      } ],
-      "getRetPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "page_ideas"
-      },
-      "topPos" : 40
-    }, {
-      "code" : "def page_ideas = logic.param('page_ideas').getReal()\r\ndef base_filter = logic.param('base_filter').getReal()\r\nList<String> ids = new ArrayList<String>()\r\ndef idea = page_ideas?.get(0)\r\nif (!org.springframework.util.ObjectUtils.isEmpty(idea)) {\r\n    base_filter.set(\"principal_id\", idea.get(\"principal_id\"))\r\n}\r\nbase_filter.all()",
+      "code" : "def _default = logic.param('Default').getReal()\r\ndef base_filter = logic.param('base_filter').getReal()\r\nbase_filter.set(\"principal_id\", _default.get(\"principal_id\"))\r\nbase_filter.all()",
       "codeName" : "RAWSFCODE1",
       "codeType" : "Groovy",
       "leftPos" : 330,
@@ -18172,6 +18156,21 @@
         "id" : "re_page_ticket"
       },
       "topPos" : 428
+    }, {
+      "codeName" : "APPENDPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "leftPos" : 330,
+      "logicNodeType" : "APPENDPARAM",
+      "name" : "附加到数组参数",
+      "srcIndex" : 0,
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "idea"
+      },
+      "topPos" : 770
     }, {
       "codeName" : "DEDATASET5",
       "getDstPSDEDataSet" : {
@@ -18361,21 +18360,6 @@
       },
       "returnType" : "LOGICPARAM",
       "topPos" : 720
-    }, {
-      "codeName" : "APPENDPARAM1",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "result"
-      },
-      "leftPos" : 330,
-      "logicNodeType" : "APPENDPARAM",
-      "name" : "附加到数组参数",
-      "srcIndex" : 0,
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "idea"
-      },
-      "topPos" : 770
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",
